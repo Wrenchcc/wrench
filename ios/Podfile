@@ -7,7 +7,7 @@ target 'Wrench' do
   platform :ios, '9.0'
 
   # Pods for Wrench
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
+  pod 'Firebase/Core', '~> 4.13'
+  pod 'Firebase/Messaging', '~> 4.13'
 
 end
