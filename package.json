@@ -35,7 +35,7 @@
     "react-native-device-info": "^0.21.5",
     "react-native-fast-image": "^4.0.14",
     "react-native-fbsdk": "^0.7.0",
-    "react-native-firebase": "^4.2.0",
+    "react-native-firebase": "^4.1.0",
     "react-native-i18n": "^2.0.12",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-parsed-text": "^0.0.20",

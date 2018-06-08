@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import codePush from 'react-native-code-push'
+import firebase from 'react-native-firebase'
 import SplashScreen from 'react-native-splash-screen'
 import { Navigation, setNavigationRef } from 'navigation'
 
-import firebase from 'react-native-firebase'
+const checkFrequency = codePush.CheckFrequency.ON_APP_RESUME
 
 console.disableYellowBox = true // TODO: Remove
 
@@ -22,4 +23,4 @@ class App extends Component {
   render = () => <Navigation ref={nav => setNavigationRef(nav)} />
 }
 
-export default codePush({ checkFrequency: codePush.CheckFrequency.ON_APP_RESUME })(App)
+export default codePush({ checkFrequency })(App)
