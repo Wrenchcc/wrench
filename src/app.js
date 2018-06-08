@@ -18,6 +18,8 @@ class App extends Component {
       console.log(permission)
       messaging.getToken().then(token => alert(token))
     })
+
+    messaging.getToken().then(token => alert(token))
   }
 
   render = () => <Navigation ref={nav => setNavigationRef(nav)} />
