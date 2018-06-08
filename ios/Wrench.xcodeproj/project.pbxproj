@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -25,7 +26,6 @@
 		161886F720CA8E0000B88BD5 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161886F420CA8DFF00B88BD5 /* FBSDKShareKit.framework */; };
 		161886F820CA8E0000B88BD5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161886F520CA8DFF00B88BD5 /* FBSDKCoreKit.framework */; };
 		161886F920CA8E0000B88BD5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161886F620CA8DFF00B88BD5 /* FBSDKLoginKit.framework */; };
-		161887A220CA95C300B88BD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 161887A120CA95C300B88BD5 /* GoogleService-Info.plist */; };
 		161CC43420CA76C2005139C4 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16900BC8205E8A8100B471EE /* libReactNativeConfig.a */; };
 		164D793220CA826B00310D9B /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 167E8CBB20B96EE200F8EC77 /* libRCTFBSDK.a */; };
 		16900BD2205E8ADF00B471EE /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16900BCF205E8AA700B471EE /* libRCTVideo.a */; };
@@ -472,7 +472,6 @@
 		161886F420CA8DFF00B88BD5 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		161886F520CA8DFF00B88BD5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		161886F620CA8DFF00B88BD5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		161887A120CA95C300B88BD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		16900BC9205E8AA700B471EE /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		16995C49207BF2D300A02189 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		16AF1E0A20C41D8B00CB21A7 /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
@@ -617,7 +616,6 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				161887A120CA95C300B88BD5 /* GoogleService-Info.plist */,
 			);
 			name = Wrench;
 			sourceTree = "<group>";
@@ -1478,7 +1476,6 @@
 				3D2AC1C6E9804A67A59D1BCA /* Inter-UI-Medium.ttf in Resources */,
 				FF9EBE8CF258455286EFBA86 /* Inter-UI-Regular.ttf in Resources */,
 				C4731E26ACC6438AB8432284 /* Inter-UI-Bold.ttf in Resources */,
-				161887A220CA95C300B88BD5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
