@@ -22,6 +22,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		160004A22092712500B3F2D9 /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 160004712092711200B3F2D9 /* libFastImage.a */; };
 		160F0AC3208CB5140027D66D /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		161CC43420CA76C2005139C4 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16900BC8205E8A8100B471EE /* libReactNativeConfig.a */; };
 		166698F220B986A400BBE123 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166698EE20B986A200BBE123 /* FBSDKLoginKit.framework */; };
 		166698F420B986A400BBE123 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166698F020B986A300BBE123 /* FBSDKCoreKit.framework */; };
 		166698F520B986A400BBE123 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166698F120B986A300BBE123 /* FBSDKShareKit.framework */; };
@@ -479,6 +480,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161CC43420CA76C2005139C4 /* libReactNativeConfig.a in Frameworks */,
 				16AF1E4B20C41E0400CB21A7 /* libz.tbd in Frameworks */,
 				16AF1E4920C41D9C00CB21A7 /* libCodePush.a in Frameworks */,
 				16D21E462095F3580000599F /* libBVLinearGradient.a in Frameworks */,
