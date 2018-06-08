@@ -3,6 +3,7 @@ package com.wrench;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
 import com.microsoft.codepush.react.CodePush;
 // import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -51,6 +52,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFirebasePackage(),
             new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
             // new RNReactNativeHapticFeedbackPackage(),
             new LinearGradientPackage(),
