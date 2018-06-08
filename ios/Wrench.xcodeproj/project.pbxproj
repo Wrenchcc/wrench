@@ -26,6 +26,7 @@
 		161886F720CA8E0000B88BD5 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161886F420CA8DFF00B88BD5 /* FBSDKShareKit.framework */; };
 		161886F820CA8E0000B88BD5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161886F520CA8DFF00B88BD5 /* FBSDKCoreKit.framework */; };
 		161886F920CA8E0000B88BD5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 161886F620CA8DFF00B88BD5 /* FBSDKLoginKit.framework */; };
+		161887A220CA95C300B88BD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 161887A120CA95C300B88BD5 /* GoogleService-Info.plist */; };
 		161CC43420CA76C2005139C4 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16900BC8205E8A8100B471EE /* libReactNativeConfig.a */; };
 		164D793220CA826B00310D9B /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 167E8CBB20B96EE200F8EC77 /* libRCTFBSDK.a */; };
 		16900BD2205E8ADF00B471EE /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16900BCF205E8AA700B471EE /* libRCTVideo.a */; };
@@ -33,6 +34,7 @@
 		16AF1E4920C41D9C00CB21A7 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AF1E1720C41D8B00CB21A7 /* libCodePush.a */; };
 		16AF1E4B20C41E0400CB21A7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AF1E4A20C41E0400CB21A7 /* libz.tbd */; };
 		16D21E462095F3580000599F /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D21E122095F32B0000599F /* libBVLinearGradient.a */; };
+		238AE55F8A9F490D88E21CE9 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E009C4A932B14309903A601E /* libRNFirebase.a */; };
 		3D2AC1C6E9804A67A59D1BCA /* Inter-UI-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9D5BA107F844B80912FCD5B /* Inter-UI-Medium.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -41,6 +43,7 @@
 		D2BB7A9B2087515D00135C1D /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BB7A9A2087513600135C1D /* libSplashScreen.a */; };
 		D2BCF3E9207762CD002CEC26 /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BCF3E42077628E002CEC26 /* libRNI18n.a */; };
 		D2D98FBE208DD11D00410A13 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D98FB5208DD11100410A13 /* libRNDeviceInfo.a */; };
+		EA52BD5D2E68B225F9D400B4 /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E2EC5993376B076BB74F28 /* libPods-Wrench.a */; };
 		FF9EBE8CF258455286EFBA86 /* Inter-UI-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F60FA55A0EC14576A55512E2 /* Inter-UI-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +110,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = A287971D1DE0C0A60081BDFA;
 			remoteInfo = FastImage;
+		};
+		1618874920CA93DF00B88BD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFirebase;
 		};
 		164D798520CA828C00310D9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -463,17 +473,21 @@
 		161886F420CA8DFF00B88BD5 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		161886F520CA8DFF00B88BD5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		161886F620CA8DFF00B88BD5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		161887A120CA95C300B88BD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		16900BC9205E8AA700B471EE /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		16995C49207BF2D300A02189 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		16AF1E0A20C41D8B00CB21A7 /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		16AF1E4A20C41E0400CB21A7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		16C95E9D20C5421200C0CD93 /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		16D21E092095F32B0000599F /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		21E2EC5993376B076BB74F28 /* libPods-Wrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wrench.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29D53CB22902401BB8FF774A /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		82FEDE5AC32A0969C166E48B /* Pods-Wrench.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wrench/Pods-Wrench.release.xcconfig"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		D22182AB207BA8C900A8487B /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		D2704757207761A7000A01F4 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -482,6 +496,8 @@
 		D2BB7A632087513600135C1D /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
 		D2D98F82208DD11100410A13 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
+		E009C4A932B14309903A601E /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
+		E80B1F31D805EB6F76E84E50 /* Pods-Wrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wrench/Pods-Wrench.debug.xcconfig"; sourceTree = "<group>"; };
 		EDC95D1E86E64D3EB9631044 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		F60FA55A0EC14576A55512E2 /* Inter-UI-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-UI-Regular.ttf"; path = "../assets/fonts/Inter-UI-Regular.ttf"; sourceTree = "<group>"; };
 		F9D5BA107F844B80912FCD5B /* Inter-UI-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-UI-Medium.ttf"; path = "../assets/fonts/Inter-UI-Medium.ttf"; sourceTree = "<group>"; };
@@ -520,6 +536,8 @@
 				164D793220CA826B00310D9B /* libRCTFBSDK.a in Frameworks */,
 				16AF1E4B20C41E0400CB21A7 /* libz.tbd in Frameworks */,
 				0F17A22B05B340CB93FD9F35 /* libRNShare.a in Frameworks */,
+				238AE55F8A9F490D88E21CE9 /* libRNFirebase.a in Frameworks */,
+				EA52BD5D2E68B225F9D400B4 /* libPods-Wrench.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +618,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				161887A120CA95C300B88BD5 /* GoogleService-Info.plist */,
 			);
 			name = Wrench;
 			sourceTree = "<group>";
@@ -635,10 +654,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1618871420CA93DF00B88BD5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1618874A20CA93DF00B88BD5 /* libRNFirebase.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		164D794C20CA828A00310D9B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				D297F723E9284BFCB00F02E4 /* libRNShare.a */,
+				E009C4A932B14309903A601E /* libRNFirebase.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -711,8 +739,18 @@
 				161886EC20CA8DC000B88BD5 /* Frameworks */,
 				16AF1E4A20C41E0400CB21A7 /* libz.tbd */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				21E2EC5993376B076BB74F28 /* libPods-Wrench.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		598DEA2AFCB24277B583D0C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E80B1F31D805EB6F76E84E50 /* Pods-Wrench.debug.xcconfig */,
+				82FEDE5AC32A0969C166E48B /* Pods-Wrench.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -760,6 +798,7 @@
 				EDC95D1E86E64D3EB9631044 /* ReactNativeConfig.xcodeproj */,
 				29D53CB22902401BB8FF774A /* RCTFBSDK.xcodeproj */,
 				06F962EDE9F741239EB3BB86 /* RNShare.xcodeproj */,
+				9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -782,6 +821,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				B9BEDAB84B594EB994940E7E /* Resources */,
 				164D794C20CA828A00310D9B /* Recovered References */,
+				598DEA2AFCB24277B583D0C3 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -865,6 +905,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Wrench" */;
 			buildPhases = (
+				D7A6E2A5E554F70EC4B696EE /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -999,6 +1040,10 @@
 					ProjectRef = D2D98F82208DD11100410A13 /* RNDeviceInfo.xcodeproj */;
 				},
 				{
+					ProductGroup = 1618871420CA93DF00B88BD5 /* Products */;
+					ProjectRef = 9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */;
+				},
+				{
 					ProductGroup = D2BCF3B42077628E002CEC26 /* Products */;
 					ProjectRef = D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */;
 				},
@@ -1084,6 +1129,13 @@
 			fileType = archive.ar;
 			path = libFastImage.a;
 			remoteRef = 160004702092711200B3F2D9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1618874A20CA93DF00B88BD5 /* libRNFirebase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFirebase.a;
+			remoteRef = 1618874920CA93DF00B88BD5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		164D798620CA828C00310D9B /* libRNShare.a */ = {
@@ -1427,6 +1479,7 @@
 				3D2AC1C6E9804A67A59D1BCA /* Inter-UI-Medium.ttf in Resources */,
 				FF9EBE8CF258455286EFBA86 /* Inter-UI-Regular.ttf in Resources */,
 				C4731E26ACC6438AB8432284 /* Inter-UI-Bold.ttf in Resources */,
+				161887A220CA95C300B88BD5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1446,6 +1499,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		D7A6E2A5E554F70EC4B696EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wrench-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1477,6 +1548,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E80B1F31D805EB6F76E84E50 /* Pods-Wrench.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Wrench/Wrench.entitlements;
@@ -1501,6 +1573,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
 				"INFOPLIST_OTHER_PREPROCESSOR_FLAGS[sdk=*]" = "-traditional";
@@ -1509,6 +1582,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/Wrench\"",
 					"\"$(SRCROOT)/Wrench\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1526,6 +1600,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82FEDE5AC32A0969C166E48B /* Pods-Wrench.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Wrench/Wrench.entitlements;
@@ -1549,6 +1624,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
 				"INFOPLIST_OTHER_PREPROCESSOR_FLAGS[sdk=*]" = "-traditional";
@@ -1557,6 +1633,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/Wrench\"",
 					"\"$(SRCROOT)/Wrench\"",
 				);
 				OTHER_LDFLAGS = (
