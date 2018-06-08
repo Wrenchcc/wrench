@@ -1,0 +1,16 @@
+{
+  "EmptyState": {
+    "en": {
+      "project": {
+        "title": "1. Create your first project",
+        "description": "Let’s get you up to speed and create your first project",
+        "button": "Get started"
+      },
+      "post": {
+        "title": "2. Add your first post",
+        "description": "Now when you have a project it’s time to create your first post",
+        "button": "Add"
+      }
+    }
+  }
+}

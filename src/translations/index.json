@@ -1,0 +1,120 @@
+{
+  "en": {
+    "Popular": {
+      "popular": "Popular projects",
+      "recent": "Recent posts"
+    },
+    "ContactButton": {
+      "contact": "Contact"
+    },
+    "SettingsButton": {
+      "settings": "Settings"
+    },
+    "Settings": {
+      "invite": "Invite people",
+      "share": "Share us",
+      "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
+      "settings": "Settings",
+      "push-notifications": "Push notifications",
+      "language": "Language",
+      "general": "General",
+      "support": "Support",
+      "terms": "Terms and conditions",
+      "website": "Website",
+      "credits": "Credits",
+      "logout": "Logout",
+      "facebook": "Facebook",
+      "contacts": "My contacts",
+      "followers": "Followers",
+      "comments": "Comments",
+      "english": "English",
+      "swedish": "Swedish",
+      "faq": "FAQ",
+      "report": "Report a bug",
+      "chat": "Chat with us",
+      "knallpott": "Knallpott",
+      "hookie": "Hookie"
+    },
+    "AddPost": {
+      "post": "Post",
+      "next": "Next",
+      "placeholder": "Add a text about your post"
+    },
+    "AddProject": {
+      "title": "Create project",
+      "subTitle": "Information",
+      "add": "Add",
+      "inputTitle": "Title",
+      "inputBrand": "Brand",
+      "inputModel": "Model",
+      "inputYear": "Year"
+    },
+    "Camera": {
+      "permissionDialogTitle": "Permission to use camera",
+      "permissionDialogMessage": "We need your permission to use your camera phone"
+    },
+    "SelectProject": {
+      "create": "Create a new project"
+    },
+    "OnboardingContent": {
+      "headline": "What are you interested in?",
+      "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with. "
+    },
+    "SignIn": {
+      "headline": "Post, \nexplore \nand learn.",
+      "description": "Post your projects, watch others, discuss and learn together."
+    },
+    "CommentField": {
+      "placeholder": "Comment",
+      "post": "Post"
+    },
+    "List": {
+      "loadMore": {
+        "one": "Show 1 comment",
+        "other": "Show all {{count}} comments"
+      }
+    },
+    "Edit": {
+      "edit": "Edit"
+    },
+    "EmptyState": {
+      "project": {
+        "title": "1. Create your first project",
+        "description": "Let’s get you up to speed and create your first project",
+        "button": "Get started"
+      },
+      "post": {
+        "title": "2. Add your first post",
+        "description": "Now when you have a project it’s time to create your first post",
+        "button": "Add"
+      }
+    },
+    "Facebook": {
+      "button": "Continue with Facebook"
+    },
+    "Follow": {
+      "follow": "Follow this project",
+      "unfollow": "Following"
+    },
+    "Followers": {
+      "followers": "Followers"
+    },
+    "Legal": {
+      "description": "By continuing you agree to Wrench's ",
+      "link": "terms and conditions."
+    },
+    "Search": {
+      "placeholder": "Search"
+    },
+    "UiUser": {
+      "projects": {
+        "one": "1 project",
+        "other": "{{count}} projects",
+        "zero": "0 projects"
+      }
+    },
+    "WebView": {
+      "loading": "Loading..."
+    }
+  }
+}

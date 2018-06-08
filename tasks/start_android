@@ -1,0 +1,8 @@
+#!/bin/sh
+concurrently --kill-others-on-fail \
+  --prefix "{name} >" \
+  --names "start:packager    ,emulator:start    ,run:android" \
+  -c "blue.bold,magenta.bold,yellow.bold" \
+  "yarn start:packager" \
+  "yarn emulator:start" \
+  "yarn emulator:ensureready && yarn run:android"

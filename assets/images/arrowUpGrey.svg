@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="7px" viewBox="0 0 12 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Add-post---dropdown" transform="translate(-230.000000, -37.000000)" stroke-width="1.5" stroke="#A8A8AD">
+            <g id="MOdal">
+                <g id="Group-10" transform="translate(0.000000, 10.000000)">
+                    <g id="Tabbar">
+                        <g id="Group-5" transform="translate(134.000000, 20.000000)">
+                            <g id="chevron-down" transform="translate(97.000000, 8.000000)">
+                                <polyline id="Shape" transform="translate(5.000000, 2.500000) scale(1, -1) translate(-5.000000, -2.500000) " points="0 0 5 5 10 0"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

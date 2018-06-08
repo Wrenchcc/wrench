@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "images": "./assets/images",
+          "videos": "./assets/videos",
+          "storybook": "./storybook"
+        },
+        "extensions": [".js", ".ios.js", ".android.js"]
+      }
+    ]
+  ],
+  "presets": ["react-native"]
+}

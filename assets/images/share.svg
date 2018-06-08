@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="3px" viewBox="0 0 17 3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>more</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1.5,3 C0.6715729,3 0,2.3284271 0,1.5 C0,0.671573 0.6715729,0 1.5,0 C2.328427,0 3,0.671573 3,1.5 C3,2.3284271 2.328427,3 1.5,3 Z" id="path-1"></path>
+        <path d="M1.5,3 C0.671573,3 0,2.3284271 0,1.5 C0,0.671573 0.671573,0 1.5,0 C2.328427,0 3,0.671573 3,1.5 C3,2.3284271 2.328427,3 1.5,3 Z" id="path-3"></path>
+        <path d="M1.5,3 C0.67157,3 0,2.3284271 0,1.5 C0,0.671573 0.67157,0 1.5,0 C2.32843,0 3,0.671573 3,1.5 C3,2.3284271 2.32843,3 1.5,3 Z" id="path-5"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="more">
+            <g id="Group-3">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-2"></g>
+                <polygon id="Fill-1" fill="#2B2B2B" mask="url(#mask-2)" points="-5 8 8 8 8 -5 -5 -5"></polygon>
+            </g>
+            <g id="Group-6" transform="translate(7.000000, 0.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="Clip-5"></g>
+                <polygon id="Fill-4" fill="#2B2B2B" mask="url(#mask-4)" points="-5 8 8 8 8 -5 -5 -5"></polygon>
+            </g>
+            <g id="Group-9" transform="translate(14.000000, 0.000000)">
+                <mask id="mask-6" fill="white">
+                    <use xlink:href="#path-5"></use>
+                </mask>
+                <g id="Clip-8"></g>
+                <polygon id="Fill-7" fill="#2B2B2B" mask="url(#mask-6)" points="-5 8 8 8 8 -5 -5 -5"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,5 @@
+#!/bin/sh
+$ANDROID_HOME/tools/bin/avdmanager create avd --force --name pixel --abi google_apis/x86 --device pixel --package 'system-images;android-25;google_apis;x86' && \
+echo "skin.dynamic=yes
+skin.name=1080x1920
+skin.path=1080x1920" >> ~/.android/avd/pixel.avd/config.ini

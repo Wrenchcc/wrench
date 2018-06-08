@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="24px" viewBox="0 0 19 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>rotate-cw</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Webview" transform="translate(-335.000000, -46.000000)" stroke-width="1.5" stroke="#000000">
+            <g id="rotate-cw" transform="translate(345.500000, 60.000000) rotate(-45.000000) translate(-345.500000, -60.000000) translate(336.000000, 51.000000)">
+                <polyline id="Shape" points="19 0.947368421 19 6.63157895 13.3 6.63157895"></polyline>
+                <path d="M16.6155,11.3684211 C15.3468907,14.9492695 11.8562994,17.261721 8.05449539,17.0399267 C4.25269138,16.8181323 1.05630001,14.1155672 0.21504389,10.4116308 C-0.626212227,6.70769442 1.09049606,2.89541583 4.42543297,1.06165781 C7.76036988,-0.772100205 11.909473,-0.185213584 14.6015,2.50105263 L19,6.63157895" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "AddPost": {
+    "en": {
+      "post": "Post",
+      "next": "Next",
+      "placeholder": "Add a text about your post"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "AddProject": {
+    "en": {
+      "title": "Create project",
+      "subTitle": "Information",
+      "add": "Add",
+      "inputTitle": "Title",
+      "inputBrand": "Brand",
+      "inputModel": "Model",
+      "inputYear": "Year"
+    }
+  }
+}

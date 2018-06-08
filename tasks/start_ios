@@ -1,0 +1,8 @@
+#!/bin/sh
+concurrently \
+  --kill-others-on-fail \
+  --prefix "{name} >" \
+  --names "start:packager    ,run:ios" \
+  -c "blue.bold,yellow.bold" \
+  "yarn start:packager" \
+  "yarn run:ios"

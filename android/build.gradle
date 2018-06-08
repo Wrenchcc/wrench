@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+ext {
+    minSdkVersion = 16
+    targetSdkVersion = 25
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.3'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenLocal()
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+    }
+}
+
+
+// This will apply compileSdkVersion and buildToolsVersion to any android modules
+subprojects { subproject ->
+    afterEvaluate { project ->
+        if(!project.name.equalsIgnoreCase("app") && project.hasProperty("android")) {
+            android {
+                compileSdkVersion rootProject.compileSdkVersion
+                buildToolsVersion rootProject.buildToolsVersion
+            }
+        }
+    }
+}
+
+
+ subprojects {
+  project.configurations.all {
+     resolutionStrategy.eachDependency { details ->
+        if (details.requested.group == 'com.android.support'
+              && !details.requested.name.contains('multidex') ) {
+           details.useVersion "26.0.1"
+        }
+     }
+  }
+}

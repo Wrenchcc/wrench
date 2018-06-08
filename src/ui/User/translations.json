@@ -1,0 +1,11 @@
+{
+  "UiUser": {
+    "en": {
+      "projects": {
+        "one": "1 project",
+        "other": "{{count}} projects",
+        "zero": "0 projects"
+      }
+    }
+  }
+}

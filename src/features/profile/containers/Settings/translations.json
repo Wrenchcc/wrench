@@ -1,0 +1,32 @@
+{
+  "Settings": {
+    "en": {
+      "invite": "Invite people",
+      "share": "Share us",
+      "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
+      "settings": "Settings",
+      "push-notifications": "Push notifications",
+      "language": "Language",
+      "general": "General",
+      "support": "Support",
+      "terms": "Terms and conditions",
+      "website": "Website",
+      "credits": "Credits",
+      "logout": "Logout",
+      "facebook": "Facebook",
+      "contacts": "My contacts",
+      "followers": "Followers",
+      "comments": "Comments",
+      "language": "Language",
+      "english": "English",
+      "swedish": "Swedish",
+      "support": "Support",
+      "faq": "FAQ",
+      "report": "Report a bug",
+      "chat": "Chat with us",
+      "credits": "Credits",
+      "knallpott": "Knallpott",
+      "hookie": "Hookie"
+    }
+  }
+}

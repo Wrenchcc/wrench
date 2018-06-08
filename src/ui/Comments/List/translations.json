@@ -1,0 +1,10 @@
+{
+  "List": {
+    "en": {
+      "loadMore": {
+        "one": "Show 1 comment",
+        "other": "Show all {{count}} comments"
+      }
+    }
+  }
+}
