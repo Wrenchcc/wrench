@@ -33,6 +33,7 @@
 		16AF1E4920C41D9C00CB21A7 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AF1E1720C41D8B00CB21A7 /* libCodePush.a */; };
 		16AF1E4B20C41E0400CB21A7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AF1E4A20C41E0400CB21A7 /* libz.tbd */; };
 		16D21E462095F3580000599F /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D21E122095F32B0000599F /* libBVLinearGradient.a */; };
+		16F3F6CF20CAC31900F0A214 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16F3F6CD20CAC2E100F0A214 /* GoogleService-Info.plist */; };
 		238AE55F8A9F490D88E21CE9 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E009C4A932B14309903A601E /* libRNFirebase.a */; };
 		3D2AC1C6E9804A67A59D1BCA /* Inter-UI-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9D5BA107F844B80912FCD5B /* Inter-UI-Medium.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -478,6 +479,7 @@
 		16AF1E4A20C41E0400CB21A7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		16C95E9D20C5421200C0CD93 /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		16D21E092095F32B0000599F /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		16F3F6CD20CAC2E100F0A214 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		21E2EC5993376B076BB74F28 /* libPods-Wrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wrench.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29D53CB22902401BB8FF774A /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -616,6 +618,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				16F3F6CD20CAC2E100F0A214 /* GoogleService-Info.plist */,
 			);
 			name = Wrench;
 			sourceTree = "<group>";
@@ -1476,6 +1479,7 @@
 				3D2AC1C6E9804A67A59D1BCA /* Inter-UI-Medium.ttf in Resources */,
 				FF9EBE8CF258455286EFBA86 /* Inter-UI-Regular.ttf in Resources */,
 				C4731E26ACC6438AB8432284 /* Inter-UI-Bold.ttf in Resources */,
+				16F3F6CF20CAC31900F0A214 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
