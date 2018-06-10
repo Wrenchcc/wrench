@@ -18,7 +18,9 @@ export default {
             placeholder={false}
             style={{ flex: 1, paddingRight: 20 }}
           />
-          <Text onPress={() => navigateBack()}>Cancel</Text>
+          <Text onPress={() => navigateBack()} medium>
+            Cancel
+          </Text>
         </View>
       ),
     },

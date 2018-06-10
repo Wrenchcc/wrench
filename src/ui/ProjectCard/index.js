@@ -13,7 +13,7 @@ const ProjectCard = ({ coverUri, name, followers, onPress, user }) => (
         <ProjectName numberOfLines={1} color="white">
           {name}
         </ProjectName>
-        <Followers followers={followers} color="white" />
+        <Followers followers={followers} color="white" opacity={0.9} />
       </Info>
       <Avatar uri={user.avatarUrl} onPress={() => navigateToProfile({ user })} />
     </Content>

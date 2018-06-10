@@ -22,6 +22,7 @@ export const Overlay = styled(LinearGradient)`
 
 export const ProjectName = styled(UiText)`
   margin-top: 10;
+  margin-bottom: 3;
 `
 
 export const Picture = styled(UiImage)`
