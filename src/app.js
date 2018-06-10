@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Clipboard } from 'react-native'
 import codePush from 'react-native-code-push'
 import firebase from 'react-native-firebase'
 import SplashScreen from 'react-native-splash-screen'
@@ -14,12 +15,10 @@ class App extends Component {
 
     const messaging = firebase.messaging()
 
-    messaging.requestPermission().then(permission => {
-      console.log(permission)
-      messaging.getToken().then(token => alert(token))
+    messaging.requestPermission().then(() => {
+      // TODO: Send away!
+      messaging.getToken().then(token => Clipboard.setString(token))
     })
-
-    messaging.getToken().then(token => alert(token))
   }
 
   render = () => <Navigation ref={nav => setNavigationRef(nav)} />
