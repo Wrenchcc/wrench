@@ -8,7 +8,6 @@ import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import cl.json.RNSharePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
-import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
@@ -18,7 +17,7 @@ import com.microsoft.codepush.react.CodePush;
 import org.reactnative.camera.RNCameraPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.microsoft.codepush.react.CodePush;
-// import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
+import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import org.reactnative.camera.RNCameraPackage;
@@ -72,7 +71,6 @@ public class MainApplication extends Application implements ReactApplication {
             new RNSharePackage(),
             new LinearGradientPackage(),
             new RNI18nPackage(),
-            new RNReactNativeHapticFeedbackPackage(),
             new RNFirebasePackage(),
             new FBSDKPackage(),
             new FastImageViewPackage(),
@@ -83,7 +81,7 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFirebasePackage(),
             new RNFirebaseMessagingPackage(),
             new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
-            // new RNReactNativeHapticFeedbackPackage(),
+            new RNReactNativeHapticFeedbackPackage(),
             new LinearGradientPackage(),
             new FastImageViewPackage(),
             new SplashScreenReactPackage(),

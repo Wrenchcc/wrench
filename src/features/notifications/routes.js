@@ -10,7 +10,7 @@ export default {
     navigationOptions: {
       tabBarIconSource: notifications,
       tabBarFocusedIconSource: notifications,
-      badge: true,
+      // badge: true,
     },
   },
 }
