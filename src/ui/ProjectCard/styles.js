@@ -1,13 +1,10 @@
 import styled from 'styled-components'
 import LinearGradient from 'react-native-linear-gradient'
-import UiImage from 'ui/Image'
 import UiTouchable from 'ui/Touchable'
 import UiFollowers from 'ui/Followers'
 import UiText from 'ui/Text'
 import UiAvatar from 'ui/Avatar'
 import { COLORS } from 'ui/constants'
-
-const HEIGHT = 180
 
 export const Base = styled(UiTouchable)`
   margin-top: 20;
@@ -18,15 +15,12 @@ export const Overlay = styled(LinearGradient)`
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 1;
 `
 
 export const ProjectName = styled(UiText)`
   margin-top: 10;
   margin-bottom: 3;
-`
-
-export const Picture = styled(UiImage)`
-  height: ${HEIGHT};
 `
 
 export const Followers = styled(UiFollowers)``
@@ -47,6 +41,7 @@ export const Content = styled.View`
   justify-content: space-between;
   flex-direction: row;
   align-items: flex-end;
+  z-index: 2;
 `
 
 export const Info = styled.View`
