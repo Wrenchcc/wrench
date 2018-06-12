@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Dimensions, FlatList } from 'react-native'
 import { omit } from 'ramda'
+import withLocalization from 'i18n/withLocalization'
 import { navigateToFeed } from 'navigation'
 import { Header, Touchable, Text } from 'ui'
 import getCategories from 'utils/getCategories'
@@ -14,7 +15,7 @@ const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
-export default class Onboarding extends Component {
+class Onboarding extends Component {
   state = {
     items: {},
   }
@@ -33,31 +34,21 @@ export default class Onboarding extends Component {
   }
 
   isComplete = () => Object.keys(this.state.items).length >= MIN_ITEMS
-
-  progress = () => (this.isComplete() ? 70 : Object.keys(this.state.items).length / (3 * 90))
+  progress = () => (Object.keys(this.state.items).length / 3) * 100
 
   isAdded = item => this.state.items[item.id]
 
   headerRight = () =>
     this.isComplete() && (
       <Text color="white" medium opacity={1} onPress={() => navigateToFeed()}>
-        Next
+        {this.props.t('.next')}
       </Text>
     )
 
-  // TODO: Change images
   renderItem = ({ item }) => (
     <Cell key={item.id}>
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-        <Image
-          selected={this.isAdded(item)}
-          source={{
-            uri:
-              'https://scontent-arn2-1.cdninstagram.com/vp/86b5a4a8f2c194ccada6d7224efc22f6/5B4FC7F0/t51.2885-15/e35/21479952_1090442404423506_5433038908231254016_n.jpg',
-          }}
-          height={ITEM_SIZE}
-          gutter={GUTTER}
-        >
+        <Image selected={this.isAdded(item)} source={item.image} height={ITEM_SIZE} gutter={GUTTER}>
           <Overlay selected={false} />
           <Text color="white">{item.name}</Text>
         </Image>
@@ -80,3 +71,5 @@ export default class Onboarding extends Component {
     </Base>
   )
 }
+
+export default withLocalization(Onboarding, 'Onboarding')

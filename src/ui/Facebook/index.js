@@ -25,7 +25,7 @@ class Facebook extends PureComponent {
                 if (error) {
                   console.log(error)
                 } else {
-                  console.log(result)
+                  setTimeout(() => navigateToOnboarding(), 1000)
                 }
               }
             )
@@ -33,8 +33,6 @@ class Facebook extends PureComponent {
             // Start the graph request.
             new GraphRequestManager().addRequest(infoRequest).start()
           })
-
-          navigateToOnboarding()
         }
       },
       error => {
@@ -42,6 +40,7 @@ class Facebook extends PureComponent {
       }
     )
   }
+
   render() {
     return (
       <Button onPress={this.onPress}>

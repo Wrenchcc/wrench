@@ -1,3 +1,4 @@
+import { take } from 'ramda'
 import posts from './posts'
 import user from './user'
 import images from './images'
@@ -13,7 +14,7 @@ export default [
     user: user(),
     owner: user('1'),
     posts,
-    images,
+    images: take(5, images),
   },
   {
     id: '2',
@@ -26,7 +27,7 @@ export default [
     user: user(),
     owner: user('2'),
     posts,
-    images,
+    images: take(2, images),
   },
   {
     id: '3',
@@ -38,7 +39,7 @@ export default [
     user: user(),
     owner: user('2'),
     posts,
-    images,
+    images: take(1, images),
   },
   {
     id: '4',
@@ -51,7 +52,7 @@ export default [
     user: user(),
     owner: user('3'),
     posts,
-    images,
+    images: take(3, images),
   },
   {
     id: '5',
@@ -64,7 +65,7 @@ export default [
     user: user(),
     owner: user('4'),
     posts,
-    images,
+    images: take(4, images),
   },
   {
     id: '6',
@@ -76,6 +77,6 @@ export default [
     user: user(),
     owner: user('5'),
     posts,
-    images,
+    images: take(6, images),
   },
 ]

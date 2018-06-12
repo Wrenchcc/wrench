@@ -10,7 +10,7 @@ const Text = ({
   numberOfLines = 0,
   onPress,
   disabled = false,
-  lineHeight = 0,
+  lineHeight = null,
   ...props
 }) =>
   onPress ? (

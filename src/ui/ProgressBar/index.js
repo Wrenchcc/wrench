@@ -35,7 +35,7 @@ export default class ProgressBar extends Component {
   }
 
   update = () => {
-    Animated.timing(this.state.progress, {
+    Animated.spring(this.state.progress, {
       toValue: this.props.progress,
       useNativeDive: true,
     }).start()

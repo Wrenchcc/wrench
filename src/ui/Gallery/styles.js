@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import UiImage from 'ui/Image'
 
-const HEIGHT = 180
+export const HEIGHT = 220
 
 export const Base = styled.View`
   height: ${HEIGHT};

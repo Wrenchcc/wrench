@@ -5,8 +5,8 @@ export const Base = styled.View`
   justify-content: space-between;
   margin-top: 40;
   margin-bottom: 50;
-  padding-left: ${props => (props.paddingHorizontal ? 20 : 0)};
-  padding-right: ${props => (props.paddingHorizontal ? 20 : 0)};
+  padding-left: ${props => (props.spacingHorizontal ? 20 : 0)};
+  padding-right: ${props => (props.spacingHorizontal ? 20 : 0)};
 `
 
 export const Username = styled.View``

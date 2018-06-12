@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Title, Avatar } from 'ui'
 import { Base, Username } from './styles'
 
-const Header = ({ user, paddingHorizontal = false }) => (
-  <Base paddingHorizontal={paddingHorizontal}>
+const Header = ({ user, spacingHorizontal = false }) => (
+  <Base spacingHorizontal={spacingHorizontal}>
     <Username>
       <Title medium>{user.firstName}</Title>
       <Title medium>{user.lastName}</Title>
@@ -14,7 +14,7 @@ const Header = ({ user, paddingHorizontal = false }) => (
 )
 
 Header.propTypes = {
-  paddingHorizontal: PropTypes.bool,
+  spacingHorizontal: PropTypes.bool,
   user: PropTypes.object.isRequired,
 }
 

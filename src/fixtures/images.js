@@ -18,4 +18,8 @@ export default [
   {
     uri: 'https://www.mobmasker.com/wp-content/uploads/2017/03/Honda-CB-750-cafe-racer-30.jpg?564',
   },
+  {
+    uri:
+      'https://scontent-arn2-1.cdninstagram.com/vp/3cbe958253507c9a78e7fc727069630b/5BB6E3BC/t51.2885-15/s640x640/sh0.08/e35/c202.0.675.675/28750888_946095538888234_5429520217619300352_n.jpg?344',
+  },
 ]

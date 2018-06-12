@@ -62,8 +62,10 @@
     },
     "OnboardingContent": {
       "headline": "What are you interested in?",
-      "description":
-        "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with. "
+      "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with. "
+    },
+    "Onboarding": {
+      "next": "Next"
     },
     "SignIn": {
       "headline": "Post, \nexplore \nand learn.",

@@ -6,6 +6,7 @@ import { deviceWidth, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 
 const SNAP_INTERVAL = deviceWidth - (GUTTER + BAR_SPACE)
 
+// TODO: Change to flatlist and fix snap
 const Carousel = ({ images, onPress, disabled = false, onLongPress = null }) => (
   <ScrollView
     keyboardShouldPersistTaps="always"
@@ -15,6 +16,7 @@ const Carousel = ({ images, onPress, disabled = false, onLongPress = null }) => 
     showsHorizontalScrollIndicator={false}
     decelerationRate="fast"
     snapToInterval={SNAP_INTERVAL}
+    snapToAlignment="center"
     scrollThrottle={10}
     grow
     style={{

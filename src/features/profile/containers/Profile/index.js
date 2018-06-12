@@ -12,10 +12,6 @@ const START_OPACITY = 50
 let scrollView = null
 
 export default class Profile extends Component {
-  static propTypes = {
-    navigation: PropTypes.object.isRequired,
-  }
-
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
@@ -35,6 +31,10 @@ export default class Profile extends Component {
         }
       },
     }
+  }
+
+  static propTypes = {
+    navigation: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -65,7 +65,7 @@ export default class Profile extends Component {
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-        ListHeaderComponent={<Header user={data.user} paddingHorizontal={!hasPosts} />}
+        ListHeaderComponent={<Header user={data.user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<EmptyState type={emptyState} />}
         withKeyboardHandler
         data={data.posts}

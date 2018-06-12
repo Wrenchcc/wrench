@@ -1,6 +1,4 @@
 <resources>
-    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
-    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
     <string name="app_name">Wrench</string>
     <string name="facebook_app_id">@string/FACEBOOK_APP_ID</string>
     <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">@string/CODE_PUSH_DEPLOYMENT_KEY</string>

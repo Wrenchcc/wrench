@@ -1,9 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import { uniq } from 'ramda'
-import { Base, Container, Cell, Image, Transform } from './styles'
-
-const HEIGHT = 180
+import { Base, Container, Cell, Image, Transform, HEIGHT } from './styles'
 
 const One = ({ images }) => <Image source={images[0]} height={HEIGHT} />
 
@@ -49,8 +47,8 @@ const Five = ({ images }) => (
       <Image source={images[0]} height={HEIGHT} borderRight />
     </Cell>
     <Cell size={1 / 3}>
-      <Image source={images[1]} height={HEIGHT / 2} borderRight borderBottom />
-      <Image source={images[2]} height={HEIGHT / 2} borderRight borderTop />
+      <Image source={images[1]} height={HEIGHT / 2} borderRight borderLeft borderBottom />
+      <Image source={images[2]} height={HEIGHT / 2} borderRight borderLeft borderTop />
     </Cell>
     <Cell size={1 / 3}>
       <Image source={images[3]} height={HEIGHT / 2} borderLeft borderBottom />
