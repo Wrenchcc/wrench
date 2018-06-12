@@ -1,5 +1,6 @@
 import posts from './posts'
 import user from './user'
+import images from './images'
 
 export default [
   {
@@ -12,6 +13,7 @@ export default [
     user: user(),
     owner: user('1'),
     posts,
+    images,
   },
   {
     id: '2',
@@ -24,6 +26,7 @@ export default [
     user: user(),
     owner: user('2'),
     posts,
+    images,
   },
   {
     id: '3',
@@ -35,6 +38,7 @@ export default [
     user: user(),
     owner: user('2'),
     posts,
+    images,
   },
   {
     id: '4',
@@ -47,6 +51,7 @@ export default [
     user: user(),
     owner: user('3'),
     posts,
+    images,
   },
   {
     id: '5',
@@ -59,6 +64,7 @@ export default [
     user: user(),
     owner: user('4'),
     posts,
+    images,
   },
   {
     id: '6',
@@ -70,5 +76,6 @@ export default [
     user: user(),
     owner: user('5'),
     posts,
+    images,
   },
 ]
