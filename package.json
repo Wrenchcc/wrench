@@ -14,8 +14,7 @@
     "assets:transform:svg": "node tasks/transformSVG.js 'assets/images/**/*.svg' 'assets/images' true && node tasks/createIndex.js 'assets/**/*.svg' assets/images",
     "storybook": "storybook start -p 7007",
     "storybook:create": "babel-node tasks/createStoriesEntry.js 'src/**/{,*.}stories{,.ios,.android}.js' 'storybook/stories.js'",
-    "translations:create": "babel-node tasks/createTranslations.js 'src/**/{,*.}translations.json' 'src/translations/index.json'",
-    "preinstall": "./tasks/facebookSDK"
+    "translations:create": "babel-node tasks/createTranslations.js 'src/**/{,*.}translations.json' 'src/translations/index.json'"
   },
   "rnpm": {
     "assets": [

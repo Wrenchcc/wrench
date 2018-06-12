@@ -7,6 +7,8 @@ target 'Wrench' do
   platform :ios, '9.0'
 
   # Pods for Wrench
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
 
