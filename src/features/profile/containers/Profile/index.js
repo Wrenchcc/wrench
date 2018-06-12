@@ -17,7 +17,7 @@ export default class Profile extends Component {
     return {
       headerTitle: params.user && (
         <HeaderTitle
-          opacity={params.opacity || 0}
+          opacity={params.opacity || new Animated.Value(0)}
           onPress={() => scrollView.scrollToOffset({ offset: 0 })}
         >
           {params.user.fullName}

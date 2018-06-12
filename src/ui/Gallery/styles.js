@@ -20,9 +20,9 @@ export const Cell = styled.View`
 `
 
 export const Image = styled(UiImage)`
-  margin-right: ${props => (props.borderRight && 2.5) || 0};
-  margin-left: ${props => (props.borderLeft && 2.5) || 0};
-  margin-top: ${props => (props.borderTop && 5) || 0};
+  margin-right: ${props => (props.borderRight && 1.5) || 0};
+  margin-left: ${props => (props.borderLeft && 1.5) || 0};
+  margin-top: ${props => (props.borderTop && 3) || 0};
 `
 
 export const Transform = styled.View`

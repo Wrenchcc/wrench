@@ -25,7 +25,7 @@ const AnimatedFlatlist = ({ contentContainerStyle = {}, paddingHorizontal = 20, 
 )
 
 AnimatedFlatlist.propTypes = {
-  defaultPaddingTop: PropTypes.number,
+  defaultPaddingTop: PropTypes.bool,
   paddingHorizontal: PropTypes.number,
   fullscreen: PropTypes.bool,
   scrollRef: PropTypes.func.isRequired,

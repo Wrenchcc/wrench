@@ -7,16 +7,16 @@ import { Base, Input, Button } from './styles'
 
 class CommentField extends Component {
   static propTypes = {
-    triggerLocation: PropTypes.oneOf(['new-word-only', 'anywhere']).isRequired,
-    value: PropTypes.string.isRequired,
-    onChangeText: PropTypes.func.isRequired,
-    triggerCallback: PropTypes.func.isRequired,
-    suggestionsData: PropTypes.array.isRequired,
-    suggestionRowHeight: PropTypes.number.isRequired,
-    MaxVisibleRowCount: PropTypes.func,
-    onSubmit: PropTypes.func,
-    disabled: PropTypes.bool,
-    inputRef: PropTypes.func,
+    // triggerLocation: PropTypes.oneOf(['new-word-only', 'anywhere']).isRequired,
+    // value: PropTypes.string.isRequired,
+    // onChangeText: PropTypes.func.isRequired,
+    // triggerCallback: PropTypes.func.isRequired,
+    // suggestionsData: PropTypes.array.isRequired,
+    // suggestionRowHeight: PropTypes.number.isRequired,
+    // MaxVisibleRowCount: PropTypes.func,
+    // onSubmit: PropTypes.func,
+    // disabled: PropTypes.bool,
+    // inputRef: PropTypes.func,
   }
 
   state = {

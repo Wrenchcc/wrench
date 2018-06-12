@@ -6,7 +6,7 @@ import hitSlop from 'utils/hitSlop'
 
 const onPressWrapper = (onPress, hapticFeedback = false) => {
   if (hapticFeedback) {
-    ReactNativeHapticFeedback.trigger(hapticFeedback, true)
+    ReactNativeHapticFeedback.trigger(hapticFeedback)
   }
 
   onPress()

@@ -12,9 +12,9 @@ const HeaderTitle = ({ onPress, children, opacity = 1 }) => (
 )
 
 HeaderTitle.propTypes = {
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func,
   children: PropTypes.any.isRequired,
-  opacity: PropTypes.number,
+  opacity: PropTypes.object,
 }
 
 export default HeaderTitle

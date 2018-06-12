@@ -6,7 +6,6 @@ export default [
     id: '1',
     type: 'image', // || video || text
     createdAt: 176347295,
-    title: 'BMW R100 project',
     caption:
       'During the build the already minimalistic lines of the BMW have been cleared. http://motogadget.com',
     videos: null,
@@ -45,7 +44,6 @@ export default [
     id: '2',
     type: 'text', // || video || text
     createdAt: 176347295,
-    title: 'My 1977 Alcedo',
     caption:
       'I used my favorite material, steel. [@pontus:1] Following I started over with a wireframe out of steel rods. It allowed me to check the shape constantly and it was much easier to adj…',
     videos: null,
@@ -55,7 +53,7 @@ export default [
     project: {
       id: '1',
       slug: 'the-natural',
-      name: 'BMW R100 Project',
+      name: 'Honda CB750 1981',
       owner: user('2'),
     },
   },
@@ -63,7 +61,6 @@ export default [
     id: '4',
     type: 'image', // || video
     createdAt: 176347295,
-    title: 'New wheels on my hammerhead',
     caption:
       "The job I've not been looking forward to. https://wrench.cc Sanding the cowl and the front fender for the GS550",
     videos: null,
@@ -86,7 +83,7 @@ export default [
     project: {
       id: '3',
       slug: 'the-natural',
-      name: 'BMW R100 Project',
+      name: 'R100 Scrambler',
       owner: user('3'),
     },
   },
@@ -94,7 +91,6 @@ export default [
     id: '5',
     type: 'image', // || video
     createdAt: 176347295,
-    title: 'New wheels on my hammerhead',
     caption:
       "The job I've not been looking forward to. Sanding the cowl and the front fender for the GS550",
     videos: null,
@@ -109,7 +105,7 @@ export default [
     project: {
       id: '3',
       slug: 'the-natural',
-      name: 'BMW R100 Project',
+      name: 'The Natural CB750',
       owner: user('4'),
     },
   },
@@ -117,7 +113,6 @@ export default [
     id: '6',
     type: 'image', // || video
     createdAt: 176347295,
-    title: 'New wheels on my hammerhead',
     caption:
       "The job I've not been looking forward to. Sanding the cowl and the front fender for the GS550",
     videos: null,
@@ -140,7 +135,6 @@ export default [
     id: '7',
     type: 'text', // || video
     createdAt: 176347295,
-    title: 'New wheels on my hammerhead',
     caption:
       "The job I've not been looking forward to. Sanding the cowl and the front fender for the GS550",
     videos: null,
@@ -150,7 +144,7 @@ export default [
     project: {
       id: '3',
       slug: 'the-natural',
-      name: 'BMW R100 Project',
+      name: 'Scrambler',
       owner: user('6'),
     },
   },

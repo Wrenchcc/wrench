@@ -12,7 +12,7 @@ const Post = ({ data, onPost = false, avatar = true, onLongPress }) => (
           numberOfLines={1}
           onPress={() => navigateToProject({ id: data.id, user: data.user, project: data.project })}
         >
-          {data.title}
+          {data.project.name}
         </Title>
       )}
       {avatar && (

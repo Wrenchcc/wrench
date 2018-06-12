@@ -32,7 +32,7 @@ export default class Project extends Component {
     return {
       headerTitle: (
         <HeaderTitle
-          opacity={params.opacity || 0}
+          opacity={params.opacity || new Animated.Value(0)}
           onPress={() => scrollView.scrollToOffset({ offset: 0 })}
         >
           {params.project.name}
