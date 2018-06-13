@@ -4,7 +4,7 @@ import UiTouchable from 'ui/Touchable'
 import UiAdd from 'ui/Add'
 import UiText from 'ui/Text'
 import { COLORS, HEADER_HEIGHT } from 'ui/constants'
-import isIphoneX from 'utils/isIphoneX'
+import { isIphoneX } from 'utils/platform'
 
 export const Base = styled.View`
   height: ${HEADER_HEIGHT};
@@ -12,7 +12,7 @@ export const Base = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
-  padding-top: ${(isIphoneX() && 40) || 20}
+  padding-top: ${(isIphoneX && 40) || 20}
   background-color: ${props => (props.transparent ? 'transparent' : COLORS.WHITE)};
 `
 

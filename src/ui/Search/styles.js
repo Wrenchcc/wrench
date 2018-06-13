@@ -26,6 +26,8 @@ export const Input = styled.TextInput`
   font-family: ${FONTS.REGULAR};
   border-radius: 1;
   padding-left: 41;
+  padding-bottom: 0;
+  padding-top: 0;
 `
 
 export const Icon = styled.Image`

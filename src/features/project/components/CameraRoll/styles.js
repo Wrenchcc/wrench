@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import UiImage from 'ui/Image'
 import { COLORS, HEADER_HEIGHT } from 'ui/constants'
 
 export const Base = styled.TouchableOpacity`
@@ -11,8 +12,7 @@ export const Cell = styled.View`
   width: 50%;
 `
 
-export const Image = styled.ImageBackground`
-  margin: ${props => `${props.gutter / 2}px`}
+export const Image = styled(UiImage)`
   height: ${props => props.height}
   border-width: 3px;
   border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')}

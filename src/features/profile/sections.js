@@ -150,19 +150,17 @@ const sections = {
 }
 
 export function mapRouteForSection(component) {
-  return mergeAll(
-    Object.keys(sections).map(section => {
-      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], sections[section])}`)
-      return {
-        [section]: {
-          component,
-          navigationOptions: {
-            headerTitle: <HeaderTitle>{title}</HeaderTitle>,
-          },
+  return mergeAll(Object.keys(sections).map(section => {
+    const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], sections[section])}`)
+    return {
+      [section]: {
+        component,
+        navigationOptions: {
+          headerTitle: <HeaderTitle>{title}</HeaderTitle>,
         },
-      }
-    })
-  )
+      },
+    }
+  }))
 }
 
 export default sections

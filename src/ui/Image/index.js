@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Animated } from 'react-native'
 import { Base, FastImage } from './styles'
 
+const FADE_DURATION = 200
+
+// TODO: Proptypes and change onLoad to finnished
 export default class Image extends Component {
   state = {
     opacity: new Animated.Value(0),
@@ -11,7 +14,7 @@ export default class Image extends Component {
     Animated.spring(this.state.opacity, {
       toValue: 1,
       delay: 0,
-      duration: 500,
+      duration: FADE_DURATION,
       useNativeDriver: true,
     }).start()
   }
@@ -21,10 +24,15 @@ export default class Image extends Component {
       width={this.props.width}
       height={this.props.height}
       borderRadius={this.props.borderRadius}
+      placeholderColor={this.props.placeholderColor}
     >
-      <Animated.View style={{ opacity: this.state.opacity }}>
-        <FastImage {...this.props} onLoad={this.fadeIn} />
-      </Animated.View>
+      {this.props.disableAnimation ? (
+        <FastImage {...this.props} />
+      ) : (
+        <Animated.View style={{ opacity: this.state.opacity }}>
+          <FastImage {...this.props} onLoad={this.fadeIn} />
+        </Animated.View>
+      )}
     </Base>
   )
 }

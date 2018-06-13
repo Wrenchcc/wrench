@@ -1,0 +1,9 @@
+{
+  "Notification": {
+    "en": {
+      "follow": "Now follows",
+      "comment": "Commented on your post",
+      "reply": "Replied to your comment"
+    }
+  }
+}

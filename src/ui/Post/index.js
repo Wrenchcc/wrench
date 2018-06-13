@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigateToProject, navigateToProfile } from 'navigation'
-import { Media, Comments } from 'ui'
-import { Base, Top, Content, Title, Avatar } from './styled'
+import { Media, Comments, Avatar } from 'ui'
+import { Base, Top, Content, Title } from './styled'
 
 const Post = ({ data, onPost = false, avatar = true, onLongPress }) => (
   <Base>

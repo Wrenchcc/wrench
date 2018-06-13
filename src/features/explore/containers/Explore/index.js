@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Post, FlatList } from 'ui'
+import { Post, InfiniteList } from 'ui'
 import Popular from 'features/explore/components/Popular'
 import posts from 'fixtures/posts'
 
@@ -22,7 +22,7 @@ export default class Explore extends Component {
   }
 
   render = () => (
-    <FlatList
+    <InfiniteList
       scrollRef={ref => {
         scrollView = ref
       }}

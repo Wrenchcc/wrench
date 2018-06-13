@@ -9,4 +9,10 @@ export const Base = styled(UiTouchable)`
 
 export const Content = styled.View`
   margin-left: 10;
+  flex: 1;
+`
+
+export const Bottom = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `

@@ -1,11 +1,11 @@
-import isIphoneX from 'utils/isIphone'
+import { isIphoneX, isIphone } from 'utils/platform'
 
-export const HEADER_HEIGHT = isIphoneX() ? 100 : 60
+export const HEADER_HEIGHT = isIphoneX ? 100 : 60
 
 export const FONTS = {
-  REGULAR: 'InterUI-Regular',
-  MEDIUM: 'InterUI-Medium',
-  BOLD: 'InterUI-Bold',
+  REGULAR: isIphone ? 'InterUI-Regular' : 'inter_ui',
+  MEDIUM: isIphone ? 'InterUI-Medium' : 'inter_ui_medium',
+  BOLD: isIphone ? 'InterUI-Bold' : 'inter_ui_bold',
 }
 
 export const COLORS = {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, User, HeaderTitle } from 'ui'
+import { InfiniteList, User, HeaderTitle } from 'ui'
 import data from 'fixtures/search'
 
 // TODO: Handle scroll to better
@@ -17,10 +17,11 @@ export default class Followers extends Component {
   }
 
   render = () => (
-    <FlatList
+    <InfiniteList
       scrollRef={ref => {
         scrollView = ref
       }}
+      borderSeparator
       data={data.users}
       keyExtractor={item => item.id}
       renderItem={({ item }) => <User data={item} />}

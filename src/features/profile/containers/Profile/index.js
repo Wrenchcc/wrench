@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { AnimatedFlatList, Post, HeaderTitle, EmptyState } from 'ui'
+import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 import data from 'fixtures/profile'
 
@@ -58,7 +58,7 @@ export default class Profile extends Component {
     const hasPosts = data.posts.length > 0
 
     return (
-      <AnimatedFlatList
+      <InfiniteList
         scrollEnabled={hasPosts}
         scrollRef={ref => {
           scrollView = ref

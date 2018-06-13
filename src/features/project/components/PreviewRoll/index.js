@@ -24,7 +24,7 @@ export default class PreviewRoll extends Component {
 
   render = () => (
     <Button onPress={this.props.onPress} hapticFeedback="impactLight">
-      <Preview source={{ uri: this.state.image }} />
+      <Preview source={{ uri: this.state.image }} disableAnimation />
     </Button>
   )
 }
