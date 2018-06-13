@@ -68,17 +68,23 @@ export default class CameraRoll extends Component {
 
   isAdded = ({ filename }) => !!find(propEq('filename', filename))(this.props.pictures)
 
+  // TODO: Use styled component and fix selection in android
   renderItem = ({ item }) => (
     <Cell>
-      <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
+      <Touchable
+        hapticFeedback="impactLight"
+        onPress={() => this.toggleSelection(item)}
+        style={{ background: 'rgba(255, 255, 255, 0.1)', margin: GUTTER / 2 }}
+      >
+        <Overlay selected={this.isAdded(item)} />
+
         <Image
+          placeholderColor="transparent"
+          disableAnimation
           selected={this.isAdded(item)}
           source={{ uri: item.uri }}
           height={ITEM_SIZE}
-          gutter={GUTTER}
-        >
-          <Overlay selected={this.isAdded(item)} />
-        </Image>
+        />
       </Touchable>
     </Cell>
   )

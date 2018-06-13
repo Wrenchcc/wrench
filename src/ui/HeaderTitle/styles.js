@@ -10,8 +10,4 @@ export const Base = styled(Animated.Text)`
   font-size: 17;
 `
 
-export const Touchable = styled(UiTouchable)`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`
+export const Touchable = styled(UiTouchable)``

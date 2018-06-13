@@ -4,7 +4,7 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   border-radius: ${props => props.borderRadius || 0};
-  background-color: ${COLORS.BEIGE};
+  background-color: ${props => props.placeholderColor || COLORS.BEIGE};
   overflow: hidden;
 `
 

@@ -14,5 +14,6 @@ target 'Wrench' do
 
   # Will try to install React when running `pod update`
   # pod 'RNReactNativeHapticFeedback', :path => '../node_modules/react-native-haptic-feedback'
+  # pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
 
 end
