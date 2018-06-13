@@ -3,6 +3,7 @@ import { FlatList, Notification, Border } from 'ui'
 import data from 'fixtures/notifications'
 import { Header } from './styles'
 
+const ITEM_HEIGHT = 70
 let scrollView = null
 
 export default class Notifications extends Component {
@@ -32,6 +33,11 @@ export default class Notifications extends Component {
       data={data}
       keyExtractor={item => item.id}
       renderItem={({ item }) => <Notification data={item} />}
+      getItemLayout={(data, index) => ({
+        length: ITEM_HEIGHT,
+        offset: ITEM_HEIGHT * index,
+        index,
+      })}
     />
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import isIphoneX from 'utils/isIphoneX'
+import { isIphoneX } from 'utils/platform'
 import UiTouchable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 
@@ -20,7 +20,7 @@ export const Bottom = styled.View`
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: ${isIphoneX() ? 40 : 20};
+  padding-bottom: ${isIphoneX ? 40 : 20};
 `
 
 export const TakePicture = styled(UiTouchable)`

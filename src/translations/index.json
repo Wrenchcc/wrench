@@ -110,6 +110,11 @@
       "description": "By continuing you agree to Wrench's ",
       "link": "terms and conditions."
     },
+    "Notification": {
+      "follow": "Now follows",
+      "comment": "Commented on your post",
+      "reply": "Replied to your comment"
+    },
     "Search": {
       "placeholder": "Search"
     },

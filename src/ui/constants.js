@@ -1,6 +1,6 @@
-import isIphoneX from 'utils/isIphone'
+import { isIphoneX } from 'utils/platform'
 
-export const HEADER_HEIGHT = isIphoneX() ? 100 : 60
+export const HEADER_HEIGHT = isIphoneX ? 100 : 60
 
 export const FONTS = {
   REGULAR: 'InterUI-Regular',

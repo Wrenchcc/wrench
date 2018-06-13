@@ -22,8 +22,8 @@
     ]
   },
   "dependencies": {
-    "date-fns": "^1.29.0",
     "human-format": "^0.10.0",
+    "javascript-time-ago": "^1.0.30",
     "ramda": "^0.25.0",
     "react": "^16.4.0",
     "react-native": "0.55.4",

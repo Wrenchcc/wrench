@@ -5,6 +5,7 @@ export default [
     id: '1',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -12,26 +13,27 @@ export default [
   },
   {
     id: '2',
-    type: 'follow',
+    type: 'comment',
     user: user(),
-    project: {
+    createdAt: Date.now() - 60 * 1000,
+    comment: {
       id: '1',
-      name: 'The Natural',
     },
   },
   {
     id: '3',
-    type: 'follow',
+    type: 'reply',
     user: user(),
-    project: {
+    createdAt: Date.now() - 60 * 1000,
+    comment: {
       id: '1',
-      name: 'The Natural',
     },
   },
   {
     id: '4',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -41,6 +43,7 @@ export default [
     id: '5',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -50,6 +53,7 @@ export default [
     id: '6',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -59,6 +63,7 @@ export default [
     id: '7',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -68,6 +73,7 @@ export default [
     id: '8',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -77,6 +83,7 @@ export default [
     id: '9',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -86,6 +93,7 @@ export default [
     id: '10',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',
@@ -95,6 +103,7 @@ export default [
     id: '11',
     type: 'follow',
     user: user(),
+    createdAt: Date.now() - 60 * 1000,
     project: {
       id: '1',
       name: 'The Natural',

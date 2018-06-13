@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import isIphoneX from 'utils/isIphoneX'
+import { isIphoneX } from 'utils/platform'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
@@ -16,7 +16,7 @@ export const Top = styled.View`
 export const Edit = styled.View`
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: ${isIphoneX() ? 40 : 20};
+  padding-bottom: ${isIphoneX ? 40 : 20};
 `
 
 export const Overlay = styled.TouchableOpacity`

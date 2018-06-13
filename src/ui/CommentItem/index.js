@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react'
 import { Animated } from 'react-native'
-import { distanceInWordsToNow } from 'date-fns'
 import { navigateToProfile } from 'navigation'
-import { Avatar, Text } from 'ui'
+import { Avatar, Text, TimeAgo } from 'ui'
 import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
 
-// TODO: Refactor
-const Item = ({ id, user, text, isReply, onReply, highlightedId = null }) => {
+// TODO: Refactor and fix date
+const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null }) => {
   const animatedValue = new Animated.Value(0)
 
   if (id === highlightedId) {
@@ -40,9 +39,7 @@ const Item = ({ id, user, text, isReply, onReply, highlightedId = null }) => {
             <Text fontSize={15}>{`[${user.fullName}:${user.id}] ${text}`}</Text>
           </Row>
           <Row>
-            <Text fontSize={12} color="light_grey">
-              {distanceInWordsToNow(new Date(2018, 6, 2), new Date(2018, 0, 2))}
-            </Text>
+            <TimeAgo date={createdAt} />
             <Reply medium fontSize={12} onPress={() => onReply(user.userName)}>
               Reply
             </Reply>
