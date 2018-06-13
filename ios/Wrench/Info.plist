@@ -63,9 +63,9 @@
 	<string>Your message to user when the photo library is accessed for the first time</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Inter-UI-Medium.ttf</string>
-		<string>Inter-UI-Regular.ttf</string>
-		<string>Inter-UI-Bold.ttf</string>
+		<string>inter_ui_bold.ttf</string>
+		<string>inter_ui_medium.ttf</string>
+		<string>inter_ui.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

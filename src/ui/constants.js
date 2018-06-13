@@ -3,9 +3,9 @@ import { isIphoneX } from 'utils/platform'
 export const HEADER_HEIGHT = isIphoneX ? 100 : 60
 
 export const FONTS = {
-  REGULAR: 'InterUI-Regular',
-  MEDIUM: 'InterUI-Medium',
-  BOLD: 'InterUI-Bold',
+  REGULAR: 'inter_ui',
+  MEDIUM: 'inter_ui_medium',
+  BOLD: 'inter_ui_bold',
 }
 
 export const COLORS = {
