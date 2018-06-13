@@ -7210,9 +7210,9 @@ react-native-share@^1.0.27:
   version "1.0.27"
   resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-1.0.27.tgz#1861afe0d1256bde95d19520ca5d5c3cd348ffad"
 
-react-native-splash-screen@^3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.0.7.tgz#352e87ad79ab1136e0e678a37b75cac0375b325f"
+react-native-splash-screen@^3.0.9:
+  version "3.0.9"
+  resolved "https://artifactory.int.sofort.io:443/artifactory/api/npm/vNpm/react-native-splash-screen/-/react-native-splash-screen-3.0.9.tgz#5cdd026ae414d60cd86bcaa897bffacd16395bed"
 
 react-native-swiper@^1.5.13:
   version "1.5.13"
@@ -7325,9 +7325,9 @@ react-navigation-tabs@0.5.1:
     react-native-safe-area-view "^0.7.0"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^2.3.0:
+react-navigation@^2.3.1:
   version "2.3.1"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-2.3.1.tgz#f0734ecc64a0af70395f889d9ffa8f610642eed5"
+  resolved "https://artifactory.int.sofort.io:443/artifactory/api/npm/vNpm/react-navigation/-/react-navigation-2.3.1.tgz#f0734ecc64a0af70395f889d9ffa8f610642eed5"
   dependencies:
     clamp "^1.0.1"
     create-react-context "^0.2.1"
