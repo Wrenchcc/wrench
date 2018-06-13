@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, Notification, Border } from 'ui'
+import { InfiniteList, Notification } from 'ui'
 import data from 'fixtures/notifications'
 import { Header } from './styles'
 
@@ -22,13 +22,13 @@ export default class Notifications extends Component {
   }
 
   render = () => (
-    <FlatList
+    <InfiniteList
       defaultPaddingTop
       scrollRef={ref => {
         scrollView = ref
       }}
       ListHeaderComponent={<Header medium>Notifications</Header>}
-      ItemSeparatorComponent={() => <Border />}
+      borderSeparator
       initialNumToRender={10}
       data={data}
       keyExtractor={item => item.id}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Post, FlatList } from 'ui'
+import { Post, InfiniteList } from 'ui'
 import posts from 'fixtures/posts'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
@@ -21,7 +21,7 @@ export default class Feed extends Component {
   }
 
   render = () => (
-    <FlatList
+    <InfiniteList
       scrollRef={ref => {
         scrollView = ref
       }}

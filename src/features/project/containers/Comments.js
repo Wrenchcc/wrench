@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Keyboard, KeyboardAvoidingView } from 'react-native'
 import {
-  FlatList,
+  InfiniteList,
   CommentItem,
   CommentField,
   KeyboardAccessoryView,
@@ -94,7 +94,7 @@ export default class Comments extends Component {
         {this.state.isOpen ? (
           <Mention onPress={this.closeMention} query={this.state.mention.replace(TRIGGER, '')} />
         ) : (
-          <FlatList
+          <InfiniteList
             scrollRef={ref => {
               scrollView = ref
             }}

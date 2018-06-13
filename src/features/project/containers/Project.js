@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Alert } from 'react-native'
 import { navigateToProfile } from 'navigation'
-import { AnimatedFlatList, ActionSheet, Post, Avatar, HeaderTitle, Edit } from 'ui'
+import { InfiniteList, ActionSheet, Post, Avatar, HeaderTitle, Edit } from 'ui'
 import data from 'fixtures/projects'
 import currentUser from 'fixtures/currentUser'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-// TODO: make platform specific
+// TODO: make platform specific and translate
 const FOOTER_HEIGHT = 500
 const START_OPACITY = 50
 
@@ -94,7 +94,7 @@ export default class Project extends Component {
     const { project } = this.props
     return (
       <Fragment>
-        <AnimatedFlatList
+        <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
           ListHeaderComponent={<Header name={project.name} followers={project.followers} />}
