@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
-// import Permissions from 'react-native-permissions'
+import { KeyboardAvoidingView, Alert } from 'react-native'
 import Swiper from 'react-native-swiper'
 import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
@@ -25,20 +24,6 @@ class AddPost extends Component {
     pictures: [],
   }
 
-  // TODO: Ask for permissions
-  componentDidMount() {
-    // Permissions.checkMultiple(['camera', 'photo']).then(response => {
-    //   console.log('efer')
-    //
-    //   if (response.photo !== 'authorized') {
-    //     this.askForPhotosPermission()
-    //   }
-    //
-    //   console.log(response.camera)
-    //   console.log(response.photo)
-    // })
-  }
-
   onTakePicture = picture => {
     this.setState({ picture, edit: true })
     this.closeDropdown()
@@ -47,25 +32,6 @@ class AddPost extends Component {
   setSelectedProject = project => {
     this.setState({ project }, this.closeDropdown)
   }
-
-  // requestPermission = () => {
-  //   Permissions.request('photo').then(response => {
-  //     this.setState({ photoPermission: response })
-  //   })
-  // }
-
-  // askForPhotosPermission() {
-  //   Alert.alert('Can we access your photos?', 'We need access so you can set your profile pic', [
-  //     {
-  //       text: 'No way',
-  //       onPress: () => console.log('Permission denied'),
-  //       style: 'cancel',
-  //     },
-  //     this.state.photoPermission === 'undetermined'
-  //       ? { text: 'OK', onPress: this.requestPermission }
-  //       : { text: 'Open Settings', onPress: Permissions.openSettings },
-  //   ])
-  // }
 
   addPictures = pictures => this.setState({ pictures })
   changePage = page => this.setState({ page })
@@ -108,7 +74,7 @@ class AddPost extends Component {
     // TODO: Implement save
     return (
       edit && (
-        <Text color="white" medium onPress={() => alert('Posted! Navigate to project.')}>
+        <Text color="white" medium onPress={() => Alert.alert('Posted! Navigate to project.')}>
           {this.props.t('.post')}
         </Text>
       )

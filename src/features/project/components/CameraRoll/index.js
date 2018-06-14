@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll as RNCameraRoll, FlatList, Dimensions } from 'react-native'
+import Permissions from 'react-native-permissions'
 import { find, propEq } from 'ramda'
 import { Touchable } from 'ui'
+import AskForPermission from '../AskForPermission'
 import { Base, Cell, Image, Overlay } from './styles'
 
 const { width } = Dimensions.get('window')
 
+const PERMISSION = 'photo'
+const AUTHORIZED = 'authorized'
 const PAGE_SIZE = 10
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
@@ -27,10 +31,16 @@ export default class CameraRoll extends Component {
     images: [],
     end_cursor: null,
     has_next_page: true,
+    photoPermission: false,
   }
 
   componentDidMount() {
-    this.getpictures()
+    Permissions.check(PERMISSION).then(res => {
+      if (res === AUTHORIZED) {
+        this.enablePermission()
+        this.getpictures()
+      }
+    })
   }
 
   getpictures = async after => {
@@ -48,6 +58,11 @@ export default class CameraRoll extends Component {
   // getItemLayout is an optional optimization that let us skip measurement of
   // dynamic content if you know the height of items a priori.
   getItemLayout = (data, index) => ({ length: ITEM_SIZE, offset: ITEM_SIZE * index, index })
+
+  enablePermission = () => {
+    this.getpictures()
+    this.setState({ photoPermission: true })
+  }
 
   toggleSelection = photo => {
     const { pictures, addPictures, closeDropdown } = this.props
@@ -89,19 +104,30 @@ export default class CameraRoll extends Component {
     </Cell>
   )
 
-  render = () => (
-    <Base onPressIn={this.props.closeDropdown} activeOpacity={1}>
-      <FlatList
-        initialNumToRender={PAGE_SIZE}
-        getItemLayout={this.getItemLayout}
-        removeClippedSubviews
-        contentContainerStyle={{ padding: 5 }}
-        numColumns={2}
-        data={this.state.images}
-        keyExtractor={item => item.uri}
-        onEndReached={() => this.getpictures(this.state.end_cursor)}
-        renderItem={this.renderItem}
-      />
-    </Base>
+  renderCameraRoll = () => (
+    <FlatList
+      initialNumToRender={PAGE_SIZE}
+      getItemLayout={this.getItemLayout}
+      removeClippedSubviews
+      contentContainerStyle={{ padding: 5 }}
+      numColumns={2}
+      data={this.state.images}
+      keyExtractor={item => item.uri}
+      onEndReached={() => this.getpictures(this.state.end_cursor)}
+      renderItem={this.renderItem}
+    />
   )
+
+  render() {
+    const { photoPermission } = this.state
+    return (
+      <Base onPressIn={this.props.closeDropdown} activeOpacity={1} paddingTop={photoPermission}>
+        {photoPermission ? (
+          this.renderCameraRoll()
+        ) : (
+          <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
+        )}
+      </Base>
+    )
+  }
 }

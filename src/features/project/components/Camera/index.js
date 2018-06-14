@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
-import withLocalization from 'i18n/withLocalization'
+import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
 import PreviewRoll from '../PreviewRoll'
 import { Base, Content, Bottom, TakePicture } from './styles'
 
-class Camera extends Component {
+const PERMISSION = 'camera'
+const AUTHORIZED = 'authorized'
+
+export default class Camera extends Component {
   static propTypes = {
     navigateToCameraRoll: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
@@ -16,7 +20,18 @@ class Camera extends Component {
   state = {
     type: RNCamera.Constants.Type.back,
     flashMode: RNCamera.Constants.FlashMode.off,
+    cameraPermission: false,
   }
+
+  componentDidMount() {
+    Permissions.check(PERMISSION).then(res => {
+      if (res === AUTHORIZED) {
+        this.enablePermission()
+      }
+    })
+  }
+
+  enablePermission = () => this.setState({ cameraPermission: true })
 
   toggleFlashMode = () => {
     const flashMode =
@@ -32,28 +47,36 @@ class Camera extends Component {
     this.props.onTakePicture(data)
   }
 
+  renderContent = () => (
+    <Content>
+      <Bottom>
+        <PreviewRoll onPress={this.props.navigateToCameraRoll} />
+        <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
+        <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
+      </Bottom>
+    </Content>
+  )
+
+  renderCamera = () => (
+    <RNCamera
+      style={{ flex: 1 }}
+      ref={ref => {
+        this.camera = ref
+      }}
+      type={this.state.type}
+      flashMode={this.state.flashMode}
+    >
+      {this.renderContent()}
+    </RNCamera>
+  )
+
   render = () => (
     <Base onPressIn={this.props.closeDropdown}>
-      <RNCamera
-        style={{ flex: 1 }}
-        ref={ref => {
-          this.camera = ref
-        }}
-        type={this.state.type}
-        flashMode={this.state.flashMode}
-        permissionDialogTitle={this.props.t('.permissionDialogTitle')}
-        permissionDialogMessage={this.props.t('.permissionDialogMessage')}
-      >
-        <Content>
-          <Bottom>
-            <PreviewRoll onPress={this.props.navigateToCameraRoll} />
-            <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
-            <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
-          </Bottom>
-        </Content>
-      </RNCamera>
+      {this.state.cameraPermission ? (
+        this.renderCamera()
+      ) : (
+        <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
+      )}
     </Base>
   )
 }
-
-export default withLocalization(Camera, 'Camera')

@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import Permissions from 'react-native-permissions'
 import PropTypes from 'prop-types'
 import { CameraRoll } from 'react-native'
 import { Button, Preview } from './styles'
+
+const PERMISSION = 'authorized'
 
 export default class PreviewRoll extends Component {
   static propTypes = {
@@ -9,11 +12,15 @@ export default class PreviewRoll extends Component {
   }
 
   state = {
-    image: '',
+    image: null,
   }
 
   componentDidMount() {
-    this.loadPreviewImage()
+    Permissions.check('photo').then(res => {
+      if (res === PERMISSION) {
+        this.loadPreviewImage()
+      }
+    })
   }
 
   loadPreviewImage = async () => {
@@ -22,9 +29,12 @@ export default class PreviewRoll extends Component {
     this.setState({ image })
   }
 
-  render = () => (
-    <Button onPress={this.props.onPress} hapticFeedback="impactLight">
-      <Preview source={{ uri: this.state.image }} disableAnimation />
-    </Button>
-  )
+  render() {
+    const { image } = this.state
+    return (
+      <Button onPress={this.props.onPress} hapticFeedback="impactLight">
+        {image && <Preview source={{ uri: image }} disableAnimation />}
+      </Button>
+    )
+  }
 }

@@ -3,7 +3,7 @@ import UiImage from 'ui/Image'
 import { COLORS, HEADER_HEIGHT } from 'ui/constants'
 
 export const Base = styled.TouchableOpacity`
-  padding-top: ${HEADER_HEIGHT}px;
+  padding-top: ${props => (props.paddingTop ? HEADER_HEIGHT : 0)};
   flex: 1;
   background-color: ${COLORS.DARK};
 `

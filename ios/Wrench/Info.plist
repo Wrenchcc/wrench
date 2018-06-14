@@ -52,15 +52,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Your message to user when the camera is accessed for the first time</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string>This allows Wrench take photos and record video within the app.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Your message to user when the microphone is accessed for the first time</string>
+	<string>This allows Wrench to add sound when you record a video.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
+	<string>This allows Wrench to share photos from your library and save photos to your camera roll.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
+	<string>This allows Wrench to share photos from your library and save photos to your camera roll.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>

@@ -7,6 +7,8 @@ export const Button = styled(UiTouchable)`
   border-width: 1.5;
   background: ${COLORS.WHITE};
   border-color: ${COLORS.WHITE};
+  width: 43;
+  height: 43;
 `
 
 export const Preview = styled(UiImage)`

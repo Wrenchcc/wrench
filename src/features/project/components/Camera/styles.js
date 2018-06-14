@@ -1,10 +1,27 @@
 import styled from 'styled-components'
 import { isIphoneX } from 'utils/platform'
 import UiTouchable from 'ui/Touchable'
+import UiTitle from 'ui/Title'
+import UiText from 'ui/Text'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.TouchableWithoutFeedback`
   flex: 1;
+`
+
+export const Inner = styled.View`
+  flex: 1;
+  justify-content: center;
+  padding-left: 40;
+  padding-right: 40;
+`
+
+export const Headline = styled(UiTitle)`
+  margin-bottom: 10px;
+`
+
+export const Description = styled(UiText)`
+  margin-bottom: 30px;
 `
 
 export const Content = styled.View`
