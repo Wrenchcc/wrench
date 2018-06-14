@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Post, InfiniteList } from 'ui'
 import posts from 'fixtures/posts'
+import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
 let scrollView = null
@@ -15,6 +16,10 @@ export default class Feed extends Component {
       }
     },
   })
+
+  componentDidMount() {
+    registerForPushNotifications()
+  }
 
   componentWillUnmont() {
     scrollView = null
