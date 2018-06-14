@@ -1,7 +1,7 @@
 import React from 'react'
 import NativeShare from 'react-native-share'
 import { mergeAll, pathOr } from 'ramda'
-import { t } from 'i18n/withLocalization'
+import { t } from 'i18n'
 import { navigate, navigateToSignIn, navigateToWebView } from 'navigation'
 import openLink from 'utils/openLink'
 import { HeaderTitle } from 'ui'
@@ -91,30 +91,37 @@ const sections = {
         {
           titleKey: 'comments',
           type: 'switch',
-          value: false,
+          value: true,
+        },
+        {
+          titleKey: 'mentions',
+          type: 'switch',
+          value: true,
         },
       ],
     },
   ],
-  language: [
-    {
-      headerTitle: 'language',
-      data: [
-        {
-          titleKey: 'english',
-          type: 'selector',
-          key: 'en',
-          value: 'en',
-        },
-        {
-          titleKey: 'swedish',
-          type: 'selector',
-          key: 'sv_SE',
-          value: 'sv_SE',
-        },
-      ],
-    },
-  ],
+  // language: [
+  //   {
+  //     headerTitle: 'language',
+  //     data: [
+  //       {
+  //         titleKey: 'english',
+  //         type: 'selector',
+  //         key: 'en',
+  //         value: 'en',
+  //         selected: true,
+  //       },
+  //       {
+  //         titleKey: 'swedish',
+  //         type: 'selector',
+  //         key: 'sv_SE',
+  //         value: 'sv_SE',
+  //         selected: false,
+  //       },
+  //     ],
+  //   },
+  // ],
   support: [
     {
       headerTitle: 'support',

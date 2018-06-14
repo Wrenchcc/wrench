@@ -27,6 +27,7 @@
       "contacts": "My contacts",
       "followers": "Followers",
       "comments": "Comments",
+      "mentions": "Mentions",
       "english": "English",
       "swedish": "Swedish",
       "faq": "FAQ",
@@ -125,6 +126,9 @@
     "Legal": {
       "description": "By continuing you agree to Wrench's ",
       "link": "terms and conditions."
+    },
+    "NetworkConnectivity": {
+      "noConnection": "No internet connection"
     },
     "Notification": {
       "follow": "Now follows",

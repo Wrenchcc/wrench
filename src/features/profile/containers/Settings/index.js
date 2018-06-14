@@ -20,7 +20,7 @@ const Settings = ({ navigation, t }) => (
     )}
     sections={sections[navigation.state.routeName]}
     keyExtractor={(item, index) => item + index}
-    ListFooterComponent={navigation.state.routeName === 'support' && <Footer />}
+    ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
   />
 )
 
