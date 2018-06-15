@@ -12,7 +12,7 @@ export default class PreviewRoll extends Component {
   }
 
   state = {
-    image: null,
+    image: '',
   }
 
   componentDidMount() {
@@ -33,7 +33,7 @@ export default class PreviewRoll extends Component {
     const { image } = this.state
     return (
       <Button onPress={this.props.onPress} hapticFeedback="impactLight">
-        {image && <Preview source={{ uri: image }} disableAnimation />}
+        <Preview source={{ uri: image }} />
       </Button>
     )
   }

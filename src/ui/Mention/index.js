@@ -1,6 +1,6 @@
 import React from 'react'
 import { filter } from 'ramda'
-import { InfiniteList, User2 } from 'ui'
+import { InfiniteList, MentionUser } from 'ui'
 import users from 'fixtures/users'
 
 const ITEM_HEIGHT = 70
@@ -14,7 +14,7 @@ const Mention = ({ onPress, query }) => (
     data={filter(a => a.fullName.toLowerCase().includes(query), users)}
     keyExtractor={item => item.id}
     borderSeparator
-    renderItem={({ item }) => <User2 user={item} onPress={onPress} />}
+    renderItem={({ item }) => <MentionUser user={item} onPress={onPress} />}
     getItemLayout={(data, index) => ({
       length: ITEM_HEIGHT,
       offset: ITEM_HEIGHT * index,

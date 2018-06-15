@@ -4,6 +4,12 @@ export const STATUS_BAR_HEIGHT = 10
 export const HEADER_HEIGHT = isIphoneX ? 100 : 80
 export const TOTAL_HEADER_HEIGHT = isIphone ? HEADER_HEIGHT + STATUS_BAR_HEIGHT : HEADER_HEIGHT
 
+export const IMAGE_PRIORITY = {
+  LOW: 'low',
+  NORMAL: 'normal',
+  HIGH: 'high',
+}
+
 export const FONTS = {
   REGULAR: isIphone ? 'InterUI-Regular' : 'inter_ui',
   MEDIUM: isIphone ? 'InterUI-Medium' : 'inter_ui_medium',

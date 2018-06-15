@@ -89,17 +89,10 @@ export default class CameraRoll extends Component {
       <Touchable
         hapticFeedback="impactLight"
         onPress={() => this.toggleSelection(item)}
-        style={{ background: 'rgba(255, 255, 255, 0.1)', margin: GUTTER / 2 }}
+        style={{ margin: GUTTER / 2 }}
       >
         <Overlay selected={this.isAdded(item)} />
-
-        <Image
-          placeholderColor="transparent"
-          disableAnimation
-          selected={this.isAdded(item)}
-          source={{ uri: item.uri }}
-          height={ITEM_SIZE}
-        />
+        <Image selected={this.isAdded(item)} source={{ uri: item.uri }} height={ITEM_SIZE} />
       </Touchable>
     </Cell>
   )

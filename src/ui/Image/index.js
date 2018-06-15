@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
+import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base, FastImage } from './styles'
 
-const FADE_DURATION = 200
+const FADE_DURATION = 50
 
-// TODO: Proptypes and change onLoad to finnished
 export default class Image extends Component {
+  static propTypes = {
+    width: PropTypes.number,
+    height: PropTypes.number,
+    borderRadius: PropTypes.number,
+    placeholderColor: PropTypes.string,
+    priority: PropTypes.string,
+  }
+
   state = {
     opacity: new Animated.Value(0),
   }
@@ -26,13 +35,13 @@ export default class Image extends Component {
       borderRadius={this.props.borderRadius}
       placeholderColor={this.props.placeholderColor}
     >
-      {this.props.disableAnimation ? (
-        <FastImage {...this.props} />
-      ) : (
-        <Animated.View style={{ opacity: this.state.opacity }}>
-          <FastImage {...this.props} onLoad={this.fadeIn} />
-        </Animated.View>
-      )}
+      <Animated.View style={{ opacity: this.state.opacity }}>
+        <FastImage
+          {...this.props}
+          onLoadEnd={this.fadeIn}
+          priority={this.props.priority || IMAGE_PRIORITY.NORMAL}
+        />
+      </Animated.View>
     </Base>
   )
 }

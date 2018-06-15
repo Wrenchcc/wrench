@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ScrollView } from 'react-native'
 import { Touchable } from 'ui'
+import { IMAGE_PRIORITY } from 'ui/constants'
 import { deviceWidth, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 
 const SNAP_INTERVAL = deviceWidth - (GUTTER + BAR_SPACE)
@@ -43,7 +44,10 @@ const Carousel = ({ images, onPress, disabled = false, onLongPress = null }) => 
           activeOpacity={1}
           onLongPress={onLongPress}
         >
-          <Picture source={{ uri }} />
+          <Picture
+            source={{ uri }}
+            priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
+          />
         </Touchable>
       </Wrapper>
     ))}
