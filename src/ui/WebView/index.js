@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, WebView as RNWebView } from 'react-native'
 import url from 'url'
@@ -10,7 +10,8 @@ import { COLORS } from 'ui/constants'
 import { closeDark, arrowLeftSmall, arrowRightSmall, refresh } from 'images'
 import { Base, Footer, Inner } from './styles'
 
-class WebView extends Component {
+// TODO: Add support for Android hardware back button
+class WebView extends PureComponent {
   static propTypes = {
     url: PropTypes.string.isRequired,
   }

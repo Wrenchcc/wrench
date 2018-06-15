@@ -9,11 +9,11 @@ const DURATION = 150
 
 class NetworkConnectivity extends Component {
   componentDidMount() {
-    NetInfo.isConnected.addEventListener('change', this.handleConnectionChange)
+    NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
   }
 
   componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener('change', this.handleConnectionChange)
+    NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
   }
 
   animatedValue = new Animated.Value(0)

@@ -2,7 +2,7 @@ import React from 'react'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { map } from 'ramda'
 import { COLORS } from 'ui/constants'
-import { SearchBar, Add } from 'ui'
+import { TabBarComponent, SearchBar, Add } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
 import { ROUTE_NAMES } from 'features/profile/constants'
 import { toTabRoute, toStackRoute, toModalRoute } from './options'
@@ -11,6 +11,7 @@ import { tabRoutes, stackRoutes, modalRoutes } from '../routes'
 import styles from './styles'
 
 const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
+  tabBarComponent: TabBarComponent,
   useNativeDriver: true,
   tabBarPosition: 'bottom',
   swipeEnabled: false,
