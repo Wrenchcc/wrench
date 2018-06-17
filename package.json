@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
+    "aws-sdk": "^2.259.1",
     "human-format": "^0.10.0",
     "javascript-time-ago": "^1.0.30",
     "ramda": "^0.25.0",
