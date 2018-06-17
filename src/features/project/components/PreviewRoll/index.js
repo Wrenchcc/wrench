@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Touchable } from 'ui'
 import { cameraRoll } from 'images'
-import { Button, Preview } from './styles'
+import { Preview } from './styles'
 
 const PreviewRoll = ({ onPress }) => (
-  <Button onPress={onPress} hapticFeedback="impactLight">
+  <Touchable onPress={onPress} hapticFeedback="impactLight">
     <Preview source={cameraRoll} />
-  </Button>
+  </Touchable>
 )
 
 PreviewRoll.propTypes = {

@@ -5,7 +5,7 @@ import hitSlop from 'utils/hitSlop'
 import { share } from 'images'
 import { Base, Button, Icon } from './styles'
 
-// TODO: Change deeplink to web
+// TODO: Change deeplink to web or firebase deeplink
 const Share = ({ name, url }) => (
   <Base>
     <Button

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { InfiniteList, User, HeaderTitle } from 'ui'
 import data from 'fixtures/search'
 
-// TODO: Handle scroll to better
 let scrollView = null
 
 export default class Followers extends Component {

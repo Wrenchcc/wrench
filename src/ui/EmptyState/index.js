@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withLocalization from 'i18n/withLocalization'
-import { navigateToAddProject, navigateToPost } from 'navigation'
+import { navigateToEditProject, navigateToPost } from 'navigation'
 import { Text } from 'ui'
 import { Base, Title, Description, Button } from './styles'
 
-const onPressAction = type => (type === 'project' ? navigateToAddProject() : navigateToPost())
+const onPressAction = type => (type === 'project' ? navigateToEditProject() : navigateToPost())
 
 const EmptyState = ({ t, type = 'project' }) => (
   <Base>

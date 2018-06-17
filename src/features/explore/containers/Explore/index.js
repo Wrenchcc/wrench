@@ -3,7 +3,6 @@ import { Post, InfiniteList } from 'ui'
 import Popular from 'features/explore/components/Popular'
 import posts from 'fixtures/posts'
 
-// TODO: Handle scroll to better
 let scrollView = null
 
 export default class Explore extends Component {

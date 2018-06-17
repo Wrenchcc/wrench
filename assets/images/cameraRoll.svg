@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>cameraroll</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="cameraroll" transform="translate(1.000000, -1.000000)" stroke="#FFFFFF" stroke-width="1.666667">
+            <path d="M2.222222,2 L17.77778,2 C19.00508,2 20,2.9949228 20,4.222222 L20,19.77778 C20,21.00508 19.00508,22 17.77778,22 L2.222222,22 C0.9949228,22 0,21.00508 0,19.77778 L0,4.222222 C0,2.9949228 0.9949228,2 2.222222,2 Z" id="Stroke-1"></path>
+            <path d="M6.111111,9.777773 C7.031585,9.777773 7.777777,9.031581 7.777777,8.111107 C7.777777,7.1906321 7.031585,6.44444 6.111111,6.44444 C5.1906361,6.44444 4.444444,7.1906321 4.444444,8.111107 C4.444444,9.031581 5.1906361,9.777773 6.111111,9.777773 Z" id="Stroke-3"></path>
+            <polyline id="Stroke-5" points="20.000002 15.333336 14.444442 9.77778 2.222222 22"></polyline>
+        </g>
+    </g>
+</svg>

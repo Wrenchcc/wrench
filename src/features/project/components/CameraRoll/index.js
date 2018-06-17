@@ -20,6 +20,7 @@ const removeByKey = (a, params) => {
   return a
 }
 
+// TODO: Run after layout animation ? performence
 export default class CameraRoll extends Component {
   static propTypes = {
     pictures: PropTypes.array,

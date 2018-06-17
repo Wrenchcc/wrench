@@ -41,15 +41,6 @@
       "next": "Next",
       "placeholder": "Add a text about your post"
     },
-    "AddProject": {
-      "title": "Create project",
-      "subTitle": "Information",
-      "add": "Add",
-      "inputTitle": "Title",
-      "inputBrand": "Brand",
-      "inputModel": "Model",
-      "inputYear": "Year"
-    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -69,6 +60,15 @@
         "permissionDescription": "This allows Wrench to share photos from your library and save photos to your camera roll.",
         "permissionButton": "Enable Library Access"
       }
+    },
+    "EditProject": {
+      "title": "Create project",
+      "subTitle": "Information",
+      "add": "Add",
+      "inputTitle": "Title",
+      "inputBrand": "Brand",
+      "inputModel": "Model",
+      "inputYear": "Year"
     },
     "SelectProject": {
       "create": "Create a new project"

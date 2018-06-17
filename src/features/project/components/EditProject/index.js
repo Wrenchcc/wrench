@@ -2,8 +2,9 @@ import React from 'react'
 import withLocalization from 'i18n/withLocalization'
 import { Base, Header, Content, AddButton, Title, SubTitle, Input } from './styles'
 
-// TODO: Implement add project
-const AddProject = ({ t }) => (
+// TODO: Implement add project if data edit || new
+// TODO: Handle keyboard up and down
+const EditProject = ({ t }) => (
   <Base>
     <Header />
     <Content contentContainerStyle={{ flex: 1 }}>
@@ -19,4 +20,4 @@ const AddProject = ({ t }) => (
   </Base>
 )
 
-export default withLocalization(AddProject, 'AddProject')
+export default withLocalization(EditProject, 'EditProject')

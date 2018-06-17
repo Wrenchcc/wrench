@@ -8,7 +8,6 @@ import data from 'fixtures/profile'
 const HEADER_HEIGHT = 100
 const START_OPACITY = 50
 
-// TODO: Handle scroll to better
 let scrollView = null
 
 export default class Profile extends Component {

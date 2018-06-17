@@ -10,7 +10,6 @@ import {
 } from 'ui'
 import data from 'fixtures/comments'
 
-// TODO: Handle scroll to better
 let scrollView = null
 
 // TODO: Make platform specific

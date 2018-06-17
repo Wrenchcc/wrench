@@ -1,11 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { filter } from 'ramda'
 import { InfiniteList, MentionUser } from 'ui'
 import users from 'fixtures/users'
 
 const ITEM_HEIGHT = 70
 
-// TODO: Fix generic user component
 const Mention = ({ onPress, query }) => (
   <InfiniteList
     defaultPadding
@@ -22,5 +22,10 @@ const Mention = ({ onPress, query }) => (
     })}
   />
 )
+
+Mention.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  query: PropTypes.string,
+}
 
 export default Mention

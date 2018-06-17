@@ -4,7 +4,7 @@ import Project from './containers/Project'
 import Comments from './containers/Comments'
 import Followers from './containers/Followers'
 import AddPost from './containers/AddPost'
-import AddProject from './containers/AddProject'
+import EditProject from './containers/EditProject'
 import { ROUTE_NAMES } from './constants'
 
 export default {
@@ -18,8 +18,8 @@ export default {
     component: withStatusBar(AddPost, { hidden: true }),
     mode: MODAL,
   },
-  [ROUTE_NAMES.ADD_PROJECT]: {
-    component: AddProject,
+  [ROUTE_NAMES.EDIT_PROJECT]: {
+    component: EditProject,
     mode: MODAL,
   },
   [ROUTE_NAMES.FOLLOWERS]: {

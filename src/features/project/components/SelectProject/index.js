@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import withLocalization from 'i18n/withLocalization'
-import { navigateToAddProject } from 'navigation'
+import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
 import Project from './Project'
 import { Base, NewProject, SPACER, BUTTON_HEIGHT } from './styles'
@@ -68,7 +68,7 @@ class SelectProject extends Component {
               selected={this.isSelected(project)}
             />
           ))}
-          <NewProject onPress={() => navigateToAddProject()}>
+          <NewProject onPress={() => navigateToEditProject()}>
             <Text medium>{t('.create')}</Text>
           </NewProject>
         </Base>

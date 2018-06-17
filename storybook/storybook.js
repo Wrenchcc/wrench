@@ -17,4 +17,5 @@ class StorybookUIHMRRoot extends Component {
 }
 
 AppRegistry.registerComponent('Wrench', () => StorybookUIHMRRoot)
+
 export default StorybookUIHMRRoot

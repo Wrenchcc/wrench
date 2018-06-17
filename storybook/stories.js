@@ -1,4 +1,3 @@
-import 'features/feed/components/Feed/stories'
 import 'features/signIn/components/SignIn/stories'
 import 'ui/Avatar/stories'
 import 'ui/Facebook/stories'
