@@ -1,26 +1,16 @@
 import S3 from 'aws-sdk/clients/s3'
 
-export class StorageS3 {
+const API_VERSION = '2006-03-01'
+
+export default class Storage {
   options
 
   /**
-   * Configure Storage part with aws configuration
-   * @param {Object} config - Configuration of the Storage
-   * @return {Object} - Current configuration
+   * Initialize Storage with AWS configurations
+   * @param {Object} options - Configuration object for storage
    */
-  configure(options) {
-    let opt = options ? options.Storage || options : {}
-
-    if (options.aws_user_files_s3_bucket) {
-      opt = {
-        bucket: options.aws_user_files_s3_bucket,
-        region: options.aws_user_files_s3_bucket_region,
-      }
-    }
-
-    this.options = Object.assign({}, this.options, opt)
-
-    return this.options
+  constructor(options) {
+    this.options = options
   }
 
   /**
@@ -30,20 +20,19 @@ export class StorageS3 {
    * @param {Object} [options] - { level : private|protected|public, contentType: MIME Types }
    * @return - promise resolves to object on success
    */
-  async put(key: string, object, options) {
-    const opt = Object.assign({}, this.options, options)
-    const { bucket, region, credentials, level, track } = opt
+  async put(key, object, options) {
+    const opt = { ...this.options, ...options }
+    const { bucket } = opt
     const { contentType, contentDisposition, cacheControl, expires, metadata } = opt
     const type = contentType || 'binary/octet-stream'
 
-    const prefix = this._prefix(opt)
-    const final_key = prefix + key
-    const s3 = this._createS3(opt)
-    console.log(`put ${key} to ${final_key}`)
+    const prefix = this.prefix(opt)
+    const finalKey = prefix + key
+    const s3 = this.createS3(opt)
 
     const params: any = {
       Bucket: bucket,
-      Key: final_key,
+      Key: finalKey,
       Body: object,
       ContentType: type,
     }
@@ -60,23 +49,22 @@ export class StorageS3 {
       params.Metadata = metadata
     }
 
-    return (
-      new Promise() <
-      Object >
-      ((res, rej) => {
-        s3.upload(params, (err, data) => {
-          if (err) {
-            console.log('error uploading', err)
-            rej(err)
-          } else {
-            console.log('upload result', data)
-            res({
-              key: data.Key.substr(prefix.length),
-            })
-          }
-        })
+    return new Promise((res, rej) => {
+      s3.upload(params, (err, data) => {
+        if (err) {
+          console.log('error uploading', err)
+          rej(err)
+        } else {
+          res({
+            key: data.Key.substr(prefix.length),
+          })
+        }
+      }).on('httpUploadProgress', evt => {
+        // Here you can use `this.body` to determine which file this particular
+        // event is related to and use that info to calculate overall progress.
+        console.log(`Uploaded: ${parseInt((evt.loaded * 100) / evt.total)}%`)
       })
-    )
+    })
   }
 
   /**
@@ -85,39 +73,34 @@ export class StorageS3 {
    * @param {Object} [options] - { level : private|protected|public }
    * @return - Promise resolves upon successful removal of the object
    */
-  async remove(key: string, options) {
-    const opt = Object.assign({}, this.options, options)
-    const { bucket, region, credentials, level, track } = opt
+  async remove(key, options) {
+    const opt = { ...this.options, ...options }
+    const { bucket } = opt
 
-    const prefix = this._prefix(opt)
-    const final_key = prefix + key
-    const s3 = this._createS3(opt)
-    console.log(`remove ${key} from ${final_key}`)
+    const prefix = this.prefix(opt)
+    const finalKey = prefix + key
+    const s3 = this.createS3(opt)
 
     const params = {
       Bucket: bucket,
-      Key: final_key,
+      Key: finalKey,
     }
 
-    return (
-      new Promise() <
-      any >
-      ((res, rej) => {
-        s3.deleteObject(params, (err, data) => {
-          if (err) {
-            rej(err)
-          } else {
-            res(data)
-          }
-        })
+    return new Promise((res, rej) => {
+      s3.deleteObject(params, (err, data) => {
+        if (err) {
+          rej(err)
+        } else {
+          res(data)
+        }
       })
-    )
+    })
   }
 
   /**
    * @private
    */
-  _prefix(options) {
+  prefix(options) {
     const { credentials, level } = options
 
     const customPrefix = options.customPrefix || {}
@@ -143,16 +126,13 @@ export class StorageS3 {
   /**
    * @private
    */
-  _createS3(options) {
+  createS3(options) {
     const { bucket, region, credentials } = options
-    // AWS.config.update({
-    //   region,
-    //   credentials,
-    // })
     return new S3({
-      apiVersion: '2006-03-01',
+      apiVersion: API_VERSION,
       params: { Bucket: bucket },
       region,
+      credentials,
     })
   }
 }

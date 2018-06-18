@@ -1,5 +1,23 @@
-import client from './client'
+import Config from 'react-native-config'
+import S3 from './client'
 
-export const get = () => console.log('get')
-export const put = () => console.log('put')
-export const remove = () => console.log('remove')
+const Storage = new S3({
+  bucket: Config.S3_BUCKET,
+  region: 'eu-central-1',
+  level: 'public',
+  identityId: 123,
+  credentials: {
+    accessKeyId: Config.AWS_ACCESS_KEY_ID,
+    secretAccessKey: Config.AWS_SECRET_ACCESS_KEY,
+  },
+})
+
+export const put = () =>
+  Storage.put('test.txt', 'Hello', {
+    // progress(progress, total) {},
+  })
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+
+// export const get = () => console.log('get')
+// export const remove = () => console.log('remove')

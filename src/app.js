@@ -4,7 +4,7 @@ import SplashScreen from 'react-native-splash-screen'
 import { Navigation, setNavigationRef } from 'navigation'
 import { NetworkConnectivity } from 'ui'
 
-import { S3Client } from 'utils/storage'
+import { put } from 'utils/storage'
 
 const checkFrequency = codePush.CheckFrequency.ON_APP_RESUME
 
@@ -13,6 +13,7 @@ console.disableYellowBox = true // TODO: Remove
 class App extends Component {
   componentDidMount() {
     SplashScreen.hide()
+    console.log(put())
   }
 
   render() {
