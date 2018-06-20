@@ -3,8 +3,6 @@ import S3 from 'aws-sdk/clients/s3'
 const API_VERSION = '2006-03-01'
 
 export default class Storage {
-  options
-
   /**
    * Initialize Storage with AWS configurations
    * @param {Object} options - Configuration object for storage
@@ -30,7 +28,7 @@ export default class Storage {
     const finalKey = prefix + key
     const s3 = this.createS3(opt)
 
-    const params: any = {
+    const params = {
       Bucket: bucket,
       Key: finalKey,
       Body: object,
@@ -52,46 +50,11 @@ export default class Storage {
     return new Promise((res, rej) => {
       s3.upload(params, (err, data) => {
         if (err) {
-          console.log('error uploading', err)
           rej(err)
         } else {
           res({
             key: data.Key.substr(prefix.length),
           })
-        }
-      }).on('httpUploadProgress', evt => {
-        // Here you can use `this.body` to determine which file this particular
-        // event is related to and use that info to calculate overall progress.
-        console.log(`Uploaded: ${parseInt((evt.loaded * 100) / evt.total)}%`)
-      })
-    })
-  }
-
-  /**
-   * Remove the object for specified key
-   * @param {String} key - key of the object
-   * @param {Object} [options] - { level : private|protected|public }
-   * @return - Promise resolves upon successful removal of the object
-   */
-  async remove(key, options) {
-    const opt = { ...this.options, ...options }
-    const { bucket } = opt
-
-    const prefix = this.prefix(opt)
-    const finalKey = prefix + key
-    const s3 = this.createS3(opt)
-
-    const params = {
-      Bucket: bucket,
-      Key: finalKey,
-    }
-
-    return new Promise((res, rej) => {
-      s3.deleteObject(params, (err, data) => {
-        if (err) {
-          rej(err)
-        } else {
-          res(data)
         }
       })
     })
@@ -101,23 +64,18 @@ export default class Storage {
    * @private
    */
   prefix(options) {
-    const { credentials, level } = options
+    const { level, credentials } = options
 
-    const customPrefix = options.customPrefix || {}
     const identityId = options.identityId || credentials.identityId
-    const privatePath = `${(customPrefix.private !== undefined
-      ? customPrefix.private
-      : 'private/') + identityId}/`
-    const protectedPath = `${(customPrefix.protected !== undefined
-      ? customPrefix.protected
-      : 'protected/') + identityId}/`
-    const publicPath = customPrefix.public !== undefined ? customPrefix.public : 'public/'
+    const publicPath = identityId ? `public/${identityId}/` : 'public'
+    const privatePath = 'private'
+    const userPath = `user/${identityId}/`
 
     switch (level) {
+      case 'user':
+        return userPath
       case 'private':
         return privatePath
-      case 'protected':
-        return protectedPath
       default:
         return publicPath
     }
