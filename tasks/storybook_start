@@ -1,0 +1,3 @@
+#!/bin/sh
+yarn storybook:create && \
+  ./node_modules/.bin/storybook start -p 7007 -c storybook

@@ -3,9 +3,8 @@ const glob = require('glob')
 const path = require('path')
 const { mergeAll } = require('ramda')
 
-let input = process.argv[2]
+const input = process.argv[2]
 const output = path.resolve(process.argv[3])
-const projectRoot = path.resolve('./src') + '/'
 
 const swapComponentWithLang = file => {
   const [root] = Object.keys(file)
@@ -28,21 +27,19 @@ const getTranslations = glob
   .sync(input)
   .map(f => swapComponentWithLang(JSON.parse(fs.readFileSync(f, 'utf8'))))
 
-const getSupportedLangs = f =>
-  f.reduce(
-    (acc, item) => [...acc, ...Object.keys(item).filter(lang => acc.indexOf(lang) === -1)],
-    []
-  )
+const getSupportedLangs = f => f.reduce(
+  (acc, item) => [...acc, ...Object.keys(item).filter(lang => acc.indexOf(lang) === -1)],
+  []
+)
 
-const generateTranslationFile = translations =>
-  getSupportedLangs(translations).reduce((list, lang) => {
-    if (!list[lang]) {
-      list[lang] = {}
-    }
+const generateTranslationFile = translations => getSupportedLangs(translations).reduce((list, lang) => {
+  if (!list[lang]) {
+    list[lang] = {}
+  }
 
-    list[lang] = mergeAll(translations.map(file => file[lang]))
+  list[lang] = mergeAll(translations.map(file => file[lang]))
 
-    return list
-  }, {})
+  return list
+}, {})
 
 fs.writeFileSync(output, JSON.stringify(generateTranslationFile(getTranslations), null, 2), 'utf8')

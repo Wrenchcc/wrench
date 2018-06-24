@@ -13,18 +13,17 @@ const Title = ({
   onPress,
   disabled = false,
   ...props
-}) =>
-  onPress ? (
+}) => onPress ? (
     <Touchable hitSlop={hitSlop(10)} onPress={onPress} disabled={disabled}>
       <Base numberOfLines={numberOfLines} medium={medium} large={large} style={style} {...props}>
         {children}
       </Base>
     </Touchable>
-  ) : (
+) : (
     <Base numberOfLines={numberOfLines} medium={medium} large={large} style={style} {...props}>
       {children}
     </Base>
-  )
+)
 
 Title.propTypes = {
   children: PropTypes.any,

@@ -13,7 +13,7 @@ export const Base = styled.View`
   justify-content: space-between;
   padding: 0 20px 20px;
   padding-top: ${(isIphoneX && 40) || 20}
-  background-color: ${props => (props.transparent ? 'transparent' : COLORS.WHITE)};
+  background-color: ${({ transparent }) => (transparent ? 'transparent' : COLORS.WHITE)};
 `
 
 export const Search = styled(UiSearch)`

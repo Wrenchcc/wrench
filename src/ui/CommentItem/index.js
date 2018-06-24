@@ -51,16 +51,15 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
 }
 
 // TODO: Remove id not needed when uniq ids "child-"
-const CommentItem = props =>
-  props.item.replies ? (
+const CommentItem = props => props.item.replies ? (
     <Fragment>
       <Item {...props.item} onReply={props.onReply} />
       {props.item.replies.map(item => (
         <Item key={item.id} isReply {...item} id={`child-${item.id}`} onReply={props.onReply} />
       ))}
     </Fragment>
-  ) : (
+) : (
     <Item {...props.item} onReply={props.onReply} />
-  )
+)
 
 export default CommentItem

@@ -4,6 +4,6 @@ import { FONTS, COLORS } from 'ui/constants'
 
 export const Base = styled.Text`
   font-family: ${FONTS.MEDIUM};
-  color: ${props => (props.color ? COLORS[toUpper(props.color)] : COLORS.DARK)};
-  font-size: ${props => (props.medium && 34) || (props.large && 48) || 21};
+  color: ${({ color }) => (color ? COLORS[toUpper(color)] : COLORS.DARK)};
+  font-size: ${({ medium, large }) => (medium && 34) || (large && 48) || 21};
 `

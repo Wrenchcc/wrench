@@ -1,8 +1,1 @@
-import 'features/signIn/components/SignIn/stories'
-import 'ui/Avatar/stories'
-import 'ui/Facebook/stories'
-import 'ui/Header/stories'
-import 'ui/Legal/stories'
-import 'ui/Post/stories'
-import 'ui/Search/stories'
 import 'ui/Title/stories'

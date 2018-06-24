@@ -9,8 +9,8 @@ export const BAR_SPACE = GUTTER / 2
 
 export const Wrapper = styled.ScrollView`
   overflow: visible;
-  margin-right: ${props => (props.last ? GUTTER : BAR_SPACE)};
-  margin-left: ${props => (props.first ? GUTTER : 0)};
+  margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)};
+  margin-left: ${({ first }) => (first ? GUTTER : 0)};
 `
 
 export const Picture = styled(UiImage)`

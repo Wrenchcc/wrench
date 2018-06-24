@@ -2,9 +2,9 @@ const fs = require('fs')
 const glob = require('glob')
 const path = require('path')
 
-let input = process.argv[2]
+const input = process.argv[2]
 const output = path.resolve(process.argv[3])
-const projectRoot = path.resolve('./src') + '/'
+const projectRoot = `${path.resolve('./src')}/`
 
 const assetExports = glob
   .sync(input)
@@ -17,4 +17,4 @@ const assetExports = glob
     return `import '${storyPath}'`
   })
 
-fs.writeFileSync(output, assetExports.sort().join('\n') + '\n')
+fs.writeFileSync(output, `${assetExports.sort().join('\n')}\n`)

@@ -54,15 +54,10 @@ class WebView extends PureComponent {
   }
 
   goBack = () => this.webview.goBack()
+
   goForward = () => this.webview.goForward()
 
   refresh = () => this.webview.reload()
-
-  increaseProgress() {
-    if (this.isLoading) {
-      this.progress += (1 / Math.pow(2, this.progressTimes)) * 100 // eslint-disable-line
-    }
-  }
 
   removeHandler = (handlersList, handler) => {
     this[handlersList] = reject(equals(handler), this[handlersList])
@@ -79,6 +74,12 @@ class WebView extends PureComponent {
     this.isLoading = false
     this.progressTimes = 1
     this.progress = 0
+  }
+
+  increaseProgress() {
+    if (this.isLoading) {
+      this.progress += (1 / Math.pow(2, this.progressTimes)) * 100 // eslint-disable-line
+    }
   }
 
   renderFooter = () => (

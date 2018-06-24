@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { ScrollView } from 'react-native'
 import { Touchable } from 'ui'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { deviceWidth, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
+import { width, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 
-const SNAP_INTERVAL = deviceWidth - (GUTTER + BAR_SPACE)
+const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 // TODO: Change to flatlist and fix snap
 const Carousel = ({ images, onPress, disabled = false, onLongPress = null }) => (

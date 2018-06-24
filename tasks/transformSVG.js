@@ -52,7 +52,7 @@ function transformSVGTask({ multiplier, file, output, verbose }, callback) {
   if (verbose) console.log(gray(`${getRelativePath(file)} --> ${getRelativePath(destinationPath)}`))
 
   const svg = new Rsvg()
-  svg.on('finish', function() {
+  svg.on('finish', () => {
     fs.writeFile(
       destinationPath,
       svg.render({

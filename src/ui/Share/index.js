@@ -11,10 +11,9 @@ const Share = ({ name, url }) => (
     <Button
       hapticFeedback="impactLight"
       onPress={
-        () =>
-          NativeShare.open({
-            title: name,
-            url,
+        () => NativeShare.open({
+          title: name,
+          url,
           }).catch(err => console.log(err)) // eslint-disable-line
       }
       hitSlop={hitSlop(20)}

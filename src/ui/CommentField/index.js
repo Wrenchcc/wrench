@@ -35,10 +35,9 @@ class CommentField extends Component {
   onChangeText = val => {
     this.props.onChangeText(val)
     const lastChar = val.substr(val.length - 1)
-    const wordBoundry =
-      this.props.triggerLocation === 'new-word-only'
-        ? this.state.previousChar.trim().length === 0
-        : true
+    const wordBoundry = this.props.triggerLocation === 'new-word-only'
+      ? this.state.previousChar.trim().length === 0
+      : true
     if (lastChar === '@' && wordBoundry) {
       this.startTracking()
     } else if ((lastChar === ' ' && this.state.isTrackingStarted) || val === '') {

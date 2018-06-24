@@ -1,5 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
-import Title from './'
+import { withBasePadding } from 'storybook/decorators'
+import Title from '.'
 
-storiesOf('UI/Title', module).add('default', () => <Title>Here is a title!</Title>)
+storiesOf('UI/Title', module)
+  .addDecorator(withBasePadding)
+  .add('default', () => <Title>Here is a title!</Title>)

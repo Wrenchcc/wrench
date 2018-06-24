@@ -4,8 +4,7 @@ import hitSlop from 'utils/hitSlop'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Touchable, Image } from 'ui'
 
-const Avatar = ({ uri, size = 30, onPress, disabled = false, style = {} }) =>
-  onPress ? (
+const Avatar = ({ uri, size = 30, onPress, disabled = false, style = {} }) => onPress ? (
     <Touchable hitSlop={hitSlop(10)} onPress={onPress} style={style} disabled={disabled}>
       <Image
         source={{ uri }}
@@ -15,7 +14,7 @@ const Avatar = ({ uri, size = 30, onPress, disabled = false, style = {} }) =>
         priority={IMAGE_PRIORITY.HIGH}
       />
     </Touchable>
-  ) : (
+) : (
     <Image
       source={{ uri }}
       width={size}
@@ -24,7 +23,7 @@ const Avatar = ({ uri, size = 30, onPress, disabled = false, style = {} }) =>
       borderRadius={size / 2}
       priority={IMAGE_PRIORITY.HIGH}
     />
-  )
+)
 
 Avatar.propTypes = {
   uri: PropTypes.string.isRequired,

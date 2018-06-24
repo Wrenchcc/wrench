@@ -8,7 +8,7 @@ export const Base = styled(UiTouchable)`
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  border-bottom-width: ${props => (props.last ? 0 : 1)};
+  border-bottom-width: ${({ last }) => (last ? 0 : 1)};
   border-bottom-color: ${COLORS.DIVIDER};
 `
 

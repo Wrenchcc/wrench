@@ -8,6 +8,10 @@ const ADDITIONAL_OFFSET = isIphoneX ? 125 : 95
 
 export default function withKeyboardHandler(WrappedComponent) {
   class WithKeyboardHandler extends Component {
+    scrollView = null
+
+    subscriptions = []
+
     static propTypes = {
       navigation: PropTypes.object.isRequired,
       scrollRef: PropTypes.func,
@@ -28,9 +32,6 @@ export default function withKeyboardHandler(WrappedComponent) {
         })
       }
     }
-
-    subscriptions = []
-    scrollView = null
 
     keyboardWillShow = () => {
       const currentlyFocusedField = TextInput.State.currentlyFocusedField()

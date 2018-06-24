@@ -88,7 +88,9 @@ class KeyboardAccessoryView extends Component {
       const { animationConfig, animateOn } = this.props
 
       if (animateOn === 'all' || Platform.OS === animateOn) {
-        LayoutAnimation.configureNext(accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig))
+        LayoutAnimation.configureNext(
+          accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig)
+        )
       }
 
       this.setState({
@@ -116,8 +118,10 @@ class KeyboardAccessoryView extends Component {
     const { animateOn, animationConfig } = this.props
 
     if (animateOn === 'all' || Platform.OS === animateOn) {
-      LayoutAnimation.configureNext(animationConfig ||
-          accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig))
+      LayoutAnimation.configureNext(
+        animationConfig
+          || accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig)
+      )
     }
 
     this.setState({

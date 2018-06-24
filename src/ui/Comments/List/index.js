@@ -4,8 +4,7 @@ import withLocalization from 'i18n/withLocalization'
 import Text from 'ui/Text'
 import { Base, Row, Comment, LoadMore } from './styles'
 
-const List = ({ t, data }) =>
-  data && (
+const List = ({ t, data }) => data && (
     <Base>
       {data.map(({ user, text, id }) => (
         <Row key={id}>
@@ -23,6 +22,6 @@ const List = ({ t, data }) =>
         </Text>
       </LoadMore>
     </Base>
-  )
+)
 
 export default withLocalization(List, 'List')

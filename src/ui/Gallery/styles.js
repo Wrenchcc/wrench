@@ -16,16 +16,16 @@ export const Container = styled.View`
 `
 
 export const Cell = styled.View`
-  width: ${props => props.size * 100}%;
+  width: ${({ size }) => size * 100}%;
 `
 
 export const Image = styled(UiImage)`
-  margin-right: ${props => (props.borderRight && 1.5) || 0};
-  margin-left: ${props => (props.borderLeft && 1.5) || 0};
-  margin-top: ${props => (props.borderTop && 3) || 0};
+  margin-right: ${({ borderRight }) => (borderRight && 1.5) || 0};
+  margin-left: ${({ borderLeft }) => (borderLeft && 1.5) || 0};
+  margin-top: ${({ borderTop }) => (borderTop && 3) || 0};
 `
 
 export const Transform = styled.View`
   width: 100%;
-  ${props => props.enabled && 'transform: rotate(-25deg) scale(1.7)'};
+  ${({ enabled }) => enabled && 'transform: rotate(-25deg) scale(1.7)'};
 `

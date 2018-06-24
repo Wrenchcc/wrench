@@ -8,6 +8,8 @@ const HEIGHT = 40
 const DURATION = 150
 
 class NetworkConnectivity extends Component {
+  animatedValue = new Animated.Value(0)
+
   componentDidMount() {
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
   }
@@ -15,8 +17,6 @@ class NetworkConnectivity extends Component {
   componentWillUnmount() {
     NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
   }
-
-  animatedValue = new Animated.Value(0)
 
   handleConnectionChange = isConnected => {
     this.handleToast(isConnected)

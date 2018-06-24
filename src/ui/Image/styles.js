@@ -3,12 +3,12 @@ import RNFastImage from 'react-native-fast-image'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
-  border-radius: ${props => props.borderRadius || 0};
-  background-color: ${props => props.placeholderColor || COLORS.BEIGE};
+  border-radius: ${({ borderRadius }) => borderRadius || 0};
+  background-color: ${({ placeholderColor }) => placeholderColor || COLORS.BEIGE};
   overflow: hidden;
 `
 
 export const FastImage = styled(RNFastImage)`
-  width: ${props => props.width || 'auto'};
-  height: ${props => props.height || 'auto'};
+  width: ${({ width }) => width || 'auto'};
+  height: ${({ height }) => height || 'auto'};
 `

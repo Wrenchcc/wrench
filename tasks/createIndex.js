@@ -21,6 +21,6 @@ const assetExports = glob
     return `export { default as ${assetName} } from '${assetPath}'`
   })
 
-const contents = assetExports.join('\n') + '\n'
+const contents = `${assetExports.join('\n')}\n`
 
 fs.writeFileSync(path.join(output, 'index.js'), contents)
