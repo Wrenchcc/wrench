@@ -6,7 +6,6 @@ import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
 
-// TODO: Investigate if createAnimatedComponent has perf problems
 // HoC createAnimatedComponent wraps child referene with _component
 // In future use getNode() instead of el._component
 const InfiniteList = ({

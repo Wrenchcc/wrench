@@ -47,10 +47,6 @@ export default class Comments extends Component {
     this.textInput = el
   }
 
-  componentWillUnmont() {
-    scrollView = null
-  }
-
   identifyKeyword = text => {
     const lastChar = text.substr(text.length - 1)
     const pattern = new RegExp(REGX_PATTERN, 'gi')
@@ -81,6 +77,10 @@ export default class Comments extends Component {
     this.onChangeText('')
     this.closeMention()
     Keyboard.dismiss()
+  }
+
+  componentWillUnmont() {
+    scrollView = null
   }
 
   render = () => (

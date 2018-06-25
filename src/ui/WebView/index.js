@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { View, WebView as RNWebView } from 'react-native'
+import { View, BackHandler, WebView as RNWebView } from 'react-native'
 import url from 'url'
 import { equals, reject } from 'ramda'
 import withLocalization from 'i18n/withLocalization'
@@ -10,7 +10,6 @@ import { COLORS } from 'ui/constants'
 import { closeDark, arrowLeftSmall, arrowRightSmall, refresh } from 'images'
 import { Base, Footer, Inner } from './styles'
 
-// TODO: Add support for Android hardware back button
 class WebView extends PureComponent {
   static propTypes = {
     url: PropTypes.string.isRequired,
@@ -29,6 +28,12 @@ class WebView extends PureComponent {
 
     this.onLoadStartHandlers = [this.startProgressBar]
     this.onLoadEndHandlers = [this.finishProgressBar, this.onFirstPageLoadEnd]
+
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
   }
 
   onNavigationStateChange = navState => {
@@ -51,6 +56,14 @@ class WebView extends PureComponent {
 
   onFirstPageLoadEnd = () => {
     this.removeHandler('onLoadEndHandlers', this.onFirstPageLoadEnd)
+  }
+
+  handleBackPress = () => {
+    if (this.state.canGoBack) {
+      this.goBack()
+      return true
+    }
+    return false
   }
 
   goBack = () => this.webview.goBack()

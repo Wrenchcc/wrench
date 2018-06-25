@@ -20,7 +20,6 @@ const removeByKey = (a, params) => {
   return a
 }
 
-// TODO: Run after layout animation ? performence
 export default class CameraRoll extends Component {
   static propTypes = {
     pictures: PropTypes.array,
@@ -70,10 +69,12 @@ export default class CameraRoll extends Component {
 
     if (this.isAdded(photo)) {
       // TODO: Maybe change to object keys instead
-      addPictures(removeByKey(pictures, {
-        key: 'filename',
-        value: photo.filename,
-      }))
+      addPictures(
+        removeByKey(pictures, {
+          key: 'filename',
+          value: photo.filename,
+        })
+      )
 
       return
     }
