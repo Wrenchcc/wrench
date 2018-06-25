@@ -27,8 +27,7 @@ const Post = ({ data, onPost = false, avatar = true, onLongPress }) => (
       <Media
         onLongPress={onLongPress}
         post={data}
-        onPress={() =>
-          !onPost && navigateToProject({ id: data.id, user: data.user, project: data.project })
+        onPress={() => !onPost && navigateToProject({ id: data.id, user: data.user, project: data.project })
         }
       />
     </Content>

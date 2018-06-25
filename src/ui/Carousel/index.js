@@ -1,32 +1,26 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView } from 'react-native'
+import { Animated, FlatList } from 'react-native'
 import { Touchable } from 'ui'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { width, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
-// TODO: Change to flatlist and fix snap
-const Carousel = ({ images, onPress, disabled = false, onLongPress = null }) => (
-  <ScrollView
-    keyboardShouldPersistTaps="always"
-    scrollEnabled={images.length > 1}
-    horizontal
-    directionalLockEnabled
-    showsHorizontalScrollIndicator={false}
-    decelerationRate="fast"
-    snapToInterval={SNAP_INTERVAL}
-    snapToAlignment="center"
-    scrollThrottle={10}
-    grow
-    style={{
-      marginLeft: -GUTTER,
-      marginRight: -GUTTER,
-      overflow: 'visible',
-    }}
-  >
-    {images.map(({ uri }, index) => (
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
+
+export default class Carousel extends PureComponent {
+  static propTypes = {
+    images: PropTypes.array.isRequired,
+    onPress: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+    onLongPress: PropTypes.func,
+  }
+
+  renderItem = ({ item, index }) => {
+    const { onPress, disabled, onLongPress, images } = this.props
+
+    return (
       <Wrapper
         maximumZoomScale={1.00000001}
         minimumZoomScale={1}
@@ -34,7 +28,7 @@ const Carousel = ({ images, onPress, disabled = false, onLongPress = null }) => 
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         bouncesZoom
-        key={uri}
+        key={item.uri}
         first={index === 0}
         last={index === images.length - 1}
       >
@@ -45,20 +39,38 @@ const Carousel = ({ images, onPress, disabled = false, onLongPress = null }) => 
           onLongPress={onLongPress}
         >
           <Picture
-            source={{ uri }}
+            source={{ uri: item.uri }}
             priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
+            index={index}
           />
         </Touchable>
       </Wrapper>
-    ))}
-  </ScrollView>
-)
+    )
+  }
 
-Carousel.propTypes = {
-  images: PropTypes.array.isRequired,
-  onPress: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
-  onLongPress: PropTypes.func,
+  render() {
+    const { images } = this.props
+
+    return (
+      <AnimatedFlatList
+        data={images}
+        keyboardShouldPersistTaps="always"
+        scrollEnabled={images.length > 1}
+        horizontal
+        directionalLockEnabled
+        showsHorizontalScrollIndicator={false}
+        decelerationRate="fast"
+        snapToInterval={SNAP_INTERVAL}
+        snapToAlignment="start"
+        scrollThrottle={10}
+        grow
+        renderItem={this.renderItem}
+        style={{
+          marginLeft: -GUTTER,
+          marginRight: -GUTTER,
+          overflow: 'visible',
+        }}
+      />
+    )
+  }
 }
-
-export default Carousel
