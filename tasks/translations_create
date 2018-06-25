@@ -1,0 +1,2 @@
+#!/bin/sh
+babel-node tasks/createTranslations.js 'src/**/{,*.}translations.json' 'src/translations/index.json'

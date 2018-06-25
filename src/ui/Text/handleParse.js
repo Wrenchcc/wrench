@@ -1,4 +1,4 @@
-import { navigateToWebView, navigateToProfile } from 'navigation'
+import { navigateToWebView, navigateToProfile } from 'navigation/actions'
 import { COLORS, FONTS } from 'ui/constants'
 
 // Actions

@@ -1,0 +1,2 @@
+#!/bin/sh
+node tasks/transformSVG.js 'assets/images/**/*.svg' 'assets/images' true && node tasks/createIndex.js 'assets/**/*.svg' assets/images

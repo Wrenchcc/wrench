@@ -7,17 +7,20 @@ export function setNavigationRef(navigatorRef) {
 }
 
 export function navigate(routeName, params = {}) {
-  navigator.dispatch(NavigationActions.navigate({
-    type: NavigationActions.NAVIGATE,
-    routeName,
-    params,
-  }))
+  navigator.dispatch(
+    NavigationActions.navigate({
+      type: NavigationActions.NAVIGATE,
+      routeName,
+      params,
+    })
+  )
 }
 
-export const navigateBack = () =>
-  navigator.dispatch(NavigationActions.back({
+export const navigateBack = () => navigator.dispatch(
+  NavigationActions.back({
     key: null,
-  }))
+  })
+)
 
 export const navigateToSignIn = () => navigate('AuthNavigator')
 export const navigateToFeed = () => navigate('feed')

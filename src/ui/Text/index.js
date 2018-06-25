@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import hitSlop from 'utils/hitSlop'
-import { Touchable } from 'ui'
+import Touchable from 'ui/Touchable'
 import handleParse from './handleParse'
 import { Base } from './styles'
 

@@ -1,0 +1,2 @@
+#!/bin/sh
+node node_modules/react-native/local-cli/cli.js run-ios --no-packager --simulator='iPhone X'

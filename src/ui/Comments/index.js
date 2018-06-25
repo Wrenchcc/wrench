@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard } from 'react-native'
-import { CommentField } from 'ui'
+import CommentField from 'ui/CommentField'
 import List from './List'
 import { Base } from './styles'
 

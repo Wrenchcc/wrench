@@ -3,9 +3,20 @@ import PropTypes from 'prop-types'
 import withLocalization from 'i18n/withLocalization'
 import { navigateToEditProject, navigateToPost } from 'navigation'
 import { Text } from 'ui'
+import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
 
-const onPressAction = type => (type === 'project' ? navigateToEditProject() : navigateToPost())
+// TODO: send data to routes
+const onPressAction = type => {
+  switch (type) {
+    case TYPES.PROJECT:
+      return () => navigateToEditProject()
+    case TYPES.POST:
+      return () => navigateToPost()
+    default:
+      return null
+  }
+}
 
 const EmptyState = ({ t, type = 'project' }) => (
   <Base>

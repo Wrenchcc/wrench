@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import withLocalization from 'i18n/withLocalization'
 import { COLORS } from 'ui/constants'
-import { Text } from 'ui'
+import Text from 'ui/Text'
 import { Base, Input, Button } from './styles'
 
 class CommentField extends Component {

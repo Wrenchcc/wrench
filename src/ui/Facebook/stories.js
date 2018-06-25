@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
 import { withCenter } from 'storybook/decorators'
-import Title from '.'
+import Facebook from '.'
 
-storiesOf('UI/Title', module)
+storiesOf('UI/Facebook', module)
   .addDecorator(withCenter)
-  .add('default', () => <Title>Here is a title!</Title>)
+  .add('default', () => <Facebook />)

@@ -15,10 +15,9 @@ const sections = {
       data: [
         {
           titleKey: 'share',
-          onPress: () =>
-            NativeShare.open({
-              title: 'shareContent',
-              url: WEBSITE_URL,
+          onPress: () => NativeShare.open({
+            title: 'shareContent',
+            url: WEBSITE_URL,
             }).catch(err => console.log(err)), // eslint-disable-line
         },
       ],
@@ -98,6 +97,11 @@ const sections = {
           type: 'switch',
           value: true,
         },
+        {
+          titleKey: 'articles',
+          type: 'switch',
+          value: true,
+        },
       ],
     },
   ],
@@ -157,17 +161,19 @@ const sections = {
 }
 
 export function mapRouteForSection(component) {
-  return mergeAll(Object.keys(sections).map(section => {
-    const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], sections[section])}`)
-    return {
-      [section]: {
-        component,
-        navigationOptions: {
-          headerTitle: <HeaderTitle>{title}</HeaderTitle>,
+  return mergeAll(
+    Object.keys(sections).map(section => {
+      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], sections[section])}`)
+      return {
+        [section]: {
+          component,
+          navigationOptions: {
+            headerTitle: <HeaderTitle>{title}</HeaderTitle>,
+          },
         },
-      },
-    }
-  }))
+      }
+    })
+  )
 }
 
 export default sections
