@@ -4,7 +4,8 @@
   "parser": "babel-eslint",
   "globals": {
     "__DEV__": true,
-    "fetch": true
+    "fetch": true,
+    "requestAnimationFrame": true
   },
   "rules": {
     "no-shadow": 0,
@@ -23,6 +24,7 @@
     "react/forbid-prop-types": 0,
     "react/prop-types": ["error", { "ignore": ["t"] }],
     "react/require-default-props": 0,
-    "react/destructuring-assignment": "never"
+    "react/destructuring-assignment": "never",
+    "no-restricted-properties": 0
   }
 }

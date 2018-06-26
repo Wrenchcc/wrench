@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, FlatList } from 'react-native'
-import { Touchable } from 'ui'
+import { Touchable, Zoomable } from 'ui'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { width, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 
@@ -22,28 +22,27 @@ export default class Carousel extends PureComponent {
 
     return (
       <Wrapper
-        maximumZoomScale={1.00000001}
-        minimumZoomScale={1}
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        bouncesZoom
         key={item.uri}
         first={index === 0}
         last={index === images.length - 1}
       >
-        <Touchable
-          onPress={onPress}
-          disabled={disabled}
-          activeOpacity={1}
-          onLongPress={onLongPress}
-        >
-          <Picture
-            source={{ uri: item.uri }}
-            priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
-            index={index}
-          />
-        </Touchable>
+        <Zoomable.Element>
+          <Touchable
+            onPress={onPress}
+            disabled={disabled}
+            activeOpacity={1}
+            onLongPress={onLongPress}
+          >
+            <Picture
+              source={{ uri: item.uri }}
+              priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
+              index={index}
+            />
+          </Touchable>
+        </Zoomable.Element>
       </Wrapper>
     )
   }

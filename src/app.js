@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import codePush from 'react-native-code-push'
 import SplashScreen from 'react-native-splash-screen'
 import { Navigation, setNavigationRef } from 'navigation'
-import { NetworkConnectivity } from 'ui'
+import { Zoomable, NetworkConnectivity } from 'ui'
 
 const checkFrequency = codePush.CheckFrequency.ON_APP_RESUME
 
@@ -15,10 +15,10 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <Zoomable.Provider>
         <Navigation ref={nav => setNavigationRef(nav)} />
         <NetworkConnectivity />
-      </Fragment>
+      </Zoomable.Provider>
     )
   }
 }
