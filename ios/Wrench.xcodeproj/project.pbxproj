@@ -37,6 +37,7 @@
 		16EB24D720D1770E00607698 /* inter_ui_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDBD3E73648B4CFFBE3D49B4 /* inter_ui_bold.ttf */; };
 		16F3F6CF20CAC31900F0A214 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16F3F6CD20CAC2E100F0A214 /* GoogleService-Info.plist */; };
 		238AE55F8A9F490D88E21CE9 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E009C4A932B14309903A601E /* libRNFirebase.a */; };
+		26785C84457142A187624114 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C713D067A204912B867C033 /* libRNGestureHandler.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D22182E1207BA90800A8487B /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D22182DB207BA8C900A8487B /* libRNCamera.a */; };
@@ -228,6 +229,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
 			remoteInfo = RCTCameraRoll;
+		};
+		169C98B720E2C05100E30EAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNGestureHandler;
 		};
 		16AF1E1420C41D8B00CB21A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -493,6 +501,7 @@
 		21E2EC5993376B076BB74F28 /* libPods-Wrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wrench.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29D53CB22902401BB8FF774A /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C713D067A204912B867C033 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6712040FE3E54D1DB2034A98 /* inter_ui.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui.ttf; path = ../assets/fonts/inter_ui.ttf; sourceTree = "<group>"; };
 		6AB4B5BE4C1F443A87BBEA35 /* inter_ui_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_medium.ttf; path = ../assets/fonts/inter_ui_medium.ttf; sourceTree = "<group>"; };
@@ -501,6 +510,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		D22182AB207BA8C900A8487B /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		D2704757207761A7000A01F4 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D270478C207761F1000A01F4 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "/Users/pontus.abrahamsson/Desktop/Wrench/node_modules/react-native/Libraries/Settings/../../../react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<absolute>"; };
@@ -548,6 +558,7 @@
 				0F17A22B05B340CB93FD9F35 /* libRNShare.a in Frameworks */,
 				238AE55F8A9F490D88E21CE9 /* libRNFirebase.a in Frameworks */,
 				EA52BD5D2E68B225F9D400B4 /* libPods-Wrench.a in Frameworks */,
+				26785C84457142A187624114 /* libRNGestureHandler.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +696,7 @@
 			children = (
 				D297F723E9284BFCB00F02E4 /* libRNShare.a */,
 				E009C4A932B14309903A601E /* libRNFirebase.a */,
+				3C713D067A204912B867C033 /* libRNGestureHandler.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -734,6 +746,14 @@
 			isa = PBXGroup;
 			children = (
 				16995C56207BF2D300A02189 /* libRCTCameraRoll.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		169C98B420E2C05100E30EAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				169C98B820E2C05100E30EAD /* libRNGestureHandler.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -823,6 +843,7 @@
 				29D53CB22902401BB8FF774A /* RCTFBSDK.xcodeproj */,
 				06F962EDE9F741239EB3BB86 /* RNShare.xcodeproj */,
 				9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */,
+				C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1073,6 +1094,10 @@
 					ProjectRef = 9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */;
 				},
 				{
+					ProductGroup = 169C98B420E2C05100E30EAD /* Products */;
+					ProjectRef = C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */;
+				},
+				{
 					ProductGroup = D2BCF3B42077628E002CEC26 /* Products */;
 					ProjectRef = D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */;
 				},
@@ -1281,6 +1306,13 @@
 			fileType = archive.ar;
 			path = libRCTCameraRoll.a;
 			remoteRef = 16995C55207BF2D300A02189 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		169C98B820E2C05100E30EAD /* libRNGestureHandler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGestureHandler.a;
+			remoteRef = 169C98B720E2C05100E30EAD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		16AF1E1520C41D8B00CB21A7 /* libCodePush.a */ = {
@@ -1638,6 +1670,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
 				"INFOPLIST_OTHER_PREPROCESSOR_FLAGS[sdk=*]" = "-traditional";
@@ -1646,6 +1679,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/Wrench\"",
 					"\"$(SRCROOT)/Wrench\"",
 					"\"$(SRCROOT)/Wrench\"",
 				);
@@ -1688,6 +1722,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
 				"INFOPLIST_OTHER_PREPROCESSOR_FLAGS[sdk=*]" = "-traditional";
@@ -1696,6 +1731,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/Wrench\"",
 					"\"$(SRCROOT)/Wrench\"",
 					"\"$(SRCROOT)/Wrench\"",
 				);
