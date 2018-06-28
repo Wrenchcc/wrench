@@ -58,10 +58,6 @@ export default class ZoomableProvider extends PureComponent {
     })
   }
 
-  gesturePosition: Animated.ValueXY
-
-  scaleValue: Animated.Value
-
   renderSelectedElement = () => {
     const { renderBackground } = this.props
     const { isDragging, selected } = this.state

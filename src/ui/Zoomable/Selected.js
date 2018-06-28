@@ -44,7 +44,6 @@ export default class Selected extends PureComponent {
   render() {
     const { selected, renderBackground = this.renderBackground } = this.props
     const { gesturePosition, scaleValue } = this.context
-
     const animatedStyle = {
       transform: gesturePosition.getTranslateTransform(),
     }
