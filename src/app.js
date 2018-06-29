@@ -15,10 +15,11 @@ class App extends Component {
 
   render() {
     return (
-      <Zoomable.Provider>
+      <Gateway.Provider>
+        <Gateway.Destination name="global" />
         <Navigation ref={nav => setNavigationRef(nav)} />
         <NetworkConnectivity />
-      </Zoomable.Provider>
+      </Gateway.Provider>
     )
   }
 }

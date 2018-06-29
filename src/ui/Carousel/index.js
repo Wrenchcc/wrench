@@ -52,6 +52,7 @@ export default class Carousel extends PureComponent {
 
     return (
       <AnimatedFlatList
+        keyExtractor={item => item.uri}
         data={images}
         keyboardShouldPersistTaps="always"
         scrollEnabled={images.length > 1}
