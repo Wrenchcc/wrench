@@ -1,5 +1,41 @@
 import S3 from 'aws-sdk/clients/s3'
 
+// function makeS3Request(data, file) {
+//   return new Promise((resolve, reject) => {
+//     const xhr = new XMLHttpRequest()
+//
+//     xhr.onreadystatechange = () => {
+//       if (xhr.readyState === 4) {
+//         if (xhr.status === 200) {
+//           resolve(data.url)
+//         } else {
+//           reject({
+//             status: xhr.status,
+//             statusText: xhr.statusText,
+//           })
+//         }
+//       }
+//     }
+//
+//     xhr.open('PUT', data.signed_request)
+//     xhr.setRequestHeader('Content-Type', file.type)
+//     xhr.send({
+//       uri: file.uri,
+//       type: data.file.type,
+//       name: data.file.name,
+//     })
+//   })
+// }
+//
+// async function upload(file) {
+//   const response = await fetch(
+//     `https://example.com/uploads/sign?file_name=${file.name}&file_type=${file.type}`
+//   )
+//
+//   const { data } = await response.json()
+//   return await makeS3Request(data, file)
+// }
+
 const API_VERSION = '2006-03-01'
 
 export default class Storage {

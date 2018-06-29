@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "aws-sdk": "^2.263.1",
+    "aws-sdk": "^2.265.1",
     "human-format": "^0.10.0",
     "javascript-time-ago": "^1.0.30",
     "ramda": "^0.25.0",
@@ -37,6 +37,7 @@
     "react-native-fast-image": "^4.0.14",
     "react-native-fbsdk": "^0.7.0",
     "react-native-firebase": "^4.2.0",
+    "react-native-gesture-handler": "^1.0.5",
     "react-native-haptic-feedback": "^1.1.7",
     "react-native-i18n": "^2.0.12",
     "react-native-linear-gradient": "^2.4.0",
@@ -47,7 +48,7 @@
     "react-native-swiper": "^1.5.13",
     "react-native-tab-view": "^1.0.2",
     "react-native-video": "^2.3.1",
-    "react-navigation": "^2.5.3",
+    "react-navigation": "^2.5.5",
     "styled-components": "^3.3.3",
     "url": "^0.11.0"
   },

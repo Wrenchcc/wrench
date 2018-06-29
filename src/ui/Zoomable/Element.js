@@ -97,8 +97,8 @@ export default class Element extends PureComponent {
       }),
     ]).start(() => {
       gesturePosition.setOffset({
-        x: 0,
-        y: (this.selectedMeasurement && this.selectedMeasurement.y) || 0,
+        x: this.selectedMeasurement.x,
+        y: this.selectedMeasurement.y,
       })
 
       this.opacity.setValue(1)
@@ -153,6 +153,7 @@ export default class Element extends PureComponent {
 
     const selectedMeasurement = await this.measureSelected()
     this.selectedMeasurement = selectedMeasurement
+
     onGestureStart({
       element: this,
       measurement: selectedMeasurement,
@@ -164,7 +165,7 @@ export default class Element extends PureComponent {
     })
 
     gesturePosition.setOffset({
-      x: 0,
+      x: selectedMeasurement.x,
       y: selectedMeasurement.y,
     })
 
@@ -175,7 +176,7 @@ export default class Element extends PureComponent {
   }
 
   generatePanHandlers() {
-    const handler = evt => typeof this.context.isDragging !== 'undefined' && evt.nativeEvent.touches.length === 2
+    const handler = evt => evt.nativeEvent.touches.length === 2
     this.gestureHandler = PanResponder.create({
       onStartShouldSetResponderCapture: () => true,
       onMoveShouldSetResponderCapture: () => true,
@@ -190,20 +191,13 @@ export default class Element extends PureComponent {
   }
 
   render() {
-    const { children } = this.props
-
     return (
       <Animated.View
-        style={[
-          styles.container,
-          {
-            opacity: this.opacity,
-          },
-        ]}
+        style={[styles.container, { opacity: this.opacity }]}
         ref={this.setRef}
         {...this.gestureHandler.panHandlers}
       >
-        {children}
+        {this.props.children}
       </Animated.View>
     )
   }

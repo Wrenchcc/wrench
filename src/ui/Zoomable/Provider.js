@@ -3,12 +3,6 @@ import PropTypes from 'prop-types'
 import { Animated, View } from 'react-native'
 import Selected from './Selected'
 
-const styles = {
-  container: {
-    flex: 1,
-  },
-}
-
 export default class ZoomableProvider extends PureComponent {
   scaleValue = new Animated.Value(1)
 
@@ -17,7 +11,6 @@ export default class ZoomableProvider extends PureComponent {
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
       .isRequired,
-    renderBackground: PropTypes.func,
   }
 
   static childContextTypes = {
@@ -39,7 +32,6 @@ export default class ZoomableProvider extends PureComponent {
       isDragging,
       onGestureStart: this.onGestureStart,
       onGestureRelease: this.onGestureRelease,
-
       gesturePosition: this.gesturePosition,
       scaleValue: this.scaleValue,
     }
@@ -53,31 +45,23 @@ export default class ZoomableProvider extends PureComponent {
   }
 
   onGestureRelease = () => {
-    this.setState({
-      isDragging: false,
-    })
+    this.setState({ isDragging: false })
   }
 
-  gesturePosition: Animated.ValueXY
-
-  scaleValue: Animated.Value
-
   renderSelectedElement = () => {
-    const { renderBackground } = this.props
     const { isDragging, selected } = this.state
 
     if (isDragging) {
-      return <Selected selected={selected} renderBackground={renderBackground} />
+      return <Selected selected={selected} />
     }
+
     return null
   }
 
   render() {
-    const { children } = this.props
-
     return (
-      <View style={styles.container}>
-        {children}
+      <View style={{ flex: 1 }}>
+        {this.props.children}
         {this.renderSelectedElement()}
       </View>
     )

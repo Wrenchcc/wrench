@@ -21,10 +21,13 @@ const styles = {
   },
 }
 
+const MINIMUM_SCALE = 1
+const MAXIMUM_SCALE = 5
+const SCALE_MULTIPLIER = 1.2
+
 export default class Selected extends PureComponent {
   static propTypes = {
     selected: PropTypes.object,
-    renderBackground: PropTypes.func,
   }
 
   static contextTypes = {
@@ -32,40 +35,34 @@ export default class Selected extends PureComponent {
     scaleValue: PropTypes.object,
   }
 
-  renderBackground = (selected, scaleValue) => {
+  render() {
+    const { selected } = this.props
+    const { gesturePosition, scaleValue } = this.context
+
+    const scale = scaleValue.interpolate({
+      inputRange: [MINIMUM_SCALE, MAXIMUM_SCALE],
+      outputRange: [MINIMUM_SCALE, MAXIMUM_SCALE * SCALE_MULTIPLIER],
+      extrapolate: 'clamp',
+    })
+
     const backgroundOpacityValue = scaleValue.interpolate({
       inputRange: [1.2, 3],
       outputRange: [0, 0.6],
     })
 
-    return <Animated.View style={[styles.background, { opacity: backgroundOpacityValue }]} />
-  }
-
-  render() {
-    const { selected, renderBackground = this.renderBackground } = this.props
-    const { gesturePosition, scaleValue } = this.context
-
-    const animatedStyle = {
-      transform: gesturePosition.getTranslateTransform(),
-    }
-    animatedStyle.transform.push({
-      scale: scaleValue,
-    })
-
-    const elementStyle = [
-      {
-        position: 'absolute',
-        zIndex: 10,
-        width: selected.measurement.w,
-        height: selected.measurement.h,
-      },
-      animatedStyle,
-    ]
-
+    // TODO: Disable fade in on child
     return (
       <View style={styles.container}>
-        {renderBackground(selected, scaleValue, gesturePosition)}
-        <Animated.View style={elementStyle}>{selected.element.props.children}</Animated.View>
+        <Animated.View style={[styles.background, { opacity: backgroundOpacityValue }]} />
+        <Animated.View
+          style={{
+            position: 'absolute',
+            zIndex: 10,
+            transform: [...gesturePosition.getTranslateTransform(), { scale }],
+          }}
+        >
+          {selected.element.props.children}
+        </Animated.View>
       </View>
     )
   }

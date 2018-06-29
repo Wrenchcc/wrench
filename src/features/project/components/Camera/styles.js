@@ -33,18 +33,17 @@ export const Content = styled.View`
 export const Bottom = styled.View`
   flex: 1;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: ${isIphoneX ? 40 : 20};
 `
 
 export const TakePicture = styled(UiTouchable)`
+  justify-content: center;
+  align-self: center;
   width: 80;
   height: 80;
   border-width: 3;
   border-color: ${COLORS.WHITE};
   border-radius: 80;
-  margin-left: -20px;
 `
