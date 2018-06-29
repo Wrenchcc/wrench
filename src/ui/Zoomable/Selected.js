@@ -37,7 +37,7 @@ export default class Selected extends PureComponent {
 
   render() {
     const { selected } = this.props
-    const { scaleValue, gesturePosition } = this.context
+    const { gesturePosition, scaleValue } = this.context
 
     const scale = scaleValue.interpolate({
       inputRange: [MINIMUM_SCALE, MAXIMUM_SCALE],
@@ -45,23 +45,20 @@ export default class Selected extends PureComponent {
       extrapolate: 'clamp',
     })
 
-    const opacity = scaleValue.interpolate({
+    const backgroundOpacityValue = scaleValue.interpolate({
       inputRange: [1.2, 3],
       outputRange: [0, 0.6],
     })
 
+    // TODO: Disable fade in on child
     return (
       <View style={styles.container}>
-        <Animated.View style={[styles.background, { opacity }]} />
+        <Animated.View style={[styles.background, { opacity: backgroundOpacityValue }]} />
         <Animated.View
           style={{
             position: 'absolute',
             zIndex: 10,
-            transform: [
-              { scale },
-              { translateX: gesturePosition.x },
-              { translateY: gesturePosition.y },
-            ],
+            transform: [...gesturePosition.getTranslateTransform(), { scale }],
           }}
         >
           {selected.element.props.children}

@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
+import { Animated, Easing } from 'react-native'
 import { PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
+
+const ANIMATION_DURATION = 200
 
 export default class Element extends React.Component {
   opacity = new Animated.Value(1)
@@ -17,45 +19,87 @@ export default class Element extends React.Component {
     gesturePosition: PropTypes.object,
   }
 
-  onPanStateChange = async ({ nativeEvent }) => {
-    const { scaleValue, onGestureStart, onGestureRelease, gesturePosition } = this.context
-
-    if (nativeEvent.state === State.BEGAN) {
-      const measurement = await this.measureSelected()
-
-      onGestureStart({
-        element: this,
-        measurement,
-      })
-
-      gesturePosition.setOffset({
-        x: measurement.x,
-        y: measurement.y,
-      })
-
-      gesturePosition.setValue({
-        x: 0,
-        y: 0,
-      })
-
-      Animated.timing(this.opacity, {
-        toValue: 0,
-        duration: 200,
-      }).start()
-    }
-
-    if (nativeEvent.state === State.END) {
-      scaleValue.setValue(1)
-      this.opacity.setValue(1)
-      onGestureRelease()
+  onPanStateChange = ({ nativeEvent }) => {
+    switch (nativeEvent.state) {
+      case State.BEGAN:
+        return this.onGestureStart()
+      case State.END:
+        return this.onGestureRelease()
+      default:
+        return null
     }
   }
 
+  onGestureStart = async () => {
+    const { onGestureStart, gesturePosition } = this.context
+
+    const measurement = await this.measureSelected()
+    // this.measurement = measurement
+
+    onGestureStart({
+      element: this,
+      measurement,
+    })
+
+    gesturePosition.setOffset({
+      x: measurement.x,
+      y: measurement.y,
+    })
+
+    // gesturePosition.setValue({
+    //   x: 0,
+    //   y: 0,
+    // })
+
+    Animated.timing(this.opacity, {
+      toValue: 0,
+      duration: ANIMATION_DURATION,
+    }).start()
+  }
+
+  onGestureRelease() {
+    const { gesturePosition, scaleValue, onGestureRelease } = this.context
+    // Animated.parallel([
+    //   Animated.timing(gesturePosition.x, {
+    //     toValue: 0,
+    //     duration: ANIMATION_DURATION,
+    //     easing: Easing.ease,
+    //     useNativeDriver: true,
+    //   }),
+    //   Animated.timing(gesturePosition.y, {
+    //     toValue: 0,
+    //     duration: ANIMATION_DURATION,
+    //     easing: Easing.ease,
+    //     useNativeDriver: true,
+    //   }),
+    //   Animated.timing(scaleValue, {
+    //     toValue: 1,
+    //     duration: ANIMATION_DURATION,
+    //     easing: Easing.ease,
+    //     useNativeDriver: true,
+    //   }),
+    // ]).start(() => {
+    //   gesturePosition.setOffset({
+    //     x: this.measurement.x,
+    //     y: this.measurement.y,
+    //   })
+    //   scaleValue.setValue(1)
+    //   this.opacity.setValue(1)
+    //   requestAnimationFrame(() => {
+    //     onGestureRelease()
+    //   })
+    // })
+
+    scaleValue.setValue(1)
+    this.opacity.setValue(1)
+    onGestureRelease()
+  }
+
   onGestureMove = ({ nativeEvent }) => {
-    // const { gesturePosition } = this.context
-    // const { translationX, translationY } = nativeEvent
-    // gesturePosition.x.setValue(translationX)
-    // gesturePosition.y.setValue(translationY)
+    const { gesturePosition } = this.context
+    const { translationX, translationY } = nativeEvent
+    gesturePosition.x.setValue(translationX)
+    gesturePosition.y.setValue(translationY)
   }
 
   setScale = ({ nativeEvent }) => {
@@ -67,8 +111,9 @@ export default class Element extends React.Component {
     this.parent = el
   }
 
+  // https://facebook.github.io/react-native/docs/direct-manipulation.html#measurelayoutrelativetonativenode-onsuccess-onfail
+  /* eslint-disable no-underscore-dangle */
   measureSelected = async () => {
-    /* eslint-disable no-underscore-dangle */
     const parentMeasurement = await new Promise((resolve, reject) => {
       try {
         this.parent._component.measureInWindow((winX, winY, winWidth, winHeight) => {
@@ -82,7 +127,6 @@ export default class Element extends React.Component {
       } catch (e) {
         reject(e)
       }
-      /* eslint-enable no-underscore-dangle */
     })
 
     return {
