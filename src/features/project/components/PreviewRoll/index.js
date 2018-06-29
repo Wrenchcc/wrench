@@ -1,17 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Touchable } from 'ui'
+import { CameraRoll } from 'react-native'
 import { cameraRoll } from 'images'
-import { Preview } from './styles'
+import { Button, Preview, Icon } from './styles'
 
-const PreviewRoll = ({ onPress }) => (
-  <Touchable onPress={onPress} hapticFeedback="impactLight">
-    <Preview source={cameraRoll} />
-  </Touchable>
-)
+export default class PreviewRoll extends Component {
+  static propTypes = {
+    onPress: PropTypes.func.isRequired,
+  }
 
-PreviewRoll.propTypes = {
-  onPress: PropTypes.func.isRequired,
+  state = {
+    image: '',
+  }
+
+  componentDidMount() {
+    this.loadPreviewImage()
+  }
+
+  loadPreviewImage = async () => {
+    const data = await CameraRoll.getPhotos({ first: 1 })
+    const image = data.edges[0].node.image.uri
+    this.setState({ image })
+  }
+
+  render = () => (
+    <Button onPress={this.props.onPress} hapticFeedback="impactLight">
+      {this.state.image ? (
+        <Preview source={{ uri: this.state.image }} />
+      ) : (
+        <Icon source={cameraRoll} />
+      )}
+    </Button>
+  )
 }
-
-export default PreviewRoll
