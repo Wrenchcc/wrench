@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { Fragment, PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, View } from 'react-native'
+import { Animated } from 'react-native'
 import Selected from './Selected'
 
-export default class ZoomableProvider extends PureComponent {
+export default class Provider extends PureComponent {
   scaleValue = new Animated.Value(1)
 
   gesturePosition = new Animated.ValueXY()
@@ -60,10 +60,10 @@ export default class ZoomableProvider extends PureComponent {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <Fragment>
         {this.props.children}
         {this.renderSelectedElement()}
-      </View>
+      </Fragment>
     )
   }
 }

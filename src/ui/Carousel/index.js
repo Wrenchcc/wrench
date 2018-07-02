@@ -29,20 +29,20 @@ export default class Carousel extends PureComponent {
         first={index === 0}
         last={index === images.length - 1}
       >
-        <Zoomable.Element>
-          <Touchable
-            onPress={onPress}
-            disabled={disabled}
-            activeOpacity={1}
-            onLongPress={onLongPress}
-          >
+        <Touchable
+          onPress={onPress}
+          disabled={disabled}
+          activeOpacity={1}
+          onLongPress={onLongPress}
+        >
+          <Zoomable.Element>
             <Picture
               source={{ uri: item.uri }}
               priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
               index={index}
             />
-          </Touchable>
-        </Zoomable.Element>
+          </Zoomable.Element>
+        </Touchable>
       </Wrapper>
     )
   }

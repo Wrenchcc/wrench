@@ -46,11 +46,13 @@ export default class Selected extends PureComponent {
     })
 
     const backgroundOpacityValue = scaleValue.interpolate({
-      inputRange: [1.2, 3],
-      outputRange: [0, 0.6],
+      inputRange: [1, 1.2, 3],
+      outputRange: [0, 0.5, 0.8],
     })
 
-    // TODO: Disable fade in on child
+    const transform = [...gesturePosition.getTranslateTransform(), { scale }]
+
+    // TODO: See if cloneElement glitches
     return (
       <View style={styles.container}>
         <Animated.View style={[styles.background, { opacity: backgroundOpacityValue }]} />
@@ -58,10 +60,10 @@ export default class Selected extends PureComponent {
           style={{
             position: 'absolute',
             zIndex: 10,
-            transform: [...gesturePosition.getTranslateTransform(), { scale }],
+            transform,
           }}
         >
-          {selected.element.props.children}
+          {React.cloneElement(selected.element.props.children, { disableAnimation: true })}
         </Animated.View>
       </View>
     )

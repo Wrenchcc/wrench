@@ -1,4 +1,4 @@
 import Provider from './Provider'
-import Element from './Exprimental'
+import Element from './Element'
 
 export default { Provider, Element }
