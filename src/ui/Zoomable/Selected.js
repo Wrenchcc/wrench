@@ -19,6 +19,10 @@ const styles = {
     right: 0,
     backgroundColor: 'black',
   },
+  inner: {
+    position: 'absolute',
+    zIndex: 10,
+  },
 }
 
 const MINIMUM_SCALE = 1
@@ -45,24 +49,17 @@ export default class Selected extends PureComponent {
       extrapolate: 'clamp',
     })
 
-    const backgroundOpacityValue = scaleValue.interpolate({
+    const opacity = scaleValue.interpolate({
       inputRange: [1, 1.2, 3],
       outputRange: [0, 0.5, 0.8],
     })
 
     const transform = [...gesturePosition.getTranslateTransform(), { scale }]
 
-    // TODO: See if cloneElement glitches
     return (
       <View style={styles.container}>
-        <Animated.View style={[styles.background, { opacity: backgroundOpacityValue }]} />
-        <Animated.View
-          style={{
-            position: 'absolute',
-            zIndex: 10,
-            transform,
-          }}
-        >
+        <Animated.View style={[styles.background, { opacity }]} />
+        <Animated.View style={{ ...styles.inner, transform }}>
           {React.cloneElement(selected.element.props.children, { disableAnimation: true })}
         </Animated.View>
       </View>

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, Easing } from 'react-native'
+import { Animated } from 'react-native'
 import { PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
 
-const ANIMATION_DURATION = 200
+const ANIMATION_DURATION = 250
 
 export default class Element extends PureComponent {
   opacity = new Animated.Value(1)
@@ -24,6 +24,9 @@ export default class Element extends PureComponent {
       case State.BEGAN:
         return this.onGestureStart()
       case State.END:
+      case State.FAILED:
+      case State.UNDETERMINED:
+      case State.CANCELLED:
         return this.onGestureRelease()
       default:
         return null
@@ -36,15 +39,9 @@ export default class Element extends PureComponent {
     const measurement = await this.measureSelected()
     this.measurement = measurement
 
-    onGestureStart({
-      element: this,
-      measurement,
-    })
+    onGestureStart({ element: this, measurement })
 
-    gesturePosition.setValue({
-      x: 0,
-      y: 0,
-    })
+    gesturePosition.setValue({ x: 0, y: 0 })
 
     gesturePosition.setOffset({
       x: measurement.x,
@@ -61,31 +58,32 @@ export default class Element extends PureComponent {
     const { gesturePosition, scaleValue, onGestureRelease } = this.context
 
     Animated.parallel([
-      Animated.timing(gesturePosition.x, {
+      Animated.spring(gesturePosition.x, {
+        bounciness: 3,
         toValue: 0,
-        duration: ANIMATION_DURATION,
-        easing: Easing.ease,
         useNativeDriver: true,
       }),
-      Animated.timing(gesturePosition.y, {
+      Animated.spring(gesturePosition.y, {
+        bounciness: 3,
         toValue: 0,
-        duration: ANIMATION_DURATION,
-        easing: Easing.ease,
         useNativeDriver: true,
       }),
-      Animated.timing(scaleValue, {
+      Animated.spring(scaleValue, {
+        bounciness: 1,
         toValue: 1,
-        duration: ANIMATION_DURATION,
-        easing: Easing.ease,
         useNativeDriver: true,
       }),
     ]).start(() => {
       gesturePosition.setOffset({
-        x: (this.measurement && this.measurement.x) || 0,
-        y: (this.measurement && this.measurement.y) || 0,
+        x: this.measurement.x,
+        y: this.measurement.y,
       })
 
+      // Reset original component opacity
       this.opacity.setValue(1)
+
+      // Reset scale value
+      scaleValue.setValue(1)
 
       requestAnimationFrame(() => {
         onGestureRelease()
@@ -96,8 +94,11 @@ export default class Element extends PureComponent {
   onGestureMove = ({ nativeEvent }) => {
     const { gesturePosition } = this.context
     const { translationX, translationY } = nativeEvent
-    gesturePosition.x.setValue(translationX)
-    gesturePosition.y.setValue(translationY)
+
+    gesturePosition.setValue({
+      x: translationX,
+      y: translationY,
+    })
   }
 
   onGesturePinch = ({ nativeEvent }) => {

@@ -6,7 +6,9 @@ export default {
     height: HEADER_HEIGHT,
     backgroundColor: COLORS.WHITE,
     borderBottomWidth: 0,
-    paddingHorizontal: 20,
     elevation: 0,
+  },
+  headerForceInset: {
+    horizontal: 20,
   },
 }

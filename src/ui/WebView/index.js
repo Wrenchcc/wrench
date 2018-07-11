@@ -48,11 +48,11 @@ class WebView extends PureComponent {
     }
   }
 
-  onLoadEnd = args => this.onLoadEndHandlers.forEach(fx => fx(...args))
+  onLoadEnd = args => this.onLoadEndHandlers.forEach(fx => fx(args))
 
-  onLoadStart = args => this.onLoadStartHandlers.forEach(fx => fx(...args))
+  onLoadStart = args => this.onLoadStartHandlers.forEach(fx => fx(args))
 
-  onLoadError = args => this.onLoadErrorHandlers.forEach(fx => fx(...args))
+  onLoadError = args => this.onLoadErrorHandlers.forEach(fx => fx(args))
 
   onFirstPageLoadEnd = () => {
     this.removeHandler('onLoadEndHandlers', this.onFirstPageLoadEnd)

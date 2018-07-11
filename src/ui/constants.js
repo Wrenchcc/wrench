@@ -21,7 +21,7 @@ export const COLORS = {
   DARK: 'rgb(000, 000, 000)',
   GREY: 'rgb(109, 111, 118)',
   RED: 'rgb(246, 86, 86)',
-  ORANGE: 'rgb(246, 116, 86)',
+  ORANGE: 'rgb(246, 138, 86)',
   DIVIDER: 'rgb(230, 231, 233)',
   LIGHT_GREY: 'rgb(168, 168, 173)',
   PRIMARY: 'rgb(42, 119, 90)',
