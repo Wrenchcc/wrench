@@ -1,2 +1,2 @@
 #!/bin/sh
-babel-node tasks/createStoriesEntry.js 'src/**/{,*.}stories{,.ios,.android}.js' 'storybook/stories.js'
+./node_modules/.bin/babel-node -i .babelrc tasks/createStoriesEntry.js 'src/**/{,*.}stories{,.ios,.android}.js' 'storybook/stories.js'

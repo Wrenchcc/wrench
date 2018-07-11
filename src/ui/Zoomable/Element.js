@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
+import { Animated, View } from 'react-native'
 import { PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
+import { COLORS } from 'ui/constants'
 
 const ANIMATION_DURATION = 250
 
@@ -140,12 +141,13 @@ export default class Element extends PureComponent {
         maxPointers={2}
         minDist={0}
         minDeltaX={0}
-        avgTouches
       >
         <PinchGestureHandler simultaneousHandlers={imagePan} onGestureEvent={this.onGesturePinch}>
-          <Animated.View ref={this.setRef} style={{ opacity: this.opacity }}>
-            {this.props.children}
-          </Animated.View>
+          <View style={{ backgroundColor: COLORS.BEIGE }}>
+            <Animated.View ref={this.setRef} style={{ opacity: this.opacity }}>
+              {this.props.children}
+            </Animated.View>
+          </View>
         </PinchGestureHandler>
       </PanGestureHandler>
     )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import hoistNonReactStatics from 'hoist-non-react-statics'
 import I18n from 'react-native-i18n'
 
 I18n.fallbacks = true
@@ -18,6 +19,8 @@ export default function withLocalization(WrappedComponent, contextPath) {
   }
 
   WithLocalization.displayName = `WithLocalization(${getDisplayName(WrappedComponent)})`
+
+  hoistNonReactStatics(WithLocalization, WrappedComponent)
 
   return WithLocalization
 }

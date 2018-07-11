@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Keyboard, KeyboardAvoidingView } from 'react-native'
+import withLocalization from 'i18n/withLocalization'
 import {
   InfiniteList,
   CommentItem,
@@ -15,11 +16,12 @@ let scrollView = null
 // TODO: Make platform specific
 // TODO: Show latest searched users
 // TODO: Remove added user from suggestions
+// TODO: Fix title localization
 const KEYBOARD_OFFSET = 190
 const REGX_PATTERN = '\\@[a-z0-9_-]+|\\@'
 const TRIGGER = '@'
 
-export default class Comments extends Component {
+class Comments extends Component {
   static navigationOptions = () => ({
     headerTitle: (
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>Comments</HeaderTitle>
@@ -129,3 +131,5 @@ export default class Comments extends Component {
     </View>
   )
 }
+
+export default withLocalization(Comments, 'Comments')

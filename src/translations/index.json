@@ -74,6 +74,9 @@
     "SelectProject": {
       "create": "Create a new project"
     },
+    "Comments": {
+      "title": "Comments"
+    },
     "SearchTab": {
       "people": "People",
       "projects": "Projects"
