@@ -6,8 +6,6 @@ import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
 
-// HoC createAnimatedComponent wraps child referene with _component
-// In future use getNode() instead of el._component
 const InfiniteList = ({
   contentContainerStyle = {},
   paddingHorizontal = 20,
@@ -20,7 +18,7 @@ const InfiniteList = ({
 }) => (
   <AnimatedFlatlist
     style={{ flex: 1 }}
-    ref={el => el && scrollRef(el._component)} // eslint-disable-line
+    ref={el => el && scrollRef(el.getNode())}
     keyboardShouldPersistTaps="always"
     keyboardDismissMode="on-drag"
     contentContainerStyle={{

@@ -35,8 +35,14 @@ export default function withKeyboardHandler(WrappedComponent) {
 
     keyboardWillShow = () => {
       const currentlyFocusedField = TextInput.State.currentlyFocusedField()
-      const scrollResponder = this.scrollView.getScrollResponder()
-      scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
+      const responder = this.scrollView.getScrollResponder()
+
+      // TODO: https://github.com/facebook/react-native/pull/19834
+      if (!currentlyFocusedField || !responder) {
+        return
+      }
+
+      responder.scrollResponderScrollNativeHandleToKeyboard(
         findNodeHandle(currentlyFocusedField),
         ADDITIONAL_OFFSET,
         true

@@ -1454,9 +1454,9 @@ autoprefixer@^8.6.0:
     postcss "^6.0.23"
     postcss-value-parser "^3.2.3"
 
-aws-sdk@^2.272.1:
-  version "2.272.1"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.272.1.tgz#d81e6c6f3e82d55cf98250650de4c079c89b76b7"
+aws-sdk@^2.273.1:
+  version "2.273.1"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.273.1.tgz#69398a128090c71f0c66480b5c32054773e4c03f"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -7882,9 +7882,9 @@ react-native-fbsdk@^0.7.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
-react-native-firebase@^4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.3.4.tgz#fa0aa984f71b12a20acd2553c8fb89777dcb4794"
+react-native-firebase@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-4.3.5.tgz#0c9999453efbb62f2770a027f44b5ee27bfb1e6d"
   dependencies:
     opencollective "^1.0.3"
     postinstall-build "^5.0.1"
