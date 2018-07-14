@@ -17,9 +17,12 @@ let scrollView = null
 // TODO: Show latest searched users
 // TODO: Remove added user from suggestions
 // TODO: Fix title localization
+// TODO: Close when no users found
+// Add mention style to save
 const KEYBOARD_OFFSET = 190
-const REGX_PATTERN = '\\@[a-z0-9_-]+|\\@'
+const PATTERN = '\\@[a-z0-9_-]+|\\@'
 const TRIGGER = '@'
+const EMPTY = ' '
 
 class Comments extends Component {
   static navigationOptions = () => ({
@@ -28,21 +31,38 @@ class Comments extends Component {
     ),
   })
 
+  previousChar = ' '
+
+  isTrackingStarted = false
+
   state = {
     reply: null,
-    mention: null,
-    text: '',
     isOpen: false,
+    keyword: '',
+    text: '',
   }
 
-  onReply = userName => {
+  onReply = ({ userName }) => {
     this.textInput.focus()
-    this.onChangeText(`@${userName} `)
+    this.setState({ text: `@${userName} ` })
   }
 
   onChangeText = text => {
-    this.identifyKeyword(text)
     this.setState({ text })
+    const lastChar = text.substr(text.length - 1)
+    if (lastChar === TRIGGER) {
+      this.startTracking()
+    } else if ((lastChar === EMPTY && this.isTrackingStarted) || text === '') {
+      this.stopTracking()
+    }
+    this.previousChar = lastChar
+    this.identifyKeyword(text)
+  }
+
+  onMention = ({ userName }) => {
+    const comment = this.state.text.slice(0, -this.state.keyword.length)
+    this.setState({ text: `${comment}@${userName} ` })
+    this.stopTracking()
   }
 
   setRef = el => {
@@ -50,28 +70,33 @@ class Comments extends Component {
   }
 
   identifyKeyword = text => {
-    const lastChar = text.substr(text.length - 1)
-    const pattern = new RegExp(REGX_PATTERN, 'gi')
-    const keywordArray = text.match(pattern)
-    if (keywordArray && !!keywordArray.length) {
-      const mention = keywordArray[keywordArray.length - 1]
-      this.setState({ mention })
-
-      if (lastChar === TRIGGER) {
+    if (this.isTrackingStarted) {
+      const pattern = new RegExp(PATTERN, 'gi')
+      const keywordArray = text.match(pattern)
+      if (keywordArray && !!keywordArray.length) {
+        const lastKeyword = keywordArray[keywordArray.length - 1]
+        this.setState({ keyword: lastKeyword })
         this.openMention()
-      } else {
-        this.closeMention()
       }
     }
   }
 
-  openMention = () => this.setState({ isOpen: true })
+  startTracking = () => {
+    this.isTrackingStarted = true
+    this.openMention()
+  }
 
-  closeMention = selected => {
-    if (!selected) return
-    const { text, mention } = this.state
-    const newText = text.replace(mention, `@${selected.userName} `)
-    this.setState({ text: newText, mention: null, isOpen: false })
+  stopTracking = () => {
+    this.isTrackingStarted = false
+    this.closeMention()
+  }
+
+  openMention = () => {
+    this.setState({ isOpen: true })
+  }
+
+  closeMention = () => {
+    this.setState({ isOpen: false })
   }
 
   handleSubmit = () => {
@@ -93,7 +118,7 @@ class Comments extends Component {
         keyboardVerticalOffset={KEYBOARD_OFFSET}
       >
         {this.state.isOpen ? (
-          <Mention onPress={this.closeMention} query={this.state.mention.replace(TRIGGER, '')} />
+          <Mention onPress={this.onMention} query={this.state.keyword.replace(TRIGGER, '')} />
         ) : (
           <InfiniteList
             scrollRef={ref => {

@@ -40,7 +40,7 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
           </Row>
           <Row>
             <TimeAgo date={createdAt} />
-            <Reply medium fontSize={12} onPress={() => onReply(user.userName)}>
+            <Reply medium fontSize={12} onPress={() => onReply(user)}>
               Reply
             </Reply>
           </Row>

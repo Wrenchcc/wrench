@@ -5,7 +5,6 @@ import { navigateToOnboarding } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import { Button, Text } from './styled'
 
-// TODO: Implement mutation
 class Facebook extends PureComponent {
   onPress = () => {
     LoginManager.logInWithReadPermissions(['public_profile']).then(
