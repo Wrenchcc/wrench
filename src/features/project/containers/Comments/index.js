@@ -9,6 +9,7 @@ import {
   Mention,
   HeaderTitle,
 } from 'ui'
+import { isIphone } from 'utils/platform'
 import data from 'fixtures/comments'
 
 let scrollView = null
@@ -19,8 +20,8 @@ let scrollView = null
 // TODO: Fix title localization
 // TODO: Handle multiline
 // TODO: Format user data to save [user:1]
-const KEYBOARD_OFFSET = 250
-const MENTION_OFFSET = 345
+const KEYBOARD_OFFSET = isIphone ? 180 : 0
+const MENTION_OFFSET = isIphone ? 280 : 0
 const TRIGGER = '@'
 
 class Comments extends Component {
@@ -79,6 +80,7 @@ class Comments extends Component {
   render = () => (
     <View style={{ flex: 1 }}>
       <KeyboardAvoidingView
+        enabled={isIphone}
         behavior="padding"
         style={{ flex: 1 }}
         keyboardVerticalOffset={KEYBOARD_OFFSET}
@@ -109,7 +111,7 @@ class Comments extends Component {
         />
       </KeyboardAvoidingView>
 
-      <KeyboardAccessoryView style={{ flex: 1, paddingLeft: 20, paddingRight: 20 }}>
+      <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
         <CommentField
           onRef={this.setRef}
           onSubmitEditing={this.onSubmitEditing}
@@ -119,6 +121,7 @@ class Comments extends Component {
           value={this.state.text}
           openMention={this.openMention}
           closeMention={this.closeMention}
+          disabled={this.state.text.length === 0}
         />
       </KeyboardAccessoryView>
     </View>

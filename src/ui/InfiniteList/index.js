@@ -18,7 +18,6 @@ const InfiniteList = ({
   ...props
 }) => (
   <Fragment>
-    {withComments && <Gateway.Destination name="mention" />}
     <AnimatedFlatlist
       style={{ flex: 1 }}
       ref={el => el && scrollRef(el.getNode())}
@@ -35,6 +34,7 @@ const InfiniteList = ({
       {...onScroll && { onScroll, scrollEventThrottle: 16 }}
       {...props}
     />
+    {withComments && <Gateway.Destination name="mention" />}
   </Fragment>
 )
 

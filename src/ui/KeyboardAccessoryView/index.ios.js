@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Keyboard, LayoutAnimation, Platform } from 'react-native'
+import { View, Keyboard, LayoutAnimation } from 'react-native'
 
 const styles = {
   accessory: {
@@ -19,20 +19,6 @@ const accessoryAnimation = (duration, easing, animationConfig = null) => {
     return animationConfig
   }
 
-  if (Platform.OS === 'android') {
-    return {
-      duration: 200,
-      create: {
-        duration: 200,
-        type: LayoutAnimation.Types.linear,
-        property: LayoutAnimation.Properties.opacity,
-      },
-      update: {
-        type: LayoutAnimation.Types.linear,
-      },
-    }
-  }
-
   return LayoutAnimation.create(
     duration,
     LayoutAnimation.Types[easing],
@@ -43,17 +29,9 @@ const accessoryAnimation = (duration, easing, animationConfig = null) => {
 export default class KeyboardAccessoryView extends Component {
   static propTypes = {
     style: PropTypes.object,
-    animateOn: PropTypes.oneOf(['ios', 'android', 'all', 'none']),
     animationConfig: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-    onKeyboardShowDelay: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-    androidWindowSoftInputAdjustResize: PropTypes.bool,
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
       .isRequired,
-  }
-
-  static defaultProps = {
-    animateOn: 'ios',
-    androidWindowSoftInputAdjustResize: false,
   }
 
   constructor(props) {
@@ -63,7 +41,6 @@ export default class KeyboardAccessoryView extends Component {
       keyboardHeight: 0,
       accessoryHeight: 50,
       visibleAccessoryHeight: 50,
-      isKeyboardVisible: false,
     }
 
     this.handleKeyboardShow = this.handleKeyboardShow.bind(this)
@@ -71,15 +48,12 @@ export default class KeyboardAccessoryView extends Component {
   }
 
   componentWillMount() {
-    const keyboardShowEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow'
-    const keyboardHideEvent = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide'
-
     this.keyboardShowEventListener = Keyboard.addListener(
-      keyboardShowEvent,
+      'keyboardWillShow',
       this.handleKeyboardShow
     )
     this.keyboardHideEventListener = Keyboard.addListener(
-      keyboardHideEvent,
+      'keyboardWillHide',
       this.handleKeyboardHide
     )
   }
@@ -101,64 +75,46 @@ export default class KeyboardAccessoryView extends Component {
       return
     }
 
-    const keyboardHeight = Platform.select({
-      ios: keyboardEvent.endCoordinates.height,
-      android: this.props.androidWindowSoftInputAdjustResize && keyboardEvent.endCoordinates.height,
-    })
-
     const keyboardAnimate = () => {
-      const { animationConfig, animateOn } = this.props
+      const { animationConfig } = this.props
 
-      if (animateOn === 'all' || Platform.OS === animateOn) {
-        LayoutAnimation.configureNext(
-          accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig)
-        )
-      }
+      LayoutAnimation.configureNext(
+        accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig)
+      )
 
       this.setState({
-        isKeyboardVisible: true,
-        keyboardHeight,
+        keyboardHeight: keyboardEvent.endCoordinates.height,
       })
     }
 
-    if (Platform.OS === 'ios' || typeof this.props.onKeyboardShowDelay !== 'number') {
-      keyboardAnimate()
-    } else {
-      setTimeout(() => {
-        keyboardAnimate()
-      }, this.props.onKeyboardShowDelay)
-    }
+    keyboardAnimate()
 
     this.setState(prevState => ({
-      isKeyboardVisible: true,
       keyboardHeight: keyboardEvent.endCoordinates.height,
       accessoryHeight: prevState.visibleAccessoryHeight,
     }))
   }
 
   handleKeyboardHide(keyboardEvent) {
-    const { animateOn, animationConfig } = this.props
+    const { animationConfig } = this.props
 
-    if (animateOn === 'all' || Platform.OS === animateOn) {
-      LayoutAnimation.configureNext(
-        animationConfig
-          || accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig)
-      )
-    }
+    LayoutAnimation.configureNext(
+      animationConfig
+        || accessoryAnimation(keyboardEvent.duration, keyboardEvent.easing, animationConfig)
+    )
 
     this.setState(prevState => ({
-      isKeyboardVisible: false,
       keyboardHeight: 0,
       accessoryHeight: prevState.accessoryHeight,
     }))
   }
 
   render() {
-    const { isKeyboardVisible, accessoryHeight, keyboardHeight } = this.state
+    const { accessoryHeight, keyboardHeight } = this.state
     const { style } = this.props
 
     return (
-      <View style={{ height: isKeyboardVisible || accessoryHeight }}>
+      <View style={{ height: accessoryHeight }}>
         <View
           style={[
             styles.accessory,

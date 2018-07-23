@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { filter, isEmpty } from 'ramda'
 import { Gateway, InfiniteList, MentionUser } from 'ui'
+import { isIphone } from 'utils/platform'
 import users from 'fixtures/users'
 
 // TODO: Make plaform speific
 // And same offset on comments and posts
-const DEFAULT_OFFSET = 268
+const DEFAULT_OFFSET = isIphone ? 268 : 122
 const ITEM_HEIGHT = 70
 
 const styles = {

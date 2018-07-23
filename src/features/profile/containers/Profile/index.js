@@ -73,6 +73,7 @@ export default class Profile extends Component {
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
           useNativeDriver: true,
         })}
+        withComments
       />
     )
   }
