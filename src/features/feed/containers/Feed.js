@@ -7,7 +7,7 @@ import { INITIAL_POSTS_COUNT } from '../constants'
 let scrollView = null
 
 export default class Feed extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
       if (navigation.isFocused()) {
         scrollView.scrollToOffset({ offset: 0 })
@@ -15,7 +15,7 @@ export default class Feed extends Component {
         defaultHandler()
       }
     },
-  })
+  }
 
   componentDidMount() {
     registerForPushNotifications()
@@ -36,6 +36,7 @@ export default class Feed extends Component {
       data={posts}
       keyExtractor={item => item.id}
       renderItem={({ item }) => <Post data={item} />}
+      withComments
     />
   )
 }

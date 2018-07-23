@@ -31,6 +31,7 @@ const Post = ({ data, onPost = false, avatar = true, onLongPress }) => (
         }
       />
     </Content>
+
     <Comments data={data.comments} />
   </Base>
 )

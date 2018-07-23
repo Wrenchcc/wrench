@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Keyboard, KeyboardAvoidingView } from 'react-native'
+import { View, KeyboardAvoidingView } from 'react-native'
 import withLocalization from 'i18n/withLocalization'
 import {
   InfiniteList,
@@ -17,12 +17,10 @@ let scrollView = null
 // TODO: Show latest searched users
 // TODO: Remove added user from suggestions
 // TODO: Fix title localization
-// TODO: Close when no users found
-// Add mention style to save
+// TODO: Handle multiline
+// TODO: Format user data to save [user:1]
 const KEYBOARD_OFFSET = 190
-const PATTERN = '\\@[a-z0-9_-]+|\\@'
 const TRIGGER = '@'
-const EMPTY = ' '
 
 class Comments extends Component {
   static navigationOptions = () => ({
@@ -31,64 +29,33 @@ class Comments extends Component {
     ),
   })
 
-  previousChar = ' '
-
-  isTrackingStarted = false
-
   state = {
-    reply: null,
     isOpen: false,
-    keyword: '',
+    query: '',
     text: '',
   }
 
   onReply = ({ userName }) => {
-    this.textInput.focus()
-    this.setState({ text: `@${userName} ` })
+    this.setState({ text: `${TRIGGER}${userName} ` })
+    this.commentField.focus()
   }
 
   onChangeText = text => {
     this.setState({ text })
-    const lastChar = text.substr(text.length - 1)
-    if (lastChar === TRIGGER) {
-      this.startTracking()
-    } else if ((lastChar === EMPTY && this.isTrackingStarted) || text === '') {
-      this.stopTracking()
-    }
-    this.previousChar = lastChar
-    this.identifyKeyword(text)
   }
 
-  onMention = ({ userName }) => {
-    const comment = this.state.text.slice(0, -this.state.keyword.length)
-    this.setState({ text: `${comment}@${userName} ` })
-    this.stopTracking()
+  onMentionPress = ({ userName }) => {
+    const comment = this.state.text.slice(0, -this.state.query.length - 1)
+    this.setState({ text: `${comment}${TRIGGER}${userName} ` })
+    this.closeMention()
+  }
+
+  onMention = query => {
+    this.setState({ query })
   }
 
   setRef = el => {
-    this.textInput = el
-  }
-
-  identifyKeyword = text => {
-    if (this.isTrackingStarted) {
-      const pattern = new RegExp(PATTERN, 'gi')
-      const keywordArray = text.match(pattern)
-      if (keywordArray && !!keywordArray.length) {
-        const lastKeyword = keywordArray[keywordArray.length - 1]
-        this.setState({ keyword: lastKeyword })
-        this.openMention()
-      }
-    }
-  }
-
-  startTracking = () => {
-    this.isTrackingStarted = true
-    this.openMention()
-  }
-
-  stopTracking = () => {
-    this.isTrackingStarted = false
-    this.closeMention()
+    this.commentField = el
   }
 
   openMention = () => {
@@ -97,13 +64,11 @@ class Comments extends Component {
 
   closeMention = () => {
     this.setState({ isOpen: false })
+    this.commentField.stopTracking()
   }
 
   handleSubmit = () => {
     // TODO: Submit and add to list
-    this.onChangeText('')
-    this.closeMention()
-    Keyboard.dismiss()
   }
 
   componentWillUnmont() {
@@ -117,25 +82,29 @@ class Comments extends Component {
         style={{ flex: 1 }}
         keyboardVerticalOffset={KEYBOARD_OFFSET}
       >
-        {this.state.isOpen ? (
-          <Mention onPress={this.onMention} query={this.state.keyword.replace(TRIGGER, '')} />
-        ) : (
-          <InfiniteList
-            scrollRef={ref => {
-              scrollView = ref
-            }}
-            contentContainerStyle={{
-              paddingLeft: 0,
-              paddingRight: 0,
-            }}
-            keyExtractor={item => item.id}
-            data={data}
-            renderItem={({ item }) => <CommentItem item={item} onReply={this.onReply} />}
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="none"
-            defaultPaddingTop
+        {this.state.isOpen && (
+          <Mention
+            query={this.state.query}
+            onNoResults={this.closeMention}
+            onPress={this.onMentionPress}
           />
         )}
+
+        <InfiniteList
+          scrollRef={ref => {
+            scrollView = ref
+          }}
+          contentContainerStyle={{
+            paddingLeft: 0,
+            paddingRight: 0,
+          }}
+          keyExtractor={item => item.id}
+          data={data}
+          renderItem={({ item }) => <CommentItem item={item} onReply={this.onReply} />}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="none"
+          defaultPaddingTop
+        />
       </KeyboardAvoidingView>
 
       <KeyboardAccessoryView
@@ -144,13 +113,14 @@ class Comments extends Component {
         style={{ flex: 1, paddingLeft: 20, paddingRight: 20 }}
       >
         <CommentField
-          reply={this.state.reply}
+          onRef={this.setRef}
           onSubmitEditing={this.onSubmitEditing}
           onChangeText={this.onChangeText}
+          onMention={this.onMention}
           onSubmit={this.handleSubmit}
-          disabled={this.state.text.length === 0}
           value={this.state.text}
-          inputRef={this.setRef}
+          openMention={this.openMention}
+          closeMention={this.closeMention}
         />
       </KeyboardAccessoryView>
     </View>

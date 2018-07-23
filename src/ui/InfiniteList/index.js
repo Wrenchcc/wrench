@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, Animated } from 'react-native'
-import { Border } from 'ui'
+import { Gateway, Border } from 'ui'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
@@ -14,24 +14,28 @@ const InfiniteList = ({
   onScroll,
   scrollRef,
   borderSeparator,
+  withComments,
   ...props
 }) => (
-  <AnimatedFlatlist
-    style={{ flex: 1 }}
-    ref={el => el && scrollRef(el.getNode())}
-    keyboardShouldPersistTaps="always"
-    keyboardDismissMode="on-drag"
-    contentContainerStyle={{
-      paddingLeft: paddingHorizontal,
-      paddingRight: paddingHorizontal,
-      paddingTop: (defaultPaddingTop && 50) || 0,
-      paddingBottom: (paddingBottom && paddingBottom) || 0,
-      ...contentContainerStyle,
-    }}
-    {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
-    {...onScroll && { onScroll, scrollEventThrottle: 16 }}
-    {...props}
-  />
+  <Fragment>
+    {withComments && <Gateway.Destination name="mention" />}
+    <AnimatedFlatlist
+      style={{ flex: 1 }}
+      ref={el => el && scrollRef(el.getNode())}
+      keyboardShouldPersistTaps="always"
+      keyboardDismissMode="on-drag"
+      contentContainerStyle={{
+        paddingLeft: paddingHorizontal,
+        paddingRight: paddingHorizontal,
+        paddingTop: (defaultPaddingTop && 50) || 0,
+        paddingBottom: (paddingBottom && paddingBottom) || 0,
+        ...contentContainerStyle,
+      }}
+      {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
+      {...onScroll && { onScroll, scrollEventThrottle: 16 }}
+      {...props}
+    />
+  </Fragment>
 )
 
 InfiniteList.propTypes = {
@@ -43,6 +47,7 @@ InfiniteList.propTypes = {
   paddingHorizontal: PropTypes.number,
   fullscreen: PropTypes.bool,
   contentContainerStyle: PropTypes.object,
+  withComments: PropTypes.bool,
 }
 
 export default withKeyboardHandler(InfiniteList)

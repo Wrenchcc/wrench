@@ -1,32 +1,109 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { Keyboard } from 'react-native'
 import withLocalization from 'i18n/withLocalization'
 import { COLORS } from 'ui/constants'
-import Text from 'ui/Text'
+import { Text } from 'ui'
 import { Base, Input, Button } from './styles'
 
-const CommentField = ({ t, disabled, onSubmit, inputRef, ...props }) => (
-  <Base>
-    <Input
-      placeholder={t('.placeholder')}
-      placeholderTextColor={COLORS.LIGHT_GREY}
-      onSubmitEditing={(!disabled && onSubmit) || null}
-      keyboardType="twitter"
-      inputRef={inputRef}
-      {...props}
-    />
-    {!disabled && (
-      <Button onPress={onSubmit}>
-        <Text medium>{t('.post')}</Text>
-      </Button>
-    )}
-  </Base>
-)
+const PATTERN = '\\@[a-z0-9_-]+|\\@'
+const TRIGGER = '@'
+const EMPTY = ' '
 
-CommentField.propTypes = {
-  disabled: PropTypes.bool.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  inputRef: PropTypes.func,
+class CommentField extends PureComponent {
+  static propTypes = {
+    disabled: PropTypes.bool.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onChangeText: PropTypes.func.isRequired,
+    onMention: PropTypes.func.isRequired,
+    openMention: PropTypes.func.isRequired,
+    closeMention: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    stopTracking: PropTypes.bool.isRequired,
+    onRef: PropTypes.func.isRequired,
+    inputRef: PropTypes.func,
+  }
+
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
+
+  onChangeText = text => {
+    this.props.onChangeText(text)
+
+    const lastChar = text.substr(text.length - 1)
+
+    if (lastChar === TRIGGER) {
+      this.startTracking()
+      this.props.openMention()
+    } else if ((lastChar === EMPTY && this.isTrackingStarted) || text === '') {
+      this.stopTracking()
+      this.props.closeMention()
+    }
+
+    this.identifyKeyword(text)
+  }
+
+  setRef = el => {
+    this.textInput = el
+  }
+
+  focus = () => {
+    this.textInput.focus()
+  }
+
+  startTracking = () => {
+    this.isTrackingStarted = true
+  }
+
+  stopTracking = () => {
+    this.isTrackingStarted = false
+  }
+
+  identifyKeyword = text => {
+    if (this.isTrackingStarted) {
+      const pattern = new RegExp(PATTERN, 'gi')
+      const keywordArray = text.match(pattern)
+      if (keywordArray && !!keywordArray.length) {
+        const lastKeyword = keywordArray[keywordArray.length - 1]
+        this.props.onMention(lastKeyword.replace(TRIGGER, ''))
+        this.props.openMention()
+      }
+    }
+  }
+
+  handleSubmit = () => {
+    this.onChangeText('')
+    this.props.onSubmit()
+    Keyboard.dismiss()
+  }
+
+  render() {
+    const { t, disabled, onSubmit, inputRef, onChangeText, ...props } = this.props
+    return (
+      <Base>
+        <Input
+          placeholder={t('.placeholder')}
+          placeholderTextColor={COLORS.LIGHT_GREY}
+          keyboardType="twitter"
+          inputRef={this.setRef}
+          onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
+          onChangeText={this.onChangeText}
+          value={this.props.value}
+          {...props}
+        />
+        {!disabled && (
+          <Button onPress={this.handleSubmit}>
+            <Text medium>{t('.post')}</Text>
+          </Button>
+        )}
+      </Base>
+    )
+  }
 }
 
 export default withLocalization(CommentField, 'CommentField')
