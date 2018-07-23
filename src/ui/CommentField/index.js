@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native'
 import withLocalization from 'i18n/withLocalization'
 import { COLORS } from 'ui/constants'
 import { Text } from 'ui'
+import { isIphone } from 'utils/platform'
 import { Base, Input, Button } from './styles'
 
 const PATTERN = '\\@[a-z0-9_-]+|\\@'
@@ -24,12 +25,20 @@ class CommentField extends PureComponent {
     inputRef: PropTypes.func,
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.onRef(this)
+    const keyboardHideEvent = isIphone ? 'keyboardWillHide' : 'keyboardDidHide'
+
+    // Hide mention when scrolling parent list ie keyboard hides
+    this.keyboardHideEventListener = Keyboard.addListener(
+      keyboardHideEvent,
+      this.props.closeMention
+    )
   }
 
   componentWillUnmount() {
     this.props.onRef(undefined)
+    this.keyboardHideEventListener.remove()
   }
 
   onChangeText = text => {

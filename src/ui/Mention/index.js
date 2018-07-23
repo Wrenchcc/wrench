@@ -2,19 +2,18 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { filter, isEmpty } from 'ramda'
-import { InfiniteList, MentionUser } from 'ui'
+import { Gateway, InfiniteList, MentionUser } from 'ui'
 import users from 'fixtures/users'
 
 // TODO: Make plaform speific
 // And same offset on comments and posts
-const OFFSET = 268
+const DEFAULT_OFFSET = 268
 const ITEM_HEIGHT = 70
 
 const styles = {
   container: {
     width: '100%',
     top: 0,
-    bottom: OFFSET,
     left: 0,
     backgroundColor: 'white',
     position: 'absolute',
@@ -27,6 +26,8 @@ export default class Mention extends Component {
     onPress: PropTypes.func.isRequired,
     onNoResults: PropTypes.func.isRequired,
     query: PropTypes.string,
+    offset: PropTypes.number,
+    destination: PropTypes.string,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,10 +36,10 @@ export default class Mention extends Component {
     }
   }
 
-  render() {
-    const { onPress, query } = this.props
+  renderMention() {
+    const { onPress, query, offset = DEFAULT_OFFSET } = this.props
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { bottom: offset }]}>
         <InfiniteList
           defaultPadding
           keyboardShouldPersistTaps="handled"
@@ -54,6 +55,15 @@ export default class Mention extends Component {
           })}
         />
       </View>
+    )
+  }
+
+  render() {
+    const { destination } = this.props
+    return destination ? (
+      <Gateway.Consumer into={destination}>{this.renderMention()}</Gateway.Consumer>
+    ) : (
+      this.renderMention()
     )
   }
 }

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { CommentField, Gateway, Mention } from 'ui'
+import { CommentField, Mention } from 'ui'
 import List from './List'
 import { Base } from './styles'
 
@@ -46,20 +46,17 @@ export default class Comments extends PureComponent {
     // TODO: Submit and add to list
   }
 
-  renderMention = () => (
-    <Gateway.Consumer into="mention">
-      <Mention
-        query={this.state.query}
-        onPress={this.onMentionPress}
-        onNoResults={this.closeMention}
-      />
-    </Gateway.Consumer>
-  )
-
   render() {
     return (
       <Base>
-        {this.state.isOpen && this.renderMention()}
+        {this.state.isOpen && (
+          <Mention
+            query={this.state.query}
+            onPress={this.onMentionPress}
+            onNoResults={this.closeMention}
+            destination="mention"
+          />
+        )}
         <CommentField
           onRef={this.setRef}
           disabled={this.state.text.length === 0}

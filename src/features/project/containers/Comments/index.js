@@ -19,7 +19,8 @@ let scrollView = null
 // TODO: Fix title localization
 // TODO: Handle multiline
 // TODO: Format user data to save [user:1]
-const KEYBOARD_OFFSET = 190
+const KEYBOARD_OFFSET = 250
+const MENTION_OFFSET = 345
 const TRIGGER = '@'
 
 class Comments extends Component {
@@ -87,6 +88,7 @@ class Comments extends Component {
             query={this.state.query}
             onNoResults={this.closeMention}
             onPress={this.onMentionPress}
+            offset={MENTION_OFFSET}
           />
         )}
 
@@ -107,11 +109,7 @@ class Comments extends Component {
         />
       </KeyboardAvoidingView>
 
-      <KeyboardAccessoryView
-        alwaysVisible
-        hideBorder
-        style={{ flex: 1, paddingLeft: 20, paddingRight: 20 }}
-      >
+      <KeyboardAccessoryView style={{ flex: 1, paddingLeft: 20, paddingRight: 20 }}>
         <CommentField
           onRef={this.setRef}
           onSubmitEditing={this.onSubmitEditing}
