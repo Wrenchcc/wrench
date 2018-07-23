@@ -8,7 +8,7 @@ export const Base = styled.View`
   flex-direction: row;
   border-bottom-color: ${COLORS.DIVIDER};
   border-bottom-width: ${StyleSheet.hairlineWidth};
-  margin-bottom: 15;
+  margin-bottom: 10;
 `
 
 export const Input = styled(UiInput)`

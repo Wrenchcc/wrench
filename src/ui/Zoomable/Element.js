@@ -25,9 +25,9 @@ export default class Element extends PureComponent {
       case State.BEGAN:
         return this.onGestureStart()
       case State.END:
-      case State.FAILED:
-      case State.UNDETERMINED:
-      case State.CANCELLED:
+        // case State.FAILED:
+        // case State.UNDETERMINED:
+        // case State.CANCELLED:
         return this.onGestureRelease()
       default:
         return null

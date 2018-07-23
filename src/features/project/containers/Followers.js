@@ -5,11 +5,11 @@ import data from 'fixtures/search'
 let scrollView = null
 
 export default class Followers extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = {
     headerTitle: (
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>Followers</HeaderTitle>
     ),
-  })
+  }
 
   componentWillUnmont() {
     scrollView = null

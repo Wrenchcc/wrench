@@ -7,7 +7,7 @@ const ITEM_HEIGHT = 70
 let scrollView = null
 
 export default class Notifications extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
       if (navigation.isFocused()) {
         scrollView.scrollToOffset({ offset: 0 })
@@ -15,7 +15,7 @@ export default class Notifications extends Component {
         defaultHandler()
       }
     },
-  })
+  }
 
   componentWillUnmont() {
     scrollView = null

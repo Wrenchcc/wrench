@@ -6,7 +6,7 @@ import posts from 'fixtures/posts'
 let scrollView = null
 
 export default class Explore extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
       if (navigation.isFocused()) {
         scrollView.scrollToOffset({ offset: 0 })
@@ -14,7 +14,7 @@ export default class Explore extends Component {
         defaultHandler()
       }
     },
-  })
+  }
 
   componentWillUnmont() {
     scrollView = null
@@ -30,6 +30,7 @@ export default class Explore extends Component {
       data={posts}
       keyExtractor={item => item.id}
       renderItem={({ item }) => <Post data={item} />}
+      withComments
     />
   )
 }
