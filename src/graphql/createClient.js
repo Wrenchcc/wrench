@@ -28,18 +28,5 @@ export default async () => {
     ]),
   })
 
-  client.writeData({
-    data: {
-      currentUser: {
-        id: '123',
-        token: '123',
-        refreshToken: '123',
-        avatarUrl:
-          'https://scontent.farn1-1.fna.fbcdn.net/v/t1.0-1/p320x320/13626409_10154499229246953_5556140290385215343_n.jpg?_nc_cat=0&oh=97eb8b95c6c94dbfa64ed0227725043c&oe=5BCDCD76',
-        __typename: 'Auth',
-      },
-    },
-  })
-
   return client
 }

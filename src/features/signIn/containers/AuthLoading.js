@@ -10,7 +10,12 @@ export default class AuthLoading extends Component {
     navigation: PropTypes.object.isRequired,
   }
 
+  componentDidMount() {
+    this.props.navigation.navigate(NAVIGATORS.APP_NAVIGATOR)
+  }
+
   onCompleted = ({ currentUser }) => {
+    console.log(currentUser)
     SplashScreen.hide()
 
     // Navigate to route based on current user or not
@@ -22,7 +27,7 @@ export default class AuthLoading extends Component {
   render() {
     return (
       <Query query={getCurrentUserQuery} onCompleted={this.onCompleted}>
-        {data => console.log(data) || null}
+        {data => null}
       </Query>
     )
   }
