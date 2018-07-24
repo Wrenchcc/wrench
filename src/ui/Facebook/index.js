@@ -3,6 +3,7 @@ import { Alert } from 'react-native'
 import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
 import { navigateToOnboarding } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
+import { warn } from 'utils/logger'
 import { Button, Text } from './styled'
 
 class Facebook extends PureComponent {
@@ -23,7 +24,7 @@ class Facebook extends PureComponent {
               },
               (error, result) => {
                 if (error) {
-                  console.log(error)
+                  warn(error)
                 } else {
                   setTimeout(() => navigateToOnboarding(), 1000)
                 }

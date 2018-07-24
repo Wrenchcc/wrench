@@ -1,7 +1,8 @@
 import { createSwitchNavigator } from 'react-navigation'
-import { AuthNavigator, AppNavigator } from './navigators'
+import { AuthLoadingNavigator, AuthNavigator, AppNavigator } from './navigators'
 
 export const Navigation = createSwitchNavigator({
+  AuthLoadingNavigator,
   ...(!__DEV__ ? { AuthNavigator } : {}),
   AppNavigator,
 })

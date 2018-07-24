@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NativeShare from 'react-native-share'
 import hitSlop from 'utils/hitSlop'
+import { warn } from 'utils/logger'
 import { share } from 'images'
 import { Base, Button, Icon } from './styles'
 
@@ -10,11 +11,10 @@ const Share = ({ name, url }) => (
   <Base>
     <Button
       hapticFeedback="impactLight"
-      onPress={
-        () => NativeShare.open({
-          title: name,
-          url,
-          }).catch(err => console.log(err)) // eslint-disable-line
+      onPress={() => NativeShare.open({
+        title: name,
+        url,
+      }).catch(err => warn(err))
       }
       hitSlop={hitSlop(20)}
     >

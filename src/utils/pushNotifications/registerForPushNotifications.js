@@ -1,6 +1,8 @@
 import firebase from 'react-native-firebase'
 
 export default function requestNotificationToken() {
+  if (__DEV__) return
+
   const messaging = firebase.messaging()
 
   messaging.requestPermission().then(() => {

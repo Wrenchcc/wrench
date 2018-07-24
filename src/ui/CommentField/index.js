@@ -20,7 +20,6 @@ class CommentField extends PureComponent {
     openMention: PropTypes.func.isRequired,
     closeMention: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
-    stopTracking: PropTypes.bool.isRequired,
     onRef: PropTypes.func.isRequired,
     inputRef: PropTypes.func,
   }

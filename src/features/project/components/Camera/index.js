@@ -34,10 +34,9 @@ export default class Camera extends Component {
   enablePermission = () => this.setState({ cameraPermission: true })
 
   toggleFlashMode = () => {
-    const flashMode =
-      this.state.flashMode === RNCamera.Constants.FlashMode.on
-        ? RNCamera.Constants.FlashMode.off
-        : RNCamera.Constants.FlashMode.on
+    const flashMode = this.state.flashMode === RNCamera.Constants.FlashMode.on
+      ? RNCamera.Constants.FlashMode.off
+      : RNCamera.Constants.FlashMode.on
     this.setState({ flashMode })
     this.props.closeDropdown()
   }

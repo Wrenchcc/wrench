@@ -9,23 +9,22 @@ import { Base, Headline, Description } from './styles'
 const AUTHORIZED = 'authorized'
 
 const AskForPermission = ({ t, permission, onSuccess }) => {
-  const onPress = () =>
-    Permissions.request(permission).then(res => {
-      if (res !== AUTHORIZED) {
-        const buttons = [{ text: t(`.${permission}.alertCancel`), style: 'cancel' }]
+  const onPress = () => Permissions.request(permission).then(res => {
+    if (res !== AUTHORIZED) {
+      const buttons = [{ text: t(`.${permission}.alertCancel`), style: 'cancel' }]
 
-        if (Permissions.canOpenSettings()) {
-          buttons.push({
-            text: t(`.${permission}.alertOpen`),
-            onPress: () => Permissions.openSettings(),
-          })
-        }
-
-        Alert.alert(t(`.${permission}.alertTitle`), t(`.${permission}.alertDescription`), buttons)
-      } else {
-        onSuccess()
+      if (Permissions.canOpenSettings()) {
+        buttons.push({
+          text: t(`.${permission}.alertOpen`),
+          onPress: () => Permissions.openSettings(),
+        })
       }
-    })
+
+      Alert.alert(t(`.${permission}.alertTitle`), t(`.${permission}.alertDescription`), buttons)
+    } else {
+      onSuccess()
+    }
+  })
 
   return (
     <Base>

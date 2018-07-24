@@ -59,13 +59,13 @@ export default class Comments extends PureComponent {
         )}
         <CommentField
           onRef={this.setRef}
-          disabled={this.state.text.length === 0}
           onChangeText={this.onChangeText}
           onMention={this.onMention}
           onSubmit={this.handleSubmit}
           value={this.state.text}
           openMention={this.openMention}
           closeMention={this.closeMention}
+          disabled={this.state.text.length === 0}
         />
 
         <List data={this.props.data} />

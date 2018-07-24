@@ -4,6 +4,7 @@ import { mergeAll, pathOr } from 'ramda'
 import { t } from 'i18n'
 import { navigate, navigateToSignIn, navigateToWebView } from 'navigation'
 import openLink from 'utils/openLink'
+import { warn } from 'utils/logger'
 import { HeaderTitle } from 'ui'
 
 const WEBSITE_URL = 'https://wrench.cc'
@@ -18,7 +19,7 @@ const sections = {
           onPress: () => NativeShare.open({
             title: 'shareContent',
             url: WEBSITE_URL,
-            }).catch(err => console.log(err)), // eslint-disable-line
+          }).catch(err => warn(err)),
         },
       ],
     },
