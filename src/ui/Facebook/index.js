@@ -28,7 +28,7 @@ class Facebook extends PureComponent {
                 if (error) {
                   warn(error)
                 } else {
-                  // Send mutation to server
+                  // TODO: Send mutation to server
                   // Get response and save to state
                   this.props.addloggedInUser({
                     token: '123',

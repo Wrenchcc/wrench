@@ -10,13 +10,20 @@ import stateLink from './state'
 const SCHEMA_VERSION = '1'
 const SCHEMA_VERSION_KEY = 'wrench-schema-version'
 
+let client = null
+
+export const resetStore = () => {
+  client.resetStore()
+}
+
 export default async () => {
+  if (client) return client
+
   const cache = new InMemoryCache()
 
   const persistor = new CachePersistor({
     cache,
     storage: AsyncStorage,
-    trigger: 'background',
     debug: __DEV__,
   })
 
@@ -34,7 +41,7 @@ export default async () => {
     await AsyncStorage.setItem(SCHEMA_VERSION_KEY, SCHEMA_VERSION)
   }
 
-  const client = new ApolloClient({
+  client = new ApolloClient({
     cache,
     link: ApolloLink.from([
       stateLink(cache),
@@ -46,7 +53,9 @@ export default async () => {
   })
 
   // Purge persistor when the store was reset.
-  client.onResetStore(persistor.purge)
+  client.onResetStore(() => {
+    persistor.purge()
+  })
 
   await persistor.restore()
 

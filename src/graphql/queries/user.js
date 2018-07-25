@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
-export const getCurrentUserQuery = gql`
+export const GET_CURRENT_USER = gql`
   query getCurrentUser {
     currentUser: loggedInUser @client {
       token
@@ -16,4 +16,4 @@ const getCurrentUserOptions = {
   }),
 }
 
-export const getCurrentUser = graphql(getCurrentUserQuery, getCurrentUserOptions)
+export const getCurrentUser = graphql(GET_CURRENT_USER, getCurrentUserOptions)

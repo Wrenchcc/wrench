@@ -1,9 +1,9 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import SplashScreen from 'react-native-splash-screen'
-import { graphql } from 'react-apollo'
+import { compose } from 'react-apollo'
 import { NAVIGATORS } from 'navigation'
-import { getCurrentUserQuery } from 'graphql/queries/user'
+import { getCurrentUser } from 'graphql/queries/user'
 
 class AuthLoading extends Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class AuthLoading extends Component {
     const { currentUser, loading } = this.props.data
 
     if (!loading) {
-      SplashScreen.hide()
+      setTimeout(SplashScreen.hide, 500)
     }
 
     // Navigate to route based on current user or not
@@ -34,4 +34,4 @@ class AuthLoading extends Component {
   }
 }
 
-export default graphql(getCurrentUserQuery)(AuthLoading)
+export default compose(getCurrentUser)(AuthLoading)
