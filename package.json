@@ -23,8 +23,9 @@
     ]
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.2.5",
-    "apollo-client": "^2.3.5",
+    "apollo-cache-inmemory": "^1.2.6",
+    "apollo-cache-persist": "^0.1.1",
+    "apollo-client": "^2.3.7",
     "apollo-link": "^1.2.2",
     "apollo-link-error": "^1.1.0",
     "apollo-link-http": "^1.5.4",
@@ -57,7 +58,7 @@
     "react-native-swiper": "^1.5.13",
     "react-native-tab-view": "^1.0.2",
     "react-native-video": "^3.1.0",
-    "react-navigation": "2.9.0",
+    "react-navigation": "^2.9.1",
     "styled-components": "^3.3.3",
     "url": "^0.11.0"
   },

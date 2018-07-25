@@ -1,11 +1,11 @@
 export default {
   Mutation: {
-    addAuthenticatedUser: (_, { data }, { cache }) => {
+    addLoggedInUser: (_, { data }, { cache }) => {
       cache.writeData({
         data: {
-          currentUser: {
-            ...data,
+          loggedInUser: {
             __typename: 'Auth',
+            ...data,
           },
         },
       })

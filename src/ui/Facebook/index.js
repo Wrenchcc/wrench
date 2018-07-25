@@ -1,10 +1,16 @@
 import React, { PureComponent } from 'react'
 import { Alert } from 'react-native'
 import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
+import { compose } from 'react-apollo'
+import { addloggedInUser } from 'graphql/mutations/auth'
 import { navigateToOnboarding } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import { warn } from 'utils/logger'
 import { Button, Text } from './styled'
+
+const parameters = {
+  fields: { string: 'email,name,first_name,last_name,picture.type(large)' },
+}
 
 class Facebook extends PureComponent {
   onPress = () => {
@@ -16,16 +22,19 @@ class Facebook extends PureComponent {
               '/me',
               {
                 accessToken,
-                parameters: {
-                  fields: {
-                    string: 'email,name,first_name,last_name,picture.type(large)',
-                  },
-                },
+                parameters,
               },
               (error, result) => {
                 if (error) {
                   warn(error)
                 } else {
+                  // TODO: Send mutation to server
+                  // Get response and save to state
+                  this.props.addloggedInUser({
+                    token: '123',
+                    refreshToken: '123',
+                  })
+
                   setTimeout(() => navigateToOnboarding(), 1000)
                 }
               }
@@ -53,4 +62,4 @@ class Facebook extends PureComponent {
   }
 }
 
-export default withLocalization(Facebook, 'Facebook')
+export default compose(addloggedInUser)(withLocalization(Facebook, 'Facebook'))

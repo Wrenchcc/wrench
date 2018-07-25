@@ -1,14 +1,12 @@
 export default `
-  type User {
-    id: ID
-    token: String
-    avatarUrl: String
-    refreshToken: String
-  }
-  type Mutation {
-    addAuthenticatedUser(data: User): User
-  }
-  type Query {
-    currentUser: User
-  }
-`
+    type Auth {
+      token: String
+      refreshToken: String
+    }
+    type Mutation {
+      addLoggedInUser(data: Auth): Auth
+    }
+    type Query {
+      loggedInUser: Auth
+    }
+  `

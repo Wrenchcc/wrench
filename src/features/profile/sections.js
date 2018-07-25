@@ -2,12 +2,20 @@ import React from 'react'
 import NativeShare from 'react-native-share'
 import { mergeAll, pathOr } from 'ramda'
 import { t } from 'i18n'
+import { resetStore } from 'graphql/createClient'
+
 import { navigate, navigateToSignIn, navigateToWebView } from 'navigation'
 import openLink from 'utils/openLink'
 import { warn } from 'utils/logger'
 import { HeaderTitle } from 'ui'
 
 const WEBSITE_URL = 'https://wrench.cc'
+
+const signOut = () => {
+  resetStore()
+
+  return navigateToSignIn()
+}
 
 const sections = {
   settings: [
@@ -61,7 +69,7 @@ const sections = {
         },
         {
           titleKey: 'logout',
-          onPress: () => navigateToSignIn(),
+          onPress: () => signOut(),
           last: true,
         },
       ],
