@@ -1,9 +1,9 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import SplashScreen from 'react-native-splash-screen'
-import { compose } from 'react-apollo'
+import { graphql } from 'react-apollo'
 import { NAVIGATORS } from 'navigation'
-import { getCurrentUser } from 'graphql/queries/user'
+import getCurrentUser from 'graphql/queries/getCurrentUser.graphql'
 
 class AuthLoading extends Component {
   static propTypes = {
@@ -34,4 +34,4 @@ class AuthLoading extends Component {
   }
 }
 
-export default compose(getCurrentUser)(AuthLoading)
+export default graphql(getCurrentUser)(AuthLoading)
