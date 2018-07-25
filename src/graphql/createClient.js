@@ -47,7 +47,6 @@ export default async () => {
       stateLink(cache),
       new HttpLink({
         uri: Config.GRAPHQL_URI,
-        credentials: 'same-origin',
       }),
     ]),
   })

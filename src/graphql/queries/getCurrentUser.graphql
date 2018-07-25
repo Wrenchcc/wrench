@@ -1,5 +1,10 @@
 query getCurrentUser {
   currentUser: loggedInUser @client {
+    id
+    fullName
+    firstName
+    lastName
+    avatarUrl
     token
     refreshToken
   }

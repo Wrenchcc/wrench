@@ -4,7 +4,7 @@ export default {
       cache.writeData({
         data: {
           loggedInUser: {
-            __typename: 'Auth',
+            __typename: 'User',
             ...data,
           },
         },

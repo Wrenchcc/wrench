@@ -31,8 +31,13 @@ class Facebook extends PureComponent {
                   // TODO: Send mutation to server
                   // Get response and save to state
                   this.props.addloggedInUser({
+                    id: result.id,
+                    fullName: result.name,
+                    firstName: result.first_name,
+                    lastName: result.last_name,
+                    avatarUrl: result.picture.data.url,
                     token: '123',
-                    refreshToken: '123',
+                    refreshToken: '456',
                   })
 
                   setTimeout(() => navigateToOnboarding(), 1000)

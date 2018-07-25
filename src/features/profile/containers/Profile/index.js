@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
+import { graphql } from 'react-apollo'
+import getCurrentUser from 'graphql/queries/getCurrentUser.graphql'
 import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 import data from 'fixtures/profile'
@@ -10,7 +12,7 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-export default class Profile extends Component {
+class Profile extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
@@ -55,6 +57,7 @@ export default class Profile extends Component {
   render() {
     const emptyState = 'project'
     const hasPosts = data.posts.length > 0
+    const { currentUser, loading } = this.props.data
 
     return (
       <InfiniteList
@@ -64,7 +67,7 @@ export default class Profile extends Component {
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-        ListHeaderComponent={<Header user={data.user} spacingHorizontal={!hasPosts} />}
+        ListHeaderComponent={<Header user={currentUser} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<EmptyState type={emptyState} />}
         withKeyboardHandler
         data={data.posts}
@@ -78,3 +81,5 @@ export default class Profile extends Component {
     )
   }
 }
+
+export default graphql(getCurrentUser)(Profile)
