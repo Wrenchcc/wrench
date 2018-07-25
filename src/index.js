@@ -20,7 +20,7 @@ class Main extends Component {
     })
   }
 
-  render = () => {
+  render() {
     const { loading, client } = this.state
 
     if (loading) {

@@ -1,19 +1,24 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-export const addAuthenticatedUserMutation = gql`
-  mutation addAuthenticatedUser($data: Auth) {
-    addAuthenticatedUser(data: $data) @client
+export const addloggedInUserMutation = gql`
+  mutation addLoggedInUser($data: Auth) {
+    addLoggedInUser(data: $data) @client
+  }
+`
+export const loginMutation = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      refreshToken
+    }
   }
 `
 
-const addAuthenticatedUserOptions = {
+const addloggedInUserOptions = {
   props: ({ mutate }) => ({
-    addAuthenticatedUser: data => mutate({ variables: { data } }),
+    addloggedInUser: data => mutate({ variables: { data } }),
   }),
 }
 
-export const addAuthenticatedUser = graphql(
-  addAuthenticatedUserMutation,
-  addAuthenticatedUserOptions
-)
+export const addloggedInUser = graphql(addloggedInUserMutation, addloggedInUserOptions)

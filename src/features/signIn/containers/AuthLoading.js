@@ -1,22 +1,27 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import SplashScreen from 'react-native-splash-screen'
-import { Query } from 'react-apollo'
+import { graphql } from 'react-apollo'
 import { NAVIGATORS } from 'navigation'
 import { getCurrentUserQuery } from 'graphql/queries/user'
 
-export default class AuthLoading extends Component {
+class AuthLoading extends Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
   }
 
-  componentDidMount() {
-    this.props.navigation.navigate(NAVIGATORS.APP_NAVIGATOR)
+  constructor(props) {
+    super(props)
+    this.checkAuthenticated()
   }
 
-  onCompleted = ({ currentUser }) => {
-    console.log(currentUser)
-    SplashScreen.hide()
+  checkAuthenticated() {
+    const { currentUser, loading } = this.props.data
+
+    if (!loading) {
+      SplashScreen.hide()
+    }
 
     // Navigate to route based on current user or not
     this.props.navigation.navigate(
@@ -25,10 +30,8 @@ export default class AuthLoading extends Component {
   }
 
   render() {
-    return (
-      <Query query={getCurrentUserQuery} onCompleted={this.onCompleted}>
-        {data => null}
-      </Query>
-    )
+    return null
   }
 }
+
+export default graphql(getCurrentUserQuery)(AuthLoading)
