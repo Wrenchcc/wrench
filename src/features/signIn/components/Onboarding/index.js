@@ -34,16 +34,16 @@ class Onboarding extends Component {
   }
 
   isComplete = () => Object.keys(this.state.items).length >= MIN_ITEMS
+
   progress = () => (Object.keys(this.state.items).length / 3) * 100
 
   isAdded = item => this.state.items[item.id]
 
-  headerRight = () =>
-    this.isComplete() && (
+  headerRight = () => this.isComplete() && (
       <Text color="white" medium opacity={1} onPress={() => navigateToFeed()}>
         {this.props.t('.next')}
       </Text>
-    )
+  )
 
   renderItem = ({ item }) => (
     <Cell key={item.id}>

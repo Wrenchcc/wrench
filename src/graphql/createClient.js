@@ -1,20 +1,16 @@
 import { AsyncStorage } from 'react-native'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { HttpLink } from 'apollo-link-http'
 import { ApolloLink } from 'apollo-link'
 import { CachePersistor } from 'apollo-cache-persist'
-import Config from 'react-native-config'
+import HttpLink from './links/Http'
+import AuthLink from './links/Auth'
 import stateLink from './state'
 
-const SCHEMA_VERSION = '1'
+const SCHEMA_VERSION = '2'
 const SCHEMA_VERSION_KEY = 'wrench-schema-version'
 
-let client = null
-
-export const resetStore = () => {
-  client.resetStore()
-}
+export let client = null
 
 export default async () => {
   if (client) return client
@@ -43,12 +39,7 @@ export default async () => {
 
   client = new ApolloClient({
     cache,
-    link: ApolloLink.from([
-      stateLink(cache),
-      new HttpLink({
-        uri: Config.GRAPHQL_URI,
-      }),
-    ]),
+    link: ApolloLink.from([stateLink(cache), AuthLink, HttpLink]),
   })
 
   // Purge persistor when the store was reset.
@@ -57,6 +48,8 @@ export default async () => {
   })
 
   await persistor.restore()
+
+  AuthLink.injectClient(client)
 
   return client
 }

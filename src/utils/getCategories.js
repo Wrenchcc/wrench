@@ -59,7 +59,8 @@ export default [
     id: 8,
     name: 'Undefinable?',
     image: {
-      uri: '',
+      uri:
+        'https://static1.squarespace.com/static/55fc0004e4b069a519961e2d/t/55fc301ae4b01342ae9212a1/1442590746805/?format=500w',
     },
   },
 ]

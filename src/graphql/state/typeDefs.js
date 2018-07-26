@@ -6,6 +6,8 @@ export default `
       lastName: String
       userName: String
       avatarUrl: String
+    }
+    type Auth {
       token: String
       refreshToken: String
     }
@@ -14,5 +16,6 @@ export default `
     }
     type Query {
       loggedInUser: User
+      getToken: Auth
     }
   `
