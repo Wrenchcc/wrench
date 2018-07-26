@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FlatList, Animated } from 'react-native'
+import { FlatList as RNFlatList } from 'react-native'
 import { Border } from 'ui'
-import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
-const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
-
-const InfiniteList = ({
+// No withKeyboardHandler and not Animated
+const FlatList = ({
   contentContainerStyle = {},
   paddingHorizontal = 20,
   defaultPaddingTop,
@@ -16,7 +14,7 @@ const InfiniteList = ({
   borderSeparator,
   ...props
 }) => (
-  <AnimatedFlatlist
+  <RNFlatList
     style={{ flex: 1 }}
     ref={el => el && scrollRef && scrollRef(el.getNode())}
     keyboardShouldPersistTaps="always"
@@ -34,10 +32,10 @@ const InfiniteList = ({
   />
 )
 
-InfiniteList.propTypes = {
+FlatList.propTypes = {
   borderSeparator: PropTypes.bool,
   onScroll: PropTypes.object,
-  scrollRef: PropTypes.func.isRequired,
+  scrollRef: PropTypes.func,
   defaultPaddingTop: PropTypes.bool,
   paddingBottom: PropTypes.number,
   paddingHorizontal: PropTypes.number,
@@ -45,4 +43,4 @@ InfiniteList.propTypes = {
   contentContainerStyle: PropTypes.object,
 }
 
-export default withKeyboardHandler(InfiniteList)
+export default FlatList

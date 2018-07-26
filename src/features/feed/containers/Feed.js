@@ -36,7 +36,6 @@ export default class Feed extends Component {
       data={posts}
       keyExtractor={item => item.id}
       renderItem={({ item }) => <Post data={item} />}
-      withComments
     />
   )
 }

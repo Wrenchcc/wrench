@@ -22,11 +22,11 @@ export default function withKeyboardHandler(WrappedComponent) {
       super(props)
 
       if (props.withKeyboardHandler) {
-        this.props.navigation.addListener('willFocus', () => {
+        props.navigation.addListener('willFocus', () => {
           this.subscriptions = [Keyboard.addListener('keyboardWillShow', this.keyboardWillShow)]
         })
 
-        this.props.navigation.addListener('willBlur', () => {
+        props.navigation.addListener('willBlur', () => {
           this.subscriptions.forEach(sub => sub.remove())
           Keyboard.dismiss()
         })

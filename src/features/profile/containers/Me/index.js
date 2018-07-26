@@ -15,6 +15,7 @@ let scrollView = null
 class Profile extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
+
     return {
       headerTitle: params.user && (
         <HeaderTitle
@@ -43,6 +44,7 @@ class Profile extends Component {
     this.scrollY = new Animated.Value(0)
 
     props.navigation.setParams({
+      user: props.data.currentUser,
       opacity: this.scrollY.interpolate({
         inputRange: [START_OPACITY, HEADER_HEIGHT + START_OPACITY],
         outputRange: [0, 1],
@@ -57,7 +59,7 @@ class Profile extends Component {
   render() {
     const emptyState = 'project'
     const hasPosts = data.posts.length > 0
-    const { currentUser, loading } = this.props.data
+    const { currentUser } = this.props.data
 
     return (
       <InfiniteList

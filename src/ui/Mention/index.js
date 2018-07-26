@@ -2,19 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { filter, isEmpty } from 'ramda'
-import { Gateway, InfiniteList, MentionUser } from 'ui'
+import { Gateway, FlatList, MentionUser } from 'ui'
+import { TOTAL_HEADER_HEIGHT } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import users from 'fixtures/users'
 
 // TODO: Make plaform speific
 // And same offset on comments and posts
-const DEFAULT_OFFSET = isIphone ? 268 : 122
+const DEFAULT_OFFSET = isIphone ? 345 : 122
 const ITEM_HEIGHT = 70
 
 const styles = {
   container: {
     width: '100%',
-    top: 0,
+    top: TOTAL_HEADER_HEIGHT,
     left: 0,
     backgroundColor: 'white',
     position: 'absolute',
@@ -41,7 +42,7 @@ export default class Mention extends Component {
     const { onPress, query, offset = DEFAULT_OFFSET } = this.props
     return (
       <View style={[styles.container, { bottom: offset }]}>
-        <InfiniteList
+        <FlatList
           defaultPadding
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"

@@ -109,7 +109,6 @@ export default class Project extends Component {
           scrollRef={ref => {
             scrollView = ref
           }}
-          withComments
         />
         <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
           <Footer

@@ -8,6 +8,7 @@ export default class App extends PureComponent {
       <Gateway.Provider>
         <Zoomable.Provider>
           <Navigation ref={nav => setNavigationRef(nav)} />
+          <Gateway.Destination name="global" />
         </Zoomable.Provider>
       </Gateway.Provider>
     )

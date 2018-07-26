@@ -7,7 +7,7 @@ import { Base, Inner, Content, Video, Icon, Description, Headline, Legal } from 
 
 const SignIn = ({ t }) => (
   <Base>
-    <Video source={video} muted resizeMode="cover" repeat paused={__DEV__} />
+    <Video source={video} muted resizeMode="cover" repeat />
     <Inner>
       <Icon source={logo} />
 
