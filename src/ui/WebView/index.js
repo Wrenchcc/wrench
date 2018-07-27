@@ -3,6 +3,12 @@ import PropTypes from 'prop-types'
 import { View, BackHandler, WebView as RNWebView } from 'react-native'
 import url from 'url'
 import { equals, reject } from 'ramda'
+import {
+  getApplicationName,
+  getVersion,
+  getBuildNumber,
+  getSystemName,
+} from 'react-native-device-info'
 import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
 import { Header, ProgressBar, Text, Icon, Touchable, Share } from 'ui'
@@ -56,6 +62,15 @@ class WebView extends PureComponent {
 
   onFirstPageLoadEnd = () => {
     this.removeHandler('onLoadEndHandlers', this.onFirstPageLoadEnd)
+  }
+
+  setCustomHeaders() {
+    const appName = getApplicationName()
+
+    return {
+      [`X-${appName}-Version`]: `v${getVersion()}.${getBuildNumber()}`,
+      [`X-${appName}-Type`]: `${appName}-${getSystemName()}`,
+    }
   }
 
   handleBackPress = () => {
@@ -113,46 +128,46 @@ class WebView extends PureComponent {
     </Footer>
   )
 
-  render = () => (
-    <Base>
-      <Header
-        transparent={false}
-        headerLeft={<Icon onPress={() => navigateBack()} source={closeDark} />}
-        headerCenter={
-          <View style={{ alignItems: 'center' }}>
-            <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>
-              {this.state.title}
-            </Text>
-            <Text fontSize={11} numberOfLines={1} color="light_grey">
-              {url.parse(this.state.url).host}
-            </Text>
-          </View>
-        }
-        headerRight={<Icon onPress={this.refresh} source={refresh} />}
-      />
-      <ProgressBar
-        opacity={this.isLoading ? 1 : 0}
-        fillColor="black"
-        borderRadius={0}
-        barHeight={2}
-        progress={this.progress}
-      />
+  render = () => console.log(this.setCustomHeaders()) || (
+      <Base>
+        <Header
+          transparent={false}
+          headerLeft={<Icon onPress={() => navigateBack()} source={closeDark} />}
+          headerCenter={
+            <View style={{ alignItems: 'center' }}>
+              <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>
+                {this.state.title}
+              </Text>
+              <Text fontSize={11} numberOfLines={1} color="light_grey">
+                {url.parse(this.state.url).host}
+              </Text>
+            </View>
+          }
+          headerRight={<Icon onPress={this.refresh} source={refresh} />}
+        />
+        <ProgressBar
+          opacity={this.isLoading ? 1 : 0}
+          fillColor="black"
+          borderRadius={0}
+          barHeight={2}
+          progress={this.progress}
+        />
 
-      <RNWebView
-        style={{ flex: 1, backgroundColor: COLORS.LIGHT_GREY }}
-        source={{ uri: this.props.url }}
-        javaScriptEnabled
-        onLoadStart={this.onLoadStart}
-        onLoadEnd={this.onLoadEnd}
-        onError={this.onLoadError}
-        onNavigationStateChange={this.onNavigationStateChange}
-        ref={ref => {
-          this.webview = ref
-        }}
-      />
+        <RNWebView
+          style={{ flex: 1, backgroundColor: COLORS.LIGHT_GREY }}
+          source={{ uri: this.props.url, headers: this.setCustomHeaders() }}
+          javaScriptEnabled
+          onLoadStart={this.onLoadStart}
+          onLoadEnd={this.onLoadEnd}
+          onError={this.onLoadError}
+          onNavigationStateChange={this.onNavigationStateChange}
+          ref={ref => {
+            this.webview = ref
+          }}
+        />
 
-      {this.renderFooter()}
-    </Base>
+        {this.renderFooter()}
+      </Base>
   )
 }
 

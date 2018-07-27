@@ -7,15 +7,13 @@ import { TOTAL_HEADER_HEIGHT } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import users from 'fixtures/users'
 
-// TODO: Make plaform speific
 // And same offset on comments and posts
-const DEFAULT_OFFSET = isIphone ? 345 : 122
+const DEFAULT_OFFSET_BOTTOM = isIphone ? 345 : 122
 const ITEM_HEIGHT = 70
 
 const styles = {
   container: {
     width: '100%',
-    top: TOTAL_HEADER_HEIGHT,
     left: 0,
     backgroundColor: 'white',
     position: 'absolute',
@@ -28,7 +26,8 @@ export default class Mention extends Component {
     onPress: PropTypes.func.isRequired,
     onNoResults: PropTypes.func.isRequired,
     query: PropTypes.string,
-    offset: PropTypes.number,
+    offsetBottom: PropTypes.number,
+    offsetTop: PropTypes.number,
     destination: PropTypes.string,
   }
 
@@ -39,9 +38,15 @@ export default class Mention extends Component {
   }
 
   renderMention() {
-    const { onPress, query, offset = DEFAULT_OFFSET } = this.props
+    const {
+      onPress,
+      query,
+      offsetBottom = DEFAULT_OFFSET_BOTTOM,
+      offsetTop = TOTAL_HEADER_HEIGHT,
+    } = this.props
+
     return (
-      <View style={[styles.container, { bottom: offset }]}>
+      <View style={[styles.container, { bottom: offsetBottom, top: offsetTop }]}>
         <FlatList
           defaultPadding
           keyboardShouldPersistTaps="handled"

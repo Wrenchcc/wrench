@@ -7956,9 +7956,9 @@ react-native-config@^0.11.5:
   version "0.11.5"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
 
-react-native-device-info@^0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.22.0.tgz#7e4b08ef453a95a73acf8463ecffe91d2d87e8c8"
+react-native-device-info@^0.22.1:
+  version "0.22.1"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.22.1.tgz#101a83430199eb6ceb24c8551c192e7e04303e65"
 
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
@@ -8164,9 +8164,9 @@ react-navigation-tabs@0.5.1:
     react-native-safe-area-view "^0.7.0"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^2.9.2:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-2.9.2.tgz#507d485ecd51cf584750e7dda3fe9772ab68c388"
+react-navigation@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-2.9.3.tgz#de97f7102df6b836af780bfa5bfa80747148da19"
   dependencies:
     clamp "^1.0.1"
     create-react-context "^0.2.1"

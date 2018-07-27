@@ -21,7 +21,7 @@ let scrollView = null
 // TODO: Handle multiline
 // TODO: Format user data to save [user:1]
 const KEYBOARD_OFFSET = isIphone ? 180 : 0
-const MENTION_OFFSET = isIphone ? 280 : 0
+const MENTION_OFFSET_BOTTOM = isIphone ? 240 : 0
 const TRIGGER = '@'
 
 class Comments extends Component {
@@ -90,7 +90,8 @@ class Comments extends Component {
             query={this.state.query}
             onNoResults={this.closeMention}
             onPress={this.onMentionPress}
-            offset={MENTION_OFFSET}
+            offsetBottom={MENTION_OFFSET_BOTTOM}
+            offsetTop={0}
           />
         )}
 

@@ -43,7 +43,7 @@
     "react-native-camera": "^1.1.4",
     "react-native-code-push": "^5.4.0",
     "react-native-config": "^0.11.5",
-    "react-native-device-info": "^0.22.0",
+    "react-native-device-info": "^0.22.1",
     "react-native-fast-image": "^4.0.14",
     "react-native-fbsdk": "^0.7.0",
     "react-native-firebase": "^4.3.8",
@@ -58,7 +58,7 @@
     "react-native-swiper": "^1.5.13",
     "react-native-tab-view": "^1.0.2",
     "react-native-video": "3.0.0",
-    "react-navigation": "^2.9.2",
+    "react-navigation": "^2.9.3",
     "styled-components": "^3.3.3",
     "url": "^0.11.0"
   },
