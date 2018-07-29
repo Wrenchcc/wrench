@@ -1,0 +1,33 @@
+query getPosts {
+  posts {
+    id
+    type
+    createdAt
+    caption
+    comments {
+      id
+      text
+      user {
+        fullName
+      }
+      replies {
+        id
+        text
+      }
+    }
+    user {
+      id
+      fullName
+      userName
+      avatarUrl
+    }
+    images {
+      uri
+    }
+    project {
+      id
+      slug
+      name
+    }
+  }
+}

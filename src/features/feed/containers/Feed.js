@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { compose } from 'react-apollo'
+import { getPosts } from 'graphql/queries/posts'
 import { Post, InfiniteList } from 'ui'
 import posts from 'fixtures/posts'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
@@ -6,7 +8,7 @@ import { INITIAL_POSTS_COUNT } from '../constants'
 
 let scrollView = null
 
-export default class Feed extends Component {
+class Feed extends Component {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
       if (navigation.isFocused()) {
@@ -25,17 +27,29 @@ export default class Feed extends Component {
     scrollView = null
   }
 
-  render = () => (
-    <InfiniteList
-      scrollRef={ref => {
-        scrollView = ref
-      }}
-      withKeyboardHandler
-      defaultPaddingTop
-      initialNumToRender={INITIAL_POSTS_COUNT}
-      data={posts}
-      keyExtractor={item => item.id}
-      renderItem={({ item }) => <Post data={item} />}
-    />
-  )
+  renderItem = ({ item }) => <Post data={item} />
+
+  render() {
+    const { posts, fetchMore, refetch, isRefetching, isFetching, hasMore } = this.props
+    return (
+      <InfiniteList
+        scrollRef={ref => {
+          scrollView = ref
+        }}
+        withKeyboardHandler
+        defaultPaddingTop
+        initialNumToRender={INITIAL_POSTS_COUNT}
+        data={posts}
+        refetch={refetch}
+        fetchMore={() => console.log('fetch more')}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasMore={hasMore}
+        keyExtractor={item => item.id}
+        renderItem={this.renderItem}
+      />
+    )
+  }
 }
+
+export default compose(getPosts)(Feed)
