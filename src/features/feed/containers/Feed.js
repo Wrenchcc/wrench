@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { compose } from 'react-apollo'
-import { getPosts } from 'graphql/queries/posts'
+import { getFeed } from 'graphql/queries/feed'
 import { Post, InfiniteList } from 'ui'
-import posts from 'fixtures/posts'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
@@ -30,7 +29,8 @@ class Feed extends Component {
   renderItem = ({ item }) => <Post data={item} />
 
   render() {
-    const { posts, fetchMore, refetch, isRefetching, isFetching, hasMore } = this.props
+    const { feed, fetchMore, refetch, isRefetching, isFetching, hasMore } = this.props
+
     return (
       <InfiniteList
         scrollRef={ref => {
@@ -39,9 +39,9 @@ class Feed extends Component {
         withKeyboardHandler
         defaultPaddingTop
         initialNumToRender={INITIAL_POSTS_COUNT}
-        data={posts}
+        data={feed}
         refetch={refetch}
-        fetchMore={() => console.log('fetch more')}
+        fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasMore={hasMore}
@@ -52,4 +52,4 @@ class Feed extends Component {
   }
 }
 
-export default compose(getPosts)(Feed)
+export default compose(getFeed)(Feed)

@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, Animated, AppState } from 'react-native'
-import { Border } from 'ui'
+import { Border, Loader } from 'ui'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
+
+const ACTIVE_STATE = 'active'
 
 class InfiniteList extends Component {
   static propTypes = {
@@ -37,12 +39,12 @@ class InfiniteList extends Component {
   }
 
   handleResume = state => {
-    if (state === 'active') {
-      this.props.refetch && this.props.refetch()
+    if (state === ACTIVE_STATE) {
+      this.props.refetch()
     }
   }
 
-  renderLoading = () => this.props.isFetching && null
+  renderLoading = () => <Loader />
 
   render() {
     const {
@@ -53,21 +55,34 @@ class InfiniteList extends Component {
       onScroll,
       scrollRef,
       borderSeparator,
+      data = {},
       isFetching,
       hasMore,
       fetchMore,
       refetch,
       isRefetching,
+      ListHeaderComponent,
       ...props
     } = this.props
+
+    if (data.length === 0 && isFetching) {
+      return (
+        <Fragment>
+          {ListHeaderComponent}
+          {this.renderLoading()}
+        </Fragment>
+      )
+    }
 
     return (
       <AnimatedFlatlist
         style={{ flex: 1 }}
         ref={el => el && scrollRef && scrollRef(el.getNode())}
+        data={data}
         onEndReached={() => !isFetching && hasMore && fetchMore()}
         onRefresh={refetch}
         refreshing={isRefetching}
+        ListHeaderComponent={ListHeaderComponent}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
         contentContainerStyle={{

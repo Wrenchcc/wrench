@@ -1,5 +1,5 @@
-query getPosts {
-  posts {
+query getFeed($date: String, $userId: String) {
+  feed(date: $date, userId: $userId) {
     id
     type
     createdAt

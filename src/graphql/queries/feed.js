@@ -1,13 +1,12 @@
 import { graphql } from 'react-apollo'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
-import getPostsQuery from 'graphql/queries/getPosts.graphql'
+import getFeedQuery from 'graphql/queries/getFeed.graphql'
 
-const getPostsOptions = {
+const getFeedOptions = {
   // options: ownProps => ({
   //   variables: {
-  //     ...ownProps,
+  //     userIds: null,
   //   },
-  //   notifyOnNetworkStatusChange: true,
   // }),
   props: ({ data }) => {
     const { networkStatus, loading } = data
@@ -19,4 +18,4 @@ const getPostsOptions = {
   },
 }
 
-export const getPosts = graphql(getPostsQuery, getPostsOptions)
+export const getFeed = graphql(getFeedQuery, getFeedOptions)
