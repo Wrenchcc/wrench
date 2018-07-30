@@ -55,7 +55,7 @@ class InfiniteList extends Component {
       onScroll,
       scrollRef,
       borderSeparator,
-      data = {},
+      data,
       isFetching,
       hasMore,
       fetchMore,
@@ -65,7 +65,7 @@ class InfiniteList extends Component {
       ...props
     } = this.props
 
-    if (data.length === 0 && isFetching) {
+    if (!data && isFetching) {
       return (
         <Fragment>
           {ListHeaderComponent}

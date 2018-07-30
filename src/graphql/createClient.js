@@ -7,7 +7,7 @@ import HttpLink from './links/Http'
 import AuthLink from './links/Auth'
 import stateLink from './state'
 
-const SCHEMA_VERSION = '2'
+const SCHEMA_VERSION = '3'
 const SCHEMA_VERSION_KEY = 'wrench-schema-version'
 
 export let client = null

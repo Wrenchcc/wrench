@@ -1,47 +1,36 @@
 #!/usr/bin/env node
-const glob = require('glob')
-const ejs = require('ejs')
-const fs = require('fs')
 const sane = require('sane')
+const rimraf = require('rimraf')
 
-const template = ejs.compile(
-  fs.readFileSync('./src/translations/developmentEnglish.native.ejs', 'utf-8')
-)
+// https://github.com/kentcdodds/babel-plugin-preval/issues/19
+// ~/.babel.json
+const CACHE_PATH = './node_modules/.cache/babel-loader/*'
 
-const targetFile = './src/translations/developmentEnglish.native.js'
 const dir = './src'
 const opts = {
-  glob: '**/translations.json',
+  glob: '**/*.graphql',
 }
 
-const logAndUpdateIndex = logFn => path => {
+const logAndResetCache = logFn => path => {
   try {
     console.log(logFn(path))
-    const files = glob.sync(opts.glob, { cwd: dir })
-    const output = template({ files })
-    fs.writeFileSync(`${targetFile}`, output)
-    console.log(`✅  Done updating ${targetFile}`)
-  } catch (e) {
-    console.log(`❌ Failed updating ${targetFile}`)
-    console.log(e)
+    if (path) {
+      rimraf.sync(CACHE_PATH)
+      console.log(`✅  Done reset cache for ${path}`)
+    }
+  } catch (err) {
+    console.log(err)
+    console.log(`❌ Failed updating ${path}`)
     process.exit(1)
   }
 }
 
-if (process.argv.find(arg => arg === '--watch')) {
-  const watcher = sane(dir, opts)
+const watcher = sane(dir, opts)
 
-  watcher.on('ready', logAndUpdateIndex(() => `👁️ 📂  Watching: ${dir}/${opts.glob}`))
+watcher.on('ready', logAndResetCache(() => '👁️ 📂  Watching for changes in .graphql files'))
 
-  watcher.on(
-    'add',
-    logAndUpdateIndex(path => `🚧 + Updating ${targetFile} because of new file ${path}`)
-  )
+watcher.on('change', logAndResetCache(path => `🚧 + Updating change in file ${path}`))
 
-  watcher.on(
-    'delete',
-    logAndUpdateIndex(path => `🚧 - Updating ${targetFile} because of removed file ${path}`)
-  )
-} else {
-  logAndUpdateIndex(() => `🚧 + Updating ${targetFile}`)()
-}
+watcher.on('add', logAndResetCache(path => `🚧 + Updating because of new file ${path}`))
+
+watcher.on('delete', logAndResetCache(path => `🚧 - Updating because of removed file ${path}`))
