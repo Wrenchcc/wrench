@@ -15,7 +15,8 @@
     "storybook:start": "tasks/storybook_start",
     "storybook:create": "tasks/storybook_create",
     "translations:create": "tasks/translations_create",
-    "storybook": "tasks/storybook_start"
+    "storybook": "tasks/storybook_start",
+    "watch:graphql": "tasks/watchGraphqlFiles.js"
   },
   "rnpm": {
     "assets": [
@@ -88,6 +89,8 @@
     "prettier": "^1.14.0",
     "prettier-eslint": "^8.8.2",
     "prop-types": "^15.6.2",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "rimraf": "^2.6.2",
+    "sane": "^2.2.0"
   }
 }
