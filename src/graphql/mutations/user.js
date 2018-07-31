@@ -1,10 +1,10 @@
 import { graphql } from 'react-apollo'
-import addLoggedInUser from './addLoggedInUser.graphql'
+import addCurrentUserMutation from './addCurrentUser.graphql'
 
-const addloggedInUserOptions = {
+const addCurrentUserOptions = {
   props: ({ mutate }) => ({
-    addloggedInUser: data => mutate({ variables: { data } }),
+    addCurrentUser: data => mutate({ variables: { data } }),
   }),
 }
 
-export const addloggedInUser = graphql(addLoggedInUser, addloggedInUserOptions)
+export const addCurrentUser = graphql(addCurrentUserMutation, addCurrentUserOptions)

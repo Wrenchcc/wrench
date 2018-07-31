@@ -2,7 +2,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
 import HttpLink from './links/Http'
-import AuthLink from './links/Auth'
+// import AuthLink from './links/Auth'
 import stateLink from './state'
 
 export let client = null
@@ -23,7 +23,7 @@ export default async () => {
   //   persistor.purge()
   // })
 
-  AuthLink.injectClient(client)
+  // AuthLink.injectClient(client)
 
   return client
 }
