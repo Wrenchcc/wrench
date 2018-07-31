@@ -1263,10 +1263,6 @@ apollo-cache-inmemory@^1.3.0-beta.6:
     apollo-utilities "^1.0.17"
     optimism "^0.6.5"
 
-apollo-cache-persist@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache-persist/-/apollo-cache-persist-0.1.1.tgz#e6cfe1983b998982a679aaf05241d3ed395edb1e"
-
 apollo-cache@^1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.13.tgz#75c28091825992b2eec9fb63c9a367db3b4714a8"
