@@ -14,14 +14,8 @@ export default async () => {
 
   client = new ApolloClient({
     cache,
-    // link: ApolloLink.from([stateLink(cache), AuthLink, HttpLink]),
-    link: ApolloLink.from([stateLink(cache), HttpLink]),
+    link: ApolloLink.from([stateLink(cache), /* AuthLink, */ HttpLink]),
   })
-
-  // Purge persistor when the store was reset.
-  // client.onResetStore(() => {
-  //   persistor.purge()
-  // })
 
   // AuthLink.injectClient(client)
 

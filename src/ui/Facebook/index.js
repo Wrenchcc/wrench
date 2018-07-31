@@ -3,7 +3,6 @@ import { Alert } from 'react-native'
 import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
 import { addCurrentUser } from 'graphql/mutations/user'
-import { navigateToOnboarding } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import { warn } from 'utils/logger'
 import { Button, Text } from './styled'
@@ -39,8 +38,6 @@ class Facebook extends PureComponent {
                     token: '123',
                     refreshToken: '456',
                   })
-
-                  setTimeout(() => navigateToOnboarding(), 1000)
                 }
               }
             )

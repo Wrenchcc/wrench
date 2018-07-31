@@ -1,23 +1,13 @@
-import { pathOr, pick } from 'ramda'
+import { setItem, getItem, removeItem } from 'utils/storage'
 import { client } from 'graphql/createClient'
-import getCurrentUserQuery from 'graphql/queries/getCurrentUser.graphql'
-import getTokenQuery from 'graphql/queries/getToken.graphql'
 
-export const getCurrentUser = async () => {
-  const res = await client.query({ query: getCurrentUserQuery })
-  return pathOr(null, ['data', 'currentUser'], res)
-}
+const STORAGE_KEY = 'current_user'
 
-export const getToken = async () => {
-  const res = await client.query({ query: getTokenQuery })
-  return pick(['token', 'refreshToken'], res.data.currentUser)
-}
+export const saveUser = data => setItem(STORAGE_KEY, data)
 
-export const refreshToken = async () => {
-  // const res = await client.query({ query: getTokenQuery })
-  // return pick(['token', 'refreshToken'], res.data.currentUser)
-}
+export const getUser = () => getItem(STORAGE_KEY)
 
 export const resetStore = () => {
   client.resetStore()
+  removeItem(STORAGE_KEY)
 }

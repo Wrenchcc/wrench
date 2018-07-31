@@ -1,19 +1,26 @@
-import { setItem, getItem } from 'utils/storage'
-
-const STORAGE_KEY = 'current_user'
+import { saveUser, getUser } from 'graphql/utils/auth'
 
 export default {
   Mutation: {
-    addCurrentUser: async (_, { data }) => {
-      await setItem(STORAGE_KEY, data)
+    addCurrentUser: async (_, { data }, { cache }) => {
+      await saveUser(data)
+
+      cache.writeData({
+        data: {
+          getCurrentUser: {
+            __typename: 'User',
+            ...data,
+          },
+        },
+      })
 
       return null
     },
   },
   Query: {
     getCurrentUser: async () => {
-      const user = await getItem(STORAGE_KEY)
-      console.log(user)
+      const user = await getUser()
+
       return {
         __typename: 'User',
         ...user,

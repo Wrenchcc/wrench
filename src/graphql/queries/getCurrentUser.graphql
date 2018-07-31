@@ -1,5 +1,9 @@
 query getCurrentUser {
-  getCurrentUser @client {
+  currentUser: getCurrentUser @client {
     id
+    fullName
+    firstName
+    lastName
+    avatarUrl
   }
 }
