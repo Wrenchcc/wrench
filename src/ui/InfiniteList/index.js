@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { FlatList, Animated, AppState } from 'react-native'
+import { FlatList, Animated } from 'react-native'
 import { Border, Loader } from 'ui'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
-
-const ACTIVE_STATE = 'active'
 
 class InfiniteList extends Component {
   static propTypes = {
@@ -28,20 +26,6 @@ class InfiniteList extends Component {
     inverted: PropTypes.bool,
     renderItem: PropTypes.func,
     ListHeaderComponent: PropTypes.node,
-  }
-
-  componentDidMount = () => {
-    AppState.addEventListener('change', this.handleResume)
-  }
-
-  componentWillUnmount = () => {
-    AppState.removeEventListener('change', this.handleResume)
-  }
-
-  handleResume = state => {
-    if (state === ACTIVE_STATE) {
-      this.props.refetch()
-    }
   }
 
   renderLoading = () => <Loader />
