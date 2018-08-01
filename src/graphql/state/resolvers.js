@@ -1,4 +1,4 @@
-import { saveUser, getUser } from 'graphql/utils/auth'
+import { saveUser } from 'graphql/utils/auth'
 
 export default {
   Mutation: {
@@ -7,7 +7,7 @@ export default {
 
       cache.writeData({
         data: {
-          getCurrentUser: {
+          currentUser: {
             __typename: 'User',
             ...data,
           },
@@ -15,16 +15,6 @@ export default {
       })
 
       return null
-    },
-  },
-  Query: {
-    getCurrentUser: async () => {
-      const user = await getUser()
-
-      return {
-        __typename: 'User',
-        ...user,
-      }
     },
   },
 }

@@ -1,3 +1,3 @@
 export default {
-  getCurrentUser: null,
+  currentUser: null,
 }

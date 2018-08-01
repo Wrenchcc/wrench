@@ -11,26 +11,24 @@ export default class App extends PureComponent {
     setTimeout(SplashScreen.hide, 500)
   }
 
-  render() {
-    return (
-      <Query query={getCurrentUserQuery} onCompleted={this.onCompleted}>
-        {({ data, loading }) => {
-          console.log(data)
-          if (loading) return null
-          if (data.currentUser) {
-            return (
-              <Gateway.Provider>
-                <Zoomable.Provider>
-                  <Navigation ref={nav => setNavigationRef(nav)} />
-                  <Gateway.Destination name="global" />
-                </Zoomable.Provider>
-              </Gateway.Provider>
-            )
-          }
+  render = () => (
+    <Query query={getCurrentUserQuery} onCompleted={this.onCompleted}>
+      {({ data, loading }) => {
+        if (loading) return null
 
-          return <SignIn />
-        }}
-      </Query>
-    )
-  }
+        if (data.currentUser) {
+          return (
+            <Gateway.Provider>
+              <Zoomable.Provider>
+                <Navigation ref={nav => setNavigationRef(nav)} />
+                <Gateway.Destination name="global" />
+              </Zoomable.Provider>
+            </Gateway.Provider>
+          )
+        }
+
+        return <SignIn />
+      }}
+    </Query>
+  )
 }

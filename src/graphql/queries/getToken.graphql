@@ -1,6 +1,0 @@
-query getToken {
-  currentUser: loggedInUser @client {
-    token
-    refreshToken
-  }
-}
