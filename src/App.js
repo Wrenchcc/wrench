@@ -7,16 +7,16 @@ import SignIn from 'features/signIn/containers/SignIn'
 import getCurrentUserQuery from 'graphql/queries/getCurrentUser.graphql'
 
 // TODO: Cleanup Gateway and Zoomable
+// Animation between logged in/out
 export default class App extends PureComponent {
   onCompleted() {
     setTimeout(SplashScreen.hide, 500)
   }
 
+  // TODO: fetchPolicy not needed?: https://github.com/apollographql/react-apollo/issues/2177
   render = () => (
     <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
-      {({ data, loading }) => {
-        if (loading) return null
-
+      {({ data }) => {
         if (data.currentUser) {
           return (
             <Gateway.Provider>
