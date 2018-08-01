@@ -6,13 +6,14 @@ import { Gateway, Zoomable } from 'ui'
 import SignIn from 'features/signIn/containers/SignIn'
 import getCurrentUserQuery from 'graphql/queries/getCurrentUser.graphql'
 
+// TODO: Cleanup Gateway and Zoomable
 export default class App extends PureComponent {
   onCompleted() {
     setTimeout(SplashScreen.hide, 500)
   }
 
   render = () => (
-    <Query query={getCurrentUserQuery} onCompleted={this.onCompleted}>
+    <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
       {({ data, loading }) => {
         if (loading) return null
 
