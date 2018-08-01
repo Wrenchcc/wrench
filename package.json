@@ -36,7 +36,7 @@
     "human-format": "^0.10.0",
     "javascript-time-ago": "^1.0.31",
     "ramda": "^0.25.0",
-    "react": "^16.4.1",
+    "react": "^16.4.2",
     "react-apollo": "^2.1.9",
     "react-native": "^0.56.0",
     "react-native-actionsheet": "^2.4.2",
@@ -88,7 +88,7 @@
     "prettier": "^1.14.0",
     "prettier-eslint": "^8.8.2",
     "prop-types": "^15.6.2",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "rimraf": "^2.6.2",
     "sane": "^3.0.0"
   }

@@ -49,7 +49,7 @@ TabNavigator.navigationOptions = ({ navigation }) => {
   }
 }
 
-const AppNavigator = createStackNavigator(
+const StackNavigator = createStackNavigator(
   {
     [NAVIGATORS.TAB_NAVIGATOR]: {
       screen: TabNavigator,
@@ -58,7 +58,6 @@ const AppNavigator = createStackNavigator(
   },
   {
     headerLayoutPreset: 'center',
-
     cardStyle: {
       backgroundColor: COLORS.WHITE,
     },
@@ -68,7 +67,7 @@ const AppNavigator = createStackNavigator(
 export default createStackNavigator(
   {
     [NAVIGATORS.APP_NAVIGATOR]: {
-      screen: AppNavigator,
+      screen: StackNavigator,
       navigationOptions: {
         header: null,
       },

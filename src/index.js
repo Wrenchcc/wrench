@@ -5,6 +5,11 @@ import createClient from 'graphql/createClient'
 import { checkFrequency } from 'utils/codePush'
 import App from './App'
 
+if (__DEV__) {
+  // Setting `global.XMLHttpRequest` will enable showing Network requests in React Native Debugger
+  global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest
+}
+
 class Main extends Component {
   state = {
     client: null,

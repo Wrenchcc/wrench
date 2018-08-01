@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import { Query } from 'react-apollo'
 import { Navigation, setNavigationRef } from 'navigation'
@@ -6,14 +6,18 @@ import { Gateway, Zoomable } from 'ui'
 import SignIn from 'features/signIn/containers/SignIn'
 import getCurrentUserQuery from 'graphql/queries/getCurrentUser.graphql'
 
+// TODO: Remove
+console.disableYellowBox = true
+
 // TODO: Cleanup Gateway and Zoomable
 // Animation between logged in/out
-export default class App extends PureComponent {
+export default class App extends Component {
   onCompleted() {
     setTimeout(SplashScreen.hide, 500)
   }
 
   // TODO: fetchPolicy not needed?: https://github.com/apollographql/react-apollo/issues/2177
+  //  fetchPolicy="cache-only"
   render = () => (
     <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
       {({ data }) => {

@@ -22,7 +22,6 @@ export const navigateBack = () => navigator.dispatch(
   })
 )
 
-export const navigateToSignIn = () => navigate('AuthNavigator')
 export const navigateToFeed = () => navigate('feed')
 export const navigateToSettings = () => navigate('settings')
 export const navigateToSearch = params => navigate('search', params)
