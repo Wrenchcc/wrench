@@ -4,17 +4,6 @@ query getFeed($date: String, $userId: String) {
     type
     createdAt
     caption
-    comments {
-      id
-      text
-      user {
-        fullName
-      }
-      replies {
-        id
-        text
-      }
-    }
     user {
       id
       fullName
@@ -28,6 +17,17 @@ query getFeed($date: String, $userId: String) {
       id
       slug
       name
+    }
+    comments {
+      id
+      text
+      user {
+        fullName
+      }
+      replies {
+        id
+        text
+      }
     }
   }
 }

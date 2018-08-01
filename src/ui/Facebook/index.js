@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react'
 import { Alert } from 'react-native'
 import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
-import { addloggedInUser } from 'graphql/mutations/user'
-import { navigateToOnboarding } from 'navigation'
+import { addCurrentUser } from 'graphql/mutations/user'
 import withLocalization from 'i18n/withLocalization'
 import { warn } from 'utils/logger'
 import { Button, Text } from './styled'
@@ -30,7 +29,7 @@ class Facebook extends PureComponent {
                 } else {
                   // TODO: Send mutation to server
                   // Get response and save to state
-                  this.props.addloggedInUser({
+                  this.props.addCurrentUser({
                     id: result.id,
                     fullName: result.name,
                     firstName: result.first_name,
@@ -39,8 +38,6 @@ class Facebook extends PureComponent {
                     token: '123',
                     refreshToken: '456',
                   })
-
-                  setTimeout(() => navigateToOnboarding(), 1000)
                 }
               }
             )
@@ -67,4 +64,4 @@ class Facebook extends PureComponent {
   }
 }
 
-export default compose(addloggedInUser)(withLocalization(Facebook, 'Facebook'))
+export default compose(addCurrentUser)(withLocalization(Facebook, 'Facebook'))

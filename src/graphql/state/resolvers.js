@@ -1,9 +1,13 @@
+import { saveUser } from 'graphql/utils/auth'
+
 export default {
   Mutation: {
-    addLoggedInUser: (_, { data }, { cache }) => {
+    addCurrentUser: async (_, { data }, { cache }) => {
+      await saveUser(data)
+
       cache.writeData({
         data: {
-          loggedInUser: {
+          currentUser: {
             __typename: 'User',
             ...data,
           },

@@ -1,23 +1,19 @@
-import { pathOr, pick } from 'ramda'
-import { client } from 'graphql/createClient'
-import getCurrentUserQuery from 'graphql/queries/getCurrentUser.graphql'
-import getTokenQuery from 'graphql/queries/getToken.graphql'
+import addCurrentUserMutation from 'graphql/mutations/addCurrentUser.graphql'
+import { setItem, getItem, removeItem } from 'utils/storage'
 
-export const getCurrentUser = async () => {
-  const res = await client.query({ query: getCurrentUserQuery })
-  return pathOr(null, ['data', 'currentUser'], res)
-}
+const STORAGE_KEY = 'user'
 
-export const getToken = async () => {
-  const res = await client.query({ query: getTokenQuery })
-  return pick(['token', 'refreshToken'], res.data.currentUser)
-}
+export const saveUser = data => setItem(STORAGE_KEY, data)
 
-export const refreshToken = async () => {
-  // const res = await client.query({ query: getTokenQuery })
-  // return pick(['token', 'refreshToken'], res.data.currentUser)
-}
+export const getUser = () => getItem(STORAGE_KEY)
 
-export const resetStore = () => {
-  client.resetStore()
+export const removeUser = () => removeItem(STORAGE_KEY)
+
+export const rehydrateUser = async client => {
+  const user = await getUser()
+
+  await client.mutate({
+    mutation: addCurrentUserMutation,
+    variables: { data: user },
+  })
 }
