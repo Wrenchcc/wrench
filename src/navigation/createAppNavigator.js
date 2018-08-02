@@ -6,8 +6,8 @@ import { TabBarComponent, SearchBar, Add } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
 import { ROUTE_NAMES } from 'features/profile/constants'
 import { toTabRoute, toStackRoute, toModalRoute } from './options'
-import { NAVIGATORS, TAB_HEIGHT } from '../constants'
-import { tabRoutes, stackRoutes, modalRoutes } from '../routes'
+import { NAVIGATORS, TAB_HEIGHT } from './constants'
+import { tabRoutes, stackRoutes, modalRoutes, authRoutes } from './routes'
 import styles from './styles'
 
 const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
@@ -49,7 +49,7 @@ TabNavigator.navigationOptions = ({ navigation }) => {
   }
 }
 
-const StackNavigator = createStackNavigator(
+const AppNavigator = createStackNavigator(
   {
     [NAVIGATORS.TAB_NAVIGATOR]: {
       screen: TabNavigator,
@@ -64,21 +64,37 @@ const StackNavigator = createStackNavigator(
   }
 )
 
-export default createStackNavigator(
-  {
-    [NAVIGATORS.APP_NAVIGATOR]: {
-      screen: StackNavigator,
-      navigationOptions: {
-        header: null,
-      },
-    },
-    ...map(toModalRoute, modalRoutes),
+const AuthNavigator = createStackNavigator(map(toStackRoute, authRoutes), {
+  headerMode: 'screen',
+  cardStyle: {
+    backgroundColor: COLORS.WHITE,
   },
-  {
-    mode: 'modal',
-    headerMode: 'screen',
-    cardStyle: {
-      backgroundColor: COLORS.WHITE,
+})
+
+export default function createAppNavigator(authenticated = false) {
+  return createStackNavigator(
+    {
+      [NAVIGATORS.AUTH_NAVIGATOR]: {
+        screen: AuthNavigator,
+        navigationOptions: {
+          header: null,
+        },
+      },
+      [NAVIGATORS.APP_NAVIGATOR]: {
+        screen: AppNavigator,
+        navigationOptions: {
+          header: null,
+        },
+      },
+      ...map(toModalRoute, modalRoutes),
     },
-  }
-)
+    {
+      mode: 'modal',
+      headerMode: 'screen',
+      initialRouteName: authenticated ? NAVIGATORS.APP_NAVIGATOR : NAVIGATORS.AUTH_NAVIGATOR,
+      cardStyle: {
+        backgroundColor: COLORS.WHITE,
+      },
+    }
+  )
+}

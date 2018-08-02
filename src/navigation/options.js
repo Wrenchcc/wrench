@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from 'ui'
 import { arrowLeft } from 'images'
-import createTabBarIcon from '../utils/createTabBarIcon'
+import createTabBarIcon from './utils/createTabBarIcon'
 import styles from './styles'
 
 export const toTabRoute = ({ navigationOptions = {}, component }) => ({

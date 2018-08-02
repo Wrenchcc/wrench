@@ -1,5 +1,5 @@
 import { COLORS } from 'ui/constants'
-import { HEADER_HEIGHT } from '../constants'
+import { HEADER_HEIGHT } from './constants'
 
 export default {
   headerStyle: {
