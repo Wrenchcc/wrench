@@ -28,7 +28,9 @@ class App extends Component {
       client,
       appLoading: false,
     })
+  }
 
+  onCompleted() {
     setTimeout(SplashScreen.hide, 500)
   }
 
@@ -41,7 +43,7 @@ class App extends Component {
 
     return (
       <ApolloProvider client={client}>
-        <Query query={getCurrentUserQuery}>
+        <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
           {({ data }) => <AppNavigator authenticated={!!data.currentUser} />}
         </Query>
       </ApolloProvider>

@@ -1,7 +1,7 @@
 import addCurrentUserMutation from 'graphql/mutations/addCurrentUser.graphql'
 import { setItem, getItem, removeItem } from 'utils/storage'
 
-const STORAGE_KEY = 'user'
+const STORAGE_KEY = '@wrench:user'
 
 export const saveUser = data => setItem(STORAGE_KEY, data)
 
