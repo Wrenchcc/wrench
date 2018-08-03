@@ -1,41 +1,41 @@
 import React, { PureComponent } from 'react'
-import { Alert } from 'react-native'
+import PropTypes from 'prop-types'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
-import { authenticateUser } from 'graphql/mutations/user'
+import { authenticateUser, addCurrentUser } from 'graphql/mutations/user'
 import withLocalization from 'i18n/withLocalization'
-import { warn } from 'utils/logger'
 import { Button, Text } from './styled'
 
-const parameters = {
-  fields: { string: 'email,name,first_name,last_name,picture.type(large)' },
-}
-
 class Facebook extends PureComponent {
-  onPress = () => {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
-      result => {
-        if (!result.isCancelled) {
-          AccessToken.getCurrentAccessToken().then(({ accessToken }) =>
-            this.props.authenticateUser(accessToken)
-          )
-        }
-      },
-      error => {
-        Alert(`Login fail with error: ${error}`)
-      }
-    )
+  static propTypes = {
+    authenticateUser: PropTypes.func.isRequired,
+    addCurrentUser: PropTypes.func.isRequired,
   }
 
-  render() {
-    return (
-      <Button onPress={this.onPress}>
-        <Text white medium>
-          {this.props.t('.button')}
-        </Text>
-      </Button>
-    )
+  getAccessToken = async ({ accessToken }) => {
+    const response = await this.props.authenticateUser(accessToken)
+    const { token, refreshToken, user } = response.data.authenticateUser
+    this.props.addCurrentUser({ token, refreshToken, ...user })
   }
+
+  handleLoginManager = () => {
+    LoginManager.logInWithReadPermissions(['public_profile']).then(result => {
+      if (!result.isCancelled) {
+        AccessToken.getCurrentAccessToken().then(this.getAccessToken)
+      }
+    })
+  }
+
+  render = () => (
+    <Button onPress={this.handleLoginManager}>
+      <Text white medium>
+        {this.props.t('.button')}
+      </Text>
+    </Button>
+  )
 }
 
-export default compose(authenticateUser)(withLocalization(Facebook, 'Facebook'))
+export default compose(
+  authenticateUser,
+  addCurrentUser
+)(withLocalization(Facebook, 'Facebook'))

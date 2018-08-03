@@ -10,7 +10,7 @@ const addCurrentUserOptions = {
 
 const authenticateUserOptions = {
   props: ({ mutate }) => ({
-    authenticateUser: data => mutate({ variables: { data } }),
+    authenticateUser: facebookToken => mutate({ variables: { facebookToken } }),
   }),
 }
 
