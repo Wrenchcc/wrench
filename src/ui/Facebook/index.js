@@ -1,67 +1,41 @@
 import React, { PureComponent } from 'react'
-import { Alert } from 'react-native'
-import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
+import PropTypes from 'prop-types'
+import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
-import { addCurrentUser } from 'graphql/mutations/user'
+import { authenticateUser, addCurrentUser } from 'graphql/mutations/user'
 import withLocalization from 'i18n/withLocalization'
-import { warn } from 'utils/logger'
 import { Button, Text } from './styled'
 
-const parameters = {
-  fields: { string: 'email,name,first_name,last_name,picture.type(large)' },
-}
-
 class Facebook extends PureComponent {
-  onPress = () => {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
-      result => {
-        if (!result.isCancelled) {
-          AccessToken.getCurrentAccessToken().then(({ accessToken }) => {
-            const infoRequest = new GraphRequest(
-              '/me',
-              {
-                accessToken,
-                parameters,
-              },
-              (error, result) => {
-                if (error) {
-                  warn(error)
-                } else {
-                  // TODO: Send mutation to server
-                  // Get response and save to state
-                  this.props.addCurrentUser({
-                    id: result.id,
-                    fullName: result.name,
-                    firstName: result.first_name,
-                    lastName: result.last_name,
-                    avatarUrl: result.picture.data.url,
-                    token: '123',
-                    refreshToken: '456',
-                  })
-                }
-              }
-            )
+  static propTypes = {
+    authenticateUser: PropTypes.func.isRequired,
+    addCurrentUser: PropTypes.func.isRequired,
+  }
 
-            // Start the graph request.
-            new GraphRequestManager().addRequest(infoRequest).start()
-          })
-        }
-      },
-      error => {
-        Alert(`Login fail with error: ${error}`)
+  getAccessToken = async ({ accessToken }) => {
+    const response = await this.props.authenticateUser(accessToken)
+    const { token, refreshToken, user } = response.data.authenticateUser
+    this.props.addCurrentUser({ token, refreshToken, ...user })
+  }
+
+  handleLoginManager = () => {
+    LoginManager.logInWithReadPermissions(['public_profile']).then(result => {
+      if (!result.isCancelled) {
+        AccessToken.getCurrentAccessToken().then(this.getAccessToken)
       }
-    )
+    })
   }
 
-  render() {
-    return (
-      <Button onPress={this.onPress}>
-        <Text white medium>
-          {this.props.t('.button')}
-        </Text>
-      </Button>
-    )
-  }
+  render = () => (
+    <Button onPress={this.handleLoginManager}>
+      <Text white medium>
+        {this.props.t('.button')}
+      </Text>
+    </Button>
+  )
 }
 
-export default compose(addCurrentUser)(withLocalization(Facebook, 'Facebook'))
+export default compose(
+  authenticateUser,
+  addCurrentUser
+)(withLocalization(Facebook, 'Facebook'))
