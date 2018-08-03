@@ -1,0 +1,10 @@
+mutation authenticateUser($facebookToken: String) {
+  authenticateUser(facebookToken: $facebookToken) {
+    token
+    refreshToken
+    user {
+      id
+      fullName
+    }
+  }
+}

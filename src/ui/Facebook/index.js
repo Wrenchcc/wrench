@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Alert } from 'react-native'
-import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
+import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
-import { addCurrentUser } from 'graphql/mutations/user'
+import { authenticateUser } from 'graphql/mutations/user'
 import withLocalization from 'i18n/withLocalization'
 import { warn } from 'utils/logger'
 import { Button, Text } from './styled'
@@ -16,35 +16,9 @@ class Facebook extends PureComponent {
     LoginManager.logInWithReadPermissions(['public_profile']).then(
       result => {
         if (!result.isCancelled) {
-          AccessToken.getCurrentAccessToken().then(({ accessToken }) => {
-            const infoRequest = new GraphRequest(
-              '/me',
-              {
-                accessToken,
-                parameters,
-              },
-              (error, result) => {
-                if (error) {
-                  warn(error)
-                } else {
-                  // TODO: Send mutation to server
-                  // Get response and save to state
-                  this.props.addCurrentUser({
-                    id: result.id,
-                    fullName: result.name,
-                    firstName: result.first_name,
-                    lastName: result.last_name,
-                    avatarUrl: result.picture.data.url,
-                    token: '123',
-                    refreshToken: '456',
-                  })
-                }
-              }
-            )
-
-            // Start the graph request.
-            new GraphRequestManager().addRequest(infoRequest).start()
-          })
+          AccessToken.getCurrentAccessToken().then(({ accessToken }) =>
+            this.props.authenticateUser(accessToken)
+          )
         }
       },
       error => {
@@ -64,4 +38,4 @@ class Facebook extends PureComponent {
   }
 }
 
-export default compose(addCurrentUser)(withLocalization(Facebook, 'Facebook'))
+export default compose(authenticateUser)(withLocalization(Facebook, 'Facebook'))
