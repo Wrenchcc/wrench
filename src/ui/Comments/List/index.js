@@ -7,7 +7,7 @@ import { Row, Comment, LoadMore } from './styles'
 
 class List extends PureComponent {
   static propTypes = {
-    data: PropTypes.object,
+    data: PropTypes.array,
   }
 
   goToComments = () => {

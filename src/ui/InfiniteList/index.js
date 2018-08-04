@@ -14,9 +14,7 @@ class InfiniteList extends Component {
     defaultPaddingTop: PropTypes.bool,
     paddingBottom: PropTypes.number,
     paddingHorizontal: PropTypes.number,
-    fullscreen: PropTypes.bool,
     contentContainerStyle: PropTypes.object,
-    animated: PropTypes.bool,
     data: PropTypes.array,
     refetch: PropTypes.func,
     fetchMore: PropTypes.func,
@@ -52,6 +50,7 @@ class InfiniteList extends Component {
       refetch,
       isRefetching,
       ListHeaderComponent,
+      inverted,
       ...props
     } = this.props
 
@@ -76,6 +75,7 @@ class InfiniteList extends Component {
         ListFooterComponent={hasNextPage ? this.renderLoading() : null}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
+        inverted={inverted}
         contentContainerStyle={{
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
