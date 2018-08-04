@@ -1,27 +1,47 @@
-import React from 'react'
+import React, { PureComponent, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { navigateToProfile, navigateToComments } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import Text from 'ui/Text'
-import { Base, Row, Comment, LoadMore } from './styles'
+import { Row, Comment, LoadMore } from './styles'
 
-const List = ({ t, data }) => data && (
-    <Base>
-      {data.map(({ user, text, id }) => (
-        <Row key={id}>
-          <Text bold fontSize={15} onPress={() => navigateToProfile({ user })}>
-            {`${user.fullName} `}
+class List extends PureComponent {
+  static propTypes = {
+    data: PropTypes.object,
+  }
+
+  goToComments = () => {
+    navigateToComments()
+  }
+
+  goToProfile = user => {
+    navigateToProfile({ user })
+  }
+
+  renderComment = ({ user, text, id }) => (
+    <Row key={id}>
+      <Text bold fontSize={15} onPress={() => this.goToProfile(user)}>
+        {`${user.fullName} `}
+      </Text>
+      <Comment fontSize={15} numberOfLines={1}>
+        {text}
+      </Comment>
+    </Row>
+  )
+
+  render() {
+    const { data, t } = this.props
+    return (
+      <Fragment>
+        {data.map(this.renderComment)}
+        <LoadMore onPress={this.goToComments}>
+          <Text fontSize={15} color="light_grey">
+            {t('.loadMore', { count: data.length })}
           </Text>
-          <Comment fontSize={15} numberOfLines={1}>
-            {text}
-          </Comment>
-        </Row>
-      ))}
-      <LoadMore onPress={() => navigateToComments()}>
-        <Text fontSize={15} color="light_grey">
-          {t('.loadMore', { count: data.length })}
-        </Text>
-      </LoadMore>
-    </Base>
-)
+        </LoadMore>
+      </Fragment>
+    )
+  }
+}
 
 export default withLocalization(List, 'List')

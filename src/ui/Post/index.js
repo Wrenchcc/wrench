@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { navigateToProject, navigateToProfile } from 'navigation'
-import { Media, Comments, Avatar } from 'ui'
-import { Base, Top, Content, Title } from './styled'
+import { Avatar, Carousel, Comments } from 'ui'
+import { Base, Top, Title, Content, Caption } from './styled'
 
 export default class Post extends PureComponent {
   static propTypes = {
@@ -39,7 +39,14 @@ export default class Post extends PureComponent {
           )}
         </Top>
         <Content>
-          <Media onLongPress={onLongPress} post={data} onPress={this.goToProject} />
+          {data.caption && (
+            <Caption onPress={this.goToProject} disabled={onPost} color="grey" lineHeight={25}>
+              {data.caption}
+            </Caption>
+          )}
+          {data.images && (
+            <Carousel images={data.images} onPress={this.goToProject} onLongPress={onLongPress} />
+          )}
         </Content>
 
         <Comments data={data.comments} />

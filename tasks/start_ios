@@ -6,4 +6,4 @@ concurrently \
   -c "blue.bold,yellow.bold,magenta.bold" \
   "yarn start:packager" \
   "yarn run:ios" \
-  "yarn watch:graphql"
+  # "yarn watch:graphql"
