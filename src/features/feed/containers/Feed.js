@@ -26,10 +26,10 @@ class Feed extends Component {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <Post data={item} />
+  renderItem = ({ item }) => <Post data={item.node} />
 
   render() {
-    const { feed, fetchMore, refetch, isRefetching, isFetching, hasMore } = this.props
+    const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <InfiniteList
@@ -39,13 +39,13 @@ class Feed extends Component {
         withKeyboardHandler
         defaultPaddingTop
         initialNumToRender={INITIAL_POSTS_COUNT}
-        data={feed}
+        data={posts}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}
-        hasMore={hasMore}
-        keyExtractor={item => item.id}
+        hasNextPage={hasNextPage}
+        keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
       />
     )

@@ -22,7 +22,7 @@ class InfiniteList extends Component {
     fetchMore: PropTypes.func,
     isRefetching: PropTypes.bool,
     isFetching: PropTypes.bool,
-    hasMore: PropTypes.bool,
+    hasNextPage: PropTypes.bool,
     inverted: PropTypes.bool,
     renderItem: PropTypes.func,
     ListHeaderComponent: PropTypes.node,
@@ -41,7 +41,7 @@ class InfiniteList extends Component {
       borderSeparator,
       data,
       isFetching,
-      hasMore,
+      hasNextPage,
       fetchMore,
       refetch,
       isRefetching,
@@ -63,7 +63,7 @@ class InfiniteList extends Component {
         style={{ flex: 1 }}
         ref={el => el && scrollRef && scrollRef(el.getNode())}
         data={data}
-        onEndReached={() => !isFetching && hasMore && fetchMore()}
+        onEndReached={() => !isFetching && hasNextPage && fetchMore()}
         onRefresh={refetch}
         refreshing={isRefetching}
         ListHeaderComponent={ListHeaderComponent}

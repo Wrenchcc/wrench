@@ -1,33 +1,42 @@
-query getFeed($date: String, $userId: String) {
-  feed(date: $date, userId: $userId) {
-    id
-    type
-    createdAt
-    caption
-    user {
-      id
-      fullName
-      userName
-      avatarUrl
-    }
-    images {
-      uri
-    }
-    project {
-      id
-      slug
-      name
-    }
-    comments {
-      id
-      text
-      user {
-        fullName
-      }
-      replies {
+query getFeed($first: Int, $after: String, $last: Int, $before: String) {
+  feed(first: $first, after: $after, last: $last, before: $before) {
+    edges {
+      cursor
+      node {
         id
-        text
+        type
+        createdAt
+        caption
+        user {
+          id
+          fullName
+          userName
+          avatarUrl
+        }
+        images {
+          uri
+        }
+        project {
+          id
+          slug
+          name
+        }
+        comments {
+          id
+          text
+          user {
+            fullName
+          }
+          replies {
+            id
+            text
+          }
+        }
       }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
     }
   }
 }
