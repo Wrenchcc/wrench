@@ -28,13 +28,13 @@ class InfiniteList extends Component {
     ListHeaderComponent: PropTypes.node,
   }
 
-  renderLoading = () => <Loader />
-
   onEndReached = ({ distanceFromEnd }: { distanceFromEnd: number }) => {
     if (this.props.hasNextPage && this.props.isRefetching !== true && distanceFromEnd > 0) {
       this.props.fetchMore()
     }
   }
+
+  renderLoading = () => <Loader />
 
   render() {
     const {

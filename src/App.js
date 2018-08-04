@@ -6,9 +6,7 @@ import SplashScreen from 'react-native-splash-screen'
 import { checkFrequency } from 'utils/codePush'
 import AppNavigator from 'navigation/AppNavigator'
 import getCurrentUserQuery from 'graphql/queries/getCurrentUser.graphql'
-import Config from 'react-native-config'
 
-alert(Config.GRAPHQL_URI)
 // TODO: Remove
 console.disableYellowBox = true
 
