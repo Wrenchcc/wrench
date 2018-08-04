@@ -1,5 +1,4 @@
 export { default as Avatar } from './Avatar'
-export { default as Media } from './Media'
 export { default as Post } from './Post'
 export { default as Title } from './Title'
 export { default as Text } from './Text'

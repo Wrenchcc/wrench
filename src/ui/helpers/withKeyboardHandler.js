@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard, TextInput, findNodeHandle } from 'react-native'
 import { withNavigation } from 'react-navigation'
@@ -7,7 +7,7 @@ import { isIphoneX } from 'utils/platform'
 const ADDITIONAL_OFFSET = isIphoneX ? 125 : 95
 
 export default function withKeyboardHandler(WrappedComponent) {
-  class WithKeyboardHandler extends Component {
+  class WithKeyboardHandler extends PureComponent {
     scrollView = null
 
     subscriptions = []

@@ -69,10 +69,11 @@ class InfiniteList extends Component {
         style={{ flex: 1 }}
         ref={el => el && scrollRef && scrollRef(el.getNode())}
         data={data}
-        onEndReached={this.onEndReached}
         onRefresh={refetch}
+        onEndReached={this.onEndReached}
         refreshing={isRefetching}
         ListHeaderComponent={ListHeaderComponent}
+        ListFooterComponent={hasNextPage ? this.renderLoading() : null}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
         contentContainerStyle={{
