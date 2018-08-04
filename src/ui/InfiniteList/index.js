@@ -30,6 +30,12 @@ class InfiniteList extends Component {
 
   renderLoading = () => <Loader />
 
+  onEndReached = ({ distanceFromEnd }: { distanceFromEnd: number }) => {
+    if (this.props.hasNextPage && this.props.isRefetching !== true && distanceFromEnd > 0) {
+      this.props.fetchMore()
+    }
+  }
+
   render() {
     const {
       contentContainerStyle = {},
@@ -63,7 +69,7 @@ class InfiniteList extends Component {
         style={{ flex: 1 }}
         ref={el => el && scrollRef && scrollRef(el.getNode())}
         data={data}
-        onEndReached={() => !isFetching && hasNextPage && fetchMore()}
+        onEndReached={this.onEndReached}
         onRefresh={refetch}
         refreshing={isRefetching}
         ListHeaderComponent={ListHeaderComponent}
