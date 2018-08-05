@@ -1,5 +1,18 @@
-query getFeed($userId: String, $first: Int, $after: String, $last: Int, $before: String) {
-  feed(userId: $userId, first: $first, after: $after, last: $last, before: $before) {
+query getProject($projectId: String, $first: Int, $after: String, $last: Int, $before: String) {
+  project(projectId: $projectId, first: $first, after: $after, last: $last, before: $before) {
+    id
+    slug
+    name
+    followers {
+      count
+    }
+    owner {
+      fullName
+    }
+    permissions {
+      isOwner
+      isFollowing
+    }
     edges {
       cursor
       node {
@@ -20,9 +33,6 @@ query getFeed($userId: String, $first: Int, $after: String, $last: Int, $before:
           id
           slug
           name
-          permissions {
-            isOwner
-          }
         }
         comments {
           id
@@ -37,9 +47,9 @@ query getFeed($userId: String, $first: Int, $after: String, $last: Int, $before:
         }
       }
     }
+
     pageInfo {
       hasNextPage
-      hasPreviousPage
     }
   }
 }

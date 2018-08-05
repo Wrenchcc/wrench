@@ -20,6 +20,8 @@ export default class Explore extends Component {
     scrollView = null
   }
 
+  renderItem = ({ item }) => <Post data={item} />
+
   render = () => (
     <InfiniteList
       scrollRef={ref => {
@@ -29,7 +31,7 @@ export default class Explore extends Component {
       withKeyboardHandler
       data={posts}
       keyExtractor={item => item.id}
-      renderItem={({ item }) => <Post data={item} />}
+      renderItem={this.renderItem}
     />
   )
 }

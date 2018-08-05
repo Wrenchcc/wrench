@@ -43,6 +43,13 @@ export default class CameraRoll extends Component {
     })
   }
 
+  onEndReached = ({ distanceFromEnd }) => {
+    const { has_next_page: hasNextPage } = this.state
+    if (hasNextPage && distanceFromEnd > 0) {
+      this.getpictures(this.state.end_cursor)
+    }
+  }
+
   getpictures = async after => {
     const { images, has_next_page: hasNextPage } = this.state
 
@@ -108,7 +115,7 @@ export default class CameraRoll extends Component {
       numColumns={2}
       data={this.state.images}
       keyExtractor={item => item.uri}
-      onEndReached={() => this.getpictures(this.state.end_cursor)}
+      onEndReached={this.onEndReached}
       renderItem={this.renderItem}
     />
   )

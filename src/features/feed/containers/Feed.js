@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { getFeed } from 'graphql/queries/feed'
+import { getFeed } from 'graphql/queries/getFeed'
 import { Post, InfiniteList } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { INITIAL_POSTS_COUNT } from '../constants'
@@ -16,6 +17,15 @@ class Feed extends Component {
         defaultHandler()
       }
     },
+  }
+
+  static propTypes = {
+    posts: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {

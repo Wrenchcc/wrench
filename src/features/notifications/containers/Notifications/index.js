@@ -6,6 +6,7 @@ import { Header } from './styles'
 const ITEM_HEIGHT = 70
 let scrollView = null
 
+// TODO: Translate
 export default class Notifications extends Component {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
@@ -21,6 +22,8 @@ export default class Notifications extends Component {
     scrollView = null
   }
 
+  renderItem = ({ item }) => <Notification data={item} />
+
   render = () => (
     <InfiniteList
       defaultPaddingTop
@@ -32,7 +35,7 @@ export default class Notifications extends Component {
       initialNumToRender={10}
       data={data}
       keyExtractor={item => item.id}
-      renderItem={({ item }) => <Notification data={item} />}
+      renderItem={this.renderItem}
       getItemLayout={(data, index) => ({
         length: ITEM_HEIGHT,
         offset: ITEM_HEIGHT * index,

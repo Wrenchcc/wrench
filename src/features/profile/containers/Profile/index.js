@@ -54,6 +54,8 @@ class Profile extends Component {
     scrollView = null
   }
 
+  renderItem = ({ item }) => <Post data={item} avatar={false} />
+
   render() {
     const emptyState = 'project'
     const hasPosts = data.posts.length > 0
@@ -72,7 +74,7 @@ class Profile extends Component {
         withKeyboardHandler
         data={data.posts}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <Post data={item} avatar={false} />}
+        renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
           useNativeDriver: true,
         })}

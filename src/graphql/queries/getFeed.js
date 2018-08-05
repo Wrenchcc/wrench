@@ -4,11 +4,11 @@ import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import getFeedQuery from 'graphql/queries/getFeed.graphql'
 
 const getFeedOptions = {
-  // options: props => ({
-  //   variables: {
-  //     after: '',
-  //   },
-  // }),
+  options: props => ({
+    variables: {
+      userId: props.userId,
+    },
+  }),
   props: ({ data }) => {
     const { networkStatus, loading, fetchMore, ...props } = data
     return {
@@ -20,13 +20,15 @@ const getFeedOptions = {
       fetchMore: () => fetchMore({
         variables: { after: data.feed.edges[data.feed.edges.length - 1].cursor },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          const { edges, pageInfo } = fetchMoreResult.feed
+          const { edges, pageInfo, ...rest } = fetchMoreResult.feed
+
           if (!previousResult.feed) {
             return previousResult
           }
 
           return {
             feed: {
+              ...rest,
                 __typename: previousResult.feed.__typename, // eslint-disable-line
               edges: [...previousResult.feed.edges, ...edges],
               pageInfo,
