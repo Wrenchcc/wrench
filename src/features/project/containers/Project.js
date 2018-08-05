@@ -16,19 +16,18 @@ const START_OPACITY = 50
 let scrollView = null
 
 class Project extends Component {
-  // TODO: Fix headerTitle not showing some times
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const isOwner = pathOr(false, ['project', 'permissions', 'isOwner'], params)
-    const projectName = pathOr(false, ['project', 'name'], params)
+    const projectTitle = pathOr(false, ['project', 'title'], params)
 
     return {
-      headerTitle: projectName && (
+      headerTitle: projectTitle && (
         <HeaderTitle
           opacity={params.opacity || new Animated.Value(0)}
           onPress={() => scrollView.scrollToOffset({ offset: 0 })}
         >
-          {projectName}
+          {projectTitle}
         </HeaderTitle>
       ),
       headerRight: isOwner ? (
@@ -117,7 +116,9 @@ class Project extends Component {
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={<Header name={navigationProject.name} followers={123} />}
+          ListHeaderComponent={
+            <Header name={navigationProject.title} followers={navigationProject.followers.count} />
+          }
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}
@@ -137,7 +138,7 @@ class Project extends Component {
           <Fragment>
             <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
               <Footer
-                name={navigationProject.name}
+                name={navigationProject.title}
                 id={navigationProject.id}
                 following={project.permissions.isFollowing}
                 onFollowPress={this.toggleFollow}

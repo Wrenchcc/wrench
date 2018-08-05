@@ -1,8 +1,7 @@
 query getProject($projectId: String, $first: Int, $after: String, $last: Int, $before: String) {
   project(projectId: $projectId, first: $first, after: $after, last: $last, before: $before) {
     id
-    slug
-    name
+    title
     followers {
       count
     }
@@ -17,8 +16,6 @@ query getProject($projectId: String, $first: Int, $after: String, $last: Int, $b
       cursor
       node {
         id
-        type
-        createdAt
         caption
         user {
           id
@@ -31,8 +28,7 @@ query getProject($projectId: String, $first: Int, $after: String, $last: Int, $b
         }
         project {
           id
-          slug
-          name
+          title
         }
         comments {
           id

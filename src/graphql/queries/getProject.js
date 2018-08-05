@@ -1,43 +1,16 @@
 import { graphql } from 'react-apollo'
-import { pathOr } from 'ramda'
-import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
+import { getProjectId } from 'navigation/utils/selectors'
+import { mapListProps } from 'graphql/utils/mapListProps'
 import getProjectQuery from 'graphql/queries/getProject.graphql'
 
 const getProjectOptions = {
-  options: props => ({
+  options: ({ navigation }) => ({
     variables: {
-      projectId: props.projectId,
+      projectId: getProjectId(navigation),
     },
+    fetchPolicy: 'cache-and-network',
   }),
-  props: ({ data }) => {
-    const { networkStatus, loading, fetchMore, ...props } = data
-    return {
-      ...props,
-      posts: pathOr(null, ['project', 'edges'], data),
-      hasNextPage: pathOr(false, ['project', 'pageInfo', 'hasNextPage'], data),
-      isRefetching: isRefetching(networkStatus),
-      isFetching: loading || isFetchingMore(networkStatus),
-      fetchMore: () => fetchMore({
-        variables: { after: data.project.edges[data.project.edges.length - 1].cursor },
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-          const { edges, pageInfo, ...rest } = fetchMoreResult.project
-
-          if (!previousResult.project) {
-            return previousResult
-          }
-
-          return {
-            project: {
-              ...rest,
-                __typename: previousResult.project.__typename, // eslint-disable-line
-              edges: [...previousResult.project.edges, ...edges],
-              pageInfo,
-            },
-          }
-        },
-      }),
-    }
-  },
+  props: mapListProps('project'),
 }
 
 export const getProject = graphql(getProjectQuery, getProjectOptions)
