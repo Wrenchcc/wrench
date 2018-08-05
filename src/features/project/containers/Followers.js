@@ -4,6 +4,7 @@ import data from 'fixtures/search'
 
 let scrollView = null
 
+// TODO: Translate header
 export default class Followers extends Component {
   static navigationOptions = {
     headerTitle: (
@@ -15,15 +16,19 @@ export default class Followers extends Component {
     scrollView = null
   }
 
-  render = () => (
-    <InfiniteList
-      scrollRef={ref => {
-        scrollView = ref
-      }}
-      borderSeparator
-      data={data.users}
-      keyExtractor={item => item.id}
-      renderItem={({ item }) => <User data={item} />}
-    />
-  )
+  renderItem = ({ item }) => <User data={item} />
+
+  render() {
+    return (
+      <InfiniteList
+        scrollRef={ref => {
+          scrollView = ref
+        }}
+        borderSeparator
+        data={data.users}
+        keyExtractor={item => item.id}
+        renderItem={this.renderItem}
+      />
+    )
+  }
 }
