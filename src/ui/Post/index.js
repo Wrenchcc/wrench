@@ -31,7 +31,7 @@ export default class Post extends PureComponent {
         <Top>
           {!onPost && (
             <Title numberOfLines={1} onPress={this.goToProject}>
-              {data.project.name}
+              {data.project.title}
             </Title>
           )}
           {avatar && (

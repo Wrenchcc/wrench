@@ -4,8 +4,6 @@ query getFeed($userId: String, $first: Int, $after: String, $last: Int, $before:
       cursor
       node {
         id
-        type
-        createdAt
         caption
         user {
           id
@@ -18,10 +16,12 @@ query getFeed($userId: String, $first: Int, $after: String, $last: Int, $before:
         }
         project {
           id
-          slug
-          name
+          title
           permissions {
             isOwner
+          }
+          followers {
+            count
           }
         }
         comments {
