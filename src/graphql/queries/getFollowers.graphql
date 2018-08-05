@@ -1,0 +1,22 @@
+query getFollowers($projectId: String, $first: Int, $after: String, $last: Int, $before: String) {
+  followers(projectId: $projectId, first: $first, after: $after, last: $last, before: $before) {
+    edges {
+      cursor
+      node {
+        user {
+          id
+          fullName
+          userName
+          avatarUrl
+        }
+        projects {
+          count
+        }
+      }
+    }
+
+    pageInfo {
+      hasNextPage
+    }
+  }
+}
