@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, Animated } from 'react-native'
 import { Border, Loader } from 'ui'
@@ -24,9 +24,10 @@ class InfiniteList extends Component {
     inverted: PropTypes.bool,
     renderItem: PropTypes.func,
     ListHeaderComponent: PropTypes.node,
+    ListEmptyComponent: PropTypes.node,
   }
 
-  onEndReached = ({ distanceFromEnd }: { distanceFromEnd: number }) => {
+  onEndReached = ({ distanceFromEnd }) => {
     if (this.props.hasNextPage && this.props.isRefetching !== true && distanceFromEnd > 0) {
       this.props.fetchMore()
     }
@@ -50,19 +51,14 @@ class InfiniteList extends Component {
       refetch,
       isRefetching,
       ListHeaderComponent,
+      ListEmptyComponent,
       inverted,
       ...props
     } = this.props
 
-    if (!data && isFetching) {
-      return (
-        <Fragment>
-          {ListHeaderComponent}
-          {this.renderLoading()}
-        </Fragment>
-      )
-    }
+    const initialFetch = !data && isFetching
 
+    // TODO: Fix paddingTop when ListEmptyComponent loader is showing (not centered)
     return (
       <AnimatedFlatlist
         style={{ flex: 1 }}
@@ -73,10 +69,13 @@ class InfiniteList extends Component {
         refreshing={isRefetching}
         ListHeaderComponent={ListHeaderComponent}
         ListFooterComponent={hasNextPage ? this.renderLoading() : null}
+        ListEmptyComponent={initialFetch ? this.renderLoading() : ListEmptyComponent}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
         inverted={inverted}
         contentContainerStyle={{
+          flex: initialFetch ? 1 : 0, // Fix for ListEmptyComponent to center loader
+          justifyContent: 'center',
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
           paddingTop: (defaultPaddingTop && 50) || 0,

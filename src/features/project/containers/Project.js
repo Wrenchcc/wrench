@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Alert } from 'react-native'
+import { pathOr } from 'ramda'
+import { compose } from 'react-apollo'
+import { getProject } from 'graphql/queries/getProject'
 import { navigateToProfile } from 'navigation'
 import { InfiniteList, ActionSheet, Post, Avatar, HeaderTitle, Edit } from 'ui'
-import data from 'fixtures/projects'
-import currentUser from 'fixtures/currentUser'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -14,28 +15,20 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-export default class Project extends Component {
-  static defaultProps = {
-    project: data[0],
-  }
-
-  static propTypes = {
-    project: PropTypes.object,
-    navigation: PropTypes.object.isRequired,
-  }
-
+class Project extends Component {
+  // TODO: Fix headerTitle not showing some times
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
-    const ownerId = params.project.owner && params.project.owner.id
-    const isOwner = currentUser().id === ownerId
+    const isOwner = pathOr(false, ['project', 'permissions', 'isOwner'], params)
+    const projectName = pathOr(false, ['project', 'name'], params)
 
     return {
-      headerTitle: (
+      headerTitle: projectName && (
         <HeaderTitle
           opacity={params.opacity || new Animated.Value(0)}
           onPress={() => scrollView.scrollToOffset({ offset: 0 })}
         >
-          {params.project.name}
+          {projectName}
         </HeaderTitle>
       ),
       headerRight: isOwner ? (
@@ -47,6 +40,17 @@ export default class Project extends Component {
         />
       ),
     }
+  }
+
+  static propTypes = {
+    project: PropTypes.object,
+    navigation: PropTypes.object.isRequired,
+    posts: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -72,7 +76,6 @@ export default class Project extends Component {
 
     this.state = {
       isOpen: false,
-      following: props.project.following,
     }
 
     this.actionsheetOptions = [
@@ -82,27 +85,47 @@ export default class Project extends Component {
     ]
   }
 
+  // TODO: Mutate state
+  toggleFollow = () => {}
+
+  toggleActionSheet = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+
   componentWillUnmont() {
     scrollView = null
   }
 
-  toggleFollow = () => this.setState({ following: !this.state.following })
-
-  toggleActionSheet = () => this.setState({ isOpen: !this.state.isOpen })
+  renderItem = ({ item }) => (
+    <Post data={item.node} avatar={false} onPost onLongPress={this.toggleActionSheet} />
+  )
 
   render() {
-    const { project } = this.props
+    const {
+      navigation,
+      project,
+      posts,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
+    } = this.props
+
+    const { project: navigationProject } = navigation.state.params
+
     return (
       <Fragment>
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={<Header name={project.name} followers={project.followers} />}
-          data={project.posts}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <Post data={item} avatar={false} onPost onLongPress={this.toggleActionSheet} />
-          )}
+          ListHeaderComponent={<Header name={navigationProject.name} followers={123} />}
+          data={posts}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          keyExtractor={item => item.node.id}
+          renderItem={this.renderItem}
           onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
             useNativeDriver: true,
           })}
@@ -110,20 +133,26 @@ export default class Project extends Component {
             scrollView = ref
           }}
         />
-        <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
-          <Footer
-            name={project.name}
-            id={project.id}
-            following={this.state.following}
-            onFollowPress={this.toggleFollow}
-          />
-        </Animated.View>
-        <ActionSheet
-          isOpen={this.state.isOpen}
-          onClose={this.toggleActionSheet}
-          options={this.actionsheetOptions}
-        />
+        {!isFetching && (
+          <Fragment>
+            <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
+              <Footer
+                name={navigationProject.name}
+                id={navigationProject.id}
+                following={project.permissions.isFollowing}
+                onFollowPress={this.toggleFollow}
+              />
+            </Animated.View>
+            <ActionSheet
+              isOpen={this.state.isOpen}
+              onClose={this.toggleActionSheet}
+              options={this.actionsheetOptions}
+            />
+          </Fragment>
+        )}
       </Fragment>
     )
   }
 }
+
+export default compose(getProject)(Project)
