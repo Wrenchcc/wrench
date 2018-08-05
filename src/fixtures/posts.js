@@ -36,7 +36,7 @@ export default [
     project: {
       id: '1',
       slug: 'the-natural',
-      name: 'BMW R100 Project',
+      title: 'BMW R100 Project',
       owner: user('1'),
     },
   },
@@ -53,7 +53,7 @@ export default [
     project: {
       id: '1',
       slug: 'the-natural',
-      name: 'Honda CB750 1981',
+      title: 'Honda CB750 1981',
       owner: user('2'),
     },
   },
@@ -83,7 +83,7 @@ export default [
     project: {
       id: '3',
       slug: 'the-natural',
-      name: 'R100 Scrambler',
+      title: 'R100 Scrambler',
       owner: user('3'),
     },
   },
@@ -105,7 +105,7 @@ export default [
     project: {
       id: '3',
       slug: 'the-natural',
-      name: 'The Natural CB750',
+      title: 'The Natural CB750',
       owner: user('4'),
     },
   },
@@ -127,7 +127,7 @@ export default [
     project: {
       id: '3',
       slug: 'the-natural',
-      name: 'BMW R100 Project',
+      title: 'BMW R100 Project',
       owner: user('5'),
     },
   },
@@ -144,7 +144,7 @@ export default [
     project: {
       id: '3',
       slug: 'the-natural',
-      name: 'Scrambler',
+      title: 'Scrambler',
       owner: user('6'),
     },
   },
