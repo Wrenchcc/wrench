@@ -8079,9 +8079,9 @@ react-native-tab-view@^1.0.0, react-native-tab-view@^1.0.2:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-video@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-3.0.0.tgz#7f2dcb0bb138665493a0ba2219ade464a825c911"
+react-native-video@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-3.2.0.tgz#5f336acb3e3d23c93e1990327a444ac97296b194"
   dependencies:
     keymirror "0.1.1"
     prop-types "^15.5.10"
