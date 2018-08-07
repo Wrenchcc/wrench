@@ -117,7 +117,7 @@ class Project extends Component {
           defaultPaddingTop
           withKeyboardHandler
           ListHeaderComponent={
-            <Header name={navigationProject.title} followers={navigationProject.followers.count} />
+            <Header name={navigationProject.title} followers={navigationProject.meta.followers} />
           }
           data={posts}
           refetch={refetch}

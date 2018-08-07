@@ -19,9 +19,10 @@ query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: Str
           title
           permissions {
             isOwner
+            isFollowing
           }
-          followers {
-            count
+          meta {
+            followers
           }
         }
         comments {
