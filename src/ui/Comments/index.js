@@ -6,7 +6,7 @@ import { Base } from './styles'
 
 export default class Comments extends PureComponent {
   static propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.object,
   }
 
   state = {

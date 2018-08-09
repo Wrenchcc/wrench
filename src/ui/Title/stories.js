@@ -1,8 +1,0 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react-native'
-import { withCenter } from 'storybook/decorators'
-import Title from '.'
-
-storiesOf('UI/Title', module)
-  .addDecorator(withCenter)
-  .add('default', () => <Title>Here is a title!</Title>)
