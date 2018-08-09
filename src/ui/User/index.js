@@ -1,24 +1,35 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import withLocalization from 'i18n/withLocalization'
 import { Avatar, Text } from 'ui'
 import { navigateToProfile } from 'navigation'
 import { Base, Content } from './styles'
 
-const User = ({ t, data }) => (
-  <Base onPress={() => navigateToProfile(data)}>
-    <Avatar uri={data.user.avatarUrl} size={40} />
-    <Content>
-      <Text medium>{data.user.fullName}</Text>
-      <Text color="light_grey" fontSize={15}>
-        {t('.projects', { count: data.projects.length })}
-      </Text>
-    </Content>
-  </Base>
-)
+// TODO: Pass correct data to profile
+class User extends PureComponent {
+  static propTypes = {
+    data: PropTypes.object.isRequired,
+  }
 
-User.propTypes = {
-  data: PropTypes.object.isRequired,
+  goToProfile = () => {
+    const { data } = this.props.data
+    navigateToProfile(data)
+  }
+
+  render() {
+    const { t, data } = this.props
+    return (
+      <Base onPress={this.goToProfile}>
+        <Avatar uri={data.avatarUrl} size={40} />
+        <Content>
+          <Text medium>{data.fullName}</Text>
+          <Text color="light_grey" fontSize={15}>
+            {t('.projects', { count: data.projectCount })}
+          </Text>
+        </Content>
+      </Base>
+    )
+  }
 }
 
 export default withLocalization(User, 'UiUser')

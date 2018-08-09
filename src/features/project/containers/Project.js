@@ -108,21 +108,16 @@ class Project extends Component {
       hasNextPage,
       postsConnection,
     } = this.props
-    console.log(postsConnection)
-    // const { project: navigationProject } = navigation.state.params
+
+    const { project: navigationProject } = navigation.state.params
 
     return (
       <Fragment>
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          // ListHeaderComponent={
-          //   <Header
-          //     name={navigationProject.title}
-          //     followers={navigationProject.followersConnection.totalCount}
-          //   />
-          // }
-          data={{}}
+          ListHeaderComponent={<Header project={navigationProject} />}
+          data={null}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}

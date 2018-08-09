@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getUserId } from 'navigation/utils/selectors'
-
 import { mapListProps } from 'graphql/utils/mapListProps'
 
 export const getFeedQuery = gql`

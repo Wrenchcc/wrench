@@ -1,21 +1,33 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Title } from 'ui'
 import { navigateToFollowers } from 'navigation'
 import { Base, ProjectName, Followers } from './styles'
 
-const Header = ({ name, followers }) => (
-  <Base>
-    <ProjectName>
-      <Title large>{name}</Title>
-      <Followers followers={followers} onPress={() => navigateToFollowers()} />
-    </ProjectName>
-  </Base>
-)
+// TODO: PropTypes
+export default class Header extends PureComponent {
+  static propTypes = {
+    // name: PropTypes.string.isRequired,
+    // followers: PropTypes.number.isRequired,
+  }
 
-Header.propTypes = {
-  name: PropTypes.string.isRequired,
-  followers: PropTypes.number.isRequired,
+  goToFollowers = () => {
+    const { project } = this.props
+    navigateToFollowers({ project })
+  }
+
+  render() {
+    const { project } = this.props
+    return (
+      <Base>
+        <ProjectName>
+          <Title large>{project.title}</Title>
+          <Followers
+            followers={project.followersConnection.totalCount}
+            onPress={this.goToFollowers}
+          />
+        </ProjectName>
+      </Base>
+    )
+  }
 }
-
-export default Header

@@ -1,11 +1,11 @@
 import { pathOr } from 'ramda'
 import { isRefetching, isFetchingMore } from './networkStatus'
 
+// TODO: Make this recursive
 export const mapListProps = type => ({ data: { fetchMore, loading, networkStatus, ...props } }) => {
   const data = props[type]
 
   return {
-    ...data, // TODO: Make this recursive
     ...props,
     [type]: pathOr(null, ['edges'], data),
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
