@@ -37,8 +37,8 @@ class Comments extends Component {
     text: '',
   }
 
-  onReply = ({ userName }) => {
-    this.setState({ text: `${TRIGGER}${userName} ` })
+  onReply = ({ username }) => {
+    this.setState({ text: `${TRIGGER}${username} ` })
     this.commentField.focus()
   }
 
@@ -46,9 +46,9 @@ class Comments extends Component {
     this.setState({ text })
   }
 
-  onMentionPress = ({ userName }) => {
+  onMentionPress = ({ username }) => {
     const comment = this.state.text.slice(0, -this.state.query.length - 1)
-    this.setState({ text: `${comment}${TRIGGER}${userName} ` })
+    this.setState({ text: `${comment}${TRIGGER}${username} ` })
     this.closeMention()
   }
 

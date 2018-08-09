@@ -23,9 +23,9 @@ export default class Comments extends PureComponent {
     this.setState({ query })
   }
 
-  onMentionPress = ({ userName }) => {
+  onMentionPress = ({ username }) => {
     const comment = this.state.text.slice(0, -this.state.query.length - 1)
-    this.setState({ text: `${comment}@${userName} ` })
+    this.setState({ text: `${comment}@${username} ` })
     this.closeMention()
   }
 

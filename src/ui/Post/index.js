@@ -49,7 +49,7 @@ export default class Post extends PureComponent {
           )}
         </Content>
 
-        <Comments data={data.comments} />
+        <Comments data={data.commentConnection} />
       </Base>
     )
   }

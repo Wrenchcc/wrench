@@ -1,5 +1,5 @@
 query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: String) {
-  feed(userId: $userId, first: $first, after: $after, last: $last, before: $before) {
+  posts(userId: $userId, first: $first, after: $after, last: $last, before: $before) {
     edges {
       cursor
       node {
@@ -8,7 +8,7 @@ query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: Str
         user {
           id
           fullName
-          userName
+          username
           avatarUrl
         }
         images {
@@ -21,19 +21,19 @@ query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: Str
             isOwner
             isFollowing
           }
-          meta {
-            followers
+          followersConnection {
+            totalCount
           }
         }
-        comments {
-          id
-          text
-          user {
-            fullName
-          }
-          replies {
-            id
-            text
+        commentConnection(first: 2) {
+          edges {
+            node {
+              id
+              text
+              user {
+                fullName
+              }
+            }
           }
         }
       }

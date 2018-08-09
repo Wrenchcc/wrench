@@ -4,7 +4,7 @@ export default `
     fullName: String
     firstName: String
     lastName: String
-    userName: String
+    username: String
     avatarUrl: String
 
     token: String

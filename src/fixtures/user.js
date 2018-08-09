@@ -6,5 +6,5 @@ export default (id = '1') => ({
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),
   avatarUrl: faker.image.avatar(),
-  userName: faker.internet.userName(),
+  username: faker.internet.userName(),
 })

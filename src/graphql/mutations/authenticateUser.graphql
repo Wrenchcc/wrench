@@ -7,7 +7,7 @@ mutation authenticateUser($facebookToken: String!) {
       fullName
       firstName
       lastName
-      userName
+      username
       avatarUrl
     }
   }

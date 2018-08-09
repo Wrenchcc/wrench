@@ -2,8 +2,8 @@ query getProject($projectId: ID, $first: Int, $after: String, $last: Int, $befor
   project(projectId: $projectId, first: $first, after: $after, last: $last, before: $before) {
     id
     title
-    followers {
-      count
+    meta {
+      followers
     }
     owner {
       fullName
@@ -12,40 +12,41 @@ query getProject($projectId: ID, $first: Int, $after: String, $last: Int, $befor
       isOwner
       isFollowing
     }
-    edges {
-      cursor
-      node {
-        id
-        caption
-        user {
+    postsConnection(first: 10) {
+      edges {
+        cursor
+        node {
           id
-          fullName
-          userName
-          avatarUrl
-        }
-        images {
-          uri
-        }
-        project {
-          id
-          title
-        }
-        comments {
-          id
-          text
+          caption
           user {
+            id
             fullName
+            username
+            avatarUrl
           }
-          replies {
+          images {
+            uri
+          }
+          project {
+            id
+            title
+          }
+          comments {
             id
             text
+            user {
+              fullName
+            }
+            replies {
+              id
+              text
+            }
           }
         }
       }
-    }
-
-    pageInfo {
-      hasNextPage
+      pageInfo {
+        hasNextPage
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ const getFeedOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: mapListProps('feed'),
+  props: mapListProps('posts'),
 }
 
 export const getFeed = graphql(getFeedQuery, getFeedOptions)
