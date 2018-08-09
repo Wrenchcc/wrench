@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { graphql } from 'react-apollo'
-import getCurrentUser from 'graphql/queries/getCurrentUser.graphql'
+import { getCurrentUserQuery } from 'graphql/queries/getCurrentUser'
 import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 import data from 'fixtures/profile'
@@ -83,4 +83,4 @@ class Profile extends Component {
   }
 }
 
-export default graphql(getCurrentUser)(Profile)
+export default graphql(getCurrentUserQuery)(Profile)

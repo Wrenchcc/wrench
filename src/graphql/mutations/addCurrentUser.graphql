@@ -1,3 +1,0 @@
-mutation addCurrentUser($data: User) {
-  addCurrentUser(data: $data) @client
-}

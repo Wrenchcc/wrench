@@ -1,4 +1,4 @@
-import addCurrentUserMutation from 'graphql/mutations/addCurrentUser.graphql'
+import { addCurrentUserMutation } from 'graphql/mutations/user'
 import { setItem, getItem, removeItem } from 'utils/storage'
 
 const STORAGE_KEY = '@wrench:user'

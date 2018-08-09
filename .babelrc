@@ -9,10 +9,9 @@
           "videos": "./assets/videos",
           "storybook": "./storybook"
         },
-        "extensions": [".js", ".ios.js", ".android.js"]
+        "extensions": [".js"]
       }
-    ],
-    "import-graphql"
+    ]
   ],
   "presets": ["react-native"]
 }

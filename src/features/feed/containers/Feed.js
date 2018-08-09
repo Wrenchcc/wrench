@@ -39,7 +39,6 @@ class Feed extends Component {
   renderItem = ({ item }) => <Post data={item.node} />
 
   render() {
-    console.log(this.props)
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (

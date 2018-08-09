@@ -101,25 +101,28 @@ class Project extends Component {
     const {
       navigation,
       project,
-      posts,
       fetchMore,
       refetch,
       isRefetching,
       isFetching,
       hasNextPage,
+      postsConnection,
     } = this.props
-
-    const { project: navigationProject } = navigation.state.params
+    console.log(postsConnection)
+    // const { project: navigationProject } = navigation.state.params
 
     return (
       <Fragment>
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={
-            <Header name={navigationProject.title} followers={navigationProject.meta.followers} />
-          }
-          data={posts}
+          // ListHeaderComponent={
+          //   <Header
+          //     name={navigationProject.title}
+          //     followers={navigationProject.followersConnection.totalCount}
+          //   />
+          // }
+          data={{}}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
@@ -136,14 +139,7 @@ class Project extends Component {
         />
         {!isFetching && (
           <Fragment>
-            <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
-              <Footer
-                name={navigationProject.title}
-                id={navigationProject.id}
-                following={project.permissions.isFollowing}
-                onFollowPress={this.toggleFollow}
-              />
-            </Animated.View>
+            <Animated.View style={{ transform: [{ translateY: this.footerY }] }} />
             <ActionSheet
               isOpen={this.state.isOpen}
               onClose={this.toggleActionSheet}
