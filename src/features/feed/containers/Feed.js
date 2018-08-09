@@ -20,12 +20,12 @@ class Feed extends Component {
   }
 
   static propTypes = {
-    posts: PropTypes.array,
-    fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    hasNextPage: PropTypes.bool.isRequired,
+    // posts: PropTypes.array,
+    // fetchMore: PropTypes.func.isRequired,
+    // refetch: PropTypes.func.isRequired,
+    // isRefetching: PropTypes.bool.isRequired,
+    // isFetching: PropTypes.bool.isRequired,
+    // hasNextPage: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
@@ -39,7 +39,7 @@ class Feed extends Component {
   renderItem = ({ item }) => <Post data={item.node} />
 
   render() {
-    const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { data, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props.posts
 
     return (
       <InfiniteList
@@ -49,7 +49,7 @@ class Feed extends Component {
         withKeyboardHandler
         defaultPaddingTop
         initialNumToRender={INITIAL_POSTS_COUNT}
-        data={posts}
+        data={data}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

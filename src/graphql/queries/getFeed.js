@@ -31,7 +31,7 @@ export const getFeedQuery = gql`
               totalCount
             }
           }
-          commentConnection(first: 2) {
+          comments: commentConnection(first: 2) {
             totalCount
             edges {
               node {

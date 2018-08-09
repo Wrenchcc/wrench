@@ -5,10 +5,10 @@ import { mapListProps } from 'graphql/utils/mapListProps'
 
 const getProjectQuery = gql`
   query getProject($id: ID, $first: Int, $after: String, $last: Int, $before: String) {
-    project(id: $id, first: $first, after: $after, last: $last, before: $before) {
+    project(id: $id) {
       id
       title
-      followersConnection {
+      followers: followersConnection {
         totalCount
       }
       owner {
@@ -18,7 +18,7 @@ const getProjectQuery = gql`
         isOwner
         isFollowing
       }
-      postsConnection(first: 10) {
+      posts: postsConnection(first: $first, after: $after, last: $last, before: $before) {
         edges {
           cursor
           node {

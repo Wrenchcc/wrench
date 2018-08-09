@@ -9,7 +9,7 @@ export const getUserQuery = gql`
       firstName
       lastName
       avatarUrl
-      postsConnection(first: $first, after: $after, last: $last, before: $before) {
+      posts: postsConnection(first: $first, after: $after, last: $last, before: $before) {
         pageInfo {
           hasNextPage
           hasPreviousPage

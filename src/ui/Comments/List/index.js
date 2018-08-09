@@ -35,11 +35,11 @@ class List extends PureComponent {
     const { data, t } = this.props
     return (
       <Fragment>
-        {data.commentConnection.edges.map(this.renderComment)}
+        {data.comments.edges.map(this.renderComment)}
         <LoadMore onPress={this.goToComments}>
           <Text fontSize={15} color="light_grey">
             {t('.loadMore', {
-              count: humanFormat(data.commentConnection.totalCount, {
+              count: humanFormat(data.comments.totalCount, {
                 separator: '',
                 decimals: 1,
               }),
