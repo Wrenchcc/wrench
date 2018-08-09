@@ -74,7 +74,7 @@ class Profile extends Component {
         ListHeaderComponent={<Header user={currentUser} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<EmptyState type={emptyState} />}
         withKeyboardHandler
-        data={data.posts}
+        data={null}
         keyExtractor={item => item.id}
         renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {

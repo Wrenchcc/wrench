@@ -12,7 +12,8 @@ class List extends PureComponent {
   }
 
   goToComments = () => {
-    navigateToComments()
+    const { id } = this.props.data
+    navigateToComments({ id })
   }
 
   goToProfile = user => {
@@ -34,11 +35,11 @@ class List extends PureComponent {
     const { data, t } = this.props
     return (
       <Fragment>
-        {data.edges.map(this.renderComment)}
+        {data.commentConnection.edges.map(this.renderComment)}
         <LoadMore onPress={this.goToComments}>
           <Text fontSize={15} color="light_grey">
             {t('.loadMore', {
-              count: humanFormat(data.totalCount, {
+              count: humanFormat(data.commentConnection.totalCount, {
                 separator: '',
                 decimals: 1,
               }),

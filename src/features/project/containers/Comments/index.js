@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
+import { compose } from 'react-apollo'
+import { getComments } from 'graphql/queries/getComments'
 import withLocalization from 'i18n/withLocalization'
 import {
   InfiniteList,
@@ -30,6 +33,15 @@ class Comments extends Component {
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>Comments</HeaderTitle>
     ),
   })
+
+  static propTypes = {
+    comments: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
+  }
 
   state = {
     isOpen: false,
@@ -77,56 +89,67 @@ class Comments extends Component {
     scrollView = null
   }
 
-  render = () => (
-    <View style={{ flex: 1 }}>
-      <KeyboardAvoidingView
-        enabled={isIphone}
-        behavior="padding"
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={KEYBOARD_OFFSET}
-      >
-        {this.state.isOpen && (
-          <Mention
-            query={this.state.query}
-            onNoResults={this.closeMention}
-            onPress={this.onMentionPress}
-            offsetBottom={MENTION_OFFSET_BOTTOM}
-            offsetTop={0}
+  renderItem = ({ item }) => <CommentItem item={item.node} onReply={this.onReply} />
+
+  render() {
+    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+
+    return (
+      <View style={{ flex: 1 }}>
+        <KeyboardAvoidingView
+          enabled={isIphone}
+          behavior="padding"
+          style={{ flex: 1 }}
+          keyboardVerticalOffset={KEYBOARD_OFFSET}
+        >
+          {this.state.isOpen && (
+            <Mention
+              query={this.state.query}
+              onNoResults={this.closeMention}
+              onPress={this.onMentionPress}
+              offsetBottom={MENTION_OFFSET_BOTTOM}
+              offsetTop={0}
+            />
+          )}
+
+          <InfiniteList
+            scrollRef={ref => {
+              scrollView = ref
+            }}
+            contentContainerStyle={{
+              paddingLeft: 0,
+              paddingRight: 0,
+            }}
+            keyExtractor={item => item.node.id}
+            data={comments}
+            refetch={refetch}
+            fetchMore={fetchMore}
+            isRefetching={isRefetching}
+            isFetching={isFetching}
+            hasNextPage={hasNextPage}
+            renderItem={this.renderItem}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="none"
+            defaultPaddingTop
           />
-        )}
+        </KeyboardAvoidingView>
 
-        <InfiniteList
-          scrollRef={ref => {
-            scrollView = ref
-          }}
-          contentContainerStyle={{
-            paddingLeft: 0,
-            paddingRight: 0,
-          }}
-          keyExtractor={item => item.id}
-          data={data}
-          renderItem={({ item }) => <CommentItem item={item} onReply={this.onReply} />}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="none"
-          defaultPaddingTop
-        />
-      </KeyboardAvoidingView>
-
-      <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
-        <CommentField
-          onRef={this.setRef}
-          onSubmitEditing={this.onSubmitEditing}
-          onChangeText={this.onChangeText}
-          onMention={this.onMention}
-          onSubmit={this.handleSubmit}
-          value={this.state.text}
-          openMention={this.openMention}
-          closeMention={this.closeMention}
-          disabled={this.state.text.length === 0}
-        />
-      </KeyboardAccessoryView>
-    </View>
-  )
+        <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
+          <CommentField
+            onRef={this.setRef}
+            onSubmitEditing={this.onSubmitEditing}
+            onChangeText={this.onChangeText}
+            onMention={this.onMention}
+            onSubmit={this.handleSubmit}
+            value={this.state.text}
+            openMention={this.openMention}
+            closeMention={this.closeMention}
+            disabled={this.state.text.length === 0}
+          />
+        </KeyboardAccessoryView>
+      </View>
+    )
+  }
 }
 
-export default withLocalization(Comments, 'Comments')
+export default compose(getComments)(withLocalization(Comments, 'Comments'))

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { graphql } from 'react-apollo'
-import { getCurrentUserQuery } from 'graphql/queries/getCurrentUser'
+import { compose } from 'react-apollo'
+import { getUser } from 'graphql/queries/getUser'
 import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 import data from 'fixtures/profile'
@@ -59,7 +59,7 @@ class Profile extends Component {
   render() {
     const emptyState = 'project'
     const hasPosts = data.posts.length > 0
-    const { currentUser, loading } = this.props.data
+    const { user } = this.props
 
     return (
       <InfiniteList
@@ -69,10 +69,10 @@ class Profile extends Component {
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-        ListHeaderComponent={<Header user={currentUser} spacingHorizontal={!hasPosts} />}
+        ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<EmptyState type={emptyState} />}
         withKeyboardHandler
-        data={data.posts}
+        data={null}
         keyExtractor={item => item.id}
         renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
@@ -83,4 +83,4 @@ class Profile extends Component {
   }
 }
 
-export default graphql(getCurrentUserQuery)(Profile)
+export default compose(getUser)(Profile)
