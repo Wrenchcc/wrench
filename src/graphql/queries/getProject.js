@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getProjectId } from 'navigation/utils/selectors'
-import { mapListProps } from 'graphql/utils/mapListProps'
+import { mapListProps, mapListPropsWithPagination } from 'graphql/utils/mapListProps'
 
 const getProjectQuery = gql`
   query getProject($id: ID, $first: Int, $after: String, $last: Int, $before: String) {
@@ -37,8 +37,17 @@ const getProjectQuery = gql`
               id
               title
             }
-            commentConnection {
+            comments: commentConnection(first: 2) {
               totalCount
+              edges {
+                node {
+                  id
+                  text
+                  user {
+                    fullName
+                  }
+                }
+              }
             }
           }
         }
@@ -57,7 +66,11 @@ const getProjectOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: mapListProps('project'),
+  props: props => {
+    const project = mapListProps('project')(props)
+    const posts = mapListPropsWithPagination(['project', 'posts'])(props)
+    return { ...project, ...posts }
+  },
 }
 
 export const getProject = graphql(getProjectQuery, getProjectOptions)

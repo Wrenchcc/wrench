@@ -92,7 +92,7 @@ class Comments extends Component {
   renderItem = ({ item }) => <CommentItem item={item.node} onReply={this.onReply} />
 
   render() {
-    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { data, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props.comments
 
     return (
       <View style={{ flex: 1 }}>
@@ -121,7 +121,7 @@ class Comments extends Component {
               paddingRight: 0,
             }}
             keyExtractor={item => item.node.id}
-            data={comments}
+            data={data}
             refetch={refetch}
             fetchMore={fetchMore}
             isRefetching={isRefetching}

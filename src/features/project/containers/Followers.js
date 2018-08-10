@@ -31,7 +31,7 @@ class Followers extends Component {
   renderItem = ({ item }) => <User data={item.node} />
 
   render() {
-    const { followers, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { data, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props.followers
 
     return (
       <InfiniteList
@@ -39,7 +39,7 @@ class Followers extends Component {
           scrollView = ref
         }}
         borderSeparator
-        data={followers}
+        data={data}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

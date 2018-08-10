@@ -42,14 +42,14 @@ class Project extends Component {
   }
 
   static propTypes = {
-    project: PropTypes.object,
-    navigation: PropTypes.object.isRequired,
-    posts: PropTypes.array,
-    fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    hasNextPage: PropTypes.bool.isRequired,
+    // project: PropTypes.object,
+    // navigation: PropTypes.object.isRequired,
+    // posts: PropTypes.array,
+    // fetchMore: PropTypes.func.isRequired,
+    // refetch: PropTypes.func.isRequired,
+    // isRefetching: PropTypes.bool.isRequired,
+    // isFetching: PropTypes.bool.isRequired,
+    // hasNextPage: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -98,20 +98,8 @@ class Project extends Component {
   )
 
   render() {
-    console.log(this.props)
-    return null
-    const {
-      navigation,
-      project,
-      fetchMore,
-      refetch,
-      isRefetching,
-      isFetching,
-      hasNextPage,
-      postsConnection,
-    } = this.props
-
-    const { project: navigationProject } = navigation.state.params
+    const { data, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props.posts
+    const { project: navigationProject } = this.props.navigation.state.params
 
     return (
       <Fragment>
@@ -119,7 +107,7 @@ class Project extends Component {
           defaultPaddingTop
           withKeyboardHandler
           ListHeaderComponent={<Header project={navigationProject} />}
-          data={null}
+          data={data}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}

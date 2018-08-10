@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getUserId } from 'navigation/utils/selectors'
-import { mapListProps } from 'graphql/utils/mapListProps'
+import { mapListPropsWithPagination } from 'graphql/utils/mapListProps'
 
 export const getFeedQuery = gql`
   query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: String) {
@@ -60,7 +60,7 @@ const getFeedOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: mapListProps('posts'),
+  props: props => mapListPropsWithPagination(['posts'])(props),
 }
 
 export const getFeed = graphql(getFeedQuery, getFeedOptions)
