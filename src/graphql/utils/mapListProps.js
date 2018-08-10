@@ -23,13 +23,23 @@ export const mapListPropsWithPagination = types => ({
             const { edges, pageInfo, ...rest } = pathOr(null, types, fetchMoreResult)
 
             const prev = pathOr(null, types, previousResult)
+
             if (!prev) {
               return prev
             }
+            console.log(fetchMoreResult)
+            console.log({
+              ...fetchMoreResult,
+              [typeKey]: {
+                __typename: prev.__typename, // eslint-disable-line
+                edges: [...prev.edges, ...edges],
+                pageInfo,
+              },
+            })
 
             return {
+              ...fetchMoreResult,
               [typeKey]: {
-                ...rest,
                 __typename: prev.__typename, // eslint-disable-line
                 edges: [...prev.edges, ...edges],
                 pageInfo,
