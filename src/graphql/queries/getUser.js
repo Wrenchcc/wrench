@@ -1,21 +1,17 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getProjectId } from 'navigation/utils/selectors'
+import { getUserId } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 
-const getProjectQuery = gql`
-  query getProject($id: ID!, $first: Int, $after: String) {
-    project(id: $id) {
+export const getUserQuery = gql`
+  query getUser($id: ID!, $first: Int, $after: String) {
+    user(id: $id) {
       id
-      title
-      followers: followersConnection {
-        totalCount
-      }
-      projectPermissions {
-        isOwner
-        isFollower
-      }
+      firstName
+      lastName
+      avatarUrl
+      projectCount
       posts: postsConnection(first: $first, after: $after) {
         edges {
           cursor
@@ -58,8 +54,8 @@ const getProjectQuery = gql`
 `
 
 const LoadMorePosts = gql`
-  query loadMoreProjectPosts($after: String, $id: ID!) {
-    project(id: $id) {
+  query loadMoreUserPosts($after: String, $id: ID!) {
+    user(id: $id) {
       posts: postsConnection(after: $after) {
         edges {
           cursor
@@ -100,47 +96,46 @@ const LoadMorePosts = gql`
     }
   }
 `
-
-const getProjectOptions = {
+const getUserOptions = {
   options: ({ navigation, after = null }) => ({
     variables: {
-      id: getProjectId(navigation),
+      id: getUserId(navigation),
       after,
     },
     fetchPolicy: 'cache-and-network',
   }),
   props: ({
-    data: { fetchMore, error, loading, project, networkStatus, refetch },
+    data: { fetchMore, error, loading, user, networkStatus, refetch },
     ownProps: { navigation },
   }) => ({
     error,
     refetch,
-    project: pathOr(null, ['state', 'params', 'project'], navigation), // Pass project data from navigation,
-    posts: pathOr(null, ['posts', 'edges'], project),
-    hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
+    user: pathOr(null, ['state', 'params', 'user'], navigation), // Pass user data from navigation,
+    posts: pathOr(null, ['posts', 'edges'], user),
+    hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
     fetchMore: () => fetchMore({
       query: LoadMorePosts,
       variables: {
-        after: project.posts.edges[project.posts.edges.length - 1].cursor,
-        id: project.id,
+        after: user.posts.edges[user.posts.edges.length - 1].cursor,
+        id: user.id,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.project) {
+        if (!fetchMoreResult.user) {
           return prev
         }
         return {
           ...prev,
-          project: {
-            ...prev.project,
+          user: {
+            ...prev.user,
             posts: {
-              ...prev.project.posts,
+              ...prev.user.posts,
               pageInfo: {
-                ...prev.project.posts.pageInfo,
-                ...fetchMoreResult.project.posts.pageInfo,
+                ...prev.user.posts.pageInfo,
+                ...fetchMoreResult.user.posts.pageInfo,
               },
-              edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
+              edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
             },
           },
         }
@@ -149,4 +144,4 @@ const getProjectOptions = {
   }),
 }
 
-export const getProject = graphql(getProjectQuery, getProjectOptions)
+export const getUser = graphql(getUserQuery, getUserOptions)

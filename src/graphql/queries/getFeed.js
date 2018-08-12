@@ -1,8 +1,58 @@
+import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getUserId } from 'navigation/utils/selectors'
-
 import { mapListProps } from 'graphql/utils/mapListProps'
-import getFeedQuery from 'graphql/queries/getFeed.graphql'
+
+export const getFeedQuery = gql`
+  query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: String) {
+    posts(userId: $userId, first: $first, after: $after, last: $last, before: $before) {
+      edges {
+        cursor
+        node {
+          id
+          caption
+          user {
+            id
+            fullName
+            firstName
+            lastName
+            username
+            avatarUrl
+          }
+          images {
+            uri
+          }
+          project {
+            id
+            title
+            projectPermissions {
+              isOwner
+              isFollower
+            }
+            followersConnection {
+              totalCount
+            }
+          }
+          comments: commentConnection(first: 2) {
+            totalCount
+            edges {
+              node {
+                id
+                text
+                user {
+                  fullName
+                }
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+      }
+    }
+  }
+`
 
 const getFeedOptions = {
   options: ({ navigation }) => ({
@@ -11,7 +61,7 @@ const getFeedOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: mapListProps('feed'),
+  props: mapListProps('posts'),
 }
 
 export const getFeed = graphql(getFeedQuery, getFeedOptions)

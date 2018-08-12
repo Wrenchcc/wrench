@@ -18,7 +18,7 @@ let scrollView = null
 class Project extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
-    const isOwner = pathOr(false, ['project', 'permissions', 'isOwner'], params)
+    const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
     const projectTitle = pathOr(false, ['project', 'title'], params)
 
     return {
@@ -98,27 +98,14 @@ class Project extends Component {
   )
 
   render() {
-    const {
-      navigation,
-      project,
-      posts,
-      fetchMore,
-      refetch,
-      isRefetching,
-      isFetching,
-      hasNextPage,
-    } = this.props
-
-    const { project: navigationProject } = navigation.state.params
+    const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <Fragment>
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={
-            <Header name={navigationProject.title} followers={navigationProject.followers.count} />
-          }
+          ListHeaderComponent={<Header project={project} />}
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}
@@ -138,9 +125,9 @@ class Project extends Component {
           <Fragment>
             <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
               <Footer
-                name={navigationProject.title}
-                id={navigationProject.id}
-                following={project.permissions.isFollowing}
+                name={project.title}
+                id={project.id}
+                following={project.projectPermissions.isFollower}
                 onFollowPress={this.toggleFollow}
               />
             </Animated.View>

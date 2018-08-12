@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { graphql } from 'react-apollo'
-import getCurrentUser from 'graphql/queries/getCurrentUser.graphql'
+import { getCurrentUserQuery } from 'graphql/queries/getCurrentUser'
 import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
-import data from 'fixtures/profile'
 
 const HEADER_HEIGHT = 100
 const START_OPACITY = 50
@@ -15,7 +14,6 @@ let scrollView = null
 class Profile extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
-
     return {
       headerTitle: params.user && (
         <HeaderTitle
@@ -36,7 +34,14 @@ class Profile extends Component {
   }
 
   static propTypes = {
+    user: PropTypes.object,
     navigation: PropTypes.object.isRequired,
+    posts: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -44,7 +49,6 @@ class Profile extends Component {
     this.scrollY = new Animated.Value(0)
 
     props.navigation.setParams({
-      user: props.data.currentUser,
       opacity: this.scrollY.interpolate({
         inputRange: [START_OPACITY, HEADER_HEIGHT + START_OPACITY],
         outputRange: [0, 1],
@@ -56,12 +60,12 @@ class Profile extends Component {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <Post data={item} avatar={false} />
+  renderItem = ({ item }) => <Post data={item.node} avatar={false} />
 
   render() {
-    const emptyState = 'project'
-    const hasPosts = data.posts.length > 0
-    const { currentUser } = this.props.data
+    const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const emptyState = user && user.projectCount > 0 ? 'project' : 'post'
+    const hasPosts = !!posts
 
     return (
       <InfiniteList
@@ -71,11 +75,16 @@ class Profile extends Component {
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-        ListHeaderComponent={<Header user={currentUser} spacingHorizontal={!hasPosts} />}
+        ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<EmptyState type={emptyState} />}
         withKeyboardHandler
-        data={data.posts}
-        keyExtractor={item => item.id}
+        data={posts}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
           useNativeDriver: true,
@@ -85,4 +94,4 @@ class Profile extends Component {
   }
 }
 
-export default graphql(getCurrentUser)(Profile)
+export default graphql(getCurrentUserQuery)(Profile)

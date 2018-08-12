@@ -6,6 +6,7 @@ import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
 
 // TODO: Refactor and fix date
+// TODO: Pass correct data to profile
 const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null }) => {
   const animatedValue = new Animated.Value(0)
 
@@ -50,16 +51,16 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
   )
 }
 
-// TODO: Remove id not needed when uniq ids "child-"
-const CommentItem = props => props.item.replies ? (
+const CommentItem = props =>
+  props.item.repliesConnection ? (
     <Fragment>
       <Item {...props.item} onReply={props.onReply} />
-      {props.item.replies.map(item => (
-        <Item key={item.id} isReply {...item} id={`child-${item.id}`} onReply={props.onReply} />
+      {props.item.repliesConnection.edges.map(({ node }) => (
+        <Item key={node.id} isReply {...node} id={node.id} onReply={props.onReply} />
       ))}
     </Fragment>
-) : (
+  ) : (
     <Item {...props.item} onReply={props.onReply} />
-)
+  )
 
 export default CommentItem

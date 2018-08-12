@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import humanFormat from 'human-format'
 import { navigateToProfile, navigateToComments } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import Text from 'ui/Text'
@@ -7,24 +8,25 @@ import { Row, Comment, LoadMore } from './styles'
 
 class List extends PureComponent {
   static propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.object,
   }
 
   goToComments = () => {
-    navigateToComments()
+    const { id } = this.props.data
+    navigateToComments({ id })
   }
 
   goToProfile = user => {
     navigateToProfile({ user })
   }
 
-  renderComment = ({ user, text, id }) => (
-    <Row key={id}>
-      <Text bold fontSize={15} onPress={() => this.goToProfile(user)}>
-        {`${user.fullName} `}
+  renderComment = ({ node }) => (
+    <Row key={node.id}>
+      <Text bold fontSize={15} onPress={() => this.goToProfile(node.user)}>
+        {`${node.user.fullName} `}
       </Text>
       <Comment fontSize={15} numberOfLines={1}>
-        {text}
+        {node.text}
       </Comment>
     </Row>
   )
@@ -33,10 +35,15 @@ class List extends PureComponent {
     const { data, t } = this.props
     return (
       <Fragment>
-        {data.map(this.renderComment)}
+        {data.comments.edges.map(this.renderComment)}
         <LoadMore onPress={this.goToComments}>
           <Text fontSize={15} color="light_grey">
-            {t('.loadMore', { count: data.length })}
+            {t('.loadMore', {
+              count: humanFormat(data.comments.totalCount, {
+                separator: '',
+                decimals: 1,
+              }),
+            })}
           </Text>
         </LoadMore>
       </Fragment>

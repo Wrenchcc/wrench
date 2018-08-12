@@ -26,6 +26,7 @@ export default class Post extends PureComponent {
 
   render() {
     const { data, onPost = false, avatar = true, onLongPress } = this.props
+
     return (
       <Base>
         <Top>
@@ -49,7 +50,7 @@ export default class Post extends PureComponent {
           )}
         </Content>
 
-        <Comments data={data.comments} />
+        <Comments data={data} />
       </Base>
     )
   }
