@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 import { View, BackHandler, WebView as RNWebView } from 'react-native'
 import url from 'url'
 import { equals, reject } from 'ramda'
-import { getVersion } from 'react-native-device-info'
+import {
+  getVersion,
+  getApplicationName,
+  getBuildNumber,
+  getSystemName,
+} from 'react-native-device-info'
 import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
 import { Header, ProgressBar, Text, Icon, Touchable, Share } from 'ui'
