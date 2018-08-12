@@ -14,6 +14,8 @@ export const getFeedQuery = gql`
           user {
             id
             fullName
+            firstName
+            lastName
             username
             avatarUrl
           }

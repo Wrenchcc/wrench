@@ -5,15 +5,12 @@ import { getProjectId } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 
 const getProjectQuery = gql`
-  query getProject($id: ID, $first: Int, $after: String) {
+  query getProject($id: ID!, $first: Int, $after: String) {
     project(id: $id) {
       id
       title
       followers: followersConnection {
         totalCount
-      }
-      owner {
-        fullName
       }
       projectPermissions {
         isOwner
@@ -61,7 +58,7 @@ const getProjectQuery = gql`
 `
 
 const LoadMorePosts = gql`
-  query loadMoreProjectPosts($after: String, $id: ID) {
+  query loadMoreProjectPosts($after: String, $id: ID!) {
     project(id: $id) {
       posts: postsConnection(after: $after) {
         edges {
@@ -112,10 +109,13 @@ const getProjectOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: ({ data: { fetchMore, error, loading, project, networkStatus, refetch } }) => ({
+  props: ({
+    data: { fetchMore, error, loading, project, networkStatus, refetch },
+    ownProps: { navigation },
+  }) => ({
     error,
-    project,
     refetch,
+    project: pathOr(null, ['state', 'params', 'project'], navigation), // Pass project data from navigation,
     posts: pathOr(null, ['posts', 'edges'], project),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
     isRefetching: isRefetching(networkStatus),

@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
-          {({ data }) => <AppNavigator authenticated={!!data.currentUser} />}
+          {({ data }) => <AppNavigator authenticated={!!data.user} />}
         </Query>
       </ApolloProvider>
     )

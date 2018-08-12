@@ -98,15 +98,14 @@ class Project extends Component {
   )
 
   render() {
-    const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
-    const { project: navigationProject } = this.props.navigation.state.params
+    const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <Fragment>
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={<Header project={navigationProject} />}
+          ListHeaderComponent={<Header project={project} />}
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}
@@ -126,9 +125,9 @@ class Project extends Component {
           <Fragment>
             <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
               <Footer
-                name={navigationProject.title}
-                id={navigationProject.id}
-                following={navigationProject.projectPermissions.isFollower}
+                name={project.title}
+                id={project.id}
+                following={project.projectPermissions.isFollower}
                 onFollowPress={this.toggleFollow}
               />
             </Animated.View>
