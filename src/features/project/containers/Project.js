@@ -18,7 +18,7 @@ let scrollView = null
 class Project extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
-    const isOwner = pathOr(false, ['project', 'permissions', 'isOwner'], params)
+    const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
     const projectTitle = pathOr(false, ['project', 'title'], params)
 
     return {
@@ -42,14 +42,14 @@ class Project extends Component {
   }
 
   static propTypes = {
-    // project: PropTypes.object,
-    // navigation: PropTypes.object.isRequired,
-    // posts: PropTypes.array,
-    // fetchMore: PropTypes.func.isRequired,
-    // refetch: PropTypes.func.isRequired,
-    // isRefetching: PropTypes.bool.isRequired,
-    // isFetching: PropTypes.bool.isRequired,
-    // hasNextPage: PropTypes.bool.isRequired,
+    project: PropTypes.object,
+    navigation: PropTypes.object.isRequired,
+    posts: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -98,7 +98,7 @@ class Project extends Component {
   )
 
   render() {
-    const { data, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props.posts
+    const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
     const { project: navigationProject } = this.props.navigation.state.params
 
     return (
@@ -107,7 +107,7 @@ class Project extends Component {
           defaultPaddingTop
           withKeyboardHandler
           ListHeaderComponent={<Header project={navigationProject} />}
-          data={data}
+          data={posts}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
@@ -124,7 +124,14 @@ class Project extends Component {
         />
         {!isFetching && (
           <Fragment>
-            <Animated.View style={{ transform: [{ translateY: this.footerY }] }} />
+            <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
+              <Footer
+                name={navigationProject.title}
+                id={navigationProject.id}
+                following={navigationProject.projectPermissions.isFollower}
+                onFollowPress={this.toggleFollow}
+              />
+            </Animated.View>
             <ActionSheet
               isOpen={this.state.isOpen}
               onClose={this.toggleActionSheet}

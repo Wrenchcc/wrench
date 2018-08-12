@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getFollowers } from 'graphql/queries/getFollowers'
 import { InfiniteList, User, HeaderTitle } from 'ui'
-import data from 'fixtures/search'
 
 let scrollView = null
 
@@ -16,7 +15,7 @@ class Followers extends Component {
   }
 
   static propTypes = {
-    posts: PropTypes.array,
+    followers: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
     refetch: PropTypes.func.isRequired,
     isRefetching: PropTypes.bool.isRequired,
@@ -31,7 +30,7 @@ class Followers extends Component {
   renderItem = ({ item }) => <User data={item.node} />
 
   render() {
-    const { data, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props.followers
+    const { followers, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <InfiniteList
@@ -39,7 +38,7 @@ class Followers extends Component {
           scrollView = ref
         }}
         borderSeparator
-        data={data}
+        data={followers}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

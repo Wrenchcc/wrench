@@ -12,7 +12,6 @@ export const getUserQuery = gql`
       posts: postsConnection(first: $first, after: $after, last: $last, before: $before) {
         pageInfo {
           hasNextPage
-          hasPreviousPage
         }
         edges {
           node {

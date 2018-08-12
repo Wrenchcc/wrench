@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getUserId } from 'navigation/utils/selectors'
-import { mapListPropsWithPagination } from 'graphql/utils/mapListProps'
+import { mapListProps } from 'graphql/utils/mapListProps'
 
 export const getFeedQuery = gql`
   query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: String) {
@@ -23,9 +23,9 @@ export const getFeedQuery = gql`
           project {
             id
             title
-            permissions {
+            projectPermissions {
               isOwner
-              isFollowing
+              isFollower
             }
             followersConnection {
               totalCount
@@ -47,7 +47,6 @@ export const getFeedQuery = gql`
       }
       pageInfo {
         hasNextPage
-        hasPreviousPage
       }
     }
   }
@@ -60,7 +59,7 @@ const getFeedOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: props => mapListPropsWithPagination(['posts'])(props),
+  props: mapListProps('posts'),
 }
 
 export const getFeed = graphql(getFeedQuery, getFeedOptions)

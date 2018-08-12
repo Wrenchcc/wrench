@@ -13,7 +13,6 @@ import {
   HeaderTitle,
 } from 'ui'
 import { isIphone } from 'utils/platform'
-import data from 'fixtures/comments'
 
 let scrollView = null
 
@@ -92,7 +91,7 @@ class Comments extends Component {
   renderItem = ({ item }) => <CommentItem item={item.node} onReply={this.onReply} />
 
   render() {
-    const { data, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props.comments
+    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <View style={{ flex: 1 }}>
@@ -121,7 +120,7 @@ class Comments extends Component {
               paddingRight: 0,
             }}
             keyExtractor={item => item.node.id}
-            data={data}
+            data={comments}
             refetch={refetch}
             fetchMore={fetchMore}
             isRefetching={isRefetching}

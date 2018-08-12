@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getPostId } from 'navigation/utils/selectors'
-import { mapListPropsWithPagination } from 'graphql/utils/mapListProps'
+import { mapListProps } from 'graphql/utils/mapListProps'
 
 export const getCommentsQuery = gql`
   query getComments($postId: ID!, $first: Int, $after: String, $last: Int, $before: String) {
@@ -50,7 +50,7 @@ const getCommentsOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: mapListPropsWithPagination(['comments']),
+  props: mapListProps('comments'),
 }
 
 export const getComments = graphql(getCommentsQuery, getCommentsOptions)

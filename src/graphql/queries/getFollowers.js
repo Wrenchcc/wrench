@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getProjectId } from 'navigation/utils/selectors'
-import { mapListPropsWithPagination } from 'graphql/utils/mapListProps'
+import { mapListProps } from 'graphql/utils/mapListProps'
 
 export const getFollowersQuery = gql`
   query getFollowers($projectId: ID!, $first: Int, $after: String, $last: Int, $before: String) {
@@ -16,7 +16,6 @@ export const getFollowersQuery = gql`
       }
       pageInfo {
         hasNextPage
-        hasPreviousPage
       }
     }
   }
@@ -29,7 +28,7 @@ const getFollowersOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: mapListPropsWithPagination(['followers']),
+  props: mapListProps('followers'),
 }
 
 export const getFollowers = graphql(getFollowersQuery, getFollowersOptions)
