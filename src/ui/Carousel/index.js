@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import { Touchable, Zoomable } from 'ui'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { width, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
-
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
 export default class Carousel extends PureComponent {
   static propTypes = {
@@ -21,14 +19,7 @@ export default class Carousel extends PureComponent {
     const { onPress, disabled, onLongPress, images } = this.props
 
     return (
-      <Wrapper
-        scrollEnabled={false}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        key={item.uri}
-        first={index === 0}
-        last={index === images.length - 1}
-      >
+      <Wrapper key={item.uri} first={index === 0} last={index === images.length - 1}>
         <Touchable
           onPress={onPress}
           disabled={disabled}
@@ -51,10 +42,9 @@ export default class Carousel extends PureComponent {
     const { images } = this.props
 
     return (
-      <AnimatedFlatList
+      <FlatList
         keyExtractor={item => item.uri}
         data={images}
-        keyboardShouldPersistTaps="always"
         scrollEnabled={images.length > 1}
         horizontal
         directionalLockEnabled
@@ -63,12 +53,10 @@ export default class Carousel extends PureComponent {
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
         scrollThrottle={10}
-        grow
         renderItem={this.renderItem}
         style={{
           marginLeft: -GUTTER,
           marginRight: -GUTTER,
-          overflow: 'visible',
         }}
       />
     )

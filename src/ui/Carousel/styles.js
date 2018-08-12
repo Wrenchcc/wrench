@@ -7,8 +7,7 @@ export const { width } = Dimensions.get('window')
 export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
 
-export const Wrapper = styled.ScrollView`
-  overflow: visible;
+export const Wrapper = styled.View`
   margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)};
   margin-left: ${({ first }) => (first ? GUTTER : 0)};
 `

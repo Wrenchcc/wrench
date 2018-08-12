@@ -1,39 +1,82 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { compose } from 'react-apollo'
+import { getPopularProjects } from 'graphql/queries/getExplore'
 import withLocalization from 'i18n/withLocalization'
 import { navigateToProject } from 'navigation'
-import projects from 'fixtures/projects'
-import { Base, Scroll, Title, Card } from './styles'
+import { InfiniteList } from 'ui'
+import { INITIAL_POSTS_COUNT } from '../../constants'
+import { Title, Card, GUTTER, BAR_SPACE, width } from './styles'
+
+const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 class Popular extends PureComponent {
-  renderProjectCard = ({ coverUri, name, id, user }, index) => (
-    <Card
-      coverUri={coverUri}
-      name={name}
-      key={id}
-      onPress={() => navigateToProject({ id, user, project: { name } })}
-      first={index === 0}
-      last={index === projects.length - 1}
-    />
-  )
+  static propTypes = {
+    projects: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
+  }
+
+  renderItem = ({ item, index }) => {
+    const { projects } = this.props
+    const { coverImage, id, title, user, followers, projectPermissions } = item.node
+
+    const params = {
+      user,
+      project: {
+        id,
+        title,
+        followers,
+        projectPermissions,
+      },
+    }
+
+    return (
+      <Card
+        coverUri={coverImage.uri}
+        title={title}
+        key={id}
+        onPress={() => navigateToProject(params)}
+        first={index === 0}
+        last={index === projects && projects.length - 1}
+      />
+    )
+  }
 
   render() {
-    const { t } = this.props
+    const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t } = this.props
     return (
-      <Base>
+      <Fragment>
         <Title medium>{t('.popular')}</Title>
-        <Scroll
+        <InfiniteList
+          initialNumToRender={INITIAL_POSTS_COUNT}
+          keyExtractor={item => item.uri}
+          data={projects}
           horizontal
+          directionalLockEnabled
           showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={10}
-          pagingEnabled
-        >
-          {projects.map(this.renderProjectCard)}
-        </Scroll>
-
+          decelerationRate="fast"
+          snapToInterval={SNAP_INTERVAL}
+          snapToAlignment="start"
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          renderItem={this.renderItem}
+          showsVerticalScrollIndicator={false}
+          style={{
+            marginLeft: -GUTTER,
+            marginRight: -GUTTER,
+          }}
+        />
         <Title medium>{t('.recent')}</Title>
-      </Base>
+      </Fragment>
     )
   }
 }
 
-export default withLocalization(Popular, 'Popular')
+export default compose(getPopularProjects)(withLocalization(Popular, 'Popular'))
