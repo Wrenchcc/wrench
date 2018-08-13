@@ -2,7 +2,7 @@ import { t } from 'i18n/withLocalization'
 
 export default [
   {
-    key: 'people',
+    key: 'users',
     title: t('SearchTab.people'),
   },
   {

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import { Keyboard } from 'react-native'
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view'
 import { FONTS } from 'ui/constants'
-import People from '../People'
-import Projects from '../Projects'
+import Users from '../../components/Users'
+import Projects from '../../components/Projects'
 import routes from './routes'
 
 const styles = {
@@ -38,17 +38,19 @@ export default class Search extends PureComponent {
   )
 
   renderScene = SceneMap({
-    people: People,
+    users: Users,
     projects: Projects,
   })
 
-  render = () => (
-    <TabView
-      navigationState={this.state}
-      renderScene={this.renderScene}
-      renderTabBar={this.renderTabBar}
-      onIndexChange={this.onCange}
-      useNativeDriver
-    />
-  )
+  render() {
+    return (
+      <TabView
+        navigationState={this.state}
+        renderScene={this.renderScene}
+        renderTabBar={this.renderTabBar}
+        onIndexChange={this.onCange}
+        useNativeDriver
+      />
+    )
+  }
 }

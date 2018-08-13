@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { navigateToProject } from 'navigation'
-import { searchProjects } from 'graphql/queries/searchProjects'
-import { ProjectCard, InfiniteList } from 'ui'
+import { searchUsers } from 'graphql/queries/searchUsers'
+import { User, InfiniteList } from 'ui'
 
-class Projects extends PureComponent {
+class Users extends PureComponent {
   static propTypes = {
-    projects: PropTypes.array,
+    users: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
     refetch: PropTypes.func.isRequired,
     isRefetching: PropTypes.bool.isRequired,
@@ -15,22 +14,15 @@ class Projects extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
   }
 
-  // TODO: pass correct data and new coverImages list
-  renderItem = ({ item }) => (
-    <ProjectCard
-      {...item.node}
-      images={[item.node.coverImage.uri]}
-      onPress={() => navigateToProject(item.node)}
-    />
-  )
+  renderItem = ({ item }) => <User data={item.node} />
 
   render() {
-    const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { users, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <InfiniteList
         borderSeparator
-        data={projects}
+        data={users}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
@@ -38,10 +30,9 @@ class Projects extends PureComponent {
         hasNextPage={hasNextPage}
         keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
-        paddingBottom={20}
       />
     )
   }
 }
 
-export default compose(searchProjects)(Projects)
+export default compose(searchUsers)(Users)
