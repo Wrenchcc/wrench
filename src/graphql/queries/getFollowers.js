@@ -2,23 +2,15 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getProjectId } from 'navigation/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
+import followersInfoFragment from 'graphql/fragments/followers/followersInfo'
 
 export const getFollowersQuery = gql`
-  query getFollowers($projectId: ID!, $first: Int, $after: String, $last: Int, $before: String) {
-    followers(projectId: $projectId, first: $first, after: $after, last: $last, before: $before) {
-      edges {
-        node {
-          id
-          fullName
-          avatarUrl
-          projectCount
-        }
-      }
-      pageInfo {
-        hasNextPage
-      }
+  query getFollowers($projectId: ID!, $after: String) {
+    followers(projectId: $projectId, after: $after) {
+      ...followersInfo
     }
   }
+  ${followersInfoFragment}
 `
 
 const getFollowersOptions = {

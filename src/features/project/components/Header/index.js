@@ -22,10 +22,7 @@ export default class Header extends PureComponent {
       <Base>
         <ProjectName>
           <Title large>{project.title}</Title>
-          <Followers
-            followers={project.followersConnection.totalCount}
-            onPress={this.goToFollowers}
-          />
+          <Followers followers={project.followers.totalCount} onPress={this.goToFollowers} />
         </ProjectName>
       </Base>
     )

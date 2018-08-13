@@ -2,56 +2,15 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getUserId } from 'navigation/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
+import postsInfoFragment from 'graphql/fragments/post/postsInfo'
 
 export const getFeedQuery = gql`
-  query getFeed($userId: ID, $first: Int, $after: String, $last: Int, $before: String) {
-    posts(userId: $userId, first: $first, after: $after, last: $last, before: $before) {
-      edges {
-        cursor
-        node {
-          id
-          caption
-          user {
-            id
-            fullName
-            firstName
-            lastName
-            username
-            avatarUrl
-          }
-          images {
-            uri
-          }
-          project {
-            id
-            title
-            projectPermissions {
-              isOwner
-              isFollower
-            }
-            followersConnection {
-              totalCount
-            }
-          }
-          comments: commentConnection(first: 2) {
-            totalCount
-            edges {
-              node {
-                id
-                text
-                user {
-                  fullName
-                }
-              }
-            }
-          }
-        }
-      }
-      pageInfo {
-        hasNextPage
-      }
+  query getFeed($userId: ID, $after: String) {
+    posts(userId: $userId, after: $after) {
+      ...postsInfo
     }
   }
+  ${postsInfoFragment}
 `
 
 const getFeedOptions = {

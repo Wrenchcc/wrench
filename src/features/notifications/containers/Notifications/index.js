@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { compose } from 'react-apollo'
+import { getNotifications } from 'graphql/queries/getNotifications'
 import { InfiniteList, Notification } from 'ui'
-import data from 'fixtures/notifications'
+import withLocalization from 'i18n/withLocalization'
 import { Header } from './styles'
 
-const ITEM_HEIGHT = 70
 let scrollView = null
 
-// TODO: Translate
-export default class Notifications extends Component {
+class Notifications extends Component {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
       if (navigation.isFocused()) {
@@ -18,29 +19,52 @@ export default class Notifications extends Component {
     },
   }
 
+  static propTypes = {
+    notifications: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
+  }
+
   componentWillUnmont() {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <Notification data={item} />
+  renderItem = ({ item }) => <Notification data={item.node} />
 
-  render = () => (
-    <InfiniteList
-      defaultPaddingTop
-      scrollRef={ref => {
-        scrollView = ref
-      }}
-      ListHeaderComponent={<Header medium>Notifications</Header>}
-      borderSeparator
-      initialNumToRender={10}
-      data={data}
-      keyExtractor={item => item.id}
-      renderItem={this.renderItem}
-      getItemLayout={(data, index) => ({
-        length: ITEM_HEIGHT,
-        offset: ITEM_HEIGHT * index,
-        index,
-      })}
-    />
-  )
+  render() {
+    const {
+      notifications,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
+      t,
+    } = this.props
+
+    return (
+      <InfiniteList
+        defaultPaddingTop
+        scrollRef={ref => {
+          scrollView = ref
+        }}
+        ListHeaderComponent={<Header medium>{t('.title')}</Header>}
+        borderSeparator
+        initialNumToRender={10}
+        data={notifications}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        keyExtractor={item => item.node.id}
+        renderItem={this.renderItem}
+      />
+    )
+  }
 }
+
+export default compose(getNotifications)(withLocalization(Notifications, 'Notifications'))

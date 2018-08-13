@@ -3,99 +3,29 @@ import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getUserId } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
+import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 
 export const getUserQuery = gql`
-  query getUser($id: ID!, $first: Int, $after: String) {
+  query getUser($id: ID!, $after: String) {
     user(id: $id) {
-      id
-      firstName
-      lastName
-      avatarUrl
-      projectCount
-      posts: postsConnection(first: $first, after: $after) {
-        edges {
-          cursor
-          node {
-            id
-            caption
-            user {
-              id
-              fullName
-              username
-              avatarUrl
-            }
-            images {
-              uri
-            }
-            project {
-              id
-              title
-            }
-            comments: commentConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    fullName
-                  }
-                }
-              }
-            }
-          }
-        }
-        pageInfo {
-          hasNextPage
-        }
-      }
+      ...userInfo
+      ...userPostsConnection
     }
   }
+  ${userInfoFragment}
+  ${userPostsConnectionFragment}
 `
 
 const LoadMorePosts = gql`
-  query loadMoreUserPosts($after: String, $id: ID!) {
+  query loadMoreUserPosts($id: ID!, $after: String) {
     user(id: $id) {
-      posts: postsConnection(after: $after) {
-        edges {
-          cursor
-          node {
-            id
-            caption
-            user {
-              id
-              fullName
-              username
-              avatarUrl
-            }
-            images {
-              uri
-            }
-            project {
-              id
-              title
-            }
-            comments: commentConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    fullName
-                  }
-                }
-              }
-            }
-          }
-        }
-        pageInfo {
-          hasNextPage
-        }
-      }
+      ...userPostsConnection
     }
   }
+  ${userPostsConnectionFragment}
 `
+
 const getUserOptions = {
   options: ({ navigation, after = null }) => ({
     variables: {

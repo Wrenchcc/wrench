@@ -3,102 +3,27 @@ import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getProjectId } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
+import projectInfoFragment from 'graphql/fragments/project/projectInfo'
+import projectPostsConnectionFragment from 'graphql/fragments/project/postsConnection'
 
 const getProjectQuery = gql`
-  query getProject($id: ID!, $first: Int, $after: String) {
+  query getProject($id: ID!, $after: String) {
     project(id: $id) {
-      id
-      title
-      followers: followersConnection {
-        totalCount
-      }
-      projectPermissions {
-        isOwner
-        isFollower
-      }
-      posts: postsConnection(first: $first, after: $after) {
-        edges {
-          cursor
-          node {
-            id
-            caption
-            user {
-              id
-              fullName
-              username
-              avatarUrl
-            }
-            images {
-              uri
-            }
-            project {
-              id
-              title
-            }
-            comments: commentConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    fullName
-                  }
-                }
-              }
-            }
-          }
-        }
-        pageInfo {
-          hasNextPage
-        }
-      }
+      ...projectInfo
+      ...projectPostsConnection
     }
   }
+  ${projectInfoFragment}
+  ${projectPostsConnectionFragment}
 `
 
 const LoadMorePosts = gql`
-  query loadMoreProjectPosts($after: String, $id: ID!) {
+  query loadMoreProjectPosts($id: ID!, $after: String) {
     project(id: $id) {
-      posts: postsConnection(after: $after) {
-        edges {
-          cursor
-          node {
-            id
-            caption
-            user {
-              id
-              fullName
-              username
-              avatarUrl
-            }
-            images {
-              uri
-            }
-            project {
-              id
-              title
-            }
-            comments: commentConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    fullName
-                  }
-                }
-              }
-            }
-          }
-        }
-        pageInfo {
-          hasNextPage
-        }
-      }
+      ...projectPostsConnection
     }
   }
+  ${projectPostsConnectionFragment}
 `
 
 const getProjectOptions = {
