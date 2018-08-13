@@ -6,9 +6,9 @@ import { Avatar, Text, TimeAgo } from 'ui'
 import { Base, Content, Bottom } from './styles'
 
 const NOTIFICATION_TYPES = {
-  COMMENT: 'comment',
-  FOLLOW: 'follow',
-  REPLY: 'reply',
+  COMMENT: 'COMMENT',
+  FOLLOW: 'FOLLOW',
+  REPLY: 'REPLY',
 }
 
 const onPress = data => {
@@ -31,7 +31,7 @@ const onPress = data => {
 const description = (data, t) => {
   switch (data.type) {
     case NOTIFICATION_TYPES.FOLLOW:
-      return `${t('.follow')} ${data.project.name}`
+      return `${t('.follow')} ${data.project.title}`
     case NOTIFICATION_TYPES.COMMENT:
       return t('.comment')
     case NOTIFICATION_TYPES.REPLY:

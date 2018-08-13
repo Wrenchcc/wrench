@@ -4,6 +4,9 @@
       "popular": "Popular projects",
       "recent": "Recent posts"
     },
+    "Notifications": {
+      "title": "Notifications"
+    },
     "ContactButton": {
       "contact": "Contact"
     },
