@@ -2,7 +2,8 @@
   "SearchTab": {
     "en": {
       "people": "People",
-      "projects": "Projects"
+      "projects": "Projects",
+      "cancel": "Cancel"
     }
   }
 }

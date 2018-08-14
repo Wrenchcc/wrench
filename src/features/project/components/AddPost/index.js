@@ -34,9 +34,11 @@ class AddPost extends Component {
   }
 
   addPictures = pictures => this.setState({ pictures })
+
   changePage = page => this.setState({ page })
 
   toggleDropdown = () => this.setState({ expanded: !this.state.expanded })
+
   closeDropdown = () => this.setState({ expanded: false })
 
   closeEdit = () => {
@@ -95,8 +97,7 @@ class AddPost extends Component {
     />
   )
 
-  renderEdit = () =>
-    this.state.edit && (
+  renderEdit = () => this.state.edit && (
       <Background source={this.state.picture}>
         <Overlay onPressIn={this.closeDropdown} activeOpacity={1}>
           <KeyboardAvoidingView behavior="position">
@@ -111,7 +112,7 @@ class AddPost extends Component {
           </KeyboardAvoidingView>
         </Overlay>
       </Background>
-    )
+  )
 
   render = () => (
     <Base>
