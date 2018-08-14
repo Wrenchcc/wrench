@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation'
 import { searchProjects } from 'graphql/queries/searchProjects'
@@ -13,19 +14,39 @@ class Projects extends PureComponent {
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    scrollRef: PropTypes.func.isRequired,
   }
 
-  // TODO: pass correct data and new coverImages list
-  renderItem = ({ item }) => (
-    <ProjectCard
-      {...item.node}
-      images={[item.node.coverImage.uri]}
-      onPress={() => navigateToProject(item.node)}
-    />
-  )
+  renderItem = ({ item }) => {
+    const params = {
+      user: item.node.user,
+      project: {
+        id: item.node.id,
+        title: item.node.title,
+        followers: item.node.followers,
+        projectPermissions: item.node.projectPermissions,
+      },
+    }
+
+    return (
+      <ProjectCard
+        {...item.node}
+        images={pathOr(null, ['node', 'images', 'edges'], item)}
+        onPress={() => navigateToProject(params)}
+      />
+    )
+  }
 
   render() {
-    const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const {
+      projects,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
+      scrollRef,
+    } = this.props
 
     return (
       <InfiniteList
@@ -39,6 +60,7 @@ class Projects extends PureComponent {
         keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
         paddingBottom={20}
+        scrollRef={scrollRef}
       />
     )
   }

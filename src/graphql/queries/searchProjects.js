@@ -14,14 +14,23 @@ export const searchProjectsQuery = gql`
           ... on Project {
             id
             title
-            coverImage {
-              uri
+            images: imagesConnection(first: 6, maxWidth: 335, maxHeight: 335) {
+              edges {
+                node {
+                  id
+                  uri
+                }
+              }
             }
             followers: followersConnection {
               totalCount
             }
             user {
               avatarUrl
+            }
+            projectPermissions {
+              isFollower
+              isOwner
             }
           }
         }

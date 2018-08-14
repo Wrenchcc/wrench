@@ -9,7 +9,7 @@ const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 export default class Carousel extends PureComponent {
   static propTypes = {
-    images: PropTypes.array.isRequired,
+    images: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     onLongPress: PropTypes.func,
@@ -19,7 +19,7 @@ export default class Carousel extends PureComponent {
     const { onPress, disabled, onLongPress, images } = this.props
 
     return (
-      <Wrapper key={item.uri} first={index === 0} last={index === images.length - 1}>
+      <Wrapper key={item.node.uri} first={index === 0} last={index === images.edges.length - 1}>
         <Touchable
           onPress={onPress}
           disabled={disabled}
@@ -28,7 +28,7 @@ export default class Carousel extends PureComponent {
         >
           <Zoomable.Element>
             <Picture
-              source={{ uri: item.uri }}
+              source={{ uri: item.node.uri }}
               priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
               index={index}
             />
@@ -39,11 +39,11 @@ export default class Carousel extends PureComponent {
   }
 
   render() {
-    const { images } = this.props
+    const images = this.props.images.edges
 
     return (
       <FlatList
-        keyExtractor={item => item.uri}
+        keyExtractor={item => item.node.id}
         data={images}
         scrollEnabled={images.length > 1}
         horizontal

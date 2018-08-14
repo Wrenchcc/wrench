@@ -6,8 +6,8 @@ import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 // TODO: Fragments and on refresh get popular projects too
 const getPopularProjectsQuery = gql`
-  query getExplore($after: String) {
-    projects(after: $after) {
+  query getExplore($after: String, $type: ProjectType!) {
+    projects(after: $after, type: $type) {
       pageInfo {
         hasNextPage
       }
@@ -15,8 +15,13 @@ const getPopularProjectsQuery = gql`
         node {
           id
           title
-          coverImage {
-            uri
+          images: imagesConnection(first: 1, maxWidth: 180, maxHeight: 180) {
+            edges {
+              node {
+                id
+                uri
+              }
+            }
           }
           followers: followersConnection {
             totalCount
@@ -48,6 +53,7 @@ const getPopularProjectsOptions = {
   options: ({ after = null }) => ({
     variables: {
       after,
+      type: 'POPULAR',
     },
     fetchPolicy: 'cache-and-network',
   }),

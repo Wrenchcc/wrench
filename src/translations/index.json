@@ -82,7 +82,8 @@
     },
     "SearchTab": {
       "people": "People",
-      "projects": "Projects"
+      "projects": "Projects",
+      "cancel": "Cancel"
     },
     "OnboardingContent": {
       "headline": "What are you interested in?",

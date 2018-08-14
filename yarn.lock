@@ -2179,19 +2179,19 @@ escodegen@1.x.x:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-airbnb-base@^13.0.0:
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-13.0.0.tgz#2ee6279c4891128e49d6445b24aa13c2d1a21450"
+eslint-config-airbnb-base@^13.1.0:
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-13.1.0.tgz#b5a1b480b80dfad16433d6c4ad84e6605052c05c"
   dependencies:
     eslint-restricted-globals "^0.1.1"
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
-eslint-config-airbnb@^17.0.0:
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-17.0.0.tgz#1bb8c4255483320bb68c3b614f71ae6058b0b2db"
+eslint-config-airbnb@^17.1.0:
+  version "17.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-17.1.0.tgz#3964ed4bc198240315ff52030bf8636f42bc4732"
   dependencies:
-    eslint-config-airbnb-base "^13.0.0"
+    eslint-config-airbnb-base "^13.1.0"
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
@@ -4337,8 +4337,8 @@ opn@^3.0.2:
     object-assign "^4.0.1"
 
 optimism@^0.6.5:
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.6.5.tgz#9fc3dd71bb58cb1a608af99ecfa96731bcf011f3"
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.6.6.tgz#5415b2d6a2f8b3745aedb9f97fdf4e52467ecd84"
   dependencies:
     immutable-tuple "^0.4.4"
 
@@ -4992,9 +4992,9 @@ react-native-video@3.2.0:
     keymirror "0.1.1"
     prop-types "^15.5.10"
 
-react-native@^0.56.0:
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.56.0.tgz#66686f781ec39a44376aadd4bbc55c8573ab61e5"
+react-native@next:
+  version "0.56.0-rc.5"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.56.0-rc.5.tgz#f1ac9b476d9cea801712e46c8a3e970dc0d5ac87"
   dependencies:
     absolute-path "^0.0.0"
     art "^0.10.0"

@@ -13,8 +13,13 @@ export default gql`
           user {
             ...userInfo
           }
-          images {
-            uri
+          images: imagesConnection {
+            edges {
+              node {
+                id
+                uri
+              }
+            }
           }
           project {
             id
