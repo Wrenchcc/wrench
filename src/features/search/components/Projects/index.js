@@ -19,7 +19,7 @@ class Projects extends PureComponent {
   renderItem = ({ item }) => (
     <ProjectCard
       {...item.node}
-      images={[item.node.coverImage.uri]}
+      images={[item.node.coverImage]}
       onPress={() => navigateToProject(item.node)}
     />
   )
