@@ -1,17 +1,16 @@
 /* eslint-disable */
 import React from 'react'
-import { uniq } from 'ramda'
 import { Base, Container, Cell, Image, Transform, HEIGHT } from './styles'
 
-const One = ({ images }) => <Image source={images[0]} height={HEIGHT} />
+const One = ({ images }) => <Image source={images[0].node} height={HEIGHT} />
 
 const Two = ({ images }) => (
   <Container>
     <Cell size={1 / 2}>
-      <Image source={images[0]} height={HEIGHT} borderRight />
+      <Image source={images[0].node} height={HEIGHT} borderRight />
     </Cell>
     <Cell size={1 / 2}>
-      <Image source={images[1]} height={HEIGHT} borderLeft />
+      <Image source={images[1].node} height={HEIGHT} borderLeft />
     </Cell>
   </Container>
 )
@@ -19,11 +18,11 @@ const Two = ({ images }) => (
 const Three = ({ images }) => (
   <Container>
     <Cell size={1 / 2}>
-      <Image source={images[0]} height={HEIGHT} borderRight />
+      <Image source={images[0].node} height={HEIGHT} borderRight />
     </Cell>
     <Cell size={1 / 2}>
-      <Image source={images[1]} height={HEIGHT / 2} borderLeft />
-      <Image source={images[2]} height={HEIGHT / 2} borderLeft borderTop />
+      <Image source={images[1].node} height={HEIGHT / 2} borderLeft />
+      <Image source={images[2].node} height={HEIGHT / 2} borderLeft borderTop />
     </Cell>
   </Container>
 )
@@ -31,12 +30,12 @@ const Three = ({ images }) => (
 const Four = ({ images }) => (
   <Container>
     <Cell size={1 / 2}>
-      <Image source={images[0]} height={HEIGHT / 2} borderRight borderBottom />
-      <Image source={images[1]} height={HEIGHT / 2} borderRight borderTop />
+      <Image source={images[0].node} height={HEIGHT / 2} borderRight borderBottom />
+      <Image source={images[1].node} height={HEIGHT / 2} borderRight borderTop />
     </Cell>
     <Cell size={1 / 2}>
-      <Image source={images[2]} height={HEIGHT / 2} borderLeft borderBottom />
-      <Image source={images[3]} height={HEIGHT / 2} borderLeft borderTop />
+      <Image source={images[2].node} height={HEIGHT / 2} borderLeft borderBottom />
+      <Image source={images[3].node} height={HEIGHT / 2} borderLeft borderTop />
     </Cell>
   </Container>
 )
@@ -44,15 +43,15 @@ const Four = ({ images }) => (
 const Five = ({ images }) => (
   <Container>
     <Cell size={1 / 3}>
-      <Image source={images[0]} height={HEIGHT} borderRight />
+      <Image source={images[0].node} height={HEIGHT} borderRight />
     </Cell>
     <Cell size={1 / 3}>
-      <Image source={images[1]} height={HEIGHT / 2} borderRight borderLeft borderBottom />
-      <Image source={images[2]} height={HEIGHT / 2} borderRight borderLeft borderTop />
+      <Image source={images[1].node} height={HEIGHT / 2} borderRight borderLeft borderBottom />
+      <Image source={images[2].node} height={HEIGHT / 2} borderRight borderLeft borderTop />
     </Cell>
     <Cell size={1 / 3}>
-      <Image source={images[3]} height={HEIGHT / 2} borderLeft borderBottom />
-      <Image source={images[4]} height={HEIGHT / 2} borderLeft borderTop />
+      <Image source={images[3].node} height={HEIGHT / 2} borderLeft borderBottom />
+      <Image source={images[4].node} height={HEIGHT / 2} borderLeft borderTop />
     </Cell>
   </Container>
 )
@@ -60,16 +59,16 @@ const Five = ({ images }) => (
 const Six = ({ images }) => (
   <Container>
     <Cell size={1 / 3}>
-      <Image source={images[0]} height={HEIGHT / 2} borderRight borderBottom />
-      <Image source={images[1]} height={HEIGHT / 2} borderRight borderTop />
+      <Image source={images[0].node} height={HEIGHT / 2} borderRight borderBottom />
+      <Image source={images[1].node} height={HEIGHT / 2} borderRight borderTop />
     </Cell>
     <Cell size={1 / 3}>
-      <Image source={images[2]} height={HEIGHT / 2} borderRight borderLeft borderBottom />
-      <Image source={images[3]} height={HEIGHT / 2} borderRight borderLeft borderTop />
+      <Image source={images[2].node} height={HEIGHT / 2} borderRight borderLeft borderBottom />
+      <Image source={images[3].node} height={HEIGHT / 2} borderRight borderLeft borderTop />
     </Cell>
     <Cell size={1 / 3}>
-      <Image source={images[4]} height={HEIGHT / 2} borderLeft borderBottom />
-      <Image source={images[5]} height={HEIGHT / 2} borderLeft borderTop />
+      <Image source={images[4].node} height={HEIGHT / 2} borderLeft borderBottom />
+      <Image source={images[5].node} height={HEIGHT / 2} borderLeft borderTop />
     </Cell>
   </Container>
 )
@@ -94,12 +93,10 @@ const Grid = ({ images }) => {
 }
 
 const Gallery = ({ images }) => {
-  const uniqImages = uniq(images)
-
   return (
     <Base>
-      <Transform enabled={uniqImages.length >= 2}>
-        <Grid images={uniqImages} />
+      <Transform enabled={images.length >= 2}>
+        <Grid images={images} />
       </Transform>
     </Base>
   )

@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
+import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
 import withLocalization from 'i18n/withLocalization'
 import { navigateToProject } from 'navigation'
@@ -22,7 +23,8 @@ class Popular extends PureComponent {
 
   renderItem = ({ item, index }) => {
     const { projects } = this.props
-    const { coverImage, id, title, user, followers, projectPermissions } = item.node
+    const { images, id, title, user, followers, projectPermissions } = item.node
+    const image = pathOr(null, ['edges', [0], 'node'], images)
 
     const params = {
       user,
@@ -36,7 +38,7 @@ class Popular extends PureComponent {
 
     return (
       <Card
-        coverUri={coverImage.uri}
+        image={image}
         title={title}
         key={id}
         onPress={() => navigateToProject(params)}

@@ -12,12 +12,21 @@ class Users extends PureComponent {
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    scrollRef: PropTypes.func.isRequired,
   }
 
   renderItem = ({ item }) => <User data={item.node} />
 
   render() {
-    const { users, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const {
+      users,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
+      scrollRef,
+    } = this.props
 
     return (
       <InfiniteList
@@ -30,6 +39,7 @@ class Users extends PureComponent {
         hasNextPage={hasNextPage}
         keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
+        scrollRef={scrollRef}
       />
     )
   }

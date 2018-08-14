@@ -28,6 +28,10 @@ export const searchProjectsQuery = gql`
             user {
               avatarUrl
             }
+            projectPermissions {
+              isFollower
+              isOwner
+            }
           }
         }
       }

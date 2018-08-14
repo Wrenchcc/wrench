@@ -11,7 +11,7 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-class Profile extends Component {
+class Me extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
@@ -33,16 +33,16 @@ class Profile extends Component {
     }
   }
 
-  static propTypes = {
-    user: PropTypes.object,
-    navigation: PropTypes.object.isRequired,
-    posts: PropTypes.array,
-    fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    hasNextPage: PropTypes.bool.isRequired,
-  }
+  // static propTypes = {
+  //   user: PropTypes.object,
+  //   navigation: PropTypes.object.isRequired,
+  //   posts: PropTypes.array,
+  //   fetchMore: PropTypes.func.isRequired,
+  //   refetch: PropTypes.func.isRequired,
+  //   isRefetching: PropTypes.bool.isRequired,
+  //   isFetching: PropTypes.bool.isRequired,
+  //   hasNextPage: PropTypes.bool.isRequired,
+  // }
 
   constructor(props) {
     super(props)
@@ -94,4 +94,4 @@ class Profile extends Component {
   }
 }
 
-export default graphql(getCurrentUserQuery)(Profile)
+export default graphql(getCurrentUserQuery)(Me)
