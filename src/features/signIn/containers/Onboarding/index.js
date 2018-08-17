@@ -5,8 +5,8 @@ import withLocalization from 'i18n/withLocalization'
 import { navigateToFeed } from 'navigation'
 import { Header, Touchable, Text } from 'ui'
 import getCategories from 'utils/getCategories'
-import Content from '../Content'
-import Footer from '../Footer'
+import Content from '../../components/Content'
+import Footer from '../../components/Footer'
 import { Base, Cell, Image, Overlay } from './styles'
 
 const { width } = Dimensions.get('window')
