@@ -34,8 +34,6 @@ class App extends Component {
     setTimeout(SplashScreen.hide, 500)
   }
 
-  // TODO: Hide SplashScreen when onCompleted is working without fetchPolicy
-  //  https://github.com/apollographql/react-apollo/issues/2177
   render() {
     const { appLoading, client } = this.state
 
@@ -44,7 +42,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
-          {({ data }) => <AppNavigator authenticated={!!data.user} />}
+          {({ data }) => <AppNavigator authenticated={!!data.currentUser} />}
         </Query>
       </ApolloProvider>
     )

@@ -2,8 +2,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
 import HttpLink from './links/Http'
-import stateLink from './state'
-import { rehydrateUser, removeUser } from './utils/auth'
+import { rehydrateAuthenticadedUser, removeAuthenticadedUser } from './utils/auth'
 
 // TODO: Find better way to logout user
 export let client = null
@@ -15,13 +14,13 @@ export default async function createClient() {
 
   client = new ApolloClient({
     cache,
-    link: ApolloLink.from([stateLink(cache), HttpLink]),
+    link: ApolloLink.from([HttpLink]),
   })
 
-  await rehydrateUser(client)
+  await rehydrateAuthenticadedUser(client)
 
   client.onResetStore(() => {
-    removeUser()
+    removeAuthenticadedUser()
   })
 
   return client

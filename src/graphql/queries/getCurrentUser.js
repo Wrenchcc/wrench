@@ -1,8 +1,13 @@
 import gql from 'graphql-tag'
+import { pathOr } from 'ramda'
+import { graphql } from 'react-apollo'
+import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
+import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 
 export const getCurrentUserQuery = gql`
   query getCurrentUser {
-    user: currentUser @client {
+    currentUser {
       id
       fullName
       firstName
@@ -11,3 +16,71 @@ export const getCurrentUserQuery = gql`
     }
   }
 `
+
+export const getCurrentUserProfileQuery = gql`
+  query getCurrentUserProfile($after: String) {
+    user: currentUser {
+      ...userInfo
+      ...userPostsConnection
+    }
+  }
+  ${userInfoFragment}
+  ${userPostsConnectionFragment}
+`
+
+const LoadMorePosts = gql`
+  query loadMoreProjectPosts($after: String) {
+    user: currentUser {
+      ...userPostsConnection
+    }
+  }
+  ${userPostsConnectionFragment}
+`
+
+const getCurrentUserProfileOptions = {
+  options: ({ after = null }) => ({
+    variables: {
+      after,
+    },
+    fetchPolicy: 'cache-and-network',
+  }),
+  props: ({ data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
+    error,
+    refetch,
+    user,
+    posts: pathOr(null, ['posts', 'edges'], user),
+    hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
+    isRefetching: isRefetching(networkStatus),
+    isFetching: loading || isFetchingMore(networkStatus),
+    fetchMore: () => fetchMore({
+      query: LoadMorePosts,
+      variables: {
+        after: user.posts.edges[user.posts.edges.length - 1].cursor,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.user) {
+          return prev
+        }
+        return {
+          ...prev,
+          user: {
+            ...prev.user,
+            posts: {
+              ...prev.user.posts,
+              pageInfo: {
+                ...prev.user.posts.pageInfo,
+                ...fetchMoreResult.user.posts.pageInfo,
+              },
+              edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
+            },
+          },
+        }
+      },
+    }),
+  }),
+}
+
+export const getCurrentUserProfile = graphql(
+  getCurrentUserProfileQuery,
+  getCurrentUserProfileOptions
+)

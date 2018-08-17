@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { graphql } from 'react-apollo'
-import { getCurrentUserQuery } from 'graphql/queries/getCurrentUser'
+import { compose } from 'react-apollo'
+import { getCurrentUserProfile } from 'graphql/queries/getCurrentUser'
 import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 
@@ -33,16 +33,16 @@ class Me extends Component {
     }
   }
 
-  // static propTypes = {
-  //   user: PropTypes.object,
-  //   navigation: PropTypes.object.isRequired,
-  //   posts: PropTypes.array,
-  //   fetchMore: PropTypes.func.isRequired,
-  //   refetch: PropTypes.func.isRequired,
-  //   isRefetching: PropTypes.bool.isRequired,
-  //   isFetching: PropTypes.bool.isRequired,
-  //   hasNextPage: PropTypes.bool.isRequired,
-  // }
+  static propTypes = {
+    user: PropTypes.object,
+    navigation: PropTypes.object.isRequired,
+    posts: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
+  }
 
   constructor(props) {
     super(props)
@@ -94,4 +94,4 @@ class Me extends Component {
   }
 }
 
-export default graphql(getCurrentUserQuery)(Me)
+export default compose(getCurrentUserProfile)(Me)

@@ -1,40 +1,42 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
+import { getCurrentUserQuery } from '../queries/getCurrentUser'
+import { setAuthenticadedUser } from '../utils/auth'
 
 export const authenticateUserMutation = gql`
   mutation authenticateUser($facebookToken: String!) {
     authenticateUser(facebookToken: $facebookToken) {
-      token
-      refreshToken
       user {
-        id
-        fullName
-        firstName
-        lastName
-        username
-        avatarUrl
+        ...userInfo
+      }
+      tokens {
+        accessToken
+        refreshToken
       }
     }
   }
+  ${userInfoFragment}
 `
-
-export const addCurrentUserMutation = gql`
-  mutation addCurrentUser($data: User) {
-    addCurrentUser(data: $data) @client
-  }
-`
-
-const addCurrentUserOptions = {
-  props: ({ mutate }) => ({
-    addCurrentUser: data => mutate({ variables: { data } }),
-  }),
-}
 
 const authenticateUserOptions = {
   props: ({ mutate }) => ({
-    authenticateUser: facebookToken => mutate({ variables: { facebookToken } }),
+    authenticateUser: facebookToken => mutate({
+      variables: { facebookToken },
+      update: (store, { data: { authenticateUser } }) => {
+        setAuthenticadedUser(authenticateUser)
+
+        store.writeQuery({
+          query: getCurrentUserQuery,
+          data: {
+            currentUser: {
+              ...authenticateUser.user,
+            },
+          },
+        })
+      },
+    }),
   }),
 }
 
-export const addCurrentUser = graphql(addCurrentUserMutation, addCurrentUserOptions)
 export const authenticateUser = graphql(authenticateUserMutation, authenticateUserOptions)
