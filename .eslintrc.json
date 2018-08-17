@@ -8,6 +8,7 @@
     "requestAnimationFrame": true
   },
   "rules": {
+    "no-restricted-syntax": 0,
     "no-shadow": 0,
     "class-methods-use-this": 0,
     "no-confusing-arrow": 0,
