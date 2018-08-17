@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
-import { authenticateUser } from 'graphql/mutations/user'
+import { authenticateUser } from 'graphql/mutations/authenticateUser'
 import withLocalization from 'i18n/withLocalization'
 import { Button, Text } from './styled'
 
