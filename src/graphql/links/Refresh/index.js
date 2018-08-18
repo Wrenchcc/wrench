@@ -1,7 +1,7 @@
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
-import { getAccessTokenMutation } from 'graphql/mutations/getAccessToken'
+import { refreshTokenMutation } from 'graphql/mutations/refreshToken'
 import { getToken } from 'graphql/utils/auth'
 
 // TODO: Sing out on failure
@@ -12,11 +12,11 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
     return client
       .mutate({
-        mutation: getAccessTokenMutation,
+        mutation: refreshTokenMutation,
         variables: { refreshToken },
       })
       .then(({ data }) => {
-        const { accessToken } = data.getAccessToken.tokens
+        const { accessToken } = data.refreshToken.tokens
 
         if (!accessToken) {
           // Reset store (logout)

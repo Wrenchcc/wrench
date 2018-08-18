@@ -13,17 +13,8 @@ class SelectProject extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
     expanded: PropTypes.bool.isRequired,
-    selected: PropTypes.shape({
-      id: PropTypes.string,
-      coverUri: PropTypes.string,
-      followers: PropTypes.number,
-    }),
+    selected: PropTypes.object.isRequired,
     projects: PropTypes.array,
-  }
-
-  static defaultProps = {
-    projects: {},
-    selected: {},
   }
 
   state = {
@@ -37,6 +28,7 @@ class SelectProject extends Component {
   }
 
   getHeight = () => Object.keys(this.props.projects).length * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
+
   isSelected = project => project.id === this.props.selected.id
 
   toggleAnimation = expanded => {
@@ -47,8 +39,16 @@ class SelectProject extends Component {
     }).start()
   }
 
+  renderProjects = () => {
+    const { projects, onPress } = this.props
+
+    return projects.map(({ node }) => (
+      <Project key={node.id} {...node} onPress={onPress} selected={this.isSelected(node)} />
+    ))
+  }
+
   render() {
-    const { t, projects, onPress } = this.props
+    const { t } = this.props
     return (
       <Animated.View
         style={{
@@ -60,14 +60,7 @@ class SelectProject extends Component {
         }}
       >
         <Base>
-          {projects.map(project => (
-            <Project
-              key={project.id}
-              {...project}
-              onPress={onPress}
-              selected={this.isSelected(project)}
-            />
-          ))}
+          {this.renderProjects()}
           <NewProject onPress={() => navigateToEditProject()}>
             <Text medium>{t('.create')}</Text>
           </NewProject>

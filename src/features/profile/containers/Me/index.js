@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
-import { getCurrentUserProfile } from 'graphql/queries/getCurrentUser'
+import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
 import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 

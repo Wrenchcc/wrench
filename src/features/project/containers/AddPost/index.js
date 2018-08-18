@@ -1,27 +1,33 @@
 import React, { Component } from 'react'
 import { KeyboardAvoidingView, Alert } from 'react-native'
+import { pathOr } from 'ramda'
 import Swiper from 'react-native-swiper'
+import { compose } from 'react-apollo'
+import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
-import data from 'fixtures/myprojects'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
 import { close, arrowLeftWhite } from 'images'
-import SelectProject from '../SelectProject'
-import Camera from '../Camera'
-import CameraRoll from '../CameraRoll'
+import Camera from 'features/project/components/Camera/index.js'
+import CameraRoll from 'features/project/components/CameraRoll'
+import SelectProject from 'features/project/components/SelectProject'
 import { Base, Top, Edit, Overlay, Background } from './styles'
 
 const CAMERA_PAGE = 1
 const CAMERA_ROLL_PAGE = 0
 
 class AddPost extends Component {
-  state = {
-    page: CAMERA_PAGE,
-    expanded: false,
-    project: data[0],
-    edit: false,
-    picture: null,
-    pictures: [],
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      page: CAMERA_PAGE,
+      expanded: false,
+      edit: false,
+      picture: null,
+      pictures: [],
+      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
+    }
   }
 
   onTakePicture = picture => {
@@ -30,14 +36,14 @@ class AddPost extends Component {
   }
 
   setSelectedProject = project => {
-    this.setState({ project }, this.closeDropdown)
+    this.setState({ selectedProject: project }, this.closeDropdown)
   }
 
   addPictures = pictures => this.setState({ pictures })
 
   changePage = page => this.setState({ page })
 
-  toggleDropdown = () => this.setState({ expanded: !this.state.expanded })
+  toggleDropdown = () => this.setState(prevState => ({ expanded: !prevState.expanded }))
 
   closeDropdown = () => this.setState({ expanded: false })
 
@@ -89,7 +95,7 @@ class AddPost extends Component {
       headerRight={this.renderHeaderRight()}
       headerCenter={
         <Dropdown
-          selected={this.state.project.name}
+          title={this.state.selectedProject.title}
           onPress={this.toggleDropdown}
           active={this.state.expanded}
         />
@@ -97,7 +103,10 @@ class AddPost extends Component {
     />
   )
 
-  renderEdit = () => this.state.edit && (
+  renderEdit = () => {
+    if (!this.state.edit) return null
+
+    return (
       <Background source={this.state.picture}>
         <Overlay onPressIn={this.closeDropdown} activeOpacity={1}>
           <KeyboardAvoidingView behavior="position">
@@ -112,47 +121,50 @@ class AddPost extends Component {
           </KeyboardAvoidingView>
         </Overlay>
       </Background>
-  )
+    )
+  }
 
-  render = () => (
-    <Base>
-      {this.renderEdit()}
+  render() {
+    return (
+      <Base>
+        {this.renderEdit()}
 
-      <SelectProject
-        projects={data}
-        expanded={this.state.expanded}
-        onPress={this.setSelectedProject}
-        selected={this.state.project}
-      />
-
-      <Top>{this.renderHeader()}</Top>
-      <Swiper
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-        removeClippedSubviews
-        ref={swiper => {
-          this.swiper = swiper
-        }}
-        showsPagination={false}
-        loop={false}
-        index={CAMERA_PAGE}
-        onIndexChanged={this.changePage}
-      >
-        <CameraRoll
-          addPictures={this.addPictures}
-          pictures={this.state.pictures}
-          closeDropdown={this.closeDropdown}
-          dropDownActive={this.state.expanded}
+        <SelectProject
+          projects={this.props.projects}
+          expanded={this.state.expanded}
+          onPress={this.setSelectedProject}
+          selected={this.state.selectedProject}
         />
 
-        <Camera
-          navigateToCameraRoll={this.navigateToCameraRoll}
-          closeDropdown={this.closeDropdown}
-          onTakePicture={this.onTakePicture}
-        />
-      </Swiper>
-    </Base>
-  )
+        <Top>{this.renderHeader()}</Top>
+        <Swiper
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+          removeClippedSubviews
+          ref={swiper => {
+            this.swiper = swiper
+          }}
+          showsPagination={false}
+          loop={false}
+          index={CAMERA_PAGE}
+          onIndexChanged={this.changePage}
+        >
+          <CameraRoll
+            addPictures={this.addPictures}
+            pictures={this.state.pictures}
+            closeDropdown={this.closeDropdown}
+            dropDownActive={this.state.expanded}
+          />
+
+          <Camera
+            navigateToCameraRoll={this.navigateToCameraRoll}
+            closeDropdown={this.closeDropdown}
+            onTakePicture={this.onTakePicture}
+          />
+        </Swiper>
+      </Base>
+    )
+  }
 }
 
-export default withLocalization(AddPost, 'AddPost')
+export default compose(getCurrentUserProjects)(withLocalization(AddPost, 'AddPost'))

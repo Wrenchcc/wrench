@@ -4,10 +4,10 @@ import { Text } from 'ui'
 import { arrowDown, arrowUpGrey } from 'images'
 import { Base, Icon } from './styles'
 
-const Dropdown = ({ active, onPress, selected }) => (
+const Dropdown = ({ active, onPress, title }) => (
   <Base onPress={onPress} hapticFeedback="impactLight">
     <Text color={active ? 'dark' : 'white'} medium style={{ zIndex: 100 }} numberOfLines={1}>
-      {selected}
+      {title}
     </Text>
     <Icon source={active ? arrowUpGrey : arrowDown} />
   </Base>
@@ -16,7 +16,7 @@ const Dropdown = ({ active, onPress, selected }) => (
 Dropdown.propTypes = {
   active: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
-  selected: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default Dropdown
