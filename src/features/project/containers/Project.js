@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, Alert } from 'react-native'
+import { Animated } from 'react-native'
 import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/getProject'
 import { navigateToProfile } from 'navigation'
-import { InfiniteList, ActionSheet, Post, Avatar, HeaderTitle, Edit } from 'ui'
+import { InfiniteList, Post, Avatar, HeaderTitle, Edit } from 'ui'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -20,6 +20,7 @@ class Project extends Component {
     const params = navigation.state.params || {}
     const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
     const projectTitle = pathOr(false, ['project', 'title'], params)
+    const goToProfile = () => navigateToProfile({ user: params.user })
 
     return {
       headerTitle: projectTitle && (
@@ -33,10 +34,7 @@ class Project extends Component {
       headerRight: isOwner ? (
         <Edit project={params.project} />
       ) : (
-        <Avatar
-          uri={params.user.avatarUrl}
-          onPress={() => navigateToProfile({ user: params.user })}
-        />
+        <Avatar uri={params.user.avatarUrl} onPress={goToProfile} />
       ),
     }
   }
@@ -72,22 +70,10 @@ class Project extends Component {
         outputRange: [0, 1],
       }),
     })
-
-    this.state = {
-      isOpen: false,
-    }
-
-    this.actionsheetOptions = [
-      { name: 'Edit post', onSelect: () => Alert('Not yet!') },
-      { name: 'Delete post', onSelect: () => Alert('Not yet!') },
-      { name: 'Cancel' },
-    ]
   }
 
   // TODO: Mutate state
   toggleFollow = () => {}
-
-  toggleActionSheet = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }))
 
   componentWillUnmont() {
     scrollView = null
@@ -96,6 +82,22 @@ class Project extends Component {
   renderItem = ({ item }) => (
     <Post data={item.node} avatar={false} onPost onLongPress={this.toggleActionSheet} />
   )
+
+  renderFooter = () => {
+    const { isFetching, project } = this.props
+
+    return (
+      !isFetching && (
+        <Footer
+          translateY={this.footerY}
+          name={project.title}
+          id={project.id}
+          following={project.projectPermissions.isFollower}
+          onFollowPress={this.toggleFollow}
+        />
+      )
+    )
+  }
 
   render() {
     const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
@@ -121,23 +123,7 @@ class Project extends Component {
             scrollView = ref
           }}
         />
-        {!isFetching && (
-          <Fragment>
-            <Animated.View style={{ transform: [{ translateY: this.footerY }] }}>
-              <Footer
-                name={project.title}
-                id={project.id}
-                following={project.projectPermissions.isFollower}
-                onFollowPress={this.toggleFollow}
-              />
-            </Animated.View>
-            <ActionSheet
-              isOpen={this.state.isOpen}
-              onClose={this.toggleActionSheet}
-              options={this.actionsheetOptions}
-            />
-          </Fragment>
-        )}
+        {this.renderFooter()}
       </Fragment>
     )
   }

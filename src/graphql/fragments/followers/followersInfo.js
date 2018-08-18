@@ -6,6 +6,8 @@ export default gql`
       node {
         id
         fullName
+        firstName
+        lastName
         avatarUrl
         projectCount
       }

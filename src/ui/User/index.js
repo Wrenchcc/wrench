@@ -5,15 +5,14 @@ import { Avatar, Text } from 'ui'
 import { navigateToProfile } from 'navigation'
 import { Base, Content } from './styles'
 
-// TODO: Pass correct data to profile
 class User extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
   }
 
   goToProfile = () => {
-    const { data } = this.props.data
-    navigateToProfile(data)
+    const { data } = this.props
+    navigateToProfile({ user: data })
   }
 
   render() {

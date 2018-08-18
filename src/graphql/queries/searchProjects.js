@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
-// import projectInfoFragment from 'graphql/fragments/project/projectInfo'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export const searchProjectsQuery = gql`
   query searchProjects($query: String!, $type: SearchType!) {
@@ -26,7 +26,7 @@ export const searchProjectsQuery = gql`
               totalCount
             }
             user {
-              avatarUrl
+              ...userInfo
             }
             projectPermissions {
               isFollower
@@ -37,6 +37,7 @@ export const searchProjectsQuery = gql`
       }
     }
   }
+  ${userInfoFragment}
 `
 
 const searchProjectsOptions = {
