@@ -8,13 +8,10 @@ import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 export const getCurrentUserQuery = gql`
   query getCurrentUser {
     currentUser {
-      id
-      fullName
-      firstName
-      lastName
-      avatarUrl
+      ...userInfo
     }
   }
+  ${userInfoFragment}
 `
 
 export const getCurrentUserProfileQuery = gql`
