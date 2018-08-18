@@ -8,7 +8,9 @@ import { rehydrateAuthenticadedUser, removeAuthenticadedUser } from './utils/aut
 
 export let client = null
 
-export const signOut = () => client.cache.reset()
+export const signOut = () => {
+  console.log('logout')
+}
 
 export default async function createClient() {
   if (client) return client

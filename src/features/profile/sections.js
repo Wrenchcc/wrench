@@ -2,7 +2,7 @@ import React from 'react'
 import NativeShare from 'react-native-share'
 import { mergeAll, pathOr } from 'ramda'
 import { t } from 'i18n'
-import { client } from 'graphql/createClient'
+import { signOut } from 'graphql/createClient'
 import { navigate, navigateToWebView } from 'navigation'
 import openLink from 'utils/openLink'
 import { warn } from 'utils/logger'
@@ -62,7 +62,7 @@ const sections = {
         },
         {
           titleKey: 'logout',
-          onPress: () => client.resetStore(),
+          onPress: () => signOut(),
           last: true,
         },
       ],
