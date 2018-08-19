@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
-import { getComments } from 'graphql/queries/getComments'
+import { getComments } from 'graphql/queries/post/getComments'
 import withLocalization from 'i18n/withLocalization'
 import {
   InfiniteList,

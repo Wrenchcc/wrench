@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { searchUsers } from 'graphql/queries/searchUsers'
+import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { User, InfiniteList } from 'ui'
 
+// TODO: Pass search query
 class Users extends PureComponent {
   static propTypes = {
     users: PropTypes.array,

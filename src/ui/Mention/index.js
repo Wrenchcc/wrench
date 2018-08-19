@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import { filter, isEmpty } from 'ramda'
-import { Gateway, FlatList, MentionUser } from 'ui'
+import { compose } from 'react-apollo'
+import { Gateway, InfiniteList, MentionUser } from 'ui'
+import { searchUsers } from 'graphql/queries/user/searchUsers'
+
 import { TOTAL_HEADER_HEIGHT } from 'ui/constants'
 import { isIphone } from 'utils/platform'
-import users from 'fixtures/users'
 
 // And same offset on comments and posts
 const DEFAULT_OFFSET_BOTTOM = isIphone ? 345 : 122
@@ -21,8 +22,15 @@ const styles = {
   },
 }
 
-export default class Mention extends Component {
+// TODO: Pass query to search
+class Mention extends Component {
   static propTypes = {
+    users: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
     onPress: PropTypes.func.isRequired,
     onNoResults: PropTypes.func.isRequired,
     query: PropTypes.string,
@@ -32,29 +40,44 @@ export default class Mention extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (isEmpty(filter(a => a.fullName.toLowerCase().includes(nextProps.query), users))) {
-      this.props.onNoResults()
-    }
+    // if (isEmpty(filter(a => a.fullName.toLowerCase().includes(nextProps.query), users))) {
+    //   this.props.onNoResults()
+    // }
+  }
+
+  renderItem = ({ item }) => {
+    const { onPress } = this.props
+    return <MentionUser user={item.node} onPress={onPress} />
   }
 
   renderMention() {
     const {
-      onPress,
       query,
       offsetBottom = DEFAULT_OFFSET_BOTTOM,
       offsetTop = TOTAL_HEADER_HEIGHT,
+      users,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
     } = this.props
 
     return (
       <View style={[styles.container, { bottom: offsetBottom, top: offsetTop }]}>
-        <FlatList
+        <InfiniteList
           defaultPadding
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"
-          data={filter(a => a.fullName.toLowerCase().includes(query), users)}
-          keyExtractor={item => item.id}
+          data={users}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          keyExtractor={item => item.node.id}
+          renderItem={this.renderItem}
           borderSeparator
-          renderItem={({ item }) => <MentionUser user={item} onPress={onPress} />}
           getItemLayout={(data, index) => ({
             length: ITEM_HEIGHT,
             offset: ITEM_HEIGHT * index,
@@ -74,3 +97,5 @@ export default class Mention extends Component {
     )
   }
 }
+
+export default compose(searchUsers)(Mention)

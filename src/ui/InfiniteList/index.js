@@ -10,7 +10,7 @@ class InfiniteList extends Component {
   static propTypes = {
     borderSeparator: PropTypes.bool,
     onScroll: PropTypes.object,
-    scrollRef: PropTypes.func.isRequired,
+    scrollRef: PropTypes.func,
     defaultPaddingTop: PropTypes.bool,
     paddingBottom: PropTypes.number,
     paddingHorizontal: PropTypes.number,
@@ -90,4 +90,7 @@ class InfiniteList extends Component {
   }
 }
 
-export default withKeyboardHandler(InfiniteList)
+export default InfiniteList
+
+// TODO: Make optional
+// export default withKeyboardHandler(InfiniteList)

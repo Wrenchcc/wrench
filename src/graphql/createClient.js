@@ -8,8 +8,8 @@ import { rehydrateAuthenticadedUser, removeAuthenticadedUser } from './utils/aut
 
 export let client = null
 
-export const signOut = () => {
-  console.log('logout')
+export const signOut = async () => {
+  await client.resetStore()
 }
 
 export default async function createClient() {
