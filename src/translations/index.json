@@ -40,11 +40,6 @@
       "knallpott": "Knallpott",
       "hookie": "Hookie"
     },
-    "AddPost": {
-      "post": "Post",
-      "next": "Next",
-      "placeholder": "Add a text about your post"
-    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -77,17 +72,24 @@
     "SelectProject": {
       "create": "Create a new project"
     },
+    "AddPost": {
+      "post": "Post",
+      "next": "Next",
+      "placeholder": "Add a text about your post"
+    },
     "Comments": {
       "title": "Comments"
     },
     "SearchTab": {
       "people": "People",
-      "projects": "Projects",
-      "cancel": "Cancel"
+      "projects": "Projects"
     },
     "OnboardingContent": {
       "headline": "What are you interested in?",
       "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with. "
+    },
+    "Facebook": {
+      "button": "Continue with Facebook"
     },
     "Onboarding": {
       "next": "Next"
@@ -121,9 +123,6 @@
         "button": "Add"
       }
     },
-    "Facebook": {
-      "button": "Continue with Facebook"
-    },
     "Follow": {
       "follow": "Follow this project",
       "unfollow": "Following"
@@ -145,6 +144,9 @@
     },
     "Search": {
       "placeholder": "Search"
+    },
+    "SearchBar": {
+      "cancel": "Cancel"
     },
     "UiUser": {
       "projects": {

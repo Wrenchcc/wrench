@@ -4,7 +4,8 @@ import { map } from 'ramda'
 import { COLORS } from 'ui/constants'
 import { TabBarComponent, SearchBar, Add } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
-import { ROUTE_NAMES } from 'features/profile/constants'
+import { ROUTE_NAMES as PROFILE_ROUTE_NAMES } from 'features/profile/constants'
+import { ROUTE_NAMES as SEARCH_ROUTE_NAMES } from 'features/search/constants'
 import { toTabRoute } from '../options'
 import { TAB_HEIGHT } from '../constants'
 import { tabRoutes } from '../routes'
@@ -35,12 +36,19 @@ const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
 TabNavigator.navigationOptions = ({ navigation }) => {
   const focusedRouteName = navigation.state.routes[navigation.state.index].routeName
 
-  if (focusedRouteName === ROUTE_NAMES.ME) {
+  if (focusedRouteName === PROFILE_ROUTE_NAMES.ME) {
     return {
       ...styles,
       headerLeft: <SettingsButton />,
       headerRight: <Add />,
       headerTitle: false,
+    }
+  }
+
+  if (focusedRouteName === SEARCH_ROUTE_NAMES.SEARCH) {
+    return {
+      ...styles,
+      headerTitle: <SearchBar placeholder={false} cancelButton />,
     }
   }
 

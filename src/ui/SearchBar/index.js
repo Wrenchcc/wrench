@@ -1,13 +1,30 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import { navigateToSearch } from 'navigation'
-import { Search, Add } from 'ui'
+import withLocalization from 'i18n/withLocalization'
+import { navigateToSearch, navigateBack } from 'navigation'
+import { Search, Add, Text } from 'ui'
 
-const SearchBar = () => (
+const SearchBar = ({ placeholder, cancelButton, t }) => (
   <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-    <Search onPress={() => navigateToSearch()} style={{ flex: 1, paddingRight: 20 }} />
-    <Add style={{ width: 20 }} />
+    <Search
+      onPress={() => navigateToSearch()}
+      style={{ flex: 1, paddingRight: 20 }}
+      placeholder={placeholder}
+    />
+    {cancelButton ? (
+      <Text onPress={() => navigateBack()} medium>
+        {t('.cancel')}
+      </Text>
+    ) : (
+      <Add style={{ width: 20 }} />
+    )}
   </View>
 )
 
-export default SearchBar
+SearchBar.propTypes = {
+  placeholder: PropTypes.bool.isRequired,
+  cancelButton: PropTypes.bool,
+}
+
+export default withLocalization(SearchBar, 'SearchBar')

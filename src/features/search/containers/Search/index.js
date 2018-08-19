@@ -1,13 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, Keyboard, View } from 'react-native'
+import { Dimensions, Keyboard } from 'react-native'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
-import withLocalization from 'i18n/withLocalization'
-import { Search as SearchInput, Text } from 'ui'
 import { FONTS } from 'ui/constants'
-import { navigateBack } from 'navigation'
-import { HEADER_HEIGHT } from 'navigation/constants'
 import Users from '../../components/Users'
 import Projects from '../../components/Projects'
 import routes from './routes'
@@ -83,39 +79,20 @@ class Search extends PureComponent {
   )
 
   render() {
-    const { t } = this.props
-
-    // TODO: Fix correct hight
     return (
-      <View style={{ flex: 1 }}>
-        <View
-          style={{
-            height: HEADER_HEIGHT,
-            marginTop: 45,
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingHorizontal: 20,
-          }}
-        >
-          <SearchInput placeholder={false} style={{ flex: 1, paddingRight: 20 }} />
-          <Text onPress={() => navigateBack()} medium>
-            {t('.cancel')}
-          </Text>
-        </View>
-        <TabView
-          navigationState={this.state}
-          renderScene={this.renderScene}
-          renderTabBar={this.renderTabBar}
-          renderPager={this.renderPager}
-          onIndexChange={this.handleIndexChange}
-          initialLayout={initialLayout}
-          swipeEnabled
-          animationEnabled
-          useNativeDriver
-        />
-      </View>
+      <TabView
+        navigationState={this.state}
+        renderScene={this.renderScene}
+        renderTabBar={this.renderTabBar}
+        renderPager={this.renderPager}
+        onIndexChange={this.handleIndexChange}
+        initialLayout={initialLayout}
+        swipeEnabled
+        animationEnabled
+        useNativeDriver
+      />
     )
   }
 }
 
-export default withLocalization(Search, 'SearchTab')
+export default Search
