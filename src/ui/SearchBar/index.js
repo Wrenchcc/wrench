@@ -23,7 +23,7 @@ const SearchBar = ({ placeholder, cancelButton, t }) => (
 )
 
 SearchBar.propTypes = {
-  placeholder: PropTypes.bool.isRequired,
+  placeholder: PropTypes.bool,
   cancelButton: PropTypes.bool,
 }
 

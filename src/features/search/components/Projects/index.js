@@ -37,6 +37,7 @@ class Projects extends PureComponent {
     )
   }
 
+  // TODO: Remove when have IDs
   render() {
     const {
       projects,
@@ -57,7 +58,7 @@ class Projects extends PureComponent {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
+        keyExtractor={(item, index) => item.node.id + index}
         renderItem={this.renderItem}
         paddingBottom={20}
         scrollRef={scrollRef}

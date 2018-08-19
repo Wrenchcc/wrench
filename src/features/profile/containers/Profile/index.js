@@ -67,6 +67,7 @@ class Profile extends Component {
     const emptyState = user && user.projectCount > 0 ? 'project' : 'post'
     const hasPosts = !!posts
 
+    // TODO: Remove when have IDs
     return (
       <InfiniteList
         scrollEnabled={hasPosts}
@@ -84,7 +85,7 @@ class Profile extends Component {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
+        keyExtractor={(item, index) => item.node.id + index}
         renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
           useNativeDriver: true,

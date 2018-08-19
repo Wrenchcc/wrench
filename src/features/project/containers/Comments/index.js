@@ -90,6 +90,7 @@ class Comments extends Component {
 
   renderItem = ({ item }) => <CommentItem item={item.node} onReply={this.onReply} />
 
+  // TODO: Remove when have IDs
   render() {
     const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
@@ -119,7 +120,7 @@ class Comments extends Component {
               paddingLeft: 0,
               paddingRight: 0,
             }}
-            keyExtractor={item => item.node.id}
+            keyExtractor={(item, index) => item.node.id + index}
             data={comments}
             refetch={refetch}
             fetchMore={fetchMore}

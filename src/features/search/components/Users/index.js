@@ -18,6 +18,7 @@ class Users extends PureComponent {
 
   renderItem = ({ item }) => <User data={item.node} />
 
+  // TODO: Remove when have IDs
   render() {
     const {
       users,
@@ -38,7 +39,7 @@ class Users extends PureComponent {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
+        keyExtractor={(item, index) => item.node.id + index}
         renderItem={this.renderItem}
         scrollRef={scrollRef}
       />

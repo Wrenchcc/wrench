@@ -102,6 +102,7 @@ class Project extends Component {
   render() {
     const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
+    // TODO: Remove when have IDs
     return (
       <Fragment>
         <InfiniteList
@@ -114,7 +115,7 @@ class Project extends Component {
           isRefetching={isRefetching}
           isFetching={isFetching}
           hasNextPage={hasNextPage}
-          keyExtractor={item => item.node.id}
+          keyExtractor={(item, index) => item.node.id + index}
           renderItem={this.renderItem}
           onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
             useNativeDriver: true,
