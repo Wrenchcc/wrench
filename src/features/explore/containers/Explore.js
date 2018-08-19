@@ -37,6 +37,7 @@ class Explore extends Component {
   render() {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
+    // TODO: Remove when have real IDs
     return (
       <InfiniteList
         scrollRef={ref => {
@@ -51,7 +52,7 @@ class Explore extends Component {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
+        keyExtractor={(item, index) => item.node.id + index}
         renderItem={this.renderItem}
       />
     )
