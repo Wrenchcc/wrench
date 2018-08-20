@@ -5,9 +5,7 @@ import withLocalization from 'i18n/withLocalization'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
 import Project from './Project'
-import { Base, NewProject, SPACER, BUTTON_HEIGHT } from './styles'
-
-const ITEM_HEIGHT = 65
+import { Base, Scroll, NewProject, SPACER, BUTTON_HEIGHT, ITEM_HEIGHT } from './styles'
 
 class SelectProject extends Component {
   static propTypes = {
@@ -60,7 +58,7 @@ class SelectProject extends Component {
         }}
       >
         <Base>
-          {this.renderProjects()}
+          <Scroll>{this.renderProjects()}</Scroll>
           <NewProject onPress={() => navigateToEditProject()}>
             <Text medium>{t('.create')}</Text>
           </NewProject>

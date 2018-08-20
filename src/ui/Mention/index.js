@@ -10,7 +10,6 @@ import { isIphone } from 'utils/platform'
 
 // And same offset on comments and posts
 const DEFAULT_OFFSET_BOTTOM = isIphone ? 345 : 122
-const ITEM_HEIGHT = 70
 
 const styles = {
   container: {
@@ -79,11 +78,6 @@ class Mention extends Component {
           keyExtractor={(item, index) => item.node.id + index}
           renderItem={this.renderItem}
           borderSeparator
-          getItemLayout={(data, index) => ({
-            length: ITEM_HEIGHT,
-            offset: ITEM_HEIGHT * index,
-            index,
-          })}
         />
       </View>
     )

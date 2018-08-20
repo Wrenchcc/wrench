@@ -11,16 +11,16 @@ class Facebook extends PureComponent {
     authenticateUser: PropTypes.func.isRequired,
   }
 
-  getAccessToken = async facebookResponse => {
-    await this.props.authenticateUser(facebookResponse.accessToken)
-  }
+  handleLoginManager = async () => {
+    const result = await LoginManager.logInWithReadPermissions(['public_profile'])
+    if (result.isCancelled) return
+    const facebookResponse = await AccessToken.getCurrentAccessToken().then(this.getAccessToken)
 
-  handleLoginManager = () => {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(result => {
-      if (!result.isCancelled) {
-        AccessToken.getCurrentAccessToken().then(this.getAccessToken)
-      }
-    })
+    try {
+      await this.props.authenticateUser(facebookResponse.accessToken)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   render = () => (
