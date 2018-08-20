@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Dimensions, FlatList } from 'react-native'
 import { omit } from 'ramda'
+import { compose } from 'react-apollo'
+import { editUser } from 'graphql/mutations/user/editUser'
 import withLocalization from 'i18n/withLocalization'
-import { navigateToFeed } from 'navigation'
 import { Header, Touchable, Text } from 'ui'
 import getCategories from 'utils/getCategories'
-import Content from '../../components/Content'
-import Footer from '../../components/Footer'
+import Content from 'features/signIn/components/Content'
+import Footer from 'features/signIn/components/Footer'
+
 import { Base, Cell, Image, Overlay } from './styles'
 
 const { width } = Dimensions.get('window')
@@ -22,14 +24,14 @@ class Onboarding extends Component {
 
   toggleSelection = item => {
     if (this.isAdded(item)) {
-      this.setState({ items: omit([item.id], this.state.items) })
+      this.setState(prevState => ({ items: omit([item.id], prevState.items) }))
     } else {
-      this.setState({
+      this.setState(prevState => ({
         items: {
-          ...this.state.items,
+          ...prevState.items,
           [item.id]: item,
         },
-      })
+      }))
     }
   }
 
@@ -39,11 +41,20 @@ class Onboarding extends Component {
 
   isAdded = item => this.state.items[item.id]
 
-  headerRight = () => this.isComplete() && (
-      <Text color="white" medium opacity={1} onPress={() => navigateToFeed()}>
+  headerRight = () => {
+    if (!this.isComplete()) return null
+
+    return (
+      <Text
+        color="white"
+        medium
+        opacity={1}
+        onPress={() => this.props.editUser({ interestedIn: { id: '123' } })}
+      >
         {this.props.t('.next')}
       </Text>
-  )
+    )
+  }
 
   renderItem = ({ item }) => (
     <Cell key={item.id}>
@@ -72,4 +83,4 @@ class Onboarding extends Component {
   )
 }
 
-export default withLocalization(Onboarding, 'Onboarding')
+export default compose(editUser)(withLocalization(Onboarding, 'Onboarding'))

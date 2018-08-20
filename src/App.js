@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import codePush from 'react-native-code-push'
+import { pathOr } from 'ramda'
 import { ApolloProvider, Query } from 'react-apollo'
 import createClient from 'graphql/createClient'
 import SplashScreen from 'react-native-splash-screen'
 import { checkFrequency } from 'utils/codePush'
 import AppNavigator from 'navigation/AppNavigator'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
+import Onboarding from 'features/signIn/containers/Onboarding'
 
 // TODO: Remove
 console.disableYellowBox = true
@@ -42,7 +44,12 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
-          {({ data }) => <AppNavigator authenticated={!!data.currentUser} />}
+          {({ data }) => {
+            if (!pathOr(false, ['currentUser', 'interestedIn'], data)) {
+              return <Onboarding />
+            }
+            return <AppNavigator authenticated={!!data.currentUser} />
+          }}
         </Query>
       </ApolloProvider>
     )

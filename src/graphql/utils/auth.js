@@ -2,7 +2,7 @@ import { setItem, getItem, removeItem } from 'utils/storage'
 import { path } from 'ramda'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 
-const SCHEMA_VERSION = 'v1'
+const SCHEMA_VERSION = 'v10'
 const STORAGE_KEY = `@wrench:user:${SCHEMA_VERSION}`
 
 export const setAuthenticadedUser = data => setItem(STORAGE_KEY, data)

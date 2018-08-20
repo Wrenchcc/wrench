@@ -2,26 +2,26 @@ import gql from 'graphql-tag'
 import { pathOr } from 'ramda'
 import { graphql } from 'react-apollo'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
-import currentUserInfoFragment from 'graphql/fragments/user/currentUserInfo'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 
 export const getCurrentUserQuery = gql`
   query getCurrentUser {
     currentUser {
-      ...currentUserInfo
+      ...userInfo
     }
   }
-  ${currentUserInfoFragment}
+  ${userInfoFragment}
 `
 
 export const getCurrentUserProfileQuery = gql`
   query getCurrentUserProfile($after: String) {
     user: currentUser {
-      ...currentUserInfo
+      ...userInfo
       ...userPostsConnection
     }
   }
-  ${currentUserInfoFragment}
+  ${userInfoFragment}
   ${userPostsConnectionFragment}
 `
 
