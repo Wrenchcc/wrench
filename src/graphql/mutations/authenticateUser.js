@@ -24,7 +24,7 @@ const authenticateUserOptions = {
     authenticateUser: facebookToken => mutate({
       variables: { facebookToken },
       update: (store, { data: { authenticateUser } }) => {
-        setAuthenticadedUser(authenticateUser)
+        // setAuthenticadedUser(authenticateUser)
 
         store.writeQuery({
           query: getCurrentUserQuery,

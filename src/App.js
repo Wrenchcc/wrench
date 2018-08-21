@@ -45,7 +45,7 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
           {({ data }) => {
-            if (!pathOr(false, ['currentUser', 'interestedIn'], data)) {
+            if (data.currentUser && !pathOr(false, ['currentUser', 'interestedIn'], data)) {
               return <Onboarding />
             }
             return <AppNavigator authenticated={!!data.currentUser} />
