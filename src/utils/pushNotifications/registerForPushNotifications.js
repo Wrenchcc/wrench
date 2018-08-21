@@ -1,12 +1,12 @@
-import firebase from 'react-native-firebase'
+import { messaging } from 'react-native-firebase'
 
 export default function requestNotificationToken() {
   if (__DEV__) return
 
-  const messaging = firebase.messaging()
+  const firebase = messaging()
 
-  messaging.requestPermission().then(() => {
+  firebase.requestPermission().then(() => {
     // TODO: Send away!
-    messaging.getToken().then(token => console.log(token))
+    firebase.getToken().then(token => console.log(token))
   })
 }
