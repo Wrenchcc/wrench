@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Dimensions, FlatList } from 'react-native'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
+import withStatusBar from 'navigation/utils/withStatusBar'
 import { editUser } from 'graphql/mutations/user/editUser'
 import withLocalization from 'i18n/withLocalization'
 import { Header, Touchable, Text } from 'ui'
@@ -83,4 +84,6 @@ class Onboarding extends Component {
   )
 }
 
-export default compose(editUser)(withLocalization(Onboarding, 'Onboarding'))
+export default compose(editUser)(
+  withStatusBar(withLocalization(Onboarding, 'Onboarding'), { barStyle: 'light-content' })
+)

@@ -2,15 +2,15 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { setAuthenticadedUser } from 'graphql/utils/auth'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
-import userInfoFragment from 'graphql/fragments/user/userInfo'
+import currentUserInfoFragment from 'graphql/fragments/user/currentUserInfo'
 
 const editUserMutation = gql`
   mutation editUser($input: EditUserInput!) {
     editUser(input: $input) {
-      ...userInfo
+      ...currentUserInfo
     }
   }
-  ${userInfoFragment}
+  ${currentUserInfoFragment}
 `
 
 const editUserOptions = {

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  fragment userInfo on User {
+  fragment currentUserInfo on User {
     id
     fullName
     firstName
@@ -9,5 +9,8 @@ export default gql`
     username
     avatarUrl
     projectCount
+    interestedIn {
+      id
+    }
   }
 `
