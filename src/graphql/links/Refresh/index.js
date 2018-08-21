@@ -1,7 +1,7 @@
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
-import { refreshTokenMutation } from 'graphql/mutations/refreshToken'
+import { refreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getToken } from 'graphql/utils/auth'
 
 // TODO: Sing out on failure

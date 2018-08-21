@@ -13,9 +13,9 @@ export const getCurrentUserProjectsQuery = gql`
 `
 
 const getCurrentUserProjectsOptions = {
-  options: () => ({
-    fetchPolicy: 'cache-only',
-  }),
+  // options: () => ({
+  //   fetchPolicy: 'cache-only',
+  // }),
   props: ({ data }) => ({
     projects: pathOr(null, ['currentUser', 'projects', 'edges'], data),
   }),

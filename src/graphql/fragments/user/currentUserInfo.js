@@ -12,19 +12,5 @@ export default gql`
     interestedIn {
       id
     }
-    projectsConnection {
-      edges {
-        node {
-          id
-          imagesConnection(first: 1) {
-            edges {
-              node {
-                uri
-              }
-            }
-          }
-        }
-      }
-    }
   }
 `
