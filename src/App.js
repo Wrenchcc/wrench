@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   onCompleted() {
-    setTimeout(SplashScreen.hide, 500)
+    setTimeout(SplashScreen.hide, 300)
   }
 
   render() {

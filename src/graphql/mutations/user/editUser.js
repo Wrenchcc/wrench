@@ -20,13 +20,12 @@ const editUserOptions = {
         input,
       },
       update: (store, { data }) => {
-        setAuthenticadedUser({ user: data.editUser })
+        setAuthenticadedUser(data.editUser)
+
         store.writeQuery({
           query: getCurrentUserQuery,
           data: {
-            currentUser: {
-              ...data.editUser,
-            },
+            currentUser: data.editUser,
           },
         })
       },
