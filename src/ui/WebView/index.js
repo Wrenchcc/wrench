@@ -3,12 +3,7 @@ import PropTypes from 'prop-types'
 import { View, BackHandler, WebView as RNWebView } from 'react-native'
 import url from 'url'
 import { equals, reject } from 'ramda'
-import {
-  getVersion,
-  getApplicationName,
-  getBuildNumber,
-  getSystemName,
-} from 'react-native-device-info'
+import DeviceInfo from 'react-native-device-info'
 import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
 import { Header, ProgressBar, Text, Icon, Touchable, Share } from 'ui'
@@ -66,11 +61,11 @@ class WebView extends PureComponent {
   }
 
   setCustomHeaders() {
-    const appName = getApplicationName()
+    const appName = DeviceInfo.getApplicationName()
 
     return {
-      [`X-${appName}-Version`]: `v${getVersion()}.${getBuildNumber()}`,
-      [`X-${appName}-Type`]: `${appName}-${getSystemName()}`,
+      [`X-${appName}-Version`]: `v${DeviceInfo.getVersion()}.${DeviceInfo.getBuildNumber()}`,
+      [`X-${appName}-Type`]: `${appName}-${DeviceInfo.getSystemName()}`,
     }
   }
 

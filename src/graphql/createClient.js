@@ -4,15 +4,10 @@ import { ApolloLink } from 'apollo-link'
 import HttpLink from './links/Http'
 import AuthLink from './links/Auth'
 import RefreshLink from './links/Refresh'
-import { rehydrateAuthenticadedUser, removeAuthenticadedUser } from './utils/auth'
 
 export let client = null
 
-export const signOut = async () => {
-  await client.resetStore()
-}
-
-export default async function createClient() {
+export default () => {
   if (client) return client
 
   const cache = new InMemoryCache()
@@ -20,12 +15,6 @@ export default async function createClient() {
   client = new ApolloClient({
     cache,
     link: ApolloLink.from([AuthLink, RefreshLink, HttpLink]),
-  })
-
-  await rehydrateAuthenticadedUser(client)
-
-  client.onResetStore(() => {
-    removeAuthenticadedUser()
   })
 
   return client

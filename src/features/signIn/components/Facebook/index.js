@@ -17,7 +17,8 @@ class Facebook extends PureComponent {
     const facebookResponse = await AccessToken.getCurrentAccessToken().then(this.getAccessToken)
 
     try {
-      await this.props.authenticateUser(facebookResponse.accessToken)
+      const tokens = await this.props.authenticateUser(facebookResponse.accessToken)
+      this.props.changeLoginState(true)
     } catch (err) {
       console.log(err)
     }

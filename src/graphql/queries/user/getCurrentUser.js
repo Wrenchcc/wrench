@@ -7,7 +7,7 @@ import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 
 export const getCurrentUserQuery = gql`
   query getCurrentUser {
-    currentUser {
+    user: currentUser {
       ...currentUserInfo
     }
   }

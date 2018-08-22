@@ -5,7 +5,8 @@ import video from 'videos/splash.mp4'
 import Facebook from '../../components/Facebook'
 import { Base, Inner, Content, Video, Icon, Description, Headline, Legal } from './styles'
 
-const SignIn = ({ t }) => (
+// TODO: Add AuthStateHandler Provider
+const SignIn = ({ t, screenProps }) => (
   <Base>
     <Video source={video} muted resizeMode="cover" repeat paused={__DEV__} />
     <Inner>
@@ -19,7 +20,7 @@ const SignIn = ({ t }) => (
           {t('.description')}
         </Description>
       </Content>
-      <Facebook />
+      <Facebook changeLoginState={screenProps.changeLoginState} />
       <Legal />
     </Inner>
   </Base>
