@@ -1,5 +1,6 @@
 import gql from 'graphql-tag'
 import repliesConnectionFragment from 'graphql/fragments/comment/repliesConnection'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export default gql`
   fragment commentInfo on CommentConnection {
@@ -13,15 +14,12 @@ export default gql`
         text
         createdAt
         user {
-          fullName
-          firstName
-          lastName
-          username
-          avatarUrl
+          ...userInfo
         }
         ...repliesConnection
       }
     }
   }
+  ${userInfoFragment}
   ${repliesConnectionFragment}
 `

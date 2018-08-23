@@ -37,7 +37,9 @@ export default class Footer extends Component {
     this.slideOut()
   }
 
-  toggleActionSheet = () => this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+  toggleActionSheet = () => {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+  }
 
   slideIn() {
     Animated.spring(this.state.transformY, {

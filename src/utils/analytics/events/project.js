@@ -9,7 +9,8 @@ export const PROJECT_DELETED_FAILED = 'project_deleted_failed'
 export const PROJECT_EDITED = 'project_edited'
 export const PROJECT_EDITED_FAILED = 'project_edited_failed'
 
-export const PROJECT_SHARED = 'project_shared'
+export const PROJECT_SHARE_OPEN = 'project_share_open'
+export const PROJECT_SHARE_CLOSED = 'project_share_closed'
 
 export const PROJECT_FOLLOWED = 'project_followed'
 export const PROJECT_UNFOLLOWED = 'project_unfollowed'
