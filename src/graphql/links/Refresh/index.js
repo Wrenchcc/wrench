@@ -2,13 +2,13 @@ import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
 import { refreshTokenMutation } from 'graphql/mutations/user/refreshToken'
-import { getToken } from 'graphql/utils/auth'
+import { getTokens } from 'graphql/utils/auth'
 
 // TODO: Sing out on failure
 export default onError(({ graphQLErrors, operation, forward }) => {
   const { headers } = operation.getContext()
   const fetchNewAccessToken = async observer => {
-    const refreshToken = await getToken('refreshToken')
+    const refreshToken = await getTokens('refreshToken')
 
     return client
       .mutate({

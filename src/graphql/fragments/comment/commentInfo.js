@@ -14,6 +14,8 @@ export default gql`
         createdAt
         user {
           fullName
+          firstName
+          lastName
           username
           avatarUrl
         }

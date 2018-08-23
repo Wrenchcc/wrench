@@ -5,12 +5,9 @@ import SplashScreen from 'react-native-splash-screen'
 import { checkFrequency } from 'utils/codePush'
 import { AuthNavigator, AppNavigator } from 'navigation'
 import createClient from 'graphql/createClient'
-import { getToken } from 'graphql/utils/auth'
+import { getTokens } from 'graphql/utils/auth'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
-
-// TODO: Remove
-console.disableYellowBox = true
 
 if (__DEV__) {
   // Setting `global.XMLHttpRequest` will enable showing Network requests in React Native Debugger
@@ -25,12 +22,12 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const token = await getToken()
+    const tokens = await getTokens()
 
     SplashScreen.hide()
 
     this.setState({
-      loggedIn: !!token,
+      loggedIn: !!tokens,
       appLoading: false,
     })
   }

@@ -3,7 +3,7 @@ import { COLORS, FONTS } from 'ui/constants'
 
 // Actions
 const handleUrlPress = url => navigateToWebView({ url })
-const handleNamePress = () => navigateToProfile({ user: null })
+const handleNamePress = username => console.log('here') || navigateToProfile({ slug: username })
 
 const styles = {
   link: {
@@ -27,23 +27,9 @@ export default [
     },
   },
   {
-    pattern: /\[(@[^:]+):([^\]]+)\]/i,
+    pattern: /\B@[a-z0-9_-]+/gi,
     style: styles.link,
     onPress: handleNamePress,
-    renderText: matchingString => {
-      const pattern = /\[(@[^:]+):([^\]]+)\]/i
-      const match = matchingString.match(pattern)
-      return match[1]
-    },
-  },
-  {
-    pattern: /\[([^:]+):([^\]]+)\]/i,
-    style: styles.username,
-    onPress: handleNamePress,
-    renderText: matchingString => {
-      const pattern = /\[([^:]+):([^\]]+)\]/i
-      const match = matchingString.match(pattern)
-      return match[1]
-    },
+    renderText: username => username,
   },
 ]

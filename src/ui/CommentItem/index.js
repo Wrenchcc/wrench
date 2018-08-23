@@ -7,6 +7,7 @@ import { Base, Content, Row, Reply } from './styles'
 
 // TODO: Refactor and fix date
 // TODO: Pass correct data to profile
+// TODO: Make user in comment clickalbe (flex problem)
 const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null }) => {
   const animatedValue = new Animated.Value(0)
 
@@ -36,8 +37,11 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
           onPress={() => navigateToProfile({ user })}
         />
         <Content>
-          <Row>
-            <Text fontSize={15}>{`[${user.fullName}:${user.id}] ${text}`}</Text>
+          <Row style={{ flexDirection: 'column' }}>
+            <Text fontSize={15} bold onPress={() => navigateToProfile({ user })}>
+              {`${user.fullName} `}
+            </Text>
+            <Text fontSize={15}>{text}</Text>
           </Row>
           <Row>
             <TimeAgo date={createdAt} />
@@ -51,16 +55,15 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
   )
 }
 
-const CommentItem = props =>
-  props.item.repliesConnection ? (
+const CommentItem = props => props.item.repliesConnection ? (
     <Fragment>
       <Item {...props.item} onReply={props.onReply} />
       {props.item.repliesConnection.edges.map(({ node }) => (
         <Item key={node.id} isReply {...node} id={node.id} onReply={props.onReply} />
       ))}
     </Fragment>
-  ) : (
+) : (
     <Item {...props.item} onReply={props.onReply} />
-  )
+)
 
 export default CommentItem
