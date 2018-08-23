@@ -1,6 +1,7 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
+import { track, events } from 'utils/analytics'
 import HttpLink from './links/Http'
 import AuthLink from './links/Auth'
 import RefreshLink from './links/Refresh'
@@ -18,7 +19,10 @@ export default () => {
     link: ApolloLink.from([AuthLink, RefreshLink, HttpLink]),
   })
 
-  client.onResetStore(removeTokens)
+  client.onResetStore(() => {
+    track(events.USER_SIGNED_OUT)
+    removeTokens()
+  })
 
   return client
 }

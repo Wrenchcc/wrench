@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Dimensions, FlatList } from 'react-native'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
+import { track, events } from 'utils/analytics'
 import withStatusBar from 'navigation/utils/withStatusBar'
 import { editUser } from 'graphql/mutations/user/editUser'
 import withLocalization from 'i18n/withLocalization'
@@ -23,6 +24,10 @@ class Onboarding extends Component {
     items: {},
   }
 
+  componentDidMount() {
+    track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
+  }
+
   toggleSelection = item => {
     if (this.isAdded(item)) {
       this.setState(prevState => ({ items: omit([item.id], prevState.items) }))
@@ -36,22 +41,28 @@ class Onboarding extends Component {
     }
   }
 
-  isComplete = () => Object.keys(this.state.items).length >= MIN_ITEMS
+  isComplete = () => {
+    if (Object.keys(this.state.items).length >= MIN_ITEMS) {
+      track(events.USER_ONBOARDING_CATEGORIES_SELECTED)
+      return true
+    }
+    return false
+  }
 
   progress = () => (Object.keys(this.state.items).length / 3) * 100
 
   isAdded = item => this.state.items[item.id]
 
+  handleSubmit = () => {
+    track(events.USER_ONBOARDING_CATEGORIES_DONE)
+    this.props.editUser({ interestedIn: { id: '123' } })
+  }
+
   headerRight = () => {
     if (!this.isComplete()) return null
 
     return (
-      <Text
-        color="white"
-        medium
-        opacity={1}
-        onPress={() => this.props.editUser({ interestedIn: { id: '123' } })}
-      >
+      <Text color="white" medium opacity={1} onPress={this.handleSubmit}>
         {this.props.t('.next')}
       </Text>
     )

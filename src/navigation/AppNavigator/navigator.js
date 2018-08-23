@@ -1,6 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { map } from 'ramda'
+import { setCurrentScreen } from 'utils/analytics'
 import { COLORS } from 'ui/constants'
 import { TabBarComponent, SearchBar, Add } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
@@ -35,6 +36,7 @@ const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
 // Navigation Options on TabNavigator
 TabNavigator.navigationOptions = ({ navigation }) => {
   const focusedRouteName = navigation.state.routes[navigation.state.index].routeName
+  setCurrentScreen(focusedRouteName)
 
   if (focusedRouteName === PROFILE_ROUTE_NAMES.ME) {
     return {
