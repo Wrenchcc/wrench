@@ -1,59 +1,42 @@
-import React, { Component } from 'react'
+import React from 'react'
 import codePush from 'react-native-code-push'
-import { pathOr } from 'ramda'
 import { ApolloProvider, Query } from 'react-apollo'
-import createClient from 'graphql/createClient'
-import SplashScreen from 'react-native-splash-screen'
 import { checkFrequency } from 'utils/codePush'
-import AppNavigator from 'navigation/AppNavigator'
+import { AuthNavigator, AppNavigator } from 'navigation'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
-
-// TODO: Remove
-console.disableYellowBox = true
+import { AppStateProvider, AppStateConsumer } from './AppState'
 
 if (__DEV__) {
   // Setting `global.XMLHttpRequest` will enable showing Network requests in React Native Debugger
   global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest
 }
 
-class App extends Component {
-  state = {
-    client: null,
-    appLoading: true,
-  }
+const App = () => (
+  <AppStateProvider>
+    <AppStateConsumer>
+      {({ appLoading, loggedIn, apolloClient }) => {
+        if (appLoading) return null
 
-  async componentDidMount() {
-    const client = await createClient()
-
-    this.setState({
-      client,
-      appLoading: false,
-    })
-  }
-
-  onCompleted() {
-    setTimeout(SplashScreen.hide, 300)
-  }
-
-  render() {
-    const { appLoading, client } = this.state
-
-    if (appLoading) return null
-
-    return (
-      <ApolloProvider client={client}>
-        <Query query={getCurrentUserQuery} onCompleted={this.onCompleted} fetchPolicy="cache-only">
-          {({ data }) => {
-            if (data.currentUser && !pathOr(false, ['currentUser', 'interestedIn'], data)) {
-              return <Onboarding />
-            }
-            return <AppNavigator authenticated={!!data.currentUser} />
-          }}
-        </Query>
-      </ApolloProvider>
-    )
-  }
-}
+        return (
+          <ApolloProvider client={apolloClient}>
+            {!loggedIn ? (
+              <AuthNavigator />
+            ) : (
+              <Query query={getCurrentUserQuery} skip={!loggedIn}>
+                {({ data: { user }, networkStatus }) => {
+                  if (networkStatus === 1 || networkStatus === 2) return null
+                  if (!user) return <AuthNavigator />
+                  if (!user.interestedIn) return <Onboarding />
+                  return <AppNavigator />
+                }}
+              </Query>
+            )}
+          </ApolloProvider>
+        )
+      }}
+    </AppStateConsumer>
+  </AppStateProvider>
+)
 
 export default codePush({ checkFrequency })(App)

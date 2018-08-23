@@ -1,6 +1,9 @@
 import { analytics } from 'react-native-firebase'
 
-analytics.setAnalyticsCollectionEnabled(true)
+export { events } from './events'
 
-export const track = (event, params) => analytics.logEvent(event, params)
-export const setUserId = id => analytics.setUserId(id)
+analytics().setAnalyticsCollectionEnabled(true)
+
+export const setCurrentScreen = screenName => analytics().setCurrentScreen(screenName)
+export const track = (event, params = {}) => analytics().logEvent(event, params)
+export const setUserId = id => analytics().setUserId(id)

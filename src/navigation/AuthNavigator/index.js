@@ -1,14 +1,18 @@
-import { createStackNavigator } from 'react-navigation'
-import { map } from 'ramda'
-import { COLORS } from 'ui/constants'
-import { toStackRoute } from '../options'
-import { authRoutes } from '../routes'
+import React, { PureComponent } from 'react'
+import { setNavigationRef } from 'navigation'
+import { Gateway, Zoomable } from 'ui'
+import Navigator from './navigator'
 
-const AuthNavigator = createStackNavigator(map(toStackRoute, authRoutes), {
-  headerMode: 'screen',
-  cardStyle: {
-    backgroundColor: COLORS.WHITE,
-  },
-})
-
-export default AuthNavigator
+// TODO: Fix Gateway and Zoomable
+export default class AppNavigator extends PureComponent {
+  render() {
+    const { changeLoginState } = this.props
+    return (
+      <Gateway.Provider>
+        <Zoomable.Provider>
+          <Navigator ref={ref => setNavigationRef(ref)} screenProps={{ changeLoginState }} />
+        </Zoomable.Provider>
+      </Gateway.Provider>
+    )
+  }
+}

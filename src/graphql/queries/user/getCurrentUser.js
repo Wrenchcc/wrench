@@ -4,14 +4,17 @@ import { graphql } from 'react-apollo'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import currentUserInfoFragment from 'graphql/fragments/user/currentUserInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
+import projectsConnectionFragment from 'graphql/fragments/user/projectsConnection'
 
 export const getCurrentUserQuery = gql`
   query getCurrentUser {
-    currentUser {
+    user: currentUser {
       ...currentUserInfo
+      ...userProjectsConnection
     }
   }
   ${currentUserInfoFragment}
+  ${projectsConnectionFragment}
 `
 
 export const getCurrentUserProfileQuery = gql`

@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export default gql`
   fragment commentInfoSmall on CommentConnection {
@@ -8,9 +9,10 @@ export default gql`
         id
         text
         user {
-          fullName
+          ...userInfo
         }
       }
     }
   }
+  ${userInfoFragment}
 `

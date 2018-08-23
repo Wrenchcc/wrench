@@ -84,18 +84,16 @@ class Project extends Component {
   )
 
   renderFooter = () => {
-    const { isFetching, project } = this.props
+    const { project } = this.props
 
     return (
-      !isFetching && (
-        <Footer
-          translateY={this.footerY}
-          name={project.title}
-          id={project.id}
-          following={project.projectPermissions.isFollower}
-          onFollowPress={this.toggleFollow}
-        />
-      )
+      <Footer
+        translateY={this.footerY}
+        name={project.title}
+        id={project.id}
+        following={project.projectPermissions.isFollower}
+        onFollowPress={this.toggleFollow}
+      />
     )
   }
 
