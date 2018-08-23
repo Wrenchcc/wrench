@@ -4,6 +4,7 @@ import Navigator from './navigator'
 
 export default class TabNavigator extends PureComponent {
   render() {
-    return <Navigator ref={ref => setNavigationRef(ref)} />
+    const { changeLoginState } = this.props
+    return <Navigator ref={ref => setNavigationRef(ref)} screenProps={{ changeLoginState }} />
   }
 }

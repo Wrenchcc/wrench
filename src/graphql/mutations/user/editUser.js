@@ -1,7 +1,5 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { setAuthenticadedUser } from 'graphql/utils/auth'
-import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import currentUserInfoFragment from 'graphql/fragments/user/currentUserInfo'
 
 const editUserMutation = gql`
@@ -18,16 +16,6 @@ const editUserOptions = {
     editUser: input => mutate({
       variables: {
         input,
-      },
-      update: (store, { data }) => {
-        setAuthenticadedUser(data.editUser)
-
-        store.writeQuery({
-          query: getCurrentUserQuery,
-          data: {
-            currentUser: data.editUser,
-          },
-        })
       },
     }),
   }),

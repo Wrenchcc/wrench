@@ -4,6 +4,7 @@ import { ApolloLink } from 'apollo-link'
 import HttpLink from './links/Http'
 import AuthLink from './links/Auth'
 import RefreshLink from './links/Refresh'
+import { removeTokens } from './utils/auth'
 
 export let client = null
 
@@ -16,6 +17,8 @@ export default () => {
     cache,
     link: ApolloLink.from([AuthLink, RefreshLink, HttpLink]),
   })
+
+  client.onResetStore(removeTokens)
 
   return client
 }

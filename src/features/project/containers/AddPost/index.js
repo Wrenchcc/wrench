@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { KeyboardAvoidingView, Alert } from 'react-native'
 import { pathOr } from 'ramda'
 import Swiper from 'react-native-swiper'
+import { compose } from 'react-apollo'
+import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
@@ -165,4 +167,4 @@ class AddPost extends Component {
   }
 }
 
-export default withLocalization(AddPost, 'AddPost')
+export default compose(getCurrentUserProjects)(withLocalization(AddPost, 'AddPost'))

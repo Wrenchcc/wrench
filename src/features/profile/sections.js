@@ -2,7 +2,6 @@ import React from 'react'
 import NativeShare from 'react-native-share'
 import { mergeAll, pathOr } from 'ramda'
 import { t } from 'i18n'
-import { signOut } from 'graphql/createClient'
 import { navigate, navigateToWebView } from 'navigation'
 import openLink from 'utils/openLink'
 import { warn } from 'utils/logger'
@@ -10,7 +9,7 @@ import { HeaderTitle } from 'ui'
 
 const WEBSITE_URL = 'https://wrench.cc'
 
-const sections = {
+const sections = (changeLoginState = false) => ({
   settings: [
     {
       titleKey: 'invite',
@@ -62,7 +61,7 @@ const sections = {
         },
         {
           titleKey: 'logout',
-          onPress: () => signOut(),
+          onPress: () => changeLoginState(false),
           last: true,
         },
       ],
@@ -160,12 +159,12 @@ const sections = {
       ],
     },
   ],
-}
+})
 
 export function mapRouteForSection(component) {
   return mergeAll(
-    Object.keys(sections).map(section => {
-      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], sections[section])}`)
+    Object.keys(sections()).map(section => {
+      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], sections()[section])}`)
       return {
         [section]: {
           component,

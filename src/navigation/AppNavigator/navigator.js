@@ -6,9 +6,9 @@ import { TabBarComponent, SearchBar, Add } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
 import { ROUTE_NAMES as PROFILE_ROUTE_NAMES } from 'features/profile/constants'
 import { ROUTE_NAMES as SEARCH_ROUTE_NAMES } from 'features/search/constants'
-import { toTabRoute, toModalRoute } from '../options'
+import { toTabRoute, toModalRoute, toStackRoute } from '../options'
 import { TAB_HEIGHT } from '../constants'
-import { tabRoutes, modalRoutes } from '../routes'
+import { tabRoutes, modalRoutes, stackRoutes } from '../routes'
 import styles from '../styles'
 
 const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
@@ -58,12 +58,29 @@ TabNavigator.navigationOptions = ({ navigation }) => {
   }
 }
 
-export default createStackNavigator(
+const AppNavigator = createStackNavigator(
   {
-    TabNavigator: {
+    AppNavigator: {
       screen: TabNavigator,
     },
+    ...map(toStackRoute, stackRoutes),
+  },
+  {
+    headerLayoutPreset: 'center',
+    cardStyle: {
+      backgroundColor: COLORS.WHITE,
+    },
+  }
+)
 
+export default createStackNavigator(
+  {
+    AppNavigator: {
+      screen: AppNavigator,
+      navigationOptions: {
+        header: null,
+      },
+    },
     ...map(toModalRoute, modalRoutes),
   },
   {

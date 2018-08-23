@@ -29,7 +29,7 @@ class Settings extends PureComponent {
         stickySectionHeadersEnabled={false}
         renderSectionHeader={this.renderSectionHeader}
         renderItem={this.renderItem}
-        sections={sections[navigation.state.routeName]}
+        sections={sections(this.props.screenProps.changeLoginState)[navigation.state.routeName]}
         keyExtractor={(item, index) => item + index}
         ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
       />

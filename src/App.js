@@ -3,7 +3,7 @@ import codePush from 'react-native-code-push'
 import { ApolloProvider, Query } from 'react-apollo'
 import SplashScreen from 'react-native-splash-screen'
 import { checkFrequency } from 'utils/codePush'
-import { AuthNavigator, TabNavigator } from 'navigation'
+import { AuthNavigator, AppNavigator } from 'navigation'
 import createClient from 'graphql/createClient'
 import { getToken } from 'graphql/utils/auth'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
@@ -36,12 +36,12 @@ class App extends Component {
   }
 
   handleLoginState = loggedIn => {
+    if (!loggedIn) {
+      this.state.client.resetStore()
+    }
     this.setState({ loggedIn })
   }
 
-  // TODO: Change to Provider for authentication
-  // check and change state instead of screenprops
-  // Pass new tokens to apollo client
   render() {
     const { appLoading, client, loggedIn } = this.state
 
@@ -49,14 +49,18 @@ class App extends Component {
 
     return (
       <ApolloProvider client={client}>
-        <Query query={getCurrentUserQuery} skip={!loggedIn}>
-          {({ data: { user }, networkStatus }) => {
-            if (networkStatus === 1 || networkStatus === 2) return null
-            if (!user) return <AuthNavigator changeLoginState={this.handleLoginState} />
-            if (!user.interestedIn) return <Onboarding />
-            return <TabNavigator changeLoginState={this.handleLoginState} />
-          }}
-        </Query>
+        {!loggedIn ? (
+          <AuthNavigator changeLoginState={this.handleLoginState} />
+        ) : (
+          <Query query={getCurrentUserQuery} skip={!loggedIn}>
+            {({ data: { user }, networkStatus }) => {
+              if (networkStatus === 1 || networkStatus === 2) return null
+              if (!user) return <AuthNavigator changeLoginState={this.handleLoginState} />
+              if (!user.interestedIn) return <Onboarding />
+              return <AppNavigator changeLoginState={this.handleLoginState} />
+            }}
+          </Query>
+        )}
       </ApolloProvider>
     )
   }
