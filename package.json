@@ -38,10 +38,10 @@
     "react-native": "^0.56.0",
     "react-native-actionsheet": "^2.4.2",
     "react-native-camera": "^1.2.0",
-    "react-native-code-push": "^5.4.1",
+    "react-native-code-push": "^5.4.2",
     "react-native-config": "^0.11.5",
     "react-native-device-info": "0.22.5",
-    "react-native-fast-image": "^4.0.14",
+    "react-native-fast-image": "^5.0.3",
     "react-native-fbsdk": "^0.7.0",
     "react-native-firebase": "^5.0.0-rc1",
     "react-native-gesture-handler": "^1.0.7",
@@ -56,7 +56,7 @@
     "react-native-tab-view": "^1.0.2",
     "react-native-video": "3.2.0",
     "react-navigation": "2.11.2",
-    "styled-components": "^3.4.4",
+    "styled-components": "^3.4.5",
     "url": "^0.11.0"
   },
   "devDependencies": {

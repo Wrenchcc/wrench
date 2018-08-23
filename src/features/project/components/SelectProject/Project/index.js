@@ -25,9 +25,9 @@ const Project = ({ id, images, title, followers, onPress, selected }) => {
 
 Project.propTypes = {
   id: PropTypes.string.isRequired,
-  images: PropTypes.array,
+  images: PropTypes.object,
   title: PropTypes.string.isRequired,
-  followers: PropTypes.number.isRequired,
+  followers: PropTypes.object.isRequired,
   onPress: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired,
 }

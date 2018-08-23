@@ -2,12 +2,14 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
+import { track, events } from 'utils/analytics'
 import { authenticateUser } from 'graphql/mutations/user/authenticateUser'
 import withLocalization from 'i18n/withLocalization'
 import { Button, Text } from './styled'
 
 class Facebook extends PureComponent {
   static propTypes = {
+    handleLoginState: PropTypes.func.isRequired,
     authenticateUser: PropTypes.func.isRequired,
   }
 
@@ -17,20 +19,23 @@ class Facebook extends PureComponent {
     const facebookResponse = await AccessToken.getCurrentAccessToken().then(this.getAccessToken)
 
     try {
-      const tokens = await this.props.authenticateUser(facebookResponse.accessToken)
-      this.props.changeLoginState(true)
+      await this.props.authenticateUser(facebookResponse.accessToken)
+      this.props.handleLoginState(true)
+      track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
     } catch (err) {
-      console.log(err)
+      track(events.USER_SIGNED_IN_FACEBOOK_FAILED)
     }
   }
 
-  render = () => (
-    <Button onPress={this.handleLoginManager}>
-      <Text white medium>
-        {this.props.t('.button')}
-      </Text>
-    </Button>
-  )
+  render() {
+    return (
+      <Button onPress={this.handleLoginManager}>
+        <Text white medium>
+          {this.props.t('.button')}
+        </Text>
+      </Button>
+    )
+  }
 }
 
 export default compose(authenticateUser)(withLocalization(Facebook, 'Facebook'))

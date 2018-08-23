@@ -47,7 +47,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
-      if (err.message === 'jwtExpired') {
+      if (err.message === 'tokenExpired') {
         return new Observable(fetchNewAccessToken)
       }
     }
