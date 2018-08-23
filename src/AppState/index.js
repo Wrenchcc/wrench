@@ -4,7 +4,7 @@ import SplashScreen from 'react-native-splash-screen'
 import createClient from 'graphql/createClient'
 import { getTokens } from 'graphql/utils/auth'
 
-const AppState = React.createContext()
+const { Provider, Consumer } = React.createContext()
 
 export class AppStateProvider extends PureComponent {
   static propTypes = {
@@ -12,7 +12,7 @@ export class AppStateProvider extends PureComponent {
   }
 
   state = {
-    apolloClient: createClient(),
+    client: createClient(),
     loggedIn: false,
     appLoading: true,
   }
@@ -30,7 +30,7 @@ export class AppStateProvider extends PureComponent {
 
   handleLoginState = loggedIn => {
     if (!loggedIn) {
-      this.state.apolloClient.resetStore()
+      this.state.client.resetStore()
     }
 
     this.setState({
@@ -38,18 +38,16 @@ export class AppStateProvider extends PureComponent {
     })
   }
 
-  render() {
-    return (
-      <AppState.Provider
-        value={{
-          handleLoginState: this.handleLoginState,
-          ...this.state,
-        }}
-      >
-        {this.props.children}
-      </AppState.Provider>
-    )
-  }
+  render = () => (
+    <Provider
+      value={{
+        handleLoginState: this.handleLoginState,
+        ...this.state,
+      }}
+    >
+      {this.props.children}
+    </Provider>
+  )
 }
 
-export const AppStateConsumer = AppState.Consumer
+export const AppStateConsumer = Consumer

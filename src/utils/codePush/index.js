@@ -1,5 +1,5 @@
-import codePush from 'react-native-code-push'
+import CodePush from 'react-native-code-push'
 
-export const checkFrequency = __DEV__
-  ? codePush.CheckFrequency.MANUAL
-  : codePush.CheckFrequency.ON_APP_RESUME
+export const checkFrequency = {
+  checkFrequency: __DEV__ ? CodePush.CheckFrequency.MANUAL : CodePush.CheckFrequency.ON_APP_START,
+}

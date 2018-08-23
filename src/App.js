@@ -15,11 +15,11 @@ if (__DEV__) {
 const App = () => (
   <AppStateProvider>
     <AppStateConsumer>
-      {({ appLoading, loggedIn, apolloClient }) => {
+      {({ appLoading, loggedIn, client }) => {
         if (appLoading) return null
 
         return (
-          <ApolloProvider client={apolloClient}>
+          <ApolloProvider client={client}>
             {!loggedIn ? (
               <AuthNavigator />
             ) : (
@@ -39,4 +39,4 @@ const App = () => (
   </AppStateProvider>
 )
 
-export default codePush({ checkFrequency })(App)
+export default codePush(checkFrequency)(App)
