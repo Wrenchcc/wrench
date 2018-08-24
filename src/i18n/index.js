@@ -2,18 +2,21 @@ import i18next from 'i18next'
 import { reactI18nextModule } from 'react-i18next'
 import DeviceInfo from 'react-native-device-info'
 import humanFormat from 'human-format'
+import { getLanguage } from './helpers'
 
 export * from './withLocalization'
-export * from './helpers'
 
 const resources = require('translations/index.json')
 
-// TODO: Get user saved locale from asyncStorage
 const languageDetector = {
   type: 'languageDetector',
   async: true,
-  detect: callback => {
-    callback(DeviceInfo.getDeviceLocale())
+  detect: async cb => {
+    const userLanguage = await getLanguage()
+    if (userLanguage) {
+      return cb(userLanguage)
+    }
+    return cb(DeviceInfo.getDeviceLocale())
   },
   init: () => {},
   cacheUserLanguage: () => {},
@@ -25,7 +28,7 @@ i18next
   .init({
     fallbackLng: 'en',
     resources,
-    debug: false,
+    debug: __DEV__,
     cache: {
       enabled: !__DEV__,
     },

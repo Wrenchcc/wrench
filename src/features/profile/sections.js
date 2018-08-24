@@ -10,6 +10,7 @@ import { HeaderTitle } from 'ui'
 // TODO: Add global url
 const WEBSITE_URL = 'https://wrench.cc'
 
+// TODO: Generate supported languages and changeLanguage action
 const sections = ({ changeLoginState, changeLanguage, currentLanguage }) => ({
   settings: [
     {
@@ -160,7 +161,7 @@ const sections = ({ changeLoginState, changeLanguage, currentLanguage }) => ({
   ],
 })
 
-const routes = {
+const routeSections = {
   settings: [
     {
       titleKey: 'invite',
@@ -193,10 +194,11 @@ const routes = {
   ],
 }
 
+// TODO: Fix translations
 export function mapRouteForSection(component) {
   return mergeAll(
-    Object.keys(routes).map(section => {
-      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], routes[section])}`)
+    Object.keys(routeSections).map(section => {
+      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], routeSections[section])}`)
       return {
         [section]: {
           component,
