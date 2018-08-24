@@ -1,15 +1,40 @@
 import React, { PureComponent } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import I18n from 'react-native-i18n'
+import i18next from 'i18next'
+import { reactI18nextModule } from 'react-i18next'
 
-I18n.fallbacks = true
-I18n.translations = require('translations/index.json')
+const resources = require('translations/index.json')
 
-export const t = key => I18n.t(key)
+const languageDetector = {
+  type: 'languageDetector',
+  async: true,
+  detect: callback => {
+    callback('en')
+  },
+  init: () => {},
+  cacheUserLanguage: () => {},
+}
+
+i18next
+  .use(languageDetector)
+  .use(reactI18nextModule)
+  .init({
+    fallbackLng: 'en',
+    resources,
+    debug: __DEV__,
+    cache: {
+      enabled: !__DEV__,
+    },
+    interpolation: {
+      escapeValue: false,
+    },
+  })
+
+export const t = key => i18next.t(key)
 
 export default function withLocalization(WrappedComponent, contextPath) {
   class WithLocalization extends PureComponent {
-    translate = (key, params) => I18n.t(contextPath + key, params)
+    translate = (key, params) => i18next.t(`${contextPath}:${key}`, params)
 
     render = () => <WrappedComponent key={this.context.locale} {...this.props} t={this.translate} />
   }
