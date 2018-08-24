@@ -8,7 +8,7 @@ import { Base, Inner, Content, Video, Icon, Description, Headline, Legal } from 
 
 const SignIn = ({ t }) => (
   <AppStateConsumer>
-    {({ handleLoginState }) => (
+    {({ changeLoginState }) => (
       <Base>
         <Video source={video} muted resizeMode="cover" repeat paused={__DEV__} />
         <Inner>
@@ -22,7 +22,7 @@ const SignIn = ({ t }) => (
               {t('.description')}
             </Description>
           </Content>
-          <Facebook handleLoginState={handleLoginState} />
+          <Facebook changeLoginState={changeLoginState} />
           <Legal />
         </Inner>
       </Base>

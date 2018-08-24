@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -41,7 +42,6 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D22182E1207BA90800A8487B /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D22182DB207BA8C900A8487B /* libRNCamera.a */; };
 		D2BB7A9B2087515D00135C1D /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BB7A9A2087513600135C1D /* libSplashScreen.a */; };
-		D2BCF3E9207762CD002CEC26 /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BCF3E42077628E002CEC26 /* libRNI18n.a */; };
 		D2D98FBE208DD11D00410A13 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D98FB5208DD11100410A13 /* libRNDeviceInfo.a */; };
 		EA52BD5D2E68B225F9D400B4 /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E2EC5993376B076BB74F28 /* libPods-Wrench.a */; };
 /* End PBXBuildFile section */
@@ -264,6 +264,7 @@
 			remoteGlobalIDString = 64AA15081EF7F30100718508;
 			remoteInfo = "BVLinearGradient-tvOS";
 		};
+
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -418,20 +419,6 @@
 			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
 			remoteInfo = RNCamera;
 		};
-		D2704791207761F1000A01F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D270478C207761F1000A01F4 /* RNI18n.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNI18n;
-		};
-		D2704793207761F1000A01F4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D270478C207761F1000A01F4 /* RNI18n.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6476C4051EEAA69700B10F51;
-			remoteInfo = "RNI18n-tvOS";
-		};
 		D2BB7A992087513600135C1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2BB7A632087513600135C1D /* SplashScreen.xcodeproj */;
@@ -439,20 +426,7 @@
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
 		};
-		D2BCF3E32077628E002CEC26 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNI18n;
-		};
-		D2BCF3E52077628E002CEC26 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6476C4051EEAA69700B10F51;
-			remoteInfo = "RNI18n-tvOS";
-		};
+
 		D2D98FB4208DD11100410A13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2D98F82208DD11100410A13 /* RNDeviceInfo.xcodeproj */;
@@ -512,10 +486,8 @@
 		C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		D22182AB207BA8C900A8487B /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		D2704757207761A7000A01F4 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		D270478C207761F1000A01F4 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "/Users/pontus.abrahamsson/Desktop/Wrench/node_modules/react-native/Libraries/Settings/../../../react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<absolute>"; };
 		D297F723E9284BFCB00F02E4 /* libRNShare.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNShare.a; sourceTree = "<group>"; };
 		D2BB7A632087513600135C1D /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
-		D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
 		D2D98F82208DD11100410A13 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		E009C4A932B14309903A601E /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		E80B1F31D805EB6F76E84E50 /* Pods-Wrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wrench/Pods-Wrench.debug.xcconfig"; sourceTree = "<group>"; };
@@ -538,7 +510,6 @@
 				D2BB7A9B2087515D00135C1D /* libSplashScreen.a in Frameworks */,
 				16995C7E207BF32A00A02189 /* libRCTCameraRoll.a in Frameworks */,
 				D22182E1207BA90800A8487B /* libRNCamera.a in Frameworks */,
-				D2BCF3E9207762CD002CEC26 /* libRNI18n.a in Frameworks */,
 				16900BD2205E8ADF00B471EE /* libRCTVideo.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				160F0AC3208CB5140027D66D /* libRCTAnimation.a in Frameworks */,
@@ -630,7 +601,6 @@
 			isa = PBXGroup;
 			children = (
 				16C95E9D20C5421200C0CD93 /* Wrench.entitlements */,
-				D270478C207761F1000A01F4 /* RNI18n.xcodeproj */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -824,7 +794,6 @@
 				D2BB7A632087513600135C1D /* SplashScreen.xcodeproj */,
 				16995C49207BF2D300A02189 /* RCTCameraRoll.xcodeproj */,
 				D22182AB207BA8C900A8487B /* RNCamera.xcodeproj */,
-				D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */,
 				16900BC9205E8AA700B471EE /* RCTVideo.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -907,28 +876,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D270478D207761F1000A01F4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D2704792207761F1000A01F4 /* libRNI18n.a */,
-				D2704794207761F1000A01F4 /* libRNI18n-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D2BB7A642087513600135C1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				D2BB7A9A2087513600135C1D /* libSplashScreen.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		D2BCF3B42077628E002CEC26 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D2BCF3E42077628E002CEC26 /* libRNI18n.a */,
-				D2BCF3E62077628E002CEC26 /* libRNI18n-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1095,14 +1046,6 @@
 				{
 					ProductGroup = 169C98B420E2C05100E30EAD /* Products */;
 					ProjectRef = C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */;
-				},
-				{
-					ProductGroup = D2BCF3B42077628E002CEC26 /* Products */;
-					ProjectRef = D2BCF3B32077628E002CEC26 /* RNI18n.xcodeproj */;
-				},
-				{
-					ProductGroup = D270478D207761F1000A01F4 /* Products */;
-					ProjectRef = D270478C207761F1000A01F4 /* RNI18n.xcodeproj */;
 				},
 				{
 					ProductGroup = 160E6E7920D070CB00A4B595 /* Products */;
@@ -1496,39 +1439,11 @@
 			remoteRef = D22182DA207BA8C900A8487B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D2704792207761F1000A01F4 /* libRNI18n.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNI18n.a;
-			remoteRef = D2704791207761F1000A01F4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D2704794207761F1000A01F4 /* libRNI18n-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRNI18n-tvOS.a";
-			remoteRef = D2704793207761F1000A01F4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		D2BB7A9A2087513600135C1D /* libSplashScreen.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSplashScreen.a;
 			remoteRef = D2BB7A992087513600135C1D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D2BCF3E42077628E002CEC26 /* libRNI18n.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNI18n.a;
-			remoteRef = D2BCF3E32077628E002CEC26 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D2BCF3E62077628E002CEC26 /* libRNI18n-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRNI18n-tvOS.a";
-			remoteRef = D2BCF3E52077628E002CEC26 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D2D98FB5208DD11100410A13 /* libRNDeviceInfo.a */ = {
@@ -1584,7 +1499,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1593,7 +1508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7A6E2A5E554F70EC4B696EE /* [CP] Check Pods Manifest.lock */ = {
@@ -1661,7 +1576,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-i18n/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/**",
@@ -1676,12 +1590,7 @@
 				"INFOPLIST_PREFIX_HEADER[sdk=*]" = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Wrench\"",
-					"\"$(SRCROOT)/Wrench\"",
-					"\"$(SRCROOT)/Wrench\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1713,7 +1622,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-i18n/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/**",
@@ -1728,12 +1636,7 @@
 				"INFOPLIST_PREFIX_HEADER[sdk=*]" = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Wrench\"",
-					"\"$(SRCROOT)/Wrench\"",
-					"\"$(SRCROOT)/Wrench\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

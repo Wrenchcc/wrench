@@ -86,7 +86,7 @@
     },
     "OnboardingContent": {
       "headline": "What are you interested in?",
-      "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with. "
+      "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with."
     },
     "Facebook": {
       "button": "Continue with Facebook"
@@ -103,10 +103,8 @@
       "post": "Post"
     },
     "List": {
-      "loadMore": {
-        "one": "Show 1 comment",
-        "other": "Show all {{count}} comments"
-      }
+      "loadMore": "Show 1 comment",
+      "loadMore_plural": "Show all {{count, humanFormat}} comments"
     },
     "Edit": {
       "edit": "Edit"
@@ -128,11 +126,13 @@
       "unfollow": "Following"
     },
     "Followers": {
-      "followers": "Followers"
+      "followers_0": "0 followers",
+      "followers_1": "1 follower",
+      "followers_plural": "{{count, humanFormat}} followers"
     },
     "Legal": {
-      "description": "By continuing you agree to Wrench's ",
-      "link": "terms and conditions."
+      "description": "Genom att fortsätta hålla du med Wrench's ",
+      "link": "användarvillkor."
     },
     "NetworkConnectivity": {
       "noConnection": "No internet connection"
@@ -149,14 +149,70 @@
       "cancel": "Cancel"
     },
     "UiUser": {
-      "projects": {
-        "one": "1 project",
-        "other": "{{count}} projects",
-        "zero": "0 projects"
-      }
+      "projects_0": "0 projects",
+      "projects_1": "1 project",
+      "projects_plural": "{{count, humanFormat}} projects"
     },
     "WebView": {
       "loading": "Loading..."
+    }
+  },
+  "sv": {
+    "Settings": {
+      "invite": "Bjud in vänner",
+      "share": "Dela oss",
+      "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
+      "settings": "Inställningar",
+      "push-notifications": "Push notifikationer",
+      "language": "Språk",
+      "general": "Almänt",
+      "support": "Support",
+      "terms": "Villkor",
+      "website": "Hemsida",
+      "credits": "Tack till",
+      "logout": "Logga ut",
+      "facebook": "Facebook",
+      "contacts": "Mina kontakter",
+      "followers": "Följare",
+      "comments": "Kommentarer",
+      "mentions": "Mentions",
+      "articles": "Artiklar",
+      "english": "Engelska",
+      "swedish": "Svenska",
+      "faq": "FAQ",
+      "report": "Rapportera en bugg",
+      "chat": "Chatta med oss"
+    },
+    "SearchTab": {
+      "people": "Personer",
+      "projects": "Project"
+    },
+    "OnboardingContent": {
+      "headline": "Vad är du intresserad av?",
+      "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med."
+    },
+    "Facebook": {
+      "button": "Logga in med Facebook"
+    },
+    "SignIn": {
+      "headline": "Posta, \nutforska \noch lär.",
+      "description": "Dela dina project, kolla på andra, diskutera och lär av varandra."
+    },
+    "Followers": {
+      "followers_0": "0 följare",
+      "followers_1": "1 följare",
+      "followers_plural": "{{count, humanFormat}} följare"
+    },
+    "Search": {
+      "placeholder": "Sök"
+    },
+    "SearchBar": {
+      "cancel": "Avbryt"
+    },
+    "UiUser": {
+      "projects_0": "0 projekt",
+      "projects_1": "1 projekt",
+      "projects_plural": "{{count, humanFormat}} projekt"
     }
   }
 }

@@ -145,7 +145,6 @@ dependencies {
     compile project(':react-native-splash-screen')
     compile project(':react-native-share')
     compile project(':react-native-linear-gradient')
-    compile project(':react-native-i18n')
     compile project(':react-native-haptic-feedback')
     compile(project(':react-native-firebase')) {
         transitive = false
@@ -168,7 +167,6 @@ dependencies {
     implementation project(':react-native-fast-image')
     implementation project(':react-native-camera')
     implementation project(':react-native-splash-screen')
-    implementation project(':react-native-i18n')
     implementation project(':react-native-device-info')
     implementation project(':react-native-share')
     implementation project(':react-native-video')

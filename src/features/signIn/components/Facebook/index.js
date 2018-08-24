@@ -9,7 +9,7 @@ import { Button, Text } from './styled'
 
 class Facebook extends PureComponent {
   static propTypes = {
-    handleLoginState: PropTypes.func.isRequired,
+    changeLoginState: PropTypes.func.isRequired,
     authenticateUser: PropTypes.func.isRequired,
   }
 
@@ -20,7 +20,7 @@ class Facebook extends PureComponent {
 
     try {
       await this.props.authenticateUser(facebookResponse.accessToken)
-      this.props.handleLoginState(true)
+      this.props.changeLoginState(true)
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
     } catch (err) {
       track(events.USER_SIGNED_IN_FACEBOOK_FAILED)

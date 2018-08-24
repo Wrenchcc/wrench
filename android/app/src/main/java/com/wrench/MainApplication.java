@@ -11,7 +11,6 @@ import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.reactnative.camera.RNCameraPackage;
-import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
 import com.brentvatne.react.ReactVideoPackage;
@@ -63,7 +62,6 @@ public class MainApplication extends Application implements ReactApplication {
           new FastImageViewPackage(),
           new SplashScreenReactPackage(),
           new RNCameraPackage(),
-          new RNI18nPackage(),
           new RNDeviceInfo(),
           new RNSharePackage(),
           new ReactVideoPackage(),

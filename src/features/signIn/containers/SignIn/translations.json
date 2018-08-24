@@ -3,6 +3,10 @@
     "en": {
       "headline": "Post, \nexplore \nand learn.",
       "description": "Post your projects, watch others, discuss and learn together."
+    },
+    "sv": {
+      "headline": "Posta, \nutforska \noch lär.",
+      "description": "Dela dina project, kolla på andra, diskutera och lär av varandra."
     }
   }
 }

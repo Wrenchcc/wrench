@@ -30,13 +30,13 @@ class Settings extends PureComponent {
     const { navigation } = this.props
     return (
       <AppStateConsumer>
-        {({ handleLoginState }) => (
+        {props => (
           <SectionList
             contentContainerStyle={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 40 }}
             stickySectionHeadersEnabled={false}
             renderSectionHeader={this.renderSectionHeader}
             renderItem={this.renderItem}
-            sections={sections(handleLoginState)[navigation.state.routeName]}
+            sections={sections(props)[navigation.state.routeName]}
             keyExtractor={(item, index) => item + index}
             ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
           />
