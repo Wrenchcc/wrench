@@ -5,6 +5,7 @@ import { translate } from 'react-i18next'
 import createClient from 'graphql/createClient'
 import { getTokens } from 'graphql/utils/auth'
 import { setLanguage } from 'i18n/helpers'
+import { track, events, logError } from 'utils/analytics'
 
 const { Provider, Consumer } = React.createContext()
 
@@ -32,8 +33,14 @@ class AppStateWithI18n extends PureComponent {
   }
 
   onChangeLanguage = async lang => {
-    await setLanguage(lang)
+    try {
+      await setLanguage(lang)
+    } catch (err) {
+      logError(err)
+    }
+
     this.props.i18n.changeLanguage(lang)
+    track(events.USER_CHANGED_LANGUAGE, { language: lang })
   }
 
   handleLoginState = loggedIn => {
@@ -41,9 +48,7 @@ class AppStateWithI18n extends PureComponent {
       this.state.client.resetStore()
     }
 
-    this.setState({
-      loggedIn,
-    })
+    this.setState({ loggedIn })
   }
 
   render() {
