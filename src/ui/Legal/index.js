@@ -3,6 +3,7 @@ import withLocalization from 'i18n/withLocalization'
 import { navigateToWebView } from 'navigation'
 import { Base, Text, Link } from './styles'
 
+// TODO: Add global url
 const Legal = ({ t, ...props }) => (
   <Base {...props}>
     <Text>{t('.description')}</Text>

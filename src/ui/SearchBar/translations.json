@@ -2,6 +2,9 @@
   "SearchBar": {
     "en": {
       "cancel": "Cancel"
+    },
+    "sv": {
+      "cancel": "Avbryt"
     }
   }
 }

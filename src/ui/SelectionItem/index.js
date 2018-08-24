@@ -4,22 +4,24 @@ import PropTypes from 'prop-types'
 import { arrowRight } from 'images'
 import { COLORS } from 'ui/constants'
 import { Base, Text, Icon } from './styles'
+import Selector from './types/Selector'
 
-const getActionType = (type, value) => {
+const getActionType = ({ type, value, selected }) => {
   switch (type) {
     case 'switch':
       return <Switch onTintColor={COLORS.DARK} value={value} />
     case 'selector':
+      return <Selector selected={selected} />
     default:
       return null
   }
 }
 
-const SelectionItem = ({ title, onPress = () => {}, hasChildren, type, value, last }) => (
+const SelectionItem = ({ title, onPress = () => {}, hasChildren, last, ...rest }) => (
   <Base onPress={onPress} disables={!onPress} last={last}>
     <Text color={last && 'orange'}>{title}</Text>
     {hasChildren && <Icon source={arrowRight} />}
-    {getActionType(type, value)}
+    {getActionType(rest)}
   </Base>
 )
 
@@ -29,6 +31,7 @@ SelectionItem.propTypes = {
   hasChildren: PropTypes.bool,
   type: PropTypes.string,
   last: PropTypes.bool,
+  selected: PropTypes.bool,
   value: PropTypes.any,
 }
 

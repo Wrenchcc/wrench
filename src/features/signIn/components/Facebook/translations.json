@@ -2,6 +2,9 @@
   "Facebook": {
     "en": {
       "button": "Continue with Facebook"
+    },
+    "sv": {
+      "button": "Logga in med Facebook"
     }
   }
 }

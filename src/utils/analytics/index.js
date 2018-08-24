@@ -6,4 +6,6 @@ analytics().setAnalyticsCollectionEnabled(true)
 
 export const setCurrentScreen = screenName => analytics().setCurrentScreen(screenName)
 export const track = (event, params = {}) => analytics().logEvent(event, params)
-export const setUserId = id => analytics().setUserId(id)
+
+// export const log = message => crashlytics().log(message)
+// export const recordError = (code, message) => crashlytics().recordError(code, message)

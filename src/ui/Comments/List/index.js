@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import humanFormat from 'human-format'
 import { navigateToProfile, navigateToComments } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import Text from 'ui/Text'
@@ -38,12 +37,7 @@ class List extends PureComponent {
         {data.comments.edges.map(this.renderComment)}
         <LoadMore onPress={this.goToComments}>
           <Text fontSize={15} color="light_grey">
-            {t('.loadMore', {
-              count: humanFormat(data.comments.totalCount, {
-                separator: '',
-                decimals: 1,
-              }),
-            })}
+            {t('.loadMore', { count: data.comments.totalCount })}
           </Text>
         </LoadMore>
       </Fragment>

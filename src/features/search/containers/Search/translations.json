@@ -3,6 +3,10 @@
     "en": {
       "people": "People",
       "projects": "Projects"
+    },
+    "sv": {
+      "people": "Personer",
+      "projects": "Project"
     }
   }
 }

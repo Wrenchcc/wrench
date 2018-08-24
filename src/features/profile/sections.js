@@ -7,9 +7,10 @@ import openLink from 'utils/openLink'
 import { warn } from 'utils/logger'
 import { HeaderTitle } from 'ui'
 
+// TODO: Add global url
 const WEBSITE_URL = 'https://wrench.cc'
 
-const sections = (changeLoginState = false) => ({
+const sections = ({ changeLoginState, changeLanguage, currentLanguage }) => ({
   settings: [
     {
       titleKey: 'invite',
@@ -91,7 +92,7 @@ const sections = (changeLoginState = false) => ({
         {
           titleKey: 'comments',
           type: 'switch',
-          value: true,
+          value: false,
         },
         {
           titleKey: 'mentions',
@@ -106,27 +107,25 @@ const sections = (changeLoginState = false) => ({
       ],
     },
   ],
-  // language: [
-  //   {
-  //     headerTitle: 'language',
-  //     data: [
-  //       {
-  //         titleKey: 'english',
-  //         type: 'selector',
-  //         key: 'en',
-  //         value: 'en',
-  //         selected: true,
-  //       },
-  //       {
-  //         titleKey: 'swedish',
-  //         type: 'selector',
-  //         key: 'sv_SE',
-  //         value: 'sv_SE',
-  //         selected: false,
-  //       },
-  //     ],
-  //   },
-  // ],
+  language: [
+    {
+      headerTitle: 'language',
+      data: [
+        {
+          titleKey: 'english',
+          onPress: () => changeLanguage('en'),
+          type: 'selector',
+          selected: currentLanguage === 'en',
+        },
+        {
+          titleKey: 'swedish',
+          onPress: () => changeLanguage('sv'),
+          type: 'selector',
+          selected: currentLanguage === 'sv',
+        },
+      ],
+    },
+  ],
   support: [
     {
       headerTitle: 'support',
@@ -161,10 +160,43 @@ const sections = (changeLoginState = false) => ({
   ],
 })
 
+const routes = {
+  settings: [
+    {
+      titleKey: 'invite',
+    },
+  ],
+  facebook: [
+    {
+      headerTitle: 'facebook',
+    },
+  ],
+  contacts: [
+    {
+      headerTitle: 'contacts',
+    },
+  ],
+  'push-notifications': [
+    {
+      headerTitle: 'push-notifications',
+    },
+  ],
+  language: [
+    {
+      headerTitle: 'language',
+    },
+  ],
+  support: [
+    {
+      headerTitle: 'support',
+    },
+  ],
+}
+
 export function mapRouteForSection(component) {
   return mergeAll(
-    Object.keys(sections()).map(section => {
-      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], sections()[section])}`)
+    Object.keys(routes).map(section => {
+      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], routes[section])}`)
       return {
         [section]: {
           component,

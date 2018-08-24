@@ -1,7 +1,14 @@
 {
   "Followers": {
     "en": {
-      "followers": "Followers"
+      "followers_0": "0 followers",
+      "followers_1": "1 follower",
+      "followers_plural": "{{count, humanFormat}} followers"
+    },
+    "sv": {
+      "followers_0": "0 följare",
+      "followers_1": "1 följare",
+      "followers_plural": "{{count, humanFormat}} följare"
     }
   }
 }
