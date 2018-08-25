@@ -32,13 +32,15 @@
       "comments": "Comments",
       "mentions": "Mentions",
       "articles": "Articles",
-      "english": "English",
-      "swedish": "Swedish",
       "faq": "FAQ",
       "report": "Report a bug",
       "chat": "Chat with us",
       "knallpott": "Knallpott",
-      "hookie": "Hookie"
+      "hookie": "Hookie",
+      "languages": {
+        "en": "English",
+        "sv": "Swedish"
+      }
     },
     "AskForPermission": {
       "camera": {
@@ -196,11 +198,13 @@
       "comments": "Kommentarer",
       "mentions": "Mentions",
       "articles": "Artiklar",
-      "english": "Engelska",
-      "swedish": "Svenska",
       "faq": "FAQ",
       "report": "Rapportera en bugg",
-      "chat": "Chatta med oss"
+      "chat": "Chatta med oss",
+      "languages": {
+        "en": "Engelska",
+        "sv": "Svenska"
+      }
     },
     "AskForPermission": {
       "camera": {

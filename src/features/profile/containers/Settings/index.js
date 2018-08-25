@@ -7,7 +7,23 @@ import { AppStateConsumer } from 'AppState'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
 
+const style = {
+  container: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 40,
+  },
+  header: {
+    marginBottom: 20,
+    marginTop: 40,
+  },
+}
+
 class Settings extends PureComponent {
+  static navigationOptions = ({ navigation, screenProps }) => ({
+    headerTitle: screenProps.t(`Settings.${navigation.state.routeName}`),
+  })
+
   static propTypes = {
     navigation: PropTypes.object.isRequired,
   }
@@ -15,11 +31,7 @@ class Settings extends PureComponent {
   renderSectionHeader = ({ section }) => {
     if (!section.titleKey) return null
 
-    return (
-      <Title style={{ marginBottom: 20, marginTop: 40 }}>
-        {this.props.t(`.${section.titleKey}`)}
-      </Title>
-    )
+    return <Title style={style.header}>{this.props.t(`.${section.titleKey}`)}</Title>
   }
 
   renderItem = ({ item, index }) => (
@@ -32,7 +44,7 @@ class Settings extends PureComponent {
       <AppStateConsumer>
         {props => (
           <SectionList
-            contentContainerStyle={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 40 }}
+            contentContainerStyle={style.container}
             stickySectionHeadersEnabled={false}
             renderSectionHeader={this.renderSectionHeader}
             renderItem={this.renderItem}
