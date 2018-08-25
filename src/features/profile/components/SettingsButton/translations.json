@@ -2,6 +2,9 @@
   "SettingsButton": {
     "en": {
       "settings": "Settings"
+    },
+    "sv": {
+      "settings": "Inställningar"
     }
   }
 }

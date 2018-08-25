@@ -4,6 +4,11 @@
       "follow": "Now follows",
       "comment": "Commented on your post",
       "reply": "Replied to your comment"
+    },
+    "sv": {
+      "follow": "Följer nu",
+      "comment": "Kommenterade på ditt inlägg",
+      "reply": "Svarade på din kommentar"
     }
   }
 }

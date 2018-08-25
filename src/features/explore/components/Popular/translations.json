@@ -2,8 +2,11 @@
   "Popular": {
     "en": {
       "popular": "Popular projects",
-      "recent":
-        "Recent posts"
+      "recent": "Recent posts"
+    },
+    "sv": {
+      "popular": "Populära projekt",
+      "recent": "Senaste inlägg"
     }
   }
 }

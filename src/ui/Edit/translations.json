@@ -2,6 +2,9 @@
   "Edit": {
     "en": {
       "edit": "Edit"
+    },
+    "sv": {
+      "edit": "Redigera"
     }
   }
 }

@@ -2,6 +2,9 @@
   "SelectProject": {
     "en": {
       "create": "Create a new project"
+    },
+    "sv": {
+      "create": "Skapa ett nytt projekt"
     }
   }
 }

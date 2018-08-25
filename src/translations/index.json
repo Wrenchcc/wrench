@@ -73,9 +73,9 @@
       "create": "Create a new project"
     },
     "AddPost": {
-      "post": "Post",
-      "next": "Next",
-      "placeholder": "Add a text about your post"
+      "post": "Posta",
+      "next": "Nästa",
+      "placeholder": "Lägg till en text för din post"
     },
     "Comments": {
       "title": "Comments"
@@ -131,8 +131,8 @@
       "followers_plural": "{{count, humanFormat}} followers"
     },
     "Legal": {
-      "description": "Genom att fortsätta hålla du med Wrench's ",
-      "link": "användarvillkor."
+      "description": "By continuing you agree to Wrench's ",
+      "link": "terms and conditions."
     },
     "NetworkConnectivity": {
       "noConnection": "No internet connection"
@@ -158,6 +158,19 @@
     }
   },
   "sv": {
+    "Popular": {
+      "popular": "Populära projekt",
+      "recent": "Senaste inlägg"
+    },
+    "Notifications": {
+      "title": "Notifikationer"
+    },
+    "ContactButton": {
+      "contact": "Kontakt"
+    },
+    "SettingsButton": {
+      "settings": "Inställningar"
+    },
     "Settings": {
       "invite": "Bjud in vänner",
       "share": "Dela oss",
@@ -183,6 +196,41 @@
       "report": "Rapportera en bugg",
       "chat": "Chatta med oss"
     },
+    "AskForPermission": {
+      "camera": {
+        "alertTitle": "Whoops!",
+        "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+        "alertCancel": "Avbryt",
+        "alertOpen": "Öppna inställningar",
+        "permissionHeadline": "Ta bilder och spela in videoklipp",
+        "permissionDescription": "Tillåt Wrench åtkomst till din kamera för att ta bilder och spela in video i appen.",
+        "permissionButton": "Tillåt kameraåtkomst"
+      },
+      "photo": {
+        "alertTitle": "Whoops!",
+        "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+        "alertCancel": "Avbryt",
+        "alertOpen": "Öppna inställningar",
+        "permissionHeadline": "Lägg till foton och videoklipp",
+        "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek ochspara foton till din kamerarulle.",
+        "permissionButton": "Aktivera biblioteksåtkomst"
+      }
+    },
+    "EditProject": {
+      "title": "Skapa projekt",
+      "subTitle": "Information",
+      "add": "Lägg till",
+      "inputTitle": "Titel",
+      "inputBrand": "Märke",
+      "inputModel": "Modell",
+      "inputYear": "År"
+    },
+    "SelectProject": {
+      "create": "Skapa ett nytt projekt"
+    },
+    "Comments": {
+      "title": "Kommentarer"
+    },
     "SearchTab": {
       "people": "Personer",
       "projects": "Project"
@@ -194,14 +242,56 @@
     "Facebook": {
       "button": "Logga in med Facebook"
     },
+    "Onboarding": {
+      "next": "Nästa"
+    },
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",
       "description": "Dela dina project, kolla på andra, diskutera och lär av varandra."
+    },
+    "CommentField": {
+      "placeholder": "Kommentera",
+      "post": "Skicka"
+    },
+    "List": {
+      "loadMore": "Visa 1 kommentar",
+      "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
+    },
+    "Edit": {
+      "edit": "Redigera"
+    },
+    "EmptyState": {
+      "project": {
+        "title": "1. Skapa ditt första projekt",
+        "description": "Kom igång och skapa ditt första projekt",
+        "button": "Kom igång"
+      },
+      "post": {
+        "title": "2. Lägg till ditt första inlägg",
+        "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
+        "button": "Lägg till"
+      }
+    },
+    "Follow": {
+      "follow": "Följ projekt",
+      "unfollow": "Följer"
     },
     "Followers": {
       "followers_0": "0 följare",
       "followers_1": "1 följare",
       "followers_plural": "{{count, humanFormat}} följare"
+    },
+    "Legal": {
+      "description": "Genom att fortsätta hålla du med Wrench's ",
+      "link": "användarvillkor."
+    },
+    "NetworkConnectivity": {
+      "noConnection": "Ingen internetanslutning"
+    },
+    "Notification": {
+      "follow": "Följer nu",
+      "comment": "Kommenterade på ditt inlägg",
+      "reply": "Svarade på din kommentar"
     },
     "Search": {
       "placeholder": "Sök"
@@ -213,6 +303,9 @@
       "projects_0": "0 projekt",
       "projects_1": "1 projekt",
       "projects_plural": "{{count, humanFormat}} projekt"
+    },
+    "WebView": {
+      "loading": "Laddar..."
     }
   }
 }

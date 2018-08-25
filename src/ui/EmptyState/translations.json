@@ -11,6 +11,18 @@
         "description": "Now when you have a project it’s time to create your first post",
         "button": "Add"
       }
+    },
+    "sv": {
+      "project": {
+        "title": "1. Skapa ditt första projekt",
+        "description": "Kom igång och skapa ditt första projekt",
+        "button": "Kom igång"
+      },
+      "post": {
+        "title": "2. Lägg till ditt första inlägg",
+        "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
+        "button": "Lägg till"
+      }
     }
   }
 }

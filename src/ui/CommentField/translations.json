@@ -3,6 +3,10 @@
     "en": {
       "placeholder": "Comment",
       "post": "Post"
+    },
+    "sv": {
+      "placeholder": "Kommentera",
+      "post": "Skicka"
     }
   }
 }

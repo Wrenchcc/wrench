@@ -3,6 +3,10 @@
     "en": {
       "follow": "Follow this project",
       "unfollow": "Following"
+    },
+    "sv": {
+      "follow": "Följ projekt",
+      "unfollow": "Följer"
     }
   }
 }

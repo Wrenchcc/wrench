@@ -4,6 +4,11 @@
       "post": "Post",
       "next": "Next",
       "placeholder": "Add a text about your post"
+    },
+    "en": {
+      "post": "Posta",
+      "next": "Nästa",
+      "placeholder": "Lägg till en text för din post"
     }
   }
 }

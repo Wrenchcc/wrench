@@ -2,6 +2,9 @@
   "Onboarding": {
     "en": {
       "next": "Next"
+    },
+    "sv": {
+      "next": "Nästa"
     }
   }
 }
