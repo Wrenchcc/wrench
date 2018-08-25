@@ -140,21 +140,21 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-gesture-handler')
-    compile project(':react-native-video')
-    compile project(':react-native-splash-screen')
-    compile project(':react-native-share')
-    compile project(':react-native-linear-gradient')
-    compile project(':react-native-haptic-feedback')
-    compile(project(':react-native-firebase')) {
+    implementation project(':react-native-gesture-handler')
+    implementation project(':react-native-video')
+    implementation project(':react-native-splash-screen')
+    implementation project(':react-native-share')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-haptic-feedback')
+    implementation(project(':react-native-firebase')) {
         transitive = false
     }
-    compile project(':react-native-fbsdk')
-    compile project(':react-native-fast-image')
-    compile project(':react-native-device-info')
-    compile project(':react-native-config')
-    compile project(':react-native-code-push')
-    compile project(':react-native-camera')
+    implementation project(':react-native-fbsdk')
+    implementation project(':react-native-fast-image')
+    implementation project(':react-native-device-info')
+    implementation project(':react-native-config')
+    implementation project(':react-native-code-push')
+    implementation project(':react-native-camera')
     implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation "com.google.firebase:firebase-messaging:17.0.0"
     implementation(project(':react-native-firebase')) {

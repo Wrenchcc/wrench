@@ -53,7 +53,6 @@ export default class CameraRoll extends Component {
 
   getpictures = async after => {
     const { images, has_next_page: hasNextPage } = this.state
-
     if (!hasNextPage) return
 
     const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
