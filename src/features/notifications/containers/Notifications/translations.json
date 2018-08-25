@@ -2,6 +2,9 @@
   "Notifications": {
     "en": {
       "title": "Notifications"
+    },
+    "sv": {
+      "title": "Notifikationer"
     }
   }
 }

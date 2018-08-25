@@ -1,12 +1,12 @@
 {
   "SearchTab": {
     "en": {
-      "people": "People",
+      "users": "People",
       "projects": "Projects"
     },
     "sv": {
-      "people": "Personer",
-      "projects": "Project"
+      "users": "Personer",
+      "projects": "Projekt"
     }
   }
 }

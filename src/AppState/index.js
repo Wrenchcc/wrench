@@ -4,7 +4,7 @@ import SplashScreen from 'react-native-splash-screen'
 import { translate } from 'react-i18next'
 import createClient from 'graphql/createClient'
 import { getTokens } from 'graphql/utils/auth'
-import { setLanguage } from 'i18n/helpers'
+import { setLocale, languages } from 'i18n'
 import { track, events, logError } from 'utils/analytics'
 
 const { Provider, Consumer } = React.createContext()
@@ -34,7 +34,7 @@ class AppStateWithI18n extends PureComponent {
 
   onChangeLanguage = async lang => {
     try {
-      await setLanguage(lang)
+      await setLocale(lang)
     } catch (err) {
       logError(err)
     }
@@ -53,13 +53,14 @@ class AppStateWithI18n extends PureComponent {
 
   render() {
     const { i18n } = this.props
+
     return (
       <Provider
         value={{
           changeLoginState: this.handleLoginState,
           changeLanguage: this.onChangeLanguage,
           currentLanguage: i18n.language,
-          supportedLanguages: i18n.languages,
+          supportedLanguages: languages,
           ...this.state,
         }}
       >

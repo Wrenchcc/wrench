@@ -8,6 +8,15 @@
       "inputBrand": "Brand",
       "inputModel": "Model",
       "inputYear": "Year"
+    },
+    "sv": {
+      "title": "Skapa projekt",
+      "subTitle": "Information",
+      "add": "Lägg till",
+      "inputTitle": "Titel",
+      "inputBrand": "Märke",
+      "inputModel": "Modell",
+      "inputYear": "År"
     }
   }
 }

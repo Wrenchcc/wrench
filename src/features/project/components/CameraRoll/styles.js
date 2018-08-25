@@ -1,6 +1,11 @@
+import { Dimensions } from 'react-native'
 import styled from 'styled-components'
-import FastImage from 'react-native-fast-image'
 import { COLORS, HEADER_HEIGHT } from 'ui/constants'
+
+const { width } = Dimensions.get('window')
+
+export const GUTTER = 5
+export const ITEM_SIZE = width / 2 - 15
 
 export const Base = styled.TouchableOpacity`
   padding-top: ${props => (props.paddingTop ? HEADER_HEIGHT : 0)};
@@ -12,10 +17,12 @@ export const Cell = styled.View`
   width: 50%;
 `
 
-export const Image = styled(FastImage)`
-  height: ${props => props.height}
-  border-width: 3px;
+export const Image = styled.Image`
+  margin: ${GUTTER}px;
+  height: ${ITEM_SIZE};
+  width: ${ITEM_SIZE};
   border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')};
+  border-width: 3px;
 `
 
 export const Overlay = styled.View`

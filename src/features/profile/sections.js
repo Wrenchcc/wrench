@@ -1,17 +1,26 @@
-import React from 'react'
 import NativeShare from 'react-native-share'
-import { mergeAll, pathOr } from 'ramda'
-import { t } from 'i18n'
+import { mergeAll } from 'ramda'
 import { navigate, navigateToWebView } from 'navigation'
 import openLink from 'utils/openLink'
 import { warn } from 'utils/logger'
-import { HeaderTitle } from 'ui'
 
 // TODO: Add global url
 const WEBSITE_URL = 'https://wrench.cc'
 
-// TODO: Generate supported languages and changeLanguage action
-const sections = ({ changeLoginState, changeLanguage, currentLanguage }) => ({
+const generateLanguageSettings = props => {
+  let items = []
+
+  items = props.supportedLanguages.map(lang => ({
+    titleKey: `languages.${lang}`,
+    onPress: () => props.currentLanguage !== lang && props.changeLanguage(lang),
+    type: 'selector',
+    selected: props.currentLanguage === lang,
+  }))
+
+  return items
+}
+
+const sections = props => ({
   settings: [
     {
       titleKey: 'invite',
@@ -63,7 +72,7 @@ const sections = ({ changeLoginState, changeLanguage, currentLanguage }) => ({
         },
         {
           titleKey: 'logout',
-          onPress: () => changeLoginState(false),
+          onPress: () => props.changeLoginState(false),
           last: true,
         },
       ],
@@ -111,20 +120,7 @@ const sections = ({ changeLoginState, changeLanguage, currentLanguage }) => ({
   language: [
     {
       headerTitle: 'language',
-      data: [
-        {
-          titleKey: 'english',
-          onPress: () => changeLanguage('en'),
-          type: 'selector',
-          selected: currentLanguage === 'en',
-        },
-        {
-          titleKey: 'swedish',
-          onPress: () => changeLanguage('sv'),
-          type: 'selector',
-          selected: currentLanguage === 'sv',
-        },
-      ],
+      data: generateLanguageSettings(props),
     },
   ],
   support: [
@@ -152,9 +148,6 @@ const sections = ({ changeLoginState, changeLanguage, currentLanguage }) => ({
       data: [
         {
           titleKey: 'knallpott',
-        },
-        {
-          titleKey: 'hookie',
         },
       ],
     },
@@ -194,21 +187,12 @@ const routeSections = {
   ],
 }
 
-// TODO: Fix translations
-export function mapRouteForSection(component) {
-  return mergeAll(
-    Object.keys(routeSections).map(section => {
-      const title = t(`Settings.${pathOr('settings', [0, 'headerTitle'], routeSections[section])}`)
-      return {
-        [section]: {
-          component,
-          navigationOptions: {
-            headerTitle: <HeaderTitle>{title}</HeaderTitle>,
-          },
-        },
-      }
-    })
-  )
-}
+export const mapRouteForSection = component => mergeAll(
+  Object.keys(routeSections).map(section => ({
+    [section]: {
+      component,
+    },
+  }))
+)
 
 export default sections

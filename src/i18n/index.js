@@ -1,23 +1,18 @@
 import i18next from 'i18next'
 import { reactI18nextModule } from 'react-i18next'
-import DeviceInfo from 'react-native-device-info'
 import humanFormat from 'human-format'
-import { getLanguage } from './helpers'
+import { getLocale } from './helpers'
 
+export * from './helpers'
 export * from './withLocalization'
+export { default as languages } from './languages'
 
 const resources = require('translations/index.json')
 
 const languageDetector = {
   type: 'languageDetector',
   async: true,
-  detect: async cb => {
-    const userLanguage = await getLanguage()
-    if (userLanguage) {
-      return cb(userLanguage)
-    }
-    return cb(DeviceInfo.getDeviceLocale())
-  },
+  detect: async cb => cb(await getLocale()),
   init: () => {},
   cacheUserLanguage: () => {},
 }

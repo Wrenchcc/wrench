@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Animated } from 'react-native'
 import { navigateToProfile } from 'navigation'
+import withLocalization from 'i18n/withLocalization'
 import { Avatar, Text, TimeAgo } from 'ui'
 import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
@@ -8,7 +9,7 @@ import { Base, Content, Row, Reply } from './styles'
 // TODO: Refactor and fix date
 // TODO: Pass correct data to profile
 // TODO: Make user in comment clickalbe (flex problem)
-const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null }) => {
+const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null, t }) => {
   const animatedValue = new Animated.Value(0)
 
   if (id === highlightedId) {
@@ -46,7 +47,7 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
           <Row>
             <TimeAgo date={createdAt} />
             <Reply medium fontSize={12} onPress={() => onReply(user)}>
-              Reply
+              {t('.reply')}
             </Reply>
           </Row>
         </Content>
@@ -57,13 +58,13 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
 
 const CommentItem = props => props.item.repliesConnection ? (
     <Fragment>
-      <Item {...props.item} onReply={props.onReply} />
+      <Item {...props.item} onReply={props.onReply} t={props.t} />
       {props.item.repliesConnection.edges.map(({ node }) => (
-        <Item key={node.id} isReply {...node} id={node.id} onReply={props.onReply} />
+        <Item key={node.id} isReply {...node} id={node.id} t={props.t} onReply={props.onReply} />
       ))}
     </Fragment>
 ) : (
-    <Item {...props.item} onReply={props.onReply} />
+    <Item {...props.item} t={props.t} onReply={props.onReply} />
 )
 
-export default CommentItem
+export default withLocalization(CommentItem, 'CommentItem')

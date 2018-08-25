@@ -19,14 +19,15 @@
       "comments": "Comments",
       "mentions": "Mentions",
       "articles": "Articles",
-      "english": "English",
-      "swedish": "Swedish",
       "support": "Support",
       "faq": "FAQ",
       "report": "Report a bug",
       "chat": "Chat with us",
       "knallpott": "Knallpott",
-      "hookie": "Hookie"
+      "languages": {
+        "en": "English",
+        "sv": "Swedish"
+      }
     },
     "sv": {
       "invite": "Bjud in vänner",
@@ -47,12 +48,14 @@
       "comments": "Kommentarer",
       "mentions": "Mentions",
       "articles": "Artiklar",
-      "english": "Engelska",
-      "swedish": "Svenska",
       "support": "Support",
       "faq": "FAQ",
       "report": "Rapportera en bugg",
-      "chat": "Chatta med oss"
+      "chat": "Chatta med oss",
+      "languages": {
+        "en": "Engelska",
+        "sv": "Svenska"
+      }
     }
   }
 }

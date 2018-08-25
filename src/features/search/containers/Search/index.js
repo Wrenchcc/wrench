@@ -3,15 +3,24 @@ import PropTypes from 'prop-types'
 import { Dimensions, Keyboard } from 'react-native'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
+import withLocalization from 'i18n/withLocalization'
 import { FONTS } from 'ui/constants'
 import Users from '../../components/Users'
 import Projects from '../../components/Projects'
-import routes from './routes'
 
 const initialLayout = {
   height: 0,
   width: Dimensions.get('window').width,
 }
+
+const routes = [
+  {
+    key: 'users',
+  },
+  {
+    key: 'projects',
+  },
+]
 
 const styles = {
   tabBar: {
@@ -56,7 +65,7 @@ class Search extends PureComponent {
       style={styles.tabBar}
       labelStyle={styles.labelStyle}
       indicatorStyle={styles.indicatorStyle}
-      getLabelText={({ route }) => route.title}
+      getLabelText={({ route }) => this.props.t(`.${route.key}`)}
       swipeEnabled
       scrollEnabled={false}
       onTabPress={this.scrollToTop}
@@ -95,4 +104,4 @@ class Search extends PureComponent {
   }
 }
 
-export default Search
+export default withLocalization(Search, 'SearchTab')

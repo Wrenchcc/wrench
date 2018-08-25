@@ -19,7 +19,6 @@ let scrollView = null
 // TODO: Make platform specific
 // TODO: Show latest searched users
 // TODO: Remove added user from suggestions
-// TODO: Fix title localization
 // TODO: Handle multiline
 // TODO: Format user data to save [user:1]
 const KEYBOARD_OFFSET = isIphone ? 180 : 0
@@ -27,9 +26,11 @@ const MENTION_OFFSET_BOTTOM = isIphone ? 240 : 0
 const TRIGGER = '@'
 
 class Comments extends Component {
-  static navigationOptions = () => ({
+  static navigationOptions = ({ screenProps }) => ({
     headerTitle: (
-      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>Comments</HeaderTitle>
+      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
+        {screenProps.t('Comments.title')}
+      </HeaderTitle>
     ),
   })
 

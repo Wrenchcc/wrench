@@ -1,33 +1,27 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll as RNCameraRoll, FlatList, Dimensions } from 'react-native'
+import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
 import Permissions from 'react-native-permissions'
-import { find, propEq } from 'ramda'
+import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
+import { logError } from 'utils/analytics'
 import AskForPermission from '../AskForPermission'
-import { Base, Cell, Image, Overlay } from './styles'
-
-const { width } = Dimensions.get('window')
+import { Base, Cell, Image, Overlay, GUTTER, ITEM_SIZE } from './styles'
 
 const PERMISSION = 'photo'
 const AUTHORIZED = 'authorized'
 const PAGE_SIZE = 10
-const GUTTER = 10
-const ITEM_SIZE = width / 2 - GUTTER
 
-const removeByKey = (a, params) => {
-  a.some((item, index) => (a[index][params.key] === params.value ? !!a.splice(index, 1) : false))
-  return a
-}
-
+// TODO: Change to use FastImage when support for assets-url://
 export default class CameraRoll extends Component {
   static propTypes = {
-    pictures: PropTypes.array,
+    pictures: PropTypes.object.isRequired,
     addPictures: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
   }
 
   state = {
+    isLoading: true,
     images: [],
     end_cursor: null,
     has_next_page: true,
@@ -36,6 +30,7 @@ export default class CameraRoll extends Component {
 
   componentDidMount() {
     Permissions.check(PERMISSION).then(res => {
+      this.setState({ isLoading: false })
       if (res === AUTHORIZED) {
         this.enablePermission()
         this.getpictures()
@@ -52,13 +47,16 @@ export default class CameraRoll extends Component {
 
   getpictures = async after => {
     const { images, has_next_page: hasNextPage } = this.state
-
     if (!hasNextPage) return
 
-    const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
-    const newImages = data.edges.map(image => image.node.image)
+    try {
+      const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
+      const newImages = data.edges.map(image => image.node.image)
 
-    this.setState({ images: images.concat(newImages), ...data.page_info })
+      this.setState({ images: images.concat(newImages), ...data.page_info })
+    } catch (err) {
+      logError(err)
+    }
   }
 
   // https://facebook.github.io/react-native/docs/flatlist.html#getitemlayout
@@ -71,57 +69,54 @@ export default class CameraRoll extends Component {
     this.setState({ photoPermission: true })
   }
 
-  toggleSelection = photo => {
+  toggleSelection = image => {
     const { pictures, addPictures, closeDropdown } = this.props
+    const items = { ...pictures, [image.uri]: image }
 
-    if (this.isAdded(photo)) {
-      // TODO: Maybe change to object keys instead
-      addPictures(
-        removeByKey(pictures, {
-          key: 'filename',
-          value: photo.filename,
-        })
-      )
+    closeDropdown()
 
-      return
+    if (this.isSelected(image)) {
+      return addPictures(omit([image.uri], pictures))
     }
 
-    addPictures(pictures.concat(photo))
-    closeDropdown()
+    return addPictures(items)
   }
 
-  isAdded = ({ filename }) => !!find(propEq('filename', filename))(this.props.pictures)
+  isSelected = ({ uri }) => hasIn(uri, this.props.pictures)
 
-  // TODO: Use styled component and fix selection in android
-  renderItem = ({ item }) => (
-    <Cell>
-      <Touchable
-        hapticFeedback="impactLight"
-        onPress={() => this.toggleSelection(item)}
-        style={{ margin: GUTTER / 2 }}
-      >
-        <Overlay selected={this.isAdded(item)} />
-        <Image selected={this.isAdded(item)} source={{ uri: item.uri }} height={ITEM_SIZE} />
-      </Touchable>
-    </Cell>
-  )
+  renderItem = ({ item }) => {
+    const selected = this.isSelected(item)
 
-  renderCameraRoll = () => (
-    <FlatList
-      initialNumToRender={PAGE_SIZE}
-      getItemLayout={this.getItemLayout}
-      removeClippedSubviews
-      contentContainerStyle={{ padding: 5 }}
-      numColumns={2}
-      data={this.state.images}
-      keyExtractor={item => item.uri}
-      onEndReached={this.onEndReached}
-      renderItem={this.renderItem}
-    />
-  )
+    return (
+      <Cell>
+        <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
+          <Overlay selected={selected} />
+          <Image selected={selected} source={{ uri: item.uri }} />
+        </Touchable>
+      </Cell>
+    )
+  }
+
+  renderCameraRoll() {
+    return (
+      <FlatList
+        initialNumToRender={PAGE_SIZE}
+        getItemLayout={this.getItemLayout}
+        removeClippedSubviews
+        contentContainerStyle={{ padding: GUTTER }}
+        numColumns={2}
+        data={this.state.images}
+        keyExtractor={item => item.uri}
+        onEndReached={this.onEndReached}
+        renderItem={this.renderItem}
+      />
+    )
+  }
 
   render() {
-    const { photoPermission } = this.state
+    const { photoPermission, isLoading } = this.state
+    if (isLoading) return null
+
     return (
       <Base onPressIn={this.props.closeDropdown} activeOpacity={1} paddingTop={photoPermission}>
         {photoPermission ? (

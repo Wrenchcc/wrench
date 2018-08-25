@@ -1,7 +1,10 @@
 {
-	"ContactButton": {
-		"en": {
-			"contact": "Contact"
-		}
+  "ContactButton": {
+    "en": {
+      "contact": "Contact"
+    },
+    "sv": {
+      "contact": "Kontakt"
+    }
   }
 }
