@@ -16,4 +16,4 @@ Followers.propTypes = {
   opacity: PropTypes.number,
 }
 
-export default withLocalization(Followers, 'Followers')
+export default withLocalization(Followers, 'UiFollowers')

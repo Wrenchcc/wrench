@@ -8,11 +8,13 @@ let scrollView = null
 
 // TODO: Translate header
 class Followers extends Component {
-  static navigationOptions = {
+  static navigationOptions = ({ screenProps }) => ({
     headerTitle: (
-      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>Followers</HeaderTitle>
+      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
+        {screenProps.t('Followers.title')}
+      </HeaderTitle>
     ),
-  }
+  })
 
   static propTypes = {
     followers: PropTypes.array,

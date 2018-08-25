@@ -80,6 +80,9 @@
     "Comments": {
       "title": "Comments"
     },
+    "Followers": {
+      "title": "Followers"
+    },
     "SearchTab": {
       "people": "People",
       "projects": "Projects"
@@ -101,6 +104,9 @@
     "CommentField": {
       "placeholder": "Comment",
       "post": "Post"
+    },
+    "CommentItem": {
+      "reply": "Reply"
     },
     "List": {
       "loadMore": "Show 1 comment",
@@ -125,7 +131,7 @@
       "follow": "Follow this project",
       "unfollow": "Following"
     },
-    "Followers": {
+    "UiFollowers": {
       "followers_0": "0 followers",
       "followers_1": "1 follower",
       "followers_plural": "{{count, humanFormat}} followers"
@@ -231,6 +237,9 @@
     "Comments": {
       "title": "Kommentarer"
     },
+    "Followers": {
+      "title": "Följare"
+    },
     "SearchTab": {
       "people": "Personer",
       "projects": "Project"
@@ -252,6 +261,9 @@
     "CommentField": {
       "placeholder": "Kommentera",
       "post": "Skicka"
+    },
+    "CommentItem": {
+      "reply": "Svara"
     },
     "List": {
       "loadMore": "Visa 1 kommentar",
@@ -276,7 +288,7 @@
       "follow": "Följ projekt",
       "unfollow": "Följer"
     },
-    "Followers": {
+    "UiFollowers": {
       "followers_0": "0 följare",
       "followers_1": "1 följare",
       "followers_plural": "{{count, humanFormat}} följare"
