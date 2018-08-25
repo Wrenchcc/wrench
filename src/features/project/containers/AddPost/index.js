@@ -25,7 +25,7 @@ class AddPost extends Component {
       expanded: false,
       edit: false,
       picture: null,
-      pictures: [],
+      pictures: {},
       selectedProject: pathOr(null, ['projects', 0, 'node'], props),
     }
   }

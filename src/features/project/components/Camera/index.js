@@ -18,6 +18,7 @@ export default class Camera extends Component {
   }
 
   state = {
+    isLoading: true,
     type: RNCamera.Constants.Type.back,
     flashMode: RNCamera.Constants.FlashMode.off,
     cameraPermission: false,
@@ -25,6 +26,7 @@ export default class Camera extends Component {
 
   componentDidMount() {
     Permissions.check(PERMISSION).then(res => {
+      this.setState({ isLoading: false })
       if (res === AUTHORIZED) {
         this.enablePermission()
       }
@@ -69,13 +71,18 @@ export default class Camera extends Component {
     </RNCamera>
   )
 
-  render = () => (
-    <Base onPressIn={this.props.closeDropdown}>
-      {this.state.cameraPermission ? (
-        this.renderCamera()
-      ) : (
-        <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
-      )}
-    </Base>
-  )
+  render() {
+    const { cameraPermission, isLoading } = this.state
+    if (isLoading) return null
+
+    return (
+      <Base onPressIn={this.props.closeDropdown}>
+        {cameraPermission ? (
+          this.renderCamera()
+        ) : (
+          <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
+        )}
+      </Base>
+    )
+  }
 }

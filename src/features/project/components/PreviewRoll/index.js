@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll } from 'react-native'
+import { pathOr } from 'ramda'
+import { logError } from 'utils/analytics'
+
 import { cameraRoll } from 'images'
 import { Button, Preview, Icon } from './styles'
 
@@ -18,9 +21,13 @@ export default class PreviewRoll extends Component {
   }
 
   loadPreviewImage = async () => {
-    const data = await CameraRoll.getPhotos({ first: 1 })
-    const image = data.edges[0].node.image.uri
-    this.setState({ image })
+    try {
+      const data = await CameraRoll.getPhotos({ first: 1 })
+      const image = pathOr(false, ['edges', 0, 'node', 'image', 'uri'], data)
+      this.setState({ image })
+    } catch (err) {
+      logError(err)
+    }
   }
 
   render = () => (
