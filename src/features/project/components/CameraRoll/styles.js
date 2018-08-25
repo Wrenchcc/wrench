@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import FastImage from 'react-native-fast-image'
 import { COLORS, HEADER_HEIGHT } from 'ui/constants'
 
 export const Base = styled.TouchableOpacity`
@@ -12,8 +11,9 @@ export const Cell = styled.View`
   width: 50%;
 `
 
-export const Image = styled(FastImage)`
-  height: ${props => props.height}
+export const Image = styled.Image`
+  height: ${props => props.size}
+  width: ${props => props.size}
   border-width: 3px;
   border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')};
 `

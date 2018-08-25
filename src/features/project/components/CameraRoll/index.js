@@ -20,6 +20,7 @@ const removeByKey = (a, params) => {
   return a
 }
 
+// TODO: Change to use FastImage when support for assets-url://
 export default class CameraRoll extends Component {
   static propTypes = {
     pictures: PropTypes.array,
@@ -101,7 +102,7 @@ export default class CameraRoll extends Component {
         style={{ margin: GUTTER / 2 }}
       >
         <Overlay selected={this.isAdded(item)} />
-        <Image selected={this.isAdded(item)} source={{ uri: item.uri }} height={ITEM_SIZE} />
+        <Image selected={this.isAdded(item)} source={{ uri: item.uri }} size={ITEM_SIZE} />
       </Touchable>
     </Cell>
   )
