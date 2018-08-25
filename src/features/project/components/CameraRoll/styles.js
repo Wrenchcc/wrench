@@ -1,5 +1,11 @@
+import { Dimensions } from 'react-native'
 import styled from 'styled-components'
 import { COLORS, HEADER_HEIGHT } from 'ui/constants'
+
+const { width } = Dimensions.get('window')
+
+export const GUTTER = 5
+export const ITEM_SIZE = width / 2 - 15
 
 export const Base = styled.TouchableOpacity`
   padding-top: ${props => (props.paddingTop ? HEADER_HEIGHT : 0)};
@@ -12,10 +18,11 @@ export const Cell = styled.View`
 `
 
 export const Image = styled.Image`
-  height: ${props => props.size}
-  width: ${props => props.size}
-  border-width: 3px;
+  margin: ${GUTTER}px;
+  height: ${ITEM_SIZE};
+  width: ${ITEM_SIZE};
   border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')};
+  border-width: 3px;
 `
 
 export const Overlay = styled.View`

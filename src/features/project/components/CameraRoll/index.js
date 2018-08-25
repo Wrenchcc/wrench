@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll as RNCameraRoll, FlatList, Dimensions } from 'react-native'
+import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
 import Permissions from 'react-native-permissions'
 import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
 import AskForPermission from '../AskForPermission'
-import { Base, Cell, Image, Overlay } from './styles'
-
-const { width } = Dimensions.get('window')
+import { Base, Cell, Image, Overlay, GUTTER, ITEM_SIZE } from './styles'
 
 const PERMISSION = 'photo'
 const AUTHORIZED = 'authorized'
 const PAGE_SIZE = 10
-const GUTTER = 10
-const ITEM_SIZE = width / 2 - GUTTER
 
 // TODO: Change to use FastImage when support for assets-url://
 export default class CameraRoll extends Component {
@@ -92,13 +88,9 @@ export default class CameraRoll extends Component {
 
     return (
       <Cell>
-        <Touchable
-          hapticFeedback="impactLight"
-          onPress={() => this.toggleSelection(item)}
-          style={{ margin: GUTTER / 2 }}
-        >
+        <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
           <Overlay selected={selected} />
-          <Image selected={selected} source={{ uri: item.uri }} size={ITEM_SIZE} />
+          <Image selected={selected} source={{ uri: item.uri }} />
         </Touchable>
       </Cell>
     )
@@ -110,7 +102,7 @@ export default class CameraRoll extends Component {
         initialNumToRender={PAGE_SIZE}
         getItemLayout={this.getItemLayout}
         removeClippedSubviews
-        contentContainerStyle={{ padding: 5 }}
+        contentContainerStyle={{ padding: GUTTER }}
         numColumns={2}
         data={this.state.images}
         keyExtractor={item => item.uri}
