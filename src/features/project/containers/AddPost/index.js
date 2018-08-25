@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { KeyboardAvoidingView, Alert } from 'react-native'
-import { pathOr } from 'ramda'
+import { pathOr, isEmpty } from 'ramda'
 import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -71,7 +71,7 @@ class AddPost extends Component {
   renderHeaderRight = () => {
     const { page, edit, pictures } = this.state
 
-    if (!this.state.edit && page === CAMERA_ROLL_PAGE && pictures.length > 0) {
+    if (!this.state.edit && page === CAMERA_ROLL_PAGE && !isEmpty(pictures)) {
       return (
         <Text color="white" medium onPress={() => this.openEdit()}>
           {this.props.t('.next')}

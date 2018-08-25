@@ -78,6 +78,7 @@ export default class CameraRoll extends Component {
     if (this.isSelected(image)) {
       return addPictures(omit([image.uri], pictures))
     }
+
     return addPictures(items)
   }
 
