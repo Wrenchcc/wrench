@@ -149,9 +149,6 @@ const sections = props => ({
         {
           titleKey: 'knallpott',
         },
-        {
-          titleKey: 'hookie',
-        },
       ],
     },
   ],
