@@ -84,7 +84,7 @@
       "title": "Followers"
     },
     "SearchTab": {
-      "people": "People",
+      "users": "People",
       "projects": "Projects"
     },
     "OnboardingContent": {
@@ -241,8 +241,8 @@
       "title": "Följare"
     },
     "SearchTab": {
-      "people": "Personer",
-      "projects": "Project"
+      "users": "Personer",
+      "projects": "Projekt"
     },
     "OnboardingContent": {
       "headline": "Vad är du intresserad av?",
