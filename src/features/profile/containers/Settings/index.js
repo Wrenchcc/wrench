@@ -3,6 +3,7 @@ import { SectionList } from 'react-native'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
+import toggleUserNotificationSettingsMutation from 'graphql/mutations/user/toggleUserNotificationSettings'
 import withLocalization from 'i18n/withLocalization'
 import { Title, SelectionItem } from 'ui'
 import { AppStateConsumer } from 'AppState'
@@ -42,8 +43,8 @@ class Settings extends PureComponent {
   )
 
   render() {
-    const { navigation, notifications } = this.props
-    if (!notifications) return null
+    const { navigation, ...rest } = this.props
+
     return (
       <AppStateConsumer>
         {props => (
@@ -52,7 +53,7 @@ class Settings extends PureComponent {
             stickySectionHeadersEnabled={false}
             renderSectionHeader={this.renderSectionHeader}
             renderItem={this.renderItem}
-            sections={sections({ ...props, notifications })[navigation.state.routeName]}
+            sections={sections({ ...props, ...rest })[navigation.state.routeName]}
             keyExtractor={(item, index) => item + index}
             ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
           />
@@ -62,4 +63,7 @@ class Settings extends PureComponent {
   }
 }
 
-export default compose(getCurrentUserSettings)(withLocalization(Settings, 'Settings'))
+export default compose(
+  getCurrentUserSettings,
+  toggleUserNotificationSettingsMutation
+)(withLocalization(Settings, 'Settings'))

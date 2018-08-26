@@ -21,13 +21,18 @@ const generateLanguageSettings = props => {
   return items
 }
 
-const generateNotificationSettings = ({ notifications }) => {
+const generateNotificationSettings = ({ notifications, toggleNotificationSettings }) => {
+  if (!notifications) return null
+
   const types = Object.keys(notifications.types).filter(type => type !== '__typename')
   let items = []
 
   items = types.map(type => ({
     titleKey: `notifications.${type}`,
-    onPress: () => console.log('mutate'),
+    onPress: () => toggleNotificationSettings({
+      deliveryMethod: 'push',
+      notificationType: type,
+    }),
     type: 'switch',
     selected: notifications.types[type].push,
   }))

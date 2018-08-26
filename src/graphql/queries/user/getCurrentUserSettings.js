@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import { pathOr } from 'ramda'
 import { graphql } from 'react-apollo'
-import { isFetchingMore } from 'graphql/utils/networkStatus'
 import userSettingsFragment from 'graphql/fragments/user/userSettings'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
@@ -18,8 +17,7 @@ export const getCurrentUserSettingsQuery = gql`
 `
 
 const getCurrentUserSettingsOptions = {
-  props: ({ data, loading, networkStatus }) => ({
-    isFetching: loading || isFetchingMore(networkStatus),
+  props: ({ data }) => ({
     notifications: pathOr(null, ['user', 'settings', 'notifications'], data),
   }),
 }
