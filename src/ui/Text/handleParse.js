@@ -3,7 +3,12 @@ import { COLORS, FONTS } from 'ui/constants'
 
 // Actions
 const handleUrlPress = url => navigateToWebView({ url })
-const handleNamePress = username => console.log('here') || navigateToProfile({ slug: username })
+
+// TODO: Fix regex to return value without @
+const handleNamePress = name => {
+  const username = name.replace('@', '')
+  navigateToProfile({ user: { username } })
+}
 
 const styles = {
   link: {

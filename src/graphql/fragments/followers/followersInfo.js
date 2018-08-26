@@ -5,6 +5,7 @@ export default gql`
     edges {
       node {
         id
+        username
         fullName
         firstName
         lastName

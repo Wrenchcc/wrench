@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
-import { getUser } from 'graphql/queries/user/getUser'
+import { getUserByUsername } from 'graphql/queries/user/getUser'
 import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 
@@ -95,4 +95,4 @@ class Profile extends Component {
   }
 }
 
-export default compose(getUser)(Profile)
+export default compose(getUserByUsername)(Profile)
