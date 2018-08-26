@@ -28,18 +28,21 @@
       "logout": "Logout",
       "facebook": "Facebook",
       "contacts": "My contacts",
-      "followers": "Followers",
-      "comments": "Comments",
-      "mentions": "Mentions",
-      "articles": "Articles",
       "faq": "FAQ",
       "report": "Report a bug",
       "chat": "Chat with us",
       "knallpott": "Knallpott",
-      "hookie": "Hookie",
       "languages": {
         "en": "English",
         "sv": "Swedish"
+      },
+      "notifications": {
+        "newComment": "Comments",
+        "newMention": "Mentions",
+        "newArticle": "Articles",
+        "newFollower": "Followers",
+        "similarProjects": "Similar projects",
+        "productAnnouncements": "Product announcements"
       }
     },
     "AskForPermission": {
@@ -194,16 +197,20 @@
       "logout": "Logga ut",
       "facebook": "Facebook",
       "contacts": "Mina kontakter",
-      "followers": "Följare",
-      "comments": "Kommentarer",
-      "mentions": "Mentions",
-      "articles": "Artiklar",
       "faq": "FAQ",
       "report": "Rapportera en bugg",
       "chat": "Chatta med oss",
       "languages": {
         "en": "Engelska",
         "sv": "Svenska"
+      },
+      "notifications": {
+        "newComment": "Kommentarer",
+        "newMention": "Mentions",
+        "newArticle": "Artiklar",
+        "newFollower": "Följare",
+        "similarProjects": "Liknande projekt",
+        "productAnnouncements": "Product announcements"
       }
     },
     "AskForPermission": {

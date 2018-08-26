@@ -6,10 +6,10 @@ import { COLORS } from 'ui/constants'
 import { Base, Text, Icon } from './styles'
 import Selector from './types/Selector'
 
-const getActionType = ({ type, value, selected }) => {
+const getActionType = ({ type, selected, onPress }) => {
   switch (type) {
     case 'switch':
-      return <Switch onTintColor={COLORS.DARK} value={value} />
+      return <Switch onTintColor={COLORS.DARK} value={selected} onValueChange={onPress} />
     case 'selector':
       return <Selector selected={selected} />
     default:
@@ -17,8 +17,8 @@ const getActionType = ({ type, value, selected }) => {
   }
 }
 
-const SelectionItem = ({ title, onPress = () => {}, hasChildren, last, ...rest }) => (
-  <Base onPress={onPress} disables={!onPress} last={last}>
+const SelectionItem = ({ title, hasChildren, last, ...rest }) => (
+  <Base onPress={rest.onPress} disables={!rest.onPress} last={last}>
     <Text color={last && 'orange'}>{title}</Text>
     {hasChildren && <Icon source={arrowRight} />}
     {getActionType(rest)}

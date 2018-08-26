@@ -8,13 +8,33 @@ import { warn } from 'utils/logger'
 const WEBSITE_URL = 'https://wrench.cc'
 
 const generateLanguageSettings = props => {
+  const { supportedLanguages, currentLanguage, changeLanguage } = props
   let items = []
 
-  items = props.supportedLanguages.map(lang => ({
+  items = supportedLanguages.map(lang => ({
     titleKey: `languages.${lang}`,
-    onPress: () => props.currentLanguage !== lang && props.changeLanguage(lang),
+    onPress: () => currentLanguage !== lang && changeLanguage(lang),
     type: 'selector',
-    selected: props.currentLanguage === lang,
+    selected: currentLanguage === lang,
+  }))
+
+  return items
+}
+
+const generateNotificationSettings = ({ notifications, toggleNotificationSettings }) => {
+  if (!notifications) return null
+
+  const types = Object.keys(notifications.types).filter(type => type !== '__typename')
+  let items = []
+
+  items = types.map(type => ({
+    titleKey: `notifications.${type}`,
+    onPress: () => toggleNotificationSettings({
+      deliveryMethod: 'push',
+      notificationType: type,
+    }),
+    type: 'switch',
+    selected: notifications.types[type].push,
   }))
 
   return items
@@ -93,28 +113,7 @@ const sections = props => ({
   'push-notifications': [
     {
       headerTitle: 'push-notifications',
-      data: [
-        {
-          titleKey: 'followers',
-          type: 'switch',
-          value: true,
-        },
-        {
-          titleKey: 'comments',
-          type: 'switch',
-          value: false,
-        },
-        {
-          titleKey: 'mentions',
-          type: 'switch',
-          value: true,
-        },
-        {
-          titleKey: 'articles',
-          type: 'switch',
-          value: true,
-        },
-      ],
+      data: generateNotificationSettings(props),
     },
   ],
   language: [
