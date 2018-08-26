@@ -10,7 +10,8 @@ export const Base = styled.View`
 
 export const Image = styled.ImageBackground`
   margin: ${props => `${props.gutter / 2}px`}
-  height: ${props => props.height}
+  height: ${props => props.size}
+  width: ${props => props.size}
   border-width: 3px;
   border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')}
   flex: 1;
@@ -28,6 +29,5 @@ export const Overlay = styled.View`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: ${props =>
-    props.selected ? 'rgba(000, 000, 000, 0.6)' : 'rgba(000, 000, 000, 0.2)'};
+  background-color: ${props => props.selected ? 'rgba(000, 000, 000, 0.6)' : 'rgba(000, 000, 000, 0.2)'};
 `

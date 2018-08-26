@@ -1,14 +1,14 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getUserId } from 'navigation/utils/selectors'
+import { getUsername } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 
-export const getUserQuery = gql`
-  query getUser($id: ID!, $after: String) {
-    user(id: $id) {
+export const getUserByUsernameQuery = gql`
+  query getUserByUsername($username: LowercaseString!, $after: String) {
+    user(username: $username) {
       ...userInfo
       ...userPostsConnection
     }
@@ -18,18 +18,20 @@ export const getUserQuery = gql`
 `
 
 const LoadMorePosts = gql`
-  query loadMoreUserPosts($id: ID!, $after: String) {
-    user(id: $id) {
+  query loadMoreUserPosts($username: LowercaseString!, $after: String) {
+    user(username: $username) {
       ...userPostsConnection
     }
   }
   ${userPostsConnectionFragment}
 `
 
-const getUserOptions = {
+// Add response from api (can be a deeplink or a mention with just username)
+// TODO: Change order on user: { user, navigation } when api is done
+const getUserByUsernameOptions = {
   options: ({ navigation, after = null }) => ({
     variables: {
-      id: getUserId(navigation),
+      username: getUsername(navigation),
       after,
     },
     fetchPolicy: 'cache-and-network',
@@ -40,7 +42,10 @@ const getUserOptions = {
   }) => ({
     error,
     refetch,
-    user: pathOr(null, ['state', 'params', 'user'], navigation), // Pass user data from navigation,
+    user: {
+      ...user,
+      ...pathOr(user, ['state', 'params', 'user'], navigation),
+    },
     posts: pathOr(null, ['posts', 'edges'], user),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
     isRefetching: isRefetching(networkStatus),
@@ -49,7 +54,7 @@ const getUserOptions = {
       query: LoadMorePosts,
       variables: {
         after: user.posts.edges[user.posts.edges.length - 1].cursor,
-        id: user.id,
+        username: user.username,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.user) {
@@ -74,4 +79,4 @@ const getUserOptions = {
   }),
 }
 
-export const getUser = graphql(getUserQuery, getUserOptions)
+export const getUserByUsername = graphql(getUserByUsernameQuery, getUserByUsernameOptions)
