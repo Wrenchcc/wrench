@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import userSettingsFragment from 'graphql/fragments/user/userSettings'
 
+// TODO: Optimistic ui update
 export const toggleNotificationSettingsMutation = gql`
   mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
     toggleNotificationSettings(input: $input) {
