@@ -26,6 +26,7 @@ import com.facebook.reactnative.androidsdk.FBSDKPackage;
 
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
+import io.invertase.firebase.links.RNFirebaseLinksPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -58,6 +59,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebasePackage(),
           new RNFirebaseMessagingPackage(),
           new RNFirebaseAnalyticsPackage(),
+          new RNFirebaseLinksPackage(),
           new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
           new RNReactNativeHapticFeedbackPackage(),
           new LinearGradientPackage(),
