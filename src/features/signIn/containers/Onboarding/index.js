@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Dimensions, FlatList } from 'react-native'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
 import withStatusBar from 'navigation/utils/withStatusBar'
+import { getProjectCategories } from 'graphql/queries/project/getProjectCategories'
 import { editUser } from 'graphql/mutations/user/editUser'
 import withLocalization from 'i18n/withLocalization'
-import { Header, Touchable, Text } from 'ui'
-import getCategories from 'utils/getCategories'
+import { Header, Touchable, Text, Loader } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
 
@@ -20,6 +21,12 @@ const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
 class Onboarding extends Component {
+  static propTypes = {
+    editUser: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    categories: PropTypes.array,
+  }
+
   state = {
     items: {},
   }
@@ -71,7 +78,7 @@ class Onboarding extends Component {
   renderItem = ({ item }) => (
     <Cell key={item.id}>
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-        <Image selected={this.isAdded(item)} source={item.image} height={ITEM_SIZE} gutter={GUTTER}>
+        <Image selected={this.isAdded(item)} source={item.image} size={ITEM_SIZE} gutter={GUTTER}>
           <Overlay selected={false} />
           <Text color="white">{item.name}</Text>
         </Image>
@@ -79,22 +86,28 @@ class Onboarding extends Component {
     </Cell>
   )
 
-  render = () => (
-    <Base>
-      <Header headerRight={this.headerRight()} />
-      <FlatList
-        ListHeaderComponent={<Content />}
-        contentContainerStyle={{ padding: 5 }}
-        numColumns={2}
-        data={getCategories}
-        keyExtractor={item => item.id}
-        renderItem={this.renderItem}
-      />
-      <Footer progress={this.progress()} />
-    </Base>
-  )
+  render() {
+    const { isFetching, categories } = this.props
+
+    return (
+      <Base>
+        <Header headerRight={this.headerRight()} />
+        <FlatList
+          ListHeaderComponent={<Content />}
+          ListEmptyComponent={isFetching && <Loader color="grey" />}
+          contentContainerStyle={{ padding: 5, flex: isFetching ? 1 : 0 }}
+          numColumns={2}
+          data={categories}
+          keyExtractor={item => item.id}
+          renderItem={this.renderItem}
+        />
+        <Footer progress={this.progress()} />
+      </Base>
+    )
+  }
 }
 
-export default compose(editUser)(
-  withStatusBar(withLocalization(Onboarding, 'Onboarding'), { barStyle: 'light-content' })
-)
+export default compose(
+  getProjectCategories,
+  editUser
+)(withStatusBar(withLocalization(Onboarding, 'Onboarding'), { barStyle: 'light-content' }))
