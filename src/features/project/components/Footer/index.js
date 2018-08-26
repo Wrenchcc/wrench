@@ -67,7 +67,7 @@ export default class Footer extends Component {
       <Animated.View style={{ transform: [{ translateY: transformY }] }}>
         <Animated.View style={{ transform: [{ translateY }] }}>
           <Base>
-            <Share name={name} url={`${Config.DEEP_LINK_BASE}project/${id}`} />
+            <Share name={name} url={`${Config.WRENCH_DEEP_LINK_BASE}project/${id}`} />
             <Follow onPress={onFollowPress} following={following} />
           </Base>
         </Animated.View>
