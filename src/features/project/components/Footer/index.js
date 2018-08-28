@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Alert } from 'react-native'
-import Config from 'react-native-config'
 import { Share, Follow, ActionSheet } from 'ui'
 import { Base } from './styles'
 
 const FOOTER_HEIGHT = 90
 
-// TODO: Share website url or deeplink from firebase
 // TODO: Translate
 export default class Footer extends Component {
   static propTypes = {
     onFollowPress: PropTypes.func.isRequired,
     following: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
     translateY: PropTypes.object.isRequired,
   }
 
@@ -60,14 +58,14 @@ export default class Footer extends Component {
   }
 
   render() {
-    const { onFollowPress, name, id, following, translateY } = this.props
+    const { onFollowPress, name, slug, following, translateY } = this.props
     const { transformY } = this.state
 
     return (
       <Animated.View style={{ transform: [{ translateY: transformY }] }}>
         <Animated.View style={{ transform: [{ translateY }] }}>
           <Base>
-            <Share name={name} url={`${Config.WRENCH_DEEP_LINK_BASE}project/${id}`} />
+            <Share title={name} slug={`project/${slug}`} />
             <Follow onPress={onFollowPress} following={following} />
           </Base>
         </Animated.View>

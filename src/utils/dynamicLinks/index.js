@@ -1,28 +1,34 @@
-// import { links } from 'react-native-firebase'
-// import { navigateToProfile } from 'navigation'
-//
-// links()
-//   .getInitialLink()
-//   .then(url => {
-//     if (url) {
-//       console.log(url)
-//       navigateToProfile({ user: { username: 'pontus' } })
-//       // app opened from a url
-//     } else {
-//       console.log('not')
-//       // app NOT opened from a url
-//     }
-//   })
-//
-// // subscribe
-// links().onLink(url => {
-//   navigateToProfile({ user: { username: 'pontus' } })
-// })
+import { links } from 'react-native-firebase'
 
-// const link = new links.DynamicLink('https://wrench.cc/user/pontus', 'wrench.page.link').android
-//   .setPackageName('com.wrench')
-//   .ios.setBundleId('cc.wrench.app')
-//
-// links()
-//   .createShortDynamicLink(link, 'SHORT')
-//   .then(url => console.log(url))
+const BASE = 'https://wrench.cc'
+const DOMAIN = 'wrench.page.link'
+
+export const createDynamicLink = async ({
+  path,
+  title = false,
+  description = false,
+  image = false,
+  forcedRedirectEnabled = false,
+}) => {
+  const link = new links.DynamicLink(`${BASE}/${path}`, DOMAIN).android
+    .setPackageName('com.wrench')
+    .ios.setBundleId('cc.wrench.app')
+
+  if (title) {
+    link.social.setTitle(title)
+  }
+
+  if (description) {
+    link.social.setDescriptionText(description)
+  }
+
+  if (image) {
+    link.social.setImageUrl(image)
+  }
+
+  if (forcedRedirectEnabled) {
+    link.navigation.setForcedRedirectEnabled(forcedRedirectEnabled)
+  }
+
+  return links().createShortDynamicLink(link, 'SHORT')
+}

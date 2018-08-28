@@ -90,7 +90,7 @@ class Project extends Component {
       <Footer
         translateY={this.footerY}
         name={project.title}
-        id={project.id}
+        slug={project.slug}
         following={project.projectPermissions.isFollower}
         onFollowPress={this.toggleFollow}
       />

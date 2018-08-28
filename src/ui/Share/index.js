@@ -1,36 +1,43 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import NativeShare from 'react-native-share'
-import { track, events } from 'utils/analytics'
+import { track, events, logError } from 'utils/analytics'
 import hitSlop from 'utils/hitSlop'
 import { share } from 'images'
+import { createDynamicLink } from 'utils/dynamicLinks'
 import { Base, Button, Icon } from './styles'
 
-// TODO: Change deeplink to web or firebase deeplink
-const Share = ({ name, url }) => (
-  <Base>
-    <Button
-      hapticFeedback="impactLight"
-      onPress={() => {
-        track(events.PROJECT_SHARE_OPEN)
+export default class Share extends PureComponent {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+  }
 
-        NativeShare.open({
-          title: name,
-          url,
-        }).catch(() => {
-          track(events.PROJECT_SHARE_CLOSED)
-        })
-      }}
-      hitSlop={hitSlop(20)}
-    >
-      <Icon source={share} />
-    </Button>
-  </Base>
-)
+  createLink = async () => {
+    const { slug, title } = this.props
+    track(events.PROJECT_SHARE_OPEN)
 
-Share.propTypes = {
-  name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+    try {
+      const url = await createDynamicLink(slug)
+
+      NativeShare.open({
+        title,
+        url,
+      }).catch(() => {
+        track(events.PROJECT_SHARE_CLOSED)
+      })
+    } catch (err) {
+      logError(err)
+    }
+  }
+
+  render() {
+    return (
+      <Base>
+        <Button hapticFeedback="impactLight" onPress={this.createLink} hitSlop={hitSlop(20)}>
+          <Icon source={share} />
+        </Button>
+      </Base>
+    )
+  }
 }
-
-export default Share
