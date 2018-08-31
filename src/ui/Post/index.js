@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { navigateToProject, navigateToProfile } from 'navigation'
+import { navigateToProject, navigateToUser } from 'navigation'
 import { Avatar, Carousel, Comments } from 'ui'
 import { Base, Top, Title, Content, Caption } from './styled'
 
@@ -21,7 +21,7 @@ export default class Post extends PureComponent {
 
   goToProfile = () => {
     const { user } = this.props.data
-    navigateToProfile({ user })
+    navigateToUser({ user })
   }
 
   render() {

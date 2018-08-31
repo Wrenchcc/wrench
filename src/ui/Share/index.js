@@ -10,15 +10,15 @@ import { Base, Button, Icon } from './styles'
 export default class Share extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
   }
 
   createLink = async () => {
-    const { slug, title } = this.props
+    const { path, title } = this.props
     track(events.PROJECT_SHARE_OPEN)
 
     try {
-      const url = await createDynamicLink(slug)
+      const url = await createDynamicLink({ path })
 
       NativeShare.open({
         title,

@@ -1,4 +1,4 @@
-import { navigateToWebView, navigateToProfile } from 'navigation/actions'
+import { navigateToWebView, navigateToUser } from 'navigation/actions'
 import { COLORS, FONTS } from 'ui/constants'
 
 // Actions
@@ -7,7 +7,7 @@ const handleUrlPress = url => navigateToWebView({ url })
 // TODO: Fix regex to return value without @
 const handleNamePress = name => {
   const username = name.replace('@', '')
-  navigateToProfile({ user: { username } })
+  navigateToUser({ user: { username } })
 }
 
 const styles = {

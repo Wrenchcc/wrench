@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Animated } from 'react-native'
-import { navigateToProfile } from 'navigation'
+import { navigateToUser } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import { Avatar, Text, TimeAgo } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -35,11 +35,11 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
         <Avatar
           uri={user.avatarUrl}
           size={isReply ? 20 : 30}
-          onPress={() => navigateToProfile({ user })}
+          onPress={() => navigateToUser({ user })}
         />
         <Content>
           <Row style={{ flexDirection: 'column' }}>
-            <Text fontSize={15} bold onPress={() => navigateToProfile({ user })}>
+            <Text fontSize={15} bold onPress={() => navigateToUser({ user })}>
               {`${user.fullName} `}
             </Text>
             <Text fontSize={15}>{text}</Text>
