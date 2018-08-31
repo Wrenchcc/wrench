@@ -5,6 +5,7 @@ export default gql`
     id
     title
     slug
+    dynamicLink
     projectPermissions {
       isOwner
       isFollower
