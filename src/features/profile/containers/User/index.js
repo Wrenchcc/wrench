@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { equals } from 'ramda'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
@@ -56,6 +57,13 @@ class User extends Component {
         outputRange: [0, 1],
       }),
     })
+  }
+
+  // Add user to navigationOptions when loaded
+  componentWillReceiveProps(nextProps) {
+    if (!equals(this.props.user, nextProps.user)) {
+      this.props.navigation.setParams({ user: nextProps.user })
+    }
   }
 
   componentWillUnmont() {

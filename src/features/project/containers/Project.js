@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { pathOr } from 'ramda'
+import { pathOr, equals } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
 import { navigateToUser } from 'navigation'
@@ -70,6 +70,13 @@ class Project extends Component {
         outputRange: [0, 1],
       }),
     })
+  }
+
+  // Add project to navigationOptions when loaded
+  componentWillReceiveProps(nextProps) {
+    if (!equals(this.props.project, nextProps.project)) {
+      this.props.navigation.setParams({ project: nextProps.project })
+    }
   }
 
   // TODO: Mutate state

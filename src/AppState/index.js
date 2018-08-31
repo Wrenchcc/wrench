@@ -6,7 +6,6 @@ import createClient from 'graphql/createClient'
 import { getTokens } from 'graphql/utils/auth'
 import { setLocale, languages } from 'i18n'
 import { track, events, logError } from 'utils/analytics'
-import 'utils/dynamicLinks/events'
 
 const { Provider, Consumer } = React.createContext()
 
