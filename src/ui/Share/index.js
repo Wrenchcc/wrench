@@ -12,7 +12,7 @@ export default class Share extends PureComponent {
     url: PropTypes.string.isRequired,
   }
 
-  createLink = () => {
+  openShare = () => {
     const { url, title } = this.props
     track(events.PROJECT_SHARE_OPEN)
 
@@ -27,7 +27,7 @@ export default class Share extends PureComponent {
   render() {
     return (
       <Base>
-        <Button hapticFeedback="impactLight" onPress={this.createLink} hitSlop={hitSlop(20)}>
+        <Button hapticFeedback="impactLight" onPress={this.openShare} hitSlop={hitSlop(20)}>
           <Icon source={share} />
         </Button>
       </Base>
