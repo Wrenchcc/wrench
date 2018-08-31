@@ -2,6 +2,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
+import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 export const getNotificationsQuery = gql`
   query getNotifications($after: String) {
@@ -15,15 +16,7 @@ export const getNotificationsQuery = gql`
             ...userInfo
           }
           project {
-            id
-            title
-            projectPermissions {
-              isOwner
-              isFollower
-            }
-            followers: followersConnection {
-              totalCount
-            }
+            ...projectInfo
           }
           comment {
             id
@@ -36,6 +29,7 @@ export const getNotificationsQuery = gql`
     }
   }
   ${userInfoFragment}
+  ${projectInfoFragment}
 `
 
 const getNotificationsOptions = {

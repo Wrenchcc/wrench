@@ -13,6 +13,7 @@ export const searchProjectsQuery = gql`
         node {
           ... on Project {
             id
+            slug
             title
             images: imagesConnection(first: 6, maxWidth: 335, maxHeight: 335) {
               edges {
@@ -28,6 +29,7 @@ export const searchProjectsQuery = gql`
             user {
               ...userInfo
             }
+            dynamicLink
             projectPermissions {
               isFollower
               isOwner
