@@ -21,7 +21,7 @@ class Projects extends PureComponent {
     const params = {
       user: item.node.user,
       project: {
-        id: item.node.id,
+        slug: item.node.slug,
         title: item.node.title,
         followers: item.node.followers,
         projectPermissions: item.node.projectPermissions,

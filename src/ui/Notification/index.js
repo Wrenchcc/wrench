@@ -14,7 +14,7 @@ const NOTIFICATION_TYPES = {
 const onPress = data => {
   switch (data.type) {
     case NOTIFICATION_TYPES.FOLLOW:
-      return navigateToProject({ id: data.id, user: data.user, project: data.project })
+      return navigateToProject({ slug: data.slug, user: data.user, project: data.project })
     case NOTIFICATION_TYPES.COMMENT:
     case NOTIFICATION_TYPES.REPLY:
       return navigateToComments({
