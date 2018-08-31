@@ -4,11 +4,9 @@ import { Title } from 'ui'
 import { navigateToFollowers } from 'navigation'
 import { Base, ProjectName, Followers } from './styles'
 
-// TODO: PropTypes
 export default class Header extends PureComponent {
   static propTypes = {
-    // name: PropTypes.string.isRequired,
-    // followers: PropTypes.number.isRequired,
+    project: PropTypes.object.isRequired,
   }
 
   goToFollowers = () => {

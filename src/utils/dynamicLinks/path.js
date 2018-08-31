@@ -9,12 +9,14 @@ export const navigateBasedOnPath = url => compose(
     const routeName = pathOr(null, [0], path)
     let params
 
+    const param = pathOr(null, [1], path)
+
     switch (routeName) {
       case 'project':
-        params = { project: { slug: pathOr(null, [1], path) } }
+        params = { project: { slug: param } }
         break
       case 'user':
-        params = { user: { username: pathOr(null, [1], path) } }
+        params = { user: { username: param } }
         break
       default:
     }

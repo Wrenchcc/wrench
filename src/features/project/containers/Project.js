@@ -15,12 +15,14 @@ const START_OPACITY = 50
 
 let scrollView = null
 
+// TODO: Load user data from project?
 class Project extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
     const projectTitle = pathOr(false, ['project', 'title'], params)
     const goToProfile = () => navigateToUser({ user: params.user })
+    const avatarUrl = pathOr(null, ['user', 'avatarUrl'], params)
 
     return {
       headerTitle: projectTitle && (
@@ -34,7 +36,7 @@ class Project extends Component {
       headerRight: isOwner ? (
         <Edit project={params.project} />
       ) : (
-        <Avatar uri={params.user.avatarUrl} onPress={goToProfile} />
+        <Avatar uri={avatarUrl || ''} onPress={goToProfile} />
       ),
     }
   }
@@ -92,9 +94,8 @@ class Project extends Component {
 
   renderFooter = () => {
     const { project } = this.props
-
     return (
-      project && (
+      project.projectPermissions && (
         <Footer
           translateY={this.footerY}
           name={project.title}
@@ -115,7 +116,7 @@ class Project extends Component {
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={project && <Header project={project} />}
+          ListHeaderComponent={project.title && <Header project={project} />}
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}

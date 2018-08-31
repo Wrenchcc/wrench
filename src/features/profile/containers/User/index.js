@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { equals } from 'ramda'
+import { pathOr, equals } from 'ramda'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
@@ -12,20 +12,21 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-// TODO: Add share title
 class User extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
+    const fullName = pathOr(false, ['user', 'fullName'], params)
+
     return {
-      headerTitle: params.user && (
+      headerTitle: fullName && (
         <HeaderTitle
           opacity={params.opacity || new Animated.Value(0)}
           onPress={() => scrollView.scrollToOffset({ offset: 0 })}
         >
-          {params.user.fullName}
+          {fullName}
         </HeaderTitle>
       ),
-      headerRight: params.user && <Share title="Share user" url={params.user.dynamicLink} />,
+      headerRight: fullName && <Share title={fullName} url={params.user.dynamicLink} />,
       tabBarOnPress: ({ navigation, defaultHandler }) => {
         if (navigation.isFocused()) {
           scrollView.scrollToOffset({ offset: 0 })
