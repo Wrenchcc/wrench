@@ -1,14 +1,14 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getProjectId } from 'navigation/utils/selectors'
+import { getProjectSlug } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectPostsConnectionFragment from 'graphql/fragments/project/postsConnection'
 
-const getProjectQuery = gql`
-  query getProject($id: ID!, $after: String) {
-    project(id: $id) {
+const getProjectBySlugQuery = gql`
+  query getProjectBySlugQuery($slug: LowercaseString!, $after: String) {
+    project(slug: $slug) {
       ...projectInfo
       ...projectPostsConnection
     }
@@ -18,8 +18,8 @@ const getProjectQuery = gql`
 `
 
 const LoadMorePosts = gql`
-  query loadMoreProjectPosts($id: ID!, $after: String) {
-    project(id: $id) {
+  query loadMoreProjectPosts($slug: LowercaseString!, $after: String) {
+    project(slug: $slug) {
       ...projectPostsConnection
     }
   }
@@ -29,7 +29,7 @@ const LoadMorePosts = gql`
 const getProjectOptions = {
   options: ({ navigation, after = null }) => ({
     variables: {
-      id: getProjectId(navigation),
+      slug: getProjectSlug(navigation),
       after,
     },
     fetchPolicy: 'cache-and-network',
@@ -40,7 +40,10 @@ const getProjectOptions = {
   }) => ({
     error,
     refetch,
-    project: pathOr(null, ['state', 'params', 'project'], navigation), // Pass project data from navigation,
+    project: {
+      ...project,
+      ...pathOr(null, ['state', 'params', 'project'], navigation),
+    },
     posts: pathOr(null, ['posts', 'edges'], project),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
     isRefetching: isRefetching(networkStatus),
@@ -49,7 +52,7 @@ const getProjectOptions = {
       query: LoadMorePosts,
       variables: {
         after: project.posts.edges[project.posts.edges.length - 1].cursor,
-        id: project.id,
+        slug: project.slug,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.project) {
@@ -74,4 +77,4 @@ const getProjectOptions = {
   }),
 }
 
-export const getProject = graphql(getProjectQuery, getProjectOptions)
+export const getProject = graphql(getProjectBySlugQuery, getProjectOptions)
