@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
-import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
+import { InfiniteList, Post, Share, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 
 const HEADER_HEIGHT = 100
@@ -11,7 +11,8 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-class Profile extends Component {
+// TODO: Add share title
+class User extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
@@ -23,6 +24,7 @@ class Profile extends Component {
           {params.user.fullName}
         </HeaderTitle>
       ),
+      headerRight: params.user && <Share title="Share user" url={params.user.dynamicLink} />,
       tabBarOnPress: ({ navigation, defaultHandler }) => {
         if (navigation.isFocused()) {
           scrollView.scrollToOffset({ offset: 0 })
@@ -95,4 +97,4 @@ class Profile extends Component {
   }
 }
 
-export default compose(getUserByUsername)(Profile)
+export default compose(getUserByUsername)(User)
