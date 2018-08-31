@@ -4,7 +4,7 @@ import { Animated } from 'react-native'
 import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
-import { navigateToProfile } from 'navigation'
+import { navigateToUser } from 'navigation'
 import { InfiniteList, Post, Avatar, HeaderTitle, Edit } from 'ui'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -20,7 +20,7 @@ class Project extends Component {
     const params = navigation.state.params || {}
     const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
     const projectTitle = pathOr(false, ['project', 'title'], params)
-    const goToProfile = () => navigateToProfile({ user: params.user })
+    const goToProfile = () => navigateToUser({ user: params.user })
 
     return {
       headerTitle: projectTitle && (
@@ -87,13 +87,15 @@ class Project extends Component {
     const { project } = this.props
 
     return (
-      <Footer
-        translateY={this.footerY}
-        name={project.title}
-        slug={project.slug}
-        following={project.projectPermissions.isFollower}
-        onFollowPress={this.toggleFollow}
-      />
+      project && (
+        <Footer
+          translateY={this.footerY}
+          name={project.title}
+          dynamicLink={project.dynamicLink}
+          following={project.projectPermissions.isFollower}
+          onFollowPress={this.toggleFollow}
+        />
+      )
     )
   }
 
@@ -106,7 +108,7 @@ class Project extends Component {
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={<Header project={project} />}
+          ListHeaderComponent={project && <Header project={project} />}
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}
