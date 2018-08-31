@@ -11,6 +11,7 @@ target 'Wrench' do
   pod 'FBSDKShareKit'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
 
   # Will try to install React when running `pod update`
   # pod 'RNReactNativeHapticFeedback', :path => '../node_modules/react-native-haptic-feedback'

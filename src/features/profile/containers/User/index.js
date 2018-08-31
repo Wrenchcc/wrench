@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { pathOr, equals } from 'ramda'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
-import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
+import { InfiniteList, Post, Share, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 
 const HEADER_HEIGHT = 100
@@ -11,18 +12,21 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-class Profile extends Component {
+class User extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
+    const fullName = pathOr(false, ['user', 'fullName'], params)
+
     return {
-      headerTitle: params.user && (
+      headerTitle: fullName && (
         <HeaderTitle
           opacity={params.opacity || new Animated.Value(0)}
           onPress={() => scrollView.scrollToOffset({ offset: 0 })}
         >
-          {params.user.fullName}
+          {fullName}
         </HeaderTitle>
       ),
+      headerRight: fullName && <Share title={fullName} url={params.user.dynamicLink} />,
       tabBarOnPress: ({ navigation, defaultHandler }) => {
         if (navigation.isFocused()) {
           scrollView.scrollToOffset({ offset: 0 })
@@ -54,6 +58,13 @@ class Profile extends Component {
         outputRange: [0, 1],
       }),
     })
+  }
+
+  // Add user to navigationOptions when loaded
+  componentWillReceiveProps(nextProps) {
+    if (!equals(this.props.user, nextProps.user)) {
+      this.props.navigation.setParams({ user: nextProps.user })
+    }
   }
 
   componentWillUnmont() {
@@ -95,4 +106,4 @@ class Profile extends Component {
   }
 }
 
-export default compose(getUserByUsername)(Profile)
+export default compose(getUserByUsername)(User)

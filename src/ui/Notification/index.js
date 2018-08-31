@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withLocalization from 'i18n/withLocalization'
-import { navigateToProfile, navigateToProject, navigateToComments } from 'navigation'
+import { navigateToUser, navigateToProject, navigateToComments } from 'navigation'
 import { Avatar, Text, TimeAgo } from 'ui'
 import { Base, Content, Bottom } from './styles'
 
@@ -46,10 +46,10 @@ const Notification = ({ data, t }) => (
     <Avatar
       uri={data.user.avatarUrl}
       size={40}
-      onPress={() => navigateToProfile({ user: data.user })}
+      onPress={() => navigateToUser({ user: data.user })}
     />
     <Content>
-      <Text onPress={() => navigateToProfile({ user: data.user })}>{data.user.fullName}</Text>
+      <Text onPress={() => navigateToUser({ user: data.user })}>{data.user.fullName}</Text>
       <Bottom>
         <Text color="light_grey" fontSize={15} onPress={() => onPress(data)}>
           {description(data, t)}

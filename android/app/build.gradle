@@ -157,6 +157,7 @@ dependencies {
     implementation project(':react-native-camera')
     implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation "com.google.firebase:firebase-messaging:17.0.0"
+    implementation "com.google.firebase:firebase-invites:16.0.3"
     implementation(project(':react-native-firebase')) {
         transitive = false
     }

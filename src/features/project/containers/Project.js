@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { pathOr } from 'ramda'
+import { pathOr, equals } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
-import { navigateToProfile } from 'navigation'
+import { navigateToUser } from 'navigation'
 import { InfiniteList, Post, Avatar, HeaderTitle, Edit } from 'ui'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -15,12 +15,14 @@ const START_OPACITY = 50
 
 let scrollView = null
 
+// TODO: Load user data from project?
 class Project extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
     const projectTitle = pathOr(false, ['project', 'title'], params)
-    const goToProfile = () => navigateToProfile({ user: params.user })
+    const goToProfile = () => navigateToUser({ user: params.user })
+    const avatarUrl = pathOr(null, ['user', 'avatarUrl'], params)
 
     return {
       headerTitle: projectTitle && (
@@ -34,7 +36,7 @@ class Project extends Component {
       headerRight: isOwner ? (
         <Edit project={params.project} />
       ) : (
-        <Avatar uri={params.user.avatarUrl} onPress={goToProfile} />
+        <Avatar uri={avatarUrl || ''} onPress={goToProfile} />
       ),
     }
   }
@@ -72,6 +74,13 @@ class Project extends Component {
     })
   }
 
+  // Add project to navigationOptions when loaded
+  componentWillReceiveProps(nextProps) {
+    if (!equals(this.props.project, nextProps.project)) {
+      this.props.navigation.setParams({ project: nextProps.project })
+    }
+  }
+
   // TODO: Mutate state
   toggleFollow = () => {}
 
@@ -85,15 +94,16 @@ class Project extends Component {
 
   renderFooter = () => {
     const { project } = this.props
-
     return (
-      <Footer
-        translateY={this.footerY}
-        name={project.title}
-        id={project.id}
-        following={project.projectPermissions.isFollower}
-        onFollowPress={this.toggleFollow}
-      />
+      project.projectPermissions && (
+        <Footer
+          translateY={this.footerY}
+          name={project.title}
+          dynamicLink={project.dynamicLink}
+          following={project.projectPermissions.isFollower}
+          onFollowPress={this.toggleFollow}
+        />
+      )
     )
   }
 
@@ -106,7 +116,7 @@ class Project extends Component {
         <InfiniteList
           defaultPaddingTop
           withKeyboardHandler
-          ListHeaderComponent={<Header project={project} />}
+          ListHeaderComponent={project.title && <Header project={project} />}
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}

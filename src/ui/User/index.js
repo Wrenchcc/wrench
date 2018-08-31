@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import withLocalization from 'i18n/withLocalization'
 import { Avatar, Text } from 'ui'
-import { navigateToProfile } from 'navigation'
+import { navigateToUser } from 'navigation'
 import { Base, Content } from './styles'
 
 class User extends PureComponent {
@@ -12,7 +12,7 @@ class User extends PureComponent {
 
   goToProfile = () => {
     const { data } = this.props
-    navigateToProfile({ user: data })
+    navigateToUser({ user: data })
   }
 
   render() {

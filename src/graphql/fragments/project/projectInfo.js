@@ -4,6 +4,8 @@ export default gql`
   fragment projectInfo on Project {
     id
     title
+    slug
+    dynamicLink
     projectPermissions {
       isOwner
       isFollower

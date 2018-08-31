@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { Title, Avatar } from 'ui'
 import { Base, Username } from './styles'
 
-const Header = ({ user, spacingHorizontal = false }) => (
+const Header = ({ user: { firstName, lastName, avatarUrl = '' }, spacingHorizontal = false }) => (
   <Base spacingHorizontal={spacingHorizontal}>
     <Username>
-      <Title medium>{user.firstName}</Title>
-      <Title medium>{user.lastName}</Title>
+      <Title medium>{firstName}</Title>
+      <Title medium>{lastName}</Title>
     </Username>
-    <Avatar size={80} uri={user.avatarUrl} />
+    <Avatar size={80} uri={avatarUrl} />
   </Base>
 )
 

@@ -8,21 +8,24 @@
  */
 
 #import "AppDelegate.h"
-#import <CodePush/CodePush.h>
-#import "RNSplashScreen.h"
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+#import <CodePush/CodePush.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "RNSplashScreen.h"
+
 #import "RNFirebaseNotifications.h"
 #import "RNFirebaseMessaging.h"
+#import "RNFirebaseLinks.h"
+
 
 @import Firebase;
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [FIROptions defaultOptions].deepLinkURLScheme = @"wrench"; // Custom url type for dynamic links
   [FIRApp configure];
   [RNFirebaseNotifications configure];
 
@@ -61,6 +64,7 @@
       annotation:annotation];
 }
 
+// Push Notifications
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
   [[RNFirebaseNotifications instance] didReceiveLocalNotification:notification];
 }
@@ -72,6 +76,19 @@
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
   [[RNFirebaseMessaging instance] didRegisterUserNotificationSettings:notificationSettings];
+}
+
+// Dynamic links
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+    return [[RNFirebaseLinks instance] application:application openURL:url options:options];
+}
+
+- (BOOL)application:(UIApplication *)application
+continueUserActivity:(NSUserActivity *)userActivity
+ restorationHandler:(void (^)(NSArray *))restorationHandler {
+     return [[RNFirebaseLinks instance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
 }
 
 @end

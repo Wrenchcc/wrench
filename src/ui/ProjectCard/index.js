@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { navigateToProfile } from 'navigation'
+import { navigateToUser } from 'navigation'
 import { Gallery } from 'ui'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Avatar } from './styles'
 
@@ -15,7 +15,7 @@ export default class ProjectCard extends PureComponent {
 
   goToProfile = () => {
     const { user } = this.props
-    navigateToProfile({ user })
+    navigateToUser({ user })
   }
 
   render() {

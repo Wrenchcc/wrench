@@ -26,7 +26,6 @@ const LoadMorePosts = gql`
   ${userPostsConnectionFragment}
 `
 
-// Add response from api (can be a deeplink or a mention with just username)
 // TODO: Change order on user: { user, navigation } when api is done
 const getUserByUsernameOptions = {
   options: ({ navigation, after = null }) => ({

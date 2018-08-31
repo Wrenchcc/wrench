@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { navigateToProfile, navigateToComments } from 'navigation'
+import { navigateToUser, navigateToComments } from 'navigation'
 import withLocalization from 'i18n/withLocalization'
 import Text from 'ui/Text'
 import { Row, Comment, LoadMore } from './styles'
@@ -16,7 +16,7 @@ class List extends PureComponent {
   }
 
   goToProfile = user => {
-    navigateToProfile({ user })
+    navigateToUser({ user })
   }
 
   renderComment = ({ node }) => (
