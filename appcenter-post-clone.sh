@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "Blahblah..."
+
 cd mobile
 
 set -ex
