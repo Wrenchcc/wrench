@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "apollo-server": "^2.0.5",
+    "apollo-upload-server": "^7.0.0",
+    "graphql-date": "^1.0.3",
     "faker": "^4.1.0",
     "firebase-admin": "^6.0.0",
     "graphql": "^14.0.0",
@@ -17,9 +19,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "apollo-upload-server": "^7.0.0",
     "dotenv-cli": "^1.4.0",
-    "graphql-date": "^1.0.3",
     "nodemon": "^1.18.4",
     "prettier": "^1.14.2",
     "ts-node": "^7.0.1",
