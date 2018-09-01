@@ -45,8 +45,9 @@ export default {
       dynamicLink: "https://wrench.page.link/yT3A",
       projectPermissions: {
         isFollower: true,
-        isOwner: true
+        isOwner: false
       },
+      user: generateUser(),
       followersConnection,
       postsConnection
     }),

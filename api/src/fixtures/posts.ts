@@ -14,7 +14,7 @@ export default () => [
         "During the build the already minimalistic lines of the BMW have been cleared. http://www.bikeexif.com",
       videos: null,
       imagesConnection: { edges: images() },
-      user: generateUser(),
+      user: generateUser("1"),
       commentConnection: {
         totalCount: 1300,
         edges: comments().slice(0, 2)
@@ -31,7 +31,7 @@ export default () => [
         },
         slug: "the-natural",
         title: "BMW R100 Project",
-        owner: generateUser("1")
+        user: generateUser("1")
       }
     }
   },
@@ -45,7 +45,7 @@ export default () => [
         "I used my favorite material, steel. @pontus Following I started over with a wireframe out of steel rods. It allowed me to check the shape constantly and it was much easier to adj…",
       videos: null,
       imagesConnection: { edges: images() },
-      user: generateUser(),
+      user: generateUser("2"),
       commentConnection: {
         totalCount: 1300,
         edges: comments().slice(0, 2)
@@ -62,7 +62,7 @@ export default () => [
         },
         slug: "the-natural",
         title: "Honda CB750 1981",
-        owner: generateUser("2")
+        user: generateUser("2")
       }
     }
   },
@@ -76,7 +76,7 @@ export default () => [
         "The job I've not been looking forward to. https://wrench.cc Sanding the cowl and the front fender for the GS550",
       videos: null,
       imagesConnection: { edges: images() },
-      user: generateUser(),
+      user: generateUser("3"),
       commentConnection: {
         totalCount: 1300,
         edges: comments().slice(0, 2)
@@ -93,7 +93,7 @@ export default () => [
         },
         slug: "the-natural",
         title: "R100 Scrambler",
-        owner: generateUser("3")
+        user: generateUser("3")
       }
     }
   },
@@ -107,7 +107,7 @@ export default () => [
         "The job I've not been looking forward to. Sanding the cowl and the front fender for the GS550",
       videos: null,
       imagesConnection: { edges: images() },
-      user: generateUser(),
+      user: generateUser("4"),
       commentConnection: {
         totalCount: 1300,
         edges: comments().slice(0, 2)
@@ -124,7 +124,7 @@ export default () => [
         },
         slug: "the-natural",
         title: "The Natural CB750",
-        owner: generateUser("4")
+        user: generateUser("4")
       }
     }
   },
@@ -139,7 +139,7 @@ export default () => [
       videos: null,
       imagesConnection: { edges: images() },
 
-      user: generateUser(),
+      user: generateUser("5"),
       commentConnection: {
         totalCount: 1300,
         edges: comments().slice(0, 2)
@@ -156,7 +156,7 @@ export default () => [
         },
         slug: "the-natural",
         title: "BMW R100 Project",
-        owner: generateUser("5")
+        user: generateUser("5")
       }
     }
   },
@@ -188,7 +188,7 @@ export default () => [
         },
         slug: "the-natural",
         title: "Scrambler",
-        owner: generateUser("6")
+        user: generateUser()
       }
     }
   }
