@@ -1,8 +1,13 @@
-<div>
-[![Wrench](https://wrench.cc/assets/img/logo.svg)](https://wrench.cc)
-</div>
+<div align="center">
+<img src="https://wrench.cc/assets/img/logo.svg" width="20%">
 
 ### Post, explore and learn.
+
+</div>
+
+This is the main monorepo codebase of [Wrench](https://wrench.cc). Every single line of code that's not packaged into a reusable library is in this repository.
+
+## What is Wrench?
 
 To be the goto community for people that like to build and keep track of their motorcycle build progress.
 
