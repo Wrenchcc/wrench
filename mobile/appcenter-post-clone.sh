@@ -7,4 +7,4 @@ curl "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.pkg" > "$HO
 sudo installer -store -pkg "$HOME/Downloads/node-installer.pkg" -target "/"
 
 echo "Install librsvg"
-npm install librsvg-prebuilt
+brew install librsvg

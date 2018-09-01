@@ -35,14 +35,7 @@ function transformSVG() {
     return acc
   }, [])
 
-  console.log(yellow(`Transforming ${files.length} SVGs into ${tasks.length} PNG variations...`))
-
-  async.eachLimit(tasks, NUM_CORES, transformSVGTask, err => {
-    if (err) {
-      throw err
-    }
-    console.log(green('Done!'))
-  })
+  console.log(green(`Transforming ${files.length} SVGs into ${tasks.length} PNG variations...`))
 }
 
 function transformSVGTask({ multiplier, file, output, verbose }, callback) {
