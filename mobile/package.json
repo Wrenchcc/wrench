@@ -10,7 +10,8 @@
     "run:android": "tasks/run_android",
     "run:ios": "tasks/run_ios",
     "assets:transform:svg": "tasks/assets_transform",
-    "translations:create": "tasks/translations_create"
+    "translations:create": "tasks/translations_create",
+    "postinstall": "tasks/assets_transform"
   },
   "rnpm": {
     "assets": [
