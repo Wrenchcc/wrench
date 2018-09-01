@@ -8,7 +8,6 @@ import { Base, Content, Row, Reply } from './styles'
 
 // TODO: Refactor and fix date
 // TODO: Pass correct data to profile
-// TODO: Make user in comment clickalbe (flex problem)
 const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null, t }) => {
   const animatedValue = new Animated.Value(0)
 
@@ -39,10 +38,10 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
         />
         <Content>
           <Row style={{ flexDirection: 'column' }}>
-            <Text fontSize={15} bold onPress={() => navigateToUser({ user })}>
+            <Text fontSize={15} bold>
               {`${user.fullName} `}
+              <Text fontSize={15}>{text}</Text>
             </Text>
-            <Text fontSize={15}>{text}</Text>
           </Row>
           <Row>
             <TimeAgo date={createdAt} />
