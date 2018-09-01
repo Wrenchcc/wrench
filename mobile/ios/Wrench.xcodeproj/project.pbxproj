@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -44,6 +43,7 @@
 		D2BB7A9B2087515D00135C1D /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BB7A9A2087513600135C1D /* libSplashScreen.a */; };
 		D2D98FBE208DD11D00410A13 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D98FB5208DD11100410A13 /* libRNDeviceInfo.a */; };
 		EA52BD5D2E68B225F9D400B4 /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E2EC5993376B076BB74F28 /* libPods-Wrench.a */; };
+		A02BED9C32DA4B5C8609ACC6 /* libRNRate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8367F0F1C7142AFAD5FB969 /* libRNRate.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -491,6 +491,8 @@
 		E80B1F31D805EB6F76E84E50 /* Pods-Wrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wrench/Pods-Wrench.debug.xcconfig"; sourceTree = "<group>"; };
 		EDBD3E73648B4CFFBE3D49B4 /* inter_ui_bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_bold.ttf; path = ../assets/fonts/inter_ui_bold.ttf; sourceTree = "<group>"; };
 		EDC95D1E86E64D3EB9631044 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
+		07335A0E27EC4779AD2A401A /* RNRate.xcodeproj */ = {isa = PBXFileReference; name = "RNRate.xcodeproj"; path = "../node_modules/react-native-rate/ios/RNRate.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B8367F0F1C7142AFAD5FB969 /* libRNRate.a */ = {isa = PBXFileReference; name = "libRNRate.a"; path = "libRNRate.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -527,6 +529,7 @@
 				238AE55F8A9F490D88E21CE9 /* libRNFirebase.a in Frameworks */,
 				EA52BD5D2E68B225F9D400B4 /* libPods-Wrench.a in Frameworks */,
 				26785C84457142A187624114 /* libRNGestureHandler.a in Frameworks */,
+				A02BED9C32DA4B5C8609ACC6 /* libRNRate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +813,7 @@
 				06F962EDE9F741239EB3BB86 /* RNShare.xcodeproj */,
 				9EEBB2281F1E47C9A9090F9C /* RNFirebase.xcodeproj */,
 				C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */,
+				07335A0E27EC4779AD2A401A /* RNRate.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1585,13 +1589,17 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-rate/ios",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
 				"INFOPLIST_OTHER_PREPROCESSOR_FLAGS[sdk=*]" = "-traditional";
 				"INFOPLIST_PREFIX_HEADER[sdk=*]" = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Wrench\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1631,13 +1639,17 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-rate/ios",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
 				"INFOPLIST_OTHER_PREPROCESSOR_FLAGS[sdk=*]" = "-traditional";
 				"INFOPLIST_PREFIX_HEADER[sdk=*]" = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Wrench\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

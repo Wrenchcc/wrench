@@ -1,6 +1,7 @@
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'ramda'
 import { navigate, navigateToWebView } from 'navigation'
+import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
 import { warn } from 'utils/logger'
 
@@ -91,7 +92,7 @@ const sections = props => ({
         },
         {
           titleKey: 'rate',
-          onPress: () => alert('Rate us'),
+          onPress: () => askForRating({ preferInApp: true }),
         },
         {
           titleKey: 'logout',
