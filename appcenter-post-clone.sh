@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Blahblah..."
-
-cd mobile
-
- pwd   
-
 set -ex
 brew uninstall node@6
 NODE_VERSION="10.9.0"

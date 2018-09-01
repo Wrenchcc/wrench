@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+
+echo "Start building app"
+
+cd mobile
+
 # Creates an .env from ENV variables for use with react-native-config
 ENV_WHITELIST=${ENV_WHITELIST:-"^WRENCH"}
 printf "Creating an .env file with the following whitelist:\n"
