@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+cd mobile
+
 set -ex
 brew uninstall node@6
 NODE_VERSION="10.9.0"
