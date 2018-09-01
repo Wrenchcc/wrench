@@ -91,6 +91,10 @@ const sections = props => ({
           onPress: () => navigate('credits'),
         },
         {
+          titleKey: 'rate',
+          onPress: () => alert('Rate us'),
+        },
+        {
           titleKey: 'logout',
           onPress: () => props.changeLoginState(false),
           last: true,
