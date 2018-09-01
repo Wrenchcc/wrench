@@ -7,9 +7,6 @@
     "Notifications": {
       "title": "Notifications"
     },
-    "ContactButton": {
-      "contact": "Contact"
-    },
     "SettingsButton": {
       "settings": "Settings"
     },
@@ -74,6 +71,11 @@
       "inputBrand": "Brand",
       "inputModel": "Model",
       "inputYear": "Year"
+    },
+    "ProjectFooter": {
+      "edit": "Edit post",
+      "delete": "Delete post",
+      "cancel": "Cancel"
     },
     "SelectProject": {
       "create": "Create a new project"
@@ -177,9 +179,6 @@
     "Notifications": {
       "title": "Notifikationer"
     },
-    "ContactButton": {
-      "contact": "Kontakt"
-    },
     "SettingsButton": {
       "settings": "Inställningar"
     },
@@ -243,6 +242,11 @@
       "inputBrand": "Märke",
       "inputModel": "Modell",
       "inputYear": "År"
+    },
+    "ProjectFooter": {
+      "edit": "Redigera inlägg",
+      "delete": "Radera inägg",
+      "cancel": "Avbryt"
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"

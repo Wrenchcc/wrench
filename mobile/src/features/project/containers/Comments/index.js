@@ -20,7 +20,6 @@ let scrollView = null
 // TODO: Show latest searched users
 // TODO: Remove added user from suggestions
 // TODO: Handle multiline
-// TODO: Format user data to save [user:1]
 const KEYBOARD_OFFSET = isIphone ? 180 : 0
 const MENTION_OFFSET_BOTTOM = isIphone ? 240 : 0
 const TRIGGER = '@'

@@ -6,7 +6,6 @@ import { InfiniteList, User, HeaderTitle } from 'ui'
 
 let scrollView = null
 
-// TODO: Translate header
 class Followers extends Component {
   static navigationOptions = ({ screenProps }) => ({
     headerTitle: (

@@ -4,7 +4,6 @@ import { navigate, navigateToWebView } from 'navigation'
 import openLink from 'utils/openLink'
 import { warn } from 'utils/logger'
 
-// TODO: Add global url
 const WEBSITE_URL = 'https://wrench.cc'
 
 const generateLanguageSettings = props => {

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Alert } from 'react-native'
+import withLocalization from 'i18n/withLocalization'
 import { Share, Follow, ActionSheet } from 'ui'
 import { Base } from './styles'
 
 const FOOTER_HEIGHT = 90
 
-// TODO: Translate
-export default class Footer extends Component {
+class Footer extends Component {
   static propTypes = {
     onFollowPress: PropTypes.func.isRequired,
     following: PropTypes.bool.isRequired,
@@ -20,12 +20,6 @@ export default class Footer extends Component {
     isOpen: false,
     transformY: new Animated.Value(FOOTER_HEIGHT),
   }
-
-  options = [
-    { name: 'Edit post', onSelect: () => Alert('Not yet!') },
-    { name: 'Delete post', onSelect: () => Alert('Not yet!') },
-    { name: 'Cancel' },
-  ]
 
   componentDidMount() {
     this.slideIn()
@@ -58,7 +52,7 @@ export default class Footer extends Component {
   }
 
   render() {
-    const { onFollowPress, name, dynamicLink, following, translateY } = this.props
+    const { t, onFollowPress, name, dynamicLink, following, translateY } = this.props
     const { transformY } = this.state
 
     return (
@@ -72,9 +66,15 @@ export default class Footer extends Component {
         <ActionSheet
           isOpen={this.state.isOpen}
           onClose={this.toggleActionSheet}
-          options={this.options}
+          options={[
+            { name: t('.edit'), onSelect: () => Alert('Not yet!') },
+            { name: t('.delete'), onSelect: () => Alert('Not yet!') },
+            { name: t('.cancel') },
+          ]}
         />
       </Animated.View>
     )
   }
 }
+
+export default withLocalization(Footer, 'ProjectFooter')

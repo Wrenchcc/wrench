@@ -1,0 +1,14 @@
+{
+  "ProjectFooter": {
+    "en": {
+      "edit": "Edit post",
+      "delete": "Delete post",
+      "cancel": "Cancel"
+    },
+    "sv": {
+      "edit": "Redigera inlägg",
+      "delete": "Radera inägg",
+      "cancel": "Avbryt"
+    }
+  }
+}

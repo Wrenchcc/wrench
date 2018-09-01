@@ -1,17 +1,19 @@
 <div align="center">
 <img src="https://wrench.cc/assets/img/logo.svg" width="20%">
 
-### Post, explore and learn.
+### Post, explore and learn together.
 
 </div>
 
 This is the main monorepo codebase of [Wrench](https://wrench.cc). Every single line of code that's not packaged into a reusable library is in this repository.
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/646c8a36-99ac-40ba-8a96-4dba6fb97949/branches/master/badge)](https://appcenter.ms) [![Build status](https://build.appcenter.ms/v0.1/apps/7b502e9f-2718-436d-a885-0f84a9668312/branches/master/badge)](https://appcenter.ms)
+
 ## What is Wrench?
 
-To be the goto community for people that like to build and keep track of their motorcycle build progress.
+### Vision
 
-[![Build status](https://build.appcenter.ms/v0.1/apps/646c8a36-99ac-40ba-8a96-4dba6fb97949/branches/master/badge)](https://appcenter.ms) [![Build status](https://build.appcenter.ms/v0.1/apps/7b502e9f-2718-436d-a885-0f84a9668312/branches/master/badge)](https://appcenter.ms)
+To be the goto community for people that like to build and keep track of their motorcycle build progress.
 
 ### Codebase
 

@@ -4,7 +4,7 @@ import { client } from 'graphql/createClient'
 import { refreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getTokens } from 'graphql/utils/auth'
 
-// TODO: Sing out on failure
+// TODO: Sign out on failure
 export default onError(({ graphQLErrors, operation, forward }) => {
   const { headers } = operation.getContext()
   const fetchNewAccessToken = async observer => {
