@@ -1,0 +1,31 @@
+{
+  "name": "wrench-api",
+  "private": true,
+  "scripts": {
+    "start": "node dist/server.js",
+    "build": "rm -rf dist && tsc",
+    "start:dev": "dotenv -- nodemon -e ts,graphql -x ts-node src/server.ts"
+  },
+  "dependencies": {
+    "apollo-server": "^2.0.5",
+    "apollo-upload-server": "^7.0.0",
+    "graphql-date": "^1.0.3",
+    "faker": "^4.1.0",
+    "firebase-admin": "^6.0.0",
+    "graphql": "^14.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "node-fetch": "^2.2.0",
+    "ramda": "^0.25.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^1.4.0",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.0.3"
+  }
+}

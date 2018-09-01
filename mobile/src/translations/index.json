@@ -32,6 +32,7 @@
       "report": "Report a bug",
       "chat": "Chat with us",
       "knallpott": "Knallpott",
+      "rate": "Give us a review ⭐",
       "languages": {
         "en": "English",
         "sv": "Swedish"
@@ -200,6 +201,7 @@
       "faq": "FAQ",
       "report": "Rapportera en bugg",
       "chat": "Chatta med oss",
+      "rate": "Ge oss en recension ⭐",
       "languages": {
         "en": "Engelska",
         "sv": "Svenska"
@@ -210,7 +212,7 @@
         "newArticle": "Artiklar",
         "newFollower": "Följare",
         "similarProjects": "Liknande projekt",
-        "productAnnouncements": "Product announcements"
+        "productAnnouncements": "Produktmeddelanden"
       }
     },
     "AskForPermission": {
