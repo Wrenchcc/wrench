@@ -1,5 +1,4 @@
 {
-  "private": true,
   "scripts": {
     "start:packager": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
     "start:ios": "tasks/start_ios",
