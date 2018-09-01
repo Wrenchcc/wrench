@@ -19,10 +19,11 @@ let scrollView = null
 class Project extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
+    const user = pathOr(null, ['project', 'user'], params)
     const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
     const projectTitle = pathOr(false, ['project', 'title'], params)
-    const goToProfile = () => navigateToUser({ user: params.user })
-    const avatarUrl = pathOr(null, ['user', 'avatarUrl'], params)
+    const goToProfile = () => navigateToUser({ user })
+    const avatarUrl = pathOr(null, ['avatarUrl'], user)
 
     return {
       headerTitle: projectTitle && (

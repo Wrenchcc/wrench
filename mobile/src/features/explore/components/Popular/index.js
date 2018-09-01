@@ -23,25 +23,15 @@ class Popular extends PureComponent {
 
   renderItem = ({ item, index }) => {
     const { projects } = this.props
-    const { images, id, title, user, followers, projectPermissions } = item.node
-    const image = pathOr(null, ['edges', [0], 'node'], images)
-
-    const params = {
-      user,
-      project: {
-        id,
-        title,
-        followers,
-        projectPermissions,
-      },
-    }
+    const project = item.node
+    const image = pathOr(null, ['images', 'edges', [0], 'node'], project)
 
     return (
       <Card
         image={image}
-        title={title}
-        key={id}
-        onPress={() => navigateToProject(params)}
+        title={project.title}
+        key={project.id}
+        onPress={() => navigateToProject({ project })}
         first={index === 0}
         last={index === projects && projects.length - 1}
       />

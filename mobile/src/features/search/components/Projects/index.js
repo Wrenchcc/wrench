@@ -17,25 +17,13 @@ class Projects extends PureComponent {
     scrollRef: PropTypes.func.isRequired,
   }
 
-  renderItem = ({ item }) => {
-    const params = {
-      user: item.node.user,
-      project: {
-        slug: item.node.slug,
-        title: item.node.title,
-        followers: item.node.followers,
-        projectPermissions: item.node.projectPermissions,
-      },
-    }
-
-    return (
-      <ProjectCard
-        {...item.node}
-        images={pathOr(null, ['node', 'images', 'edges'], item)}
-        onPress={() => navigateToProject(params)}
-      />
-    )
-  }
+  renderItem = ({ item }) => (
+    <ProjectCard
+      {...item.node}
+      images={pathOr(null, ['node', 'images', 'edges'], item)}
+      onPress={() => navigateToProject({ project: item.node })}
+    />
+  )
 
   // TODO: Remove when have IDs
   render() {
