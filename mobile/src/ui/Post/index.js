@@ -13,9 +13,9 @@ export default class Post extends PureComponent {
   }
 
   goToProject = () => {
-    const { slug, user, project } = this.props.data
+    const { project } = this.props.data
     if (!this.props.onPost) {
-      navigateToProject({ slug, user, project })
+      navigateToProject({ project })
     }
   }
 
