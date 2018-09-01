@@ -6,8 +6,7 @@
         "root": ["./src"],
         "alias": {
           "images": "./assets/images",
-          "videos": "./assets/videos",
-          "storybook": "./storybook"
+          "videos": "./assets/videos"
         },
         "extensions": [".js"]
       }
