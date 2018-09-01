@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import postsInfoFragment from 'graphql/fragments/post/postsInfo'
-import userInfoFragment from 'graphql/fragments/user/userInfo'
+import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 // TODO: Fragments and on refresh get popular projects too
 const getPopularProjectsQuery = gql`
@@ -13,8 +13,7 @@ const getPopularProjectsQuery = gql`
       }
       edges {
         node {
-          id
-          title
+          ...projectInfo
           images: imagesConnection(first: 1, maxWidth: 180, maxHeight: 180) {
             edges {
               node {
@@ -23,21 +22,11 @@ const getPopularProjectsQuery = gql`
               }
             }
           }
-          followers: followersConnection {
-            totalCount
-          }
-          projectPermissions {
-            isFollower
-            isOwner
-          }
-          user {
-            ...userInfo
-          }
         }
       }
     }
   }
-  ${userInfoFragment}
+  ${projectInfoFragment}
 `
 
 const getRecentPostsQuery = gql`

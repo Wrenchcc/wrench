@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export default gql`
   fragment projectInfo on Project {
@@ -6,6 +7,9 @@ export default gql`
     title
     slug
     dynamicLink
+    user {
+      ...userInfo
+    }
     projectPermissions {
       isOwner
       isFollower
@@ -14,4 +18,5 @@ export default gql`
       totalCount
     }
   }
+  ${userInfoFragment}
 `

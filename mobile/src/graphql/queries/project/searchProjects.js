@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
-import userInfoFragment from 'graphql/fragments/user/userInfo'
+import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 export const searchProjectsQuery = gql`
   query searchProjects($query: String!, $type: SearchType!) {
@@ -12,9 +12,7 @@ export const searchProjectsQuery = gql`
       edges {
         node {
           ... on Project {
-            id
-            slug
-            title
+            ...projectInfo
             images: imagesConnection(first: 6, maxWidth: 335, maxHeight: 335) {
               edges {
                 node {
@@ -23,23 +21,12 @@ export const searchProjectsQuery = gql`
                 }
               }
             }
-            followers: followersConnection {
-              totalCount
-            }
-            user {
-              ...userInfo
-            }
-            dynamicLink
-            projectPermissions {
-              isFollower
-              isOwner
-            }
           }
         }
       }
     }
   }
-  ${userInfoFragment}
+  ${projectInfoFragment}
 `
 
 const searchProjectsOptions = {
