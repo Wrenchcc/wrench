@@ -91,4 +91,15 @@ continueUserActivity:(NSUserActivity *)userActivity
      return [[RNFirebaseLinks instance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
 }
 
+- (BOOL)application:(UIApplication *)application
+  openURL:(NSURL *)url
+  options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+
+  if (!handled) {
+      handled = [[RNFirebaseLinks instance] application:application openURL:url options:options];
+  }
+
+  return handled;
+}
+
 @end
