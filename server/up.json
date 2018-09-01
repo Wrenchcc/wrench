@@ -1,0 +1,27 @@
+{
+  "region": ["eu-central-1"],
+  "name": "wrench",
+  "profile": "wrench-api",
+  "lambda": {
+    "memory": 1536,
+    "runtime": "nodejs8.10"
+  },
+  "cors": {
+    "enable": true
+  },
+  "stages": {
+    "production": {
+      "domain": "api.wrench.cc"
+    },
+    "staging": {
+      "domain": "staging.wrench.cc"
+    }
+  },
+  "environment": {
+    "PORT": "4000",
+    "APP_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867"
+  },
+  "hooks": {
+    "build": "yarn build"
+  }
+}
