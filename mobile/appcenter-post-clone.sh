@@ -8,3 +8,4 @@ sudo installer -store -pkg "$HOME/Downloads/node-installer.pkg" -target "/"
 
 echo "Install librsvg"
 HOMEBREW_NO_AUTO_UPDATE=1 brew install librsvg
+export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
