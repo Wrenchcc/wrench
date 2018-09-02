@@ -55,9 +55,6 @@ const toggleNotificationSettingsOptions = {
           __typename: 'User',
         },
       },
-      // update: (cache, { data: { toggleNotificationSettings } }) => {
-      //   console.log(toggleNotificationSettings)
-      // },
     }),
   }),
 }

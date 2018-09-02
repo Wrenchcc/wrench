@@ -4,7 +4,6 @@ import { graphql } from 'react-apollo'
 import userSettingsFragment from 'graphql/fragments/user/userSettings'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
-// TODO: Remove overfetch data, don't need userInfo here?
 export const getCurrentUserSettingsQuery = gql`
   query getCurrentUserSettings {
     user: currentUser {
