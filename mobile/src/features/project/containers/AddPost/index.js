@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { KeyboardAvoidingView, Alert } from 'react-native'
+import { translate } from 'react-i18next'
 import { pathOr, isEmpty } from 'ramda'
 import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
 import { close, arrowLeftWhite } from 'images'
@@ -74,7 +74,7 @@ class AddPost extends Component {
     if (!this.state.edit && page === CAMERA_ROLL_PAGE && !isEmpty(pictures)) {
       return (
         <Text color="white" medium onPress={() => this.openEdit()}>
-          {this.props.t('.next')}
+          {this.props.t('AddPost:next')}
         </Text>
       )
     }
@@ -83,7 +83,7 @@ class AddPost extends Component {
     return (
       edit && (
         <Text color="white" medium onPress={() => Alert.alert('Posted! Navigate to project.')}>
-          {this.props.t('.post')}
+          {this.props.t('AddPost:post')}
         </Text>
       )
     )
@@ -115,7 +115,7 @@ class AddPost extends Component {
                 autoFocus
                 multiline
                 selectionColor="white"
-                placeholder={this.props.t('.placeholder')}
+                placeholder={this.props.t('AddPost:placeholder')}
               />
             </Edit>
           </KeyboardAvoidingView>
@@ -167,4 +167,4 @@ class AddPost extends Component {
   }
 }
 
-export default compose(getCurrentUserProjects)(withLocalization(AddPost, 'AddPost'))
+export default compose(getCurrentUserProjects)(translate('AddPost')(AddPost))

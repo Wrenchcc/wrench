@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, BackHandler, WebView as RNWebView } from 'react-native'
+import { translate } from 'react-i18next'
 import url from 'url'
 import { equals, reject } from 'ramda'
 import DeviceInfo from 'react-native-device-info'
-import withLocalization from 'i18n/withLocalization'
 import { navigateBack } from 'navigation'
 import { Header, ProgressBar, Text, Icon, Touchable, Share } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -19,7 +19,7 @@ class WebView extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      title: props.t('.loading'),
+      title: props.t('WebView:loading'),
       url: props.url,
     }
 
@@ -167,4 +167,4 @@ class WebView extends PureComponent {
   )
 }
 
-export default withLocalization(WebView, 'WebView')
+export default translate('WebView')(WebView)

@@ -1,12 +1,12 @@
 import React from 'react'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import Text from 'ui/Text'
 import { navigateToSettings } from 'navigation'
 
 const SettingsButton = ({ t }) => (
   <Text medium onPress={() => navigateToSettings()}>
-    {t('.settings')}
+    {t('SettingsButton:settings')}
   </Text>
 )
 
-export default withLocalization(SettingsButton, 'SettingsButton')
+export default translate('SettingsButton')(SettingsButton)

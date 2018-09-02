@@ -1,16 +1,17 @@
 import React, { PureComponent } from 'react'
 import { setNavigationRef } from 'navigation'
+import { translate } from 'react-i18next'
 import { Gateway, Zoomable } from 'ui'
-import { t } from 'i18n/withLocalization'
 import { handleDynamicLinks } from 'utils/dynamicLinks'
 import Navigator from './navigator'
 
-export default class TabNavigator extends PureComponent {
+class TabNavigator extends PureComponent {
   componentDidMount() {
     handleDynamicLinks()
   }
 
   render() {
+    const { t } = this.props
     return (
       <Gateway.Provider>
         <Zoomable.Provider>
@@ -20,3 +21,5 @@ export default class TabNavigator extends PureComponent {
     )
   }
 }
+
+export default translate()(TabNavigator)

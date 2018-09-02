@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { Text } from 'ui'
 
 const Followers = ({ t, followers, onPress = null, color = 'dark', opacity = 1 }) => (
   <Text fontSize={15} onPress={onPress} color={color} opacity={opacity}>
-    {t('.followers', { count: followers })}
+    {t('UiFollowers:followers', { count: followers })}
   </Text>
 )
 
@@ -16,4 +16,4 @@ Followers.propTypes = {
   opacity: PropTypes.number,
 }
 
-export default withLocalization(Followers, 'UiFollowers')
+export default translate('UiFollowers')(Followers)

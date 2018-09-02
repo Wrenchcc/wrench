@@ -1,9 +1,9 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
-import withLocalization from 'i18n/withLocalization'
 import { navigateToProject } from 'navigation'
 import { InfiniteList } from 'ui'
 import { INITIAL_POSTS_COUNT } from '../../constants'
@@ -45,7 +45,7 @@ class Popular extends PureComponent {
 
     return (
       <Fragment>
-        <Title medium>{t('.popular')}</Title>
+        <Title medium>{t('Popular:popular')}</Title>
         <InfiniteList
           initialNumToRender={INITIAL_POSTS_COUNT}
           keyExtractor={(item, index) => item.node.id + index}
@@ -68,10 +68,10 @@ class Popular extends PureComponent {
             marginRight: -GUTTER,
           }}
         />
-        <Title medium>{t('.recent')}</Title>
+        <Title medium>{t('Popular:recent')}</Title>
       </Fragment>
     )
   }
 }
 
-export default compose(getPopularProjects)(withLocalization(Popular, 'Popular'))
+export default compose(getPopularProjects)(translate('Popular')(Popular))

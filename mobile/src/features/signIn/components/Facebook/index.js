@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
 import { authenticateUser } from 'graphql/mutations/user/authenticateUser'
-import withLocalization from 'i18n/withLocalization'
 import { Button, Text } from './styled'
 
 class Facebook extends PureComponent {
@@ -31,11 +31,11 @@ class Facebook extends PureComponent {
     return (
       <Button onPress={this.handleLoginManager}>
         <Text white medium>
-          {this.props.t('.button')}
+          {this.props.t('Facebook:button')}
         </Text>
       </Button>
     )
   }
 }
 
-export default compose(authenticateUser)(withLocalization(Facebook, 'Facebook'))
+export default compose(authenticateUser)(translate('Facebook')(Facebook))

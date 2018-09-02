@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { search } from 'images'
 import { COLORS } from 'ui/constants'
 import { Base, Input, Icon, Placeholder, Text } from './styles'
@@ -10,7 +10,7 @@ const Search = ({ t, style, onPress, placeholder = true, ...props }) => (
     <Icon source={search} />
     {placeholder ? (
       <Placeholder onPress={onPress} activeOpacity={1}>
-        <Text color="light_grey">{t('.placeholder')}</Text>
+        <Text color="light_grey">{t('Search:placeholder')}</Text>
       </Placeholder>
     ) : (
       <Input
@@ -18,7 +18,7 @@ const Search = ({ t, style, onPress, placeholder = true, ...props }) => (
         autoCorrect={false}
         placeholderTextColor={COLORS.LIGHT_GREY}
         selectionColor={COLORS.DARK}
-        placeholder={t('.placeholder')}
+        placeholder={t('Search:placeholder')}
         keyboardAppearance="dark"
         returnKeyType="search"
         {...props}
@@ -33,4 +33,4 @@ Search.propTypes = {
   placeholder: PropTypes.bool,
 }
 
-export default withLocalization(Search, 'Search')
+export default translate('Search')(Search)

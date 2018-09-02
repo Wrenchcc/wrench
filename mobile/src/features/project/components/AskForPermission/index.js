@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Alert } from 'react-native'
 import Permissions from 'react-native-permissions'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
@@ -11,16 +11,20 @@ const AUTHORIZED = 'authorized'
 const AskForPermission = ({ t, permission, onSuccess }) => {
   const onPress = () => Permissions.request(permission).then(res => {
     if (res !== AUTHORIZED) {
-      const buttons = [{ text: t(`.${permission}.alertCancel`), style: 'cancel' }]
+      const buttons = [{ text: t(`AskForPermission:${permission}:alertCancel`), style: 'cancel' }]
 
       if (Permissions.canOpenSettings()) {
         buttons.push({
-          text: t(`.${permission}.alertOpen`),
+          text: t(`AskForPermission:${permission}:alertOpen`),
           onPress: () => Permissions.openSettings(),
         })
       }
 
-      Alert.alert(t(`.${permission}.alertTitle`), t(`.${permission}.alertDescription`), buttons)
+      Alert.alert(
+        t(`AskForPermission:${permission}.alertTitle`),
+        t(`AskForPermission:${permission}:alertDescription`),
+        buttons
+      )
     } else {
       onSuccess()
     }
@@ -29,15 +33,15 @@ const AskForPermission = ({ t, permission, onSuccess }) => {
   return (
     <Base>
       <Headline color="white" medium numberOfLines={0}>
-        {t(`.${permission}.permissionHeadline`)}
+        {t(`AskForPermission:${permission}:permissionHeadline`)}
       </Headline>
       <Description color="white" opacity={0.8}>
-        {t(`.${permission}.permissionDescription`)}
+        {t(`AskForPermission:${permission}:permissionDescription`)}
       </Description>
 
       <Touchable onPress={onPress}>
         <Text color="white" medium>
-          {t(`.${permission}.permissionButton`)}
+          {t(`AskForPermission:${permission}:permissionButton`)}
         </Text>
       </Touchable>
     </Base>
@@ -49,4 +53,4 @@ AskForPermission.propTypes = {
   onSuccess: PropTypes.func.isRequired,
 }
 
-export default withLocalization(AskForPermission, 'AskForPermission')
+export default translate('AskForPermission')(AskForPermission)

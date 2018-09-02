@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { navigateToUser, navigateToComments } from 'navigation'
-import withLocalization from 'i18n/withLocalization'
 import Text from 'ui/Text'
 import { Row, Comment, LoadMore } from './styles'
 
@@ -37,7 +37,7 @@ class List extends PureComponent {
         {data.comments.edges.map(this.renderComment)}
         <LoadMore onPress={this.goToComments}>
           <Text fontSize={15} color="light_grey">
-            {t('.loadMore', { count: data.comments.totalCount })}
+            {t('List:loadMore', { count: data.comments.totalCount })}
           </Text>
         </LoadMore>
       </Fragment>
@@ -45,4 +45,4 @@ class List extends PureComponent {
   }
 }
 
-export default withLocalization(List, 'List')
+export default translate('List')(List)

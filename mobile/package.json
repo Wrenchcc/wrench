@@ -27,7 +27,6 @@
     "apollo-link-state": "^0.4.1",
     "graphql": "^14.0.0",
     "graphql-tag": "^2.9.2",
-    "hoist-non-react-statics": "^3.0.1",
     "human-format": "^0.10.0",
     "i18next": "^11.6.0",
     "javascript-time-ago": "^1.0.31",

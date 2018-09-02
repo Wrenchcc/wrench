@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Alert } from 'react-native'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { Share, Follow, ActionSheet } from 'ui'
 import { Base } from './styles'
 
@@ -67,9 +67,9 @@ class Footer extends Component {
           isOpen={this.state.isOpen}
           onClose={this.toggleActionSheet}
           options={[
-            { name: t('.edit'), onSelect: () => Alert('Not yet!') },
-            { name: t('.delete'), onSelect: () => Alert('Not yet!') },
-            { name: t('.cancel') },
+            { name: t('ProjectFooter:edit'), onSelect: () => Alert('Not yet!') },
+            { name: t('ProjectFooter:delete'), onSelect: () => Alert('Not yet!') },
+            { name: t('ProjectFooter:cancel') },
           ]}
         />
       </Animated.View>
@@ -77,4 +77,4 @@ class Footer extends Component {
   }
 }
 
-export default withLocalization(Footer, 'ProjectFooter')
+export default translate('ProjectFooter')(Footer)

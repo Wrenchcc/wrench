@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
 import Project from './Project'
@@ -60,7 +60,7 @@ class SelectProject extends Component {
         <Base>
           <Scroll>{this.renderProjects()}</Scroll>
           <NewProject onPress={() => navigateToEditProject()}>
-            <Text medium>{t('.create')}</Text>
+            <Text medium>{t('SelectProject:create')}</Text>
           </NewProject>
         </Base>
       </Animated.View>
@@ -68,4 +68,4 @@ class SelectProject extends Component {
   }
 }
 
-export default withLocalization(SelectProject, 'SelectProject')
+export default translate('SelectProject')(SelectProject)

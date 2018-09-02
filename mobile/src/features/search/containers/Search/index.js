@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, Keyboard } from 'react-native'
+import { translate } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
-import withLocalization from 'i18n/withLocalization'
 import { FONTS } from 'ui/constants'
 import Users from '../../components/Users'
 import Projects from '../../components/Projects'
@@ -65,7 +65,7 @@ class Search extends PureComponent {
       style={styles.tabBar}
       labelStyle={styles.labelStyle}
       indicatorStyle={styles.indicatorStyle}
-      getLabelText={({ route }) => this.props.t(`.${route.key}`)}
+      getLabelText={({ route }) => this.props.t(`SearchTab:${route.key}`)}
       swipeEnabled
       scrollEnabled={false}
       onTabPress={this.scrollToTop}
@@ -104,4 +104,4 @@ class Search extends PureComponent {
   }
 }
 
-export default withLocalization(Search, 'SearchTab')
+export default translate('SearchTab')(Search)

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Animated } from 'react-native'
+import { translate } from 'react-i18next'
 import { navigateToUser } from 'navigation'
-import withLocalization from 'i18n/withLocalization'
 import { Avatar, Text, TimeAgo } from 'ui'
 import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
@@ -46,7 +46,7 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
           <Row>
             <TimeAgo date={createdAt} />
             <Reply medium fontSize={12} onPress={() => onReply(user)}>
-              {t('.reply')}
+              {t('CommentItem:reply')}
             </Reply>
           </Row>
         </Content>
@@ -66,4 +66,4 @@ const CommentItem = props => props.item.repliesConnection ? (
     <Item {...props.item} t={props.t} onReply={props.onReply} />
 )
 
-export default withLocalization(CommentItem, 'CommentItem')
+export default translate('CommentItem')(CommentItem)

@@ -1,5 +1,5 @@
 import React from 'react'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import { AppStateConsumer } from 'AppState'
@@ -16,10 +16,10 @@ const SignIn = ({ t }) => (
 
           <Content>
             <Headline large numberOfLines={0}>
-              {t('.headline')}
+              {t('SignIn:headline')}
             </Headline>
             <Description white fontSize={20}>
-              {t('.description')}
+              {t('SignIn:description')}
             </Description>
           </Content>
           <Facebook changeLoginState={changeLoginState} />
@@ -30,4 +30,4 @@ const SignIn = ({ t }) => (
   </AppStateConsumer>
 )
 
-export default withLocalization(SignIn, 'SignIn')
+export default translate('SignIn')(SignIn)

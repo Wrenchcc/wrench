@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import Text from 'ui/Text'
 import { follow } from 'images'
 import { Button, Icon } from './styles'
@@ -10,10 +10,10 @@ const Follow = ({ onPress, following, t }) => (
     {following ? (
       <Fragment>
         <Icon source={follow} />
-        <Text medium>{t('.unfollow')}</Text>
+        <Text medium>{t('Follow:unfollow')}</Text>
       </Fragment>
     ) : (
-      <Text medium>{t('.follow')}</Text>
+      <Text medium>{t('Follow:follow')}</Text>
     )}
   </Button>
 )
@@ -23,4 +23,4 @@ Follow.propTypes = {
   following: PropTypes.bool.isRequired,
 }
 
-export default withLocalization(Follow, 'Follow')
+export default translate('Follow')(Follow)

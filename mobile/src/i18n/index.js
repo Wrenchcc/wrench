@@ -4,7 +4,6 @@ import humanFormat from 'human-format'
 import { getLocale } from './helpers'
 
 export * from './helpers'
-export * from './withLocalization'
 export { default as languages } from './languages'
 
 const resources = require('translations/index.json')

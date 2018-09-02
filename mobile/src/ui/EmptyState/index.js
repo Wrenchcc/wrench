@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { navigateToEditProject, navigateToPost } from 'navigation'
 import { Text } from 'ui'
 import { TYPES } from './constants'
@@ -20,13 +20,13 @@ const onPressAction = type => {
 
 const EmptyState = ({ t, type = 'project' }) => (
   <Base>
-    <Title>{t(`.${type}.title`)}</Title>
+    <Title>{t(`EmptyState:${type}:title`)}</Title>
     <Description color="grey" lineHeight={25}>
-      {t(`.${type}.description`)}
+      {t(`EmptyState:${type}:description`)}
     </Description>
     <Button onPress={() => onPressAction(type)}>
       <Text medium fontSize={15}>
-        {t(`.${type}.button`)}
+        {t(`EmptyState:${type}:button`)}
       </Text>
     </Button>
   </Base>
@@ -36,4 +36,4 @@ EmptyState.propTypes = {
   type: PropTypes.string,
 }
 
-export default withLocalization(EmptyState, 'EmptyState')
+export default translate('EmptyState')(EmptyState)

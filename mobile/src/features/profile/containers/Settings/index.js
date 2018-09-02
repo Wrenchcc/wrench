@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import { SectionList } from 'react-native'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
 import toggleUserNotificationSettingsMutation from 'graphql/mutations/user/toggleUserNotificationSettings'
-import withLocalization from 'i18n/withLocalization'
 import { Title, SelectionItem } from 'ui'
 import { AppStateConsumer } from 'AppState'
 import Footer from '../../components/Footer'
@@ -24,7 +24,7 @@ const style = {
 
 class Settings extends PureComponent {
   static navigationOptions = ({ navigation, screenProps }) => ({
-    headerTitle: screenProps.t(`Settings.${navigation.state.routeName}`),
+    headerTitle: screenProps.t(`Settings:${navigation.state.routeName}`),
   })
 
   static propTypes = {
@@ -35,11 +35,11 @@ class Settings extends PureComponent {
   renderSectionHeader = ({ section }) => {
     if (!section.titleKey) return null
 
-    return <Title style={style.header}>{this.props.t(`.${section.titleKey}`)}</Title>
+    return <Title style={style.header}>{this.props.t(`Settings:${section.titleKey}`)}</Title>
   }
 
   renderItem = ({ item, index }) => (
-    <SelectionItem key={index} {...item} title={this.props.t(`.${item.titleKey}`)} />
+    <SelectionItem key={index} {...item} title={this.props.t(`Settings:${item.titleKey}`)} />
   )
 
   render() {
@@ -66,4 +66,4 @@ class Settings extends PureComponent {
 export default compose(
   getCurrentUserSettings,
   toggleUserNotificationSettingsMutation
-)(withLocalization(Settings, 'Settings'))
+)(translate('Settings')(Settings))

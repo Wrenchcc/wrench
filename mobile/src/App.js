@@ -1,7 +1,5 @@
 import React from 'react'
-import codePush from 'react-native-code-push'
 import { ApolloProvider, Query } from 'react-apollo'
-import { checkFrequency } from 'utils/codePush'
 import { AuthNavigator, AppNavigator } from 'navigation'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
@@ -39,4 +37,4 @@ const App = () => (
   </AppStateProvider>
 )
 
-export default codePush(checkFrequency)(App)
+export default App

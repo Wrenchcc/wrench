@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NetInfo, Animated } from 'react-native'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { Text } from 'ui'
 import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
 
@@ -44,11 +44,11 @@ class NetworkConnectivity extends Component {
         }}
       >
         <Text color="white" medium center fontSize={15}>
-          {this.props.t('.noConnection')}
+          {this.props.t('NetworkConnectivity:noConnection')}
         </Text>
       </Animated.View>
     )
   }
 }
 
-export default withLocalization(NetworkConnectivity, 'NetworkConnectivity')
+export default translate('NetworkConnectivity')(NetworkConnectivity)

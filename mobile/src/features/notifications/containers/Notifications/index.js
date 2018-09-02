@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getNotifications } from 'graphql/queries/getNotifications'
 import { InfiniteList, Notification } from 'ui'
-import withLocalization from 'i18n/withLocalization'
 import { Header } from './styles'
 
 let scrollView = null
@@ -52,7 +52,7 @@ class Notifications extends Component {
         scrollRef={ref => {
           scrollView = ref
         }}
-        ListHeaderComponent={<Header medium>{t('.title')}</Header>}
+        ListHeaderComponent={<Header medium>{t('Notifications:title')}</Header>}
         borderSeparator
         initialNumToRender={10}
         data={notifications}
@@ -68,4 +68,4 @@ class Notifications extends Component {
   }
 }
 
-export default compose(getNotifications)(withLocalization(Notifications, 'Notifications'))
+export default compose(getNotifications)(translate('Notifications')(Notifications))

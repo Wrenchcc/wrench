@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { navigateToSearch, navigateBack } from 'navigation'
 import { Search, Add, Text } from 'ui'
 
@@ -14,7 +14,7 @@ const SearchBar = ({ placeholder, cancelButton, t }) => (
     />
     {cancelButton ? (
       <Text onPress={() => navigateBack()} medium>
-        {t('.cancel')}
+        {t('SearchBar:cancel')}
       </Text>
     ) : (
       <Add style={{ width: 20 }} />
@@ -27,4 +27,4 @@ SearchBar.propTypes = {
   cancelButton: PropTypes.bool,
 }
 
-export default withLocalization(SearchBar, 'SearchBar')
+export default translate('SearchBar')(SearchBar)

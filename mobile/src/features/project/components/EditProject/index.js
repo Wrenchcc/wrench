@@ -1,5 +1,5 @@
 import React from 'react'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { Base, Header, Content, AddButton, Title, SubTitle, Input } from './styles'
 
 // TODO: Implement add project if data edit || new
@@ -8,16 +8,16 @@ const EditProject = ({ t }) => (
   <Base>
     <Header />
     <Content contentContainerStyle={{ flex: 1 }}>
-      <Title medium>{t('.title')}</Title>
-      <SubTitle>{t('.subTitle')}</SubTitle>
+      <Title medium>{t('EditProject:title')}</Title>
+      <SubTitle>{t('EditProject:subTitle')}</SubTitle>
 
       <Input placeholder={t('.inputTitle')} />
       <Input placeholder={t('.inputBrand')} />
       <Input placeholder={t('.inputModel')} />
       <Input placeholder={t('.inputYear')} />
     </Content>
-    <AddButton onPress={() => console.log('Add')}>{t('.add')}</AddButton>
+    <AddButton onPress={() => console.log('Add')}>{t('EditProject:add')}</AddButton>
   </Base>
 )
 
-export default withLocalization(EditProject, 'EditProject')
+export default translate('EditProject')(EditProject)

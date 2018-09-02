@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard } from 'react-native'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { COLORS } from 'ui/constants'
 import { Text } from 'ui'
 import { isIphone } from 'utils/platform'
@@ -95,7 +95,7 @@ class CommentField extends PureComponent {
     return (
       <Base>
         <Input
-          placeholder={t('.placeholder')}
+          placeholder={t('CommentField:placeholder')}
           placeholderTextColor={COLORS.LIGHT_GREY}
           keyboardType="twitter"
           inputRef={this.setRef}
@@ -106,7 +106,7 @@ class CommentField extends PureComponent {
         />
         {!disabled && (
           <Button onPress={this.handleSubmit}>
-            <Text medium>{t('.post')}</Text>
+            <Text medium>{t('CommentField:post')}</Text>
           </Button>
         )}
       </Base>
@@ -114,4 +114,4 @@ class CommentField extends PureComponent {
   }
 }
 
-export default withLocalization(CommentField, 'CommentField')
+export default translate('CommentField')(CommentField)

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { navigateToUser, navigateToProject, navigateToComments } from 'navigation'
 import { Avatar, Text, TimeAgo } from 'ui'
 import { Base, Content, Bottom } from './styles'
@@ -31,11 +31,11 @@ const onPress = data => {
 const description = (data, t) => {
   switch (data.type) {
     case NOTIFICATION_TYPES.FOLLOW:
-      return `${t('.follow')} ${data.project.title}`
+      return `${t('Notification:follow')} ${data.project.title}`
     case NOTIFICATION_TYPES.COMMENT:
-      return t('.comment')
+      return t('Notification:comment')
     case NOTIFICATION_TYPES.REPLY:
-      return t('.reply')
+      return t('Notification:reply')
     default:
       return null
   }
@@ -64,4 +64,4 @@ Notification.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default withLocalization(Notification, 'Notification')
+export default translate('Notification')(Notification)

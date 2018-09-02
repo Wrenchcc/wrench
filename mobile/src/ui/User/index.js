@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { Avatar, Text } from 'ui'
 import { navigateToUser } from 'navigation'
 import { Base, Content } from './styles'
@@ -23,7 +23,7 @@ class User extends PureComponent {
         <Content>
           <Text medium>{data.fullName}</Text>
           <Text color="light_grey" fontSize={15}>
-            {t('.projects', { count: data.projectCount })}
+            {t('UiUser:projects', { count: data.projectCount })}
           </Text>
         </Content>
       </Base>
@@ -31,4 +31,4 @@ class User extends PureComponent {
   }
 }
 
-export default withLocalization(User, 'UiUser')
+export default translate('UiUser')(User)

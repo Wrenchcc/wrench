@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, FlatList } from 'react-native'
+import { translate } from 'react-i18next'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
 import withStatusBar from 'navigation/utils/withStatusBar'
 import { getProjectCategories } from 'graphql/queries/project/getProjectCategories'
 import { editUser } from 'graphql/mutations/user/editUser'
-import withLocalization from 'i18n/withLocalization'
 import { Header, Touchable, Text, Loader } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
@@ -70,7 +70,7 @@ class Onboarding extends Component {
 
     return (
       <Text color="white" medium opacity={1} onPress={this.handleSubmit}>
-        {this.props.t('.next')}
+        {this.props.t('Onboarding:next')}
       </Text>
     )
   }
@@ -110,4 +110,4 @@ class Onboarding extends Component {
 export default compose(
   getProjectCategories,
   editUser
-)(withStatusBar(withLocalization(Onboarding, 'Onboarding'), { barStyle: 'light-content' }))
+)(withStatusBar(translate('Onboarding')(Onboarding), { barStyle: 'light-content' }))

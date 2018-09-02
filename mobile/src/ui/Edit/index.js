@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withLocalization from 'i18n/withLocalization'
+import { translate } from 'react-i18next'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
 
 const Edit = ({ t, project }) => (
   <Text medium onPress={() => navigateToEditProject(project)}>
-    {t('.edit')}
+    {t('Edit:edit')}
   </Text>
 )
 
@@ -14,4 +14,4 @@ Edit.propTypes = {
   project: PropTypes.object.isRequired,
 }
 
-export default withLocalization(Edit, 'Edit')
+export default translate('Edit')(Edit)

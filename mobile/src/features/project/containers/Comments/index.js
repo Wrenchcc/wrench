@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
 import { getComments } from 'graphql/queries/post/getComments'
-import withLocalization from 'i18n/withLocalization'
 import {
   InfiniteList,
   CommentItem,
@@ -28,7 +27,7 @@ class Comments extends Component {
   static navigationOptions = ({ screenProps }) => ({
     headerTitle: (
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
-        {screenProps.t('Comments.title')}
+        {screenProps.t('Comments:title')}
       </HeaderTitle>
     ),
   })
@@ -152,4 +151,4 @@ class Comments extends Component {
   }
 }
 
-export default compose(getComments)(withLocalization(Comments, 'Comments'))
+export default compose(getComments)(Comments)
