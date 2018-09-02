@@ -21,7 +21,7 @@ export default () => [
       },
       project: {
         id: "1",
-        dynamicLink: "https://wrench.page.link/yT3A",
+        dynamicLink: "https://wrench.page.link/KFko",
         followersConnection: {
           totalCount: 4000
         },
@@ -52,7 +52,7 @@ export default () => [
       },
       project: {
         id: "1",
-        dynamicLink: "https://wrench.page.link/yT3A",
+        dynamicLink: "https://wrench.page.link/KFko",
         followersConnection: {
           totalCount: 4000
         },
@@ -83,7 +83,7 @@ export default () => [
       },
       project: {
         id: "3",
-        dynamicLink: "https://wrench.page.link/yT3A",
+        dynamicLink: "https://wrench.page.link/KFko",
         followersConnection: {
           totalCount: 4000
         },
@@ -114,7 +114,7 @@ export default () => [
       },
       project: {
         id: "3",
-        dynamicLink: "https://wrench.page.link/yT3A",
+        dynamicLink: "https://wrench.page.link/KFko",
         followersConnection: {
           totalCount: 4000
         },
@@ -146,7 +146,7 @@ export default () => [
       },
       project: {
         id: "3",
-        dynamicLink: "https://wrench.page.link/yT3A",
+        dynamicLink: "https://wrench.page.link/KFko",
         followersConnection: {
           totalCount: 4000
         },
@@ -178,7 +178,7 @@ export default () => [
       },
       project: {
         id: "3",
-        dynamicLink: "https://wrench.page.link/yT3A",
+        dynamicLink: "https://wrench.page.link/KFko",
         followersConnection: {
           totalCount: 4000
         },

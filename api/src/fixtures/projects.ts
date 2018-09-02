@@ -17,7 +17,7 @@ export default () => [
         totalCount: 1300,
         edges: followers()
       },
-      dynamicLink: "https://wrench.page.link/yT3A",
+      dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isOwner: false,
         isFollower: false
@@ -37,7 +37,7 @@ export default () => [
         totalCount: 1300,
         edges: followers()
       },
-      dynamicLink: "https://wrench.page.link/yT3A",
+      dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isOwner: false,
         isFollower: false
@@ -57,7 +57,7 @@ export default () => [
         totalCount: 1300,
         edges: followers()
       },
-      dynamicLink: "https://wrench.page.link/yT3A",
+      dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isOwner: false,
         isFollower: false
@@ -77,7 +77,7 @@ export default () => [
         totalCount: 1300,
         edges: followers()
       },
-      dynamicLink: "https://wrench.page.link/yT3A",
+      dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isOwner: false,
         isFollower: false
@@ -97,7 +97,7 @@ export default () => [
         totalCount: 1300,
         edges: followers()
       },
-      dynamicLink: "https://wrench.page.link/yT3A",
+      dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isOwner: false,
         isFollower: false
@@ -117,7 +117,7 @@ export default () => [
         totalCount: 1300,
         edges: followers()
       },
-      dynamicLink: "https://wrench.page.link/yT3A",
+      dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isOwner: false,
         isFollower: false

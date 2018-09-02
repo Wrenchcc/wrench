@@ -42,7 +42,7 @@ export default {
       slug: "the-natural",
       title: "The Natural",
       owner: generateUser(),
-      dynamicLink: "https://wrench.page.link/yT3A",
+      dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isFollower: true,
         isOwner: false
