@@ -5,7 +5,6 @@ import { translate } from 'react-i18next'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
-import withStatusBar from 'navigation/utils/withStatusBar'
 import { getProjectCategories } from 'graphql/queries/project/getProjectCategories'
 import { editUser } from 'graphql/mutations/user/editUser'
 import { Header, Touchable, Text, Loader } from 'ui'
@@ -110,4 +109,4 @@ class Onboarding extends Component {
 export default compose(
   getProjectCategories,
   editUser
-)(withStatusBar(translate('Onboarding')(Onboarding), { barStyle: 'light-content' }))
+)(translate('Onboarding')(Onboarding))

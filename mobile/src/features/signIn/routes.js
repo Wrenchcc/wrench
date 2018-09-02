@@ -1,5 +1,4 @@
 import { PUBLIC } from 'navigation'
-import withStatusBar from 'navigation/utils/withStatusBar'
 import SignIn from './containers/SignIn'
 import { ROUTE_NAMES } from './constants'
 
@@ -9,6 +8,6 @@ export default {
     navigationOptions: {
       header: null,
     },
-    component: withStatusBar(SignIn, { barStyle: 'light-content' }),
+    component: SignIn,
   },
 }

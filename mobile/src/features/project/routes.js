@@ -1,5 +1,4 @@
 import { MODAL } from 'navigation'
-import withStatusBar from 'navigation/utils/withStatusBar'
 import Project from './containers/Project'
 import Comments from './containers/Comments'
 import Followers from './containers/Followers'
@@ -15,7 +14,7 @@ export default {
     component: Comments,
   },
   [ROUTE_NAMES.ADD_POST]: {
-    component: withStatusBar(AddPost, { hidden: true }),
+    component: AddPost,
     mode: MODAL,
   },
   [ROUTE_NAMES.EDIT_PROJECT]: {

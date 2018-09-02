@@ -1,7 +1,32 @@
+import { StatusBar } from 'react-native'
+import { isIphone } from 'utils/platform'
 import { NavigationActions } from 'react-navigation'
 import { setCurrentScreen } from 'utils/analytics'
 
 let navigator
+
+const toggleStatusBar = hide => {
+  if (isIphone) StatusBar.setHidden(hide, true)
+}
+
+// NOTE: Change when react navigation has support for statusBarConfig
+const setDefaultStatusBar = () => {
+  toggleStatusBar(false)
+  StatusBar.setBarStyle('dark-content', true)
+}
+
+const changeStatusBar = routeName => {
+  switch (routeName) {
+    case 'add-post':
+      toggleStatusBar(true)
+      break
+    case 'onboarding':
+      StatusBar.setBarStyle('light-content', true)
+      break
+    default:
+      setDefaultStatusBar()
+  }
+}
 
 export function setNavigationRef(navigatorRef) {
   navigator = navigatorRef
@@ -9,6 +34,7 @@ export function setNavigationRef(navigatorRef) {
 
 export function navigate(routeName, params = {}) {
   setCurrentScreen(routeName)
+  changeStatusBar(routeName)
 
   navigator.dispatch(
     NavigationActions.navigate({
@@ -19,12 +45,14 @@ export function navigate(routeName, params = {}) {
   )
 }
 
-export const navigateBack = () => navigator.dispatch(
-  NavigationActions.back({
-    key: null,
-  })
-)
-
+export const navigateBack = () => {
+  setDefaultStatusBar()
+  navigator.dispatch(
+    NavigationActions.back({
+      key: null,
+    })
+  )
+}
 export const navigateToFeed = () => navigate('feed')
 export const navigateToSettings = () => navigate('settings')
 export const navigateToSearch = params => navigate('search', params)
