@@ -2,7 +2,6 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import userSettingsFragment from 'graphql/fragments/user/userSettings'
 
-// TODO: Optimistic ui update
 export const toggleNotificationSettingsMutation = gql`
   mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
     toggleNotificationSettings(input: $input) {
@@ -12,13 +11,15 @@ export const toggleNotificationSettingsMutation = gql`
   ${userSettingsFragment}
 `
 
+// TODO: Optimistic ui update
 const toggleNotificationSettingsOptions = {
-  props: ({ mutate }) => ({
+  props: ({ mutate, ownProps: { user } }) => ({
     toggleNotificationSettings: input => mutate({
       variables: { input },
       optimisticResponse: {
         __typename: 'Mutation',
         toggleNotificationSettings: {
+          id: user.id,
           settings: {
             notifications: {
               types: {

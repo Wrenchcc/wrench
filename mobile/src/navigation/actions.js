@@ -1,5 +1,5 @@
 import { NavigationActions } from 'react-navigation'
-import { setCurrentScreen } from 'utils/analytics'
+import { trackScreen } from 'utils/analytics'
 
 let navigator
 
@@ -8,7 +8,7 @@ export function setNavigationRef(navigatorRef) {
 }
 
 export function navigate(routeName, params = {}) {
-  setCurrentScreen(routeName)
+  trackScreen(routeName)
 
   navigator.dispatch(
     NavigationActions.navigate({

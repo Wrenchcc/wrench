@@ -17,7 +17,8 @@ export const getCurrentUserSettingsQuery = gql`
 
 const getCurrentUserSettingsOptions = {
   props: ({ data }) => ({
-    notifications: pathOr(null, ['user', 'settings', 'notifications'], data),
+    user: pathOr(null, ['user'], data),
+    settings: pathOr(null, ['user', 'settings'], data),
   }),
 }
 

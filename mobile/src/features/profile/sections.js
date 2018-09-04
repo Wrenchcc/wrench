@@ -21,10 +21,10 @@ const generateLanguageSettings = props => {
   return items
 }
 
-const generateNotificationSettings = ({ notifications, toggleNotificationSettings }) => {
-  if (!notifications) return null
+const generateNotificationSettings = ({ settings, toggleNotificationSettings }) => {
+  if (!settings) return null
 
-  const types = Object.keys(notifications.types).filter(type => type !== '__typename')
+  const types = Object.keys(settings.notifications.types).filter(type => type !== '__typename')
   let items = []
 
   items = types.map(type => ({
@@ -34,7 +34,7 @@ const generateNotificationSettings = ({ notifications, toggleNotificationSetting
       notificationType: type,
     }),
     type: 'switch',
-    selected: notifications.types[type].push,
+    selected: settings.notifications.types[type].push,
   }))
 
   return items
