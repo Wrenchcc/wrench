@@ -167,4 +167,7 @@ class AddPost extends Component {
   }
 }
 
-export default compose(getCurrentUserProjects)(translate('AddPost')(AddPost))
+export default compose(
+  getCurrentUserProjects,
+  translate('AddPost')
+)(AddPost)

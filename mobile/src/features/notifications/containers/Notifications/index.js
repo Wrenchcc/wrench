@@ -68,4 +68,7 @@ class Notifications extends Component {
   }
 }
 
-export default compose(getNotifications)(translate('Notifications')(Notifications))
+export default compose(
+  getNotifications,
+  translate('Notifications')
+)(Notifications)
