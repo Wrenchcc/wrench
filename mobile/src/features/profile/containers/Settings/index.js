@@ -65,5 +65,6 @@ class Settings extends PureComponent {
 
 export default compose(
   getCurrentUserSettings,
-  toggleUserNotificationSettingsMutation
-)(translate('Settings')(Settings))
+  toggleUserNotificationSettingsMutation,
+  translate('Settings')
+)(Settings)

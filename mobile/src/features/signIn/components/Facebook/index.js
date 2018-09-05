@@ -38,4 +38,7 @@ class Facebook extends PureComponent {
   }
 }
 
-export default compose(authenticateUser)(translate('Facebook')(Facebook))
+export default compose(
+  authenticateUser,
+  translate('Facebook')
+)(Facebook)

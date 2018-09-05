@@ -1,8 +1,8 @@
+import { mergeDeepRight } from 'ramda'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import userSettingsFragment from 'graphql/fragments/user/userSettings'
 
-// TODO: Optimistic ui update
 export const toggleNotificationSettingsMutation = gql`
   mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
     toggleNotificationSettings(input: $input) {
@@ -13,49 +13,36 @@ export const toggleNotificationSettingsMutation = gql`
 `
 
 const toggleNotificationSettingsOptions = {
-  props: ({ mutate }) => ({
-    toggleNotificationSettings: input => mutate({
-      variables: { input },
-      optimisticResponse: {
-        __typename: 'Mutation',
-        toggleNotificationSettings: {
-          settings: {
-            notifications: {
-              types: {
-                newFollower: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                newComment: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                newMention: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                newArticle: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                similarProjects: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                productAnnouncements: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                __typename: 'NotificationSettingsType',
-              },
-              __typename: 'UserNotificationsSettings',
+  props: ({ mutate, ownProps: { user, settings } }) => ({
+    toggleNotificationSettings: input => {
+      const { deliveryMethod, notificationType } = input
+
+      const oldVal = settings.notifications.types[notificationType][deliveryMethod]
+      const newSettings = mergeDeepRight(settings, {
+        notifications: {
+          types: {
+            [notificationType]: {
+              [deliveryMethod]: !oldVal,
             },
-            __typename: 'UserSettings',
           },
-          __typename: 'User',
         },
-      },
-    }),
+      })
+
+      return mutate({
+        variables: { input },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          toggleNotificationSettings: {
+            id: user.id,
+            settings: {
+              notifications: newSettings.notifications,
+              __typename: 'UserSettings',
+            },
+            __typename: 'User',
+          },
+        },
+      })
+    },
   }),
 }
 

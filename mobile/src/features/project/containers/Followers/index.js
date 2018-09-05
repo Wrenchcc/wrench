@@ -10,7 +10,7 @@ class Followers extends Component {
   static navigationOptions = ({ screenProps }) => ({
     headerTitle: (
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
-        {screenProps.t('Followers.title')}
+        {screenProps.t('Followers:title')}
       </HeaderTitle>
     ),
   })

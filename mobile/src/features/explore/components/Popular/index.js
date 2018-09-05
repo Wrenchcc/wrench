@@ -74,4 +74,7 @@ class Popular extends PureComponent {
   }
 }
 
-export default compose(getPopularProjects)(translate('Popular')(Popular))
+export default compose(
+  getPopularProjects,
+  translate('Popular')
+)(Popular)
