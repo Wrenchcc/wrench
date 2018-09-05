@@ -13,6 +13,7 @@ export const toggleNotificationSettingsMutation = gql`
 // deliveryMethod: 'push',
 // notificationType: type,
 // TODO: Optimistic ui update
+// https://github.com/withspectrum/spectrum/blob/3d57bfd025c1891b7eee5297644e46bf5ea89593/api/mutations/user/toggleNotificationSettings.js
 const toggleNotificationSettingsOptions = {
   props: ({ mutate, ownProps: { user } }) => ({
     toggleNotificationSettings: input => mutate({
