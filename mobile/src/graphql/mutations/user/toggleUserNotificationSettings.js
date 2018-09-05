@@ -10,7 +10,8 @@ export const toggleNotificationSettingsMutation = gql`
   }
   ${userSettingsFragment}
 `
-
+// deliveryMethod: 'push',
+// notificationType: type,
 // TODO: Optimistic ui update
 const toggleNotificationSettingsOptions = {
   props: ({ mutate, ownProps: { user } }) => ({
@@ -21,36 +22,6 @@ const toggleNotificationSettingsOptions = {
         toggleNotificationSettings: {
           id: user.id,
           settings: {
-            notifications: {
-              types: {
-                newFollower: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                newComment: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                newMention: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                newArticle: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                similarProjects: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                productAnnouncements: {
-                  push: true,
-                  __typename: 'NotificationKindSettings',
-                },
-                __typename: 'NotificationSettingsType',
-              },
-              __typename: 'UserNotificationsSettings',
-            },
             __typename: 'UserSettings',
           },
           __typename: 'User',
@@ -59,5 +30,36 @@ const toggleNotificationSettingsOptions = {
     }),
   }),
 }
+
+// notifications: {
+//   types: {
+//     newFollower: {
+//       push: true,
+//       __typename: 'NotificationKindSettings',
+//     },
+//     newComment: {
+//       push: true,
+//       __typename: 'NotificationKindSettings',
+//     },
+//     newMention: {
+//       push: true,
+//       __typename: 'NotificationKindSettings',
+//     },
+//     newArticle: {
+//       push: true,
+//       __typename: 'NotificationKindSettings',
+//     },
+//     similarProjects: {
+//       push: true,
+//       __typename: 'NotificationKindSettings',
+//     },
+//     productAnnouncements: {
+//       push: true,
+//       __typename: 'NotificationKindSettings',
+//     },
+//     __typename: 'NotificationSettingsType',
+//   },
+//   __typename: 'UserNotificationsSettings',
+// },
 
 export default graphql(toggleNotificationSettingsMutation, toggleNotificationSettingsOptions)

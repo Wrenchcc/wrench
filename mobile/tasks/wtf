@@ -1,0 +1,12 @@
+#!/bin/sh
+rm -rf node_modules && \
+  mv $HOME/Library/Caches/Yarn $HOME/.Trash/Yarn-${RANDOM} && \
+  rm -rf ios/build && \
+  rm -rf ios/Pods && \
+  rm -rf android/.gradle && \
+  rm -rf android/build && \
+  rm -rf android/app/build && \
+  rm -rf $TMPDIR/metro-bundler-* && \
+  rm -rf $TMPDIR/metro-cache-* && \
+  yarn && \
+  yarn pod:install
