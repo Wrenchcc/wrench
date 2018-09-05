@@ -9,6 +9,7 @@ import comments from "../../fixtures/comments";
 import projects from "../../fixtures/projects";
 import notifications from "../../fixtures/notifications";
 import projectCategories from "../../fixtures/projectCategories";
+import settings from "../../fixtures/settings";
 
 const pageInfo = {
   hasNextPage: true,
@@ -74,30 +75,7 @@ export default {
             id: "123"
           }
         ],
-        settings: {
-          notifications: {
-            types: {
-              newFollower: {
-                push: false
-              },
-              newComment: {
-                push: false
-              },
-              newMention: {
-                push: true
-              },
-              newArticle: {
-                push: false
-              },
-              similarProjects: {
-                push: true
-              },
-              productAnnouncements: {
-                push: true
-              }
-            }
-          }
-        },
+        settings,
         postsConnection,
         projectsConnection
       };

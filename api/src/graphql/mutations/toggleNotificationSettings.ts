@@ -1,28 +1,23 @@
+import { mergeDeepRight } from "ramda";
 import user from "../../fixtures/generateUser";
-export default (_, args, ctx) => ({
-  ...user(),
-  settings: {
+import settings from "../../fixtures/settings";
+
+export default (_, args, ctx) => {
+  const { deliveryMethod, notificationType } = args.input;
+
+  const oldVal = settings.notifications.types[notificationType][deliveryMethod];
+  const newSettings = mergeDeepRight(settings, {
     notifications: {
       types: {
-        newFollower: {
-          push: true
-        },
-        newComment: {
-          push: true
-        },
-        newMention: {
-          push: true
-        },
-        newArticle: {
-          push: true
-        },
-        similarProjects: {
-          push: true
-        },
-        productAnnouncements: {
-          push: true
+        [notificationType]: {
+          [deliveryMethod]: !oldVal
         }
       }
     }
-  }
-});
+  });
+
+  return {
+    ...user(),
+    settings: newSettings
+  };
+};
