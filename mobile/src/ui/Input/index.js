@@ -23,7 +23,7 @@ const Input = ({
     keyboardAppearance="dark"
     underlineColorAndroid="transparent"
     {...props}
-    innerRef={inputRef}
+    ref={inputRef}
   />
 )
 
