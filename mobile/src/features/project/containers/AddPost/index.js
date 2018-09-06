@@ -5,7 +5,7 @@ import { pathOr, isEmpty } from 'ramda'
 import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import { navigateBack, navigateToFeed } from 'navigation'
+import { navigateBack } from 'navigation'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
 import { close, arrowLeftWhite } from 'images'
 import Camera from 'features/project/components/Camera/index.js'
@@ -82,7 +82,7 @@ class AddPost extends Component {
     // TODO: Implement save
     return (
       edit && (
-        <Text color="white" medium onPress={() => navigateToFeed()}>
+        <Text color="white" medium onPress={() => navigateBack()}>
           {this.props.t('AddPost:post')}
         </Text>
       )

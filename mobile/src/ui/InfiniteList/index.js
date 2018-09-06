@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, Animated } from 'react-native'
 import { Border, Loader } from 'ui'
-import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
+// import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
 
-class InfiniteList extends Component {
+class InfiniteList extends PureComponent {
   static propTypes = {
     borderSeparator: PropTypes.bool,
     onScroll: PropTypes.object,

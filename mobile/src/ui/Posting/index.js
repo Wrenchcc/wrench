@@ -1,20 +1,24 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { translate } from 'react-i18next'
 import { Text } from 'ui'
-import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
-import { Base, Cover, Middle, Content } from './styles'
+import { COLORS } from 'ui/constants'
+import { Base, Cover, Content } from './styles'
 
 const HEIGHT = 60
 const DURATION = 300
 
 class Posting extends Component {
+  static propTypes = {
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }
+
   animatedValue = new Animated.Value(0)
 
   componentDidMount() {
     this.handleToast(false)
-
-    setTimeout(() => this.handleToast(true), 3000)
   }
 
   componentWillUnmount() {
@@ -30,6 +34,7 @@ class Posting extends Component {
 
   render() {
     const { t, title, image } = this.props
+
     return (
       <Animated.View
         style={{

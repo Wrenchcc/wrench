@@ -5,12 +5,16 @@ const NAVIGATE = 'Navigation/NAVIGATE'
 const NAVIGATE_BACK = 'Navigation/BACK'
 
 const toggleStatusBar = hide => {
-  if (isIphone) StatusBar.setHidden(hide, true)
+  StatusBar.setHidden(hide, true)
+}
+
+const setBarStyle = style => {
+  if (isIphone) StatusBar.setBarStyle(style, true)
 }
 
 const setDefaultStatusBar = () => {
   toggleStatusBar(false)
-  StatusBar.setBarStyle('dark-content', true)
+  setBarStyle('dark-content')
 }
 
 const changeStatusBar = routeName => {
@@ -19,7 +23,7 @@ const changeStatusBar = routeName => {
       toggleStatusBar(true)
       break
     case 'onboarding':
-      StatusBar.setBarStyle('light-content', true)
+      setBarStyle('light-content')
       break
     default:
       setDefaultStatusBar()
