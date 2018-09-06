@@ -42,7 +42,6 @@ class Popular extends PureComponent {
     const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t } = this.props
 
     // TODO: Remove when have real IDs
-
     return (
       <Fragment>
         <Title medium>{t('Popular:popular')}</Title>

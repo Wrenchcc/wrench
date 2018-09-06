@@ -56,7 +56,7 @@ class Feed extends Component {
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}
-        hasNextPage={hasNextPage}
+        hasNextPage={false}
         keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
       />

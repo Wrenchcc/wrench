@@ -4,6 +4,10 @@
       "popular": "Popular projects",
       "recent": "Recent posts"
     },
+    "Empty": {
+      "headline": "Get up to speed and follow some projects.",
+      "description": "We’ve selected some categories below you may find interesting."
+    },
     "Notifications": {
       "title": "Notifications"
     },
@@ -179,6 +183,10 @@
     "Popular": {
       "popular": "Populära projekt",
       "recent": "Senaste inlägg"
+    },
+    "Empty": {
+      "headline": "Get up to speed and follow some projects.",
+      "description": "We’ve selected some categories below you may find interesting."
     },
     "Notifications": {
       "title": "Notifikationer"
