@@ -160,6 +160,9 @@
       "comment": "Commented on your post",
       "reply": "Replied to your comment"
     },
+    "Posting": {
+      "description": "Posting..."
+    },
     "ProjectCard": {
       "follow": "Follow",
       "unfollow": "Following"
@@ -333,6 +336,9 @@
       "follow": "Följer nu",
       "comment": "Kommenterade på ditt inlägg",
       "reply": "Svarade på din kommentar"
+    },
+    "Posting": {
+      "description": "Sparar..."
     },
     "ProjectCard": {
       "follow": "Följ",
