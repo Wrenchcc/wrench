@@ -4,6 +4,7 @@ import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
 import { Post, InfiniteList } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
+import Empty from 'features/feed/components/Empty'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
 let scrollView = null
@@ -49,7 +50,8 @@ class Feed extends Component {
         withKeyboardHandler
         defaultPaddingTop
         initialNumToRender={INITIAL_POSTS_COUNT}
-        data={posts}
+        data={null}
+        ListEmptyComponent={<Empty />}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

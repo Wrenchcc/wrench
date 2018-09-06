@@ -1,0 +1,12 @@
+{
+  "ProjectCard": {
+    "en": {
+      "follow": "Follow",
+      "unfollow": "Following"
+    },
+    "sv": {
+      "follow": "Följ",
+      "unfollow": "Följer"
+    }
+  }
+}

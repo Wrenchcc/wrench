@@ -18,6 +18,7 @@ const Text = ({
         numberOfLines={numberOfLines}
         {...props}
         parse={handleParse}
+        lineHeight={lineHeight}
         childrenProps={{ style: { lineHeight } }}
       >
         {children}
@@ -28,6 +29,7 @@ const Text = ({
       numberOfLines={numberOfLines}
       {...props}
       parse={handleParse}
+      lineHeight={lineHeight}
       childrenProps={{ style: { lineHeight } }}
     >
       {children}

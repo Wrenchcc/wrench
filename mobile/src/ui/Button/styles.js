@@ -1,13 +1,16 @@
 import styled from 'styled-components'
+import { toUpper } from 'ramda'
 import UiTouchable from 'ui/Touchable'
 import UiText from 'ui/Text'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
-  background-color: ${COLORS.DARK};
-  height: 60;
+  background-color: ${({ background }) => (background ? COLORS[toUpper(background)] : COLORS.DARK)};
+  height: ${props => (props.small ? 30 : 60)};
   justify-content: center;
   align-items: center;
+  padding-left: 10;
+  padding-right: 10;
 `
 
 export const Text = styled(UiText)``
