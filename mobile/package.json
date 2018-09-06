@@ -30,7 +30,7 @@
     "graphql": "^14.0.0",
     "graphql-tag": "^2.9.2",
     "human-format": "^0.10.0",
-    "i18next": "^11.6.0",
+    "i18next": "^11.7.0",
     "javascript-time-ago": "^1.0.31",
     "ramda": "^0.25.0",
     "react": "^16.4.2",
