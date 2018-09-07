@@ -16,7 +16,7 @@ class InfiniteList extends PureComponent {
     paddingHorizontal: PropTypes.number,
     contentContainerStyle: PropTypes.object,
     data: PropTypes.array,
-    refetch: PropTypes.func,
+    refetch: PropTypes.any,
     fetchMore: PropTypes.func,
     isRefetching: PropTypes.bool,
     isFetching: PropTypes.bool,

@@ -79,7 +79,7 @@ class Onboarding extends Component {
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
         <Image selected={this.isAdded(item)} source={item.image} size={ITEM_SIZE} gutter={GUTTER}>
           <Overlay selected={false} />
-          <Text color="white">{item.name}</Text>
+          <Text color="white">{item.title}</Text>
         </Image>
       </Touchable>
     </Cell>

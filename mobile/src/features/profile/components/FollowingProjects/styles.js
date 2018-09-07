@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import UiTitle from 'ui/Title'
 import UiText from 'ui/Text'
+import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
-  flex: 1;
   background-color: ${COLORS.DIVIDER};
-  justify-content: center;
+  flex: 1;
   padding-left: 20;
   padding-right: 20;
+  padding-bottom: 50;
 `
 
 export const Title = styled(UiTitle)`

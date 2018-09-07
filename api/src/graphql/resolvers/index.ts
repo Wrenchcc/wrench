@@ -15,8 +15,13 @@ import settings from "../../fixtures/settings";
 import pageInfo from "../../fixtures/pageInfo";
 
 const postsConnection = {
-  edges: posts(),
-  pageInfo
+  pageInfo,
+  edges: posts()
+};
+
+const followingProjects = {
+  pageInfo,
+  edges: projects()
 };
 
 const followersConnection = {
@@ -55,7 +60,8 @@ export default {
     }),
     user: (root, args, ctx, info) => ({
       ...generateUser(),
-      postsConnection
+      postsConnection,
+      followingProjects
     }),
     currentUser: (root, args, ctx, info) => {
       if (!ctx.user) {

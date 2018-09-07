@@ -1,12 +1,11 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-// import { mapListProps } from 'graphql/utils/mapListProps'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 export const getProjectSuggestionsQuery = gql`
-  query getProjectSuggestions($username: LowercaseString, $after: String) {
-    projects: projectSuggestions(username: $username, after: $after) {
+  query getProjectSuggestions($after: String) {
+    projects: projectSuggestions(after: $after) {
       category {
         id
         title
@@ -17,14 +16,7 @@ export const getProjectSuggestionsQuery = gql`
       edges {
         node {
           ...projectInfo
-          images: imagesConnection(first: 6, maxWidth: 335, maxHeight: 335) {
-            edges {
-              node {
-                id
-                uri
-              }
-            }
-          }
+          ...projectCover
         }
       }
     }
@@ -37,8 +29,8 @@ const getProjectsSuggestionsOptions = {
     fetchPolicy: 'cache-and-network',
   }),
   props: ({ data }) => ({
-    // isFetching: loading,
-    projects: pathOr(null, ['projects'], data),
+    isFetching: pathOr(false, ['loading'], data),
+    projects: pathOr([], ['projects'], data),
   }),
 }
 

@@ -4,20 +4,15 @@ import { translate } from 'react-i18next'
 import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { InfiniteList, ProjectCard } from 'ui'
-import { searchProjects } from 'graphql/queries/project/searchProjects'
+import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
 import { navigateToProject } from 'navigation'
 import { Base, Title, Description } from './styles'
 
-// TODO: Add followingProjects query and Copy
+// TODO: Fallback to interested projects if no following
 class FollowingProjects extends PureComponent {
   static propTypes = {
     user: PropTypes.object,
     projects: PropTypes.array,
-    fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    hasNextPage: PropTypes.bool.isRequired,
   }
 
   headerComponent = () => {
@@ -40,20 +35,16 @@ class FollowingProjects extends PureComponent {
   )
 
   render() {
-    const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { projects, isFetching } = this.props
 
     return (
       <Base>
         <InfiniteList
           ListHeaderComponent={this.headerComponent}
           data={projects}
-          refetch={refetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
           keyExtractor={(item, index) => item.node.id + index}
           renderItem={this.renderItem}
+          isFetching={isFetching}
         />
       </Base>
     )
@@ -61,6 +52,6 @@ class FollowingProjects extends PureComponent {
 }
 
 export default compose(
-  searchProjects,
+  getFollowingProjects,
   translate('FollowingProjects')
 )(FollowingProjects)

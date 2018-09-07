@@ -1,0 +1,40 @@
+import gql from 'graphql-tag'
+import { pathOr } from 'ramda'
+import { graphql } from 'react-apollo'
+import projectInfoFragment from 'graphql/fragments/project/projectInfo'
+
+export const getFollowingProjectsQuery = gql`
+  query getFollowingProjects($username: LowercaseString!, $after: String) {
+    user(username: $username) {
+      id
+      followingProjects(after: $after) {
+        pageInfo {
+          hasNextPage
+        }
+        edges {
+          node {
+            ...projectInfo
+            ...projectCover
+          }
+        }
+      }
+    }
+  }
+  ${projectInfoFragment}
+`
+
+const getFollowingProjectsOptions = {
+  options: ({ user, after = null }) => ({
+    variables: {
+      username: user.username,
+      after,
+    },
+    fetchPolicy: 'cache-and-network',
+  }),
+  props: ({ data }) => ({
+    isFetching: data.loading,
+    projects: pathOr(null, ['user', 'followingProjects', 'edges'], data),
+  }),
+}
+
+export const getFollowingProjects = graphql(getFollowingProjectsQuery, getFollowingProjectsOptions)

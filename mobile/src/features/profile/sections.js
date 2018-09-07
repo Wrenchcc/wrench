@@ -126,6 +126,12 @@ const sections = props => ({
       data: generateLanguageSettings(props),
     },
   ],
+  membership: [
+    {
+      headerTitle: 'membership',
+      data: [{}],
+    },
+  ],
   support: [
     {
       headerTitle: 'support',
@@ -158,36 +164,13 @@ const sections = props => ({
 })
 
 const routeSections = {
-  settings: [
-    {
-      titleKey: 'invite',
-    },
-  ],
-  facebook: [
-    {
-      headerTitle: 'facebook',
-    },
-  ],
-  contacts: [
-    {
-      headerTitle: 'contacts',
-    },
-  ],
-  'push-notifications': [
-    {
-      headerTitle: 'push-notifications',
-    },
-  ],
-  language: [
-    {
-      headerTitle: 'language',
-    },
-  ],
-  support: [
-    {
-      headerTitle: 'support',
-    },
-  ],
+  settings: [{ titleKey: 'invite' }],
+  facebook: [{ headerTitle: 'facebook' }],
+  contacts: [{ headerTitle: 'contacts' }],
+  'push-notifications': [{ headerTitle: 'push-notifications' }],
+  language: [{ headerTitle: 'language' }],
+  membership: [{ headerTitle: 'membership' }],
+  support: [{ headerTitle: 'support' }],
 }
 
 export const mapRouteForSection = component => mergeAll(

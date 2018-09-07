@@ -16,6 +16,7 @@ export default `
     dynamicLink: String
 
     projectsConnection(first: Int, after: String, last: Int, before: String): ProjectsConnection
+    followingProjects(first: Int, after: String, last: Int, before: String): ProjectsConnection
     postsConnection(first: Int, after: String, last: Int, before: String): PostConnection
   }
 

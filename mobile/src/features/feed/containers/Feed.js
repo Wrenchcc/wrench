@@ -4,7 +4,7 @@ import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
 import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
-import Empty from 'features/feed/components/Empty'
+import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
 let scrollView = null
@@ -55,7 +55,7 @@ class Feed extends PureComponent {
           initialNumToRender={INITIAL_POSTS_COUNT}
           hasPolling
           data={posts}
-          ListEmptyComponent={<Empty />}
+          ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
