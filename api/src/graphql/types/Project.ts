@@ -26,11 +26,17 @@ export default `
 
   type ProjectCategory {
     id: ID
-    name: String
+    title: String
     image: Image
   }
 
   type ProjectsConnection {
+    pageInfo: PageInfo!
+    edges: [ProjectEdge!]
+  }
+
+  type ProjectSuggestionsConnection {
+    category: ProjectCategory
     pageInfo: PageInfo!
     edges: [ProjectEdge!]
   }
@@ -43,6 +49,7 @@ export default `
   extend type Query {
     project(id: ID, slug: LowercaseString, first: Int, after: String, last: Int, before: String): Project
     projects(first: Int, after: String, last: Int, before: String, type: ProjectType): ProjectsConnection
+    projectSuggestions(id: ID, username: LowercaseString, first: Int, after: String, last: Int, before: String): [ProjectSuggestionsConnection]
     projectCategories: [ProjectCategory]
   }
 

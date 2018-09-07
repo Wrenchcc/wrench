@@ -9,12 +9,10 @@ import comments from "../../fixtures/comments";
 import projects from "../../fixtures/projects";
 import notifications from "../../fixtures/notifications";
 import projectCategories from "../../fixtures/projectCategories";
+import projectSuggestions from "../../fixtures/projectSuggestions";
+import projectsConnection from "../../fixtures/projectsConnection";
 import settings from "../../fixtures/settings";
-
-const pageInfo = {
-  hasNextPage: true,
-  hasPreviousPage: false
-};
+import pageInfo from "../../fixtures/pageInfo";
 
 const postsConnection = {
   edges: posts(),
@@ -25,11 +23,6 @@ const followersConnection = {
   totalCount: 4000,
   edges: users(),
   pageInfo
-};
-
-const projectsConnection = {
-  pageInfo,
-  edges: projects()
 };
 
 export default {
@@ -52,6 +45,7 @@ export default {
       followersConnection,
       postsConnection
     }),
+    projectSuggestions: (root, args, ctx, info) => projectSuggestions,
     projectCategories: (root, args, ctx, info) => projectCategories,
     projects: (root, args, ctx, info) => projectsConnection,
     followers: (root, args, ctx, info) => followersConnection,
