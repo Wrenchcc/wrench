@@ -152,6 +152,9 @@
       "description": "By continuing you agree to Wrench's ",
       "link": "terms and conditions."
     },
+    "LoadNewer": {
+      "button": "New posts"
+    },
     "NetworkConnectivity": {
       "noConnection": "No internet connection"
     },
@@ -328,6 +331,9 @@
     "Legal": {
       "description": "Genom att fortsätta hålla du med Wrench's ",
       "link": "användarvillkor."
+    },
+    "LoadNewer": {
+      "button": "Nya inlägg"
     },
     "NetworkConnectivity": {
       "noConnection": "Ingen internetanslutning"
