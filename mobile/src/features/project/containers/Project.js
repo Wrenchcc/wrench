@@ -118,6 +118,7 @@ class Project extends Component {
           defaultPaddingTop
           withKeyboardHandler
           ListHeaderComponent={project.title && <Header project={project} />}
+          hasPolling
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}

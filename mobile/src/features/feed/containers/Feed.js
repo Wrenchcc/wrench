@@ -50,13 +50,14 @@ class Feed extends Component {
         withKeyboardHandler
         defaultPaddingTop
         initialNumToRender={INITIAL_POSTS_COUNT}
-        data={null}
+        hasPolling
+        data={posts}
         ListEmptyComponent={<Empty />}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}
-        hasNextPage={false}
+        hasNextPage={hasNextPage}
         keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
       />

@@ -8,6 +8,9 @@ import { Base, Headline, Description, Title, ProjectCard, GUTTER, BAR_SPACE, wid
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
+// TODO: Navigate to projects
+// Mutation
+// Query
 class Empty extends PureComponent {
   renderItem = ({ item, index }) => (
     <ProjectCard
