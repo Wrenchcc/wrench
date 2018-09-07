@@ -12,7 +12,8 @@ export const Base = styled.View`
 `
 
 export const Title = styled(UiTitle)`
-  margin-bottom: 10;
+  margin-top: 60;
+  margin-bottom: 15;
 `
 
 export const Description = styled(UiText)`

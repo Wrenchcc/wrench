@@ -76,7 +76,7 @@ class User extends Component {
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
-    const hasPosts = !!false
+    const hasPosts = !!posts
 
     // TODO: Remove when have IDs
     return (
@@ -85,15 +85,14 @@ class User extends Component {
           scrollView = ref
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<FollowingProjects />}
-        data={null}
+        data={posts}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}
-        hasNextPage={false}
+        hasNextPage={hasNextPage}
         keyExtractor={(item, index) => item.node.id + index}
         renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {

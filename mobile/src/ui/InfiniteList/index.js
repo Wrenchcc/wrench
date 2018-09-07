@@ -23,8 +23,8 @@ class InfiniteList extends PureComponent {
     hasNextPage: PropTypes.bool,
     inverted: PropTypes.bool,
     renderItem: PropTypes.func,
-    ListHeaderComponent: PropTypes.node,
-    ListEmptyComponent: PropTypes.node,
+    ListHeaderComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+    ListEmptyComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   }
 
   scrollToNewData = () => {
