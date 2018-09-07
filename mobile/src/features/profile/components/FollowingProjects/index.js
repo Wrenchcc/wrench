@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
@@ -9,12 +10,23 @@ import { Base, Title, Description } from './styles'
 
 // TODO: Add followingProjects query and Copy
 class FollowingProjects extends PureComponent {
+  static propTypes = {
+    user: PropTypes.object,
+    projects: PropTypes.array,
+    fetchMore: PropTypes.func.isRequired,
+    refetch: PropTypes.func.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
+  }
+
   headerComponent = () => {
-    const { t } = this.props
+    const { t, user } = this.props
+
     return (
       <Fragment>
         <Title>{t('FollowingProjects:title')}</Title>
-        <Description>{t('FollowingProjects:description')}</Description>
+        <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
       </Fragment>
     )
   }
@@ -28,7 +40,7 @@ class FollowingProjects extends PureComponent {
   )
 
   render() {
-    const { projects, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <Base>
