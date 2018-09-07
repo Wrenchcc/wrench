@@ -15,29 +15,25 @@ export default function withKeyboardHandler(WrappedComponent) {
     static propTypes = {
       navigation: PropTypes.object.isRequired,
       scrollRef: PropTypes.func,
-      withKeyboardHandler: PropTypes.bool,
     }
 
     constructor(props) {
       super(props)
 
-      if (props.withKeyboardHandler) {
-        props.navigation.addListener('willFocus', () => {
-          this.subscriptions = [Keyboard.addListener('keyboardWillShow', this.keyboardWillShow)]
-        })
+      props.navigation.addListener('willFocus', () => {
+        this.subscriptions = [Keyboard.addListener('keyboardWillShow', this.keyboardWillShow)]
+      })
 
-        props.navigation.addListener('willBlur', () => {
-          this.subscriptions.forEach(sub => sub.remove())
-          Keyboard.dismiss()
-        })
-      }
+      props.navigation.addListener('willBlur', () => {
+        this.subscriptions.forEach(sub => sub.remove())
+        Keyboard.dismiss()
+      })
     }
 
     keyboardWillShow = () => {
       const currentlyFocusedField = TextInput.State.currentlyFocusedField()
       const responder = this.scrollView.getScrollResponder()
 
-      // TODO: https://github.com/facebook/react-native/pull/19834
       if (!currentlyFocusedField || !responder) {
         return
       }
@@ -49,7 +45,7 @@ export default function withKeyboardHandler(WrappedComponent) {
       )
     }
 
-    handleRef = el => {
+    setRef = el => {
       this.scrollView = el
 
       if (this.props.scrollRef) {
@@ -57,7 +53,7 @@ export default function withKeyboardHandler(WrappedComponent) {
       }
     }
 
-    render = () => <WrappedComponent {...this.props} scrollRef={this.handleRef} />
+    render = () => <WrappedComponent {...this.props} scrollRef={this.setRef} />
   }
 
   function getDisplayName(WrappedComponent) {

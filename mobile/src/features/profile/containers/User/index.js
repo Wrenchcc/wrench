@@ -4,7 +4,7 @@ import { pathOr, equals } from 'ramda'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
-import { InfiniteList, Post, Share, HeaderTitle, EmptyState } from 'ui'
+import { InfiniteListWithHandler, Post, Share, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 
 const HEADER_HEIGHT = 100
@@ -80,7 +80,7 @@ class User extends Component {
 
     // TODO: Remove when have IDs
     return (
-      <InfiniteList
+      <InfiniteListWithHandler
         scrollEnabled={hasPosts}
         scrollRef={ref => {
           scrollView = ref
@@ -89,7 +89,6 @@ class User extends Component {
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<EmptyState type={emptyState} />}
-        withKeyboardHandler
         data={posts}
         refetch={refetch}
         fetchMore={fetchMore}

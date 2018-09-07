@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, Animated } from 'react-native'
 import { Border, Loader, LoadNewer } from 'ui'
-// import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
+import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
 
@@ -119,7 +119,5 @@ class InfiniteList extends PureComponent {
   }
 }
 
+export const InfiniteListWithHandler = withKeyboardHandler(InfiniteList)
 export default InfiniteList
-
-// TODO: Make optional
-// export default withKeyboardHandler(InfiniteList)

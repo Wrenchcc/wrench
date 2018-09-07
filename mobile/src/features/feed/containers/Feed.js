@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
-import { Post, InfiniteList } from 'ui'
+import { Post, InfiniteListWithHandler } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import Empty from 'features/feed/components/Empty'
 import { INITIAL_POSTS_COUNT } from '../constants'
@@ -43,11 +43,10 @@ class Feed extends Component {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
-      <InfiniteList
+      <InfiniteListWithHandler
         scrollRef={ref => {
           scrollView = ref
         }}
-        withKeyboardHandler
         defaultPaddingTop
         initialNumToRender={INITIAL_POSTS_COUNT}
         hasPolling

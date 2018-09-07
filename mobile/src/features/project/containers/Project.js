@@ -5,7 +5,7 @@ import { pathOr, equals } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
 import { navigateToUser } from 'navigation'
-import { InfiniteList, Post, Avatar, HeaderTitle, Edit } from 'ui'
+import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit } from 'ui'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -114,9 +114,8 @@ class Project extends Component {
     // TODO: Remove when have IDs
     return (
       <Fragment>
-        <InfiniteList
+        <InfiniteListWithHandler
           defaultPaddingTop
-          withKeyboardHandler
           ListHeaderComponent={project.title && <Header project={project} />}
           hasPolling
           data={posts}

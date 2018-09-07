@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getRecentPosts } from 'graphql/queries/getExplore'
-import { Post, InfiniteList } from 'ui'
+import { Post, InfiniteListWithHandler } from 'ui'
 import Popular from 'features/explore/components/Popular'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
@@ -39,13 +39,12 @@ class Explore extends Component {
 
     // TODO: Remove when have real IDs
     return (
-      <InfiniteList
+      <InfiniteListWithHandler
         scrollRef={ref => {
           scrollView = ref
         }}
         initialNumToRender={INITIAL_POSTS_COUNT}
         ListHeaderComponent={<Popular />}
-        withKeyboardHandler
         data={posts}
         refetch={refetch}
         fetchMore={fetchMore}
