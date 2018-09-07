@@ -1,2 +1,2 @@
 #!/bin/sh
-./node_modules/.bin/babel-node tasks/createTranslations.js 'src/**/{,*.}translations.json' 'src/translations/index.json'
+node tasks/createTranslations.js 'src/**/{,*.}translations.json' 'src/translations/index.json'
