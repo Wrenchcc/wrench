@@ -1,0 +1,19 @@
+import styled from 'styled-components'
+
+export const Base = styled.View`
+  height: 60;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20;
+  padding-right: 20;
+  padding-top: 10;
+  padding-bottom: 10;
+`
+
+export const Cover = styled.Image`
+  width: 40;
+  height: 40;
+  margin-right: 10;
+`
+
+export const Content = styled.View``

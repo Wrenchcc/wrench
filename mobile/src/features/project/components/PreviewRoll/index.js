@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { CameraRoll } from 'react-native'
 import { pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
-
 import { cameraRoll } from 'images'
 import { Button, Preview, Icon } from './styles'
 

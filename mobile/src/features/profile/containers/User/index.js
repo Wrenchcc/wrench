@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { pathOr, equals } from 'ramda'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
-import { InfiniteList, Post, Share, HeaderTitle, EmptyState } from 'ui'
+import { InfiniteListWithHandler, Post, Share, HeaderTitle } from 'ui'
+import FollowingProjects from 'features/profile/components/FollowingProjects'
 import Header from 'features/profile/components/Header'
 
 const HEADER_HEIGHT = 100
@@ -12,7 +13,7 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-class User extends Component {
+class User extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const fullName = pathOr(false, ['user', 'fullName'], params)
@@ -75,21 +76,17 @@ class User extends Component {
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
-    const emptyState = user && user.projectCount > 0 ? 'project' : 'post'
     const hasPosts = !!posts
 
     // TODO: Remove when have IDs
     return (
-      <InfiniteList
-        scrollEnabled={hasPosts}
+      <InfiniteListWithHandler
         scrollRef={ref => {
           scrollView = ref
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
-        ListEmptyComponent={<EmptyState type={emptyState} />}
-        withKeyboardHandler
+        ListEmptyComponent={<FollowingProjects user={user} />}
         data={posts}
         refetch={refetch}
         fetchMore={fetchMore}

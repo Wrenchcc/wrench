@@ -3,8 +3,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import UiTouchable from 'ui/Touchable'
 import UiFollowers from 'ui/Followers'
 import UiText from 'ui/Text'
-import UiAvatar from 'ui/Avatar'
-import { COLORS } from 'ui/constants'
+import UiButton from 'ui/Button'
 
 export const Base = styled(UiTouchable)`
   margin-top: 20;
@@ -25,11 +24,8 @@ export const ProjectName = styled(UiText)`
 
 export const Followers = styled(UiFollowers)``
 
-export const Avatar = styled(UiAvatar)`
-  border-width: 1.5;
-  border-color: ${COLORS.WHITE};
-  border-radius: 30;
-  overflow: hidden;
+export const Button = styled(UiButton)`
+  margin-bottom: 5;
 `
 
 export const Content = styled.View`

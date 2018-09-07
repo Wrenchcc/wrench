@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { navigateToUser } from 'navigation'
+import { translate } from 'react-i18next'
 import { Gallery } from 'ui'
-import { Base, Overlay, Content, Info, ProjectName, Followers, Avatar } from './styles'
+import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
-export default class ProjectCard extends PureComponent {
+// TODO: Mutation follow project
+class ProjectCard extends PureComponent {
   static propTypes = {
     images: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
@@ -13,16 +14,15 @@ export default class ProjectCard extends PureComponent {
     user: PropTypes.object.isRequired,
   }
 
-  goToProfile = () => {
-    const { user } = this.props
-    navigateToUser({ user })
+  handleFollow = () => {
+    console.log('follow')
   }
 
   render() {
-    const { images, title, followers, onPress, user } = this.props
+    const { t, images, title, followers, onPress, user, style } = this.props
 
     return (
-      <Base onPress={onPress}>
+      <Base onPress={onPress} style={style}>
         <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
 
         {images && <Gallery images={images} />}
@@ -34,9 +34,13 @@ export default class ProjectCard extends PureComponent {
             </ProjectName>
             <Followers followers={followers.totalCount} color="white" opacity={0.9} />
           </Info>
-          <Avatar uri={user.avatarUrl} onPress={this.goToProfile} size={40} />
+          <Button small background="white" onPress={this.handleFollow}>
+            {t('ProjectCard:follow')}
+          </Button>
         </Content>
       </Base>
     )
   }
 }
+
+export default translate('ProjectCard')(ProjectCard)

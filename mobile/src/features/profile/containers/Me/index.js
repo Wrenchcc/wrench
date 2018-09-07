@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
-import { InfiniteList, Post, HeaderTitle, EmptyState } from 'ui'
+import { InfiniteListWithHandler, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
 
 const HEADER_HEIGHT = 100
@@ -11,7 +11,7 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-class Me extends Component {
+class Me extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
@@ -69,7 +69,7 @@ class Me extends Component {
 
     // TODO: Remove when have IDs
     return (
-      <InfiniteList
+      <InfiniteListWithHandler
         scrollEnabled={hasPosts}
         scrollRef={ref => {
           scrollView = ref
@@ -78,7 +78,6 @@ class Me extends Component {
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<EmptyState type={emptyState} />}
-        withKeyboardHandler
         data={posts}
         refetch={refetch}
         fetchMore={fetchMore}

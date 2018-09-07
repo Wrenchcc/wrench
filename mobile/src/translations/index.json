@@ -4,8 +4,16 @@
       "popular": "Popular projects",
       "recent": "Recent posts"
     },
+    "Empty": {
+      "headline": "Get up to speed and follow some projects.",
+      "description": "We’ve selected some categories below you may find interesting."
+    },
     "Notifications": {
       "title": "Notifications"
+    },
+    "FollowingProjects": {
+      "title": "This user don’t have any own projects yet.",
+      "description": "But here’s some of the projects {{name}} follows."
     },
     "SettingsButton": {
       "settings": "Settings"
@@ -63,15 +71,6 @@
         "permissionButton": "Enable Library Access"
       }
     },
-    "EditProject": {
-      "title": "Create project",
-      "subTitle": "Information",
-      "add": "Add",
-      "inputTitle": "Title",
-      "inputBrand": "Brand",
-      "inputModel": "Model",
-      "inputYear": "Year"
-    },
     "ProjectFooter": {
       "edit": "Edit post",
       "delete": "Delete post",
@@ -87,6 +86,15 @@
     },
     "Comments": {
       "title": "Comments"
+    },
+    "EditProject": {
+      "title": "Create project",
+      "subTitle": "Information",
+      "add": "Add",
+      "inputTitle": "Title",
+      "inputBrand": "Brand",
+      "inputModel": "Model",
+      "inputYear": "Year"
     },
     "Followers": {
       "title": "Followers"
@@ -148,6 +156,9 @@
       "description": "By continuing you agree to Wrench's ",
       "link": "terms and conditions."
     },
+    "LoadNewer": {
+      "button": "New posts"
+    },
     "NetworkConnectivity": {
       "noConnection": "No internet connection"
     },
@@ -155,6 +166,13 @@
       "follow": "Now follows",
       "comment": "Commented on your post",
       "reply": "Replied to your comment"
+    },
+    "PostProgress": {
+      "description": "Posting..."
+    },
+    "ProjectCard": {
+      "follow": "Follow",
+      "unfollow": "Following"
     },
     "Search": {
       "placeholder": "Search"
@@ -176,8 +194,16 @@
       "popular": "Populära projekt",
       "recent": "Senaste inlägg"
     },
+    "Empty": {
+      "headline": "Kom igång och följ några projekt.",
+      "description": "Vi visar några kategorier av projekt som vi tror du tycker om."
+    },
     "Notifications": {
       "title": "Notifikationer"
+    },
+    "FollowingProjects": {
+      "title": "Den här användaren har inga egna projekt ännu.",
+      "description": "Men här är några project som {{name}} följer."
     },
     "SettingsButton": {
       "settings": "Inställningar"
@@ -234,15 +260,6 @@
         "permissionButton": "Aktivera biblioteksåtkomst"
       }
     },
-    "EditProject": {
-      "title": "Skapa projekt",
-      "subTitle": "Information",
-      "add": "Lägg till",
-      "inputTitle": "Titel",
-      "inputBrand": "Märke",
-      "inputModel": "Modell",
-      "inputYear": "År"
-    },
     "ProjectFooter": {
       "edit": "Redigera inlägg",
       "delete": "Radera inägg",
@@ -253,6 +270,15 @@
     },
     "Comments": {
       "title": "Kommentarer"
+    },
+    "EditProject": {
+      "title": "Skapa projekt",
+      "subTitle": "Information",
+      "add": "Lägg till",
+      "inputTitle": "Titel",
+      "inputBrand": "Märke",
+      "inputModel": "Modell",
+      "inputYear": "År"
     },
     "Followers": {
       "title": "Följare"
@@ -314,6 +340,9 @@
       "description": "Genom att fortsätta hålla du med Wrench's ",
       "link": "användarvillkor."
     },
+    "LoadNewer": {
+      "button": "Nya inlägg"
+    },
     "NetworkConnectivity": {
       "noConnection": "Ingen internetanslutning"
     },
@@ -321,6 +350,13 @@
       "follow": "Följer nu",
       "comment": "Kommenterade på ditt inlägg",
       "reply": "Svarade på din kommentar"
+    },
+    "PostProgress": {
+      "description": "Sparar..."
+    },
+    "ProjectCard": {
+      "follow": "Följ",
+      "unfollow": "Följer"
     },
     "Search": {
       "placeholder": "Sök"

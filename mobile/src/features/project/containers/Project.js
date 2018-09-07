@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { pathOr, equals } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
 import { navigateToUser } from 'navigation'
-import { InfiniteList, Post, Avatar, HeaderTitle, Edit } from 'ui'
+import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit } from 'ui'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -16,7 +16,7 @@ const START_OPACITY = 50
 let scrollView = null
 
 // TODO: Load user data from project?
-class Project extends Component {
+class Project extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const user = pathOr(null, ['project', 'user'], params)
@@ -114,9 +114,8 @@ class Project extends Component {
     // TODO: Remove when have IDs
     return (
       <Fragment>
-        <InfiniteList
+        <InfiniteListWithHandler
           defaultPaddingTop
-          withKeyboardHandler
           ListHeaderComponent={project.title && <Header project={project} />}
           data={posts}
           refetch={refetch}

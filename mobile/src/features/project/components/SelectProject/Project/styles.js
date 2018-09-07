@@ -5,6 +5,7 @@ import { COLORS } from 'ui/constants'
 export const Base = styled(UiTouchable)`
   height: 50px;
   flex-direction: row;
+  align-items: center;
   border-bottom-width: 1;
   padding-bottom: 15;
   margin-bottom: 15;
