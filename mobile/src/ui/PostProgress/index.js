@@ -9,7 +9,7 @@ import { Base, Cover, Content } from './styles'
 const HEIGHT = 60
 const DURATION = 300
 
-class Posting extends Component {
+class PostProgress extends Component {
   static propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -48,7 +48,7 @@ class Posting extends Component {
           <Content>
             <Text numberOfLines={1}>{title}</Text>
             <Text fontSize={15} color="grey">
-              {t('Posting:description')}
+              {t('PostProgress:description')}
             </Text>
           </Content>
         </Base>
@@ -57,4 +57,4 @@ class Posting extends Component {
   }
 }
 
-export default translate('Posting')(Posting)
+export default translate('PostProgress')(PostProgress)

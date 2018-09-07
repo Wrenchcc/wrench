@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getRecentPosts } from 'graphql/queries/getExplore'
@@ -8,7 +8,7 @@ import { INITIAL_POSTS_COUNT } from '../constants'
 
 let scrollView = null
 
-class Explore extends Component {
+class Explore extends PureComponent {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
       if (navigation.isFocused()) {

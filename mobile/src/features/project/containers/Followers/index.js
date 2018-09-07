@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getFollowers } from 'graphql/queries/getFollowers'
@@ -6,7 +6,7 @@ import { InfiniteList, User, HeaderTitle } from 'ui'
 
 let scrollView = null
 
-class Followers extends Component {
+class Followers extends PureComponent {
   static navigationOptions = ({ screenProps }) => ({
     headerTitle: (
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>

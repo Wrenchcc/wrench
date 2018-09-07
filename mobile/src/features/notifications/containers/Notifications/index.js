@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { compose } from 'react-apollo'
@@ -8,7 +8,7 @@ import { Header } from './styles'
 
 let scrollView = null
 
-class Notifications extends Component {
+class Notifications extends PureComponent {
   static navigationOptions = {
     tabBarOnPress: ({ navigation, defaultHandler }) => {
       if (navigation.isFocused()) {

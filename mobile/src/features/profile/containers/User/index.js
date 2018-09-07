@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { pathOr, equals } from 'ramda'
 import { Animated } from 'react-native'
@@ -13,7 +13,7 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-class User extends Component {
+class User extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const fullName = pathOr(false, ['user', 'fullName'], params)

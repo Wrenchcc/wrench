@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { pathOr, equals } from 'ramda'
@@ -16,7 +16,7 @@ const START_OPACITY = 50
 let scrollView = null
 
 // TODO: Load user data from project?
-class Project extends Component {
+class Project extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const user = pathOr(null, ['project', 'user'], params)
