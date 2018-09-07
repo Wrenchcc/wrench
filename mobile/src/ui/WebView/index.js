@@ -120,7 +120,7 @@ class WebView extends PureComponent {
           </View>
         </Touchable>
       </Inner>
-      <Share name={this.state.title} url={this.state.url} />
+      <Share title={this.state.title} url={this.state.url} />
     </Footer>
   )
 

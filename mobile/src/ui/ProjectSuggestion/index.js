@@ -1,19 +1,20 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { pathOr } from 'ramda'
+import { navigateToProject } from 'navigation'
 import { InfiniteList } from 'ui'
 import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
-export default class ProjectSuggestions extends PureComponent {
+export default class ProjectSuggestion extends PureComponent {
   static propTypes = {
     data: PropTypes.array,
-    fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    hasNextPage: PropTypes.bool.isRequired,
+    fetchMore: PropTypes.func,
+    refetch: PropTypes.func,
+    isRefetching: PropTypes.bool,
+    isFetching: PropTypes.bool,
+    hasNextPage: PropTypes.bool,
   }
 
   renderItem = ({ item, index }) => (
@@ -22,7 +23,7 @@ export default class ProjectSuggestions extends PureComponent {
       last={index === this.props.data.length - 1}
       {...item.node}
       images={pathOr(null, ['node', 'images', 'edges'], item)}
-      onPress={() => console.log('blah')}
+      onPress={() => navigateToProject({ project: item.node })}
     />
   )
 
