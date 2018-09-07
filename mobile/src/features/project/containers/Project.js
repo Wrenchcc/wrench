@@ -117,7 +117,6 @@ class Project extends Component {
         <InfiniteListWithHandler
           defaultPaddingTop
           ListHeaderComponent={project.title && <Header project={project} />}
-          hasPolling
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}

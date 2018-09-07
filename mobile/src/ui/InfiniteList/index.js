@@ -22,7 +22,6 @@ class InfiniteList extends PureComponent {
     isFetching: PropTypes.bool,
     hasNextPage: PropTypes.bool,
     inverted: PropTypes.bool,
-    hasPolling: PropTypes.bool,
     renderItem: PropTypes.func,
     ListHeaderComponent: PropTypes.node,
     ListEmptyComponent: PropTypes.node,
@@ -31,9 +30,7 @@ class InfiniteList extends PureComponent {
   scrollToNewData = () => {
     // If new posts added to top
     // Hide when close to top
-    const { hasPolling } = this.props
-
-    if (hasPolling) {
+    if (false) {
       return <LoadNewer onPress={() => this.scrollView.scrollToOffset({ offset: 0 })} />
     }
 
