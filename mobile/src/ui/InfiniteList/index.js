@@ -51,11 +51,13 @@ class InfiniteList extends PureComponent {
   setRef = el => {
     const { scrollRef } = this.props
 
-    // Internal use
-    this.scrollView = el.getNode()
+    if (el) {
+      const node = el.getNode()
 
-    if (el && scrollRef) {
-      scrollRef(el.getNode())
+      // Internal use
+      this.scrollView = node
+
+      if (scrollRef) scrollRef(node)
     }
   }
 
