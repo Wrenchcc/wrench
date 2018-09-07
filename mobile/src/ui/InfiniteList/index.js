@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, Animated } from 'react-native'
-import { Border, Loader } from 'ui'
+import { Border, Loader, LoadNewer } from 'ui'
 // import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
@@ -22,9 +22,22 @@ class InfiniteList extends PureComponent {
     isFetching: PropTypes.bool,
     hasNextPage: PropTypes.bool,
     inverted: PropTypes.bool,
+    hasPolling: PropTypes.bool,
     renderItem: PropTypes.func,
     ListHeaderComponent: PropTypes.node,
     ListEmptyComponent: PropTypes.node,
+  }
+
+  scrollToNewData = () => {
+    // If new posts added to top
+    // Hide when close to top
+    const { hasPolling } = this.props
+
+    if (hasPolling) {
+      return <LoadNewer onPress={() => this.scrollView.scrollToOffset({ offset: 0 })} />
+    }
+
+    return null
   }
 
   onEndReached = ({ distanceFromEnd }) => {
@@ -35,6 +48,17 @@ class InfiniteList extends PureComponent {
 
   renderLoading = () => <Loader />
 
+  setRef = el => {
+    const { scrollRef } = this.props
+
+    // Internal use
+    this.scrollView = el.getNode()
+
+    if (el && scrollRef) {
+      scrollRef(el.getNode())
+    }
+  }
+
   render() {
     const {
       contentContainerStyle = {},
@@ -42,7 +66,6 @@ class InfiniteList extends PureComponent {
       defaultPaddingTop,
       paddingBottom,
       onScroll,
-      scrollRef,
       borderSeparator,
       data,
       isFetching,
@@ -60,32 +83,36 @@ class InfiniteList extends PureComponent {
 
     // TODO: Fix paddingTop when ListEmptyComponent loader is showing (not centered)
     return (
-      <AnimatedFlatlist
-        style={{ flex: 1 }}
-        ref={el => el && scrollRef && scrollRef(el.getNode())}
-        data={data}
-        onRefresh={refetch}
-        onEndReached={this.onEndReached}
-        refreshing={isRefetching}
-        ListHeaderComponent={ListHeaderComponent}
-        ListFooterComponent={hasNextPage ? this.renderLoading() : null}
-        ListEmptyComponent={initialFetch ? this.renderLoading() : ListEmptyComponent}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        inverted={inverted}
-        contentContainerStyle={{
-          flex: initialFetch ? 1 : 0, // Fix for ListEmptyComponent to center loader
-          justifyContent: 'center',
-          paddingLeft: paddingHorizontal,
-          paddingRight: paddingHorizontal,
-          paddingTop: (defaultPaddingTop && 50) || 0,
-          paddingBottom: (paddingBottom && paddingBottom) || 0,
-          ...contentContainerStyle,
-        }}
-        {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
-        {...onScroll && { onScroll, scrollEventThrottle: 16 }}
-        {...props}
-      />
+      <Fragment>
+        {this.scrollToNewData()}
+
+        <AnimatedFlatlist
+          style={{ flex: 1 }}
+          ref={this.setRef}
+          data={data}
+          onRefresh={refetch}
+          onEndReached={this.onEndReached}
+          refreshing={isRefetching}
+          ListHeaderComponent={ListHeaderComponent}
+          ListFooterComponent={hasNextPage ? this.renderLoading() : null}
+          ListEmptyComponent={initialFetch ? this.renderLoading() : ListEmptyComponent}
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
+          inverted={inverted}
+          contentContainerStyle={{
+            flex: initialFetch ? 1 : 0, // Fix for ListEmptyComponent to center loader
+            justifyContent: 'center',
+            paddingLeft: paddingHorizontal,
+            paddingRight: paddingHorizontal,
+            paddingTop: (defaultPaddingTop && 50) || 0,
+            paddingBottom: (paddingBottom && paddingBottom) || 0,
+            ...contentContainerStyle,
+          }}
+          {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
+          {...onScroll && { onScroll, scrollEventThrottle: 16 }}
+          {...props}
+        />
+      </Fragment>
     )
   }
 }
