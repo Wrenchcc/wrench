@@ -9,8 +9,10 @@ import { Base, Headline, Description, Title, ProjectCard, GUTTER, BAR_SPACE, wid
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 class Empty extends PureComponent {
-  renderItem = ({ item }) => (
+  renderItem = ({ item, index }) => (
     <ProjectCard
+      first={index === 0}
+      last={index === this.props.projects.length - 1}
       {...item.node}
       images={pathOr(null, ['node', 'images', 'edges'], item)}
       onPress={() => console.log('blah')}
@@ -21,6 +23,7 @@ class Empty extends PureComponent {
 
   render() {
     const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t } = this.props
+
     return (
       <Base>
         <Headline medium numberOfLines={0}>
@@ -32,11 +35,38 @@ class Empty extends PureComponent {
         </Description>
 
         <Title fontSize={21}>Cafe racers</Title>
+
         <InfiniteList
           keyExtractor={(item, index) => item.node.id + index}
           data={projects}
           horizontal
           directionalLockEnabled
+          paddingHorizontal={0}
+          showsHorizontalScrollIndicator={false}
+          decelerationRate="fast"
+          snapToInterval={SNAP_INTERVAL}
+          snapToAlignment="start"
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          renderItem={this.renderItem}
+          showsVerticalScrollIndicator={false}
+          style={{
+            marginLeft: -GUTTER,
+            marginRight: -GUTTER,
+          }}
+        />
+
+        <Title fontSize={21}>Scramblers</Title>
+
+        <InfiniteList
+          keyExtractor={(item, index) => item.node.id + index}
+          data={projects}
+          horizontal
+          directionalLockEnabled
+          paddingHorizontal={0}
           showsHorizontalScrollIndicator={false}
           decelerationRate="fast"
           snapToInterval={SNAP_INTERVAL}

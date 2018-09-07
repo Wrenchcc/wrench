@@ -19,10 +19,10 @@ class ProjectCard extends PureComponent {
   }
 
   render() {
-    const { images, title, followers, onPress, user } = this.props
+    const { t, images, title, followers, onPress, user, style } = this.props
 
     return (
-      <Base onPress={onPress}>
+      <Base onPress={onPress} style={style}>
         <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
 
         {images && <Gallery images={images} />}
@@ -35,7 +35,7 @@ class ProjectCard extends PureComponent {
             <Followers followers={followers.totalCount} color="white" opacity={0.9} />
           </Info>
           <Button small background="white" onPress={this.handleFollow}>
-            Follow
+            {t('ProjectCard:follow')}
           </Button>
         </Content>
       </Base>
