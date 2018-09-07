@@ -11,6 +11,10 @@
     "Notifications": {
       "title": "Notifications"
     },
+    "FollowingProjects": {
+      "title": "This user don’t have any own projects yet.",
+      "description": "But here’s some of the projects Tommy follows."
+    },
     "SettingsButton": {
       "settings": "Settings"
     },
@@ -196,6 +200,10 @@
     },
     "Notifications": {
       "title": "Notifikationer"
+    },
+    "FollowingProjects": {
+      "title": "This user don’t have any own projects yet.",
+      "description": "But here’s some of the projects Tommy follows."
     },
     "SettingsButton": {
       "settings": "Inställningar"
