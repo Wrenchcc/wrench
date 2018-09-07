@@ -5,7 +5,7 @@ const getProjectCategoriesQuery = gql`
   query getProjectCategories {
     categories: projectCategories {
       id
-      name
+      title
       image {
         uri
       }
