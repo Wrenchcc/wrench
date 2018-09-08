@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
+import { compose } from 'react-apollo'
 import { Gallery } from 'ui'
+import { followProject } from 'graphql/mutations/project/followProject'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
-// TODO: Mutation follow project
 class ProjectCard extends PureComponent {
   static propTypes = {
     images: PropTypes.array.isRequired,
@@ -12,14 +13,22 @@ class ProjectCard extends PureComponent {
     followers: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
-  }
-
-  handleFollow = () => {
-    console.log('follow')
+    style: PropTypes.object,
   }
 
   render() {
-    const { t, images, title, followers, onPress, user, style } = this.props
+    const {
+      t,
+      images,
+      title,
+      id,
+      followers,
+      onPress,
+      projectPermissions,
+      user,
+      style,
+      followProject,
+    } = this.props
 
     return (
       <Base onPress={onPress} style={style}>
@@ -34,8 +43,8 @@ class ProjectCard extends PureComponent {
             </ProjectName>
             <Followers followers={followers.totalCount} color="white" opacity={0.9} />
           </Info>
-          <Button small background="white" onPress={this.handleFollow}>
-            {t('ProjectCard:follow')}
+          <Button small background="white" onPress={() => followProject(id)}>
+            {projectPermissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
           </Button>
         </Content>
       </Base>
@@ -43,4 +52,7 @@ class ProjectCard extends PureComponent {
   }
 }
 
-export default translate('ProjectCard')(ProjectCard)
+export default compose(
+  followProject,
+  translate('ProjectCard')
+)(ProjectCard)

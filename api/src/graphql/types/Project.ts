@@ -56,4 +56,8 @@ export default `
   input ProjectCategoryInput {
     id: ID
   }
+
+  extend type Mutation {
+    followProject(id: ID!): Project
+  }
 `;

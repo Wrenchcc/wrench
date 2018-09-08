@@ -1,6 +1,7 @@
 import { authenticateUser, refreshToken } from "../mutations/auth";
 import editUser from "../mutations/editUser";
 import toggleNotificationSettings from "../mutations/toggleNotificationSettings";
+import followProject from "../mutations/followProject";
 import posts from "../../fixtures/posts";
 import generateUser from "../../fixtures/generateUser";
 import users from "../../fixtures/users";
@@ -43,7 +44,7 @@ export default {
       owner: generateUser(),
       dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
-        isFollower: true,
+        isFollower: false,
         isOwner: false
       },
       user: generateUser(),
@@ -106,6 +107,7 @@ export default {
     authenticateUser,
     refreshToken,
     editUser,
-    toggleNotificationSettings
+    toggleNotificationSettings,
+    followProject
   }
 };

@@ -27,7 +27,7 @@ export default () => [
         },
         projectPermissions: {
           isOwner: false,
-          isFollower: true
+          isFollower: false
         },
         slug: "the-natural",
         title: "BMW R100 Project",
@@ -58,7 +58,7 @@ export default () => [
         },
         projectPermissions: {
           isOwner: true,
-          isFollower: true
+          isFollower: false
         },
         slug: "the-natural",
         title: "Honda CB750 1981",
@@ -120,7 +120,7 @@ export default () => [
         },
         projectPermissions: {
           isOwner: true,
-          isFollower: true
+          isFollower: false
         },
         slug: "the-natural",
         title: "The Natural CB750",
@@ -184,7 +184,7 @@ export default () => [
         },
         projectPermissions: {
           isOwner: false,
-          isFollower: true
+          isFollower: false
         },
         slug: "the-natural",
         title: "Scrambler",

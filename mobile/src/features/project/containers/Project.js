@@ -4,6 +4,7 @@ import { Animated } from 'react-native'
 import { pathOr, equals } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
+import { followProject } from 'graphql/mutations/project/followProject'
 import { navigateToUser } from 'navigation'
 import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit } from 'ui'
 import Header from '../components/Header'
@@ -82,9 +83,6 @@ class Project extends PureComponent {
     }
   }
 
-  // TODO: Mutate state
-  toggleFollow = () => {}
-
   componentWillUnmont() {
     scrollView = null
   }
@@ -94,7 +92,8 @@ class Project extends PureComponent {
   )
 
   renderFooter = () => {
-    const { project } = this.props
+    const { project, followProject } = this.props
+
     return (
       project.projectPermissions && (
         <Footer
@@ -102,7 +101,7 @@ class Project extends PureComponent {
           name={project.title}
           dynamicLink={project.dynamicLink}
           following={project.projectPermissions.isFollower}
-          onFollowPress={this.toggleFollow}
+          onFollowPress={() => followProject(project.id)}
         />
       )
     )
@@ -138,4 +137,7 @@ class Project extends PureComponent {
   }
 }
 
-export default compose(getProject)(Project)
+export default compose(
+  followProject,
+  getProject
+)(Project)
