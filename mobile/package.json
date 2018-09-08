@@ -43,7 +43,7 @@
     "react-native-config": "^0.11.5",
     "react-native-device-info": "0.22.5",
     "react-native-fast-image": "^5.0.3",
-    "react-native-fbsdk": "^0.7.0",
+    "react-native-fbsdk": "^0.8.0",
     "react-native-firebase": "^5.0.0-rc1",
     "react-native-gesture-handler": "^1.0.7",
     "react-native-haptic-feedback": "^1.2.0",
