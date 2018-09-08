@@ -7,7 +7,6 @@ import { Base, Top, Title, Content, Caption } from './styled'
 export default class Post extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
-    onLongPress: PropTypes.func,
     onPost: PropTypes.bool,
     avatar: PropTypes.bool,
   }
@@ -25,7 +24,7 @@ export default class Post extends PureComponent {
   }
 
   render() {
-    const { data, onPost = false, avatar = true, onLongPress } = this.props
+    const { data, onPost = false, avatar = true } = this.props
 
     return (
       <Base>
@@ -45,9 +44,7 @@ export default class Post extends PureComponent {
               {data.caption}
             </Caption>
           )}
-          {data.images && (
-            <Carousel images={data.images} onPress={this.goToProject} onLongPress={onLongPress} />
-          )}
+          {data.images && <Carousel images={data.images} onPress={this.goToProject} />}
         </Content>
 
         <Comments data={data} />

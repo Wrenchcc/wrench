@@ -1,7 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { InfiniteList, ProjectCard } from 'ui'
 import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
@@ -27,11 +26,7 @@ class FollowingProjects extends PureComponent {
   }
 
   renderItem = ({ item }) => (
-    <ProjectCard
-      {...item.node}
-      images={pathOr(null, ['node', 'images', 'edges'], item)}
-      onPress={() => navigateToProject({ project: item.node })}
-    />
+    <ProjectCard project={item.node} onPress={() => navigateToProject({ project: item.node })} />
   )
 
   render() {

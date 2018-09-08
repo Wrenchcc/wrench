@@ -1,6 +1,7 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
+import { track, events } from 'utils/analytics'
 
 const followProjectMutation = gql`
   mutation followProject($id: ID!) {
@@ -12,45 +13,38 @@ const followProjectMutation = gql`
 `
 
 const followProjectOptions = {
-  props: ({ mutate }) => ({
-    followProject: id => mutate({
-      variables: {
-        id,
-      },
-      // optimisticResponse: {
-      //   __typename: 'Mutation',
-      //   followProject: {
-      //     id: fakeId,
-      //     threadId: ownProps.thread.id,
-      //     type: 'like',
-      //     __typename: 'ThreadReaction',
-      //   },
-      // },
-      // update: (store, { data: { followProject } }) => {
-      //   const data = store.readQuery({
-      //     query: getThreadByIdQuery,
-      //     variables: {
-      //       id: ownProps.thread.id,
-      //     },
-      //   })
-      //
-      //   // ignore the server response and only update the cache with the
-      //   // optimistic response
-      //   if (typeof followProject.id === 'string') return
-      //
-      //   data.thread.reactions.count++
-      //   data.thread.reactions.hasReacted = true
-      //
-      //   // Write our data back to the cache.
-      //   store.writeQuery({
-      //     query: getThreadByIdQuery,
-      //     data,
-      //     variables: {
-      //       id: ownProps.thread.id,
-      //     },
-      //   })
-      // },
-    }),
+  props: ({ mutate, ownProps: { project } }) => ({
+    followProject: id => {
+      const totalCount = project.projectPermissions.isFollower
+        ? project.followers.totalCount - 1
+        : project.followers.totalCount + 1
+
+      const isFollower = !project.projectPermissions.isFollower
+
+      track(isFollower ? events.PROJECT_FOLLOWED : events.PROJECT_UNFOLLOWED)
+
+      return mutate({
+        variables: {
+          id,
+        },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          followProject: {
+            id,
+            ...project,
+            followers: {
+              ...project.followers,
+              totalCount,
+            },
+            projectPermissions: {
+              ...project.projectPermissions,
+              isFollower,
+            },
+            __typename: 'Project',
+          },
+        },
+      })
+    },
   }),
 }
 

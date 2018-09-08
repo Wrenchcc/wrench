@@ -72,11 +72,6 @@
         "permissionButton": "Enable Library Access"
       }
     },
-    "ProjectFooter": {
-      "edit": "Edit post",
-      "delete": "Delete post",
-      "cancel": "Cancel"
-    },
     "SelectProject": {
       "create": "Create a new project"
     },
@@ -261,11 +256,6 @@
         "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek ochspara foton till din kamerarulle.",
         "permissionButton": "Aktivera biblioteksåtkomst"
       }
-    },
-    "ProjectFooter": {
-      "edit": "Redigera inlägg",
-      "delete": "Radera inägg",
-      "cancel": "Avbryt"
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"

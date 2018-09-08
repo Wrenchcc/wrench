@@ -26,7 +26,6 @@ const LoadMorePosts = gql`
   ${projectPostsConnectionFragment}
 `
 
-// TODO: Change order on project: { project, navigation } when api is done
 const getProjectOptions = {
   options: ({ navigation, after = null }) => ({
     variables: {
@@ -42,8 +41,8 @@ const getProjectOptions = {
     error,
     refetch,
     project: {
-      ...project,
       ...pathOr(null, ['state', 'params', 'project'], navigation),
+      ...project,
     },
     posts: pathOr(null, ['posts', 'edges'], project),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),

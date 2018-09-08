@@ -11,6 +11,7 @@ export default gql`
         lastName
         avatarUrl
         projectCount
+        dynamicLink
       }
     }
     pageInfo {

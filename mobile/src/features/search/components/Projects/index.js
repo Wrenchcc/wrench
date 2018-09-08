@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
@@ -18,11 +17,7 @@ class Projects extends PureComponent {
   }
 
   renderItem = ({ item }) => (
-    <ProjectCard
-      {...item.node}
-      images={pathOr(null, ['node', 'images', 'edges'], item)}
-      onPress={() => navigateToProject({ project: item.node })}
-    />
+    <ProjectCard project={item.node} onPress={() => navigateToProject({ project: item.node })} />
   )
 
   // TODO: Remove when have IDs

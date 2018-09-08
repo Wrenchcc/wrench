@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, Alert } from 'react-native'
-import { translate } from 'react-i18next'
-import { Share, Follow, ActionSheet } from 'ui'
+import { Animated } from 'react-native'
+import { Share, Follow } from 'ui'
 import { Base } from './styles'
 
 const FOOTER_HEIGHT = 90
 
-class Footer extends Component {
+export default class Footer extends Component {
   static propTypes = {
     onFollowPress: PropTypes.func.isRequired,
     following: PropTypes.bool.isRequired,
@@ -52,7 +51,7 @@ class Footer extends Component {
   }
 
   render() {
-    const { t, onFollowPress, name, dynamicLink, following, translateY } = this.props
+    const { onFollowPress, name, dynamicLink, following, translateY } = this.props
     const { transformY } = this.state
 
     return (
@@ -63,18 +62,7 @@ class Footer extends Component {
             <Follow onPress={onFollowPress} following={following} />
           </Base>
         </Animated.View>
-        <ActionSheet
-          isOpen={this.state.isOpen}
-          onClose={this.toggleActionSheet}
-          options={[
-            { name: t('ProjectFooter:edit'), onSelect: () => Alert('Not yet!') },
-            { name: t('ProjectFooter:delete'), onSelect: () => Alert('Not yet!') },
-            { name: t('ProjectFooter:cancel') },
-          ]}
-        />
       </Animated.View>
     )
   }
 }
-
-export default translate('ProjectFooter')(Footer)

@@ -52,6 +52,7 @@ class Project extends PureComponent {
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    followProject: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -87,9 +88,7 @@ class Project extends PureComponent {
     scrollView = null
   }
 
-  renderItem = ({ item }) => (
-    <Post data={item.node} avatar={false} onPost onLongPress={this.toggleActionSheet} />
-  )
+  renderItem = ({ item }) => <Post data={item.node} avatar={false} onPost />
 
   renderFooter = () => {
     const { project, followProject } = this.props
@@ -138,6 +137,6 @@ class Project extends PureComponent {
 }
 
 export default compose(
-  followProject,
-  getProject
+  getProject,
+  followProject
 )(Project)

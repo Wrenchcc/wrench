@@ -12,20 +12,14 @@ export default class Carousel extends PureComponent {
     images: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
-    onLongPress: PropTypes.func,
   }
 
   renderItem = ({ item, index }) => {
-    const { onPress, disabled, onLongPress, images } = this.props
+    const { onPress, disabled, images } = this.props
 
     return (
       <Wrapper key={item.node.uri} first={index === 0} last={index === images.edges.length - 1}>
-        <Touchable
-          onPress={onPress}
-          disabled={disabled}
-          activeOpacity={1}
-          onLongPress={onLongPress}
-        >
+        <Touchable onPress={onPress} disabled={disabled} activeOpacity={1}>
           <Zoomable.Element>
             <Picture
               source={{ uri: item.node.uri }}
