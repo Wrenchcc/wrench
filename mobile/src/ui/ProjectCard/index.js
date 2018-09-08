@@ -10,6 +10,7 @@ import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './
 class ProjectCard extends PureComponent {
   static propTypes = {
     project: PropTypes.object.isRequired,
+    followProject: PropTypes.func.isRequired,
     onPress: PropTypes.func.isRequired,
     style: PropTypes.object,
   }
