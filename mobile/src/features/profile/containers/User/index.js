@@ -72,7 +72,7 @@ class User extends PureComponent {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <Post data={item.node} avatar={false} />
+  renderItem = ({ item }) => <Post post={item.node} avatar={false} />
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props

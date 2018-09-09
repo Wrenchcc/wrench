@@ -88,7 +88,7 @@ class Project extends PureComponent {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <Post data={item.node} avatar={false} onPost />
+  renderItem = ({ item }) => <Post post={item.node} avatar={false} onPost />
 
   renderFooter = () => {
     const { project, followProject } = this.props
