@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
+import { filter } from 'ramda'
 import gql from 'graphql-tag'
-// import { track, events } from 'utils/analytics'
 
 const deletePostMutation = gql`
   mutation deletePost($id: ID!) {
@@ -9,20 +9,36 @@ const deletePostMutation = gql`
 `
 
 const deletePostOptions = {
-  props: ({ mutate, ownProps: { post } }) => ({
-    deletePost: id => {
-      console.log(id, post)
+  props: ({ mutate }) => ({
+    deletePost: id => mutate({
+      variables: {
+        id,
+      },
+      updateQueries: {
+        getProjectBySlugQuery: prev => {
+          const edges = filter(edge => edge.node.id !== id, prev.project.posts.edges)
 
-      return mutate({
-        variables: {
-          id,
+          return {
+            ...prev,
+            project: {
+              ...prev.project,
+              posts: {
+                ...prev.project.posts,
+                edges,
+              },
+            },
+          }
         },
-        // optimisticResponse: {
-        //   __typename: 'Mutation',
-        //   deletePost: {},
-        // },
-      })
-    },
+      },
+      // optimisticResponse: {
+      //   __typename: 'Mutation',
+      //   deletePost: {
+      //     id: '123',
+      //     ...ownProps.post.project,
+      //     __typename: 'Project',
+      //   },
+      // },
+    }),
   }),
 }
 
