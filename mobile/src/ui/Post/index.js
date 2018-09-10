@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Alert } from 'react-native'
 import { compose } from 'react-apollo'
+import { translate } from 'react-i18next'
 import { navigateToProject, navigateToUser } from 'navigation'
 import { Avatar, Carousel, Comments, ActionSheet } from 'ui'
 import { deletePost } from 'graphql/mutations/post/deletePost'
@@ -25,8 +26,6 @@ class Post extends PureComponent {
     }
   }
 
-  cancelDelete = () => {}
-
   deletePost = () => {
     const { id } = this.props.post
     this.props.deletePost(id)
@@ -45,7 +44,7 @@ class Post extends PureComponent {
   }
 
   render() {
-    const { post, onPost = false, avatar = true } = this.props
+    const { post, onPost = false, avatar = true, t } = this.props
 
     return (
       <Base onLongPress={this.toggleActionSheet} activeOpacity={1}>
@@ -81,22 +80,21 @@ class Post extends PureComponent {
           onClose={this.toggleActionSheet}
           options={[
             {
-              name: 'Delete post',
+              name: t('Post:options:title'),
               onSelect: () => Alert.alert(
-                'Are you sure?',
+                t('Post:options:alertTitle'),
                 null,
                 [
-                  { text: 'Delete', onPress: this.deletePost },
+                  { text: t('Post:options:delete'), onPress: this.deletePost },
                   {
-                    text: 'Cancel',
-                    onPress: this.cancelDelete,
+                    text: t('Post:options:cancel'),
                     style: 'cancel',
                   },
                 ],
                 { cancelable: false }
               ),
             },
-            { name: 'Cancel' },
+            { name: t('Post:options:cancel') },
           ]}
         />
       </Base>
@@ -104,4 +102,7 @@ class Post extends PureComponent {
   }
 }
 
-export default compose(deletePost)(Post)
+export default compose(
+  deletePost,
+  translate('Post')
+)(Post)

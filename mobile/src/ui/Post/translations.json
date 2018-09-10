@@ -1,0 +1,20 @@
+{
+  "Post": {
+    "en": {
+      "options": {
+        "title": "Delete post",
+        "alertTitle": "Are you sure?",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "sv": {
+      "options": {
+        "title": "Radera inlägg",
+        "alertTitle": "Är du säker?",
+        "delete": "Radera",
+        "cancel": "Avbryt"
+      }
+    }
+  }
+}
