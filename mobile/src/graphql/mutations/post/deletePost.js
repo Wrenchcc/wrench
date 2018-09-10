@@ -1,6 +1,7 @@
 import { graphql } from 'react-apollo'
 import { filter } from 'ramda'
 import gql from 'graphql-tag'
+import deletePostFromCache from 'graphql/utils/deletePostFromCache'
 
 const deletePostMutation = gql`
   mutation deletePost($id: ID!) {
@@ -8,6 +9,7 @@ const deletePostMutation = gql`
   }
 `
 
+// TODO: Optimistic update on delete
 const deletePostOptions = {
   props: ({ mutate }) => ({
     deletePost: id => mutate({
@@ -15,29 +17,20 @@ const deletePostOptions = {
         id,
       },
       updateQueries: {
-        getProjectBySlugQuery: prev => {
-          const edges = filter(edge => edge.node.id !== id, prev.project.posts.edges)
+        getCurrentUserProfile: deletePostFromCache({ type: 'user', id }),
+        getProjectBySlugQuery: deletePostFromCache({ type: 'project', id }),
+        getFeed: prev => {
+          const edges = filter(edge => edge.node.id !== id, prev.posts.edges)
 
           return {
             ...prev,
-            project: {
-              ...prev.project,
-              posts: {
-                ...prev.project.posts,
-                edges,
-              },
+            posts: {
+              ...prev.posts,
+              edges,
             },
           }
         },
       },
-      // optimisticResponse: {
-      //   __typename: 'Mutation',
-      //   deletePost: {
-      //     id: '123',
-      //     ...ownProps.post.project,
-      //     __typename: 'Project',
-      //   },
-      // },
     }),
   }),
 }
