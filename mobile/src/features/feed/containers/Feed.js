@@ -37,7 +37,7 @@ class Feed extends PureComponent {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <Post data={item.node} />
+  renderItem = ({ item }) => <Post post={item.node} />
 
   // TODO: Handle saving and update feed when done
   render() {

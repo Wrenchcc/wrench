@@ -6371,9 +6371,9 @@ react-dom@^16.4.1, react-dom@^16.5.0:
     prop-types "^15.6.2"
     schedule "^0.3.0"
 
-react-i18next@^7.11.1:
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-7.11.1.tgz#eacaec8357f5557eaf290eae198025fe0a682603"
+react-i18next@^7.12.0:
+  version "7.12.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-7.12.0.tgz#edaed1593fdfb34ddb47e4faf409cb36c8220d80"
   dependencies:
     hoist-non-react-statics "^2.3.1"
     html-parse-stringify2 "2.0.1"
@@ -6454,9 +6454,9 @@ react-native-fast-image@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.0.3.tgz#cb53b70a904d908c2c531dcc3d4a77834c9e1c63"
 
-react-native-fbsdk@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.7.0.tgz#263dfe5845205de7b80efb0f18ed5c1ded025291"
+react-native-fbsdk@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.8.0.tgz#4ee95ebb7be4b00fa9f871ca594f068c9782c7de"
   dependencies:
     adm-zip "^0.4.7"
     fastfall "^1.5.1"
@@ -7428,13 +7428,12 @@ strip-json-comments@^2.0.1, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-styled-components@^4.0.0-beta.0:
-  version "4.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.0.0-beta.0.tgz#bef1dd89579d5a3dfd3044beca5ec98811ebe1da"
+styled-components@^4.0.0-beta.2-0:
+  version "4.0.0-beta.2-0"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.0.0-beta.2-0.tgz#79700703f1dfef5013a16bc6d7ec13d9bcf7b4d2"
   dependencies:
     "@emotion/is-prop-valid" "^0.6.5"
     css-to-react-native "^2.0.3"
-    fbjs "^0.8.16"
     hoist-non-react-statics "^3.0.0"
     memoize-one "^4.0.0"
     prop-types "^15.5.4"

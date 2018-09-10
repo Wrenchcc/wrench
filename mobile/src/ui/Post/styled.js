@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import UiTitle from 'ui/Title'
 import UiText from 'ui/Text'
 
-export const Base = styled.View``
+export const Base = styled.TouchableOpacity``
 
 export const Top = styled.View`
   flex-direction: row;

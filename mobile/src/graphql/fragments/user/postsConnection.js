@@ -14,6 +14,7 @@ export default gql`
           user {
             ...userInfo
           }
+          isAuthor
           images: imagesConnection {
             edges {
               node {

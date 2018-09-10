@@ -8,6 +8,7 @@ export default `
     videos: String
     user: User
     project: Project
+    isAuthor: Boolean
 
     imagesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int): ImageConnection!
     commentConnection(first: Int, after: String, last: Int, before: String): CommentConnection
@@ -32,4 +33,8 @@ export default `
     post(id: ID!): Post
     posts(userId: ID, first: Int, after: String, last: Int, before: String): PostConnection
   }
-`
+
+  extend type Mutation {
+    deletePost(id: ID!): Boolean
+  }
+`;

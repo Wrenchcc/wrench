@@ -163,6 +163,14 @@
       "comment": "Commented on your post",
       "reply": "Replied to your comment"
     },
+    "Post": {
+      "options": {
+        "title": "Delete post",
+        "alertTitle": "Are you sure?",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      }
+    },
     "PostProgress": {
       "description": "Posting..."
     },
@@ -342,6 +350,14 @@
       "follow": "Följer nu",
       "comment": "Kommenterade på ditt inlägg",
       "reply": "Svarade på din kommentar"
+    },
+    "Post": {
+      "options": {
+        "title": "Radera inlägg",
+        "alertTitle": "Är du säker?",
+        "delete": "Radera",
+        "cancel": "Avbryt"
+      }
     },
     "PostProgress": {
       "description": "Sparar..."

@@ -10,6 +10,7 @@ export default gql`
       node {
         id
         caption
+        isAuthor
         user {
           ...userInfo
         }

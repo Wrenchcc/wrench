@@ -2,6 +2,7 @@ import { authenticateUser, refreshToken } from "../mutations/auth";
 import editUser from "../mutations/editUser";
 import toggleNotificationSettings from "../mutations/toggleNotificationSettings";
 import followProject from "../mutations/followProject";
+import deletePost from "../mutations/deletePost";
 import posts from "../../fixtures/posts";
 import generateUser from "../../fixtures/generateUser";
 import users from "../../fixtures/users";
@@ -41,7 +42,6 @@ export default {
       id: "123",
       slug: "the-natural",
       title: "The Natural",
-      owner: generateUser(),
       dynamicLink: "https://wrench.page.link/KFko",
       projectPermissions: {
         isFollower: false,
@@ -108,6 +108,7 @@ export default {
     refreshToken,
     editUser,
     toggleNotificationSettings,
-    followProject
+    followProject,
+    deletePost
   }
 };

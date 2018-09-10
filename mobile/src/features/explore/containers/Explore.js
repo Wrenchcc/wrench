@@ -32,7 +32,7 @@ class Explore extends PureComponent {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <Post data={item.node} />
+  renderItem = ({ item }) => <Post post={item.node} />
 
   render() {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props

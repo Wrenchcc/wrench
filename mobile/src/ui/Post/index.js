@@ -1,54 +1,108 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { Alert } from 'react-native'
+import { compose } from 'react-apollo'
+import { translate } from 'react-i18next'
 import { navigateToProject, navigateToUser } from 'navigation'
-import { Avatar, Carousel, Comments } from 'ui'
+import { Avatar, Carousel, Comments, ActionSheet } from 'ui'
+import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Base, Top, Title, Content, Caption } from './styled'
 
-export default class Post extends PureComponent {
+class Post extends PureComponent {
   static propTypes = {
-    data: PropTypes.object.isRequired,
+    post: PropTypes.object.isRequired,
+    deletePost: PropTypes.func.isRequired,
     onPost: PropTypes.bool,
     avatar: PropTypes.bool,
   }
 
+  state = {
+    isOpen: false,
+  }
+
+  toggleActionSheet = () => {
+    if (this.props.post.isAuthor) {
+      this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+    }
+  }
+
+  deletePost = () => {
+    const { id } = this.props.post
+    this.props.deletePost(id)
+  }
+
   goToProject = () => {
-    const { project } = this.props.data
+    const { project } = this.props.post
     if (!this.props.onPost) {
       navigateToProject({ project })
     }
   }
 
   goToProfile = () => {
-    const { user } = this.props.data
+    const { user } = this.props.post
     navigateToUser({ user })
   }
 
   render() {
-    const { data, onPost = false, avatar = true } = this.props
+    const { post, onPost = false, avatar = true, t } = this.props
 
     return (
-      <Base>
+      <Base onLongPress={this.toggleActionSheet} activeOpacity={1}>
         <Top>
           {!onPost && (
             <Title numberOfLines={1} onPress={this.goToProject}>
-              {data.project.title}
+              {post.project.title}
             </Title>
           )}
           {avatar && (
-            <Avatar uri={data.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
+            <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
           )}
         </Top>
         <Content>
-          {data.caption && (
+          {post.caption && (
             <Caption onPress={this.goToProject} disabled={onPost} color="grey" lineHeight={25}>
-              {data.caption}
+              {post.caption}
             </Caption>
           )}
-          {data.images && <Carousel images={data.images} onPress={this.goToProject} />}
+          {post.images && (
+            <Carousel
+              images={post.images}
+              onPress={this.goToProject}
+              onLongPress={this.toggleActionSheet}
+            />
+          )}
         </Content>
 
-        <Comments data={data} />
+        <Comments data={post} />
+
+        <ActionSheet
+          isOpen={this.state.isOpen}
+          onClose={this.toggleActionSheet}
+          options={[
+            {
+              name: t('Post:options:title'),
+              onSelect: () => Alert.alert(
+                t('Post:options:alertTitle'),
+                null,
+                [
+                  { text: t('Post:options:delete'), onPress: this.deletePost },
+                  {
+                    text: t('Post:options:cancel'),
+                    style: 'cancel',
+                  },
+                ],
+                { cancelable: false }
+              ),
+            },
+            { name: t('Post:options:cancel') },
+          ]}
+        />
       </Base>
     )
   }
 }
+
+export default compose(
+  deletePost,
+  translate('Post')
+)(Post)
