@@ -4055,9 +4055,9 @@ human-format@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.0.tgz#0583c91bfcef0e465a31097f1c627db32c7b502f"
 
-i18next@^11.7.0:
-  version "11.7.0"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-11.7.0.tgz#caf2f3d512ca5b2f556f065f698f33d44ca311d7"
+i18next@^11.8.0:
+  version "11.8.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-11.8.0.tgz#fd81f3c7d603441a5395e51585d906b5471c4e80"
 
 iconv-lite@0.4.23:
   version "0.4.23"

@@ -43,14 +43,47 @@ class Post extends PureComponent {
     navigateToUser({ user })
   }
 
+  deleteActions() {
+    const { t } = this.props
+
+    return (
+      <ActionSheet
+        isOpen={this.state.isOpen}
+        onClose={this.toggleActionSheet}
+        options={[
+          {
+            name: t('Post:options:title'),
+            onSelect: () => Alert.alert(
+              t('Post:options:alertTitle'),
+              null,
+              [
+                { text: t('Post:options:delete'), onPress: this.deletePost },
+                {
+                  text: t('Post:options:cancel'),
+                  style: 'cancel',
+                },
+              ],
+              { cancelable: false }
+            ),
+          },
+          { name: t('Post:options:cancel') },
+        ]}
+      />
+    )
+  }
+
   render() {
-    const { post, onPost = false, avatar = true, t } = this.props
+    const { post, onPost = false, avatar = true } = this.props
 
     return (
       <Base onLongPress={this.toggleActionSheet} activeOpacity={1}>
         <Top>
           {!onPost && (
-            <Title numberOfLines={1} onPress={this.goToProject}>
+            <Title
+              numberOfLines={1}
+              onPress={this.goToProject}
+              onLongPress={this.toggleActionSheet}
+            >
               {post.project.title}
             </Title>
           )}
@@ -60,7 +93,13 @@ class Post extends PureComponent {
         </Top>
         <Content>
           {post.caption && (
-            <Caption onPress={this.goToProject} disabled={onPost} color="grey" lineHeight={25}>
+            <Caption
+              onLongPress={this.toggleActionSheet}
+              onPress={this.goToProject}
+              disabled={onPost}
+              color="grey"
+              lineHeight={25}
+            >
               {post.caption}
             </Caption>
           )}
@@ -75,28 +114,7 @@ class Post extends PureComponent {
 
         <Comments data={post} />
 
-        <ActionSheet
-          isOpen={this.state.isOpen}
-          onClose={this.toggleActionSheet}
-          options={[
-            {
-              name: t('Post:options:title'),
-              onSelect: () => Alert.alert(
-                t('Post:options:alertTitle'),
-                null,
-                [
-                  { text: t('Post:options:delete'), onPress: this.deletePost },
-                  {
-                    text: t('Post:options:cancel'),
-                    style: 'cancel',
-                  },
-                ],
-                { cancelable: false }
-              ),
-            },
-            { name: t('Post:options:cancel') },
-          ]}
-        />
+        {this.deleteActions()}
       </Base>
     )
   }

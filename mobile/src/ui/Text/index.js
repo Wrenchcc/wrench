@@ -9,11 +9,17 @@ const Text = ({
   children,
   numberOfLines = 0,
   onPress,
+  onLongPress,
   disabled = false,
   lineHeight = null,
   ...props
 }) => onPress ? (
-    <Touchable hitSlop={hitSlop(10)} onPress={onPress} disabled={disabled}>
+    <Touchable
+      hitSlop={hitSlop(10)}
+      onPress={onPress}
+      onLongPress={onLongPress}
+      disabled={disabled}
+    >
       <Base
         numberOfLines={numberOfLines}
         {...props}
@@ -40,6 +46,7 @@ Text.propTypes = {
   children: PropTypes.any,
   numberOfLines: PropTypes.number,
   onPress: PropTypes.func,
+  onLongPress: PropTypes.func,
   disabled: PropTypes.bool,
   lineHeight: PropTypes.number,
 }

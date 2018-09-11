@@ -11,10 +11,16 @@ const Title = ({
   large,
   medium,
   onPress,
+  onLongPress,
   disabled = false,
   ...props
 }) => onPress ? (
-    <Touchable hitSlop={hitSlop(10)} onPress={onPress} disabled={disabled}>
+    <Touchable
+      hitSlop={hitSlop(10)}
+      onPress={onPress}
+      onLongPress={onLongPress}
+      disabled={disabled}
+    >
       <Base numberOfLines={numberOfLines} medium={medium} large={large} style={style} {...props}>
         {children}
       </Base>
@@ -32,6 +38,7 @@ Title.propTypes = {
   large: PropTypes.bool,
   medium: PropTypes.bool,
   onPress: PropTypes.func,
+  onLongPress: PropTypes.func,
   disabled: PropTypes.bool,
 }
 

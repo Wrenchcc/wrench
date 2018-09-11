@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "rm -rf dist && tsc",
-    "start:dev": "dotenv -- nodemon -e ts,graphql -x ts-node src/server.ts"
+    "start:dev": "dotenv -- nodemon -e ts -x ts-node src/server.ts"
   },
   "dependencies": {
     "apollo-server": "^2.0.7",

@@ -16,7 +16,6 @@ const START_OPACITY = 50
 
 let scrollView = null
 
-// TODO: Load user data from project?
 class Project extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
