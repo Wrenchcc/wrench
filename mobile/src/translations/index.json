@@ -165,8 +165,11 @@
     },
     "Post": {
       "options": {
-        "title": "Delete post",
         "alertTitle": "Are you sure?",
+        "title": "Delete post",
+        "report": "Report",
+        "edit": "Edit",
+        "commenting": "Turn off commenting",
         "delete": "Delete",
         "cancel": "Cancel"
       }
@@ -353,8 +356,11 @@
     },
     "Post": {
       "options": {
-        "title": "Radera inlägg",
         "alertTitle": "Är du säker?",
+        "title": "Radera inlägg",
+        "report": "Rapportera",
+        "edit": "Redigera",
+        "commenting": "Stäng av kommentarer",
         "delete": "Radera",
         "cancel": "Avbryt"
       }

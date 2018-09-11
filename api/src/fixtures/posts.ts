@@ -51,7 +51,7 @@ export default () => [
         totalCount: 1300,
         edges: comments().slice(0, 2)
       },
-      isAuthor: true,
+      isAuthor: false,
       project: {
         id: "1",
         dynamicLink: "https://wrench.page.link/KFko",
@@ -83,7 +83,7 @@ export default () => [
         totalCount: 1300,
         edges: comments().slice(0, 2)
       },
-      isAuthor: true,
+      isAuthor: false,
       project: {
         id: "3",
         dynamicLink: "https://wrench.page.link/KFko",
@@ -115,7 +115,7 @@ export default () => [
         totalCount: 1300,
         edges: comments().slice(0, 2)
       },
-      isAuthor: true,
+      isAuthor: false,
       project: {
         id: "3",
         dynamicLink: "https://wrench.page.link/KFko",
@@ -148,7 +148,7 @@ export default () => [
         totalCount: 1300,
         edges: comments().slice(0, 2)
       },
-      isAuthor: true,
+      isAuthor: false,
       project: {
         id: "3",
         dynamicLink: "https://wrench.page.link/KFko",

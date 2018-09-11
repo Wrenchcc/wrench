@@ -43,28 +43,35 @@ class Post extends PureComponent {
     navigateToUser({ user })
   }
 
-  deleteActions() {
+  onDelete = () => {
+    const { t } = this.props
+
+    Alert.alert(
+      t('Post:options:alertTitle'),
+      null,
+      [
+        { text: t('Post:options:delete'), onPress: this.deletePost },
+        {
+          text: t('Post:options:cancel'),
+          style: 'cancel',
+        },
+      ],
+      { cancelable: false }
+    )
+  }
+
+  postActions() {
     const { t } = this.props
 
     return (
       <ActionSheet
         isOpen={this.state.isOpen}
         onClose={this.toggleActionSheet}
+        destructiveButtonIndex={0}
         options={[
           {
-            name: t('Post:options:title'),
-            onSelect: () => Alert.alert(
-              t('Post:options:alertTitle'),
-              null,
-              [
-                { text: t('Post:options:delete'), onPress: this.deletePost },
-                {
-                  text: t('Post:options:cancel'),
-                  style: 'cancel',
-                },
-              ],
-              { cancelable: false }
-            ),
+            name: t('Post:options:delete'),
+            onSelect: this.onDelete,
           },
           { name: t('Post:options:cancel') },
         ]}
@@ -114,7 +121,7 @@ class Post extends PureComponent {
 
         <Comments data={post} />
 
-        {this.deleteActions()}
+        {this.postActions()}
       </Base>
     )
   }
