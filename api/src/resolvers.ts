@@ -1,21 +1,22 @@
-import { authenticateUser, refreshToken } from "../mutations/auth";
-import editUser from "../mutations/editUser";
-import toggleNotificationSettings from "../mutations/toggleNotificationSettings";
-import followProject from "../mutations/followProject";
-import deletePost from "../mutations/deletePost";
-import posts from "../../fixtures/posts";
-import generateUser from "../../fixtures/generateUser";
-import users from "../../fixtures/users";
-import followers from "../../fixtures/followers";
-import comments from "../../fixtures/comments";
-import projects from "../../fixtures/projects";
-import notifications from "../../fixtures/notifications";
-import projectCategories from "../../fixtures/projectCategories";
-import projectSuggestions from "../../fixtures/projectSuggestions";
-import projectsConnection from "../../fixtures/projectsConnection";
-import settings from "../../fixtures/settings";
-import pageInfo from "../../fixtures/pageInfo";
+import { authenticateUser, refreshToken } from "./mutations/user/auth";
+import editUser from "./mutations/user/editUser";
+import toggleNotificationSettings from "./mutations/user/toggleNotificationSettings";
+import followProject from "./mutations/project/followProject";
+import deletePost from "./mutations/post/deletePost";
+import posts from "./fixtures/posts";
+import generateUser from "./fixtures/generateUser";
+import users from "./fixtures/users";
+import followers from "./fixtures/followers";
+import comments from "./fixtures/comments";
+import projects from "./fixtures/projects";
+import notifications from "./fixtures/notifications";
+import projectCategories from "./fixtures/projectCategories";
+import projectSuggestions from "./fixtures/projectSuggestions";
+import projectsConnection from "./fixtures/projectsConnection";
+import settings from "./fixtures/settings";
+import pageInfo from "./fixtures/pageInfo";
 
+// TODO: Change to sub queries and mutations in directories
 const postsConnection = {
   pageInfo,
   edges: posts()

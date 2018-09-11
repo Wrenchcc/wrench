@@ -5,7 +5,6 @@ export default `
     createdAt: Date
     updatedAt: Date
     caption: String
-    videos: String
     user: User
     project: Project
     isAuthor: Boolean
@@ -34,7 +33,14 @@ export default `
     posts(userId: ID, first: Int, after: String, last: Int, before: String): PostConnection
   }
 
+  input PostInput {
+    projectId: ID!
+    caption: String!
+    files: [Upload]
+  }
+
   extend type Mutation {
     deletePost(id: ID!): Boolean
+    addPost(post: PostInput!): Post
   }
 `;

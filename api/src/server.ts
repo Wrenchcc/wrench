@@ -1,9 +1,11 @@
 import { ApolloServer } from "apollo-server";
-import resolvers from "./graphql/resolvers";
-import schema from "./graphql/schema";
-import db from "./db";
+import resolvers from "./resolvers";
+import schema from "./schema";
+import models from "./models";
 import services from "./services";
 import { getUserFromRequest } from "./utils";
+
+const debug = require("debug")("api:server");
 
 const { PORT = 4000 } = process.env;
 
@@ -12,10 +14,10 @@ const server = new ApolloServer({
   context: ({ req }) => ({
     user: getUserFromRequest(req),
     services,
-    db
+    models
   })
 });
 
 server.listen({ port: PORT }).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+  debug("🚀  Server ready at %o", url);
 });
