@@ -43,4 +43,4 @@ export default `
     deletePost(id: ID!): Boolean
     addPost(input: PostInput!): Post
   }
-`;
+`

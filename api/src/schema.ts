@@ -1,25 +1,25 @@
-import { makeExecutableSchema } from "graphql-tools";
-import { merge } from "ramda";
+import { makeExecutableSchema } from 'graphql-tools'
+import { merge } from 'ramda'
 
-const debug = require("debug")("api:resolvers");
+const debug = require('debug')('api:resolvers')
 
-import scalars from "./types/scalars";
-import generalTypes from "./types/general";
+import scalars from './types/scalars'
+import generalTypes from './types/general'
 
 // Types
-import Auth from "./types/Auth";
-import Comment from "./types/Comment";
-import Reply from "./types/Reply";
-import Notification from "./types/Notification";
-import Post from "./types/Post";
-import Project from "./types/Project";
-import Followers from "./types/Followers";
-import Search from "./types/Search";
-import User from "./types/User";
-import Image from "./types/Image";
+import Auth from './types/Auth'
+import Comment from './types/Comment'
+import Reply from './types/Reply'
+import Notification from './types/Notification'
+import Post from './types/Post'
+import Project from './types/Project'
+import Followers from './types/Followers'
+import Search from './types/Search'
+import User from './types/User'
+import Image from './types/Image'
 
 // Resolvers
-import resolvers from "./resolvers";
+import resolvers from './resolvers'
 
 // const resolvers = merge(
 //   {},
@@ -31,12 +31,12 @@ import resolvers from "./resolvers";
 // );
 
 // Logging
-if (process.env.NODE_ENV === "development" && debug.enabled) {
-  const logExecutions = require("graphql-log")({
-    logger: debug
-  });
+if (process.env.NODE_ENV === 'development' && debug.enabled) {
+  const logExecutions = require('graphql-log')({
+    logger: debug,
+  })
 
-  logExecutions(resolvers);
+  logExecutions(resolvers)
 }
 
 const Root = `
@@ -57,7 +57,7 @@ const Root = `
     query: Query
     mutation: Mutation
   }
-`;
+`
 
 // Create the final GraphQL schema out of the type definitions
 // and the resolvers
@@ -75,7 +75,7 @@ export default makeExecutableSchema({
     Followers,
     Search,
     User,
-    Image
+    Image,
   ],
-  resolvers
-});
+  resolvers,
+})

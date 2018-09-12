@@ -71,4 +71,4 @@ export default `
     editUser(input: EditUserInput!): User
     toggleNotificationSettings(input: ToggleNotificationSettingsInput): User
   }
-`;
+`

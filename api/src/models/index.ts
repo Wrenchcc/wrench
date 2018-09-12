@@ -1,8 +1,8 @@
 export default {
   mutation: {
-    createUser: user => user
+    createUser: user => user,
   },
   query: {
-    getUser: () => null
-  }
-};
+    getUser: () => null,
+  },
+}

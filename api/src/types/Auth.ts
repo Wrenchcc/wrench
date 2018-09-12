@@ -12,4 +12,4 @@ export default `
     authenticateUser(facebookToken: String!): AuthenticateUser
     refreshToken(refreshToken: String!): AuthenticateUser
 	}
-`;
+`

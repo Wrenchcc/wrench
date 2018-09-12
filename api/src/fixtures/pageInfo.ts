@@ -1,4 +1,4 @@
 export default {
   hasNextPage: true,
-  hasPreviousPage: false
-};
+  hasPreviousPage: false,
+}
