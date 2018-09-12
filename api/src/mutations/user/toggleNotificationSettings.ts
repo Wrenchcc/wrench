@@ -1,6 +1,6 @@
 import { mergeDeepRight } from 'ramda'
-import user from 'fixtures/generateUser'
-import settings from 'fixtures/settings'
+import user from '../../fixtures/generateUser'
+import settings from '../../fixtures/settings'
 
 export default (_, args, ctx) => {
   const { deliveryMethod, notificationType } = args.input

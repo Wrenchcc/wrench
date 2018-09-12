@@ -1,9 +1,9 @@
 import { ApolloServer } from 'apollo-server'
 import resolvers from 'resolvers'
-import schema from 'schema'
-import models from 'models'
-import services from 'services'
-import { getUserFromRequest } from 'utils'
+import schema from './schema'
+import models from './models'
+import services from './services'
+import { getUserFromRequest } from './utils'
 
 const debug = require('debug')('api:server')
 
