@@ -60,4 +60,4 @@ export default `
   extend type Mutation {
     followProject(id: ID!): Project
   }
-`;
+`

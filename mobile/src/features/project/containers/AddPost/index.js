@@ -5,6 +5,7 @@ import { pathOr, isEmpty } from 'ramda'
 import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import { addPost } from 'graphql/mutations/post/addPost'
 import { navigateBack, navigateToFeed } from 'navigation'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
 import { close, arrowLeftWhite } from 'images'
@@ -68,6 +69,12 @@ class AddPost extends Component {
     return <Icon onPress={() => navigateBack()} source={close} />
   }
 
+  onSave = async () => {
+    navigateToFeed()
+    const project = await this.props.addPost({ projectId: '123', caption: 'Look' })
+    console.log(project)
+  }
+
   renderHeaderRight = () => {
     const { page, edit, pictures } = this.state
 
@@ -79,11 +86,10 @@ class AddPost extends Component {
       )
     }
 
-    // TODO: Implement save
     // And pass data to feed
     return (
       edit && (
-        <Text color="white" medium onPress={() => navigateToFeed()}>
+        <Text color="white" medium onPress={this.onSave}>
           {this.props.t('AddPost:post')}
         </Text>
       )
@@ -170,5 +176,6 @@ class AddPost extends Component {
 
 export default compose(
   getCurrentUserProjects,
+  addPost,
   translate('AddPost')
 )(AddPost)

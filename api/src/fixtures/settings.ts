@@ -2,23 +2,23 @@ export default {
   notifications: {
     types: {
       newFollower: {
-        push: false
+        push: false,
       },
       newComment: {
-        push: false
+        push: false,
       },
       newMention: {
-        push: false
+        push: false,
       },
       newArticle: {
-        push: false
+        push: false,
       },
       similarProjects: {
-        push: false
+        push: false,
       },
       productAnnouncements: {
-        push: false
-      }
-    }
-  }
-};
+        push: false,
+      },
+    },
+  },
+}

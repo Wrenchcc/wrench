@@ -1,5 +1,6 @@
 import React from 'react'
 import { ApolloProvider, Query } from 'react-apollo'
+import { path } from 'ramda'
 import { AuthNavigator, AppNavigator } from 'navigation'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
@@ -26,10 +27,10 @@ const App = () => (
               <AuthNavigator />
             ) : (
               <Query query={getCurrentUserQuery} skip={!loggedIn}>
-                {({ data: { user }, networkStatus }) => {
+                {({ data, networkStatus }) => {
                   if (networkStatus === 1 || networkStatus === 2) return null
-                  if (!user) return <AuthNavigator />
-                  if (!user.interestedIn) return <Onboarding />
+                  if (!path(['user'], data)) return <AuthNavigator />
+                  if (!path(['user', 'interestedIn'], data)) return <Onboarding />
                   return <AppNavigator />
                 }}
               </Query>
