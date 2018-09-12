@@ -7,7 +7,8 @@
 
 This is the main monorepo codebase of [Wrench](https://wrench.cc). Every single line of code that's not packaged into a reusable library is in this repository.
 
-[![Build status](https://build.appcenter.ms/v0.1/apps/646c8a36-99ac-40ba-8a96-4dba6fb97949/branches/master/badge)](https://appcenter.ms) [![Build status](https://build.appcenter.ms/v0.1/apps/7b502e9f-2718-436d-a885-0f84a9668312/branches/master/badge)](https://appcenter.ms)
+[![Build status](https://build.appcenter.ms/v0.1/apps/3bfdd500-bdf4-4c30-a6fc-bc44d95820e9/branches/master/badge)](https://appcenter.ms)
+[![Build status](https://build.appcenter.ms/v0.1/apps/6d77ac98-c606-43d1-9182-30715cea1a44/branches/master/badge)](https://appcenter.ms)
 [![Build Status](https://dev.azure.com/wrenchcc/Wrench/_apis/build/status/Wrench)](https://dev.azure.com/wrenchcc/Wrench/_build)
 
 ## What is Wrench?
