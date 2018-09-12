@@ -1,38 +1,17 @@
 import gql from 'graphql-tag'
-import userInfoFragment from 'graphql/fragments/user/userInfo'
-import projectInfoFragment from 'graphql/fragments/project/projectInfo'
-import commentConnectionFragment from 'graphql/fragments/post/commentConnection'
+import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 export default gql`
   fragment postsInfo on PostConnection {
     edges {
       cursor
       node {
-        id
-        caption
-        isAuthor
-        user {
-          ...userInfo
-        }
-        images: imagesConnection {
-          edges {
-            node {
-              id
-              uri
-            }
-          }
-        }
-        project {
-          ...projectInfo
-        }
-        ...commentPostConnection
+        ...postInfo
       }
     }
     pageInfo {
       hasNextPage
     }
   }
-  ${userInfoFragment}
-  ${projectInfoFragment}
-  ${commentConnectionFragment}
+  ${postInfoFragment}
 `

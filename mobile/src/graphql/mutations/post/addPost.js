@@ -1,17 +1,21 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 const addPostMutation = gql`
-  mutation addPost($id: ID!) {
-    addPost(id: $id)
+  mutation addPost($input: PostInput!) {
+    addPost(input: $input) {
+      ...postInfo
+    }
   }
+  ${postInfoFragment}
 `
 
 const addPostOptions = {
   props: ({ mutate }) => ({
-    addPost: data => mutate({
+    addPost: input => mutate({
       variables: {
-        data,
+        input,
       },
     }),
   }),

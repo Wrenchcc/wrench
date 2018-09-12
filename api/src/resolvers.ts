@@ -3,6 +3,7 @@ import editUser from "./mutations/user/editUser";
 import toggleNotificationSettings from "./mutations/user/toggleNotificationSettings";
 import followProject from "./mutations/project/followProject";
 import deletePost from "./mutations/post/deletePost";
+import addPost from "./mutations/post/addPost";
 import posts from "./fixtures/posts";
 import generateUser from "./fixtures/generateUser";
 import users from "./fixtures/users";
@@ -110,6 +111,7 @@ export default {
     editUser,
     toggleNotificationSettings,
     followProject,
-    deletePost
+    deletePost,
+    addPost
   }
 };
