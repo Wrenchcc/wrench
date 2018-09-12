@@ -3,20 +3,20 @@ import { merge } from 'ramda'
 
 const debug = require('debug')('api:resolvers')
 
-import scalars from './types/scalars'
-import generalTypes from './types/general'
+import scalars from 'types/scalars'
+import generalTypes from 'types/general'
 
 // Types
-import Auth from './types/Auth'
-import Comment from './types/Comment'
-import Reply from './types/Reply'
-import Notification from './types/Notification'
-import Post from './types/Post'
-import Project from './types/Project'
-import Followers from './types/Followers'
-import Search from './types/Search'
-import User from './types/User'
-import Image from './types/Image'
+import Auth from 'types/Auth'
+import Comment from 'types/Comment'
+import Reply from 'types/Reply'
+import Notification from 'types/Notification'
+import Post from 'types/Post'
+import Project from 'types/Project'
+import Followers from 'types/Followers'
+import Search from 'types/Search'
+import User from 'types/User'
+import Image from 'types/Image'
 
 // Resolvers
 import resolvers from './resolvers'

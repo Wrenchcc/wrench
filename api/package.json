@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "rm -rf dist && tsc",
-    "start:dev": "NODE_ENV=development dotenv -- nodemon -e ts -x ts-node src/server.ts"
+    "start:dev": "NODE_ENV=development dotenv -- nodemon -e ts -x ts-node -r tsconfig-paths/register src/server.ts"
   },
   "dependencies": {
     "apollo-server": "^2.0.7",
@@ -25,6 +25,7 @@
     "nodemon": "^1.18.4",
     "prettier": "^1.14.2",
     "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.6.0",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",

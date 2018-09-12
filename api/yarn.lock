@@ -265,6 +265,10 @@
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.12.6.tgz#3d619198585fcabe5f4e1adfb5cf5f3388c66c13"
 
+"@types/json5@^0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
+
 "@types/long@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
@@ -1047,6 +1051,10 @@ deep-for-each@^1.0.6:
   resolved "https://registry.yarnpkg.com/deep-for-each/-/deep-for-each-1.0.6.tgz#afa0ce249c58492a9720539478a18d37e1b10bae"
   dependencies:
     is-plain-object "^2.0.1"
+
+deepmerge@^2.0.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
 
 define-properties@^1.1.2:
   version "1.1.2"
@@ -2157,6 +2165,12 @@ json-schema@0.2.3:
 json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+
+json5@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
+  dependencies:
+    minimist "^1.2.0"
 
 jsonwebtoken@8.1.0:
   version "8.1.0"
@@ -3401,6 +3415,10 @@ strip-ansi@^4.0.0:
   dependencies:
     ansi-regex "^3.0.0"
 
+strip-bom@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/strip-bom/-/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
+
 strip-eof@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/strip-eof/-/strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf"
@@ -3525,6 +3543,16 @@ ts-node@^7.0.1:
     mkdirp "^0.5.1"
     source-map-support "^0.5.6"
     yn "^2.0.0"
+
+tsconfig-paths@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.6.0.tgz#f14078630d9d6e8b1dc690c1fc0cfb9cd0663891"
+  dependencies:
+    "@types/json5" "^0.0.29"
+    deepmerge "^2.0.1"
+    json5 "^1.0.1"
+    minimist "^1.2.0"
+    strip-bom "^3.0.0"
 
 tslib@1.9.0:
   version "1.9.0"

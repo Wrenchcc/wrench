@@ -1,5 +1,5 @@
-import project from '../../fixtures/projects'
-import followers from '../../fixtures/followers'
+import project from 'fixtures/projects'
+import followers from 'fixtures/followers'
 
 // TODO: Use context user
 export default (_, args, ctx) => ({
