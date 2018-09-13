@@ -19,5 +19,5 @@ const server = new ApolloServer({
 })
 
 server.listen({ port: PORT }).then(({ url }) => {
-  debug('🚀  Server ready at %o', url)
+  debug('🚀  Server ready at %s', url)
 })
