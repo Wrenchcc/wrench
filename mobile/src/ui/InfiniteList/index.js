@@ -43,7 +43,9 @@ class InfiniteList extends PureComponent {
     }
   }
 
-  renderLoading = () => <Loader />
+  renderLoader = () => <Loader />
+
+  renderFullscreenLoader = top => <Loader top={-top} />
 
   setRef = el => {
     const { scrollRef } = this.props
@@ -79,8 +81,8 @@ class InfiniteList extends PureComponent {
     } = this.props
 
     const initialFetch = !data && isFetching
+    const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 50) || 0
 
-    // TODO: Fix paddingTop when ListEmptyComponent loader is showing (not centered)
     return (
       <Fragment>
         {this.scrollToNewData()}
@@ -93,8 +95,10 @@ class InfiniteList extends PureComponent {
           onEndReached={this.onEndReached}
           refreshing={isRefetching}
           ListHeaderComponent={ListHeaderComponent}
-          ListFooterComponent={hasNextPage ? this.renderLoading() : null}
-          ListEmptyComponent={initialFetch ? this.renderLoading() : ListEmptyComponent}
+          ListFooterComponent={hasNextPage ? this.renderLoader() : null}
+          ListEmptyComponent={
+            initialFetch ? this.renderFullscreenLoader(paddingTop) : ListEmptyComponent
+          }
           keyboardShouldPersistTaps="always"
           keyboardDismissMode="on-drag"
           inverted={inverted}
