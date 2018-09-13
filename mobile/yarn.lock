@@ -7529,9 +7529,9 @@ strip-json-comments@^2.0.1, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-styled-components@^4.0.0-beta.2-0:
-  version "4.0.0-beta.2-0"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.0.0-beta.2-0.tgz#79700703f1dfef5013a16bc6d7ec13d9bcf7b4d2"
+styled-components@beta:
+  version "4.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.0.0-beta.4.tgz#7b3dea9647349db245514e34384bc198781f988b"
   dependencies:
     "@emotion/is-prop-valid" "^0.6.5"
     css-to-react-native "^2.0.3"
