@@ -35,7 +35,7 @@ export default `
 
   input PostInput {
     projectId: ID!
-    caption: String!
+    caption: String
     files: [Upload]
   }
 
