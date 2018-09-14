@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
 import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
@@ -27,6 +28,7 @@ class Feed extends PureComponent {
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    navigation: PropTypes.object.isRequired,
   }
 
   componentDidMount() {
@@ -39,13 +41,24 @@ class Feed extends PureComponent {
 
   renderItem = ({ item }) => <Post post={item.node} />
 
-  // TODO: Handle saving and update feed when done
+  // TODO: update feed when done
   render() {
-    const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const {
+      posts,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
+      navigation,
+    } = this.props
+
+    const image = pathOr(false, ['state', 'params', 'image'], navigation)
+    const title = pathOr(false, ['state', 'params', 'title'], navigation)
 
     return (
       <Fragment>
-        {false && <PostProgress image="" title="" />}
+        {image && <PostProgress image={image} title={title} />}
 
         <InfiniteListWithHandler
           scrollRef={ref => {

@@ -26,7 +26,7 @@ export const navigateBack = () => {
     })
   )
 }
-export const navigateToFeed = () => navigate('feed')
+export const navigateToFeed = params => navigate('feed', params)
 export const navigateToSettings = () => navigate('settings')
 export const navigateToSearch = params => navigate('search', params)
 export const navigateToProject = params => navigate('project', params)

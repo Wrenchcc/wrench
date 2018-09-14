@@ -79,22 +79,20 @@ class AddPost extends Component {
   onSave = async () => {
     const { caption, selectedProject, pictures } = this.state
 
-    const files = Object.keys(pictures).map(({ uri }, index) => ({
+    const files = Object.keys(pictures).map((uri, index) => ({
       uri,
       name: `image-${index}`,
       type: 'image/jpeg',
     }))
 
-    const post = {
-      projectId: selectedProject.id,
-      caption,
-      files: ReactNativeFile.list(files),
-    }
-
-    navigateToFeed(post)
+    navigateToFeed({ image: pathOr(null, [0, 'uri'], files), title: selectedProject.title })
 
     try {
-      await this.props.addPost(post)
+      await this.props.addPost({
+        projectId: selectedProject.id,
+        caption,
+        files: ReactNativeFile.list(files),
+      })
       track(events.POST_CREATED)
     } catch {
       track(events.POST_CREATED_FAILED)
