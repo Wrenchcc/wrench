@@ -17,6 +17,9 @@ const addPostOptions = {
       variables: {
         input,
       },
+      context: {
+        hasUpload: true,
+      },
     }),
   }),
 }
