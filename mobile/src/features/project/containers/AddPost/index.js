@@ -41,6 +41,10 @@ class AddPost extends Component {
     track(events.POST_CREATED_INITED)
   }
 
+  get hasOneImage() {
+    return Object.keys(this.state.pictures).length === 1
+  }
+
   onTakePicture = picture => {
     this.setState({ pictures: { [picture.uri]: picture }, edit: true })
     this.closeDropdown()
@@ -58,11 +62,14 @@ class AddPost extends Component {
 
   closeDropdown = () => this.setState({ expanded: false })
 
-  closeEdit = () => this.setState({ edit: false })
+  closeEdit = () => {
+    const pictures = this.hasOneImage ? {} : this.state.pictures
+    this.setState({ edit: false, pictures })
+  }
 
   openEdit = () => this.setState({ edit: true })
 
-  handleCaption = caption => this.setState({ caption })
+  onChangeText = text => this.setState({ caption: text })
 
   navigateToCameraRoll = () => {
     this.swiper.scrollBy(-1)
@@ -72,9 +79,9 @@ class AddPost extends Component {
   onSave = async () => {
     const { caption, selectedProject, pictures } = this.state
 
-    const files = Object.keys(pictures).map(uri => ({
+    const files = Object.keys(pictures).map(({ uri }, index) => ({
       uri,
-      name: uri,
+      name: `image-${index}`,
       type: 'image/jpeg',
     }))
 
@@ -112,7 +119,6 @@ class AddPost extends Component {
       )
     }
 
-    // And pass data to feed
     return (
       edit && (
         <Text color="white" medium onPress={this.onSave}>
@@ -139,11 +145,15 @@ class AddPost extends Component {
   }
 
   renderEdit() {
-    const { caption, edit } = this.state
+    const { t } = this.props
+    const { caption, edit, pictures } = this.state
+
     if (!edit) return null
 
+    const image = this.hasOneImage ? { uri: pathOr(null, [0], Object.keys(pictures)) } : null
+
     return (
-      <Background source={this.state.pictures[0]}>
+      <Background source={image}>
         <Overlay onPressIn={this.closeDropdown} activeOpacity={1}>
           <KeyboardAvoidingView behavior="position">
             <Edit>
@@ -152,8 +162,8 @@ class AddPost extends Component {
                 multiline
                 selectionColor="white"
                 value={caption}
-                onChange={this.handleCaption}
-                placeholder={this.props.t('AddPost:placeholder')}
+                onChangeText={this.onChangeText}
+                placeholder={t('AddPost:placeholder')}
               />
             </Edit>
           </KeyboardAvoidingView>
