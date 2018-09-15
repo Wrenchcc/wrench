@@ -1,5 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { prepend } from 'ramda'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 const addPostMutation = gql`
@@ -19,6 +20,23 @@ const addPostOptions = {
       },
       context: {
         hasUpload: true,
+      },
+      updateQueries: {
+        getFeed: (prev, { mutationResult }) => {
+          const edge = {
+            cursor: -1,
+            node: mutationResult.data.addPost,
+            __typename: 'PostEdge',
+          }
+
+          return {
+            ...prev,
+            posts: {
+              ...prev.posts,
+              edges: prepend(edge, prev.posts.edges),
+            },
+          }
+        },
       },
     }),
   }),

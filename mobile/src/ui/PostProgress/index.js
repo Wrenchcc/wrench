@@ -6,12 +6,13 @@ import { Base, Cover, Content } from './styles'
 
 class PostProgress extends PureComponent {
   static propTypes = {
-    image: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    title: PropTypes.string,
   }
 
   render() {
     const { t, title, image } = this.props
+    if (!title || !image) return null
 
     return (
       <Base>

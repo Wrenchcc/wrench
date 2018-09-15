@@ -53,12 +53,12 @@ class Feed extends PureComponent {
       navigation,
     } = this.props
 
-    const image = pathOr(false, ['state', 'params', 'image'], navigation)
-    const title = pathOr(false, ['state', 'params', 'title'], navigation)
+    const image = pathOr('', ['state', 'params', 'image'], navigation)
+    const title = pathOr('', ['state', 'params', 'title'], navigation)
 
     return (
       <Fragment>
-        {image && <PostProgress image={image} title={title} />}
+        <PostProgress image={image} title={title} />
 
         <InfiniteListWithHandler
           scrollRef={ref => {
