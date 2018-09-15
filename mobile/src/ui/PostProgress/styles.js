@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
+  background-color: ${COLORS.DIVIDER};
   height: 60;
   flex-direction: row;
   align-items: center;
