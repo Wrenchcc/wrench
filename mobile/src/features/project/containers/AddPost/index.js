@@ -85,7 +85,10 @@ class AddPost extends Component {
       type: 'image/jpeg',
     }))
 
-    navigateToFeed({ image: pathOr(null, [0, 'uri'], files), title: selectedProject.title })
+    // TODO: Change to local mutation
+    const progressData = { image: pathOr(null, [0, 'uri'], files), title: selectedProject.title }
+
+    navigateToFeed({ progressData })
 
     try {
       await this.props.addPost({

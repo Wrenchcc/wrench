@@ -15,9 +15,7 @@ const addPostMutation = gql`
 const addPostOptions = {
   props: ({ mutate }) => ({
     addPost: input => mutate({
-      variables: {
-        input,
-      },
+      variables: { input },
       context: {
         hasUpload: true,
       },

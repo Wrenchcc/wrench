@@ -41,7 +41,6 @@ class Feed extends PureComponent {
 
   renderItem = ({ item }) => <Post post={item.node} />
 
-  // TODO: update feed when done
   render() {
     const {
       posts,
@@ -53,8 +52,8 @@ class Feed extends PureComponent {
       navigation,
     } = this.props
 
-    const image = pathOr('', ['state', 'params', 'image'], navigation)
-    const title = pathOr('', ['state', 'params', 'title'], navigation)
+    const image = pathOr('', ['state', 'params', 'progressData', 'image'], navigation)
+    const title = pathOr('', ['state', 'params', 'progressData', 'title'], navigation)
 
     return (
       <Fragment>
