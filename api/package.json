@@ -9,6 +9,7 @@
   "dependencies": {
     "apollo-server": "^2.0.8",
     "apollo-upload-server": "^7.1.0",
+    "aws-sdk": "^2.315.0",
     "debug": "^4.0.1",
     "faker": "^4.1.0",
     "firebase-admin": "^6.0.0",
