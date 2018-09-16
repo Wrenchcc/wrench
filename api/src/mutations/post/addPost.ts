@@ -3,38 +3,46 @@ import { v4 } from 'uuid'
 import posts from '../../fixtures/posts'
 const debug = require('debug')('api:server')
 
+const { AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_S3_BUCKET, AWS_REGION } = process.env
+
+const AWS_SIGNATURE_VERSION = 'v4'
+
 const s3 = new S3({
-  accessKeyId: 'foo',
-  secretAccessKey: 'bar',
-  params: {
-    Bucket: 'com.prisma.s3',
-  },
+  accessKeyId: AWS_ACCESS_KEY,
+  secretAccessKey: AWS_SECRET_ACCESS_KEY,
+  region: AWS_REGION,
+  signatureVersion: AWS_SIGNATURE_VERSION,
 })
 
-const processUpload = async upload => {
+const generateFileName = mimetype => {
   const id = v4()
-  const { stream } = await upload
 
-  const response = await s3.upload({
-    Key: id,
-    ACL: 'public-read',
-    Bucket: 'com.prisma.s3',
-    Body: stream,
-  })
-
-  console.log(response)
+  switch (mimetype) {
+    case 'image/jpeg':
+      return `${id}.jpeg`
+    default:
+      return
+  }
 }
 
-// const storeUpload = async ({ stream }) => {
-//   console.log(stream)
-//
-// return new Promise((resolve, reject) =>
-//   stream
-//     .pipe(createWriteStream(path))
-//     .on('finish', () => resolve({ id, path }))
-//     .on('error', reject)
-// )
-// }
+const processUpload = async upload => {
+  const { stream, mimetype } = await upload
+
+  const fileName = generateFileName(mimetype)
+
+  const res = await s3
+    .upload({
+      Key: fileName,
+      Bucket: AWS_S3_BUCKET,
+      Body: stream,
+    })
+    .promise()
+
+  return {
+    uri: res.Location,
+    fileName,
+  }
+}
 
 // TODO: Check if user data
 export default async (_, { input }, ctx) => {

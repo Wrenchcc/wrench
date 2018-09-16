@@ -20,9 +20,10 @@
   "environment": {
     "PORT": "4000",
     "APP_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867",
-    "AWS_S3_BUCKET": "bucket",
-    "AWS_ACCESS_KEY": "key",
-    "AWS_SECRET_ACCESS_KEY": "secret"
+    "AWS_REGION": "eu-west-2",
+    "AWS_S3_BUCKET": "wrench-content",
+    "AWS_ACCESS_KEY": "AKIAIK3VVVTF7K7LBBDQ",
+    "AWS_SECRET_ACCESS_KEY": "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"
   },
   "hooks": {
     "build": "yarn build"

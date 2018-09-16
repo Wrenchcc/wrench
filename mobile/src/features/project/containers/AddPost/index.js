@@ -82,7 +82,6 @@ class AddPost extends Component {
     const files = Object.keys(pictures).map((uri, index) => ({
       uri,
       name: `image-${index}`,
-      type: 'image/jpeg',
     }))
 
     // TODO: Change to local mutation
