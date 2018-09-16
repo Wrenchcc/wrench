@@ -1,9 +1,14 @@
 import styled from 'styled-components'
+import { Animated } from 'react-native'
 import { COLORS } from 'ui/constants'
 
-export const Base = styled.View`
+export const Base = styled(Animated.View)`
   background-color: ${COLORS.DIVIDER};
   height: 60;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   flex-direction: row;
   align-items: center;
   padding-left: 20;

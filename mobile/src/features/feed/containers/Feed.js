@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { Animated } from 'react-native'
 import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
@@ -31,7 +32,17 @@ class Feed extends PureComponent {
     navigation: PropTypes.object.isRequired,
   }
 
-  componentDidMount() {
+  constructor(props) {
+    super(props)
+
+    this.scrollY = new Animated.Value(0)
+
+    this.headerY = this.scrollY.interpolate({
+      inputRange: [0, 60],
+      outputRange: [0, -60],
+      extrapolate: 'clamp',
+    })
+
     registerForPushNotifications()
   }
 
@@ -57,7 +68,7 @@ class Feed extends PureComponent {
 
     return (
       <Fragment>
-        <PostProgress image={image} title={title} />
+        <PostProgress image={image} title={title} translateY={this.headerY} />
 
         <InfiniteListWithHandler
           scrollRef={ref => {
@@ -75,6 +86,9 @@ class Feed extends PureComponent {
           hasNextPage={hasNextPage}
           keyExtractor={item => item.node.id}
           renderItem={this.renderItem}
+          onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
+            useNativeDriver: true,
+          })}
         />
       </Fragment>
     )
