@@ -1,26 +1,40 @@
-import { createWriteStream } from 'fs'
+import { S3 } from 'aws-sdk'
 import { v4 } from 'uuid'
 import posts from '../../fixtures/posts'
 const debug = require('debug')('api:server')
 
-const uploadDir = './uploads'
+const s3 = new S3({
+  accessKeyId: 'foo',
+  secretAccessKey: 'bar',
+  params: {
+    Bucket: 'com.prisma.s3',
+  },
+})
 
 const processUpload = async upload => {
-  const { stream, mimetype, encoding } = await upload
-  return storeUpload({ stream })
-}
-
-const storeUpload = async ({ stream }): Promise<any> => {
   const id = v4()
-  const path = `${uploadDir}/${id}.jpeg`
+  const { stream } = await upload
 
-  return new Promise((resolve, reject) =>
-    stream
-      .pipe(createWriteStream(path))
-      .on('finish', () => resolve({ id, path }))
-      .on('error', reject)
-  )
+  const response = await s3.upload({
+    Key: id,
+    ACL: 'public-read',
+    Bucket: 'com.prisma.s3',
+    Body: stream,
+  })
+
+  console.log(response)
 }
+
+// const storeUpload = async ({ stream }) => {
+//   console.log(stream)
+//
+// return new Promise((resolve, reject) =>
+//   stream
+//     .pipe(createWriteStream(path))
+//     .on('finish', () => resolve({ id, path }))
+//     .on('error', reject)
+// )
+// }
 
 // TODO: Check if user data
 export default async (_, { input }, ctx) => {
