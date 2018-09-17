@@ -33,7 +33,7 @@ class AddPost extends Component {
       page: CAMERA_PAGE,
       expanded: false,
       edit: false,
-      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
+      project: pathOr(null, ['projects', 0, 'node'], props),
       caption: null,
       files: {},
       file: null,
@@ -48,7 +48,7 @@ class AddPost extends Component {
   }
 
   setSelectedProject = project => {
-    this.setState({ selectedProject: project }, this.closeDropdown)
+    this.setState({ project }, this.closeDropdown)
   }
 
   addPictures = files => this.setState({ files })
@@ -74,10 +74,10 @@ class AddPost extends Component {
   }
 
   onSave = async () => {
-    const { caption, selectedProject, files } = this.state
+    const { caption, project, files, file } = this.state
 
     // TODO: Change to local mutation
-    // const progressData = { image: pathOr(null, [0, 'uri'], files), title: selectedProject.title }
+    // const progressData = { image: pathOr(null, [0, 'uri'], files), title: project.title }
 
     // navigateToFeed({ progressData })
 
@@ -85,7 +85,7 @@ class AddPost extends Component {
 
     try {
       await this.props.addPost({
-        projectId: selectedProject.id,
+        projectId: project.id,
         caption,
         files: ReactNativeFile.list(
           Object.keys(files).map((uri, index) => ({
@@ -134,7 +134,7 @@ class AddPost extends Component {
         headerRight={this.renderHeaderRight()}
         headerCenter={
           <Dropdown
-            title={this.state.selectedProject.title}
+            title={this.state.project.title}
             onPress={this.toggleDropdown}
             active={this.state.expanded}
           />
@@ -178,7 +178,7 @@ class AddPost extends Component {
           projects={this.props.projects}
           expanded={this.state.expanded}
           onPress={this.setSelectedProject}
-          selected={this.state.selectedProject}
+          selected={this.state.project}
         />
 
         <Top>{this.renderHeader()}</Top>
