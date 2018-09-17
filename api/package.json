@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "webpack",
-    "start:dev": "NODE_ENV=development dotenv -- nodemon -e ts -x ts-node src/server.ts"
+    "start:dev": "NODE_ENV=development dotenv -- nodemon -e ts -x ts-node server.ts"
   },
   "dependencies": {
     "apollo-server": "^2.0.8",
