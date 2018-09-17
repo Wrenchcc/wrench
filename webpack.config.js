@@ -1,18 +1,18 @@
 const path = require('path')
 const debug = require('debug')('build:webpack')
 
-const dir = process.env.DIR
+const { DIR, NODE_ENV } = process.env
 
-if (!dir) throw new Error('Define directory to build with the -d option.')
-debug(`> Building ${dir}, entry: ${dir}/index.ts, output: ${dir}/dist/server.js`)
+if (!DIR) throw new Error('Define DIRectory to build with the -d option.')
+debug(`> Building ${DIR}, entry: ${DIR}/index.ts, output: ${DIR}/dist/server.js`)
 
 module.exports = {
-  entry: `./${dir}/index.ts`,
+  entry: `./${DIR}/index.ts`,
   target: 'node',
-  mode: 'production',
+  mode: NODE_ENV,
   stats: 'none',
   output: {
-    path: path.resolve(__dirname, dir, 'dist'),
+    path: path.resolve(__dirname, DIR, 'dist'),
     filename: 'server.js',
     libraryTarget: 'commonjs',
   },

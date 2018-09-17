@@ -26,6 +26,6 @@
     "APP_AWS_SECRET_ACCESS_KEY": "vXRt7j2TJLEJGr9bFkqs1h3DmWgc3pXMtNG914jb"
   },
   "hooks": {
-    "build": "yarn build"
+    "build": "cd ../ && yarn build:api"
   }
 }

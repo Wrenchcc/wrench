@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start:api": "node api/dist/server.js",
-    "build:api": "cross-env DIR=api webpack",
+    "build:api": "cross-env NODE_ENV=production cross-env DIR=api webpack",
     "dev:api": "cross-env NODE_ENV=development dotenv -- nodemon -e ts -x ts-node api/index.ts"
   },
   "devDependencies": {

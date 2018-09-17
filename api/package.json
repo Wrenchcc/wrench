@@ -1,6 +1,5 @@
 {
   "name": "wrench-api",
-  "private": true,
   "dependencies": {
     "apollo-server": "^2.0.8",
     "apollo-upload-server": "^7.1.0",
