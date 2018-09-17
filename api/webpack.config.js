@@ -11,7 +11,7 @@ module.exports = {
     libraryTarget: 'commonjs',
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.json'],
   },
   externals: ['aws-sdk'],
   module: {
