@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/server.ts',
   target: 'node',
   mode: 'production',
-  stats: 'minimal',
+  stats: 'none',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'server.js',
