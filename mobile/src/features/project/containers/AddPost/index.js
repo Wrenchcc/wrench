@@ -35,18 +35,15 @@ class AddPost extends Component {
       edit: false,
       selectedProject: pathOr(null, ['projects', 0, 'node'], props),
       caption: null,
-      pictures: {},
+      files: {},
+      file: null,
     }
 
     track(events.POST_CREATED_INITED)
   }
 
-  get hasOneImage() {
-    return Object.keys(this.state.pictures).length === 1
-  }
-
-  onTakePicture = picture => {
-    this.setState({ pictures: { [picture.uri]: picture }, edit: true })
+  onTakePicture = file => {
+    this.setState({ file, edit: true })
     this.closeDropdown()
   }
 
@@ -54,7 +51,7 @@ class AddPost extends Component {
     this.setState({ selectedProject: project }, this.closeDropdown)
   }
 
-  addPictures = pictures => this.setState({ pictures })
+  addPictures = files => this.setState({ files })
 
   changePage = page => this.setState({ page })
 
@@ -63,8 +60,8 @@ class AddPost extends Component {
   closeDropdown = () => this.setState({ expanded: false })
 
   closeEdit = () => {
-    const pictures = this.hasOneImage ? {} : this.state.pictures
-    this.setState({ edit: false, pictures })
+    // TODO: Remove single file
+    this.setState({ edit: false })
   }
 
   openEdit = () => this.setState({ edit: true })
@@ -77,23 +74,25 @@ class AddPost extends Component {
   }
 
   onSave = async () => {
-    const { caption, selectedProject, pictures } = this.state
-
-    const files = Object.keys(pictures).map((uri, index) => ({
-      uri,
-      name: `image-${index}`,
-    }))
+    const { caption, selectedProject, files } = this.state
 
     // TODO: Change to local mutation
-    const progressData = { image: pathOr(null, [0, 'uri'], files), title: selectedProject.title }
+    // const progressData = { image: pathOr(null, [0, 'uri'], files), title: selectedProject.title }
 
-    navigateToFeed({ progressData })
+    // navigateToFeed({ progressData })
+
+    // TODO: Crop images
 
     try {
       await this.props.addPost({
         projectId: selectedProject.id,
         caption,
-        files: ReactNativeFile.list(files),
+        files: ReactNativeFile.list(
+          Object.keys(files).map((uri, index) => ({
+            uri,
+            name: `image-${index}`,
+          }))
+        ),
       })
       track(events.POST_CREATED)
     } catch {
@@ -109,9 +108,9 @@ class AddPost extends Component {
   }
 
   renderHeaderRight() {
-    const { page, edit, pictures } = this.state
+    const { page, edit, files } = this.state
 
-    if (!edit && page === CAMERA_ROLL_PAGE && !isEmpty(pictures)) {
+    if (!edit && page === CAMERA_ROLL_PAGE && !isEmpty(files)) {
       return (
         <Text color="white" medium onPress={() => this.openEdit()}>
           {this.props.t('AddPost:next')}
@@ -146,14 +145,12 @@ class AddPost extends Component {
 
   renderEdit() {
     const { t } = this.props
-    const { caption, edit, pictures } = this.state
+    const { caption, edit, file } = this.state
 
     if (!edit) return null
 
-    const image = this.hasOneImage ? { uri: pathOr(null, [0], Object.keys(pictures)) } : null
-
     return (
-      <Background source={image}>
+      <Background source={file}>
         <Overlay onPressIn={this.closeDropdown} activeOpacity={1}>
           <KeyboardAvoidingView behavior="position">
             <Edit>
@@ -199,7 +196,7 @@ class AddPost extends Component {
         >
           <CameraRoll
             addPictures={this.addPictures}
-            pictures={this.state.pictures}
+            pictures={this.state.files}
             closeDropdown={this.closeDropdown}
             dropDownActive={this.state.expanded}
           />
