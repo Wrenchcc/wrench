@@ -13,7 +13,7 @@ class PostProgress extends PureComponent {
   render() {
     const { t, title, image, translateY } = this.props
 
-    // if (!title || !image) return null
+    if (!title || !image) return null
 
     return (
       <Base style={{ transform: [{ translateY }] }}>
