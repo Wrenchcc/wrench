@@ -1,5 +1,4 @@
 import { ApolloServer } from 'apollo-server'
-import resolvers from 'resolvers'
 import schema from './schema'
 import models from './models'
 import services from './services'
