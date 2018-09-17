@@ -20,10 +20,10 @@
   "environment": {
     "PORT": "4000",
     "APP_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867",
-    "API_AWS_REGION": "eu-west-2",
-    "API_AWS_S3_BUCKET": "wrench-content",
-    "API_AWS_ACCESS_KEY": "AKIAIK3VVVTF7K7LBBDQ",
-    "API_AWS_SECRET_ACCESS_KEY": "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"
+    "APP_AWS_REGION": "eu-west-2",
+    "APP_AWS_S3_BUCKET": "wrench-content",
+    "APP_AWS_ACCESS_KEY": "AKIAIK3VVVTF7K7LBBDQ",
+    "APP_AWS_SECRET_ACCESS_KEY": "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"
   },
   "hooks": {
     "build": "yarn build"
