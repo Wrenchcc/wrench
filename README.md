@@ -32,7 +32,7 @@ Here is a list of all the big technologies we use:
 ```sh
 wrench/
 ├── api        # API server
-├── jupiter    # Pre-Signed s3 URLs
+├── jupiter    # Pre-Signed URLs service
 ├── mobile     # Mobile apps
 ├── shared     # Shared JavaScript code
 └── web        # Web app

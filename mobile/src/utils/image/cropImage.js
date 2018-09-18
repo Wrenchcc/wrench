@@ -18,7 +18,7 @@ export default async files => Promise.all(
   )
 )
 
-// TODO: Remove image from store when uploaded ImageStore.removeImageForTag()
+// NOTE: Remove image from store when uploaded ImageStore.removeImageForTag()
 // Delete an image from the ImageStore. Images are stored in memory
 // and must be manually removed when you are finished with them, otherwise
 // they will continue to use up RAM until the app is terminated.
