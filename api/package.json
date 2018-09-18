@@ -1,5 +1,8 @@
 {
   "name": "wrench-api",
+  "scripts": {
+    "start": "NODE_ENV=production node dist/server.js"
+  },
   "dependencies": {
     "apollo-server": "^2.0.8",
     "apollo-upload-server": "^7.1.0",
