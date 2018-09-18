@@ -32,7 +32,7 @@
     "i18next": "^11.9.0",
     "javascript-time-ago": "^1.0.31",
     "ramda": "^0.25.0",
-    "react": "^16.5.1",
+    "react": "^16.5.2",
     "react-apollo": "^2.1.11",
     "react-i18next": "^7.12.0",
     "react-native": "0.57.0",
@@ -69,6 +69,6 @@
     "librsvg-prebuilt": "^0.7.8",
     "metro-react-native-babel-preset": "^0.45.3",
     "prop-types": "^15.6.2",
-    "react-dom": "^16.5.1"
+    "react-dom": "^16.5.2"
   }
 }
