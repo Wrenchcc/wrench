@@ -5,9 +5,13 @@
   "scripts": {
     "start:api": "node api/dist/server.js",
     "build:api": "cross-env NODE_ENV=production cross-env DIR=api webpack",
-    "dev:api": "cross-env NODE_ENV=development dotenv -- nodemon -e ts -x ts-node api/index.ts"
+    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -- nodemon -e ts -x ts-node api/index.ts",
+    "start:jupiter": "node jupiter/dist/server.js",
+    "build:jupiter": "cross-env NODE_ENV=production cross-env DIR=jupiter webpack",
+    "dev:jupiter": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -- nodemon -e ts -x ts-node jupiter/index.ts"
   },
   "devDependencies": {
+    "@types/node": "^10.10.1",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
     "nodemon": "^1.18.4",

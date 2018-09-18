@@ -1,7 +1,7 @@
 {
-  "region": ["eu-central-1"],
-  "name": "wrench",
   "profile": "wrench-api",
+  "region": ["eu-central-1"],
+  "name": "api",
   "lambda": {
     "memory": 1536,
     "runtime": "nodejs8.10"

@@ -1,5 +1,6 @@
 {
-  "name": "wrench-api",
+  "name": "api",
+  "private": true,
   "scripts": {
     "start": "NODE_ENV=production node dist/server.js"
   },
