@@ -26,7 +26,6 @@
     "apollo-link-batch-http": "^1.2.3",
     "apollo-link-context": "^1.0.9",
     "apollo-link-error": "^1.1.1",
-    "apollo-upload-client": "^8.1.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "human-format": "^0.10.0",

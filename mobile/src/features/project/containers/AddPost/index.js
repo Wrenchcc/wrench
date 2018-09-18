@@ -5,7 +5,6 @@ import { translate } from 'react-i18next'
 import { pathOr, isEmpty } from 'ramda'
 import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
-import { ReactNativeFile } from 'apollo-upload-client'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { navigateBack, navigateToFeed } from 'navigation'
@@ -87,12 +86,6 @@ class AddPost extends Component {
       await this.props.addPost({
         projectId: project.id,
         caption,
-        files: ReactNativeFile.list(
-          Object.keys(files).map((uri, index) => ({
-            uri,
-            name: `image-${index}`,
-          }))
-        ),
       })
       track(events.POST_CREATED)
     } catch {

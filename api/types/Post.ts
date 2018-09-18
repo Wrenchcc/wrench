@@ -36,7 +36,6 @@ export default `
   input PostInput {
     projectId: ID!
     caption: String
-    files: [Upload]
   }
 
   extend type Mutation {
