@@ -1,0 +1,11 @@
+{
+  "name": "jupiter",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=production micro dist/server.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.316.0",
+    "micro": "^9.3.3"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "outDir": "dist",
+    "rootDir": ".",
+    "types" : ["node"],
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "webpack.config.js"
+  ]
+}
