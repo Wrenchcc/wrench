@@ -5,6 +5,7 @@
   "globals": {
     "__DEV__": true,
     "fetch": true,
+    "path": true,
     "requestAnimationFrame": true
   },
   "rules": {

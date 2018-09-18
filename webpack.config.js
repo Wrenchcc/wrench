@@ -3,7 +3,7 @@ const debug = require('debug')('build:webpack')
 
 const { DIR, NODE_ENV } = process.env
 
-if (!DIR) throw new Error('Define DIRectory to build with the -d option.')
+if (!DIR) throw new Error('Define Directory to build with the -d option.')
 debug(`> Building ${DIR}, entry: ${DIR}/index.ts, output: ${DIR}/dist/server.js`)
 
 module.exports = {
