@@ -6,6 +6,19 @@
     "memory": 1024,
     "runtime": "nodejs8.10"
   },
+  "cors": {
+    "enable": true
+  },
+  "stages": {
+    "production": {
+      "domain": "api.wrench.cc",
+      "path": "/jupiter"
+    },
+    "staging": {
+      "domain": "staging.wrench.cc",
+      "path": "/jupiter"
+    }
+  },
   "environment": {
     "PORT": "5000",
     "APP_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867",
