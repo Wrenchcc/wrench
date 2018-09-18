@@ -1,4 +1,4 @@
-import micro, { json, send } from 'micro'
+import micro, { json } from 'micro'
 import { S3 } from 'aws-sdk'
 import { v4 } from 'uuid'
 
@@ -23,27 +23,37 @@ const s3 = new S3({
 
 export default micro(
   async (req, res): Promise<{}> => {
-    const input = await json(req)
+    if (req.url.includes('/health')) {
+      return { status: 'pass' }
+    }
 
-    return Promise.all(
-      input.map(async ({ filename }) => {
-        const id = v4()
+    try {
+      const input = await json(req)
 
-        try {
-          const params = {
-            Bucket: API_AWS_S3_BUCKET,
-            Expires: HOUR_IN_SECONDS,
-            Key: id,
+      return Promise.all(
+        input.map(async ({ filename }) => {
+          const id = v4()
+
+          try {
+            const params = {
+              Bucket: API_AWS_S3_BUCKET,
+              Expires: HOUR_IN_SECONDS,
+              Key: id,
+            }
+
+            const url = await s3.getSignedUrl('putObject', params)
+
+            return { url, id }
+          } catch (err) {
+            debug('‰O', err)
+            return { error: 'Failed to generate signed url' }
           }
-
-          const url = await s3.getSignedUrl('putObject', params)
-
-          return { url, id }
-        } catch (err) {
-          debug('Error ‰O', err)
-        }
-      })
-    )
+        })
+      )
+    } catch (err) {
+      debug('‰O', err)
+      return { error: 'No valid json format' }
+    }
   }
 ).listen(PORT)
 

@@ -7,11 +7,7 @@
     "baseUrl": ".",
     "outDir": "dist",
     "rootDir": ".",
-    "types" : ["node"],
+    "types": ["node"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "webpack.config.js"
-  ]
+  "exclude": ["node_modules", "dist", "webpack.config.js"]
 }
