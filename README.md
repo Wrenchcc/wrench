@@ -13,9 +13,7 @@ This is the main monorepo codebase of [Wrench](https://wrench.cc). Every single 
 
 ## What is Wrench?
 
-### Vision
-
-To be the goto community for people that like to build and keep track of their motorcycle build progress.
+The goto community for people that like to build and keep track of their motorcycle build progress.
 
 ### Codebase
 
@@ -34,6 +32,7 @@ Here is a list of all the big technologies we use:
 ```sh
 wrench/
 ├── api        # API server
+├── jupiter    # Pre-Signed s3 URLs
 ├── mobile     # Mobile apps
 ├── shared     # Shared JavaScript code
 └── web        # Web app
