@@ -1,6 +1,6 @@
 {
   "profile": "wrench-api",
-  "region": ["eu-central-1"],
+  "regions": ["eu-central-1"],
   "name": "jupiter",
   "lambda": {
     "memory": 1024,
