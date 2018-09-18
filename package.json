@@ -8,7 +8,7 @@
     "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -- nodemon -e ts -x ts-node api/index.ts",
     "start:jupiter": "node jupiter/dist/server.js",
     "build:jupiter": "cross-env NODE_ENV=production cross-env DIR=jupiter webpack",
-    "dev:jupiter": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -- nodemon -e ts -x ts-node jupiter/index.ts"
+    "dev:jupiter": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -e jupiter/.env -- nodemon -e ts -x ts-node jupiter/index.ts"
   },
   "devDependencies": {
     "@types/node": "^10.10.1",
@@ -24,5 +24,8 @@
     "typescript": "^3.0.3",
     "webpack": "^4.19.0",
     "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "uuid": "^3.3.2"
   }
 }
