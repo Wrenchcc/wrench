@@ -1,7 +1,6 @@
 import micro, { json } from 'micro'
 import { S3 } from 'aws-sdk'
 import { v4 } from 'uuid'
-import * as ms from 'ms'
 
 const debug = require('debug')('api:jupiter')
 
@@ -12,6 +11,8 @@ const {
   API_AWS_SECRET_ACCESS_KEY,
   PORT = 5000,
 } = process.env
+
+const HOUR_IN_SECONDS = 3600
 
 const s3 = new S3({
   accessKeyId: API_AWS_ACCESS_KEY,
@@ -36,7 +37,7 @@ export default micro(
           try {
             const params = {
               Bucket: API_AWS_S3_BUCKET,
-              Expires: ms('5m'),
+              Expires: HOUR_IN_SECONDS,
               Key: id,
             }
 

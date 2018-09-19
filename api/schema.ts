@@ -1,6 +1,5 @@
 import { makeExecutableSchema } from 'graphql-tools'
 import { merge } from 'ramda'
-
 import scalars from './types/scalars'
 import generalTypes from './types/general'
 
