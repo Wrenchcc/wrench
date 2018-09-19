@@ -8,7 +8,7 @@ const s3 = new S3({
   apiVersion: AWS_API_VERSION,
   signatureVersion: AWS_SIGNATURE_VERSION,
   region: Config.WRENCH_AWS_S3_REGION,
-  // useAccelerateEndpoint: true,
+  useAccelerateEndpoint: true,
   params: {
     Bucket: Config.WRENCH_AWS_S3_BUCKET,
   },
