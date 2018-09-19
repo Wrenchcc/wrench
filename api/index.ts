@@ -6,7 +6,7 @@ import { getUserFromRequest } from './utils'
 
 const debug = require('debug')('api:server')
 
-const { PORT = 4000 } = process.env
+const { PORT = 4000, NODE_ENV } = process.env
 
 const server = new ApolloServer({
   context: ({ req }) => ({
@@ -14,6 +14,7 @@ const server = new ApolloServer({
     services,
     user: getUserFromRequest(req),
   }),
+  playground: NODE_ENV !== 'production',
   schema,
 })
 
