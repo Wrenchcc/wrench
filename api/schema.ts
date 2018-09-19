@@ -1,8 +1,6 @@
 import { makeExecutableSchema } from 'graphql-tools'
 import { merge } from 'ramda'
 
-const debug = require('debug')('api:resolvers')
-
 import scalars from './types/scalars'
 import generalTypes from './types/general'
 
@@ -20,6 +18,8 @@ import Image from './types/Image'
 
 // Resolvers
 import resolvers from './resolvers'
+
+const debug = require('debug')('api:resolvers')
 
 // const resolvers = merge(
 //   {},
