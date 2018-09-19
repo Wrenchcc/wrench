@@ -1,4 +1,5 @@
 import posts from '../../fixtures/posts'
+
 const debug = require('debug')('api:server')
 
 // TODO: Check if user data

@@ -12,10 +12,10 @@ const typeDefs = `
 
 const resolvers = {
   Date: GraphQLDate,
-  LowercaseString: LowercaseString,
+  LowercaseString,
 }
 
 export default {
-  typeDefs,
   resolvers,
+  typeDefs,
 }

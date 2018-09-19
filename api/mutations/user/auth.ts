@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken'
-import { verifyRefreshToken } from '../../utils'
 import { path } from 'ramda'
+import { verifyRefreshToken } from '../../utils'
 
 const { APP_SECRET } = process.env
 

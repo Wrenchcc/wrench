@@ -20,15 +20,6 @@ import resolvers from './resolvers'
 
 const debug = require('debug')('api:resolvers')
 
-// const resolvers = merge(
-//   {},
-//   //queries
-//   scalars.resolvers,
-//   // ThreadQueries,
-//   // mutations
-//   userMutations,
-// );
-
 // Logging
 if (process.env.NODE_ENV === 'development' && debug.enabled) {
   const logExecutions = require('graphql-log')({
@@ -61,6 +52,7 @@ const Root = `
 // Create the final GraphQL schema out of the type definitions
 // and the resolvers
 export default makeExecutableSchema({
+  resolvers,
   typeDefs: [
     scalars.typeDefs,
     generalTypes,
@@ -76,5 +68,4 @@ export default makeExecutableSchema({
     User,
     Image,
   ],
-  resolvers,
 })

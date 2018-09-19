@@ -2,8 +2,8 @@ import { GraphQLScalarType } from 'graphql'
 import { Kind } from 'graphql/language'
 
 const LowercaseString = new GraphQLScalarType({
-  name: 'LowercaseString',
   description: 'Returns all strings in lower case',
+  name: 'LowercaseString',
   parseValue(value) {
     return value.toLowerCase()
   },
