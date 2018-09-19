@@ -55,8 +55,8 @@
     "react-native-swiper": "^1.5.13",
     "react-native-tab-view": "^1.0.2",
     "react-native-video": "3.2.1",
-    "react-navigation": "^2.14.2",
-    "styled-components": "beta",
+    "react-navigation": "^2.15.0",
+    "styled-components": "v3.4.9",
     "url": "^0.11.0"
   },
   "devDependencies": {
@@ -69,6 +69,7 @@
     "librsvg-prebuilt": "^0.7.8",
     "metro-react-native-babel-preset": "^0.45.3",
     "prop-types": "^15.6.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "schedule": "0.4.0"
   }
 }
