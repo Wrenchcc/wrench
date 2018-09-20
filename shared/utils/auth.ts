@@ -8,8 +8,8 @@ export const getUserFromRequest = req => {
   if (authorization) {
     const token = authorization.replace('Bearer ', '')
     try {
-      const { id } = jwt.verify(token, APP_JWT_SECRET)
-      return { id }
+      const { userId } = jwt.verify(token, APP_JWT_SECRET)
+      return { userId }
     } catch {
       return null
     }

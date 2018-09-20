@@ -6,17 +6,17 @@ import { getUserFromRequest } from 'shared/utils/auth'
 const debug = require('debug')('api:jupiter')
 
 const {
-  API_AWS_ACCESS_KEY,
-  API_AWS_REGION,
-  API_AWS_S3_BUCKET,
-  API_AWS_SECRET_ACCESS_KEY,
+  APP_AWS_ACCESS_KEY,
+  APP_AWS_REGION,
+  APP_AWS_S3_BUCKET,
+  APP_AWS_SECRET_ACCESS_KEY,
   PORT = 5000,
 } = process.env
 
 const s3 = new S3({
-  accessKeyId: API_AWS_ACCESS_KEY,
-  region: API_AWS_REGION,
-  secretAccessKey: API_AWS_SECRET_ACCESS_KEY,
+  accessKeyId: APP_AWS_ACCESS_KEY,
+  region: APP_AWS_REGION,
+  secretAccessKey: APP_AWS_SECRET_ACCESS_KEY,
   signatureVersion: 'v4',
 })
 
@@ -41,7 +41,7 @@ const handler = async (req: any, res: any): Promise<{}> => {
 
         try {
           const params = {
-            Bucket: API_AWS_S3_BUCKET,
+            Bucket: APP_AWS_S3_BUCKET,
             Key: id,
           }
 
