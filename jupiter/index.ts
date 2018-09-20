@@ -1,5 +1,5 @@
 import { S3 } from 'aws-sdk'
-import micro, { json } from 'micro'
+import micro, { json, send } from 'micro'
 import { v4 } from 'uuid'
 import { getUserFromRequest } from 'shared/utils/auth'
 
@@ -29,7 +29,7 @@ const handler = async (req: any, res: any): Promise<{}> => {
   const user = getUserFromRequest(req)
 
   if (!user) {
-    return { error: 'Not authenticated' }
+    return send(res, 403, { error: 'Not authenticated' })
   }
 
   try {
@@ -55,7 +55,7 @@ const handler = async (req: any, res: any): Promise<{}> => {
     )
   } catch (err) {
     debug('‰O', err)
-    return { error: 'No valid json format' }
+    return { error: 'Not a valid input' }
   }
 }
 
