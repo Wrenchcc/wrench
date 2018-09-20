@@ -1,6 +1,7 @@
 import { S3 } from 'aws-sdk'
 import micro, { json } from 'micro'
 import { v4 } from 'uuid'
+import { getUserFromRequest } from '../shared/utils/auth'
 
 const debug = require('debug')('api:jupiter')
 
@@ -21,6 +22,12 @@ const s3 = new S3({
 
 // NOTE: Default expire time is 15 minutes
 const handler = async (req: any, res: any): Promise<{}> => {
+  const user = getUserFromRequest(req)
+
+  if (!user) {
+    return { error: 'Not authenticated' }
+  }
+
   if (req.url.includes('/healthcheck')) {
     return { status: 'pass' }
   }

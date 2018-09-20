@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken'
 
-const { APP_SECRET } = process.env
+const { APP_JWT_SECRET } = process.env
 
 export const getUserFromRequest = req => {
   const authorization = req.headers.authorization || ''
@@ -8,7 +8,7 @@ export const getUserFromRequest = req => {
   if (authorization) {
     const token = authorization.replace('Bearer ', '')
     try {
-      const { id } = jwt.verify(token, APP_SECRET)
+      const { id } = jwt.verify(token, APP_JWT_SECRET)
       return { id }
     } catch {
       return null
@@ -21,8 +21,10 @@ export const getUserFromRequest = req => {
 
 export const verifyRefreshToken = refreshToken => {
   try {
-    return jwt.verify(refreshToken, APP_SECRET)
+    return jwt.verify(refreshToken, APP_JWT_SECRET)
   } catch {
     return null
   }
 }
+
+export const createToken = data => jwt.sign(data, APP_JWT_SECRET)

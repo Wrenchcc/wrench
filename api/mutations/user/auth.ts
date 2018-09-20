@@ -1,10 +1,5 @@
-import * as jwt from 'jsonwebtoken'
 import { path } from 'ramda'
-import { verifyRefreshToken } from '../../utils'
-
-const { APP_SECRET } = process.env
-
-const createJwtToken = ({ id }) => jwt.sign({ userId: id }, APP_SECRET)
+import { verifyRefreshToken, createToken } from '../../../shared/utils/auth'
 
 export const authenticateUser = async (_, { facebookToken }, ctx) => {
   const user = await ctx.models.query.getUser({ facebookToken })
@@ -13,8 +8,8 @@ export const authenticateUser = async (_, { facebookToken }, ctx) => {
   if (user) {
     return {
       tokens: {
-        accessToken: createJwtToken(user),
-        refreshToken: createJwtToken(user), // TODO Implement refreshToken
+        accessToken: createToken({ userId: user.id }),
+        refreshToken: createToken({ userId: user.id }), // TODO Implement refreshToken
       },
     }
   }
@@ -25,8 +20,8 @@ export const authenticateUser = async (_, { facebookToken }, ctx) => {
 
   return {
     tokens: {
-      accessToken: createJwtToken(createdUser),
-      refreshToken: createJwtToken(createdUser), // TODO Implement refreshToken
+      accessToken: createToken({ userId: createdUser.id }),
+      refreshToken: createToken({ userId: createdUser.id }), // TODO Implement refreshToken
     },
   }
 }
@@ -46,7 +41,7 @@ export const refreshToken = async (_, { refreshToken }, ctx) => {
 
   return {
     tokens: {
-      accessToken: createJwtToken({ id }),
+      accessToken: createToken({ id }),
       refreshToken,
     },
   }

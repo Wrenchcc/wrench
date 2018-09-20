@@ -19,7 +19,7 @@
   },
   "environment": {
     "PORT": "4000",
-    "APP_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867",
+    "APP_JWT_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867",
     "APP_AWS_REGION": "eu-west-2",
     "APP_AWS_S3_BUCKET": "wrench-content",
     "APP_AWS_ACCESS_KEY": "AKIAIK3VVVTF7K7LBBDQ",
