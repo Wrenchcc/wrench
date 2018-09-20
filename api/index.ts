@@ -1,8 +1,8 @@
 import { ApolloServer } from 'apollo-server'
+import { getUserFromRequest } from 'shared/utils/auth'
 import schema from './schema'
 import models from './models'
 import services from './services'
-import { getUserFromRequest } from '../shared/utils/auth'
 
 const debug = require('debug')('api:server')
 

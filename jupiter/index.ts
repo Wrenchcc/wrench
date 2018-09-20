@@ -1,7 +1,7 @@
 import { S3 } from 'aws-sdk'
 import micro, { json } from 'micro'
 import { v4 } from 'uuid'
-import { getUserFromRequest } from '../shared/utils/auth'
+import { getUserFromRequest } from 'shared/utils/auth'
 
 const debug = require('debug')('api:jupiter')
 

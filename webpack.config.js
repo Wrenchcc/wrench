@@ -1,5 +1,6 @@
 const path = require('path')
 const debug = require('debug')('build:webpack')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 const { DIR } = process.env
 
@@ -17,6 +18,7 @@ module.exports = {
     libraryTarget: 'commonjs',
   },
   resolve: {
+    plugins: [new TsconfigPathsPlugin()],
     extensions: ['.ts', '.js', '.json'],
   },
   externals: ['aws-sdk'],
