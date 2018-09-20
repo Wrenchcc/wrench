@@ -22,14 +22,14 @@ const s3 = new S3({
 
 // NOTE: Default expire time is 15 minutes
 const handler = async (req: any, res: any): Promise<{}> => {
+  if (req.url.includes('/healthcheck')) {
+    return { status: 'pass' }
+  }
+
   const user = getUserFromRequest(req)
 
   if (!user) {
     return { error: 'Not authenticated' }
-  }
-
-  if (req.url.includes('/healthcheck')) {
-    return { status: 'pass' }
   }
 
   try {
