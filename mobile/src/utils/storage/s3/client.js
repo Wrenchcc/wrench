@@ -20,7 +20,7 @@ const s3 = new S3({
  * @param {Object} body - File to be put in Amazon S3 bucket
  * @return - promise resolves to object on success
  */
-export const put = async (key, body, options) => {
+export const upload = async (key, body, options) => {
   const { contentType } = options
   const type = contentType || 'binary/octet-stream'
 
