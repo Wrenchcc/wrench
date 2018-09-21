@@ -1,7 +1,7 @@
 import Config from 'react-native-config'
 
 export default async files => {
-  const result = await fetch(Config.WRENCH_JUPITER_ENDPOINT, {
+  const result = await fetch(Config.WRENCH_JUPITER_API, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
