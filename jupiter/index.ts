@@ -18,6 +18,7 @@ const s3 = new S3({
   region: APP_AWS_REGION,
   secretAccessKey: APP_AWS_SECRET_ACCESS_KEY,
   signatureVersion: 'v4',
+  useAccelerateEndpoint: true,
 })
 
 // NOTE: Default expire time is 15 minutes
@@ -42,7 +43,8 @@ const handler = async (req: any, res: any): Promise<{}> => {
         try {
           const params = {
             Bucket: APP_AWS_S3_BUCKET,
-            Key: id,
+            ContentType: 'image/jpeg',
+            Key: `${id}.jpeg`,
           }
 
           const url = await s3.getSignedUrl('putObject', params)
