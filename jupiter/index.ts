@@ -2,6 +2,7 @@ import { S3 } from 'aws-sdk'
 import micro, { json, send } from 'micro'
 import { v4 } from 'uuid'
 import { getUserFromRequest } from 'shared/utils/auth'
+import { getContentType, getExtensionType } from './extensions'
 
 const debug = require('debug')('api:jupiter')
 
@@ -38,13 +39,14 @@ const handler = async (req: any, res: any): Promise<{}> => {
 
     return Promise.all(
       input.map(async ({ filename }) => {
+        const ext = getExtensionType(filename)
         const id = v4()
 
         try {
           const params = {
             Bucket: APP_AWS_S3_BUCKET,
-            ContentType: 'image/jpeg',
-            Key: `${id}.jpeg`,
+            ContentType: getContentType(ext),
+            Key: `${id}.${ext}`,
           }
 
           const url = await s3.getSignedUrl('putObject', params)
