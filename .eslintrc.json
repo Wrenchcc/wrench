@@ -6,7 +6,8 @@
     "__DEV__": true,
     "fetch": true,
     "path": true,
-    "requestAnimationFrame": true
+    "requestAnimationFrame": true,
+    "XMLHttpRequest": true
   },
   "rules": {
     "no-restricted-syntax": 0,

@@ -22,36 +22,37 @@ const s3 = new S3({
   useAccelerateEndpoint: true,
 })
 
-// NOTE: Default expire time is 15 minutes
 const handler = async (req: any, res: any): Promise<{}> => {
   if (req.url.includes('/healthcheck')) {
     return { status: 'pass' }
   }
 
-  const user = getUserFromRequest(req)
-
-  if (!user) {
-    return send(res, 403, { error: 'Not authenticated' })
-  }
+  // const user = getUserFromRequest(req)
+  //
+  // if (!user) {
+  //   return send(res, 403, { error: 'Not authenticated' })
+  // }
 
   try {
     const input = await json(req)
 
     return Promise.all(
       input.map(async ({ filename }) => {
-        const ext = getExtensionType(filename)
+        const ext = 'jpg'
         const id = v4()
+        const type = getContentType(ext)
+        const finalName = `${id}.${ext}`
 
         try {
           const params = {
             Bucket: APP_AWS_S3_BUCKET,
-            ContentType: getContentType(ext),
-            Key: `${id}.${ext}`,
+            ContentType: type,
+            Key: finalName,
           }
 
           const url = await s3.getSignedUrl('putObject', params)
 
-          return { url, id }
+          return { url, type, id, filename: finalName }
         } catch (err) {
           debug('‰O', err)
         }

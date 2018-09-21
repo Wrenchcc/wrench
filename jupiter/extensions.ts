@@ -10,6 +10,6 @@ export function getContentType(ext: Extension): Extensions | undefined {
   return Extensions[ext]
 }
 
-export function getExtensionType(filename: string): string | undefined {
+export function getExtensionType(filename) {
   return filename.substr(filename.lastIndexOf('.') + 1)
 }

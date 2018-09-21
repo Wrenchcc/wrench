@@ -1,48 +1,21 @@
-import S3 from 'aws-sdk/clients/s3'
-import Config from 'react-native-config'
+export function makeS3Request(data, uri) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
 
-const AWS_API_VERSION = '2006-03-01'
-const AWS_SIGNATURE_VERSION = 'v4'
-
-const s3 = new S3({
-  apiVersion: AWS_API_VERSION,
-  signatureVersion: AWS_SIGNATURE_VERSION,
-  region: Config.WRENCH_AWS_S3_REGION,
-  useAccelerateEndpoint: true,
-  params: {
-    Bucket: Config.WRENCH_AWS_S3_BUCKET,
-  },
-})
-
-/**
- * Put a file in S3 bucket specified to configure method
- * @param {String} key - key of the object
- * @param {Object} body - File to be put in Amazon S3 bucket
- * @return - promise resolves to object on success
- */
-export const upload = async (key, body, options) => {
-  const { contentType } = options
-  const type = contentType || 'binary/octet-stream'
-
-  const params = {
-    Bucket: Config.WRENCH_AWS_S3_BUCKET,
-    Key: key,
-    Body: body,
-    ContentType: type,
-  }
-
-  return new Promise((result, reject) => {
-    s3.upload(params, (err, data) => {
-      if (err) {
-        console.log('error uploading', err)
-        reject(err)
-      } else {
-        result(data)
-      }
-    }).on('httpUploadProgress', evt => {
-      // Here you can use `this.body` to determine which file this particular
-      // event is related to and use that info to calculate overall progress.
+    xhr.upload.addEventListener('progress', evt => {
       console.log(`Uploaded: ${parseInt((evt.loaded * 100) / evt.total)}%`)
     })
+
+    xhr.open('PUT', data.url)
+    xhr.setRequestHeader('Content-Type', data.type)
+    xhr.send({ uri, type: data.type, name: data.filename })
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log('upload success')
+        }
+      }
+    }
   })
 }
