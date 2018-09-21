@@ -18,7 +18,7 @@ const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   animationEnabled: false,
-  lazy: false,
+  lazy: true,
   tabBarOptions: {
     activeTintColor: COLORS.WHITE,
     showLabel: false,

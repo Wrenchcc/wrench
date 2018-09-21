@@ -7,6 +7,7 @@ import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
+import { upload } from 'utils/storage/s3'
 import { navigateBack, navigateToFeed } from 'navigation'
 import { track, events } from 'utils/analytics'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
@@ -74,7 +75,8 @@ class AddPost extends Component {
 
   onSave = async () => {
     const { caption, project, files, file } = this.state
-
+    const uris = Object.keys(files)
+    upload(uris)
     // TODO: Change to local mutation
     // const progressData = { image: pathOr(null, [0, 'uri'], files), title: project.title }
 

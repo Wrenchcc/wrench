@@ -2,19 +2,18 @@ import { ImageEditor } from 'react-native'
 
 const DEFAULT_SIZE = 2048
 
-export default async ({ uri, width = DEFAULT_SIZE, height = DEFAULT_SIZE }) => new Promise(resolve => {
+export default async uri => new Promise((resolve, reject) => {
   ImageEditor.cropImage(
     uri,
     {
       offset: { x: 0, y: 0 },
-      size: { width, height },
+      size: {
+        width: DEFAULT_SIZE,
+        height: DEFAULT_SIZE,
+      },
       resizeMode: 'contain',
     },
-    uri => resolve(uri)
+    uri => resolve(uri),
+    err => reject(err)
   )
 })
-
-// NOTE: Remove image from store when uploaded ImageStore.removeImageForTag()
-// Delete an image from the ImageStore. Images are stored in memory
-// and must be manually removed when you are finished with them, otherwise
-// they will continue to use up RAM until the app is terminated.

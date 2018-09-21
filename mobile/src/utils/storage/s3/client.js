@@ -24,25 +24,20 @@ export const upload = async (key, body, options) => {
   const { contentType } = options
   const type = contentType || 'binary/octet-stream'
 
-  const prefix = 'original/'
-  const finalKey = `${prefix}${key}`
-
   const params = {
     Bucket: Config.WRENCH_AWS_S3_BUCKET,
-    Key: finalKey,
+    Key: key,
     Body: body,
     ContentType: type,
   }
 
-  return new Promise((res, rej) => {
+  return new Promise((result, reject) => {
     s3.upload(params, (err, data) => {
       if (err) {
-        // console.log('error uploading', err)
-        rej(err)
+        console.log('error uploading', err)
+        reject(err)
       } else {
-        res({
-          key: data.Key.substr(prefix.length),
-        })
+        result(data)
       }
     }).on('httpUploadProgress', evt => {
       // Here you can use `this.body` to determine which file this particular
