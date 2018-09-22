@@ -75,8 +75,8 @@ class AddPost extends Component {
 
   onSave = async () => {
     const { caption, project, files, file } = this.state
-    const uris = Object.keys(files)
-    upload(uris)
+
+    upload(files)
     // TODO: Change to local mutation
     // const progressData = { image: pathOr(null, [0, 'uri'], files), title: project.title }
 
