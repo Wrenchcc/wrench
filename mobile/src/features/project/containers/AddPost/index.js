@@ -75,7 +75,7 @@ class AddPost extends Component {
   onSave = async () => {
     const { caption, project, files, file } = this.state
 
-    const data = file ? { [file.uri]: { filename: 'dummy' } } : files
+    const data = file ? { [file.uri]: { filename: 'dummy.jpg' } } : files
 
     // TODO: Show progress
     navigateToFeed()
