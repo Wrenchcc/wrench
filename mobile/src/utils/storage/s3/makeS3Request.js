@@ -1,19 +1,22 @@
-export default (data, uri) => new Promise((resolve, reject) => {
+const uploadImage = async (method, url, file) => new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest()
+  xhr.open(method, url)
+  xhr.setRequestHeader('Content-Type', file.type)
+  xhr.onload = () => {
+    if (xhr.status !== 200) {
+      reject(new Error(`Request failed. Status: ${xhr.status}. Content: ${xhr.responseText}`))
+    }
 
-  xhr.upload.addEventListener('progress', evt => {
-    console.log(`Uploaded: ${parseInt((evt.loaded * 100) / evt.total)}%`)
+    resolve(xhr.responseText)
+  }
+  xhr.send(file)
+})
+
+export const uploadImageToS3 = async (image, signS3) => {
+  await uploadImage('PUT', signS3.uploadUrl, {
+    uri: image,
+    type: 'image/jpeg',
   })
 
-  xhr.open('PUT', data.url)
-  xhr.setRequestHeader('Content-Type', data.type)
-  xhr.send({ uri, type: data.type, name: data.filename })
-
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        console.log('upload success')
-      }
-    }
-  }
-})
+  return { image, remoteUrl: signS3.url }
+}
