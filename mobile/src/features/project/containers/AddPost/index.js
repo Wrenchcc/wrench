@@ -76,10 +76,13 @@ class AddPost extends Component {
   onSave = async () => {
     const { caption, project, files, file } = this.state
 
+    const data = file ? { [file.uri]: { filename: 'dummy' } } : files
+
+    // TODO: Show progress
     navigateToFeed()
 
     try {
-      const uploadedFiles = await upload(files)
+      const uploadedFiles = await upload(data)
 
       await this.props.addPost({
         caption,
