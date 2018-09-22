@@ -11,7 +11,7 @@
     "dev:jupiter": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -e jupiter/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register jupiter/index.ts"
   },
   "devDependencies": {
-    "@types/node": "^10.10.2",
+    "@types/node": "^10.10.3",
     "babel-eslint": "^9.0.0",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
