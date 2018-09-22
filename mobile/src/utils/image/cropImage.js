@@ -12,10 +12,6 @@ export default async uri => new Promise((resolve, reject) => {
         width: DEFAULT_SIZE,
         height: DEFAULT_SIZE,
       },
-      displaySize: {
-        width: DEFAULT_SIZE,
-        height: DEFAULT_SIZE,
-      },
       resizeMode: 'contain',
     },
     uri => resolve(uri),

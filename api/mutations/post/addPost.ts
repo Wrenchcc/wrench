@@ -34,7 +34,7 @@ export default async (_, { input }, ctx) => {
       id: '1',
       projectPermissions: {
         isFollower: false,
-        isOwner: false,
+        isOwner: true,
       },
       slug: 'the-natural',
       title: 'BMW R100 Project',
