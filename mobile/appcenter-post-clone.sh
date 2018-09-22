@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -ex
-version=`cat .nvmrc`
+version=`cat $APPCENTER_SOURCE_DIRECTORY/.nvmrc`
 brew uninstall node@6
 NODE_VERSION="$version"
 curl "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.pkg" > "$HOME/Downloads/node-installer.pkg"
