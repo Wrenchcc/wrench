@@ -20,8 +20,7 @@ export default async (_, { input }, ctx) => {
     id: '23e234',
     type: 'image', // || video || text
     createdAt: 176347295,
-    caption:
-      'During the build the already minimalistic lines of the BMW have been cleared. http://www.bikeexif.com',
+    caption: input.caption,
     videos: null,
     imagesConnection: { edges: images },
     user: generateUser('1'),
