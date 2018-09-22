@@ -1,6 +1,6 @@
 import { authenticateUser, refreshToken } from './mutations/user/auth'
 import addPost from './mutations/post/addPost'
-import presignUrl from './mutations/upload/presignUrl'
+import preSignUrls from './mutations/upload/preSignUrls'
 import comments from './fixtures/comments'
 import deletePost from './mutations/post/deletePost'
 import editUser from './mutations/user/editUser'
@@ -114,6 +114,6 @@ export default {
     followProject,
     deletePost,
     addPost,
-    presignUrl,
+    preSignUrls,
   },
 }

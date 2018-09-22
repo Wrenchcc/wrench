@@ -1,16 +1,16 @@
 export default `
-  type File {
+  type PreSignedUrl {
      url: String
      type: String
      id: ID
      filename: String
   }
 
-  input BlahInput {
+  input PreSignedUrlnput {
     filename: String
   }
 
   extend type Mutation {
-		presignUrl(input: [BlahInput] ): [File]
+		preSignUrls(input: [PreSignedUrlnput]): [PreSignedUrl]
 	}
 `
