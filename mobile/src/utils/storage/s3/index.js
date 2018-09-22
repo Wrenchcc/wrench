@@ -1,17 +1,7 @@
-import gql from 'graphql-tag'
 import cropImage from 'utils/image/cropImage'
 import { client } from 'graphql/createClient'
+import { preSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
 import makeS3Request from './makeS3Request'
-
-const preSignUrlsMutation = gql`
-  mutation($input: [PreSignedUrlnput]!) {
-    preSignUrls(input: $input) {
-      url
-      type
-      filename
-    }
-  }
-`
 
 // TODO: 4. return data, 5. Clear store
 export const upload = async files => {
