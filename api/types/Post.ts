@@ -28,6 +28,10 @@ export default `
     node: Post!
   }
 
+  input FileInput {
+    filename: String!
+  }
+
   extend type Query {
     post(id: ID!): Post
     posts(userId: ID, first: Int, after: String, last: Int, before: String): PostConnection
@@ -36,6 +40,7 @@ export default `
   input PostInput {
     projectId: ID!
     caption: String
+    files: [FileInput]
   }
 
   extend type Mutation {

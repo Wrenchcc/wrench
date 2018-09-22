@@ -75,16 +75,15 @@ class AddPost extends Component {
 
   onSave = async () => {
     const { caption, project, files, file } = this.state
-
-    const res = await upload(files)
-    console.log(res)
-    // const progressData = { image: pathOr(null, [0, 'uri'], files), title: project.title }
-    // navigateToFeed({ progressData })
+    navigateToFeed()
 
     try {
+      const uploadResponse = await upload(files)
+
       await this.props.addPost({
-        projectId: project.id,
         caption,
+        projectId: project.id,
+        files: uploadResponse,
       })
       track(events.POST_CREATED)
     } catch {

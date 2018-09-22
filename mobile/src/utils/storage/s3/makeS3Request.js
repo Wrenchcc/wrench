@@ -9,7 +9,7 @@ export default async (url, file) => new Promise((resolve, reject) => {
       reject(new Error(`Request failed. Status: ${xhr.status}. Content: ${xhr.responseText}`))
     }
 
-    resolve(file)
+    resolve({ filename: file.filename })
   }
 
   xhr.send(file)
