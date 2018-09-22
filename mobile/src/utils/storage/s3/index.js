@@ -9,15 +9,19 @@ export const upload = async files => {
   const filenames = uris.map(uri => ({ filename: files[uri].filename }))
 
   try {
+    // NOTE: Return pre-signed urls
+    // Resize images and return uri:s from ImageStore
     const [preSignedUrls, resizedImages] = await Promise.all([
       client.mutate({ mutation: preSignUrlsMutation, variables: { input: filenames } }),
       Promise.all(uris.map(cropImage)),
     ])
 
-    resizedImages.map(async (uri, index) => {
-      const { url, type } = preSignedUrls.data.preSignUrls[index]
-      return makeS3Request(url, { uri, type })
-    })
+    return Promise.all(
+      resizedImages.map(async (uri, index) => {
+        const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
+        return makeS3Request(url, { uri, type, filename })
+      })
+    )
   } catch (err) {
     console.log('err', err)
   }

@@ -76,13 +76,10 @@ class AddPost extends Component {
   onSave = async () => {
     const { caption, project, files, file } = this.state
 
-    upload(files)
-    // TODO: Change to local mutation
+    const res = await upload(files)
+    console.log(res)
     // const progressData = { image: pathOr(null, [0, 'uri'], files), title: project.title }
-
     // navigateToFeed({ progressData })
-
-    // TODO: Crop images
 
     try {
       await this.props.addPost({
