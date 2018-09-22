@@ -60,8 +60,7 @@ class AddPost extends Component {
   closeDropdown = () => this.setState({ expanded: false })
 
   closeEdit = () => {
-    // TODO: Remove single file
-    this.setState({ edit: false })
+    this.setState({ edit: false, file: null })
   }
 
   openEdit = () => this.setState({ edit: true })
