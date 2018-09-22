@@ -8,9 +8,8 @@
     "outDir": "dist",
     "rootDir": ".",
     "paths": {
-      "shared/*": [
-        "shared/*"
-      ],
+      "shared/*": ["shared/*"],
+      "api/*": ["api/*"]
     },
     "types": ["node"]
   },
