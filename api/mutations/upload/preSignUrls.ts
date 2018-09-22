@@ -1,7 +1,7 @@
 import { S3 } from 'aws-sdk'
 import { v4 } from 'uuid'
 import debug from 'debug'
-import { getContentType, getExtensionType } from './extensions'
+import { getContentType, getExtensionType } from 'api/utils/fileExtensions'
 
 const {
   APP_AWS_ACCESS_KEY,
@@ -18,13 +18,13 @@ const s3 = new S3({
   useAccelerateEndpoint: true,
 })
 
-export default (_, args, ctx) => {
+export default (_, { input }, ctx) => {
   try {
     return Promise.all(
-      args.input.map(async ({ filename }) => {
-        const ext = 'jpg'
-        const id = v4()
+      input.map(async ({ filename }) => {
+        const ext = getExtensionType(filename)
         const type = getContentType(ext)
+        const id = v4()
         const finalName = `${id}.${ext}`
 
         try {
