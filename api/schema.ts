@@ -14,6 +14,7 @@ import Followers from './types/Followers'
 import Search from './types/Search'
 import User from './types/User'
 import Image from './types/Image'
+import Upload from './types/Upload'
 
 // Resolvers
 import resolvers from './resolvers'
@@ -67,5 +68,6 @@ export default makeExecutableSchema({
     Search,
     User,
     Image,
+    Upload,
   ],
 })

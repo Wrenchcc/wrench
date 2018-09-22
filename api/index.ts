@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server'
-import { getUserFromRequest } from 'shared/utils/auth'
+import { getUserFromRequest } from 'api/utils/auth'
 import schema from './schema'
 import models from './models'
 import services from './services'
@@ -19,5 +19,5 @@ const server = new ApolloServer({
 })
 
 server.listen({ port: PORT }).then(({ url }) => {
-  debug('🚀  Server ready at %s', url)
+  debug('🚀 Server ready at %s', url)
 })

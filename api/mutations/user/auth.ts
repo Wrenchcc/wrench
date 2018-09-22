@@ -1,5 +1,5 @@
 import { path } from 'ramda'
-import { verifyRefreshToken, createToken } from 'shared/utils/auth'
+import { verifyRefreshToken, createToken } from 'api/utils/auth'
 
 export const authenticateUser = async (_, { facebookToken }, ctx) => {
   const user = await ctx.models.query.getUser({ facebookToken })
