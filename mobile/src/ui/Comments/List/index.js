@@ -32,6 +32,8 @@ class List extends PureComponent {
 
   render() {
     const { data, t } = this.props
+    if (!data.comments) return null
+
     return (
       <Fragment>
         {data.comments.edges.map(this.renderComment)}
