@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
 import Permissions from 'react-native-permissions'
@@ -13,7 +13,7 @@ const AUTHORIZED = 'authorized'
 const PAGE_SIZE = 10
 
 // TODO: Change to use FastImage when support for assets-url://
-export default class CameraRoll extends Component {
+export default class CameraRoll extends PureComponent {
   static propTypes = {
     pictures: PropTypes.object.isRequired,
     addPictures: PropTypes.func.isRequired,
@@ -117,13 +117,17 @@ export default class CameraRoll extends Component {
     const { photoPermission, isLoading } = this.state
     if (isLoading) return null
 
+    let component
+
+    if (photoPermission) {
+      component = this.renderCameraRoll()
+    } else {
+      component = <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
+    }
+
     return (
       <Base onPressIn={this.props.closeDropdown} activeOpacity={1} paddingTop={photoPermission}>
-        {photoPermission ? (
-          this.renderCameraRoll()
-        ) : (
-          <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
-        )}
+        {component}
       </Base>
     )
   }
