@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
@@ -10,7 +10,9 @@ import { Base, Content, Bottom, TakePicture } from './styles'
 const PERMISSION = 'camera'
 const AUTHORIZED = 'authorized'
 
-export default class Camera extends Component {
+// https://github.com/react-native-community/react-native-camera/pull/1636
+// https://github.com/react-native-community/react-native-camera/issues/648
+export default class Camera extends PureComponent {
   static propTypes = {
     navigateToCameraRoll: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
@@ -48,41 +50,46 @@ export default class Camera extends Component {
     this.props.onTakePicture(data)
   }
 
-  renderContent = () => (
-    <Content>
-      <Bottom>
-        <PreviewRoll onPress={this.props.navigateToCameraRoll} />
-        <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
-        <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
-      </Bottom>
-    </Content>
-  )
+  setRef = el => {
+    this.camera = el
+  }
 
-  renderCamera = () => (
-    <RNCamera
-      style={{ flex: 1 }}
-      ref={ref => {
-        this.camera = ref
-      }}
-      type={this.state.type}
-      flashMode={this.state.flashMode}
-    >
-      {this.renderContent()}
-    </RNCamera>
-  )
+  renderContent() {
+    return (
+      <Content>
+        <Bottom>
+          <PreviewRoll onPress={this.props.navigateToCameraRoll} />
+          <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
+          <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
+        </Bottom>
+      </Content>
+    )
+  }
+
+  renderCamera() {
+    return (
+      <RNCamera
+        style={{ flex: 1 }}
+        ref={this.setRef}
+        type={this.state.type}
+        flashMode={this.state.flashMode}
+      >
+        {this.renderContent()}
+      </RNCamera>
+    )
+  }
 
   render() {
     const { cameraPermission, isLoading } = this.state
     if (isLoading) return null
+    let component
 
-    return (
-      <Base onPressIn={this.props.closeDropdown}>
-        {cameraPermission ? (
-          this.renderCamera()
-        ) : (
-          <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
-        )}
-      </Base>
-    )
+    if (cameraPermission) {
+      component = this.renderCamera()
+    } else {
+      component = <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
+    }
+
+    return <Base onPressIn={this.props.closeDropdown}>{component}</Base>
   }
 }
