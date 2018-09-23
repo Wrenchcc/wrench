@@ -17,6 +17,7 @@ export default class Camera extends PureComponent {
     navigateToCameraRoll: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
     onTakePicture: PropTypes.func.isRequired,
+    openEdit: PropTypes.func.isRequired,
   }
 
   state = {
@@ -49,6 +50,8 @@ export default class Camera extends PureComponent {
   }
 
   takePicture = async () => {
+    this.props.openEdit()
+
     const data = await this.camera.takePictureAsync()
     this.props.onTakePicture(data)
   }

@@ -43,7 +43,7 @@ class AddPost extends Component {
   }
 
   onTakePicture = file => {
-    this.setState({ file, edit: true })
+    this.setState({ file })
     this.closeDropdown()
   }
 
@@ -201,6 +201,7 @@ class AddPost extends Component {
             navigateToCameraRoll={this.navigateToCameraRoll}
             closeDropdown={this.closeDropdown}
             onTakePicture={this.onTakePicture}
+            openEdit={this.openEdit}
           />
         </Swiper>
       </Base>
