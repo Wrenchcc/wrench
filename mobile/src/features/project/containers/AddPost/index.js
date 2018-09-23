@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { KeyboardAvoidingView } from 'react-native'
+import { KeyboardAvoidingView, InteractionManager } from 'react-native'
 import { translate } from 'react-i18next'
 import { pathOr, isEmpty } from 'ramda'
 import Swiper from 'react-native-swiper'
@@ -72,7 +72,7 @@ class AddPost extends Component {
     this.closeDropdown()
   }
 
-  onSave = async () => {
+  onSave = () => {
     const { caption, project, files, file } = this.state
 
     const data = file ? { [file.uri]: { filename: 'dummy.jpg' } } : files
@@ -80,18 +80,20 @@ class AddPost extends Component {
     // TODO: Show progress
     navigateToFeed()
 
-    try {
-      const uploadedFiles = await upload(data)
+    InteractionManager.runAfterInteractions(async () => {
+      try {
+        const uploadedFiles = await upload(data)
 
-      await this.props.addPost({
-        caption,
-        projectId: project.id,
-        files: uploadedFiles,
-      })
-      track(events.POST_CREATED)
-    } catch {
-      track(events.POST_CREATED_FAILED)
-    }
+        await this.props.addPost({
+          caption,
+          projectId: project.id,
+          files: uploadedFiles,
+        })
+        track(events.POST_CREATED)
+      } catch {
+        track(events.POST_CREATED_FAILED)
+      }
+    })
   }
 
   renderHeaderLeft() {
