@@ -2,6 +2,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
 import { track, events } from 'utils/analytics'
+import StateLink from './links/State'
 import HttpLink from './links/Http'
 import AuthLink from './links/Auth'
 import RefreshLink from './links/Refresh'
@@ -16,7 +17,7 @@ export default () => {
 
   client = new ApolloClient({
     cache,
-    link: ApolloLink.from([AuthLink, RefreshLink, HttpLink]),
+    link: ApolloLink.from([StateLink(cache), AuthLink, RefreshLink, HttpLink]),
   })
 
   client.onResetStore(() => {
