@@ -6,6 +6,7 @@ export const { width } = Dimensions.get('window')
 
 export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
+const SIZE = width - GUTTER * 2
 
 export const Wrapper = styled.View`
   margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)};
@@ -13,6 +14,6 @@ export const Wrapper = styled.View`
 `
 
 export const Picture = styled(UiImage)`
-  height: 275;
-  width: ${width - GUTTER * 2};
+  height: ${SIZE};
+  width: ${SIZE};
 `
