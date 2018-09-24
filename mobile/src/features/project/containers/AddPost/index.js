@@ -7,6 +7,7 @@ import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
+import { updatePostProgress } from 'graphql/mutations/post/postProgress'
 import { upload } from 'utils/storage/s3'
 import { navigateBack, navigateToFeed } from 'navigation'
 import { track, events } from 'utils/analytics'
@@ -24,6 +25,7 @@ class AddPost extends Component {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
     projects: PropTypes.array.isRequired,
+    updatePostProgress: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -74,10 +76,14 @@ class AddPost extends Component {
 
   onSave = () => {
     const { caption, project, files, file } = this.state
-
     const data = file ? { [file.uri]: { filename: 'dummy.jpg' } } : files
 
-    // TODO: Show progress
+    this.props.updatePostProgress({
+      image: Object.keys(data)[0],
+      title: project.title,
+      __typename: 'PostProgress',
+    })
+
     navigateToFeed()
 
     InteractionManager.runAfterInteractions(async () => {
@@ -212,5 +218,6 @@ class AddPost extends Component {
 export default compose(
   getCurrentUserProjects,
   addPost,
+  updatePostProgress,
   translate('AddPost')
 )(AddPost)
