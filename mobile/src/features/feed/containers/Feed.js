@@ -34,14 +34,7 @@ class Feed extends PureComponent {
 
   constructor(props) {
     super(props)
-
     this.scrollY = new Animated.Value(0)
-
-    this.headerY = this.scrollY.interpolate({
-      inputRange: [0, 60],
-      outputRange: [0, -60],
-      extrapolate: 'clamp',
-    })
 
     registerForPushNotifications()
   }
@@ -62,14 +55,9 @@ class Feed extends PureComponent {
       hasNextPage,
       postProgress,
     } = this.props
-
     return (
       <Fragment>
-        <PostProgress
-          image={postProgress.image}
-          title={postProgress.title}
-          translateY={this.headerY}
-        />
+        <PostProgress image={postProgress.image} title={postProgress.title} />
 
         <InfiniteListWithHandler
           scrollRef={ref => {
