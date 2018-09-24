@@ -2,7 +2,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
 const updatePostProgressMutation = gql`
-  mutation updatePostProgress($data: String) {
+  mutation updatePostProgress($data: PostProgress) {
     updatePostProgress(data: $data) @client
   }
 `

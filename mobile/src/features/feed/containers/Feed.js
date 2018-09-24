@@ -1,9 +1,9 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
+import { getPostProgress } from 'graphql/queries/post/getPostProgress'
 import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
@@ -29,7 +29,7 @@ class Feed extends PureComponent {
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
-    navigation: PropTypes.object.isRequired,
+    postProgress: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -60,15 +60,16 @@ class Feed extends PureComponent {
       isRefetching,
       isFetching,
       hasNextPage,
-      navigation,
+      postProgress,
     } = this.props
-
-    const image = pathOr('', ['state', 'params', 'progressData', 'image'], navigation)
-    const title = pathOr('', ['state', 'params', 'progressData', 'title'], navigation)
 
     return (
       <Fragment>
-        <PostProgress image={image} title={title} translateY={this.headerY} />
+        <PostProgress
+          image={postProgress.image}
+          title={postProgress.title}
+          translateY={this.headerY}
+        />
 
         <InfiniteListWithHandler
           scrollRef={ref => {
@@ -95,4 +96,7 @@ class Feed extends PureComponent {
   }
 }
 
-export default compose(getFeed)(Feed)
+export default compose(
+  getFeed,
+  getPostProgress
+)(Feed)

@@ -1,15 +1,22 @@
 import { withClientState } from 'apollo-link-state'
 
+const typeDefs = `
+  type PostProgress {
+    title: String!
+    image: String!
+  }
+`
+
 export default cache => withClientState({
   cache,
   resolvers: {
     Mutation: {
-      updatePostingProgress: (_, { data }, { cache }) => {
+      updatePostProgress: (_, { data }, { cache }) => {
         cache.writeData({
           data: {
-            postingProgress: {
-              __typename: 'PostingProgress',
-              data,
+            postProgress: {
+              __typename: 'PostProgress',
+              ...data,
             },
           },
         })
@@ -18,9 +25,11 @@ export default cache => withClientState({
     },
   },
   defaults: {
-    postingProgress: {
-      __typename: 'PostingProgress',
-      data: null,
+    postProgress: {
+      __typename: 'PostProgress',
+      title: null,
+      image: null,
     },
   },
+  typeDefs,
 })
