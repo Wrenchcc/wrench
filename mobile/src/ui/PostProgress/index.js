@@ -8,7 +8,7 @@ import { Base, Cover, Content } from './styles'
 const HEIGHT = 60
 
 class PostProgress extends PureComponent {
-  animatedValue = new Animated.Value(0)
+  animatedHeight = new Animated.Value(0)
 
   static propTypes = {
     image: PropTypes.string,
@@ -16,11 +16,11 @@ class PostProgress extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.handleToast(!nextProps.image)
+    this.handleAnimation(!nextProps.image)
   }
 
-  handleToast(hide) {
-    Animated.spring(this.animatedValue, {
+  handleAnimation(hide) {
+    Animated.spring(this.animatedHeight, {
       toValue: hide ? 0 : HEIGHT,
       bounciness: 0,
     }).start()
@@ -30,7 +30,7 @@ class PostProgress extends PureComponent {
     const { t, title, image } = this.props
 
     return (
-      <Base style={{ height: this.animatedValue }}>
+      <Base style={{ height: this.animatedHeight }}>
         {image && <Cover source={{ uri: image }} />}
 
         <Content>

@@ -7,7 +7,7 @@ import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
 const HEIGHT = 40
 
 class NetworkConnectivity extends Component {
-  animatedValue = new Animated.Value(0)
+  animatedHeight = new Animated.Value(0)
 
   componentDidMount() {
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
@@ -18,11 +18,11 @@ class NetworkConnectivity extends Component {
   }
 
   handleConnectionChange = isConnected => {
-    this.handleToast(isConnected)
+    this.handleAnimation(isConnected)
   }
 
-  handleToast(hide) {
-    Animated.spring(this.animatedValue, {
+  handleAnimation(hide) {
+    Animated.spring(this.animatedHeight, {
       toValue: hide ? 0 : HEIGHT,
       bounciness: 0,
     }).start()
@@ -32,7 +32,7 @@ class NetworkConnectivity extends Component {
     return (
       <Animated.View
         style={{
-          height: this.animatedValue,
+          height: this.animatedHeight,
           backgroundColor: COLORS.LIGHT_GREY,
           justifyContent: 'center',
           position: 'absolute',
