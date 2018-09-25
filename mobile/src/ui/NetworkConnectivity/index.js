@@ -5,7 +5,6 @@ import { Text } from 'ui'
 import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
 
 const HEIGHT = 40
-const DURATION = 150
 
 class NetworkConnectivity extends Component {
   animatedValue = new Animated.Value(0)
@@ -23,9 +22,9 @@ class NetworkConnectivity extends Component {
   }
 
   handleToast(hide) {
-    Animated.timing(this.animatedValue, {
+    Animated.spring(this.animatedValue, {
       toValue: hide ? 0 : HEIGHT,
-      duration: DURATION,
+      bounciness: 0,
     }).start()
   }
 
