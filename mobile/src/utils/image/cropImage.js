@@ -1,6 +1,6 @@
 import { ImageEditor } from 'react-native'
 
-const DEFAULT_SIZE = 1048
+const DEFAULT_SIZE = 2048
 
 // TODO: Fix scaling
 export default async uri => new Promise((resolve, reject) => {
