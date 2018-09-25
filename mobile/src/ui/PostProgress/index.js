@@ -6,7 +6,6 @@ import { Text } from 'ui'
 import { Base, Cover, Content } from './styles'
 
 const HEIGHT = 60
-const DURATION = 150
 
 class PostProgress extends PureComponent {
   animatedValue = new Animated.Value(0)
@@ -21,9 +20,9 @@ class PostProgress extends PureComponent {
   }
 
   handleToast(hide) {
-    Animated.timing(this.animatedValue, {
+    Animated.spring(this.animatedValue, {
       toValue: hide ? 0 : HEIGHT,
-      duration: DURATION,
+      bounciness: 0,
     }).start()
   }
 
