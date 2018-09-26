@@ -53,7 +53,9 @@ class AddPost extends Component {
     this.setState({ project }, this.closeDropdown)
   }
 
-  addPictures = files => this.setState({ files })
+  addPictures = files => {
+    this.setState({ files })
+  }
 
   changePage = page => this.setState({ page })
 
