@@ -7,13 +7,11 @@ export const upload = async files => {
   const uris = Object.keys(files)
   const filenames = uris.map(uri => ({ filename: files[uri].filename }))
 
-  // Return pre-signed urls
   const preSignedUrls = await client.mutate({
     mutation: preSignUrlsMutation,
     variables: { input: filenames },
   })
 
-  // Return filenames
   const result = await Promise.all(
     uris.map(async (uri, index) => {
       const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
