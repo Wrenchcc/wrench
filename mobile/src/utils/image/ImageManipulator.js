@@ -1,6 +1,6 @@
 import ImageResizer from 'react-native-image-resizer'
 
-const DEFAULT_SIZE = 2048
+const DEFAULT_SIZE = 1048
 const COMPRESS_FORMAT = 'JPEG'
 const QUALITY = 80
 

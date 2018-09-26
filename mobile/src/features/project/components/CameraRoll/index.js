@@ -72,11 +72,11 @@ export default class CameraRoll extends PureComponent {
 
   toggleSelection = async image => {
     // Generate resized image
-    console.log(await ImageManipulator(image.uri))
-
+    const { uri, name, size } = await ImageManipulator(image.uri)
     const { pictures, addPictures, closeDropdown } = this.props
-    const items = { ...pictures, [image.uri]: image }
-
+    const items = { ...pictures, [uri]: { uri, filename: name } }
+    // const items = { ...pictures, [image.uri]: image }
+    console.log(size)
     closeDropdown()
 
     if (this.isSelected(image)) {
