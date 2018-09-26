@@ -18,5 +18,6 @@ target 'Wrench' do
   # pod 'RNReactNativeHapticFeedback', :path => '../node_modules/react-native-haptic-feedback'
   # pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
   # pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
+  # pod 'react-native-image-resizer', :path => '../node_modules/react-native-image-resizer'
 
 end
