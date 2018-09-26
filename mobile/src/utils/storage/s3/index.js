@@ -12,12 +12,10 @@ export const upload = async files => {
     variables: { input: filenames },
   })
 
-  const result = await Promise.all(
+  return Promise.all(
     uris.map(async (uri, index) => {
       const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
       return makeS3Request(url, { uri, type, filename })
     })
   )
-
-  return result
 }
