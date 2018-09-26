@@ -5,6 +5,7 @@ import Permissions from 'react-native-permissions'
 import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
+import ImageManipulator from 'utils/image/ImageManipulator'
 import AskForPermission from '../AskForPermission'
 import { Base, Cell, Image, Overlay, GUTTER, ITEM_SIZE } from './styles'
 
@@ -69,7 +70,10 @@ export default class CameraRoll extends PureComponent {
     this.setState({ photoPermission: true })
   }
 
-  toggleSelection = image => {
+  toggleSelection = async image => {
+    // Generate resized image
+    console.log(await ImageManipulator(image.uri))
+
     const { pictures, addPictures, closeDropdown } = this.props
     const items = { ...pictures, [image.uri]: image }
 

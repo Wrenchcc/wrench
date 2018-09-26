@@ -1,1 +1,1 @@
-export { default as ImageResizer } from './ImageResizer'
+// export * as ImageManipulator from './ImageManipulator'

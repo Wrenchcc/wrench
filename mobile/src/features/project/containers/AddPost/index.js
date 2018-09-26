@@ -54,7 +54,6 @@ class AddPost extends Component {
   }
 
   addPictures = files => {
-    // ResizedImage
     this.setState({ files })
   }
 
