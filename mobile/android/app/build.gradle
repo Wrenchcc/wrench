@@ -142,20 +142,6 @@ android {
 
 dependencies {
     implementation project(':react-native-gesture-handler')
-    implementation project(':react-native-video')
-    implementation project(':react-native-splash-screen')
-    implementation project(':react-native-share')
-    implementation project(':react-native-linear-gradient')
-    implementation project(':react-native-haptic-feedback')
-    implementation(project(':react-native-firebase')) {
-        transitive = false
-    }
-    implementation project(':react-native-fbsdk')
-    implementation project(':react-native-fast-image')
-    implementation project(':react-native-device-info')
-    implementation project(':react-native-config')
-    implementation project(':react-native-code-push')
-    implementation project(':react-native-camera')
     implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation "com.google.firebase:firebase-messaging:17.0.0"
     implementation "com.google.firebase:firebase-invites:16.0.3"
