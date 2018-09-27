@@ -5356,6 +5356,9 @@ react-native-haptic-feedback@^1.2.0:
   resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.2.0.tgz#6948470529d8054d189db6613987d0e677f4c383"
   integrity sha512-d3M2S6RhHgGlrJXQl/8u4l8OV6ORjgJRQCYtD3DukeO1MEmtCd14F5qmTqPAgE8PmeOgPh6hBFL5aPzZjDc3BQ==
 
+"react-native-image-manipulator@file:../../../react-native-image-manipulator":
+  version "1.0.0"
+
 react-native-linear-gradient@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.2.tgz#9d3acd0a198b9d4566e8f6253ef1f60fef0ff2be"
