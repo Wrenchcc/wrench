@@ -8,11 +8,11 @@
     "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts"
   },
   "devDependencies": {
-    "@types/node": "^10.11.2",
+    "@types/node": "^10.11.3",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
-    "eslint": "^5.6.0",
+    "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
