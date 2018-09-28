@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply plugin: "io.fabric"
 apply plugin: "com.google.firebase.firebase-perf"
 
 import com.android.build.OutputFile
@@ -148,6 +149,9 @@ dependencies {
     implementation "com.google.firebase:firebase-perf:16.1.0"
     implementation(project(':react-native-firebase')) {
         transitive = false
+    }
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
+        transitive = true
     }
     implementation project(':react-native-code-push')
     implementation project(':react-native-image-manipulator')
