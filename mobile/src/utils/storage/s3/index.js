@@ -10,7 +10,7 @@ export const upload = async files => {
   const filenames = uris.map(uri => ({ filename: files[uri].filename }))
 
   // Return pre-signed urls
-  // Resize images and return uri:s from ImageStore
+  // Resize images and return uris
   const [preSignedUrls, resizedImages] = await Promise.all([
     client.mutate({ mutation: preSignUrlsMutation, variables: { input: filenames } }),
     runSequentially(uris.map(uri => () => cropImage(uri))),

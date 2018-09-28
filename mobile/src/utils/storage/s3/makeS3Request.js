@@ -1,6 +1,6 @@
 export default async (url, file) => new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest()
-  console.log(file.type)
+
   xhr.open('PUT', url)
   xhr.setRequestHeader('Content-Type', file.type)
 
