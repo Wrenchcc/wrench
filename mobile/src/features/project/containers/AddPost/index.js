@@ -52,8 +52,10 @@ class AddPost extends Component {
     this.setState(prevState => ({ files: [...prevState.files, file] }))
   }
 
-  removeFileFromPost = filename => {
-    this.setState(prevState => ({ files: prevState.files.filter(a => a.filename !== filename) }))
+  removeFileFromPost = originalFilename => {
+    this.setState(prevState => ({
+      files: prevState.files.filter(a => a.originalFilename !== originalFilename),
+    }))
   }
 
   changePage = page => this.setState({ page })
@@ -77,30 +79,28 @@ class AddPost extends Component {
 
   onSave = () => {
     const { caption, project, files } = this.state
-    // const data = file ? { [file.uri]: { filename: 'dummy.jpg' } } : files
+    this.props.updatePostProgress({
+      image: pathOr(null, [0, 'uri'], files),
+      title: project.title,
+      __typename: 'PostProgress',
+    })
 
-    // this.props.updatePostProgress({
-    //   image: Object.keys(data)[0],
-    //   title: project.title,
-    //   __typename: 'PostProgress',
-    // })
+    navigateToFeed()
 
-    // navigateToFeed()
+    InteractionManager.runAfterInteractions(async () => {
+      try {
+        const uploadedFiles = await upload(files)
 
-    // InteractionManager.runAfterInteractions(async () => {
-    //   try {
-    //     const uploadedFiles = await upload(data)
-    //
-    //     await this.props.addPost({
-    //       caption,
-    //       projectId: project.id,
-    //       files: uploadedFiles,
-    //     })
-    //     track(events.POST_CREATED)
-    //   } catch {
-    //     track(events.POST_CREATED_FAILED)
-    //   }
-    // })
+        await this.props.addPost({
+          caption,
+          projectId: project.id,
+          files: uploadedFiles,
+        })
+        track(events.POST_CREATED)
+      } catch {
+        track(events.POST_CREATED_FAILED)
+      }
+    })
   }
 
   renderHeaderLeft() {
@@ -173,7 +173,6 @@ class AddPost extends Component {
   }
 
   render() {
-    console.log(this.state.files)
     return (
       <Base>
         {this.renderEdit()}

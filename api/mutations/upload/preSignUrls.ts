@@ -21,22 +21,22 @@ const s3 = new S3({
 export default (_, { input }, ctx) => {
   try {
     return Promise.all(
-      input.map(async ({ filename }) => {
-        const ext = getExtensionType(filename)
+      input.map(async file => {
+        const ext = getExtensionType(file.filename)
         const type = getContentType(ext)
         const id = v4()
-        const finalName = `${id}.${ext}`
+        const filename = `${id}.${ext}`
 
         try {
           const params = {
             Bucket: APP_AWS_S3_BUCKET,
             ContentType: type,
-            Key: finalName,
+            Key: filename,
           }
 
           const url = await s3.getSignedUrl('putObject', params)
 
-          return { url, type, id, filename: finalName }
+          return { url, type, id, filename }
         } catch (err) {
           debug('‰O', err)
         }
