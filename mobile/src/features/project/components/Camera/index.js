@@ -16,7 +16,7 @@ export default class Camera extends PureComponent {
   static propTypes = {
     navigateToCameraRoll: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
-    addFiles: PropTypes.func.isRequired,
+    addFileToPost: PropTypes.func.isRequired,
     openEdit: PropTypes.func.isRequired,
   }
 
@@ -55,23 +55,11 @@ export default class Camera extends PureComponent {
     const data = await this.camera.takePictureAsync()
     // Crop and add
     const file = null
-    this.props.addFiles(file)
+    this.props.addFileToPost(file)
   }
 
   setRef = el => {
     this.camera = el
-  }
-
-  renderContent() {
-    return (
-      <Content>
-        <Bottom>
-          <PreviewRoll onPress={this.props.navigateToCameraRoll} />
-          <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
-          <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
-        </Bottom>
-      </Content>
-    )
   }
 
   renderCamera() {
@@ -82,7 +70,13 @@ export default class Camera extends PureComponent {
         type={this.state.type}
         flashMode={this.state.flashMode}
       >
-        {this.renderContent()}
+        <Content>
+          <Bottom>
+            <PreviewRoll onPress={this.props.navigateToCameraRoll} />
+            <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
+            <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
+          </Bottom>
+        </Content>
       </RNCamera>
     )
   }

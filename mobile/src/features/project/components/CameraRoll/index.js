@@ -1,10 +1,11 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
-import Permissions from 'react-native-permissions'
+import { cropImage } from 'utils/image'
 import { hasIn, omit } from 'ramda'
-import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
+import { Touchable } from 'ui'
+import Permissions from 'react-native-permissions'
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
 import AskForPermission from '../AskForPermission'
 import { Base, Cell, Image, Overlay, GUTTER, ITEM_SIZE } from './styles'
 
@@ -14,17 +15,18 @@ const PAGE_SIZE = 10
 
 export default class CameraRoll extends PureComponent {
   static propTypes = {
+    addFileToPost: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
+    removeFileFromPost: PropTypes.func.isRequired,
   }
 
   state = {
-    isLoading: true,
-    images: [],
     end_cursor: null,
     has_next_page: true,
+    images: [],
+    isLoading: true,
     photoPermission: false,
     selectedFiles: {},
-    addedFiles: [],
   }
 
   componentDidMount() {
@@ -70,17 +72,23 @@ export default class CameraRoll extends PureComponent {
       prevState => ({
         selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
       }),
-      this.addCroppedFile
+      async () => {
+        const result = await cropImage(file.uri)
+        this.props.addFileToPost({ ...result, filename: file.filename })
+      }
     )
   }
 
-  removeSelectedFile = file => {
-    this.setState(prevState => ({
-      selectedFiles: omit([file.filename], prevState.selectedFiles),
-    }))
+  removeSelectedFile = ({ filename }) => {
+    this.setState(
+      prevState => ({
+        selectedFiles: omit([filename], prevState.selectedFiles),
+      }),
+      () => {
+        this.props.removeFileFromPost(filename)
+      }
+    )
   }
-
-  addCroppedFile = () => {}
 
   toggleSelection = file => {
     const { closeDropdown } = this.props

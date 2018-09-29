@@ -37,7 +37,7 @@ class AddPost extends Component {
       edit: false,
       project: pathOr(null, ['projects', 0, 'node'], props),
       caption: null,
-      files: null,
+      files: [],
     }
 
     track(events.POST_CREATED_INITED)
@@ -47,9 +47,13 @@ class AddPost extends Component {
     this.setState({ project }, this.closeDropdown)
   }
 
-  addFiles = files => {
+  addFileToPost = file => {
     this.closeDropdown()
-    this.setState({ files })
+    this.setState(prevState => ({ files: [...prevState.files, file] }))
+  }
+
+  removeFileFromPost = filename => {
+    this.setState(prevState => ({ files: prevState.files.filter(a => a.filename !== filename) }))
   }
 
   changePage = page => this.setState({ page })
@@ -169,41 +173,43 @@ class AddPost extends Component {
   }
 
   render() {
+    console.log(this.state.files)
     return (
       <Base>
         {this.renderEdit()}
 
         <SelectProject
-          projects={this.props.projects}
           expanded={this.state.expanded}
           onPress={this.setSelectedProject}
+          projects={this.props.projects}
           selected={this.state.project}
         />
 
         <Top>{this.renderHeader()}</Top>
         <Swiper
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-          removeClippedSubviews
           ref={swiper => {
             this.swiper = swiper
           }}
-          showsPagination={false}
-          loop={false}
           index={CAMERA_PAGE}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="handled"
+          loop={false}
           onIndexChanged={this.changePage}
+          removeClippedSubviews
+          showsPagination={false}
         >
           <CameraRoll
-            addFiles={this.addFiles}
-            pictures={this.state.files}
+            addFileToPost={this.addFileToPost}
             closeDropdown={this.closeDropdown}
             dropDownActive={this.state.expanded}
+            pictures={this.state.files}
+            removeFileFromPost={this.removeFileFromPost}
           />
 
           <Camera
-            navigateToCameraRoll={this.navigateToCameraRoll}
+            addFileToPost={this.addFileToPost}
             closeDropdown={this.closeDropdown}
-            addFiles={this.addFiles}
+            navigateToCameraRoll={this.navigateToCameraRoll}
             openEdit={this.openEdit}
           />
         </Swiper>
