@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
+import { cropImage } from 'utils/image'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
 import PreviewRoll from '../PreviewRoll'
@@ -52,10 +53,9 @@ export default class Camera extends PureComponent {
   takePicture = async () => {
     this.props.openEdit()
 
-    const data = await this.camera.takePictureAsync()
-    // Crop and add
-    const file = null
-    this.props.addFileToPost(file)
+    const file = await this.camera.takePictureAsync()
+    const result = await cropImage(file.uri)
+    this.props.addFileToPost(result)
   }
 
   setRef = el => {

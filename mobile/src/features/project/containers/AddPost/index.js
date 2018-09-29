@@ -21,6 +21,13 @@ import { Base, Top, Edit, Overlay, Background } from './styles'
 const CAMERA_PAGE = 1
 const CAMERA_ROLL_PAGE = 0
 
+const defaultState = {
+  edit: false,
+  files: [],
+  expanded: false,
+  caption: null,
+}
+
 class AddPost extends Component {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
@@ -33,11 +40,8 @@ class AddPost extends Component {
 
     this.state = {
       page: CAMERA_PAGE,
-      expanded: false,
-      edit: false,
       project: pathOr(null, ['projects', 0, 'node'], props),
-      caption: null,
-      files: [],
+      ...defaultState,
     }
 
     track(events.POST_CREATED_INITED)
@@ -65,7 +69,7 @@ class AddPost extends Component {
   closeDropdown = () => this.setState({ expanded: false })
 
   closeEdit = () => {
-    this.setState({ edit: false, file: null })
+    this.setState(defaultState)
   }
 
   openEdit = () => this.setState({ edit: true })
@@ -121,13 +125,15 @@ class AddPost extends Component {
       )
     }
 
-    return (
-      edit && (
+    if (edit && !isEmpty(files)) {
+      return (
         <Text color="white" medium onPress={this.onSave}>
           {this.props.t('AddPost:post')}
         </Text>
       )
-    )
+    }
+
+    return null
   }
 
   renderHeader() {
@@ -148,12 +154,12 @@ class AddPost extends Component {
 
   renderEdit() {
     const { t } = this.props
-    const { caption, edit, file } = this.state
+    const { caption, edit } = this.state
 
     if (!edit) return null
 
     return (
-      <Background source={file}>
+      <Background source="">
         <Overlay onPressIn={this.closeDropdown} activeOpacity={1}>
           <KeyboardAvoidingView behavior="position">
             <Edit>
