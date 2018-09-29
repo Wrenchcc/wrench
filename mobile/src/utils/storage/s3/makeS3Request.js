@@ -1,5 +1,11 @@
-export default async (url, file) => new Promise((resolve, reject) => {
+export default async (url, file, progress = () => {}) => new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest()
+
+  xhr.upload.onprogress = evt => {
+    if (evt.lengthComputable) {
+      progress((evt.loaded / evt.total) * 100)
+    }
+  }
 
   xhr.open('PUT', url)
   xhr.setRequestHeader('Content-Type', file.type)
