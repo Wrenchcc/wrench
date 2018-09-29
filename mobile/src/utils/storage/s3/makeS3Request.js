@@ -1,9 +1,9 @@
-export default async (url, file, progress = () => {}) => new Promise((resolve, reject) => {
+export default async (url, file, onProgress = () => {}) => new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest()
 
   xhr.upload.onprogress = evt => {
     if (evt.lengthComputable) {
-      progress((evt.loaded / evt.total) * 100)
+      onProgress((evt.loaded / evt.total) * 100)
     }
   }
 
