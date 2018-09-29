@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+import { Dimensions } from 'react-native'
 import { isIphoneX } from 'utils/platform'
 import UiTouchable from 'ui/Touchable'
-import UiTitle from 'ui/Title'
-import UiText from 'ui/Text'
-import { COLORS } from 'ui/constants'
+import { COLORS, HEADER_HEIGHT } from 'ui/constants'
+
+const { width } = Dimensions.get('window')
 
 export const Base = styled.TouchableWithoutFeedback`
   flex: 1;
@@ -11,17 +12,12 @@ export const Base = styled.TouchableWithoutFeedback`
 
 export const Inner = styled.View`
   flex: 1;
-  justify-content: center;
-  padding-left: 40;
-  padding-right: 40;
+  padding-top: ${HEADER_HEIGHT};
 `
 
-export const Headline = styled(UiTitle)`
-  margin-bottom: 10px;
-`
-
-export const Description = styled(UiText)`
-  margin-bottom: 30px;
+export const CameraView = styled.ImageBackground`
+  width: ${width};
+  height: ${width};
 `
 
 export const Content = styled.View`

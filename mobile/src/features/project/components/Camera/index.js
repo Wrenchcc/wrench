@@ -1,31 +1,32 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { pathOr } from 'ramda'
 import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
 import { cropImage } from 'utils/image'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
 import PreviewRoll from '../PreviewRoll'
-import { Base, Content, Bottom, TakePicture } from './styles'
+import { Base, Inner, CameraView, Content, Bottom, TakePicture } from './styles'
 
 const PERMISSION = 'camera'
 const AUTHORIZED = 'authorized'
 
-// https://github.com/react-native-community/react-native-camera/pull/1636
-// https://github.com/react-native-community/react-native-camera/issues/648
+// TODO: Use built in cropping in camera
 export default class Camera extends PureComponent {
   static propTypes = {
-    navigateToCameraRoll: PropTypes.func.isRequired,
+    capturedPicture: PropTypes.object,
     closeDropdown: PropTypes.func.isRequired,
-    addFileToPost: PropTypes.func.isRequired,
+    navigateToCameraRoll: PropTypes.func.isRequired,
+    onTakePicture: PropTypes.func.isRequired,
     openEdit: PropTypes.func.isRequired,
   }
 
   state = {
+    cameraPermission: false,
+    flashMode: RNCamera.Constants.FlashMode.off,
     isLoading: true,
     type: RNCamera.Constants.Type.back,
-    flashMode: RNCamera.Constants.FlashMode.off,
-    cameraPermission: false,
   }
 
   componentDidMount() {
@@ -55,7 +56,7 @@ export default class Camera extends PureComponent {
 
     const file = await this.camera.takePictureAsync()
     const result = await cropImage(file.uri)
-    this.props.addFileToPost(result)
+    this.props.onTakePicture(result)
   }
 
   setRef = el => {
@@ -64,12 +65,10 @@ export default class Camera extends PureComponent {
 
   renderCamera() {
     return (
-      <RNCamera
-        style={{ flex: 1 }}
-        ref={this.setRef}
-        type={this.state.type}
-        flashMode={this.state.flashMode}
-      >
+      <Inner>
+        <CameraView source={{ uri: pathOr(undefined, ['uri'], this.props.capturedPicture) }}>
+          <RNCamera ref={this.setRef} type={this.state.type} flashMode={this.state.flashMode} />
+        </CameraView>
         <Content>
           <Bottom>
             <PreviewRoll onPress={this.props.navigateToCameraRoll} />
@@ -77,13 +76,14 @@ export default class Camera extends PureComponent {
             <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
           </Bottom>
         </Content>
-      </RNCamera>
+      </Inner>
     )
   }
 
   render() {
     const { cameraPermission, isLoading } = this.state
     if (isLoading) return null
+
     let component
 
     if (cameraPermission) {

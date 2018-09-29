@@ -8,8 +8,8 @@ export const GUTTER = 5
 export const ITEM_SIZE = width / 2 - 15
 
 export const Base = styled.TouchableOpacity`
-  padding-top: ${props => (props.paddingTop ? HEADER_HEIGHT : 0)};
   flex: 1;
+  padding-top: ${HEADER_HEIGHT};
   background-color: ${COLORS.DARK};
 `
 
@@ -18,7 +18,9 @@ export const Cell = styled.View`
 `
 
 export const Image = styled.Image`
-  margin: ${GUTTER}px;
+  margin-left: ${GUTTER};
+  margin-right: ${GUTTER};
+  margin-bottom: ${GUTTER * 2};
   height: ${ITEM_SIZE};
   width: ${ITEM_SIZE};
   border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')};

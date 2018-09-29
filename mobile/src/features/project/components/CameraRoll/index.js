@@ -18,6 +18,7 @@ export default class CameraRoll extends PureComponent {
     addFileToPost: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
     removeFileFromPost: PropTypes.func.isRequired,
+    resetSelection: PropTypes.bool.isRequired,
   }
 
   state = {
@@ -37,6 +38,12 @@ export default class CameraRoll extends PureComponent {
         this.getpictures()
       }
     })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.resetSelection) {
+      this.setState({ selectedFiles: {} })
+    }
   }
 
   onEndReached = ({ distanceFromEnd }) => {
@@ -123,7 +130,11 @@ export default class CameraRoll extends PureComponent {
         initialNumToRender={PAGE_SIZE}
         getItemLayout={this.getItemLayout}
         removeClippedSubviews
-        contentContainerStyle={{ padding: GUTTER }}
+        contentContainerStyle={{
+          paddingBottom: GUTTER * 2,
+          paddingLeft: GUTTER,
+          paddingRight: GUTTER,
+        }}
         numColumns={2}
         data={this.state.images}
         keyExtractor={item => item.uri}

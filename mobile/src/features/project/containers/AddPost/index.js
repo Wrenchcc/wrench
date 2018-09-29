@@ -16,16 +16,17 @@ import { close, arrowLeftWhite } from 'images'
 import Camera from 'features/project/components/Camera/index.js'
 import CameraRoll from 'features/project/components/CameraRoll'
 import SelectProject from 'features/project/components/SelectProject'
-import { Base, Top, Edit, Overlay, Background } from './styles'
+import { Base, Top, Edit, Inner, Overlay } from './styles'
 
 const CAMERA_PAGE = 1
 const CAMERA_ROLL_PAGE = 0
 
 const defaultState = {
-  edit: false,
-  files: [],
-  expanded: false,
+  capturedPicture: null,
   caption: null,
+  edit: false,
+  expanded: false,
+  files: [],
 }
 
 class AddPost extends Component {
@@ -60,6 +61,10 @@ class AddPost extends Component {
     this.setState(prevState => ({
       files: prevState.files.filter(a => a.originalFilename !== originalFilename),
     }))
+  }
+
+  onTakePicture = file => {
+    this.setState({ capturedPicture: file, files: [file] })
   }
 
   changePage = page => this.setState({ page })
@@ -159,8 +164,8 @@ class AddPost extends Component {
     if (!edit) return null
 
     return (
-      <Background source="">
-        <Overlay onPressIn={this.closeDropdown} activeOpacity={1}>
+      <Overlay>
+        <Inner onPressIn={this.closeDropdown} activeOpacity={1}>
           <KeyboardAvoidingView behavior="position">
             <Edit>
               <Input
@@ -173,8 +178,8 @@ class AddPost extends Component {
               />
             </Edit>
           </KeyboardAvoidingView>
-        </Overlay>
-      </Background>
+        </Inner>
+      </Overlay>
     )
   }
 
@@ -207,15 +212,16 @@ class AddPost extends Component {
             addFileToPost={this.addFileToPost}
             closeDropdown={this.closeDropdown}
             dropDownActive={this.state.expanded}
-            pictures={this.state.files}
             removeFileFromPost={this.removeFileFromPost}
+            resetSelection={!!this.state.capturedPicture}
           />
 
           <Camera
-            addFileToPost={this.addFileToPost}
+            onTakePicture={this.onTakePicture}
             closeDropdown={this.closeDropdown}
             navigateToCameraRoll={this.navigateToCameraRoll}
             openEdit={this.openEdit}
+            capturedPicture={this.state.capturedPicture}
           />
         </Swiper>
       </Base>

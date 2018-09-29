@@ -19,14 +19,14 @@ export const Edit = styled.View`
   padding-bottom: ${isIphoneX ? 40 : 20};
 `
 
-export const Overlay = styled.TouchableOpacity`
-  background-color: rgba(0, 0, 0, 0.8);
+export const Inner = styled.TouchableOpacity`
   flex: 1;
   flex-direction: column;
   justify-content: flex-end;
 `
 
-export const Background = styled.ImageBackground`
+export const Overlay = styled.View`
+  background-color: rgba(0, 0, 0, 0.9);
   width: 100%;
   height: 100%;
   position: absolute;
