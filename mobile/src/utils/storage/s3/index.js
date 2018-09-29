@@ -16,7 +16,7 @@ export const upload = async files => {
   const result = await Promise.all(
     uris.map(async (uri, index) => {
       const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
-      return makeS3Request(url, { uri: uri.uri, type, filename })
+      return makeS3Request(url, { uri, type, filename })
     })
   )
 

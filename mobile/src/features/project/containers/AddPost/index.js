@@ -37,23 +37,20 @@ class AddPost extends Component {
       edit: false,
       project: pathOr(null, ['projects', 0, 'node'], props),
       caption: null,
-      files: {},
-      file: null,
+      files: null,
     }
 
     track(events.POST_CREATED_INITED)
-  }
-
-  onTakePicture = file => {
-    this.setState({ file })
-    this.closeDropdown()
   }
 
   setSelectedProject = project => {
     this.setState({ project }, this.closeDropdown)
   }
 
-  addPictures = files => this.setState({ files })
+  addFiles = files => {
+    this.closeDropdown()
+    this.setState({ files })
+  }
 
   changePage = page => this.setState({ page })
 
@@ -75,31 +72,31 @@ class AddPost extends Component {
   }
 
   onSave = () => {
-    const { caption, project, files, file } = this.state
-    const data = file ? { [file.uri]: { filename: 'dummy.jpg' } } : files
+    const { caption, project, files } = this.state
+    // const data = file ? { [file.uri]: { filename: 'dummy.jpg' } } : files
 
-    this.props.updatePostProgress({
-      image: Object.keys(data)[0],
-      title: project.title,
-      __typename: 'PostProgress',
-    })
+    // this.props.updatePostProgress({
+    //   image: Object.keys(data)[0],
+    //   title: project.title,
+    //   __typename: 'PostProgress',
+    // })
 
-    navigateToFeed()
+    // navigateToFeed()
 
-    InteractionManager.runAfterInteractions(async () => {
-      try {
-        const uploadedFiles = await upload(data)
-
-        await this.props.addPost({
-          caption,
-          projectId: project.id,
-          files: uploadedFiles,
-        })
-        track(events.POST_CREATED)
-      } catch {
-        track(events.POST_CREATED_FAILED)
-      }
-    })
+    // InteractionManager.runAfterInteractions(async () => {
+    //   try {
+    //     const uploadedFiles = await upload(data)
+    //
+    //     await this.props.addPost({
+    //       caption,
+    //       projectId: project.id,
+    //       files: uploadedFiles,
+    //     })
+    //     track(events.POST_CREATED)
+    //   } catch {
+    //     track(events.POST_CREATED_FAILED)
+    //   }
+    // })
   }
 
   renderHeaderLeft() {
@@ -197,7 +194,7 @@ class AddPost extends Component {
           onIndexChanged={this.changePage}
         >
           <CameraRoll
-            addPictures={this.addPictures}
+            addFiles={this.addFiles}
             pictures={this.state.files}
             closeDropdown={this.closeDropdown}
             dropDownActive={this.state.expanded}
@@ -206,7 +203,7 @@ class AddPost extends Component {
           <Camera
             navigateToCameraRoll={this.navigateToCameraRoll}
             closeDropdown={this.closeDropdown}
-            onTakePicture={this.onTakePicture}
+            addFiles={this.addFiles}
             openEdit={this.openEdit}
           />
         </Swiper>

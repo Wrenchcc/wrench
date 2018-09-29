@@ -16,7 +16,7 @@ export default class Camera extends PureComponent {
   static propTypes = {
     navigateToCameraRoll: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
-    onTakePicture: PropTypes.func.isRequired,
+    addFiles: PropTypes.func.isRequired,
     openEdit: PropTypes.func.isRequired,
   }
 
@@ -53,7 +53,9 @@ export default class Camera extends PureComponent {
     this.props.openEdit()
 
     const data = await this.camera.takePictureAsync()
-    this.props.onTakePicture(data)
+    // Crop and add
+    const file = null
+    this.props.addFiles(file)
   }
 
   setRef = el => {

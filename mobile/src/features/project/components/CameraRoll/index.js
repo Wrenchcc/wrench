@@ -12,11 +12,8 @@ const PERMISSION = 'photo'
 const AUTHORIZED = 'authorized'
 const PAGE_SIZE = 10
 
-// TODO: Change to use FastImage when support for assets-url://
 export default class CameraRoll extends PureComponent {
   static propTypes = {
-    pictures: PropTypes.object.isRequired,
-    addPictures: PropTypes.func.isRequired,
     closeDropdown: PropTypes.func.isRequired,
   }
 
@@ -26,6 +23,8 @@ export default class CameraRoll extends PureComponent {
     end_cursor: null,
     has_next_page: true,
     photoPermission: false,
+    selectedFiles: {},
+    addedFiles: [],
   }
 
   componentDidMount() {
@@ -59,9 +58,6 @@ export default class CameraRoll extends PureComponent {
     }
   }
 
-  // https://facebook.github.io/react-native/docs/flatlist.html#getitemlayout
-  // getItemLayout is an optional optimization that let us skip measurement of
-  // dynamic content if you know the height of items a priori.
   getItemLayout = (data, index) => ({ length: ITEM_SIZE, offset: ITEM_SIZE * index, index })
 
   enablePermission = () => {
@@ -69,20 +65,36 @@ export default class CameraRoll extends PureComponent {
     this.setState({ photoPermission: true })
   }
 
-  toggleSelection = image => {
-    const { pictures, addPictures, closeDropdown } = this.props
-    const items = { ...pictures, [image.uri]: image }
+  addSelectedFile = file => {
+    this.setState(
+      prevState => ({
+        selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
+      }),
+      this.addCroppedFile
+    )
+  }
+
+  removeSelectedFile = file => {
+    this.setState(prevState => ({
+      selectedFiles: omit([file.filename], prevState.selectedFiles),
+    }))
+  }
+
+  addCroppedFile = () => {}
+
+  toggleSelection = file => {
+    const { closeDropdown } = this.props
 
     closeDropdown()
 
-    if (this.isSelected(image)) {
-      return addPictures(omit([image.uri], pictures))
+    if (this.isSelected(file)) {
+      return this.removeSelectedFile(file)
     }
 
-    return addPictures(items)
+    return this.addSelectedFile(file)
   }
 
-  isSelected = ({ uri }) => hasIn(uri, this.props.pictures)
+  isSelected = ({ filename }) => hasIn(filename, this.state.selectedFiles)
 
   renderItem = ({ item }) => {
     const selected = this.isSelected(item)
@@ -115,6 +127,7 @@ export default class CameraRoll extends PureComponent {
 
   render() {
     const { photoPermission, isLoading } = this.state
+
     if (isLoading) return null
 
     let component
