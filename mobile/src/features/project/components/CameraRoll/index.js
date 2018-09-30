@@ -79,9 +79,9 @@ export default class CameraRoll extends PureComponent {
       prevState => ({
         selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
       }),
-      () => {
-        // const result = await cropImage(file.uri)
-        this.props.addFileToPost({ ...file })
+      async () => {
+        const result = await cropImage(file.uri)
+        this.props.addFileToPost({ ...result, originalFilename: file.filename })
       }
     )
   }
