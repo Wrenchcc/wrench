@@ -6,18 +6,18 @@ const DEFAULT_BAR_HEIGHT = 3
 
 export default class ProgressBar extends Component {
   static propTypes = {
-    progress: PropTypes.number,
     backgroundColor: PropTypes.string,
-    borderRadius: PropTypes.number,
     barHeight: PropTypes.number,
+    borderRadius: PropTypes.number,
     fillColor: PropTypes.string,
     opacity: PropTypes.number,
+    progress: PropTypes.number,
   }
 
   static defaultProps = {
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    borderRadius: 3,
     barHeight: DEFAULT_BAR_HEIGHT,
+    borderRadius: 3,
     fillColor: 'white',
     opacity: 1,
   }
@@ -25,7 +25,9 @@ export default class ProgressBar extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { progress: new Animated.Value(props.progress || 0) }
+    this.state = {
+      progress: new Animated.Value(props.progress || 0),
+    }
   }
 
   componentDidUpdate(prevProps) {

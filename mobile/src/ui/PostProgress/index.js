@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { translate } from 'react-i18next'
-import { Text } from 'ui'
-import { Base, Cover, Content } from './styles'
+import { Text, ProgressBar } from 'ui'
+import { Base, Inner, Cover, Content } from './styles'
 
 const HEIGHT = 60
 
@@ -12,6 +12,7 @@ class PostProgress extends PureComponent {
 
   static propTypes = {
     image: PropTypes.string,
+    progress: PropTypes.number,
     title: PropTypes.string,
   }
 
@@ -27,18 +28,27 @@ class PostProgress extends PureComponent {
   }
 
   render() {
-    const { t, title, image } = this.props
+    const { t, title, image, progress = 0 } = this.props
 
     return (
       <Base style={{ height: this.animatedHeight }}>
-        {image && <Cover source={{ uri: image }} />}
+        <Inner>
+          {image && <Cover source={{ uri: image }} />}
 
-        <Content>
-          <Text numberOfLines={1}>{title}</Text>
-          <Text fontSize={15} color="grey">
-            {t('PostProgress:description')}
-          </Text>
-        </Content>
+          <Content>
+            <Text numberOfLines={1}>{title}</Text>
+            <Text fontSize={15} color="grey">
+              {t('PostProgress:description')}
+            </Text>
+          </Content>
+        </Inner>
+
+        <ProgressBar
+          barHeight={2}
+          progress={progress}
+          fillColor="black"
+          backgroundColor="transparent"
+        />
       </Base>
     )
   }
