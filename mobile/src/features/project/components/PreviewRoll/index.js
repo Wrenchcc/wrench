@@ -4,7 +4,7 @@ import { CameraRoll } from 'react-native'
 import { pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
 import { cameraRoll } from 'images'
-import { Button, Preview, Icon } from './styles'
+import { Base, Button, Preview, Icon } from './styles'
 
 export default class PreviewRoll extends Component {
   static propTypes = {
@@ -30,12 +30,14 @@ export default class PreviewRoll extends Component {
   }
 
   render = () => (
-    <Button onPress={this.props.onPress} hapticFeedback="impactLight">
-      {this.state.image ? (
-        <Preview source={{ uri: this.state.image }} />
-      ) : (
-        <Icon source={cameraRoll} />
-      )}
-    </Button>
+    <Base>
+      <Button onPress={this.props.onPress} hapticFeedback="impactLight">
+        {this.state.image ? (
+          <Preview source={{ uri: this.state.image }} />
+        ) : (
+          <Icon source={cameraRoll} />
+        )}
+      </Button>
+    </Base>
   )
 }

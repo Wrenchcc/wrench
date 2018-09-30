@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 import UiTouchable from 'ui/Touchable'
 
-export const Button = styled(UiTouchable)`
+export const Base = styled.View`
   flex: 1;
   margin-left: auto;
-  justify-content: center;
+  justify-content: flex-end;
+`
+
+export const Button = styled(UiTouchable)`
+  align-self: flex-end;
 `
 
 export const Icon = styled.View`

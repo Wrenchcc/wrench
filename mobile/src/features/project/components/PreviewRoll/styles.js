@@ -2,10 +2,14 @@ import styled from 'styled-components'
 import UiTouchable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 
-export const Button = styled(UiTouchable)`
+export const Base = styled.View`
   flex: 1;
-  margin-right: auto;
-  justify-content: center;
+  margin-left: auto;
+  justify-content: flex-end;
+`
+
+export const Button = styled(UiTouchable)`
+  align-self: flex-start;
 `
 
 export const Preview = styled.Image`
