@@ -66,9 +66,14 @@ export default class Camera extends PureComponent {
   renderCamera() {
     return (
       <Inner>
-        <CameraView source={{ uri: pathOr(undefined, ['uri'], this.props.capturedPicture) }}>
-          <RNCamera ref={this.setRef} type={this.state.type} flashMode={this.state.flashMode} />
-        </CameraView>
+        <RNCamera
+          ref={this.setRef}
+          type={this.state.type}
+          flashMode={this.state.flashMode}
+          style={{ flex: 1 }}
+        >
+          <CameraView source={{ uri: pathOr(undefined, ['uri'], this.props.capturedPicture) }} />
+        </RNCamera>
         <Content>
           <Bottom>
             <PreviewRoll onPress={this.props.navigateToCameraRoll} />
