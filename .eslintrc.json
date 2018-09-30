@@ -28,6 +28,7 @@
     "react/prop-types": ["error", { "ignore": ["t"] }],
     "react/require-default-props": 0,
     "react/destructuring-assignment": "never",
-    "no-restricted-properties": 0
+    "no-restricted-properties": 0,
+    "max-len": ["error", { "code": 100, "ignoreUrls": true }]
   }
 }
