@@ -15,7 +15,7 @@ export const Inner = styled.View`
   padding-top: ${HEADER_HEIGHT};
 `
 
-export const CameraView = styled.Image`
+export const Picture = styled.Image`
   width: ${width};
   height: ${width};
   flex: 1;

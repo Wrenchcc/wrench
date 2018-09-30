@@ -7,7 +7,7 @@ import { cropImage } from 'utils/image'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
 import PreviewRoll from '../PreviewRoll'
-import { Base, Inner, CameraView, Content, Bottom, TakePicture } from './styles'
+import { Base, Inner, Picture, Content, Bottom, TakePicture } from './styles'
 
 const PERMISSION = 'camera'
 const AUTHORIZED = 'authorized'
@@ -72,7 +72,7 @@ export default class Camera extends PureComponent {
           flashMode={this.state.flashMode}
           style={{ flex: 1 }}
         >
-          <CameraView source={{ uri: pathOr(undefined, ['uri'], this.props.capturedPicture) }} />
+          <Picture source={{ uri: pathOr(undefined, ['uri'], this.props.capturedPicture) }} />
         </RNCamera>
         <Content>
           <Bottom>
