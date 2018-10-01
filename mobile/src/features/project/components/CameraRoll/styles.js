@@ -4,38 +4,40 @@ import { COLORS, HEADER_HEIGHT } from 'ui/constants'
 
 const { width } = Dimensions.get('window')
 
-export const GUTTER = 5
-export const ITEM_SIZE = width / 4 - 15
+export const SQUARE_SIZE = width
+export const GUTTER = 3
+export const ITEM_SIZE = width / 4 - 4
 
 export const Base = styled.View`
+  flex: 1;
   padding-top: ${HEADER_HEIGHT};
   background-color: ${COLORS.DARK};
 `
 
-export const Placeholder = styled.Image`
+export const Placeholder = styled.View`
   width: ${width};
   height: ${width};
+  padding-bottom: ${GUTTER * 2};
 `
 
 export const Cell = styled.View`
   width: 25%;
+  padding-left: ${GUTTER / 2};
+  padding-right: ${GUTTER / 2};
+  padding-bottom: ${GUTTER};
 `
 
 export const Image = styled.Image`
-  margin-left: ${GUTTER / 2};
-  margin-right: ${GUTTER / 2};
-  margin-bottom: ${GUTTER * 2};
   height: ${ITEM_SIZE};
   width: ${ITEM_SIZE};
-  border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')};
-  border-width: 3px;
 `
 
 export const Overlay = styled.View`
   position: absolute;
+  z-index: 10;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: ${props => (props.selected ? 'rgba(000, 000, 000, 0.2)' : 'transparent')};
+  background-color: ${props => (props.selected ? 'rgba(255, 255, 255, 0.2)' : 'transparent')};
 `

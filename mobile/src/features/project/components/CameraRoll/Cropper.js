@@ -1,24 +1,14 @@
 import React, { Component } from 'react'
 import { Image, Platform, ScrollView } from 'react-native'
 
-type ImageOffset = {
-  x: number,
-  y: number,
-}
-
-type ImageSize = {
-  width: number,
-  height: number,
-}
-
 export default class Cropper extends Component {
-  contentOffset: ImageOffset
+  contentOffset: {}
 
   maximumZoomScale: number
 
   minimumZoomScale: number
 
-  scaledImageSize: ImageSize
+  scaledImageSize: {}
 
   horizontal: boolean
 
@@ -66,18 +56,18 @@ export default class Cropper extends Component {
       this.props.size.height / this.scaledImageSize.height
     )
 
-    this.updateTransformData(this.contentOffset, this.scaledImageSize, this.props.size)
+    this.updateCroppingData(this.contentOffset, this.scaledImageSize, this.props.size)
   }
 
   onScroll = evt => {
-    this.updateTransformData(
+    this.updateCroppingData(
       evt.nativeEvent.contentOffset,
       evt.nativeEvent.contentSize,
       evt.nativeEvent.layoutMeasurement
     )
   }
 
-  updateTransformData(offset, scaledImageSize, croppedImageSize) {
+  updateCroppingData(offset, scaledImageSize, croppedImageSize) {
     const offsetRatioX = offset.x / scaledImageSize.width
     const offsetRatioY = offset.y / scaledImageSize.height
     const sizeRatioX = croppedImageSize.width / scaledImageSize.width
@@ -94,9 +84,7 @@ export default class Cropper extends Component {
       },
     }
 
-    if (this.props.onTransformDataChange) {
-      this.props.onTransformDataChange(cropData)
-    }
+    this.props.onCropping(cropData)
   }
 
   render() {
@@ -113,7 +101,6 @@ export default class Cropper extends Component {
         onScrollEndDrag={this.onScroll}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        style={this.props.style}
         scrollEventThrottle={16}
       >
         <Image source={this.props.image} style={this.scaledImageSize} />

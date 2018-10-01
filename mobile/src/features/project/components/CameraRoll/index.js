@@ -1,27 +1,41 @@
-import React, { Component } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import { CameraRoll as RNCameraRoll, FlatList, ImageEditor } from 'react-native'
+import Permissions from 'react-native-permissions'
+import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
-import { Base, Placeholder, Cell, Image, Overlay, GUTTER } from './styles'
+import { logError } from 'utils/analytics'
+import AskForPermission from '../AskForPermission'
+import { Base, Placeholder, Cell, Image, Overlay, GUTTER, SQUARE_SIZE } from './styles'
 import Cropper from './Cropper'
 
-const PAGE_SIZE = 20
+const AUTHORIZED = 'authorized'
+const PAGE_SIZE = 10
+const PERMISSION = 'photo'
 
-export default class CameraRoll extends Component {
+export default class CameraRoll extends PureComponent {
   state = {
-    // isLoading: true,
-    // photoPermission: false,
-    // selectedFiles: {},
-    croppedImage: null,
     end_cursor: null,
     has_next_page: true,
     images: [],
+    isLoading: true,
+    photoPermission: false,
+    selectedFiles: {},
     selectedImage: null,
   }
 
-  constructor(props) {
-    super(props)
+  componentDidMount() {
+    Permissions.check(PERMISSION).then(res => {
+      this.setState({ isLoading: false })
+      if (res === AUTHORIZED) {
+        this.enablePermission()
+        this.getpictures()
+      }
+    })
+  }
 
+  enablePermission = () => {
     this.getpictures()
+    this.setState({ photoPermission: true })
   }
 
   getpictures = async after => {
@@ -42,8 +56,51 @@ export default class CameraRoll extends Component {
         ...data.page_info,
       })
     } catch (err) {
-      // logError(err)
+      logError(err)
     }
+  }
+
+  addSelectedFile = file => {
+    this.setState(
+      prevState => ({
+        selectedImage: file,
+        selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
+      })
+      // async () => {
+      // const result = await cropImage(file.uri)
+      // this.props.addFileToPost({ ...result, originalFilename: file.filename })
+      // }
+    )
+  }
+
+  removeSelectedFile = ({ filename }) => {
+    const { selectedFiles } = this.state
+    const fileKeys = Object.keys(selectedFiles)
+    const index = fileKeys.indexOf(filename)
+
+    const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
+    this.setState({ selectedImage: selectedFiles[prevFilename] })
+
+    this.setState(
+      prevState => ({
+        selectedFiles: omit([filename], prevState.selectedFiles),
+      })
+      // () => {
+      //   this.props.removeFileFromPost(filename)
+      // }
+    )
+  }
+
+  toggleSelection = file => {
+    const { closeDropdown } = this.props
+
+    closeDropdown()
+
+    if (this.isSelected(file)) {
+      return this.removeSelectedFile(file)
+    }
+
+    return this.addSelectedFile(file)
   }
 
   // crop = () => {
@@ -66,7 +123,9 @@ export default class CameraRoll extends Component {
     }
   }
 
-  transformData: {}
+  isSelected = ({ filename }) => hasIn(filename, this.state.selectedFiles)
+
+  // transformData: {}
 
   renderImageCropper() {
     if (!this.state.selectedImage) return null
@@ -74,21 +133,14 @@ export default class CameraRoll extends Component {
     return (
       <Cropper
         image={this.state.selectedImage}
-        size={{ width: 375, height: 375 }}
-        style={{ width: 375, height: 375 }}
-        onTransformDataChange={this.setTransformData}
+        size={{ width: SQUARE_SIZE, height: SQUARE_SIZE }}
+        onCropping={this.setTransformData}
       />
     )
   }
 
-  renderCroppedImage() {
-    return (
-      <Placeholder source={{ uri: this.state.croppedImage }} style={{ width: 375, height: 375 }} />
-    )
-  }
-
   renderItem = ({ item }) => {
-    const selected = false // this.isSelected(item)
+    const selected = this.isSelected(item)
 
     return (
       <Cell>
@@ -105,10 +157,9 @@ export default class CameraRoll extends Component {
       <FlatList
         initialNumToRender={PAGE_SIZE}
         contentContainerStyle={{
-          paddingTop: GUTTER * 2,
-          paddingBottom: GUTTER * 2,
-          paddingLeft: GUTTER * 2,
-          paddingRight: GUTTER * 2,
+          paddingBottom: GUTTER,
+          paddingLeft: GUTTER / 2,
+          paddingRight: GUTTER / 2,
         }}
         numColumns={4}
         data={this.state.images}
@@ -120,11 +171,23 @@ export default class CameraRoll extends Component {
   }
 
   render() {
-    return (
-      <Base>
-        {!this.state.croppedImage ? this.renderImageCropper() : this.renderCroppedImage()}
-        {this.renderCameraRoll()}
-      </Base>
-    )
+    const { photoPermission, isLoading } = this.state
+
+    if (isLoading) return null
+
+    let component
+
+    if (photoPermission) {
+      component = (
+        <Fragment>
+          <Placeholder>{this.renderImageCropper()}</Placeholder>
+          {this.renderCameraRoll()}
+        </Fragment>
+      )
+    } else {
+      component = <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
+    }
+
+    return <Base>{component}</Base>
   }
 }
