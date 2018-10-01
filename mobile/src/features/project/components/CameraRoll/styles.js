@@ -5,21 +5,25 @@ import { COLORS, HEADER_HEIGHT } from 'ui/constants'
 const { width } = Dimensions.get('window')
 
 export const GUTTER = 5
-export const ITEM_SIZE = width / 2 - 15
+export const ITEM_SIZE = width / 4 - 15
 
-export const Base = styled.TouchableOpacity`
-  flex: 1;
+export const Base = styled.View`
   padding-top: ${HEADER_HEIGHT};
   background-color: ${COLORS.DARK};
 `
 
+export const Placeholder = styled.Image`
+  width: ${width};
+  height: ${width};
+`
+
 export const Cell = styled.View`
-  width: 50%;
+  width: 25%;
 `
 
 export const Image = styled.Image`
-  margin-left: ${GUTTER};
-  margin-right: ${GUTTER};
+  margin-left: ${GUTTER / 2};
+  margin-right: ${GUTTER / 2};
   margin-bottom: ${GUTTER * 2};
   height: ${ITEM_SIZE};
   width: ${ITEM_SIZE};

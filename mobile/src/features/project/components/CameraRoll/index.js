@@ -1,49 +1,62 @@
-import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
-import { cropImage } from 'utils/image'
-import { hasIn, omit } from 'ramda'
-import { logError } from 'utils/analytics'
+import React, { Component } from 'react'
+import { CameraRoll as RNCameraRoll, FlatList, ImageEditor } from 'react-native'
 import { Touchable } from 'ui'
-import Permissions from 'react-native-permissions'
-import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
-import AskForPermission from '../AskForPermission'
-import { Base, Cell, Image, Overlay, GUTTER, ITEM_SIZE } from './styles'
+import { Base, Placeholder, Cell, Image, Overlay, GUTTER } from './styles'
+import Cropper from './Cropper'
 
-const PERMISSION = 'photo'
-const AUTHORIZED = 'authorized'
-const PAGE_SIZE = 10
+const PAGE_SIZE = 20
 
-export default class CameraRoll extends PureComponent {
-  static propTypes = {
-    addFileToPost: PropTypes.func.isRequired,
-    closeDropdown: PropTypes.func.isRequired,
-    removeFileFromPost: PropTypes.func.isRequired,
-    resetSelection: PropTypes.bool.isRequired,
-  }
-
+export default class CameraRoll extends Component {
   state = {
+    // isLoading: true,
+    // photoPermission: false,
+    // selectedFiles: {},
+    croppedImage: null,
     end_cursor: null,
     has_next_page: true,
     images: [],
-    isLoading: true,
-    photoPermission: false,
-    selectedFiles: {},
+    selectedImage: null,
   }
 
-  componentDidMount() {
-    Permissions.check(PERMISSION).then(res => {
-      this.setState({ isLoading: false })
-      if (res === AUTHORIZED) {
-        this.enablePermission()
-        this.getpictures()
+  constructor(props) {
+    super(props)
+
+    this.getpictures()
+  }
+
+  getpictures = async after => {
+    const { images, has_next_page: hasNextPage, selectedImage } = this.state
+
+    if (!hasNextPage) return
+
+    try {
+      const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
+      const newImages = data.edges.map(image => image.node.image)
+
+      if (!selectedImage) {
+        this.setState({ selectedImage: data.edges[0].node.image })
       }
-    })
+
+      this.setState({
+        images: images.concat(newImages),
+        ...data.page_info,
+      })
+    } catch (err) {
+      // logError(err)
+    }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.resetSelection) {
-      this.setState({ selectedFiles: {} })
-    }
+  // crop = () => {
+  //   ImageEditor.cropImage(
+  //     this.state.image.uri,
+  //     this.transformData,
+  //     croppedImage => this.setState({ croppedImage }),
+  //     () => null
+  //   )
+  // }
+
+  setTransformData = data => {
+    this.transformData = data
   }
 
   onEndReached = ({ distanceFromEnd }) => {
@@ -53,66 +66,29 @@ export default class CameraRoll extends PureComponent {
     }
   }
 
-  getpictures = async after => {
-    const { images, has_next_page: hasNextPage } = this.state
-    if (!hasNextPage) return
+  transformData: {}
 
-    try {
-      const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
-      const newImages = data.edges.map(image => image.node.image)
+  renderImageCropper() {
+    if (!this.state.selectedImage) return null
 
-      this.setState({ images: images.concat(newImages), ...data.page_info })
-    } catch (err) {
-      logError(err)
-    }
-  }
-
-  getItemLayout = (data, index) => ({ length: ITEM_SIZE, offset: ITEM_SIZE * index, index })
-
-  enablePermission = () => {
-    this.getpictures()
-    this.setState({ photoPermission: true })
-  }
-
-  addSelectedFile = file => {
-    this.setState(
-      prevState => ({
-        selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
-      }),
-      async () => {
-        const result = await cropImage(file.uri)
-        this.props.addFileToPost({ ...result, originalFilename: file.filename })
-      }
+    return (
+      <Cropper
+        image={this.state.selectedImage}
+        size={{ width: 375, height: 375 }}
+        style={{ width: 375, height: 375 }}
+        onTransformDataChange={this.setTransformData}
+      />
     )
   }
 
-  removeSelectedFile = ({ filename }) => {
-    this.setState(
-      prevState => ({
-        selectedFiles: omit([filename], prevState.selectedFiles),
-      }),
-      () => {
-        this.props.removeFileFromPost(filename)
-      }
+  renderCroppedImage() {
+    return (
+      <Placeholder source={{ uri: this.state.croppedImage }} style={{ width: 375, height: 375 }} />
     )
   }
-
-  toggleSelection = file => {
-    const { closeDropdown } = this.props
-
-    closeDropdown()
-
-    if (this.isSelected(file)) {
-      return this.removeSelectedFile(file)
-    }
-
-    return this.addSelectedFile(file)
-  }
-
-  isSelected = ({ filename }) => hasIn(filename, this.state.selectedFiles)
 
   renderItem = ({ item }) => {
-    const selected = this.isSelected(item)
+    const selected = false // this.isSelected(item)
 
     return (
       <Cell>
@@ -128,14 +104,13 @@ export default class CameraRoll extends PureComponent {
     return (
       <FlatList
         initialNumToRender={PAGE_SIZE}
-        getItemLayout={this.getItemLayout}
-        removeClippedSubviews
         contentContainerStyle={{
+          paddingTop: GUTTER * 2,
           paddingBottom: GUTTER * 2,
-          paddingLeft: GUTTER,
-          paddingRight: GUTTER,
+          paddingLeft: GUTTER * 2,
+          paddingRight: GUTTER * 2,
         }}
-        numColumns={2}
+        numColumns={4}
         data={this.state.images}
         keyExtractor={item => item.uri}
         onEndReached={this.onEndReached}
@@ -145,21 +120,10 @@ export default class CameraRoll extends PureComponent {
   }
 
   render() {
-    const { photoPermission, isLoading } = this.state
-
-    if (isLoading) return null
-
-    let component
-
-    if (photoPermission) {
-      component = this.renderCameraRoll()
-    } else {
-      component = <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
-    }
-
     return (
-      <Base onPressIn={this.props.closeDropdown} activeOpacity={1} paddingTop={photoPermission}>
-        {component}
+      <Base>
+        {!this.state.croppedImage ? this.renderImageCropper() : this.renderCroppedImage()}
+        {this.renderCameraRoll()}
       </Base>
     )
   }
