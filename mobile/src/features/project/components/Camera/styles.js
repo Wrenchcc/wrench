@@ -1,23 +1,9 @@
 import styled from 'styled-components'
-import { Dimensions } from 'react-native'
 import UiTouchable from 'ui/Touchable'
-import { COLORS, HEADER_HEIGHT } from 'ui/constants'
+import { COLORS } from 'ui/constants'
 
-const { width } = Dimensions.get('window')
-
-export const Base = styled.TouchableWithoutFeedback`
+export const Base = styled.View`
   flex: 1;
-`
-
-export const Inner = styled.View`
-  flex: 1;
-  padding-top: ${HEADER_HEIGHT};
-`
-
-export const Picture = styled.Image`
-  width: ${width};
-  height: ${width};
-  background: #222;
 `
 
 export const Content = styled.View`

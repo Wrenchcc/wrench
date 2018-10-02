@@ -1,12 +1,11 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import { CameraRoll as RNCameraRoll, FlatList, ImageEditor } from 'react-native'
 import Permissions from 'react-native-permissions'
 import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
 import AskForPermission from '../AskForPermission'
-import { Base, Placeholder, Cell, Image, Overlay, GUTTER, SQUARE_SIZE } from './styles'
-import Cropper from './Cropper'
+import { Base, Cell, Image, Overlay, GUTTER } from './styles'
 
 const AUTHORIZED = 'authorized'
 const PAGE_SIZE = 10
@@ -112,17 +111,17 @@ export default class CameraRoll extends PureComponent {
 
   // transformData: {}
 
-  renderImageCropper() {
-    if (!this.state.selectedImage) return null
-
-    return (
-      <Cropper
-        image={this.state.selectedImage}
-        size={{ width: SQUARE_SIZE, height: SQUARE_SIZE }}
-        onCropping={this.setTransformData}
-      />
-    )
-  }
+  // renderImageCropper() {
+  //   if (!this.state.selectedImage) return null
+  //
+  //   return (
+  //     <Cropper
+  //       image={this.state.selectedImage}
+  //       size={{ width: SQUARE_SIZE, height: SQUARE_SIZE }}
+  //       onCropping={this.setTransformData}
+  //     />
+  //   )
+  // }
 
   renderItem = ({ item }) => {
     const selected = this.isSelected(item)
@@ -163,12 +162,7 @@ export default class CameraRoll extends PureComponent {
     let component
 
     if (photoPermission) {
-      component = (
-        <Fragment>
-          {this.props.active && <Placeholder>{this.renderImageCropper()}</Placeholder>}
-          {this.renderCameraRoll()}
-        </Fragment>
-      )
+      component = this.renderCameraRoll()
     } else {
       component = <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
     }

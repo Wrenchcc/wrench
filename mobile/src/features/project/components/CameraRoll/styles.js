@@ -14,12 +14,6 @@ export const Base = styled.View`
   background-color: ${COLORS.DARK};
 `
 
-export const Placeholder = styled.View`
-  width: ${width};
-  height: ${width};
-  padding-bottom: ${GUTTER * 2};
-`
-
 export const Cell = styled.View`
   width: 25%;
   padding-left: ${GUTTER / 2};

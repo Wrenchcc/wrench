@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { KeyboardAvoidingView, InteractionManager } from 'react-native'
 import { translate } from 'react-i18next'
@@ -13,10 +13,9 @@ import { track, events } from 'utils/analytics'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
 import { close, arrowLeftWhite } from 'images'
 import Camera from 'features/project/components/Camera'
-
 import CameraRoll from 'features/project/components/CameraRoll'
 import SelectProject from 'features/project/components/SelectProject'
-import { Base, Top, Edit, Inner, Overlay } from './styles'
+import { Base, Placeholder, Top, Edit, Inner, Overlay } from './styles'
 
 const MODES = {
   CAMERA: 'camera',
@@ -32,7 +31,7 @@ const defaultState = {
   mode: MODES.CAMERA,
 }
 
-class AddPost extends Component {
+class AddPost extends PureComponent {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
     projects: PropTypes.array.isRequired,
@@ -198,17 +197,9 @@ class AddPost extends Component {
 
         <Top>{this.renderHeader()}</Top>
 
-        <Camera
-          active={this.state.mode === MODES.CAMERA}
-          onTakePicture={this.onTakePicture}
-          closeDropdown={this.closeDropdown}
-          navigateToCameraRoll={this.navigateToCameraRoll}
-          openEdit={this.openEdit}
-          capturedPicture={this.state.capturedPicture}
-        />
+        <Camera onTakePicture={this.onTakePicture} />
 
         <CameraRoll
-          active={this.state.mode === MODES.CAMERA_ROLL}
           addFileToPost={this.addFileToPost}
           closeDropdown={this.closeDropdown}
           dropDownActive={this.state.expanded}
