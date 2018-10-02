@@ -37,9 +37,11 @@ export default class Camera extends PureComponent {
     })
   }
 
-  enablePermission = () => this.setState({ cameraPermission: true })
+  enablePermission = () => {
+    this.setState({ cameraPermission: true })
+  }
 
-  toggleFlashMode = () => {
+  changeFlashMode = () => {
     this.setState(prevState => ({
       flashMode:
         prevState.flashMode === RNCamera.Constants.FlashMode.on
@@ -48,6 +50,15 @@ export default class Camera extends PureComponent {
     }))
 
     this.props.closeDropdown()
+  }
+
+  changeCameraType = () => {
+    this.setState(prevState => ({
+      type:
+        prevState.type === RNCamera.Constants.Type.back
+          ? RNCamera.Constants.Type.front
+          : RNCamera.Constants.Type.back,
+    }))
   }
 
   takePicture = async () => {
@@ -75,9 +86,9 @@ export default class Camera extends PureComponent {
         </RNCamera>
         <Content>
           <Bottom>
-            <CameraMode onPress={() => console.log('press')} />
+            <CameraMode onPress={this.changeCameraType} />
             <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
-            <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
+            <FlashMode onPress={this.changeFlashMode} flashMode={this.state.flashMode} />
           </Bottom>
         </Content>
       </Inner>
@@ -85,10 +96,12 @@ export default class Camera extends PureComponent {
   }
 
   render() {
-    const { cameraPermission, isLoading } = this.state
+    const { cameraPermission, isLoading, type } = this.state
     if (isLoading) return null
 
     let component
+
+    if (!this.props.active) return null
 
     if (cameraPermission) {
       component = this.renderCamera()

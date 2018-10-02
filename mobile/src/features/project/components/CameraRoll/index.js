@@ -39,17 +39,13 @@ export default class CameraRoll extends PureComponent {
   }
 
   getpictures = async after => {
-    const { images, has_next_page: hasNextPage, selectedImage } = this.state
+    const { images, has_next_page: hasNextPage } = this.state
 
     if (!hasNextPage) return
 
     try {
       const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
       const newImages = data.edges.map(image => image.node.image)
-
-      if (!selectedImage) {
-        this.setState({ selectedImage: data.edges[0].node.image })
-      }
 
       this.setState({
         images: images.concat(newImages),
@@ -61,16 +57,10 @@ export default class CameraRoll extends PureComponent {
   }
 
   addSelectedFile = file => {
-    this.setState(
-      prevState => ({
-        selectedImage: file,
-        selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
-      })
-      // async () => {
-      // const result = await cropImage(file.uri)
-      // this.props.addFileToPost({ ...result, originalFilename: file.filename })
-      // }
-    )
+    this.setState(prevState => ({
+      selectedImage: file,
+      selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
+    }))
   }
 
   removeSelectedFile = ({ filename }) => {
@@ -81,14 +71,9 @@ export default class CameraRoll extends PureComponent {
     const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
     this.setState({ selectedImage: selectedFiles[prevFilename] })
 
-    this.setState(
-      prevState => ({
-        selectedFiles: omit([filename], prevState.selectedFiles),
-      })
-      // () => {
-      //   this.props.removeFileFromPost(filename)
-      // }
-    )
+    this.setState(prevState => ({
+      selectedFiles: omit([filename], prevState.selectedFiles),
+    }))
   }
 
   toggleSelection = file => {
@@ -180,7 +165,7 @@ export default class CameraRoll extends PureComponent {
     if (photoPermission) {
       component = (
         <Fragment>
-          {/* <Placeholder>{this.renderImageCropper()}</Placeholder> */}
+          {this.props.active && <Placeholder>{this.renderImageCropper()}</Placeholder>}
           {this.renderCameraRoll()}
         </Fragment>
       )

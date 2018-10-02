@@ -18,12 +18,18 @@ import CameraRoll from 'features/project/components/CameraRoll'
 import SelectProject from 'features/project/components/SelectProject'
 import { Base, Top, Edit, Inner, Overlay } from './styles'
 
+const MODES = {
+  CAMERA: 'camera',
+  CAMERA_ROLL: 'camera_roll',
+}
+
 const defaultState = {
   capturedPicture: null,
   caption: null,
   edit: false,
   expanded: false,
   files: [],
+  mode: MODES.CAMERA,
 }
 
 class AddPost extends Component {
@@ -193,6 +199,7 @@ class AddPost extends Component {
         <Top>{this.renderHeader()}</Top>
 
         <Camera
+          active={this.state.mode === MODES.CAMERA}
           onTakePicture={this.onTakePicture}
           closeDropdown={this.closeDropdown}
           navigateToCameraRoll={this.navigateToCameraRoll}
@@ -201,6 +208,7 @@ class AddPost extends Component {
         />
 
         <CameraRoll
+          active={this.state.mode === MODES.CAMERA_ROLL}
           addFileToPost={this.addFileToPost}
           closeDropdown={this.closeDropdown}
           dropDownActive={this.state.expanded}
