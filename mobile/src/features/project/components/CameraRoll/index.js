@@ -10,8 +10,8 @@ const PAGE_SIZE = 16
 export default class CameraRoll extends PureComponent {
   state = {
     end_cursor: null,
-    has_next_page: true,
     files: [],
+    has_next_page: true,
     selectedFiles: {},
   }
 

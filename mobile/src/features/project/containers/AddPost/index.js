@@ -7,7 +7,7 @@ import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { updatePostProgress } from 'graphql/mutations/post/postProgress'
-import { upload } from 'utils/storage/s3'
+import uploadToS3 from 'utils/storage/s3'
 import { navigateToFeed } from 'navigation'
 import { track, events } from 'utils/analytics'
 import Camera from 'features/project/components/Camera'
@@ -24,10 +24,9 @@ class AddPost extends PureComponent {
     super(props)
 
     this.state = {
-      project: pathOr(null, ['projects', 0, 'node'], props),
       caption: null,
-      expanded: false,
       files: [],
+      project: pathOr(null, ['projects', 0, 'node'], props),
     }
 
     track(events.POST_CREATED_INITED)
@@ -39,21 +38,21 @@ class AddPost extends PureComponent {
     const { caption, project, files } = this.state
 
     this.props.updatePostProgress({
+      __typename: 'PostProgress',
       image: pathOr(null, [0, 'uri'], files),
       title: project.title,
-      __typename: 'PostProgress',
     })
 
     navigateToFeed()
 
     InteractionManager.runAfterInteractions(async () => {
       try {
-        const uploadedFiles = await upload(files)
+        const uploadedFiles = await uploadToS3(files)
 
         await this.props.addPost({
           caption,
-          projectId: project.id,
           files: uploadedFiles,
+          projectId: project.id,
         })
         track(events.POST_CREATED)
       } catch {
@@ -68,12 +67,7 @@ class AddPost extends PureComponent {
         <Placeholder>
           <Camera onTakePicture={this.onTakePicture} />
         </Placeholder>
-
-        <CameraRoll
-          addFileToPost={this.addFileToPost}
-          dropDownActive={this.state.expanded}
-          removeFileFromPost={this.removeFileFromPost}
-        />
+        <CameraRoll />
       </Base>
     )
   }
