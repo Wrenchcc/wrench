@@ -14,20 +14,6 @@ import Camera from 'features/project/components/Camera'
 import CameraRoll from 'features/project/components/CameraRoll'
 import { Base, Placeholder } from './styles'
 
-const VIEW_MODES = {
-  CAMERA: 'camera',
-  CAMERA_ROLL: 'camera_roll',
-}
-
-const defaultState = {
-  capturedPicture: null,
-  caption: null,
-  edit: false,
-  expanded: false,
-  files: [],
-  mode: VIEW_MODES.CAMERA,
-}
-
 class AddPost extends PureComponent {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
@@ -39,32 +25,15 @@ class AddPost extends PureComponent {
 
     this.state = {
       project: pathOr(null, ['projects', 0, 'node'], props),
-      ...defaultState,
+      caption: null,
+      expanded: false,
+      files: [],
     }
 
     track(events.POST_CREATED_INITED)
   }
 
-  setSelectedProject = project => {
-    this.setState({ project }, this.closeDropdown)
-  }
-
-  addFileToPost = file => {
-    this.closeDropdown()
-    this.setState(prevState => ({ files: [...prevState.files, file] }))
-  }
-
-  removeFileFromPost = originalFilename => {
-    this.setState(prevState => ({
-      files: prevState.files.filter(a => a.originalFilename !== originalFilename),
-    }))
-  }
-
-  onTakePicture = file => {
-    this.setState({ capturedPicture: file, files: [file] })
-  }
-
-  onChangeText = text => this.setState({ caption: text })
+  onTakePicture = file => {}
 
   onSave = () => {
     const { caption, project, files } = this.state
@@ -102,10 +71,8 @@ class AddPost extends PureComponent {
 
         <CameraRoll
           addFileToPost={this.addFileToPost}
-          closeDropdown={this.closeDropdown}
           dropDownActive={this.state.expanded}
           removeFileFromPost={this.removeFileFromPost}
-          resetSelection={!!this.state.capturedPicture}
         />
       </Base>
     )

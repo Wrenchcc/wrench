@@ -1,44 +1,26 @@
 import React, { PureComponent } from 'react'
-import { CameraRoll as RNCameraRoll, FlatList, ImageEditor } from 'react-native'
-import Permissions from 'react-native-permissions'
+import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
 import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
-import AskForPermission from '../AskForPermission'
 import { Base, Cell, Image, Overlay, GUTTER } from './styles'
 
-const AUTHORIZED = 'authorized'
-const PAGE_SIZE = 10
-const PERMISSION = 'photo'
+const PAGE_SIZE = 16
 
 export default class CameraRoll extends PureComponent {
   state = {
     end_cursor: null,
     has_next_page: true,
-    images: [],
-    isLoading: true,
-    photoPermission: false,
+    files: [],
     selectedFiles: {},
-    selectedImage: null,
   }
 
   componentDidMount() {
-    Permissions.check(PERMISSION).then(res => {
-      this.setState({ isLoading: false })
-      if (res === AUTHORIZED) {
-        this.enablePermission()
-        this.getpictures()
-      }
-    })
-  }
-
-  enablePermission = () => {
     this.getpictures()
-    this.setState({ photoPermission: true })
   }
 
   getpictures = async after => {
-    const { images, has_next_page: hasNextPage } = this.state
+    const { files, has_next_page: hasNextPage } = this.state
 
     if (!hasNextPage) return
 
@@ -47,7 +29,7 @@ export default class CameraRoll extends PureComponent {
       const newImages = data.edges.map(image => image.node.image)
 
       this.setState({
-        images: images.concat(newImages),
+        files: files.concat(newImages),
         ...data.page_info,
       })
     } catch (err) {
@@ -57,7 +39,7 @@ export default class CameraRoll extends PureComponent {
 
   addSelectedFile = file => {
     this.setState(prevState => ({
-      selectedImage: file,
+      currentFile: file,
       selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
     }))
   }
@@ -68,7 +50,7 @@ export default class CameraRoll extends PureComponent {
     const index = fileKeys.indexOf(filename)
 
     const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
-    this.setState({ selectedImage: selectedFiles[prevFilename] })
+    this.setState({ currentFile: selectedFiles[prevFilename] })
 
     this.setState(prevState => ({
       selectedFiles: omit([filename], prevState.selectedFiles),
@@ -76,28 +58,11 @@ export default class CameraRoll extends PureComponent {
   }
 
   toggleSelection = file => {
-    const { closeDropdown } = this.props
-
-    closeDropdown()
-
     if (this.isSelected(file)) {
       return this.removeSelectedFile(file)
     }
 
     return this.addSelectedFile(file)
-  }
-
-  // crop = () => {
-  //   ImageEditor.cropImage(
-  //     this.state.image.uri,
-  //     this.transformData,
-  //     croppedImage => this.setState({ croppedImage }),
-  //     () => null
-  //   )
-  // }
-
-  setTransformData = data => {
-    this.transformData = data
   }
 
   onEndReached = ({ distanceFromEnd }) => {
@@ -109,64 +74,32 @@ export default class CameraRoll extends PureComponent {
 
   isSelected = ({ filename }) => hasIn(filename, this.state.selectedFiles)
 
-  // transformData: {}
-
-  // renderImageCropper() {
-  //   if (!this.state.selectedImage) return null
-  //
-  //   return (
-  //     <Cropper
-  //       image={this.state.selectedImage}
-  //       size={{ width: SQUARE_SIZE, height: SQUARE_SIZE }}
-  //       onCropping={this.setTransformData}
-  //     />
-  //   )
-  // }
-
-  renderItem = ({ item }) => {
-    const selected = this.isSelected(item)
-
-    return (
-      <Cell>
-        <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-          <Overlay selected={selected} />
-          <Image selected={selected} source={{ uri: item.uri }} />
-        </Touchable>
-      </Cell>
-    )
-  }
-
-  renderCameraRoll() {
-    return (
-      <FlatList
-        initialNumToRender={PAGE_SIZE}
-        contentContainerStyle={{
-          paddingBottom: GUTTER,
-          paddingLeft: GUTTER / 2,
-          paddingRight: GUTTER / 2,
-        }}
-        numColumns={4}
-        data={this.state.images}
-        keyExtractor={item => item.uri}
-        onEndReached={this.onEndReached}
-        renderItem={this.renderItem}
-      />
-    )
-  }
+  renderItem = ({ item }) => (
+    <Cell>
+      <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
+        <Overlay selected={this.isSelected(item)} />
+        <Image source={{ uri: item.uri }} />
+      </Touchable>
+    </Cell>
+  )
 
   render() {
-    const { photoPermission, isLoading } = this.state
-
-    if (isLoading) return null
-
-    let component
-
-    if (photoPermission) {
-      component = this.renderCameraRoll()
-    } else {
-      component = <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
-    }
-
-    return <Base>{component}</Base>
+    return (
+      <Base>
+        <FlatList
+          initialNumToRender={PAGE_SIZE}
+          contentContainerStyle={{
+            paddingBottom: GUTTER,
+            paddingLeft: GUTTER / 2,
+            paddingRight: GUTTER / 2,
+          }}
+          numColumns={4}
+          data={this.state.files}
+          keyExtractor={item => item.uri}
+          onEndReached={this.onEndReached}
+          renderItem={this.renderItem}
+        />
+      </Base>
+    )
   }
 }
