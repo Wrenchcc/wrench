@@ -25,7 +25,5 @@ include ':react-native-code-push'
 project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
 include ':react-native-camera'
 project(':react-native-camera').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-camera/android')
-include ':react-native-image-manipulator'
-project(':react-native-image-manipulator').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-image-manipulator/android')
 
 include ':app'
