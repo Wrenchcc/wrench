@@ -14,5 +14,5 @@ export const Placeholder = styled.View`
   width: ${width};
   height: ${width};
   background: #222;
-  padding-bottom: 5;
+  margin-bottom: 5;
 `

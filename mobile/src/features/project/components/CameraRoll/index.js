@@ -3,7 +3,7 @@ import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
 import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
-import { Base, Cell, Image, Overlay, GUTTER, COLUMNS } from './styles'
+import { Item, Image, Overlay, GUTTER, COLUMNS } from './styles'
 
 const PAGE_SIZE = 16
 
@@ -39,18 +39,18 @@ export default class CameraRoll extends PureComponent {
 
   addSelectedFile = file => {
     this.setState(prevState => ({
-      current: file,
+      // current: file,
       selected: { ...prevState.selected, [file.filename]: file },
     }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    const { selected } = this.state
-    const fileKeys = Object.keys(selected)
-    const index = fileKeys.indexOf(filename)
+    // const { selected } = this.state
+    // const fileKeys = Object.keys(selected)
+    // const index = fileKeys.indexOf(filename)
 
-    const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
-    this.setState({ current: selected[prevFilename] })
+    // const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
+    // this.setState({ current: selected[prevFilename] })
 
     this.setState(prevState => ({
       selected: omit([filename], prevState.selected),
@@ -75,31 +75,29 @@ export default class CameraRoll extends PureComponent {
   isSelected = ({ filename }) => hasIn(filename, this.state.selected)
 
   renderItem = ({ item }) => (
-    <Cell>
+    <Item>
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
         <Overlay selected={this.isSelected(item)} />
         <Image source={{ uri: item.uri }} />
       </Touchable>
-    </Cell>
+    </Item>
   )
 
   render() {
     return (
-      <Base>
-        <FlatList
-          initialNumToRender={PAGE_SIZE}
-          contentContainerStyle={{
-            paddingBottom: GUTTER,
-            paddingLeft: GUTTER / 2,
-            paddingRight: GUTTER / 2,
-          }}
-          numColumns={COLUMNS}
-          data={this.state.data}
-          keyExtractor={item => item.uri}
-          onEndReached={this.onEndReached}
-          renderItem={this.renderItem}
-        />
-      </Base>
+      <FlatList
+        initialNumToRender={PAGE_SIZE}
+        contentContainerStyle={{
+          paddingBottom: GUTTER,
+          paddingLeft: GUTTER / 2,
+          paddingRight: GUTTER / 2,
+        }}
+        numColumns={COLUMNS}
+        data={this.state.data}
+        keyExtractor={item => item.uri}
+        onEndReached={this.onEndReached}
+        renderItem={this.renderItem}
+      />
     )
   }
 }

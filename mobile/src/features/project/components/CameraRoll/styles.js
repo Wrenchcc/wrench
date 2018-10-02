@@ -1,20 +1,14 @@
 import { Dimensions } from 'react-native'
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 
 const { width } = Dimensions.get('window')
 
 export const GUTTER = 3
 export const COLUMNS = 4
+
 const ITEM_SIZE = width / COLUMNS - 4
 
-export const Base = styled.View`
-  flex: 1;
-  padding-top: 5;
-  background-color: ${COLORS.DARK};
-`
-
-export const Cell = styled.View`
+export const Item = styled.View`
   width: 25%;
   padding-left: ${GUTTER / 2};
   padding-right: ${GUTTER / 2};
