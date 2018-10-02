@@ -3,34 +3,34 @@ import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
 import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
-import { Base, Cell, Image, Overlay, GUTTER } from './styles'
+import { Base, Cell, Image, Overlay, GUTTER, COLUMNS } from './styles'
 
 const PAGE_SIZE = 16
 
 export default class CameraRoll extends PureComponent {
   state = {
+    data: [],
     end_cursor: null,
-    files: [],
     has_next_page: true,
-    selectedFiles: {},
+    selected: {},
   }
 
   componentDidMount() {
-    this.getpictures()
+    this.loadFiles()
   }
 
-  getpictures = async after => {
-    const { files, has_next_page: hasNextPage } = this.state
+  loadFiles = async after => {
+    const { data, has_next_page: hasNextPage } = this.state
 
     if (!hasNextPage) return
 
     try {
-      const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
-      const newImages = data.edges.map(image => image.node.image)
+      const result = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
+      const loadedFiles = result.edges.map(image => image.node.image)
 
       this.setState({
-        files: files.concat(newImages),
-        ...data.page_info,
+        data: data.concat(loadedFiles),
+        ...result.page_info,
       })
     } catch (err) {
       logError(err)
@@ -39,21 +39,21 @@ export default class CameraRoll extends PureComponent {
 
   addSelectedFile = file => {
     this.setState(prevState => ({
-      currentFile: file,
-      selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
+      current: file,
+      selected: { ...prevState.selected, [file.filename]: file },
     }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    const { selectedFiles } = this.state
-    const fileKeys = Object.keys(selectedFiles)
+    const { selected } = this.state
+    const fileKeys = Object.keys(selected)
     const index = fileKeys.indexOf(filename)
 
     const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
-    this.setState({ currentFile: selectedFiles[prevFilename] })
+    this.setState({ current: selected[prevFilename] })
 
     this.setState(prevState => ({
-      selectedFiles: omit([filename], prevState.selectedFiles),
+      selected: omit([filename], prevState.selected),
     }))
   }
 
@@ -68,11 +68,11 @@ export default class CameraRoll extends PureComponent {
   onEndReached = ({ distanceFromEnd }) => {
     const { has_next_page: hasNextPage } = this.state
     if (hasNextPage && distanceFromEnd > 0) {
-      this.getpictures(this.state.end_cursor)
+      this.loadFiles(this.state.end_cursor)
     }
   }
 
-  isSelected = ({ filename }) => hasIn(filename, this.state.selectedFiles)
+  isSelected = ({ filename }) => hasIn(filename, this.state.selected)
 
   renderItem = ({ item }) => (
     <Cell>
@@ -93,8 +93,8 @@ export default class CameraRoll extends PureComponent {
             paddingLeft: GUTTER / 2,
             paddingRight: GUTTER / 2,
           }}
-          numColumns={4}
-          data={this.state.files}
+          numColumns={COLUMNS}
+          data={this.state.data}
           keyExtractor={item => item.uri}
           onEndReached={this.onEndReached}
           renderItem={this.renderItem}

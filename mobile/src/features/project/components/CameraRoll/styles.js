@@ -5,7 +5,8 @@ import { COLORS } from 'ui/constants'
 const { width } = Dimensions.get('window')
 
 export const GUTTER = 3
-const ITEM_SIZE = width / 4 - 4
+export const COLUMNS = 4
+const ITEM_SIZE = width / COLUMNS - 4
 
 export const Base = styled.View`
   flex: 1;
