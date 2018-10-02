@@ -5,11 +5,9 @@ import FlashMode from '../FlashMode'
 import CameraMode from '../CameraMode'
 import { Base, Content, Bottom, TakePicture } from './styles'
 
-// TODO: Use built in cropping in camera
 export default class Camera extends PureComponent {
   state = {
     flashMode: RNCamera.Constants.FlashMode.off,
-    isLoading: true,
     type: RNCamera.Constants.Type.back,
   }
 
@@ -38,12 +36,9 @@ export default class Camera extends PureComponent {
   }
 
   render() {
-    const { isLoading, type } = this.state
-    if (isLoading) return null
-
     return (
       <Base>
-        <RNCamera ref={this.setRef} type={type} flashMode={this.state.flashMode} />
+        <RNCamera ref={this.setRef} type={this.state.type} flashMode={this.state.flashMode} />
         <Content>
           <Bottom>
             <CameraMode onPress={this.changeCameraType} />

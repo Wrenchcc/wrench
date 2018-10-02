@@ -1,23 +1,20 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { KeyboardAvoidingView, InteractionManager } from 'react-native'
+import { InteractionManager } from 'react-native'
 import { translate } from 'react-i18next'
-import { pathOr, isEmpty } from 'ramda'
+import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { updatePostProgress } from 'graphql/mutations/post/postProgress'
 import { upload } from 'utils/storage/s3'
-import { navigateBack, navigateToFeed } from 'navigation'
+import { navigateToFeed } from 'navigation'
 import { track, events } from 'utils/analytics'
-import { Dropdown, Icon, Input, Text, Header } from 'ui'
-import { close, arrowLeftWhite } from 'images'
 import Camera from 'features/project/components/Camera'
 import CameraRoll from 'features/project/components/CameraRoll'
-import SelectProject from 'features/project/components/SelectProject'
-import { Base, Placeholder, Top, Edit, Inner, Overlay } from './styles'
+import { Base, Placeholder } from './styles'
 
-const MODES = {
+const VIEW_MODES = {
   CAMERA: 'camera',
   CAMERA_ROLL: 'camera_roll',
 }
@@ -28,13 +25,12 @@ const defaultState = {
   edit: false,
   expanded: false,
   files: [],
-  mode: MODES.CAMERA,
+  mode: VIEW_MODES.CAMERA,
 }
 
 class AddPost extends PureComponent {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
-    projects: PropTypes.array.isRequired,
     updatePostProgress: PropTypes.func.isRequired,
   }
 
@@ -68,22 +64,7 @@ class AddPost extends PureComponent {
     this.setState({ capturedPicture: file, files: [file] })
   }
 
-  toggleDropdown = () => this.setState(prevState => ({ expanded: !prevState.expanded }))
-
-  closeDropdown = () => this.setState({ expanded: false })
-
-  closeEdit = () => {
-    this.setState(defaultState)
-  }
-
-  openEdit = () => this.setState({ edit: true })
-
   onChangeText = text => this.setState({ caption: text })
-
-  navigateToCameraRoll = () => {
-    this.swiper.scrollBy(-1)
-    this.closeDropdown()
-  }
 
   onSave = () => {
     const { caption, project, files } = this.state
@@ -112,92 +93,12 @@ class AddPost extends PureComponent {
     })
   }
 
-  renderHeaderLeft() {
-    if (this.state.edit) {
-      return <Icon onPress={() => this.closeEdit()} source={arrowLeftWhite} />
-    }
-    return <Icon onPress={() => navigateBack()} source={close} />
-  }
-
-  renderHeaderRight() {
-    const { edit, files } = this.state
-
-    if (!edit && !isEmpty(files)) {
-      return (
-        <Text color="white" medium onPress={() => this.openEdit()}>
-          {this.props.t('AddPost:next')}
-        </Text>
-      )
-    }
-
-    if (edit && !isEmpty(files)) {
-      return (
-        <Text color="white" medium onPress={this.onSave}>
-          {this.props.t('AddPost:post')}
-        </Text>
-      )
-    }
-
-    return null
-  }
-
-  renderHeader() {
-    return (
-      <Header
-        headerLeft={this.renderHeaderLeft()}
-        headerRight={this.renderHeaderRight()}
-        headerCenter={
-          <Dropdown
-            title={this.state.project.title}
-            onPress={this.toggleDropdown}
-            active={this.state.expanded}
-          />
-        }
-      />
-    )
-  }
-
-  renderEdit() {
-    const { t } = this.props
-    const { caption, edit } = this.state
-
-    if (!edit) return null
-
-    return (
-      <Overlay>
-        <Inner onPressIn={this.closeDropdown} activeOpacity={1}>
-          <KeyboardAvoidingView behavior="position">
-            <Edit>
-              <Input
-                autoFocus
-                multiline
-                selectionColor="white"
-                value={caption}
-                onChangeText={this.onChangeText}
-                placeholder={t('AddPost:placeholder')}
-              />
-            </Edit>
-          </KeyboardAvoidingView>
-        </Inner>
-      </Overlay>
-    )
-  }
-
   render() {
     return (
       <Base>
-        {this.renderEdit()}
-
-        <SelectProject
-          expanded={this.state.expanded}
-          onPress={this.setSelectedProject}
-          projects={this.props.projects}
-          selected={this.state.project}
-        />
-
-        <Top>{this.renderHeader()}</Top>
-
-        <Camera onTakePicture={this.onTakePicture} />
+        <Placeholder>
+          <Camera onTakePicture={this.onTakePicture} />
+        </Placeholder>
 
         <CameraRoll
           addFileToPost={this.addFileToPost}
