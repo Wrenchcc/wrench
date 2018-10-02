@@ -1,23 +1,8 @@
 import styled from 'styled-components'
-import { Dimensions } from 'react-native'
-import { isIphoneX } from 'utils/platform'
 import UiTouchable from 'ui/Touchable'
-import { COLORS, HEADER_HEIGHT } from 'ui/constants'
+import { COLORS } from 'ui/constants'
 
-const { width } = Dimensions.get('window')
-
-export const Base = styled.TouchableWithoutFeedback`
-  flex: 1;
-`
-
-export const Inner = styled.View`
-  flex: 1;
-  padding-top: ${HEADER_HEIGHT};
-`
-
-export const Picture = styled.Image`
-  width: ${width};
-  height: ${width};
+export const Base = styled.View`
   flex: 1;
 `
 
@@ -32,7 +17,7 @@ export const Bottom = styled.View`
   flex-direction: row;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: ${isIphoneX ? 40 : 20};
+  padding-bottom: 20;
 `
 
 export const TakePicture = styled(UiTouchable)`

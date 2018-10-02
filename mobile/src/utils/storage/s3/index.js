@@ -2,7 +2,7 @@ import { client } from 'graphql/createClient'
 import { preSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
 import makeS3Request from './makeS3Request'
 
-export const upload = async files => {
+export default async files => {
   const input = files.map(({ filename }) => ({ filename }))
 
   const { data } = await client.mutate({
@@ -13,7 +13,8 @@ export const upload = async files => {
   return Promise.all(
     data.preSignUrls.map(async ({ url, filename, type }, index) => {
       const { uri } = files[index]
-      return makeS3Request(url, { uri, filename, type })
+      const file = { uri, filename, type }
+      return makeS3Request(url, file, index)
     })
   )
 }

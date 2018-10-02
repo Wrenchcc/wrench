@@ -1,107 +1,63 @@
-import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
-import { cropImage } from 'utils/image'
-import { hasIn, omit } from 'ramda'
-import { logError } from 'utils/analytics'
-import { Touchable } from 'ui'
-import Permissions from 'react-native-permissions'
-import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import AskForPermission from '../AskForPermission'
-import { Base, Cell, Image, Overlay, GUTTER, ITEM_SIZE } from './styles'
+import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
+import { hasIn, omit } from 'ramda'
+import { Touchable } from 'ui'
+import { logError } from 'utils/analytics'
+import { Item, Image, Overlay, GUTTER, COLUMNS } from './styles'
 
-const PERMISSION = 'photo'
-const AUTHORIZED = 'authorized'
-const PAGE_SIZE = 10
+const PAGE_SIZE = 16
 
 export default class CameraRoll extends PureComponent {
-  static propTypes = {
-    addFileToPost: PropTypes.func.isRequired,
-    closeDropdown: PropTypes.func.isRequired,
-    removeFileFromPost: PropTypes.func.isRequired,
-    resetSelection: PropTypes.bool.isRequired,
-  }
-
   state = {
+    data: [],
     end_cursor: null,
     has_next_page: true,
-    images: [],
-    isLoading: true,
-    photoPermission: false,
-    selectedFiles: {},
+    selected: {},
   }
 
   componentDidMount() {
-    Permissions.check(PERMISSION).then(res => {
-      this.setState({ isLoading: false })
-      if (res === AUTHORIZED) {
-        this.enablePermission()
-        this.getpictures()
-      }
-    })
+    this.loadFiles()
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.resetSelection) {
-      this.setState({ selectedFiles: {} })
-    }
-  }
+  loadFiles = async after => {
+    const { data, has_next_page: hasNextPage } = this.state
 
-  onEndReached = ({ distanceFromEnd }) => {
-    const { has_next_page: hasNextPage } = this.state
-    if (hasNextPage && distanceFromEnd > 0) {
-      this.getpictures(this.state.end_cursor)
-    }
-  }
-
-  getpictures = async after => {
-    const { images, has_next_page: hasNextPage } = this.state
     if (!hasNextPage) return
 
     try {
-      const data = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
-      const newImages = data.edges.map(image => image.node.image)
+      const result = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
+      const loadedFiles = result.edges.map(image => image.node.image)
 
-      this.setState({ images: images.concat(newImages), ...data.page_info })
+      this.setState({
+        data: data.concat(loadedFiles),
+        ...result.page_info,
+      })
     } catch (err) {
       logError(err)
     }
   }
 
-  getItemLayout = (data, index) => ({ length: ITEM_SIZE, offset: ITEM_SIZE * index, index })
-
-  enablePermission = () => {
-    this.getpictures()
-    this.setState({ photoPermission: true })
-  }
-
   addSelectedFile = file => {
-    this.setState(
-      prevState => ({
-        selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
-      }),
-      async () => {
-        const result = await cropImage(file.uri)
-        this.props.addFileToPost({ ...result, originalFilename: file.filename })
-      }
-    )
+    this.setState(prevState => ({
+      // current: file,
+      selected: { ...prevState.selected, [file.filename]: file },
+    }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    this.setState(
-      prevState => ({
-        selectedFiles: omit([filename], prevState.selectedFiles),
-      }),
-      () => {
-        this.props.removeFileFromPost(filename)
-      }
-    )
+    // const { selected } = this.state
+    // const fileKeys = Object.keys(selected)
+    // const index = fileKeys.indexOf(filename)
+
+    // const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
+    // this.setState({ current: selected[prevFilename] })
+
+    this.setState(prevState => ({
+      selected: omit([filename], prevState.selected),
+    }))
   }
 
   toggleSelection = file => {
-    const { closeDropdown } = this.props
-
-    closeDropdown()
-
     if (this.isSelected(file)) {
       return this.removeSelectedFile(file)
     }
@@ -109,58 +65,39 @@ export default class CameraRoll extends PureComponent {
     return this.addSelectedFile(file)
   }
 
-  isSelected = ({ filename }) => hasIn(filename, this.state.selectedFiles)
-
-  renderItem = ({ item }) => {
-    const selected = this.isSelected(item)
-
-    return (
-      <Cell>
-        <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-          <Overlay selected={selected} />
-          <Image selected={selected} source={{ uri: item.uri }} />
-        </Touchable>
-      </Cell>
-    )
+  onEndReached = ({ distanceFromEnd }) => {
+    const { has_next_page: hasNextPage } = this.state
+    if (hasNextPage && distanceFromEnd > 0) {
+      this.loadFiles(this.state.end_cursor)
+    }
   }
 
-  renderCameraRoll() {
+  isSelected = ({ filename }) => hasIn(filename, this.state.selected)
+
+  renderItem = ({ item }) => (
+    <Item>
+      <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
+        <Overlay selected={this.isSelected(item)} />
+        <Image source={{ uri: item.uri }} />
+      </Touchable>
+    </Item>
+  )
+
+  render() {
     return (
       <FlatList
         initialNumToRender={PAGE_SIZE}
-        getItemLayout={this.getItemLayout}
-        removeClippedSubviews
         contentContainerStyle={{
-          paddingBottom: GUTTER * 2,
-          paddingLeft: GUTTER,
-          paddingRight: GUTTER,
+          paddingBottom: GUTTER,
+          paddingLeft: GUTTER / 2,
+          paddingRight: GUTTER / 2,
         }}
-        numColumns={2}
-        data={this.state.images}
+        numColumns={COLUMNS}
+        data={this.state.data}
         keyExtractor={item => item.uri}
         onEndReached={this.onEndReached}
         renderItem={this.renderItem}
       />
-    )
-  }
-
-  render() {
-    const { photoPermission, isLoading } = this.state
-
-    if (isLoading) return null
-
-    let component
-
-    if (photoPermission) {
-      component = this.renderCameraRoll()
-    } else {
-      component = <AskForPermission permission={PERMISSION} onSuccess={this.enablePermission} />
-    }
-
-    return (
-      <Base onPressIn={this.props.closeDropdown} activeOpacity={1} paddingTop={photoPermission}>
-        {component}
-      </Base>
     )
   }
 }

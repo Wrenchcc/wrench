@@ -7,7 +7,6 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.microsoft.codepush.react.CodePush;
 import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
-import com.reactlibrary.RNImageManipulatorPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -59,7 +58,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
           new RNGestureHandlerPackage(),
-          new RNImageManipulatorPackage(),
           new RNFirebasePackage(),
           new RNFirebaseMessagingPackage(),
           new RNFirebaseAnalyticsPackage(),
