@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native'
 import styled from 'styled-components'
-import { COLORS, HEADER_HEIGHT } from 'ui/constants'
+import { COLORS } from 'ui/constants'
 
 const { width } = Dimensions.get('window')
 
@@ -10,7 +10,7 @@ export const ITEM_SIZE = width / 4 - 4
 
 export const Base = styled.View`
   flex: 1;
-  padding-top: ${HEADER_HEIGHT};
+  padding-top: 5;
   background-color: ${COLORS.DARK};
 `
 

@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { pathOr } from 'ramda'
 import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
-import { cropImage } from 'utils/image'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
-import PreviewRoll from '../PreviewRoll'
+import CameraMode from '../CameraMode'
 import { Base, Inner, Picture, Content, Bottom, TakePicture } from './styles'
 
 const PERMISSION = 'camera'
@@ -52,11 +51,11 @@ export default class Camera extends PureComponent {
   }
 
   takePicture = async () => {
-    this.props.openEdit()
-
-    const file = await this.camera.takePictureAsync()
-    const result = await cropImage(file.uri)
-    this.props.onTakePicture(result)
+    // this.props.openEdit()
+    //
+    // const file = await this.camera.takePictureAsync()
+    // const result = await cropImage(file.uri)
+    // this.props.onTakePicture(result)
   }
 
   setRef = el => {
@@ -76,7 +75,7 @@ export default class Camera extends PureComponent {
         </RNCamera>
         <Content>
           <Bottom>
-            <PreviewRoll onPress={this.props.navigateToCameraRoll} />
+            <CameraMode onPress={() => console.log('press')} />
             <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
             <FlashMode onPress={this.toggleFlashMode} flashMode={this.state.flashMode} />
           </Bottom>

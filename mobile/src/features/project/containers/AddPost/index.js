@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { KeyboardAvoidingView, InteractionManager } from 'react-native'
 import { translate } from 'react-i18next'
 import { pathOr, isEmpty } from 'ramda'
-import Swiper from 'react-native-swiper'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
@@ -13,13 +12,11 @@ import { navigateBack, navigateToFeed } from 'navigation'
 import { track, events } from 'utils/analytics'
 import { Dropdown, Icon, Input, Text, Header } from 'ui'
 import { close, arrowLeftWhite } from 'images'
-import Camera from 'features/project/components/Camera/index.js'
+import Camera from 'features/project/components/Camera'
+
 import CameraRoll from 'features/project/components/CameraRoll'
 import SelectProject from 'features/project/components/SelectProject'
 import { Base, Top, Edit, Inner, Overlay } from './styles'
-
-const CAMERA_PAGE = 1
-const CAMERA_ROLL_PAGE = 0
 
 const defaultState = {
   capturedPicture: null,
@@ -40,7 +37,6 @@ class AddPost extends Component {
     super(props)
 
     this.state = {
-      page: CAMERA_PAGE,
       project: pathOr(null, ['projects', 0, 'node'], props),
       ...defaultState,
     }
@@ -67,8 +63,6 @@ class AddPost extends Component {
     this.setState({ capturedPicture: file, files: [file] })
   }
 
-  changePage = page => this.setState({ page })
-
   toggleDropdown = () => this.setState(prevState => ({ expanded: !prevState.expanded }))
 
   closeDropdown = () => this.setState({ expanded: false })
@@ -88,6 +82,7 @@ class AddPost extends Component {
 
   onSave = () => {
     const { caption, project, files } = this.state
+
     this.props.updatePostProgress({
       image: pathOr(null, [0, 'uri'], files),
       title: project.title,
@@ -120,9 +115,9 @@ class AddPost extends Component {
   }
 
   renderHeaderRight() {
-    const { page, edit, files } = this.state
+    const { edit, files } = this.state
 
-    if (!edit && page === CAMERA_ROLL_PAGE && !isEmpty(files)) {
+    if (!edit && !isEmpty(files)) {
       return (
         <Text color="white" medium onPress={() => this.openEdit()}>
           {this.props.t('AddPost:next')}
@@ -196,34 +191,22 @@ class AddPost extends Component {
         />
 
         <Top>{this.renderHeader()}</Top>
-        <Swiper
-          ref={swiper => {
-            this.swiper = swiper
-          }}
-          index={CAMERA_PAGE}
-          keyboardDismissMode="on-drag"
-          keyboardShouldPersistTaps="handled"
-          loop={false}
-          onIndexChanged={this.changePage}
-          removeClippedSubviews
-          showsPagination={false}
-        >
-          <CameraRoll
-            addFileToPost={this.addFileToPost}
-            closeDropdown={this.closeDropdown}
-            dropDownActive={this.state.expanded}
-            removeFileFromPost={this.removeFileFromPost}
-            resetSelection={!!this.state.capturedPicture}
-          />
 
-          <Camera
-            onTakePicture={this.onTakePicture}
-            closeDropdown={this.closeDropdown}
-            navigateToCameraRoll={this.navigateToCameraRoll}
-            openEdit={this.openEdit}
-            capturedPicture={this.state.capturedPicture}
-          />
-        </Swiper>
+        <Camera
+          onTakePicture={this.onTakePicture}
+          closeDropdown={this.closeDropdown}
+          navigateToCameraRoll={this.navigateToCameraRoll}
+          openEdit={this.openEdit}
+          capturedPicture={this.state.capturedPicture}
+        />
+
+        <CameraRoll
+          addFileToPost={this.addFileToPost}
+          closeDropdown={this.closeDropdown}
+          dropDownActive={this.state.expanded}
+          removeFileFromPost={this.removeFileFromPost}
+          resetSelection={!!this.state.capturedPicture}
+        />
       </Base>
     )
   }

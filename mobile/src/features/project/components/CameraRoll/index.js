@@ -180,7 +180,7 @@ export default class CameraRoll extends PureComponent {
     if (photoPermission) {
       component = (
         <Fragment>
-          <Placeholder>{this.renderImageCropper()}</Placeholder>
+          {/* <Placeholder>{this.renderImageCropper()}</Placeholder> */}
           {this.renderCameraRoll()}
         </Fragment>
       )
