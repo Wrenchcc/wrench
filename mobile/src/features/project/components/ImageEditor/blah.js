@@ -1,43 +1,28 @@
-import React, { Component } from 'react'
-import { Animated, StyleSheet } from 'react-native'
-import {
-  PanGestureHandler,
-  PinchGestureHandler,
-  RotationGestureHandler,
-  State,
-} from 'react-native-gesture-handler'
+import React, { PureComponent } from 'react'
+import { Animated } from 'react-native'
+import { PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
 
 import staticImage from './cat.jpg'
 
 const styles = {
   container: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'black',
-    overflow: 'hidden',
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
+    width: 375,
+    height: 375,
   },
-  pinchableImage: {
-    width: 250,
-    height: 250,
-  },
-  wrapper: {
+  image: {
     flex: 1,
   },
 }
 
-export default class ImageEditor extends Component {
+export default class ImageEditor extends PureComponent {
   panRef = React.createRef()
-
-  rotationRef = React.createRef()
 
   pinchRef = React.createRef()
 
   constructor(props) {
     super(props)
 
-    /* Pinching */
+    // Pinching
     this.baseScale = new Animated.Value(1)
     this.pinchScale = new Animated.Value(1)
     this.scale = Animated.multiply(this.baseScale, this.pinchScale)
@@ -45,99 +30,49 @@ export default class ImageEditor extends Component {
     this.onPinchGestureEvent = Animated.event([{ nativeEvent: { scale: this.pinchScale } }], {
       useNativeDriver: true,
     })
-
-    /* Rotation */
-    this.rotate = new Animated.Value(0)
-    this.rotateStr = this.rotate.interpolate({
-      inputRange: [-100, 100],
-      outputRange: ['-100rad', '100rad'],
-    })
-    this.lastRotate = 0
-    this.onRotateGestureEvent = Animated.event([{ nativeEvent: { rotation: this.rotate } }], {
-      useNativeDriver: true,
-    })
-
-    /* Tilt */
-    this.tilt = new Animated.Value(0)
-    this.tiltStr = this.tilt.interpolate({
-      inputRange: [-501, -500, 0, 1],
-      outputRange: ['1rad', '1rad', '0rad', '0rad'],
-    })
-    this.lastTilt = 0
-    this.onTiltGestureEvent = Animated.event([{ nativeEvent: { translationY: this.tilt } }], {
-      useNativeDriver: true,
-    })
   }
 
-  onRotateHandlerStateChange = event => {
-    if (event.nativeEvent.oldState === State.ACTIVE) {
-      this.lastRotate += event.nativeEvent.rotation
-      this.rotate.setOffset(this.lastRotate)
-      this.rotate.setValue(0)
-    }
-  }
-
-  onPinchHandlerStateChange = event => {
-    if (event.nativeEvent.oldState === State.ACTIVE) {
-      this.lastScale *= event.nativeEvent.scale
+  onPinchHandlerStateChange = evt => {
+    if (evt.nativeEvent.oldState === State.ACTIVE) {
+      this.lastScale *= evt.nativeEvent.scale
       this.baseScale.setValue(this.lastScale)
       this.pinchScale.setValue(1)
     }
   }
 
-  onTiltGestureStateChange = event => {
-    if (event.nativeEvent.oldState === State.ACTIVE) {
-      this.lastTilt += event.nativeEvent.translationY
-      this.tilt.setOffset(this.lastTilt)
-      this.tilt.setValue(0)
-    }
-  }
+  onPanGestureStateChange = () => {}
+
+  onPanGestureStateChange = () => {}
 
   render() {
     return (
       <PanGestureHandler
         ref={this.panRef}
-        onGestureEvent={this.onTiltGestureEvent}
-        onHandlerStateChange={this.onTiltGestureStateChange}
-        minDist={10}
+        onGestureEvent={this.onPanGestureEvent}
+        onHandlerStateChange={this.onPanGestureStateChange}
         minPointers={2}
         maxPointers={2}
+        minDist={0}
+        minDeltaX={0}
         avgTouches
       >
-        <Animated.View style={styles.wrapper}>
-          <RotationGestureHandler
-            ref={this.rotationRef}
-            simultaneousHandlers={this.pinchRef}
-            onGestureEvent={this.onRotateGestureEvent}
-            onHandlerStateChange={this.onRotateHandlerStateChange}
-          >
-            <Animated.View style={styles.wrapper}>
-              <PinchGestureHandler
-                ref={this.pinchRef}
-                simultaneousHandlers={this.rotationRef}
-                onGestureEvent={this.onPinchGestureEvent}
-                onHandlerStateChange={this.onPinchHandlerStateChange}
-              >
-                <Animated.View style={styles.container} collapsable={false}>
-                  <Animated.Image
-                    style={[
-                      styles.pinchableImage,
-                      {
-                        transform: [
-                          { perspective: 200 },
-                          { scale: this.scale },
-                          { rotate: this.rotateStr },
-                          { rotateX: this.tiltStr },
-                        ],
-                      },
-                    ]}
-                    source={staticImage}
-                  />
-                </Animated.View>
-              </PinchGestureHandler>
-            </Animated.View>
-          </RotationGestureHandler>
-        </Animated.View>
+        <PinchGestureHandler
+          simultaneousHandlers={this.panRef}
+          onGestureEvent={this.onPinchGestureEvent}
+          onHandlerStateChange={this.onPinchHandlerStateChange}
+        >
+          <Animated.View style={styles.container} collapsable={false}>
+            <Animated.Image
+              style={[
+                styles.image,
+                {
+                  transform: [{ scale: this.scale }],
+                },
+              ]}
+              source={staticImage}
+            />
+          </Animated.View>
+        </PinchGestureHandler>
       </PanGestureHandler>
     )
   }
