@@ -1,17 +1,12 @@
 import styled from 'styled-components'
 import UiTouchable from 'ui/Touchable'
 
-export const Base = styled.View`
-  flex: 1;
-  margin-left: auto;
-  justify-content: flex-end;
-`
-
 export const Button = styled(UiTouchable)`
-  align-self: flex-end;
+  position: absolute;
+  right: 20;
+  bottom: 20;
 `
 
-export const Icon = styled.View`
-  align-self: flex-end;
+export const Icon = styled.Image`
   width: 20px;
 `

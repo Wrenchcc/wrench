@@ -12,24 +12,24 @@ export default class CameraRoll extends PureComponent {
     data: [],
     end_cursor: null,
     has_next_page: true,
-    selected: {},
+    selectedImages: {},
   }
 
   componentDidMount() {
-    this.loadFiles()
+    this.getImages()
   }
 
-  loadFiles = async after => {
+  getImages = async after => {
     const { data, has_next_page: hasNextPage } = this.state
 
     if (!hasNextPage) return
 
     try {
       const result = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
-      const loadedFiles = result.edges.map(image => image.node.image)
+      const loadedImages = result.edges.map(image => image.node.image)
 
       this.setState({
-        data: data.concat(loadedFiles),
+        data: data.concat(loadedImages),
         ...result.page_info,
       })
     } catch (err) {
@@ -39,21 +39,21 @@ export default class CameraRoll extends PureComponent {
 
   addSelectedFile = file => {
     this.setState(prevState => ({
-      // current: file,
-      selected: { ...prevState.selected, [file.filename]: file },
+      // currentImage: file,
+      selectedImages: { ...prevState.selectedImages, [file.filename]: file },
     }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    // const { selected } = this.state
-    // const fileKeys = Object.keys(selected)
+    // const { selectedImages } = this.state
+    // const fileKeys = Object.keys(selectedImages)
     // const index = fileKeys.indexOf(filename)
 
     // const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
-    // this.setState({ current: selected[prevFilename] })
+    // this.setState({ currentImage: selectedImages[prevFilename] })
 
     this.setState(prevState => ({
-      selected: omit([filename], prevState.selected),
+      selectedImages: omit([filename], prevState.selectedImages),
     }))
   }
 
@@ -68,16 +68,16 @@ export default class CameraRoll extends PureComponent {
   onEndReached = ({ distanceFromEnd }) => {
     const { has_next_page: hasNextPage } = this.state
     if (hasNextPage && distanceFromEnd > 0) {
-      this.loadFiles(this.state.end_cursor)
+      this.getImages(this.state.end_cursor)
     }
   }
 
-  isSelected = ({ filename }) => hasIn(filename, this.state.selected)
+  isSelected = ({ filename }) => hasIn(filename, this.state.selectedImages)
 
   renderItem = ({ item }) => (
     <Item>
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-        <Overlay selected={this.isSelected(item)} />
+        <Overlay selectedImages={this.isSelected(item)} />
         <Image source={{ uri: item.uri }} />
       </Touchable>
     </Item>

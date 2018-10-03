@@ -1,17 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Image } from 'react-native'
 import { zap, zapOff } from 'images'
-import { Base, Button, Icon } from './styles'
+import { Button, Icon } from './styles'
 
 const FlashMode = ({ flashMode, onPress }) => (
-  <Base>
-    <Button onPress={onPress} hapticFeedback="impactLight">
-      <Icon>
-        <Image source={flashMode ? zap : zapOff} />
-      </Icon>
-    </Button>
-  </Base>
+  <Button onPress={onPress} hapticFeedback="impactLight">
+    <Icon source={flashMode ? zap : zapOff} />
+  </Button>
 )
 
 FlashMode.propTypes = {
