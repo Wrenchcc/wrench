@@ -1,105 +1,67 @@
-import React, { Component } from 'react'
-import { Image, ScrollView } from 'react-native'
+import React, { PureComponent } from 'react'
+import { Animated } from 'react-native'
+import { PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
 
-export default class ImageEditor extends Component {
-  contentOffset: {}
+export default class ImageEditor extends PureComponent {
+  panRef = React.createRef()
 
-  horizontal: boolean
+  pinchRef = React.createRef()
 
-  maximumZoomScale: number
+  constructor(props) {
+    super(props)
 
-  minimumZoomScale: number
+    // Pinching
+    this.baseScale = new Animated.Value(1)
+    this.pinchScale = new Animated.Value(1)
+    this.scale = Animated.multiply(this.baseScale, this.pinchScale)
+    this.lastScale = 1
+    this.onPinchGestureEvent = Animated.event([{ nativeEvent: { scale: this.pinchScale } }], {
+      useNativeDriver: true,
+    })
+  }
 
-  scaledImageSize: {}
-
-  componentWillMount() {
-    const { image } = this.props
-
-    if (!image) return null
-    // Scale an image to the minimum size that is large enough to completely
-    // fill the crop box.
-    const widthRatio = image.width / this.props.size.width
-    const heightRatio = image.height / this.props.size.height
-
-    this.horizontal = widthRatio > heightRatio
-
-    if (this.horizontal) {
-      this.scaledImageSize = {
-        width: image.width / heightRatio,
-        height: this.props.size.height,
-      }
-    } else {
-      this.scaledImageSize = {
-        width: this.props.size.width,
-        height: image.height / widthRatio,
-      }
+  onPinchHandlerStateChange = evt => {
+    if (evt.nativeEvent.oldState === State.ACTIVE) {
+      this.lastScale *= evt.nativeEvent.scale
+      this.baseScale.setValue(this.lastScale)
+      this.pinchScale.setValue(1)
     }
-
-    this.contentOffset = {
-      x: (this.scaledImageSize.width - this.props.size.width) / 2,
-      y: (this.scaledImageSize.height - this.props.size.height) / 2,
-    }
-
-    this.maximumZoomScale = Math.min(
-      image.width / this.scaledImageSize.width,
-      image.height / this.scaledImageSize.height
-    )
-
-    this.minimumZoomScale = Math.max(
-      this.props.size.width / this.scaledImageSize.width,
-      this.props.size.height / this.scaledImageSize.height
-    )
-
-    this.updateCroppingData(this.contentOffset, this.scaledImageSize, this.props.size)
   }
 
-  onScroll = evt => {
-    this.updateCroppingData(
-      evt.nativeEvent.contentOffset,
-      evt.nativeEvent.contentSize,
-      evt.nativeEvent.layoutMeasurement
-    )
-  }
+  onPanGestureStateChange = () => {}
 
-  updateCroppingData(offset, scaledImageSize, croppedImageSize) {
-    // const offsetRatioX = offset.x / scaledImageSize.width
-    // const offsetRatioY = offset.y / scaledImageSize.height
-    // const sizeRatioX = croppedImageSize.width / scaledImageSize.width
-    // const sizeRatioY = croppedImageSize.height / scaledImageSize.height
-    // const cropData = {
-    //   offset: {
-    //     x: this.props.image.width * offsetRatioX,
-    //     y: this.props.image.height * offsetRatioY,
-    //   },
-    //   size: {
-    //     width: this.props.image.width * sizeRatioX,
-    //     height: this.props.image.height * sizeRatioY,
-    //   },
-    // }
-    // this.props.onCropping(cropData)
-  }
+  onPanGestureStateChange = () => {}
 
   render() {
-    const { image } = this.props
-    if (!image) return null
-
     return (
-      <ScrollView
-        alwaysBounceVertical
-        automaticallyAdjustContentInsets={false}
-        contentOffset={this.contentOffset}
-        decelerationRate="fast"
-        horizontal={this.horizontal}
-        maximumZoomScale={this.maximumZoomScale}
-        minimumZoomScale={this.minimumZoomScale}
-        onMomentumScrollEnd={this.onScroll}
-        onScrollEndDrag={this.onScroll}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        scrollEventThrottle={16}
+      <PanGestureHandler
+        ref={this.panRef}
+        onGestureEvent={this.onPanGestureEvent}
+        onHandlerStateChange={this.onPanGestureStateChange}
+        minPointers={2}
+        maxPointers={2}
+        minDist={0}
+        minDeltaX={0}
+        avgTouches
       >
-        <Image source={this.props.image} style={this.scaledImageSize} />
-      </ScrollView>
+        <PinchGestureHandler
+          simultaneousHandlers={this.panRef}
+          onGestureEvent={this.onPinchGestureEvent}
+          onHandlerStateChange={this.onPinchHandlerStateChange}
+        >
+          <Animated.View style={{ flex: 1 }} collapsable={false}>
+            <Animated.Image
+              style={[
+                { flex: 1 },
+                {
+                  transform: [{ scale: this.scale }],
+                },
+              ]}
+              source={require('./cat.jpg')}
+            />
+          </Animated.View>
+        </PinchGestureHandler>
+      </PanGestureHandler>
     )
   }
 }

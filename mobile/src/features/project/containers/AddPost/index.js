@@ -26,7 +26,7 @@ class AddPost extends PureComponent {
       <Base>
         <Placeholder>
           <ImageEditor image={this.state.currentImage} />
-          <Camera onTakePicture={() => console.log('onTakePicture')} />
+          {/* <Camera onTakePicture={() => console.log('onTakePicture')} /> */}
         </Placeholder>
 
         <CameraRoll />
