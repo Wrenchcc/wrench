@@ -23,9 +23,9 @@ export const Bottom = styled.View`
 export const TakePicture = styled(UiTouchable)`
   justify-content: center;
   align-self: center;
-  width: 80;
-  height: 80;
+  width: 60;
+  height: 60;
   border-width: 3;
   border-color: ${COLORS.WHITE};
-  border-radius: 80;
+  border-radius: 60;
 `

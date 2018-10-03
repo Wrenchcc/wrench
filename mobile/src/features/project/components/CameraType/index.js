@@ -1,21 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Image } from 'react-native'
-import { cameraMode } from 'images'
+import { cameraType } from 'images'
 import { Base, Button, Icon } from './styles'
 
-const CameraMode = ({ onPress }) => (
+const CameraType = ({ onPress }) => (
   <Base>
     <Button onPress={onPress} hapticFeedback="impactLight">
       <Icon>
-        <Image source={cameraMode} />
+        <Image source={cameraType} />
       </Icon>
     </Button>
   </Base>
 )
 
-CameraMode.propTypes = {
+CameraType.propTypes = {
   onPress: PropTypes.func.isRequired,
 }
 
-export default CameraMode
+export default CameraType

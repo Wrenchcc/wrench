@@ -25,6 +25,7 @@ class AddPost extends PureComponent {
         <Placeholder>
           <Camera onTakePicture={() => console.log('onTakePicture')} />
         </Placeholder>
+
         <CameraRoll />
       </Base>
     )

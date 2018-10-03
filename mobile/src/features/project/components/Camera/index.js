@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 // import PropTypes from 'prop-types'
 import { RNCamera } from 'react-native-camera'
 import FlashMode from '../FlashMode'
-import CameraMode from '../CameraMode'
+import CameraType from '../CameraType'
 import { Base, Content, Bottom, TakePicture } from './styles'
 
 export default class Camera extends PureComponent {
@@ -41,7 +41,7 @@ export default class Camera extends PureComponent {
         <RNCamera ref={this.setRef} type={this.state.type} flashMode={this.state.flashMode} />
         <Content>
           <Bottom>
-            <CameraMode onPress={this.changeCameraType} />
+            <CameraType onPress={this.changeCameraType} />
             <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
             <FlashMode onPress={this.changeFlashMode} flashMode={this.state.flashMode} />
           </Bottom>
