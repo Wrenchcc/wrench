@@ -10,6 +10,16 @@ import ImageEditor from 'features/project/components/ImageEditor'
 import CameraRoll from 'features/project/components/CameraRoll'
 import { Base, Placeholder } from './styles'
 
+// const images = [
+//   {
+//     filename: 'wefwef.jpg',
+//     offset: {
+//       x: 0,
+//       y: 0,
+//     },
+//   },
+// ]
+
 class AddPost extends PureComponent {
   constructor(props) {
     super(props)

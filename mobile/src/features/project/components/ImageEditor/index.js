@@ -1,66 +1,86 @@
 import React, { PureComponent } from 'react'
 import { Animated } from 'react-native'
-import { PanGestureHandler, PinchGestureHandler, State } from 'react-native-gesture-handler'
+import { PanGestureHandler, State } from 'react-native-gesture-handler'
 
 export default class ImageEditor extends PureComponent {
-  panRef = React.createRef()
-
-  pinchRef = React.createRef()
-
   constructor(props) {
     super(props)
+    this.lastOffset = { x: 0, y: 0 }
 
-    // Pinching
-    this.baseScale = new Animated.Value(1)
-    this.pinchScale = new Animated.Value(1)
-    this.scale = Animated.multiply(this.baseScale, this.pinchScale)
-    this.lastScale = 1
-    this.onPinchGestureEvent = Animated.event([{ nativeEvent: { scale: this.pinchScale } }], {
-      useNativeDriver: true,
-    })
+    this.translateX = new Animated.Value(0)
+    this.translateY = new Animated.Value(0)
+    this.onPanGestureEvent = Animated.event(
+      [
+        {
+          nativeEvent: {
+            translationX: this.translateX,
+            translationY: this.translateY,
+          },
+        },
+      ],
+      { useNativeDriver: true }
+    )
   }
 
-  onPinchHandlerStateChange = evt => {
-    if (evt.nativeEvent.oldState === State.ACTIVE) {
-      this.lastScale *= evt.nativeEvent.scale
-      this.baseScale.setValue(this.lastScale)
-      this.pinchScale.setValue(1)
+  onPanGestureStateChange = ({ nativeEvent }) => {
+    if (nativeEvent.oldState === State.ACTIVE) {
+      this.lastOffset.x += nativeEvent.translationX
+      this.lastOffset.y += nativeEvent.translationY
+      console.log('this.lastOffset.x', this.lastOffset.x)
+      console.log('this.lastOffset.y', this.lastOffset.y)
+
+      if (this.lastOffset.x > 0) {
+        this.translateX.setOffset(0)
+        Animated.spring(this.translateX, {
+          velocity: nativeEvent.velocityX,
+          tension: 10,
+          toValue: 0,
+          useNativeDriver: true,
+        }).start()
+      }
+
+      if (this.lastOffset.x < -225) {
+        this.translateX.setOffset(0)
+        Animated.spring(this.translateX, {
+          velocity: nativeEvent.velocityX,
+          tension: 10,
+          toValue: 0,
+          useNativeDriver: true,
+        }).start()
+      }
+
+      if (this.lastOffset.y > 0) {
+        this.translateY.setOffset(0)
+        Animated.spring(this.translateY, {
+          velocity: nativeEvent.velocityY,
+          tension: 10,
+          toValue: 0,
+          useNativeDriver: true,
+        }).start()
+      }
     }
   }
-
-  onPanGestureStateChange = () => {}
-
-  onPanGestureStateChange = () => {}
 
   render() {
     return (
       <PanGestureHandler
-        ref={this.panRef}
         onGestureEvent={this.onPanGestureEvent}
         onHandlerStateChange={this.onPanGestureStateChange}
-        minPointers={2}
+        minPointers={1}
         maxPointers={2}
         minDist={0}
         minDeltaX={0}
         avgTouches
       >
-        <PinchGestureHandler
-          simultaneousHandlers={this.panRef}
-          onGestureEvent={this.onPinchGestureEvent}
-          onHandlerStateChange={this.onPinchHandlerStateChange}
-        >
-          <Animated.View style={{ flex: 1 }} collapsable={false}>
-            <Animated.Image
-              style={[
-                { flex: 1 },
-                {
-                  transform: [{ scale: this.scale }],
-                },
-              ]}
-              source={require('./cat.jpg')}
-            />
-          </Animated.View>
-        </PinchGestureHandler>
+        <Animated.Image
+          style={[
+            {
+              flex: 1,
+              transform: [{ translateX: this.translateX }, { translateY: this.translateY }],
+            },
+          ]}
+          source={require('./cat.jpg')}
+        />
       </PanGestureHandler>
     )
   }

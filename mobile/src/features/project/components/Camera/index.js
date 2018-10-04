@@ -30,14 +30,8 @@ export default class Camera extends PureComponent {
   }
 
   render() {
-    const { size } = this.props
-
     return (
-      <RNCamera
-        type={this.state.type}
-        flashMode={this.state.flashMode}
-        style={{ flex: 1, ...size }}
-      >
+      <RNCamera type={this.state.type} flashMode={this.state.flashMode} style={{ flex: 1 }}>
         {({ camera }) => (
           <Fragment>
             <CameraType onPress={this.changeCameraType} />

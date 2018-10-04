@@ -15,4 +15,5 @@ export const Placeholder = styled.View`
   height: ${width};
   background: #222;
   margin-bottom: 5;
+  overflow: hidden;
 `
