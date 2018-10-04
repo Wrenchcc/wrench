@@ -26,6 +26,10 @@ export default class ImageEditor extends PureComponent {
     if (nativeEvent.oldState === State.ACTIVE) {
       this.lastOffset.x += nativeEvent.translationX
       this.lastOffset.y += nativeEvent.translationY
+      this.translateX.setOffset(this.lastOffset.x)
+      this.translateX.setValue(0)
+      this.translateY.setOffset(this.lastOffset.y)
+      this.translateY.setValue(0)
       console.log('this.lastOffset.x', this.lastOffset.x)
       console.log('this.lastOffset.y', this.lastOffset.y)
 
@@ -40,24 +44,24 @@ export default class ImageEditor extends PureComponent {
       }
 
       if (this.lastOffset.x < -225) {
-        this.translateX.setOffset(0)
+        this.translateX.setOffset(-225)
         Animated.spring(this.translateX, {
           velocity: nativeEvent.velocityX,
           tension: 10,
-          toValue: 0,
+          toValue: -225,
           useNativeDriver: true,
         }).start()
       }
 
-      if (this.lastOffset.y > 0) {
-        this.translateY.setOffset(0)
-        Animated.spring(this.translateY, {
-          velocity: nativeEvent.velocityY,
-          tension: 10,
-          toValue: 0,
-          useNativeDriver: true,
-        }).start()
-      }
+      // if (this.lastOffset.y > 0) {
+      //   this.translateY.setOffset(0)
+      //   Animated.spring(this.translateY, {
+      //     velocity: nativeEvent.velocityY,
+      //     tension: 10,
+      //     toValue: 0,
+      //     useNativeDriver: true,
+      //   }).start()
+      // }
     }
   }
 
