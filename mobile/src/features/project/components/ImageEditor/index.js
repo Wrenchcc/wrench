@@ -26,10 +26,10 @@ export default class ImageEditor extends PureComponent {
     if (nativeEvent.oldState === State.ACTIVE) {
       this.lastOffset.x += nativeEvent.translationX
       this.lastOffset.y += nativeEvent.translationY
-      this.translateX.setOffset(this.lastOffset.x)
-      this.translateX.setValue(0)
-      this.translateY.setOffset(this.lastOffset.y)
-      this.translateY.setValue(0)
+      // this.translateX.setOffset(this.lastOffset.x)
+      // this.translateX.setValue(0)
+      // this.translateY.setOffset(this.lastOffset.y)
+      // this.translateY.setValue(0)
       console.log('this.lastOffset.x', this.lastOffset.x)
       console.log('this.lastOffset.y', this.lastOffset.y)
 
