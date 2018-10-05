@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView, Animated, Platform } from 'react-native'
+import { ScrollView, Image, Platform } from 'react-native'
 
 export default class ImageEditor extends PureComponent {
   static propTypes = {
-    image: PropTypes.isRequired,
-    onCropping: PropTypes.func.isRequired,
-    size: PropTypes.object.isRequired,
+    image: PropTypes,
+    // onCropping: PropTypes.func.isRequired,
+    // size: PropTypes.object.isRequired,
   }
 
   contentOffset = {}
@@ -19,19 +19,14 @@ export default class ImageEditor extends PureComponent {
 
   scaledImageSize = null
 
-  componentDidMount() {
-    this.blah(this.props)
+  constructor(props) {
+    super(props)
+    this.setImageSize(props)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.image.width !== this.props.size.width) {
-      this.blah(nextProps)
-    }
-  }
-
-  blah(props) {
+  setImageSize(props) {
     if (!props.image) return
-    console.log(props.image.width)
+
     const widthRatio = props.image.width / props.size.width
     const heightRatio = props.image.height / props.size.height
 
@@ -119,7 +114,7 @@ export default class ImageEditor extends PureComponent {
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
       >
-        <Animated.Image style={this.scaledImageSize} source={this.props.image} />
+        <Image style={this.scaledImageSize} source={this.props.image} />
       </ScrollView>
     )
   }

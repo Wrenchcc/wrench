@@ -12,7 +12,7 @@ export default class CameraRoll extends PureComponent {
     data: [],
     end_cursor: null,
     has_next_page: true,
-    selectedImages: {},
+    selected: {},
   }
 
   componentDidMount() {
@@ -41,21 +41,21 @@ export default class CameraRoll extends PureComponent {
     this.props.onSelect(file)
 
     this.setState(prevState => ({
-      selectedImages: { ...prevState.selectedImages, [file.filename]: file },
+      selected: { ...prevState.selected, [file.filename]: file },
     }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    const { selectedImages } = this.state
-    const fileKeys = Object.keys(selectedImages)
-    const index = fileKeys.indexOf(filename)
-
-    const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
-    this.props.onSelect(selectedImages[prevFilename])
-
-    this.setState(prevState => ({
-      selectedImages: omit([filename], prevState.selectedImages),
-    }))
+    this.setState(
+      prevState => ({
+        selected: omit([filename], prevState.selected),
+      }),
+      () => {
+        const { selected } = this.state
+        const file = selected[Object.keys(selected)[Object.keys(selected).length - 1]]
+        this.props.onSelect(file)
+      }
+    )
   }
 
   toggleSelection = file => {
@@ -73,7 +73,7 @@ export default class CameraRoll extends PureComponent {
     }
   }
 
-  isSelected = ({ filename }) => hasIn(filename, this.state.selectedImages)
+  isSelected = ({ filename }) => hasIn(filename, this.state.selected)
 
   renderItem = ({ item }) => (
     <Item>

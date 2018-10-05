@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 const { width } = Dimensions.get('window')
 
-export const GUTTER = 3
+export const GUTTER = 5
 export const COLUMNS = 4
 
-const ITEM_SIZE = width / COLUMNS - 4
+const ITEM_SIZE = width / COLUMNS - 6
 
 export const Item = styled.View`
   width: 25%;
@@ -27,5 +27,5 @@ export const Overlay = styled.View`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: ${props => (props.selected ? 'rgba(255, 255, 255, 0.2)' : 'transparent')};
+  background-color: ${props => (props.selected ? 'rgba(255, 255, 255, 0.7)' : 'transparent')};
 `
