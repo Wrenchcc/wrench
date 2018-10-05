@@ -38,19 +38,20 @@ export default class CameraRoll extends PureComponent {
   }
 
   addSelectedFile = file => {
+    this.props.onSelect(file)
+
     this.setState(prevState => ({
-      // currentImage: file,
       selectedImages: { ...prevState.selectedImages, [file.filename]: file },
     }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    // const { selectedImages } = this.state
-    // const fileKeys = Object.keys(selectedImages)
-    // const index = fileKeys.indexOf(filename)
+    const { selectedImages } = this.state
+    const fileKeys = Object.keys(selectedImages)
+    const index = fileKeys.indexOf(filename)
 
-    // const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
-    // this.setState({ currentImage: selectedImages[prevFilename] })
+    const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
+    this.props.onSelect(selectedImages[prevFilename])
 
     this.setState(prevState => ({
       selectedImages: omit([filename], prevState.selectedImages),
@@ -77,7 +78,7 @@ export default class CameraRoll extends PureComponent {
   renderItem = ({ item }) => (
     <Item>
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-        <Overlay selectedImages={this.isSelected(item)} />
+        <Overlay selected={this.isSelected(item)} />
         <Image source={{ uri: item.uri }} />
       </Touchable>
     </Item>

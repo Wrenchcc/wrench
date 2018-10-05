@@ -8,7 +8,7 @@ import { track, events } from 'utils/analytics'
 import Camera from 'features/project/components/Camera'
 import ImageEditor from 'features/project/components/ImageEditor'
 import CameraRoll from 'features/project/components/CameraRoll'
-import { Base, Placeholder } from './styles'
+import { Base, Placeholder, PLACEHOLDER_SIZE } from './styles'
 
 // const images = [
 //   {
@@ -35,11 +35,17 @@ class AddPost extends PureComponent {
     return (
       <Base>
         <Placeholder>
-          <ImageEditor image={this.state.currentImage} />
+          {this.state.currentImage && (
+            <ImageEditor
+              image={this.state.currentImage}
+              size={PLACEHOLDER_SIZE}
+              onCropping={image => console.log(image)}
+            />
+          )}
           {/* <Camera onTakePicture={() => console.log('onTakePicture')} /> */}
         </Placeholder>
 
-        <CameraRoll />
+        <CameraRoll onSelect={currentImage => this.setState({ currentImage })} />
       </Base>
     )
   }
