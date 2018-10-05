@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { Image } from 'react-native'
 import { translate } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -12,6 +13,7 @@ import { Base, Placeholder, PLACEHOLDER_SIZE } from './styles'
 class AddPost extends PureComponent {
   state = {
     currentImage: null,
+    capturedImage: null,
     filesToUpload: [],
   }
 
@@ -19,21 +21,32 @@ class AddPost extends PureComponent {
     this.setState({ currentImage })
   }
 
+  onTakePicture = capturedImage => {
+    this.setState({ capturedImage })
+  }
+
   render() {
-    const { currentImage } = this.state
+    const { currentImage, capturedImage } = this.state
+
+    let component
+
+    if (currentImage) {
+      component = (
+        <ImageEditor
+          image={currentImage}
+          size={PLACEHOLDER_SIZE}
+          onCropping={image => console.log(image)}
+        />
+      )
+    } else if (capturedImage) {
+      component = <Image source={capturedImage} style={{ flex: 1 }} />
+    } else {
+      component = <Camera onTakePicture={this.onTakePicture} />
+    }
+
     return (
       <Base>
-        <Placeholder>
-          {currentImage && (
-            <ImageEditor
-              image={currentImage}
-              size={PLACEHOLDER_SIZE}
-              onCropping={image => console.log(image)}
-            />
-          )}
-          {!currentImage && <Camera onTakePicture={() => console.log('onTakePicture')} />}
-        </Placeholder>
-
+        <Placeholder>{component}</Placeholder>
         <CameraRoll onSelect={this.addCurrentImage} />
       </Base>
     )
