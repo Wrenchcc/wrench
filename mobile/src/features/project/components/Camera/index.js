@@ -1,52 +1,45 @@
-import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
+import React, { PureComponent, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { RNCamera } from 'react-native-camera'
 import FlashMode from '../FlashMode'
-import CameraMode from '../CameraMode'
-import { Base, Content, Bottom, TakePicture } from './styles'
+import CameraType from '../CameraType'
+import { TakePicture } from './styles'
+import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
 
 export default class Camera extends PureComponent {
+  static propTypes = {
+    onTakePicture: PropTypes.func.isRequired,
+  }
+
   state = {
-    flashMode: RNCamera.Constants.FlashMode.off,
-    type: RNCamera.Constants.Type.back,
+    flashMode: DEFAULT_CAMERA.FLASH_MODE,
+    type: DEFAULT_CAMERA.TYPE,
   }
 
   changeFlashMode = () => {
-    this.setState(prevState => ({
-      flashMode:
-        prevState.flashMode === RNCamera.Constants.FlashMode.on
-          ? RNCamera.Constants.FlashMode.off
-          : RNCamera.Constants.FlashMode.on,
-    }))
+    this.setState(changeFlashMode)
   }
 
   changeCameraType = () => {
-    this.setState(prevState => ({
-      type:
-        prevState.type === RNCamera.Constants.Type.back
-          ? RNCamera.Constants.Type.front
-          : RNCamera.Constants.Type.back,
-    }))
+    this.setState(changeCameraType)
   }
 
-  takePicture = async () => {}
-
-  setRef = el => {
-    this.camera = el
+  takePicture = async camera => {
+    const data = await camera.takePictureAsync()
+    this.props.onTakePicture(data)
   }
 
   render() {
     return (
-      <Base>
-        <RNCamera ref={this.setRef} type={this.state.type} flashMode={this.state.flashMode} />
-        <Content>
-          <Bottom>
-            <CameraMode onPress={this.changeCameraType} />
-            <TakePicture onPress={this.takePicture} hapticFeedback="impactLight" />
+      <RNCamera type={this.state.type} flashMode={this.state.flashMode} style={{ flex: 1 }}>
+        {({ camera }) => (
+          <Fragment>
+            <CameraType onPress={this.changeCameraType} />
+            <TakePicture onPress={() => this.takePicture(camera)} hapticFeedback="impactLight" />
             <FlashMode onPress={this.changeFlashMode} flashMode={this.state.flashMode} />
-          </Bottom>
-        </Content>
-      </Base>
+          </Fragment>
+        )}
+      </RNCamera>
     )
   }
 }

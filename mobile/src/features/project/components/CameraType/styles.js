@@ -3,7 +3,7 @@ import UiTouchable from 'ui/Touchable'
 
 export const Button = styled(UiTouchable)`
   position: absolute;
-  right: 20;
+  left: 20;
   bottom: 20;
 `
 

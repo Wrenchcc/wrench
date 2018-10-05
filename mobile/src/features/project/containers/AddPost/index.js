@@ -4,28 +4,37 @@ import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { updatePostProgress } from 'graphql/mutations/post/postProgress'
-import { track, events } from 'utils/analytics'
 import Camera from 'features/project/components/Camera'
+import ImageEditor from 'features/project/components/ImageEditor'
 import CameraRoll from 'features/project/components/CameraRoll'
-import { Base, Placeholder } from './styles'
+import { Base, Placeholder, PLACEHOLDER_SIZE } from './styles'
 
 class AddPost extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      // filesToUpload: [],
-    }
+  state = {
+    currentImage: null,
+    filesToUpload: [],
+  }
 
-    track(events.POST_CREATED_INITED)
+  addCurrentImage = currentImage => {
+    this.setState({ currentImage })
   }
 
   render() {
+    const { currentImage } = this.state
     return (
       <Base>
         <Placeholder>
-          <Camera onTakePicture={() => console.log('onTakePicture')} />
+          {currentImage && (
+            <ImageEditor
+              image={currentImage}
+              size={PLACEHOLDER_SIZE}
+              onCropping={image => console.log(image)}
+            />
+          )}
+          {!currentImage && <Camera onTakePicture={() => console.log('onTakePicture')} />}
         </Placeholder>
-        <CameraRoll />
+
+        <CameraRoll onSelect={this.addCurrentImage} />
       </Base>
     )
   }

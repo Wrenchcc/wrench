@@ -16,20 +16,20 @@ export default class CameraRoll extends PureComponent {
   }
 
   componentDidMount() {
-    this.loadFiles()
+    this.getImages()
   }
 
-  loadFiles = async after => {
+  getImages = async after => {
     const { data, has_next_page: hasNextPage } = this.state
 
     if (!hasNextPage) return
 
     try {
       const result = await RNCameraRoll.getPhotos({ first: PAGE_SIZE, after })
-      const loadedFiles = result.edges.map(image => image.node.image)
+      const loadedImages = result.edges.map(image => image.node.image)
 
       this.setState({
-        data: data.concat(loadedFiles),
+        data: data.concat(loadedImages),
         ...result.page_info,
       })
     } catch (err) {
@@ -38,23 +38,24 @@ export default class CameraRoll extends PureComponent {
   }
 
   addSelectedFile = file => {
+    this.props.onSelect(file)
+
     this.setState(prevState => ({
-      // current: file,
       selected: { ...prevState.selected, [file.filename]: file },
     }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    // const { selected } = this.state
-    // const fileKeys = Object.keys(selected)
-    // const index = fileKeys.indexOf(filename)
-
-    // const prevFilename = fileKeys[index - 1 > 0 ? index - 1 : 0]
-    // this.setState({ current: selected[prevFilename] })
-
-    this.setState(prevState => ({
-      selected: omit([filename], prevState.selected),
-    }))
+    this.setState(
+      prevState => ({
+        selected: omit([filename], prevState.selected),
+      }),
+      () => {
+        const { selected } = this.state
+        const file = selected[Object.keys(selected)[Object.keys(selected).length - 1]]
+        this.props.onSelect(file)
+      }
+    )
   }
 
   toggleSelection = file => {
@@ -68,7 +69,7 @@ export default class CameraRoll extends PureComponent {
   onEndReached = ({ distanceFromEnd }) => {
     const { has_next_page: hasNextPage } = this.state
     if (hasNextPage && distanceFromEnd > 0) {
-      this.loadFiles(this.state.end_cursor)
+      this.getImages(this.state.end_cursor)
     }
   }
 

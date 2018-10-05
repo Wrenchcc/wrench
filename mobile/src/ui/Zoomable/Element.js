@@ -9,6 +9,8 @@ const ANIMATION_DURATION = 250
 export default class Element extends PureComponent {
   opacity = new Animated.Value(1)
 
+  panRef = React.createRef()
+
   static propTypes = {
     children: PropTypes.element.isRequired,
   }
@@ -20,7 +22,7 @@ export default class Element extends PureComponent {
     gesturePosition: PropTypes.object,
   }
 
-  onPanStateChange = ({ nativeEvent }) => {
+  onPanGestureStateChange = ({ nativeEvent }) => {
     switch (nativeEvent.state) {
       case State.BEGAN:
         return this.onGestureStart()
@@ -89,7 +91,7 @@ export default class Element extends PureComponent {
     })
   }
 
-  onGestureMove = ({ nativeEvent }) => {
+  onPanGestureEvent = ({ nativeEvent }) => {
     const { gesturePosition } = this.context
     const { translationX, translationY } = nativeEvent
 
@@ -127,19 +129,21 @@ export default class Element extends PureComponent {
   }
 
   render() {
-    const imagePan = React.createRef()
-
     return (
       <PanGestureHandler
-        onGestureEvent={this.onGestureMove}
-        onHandlerStateChange={this.onPanStateChange}
-        ref={imagePan}
+        onGestureEvent={this.onPanGestureEvent}
+        onHandlerStateChange={this.onPanGestureStateChange}
+        ref={this.panRef}
         minPointers={2}
         maxPointers={2}
         minDist={0}
         minDeltaX={0}
+        avgTouches
       >
-        <PinchGestureHandler simultaneousHandlers={imagePan} onGestureEvent={this.onGesturePinch}>
+        <PinchGestureHandler
+          simultaneousHandlers={this.panRef}
+          onGestureEvent={this.onGesturePinch}
+        >
           <View style={{ backgroundColor: COLORS.BEIGE }}>
             <Animated.View ref={this.setRef} style={{ opacity: this.opacity }}>
               {this.props.children}

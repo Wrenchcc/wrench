@@ -1,40 +1,48 @@
-import React, { Component } from 'react'
-import { Image, Platform, ScrollView } from 'react-native'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { ScrollView, Image, Platform } from 'react-native'
 
-export default class Cropper extends Component {
-  contentOffset: {}
+export default class ImageEditor extends PureComponent {
+  static propTypes = {
+    image: PropTypes,
+    onCropping: PropTypes.func.isRequired,
+    size: PropTypes.object.isRequired,
+  }
 
-  maximumZoomScale: number
+  contentOffset = {}
 
-  minimumZoomScale: number
+  horizontal = false
 
-  scaledImageSize: {}
+  maximumZoomScale = 0
 
-  horizontal: boolean
+  minimumZoomScale = null
 
-  componentWillMount() {
-    // Scale an image to the minimum size that is large enough to completely
-    // fill the crop box.
-    const widthRatio = this.props.image.width / this.props.size.width
-    const heightRatio = this.props.image.height / this.props.size.height
+  scaledImageSize = null
+
+  constructor(props) {
+    super(props)
+
+    if (!props.image) return
+
+    const widthRatio = props.image.width / props.size.width
+    const heightRatio = props.image.height / props.size.height
 
     this.horizontal = widthRatio > heightRatio
 
     if (this.horizontal) {
       this.scaledImageSize = {
-        width: this.props.image.width / heightRatio,
-        height: this.props.size.height,
+        width: props.image.width / heightRatio,
+        height: props.size.height,
       }
     } else {
       this.scaledImageSize = {
-        width: this.props.size.width,
-        height: this.props.image.height / widthRatio,
+        width: props.size.width,
+        height: props.image.height / widthRatio,
       }
-
-      // hack to work around Android ScrollView a) not supporting zoom, and
-      // b) not supporting vertical scrolling when nested inside another
-      // vertical ScrollView (which it is, when displayed inside UIExplorer)
       if (Platform.OS === 'android') {
+        // hack to work around Android ScrollView a) not supporting zoom, and
+        // b) not supporting vertical scrolling when nested inside another
+        // vertical ScrollView (which it is, when displayed inside UIExplorer)
         this.scaledImageSize.width *= 2
         this.scaledImageSize.height *= 2
         this.horizontal = true
@@ -42,21 +50,21 @@ export default class Cropper extends Component {
     }
 
     this.contentOffset = {
-      x: (this.scaledImageSize.width - this.props.size.width) / 2,
-      y: (this.scaledImageSize.height - this.props.size.height) / 2,
+      x: (this.scaledImageSize.width - props.size.width) / 2,
+      y: (this.scaledImageSize.height - props.size.height) / 2,
     }
 
     this.maximumZoomScale = Math.min(
-      this.props.image.width / this.scaledImageSize.width,
-      this.props.image.height / this.scaledImageSize.height
+      props.image.width / this.scaledImageSize.width,
+      props.image.height / this.scaledImageSize.height
     )
 
     this.minimumZoomScale = Math.max(
-      this.props.size.width / this.scaledImageSize.width,
-      this.props.size.height / this.scaledImageSize.height
+      props.size.width / this.scaledImageSize.width,
+      props.size.height / this.scaledImageSize.height
     )
 
-    this.updateCroppingData(this.contentOffset, this.scaledImageSize, this.props.size)
+    this.updateCroppingData(this.contentOffset, this.scaledImageSize, props.size)
   }
 
   onScroll = evt => {
@@ -103,7 +111,7 @@ export default class Cropper extends Component {
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
       >
-        <Image source={this.props.image} style={this.scaledImageSize} />
+        <Image style={this.scaledImageSize} source={this.props.image} />
       </ScrollView>
     )
   }
