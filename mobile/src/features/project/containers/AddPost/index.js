@@ -7,7 +7,7 @@ import { updatePostProgress } from 'graphql/mutations/post/postProgress'
 import Camera from 'features/project/components/Camera'
 import ImageEditor from 'features/project/components/ImageEditor'
 import CameraRoll from 'features/project/components/CameraRoll'
-import { Base, Placeholder, IMAGE_SIZE } from './styles'
+import { Base, Placeholder, PLACEHOLDER_SIZE } from './styles'
 
 class AddPost extends PureComponent {
   state = {
@@ -27,7 +27,7 @@ class AddPost extends PureComponent {
           {currentImage && (
             <ImageEditor
               image={currentImage}
-              size={{ width: IMAGE_SIZE, height: IMAGE_SIZE }}
+              size={PLACEHOLDER_SIZE}
               onCropping={image => console.log(image)}
             />
           )}

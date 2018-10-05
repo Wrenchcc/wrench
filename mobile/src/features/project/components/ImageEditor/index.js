@@ -5,8 +5,8 @@ import { ScrollView, Image, Platform } from 'react-native'
 export default class ImageEditor extends PureComponent {
   static propTypes = {
     image: PropTypes,
-    // onCropping: PropTypes.func.isRequired,
-    // size: PropTypes.object.isRequired,
+    onCropping: PropTypes.func.isRequired,
+    size: PropTypes.object.isRequired,
   }
 
   contentOffset = {}
@@ -21,10 +21,7 @@ export default class ImageEditor extends PureComponent {
 
   constructor(props) {
     super(props)
-    this.setImageSize(props)
-  }
 
-  setImageSize(props) {
     if (!props.image) return
 
     const widthRatio = props.image.width / props.size.width
