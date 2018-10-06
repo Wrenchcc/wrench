@@ -14,7 +14,7 @@ class AddPost extends PureComponent {
   state = {
     currentImage: null,
     capturedImage: null,
-    filesToUpload: [],
+    // filesToUpload: [],
   }
 
   addCurrentImage = currentImage => {
