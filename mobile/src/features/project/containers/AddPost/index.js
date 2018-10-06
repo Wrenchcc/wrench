@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
+import { navigateToFeed } from 'navigation'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { updatePostProgress } from 'graphql/mutations/post/postProgress'
@@ -64,7 +65,9 @@ class AddPost extends PureComponent {
     this.setState({ caption })
   }
 
-  addPost = () => {}
+  addPost = () => {
+    navigateToFeed()
+  }
 
   render() {
     const { projects } = this.props
