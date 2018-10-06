@@ -4,7 +4,7 @@ import { ScrollView, Image, Platform } from 'react-native'
 
 export default class ImageEditor extends PureComponent {
   static propTypes = {
-    image: PropTypes,
+    image: PropTypes.object.isRequired,
     onCropping: PropTypes.func.isRequired,
     size: PropTypes.object.isRequired,
   }
