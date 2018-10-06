@@ -8,5 +8,6 @@ export const Button = styled(UiTouchable)`
 `
 
 export const Icon = styled.Image`
-  width: 20px;
+  width: 22;
+  height: 18;
 `

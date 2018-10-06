@@ -17,7 +17,7 @@ export default class ImageEditor extends PureComponent {
 
   static propTypes = {
     image: PropTypes.object.isRequired,
-    onCropping: PropTypes.func.isRequired,
+    // onCropping: PropTypes.func.isRequired,
   }
 
   contentOffset = {}
@@ -34,21 +34,30 @@ export default class ImageEditor extends PureComponent {
     super(props)
 
     if (!props.image) return
+    this.setImageProperties(props.image)
+  }
 
-    const widthRatio = props.image.width / IMAGE_EDITOR_WIDTH
-    const heightRatio = props.image.height / IMAGE_EDITOR_HEIGHT
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.image.filename !== this.props.image.filename) {
+  //     this.setImageProperties(nextProps.image)
+  //   }
+  // }
+
+  setImageProperties(image) {
+    const widthRatio = image.width / IMAGE_EDITOR_WIDTH
+    const heightRatio = image.height / IMAGE_EDITOR_HEIGHT
 
     this.horizontal = widthRatio > heightRatio
 
     if (this.horizontal) {
       this.scaledImageSize = {
-        width: props.image.width / heightRatio,
+        width: image.width / heightRatio,
         height: IMAGE_EDITOR_HEIGHT,
       }
     } else {
       this.scaledImageSize = {
         width: IMAGE_EDITOR_WIDTH,
-        height: props.image.height / widthRatio,
+        height: image.height / widthRatio,
       }
       if (Platform.OS === 'android') {
         // hack to work around Android ScrollView a) not supporting zoom, and
@@ -66,8 +75,8 @@ export default class ImageEditor extends PureComponent {
     }
 
     this.maximumZoomScale = Math.min(
-      props.image.width / this.scaledImageSize.width,
-      props.image.height / this.scaledImageSize.height
+      image.width / this.scaledImageSize.width,
+      image.height / this.scaledImageSize.height
     )
 
     this.minimumZoomScale = Math.max(
