@@ -1,11 +1,12 @@
 import React, { PureComponent, Fragment } from 'react'
+import { translate } from 'react-i18next'
 import { navigateBack } from 'navigation'
 import { Header, Dropdown, Icon, Text } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeftWhite } from 'images'
 import { Top } from './styles'
 
-export default class AddPostHeader extends PureComponent {
+class AddPostHeader extends PureComponent {
   state = {
     expanded: false,
   }
@@ -13,28 +14,28 @@ export default class AddPostHeader extends PureComponent {
   toggleDropdown = () => this.setState(prevState => ({ expanded: !prevState.expanded }))
 
   renderHeaderLeft() {
-    if (this.state.edit) {
-      return <Icon onPress={() => console.log('close edit')} source={arrowLeftWhite} />
+    if (this.props.isEditing) {
+      return <Icon onPress={this.props.toggleEdit} source={arrowLeftWhite} />
     }
     return <Icon onPress={() => navigateBack()} source={close} />
   }
 
   renderHeaderRight() {
-    // if (!edit && page === CAMERA_ROLL_PAGE && !isEmpty(files)) {
-    //   return (
-    //     <Text color="white" medium onPress={() => this.openEdit()}>
-    //       {this.props.t('AddPost:next')}
-    //     </Text>
-    //   )
-    // }
-    //
-    // if (this.props.canPost) {
-    //   return (
-    //     <Text color="white" medium onPress={this.onSave}>
-    //       {this.props.t('AddPost:post')}
-    //     </Text>
-    //   )
-    // }
+    if (this.props.canEdit && !this.props.isEditing) {
+      return (
+        <Text color="white" medium onPress={this.props.toggleEdit}>
+          {this.props.t('AddPostHeader:next')}
+        </Text>
+      )
+    }
+
+    if (this.props.isEditing) {
+      return (
+        <Text color="white" medium onPress={() => console.log('post')}>
+          {this.props.t('AddPostHeader:post')}
+        </Text>
+      )
+    }
 
     return null
   }
@@ -55,7 +56,7 @@ export default class AddPostHeader extends PureComponent {
             headerRight={this.renderHeaderRight()}
             headerCenter={
               <Dropdown
-                title="Porject"
+                title="BMW R100 project"
                 onPress={this.toggleDropdown}
                 active={this.state.expanded}
               />
@@ -66,3 +67,5 @@ export default class AddPostHeader extends PureComponent {
     )
   }
 }
+
+export default translate('AddPostHeader')(AddPostHeader)
