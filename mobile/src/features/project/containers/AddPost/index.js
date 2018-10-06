@@ -53,6 +53,9 @@ class AddPost extends PureComponent {
   }
 
   addCurrentImage = currentImage => {
+    // If image in filesToUpload by filename
+    // return and add to ImageEditor
+    // Handle offset instead of center image on mount
     this.setState({ currentImage })
   }
 

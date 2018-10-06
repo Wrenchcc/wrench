@@ -94,7 +94,7 @@ export default class CameraRoll extends PureComponent {
 
   renderItem = ({ item }) => (
     <Item>
-      <Touchable onPress={() => this.toggleSelection(item)}>
+      <Touchable onPress={() => this.toggleSelection(item)} activeOpacity={1}>
         <Overlay selected={this.isSelected(item)} />
         <Image source={{ uri: item.uri }} />
       </Touchable>

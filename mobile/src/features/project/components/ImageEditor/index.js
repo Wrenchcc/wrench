@@ -1,8 +1,15 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView, Image, Platform } from 'react-native'
+import { ScrollView, TouchableWithoutFeedback, Image, Platform } from 'react-native'
+import GridLayout from 'features/project/components/GridLayout'
 
+// Reset when new image is selected
+// Look for prev offset and use that
 export default class ImageEditor extends PureComponent {
+  state = {
+    isMoving: false,
+  }
+
   static propTypes = {
     image: PropTypes.object.isRequired,
     onCropping: PropTypes.func.isRequired,
@@ -75,6 +82,10 @@ export default class ImageEditor extends PureComponent {
     )
   }
 
+  handleMoving = isMoving => {
+    this.setState({ isMoving })
+  }
+
   updateCroppingData(offset, scaledImageSize, croppedImageSize) {
     const offsetRatioX = offset.x / scaledImageSize.width
     const offsetRatioY = offset.y / scaledImageSize.height
@@ -96,23 +107,30 @@ export default class ImageEditor extends PureComponent {
   }
 
   render() {
+    const { isMoving } = this.state
     return (
-      <ScrollView
-        alwaysBounceVertical
-        automaticallyAdjustContentInsets={false}
-        contentOffset={this.contentOffset}
-        decelerationRate="fast"
-        horizontal={this.horizontal}
-        maximumZoomScale={this.maximumZoomScale}
-        minimumZoomScale={this.minimumZoomScale}
-        onMomentumScrollEnd={this.onScroll}
-        onScrollEndDrag={this.onScroll}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        scrollEventThrottle={16}
-      >
-        <Image style={this.scaledImageSize} source={this.props.image} />
-      </ScrollView>
+      <Fragment>
+        <ScrollView
+          alwaysBounceVertical
+          automaticallyAdjustContentInsets={false}
+          contentOffset={this.contentOffset}
+          decelerationRate="fast"
+          horizontal={this.horizontal}
+          maximumZoomScale={this.maximumZoomScale}
+          minimumZoomScale={this.minimumZoomScale}
+          onMomentumScrollEnd={this.onScroll}
+          onScrollEndDrag={() => this.handleMoving(false)}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          scrollEventThrottle={16}
+        >
+          <TouchableWithoutFeedback onPressIn={() => this.handleMoving(true)}>
+            <Image style={this.scaledImageSize} source={this.props.image} />
+          </TouchableWithoutFeedback>
+        </ScrollView>
+
+        <GridLayout active={isMoving} />
+      </Fragment>
     )
   }
 }

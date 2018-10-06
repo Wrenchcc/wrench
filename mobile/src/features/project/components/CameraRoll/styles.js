@@ -27,5 +27,5 @@ export const Overlay = styled.View`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: ${props => (props.selected ? 'rgba(255, 255, 255, 0.7)' : 'transparent')};
+  background-color: ${props => (props.selected ? 'rgba(255, 255, 255, 0.5)' : 'transparent')};
 `

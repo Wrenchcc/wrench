@@ -12,9 +12,15 @@ const onPressWrapper = (onPress, hapticFeedback = false) => {
   onPress()
 }
 
-const Touchable = ({ children, onPress, hapticFeedback = false, ...props }) => (
+const Touchable = ({
+  children,
+  onPress,
+  activeOpacity = 0.8,
+  hapticFeedback = false,
+  ...props
+}) => (
   <TouchableOpacity
-    activeOpacity={0.8}
+    activeOpacity={activeOpacity}
     onPress={() => onPressWrapper(onPress, hapticFeedback)}
     hitSlop={hitSlop(10)}
     {...props}
@@ -24,9 +30,10 @@ const Touchable = ({ children, onPress, hapticFeedback = false, ...props }) => (
 )
 
 Touchable.propTypes = {
+  activeOpacity: PropTypes.number,
   children: PropTypes.any,
-  onPress: PropTypes.func.isRequired,
   hapticFeedback: PropTypes.string,
+  onPress: PropTypes.func.isRequired,
 }
 
 export default Touchable
