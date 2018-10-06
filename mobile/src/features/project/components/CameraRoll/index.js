@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
+import PropTypes from 'prop-types'
 import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
@@ -8,6 +9,10 @@ import { Item, Image, Overlay, GUTTER, COLUMNS } from './styles'
 const PAGE_SIZE = 16
 
 export default class CameraRoll extends PureComponent {
+  static propTypes = {
+    onSelect: PropTypes.func.isRequired,
+  }
+
   state = {
     data: [],
     end_cursor: null,

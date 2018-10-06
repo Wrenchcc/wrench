@@ -6,6 +6,7 @@ import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProje
 import { addPost } from 'graphql/mutations/post/addPost'
 import { updatePostProgress } from 'graphql/mutations/post/postProgress'
 import Camera from 'features/project/components/Camera'
+import AddPostHeader from 'features/project/components/AddPostHeader'
 import ImageEditor from 'features/project/components/ImageEditor'
 import CameraRoll from 'features/project/components/CameraRoll'
 import { Base, Placeholder, PLACEHOLDER_SIZE } from './styles'
@@ -46,6 +47,7 @@ class AddPost extends PureComponent {
 
     return (
       <Base>
+        <AddPostHeader />
         <Placeholder>{component}</Placeholder>
         <CameraRoll onSelect={this.addCurrentImage} />
       </Base>
