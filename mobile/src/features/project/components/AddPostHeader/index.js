@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { navigateBack } from 'navigation'
 import { Header, Dropdown, Icon, Text } from 'ui'
@@ -7,6 +8,17 @@ import { close, arrowLeftWhite } from 'images'
 import { Top } from './styles'
 
 class AddPostHeader extends PureComponent {
+  static propTypes = {
+    canEdit: PropTypes.bool.isRequired,
+    changeProject: PropTypes.func.isRequired,
+    dropdownOpen: PropTypes.bool.isRequired,
+    isEditing: PropTypes.bool.isRequired,
+    projects: PropTypes.array.isRequired,
+    selectedProject: PropTypes.object.isRequired,
+    toggleDropdown: PropTypes.func.isRequired,
+    toggleEdit: PropTypes.func.isRequired,
+  }
+
   renderHeaderLeft() {
     if (this.props.isEditing) {
       return <Icon onPress={this.props.toggleEdit} source={arrowLeftWhite} />

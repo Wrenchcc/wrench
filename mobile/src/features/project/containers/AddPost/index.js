@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -12,10 +13,15 @@ import CameraRoll from 'features/project/components/CameraRoll'
 import { Base, Placeholder, PLACEHOLDER_SIZE } from './styles'
 
 class AddPost extends PureComponent {
+  static propTypes = {
+    projects: PropTypes.array.isRequired,
+  }
+
   constructor(props) {
     super(props)
 
     this.state = {
+      caption: '',
       currentImage: null,
       capturedImage: null,
       isEditing: false,
@@ -23,10 +29,6 @@ class AddPost extends PureComponent {
       selectedProject: pathOr(null, ['projects', 0, 'node'], props),
       // filesToUpload: [],
     }
-  }
-
-  get canEdit() {
-    return !!this.state.currentImage
   }
 
   toggleEdit = () => {
@@ -54,9 +56,20 @@ class AddPost extends PureComponent {
     this.setState({ capturedImage })
   }
 
+  onChangeCaption = caption => {
+    this.setState({ caption })
+  }
+
   render() {
     const { projects } = this.props
-    const { currentImage, capturedImage, isEditing, selectedProject, dropdownOpen } = this.state
+    const {
+      caption,
+      capturedImage,
+      currentImage,
+      dropdownOpen,
+      isEditing,
+      selectedProject,
+    } = this.state
 
     const editImage = capturedImage || currentImage
 
@@ -76,9 +89,14 @@ class AddPost extends PureComponent {
 
     return (
       <Base>
-        <AddCaption isEditing={isEditing} />
+        <AddCaption
+          isEditing={isEditing}
+          caption={caption}
+          onChangeCaption={this.onChangeCaption}
+        />
+
         <AddPostHeader
-          canEdit={this.canEdit}
+          canEdit={!!editImage}
           changeProject={this.changeProject}
           isEditing={isEditing}
           projects={projects}
@@ -87,6 +105,7 @@ class AddPost extends PureComponent {
           toggleEdit={this.toggleEdit}
           dropdownOpen={dropdownOpen}
         />
+
         <Placeholder>{component}</Placeholder>
         <CameraRoll onSelect={this.addCurrentImage} />
       </Base>

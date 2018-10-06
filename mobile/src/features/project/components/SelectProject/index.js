@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
+import { Animated, View } from 'react-native'
 import { translate } from 'react-i18next'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'

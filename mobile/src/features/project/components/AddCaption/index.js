@@ -1,32 +1,33 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { KeyboardAvoidingView } from 'react-native'
 import { translate } from 'react-i18next'
 import { Input } from 'ui'
 import { Edit, Inner, Overlay } from './styles'
 
 class AddCaption extends PureComponent {
-  state = {
-    caption: false,
+  static propTypes = {
+    caption: PropTypes.string.isRequired,
+    isEditing: PropTypes.bool.isRequired,
+    onChangeCaption: PropTypes.func.isRequired,
   }
 
-  onChangeText = () => {}
-
   render() {
-    const { t, isEditing } = this.props
+    const { t, isEditing, caption, onChangeCaption } = this.props
 
     if (!isEditing) return null
 
     return (
       <Overlay>
-        <Inner onPressIn={() => console.log('close dropdown')} activeOpacity={1}>
+        <Inner>
           <KeyboardAvoidingView behavior="position">
             <Edit>
               <Input
                 autoFocus
                 multiline
                 selectionColor="white"
-                value={this.state.caption}
-                onChangeText={this.onChangeText}
+                value={caption}
+                onChangeText={onChangeCaption}
                 placeholder={t('AddPost:placeholder')}
               />
             </Edit>
