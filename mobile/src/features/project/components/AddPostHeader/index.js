@@ -9,6 +9,7 @@ import { Top } from './styles'
 
 class AddPostHeader extends PureComponent {
   static propTypes = {
+    addPost: PropTypes.func.isRequired,
     canEdit: PropTypes.bool.isRequired,
     changeProject: PropTypes.func.isRequired,
     dropdownOpen: PropTypes.bool.isRequired,
@@ -20,25 +21,27 @@ class AddPostHeader extends PureComponent {
   }
 
   renderHeaderLeft() {
-    if (this.props.isEditing) {
-      return <Icon onPress={this.props.toggleEdit} source={arrowLeftWhite} />
+    const { isEditing, toggleEdit } = this.props
+    if (isEditing) {
+      return <Icon onPress={toggleEdit} source={arrowLeftWhite} />
     }
     return <Icon onPress={() => navigateBack()} source={close} />
   }
 
   renderHeaderRight() {
-    if (this.props.canEdit && !this.props.isEditing) {
+    const { t, addPost, canEdit, isEditing, toggleEdit } = this.props
+    if (canEdit && !isEditing) {
       return (
-        <Text color="white" medium onPress={this.props.toggleEdit}>
-          {this.props.t('AddPostHeader:next')}
+        <Text color="white" medium onPress={toggleEdit}>
+          {t('AddPostHeader:next')}
         </Text>
       )
     }
 
-    if (this.props.isEditing) {
+    if (isEditing) {
       return (
-        <Text color="white" medium onPress={() => console.log('post')}>
-          {this.props.t('AddPostHeader:post')}
+        <Text color="white" medium onPress={addPost}>
+          {t('AddPostHeader:post')}
         </Text>
       )
     }

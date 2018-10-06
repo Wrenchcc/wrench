@@ -27,7 +27,11 @@ class AddPost extends PureComponent {
       isEditing: false,
       dropdownOpen: false,
       selectedProject: pathOr(null, ['projects', 0, 'node'], props),
-      // filesToUpload: [],
+      // filesToUpload: [{
+      //   filename: '',
+      //   uri: '',
+      //   offset: {x:0, y:0}
+      // }],
     }
   }
 
@@ -59,6 +63,8 @@ class AddPost extends PureComponent {
   onChangeCaption = caption => {
     this.setState({ caption })
   }
+
+  addPost = () => {}
 
   render() {
     const { projects } = this.props
@@ -104,6 +110,7 @@ class AddPost extends PureComponent {
           toggleDropdown={this.toggleDropdown}
           toggleEdit={this.toggleEdit}
           dropdownOpen={dropdownOpen}
+          addPost={this.addPost}
         />
 
         <Placeholder>{component}</Placeholder>
