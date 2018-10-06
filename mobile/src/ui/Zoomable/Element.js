@@ -23,14 +23,10 @@ export default class Element extends PureComponent {
   }
 
   onPanGestureStateChange = ({ nativeEvent }) => {
-    switch (nativeEvent.state) {
-      case State.BEGAN:
-        return this.onGestureStart()
-      case State.END:
-        return this.onGestureRelease()
-      default:
-        return null
+    if (nativeEvent.oldState === State.ACTIVE) {
+      return this.onGestureRelease()
     }
+    return this.onGestureStart()
   }
 
   onGestureStart = async () => {

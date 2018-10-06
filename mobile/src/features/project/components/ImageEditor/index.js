@@ -1,7 +1,12 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView, TouchableWithoutFeedback, Image, Platform } from 'react-native'
+import { Dimensions, ScrollView, TouchableWithoutFeedback, Image, Platform } from 'react-native'
 import GridLayout from 'features/project/components/GridLayout'
+
+const { width } = Dimensions.get('window')
+
+const IMAGE_EDITOR_HEIGHT = width
+const IMAGE_EDITOR_WIDTH = width
 
 // Reset when new image is selected
 // Look for prev offset and use that
@@ -13,7 +18,6 @@ export default class ImageEditor extends PureComponent {
   static propTypes = {
     image: PropTypes.object.isRequired,
     onCropping: PropTypes.func.isRequired,
-    size: PropTypes.object.isRequired,
   }
 
   contentOffset = {}
@@ -31,19 +35,19 @@ export default class ImageEditor extends PureComponent {
 
     if (!props.image) return
 
-    const widthRatio = props.image.width / props.size.width
-    const heightRatio = props.image.height / props.size.height
+    const widthRatio = props.image.width / IMAGE_EDITOR_WIDTH
+    const heightRatio = props.image.height / IMAGE_EDITOR_HEIGHT
 
     this.horizontal = widthRatio > heightRatio
 
     if (this.horizontal) {
       this.scaledImageSize = {
         width: props.image.width / heightRatio,
-        height: props.size.height,
+        height: IMAGE_EDITOR_HEIGHT,
       }
     } else {
       this.scaledImageSize = {
-        width: props.size.width,
+        width: IMAGE_EDITOR_WIDTH,
         height: props.image.height / widthRatio,
       }
       if (Platform.OS === 'android') {
@@ -57,8 +61,8 @@ export default class ImageEditor extends PureComponent {
     }
 
     this.contentOffset = {
-      x: (this.scaledImageSize.width - props.size.width) / 2,
-      y: (this.scaledImageSize.height - props.size.height) / 2,
+      x: (this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2,
+      y: (this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2,
     }
 
     this.maximumZoomScale = Math.min(
@@ -67,11 +71,14 @@ export default class ImageEditor extends PureComponent {
     )
 
     this.minimumZoomScale = Math.max(
-      props.size.width / this.scaledImageSize.width,
-      props.size.height / this.scaledImageSize.height
+      IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
+      IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
     )
 
-    this.updateCroppingData(this.contentOffset, this.scaledImageSize, props.size)
+    this.updateCroppingData(this.contentOffset, this.scaledImageSize, {
+      width: IMAGE_EDITOR_WIDTH,
+      height: IMAGE_EDITOR_HEIGHT,
+    })
   }
 
   onScroll = evt => {

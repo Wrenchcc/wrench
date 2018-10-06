@@ -124,47 +124,49 @@ class WebView extends PureComponent {
     </Footer>
   )
 
-  render = () => (
-    <Base>
-      <Header
-        transparent={false}
-        headerLeft={<Icon onPress={() => navigateBack()} source={closeDark} />}
-        headerCenter={
-          <View style={{ alignItems: 'center' }}>
-            <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>
-              {this.state.title}
-            </Text>
-            <Text fontSize={11} numberOfLines={1} color="light_grey">
-              {url.parse(this.state.url).host}
-            </Text>
-          </View>
-        }
-        headerRight={<Icon onPress={this.refresh} source={refresh} />}
-      />
-      <ProgressBar
-        opacity={this.isLoading ? 1 : 0}
-        fillColor="black"
-        borderRadius={0}
-        barHeight={2}
-        progress={this.progress}
-      />
+  render() {
+    return (
+      <Base>
+        <Header
+          transparent={false}
+          headerLeft={<Icon onPress={() => navigateBack()} source={closeDark} />}
+          headerCenter={
+            <View style={{ alignItems: 'center' }}>
+              <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>
+                {this.state.title}
+              </Text>
+              <Text fontSize={11} numberOfLines={1} color="light_grey">
+                {url.parse(this.state.url).host}
+              </Text>
+            </View>
+          }
+          headerRight={<Icon onPress={this.refresh} source={refresh} />}
+        />
+        <ProgressBar
+          opacity={this.isLoading ? 1 : 0}
+          fillColor="black"
+          borderRadius={0}
+          barHeight={2}
+          progress={this.progress}
+        />
 
-      <RNWebView
-        style={{ flex: 1, backgroundColor: COLORS.LIGHT_GREY }}
-        source={{ uri: this.props.url, headers: this.setCustomHeaders() }}
-        javaScriptEnabled
-        onLoadStart={this.onLoadStart}
-        onLoadEnd={this.onLoadEnd}
-        onError={this.onLoadError}
-        onNavigationStateChange={this.onNavigationStateChange}
-        ref={ref => {
-          this.webview = ref
-        }}
-      />
+        <RNWebView
+          style={{ flex: 1, backgroundColor: COLORS.LIGHT_GREY }}
+          source={{ uri: this.props.url, headers: this.setCustomHeaders() }}
+          javaScriptEnabled
+          onLoadStart={this.onLoadStart}
+          onLoadEnd={this.onLoadEnd}
+          onError={this.onLoadError}
+          onNavigationStateChange={this.onNavigationStateChange}
+          ref={ref => {
+            this.webview = ref
+          }}
+        />
 
-      {this.renderFooter()}
-    </Base>
-  )
+        {this.renderFooter()}
+      </Base>
+    )
+  }
 }
 
 export default translate('WebView')(WebView)

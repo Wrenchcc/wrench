@@ -4,11 +4,6 @@ import { COLORS, HEADER_HEIGHT } from 'ui/constants'
 
 const { width } = Dimensions.get('window')
 
-export const PLACEHOLDER_SIZE = {
-  width,
-  height: width,
-}
-
 export const Base = styled.View`
   flex: 1;
   background: ${COLORS.DARK};

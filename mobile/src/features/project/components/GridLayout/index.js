@@ -1,8 +1,13 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { Animated, View } from 'react-native'
 
 export default class GridLayout extends PureComponent {
   animatedValue = new Animated.Value(0)
+
+  static propTypes = {
+    active: PropTypes.bool.isRequired,
+  }
 
   componentWillReceiveProps(nextProps) {
     this.handleAnimation(!nextProps.active)

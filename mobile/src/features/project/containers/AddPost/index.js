@@ -11,7 +11,7 @@ import AddPostHeader from 'features/project/components/AddPostHeader'
 import AddCaption from 'features/project/components/AddCaption'
 import ImageEditor from 'features/project/components/ImageEditor'
 import CameraRoll from 'features/project/components/CameraRoll'
-import { Base, Placeholder, PLACEHOLDER_SIZE } from './styles'
+import { Base, Placeholder } from './styles'
 
 class AddPost extends PureComponent {
   static propTypes = {
@@ -88,13 +88,7 @@ class AddPost extends PureComponent {
     let component
 
     if (editImage) {
-      component = (
-        <ImageEditor
-          image={editImage}
-          size={PLACEHOLDER_SIZE}
-          onCropping={image => console.log(image)}
-        />
-      )
+      component = <ImageEditor image={editImage} onCropping={image => console.log(image)} />
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }
