@@ -7,12 +7,6 @@ import { close, arrowLeftWhite } from 'images'
 import { Top } from './styles'
 
 class AddPostHeader extends PureComponent {
-  state = {
-    expanded: false,
-  }
-
-  toggleDropdown = () => this.setState(prevState => ({ expanded: !prevState.expanded }))
-
   renderHeaderLeft() {
     if (this.props.isEditing) {
       return <Icon onPress={this.props.toggleEdit} source={arrowLeftWhite} />
@@ -41,13 +35,15 @@ class AddPostHeader extends PureComponent {
   }
 
   render() {
+    const { selectedProject, projects, changeProject, toggleDropdown, dropdownOpen } = this.props
+
     return (
       <Fragment>
         <SelectProject
-          expanded={this.state.expanded}
-          onPress={() => console.log('selected')}
-          projects={[]}
-          selected={null}
+          expanded={dropdownOpen}
+          onPress={changeProject}
+          projects={projects}
+          selected={selectedProject}
         />
 
         <Top>
@@ -56,9 +52,9 @@ class AddPostHeader extends PureComponent {
             headerRight={this.renderHeaderRight()}
             headerCenter={
               <Dropdown
-                title="BMW R100 project"
-                onPress={this.toggleDropdown}
-                active={this.state.expanded}
+                title={selectedProject.title}
+                onPress={toggleDropdown}
+                active={dropdownOpen}
               />
             }
           />
