@@ -1,26 +1,26 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
+import { hasIn, omit } from 'ramda'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
 import { Item, Image, Overlay, GUTTER, COLUMNS } from './styles'
 
 const PAGE_SIZE = 16
 
-export default class CameraRoll extends Component {
+export default class CameraRoll extends PureComponent {
   state = {
     data: [],
     end_cursor: null,
     has_next_page: true,
-    selected: [],
+    lastSelected: null,
+    selected: {},
   }
 
   componentDidMount() {
-    this.getPhotos()
+    this.getImages()
   }
 
-  arrayObjectIndexOf = (array, property, value) => array.map(o => o[property]).indexOf(value)
-
-  getPhotos = async after => {
+  getImages = async after => {
     const { data, has_next_page: hasNextPage } = this.state
 
     if (!hasNextPage) return
@@ -38,31 +38,58 @@ export default class CameraRoll extends Component {
     }
   }
 
+  addSelectedFile = file => {
+    this.props.onSelect(file)
+    this.setState(prevState => ({
+      selected: { ...prevState.selected, [file.filename]: file },
+    }))
+  }
+
+  removeSelectedFile = ({ filename }) => {
+    this.setState(
+      prevState => ({
+        selected: omit([filename], prevState.selected),
+      }),
+      () => {
+        const { selected } = this.state
+        const prevFile = selected[Object.keys(selected)[Object.keys(selected).length - 1]]
+        this.props.onSelect(prevFile)
+      }
+    )
+  }
+
+  toggleSelection = file => {
+    const { selected } = this.state
+    this.setState({ lastSelected: file })
+
+    const prevFile = selected[Object.keys(selected)[Object.keys(selected).length - 1]]
+
+    if (this.isSelected(file)) {
+      if (
+        this.state.lastSelected.filename === file.filename
+        || prevFile.filename === file.filename
+      ) {
+        return this.removeSelectedFile(file)
+      }
+
+      this.props.onSelect(file)
+    }
+
+    return this.addSelectedFile(file)
+  }
+
   onEndReached = () => {
     const { has_next_page: hasNextPage } = this.state
     if (hasNextPage) {
-      this.getPhotos(this.state.end_cursor)
+      this.getImages(this.state.end_cursor)
     }
   }
 
-  isSelected = ({ uri }) => this.arrayObjectIndexOf(this.state.selected, 'uri', uri) >= 0
-
-  selectFile = file => {
-    const { selected } = this.state
-    const index = this.arrayObjectIndexOf(selected, 'uri', file.uri)
-
-    if (index >= 0) {
-      selected.splice(index, 1)
-    } else {
-      selected.push(file)
-    }
-
-    this.setState({ selected })
-  }
+  isSelected = ({ filename }) => hasIn(filename, this.state.selected)
 
   renderItem = ({ item }) => (
     <Item>
-      <Touchable onPress={() => this.selectFile(item)}>
+      <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
         <Overlay selected={this.isSelected(item)} />
         <Image source={{ uri: item.uri }} />
       </Touchable>
