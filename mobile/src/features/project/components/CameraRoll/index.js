@@ -22,10 +22,15 @@ export default class CameraRoll extends PureComponent {
   }
 
   componentDidMount() {
-    this.getImages()
+    this.getFiles()
   }
 
-  getImages = async after => {
+  get prevFile() {
+    const { selected } = this.state
+    return selected[Object.keys(selected)[Object.keys(selected).length - 1]]
+  }
+
+  getFiles = async after => {
     const { data, has_next_page: hasNextPage } = this.state
 
     if (!hasNextPage) return
@@ -56,23 +61,18 @@ export default class CameraRoll extends PureComponent {
         selected: omit([filename], prevState.selected),
       }),
       () => {
-        const { selected } = this.state
-        const prevFile = selected[Object.keys(selected)[Object.keys(selected).length - 1]]
-        this.props.onSelect(prevFile)
+        this.props.onSelect(this.prevFile)
       }
     )
   }
 
   toggleSelection = file => {
-    const { selected } = this.state
     this.setState({ lastSelected: file })
-
-    const prevFile = selected[Object.keys(selected)[Object.keys(selected).length - 1]]
 
     if (this.isSelected(file)) {
       if (
         this.state.lastSelected.filename === file.filename
-        || prevFile.filename === file.filename
+        || this.prevFile.filename === file.filename
       ) {
         return this.removeSelectedFile(file)
       }
@@ -86,7 +86,7 @@ export default class CameraRoll extends PureComponent {
   onEndReached = () => {
     const { has_next_page: hasNextPage } = this.state
     if (hasNextPage) {
-      this.getImages(this.state.end_cursor)
+      this.getFiles(this.state.end_cursor)
     }
   }
 
@@ -94,7 +94,7 @@ export default class CameraRoll extends PureComponent {
 
   renderItem = ({ item }) => (
     <Item>
-      <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
+      <Touchable onPress={() => this.toggleSelection(item)}>
         <Overlay selected={this.isSelected(item)} />
         <Image source={{ uri: item.uri }} />
       </Touchable>
