@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
+import { Animated, View } from 'react-native'
 import { equals } from 'ramda'
 import { COLORS } from 'ui/constants'
 
@@ -46,7 +46,7 @@ export default class PointOfInterest extends PureComponent {
       ),
       Animated.timing(this.opacity, {
         toValue: 0.4,
-        duration: 500,
+        duration: 400,
       }),
     ]).start()
   }
@@ -56,19 +56,63 @@ export default class PointOfInterest extends PureComponent {
 
     return (
       <Animated.View
+        pointerEvents="none"
         style={{
           opacity: this.opacity,
           width: DEFAULT_SIZE,
           height: DEFAULT_SIZE,
           borderWidth: 1,
           borderColor: COLORS.ORANGE,
-          position: 'absolute',
+          position: 'relative',
           zIndex: 100,
           top: this.props.coordinates.y - DEFAULT_SIZE / 2,
           left: this.props.coordinates.x - DEFAULT_SIZE / 2,
           transform: [{ scale: this.scale }],
         }}
-      />
+      >
+        <View
+          style={{
+            position: 'absolute',
+            width: 10,
+            borderTopWidth: 1,
+            borderColor: COLORS.ORANGE,
+            top: '50%',
+          }}
+        />
+
+        <View
+          style={{
+            position: 'absolute',
+            width: 10,
+            borderTopWidth: 1,
+            borderColor: COLORS.ORANGE,
+            top: '50%',
+            right: 0,
+          }}
+        />
+
+        <View
+          style={{
+            position: 'absolute',
+            height: 10,
+            borderRightWidth: 1,
+            borderColor: COLORS.ORANGE,
+            bottom: 0,
+            left: '50%',
+          }}
+        />
+
+        <View
+          style={{
+            position: 'absolute',
+            height: 10,
+            borderRightWidth: 1,
+            borderColor: COLORS.ORANGE,
+            top: 0,
+            left: '50%',
+          }}
+        />
+      </Animated.View>
     )
   }
 }
