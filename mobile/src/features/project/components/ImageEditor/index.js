@@ -37,11 +37,11 @@ export default class ImageEditor extends PureComponent {
     this.setImageProperties(props.image)
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.image.filename !== this.props.image.filename) {
-  //     this.setImageProperties(nextProps.image)
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.image.filename !== this.props.image.filename) {
+      this.setImageProperties(nextProps.image)
+    }
+  }
 
   setImageProperties(image) {
     const widthRatio = image.width / IMAGE_EDITOR_WIDTH
