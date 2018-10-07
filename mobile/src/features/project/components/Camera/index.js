@@ -1,10 +1,12 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { TouchableWithoutFeedback } from 'react-native'
 import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
-import AskForPermission from 'features/project/components/AskForPermission'
+import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
 import CameraType from '../CameraType'
+import PointOfInterest from '../PointOfInterest'
 import { TakePicture } from './styles'
 import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
 
@@ -54,8 +56,14 @@ export default class Camera extends PureComponent {
     this.props.onTakePicture(data)
   }
 
+  setFocus = ({ nativeEvent }) => {
+    this.setState({
+      autoFocusPointOfInterest: { x: nativeEvent.locationX, y: nativeEvent.locationY },
+    })
+  }
+
   render() {
-    const { cameraPermission, isLoading } = this.state
+    const { cameraPermission, isLoading, autoFocusPointOfInterest } = this.state
 
     if (isLoading) return null
 
@@ -65,15 +73,23 @@ export default class Camera extends PureComponent {
       )
     }
     return (
-      <RNCamera type={this.state.type} flashMode={this.state.flashMode} style={{ flex: 1 }}>
-        {({ camera }) => (
-          <Fragment>
-            <CameraType onPress={this.changeCameraType} />
-            <TakePicture onPress={() => this.takePicture(camera)} hapticFeedback="impactLight" />
-            <FlashMode onPress={this.changeFlashMode} flashMode={this.state.flashMode} />
-          </Fragment>
-        )}
-      </RNCamera>
+      <TouchableWithoutFeedback onPressIn={this.setFocus}>
+        <RNCamera
+          type={this.state.type}
+          flashMode={this.state.flashMode}
+          style={{ flex: 1 }}
+          autoFocusPointOfInterest={autoFocusPointOfInterest}
+        >
+          {({ camera }) => (
+            <Fragment>
+              <PointOfInterest coordinates={autoFocusPointOfInterest} />
+              <CameraType onPress={this.changeCameraType} />
+              <TakePicture onPress={() => this.takePicture(camera)} hapticFeedback="impactLight" />
+              <FlashMode onPress={this.changeFlashMode} flashMode={this.state.flashMode} />
+            </Fragment>
+          )}
+        </RNCamera>
+      </TouchableWithoutFeedback>
     )
   }
 }

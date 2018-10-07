@@ -79,10 +79,14 @@ export default class CameraRoll extends PureComponent {
   }
 
   removeSelectedFile = ({ filename }) => {
-    this.props.onSelect(this.prevFile)
-    this.setState(prevState => ({
-      selectedFiles: omit([filename], prevState.selectedFiles),
-    }))
+    this.setState(
+      prevState => ({
+        selectedFiles: omit([filename], prevState.selectedFiles),
+      }),
+      () => {
+        this.props.onSelect(this.prevFile)
+      }
+    )
   }
 
   toggleSelection = file => {
