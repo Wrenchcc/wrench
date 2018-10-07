@@ -24,7 +24,7 @@ export default class CameraRoll extends PureComponent {
     isLoading: true,
     lastSelected: null,
     photoPermission: false,
-    selected: {},
+    selectedFiles: {},
   }
 
   constructor(props) {
@@ -33,8 +33,8 @@ export default class CameraRoll extends PureComponent {
   }
 
   get prevFile() {
-    const { selected } = this.state
-    return selected[Object.keys(selected)[Object.keys(selected).length - 1]]
+    const { selectedFiles } = this.state
+    return selectedFiles[Object.keys(selectedFiles)[Object.keys(selectedFiles).length - 1]]
   }
 
   checkCameraPermission = () => {
@@ -74,19 +74,15 @@ export default class CameraRoll extends PureComponent {
   addSelectedFile = file => {
     this.props.onSelect(file)
     this.setState(prevState => ({
-      selected: { ...prevState.selected, [file.filename]: file },
+      selectedFiles: { ...prevState.selectedFiles, [file.filename]: file },
     }))
   }
 
   removeSelectedFile = ({ filename }) => {
-    this.setState(
-      prevState => ({
-        selected: omit([filename], prevState.selected),
-      }),
-      () => {
-        this.props.onSelect(this.prevFile)
-      }
-    )
+    this.props.onSelect(this.prevFile)
+    this.setState(prevState => ({
+      selectedFiles: omit([filename], prevState.selectedFiles),
+    }))
   }
 
   toggleSelection = file => {
@@ -113,7 +109,7 @@ export default class CameraRoll extends PureComponent {
     }
   }
 
-  isSelected = ({ filename }) => hasIn(filename, this.state.selected)
+  isSelected = ({ filename }) => hasIn(filename, this.state.selectedFiles)
 
   renderItem = ({ item }) => (
     <Item>

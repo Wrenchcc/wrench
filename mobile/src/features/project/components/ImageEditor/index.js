@@ -13,11 +13,12 @@ const IMAGE_EDITOR_WIDTH = width
 export default class ImageEditor extends PureComponent {
   state = {
     isMoving: false,
+    isLoading: true,
   }
 
   static propTypes = {
     image: PropTypes.object.isRequired,
-    // onCropping: PropTypes.func.isRequired,
+    onCropping: PropTypes.func.isRequired,
   }
 
   contentOffset = {}
@@ -30,15 +31,14 @@ export default class ImageEditor extends PureComponent {
 
   scaledImageSize = null
 
-  constructor(props) {
-    super(props)
-
-    if (!props.image) return
-    this.setImageProperties(props.image)
+  componentDidMount() {
+    if (!this.props.image) return
+    this.setImageProperties(this.props.image)
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.image.filename !== prevProps.image.filename) {
+      this.handleLoading(true)
       this.setImageProperties(this.props.image)
     }
   }
@@ -90,6 +90,10 @@ export default class ImageEditor extends PureComponent {
     })
   }
 
+  handleLoading = isLoading => {
+    this.setState({ isLoading })
+  }
+
   onScroll = evt => {
     this.updateCroppingData(
       evt.nativeEvent.contentOffset,
@@ -119,12 +123,12 @@ export default class ImageEditor extends PureComponent {
       },
     }
 
-    // this.props.onCropping(cropData)
+    this.props.onCropping(cropData)
   }
 
   render() {
-    console.log(this.scaledImageSize)
-    const { isMoving } = this.state
+    const { isMoving, isLoading } = this.state
+
     return (
       <Fragment>
         <ScrollView
@@ -142,7 +146,12 @@ export default class ImageEditor extends PureComponent {
           scrollEventThrottle={16}
         >
           <TouchableWithoutFeedback onPressIn={() => this.handleMoving(true)}>
-            <Image style={this.scaledImageSize} source={this.props.image} />
+            <Image
+              style={this.scaledImageSize}
+              source={this.props.image}
+              blurRadius={isLoading ? 10 : 0}
+              onLoadEnd={() => this.handleLoading(false)}
+            />
           </TouchableWithoutFeedback>
         </ScrollView>
 
