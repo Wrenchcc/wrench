@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react'
-import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
 import PropTypes from 'prop-types'
+import { CameraRoll as RNCameraRoll, FlatList } from 'react-native'
+import Permissions from 'react-native-permissions'
 import { hasIn, omit } from 'ramda'
+import AskForPermission from 'features/project/components/AskForPermission'
 import { Touchable } from 'ui'
 import { logError } from 'utils/analytics'
 import { Item, Image, Overlay, GUTTER, COLUMNS } from './styles'
 
+const PHOTO_PERMISSION = 'photo'
+const AUTHORIZED = 'authorized'
 const PAGE_SIZE = 16
 
 export default class CameraRoll extends PureComponent {
@@ -17,17 +21,36 @@ export default class CameraRoll extends PureComponent {
     data: [],
     end_cursor: null,
     has_next_page: true,
+    isLoading: true,
     lastSelected: null,
+    photoPermission: false,
     selected: {},
   }
 
-  componentDidMount() {
-    this.getFiles()
+  constructor(props) {
+    super(props)
+    this.checkCameraPermission()
   }
 
   get prevFile() {
     const { selected } = this.state
     return selected[Object.keys(selected)[Object.keys(selected).length - 1]]
+  }
+
+  checkCameraPermission = () => {
+    Permissions.check(PHOTO_PERMISSION).then(response => {
+      if (response === AUTHORIZED) {
+        this.getFiles()
+      }
+      this.setState({
+        isLoading: false,
+        photoPermission: response,
+      })
+    })
+  }
+
+  permissionAuthorized = () => {
+    this.setState({ photoPermission: AUTHORIZED })
   }
 
   getFiles = async after => {
@@ -102,6 +125,15 @@ export default class CameraRoll extends PureComponent {
   )
 
   render() {
+    const { photoPermission, isLoading } = this.state
+
+    if (isLoading) return null
+
+    if (photoPermission !== AUTHORIZED) {
+      return (
+        <AskForPermission permission={PHOTO_PERMISSION} onSuccess={this.permissionAuthorized} />
+      )
+    }
     return (
       <FlatList
         initialNumToRender={PAGE_SIZE}
