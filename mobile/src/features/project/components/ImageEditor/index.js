@@ -37,9 +37,9 @@ export default class ImageEditor extends PureComponent {
     this.setImageProperties(props.image)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.image.filename !== this.props.image.filename) {
-      this.setImageProperties(nextProps.image)
+  componentDidUpdate(prevProps) {
+    if (this.props.image.filename !== prevProps.image.filename) {
+      this.setImageProperties(this.props.image)
     }
   }
 
@@ -119,10 +119,11 @@ export default class ImageEditor extends PureComponent {
       },
     }
 
-    this.props.onCropping(cropData)
+    // this.props.onCropping(cropData)
   }
 
   render() {
+    console.log(this.scaledImageSize)
     const { isMoving } = this.state
     return (
       <Fragment>

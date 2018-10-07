@@ -77,9 +77,9 @@ class Project extends PureComponent {
   }
 
   // Add project to navigationOptions when loaded
-  componentWillReceiveProps(nextProps) {
-    if (!equals(this.props.project, nextProps.project)) {
-      this.props.navigation.setParams({ project: nextProps.project })
+  componentDidUpdate(prevProps) {
+    if (!equals(this.props.project, prevProps.project)) {
+      this.props.navigation.setParams({ project: this.props.project })
     }
   }
 

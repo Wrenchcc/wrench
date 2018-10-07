@@ -38,8 +38,8 @@ class Mention extends Component {
     destination: PropTypes.string,
   }
 
-  componentWillReceiveProps(nextProps) {
-    // if (isEmpty(filter(a => a.fullName.toLowerCase().includes(nextProps.query), users))) {
+  componentDidUpdate() {
+    // if (isEmpty(filter(a => a.fullName.toLowerCase().includes(this.props.query), users))) {
     //   this.props.onNoResults()
     // }
   }

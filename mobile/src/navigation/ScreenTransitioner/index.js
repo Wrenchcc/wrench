@@ -14,9 +14,9 @@ export default class ScreenTransitioner extends Component {
   //   return null
   // }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.navigation.state.index !== this.props.navigation.state.index) {
-  //     this.transitionToIndex(nextProps.navigation.state.index)
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.navigation.state.index !== prevProps.navigation.state.index) {
+  //     this.transitionToIndex(this.props.navigation.state.index)
   //   }
   // }
 

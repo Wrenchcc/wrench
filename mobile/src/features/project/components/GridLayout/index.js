@@ -9,8 +9,8 @@ export default class GridLayout extends PureComponent {
     active: PropTypes.bool.isRequired,
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.handleAnimation(!nextProps.active)
+  componentDidUpdate() {
+    this.handleAnimation(!this.props.active)
   }
 
   handleAnimation(hide) {

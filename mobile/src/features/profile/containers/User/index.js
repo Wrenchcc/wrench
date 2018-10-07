@@ -62,9 +62,9 @@ class User extends PureComponent {
   }
 
   // Add user to navigationOptions when loaded
-  componentWillReceiveProps(nextProps) {
-    if (!equals(this.props.user, nextProps.user)) {
-      this.props.navigation.setParams({ user: nextProps.user })
+  componentDidUpdate(prevProps) {
+    if (!equals(this.props.user, prevProps.user)) {
+      this.props.navigation.setParams({ user: this.props.user })
     }
   }
 

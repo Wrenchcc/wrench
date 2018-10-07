@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, View } from 'react-native'
+import { Animated } from 'react-native'
 import { translate } from 'react-i18next'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
@@ -19,9 +19,9 @@ class SelectProject extends Component {
     height: new Animated.Value(0),
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.expanded !== this.props.expanded) {
-      this.toggleAnimation(nextProps.expanded)
+  componentDidUpdate(prevProps) {
+    if (this.props.expanded !== prevProps.expanded) {
+      this.toggleAnimation(this.props.expanded)
     }
   }
 

@@ -88,7 +88,7 @@ class AddPost extends PureComponent {
     let component
 
     if (editImage) {
-      component = <ImageEditor image={editImage} onCropping={image => console.log(image)} />
+      component = <ImageEditor image={editImage} />
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }

@@ -16,8 +16,8 @@ class PostProgress extends PureComponent {
     title: PropTypes.string,
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.handleAnimation(!nextProps.image)
+  componentDidUpdate() {
+    this.handleAnimation(!this.props.image)
   }
 
   handleAnimation(hide) {

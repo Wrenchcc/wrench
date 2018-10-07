@@ -22,9 +22,9 @@ export default class Consumer extends React.Component {
     this.renderIntoGatewayNode(this.props)
   }
 
-  componentWillReceiveProps(props) {
+  componentDidUpdate() {
     this.registry.clearChild(this.props.into, this.id)
-    this.renderIntoGatewayNode(props)
+    this.renderIntoGatewayNode(this.props)
   }
 
   componentWillUnmount() {
