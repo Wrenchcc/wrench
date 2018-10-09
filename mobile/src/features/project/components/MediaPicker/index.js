@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CameraRoll, Platform, View, Text, FlatList, ActivityIndicator } from 'react-native'
 
-import MediaItem from '../Item'
+import MediaItem from './Item'
 import styles from './styles'
 
 export default class MediaPicker extends Component {
@@ -53,7 +53,7 @@ export default class MediaPicker extends Component {
       fetchParams.after = this.state.lastCursor
     }
 
-    CameraRoll.getPhotos(fetchParams).then(data => this.appendFiles(data), e => console.error(e))
+    CameraRoll.getPhotos(fetchParams).then(data => this.appendFiles(data))
   }
 
   appendFiles(data) {
@@ -72,6 +72,7 @@ export default class MediaPicker extends Component {
       newState.images = this.state.images.concat(assets)
       newState.dataSource = this.filterMediaRow(newState.images, this.props.itemsPerRow)
     }
+
     this.setState(newState)
   }
 
@@ -91,7 +92,7 @@ export default class MediaPicker extends Component {
 
   renderMediaItem(item) {
     const { selected } = this.state
-    const { imageMargin, customSelectMarker, markIcon, itemsPerRow, containerWidth } = this.props
+    const { imageMargin, customSelectMarker, itemsPerRow, containerWidth } = this.props
 
     const { uri } = item.node.image
     const isSelected = this.existsInArray(selected, 'uri', uri) >= 0
@@ -99,7 +100,6 @@ export default class MediaPicker extends Component {
     return (
       <MediaItem
         key={uri}
-        markIcon={markIcon}
         item={item}
         selected={isSelected}
         imageMargin={imageMargin}
@@ -136,7 +136,7 @@ export default class MediaPicker extends Component {
   }
 
   selectMediaFile = item => {
-    const { maximumSelectedFiles, itemsPerRow, callback, selectSingleItem } = this.props
+    const { maximumSelectedFiles, itemsPerRow, onSelect, selectSingleItem } = this.props
     const selected = this.state.selected
 
     const index = this.existsInArray(selected, 'uri', item.image.uri)
@@ -156,7 +156,7 @@ export default class MediaPicker extends Component {
       dataSource: this.filterMediaRow(this.state.images, itemsPerRow),
     })
 
-    callback(selected, item)
+    onSelect(selected, item)
   }
 
   filterMediaRow(files, numberOfRows) {

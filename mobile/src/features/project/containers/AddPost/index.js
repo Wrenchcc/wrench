@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { pathOr } from 'ramda'
+import { pathOr, last } from 'ramda'
 import { navigateToFeed } from 'navigation'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
@@ -10,7 +10,8 @@ import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import AddCaption from 'features/project/components/AddCaption'
 import ImageEditor from 'features/project/components/ImageEditor'
-import CameraRoll from 'features/project/components/CameraRoll'
+import MediaPicker from 'features/project/components/MediaPicker'
+
 import { Base, Placeholder } from './styles'
 
 class AddPost extends PureComponent {
@@ -28,11 +29,7 @@ class AddPost extends PureComponent {
       isEditing: false,
       dropdownOpen: false,
       selectedProject: pathOr(null, ['projects', 0, 'node'], props),
-      // filesToUpload: [{
-      //   filename: '',
-      //   uri: '',
-      //   offset: {x:0, y:0}
-      // }],
+      selected: [],
     }
   }
 
@@ -52,11 +49,11 @@ class AddPost extends PureComponent {
     this.setState({ selectedProject })
   }
 
-  addCurrentImage = currentImage => {
+  addSelectedFiles = selected => {
     // If image in filesToUpload by filename
     // return and add to ImageEditor
     // Handle offset instead of center image on mount
-    this.setState({ currentImage })
+    this.setState({ selected, currentImage: pathOr(null, ['image'], last(selected)) })
   }
 
   onTakePicture = capturedImage => {
@@ -114,7 +111,15 @@ class AddPost extends PureComponent {
         />
 
         <Placeholder>{component}</Placeholder>
-        <CameraRoll onSelect={this.addCurrentImage} />
+
+        <MediaPicker
+          batchSize={1}
+          maximumSelectedFiles={10}
+          selected={this.state.selected}
+          itemsPerRow={4}
+          imageMargin={3}
+          onSelect={this.addSelectedFiles}
+        />
       </Base>
     )
   }
