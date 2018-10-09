@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { CameraRoll, Platform, View, FlatList, ActivityIndicator } from 'react-native'
-
+import { last } from 'ramda'
 import MediaItem from './Item'
 import styles from './styles'
 
@@ -67,21 +67,12 @@ export default class MediaPicker extends Component {
 
     const index = this.existsInArray(selected, 'uri', item.image.uri)
 
-    // TODO
-    // if (this.isSelected(file)) {
-    //   if (
-    //     this.state.lastSelected.filename === file.filename
-    //     || this.prevFile.filename === file.filename
-    //   ) {
-    //     return this.removeSelectedFile(file)
-    //   }
-    //
-    //   this.props.onSelect(file)
-    // }
-
+    // && last(selected).image.filename === item.image.filename
     if (index >= 0) {
       selected.splice(index, 1)
-    } else if (selected.length < maximumSelectedFiles) {
+    }
+
+    if (maximumSelectedFiles > selected.length) {
       selected.push(item)
     }
 
