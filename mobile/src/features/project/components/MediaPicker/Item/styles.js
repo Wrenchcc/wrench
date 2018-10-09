@@ -1,21 +1,18 @@
-export default {
-  marker: {
-    position: 'absolute',
-    zIndex: 2445,
-    top: 5,
-    right: 5,
-    backgroundColor: 'transparent',
-    width: 25,
-    height: 25,
-  },
-  overlay: {
-    flex: 1,
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    bottom: 0,
-    right: 0,
-    opacity: 0.6,
-    backgroundColor: 'white',
-  },
-}
+import styled from 'styled-components'
+import { COLORS } from 'ui/constants'
+
+export const Marker = styled.View`
+  width: 24;
+  height: 24;
+  position: absolute;
+  right: 5;
+  top: 5;
+  border-radius: 24;
+  background-color: ${props => (props.selected ? COLORS.WHITE : 'rgba(255, 255, 255, 0.25)')};
+  border-style: solid;
+  border-width: 1.5;
+  border-color: #ffffff;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+`

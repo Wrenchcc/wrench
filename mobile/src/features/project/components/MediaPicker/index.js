@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CameraRoll, Platform, View, Text, FlatList, ActivityIndicator } from 'react-native'
+import { CameraRoll, Platform, View, FlatList, ActivityIndicator } from 'react-native'
 
 import MediaItem from './Item'
 import styles from './styles'
@@ -16,8 +16,6 @@ export default class MediaPicker extends Component {
       loadingMore: false,
       noMoreFiles: false,
       dataSource: [],
-      activityIndicatorSize: 'small',
-      activityIndicatorColor: '#000000',
     }
   }
 
@@ -39,6 +37,7 @@ export default class MediaPicker extends Component {
 
   getCameraRollFiles() {
     const { groupTypes, assetType, firstLimit } = this.props
+
     const fetchParams = {
       first: firstLimit !== undefined ? firstLimit : 1000,
       groupTypes,
@@ -56,79 +55,6 @@ export default class MediaPicker extends Component {
     CameraRoll.getPhotos(fetchParams).then(data => this.appendFiles(data))
   }
 
-  appendFiles(data) {
-    const assets = data.edges
-    const newState = {
-      loadingMore: false,
-      fetching: false,
-    }
-
-    if (!data.page_info.has_next_page) {
-      newState.noMoreFiles = true
-    }
-
-    if (assets.length > 0) {
-      newState.lastCursor = data.page_info.end_cursor
-      newState.images = this.state.images.concat(assets)
-      newState.dataSource = this.filterMediaRow(newState.images, this.props.itemsPerRow)
-    }
-
-    this.setState(newState)
-  }
-
-  renderLoaderStyle() {
-    const props = this.props
-    return {
-      color:
-        props.activityIndicatorColor !== undefined
-          ? props.activityIndicatorColor
-          : this.state.activityIndicatorColor,
-      size:
-        props.activityIndicatorSize !== undefined
-          ? props.activityIndicatorSize
-          : this.state.activityIndicatorSize,
-    }
-  }
-
-  renderMediaItem(item) {
-    const { selected } = this.state
-    const { imageMargin, customSelectMarker, itemsPerRow, containerWidth } = this.props
-
-    const { uri } = item.node.image
-    const isSelected = this.existsInArray(selected, 'uri', uri) >= 0
-
-    return (
-      <MediaItem
-        key={uri}
-        item={item}
-        selected={isSelected}
-        imageMargin={imageMargin}
-        customSelectMarker={customSelectMarker}
-        itemsPerRow={itemsPerRow}
-        containerWidth={containerWidth}
-        onClick={this.selectMediaFile}
-      />
-    )
-  }
-
-  renderRow(rowData) {
-    const items = rowData.map(item => {
-      if (item === null) {
-        return null
-      }
-      return this.renderMediaItem(item)
-    })
-
-    return <View style={styles.row}>{items}</View>
-  }
-
-  renderFooterLoader = () => {
-    if (!this.state.noMoreFiles) {
-      return <ActivityIndicator color={this.state.activityIndicatorColor} />
-    }
-    return null
-  }
-
   onEndReached = () => {
     if (!this.state.noMoreFiles) {
       this.getFiles()
@@ -136,7 +62,7 @@ export default class MediaPicker extends Component {
   }
 
   selectMediaFile = item => {
-    const { maximumSelectedFiles, itemsPerRow, onSelect, selectSingleItem } = this.props
+    const { maximumSelectedFiles, onSelect, selectSingleItem } = this.props
     const selected = this.state.selected
 
     const index = this.existsInArray(selected, 'uri', item.image.uri)
@@ -151,21 +77,53 @@ export default class MediaPicker extends Component {
         selected.push(item)
       }
     }
+
     this.setState({
       selected,
-      dataSource: this.filterMediaRow(this.state.images, itemsPerRow),
+      dataSource: this.filterMediaRow(this.state.images),
     })
 
     onSelect(selected, item)
   }
 
-  filterMediaRow(files, numberOfRows) {
+  appendFiles(data) {
+    const assets = data.edges
+    const newState = {
+      loadingMore: false,
+      fetching: false,
+    }
+
+    if (!data.page_info.has_next_page) {
+      newState.noMoreFiles = true
+    }
+
+    if (assets.length > 0) {
+      newState.lastCursor = data.page_info.end_cursor
+      newState.images = this.state.images.concat(assets)
+      newState.dataSource = this.filterMediaRow(newState.images)
+    }
+
+    this.setState(newState)
+  }
+
+  renderFooterLoader = () => {
+    if (!this.state.noMoreFiles) {
+      return <ActivityIndicator color={this.state.activityIndicatorColor} />
+    }
+    return null
+  }
+
+  getChronologicalOrder = () => {}
+
+  existsInArray = (array, property, value) => array.map(o => o.image[property]).indexOf(value)
+
+  filterMediaRow(files) {
     const result = []
 
     let temp = []
 
     for (let i = 0; i < files.length; ++i) {
-      if (i > 0 && i % numberOfRows === 0) {
+      if (i > 0 && i % 4 === 0) {
         result.push(temp)
         temp = []
       }
@@ -173,7 +131,7 @@ export default class MediaPicker extends Component {
     }
 
     if (temp.length > 0) {
-      while (temp.length !== numberOfRows) {
+      while (temp.length !== 4) {
         temp.push(null)
       }
       result.push(temp)
@@ -182,43 +140,61 @@ export default class MediaPicker extends Component {
     return result
   }
 
-  existsInArray(array, property, value) {
-    return array.map(o => o.image[property]).indexOf(value)
+  renderRow(rowData) {
+    const items = rowData.map(item => {
+      if (item === null) {
+        return null
+      }
+      return this.renderMediaItem(item)
+    })
+
+    return <View style={styles.row}>{items}</View>
   }
+
+  renderMediaItem(item) {
+    const { selected } = this.state
+    const { uri } = item.node.image
+    const index = this.existsInArray(selected, 'uri', uri)
+    const isSelected = index >= 0
+    const order = index + 1
+
+    return (
+      <MediaItem
+        key={uri}
+        item={item}
+        selected={isSelected}
+        order={order}
+        onPress={this.selectMediaFile}
+      />
+    )
+  }
+
+  keyExtractor = (item, index) => item[0].node.image.uri + item[0].timestamp + index
 
   render() {
     const { dataSource } = this.state
-    const { batchSize, imageMargin, emptyGalleryText, emptyTextStyle, customLoader } = this.props
+    const { batchSize, emptyGalleryText, emptyTextStyle } = this.props
 
     if (this.state.fetching) {
       return (
         <View style={styles.loading}>
-          {customLoader || (
-            <ActivityIndicator
-              size={this.renderLoaderStyle().size}
-              color={this.renderLoaderStyle().color}
-            />
-          )}
+          <ActivityIndicator size="small" color="white" />
         </View>
       )
     }
 
     return (
-      <View style={[styles.wrapper, { padding: imageMargin }]}>
-        {dataSource.length > 0 ? (
-          <FlatList
-            style={{ flex: 1 }}
-            ListFooterComponent={this.renderFooterLoader}
-            initialNumToRender={batchSize}
-            onEndReached={this.onEndReached}
-            renderItem={({ item }) => this.renderRow(item)}
-            keyExtractor={(item, index) => item[0].node.image.uri + item[0].timestamp + index}
-            data={dataSource}
-            extraData={this.state.selected}
-          />
-        ) : (
-          <Text style={[styles.emptyText, emptyTextStyle]}>{emptyGalleryText}</Text>
-        )}
+      <View style={[styles.wrapper, { padding: 3 }]}>
+        <FlatList
+          style={{ flex: 1 }}
+          ListFooterComponent={this.renderFooterLoader}
+          initialNumToRender={batchSize}
+          onEndReached={this.onEndReached}
+          renderItem={({ item }) => this.renderRow(item)}
+          keyExtractor={this.keyExtractor}
+          data={dataSource}
+          extraData={this.state.selected}
+        />
       </View>
     )
   }

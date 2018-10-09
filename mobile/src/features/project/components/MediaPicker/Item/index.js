@@ -1,38 +1,33 @@
 import React, { PureComponent } from 'react'
-import { Image, View, Dimensions, TouchableOpacity } from 'react-native'
-import styles from './styles'
+import { Image, Dimensions } from 'react-native'
+import { Text, Touchable } from 'ui'
+import { Marker } from './styles'
+
+const { width } = Dimensions.get('window')
+
+const MARGIN = 3
+const IMAGE_SIZE = (width - 4 * MARGIN) / 4
 
 export default class Item extends PureComponent {
-  state = {
-    imageSize: 0,
-  }
-
-  componentWillMount() {
-    let { width } = Dimensions.get('window')
-    const { imageMargin, itemsPerRow, containerWidth } = this.props
-
-    if (typeof containerWidth !== 'undefined') {
-      width = containerWidth
-    }
-    this.setState({ imageSize: (width - (itemsPerRow + 1) * imageMargin) / itemsPerRow })
-  }
-
   render() {
-    const { item, selected, imageMargin, onClick } = this.props
-
+    const { item, selected, onPress, order } = this.props
     return (
-      <TouchableOpacity
-        style={{ marginBottom: imageMargin, marginRight: imageMargin }}
-        onPress={() => onClick(item.node)}
+      <Touchable
+        style={{ marginBottom: MARGIN, marginRight: MARGIN }}
+        onPress={() => onPress(item.node)}
         activeOpacity={1}
       >
         <Image
           source={{ uri: item.node.image.uri }}
-          style={{ height: this.state.imageSize, width: this.state.imageSize }}
+          style={{ height: IMAGE_SIZE, width: IMAGE_SIZE }}
         />
-        {selected && null}
-        {selected && <View style={styles.overlay} />}
-      </TouchableOpacity>
+
+        <Marker selected={selected}>
+          <Text fontSize={12} bold>
+            {order || null}
+          </Text>
+        </Marker>
+      </Touchable>
     )
   }
 }
