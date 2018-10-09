@@ -86,6 +86,8 @@ export default class MediaPicker extends Component {
     onSelect(selected, item)
   }
 
+  existsInArray = (array, property, value) => array.map(o => o.image[property]).indexOf(value)
+
   appendFiles(data) {
     const assets = data.edges
     const newState = {
@@ -112,10 +114,6 @@ export default class MediaPicker extends Component {
     }
     return null
   }
-
-  getChronologicalOrder = () => {}
-
-  existsInArray = (array, property, value) => array.map(o => o.image[property]).indexOf(value)
 
   filterMediaRow(files) {
     const result = []

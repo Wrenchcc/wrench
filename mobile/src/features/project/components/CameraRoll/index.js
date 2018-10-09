@@ -10,7 +10,7 @@ import { Item, Image, Overlay, GUTTER, COLUMNS } from './styles'
 
 const PHOTO_PERMISSION = 'photo'
 const AUTHORIZED = 'authorized'
-const PAGE_SIZE = 16
+const PAGE_SIZE = 32
 
 export default class CameraRoll extends PureComponent {
   static propTypes = {
@@ -134,6 +134,7 @@ export default class CameraRoll extends PureComponent {
         <AskForPermission permission={PHOTO_PERMISSION} onSuccess={this.permissionAuthorized} />
       )
     }
+
     return (
       <FlatList
         initialNumToRender={PAGE_SIZE}
