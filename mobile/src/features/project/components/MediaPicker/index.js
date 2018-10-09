@@ -62,20 +62,27 @@ export default class MediaPicker extends Component {
   }
 
   selectMediaFile = item => {
-    const { maximumSelectedFiles, onSelect, selectSingleItem } = this.props
+    const { maximumSelectedFiles, onSelect } = this.props
     const selected = this.state.selected
 
     const index = this.existsInArray(selected, 'uri', item.image.uri)
 
+    // TODO
+    // if (this.isSelected(file)) {
+    //   if (
+    //     this.state.lastSelected.filename === file.filename
+    //     || this.prevFile.filename === file.filename
+    //   ) {
+    //     return this.removeSelectedFile(file)
+    //   }
+    //
+    //   this.props.onSelect(file)
+    // }
+
     if (index >= 0) {
       selected.splice(index, 1)
-    } else {
-      if (selectSingleItem) {
-        selected.splice(0, selected.length)
-      }
-      if (selected.length < maximumSelectedFiles) {
-        selected.push(item)
-      }
+    } else if (selected.length < maximumSelectedFiles) {
+      selected.push(item)
     }
 
     this.setState({
