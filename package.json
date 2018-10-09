@@ -8,7 +8,7 @@
     "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts"
   },
   "devDependencies": {
-    "@types/node": "^10.11.4",
+    "@types/node": "^10.11.5",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
@@ -34,6 +34,6 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "debug": "^4.0.1"
+    "debug": "^4.1.0"
   }
 }

@@ -5,9 +5,9 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Crashlytics (3.10.9):
-    - Fabric (~> 1.7.13)
-  - Fabric (1.7.13)
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
+  - Fabric (1.7.12)
   - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.37.0):
@@ -135,8 +135,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
-  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
   FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
   FBSDKShareKit: 52e0083222c38e930eb6878007478326599195c3
