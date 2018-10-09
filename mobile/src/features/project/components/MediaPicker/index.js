@@ -18,7 +18,6 @@ export default class MediaPicker extends Component {
       dataSource: [],
       activityIndicatorSize: 'small',
       activityIndicatorColor: '#000000',
-      backgroundColor: 'white',
     }
   }
 
@@ -30,9 +29,6 @@ export default class MediaPicker extends Component {
     this.setState({ selected: nextProps.selected })
   }
 
-  /**
-   * @description Get files from camera roll
-   */
   getFiles() {
     if (!this.state.loadingMore) {
       this.setState({ loadingMore: true }, () => {
@@ -41,9 +37,6 @@ export default class MediaPicker extends Component {
     }
   }
 
-  /**
-   * @description Fetch camera roll files
-   */
   getCameraRollFiles() {
     const { groupTypes, assetType, firstLimit } = this.props
     const fetchParams = {
@@ -63,10 +56,6 @@ export default class MediaPicker extends Component {
     CameraRoll.getPhotos(fetchParams).then(data => this.appendFiles(data), e => console.error(e))
   }
 
-  /**
-   * @description This function is sorting files and put them on the state
-   * @param data
-   */
   appendFiles(data) {
     const assets = data.edges
     const newState = {
@@ -86,10 +75,6 @@ export default class MediaPicker extends Component {
     this.setState(newState)
   }
 
-  /**
-   * @description Render default loader style
-   * @return {{color: string, size: string}}
-   */
   renderLoaderStyle() {
     const props = this.props
     return {
@@ -104,16 +89,11 @@ export default class MediaPicker extends Component {
     }
   }
 
-  /**
-   * @description Render media item
-   * @param item
-   * @return {XML}
-   */
   renderMediaItem(item) {
     const { selected } = this.state
     const { imageMargin, customSelectMarker, markIcon, itemsPerRow, containerWidth } = this.props
 
-    const uri = item.node.image.uri
+    const { uri } = item.node.image
     const isSelected = this.existsInArray(selected, 'uri', uri) >= 0
 
     return (
@@ -131,11 +111,6 @@ export default class MediaPicker extends Component {
     )
   }
 
-  /**
-   * @description Render list row
-   * @param rowData
-   * @return {XML}
-   */
   renderRow(rowData) {
     const items = rowData.map(item => {
       if (item === null) {
@@ -147,10 +122,6 @@ export default class MediaPicker extends Component {
     return <View style={styles.row}>{items}</View>
   }
 
-  /**
-   * @description Render footer loader when more files are fetching
-   * @return {*}
-   */
   renderFooterLoader = () => {
     if (!this.state.noMoreFiles) {
       return <ActivityIndicator color={this.state.activityIndicatorColor} />
@@ -158,19 +129,12 @@ export default class MediaPicker extends Component {
     return null
   }
 
-  /**
-   * @description On list end reached , load more files if there are any
-   */
   onEndReached = () => {
     if (!this.state.noMoreFiles) {
       this.getFiles()
     }
   }
 
-  /**
-   * @description Select media file function
-   * @param item
-   */
   selectMediaFile = item => {
     const { maximumSelectedFiles, itemsPerRow, callback, selectSingleItem } = this.props
     const selected = this.state.selected
@@ -195,12 +159,6 @@ export default class MediaPicker extends Component {
     callback(selected, item)
   }
 
-  /**
-   * @description Sort
-   * @param files
-   * @param numberOfRows
-   * @return {Array}
-   */
   filterMediaRow(files, numberOfRows) {
     const result = []
 
@@ -224,11 +182,6 @@ export default class MediaPicker extends Component {
     return result
   }
 
-  /**
-   * @param array
-   * @param property
-   * @param value
-   */
   existsInArray(array, property, value) {
     return array.map(o => o.image[property]).indexOf(value)
   }

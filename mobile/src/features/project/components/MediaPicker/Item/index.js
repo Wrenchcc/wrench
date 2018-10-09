@@ -17,11 +17,6 @@ export default class Item extends Component {
     this.setState({ imageSize: (width - (itemsPerRow + 1) * imageMargin) / itemsPerRow })
   }
 
-  /**
-   * @description Render default marker
-   * @param markIcon
-   * @return {XML}
-   */
   renderMarker(markIcon) {
     return null
   }
