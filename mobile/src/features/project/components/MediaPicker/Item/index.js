@@ -14,13 +14,10 @@ export default class Item extends PureComponent {
     return (
       <Touchable
         style={{ marginBottom: MARGIN, marginRight: MARGIN }}
-        onPress={() => onPress(item.node)}
+        onPress={() => onPress(item)}
         activeOpacity={1}
       >
-        <Image
-          source={{ uri: item.node.image.uri }}
-          style={{ height: IMAGE_SIZE, width: IMAGE_SIZE }}
-        />
+        <Image source={{ uri: item.uri }} style={{ height: IMAGE_SIZE, width: IMAGE_SIZE }} />
 
         <Marker selected={selected}>
           <Text fontSize={12} bold>

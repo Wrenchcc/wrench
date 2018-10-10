@@ -29,7 +29,7 @@ class AddPost extends PureComponent {
       isEditing: false,
       dropdownOpen: false,
       selectedProject: pathOr(null, ['projects', 0, 'node'], props),
-      selected: [],
+      selectedFiles: [],
     }
   }
 
@@ -112,14 +112,7 @@ class AddPost extends PureComponent {
 
         <Placeholder>{component}</Placeholder>
 
-        <MediaPicker
-          batchSize={1}
-          maximumSelectedFiles={10}
-          selected={this.state.selected}
-          itemsPerRow={4}
-          imageMargin={3}
-          onSelect={this.addSelectedFiles}
-        />
+        <MediaPicker selectedFiles={this.state.selectedFiles} onSelect={this.addSelectedFiles} />
       </Base>
     )
   }
