@@ -32,15 +32,15 @@ class AppStateWithI18n extends PureComponent {
     })
   }
 
-  onChangeLanguage = async lang => {
+  onChangeLanguage = async language => {
     try {
-      await setLocale(lang)
+      await setLocale(language)
     } catch (err) {
       logError(err)
     }
 
-    this.props.i18n.changeLanguage(lang)
-    track(events.USER_CHANGED_LANGUAGE, { language: lang })
+    this.props.i18n.changeLanguage(language)
+    track(events.USER_CHANGED_LANGUAGE, { language })
   }
 
   handleLoginState = loggedIn => {
@@ -52,7 +52,7 @@ class AppStateWithI18n extends PureComponent {
   }
 
   render() {
-    const { i18n } = this.props
+    const { i18n, children } = this.props
 
     return (
       <Provider
@@ -64,7 +64,7 @@ class AppStateWithI18n extends PureComponent {
           ...this.state,
         }}
       >
-        {this.props.children}
+        {children}
       </Provider>
     )
   }
