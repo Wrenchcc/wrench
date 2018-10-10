@@ -15,7 +15,7 @@ export default class MediaPicker extends Component {
       fetching: true,
       loadingMore: false,
       noMoreFiles: false,
-      dataSource: [],
+      data: [],
     }
   }
 
@@ -78,7 +78,7 @@ export default class MediaPicker extends Component {
 
     this.setState({
       selected,
-      dataSource: this.filterMediaRow(this.state.images),
+      data: this.filterMediaRow(this.state.images),
     })
 
     onSelect(selected, item)
@@ -100,7 +100,7 @@ export default class MediaPicker extends Component {
     if (assets.length > 0) {
       newState.lastCursor = data.page_info.end_cursor
       newState.images = this.state.images.concat(assets)
-      newState.dataSource = this.filterMediaRow(newState.images)
+      newState.data = this.filterMediaRow(newState.images)
     }
 
     this.setState(newState)
@@ -168,7 +168,7 @@ export default class MediaPicker extends Component {
   keyExtractor = (item, index) => item[0].node.image.uri + item[0].timestamp + index
 
   render() {
-    const { dataSource } = this.state
+    const { data } = this.state
     const { batchSize, emptyGalleryText, emptyTextStyle } = this.props
 
     if (this.state.fetching) {
@@ -188,7 +188,7 @@ export default class MediaPicker extends Component {
           onEndReached={this.onEndReached}
           renderItem={({ item }) => this.renderRow(item)}
           keyExtractor={this.keyExtractor}
-          data={dataSource}
+          data={data}
           extraData={this.state.selected}
         />
       </View>
