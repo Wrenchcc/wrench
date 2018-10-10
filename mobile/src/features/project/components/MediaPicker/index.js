@@ -1,15 +1,22 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { CameraRoll, FlatList, ActivityIndicator } from 'react-native'
+import { logError } from 'utils/analytics'
 import MediaItem from './Item'
 
-const PAGE_SIZE = 32
-const MAX_FIELES = 10
+const PAGE_SIZE = 64
+const MAX_SELECTED_FIELES = 10
 
 function existsInArray(array, property, value) {
   return array.map(o => o.image[property]).indexOf(value)
 }
 
-export default class MediaPicker extends Component {
+export default class MediaPicker extends PureComponent {
+  static propTypes = {
+    onSelect: PropTypes.func.isRequired,
+    selectedFiles: PropTypes.array.isRequired,
+  }
+
   state = {
     data: [],
     end_cursor: null,
@@ -29,7 +36,7 @@ export default class MediaPicker extends Component {
         ...result.page_info,
       })
     } catch (err) {
-      // logError(err)
+      logError(err)
     }
   }
 
@@ -50,7 +57,7 @@ export default class MediaPicker extends Component {
       selectedFiles.splice(index, 1)
     }
 
-    if (MAX_FIELES > selectedFiles.length) {
+    if (MAX_SELECTED_FIELES > selectedFiles.length) {
       selectedFiles.push(item)
     }
 
