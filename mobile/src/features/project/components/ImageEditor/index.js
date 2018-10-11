@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, ScrollView, TouchableWithoutFeedback, Image, Platform } from 'react-native'
 import GridLayout from 'features/project/components/GridLayout'
@@ -8,8 +8,6 @@ const { width } = Dimensions.get('window')
 const IMAGE_EDITOR_HEIGHT = width
 const IMAGE_EDITOR_WIDTH = width
 
-// Reset when new image is selected
-// Look for prev offset and use that
 export default class ImageEditor extends PureComponent {
   state = {
     isMoving: false,
@@ -130,7 +128,7 @@ export default class ImageEditor extends PureComponent {
     const { isMoving, isLoading } = this.state
 
     return (
-      <Fragment>
+      <View key={this.props.image.filename)>
         <ScrollView
           alwaysBounceVertical
           automaticallyAdjustContentInsets={false}
@@ -156,7 +154,7 @@ export default class ImageEditor extends PureComponent {
         </ScrollView>
 
         <GridLayout active={isMoving} />
-      </Fragment>
+      </View>
     )
   }
 }
