@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll, FlatList, ActivityIndicator } from 'react-native'
+import { findIndex, propEq } from 'ramda'
 import { logError } from 'utils/analytics'
 import MediaItem from './Item'
 
 const PAGE_SIZE = 64
 const MAX_SELECTED_FIELES = 10
 const NUM_COLUMNS = 4
-
-function existsInArray(array, property, value) {
-  return array.map(o => o[property]).indexOf(value)
-}
 
 export default class MediaPicker extends Component {
   static propTypes = {
@@ -58,18 +55,26 @@ export default class MediaPicker extends Component {
     this.setState({ lastSelected: file })
 
     const { selectedFiles, lastSelected } = this.state
-    const index = existsInArray(selectedFiles, 'uri', file.uri)
+    const index = this.indexOfItem(file)
+    const prevFile = selectedFiles[index - 1]
+    const isSelected = index >= 0
 
-    if (index >= 0) {
-      console.log(lastSelected.filename, file.filename)
-
+    if (
+      (isSelected && lastSelected.filename === file.filename)
+      || (prevFile && prevFile.filename === file.filename)
+    ) {
       selectedFiles.splice(index, 1)
-    } else if (MAX_SELECTED_FIELES > selectedFiles.length) {
+    } else if (!isSelected && MAX_SELECTED_FIELES > selectedFiles.length) {
       selectedFiles.push(file)
     }
 
     this.setState({ selectedFiles })
-    this.props.onSelect(selectedFiles)
+    this.props.onSelect(selectedFiles, this.indexOfItem(file))
+  }
+
+  indexOfItem(item) {
+    const { selectedFiles } = this.state
+    return findIndex(propEq('uri', item.uri))(selectedFiles)
   }
 
   renderFooterLoader = () => {
@@ -81,8 +86,7 @@ export default class MediaPicker extends Component {
   }
 
   renderItem = ({ item }) => {
-    const { selectedFiles } = this.state
-    const index = existsInArray(selectedFiles, 'uri', item.uri)
+    const index = this.indexOfItem(item)
     const isSelected = index >= 0
 
     return (

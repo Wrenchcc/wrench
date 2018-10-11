@@ -6,14 +6,15 @@ import { navigateToFeed } from 'navigation'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { updatePostProgress } from 'graphql/mutations/post/postProgress'
-import Camera from 'features/project/components/Camera'
-import AddPostHeader from 'features/project/components/AddPostHeader'
-import AddCaption from 'features/project/components/AddCaption'
-import ImageEditor from 'features/project/components/ImageEditor'
-import MediaPicker from 'features/project/components/MediaPicker'
+import Camera from '../../components/Camera'
+import AddPostHeader from '../../components/AddPostHeader'
+import AddCaption from '../../components/AddCaption'
+import ImageEditor from '../../components/ImageEditor'
+import MediaPicker from '../../components/MediaPicker'
 
 import { Base, Placeholder } from './styles'
 
+// TODO, SelectedIndex, callback x, y
 class AddPost extends PureComponent {
   static propTypes = {
     projects: PropTypes.array.isRequired,
@@ -49,11 +50,8 @@ class AddPost extends PureComponent {
     this.setState({ selectedProject })
   }
 
-  addSelectedFiles = selected => {
-    // If image in filesToUpload by filename
-    // return and add to ImageEditor
-    // Handle offset instead of center image on mount
-    this.setState({ selected, currentImage: last(selected) })
+  addSelectedFiles = (selectedFiles, selectedIndex) => {
+    this.setState({ selectedFiles, selectedIndex })
   }
 
   onTakePicture = capturedImage => {
@@ -74,18 +72,19 @@ class AddPost extends PureComponent {
     const {
       caption,
       capturedImage,
-      currentImage,
       dropdownOpen,
       isEditing,
+      selectedFiles,
+      selectedIndex,
       selectedProject,
     } = this.state
 
-    const editImage = capturedImage || currentImage
+    const editImage = capturedImage || selectedFiles[selectedIndex]
 
     let component
 
     if (editImage) {
-      component = <ImageEditor image={editImage} onCropping={image => console.log(image)} />
+      component = <ImageEditor image={editImage} onCropping={() => null} />
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }
@@ -112,7 +111,7 @@ class AddPost extends PureComponent {
 
         <Placeholder>{component}</Placeholder>
 
-        <MediaPicker selectedFiles={this.state.selectedFiles} onSelect={this.addSelectedFiles} />
+        <MediaPicker selectedFiles={selectedFiles} onSelect={this.addSelectedFiles} />
       </Base>
     )
   }

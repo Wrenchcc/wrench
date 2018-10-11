@@ -1,7 +1,15 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, ScrollView, TouchableWithoutFeedback, Image, Platform } from 'react-native'
-import GridLayout from 'features/project/components/GridLayout'
+import {
+  View,
+  Dimensions,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Image,
+  Platform,
+} from 'react-native'
+import { COLORS } from 'ui/constants'
+import GridLayout from '../GridLayout'
 
 const { width } = Dimensions.get('window')
 
@@ -128,7 +136,7 @@ export default class ImageEditor extends PureComponent {
     const { isMoving, isLoading } = this.state
 
     return (
-      <View key={this.props.image.filename)>
+      <View key={this.props.image.filename}>
         <ScrollView
           alwaysBounceVertical
           automaticallyAdjustContentInsets={false}
@@ -145,7 +153,7 @@ export default class ImageEditor extends PureComponent {
         >
           <TouchableWithoutFeedback onPressIn={() => this.handleMoving(true)}>
             <Image
-              style={this.scaledImageSize}
+              style={[{ backgroundColor: COLORS.DARK_GREY }, this.scaledImageSize]}
               source={this.props.image}
               blurRadius={isLoading ? 10 : 0}
               onLoadEnd={() => this.handleLoading(false)}
