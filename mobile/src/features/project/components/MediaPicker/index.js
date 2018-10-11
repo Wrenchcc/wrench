@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll, FlatList, ActivityIndicator } from 'react-native'
-import { findIndex, propEq, last } from 'ramda'
+import { findIndex, propEq } from 'ramda'
 import { logError } from 'utils/analytics'
 import MediaItem from './Item'
 

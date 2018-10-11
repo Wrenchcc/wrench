@@ -14,6 +14,7 @@ export default class Item extends PureComponent {
     const { item, selected, onPress, order } = this.props
     return (
       <Touchable
+        hapticFeedback="impactLight"
         style={{ backgroundColor: COLORS.DARK_GREY, marginBottom: MARGIN, marginRight: MARGIN }}
         onPress={() => onPress(item)}
         activeOpacity={1}
