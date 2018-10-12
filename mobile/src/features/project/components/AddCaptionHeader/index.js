@@ -1,15 +1,15 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
-import { navigateBack, navigateToAddCaption } from 'navigation'
+import { navigateBack } from 'navigation'
 import { Header, Dropdown, Icon, Text } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
-import { close } from 'images'
+import { arrowLeft } from 'images'
 import { Top } from './styles'
 
-class AddPostHeader extends PureComponent {
+class AddCaptionHeader extends PureComponent {
   static propTypes = {
-    canGoToCaption: PropTypes.bool.isRequired,
+    addPost: PropTypes.func.isRequired,
     changeProject: PropTypes.func.isRequired,
     dropdownOpen: PropTypes.bool.isRequired,
     projects: PropTypes.array.isRequired,
@@ -18,16 +18,12 @@ class AddPostHeader extends PureComponent {
   }
 
   renderHeaderRight() {
-    const { t, canGoToCaption } = this.props
-    if (canGoToCaption) {
-      return (
-        <Text color="white" medium onPress={() => navigateToAddCaption()}>
-          {t('AddPostHeader:next')}
-        </Text>
-      )
-    }
-
-    return null
+    const { t, addPost } = this.props
+    return (
+      <Text color="dark" medium onPress={addPost}>
+        {t('AddCaptionHeader:share')}
+      </Text>
+    )
   }
 
   render() {
@@ -44,10 +40,11 @@ class AddPostHeader extends PureComponent {
 
         <Top>
           <Header
-            headerLeft={<Icon onPress={() => navigateBack()} source={close} />}
+            headerLeft={<Icon onPress={() => navigateBack()} source={arrowLeft} />}
             headerRight={this.renderHeaderRight()}
             headerCenter={
               <Dropdown
+                darkMode
                 title={selectedProject.title}
                 onPress={toggleDropdown}
                 active={dropdownOpen}
@@ -60,4 +57,4 @@ class AddPostHeader extends PureComponent {
   }
 }
 
-export default translate('AddPostHeader')(AddPostHeader)
+export default translate('AddCaptionHeader')(AddCaptionHeader)

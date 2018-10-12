@@ -1,20 +1,15 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { pathOr, last } from 'ramda'
-import { navigateToFeed } from 'navigation'
+import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import { addPost } from 'graphql/mutations/post/addPost'
-import { updatePostProgress } from 'graphql/mutations/post/postProgress'
 import Camera from '../../components/Camera'
 import AddPostHeader from '../../components/AddPostHeader'
-import AddCaption from '../../components/AddCaption'
 import ImageEditor from '../../components/ImageEditor'
 import MediaPicker from '../../components/MediaPicker'
 
 import { Base, Placeholder } from './styles'
 
-// TODO, SelectedIndex, callback x, y
 class AddPost extends PureComponent {
   static propTypes = {
     projects: PropTypes.array.isRequired,
@@ -24,13 +19,12 @@ class AddPost extends PureComponent {
     super(props)
 
     this.state = {
-      caption: '',
-      currentImage: null,
       capturedImage: null,
-      isEditing: false,
       dropdownOpen: false,
-      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
+      isEditing: false,
       selectedFiles: [],
+      selectedIndex: null,
+      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
     }
   }
 
@@ -59,21 +53,11 @@ class AddPost extends PureComponent {
     this.setState({ capturedImage })
   }
 
-  onChangeCaption = caption => {
-    this.setState({ caption })
-  }
-
-  addPost = () => {
-    navigateToFeed()
-  }
-
   render() {
     const { projects } = this.props
     const {
-      caption,
       capturedImage,
       dropdownOpen,
-      isEditing,
       selectedFiles,
       selectedIndex,
       selectedProject,
@@ -84,29 +68,22 @@ class AddPost extends PureComponent {
     let component
 
     if (editImage) {
-      component = <ImageEditor image={editImage} onCropping={() => null} />
+      component = (
+        <ImageEditor image={editImage} onCropping={({ x, y, index }) => console.log(x, y, index)} />
+      )
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }
 
     return (
       <Base>
-        <AddCaption
-          isEditing={isEditing}
-          caption={caption}
-          onChangeCaption={this.onChangeCaption}
-        />
-
         <AddPostHeader
-          canEdit={!!editImage}
+          canGoToCaption={!!editImage}
           changeProject={this.changeProject}
-          isEditing={isEditing}
           projects={projects}
           selectedProject={selectedProject}
           toggleDropdown={this.toggleDropdown}
-          toggleEdit={this.toggleEdit}
           dropdownOpen={dropdownOpen}
-          addPost={this.addPost}
         />
 
         <Placeholder>{component}</Placeholder>
@@ -117,8 +94,4 @@ class AddPost extends PureComponent {
   }
 }
 
-export default compose(
-  getCurrentUserProjects,
-  addPost,
-  updatePostProgress
-)(AddPost)
+export default compose(getCurrentUserProjects)(AddPost)

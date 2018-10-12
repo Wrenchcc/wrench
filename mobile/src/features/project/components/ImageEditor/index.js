@@ -155,7 +155,7 @@ export default class ImageEditor extends PureComponent {
             <Image
               style={[{ backgroundColor: COLORS.DARK_GREY }, this.scaledImageSize]}
               source={this.props.image}
-              blurRadius={isLoading ? 10 : 0}
+              blurRadius={isLoading ? 20 : 0}
               onLoadEnd={() => this.handleLoading(false)}
             />
           </TouchableWithoutFeedback>

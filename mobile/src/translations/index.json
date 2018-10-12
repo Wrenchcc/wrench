@@ -52,8 +52,10 @@
         "productAnnouncements": "Product announcements"
       }
     },
+    "AddCaptionHeader": {
+      "share": "Share"
+    },
     "AddPostHeader": {
-      "post": "Share",
       "next": "Next"
     },
     "AskForPermission": {
@@ -78,9 +80,6 @@
     },
     "SelectProject": {
       "create": "Create a new project"
-    },
-    "AddPost": {
-      "placeholder": "Add a text about your post"
     },
     "Comments": {
       "title": "Comments"
@@ -249,8 +248,10 @@
         "productAnnouncements": "Produktmeddelanden"
       }
     },
+    "AddCaptionHeader": {
+      "share": "Dela"
+    },
     "AddPostHeader": {
-      "post": "Dela",
       "next": "Nästa"
     },
     "AskForPermission": {
@@ -275,9 +276,6 @@
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"
-    },
-    "AddPost": {
-      "placeholder": "Lägg till en text för din post"
     },
     "Comments": {
       "title": "Kommentarer"

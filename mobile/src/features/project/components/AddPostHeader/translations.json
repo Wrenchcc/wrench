@@ -1,11 +1,9 @@
 {
   "AddPostHeader": {
     "en": {
-      "post": "Share",
       "next": "Next"
     },
     "sv": {
-      "post": "Dela",
       "next": "Nästa"
     }
   }

@@ -1,7 +1,8 @@
 export const ROUTE_NAMES = {
-  PROJECT: 'project',
-  COMMENTS: 'comments',
-  FOLLOWERS: 'followers',
-  EDIT_PROJECT: 'edit-project',
+  ADD_CAPTION: 'add-caption',
   ADD_POST: 'add-post',
+  COMMENTS: 'comments',
+  EDIT_PROJECT: 'edit-project',
+  FOLLOWERS: 'followers',
+  PROJECT: 'project',
 }

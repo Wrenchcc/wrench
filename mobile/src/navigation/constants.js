@@ -1,6 +1,7 @@
 // Route presentations
 export const TAB = 'tab'
 export const MODAL = 'modal'
+export const MODAL_STACK = 'modal_stack'
 
 // Route scopes
 export const PUBLIC = 'public'
