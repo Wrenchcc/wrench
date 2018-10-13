@@ -1,13 +1,13 @@
 import React from 'react'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-import { map } from 'ramda'
+import { map, pathOr } from 'ramda'
 import { trackScreen } from 'utils/analytics'
 import { COLORS } from 'ui/constants'
 import { TabBarComponent, SearchBar, Add } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
 import { ROUTE_NAMES as PROFILE_ROUTE_NAMES } from 'features/profile/constants'
 import { ROUTE_NAMES as SEARCH_ROUTE_NAMES } from 'features/search/constants'
-import { StackViewTransitionConfigs } from 'react-navigation-stack'
+import { StackViewTransitionConfigs } from 'react-navigation-stack' // eslint-disable-line
 import { toTabRoute, toModalRoute, toStackRoute } from '../options'
 import { TAB_HEIGHT } from '../constants'
 import { tabRoutes, modalRoutes, modalStackRoutes, stackRoutes } from '../routes'
@@ -95,6 +95,37 @@ const ModalNavigator = createStackNavigator(
   }
 )
 
+const transitionConfig = (transitionProps, prevTransitionProps) => {
+  // IN: add-caption AppNavigator
+  // BACK: AppNavigator add-caption
+  // CLOSE: AppNavigator add-caption
+
+  // console.log(
+  //   transitionProps.navigation.state.routes[transitionProps.navigation.state.index].routeName,
+  //   prevTransitionProps
+  //     && prevTransitionProps.navigation.state.routes[prevTransitionProps.navigation.state.index]
+  //       .routeName
+  // )
+
+  console.log(
+    transitionProps.navigation.state,
+    prevTransitionProps && prevTransitionProps.navigation.state
+  )
+
+  // if (
+  //   transitionProps.navigation.state.routes[transitionProps.navigation.state.index].routeName
+  //     !== 'add-caption'
+  //   && prevTransitionProps
+  // ) {
+  //   return StackViewTransitionConfigs.ModalSlideFromBottomIOS
+  // }
+
+  return (
+    prevTransitionProps
+    && prevTransitionProps.index === 1
+    && StackViewTransitionConfigs.ModalSlideFromBottomIOS
+  )
+}
 const ModalStackNavigator = createStackNavigator(
   {
     AppNavigator: {
@@ -107,9 +138,7 @@ const ModalStackNavigator = createStackNavigator(
   },
   {
     headerMode: 'screen',
-    transitionConfig: (_, prevTransitionProps) => prevTransitionProps
-      && prevTransitionProps.index === 1
-      && StackViewTransitionConfigs.ModalSlideFromBottomIOS,
+    transitionConfig,
     cardStyle: {
       backgroundColor: COLORS.WHITE,
     },
