@@ -66,9 +66,6 @@ export default class ImageEditor extends PureComponent {
         height: image.height / widthRatio,
       }
       if (Platform.OS === 'android') {
-        // hack to work around Android ScrollView a) not supporting zoom, and
-        // b) not supporting vertical scrolling when nested inside another
-        // vertical ScrollView (which it is, when displayed inside UIExplorer)
         this.scaledImageSize.width *= 2
         this.scaledImageSize.height *= 2
         this.horizontal = true

@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
-import { map, pathOr } from 'ramda'
+import { map } from 'ramda'
 import { trackScreen } from 'utils/analytics'
 import { COLORS } from 'ui/constants'
 import { TabBarComponent, SearchBar, Add } from 'ui'
@@ -95,37 +95,10 @@ const ModalNavigator = createStackNavigator(
   }
 )
 
-const transitionConfig = (transitionProps, prevTransitionProps) => {
-  // IN: add-caption AppNavigator
-  // BACK: AppNavigator add-caption
-  // CLOSE: AppNavigator add-caption
+const transitionConfig = (transitionProps, prevTransitionProps) => prevTransitionProps
+  && prevTransitionProps.index === 1
+  && StackViewTransitionConfigs.ModalSlideFromBottomIOS
 
-  // console.log(
-  //   transitionProps.navigation.state.routes[transitionProps.navigation.state.index].routeName,
-  //   prevTransitionProps
-  //     && prevTransitionProps.navigation.state.routes[prevTransitionProps.navigation.state.index]
-  //       .routeName
-  // )
-
-  console.log(
-    transitionProps.navigation.state,
-    prevTransitionProps && prevTransitionProps.navigation.state
-  )
-
-  // if (
-  //   transitionProps.navigation.state.routes[transitionProps.navigation.state.index].routeName
-  //     !== 'add-caption'
-  //   && prevTransitionProps
-  // ) {
-  //   return StackViewTransitionConfigs.ModalSlideFromBottomIOS
-  // }
-
-  return (
-    prevTransitionProps
-    && prevTransitionProps.index === 1
-    && StackViewTransitionConfigs.ModalSlideFromBottomIOS
-  )
-}
 const ModalStackNavigator = createStackNavigator(
   {
     AppNavigator: {

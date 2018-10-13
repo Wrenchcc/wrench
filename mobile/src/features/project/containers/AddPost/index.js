@@ -48,6 +48,16 @@ class AddPost extends PureComponent {
     this.setState({ selectedFiles, selectedIndex })
   }
 
+  onCropping = data => {
+    this.setState(({ selectedFiles, selectedIndex }) => {
+      selectedFiles[selectedIndex] = {
+        ...selectedFiles[selectedIndex],
+        crop: data,
+      }
+      return { selectedFiles }
+    })
+  }
+
   onTakePicture = capturedImage => {
     this.toggleEdit()
     this.setState({ capturedImage })
@@ -68,9 +78,7 @@ class AddPost extends PureComponent {
     let component
 
     if (editImage) {
-      component = (
-        <ImageEditor image={editImage} onCropping={({ x, y, index }) => console.log(x, y, index)} />
-      )
+      component = <ImageEditor image={editImage} onCropping={this.onCropping} />
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }
