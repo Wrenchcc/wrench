@@ -47,7 +47,7 @@ export default class GridLayout extends PureComponent {
             style={{
               width: '100%',
               borderBottomWidth: 1,
-              borderColor: 'rgba(000, 000, 000, 0.4)',
+              borderColor: 'rgba(000, 000, 000, 0.7)',
             }}
           />
           <View
@@ -55,7 +55,7 @@ export default class GridLayout extends PureComponent {
               marginTop: '33.33%',
               width: '100%',
               borderBottomWidth: 1,
-              borderColor: 'rgba(000, 000, 000, 0.4)',
+              borderColor: 'rgba(000, 000, 000, 0.7)',
             }}
           />
         </View>
@@ -75,7 +75,7 @@ export default class GridLayout extends PureComponent {
               left: '33.33%',
               top: 0,
               borderLeftWidth: 1,
-              borderColor: 'rgba(000, 000, 000, 0.4)',
+              borderColor: 'rgba(000, 000, 000, 0.7)',
             }}
           />
 
@@ -86,7 +86,7 @@ export default class GridLayout extends PureComponent {
               right: '33.33%',
               top: 0,
               borderLeftWidth: 1,
-              borderColor: 'rgba(000, 000, 000, 0.4)',
+              borderColor: 'rgba(000, 000, 000, 0.7)',
             }}
           />
         </View>

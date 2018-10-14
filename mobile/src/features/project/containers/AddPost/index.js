@@ -81,6 +81,7 @@ class AddPost extends Component {
           selectedProject={selectedProject}
           toggleDropdown={this.toggleDropdown}
           dropdownOpen={dropdownOpen}
+          selectedFiles={selectedFiles}
         />
 
         <Placeholder>{component}</Placeholder>

@@ -7,6 +7,7 @@ export const { width } = Dimensions.get('window')
 
 export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
+export const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 // TODO: Fix margins
 // margin-left: ${({ first }) => (first ? GUTTER : 0)};

@@ -12,16 +12,25 @@ class AddPostHeader extends PureComponent {
     canGoToCaption: PropTypes.bool.isRequired,
     changeProject: PropTypes.func.isRequired,
     dropdownOpen: PropTypes.bool.isRequired,
+    selectedFiles: PropTypes.array.isRequired,
     projects: PropTypes.array.isRequired,
     selectedProject: PropTypes.object.isRequired,
     toggleDropdown: PropTypes.func.isRequired,
   }
 
   renderHeaderRight() {
-    const { t, canGoToCaption } = this.props
+    const { t, canGoToCaption, selectedProject, selectedFiles } = this.props
     if (canGoToCaption) {
       return (
-        <Text color="white" medium onPress={() => navigateToAddCaption()}>
+        <Text
+          color="white"
+          medium
+          onPress={() => navigateToAddCaption({
+            selectedProject,
+            selectedFiles,
+          })
+          }
+        >
           {t('AddPostHeader:next')}
         </Text>
       )

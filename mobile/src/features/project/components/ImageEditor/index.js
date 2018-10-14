@@ -51,34 +51,31 @@ export default class ImageEditor extends PureComponent {
   }
 
   setImageProperties(image) {
-    console.log(image.crop)
-
     const widthRatio = image.width / IMAGE_EDITOR_WIDTH
     const heightRatio = image.height / IMAGE_EDITOR_HEIGHT
 
     this.horizontal = widthRatio > heightRatio
 
-    // if (this.horizontal) {
-    this.scaledImageSize = pathOr(
-      {
-        width: image.width / heightRatio,
-        height: IMAGE_EDITOR_HEIGHT,
-      },
-      ['crop', 'scaledImageSize'],
-      image
-    )
-
-    // } else {
-    //   this.scaledImageSize = {
-    //     width: IMAGE_EDITOR_WIDTH,
-    //     height: image.height / widthRatio,
-    //   }
-    //   if (Platform.OS === 'android') {
-    //     this.scaledImageSize.width *= 2
-    //     this.scaledImageSize.height *= 2
-    //     this.horizontal = true
-    //   }
-    // }
+    if (this.horizontal) {
+      this.scaledImageSize = pathOr(
+        {
+          width: image.width / heightRatio,
+          height: IMAGE_EDITOR_HEIGHT,
+        },
+        ['crop', 'scaledImageSize'],
+        image
+      )
+    } else {
+      this.scaledImageSize = {
+        width: IMAGE_EDITOR_WIDTH,
+        height: image.height / widthRatio,
+      }
+      if (Platform.OS === 'android') {
+        this.scaledImageSize.width *= 2
+        this.scaledImageSize.height *= 2
+        this.horizontal = true
+      }
+    }
 
     this.contentOffset = pathOr(
       {
@@ -89,28 +86,27 @@ export default class ImageEditor extends PureComponent {
       image
     )
 
-    this.maximumZoomScale = pathOr(
-      Math.min(
-        image.width / this.scaledImageSize.width,
-        image.height / this.scaledImageSize.height
-      ),
-      ['crop', 'maximumZoomScale'],
-      image
+    this.maximumZoomScale = Math.min(
+      image.width / this.scaledImageSize.width,
+      image.height / this.scaledImageSize.height
     )
 
-    this.minimumZoomScale = pathOr(
-      Math.max(
-        IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
-        IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
-      ),
-      ['crop', 'minimumZoomScale'],
-      image
+    this.minimumZoomScale = Math.max(
+      IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
+      IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
     )
 
-    this.updateCroppingData(this.contentOffset, this.scaledImageSize, {
-      width: IMAGE_EDITOR_WIDTH,
-      height: IMAGE_EDITOR_HEIGHT,
-    })
+    const zoomScale = pathOr(0, ['crop', 'zoomScale'], image)
+
+    this.updateCroppingData(
+      this.contentOffset,
+      this.scaledImageSize,
+      {
+        width: IMAGE_EDITOR_WIDTH,
+        height: IMAGE_EDITOR_HEIGHT,
+      },
+      zoomScale
+    )
   }
 
   handleLoading = isLoading => {
@@ -121,21 +117,22 @@ export default class ImageEditor extends PureComponent {
     this.updateCroppingData(
       evt.nativeEvent.contentOffset,
       evt.nativeEvent.contentSize,
-      evt.nativeEvent.layoutMeasurement
+      evt.nativeEvent.layoutMeasurement,
+      evt.nativeEvent.zoomScale
     )
   }
 
-  handleMoving = isMoving => {
+  setIsMoving = isMoving => {
     this.setState({ isMoving })
   }
 
-  updateCroppingData(offset, scaledImageSize, croppedImageSize) {
+  updateCroppingData(offset, scaledImageSize, croppedImageSize, zoomScale) {
     const offsetRatioX = offset.x / scaledImageSize.width
     const offsetRatioY = offset.y / scaledImageSize.height
     const sizeRatioX = croppedImageSize.width / scaledImageSize.width
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
-    const data = {
+    this.props.onCropping({
       offset: {
         x: this.props.image.width * offsetRatioX,
         y: this.props.image.height * offsetRatioY,
@@ -144,12 +141,8 @@ export default class ImageEditor extends PureComponent {
         width: this.props.image.width * sizeRatioX,
         height: this.props.image.height * sizeRatioY,
       },
-      scaledImageSize: this.scaledImageSize,
-      maximumZoomScale: this.maximumZoomScale,
-      minimumZoomScale: this.minimumZoomScale,
-    }
-
-    this.props.onCropping(data)
+      zoomScale, // TODO: Fix zoomScale
+    })
   }
 
   render() {
@@ -166,12 +159,12 @@ export default class ImageEditor extends PureComponent {
           maximumZoomScale={this.maximumZoomScale}
           minimumZoomScale={this.minimumZoomScale}
           onMomentumScrollEnd={this.onScroll}
-          onScrollEndDrag={() => this.handleMoving(false)}
+          onScrollEndDrag={() => this.setIsMoving(false)}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           scrollEventThrottle={16}
         >
-          <TouchableWithoutFeedback onPressIn={() => this.handleMoving(true)}>
+          <TouchableWithoutFeedback onPressIn={() => this.setIsMoving(true)}>
             <Image
               style={[{ backgroundColor: COLORS.DARK_GREY }, this.scaledImageSize]}
               source={this.props.image}

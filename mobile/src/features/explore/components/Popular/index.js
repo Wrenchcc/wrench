@@ -7,9 +7,7 @@ import { getPopularProjects } from 'graphql/queries/getExplore'
 import { navigateToProject } from 'navigation'
 import { InfiniteList } from 'ui'
 import { INITIAL_POSTS_COUNT } from '../../constants'
-import { Title, Card, GUTTER, BAR_SPACE, width } from './styles'
-
-const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
+import { Title, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
 class Popular extends PureComponent {
   static propTypes = {
