@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import Camera from '../../components/Camera'
-import AddPostHeader from '../../components/AddPostHeader'
-import ImageEditor from '../../components/ImageEditor'
-import MediaPicker from '../../components/MediaPicker'
+import Camera from 'features/project/components/Camera'
+import AddPostHeader from 'features/project/components/AddPostHeader'
+import ImageEditor from 'features/project/components/ImageEditor'
+import MediaPicker from 'features/project/components/MediaPicker'
 
 import { Base, Placeholder } from './styles'
 
@@ -21,18 +21,10 @@ class AddPost extends PureComponent {
     this.state = {
       capturedImage: null,
       dropdownOpen: false,
-      isEditing: false,
       selectedFiles: [],
       selectedIndex: null,
       selectedProject: pathOr(null, ['projects', 0, 'node'], props),
     }
-  }
-
-  toggleEdit = () => {
-    this.setState(prevState => ({
-      isEditing: !prevState.isEditing,
-      ...(prevState.isEditing && { capturedImage: null }),
-    }))
   }
 
   toggleDropdown = () => {
@@ -59,7 +51,6 @@ class AddPost extends PureComponent {
   }
 
   onTakePicture = capturedImage => {
-    this.toggleEdit()
     this.setState({ capturedImage })
   }
 
@@ -73,12 +64,12 @@ class AddPost extends PureComponent {
       selectedProject,
     } = this.state
 
-    const editImage = capturedImage || selectedFiles[selectedIndex]
+    const currentImage = capturedImage || selectedFiles[selectedIndex]
 
     let component
 
-    if (editImage) {
-      component = <ImageEditor image={editImage} onCropping={this.onCropping} />
+    if (currentImage) {
+      component = <ImageEditor image={currentImage} onCropping={this.onCropping} />
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }
@@ -86,7 +77,7 @@ class AddPost extends PureComponent {
     return (
       <Base>
         <AddPostHeader
-          canGoToCaption={!!editImage}
+          canGoToCaption={!!currentImage}
           changeProject={this.changeProject}
           projects={projects}
           selectedProject={selectedProject}
@@ -96,7 +87,11 @@ class AddPost extends PureComponent {
 
         <Placeholder>{component}</Placeholder>
 
-        <MediaPicker selectedFiles={selectedFiles} onSelect={this.addSelectedFiles} />
+        <MediaPicker
+          selectedFiles={selectedFiles}
+          selectedIndex={selectedIndex}
+          onSelect={this.addSelectedFiles}
+        />
       </Base>
     )
   }

@@ -72,6 +72,7 @@ export default class Camera extends PureComponent {
         <AskForPermission permission={CAMERA_PERMISSION} onSuccess={this.permissionAuthorized} />
       )
     }
+
     return (
       <TouchableWithoutFeedback onPressIn={this.setFocus}>
         <RNCamera

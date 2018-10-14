@@ -6,20 +6,19 @@ import { logError } from 'utils/analytics'
 import MediaItem from './Item'
 
 const PAGE_SIZE = 64
-const MAX_SELECTED_FIELES = 10
+const MAX_SELECTED_FILES = 10
 const NUM_COLUMNS = 4
 
 export default class MediaPicker extends Component {
   static propTypes = {
     onSelect: PropTypes.func.isRequired,
+    selectedFiles: PropTypes.array.isRequired,
   }
 
   state = {
     data: [],
     end_cursor: null,
     has_next_page: true,
-    selectedFiles: [],
-    lastSelected: null,
   }
 
   componentDidMount() {
@@ -52,28 +51,22 @@ export default class MediaPicker extends Component {
   }
 
   toggleSelection = file => {
-    this.setState({ lastSelected: file })
-
-    const { selectedFiles, lastSelected } = this.state
+    const { selectedFiles } = this.props
     const index = this.indexOfItem(file)
     const prevFile = selectedFiles[index - 1]
     const isSelected = index >= 0
 
-    if (
-      (isSelected && lastSelected.filename === file.filename)
-      || (prevFile && prevFile.filename === file.filename)
-    ) {
+    if (isSelected || (prevFile && prevFile.filename === file.filename)) {
       selectedFiles.splice(index, 1)
-    } else if (!isSelected && MAX_SELECTED_FIELES > selectedFiles.length) {
+    } else if (!isSelected && MAX_SELECTED_FILES > selectedFiles.length) {
       selectedFiles.push(file)
     }
 
-    this.setState({ selectedFiles })
     this.props.onSelect(selectedFiles, this.indexOfItem(file))
   }
 
   indexOfItem(item) {
-    const { selectedFiles } = this.state
+    const { selectedFiles } = this.props
     return findIndex(propEq('uri', item.uri))(selectedFiles)
   }
 

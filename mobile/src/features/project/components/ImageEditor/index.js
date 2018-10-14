@@ -115,7 +115,7 @@ export default class ImageEditor extends PureComponent {
     const sizeRatioX = croppedImageSize.width / scaledImageSize.width
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
-    const cropData = {
+    const data = {
       offset: {
         x: this.props.image.width * offsetRatioX,
         y: this.props.image.height * offsetRatioY,
@@ -126,7 +126,7 @@ export default class ImageEditor extends PureComponent {
       },
     }
 
-    this.props.onCropping(cropData)
+    this.props.onCropping(data)
   }
 
   render() {
