@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { CameraRoll } from 'react-native'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -19,7 +20,6 @@ class AddPost extends Component {
     super(props)
 
     this.state = {
-      capturedImage: null,
       dropdownOpen: false,
       selectedFiles: [],
       selectedIndex: null,
@@ -40,36 +40,34 @@ class AddPost extends Component {
     this.setState({ selectedFiles, selectedIndex })
   }
 
-  onCropping = data => {
-    this.setState(({ selectedFiles, selectedIndex }) => {
-      selectedFiles[selectedIndex] = {
-        ...selectedFiles[selectedIndex],
-        crop: data,
-      }
-      return { selectedFiles }
-    })
+  onCropping = crop => {
+    // this.setState(({ selectedFiles, selectedIndex }) => {
+    //   selectedFiles[selectedIndex] = {
+    //     ...selectedFiles[selectedIndex],
+    //     crop,
+    //   }
+    //   return { selectedFiles }
+    // })
   }
 
-  onTakePicture = capturedImage => {
-    this.setState({ capturedImage })
+  onTakePicture = async file => {
+    const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
+    this.setState({
+      selectedFiles: [{ ...file, uri: savedFile, add: true }],
+      selectedIndex: 0,
+    })
   }
 
   render() {
     const { projects } = this.props
-    const {
-      capturedImage,
-      dropdownOpen,
-      selectedFiles,
-      selectedIndex,
-      selectedProject,
-    } = this.state
+    const { dropdownOpen, selectedFiles, selectedIndex, selectedProject } = this.state
 
-    const currentImage = capturedImage || selectedFiles[selectedIndex]
+    const editImage = selectedFiles[selectedIndex]
 
     let component
 
-    if (currentImage) {
-      component = <ImageEditor image={currentImage} onCropping={this.onCropping} />
+    if (editImage) {
+      component = <ImageEditor image={editImage} onCropping={this.onCropping} />
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }
@@ -77,7 +75,7 @@ class AddPost extends Component {
     return (
       <Base>
         <AddPostHeader
-          canGoToCaption={!!currentImage}
+          canGoToCaption={!!editImage}
           changeProject={this.changeProject}
           projects={projects}
           selectedProject={selectedProject}

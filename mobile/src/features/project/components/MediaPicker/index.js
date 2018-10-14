@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll, FlatList, ActivityIndicator } from 'react-native'
-import { findIndex, propEq } from 'ramda'
+import { findIndex, propEq, path } from 'ramda'
 import { logError } from 'utils/analytics'
 import MediaItem from './Item'
 
@@ -14,6 +14,16 @@ export default class MediaPicker extends Component {
     onSelect: PropTypes.func.isRequired,
     selectedFiles: PropTypes.array.isRequired,
     selectedIndex: PropTypes.number,
+  }
+
+  static getDerivedStateFromProps({ selectedFiles }, state) {
+    if (path([0, 'add'], selectedFiles)) {
+      return {
+        data: [path([0], selectedFiles), ...state.data],
+      }
+    }
+
+    return state
   }
 
   state = {
