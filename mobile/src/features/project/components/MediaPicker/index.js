@@ -58,14 +58,14 @@ export default class MediaPicker extends Component {
     if (index >= 0) {
       if (selectedIndex === index) {
         selectedFiles.splice(index, 1)
-        const fallback = index || selectedFiles.length
-        onSelect(selectedFiles, fallback - 1 || 0)
+        const prevIndex = index || selectedFiles.length
+        onSelect(selectedFiles, prevIndex - 1 || 0)
       } else {
         onSelect(selectedFiles, index)
       }
     } else if (MAX_SELECTED_FILES > selectedFiles.length) {
-      selectedFiles.push(file)
-      onSelect(selectedFiles, selectedFiles.length - 1)
+      const lastIndex = selectedFiles.push(file) - 1
+      onSelect(selectedFiles, lastIndex)
     }
   }
 
