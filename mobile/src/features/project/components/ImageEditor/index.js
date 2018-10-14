@@ -8,6 +8,7 @@ import {
   Image,
   Platform,
 } from 'react-native'
+import { pathOr } from 'ramda'
 import { COLORS } from 'ui/constants'
 import GridLayout from '../GridLayout'
 
@@ -50,41 +51,60 @@ export default class ImageEditor extends PureComponent {
   }
 
   setImageProperties(image) {
+    console.log(image.crop)
+
     const widthRatio = image.width / IMAGE_EDITOR_WIDTH
     const heightRatio = image.height / IMAGE_EDITOR_HEIGHT
 
     this.horizontal = widthRatio > heightRatio
 
-    if (this.horizontal) {
-      this.scaledImageSize = {
+    // if (this.horizontal) {
+    this.scaledImageSize = pathOr(
+      {
         width: image.width / heightRatio,
         height: IMAGE_EDITOR_HEIGHT,
-      }
-    } else {
-      this.scaledImageSize = {
-        width: IMAGE_EDITOR_WIDTH,
-        height: image.height / widthRatio,
-      }
-      if (Platform.OS === 'android') {
-        this.scaledImageSize.width *= 2
-        this.scaledImageSize.height *= 2
-        this.horizontal = true
-      }
-    }
-
-    this.contentOffset = {
-      x: (this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2,
-      y: (this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2,
-    }
-
-    this.maximumZoomScale = Math.min(
-      image.width / this.scaledImageSize.width,
-      image.height / this.scaledImageSize.height
+      },
+      ['crop', 'scaledImageSize'],
+      image
     )
 
-    this.minimumZoomScale = Math.max(
-      IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
-      IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
+    // } else {
+    //   this.scaledImageSize = {
+    //     width: IMAGE_EDITOR_WIDTH,
+    //     height: image.height / widthRatio,
+    //   }
+    //   if (Platform.OS === 'android') {
+    //     this.scaledImageSize.width *= 2
+    //     this.scaledImageSize.height *= 2
+    //     this.horizontal = true
+    //   }
+    // }
+
+    this.contentOffset = pathOr(
+      {
+        x: (this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2,
+        y: (this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2,
+      },
+      ['crop', 'offset'],
+      image
+    )
+
+    this.maximumZoomScale = pathOr(
+      Math.min(
+        image.width / this.scaledImageSize.width,
+        image.height / this.scaledImageSize.height
+      ),
+      ['crop', 'maximumZoomScale'],
+      image
+    )
+
+    this.minimumZoomScale = pathOr(
+      Math.max(
+        IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
+        IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
+      ),
+      ['crop', 'minimumZoomScale'],
+      image
     )
 
     this.updateCroppingData(this.contentOffset, this.scaledImageSize, {
@@ -124,6 +144,9 @@ export default class ImageEditor extends PureComponent {
         width: this.props.image.width * sizeRatioX,
         height: this.props.image.height * sizeRatioY,
       },
+      scaledImageSize: this.scaledImageSize,
+      maximumZoomScale: this.maximumZoomScale,
+      minimumZoomScale: this.minimumZoomScale,
     }
 
     this.props.onCropping(data)

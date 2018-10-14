@@ -80,6 +80,7 @@ export default class Camera extends PureComponent {
           flashMode={this.state.flashMode}
           style={{ flex: 1 }}
           autoFocusPointOfInterest={autoFocusPointOfInterest}
+          forceUpOrientation
         >
           {({ camera }) => (
             <Fragment>

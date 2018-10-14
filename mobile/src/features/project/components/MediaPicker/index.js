@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll, FlatList, ActivityIndicator } from 'react-native'
+import { CameraRoll, FlatList, View, ActivityIndicator } from 'react-native'
+import Permissions from 'react-native-permissions'
 import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
+import AskForPermission from 'features/project/components/AskForPermission'
 import MediaItem from './Item'
 
+const AUTHORIZED = 'authorized'
+const PHOTO_PERMISSION = 'photo'
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
@@ -33,10 +37,28 @@ export default class MediaPicker extends Component {
     data: [],
     end_cursor: null,
     has_next_page: true,
+    isLoading: true,
   }
 
-  componentDidMount() {
-    this.getFiles()
+  constructor(props) {
+    super(props)
+    this.checkPhotoPermission()
+  }
+
+  checkPhotoPermission = () => {
+    Permissions.check(PHOTO_PERMISSION).then(response => {
+      if (response === AUTHORIZED) {
+        this.getFiles()
+      }
+      this.setState({
+        isLoading: false,
+        photoPermission: response,
+      })
+    })
+  }
+
+  permissionAuthorized = () => {
+    this.setState({ photoPermission: AUTHORIZED })
   }
 
   getFiles = async after => {
@@ -82,13 +104,13 @@ export default class MediaPicker extends Component {
     }
   }
 
-  indexOfItem(item) {
-    return findIndex(propEq('uri', item.uri))(this.props.selectedFiles)
-  }
-
   renderFooterLoader = () => {
     if (this.state.hasNextPage) {
-      return <ActivityIndicator color={this.state.activityIndicatorColor} />
+      return (
+        <View style={{ paddingTop: 30, paddingBottom: 30 }}>
+          <ActivityIndicator color={this.state.activityIndicatorColor} />
+        </View>
+      )
     }
 
     return null
@@ -108,8 +130,20 @@ export default class MediaPicker extends Component {
     )
   }
 
+  indexOfItem(item) {
+    return findIndex(propEq('uri', item.uri))(this.props.selectedFiles)
+  }
+
   render() {
-    const { data } = this.state
+    const { data, photoPermission, isLoading } = this.state
+
+    if (isLoading) return null
+
+    if (photoPermission !== AUTHORIZED) {
+      return (
+        <AskForPermission permission={PHOTO_PERMISSION} onSuccess={this.permissionAuthorized} />
+      )
+    }
 
     return (
       <FlatList
