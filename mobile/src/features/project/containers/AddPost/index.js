@@ -1,21 +1,17 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { CameraRoll } from 'react-native'
 import { compose } from 'react-apollo'
-import { pathOr, last } from 'ramda'
-import { navigateToFeed } from 'navigation'
+import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import { addPost } from 'graphql/mutations/post/addPost'
-import { updatePostProgress } from 'graphql/mutations/post/postProgress'
-import Camera from '../../components/Camera'
-import AddPostHeader from '../../components/AddPostHeader'
-import AddCaption from '../../components/AddCaption'
-import ImageEditor from '../../components/ImageEditor'
-import MediaPicker from '../../components/MediaPicker'
+import Camera from 'features/project/components/Camera'
+import AddPostHeader from 'features/project/components/AddPostHeader'
+import ImageEditor from 'features/project/components/ImageEditor'
+import MediaPicker from 'features/project/components/MediaPicker'
 
 import { Base, Placeholder } from './styles'
 
-// TODO, SelectedIndex, callback x, y
-class AddPost extends PureComponent {
+class AddPost extends Component {
   static propTypes = {
     projects: PropTypes.array.isRequired,
   }
@@ -24,21 +20,11 @@ class AddPost extends PureComponent {
     super(props)
 
     this.state = {
-      caption: '',
-      currentImage: null,
-      capturedImage: null,
-      isEditing: false,
       dropdownOpen: false,
-      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
       selectedFiles: [],
+      selectedIndex: null,
+      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
     }
-  }
-
-  toggleEdit = () => {
-    this.setState(prevState => ({
-      isEditing: !prevState.isEditing,
-      ...(prevState.isEditing && { capturedImage: null }),
-    }))
   }
 
   toggleDropdown = () => {
@@ -54,71 +40,59 @@ class AddPost extends PureComponent {
     this.setState({ selectedFiles, selectedIndex })
   }
 
-  onTakePicture = capturedImage => {
-    this.toggleEdit()
-    this.setState({ capturedImage })
+  onCropping = crop => {
+    this.setState(({ selectedFiles, selectedIndex }) => {
+      selectedFiles[selectedIndex] = {
+        ...selectedFiles[selectedIndex],
+        crop,
+      }
+      return { selectedFiles }
+    })
   }
 
-  onChangeCaption = caption => {
-    this.setState({ caption })
-  }
-
-  addPost = () => {
-    navigateToFeed()
+  onTakePicture = async file => {
+    const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
+    this.setState({
+      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
+      selectedIndex: 0,
+    })
   }
 
   render() {
     const { projects } = this.props
-    const {
-      caption,
-      capturedImage,
-      dropdownOpen,
-      isEditing,
-      selectedFiles,
-      selectedIndex,
-      selectedProject,
-    } = this.state
+    const { dropdownOpen, selectedFiles, selectedIndex, selectedProject } = this.state
 
-    const editImage = capturedImage || selectedFiles[selectedIndex]
+    const editImage = selectedFiles[selectedIndex]
 
     let component
 
     if (editImage) {
-      component = <ImageEditor image={editImage} onCropping={() => null} />
+      component = <ImageEditor image={editImage} onCropping={this.onCropping} />
     } else {
       component = <Camera onTakePicture={this.onTakePicture} />
     }
 
     return (
       <Base>
-        <AddCaption
-          isEditing={isEditing}
-          caption={caption}
-          onChangeCaption={this.onChangeCaption}
-        />
-
         <AddPostHeader
-          canEdit={!!editImage}
+          canGoToCaption={!!editImage}
           changeProject={this.changeProject}
-          isEditing={isEditing}
           projects={projects}
           selectedProject={selectedProject}
           toggleDropdown={this.toggleDropdown}
-          toggleEdit={this.toggleEdit}
           dropdownOpen={dropdownOpen}
-          addPost={this.addPost}
         />
 
         <Placeholder>{component}</Placeholder>
 
-        <MediaPicker selectedFiles={selectedFiles} onSelect={this.addSelectedFiles} />
+        <MediaPicker
+          selectedFiles={selectedFiles}
+          selectedIndex={selectedIndex}
+          onSelect={this.addSelectedFiles}
+        />
       </Base>
     )
   }
 }
 
-export default compose(
-  getCurrentUserProjects,
-  addPost,
-  updatePostProgress
-)(AddPost)
+export default compose(getCurrentUserProjects)(AddPost)

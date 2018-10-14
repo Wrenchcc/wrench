@@ -66,9 +66,6 @@ export default class ImageEditor extends PureComponent {
         height: image.height / widthRatio,
       }
       if (Platform.OS === 'android') {
-        // hack to work around Android ScrollView a) not supporting zoom, and
-        // b) not supporting vertical scrolling when nested inside another
-        // vertical ScrollView (which it is, when displayed inside UIExplorer)
         this.scaledImageSize.width *= 2
         this.scaledImageSize.height *= 2
         this.horizontal = true
@@ -118,7 +115,7 @@ export default class ImageEditor extends PureComponent {
     const sizeRatioX = croppedImageSize.width / scaledImageSize.width
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
-    const cropData = {
+    const data = {
       offset: {
         x: this.props.image.width * offsetRatioX,
         y: this.props.image.height * offsetRatioY,
@@ -129,7 +126,7 @@ export default class ImageEditor extends PureComponent {
       },
     }
 
-    this.props.onCropping(cropData)
+    this.props.onCropping(data)
   }
 
   render() {
@@ -155,7 +152,7 @@ export default class ImageEditor extends PureComponent {
             <Image
               style={[{ backgroundColor: COLORS.DARK_GREY }, this.scaledImageSize]}
               source={this.props.image}
-              blurRadius={isLoading ? 10 : 0}
+              blurRadius={isLoading ? 20 : 0}
               onLoadEnd={() => this.handleLoading(false)}
             />
           </TouchableWithoutFeedback>

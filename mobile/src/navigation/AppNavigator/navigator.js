@@ -7,9 +7,10 @@ import { TabBarComponent, SearchBar, Add } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
 import { ROUTE_NAMES as PROFILE_ROUTE_NAMES } from 'features/profile/constants'
 import { ROUTE_NAMES as SEARCH_ROUTE_NAMES } from 'features/search/constants'
+import { StackViewTransitionConfigs } from 'react-navigation-stack' // eslint-disable-line
 import { toTabRoute, toModalRoute, toStackRoute } from '../options'
 import { TAB_HEIGHT } from '../constants'
-import { tabRoutes, modalRoutes, stackRoutes } from '../routes'
+import { tabRoutes, modalRoutes, modalStackRoutes, stackRoutes } from '../routes'
 import styles from '../styles'
 
 const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
@@ -75,7 +76,7 @@ const AppNavigator = createStackNavigator(
   }
 )
 
-export default createStackNavigator(
+const ModalNavigator = createStackNavigator(
   {
     AppNavigator: {
       screen: AppNavigator,
@@ -93,3 +94,28 @@ export default createStackNavigator(
     },
   }
 )
+
+const transitionConfig = (transitionProps, prevTransitionProps) => prevTransitionProps
+  && prevTransitionProps.index === 1
+  && StackViewTransitionConfigs.ModalSlideFromBottomIOS
+
+const ModalStackNavigator = createStackNavigator(
+  {
+    AppNavigator: {
+      screen: ModalNavigator,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    ...map(toStackRoute, modalStackRoutes),
+  },
+  {
+    headerMode: 'screen',
+    transitionConfig,
+    cardStyle: {
+      backgroundColor: COLORS.WHITE,
+    },
+  }
+)
+
+export default ModalStackNavigator
