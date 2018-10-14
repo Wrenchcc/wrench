@@ -52,18 +52,20 @@ export default class MediaPicker extends Component {
   }
 
   toggleSelection = file => {
-    const { selectedFiles, selectedIndex } = this.props
+    const { selectedFiles, selectedIndex, onSelect } = this.props
     const index = this.indexOfItem(file)
 
     if (index >= 0) {
       if (selectedIndex === index) {
         selectedFiles.splice(index, 1)
-        this.props.onSelect(selectedFiles, index - 1 || 0)
+        const fallback = index || selectedFiles.length
+        onSelect(selectedFiles, fallback - 1 || 0)
+      } else {
+        onSelect(selectedFiles, index)
       }
-      this.props.onSelect(selectedFiles, index)
     } else if (MAX_SELECTED_FILES > selectedFiles.length) {
       selectedFiles.push(file)
-      this.props.onSelect(selectedFiles, selectedFiles.length - 1)
+      onSelect(selectedFiles, selectedFiles.length - 1)
     }
   }
 
