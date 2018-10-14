@@ -52,7 +52,7 @@ export default class Camera extends PureComponent {
   }
 
   takePicture = async camera => {
-    const data = await camera.takePictureAsync()
+    const data = await camera.takePictureAsync({ forceUpOrientation: true })
     this.props.onTakePicture(data)
   }
 
@@ -80,7 +80,6 @@ export default class Camera extends PureComponent {
           flashMode={this.state.flashMode}
           style={{ flex: 1 }}
           autoFocusPointOfInterest={autoFocusPointOfInterest}
-          forceUpOrientation
         >
           {({ camera }) => (
             <Fragment>

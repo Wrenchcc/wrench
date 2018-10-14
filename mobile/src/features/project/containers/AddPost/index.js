@@ -33,7 +33,7 @@ class AddPost extends Component {
         <View style={{ paddingLeft: 20, paddingRight: 20 }}>
           <SelectedFiles selectedFiles={selectedFiles} />
 
-          <Input placeholder={t('AddPost:placeholder')} autoFocus keyboardType="twitter" />
+          <Input placeholder={t('AddPost:placeholder')} autoFocus />
         </View>
       </Fragment>
     )
