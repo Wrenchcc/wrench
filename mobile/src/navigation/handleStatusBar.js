@@ -19,7 +19,7 @@ const setDefaultStatusBar = () => {
 
 const changeStatusBar = routeName => {
   switch (routeName) {
-    case 'add-post':
+    case 'add-media':
       toggleStatusBar(true)
       break
     case 'onboarding':
