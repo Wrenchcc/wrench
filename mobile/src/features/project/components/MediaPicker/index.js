@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll, FlatList, ActivityIndicator } from 'react-native'
-import { findIndex, propEq, find, omit } from 'ramda'
+import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
 import MediaItem from './Item'
 
@@ -20,7 +20,7 @@ export default class MediaPicker extends Component {
   static getDerivedStateFromProps(props, state) {
     const newItem = find(propEq(NEW_CAMERA_FILE, true), props.selectedFiles)
 
-    if (newItem) {
+    if (newItem && newItem.uri !== pathOr(false, ['data', 0, 'uri'], state)) {
       return {
         data: [omit([NEW_CAMERA_FILE], newItem), ...state.data],
       }

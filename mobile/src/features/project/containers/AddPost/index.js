@@ -41,13 +41,13 @@ class AddPost extends Component {
   }
 
   onCropping = crop => {
-    // this.setState(({ selectedFiles, selectedIndex }) => {
-    //   selectedFiles[selectedIndex] = {
-    //     ...selectedFiles[selectedIndex],
-    //     crop,
-    //   }
-    //   return { selectedFiles }
-    // })
+    this.setState(({ selectedFiles, selectedIndex }) => {
+      selectedFiles[selectedIndex] = {
+        ...selectedFiles[selectedIndex],
+        crop,
+      }
+      return { selectedFiles }
+    })
   }
 
   onTakePicture = async file => {
