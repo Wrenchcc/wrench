@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll, FlatList, ActivityIndicator } from 'react-native'
-import { findIndex, propEq, path } from 'ramda'
+import { findIndex, propEq, find, omit } from 'ramda'
 import { logError } from 'utils/analytics'
 import MediaItem from './Item'
 
-const PAGE_SIZE = 64
 const MAX_SELECTED_FILES = 10
+const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
+const PAGE_SIZE = 64
 
 export default class MediaPicker extends Component {
   static propTypes = {
@@ -16,10 +17,12 @@ export default class MediaPicker extends Component {
     selectedIndex: PropTypes.number,
   }
 
-  static getDerivedStateFromProps({ selectedFiles }, state) {
-    if (path([0, 'add'], selectedFiles)) {
+  static getDerivedStateFromProps(props, state) {
+    const newItem = find(propEq(NEW_CAMERA_FILE, true), props.selectedFiles)
+
+    if (newItem) {
       return {
-        data: [path([0], selectedFiles), ...state.data],
+        data: [omit([NEW_CAMERA_FILE], newItem), ...state.data],
       }
     }
 

@@ -53,7 +53,7 @@ class AddPost extends Component {
   onTakePicture = async file => {
     const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
     this.setState({
-      selectedFiles: [{ ...file, uri: savedFile, add: true }],
+      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
       selectedIndex: 0,
     })
   }
