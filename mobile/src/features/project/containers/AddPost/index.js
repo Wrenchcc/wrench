@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
@@ -10,7 +10,7 @@ import MediaPicker from 'features/project/components/MediaPicker'
 
 import { Base, Placeholder } from './styles'
 
-class AddPost extends PureComponent {
+class AddPost extends Component {
   static propTypes = {
     projects: PropTypes.array.isRequired,
   }

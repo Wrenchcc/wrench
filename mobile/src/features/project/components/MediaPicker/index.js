@@ -13,6 +13,7 @@ export default class MediaPicker extends Component {
   static propTypes = {
     onSelect: PropTypes.func.isRequired,
     selectedFiles: PropTypes.array.isRequired,
+    selectedIndex: PropTypes.number,
   }
 
   state = {
@@ -51,23 +52,23 @@ export default class MediaPicker extends Component {
   }
 
   toggleSelection = file => {
-    const { selectedFiles } = this.props
+    const { selectedFiles, selectedIndex } = this.props
     const index = this.indexOfItem(file)
-    const prevFile = selectedFiles[index - 1]
-    const isSelected = index >= 0
 
-    if (isSelected || (prevFile && prevFile.filename === file.filename)) {
-      selectedFiles.splice(index, 1)
-    } else if (!isSelected && MAX_SELECTED_FILES > selectedFiles.length) {
+    if (index >= 0) {
+      if (selectedIndex === index) {
+        selectedFiles.splice(index, 1)
+        this.props.onSelect(selectedFiles, index - 1 || 0)
+      }
+      this.props.onSelect(selectedFiles, index)
+    } else if (MAX_SELECTED_FILES > selectedFiles.length) {
       selectedFiles.push(file)
+      this.props.onSelect(selectedFiles, selectedFiles.length - 1)
     }
-
-    this.props.onSelect(selectedFiles, this.indexOfItem(file))
   }
 
   indexOfItem(item) {
-    const { selectedFiles } = this.props
-    return findIndex(propEq('uri', item.uri))(selectedFiles)
+    return findIndex(propEq('uri', item.uri))(this.props.selectedFiles)
   }
 
   renderFooterLoader = () => {
@@ -79,14 +80,14 @@ export default class MediaPicker extends Component {
   }
 
   renderItem = ({ item }) => {
-    const index = this.indexOfItem(item)
-    const isSelected = index >= 0
+    const selectedIndex = this.indexOfItem(item)
+    const isSelected = selectedIndex >= 0
 
     return (
       <MediaItem
         item={item}
         selected={isSelected}
-        order={index + 1}
+        order={selectedIndex + 1}
         onPress={this.toggleSelection}
       />
     )
