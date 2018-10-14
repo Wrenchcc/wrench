@@ -1,10 +1,10 @@
 {
-  "AddPostHeader": {
+  "AddCaptionHeader": {
     "en": {
-      "next": "Next"
+      "share": "Share"
     },
     "sv": {
-      "next": "Nästa"
+      "share": "Dela"
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image } from 'react-native'
-import { navigateToPost, navigateToEditProject } from 'navigation'
+import { navigateToAddMedia, navigateToEditProject } from 'navigation'
 import { add } from 'images'
 import hitSlop from 'utils/hitSlop'
 import { Button } from './styles'
@@ -11,7 +11,7 @@ const onPress = () => {
     return navigateToEditProject()
   }
 
-  return navigateToPost()
+  return navigateToAddMedia()
 }
 
 const Add = props => (

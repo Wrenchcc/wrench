@@ -1,99 +1,43 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll } from 'react-native'
-import { compose } from 'react-apollo'
-import { pathOr } from 'ramda'
-import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import Camera from 'features/project/components/Camera'
+import { View } from 'react-native'
+import { translate } from 'react-i18next'
+import { navigateToFeed } from 'navigation'
 import AddPostHeader from 'features/project/components/AddPostHeader'
-import ImageEditor from 'features/project/components/ImageEditor'
-import MediaPicker from 'features/project/components/MediaPicker'
+import SelectedFiles from 'features/project/components/SelectedFiles'
+import { Input } from 'ui'
 
-import { Base, Placeholder } from './styles'
-
+// TODO: Add caption, re-add project selection, post on addPost
 class AddPost extends Component {
   static propTypes = {
-    projects: PropTypes.array.isRequired,
+    navigation: PropTypes.object.isRequired,
   }
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      dropdownOpen: false,
-      selectedFiles: [],
-      selectedIndex: null,
-      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
-    }
+  addPost = () => {
+    navigateToFeed()
   }
 
-  toggleDropdown = () => {
-    this.setState(prevState => ({ dropdownOpen: !prevState.dropdownOpen }))
-  }
-
-  changeProject = selectedProject => {
-    this.toggleDropdown()
-    this.setState({ selectedProject })
-  }
-
-  addSelectedFiles = (selectedFiles, selectedIndex) => {
-    this.setState({ selectedFiles, selectedIndex })
-  }
-
-  onCropping = crop => {
-    this.setState(({ selectedFiles, selectedIndex }) => {
-      selectedFiles[selectedIndex] = {
-        ...selectedFiles[selectedIndex],
-        crop,
-      }
-      return { selectedFiles }
-    })
-  }
-
-  onTakePicture = async file => {
-    const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
-    this.setState({
-      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
-      selectedIndex: 0,
-    })
-  }
+  renderItem = () => <View />
 
   render() {
-    const { projects } = this.props
-    const { dropdownOpen, selectedFiles, selectedIndex, selectedProject } = this.state
-
-    const editImage = selectedFiles[selectedIndex]
-
-    let component
-
-    if (editImage) {
-      component = <ImageEditor image={editImage} onCropping={this.onCropping} />
-    } else {
-      component = <Camera onTakePicture={this.onTakePicture} />
-    }
+    const { t, navigation } = this.props
+    const { selectedProject, selectedFiles } = navigation.state.params
 
     return (
-      <Base>
+      <Fragment>
         <AddPostHeader
-          canGoToCaption={!!editImage}
-          changeProject={this.changeProject}
-          projects={projects}
+          canGoToCaption={false}
           selectedProject={selectedProject}
-          toggleDropdown={this.toggleDropdown}
-          dropdownOpen={dropdownOpen}
-          selectedFiles={selectedFiles}
+          addPost={this.addPost}
         />
+        <View style={{ paddingLeft: 20, paddingRight: 20 }}>
+          <SelectedFiles selectedFiles={selectedFiles} />
 
-        <Placeholder>{component}</Placeholder>
-
-        <MediaPicker
-          selectedFiles={selectedFiles}
-          selectedIndex={selectedIndex}
-          onSelect={this.addSelectedFiles}
-        />
-      </Base>
+          <Input placeholder={t('AddPost:placeholder')} autoFocus />
+        </View>
+      </Fragment>
     )
   }
 }
 
-export default compose(getCurrentUserProjects)(AddPost)
+export default translate('AddPost')(AddPost)
