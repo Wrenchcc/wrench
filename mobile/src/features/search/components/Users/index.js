@@ -7,13 +7,13 @@ import { User, InfiniteList } from 'ui'
 // TODO: Pass search query
 class Users extends PureComponent {
   static propTypes = {
-    users: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    refetch: PropTypes.func.isRequired,
     scrollRef: PropTypes.func.isRequired,
+    users: PropTypes.array,
   }
 
   renderItem = ({ item }) => <User data={item.node} />
@@ -21,25 +21,25 @@ class Users extends PureComponent {
   // TODO: Remove when have IDs
   render() {
     const {
-      users,
       fetchMore,
-      refetch,
-      isRefetching,
-      isFetching,
       hasNextPage,
+      isFetching,
+      isRefetching,
+      refetch,
       scrollRef,
+      users,
     } = this.props
 
     return (
       <InfiniteList
         borderSeparator
         data={users}
-        refetch={refetch}
         fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
         hasNextPage={hasNextPage}
+        isFetching={isFetching}
+        isRefetching={isRefetching}
         keyExtractor={(item, index) => item.node.id + index}
+        refetch={refetch}
         renderItem={this.renderItem}
         scrollRef={scrollRef}
       />

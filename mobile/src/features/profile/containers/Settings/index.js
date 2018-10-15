@@ -7,7 +7,7 @@ import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
 import toggleUserNotificationSettingsMutation from 'graphql/mutations/user/toggleUserNotificationSettings'
 import { Title, SelectionItem } from 'ui'
-import { I18nContainer } from 'state'
+import { I18nContainer, AppContainer } from 'state'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
 
@@ -47,8 +47,8 @@ class Settings extends PureComponent {
     const { navigation, ...rest } = this.props
 
     return (
-      <Subscribe to={[I18nContainer]}>
-        {({ state, changeLanguage, changeLoginState }) => (
+      <Subscribe to={[I18nContainer, AppContainer]}>
+        {({ state, changeLanguage }, { changeLoginState }) => (
           <SectionList
             contentContainerStyle={style.container}
             stickySectionHeadersEnabled={false}

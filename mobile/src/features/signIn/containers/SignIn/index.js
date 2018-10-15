@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import { StatusBar } from 'react-native'
+import { Subscribe } from 'unstated'
 import { withNamespaces } from 'react-i18next'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
-import { AppStateConsumer } from 'AppState'
+import { AppContainer } from 'state'
 import Facebook from '../../components/Facebook'
 import { Base, Inner, Content, Video, Icon, Description, Headline, Legal } from './styles'
 
@@ -11,7 +12,7 @@ const SignIn = ({ t }) => (
   <Fragment>
     <StatusBar barStyle="light-content" />
 
-    <AppStateConsumer>
+    <Subscribe to={[AppContainer]}>
       {({ changeLoginState }) => (
         <Base>
           <Video source={video} muted resizeMode="cover" repeat paused={__DEV__} />
@@ -31,7 +32,7 @@ const SignIn = ({ t }) => (
           </Inner>
         </Base>
       )}
-    </AppStateConsumer>
+    </Subscribe>
   </Fragment>
 )
 

@@ -26,7 +26,7 @@ export default class AppContainer extends Container {
     })
   }
 
-  handleLoginState = loggedIn => {
+  changeLoginState = loggedIn => {
     if (!loggedIn) {
       this.state.client.resetStore()
     }

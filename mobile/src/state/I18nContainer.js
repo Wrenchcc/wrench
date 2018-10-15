@@ -1,11 +1,11 @@
 import { Container } from 'unstated'
-import { i18n } from 'react-i18next'
+import i18next from 'i18next'
 import { setLocale, languages } from 'i18n'
 import { track, events, logError } from 'utils/analytics'
 
 export default class I18nContainer extends Container {
   state = {
-    currentLanguage: 'en',
+    currentLanguage: i18next.language,
     supportedLanguages: languages,
   }
 
@@ -16,7 +16,8 @@ export default class I18nContainer extends Container {
       logError(err)
     }
 
-    i18n.changeLanguage(language)
+    i18next.changeLanguage(language)
+    this.setState({ currentLanguage: language })
     track(events.USER_CHANGED_LANGUAGE, { language })
   }
 }
