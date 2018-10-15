@@ -14,25 +14,12 @@ import { Base, Placeholder } from './styles'
 class AddMedia extends Component {
   static propTypes = {
     projects: PropTypes.array.isRequired,
-    selectedProject: PropTypes.object,
+    postData: PropTypes.object,
     updateAddPost: PropTypes.func.isRequired,
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      dropdownOpen: false,
-    }
-  }
-
-  toggleDropdown = () => {
-    this.setState(prevState => ({ dropdownOpen: !prevState.dropdownOpen }))
   }
 
   changeProject = selectedProject => {
     this.props.updateAddPost({ selectedProject })
-    // this.toggleDropdown()
   }
 
   addSelectedFiles = (selectedFiles, selectedIndex) => {
@@ -59,9 +46,8 @@ class AddMedia extends Component {
   }
 
   render() {
-    const { projects, selectedProject, postData } = this.props
-    const { selectedFiles, selectedIndex } = postData
-    const { dropdownOpen } = this.state
+    const { projects, postData } = this.props
+    const { selectedFiles, selectedIndex, selectedProject, dropdownOpen } = postData
 
     const editImage = selectedFiles[selectedIndex]
 
@@ -82,7 +68,6 @@ class AddMedia extends Component {
           selectedProject={selectedProject}
           toggleDropdown={this.toggleDropdown}
           dropdownOpen={dropdownOpen}
-          selectedFiles={selectedFiles}
         />
 
         <Placeholder>{component}</Placeholder>
