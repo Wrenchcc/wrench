@@ -1,25 +1,48 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { View } from 'react-native'
+import { InteractionManager, View } from 'react-native'
 import { compose } from 'react-apollo'
 import { translate } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
+import { track, events } from 'utils/analytics'
+import { upload } from 'utils/storage/s3'
+import { updatePostData } from 'graphql/mutations/post/updatePostData'
 import { getPostData } from 'graphql/queries/post/getPostData'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input } from 'ui'
 
-// TODO: Add caption, re-add project selection, post on addPost
 class AddPost extends Component {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
     postData: PropTypes.object.isRequired,
+    updatePostData: PropTypes.func.isRequired,
+  }
+
+  onChangeCaption = caption => {
+    this.props.updatePostData({ caption })
   }
 
   addPost = () => {
-    // this.props.addPost()
+    const { selectedFiles, selectedProject, caption } = this.props.postData
     navigateToFeed()
+
+    InteractionManager.runAfterInteractions(async () => {
+      try {
+        const uploadedFiles = await upload(selectedFiles)
+
+        await this.props.addPost({
+          caption,
+          projectId: selectedProject.id,
+          files: uploadedFiles,
+        })
+        track(events.POST_CREATED)
+      } catch {
+        // TODO: Show error banner
+        track(events.POST_CREATED_FAILED)
+      }
+    })
   }
 
   render() {
@@ -31,7 +54,12 @@ class AddPost extends Component {
         <View style={{ paddingLeft: 20, paddingRight: 20 }}>
           <SelectedFiles selectedFiles={null} />
 
-          <Input placeholder={t('AddPost:placeholder')} autoFocus />
+          <Input
+            placeholder={t('AddPost:placeholder')}
+            autoFocus
+            onChangeText={this.onChangeCaption}
+            value={postData.caption}
+          />
         </View>
       </Fragment>
     )
@@ -40,6 +68,7 @@ class AddPost extends Component {
 
 export default compose(
   addPost,
+  updatePostData,
   getPostData,
   translate('AddPost')
 )(AddPost)
