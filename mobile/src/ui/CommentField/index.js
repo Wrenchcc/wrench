@@ -102,6 +102,7 @@ class CommentField extends PureComponent {
           onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
           onChangeText={this.onChangeText}
           value={this.props.value}
+          color="dark"
           {...props}
         />
         {!disabled && (

@@ -22,7 +22,7 @@ const AddMedia = () => (
       return (
         <Base>
           <AddPostHeader
-            canGoToCaption={!!selectedImage}
+            showNavigateToPost={!!selectedImage}
             changeProject={changeProject}
             selectedProjectIndex={state.selectedProjectIndex}
             toggleSelectProject={toggleSelectProject}

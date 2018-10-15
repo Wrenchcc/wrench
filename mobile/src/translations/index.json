@@ -53,9 +53,7 @@
       }
     },
     "AddPostHeader": {
-      "next": "Next"
-    },
-    "AddCaptionHeader": {
+      "next": "Next",
       "share": "Share"
     },
     "AskForPermission": {
@@ -252,9 +250,7 @@
       }
     },
     "AddPostHeader": {
-      "next": "Nästa"
-    },
-    "AddCaptionHeader": {
+      "next": "Nästa",
       "share": "Dela"
     },
     "AskForPermission": {

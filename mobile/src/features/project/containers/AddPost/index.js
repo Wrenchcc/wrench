@@ -51,6 +51,7 @@ class AddPost extends Component {
               selectedProjectIndex={state.selectedProjectIndex}
               toggleSelectProject={toggleSelectProject}
               selectProjectOpen={state.selectProjectOpen}
+              showNavigateToFeed
             />
             <View style={{ paddingLeft: 20, paddingRight: 20 }}>
               <SelectedFiles selectedFiles={state.selectedFiles} />
@@ -60,6 +61,7 @@ class AddPost extends Component {
                 autoFocus
                 onChangeText={updateCaption}
                 value={state.caption}
+                color="dark"
               />
             </View>
           </Fragment>

@@ -1,5 +1,6 @@
 export { default as add } from './add.png'
 export { default as arrowDown } from './arrowDown.png'
+export { default as arrowDownGrey } from './arrowDownGrey.png'
 export { default as arrowLeft } from './arrowLeft.png'
 export { default as arrowLeftSmall } from './arrowLeftSmall.png'
 export { default as arrowLeftWhite } from './arrowLeftWhite.png'
