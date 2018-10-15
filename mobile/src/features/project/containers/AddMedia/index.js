@@ -12,10 +12,19 @@ import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
 class AddMedia extends Component {
+  state = {
+    dropdownOpen: false,
+    selectedIndex: null,
+  }
+
   static propTypes = {
     projects: PropTypes.array.isRequired,
     postData: PropTypes.object,
     updateAddPost: PropTypes.func.isRequired,
+  }
+
+  toggleDropdown = () => {
+    this.setState(prevState => ({ dropdownOpen: !prevState.dropdownOpen }))
   }
 
   changeProject = selectedProject => {
@@ -23,11 +32,13 @@ class AddMedia extends Component {
   }
 
   addSelectedFiles = (selectedFiles, selectedIndex) => {
-    this.props.updateAddPost({ selectedFiles, selectedIndex })
+    this.setState({ selectedIndex })
+    this.props.updateAddPost({ selectedFiles })
   }
 
   onCropping = crop => {
-    const { selectedFiles, selectedIndex } = this.props.postData
+    const { selectedIndex } = this.state
+    const { selectedFiles } = this.props.postData
 
     selectedFiles[selectedIndex] = {
       ...selectedFiles[selectedIndex],
@@ -39,15 +50,16 @@ class AddMedia extends Component {
 
   onTakePicture = async file => {
     const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
+    this.setState({ selectedIndex: 0 })
     this.props.updateAddPost({
       selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
-      selectedIndex: 0,
     })
   }
 
   render() {
+    const { dropdownOpen, selectedIndex } = this.state
     const { projects, postData } = this.props
-    const { selectedFiles, selectedIndex, selectedProject, dropdownOpen } = postData
+    const { selectedFiles, selectedProject } = postData
 
     const editImage = selectedFiles[selectedIndex]
 

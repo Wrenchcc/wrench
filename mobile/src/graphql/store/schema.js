@@ -4,10 +4,19 @@ export default `
     image: String!
   }
 
-  type PostData {
+  type Image {
+    uri: String!
+  }
+
+  type SelectedProject {
     id: ID!
-    images: null,
-    title: String,
-    followers: null,
+    images: [Image]!,
+    title: String!,
+    followers: Int,
+  }
+
+  type PostData {
+    caption: String
+    selectedProject: SelectedProject
   }
 `
