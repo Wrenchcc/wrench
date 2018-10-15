@@ -3,8 +3,18 @@ import { updatePostProgress, updatePostData } from './resolvers/post'
 import schema from './schema'
 
 const defaults = {
-  postProgress: null,
-  postData: null,
+  postProgress: {
+    title: null,
+    image: null,
+    __typename: 'PostProgress',
+  },
+  postData: {
+    caption: null,
+    selectedProject: null,
+    selectedIndex: null,
+    dropdownOpen: false,
+    __typename: 'PostData',
+  },
 }
 
 export default cache => withClientState({

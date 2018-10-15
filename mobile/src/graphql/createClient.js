@@ -5,8 +5,7 @@ import { track, events } from 'utils/analytics'
 import HttpLink from './links/Http'
 import AuthLink from './links/Auth'
 import RefreshLink from './links/Refresh'
-import store from './store/createStore'
-
+import createStore from './store/createStore'
 import { removeTokens } from './utils/auth'
 
 export let client = null
@@ -15,7 +14,7 @@ export default () => {
   if (client) return client
 
   const cache = new InMemoryCache()
-  const StateLink = store(cache)
+  const StateLink = createStore(cache)
 
   client = new ApolloClient({
     cache,

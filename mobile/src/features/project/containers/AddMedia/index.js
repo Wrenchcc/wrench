@@ -12,58 +12,44 @@ import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
 class AddMedia extends Component {
-  state = {
-    dropdownOpen: false,
-    selectedIndex: null,
-  }
-
   static propTypes = {
     projects: PropTypes.array.isRequired,
     postData: PropTypes.object,
-    updateAddPost: PropTypes.func.isRequired,
+    updatePostData: PropTypes.func.isRequired,
   }
 
-  toggleDropdown = () => {
-    this.setState(prevState => ({ dropdownOpen: !prevState.dropdownOpen }))
-  }
+  toggleDropdown = () => {}
 
   changeProject = selectedProject => {
-    this.props.updateAddPost({ selectedProject })
+    this.props.updatePostData({ selectedProject })
   }
 
   addSelectedFiles = (selectedFiles, selectedIndex) => {
-    this.props.updateAddPost({ selectedFiles }).then(() => {
-      this.setState({ selectedIndex })
-    })
+    this.props.updatePostData({ selectedFiles, selectedIndex })
   }
 
   onCropping = crop => {
-    const { selectedIndex } = this.state
-    const { selectedFiles } = this.props.postData
+    const { selectedFiles, selectedIndex } = this.props.postData
 
     selectedFiles[selectedIndex] = {
       ...selectedFiles[selectedIndex],
       crop,
     }
 
-    this.props.updateAddPost({ selectedFiles })
+    this.props.updatePostData({ selectedFiles, selectedIndex: 0 })
   }
 
   onTakePicture = async file => {
     const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
-    this.props
-      .updateAddPost({
-        selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
-      })
-      .then(() => {
-        this.setState({ selectedIndex: 0 })
-      })
+    this.props.updatePostData({
+      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
+      selectedIndex: 0,
+    })
   }
 
   render() {
-    const { dropdownOpen, selectedIndex } = this.state
     const { projects, postData } = this.props
-    const { selectedFiles, selectedProject } = postData
+    const { selectedFiles, selectedProject, selectedIndex, dropdownOpen } = postData
 
     const editImage = selectedFiles[selectedIndex]
 

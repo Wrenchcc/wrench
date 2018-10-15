@@ -4,19 +4,30 @@ export default `
     image: String!
   }
 
+  type Offset {
+    x: Int!
+    y: Int!
+  }
+
   type Image {
     uri: String!
+    width: Int!
+    height: Int!
+    offset: Offset
   }
 
   type SelectedProject {
     id: ID!
-    images: [Image]!,
+    image: String!,
     title: String!,
-    followers: Int,
+    followers: Int!,
   }
 
   type PostData {
     caption: String
     selectedProject: SelectedProject
+    selectedIndex: Int
+    selectedFiles: [Image]!
+    dropdownOpen: bool!
   }
 `
