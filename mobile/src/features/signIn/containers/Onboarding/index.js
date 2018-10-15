@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, FlatList } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
@@ -109,4 +109,4 @@ class Onboarding extends Component {
 export default compose(
   getProjectCategories,
   editUser
-)(translate('Onboarding')(Onboarding))
+)(withNamespaces('Onboarding')(Onboarding))

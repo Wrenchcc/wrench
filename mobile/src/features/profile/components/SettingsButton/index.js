@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import Text from 'ui/Text'
 import { navigateToSettings } from 'navigation'
 
@@ -9,4 +9,4 @@ const SettingsButton = ({ t }) => (
   </Text>
 )
 
-export default translate('SettingsButton')(SettingsButton)
+export default withNamespaces('SettingsButton')(SettingsButton)

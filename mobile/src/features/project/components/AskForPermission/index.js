@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Alert } from 'react-native'
 import Permissions from 'react-native-permissions'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
@@ -53,4 +53,4 @@ AskForPermission.propTypes = {
   onSuccess: PropTypes.func.isRequired,
 }
 
-export default translate('AskForPermission')(AskForPermission)
+export default withNamespaces('AskForPermission')(AskForPermission)

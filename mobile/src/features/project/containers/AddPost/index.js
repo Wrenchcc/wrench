@@ -4,7 +4,7 @@ import { InteractionManager, View } from 'react-native'
 import { Subscribe } from 'unstated'
 import { AddPostContainer } from 'state'
 import { compose } from 'react-apollo'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
@@ -74,5 +74,5 @@ class AddPost extends Component {
 
 export default compose(
   addPost,
-  translate('AddPost')
+  withNamespaces('AddPost')
 )(AddPost)

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, Keyboard } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
 import { FONTS } from 'ui/constants'
@@ -104,4 +104,4 @@ class Search extends PureComponent {
   }
 }
 
-export default translate('SearchTab')(Search)
+export default withNamespaces('SearchTab')(Search)

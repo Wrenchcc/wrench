@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
@@ -40,5 +40,5 @@ class Facebook extends PureComponent {
 
 export default compose(
   authenticateUser,
-  translate('Facebook')
+  withNamespaces('Facebook')
 )(Facebook)

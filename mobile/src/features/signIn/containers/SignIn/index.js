@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { StatusBar } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import { AppStateConsumer } from 'AppState'
@@ -35,4 +35,4 @@ const SignIn = ({ t }) => (
   </Fragment>
 )
 
-export default translate('SignIn')(SignIn)
+export default withNamespaces('SignIn')(SignIn)

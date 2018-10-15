@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
 import Project from './Project'
@@ -78,4 +78,4 @@ class SelectProject extends Component {
   }
 }
 
-export default translate('SelectProject')(SelectProject)
+export default withNamespaces('SelectProject')(SelectProject)

@@ -56,7 +56,7 @@
     "react-native-swiper": "^1.5.13",
     "react-native-tab-view": "^1.2.0",
     "react-native-video": "3.2.1",
-    "react-navigation": "^3.0.0-alpha.4",
+    "react-navigation": "3.0.0-alpha.4",
     "styled-components": "v3.4.10",
     "unstated": "^2.1.1",
     "url": "^0.11.0"

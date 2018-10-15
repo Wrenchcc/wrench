@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Base, Headline, Description } from './styles'
 
 const Content = ({ t }) => (
@@ -13,4 +13,4 @@ const Content = ({ t }) => (
   </Base>
 )
 
-export default translate('OnboardingContent')(Content)
+export default withNamespaces('OnboardingContent')(Content)

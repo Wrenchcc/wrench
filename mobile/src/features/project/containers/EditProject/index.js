@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Base, Header, Content, AddButton, Title, SubTitle, Input } from './styles'
 
 // TODO: Implement add project if data edit || new
@@ -20,4 +20,4 @@ const EditProject = ({ t }) => (
   </Base>
 )
 
-export default translate('EditProject')(EditProject)
+export default withNamespaces('EditProject')(EditProject)
