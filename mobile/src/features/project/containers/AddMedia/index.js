@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll } from 'react-native'
 import { compose } from 'react-apollo'
-import { pathOr } from 'ramda'
+import { updatePostData } from 'graphql/mutations/post/updatePostData'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import { getPostData } from 'graphql/queries/post/getPostData'
 import Camera from 'features/project/components/Camera'
 import AddMediaHeader from 'features/project/components/AddMediaHeader'
 import ImageEditor from 'features/project/components/ImageEditor'
 import MediaPicker from 'features/project/components/MediaPicker'
-
 import { Base, Placeholder } from './styles'
 
 class AddMedia extends Component {
   static propTypes = {
     projects: PropTypes.array.isRequired,
+    selectedProject: PropTypes.object,
+    updateAddPost: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -21,9 +23,6 @@ class AddMedia extends Component {
 
     this.state = {
       dropdownOpen: false,
-      selectedFiles: [],
-      selectedIndex: null,
-      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
     }
   }
 
@@ -32,35 +31,37 @@ class AddMedia extends Component {
   }
 
   changeProject = selectedProject => {
-    this.toggleDropdown()
-    this.setState({ selectedProject })
+    this.props.updateAddPost({ selectedProject })
+    // this.toggleDropdown()
   }
 
   addSelectedFiles = (selectedFiles, selectedIndex) => {
-    this.setState({ selectedFiles, selectedIndex })
+    this.props.updateAddPost({ selectedFiles, selectedIndex })
   }
 
   onCropping = crop => {
-    this.setState(({ selectedFiles, selectedIndex }) => {
-      selectedFiles[selectedIndex] = {
-        ...selectedFiles[selectedIndex],
-        crop,
-      }
-      return { selectedFiles }
-    })
+    const { selectedFiles, selectedIndex } = this.props.postData
+
+    selectedFiles[selectedIndex] = {
+      ...selectedFiles[selectedIndex],
+      crop,
+    }
+
+    this.props.updateAddPost({ selectedFiles })
   }
 
   onTakePicture = async file => {
     const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
-    this.setState({
+    this.props.updateAddPost({
       selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
       selectedIndex: 0,
     })
   }
 
   render() {
-    const { projects } = this.props
-    const { dropdownOpen, selectedFiles, selectedIndex, selectedProject } = this.state
+    const { projects, selectedProject, postData } = this.props
+    const { selectedFiles, selectedIndex } = postData
+    const { dropdownOpen } = this.state
 
     const editImage = selectedFiles[selectedIndex]
 
@@ -96,4 +97,8 @@ class AddMedia extends Component {
   }
 }
 
-export default compose(getCurrentUserProjects)(AddMedia)
+export default compose(
+  updatePostData,
+  getPostData,
+  getCurrentUserProjects
+)(AddMedia)

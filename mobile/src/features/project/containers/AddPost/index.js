@@ -9,29 +9,20 @@ import { Input } from 'ui'
 
 // TODO: Add caption, re-add project selection, post on addPost
 class AddPost extends Component {
-  static propTypes = {
-    navigation: PropTypes.object.isRequired,
-  }
+  static propTypes = {}
 
   addPost = () => {
     navigateToFeed()
   }
 
-  renderItem = () => <View />
-
   render() {
-    const { t, navigation } = this.props
-    const { selectedProject, selectedFiles } = navigation.state.params
+    const { t } = this.props
 
     return (
       <Fragment>
-        <AddPostHeader
-          canGoToCaption={false}
-          selectedProject={selectedProject}
-          addPost={this.addPost}
-        />
+        <AddPostHeader canGoToCaption={false} selectedProject={null} addPost={this.addPost} />
         <View style={{ paddingLeft: 20, paddingRight: 20 }}>
-          <SelectedFiles selectedFiles={selectedFiles} />
+          <SelectedFiles selectedFiles={null} />
 
           <Input placeholder={t('AddPost:placeholder')} autoFocus />
         </View>
