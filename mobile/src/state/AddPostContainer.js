@@ -14,12 +14,17 @@ export default class AddPostContainer extends Container {
     this.setState(prevState => ({ selectProjectOpen: !prevState.selectProjectOpen }))
   }
 
+  closeSelectProject = () => {
+    this.setState({ selectProjectOpen: false })
+  }
+
   updateCaption = caption => {
     this.setState({ caption })
   }
 
   changeProject = selectedProjectIndex => {
-    this.setState({ selectedProjectIndex, selectProjectOpen: false })
+    this.closeSelectProject()
+    this.setState({ selectedProjectIndex })
   }
 
   addSelectedFiles = (selectedFiles, selectedIndex) => {

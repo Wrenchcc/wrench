@@ -7,11 +7,12 @@ import { navigateBack, navigateToAddPost, navigateToFeed } from 'navigation'
 import { Header, Dropdown, Icon, Text } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeft } from 'images'
-import { Top } from './styles'
+import { Backdrop, Top } from './styles'
 
 class AddPostHeader extends PureComponent {
   static propTypes = {
     changeProject: PropTypes.func.isRequired,
+    closeSelectProject: PropTypes.func.isRequired,
     projects: PropTypes.array.isRequired,
     selectedProjectIndex: PropTypes.number.isRequired,
     selectProjectOpen: PropTypes.bool.isRequired,
@@ -50,6 +51,7 @@ class AddPostHeader extends PureComponent {
   render() {
     const {
       changeProject,
+      closeSelectProject,
       projects,
       selectedProjectIndex,
       selectProjectOpen,
@@ -79,6 +81,7 @@ class AddPostHeader extends PureComponent {
             }
           />
         </Top>
+        <Backdrop activeOpacity={1} onPress={closeSelectProject} active={selectProjectOpen} />
       </Fragment>
     )
   }

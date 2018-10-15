@@ -44,24 +44,25 @@ class AddPost extends Component {
 
     return (
       <Subscribe to={[AddPostContainer]}>
-        {({ state, updateCaption, toggleSelectProject, changeProject }) => (
+        {({ state, updateCaption, toggleSelectProject, changeProject, closeSelectProject }) => (
           <Fragment>
             <AddPostHeader
               changeProject={changeProject}
+              closeSelectProject={closeSelectProject}
               selectedProjectIndex={state.selectedProjectIndex}
-              toggleSelectProject={toggleSelectProject}
               selectProjectOpen={state.selectProjectOpen}
               showNavigateToFeed
+              toggleSelectProject={toggleSelectProject}
             />
             <View style={{ paddingLeft: 20, paddingRight: 20 }}>
               <SelectedFiles selectedFiles={state.selectedFiles} />
 
               <Input
-                placeholder={t('AddPost:placeholder')}
                 autoFocus
-                onChangeText={updateCaption}
-                value={state.caption}
                 color="dark"
+                onChangeText={updateCaption}
+                placeholder={t('AddPost:placeholder')}
+                value={state.caption}
               />
             </View>
           </Fragment>

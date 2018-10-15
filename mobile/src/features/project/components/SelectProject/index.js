@@ -25,13 +25,17 @@ class SelectProject extends Component {
     }
   }
 
-  getHeight = () => Object.keys(this.props.projects).length * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
+  get getHeight() {
+    const itemCount = Object.keys(this.props.projects).length
+    const itemsHeight = itemCount >= 4 ? 4 : itemCount
+    return itemsHeight * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
+  }
 
   isSelected = project => project.id === this.props.selected.id
 
   toggleAnimation = expanded => {
     Animated.spring(this.state.height, {
-      toValue: expanded ? this.getHeight() : 0,
+      toValue: expanded ? this.getHeight : 0,
       bounciness: 0,
       speed: 7,
     }).start()

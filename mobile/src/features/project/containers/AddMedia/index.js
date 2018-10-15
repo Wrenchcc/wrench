@@ -10,23 +10,25 @@ import { Base, Placeholder } from './styles'
 const AddMedia = () => (
   <Subscribe to={[AddPostContainer]}>
     {({
+      addSelectedFiles,
+      changeProject,
+      closeSelectProject,
+      onCropping,
+      onTakePicture,
       state,
       toggleSelectProject,
-      changeProject,
-      addSelectedFiles,
-      onTakePicture,
-      onCropping,
     }) => {
       const selectedImage = state.selectedFiles[state.selectedIndex]
 
       return (
         <Base>
           <AddPostHeader
-            showNavigateToPost={!!selectedImage}
             changeProject={changeProject}
+            closeSelectProject={closeSelectProject}
             selectedProjectIndex={state.selectedProjectIndex}
-            toggleSelectProject={toggleSelectProject}
             selectProjectOpen={state.selectProjectOpen}
+            showNavigateToPost={!!selectedImage}
+            toggleSelectProject={toggleSelectProject}
           />
 
           <Placeholder>
@@ -38,9 +40,9 @@ const AddMedia = () => (
           </Placeholder>
 
           <MediaPicker
+            onSelect={addSelectedFiles}
             selectedFiles={state.selectedFiles}
             selectedIndex={state.selectedIndex}
-            onSelect={addSelectedFiles}
           />
         </Base>
       )
