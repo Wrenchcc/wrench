@@ -32,8 +32,9 @@ class AddMedia extends Component {
   }
 
   addSelectedFiles = (selectedFiles, selectedIndex) => {
-    this.setState({ selectedIndex })
-    this.props.updateAddPost({ selectedFiles })
+    this.props.updateAddPost({ selectedFiles }).then(() => {
+      this.setState({ selectedIndex })
+    })
   }
 
   onCropping = crop => {
@@ -50,10 +51,13 @@ class AddMedia extends Component {
 
   onTakePicture = async file => {
     const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
-    this.setState({ selectedIndex: 0 })
-    this.props.updateAddPost({
-      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
-    })
+    this.props
+      .updateAddPost({
+        selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
+      })
+      .then(() => {
+        this.setState({ selectedIndex: 0 })
+      })
   }
 
   render() {
