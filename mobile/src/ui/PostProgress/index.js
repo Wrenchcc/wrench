@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { translate } from 'react-i18next'
-import { PostContainer, withSubscribe } from 'state'
+import { PostContainer, withState } from 'state'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Cover, Content } from './styles'
 
@@ -58,6 +58,6 @@ class PostProgress extends PureComponent {
 
 // TODO: HoC for Subscribe
 export default compose(
-  withSubscribe(PostContainer),
+  withState(PostContainer),
   translate('PostProgress')
 )(PostProgress)
