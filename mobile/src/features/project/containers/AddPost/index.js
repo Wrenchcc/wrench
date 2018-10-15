@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { InteractionManager, View } from 'react-native'
+import { Subscribe } from 'unstated'
+import { AddPostContainer } from 'state'
 import { compose } from 'react-apollo'
 import { translate } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
@@ -14,10 +16,6 @@ import { Input } from 'ui'
 class AddPost extends Component {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
-  }
-
-  onChangeCaption = caption => {
-    // this.props.updatePostData({ caption })
   }
 
   addPost = () => {
@@ -42,22 +40,31 @@ class AddPost extends Component {
   }
 
   render() {
-    const { t, caption } = this.props
+    const { t } = this.props
 
     return (
-      <Fragment>
-        <AddPostHeader canGoToCaption={false} selectedProject={null} addPost={this.addPost} />
-        <View style={{ paddingLeft: 20, paddingRight: 20 }}>
-          <SelectedFiles selectedFiles={null} />
+      <Subscribe to={[AddPostContainer]}>
+        {({ state, updateCaption, toggleSelectProject, changeProject }) => (
+          <Fragment>
+            <AddPostHeader
+              changeProject={changeProject}
+              selectedProjectIndex={state.selectedProjectIndex}
+              toggleSelectProject={toggleSelectProject}
+              selectProjectOpen={state.selectProjectOpen}
+            />
+            <View style={{ paddingLeft: 20, paddingRight: 20 }}>
+              <SelectedFiles selectedFiles={state.selectedFiles} />
 
-          <Input
-            placeholder={t('AddPost:placeholder')}
-            autoFocus
-            onChangeText={this.onChangeCaption}
-            value={caption}
-          />
-        </View>
-      </Fragment>
+              <Input
+                placeholder={t('AddPost:placeholder')}
+                autoFocus
+                onChangeText={updateCaption}
+                value={state.caption}
+              />
+            </View>
+          </Fragment>
+        )}
+      </Subscribe>
     )
   }
 }

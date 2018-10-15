@@ -1,36 +1,86 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { View } from 'react-native'
 import { translate } from 'react-i18next'
-import { navigateBack } from 'navigation'
-import { Header, Icon, Text } from 'ui'
-import { arrowLeft } from 'images'
+import { compose } from 'react-apollo'
+import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import { navigateBack, navigateToAddPost, navigateToFeed } from 'navigation'
+import { Header, Dropdown, Icon, Text } from 'ui'
+import SelectProject from 'features/project/components/SelectProject'
+import { close } from 'images'
 
-class AddCaptionHeader extends PureComponent {
+class AddPostHeader extends PureComponent {
   static propTypes = {
-    addPost: PropTypes.func.isRequired,
-    selectedProject: PropTypes.object.isRequired,
+    canGoToCaption: PropTypes.bool,
+    changeProject: PropTypes.func.isRequired,
+    selectProjectOpen: PropTypes.bool.isRequired,
+    projects: PropTypes.array.isRequired,
+    selectedProjectIndex: PropTypes.object.isRequired,
+    toggleSelectProject: PropTypes.func.isRequired,
   }
 
   renderHeaderRight() {
-    const { t, addPost } = this.props
-    return (
-      <Text color="dark" medium onPress={addPost}>
-        {t('AddCaptionHeader:share')}
-      </Text>
-    )
+    const { t, canGoToCaption } = this.props
+    if (canGoToCaption) {
+      return (
+        <Text color="white" medium onPress={() => navigateToAddPost()}>
+          {t('AddPostHeader:next')}
+        </Text>
+      )
+    }
+
+    // if (canPost) {
+    //   return (
+    //     <Text color="white" medium onPress={() => navigateToFeed()}>
+    //       {t('AddPostHeader:share')}
+    //     </Text>
+    //   )
+    // }
+
+    return null
   }
 
   render() {
-    const { selectedProject } = this.props
+    const {
+      changeProject,
+      projects,
+      selectedProjectIndex,
+      selectProjectOpen,
+      toggleSelectProject,
+    } = this.props
 
     return (
-      <Header
-        headerLeft={<Icon onPress={() => navigateBack()} source={arrowLeft} />}
-        headerRight={this.renderHeaderRight()}
-        headerCenter={<Text medium>{selectedProject.title}</Text>}
-      />
+      <Fragment>
+        <SelectProject
+          expanded={selectProjectOpen}
+          onPress={changeProject}
+          projects={projects}
+          selected={projects[selectedProjectIndex]}
+        />
+        <View
+          style={{
+            position: 'relative',
+            zIndex: 20,
+          }}
+        >
+          <Header
+            headerLeft={<Icon onPress={() => navigateBack()} source={close} />}
+            headerRight={this.renderHeaderRight()}
+            headerCenter={
+              <Dropdown
+                title={projects[selectedProjectIndex].node.title}
+                onPress={toggleSelectProject}
+                active={selectProjectOpen}
+              />
+            }
+          />
+        </View>
+      </Fragment>
     )
   }
 }
 
-export default translate('AddCaptionHeader')(AddCaptionHeader)
+export default compose(
+  getCurrentUserProjects,
+  translate('AddPostHeader')
+)(AddPostHeader)

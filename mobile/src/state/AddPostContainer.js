@@ -1,18 +1,25 @@
 import { Container } from 'unstated'
 import { CameraRoll } from 'react-native'
 
-export default class PostContainer extends Container {
+export default class AddPostContainer extends Container {
   state = {
     selectedFiles: [],
     selectedIndex: 0,
-    selectedProject: null,
-    dropdownOpen: false,
+    selectedProjectIndex: 0,
+    selectProjectOpen: false,
+    caption: null,
   }
 
-  toggleDropdown = () => {}
+  toggleSelectProject = () => {
+    this.setState(prevState => ({ selectProjectOpen: !prevState.selectProjectOpen }))
+  }
 
-  changeProject = selectedProject => {
-    this.setState({ selectedProject })
+  updateCaption = caption => {
+    this.setState({ caption })
+  }
+
+  changeProject = selectedProjectIndex => {
+    this.setState({ selectedProjectIndex, selectProjectOpen: false })
   }
 
   addSelectedFiles = (selectedFiles, selectedIndex) => {

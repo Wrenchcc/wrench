@@ -1,34 +1,37 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Subscribe } from 'unstated'
-import { compose } from 'react-apollo'
-import { PostContainer } from 'state'
-import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import { AddPostContainer } from 'state'
 import Camera from 'features/project/components/Camera'
-import AddMediaHeader from 'features/project/components/AddMediaHeader'
+import AddPostHeader from 'features/project/components/AddPostHeader'
 import ImageEditor from 'features/project/components/ImageEditor'
 import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
-const AddMedia = ({ projects }) => (
-  <Subscribe to={[PostContainer]}>
-    {({ state, toggleDropdown, changeProject, addSelectedFiles, onTakePicture, onCropping }) => {
-      const editImage = state.selectedFiles[state.selectedIndex]
+const AddMedia = () => (
+  <Subscribe to={[AddPostContainer]}>
+    {({
+      state,
+      toggleSelectProject,
+      changeProject,
+      addSelectedFiles,
+      onTakePicture,
+      onCropping,
+    }) => {
+      const selectedImage = state.selectedFiles[state.selectedIndex]
 
       return (
         <Base>
-          <AddMediaHeader
-            canGoToCaption={!!editImage}
+          <AddPostHeader
+            canGoToCaption={!!selectedImage}
             changeProject={changeProject}
-            projects={projects}
-            selectedProject={state.selectedProject || projects[0]}
-            toggleDropdown={toggleDropdown}
-            dropdownOpen={state.dropdownOpen}
+            selectedProjectIndex={state.selectedProjectIndex}
+            toggleSelectProject={toggleSelectProject}
+            selectProjectOpen={state.selectProjectOpen}
           />
 
           <Placeholder>
-            {editImage ? (
-              <ImageEditor image={editImage} onCropping={onCropping} />
+            {selectedImage ? (
+              <ImageEditor image={selectedImage} onCropping={onCropping} />
             ) : (
               <Camera onTakePicture={onTakePicture} />
             )}
@@ -45,8 +48,4 @@ const AddMedia = ({ projects }) => (
   </Subscribe>
 )
 
-AddMedia.propTypes = {
-  projects: PropTypes.array.isRequired,
-}
-
-export default compose(getCurrentUserProjects)(AddMedia)
+export default AddMedia

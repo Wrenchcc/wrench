@@ -40,8 +40,14 @@ class SelectProject extends Component {
   renderProjects = () => {
     const { projects, onPress } = this.props
 
-    return projects.map(({ node }) => (
-      <Project key={node.id} {...node} onPress={onPress} selected={this.isSelected(node)} />
+    return projects.map(({ node }, index) => (
+      <Project
+        key={node.id}
+        {...node}
+        onPress={onPress}
+        selected={this.isSelected(node)}
+        index={index}
+      />
     ))
   }
 
@@ -53,7 +59,7 @@ class SelectProject extends Component {
           position: 'absolute',
           overflow: 'hidden',
           width: '100%',
-          zIndex: 99,
+          zIndex: 10,
           height: this.state.height,
         }}
       >
