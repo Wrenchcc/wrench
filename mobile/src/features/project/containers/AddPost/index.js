@@ -7,8 +7,6 @@ import { navigateToFeed } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
 import { upload } from 'utils/storage/s3'
-import { updatePostData } from 'graphql/mutations/post/updatePostData'
-import { getPostData } from 'graphql/queries/post/getPostData'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input } from 'ui'
@@ -16,16 +14,14 @@ import { Input } from 'ui'
 class AddPost extends Component {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
-    postData: PropTypes.object.isRequired,
-    updatePostData: PropTypes.func.isRequired,
   }
 
   onChangeCaption = caption => {
-    this.props.updatePostData({ caption })
+    // this.props.updatePostData({ caption })
   }
 
   addPost = () => {
-    const { selectedFiles, selectedProject, caption } = this.props.postData
+    const { selectedFiles, selectedProject, caption } = null // this.props.postData
     navigateToFeed()
 
     InteractionManager.runAfterInteractions(async () => {
@@ -46,7 +42,7 @@ class AddPost extends Component {
   }
 
   render() {
-    const { t, postData } = this.props
+    const { t, caption } = this.props
 
     return (
       <Fragment>
@@ -58,7 +54,7 @@ class AddPost extends Component {
             placeholder={t('AddPost:placeholder')}
             autoFocus
             onChangeText={this.onChangeCaption}
-            value={postData.caption}
+            value={caption}
           />
         </View>
       </Fragment>
@@ -68,7 +64,5 @@ class AddPost extends Component {
 
 export default compose(
   addPost,
-  updatePostData,
-  getPostData,
   translate('AddPost')
 )(AddPost)

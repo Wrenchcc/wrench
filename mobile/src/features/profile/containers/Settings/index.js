@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react'
 import { SectionList } from 'react-native'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
+import { Subscribe } from 'unstated'
 import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
 import toggleUserNotificationSettingsMutation from 'graphql/mutations/user/toggleUserNotificationSettings'
 import { Title, SelectionItem } from 'ui'
-import { AppStateConsumer } from 'AppState'
+import { I18nContainer } from 'state'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
 
@@ -46,7 +47,7 @@ class Settings extends PureComponent {
     const { navigation, ...rest } = this.props
 
     return (
-      <AppStateConsumer>
+      <Subscribe to={[I18nContainer]}>
         {props => (
           <SectionList
             contentContainerStyle={style.container}
@@ -58,7 +59,7 @@ class Settings extends PureComponent {
             ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
           />
         )}
-      </AppStateConsumer>
+      </Subscribe>
     )
   }
 }

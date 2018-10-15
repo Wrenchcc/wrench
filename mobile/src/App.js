@@ -1,11 +1,12 @@
 import React from 'react'
+import { Provider, Subscribe } from 'unstated'
 import { ApolloProvider, Query } from 'react-apollo'
 import { path } from 'ramda'
 import { AuthNavigator, AppNavigator } from 'navigation'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
 import { YellowBox } from 'react-native'
-import { AppStateProvider, AppStateConsumer } from './AppState'
+import { AppContainer } from 'state'
 
 if (__DEV__) {
   // TODO: Remove
@@ -16,8 +17,8 @@ if (__DEV__) {
 }
 
 const App = () => (
-  <AppStateProvider>
-    <AppStateConsumer>
+  <Provider>
+    <Subscribe to={[AppContainer]}>
       {({ appLoading, loggedIn, client }) => {
         if (appLoading) return null
 
@@ -38,8 +39,8 @@ const App = () => (
           </ApolloProvider>
         )
       }}
-    </AppStateConsumer>
-  </AppStateProvider>
+    </Subscribe>
+  </Provider>
 )
 
 export default App

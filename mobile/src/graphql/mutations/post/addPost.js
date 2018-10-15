@@ -12,19 +12,12 @@ const addPostMutation = gql`
   ${postInfoFragment}
 `
 
-// TODO: OPTIMIZE local state
+// TODO: Trigger PostProgress done
 const addPostOptions = {
   props: ({ mutate }) => ({
     addPost: input => mutate({
       variables: { input },
       updateQueries: {
-        getPostProgress: () => ({
-          postProgress: {
-            image: null,
-            title: null,
-            __typename: 'PostProgress',
-          },
-        }),
         getFeed: (prev, { mutationResult }) => {
           const edge = {
             cursor: -1,
