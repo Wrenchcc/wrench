@@ -19,7 +19,7 @@ if (__DEV__) {
 const App = () => (
   <Provider>
     <Subscribe to={[AppContainer]}>
-      {({ appLoading, loggedIn, client }) => {
+      {({ state: { appLoading, loggedIn, client } }) => {
         if (appLoading) return null
 
         return (

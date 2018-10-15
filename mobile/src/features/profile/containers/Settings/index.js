@@ -48,13 +48,17 @@ class Settings extends PureComponent {
 
     return (
       <Subscribe to={[I18nContainer]}>
-        {props => (
+        {({ state, changeLanguage, changeLoginState }) => (
           <SectionList
             contentContainerStyle={style.container}
             stickySectionHeadersEnabled={false}
             renderSectionHeader={this.renderSectionHeader}
             renderItem={this.renderItem}
-            sections={sections({ ...props, ...rest })[navigation.state.routeName]}
+            sections={
+              sections({ ...state, changeLanguage, changeLoginState, ...rest })[
+                navigation.state.routeName
+              ]
+            }
             keyExtractor={(item, index) => item + index}
             ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
           />
