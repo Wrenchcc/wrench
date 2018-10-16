@@ -4,12 +4,16 @@ import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { navigateBack, navigateToAddPost, navigateToFeed } from 'navigation'
-import { Header, Dropdown, Icon, Text } from 'ui'
+import { Header, Dropdown, Icon, Text, ActionSheet } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeft } from 'images'
 import { Backdrop, Top } from './styles'
 
 class AddPostHeader extends PureComponent {
+  state = {
+    actionSheetIsOpen: false,
+  }
+
   static propTypes = {
     changeProject: PropTypes.func.isRequired,
     closeSelectProject: PropTypes.func.isRequired,
@@ -17,19 +21,35 @@ class AddPostHeader extends PureComponent {
     selectedProjectIndex: PropTypes.number.isRequired,
     selectProjectOpen: PropTypes.bool.isRequired,
     showNavigateToFeed: PropTypes.bool,
-    showNavigateToPost: PropTypes.bool,
+    hasSelectedFiles: PropTypes.bool,
     toggleSelectProject: PropTypes.func.isRequired,
   }
 
+  toggleActionSheet = () => {
+    this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
+  }
+
+  handleClose = () => {
+    const { hasSelectedFiles } = this.props
+
+    if (hasSelectedFiles) {
+      this.toggleActionSheet()
+    } else {
+      navigateBack()
+    }
+  }
+
   renderHeaderRight() {
-    const { t, showNavigateToPost, showNavigateToFeed } = this.props
-    if (showNavigateToPost) {
+    const { t, hasSelectedFiles, showNavigateToFeed } = this.props
+
+    if (hasSelectedFiles) {
       return (
         <Text color="white" medium onPress={() => navigateToAddPost()}>
           {t('AddPostHeader:next')}
         </Text>
       )
     }
+
     if (showNavigateToFeed) {
       return (
         <Text color="dark" medium onPress={() => navigateToFeed()}>
@@ -37,6 +57,7 @@ class AddPostHeader extends PureComponent {
         </Text>
       )
     }
+
     return null
   }
 
@@ -45,10 +66,11 @@ class AddPostHeader extends PureComponent {
     if (showNavigateToFeed) {
       return <Icon onPress={() => navigateBack()} source={arrowLeft} />
     }
-    return <Icon onPress={() => navigateBack()} source={close} />
+    return <Icon onPress={this.handleClose} source={close} />
   }
 
   render() {
+    const { actionSheetIsOpen } = this.state
     const {
       changeProject,
       closeSelectProject,
@@ -56,6 +78,7 @@ class AddPostHeader extends PureComponent {
       selectedProjectIndex,
       selectProjectOpen,
       showNavigateToFeed,
+      t,
       toggleSelectProject,
     } = this.props
 
@@ -82,6 +105,20 @@ class AddPostHeader extends PureComponent {
           />
         </Top>
         <Backdrop activeOpacity={1} onPress={closeSelectProject} active={selectProjectOpen} />
+
+        <ActionSheet
+          message={t('AddPostHeader:options:message')}
+          isOpen={actionSheetIsOpen}
+          onClose={this.toggleActionSheet}
+          destructiveButtonIndex={0}
+          options={[
+            {
+              name: t('AddPostHeader:options:discard'),
+              onSelect: () => navigateBack(),
+            },
+            { name: t('AddPostHeader:options:cancel') },
+          ]}
+        />
       </Fragment>
     )
   }

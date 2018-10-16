@@ -25,9 +25,9 @@ const AddMedia = () => (
           <AddPostHeader
             changeProject={changeProject}
             closeSelectProject={closeSelectProject}
+            hasSelectedFiles={!!selectedImage}
             selectedProjectIndex={state.selectedProjectIndex}
             selectProjectOpen={state.selectProjectOpen}
-            showNavigateToPost={!!selectedImage}
             toggleSelectProject={toggleSelectProject}
           />
 

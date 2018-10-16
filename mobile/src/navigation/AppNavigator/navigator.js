@@ -89,12 +89,16 @@ const ModalNavigator = createStackNavigator(
   {
     mode: 'modal',
     headerMode: 'screen',
+    navigationOptions: {
+      gesturesEnabled: false, // TODO: See if possible to pass on route
+    },
     cardStyle: {
       backgroundColor: COLORS.WHITE,
     },
   }
 )
 
+// TODO: https://reactnavigation.org/docs/en/stack-navigator.html#gesturesenabled
 const transitionConfig = (transitionProps, prevTransitionProps) => prevTransitionProps
   && prevTransitionProps.index === 1
   && StackViewTransitionConfigs.ModalSlideFromBottomIOS

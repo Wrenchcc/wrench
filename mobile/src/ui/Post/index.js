@@ -9,6 +9,10 @@ import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Base, Top, Title, Content, Caption } from './styled'
 
 class Post extends PureComponent {
+  state = {
+    actionSheetIsOpen: false,
+  }
+
   static propTypes = {
     post: PropTypes.object.isRequired,
     deletePost: PropTypes.func.isRequired,
@@ -16,13 +20,9 @@ class Post extends PureComponent {
     avatar: PropTypes.bool,
   }
 
-  state = {
-    isOpen: false,
-  }
-
   toggleActionSheet = () => {
     if (this.props.post.isAuthor) {
-      this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+      this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
     }
   }
 
@@ -65,7 +65,7 @@ class Post extends PureComponent {
 
     return (
       <ActionSheet
-        isOpen={this.state.isOpen}
+        isOpen={this.state.actionSheetIsOpen}
         onClose={this.toggleActionSheet}
         destructiveButtonIndex={0}
         options={[
