@@ -17,7 +17,8 @@ export default class I18nContainer extends Container {
     }
 
     i18next.changeLanguage(language)
-    this.setState({ currentLanguage: language })
-    track(events.USER_CHANGED_LANGUAGE, { language })
+    this.setState({ currentLanguage: language }, () => {
+      track(events.USER_CHANGED_LANGUAGE, { language })
+    })
   }
 }

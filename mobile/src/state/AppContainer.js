@@ -12,10 +12,10 @@ export default class AppContainer extends Container {
 
   constructor() {
     super()
-    this.initialState()
+    this.loadInitialState()
   }
 
-  initialState = async () => {
+  loadInitialState = async () => {
     const tokens = await getTokens()
 
     SplashScreen.hide()
