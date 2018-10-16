@@ -25,6 +25,16 @@ export default class AddPostContainer extends Container {
     }
   }
 
+  resetState = () => {
+    this.setState({
+      selectedFiles: [],
+      selectedIndex: 0,
+      selectedProjectIndex: 0,
+      selectProjectOpen: false,
+      caption: null,
+    })
+  }
+
   toggleSelectProject = () => {
     this.setState(prevState => ({ selectProjectOpen: !prevState.selectProjectOpen }))
   }

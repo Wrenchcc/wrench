@@ -17,6 +17,7 @@ const AddMedia = () => (
       onTakePicture,
       state,
       toggleSelectProject,
+      resetState,
     }) => {
       const selectedImage = state.selectedFiles[state.selectedIndex]
 
@@ -26,6 +27,7 @@ const AddMedia = () => (
             changeProject={changeProject}
             closeSelectProject={closeSelectProject}
             hasSelectedFiles={!!selectedImage}
+            resetState={resetState}
             selectedProjectIndex={state.selectedProjectIndex}
             selectProjectOpen={state.selectProjectOpen}
             toggleSelectProject={toggleSelectProject}

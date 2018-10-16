@@ -15,13 +15,14 @@ class AddPostHeader extends PureComponent {
   }
 
   static propTypes = {
+    addPostAction: PropTypes.func,
     changeProject: PropTypes.func.isRequired,
     closeSelectProject: PropTypes.func.isRequired,
+    hasSelectedFiles: PropTypes.bool,
     projects: PropTypes.array.isRequired,
+    resetState: PropTypes.func,
     selectedProjectIndex: PropTypes.number.isRequired,
     selectProjectOpen: PropTypes.bool.isRequired,
-    addPostAction: PropTypes.func,
-    hasSelectedFiles: PropTypes.bool,
     toggleSelectProject: PropTypes.func.isRequired,
   }
 
@@ -37,6 +38,11 @@ class AddPostHeader extends PureComponent {
     } else {
       navigateBack()
     }
+  }
+
+  resetStateAndNavigate = () => {
+    this.props.resetState()
+    navigateBack()
   }
 
   renderHeaderRight() {
@@ -99,7 +105,7 @@ class AddPostHeader extends PureComponent {
                 title={projects[selectedProjectIndex].node.title}
                 onPress={toggleSelectProject}
                 active={selectProjectOpen}
-                darkMode={addPostAction}
+                darkMode={!!addPostAction}
               />
             }
           />
@@ -114,7 +120,7 @@ class AddPostHeader extends PureComponent {
           options={[
             {
               name: t('AddPostHeader:options:discard'),
-              onSelect: () => navigateBack(),
+              onSelect: this.resetStateAndNavigate,
             },
             { name: t('AddPostHeader:options:cancel') },
           ]}
