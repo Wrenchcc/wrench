@@ -8,14 +8,14 @@ import { logError } from 'utils/analytics'
 const WEBSITE_URL = 'https://wrench.cc'
 
 const generateLanguageSettings = props => {
-  const { supportedLanguages, currentLanguage, changeLanguage } = props
+  const { availableLocales, currentLocale, changeLocale } = props
   let items = []
 
-  items = supportedLanguages.map(lang => ({
-    titleKey: `languages.${lang}`,
-    onPress: () => currentLanguage !== lang && changeLanguage(lang),
+  items = availableLocales.map(locale => ({
+    titleKey: `languages.${locale}`,
+    onPress: () => currentLocale !== locale && changeLocale(locale),
     type: 'selector',
-    selected: currentLanguage === lang,
+    selected: currentLocale === locale,
   }))
 
   return items

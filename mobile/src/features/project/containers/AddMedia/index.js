@@ -1,99 +1,55 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { CameraRoll } from 'react-native'
-import { compose } from 'react-apollo'
-import { pathOr } from 'ramda'
-import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import React from 'react'
+import { Subscribe } from 'unstated'
+import { AddPostContainer } from 'store'
 import Camera from 'features/project/components/Camera'
-import AddMediaHeader from 'features/project/components/AddMediaHeader'
+import AddPostHeader from 'features/project/components/AddPostHeader'
 import ImageEditor from 'features/project/components/ImageEditor'
 import MediaPicker from 'features/project/components/MediaPicker'
-
 import { Base, Placeholder } from './styles'
 
-class AddMedia extends Component {
-  static propTypes = {
-    projects: PropTypes.array.isRequired,
-  }
+const AddMedia = () => (
+  <Subscribe to={[AddPostContainer]}>
+    {({
+      addSelectedFiles,
+      changeProject,
+      closeSelectProject,
+      onCropping,
+      onTakePicture,
+      state,
+      toggleSelectProject,
+      resetState,
+    }) => {
+      const selectedImage = state.selectedFiles[state.selectedIndex]
 
-  constructor(props) {
-    super(props)
+      return (
+        <Base>
+          <AddPostHeader
+            changeProject={changeProject}
+            closeSelectProject={closeSelectProject}
+            hasSelectedFiles={!!selectedImage}
+            resetState={resetState}
+            selectedProjectIndex={state.selectedProjectIndex}
+            selectProjectOpen={state.selectProjectOpen}
+            toggleSelectProject={toggleSelectProject}
+          />
 
-    this.state = {
-      dropdownOpen: false,
-      selectedFiles: [],
-      selectedIndex: null,
-      selectedProject: pathOr(null, ['projects', 0, 'node'], props),
-    }
-  }
+          <Placeholder>
+            {selectedImage ? (
+              <ImageEditor image={selectedImage} onCropping={onCropping} />
+            ) : (
+              <Camera onTakePicture={onTakePicture} />
+            )}
+          </Placeholder>
 
-  toggleDropdown = () => {
-    this.setState(prevState => ({ dropdownOpen: !prevState.dropdownOpen }))
-  }
+          <MediaPicker
+            onSelect={addSelectedFiles}
+            selectedFiles={state.selectedFiles}
+            selectedIndex={state.selectedIndex}
+          />
+        </Base>
+      )
+    }}
+  </Subscribe>
+)
 
-  changeProject = selectedProject => {
-    this.toggleDropdown()
-    this.setState({ selectedProject })
-  }
-
-  addSelectedFiles = (selectedFiles, selectedIndex) => {
-    this.setState({ selectedFiles, selectedIndex })
-  }
-
-  onCropping = crop => {
-    this.setState(({ selectedFiles, selectedIndex }) => {
-      selectedFiles[selectedIndex] = {
-        ...selectedFiles[selectedIndex],
-        crop,
-      }
-      return { selectedFiles }
-    })
-  }
-
-  onTakePicture = async file => {
-    const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
-    this.setState({
-      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
-      selectedIndex: 0,
-    })
-  }
-
-  render() {
-    const { projects } = this.props
-    const { dropdownOpen, selectedFiles, selectedIndex, selectedProject } = this.state
-
-    const editImage = selectedFiles[selectedIndex]
-
-    let component
-
-    if (editImage) {
-      component = <ImageEditor image={editImage} onCropping={this.onCropping} />
-    } else {
-      component = <Camera onTakePicture={this.onTakePicture} />
-    }
-
-    return (
-      <Base>
-        <AddMediaHeader
-          canGoToCaption={!!editImage}
-          changeProject={this.changeProject}
-          projects={projects}
-          selectedProject={selectedProject}
-          toggleDropdown={this.toggleDropdown}
-          dropdownOpen={dropdownOpen}
-          selectedFiles={selectedFiles}
-        />
-
-        <Placeholder>{component}</Placeholder>
-
-        <MediaPicker
-          selectedFiles={selectedFiles}
-          selectedIndex={selectedIndex}
-          onSelect={this.addSelectedFiles}
-        />
-      </Base>
-    )
-  }
-}
-
-export default compose(getCurrentUserProjects)(AddMedia)
+export default AddMedia

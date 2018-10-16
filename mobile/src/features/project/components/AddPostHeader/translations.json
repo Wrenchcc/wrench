@@ -1,10 +1,22 @@
 {
-  "AddCaptionHeader": {
+  "AddPostHeader": {
     "en": {
-      "share": "Share"
+      "next": "Next",
+      "share": "Share",
+      "options": {
+        "message": "If you go back now, your edits will be discarded.",
+        "discard": "Discard",
+        "cancel": "Cancel"
+      }
     },
     "sv": {
-      "share": "Dela"
+      "next": "Nästa",
+      "share": "Dela",
+      "options": {
+        "message": "Om du går tillbaka kommer dina val att ignoreras.",
+        "discard": "Släng",
+        "cancel": "Avbryt"
+      }
     }
   }
 }

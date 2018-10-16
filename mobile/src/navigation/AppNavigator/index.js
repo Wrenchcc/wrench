@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { setNavigationRef } from 'navigation'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Gateway, Zoomable } from 'ui'
 import { handleDynamicLinks } from 'utils/dynamicLinks'
 import handleStatusBar from 'navigation/handleStatusBar'
@@ -27,4 +27,4 @@ class TabNavigator extends PureComponent {
   }
 }
 
-export default translate()(TabNavigator)
+export default withNamespaces()(TabNavigator)

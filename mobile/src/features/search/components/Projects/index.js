@@ -7,12 +7,12 @@ import { ProjectCard, InfiniteList } from 'ui'
 
 class Projects extends PureComponent {
   static propTypes = {
-    projects: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    projects: PropTypes.array,
+    refetch: PropTypes.func.isRequired,
     scrollRef: PropTypes.func.isRequired,
   }
 
@@ -23,12 +23,12 @@ class Projects extends PureComponent {
   // TODO: Remove when have IDs
   render() {
     const {
-      projects,
       fetchMore,
-      refetch,
-      isRefetching,
-      isFetching,
       hasNextPage,
+      isFetching,
+      isRefetching,
+      projects,
+      refetch,
       scrollRef,
     } = this.props
 
@@ -36,14 +36,14 @@ class Projects extends PureComponent {
       <InfiniteList
         borderSeparator
         data={projects}
-        refetch={refetch}
         fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
         hasNextPage={hasNextPage}
+        isFetching={isFetching}
+        isRefetching={isRefetching}
         keyExtractor={(item, index) => item.node.id + index}
-        renderItem={this.renderItem}
         paddingBottom={20}
+        refetch={refetch}
+        renderItem={this.renderItem}
         scrollRef={scrollRef}
       />
     )

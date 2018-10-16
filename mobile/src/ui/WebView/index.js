@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, BackHandler, WebView as RNWebView } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import url from 'url'
 import { equals, reject } from 'ramda'
 import DeviceInfo from 'react-native-device-info'
@@ -169,4 +169,4 @@ class WebView extends PureComponent {
   }
 }
 
-export default translate('WebView')(WebView)
+export default withNamespaces('WebView')(WebView)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToWebView } from 'navigation'
 import { Base, Text, Link } from './styles'
 
@@ -14,4 +14,4 @@ const Legal = ({ t, ...props }) => (
   </Base>
 )
 
-export default translate('Legal')(Legal)
+export default withNamespaces('Legal')(Legal)

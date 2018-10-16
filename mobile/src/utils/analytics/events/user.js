@@ -8,4 +8,4 @@ export const USER_ONBOARDING_CATEGORIES_VIEWED = 'user_onboarding_categories_vie
 export const USER_ONBOARDING_CATEGORIES_SELECTED = 'user_onboarding_categories_selected'
 export const USER_ONBOARDING_CATEGORIES_DONE = 'user_onboarding_categories_done'
 
-export const USER_CHANGED_LANGUAGE = 'user_changed_language'
+export const USER_CHANGED_LOCALE = 'user_changed_locale'

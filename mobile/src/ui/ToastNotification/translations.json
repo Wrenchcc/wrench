@@ -1,0 +1,10 @@
+{
+  "NetworkConnectivity": {
+    "en": {
+      "noConnection": "No internet connection"
+    },
+    "sv": {
+      "noConnection": "Ingen internetanslutning"
+    }
+  }
+}

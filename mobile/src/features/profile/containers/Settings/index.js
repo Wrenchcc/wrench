@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react'
 import { SectionList } from 'react-native'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
+import { Subscribe } from 'unstated'
 import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
 import toggleUserNotificationSettingsMutation from 'graphql/mutations/user/toggleUserNotificationSettings'
 import { Title, SelectionItem } from 'ui'
-import { AppStateConsumer } from 'AppState'
+import { I18nContainer, AppContainer } from 'store'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
 
@@ -46,19 +47,23 @@ class Settings extends PureComponent {
     const { navigation, ...rest } = this.props
 
     return (
-      <AppStateConsumer>
-        {props => (
+      <Subscribe to={[I18nContainer, AppContainer]}>
+        {({ state, changeLocale }, { changeLoginState }) => (
           <SectionList
             contentContainerStyle={style.container}
             stickySectionHeadersEnabled={false}
             renderSectionHeader={this.renderSectionHeader}
             renderItem={this.renderItem}
-            sections={sections({ ...props, ...rest })[navigation.state.routeName]}
+            sections={
+              sections({ ...state, changeLocale, changeLoginState, ...rest })[
+                navigation.state.routeName
+              ]
+            }
             keyExtractor={(item, index) => item + index}
             ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
           />
         )}
-      </AppStateConsumer>
+      </Subscribe>
     )
   }
 }
@@ -66,5 +71,5 @@ class Settings extends PureComponent {
 export default compose(
   getCurrentUserSettings,
   toggleUserNotificationSettingsMutation,
-  translate('Settings')
+  withNamespaces('Settings')
 )(Settings)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
 import Project from './Project'
@@ -11,7 +11,7 @@ class SelectProject extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
     expanded: PropTypes.bool.isRequired,
-    selected: PropTypes.object.isRequired,
+    selectedProjectIndex: PropTypes.number.isRequired,
     projects: PropTypes.array,
   }
 
@@ -25,23 +25,31 @@ class SelectProject extends Component {
     }
   }
 
-  getHeight = () => Object.keys(this.props.projects).length * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
-
-  isSelected = project => project.id === this.props.selected.id
+  get getHeight() {
+    const itemCount = Object.keys(this.props.projects).length
+    const itemsHeight = itemCount >= 4 ? 4 : itemCount
+    return itemsHeight * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
+  }
 
   toggleAnimation = expanded => {
     Animated.spring(this.state.height, {
-      toValue: expanded ? this.getHeight() : 0,
+      toValue: expanded ? this.getHeight : 0,
       bounciness: 0,
       speed: 7,
     }).start()
   }
 
   renderProjects = () => {
-    const { projects, onPress } = this.props
+    const { projects, onPress, selectedProjectIndex } = this.props
 
-    return projects.map(({ node }) => (
-      <Project key={node.id} {...node} onPress={onPress} selected={this.isSelected(node)} />
+    return projects.map(({ node }, index) => (
+      <Project
+        key={node.id}
+        {...node}
+        onPress={onPress}
+        selected={selectedProjectIndex === index}
+        index={index}
+      />
     ))
   }
 
@@ -53,7 +61,7 @@ class SelectProject extends Component {
           position: 'absolute',
           overflow: 'hidden',
           width: '100%',
-          zIndex: 99,
+          zIndex: 10,
           height: this.state.height,
         }}
       >
@@ -68,4 +76,4 @@ class SelectProject extends Component {
   }
 }
 
-export default translate('SelectProject')(SelectProject)
+export default withNamespaces('SelectProject')(SelectProject)

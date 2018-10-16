@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
@@ -73,5 +73,5 @@ class Popular extends PureComponent {
 
 export default compose(
   getPopularProjects,
-  translate('Popular')
+  withNamespaces('Popular')
 )(Popular)

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToSearch, navigateBack } from 'navigation'
 import { Search, Add, Text } from 'ui'
 
@@ -27,4 +27,4 @@ SearchBar.propTypes = {
   cancelButton: PropTypes.bool,
 }
 
-export default translate('SearchBar')(SearchBar)
+export default withNamespaces('SearchBar')(SearchBar)

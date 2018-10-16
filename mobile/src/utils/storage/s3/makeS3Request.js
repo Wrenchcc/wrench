@@ -1,13 +1,13 @@
-import EventEmitter from 'eventemitter3'
-
-const Emitter = new EventEmitter()
+// import EventEmitter from 'eventemitter3'
+//
+// const Emitter = new EventEmitter()
 
 export default async (url, file, id) => new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest()
 
   xhr.upload.onprogress = evt => {
     if (evt.lengthComputable) {
-      Emitter.emit('upload-progress', { id, percentge: evt.loaded / evt.total })
+      // Emitter.emit('upload-progress', { id, percentge: evt.loaded / evt.total })
     }
   }
 

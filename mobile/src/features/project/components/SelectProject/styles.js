@@ -15,7 +15,7 @@ export const Base = styled.View`
 export const Scroll = styled.ScrollView`
   padding-left: 20;
   padding-right: 20;
-  height: ${ITEM_HEIGHT * 4}
+  max-height: ${ITEM_HEIGHT * 4};
 `
 
 export const NewProject = styled(UiTouchable)`

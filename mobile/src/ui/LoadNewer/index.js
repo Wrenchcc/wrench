@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Text } from 'ui'
 import { Button, HEIGHT, TOP } from './styles'
 
@@ -44,4 +44,4 @@ class LoadNewer extends PureComponent {
   }
 }
 
-export default translate('LoadNewer')(LoadNewer)
+export default withNamespaces('LoadNewer')(LoadNewer)

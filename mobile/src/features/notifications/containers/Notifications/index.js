@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getNotifications } from 'graphql/queries/getNotifications'
 import { InfiniteList, Notification } from 'ui'
@@ -70,5 +70,5 @@ class Notifications extends PureComponent {
 
 export default compose(
   getNotifications,
-  translate('Notifications')
+  withNamespaces('Notifications')
 )(Notifications)

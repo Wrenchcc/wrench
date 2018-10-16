@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToUser, navigateToProject, navigateToComments } from 'navigation'
 import { Avatar, Text, TimeAgo } from 'ui'
 import { Base, Content, Bottom } from './styles'
@@ -64,4 +64,4 @@ Notification.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default translate('Notification')(Notification)
+export default withNamespaces('Notification')(Notification)

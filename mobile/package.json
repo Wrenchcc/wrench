@@ -26,8 +26,6 @@
     "apollo-link-batch-http": "^1.2.3",
     "apollo-link-context": "^1.0.9",
     "apollo-link-error": "^1.1.1",
-    "apollo-link-state": "^0.4.2",
-    "eventemitter3": "^3.1.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "human-format": "^0.10.1",
@@ -58,8 +56,9 @@
     "react-native-swiper": "^1.5.13",
     "react-native-tab-view": "^1.2.0",
     "react-native-video": "3.2.1",
-    "react-navigation": "^3.0.0-alpha.4",
+    "react-navigation": "3.0.0-alpha.4",
     "styled-components": "v3.4.10",
+    "unstated": "^2.1.1",
     "url": "^0.11.0"
   },
   "devDependencies": {

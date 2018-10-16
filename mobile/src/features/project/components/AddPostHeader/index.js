@@ -1,36 +1,136 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
-import { navigateBack } from 'navigation'
-import { Header, Icon, Text } from 'ui'
-import { arrowLeft } from 'images'
+import { withNamespaces } from 'react-i18next'
+import { compose } from 'react-apollo'
+import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import { navigateBack, navigateToAddPost } from 'navigation'
+import { Header, Dropdown, Icon, Text, ActionSheet } from 'ui'
+import SelectProject from 'features/project/components/SelectProject'
+import { close, arrowLeft } from 'images'
+import { Backdrop, Top } from './styles'
 
-class AddCaptionHeader extends PureComponent {
+class AddPostHeader extends PureComponent {
+  state = {
+    actionSheetIsOpen: false,
+  }
+
   static propTypes = {
-    addPost: PropTypes.func.isRequired,
-    selectedProject: PropTypes.object.isRequired,
+    addPostAction: PropTypes.func,
+    changeProject: PropTypes.func.isRequired,
+    closeSelectProject: PropTypes.func.isRequired,
+    hasSelectedFiles: PropTypes.bool,
+    projects: PropTypes.array.isRequired,
+    resetState: PropTypes.func,
+    selectedProjectIndex: PropTypes.number.isRequired,
+    selectProjectOpen: PropTypes.bool.isRequired,
+    toggleSelectProject: PropTypes.func.isRequired,
+  }
+
+  toggleActionSheet = () => {
+    this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
+  }
+
+  handleClose = () => {
+    const { hasSelectedFiles } = this.props
+
+    if (hasSelectedFiles) {
+      this.toggleActionSheet()
+    } else {
+      navigateBack()
+    }
+  }
+
+  resetStateAndNavigate = () => {
+    this.props.resetState()
+    navigateBack()
   }
 
   renderHeaderRight() {
-    const { t, addPost } = this.props
-    return (
-      <Text color="dark" medium onPress={addPost}>
-        {t('AddCaptionHeader:share')}
-      </Text>
-    )
+    const { t, hasSelectedFiles, addPostAction } = this.props
+
+    if (hasSelectedFiles) {
+      return (
+        <Text color="white" medium onPress={() => navigateToAddPost()}>
+          {t('AddPostHeader:next')}
+        </Text>
+      )
+    }
+
+    if (addPostAction) {
+      return (
+        <Text color="dark" medium onPress={addPostAction}>
+          {t('AddPostHeader:share')}
+        </Text>
+      )
+    }
+
+    return null
+  }
+
+  renderHeaderLeft() {
+    const { addPostAction } = this.props
+    if (addPostAction) {
+      return <Icon onPress={() => navigateBack()} source={arrowLeft} />
+    }
+    return <Icon onPress={this.handleClose} source={close} />
   }
 
   render() {
-    const { selectedProject } = this.props
+    const { actionSheetIsOpen } = this.state
+    const {
+      changeProject,
+      closeSelectProject,
+      projects,
+      selectedProjectIndex,
+      selectProjectOpen,
+      addPostAction,
+      t,
+      toggleSelectProject,
+    } = this.props
 
     return (
-      <Header
-        headerLeft={<Icon onPress={() => navigateBack()} source={arrowLeft} />}
-        headerRight={this.renderHeaderRight()}
-        headerCenter={<Text medium>{selectedProject.title}</Text>}
-      />
+      <Fragment>
+        <SelectProject
+          expanded={selectProjectOpen}
+          onPress={changeProject}
+          projects={projects}
+          selectedProjectIndex={selectedProjectIndex}
+        />
+        <Top>
+          <Header
+            headerLeft={this.renderHeaderLeft()}
+            headerRight={this.renderHeaderRight()}
+            headerCenter={
+              <Dropdown
+                title={projects[selectedProjectIndex].node.title}
+                onPress={toggleSelectProject}
+                active={selectProjectOpen}
+                darkMode={!!addPostAction}
+              />
+            }
+          />
+        </Top>
+        <Backdrop activeOpacity={1} onPress={closeSelectProject} active={selectProjectOpen} />
+
+        <ActionSheet
+          message={t('AddPostHeader:options:message')}
+          isOpen={actionSheetIsOpen}
+          onClose={this.toggleActionSheet}
+          destructiveButtonIndex={0}
+          options={[
+            {
+              name: t('AddPostHeader:options:discard'),
+              onSelect: this.resetStateAndNavigate,
+            },
+            { name: t('AddPostHeader:options:cancel') },
+          ]}
+        />
+      </Fragment>
     )
   }
 }
 
-export default translate('AddCaptionHeader')(AddCaptionHeader)
+export default compose(
+  getCurrentUserProjects,
+  withNamespaces('AddPostHeader')
+)(AddPostHeader)

@@ -14,7 +14,6 @@ export const Base = styled.View`
 export const Input = styled(UiInput)`
   flex: 1;
   font-size: 17;
-  color: ${COLORS.DARK};
   border-bottom-width: 0;
   padding-right: 10;
 `

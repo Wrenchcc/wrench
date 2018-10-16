@@ -2,13 +2,17 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Alert } from 'react-native'
 import { compose } from 'react-apollo'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToProject, navigateToUser } from 'navigation'
 import { Avatar, Carousel, Comments, ActionSheet } from 'ui'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Base, Top, Title, Content, Caption } from './styled'
 
 class Post extends PureComponent {
+  state = {
+    actionSheetIsOpen: false,
+  }
+
   static propTypes = {
     post: PropTypes.object.isRequired,
     deletePost: PropTypes.func.isRequired,
@@ -16,13 +20,9 @@ class Post extends PureComponent {
     avatar: PropTypes.bool,
   }
 
-  state = {
-    isOpen: false,
-  }
-
   toggleActionSheet = () => {
     if (this.props.post.isAuthor) {
-      this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+      this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
     }
   }
 
@@ -65,7 +65,7 @@ class Post extends PureComponent {
 
     return (
       <ActionSheet
-        isOpen={this.state.isOpen}
+        isOpen={this.state.actionSheetIsOpen}
         onClose={this.toggleActionSheet}
         destructiveButtonIndex={0}
         options={[
@@ -129,5 +129,5 @@ class Post extends PureComponent {
 
 export default compose(
   deletePost,
-  translate('Post')
+  withNamespaces('Post')
 )(Post)
