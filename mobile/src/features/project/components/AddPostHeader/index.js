@@ -90,26 +90,24 @@ class AddPostHeader extends PureComponent {
 
     return (
       <Fragment>
+        <Header headerLeft={this.renderHeaderLeft()} headerRight={this.renderHeaderRight()} />
+
+        <Top>
+          <Dropdown
+            title={projects[selectedProjectIndex].node.title}
+            onPress={toggleSelectProject}
+            active={selectProjectOpen}
+            darkMode={!!addPostAction}
+          />
+        </Top>
+
         <SelectProject
           expanded={selectProjectOpen}
           onPress={changeProject}
           projects={projects}
           selectedProjectIndex={selectedProjectIndex}
         />
-        <Top>
-          <Header
-            headerLeft={this.renderHeaderLeft()}
-            headerRight={this.renderHeaderRight()}
-            headerCenter={
-              <Dropdown
-                title={projects[selectedProjectIndex].node.title}
-                onPress={toggleSelectProject}
-                active={selectProjectOpen}
-                darkMode={!!addPostAction}
-              />
-            }
-          />
-        </Top>
+
         <Backdrop activeOpacity={1} onPress={closeSelectProject} active={selectProjectOpen} />
 
         <ActionSheet

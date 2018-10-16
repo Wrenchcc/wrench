@@ -4,6 +4,7 @@ import LocalStorage from 'utils/storage/local'
 
 const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectIndex2'
 
+// TODO: Reset state better
 export default class AddPostContainer extends Container {
   state = {
     selectedFiles: [],

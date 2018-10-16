@@ -30,6 +30,7 @@ class AddPost extends Component {
           projectId: selectedProject.id,
           files: uploadedFiles,
         })
+
         track(events.POST_CREATED)
       } catch {
         // showToastNotification({
@@ -58,7 +59,7 @@ class AddPost extends Component {
               closeSelectProject={closeSelectProject}
               selectedProjectIndex={state.selectedProjectIndex}
               selectProjectOpen={state.selectProjectOpen}
-              addPostAction={() => this.addPost(state)}
+              addPostAction={() => this.addPost(state, showNotification)}
               toggleSelectProject={toggleSelectProject}
             />
             <View style={{ paddingLeft: 20, paddingRight: 20 }}>

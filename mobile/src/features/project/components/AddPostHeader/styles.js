@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
 export const Top = styled.View`
-  position: relative;
+  position: absolute;
   z-index: 20;
+  top: 50;
+  align-self: center;
 `
 
 export const Backdrop = styled.TouchableOpacity`
