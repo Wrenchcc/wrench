@@ -1,6 +1,6 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
-import { AddPostContainer } from 'state'
+import { AddPostContainer } from 'store'
 import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import ImageEditor from 'features/project/components/ImageEditor'

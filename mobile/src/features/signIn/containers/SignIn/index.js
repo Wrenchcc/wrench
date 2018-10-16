@@ -4,7 +4,7 @@ import { Subscribe } from 'unstated'
 import { withNamespaces } from 'react-i18next'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
-import { AppContainer } from 'state'
+import { AppContainer } from 'store'
 import Facebook from '../../components/Facebook'
 import { Base, Inner, Content, Video, Icon, Description, Headline, Legal } from './styles'
 

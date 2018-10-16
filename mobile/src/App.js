@@ -6,7 +6,7 @@ import { AuthNavigator, AppNavigator } from 'navigation'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
 import { YellowBox } from 'react-native'
-import { AppContainer } from 'state'
+import { AppContainer } from 'store'
 
 if (__DEV__) {
   // TODO: Remove
