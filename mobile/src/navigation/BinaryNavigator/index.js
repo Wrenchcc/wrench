@@ -12,3 +12,26 @@ export default (routeConfigs, config = {}) => {
 
   return createNavigationContainer(navigator)
 }
+
+// BinaryNavigator({
+//   [ROUTE_NAMES.PUBLIC_ONLY]: {
+//     screen: AppOnboardingNavigator,
+//   },
+//   [ROUTE_NAMES.AUTHENTICATED]: {
+//     screen: TabNavigator(mapObjIndexed(toTabRoute, tabRoutes), {
+//       tabBarComponent: AppTabBarBottom,
+//       tabBarPosition: 'bottom',
+//       initialRouteName: initialTabName,
+//       swipeEnabled: false,
+//       animationEnabled: false,
+//       tabBarOptions: {
+//         inactiveTintColor: Colors.INPUT_TEXT_DARK,
+//         style: {
+//           backgroundColor: 'white',
+//           borderTopWidth: 1,
+//           borderTopColor: '#E4E4E5',
+//         },
+//       },
+//     }),
+//   },
+// })
