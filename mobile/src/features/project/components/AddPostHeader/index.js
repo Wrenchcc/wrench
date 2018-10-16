@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import { navigateBack, navigateToAddPost, navigateToFeed } from 'navigation'
+import { navigateBack, navigateToAddPost } from 'navigation'
 import { Header, Dropdown, Icon, Text, ActionSheet } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeft } from 'images'
@@ -20,7 +20,7 @@ class AddPostHeader extends PureComponent {
     projects: PropTypes.array.isRequired,
     selectedProjectIndex: PropTypes.number.isRequired,
     selectProjectOpen: PropTypes.bool.isRequired,
-    showNavigateToFeed: PropTypes.bool,
+    addPostAction: PropTypes.func,
     hasSelectedFiles: PropTypes.bool,
     toggleSelectProject: PropTypes.func.isRequired,
   }
@@ -40,7 +40,7 @@ class AddPostHeader extends PureComponent {
   }
 
   renderHeaderRight() {
-    const { t, hasSelectedFiles, showNavigateToFeed } = this.props
+    const { t, hasSelectedFiles, addPostAction } = this.props
 
     if (hasSelectedFiles) {
       return (
@@ -50,9 +50,9 @@ class AddPostHeader extends PureComponent {
       )
     }
 
-    if (showNavigateToFeed) {
+    if (addPostAction) {
       return (
-        <Text color="dark" medium onPress={() => navigateToFeed()}>
+        <Text color="dark" medium onPress={addPostAction}>
           {t('AddPostHeader:share')}
         </Text>
       )
@@ -62,8 +62,8 @@ class AddPostHeader extends PureComponent {
   }
 
   renderHeaderLeft() {
-    const { showNavigateToFeed } = this.props
-    if (showNavigateToFeed) {
+    const { addPostAction } = this.props
+    if (addPostAction) {
       return <Icon onPress={() => navigateBack()} source={arrowLeft} />
     }
     return <Icon onPress={this.handleClose} source={close} />
@@ -77,7 +77,7 @@ class AddPostHeader extends PureComponent {
       projects,
       selectedProjectIndex,
       selectProjectOpen,
-      showNavigateToFeed,
+      addPostAction,
       t,
       toggleSelectProject,
     } = this.props
@@ -99,7 +99,7 @@ class AddPostHeader extends PureComponent {
                 title={projects[selectedProjectIndex].node.title}
                 onPress={toggleSelectProject}
                 active={selectProjectOpen}
-                darkMode={showNavigateToFeed}
+                darkMode={addPostAction}
               />
             }
           />

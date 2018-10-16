@@ -18,8 +18,7 @@ class AddPost extends Component {
     addPost: PropTypes.func.isRequired,
   }
 
-  addPost = () => {
-    const { selectedFiles, selectedProject, caption } = null // this.props.postData
+  addPost = ({ selectedFiles, selectedProject, caption }, showNotification) => {
     navigateToFeed()
 
     InteractionManager.runAfterInteractions(async () => {
@@ -33,7 +32,12 @@ class AddPost extends Component {
         })
         track(events.POST_CREATED)
       } catch {
-        // TODO: Show error banner
+        // showToastNotification({
+        //   kind: 'error',
+        //   id: 'post-error',
+        //   message: 'hello world',
+        //   dismissAfter: 2000,
+        // })
         track(events.POST_CREATED_FAILED)
       }
     })
@@ -44,14 +48,17 @@ class AddPost extends Component {
 
     return (
       <Subscribe to={[AddPostContainer]}>
-        {({ state, updateCaption, toggleSelectProject, changeProject, closeSelectProject }) => (
+        {(
+          { state, updateCaption, toggleSelectProject, changeProject, closeSelectProject },
+          showNotification
+        ) => (
           <Fragment>
             <AddPostHeader
               changeProject={changeProject}
               closeSelectProject={closeSelectProject}
               selectedProjectIndex={state.selectedProjectIndex}
               selectProjectOpen={state.selectProjectOpen}
-              showNavigateToFeed
+              addPostAction={() => this.addPost(state)}
               toggleSelectProject={toggleSelectProject}
             />
             <View style={{ paddingLeft: 20, paddingRight: 20 }}>
