@@ -5,20 +5,20 @@ import { track, events, logError } from 'utils/analytics'
 
 export default class I18nContainer extends Container {
   state = {
-    currentLanguage: i18next.language,
-    supportedLanguages: languages,
+    currentLocale: i18next.language,
+    availableLocales: languages,
   }
 
-  changeLanguage = async language => {
+  changeLocale = async locale => {
     try {
-      await setLocale(language)
+      await setLocale(locale)
     } catch (err) {
       logError(err)
     }
 
-    i18next.changeLanguage(language)
-    this.setState({ currentLanguage: language }, () => {
-      track(events.USER_CHANGED_LANGUAGE, { language })
+    i18next.changeLanguage(locale)
+    this.setState({ currentLocale: locale }, () => {
+      track(events.USER_CHANGED_LOCALE, { locale })
     })
   }
 }

@@ -48,14 +48,14 @@ class Settings extends PureComponent {
 
     return (
       <Subscribe to={[I18nContainer, AppContainer]}>
-        {({ state, changeLanguage }, { changeLoginState }) => (
+        {({ state, changeLocale }, { changeLoginState }) => (
           <SectionList
             contentContainerStyle={style.container}
             stickySectionHeadersEnabled={false}
             renderSectionHeader={this.renderSectionHeader}
             renderItem={this.renderItem}
             sections={
-              sections({ ...state, changeLanguage, changeLoginState, ...rest })[
+              sections({ ...state, changeLocale, changeLoginState, ...rest })[
                 navigation.state.routeName
               ]
             }
