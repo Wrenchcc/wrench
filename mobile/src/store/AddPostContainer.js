@@ -2,7 +2,7 @@ import { Container } from 'unstated'
 import { CameraRoll } from 'react-native'
 import LocalStorage from 'utils/storage/local'
 
-const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectIndex'
+const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectIndex2'
 
 export default class AddPostContainer extends Container {
   state = {
@@ -20,7 +20,9 @@ export default class AddPostContainer extends Container {
 
   loadInitialState = async () => {
     const selectedProjectIndex = await LocalStorage.getItem(SELECTED_PROJECT_STORAGE_KEY)
-    this.setState({ selectedProjectIndex })
+    if (selectedProjectIndex) {
+      this.setState({ selectedProjectIndex })
+    }
   }
 
   toggleSelectProject = () => {

@@ -4,7 +4,7 @@ import { logError } from 'utils/analytics'
 export default {
   async getItem(key) {
     try {
-      return await AsyncStorage.getItem(key)
+      return JSON.parse(await AsyncStorage.getItem(key))
     } catch (error) {
       logError(`Error when getting item for key ${key}`, error)
       return null
@@ -12,7 +12,7 @@ export default {
   },
   async setItem(key, value) {
     try {
-      await AsyncStorage.setItem(key, value)
+      await AsyncStorage.setItem(key, JSON.stringify(value))
     } catch (error) {
       logError(`Error when setting item ${value} for key ${key}`, error)
     }

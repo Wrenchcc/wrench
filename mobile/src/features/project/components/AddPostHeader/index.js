@@ -88,7 +88,7 @@ class AddPostHeader extends PureComponent {
           expanded={selectProjectOpen}
           onPress={changeProject}
           projects={projects}
-          selected={projects[selectedProjectIndex]}
+          selectedProjectIndex={selectedProjectIndex}
         />
         <Top>
           <Header

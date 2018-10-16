@@ -11,7 +11,7 @@ class SelectProject extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
     expanded: PropTypes.bool.isRequired,
-    selected: PropTypes.object.isRequired,
+    selectedProjectIndex: PropTypes.number.isRequired,
     projects: PropTypes.array,
   }
 
@@ -31,8 +31,6 @@ class SelectProject extends Component {
     return itemsHeight * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
   }
 
-  isSelected = project => project.id === this.props.selected.id
-
   toggleAnimation = expanded => {
     Animated.spring(this.state.height, {
       toValue: expanded ? this.getHeight : 0,
@@ -42,14 +40,14 @@ class SelectProject extends Component {
   }
 
   renderProjects = () => {
-    const { projects, onPress } = this.props
+    const { projects, onPress, selectedProjectIndex } = this.props
 
     return projects.map(({ node }, index) => (
       <Project
         key={node.id}
         {...node}
         onPress={onPress}
-        selected={this.isSelected(node)}
+        selected={selectedProjectIndex === index}
         index={index}
       />
     ))
