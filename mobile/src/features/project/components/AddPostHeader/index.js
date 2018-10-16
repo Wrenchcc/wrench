@@ -111,7 +111,7 @@ class AddPostHeader extends PureComponent {
         <Backdrop activeOpacity={1} onPress={closeSelectProject} active={selectProjectOpen} />
 
         <ActionSheet
-          message={t('AddPostHeader:options:message')}
+          title={t('AddPostHeader:options:title')}
           isOpen={actionSheetIsOpen}
           onClose={this.toggleActionSheet}
           destructiveButtonIndex={0}

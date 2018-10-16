@@ -56,7 +56,7 @@
       "next": "Next",
       "share": "Share",
       "options": {
-        "message": "If you go back now, your edits will be discarded.",
+        "title": "If you go back now, your edits will be discarded.",
         "discard": "Discard",
         "cancel": "Cancel"
       }
@@ -258,7 +258,7 @@
       "next": "Nästa",
       "share": "Dela",
       "options": {
-        "message": "Om du går tillbaka kommer dina val att ignoreras.",
+        "title": "Om du går tillbaka kommer dina val att ignoreras.",
         "discard": "Släng",
         "cancel": "Avbryt"
       }
