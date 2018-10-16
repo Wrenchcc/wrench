@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Cover, Content } from './styles'
 
@@ -56,4 +56,4 @@ class PostProgress extends PureComponent {
 }
 
 // TODO: HoC for Subscribe
-export default compose(translate('PostProgress'))(PostProgress)
+export default compose(withNamespaces('PostProgress'))(PostProgress)

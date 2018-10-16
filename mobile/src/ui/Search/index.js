@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { search } from 'images'
 import { COLORS } from 'ui/constants'
 import { Base, Input, Icon, Placeholder, Text } from './styles'
@@ -33,4 +33,4 @@ Search.propTypes = {
   placeholder: PropTypes.bool,
 }
 
-export default translate('Search')(Search)
+export default withNamespaces('Search')(Search)

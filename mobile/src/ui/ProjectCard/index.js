@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { Gallery } from 'ui'
@@ -50,5 +50,5 @@ class ProjectCard extends PureComponent {
 
 export default compose(
   followProject,
-  translate('ProjectCard')
+  withNamespaces('ProjectCard')
 )(ProjectCard)

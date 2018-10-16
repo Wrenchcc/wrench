@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToUser, navigateToComments } from 'navigation'
 import Text from 'ui/Text'
 import { Row, Comment, LoadMore } from './styles'
@@ -47,4 +47,4 @@ class List extends PureComponent {
   }
 }
 
-export default translate('List')(List)
+export default withNamespaces('List')(List)

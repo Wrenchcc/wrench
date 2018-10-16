@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NetInfo, Animated } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Text } from 'ui'
 import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
 
@@ -50,4 +50,4 @@ class NetworkConnectivity extends Component {
   }
 }
 
-export default translate('NetworkConnectivity')(NetworkConnectivity)
+export default withNamespaces('NetworkConnectivity')(NetworkConnectivity)

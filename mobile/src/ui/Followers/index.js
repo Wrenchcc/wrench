@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { Text } from 'ui'
 
 const Followers = ({ t, followers, onPress = null, color = 'dark', opacity = 1 }) => (
@@ -16,4 +16,4 @@ Followers.propTypes = {
   opacity: PropTypes.number,
 }
 
-export default translate('UiFollowers')(Followers)
+export default withNamespaces('UiFollowers')(Followers)

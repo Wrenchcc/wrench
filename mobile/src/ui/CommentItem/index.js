@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Animated } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { navigateToUser } from 'navigation'
 import { Avatar, Text, TimeAgo } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -66,4 +66,4 @@ const CommentItem = props => props.item.repliesConnection ? (
     <Item {...props.item} t={props.t} onReply={props.onReply} />
 )
 
-export default translate('CommentItem')(CommentItem)
+export default withNamespaces('CommentItem')(CommentItem)

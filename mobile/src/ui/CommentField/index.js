@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard } from 'react-native'
-import { translate } from 'react-i18next'
+import { withNamespaces } from 'react-i18next'
 import { COLORS } from 'ui/constants'
 import { Text } from 'ui'
 import { isIphone } from 'utils/platform'
@@ -115,4 +115,4 @@ class CommentField extends PureComponent {
   }
 }
 
-export default translate('CommentField')(CommentField)
+export default withNamespaces('CommentField')(CommentField)
