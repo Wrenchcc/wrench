@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { InteractionManager, View } from 'react-native'
 import { Subscribe } from 'unstated'
@@ -53,7 +53,7 @@ class AddPost extends Component {
           { state, updateCaption, toggleSelectProject, changeProject, closeSelectProject },
           showNotification
         ) => (
-          <Fragment>
+          <>
             <AddPostHeader
               changeProject={changeProject}
               closeSelectProject={closeSelectProject}
@@ -73,7 +73,7 @@ class AddPost extends Component {
                 value={state.caption}
               />
             </View>
-          </Fragment>
+          </>
         )}
       </Subscribe>
     )

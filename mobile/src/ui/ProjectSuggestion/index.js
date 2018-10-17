@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { navigateToProject } from 'navigation'
 import { InfiniteList } from 'ui'
@@ -31,7 +31,7 @@ export default class ProjectSuggestion extends PureComponent {
     const { title, data, refetch, fetchMore, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
-      <Fragment>
+      <>
         <Title fontSize={21}>{title}</Title>
 
         <InfiniteList
@@ -56,7 +56,7 @@ export default class ProjectSuggestion extends PureComponent {
             marginRight: -GUTTER,
           }}
         />
-      </Fragment>
+      </>
     )
   }
 }

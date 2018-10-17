@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { navigateToUser, navigateToComments } from 'navigation'
@@ -35,14 +35,14 @@ class List extends PureComponent {
     if (!data.comments) return null
 
     return (
-      <Fragment>
+      <>
         {data.comments.edges.map(this.renderComment)}
         <LoadMore onPress={this.goToComments}>
           <Text fontSize={15} color="light_grey">
             {t('List:loadMore', { count: data.comments.totalCount })}
           </Text>
         </LoadMore>
-      </Fragment>
+      </>
     )
   }
 }

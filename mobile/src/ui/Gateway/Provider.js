@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Registry from './Registry'
 import Destination from './Destination'
@@ -25,10 +25,10 @@ export default class Provider extends React.Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <Destination name="global" />
         {this.props.children}
-      </Fragment>
+      </>
     )
   }
 }

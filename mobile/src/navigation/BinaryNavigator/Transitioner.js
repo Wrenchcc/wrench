@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Animated, Dimensions, Easing, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import withCachedChildNavigation from 'react-navigation/src/withCachedChildNavigation'
@@ -82,7 +82,7 @@ class Transitioner extends Component {
     const isSecondActive = this.props.navigation.state.index === 1
 
     return (
-      <Fragment>
+      <>
         {(isSecondActive || transitioning) && (
           <Animated.View
             pointerEvents={transitioning ? 'none' : 'box-none'}
@@ -125,7 +125,7 @@ class Transitioner extends Component {
             {this.renderScene(firstRoute)}
           </Animated.View>
         )}
-      </Fragment>
+      </>
     )
   }
 }

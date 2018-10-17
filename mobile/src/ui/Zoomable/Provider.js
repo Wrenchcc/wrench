@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import Selected from './Selected'
@@ -60,10 +60,10 @@ export default class Provider extends PureComponent {
 
   render() {
     return (
-      <Fragment>
+      <>
         {this.props.children}
         {this.renderSelectedElement()}
-      </Fragment>
+      </>
     )
   }
 }

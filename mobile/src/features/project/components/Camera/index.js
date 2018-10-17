@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableWithoutFeedback } from 'react-native'
 import Permissions from 'react-native-permissions'
@@ -82,12 +82,12 @@ export default class Camera extends PureComponent {
           autoFocusPointOfInterest={autoFocusPointOfInterest}
         >
           {({ camera }) => (
-            <Fragment>
+            <>
               <PointOfInterest coordinates={autoFocusPointOfInterest} />
               <CameraType onPress={this.changeCameraType} />
               <TakePicture onPress={() => this.takePicture(camera)} hapticFeedback="impactLight" />
               <FlashMode onPress={this.changeFlashMode} flashMode={this.state.flashMode} />
-            </Fragment>
+            </>
           )}
         </RNCamera>
       </TouchableWithoutFeedback>

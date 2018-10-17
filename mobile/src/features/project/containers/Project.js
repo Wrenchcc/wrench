@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { pathOr, equals } from 'ramda'
@@ -110,7 +110,7 @@ class Project extends PureComponent {
 
     // TODO: Remove when have IDs
     return (
-      <Fragment>
+      <>
         <InfiniteListWithHandler
           defaultPaddingTop
           ListHeaderComponent={project.title && <Header project={project} />}
@@ -130,7 +130,7 @@ class Project extends PureComponent {
           }}
         />
         {this.renderFooter()}
-      </Fragment>
+      </>
     )
   }
 }

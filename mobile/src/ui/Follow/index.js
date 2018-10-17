@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import Text from 'ui/Text'
@@ -8,10 +8,10 @@ import { Button, Icon } from './styles'
 const Follow = ({ onPress, following, t }) => (
   <Button onPress={onPress} hapticFeedback="impactLight">
     {following ? (
-      <Fragment>
+      <>
         <Icon source={follow} />
         <Text medium>{t('Follow:unfollow')}</Text>
-      </Fragment>
+      </>
     ) : (
       <Text medium>{t('Follow:follow')}</Text>
     )}

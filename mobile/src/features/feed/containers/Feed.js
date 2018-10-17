@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
@@ -47,7 +47,7 @@ class Feed extends PureComponent {
   render() {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
     return (
-      <Fragment>
+      <>
         <InfiniteListWithHandler
           scrollRef={ref => {
             scrollView = ref
@@ -68,7 +68,7 @@ class Feed extends PureComponent {
             useNativeDriver: true,
           })}
         />
-      </Fragment>
+      </>
     )
   }
 }

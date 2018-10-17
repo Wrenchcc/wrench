@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
@@ -41,7 +41,7 @@ class Popular extends PureComponent {
 
     // TODO: Remove when have real IDs
     return (
-      <Fragment>
+      <>
         <Title medium>{t('Popular:popular')}</Title>
         <InfiniteList
           initialNumToRender={INITIAL_POSTS_COUNT}
@@ -66,7 +66,7 @@ class Popular extends PureComponent {
           }}
         />
         <Title medium>{t('Popular:recent')}</Title>
-      </Fragment>
+      </>
     )
   }
 }

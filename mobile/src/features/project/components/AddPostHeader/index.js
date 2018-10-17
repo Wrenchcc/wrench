@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
@@ -89,7 +89,7 @@ class AddPostHeader extends PureComponent {
     } = this.props
 
     return (
-      <Fragment>
+      <>
         <Header headerLeft={this.renderHeaderLeft()} headerRight={this.renderHeaderRight()} />
 
         <Top>
@@ -123,7 +123,7 @@ class AddPostHeader extends PureComponent {
             { name: t('AddPostHeader:options:cancel') },
           ]}
         />
-      </Fragment>
+      </>
     )
   }
 }

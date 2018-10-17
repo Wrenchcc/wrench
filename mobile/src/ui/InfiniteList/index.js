@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList, Animated } from 'react-native'
 import { Border, Loader, LoadNewer } from 'ui'
@@ -84,7 +84,7 @@ class InfiniteList extends PureComponent {
     const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 50) || 0
 
     return (
-      <Fragment>
+      <>
         {this.scrollToNewData()}
 
         <AnimatedFlatlist
@@ -115,7 +115,7 @@ class InfiniteList extends PureComponent {
           {...onScroll && { onScroll, scrollEventThrottle: 16 }}
           {...props}
         />
-      </Fragment>
+      </>
     )
   }
 }

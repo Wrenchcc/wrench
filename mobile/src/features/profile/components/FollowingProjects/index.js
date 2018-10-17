@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
@@ -18,10 +18,10 @@ class FollowingProjects extends PureComponent {
     const { t, user } = this.props
 
     return (
-      <Fragment>
+      <>
         <Title>{t('FollowingProjects:title')}</Title>
         <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
-      </Fragment>
+      </>
     )
   }
 

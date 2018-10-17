@@ -16,31 +16,31 @@ if (__DEV__) {
   global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest
 }
 
-const App = () => (
-  <Provider>
-    <Subscribe to={[AppContainer]}>
-      {({ state: { appLoading, loggedIn, client } }) => {
-        if (appLoading) return null
+export default function App() {
+  return (
+    <Provider>
+      <Subscribe to={[AppContainer]}>
+        {({ state: { appLoading, loggedIn, client } }) => {
+          if (appLoading) return null
 
-        return (
-          <ApolloProvider client={client}>
-            {!loggedIn ? (
-              <AuthNavigator />
-            ) : (
-              <Query query={getCurrentUserQuery} skip={!loggedIn}>
-                {({ data, networkStatus }) => {
-                  if (networkStatus === 1 || networkStatus === 2) return null
-                  if (!path(['user'], data)) return <AuthNavigator />
-                  if (!path(['user', 'interestedIn'], data)) return <Onboarding />
-                  return <AppNavigator />
-                }}
-              </Query>
-            )}
-          </ApolloProvider>
-        )
-      }}
-    </Subscribe>
-  </Provider>
-)
-
-export default App
+          return (
+            <ApolloProvider client={client}>
+              {!loggedIn ? (
+                <AuthNavigator />
+              ) : (
+                <Query query={getCurrentUserQuery} skip={!loggedIn}>
+                  {({ data, networkStatus }) => {
+                    if (networkStatus === 1 || networkStatus === 2) return null
+                    if (!path(['user'], data)) return <AuthNavigator />
+                    if (!path(['user', 'interestedIn'], data)) return <Onboarding />
+                    return <AppNavigator />
+                  }}
+                </Query>
+              )}
+            </ApolloProvider>
+          )
+        }}
+      </Subscribe>
+    </Provider>
+  )
+}

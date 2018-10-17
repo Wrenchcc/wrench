@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Animated } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { navigateToUser } from 'navigation'
@@ -56,12 +56,12 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
 }
 
 const CommentItem = props => props.item.repliesConnection ? (
-    <Fragment>
+    <>
       <Item {...props.item} onReply={props.onReply} t={props.t} />
       {props.item.repliesConnection.edges.map(({ node }) => (
         <Item key={node.id} isReply {...node} id={node.id} t={props.t} onReply={props.onReply} />
       ))}
-    </Fragment>
+    </>
 ) : (
     <Item {...props.item} t={props.t} onReply={props.onReply} />
 )
