@@ -5,18 +5,20 @@ import Text from 'ui/Text'
 import { follow } from 'images'
 import { Button, Icon } from './styles'
 
-const Follow = ({ onPress, following, t }) => (
-  <Button onPress={onPress} hapticFeedback="impactLight">
-    {following ? (
-      <>
-        <Icon source={follow} />
-        <Text medium>{t('Follow:unfollow')}</Text>
-      </>
-    ) : (
-      <Text medium>{t('Follow:follow')}</Text>
-    )}
-  </Button>
-)
+function Follow({ onPress, following, t }) {
+  return (
+    <Button onPress={onPress} hapticFeedback="impactLight">
+      {following ? (
+        <>
+          <Icon source={follow} />
+          <Text medium>{t('Follow:unfollow')}</Text>
+        </>
+      ) : (
+        <Text medium>{t('Follow:follow')}</Text>
+      )}
+    </Button>
+  )
+}
 
 Follow.propTypes = {
   onPress: PropTypes.func.isRequired,

@@ -14,10 +14,10 @@ const onPress = () => {
   return navigateToAddMedia()
 }
 
-const Add = props => (
-  <Button hitSlop={hitSlop(20)} onPress={onPress} {...props}>
-    <Image source={add} />
-  </Button>
-)
-
-export default Add
+export default function Add(props) {
+  return (
+    <Button hitSlop={hitSlop(20)} onPress={onPress} {...props}>
+      <Image source={add} />
+    </Button>
+  )
+}

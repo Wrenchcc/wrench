@@ -4,11 +4,13 @@ import { withNamespaces } from 'react-i18next'
 import { navigateToEditProject } from 'navigation'
 import { Text } from 'ui'
 
-const Edit = ({ t, project }) => (
-  <Text medium onPress={() => navigateToEditProject(project)}>
-    {t('Edit:edit')}
-  </Text>
-)
+function Edit({ t, project }) {
+  return (
+    <Text medium onPress={() => navigateToEditProject(project)}>
+      {t('Edit:edit')}
+    </Text>
+  )
+}
 
 Edit.propTypes = {
   project: PropTypes.object.isRequired,

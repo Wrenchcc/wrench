@@ -17,13 +17,15 @@ const getActionType = ({ type, selected, onPress }) => {
   }
 }
 
-const SelectionItem = ({ title, hasChildren, last, ...rest }) => (
-  <Base onPress={rest.onPress} disables={!rest.onPress} last={last}>
-    <Text color={last && 'orange'}>{title}</Text>
-    {hasChildren && <Icon source={arrowRight} />}
-    {getActionType(rest)}
-  </Base>
-)
+function SelectionItem({ title, hasChildren, last, ...rest }) {
+  return (
+    <Base onPress={rest.onPress} disables={!rest.onPress} last={last}>
+      <Text color={last && 'orange'}>{title}</Text>
+      {hasChildren && <Icon source={arrowRight} />}
+      {getActionType(rest)}
+    </Base>
+  )
+}
 
 SelectionItem.propTypes = {
   title: PropTypes.string,

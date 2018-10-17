@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { COLORS } from 'ui/constants'
 import { Field } from './styles'
 
-const Input = ({
+function Input({
   placeholder,
   autoFocus,
   noBorder,
@@ -11,21 +11,23 @@ const Input = ({
   selectionColor = COLORS.DARK,
   inputRef,
   ...props
-}) => (
-  <Field
-    autoCorrect={false}
-    autoFocus={autoFocus}
-    placeholder={placeholder}
-    placeholderTextColor={COLORS.LIGHT_GREY}
-    selectionColor={selectionColor}
-    noBorder={noBorder}
-    multiline={multiline}
-    keyboardAppearance="dark"
-    underlineColorAndroid="transparent"
-    {...props}
-    ref={inputRef}
-  />
-)
+}) {
+  return (
+    <Field
+      autoCorrect={false}
+      autoFocus={autoFocus}
+      placeholder={placeholder}
+      placeholderTextColor={COLORS.LIGHT_GREY}
+      selectionColor={selectionColor}
+      noBorder={noBorder}
+      multiline={multiline}
+      keyboardAppearance="dark"
+      underlineColorAndroid="transparent"
+      {...props}
+      ref={inputRef}
+    />
+  )
+}
 
 Input.propTypes = {
   placeholder: PropTypes.string,

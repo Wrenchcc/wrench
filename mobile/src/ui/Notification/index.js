@@ -41,24 +41,26 @@ const description = (data, t) => {
   }
 }
 
-const Notification = ({ data, t }) => (
-  <Base onPress={() => onPress(data)}>
-    <Avatar
-      uri={data.user.avatarUrl}
-      size={40}
-      onPress={() => navigateToUser({ user: data.user })}
-    />
-    <Content>
-      <Text onPress={() => navigateToUser({ user: data.user })}>{data.user.fullName}</Text>
-      <Bottom>
-        <Text color="light_grey" fontSize={15} onPress={() => onPress(data)}>
-          {description(data, t)}
-        </Text>
-        <TimeAgo date={data.createdAt} fontSize={15} />
-      </Bottom>
-    </Content>
-  </Base>
-)
+function Notification({ data, t }) {
+  return (
+    <Base onPress={() => onPress(data)}>
+      <Avatar
+        uri={data.user.avatarUrl}
+        size={40}
+        onPress={() => navigateToUser({ user: data.user })}
+      />
+      <Content>
+        <Text onPress={() => navigateToUser({ user: data.user })}>{data.user.fullName}</Text>
+        <Bottom>
+          <Text color="light_grey" fontSize={15} onPress={() => onPress(data)}>
+            {description(data, t)}
+          </Text>
+          <TimeAgo date={data.createdAt} fontSize={15} />
+        </Bottom>
+      </Content>
+    </Base>
+  )
+}
 
 Notification.propTypes = {
   data: PropTypes.object.isRequired,

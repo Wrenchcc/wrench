@@ -18,19 +18,21 @@ const onPressAction = type => {
   }
 }
 
-const EmptyState = ({ t, type = 'project' }) => (
-  <Base>
-    <Title>{t(`EmptyState:${type}:title`)}</Title>
-    <Description color="grey" lineHeight={25}>
-      {t(`EmptyState:${type}:description`)}
-    </Description>
-    <Button onPress={() => onPressAction(type)}>
-      <Text medium fontSize={15}>
-        {t(`EmptyState:${type}:button`)}
-      </Text>
-    </Button>
-  </Base>
-)
+function EmptyState({ t, type = 'project' }) {
+  return (
+    <Base>
+      <Title>{t(`EmptyState:${type}:title`)}</Title>
+      <Description color="grey" lineHeight={25}>
+        {t(`EmptyState:${type}:description`)}
+      </Description>
+      <Button onPress={() => onPressAction(type)}>
+        <Text medium fontSize={15}>
+          {t(`EmptyState:${type}:button`)}
+        </Text>
+      </Button>
+    </Base>
+  )
+}
 
 EmptyState.propTypes = {
   type: PropTypes.string,
