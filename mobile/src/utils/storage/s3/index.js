@@ -2,7 +2,7 @@ import { client } from 'graphql/createClient'
 import { preSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
 import makeS3Request from './makeS3Request'
 
-export default async files => {
+export const upload = async files => {
   const input = files.map(({ filename }) => ({ filename }))
 
   const { data } = await client.mutate({
