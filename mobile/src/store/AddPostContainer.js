@@ -2,7 +2,7 @@ import { Container } from 'unstated'
 import { CameraRoll } from 'react-native'
 import LocalStorage from 'utils/storage/local'
 
-const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectIndex2'
+const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectIndex'
 
 // TODO: Reset state better
 export default class AddPostContainer extends Container {
@@ -24,6 +24,10 @@ export default class AddPostContainer extends Container {
     if (selectedProjectIndex) {
       this.setState({ selectedProjectIndex })
     }
+  }
+
+  get selectedFile() {
+    return this.state.selectedFiles[this.state.selectedIndex]
   }
 
   resetState = () => {

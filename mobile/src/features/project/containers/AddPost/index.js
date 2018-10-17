@@ -8,7 +8,7 @@ import { withNamespaces } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
-import { upload } from 'utils/storage/s3'
+import { uploadFiles } from 'utils/storage/s3'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input } from 'ui'
@@ -23,7 +23,7 @@ class AddPost extends Component {
 
     InteractionManager.runAfterInteractions(async () => {
       try {
-        const uploadedFiles = await upload(selectedFiles)
+        const uploadedFiles = await uploadFiles(selectedFiles)
 
         await this.props.addPost({
           caption,

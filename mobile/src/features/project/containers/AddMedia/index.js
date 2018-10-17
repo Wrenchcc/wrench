@@ -16,40 +16,37 @@ export default function AddMedia() {
         closeSelectProject,
         onCropping,
         onTakePicture,
+        resetState,
+        selectedFile,
         state,
         toggleSelectProject,
-        resetState,
-      }) => {
-        const selectedImage = state.selectedFiles[state.selectedIndex]
+      }) => (
+        <Base>
+          <AddPostHeader
+            changeProject={changeProject}
+            closeSelectProject={closeSelectProject}
+            hasSelectedFiles={!!selectedFile}
+            resetState={resetState}
+            selectedProjectIndex={state.selectedProjectIndex}
+            selectProjectOpen={state.selectProjectOpen}
+            toggleSelectProject={toggleSelectProject}
+          />
 
-        return (
-          <Base>
-            <AddPostHeader
-              changeProject={changeProject}
-              closeSelectProject={closeSelectProject}
-              hasSelectedFiles={!!selectedImage}
-              resetState={resetState}
-              selectedProjectIndex={state.selectedProjectIndex}
-              selectProjectOpen={state.selectProjectOpen}
-              toggleSelectProject={toggleSelectProject}
-            />
+          <Placeholder>
+            {selectedFile ? (
+              <ImageEditor image={selectedFile} onCropping={onCropping} />
+            ) : (
+              <Camera onTakePicture={onTakePicture} />
+            )}
+          </Placeholder>
 
-            <Placeholder>
-              {selectedImage ? (
-                <ImageEditor image={selectedImage} onCropping={onCropping} />
-              ) : (
-                <Camera onTakePicture={onTakePicture} />
-              )}
-            </Placeholder>
-
-            <MediaPicker
-              onSelect={addSelectedFiles}
-              selectedFiles={state.selectedFiles}
-              selectedIndex={state.selectedIndex}
-            />
-          </Base>
-        )
-      }}
+          <MediaPicker
+            onSelect={addSelectedFiles}
+            selectedFiles={state.selectedFiles}
+            selectedIndex={state.selectedIndex}
+          />
+        </Base>
+      )}
     </Subscribe>
   )
 }

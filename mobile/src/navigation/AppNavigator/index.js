@@ -8,6 +8,8 @@ import Navigator from './navigator'
 
 class TabNavigator extends PureComponent {
   componentDidMount() {
+    // TODO: Implement directly in Navigation
+    // https://github.com/react-navigation/react-navigation/issues/4887
     handleDynamicLinks()
   }
 

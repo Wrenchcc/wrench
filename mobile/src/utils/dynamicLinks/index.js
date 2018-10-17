@@ -1,6 +1,6 @@
 import { links } from 'react-native-firebase'
 import { navigateBasedOnPath } from './path'
 
-export const handleDynamicLinks = () => {
+export function handleDynamicLinks() {
   links().onLink(navigateBasedOnPath)
 }
