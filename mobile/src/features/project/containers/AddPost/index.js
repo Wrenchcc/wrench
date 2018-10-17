@@ -33,12 +33,12 @@ class AddPost extends Component {
 
         track(events.POST_CREATED)
       } catch {
-        // showToastNotification({
-        //   kind: 'error',
-        //   id: 'post-error',
-        //   message: 'hello world',
-        //   dismissAfter: 2000,
-        // })
+        showNotification({
+          type: 'error',
+          message: 'hello world',
+          dismissAfter: 2000,
+        })
+
         track(events.POST_CREATED_FAILED)
       }
     })
@@ -51,7 +51,7 @@ class AddPost extends Component {
       <Subscribe to={[AddPostContainer, ToastNotification]}>
         {(
           { state, updateCaption, toggleSelectProject, changeProject, closeSelectProject },
-          showNotification
+          { showNotification }
         ) => (
           <>
             <AddPostHeader
