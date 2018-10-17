@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { InteractionManager, View } from 'react-native'
 import { Subscribe } from 'unstated'
-import { AddPostContainer } from 'store'
+import { AddPostContainer, ToastNotification } from 'store'
 import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
@@ -48,7 +48,7 @@ class AddPost extends Component {
     const { t } = this.props
 
     return (
-      <Subscribe to={[AddPostContainer]}>
+      <Subscribe to={[AddPostContainer, ToastNotification]}>
         {(
           { state, updateCaption, toggleSelectProject, changeProject, closeSelectProject },
           showNotification

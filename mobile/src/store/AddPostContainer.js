@@ -1,5 +1,6 @@
 import { Container } from 'unstated'
 import { CameraRoll } from 'react-native'
+import { assocPath } from 'ramda'
 import LocalStorage from 'utils/storage/local'
 
 const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectIndex'
@@ -66,12 +67,10 @@ export default class AddPostContainer extends Container {
   onCropping = crop => {
     const { selectedFiles, selectedIndex } = this.state
 
-    selectedFiles[selectedIndex] = {
-      ...selectedFiles[selectedIndex],
-      crop,
-    }
-
-    this.setState({ selectedFiles, selectedIndex: 0 })
+    this.setState({
+      selectedFiles: assocPath([selectedIndex, 'crop'], crop, selectedFiles),
+      selectedIndex: 0,
+    })
   }
 
   onTakePicture = async file => {
