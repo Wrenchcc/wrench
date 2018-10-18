@@ -77,8 +77,10 @@ export default class AddPostContainer extends Container {
 
   onTakePicture = async file => {
     const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
+
+    // TODO: generate filename and get size for cropping
     this.setState({
-      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
+      selectedFiles: [{ ...file, uri: savedFile, filename: 'new.jpg', new_camera_file: true }],
       selectedIndex: 0,
     })
   }

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { InteractionManager, View } from 'react-native'
+import { View } from 'react-native'
 import { Subscribe } from 'unstated'
 import { AddPostContainer, ToastNotification } from 'store'
 import { compose } from 'react-apollo'
@@ -18,7 +18,7 @@ class AddPost extends PureComponent {
     addPost: PropTypes.func.isRequired,
   }
 
-  addPost = ({ state, showPostProgress, resetState }, showNotification) => {
+  addPost = async ({ state, showPostProgress, resetState }, showNotification) => {
     navigateToFeed()
 
     showPostProgress({
@@ -26,31 +26,27 @@ class AddPost extends PureComponent {
       title: 'BMW R100 project',
     })
 
-    InteractionManager.runAfterInteractions(async () => {
-      try {
-        const uploadedFiles = await uploadFiles(state.selectedFiles)
+    try {
+      const uploadedFiles = await uploadFiles(state.selectedFiles)
 
-        await this.props
-          .addPost({
-            caption: state.caption,
-            projectId: state.selectedProjectId,
-            files: uploadedFiles,
-          })
-          .then(() => {
-            resetState()
-          })
-
-        track(events.POST_CREATED)
-      } catch {
-        showNotification({
-          type: 'error',
-          message: 'hello world',
-          dismissAfter: 2000,
+      await this.props
+        .addPost({
+          caption: state.caption,
+          projectId: state.selectedProjectId,
+          files: uploadedFiles,
         })
+        .then(resetState)
 
-        track(events.POST_CREATED_FAILED)
-      }
-    })
+      track(events.POST_CREATED)
+    } catch {
+      showNotification({
+        type: 'error',
+        message: 'hello world',
+        dismissAfter: 2000,
+      })
+
+      track(events.POST_CREATED_FAILED)
+    }
   }
 
   render() {
