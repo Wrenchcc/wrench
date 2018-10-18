@@ -3,16 +3,17 @@ import { CameraRoll } from 'react-native'
 import { assocPath } from 'ramda'
 import LocalStorage from 'utils/storage/local'
 
-const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId44'
+const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId'
 
 // TODO: Reset state better
 export default class AddPostContainer extends Container {
   state = {
+    caption: null,
+    postProgress: null,
     selectedFiles: [],
     selectedIndex: 0,
     selectedProjectId: null,
     selectProjectOpen: false,
-    caption: null,
   }
 
   constructor() {
@@ -33,11 +34,12 @@ export default class AddPostContainer extends Container {
 
   resetState = () => {
     this.setState({
+      caption: null,
+      postProgress: null,
       selectedFiles: [],
       selectedIndex: 0,
       selectedProjectId: null,
       selectProjectOpen: false,
-      caption: null,
     })
   }
 
@@ -79,5 +81,9 @@ export default class AddPostContainer extends Container {
       selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
       selectedIndex: 0,
     })
+  }
+
+  showPostProgress = data => {
+    this.setState({ postProgress: data })
   }
 }

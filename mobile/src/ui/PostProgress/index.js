@@ -1,59 +1,79 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
+import { Subscribe } from 'unstated'
+import { AddPostContainer } from 'store'
 import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
+import { onUploadProgress } from 'utils/storage/s3/uploadProgress'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Cover, Content } from './styles'
 
 const HEIGHT = 60
 
 class PostProgress extends PureComponent {
-  animatedHeight = new Animated.Value(0)
-
-  static propTypes = {
-    image: PropTypes.string,
-    progress: PropTypes.number,
-    title: PropTypes.string,
+  state = {
+    progress: 0,
   }
 
-  componentDidUpdate() {
-    this.handleAnimation(!this.props.image)
+  animatedHeight = new Animated.Value(HEIGHT)
+
+  constructor(props) {
+    super(props)
+    onUploadProgress(this.updateProgress)
   }
 
-  handleAnimation(hide) {
+  updateProgress = progress => {
+    this.setState({ progress })
+    if (progress === 100) {
+      this.setState({ progress: 0 })
+      this.hidePostProgress(true)
+    }
+  }
+
+  hidePostProgress() {
     Animated.spring(this.animatedHeight, {
-      toValue: hide ? 0 : HEIGHT,
+      toValue: 0,
       bounciness: 0,
     }).start()
   }
 
   render() {
-    const { t, title, image, progress = 0 } = this.props
+    const { t } = this.props
+    const { progress } = this.state
 
     return (
-      <Base style={{ height: this.animatedHeight }}>
-        <Inner>
-          {image && <Cover source={{ uri: image }} />}
+      <Subscribe to={[AddPostContainer]}>
+        {({ state: { postProgress } }) => {
+          if (!postProgress) {
+            this.animatedHeight.setValue(HEIGHT)
+            return null
+          }
 
-          <Content>
-            <Text numberOfLines={1}>{title}</Text>
-            <Text fontSize={15} color="grey">
-              {t('PostProgress:description')}
-            </Text>
-          </Content>
-        </Inner>
+          return (
+            <Base style={{ height: this.animatedHeight }}>
+              <Inner>
+                <Cover source={{ uri: postProgress.image }} />
 
-        <ProgressBar
-          barHeight={2}
-          progress={progress}
-          fillColor="black"
-          backgroundColor="transparent"
-        />
-      </Base>
+                <Content>
+                  <Text numberOfLines={1}>{postProgress.title}</Text>
+                  <Text fontSize={15} color="grey">
+                    {t('PostProgress:description')}
+                  </Text>
+                </Content>
+              </Inner>
+
+              <ProgressBar
+                barHeight={2}
+                progress={progress}
+                fillColor="black"
+                backgroundColor="transparent"
+              />
+            </Base>
+          )
+        }}
+      </Subscribe>
     )
   }
 }
 
-// TODO: HoC for Subscribe
 export default compose(withNamespaces('PostProgress'))(PostProgress)

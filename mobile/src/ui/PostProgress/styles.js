@@ -5,6 +5,7 @@ import { COLORS } from 'ui/constants'
 export const Base = styled(Animated.View)`
   background-color: ${COLORS.DIVIDER};
   width: 100%;
+  overflow: hidden;
 `
 
 export const Cover = styled.Image`

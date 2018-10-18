@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { InteractionManager, View } from 'react-native'
 import { Subscribe } from 'unstated'
@@ -13,23 +13,32 @@ import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input } from 'ui'
 
-class AddPost extends Component {
+class AddPost extends PureComponent {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
   }
 
-  addPost = ({ selectedFiles, selectedProjectId, caption }, showNotification) => {
+  addPost = ({ state, showPostProgress, resetState }, showNotification) => {
     navigateToFeed()
+
+    showPostProgress({
+      image: state.selectedFiles[0].uri,
+      title: 'BMW R100 project',
+    })
 
     InteractionManager.runAfterInteractions(async () => {
       try {
-        const uploadedFiles = await uploadFiles(selectedFiles)
+        const uploadedFiles = await uploadFiles(state.selectedFiles)
 
-        await this.props.addPost({
-          caption,
-          projectId: selectedProjectId,
-          files: uploadedFiles,
-        })
+        await this.props
+          .addPost({
+            caption: state.caption,
+            projectId: state.selectedProjectId,
+            files: uploadedFiles,
+          })
+          .then(() => {
+            resetState()
+          })
 
         track(events.POST_CREATED)
       } catch {
@@ -49,28 +58,25 @@ class AddPost extends Component {
 
     return (
       <Subscribe to={[AddPostContainer, ToastNotification]}>
-        {(
-          { state, updateCaption, toggleSelectProject, changeProject, closeSelectProject },
-          { showNotification }
-        ) => (
+        {(PostContainer, { showNotification }) => (
           <>
             <AddPostHeader
-              changeProject={changeProject}
-              closeSelectProject={closeSelectProject}
-              selectedProjectId={state.selectedProjectId}
-              selectProjectOpen={state.selectProjectOpen}
-              addPostAction={() => this.addPost(state, showNotification)}
-              toggleSelectProject={toggleSelectProject}
+              changeProject={PostContainer.changeProject}
+              closeSelectProject={PostContainer.closeSelectProject}
+              selectedProjectId={PostContainer.state.selectedProjectId}
+              selectProjectOpen={PostContainer.state.selectProjectOpen}
+              addPostAction={() => this.addPost(PostContainer, showNotification)}
+              toggleSelectProject={PostContainer.toggleSelectProject}
             />
             <View style={{ paddingLeft: 20, paddingRight: 20 }}>
-              <SelectedFiles selectedFiles={state.selectedFiles} />
+              <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
 
               <Input
                 autoFocus
                 color="dark"
-                onChangeText={updateCaption}
+                onChangeText={PostContainer.updateCaption}
                 placeholder={t('AddPost:placeholder')}
-                value={state.caption}
+                value={PostContainer.state.caption}
               />
             </View>
           </>

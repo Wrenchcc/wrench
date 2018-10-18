@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
+import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { navigateBack, navigateToAddPost } from 'navigation'
 import { Header, Dropdown, Icon, Text, ActionSheet } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeft } from 'images'
-import { pathOr } from 'ramda'
 import { Backdrop, Top } from './styles'
 
 function getProjectByIdOrFirst(id, projects) {

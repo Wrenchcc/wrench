@@ -32,11 +32,11 @@ export default class ProgressBar extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.progress >= 0 && this.props.progress !== prevProps.progress) {
-      this.update()
+      this.updateProgressBar()
     }
   }
 
-  update = () => {
+  updateProgressBar = () => {
     Animated.spring(this.state.progress, {
       toValue: this.props.progress,
       useNativeDive: true,
