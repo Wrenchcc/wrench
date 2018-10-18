@@ -9,10 +9,12 @@ import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Cover, Content } from './styles'
 
 const HEIGHT = 60
+const PROGRESS_DEFAULT = 0
+const PROGRESS_COMPLETE = 100
 
 class PostProgress extends PureComponent {
   state = {
-    progress: 0,
+    progress: PROGRESS_DEFAULT,
   }
 
   animatedHeight = new Animated.Value(HEIGHT)
@@ -24,8 +26,8 @@ class PostProgress extends PureComponent {
 
   updateProgress = progress => {
     this.setState({ progress })
-    if (progress === 100) {
-      this.setState({ progress: 0 })
+    if (progress === PROGRESS_COMPLETE) {
+      this.setState({ progress: PROGRESS_DEFAULT })
       this.hidePostProgress(true)
     }
   }
