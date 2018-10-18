@@ -67,7 +67,7 @@ export default class MediaPicker extends Component {
     if (!hasNextPage) return
 
     try {
-      const result = await CameraRoll.getPhotos({ first: PAGE_SIZE, after })
+      const result = await CameraRoll.getPhotos({ first: PAGE_SIZE, after, groupTypes: 'All' })
       const loadedFiles = result.edges.map(image => image.node.image)
 
       this.setState({
