@@ -26,6 +26,7 @@ class PostProgress extends PureComponent {
 
   updateProgress = progress => {
     this.setState({ progress })
+
     if (progress === PROGRESS_COMPLETE) {
       this.setState({ progress: PROGRESS_DEFAULT })
       this.hidePostProgress(true)

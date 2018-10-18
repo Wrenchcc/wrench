@@ -8,7 +8,6 @@ export function sendUploadProgress(id, progress) {
   emitter.emit(UPLOAD_PROGRESS, id, progress)
 }
 
-// TODO: Fix progress
 export function onUploadProgress(fn) {
   const totalProgress = {}
   emitter.on(UPLOAD_PROGRESS, (id, progress) => {
