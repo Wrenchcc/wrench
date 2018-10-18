@@ -18,7 +18,7 @@ class AddPost extends Component {
     addPost: PropTypes.func.isRequired,
   }
 
-  addPost = ({ selectedFiles, selectedProject, caption }, showNotification) => {
+  addPost = ({ selectedFiles, selectedProjectId, caption }, showNotification) => {
     navigateToFeed()
 
     InteractionManager.runAfterInteractions(async () => {
@@ -27,7 +27,7 @@ class AddPost extends Component {
 
         await this.props.addPost({
           caption,
-          projectId: selectedProject.id,
+          projectId: selectedProjectId,
           files: uploadedFiles,
         })
 
@@ -57,7 +57,7 @@ class AddPost extends Component {
             <AddPostHeader
               changeProject={changeProject}
               closeSelectProject={closeSelectProject}
-              selectedProjectIndex={state.selectedProjectIndex}
+              selectedProjectId={state.selectedProjectId}
               selectProjectOpen={state.selectProjectOpen}
               addPostAction={() => this.addPost(state, showNotification)}
               toggleSelectProject={toggleSelectProject}

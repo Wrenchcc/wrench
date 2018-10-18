@@ -5,11 +5,11 @@ import { Text, Followers } from 'ui'
 import { check } from 'images'
 import { Base, Cover, Middle, Content, Icon } from './styles'
 
-const Project = ({ id, images, title, followers, onPress, selected, index }) => {
+const Project = ({ id, images, title, followers, onPress, selected }) => {
   const image = pathOr(null, ['edges', 0, 'node'], images)
 
   return (
-    <Base key={id} onPress={() => onPress(index)}>
+    <Base key={id} onPress={() => onPress(id)}>
       <Cover source={image} />
 
       <Middle>
@@ -27,7 +27,6 @@ Project.propTypes = {
   followers: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   images: PropTypes.object,
-  index: PropTypes.number.isRequired,
   onPress: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,

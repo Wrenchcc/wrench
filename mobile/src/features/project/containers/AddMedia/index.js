@@ -27,7 +27,7 @@ export default function AddMedia() {
             closeSelectProject={closeSelectProject}
             hasSelectedFiles={!!selectedFile}
             resetState={resetState}
-            selectedProjectIndex={state.selectedProjectIndex}
+            selectedProjectId={state.selectedProjectId}
             selectProjectOpen={state.selectProjectOpen}
             toggleSelectProject={toggleSelectProject}
           />

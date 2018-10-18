@@ -3,14 +3,14 @@ import { CameraRoll } from 'react-native'
 import { assocPath } from 'ramda'
 import LocalStorage from 'utils/storage/local'
 
-const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectIndex'
+const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId44'
 
 // TODO: Reset state better
 export default class AddPostContainer extends Container {
   state = {
     selectedFiles: [],
     selectedIndex: 0,
-    selectedProjectIndex: 0,
+    selectedProjectId: null,
     selectProjectOpen: false,
     caption: null,
   }
@@ -21,9 +21,9 @@ export default class AddPostContainer extends Container {
   }
 
   loadInitialState = async () => {
-    const selectedProjectIndex = await LocalStorage.getItem(SELECTED_PROJECT_STORAGE_KEY)
-    if (selectedProjectIndex) {
-      this.setState({ selectedProjectIndex })
+    const selectedProjectId = await LocalStorage.getItem(SELECTED_PROJECT_STORAGE_KEY)
+    if (selectedProjectId) {
+      this.setState({ selectedProjectId })
     }
   }
 
@@ -35,7 +35,7 @@ export default class AddPostContainer extends Container {
     this.setState({
       selectedFiles: [],
       selectedIndex: 0,
-      selectedProjectIndex: 0,
+      selectedProjectId: null,
       selectProjectOpen: false,
       caption: null,
     })
@@ -53,10 +53,10 @@ export default class AddPostContainer extends Container {
     this.setState({ caption })
   }
 
-  changeProject = selectedProjectIndex => {
-    this.setState({ selectedProjectIndex }, () => {
+  changeProject = selectedProjectId => {
+    this.setState({ selectedProjectId }, () => {
       this.closeSelectProject()
-      LocalStorage.setItem(SELECTED_PROJECT_STORAGE_KEY, selectedProjectIndex)
+      LocalStorage.setItem(SELECTED_PROJECT_STORAGE_KEY, selectedProjectId)
     })
   }
 

@@ -12,7 +12,6 @@ const addPostMutation = gql`
   ${postInfoFragment}
 `
 
-// TODO: Trigger PostProgress done
 const addPostOptions = {
   props: ({ mutate }) => ({
     addPost: input => mutate({

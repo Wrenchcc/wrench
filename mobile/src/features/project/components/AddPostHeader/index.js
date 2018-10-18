@@ -7,7 +7,12 @@ import { navigateBack, navigateToAddPost } from 'navigation'
 import { Header, Dropdown, Icon, Text, ActionSheet } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeft } from 'images'
+import { pathOr } from 'ramda'
 import { Backdrop, Top } from './styles'
+
+function getProjectByIdOrFirst(id, projects) {
+  return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
+}
 
 class AddPostHeader extends PureComponent {
   state = {
@@ -21,7 +26,7 @@ class AddPostHeader extends PureComponent {
     hasSelectedFiles: PropTypes.bool,
     projects: PropTypes.array.isRequired,
     resetState: PropTypes.func,
-    selectedProjectIndex: PropTypes.number.isRequired,
+    selectedProjectId: PropTypes.string,
     selectProjectOpen: PropTypes.bool.isRequired,
     toggleSelectProject: PropTypes.func.isRequired,
   }
@@ -81,12 +86,14 @@ class AddPostHeader extends PureComponent {
       changeProject,
       closeSelectProject,
       projects,
-      selectedProjectIndex,
+      selectedProjectId,
       selectProjectOpen,
       addPostAction,
       t,
       toggleSelectProject,
     } = this.props
+
+    const { id, title } = getProjectByIdOrFirst(selectedProjectId, projects)
 
     return (
       <>
@@ -94,7 +101,7 @@ class AddPostHeader extends PureComponent {
 
         <Top>
           <Dropdown
-            title={projects[selectedProjectIndex].node.title}
+            title={title}
             onPress={toggleSelectProject}
             active={selectProjectOpen}
             darkMode={!!addPostAction}
@@ -105,7 +112,7 @@ class AddPostHeader extends PureComponent {
           expanded={selectProjectOpen}
           onPress={changeProject}
           projects={projects}
-          selectedProjectIndex={selectedProjectIndex}
+          selectedProjectId={id}
         />
 
         <Backdrop activeOpacity={1} onPress={closeSelectProject} active={selectProjectOpen} />

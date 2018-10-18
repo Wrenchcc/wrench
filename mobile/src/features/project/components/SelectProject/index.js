@@ -11,7 +11,7 @@ class SelectProject extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
     expanded: PropTypes.bool.isRequired,
-    selectedProjectIndex: PropTypes.number.isRequired,
+    selectedProjectId: PropTypes.string.isRequired,
     projects: PropTypes.array,
   }
 
@@ -40,16 +40,10 @@ class SelectProject extends Component {
   }
 
   renderProjects = () => {
-    const { projects, onPress, selectedProjectIndex } = this.props
+    const { projects, onPress, selectedProjectId } = this.props
 
-    return projects.map(({ node }, index) => (
-      <Project
-        key={node.id}
-        {...node}
-        onPress={onPress}
-        selected={selectedProjectIndex === index}
-        index={index}
-      />
+    return projects.map(({ node }) => (
+      <Project key={node.id} {...node} onPress={onPress} selected={selectedProjectId === node.id} />
     ))
   }
 

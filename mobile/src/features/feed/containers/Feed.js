@@ -42,12 +42,13 @@ class Feed extends PureComponent {
   }
 
   renderItem = ({ item }) => <Post post={item.node} />
-  // <PostProgress />
 
   render() {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
     return (
       <>
+        <PostProgress />
+
         <InfiniteListWithHandler
           scrollRef={ref => {
             scrollView = ref
