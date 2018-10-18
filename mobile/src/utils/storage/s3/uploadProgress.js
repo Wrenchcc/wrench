@@ -4,7 +4,7 @@ const emitter = new EventEmitter()
 
 const UPLOAD_PROGRESS = 'uploadProgress'
 
-export function sendUploadProgress(progress) {
+export function sendUploadProgress(id, progress) {
   emitter.emit(UPLOAD_PROGRESS, progress)
 }
 
