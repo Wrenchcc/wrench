@@ -8,11 +8,12 @@ import AskForPermission from 'features/project/components/AskForPermission'
 import MediaItem from './Item'
 
 const AUTHORIZED = 'authorized'
-const PHOTO_PERMISSION = 'photo'
+const GROUP_TYPES = 'All'
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 64
+const PHOTO_PERMISSION = 'photo'
 
 export default class MediaPicker extends Component {
   static propTypes = {
@@ -67,7 +68,11 @@ export default class MediaPicker extends Component {
     if (!hasNextPage) return
 
     try {
-      const result = await CameraRoll.getPhotos({ first: PAGE_SIZE, after, groupTypes: 'All' })
+      const result = await CameraRoll.getPhotos({
+        first: PAGE_SIZE,
+        after,
+        groupTypes: GROUP_TYPES,
+      })
       const loadedFiles = result.edges.map(image => image.node.image)
 
       this.setState({
