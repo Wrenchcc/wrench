@@ -64,12 +64,7 @@ class PostProgress extends PureComponent {
                 </Content>
               </Inner>
 
-              <ProgressBar
-                barHeight={2}
-                progress={progress}
-                fillColor="black"
-                backgroundColor="transparent"
-              />
+              <ProgressBar progress={progress} fillColor="black" backgroundColor="transparent" />
             </Base>
           )
         }}
