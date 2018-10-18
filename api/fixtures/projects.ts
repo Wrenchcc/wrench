@@ -3,13 +3,12 @@ import posts from './posts'
 import generateUser from './generateUser'
 import images from './images'
 import followers from './followers'
-import generateId from './generateId'
 
 export default () => [
   {
     cursor: Buffer.from('1').toString('base64'),
     node: {
-      id: generateId(),
+      id: '12-wefq2332r',
       slug: 'the-natural',
       title: 'BMW R100 Project',
       user: generateUser(),
@@ -29,7 +28,7 @@ export default () => [
   {
     cursor: Buffer.from('1').toString('base64'),
     node: {
-      id: generateId(),
+      id: '3223fwe32',
       slug: 'the-natural',
       title: 'My Honda CB650',
       user: generateUser(),
@@ -49,7 +48,7 @@ export default () => [
   {
     cursor: Buffer.from('1').toString('base64'),
     node: {
-      id: generateId(),
+      id: '23e2fwef',
       slug: 'the-natural',
       title: 'The Natural',
       user: generateUser(),
@@ -69,7 +68,7 @@ export default () => [
   {
     cursor: Buffer.from('1').toString('base64'),
     node: {
-      id: generateId(),
+      id: '23e23fwef',
       slug: 'the-natural',
       title: 'The Natural',
       user: generateUser(),
@@ -89,7 +88,7 @@ export default () => [
   {
     cursor: Buffer.from('1').toString('base64'),
     node: {
-      id: generateId(),
+      id: '23e23wefwefwefa',
       slug: 'the-natural',
       title: 'The Natural',
       user: generateUser(),
@@ -109,7 +108,7 @@ export default () => [
   {
     cursor: Buffer.from('1').toString('base64'),
     node: {
-      id: generateId(),
+      id: '456fwefwe',
       slug: 'the-natural',
       title: 'The Natural',
       user: generateUser(),
