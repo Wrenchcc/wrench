@@ -12,7 +12,7 @@ const GROUP_TYPES = 'All'
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 64
+const PAGE_SIZE = 32
 const PHOTO_PERMISSION = 'photo'
 
 export default class MediaPicker extends Component {
@@ -69,10 +69,11 @@ export default class MediaPicker extends Component {
 
     try {
       const result = await CameraRoll.getPhotos({
-        first: PAGE_SIZE,
         after,
+        first: PAGE_SIZE,
         groupTypes: GROUP_TYPES,
       })
+
       const loadedFiles = result.edges.map(image => image.node.image)
 
       this.setState({
@@ -128,9 +129,9 @@ export default class MediaPicker extends Component {
     return (
       <MediaItem
         item={item}
-        selected={isSelected}
-        order={selectedIndex + 1}
         onPress={this.toggleSelection}
+        order={selectedIndex + 1}
+        selected={isSelected}
       />
     )
   }
@@ -152,15 +153,15 @@ export default class MediaPicker extends Component {
 
     return (
       <FlatList
-        style={{ flex: 1 }}
-        ListFooterComponent={this.renderFooterLoader}
         contentContainerStyle={{ padding: 3 }}
-        numColumns={NUM_COLUMNS}
+        data={data}
         initialNumToRender={PAGE_SIZE}
+        keyExtractor={item => item.uri}
+        ListFooterComponent={this.renderFooterLoader}
+        numColumns={NUM_COLUMNS}
         onEndReached={this.onEndReached}
         renderItem={this.renderItem}
-        keyExtractor={item => item.uri}
-        data={data}
+        style={{ flex: 1 }}
       />
     )
   }

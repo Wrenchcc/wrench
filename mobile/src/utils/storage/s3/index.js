@@ -14,7 +14,7 @@ export const uploadFiles = async files => {
     data.preSignUrls.map(async ({ url, filename, type }, index) => {
       const { uri } = files[index]
       const file = { uri, filename, type }
-      return makeS3Request(url, file, index)
+      return makeS3Request(url, file)
     })
   )
 }
