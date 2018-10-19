@@ -1,53 +1,30 @@
-import React, { Component } from 'react'
-import { NetInfo, Animated } from 'react-native'
+import React from 'react'
+import { Spring } from 'react-spring'
 import { withNamespaces } from 'react-i18next'
+import { Subscribe } from 'unstated'
+import { ToastNotificationContainer } from 'store'
 import { Text } from 'ui'
-import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
+import { Base } from './styles'
 
-const HEIGHT = 40
+const FROM_HEIGHT = 0
+const TO_HEIGHT = 40
 
-class ToastNotification extends Component {
-  animatedHeight = new Animated.Value(0)
-
-  componentDidMount() {
-    NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
-  }
-
-  componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange)
-  }
-
-  handleConnectionChange = isConnected => {
-    this.handleAnimation(isConnected)
-  }
-
-  handleAnimation(hide) {
-    Animated.spring(this.animatedHeight, {
-      toValue: hide ? 0 : HEIGHT,
-      bounciness: 0,
-    }).start()
-  }
-
-  render() {
-    return (
-      <Animated.View
-        style={{
-          height: this.animatedHeight,
-          backgroundColor: COLORS.LIGHT_GREY,
-          justifyContent: 'center',
-          position: 'absolute',
-          top: TOTAL_HEADER_HEIGHT,
-          left: 0,
-          right: 0,
-          opacity: 0.98,
-        }}
-      >
-        <Text color="white" medium center fontSize={15}>
-          {this.props.t('ToastNotification:noConnection')}
-        </Text>
-      </Animated.View>
-    )
-  }
+function ToastNotification() {
+  return (
+    <Subscribe to={[ToastNotificationContainer]}>
+      {({ state: { message, type } }) => (
+        <Spring from={{ height: FROM_HEIGHT }} to={{ height: message ? TO_HEIGHT : FROM_HEIGHT }}>
+          {({ height }) => (
+            <Base height={height} type={type}>
+              <Text color="white" medium center fontSize={15}>
+                {message}
+              </Text>
+            </Base>
+          )}
+        </Spring>
+      )}
+    </Subscribe>
+  )
 }
 
 export default withNamespaces('ToastNotification')(ToastNotification)

@@ -1,6 +1,6 @@
 import { Container } from 'unstated'
 
-export default class ToastNotification extends Container {
+export default class ToastNotificationContainer extends Container {
   state = {
     message: null,
     type: 'default',
@@ -20,7 +20,6 @@ export default class ToastNotification extends Container {
   hideNotification = () => {
     this.setState({
       message: null,
-      type: 'default',
     })
   }
 }

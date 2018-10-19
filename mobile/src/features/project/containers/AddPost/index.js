@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { Subscribe } from 'unstated'
-import { AddPostContainer, ToastNotification } from 'store'
+import { AddPostContainer, ToastNotificationContainer } from 'store'
 import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
@@ -19,8 +19,10 @@ class AddPost extends PureComponent {
   }
 
   addPost = async ({ state, showPostProgress, resetState }, showNotification) => {
+    const { t } = this.props
     navigateToFeed()
 
+    // TODO: Use selectedProject
     showPostProgress({
       image: state.selectedFiles[0].uri,
       title: 'BMW R100 project',
@@ -41,8 +43,8 @@ class AddPost extends PureComponent {
     } catch {
       showNotification({
         type: 'error',
-        message: 'hello world',
-        dismissAfter: 2000,
+        message: t('AddPost:error'),
+        dismissAfter: 7000,
       })
 
       track(events.POST_CREATED_FAILED)
@@ -53,7 +55,7 @@ class AddPost extends PureComponent {
     const { t } = this.props
 
     return (
-      <Subscribe to={[AddPostContainer, ToastNotification]}>
+      <Subscribe to={[AddPostContainer, ToastNotificationContainer]}>
         {(PostContainer, { showNotification }) => (
           <>
             <AddPostHeader

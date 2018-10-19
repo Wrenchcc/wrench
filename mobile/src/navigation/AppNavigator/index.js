@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { setNavigationRef } from 'navigation'
 import { withNamespaces } from 'react-i18next'
-import { Gateway, Zoomable } from 'ui'
+import { Gateway, Zoomable, ToastNotification } from 'ui'
 import { handleDynamicLinks } from 'utils/dynamicLinks'
 import handleStatusBar from 'navigation/handleStatusBar'
 import Navigator from './navigator'
@@ -23,6 +23,7 @@ class TabNavigator extends PureComponent {
             screenProps={{ t }}
             onNavigationStateChange={handleStatusBar}
           />
+          <ToastNotification />
         </Zoomable.Provider>
       </Gateway.Provider>
     )

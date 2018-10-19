@@ -85,6 +85,7 @@
       "create": "Create a new project"
     },
     "AddPost": {
+      "error": "Couldn't post right now",
       "placeholder": "Add a text about your post"
     },
     "Comments": {
@@ -287,6 +288,7 @@
       "create": "Skapa ett nytt projekt"
     },
     "AddPost": {
+      "error": "Kunde inte dela just nu",
       "placeholder": "Skriv en text för ditt inlägg"
     },
     "Comments": {
