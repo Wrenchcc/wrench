@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { animated } from 'react-spring'
 import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
 
 function mapTypeToColor(type) {
@@ -12,8 +13,7 @@ function mapTypeToColor(type) {
   }
 }
 
-export const Base = styled.View`
-  height: ${props => props.height};
+export const Base = animated(styled.View`
   background-color: ${props => mapTypeToColor(props.type)};
   justify-content: center;
   position: absolute;
@@ -21,4 +21,4 @@ export const Base = styled.View`
   left: 0;
   right: 0;
   opacity: 0.98;
-`
+`)

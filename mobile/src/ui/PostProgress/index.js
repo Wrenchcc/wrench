@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react'
-import { Animated } from 'react-native'
-import { Subscribe } from 'unstated'
-import { AddPostContainer } from 'store'
 import { compose } from 'react-apollo'
+import { Spring } from 'react-spring'
 import { withNamespaces } from 'react-i18next'
+import { Subscribe } from 'unstated'
 import { onUploadProgress } from 'utils/storage/s3/uploadProgress'
+import { AddPostContainer } from 'store'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Cover, Content } from './styles'
 
-const HEIGHT = 60
+const FROM_HEIGHT = 0
+const TO_HEIGHT = 60
 const PROGRESS_DEFAULT = 0
 const PROGRESS_COMPLETE = 100
 
@@ -16,8 +17,6 @@ class PostProgress extends PureComponent {
   state = {
     progress: PROGRESS_DEFAULT,
   }
-
-  animatedHeight = new Animated.Value(HEIGHT)
 
   constructor(props) {
     super(props)
@@ -29,15 +28,7 @@ class PostProgress extends PureComponent {
 
     if (progress === PROGRESS_COMPLETE) {
       this.setState({ progress: PROGRESS_DEFAULT })
-      this.hidePostProgress(true)
     }
-  }
-
-  hidePostProgress() {
-    Animated.spring(this.animatedHeight, {
-      toValue: 0,
-      bounciness: 0,
-    }).start()
   }
 
   render() {
@@ -46,29 +37,30 @@ class PostProgress extends PureComponent {
 
     return (
       <Subscribe to={[AddPostContainer]}>
-        {({ state: { postProgress } }) => {
-          if (!postProgress) {
-            this.animatedHeight.setValue(HEIGHT)
-            return null
-          }
+        {({ state: { postProgress } }) => (
+          <Spring
+            native
+            from={{ height: FROM_HEIGHT }}
+            to={{ height: postProgress ? TO_HEIGHT : FROM_HEIGHT }}
+          >
+            {({ height }) => (
+              <Base height={height}>
+                <Inner>
+                  {postProgress && <Cover source={{ uri: postProgress.image }} />}
 
-          return (
-            <Base style={{ height: this.animatedHeight }}>
-              <Inner>
-                <Cover source={{ uri: postProgress.image }} />
+                  <Content>
+                    {postProgress && <Text numberOfLines={1}>{postProgress.title}</Text>}
+                    <Text fontSize={15} color="grey">
+                      {t('PostProgress:description')}
+                    </Text>
+                  </Content>
+                </Inner>
 
-                <Content>
-                  <Text numberOfLines={1}>{postProgress.title}</Text>
-                  <Text fontSize={15} color="grey">
-                    {t('PostProgress:description')}
-                  </Text>
-                </Content>
-              </Inner>
-
-              <ProgressBar progress={progress} fillColor="black" backgroundColor="transparent" />
-            </Base>
-          )
-        }}
+                <ProgressBar progress={progress} fillColor="black" backgroundColor="transparent" />
+              </Base>
+            )}
+          </Spring>
+        )}
       </Subscribe>
     )
   }

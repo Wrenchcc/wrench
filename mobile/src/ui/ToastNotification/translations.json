@@ -1,10 +1,10 @@
 {
-  "NetworkConnectivity": {
+  "ToastNotification": {
     "en": {
-      "noConnection": "No internet connection"
+      "networkError": "No internet connection"
     },
     "sv": {
-      "noConnection": "Ingen internetanslutning"
+      "networkError": "Ingen internetanslutning"
     }
   }
 }

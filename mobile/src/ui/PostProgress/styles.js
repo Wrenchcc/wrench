@@ -1,12 +1,13 @@
-import { Animated } from 'react-native'
 import styled from 'styled-components'
+import { animated } from 'react-spring'
 import { COLORS } from 'ui/constants'
 
-export const Base = styled(Animated.View)`
+export const Base = animated(styled.View`
   background-color: ${COLORS.DIVIDER};
   width: 100%;
   overflow: hidden;
-`
+  height: ${props => props.height};
+`)
 
 export const Cover = styled.Image`
   width: 40;

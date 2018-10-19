@@ -163,9 +163,6 @@
     "LoadNewer": {
       "button": "New posts"
     },
-    "NetworkConnectivity": {
-      "noConnection": "No internet connection"
-    },
     "Notification": {
       "follow": "Now follows",
       "comment": "Commented on your post",
@@ -193,6 +190,9 @@
     },
     "SearchBar": {
       "cancel": "Cancel"
+    },
+    "ToastNotification": {
+      "networkError": "No internet connection"
     },
     "UiUser": {
       "projects_0": "0 projects",
@@ -366,9 +366,6 @@
     "LoadNewer": {
       "button": "Nya inlägg"
     },
-    "NetworkConnectivity": {
-      "noConnection": "Ingen internetanslutning"
-    },
     "Notification": {
       "follow": "Följer nu",
       "comment": "Kommenterade på ditt inlägg",
@@ -396,6 +393,9 @@
     },
     "SearchBar": {
       "cancel": "Avbryt"
+    },
+    "ToastNotification": {
+      "networkError": "Ingen internetanslutning"
     },
     "UiUser": {
       "projects_0": "0 projekt",
