@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { COLORS } from 'ui/constants'
 import { Field } from './styles'
 
+// TODO: Upgrade to forwardRef when v4
 function Input({
   placeholder,
   autoFocus,
@@ -24,7 +25,7 @@ function Input({
       keyboardAppearance="dark"
       underlineColorAndroid="transparent"
       {...props}
-      ref={inputRef}
+      innerRef={inputRef}
     />
   )
 }
