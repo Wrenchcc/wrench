@@ -1,6 +1,7 @@
 import { MODAL, MODAL_STACK } from 'navigation'
 import AddPost from './containers/AddPost'
 import AddProject from './containers/AddProject'
+import AddProjectCategory from './containers/AddProjectCategory'
 import AddMedia from './containers/AddMedia'
 import Comments from './containers/Comments'
 import Followers from './containers/Followers'
@@ -33,6 +34,13 @@ export default {
     mode: MODAL,
     navigationOptions: {
       header: null,
+    },
+  },
+  [ROUTE_NAMES.ADD_PROJECT_CATEGORY]: {
+    component: AddProjectCategory,
+    mode: MODAL_STACK,
+    navigationOptions: {
+      headerTitle: 'Add project',
     },
   },
 }

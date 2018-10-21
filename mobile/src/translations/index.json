@@ -92,6 +92,9 @@
       "title": "Choose a title for your project.",
       "placeholder": "Ex. Black mamba"
     },
+    "AddProjectCategory": {
+      "title": "Pick your category"
+    },
     "Comments": {
       "title": "Comments"
     },
@@ -289,6 +292,9 @@
     "AddProject": {
       "title": "Välj en titel på ditt projekt.",
       "placeholder": "Ex. Black mamba"
+    },
+    "AddProjectCategory": {
+      "title": "Välj din kategori"
     },
     "Comments": {
       "title": "Kommentarer"

@@ -30,6 +30,7 @@ export const navigateBack = () => {
 export const navigateToAddPost = params => navigate('add-post', params)
 export const navigateToComments = params => navigate('comments', params)
 export const navigateToAddProject = params => navigate('add-project', params)
+export const navigateToAddProjectCategory = () => navigate('add-project-category')
 export const navigateToFeed = params => navigate('feed', params)
 export const navigateToFollowers = params => navigate('followers', params)
 export const navigateToOnboarding = () => navigate('onboarding')

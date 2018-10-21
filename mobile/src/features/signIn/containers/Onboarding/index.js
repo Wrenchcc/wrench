@@ -19,6 +19,7 @@ const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
+// TODO: Use ProjectCategories
 class Onboarding extends Component {
   static propTypes = {
     editUser: PropTypes.func.isRequired,

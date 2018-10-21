@@ -3,10 +3,11 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import { map } from 'ramda'
 import { trackScreen } from 'utils/analytics'
 import { COLORS } from 'ui/constants'
-import { TabBarComponent, SearchBar, Add } from 'ui'
+import { TabBarComponent, SearchBar } from 'ui'
 import SettingsButton from 'features/profile/components/SettingsButton'
 import { ROUTE_NAMES as PROFILE_ROUTE_NAMES } from 'features/profile/constants'
 import { ROUTE_NAMES as SEARCH_ROUTE_NAMES } from 'features/search/constants'
+import Add from 'features/project/components/Add'
 import { StackViewTransitionConfigs } from 'react-navigation-stack' // eslint-disable-line
 import { toTabRoute, toModalRoute, toStackRoute } from '../options'
 import { TAB_HEIGHT } from '../constants'

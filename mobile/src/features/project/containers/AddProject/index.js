@@ -3,6 +3,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddProjectContainer } from 'store'
+import { navigateToAddProjectCategory } from 'navigation'
 import { Title, Input } from 'ui'
 
 function AddProject({ t }) {
@@ -32,7 +33,7 @@ function AddProject({ t }) {
             color="dark"
             returnKeyType="next"
             enablesReturnKeyAutomatically
-            onSubmitEditing={() => console.log('navigate to next')}
+            onSubmitEditing={() => navigateToAddProjectCategory()}
           />
         </KeyboardAvoidingView>
       )}
