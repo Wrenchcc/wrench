@@ -3,12 +3,14 @@ import { View } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddProjectContainer } from 'store'
-import { Title, ProjectCategories } from 'ui'
+import { navigateToAddModel } from 'navigation'
+import { Title } from 'ui'
+import ProjectCategories from 'features/project/components/ProjectCategories'
 
 function AddProjectCategory({ t }) {
   return (
     <Subscribe to={[AddProjectContainer]}>
-      {({ state, updateField }) => (
+      {({ updateField }) => (
         <View
           style={{
             paddingTop: 30,
@@ -22,7 +24,12 @@ function AddProjectCategory({ t }) {
             {t('AddProjectCategory:title')}
           </Title>
 
-          <ProjectCategories />
+          <ProjectCategories
+            onSelect={category => {
+              updateField('model', category.id)
+              navigateToAddModel()
+            }}
+          />
         </View>
       )}
     </Subscribe>

@@ -95,6 +95,9 @@
     "AddProjectCategory": {
       "title": "Pick your category"
     },
+    "AddProjectModel": {
+      "title": "Search and pick your model."
+    },
     "Comments": {
       "title": "Comments"
     },
@@ -295,6 +298,9 @@
     },
     "AddProjectCategory": {
       "title": "Välj din kategori"
+    },
+    "AddProjectModel": {
+      "title": "Sök och välj din modell."
     },
     "Comments": {
       "title": "Kommentarer"
