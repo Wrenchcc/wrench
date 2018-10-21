@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
-import { navigateToEditProject } from 'navigation'
+import { navigateToAddProject } from 'navigation'
 import { Text } from 'ui'
 
 function Edit({ t, project }) {
   return (
-    <Text medium onPress={() => navigateToEditProject(project)}>
+    <Text medium onPress={() => navigateToAddProject(project)}>
       {t('Edit:edit')}
     </Text>
   )

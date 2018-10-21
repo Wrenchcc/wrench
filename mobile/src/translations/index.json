@@ -88,17 +88,12 @@
       "error": "Couldn't post right now",
       "placeholder": "Add a text about your post"
     },
+    "AddProject": {
+      "title": "Choose a title for your project.",
+      "placeholder": "Ex. Black mamba"
+    },
     "Comments": {
       "title": "Comments"
-    },
-    "EditProject": {
-      "title": "Create project",
-      "subTitle": "Information",
-      "add": "Add",
-      "inputTitle": "Title",
-      "inputBrand": "Brand",
-      "inputModel": "Model",
-      "inputYear": "Year"
     },
     "Followers": {
       "title": "Followers"
@@ -291,17 +286,12 @@
       "error": "Kunde inte dela just nu",
       "placeholder": "Skriv en text för ditt inlägg"
     },
+    "AddProject": {
+      "title": "Välj en titel på ditt projekt.",
+      "placeholder": "Ex. Black mamba"
+    },
     "Comments": {
       "title": "Kommentarer"
-    },
-    "EditProject": {
-      "title": "Skapa projekt",
-      "subTitle": "Information",
-      "add": "Lägg till",
-      "inputTitle": "Titel",
-      "inputBrand": "Märke",
-      "inputModel": "Modell",
-      "inputYear": "År"
     },
     "Followers": {
       "title": "Följare"

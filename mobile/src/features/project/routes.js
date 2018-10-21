@@ -1,8 +1,8 @@
 import { MODAL, MODAL_STACK } from 'navigation'
 import AddPost from './containers/AddPost'
+import AddProject from './containers/AddProject'
 import AddMedia from './containers/AddMedia'
 import Comments from './containers/Comments'
-import EditProject from './containers/EditProject'
 import Followers from './containers/Followers'
 import Project from './containers/Project'
 import { ROUTE_NAMES } from './constants'
@@ -25,11 +25,14 @@ export default {
       header: null,
     },
   },
-  [ROUTE_NAMES.EDIT_PROJECT]: {
-    component: EditProject,
-    mode: MODAL,
-  },
   [ROUTE_NAMES.FOLLOWERS]: {
     component: Followers,
+  },
+  [ROUTE_NAMES.ADD_PROJECT]: {
+    component: AddProject,
+    mode: MODAL,
+    navigationOptions: {
+      header: null,
+    },
   },
 }

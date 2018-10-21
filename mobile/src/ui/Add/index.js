@@ -1,15 +1,15 @@
 import React from 'react'
 import { Image } from 'react-native'
-import { navigateToAddMedia, navigateToEditProject } from 'navigation'
+import { navigateToAddMedia, navigateToAddProject } from 'navigation'
 import { add } from 'images'
 import hitSlop from 'utils/hitSlop'
 import { Button } from './styles'
 
 // TODO: If user have project -> Add Post != Create project
 const onPress = () => {
-  if (false) {
-    return navigateToEditProject()
-  }
+  // if (false) {
+  return navigateToAddProject()
+  // }
 
   return navigateToAddMedia()
 }

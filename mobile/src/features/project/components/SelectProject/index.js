@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { withNamespaces } from 'react-i18next'
-import { navigateToEditProject } from 'navigation'
+import { navigateToAddProject } from 'navigation'
 import { Text } from 'ui'
 import Project from './Project'
 import { Base, Scroll, NewProject, SPACER, BUTTON_HEIGHT, ITEM_HEIGHT } from './styles'
@@ -61,7 +61,7 @@ class SelectProject extends Component {
       >
         <Base>
           <Scroll>{this.renderProjects()}</Scroll>
-          <NewProject onPress={() => navigateToEditProject()}>
+          <NewProject onPress={() => navigateToAddProject()}>
             <Text medium>{t('SelectProject:create')}</Text>
           </NewProject>
         </Base>

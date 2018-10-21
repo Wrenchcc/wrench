@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
-import { navigateToEditProject, navigateToAddMedia } from 'navigation'
+import { navigateToAddProject, navigateToAddMedia } from 'navigation'
 import { Text } from 'ui'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
@@ -10,7 +10,7 @@ import { Base, Title, Description, Button } from './styles'
 const onPressAction = type => {
   switch (type) {
     case TYPES.PROJECT:
-      return () => navigateToEditProject()
+      return () => navigateToAddProject()
     case TYPES.POST:
       return () => navigateToAddMedia()
     default:
