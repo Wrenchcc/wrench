@@ -13,6 +13,7 @@ function AddProjectCategory({ t }) {
       {({ updateField }) => (
         <View
           style={{
+            flex: 1,
             paddingTop: 30,
           }}
         >
