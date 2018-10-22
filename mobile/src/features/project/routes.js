@@ -19,6 +19,9 @@ export default {
   [ROUTE_NAMES.ADD_MEDIA]: {
     component: AddMedia,
     mode: MODAL,
+    navigationOptions: {
+      header: null,
+    },
   },
   [ROUTE_NAMES.ADD_POST]: {
     component: AddPost,
@@ -33,22 +36,13 @@ export default {
   [ROUTE_NAMES.ADD_PROJECT]: {
     component: AddProject,
     mode: MODAL,
-    navigationOptions: {
-      header: null,
-    },
   },
   [ROUTE_NAMES.ADD_PROJECT_CATEGORY]: {
     component: AddProjectCategory,
     mode: MODAL_STACK,
-    // navigationOptions: {
-    //   headerTitle: 'Add project',
-    // },
   },
   [ROUTE_NAMES.ADD_PROJECT_MODEL]: {
     component: AddProjectModel,
     mode: MODAL_STACK,
-    // navigationOptions: {
-    //   headerTitle: 'Add project',
-    // },
   },
 }

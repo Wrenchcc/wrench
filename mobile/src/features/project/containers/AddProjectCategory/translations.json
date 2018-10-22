@@ -1,9 +1,11 @@
 {
   "AddProjectCategory": {
     "en": {
+      "headerTitle": "Add project",
       "title": "Pick your category"
     },
     "sv": {
+      "headerTitle": "Lägg till projekt",
       "title": "Välj din kategori"
     }
   }

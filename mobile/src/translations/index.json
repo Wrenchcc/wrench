@@ -89,13 +89,16 @@
       "placeholder": "Add a text about your post"
     },
     "AddProject": {
+      "headerTitle": "Add project",
       "title": "Choose a title for your project.",
       "placeholder": "Ex. Black mamba"
     },
     "AddProjectCategory": {
+      "headerTitle": "Add project",
       "title": "Pick your category"
     },
     "AddProjectModel": {
+      "headerTitle": "Add project",
       "title": "Search and pick your model."
     },
     "Comments": {
@@ -293,13 +296,16 @@
       "placeholder": "Skriv en text för ditt inlägg"
     },
     "AddProject": {
+      "headerTitle": "Lägg till projekt",
       "title": "Välj en titel på ditt projekt.",
       "placeholder": "Ex. Black mamba"
     },
     "AddProjectCategory": {
+      "headerTitle": "Lägg till projekt",
       "title": "Välj din kategori"
     },
     "AddProjectModel": {
+      "headerTitle": "Lägg till projekt",
       "title": "Sök och välj din modell."
     },
     "Comments": {

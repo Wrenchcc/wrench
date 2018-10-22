@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from 'ui'
-import { arrowLeft } from 'images'
+import { arrowLeft, closeDark } from 'images'
 import createTabBarIcon from './utils/createTabBarIcon'
 import styles from './styles'
 
@@ -24,7 +24,8 @@ export const toStackRoute = ({ navigationOptions = {}, component }) => ({
 export const toModalRoute = ({ navigationOptions = {}, component }) => ({
   screen: component,
   navigationOptions: {
-    header: null,
+    headerLeft: props => <Icon {...props} source={closeDark} />,
+    ...styles,
     ...navigationOptions,
   },
 })

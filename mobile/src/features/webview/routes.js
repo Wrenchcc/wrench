@@ -6,5 +6,8 @@ export default {
   [ROUTE_NAMES.WEBVIEW]: {
     component: WebView,
     mode: MODAL,
+    navigationOptions: {
+      header: null,
+    },
   },
 }

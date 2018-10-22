@@ -1,9 +1,11 @@
 {
   "AddProjectModel": {
     "en": {
+      "headerTitle": "Add project",
       "title": "Search and pick your model."
     },
     "sv": {
+      "headerTitle": "Lägg till projekt",
       "title": "Sök och välj din modell."
     }
   }
