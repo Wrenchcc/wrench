@@ -3459,10 +3459,10 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
-i18next@^11.10.0:
-  version "11.10.0"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-11.10.0.tgz#901231c840ba2bbf89b672a7f65d50fb2250626e"
-  integrity sha512-5ElF7gjvRztb7sxS9KOGQ7b8L6uJqysTuGNIwSEefVDE4yhEmIrD6SZB3Z90QtwLq9Ag7W6QJQGO/yAI8gPd1A==
+i18next@^11.10.1:
+  version "11.10.1"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-11.10.1.tgz#260d1114e94c0eedc330e5bd5624c77387376f19"
+  integrity sha512-cXSA0vc+jmpcQ4EKP+SFQ5WSKwTnEr3j5+SU5E5rpefhvfxSQ5Av5wCWqL7I5b8HJSWEiV9JtzYAMuVvxx7e1A==
 
 iconv-lite@0.4.23:
   version "0.4.23"
@@ -5393,10 +5393,10 @@ react-native-config@^0.11.5:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
   integrity sha512-u1ScTyJXsCZM8Kt8eVEZZw4vtbWOffwAv1HpMwGRRuerqQC99hTBOhFKGCvxPr6APHqYJO3vQYoad/Cjb5VGWw==
 
-react-native-device-info@0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.24.0.tgz#a6c2a8977229e1b94435e30469fa6af21a68f3ea"
-  integrity sha512-ab04CWcBeVJCAnjgYV2s1LscAypqJJxnt40EPdrQYe8J+nspUb9fNOPC+bfrJe3u8HKZuJ5dZmMAv29ANpl1Dw==
+react-native-device-info@0.24.2:
+  version "0.24.2"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.24.2.tgz#e1319f3bc59161d9566025e640bcf82934569121"
+  integrity sha512-FPwHlEL6e7Dp6xDjDc8dz6IX4LmtNTRpcoBtvOcA3jU6fB+djJCnhLCmEDMqV+ZkSs5Z6feFYys3+q9jxl6ajw==
 
 react-native-fast-image@^5.0.11:
   version "5.0.11"
