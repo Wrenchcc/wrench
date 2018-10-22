@@ -2,11 +2,13 @@
   "AddProjectModel": {
     "en": {
       "headerTitle": "Add project",
-      "title": "Search and pick your model."
+      "title": "Search and pick your model.",
+      "placeholder": "Ex. Honda 100 R 1994"
     },
     "sv": {
       "headerTitle": "Lägg till projekt",
-      "title": "Sök och välj din modell."
+      "title": "Sök och välj din modell.",
+      "placeholder": "Ex. Honda 100 R 1994"
     }
   }
 }

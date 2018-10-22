@@ -16,16 +16,16 @@ export default {
   [ROUTE_NAMES.COMMENTS]: {
     component: Comments,
   },
-  [ROUTE_NAMES.ADD_MEDIA]: {
-    component: AddMedia,
-    mode: MODAL,
+  [ROUTE_NAMES.ADD_POST]: {
+    component: AddPost,
+    mode: MODAL_STACK,
     navigationOptions: {
       header: null,
     },
   },
-  [ROUTE_NAMES.ADD_POST]: {
-    component: AddPost,
-    mode: MODAL_STACK,
+  [ROUTE_NAMES.ADD_MEDIA]: {
+    component: AddMedia,
+    mode: MODAL,
     navigationOptions: {
       header: null,
     },
@@ -36,13 +36,19 @@ export default {
   [ROUTE_NAMES.ADD_PROJECT]: {
     component: AddProject,
     mode: MODAL,
-  },
-  [ROUTE_NAMES.ADD_PROJECT_CATEGORY]: {
-    component: AddProjectCategory,
-    mode: MODAL_STACK,
+    navigationOptions: {
+      header: null,
+    },
   },
   [ROUTE_NAMES.ADD_PROJECT_MODEL]: {
     component: AddProjectModel,
+    mode: MODAL_STACK,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  [ROUTE_NAMES.ADD_PROJECT_CATEGORY]: {
+    component: AddProjectCategory,
     mode: MODAL_STACK,
   },
 }
