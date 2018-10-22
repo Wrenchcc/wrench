@@ -13,7 +13,6 @@ class AddProject extends PureComponent {
 
   render() {
     const { t } = this.props
-
     return (
       <Subscribe to={[AddProjectContainer]}>
         {({ state, updateField }) => (

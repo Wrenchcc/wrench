@@ -4,6 +4,7 @@ import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddProjectContainer } from 'store'
 import { Title, Input } from 'ui'
+import SearchModel from 'features/project/components/SearchModel'
 
 class AddProjectModel extends PureComponent {
   static navigationOptions = ({ screenProps }) => ({
@@ -26,6 +27,7 @@ class AddProjectModel extends PureComponent {
               paddingRight: 20,
             }}
           >
+            <SearchModel />
             <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
               {t('AddProjectModel:title')}
             </Title>
