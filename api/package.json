@@ -6,10 +6,10 @@
   },
   "dependencies": {
     "apollo-server": "^2.2.0-alpha.0",
-    "aws-sdk": "^2.339.0",
+    "aws-sdk": "^2.341.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
-    "firebase-admin": "^6.0.0",
+    "firebase-admin": "^6.1.0",
     "graphql": "^14.0.2",
     "graphql-date": "^1.0.3",
     "graphql-log": "^0.1.3",
