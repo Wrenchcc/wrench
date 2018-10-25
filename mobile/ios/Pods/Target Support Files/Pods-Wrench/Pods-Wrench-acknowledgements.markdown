@@ -109,6 +109,10 @@ Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is
 
 Copyright 2018 Google
 
+## FirebaseABTesting
+
+Copyright 2018 Google
+
 ## FirebaseAnalytics
 
 Copyright 2018 Google
@@ -942,6 +946,10 @@ Copyright 2018 Google
 
 
 ## FirebasePerformance
+
+Copyright 2018 Google
+
+## FirebaseRemoteConfig
 
 Copyright 2018 Google
 
