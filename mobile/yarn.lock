@@ -5637,10 +5637,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.0.0.tgz#b8dcaca31524e28cfb3d0d03f54f6d061b45e5bc"
-  integrity sha512-NLqoBd9qvxHj0gIYOpiB2gi0AMDKXwgQ3d6Z10mrqZgSroUMpLDSQ638wkfV3AqZ7GfYBcF84bAebbnv7skhmw==
+react-spring@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.0.tgz#bea4211d0543c13b07c334d374cfec9978b6df24"
+  integrity sha512-7LuX1IrYVz+nECMfn4vqr2IfY6rBHpka1cWYCQ4Wz+PVaTVEuvT0VJhjHmWdr9Bw8j63FSuvTTZX2mb4ZUSc/A==
   dependencies:
     "@babel/runtime" "^7.1.2"
 
