@@ -1,23 +1,20 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddProjectContainer } from 'store'
 import { navigateToAddModel } from 'navigation'
 import { Title } from 'ui'
+import { arrowLeft } from 'images'
+import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import ProjectCategories from 'features/project/components/ProjectCategories'
 
-class AddProjectCategory extends PureComponent {
-  static navigationOptions = ({ screenProps }) => ({
-    headerTitle: screenProps.t('AddProjectCategory:headerTitle'),
-  })
-
-  render() {
-    const { t } = this.props
-
-    return (
-      <Subscribe to={[AddProjectContainer]}>
-        {({ updateField }) => (
+function AddProjectCategory({ t }) {
+  return (
+    <Subscribe to={[AddProjectContainer]}>
+      {({ updateField }) => (
+        <>
+          <AddProjectHeader icon={arrowLeft} />
           <View
             style={{
               flex: 1,
@@ -34,15 +31,15 @@ class AddProjectCategory extends PureComponent {
 
             <ProjectCategories
               onSelect={category => {
-                updateField('model', category.id)
+                updateField('category', category)
                 navigateToAddModel()
               }}
             />
           </View>
-        )}
-      </Subscribe>
-    )
-  }
+        </>
+      )}
+    </Subscribe>
+  )
 }
 
 export default withNamespaces('AddProjectCategory')(AddProjectCategory)

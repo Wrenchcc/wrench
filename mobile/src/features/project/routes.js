@@ -50,5 +50,8 @@ export default {
   [ROUTE_NAMES.ADD_PROJECT_CATEGORY]: {
     component: AddProjectCategory,
     mode: MODAL_STACK,
+    navigationOptions: {
+      header: null,
+    },
   },
 }

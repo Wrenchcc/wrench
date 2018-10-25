@@ -7,7 +7,7 @@ function Header({ headerLeft, headerCenter, headerRight, transparent = true }) {
     <Base transparent={transparent}>
       <Left>{headerLeft}</Left>
       <Center>{headerCenter && headerCenter}</Center>
-      <Right>{headerRight}</Right>
+      <Right>{headerRight || null}</Right>
     </Base>
   )
 }

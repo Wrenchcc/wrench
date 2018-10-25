@@ -61,6 +61,11 @@
         "cancel": "Cancel"
       }
     },
+    "AddProjectHeader": {
+      "add": "Add",
+      "next": "Next",
+      "headerTitle": "Add project"
+    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -89,16 +94,13 @@
       "placeholder": "Add a text about your post"
     },
     "AddProject": {
-      "headerTitle": "Add project",
       "title": "Choose a title for your project.",
       "placeholder": "Ex. Black mamba"
     },
     "AddProjectCategory": {
-      "headerTitle": "Add project",
       "title": "Pick your category"
     },
     "AddProjectModel": {
-      "headerTitle": "Add project",
       "title": "Search and pick your model.",
       "placeholder": "Ex. Honda 100 R 1994"
     },
@@ -269,6 +271,11 @@
         "cancel": "Avbryt"
       }
     },
+    "AddProjectHeader": {
+      "add": "Lägg till",
+      "next": "Nästa",
+      "headerTitle": "Lägg till projekt"
+    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -297,16 +304,13 @@
       "placeholder": "Skriv en text för ditt inlägg"
     },
     "AddProject": {
-      "headerTitle": "Lägg till projekt",
       "title": "Välj en titel på ditt projekt.",
       "placeholder": "Ex. Black mamba"
     },
     "AddProjectCategory": {
-      "headerTitle": "Lägg till projekt",
       "title": "Välj din kategori"
     },
     "AddProjectModel": {
-      "headerTitle": "Lägg till projekt",
       "title": "Sök och välj din modell.",
       "placeholder": "Ex. Honda 100 R 1994"
     },

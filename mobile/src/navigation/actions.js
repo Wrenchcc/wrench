@@ -27,15 +27,15 @@ export const navigateBack = () => {
   )
 }
 
+export const navigateToAddMedia = () => navigate('add-media')
+export const navigateToAddModel = () => navigate('add-project-model')
 export const navigateToAddPost = params => navigate('add-post', params)
-export const navigateToComments = params => navigate('comments', params)
 export const navigateToAddProject = params => navigate('add-project', params)
 export const navigateToAddProjectCategory = () => navigate('add-project-category')
-export const navigateToAddModel = () => navigate('add-project-model')
+export const navigateToComments = params => navigate('comments', params)
 export const navigateToFeed = params => navigate('feed', params)
 export const navigateToFollowers = params => navigate('followers', params)
 export const navigateToOnboarding = () => navigate('onboarding')
-export const navigateToAddMedia = () => navigate('add-media')
 export const navigateToProject = params => navigate('project', params)
 export const navigateToSearch = params => navigate('search', params)
 export const navigateToSettings = () => navigate('settings')

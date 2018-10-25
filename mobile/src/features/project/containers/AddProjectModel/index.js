@@ -1,22 +1,22 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
+import { navigateToAddMedia } from 'navigation'
 import { AddProjectContainer } from 'store'
 import { Title, Input } from 'ui'
+import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
 
-class AddProjectModel extends PureComponent {
-  static navigationOptions = ({ screenProps }) => ({
-    headerTitle: screenProps.t('AddProjectModel:headerTitle'),
-  })
-
-  render() {
-    const { t } = this.props
-
-    return (
-      <Subscribe to={[AddProjectContainer]}>
-        {({ state, updateField }) => (
+function AddProjectModel({ t }) {
+  return (
+    <Subscribe to={[AddProjectContainer]}>
+      {({ state, updateField }) => (
+        <>
+          <AddProjectHeader
+            actionRight={state.model && (() => navigateToAddMedia())}
+            translationKey="add"
+          />
           <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={20}
@@ -27,7 +27,7 @@ class AddProjectModel extends PureComponent {
               paddingRight: 20,
             }}
           >
-            <SearchModel />
+            <SearchModel query={null} />
             <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
               {t('AddProjectModel:title')}
             </Title>
@@ -36,8 +36,8 @@ class AddProjectModel extends PureComponent {
               placeholder={t('AddProjectModel:placeholder')}
               autoFocus
               large
-              onChangeText={value => updateField('title', value)}
-              value={state.title}
+              onChangeText={value => updateField('model', value)}
+              value={state.model}
               borderColor="dark"
               color="dark"
               returnKeyType="next"
@@ -45,10 +45,10 @@ class AddProjectModel extends PureComponent {
               onSubmitEditing={() => console.log('here')}
             />
           </KeyboardAvoidingView>
-        )}
-      </Subscribe>
-    )
-  }
+        </>
+      )}
+    </Subscribe>
+  )
 }
 
 export default withNamespaces('AddProjectModel')(AddProjectModel)

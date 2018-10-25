@@ -19,6 +19,7 @@ export const Left = styled.View`
 
 export const Center = styled.View`
   flex: 2;
+  align-items: center;
 `
 
 export const Right = styled.View`

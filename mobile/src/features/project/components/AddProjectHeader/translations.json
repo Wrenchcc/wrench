@@ -1,0 +1,14 @@
+{
+  "AddProjectHeader": {
+    "en": {
+      "add": "Add",
+      "next": "Next",
+      "headerTitle": "Add project"
+    },
+    "sv": {
+      "add": "Lägg till",
+      "next": "Nästa",
+      "headerTitle": "Lägg till projekt"
+    }
+  }
+}

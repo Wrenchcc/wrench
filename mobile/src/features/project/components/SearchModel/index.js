@@ -42,6 +42,7 @@ class SearchModel extends Component {
 
   render() {
     const { query, users, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    if (!query) return null
 
     return (
       <View style={styles.container}>

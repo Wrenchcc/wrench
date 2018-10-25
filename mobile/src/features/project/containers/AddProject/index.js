@@ -1,21 +1,18 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddProjectContainer } from 'store'
 import { navigateToAddProjectCategory } from 'navigation'
 import { Title, Input } from 'ui'
+import AddProjectHeader from 'features/project/components/AddProjectHeader'
 
-class AddProject extends PureComponent {
-  static navigationOptions = ({ screenProps }) => ({
-    headerTitle: screenProps.t('AddProject:headerTitle'),
-  })
-
-  render() {
-    const { t } = this.props
-    return (
-      <Subscribe to={[AddProjectContainer]}>
-        {({ state, updateField }) => (
+function AddProject({ t }) {
+  return (
+    <Subscribe to={[AddProjectContainer]}>
+      {({ state, updateField }) => (
+        <>
+          <AddProjectHeader actionRight={state.title && (() => navigateToAddProjectCategory())} />
           <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={20}
@@ -42,10 +39,10 @@ class AddProject extends PureComponent {
               onSubmitEditing={() => navigateToAddProjectCategory()}
             />
           </KeyboardAvoidingView>
-        )}
-      </Subscribe>
-    )
-  }
+        </>
+      )}
+    </Subscribe>
+  )
 }
 
 export default withNamespaces('AddProject')(AddProject)
