@@ -1223,13 +1223,13 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-inmemory@^1.3.6:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.6.tgz#5761268c0f9f9d09df62cf3435046635e29b708b"
-  integrity sha512-ARSMDNFAPS1xLx79PrOFGd+iEFsC/pVusRbirA+p0AHVJSWyZdhW2fNy7RyFA+2pLbCFFgOgS2SoCq+JFu1RTA==
+apollo-cache-inmemory@^1.3.7:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.7.tgz#a9dabead5939e19068040c97c7c1009619a9df37"
+  integrity sha512-7AKGBuVRfgsjtq1yxcTWgpzi0WDVpjX2HJU9GFoYd+j7I253bSRn7YbwCNwkxyrH6ilSDU6JKm8DQ3QMA/z7rQ==
   dependencies:
-    apollo-cache "^1.1.18"
-    apollo-utilities "^1.0.22"
+    apollo-cache "^1.1.19"
+    apollo-utilities "^1.0.24"
     optimism "^0.6.6"
 
 apollo-cache@1.1.17:
@@ -1239,12 +1239,12 @@ apollo-cache@1.1.17:
   dependencies:
     apollo-utilities "^1.0.21"
 
-apollo-cache@^1.1.18:
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.18.tgz#384a7e1e39414fd2a09c80d5295d36f15c85b9ab"
-  integrity sha512-XZ17PxZw+FE75SKZcymsIqA5EetcmLxoHKXqvkGmWi4WZpVDX/hUoPTIUbRsGmHOfZfOokFviDOzOSnEdQo1Mw==
+apollo-cache@^1.1.19:
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.19.tgz#a9ff2b6c70ab888c29ea038d8642b5698f115a3a"
+  integrity sha512-p163+GVne1Gyw2v9L5kHEQhUhih7btWvyUFOl4uKf7brieqd4tHZt8ZA3vT1SaXbCeQZNSp/tFI3yFyi8RPKzw==
   dependencies:
-    apollo-utilities "^1.0.22"
+    apollo-utilities "^1.0.24"
 
 apollo-client@2.4.2:
   version "2.4.2"
@@ -1321,10 +1321,17 @@ apollo-utilities@1.0.21, apollo-utilities@^1.0.0:
     fast-json-stable-stringify "^2.0.0"
     fclone "^1.0.11"
 
-apollo-utilities@^1.0.21, apollo-utilities@^1.0.22:
+apollo-utilities@^1.0.21:
   version "1.0.23"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.23.tgz#9416e5da31cc8d9d46502de6f90aa1447cd368c6"
   integrity sha512-RW65kZZxSEysvzm5YBrNU6SvE+Z62VQ+lpxYX/3d9pZYsMBkaMdfr3OnUwGKt/MqUsDfUb/LLoXpMRhKukMpeQ==
+  dependencies:
+    fast-json-stable-stringify "^2.0.0"
+
+apollo-utilities@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.24.tgz#77d2d3008bb9ee52aa76b799ce7a8d6cb6cf8a1c"
+  integrity sha512-cOXtrkio3wKfggp/zKCzQYxSZZRND/njNVmUksM1cckoJF3g/2o3bhh6z0HPhNhee8qzJzVXtl+3vmwXYGh0Gg==
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
@@ -5357,10 +5364,10 @@ react-dom@^16.7.0-alpha.0:
     prop-types "^15.6.2"
     scheduler "^0.11.0-alpha.0"
 
-react-i18next@^8.1.2:
-  version "8.1.2"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.1.2.tgz#3c33ab9179f9db7b9eaff74e7922dc433857d6aa"
-  integrity sha512-3aqECwQlk7fg8MLq6yf8ZC29iOTxmGtuHLw5UyfslmX5OsOB5d+NQme//4nRVDVntKEgrIzss/8VaAVpj3dgoA==
+react-i18next@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.3.0.tgz#4f8fe1e4d766e615c57046939f81bf078cfc82ac"
+  integrity sha512-y9DUky9rXW0R6JjRjHJgBxI5lT/c/AH78cQ5P/IN2OCDV0T4NLFPaU2pSg3bfqBdmPefTRJq2ZJIxG9rNm+avQ==
   dependencies:
     "@babel/runtime" "^7.1.2"
     create-react-context "0.2.3"
@@ -5470,10 +5477,10 @@ react-native-permissions@^1.1.1:
   resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.1.1.tgz#4876004681ff8556454613d85249b01baff9b35b"
   integrity sha512-t0Ujm177bagjUOSzhpmkSz+LqFW04HnY9TeZFavDCmV521fQvFz82aD+POXqWsAdsJVOK3umJYBNNqCjC3g0hQ==
 
-react-native-rate@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/react-native-rate/-/react-native-rate-1.1.3.tgz#99eede7a0150a69b156f4d1be577012413eb225c"
-  integrity sha512-HDhcqarLpZI/drfgG4lfG4pVKmakaaL3gDfcptDUfpiq/aMdX9l7pqEHeAjLngL9aqrVq1RYx9RKu/9RkV0eKQ==
+react-native-rate@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-rate/-/react-native-rate-1.1.5.tgz#75fea0b11b03a17ca158bd92d5272e47704e3dec"
+  integrity sha512-qGHCNctWYTp9xzrtA+Z1nZyQOS/hohT5b4ELX6s45CH8SGgw6kn6LDMGGKGThPFQf0+2N9GAGEmA52gnV+uGzw==
 
 react-native-safe-area-view@0.11.0:
   version "0.11.0"
@@ -5637,10 +5644,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.0.tgz#bea4211d0543c13b07c334d374cfec9978b6df24"
-  integrity sha512-7LuX1IrYVz+nECMfn4vqr2IfY6rBHpka1cWYCQ4Wz+PVaTVEuvT0VJhjHmWdr9Bw8j63FSuvTTZX2mb4ZUSc/A==
+react-spring@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.2.tgz#34aeb46b1f3c6aa217ca8ea2bfb9e5267af84bab"
+  integrity sha512-Vq52t6ZHl6x2dUhGkbVh7v0tuvO6Z6ju6HojIHx4uLIDVBQCVVgUFehJixWaYGpMSp5pUWy6apI/X60E83A1Wg==
   dependencies:
     "@babel/runtime" "^7.1.2"
 
