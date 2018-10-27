@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { COLORS } from 'ui/constants'
 import { Field } from './styles'
 
-// TODO: Upgrade to forwardRef when v4
 function Input({
   placeholder,
   autoFocus,
@@ -24,8 +23,8 @@ function Input({
       multiline={multiline}
       keyboardAppearance="dark"
       underlineColorAndroid="transparent"
+      ref={inputRef}
       {...props}
-      innerRef={inputRef}
     />
   )
 }
@@ -36,7 +35,7 @@ Input.propTypes = {
   noBorder: PropTypes.bool,
   multiline: PropTypes.bool,
   selectionColor: PropTypes.string,
-  inputRef: PropTypes.func,
+  inputRef: PropTypes.object,
 }
 
 export default Input

@@ -12,6 +12,8 @@ const TRIGGER = '@'
 const EMPTY = ' '
 
 class CommentField extends PureComponent {
+  textInput = React.createRef()
+
   static propTypes = {
     disabled: PropTypes.bool.isRequired,
     onSubmit: PropTypes.func.isRequired,
@@ -21,7 +23,6 @@ class CommentField extends PureComponent {
     closeMention: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     onRef: PropTypes.func.isRequired,
-    inputRef: PropTypes.func,
   }
 
   componentWillMount() {
@@ -56,12 +57,8 @@ class CommentField extends PureComponent {
     this.identifyKeyword(text)
   }
 
-  setRef = el => {
-    this.textInput = el
-  }
-
   focus = () => {
-    this.textInput.focus()
+    this.textInput.current.focus()
   }
 
   startTracking = () => {
@@ -91,18 +88,18 @@ class CommentField extends PureComponent {
   }
 
   render() {
-    const { t, disabled, onSubmit, inputRef, onChangeText, ...props } = this.props
+    const { t, disabled, onSubmit, onChangeText, ...props } = this.props
     return (
       <Base>
         <Input
           placeholder={t('CommentField:placeholder')}
           placeholderTextColor={COLORS.LIGHT_GREY}
           keyboardType="twitter"
-          inputRef={this.setRef}
           onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
           onChangeText={this.onChangeText}
           value={this.props.value}
           color="dark"
+          inputRef={this.textInput}
           {...props}
         />
         {!disabled && (
