@@ -5864,10 +5864,10 @@ react-native-fbsdk@^0.8.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
-react-native-firebase@^5.1.0-rc1:
-  version "5.1.0-rc1"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.1.0-rc1.tgz#617e5d3b7a511213e3cb884f6b7d6d3b75ad6b30"
-  integrity sha512-NRNfa+jKEQ6Q0YG1/ugtti46hXj2/og06bhoZB7Ic2b0OxQ2YjzsogYKxdwXbaOtapa0QG+G64eRRxXuju8HeQ==
+react-native-firebase@^5.1.0-rc2:
+  version "5.1.0-rc2"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.1.0-rc2.tgz#73284cc86750ef434a8666183c43a65d225ce812"
+  integrity sha512-8OfoxgHvoLIDBtpwV1Buyh6pPqOzkskKtafcIFzF6zR+xXwU2W50D2LDj+dXiSynMhG6EgKfea+bj19Ueq9YkQ==
   dependencies:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
