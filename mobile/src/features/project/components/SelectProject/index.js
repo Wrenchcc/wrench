@@ -1,18 +1,19 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
+import { Animated, InteractionManager } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { navigateToAddProject } from 'navigation'
 import { Text } from 'ui'
 import Project from './Project'
 import { Base, Scroll, NewProject, SPACER, BUTTON_HEIGHT, ITEM_HEIGHT } from './styles'
 
-class SelectProject extends Component {
+class SelectProject extends PureComponent {
   static propTypes = {
-    onPress: PropTypes.func.isRequired,
     expanded: PropTypes.bool.isRequired,
-    selectedProjectId: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onPress: PropTypes.func.isRequired,
     projects: PropTypes.array,
+    selectedProjectId: PropTypes.string.isRequired,
   }
 
   state = {
@@ -47,6 +48,13 @@ class SelectProject extends Component {
     ))
   }
 
+  handleNewProject = () => {
+    navigateToAddProject()
+    InteractionManager.runAfterInteractions(() => {
+      this.props.onClose()
+    })
+  }
+
   render() {
     const { t } = this.props
     return (
@@ -61,7 +69,7 @@ class SelectProject extends Component {
       >
         <Base>
           <Scroll>{this.renderProjects()}</Scroll>
-          <NewProject onPress={() => navigateToAddProject()}>
+          <NewProject onPress={this.handleNewProject}>
             <Text medium>{t('SelectProject:create')}</Text>
           </NewProject>
         </Base>

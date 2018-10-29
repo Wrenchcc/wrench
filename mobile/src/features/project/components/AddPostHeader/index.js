@@ -113,6 +113,7 @@ class AddPostHeader extends PureComponent {
           onPress={changeProject}
           projects={projects}
           selectedProjectId={id}
+          onClose={closeSelectProject}
         />
 
         <Backdrop activeOpacity={1} onPress={closeSelectProject} active={selectProjectOpen} />
