@@ -5,7 +5,7 @@
   "scripts": {
     "start:api": "node api/dist/server.js",
     "build:api": "cross-env DEBUG=build* cross-env DIR=api webpack",
-    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts"
+    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=build*,api* dotenv -e api/.env -- nodemon --watch api -e ts -x ts-node -r tsconfig-paths/register api/index.ts"
   },
   "devDependencies": {
     "@types/node": "^10.12.0",
