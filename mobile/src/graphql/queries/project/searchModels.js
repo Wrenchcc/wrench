@@ -1,35 +1,38 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
-import userInfoFragment from 'graphql/fragments/user/userInfo'
+import projectInfoFragment from 'graphql/fragments/project/projectInfo'
+import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
 export const searchModelsQuery = gql`
-  query searchModels($query: String!, $type: SearchType!) {
-    users: search(query: $query, type: $type) {
+  query searchProjects($query: String!) {
+    projects: search(query: $query) {
       pageInfo {
         hasNextPage
       }
       edges {
         node {
-          ... on User {
-            ...userInfo
+          ... on Project {
+            ...projectInfo
+            ...projectCover
           }
         }
       }
     }
   }
-  ${userInfoFragment}
+  ${projectInfoFragment}
+  ${projectCoverFragment}
 `
 
 const searchModelsOptions = {
-  options: ({ query = '' }) => ({
+  options: ({ query = '' }) => console.log(query) || {
     variables: {
       query,
-      type: 'USERS',
+      type: 'PROJECTS',
     },
     fetchPolicy: 'cache-and-network',
-  }),
-  props: mapListProps('users'),
+  },
+  props: mapListProps('models'),
 }
 
-export const searchUsers = graphql(searchModelsQuery, searchModelsOptions)
+export const searchModels = graphql(searchModelsQuery, searchModelsOptions)

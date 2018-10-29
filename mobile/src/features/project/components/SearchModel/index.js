@@ -19,7 +19,7 @@ const styles = {
 
 class SearchModel extends Component {
   static propTypes = {
-    users: PropTypes.array,
+    models: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
     refetch: PropTypes.func.isRequired,
     isRefetching: PropTypes.bool.isRequired,
@@ -41,7 +41,7 @@ class SearchModel extends Component {
   }
 
   render() {
-    const { query, users, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { query, models, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
     if (!query) return null
 
     return (
@@ -50,7 +50,7 @@ class SearchModel extends Component {
           defaultPadding
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"
-          data={users}
+          data={models}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
@@ -65,4 +65,4 @@ class SearchModel extends Component {
   }
 }
 
-export default SearchModel
+export default compose(searchModels)(SearchModel)

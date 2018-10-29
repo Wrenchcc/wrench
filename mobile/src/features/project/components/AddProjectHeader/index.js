@@ -26,7 +26,7 @@ function AddProjectHeader({ t, actionRight, icon = closeDark, translationKey = '
 }
 
 AddProjectHeader.propTypes = {
-  actionRight: PropTypes.func,
+  actionRight: PropTypes.any,
   icon: PropTypes.number,
   translationKey: PropTypes.string,
 }

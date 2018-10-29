@@ -8,6 +8,7 @@ import { Title, Input } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
 
+// TODO: Show add when selected suggestion from list
 function AddProjectModel({ t }) {
   return (
     <Subscribe to={[AddProjectContainer]}>
@@ -27,7 +28,7 @@ function AddProjectModel({ t }) {
               paddingRight: 20,
             }}
           >
-            <SearchModel query={null} />
+            <SearchModel query={state.model} />
             <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
               {t('AddProjectModel:title')}
             </Title>
