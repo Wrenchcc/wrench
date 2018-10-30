@@ -535,7 +535,7 @@ apollo-server-plugin-base@0.1.0-register.2195+e44b5bd:
   resolved "https://registry.yarnpkg.com/apollo-server-plugin-base/-/apollo-server-plugin-base-0.1.0-register.2195.tgz#34927d21551b427d90b39c9e708d0128c08320e5"
   integrity sha512-RGsrv15mVy10ZDS8SjIvcY2khrYGFNqHMCtwqRLMUlbMCrDEDnN6uB3qktYzErxfvyVkW3xv99oesERzKqQgWA==
 
-apollo-server@^2.2.0-alpha.0:
+apollo-server@^2.2.0-alpha.1:
   version "2.2.0-register.2195"
   resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-2.2.0-register.2195.tgz#5c64e57f47eecd48c58e1fd2c6526d7d6e6b5755"
   integrity sha512-Wq3EA9jWLsVN2vCaYwRdNSyXQ8uDm0PcYwt19GbNM1RlGIEQHP8q6Yp+1G/oyjZUvaXuahaLAUdFuEpTLZnktw==
