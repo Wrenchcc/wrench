@@ -2,9 +2,10 @@ export default `
   enum SearchType {
     PROJECTS
     USERS
+    MODELS
   }
 
-  union SearchResultNode = Project | User
+  union SearchResultNode = Project | User | Model
 
   type SearchResultEdge {
     cursor: String!

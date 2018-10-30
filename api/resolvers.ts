@@ -12,11 +12,25 @@ import pageInfo from './fixtures/pageInfo'
 import posts from './fixtures/posts'
 import projectCategories from './fixtures/projectCategories'
 import projects from './fixtures/projects'
+import models from './fixtures/models'
 import projectsConnection from './fixtures/projectsConnection'
 import projectSuggestions from './fixtures/projectSuggestions'
 import settings from './fixtures/settings'
 import toggleNotificationSettings from './mutations/user/toggleNotificationSettings'
 import users from './fixtures/users'
+
+const getSearchEdge = type => {
+  if (type === 'USERS') {
+    return users()
+  }
+  if (type === 'PROJECTS') {
+    return projects()
+  }
+
+  if (type === 'MODELS') {
+    return models()
+  }
+}
 
 // TODO: Change to sub queries and mutations in directories
 const postsConnection = {
@@ -90,17 +104,21 @@ export default {
     }),
     search: (root, { query, type }, ctx, info) => ({
       pageInfo,
-      edges: type === 'USERS' ? users() : projects(),
+      edges: getSearchEdge(type),
     }),
   },
   SearchResultNode: {
-    __resolveType(obj, context, info) {
-      if (obj.username) {
+    __resolveType(root, context, info) {
+      if (root.username) {
         return 'User'
       }
 
-      if (obj.slug) {
+      if (root.slug) {
         return 'Project'
+      }
+
+      if (root.model) {
+        return 'Model'
       }
 
       return null

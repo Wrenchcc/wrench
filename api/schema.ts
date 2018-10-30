@@ -6,15 +6,16 @@ import generalTypes from './types/general'
 // Types
 import Auth from './types/Auth'
 import Comment from './types/Comment'
-import Reply from './types/Reply'
+import Followers from './types/Followers'
+import Image from './types/Image'
+import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
 import Project from './types/Project'
-import Followers from './types/Followers'
+import Reply from './types/Reply'
 import Search from './types/Search'
-import User from './types/User'
-import Image from './types/Image'
 import Upload from './types/Upload'
+import User from './types/User'
 
 // Resolvers
 import resolvers from './resolvers'
@@ -59,6 +60,7 @@ export default makeExecutableSchema({
     generalTypes,
     Root,
     Auth,
+    Model,
     Comment,
     Reply,
     Notification,
