@@ -1,37 +1,34 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
-import projectInfoFragment from 'graphql/fragments/project/projectInfo'
-import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
 export const searchModelsQuery = gql`
-  query searchProjects($query: String!) {
-    projects: search(query: $query) {
+  query searchModels($query: String!, $type: SearchType!) {
+    models: search(query: $query, type: $type) {
       pageInfo {
         hasNextPage
       }
       edges {
         node {
-          ... on Project {
-            ...projectInfo
-            ...projectCover
+          ... on Model {
+            brand
+            model
+            year
           }
         }
       }
     }
   }
-  ${projectInfoFragment}
-  ${projectCoverFragment}
 `
 
 const searchModelsOptions = {
-  options: ({ query = '' }) => console.log(query) || {
+  options: ({ query = '' }) => ({
     variables: {
       query,
-      type: 'PROJECTS',
+      type: 'MODELS',
     },
     fetchPolicy: 'cache-and-network',
-  },
+  }),
   props: mapListProps('models'),
 }
 
