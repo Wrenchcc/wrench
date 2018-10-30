@@ -5,6 +5,7 @@ import { Subscribe } from 'unstated'
 import { navigateToAddMedia } from 'navigation'
 import { AddProjectContainer } from 'store'
 import { Title, Input } from 'ui'
+import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
 
@@ -17,6 +18,7 @@ function AddProjectModel({ t }) {
           <AddProjectHeader
             actionRight={state.model && (() => navigateToAddMedia())}
             translationKey="add"
+            icon={arrowLeft}
           />
           <KeyboardAvoidingView
             behavior="padding"
