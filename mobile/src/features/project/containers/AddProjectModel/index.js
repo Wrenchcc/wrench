@@ -9,7 +9,6 @@ import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
 
-// TODO: Show add when selected suggestion from list
 function AddProjectModel({ t }) {
   return (
     <Subscribe to={[AddProjectContainer]}>
@@ -30,7 +29,9 @@ function AddProjectModel({ t }) {
               paddingRight: 20,
             }}
           >
-            <SearchModel query={state.model} />
+            {state.isSearching && (
+              <SearchModel query={state.query} onPress={model => updateField('model', model)} />
+            )}
             <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
               {t('AddProjectModel:title')}
             </Title>
@@ -39,8 +40,8 @@ function AddProjectModel({ t }) {
               placeholder={t('AddProjectModel:placeholder')}
               autoFocus
               large
-              onChangeText={value => updateField('model', value)}
-              value={state.model}
+              onChangeText={value => updateField('query', value)}
+              value={state.model ? `${state.model.brand} ${state.model.model}` : state.query}
               borderColor="dark"
               color="dark"
               returnKeyType="next"

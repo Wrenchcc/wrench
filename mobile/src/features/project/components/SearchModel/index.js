@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
-import { InfiniteList } from 'ui'
+import { InfiniteList, Text, Touchable } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
 
 const styles = {
@@ -21,8 +21,6 @@ class SearchModel extends Component {
   static propTypes = {
     models: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
     onPress: PropTypes.func.isRequired,
@@ -37,11 +35,24 @@ class SearchModel extends Component {
 
   renderItem = ({ item }) => {
     const { onPress } = this.props
-    return null
+    return (
+      <Touchable
+        onPress={() => onPress(item.node)}
+        style={{
+          height: 70,
+          justifyContent: 'center',
+        }}
+      >
+        <Text medium style={{ marginBottom: 3 }}>{`${item.node.brand} ${item.node.model}`}</Text>
+        <Text fontSize={15} color="light_grey">
+          {item.node.year}
+        </Text>
+      </Touchable>
+    )
   }
 
   render() {
-    const { query, models, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { query, models, fetchMore, isFetching, hasNextPage } = this.props
     if (!query) return null
 
     return (
@@ -51,9 +62,7 @@ class SearchModel extends Component {
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"
           data={models}
-          refetch={refetch}
           fetchMore={fetchMore}
-          isRefetching={isRefetching}
           isFetching={isFetching}
           hasNextPage={hasNextPage}
           keyExtractor={item => item.node.id}
