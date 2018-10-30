@@ -38,6 +38,7 @@ class SearchModel extends Component {
     return (
       <Touchable
         onPress={() => onPress(item.node)}
+        key={item.node.id}
         style={{
           height: 70,
           justifyContent: 'center',
