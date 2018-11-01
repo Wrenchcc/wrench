@@ -71,7 +71,6 @@ export default class AddPostContainer extends Container {
 
     this.setState({
       selectedFiles: assocPath([selectedIndex, 'crop'], crop, selectedFiles),
-      selectedIndex: 0,
     })
   }
 

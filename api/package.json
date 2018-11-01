@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "apollo-server": "^2.2.0-alpha.1",
-    "aws-sdk": "^2.344.0",
+    "aws-sdk": "^2.346.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
     "firebase-admin": "^6.1.0",

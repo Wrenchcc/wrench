@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
@@ -17,7 +17,7 @@ const styles = {
   },
 }
 
-class SearchModel extends Component {
+class SearchModel extends PureComponent {
   static propTypes = {
     models: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
