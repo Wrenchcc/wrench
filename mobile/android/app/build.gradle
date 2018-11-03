@@ -142,6 +142,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-screens')
     implementation project(':react-native-gesture-handler')
     implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation "com.google.firebase:firebase-messaging:17.0.0"
