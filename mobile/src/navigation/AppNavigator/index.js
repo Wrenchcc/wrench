@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react'
+import { createAppContainer } from 'react-navigation'
 import { setNavigationRef } from 'navigation'
 import { withNamespaces } from 'react-i18next'
 import { Gateway, Zoomable, ToastNotification } from 'ui'
 import { handleDynamicLinks } from 'utils/dynamicLinks'
 import handleStatusBar from 'navigation/handleStatusBar'
 import Navigator from './navigator'
+
+const NavigatorContainer = createAppContainer(Navigator)
 
 class TabNavigator extends PureComponent {
   componentDidMount() {
@@ -18,7 +21,7 @@ class TabNavigator extends PureComponent {
     return (
       <Gateway.Provider>
         <Zoomable.Provider>
-          <Navigator
+          <NavigatorContainer
             ref={ref => setNavigationRef(ref)}
             screenProps={{ t }}
             onNavigationStateChange={handleStatusBar}

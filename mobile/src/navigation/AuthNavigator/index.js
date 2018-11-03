@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react'
+import { createAppContainer } from 'react-navigation'
 import { setNavigationRef } from 'navigation'
 import Navigator from './navigator'
 
+const NavigatorContainer = createAppContainer(Navigator)
+
 export default class AuthNavigator extends PureComponent {
   render() {
-    return <Navigator ref={ref => setNavigationRef(ref)} />
+    return <NavigatorContainer ref={ref => setNavigationRef(ref)} />
   }
 }
