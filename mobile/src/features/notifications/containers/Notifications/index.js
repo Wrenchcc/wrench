@@ -6,19 +6,7 @@ import { getNotifications } from 'graphql/queries/getNotifications'
 import { InfiniteList, Notification } from 'ui'
 import { Header } from './styles'
 
-let scrollView = null
-
 class Notifications extends PureComponent {
-  static navigationOptions = {
-    tabBarOnPress: ({ navigation, defaultHandler }) => {
-      if (navigation.isFocused()) {
-        scrollView.scrollToOffset({ offset: 0 })
-      } else {
-        defaultHandler()
-      }
-    },
-  }
-
   static propTypes = {
     notifications: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
@@ -26,10 +14,6 @@ class Notifications extends PureComponent {
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
-  }
-
-  componentWillUnmont() {
-    scrollView = null
   }
 
   renderItem = ({ item }) => <Notification data={item.node} />
@@ -49,9 +33,6 @@ class Notifications extends PureComponent {
     return (
       <InfiniteList
         defaultPaddingTop
-        scrollRef={ref => {
-          scrollView = ref
-        }}
         ListHeaderComponent={<Header medium>{t('Notifications:title')}</Header>}
         borderSeparator
         initialNumToRender={10}

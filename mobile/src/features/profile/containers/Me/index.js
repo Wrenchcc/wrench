@@ -9,27 +9,15 @@ import Header from 'features/profile/components/Header'
 const HEADER_HEIGHT = 100
 const START_OPACITY = 50
 
-let scrollView = null
-
 class Me extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
       headerTitle: params.user && (
-        <HeaderTitle
-          opacity={params.opacity || new Animated.Value(0)}
-          onPress={() => scrollView.scrollToOffset({ offset: 0 })}
-        >
+        <HeaderTitle opacity={params.opacity || new Animated.Value(0)}>
           {params.user.fullName}
         </HeaderTitle>
       ),
-      tabBarOnPress: ({ navigation, defaultHandler }) => {
-        if (navigation.isFocused()) {
-          scrollView.scrollToOffset({ offset: 0 })
-        } else {
-          defaultHandler()
-        }
-      },
     }
   }
 
@@ -56,10 +44,6 @@ class Me extends PureComponent {
     })
   }
 
-  componentWillUnmont() {
-    scrollView = null
-  }
-
   renderItem = ({ item }) => <Post post={item.node} avatar={false} />
 
   render() {
@@ -71,9 +55,6 @@ class Me extends PureComponent {
     return (
       <InfiniteListWithHandler
         scrollEnabled={hasPosts}
-        scrollRef={ref => {
-          scrollView = ref
-        }}
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}

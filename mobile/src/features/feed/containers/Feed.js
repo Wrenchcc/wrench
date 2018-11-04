@@ -8,19 +8,7 @@ import registerForPushNotifications from 'utils/pushNotifications/registerForPus
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
-let scrollView = null
-
 class Feed extends PureComponent {
-  static navigationOptions = {
-    tabBarOnPress: ({ navigation, defaultHandler }) => {
-      if (navigation.isFocused()) {
-        scrollView.scrollToOffset({ offset: 0 })
-      } else {
-        defaultHandler()
-      }
-    },
-  }
-
   static propTypes = {
     posts: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
@@ -32,13 +20,7 @@ class Feed extends PureComponent {
 
   constructor(props) {
     super(props)
-    this.scrollY = new Animated.Value(0)
-
     registerForPushNotifications()
-  }
-
-  componentWillUnmont() {
-    scrollView = null
   }
 
   renderItem = ({ item }) => <Post post={item.node} />
@@ -50,12 +32,8 @@ class Feed extends PureComponent {
         <PostProgress />
 
         <InfiniteListWithHandler
-          scrollRef={ref => {
-            scrollView = ref
-          }}
           defaultPaddingTop
           initialNumToRender={INITIAL_POSTS_COUNT}
-          hasPolling
           data={posts}
           ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}
@@ -65,9 +43,6 @@ class Feed extends PureComponent {
           hasNextPage={hasNextPage}
           keyExtractor={item => item.node.id}
           renderItem={this.renderItem}
-          onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
-            useNativeDriver: true,
-          })}
         />
       </>
     )

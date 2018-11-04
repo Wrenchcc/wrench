@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { FlatList, Animated } from 'react-native'
+import { Animated } from 'react-native'
+import { FlatList } from 'react-navigation'
 import { Border, Loader, LoadNewer } from 'ui'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 
