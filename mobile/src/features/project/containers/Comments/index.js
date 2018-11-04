@@ -107,7 +107,6 @@ class Comments extends Component {
               onNoResults={this.closeMention}
               onPress={this.onMentionPress}
               offsetBottom={MENTION_OFFSET_BOTTOM}
-              offsetTop={0}
             />
           )}
 

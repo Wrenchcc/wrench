@@ -54,7 +54,7 @@ export default class Comments extends PureComponent {
             query={this.state.query}
             onPress={this.onMentionPress}
             onNoResults={this.closeMention}
-            destination="global"
+            destination="feed"
           />
         )}
         <CommentField

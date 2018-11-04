@@ -1256,10 +1256,10 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-inmemory@^1.3.9-beta.1:
-  version "1.3.9-beta.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.9-beta.1.tgz#dd8ca42c214890628c1150275f1aabb69ec1ddc8"
-  integrity sha512-TWeFp1sRNd6vbRL9yK3Smcmi4YSndscp9OGQDErgWOt2elcEnN0aHbnbzlFTt3t3ipMAKIM/dfEDHIsLteG0DQ==
+apollo-cache-inmemory@^1.3.9:
+  version "1.3.9"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.9.tgz#10738ba6a04faaeeb0da21bbcc1f7c0b5902910c"
+  integrity sha512-Q2k84p/OqIuMUyeWGc6XbVXXZu0erYOO+wTx9p+CnQUspnNvf7zmvFNgFnmudXzfuG1m1CSzePk6fC/M1ehOqQ==
   dependencies:
     apollo-cache "^1.1.20"
     apollo-utilities "^1.0.25"
@@ -5498,10 +5498,10 @@ react-native-fbsdk@^0.8.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
-react-native-firebase@^5.1.0-rc2:
-  version "5.1.0-rc2"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.1.0-rc2.tgz#73284cc86750ef434a8666183c43a65d225ce812"
-  integrity sha512-8OfoxgHvoLIDBtpwV1Buyh6pPqOzkskKtafcIFzF6zR+xXwU2W50D2LDj+dXiSynMhG6EgKfea+bj19Ueq9YkQ==
+react-native-firebase@^5.1.0-rc3:
+  version "5.1.0-rc3"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.1.0-rc3.tgz#d3a016760e25428a6f1c9c84c6cc8ac7f7a40387"
+  integrity sha512-KAo2o6MzW1dDx5g7QdHJKFOa//BoGABzaMi62y8kWJMmvHjHVB/5B8fJWXPfLoaJCN/rxvr80qHPU3RzMUkN1A==
   dependencies:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
@@ -5652,10 +5652,10 @@ react-navigation-drawer@1.0.0-alpha.7:
   dependencies:
     react-native-tab-view "^1.2.0"
 
-react-navigation-stack@1.0.0-alpha.30:
-  version "1.0.0-alpha.30"
-  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.0.0-alpha.30.tgz#40543b4f36ca9e27589a28f1d3d7d95ebc94776a"
-  integrity sha512-zC7hy4YxVK4KPQvIjHHPKHICHRPp2E6rdGiXqOTBRA8gcNrutva5J+xvCwGTVJflRihRKLc2U+hrkmMlMJCyIw==
+react-navigation-stack@1.0.0-alpha.32:
+  version "1.0.0-alpha.32"
+  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.0.0-alpha.32.tgz#3a0a8f881cc498c6d35739ac5c4b8eb8e1262ff7"
+  integrity sha512-tfBZtvn1pWAnkkXVqdyiVHnTSEd8xHsyZCuPHl3UDxL+gmVxHh+jjmQM1N/PbEeObfrpuKnYySb4xRIS3uoOUg==
 
 react-navigation-tabs@1.0.0-alpha.5:
   version "1.0.0-alpha.5"
@@ -5667,15 +5667,15 @@ react-navigation-tabs@1.0.0-alpha.5:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.0.0"
 
-"react-navigation@^3.0.0-rc.1 ":
-  version "3.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.0.0-rc.1.tgz#8a77ca7e8e1d726e569506ac26c6548cc10edbac"
-  integrity sha512-gxTO/5hzDaf20rM708zpinx6PD2g3mRErhDf6pC7G0NQ2h2Id81HDysLUDBTg/uvZoM4V0PXlDAnL8Bs5FsDrQ==
+react-navigation@^3.0.0-rc.3:
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.0.0-rc.3.tgz#70c763bb2f4aef755406fe2836404c2b0ffbb022"
+  integrity sha512-cIWURZ/BnHYFwuujaK7FKF/8X92055u7wgUAjk2GiLoqnxP9XjFEg0bzODAeIvMysW9CSuXuLMyglbHYXEqszA==
   dependencies:
     "@react-navigation/core" "3.0.0-alpha.18"
     "@react-navigation/native" "3.0.0-alpha.12"
     react-navigation-drawer "1.0.0-alpha.7"
-    react-navigation-stack "1.0.0-alpha.30"
+    react-navigation-stack "1.0.0-alpha.32"
     react-navigation-tabs "1.0.0-alpha.5"
 
 react-proxy@^1.1.7:

@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
-import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
+import { Post, InfiniteListWithHandler, PostProgress, Gateway } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { INITIAL_POSTS_COUNT } from '../constants'
@@ -29,6 +28,8 @@ class Feed extends PureComponent {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
     return (
       <>
+        <Gateway.Destination name="feed" />
+
         <PostProgress />
 
         <InfiniteListWithHandler

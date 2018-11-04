@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Registry from './Registry'
-import Destination from './Destination'
 
 export default class Provider extends React.Component {
   static propTypes = {
@@ -24,11 +23,6 @@ export default class Provider extends React.Component {
   }
 
   render() {
-    return (
-      <>
-        <Destination name="global" />
-        {this.props.children}
-      </>
-    )
+    return this.props.children
   }
 }

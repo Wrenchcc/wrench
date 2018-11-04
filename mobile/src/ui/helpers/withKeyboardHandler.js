@@ -33,7 +33,7 @@ export default function withKeyboardHandler(WrappedComponent) {
     keyboardWillShow = () => {
       const currentlyFocusedField = TextInput.State.currentlyFocusedField()
       const responder = this.scrollView.getScrollResponder()
-
+      console.log(this.scrollView)
       if (!currentlyFocusedField || !responder) {
         return
       }
