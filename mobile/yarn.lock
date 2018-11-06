@@ -1117,10 +1117,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.6.6.tgz#004b98298d04c7ca3b4f50ca2035d4f60d2eed1b"
   integrity sha512-h4t4jFjtm1YV7UirAFuSuFGyLa+NNxjdkq6DpFLANNQY5rHueFZHVY+8Cu1HYVP6DrheB0kv4m5xPjo7eKT7yQ==
 
-"@react-navigation/core@3.0.0-alpha.18":
-  version "3.0.0-alpha.18"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.0.0-alpha.18.tgz#3791ce85f914c7912004e50c4fa040cc616b16b0"
-  integrity sha512-y2RhKSu6gQYGxxjhOU5dD7trCUxO2i5QQpGOeKvjE5wWdzYCUzCd88t5tDtFk9Z7oHEGIBUiKcy2nAA0HqMdzA==
+"@react-navigation/core@3.0.0-alpha.19":
+  version "3.0.0-alpha.19"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.0.0-alpha.19.tgz#262f3eb17d4171aaa9229695693d6d877b156bbe"
+  integrity sha512-INlFaXWOIzQqQV2EESr3wn+qYSSEy90iWBthQFiQ/bNofuSJ8fKqhftYGCI7u2ZKjXbKXc7qF5WfhgyDx9LNjQ==
   dependencies:
     create-react-context "^0.2.3"
     hoist-non-react-statics "^3.0.1"
@@ -3872,10 +3872,10 @@ iterall@^1.2.2:
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
   integrity sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
 
-javascript-time-ago@^1.0.31:
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/javascript-time-ago/-/javascript-time-ago-1.0.31.tgz#19ba47a2f1eb0297a9ef7125019a646415b65ece"
-  integrity sha512-sgvSiGVSqWvK82IKcpgXXTCLHHBFkeptlLLj5vLTlXtuD5B2cqELPM9dN/88pmh3VJYi5otzisVcoiCSJnnorw==
+javascript-time-ago@^1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/javascript-time-ago/-/javascript-time-ago-1.0.32.tgz#8c43a6f8ac8eb0eb438a1df337425c8370ef9097"
+  integrity sha512-EbQty2KmZVA6ZimGVVv/J3bD8jZiL3UR0uBiHdhYf2xcMAN0b/EIySFCDyZpxmusmsZtekj4tAnVxLPXNOuDaA==
 
 jest-docblock@23.2.0, jest-docblock@^23.2.0:
   version "23.2.0"
@@ -5420,10 +5420,10 @@ react-dom@^16.7.0-alpha.0:
     prop-types "^15.6.2"
     scheduler "^0.11.0-alpha.0"
 
-react-i18next@^8.3.5:
-  version "8.3.5"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.3.5.tgz#7a24f2715646bf8027cc39aca04c94e8c0b130c0"
-  integrity sha512-YYRQHE9YoRSjI96j2n8IZWp2sGIBbGFEFtT68gec2qlJOHQgs6ni+cNXECaJlUKXCElpxfLAovBTQvDf3jZmow==
+react-i18next@^8.3.6:
+  version "8.3.6"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.3.6.tgz#0e36f0b3906ddaa3002dfabc24b047caf6b7fb88"
+  integrity sha512-yhEYij0ssBG+m9n8l3ir8mHq4y+IsGN6Nd2CHg0XRFxF+Jj/Vje4Vjm2j2MReAncgs4i7uTnCKWVMUZAuWmX+g==
   dependencies:
     "@babel/runtime" "^7.1.2"
     create-react-context "0.2.3"
@@ -5480,10 +5480,10 @@ react-native-device-info@^0.24.3:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.24.3.tgz#f15eff8d09fe418eaf5e7c89ddaabbc5ed718fd7"
   integrity sha512-usW00Wk6DoXH1eRSMt07j0uYvuka3SIEnJ9girlddAacyqwfa1QMVTN4eYmtaBzuMd/avhis8iHZQ3cLaR9CMA==
 
-react-native-fast-image@^5.0.11:
-  version "5.0.11"
-  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.0.11.tgz#a8f21864d379e6f566e4f68dd04f2c0f7de0dfec"
-  integrity sha512-5NNQwRniOfSBAvKldyPEs1xotWxrFcplOSQiVc78dv/EhH4G0IpdrLtsQmBdB91EMtPQfvoT269sKqj5MJCgyA==
+react-native-fast-image@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.1.0.tgz#df48a638fec71b6226ceff2d78e460aaa8008f4b"
+  integrity sha512-sP1a1nux/8T/wf0vlHfnXlVO5bOiApqHArCycxFt6YbOTToT7I58ibJVxwO66oMzLFrwtfMvinEKJLTLND3vdA==
 
 react-native-fbsdk@^0.8.0:
   version "0.8.0"
@@ -5498,27 +5498,27 @@ react-native-fbsdk@^0.8.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
-react-native-firebase@^5.1.0-rc3:
-  version "5.1.0-rc3"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.1.0-rc3.tgz#d3a016760e25428a6f1c9c84c6cc8ac7f7a40387"
-  integrity sha512-KAo2o6MzW1dDx5g7QdHJKFOa//BoGABzaMi62y8kWJMmvHjHVB/5B8fJWXPfLoaJCN/rxvr80qHPU3RzMUkN1A==
+react-native-firebase@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.1.0.tgz#85c535394c8518840609aae15b3dd0c65d8d2c59"
+  integrity sha512-msHUXuKT88+flYRs2/735miallwpxP2LPUQ6NQY8oJhVAhV0T9+DGEPczb2b5sM0qSOrj/Y0gndxkBx2jbNffg==
   dependencies:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
 
-react-native-gesture-handler@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.8.tgz#c2799741bf6443bb542892b0a36201a6d9ded209"
-  integrity sha512-Lc6PV5nKXgZdDeky96yi6gAM1UJHaYwzZbZyph0YuSv/L6vTtN+KPGsKyIENoOyxLJ/i43MSNn7fR+Xbv0w/xA==
+react-native-gesture-handler@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.9.tgz#ddec4d19d51cb6fb54df6eca792ebd76aaef083f"
+  integrity sha512-TPaiS8cAGqQA9p1GwjDbgMyNVCO/7cWC05h1rWIX2ZLoB1oSxGEBi5Es211HpBUmsTAzrUGH7M+ASGkAQeYH/A==
   dependencies:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-haptic-feedback@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.4.0.tgz#3af9fd8fa1a0ce4e8a3558f06405bc8bdc5b0264"
-  integrity sha512-ey49cVvJuLlZsjv24/4Vi0cFYgCDLUSpvIGtrdizAVInKJpvibVqtZhx5kRUtjn7KBu/w6vLgM8lvf8CWdb6eg==
+react-native-haptic-feedback@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.4.1.tgz#654dec56f03160be0f19b9262eabe9bbedc6f6d8"
+  integrity sha512-g+kuPQN/14h0n/3J2ySxodKR8Uxy/vXEjRg9qdFW6ICCysxM0adCo4Zdpj6mDiMZqMx36DztfKM2w1H460b9WA==
 
 react-native-linear-gradient@^2.4.3:
   version "2.4.3"
@@ -5550,10 +5550,15 @@ react-native-safe-area-view@^0.11.0:
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
-"react-native-screens@^1 || ^1.0.0-alpha", react-native-screens@^1.0.0-alpha.15:
+"react-native-screens@^1 || ^1.0.0-alpha":
   version "1.0.0-alpha.15"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.15.tgz#5b5a0041310b46f12048fda1908d52e7290ec18f"
   integrity sha512-S2OM/ieD+Krk+0/Z2Vz2rTUWYud5hJgCRZqXRtqEfMgEcGI4FBopXp7mwXCGbA2PFLjZwZSwLlsZ6RX30WnjRw==
+
+react-native-screens@^1.0.0-alpha.16:
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.16.tgz#e3651b7077ea8fa04e8dd3265ad9b87f1f77a758"
+  integrity sha512-t+/aq5jQa+Is6afiQHa1P+2UPnwPGY9NT0pSqNr2zQ5llCn8TcPq6GN8xDMuEc08g+y/9R5zWo32hlVStwWn1A==
 
 react-native-share@^1.1.3:
   version "1.1.3"
@@ -5667,12 +5672,12 @@ react-navigation-tabs@1.0.0-alpha.5:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^3.0.0-rc.3:
-  version "3.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.0.0-rc.3.tgz#70c763bb2f4aef755406fe2836404c2b0ffbb022"
-  integrity sha512-cIWURZ/BnHYFwuujaK7FKF/8X92055u7wgUAjk2GiLoqnxP9XjFEg0bzODAeIvMysW9CSuXuLMyglbHYXEqszA==
+react-navigation@^3.0.0-rc.4:
+  version "3.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.0.0-rc.4.tgz#471f175b22392f73d9b9293310a06679f094638b"
+  integrity sha512-uPj2Ycz+1GKBn6cjMBZv2p5GVNH6EuBbi2wFvvk4sz5edhw7df6TcCGgR6upXipSDcjHtb80Rb+0wc3Xw2aDdA==
   dependencies:
-    "@react-navigation/core" "3.0.0-alpha.18"
+    "@react-navigation/core" "3.0.0-alpha.19"
     "@react-navigation/native" "3.0.0-alpha.12"
     react-navigation-drawer "1.0.0-alpha.7"
     react-navigation-stack "1.0.0-alpha.32"
@@ -5686,10 +5691,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^6.1.7-beta.1:
-  version "6.1.7-beta.1"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.7-beta.1.tgz#902df993eeb6d4e7acf10fa9b8aac444a1748984"
-  integrity sha512-D2ceXUx03RG8yx78rh9veIP8JGc3dlefRcfvSanDBxdUYnLQFrFT1bzba2MZlk4nWb5TrIAA+4y5uMG8wVB/GQ==
+react-spring@^6.1.7-beta.2:
+  version "6.1.7-beta.2"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.7-beta.2.tgz#02db5111ca66c2c57dd6c2bdeb45018fe148ce9c"
+  integrity sha512-gRdfH8pAZ6jhxfCoosZCWdjYW+Y5JfTWS6ziY8hjIO3YsJ34/8jmtyJEQuxdwp3BITRrmqEgMYvhFOLP+V3Pqg==
   dependencies:
     "@babel/runtime" "^7.1.2"
 

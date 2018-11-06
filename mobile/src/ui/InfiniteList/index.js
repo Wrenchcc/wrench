@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
-import { FlatList } from 'react-navigation'
+import { Animated, FlatList } from 'react-native'
 import { Border, Loader, LoadNewer } from 'ui'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
+import withNavigationAwareScrollable from 'ui/helpers/withNavigationAwareScrollable'
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
 
@@ -121,5 +121,8 @@ class InfiniteList extends PureComponent {
   }
 }
 
-export const InfiniteListWithHandler = withKeyboardHandler(InfiniteList)
-export default InfiniteList
+export const InfiniteListWithHandler = withNavigationAwareScrollable(
+  withKeyboardHandler(InfiniteList)
+)
+
+export default withNavigationAwareScrollable(InfiniteList)
