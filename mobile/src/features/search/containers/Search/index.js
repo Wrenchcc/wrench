@@ -52,11 +52,8 @@ class Search extends PureComponent {
   }
 
   scrollToTop = () => {
-    this.scrollView.scrollToOffset({ offset: 0 })
-  }
-
-  setRef = ref => {
-    this.scrollView = ref
+    this.userRef.scrollToOffset({ offset: 0 })
+    this.projectRef.scrollToOffset({ offset: 0 })
   }
 
   renderTabBar = props => (
@@ -75,9 +72,9 @@ class Search extends PureComponent {
   renderScene = ({ route }) => {
     switch (route.key) {
       case 'users':
-        return <Users scrollRef={this.setRef} />
+        return <Users scrollRef={el => (this.userRef = el)} />
       case 'projects':
-        return <Projects scrollRef={this.setRef} />
+        return <Projects scrollRef={el => (this.projectRef = el)} />
       default:
         return null
     }

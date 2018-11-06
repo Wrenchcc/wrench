@@ -125,4 +125,4 @@ export const InfiniteListWithHandler = withNavigationAwareScrollable(
   withKeyboardHandler(InfiniteList)
 )
 
-export default withNavigationAwareScrollable(InfiniteList)
+export default InfiniteList

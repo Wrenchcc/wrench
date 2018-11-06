@@ -10,6 +10,7 @@
     "requestAnimationFrame": true
   },
   "rules": {
+    "no-return-assign": 0,
     "no-restricted-syntax": 0,
     "no-param-reassign": 0,
     "no-shadow": 0,
