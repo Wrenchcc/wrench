@@ -5,8 +5,8 @@
     "start": "NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
-    "apollo-server": "^2.2.0-alpha.2",
-    "aws-sdk": "^2.348.0",
+    "apollo-server": "^2.2.0-alpha.4",
+    "aws-sdk": "^2.349.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
     "firebase-admin": "^6.1.0",
