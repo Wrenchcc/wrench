@@ -14,11 +14,6 @@
     "pod:install": "tasks/pod_install",
     "wtf": "tasks/wtf"
   },
-  "rnpm": {
-    "assets": [
-      "./assets/fonts/"
-    ]
-  },
   "dependencies": {
     "apollo-cache-inmemory": "^1.3.9",
     "apollo-client": "^2.4.5",
