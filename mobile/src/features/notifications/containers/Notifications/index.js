@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getNotifications } from 'graphql/queries/getNotifications'
-import { InfiniteList, Notification } from 'ui'
+import { InfiniteListWithHandler, Notification } from 'ui'
 import { Header } from './styles'
 
 class Notifications extends PureComponent {
@@ -31,7 +31,7 @@ class Notifications extends PureComponent {
 
     // TODO: Remove when have real IDs
     return (
-      <InfiniteList
+      <InfiniteListWithHandler
         defaultPaddingTop
         ListHeaderComponent={<Header medium>{t('Notifications:title')}</Header>}
         borderSeparator
