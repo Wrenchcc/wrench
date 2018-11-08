@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { Gateway, InfiniteList, MentionUser } from 'ui'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
-
+import { TOTAL_HEADER_HEIGHT } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 
 // And same offset on comments and posts
@@ -35,6 +35,7 @@ class Mention extends Component {
     onNoResults: PropTypes.func.isRequired,
     query: PropTypes.string,
     offsetBottom: PropTypes.number,
+    offsetTop: PropTypes.number,
     destination: PropTypes.string,
   }
 
@@ -53,6 +54,7 @@ class Mention extends Component {
     const {
       query,
       offsetBottom = DEFAULT_OFFSET_BOTTOM,
+      offsetTop = TOTAL_HEADER_HEIGHT,
       users,
       fetchMore,
       refetch,
@@ -63,7 +65,7 @@ class Mention extends Component {
 
     // TODO: Remove when have IDs
     return (
-      <View style={[styles.container, { bottom: offsetBottom }]}>
+      <View style={[styles.container, { bottom: offsetBottom, top: offsetTop }]}>
         <InfiniteList
           defaultPadding
           keyboardShouldPersistTaps="handled"
