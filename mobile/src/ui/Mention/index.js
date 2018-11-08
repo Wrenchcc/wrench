@@ -9,7 +9,7 @@ import { isIphone } from 'utils/platform'
 
 // And same offset on comments and posts
 // Keyboard height + input
-const DEFAULT_OFFSET_BOTTOM = isIphone ? 265 : 122
+const DEFAULT_OFFSET_BOTTOM = isIphone ? 360 : 122
 
 const styles = {
   container: {

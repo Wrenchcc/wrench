@@ -20,8 +20,6 @@ class TabNavigator extends PureComponent {
     const { t } = this.props
     return (
       <Gateway.Provider>
-        <Gateway.Destination name="global" />
-
         <Zoomable.Provider>
           <NavigatorContainer
             ref={ref => setNavigationRef(ref)}
