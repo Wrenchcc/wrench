@@ -15,8 +15,8 @@
     "wtf": "tasks/wtf"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.3.9",
-    "apollo-client": "^2.4.5",
+    "apollo-cache-inmemory": "^1.4.0-alpha.1",
+    "apollo-client": "^2.5.0-alpha.1",
     "apollo-link": "^1.2.3",
     "apollo-link-batch-http": "^1.2.3",
     "apollo-link-context": "^1.0.9",
@@ -51,9 +51,9 @@
     "react-native-share": "^1.1.3",
     "react-native-splash-screen": "^3.1.1",
     "react-native-swiper": "^1.5.13",
-    "react-native-tab-view": "^1.2.0",
+    "react-native-tab-view": "^1.3.0",
     "react-native-video": "3.2.1",
-    "react-navigation": "^3.0.0-rc.4",
+    "react-navigation": "^3.0.0-rc.5",
     "react-navigation-collapsible": "^0.3.1",
     "react-spring": "^6.1.8",
     "styled-components": "^v4.0.3",

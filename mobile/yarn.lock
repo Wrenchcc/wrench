@@ -1207,10 +1207,10 @@
     react-native-safe-area-view "^0.11.0"
     react-native-screens "^1 || ^1.0.0-alpha"
 
-"@types/async@2.0.50":
-  version "2.0.50"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.50.tgz#117540e026d64e1846093abbd5adc7e27fda7bcb"
-  integrity sha512-VMhZMMQgV1zsR+lX/0IBfAk+8Eb7dPVMWiQGFAt3qjo5x7Ml6b77jUo0e1C3ToD+XRDXqtrfw+6AB0uUsPEr3Q==
+"@types/async@2.0.49":
+  version "2.0.49"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
+  integrity sha512-Benr3i5odUkvpFkOpzGqrltGdbSs+EVCkEBGXbuR7uT0VzhXKIkhem6PDzHdx5EonA+rfbB3QvP6aDOw5+zp5Q==
 
 "@types/zen-observable@^0.8.0":
   version "0.8.0"
@@ -1325,36 +1325,36 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-inmemory@^1.3.9:
-  version "1.3.9"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.9.tgz#10738ba6a04faaeeb0da21bbcc1f7c0b5902910c"
-  integrity sha512-Q2k84p/OqIuMUyeWGc6XbVXXZu0erYOO+wTx9p+CnQUspnNvf7zmvFNgFnmudXzfuG1m1CSzePk6fC/M1ehOqQ==
+apollo-cache-inmemory@^1.4.0-alpha.1:
+  version "1.4.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.4.0-alpha.1.tgz#fc5f2e28b14cad9bc8da35d7d522d2b327d5bc5f"
+  integrity sha512-nfRJDY3grTZ7MY3WPjbbabFKqvR+d8xqyhSqBWQsZ15yypDdsXmbkzXHb5gDEGvpBYcscEKUfMjoWoXeeeAzHQ==
   dependencies:
-    apollo-cache "^1.1.20"
-    apollo-utilities "^1.0.25"
+    apollo-cache "^1.2.0-alpha.1"
+    apollo-utilities "^1.1.0-alpha.1"
     optimism "^0.6.6"
 
-apollo-cache@1.1.20, apollo-cache@^1.1.20:
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.20.tgz#6152cc4baf6a63e376efee79f75de4f5c84bf90e"
-  integrity sha512-+Du0/4kUSuf5PjPx0+pvgMGV12ezbHA8/hubYuqRQoy/4AWb4faa61CgJNI6cKz2mhDd9m94VTNKTX11NntwkQ==
+apollo-cache@1.2.0-verify.4, apollo-cache@^1.2.0-alpha.1:
+  version "1.2.0-verify.4"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.2.0-verify.4.tgz#7b974331015b8ced29ddd6dcf4a852109464d26f"
+  integrity sha512-SgSuDoiZU++hcgJnUnH6WueFibZ6X0FpkppVIb0/6Bi8e8hNY6CT0V1GRtx6GMXQOw/vTjeuYYkxGZZJ0aqXaA==
   dependencies:
-    apollo-utilities "^1.0.25"
+    apollo-utilities "^1.1.0-verify.4"
 
-apollo-client@^2.4.5:
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.5.tgz#545beda1ef60814943b5622f0feabc9f29ee9822"
-  integrity sha512-nUm06EGa4TP/IY68OzmC3lTD32TqkjLOQdb69uYo+lHl8NnwebtrAw3qFtsQtTEz6ueBp/Z/HasNZng4jwafVQ==
+apollo-client@^2.5.0-alpha.1:
+  version "2.5.0-verify.4"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.5.0-verify.4.tgz#3fc8081283867685271d3845ebe6ab56a487ee60"
+  integrity sha512-gtXEXtlIJGF80kcR9w5S6kPhbAcDiis7w5apGBOcU5z9ls+cBphPbWRl3ZXf/FI32lRBVqIVX247qbUZJra35A==
   dependencies:
     "@types/zen-observable" "^0.8.0"
-    apollo-cache "1.1.20"
+    apollo-cache "1.2.0-verify.4"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "1.0.25"
+    apollo-utilities "1.1.0-verify.4"
     symbol-observable "^1.0.2"
     zen-observable "^0.8.0"
   optionalDependencies:
-    "@types/async" "2.0.50"
+    "@types/async" "2.0.49"
 
 apollo-link-batch-http@^1.2.3:
   version "1.2.3"
@@ -1408,10 +1408,10 @@ apollo-link@^1.0.0, apollo-link@^1.2.3:
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.10"
 
-apollo-utilities@1.0.25, apollo-utilities@^1.0.25:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.25.tgz#899b00f5f990fb451675adf84cb3de82eb6372ea"
-  integrity sha512-AXvqkhni3Ir1ffm4SA1QzXn8k8I5BBl4PVKEyak734i4jFdp+xgfUyi2VCqF64TJlFTA/B73TRDUvO2D+tKtZg==
+apollo-utilities@1.1.0-verify.4, apollo-utilities@^1.1.0-alpha.1, apollo-utilities@^1.1.0-verify.4:
+  version "1.1.0-verify.4"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.1.0-verify.4.tgz#a960aa659e31ccd4467cf6b04e80a04eabc7cc2d"
+  integrity sha512-y/a0sOQAZ0IPh3dzVAnLSNdr0FraJnC/0p8HVg99rJZcefhaHsFIG77Jjr6ExwD2sXVJpXWHFgIGbXfQaatXSA==
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
@@ -5653,6 +5653,13 @@ react-native-tab-view@^1.0.0, react-native-tab-view@^1.2.0:
   dependencies:
     prop-types "^15.6.1"
 
+react-native-tab-view@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-1.3.0.tgz#822fcf14e9a1d08d3548338c217c716a31637e1c"
+  integrity sha512-KxHODfaxFnUTpp3jZvLnunLyadcO0xBrNuAaiwhVAbpW2RQvxeNiDrvJAzrNeqHTLDrZhuHgcKGyqoTen1sHNQ==
+  dependencies:
+    prop-types "^15.6.1"
+
 react-native-video@3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-3.2.1.tgz#7ba3cbdfc5c747b5b00452811e98193824b16ce3"
@@ -5734,10 +5741,10 @@ react-navigation-drawer@1.0.0-alpha.7:
   dependencies:
     react-native-tab-view "^1.2.0"
 
-react-navigation-stack@1.0.0-alpha.32:
-  version "1.0.0-alpha.32"
-  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.0.0-alpha.32.tgz#3a0a8f881cc498c6d35739ac5c4b8eb8e1262ff7"
-  integrity sha512-tfBZtvn1pWAnkkXVqdyiVHnTSEd8xHsyZCuPHl3UDxL+gmVxHh+jjmQM1N/PbEeObfrpuKnYySb4xRIS3uoOUg==
+react-navigation-stack@1.0.0-alpha.34:
+  version "1.0.0-alpha.34"
+  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.0.0-alpha.34.tgz#f071a3edd8259e37f4dedba436e905a932b4d99e"
+  integrity sha512-wC1cMhIo2Y8J3rAS+Ps6bfm6zyinaOrQy7P8H232TrHLNiw3xUnXXU081lHimC2Hs7Fn4LJ2jP4xMcspQK1nqA==
 
 react-navigation-tabs@1.0.0-alpha.5:
   version "1.0.0-alpha.5"
@@ -5749,15 +5756,15 @@ react-navigation-tabs@1.0.0-alpha.5:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^3.0.0-rc.4:
-  version "3.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.0.0-rc.4.tgz#471f175b22392f73d9b9293310a06679f094638b"
-  integrity sha512-uPj2Ycz+1GKBn6cjMBZv2p5GVNH6EuBbi2wFvvk4sz5edhw7df6TcCGgR6upXipSDcjHtb80Rb+0wc3Xw2aDdA==
+react-navigation@^3.0.0-rc.5:
+  version "3.0.0-rc.5"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.0.0-rc.5.tgz#0deb31d849f7221f015fc88a2342b342d3833301"
+  integrity sha512-sd5vzRQnKJ/0Pp5K3JpF6dEW67tulo2NCvcsfE8/xo0stACv2d0oTTdKOYty7kJj8zsJYxNjQhw2YkMFxTK5Yg==
   dependencies:
     "@react-navigation/core" "3.0.0-alpha.19"
     "@react-navigation/native" "3.0.0-alpha.12"
     react-navigation-drawer "1.0.0-alpha.7"
-    react-navigation-stack "1.0.0-alpha.32"
+    react-navigation-stack "1.0.0-alpha.34"
     react-navigation-tabs "1.0.0-alpha.5"
 
 react-proxy@^1.1.7:
