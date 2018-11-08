@@ -144,7 +144,8 @@ android {
 dependencies {
     implementation project(':react-native-screens')
     implementation project(':react-native-gesture-handler')
-    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.android.gms:play-services:16.0.0'
     implementation "com.google.firebase:firebase-messaging:17.0.0"
     implementation "com.google.firebase:firebase-invites:16.0.3"
     implementation "com.google.firebase:firebase-perf:16.1.0"
@@ -178,6 +179,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply plugin: 'com.google.gms.google-services'
-
-// TODO: Fix: https://github.com/invertase/react-native-firebase/issues/1155
-com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
