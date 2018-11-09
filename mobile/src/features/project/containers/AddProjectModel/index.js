@@ -32,6 +32,7 @@ function AddProjectModel({ t }) {
             {state.isSearching && (
               <SearchModel query={state.query} onPress={model => updateField('model', model)} />
             )}
+
             <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
               {t('AddProjectModel:title')}
             </Title>
