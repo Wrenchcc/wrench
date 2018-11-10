@@ -6,7 +6,6 @@ import makeS3Request from './makeS3Request'
 
 export const uploadFiles = async files => {
   const input = files.map(({ filename }) => ({ filename }))
-
   // // Return pre-signed urls
   // // Resize images and return uris
   const [preSignedUrls, resizedImages] = await Promise.all([
