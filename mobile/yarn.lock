@@ -5489,10 +5489,10 @@ react-dom@^16.7.0-alpha.0:
     prop-types "^15.6.2"
     scheduler "^0.11.0-alpha.0"
 
-react-i18next@^8.3.6:
-  version "8.3.6"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.3.6.tgz#0e36f0b3906ddaa3002dfabc24b047caf6b7fb88"
-  integrity sha512-yhEYij0ssBG+m9n8l3ir8mHq4y+IsGN6Nd2CHg0XRFxF+Jj/Vje4Vjm2j2MReAncgs4i7uTnCKWVMUZAuWmX+g==
+react-i18next@^8.3.7:
+  version "8.3.7"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.3.7.tgz#7022de252148bdf0e9e69ddd9105788bcb9929ea"
+  integrity sha512-Ar/CFV5eIfTTHHT/5llIa+OUbQnIL/BkZm98T1Zt87T9b6DzrDMbXZ0Fbo8nTl1vFgXycYGE5+BE+4yMg3NnXQ==
   dependencies:
     "@babel/runtime" "^7.1.2"
     create-react-context "0.2.3"

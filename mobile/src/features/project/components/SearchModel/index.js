@@ -4,10 +4,13 @@ import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { InfiniteList, Text, Touchable } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
+import { isIphone } from 'utils/platform'
+
+const DEFAULT_OFFSET_BOTTOM = isIphone ? 365 : 127
 
 const styles = {
   container: {
-    bottom: 360,
+    bottom: DEFAULT_OFFSET_BOTTOM,
     top: 0,
     right: 0,
     left: 0,
