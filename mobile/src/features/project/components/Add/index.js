@@ -1,7 +1,6 @@
 import React from 'react'
 import { Image } from 'react-native'
 import { compose } from 'react-apollo'
-import { empty } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { navigateToAddMedia, navigateToAddProject } from 'navigation'
 import { add } from 'images'
@@ -10,11 +9,11 @@ import { Button } from './styles'
 
 function Add(props) {
   let onPress
-  if (empty(props.projects)) {
+  if (props.projects) {
+    onPress = () => navigateToAddMedia()
+  } else {
     onPress = () => navigateToAddProject()
   }
-
-  onPress = () => navigateToAddMedia()
 
   return (
     <Button hitSlop={hitSlop(20)} onPress={onPress} {...props}>
