@@ -8,6 +8,8 @@ export default class Provider extends PureComponent {
 
   gesturePosition = new Animated.ValueXY()
 
+  gestureOffset = new Animated.ValueXY()
+
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
       .isRequired,
@@ -18,6 +20,7 @@ export default class Provider extends PureComponent {
     onGestureStart: PropTypes.func,
     onGestureRelease: PropTypes.func,
     gesturePosition: PropTypes.object,
+    gestureOffset: PropTypes.object,
     scaleValue: PropTypes.object,
   }
 
@@ -33,6 +36,7 @@ export default class Provider extends PureComponent {
       onGestureStart: this.onGestureStart,
       onGestureRelease: this.onGestureRelease,
       gesturePosition: this.gesturePosition,
+      gestureOffset: this.gestureOffset,
       scaleValue: this.scaleValue,
     }
   }

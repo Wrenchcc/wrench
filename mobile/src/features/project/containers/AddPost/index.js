@@ -40,7 +40,7 @@ class AddPost extends PureComponent {
         .then(resetState)
 
       track(events.POST_CREATED)
-    } catch {
+    } catch (err) {
       showNotification({
         type: 'error',
         message: t('AddPost:error'),

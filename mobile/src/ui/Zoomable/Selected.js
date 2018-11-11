@@ -36,12 +36,13 @@ export default class Selected extends PureComponent {
 
   static contextTypes = {
     gesturePosition: PropTypes.object,
+    gestureOffset: PropTypes.object,
     scaleValue: PropTypes.object,
   }
 
   render() {
     const { selected } = this.props
-    const { gesturePosition, scaleValue } = this.context
+    const { gesturePosition, gestureOffset, scaleValue } = this.context
 
     const scale = scaleValue.interpolate({
       inputRange: [MINIMUM_SCALE, MAXIMUM_SCALE],
@@ -54,7 +55,11 @@ export default class Selected extends PureComponent {
       outputRange: [0, 0.5, 0.8],
     })
 
-    const transform = [...gesturePosition.getTranslateTransform(), { scale }]
+    const transform = [
+      { translateX: Animated.add(gesturePosition.x, gestureOffset.x) },
+      { translateY: Animated.add(gesturePosition.y, gestureOffset.y) },
+      { scale },
+    ]
 
     return (
       <View style={styles.container}>

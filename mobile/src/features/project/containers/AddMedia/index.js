@@ -3,7 +3,7 @@ import { Subscribe } from 'unstated'
 import { AddPostContainer } from 'store'
 import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
-import ImageEditor from 'features/project/components/ImageEditor'
+import ImageEditor from 'features/project/components/ImageEditor/index2'
 import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
@@ -34,7 +34,11 @@ export default function AddMedia() {
 
           <Placeholder>
             {selectedFile ? (
-              <ImageEditor image={selectedFile} onCropping={onCropping} />
+              <ImageEditor
+                image={selectedFile}
+                onCropping={onCropping}
+                key={selectedFile.filename}
+              />
             ) : (
               <Camera onTakePicture={onTakePicture} />
             )}

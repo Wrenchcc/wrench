@@ -20,6 +20,7 @@ export default class Element extends PureComponent {
     onGestureStart: PropTypes.func,
     onGestureRelease: PropTypes.func,
     gesturePosition: PropTypes.object,
+    gestureOffset: PropTypes.object,
   }
 
   onPanGestureStateChange = ({ nativeEvent }) => {
@@ -30,7 +31,7 @@ export default class Element extends PureComponent {
   }
 
   onGestureStart = async () => {
-    const { onGestureStart, gesturePosition } = this.context
+    const { onGestureStart, gesturePosition, gestureOffset } = this.context
 
     const measurement = await this.measureSelected()
     this.measurement = measurement
@@ -38,11 +39,7 @@ export default class Element extends PureComponent {
     onGestureStart({ element: this, measurement })
 
     gesturePosition.setValue({ x: 0, y: 0 })
-
-    gesturePosition.setOffset({
-      x: measurement.x,
-      y: measurement.y,
-    })
+    gestureOffset.setValue({ x: measurement.x, y: measurement.y })
 
     Animated.timing(this.opacity, {
       toValue: 0,
@@ -70,11 +67,6 @@ export default class Element extends PureComponent {
         useNativeDriver: true,
       }),
     ]).start(() => {
-      gesturePosition.setOffset({
-        x: this.measurement.x,
-        y: this.measurement.y,
-      })
-
       // Reset original component opacity
       this.opacity.setValue(1)
 
