@@ -1,90 +1,124 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import {
-  View,
-  Dimensions,
-  ScrollView,
-  TouchableWithoutFeedback,
-  Image,
-  Platform,
-} from 'react-native'
-import { pathOr } from 'ramda'
+import { Animated, Dimensions } from 'react-native'
+import { PanGestureHandler, State, PinchGestureHandler } from 'react-native-gesture-handler'
 import { COLORS } from 'ui/constants'
-import GridLayout from '../GridLayout'
 
 const { width } = Dimensions.get('window')
 
 const IMAGE_EDITOR_HEIGHT = width
 const IMAGE_EDITOR_WIDTH = width
+const SCALE_MULTIPLIER = 1.2
 
 export default class ImageEditor extends PureComponent {
-  state = {
-    isMoving: false,
-    isLoading: true,
-  }
-
   static propTypes = {
     image: PropTypes.object.isRequired,
-    onCropping: PropTypes.func.isRequired,
+    // onCropping: PropTypes.func.isRequired,
   }
-
-  contentOffset = {}
-
-  horizontal = false
-
-  maximumZoomScale = 0
-
-  minimumZoomScale = null
 
   scaledImageSize = null
 
-  componentDidMount() {
-    if (!this.props.image) return
-    this.setImageProperties(this.props.image)
+  gesturePosition = new Animated.ValueXY()
+
+  gestureOffset = new Animated.ValueXY()
+
+  scaleValue = new Animated.Value(0)
+
+  panRef = React.createRef()
+
+  lastOffset = { x: 0, y: 0 }
+
+  constructor(props) {
+    super(props)
+    this.setImageProperties(props.image)
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.image.filename !== prevProps.image.filename) {
-      this.handleLoading(true)
-      this.setImageProperties(this.props.image)
+  onPanGestureStateChange = ({ nativeEvent }) => {
+    if (nativeEvent.oldState === State.ACTIVE) {
+      this.lastOffset.x += nativeEvent.translationX
+      this.lastOffset.y += nativeEvent.translationY
+      this.gesturePosition.setValue({ x: 0, y: 0 })
+      this.gestureOffset.setValue({ x: this.lastOffset.x, y: this.lastOffset.y })
+
+      const maxOffsetX = -Math.abs(this.scaledImageSize.width - IMAGE_EDITOR_WIDTH)
+      if (maxOffsetX > this.lastOffset.x) {
+        this.lastOffset.x = maxOffsetX
+        Animated.spring(this.gestureOffset.x, {
+          bounciness: 3,
+          toValue: maxOffsetX,
+          useNativeDriver: true,
+        }).start()
+      }
+
+      if (this.lastOffset.x > 0) {
+        this.lastOffset.x = 0
+
+        Animated.spring(this.gestureOffset.x, {
+          bounciness: 3,
+          toValue: 0,
+          useNativeDriver: true,
+        }).start()
+      }
+
+      const maxOffsetY = -Math.abs(this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT)
+      if (maxOffsetY > this.lastOffset.y) {
+        this.lastOffset.y = maxOffsetY
+        Animated.spring(this.gestureOffset.y, {
+          bounciness: 3,
+          toValue: maxOffsetY,
+          useNativeDriver: true,
+        }).start()
+      }
+
+      if (this.lastOffset.y > 0) {
+        this.lastOffset.y = 0
+        Animated.spring(this.gestureOffset.y, {
+          bounciness: 3,
+          toValue: 0,
+          useNativeDriver: true,
+        }).start()
+      }
     }
+  }
+
+  onPanGestureEvent = ({ nativeEvent }) => {
+    const { translationX, translationY } = nativeEvent
+
+    this.gesturePosition.setValue({
+      x: translationX,
+      y: translationY,
+    })
+  }
+
+  onGesturePinch = ({ nativeEvent }) => {
+    this.scaleValue.setValue(nativeEvent.scale)
   }
 
   setImageProperties(image) {
     const widthRatio = image.width / IMAGE_EDITOR_WIDTH
     const heightRatio = image.height / IMAGE_EDITOR_HEIGHT
+    const horizontal = widthRatio > heightRatio
 
-    this.horizontal = widthRatio > heightRatio
-
-    if (this.horizontal) {
-      this.scaledImageSize = pathOr(
-        {
-          width: image.width / heightRatio,
-          height: IMAGE_EDITOR_HEIGHT,
-        },
-        ['crop', 'scaledImageSize'],
-        image
-      )
+    if (horizontal) {
+      this.scaledImageSize = {
+        width: image.width / heightRatio,
+        height: IMAGE_EDITOR_HEIGHT,
+      }
     } else {
       this.scaledImageSize = {
         width: IMAGE_EDITOR_WIDTH,
         height: image.height / widthRatio,
       }
-      if (Platform.OS === 'android') {
-        this.scaledImageSize.width *= 2
-        this.scaledImageSize.height *= 2
-        this.horizontal = true
-      }
     }
 
-    this.contentOffset = pathOr(
-      {
-        x: (this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2,
-        y: (this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2,
-      },
-      ['crop', 'offset'],
-      image
-    )
+    this.contentOffset = {
+      x: -Math.abs((this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2),
+      y: -Math.abs((this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2),
+    }
+
+    // Set default offset (Center image)
+    this.gestureOffset.setValue(this.contentOffset)
+    this.lastOffset = this.contentOffset
 
     this.maximumZoomScale = Math.min(
       image.width / this.scaledImageSize.width,
@@ -95,87 +129,50 @@ export default class ImageEditor extends PureComponent {
       IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
       IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
     )
-
-    const zoomScale = pathOr(0, ['crop', 'zoomScale'], image)
-
-    this.updateCroppingData(
-      this.contentOffset,
-      this.scaledImageSize,
-      {
-        width: IMAGE_EDITOR_WIDTH,
-        height: IMAGE_EDITOR_HEIGHT,
-      },
-      zoomScale
-    )
-  }
-
-  handleLoading = isLoading => {
-    this.setState({ isLoading })
-  }
-
-  onScroll = evt => {
-    this.updateCroppingData(
-      evt.nativeEvent.contentOffset,
-      evt.nativeEvent.contentSize,
-      evt.nativeEvent.layoutMeasurement,
-      evt.nativeEvent.zoomScale
-    )
-  }
-
-  setIsMoving = isMoving => {
-    this.setState({ isMoving })
-  }
-
-  updateCroppingData(offset, scaledImageSize, croppedImageSize, zoomScale) {
-    const offsetRatioX = offset.x / scaledImageSize.width
-    const offsetRatioY = offset.y / scaledImageSize.height
-    const sizeRatioX = croppedImageSize.width / scaledImageSize.width
-    const sizeRatioY = croppedImageSize.height / scaledImageSize.height
-
-    this.props.onCropping({
-      offset: {
-        x: this.props.image.width * offsetRatioX,
-        y: this.props.image.height * offsetRatioY,
-      },
-      size: {
-        width: this.props.image.width * sizeRatioX,
-        height: this.props.image.height * sizeRatioY,
-      },
-      zoomScale, // TODO: Fix zoomScale
-    })
   }
 
   render() {
-    const { isMoving, isLoading } = this.state
+    const scale = this.scaleValue.interpolate({
+      inputRange: [this.minimumZoomScale, this.maximumZoomScale],
+      outputRange: [this.minimumZoomScale * SCALE_MULTIPLIER, this.maximumZoomScale],
+      extrapolate: 'clamp',
+    })
+
+    const transform = [
+      { translateX: Animated.add(this.gesturePosition.x, this.gestureOffset.x) },
+      { translateY: Animated.add(this.gesturePosition.y, this.gestureOffset.y) },
+      // { scale },
+    ]
 
     return (
-      <View key={this.props.image.filename}>
-        <ScrollView
-          alwaysBounceVertical
-          automaticallyAdjustContentInsets={false}
-          contentOffset={this.contentOffset}
-          decelerationRate="fast"
-          horizontal={this.horizontal}
-          maximumZoomScale={this.maximumZoomScale}
-          minimumZoomScale={this.minimumZoomScale}
-          onMomentumScrollEnd={this.onScroll}
-          onScrollEndDrag={() => this.setIsMoving(false)}
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-          scrollEventThrottle={16}
-        >
-          <TouchableWithoutFeedback onPressIn={() => this.setIsMoving(true)}>
-            <Image
-              style={[{ backgroundColor: COLORS.DARK_GREY }, this.scaledImageSize]}
+      <PanGestureHandler
+        onGestureEvent={this.onPanGestureEvent}
+        onHandlerStateChange={this.onPanGestureStateChange}
+        ref={this.panRef}
+        minPointers={0}
+        maxPointers={2}
+        minDist={0}
+        minDeltaX={0}
+        avgTouches
+      >
+        <Animated.View>
+          <PinchGestureHandler
+            simultaneousHandlers={this.panRef}
+            onGestureEvent={this.onGesturePinch}
+          >
+            <Animated.Image
+              style={[
+                {
+                  backgroundColor: COLORS.DARK_GREY,
+                  transform,
+                },
+                this.scaledImageSize,
+              ]}
               source={this.props.image}
-              blurRadius={isLoading ? 20 : 0}
-              onLoadEnd={() => this.handleLoading(false)}
             />
-          </TouchableWithoutFeedback>
-        </ScrollView>
-
-        <GridLayout active={isMoving} />
-      </View>
+          </PinchGestureHandler>
+        </Animated.View>
+      </PanGestureHandler>
     )
   }
 }
