@@ -132,6 +132,9 @@ export default class ImageEditor extends PureComponent {
     this.gestureOffset.setValue(this.contentOffset)
     this.lastOffset = this.contentOffset
 
+    // Default zoom
+    this.pinchScale.setValue(1)
+
     this.maximumZoomScale = Math.min(
       image.width / this.scaledImageSize.width,
       image.height / this.scaledImageSize.height
