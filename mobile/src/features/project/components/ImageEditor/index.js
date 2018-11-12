@@ -22,7 +22,13 @@ export default class ImageEditor extends PureComponent {
 
   gestureOffset = new Animated.ValueXY()
 
-  scaleValue = new Animated.Value(0)
+  baseScale = new Animated.Value(1)
+
+  pinchScale = new Animated.Value(1)
+
+  // scale = Animated.multiply(this.baseScale, this.pinchScale)
+
+  lastScale = 1
 
   panRef = React.createRef()
 
@@ -30,6 +36,10 @@ export default class ImageEditor extends PureComponent {
 
   constructor(props) {
     super(props)
+    this.onPinchGestureEvent = Animated.event([{ nativeEvent: { scale: this.pinchScale } }], {
+      useNativeDriver: true,
+    })
+
     this.setImageProperties(props.image)
   }
 
@@ -82,16 +92,18 @@ export default class ImageEditor extends PureComponent {
   }
 
   onPanGestureEvent = ({ nativeEvent }) => {
-    const { translationX, translationY } = nativeEvent
-
     this.gesturePosition.setValue({
-      x: translationX,
-      y: translationY,
+      x: nativeEvent.translationX,
+      y: nativeEvent.translationY,
     })
   }
 
-  onGesturePinch = ({ nativeEvent }) => {
-    this.scaleValue.setValue(nativeEvent.scale)
+  onPinchHandlerStateChange = ({ nativeEvent }) => {
+    if (nativeEvent.oldState === State.ACTIVE) {
+      this.lastScale *= nativeEvent.scale
+      this.baseScale.setValue(this.lastScale)
+      this.pinchScale.setValue(1)
+    }
   }
 
   setImageProperties(image) {
@@ -132,18 +144,6 @@ export default class ImageEditor extends PureComponent {
   }
 
   render() {
-    const scale = this.scaleValue.interpolate({
-      inputRange: [this.minimumZoomScale, this.maximumZoomScale],
-      outputRange: [this.minimumZoomScale * SCALE_MULTIPLIER, this.maximumZoomScale],
-      extrapolate: 'clamp',
-    })
-
-    const transform = [
-      { translateX: Animated.add(this.gesturePosition.x, this.gestureOffset.x) },
-      { translateY: Animated.add(this.gesturePosition.y, this.gestureOffset.y) },
-      // { scale },
-    ]
-
     return (
       <PanGestureHandler
         onGestureEvent={this.onPanGestureEvent}
@@ -158,13 +158,24 @@ export default class ImageEditor extends PureComponent {
         <Animated.View>
           <PinchGestureHandler
             simultaneousHandlers={this.panRef}
-            onGestureEvent={this.onGesturePinch}
+            onGestureEvent={this.onPinchGestureEvent}
+            onHandlerStateChange={this.onPinchHandlerStateChange}
           >
             <Animated.Image
               style={[
                 {
                   backgroundColor: COLORS.DARK_GREY,
-                  transform,
+                  transform: [
+                    { translateX: Animated.add(this.gesturePosition.x, this.gestureOffset.x) },
+                    { translateY: Animated.add(this.gesturePosition.y, this.gestureOffset.y) },
+                    {
+                      scale: this.pinchScale.interpolate({
+                        inputRange: [this.minimumZoomScale, this.maximumZoomScale],
+                        outputRange: [this.minimumZoomScale, this.maximumZoomScale],
+                        extrapolate: 'clamp',
+                      }),
+                    },
+                  ],
                 },
                 this.scaledImageSize,
               ]}
