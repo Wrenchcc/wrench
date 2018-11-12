@@ -1411,10 +1411,10 @@ eslint-config-airbnb@^17.1.0:
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
-eslint-config-prettier@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-3.1.0.tgz#2c26d2cdcfa3a05f0642cd7e6e4ef3316cdabfa2"
-  integrity sha512-QYGfmzuc4q4J6XIhlp8vRKdI/fI0tQfQPy1dME3UOLprE+v4ssH/3W9LM2Q7h5qBcy5m0ehCrBDU2YF8q6OY8w==
+eslint-config-prettier@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-3.3.0.tgz#41afc8d3b852e757f06274ed6c44ca16f939a57d"
+  integrity sha512-Bc3bh5bAcKNvs3HOpSi6EfGA2IIp7EzWcg2tS4vP7stnXu/J1opihHDM7jI9JCIckyIDTgZLSWn7J3HY0j2JfA==
   dependencies:
     get-stdin "^6.0.0"
 
@@ -3470,10 +3470,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^1.15.1:
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.15.1.tgz#06c67106afb1b40e74b002353b2079cc7e0e67bf"
-  integrity sha512-4rgV2hyc/5Pk0XHH4VjJWHRgVjgRbpMfLQjREAhHBtyW1UvTFkjJEsueGYNYYZd9mn97K+1qv0EBwm11zoaSgA==
+prettier@^1.15.2:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.15.2.tgz#d31abe22afa4351efa14c7f8b94b58bb7452205e"
+  integrity sha512-YgPLFFA0CdKL4Eg2IHtUSjzj/BWgszDHiNQAe0VAIBse34148whfdzLagRL+QiKS+YfK5ftB6X4v/MBw8yCoug==
 
 prettier@^1.7.0:
   version "1.14.2"
@@ -4341,10 +4341,21 @@ tsconfig-paths-webpack-plugin@^3.2.0:
     enhanced-resolve "^4.0.0"
     tsconfig-paths "^3.4.0"
 
-tsconfig-paths@^3.4.0, tsconfig-paths@^3.6.0:
+tsconfig-paths@^3.4.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.6.0.tgz#f14078630d9d6e8b1dc690c1fc0cfb9cd0663891"
   integrity sha512-mrqQIP2F4e03aMTCiPdedCIT300//+q0ET53o5WqqtQjmEICxP9yfz/sHTpPqXpssuJEzODsEzJaLRaf5J2X1g==
+  dependencies:
+    "@types/json5" "^0.0.29"
+    deepmerge "^2.0.1"
+    json5 "^1.0.1"
+    minimist "^1.2.0"
+    strip-bom "^3.0.0"
+
+tsconfig-paths@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.7.0.tgz#02ae978db447b22e09dafcd4198be95c4885ceb2"
+  integrity sha512-7iE+Q/2E1lgvxD+c0Ot+GFFmgmfIjt/zCayyruXkXQ84BLT85gHXy0WSoQSiuFX9+d+keE/jiON7notV74ZY+A==
   dependencies:
     "@types/json5" "^0.0.29"
     deepmerge "^2.0.1"
