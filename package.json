@@ -5,10 +5,13 @@
   "scripts": {
     "start:api": "node api/dist/server.js",
     "build:api": "cross-env DEBUG=build* cross-env DIR=api webpack",
-    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts --watch api"
+    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts --watch api",
+    "db:migrate": "",
+    "db:seed": "",
+    "db:reset": ""
   },
   "devDependencies": {
-    "@types/node": "^10.12.5",
+    "@types/node": "^10.12.7",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
@@ -28,7 +31,7 @@
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
+    "tslint-config-prettier": "^1.16.0",
     "typescript": "^3.1.6",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
