@@ -1,0 +1,16 @@
+db:
+  image: postgres:11.1
+  ports:
+    - 5432:5432
+  volumes_from:
+    - postgres
+  environment:
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_USER: postgres
+    PGDATA: /var/lib/postgresql/data/pgdata
+
+postgres:
+  image: alpine:latest
+  volumes:
+    - /var/lib/postgresql/data/pgdata
+  command: 'true'
