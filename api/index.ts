@@ -4,6 +4,7 @@ import { getUserFromRequest } from 'api/utils/auth'
 import schema from './schema'
 import models from './models'
 import services from './services'
+import User from './entity/User'
 
 const debug = require('debug')('api:server')
 
