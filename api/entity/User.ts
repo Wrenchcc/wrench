@@ -1,18 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
-class User {
+export default class User {
   @PrimaryGeneratedColumn()
   public id: number
 
   @Column()
   public username: string
 
-  // @Column({ type: 'date' })
-  // createdAt: date
+  @CreateDateColumn()
+  createdDate: Date
 
-  // @UpdateDateColumn
-  // updatedAt: date
+  @UpdateDateColumn()
+  updatedDate: Date
 
   @Column()
   public firstName: string
@@ -20,23 +20,21 @@ class User {
   @Column()
   public lastName: string
 
-  @Column
+  @Column()
   public fullName: string
 
-  @Column
+  @Column()
   public avatarUrl: string
 
   @Column('int')
-  public projectCount: int
+  public projectCount: number
 
-  @Column
+  @Column()
   public isAdmin: boolean
 
-  @Column
+  @Column()
   public isPro: boolean
 
-  @Column
+  @Column()
   public dynamicLink: string
 }
-
-export default User
