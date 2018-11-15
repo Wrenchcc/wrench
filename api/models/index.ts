@@ -1,8 +1,6 @@
+import { getRepository } from 'typeorm'
+import User from './User'
+
 export default {
-  mutation: {
-    createUser: user => user,
-  },
-  query: {
-    getUser: () => null,
-  },
+  User: () => getRepository(User),
 }

@@ -4,7 +4,7 @@ import { getUserFromRequest } from 'api/utils/auth'
 import schema from './schema'
 import models from './models'
 import services from './services'
-import User from './entity/User'
+import User from './models/User'
 
 const debug = require('debug')('api:server')
 
@@ -25,9 +25,8 @@ createConnection(options)
   .then(async db => {
     const server = new ApolloServer({
       context: ({ req }) => ({
-        models,
+        ...models,
         services,
-        db,
         user: getUserFromRequest(req),
       }),
       playground: NODE_ENV !== 'production',

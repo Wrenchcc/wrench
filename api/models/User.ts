@@ -23,18 +23,27 @@ export default class User {
   @Column()
   public fullName: string
 
-  @Column()
+  @Column({ nullable: true })
   public avatarUrl: string
 
-  @Column('int')
-  public projectCount: number
+  // @Column('int')
+  // public projectCount: number
 
-  @Column()
+  @Column({ default: false })
   public isAdmin: boolean
 
-  @Column()
+  @Column({ default: false })
   public isPro: boolean
 
-  @Column()
+  @Column({ nullable: true })
   public dynamicLink: string
+
+  @Column({ nullable: true })
+  public accessToken: string
+
+  @Column({ nullable: true })
+  public refreshToken: string
+
+  @Column({ nullable: true })
+  public facebookToken: string
 }
