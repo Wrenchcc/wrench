@@ -1,3 +1,4 @@
+const { IgnorePlugin } = require('webpack')
 const path = require('path')
 const debug = require('debug')('build:webpack')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
@@ -21,6 +22,7 @@ module.exports = {
     plugins: [new TsconfigPathsPlugin()],
     extensions: ['.ts', '.js', '.json'],
   },
+  plugins: [new IgnorePlugin(/^pg-native$/)],
   externals: ['aws-sdk'],
   module: {
     rules: [
