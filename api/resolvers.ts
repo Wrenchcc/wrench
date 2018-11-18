@@ -56,6 +56,7 @@ export default {
       edges: comments(),
       pageInfo,
     }),
+    currentUser,
     followers: (root, args, ctx, info) => followersConnection,
     posts: (root, args, ctx, info) => ({
       edges: posts(),

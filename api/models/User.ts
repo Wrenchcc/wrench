@@ -44,8 +44,8 @@ export default class User {
   @Column({ nullable: true })
   public dynamicLink: string
 
-  @Column({ nullable: true })
-  public facebookId: string
+  @Column({ type: 'bigint', nullable: true })
+  public facebookId: number
 
   // @OneToOne(type => Tokens)
   // @JoinColumn()

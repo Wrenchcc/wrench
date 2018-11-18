@@ -9,14 +9,18 @@ const postsConnection = {
   pageInfo,
 }
 
-export default async (_, { currentUser }, { models, services }) => ({
-  ...generateUser(),
-  interestedIn: [
-    {
-      id: '123',
-    },
-  ],
-  postsConnection,
-  projectsConnection,
-  settings,
-})
+export default async (_, __, { currentUser, models }) => {
+  const user = await models.user().findOne(currentUser.userId)
+
+  return {
+    ...user,
+    interestedIn: [
+      {
+        id: '123',
+      },
+    ],
+    postsConnection,
+    projectsConnection,
+    settings,
+  }
+}

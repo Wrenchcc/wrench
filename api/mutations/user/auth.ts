@@ -8,7 +8,6 @@ export const authenticateUser = async (_, { facebookToken }, { models, services 
   )
 
   const user = await models.user().findOne({ facebookId: id })
-  console.log('here', user)
 
   // User already registred
   if (user) {
@@ -24,8 +23,6 @@ export const authenticateUser = async (_, { facebookToken }, { models, services 
     .user()
     .save({ username: 'pontus', firstName, fullName, avatarUrl, lastName, facebookId: id })
 
-  console.log('createdUser', createdUser)
-
   return {
     tokens: {
       accessToken: createToken({ userId: createdUser.id }),
@@ -34,7 +31,7 @@ export const authenticateUser = async (_, { facebookToken }, { models, services 
   }
 }
 
-export const refreshToken = async (_, { refreshToken }, ctx) => {
+export const refreshToken = async (_, __, { models }) => {
   const id = path(['userId'], verifyRefreshToken(refreshToken))
 
   if (!id) {
@@ -45,7 +42,7 @@ export const refreshToken = async (_, { refreshToken }, ctx) => {
   // RefreshToken.find({ where: { refreshToken } })
 
   // 2. Check if the user exists (maybe not necessary)
-  const user = ctx.User.find({ id })
+  const user = models.User().findOne({ id })
 
   return {
     tokens: {
