@@ -13,42 +13,45 @@ import Tokens from './Tokens'
 @Entity()
 export default class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  public id: string
+  private id: string
 
-  @Column()
-  public username: string
+  @Column({ unique: true, nullable: true })
+  private username: string
 
   @CreateDateColumn()
-  public createdDate: Date
+  private createdDate: Date
 
   @UpdateDateColumn()
-  public updatedDate: Date
+  private updatedDate: Date
 
   @Column()
-  public firstName: string
+  private firstName: string
 
   @Column()
-  public lastName: string
+  private lastName: string
 
   @Column()
-  public fullName: string
+  private fullName: string
 
   @Column({ nullable: true })
-  public avatarUrl: string
-
-  @Column({ default: false })
-  public isAdmin: boolean
-
-  @Column({ default: false })
-  public isPro: boolean
+  private email: string
 
   @Column({ nullable: true })
-  public dynamicLink: string
+  private avatarUrl: string
+
+  @Column({ default: false })
+  private isAdmin: boolean
+
+  @Column({ default: false })
+  private isPro: boolean
+
+  @Column({ nullable: true })
+  private dynamicLink: string
 
   @Column({ type: 'bigint', nullable: true })
-  public facebookId: number
+  private facebookId: number
 
-  // @OneToOne(type => Tokens)
-  // @JoinColumn()
-  // public tokens: Tokens
+  @OneToOne(type => Tokens)
+  @JoinColumn()
+  private tokens: Tokens
 }

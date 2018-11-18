@@ -13,7 +13,7 @@ export default class Tokens extends BaseEntity {
   public id: number
 
   @Column()
-  public userId: number
+  public userId: string
 
   @CreateDateColumn()
   public createdDate: Date

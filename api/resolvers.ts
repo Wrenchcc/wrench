@@ -1,4 +1,5 @@
-import { authenticate, refreshToken } from './mutations/user/auth'
+import authenticate from './mutations/user/authenticate'
+import refreshToken from './mutations/user/refreshToken'
 import addPost from './mutations/post/addPost'
 import preSignUrls from './mutations/upload/preSignUrls'
 import currentUser from './queries/user/currentUser'

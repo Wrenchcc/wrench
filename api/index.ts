@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server'
 import { createConnection } from 'typeorm'
-import { getUserId } from 'api/utils/auth'
+import { getUserId } from 'api/utils/tokens'
 import schema from './schema'
 import { options, db } from './models'
 import services from './services'

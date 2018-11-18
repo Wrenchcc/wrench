@@ -28,3 +28,8 @@ export const verifyRefreshToken = refreshToken => {
 }
 
 export const createToken = data => jwt.sign(data, APP_JWT_SECRET)
+
+export const generateTokens = userId => ({
+  refreshToken: createToken({ userId }),
+  token: createToken({ userId }),
+})
