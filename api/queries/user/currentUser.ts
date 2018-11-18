@@ -9,8 +9,8 @@ const postsConnection = {
   pageInfo,
 }
 
-export default async (_, __, { currentUser, models }) => {
-  const user = await models.user().findOne(currentUser.userId)
+export default async (_, __, ctx) => {
+  const user = await ctx.db.User.findOne(ctx.userId)
 
   return {
     ...user,

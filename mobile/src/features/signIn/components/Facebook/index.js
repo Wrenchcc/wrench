@@ -4,13 +4,13 @@ import { withNamespaces } from 'react-i18next'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
-import { authenticateUser } from 'graphql/mutations/user/authenticateUser'
+import { authenticate } from 'graphql/mutations/user/authenticate'
 import { Button, Text } from './styled'
 
 class Facebook extends PureComponent {
   static propTypes = {
     changeLoginState: PropTypes.func.isRequired,
-    authenticateUser: PropTypes.func.isRequired,
+    authenticate: PropTypes.func.isRequired,
   }
 
   handleLoginManager = async () => {
@@ -19,7 +19,7 @@ class Facebook extends PureComponent {
     const facebookResponse = await AccessToken.getCurrentAccessToken().then(this.getAccessToken)
 
     try {
-      await this.props.authenticateUser(facebookResponse.accessToken)
+      await this.props.authenticate(facebookResponse.accessToken)
       this.props.changeLoginState(true)
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
     } catch (err) {
@@ -39,6 +39,6 @@ class Facebook extends PureComponent {
 }
 
 export default compose(
-  authenticateUser,
+  authenticate,
   withNamespaces('Facebook')
 )(Facebook)

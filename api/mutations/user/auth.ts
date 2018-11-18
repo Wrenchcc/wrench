@@ -1,13 +1,17 @@
 import { path } from 'ramda'
 import { verifyRefreshToken, createToken } from 'api/utils/auth'
 
-export const authenticateUser = async (_, { facebookToken }, { models, services }) => {
+export const authenticate = async (_, { facebookToken }, ctx) => {
   // Get facebook data and create new user
-  const { firstName, fullName, avatarUrl, lastName, id } = await services.facebook.getAccountData(
-    facebookToken
-  )
+  const {
+    firstName,
+    fullName,
+    avatarUrl,
+    lastName,
+    id,
+  } = await ctx.services.facebook.getAccountData(facebookToken)
 
-  const user = await models.user().findOne({ facebookId: id })
+  const user = await ctx.db.User.findOne({ facebookId: id })
 
   // User already registred
   if (user) {
@@ -19,9 +23,14 @@ export const authenticateUser = async (_, { facebookToken }, { models, services 
     }
   }
 
-  const createdUser = await models
-    .user()
-    .save({ username: 'pontus', firstName, fullName, avatarUrl, lastName, facebookId: id })
+  const createdUser = await ctx.db.User.save({
+    avatarUrl,
+    facebookId: id,
+    firstName,
+    fullName,
+    lastName,
+    username: 'pontus',
+  })
 
   return {
     tokens: {
@@ -31,7 +40,7 @@ export const authenticateUser = async (_, { facebookToken }, { models, services 
   }
 }
 
-export const refreshToken = async (_, __, { models }) => {
+export const refreshToken = async (_, __, ctx) => {
   const id = path(['userId'], verifyRefreshToken(refreshToken))
 
   if (!id) {
@@ -42,7 +51,7 @@ export const refreshToken = async (_, __, { models }) => {
   // RefreshToken.find({ where: { refreshToken } })
 
   // 2. Check if the user exists (maybe not necessary)
-  const user = models.User().findOne({ id })
+  const user = ctx.db.User.findOne({ id })
 
   return {
     tokens: {

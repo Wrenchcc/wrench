@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken'
 
 const { APP_JWT_SECRET } = process.env
 
-export const getUserFromRequest = req => {
+export const getUserId = req => {
   const authorization = req.headers.authorization || ''
 
   if (authorization) {

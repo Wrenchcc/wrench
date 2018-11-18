@@ -1,4 +1,4 @@
-import { authenticateUser, refreshToken } from './mutations/user/auth'
+import { authenticate, refreshToken } from './mutations/user/auth'
 import addPost from './mutations/post/addPost'
 import preSignUrls from './mutations/upload/preSignUrls'
 import currentUser from './queries/user/currentUser'
@@ -114,7 +114,7 @@ export default {
   },
   Mutation: {
     addPost,
-    authenticateUser,
+    authenticate,
     deletePost,
     editUser,
     followProject,

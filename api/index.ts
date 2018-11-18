@@ -1,8 +1,8 @@
 import { ApolloServer } from 'apollo-server'
 import { createConnection } from 'typeorm'
-import { getUserFromRequest } from 'api/utils/auth'
+import { getUserId } from 'api/utils/auth'
 import schema from './schema'
-import { options, models } from './models'
+import { options, db } from './models'
 import services from './services'
 
 const debug = require('debug')('api:server')
@@ -13,9 +13,9 @@ createConnection(options)
   .then(async () => {
     const server = new ApolloServer({
       context: ({ req }) => ({
-        currentUser: getUserFromRequest(req),
-        models,
+        db,
         services,
+        userId: getUserId(req),
       }),
       playground: NODE_ENV !== 'production',
       schema,

@@ -3,9 +3,9 @@ import { graphql } from 'react-apollo'
 import { track, events } from 'utils/analytics'
 import { setTokens } from 'graphql/utils/auth'
 
-export const authenticateUserMutation = gql`
-  mutation authenticateUser($facebookToken: String!) {
-    authenticateUser(facebookToken: $facebookToken) {
+export const authenticateMutation = gql`
+  mutation authenticate($facebookToken: String!) {
+    authenticate(facebookToken: $facebookToken) {
       tokens {
         accessToken
         refreshToken
@@ -14,12 +14,12 @@ export const authenticateUserMutation = gql`
   }
 `
 
-const authenticateUserOptions = {
+const authenticateOptions = {
   props: ({ mutate }) => ({
-    authenticateUser: facebookToken => mutate({
+    authenticate: facebookToken => mutate({
       variables: { facebookToken },
       update: (store, { data }) => {
-        const { tokens } = data.authenticateUser
+        const { tokens } = data.authenticate
         setTokens(tokens)
         track(events.USER_SIGNED_IN)
       },
@@ -27,4 +27,4 @@ const authenticateUserOptions = {
   }),
 }
 
-export const authenticateUser = graphql(authenticateUserMutation, authenticateUserOptions)
+export const authenticate = graphql(authenticateMutation, authenticateOptions)

@@ -17,6 +17,6 @@ export const options: ConnectionOptions = {
   username: DB_USERNAME,
 }
 
-export const models = {
-  user: () => getRepository(User),
+export const db = {
+  User,
 }

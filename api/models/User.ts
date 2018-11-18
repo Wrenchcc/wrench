@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
   Column,
@@ -10,7 +11,7 @@ import {
 import Tokens from './Tokens'
 
 @Entity()
-export default class User {
+export default class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string
 

@@ -1,7 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import {
+  BaseEntity,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 
 @Entity()
-export default class Tokens {
+export default class Tokens extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id: number
 
