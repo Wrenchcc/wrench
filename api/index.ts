@@ -1,33 +1,21 @@
 import { ApolloServer } from 'apollo-server'
-import { createConnection, ConnectionOptions } from 'typeorm'
+import { createConnection } from 'typeorm'
 import { getUserFromRequest } from 'api/utils/auth'
 import schema from './schema'
-import models from './models'
+import { options, models } from './models'
 import services from './services'
-import User from './models/User'
 
 const debug = require('debug')('api:server')
 
 const { PORT = 4000, NODE_ENV } = process.env
 
-const options: ConnectionOptions = {
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'postgres',
-  password: 'postgres',
-  database: 'wrench',
-  synchronize: true,
-  entities: [User],
-}
-
 createConnection(options)
-  .then(async db => {
+  .then(async () => {
     const server = new ApolloServer({
       context: ({ req }) => ({
-        ...models,
+        currentUser: getUserFromRequest(req),
+        models,
         services,
-        user: getUserFromRequest(req),
       }),
       playground: NODE_ENV !== 'production',
       schema,

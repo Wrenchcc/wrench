@@ -1,6 +1,7 @@
 {
   "extends": ["tslint-config-airbnb", "tslint:latest", "tslint-config-prettier"],
   "rules": {
+    "label-position": false,
     "no-var-requires": false,
     "ordered-imports": false,
     "import-name": false,

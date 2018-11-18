@@ -1,18 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm'
+import Tokens from './Tokens'
 
 @Entity()
 export default class User {
-  @PrimaryGeneratedColumn()
-  public id: number
+  @PrimaryGeneratedColumn('uuid')
+  public id: string
 
   @Column()
   public username: string
 
   @CreateDateColumn()
-  createdDate: Date
+  public createdDate: Date
 
   @UpdateDateColumn()
-  updatedDate: Date
+  public updatedDate: Date
 
   @Column()
   public firstName: string
@@ -26,9 +35,6 @@ export default class User {
   @Column({ nullable: true })
   public avatarUrl: string
 
-  // @Column('int')
-  // public projectCount: number
-
   @Column({ default: false })
   public isAdmin: boolean
 
@@ -39,11 +45,9 @@ export default class User {
   public dynamicLink: string
 
   @Column({ nullable: true })
-  public accessToken: string
+  public facebookId: string
 
-  @Column({ nullable: true })
-  public refreshToken: string
-
-  @Column({ nullable: true })
-  public facebookToken: string
+  // @OneToOne(type => Tokens)
+  // @JoinColumn()
+  // public tokens: Tokens
 }
