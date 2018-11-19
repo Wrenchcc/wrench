@@ -11,7 +11,7 @@ export const getUserId = req => {
     const token = authorization.replace('Bearer ', '')
     try {
       const { userId } = jwt.verify(token, APP_JWT_SECRET)
-      return { userId }
+      return userId
     } catch {
       return null
     }

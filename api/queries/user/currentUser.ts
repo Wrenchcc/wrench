@@ -10,7 +10,7 @@ const postsConnection = {
 }
 
 export default async (_, __, ctx) => {
-  const user = await ctx.db.User.findOne(ctx.userId)
+  const user = await ctx.db.Users.findOne(ctx.userId)
 
   return {
     ...user,

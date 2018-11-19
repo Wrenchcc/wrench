@@ -17,7 +17,6 @@ import projects from './fixtures/projects'
 import models from './fixtures/models'
 import projectsConnection from './fixtures/projectsConnection'
 import projectSuggestions from './fixtures/projectSuggestions'
-import settings from './fixtures/settings'
 import toggleNotificationSettings from './mutations/user/toggleNotificationSettings'
 import users from './fixtures/users'
 

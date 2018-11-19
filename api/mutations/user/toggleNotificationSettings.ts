@@ -1,23 +1,28 @@
 import { mergeDeepRight } from 'ramda'
-import user from '../../fixtures/generateUser'
-import settings from '../../fixtures/settings'
 
-export default (_, args, ctx) => {
-  const { deliveryMethod, notificationType } = args.input
+export default async (_, args, ctx) => {
+  const { notificationType } = args.input
+  const user = await ctx.db.Users.findOne(ctx.userId)
 
-  const oldVal = settings.notifications.types[notificationType][deliveryMethod]
-  const newSettings = mergeDeepRight(settings, {
-    notifications: {
-      types: {
-        [notificationType]: {
-          [deliveryMethod]: !oldVal,
-        },
-      },
-    },
+  // Get prev state
+  const prev = await ctx.db.Notifications.findOne({
+    select: ['id', 'value'],
+    where: { type: notificationType, userId: ctx.userId },
   })
 
-  return {
-    ...user(),
-    settings: newSettings,
-  }
+  // Update to new state
+  await ctx.db.Notifications.update(prev.id, {
+    value: !prev.value,
+  })
+
+  // Return all notifications
+  const notifications = await ctx.db.Notifications.find({
+    select: ['type', 'value'],
+    where: { userId: ctx.userId },
+  })
+
+  // return {
+  //   ...user,
+  //   notifications,
+  // }
 }

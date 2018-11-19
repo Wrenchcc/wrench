@@ -10,16 +10,20 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm'
-import AuthToken from './AuthToken'
-import AuthProvider from './AuthProvider'
+import AuthTokens from './AuthTokens'
+import AuthProviders from './AuthProviders'
+import Notifications from './Notifications'
 
 @Entity()
-export default class User extends BaseEntity {
-  @OneToMany(type => AuthToken, authToken => authToken.user)
-  public authTokens: AuthToken[]
+export default class Users extends BaseEntity {
+  @OneToMany(type => Notifications, notifications => notifications.user)
+  public notifications: Notifications[]
 
-  @OneToMany(type => AuthProvider, authProvider => authProvider.user)
-  public authProviders: AuthProvider[]
+  @OneToMany(type => AuthTokens, authToken => authToken.user)
+  public authTokens: AuthTokens[]
+
+  @OneToMany(type => AuthProviders, authProvider => authProvider.user)
+  public authProviders: AuthProviders[]
 
   @PrimaryGeneratedColumn('uuid')
   private id: string
