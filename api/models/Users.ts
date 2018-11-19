@@ -6,9 +6,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
-  BeforeInsert,
-  OneToOne,
-  JoinColumn,
 } from 'typeorm'
 import AuthTokens from './AuthTokens'
 import AuthProviders from './AuthProviders'
