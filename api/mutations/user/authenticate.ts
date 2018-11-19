@@ -4,9 +4,9 @@ import { generateTokens } from 'api/utils/tokens'
 const PROVIDER_NAME = 'facebook'
 
 export default async (_, { facebookToken }, ctx) => {
-  const { id, ...fbUser } = await ctx.services.facebook.getAccountData(facebookToken)
+  const { id: providerId, ...fbUser } = await ctx.services.facebook.getAccountData(facebookToken)
   const authProvider = await ctx.db.AuthProvider.findOne({
-    where: { providerId: id, providerName: PROVIDER_NAME },
+    where: { providerId, providerName: PROVIDER_NAME },
     relations: ['user'],
   })
 
@@ -25,7 +25,7 @@ export default async (_, { facebookToken }, ctx) => {
 
   await ctx.db.AuthProvider.save({
     providerName: PROVIDER_NAME,
-    providerId: id,
+    providerId,
     user: createdUser,
   })
 
