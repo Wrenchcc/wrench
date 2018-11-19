@@ -19,7 +19,7 @@ export const options: ConnectionOptions = {
 }
 
 export const db = {
-  User,
   AuthProvider,
   AuthToken,
+  User,
 }

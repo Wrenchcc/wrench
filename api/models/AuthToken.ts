@@ -11,18 +11,18 @@ import User from './User'
 
 @Entity()
 export default class AuthToken extends BaseEntity {
+  @ManyToOne(type => User, user => user.authTokens)
+  public user: User
+
   @PrimaryGeneratedColumn()
-  public id: number
+  private id: number
 
   @Column()
-  public refreshToken: string
+  private refreshToken: string
 
   @CreateDateColumn()
-  public createdAt: Date
+  private createdAt: Date
 
   @UpdateDateColumn()
-  public updatedAt: Date
-
-  @ManyToOne(type => User, user => user.authTokens)
-  user: User
+  private updatedAt: Date
 }

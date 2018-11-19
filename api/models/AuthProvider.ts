@@ -11,21 +11,21 @@ import User from './User'
 
 @Entity()
 export default class AuthProvider extends BaseEntity {
+  @ManyToOne(type => User, user => user.authProviders)
+  public user: User
+
   @PrimaryGeneratedColumn()
-  public id: number
+  private id: number
 
   @Column()
-  public providerName: string
+  private providerName: string
 
   @Column({ type: 'bigint', nullable: true })
   private providerId: number
 
   @CreateDateColumn()
-  public createdAt: Date
+  private createdAt: Date
 
   @UpdateDateColumn()
-  public updatedAt: Date
-
-  @ManyToOne(type => User, user => user.authProviders)
-  user: User
+  private updatedAt: Date
 }

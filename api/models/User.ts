@@ -15,6 +15,12 @@ import AuthProvider from './AuthProvider'
 
 @Entity()
 export default class User extends BaseEntity {
+  @OneToMany(type => AuthToken, authToken => authToken.user)
+  public authTokens: AuthToken[]
+
+  @OneToMany(type => AuthProvider, authProvider => authProvider.user)
+  public authProviders: AuthProvider[]
+
   @PrimaryGeneratedColumn('uuid')
   private id: string
 
@@ -41,10 +47,4 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   private avatarUrl: string
-
-  @OneToMany(type => AuthToken, authToken => authToken.user)
-  authTokens: AuthToken[]
-
-  @OneToMany(type => AuthProvider, authProvider => authProvider.user)
-  authProviders: AuthProvider[]
 }
