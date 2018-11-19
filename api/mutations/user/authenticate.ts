@@ -15,7 +15,7 @@ export default async (_, { facebookToken }, ctx) => {
   const tokens = generateTokens(createdUser.id)
 
   // TODO: Save tokens
-  // await ctx.db.User.update(createdUser.id, { tokens })
+  // await ctx.db.User.update(createdUser.id, { refreshToken }, relation:['tokens'])
 
   return {
     tokens,

@@ -5,15 +5,14 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm'
+import User from './User'
 
 @Entity()
-export default class Tokens extends BaseEntity {
+export default class Token extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id: number
-
-  @Column()
-  public userId: string
 
   @CreateDateColumn()
   public createdDate: Date
@@ -26,4 +25,7 @@ export default class Tokens extends BaseEntity {
 
   @Column()
   public refreshToken: string
+
+  @ManyToOne(type => User, user => user.tokens)
+  user: User
 }

@@ -18,7 +18,7 @@
     "jsonwebtoken": "^8.4.0",
     "node-fetch": "^2.3.0",
     "pg": "^7.6.1",
-    "ramda": "^0.25.0",
+    "ramda": "^0.26.0",
     "reflect-metadata": "^0.1.12",
     "typeorm": "^0.2.9",
     "uuid": "^3.3.2"

@@ -5,11 +5,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToOne,
-  JoinColumn,
+  OneToMany,
   BeforeInsert,
 } from 'typeorm'
-import Tokens from './Tokens'
+import Token from './Token'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -52,16 +51,15 @@ export default class User extends BaseEntity {
   @Column({ type: 'bigint', nullable: true })
   private facebookId: number
 
-  // @OneToOne(type => Tokens)
-  // @JoinColumn()
-  // private tokens: Tokens
+  @OneToMany(type => Token, token => token.user)
+  tokens: Token[]
 
-  @BeforeInsert()
-  private beforeInsert() {
-    this.username = 'pontus.abrahamsson'
-  }
-
-  private generateUsername(firstName, lastName) {
-    return 'pontus.abrahamsson'
-  }
+  // @BeforeInsert()
+  // private beforeInsert() {
+  //   this.username = 'pontus.abrahamsson'
+  // }
+  //
+  // private generateUsername(firstName, lastName) {
+  //   return 'pontus.abrahamsson'
+  // }
 }
