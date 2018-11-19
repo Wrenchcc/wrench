@@ -10,22 +10,19 @@ import {
 import User from './User'
 
 @Entity()
-export default class Token extends BaseEntity {
+export default class AuthToken extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id: number
-
-  @CreateDateColumn()
-  public createdDate: Date
-
-  @UpdateDateColumn()
-  public updatedDate: Date
-
-  @Column()
-  public token: string
 
   @Column()
   public refreshToken: string
 
-  @ManyToOne(type => User, user => user.tokens)
+  @CreateDateColumn()
+  public createdAt: Date
+
+  @UpdateDateColumn()
+  public updatedAt: Date
+
+  @ManyToOne(type => User, user => user.authTokens)
   user: User
 }

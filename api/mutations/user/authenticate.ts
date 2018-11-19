@@ -1,23 +1,40 @@
 import { pluck } from 'ramda'
 import { generateTokens } from 'api/utils/tokens'
 
+const PROVIDER_NAME = 'facebook'
+
 export default async (_, { facebookToken }, ctx) => {
   const { id, ...fbUser } = await ctx.services.facebook.getAccountData(facebookToken)
-  const user = await ctx.db.User.findOne({ facebookId: id })
+  const authProvider = await ctx.db.AuthProvider.findOne({
+    where: { providerId: id, providerName: PROVIDER_NAME },
+    relations: ['user'],
+  })
 
-  if (user) {
-    return {
-      tokens: generateTokens(user.id),
-    }
+  if (authProvider) {
+    const tokens = generateTokens(authProvider.user.id)
+
+    await ctx.db.AuthToken.save({
+      refreshToken: tokens.refreshToken,
+      user: authProvider.user,
+    })
+
+    return tokens
   }
 
-  const createdUser = await ctx.db.User.save({ ...fbUser, facebookId: id })
+  const createdUser = await ctx.db.User.save(fbUser)
+
+  await ctx.db.AuthProvider.save({
+    providerName: PROVIDER_NAME,
+    providerId: id,
+    user: createdUser,
+  })
+
   const tokens = generateTokens(createdUser.id)
 
-  // TODO: Save tokens
-  // await ctx.db.User.update(createdUser.id, { refreshToken }, relation:['tokens'])
+  await ctx.db.AuthToken.save({
+    refreshToken: tokens.refreshToken,
+    user: createdUser,
+  })
 
-  return {
-    tokens,
-  }
+  return tokens
 }

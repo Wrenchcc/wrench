@@ -6,10 +6,8 @@ import { setTokens } from 'graphql/utils/auth'
 export const authenticateMutation = gql`
   mutation authenticate($facebookToken: String!) {
     authenticate(facebookToken: $facebookToken) {
-      tokens {
-        accessToken
-        refreshToken
-      }
+      accessToken
+      refreshToken
     }
   }
 `
@@ -18,9 +16,8 @@ const authenticateOptions = {
   props: ({ mutate }) => ({
     authenticate: facebookToken => mutate({
       variables: { facebookToken },
-      update: (store, { data }) => {
-        const { tokens } = data.authenticate
-        setTokens(tokens)
+      update: (_, { data }) => {
+        setTokens(data.authenticate)
         track(events.USER_SIGNED_IN)
       },
     }),

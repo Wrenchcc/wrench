@@ -7,8 +7,11 @@ import {
   UpdateDateColumn,
   OneToMany,
   BeforeInsert,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm'
-import Token from './Token'
+import AuthToken from './AuthToken'
+import AuthProvider from './AuthProvider'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -19,10 +22,10 @@ export default class User extends BaseEntity {
   private username: string
 
   @CreateDateColumn()
-  private createdDate: Date
+  private createdAt: Date
 
   @UpdateDateColumn()
-  private updatedDate: Date
+  private updatedAt: Date
 
   @Column()
   private firstName: string
@@ -39,27 +42,9 @@ export default class User extends BaseEntity {
   @Column({ nullable: true })
   private avatarUrl: string
 
-  @Column({ default: false })
-  private isAdmin: boolean
+  @OneToMany(type => AuthToken, authToken => authToken.user)
+  authTokens: AuthToken[]
 
-  @Column({ default: false })
-  private isPro: boolean
-
-  @Column({ nullable: true })
-  private dynamicLink: string
-
-  @Column({ type: 'bigint', nullable: true })
-  private facebookId: number
-
-  @OneToMany(type => Token, token => token.user)
-  tokens: Token[]
-
-  // @BeforeInsert()
-  // private beforeInsert() {
-  //   this.username = 'pontus.abrahamsson'
-  // }
-  //
-  // private generateUsername(firstName, lastName) {
-  //   return 'pontus.abrahamsson'
-  // }
+  @OneToMany(type => AuthProvider, authProvider => authProvider.user)
+  authProviders: AuthProvider[]
 }

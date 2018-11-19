@@ -4,12 +4,8 @@ export default `
     refreshToken: String
   }
 
-  type Authenticate {
-    tokens: Tokens
-  }
-
   extend type Mutation {
-    authenticate(facebookToken: String!): Authenticate
-    refreshToken(refreshToken: String!): Authenticate
+    authenticate(facebookToken: String!): Tokens
+    refreshToken(refreshToken: String!): Tokens
 	}
 `

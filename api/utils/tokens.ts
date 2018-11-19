@@ -1,6 +1,8 @@
 import * as jwt from 'jsonwebtoken'
 
 const { APP_JWT_SECRET } = process.env
+const TWENTY_FOUR_HOURS = 86400
+const FIFTEEN_MINUTES = 900
 
 export const getUserId = req => {
   const authorization = req.headers.authorization || ''
@@ -30,6 +32,6 @@ export const verifyRefreshToken = refreshToken => {
 export const createToken = data => jwt.sign(data, APP_JWT_SECRET)
 
 export const generateTokens = userId => ({
-  refreshToken: createToken({ userId }),
-  token: createToken({ userId }),
+  accessToken: createToken({ userId, expiresIn: FIFTEEN_MINUTES }),
+  refreshToken: createToken({ userId, expiresIn: TWENTY_FOUR_HOURS }),
 })
