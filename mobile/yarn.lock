@@ -5119,10 +5119,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.4.1.tgz#d962658917cc94d1f83de61a095aa1521f5f1cbc"
-  integrity sha512-aZzvGGiGYrLWamTN1iSQuhkfip3v3pp/yX4CVTNt4GD17tOOy5XvEP7S+9reYfeRqNlIMCXXI09pQEl7T2JEsw==
+react-native-camera@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.4.2.tgz#d4f90863f2e4cf4603d9cc4b9eac0341536afa63"
+  integrity sha512-R8CzoAeZU/tkLKuwpvTbW2uns7iWRhQotKuM3urtKGBB8zmLzCySsDtn043Bt8JUGbLYtfassKRI39RJRhiwzA==
   dependencies:
     lodash "^4.17.10"
     prop-types "^15.6.2"
@@ -5139,10 +5139,10 @@ react-native-code-push@^5.4.2:
     plist "3.0.1"
     xcode "1.0.0"
 
-react-native-config@^0.11.5:
-  version "0.11.5"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
-  integrity sha512-u1ScTyJXsCZM8Kt8eVEZZw4vtbWOffwAv1HpMwGRRuerqQC99hTBOhFKGCvxPr6APHqYJO3vQYoad/Cjb5VGWw==
+react-native-config@^0.11.6:
+  version "0.11.6"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.6.tgz#efe9027be534629a41a4561de50f76f40dabb78a"
+  integrity sha512-7GawMkZ3/w7dL9ah2EEhNRyHnMRtsbgAPPIDFX8ODDfhvTM0CzPL23bF5KrKmx13jjNrd6/scW9iyorEEPnYcQ==
 
 react-native-device-info@^0.24.3:
   version "0.24.3"
