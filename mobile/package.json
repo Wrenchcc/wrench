@@ -42,7 +42,7 @@
     "react-native-fbsdk": "^0.8.0",
     "react-native-firebase": "^5.1.0",
     "react-native-gesture-handler": "^1.0.9",
-    "react-native-haptic-feedback": "^1.4.1",
+    "react-native-haptic-feedback": "^1.4.2",
     "react-native-linear-gradient": "^2.4.4",
     "react-native-parsed-text": "^0.0.21",
     "react-native-permissions": "^1.1.1",

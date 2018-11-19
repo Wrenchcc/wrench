@@ -5184,10 +5184,10 @@ react-native-gesture-handler@^1.0.0, react-native-gesture-handler@^1.0.9:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-haptic-feedback@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.4.1.tgz#654dec56f03160be0f19b9262eabe9bbedc6f6d8"
-  integrity sha512-g+kuPQN/14h0n/3J2ySxodKR8Uxy/vXEjRg9qdFW6ICCysxM0adCo4Zdpj6mDiMZqMx36DztfKM2w1H460b9WA==
+react-native-haptic-feedback@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.4.2.tgz#e15ed66f2ffe9ec886b4098b792591136efd5ee2"
+  integrity sha512-uLtdxKL4nul5QQUczctCdAr2b6P7/KPLyfQVP8lfcVaNANHpL1WFhCnrWPNCkh2LHSduA88MNgPcTsN9CHbwlw==
 
 react-native-linear-gradient@^2.4.4:
   version "2.4.4"
