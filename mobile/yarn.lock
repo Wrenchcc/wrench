@@ -5119,10 +5119,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.4.2.tgz#d4f90863f2e4cf4603d9cc4b9eac0341536afa63"
-  integrity sha512-R8CzoAeZU/tkLKuwpvTbW2uns7iWRhQotKuM3urtKGBB8zmLzCySsDtn043Bt8JUGbLYtfassKRI39RJRhiwzA==
+react-native-camera@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.4.3.tgz#71359ae8efdf372fb1b8b5ec72ecae1c6708da4b"
+  integrity sha512-jE9AYNOxwldJxjKKyWrERQH0Qjs6MxoInlqdscCcZnOoxD4Vmq4ut/pwauKsDLJHJyECI7yNzoapLZDtwM2YMw==
   dependencies:
     lodash "^4.17.10"
     prop-types "^15.6.2"
@@ -5319,14 +5319,6 @@ react-native@^0.57.5:
     xcode "^1.0.0"
     xmldoc "^0.4.0"
     yargs "^9.0.0"
-
-react-navigation-collapsible@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/react-navigation-collapsible/-/react-navigation-collapsible-0.3.1.tgz#ac14686eaf5539f6f16c73bb5f01c0b4bf825a41"
-  integrity sha512-DPgP4ibahP042ZlPzz8baTAJbsU4h3Ft1NCz5Pv8jpJM472DeBf62OSiXeT+7Gv3YDMv4sMPP3FohVb1e6nPrQ==
-  dependencies:
-    hoist-non-react-statics "^3.0.1"
-    react-native-safe-area-view "^0.11.0"
 
 react-navigation-drawer@^1.0.1:
   version "1.0.1"
