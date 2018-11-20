@@ -1,7 +1,7 @@
 import { ConnectionOptions, getRepository } from 'typeorm'
 import { isDevelopment } from 'api/utils/environment'
 import Users from './Users'
-import Notifications from './Notifications'
+import Settings from './Settings'
 import AuthTokens from './AuthTokens'
 import AuthProviders from './AuthProviders'
 
@@ -9,7 +9,7 @@ const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGI
 
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
-  entities: [Users, Notifications, AuthTokens, AuthProviders],
+  entities: [Users, Settings, AuthTokens, AuthProviders],
   host: DB_HOST,
   logging: isDevelopment,
   password: DB_PASSWORD,
@@ -22,6 +22,6 @@ export const options: ConnectionOptions = {
 export const db = {
   AuthProviders,
   AuthTokens,
-  Notifications,
+  Settings,
   Users,
 }

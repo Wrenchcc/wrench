@@ -5,6 +5,7 @@ const PROVIDER_NAME = 'facebook'
 
 export default async (_, { facebookToken }, ctx) => {
   const { id: providerId, ...fbUser } = await ctx.services.facebook.getAccountData(facebookToken)
+
   const authProvider = await ctx.db.AuthProviders.findOne({
     relations: ['user'],
     where: { providerId, providerName: PROVIDER_NAME },
