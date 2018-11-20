@@ -12,25 +12,32 @@ const postsConnection = {
 }
 
 export default async (_, __, ctx) => {
+  let notifications
+
   const user = await ctx.db.Users.findOne(ctx.userId)
-
-  const parent = await ctx.db.Settings.findOne({
-    select: ['id'],
-    where: {
-      type: 'notifications',
-      userId: user.id,
-    },
-  })
-
-  const notifications = await ctx.db.Settings.find({
-    select: ['type', 'value'],
-    where: {
-      parentId: parent.id,
-      userId: ctx.userId,
-    },
-  })
-
-  const types = mergeDeepRight(defaultNotificationTypes, transformNotificationTypes(notifications))
+  // const parent = await ctx.db.Settings.findOne({
+  //   select: ['id'],
+  //   where: {
+  //     type: 'notifications',
+  //     userId: user.id,
+  //   },
+  // })
+  //
+  // if (parent) {
+  //   try {
+  //     notifications = await ctx.db.Settings.find({
+  //       select: ['type', 'value'],
+  //       where: {
+  //         parentId: parent.id,
+  //         userId: ctx.userId,
+  //       },
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  //
+  // const types = mergeDeepRight(defaultNotificationTypes, transformNotificationTypes(notifications))
 
   return {
     ...user,
@@ -43,7 +50,7 @@ export default async (_, __, ctx) => {
     projectsConnection,
     settings: {
       notifications: {
-        types,
+        types: defaultNotificationTypes,
       },
     },
   }
