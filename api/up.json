@@ -24,7 +24,12 @@
     "APP_AWS_REGION": "us-east-2",
     "APP_AWS_S3_BUCKET": "wrench-files",
     "APP_AWS_ACCESS_KEY": "AKIAJVH6ND2VCM4LRJPQ",
-    "APP_AWS_SECRET_ACCESS_KEY": "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"
+    "APP_AWS_SECRET_ACCESS_KEY": "LYYtJymTMmd9/uX2h8s03KRjWZ49k7EIw7/rbKIF",
+    "DB_DATABASE": "wrench",
+    "DB_PORT": "5432",
+    "DB_USERNAME": "wrench",
+    "DB_PASSWORD": "ZDjQJM8MrkQq5m7sHK68jAWNXugMwG",
+    "DB_HOST": "wrench-production.cgydxeouwpfa.eu-central-1.rds.amazonaws.com"
   },
   "hooks": {
     "build": "cd ../ && yarn build:api"

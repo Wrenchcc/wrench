@@ -1,6 +1,8 @@
-import { authenticateUser, refreshToken } from './mutations/user/auth'
+import authenticate from './mutations/user/authenticate'
+import refreshToken from './mutations/user/refreshToken'
 import addPost from './mutations/post/addPost'
 import preSignUrls from './mutations/upload/preSignUrls'
+import currentUser from './queries/user/currentUser'
 import comments from './fixtures/comments'
 import deletePost from './mutations/post/deletePost'
 import editUser from './mutations/user/editUser'
@@ -15,7 +17,6 @@ import projects from './fixtures/projects'
 import models from './fixtures/models'
 import projectsConnection from './fixtures/projectsConnection'
 import projectSuggestions from './fixtures/projectSuggestions'
-import settings from './fixtures/settings'
 import toggleNotificationSettings from './mutations/user/toggleNotificationSettings'
 import users from './fixtures/users'
 
@@ -34,80 +35,66 @@ const getSearchEdge = type => {
 
 // TODO: Change to sub queries and mutations in directories
 const postsConnection = {
-  pageInfo,
   edges: posts(),
+  pageInfo,
 }
 
 const followingProjects = {
-  pageInfo,
   edges: projects(),
+  pageInfo,
 }
 
 const followersConnection = {
-  totalCount: 4000,
   edges: users(),
   pageInfo,
+  totalCount: 4000,
 }
 
 export default {
   Query: {
-    posts: (root, args, ctx, info) => ({
+    comments: (root, args, ctx, info) => ({
+      edges: comments(),
       pageInfo,
+    }),
+    currentUser,
+    followers: (root, args, ctx, info) => followersConnection,
+    posts: (root, args, ctx, info) => ({
       edges: posts(),
+      pageInfo,
     }),
     project: (root, args, ctx, info) => ({
-      id: '123',
-      slug: 'the-natural',
-      title: 'The Natural',
       dynamicLink: 'https://wrench.page.link/KFko',
+      followersConnection,
+      id: '123',
+      postsConnection,
       projectPermissions: {
         isFollower: false,
         isOwner: false,
       },
+      slug: 'the-natural',
+      title: 'The Natural',
       user: generateUser(),
-      followersConnection,
-      postsConnection,
     }),
-    projectSuggestions: (root, args, ctx, info) => projectSuggestions,
     projectCategories: (root, args, ctx, info) => projectCategories,
+    projectSuggestions: (root, args, ctx, info) => projectSuggestions,
     projects: (root, args, ctx, info) => projectsConnection,
-    followers: (root, args, ctx, info) => followersConnection,
-    comments: (root, args, ctx, info) => ({
-      pageInfo,
-      edges: comments(),
-    }),
     user: (root, args, ctx, info) => ({
+      currentUser,
       ...generateUser(),
-      postsConnection,
       followingProjects,
+      postsConnection,
     }),
-    currentUser: (root, args, ctx, info) => {
-      if (!ctx.user) {
-        throw new Error('tokenExpired')
-      }
-
-      return {
-        ...generateUser(),
-        interestedIn: [
-          {
-            id: '123',
-          },
-        ],
-        settings,
-        postsConnection,
-        projectsConnection,
-      }
-    },
     notifications: (root, args, ctx, info) => ({
-      pageInfo,
       edges: notifications(),
+      pageInfo,
     }),
     search: (root, { query, type }, ctx, info) => ({
-      pageInfo,
       edges: getSearchEdge(type),
+      pageInfo,
     }),
   },
   SearchResultNode: {
+    /* tslint:disable */
     __resolveType(root, context, info) {
       if (root.username) {
         return 'User'
@@ -123,15 +110,16 @@ export default {
 
       return null
     },
+    /* tslint:enable */
   },
   Mutation: {
-    authenticateUser,
-    refreshToken,
-    editUser,
-    toggleNotificationSettings,
-    followProject,
-    deletePost,
     addPost,
+    authenticate,
+    deletePost,
+    editUser,
+    followProject,
     preSignUrls,
+    refreshToken,
+    toggleNotificationSettings,
   },
 }

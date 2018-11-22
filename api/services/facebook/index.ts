@@ -12,6 +12,7 @@ export const getAccountData = facebookToken => fetch(`${API_ENDPOINT}/${API_VERS
     }
     return {
       avatarUrl: data.picture.data.url,
+      email: data.email,
       firstName: data.first_name,
       fullName: data.name,
       id: data.id,
