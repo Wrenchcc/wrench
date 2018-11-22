@@ -11,7 +11,7 @@ import AuthTokens from './AuthTokens'
 import AuthProviders from './AuthProviders'
 import Settings from './Settings'
 
-@Entity()
+@Entity('users')
 export default class Users extends BaseEntity {
   @OneToMany(type => Settings, settings => settings.user)
   public settings: Settings[]

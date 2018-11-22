@@ -9,7 +9,7 @@ import {
 } from 'typeorm'
 import Users from './Users'
 
-@Entity()
+@Entity('settings')
 export default class Settings extends BaseEntity {
   @ManyToOne(type => Users, user => user.settings)
   public user: Users
