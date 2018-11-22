@@ -11,7 +11,7 @@
     "db:reset": ""
   },
   "devDependencies": {
-    "@types/node": "^10.12.9",
+    "@types/node": "^10.12.10",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",

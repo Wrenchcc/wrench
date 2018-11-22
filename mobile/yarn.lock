@@ -3170,10 +3170,10 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
-i18next@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-12.0.0.tgz#27c1494219dde0451a8d714d5bfc19bf055d51bb"
-  integrity sha512-Zy/nFpmBZxgmi6k9HkHbf+MwvAwiY5BDzNjNfvyLPKyalc2YBwwZtblESDlTKLDO8XSv23qYRY2uZcADDlRSjQ==
+i18next@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-12.1.0.tgz#387bf4b94d05b0160b6a41d001a6b360e384bdb1"
+  integrity sha512-AexmwGkKxwKfo5fGeXTWEY4xqzRPigQ1S/0InOUUVziGO54cd4fKyYK8ED1Thx9fd+WA3fRSZ+1iekvFQMbsFw==
 
 iconv-lite@0.4.23:
   version "0.4.23"
@@ -5262,13 +5262,14 @@ react-native-tab-view@^1.3.1:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-video@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-3.2.1.tgz#7ba3cbdfc5c747b5b00452811e98193824b16ce3"
-  integrity sha512-Xansfoo/to80FwhM1HKlf7pCxDZ5RtV+kG3piCVvsNAhPY4GGwiOGUH9y3Y+mFQIDEWcY8I9j16lsFYAbnue3g==
+react-native-video@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.0.1.tgz#69fd9e8e3015c626cdfb9f659f971f77743038d1"
+  integrity sha512-r6/W8iyz9xC6jOeEAcPDEF/EOt1m0pUIAK3ouQVnW1UFJMLj84ZerQBg2HnrqvGkupMRy22QcViVIwgmdRhHkA==
   dependencies:
     keymirror "0.1.1"
     prop-types "^15.5.10"
+    shaka-player "2.4.4"
 
 react-native@^0.57.5:
   version "0.57.5"
@@ -5369,12 +5370,12 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^6.1.8:
-  version "6.1.8"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.8.tgz#ce20f0fb07722f977510ea865801df3fdc37d819"
-  integrity sha512-dnyMyRYI9SBt/kEhGb/BHn+in8x4emZ6otukdhokCZAo4N6pcw2tyIQpcoXN8+BvZzaGZyErB4SVfWtlhOoPEw==
+react-spring@^6.1.9:
+  version "6.1.9"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.9.tgz#bf858aedb5bd954c83545c27731a9f05320a49fe"
+  integrity sha512-SLgijUY3XL2fWZrb1N/oVxnQaZloYtSm2Fy6VngC2xoJRKwXY0i0KH03CGXV5iBKV0GhST4oCI1XTy75V40K9A==
   dependencies:
-    "@babel/runtime" "^7.1.2"
+    "@babel/runtime" "^7.0.0"
 
 react-timer-mixin@^0.13.2:
   version "0.13.4"
@@ -5777,6 +5778,11 @@ setprototypeof@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
   integrity sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==
+
+shaka-player@2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/shaka-player/-/shaka-player-2.4.4.tgz#bade8ff6b9a4bb649899d10cd4ffd05781dd79ab"
+  integrity sha512-bX470MvIHLJ1a/lwNVVOj3tjFk8Q8u22KIpo1dR9hSkjTwkaUk4k6GCBX0VyahgwzSwnp3w2E/5m4E4i5YlquQ==
 
 shebang-command@^1.2.0:
   version "1.2.0"
