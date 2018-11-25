@@ -21,7 +21,7 @@ export default class NotificationsSettings extends BaseEntity {
     return settingsRepo.save(save)
   }
 
-  @ManyToOne(type => Users, user => user.settings)
+  @ManyToOne(type => Users, user => user.notificationsSettings)
   public user: Users
 
   @PrimaryGeneratedColumn()

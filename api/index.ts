@@ -17,8 +17,7 @@ createConnection(options)
         services,
         userId: getUserId(req),
       }),
-      introspection: true,
-      playground: true,
+      playground: NODE_ENV !== 'production',
       schema,
     })
 
