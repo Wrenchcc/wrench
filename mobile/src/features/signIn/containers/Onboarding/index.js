@@ -19,7 +19,6 @@ const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
-// TODO: Use ProjectCategories
 class Onboarding extends Component {
   static propTypes = {
     editUser: PropTypes.func.isRequired,
@@ -62,7 +61,8 @@ class Onboarding extends Component {
 
   handleSubmit = () => {
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
-    this.props.editUser({ interestedIn: [{ id: '1' }] })
+    const interestedIn = Object.keys(this.state.items).map(id => ({ id }))
+    this.props.editUser({ interestedIn })
   }
 
   headerRight = () => {
