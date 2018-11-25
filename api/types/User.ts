@@ -11,7 +11,7 @@ export default `
     projectCount: Int
     isAdmin: Boolean
     isPro: Boolean!
-    interestedIn: [ProjectCategory]
+    interestedIn: [ProjectType]
     settings: UserSettings
     dynamicLink: String
 
@@ -54,7 +54,7 @@ export default `
   }
 
   input EditUserInput {
-    interestedIn: [ProjectCategoryInput]
+    interestedIn: [ProjectTypeInput]
   }
 
   input ToggleNotificationSettingsInput {

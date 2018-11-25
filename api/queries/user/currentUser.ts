@@ -1,3 +1,4 @@
+import { empty } from 'ramda'
 import mergeNotificationsTypes from 'api/utils/mergeNotificationsTypes'
 import projectsConnection from 'api/fixtures/projectsConnection'
 import posts from 'api/fixtures/posts'
@@ -12,16 +13,12 @@ const postsConnection = {
 
 export default async (_, __, ctx) => {
   const user = await ctx.db.Users.findOne(ctx.userId, {
-    relations: ['notificationsSettings'],
+    relations: ['notificationsSettings', 'interestedIn'],
   })
 
   return {
     ...user,
-    interestedIn: [
-      {
-        id: '123',
-      },
-    ],
+    interestedIn: user.interestedIn.length > 0 ? user.interestedIn : null,
     postsConnection,
     projectsConnection,
     settings: {

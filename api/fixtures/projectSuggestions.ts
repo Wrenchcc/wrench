@@ -1,5 +1,5 @@
 import projectsConnection from './projectsConnection'
-import projectCategories from './projectCategories'
+import projectCategories from './projectTypes'
 
 export default [
   { ...projectsConnection, category: projectCategories[0] },

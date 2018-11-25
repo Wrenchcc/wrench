@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, FlatList } from 'react-native'
 import { compose } from 'react-apollo'
-import { getProjectCategories } from 'graphql/queries/project/getProjectCategories'
+import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
 import { Touchable, Text, Loader } from 'ui'
 import { Cell, Image, Overlay } from './styles'
 
@@ -13,7 +13,7 @@ const ITEM_SIZE = width / 2 - GUTTER
 
 class ProjectCategories extends PureComponent {
   static propTypes = {
-    categories: PropTypes.array,
+    types: PropTypes.array,
     isFetching: PropTypes.bool.isRequired,
     onSelect: PropTypes.func.isRequired,
   }
@@ -30,7 +30,7 @@ class ProjectCategories extends PureComponent {
   )
 
   render() {
-    const { isFetching, categories } = this.props
+    const { isFetching, types } = this.props
 
     return (
       <FlatList
@@ -41,7 +41,7 @@ class ProjectCategories extends PureComponent {
           paddingBottom: 30,
         }}
         numColumns={2}
-        data={categories}
+        data={types}
         keyExtractor={item => item.id}
         renderItem={this.renderItem}
       />
@@ -49,4 +49,4 @@ class ProjectCategories extends PureComponent {
   }
 }
 
-export default compose(getProjectCategories)(ProjectCategories)
+export default compose(getProjectTypes)(ProjectCategories)

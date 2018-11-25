@@ -3,6 +3,7 @@ import refreshToken from './mutations/user/refreshToken'
 import addPost from './mutations/post/addPost'
 import preSignUrls from './mutations/upload/preSignUrls'
 import currentUser from './queries/user/currentUser'
+import projectTypes from './queries/project/projectTypes'
 import comments from './fixtures/comments'
 import deletePost from './mutations/post/deletePost'
 import editUser from './mutations/user/editUser'
@@ -12,7 +13,6 @@ import generateUser from './fixtures/generateUser'
 import notifications from './fixtures/notifications'
 import pageInfo from './fixtures/pageInfo'
 import posts from './fixtures/posts'
-import projectCategories from './fixtures/projectCategories'
 import projects from './fixtures/projects'
 import models from './fixtures/models'
 import projectsConnection from './fixtures/projectsConnection'
@@ -75,7 +75,7 @@ export default {
       title: 'The Natural',
       user: generateUser(),
     }),
-    projectCategories: (root, args, ctx, info) => projectCategories,
+    projectTypes,
     projectSuggestions: (root, args, ctx, info) => projectSuggestions,
     projects: (root, args, ctx, info) => projectsConnection,
     user: (root, args, ctx, info) => ({

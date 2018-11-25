@@ -19,15 +19,15 @@ export default `
     isOwner: Boolean
   }
 
-  enum ProjectType {
+  enum ProjectSortType {
     POPULAR
     RECENT
   }
 
-  type ProjectCategory {
+  type ProjectType {
     id: ID
     title: String
-    image: Image
+    imageUrl: String!
   }
 
   type ProjectsConnection {
@@ -36,7 +36,7 @@ export default `
   }
 
   type ProjectSuggestionsConnection {
-    category: ProjectCategory
+    category: ProjectType
     pageInfo: PageInfo!
     edges: [ProjectEdge!]
   }
@@ -48,12 +48,12 @@ export default `
 
   extend type Query {
     project(id: ID, slug: LowercaseString, first: Int, after: String, last: Int, before: String): Project
-    projects(first: Int, after: String, last: Int, before: String, type: ProjectType): ProjectsConnection
+    projects(first: Int, after: String, last: Int, before: String, type: ProjectSortType): ProjectsConnection
     projectSuggestions(first: Int, after: String, last: Int, before: String): [ProjectSuggestionsConnection]
-    projectCategories: [ProjectCategory]
+    projectTypes: [ProjectType]
   }
 
-  input ProjectCategoryInput {
+  input ProjectTypeInput {
     id: ID
   }
 

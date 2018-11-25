@@ -4,12 +4,14 @@ import Users from './Users'
 import NotificationsSettings from './NotificationsSettings'
 import AuthTokens from './AuthTokens'
 import AuthProviders from './AuthProviders'
+import ProjectTypes from './ProjectTypes'
+import Projects from './Projects'
 
 const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGING } = process.env
 
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
-  entities: [Users, NotificationsSettings, AuthTokens, AuthProviders],
+  entities: [Users, NotificationsSettings, AuthTokens, AuthProviders, ProjectTypes, Projects],
   host: DB_HOST,
   logging: isDevelopment,
   password: DB_PASSWORD,
@@ -23,5 +25,7 @@ export const db = {
   AuthProviders,
   AuthTokens,
   NotificationsSettings,
+  Projects,
+  ProjectTypes,
   Users,
 }

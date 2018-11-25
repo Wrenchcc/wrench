@@ -6,14 +6,25 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm'
 import AuthTokens from './AuthTokens'
 import AuthProviders from './AuthProviders'
 import NotificationsSettings from './NotificationsSettings'
+import Projects from './Projects'
+import ProjectTypes from './ProjectTypes'
 
 @Entity('users')
 export default class Users extends BaseEntity {
-  @OneToMany(type => NotificationsSettings, settings => settings.user)
+  @OneToMany(type => Projects, project => project.user)
+  public projects: Projects[]
+
+  @ManyToMany(type => ProjectTypes)
+  @JoinTable()
+  public interestedIn: ProjectTypes[]
+
+  @OneToMany(type => NotificationsSettings, notificationsSettings => notificationsSettings.user)
   public notificationsSettings: NotificationsSettings[]
 
   @OneToMany(type => AuthTokens, authToken => authToken.user)

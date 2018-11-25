@@ -5,7 +5,7 @@ import { withNamespaces } from 'react-i18next'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
-import { getProjectCategories } from 'graphql/queries/project/getProjectCategories'
+import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
 import { editUser } from 'graphql/mutations/user/editUser'
 import { Header, Touchable, Text, Loader } from 'ui'
 import Content from 'features/signIn/components/Content'
@@ -24,7 +24,7 @@ class Onboarding extends Component {
   static propTypes = {
     editUser: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    categories: PropTypes.array,
+    types: PropTypes.array,
   }
 
   state = {
@@ -62,7 +62,7 @@ class Onboarding extends Component {
 
   handleSubmit = () => {
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
-    this.props.editUser({ interestedIn: { id: '123' } })
+    this.props.editUser({ interestedIn: [{ id: '1' }] })
   }
 
   headerRight = () => {
@@ -78,7 +78,12 @@ class Onboarding extends Component {
   renderItem = ({ item }) => (
     <Cell key={item.id}>
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-        <Image selected={this.isAdded(item)} source={item.image} size={ITEM_SIZE} gutter={GUTTER}>
+        <Image
+          selected={this.isAdded(item)}
+          source={{ uri: item.imageUrl }}
+          size={ITEM_SIZE}
+          gutter={GUTTER}
+        >
           <Overlay selected={false} />
           <Text color="white">{item.title}</Text>
         </Image>
@@ -87,7 +92,7 @@ class Onboarding extends Component {
   )
 
   render() {
-    const { isFetching, categories } = this.props
+    const { isFetching, types } = this.props
 
     return (
       <Base>
@@ -97,7 +102,7 @@ class Onboarding extends Component {
           ListEmptyComponent={isFetching && <Loader color="grey" />}
           contentContainerStyle={{ padding: 5, flex: isFetching ? 1 : 0 }}
           numColumns={2}
-          data={categories}
+          data={types}
           keyExtractor={item => item.id}
           renderItem={this.renderItem}
         />
@@ -108,6 +113,6 @@ class Onboarding extends Component {
 }
 
 export default compose(
-  getProjectCategories,
+  getProjectTypes,
   editUser
 )(withNamespaces('Onboarding')(Onboarding))

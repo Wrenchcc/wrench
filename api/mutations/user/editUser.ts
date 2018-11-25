@@ -1,10 +1,14 @@
-import user from '../../fixtures/generateUser'
+export default async (_, args, ctx) => {
+  const user = await ctx.db.Users.findOne(ctx.userId, {
+    relations: ['interestedIn'],
+  })
 
-export default (_, args, ctx) => ({
-  ...user(),
-  interestedIn: [
-    {
-      id: '123',
-    },
-  ],
-})
+  if (args.input.interestedIn) {
+    const ids = args.input.interestedIn.map(({ id }) => id)
+    const types = await ctx.db.ProjectTypes.findByIds(ids)
+
+    user.interestedIn = types
+  }
+
+  return user.save()
+}
