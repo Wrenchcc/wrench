@@ -30,18 +30,13 @@ export default `
 		node: User
 	}
 
-  type NotificationKindSettings {
-    push: Boolean
-    email: Boolean
-  }
-
   type NotificationSettingsType {
-    newFollower: NotificationKindSettings
-    newComment: NotificationKindSettings
-    newMention: NotificationKindSettings
-    newArticle: NotificationKindSettings
-    similarProjects: NotificationKindSettings
-    productAnnouncements: NotificationKindSettings
+    newFollower: Boolean
+    newComment: Boolean
+    newMention: Boolean
+    newArticle: Boolean
+    similarProjects: Boolean
+    productAnnouncements: Boolean
   }
 
   type UserNotificationsSettings {
@@ -63,7 +58,6 @@ export default `
   }
 
   input ToggleNotificationSettingsInput {
-    deliveryMethod: String!
     notificationType: String!
  }
 

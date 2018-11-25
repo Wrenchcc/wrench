@@ -30,11 +30,10 @@ const generateNotificationSettings = ({ settings, toggleNotificationSettings }) 
   items = types.map(type => ({
     titleKey: `notifications.${type}`,
     onPress: () => toggleNotificationSettings({
-      deliveryMethod: 'push',
       notificationType: type,
     }),
     type: 'switch',
-    selected: settings.notifications.types[type].push,
+    selected: settings.notifications.types[type],
   }))
 
   return items

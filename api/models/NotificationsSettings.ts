@@ -9,16 +9,23 @@ import {
 } from 'typeorm'
 import Users from './Users'
 
-@Entity('settings')
-export default class Settings extends BaseEntity {
+@Entity('notifications_settings')
+export default class NotificationsSettings extends BaseEntity {
+  public static async findOrCreate(where, save) {
+    const settingsRepo = NotificationsSettings.getRepository()
+    const settings = await settingsRepo.findOne({ where })
+
+    if (settings) {
+      return settings
+    }
+    return settingsRepo.save(save)
+  }
+
   @ManyToOne(type => Users, user => user.settings)
   public user: Users
 
   @PrimaryGeneratedColumn()
   private id: number
-
-  @Column({ nullable: true })
-  private parentId: number
 
   @CreateDateColumn()
   private createdAt: Date
@@ -29,15 +36,6 @@ export default class Settings extends BaseEntity {
   @Column()
   private type: string
 
-  @Column({ nullable: true })
-  private value: string
-
-  static async findOrCreate(where, save) {
-    const settingsRepo = Settings.getRepository()
-    const settings = await settingsRepo.findOne({ where })
-
-    if (settings) return settings
-
-    return settingsRepo.save(save)
-  }
+  @Column({ default: true })
+  private value: boolean
 }

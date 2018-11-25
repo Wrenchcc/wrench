@@ -15,15 +15,13 @@ export const toggleNotificationSettingsMutation = gql`
 const toggleNotificationSettingsOptions = {
   props: ({ mutate, ownProps: { user, settings } }) => ({
     toggleNotificationSettings: input => {
-      const { deliveryMethod, notificationType } = input
+      const { notificationType } = input
 
-      const oldVal = settings.notifications.types[notificationType][deliveryMethod]
+      const oldVal = settings.notifications.types[notificationType]
       const newSettings = mergeDeepRight(settings, {
         notifications: {
           types: {
-            [notificationType]: {
-              [deliveryMethod]: !oldVal,
-            },
+            [notificationType]: !oldVal,
           },
         },
       })

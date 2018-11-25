@@ -9,12 +9,12 @@ import {
 } from 'typeorm'
 import AuthTokens from './AuthTokens'
 import AuthProviders from './AuthProviders'
-import Settings from './Settings'
+import NotificationsSettings from './NotificationsSettings'
 
 @Entity('users')
 export default class Users extends BaseEntity {
-  @OneToMany(type => Settings, settings => settings.user)
-  public settings: Settings[]
+  @OneToMany(type => NotificationsSettings, settings => settings.user)
+  public notificationsSettings: NotificationsSettings[]
 
   @OneToMany(type => AuthTokens, authToken => authToken.user)
   public authTokens: AuthTokens[]

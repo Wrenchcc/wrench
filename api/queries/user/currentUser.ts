@@ -1,10 +1,9 @@
-import { mergeDeepRight } from 'ramda'
+import mergeNotificationsTypes from 'api/utils/mergeNotificationsTypes'
 import projectsConnection from 'api/fixtures/projectsConnection'
 import posts from 'api/fixtures/posts'
 import pageInfo from 'api/fixtures/pageInfo'
 import generateUser from 'api/fixtures/generateUser'
-import defaultNotificationTypes from 'api/utils/defaultNotificationTypes'
-import { transformNotificationTypes } from 'api/utils/transformNotificationTypes'
+import notificationsTypes from 'api/utils/notificationsTypes'
 
 const postsConnection = {
   edges: posts(),
@@ -12,32 +11,9 @@ const postsConnection = {
 }
 
 export default async (_, __, ctx) => {
-  let notifications
-
-  const user = await ctx.db.Users.findOne(ctx.userId)
-  // const parent = await ctx.db.Settings.findOne({
-  //   select: ['id'],
-  //   where: {
-  //     type: 'notifications',
-  //     userId: user.id,
-  //   },
-  // })
-  //
-  // if (parent) {
-  //   try {
-  //     notifications = await ctx.db.Settings.find({
-  //       select: ['type', 'value'],
-  //       where: {
-  //         parentId: parent.id,
-  //         userId: ctx.userId,
-  //       },
-  //     })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-  //
-  // const types = mergeDeepRight(defaultNotificationTypes, transformNotificationTypes(notifications))
+  const user = await ctx.db.Users.findOne(ctx.userId, {
+    relations: ['notificationsSettings'],
+  })
 
   return {
     ...user,
@@ -50,7 +26,7 @@ export default async (_, __, ctx) => {
     projectsConnection,
     settings: {
       notifications: {
-        types: defaultNotificationTypes,
+        types: mergeNotificationsTypes(user.notificationsSettings),
       },
     },
   }
