@@ -1,6 +1,4 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
-import Users from './Users'
-import Projects from './Projects'
 
 @Entity('project_types')
 export default class ProjectTypes extends BaseEntity {

@@ -18,6 +18,7 @@ export default class NotificationsSettings extends BaseEntity {
     if (settings) {
       return settings
     }
+
     return settingsRepo.save(save)
   }
 

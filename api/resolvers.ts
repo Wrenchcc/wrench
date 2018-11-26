@@ -4,6 +4,8 @@ import addPost from './mutations/post/addPost'
 import preSignUrls from './mutations/upload/preSignUrls'
 import currentUser from './queries/user/currentUser'
 import projectTypes from './queries/project/projectTypes'
+import search from './queries/search'
+
 import comments from './fixtures/comments'
 import deletePost from './mutations/post/deletePost'
 import editUser from './mutations/user/editUser'
@@ -14,24 +16,10 @@ import notifications from './fixtures/notifications'
 import pageInfo from './fixtures/pageInfo'
 import posts from './fixtures/posts'
 import projects from './fixtures/projects'
-import models from './fixtures/models'
 import projectsConnection from './fixtures/projectsConnection'
 import projectSuggestions from './fixtures/projectSuggestions'
 import toggleNotificationSettings from './mutations/user/toggleNotificationSettings'
 import users from './fixtures/users'
-
-const getSearchEdge = type => {
-  if (type === 'USERS') {
-    return users()
-  }
-  if (type === 'PROJECTS') {
-    return projects()
-  }
-
-  if (type === 'MODELS') {
-    return models()
-  }
-}
 
 // TODO: Change to sub queries and mutations in directories
 const postsConnection = {
@@ -88,10 +76,7 @@ export default {
       edges: notifications(),
       pageInfo,
     }),
-    search: (root, { query, type }, ctx, info) => ({
-      edges: getSearchEdge(type),
-      pageInfo,
-    }),
+    search,
   },
   SearchResultNode: {
     /* tslint:disable */
