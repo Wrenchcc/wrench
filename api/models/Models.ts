@@ -5,13 +5,13 @@ import Brands from './Brands'
 export default class Models extends BaseEntity {
   @OneToOne(type => Brands)
   @JoinColumn()
-  brand: Brands
+  public brand: Brands
 
   @PrimaryGeneratedColumn()
   private id: number
 
   @Column()
-  public name: string
+  private model: string
 
   @Column()
   private year: number

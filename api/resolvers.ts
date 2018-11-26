@@ -81,6 +81,7 @@ export default {
   SearchResultNode: {
     /* tslint:disable */
     __resolveType(root, context, info) {
+      console.log(root)
       if (root.username) {
         return 'User'
       }

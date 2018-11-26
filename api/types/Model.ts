@@ -6,7 +6,8 @@ export default `
 
   type Model {
     id: ID!
-    name: String
+    model: String
     year: Int
+    brand: Brand
   }
 `

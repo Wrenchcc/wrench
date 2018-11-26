@@ -18,6 +18,6 @@ export default `
   }
 
   extend type Query {
-		search(first: Int, after: String, query: String!, type: SearchType!): SearchResultsConnection
+		search(first: Int, last: Int, after: String, before: String, query: String!, type: SearchType!): SearchResultsConnection
 	}
 `
