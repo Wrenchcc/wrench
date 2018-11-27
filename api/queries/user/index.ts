@@ -7,13 +7,13 @@ import settings from './settings'
 
 export default {
   Query: {
-    user,
     currentUser,
+    user,
   },
   User: {
-    projectsConnection,
-    postsConnection,
     interestedIn,
+    postsConnection,
+    projectsConnection,
     settings,
   },
 }

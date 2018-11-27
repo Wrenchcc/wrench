@@ -6,17 +6,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import Users from './Users'
+import User from './User'
 
-enum PostType {
-  Image = 'image',
-  Video = 'video',
-}
-
-@Entity('posts')
-export default class Posts extends BaseEntity {
+@Entity('comment')
+export default class Comment extends BaseEntity {
   // user
-  // project
+  // post
 
   @PrimaryGeneratedColumn('uuid')
   private id: string
@@ -27,9 +22,6 @@ export default class Posts extends BaseEntity {
   @UpdateDateColumn()
   private updatedAt: Date
 
-  @Column('enum', { enum: PostType })
-  private type: PostType
-
   @Column('text')
-  private caption: string
+  private text: string
 }

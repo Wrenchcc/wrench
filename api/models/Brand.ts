@@ -1,10 +1,10 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
-import Models from './Models'
+import Model from './Model'
 
-@Entity('brands')
+@Entity('brand')
 export default class Brands extends BaseEntity {
-  @OneToMany(type => Models, model => model.brand)
-  public models: Models[]
+  @OneToMany(type => Model, model => model.brand)
+  public models: Model[]
 
   @PrimaryGeneratedColumn()
   private id: number

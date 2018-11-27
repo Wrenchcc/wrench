@@ -1,29 +1,31 @@
 import { ConnectionOptions, getRepository } from 'typeorm'
 import { isDevelopment } from 'api/utils/environment'
-import Users from './Users'
-import NotificationsSettings from './NotificationsSettings'
-import AuthTokens from './AuthTokens'
-import AuthProviders from './AuthProviders'
-import ProjectTypes from './ProjectTypes'
-import Projects from './Projects'
-import Models from './Models'
-import Brands from './Brands'
-import Posts from './Posts'
+import User from './User'
+import NotificationSettings from './NotificationSettings'
+import AuthToken from './AuthToken'
+import AuthProvider from './AuthProvider'
+import ProjectType from './ProjectType'
+import Project from './Project'
+import Model from './Model'
+import Brand from './Brand'
+import Post from './Post'
+import Comment from './Comment'
 
 const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGING } = process.env
 
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
   entities: [
-    Brands,
-    Users,
-    NotificationsSettings,
-    AuthTokens,
-    AuthProviders,
-    ProjectTypes,
-    Projects,
-    Models,
-    Posts,
+    AuthProvider,
+    AuthToken,
+    Brand,
+    Comment,
+    Model,
+    NotificationSettings,
+    Post,
+    Project,
+    ProjectType,
+    User,
   ],
   host: DB_HOST,
   logging: isDevelopment,
@@ -35,13 +37,14 @@ export const options: ConnectionOptions = {
 }
 
 export const db = {
-  AuthProviders,
-  AuthTokens,
-  Brands,
-  NotificationsSettings,
-  Projects,
-  ProjectTypes,
-  Users,
-  Models,
-  Posts,
+  AuthProvider,
+  AuthToken,
+  Brand,
+  Comment,
+  Model,
+  NotificationSettings,
+  Post,
+  Project,
+  ProjectType,
+  User,
 }

@@ -1,5 +1,1 @@
-import posts from 'api/fixtures/posts'
-
-export default (root, args, ctx, info) => ({
-  ...posts()[0],
-})
+export default async (_, { id }, ctx) => ctx.db.Post.findOne(id)

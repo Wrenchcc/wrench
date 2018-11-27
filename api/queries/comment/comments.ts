@@ -1,7 +1,3 @@
-import comments from 'api/fixtures/comments'
-import pageInfo from 'api/fixtures/pageInfo'
+import paginate from 'api/utils/paginate'
 
-export default () => ({
-  edges: comments(),
-  pageInfo,
-})
+export default async (_, args, ctx) => paginate(ctx.db.Comment, args, { where: { postId: args.id } })

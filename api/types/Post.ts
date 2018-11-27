@@ -14,8 +14,8 @@ export default `
   }
 
   enum PostType {
-    IMAGE
-    VIDEO
+    image
+    video
 	}
 
   type PostConnection {
