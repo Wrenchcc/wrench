@@ -1,4 +1,3 @@
-export default async (_, args, ctx) => {
-  // const posts = await ctx.db.Posts.find()
-  console.log(args)
-}
+import paginate from 'api/utils/paginate'
+
+export default async (_, args, ctx) => paginate(ctx.db.Projects, args)

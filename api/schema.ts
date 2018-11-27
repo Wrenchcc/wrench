@@ -57,7 +57,7 @@ const Root = `
 const resolvers = merge(
   {},
   // queries
-  // scalars.resolvers,
+  scalars.resolvers,
   projectQueries,
   searchQueries,
   userQueries,
