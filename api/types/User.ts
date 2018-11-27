@@ -9,8 +9,6 @@ export default `
     lastName: String
     avatarUrl: String
     projectCount: Int
-    isAdmin: Boolean
-    isPro: Boolean!
     interestedIn: [ProjectType]
     settings: UserSettings
     dynamicLink: String

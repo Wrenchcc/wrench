@@ -39,6 +39,7 @@
   "dependencies": {
     "@types/pg": "^7.4.11",
     "debug": "^4.1.0",
+    "lodash.merge": "^4.6.1",
     "pg": "^7.6.1"
   }
 }

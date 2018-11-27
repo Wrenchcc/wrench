@@ -12,12 +12,25 @@ export default `
     node: SearchResultNode
   }
 
-  type SearchResultsConnection {
+  type SearchResults {
     edges: [SearchResultEdge]
     pageInfo: PageInfo
   }
 
   extend type Query {
-		search(first: Int, last: Int, after: String, before: String, query: String!, type: SearchType!): SearchResultsConnection
+    search(
+      # Returns the first *n* results from the list
+      first: Int
+      # Returns the elements in the list that come after the specified ID
+      after: String
+      # Returns the last *n* results from the list
+      last: Int
+      # Returns the elements in the list that come before the specified ID
+      before: String
+      # The string typed by the user to search for
+      query: String!
+      # The types of items that can be searched
+      type: SearchType!
+    ): SearchResults
 	}
 `

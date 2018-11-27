@@ -8,6 +8,7 @@ import ProjectTypes from './ProjectTypes'
 import Projects from './Projects'
 import Models from './Models'
 import Brands from './Brands'
+import Posts from './Posts'
 
 const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGING } = process.env
 
@@ -22,6 +23,7 @@ export const options: ConnectionOptions = {
     ProjectTypes,
     Projects,
     Models,
+    Posts,
   ],
   host: DB_HOST,
   logging: isDevelopment,
@@ -41,4 +43,5 @@ export const db = {
   ProjectTypes,
   Users,
   Models,
+  Posts,
 }

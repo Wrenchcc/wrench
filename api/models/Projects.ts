@@ -12,4 +12,10 @@ export default class Projects extends BaseEntity {
 
   @PrimaryGeneratedColumn('uuid')
   private id: string
+
+  @Column()
+  private title: string
+
+  @Column({ unique: true })
+  private slug: string
 }

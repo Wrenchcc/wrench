@@ -1,31 +1,24 @@
-import paginate from 'api/utils/paginate'
-import pageInfo from 'api/fixtures/pageInfo'
-import projects from 'api/fixtures/projects'
-import users from 'api/fixtures/users'
+import search from './search'
 
-export default async (_, args, ctx) => {
-  switch (args.type) {
-    case 'USERS':
-      return {
-        edges: users(),
-        pageInfo,
+export default {
+  Query: {
+    search,
+  },
+  SearchResultNode: {
+    __resolveType(root, context, info) {
+      if (root.avatarUrl) {
+        return 'User'
       }
-    case 'PROJECTS':
-      return {
-        edges: projects(),
-        pageInfo,
+
+      if (root.slug) {
+        return 'Project'
       }
-    case 'MODELS': {
-      return paginate(
-        ctx.db.Models,
-        {
-          relations: ['brand'],
-          where: { name: args.query },
-        },
-        args
-      )
-    }
-    default:
+
+      if (root.model) {
+        return 'Model'
+      }
+
       return null
-  }
+    },
+  },
 }

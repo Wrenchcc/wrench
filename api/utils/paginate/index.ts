@@ -45,7 +45,12 @@ const convertNodesToEdges = (nodes, { column }) => nodes.map(node => ({
   node,
 }))
 
-export default async (model, options, { after, before, first, last }, orderBy = ORDER_BY) => {
+export default async (
+  model,
+  { after, before, first, last },
+  options = null,
+  orderBy = ORDER_BY
+) => {
   const findOptions = {
     ...options,
     take: first,
