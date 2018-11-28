@@ -9,7 +9,7 @@ import {
 } from 'typeorm'
 import User from './User'
 
-@Entity('notification_settings')
+@Entity('notifications_settings')
 export default class NotificationSettings extends BaseEntity {
   public static async findOrCreate(where, save) {
     const settingsRepo = NotificationSettings.getRepository()

@@ -14,7 +14,7 @@ enum PostType {
   Video = 'video',
 }
 
-@Entity('post')
+@Entity('posts')
 export default class Post extends BaseEntity {
   // user
   // project

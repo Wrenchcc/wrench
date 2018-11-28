@@ -8,7 +8,7 @@ import {
 } from 'typeorm'
 import User from './User'
 
-@Entity('comment')
+@Entity('comments')
 export default class Comment extends BaseEntity {
   // user
   // post

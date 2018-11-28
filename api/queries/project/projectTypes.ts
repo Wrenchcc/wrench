@@ -1,1 +1,7 @@
-export default async (_, __, ctx) => ctx.db.ProjectType.find()
+export default async (_, __, ctx) => {
+  try {
+    return ctx.db.ProjectType.find()
+  } catch (err) {
+    console.log(err)
+  }
+}

@@ -1,6 +1,6 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
 
-@Entity('project_type')
+@Entity('project_types')
 export default class ProjectType extends BaseEntity {
   @PrimaryGeneratedColumn()
   private id: number

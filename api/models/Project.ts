@@ -2,7 +2,7 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 't
 import User from './User'
 import ProjectType from './ProjectType'
 
-@Entity('project')
+@Entity('projects')
 export default class Project extends BaseEntity {
   @ManyToOne(type => User, user => user.projects)
   public user: User

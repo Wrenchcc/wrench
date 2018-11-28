@@ -1,7 +1,7 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
 import Brand from './Brand'
 
-@Entity('model')
+@Entity('models')
 export default class Model extends BaseEntity {
   @OneToOne(type => Brand)
   @JoinColumn()

@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "@types/pg": "^7.4.11",
-    "apollo-server": "^2.2.3",
-    "aws-sdk": "^2.363.0",
+    "apollo-server": "^2.2.4",
+    "aws-sdk": "^2.364.0",
     "base-64": "^0.1.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
@@ -20,7 +20,7 @@
     "lodash.merge": "^4.6.1",
     "node-fetch": "^2.3.0",
     "pg": "^7.6.1",
-    "ramda": "^0.26.0",
+    "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.12",
     "typeorm": "^0.2.9",
     "uuid": "^3.3.2"

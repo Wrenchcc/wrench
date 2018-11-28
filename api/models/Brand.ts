@@ -1,7 +1,7 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
 import Model from './Model'
 
-@Entity('brand')
+@Entity('brands')
 export default class Brands extends BaseEntity {
   @OneToMany(type => Model, model => model.brand)
   public models: Model[]

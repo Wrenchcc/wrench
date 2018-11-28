@@ -15,7 +15,7 @@ import NotificationSettings from './NotificationSettings'
 import Project from './Project'
 import ProjectType from './ProjectType'
 
-@Entity('user')
+@Entity('users')
 export default class User extends BaseEntity {
   @OneToMany(type => Project, project => project.user)
   public projects: Project[]
