@@ -8,7 +8,6 @@
     "@types/pg": "^7.4.11",
     "apollo-server": "^2.2.4",
     "aws-sdk": "^2.364.0",
-    "base-64": "^0.1.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
     "firebase-admin": "^6.2.0",

@@ -1,4 +1,4 @@
-import { encode, decode } from 'base-64'
+import { encode, decode } from 'api/utils/base64'
 import { LessThan, MoreThan, Between } from 'typeorm'
 
 const SEPARATION_TOKEN = '___'
