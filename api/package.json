@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@types/pg": "^7.4.11",
-    "apollo-server": "^2.2.4",
+    "apollo-server": "^2.2.5",
     "aws-sdk": "^2.366.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
