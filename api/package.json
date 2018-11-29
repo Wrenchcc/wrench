@@ -7,10 +7,10 @@
   "dependencies": {
     "@types/pg": "^7.4.11",
     "apollo-server": "^2.2.4",
-    "aws-sdk": "^2.364.0",
+    "aws-sdk": "^2.366.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
-    "firebase-admin": "^6.2.0",
+    "firebase-admin": "^6.3.0",
     "graphql": "^14.0.2",
     "graphql-date": "^1.0.3",
     "graphql-log": "^0.1.3",
