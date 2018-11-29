@@ -7,7 +7,7 @@ export default `
   }
 
   type ImageConnection {
-    edges: [ImageEdge!]!
+    edges: [ImageEdge]
     pageInfo: PageInfo!
   }
 
