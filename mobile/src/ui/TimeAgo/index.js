@@ -20,7 +20,7 @@ const TimeAgo = ({ date, fontSize = 12 }) => (
 )
 
 TimeAgo.propTypes = {
-  date: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
   fontSize: PropTypes.number,
 }
 

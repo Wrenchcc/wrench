@@ -1,8 +1,13 @@
 export default `
+  type Brand {
+    id: ID!
+    name: String!
+  }
+
   type Model {
     id: ID!
     model: String
-    brand: String
     year: Int
+    brand: Brand
   }
 `

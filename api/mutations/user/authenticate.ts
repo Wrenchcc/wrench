@@ -6,7 +6,7 @@ const PROVIDER_NAME = 'facebook'
 export default async (_, { facebookToken }, ctx) => {
   const { id: providerId, ...fbUser } = await ctx.services.facebook.getAccountData(facebookToken)
 
-  const authProvider = await ctx.db.AuthProviders.findOne({
+  const authProvider = await ctx.db.AuthProvider.findOne({
     relations: ['user'],
     where: { providerId, providerName: PROVIDER_NAME },
   })
@@ -14,7 +14,7 @@ export default async (_, { facebookToken }, ctx) => {
   if (authProvider) {
     const tokens = generateTokens(authProvider.user.id)
 
-    await ctx.db.AuthTokens.save({
+    await ctx.db.AuthToken.save({
       refreshToken: tokens.refreshToken,
       user: authProvider.user,
     })
@@ -22,9 +22,9 @@ export default async (_, { facebookToken }, ctx) => {
     return tokens
   }
 
-  const createdUser = await ctx.db.Users.save(fbUser)
+  const createdUser = await ctx.db.User.save(fbUser)
 
-  await ctx.db.AuthProviders.save({
+  await ctx.db.AuthProvider.save({
     providerId,
     providerName: PROVIDER_NAME,
     user: createdUser,
@@ -32,7 +32,7 @@ export default async (_, { facebookToken }, ctx) => {
 
   const tokens = generateTokens(createdUser.id)
 
-  await ctx.db.AuthTokens.save({
+  await ctx.db.AuthToken.save({
     refreshToken: tokens.refreshToken,
     user: createdUser,
   })

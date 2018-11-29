@@ -1,5 +1,4 @@
 import generateUser from './generateUser'
-import comments from './comments'
 import generateId from './generateId'
 import images from './images'
 
@@ -17,7 +16,7 @@ export default () => [
       user: generateUser('1'),
       commentConnection: {
         totalCount: 1300,
-        edges: comments().slice(0, 2),
+        // edges: comments().slice(0, 2),
       },
       isAuthor: true,
       project: {
@@ -49,7 +48,7 @@ export default () => [
       user: generateUser('2'),
       commentConnection: {
         totalCount: 1300,
-        edges: comments().slice(0, 2),
+        // edges: comments().slice(0, 2),
       },
       isAuthor: false,
       project: {
@@ -81,7 +80,7 @@ export default () => [
       user: generateUser('3'),
       commentConnection: {
         totalCount: 1300,
-        edges: comments().slice(0, 2),
+        // edges: comments().slice(0, 2),
       },
       isAuthor: false,
       project: {
@@ -113,7 +112,7 @@ export default () => [
       user: generateUser('4'),
       commentConnection: {
         totalCount: 1300,
-        edges: comments().slice(0, 2),
+        // edges: comments().slice(0, 2),
       },
       isAuthor: false,
       project: {
@@ -146,7 +145,7 @@ export default () => [
       user: generateUser('5'),
       commentConnection: {
         totalCount: 1300,
-        edges: comments().slice(0, 2),
+        // edges: comments().slice(0, 2),
       },
       isAuthor: false,
       project: {
@@ -179,7 +178,7 @@ export default () => [
       user: generateUser(),
       commentConnection: {
         totalCount: 1300,
-        edges: comments().slice(0, 2),
+        // edges: comments().slice(0, 2),
       },
       isAuthor: true,
       project: {

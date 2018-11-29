@@ -10,9 +10,9 @@ import { Base, Title, Description, Button } from './styles'
 const onPressAction = type => {
   switch (type) {
     case TYPES.PROJECT:
-      return () => navigateToAddProject()
+      return navigateToAddProject()
     case TYPES.POST:
-      return () => navigateToAddMedia()
+      return navigateToAddMedia()
     default:
       return null
   }

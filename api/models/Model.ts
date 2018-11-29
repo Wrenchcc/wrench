@@ -1,0 +1,18 @@
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import Brand from './Brand'
+
+@Entity('models')
+export default class Model extends BaseEntity {
+  @OneToOne(() => Brand)
+  @JoinColumn()
+  public brand: Brand
+
+  @PrimaryGeneratedColumn()
+  private id: number
+
+  @Column()
+  private model: string
+
+  @Column()
+  private year: number
+}

@@ -1,30 +1,9 @@
-import { empty } from 'ramda'
-import mergeNotificationsTypes from 'api/utils/mergeNotificationsTypes'
-import projectsConnection from 'api/fixtures/projectsConnection'
-import posts from 'api/fixtures/posts'
-import pageInfo from 'api/fixtures/pageInfo'
-import generateUser from 'api/fixtures/generateUser'
-import notificationsTypes from 'api/utils/notificationsTypes'
+import { requireAuth } from 'api/utils/permissions'
 
-const postsConnection = {
-  edges: posts(),
-  pageInfo,
-}
-
-export default async (_, __, ctx) => {
-  const user = await ctx.db.Users.findOne(ctx.userId, {
-    relations: ['notificationsSettings', 'interestedIn'],
-  })
-
-  return {
-    ...user,
-    interestedIn: user.interestedIn.length > 0 ? user.interestedIn : null,
-    postsConnection,
-    projectsConnection,
-    settings: {
-      notifications: {
-        types: mergeNotificationsTypes(user.notificationsSettings),
-      },
-    },
+export default requireAuth(async (_, __, ctx) => {
+  try {
+    return ctx.db.User.findOne(ctx.userId)
+  } catch (err) {
+    console.log(err)
   }
-}
+})

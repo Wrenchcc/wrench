@@ -7,21 +7,18 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import Users from './Users'
+import User from './User'
 
-@Entity('auth_providers')
-export default class AuthProviders extends BaseEntity {
-  @ManyToOne(type => Users, user => user.authProviders)
-  public user: Users
+@Entity('auth_tokens')
+export default class AuthTokens extends BaseEntity {
+  @ManyToOne(() => User, user => user.authToken)
+  public user: User
 
   @PrimaryGeneratedColumn()
   private id: number
 
   @Column()
-  private providerName: string
-
-  @Column({ type: 'bigint', nullable: true })
-  private providerId: number
+  private refreshToken: string
 
   @CreateDateColumn()
   private createdAt: Date

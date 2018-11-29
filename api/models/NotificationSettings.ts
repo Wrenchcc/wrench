@@ -7,22 +7,23 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import Users from './Users'
+import User from './User'
 
 @Entity('notifications_settings')
-export default class NotificationsSettings extends BaseEntity {
+export default class NotificationSettings extends BaseEntity {
   public static async findOrCreate(where, save) {
-    const settingsRepo = NotificationsSettings.getRepository()
+    const settingsRepo = NotificationSettings.getRepository()
     const settings = await settingsRepo.findOne({ where })
 
     if (settings) {
       return settings
     }
+
     return settingsRepo.save(save)
   }
 
-  @ManyToOne(type => Users, user => user.notificationsSettings)
-  public user: Users
+  @ManyToOne(() => User, user => user.notificationSettings)
+  public user: User
 
   @PrimaryGeneratedColumn()
   private id: number

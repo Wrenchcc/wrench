@@ -8,14 +8,14 @@ export default async function toggleNotificationSettings(_, args, ctx) {
     return new Error('Not a valid notificationType.')
   }
 
-  const user = await ctx.db.Users.findOne(ctx.userId)
+  const user = await ctx.db.User.findOne(ctx.userId)
 
   if (user.id !== ctx.userId) {
     return new Error("You don't have permission to edit this account's settings")
   }
 
   // Get prev state
-  const prev = await ctx.db.NotificationsSettings.findOrCreate(
+  const prev = await ctx.db.NotificationSettings.findOrCreate(
     {
       type: notificationType,
       userId: ctx.userId,
@@ -27,12 +27,12 @@ export default async function toggleNotificationSettings(_, args, ctx) {
   )
 
   // Update to new state
-  await ctx.db.NotificationsSettings.update(prev.id, {
+  await ctx.db.NotificationSettings.update(prev.id, {
     value: !prev.value,
   })
 
   // Get updated values
-  const updatedNotifications = await ctx.db.NotificationsSettings.find({
+  const updatedNotifications = await ctx.db.NotificationSettings.find({
     where: { userId: ctx.userId },
   })
 

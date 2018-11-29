@@ -1,5 +1,5 @@
 import { makeExecutableSchema } from 'graphql-tools'
-import { merge } from 'ramda'
+import * as merge from 'lodash.merge'
 import scalars from './types/scalars'
 import generalTypes from './types/general'
 
@@ -17,19 +17,22 @@ import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
 
-// Resolvers
-import resolvers from './resolvers'
+// Queries
+import userQueries from './queries/user'
+import searchQueries from './queries/search'
+import projectQueries from './queries/project'
+import postQueries from './queries/post'
+import followerQueries from './queries/follower'
+import commentQueries from './queries/comment'
+import notificationQueries from './queries/notification'
+
+// Mutations
+import postMutations from './mutations/post'
+import userMutations from './mutations/user'
+import uploadMutations from './mutations/upload'
+import projectMutations from './mutations/project'
 
 const debug = require('debug')('api:resolvers')
-
-// Logging
-if (process.env.NODE_ENV === 'development' && debug.enabled) {
-  const logExecutions = require('graphql-log')({
-    logger: debug,
-  })
-
-  logExecutions(resolvers)
-}
 
 const Root = `
   # The dummy queries and mutations are necessary because
@@ -51,10 +54,36 @@ const Root = `
   }
 `
 
+const resolvers = merge(
+  {},
+  // queries
+  scalars.resolvers,
+  projectQueries,
+  searchQueries,
+  userQueries,
+  postQueries,
+  followerQueries,
+  commentQueries,
+  notificationQueries,
+  // mutations
+  postMutations,
+  userMutations,
+  uploadMutations,
+  projectMutations
+)
+
+// Logging
+if (process.env.NODE_ENV === 'development' && debug.enabled) {
+  const logExecutions = require('graphql-log')({
+    logger: debug,
+  })
+
+  logExecutions(resolvers)
+}
+
 // Create the final GraphQL schema out of the type definitions
 // and the resolvers
 export default makeExecutableSchema({
-  resolvers,
   typeDefs: [
     scalars.typeDefs,
     generalTypes,
@@ -72,4 +101,5 @@ export default makeExecutableSchema({
     Image,
     Upload,
   ],
+  resolvers,
 })
