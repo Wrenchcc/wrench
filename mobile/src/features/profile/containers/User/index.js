@@ -76,7 +76,7 @@ class User extends PureComponent {
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
-    const hasPosts = !!posts
+    const hasPosts = posts && posts.length > 0
 
     // TODO: Remove when have IDs
     return (

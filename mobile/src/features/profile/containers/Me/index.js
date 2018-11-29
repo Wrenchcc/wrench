@@ -48,7 +48,7 @@ class Me extends PureComponent {
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
-    const emptyState = user && user.projectCount > 0 ? 'project' : 'post'
+    const emptyState = user && user.projectCount > 0 ? 'post' : 'project'
     const hasPosts = posts && posts.length > 0
 
     return (

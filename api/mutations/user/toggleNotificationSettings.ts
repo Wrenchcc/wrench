@@ -1,7 +1,8 @@
+import { requireAuth } from 'api/utils/permissions'
 import mergeNotificationsTypes from 'api/utils/mergeNotificationsTypes'
 import notificationsTypes from 'api/utils/notificationsTypes'
 
-export default async function toggleNotificationSettings(_, args, ctx) {
+export default requireAuth(async (_, args, ctx) => {
   const { notificationType } = args.input
 
   if (!notificationsTypes.hasOwnProperty(notificationType)) {
@@ -44,4 +45,4 @@ export default async function toggleNotificationSettings(_, args, ctx) {
       },
     },
   }
-}
+})

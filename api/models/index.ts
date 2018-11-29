@@ -10,7 +10,7 @@ import Model from './Model'
 import Brand from './Brand'
 import Post from './Post'
 import Comment from './Comment'
-import Image from './Image'
+import File from './File'
 import Notification from './Notification'
 
 const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGING } = process.env
@@ -29,7 +29,7 @@ export const options: ConnectionOptions = {
     Project,
     ProjectType,
     User,
-    Image,
+    File,
   ],
   host: DB_HOST,
   logging: isDevelopment,
@@ -45,7 +45,7 @@ export const db = {
   AuthToken,
   Brand,
   Comment,
-  Image,
+  File,
   Model,
   Notification,
   NotificationSettings,

@@ -8,6 +8,7 @@ import {
   ManyToOne,
 } from 'typeorm'
 import User from './User'
+import Comment from './Comment'
 
 enum NotificationType {
   Comment = 'comment',
@@ -19,6 +20,9 @@ enum NotificationType {
 export default class Notification extends BaseEntity {
   @ManyToOne(() => User, user => user.notifications)
   public user: User
+
+  // @ManyToOne(() => Comment, comment => comment.notification)
+  // public comment: Comment
 
   // project
   // comment

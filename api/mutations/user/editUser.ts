@@ -1,4 +1,6 @@
-export default async (_, args, ctx) => {
+import { requireAuth } from 'api/utils/permissions'
+
+export default requireAuth(async (_, args, ctx) => {
   const user = await ctx.db.User.findOne(ctx.userId, {
     relations: ['interestedIn'],
   })
@@ -11,4 +13,4 @@ export default async (_, args, ctx) => {
   }
 
   return user.save()
-}
+})

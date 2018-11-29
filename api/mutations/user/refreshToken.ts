@@ -1,7 +1,8 @@
+import { requireAuth } from 'api/utils/permissions'
 import { path } from 'ramda'
 import { verifyRefreshToken, createToken } from 'api/utils/tokens'
 
-export default async (_, { refreshToken }, ctx) => {
+export default requireAuth(async (_, { refreshToken }, ctx) => {
   const id = path(['userId'], verifyRefreshToken(refreshToken))
 
   if (!id) {
@@ -21,4 +22,4 @@ export default async (_, { refreshToken }, ctx) => {
       token: createToken({ id }),
     },
   }
-}
+})

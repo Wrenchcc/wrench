@@ -7,7 +7,7 @@
   "dependencies": {
     "@types/pg": "^7.4.11",
     "apollo-server": "^2.2.5",
-    "aws-sdk": "^2.366.0",
+    "aws-sdk": "^2.367.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
     "firebase-admin": "^6.3.0",
@@ -18,7 +18,7 @@
     "jsonwebtoken": "^8.4.0",
     "lodash.merge": "^4.6.1",
     "node-fetch": "^2.3.0",
-    "pg": "^7.6.1",
+    "pg": "^7.7.1",
     "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.12",
     "typeorm": "^0.2.9",

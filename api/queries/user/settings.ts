@@ -1,6 +1,7 @@
+import { requireAuth } from 'api/utils/permissions'
 import mergeNotificationsTypes from 'api/utils/mergeNotificationsTypes'
 
-export default async ({ id }, _, ctx) => {
+export default requireAuth(async ({ id }, _, ctx) => {
   try {
     const notifications = await ctx.db.NotificationSettings.find({ where: { userId: id } })
 
@@ -12,4 +13,4 @@ export default async ({ id }, _, ctx) => {
   } catch (err) {
     console.log(err)
   }
-}
+})

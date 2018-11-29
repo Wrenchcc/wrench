@@ -21,7 +21,7 @@ class ProjectCategories extends PureComponent {
   renderItem = ({ item }) => (
     <Cell key={item.id}>
       <Touchable hapticFeedback="impactLight" onPress={() => this.props.onSelect(item)}>
-        <Image source={item.image} size={ITEM_SIZE} gutter={GUTTER}>
+        <Image source={{ uri: item.imageUrl }} size={ITEM_SIZE} gutter={GUTTER}>
           <Overlay />
           <Text color="white">{item.title}</Text>
         </Image>

@@ -32,7 +32,7 @@
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.17.0",
-    "typescript": "^3.1.6",
+    "typescript": "^3.2.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   },
@@ -40,6 +40,6 @@
     "@types/pg": "^7.4.11",
     "debug": "^4.1.0",
     "lodash.merge": "^4.6.1",
-    "pg": "^7.6.1"
+    "pg": "^7.7.1"
   }
 }

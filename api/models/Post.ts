@@ -8,6 +8,7 @@ import {
   OneToMany,
 } from 'typeorm'
 import User from './User'
+import File from './File'
 
 enum PostType {
   Image = 'image',
@@ -18,6 +19,9 @@ enum PostType {
 export default class Post extends BaseEntity {
   // user
   // project
+
+  @OneToMany(() => File, file => file.post)
+  public files: File[]
 
   @PrimaryGeneratedColumn('uuid')
   private id: string

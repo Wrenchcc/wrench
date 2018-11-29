@@ -15,6 +15,7 @@ import NotificationSettings from './NotificationSettings'
 import Notification from './Notification'
 import Project from './Project'
 import ProjectType from './ProjectType'
+import File from './File'
 
 @Entity('users')
 export default class User extends BaseEntity {
@@ -23,6 +24,9 @@ export default class User extends BaseEntity {
 
   @OneToMany(() => Notification, notification => notification.user)
   public notifications: Notification[]
+
+  @OneToMany(() => File, file => file.user)
+  public files: File[]
 
   @ManyToMany(() => ProjectType)
   @JoinTable()
