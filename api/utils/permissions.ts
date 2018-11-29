@@ -1,6 +1,6 @@
 import UserError from './UserError'
 
-export const isAuthenticated = resolver => async (obj, args, ctx, info) => {
+export const requireAuth = resolver => async (obj, args, ctx, info) => {
   if (!ctx.userId) {
     return new UserError('You must be signed in to do this')
   }

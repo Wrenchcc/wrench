@@ -4,10 +4,10 @@ import ProjectType from './ProjectType'
 
 @Entity('projects')
 export default class Project extends BaseEntity {
-  @ManyToOne(type => User, user => user.projects)
+  @ManyToOne(() => User, user => user.projects)
   public user: User
 
-  @ManyToOne(type => ProjectType, projectType => projectType)
+  @ManyToOne(() => ProjectType, projectType => projectType)
   public projectType: ProjectType
 
   @PrimaryGeneratedColumn('uuid')

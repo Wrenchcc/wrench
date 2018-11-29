@@ -14,7 +14,7 @@ export default async (_, { facebookToken }, ctx) => {
   if (authProvider) {
     const tokens = generateTokens(authProvider.user.id)
 
-    await ctx.db.AuthTokens.save({
+    await ctx.db.AuthToken.save({
       refreshToken: tokens.refreshToken,
       user: authProvider.user,
     })
@@ -22,7 +22,7 @@ export default async (_, { facebookToken }, ctx) => {
     return tokens
   }
 
-  const createdUser = await ctx.db.Users.save(fbUser)
+  const createdUser = await ctx.db.User.save(fbUser)
 
   await ctx.db.AuthProvider.save({
     providerId,
@@ -32,7 +32,7 @@ export default async (_, { facebookToken }, ctx) => {
 
   const tokens = generateTokens(createdUser.id)
 
-  await ctx.db.AuthTokens.save({
+  await ctx.db.AuthToken.save({
     refreshToken: tokens.refreshToken,
     user: createdUser,
   })

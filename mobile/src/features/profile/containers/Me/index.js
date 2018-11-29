@@ -49,9 +49,8 @@ class Me extends PureComponent {
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
     const emptyState = user && user.projectCount > 0 ? 'project' : 'post'
-    const hasPosts = !!posts
+    const hasPosts = posts && posts.length > 0
 
-    // TODO: Remove when have IDs
     return (
       <InfiniteListWithHandler
         scrollEnabled={hasPosts}
@@ -65,7 +64,7 @@ class Me extends PureComponent {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={(item, index) => item.node.id + index}
+        keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
           useNativeDriver: true,

@@ -6,9 +6,9 @@ import { Avatar, Text, TimeAgo } from 'ui'
 import { Base, Content, Bottom } from './styles'
 
 const NOTIFICATION_TYPES = {
-  COMMENT: 'COMMENT',
-  FOLLOW: 'FOLLOW',
-  REPLY: 'REPLY',
+  COMMENT: 'comment',
+  FOLLOW: 'follow',
+  REPLY: 'reply',
 }
 
 const onPress = data => {

@@ -1,7 +1,13 @@
-import notifications from 'api/fixtures/notifications'
-import pageInfo from 'api/fixtures/pageInfo'
+import { requireAuth } from 'api/utils/permissions'
+import paginate from 'api/utils/paginate'
 
-export default () => ({
-  edges: notifications(),
-  pageInfo,
+export default requireAuth(async (_, args, ctx) => {
+  try {
+    return paginate(ctx.db.Notification, args, {
+      relations: ['user'],
+      where: { userId: args.userId },
+    })
+  } catch (err) {
+    console.log(err)
+  }
 })

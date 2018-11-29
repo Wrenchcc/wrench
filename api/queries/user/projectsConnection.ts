@@ -1,9 +1,11 @@
+import { requireAuth } from 'api/utils/permissions'
 import paginate from 'api/utils/paginate'
 
-export default async (_, args, ctx) => {
+export default requireAuth(async (_, args, ctx) => {
   try {
-    return paginate(ctx.db.Projects, args)
+    return null
+    return paginate(ctx.db.Project, args, { where: { userId: ctx.userId } })
   } catch (err) {
     console.log(err)
   }
-}
+})

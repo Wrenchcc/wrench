@@ -12,25 +12,29 @@ import {
 import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
 import NotificationSettings from './NotificationSettings'
+import Notification from './Notification'
 import Project from './Project'
 import ProjectType from './ProjectType'
 
 @Entity('users')
 export default class User extends BaseEntity {
-  @OneToMany(type => Project, project => project.user)
+  @OneToMany(() => Project, project => project.user)
   public projects: Project[]
 
-  @ManyToMany(type => ProjectType)
+  @OneToMany(() => Notification, notification => notification.user)
+  public notifications: Notification[]
+
+  @ManyToMany(() => ProjectType)
   @JoinTable()
   public interestedIn: ProjectType[]
 
-  @OneToMany(type => NotificationSettings, notificationSettings => notificationSettings.user)
+  @OneToMany(() => NotificationSettings, notificationSettings => notificationSettings.user)
   public notificationSettings: NotificationSettings[]
 
-  @OneToMany(type => AuthToken, authToken => authToken.user)
+  @OneToMany(() => AuthToken, authToken => authToken.user)
   public authToken: AuthToken[]
 
-  @OneToMany(type => AuthProvider, authProvider => authProvider.user)
+  @OneToMany(() => AuthProvider, authProvider => authProvider.user)
   public authProvider: AuthProvider[]
 
   @PrimaryGeneratedColumn('uuid')

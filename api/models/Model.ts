@@ -3,7 +3,7 @@ import Brand from './Brand'
 
 @Entity('models')
 export default class Model extends BaseEntity {
-  @OneToOne(type => Brand)
+  @OneToOne(() => Brand)
   @JoinColumn()
   public brand: Brand
 

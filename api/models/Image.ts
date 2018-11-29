@@ -5,24 +5,24 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
 } from 'typeorm'
 import User from './User'
 
-@Entity('auth_tokens')
-export default class AuthTokens extends BaseEntity {
-  @ManyToOne(() => User, user => user.authToken)
-  public user: User
+@Entity('images')
+export default class Image extends BaseEntity {
+  // user
+  // post
+  // project
 
-  @PrimaryGeneratedColumn()
-  private id: number
-
-  @Column()
-  private refreshToken: string
+  @PrimaryGeneratedColumn('uuid')
+  private id: string
 
   @CreateDateColumn()
   private createdAt: Date
 
   @UpdateDateColumn()
   private updatedAt: Date
+
+  @Column()
+  private uri: string
 }
