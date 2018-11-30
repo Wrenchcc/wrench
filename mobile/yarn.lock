@@ -3567,10 +3567,10 @@ iterall@^1.2.2:
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
   integrity sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
 
-javascript-time-ago@^1.0.32:
-  version "1.0.32"
-  resolved "https://registry.yarnpkg.com/javascript-time-ago/-/javascript-time-ago-1.0.32.tgz#8c43a6f8ac8eb0eb438a1df337425c8370ef9097"
-  integrity sha512-EbQty2KmZVA6ZimGVVv/J3bD8jZiL3UR0uBiHdhYf2xcMAN0b/EIySFCDyZpxmusmsZtekj4tAnVxLPXNOuDaA==
+javascript-time-ago@^1.0.33:
+  version "1.0.33"
+  resolved "https://registry.yarnpkg.com/javascript-time-ago/-/javascript-time-ago-1.0.33.tgz#637294cbc1cfe619ea14a81170642dfc962d2714"
+  integrity sha512-x9cnAVgDjfe6duVZ4F3qCuDZGbM1vOOcpaHLjZE7vSWi1otIEbLB6Ug6A58Xjkdo2LBHJ+AP1GZR22yHY/wtNA==
 
 jest-docblock@^24.0.0-alpha.2:
   version "24.0.0-alpha.6"
@@ -3940,10 +3940,10 @@ metro-babel7-plugin-react-transform@0.48.3:
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
 
-metro-babel7-plugin-react-transform@0.49.2:
-  version "0.49.2"
-  resolved "https://registry.yarnpkg.com/metro-babel7-plugin-react-transform/-/metro-babel7-plugin-react-transform-0.49.2.tgz#d4c43faa6f2b91cc1b244a36a5d708ae8d39dbb2"
-  integrity sha512-LpJT8UvqF/tvVqEwiLUTMjRPhEGdI8e2dr3424XaRANba3j0nqmrbKdJQsPE8TrcqMWR4RHmfsXk0ti5QrEvJg==
+metro-babel7-plugin-react-transform@0.50.0:
+  version "0.50.0"
+  resolved "https://registry.yarnpkg.com/metro-babel7-plugin-react-transform/-/metro-babel7-plugin-react-transform-0.50.0.tgz#a2f8eb879cf79f2251a23751f09520f63f525167"
+  integrity sha512-qKc0ecMFBr7mXwdjrSXmTszL4aJPYHGlIc2O+oYxDt+AAtPe++AjVBb6Mbup098U7KQ6xtz/wK0pshog+sbOzg==
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
 
@@ -4039,10 +4039,10 @@ metro-react-native-babel-preset@0.48.3:
     metro-babel7-plugin-react-transform "0.48.3"
     react-transform-hmr "^1.0.4"
 
-metro-react-native-babel-preset@^0.49.2:
-  version "0.49.2"
-  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.49.2.tgz#8d53610e044e0c9a53a03d307e1c51f9e8577abc"
-  integrity sha512-N0+4ramShYCHSAVEPUNWIZuKZskWj8/RDSoinhadHpdpHORMbMxLkexSOVHLluB+XFQ+DENLEx5oVPYwOlENBA==
+metro-react-native-babel-preset@^0.50.0:
+  version "0.50.0"
+  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.50.0.tgz#591daebea81ecb3fba76c5ff1afa3cceb9ed4509"
+  integrity sha512-ycofvgp6mgP3T5TgoEqI+B0GKJgkWX/5ELBPjSoaqS6W53L9jHuT4hccJmUPVpSzH3JjtayLuHFQX6DctKI8bA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-proposal-export-default-from" "^7.0.0"
@@ -4077,7 +4077,7 @@ metro-react-native-babel-preset@^0.49.2:
     "@babel/plugin-transform-typescript" "^7.0.0"
     "@babel/plugin-transform-unicode-regex" "^7.0.0"
     "@babel/template" "^7.0.0"
-    metro-babel7-plugin-react-transform "0.49.2"
+    metro-babel7-plugin-react-transform "0.50.0"
     react-transform-hmr "^1.0.4"
 
 metro-resolver@0.48.3:
@@ -5187,10 +5187,10 @@ react-native-code-push@^5.4.2:
     plist "3.0.1"
     xcode "1.0.0"
 
-react-native-config@^0.11.6:
-  version "0.11.6"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.6.tgz#efe9027be534629a41a4561de50f76f40dabb78a"
-  integrity sha512-7GawMkZ3/w7dL9ah2EEhNRyHnMRtsbgAPPIDFX8ODDfhvTM0CzPL23bF5KrKmx13jjNrd6/scW9iyorEEPnYcQ==
+react-native-config@^0.11.7:
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
+  integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
 react-native-device-info@^0.24.3:
   version "0.24.3"
