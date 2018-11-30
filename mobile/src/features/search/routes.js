@@ -9,7 +9,6 @@ export default {
     component: Search,
     mode: TAB,
     navigationOptions: {
-      header: null,
       tabBarButtonComponent: () => null,
     },
   },

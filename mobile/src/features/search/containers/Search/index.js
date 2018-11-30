@@ -1,12 +1,14 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, Keyboard } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
+import { SearchBar } from 'ui'
 import { FONTS } from 'ui/constants'
 import Users from '../../components/Users'
 import Projects from '../../components/Projects'
+import { Base } from './styles'
 
 const initialLayout = {
   height: 0,
@@ -43,7 +45,15 @@ class Search extends PureComponent {
     navigation: PropTypes.object,
   }
 
-  state = { index: 0, routes } // eslint-disable-line
+  state = {
+    index: 0, // eslint-disable-line
+    routes, // eslint-disable-line
+    query: '',
+  }
+
+  onChangeText = query => {
+    this.setState({ query })
+  }
 
   handleIndexChange = index => {
     Keyboard.dismiss()
@@ -70,11 +80,12 @@ class Search extends PureComponent {
   )
 
   renderScene = ({ route }) => {
+    const { query } = this.state
     switch (route.key) {
       case 'users':
-        return <Users scrollRef={el => (this.userRef = el)} />
+        return <Users scrollRef={el => (this.userRef = el)} query={query} />
       case 'projects':
-        return <Projects scrollRef={el => (this.projectRef = el)} />
+        return <Projects scrollRef={el => (this.projectRef = el)} query={query} />
       default:
         return null
     }
@@ -86,17 +97,22 @@ class Search extends PureComponent {
 
   render() {
     return (
-      <TabView
-        navigationState={this.state}
-        renderScene={this.renderScene}
-        renderTabBar={this.renderTabBar}
-        renderPager={this.renderPager}
-        onIndexChange={this.handleIndexChange}
-        initialLayout={initialLayout}
-        swipeEnabled
-        animationEnabled
-        useNativeDriver
-      />
+      <Fragment>
+        <Base>
+          <SearchBar placeholder={false} cancelButton onChangeText={this.onChangeText} />
+        </Base>
+        <TabView
+          navigationState={this.state}
+          renderScene={this.renderScene}
+          renderTabBar={this.renderTabBar}
+          renderPager={this.renderPager}
+          onIndexChange={this.handleIndexChange}
+          initialLayout={initialLayout}
+          swipeEnabled
+          animationEnabled
+          useNativeDriver
+        />
+      </Fragment>
     )
   }
 }

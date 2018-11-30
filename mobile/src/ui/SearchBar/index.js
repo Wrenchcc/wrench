@@ -6,13 +6,14 @@ import { navigateToSearch, navigateBack } from 'navigation'
 import { Search, Text } from 'ui'
 import Add from 'features/project/components/Add'
 
-function SearchBar({ placeholder, cancelButton, t }) {
+function SearchBar({ placeholder, cancelButton, t, ...props }) {
   return (
     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
       <Search
         onPress={() => navigateToSearch()}
         style={{ flex: 1, paddingRight: 20 }}
         placeholder={placeholder}
+        {...props}
       />
       {cancelButton ? (
         <Text onPress={() => navigateBack()} medium>

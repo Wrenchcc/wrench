@@ -1,5 +1,10 @@
 import styled from 'styled-components'
+import { isIphoneX } from 'utils/platform'
 
 export const Base = styled.View`
-  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 20px;
+  padding-top: ${(isIphoneX && 60) || 20};
 `

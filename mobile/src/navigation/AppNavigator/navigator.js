@@ -49,10 +49,10 @@ TabNavigator.navigationOptions = ({ navigation }) => {
     }
   }
 
+  // Remove header on search and add the search bar in container to get query
   if (focusedRouteName === SEARCH_ROUTE_NAMES.SEARCH) {
     return {
-      ...styles,
-      headerTitle: <SearchBar placeholder={false} cancelButton />,
+      header: null,
     }
   }
 
