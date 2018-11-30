@@ -39,13 +39,12 @@ class Popular extends PureComponent {
   render() {
     const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t } = this.props
 
-    // TODO: Remove when have real IDs
     return (
       <>
         <Title medium>{t('Popular:popular')}</Title>
         <InfiniteList
           initialNumToRender={INITIAL_POSTS_COUNT}
-          keyExtractor={(item, index) => item.node.id + index}
+          keyExtractor={item => item.node.id}
           data={projects}
           horizontal
           directionalLockEnabled

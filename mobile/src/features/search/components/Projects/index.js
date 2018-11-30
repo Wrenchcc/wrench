@@ -20,7 +20,6 @@ class Projects extends PureComponent {
     <ProjectCard project={item.node} onPress={() => navigateToProject({ project: item.node })} />
   )
 
-  // TODO: Remove when have IDs
   render() {
     const {
       fetchMore,
@@ -40,7 +39,7 @@ class Projects extends PureComponent {
         hasNextPage={hasNextPage}
         isFetching={isFetching}
         isRefetching={isRefetching}
-        keyExtractor={(item, index) => item.node.id + index}
+        keyExtractor={item => item.node.id}
         paddingBottom={20}
         refetch={refetch}
         renderItem={this.renderItem}

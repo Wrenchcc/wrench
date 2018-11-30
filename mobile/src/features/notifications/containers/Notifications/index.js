@@ -29,7 +29,6 @@ class Notifications extends PureComponent {
       t,
     } = this.props
 
-    // TODO: Remove when have real IDs
     return (
       <InfiniteListWithHandler
         defaultPaddingTop
@@ -42,7 +41,7 @@ class Notifications extends PureComponent {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={(item, index) => item.node.id + index}
+        keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
       />
     )

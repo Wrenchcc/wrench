@@ -4,6 +4,13 @@ import ProjectType from './ProjectType'
 
 @Entity('projects')
 export default class Project extends BaseEntity {
+  public static async getCountByUserId(userId) {
+    return Project.getRepository()
+      .createQueryBuilder('projects')
+      .select(`DISTINCT(${userId})`)
+      .getCount()
+  }
+
   @ManyToOne(() => User, user => user.projects)
   public user: User
 

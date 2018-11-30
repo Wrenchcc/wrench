@@ -21,7 +21,6 @@ class Explore extends PureComponent {
   render() {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
-    // TODO: Remove when have real IDs
     return (
       <InfiniteListWithHandler
         initialNumToRender={INITIAL_POSTS_COUNT}
@@ -32,7 +31,7 @@ class Explore extends PureComponent {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={(item, index) => item.node.id + index}
+        keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
       />
     )

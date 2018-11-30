@@ -4,6 +4,7 @@ import projectsConnection from './projectsConnection'
 import postsConnection from './postsConnection'
 import interestedIn from './interestedIn'
 import settings from './settings'
+import projectCount from './projectCount'
 
 export default {
   Query: {
@@ -13,6 +14,7 @@ export default {
   User: {
     interestedIn,
     postsConnection,
+    projectCount,
     projectsConnection,
     settings,
   },
