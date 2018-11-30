@@ -4,6 +4,7 @@ import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
 import { ProjectCard, InfiniteList } from 'ui'
+import NoResults from '../NoResults'
 
 class Projects extends PureComponent {
   static propTypes = {
@@ -34,6 +35,7 @@ class Projects extends PureComponent {
     return (
       <InfiniteList
         borderSeparator
+        ListEmptyComponent={<NoResults />}
         data={projects}
         fetchMore={fetchMore}
         hasNextPage={hasNextPage}

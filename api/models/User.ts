@@ -8,6 +8,7 @@ import {
   OneToMany,
   ManyToMany,
   JoinTable,
+  Index,
 } from 'typeorm'
 import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
@@ -60,6 +61,7 @@ export default class User extends BaseEntity {
   private lastName: string
 
   @Column()
+  @Index()
   private fullName: string
 
   @Column({ nullable: true })

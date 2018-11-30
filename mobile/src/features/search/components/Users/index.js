@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { User, InfiniteList } from 'ui'
+import NoResults from '../NoResults'
 
-// TODO: Pass search query
 class Users extends PureComponent {
   static propTypes = {
     fetchMore: PropTypes.func.isRequired,
@@ -32,6 +32,7 @@ class Users extends PureComponent {
     return (
       <InfiniteList
         borderSeparator
+        ListEmptyComponent={<NoResults />}
         data={users}
         fetchMore={fetchMore}
         hasNextPage={hasNextPage}

@@ -110,6 +110,9 @@
     "Followers": {
       "title": "Followers"
     },
+    "NoResults": {
+      "title": "No results found"
+    },
     "SearchTab": {
       "users": "People",
       "projects": "Projects"
@@ -319,6 +322,9 @@
     },
     "Followers": {
       "title": "Följare"
+    },
+    "NoResults": {
+      "title": "Inga resultat funna"
     },
     "SearchTab": {
       "users": "Personer",

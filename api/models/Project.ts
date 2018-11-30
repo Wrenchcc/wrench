@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, Index } from 'typeorm'
 import User from './User'
 import ProjectType from './ProjectType'
 
@@ -21,6 +21,7 @@ export default class Project extends BaseEntity {
   private id: string
 
   @Column()
+  @Index()
   private title: string
 
   @Column({ unique: true })
