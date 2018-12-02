@@ -17,11 +17,15 @@ import Notification from './Notification'
 import Project from './Project'
 import ProjectType from './ProjectType'
 import File from './File'
+import Post from './Post'
 
 @Entity('users')
 export default class User extends BaseEntity {
   @OneToMany(() => Project, project => project.user)
   public projects: Project[]
+
+  @OneToMany(() => Post, post => post.user)
+  public posts: Post[]
 
   @OneToMany(() => Notification, notification => notification.user)
   public notifications: Notification[]

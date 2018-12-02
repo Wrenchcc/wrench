@@ -80,21 +80,13 @@ class Search extends PureComponent {
   )
 
   renderScene = ({ route }) => {
-    const { query, index, routes } = this.state
-    const currentIndex = routes.indexOf(route)
+    const { query } = this.state
 
     switch (route.key) {
       case 'users':
-        return (
-          <Users scrollRef={el => (this.userRef = el)} query={index === currentIndex && query} />
-        )
+        return <Users scrollRef={el => (this.userRef = el)} query={query} />
       case 'projects':
-        return (
-          <Projects
-            scrollRef={el => (this.projectRef = el)}
-            query={index === currentIndex && query}
-          />
-        )
+        return <Projects scrollRef={el => (this.projectRef = el)} query={query} />
       default:
         return null
     }

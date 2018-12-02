@@ -6,8 +6,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm'
 import User from './User'
+import Project from './Project'
 import File from './File'
 
 enum PostType {
@@ -17,14 +20,23 @@ enum PostType {
 
 @Entity('posts')
 export default class Post extends BaseEntity {
-  // user
-  // project
+  @ManyToOne(() => User, user => user.posts)
+  public user: User
+
+  @ManyToOne(() => Project, project => project.posts)
+  public project: Project
 
   @OneToMany(() => File, file => file.post)
   public files: File[]
 
   @PrimaryGeneratedColumn('uuid')
   private id: string
+
+  @Column({ nullable: true })
+  private projectId: number
+
+  @Column({ nullable: true })
+  private userId: number
 
   @CreateDateColumn()
   private createdAt: Date

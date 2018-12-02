@@ -21,7 +21,7 @@
     "pg": "^7.7.1",
     "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.12",
-    "typeorm": "^0.2.9",
+    "typeorm": "next",
     "uuid": "^3.3.2"
   }
 }
