@@ -3,7 +3,7 @@ import commentInfoFragment from 'graphql/fragments/comment/commentInfoSmall'
 
 export default gql`
   fragment commentPostConnection on Post {
-    comments: commentConnection(first: 2) {
+    comments: commentsConnection(first: 2) {
       ...commentInfoSmall
     }
   }

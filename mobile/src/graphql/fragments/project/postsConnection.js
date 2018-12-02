@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
-import commentConnectionFragment from 'graphql/fragments/post/commentConnection'
+import commentsConnectionFragment from 'graphql/fragments/post/commentsConnection'
 
 export default gql`
   fragment projectPostsConnection on Project {
@@ -35,5 +35,5 @@ export default gql`
     }
   }
   ${userInfoFragment}
-  ${commentConnectionFragment}
+  ${commentsConnectionFragment}
 `

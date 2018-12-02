@@ -11,8 +11,8 @@ export default {
   Project: {
     followersConnection,
     imagesConnection,
-    projectPermissions,
     postsConnection,
+    projectPermissions,
   },
   Query: {
     project,

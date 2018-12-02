@@ -10,7 +10,7 @@ export default `
     isAuthor: Boolean
 
     imagesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int): ImageConnection!
-    commentConnection(first: Int, after: String, last: Int, before: String): CommentConnection
+    commentsConnection(first: Int, after: String, last: Int, before: String): CommentConnection
   }
 
   enum PostType {

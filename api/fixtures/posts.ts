@@ -14,9 +14,9 @@ export default () => [
       videos: null,
       imagesConnection: { edges: images() },
       user: generateUser('1'),
-      commentConnection: {
+      commentsConnection: {
         totalCount: 1300,
-        // edges: comments().slice(0, 2),
+        edges: [],
       },
       isAuthor: true,
       project: {
@@ -46,9 +46,9 @@ export default () => [
       videos: null,
       imagesConnection: { edges: images() },
       user: generateUser('2'),
-      commentConnection: {
+      commentsConnection: {
         totalCount: 1300,
-        // edges: comments().slice(0, 2),
+        edges: [],
       },
       isAuthor: false,
       project: {
@@ -78,9 +78,9 @@ export default () => [
       videos: null,
       imagesConnection: { edges: images() },
       user: generateUser('3'),
-      commentConnection: {
+      commentsConnection: {
         totalCount: 1300,
-        // edges: comments().slice(0, 2),
+        edges: [],
       },
       isAuthor: false,
       project: {
@@ -110,9 +110,9 @@ export default () => [
       videos: null,
       imagesConnection: { edges: images() },
       user: generateUser('4'),
-      commentConnection: {
+      commentsConnection: {
         totalCount: 1300,
-        // edges: comments().slice(0, 2),
+        edges: [],
       },
       isAuthor: false,
       project: {
@@ -143,9 +143,9 @@ export default () => [
       imagesConnection: { edges: images() },
 
       user: generateUser('5'),
-      commentConnection: {
+      commentsConnection: {
         totalCount: 1300,
-        // edges: comments().slice(0, 2),
+        edges: [],
       },
       isAuthor: false,
       project: {
@@ -176,9 +176,9 @@ export default () => [
       imagesConnection: { edges: images() },
 
       user: generateUser(),
-      commentConnection: {
+      commentsConnection: {
         totalCount: 1300,
-        // edges: comments().slice(0, 2),
+        edges: [],
       },
       isAuthor: true,
       project: {

@@ -11,6 +11,7 @@ import {
 } from 'typeorm'
 import User from './User'
 import Project from './Project'
+import Comment from './Comment'
 import File from './File'
 
 enum PostType {
@@ -28,6 +29,9 @@ export default class Post extends BaseEntity {
 
   @OneToMany(() => File, file => file.post)
   public files: File[]
+
+  @OneToMany(() => Comment, comment => comment.post)
+  public comments: Comment[]
 
   @PrimaryGeneratedColumn('uuid')
   private id: string
