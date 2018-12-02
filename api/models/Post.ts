@@ -14,11 +14,6 @@ import Project from './Project'
 import Comment from './Comment'
 import File from './File'
 
-enum PostType {
-  Image = 'image',
-  Video = 'video',
-}
-
 @Entity('posts')
 export default class Post extends BaseEntity {
   @ManyToOne(() => User, user => user.posts)
@@ -47,9 +42,6 @@ export default class Post extends BaseEntity {
 
   @UpdateDateColumn()
   private updatedAt: Date
-
-  @Column('enum', { enum: PostType })
-  private type: PostType
 
   @Column('text')
   private caption: string

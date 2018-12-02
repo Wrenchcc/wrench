@@ -13,6 +13,7 @@ import {
 import User from './User'
 import Post from './Post'
 import ProjectType from './ProjectType'
+import File from './File'
 
 @Entity('projects')
 export default class Project extends BaseEntity {
@@ -23,15 +24,18 @@ export default class Project extends BaseEntity {
       .getCount()
   }
 
-  @ManyToMany(type => User, user => user.following)
-  @JoinTable()
-  public followers: User[]
+  // @ManyToMany(type => User, user => user.following)
+  // @JoinTable()
+  // public followers: User[]
 
   @ManyToOne(() => User, user => user.projects, {})
   public user: User
 
   @OneToMany(() => Post, post => post.project)
   public posts: Post[]
+
+  @OneToMany(() => File, file => file.project)
+  public files: File[]
 
   @ManyToOne(() => ProjectType, projectType => projectType)
   public projectType: ProjectType

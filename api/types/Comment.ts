@@ -5,6 +5,7 @@ export default `
     updatedAt: Date
     text: String
     user: User
+    postId: ID
     repliesConnection(first: Int, after: String, last: Int, before: String): ReplyConnection
   }
 

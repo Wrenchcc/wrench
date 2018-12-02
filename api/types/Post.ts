@@ -1,7 +1,6 @@
 export default `
   type Post {
     id: ID
-    type: PostType
     createdAt: Date
     updatedAt: Date
     caption: String
@@ -9,14 +8,9 @@ export default `
     project: Project
     isAuthor: Boolean
 
-    imagesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int): ImageConnection!
+    filesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int, type: FileType): FileConnection
     commentsConnection(first: Int, after: String, last: Int, before: String): CommentConnection
   }
-
-  enum PostType {
-    image
-    video
-	}
 
   type PostConnection {
     pageInfo: PageInfo!

@@ -1,4 +1,4 @@
-import imagesConnection from './imagesConnection'
+import filesConnection from './filesConnection'
 import project from './project'
 import projects from './projects'
 import projectSuggestions from './projectSuggestions'
@@ -9,8 +9,8 @@ import postsConnection from './postsConnection'
 
 export default {
   Project: {
+    filesConnection,
     followersConnection,
-    imagesConnection,
     postsConnection,
     projectPermissions,
   },

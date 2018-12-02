@@ -9,11 +9,15 @@ import {
 } from 'typeorm'
 import User from './User'
 import Post from './Post'
+import Notification from './Notification'
 
 @Entity('comments')
 export default class Comment extends BaseEntity {
   @ManyToOne(() => User, user => user.comments)
   public user: User
+
+  @ManyToOne(() => Notification, notification => notification.comment)
+  public notification: Notification
 
   @ManyToOne(() => Post, post => post.comments)
   public post: Post

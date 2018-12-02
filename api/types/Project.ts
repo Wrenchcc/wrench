@@ -9,7 +9,7 @@ export default `
     user: User
     projectPermissions: ProjectPermissions
 
-    imagesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int): ImageConnection
+    filesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int, type: FileType): FileConnection
     followersConnection(first: Int, after: String, last: Int, before: String): FollowersConnection
     postsConnection(first: Int, after: String, last: Int, before: String): PostConnection
   }

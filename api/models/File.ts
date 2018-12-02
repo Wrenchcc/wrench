@@ -9,16 +9,11 @@ import {
 } from 'typeorm'
 import User from './User'
 import Post from './Post'
+import Project from './Project'
 
 enum FileType {
   Image = 'image',
   Video = 'video',
-}
-
-enum FileFormat {
-  Mp4 = 'mp4',
-  Jpeg = 'jpeg',
-  Png = 'png',
 }
 
 @Entity('files')
@@ -28,6 +23,9 @@ export default class File extends BaseEntity {
 
   @ManyToOne(() => Post, post => post.files)
   public post: Post
+
+  @ManyToOne(() => Project, project => project.files)
+  public project: Project
 
   @PrimaryGeneratedColumn('uuid')
   private id: string
@@ -44,6 +42,12 @@ export default class File extends BaseEntity {
   @Column('enum', { enum: FileType })
   private type: FileType
 
-  @Column('enum', { enum: FileFormat })
-  private format: FileFormat
+  @Column({ nullable: true })
+  private postId: number
+
+  @Column({ nullable: true })
+  private userId: number
+
+  @Column({ nullable: true })
+  private projectId: number
 }

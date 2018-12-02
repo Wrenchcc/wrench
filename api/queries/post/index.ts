@@ -1,12 +1,12 @@
 import post from './post'
 import posts from './posts'
-import imagesConnection from './imagesConnection'
+import filesConnection from './filesConnection'
 import commentsConnection from './commentsConnection'
 
 export default {
   Post: {
     commentsConnection,
-    imagesConnection,
+    filesConnection,
   },
   Query: {
     post,

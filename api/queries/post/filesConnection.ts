@@ -2,9 +2,12 @@ import paginate from 'api/utils/paginate'
 
 export default async ({ id }, args, ctx) => {
   try {
-    return {
-      totalCount: 1000,
-    }
+    return paginate(ctx.db.File, args, {
+      where: {
+        postId: id,
+        type: args.type,
+      },
+    })
   } catch (err) {
     console.log(err)
   }

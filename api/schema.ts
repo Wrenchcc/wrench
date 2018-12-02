@@ -7,7 +7,7 @@ import generalTypes from './types/general'
 import Auth from './types/Auth'
 import Comment from './types/Comment'
 import Followers from './types/Followers'
-import Image from './types/Image'
+import File from './types/File'
 import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
@@ -98,7 +98,7 @@ export default makeExecutableSchema({
     Followers,
     Search,
     User,
-    Image,
+    File,
     Upload,
   ],
   resolvers,
