@@ -1,4 +1,13 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import {
+  BaseEntity,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 import Brand from './Brand'
 
 @Entity('models')
@@ -9,6 +18,12 @@ export default class Model extends BaseEntity {
 
   @PrimaryGeneratedColumn()
   private id: number
+
+  @CreateDateColumn()
+  private createdAt: Date
+
+  @UpdateDateColumn()
+  private updatedAt: Date
 
   @Column()
   private model: string

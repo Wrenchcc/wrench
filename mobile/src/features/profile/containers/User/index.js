@@ -11,8 +11,6 @@ import Header from 'features/profile/components/Header'
 const HEADER_HEIGHT = 100
 const START_OPACITY = 50
 
-let scrollView = null
-
 class User extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
@@ -22,21 +20,16 @@ class User extends PureComponent {
       headerTitle: fullName && (
         <HeaderTitle
           opacity={params.opacity || new Animated.Value(0)}
-          onPress={() => scrollView.scrollToOffset({ offset: 0 })}
+          onPress={() => this.scrollView.scrollToOffset({ offset: 0 })}
         >
           {fullName}
         </HeaderTitle>
       ),
       headerRight: fullName && <Share title={fullName} url={params.user.dynamicLink} />,
-      tabBarOnPress: ({ navigation, defaultHandler }) => {
-        if (navigation.isFocused()) {
-          scrollView.scrollToOffset({ offset: 0 })
-        } else {
-          defaultHandler()
-        }
-      },
     }
   }
+
+  scrollView = null
 
   static propTypes = {
     user: PropTypes.object,
@@ -68,21 +61,17 @@ class User extends PureComponent {
     }
   }
 
-  componentWillUnmont() {
-    scrollView = null
-  }
-
   renderItem = ({ item }) => <Post post={item.node} avatar={false} />
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
     const hasPosts = posts && posts.length > 0
 
-    // TODO: Remove when have IDs
     return (
       <InfiniteListWithHandler
+        scrollEnabled={hasPosts}
         scrollRef={ref => {
-          scrollView = ref
+          this.scrollView = ref
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
@@ -94,7 +83,7 @@ class User extends PureComponent {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={(item, index) => item.node.id + index}
+        keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this.scrollY } } }], {
           useNativeDriver: true,

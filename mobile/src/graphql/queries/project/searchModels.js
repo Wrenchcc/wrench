@@ -11,7 +11,10 @@ export const searchModelsQuery = gql`
       edges {
         node {
           ... on Model {
-            brand
+            id
+            brand {
+              name
+            }
             model
             year
           }

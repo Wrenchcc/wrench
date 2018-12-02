@@ -1,6 +1,7 @@
 import { Like } from 'typeorm'
 import paginate from 'api/utils/paginate'
 
+// TODO: LOWER
 export default async (args, ctx) => {
   try {
     return paginate(ctx.db.Project, args, {

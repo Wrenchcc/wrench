@@ -12,6 +12,7 @@ class FollowingProjects extends PureComponent {
   static propTypes = {
     user: PropTypes.object,
     projects: PropTypes.array,
+    isFetching: PropTypes.bool.isRequired,
   }
 
   headerComponent = () => {
