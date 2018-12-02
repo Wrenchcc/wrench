@@ -31,6 +31,7 @@ export default `
   }
 
   type ProjectsConnection {
+    totalCount: Int
     pageInfo: PageInfo!
     edges: [ProjectEdge!]
   }

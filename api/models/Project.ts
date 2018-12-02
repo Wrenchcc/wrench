@@ -7,6 +7,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm'
 import User from './User'
 import Post from './Post'
@@ -20,6 +22,10 @@ export default class Project extends BaseEntity {
       .select(`DISTINCT(${userId})`)
       .getCount()
   }
+
+  @ManyToMany(type => User, user => user.following)
+  @JoinTable()
+  public followers: User[]
 
   @ManyToOne(() => User, user => user.projects, {})
   public user: User
@@ -47,4 +53,7 @@ export default class Project extends BaseEntity {
 
   @Column({ unique: true })
   private slug: string
+
+  @Column({ unique: true })
+  private dynamicLink: string
 }

@@ -22,6 +22,10 @@ import Comment from './Comment'
 
 @Entity('users')
 export default class User extends BaseEntity {
+  @ManyToMany(type => Project, project => project.followers)
+  @JoinTable()
+  public following: Project[]
+
   @OneToMany(() => Project, project => project.user)
   public projects: Project[]
 
@@ -77,4 +81,7 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   private avatarUrl: string
+
+  @Column({ unique: true })
+  private dynamicLink: string
 }

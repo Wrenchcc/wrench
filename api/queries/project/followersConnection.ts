@@ -1,8 +1,16 @@
-export default async (_, __, ctx) => {
+import paginate from 'api/utils/paginate'
+
+export default async ({ id }, args, ctx) => {
   try {
-    return {
-      totalCount: 100,
-    }
+    return paginate(ctx.db.User, args, {
+      join: {
+        alias: 'following',
+        leftJoinAndSelect: {
+          following: 'user.following',
+        },
+      },
+      relations: ['projects'],
+    })
   } catch (err) {
     console.log(err)
   }
