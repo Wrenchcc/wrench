@@ -63,7 +63,6 @@ class Mention extends Component {
       hasNextPage,
     } = this.props
 
-    // TODO: Remove when have IDs
     return (
       <View style={[styles.container, { bottom: offsetBottom, top: offsetTop }]}>
         <InfiniteList
@@ -76,7 +75,7 @@ class Mention extends Component {
           isRefetching={isRefetching}
           isFetching={isFetching}
           hasNextPage={hasNextPage}
-          keyExtractor={(item, index) => item.node.id + index}
+          keyExtractor={item => item.node.id}
           renderItem={this.renderItem}
           borderSeparator
         />

@@ -26,7 +26,6 @@ const LoadMorePosts = gql`
   ${userPostsConnectionFragment}
 `
 
-// TODO: Change order on user: { user, navigation } when api is done
 const getUserByUsernameOptions = {
   options: ({ navigation, after = null }) => ({
     variables: {

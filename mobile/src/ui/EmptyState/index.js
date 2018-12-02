@@ -6,7 +6,6 @@ import { Text } from 'ui'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
 
-// TODO: send data to routes
 const onPressAction = type => {
   switch (type) {
     case TYPES.PROJECT:

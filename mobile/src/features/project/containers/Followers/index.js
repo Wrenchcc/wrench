@@ -33,7 +33,6 @@ class Followers extends PureComponent {
   render() {
     const { followers, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
-    // TODO: Remove when have IDs
     return (
       <InfiniteList
         scrollRef={ref => {
@@ -46,7 +45,7 @@ class Followers extends PureComponent {
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={(item, index) => item.node.id + index}
+        keyExtractor={item => item.node.id}
         renderItem={this.renderItem}
       />
     )

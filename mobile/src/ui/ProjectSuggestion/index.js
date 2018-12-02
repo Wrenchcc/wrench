@@ -26,7 +26,6 @@ export default class ProjectSuggestion extends PureComponent {
     />
   )
 
-  // TODO: Remove Ids + index
   render() {
     const { title, data, refetch, fetchMore, isRefetching, isFetching, hasNextPage } = this.props
 
@@ -35,7 +34,7 @@ export default class ProjectSuggestion extends PureComponent {
         <Title fontSize={21}>{title}</Title>
 
         <InfiniteList
-          keyExtractor={(item, index) => item.node.id + index}
+          keyExtractor={item => item.node.id}
           data={data}
           refetch={refetch}
           fetchMore={fetchMore}

@@ -6,12 +6,8 @@ import { AuthNavigator, AppNavigator } from 'navigation'
 import { AppContainer } from 'store'
 import { getCurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
-import { YellowBox } from 'react-native'
 
 if (__DEV__) {
-  // TODO: Remove
-  YellowBox.ignoreWarnings(['Require cycle:'])
-
   // Setting `global.XMLHttpRequest` will enable showing Network requests in React Native Debugger
   global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest
 }
