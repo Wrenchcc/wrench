@@ -32,8 +32,7 @@ class List extends PureComponent {
 
   render() {
     const { data, t } = this.props
-
-    if (!data.comments.length > 0) return null
+    if (!data.comments.edges.length) return null
 
     return (
       <>
