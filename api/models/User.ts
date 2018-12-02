@@ -18,6 +18,7 @@ import Project from './Project'
 import ProjectType from './ProjectType'
 import File from './File'
 import Post from './Post'
+import Comment from './Comment'
 
 @Entity('users')
 export default class User extends BaseEntity {
@@ -26,6 +27,9 @@ export default class User extends BaseEntity {
 
   @OneToMany(() => Post, post => post.user)
   public posts: Post[]
+
+  @OneToMany(() => Comment, comment => comment.user)
+  public comments: Comment[]
 
   @OneToMany(() => Notification, notification => notification.user)
   public notifications: Notification[]

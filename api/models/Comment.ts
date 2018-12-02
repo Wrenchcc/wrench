@@ -12,7 +12,9 @@ import Post from './Post'
 
 @Entity('comments')
 export default class Comment extends BaseEntity {
-  // user
+  @ManyToOne(() => User, user => user.comments)
+  public user: User
+
   @ManyToOne(() => Post, post => post.comments)
   public post: Post
 

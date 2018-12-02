@@ -71,5 +71,6 @@ export default async (
       hasNextPage: totalCount > first,
       hasPreviousPage: totalCount > last,
     },
+    totalCount,
   }
 }
