@@ -82,6 +82,6 @@ export default class User extends BaseEntity {
   @Column({ nullable: true })
   private avatarUrl: string
 
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: true })
   private dynamicLink: string
 }

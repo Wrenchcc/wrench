@@ -28,7 +28,7 @@ export default class Project extends BaseEntity {
   // @JoinTable()
   // public followers: User[]
 
-  @ManyToOne(() => User, user => user.projects, {})
+  @ManyToOne(() => User, user => user.projects)
   public user: User
 
   @OneToMany(() => Post, post => post.project)
@@ -58,6 +58,6 @@ export default class Project extends BaseEntity {
   @Column({ unique: true })
   private slug: string
 
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: true })
   private dynamicLink: string
 }

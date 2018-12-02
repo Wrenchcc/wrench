@@ -3,8 +3,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToOne,
-  JoinColumn,
+  ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -12,8 +11,7 @@ import Brand from './Brand'
 
 @Entity('models')
 export default class Model extends BaseEntity {
-  @OneToOne(() => Brand)
-  @JoinColumn()
+  @ManyToOne(() => Brand, brand => brand.models)
   public brand: Brand
 
   @PrimaryGeneratedColumn()
