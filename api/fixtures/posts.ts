@@ -1,6 +1,5 @@
 import generateUser from './generateUser'
 import generateId from './generateId'
-import images from './images'
 
 export default () => [
   {
@@ -12,7 +11,7 @@ export default () => [
       caption:
         'During the build the already minimalistic lines of the BMW have been cleared. http://www.bikeexif.com',
       videos: null,
-      imagesConnection: { edges: images() },
+
       user: generateUser('1'),
       commentsConnection: {
         totalCount: 1300,
@@ -44,7 +43,7 @@ export default () => [
       caption:
         'I used my favorite material, steel. @pontus Following I started over with a wireframe out of steel rods. It allowed me to check the shape constantly and it was much easier to adj…',
       videos: null,
-      imagesConnection: { edges: images() },
+
       user: generateUser('2'),
       commentsConnection: {
         totalCount: 1300,
@@ -76,7 +75,7 @@ export default () => [
       caption:
         "The job I've not been looking forward to. https://wrench.cc Sanding the cowl and the front fender for the GS550",
       videos: null,
-      imagesConnection: { edges: images() },
+
       user: generateUser('3'),
       commentsConnection: {
         totalCount: 1300,
@@ -108,7 +107,7 @@ export default () => [
       caption:
         "The job I've not been looking forward to. Sanding the cowl and the front fender for the GS550",
       videos: null,
-      imagesConnection: { edges: images() },
+
       user: generateUser('4'),
       commentsConnection: {
         totalCount: 1300,
@@ -140,7 +139,6 @@ export default () => [
       caption:
         "The job I've not been looking forward to. Sanding the cowl and the front fender for the GS550",
       videos: null,
-      imagesConnection: { edges: images() },
 
       user: generateUser('5'),
       commentsConnection: {
@@ -173,7 +171,6 @@ export default () => [
       caption:
         "The job I've not been looking forward to. Sanding the cowl and the front fender for the GS550",
       videos: null,
-      imagesConnection: { edges: images() },
 
       user: generateUser(),
       commentsConnection: {

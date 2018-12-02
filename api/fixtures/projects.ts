@@ -1,7 +1,6 @@
 import { take } from 'ramda'
 import posts from './posts'
 import generateUser from './generateUser'
-import images from './images'
 import followers from './followers'
 
 export default () => [
@@ -22,7 +21,6 @@ export default () => [
         isFollower: false,
       },
       postsConnection: { edges: posts() },
-      imagesConnection: { edges: images() },
     },
   },
   {
@@ -42,7 +40,6 @@ export default () => [
         isFollower: false,
       },
       postsConnection: { edges: posts() },
-      imagesConnection: { edges: images() },
     },
   },
   {
@@ -62,7 +59,6 @@ export default () => [
         isFollower: false,
       },
       postsConnection: { edges: posts() },
-      imagesConnection: { edges: images() },
     },
   },
   {
@@ -82,7 +78,6 @@ export default () => [
         isFollower: false,
       },
       postsConnection: { edges: posts() },
-      imagesConnection: { edges: images() },
     },
   },
   {
@@ -102,7 +97,6 @@ export default () => [
         isFollower: false,
       },
       postsConnection: { edges: posts() },
-      imagesConnection: { edges: images() },
     },
   },
   {
@@ -122,7 +116,6 @@ export default () => [
         isFollower: false,
       },
       postsConnection: { edges: posts() },
-      imagesConnection: { edges: images() },
     },
   },
 ]

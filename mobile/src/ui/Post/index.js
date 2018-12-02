@@ -21,7 +21,7 @@ class Post extends PureComponent {
   }
 
   toggleActionSheet = () => {
-    if (this.props.post.isAuthor) {
+    if (this.props.post.postPermissions.isOwner) {
       this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
     }
   }
@@ -110,9 +110,9 @@ class Post extends PureComponent {
               {post.caption}
             </Caption>
           )}
-          {post.images && (
+          {post.files && (
             <Carousel
-              images={post.images}
+              files={post.files}
               onPress={this.goToProject}
               onLongPress={this.toggleActionSheet}
             />

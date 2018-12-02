@@ -10,11 +10,13 @@ export default gql`
         node {
           id
           caption
-          isAuthor
+          postPermissions {
+            isOwner
+          }
           user {
             ...userInfo
           }
-          files: filesConnection {
+          files: filesConnection(type: image) {
             edges {
               node {
                 type

@@ -9,17 +9,17 @@ const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 export default class Carousel extends PureComponent {
   static propTypes = {
-    images: PropTypes.object.isRequired,
+    files: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
     onLongPress: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
   }
 
   renderItem = ({ item, index }) => {
-    const { onPress, onLongPress, disabled, images } = this.props
+    const { onPress, onLongPress, disabled, files } = this.props
 
     return (
-      <Wrapper key={item.node.uri} first={index === 0} last={index === images.edges.length - 1}>
+      <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
         <Touchable
           onPress={onPress}
           onLongPress={onLongPress}
@@ -39,13 +39,13 @@ export default class Carousel extends PureComponent {
   }
 
   render() {
-    const images = this.props.images.edges
+    const files = this.props.files.edges
 
     return (
       <FlatList
         keyExtractor={item => item.node.id}
-        data={images}
-        scrollEnabled={images.length > 1}
+        data={files}
+        scrollEnabled={files.length > 1}
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}

@@ -7,7 +7,9 @@ export default gql`
   fragment postInfo on Post {
     id
     caption
-    isAuthor
+    postPermissions {
+      isOwner
+    }
     user {
       ...userInfo
     }

@@ -7,3 +7,17 @@ export const requireAuth = resolver => async (obj, args, ctx, info) => {
 
   return resolver(obj, args, ctx, info)
 }
+
+export const canModeratePost = async (userId, postId, model) => {
+  if (!userId || !postId) {
+    return false
+  }
+
+  const post = await model.findOne(postId)
+
+  if (!post) {
+    return false
+  }
+
+  return post.userId === userId
+}

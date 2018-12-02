@@ -6,10 +6,14 @@ export default `
     caption: String
     user: User
     project: Project
-    isAuthor: Boolean
+    postPermissions: PostPermissions
 
     filesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int, type: FileType): FileConnection
     commentsConnection(first: Int, after: String, last: Int, before: String): CommentConnection
+  }
+
+  type PostPermissions {
+    isOwner: Boolean
   }
 
   type PostConnection {

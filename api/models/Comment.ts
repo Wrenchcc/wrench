@@ -19,7 +19,7 @@ export default class Comment extends BaseEntity {
   @ManyToOne(() => Notification, notification => notification.comment)
   public notification: Notification
 
-  @ManyToOne(() => Post, post => post.comments)
+  @ManyToOne(() => Post, post => post.comments, { onDelete: 'CASCADE' })
   public post: Post
 
   @PrimaryGeneratedColumn('uuid')
