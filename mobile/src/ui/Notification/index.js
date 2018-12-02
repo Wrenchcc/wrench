@@ -18,7 +18,7 @@ const onPress = data => {
     case NOTIFICATION_TYPES.COMMENT:
     case NOTIFICATION_TYPES.REPLY:
       return navigateToComments({
-        id: data.id,
+        id: data.comment.postId,
         user: data.user,
         project: data.project,
         highlightedId: data.comment.id,

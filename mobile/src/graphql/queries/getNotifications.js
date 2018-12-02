@@ -20,6 +20,7 @@ export const getNotificationsQuery = gql`
           }
           comment {
             id
+            postId
           }
         }
       }

@@ -11,9 +11,10 @@ export default gql`
     user {
       ...userInfo
     }
-    images: imagesConnection {
+    files: filesConnection {
       edges {
         node {
+          type
           id
           uri
         }

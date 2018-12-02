@@ -10,7 +10,7 @@ export default gql`
           followers: followersConnection {
             totalCount
           }
-          images: imagesConnection(first: 1) {
+          files: filesConnection(first: 1, type: image) {
             edges {
               node {
                 uri

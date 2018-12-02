@@ -15,10 +15,11 @@ export default gql`
             ...userInfo
           }
           isAuthor
-          images: imagesConnection {
+          files: filesConnection {
             edges {
               node {
                 id
+                type
                 uri
               }
             }

@@ -10,7 +10,6 @@ import { Base, Content, Row, Reply } from './styles'
 // TODO: Pass correct data to profile
 const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null, t }) => {
   const animatedValue = new Animated.Value(0)
-
   if (id === highlightedId) {
     Animated.timing(animatedValue, {
       toValue: 1,
@@ -27,6 +26,8 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
     inputRange: [0, 1],
     outputRange: [COLORS.WHITE, COLORS.BEIGE],
   })
+
+  if (!user) return null
 
   return (
     <Animated.View style={{ backgroundColor }}>
