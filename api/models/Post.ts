@@ -31,10 +31,10 @@ export default class Post extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   private id: string
 
-  @Column({ nullable: true })
+  @Column()
   private projectId: number
 
-  @Column({ nullable: true })
+  @Column()
   private userId: number
 
   @CreateDateColumn()
@@ -43,6 +43,6 @@ export default class Post extends BaseEntity {
   @UpdateDateColumn()
   private updatedAt: Date
 
-  @Column('text')
+  @Column('text', { nullable: true })
   private caption: string
 }

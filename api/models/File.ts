@@ -16,6 +16,7 @@ enum FileType {
   Video = 'video',
 }
 
+// TODO: Transform filename to uri with CDN
 @Entity('files')
 export default class File extends BaseEntity {
   @ManyToOne(() => User, user => user.files, { onDelete: 'CASCADE' })
@@ -36,8 +37,8 @@ export default class File extends BaseEntity {
   @UpdateDateColumn()
   private updatedAt: Date
 
-  @Column()
-  private uri: string
+  @Column({ unique: true })
+  private filename: string
 
   @Column('enum', { enum: FileType })
   private type: FileType

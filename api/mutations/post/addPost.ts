@@ -1,44 +1,34 @@
-import generateUser from '../../fixtures/generateUser'
+import { requireAuth, canModerateProject } from 'api/utils/permissions'
+import UserError from 'api/utils/UserError'
+// import paginate from 'api/utils/paginate'
 
-const debug = require('debug')('api:server')
+const FILE_TYPES = {
+  IMAGE: 'image',
+  VIDEO: 'video',
+}
 
-const { APP_CDN_DOMAIN } = process.env
+export default requireAuth(async (_, { input }, ctx) => {
+  const project = await ctx.db.Project.findOne(input.projectId)
 
-// TODO: Check if user data
-export default async (_, { input }, ctx) => {
-  debug('%O', input)
+  if (!(await canModerateProject(ctx.userId, input.projectId, project))) {
+    return new UserError('You don’t have permission to manage this project')
+  }
 
-  const images = input.files.map(({ filename }) => ({
-    cursor: Buffer.from('1').toString('base64'),
-    node: {
-      id: filename,
-      uri: `${APP_CDN_DOMAIN}/${filename}`,
-    },
+  const user = await ctx.db.User.findOne(ctx.userId)
+
+  const filesToSave = input.files.map(({ filename }) => ({
+    filename,
+    project,
+    type: FILE_TYPES.IMAGE,
+    user,
   }))
 
-  return {
-    id: '23e234',
-    type: 'image', // || video || text
-    createdAt: 176347295,
+  const files = await ctx.db.File.save(filesToSave)
+
+  return ctx.db.Post.save({
     caption: input.caption,
-    videos: null,
-    imagesConnection: { edges: images },
-    user: generateUser('1'),
-    commentConnection: null,
-    isAuthor: true,
-    project: {
-      dynamicLink: 'https://wrench.page.link/KFko',
-      followersConnection: {
-        totalCount: 4000,
-      },
-      id: '1',
-      projectPermissions: {
-        isFollower: false,
-        isOwner: true,
-      },
-      slug: 'the-natural',
-      title: 'BMW R100 Project',
-      user: generateUser('1'),
-    },
-  }
-}
+    files,
+    project,
+    user,
+  })
+})

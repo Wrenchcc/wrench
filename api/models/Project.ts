@@ -24,9 +24,8 @@ export default class Project extends BaseEntity {
       .getCount()
   }
 
-  // @ManyToMany(type => User, user => user.following)
-  // @JoinTable()
-  // public followers: User[]
+  @ManyToMany(() => User, user => user.following)
+  public followers: User[]
 
   @ManyToOne(() => User, user => user.projects)
   public user: User

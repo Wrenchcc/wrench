@@ -21,3 +21,15 @@ export const canModeratePost = async (userId, postId, model) => {
 
   return post.userId === userId
 }
+
+export const canModerateProject = async (userId, projectId, project) => {
+  if (!userId || !projectId) {
+    return false
+  }
+
+  if (!project) {
+    return false
+  }
+
+  return project.userId === userId
+}
