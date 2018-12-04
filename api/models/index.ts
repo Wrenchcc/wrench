@@ -12,6 +12,7 @@ import Post from './Post'
 import Comment from './Comment'
 import File from './File'
 import Notification from './Notification'
+import Following from './Following'
 
 const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGING } = process.env
 
@@ -30,6 +31,7 @@ export const options: ConnectionOptions = {
     ProjectType,
     User,
     File,
+    Following,
   ],
   host: DB_HOST,
   logging: isDevelopment,
@@ -46,6 +48,7 @@ export const db = {
   Brand,
   Comment,
   File,
+  Following,
   Model,
   Notification,
   NotificationSettings,

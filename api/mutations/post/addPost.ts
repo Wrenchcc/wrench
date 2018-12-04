@@ -1,6 +1,5 @@
 import { requireAuth, canModerateProject } from 'api/utils/permissions'
 import UserError from 'api/utils/UserError'
-// import paginate from 'api/utils/paginate'
 
 const FILE_TYPES = {
   IMAGE: 'image',

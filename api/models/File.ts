@@ -16,7 +16,6 @@ enum FileType {
   Video = 'video',
 }
 
-// TODO: Transform filename to uri with CDN
 @Entity('files')
 export default class File extends BaseEntity {
   @ManyToOne(() => User, user => user.files, { onDelete: 'CASCADE' })

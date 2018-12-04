@@ -1,21 +1,18 @@
 import paginate from 'api/utils/paginate'
 
 export default async ({ id }, args, ctx) => {
-  const blah = await ctx.db.Project.findOne({
-    relations: ['followers'],
-    // where: { projectIds: id },
-  })
-
-  // const blah = await ctx.db.Project.createQueryBuilder('project')
-  //   .leftJoinAndSelect('project.followers', 'followers')
-  //   .getMany()
-
-  console.log(blah)
-
   try {
-    return {
-      totalCount: 1000,
-    }
+    return paginate(
+      ctx.db.Following,
+      args,
+      {
+        relations: ['user'],
+        where: {
+          projectId: id,
+        },
+      },
+      'user'
+    )
   } catch (err) {
     console.log(err)
   }

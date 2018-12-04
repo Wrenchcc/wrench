@@ -22,10 +22,6 @@ import Comment from './Comment'
 
 @Entity('users')
 export default class User extends BaseEntity {
-  @ManyToMany(() => Project, project => project.followers)
-  @JoinTable()
-  public following: Project[]
-
   @OneToMany(() => Project, project => project.user)
   public projects: Project[]
 

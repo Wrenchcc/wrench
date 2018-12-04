@@ -1,13 +1,28 @@
 import paginate from 'api/utils/paginate'
 
+const { APP_CDN_DOMAIN } = process.env
+
 export default async ({ id }, args, ctx) => {
   try {
-    return paginate(ctx.db.File, args, {
+    const files = await paginate(ctx.db.File, args, {
       where: {
         postId: id,
         type: args.type,
       },
     })
+
+    const edges = files.edges.map(({ cursor, node }) => ({
+      cursor,
+      node: {
+        ...node,
+        uri: `${APP_CDN_DOMAIN}/${node.filename}`,
+      },
+    }))
+
+    return {
+      ...files,
+      edges,
+    }
   } catch (err) {
     console.log(err)
   }
