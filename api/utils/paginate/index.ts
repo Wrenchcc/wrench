@@ -1,4 +1,3 @@
-import { path } from 'ramda'
 import { encode, decode } from 'api/utils/base64'
 import { LessThan, MoreThan, Between } from 'typeorm'
 
