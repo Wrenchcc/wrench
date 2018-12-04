@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "@types/pg": "^7.4.11",
-    "apollo-server": "^2.2.5",
-    "aws-sdk": "^2.368.0",
+    "apollo-server": "^2.2.6",
+    "aws-sdk": "^2.369.0",
     "debug": "^4.1.0",
     "faker": "^4.1.0",
     "firebase-admin": "^6.3.0",
