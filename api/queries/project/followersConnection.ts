@@ -1,18 +1,17 @@
 import paginate from 'api/utils/paginate'
+import { In } from 'typeorm'
 
 export default async ({ id }, args, ctx) => {
   try {
-    return paginate(
-      ctx.db.Following,
-      args,
-      {
-        relations: ['user'],
-        where: {
-          projectId: id,
-        },
+    const followers = await ctx.db.Following.find({
+      where: {
+        projectId: id,
       },
-      'user'
-    )
+    })
+
+    const userIds = followers.map(({ userId }) => userId)
+
+    return paginate(ctx.db.User, args, { id: In(userIds) })
   } catch (err) {
     console.log(err)
   }

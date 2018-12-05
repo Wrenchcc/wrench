@@ -3,6 +3,7 @@ import { createConnection } from 'typeorm'
 import { getUserId } from 'api/utils/tokens'
 import schema from './schema'
 import { options, db } from './models'
+import loaders from './loaders'
 import services from './services'
 
 const debug = require('debug')('api:server')
@@ -14,6 +15,7 @@ createConnection(options)
     const server = new ApolloServer({
       context: ({ req }) => ({
         db,
+        loaders,
         services,
         userId: getUserId(req),
       }),

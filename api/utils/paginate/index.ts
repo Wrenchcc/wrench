@@ -40,16 +40,15 @@ const mapOperators = ({ after, before }, { column, sort }) => {
 
 const encodeCursor = (id, column) => encode(`${id}${SEPARATION_TOKEN}${column}`)
 
-const convertNodesToEdges = (nodes, { column }, pick) => nodes.map(node => ({
+const convertNodesToEdges = (nodes, { column }) => nodes.map(node => ({
   cursor: encodeCursor(node.id, node[column]),
-  node: pick ? node[pick] : node,
+  node,
 }))
 
 export default async (
   model,
   { after, before, first, last },
   options = null,
-  pick = null,
   orderBy = ORDER_BY
 ) => {
   const findOptions = {
@@ -64,7 +63,7 @@ export default async (
   }
 
   const [nodes, totalCount] = await model.findAndCount(findOptions)
-  const edges = convertNodesToEdges(nodes, orderBy, pick)
+  const edges = convertNodesToEdges(nodes, orderBy)
 
   return {
     edges,

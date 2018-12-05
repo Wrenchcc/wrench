@@ -1,5 +1,6 @@
 import { requireAuth } from 'api/utils/permissions'
 
+// TODO: Dataloader
 export default requireAuth(async ({ id }, _, ctx) => {
   try {
     const { interestedIn } = await ctx.db.User.findOne(id, {
