@@ -19,6 +19,7 @@ createConnection(options)
       }),
       playground: NODE_ENV !== 'production',
       schema,
+      tracing: true,
     })
 
     server.listen({ port: PORT }).then(({ url }) => {
