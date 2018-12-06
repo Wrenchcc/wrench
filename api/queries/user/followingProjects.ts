@@ -5,11 +5,11 @@ export default async ({ id }, args, ctx) => {
   try {
     const following = await ctx.db.Following.find({
       where: {
-        projectId: id,
+        userId: id,
       },
     })
 
-    const projectIds = following.map(({ userId }) => userId)
+    const projectIds = following.map(({ projectId }) => projectId)
 
     return paginate(ctx.db.Project, args, { id: In(projectIds) })
   } catch (err) {
