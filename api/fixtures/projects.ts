@@ -1,7 +1,6 @@
 import { take } from 'ramda'
 import posts from './posts'
 import generateUser from './generateUser'
-import followers from './followers'
 
 export default () => [
   {
@@ -13,7 +12,7 @@ export default () => [
       user: generateUser(),
       followersConnection: {
         totalCount: 1300,
-        edges: followers(),
+        // edges: followers(),
       },
       dynamicLink: 'https://wrench.page.link/KFko',
       projectPermissions: {
@@ -32,7 +31,7 @@ export default () => [
       user: generateUser(),
       followersConnection: {
         totalCount: 1300,
-        edges: followers(),
+        // edges: followers(),
       },
       dynamicLink: 'https://wrench.page.link/KFko',
       projectPermissions: {
@@ -51,7 +50,7 @@ export default () => [
       user: generateUser(),
       followersConnection: {
         totalCount: 1300,
-        edges: followers(),
+        // edges: followers(),
       },
       dynamicLink: 'https://wrench.page.link/KFko',
       projectPermissions: {
@@ -70,7 +69,7 @@ export default () => [
       user: generateUser(),
       followersConnection: {
         totalCount: 1300,
-        edges: followers(),
+        // edges: followers(),
       },
       dynamicLink: 'https://wrench.page.link/KFko',
       projectPermissions: {
@@ -89,7 +88,7 @@ export default () => [
       user: generateUser(),
       followersConnection: {
         totalCount: 1300,
-        edges: followers(),
+        // edges: followers(),
       },
       dynamicLink: 'https://wrench.page.link/KFko',
       projectPermissions: {
@@ -108,7 +107,7 @@ export default () => [
       user: generateUser(),
       followersConnection: {
         totalCount: 1300,
-        edges: followers(),
+        // edges: followers(),
       },
       dynamicLink: 'https://wrench.page.link/KFko',
       projectPermissions: {

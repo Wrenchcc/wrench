@@ -1,10 +1,18 @@
-import pageInfo from 'api/fixtures/pageInfo'
-import users from 'api/fixtures/users'
+import paginate from 'api/utils/paginate'
+import { In } from 'typeorm'
 
-const followersConnection = {
-  edges: users(),
-  pageInfo,
-  totalCount: 4000,
+export default async (_, args, ctx) => {
+  try {
+    const followers = await ctx.db.Following.find({
+      where: {
+        projectId: args.projectId,
+      },
+    })
+
+    const userIds = followers.map(({ userId }) => userId)
+
+    return paginate(ctx.db.User, args, { id: In(userIds) })
+  } catch (err) {
+    console.log(err)
+  }
 }
-
-export default () => followersConnection
