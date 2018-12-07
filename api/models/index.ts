@@ -1,5 +1,4 @@
 import { ConnectionOptions, getRepository } from 'typeorm'
-import { isDevelopment } from 'api/utils/environment'
 import User from './User'
 import NotificationSettings from './NotificationSettings'
 import AuthToken from './AuthToken'
@@ -14,7 +13,15 @@ import File from './File'
 import Notification from './Notification'
 import Following from './Following'
 
-const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGING } = process.env
+const {
+  DB_PORT = 5432,
+  DB_HOST,
+  DB_PASSWORD,
+  DB_USERNAME,
+  DB_DATABASE,
+  DB_LOGGING,
+  DB_SYNCHRONIZE,
+} = process.env
 
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
@@ -34,10 +41,10 @@ export const options: ConnectionOptions = {
     Following,
   ],
   host: DB_HOST,
-  logging: isDevelopment,
+  logging: Boolean(DB_LOGGING),
   password: DB_PASSWORD,
   port: Number(DB_PORT),
-  synchronize: isDevelopment,
+  synchronize: Boolean(DB_SYNCHRONIZE),
   type: 'postgres',
   username: DB_USERNAME,
 }
