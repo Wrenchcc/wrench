@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 const API_ENDPOINT = 'https://graph.facebook.com'
-const API_VERSION = 'v3.1'
+const API_VERSION = 'v3.2'
 const FIELDS = 'id,email,name,first_name,last_name,picture.type(large)'
 
 export const getAccountData = facebookToken => fetch(`${API_ENDPOINT}/${API_VERSION}/me?fields=${FIELDS}&access_token=${facebookToken}`)
