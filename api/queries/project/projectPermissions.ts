@@ -1,19 +1,11 @@
 import { requireAuth } from 'api/utils/permissions'
 
-const defaultPermissions = {
-  isFollower: false,
-  isOwner: false,
-}
-
 export default requireAuth(async ({ id }, args, ctx) => {
   try {
-    const { userId } = await ctx.db.Project.findOne(id, {
-      select: ['userId'],
-    })
-
+    const project = await ctx.db.Project.findOne(id)
     return {
-      isFollower: true, // TODO
-      isOwner: userId === ctx.userId,
+      isFollower: await ctx.db.Following.isFollower(ctx.userId, id),
+      isOwner: project.userId === ctx.userId,
     }
   } catch (err) {
     console.log(err)

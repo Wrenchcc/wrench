@@ -9,8 +9,8 @@ const FILE_TYPES = {
 export default requireAuth(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)
 
-  if (!(await canModerateProject(ctx.userId, input.projectId, project))) {
-    return new UserError('You don’t have permission to manage this project')
+  if (!canModerateProject(project, ctx.userId)) {
+    return new UserError('You don’t have permission to manage this project.')
   }
 
   const user = await ctx.db.User.findOne(ctx.userId)

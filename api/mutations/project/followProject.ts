@@ -1,9 +1,20 @@
-import { requireAuth } from 'api/utils/permissions'
+import { requireAuth, canModerateProject } from 'api/utils/permissions'
+import UserError from 'api/utils/UserError'
 
-// TODO, can't follow own project
-// Can't follow already followed project
 export default requireAuth(async (_, { id }, ctx) => {
-  console.log(id, ctx.userId)
-  const blah = 'hej'
-  console.log('hej')
+  const project = await ctx.db.Project.findOne(id)
+  const isFollower = await ctx.db.Following.isFollower(ctx.userId, id)
+
+  if (canModerateProject(project, ctx.userId)) {
+    return new UserError('You can’t follow your own project.')
+  }
+
+  if (isFollower) {
+    await ctx.db.Following.delete({ projectId: id, userId: ctx.userId })
+  } else {
+    // TODO: New follow, push notification to owner
+    await ctx.db.Following.save({ projectId: id, userId: ctx.userId })
+  }
+
+  return ctx.db.Project.findOne(id)
 })
