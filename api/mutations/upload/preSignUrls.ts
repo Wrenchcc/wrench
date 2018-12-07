@@ -1,6 +1,7 @@
 import { S3 } from 'aws-sdk'
 import { v4 } from 'uuid'
 import debug from 'debug'
+import { requireAuth } from 'api/utils/permissions'
 import { getContentType, getExtensionType } from 'api/utils/fileExtensions'
 
 const {
@@ -18,7 +19,7 @@ const s3 = new S3({
   useAccelerateEndpoint: true,
 })
 
-export default (_, { input }, ctx) => {
+export default requireAuth(async (_, { input }, ctx) => {
   try {
     return Promise.all(
       input.map(async file => {
@@ -45,4 +46,4 @@ export default (_, { input }, ctx) => {
   } catch (err) {
     debug('‰O', err)
   }
-}
+})

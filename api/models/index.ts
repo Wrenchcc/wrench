@@ -1,4 +1,5 @@
 import { ConnectionOptions, getRepository } from 'typeorm'
+
 import User from './User'
 import NotificationSettings from './NotificationSettings'
 import AuthToken from './AuthToken'
@@ -12,6 +13,7 @@ import Comment from './Comment'
 import File from './File'
 import Notification from './Notification'
 import Following from './Following'
+import DeviceToken from './DeviceToken'
 
 const {
   DB_PORT = 5432,
@@ -39,6 +41,7 @@ export const options: ConnectionOptions = {
     User,
     File,
     Following,
+    DeviceToken,
   ],
   host: DB_HOST,
   logging: Boolean(DB_LOGGING),
@@ -54,6 +57,7 @@ export const db = {
   AuthToken,
   Brand,
   Comment,
+  DeviceToken,
   File,
   Following,
   Model,

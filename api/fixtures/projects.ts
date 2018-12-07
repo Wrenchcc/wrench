@@ -1,5 +1,4 @@
 import { take } from 'ramda'
-import posts from './posts'
 import generateUser from './generateUser'
 
 export default () => [
@@ -19,7 +18,7 @@ export default () => [
         isOwner: false,
         isFollower: false,
       },
-      postsConnection: { edges: posts() },
+      postsConnection: { edges: [] },
     },
   },
   {
@@ -38,7 +37,7 @@ export default () => [
         isOwner: false,
         isFollower: false,
       },
-      postsConnection: { edges: posts() },
+      postsConnection: { edges: [] },
     },
   },
   {
@@ -57,7 +56,7 @@ export default () => [
         isOwner: false,
         isFollower: false,
       },
-      postsConnection: { edges: posts() },
+      postsConnection: { edges: [] },
     },
   },
   {
@@ -76,7 +75,7 @@ export default () => [
         isOwner: false,
         isFollower: false,
       },
-      postsConnection: { edges: posts() },
+      postsConnection: { edges: [] },
     },
   },
   {
@@ -95,7 +94,7 @@ export default () => [
         isOwner: false,
         isFollower: false,
       },
-      postsConnection: { edges: posts() },
+      postsConnection: { edges: [] },
     },
   },
   {
@@ -114,7 +113,7 @@ export default () => [
         isOwner: false,
         isFollower: false,
       },
-      postsConnection: { edges: posts() },
+      postsConnection: { edges: [] },
     },
   },
 ]

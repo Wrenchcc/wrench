@@ -1,15 +1,9 @@
-import project from '../../fixtures/projects'
+import { requireAuth } from 'api/utils/permissions'
 
-// TODO: Use context user
-export default (_, args, ctx) => ({
-  ...project()[0].node,
-  id: args.id,
-  followersConnection: {
-    totalCount: 1300 + 1,
-    edges: [],
-  },
-  projectPermissions: {
-    isOwner: false,
-    isFollower: true,
-  },
+// TODO, can't follow own project
+// Can't follow already followed project
+export default requireAuth(async (_, { id }, ctx) => {
+  console.log(id, ctx.userId)
+  const blah = 'hej'
+  console.log('hej')
 })

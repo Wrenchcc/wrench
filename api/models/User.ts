@@ -19,6 +19,7 @@ import ProjectType from './ProjectType'
 import File from './File'
 import Post from './Post'
 import Comment from './Comment'
+import DeviceToken from './DeviceToken'
 
 @Entity('users')
 export default class User extends BaseEntity {
@@ -49,6 +50,9 @@ export default class User extends BaseEntity {
 
   @OneToMany(() => AuthProvider, authProvider => authProvider.user)
   public authProvider: AuthProvider[]
+
+  @OneToMany(() => DeviceToken, deviceToken => deviceToken.user)
+  public deviceToken: DeviceToken[]
 
   @PrimaryGeneratedColumn('uuid')
   private id: string
