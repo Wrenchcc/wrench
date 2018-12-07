@@ -10,9 +10,9 @@ export default async ({ id }, args, ctx) => {
       },
     })
 
-    const userIds = followers.map(({ userId }) => userId)
-
-    return paginate(ctx.db.User, args, { id: In(userIds) })
+    // const userIds = followers.map(({ userId }) => userId)
+    // return paginate(ctx.db.User, args, { id: In(userIds) })
+    return null
   } catch (err) {
     console.log(err)
   }

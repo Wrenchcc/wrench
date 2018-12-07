@@ -58,7 +58,16 @@ export default `
     id: ID
   }
 
+  input ProjectInput {
+    title: String!
+    projectTypeId: ID!
+    modelId: Int!
+  }
+
   extend type Mutation {
     followProject(id: ID!): Project
+    addProject(input: ProjectInput!): Project
+    editProject(id: ID!, input: ProjectInput!): Project
+    deleteProject(id: ID!): Boolean
   }
 `

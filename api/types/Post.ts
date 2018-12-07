@@ -44,5 +44,6 @@ export default `
   extend type Mutation {
     deletePost(id: ID!): Boolean
     addPost(input: PostInput!): Post
+    editPost(id: ID!, input: PostInput!): Post
   }
 `

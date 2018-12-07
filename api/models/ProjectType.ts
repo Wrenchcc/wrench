@@ -2,8 +2,8 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 't
 
 @Entity('project_types')
 export default class ProjectType extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  private id: number
+  @PrimaryGeneratedColumn('uuid')
+  private id: string
 
   @Column()
   private slug: string

@@ -6,11 +6,12 @@ const FILE_TYPES = {
   VIDEO: 'video',
 }
 
+// TODO: Check if filename excists and UserError
 export default requireAuth(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)
 
   if (!canModerateProject(project, ctx.userId)) {
-    return new UserError('You don’t have permission to manage this project.')
+    return new UserError('You don’t have permission to post to this project.')
   }
 
   const user = await ctx.db.User.findOne(ctx.userId)

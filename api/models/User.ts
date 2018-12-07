@@ -21,6 +21,7 @@ import Post from './Post'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
 
+// TODO: Generate slug
 @Entity('users')
 export default class User extends BaseEntity {
   @OneToMany(() => Project, project => project.user)
