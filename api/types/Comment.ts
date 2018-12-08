@@ -26,6 +26,8 @@ export default `
 
   extend type Mutation {
     addComment(postId: ID!, commentId: ID, input: CommentIntput!): Comment
+    editComment(id: ID!, input: CommentIntput!): Comment
+    deleteComment(id: ID!): Boolean
   }
 
   extend type Query {

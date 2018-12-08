@@ -24,6 +24,9 @@ export default class Comment extends BaseEntity {
   @Column({ nullable: true })
   private postId: string
 
+  @Column()
+  private userId: string
+
   @Column({ nullable: true })
   private commentId: string
 

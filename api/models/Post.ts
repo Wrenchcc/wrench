@@ -32,10 +32,10 @@ export default class Post extends BaseEntity {
   private id: string
 
   @Column()
-  private projectId: number
+  private projectId: string
 
   @Column()
-  private userId: number
+  private userId: string
 
   @CreateDateColumn()
   private createdAt: Date

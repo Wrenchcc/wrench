@@ -4,7 +4,7 @@ import UserError from 'api/utils/UserError'
 export default requireAuth(async (_, { id, input }, ctx) => {
   const post = await ctx.db.Post.findOne(id)
 
-  if (!(await canModeratePost(post, ctx.userId))) {
+  if (!canModeratePost(post, ctx.userId)) {
     return new UserError('You don’t have permission to manage this post.')
   }
 

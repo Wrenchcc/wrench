@@ -8,7 +8,7 @@ export const requireAuth = resolver => async (obj, args, ctx, info) => {
   return resolver(obj, args, ctx, info)
 }
 
-export const canModeratePost = async (post, userId) => {
+export const canModeratePost = (post, userId) => {
   if (!userId || !post) {
     return false
   }
@@ -22,4 +22,12 @@ export const canModerateProject = (project, userId) => {
   }
 
   return project.userId === userId
+}
+
+export const canModerateComment = (comment, userId) => {
+  if (!userId || !comment) {
+    return false
+  }
+
+  return comment.userId === userId
 }
