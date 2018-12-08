@@ -16,6 +16,7 @@ export default requireAuth(async (_, { input }, ctx) => {
 
   const user = await ctx.db.User.findOne(ctx.userId)
 
+  // TODO: Check if files
   const filesToSave = input.files.map(({ filename }) => ({
     filename,
     project,

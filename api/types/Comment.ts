@@ -3,7 +3,7 @@ export default `
     id: ID
     createdAt: Date
     updatedAt: Date
-    text: String
+    text: String!
     user: User
     postId: ID
     repliesConnection(first: Int, after: String, last: Int, before: String): ReplyConnection
@@ -18,6 +18,14 @@ export default `
   type CommentEdge {
     cursor: String!
     node: Comment!
+  }
+
+  input CommentIntput {
+    text: String!
+  }
+
+  extend type Mutation {
+    addComment(postId: ID!, commentId: ID, input: CommentIntput!): Comment
   }
 
   extend type Query {
