@@ -6,6 +6,7 @@ import followersConnection from './followersConnection'
 import projectTypes from './projectTypes'
 import projectPermissions from './projectPermissions'
 import postsConnection from './postsConnection'
+import user from './user'
 
 export default {
   Project: {
@@ -13,6 +14,7 @@ export default {
     followersConnection,
     postsConnection,
     projectPermissions,
+    user,
   },
   Query: {
     project,

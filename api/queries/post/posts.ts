@@ -1,9 +1,9 @@
-import pageInfo from 'api/fixtures/pageInfo'
-import posts from 'api/fixtures/posts'
+import paginate from 'api/utils/paginate'
 
-// If has userId fetch based on that else use context userId
-// TODO: User dataloader
-export default async (_, args, ctx) => ({
-  edges: posts(),
-  pageInfo,
-})
+export default async (_, args, ctx) => {
+  try {
+    return paginate(ctx.db.Post, args)
+  } catch (err) {
+    console.log(err)
+  }
+}
