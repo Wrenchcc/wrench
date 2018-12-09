@@ -12,8 +12,8 @@ class ProjectSuggestions extends PureComponent {
     isFetching: PropTypes.bool.isRequired,
   }
 
-  renderProjectSuggestions = ({ category, edges }) => (
-    <ProjectSuggestion key={category.id} title={category.title} data={edges} />
+  renderProjectSuggestions = ({ type, edges }) => (
+    <ProjectSuggestion key={type.id} title={type.title} data={edges} />
   )
 
   render() {

@@ -5,8 +5,8 @@ import { Text, Followers } from 'ui'
 import { check } from 'images'
 import { Base, Cover, Middle, Content, Icon } from './styles'
 
-const Project = ({ id, images, title, followers, onPress, selected }) => {
-  const image = pathOr(null, ['edges', 0, 'node'], images)
+const Project = ({ id, files, title, followers, onPress, selected }) => {
+  const image = pathOr(null, ['edges', 0, 'node'], files)
 
   return (
     <Base key={id} onPress={() => onPress(id)}>
@@ -26,7 +26,7 @@ const Project = ({ id, images, title, followers, onPress, selected }) => {
 Project.propTypes = {
   followers: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
-  images: PropTypes.object,
+  files: PropTypes.object,
   onPress: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,

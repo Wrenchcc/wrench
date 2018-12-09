@@ -22,7 +22,7 @@ class Popular extends PureComponent {
   renderItem = ({ item, index }) => {
     const { projects } = this.props
     const project = item.node
-    const image = pathOr(null, ['images', 'edges', [0], 'node'], project)
+    const image = pathOr(null, ['files', 'edges', [0], 'node'], project)
 
     return (
       <Card
