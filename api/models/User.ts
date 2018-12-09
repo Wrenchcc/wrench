@@ -23,6 +23,29 @@ import DeviceToken from './DeviceToken'
 // TODO: Generate slug
 @Entity('users')
 export default class User extends BaseEntity {
+  // public static async createUser() {
+  //   const UserRepo = User.getRepository()
+  //
+  //   let user
+  //   let times = 0
+  //
+  //   while (times < 100) {
+  //     try {
+  //       user = await UserRepo.create({
+  //         username: times ? `${username}${times}` : username,
+  //       }).save()
+  //       break
+  //     } catch (err) {
+  //       if (!err.detail.includes('already exists')) {
+  //         throw err
+  //       }
+  //     }
+  //     times += 1
+  //   }
+  //
+  //   return user
+  // }
+
   @OneToMany(() => Project, project => project.user)
   public projects: Project[]
 
