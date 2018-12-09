@@ -21,8 +21,8 @@ export default class Notification extends BaseEntity {
   @ManyToOne(() => User, user => user.notifications)
   public user: User
 
-  @ManyToOne(() => Comment, comment => comment.notification)
-  public comment: Comment
+  // @ManyToOne(() => Comment, comment => comment.notification)
+  // public comment: Comment
 
   // @ManyToOne(() => Comment, comment => comment.notification)
   // public comment: Comment
