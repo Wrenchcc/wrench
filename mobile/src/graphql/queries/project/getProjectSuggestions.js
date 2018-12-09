@@ -6,7 +6,7 @@ import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 export const getProjectSuggestionsQuery = gql`
   query getProjectSuggestions($after: String) {
     projects: projectSuggestions(after: $after) {
-      category {
+      type {
         id
         title
       }
