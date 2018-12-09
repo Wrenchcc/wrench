@@ -6,8 +6,8 @@ import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 // TODO: Fragments and on refresh get popular projects too
 const getPopularProjectsQuery = gql`
-  query getExplore($after: String, $type: ProjectType!) {
-    projects(after: $after, type: $type) {
+  query getExplore($after: String) {
+    projects(after: $after) {
       pageInfo {
         hasNextPage
       }
