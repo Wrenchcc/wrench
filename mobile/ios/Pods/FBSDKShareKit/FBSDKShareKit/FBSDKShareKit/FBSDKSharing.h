@@ -75,7 +75,7 @@
  @see [FBSDKSharing validateWithError:]
  @return YES if the receiver can share, otherwise NO.
  */
-@property (nonatomic, readonly) BOOL canShow;
+- (BOOL)canShow;
 
 /**
   Shows the dialog.

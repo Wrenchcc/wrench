@@ -96,17 +96,18 @@ static NSArray<NSDictionary<NSString *, id> *> *_SerializableGenericTemplateElem
   NSMutableDictionary<NSString *, id> *updatedParameters = [NSMutableDictionary dictionaryWithDictionary:existingParameters];
 
   NSMutableDictionary<NSString *, id> *payload = [NSMutableDictionary dictionary];
-  payload[kFBSDKShareMessengerTemplateTypeKey] = @"generic";
-  payload[@"sharable"] = @(_isSharable);
-  payload[@"image_aspect_ratio"] = _ImageAspectRatioString(_imageAspectRatio);
-  payload[kFBSDKShareMessengerElementsKey] = _SerializableGenericTemplateElementsFromElements(@[_element]);
+  [payload setObject:@"generic" forKey:kFBSDKShareMessengerTemplateTypeKey];
+  [payload setObject:@(_isSharable) forKey:@"sharable"];
+  [payload setObject:_ImageAspectRatioString(_imageAspectRatio) forKey:@"image_aspect_ratio"];
+  [payload setObject:_SerializableGenericTemplateElementsFromElements(@[_element]) forKey:kFBSDKShareMessengerElementsKey];
 
   NSMutableDictionary<NSString *, id> *attachment = [NSMutableDictionary dictionary];
-  attachment[kFBSDKShareMessengerTypeKey] = kFBSDKShareMessengerTemplateKey;
-  attachment[kFBSDKShareMessengerPayloadKey] = payload;
+  [attachment setObject:kFBSDKShareMessengerTemplateKey forKey:kFBSDKShareMessengerTypeKey];
+  [attachment setObject:payload forKey:kFBSDKShareMessengerPayloadKey];
 
-  NSMutableDictionary<NSString *, id> *contentForShare = [NSMutableDictionary dictionary];
-  contentForShare[kFBSDKShareMessengerAttachmentKey] = attachment;
+  NSMutableDictionary<NSString
+  *, id> *contentForShare = [NSMutableDictionary dictionary];
+  [contentForShare setObject:attachment forKey:kFBSDKShareMessengerAttachmentKey];
 
   FBSDKShareMessengerGenericTemplateElement *firstElement = _element;
   NSMutableDictionary<NSString *, id> *contentForPreview = [NSMutableDictionary dictionary];

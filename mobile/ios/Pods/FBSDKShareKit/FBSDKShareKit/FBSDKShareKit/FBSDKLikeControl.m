@@ -108,7 +108,7 @@ typedef CGSize (^fbsdk_like_control_sizing_block_t)(UIView *subview, CGSize cons
   return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)decoder
+- (id)initWithCoder:(NSCoder *)decoder
 {
   if ((self = [super initWithCoder:decoder])) {
     [self _initializeContent];
@@ -126,7 +126,7 @@ typedef CGSize (^fbsdk_like_control_sizing_block_t)(UIView *subview, CGSize cons
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
-  super.backgroundColor = backgroundColor;
+  [super setBackgroundColor:backgroundColor];
   _likeButtonContainer.backgroundColor = backgroundColor;
 }
 
@@ -207,7 +207,7 @@ typedef CGSize (^fbsdk_like_control_sizing_block_t)(UIView *subview, CGSize cons
 
 - (void)setOpaque:(BOOL)opaque
 {
-  super.opaque = opaque;
+  [super setOpaque:opaque];
   _likeButtonContainer.opaque = opaque;
 }
 
@@ -621,8 +621,8 @@ static CGSize FBSDKLikeControlCalculateContentSize(FBSDKLikeControlLayout layout
   BOOL enabled = (!_isExplicitlyDisabled &&
                   self.objectID &&
                   ![FBSDKLikeActionController isDisabled]);
-  BOOL currentEnabled = self.enabled;
-  super.enabled = enabled;
+  BOOL currentEnabled = [self isEnabled];
+  [super setEnabled:enabled];
   if (currentEnabled != enabled) {
     [self invalidateIntrinsicContentSize];
     [self setNeedsLayout];

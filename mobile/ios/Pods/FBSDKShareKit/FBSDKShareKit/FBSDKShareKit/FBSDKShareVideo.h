@@ -16,7 +16,6 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Photos/Photos.h>
 #import <UIKit/UIKit.h>
 
 #import <FBSDKCoreKit/FBSDKCopying.h>
@@ -99,11 +98,5 @@
  @return YES if the receiver's values are equal to the other video's values; otherwise NO
  */
 - (BOOL)isEqualToShareVideo:(FBSDKShareVideo *)video;
-
-@end
-
-@interface PHAsset (FBSDKShareVideo)
-
-@property (nonatomic, copy, readonly) NSURL *videoURL;
 
 @end

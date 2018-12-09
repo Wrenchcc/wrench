@@ -229,6 +229,7 @@
 		26C29CCFB909B65F74C58C7F56AEB8F7 /* FBSDKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EEDB619A22AA96D70A4F629BC2A301 /* FBSDKButton.m */; };
 		26CB6EFB3F4EA12DF2E9C6B185BD27DA /* FBSDKSendButton.h in Headers */ = {isa = PBXBuildFile; fileRef = FFEC8AA2AF9850AF53736CC3B07A8480 /* FBSDKSendButton.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		26F1A8FAB560CE2C7B43B5D0EE3E52CA /* FBSDKBridgeAPICrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E6FD12E2162576C52C71A05186EABD /* FBSDKBridgeAPICrypto.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		27988677811578B9643CDD510DBD77C5 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D8E05393836E30FEB7691369024A1 /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		281A96B7A3B1A11838A4D183A288E2AC /* FIRMessagingTopicsCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = F95A981964C9D1293B8969D6C6E6AEED /* FIRMessagingTopicsCommon.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		28E7AF256840F042F2AE4526C2F2CE27 /* FBSDKSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = DD75FA91091E1807A57CD9F7C58C0325 /* FBSDKSwizzler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		29113C50DBD597AB3BA45AC42836EB3C /* GPBUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C7C2187D550FC7802E910D669B4094 /* GPBUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -288,13 +289,11 @@
 		3CE378D0DF9EBA9DA288D1CB30381C81 /* FBSDKGameRequestFrictionlessRecipientCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6B3CE6EFB7633DDE2C8F515E667DCC /* FBSDKGameRequestFrictionlessRecipientCache.m */; };
 		3D0532FB2EC6DF83E9DECD38072E6FF5 /* FBSDKMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 73465DD31B26EE3CCC112684F53379E0 /* FBSDKMacros.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3D119CF039AF27070940418831E6FC2A /* FBSDKEventBindingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CD225F5D799B2A7B5AD52053F6B477 /* FBSDKEventBindingManager.m */; };
-		3D3B389D2CE20C27378B8E8FCB1C0BC8 /* GTMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B44054B5DF922EFB6BF7D2BEC64F78F /* GTMLogger.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3E0D8C9BEEA47711C681999D3D0713B3 /* FBSDKAppGroupJoinDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F24DA77657FA57606847474D4F709D3 /* FBSDKAppGroupJoinDialog.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3E7020D6F81D3DEEBCFFE631D07C6F5F /* FBSDKDynamicFrameworkLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E89C1A54A8460D435963298E756E6D /* FBSDKDynamicFrameworkLoader.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3EBEB7018AF79C624B2856162DA4CF1D /* GtalkExtensions.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D33DCD516F4C55A12AFA515B44F8498 /* GtalkExtensions.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3EF7A2194759C85FA314B2B44995D839 /* FIRApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB21CA538E5F3FCF3812C8B753470B1 /* FIRApp.m */; };
 		3F75926F86F06BB85DB6F865FE9F7966 /* BFAppLinkReturnToRefererController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0587C90DAECD77852DDF6CA11BCEA0E9 /* BFAppLinkReturnToRefererController.m */; };
-		3FD8BBC6E1944BE711C995EC03D6B3C2 /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E45801C3F4615357226F6A3FB4CF755E /* GoogleToolboxForMac-dummy.m */; };
 		40115520B50EDBDC2D602E758CC6B053 /* FIRDynamicLinkComponentsKeyProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AEDEE9C32F0C4F35E2AC26F48847F9B /* FIRDynamicLinkComponentsKeyProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		40BBC298C02D608C2D6C5954C47D1A94 /* BFCancellationTokenSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F28E0D72E29B810CF796821B9C528AC /* BFCancellationTokenSource.m */; };
 		40DB0F3696BF92748AD072C52C2F8D88 /* FBSDKGraphRequest+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B16FC533A4F548A078BFCC2CE464DEC1 /* FBSDKGraphRequest+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -382,7 +381,6 @@
 		64C9E5F93A197109F0C8C55F8F7BA054 /* FIRDynamicLinkComponentsKeyProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A918D2C87E2C3A0A42D275BB284697 /* FIRDynamicLinkComponentsKeyProvider.m */; };
 		64DAE90ED6856DE93FA9343D0FC37BE0 /* FDLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EF71EDD643901FC7D94EFB7D181B92E6 /* FDLUtilities.m */; };
 		6504A6DB26D90328FB14352FA40CB6D5 /* Api.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B1DFAF830D33A5346195DB2A56A885 /* Api.pbobjc.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		6689E6F8E6869B37361616425A7383C7 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D8E05393836E30FEB7691369024A1 /* GTMNSData+zlib.m */; };
 		67E0F5A04042FE910B0DD4370DC9E96A /* FIRApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DD207DE045192EE9E44B183E87B3C24 /* FIRApp.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		68454CA2A86FA3941D746279611DC85A /* FBSDKPaymentObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = B1BB92BA5262F74322AB4CF4702FAA46 /* FBSDKPaymentObserver.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6845F87B7C7D4DB8D2B1BD551CBA0F50 /* BFAppLink_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 1186B48AFDBE1C77256675418D875C53 /* BFAppLink_Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -728,6 +726,7 @@
 		E94519EA4DAE956D3F66DF9861815B69 /* FBSDKBridgeAPIProtocolNativeV1.m in Sources */ = {isa = PBXBuildFile; fileRef = B004F8CEFBECD2D78927E91D240C4FBF /* FBSDKBridgeAPIProtocolNativeV1.m */; };
 		EA0D3725ADA64CFBB48445D872E75E48 /* FBSDKCoreKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3BF295ECC5F6FCAC707D0BA9B2B6B4 /* FBSDKCoreKit-dummy.m */; };
 		EAB3EDC0E63B494D1F34A5D32D89BE35 /* FBSDKDeviceLoginManagerResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FAD68737E2469B18DDB8A1218A82B24 /* FBSDKDeviceLoginManagerResult.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		EB21FD3106168C5BB00CEA083B513383 /* GoogleToolboxForMac-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E45801C3F4615357226F6A3FB4CF755E /* GoogleToolboxForMac-dummy.m */; };
 		EB6EB8B3A5C1F025460F337992B4C7CB /* FBSDKMessengerIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = 506C95DC9D64D0551B84C96924FF43CE /* FBSDKMessengerIcon.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EB9AE208826D0F694517803E25F91BE8 /* FIRLoggerLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = A993A520FE36A0654CC75819EDD49E1C /* FIRLoggerLevel.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EBABD8B12F1BD86047C955E44EA9C2E1 /* Timestamp.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 394ED4B2059249C111531AC5F5C23979 /* Timestamp.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -785,6 +784,7 @@
 		FE46F99919038EFB58BCE70AA0E2111E /* GULReachabilityChecker+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 87CCB25DF20A75084BCA28A94F84F39A /* GULReachabilityChecker+Internal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FE73C08B35D0D8E1836A30E1325A67DE /* BFTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D19B075B01E521A9496D7593484F4498 /* BFTask.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FED7A347C65A3227A43522DA24261DF2 /* FBSDKHashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = C86B7523061EC40D2FA418AC3FAD733A /* FBSDKHashtag.m */; };
+		FF6A95064B063971C8E8CEEE74002203 /* GTMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B44054B5DF922EFB6BF7D2BEC64F78F /* GTMLogger.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -4019,7 +4019,7 @@
 			buildConfigurationList = 85CF7CBF035D6107902EE00E974EC49B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */;
 			buildPhases = (
 				6852D9E61420AFCAB68F93F53F91A0A0 /* Headers */,
-				B0EE7537F56C43F78EF865259EEEA458 /* Sources */,
+				58A91D853A6043126666C5AB2B3B0AF8 /* Sources */,
 				69E6EB40B2267BAB898E4BDD8A9DED6D /* Frameworks */,
 			);
 			buildRules = (
@@ -4414,6 +4414,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		58A91D853A6043126666C5AB2B3B0AF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB21FD3106168C5BB00CEA083B513383 /* GoogleToolboxForMac-dummy.m in Sources */,
+				FF6A95064B063971C8E8CEEE74002203 /* GTMLogger.m in Sources */,
+				27988677811578B9643CDD510DBD77C5 /* GTMNSData+zlib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70B38370312F254DA144AC9D7190F664 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4509,16 +4519,6 @@
 				939548DCDF01B871C5BAA0B472C13296 /* GULSwizzledObject.m in Sources */,
 				09CCE2737D7D5161997A17FF051D9F9A /* GULSwizzler.m in Sources */,
 				68BC5F6BB0E772C4FECDED29F47546FA /* GULUserDefaults.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0EE7537F56C43F78EF865259EEEA458 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3FD8BBC6E1944BE711C995EC03D6B3C2 /* GoogleToolboxForMac-dummy.m in Sources */,
-				3D3B389D2CE20C27378B8E8FCB1C0BC8 /* GTMLogger.m in Sources */,
-				6689E6F8E6869B37361616425A7383C7 /* GTMNSData+zlib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5089,6 +5089,30 @@
 			};
 			name = Debug;
 		};
+		0BDFC9B7D9A23CBBDBB734EF79825AEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C491C608CE179ED1D5A1D724B5B5AF3D /* GoogleToolboxForMac.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = GoogleToolboxForMac;
+				PRODUCT_NAME = GoogleToolboxForMac;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		11C15AF540B466D9875079AABA4EB501 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBF20FED46FE21DDA597934E7E6AA6A2 /* FirebaseMessaging.xcconfig */;
@@ -5413,29 +5437,6 @@
 			};
 			name = Release;
 		};
-		75A3913F5815BF00960C8AECA27EA00C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C491C608CE179ED1D5A1D724B5B5AF3D /* GoogleToolboxForMac.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = GoogleToolboxForMac;
-				PRODUCT_NAME = GoogleToolboxForMac;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		76B32451862DE9D6E22B04494BAAF357 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C7518C90230E7D03FD78935D0BDF2964 /* FirebaseAnalyticsInterop.xcconfig */;
@@ -5489,30 +5490,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
-		};
-		97A898ECAD93CAD1F5E751FD57D50D92 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C491C608CE179ED1D5A1D724B5B5AF3D /* GoogleToolboxForMac.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = GoogleToolboxForMac;
-				PRODUCT_NAME = GoogleToolboxForMac;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
 		};
 		97AEA32DFAAC2569A0E791141E74A7C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -5579,6 +5556,29 @@
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_MODULE_NAME = FBSDKCoreKit;
 				PRODUCT_NAME = FBSDKCoreKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A419FCCF2108B990EA9F1BCD3E0842F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C491C608CE179ED1D5A1D724B5B5AF3D /* GoogleToolboxForMac.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = GoogleToolboxForMac;
+				PRODUCT_NAME = GoogleToolboxForMac;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -6074,8 +6074,8 @@
 		85CF7CBF035D6107902EE00E974EC49B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				75A3913F5815BF00960C8AECA27EA00C /* Debug */,
-				97A898ECAD93CAD1F5E751FD57D50D92 /* Release */,
+				A419FCCF2108B990EA9F1BCD3E0842F9 /* Debug */,
+				0BDFC9B7D9A23CBBDBB734EF79825AEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

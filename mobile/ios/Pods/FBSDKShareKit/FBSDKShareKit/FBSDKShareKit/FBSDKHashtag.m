@@ -71,7 +71,7 @@ static NSRegularExpression *HashtagRegularExpression()
 
 - (NSUInteger)hash
 {
-  return _stringRepresentation.hash;
+  return [_stringRepresentation hash];
 }
 
 - (BOOL)isEqual:(id)object
@@ -98,7 +98,7 @@ static NSRegularExpression *HashtagRegularExpression()
   return YES;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
   if ((self = [self init])) {
     _stringRepresentation = [aDecoder decodeObjectOfClass:[NSString class] forKey:FBSDK_HASHTAG_STRING_KEY];

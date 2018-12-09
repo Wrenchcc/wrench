@@ -59,7 +59,7 @@
  @see validateWithError:
  @return YES if the receiver can share, otherwise NO.
  */
-@property (nonatomic, readonly) BOOL canShow;
+- (BOOL)canShow;
 
 /**
   Begins the game request from the receiver.

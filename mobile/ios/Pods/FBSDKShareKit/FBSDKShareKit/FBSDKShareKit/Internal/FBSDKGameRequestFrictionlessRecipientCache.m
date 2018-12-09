@@ -72,7 +72,7 @@
 
 - (void)_accessTokenDidChangeNotification:(NSNotification *)notification
 {
-  if (![notification.userInfo[FBSDKAccessTokenDidChangeUserIDKey] boolValue]) {
+  if (![notification.userInfo[FBSDKAccessTokenDidChangeUserID] boolValue]) {
     return;
   }
   _recipientIDs = nil;

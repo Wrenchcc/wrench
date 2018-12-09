@@ -32,8 +32,8 @@ static NSString *const kMediaTemplateUUIDKey = @"uuid";
 
 static BOOL _URLHasFacebookDomain(NSURL *URL)
 {
-  NSString *urlHost = URL.host.lowercaseString;
-  NSArray<NSString *> *pathComponents = URL.pathComponents;
+  NSString *urlHost = [URL.host lowercaseString];
+  NSArray<NSString *> *pathComponents = [URL pathComponents];
 
   /**
    Check the following three different cases...
@@ -43,7 +43,7 @@ static BOOL _URLHasFacebookDomain(NSURL *URL)
    */
   return [urlHost isEqualToString:@"facebook.com"] ||
   [urlHost hasSuffix:@".facebook.com"] ||
-  ([pathComponents.firstObject.lowercaseString hasSuffix:@"facebook.com"]);
+  ([[[pathComponents firstObject] lowercaseString] hasSuffix:@"facebook.com"]);
 }
 
 static NSString *_MediaTemplateURLSerializationKey(NSURL *mediaURL)
@@ -127,15 +127,15 @@ static NSArray<NSDictionary<NSString *, id> *> *_SerializableMediaTemplateConten
   NSMutableDictionary<NSString *, id> *updatedParameters = [NSMutableDictionary dictionaryWithDictionary:existingParameters];
 
   NSMutableDictionary<NSString *, id> *payload = [NSMutableDictionary dictionary];
-  payload[kFBSDKShareMessengerTemplateTypeKey] = @"media";
-  payload[kFBSDKShareMessengerElementsKey] = _SerializableMediaTemplateContentFromContent(self);
+  [payload setObject:@"media" forKey:kFBSDKShareMessengerTemplateTypeKey];
+  [payload setObject:_SerializableMediaTemplateContentFromContent(self) forKey:kFBSDKShareMessengerElementsKey];
 
   NSMutableDictionary<NSString *, id> *attachment = [NSMutableDictionary dictionary];
-  attachment[kFBSDKShareMessengerTypeKey] = kFBSDKShareMessengerTemplateKey;
-  attachment[kFBSDKShareMessengerPayloadKey] = payload;
+  [attachment setObject:kFBSDKShareMessengerTemplateKey forKey:kFBSDKShareMessengerTypeKey];
+  [attachment setObject:payload forKey:kFBSDKShareMessengerPayloadKey];
 
   NSMutableDictionary<NSString *, id> *contentForShare = [NSMutableDictionary dictionary];
-  contentForShare[kFBSDKShareMessengerAttachmentKey] = attachment;
+  [contentForShare setObject:attachment forKey:kFBSDKShareMessengerAttachmentKey];
 
   NSMutableDictionary<NSString *, id> *contentForPreview = [NSMutableDictionary dictionary];
   [FBSDKInternalUtility dictionary:contentForPreview setObject:@"DEFAULT" forKey:@"preview_type"];
