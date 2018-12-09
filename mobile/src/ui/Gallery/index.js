@@ -2,113 +2,113 @@
 import React from 'react'
 import { Base, Container, Cell, Image, Transform, HEIGHT } from './styles'
 
-function One({ images }) {
-  return <Image source={images[0].node} height={HEIGHT} />
+function One({ files }) {
+  return <Image source={files[0].node} height={HEIGHT} />
 }
 
-function Two({ images }) {
+function Two({ files }) {
   return (
     <Container>
       <Cell size={1 / 2}>
-        <Image source={images[0].node} height={HEIGHT} borderRight />
+        <Image source={files[0].node} height={HEIGHT} borderRight />
       </Cell>
       <Cell size={1 / 2}>
-        <Image source={images[1].node} height={HEIGHT} borderLeft />
+        <Image source={files[1].node} height={HEIGHT} borderLeft />
       </Cell>
     </Container>
   )
 }
 
-function Three({ images }) {
+function Three({ files }) {
   return (
     <Container>
       <Cell size={1 / 2}>
-        <Image source={images[0].node} height={HEIGHT} borderRight />
+        <Image source={files[0].node} height={HEIGHT} borderRight />
       </Cell>
       <Cell size={1 / 2}>
-        <Image source={images[1].node} height={HEIGHT / 2} borderLeft />
-        <Image source={images[2].node} height={HEIGHT / 2} borderLeft borderTop />
+        <Image source={files[1].node} height={HEIGHT / 2} borderLeft />
+        <Image source={files[2].node} height={HEIGHT / 2} borderLeft borderTop />
       </Cell>
     </Container>
   )
 }
 
-function Four({ images }) {
+function Four({ files }) {
   return (
     <Container>
       <Cell size={1 / 2}>
-        <Image source={images[0].node} height={HEIGHT / 2} borderRight borderBottom />
-        <Image source={images[1].node} height={HEIGHT / 2} borderRight borderTop />
+        <Image source={files[0].node} height={HEIGHT / 2} borderRight borderBottom />
+        <Image source={files[1].node} height={HEIGHT / 2} borderRight borderTop />
       </Cell>
       <Cell size={1 / 2}>
-        <Image source={images[2].node} height={HEIGHT / 2} borderLeft borderBottom />
-        <Image source={images[3].node} height={HEIGHT / 2} borderLeft borderTop />
+        <Image source={files[2].node} height={HEIGHT / 2} borderLeft borderBottom />
+        <Image source={files[3].node} height={HEIGHT / 2} borderLeft borderTop />
       </Cell>
     </Container>
   )
 }
 
-function Five({ images }) {
+function Five({ files }) {
   return (
     <Container>
       <Cell size={1 / 3}>
-        <Image source={images[0].node} height={HEIGHT} borderRight />
+        <Image source={files[0].node} height={HEIGHT} borderRight />
       </Cell>
       <Cell size={1 / 3}>
-        <Image source={images[1].node} height={HEIGHT / 2} borderRight borderLeft borderBottom />
-        <Image source={images[2].node} height={HEIGHT / 2} borderRight borderLeft borderTop />
+        <Image source={files[1].node} height={HEIGHT / 2} borderRight borderLeft borderBottom />
+        <Image source={files[2].node} height={HEIGHT / 2} borderRight borderLeft borderTop />
       </Cell>
       <Cell size={1 / 3}>
-        <Image source={images[3].node} height={HEIGHT / 2} borderLeft borderBottom />
-        <Image source={images[4].node} height={HEIGHT / 2} borderLeft borderTop />
+        <Image source={files[3].node} height={HEIGHT / 2} borderLeft borderBottom />
+        <Image source={files[4].node} height={HEIGHT / 2} borderLeft borderTop />
       </Cell>
     </Container>
   )
 }
 
-function Six({ images }) {
+function Six({ files }) {
   return (
     <Container>
       <Cell size={1 / 3}>
-        <Image source={images[0].node} height={HEIGHT / 2} borderRight borderBottom />
-        <Image source={images[1].node} height={HEIGHT / 2} borderRight borderTop />
+        <Image source={files[0].node} height={HEIGHT / 2} borderRight borderBottom />
+        <Image source={files[1].node} height={HEIGHT / 2} borderRight borderTop />
       </Cell>
       <Cell size={1 / 3}>
-        <Image source={images[2].node} height={HEIGHT / 2} borderRight borderLeft borderBottom />
-        <Image source={images[3].node} height={HEIGHT / 2} borderRight borderLeft borderTop />
+        <Image source={files[2].node} height={HEIGHT / 2} borderRight borderLeft borderBottom />
+        <Image source={files[3].node} height={HEIGHT / 2} borderRight borderLeft borderTop />
       </Cell>
       <Cell size={1 / 3}>
-        <Image source={images[4].node} height={HEIGHT / 2} borderLeft borderBottom />
-        <Image source={images[5].node} height={HEIGHT / 2} borderLeft borderTop />
+        <Image source={files[4].node} height={HEIGHT / 2} borderLeft borderBottom />
+        <Image source={files[5].node} height={HEIGHT / 2} borderLeft borderTop />
       </Cell>
     </Container>
   )
 }
 
-function Grid({ images }) {
-  switch (images.length) {
+function Grid({ files }) {
+  switch (files.length) {
     case 1:
-      return <One images={images} />
+      return <One files={files} />
     case 2:
-      return <Two images={images} />
+      return <Two files={files} />
     case 3:
-      return <Three images={images} />
+      return <Three files={files} />
     case 4:
-      return <Four images={images} />
+      return <Four files={files} />
     case 5:
-      return <Five images={images} />
+      return <Five files={files} />
     case 6:
-      return <Six images={images} />
+      return <Six files={files} />
     default:
       return null
   }
 }
 
-export default function Gallery({ images }) {
+export default function Gallery({ files }) {
   return (
     <Base>
-      <Transform enabled={images.length >= 2}>
-        <Grid images={images} />
+      <Transform enabled={files.length >= 2}>
+        <Grid files={files} />
       </Transform>
     </Base>
   )
