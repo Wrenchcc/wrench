@@ -13,7 +13,9 @@ export default requireAuth(async (_, args, ctx) => {
   // And minimum one post
   // TODO: Paginate one type at a time
   return projectTypes.map(async ({ projectTypeId }) => ({
-    ...(await paginate(ctx.db.Project, args, { projectTypeId })),
+    ...(await paginate(ctx.db.Project, args, {
+      where: { projectTypeId },
+    })),
     type: await ctx.db.ProjectType.findOne(projectTypeId),
   }))
 })

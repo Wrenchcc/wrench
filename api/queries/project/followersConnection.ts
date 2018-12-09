@@ -14,7 +14,9 @@ export default async ({ id }, args, ctx) => {
       return null
     }
 
-    return paginate(ctx.db.User, args, { id: In(userIds) })
+    return paginate(ctx.db.User, args, {
+      where: { id: In(userIds) },
+    })
   } catch (err) {
     console.log(err)
   }

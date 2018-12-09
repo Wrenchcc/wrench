@@ -4,7 +4,6 @@ import paginate from 'api/utils/paginate'
 export default async ({ id }, args, ctx) => {
   try {
     return paginate(ctx.db.Comment, args, {
-      relations: ['user'],
       where: { postId: id },
     })
   } catch (err) {
