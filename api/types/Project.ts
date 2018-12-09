@@ -27,6 +27,7 @@ export default `
   type ProjectType {
     id: ID
     title: String
+    slug: String
     imageUrl: String!
   }
 
@@ -37,7 +38,8 @@ export default `
   }
 
   type ProjectSuggestionsConnection {
-    category: ProjectType
+    totalCount: Int
+    type: ProjectType
     pageInfo: PageInfo!
     edges: [ProjectEdge!]
   }

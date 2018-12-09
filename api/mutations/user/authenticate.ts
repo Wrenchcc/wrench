@@ -3,6 +3,7 @@ import { generateTokens } from 'api/utils/tokens'
 
 const PROVIDER_NAME = 'facebook'
 
+// TODO: Delete previous tokens
 export default async (_, { facebookToken }, ctx) => {
   const { id: providerId, ...fbUser } = await ctx.services.facebook.getAccountData(facebookToken)
 

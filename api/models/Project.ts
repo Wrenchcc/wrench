@@ -15,6 +15,7 @@ import Model from './Model'
 import File from './File'
 
 // TODO: Generate slug
+// Generate dynamicLink
 @Entity('projects')
 export default class Project extends BaseEntity {
   public static async getCountByUserId(userId) {
@@ -27,14 +28,14 @@ export default class Project extends BaseEntity {
   @ManyToOne(() => User, user => user.projects)
   public user: User
 
+  @ManyToOne(() => ProjectType, projectType => projectType)
+  public projectType: ProjectType
+
   @OneToMany(() => Post, post => post.project)
   public posts: Post[]
 
   @OneToMany(() => File, file => file.project)
   public files: File[]
-
-  @ManyToOne(() => ProjectType, projectType => projectType)
-  public projectType: ProjectType
 
   @ManyToOne(() => Model, model => model)
   public model: Model
@@ -42,8 +43,11 @@ export default class Project extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   private id: string
 
-  @Column({ nullable: true })
+  @Column()
   private userId: number
+
+  @Column()
+  private projectTypeId: string
 
   @CreateDateColumn()
   private createdAt: Date

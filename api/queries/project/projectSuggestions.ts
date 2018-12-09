@@ -1,4 +1,16 @@
-import projectSuggestions from 'api/fixtures/projectSuggestions'
+import { In } from 'typeorm'
+import { requireAuth } from 'api/utils/permissions'
+import paginate from 'api/utils/paginate'
 
-// TODO: Get popular project from users interestedIn types
-export default (_, args, ctx) => projectSuggestions
+export default requireAuth(async (_, args, ctx) => {
+  const projectTypes = await ctx.db.UserInterestedIn.find({
+    userId: ctx.userId,
+  })
+
+  // TODO: Query only popular projects based on followers and comments latest 7 days
+  // And minimum one post
+  return projectTypes.map(async ({ projectTypeId }) => ({
+    ...(await paginate(ctx.db.Project, args, { projectTypeId })),
+    type: await ctx.db.ProjectType.findOne(projectTypeId),
+  }))
+})

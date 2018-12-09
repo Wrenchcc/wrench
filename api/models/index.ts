@@ -1,6 +1,7 @@
 import { ConnectionOptions, getRepository } from 'typeorm'
 
 import User from './User'
+import UserInterestedIn from './UserInterestedIn'
 import NotificationSettings from './NotificationSettings'
 import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
@@ -39,6 +40,7 @@ export const options: ConnectionOptions = {
     Project,
     ProjectType,
     User,
+    UserInterestedIn,
     File,
     Following,
     DeviceToken,
@@ -67,4 +69,5 @@ export const db = {
   Project,
   ProjectType,
   User,
+  UserInterestedIn,
 }

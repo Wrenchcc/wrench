@@ -14,7 +14,7 @@ export default requireAuth(async (_, { refreshToken }, ctx) => {
   // RefreshToken.find({ where: { refreshToken } })
 
   // 2. Check if the user exists (maybe not necessary)
-  const user = ctx.db.User.findOne({ id })
+  const user = ctx.db.User.findOne(id)
 
   return {
     tokens: {

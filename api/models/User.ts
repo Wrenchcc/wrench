@@ -15,7 +15,6 @@ import AuthProvider from './AuthProvider'
 import NotificationSettings from './NotificationSettings'
 import Notification from './Notification'
 import Project from './Project'
-import ProjectType from './ProjectType'
 import File from './File'
 import Post from './Post'
 import Comment from './Comment'
@@ -38,10 +37,6 @@ export default class User extends BaseEntity {
 
   @OneToMany(() => File, file => file.user)
   public files: File[]
-
-  @ManyToMany(() => ProjectType)
-  @JoinTable()
-  public interestedIn: ProjectType[]
 
   @OneToMany(() => NotificationSettings, notificationSettings => notificationSettings.user)
   public notificationSettings: NotificationSettings[]

@@ -1,17 +1,15 @@
 import { requireAuth } from 'api/utils/permissions'
 
-// TODO: Use dataloader and not relations
+// TODO: Use dataloader
 export default requireAuth(async (_, args, ctx) => {
-  const user = await ctx.db.User.findOne(ctx.userId, {
-    relations: ['interestedIn'],
-  })
-
   if (args.input.interestedIn) {
-    const ids = args.input.interestedIn.map(({ id }) => id)
-    const types = await ctx.db.ProjectType.findByIds(ids)
+    const interestedIn = args.input.interestedIn.map(({ id }) => ({
+      projectTypeId: id,
+      userId: ctx.userId,
+    }))
 
-    user.interestedIn = types
+    await ctx.db.UserInterestedIn.save(interestedIn)
   }
 
-  return user.save()
+  return ctx.db.User.findOne(ctx.userId)
 })

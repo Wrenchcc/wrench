@@ -8,7 +8,7 @@ export default requireAuth(async (_, { id, input }, ctx) => {
     return new UserError('You don’t have permission to manage this comment.')
   }
 
-  return ctx.db.Post.save({
+  return ctx.db.Comment.save({
     ...comment,
     ...input,
   })
