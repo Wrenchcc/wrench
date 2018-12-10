@@ -4,13 +4,13 @@ workflow "Deploy API" {
 }
 
 action "Build" {
-  uses = "./install/"
+  uses = "./actions/build/"
   args = "install"
 }
 
 action "Deploy" {
   needs = "Build"
-  uses = "./deploy/"
+  uses = "./actions/deploy/"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
   args = "deploy production"
 }
