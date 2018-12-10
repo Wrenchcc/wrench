@@ -14,7 +14,7 @@ import {
 import generateSlug from 'api/utils/generateSlug'
 import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
-import NotificationSettings from './NotificationSettings'
+import UserSettings from './UserSettings'
 import Notification from './Notification'
 import Project from './Project'
 import File from './File'
@@ -67,8 +67,8 @@ export default class User extends BaseEntity {
   @OneToMany(() => File, file => file.user)
   public files: File[]
 
-  @OneToMany(() => NotificationSettings, notificationSettings => notificationSettings.user)
-  public notificationSettings: NotificationSettings[]
+  @OneToMany(() => UserSettings, settings => settings.user)
+  public settings: UserSettings[]
 
   @OneToMany(() => AuthToken, authToken => authToken.user)
   public authToken: AuthToken[]

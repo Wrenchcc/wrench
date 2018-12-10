@@ -11,7 +11,7 @@ import {
 import User from './User'
 import ProjectType from './ProjectType'
 
-@Entity('user_interested_in')
+@Entity('users_interested_in')
 export default class UserInterestedIn extends BaseEntity {
   @PrimaryColumn('uuid')
   public userId: string

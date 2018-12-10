@@ -9,20 +9,20 @@ import {
 } from 'typeorm'
 import User from './User'
 
-@Entity('notifications_settings')
-export default class NotificationSettings extends BaseEntity {
+@Entity('users_settings')
+export default class UserSettings extends BaseEntity {
   public static async findOrCreate(where, save) {
-    const settingsRepo = NotificationSettings.getRepository()
-    const settings = await settingsRepo.findOne({ where })
+    const userSettingsRepo = UserSettings.getRepository()
+    const userSettings = await userSettingsRepo.findOne({ where })
 
-    if (settings) {
-      return settings
+    if (userSettings) {
+      return userSettings
     }
 
-    return settingsRepo.save(save)
+    return userSettingsRepo.save(save)
   }
 
-  @ManyToOne(() => User, user => user.notificationSettings)
+  @ManyToOne(() => User, user => user.settings)
   public user: User
 
   @PrimaryGeneratedColumn()
