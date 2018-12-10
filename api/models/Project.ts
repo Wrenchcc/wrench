@@ -8,16 +8,39 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm'
+import generateSlug from 'api/utils/generateSlug'
 import User from './User'
 import Post from './Post'
 import ProjectType from './ProjectType'
 import Model from './Model'
 import File from './File'
 
-// TODO: Generate slug
 // Generate dynamicLink
 @Entity('projects')
 export default class Project extends BaseEntity {
+  public static async createProject(data) {
+    let project
+    let times = 0
+
+    while (times < 100) {
+      try {
+        project = await Project.save({
+          ...data,
+          slug: times ? generateSlug(`${data.title}-${times}`) : generateSlug(data.title),
+        })
+        break
+      } catch (err) {
+        if (!err.detail.includes('already exists')) {
+          throw err
+        }
+      }
+
+      times += 1
+    }
+
+    return project
+  }
+
   public static async getCountByUserId(userId) {
     return Project.getRepository()
       .createQueryBuilder('projects')

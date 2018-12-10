@@ -28,4 +28,7 @@ export default class AuthProvider extends BaseEntity {
 
   @UpdateDateColumn()
   private updatedAt: Date
+
+  @Column()
+  private userId: string
 }

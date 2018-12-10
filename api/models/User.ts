@@ -9,7 +9,9 @@ import {
   ManyToMany,
   JoinTable,
   Index,
+  Like,
 } from 'typeorm'
+import generateSlug from 'api/utils/generateSlug'
 import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
 import NotificationSettings from './NotificationSettings'
@@ -20,31 +22,35 @@ import Post from './Post'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
 
-// TODO: Generate slug
 @Entity('users')
 export default class User extends BaseEntity {
-  // public static async createUser() {
-  //   const UserRepo = User.getRepository()
-  //
-  //   let user
-  //   let times = 0
-  //
-  //   while (times < 100) {
-  //     try {
-  //       user = await UserRepo.create({
-  //         username: times ? `${username}${times}` : username,
-  //       }).save()
-  //       break
-  //     } catch (err) {
-  //       if (!err.detail.includes('already exists')) {
-  //         throw err
-  //       }
-  //     }
-  //     times += 1
-  //   }
-  //
-  //   return user
-  // }
+  // TODO: Generate dynamicLink
+  public static async createUser(data) {
+    let user
+    let times = 0
+
+    const { firstName, lastName } = data
+
+    while (times < 100) {
+      try {
+        user = await User.save({
+          ...data,
+          username: times
+            ? generateSlug(`${firstName}.${lastName}-${times}`)
+            : generateSlug(`${firstName}.${lastName}`),
+        })
+        break
+      } catch (err) {
+        if (!err.detail.includes('already exists')) {
+          throw err
+        }
+      }
+
+      times += 1
+    }
+
+    return user
+  }
 
   @OneToMany(() => Project, project => project.user)
   public projects: Project[]

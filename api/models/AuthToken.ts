@@ -9,6 +9,11 @@ import {
 } from 'typeorm'
 import User from './User'
 
+enum PlatformType {
+  Mobile = 'mobile',
+  Web = 'web',
+}
+
 @Entity('auth_tokens')
 export default class AuthTokens extends BaseEntity {
   @ManyToOne(() => User, user => user.authToken)
@@ -25,4 +30,7 @@ export default class AuthTokens extends BaseEntity {
 
   @UpdateDateColumn()
   private updatedAt: Date
+
+  @Column('enum', { enum: PlatformType })
+  private platform: PlatformType
 }

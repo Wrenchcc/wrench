@@ -2,41 +2,59 @@ import { pluck } from 'ramda'
 import { generateTokens } from 'api/utils/tokens'
 
 const PROVIDER_NAME = 'facebook'
+const PLATFORMS = {
+  MOBILE: 'mobile',
+  WEB: 'web',
+}
 
-// TODO: Delete previous tokens
 export default async (_, { facebookToken }, ctx) => {
-  const { id: providerId, ...fbUser } = await ctx.services.facebook.getAccountData(facebookToken)
+  const fbUser = await ctx.services.facebook.getAccountData(facebookToken)
 
-  const authProvider = await ctx.db.AuthProvider.findOne({
-    relations: ['user'],
-    where: { providerId, providerName: PROVIDER_NAME },
+  // Find user from facebook id
+  const { userId } = await ctx.db.AuthProvider.findOne({
+    where: {
+      providerId: fbUser.id,
+      providerName: PROVIDER_NAME,
+    },
   })
 
-  if (authProvider) {
-    const tokens = generateTokens(authProvider.user.id)
+  if (userId) {
+    const tokens = generateTokens(userId)
+    const user = await ctx.db.User.findOne(userId)
 
+    // Delete all previous tokens
+    await ctx.db.AuthToken.delete({
+      platform: PLATFORMS.MOBILE,
+      userId,
+    })
+
+    // Save new token with user
     await ctx.db.AuthToken.save({
+      platform: PLATFORMS.MOBILE,
       refreshToken: tokens.refreshToken,
-      user: authProvider.user,
+      user,
     })
 
     return tokens
   }
 
-  const createdUser = await ctx.db.User.save(fbUser)
+  // Create new user and generate slug and dynamicLink
+  const createdUser = await ctx.db.User.createUser(fbUser)
 
+  // Save provider using facebook
   await ctx.db.AuthProvider.save({
-    providerId,
+    providerId: fbUser.id,
     providerName: PROVIDER_NAME,
     user: createdUser,
   })
 
-  const tokens = generateTokens(createdUser.id)
+  const newTokens = generateTokens(createdUser.id)
 
+  // Save new refreshToken
   await ctx.db.AuthToken.save({
-    refreshToken: tokens.refreshToken,
+    refreshToken: newTokens.refreshToken,
     user: createdUser,
   })
 
-  return tokens
+  return newTokens
 }

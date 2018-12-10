@@ -43,11 +43,11 @@ export default class File extends BaseEntity {
   private type: FileType
 
   @Column({ nullable: true })
-  private postId: number
+  private postId: string
 
   @Column({ nullable: true })
-  private userId: number
+  private userId: string
 
   @Column({ nullable: true })
-  private projectId: number
+  private projectId: string
 }
