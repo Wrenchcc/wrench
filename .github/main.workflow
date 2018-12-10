@@ -4,7 +4,7 @@ workflow "Deploy API" {
 }
 
 action "Build" {
-  uses = "actions/npm@master"
+  uses = "culturehq/actions-yarn@master"
   args = "install"
 }
 
