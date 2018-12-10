@@ -15,4 +15,4 @@ RUN apk add yarn
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["install"]
+CMD ["install", "build:api"]
