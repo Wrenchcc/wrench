@@ -2,4 +2,4 @@
 
 set -e
 
-sh -c "cd api && yarn $*"
+sh -c "yarn $* && cd api && yarn && cd .."

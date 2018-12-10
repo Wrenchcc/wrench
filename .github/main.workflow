@@ -5,7 +5,7 @@ workflow "Deploy" {
 
 action "Build API" {
   uses = "./actions/build/"
-  args = "install && build:api"
+  args = "build:api"
 }
 
 action "Deploy API" {
