@@ -1,4 +1,4 @@
-FROM alpine:3.8.1
+FROM alpine:3.8
 
 LABEL version="1.0.0"
 LABEL maintainer="Apex"
