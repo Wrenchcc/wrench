@@ -17,5 +17,7 @@ ENV CI true
 RUN curl -sf https://up.apex.sh/install | sh
 RUN chmod +x /usr/local/bin/up
 
+RUN yarn && yarn build:api
+
 ENTRYPOINT ["/usr/local/bin/up"]
 CMD ["deploy"]
