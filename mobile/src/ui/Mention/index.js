@@ -33,7 +33,6 @@ class Mention extends Component {
     hasNextPage: PropTypes.bool.isRequired,
     onPress: PropTypes.func.isRequired,
     onNoResults: PropTypes.func.isRequired,
-    query: PropTypes.string,
     offsetBottom: PropTypes.number,
     offsetTop: PropTypes.number,
     destination: PropTypes.string,
@@ -52,7 +51,6 @@ class Mention extends Component {
 
   renderMention() {
     const {
-      query,
       offsetBottom = DEFAULT_OFFSET_BOTTOM,
       offsetTop = TOTAL_HEADER_HEIGHT,
       users,
