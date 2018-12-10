@@ -10,6 +10,9 @@ LABEL com.github.actions.description="Wraps the yarn CLI to enable common yarn c
 LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="red"
 
+RUN apk update
+RUN apk add yarn
+
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["help"]
