@@ -9,8 +9,6 @@ LABEL "com.github.actions.description"="Perform Up application operations"
 LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="white"
 
-RUN apk update
-RUN apk add yarn
 RUN apk add --update curl jq && rm -rf /var/cache/apk/*
 
 ENV CI true
