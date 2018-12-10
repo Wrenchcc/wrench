@@ -52,8 +52,7 @@ buck-out/
 
 .env*
 !.env-template
-build
-!/actions/build/*
+mobule/build/*
 dist
 package-lock.json
 node_modules
