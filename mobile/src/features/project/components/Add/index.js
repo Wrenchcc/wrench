@@ -9,7 +9,7 @@ import { Button } from './styles'
 
 function Add(props) {
   let onPress
-  if (props.projects) {
+  if (props.projects.length > 0) {
     onPress = () => navigateToAddMedia()
   } else {
     onPress = () => navigateToAddProject()
