@@ -4,8 +4,7 @@ workflow "Deploy" {
 }
 
 action "Build API" {
-  uses = "actions/npm@master"
-  args = "install"
+  uses = "./actions/build/"
 }
 
 action "Deploy API" {
