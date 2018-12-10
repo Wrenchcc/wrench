@@ -4,7 +4,6 @@
 
 # Xcode
 #
-build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -24,7 +23,6 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
-build/
 .idea
 .gradle
 local.properties
@@ -54,6 +52,8 @@ buck-out/
 
 .env*
 !.env-template
+build
+!/actions/build/*
 dist
 package-lock.json
 node_modules
