@@ -4,7 +4,7 @@ workflow "Deploy API" {
 }
 
 action "Build" {
-  uses = "culturehq/actions-yarn@master"
+  uses = "actions/npm@master"
   args = "install"
 }
 
@@ -12,5 +12,5 @@ action "Deploy" {
   needs = "Build"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
-  args = "deploy production"
+  args = "deploy production API"
 }
