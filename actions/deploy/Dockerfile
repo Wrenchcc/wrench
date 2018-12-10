@@ -6,7 +6,7 @@ LABEL repository="http://github.com/apex/actions"
 LABEL homepage="http://github.com/apex/actions/up"
 LABEL "com.github.actions.name"="Up"
 LABEL "com.github.actions.description"="Perform Up application operations"
-LABEL "com.github.actions.icon"="chevron-up"
+LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="white"
 
 RUN apk update
