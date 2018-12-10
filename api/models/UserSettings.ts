@@ -35,6 +35,9 @@ export default class UserSettings extends BaseEntity {
   private updatedAt: Date
 
   @Column()
+  private userId: number
+
+  @Column()
   private type: string
 
   @Column({ default: true })

@@ -19,7 +19,7 @@ createConnection(options)
         services,
         userId: getUserId(req),
       }),
-      playground: NODE_ENV !== 'production',
+      playground: true,
       schema,
       tracing: NODE_ENV !== 'production',
     })
