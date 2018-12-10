@@ -1,16 +1,10 @@
-workflow "Deploy API" {
+workflow "Deploy" {
   on = "push"
-  resolves = ["Deploy"]
+  resolves = ["Deploy API"]
 }
 
-action "Build" {
-  uses = "./actions/build/"
-  args = "install"
-}
-
-action "Deploy" {
-  needs = "Build"
+action "Deploy API" {
   uses = "./actions/deploy/"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
-  args = "deploy production"
+  args = "-C api deploy production"
 }
