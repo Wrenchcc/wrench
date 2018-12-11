@@ -1,4 +1,8 @@
 import { messaging } from 'react-native-firebase'
+import { client } from 'graphql/createClient'
+import { registerDeviceToken } from 'graphql/mutations/user/registerDeviceToken'
+
+const PLATFORM = 'mobile'
 
 export default function requestNotificationToken() {
   if (__DEV__) return
@@ -6,7 +10,8 @@ export default function requestNotificationToken() {
   const firebase = messaging()
 
   firebase.requestPermission().then(() => {
-    // TODO: Send away!
-    firebase.getToken().then(token => console.log(token))
+    firebase.getToken().then(token => {
+      client.mutate({ mutation: registerDeviceToken, variables: { token, platform: PLATFORM } })
+    })
   })
 }
