@@ -8,11 +8,7 @@ import {
   ManyToOne,
 } from 'typeorm'
 import User from './User'
-
-enum PlatformType {
-  Mobile = 'mobile',
-  Web = 'web',
-}
+import { PlatformType } from './enums'
 
 @Entity('auth_tokens')
 export default class AuthTokens extends BaseEntity {

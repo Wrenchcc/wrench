@@ -71,13 +71,13 @@ export default class User extends BaseEntity {
   public settings: UserSettings[]
 
   @OneToMany(() => AuthToken, authToken => authToken.user)
-  public authToken: AuthToken[]
+  public authTokens: AuthToken[]
 
   @OneToMany(() => AuthProvider, authProvider => authProvider.user)
-  public authProvider: AuthProvider[]
+  public authProviders: AuthProvider[]
 
   @OneToMany(() => DeviceToken, deviceToken => deviceToken.user)
-  public deviceToken: DeviceToken[]
+  public deviceTokens: DeviceToken[]
 
   @PrimaryGeneratedColumn('uuid')
   private id: string

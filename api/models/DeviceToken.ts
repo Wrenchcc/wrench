@@ -8,21 +8,25 @@ import {
   ManyToOne,
 } from 'typeorm'
 import User from './User'
+import { PlatformType } from './enums'
 
-@Entity('device_token')
+@Entity('device_tokens')
 export default class DeviceToken extends BaseEntity {
-  @ManyToOne(() => User, user => user.deviceToken)
+  @ManyToOne(() => User, user => user.deviceTokens)
   public user: User
 
   @PrimaryGeneratedColumn()
   private id: number
 
   @Column()
-  private deviceToken: string
+  private token: string
 
   @CreateDateColumn()
   private createdAt: Date
 
   @UpdateDateColumn()
   private updatedAt: Date
+
+  @Column('enum', { enum: PlatformType })
+  private platform: PlatformType
 }

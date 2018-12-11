@@ -57,10 +57,11 @@ export default `
 
   input ToggleNotificationSettingsInput {
     notificationType: String!
- }
+  }
 
   extend type Mutation {
     editUser(input: EditUserInput!): User
     toggleNotificationSettings(input: ToggleNotificationSettingsInput): User
+    registerDeviceToken(token: String!, platform: PlatformType!): Boolean
   }
 `

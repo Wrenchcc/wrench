@@ -3,4 +3,10 @@ export default `
     hasNextPage: Boolean
     hasPreviousPage: Boolean
   }
+
+  enum PlatformType {
+    mobile
+    web
+	}
+
 `
