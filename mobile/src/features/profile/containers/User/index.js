@@ -69,11 +69,12 @@ class User extends PureComponent {
 
     return (
       <InfiniteListWithHandler
-        scrollEnabled={hasPosts}
         scrollRef={ref => {
           this.scrollView = ref
         }}
         paddingHorizontal={hasPosts ? 20 : 0}
+        scrollEnabled={hasPosts}
+        contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<FollowingProjects user={user} />}
         data={posts}
