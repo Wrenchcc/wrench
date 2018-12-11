@@ -11,7 +11,7 @@ import User from './User'
 
 @Entity('auth_providers')
 export default class AuthProvider extends BaseEntity {
-  @ManyToOne(() => User, user => user.authProvider)
+  @ManyToOne(() => User, user => user.authProviders)
   public user: User
 
   @PrimaryGeneratedColumn()

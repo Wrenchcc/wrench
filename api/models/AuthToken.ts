@@ -12,7 +12,7 @@ import { PlatformType } from './enums'
 
 @Entity('auth_tokens')
 export default class AuthTokens extends BaseEntity {
-  @ManyToOne(() => User, user => user.authToken)
+  @ManyToOne(() => User, user => user.authTokens)
   public user: User
 
   @PrimaryGeneratedColumn()
