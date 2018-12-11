@@ -8,7 +8,9 @@ export default requireAuth(async ({ id }, _, ctx) => {
     })
 
     const interestedInIds = interestedIn.map(({ projectTypeId }) => projectTypeId)
-    const projectTypes = await ctx.db.ProjectType.find({ where: { id: In(interestedInIds) } })
+    const projectTypes = await ctx.db.ProjectType.find({
+      where: { id: interestedInIds.length ? In(interestedInIds) : null },
+    })
 
     return projectTypes.length > 0 ? projectTypes : null
   } catch (err) {

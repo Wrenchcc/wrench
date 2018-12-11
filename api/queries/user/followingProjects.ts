@@ -9,7 +9,7 @@ export default async ({ id }, args, ctx) => {
 
     const projectIds = following.map(({ projectId }) => projectId)
     return paginate(ctx.db.Project, args, {
-      where: { id: In(projectIds) },
+      where: { id: projectIds.length ? In(projectIds) : null },
     })
   } catch (err) {
     console.log(err)

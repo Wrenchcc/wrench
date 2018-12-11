@@ -13,7 +13,7 @@ export default async (_, args, ctx) => {
     const userIds = followers.map(({ userId }) => userId)
 
     return paginate(ctx.db.User, args, {
-      where: { id: In(userIds) },
+      where: { id: userIds.length ? In(userIds) : null },
     })
   } catch (err) {
     console.log(err)
