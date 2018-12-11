@@ -1,7 +1,15 @@
 import styled from 'styled-components'
+import { Dimensions } from 'react-native'
+import UiProjectCard from 'ui/ProjectCard'
 import UiTitle from 'ui/Title'
 import UiText from 'ui/Text'
+
 import { COLORS } from 'ui/constants'
+
+export const { width } = Dimensions.get('window')
+
+export const GUTTER = 20
+export const BAR_SPACE = GUTTER / 2
 
 export const Base = styled.View`
   background-color: ${COLORS.DIVIDER};
@@ -11,11 +19,22 @@ export const Base = styled.View`
   padding-bottom: 50;
 `
 
-export const Title = styled(UiTitle)`
-  margin-top: 60;
-  margin-bottom: 15;
+export const Headline = styled(UiTitle)`
+  margin-bottom: 12;
 `
 
 export const Description = styled(UiText)`
-  margin-bottom: 30;
+  margin-bottom: 40;
+`
+
+export const Title = styled(UiTitle)`
+  margin-top: 20;
+  margin-bottom: 10;
+`
+
+export const ProjectCard = styled(UiProjectCard)`
+  width: ${width - GUTTER * 2};
+  margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)};
+  margin-left: ${({ first }) => (first ? GUTTER : 0)};
+  margin-bottom: 50;
 `
