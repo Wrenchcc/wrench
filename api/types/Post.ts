@@ -17,6 +17,7 @@ export default `
   }
 
   type PostConnection {
+    totalCount: Int
     pageInfo: PageInfo!
     edges: [PostEdge!]
   }
