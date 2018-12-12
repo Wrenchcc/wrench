@@ -6,10 +6,11 @@
   },
   "dependencies": {
     "@types/pg": "^7.4.11",
-    "apollo-server": "^2.2.6",
+    "apollo-server-express": "^2.2.6",
     "aws-sdk": "^2.374.0",
     "dataloader": "^1.4.0",
     "debug": "^4.1.0",
+    "express": "^4.16.4",
     "firebase-admin": "^6.3.0",
     "graphql": "^14.0.2",
     "graphql-date": "^1.0.3",
