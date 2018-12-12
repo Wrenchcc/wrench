@@ -20,9 +20,9 @@ createConnection(options)
         services,
         userId: getUserId(req),
       }),
-      schema,
       introspection: true,
       playground: true,
+      schema,
       tracing: true,
     })
 
