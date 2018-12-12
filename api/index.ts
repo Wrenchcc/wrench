@@ -24,8 +24,9 @@ createConnection(options)
       tracing: NODE_ENV !== 'production',
     })
 
+    const path = '/graphql'
     const app = express()
-    server.applyMiddleware({ app })
+    server.applyMiddleware({ app, path })
 
     app.listen({ port: PORT }, () => {
       debug(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
