@@ -19,8 +19,9 @@ createConnection(options)
         services,
         userId: getUserId(req),
       }),
+      playground: true,
       schema,
-      tracing: NODE_ENV !== 'production',
+      tracing: true,
     })
 
     server.listen({ port: PORT }).then(({ url }) => {
