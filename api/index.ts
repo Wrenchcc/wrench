@@ -21,11 +21,13 @@ createConnection(options)
         userId: getUserId(req),
       }),
       schema,
+      introspection: true,
       playground: true,
       tracing: true,
     })
 
     const app = express()
+
     server.applyMiddleware({ app })
 
     app.listen({ port: PORT }, () => {
