@@ -1,11 +1,9 @@
-import { requireAuth } from 'api/utils/permissions'
-
-export default requireAuth(({ id, userId }, args, ctx) => {
+export default ({ id, userId }, args, ctx) => {
   try {
     return {
-      isOwner: userId === ctx.userId,
+      isOwner: userId === id,
     }
   } catch (err) {
     console.log(err)
   }
-})
+}
