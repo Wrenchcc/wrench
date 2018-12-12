@@ -1,5 +1,4 @@
-import * as express from 'express'
-import { ApolloServer } from 'apollo-server-express'
+import { ApolloServer } from 'apollo-server'
 import { createConnection } from 'typeorm'
 import { getUserId } from 'api/utils/tokens'
 import schema from './schema'
@@ -20,16 +19,13 @@ createConnection(options)
         services,
         userId: getUserId(req),
       }),
+      playground: NODE_ENV !== 'production',
       schema,
       tracing: NODE_ENV !== 'production',
     })
 
-    const path = '/graphql'
-    const app = express()
-    server.applyMiddleware({ app, path })
-
-    app.listen({ port: PORT }, () => {
-      debug(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
+    server.listen({ port: PORT }).then(({ url }) => {
+      debug('🚀 Server ready at %s', url)
     })
   })
   .catch(error => debug(error))

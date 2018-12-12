@@ -1,4 +1,4 @@
-import { makeExecutableSchema } from 'graphql-tools'
+import { makeExecutableSchema } from 'apollo-server'
 import * as merge from 'lodash.merge'
 import scalars from './types/scalars'
 import generalTypes from './types/general'
