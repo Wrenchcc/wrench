@@ -1,7 +1,17 @@
 import { UserInputError, ForbiddenError } from 'apollo-server-express'
+import { mergeRight } from 'ramda'
 import { requireAuth } from 'api/utils/permissions'
-import mergeNotificationsTypes from 'api/utils/mergeNotificationsTypes'
-import notificationsTypes from 'api/utils/notificationsTypes'
+
+const NOTIFICATIONS_COLUMN = 'notifications'
+
+const notificationsTypes = {
+  newArticle: true,
+  newComment: true,
+  newFollower: true,
+  newMention: true,
+  productAnnouncements: true,
+  similarProjects: true,
+}
 
 export default requireAuth(async (_, args, ctx) => {
   const { notificationType } = args.input
@@ -17,37 +27,26 @@ export default requireAuth(async (_, args, ctx) => {
   }
 
   // Get prev state
-  const prev = await ctx.db.UserSettings.findOrCreate(
+  const prevSettings = await ctx.db.UserSettings.findOrCreate(
     {
-      type: notificationType,
+      type: NOTIFICATIONS_COLUMN,
       userId: ctx.userId,
     },
     {
-      type: notificationType,
-      value: { value: 'true' },
+      type: NOTIFICATIONS_COLUMN,
       user,
+      value: notificationsTypes,
     }
   )
 
-  console.log(prev)
-
   // Update to new state
-  // await ctx.db.UserSettings.update(prev.id, {
-  //   value: !prev.value,
-  // })
-
-  //
-  // // Get updated values
-  // const updatedNotifications = await ctx.db.UserSettings.find({
-  //   where: { userId: ctx.userId },
-  // })
-  //
-  return {
-    ...user,
-    settings: {
-      notifications: {
-        // types: mergeNotificationsTypes(updatedNotifications),
-      },
+  await ctx.db.UserSettings.update(prevSettings.id, {
+    value: {
+      ...notificationsTypes,
+      ...prevSettings.value,
+      [notificationType]: !prevSettings.value[notificationType],
     },
-  }
+  })
+
+  return true
 })
