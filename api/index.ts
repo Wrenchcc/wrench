@@ -20,10 +20,7 @@ createConnection(options)
         services,
         userId: getUserId(req),
       }),
-      introspection: true,
-      playground: true,
       schema,
-      tracing: true,
     })
 
     const app = express()
