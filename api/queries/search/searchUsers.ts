@@ -1,11 +1,10 @@
-import { Like } from 'typeorm'
+import { Raw } from 'typeorm'
 import paginate from 'api/utils/paginate'
 
-// TODO: LOWER
 export default async (args, ctx) => {
   try {
     return paginate(ctx.db.User, args, {
-      where: { fullName: Like(`%${args.query}%`) },
+      where: { fullName: Raw(alias => `LOWER (${alias}) LIKE '%${args.query.toLowerCase()}%'`) },
     })
   } catch (err) {
     console.log(err)
