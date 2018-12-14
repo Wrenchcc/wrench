@@ -4,7 +4,6 @@ import { withNamespaces } from 'react-i18next'
 import { Text } from 'ui'
 
 function Followers({ t, followers, onPress = null, color = 'dark', opacity = 1 }) {
-  console.log('followers', followers)
   return (
     <Text fontSize={15} onPress={onPress} color={color} opacity={opacity}>
       {t('UiFollowers:followers', { count: followers })}
