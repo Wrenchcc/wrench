@@ -40,6 +40,6 @@ export default class UserSettings extends BaseEntity {
   @Column()
   private type: string
 
-  @Column({ default: true })
-  private value: boolean
+  @Column('simple-json')
+  private value: string
 }
