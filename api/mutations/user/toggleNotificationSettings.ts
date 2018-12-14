@@ -6,15 +6,15 @@ import { DEFAULT_NOTIFICATIONS, NOTIFICATIONS_COLUMN } from 'api/utils/notificat
 export default requireAuth(async (_, args, ctx) => {
   const { notificationType } = args.input
 
-  // if (!DEFAULT_NOTIFICATIONS.hasOwnProperty(notificationType)) {
-  //   return new UserInputError('Not a valid notificationType.')
-  // }
+  if (!DEFAULT_NOTIFICATIONS.hasOwnProperty(notificationType)) {
+    return new UserInputError('Not a valid notificationType.')
+  }
 
   const user = await ctx.db.User.findOne(ctx.userId)
 
-  if (user.id !== ctx.userId) {
-    return new ForbiddenError("You don't have permission to edit this account's settings")
-  }
+  // if (user.id !== ctx.userId) {
+  //   return new ForbiddenError("You don't have permission to edit this account's settings")
+  // }
 
   // Get prev state
   const prevSettings = await ctx.db.UserSettings.findOrCreate(
