@@ -7,16 +7,12 @@ export default requireAuth(async (_, args, ctx) => {
   const { notificationType } = args.input
 
   if (!DEFAULT_NOTIFICATIONS.hasOwnProperty(notificationType)) {
+    console.log('Not a valid notificationType.')
     return new UserInputError('Not a valid notificationType.')
   }
 
   const user = await ctx.db.User.findOne(ctx.userId)
-
-  // if (user.id !== ctx.userId) {
-  //   return new ForbiddenError("You don't have permission to edit this account's settings")
-  // }
-
-  // Get prev state
+  console.log('user', user)
   const prevSettings = await ctx.db.UserSettings.findOrCreate(
     {
       type: NOTIFICATIONS_COLUMN,
@@ -28,6 +24,8 @@ export default requireAuth(async (_, args, ctx) => {
       value: DEFAULT_NOTIFICATIONS,
     }
   )
+
+  console.log('prevSettings', prevSettings)
 
   // Update to new state
   await ctx.db.UserSettings.update(prevSettings.id, {
