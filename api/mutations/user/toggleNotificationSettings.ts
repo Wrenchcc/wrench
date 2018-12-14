@@ -4,16 +4,17 @@ import { requireAuth } from 'api/utils/permissions'
 import { DEFAULT_NOTIFICATIONS, NOTIFICATIONS_COLUMN } from 'api/utils/notificationsTypes'
 
 export default requireAuth(async (_, args, ctx) => {
-  const { notificationType } = args.input
-
-  if (!DEFAULT_NOTIFICATIONS.hasOwnProperty(notificationType)) {
-    console.log('Not a valid notificationType.')
-    return new UserInputError('Not a valid notificationType.')
-  }
-
-  const user = await ctx.db.User.findOne(ctx.userId)
-  console.log('user', user)
   try {
+    const { notificationType } = args.input
+
+    if (!DEFAULT_NOTIFICATIONS.hasOwnProperty(notificationType)) {
+      console.log('Not a valid notificationType.')
+      return new UserInputError('Not a valid notificationType.')
+    }
+
+    const user = await ctx.db.User.findOne(ctx.userId)
+    console.log('user', user)
+
     const prevSettings = await ctx.db.UserSettings.findOrCreate(
       {
         type: NOTIFICATIONS_COLUMN,
@@ -36,9 +37,8 @@ export default requireAuth(async (_, args, ctx) => {
     })
 
     console.log('prevSettings', prevSettings)
+    return user
   } catch (err) {
     console.log(err)
   }
-
-  return user
 })
