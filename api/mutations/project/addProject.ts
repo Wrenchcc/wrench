@@ -1,5 +1,4 @@
 import { requireAuth, canModerateProject } from 'api/utils/permissions'
-import UserError from 'api/utils/UserError'
 
 export default requireAuth(async (_, { input }, ctx) => {
   const model = await ctx.db.Model.findOne(input.modelId)

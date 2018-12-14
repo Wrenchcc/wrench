@@ -1,10 +1,9 @@
 import { In } from 'typeorm'
-import { requireAuth } from 'api/utils/permissions'
 
-export default requireAuth(async ({ id }, _, ctx) => {
+export default async ({ id }, _, ctx) => {
   try {
     const interestedIn = await ctx.db.UserInterestedIn.find({
-      userId: ctx.userId,
+      userId: id,
     })
 
     const interestedInIds = interestedIn.map(({ projectTypeId }) => projectTypeId)
@@ -16,4 +15,4 @@ export default requireAuth(async ({ id }, _, ctx) => {
   } catch (err) {
     console.log(err)
   }
-})
+}

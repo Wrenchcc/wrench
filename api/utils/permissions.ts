@@ -1,8 +1,8 @@
-import UserError from './UserError'
+import { ForbiddenError } from 'apollo-server-express'
 
 export const requireAuth = resolver => async (obj, args, ctx, info) => {
   if (!ctx.userId) {
-    return new UserError('You must be signed in to do this')
+    return new ForbiddenError('You must be signed in to do this')
   }
 
   return resolver(obj, args, ctx, info)

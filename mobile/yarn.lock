@@ -5200,10 +5200,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.5.1.tgz#c241cc0456e5dd31f1d05812bf3d0e86fb6931a3"
-  integrity sha512-qD3XTNU2Zh13vfiWZPCtXSFDFFBq8cKyDiaes+viMTCLP1VE81Uklbi21VdoOdTcTgrZe0OOCYUrZ3vj58RxWw==
+react-native-camera@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.6.0.tgz#0b3777e119d07800ee626f802f44daae4c711258"
+  integrity sha512-U6XruTwXBS5F5OFy55+AhTZwrqnIT7BxRQfcuszpvtxu73Osq25oTEl2V3PJhUUaK8JaK4Nlh0pDJjsHCJtEIQ==
   dependencies:
     lodash "^4.17.10"
     prop-types "^15.6.2"
