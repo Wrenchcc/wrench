@@ -6,9 +6,11 @@ import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
 import { navigateToUser } from 'navigation'
-import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit } from 'ui'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState } from 'ui'
+import { TYPES } from 'ui/EmptyState/constants'
+
+import Header from 'features/project/components/Header'
+import Footer from 'features/project/components/Footer'
 
 // TODO: make platform specific and translate
 const FOOTER_HEIGHT = 500
@@ -103,12 +105,19 @@ class Project extends PureComponent {
 
   render() {
     const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const hasPosts = posts && posts.length > 0
 
     return (
       <>
         <InfiniteListWithHandler
+          scrollEnabled={hasPosts}
+          paddingHorizontal={hasPosts ? 20 : 0}
+          contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
           defaultPaddingTop
-          ListHeaderComponent={project.title && <Header project={project} />}
+          ListEmptyComponent={<EmptyState type={TYPES.PROJECT_NO_POSTS} disableButton />}
+          ListHeaderComponent={
+            project.title && <Header project={project} spacingHorizontal={!hasPosts} />
+          }
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}

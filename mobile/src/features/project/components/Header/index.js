@@ -7,6 +7,7 @@ import { Base, ProjectName, Followers } from './styles'
 export default class Header extends PureComponent {
   static propTypes = {
     project: PropTypes.object.isRequired,
+    spacingHorizontal: PropTypes.bool.isRequired,
   }
 
   goToFollowers = () => {
@@ -15,9 +16,9 @@ export default class Header extends PureComponent {
   }
 
   render() {
-    const { project } = this.props
+    const { project, spacingHorizontal } = this.props
     return (
-      <Base>
+      <Base spacingHorizontal={spacingHorizontal}>
         <ProjectName>
           <Title large>{project.title}</Title>
           <Followers followers={project.followers.totalCount} onPress={this.goToFollowers} />

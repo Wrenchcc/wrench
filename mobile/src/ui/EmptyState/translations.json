@@ -10,6 +10,10 @@
         "title": "2. Add your first post",
         "description": "Now when you have a project it’s time to create your first post",
         "button": "Add"
+      },
+      "project-no-post": {
+        "title": "This project doesn’t have any posts yet.",
+        "description": "Follow this project now and get notified when it updates."
       }
     },
     "sv": {
@@ -22,6 +26,10 @@
         "title": "2. Lägg till ditt första inlägg",
         "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
         "button": "Lägg till"
+      },
+      "project-no-post": {
+        "title": "Det här projektet har inga inlägg ännu.",
+        "description": "Följ detta projekt nu och få en notifikation när det uppdateras."
       }
     }
   }

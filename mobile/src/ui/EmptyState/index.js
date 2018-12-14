@@ -17,24 +17,27 @@ const onPressAction = type => {
   }
 }
 
-function EmptyState({ t, type = 'project' }) {
+function EmptyState({ t, type = TYPES.PROJECT, disableButton = false }) {
   return (
     <Base>
       <Title>{t(`EmptyState:${type}:title`)}</Title>
       <Description color="grey" lineHeight={25}>
         {t(`EmptyState:${type}:description`)}
       </Description>
-      <Button onPress={() => onPressAction(type)}>
-        <Text medium fontSize={15}>
-          {t(`EmptyState:${type}:button`)}
-        </Text>
-      </Button>
+      {!disableButton && (
+        <Button onPress={() => onPressAction(type)}>
+          <Text medium fontSize={15}>
+            {t(`EmptyState:${type}:button`)}
+          </Text>
+        </Button>
+      )}
     </Base>
   )
 }
 
 EmptyState.propTypes = {
   type: PropTypes.string,
+  disableButton: PropTypes.bool,
 }
 
 export default withNamespaces('EmptyState')(EmptyState)

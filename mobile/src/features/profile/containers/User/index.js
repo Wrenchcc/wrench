@@ -78,7 +78,7 @@ class User extends PureComponent {
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<FollowingProjects user={user} />}
         data={posts}
-        refetch={hasPosts && refetch}
+        refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}

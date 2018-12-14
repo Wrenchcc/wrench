@@ -5,6 +5,7 @@ import { compose } from 'react-apollo'
 import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
 import { InfiniteListWithHandler, Post, HeaderTitle, EmptyState } from 'ui'
 import Header from 'features/profile/components/Header'
+import { TYPES } from 'ui/EmptyState/constants'
 
 const HEADER_HEIGHT = 100
 const START_OPACITY = 50
@@ -48,7 +49,7 @@ class Me extends PureComponent {
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
-    const emptyState = user && user.projectCount > 0 ? 'post' : 'project'
+    const emptyState = user && user.projectCount > 0 ? TYPES.POST : TYPES.PROJECT
     const hasPosts = posts && posts.length > 0
 
     return (
