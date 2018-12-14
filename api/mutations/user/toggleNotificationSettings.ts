@@ -25,20 +25,20 @@ export default requireAuth(async (_, args, ctx) => {
         value: DEFAULT_NOTIFICATIONS,
       }
     )
+
+    // Update to new state
+    await ctx.db.UserSettings.update(prevSettings.id, {
+      value: {
+        ...DEFAULT_NOTIFICATIONS,
+        ...prevSettings.value,
+        [notificationType]: !prevSettings.value[notificationType],
+      },
+    })
+
+    console.log('prevSettings', prevSettings)
   } catch (err) {
     console.log(err)
   }
-
-  console.log('prevSettings', prevSettings)
-
-  // Update to new state
-  await ctx.db.UserSettings.update(prevSettings.id, {
-    value: {
-      ...DEFAULT_NOTIFICATIONS,
-      ...prevSettings.value,
-      [notificationType]: !prevSettings.value[notificationType],
-    },
-  })
 
   return user
 })
