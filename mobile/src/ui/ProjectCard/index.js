@@ -12,7 +12,7 @@ class ProjectCard extends PureComponent {
     project: PropTypes.object.isRequired,
     followProject: PropTypes.func.isRequired,
     onPress: PropTypes.func.isRequired,
-    style: PropTypes.object,
+    style: PropTypes.any,
   }
 
   render() {
