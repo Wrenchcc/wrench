@@ -48,5 +48,5 @@ export default requireAuth(async (_, args, ctx) => {
     },
   })
 
-  return true
+  return user
 })
