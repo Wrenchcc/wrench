@@ -1396,23 +1396,23 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-inmemory@^1.4.0-alpha.1:
-  version "1.4.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.4.0-alpha.1.tgz#fc5f2e28b14cad9bc8da35d7d522d2b327d5bc5f"
-  integrity sha512-nfRJDY3grTZ7MY3WPjbbabFKqvR+d8xqyhSqBWQsZ15yypDdsXmbkzXHb5gDEGvpBYcscEKUfMjoWoXeeeAzHQ==
+apollo-cache-inmemory@^1.4.0-alpha.2:
+  version "1.4.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.4.0-alpha.2.tgz#4c4a45786e3d203c7bd53ab16f21434266dea87e"
+  integrity sha512-8OcOzvf7RAjSaGpF+ioBmgOetDO6Jvw5ZtPoqVnRy11m7xaIOzWr3DKQoK5YdXv+YoZQ+CQAnPar2pRbA4CGLg==
   dependencies:
-    apollo-cache "^1.2.0-alpha.1"
-    apollo-utilities "^1.1.0-alpha.1"
+    apollo-cache "^1.2.0-alpha.2"
+    apollo-utilities "^1.1.0-alpha.2"
     optimism "^0.6.6"
 
-apollo-cache@1.2.0-verify.4, apollo-cache@^1.2.0-alpha.1:
+apollo-cache@1.2.0-verify.4, apollo-cache@^1.2.0-alpha.2:
   version "1.2.0-verify.4"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.2.0-verify.4.tgz#7b974331015b8ced29ddd6dcf4a852109464d26f"
   integrity sha512-SgSuDoiZU++hcgJnUnH6WueFibZ6X0FpkppVIb0/6Bi8e8hNY6CT0V1GRtx6GMXQOw/vTjeuYYkxGZZJ0aqXaA==
   dependencies:
     apollo-utilities "^1.1.0-verify.4"
 
-apollo-client@^2.5.0-alpha.1:
+apollo-client@^2.5.0-alpha.2:
   version "2.5.0-verify.4"
   resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.5.0-verify.4.tgz#3fc8081283867685271d3845ebe6ab56a487ee60"
   integrity sha512-gtXEXtlIJGF80kcR9w5S6kPhbAcDiis7w5apGBOcU5z9ls+cBphPbWRl3ZXf/FI32lRBVqIVX247qbUZJra35A==
@@ -1487,7 +1487,7 @@ apollo-link@^1.2.5:
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.12"
 
-apollo-utilities@1.1.0-verify.4, apollo-utilities@^1.1.0-alpha.1, apollo-utilities@^1.1.0-verify.4:
+apollo-utilities@1.1.0-verify.4, apollo-utilities@^1.1.0-alpha.2, apollo-utilities@^1.1.0-verify.4:
   version "1.1.0-verify.4"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.1.0-verify.4.tgz#a960aa659e31ccd4467cf6b04e80a04eabc7cc2d"
   integrity sha512-y/a0sOQAZ0IPh3dzVAnLSNdr0FraJnC/0p8HVg99rJZcefhaHsFIG77Jjr6ExwD2sXVJpXWHFgIGbXfQaatXSA==
@@ -5200,12 +5200,11 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.6.2.tgz#d879ac85ed68b28c7a41d757b0be2bb425675256"
-  integrity sha512-dL7SyJLG10MqawM2BSleZuf0yHlK9JRmLfc9BQsSbaFJYfq5HZVpo5ceoxKqm+mHkGvZ42CP95IUOdR+pVEIGg==
+react-native-camera@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.6.3.tgz#c2deb02f9706720e3ae6fc1863f0702e1f248f13"
+  integrity sha512-j+uK3osT0womUv+9+bTWEfdNZW2pq9QKOrCuRdK/DMRneS+78YEwzKlEYKz9E6zAgCVTeLD0MsvmYNLZWt5/ow==
   dependencies:
-    lodash "^4.17.10"
     prop-types "^15.6.2"
 
 react-native-code-push@^5.5.0:
