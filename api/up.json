@@ -29,6 +29,7 @@
     "DB_PORT": "5432",
     "DB_USERNAME": "wrench",
     "DB_PASSWORD": "ZDjQJM8MrkQq5m7sHK68jAWNXugMwG",
-    "DB_HOST": "wrench-production.cgydxeouwpfa.eu-central-1.rds.amazonaws.com"
+    "DB_HOST": "wrench-production.cgydxeouwpfa.eu-central-1.rds.amazonaws.com",
+    "DB_LOGGING": "1"
   }
 }

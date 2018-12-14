@@ -13,17 +13,21 @@ export default requireAuth(async (_, args, ctx) => {
 
   const user = await ctx.db.User.findOne(ctx.userId)
   console.log('user', user)
-  const prevSettings = await ctx.db.UserSettings.findOrCreate(
-    {
-      type: NOTIFICATIONS_COLUMN,
-      userId: ctx.userId,
-    },
-    {
-      type: NOTIFICATIONS_COLUMN,
-      user,
-      value: DEFAULT_NOTIFICATIONS,
-    }
-  )
+  try {
+    const prevSettings = await ctx.db.UserSettings.findOrCreate(
+      {
+        type: NOTIFICATIONS_COLUMN,
+        userId: ctx.userId,
+      },
+      {
+        type: NOTIFICATIONS_COLUMN,
+        user,
+        value: DEFAULT_NOTIFICATIONS,
+      }
+    )
+  } catch (err) {
+    console.log(err)
+  }
 
   console.log('prevSettings', prevSettings)
 
