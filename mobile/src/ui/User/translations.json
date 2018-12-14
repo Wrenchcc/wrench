@@ -1,14 +1,11 @@
 {
   "UiUser": {
     "en": {
-      "projects_0": "0 projects",
-      "projects_1": "1 project",
+      "projects": "{{count, humanFormat}} project",
       "projects_plural": "{{count, humanFormat}} projects"
     },
     "sv": {
-      "projects_0": "0 projekt",
-      "projects_1": "1 projekt",
-      "projects_plural": "{{count, humanFormat}} projekt"
+      "projects": "{{count, humanFormat}} projekt"
     }
   }
 }
