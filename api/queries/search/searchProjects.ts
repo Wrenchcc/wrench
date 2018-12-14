@@ -4,7 +4,6 @@ import paginate from 'api/utils/paginate'
 export default async (args, ctx) => {
   try {
     return paginate(ctx.db.Project, args, {
-      relations: ['user'],
       where: { title: Raw(alias => `LOWER (${alias}) LIKE '%${args.query.toLowerCase()}%'`) },
     })
   } catch (err) {
