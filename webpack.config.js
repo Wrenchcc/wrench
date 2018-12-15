@@ -13,6 +13,9 @@ module.exports = {
   target: 'node',
   mode: 'production',
   stats: 'none',
+  optimization: {
+    minimize: false,
+  },
   output: {
     path: path.resolve(__dirname, DIR, 'dist'),
     filename: 'server.js',
