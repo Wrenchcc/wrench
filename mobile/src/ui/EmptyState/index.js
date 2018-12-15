@@ -18,6 +18,17 @@ const onPressAction = (type, params) => {
   }
 }
 
+const showButton = type => {
+  switch (type) {
+    case TYPES.PROJECT:
+    case TYPES.POST:
+    case TYPES.PROJECT_POST:
+      return true
+    default:
+      return false
+  }
+}
+
 function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
   return (
     <Base>
@@ -25,7 +36,7 @@ function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
       <Description color="grey" lineHeight={25}>
         {t(`EmptyState:${type}:description`)}
       </Description>
-      {onPressAction && (
+      {showButton(type) && (
         <Button onPress={() => onPressAction(type, params)}>
           <Text medium fontSize={15}>
             {t(`EmptyState:${type}:button`)}
