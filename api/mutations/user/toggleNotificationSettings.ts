@@ -1,12 +1,16 @@
 import { UserInputError, ForbiddenError } from 'apollo-server-express'
 import { mergeRight } from 'ramda'
 import { requireAuth } from 'api/utils/permissions'
-import { DEFAULT_NOTIFICATIONS, NOTIFICATIONS_COLUMN } from 'api/utils/notificationsTypes'
+import {
+  DEFAULT_NOTIFICATIONS,
+  NOTIFICATION_TYPES,
+  NOTIFICATIONS_COLUMN,
+} from 'api/utils/notificationTypes'
 
 export default requireAuth(async (_, args, ctx) => {
   const { notificationType } = args.input
 
-  if (!DEFAULT_NOTIFICATIONS.hasOwnProperty(notificationType)) {
+  if (!NOTIFICATION_TYPES.hasOwnProperty(notificationType)) {
     return new UserInputError('Not a valid notificationType.')
   }
 
