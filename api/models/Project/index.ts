@@ -9,6 +9,7 @@ import {
   OneToMany,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
+import { createDynamicLink } from 'api/services/firebase'
 import User from '../User'
 import Post from '../Post'
 import ProjectType from '../ProjectType'
@@ -38,7 +39,12 @@ export default class Project extends BaseEntity {
       times += 1
     }
 
-    return project
+    const dynamicLink = await createDynamicLink({ path: `project/${project.slug}` })
+
+    return Project.save({
+      ...project,
+      dynamicLink,
+    })
   }
 
   public static async getCountByUserId(userId) {

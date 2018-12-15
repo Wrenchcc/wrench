@@ -13,6 +13,7 @@ import {
   Like,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
+import { createDynamicLink } from 'api/services/firebase'
 import AuthToken from '../AuthToken'
 import AuthProvider from '../AuthProvider'
 import UserSettings from '../UserSettings'
@@ -25,7 +26,6 @@ import DeviceToken from '../DeviceToken'
 
 @Entity('users')
 export default class User extends BaseEntity {
-  // TODO: Generate dynamicLink
   public static async createUser(data) {
     let user
     let times = 0
@@ -50,7 +50,17 @@ export default class User extends BaseEntity {
       times += 1
     }
 
-    return user
+    const dynamicLink = await createDynamicLink({
+      description: `See Wrench projects and posts from ${user.fullName}. (@${user.username})`,
+      image: user.avatarUrl,
+      path: `user/${user.username}`,
+      title: `${user.fullName}. (@${user.username}) • Wrench projects and posts`,
+    })
+
+    return User.save({
+      ...user,
+      dynamicLink,
+    })
   }
 
   @OneToMany(() => Project, project => project.user)
