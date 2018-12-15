@@ -28,26 +28,26 @@ export default class File extends BaseEntity {
   public project: Project
 
   @PrimaryGeneratedColumn('uuid')
-  private id: string
+  public id: string
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column({ unique: true })
-  private filename: string
+  public filename: string
 
   @Column('enum', { enum: FileType })
-  private type: FileType
+  public type: FileType
 
   @Column({ nullable: true })
-  private postId: string
+  public postId: string
 
   @Column({ nullable: true })
-  private userId: string
+  public userId: string
 
   @Column({ nullable: true })
-  private projectId: string
+  public projectId: string
 }

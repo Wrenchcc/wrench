@@ -80,33 +80,33 @@ export default class User extends BaseEntity {
   public deviceTokens: DeviceToken[]
 
   @PrimaryGeneratedColumn('uuid')
-  private id: string
+  public id: string
 
   @Column({ unique: true, nullable: true })
-  private username: string
+  public username: string
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column()
-  private firstName: string
+  public firstName: string
 
   @Column()
-  private lastName: string
+  public lastName: string
 
   @Column()
   @Index()
-  private fullName: string
+  public fullName: string
 
   @Column({ nullable: true })
-  private email: string
+  public email: string
 
   @Column({ nullable: true })
-  private avatarUrl: string
+  public avatarUrl: string
 
   @Column({ unique: true, nullable: true })
-  private dynamicLink: string
+  public dynamicLink: string
 }

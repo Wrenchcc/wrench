@@ -15,17 +15,17 @@ export default class Model extends BaseEntity {
   public brand: Brand
 
   @PrimaryGeneratedColumn()
-  private id: number
+  public id: number
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column()
-  private model: string
+  public model: string
 
   @Column()
-  private year: number
+  public year: number
 }

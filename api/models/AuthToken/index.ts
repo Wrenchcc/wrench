@@ -16,17 +16,17 @@ export default class AuthTokens extends BaseEntity {
   public user: User
 
   @PrimaryGeneratedColumn()
-  private id: number
+  public id: number
 
   @Column()
-  private refreshToken: string
+  public refreshToken: string
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column('enum', { enum: PlatformType })
-  private platform: PlatformType
+  public platform: PlatformType
 }

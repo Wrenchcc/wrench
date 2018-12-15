@@ -10,7 +10,7 @@ import {
 export default requireAuth(async (_, args, ctx) => {
   const { notificationType } = args.input
 
-  if (!NOTIFICATION_TYPES.hasOwnProperty(notificationType)) {
+  if (!DEFAULT_NOTIFICATIONS.hasOwnProperty(notificationType)) {
     return new UserInputError('Not a valid notificationType.')
   }
 

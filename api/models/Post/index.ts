@@ -29,20 +29,20 @@ export default class Post extends BaseEntity {
   public comments: Comment[]
 
   @PrimaryGeneratedColumn('uuid')
-  private id: string
+  public id: string
 
   @Column()
-  private projectId: string
+  public projectId: string
 
   @Column()
-  private userId: string
+  public userId: string
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column('text', { nullable: true })
-  private caption: string
+  public caption: string
 }

@@ -28,17 +28,17 @@ export default class Notification extends BaseEntity {
   // public comment: Comment
 
   @PrimaryGeneratedColumn('uuid')
-  private id: string
+  public id: string
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column('enum', { enum: NotificationType })
-  private type: NotificationType
+  public type: NotificationType
 
   @Column({ default: false })
-  private isSeen: boolean
+  public isSeen: boolean
 }

@@ -1,20 +1,21 @@
 import * as admin from 'firebase-admin'
+import { pathOr } from 'ramda'
+import { getDeviceToken } from 'api/models/DeviceToken'
+import { getNotificationSettings } from 'api/models/UserSettings'
 
 const serviceAccount = admin.initializeApp({
   credential: admin.credential.cert(require('./wrench-app-firebase.json')),
 })
 
-export const sendPushNotification = async ({ to, ...notification }) => {
-  const token = ''
-  // TODO: Get deviceTokens
-  console.log(token)
-  console.log(to, notification)
+export const sendPushNotification = async ({ data, from, to, type }) => {
+  const device = await getDeviceToken(to.userId)
+  const notificationSettings = await getNotificationSettings(to.userId)
 
-  // Get user by id
+  const isEnabled = pathOr(true, ['value', type], notificationSettings)
 
-  // Se if type is enabled in userSettings
-
-  // formatNotification
+  if (!isEnabled) {
+    return null
+  }
 
   // See documentation on defining a message payload.
   const message = {
@@ -22,7 +23,7 @@ export const sendPushNotification = async ({ to, ...notification }) => {
       body: 'Pontus Abrahamsson started following your project The Natural.',
       title: 'New follower',
     },
-    token,
+    token: device.token,
   }
 
   // Send a message to the device corresponding to the provided

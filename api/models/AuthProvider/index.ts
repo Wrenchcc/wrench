@@ -15,20 +15,20 @@ export default class AuthProvider extends BaseEntity {
   public user: User
 
   @PrimaryGeneratedColumn()
-  private id: number
+  public id: number
 
   @Column()
-  private providerName: string
+  public providerName: string
 
   @Column({ type: 'bigint', nullable: true })
-  private providerId: number
+  public providerId: number
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column()
-  private userId: string
+  public userId: string
 }

@@ -3,14 +3,14 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 't
 @Entity('project_types')
 export default class ProjectType extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  private id: string
+  public id: string
 
   @Column()
-  private slug: string
+  public slug: string
 
   @Column()
-  private title: string
+  public title: string
 
   @Column()
-  private imageUrl: string
+  public imageUrl: string
 }

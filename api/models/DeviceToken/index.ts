@@ -1,4 +1,5 @@
 import {
+  getRepository,
   BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
@@ -12,21 +13,28 @@ import { PlatformType } from '../enums'
 
 @Entity('device_tokens')
 export default class DeviceToken extends BaseEntity {
+  @Column()
+  public userId: string
+
+  @Column()
+  public token: string
+
   @ManyToOne(() => User, user => user.deviceTokens)
   public user: User
 
   @PrimaryGeneratedColumn()
-  private id: number
-
-  @Column()
-  private token: string
+  public id: number
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column('enum', { enum: PlatformType })
-  private platform: PlatformType
+  public platform: PlatformType
+}
+
+export function getDeviceToken(userId) {
+  return getRepository(DeviceToken).findOne({ where: { userId } })
 }

@@ -64,26 +64,26 @@ export default class Project extends BaseEntity {
   public model: Model
 
   @PrimaryGeneratedColumn('uuid')
-  private id: string
+  public id: string
 
   @Column()
-  private userId: string
+  public userId: string
 
   @Column()
-  private projectTypeId: string
+  public projectTypeId: string
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column()
-  private title: string
+  public title: string
 
   @Column({ unique: true, nullable: true })
-  private slug: string
+  public slug: string
 
   @Column({ unique: true, nullable: true })
-  private dynamicLink: string
+  public dynamicLink: string
 }

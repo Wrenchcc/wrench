@@ -15,16 +15,13 @@ export default requireAuth(async (_, { id }, ctx) => {
     await ctx.db.Following.delete({ projectId: id, userId })
   } else {
     await ctx.db.Following.save({ projectId: id, userId })
-    try {
-      await ctx.services.firebase.sendPushNotification({
-        data: project,
-        from: userId,
-        to: project.userId,
-        type: NOTIFICATION_TYPES.NEW_FOLLOWER,
-      })
-    } catch (err) {
-      console.log(err)
-    }
+
+    await ctx.services.firebase.sendPushNotification({
+      data: project,
+      from: userId,
+      to: project.userId,
+      type: NOTIFICATION_TYPES.NEW_FOLLOWER,
+    })
   }
 
   return ctx.db.Project.findOne(id)

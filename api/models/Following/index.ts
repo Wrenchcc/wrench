@@ -40,8 +40,8 @@ export default class Following extends BaseEntity {
   public project: Project
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 }

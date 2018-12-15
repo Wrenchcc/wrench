@@ -19,23 +19,23 @@ export default class Comment extends BaseEntity {
   public post: Post
 
   @PrimaryGeneratedColumn('uuid')
-  private id: string
+  public id: string
 
   @Column({ nullable: true })
-  private postId: string
+  public postId: string
 
   @Column()
-  private userId: string
+  public userId: string
 
   @Column({ nullable: true })
-  private commentId: string
+  public commentId: string
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column('text')
-  private text: string
+  public text: string
 }

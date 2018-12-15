@@ -15,14 +15,14 @@ export default class Brands extends BaseEntity {
   public models: Model[]
 
   @PrimaryGeneratedColumn()
-  private id: number
+  public id: number
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column()
-  private name: string
+  public name: string
 }

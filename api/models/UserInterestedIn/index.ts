@@ -28,8 +28,8 @@ export default class UserInterestedIn extends BaseEntity {
   public projectType: ProjectType
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 }

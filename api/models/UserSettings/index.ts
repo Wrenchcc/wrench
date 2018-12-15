@@ -1,4 +1,5 @@
 import {
+  getRepository,
   BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
@@ -26,20 +27,29 @@ export default class UserSettings extends BaseEntity {
   public user: User
 
   @PrimaryGeneratedColumn()
-  private id: number
+  public id: number
 
   @CreateDateColumn()
-  private createdAt: Date
+  public createdAt: Date
 
   @UpdateDateColumn()
-  private updatedAt: Date
+  public updatedAt: Date
 
   @Column()
-  private userId: number
+  public userId: number
 
   @Column()
-  private type: string
+  public type: string
 
   @Column('simple-json')
-  private value: string
+  public value: string
+}
+
+export function getNotificationSettings(userId) {
+  return getRepository(UserSettings).findOne({
+    where: {
+      type: 'notifications',
+      userId,
+    },
+  })
 }
