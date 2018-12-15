@@ -1,6 +1,6 @@
 import { mergeRight } from 'ramda'
 import { requireAuth } from 'api/utils/permissions'
-import { DEFAULT_NOTIFICATIONS, NOTIFICATIONS_COLUMN } from 'api/utils/notificationsTypes'
+import { DEFAULT_NOTIFICATIONS, NOTIFICATIONS_COLUMN } from 'api/utils/notificationTypes'
 
 export default requireAuth(async ({ id }, _, ctx) => {
   try {
