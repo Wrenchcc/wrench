@@ -53,6 +53,9 @@ export default async (
 ) => {
   const findOptions = {
     ...options,
+    order: {
+      [orderBy.column]: orderBy.sort,
+    },
     take: first,
   }
 
