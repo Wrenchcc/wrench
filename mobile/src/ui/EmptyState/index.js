@@ -6,26 +6,27 @@ import { Text } from 'ui'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
 
-const onPressAction = type => {
+const onPressAction = (type, params) => {
   switch (type) {
     case TYPES.PROJECT:
-      return navigateToAddProject()
+      return navigateToAddProject(params)
     case TYPES.POST:
-      return navigateToAddMedia()
+    case TYPES.PROJECT_POST:
+      return navigateToAddMedia(params)
     default:
       return null
   }
 }
 
-function EmptyState({ t, type = TYPES.PROJECT, disableButton = false }) {
+function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
   return (
     <Base>
       <Title>{t(`EmptyState:${type}:title`)}</Title>
       <Description color="grey" lineHeight={25}>
         {t(`EmptyState:${type}:description`)}
       </Description>
-      {!disableButton && (
-        <Button onPress={() => onPressAction(type)}>
+      {onPressAction && (
+        <Button onPress={() => onPressAction(type, params)}>
           <Text medium fontSize={15}>
             {t(`EmptyState:${type}:button`)}
           </Text>
@@ -37,7 +38,7 @@ function EmptyState({ t, type = TYPES.PROJECT, disableButton = false }) {
 
 EmptyState.propTypes = {
   type: PropTypes.string,
-  disableButton: PropTypes.bool,
+  params: PropTypes.object,
 }
 
 export default withNamespaces('EmptyState')(EmptyState)

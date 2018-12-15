@@ -2,13 +2,13 @@
   "EmptyState": {
     "en": {
       "project": {
-        "title": "1. Create your first project",
-        "description": "Let’s get you up to speed and create your first project",
+        "title": "1. Create your first project.",
+        "description": "Let’s get you up to speed and create your first project.",
         "button": "Get started"
       },
       "post": {
-        "title": "2. Add your first post",
-        "description": "Now when you have a project it’s time to create your first post",
+        "title": "2. Add your first post.",
+        "description": "Now when you have a project it’s time to create your first post.",
         "button": "Add"
       },
       "project-no-post": {
@@ -18,17 +18,22 @@
       "notifications": {
         "title": "No notifications yet.",
         "description": "Here you will see comments, new followers and other activities."
+      },
+      "project-post": {
+        "title": "Add your first post.",
+        "description": "Now when you have a project it’s time to create your first post.",
+        "button": "Add"
       }
     },
     "sv": {
       "project": {
-        "title": "1. Skapa ditt första projekt",
-        "description": "Kom igång och skapa ditt första projekt",
+        "title": "1. Skapa ditt första projekt.",
+        "description": "Kom igång och skapa ditt första projekt.",
         "button": "Kom igång"
       },
       "post": {
-        "title": "2. Lägg till ditt första inlägg",
-        "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
+        "title": "2. Lägg till ditt första inlägg.",
+        "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg.",
         "button": "Lägg till"
       },
       "project-no-post": {
@@ -38,6 +43,11 @@
       "notifications": {
         "title": "Inga notifikationer ännu.",
         "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter."
+      },
+      "project-post": {
+        "title": "Lägg till ditt första inlägg",
+        "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
+        "button": "Lägg till"
       }
     }
   }

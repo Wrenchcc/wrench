@@ -106,6 +106,9 @@ class Project extends PureComponent {
 
   render() {
     const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const emptyState = project.projectPermissions.isOwner
+      ? TYPES.PROJECT_POST
+      : TYPES.PROJECT_NO_POSTS
     const hasPosts = posts && posts.length > 0
 
     return (
@@ -115,7 +118,7 @@ class Project extends PureComponent {
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
           defaultPaddingTop
-          ListEmptyComponent={<EmptyState type={TYPES.PROJECT_NO_POSTS} disableButton />}
+          ListEmptyComponent={<EmptyState type={emptyState} />}
           ListHeaderComponent={
             project.title && <Header project={project} spacingHorizontal={!hasPosts} />
           }

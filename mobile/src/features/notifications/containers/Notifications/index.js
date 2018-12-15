@@ -43,7 +43,7 @@ class Notifications extends PureComponent {
             {t('Notifications:title')}
           </Header>
         }
-        ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} disableButton />}
+        ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
         borderSeparator
         initialNumToRender={10}
         data={notifications}
