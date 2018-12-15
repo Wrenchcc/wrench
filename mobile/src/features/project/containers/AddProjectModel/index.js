@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { InteractionManager, KeyboardAvoidingView, ActivityIndicator, View } from 'react-native'
 import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
@@ -74,6 +75,10 @@ function AddProjectModel({ t, addProject }) {
       }
     </Subscribe>
   )
+}
+
+AddProjectModel.propTypes = {
+  addProject: PropTypes.func.isRequired,
 }
 
 export default compose(

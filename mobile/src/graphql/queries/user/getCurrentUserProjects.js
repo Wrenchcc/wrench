@@ -5,7 +5,7 @@ import projectsConnectionFragment from 'graphql/fragments/user/projectsConnectio
 
 export const getCurrentUserProjectsQuery = gql`
   query getCurrentUserProjects {
-    currentUser {
+    user: currentUser {
       ...userProjectsConnection
     }
   }
@@ -14,7 +14,7 @@ export const getCurrentUserProjectsQuery = gql`
 
 const getCurrentUserProjectsOptions = {
   props: ({ data }) => ({
-    projects: pathOr(null, ['currentUser', 'projects', 'edges'], data),
+    projects: pathOr(null, ['user', 'projects', 'edges'], data),
   }),
 }
 
