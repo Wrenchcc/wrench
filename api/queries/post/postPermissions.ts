@@ -1,7 +1,7 @@
-export default ({ id, userId }, args, ctx) => {
+export default ({ userId }, args, ctx) => {
   try {
     return {
-      isOwner: userId === id,
+      isOwner: userId === ctx.userId,
     }
   } catch (err) {
     console.log(err)
