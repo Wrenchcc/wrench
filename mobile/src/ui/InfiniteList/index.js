@@ -35,8 +35,12 @@ class InfiniteList extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.props.data && prevProps.data && !equals(this.props.data[0], prevProps.data[0])) {
-      this.setState({ hasNewData: true })
+      this.setNewDataState(true)
     }
+  }
+
+  setNewDataState = hasNewData => {
+    this.setState({ hasNewData })
   }
 
   scrollToLatest = () => {
@@ -46,7 +50,7 @@ class InfiniteList extends PureComponent {
           onPress={() => {
             this.scrollView.scrollToOffset({ offset: 0 })
           }}
-          hide={() => this.setState({ hasNewData: false })}
+          hide={() => this.setNewDataState(false)}
         />
       )
     }

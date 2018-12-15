@@ -12,6 +12,7 @@ class LoadNewer extends PureComponent {
 
   static propTypes = {
     onPress: PropTypes.func.isRequired,
+    hide: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class LoadNewer extends PureComponent {
     this.props.onPress()
     Animated.spring(this.transformY, {
       toValue: -50,
-      delay: 500,
+      delay: 50,
       duration: DURATION,
       useNativeDriver: true,
     }).start(this.props.hide)
