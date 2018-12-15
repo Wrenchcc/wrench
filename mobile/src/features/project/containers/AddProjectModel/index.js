@@ -1,7 +1,9 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
+import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
+import { addProject } from 'graphql/mutations/project/addProject'
 import { navigateToAddMedia } from 'navigation'
 import { AddProjectContainer } from 'store'
 import { Title, Input } from 'ui'
@@ -9,13 +11,21 @@ import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
 
-function AddProjectModel({ t }) {
+// TODO: Add spinner, reset state
+function AddProjectModel({ t, addProject }) {
   return (
     <Subscribe to={[AddProjectContainer]}>
       {({ state, updateField }) => (
         <>
           <AddProjectHeader
-            actionRight={state.model && (() => navigateToAddMedia())}
+            actionRight={
+              state.model
+              && (() => addProject({
+                title: state.title,
+                projectTypeId: state.type.id,
+                modelId: state.model.id,
+              }).then(() => navigateToAddMedia()))
+            }
             translationKey="add"
             icon={arrowLeft}
           />
@@ -56,4 +66,7 @@ function AddProjectModel({ t }) {
   )
 }
 
-export default withNamespaces('AddProjectModel')(AddProjectModel)
+export default compose(
+  addProject,
+  withNamespaces('AddProjectModel')
+)(AddProjectModel)

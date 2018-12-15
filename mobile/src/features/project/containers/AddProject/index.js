@@ -3,7 +3,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddProjectContainer } from 'store'
-import { navigateToAddProjectCategory } from 'navigation'
+import { navigateToAddProjectType } from 'navigation'
 import { Title, Input } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 
@@ -12,7 +12,7 @@ function AddProject({ t }) {
     <Subscribe to={[AddProjectContainer]}>
       {({ state, updateField }) => (
         <>
-          <AddProjectHeader actionRight={state.title && (() => navigateToAddProjectCategory())} />
+          <AddProjectHeader actionRight={state.title && (() => navigateToAddProjectType())} />
           <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={20}
@@ -36,7 +36,7 @@ function AddProject({ t }) {
               color="dark"
               returnKeyType="next"
               enablesReturnKeyAutomatically
-              onSubmitEditing={() => navigateToAddProjectCategory()}
+              onSubmitEditing={() => navigateToAddProjectType()}
             />
           </KeyboardAvoidingView>
         </>

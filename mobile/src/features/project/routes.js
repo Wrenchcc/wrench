@@ -3,7 +3,7 @@ import { ROUTE_NAMES } from './constants'
 import AddMedia from './containers/AddMedia'
 import AddPost from './containers/AddPost'
 import AddProject from './containers/AddProject'
-import AddProjectCategory from './containers/AddProjectCategory'
+import AddProjectType from './containers/AddProjectType'
 import AddProjectModel from './containers/AddProjectModel'
 import Comments from './containers/Comments'
 import Followers from './containers/Followers'
@@ -47,8 +47,8 @@ export default {
       header: null,
     },
   },
-  [ROUTE_NAMES.ADD_PROJECT_CATEGORY]: {
-    component: AddProjectCategory,
+  [ROUTE_NAMES.ADD_PROJECT_TYPE]: {
+    component: AddProjectType,
     mode: MODAL_STACK,
     navigationOptions: {
       header: null,
