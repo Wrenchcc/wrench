@@ -31,10 +31,16 @@ class InfiniteList extends PureComponent {
     renderItem: PropTypes.func,
     ListHeaderComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
     ListEmptyComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+    polling: PropTypes.bool,
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.data && prevProps.data && !equals(this.props.data[0], prevProps.data[0])) {
+    if (
+      this.props.polling
+      && this.props.data
+      && prevProps.data
+      && !equals(this.props.data[0], prevProps.data[0])
+    ) {
       this.setNewDataState(true)
     }
   }

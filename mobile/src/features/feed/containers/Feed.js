@@ -42,6 +42,7 @@ class Feed extends PureComponent {
           hasNextPage={hasNextPage}
           keyExtractor={item => item.node.id}
           renderItem={this.renderItem}
+          polling
         />
       </>
     )
