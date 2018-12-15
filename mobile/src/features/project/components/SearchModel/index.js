@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
-import { InfiniteList, Text, Touchable } from 'ui'
+import { InfiniteList, Text, Touchable, NoResults } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
 import { isIphone } from 'utils/platform'
 
@@ -28,12 +28,6 @@ class SearchModel extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
     onPress: PropTypes.func.isRequired,
     query: PropTypes.string,
-  }
-
-  componentDidUpdate() {
-    // if (isEmpty(filter(a => a.fullName.toLowerCase().includes(this.props.query), users))) {
-    //   this.props.onNoResults()
-    // }
   }
 
   renderItem = ({ item }) => {
@@ -65,6 +59,7 @@ class SearchModel extends PureComponent {
       <View style={styles.container}>
         <InfiniteList
           defaultPadding
+          ListEmptyComponent={<NoResults />}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"
           data={models}

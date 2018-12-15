@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
-import { User, InfiniteList } from 'ui'
-import NoResults from '../NoResults'
+import { User, InfiniteList, NoResults } from 'ui'
 
 class Users extends PureComponent {
   static propTypes = {

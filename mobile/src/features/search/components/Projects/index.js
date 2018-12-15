@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
-import { ProjectCard, InfiniteList } from 'ui'
-import NoResults from '../NoResults'
+import { ProjectCard, InfiniteList, NoResults } from 'ui'
 
 class Projects extends PureComponent {
   static propTypes = {

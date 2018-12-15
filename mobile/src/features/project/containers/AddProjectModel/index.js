@@ -65,8 +65,8 @@ function AddProjectModel({ t, addProject }) {
                 borderColor="dark"
                 color="dark"
                 returnKeyType="next"
-                enablesReturnKeyAutomatically
-                onSubmitEditing={() => console.log('here')}
+                onFocus={() => updateField('isSearching', true)}
+                onBlur={() => updateField('isSearching', false)}
               />
             </KeyboardAvoidingView>
           </>

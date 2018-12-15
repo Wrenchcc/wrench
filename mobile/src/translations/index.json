@@ -110,9 +110,6 @@
     "Followers": {
       "title": "Followers"
     },
-    "NoResults": {
-      "title": "No results found"
-    },
     "SearchTab": {
       "users": "People",
       "projects": "Projects"
@@ -184,6 +181,9 @@
     },
     "LoadNewer": {
       "button": "New posts"
+    },
+    "NoResults": {
+      "title": "No results found"
     },
     "Notification": {
       "follow": "Now follows",
@@ -334,9 +334,6 @@
     "Followers": {
       "title": "Följare"
     },
-    "NoResults": {
-      "title": "Inga resultat funna"
-    },
     "SearchTab": {
       "users": "Personer",
       "projects": "Projekt"
@@ -407,6 +404,9 @@
     },
     "LoadNewer": {
       "button": "Nya inlägg"
+    },
+    "NoResults": {
+      "title": "Inga resultat funna"
     },
     "Notification": {
       "follow": "Följer nu",
