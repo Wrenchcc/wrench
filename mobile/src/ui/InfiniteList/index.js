@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, FlatList } from 'react-native'
+import { equals } from 'ramda'
 import { Border, Loader, LoadNewer } from 'ui'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 import withNavigationAwareScrollable from 'ui/helpers/withNavigationAwareScrollable'
@@ -8,6 +9,10 @@ import withNavigationAwareScrollable from 'ui/helpers/withNavigationAwareScrolla
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList)
 
 class InfiniteList extends PureComponent {
+  state = {
+    hasNewData: false,
+  }
+
   static propTypes = {
     borderSeparator: PropTypes.bool,
     onScroll: PropTypes.object,
@@ -28,11 +33,22 @@ class InfiniteList extends PureComponent {
     ListEmptyComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   }
 
-  scrollToNewData = () => {
-    // If new posts added to top
-    // Hide when close to top
-    if (false) {
-      return <LoadNewer onPress={() => this.scrollView.scrollToOffset({ offset: 0 })} />
+  componentDidUpdate(prevProps) {
+    if (this.props.data && prevProps.data && !equals(this.props.data[0], prevProps.data[0])) {
+      this.setState({ hasNewData: true })
+    }
+  }
+
+  scrollToLatest = () => {
+    if (this.state.hasNewData) {
+      return (
+        <LoadNewer
+          onPress={() => {
+            this.scrollView.scrollToOffset({ offset: 0 })
+          }}
+          hide={() => this.setState({ hasNewData: false })}
+        />
+      )
     }
 
     return null
@@ -86,7 +102,7 @@ class InfiniteList extends PureComponent {
 
     return (
       <>
-        {this.scrollToNewData()}
+        {this.scrollToLatest()}
 
         <AnimatedFlatlist
           style={{ flex: 1 }}
@@ -113,7 +129,7 @@ class InfiniteList extends PureComponent {
             ...contentContainerStyle,
           }}
           {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
-          {...onScroll && { onScroll, scrollEventThrottle: 16 }}
+          {...onScroll && { onScroll, scrollEventThrottle: 1 }}
           {...props}
         />
       </>

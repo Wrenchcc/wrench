@@ -22,8 +22,18 @@ class LoadNewer extends PureComponent {
     }).start()
   }
 
+  handleOnPress = () => {
+    this.props.onPress()
+    Animated.spring(this.transformY, {
+      toValue: -50,
+      delay: 500,
+      duration: DURATION,
+      useNativeDriver: true,
+    }).start(this.props.hide)
+  }
+
   render() {
-    const { t, onPress } = this.props
+    const { t } = this.props
 
     return (
       <Animated.View
@@ -34,7 +44,7 @@ class LoadNewer extends PureComponent {
           zIndex: 10,
         }}
       >
-        <Button onPress={onPress}>
+        <Button onPress={this.handleOnPress}>
           <Text color="white" fontSize={15} medium>
             {t('LoadNewer:button')}
           </Text>
