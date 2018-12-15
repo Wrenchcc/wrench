@@ -97,6 +97,7 @@ class Project extends PureComponent {
           name={project.title}
           dynamicLink={project.dynamicLink}
           following={project.projectPermissions.isFollower}
+          isOwner={project.projectPermissions.isOwner}
           onFollowPress={() => followProject(project.id)}
         />
       )

@@ -10,6 +10,7 @@ export default class Footer extends Component {
   static propTypes = {
     onFollowPress: PropTypes.func.isRequired,
     following: PropTypes.bool.isRequired,
+    isOwner: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     dynamicLink: PropTypes.string.isRequired,
     translateY: PropTypes.object.isRequired,
@@ -51,7 +52,7 @@ export default class Footer extends Component {
   }
 
   render() {
-    const { onFollowPress, name, dynamicLink, following, translateY } = this.props
+    const { onFollowPress, name, dynamicLink, following, isOwner, translateY } = this.props
     const { transformY } = this.state
 
     return (
@@ -59,7 +60,7 @@ export default class Footer extends Component {
         <Animated.View style={{ transform: [{ translateY }] }}>
           <Base>
             <Share title={name} url={dynamicLink} />
-            <Follow onPress={onFollowPress} following={following} />
+            {!isOwner && <Follow onPress={onFollowPress} following={following} />}
           </Base>
         </Animated.View>
       </Animated.View>

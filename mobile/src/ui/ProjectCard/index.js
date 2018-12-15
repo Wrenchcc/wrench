@@ -33,16 +33,18 @@ class ProjectCard extends PureComponent {
             </ProjectName>
             <Followers followers={project.followers.totalCount} color="white" opacity={0.9} />
           </Info>
-          <Button
-            small
-            background="white"
-            onPress={() => followProject(project.id)}
-            hapticFeedback="impactLight"
-          >
-            {project.projectPermissions.isFollower
-              ? t('ProjectCard:unfollow')
-              : t('ProjectCard:follow')}
-          </Button>
+          {!project.projectPermissions.isOwner && (
+            <Button
+              small
+              background="white"
+              onPress={() => followProject(project.id)}
+              hapticFeedback="impactLight"
+            >
+              {project.projectPermissions.isFollower
+                ? t('ProjectCard:unfollow')
+                : t('ProjectCard:follow')}
+            </Button>
+          )}
         </Content>
       </Base>
     )
