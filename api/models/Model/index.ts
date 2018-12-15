@@ -14,8 +14,8 @@ export default class Model extends BaseEntity {
   @ManyToOne(() => Brand, brand => brand.models)
   public brand: Brand
 
-  @PrimaryGeneratedColumn()
-  public id: number
+  @PrimaryGeneratedColumn('uuid')
+  public id: string
 
   @CreateDateColumn()
   public createdAt: Date
