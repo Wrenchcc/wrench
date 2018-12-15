@@ -7,9 +7,9 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from './User'
-import Post from './Post'
-import Project from './Project'
+import User from '../User'
+import Post from '../Post'
+import Project from '../Project'
 
 enum FileType {
   Image = 'image',

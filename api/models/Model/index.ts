@@ -7,7 +7,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import Brand from './Brand'
+import Brand from '../Brand'
 
 @Entity('models')
 export default class Model extends BaseEntity {

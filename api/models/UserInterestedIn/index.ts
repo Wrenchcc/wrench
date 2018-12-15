@@ -8,8 +8,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import User from './User'
-import ProjectType from './ProjectType'
+import User from '../User'
+import ProjectType from '../ProjectType'
 
 @Entity('users_interested_in')
 export default class UserInterestedIn extends BaseEntity {

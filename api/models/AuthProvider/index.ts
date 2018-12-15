@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from './User'
+import User from '../User'
 
 @Entity('auth_providers')
 export default class AuthProvider extends BaseEntity {

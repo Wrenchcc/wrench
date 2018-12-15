@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from './User'
+import User from '../User'
 
 @Entity('users_settings')
 export default class UserSettings extends BaseEntity {

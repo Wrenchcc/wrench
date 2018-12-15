@@ -7,19 +7,19 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from './User'
-import { PlatformType } from './enums'
+import User from '../User'
+import { PlatformType } from '../enums'
 
-@Entity('device_tokens')
-export default class DeviceToken extends BaseEntity {
-  @ManyToOne(() => User, user => user.deviceTokens)
+@Entity('auth_tokens')
+export default class AuthTokens extends BaseEntity {
+  @ManyToOne(() => User, user => user.authTokens)
   public user: User
 
   @PrimaryGeneratedColumn()
   private id: number
 
   @Column()
-  private token: string
+  private refreshToken: string
 
   @CreateDateColumn()
   private createdAt: Date

@@ -7,8 +7,8 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from './User'
-import Comment from './Comment'
+import User from '../User'
+import Comment from '../Comment'
 
 enum NotificationType {
   Comment = 'comment',

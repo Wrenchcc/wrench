@@ -9,11 +9,11 @@ import {
   OneToMany,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
-import User from './User'
-import Post from './Post'
-import ProjectType from './ProjectType'
-import Model from './Model'
-import File from './File'
+import User from '../User'
+import Post from '../Post'
+import ProjectType from '../ProjectType'
+import Model from '../Model'
+import File from '../File'
 
 // Generate dynamicLink
 @Entity('projects')
@@ -67,7 +67,7 @@ export default class Project extends BaseEntity {
   private id: string
 
   @Column()
-  private userId: number
+  private userId: string
 
   @Column()
   private projectTypeId: string

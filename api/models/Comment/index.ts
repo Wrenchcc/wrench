@@ -7,8 +7,8 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from './User'
-import Post from './Post'
+import User from '../User'
+import Post from '../Post'
 
 @Entity('comments')
 export default class Comment extends BaseEntity {
