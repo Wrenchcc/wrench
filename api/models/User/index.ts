@@ -24,6 +24,7 @@ import Post from '../Post'
 import Comment from '../Comment'
 import DeviceToken from '../DeviceToken'
 
+// TODO: Check latest created User with username
 @Entity('users')
 export default class User extends BaseEntity {
   public static async createUser(data) {

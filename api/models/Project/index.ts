@@ -16,7 +16,7 @@ import ProjectType from '../ProjectType'
 import Model from '../Model'
 import File from '../File'
 
-// Generate dynamicLink
+// TODO: Check latest created Project with slug
 @Entity('projects')
 export default class Project extends BaseEntity {
   public static async createProject(data) {
@@ -45,13 +45,6 @@ export default class Project extends BaseEntity {
       ...project,
       dynamicLink,
     })
-  }
-
-  public static async getCountByUserId(userId) {
-    return Project.getRepository()
-      .createQueryBuilder('projects')
-      .select(`DISTINCT(${userId})`)
-      .getCount()
   }
 
   @ManyToOne(() => User, user => user.projects)
