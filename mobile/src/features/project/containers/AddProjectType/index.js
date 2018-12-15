@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
-import { AddProjectContainer } from 'store'
+import { AddContainer } from 'store'
 import { navigateToAddModel } from 'navigation'
 import { Title } from 'ui'
 import { arrowLeft } from 'images'
@@ -11,7 +11,7 @@ import ProjectCategories from 'features/project/components/ProjectCategories'
 
 function AddProjectType({ t }) {
   return (
-    <Subscribe to={[AddProjectContainer]}>
+    <Subscribe to={[AddContainer]}>
       {({ updateField }) => (
         <>
           <AddProjectHeader icon={arrowLeft} />

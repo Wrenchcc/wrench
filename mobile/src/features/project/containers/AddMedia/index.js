@@ -1,6 +1,6 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
-import { AddPostContainer } from 'store'
+import { AddContainer } from 'store'
 import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import ImageEditor from 'features/project/components/ImageEditor'
@@ -9,7 +9,7 @@ import { Base, Placeholder } from './styles'
 
 export default function AddMedia() {
   return (
-    <Subscribe to={[AddPostContainer]}>
+    <Subscribe to={[AddContainer]}>
       {({
         addSelectedFiles,
         changeProject,

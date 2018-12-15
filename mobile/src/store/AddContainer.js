@@ -6,7 +6,7 @@ import LocalStorage from 'utils/storage/local'
 const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId'
 
 // TODO: Reset state better
-export default class AddPostContainer extends Container {
+export default class AddContainer extends Container {
   state = {
     caption: null,
     postProgress: null,
@@ -14,6 +14,12 @@ export default class AddPostContainer extends Container {
     selectedIndex: 0,
     selectedProjectId: null,
     selectProjectOpen: false,
+    isSearching: false,
+    isSaving: false,
+    query: '',
+    title: null,
+    model: null,
+    type: null,
   }
 
   constructor() {
@@ -40,6 +46,26 @@ export default class AddPostContainer extends Container {
       selectedIndex: 0,
       selectedProjectId: null,
       selectProjectOpen: false,
+      title: null,
+      model: null,
+      type: null,
+      query: '',
+      isSearching: false,
+      isSaving: false,
+    })
+  }
+
+  updateField = (field, value) => {
+    if (field === 'query') {
+      this.setState({ isSearching: true })
+    }
+
+    if (field === 'model') {
+      this.setState({ isSearching: false })
+    }
+
+    this.setState({
+      [field]: value,
     })
   }
 

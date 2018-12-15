@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { Subscribe } from 'unstated'
-import { AddPostContainer, ToastNotificationContainer } from 'store'
+import { AddContainer, ToastNotificationContainer } from 'store'
 import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
@@ -30,7 +30,6 @@ class AddPost extends PureComponent {
 
     try {
       const uploadedFiles = await uploadFiles(state.selectedFiles)
-
       await this.props
         .addPost({
           caption: state.caption,
@@ -55,7 +54,7 @@ class AddPost extends PureComponent {
     const { t } = this.props
 
     return (
-      <Subscribe to={[AddPostContainer, ToastNotificationContainer]}>
+      <Subscribe to={[AddContainer, ToastNotificationContainer]}>
         {(PostContainer, { showNotification }) => (
           <>
             <AddPostHeader

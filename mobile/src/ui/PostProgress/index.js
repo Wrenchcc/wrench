@@ -4,7 +4,7 @@ import { Spring } from 'react-spring'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { onUploadProgress } from 'utils/storage/s3/uploadProgress'
-import { AddPostContainer } from 'store'
+import { AddContainer } from 'store'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Cover, Content } from './styles'
 
@@ -36,7 +36,7 @@ class PostProgress extends PureComponent {
     const { progress } = this.state
 
     return (
-      <Subscribe to={[AddPostContainer]}>
+      <Subscribe to={[AddContainer]}>
         {({ state: { postProgress } }) => (
           <Spring
             native

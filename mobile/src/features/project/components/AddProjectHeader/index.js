@@ -5,10 +5,26 @@ import { navigateBack } from 'navigation'
 import { Header, Text, Icon } from 'ui'
 import { closeDark } from 'images'
 
-function AddProjectHeader({ t, actionRight, icon = closeDark, translationKey = 'next' }) {
+function AddProjectHeader({
+  t,
+  actionRight,
+  icon = closeDark,
+  translationKey = 'next',
+  resetState,
+}) {
   return (
     <Header
-      headerLeft={<Icon onPress={() => navigateBack()} source={icon} />}
+      headerLeft={
+        <Icon
+          onPress={() => {
+            navigateBack()
+            if (resetState) {
+              resetState()
+            }
+          }}
+          source={icon}
+        />
+      }
       headerCenter={
         <Text color="dark" medium>
           {t('AddProjectHeader:headerTitle')}
@@ -28,6 +44,7 @@ function AddProjectHeader({ t, actionRight, icon = closeDark, translationKey = '
 AddProjectHeader.propTypes = {
   actionRight: PropTypes.any,
   icon: PropTypes.number,
+  resetState: PropTypes.func,
   translationKey: PropTypes.string,
 }
 

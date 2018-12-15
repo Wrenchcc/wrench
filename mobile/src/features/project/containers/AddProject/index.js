@@ -2,17 +2,20 @@ import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
-import { AddProjectContainer } from 'store'
+import { AddContainer } from 'store'
 import { navigateToAddProjectType } from 'navigation'
 import { Title, Input } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 
 function AddProject({ t }) {
   return (
-    <Subscribe to={[AddProjectContainer]}>
-      {({ state, updateField }) => (
+    <Subscribe to={[AddContainer]}>
+      {({ state, updateField, resetState }) => (
         <>
-          <AddProjectHeader actionRight={state.title && (() => navigateToAddProjectType())} />
+          <AddProjectHeader
+            actionRight={state.title && (() => navigateToAddProjectType())}
+            resetState={resetState}
+          />
           <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={20}
