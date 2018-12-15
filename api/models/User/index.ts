@@ -1,4 +1,5 @@
 import {
+  getRepository,
   BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
@@ -109,4 +110,8 @@ export default class User extends BaseEntity {
 
   @Column({ unique: true, nullable: true })
   public dynamicLink: string
+}
+
+export function getUserById(userId) {
+  return getRepository(User).findOne(userId)
 }

@@ -2,40 +2,38 @@ import * as admin from 'firebase-admin'
 import { pathOr } from 'ramda'
 import { getDeviceToken } from 'api/models/DeviceToken'
 import { getNotificationSettings } from 'api/models/UserSettings'
+import { getUserById } from 'api/models/User'
+import formatNotification from 'api/utils/formatNotification'
+
+const debug = require('debug')('api:firebase')
 
 const serviceAccount = admin.initializeApp({
   credential: admin.credential.cert(require('./wrench-app-firebase.json')),
 })
 
-export const sendPushNotification = async ({ data, from, to, type }) => {
-  const device = await getDeviceToken(to.userId)
+export const sendPushNotification = async ({ data, userId, to, type }) => {
   const notificationSettings = await getNotificationSettings(to.userId)
-
   const isEnabled = pathOr(true, ['value', type], notificationSettings)
 
   if (!isEnabled) {
     return null
   }
 
-  // See documentation on defining a message payload.
+  const { token } = await getDeviceToken(to.userId)
+  const user = await getUserById(userId)
+
   const message = {
-    notification: {
-      body: 'Pontus Abrahamsson started following your project The Natural.',
-      title: 'New follower',
-    },
-    token: device.token,
+    notification: formatNotification(type, data, user),
+    token,
   }
 
-  // Send a message to the device corresponding to the provided
-  // registration token.
   admin
     .messaging()
     .send(message)
     .then(response => {
-      // Response is a message ID string.
-      console.log('Successfully sent message:', response)
+      debug('Successfully sent message: %o', response)
     })
     .catch(error => {
-      console.log('Error sending message:', error)
+      debug('Error sending message: %o', error)
     })
 }

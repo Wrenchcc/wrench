@@ -18,9 +18,9 @@ export default requireAuth(async (_, { id }, ctx) => {
 
     await ctx.services.firebase.sendPushNotification({
       data: project,
-      from: userId,
       to: project.userId,
       type: NOTIFICATION_TYPES.NEW_FOLLOWER,
+      userId,
     })
   }
 
