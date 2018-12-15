@@ -159,6 +159,10 @@
       "project-no-post": {
         "title": "This project doesn’t have any posts yet.",
         "description": "Follow this project now and get notified when it updates."
+      },
+      "notifications": {
+        "title": "No notifications yet.",
+        "description": "Here you will see comments, new followers and other activities."
       }
     },
     "Follow": {
@@ -374,6 +378,10 @@
       "project-no-post": {
         "title": "Det här projektet har inga inlägg ännu.",
         "description": "Följ detta projekt nu och få en notifikation när det uppdateras."
+      },
+      "notifications": {
+        "title": "Inga notifikationer ännu.",
+        "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter."
       }
     },
     "Follow": {

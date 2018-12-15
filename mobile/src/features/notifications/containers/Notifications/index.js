@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getNotifications } from 'graphql/queries/getNotifications'
-import { InfiniteListWithHandler, Notification } from 'ui'
+import { InfiniteListWithHandler, Notification, EmptyState } from 'ui'
+import { TYPES } from 'ui/EmptyState/constants'
 import { Header } from './styles'
 
 class Notifications extends PureComponent {
@@ -29,10 +30,20 @@ class Notifications extends PureComponent {
       t,
     } = this.props
 
+    const hasNotifications = notifications && notifications.length > 0
+
     return (
       <InfiniteListWithHandler
+        scrollEnabled={hasNotifications}
+        paddingHorizontal={hasNotifications ? 20 : 0}
+        contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
         defaultPaddingTop
-        ListHeaderComponent={<Header medium>{t('Notifications:title')}</Header>}
+        ListHeaderComponent={
+          <Header medium spacingHorizontal={!hasNotifications}>
+            {t('Notifications:title')}
+          </Header>
+        }
+        ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} disableButton />}
         borderSeparator
         initialNumToRender={10}
         data={notifications}
