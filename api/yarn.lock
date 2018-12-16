@@ -605,14 +605,6 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-assert-err@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/assert-err/-/assert-err-1.1.0.tgz#c05062799a1d97d3f5eaa258e3242aab499fc8ef"
-  integrity sha1-wFBieZodl9P16qJY4yQqq0mfyO8=
-  dependencies:
-    escape-string-regexp "^1.0.5"
-    object-assign "^4.1.0"
-
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
@@ -684,6 +676,11 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
+
+base-64@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/base-64/-/base-64-0.1.0.tgz#780a99c84e7d600260361511c4877613bf24f6bb"
+  integrity sha1-eAqZyE59YAJgNhURxId2E78k9rs=
 
 base64-js@^1.0.2:
   version "1.3.0"
@@ -1542,13 +1539,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-graphql-date@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/graphql-date/-/graphql-date-1.0.3.tgz#31ce05ae40ed8c8ceb040364060109771e712e91"
-  integrity sha1-Mc4FrkDtjIzrBANkBgEJdx5xLpE=
-  dependencies:
-    assert-err "^1.0.0"
-
 graphql-extensions@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/graphql-extensions/-/graphql-extensions-0.4.0.tgz#5857c7b7b9f20dbccbfd88730fffa5963b3c61ee"
@@ -1562,6 +1552,11 @@ graphql-extensions@0.4.1:
   integrity sha512-Xei4rBxbsTHU6dYiq9y1xxbpRMU3+Os7yD3vXV5W4HbTaxRMizDmu6LAvV4oBEi0ttwICHARQjYTjDTDhHnxrQ==
   dependencies:
     "@apollographql/apollo-tools" "^0.2.6"
+
+graphql-iso-date@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/graphql-iso-date/-/graphql-iso-date-3.6.1.tgz#bd2d0dc886e0f954cbbbc496bbf1d480b57ffa96"
+  integrity sha512-AwFGIuYMJQXOEAgRlJlFL4H1ncFM8n8XmoVDTNypNOZyQ8LFDG2ppMFlsS862BSTCDcSUfHp8PD3/uJhv7t59Q==
 
 graphql-log@^0.1.3:
   version "0.1.3"
@@ -2256,11 +2251,6 @@ node-fetch@^2.1.2, node-fetch@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.2.1.tgz#1fe551e0ded6c45b3b3b937d0fb46f76df718d1e"
   integrity sha512-ObXBpNCD3A/vYQiQtEWl7DuqjAXjfptYFuGHLdPl5U19/6kJuZV+8uMHLrkj3wJrJoyfg4nhgyFixZdaZoAiEQ==
-
-node-fetch@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
-  integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
 
 node-forge@0.7.4:
   version "0.7.4"

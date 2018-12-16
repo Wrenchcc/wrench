@@ -1,4 +1,4 @@
-import { encode, decode } from 'api/utils/base64'
+import { encode, decode } from 'base-64'
 import { LessThan, MoreThan, Between } from 'typeorm'
 
 const SEPARATION_TOKEN = '___'
@@ -8,8 +8,11 @@ const ORDER_BY = {
   sort: 'desc',
 }
 
+const encodeCursor = (id, columnValue) => encode(`${id}${SEPARATION_TOKEN}${columnValue}`)
+
 const decodeCursor = cursor => {
   const data = decode(cursor).split(SEPARATION_TOKEN)
+
   if (data[0] === undefined || data[1] === undefined) {
     throw new Error(`Could not find edge with cursor ${cursor}`)
   }
@@ -20,25 +23,23 @@ const mapOperators = ({ after, before }, { column, sort }) => {
   let comparator
 
   if (after && before) {
-    const [afterColumnValue] = decodeCursor(after)
-    const [beforeColumnValue] = decodeCursor(before)
+    const [id1, afterColumnValue] = decodeCursor(after)
+    const [id2, beforeColumnValue] = decodeCursor(before)
     comparator = Between(afterColumnValue, beforeColumnValue)
   }
 
   if (after) {
-    const [columnValue] = decodeCursor(after)
+    const [id, columnValue] = decodeCursor(after)
     comparator = sort === ORDER_BY.sort ? MoreThan(columnValue) : LessThan(columnValue)
   }
 
   if (before) {
-    const [columnValue] = decodeCursor(before)
+    const [id, columnValue] = decodeCursor(before)
     comparator = sort === ORDER_BY.sort ? LessThan(columnValue) : MoreThan(columnValue)
   }
 
   return { [column]: comparator }
 }
-
-const encodeCursor = (id, column) => encode(`${id}${SEPARATION_TOKEN}${column}`)
 
 const convertNodesToEdges = (nodes, { column }) => nodes.map(node => ({
   cursor: encodeCursor(node.id, node[column]),
@@ -47,7 +48,7 @@ const convertNodesToEdges = (nodes, { column }) => nodes.map(node => ({
 
 export default async (
   model,
-  { after, before, first, last },
+  { after, before, first = 10, last },
   options = null,
   orderBy = ORDER_BY
 ) => {

@@ -7,6 +7,7 @@ import registerForPushNotifications from 'utils/pushNotifications/registerForPus
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
+// TODO: Only poll when focus
 class Feed extends PureComponent {
   static propTypes = {
     posts: PropTypes.array,
