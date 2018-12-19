@@ -4,7 +4,7 @@ import { LessThan, MoreThan, Between } from 'typeorm'
 const SEPARATION_TOKEN = '___'
 
 const ORDER_BY = {
-  column: 'updatedAt',
+  column: 'id',
   sort: 'desc',
 }
 
