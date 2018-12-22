@@ -634,10 +634,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-aws-sdk@^2.377.0:
-  version "2.377.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.377.0.tgz#34220a844070c85fa266427128d2f70ddac63c53"
-  integrity sha512-VvqHqacyro+6pb/sRj4b9ow1RCmk5Dm9JN95xm8D84LihUuHgVweCEJHM6/mclWHHSp1IZYuTxIA7UqFsvVauA==
+aws-sdk@^2.382.0:
+  version "2.382.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.382.0.tgz#9212bc7aced9c051973578d06ea1978a57ccbd5f"
+  integrity sha512-wGjZLYo2ZxGTlj2cHy/0zOfYJKUVBQYG1vpW4Cnbgo3HTtOu906a6tqkiD8QuN0EyEkn7i+wyjSiUFOCh3T/2g==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -2208,11 +2208,6 @@ moment@>=2.14.0:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
   integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
-
-moment@^2.23.0:
-  version "2.23.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.23.0.tgz#759ea491ac97d54bac5ad776996e2a58cc1bc225"
-  integrity sha512-3IE39bHVqFbWWaPOMHZF98Q9c3LDKGTmypMiTM2QygGXXElkFWIH7GxfmlwmY2vwa+wmNsoYZmG2iusf1ZjJoA==
 
 ms@2.0.0:
   version "2.0.0"
