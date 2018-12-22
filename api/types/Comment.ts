@@ -20,13 +20,13 @@ export default `
     node: Comment!
   }
 
-  input CommentIntput {
+  input CommentInput {
     text: String!
   }
 
   extend type Mutation {
-    addComment(postId: ID!, commentId: ID, input: CommentIntput!): Comment
-    editComment(id: ID!, input: CommentIntput!): Comment
+    addComment(postId: ID!, commentId: ID, input: CommentInput!): Comment
+    editComment(id: ID!, input: CommentInput!): Comment
     deleteComment(id: ID!): Boolean
   }
 
