@@ -5,7 +5,7 @@
   "scripts": {
     "start:api": "node api/dist/server.js",
     "build:api": "yarn && cd api && yarn && cd .. && ncc build -S -M api/index.ts -o api/dist",
-    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- ncc run api/index.ts"
+    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts --watch api"
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
@@ -20,8 +20,11 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.7.0",
     "tslint": "^5.12.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.17.0",
