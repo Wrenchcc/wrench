@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "start:api": "node api/dist/server.js",
-    "build:api": "yarn && cd api && yarn && cd .. && cross-env DEBUG=build* cross-env DIR=api webpack",
-    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts --watch api"
+    "build:api": "yarn && cd api && yarn && cd .. && ncc build -S -M api/index.ts -o api/dist",
+    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- ncc run api/index.ts"
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
+    "@zeit/ncc": "latest",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
@@ -19,19 +20,12 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
-    "ts-loader": "^5.3.2",
-    "ts-node": "^7.0.1",
-    "tsconfig-paths": "^3.7.0",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "tslint": "^5.12.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.17.0",
-    "typescript": "^3.2.2",
-    "webpack": "^4.28.1",
-    "webpack-cli": "^3.1.2"
+    "typescript": "^3.2.2"
   },
   "dependencies": {
     "debug": "^4.1.0"
