@@ -12,7 +12,7 @@ module.exports = {
   entry: `./${DIR}/index.ts`,
   target: 'node',
   mode: 'production',
-  stats: 'none',
+  // stats: 'none',
   optimization: {
     minimize: false,
   },
