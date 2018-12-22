@@ -39,7 +39,7 @@ class InfiniteList extends PureComponent {
       this.props.polling
       && this.props.data
       && prevProps.data
-      && !equals(this.props.data[0], prevProps.data[0])
+      && !equals(this.props.data[0].id, prevProps.data[0].id)
     ) {
       this.setNewDataState(true)
     }

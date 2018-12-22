@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'react-apollo'
+import { addComment } from 'graphql/mutations/comment/addComment'
 import { CommentField, Mention } from 'ui'
 import List from './List'
 import { Base } from './styles'
 
-export default class Comments extends PureComponent {
+class Comments extends PureComponent {
   static propTypes = {
+    addComment: PropTypes.func.isRequired,
     data: PropTypes.object,
   }
 
@@ -43,7 +46,9 @@ export default class Comments extends PureComponent {
   }
 
   handleSubmit = () => {
-    // TODO: Submit and add to list
+    const { id } = this.props.data
+    const { text } = this.state
+    this.props.addComment(id, text)
   }
 
   render() {
@@ -73,3 +78,5 @@ export default class Comments extends PureComponent {
     )
   }
 }
+
+export default compose(addComment)(Comments)
