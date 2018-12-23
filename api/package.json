@@ -11,7 +11,7 @@
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",
-    "debug": "^4.1.0",
+    "debug": "^4.1.1",
     "express": "^4.16.4",
     "firebase-admin": "^6.4.0",
     "graphql": "^14.0.2",
