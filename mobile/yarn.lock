@@ -5450,10 +5450,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^7.2.3:
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.3.tgz#7801d59378b62cdbbd52a117c5cf7af7ec23f9b9"
-  integrity sha512-TGHzN60iMRGhKXujriTwVifZ/NidpnyiC7n8ogs9HAC1n6NmLcvZ+mjctqCB2+gfPodKAG0h5ezr1a/4vFFuyQ==
+react-spring@^7.2.4:
+  version "7.2.4"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.4.tgz#88d2d97f018a3684528dc0cbf7c4511aab15a407"
+  integrity sha512-+h5CXhxpoeA5phIzNFLKjWq8rfViN52SEjGpflwgbGOF7EO9mPyvCUOEx9EcNbf2vOacbwezIYaPtacnJAW6lw==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
