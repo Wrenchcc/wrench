@@ -8,14 +8,14 @@ import admin from './config'
 const debug = require('debug')('api:firebase')
 
 export default async ({ data, userId, to, type }) => {
-  const notificationSettings = await getNotificationSettings(to.userId)
+  const notificationSettings = await getNotificationSettings(to)
   const isEnabled = pathOr(true, ['value', type], notificationSettings)
 
   if (!isEnabled) {
     return null
   }
 
-  const { token } = await getDeviceToken(to.userId)
+  const { token } = await getDeviceToken(to)
   const user = await getUserById(userId)
 
   const message = {

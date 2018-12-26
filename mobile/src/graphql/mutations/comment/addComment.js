@@ -13,6 +13,7 @@ const addCommentMutation = gql`
     }
   }
 `
+
 const addCommentToFeedOptions = {
   props: ({ mutate }) => ({
     addComment: (postId, text) => mutate({

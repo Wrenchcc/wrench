@@ -32,7 +32,7 @@ export default [
     },
   },
   {
-    pattern: /\/?\B@[a-z0-9_-]+/gi,
+    pattern: /\/?\B@[a-z0-9.-]+/gi,
     style: styles.link,
     onPress: handleNamePress,
     renderText: username => username,
