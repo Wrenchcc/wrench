@@ -5,6 +5,7 @@ import AddPost from './containers/AddPost'
 import AddProject from './containers/AddProject'
 import AddProjectType from './containers/AddProjectType'
 import AddProjectModel from './containers/AddProjectModel'
+import EditProject from './containers/EditProject'
 import Comments from './containers/Comments'
 import Followers from './containers/Followers'
 import Project from './containers/Project'
@@ -15,6 +16,9 @@ export default {
   },
   [ROUTE_NAMES.COMMENTS]: {
     component: Comments,
+  },
+  [ROUTE_NAMES.EDIT_PROJECT]: {
+    component: EditProject,
   },
   [ROUTE_NAMES.ADD_POST]: {
     component: AddPost,

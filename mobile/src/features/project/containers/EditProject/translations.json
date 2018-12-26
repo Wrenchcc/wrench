@@ -1,0 +1,12 @@
+{
+  "EditProject": {
+    "en": {
+      "title": "Edit",
+      "save": "Save"
+    },
+    "sv": {
+      "title": "Redigera",
+      "save": "Spara"
+    }
+  }
+}
