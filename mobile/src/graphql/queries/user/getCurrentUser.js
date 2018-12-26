@@ -6,7 +6,7 @@ import currentUserInfoFragment from 'graphql/fragments/user/currentUserInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 import projectsConnectionFragment from 'graphql/fragments/user/projectsConnection'
 
-export const getCurrentUserQuery = gql`
+export const CurrentUserQuery = gql`
   query getCurrentUser {
     user: currentUser {
       ...currentUserInfo
@@ -17,7 +17,7 @@ export const getCurrentUserQuery = gql`
   ${projectsConnectionFragment}
 `
 
-export const getCurrentUserProfileQuery = gql`
+export const CurrentUserProfileQuery = gql`
   query getCurrentUserProfile($after: String) {
     user: currentUser {
       ...currentUserInfo
@@ -81,6 +81,6 @@ const getCurrentUserProfileOptions = {
 }
 
 export const getCurrentUserProfile = graphql(
-  getCurrentUserProfileQuery,
+  CurrentUserProfileQuery,
   getCurrentUserProfileOptions
 )

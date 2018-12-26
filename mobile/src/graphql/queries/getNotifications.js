@@ -4,7 +4,7 @@ import { mapListProps } from 'graphql/utils/mapListProps'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
-export const getNotificationsQuery = gql`
+export const NotificationsQuery = gql`
   query getNotifications($after: String) {
     notifications(after: $after) {
       edges {
@@ -43,4 +43,4 @@ const getNotificationsOptions = {
   props: mapListProps('notifications'),
 }
 
-export const getNotifications = graphql(getNotificationsQuery, getNotificationsOptions)
+export const getNotifications = graphql(NotificationsQuery, getNotificationsOptions)

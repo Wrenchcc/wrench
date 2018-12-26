@@ -46,7 +46,7 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
           </Row>
           <Row>
             <TimeAgo date={createdAt} />
-            <Reply medium fontSize={12} onPress={() => onReply(user)}>
+            <Reply medium fontSize={12} onPress={() => onReply(user, id)}>
               {t('CommentItem:reply')}
             </Reply>
           </Row>
@@ -56,10 +56,10 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
   )
 }
 
-const CommentItem = props => props.item.repliesConnection ? (
+const CommentItem = props => props.item.replies ? (
     <>
       <Item {...props.item} onReply={props.onReply} t={props.t} />
-      {props.item.repliesConnection.edges.map(({ node }) => (
+      {props.item.replies.edges.map(({ node }) => (
         <Item key={node.id} isReply {...node} id={node.id} t={props.t} onReply={props.onReply} />
       ))}
     </>

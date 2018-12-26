@@ -6,7 +6,7 @@ import postsInfoFragment from 'graphql/fragments/post/postsInfo'
 
 const THIRTY_SECONDS = 30000
 
-export const getFeedQuery = gql`
+export const FeedQuery = gql`
   query getFeed($userId: ID, $after: String) {
     posts(userId: $userId, after: $after) {
       ...postsInfo
@@ -26,4 +26,4 @@ const getFeedOptions = {
   props: mapListProps('posts'),
 }
 
-export const getFeed = graphql(getFeedQuery, getFeedOptions)
+export const getFeed = graphql(FeedQuery, getFeedOptions)

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { addComment } from 'graphql/mutations/comment/addComment'
+import { addCommentToFeed } from 'graphql/mutations/comment/addComment'
 import { CommentField, Mention } from 'ui'
 import List from './List'
 import { Base } from './styles'
@@ -79,4 +79,4 @@ class Comments extends PureComponent {
   }
 }
 
-export default compose(addComment)(Comments)
+export default compose(addCommentToFeed)(Comments)

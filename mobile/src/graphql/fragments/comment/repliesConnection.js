@@ -12,6 +12,7 @@ export default gql`
           text
           createdAt
           user {
+            id
             fullName
             username
             avatarUrl

@@ -4,7 +4,7 @@ import { getProjectId } from 'navigation/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import followersInfoFragment from 'graphql/fragments/followers/followersInfo'
 
-export const getFollowersQuery = gql`
+export const FollowersQuery = gql`
   query getFollowers($projectId: ID!, $after: String) {
     followers(projectId: $projectId, after: $after) {
       ...followersInfo
@@ -23,4 +23,4 @@ const getFollowersOptions = {
   props: mapListProps('followers'),
 }
 
-export const getFollowers = graphql(getFollowersQuery, getFollowersOptions)
+export const getFollowers = graphql(FollowersQuery, getFollowersOptions)

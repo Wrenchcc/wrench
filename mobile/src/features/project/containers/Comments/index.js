@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
 import { getComments } from 'graphql/queries/comment/getComments'
+import { addComment } from 'graphql/mutations/comment/addComment'
 import {
   InfiniteList,
   CommentItem,
@@ -33,6 +34,7 @@ class Comments extends Component {
   })
 
   static propTypes = {
+    addComment: PropTypes.func.isRequired,
     comments: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
     refetch: PropTypes.func.isRequired,
@@ -42,13 +44,17 @@ class Comments extends Component {
   }
 
   state = {
+    commentId: null,
     isOpen: false,
     query: '',
     text: '',
   }
 
-  onReply = ({ username }) => {
-    this.setState({ text: `${TRIGGER}${username} ` })
+  onReply = (user, commentId) => {
+    this.setState({
+      commentId,
+      text: `${TRIGGER}${user.username} `,
+    })
     this.commentField.focus()
   }
 
@@ -80,7 +86,9 @@ class Comments extends Component {
   }
 
   handleSubmit = () => {
-    // TODO: Submit and add to list
+    const { text, commentId } = this.state
+    this.setState({ text: '', commentId: null })
+    this.props.addComment(text, commentId)
   }
 
   componentWillUnmont() {
@@ -149,4 +157,7 @@ class Comments extends Component {
   }
 }
 
-export default compose(getComments)(Comments)
+export default compose(
+  getComments,
+  addComment
+)(Comments)

@@ -5,7 +5,7 @@ import postsInfoFragment from 'graphql/fragments/post/postsInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 // TODO: Fragments and on refresh get popular projects too
-const getPopularProjectsQuery = gql`
+const PopularProjectsQuery = gql`
   query getExplore($after: String) {
     projects(after: $after) {
       pageInfo {
@@ -29,7 +29,7 @@ const getPopularProjectsQuery = gql`
   ${projectInfoFragment}
 `
 
-const getRecentPostsQuery = gql`
+const RecentPostsQuery = gql`
   query getRecentPosts($after: String) {
     posts(after: $after) {
       ...postsInfo
@@ -59,5 +59,5 @@ const getRecentPostsOptions = {
   props: mapListProps('posts'),
 }
 
-export const getPopularProjects = graphql(getPopularProjectsQuery, getPopularProjectsOptions)
-export const getRecentPosts = graphql(getRecentPostsQuery, getRecentPostsOptions)
+export const getPopularProjects = graphql(PopularProjectsQuery, getPopularProjectsOptions)
+export const getRecentPosts = graphql(RecentPostsQuery, getRecentPostsOptions)
