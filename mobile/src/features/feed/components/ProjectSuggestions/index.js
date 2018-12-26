@@ -30,7 +30,7 @@ class ProjectSuggestions extends PureComponent {
         </Description>
 
         {isFetching && <Loader />}
-        {projects && projects.map(this.renderProjectSuggestions)}
+        {projects.length > 0 && projects.map(this.renderProjectSuggestions)}
       </Base>
     )
   }

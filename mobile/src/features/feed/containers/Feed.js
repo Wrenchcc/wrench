@@ -27,6 +27,7 @@ class Feed extends PureComponent {
 
   render() {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+
     return (
       <>
         <PostProgress />

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, FlatList } from 'react-native'
-import { equals } from 'ramda'
+import { pathOr, equals } from 'ramda'
 import { Border, Loader, LoadNewer } from 'ui'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 import withNavigationAwareScrollable from 'ui/helpers/withNavigationAwareScrollable'
@@ -37,9 +37,10 @@ class InfiniteList extends PureComponent {
   componentDidUpdate(prevProps) {
     if (
       this.props.polling
-      && this.props.data
-      && prevProps.data
-      && !equals(this.props.data[0].id, prevProps.data[0].id)
+      && !equals(
+        pathOr(false, ['data', 0, 'id'], this.props),
+        pathOr(false, ['data', 0, 'id'], prevProps)
+      )
     ) {
       this.setNewDataState(true)
     }
