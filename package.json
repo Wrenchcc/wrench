@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start:api": "node api/dist/server.js",
-    "build:api": "yarn && cd api && yarn && cd .. && ncc build -S -M api/index.ts -o api/dist",
+    "build:api": "yarn && cd api && yarn && cd .. && ncc build api/index.ts -o api/dist",
     "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- nodemon -e ts -x ts-node -r tsconfig-paths/register api/index.ts --watch api"
   },
   "devDependencies": {
