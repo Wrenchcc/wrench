@@ -5,10 +5,14 @@ import { MENTION_REGEX } from 'shared/utils/regex'
 export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   const user = await ctx.db.User.findOne(ctx.userId)
   const post = await ctx.db.Post.findOne(postId)
+  const project = await ctx.db.Project.findOne(post.projectId)
 
   // Send notification to post owner
   await ctx.services.firebase.sendPushNotification({
-    data: { text: input.text },
+    data: {
+      text: input.text,
+      title: project.title,
+    },
     to: post.userId,
     type: NOTIFICATION_TYPES.NEW_COMMENT,
     userId: ctx.userId,
@@ -17,8 +21,6 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   // Send notification to mentioned users
   const mentions = input.text.match(MENTION_REGEX)
   if (mentions) {
-    const project = await ctx.db.Project.findOne(post.projectId)
-
     mentions.map(async mention => {
       const username = mention.replace('@', '')
       const mentionedUser = await ctx.db.User.findOne({ where: { username } })
