@@ -6,7 +6,7 @@ import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 
-export const getUserByUsernameQuery = gql`
+export const UserByUsernameQuery = gql`
   query getUserByUsername($username: LowercaseString!, $after: String) {
     user(username: $username) {
       ...userInfo
@@ -77,4 +77,4 @@ const getUserByUsernameOptions = {
   }),
 }
 
-export const getUserByUsername = graphql(getUserByUsernameQuery, getUserByUsernameOptions)
+export const getUserByUsername = graphql(UserByUsernameQuery, getUserByUsernameOptions)

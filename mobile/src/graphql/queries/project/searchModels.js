@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
 
-export const searchModelsQuery = gql`
+export const SearchModelsQuery = gql`
   query searchModels($query: String!, $type: SearchType!) {
     models: search(query: $query, type: $type) {
       pageInfo {
@@ -35,4 +35,4 @@ const searchModelsOptions = {
   props: mapListProps('models'),
 }
 
-export const searchModels = graphql(searchModelsQuery, searchModelsOptions)
+export const searchModels = graphql(SearchModelsQuery, searchModelsOptions)

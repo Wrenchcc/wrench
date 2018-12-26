@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import userSettingsFragment from 'graphql/fragments/user/userSettings'
 
-export const toggleNotificationSettingsMutation = gql`
+export const ToggleNotificationSettingsMutation = gql`
   mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
     toggleNotificationSettings(input: $input) {
       ...userSettings
@@ -44,4 +44,4 @@ const toggleNotificationSettingsOptions = {
   }),
 }
 
-export default graphql(toggleNotificationSettingsMutation, toggleNotificationSettingsOptions)
+export default graphql(ToggleNotificationSettingsMutation, toggleNotificationSettingsOptions)

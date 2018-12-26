@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import { track, events } from 'utils/analytics'
 
-const followProjectMutation = gql`
+const ProjectMutation = gql`
   mutation followProject($id: ID!) {
     followProject(id: $id) {
       ...projectInfo
@@ -48,4 +48,4 @@ const followProjectOptions = {
   }),
 }
 
-export const followProject = graphql(followProjectMutation, followProjectOptions)
+export const followProject = graphql(ProjectMutation, followProjectOptions)

@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import { track, events } from 'utils/analytics'
 import { setTokens } from 'graphql/utils/auth'
 
-export const authenticateMutation = gql`
+export const AuthenticateMutation = gql`
   mutation authenticate($facebookToken: String!) {
     authenticate(facebookToken: $facebookToken) {
       accessToken
@@ -24,4 +24,4 @@ const authenticateOptions = {
   }),
 }
 
-export const authenticate = graphql(authenticateMutation, authenticateOptions)
+export const authenticate = graphql(AuthenticateMutation, authenticateOptions)

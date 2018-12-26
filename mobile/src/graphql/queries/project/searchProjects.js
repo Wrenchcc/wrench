@@ -4,7 +4,7 @@ import { mapListProps } from 'graphql/utils/mapListProps'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
-export const searchProjectsQuery = gql`
+export const SearchProjectsQuery = gql`
   query searchProjects($query: String!, $type: SearchType!) {
     projects: search(query: $query, type: $type) {
       pageInfo {
@@ -35,4 +35,4 @@ const searchProjectsOptions = {
   props: mapListProps('projects'),
 }
 
-export const searchProjects = graphql(searchProjectsQuery, searchProjectsOptions)
+export const searchProjects = graphql(SearchProjectsQuery, searchProjectsOptions)

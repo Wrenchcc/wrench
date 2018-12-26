@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo'
 import userSettingsFragment from 'graphql/fragments/user/userSettings'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
-export const getCurrentUserSettingsQuery = gql`
+export const CurrentUserSettingsQuery = gql`
   query getCurrentUserSettings {
     user: currentUser {
       ...userInfo
@@ -23,6 +23,6 @@ const getCurrentUserSettingsOptions = {
 }
 
 export const getCurrentUserSettings = graphql(
-  getCurrentUserSettingsQuery,
+  CurrentUserSettingsQuery,
   getCurrentUserSettingsOptions
 )

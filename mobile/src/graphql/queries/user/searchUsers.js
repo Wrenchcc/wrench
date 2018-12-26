@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
-export const searchUsersQuery = gql`
+export const SearchUsersQuery = gql`
   query searchUsers($query: String!, $type: SearchType!) {
     users: search(query: $query, type: $type) {
       pageInfo {
@@ -32,4 +32,4 @@ const searchUsersOptions = {
   props: mapListProps('users'),
 }
 
-export const searchUsers = graphql(searchUsersQuery, searchUsersOptions)
+export const searchUsers = graphql(SearchUsersQuery, searchUsersOptions)

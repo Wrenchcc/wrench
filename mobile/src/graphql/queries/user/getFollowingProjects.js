@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
-export const getFollowingProjectsQuery = gql`
+export const FollowingProjectsQuery = gql`
   query getFollowingProjects($username: LowercaseString!, $after: String) {
     user(username: $username) {
       id
@@ -39,4 +39,4 @@ const getFollowingProjectsOptions = {
   }),
 }
 
-export const getFollowingProjects = graphql(getFollowingProjectsQuery, getFollowingProjectsOptions)
+export const getFollowingProjects = graphql(FollowingProjectsQuery, getFollowingProjectsOptions)

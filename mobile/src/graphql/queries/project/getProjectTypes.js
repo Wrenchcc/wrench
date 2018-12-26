@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
-const getProjectTypesQuery = gql`
+const ProjectTypesQuery = gql`
   query getProjectTypes {
     types: projectTypes {
       id
@@ -18,4 +18,4 @@ const getProjectTypesOptions = {
   }),
 }
 
-export const getProjectTypes = graphql(getProjectTypesQuery, getProjectTypesOptions)
+export const getProjectTypes = graphql(ProjectTypesQuery, getProjectTypesOptions)

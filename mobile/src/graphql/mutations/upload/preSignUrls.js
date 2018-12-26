@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export const preSignUrlsMutation = gql`
+export const PreSignUrlsMutation = gql`
   mutation($input: [PreSignedUrlnput]!) {
     preSignUrls(input: $input) {
       url

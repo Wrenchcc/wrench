@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import deletePostFromCache from 'graphql/utils/deletePostFromCache'
 import { track, events } from 'utils/analytics'
 
-const deletePostMutation = gql`
+const DeletePostMutation = gql`
   mutation deletePost($id: ID!) {
     deletePost(id: $id)
   }
@@ -40,4 +40,4 @@ const deletePostOptions = {
   }),
 }
 
-export const deletePost = graphql(deletePostMutation, deletePostOptions)
+export const deletePost = graphql(DeletePostMutation, deletePostOptions)

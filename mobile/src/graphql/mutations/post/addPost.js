@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { prepend } from 'ramda'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
 
-const addPostMutation = gql`
+const PostMutation = gql`
   mutation addPost($input: PostInput!) {
     addPost(input: $input) {
       ...postInfo
@@ -37,4 +37,4 @@ const addPostOptions = {
   }),
 }
 
-export const addPost = graphql(addPostMutation, addPostOptions)
+export const addPost = graphql(PostMutation, addPostOptions)

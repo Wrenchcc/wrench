@@ -3,7 +3,7 @@ import { pathOr } from 'ramda'
 import { graphql } from 'react-apollo'
 import projectsConnectionFragment from 'graphql/fragments/user/projectsConnection'
 
-export const getCurrentUserProjectsQuery = gql`
+export const CurrentUserProjectsQuery = gql`
   query getCurrentUserProjects {
     user: currentUser {
       ...userProjectsConnection
@@ -19,6 +19,6 @@ const getCurrentUserProjectsOptions = {
 }
 
 export const getCurrentUserProjects = graphql(
-  getCurrentUserProjectsQuery,
+  CurrentUserProjectsQuery,
   getCurrentUserProjectsOptions
 )

@@ -4,7 +4,7 @@ import { pathOr } from 'ramda'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
-export const getProjectSuggestionsQuery = gql`
+export const ProjectSuggestionsQuery = gql`
   query getProjectSuggestions($after: String) {
     projects: projectSuggestions(after: $after) {
       type {
@@ -36,7 +36,4 @@ const getProjectsSuggestionsOptions = {
   }),
 }
 
-export const getProjectSuggestions = graphql(
-  getProjectSuggestionsQuery,
-  getProjectsSuggestionsOptions
-)
+export const getProjectSuggestions = graphql(ProjectSuggestionsQuery, getProjectsSuggestionsOptions)

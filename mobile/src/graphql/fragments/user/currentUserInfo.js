@@ -8,6 +8,7 @@ export default gql`
     lastName
     username
     avatarUrl
+    projectCount
     interestedIn {
       id
     }

@@ -6,7 +6,7 @@ import { FeedQuery } from 'graphql/queries/getFeed'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { CommentsQuery } from 'graphql/queries/comment/getComments'
 
-const addCommentMutation = gql`
+const CommentMutation = gql`
   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
     addComment(postId: $postId, commentId: $commentId, input: $input) {
       text
@@ -116,5 +116,5 @@ const addCommentOptions = {
   }),
 }
 
-export const addCommentToFeed = graphql(addCommentMutation, addCommentToFeedOptions)
-export const addComment = graphql(addCommentMutation, addCommentOptions)
+export const addCommentToFeed = graphql(CommentMutation, addCommentToFeedOptions)
+export const addComment = graphql(CommentMutation, addCommentOptions)
