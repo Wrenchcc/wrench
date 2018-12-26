@@ -1,7 +1,6 @@
 import { requireAuth } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'api/utils/notificationTypes'
-
-const MENTION_REGEX = /\/?\B@[a-z0-9.-]+/gi
+import { MENTION_REGEX } from 'shared/utils/regex'
 
 export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   const user = await ctx.db.User.findOne(ctx.userId)

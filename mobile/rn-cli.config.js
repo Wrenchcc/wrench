@@ -1,6 +1,6 @@
-const Path = require('path')
+const path = require('path')
 
 // Allow files to imported from outside mobile root
 module.exports = {
-  getProjectRoots: () => [__dirname, Path.join(__dirname, '..')],
+  getProjectRoots: () => [__dirname, path.join(__dirname, '..')],
 }

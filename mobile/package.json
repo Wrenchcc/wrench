@@ -15,6 +15,7 @@
     "wtf": "tasks/wtf"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.1.0",
     "apollo-cache-inmemory": "^1.4.0-alpha.2",
     "apollo-client": "^2.5.0-alpha.2",
     "apollo-link": "^1.2.6",

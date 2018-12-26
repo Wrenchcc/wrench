@@ -8,9 +8,9 @@
           "images": "./assets/images",
           "videos": "./assets/videos"
         },
-        "extensions": [".js"]
+        "extensions": [".js", ".ts"]
       }
     ]
   ],
-  "presets": ["module:metro-react-native-babel-preset"]
+  "presets": ["module:metro-react-native-babel-preset", "@babel/preset-typescript"]
 }

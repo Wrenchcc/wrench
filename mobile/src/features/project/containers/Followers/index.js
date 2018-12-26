@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getFollowers } from 'graphql/queries/getFollowers'
-import { InfiniteList, User, HeaderTitle } from 'ui'
+import { InfiniteList, User, HeaderTitle, NoResults } from 'ui'
 
 let scrollView = null
 
@@ -38,6 +38,7 @@ class Followers extends PureComponent {
         scrollRef={ref => {
           scrollView = ref
         }}
+        ListEmptyComponent={<NoResults />}
         borderSeparator
         data={followers}
         refetch={refetch}
