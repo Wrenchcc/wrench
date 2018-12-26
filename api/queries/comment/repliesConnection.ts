@@ -1,14 +1,10 @@
-import { IsNull } from 'typeorm'
 import paginate from 'api/utils/paginate'
 
 // TODO: User dataloader
-export default async (_, args, ctx) => {
+export default async ({ id }, args, ctx) => {
   try {
     return paginate(ctx.db.Comment, args, {
-      where: {
-        commentId: IsNull(),
-        postId: args.postId,
-      },
+      where: { commentId: id },
     })
   } catch (err) {
     console.log(err)

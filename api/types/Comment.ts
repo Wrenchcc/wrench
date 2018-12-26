@@ -6,7 +6,7 @@ export default `
     text: String!
     user: User
     postId: ID
-    repliesConnection(first: Int, after: String, last: Int, before: String): ReplyConnection
+    repliesConnection(first: Int, after: String, last: Int, before: String): CommentConnection
   }
 
   type CommentConnection {

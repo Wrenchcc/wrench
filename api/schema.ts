@@ -12,7 +12,6 @@ import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
 import Project from './types/Project'
-import Reply from './types/Reply'
 import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
@@ -86,6 +85,7 @@ if (process.env.NODE_ENV === 'development' && debug.enabled) {
 // Create the final GraphQL schema out of the type definitions
 // and the resolvers
 export default makeExecutableSchema({
+  resolvers,
   typeDefs: [
     scalars.typeDefs,
     generalTypes,
@@ -93,7 +93,6 @@ export default makeExecutableSchema({
     Auth,
     Model,
     Comment,
-    Reply,
     Notification,
     Post,
     Project,
@@ -103,5 +102,4 @@ export default makeExecutableSchema({
     File,
     Upload,
   ],
-  resolvers,
 })
