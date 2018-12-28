@@ -31,26 +31,7 @@ class AddPostHeader extends PureComponent {
     toggleSelectProject: PropTypes.func.isRequired,
   }
 
-  toggleActionSheet = () => {
-    this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
-  }
-
-  handleClose = () => {
-    const { hasSelectedFiles } = this.props
-
-    if (hasSelectedFiles) {
-      this.toggleActionSheet()
-    } else {
-      navigateBack()
-    }
-  }
-
-  resetStateAndNavigate = () => {
-    this.props.resetState()
-    navigateBack()
-  }
-
-  renderHeaderRight() {
+  get renderHeaderRight() {
     const { t, hasSelectedFiles, addPostAction } = this.props
 
     if (hasSelectedFiles) {
@@ -72,12 +53,31 @@ class AddPostHeader extends PureComponent {
     return null
   }
 
-  renderHeaderLeft() {
+  get renderHeaderLeft() {
     const { addPostAction } = this.props
     if (addPostAction) {
       return <Icon onPress={() => navigateBack()} source={arrowLeft} />
     }
     return <Icon onPress={this.handleClose} source={close} />
+  }
+
+  toggleActionSheet = () => {
+    this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
+  }
+
+  handleClose = () => {
+    const { hasSelectedFiles } = this.props
+
+    if (hasSelectedFiles) {
+      this.toggleActionSheet()
+    } else {
+      navigateBack()
+    }
+  }
+
+  resetStateAndNavigate = () => {
+    this.props.resetState()
+    navigateBack()
   }
 
   render() {
@@ -97,7 +97,7 @@ class AddPostHeader extends PureComponent {
 
     return (
       <>
-        <Header headerLeft={this.renderHeaderLeft()} headerRight={this.renderHeaderRight()} />
+        <Header headerLeft={this.renderHeaderLeft} headerRight={this.renderHeaderRight} />
 
         <Top>
           <Dropdown

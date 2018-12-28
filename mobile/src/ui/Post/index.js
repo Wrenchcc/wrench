@@ -119,7 +119,7 @@ class Post extends PureComponent {
           )}
         </Content>
 
-        <Comments data={post} />
+        {!post.project.commentsDisabled && <Comments data={post} />}
 
         {this.postActions()}
       </Base>

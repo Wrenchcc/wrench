@@ -3,16 +3,17 @@ import PropTypes from 'prop-types'
 import { Image } from 'react-native'
 import { Touchable } from 'ui'
 
-function Icon({ onPress, source }) {
+function Icon({ onPress = () => {}, source, opacity = 1 }) {
   return (
     <Touchable onPress={onPress}>
-      <Image source={source} />
+      <Image source={source} style={{ opacity }} />
     </Touchable>
   )
 }
 
 Icon.propTypes = {
-  onPress: PropTypes.func.isRequired,
+  opacity: PropTypes.number,
+  onPress: PropTypes.func,
   source: PropTypes.any.isRequired,
 }
 

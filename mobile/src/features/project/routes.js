@@ -19,6 +19,10 @@ export default {
   },
   [ROUTE_NAMES.EDIT_PROJECT]: {
     component: EditProject,
+    mode: MODAL,
+    navigationOptions: {
+      header: null,
+    },
   },
   [ROUTE_NAMES.ADD_POST]: {
     component: AddPost,

@@ -1,45 +1,86 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView } from 'react-native'
+import { ScrollView, ActivityIndicator, Alert } from 'react-native'
 import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
 import { editProject } from 'graphql/mutations/project/editProject'
-import { Text, Title, Input } from 'ui'
+import { deleteProject } from 'graphql/mutations/project/deleteProject'
+import { navigateBack, navigateToFeed } from 'navigation'
+import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
+import { closeDark } from 'images'
 import { Inner } from './styles'
 
 class EditProject extends PureComponent {
   static propTypes = {
     navigation: PropTypes.object.isRequired,
     editProject: PropTypes.func.isRequired,
+    deleteProject: PropTypes.func.isRequired,
   }
-
-  static navigationOptions = ({ screenProps, navigation }) => ({
-    headerTitle: `${screenProps.t('EditProject:headerTitle')} ${
-      navigation.state.params.project.title
-    }`,
-    headerRight: (
-      <Text
-        color="dark"
-        medium
-        onPress={navigation.getParam('editProject')}
-        hapticFeedback="impactLight"
-      >
-        {screenProps.t('EditProject:save')}
-      </Text>
-    ),
-  })
 
   constructor(props) {
     super(props)
     const { project } = props.navigation.state.params
 
     this.state = {
+      isSaving: false,
+      commentsDisabled: project.commentsDisabled,
+      isPrivate: project.isPrivate,
       title: project.title,
     }
   }
 
-  componentDidMount() {
-    this.props.navigation.setParams({ editProject: this.handleEditProject })
+  get renderHeaderLeft() {
+    const { isSaving } = this.state
+
+    if (isSaving) {
+      return <Icon source={closeDark} opacity={0.4} />
+    }
+
+    return <Icon onPress={() => navigateBack()} source={closeDark} />
+  }
+
+  get renderHeaderRight() {
+    const { isSaving } = this.state
+
+    return isSaving ? (
+      <ActivityIndicator size="small" />
+    ) : (
+      <Text medium onPress={this.handleEditProject} hapticFeedback="impactLight">
+        {this.props.t('EditProject:done')}
+      </Text>
+    )
+  }
+
+  get renderHeaderCenter() {
+    const { t, navigation } = this.props
+    return (
+      <Text medium numberOfLines={1}>{`${t('EditProject:headerTitle')} ${
+        navigation.state.params.project.title
+      }`}</Text>
+    )
+  }
+
+  onDelete = () => {
+    this.props.deleteProject().then(navigateToFeed)
+  }
+
+  toggleActionSheet = () => {
+    const { t, navigation } = this.props
+    if (navigation.state.params.project.projectPermissions.isOwner) {
+      Alert.alert(
+        t('EditProject:deleteAlert'),
+        null,
+        [
+          { text: t('EditProject:cancel'), style: 'cancel' },
+          { text: t('EditProject:delete'), onPress: this.onDelete },
+        ],
+        { cancelable: false }
+      )
+    }
+  }
+
+  updateField = (field, value) => {
+    this.setState({ [field]: value })
   }
 
   onChangeText = title => {
@@ -47,26 +88,63 @@ class EditProject extends PureComponent {
   }
 
   handleEditProject = () => {
-    const { title } = this.state
-    this.props.editProject({ title })
+    const { title, isPrivate, commentsDisabled } = this.state
+    this.setState({ isSaving: true })
+
+    this.props
+      .editProject({ title, isPrivate, commentsDisabled })
+      .then(setTimeout(() => this.setState({ isSaving: false }, () => navigateBack()), 500))
   }
 
   render() {
-    const { title } = this.state
+    const { title, isPrivate, commentsDisabled } = this.state
     const { t } = this.props
 
     return (
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 40 }}>
-        <Title>{t('EditProject:title')}</Title>
-        <Inner>
-          <Input placeholder="Title" value={title} onChangeText={this.onChangeText} color="dark" />
-        </Inner>
-      </ScrollView>
+      <>
+        <Header
+          headerLeft={this.renderHeaderLeft}
+          headerRight={this.renderHeaderRight}
+          headerCenter={this.renderHeaderCenter}
+        />
+        <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 50 }}>
+          <Inner>
+            <Title>{t('EditProject:information')}</Title>
+            <Input
+              placeholder={t('EditProject:title')}
+              value={title}
+              onChangeText={this.onChangeText}
+              color="dark"
+            />
+          </Inner>
+          <Inner>
+            <Title>{t('EditProject:projectSettings')}</Title>
+            <SelectionItem
+              type="switch"
+              title={t('EditProject:private')}
+              selected={isPrivate}
+              onPress={value => this.updateField('isPrivate', value)}
+            />
+            <SelectionItem
+              type="switch"
+              title={t('EditProject:disableComments')}
+              selected={commentsDisabled}
+              onPress={value => this.updateField('commentsDisabled', value)}
+            />
+            <SelectionItem
+              last
+              title={t('EditProject:deleteTitle')}
+              onPress={this.toggleActionSheet}
+            />
+          </Inner>
+        </ScrollView>
+      </>
     )
   }
 }
 
 export default compose(
+  deleteProject,
   editProject,
   withNamespaces('EditProject')
 )(EditProject)

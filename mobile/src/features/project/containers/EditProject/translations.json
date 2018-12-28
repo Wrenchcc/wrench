@@ -1,14 +1,30 @@
 {
   "EditProject": {
     "en": {
-      "title": "Information",
+      "title": "Title",
       "headerTitle": "Edit",
-      "save": "Save"
+      "information": "Information",
+      "done": "Done",
+      "private": "Make private",
+      "disableComments": "Disable comments",
+      "deleteTitle": "Delete project",
+      "deleteAlert": "Delete project?",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "projectSettings": "Project settings"
     },
     "sv": {
-      "title": "Information",
+      "title": "Titel",
       "headerTitle": "Redigera",
-      "save": "Spara"
+      "information": "Information",
+      "done": "Klar",
+      "private": "Gör privat",
+      "disableComments": "Stäng av kommentarer",
+      "deleteTitle": "Radera projekt",
+      "deleteAlert": "Radera projekt?",
+      "cancel": "Avbryt",
+      "delete": "Radera",
+      "projectSettings": "Projekt inställningar"
     }
   }
 }
