@@ -9,7 +9,9 @@ export default requireAuth(async (_, { id, input }, ctx) => {
   }
 
   let data = {
+    commentsDisabled: input.commentsDisabled,
     id: project.id,
+    isPrivate: input.isPrivate,
     title: input.title,
     userId: ctx.userId,
   }
@@ -32,5 +34,7 @@ export default requireAuth(async (_, { id, input }, ctx) => {
     }
   }
 
-  return ctx.db.Project.save(data)
+  await ctx.db.Project.save(data)
+
+  return ctx.db.Project.findOne(id)
 })

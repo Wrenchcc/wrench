@@ -12,6 +12,7 @@ export default `
     interestedIn: [ProjectType]
     settings: UserSettings
     dynamicLink: String
+    isOnline: Boolean
 
     projectsConnection(first: Int, after: String, last: Int, before: String): ProjectsConnection
     followingProjects(first: Int, after: String, last: Int, before: String): ProjectsConnection

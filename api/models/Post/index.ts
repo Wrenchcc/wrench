@@ -19,7 +19,7 @@ export default class Post extends BaseEntity {
   @ManyToOne(() => User, user => user.posts)
   public user: User
 
-  @ManyToOne(() => Project, project => project.posts)
+  @ManyToOne(() => Project, project => project.posts, { onDelete: 'CASCADE' })
   public project: Project
 
   @OneToMany(() => File, file => file.post)

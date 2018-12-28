@@ -8,6 +8,8 @@ export default `
     dynamicLink: String
     user: User
     projectPermissions: ProjectPermissions
+    isPrivate: Boolean
+    commentsDisabled: Boolean
 
     filesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int, type: FileType): FileConnection
     followersConnection(first: Int, after: String, last: Int, before: String): FollowersConnection
@@ -62,6 +64,8 @@ export default `
 
   input ProjectInput {
     title: String!
+    isPrivate: Boolean
+    commentsDisabled: Boolean
     projectTypeId: ID
     modelId: ID
   }

@@ -85,4 +85,10 @@ export default class Project extends BaseEntity {
 
   @Column({ unique: true, nullable: true })
   public dynamicLink: string
+
+  @Column({ default: false })
+  public isPrivate: boolean
+
+  @Column({ default: false })
+  public commentsDisabled: boolean
 }
