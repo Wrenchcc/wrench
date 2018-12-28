@@ -62,8 +62,8 @@ export default `
 
   input ProjectInput {
     title: String!
-    projectTypeId: ID!
-    modelId: ID!
+    projectTypeId: ID
+    modelId: ID
   }
 
   extend type Mutation {

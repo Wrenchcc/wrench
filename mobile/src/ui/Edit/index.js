@@ -6,7 +6,7 @@ import { Text } from 'ui'
 
 function Edit({ t, project }) {
   return (
-    <Text medium onPress={() => navigateToEditProject(project)}>
+    <Text medium onPress={() => navigateToEditProject({ project })}>
       {t('Edit:edit')}
     </Text>
   )

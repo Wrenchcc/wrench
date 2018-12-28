@@ -108,7 +108,8 @@
       "title": "Comments"
     },
     "EditProject": {
-      "title": "Edit",
+      "title": "Information",
+      "headerTitle": "Edit",
       "save": "Save"
     },
     "Followers": {
@@ -336,7 +337,8 @@
       "title": "Kommentarer"
     },
     "EditProject": {
-      "title": "Redigera",
+      "title": "Information",
+      "headerTitle": "Redigera",
       "save": "Spara"
     },
     "Followers": {

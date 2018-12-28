@@ -8,14 +8,29 @@ export default requireAuth(async (_, { id, input }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this project.')
   }
 
-  const model = await ctx.db.Model.findOne(input.modelId)
-  const projectType = await ctx.db.ProjectType.findOne(input.projectTypeId)
-
-  return ctx.db.Project.save({
+  let data = {
     id: project.id,
-    model,
-    projectType,
     title: input.title,
     userId: ctx.userId,
-  })
+  }
+
+  if (input.modelId) {
+    const model = await ctx.db.Model.findOne(input.modelId)
+
+    data = {
+      ...project,
+      model,
+    }
+  }
+
+  if (input.projectTypeId) {
+    const projectType = await ctx.db.ProjectType.findOne(input.projectTypeId)
+
+    data = {
+      ...project,
+      projectType,
+    }
+  }
+
+  return ctx.db.Project.save(data)
 })

@@ -6,7 +6,7 @@ import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectPostsConnectionFragment from 'graphql/fragments/project/postsConnection'
 
-const ProjectBySlugQuery = gql`
+export const ProjectBySlugQuery = gql`
   query getProjectBySlug($slug: LowercaseString!, $after: String) {
     project(slug: $slug) {
       ...projectInfo
@@ -27,7 +27,7 @@ const LoadMorePosts = gql`
 `
 
 const getProjectOptions = {
-  options: ({ navigation, after = null }) => ({
+  options: ({ navigation, after }) => ({
     variables: {
       slug: getProjectSlug(navigation),
       after,
