@@ -8,7 +8,7 @@ import { deleteProject } from 'graphql/mutations/project/deleteProject'
 import { navigateBack, navigateToFeed } from 'navigation'
 import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
 import { closeDark } from 'images'
-import { Inner } from './styles'
+import { Inner, Spacing } from './styles'
 
 class EditProject extends PureComponent {
   static propTypes = {
@@ -131,6 +131,9 @@ class EditProject extends PureComponent {
               selected={commentsDisabled}
               onPress={value => this.updateField('commentsDisabled', value)}
             />
+
+            <Spacing />
+
             <SelectionItem
               last
               title={t('EditProject:deleteTitle')}
