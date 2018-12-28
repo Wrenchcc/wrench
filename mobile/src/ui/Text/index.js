@@ -12,6 +12,7 @@ const Text = ({
   onLongPress,
   disabled = false,
   lineHeight = null,
+  hapticFeedback = null,
   ...props
 }) => onPress ? (
     <Touchable
@@ -19,6 +20,7 @@ const Text = ({
       onPress={onPress}
       onLongPress={onLongPress}
       disabled={disabled}
+      hapticFeedback={hapticFeedback}
     >
       <Base
         numberOfLines={numberOfLines}
@@ -44,11 +46,12 @@ const Text = ({
 
 Text.propTypes = {
   children: PropTypes.any,
-  numberOfLines: PropTypes.number,
-  onPress: PropTypes.func,
-  onLongPress: PropTypes.func,
   disabled: PropTypes.bool,
+  hapticFeedback: PropTypes.string,
   lineHeight: PropTypes.number,
+  numberOfLines: PropTypes.number,
+  onLongPress: PropTypes.func,
+  onPress: PropTypes.func,
 }
 
 export default Text
