@@ -3,18 +3,24 @@ import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getNotifications } from 'graphql/queries/getNotifications'
+import { markAllNotificationsSeen } from 'graphql/mutations/notification/markAllNotificationsSeen'
 import { InfiniteListWithHandler, Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import { Header } from './styles'
 
 class Notifications extends PureComponent {
   static propTypes = {
-    notifications: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    markAllNotificationsSeen: PropTypes.func.isRequired,
+    notifications: PropTypes.array,
+    refetch: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
+    this.props.markAllNotificationsSeen()
   }
 
   renderItem = ({ item }) => <Notification data={item.node} />
@@ -60,6 +66,7 @@ class Notifications extends PureComponent {
 }
 
 export default compose(
+  markAllNotificationsSeen,
   getNotifications,
   withNamespaces('Notifications')
 )(Notifications)

@@ -17,6 +17,14 @@ export const CurrentUserQuery = gql`
   ${projectsConnectionFragment}
 `
 
+export const CurrentUserUnreadNotificationsQuery = gql`
+  {
+    user: currentUser {
+      unreadNotifications
+    }
+  }
+`
+
 export const CurrentUserProfileQuery = gql`
   query getCurrentUserProfile($after: String) {
     user: currentUser {
@@ -80,7 +88,4 @@ const getCurrentUserProfileOptions = {
   }),
 }
 
-export const getCurrentUserProfile = graphql(
-  CurrentUserProfileQuery,
-  getCurrentUserProfileOptions
-)
+export const getCurrentUserProfile = graphql(CurrentUserProfileQuery, getCurrentUserProfileOptions)
