@@ -31,6 +31,7 @@ import userMutations from './mutations/user'
 import uploadMutations from './mutations/upload'
 import projectMutations from './mutations/project'
 import commentMutations from './mutations/comment'
+import notificationMutations from './mutations/notification'
 
 const debug = require('debug')('api:resolvers')
 
@@ -70,7 +71,8 @@ const resolvers = merge(
   userMutations,
   uploadMutations,
   projectMutations,
-  commentMutations
+  commentMutations,
+  notificationMutations
 )
 
 // Logging

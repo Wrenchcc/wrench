@@ -7,6 +7,14 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
 
+  // Add new notification to db
+  await ctx.db.Notification.save({
+    to: post.userId,
+    type: NOTIFICATION_TYPES.NEW_COMMENT,
+    typeId: project.id,
+    user,
+  })
+
   // Send notification to post owner
   await ctx.services.firebase.sendPushNotification({
     data: {
@@ -32,6 +40,14 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
         to: mentionedUser.id,
         type: NOTIFICATION_TYPES.NEW_MENTION,
         userId: ctx.userId,
+      })
+
+      // Add new notification to db
+      await ctx.db.Notification.save({
+        to: mentionedUser.id,
+        type: NOTIFICATION_TYPES.NEW_MENTION,
+        typeId: project.id,
+        user,
       })
     })
   }

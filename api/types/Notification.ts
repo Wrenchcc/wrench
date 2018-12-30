@@ -11,9 +11,9 @@ export default `
   }
 
   enum NotificationType {
-    comment
-    follow
-    reply
+    newComment
+    newFollower
+    newMention
 	}
 
   type NotificationsConnection {

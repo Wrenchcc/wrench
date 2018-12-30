@@ -14,8 +14,8 @@ export default class Brands extends BaseEntity {
   @OneToMany(() => Model, model => model.brand)
   public models: Model[]
 
-  @PrimaryGeneratedColumn()
-  public id: number
+  @PrimaryGeneratedColumn('uuid')
+  public id: string
 
   @CreateDateColumn()
   public createdAt: Date

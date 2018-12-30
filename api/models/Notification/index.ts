@@ -10,10 +10,10 @@ import {
 import User from '../User'
 import Comment from '../Comment'
 
-enum NotificationType {
-  Comment = 'comment',
-  Follow = 'follow',
-  Reply = 'reply',
+enum NotificationTypes {
+  NewComment = 'newComment',
+  NewFollower = 'newFollower',
+  NewMention = 'newMention',
 }
 
 @Entity('notifications')
@@ -21,14 +21,11 @@ export default class Notification extends BaseEntity {
   @ManyToOne(() => User, user => user.notifications)
   public user: User
 
-  // @ManyToOne(() => Comment, comment => comment.notification)
-  // public comment: Comment
-
-  // @ManyToOne(() => Comment, comment => comment.notification)
-  // public comment: Comment
-
   @PrimaryGeneratedColumn('uuid')
   public id: string
+
+  @Column('uuid')
+  public to: string
 
   @CreateDateColumn()
   public createdAt: Date
@@ -36,8 +33,11 @@ export default class Notification extends BaseEntity {
   @UpdateDateColumn()
   public updatedAt: Date
 
-  @Column('enum', { enum: NotificationType })
-  public type: NotificationType
+  @Column('enum', { enum: NotificationTypes })
+  public type: NotificationTypes
+
+  @Column('uuid')
+  public typeId: string
 
   @Column({ default: false })
   public isSeen: boolean

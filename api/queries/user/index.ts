@@ -6,6 +6,7 @@ import interestedIn from './interestedIn'
 import settings from './settings'
 import projectCount from './projectCount'
 import followingProjects from './followingProjects'
+import unreadNotifications from './unreadNotifications'
 
 export default {
   Query: {
@@ -19,5 +20,6 @@ export default {
     projectCount,
     projectsConnection,
     settings,
+    unreadNotifications,
   },
 }

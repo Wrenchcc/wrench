@@ -5,8 +5,7 @@ import paginate from 'api/utils/paginate'
 export default requireAuth(async (_, args, ctx) => {
   try {
     return paginate(ctx.db.Notification, args, {
-      relations: ['user', 'comment'],
-      where: { userId: args.userId },
+      where: { to: ctx.userId },
     })
   } catch (err) {
     console.log(err)
