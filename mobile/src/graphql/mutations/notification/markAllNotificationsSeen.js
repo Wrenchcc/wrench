@@ -1,5 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 
 const MarkAllNotificationsSeenMutation = gql`
   mutation markAllNotificationsSeen {
@@ -10,13 +11,21 @@ const MarkAllNotificationsSeenMutation = gql`
 const markAllNotificationsSeenOptions = {
   props: ({ mutate }) => ({
     markAllNotificationsSeen: () => mutate({
-      optimisticResponse: {
-        __typename: 'Mutation',
-        markAllNotificationsSeen: {
-          __typename: 'User',
-          id: 'dd219e11-1722-43da-99da-c777c3b5f2fc',
-          unreadNotifications: 0,
-        },
+      update: store => {
+        const data = store.readQuery({ query: CurrentUserQuery })
+
+        const user = {
+          ...data,
+          user: {
+            ...data.user,
+            unreadNotifications: 0,
+          },
+        }
+
+        store.writeQuery({
+          query: CurrentUserQuery,
+          data: user,
+        })
       },
     }),
   }),

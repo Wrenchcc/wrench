@@ -20,6 +20,7 @@ class Notifications extends PureComponent {
   }
 
   componentDidMount() {
+    // TODO: Only when have unSeened notifications
     this.props.markAllNotificationsSeen()
   }
 
@@ -66,7 +67,7 @@ class Notifications extends PureComponent {
 }
 
 export default compose(
-  markAllNotificationsSeen,
   getNotifications,
+  markAllNotificationsSeen,
   withNamespaces('Notifications')
 )(Notifications)
