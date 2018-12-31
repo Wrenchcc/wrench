@@ -9,7 +9,7 @@ export default function formatNotification(type, data, user) {
       }
     case NOTIFICATION_TYPES.NEW_COMMENT:
       return {
-        body: `${user.fullName} commented: "${data.text}" on your post ${data.title}.`,
+        body: `${user.fullName} commented: "${data.text}" on your project ${data.title}.`,
       }
     case NOTIFICATION_TYPES.NEW_MENTION:
       return {
