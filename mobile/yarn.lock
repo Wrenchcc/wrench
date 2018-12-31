@@ -2235,14 +2235,6 @@ create-react-context@0.2.2:
     fbjs "^0.8.0"
     gud "^1.0.0"
 
-create-react-context@0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
-  integrity sha512-CQBmD0+QGgTaxDL3OX1IDXYqjkp2It4RIbcb99jS6AEg27Ga+a9G3JtK6SIu0HBwPLZlmwt9F7UwWA4Bn92Rag==
-  dependencies:
-    fbjs "^0.8.0"
-    gud "^1.0.0"
-
 create-react-context@^0.1.5:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.1.6.tgz#0f425931d907741127acc6e31acb4f9015dd9fdc"
@@ -5187,13 +5179,12 @@ react-dom@^16.7.0:
     prop-types "^15.6.2"
     scheduler "^0.12.0"
 
-react-i18next@^8.4.0:
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-8.4.0.tgz#e9f0c5b9938b155eaa6051360614719c08cae72f"
-  integrity sha512-zIO/bc1L0UUGdaws2y40cTiSQHuQud5e9SSodYM6MTzhJTI3iayxCCdgvotblOLM4taOD77Ct2/fUbheQIhyeg==
+react-i18next@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-9.0.0.tgz#32b90bcaac50409b0b3ab90aeda53d7791dd5ddf"
+  integrity sha512-v+z0qNYWOYd9KM2XFd6Efww0RwD4F5kSPUmtdT31Qr1aWCnT5L4wpli2mxX2D8lHjhuKpSFmoGUiCXDokEuiZg==
   dependencies:
     "@babel/runtime" "^7.1.2"
-    create-react-context "0.2.3"
     hoist-non-react-statics "3.0.1"
     html-parse-stringify2 "2.0.1"
 
@@ -5246,10 +5237,10 @@ react-native-device-info@^0.24.3:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.24.3.tgz#f15eff8d09fe418eaf5e7c89ddaabbc5ed718fd7"
   integrity sha512-usW00Wk6DoXH1eRSMt07j0uYvuka3SIEnJ9girlddAacyqwfa1QMVTN4eYmtaBzuMd/avhis8iHZQ3cLaR9CMA==
 
-react-native-fast-image@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.1.1.tgz#2595323a926ade0b3a37bd627eb55e3ebf67598b"
-  integrity sha512-kEzgZxbbXYhy27u5GnhrKitn+XDBFAHSDUJdYC6llMi5cDPjgcqhOAQABj0K+ga5pn+/xPZLmD882rrUGiwVVA==
+react-native-fast-image@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.1.2.tgz#c9b909993e9304736c3d9806df80f7a9705ef829"
+  integrity sha512-NZsuW36I4fqnlOuxh0ZY31Q7wGWSqZMOC0wtp7ZcSG2dmjXSFaSFTdxX2vJx4Dhm0tMT3qG4yrn2ob3BiZEudA==
 
 react-native-fbsdk@^0.8.0:
   version "0.8.0"
@@ -5473,10 +5464,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^7.2.5:
-  version "7.2.5"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.5.tgz#3e68b575caee1af4465b54566ee97c33c1eceac8"
-  integrity sha512-J14PEJmkTOKLqN03+y7nM9szUrnQhZnapyQu4Tr8Ncq5wpKUB4ASZ4pRU/amNVKf0WVPkYeD62FqZFIrDjELJg==
+react-spring@^7.2.7:
+  version "7.2.7"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.7.tgz#1e64ddfbc9b835a3d8795bb0e5c45c3a400ab9e7"
+  integrity sha512-UFPkQzPQMOf9E9GFprcGVfa+1EdnffQV6tvFGY+kck32orqgqKrfP54y8da3qP3T6hLnLkU77seVZOD7GYPNEg==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
