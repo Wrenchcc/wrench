@@ -11,6 +11,9 @@ export default requireAuth(async (_, args, ctx) => {
   })
 
   const notifications = await ctx.db.Notification.find({
+    order: {
+      createdAt: 'DESC',
+    },
     where: { to: ctx.userId },
   })
 

@@ -25,7 +25,7 @@ class List extends PureComponent {
       <Text bold fontSize={15} onPress={() => this.goToProfile(node.user)}>
         {`${node.user.fullName} `}
       </Text>
-      <Comment fontSize={15} numberOfLines={1}>
+      <Comment fontSize={15} numberOfLines={1} lineHeight={22}>
         {node.text}
       </Comment>
     </Row>

@@ -51,7 +51,7 @@ function Notification({ data, t }) {
         <Text onPress={() => navigateToUser({ user: data.user })}>{data.user.fullName}</Text>
         <Bottom>
           <View style={{ marginRight: 50 }}>
-            <Text color="light_grey" fontSize={15} onPress={() => onPress(data)}>
+            <Text color="light_grey" fontSize={15} lineHeight={22} onPress={() => onPress(data)}>
               {description(data, t)}
             </Text>
           </View>

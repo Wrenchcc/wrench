@@ -11,7 +11,7 @@ const Text = ({
   onPress,
   onLongPress,
   disabled = false,
-  lineHeight = 25,
+  lineHeight = 0,
   hapticFeedback = null,
   ...props
 }) => onPress ? (
@@ -26,7 +26,6 @@ const Text = ({
         numberOfLines={numberOfLines}
         {...props}
         parse={handleParse}
-        lineHeight={lineHeight}
         childrenProps={{ style: { lineHeight } }}
       >
         {children}
@@ -37,7 +36,6 @@ const Text = ({
       numberOfLines={numberOfLines}
       {...props}
       parse={handleParse}
-      lineHeight={lineHeight}
       childrenProps={{ style: { lineHeight } }}
     >
       {children}
