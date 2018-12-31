@@ -199,9 +199,10 @@
       "title": "No results found"
     },
     "Notification": {
-      "follow": "Now follows",
+      "follow": "Now follows your project",
       "comment": "Commented on your post",
-      "reply": "Replied to your comment"
+      "reply": "Replied to your comment",
+      "mention": "Mentioned you in a comment"
     },
     "Post": {
       "options": {
@@ -435,9 +436,10 @@
       "title": "Inga resultat funna"
     },
     "Notification": {
-      "follow": "Följer nu",
+      "follow": "Följer nu ditt projekt",
       "comment": "Kommenterade på ditt inlägg",
-      "reply": "Svarade på din kommentar"
+      "reply": "Svarade på din kommentar",
+      "mention": "Nämnde dig i en kommentar"
     },
     "Post": {
       "options": {

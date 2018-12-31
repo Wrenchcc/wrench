@@ -1,14 +1,16 @@
 {
   "Notification": {
     "en": {
-      "follow": "Now follows",
+      "follow": "Now follows your project",
       "comment": "Commented on your post",
-      "reply": "Replied to your comment"
+      "reply": "Replied to your comment",
+      "mention": "Mentioned you in a comment"
     },
     "sv": {
-      "follow": "Följer nu",
+      "follow": "Följer nu ditt projekt",
       "comment": "Kommenterade på ditt inlägg",
-      "reply": "Svarade på din kommentar"
+      "reply": "Svarade på din kommentar",
+      "mention": "Nämnde dig i en kommentar"
     }
   }
 }

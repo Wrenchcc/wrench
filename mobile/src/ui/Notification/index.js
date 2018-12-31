@@ -10,13 +10,13 @@ const onPress = data => {
   switch (data.type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
       return navigateToProject({ project: data.project })
+    case NOTIFICATION_TYPES.NEW_MENTION:
     case NOTIFICATION_TYPES.NEW_COMMENT:
     case NOTIFICATION_TYPES.NEW_REPLY:
       return navigateToComments({
         id: data.comment.postId,
         user: data.user,
-        project: data.project,
-        highlightedId: data.comment.id,
+        commentId: data.comment.id,
       })
     default:
       return null
@@ -26,11 +26,13 @@ const onPress = data => {
 const description = (data, t) => {
   switch (data.type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
-      return `${t('Notification:follow')} ${data.project.title}`
+      return `${t('Notification:follow')}: "${data.project.title}"`
     case NOTIFICATION_TYPES.NEW_COMMENT:
-      return t('Notification:comment')
+      return `${t('Notification:comment')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_REPLY:
-      return t('Notification:reply')
+      return `${t('Notification:reply')}: "${data.comment.text}"`
+    case NOTIFICATION_TYPES.NEW_MENTION:
+      return `${t('Notification:mention')}: "${data.comment.text}"`
     default:
       return null
   }

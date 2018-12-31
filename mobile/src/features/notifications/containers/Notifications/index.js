@@ -15,13 +15,17 @@ class Notifications extends PureComponent {
     isFetching: PropTypes.bool.isRequired,
     isRefetching: PropTypes.bool.isRequired,
     markAllNotificationsSeen: PropTypes.func.isRequired,
+    navigation: PropTypes.object.isRequired,
     notifications: PropTypes.array,
     refetch: PropTypes.func.isRequired,
   }
 
-  componentDidMount() {
-    // TODO: Only when have unSeened notifications
-    this.props.markAllNotificationsSeen()
+  constructor(props) {
+    super(props)
+
+    props.navigation.addListener('willFocus', () => {
+      props.markAllNotificationsSeen()
+    })
   }
 
   renderItem = ({ item }) => <Notification data={item.node} />

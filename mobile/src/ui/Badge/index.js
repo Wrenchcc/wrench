@@ -1,15 +1,16 @@
 import React from 'react'
+import ms from 'ms'
 import { View } from 'react-native'
 import { Query } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { CurrentUserUnreadNotificationsQuery } from 'graphql/queries/user/getCurrentUser'
+import { NotificationsUnreadCountQuery } from 'graphql/queries/getNotifications'
 import { COLORS } from 'ui/constants'
 
 export default function Badge() {
   return (
-    <Query query={CurrentUserUnreadNotificationsQuery}>
+    <Query query={NotificationsUnreadCountQuery} pollInterval={ms('1m')}>
       {({ data }) => {
-        if (pathOr(0, ['user', 'unreadNotifications'], data) > 0) {
+        if (pathOr(0, ['notifications', 'unreadCount'], data) > 0) {
           return (
             <View
               style={{
