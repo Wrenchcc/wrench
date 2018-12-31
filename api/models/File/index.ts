@@ -10,11 +10,7 @@ import {
 import User from '../User'
 import Post from '../Post'
 import Project from '../Project'
-
-enum FileType {
-  Image = 'image',
-  Video = 'video',
-}
+import { FileType } from '../enums'
 
 @Entity('files')
 export default class File extends BaseEntity {

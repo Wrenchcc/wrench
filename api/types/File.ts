@@ -13,8 +13,8 @@ export default `
   }
 
   enum FileType {
-    image
-    video
+    IMAGE
+    VIDEO
 	}
 
   type FileEdge {

@@ -5,8 +5,8 @@ export default `
   }
 
   enum PlatformType {
-    mobile
-    web
+    MOBILE
+    WEB
 	}
 
 `

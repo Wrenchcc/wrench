@@ -2,7 +2,7 @@ export default `
   type Notification {
     id: ID!
     user: User!
-    type: NotificationType
+    type: NotificationTypes
     project: Project
     comment: Comment
     isSeen: Boolean!
@@ -10,10 +10,10 @@ export default `
     updatedAt: Date!
   }
 
-  enum NotificationType {
-    newComment
-    newFollower
-    newMention
+  enum NotificationTypes {
+    NEW_COMMENT
+    NEW_FOLLOWER
+    NEW_MENTION
 	}
 
   type NotificationsConnection {

@@ -9,12 +9,7 @@ import {
 } from 'typeorm'
 import User from '../User'
 import Comment from '../Comment'
-
-enum NotificationTypes {
-  NewComment = 'newComment',
-  NewFollower = 'newFollower',
-  NewMention = 'newMention',
-}
+import { NotificationTypes } from '../enums'
 
 @Entity('notifications')
 export default class Notification extends BaseEntity {

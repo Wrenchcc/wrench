@@ -1,12 +1,10 @@
 import { omit } from 'ramda'
 import { generateTokens } from 'api/utils/tokens'
+import { PLATFORM_TYPES } from 'shared/utils/enums'
 
 const PROVIDER_NAME = 'facebook'
-const PLATFORMS = {
-  MOBILE: 'mobile',
-  WEB: 'web',
-}
 
+// TODO: Get platform from client
 export default async (_, { facebookToken }, ctx) => {
   const fbUser = await ctx.services.facebook.getAccountData(facebookToken)
 
@@ -24,13 +22,13 @@ export default async (_, { facebookToken }, ctx) => {
 
     // Delete all previous tokens
     await ctx.db.AuthToken.delete({
-      platform: PLATFORMS.MOBILE,
+      platform: PLATFORM_TYPES.MOBILE,
       userId: authProvider.userId,
     })
 
     // Save new token with user
     await ctx.db.AuthToken.save({
-      platform: PLATFORMS.MOBILE,
+      platform: PLATFORM_TYPES.MOBILE,
       refreshToken: tokens.refreshToken,
       user,
     })
@@ -52,7 +50,7 @@ export default async (_, { facebookToken }, ctx) => {
 
   // Save new refreshToken
   await ctx.db.AuthToken.save({
-    platform: PLATFORMS.MOBILE,
+    platform: PLATFORM_TYPES.MOBILE,
     refreshToken: newTokens.refreshToken,
     user: createdUser,
   })
