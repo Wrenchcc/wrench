@@ -14,9 +14,11 @@ export default `
     NEW_COMMENT
     NEW_FOLLOWER
     NEW_MENTION
+    NEW_REPLY
 	}
 
   type NotificationsConnection {
+    unreadCount: Int
 		pageInfo: PageInfo
 		edges: [NotificationEdge]
 	}

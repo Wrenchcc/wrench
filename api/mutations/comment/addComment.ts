@@ -1,5 +1,5 @@
 import { requireAuth } from 'api/utils/permissions'
-import { NOTIFICATION_TYPES } from 'api/utils/notificationTypes'
+import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 import { MENTION_REGEX } from 'shared/utils/regex'
 
 export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
@@ -7,11 +7,20 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
 
+  const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
+
+  const comment = await ctx.db.Comment.save({
+    commentId,
+    postId,
+    text: input.text,
+    user,
+  })
+
   // Add new notification to db
   await ctx.db.Notification.save({
     to: post.userId,
-    type: NOTIFICATION_TYPES.NEW_COMMENT,
-    typeId: project.id,
+    type: notificationType,
+    typeId: comment.id,
     user,
   })
 
@@ -35,27 +44,22 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
 
       await ctx.services.firebase.sendPushNotification({
         data: {
-          title: project.title,
+          text: input.text,
         },
         to: mentionedUser.id,
-        type: NOTIFICATION_TYPES.NEW_MENTION,
+        type: notificationType,
         userId: ctx.userId,
       })
 
       // Add new notification to db
       await ctx.db.Notification.save({
         to: mentionedUser.id,
-        type: NOTIFICATION_TYPES.NEW_MENTION,
-        typeId: project.id,
+        type: notificationType,
+        typeId: comment.id,
         user,
       })
     })
   }
 
-  return ctx.db.Comment.save({
-    commentId,
-    postId,
-    text: input.text,
-    user,
-  })
+  return comment
 })

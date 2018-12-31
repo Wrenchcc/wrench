@@ -1,11 +1,18 @@
 import { UserInputError, ForbiddenError } from 'apollo-server-express'
 import { mergeRight } from 'ramda'
 import { requireAuth } from 'api/utils/permissions'
-import {
-  DEFAULT_NOTIFICATIONS,
-  NOTIFICATION_TYPES,
-  NOTIFICATIONS_COLUMN,
-} from 'api/utils/notificationTypes'
+import { NOTIFICATION_TYPES } from 'shared/utils/enums'
+
+const DEFAULT_NOTIFICATIONS = {
+  [NOTIFICATION_TYPES.NEW_ARTICLE]: true,
+  [NOTIFICATION_TYPES.NEW_COMMENT]: true,
+  [NOTIFICATION_TYPES.NEW_FOLLOWER]: true,
+  [NOTIFICATION_TYPES.NEW_MENTION]: true,
+  [NOTIFICATION_TYPES.PRODUCT_ANNOUNCEMENTS]: true,
+  [NOTIFICATION_TYPES.SIMILAR_PROJECTS]: true,
+}
+
+const NOTIFICATIONS_COLUMN = 'notifications'
 
 export default requireAuth(async (_, args, ctx) => {
   const { notificationType } = args.input

@@ -1,6 +1,6 @@
 import { ForbiddenError } from 'apollo-server-express'
 import { requireAuth, canModerateProject } from 'api/utils/permissions'
-import { NOTIFICATION_TYPES } from 'api/utils/notificationTypes'
+import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 
 export default requireAuth(async (_, { id }, ctx) => {
   const userId = ctx.userId
