@@ -1,3 +1,4 @@
+import { filter } from 'ramda'
 import { requireAuth } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 
@@ -21,10 +22,17 @@ export default requireAuth(async (_, args, ctx) => {
     notifications.map(async ({ typeId, type, ...rest }) => {
       switch (type) {
         case NOTIFICATION_TYPES.NEW_FOLLOWER:
+          const project = await ctx.db.Project.findOne(typeId)
+
+          if (!project) {
+            await ctx.db.Notification.delete({ typeId })
+            return null
+          }
+
           return {
             node: {
               ...rest,
-              project: await ctx.db.Project.findOne(typeId),
+              project,
               type,
               user: await ctx.db.User.findOne(ctx.userId),
             },
@@ -32,10 +40,17 @@ export default requireAuth(async (_, args, ctx) => {
         case NOTIFICATION_TYPES.NEW_MENTION:
         case NOTIFICATION_TYPES.NEW_COMMENT:
         case NOTIFICATION_TYPES.NEW_REPLY:
+          const comment = await ctx.db.Comment.findOne(typeId)
+
+          if (!comment) {
+            await ctx.db.Notification.delete({ typeId })
+            return null
+          }
+
           return {
             node: {
               ...rest,
-              comment: await ctx.db.Comment.findOne(typeId),
+              comment,
               type,
               user: await ctx.db.User.findOne(ctx.userId),
             },
@@ -47,7 +62,7 @@ export default requireAuth(async (_, args, ctx) => {
   )
 
   return {
-    edges,
+    edges: filter(n => n !== null, edges),
     unreadCount,
   }
 })
