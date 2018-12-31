@@ -29,12 +29,12 @@ export default `
 	}
 
   type NotificationSettingsType {
-    newFollower: Boolean
-    newComment: Boolean
-    newMention: Boolean
-    newArticle: Boolean
-    similarProjects: Boolean
-    productAnnouncements: Boolean
+    NEW_FOLLOWER: Boolean
+    NEW_COMMENT: Boolean
+    NEW_MENTION: Boolean
+    NEW_ARTICLE: Boolean
+    SIMILAR_PROJECTS: Boolean
+    PRODUCT_ANNOUNCEMENTS: Boolean
   }
 
   type UserNotificationsSettings {
