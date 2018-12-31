@@ -105,7 +105,6 @@ class Post extends PureComponent {
               onPress={this.goToProject}
               disabled={onPost}
               color="grey"
-              lineHeight={25}
             >
               {post.caption}
             </Caption>

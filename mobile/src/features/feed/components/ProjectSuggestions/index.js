@@ -25,7 +25,7 @@ class ProjectSuggestions extends PureComponent {
           {t('ProjectSuggestions:headline')}
         </Headline>
 
-        <Description color="grey" fontSize={19} lineHeight={25}>
+        <Description color="grey" fontSize={19}>
           {t('ProjectSuggestions:description')}
         </Description>
 

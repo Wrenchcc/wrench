@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { View } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { navigateToUser, navigateToProject, navigateToComments } from 'navigation'
 import { Avatar, Text, TimeAgo } from 'ui'
@@ -49,10 +50,14 @@ function Notification({ data, t }) {
       <Content>
         <Text onPress={() => navigateToUser({ user: data.user })}>{data.user.fullName}</Text>
         <Bottom>
-          <Text color="light_grey" fontSize={15} onPress={() => onPress(data)}>
-            {description(data, t)}
-          </Text>
-          <TimeAgo date={data.createdAt} fontSize={15} />
+          <View style={{ marginRight: 50 }}>
+            <Text color="light_grey" fontSize={15} onPress={() => onPress(data)}>
+              {description(data, t)}
+            </Text>
+          </View>
+          <View style={{ marginLeft: 'auto' }}>
+            <TimeAgo date={data.createdAt} fontSize={15} />
+          </View>
         </Bottom>
       </Content>
     </Base>
