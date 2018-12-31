@@ -1,10 +1,9 @@
 import gql from 'graphql-tag'
+import ms from 'ms'
 import { graphql } from 'react-apollo'
 import { getUserId } from 'navigation/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import postsInfoFragment from 'graphql/fragments/post/postsInfo'
-
-const THIRTY_SECONDS = 30000
 
 export const FeedQuery = gql`
   query getFeed($userId: ID, $after: String) {
@@ -20,7 +19,7 @@ const getFeedOptions = {
     variables: {
       userId: getUserId(navigation),
     },
-    pollInterval: THIRTY_SECONDS,
+    pollInterval: ms('1m'),
     fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('posts'),

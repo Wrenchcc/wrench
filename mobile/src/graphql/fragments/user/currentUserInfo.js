@@ -9,7 +9,6 @@ export default gql`
     username
     avatarUrl
     projectCount
-    unreadNotifications
     interestedIn {
       id
     }
