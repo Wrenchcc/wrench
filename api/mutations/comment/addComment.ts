@@ -45,6 +45,7 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
       await ctx.services.firebase.sendPushNotification({
         data: {
           text: input.text,
+          title: project.title,
         },
         to: mentionedUser.id,
         type: notificationType,
