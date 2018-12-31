@@ -27,12 +27,12 @@
         "sv": "Swedish"
       },
       "notifications": {
-        "newComment": "Comments",
-        "newMention": "Mentions",
-        "newArticle": "Articles",
-        "newFollower": "Followers",
-        "similarProjects": "Similar projects",
-        "productAnnouncements": "Product announcements"
+        "NEW_COMMENT": "Comments",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Articles",
+        "NEW_FOLLOWER": "Followers",
+        "SIMILAR_PROJECTS": "Similar projects",
+        "PRODUCT_ANNOUNCEMENTS": "Product announcements"
       }
     },
     "sv": {
@@ -61,12 +61,12 @@
         "sv": "Svenska"
       },
       "notifications": {
-        "newComment": "Kommentarer",
-        "newMention": "Mentions",
-        "newArticle": "Artiklar",
-        "newFollower": "Följare",
-        "similarProjects": "Liknande projekt",
-        "productAnnouncements": "Produktmeddelanden"
+        "NEW_COMMENT": "Kommentarer",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Artiklar",
+        "NEW_FOLLOWER": "Följare",
+        "SIMILAR_PROJECTS": "Liknande projekt",
+        "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
       }
     }
   }

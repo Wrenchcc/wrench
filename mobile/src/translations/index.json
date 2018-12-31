@@ -44,12 +44,12 @@
         "sv": "Swedish"
       },
       "notifications": {
-        "newComment": "Comments",
-        "newMention": "Mentions",
-        "newArticle": "Articles",
-        "newFollower": "Followers",
-        "similarProjects": "Similar projects",
-        "productAnnouncements": "Product announcements"
+        "NEW_COMMENT": "Comments",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Articles",
+        "NEW_FOLLOWER": "Followers",
+        "SIMILAR_PROJECTS": "Similar projects",
+        "PRODUCT_ANNOUNCEMENTS": "Product announcements"
       }
     },
     "AddPostHeader": {
@@ -200,7 +200,7 @@
     },
     "Notification": {
       "follow": "Now follows your project",
-      "comment": "Commented on your post",
+      "comment": "Commented on your project",
       "reply": "Replied to your comment",
       "mention": "Mentioned you in a comment"
     },
@@ -282,12 +282,12 @@
         "sv": "Svenska"
       },
       "notifications": {
-        "newComment": "Kommentarer",
-        "newMention": "Mentions",
-        "newArticle": "Artiklar",
-        "newFollower": "Följare",
-        "similarProjects": "Liknande projekt",
-        "productAnnouncements": "Produktmeddelanden"
+        "NEW_COMMENT": "Kommentarer",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Artiklar",
+        "NEW_FOLLOWER": "Följare",
+        "SIMILAR_PROJECTS": "Liknande projekt",
+        "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
       }
     },
     "AddPostHeader": {
@@ -437,7 +437,7 @@
     },
     "Notification": {
       "follow": "Följer nu ditt projekt",
-      "comment": "Kommenterade på ditt inlägg",
+      "comment": "Kommenterade på ditt projekt",
       "reply": "Svarade på din kommentar",
       "mention": "Nämnde dig i en kommentar"
     },

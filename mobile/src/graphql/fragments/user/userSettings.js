@@ -6,12 +6,12 @@ export default gql`
     settings {
       notifications {
         types {
-          newFollower
-          newComment
-          newMention
-          newArticle
-          similarProjects
-          productAnnouncements
+          NEW_FOLLOWER
+          NEW_COMMENT
+          NEW_MENTION
+          NEW_ARTICLE
+          SIMILAR_PROJECTS
+          PRODUCT_ANNOUNCEMENTS
         }
       }
     }
