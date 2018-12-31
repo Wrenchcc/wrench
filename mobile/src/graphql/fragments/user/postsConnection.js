@@ -17,7 +17,7 @@ export default gql`
           postPermissions {
             isOwner
           }
-          files: filesConnection(type: image) {
+          files: filesConnection(type: IMAGE) {
             edges {
               node {
                 id
