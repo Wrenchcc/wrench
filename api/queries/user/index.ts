@@ -1,11 +1,11 @@
 import currentUser from './currentUser'
-import user from './user'
-import projectsConnection from './projectsConnection'
-import postsConnection from './postsConnection'
-import interestedIn from './interestedIn'
-import settings from './settings'
-import projectCount from './projectCount'
 import followingProjects from './followingProjects'
+import interestedIn from './interestedIn'
+import postsConnection from './postsConnection'
+import projectCount from './projectCount'
+import projectsConnection from './projectsConnection'
+import settings from './settings'
+import user from './user'
 
 export default {
   Query: {

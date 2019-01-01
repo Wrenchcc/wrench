@@ -42,7 +42,8 @@ export default `
   }
 
   type UserSettings {
-   notifications: UserNotificationsSettings
+    locale: String
+    notifications: UserNotificationsSettings
  }
 
   extend type Query {
@@ -53,6 +54,7 @@ export default `
 
   input EditUserInput {
     interestedIn: [ProjectTypeInput]
+    locale: String
   }
 
   input ToggleNotificationSettingsInput {
