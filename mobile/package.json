@@ -27,7 +27,6 @@
     "graphql-tag": "^2.10.0",
     "human-format": "^0.10.1",
     "i18next": "^13.1.0",
-    "javascript-time-ago": "^1.0.34",
     "ms": "^2.1.1",
     "ramda": "^0.26.1",
     "react": "^16.7.0",
