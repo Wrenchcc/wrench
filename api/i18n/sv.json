@@ -1,3 +1,6 @@
 {
-  "NEW_COMMENT": "{{name}} kommenterade: \"{{comment}}\" på ditt projekt {{project}}."
+  "NEW_COMMENT": "{{name}} kommenterade: \"{{comment}}\" på ditt projekt {{project}}.",
+  "NEW_MENTION": "{{name}} nämnde dig i en kommentar: \"{{comment}}\".",
+  "NEW_REPLY": "{{name}} svarade på din kommentar: \"{{comment}}\".",
+  "NEW_FOLLOWER": "{{name}} följer nu ditt projekt: \"{{project}}\"."
 }

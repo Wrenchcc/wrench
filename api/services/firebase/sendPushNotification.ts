@@ -1,13 +1,13 @@
 import { pathOr } from 'ramda'
 import { getDeviceToken } from 'api/models/DeviceToken'
-import { getNotificationSettings } from 'api/models/UserSettings'
+import { getNotificationSettings, getUserLocale } from 'api/models/UserSettings'
 import { getUserById } from 'api/models/User'
 import formatNotification from 'api/utils/formatNotification'
 import admin from './config'
 
 const debug = require('debug')('api:firebase')
 
-export default async ({ data, userId, to, type }, translate) => {
+export default async ({ data, userId, to, type }) => {
   const notificationSettings = await getNotificationSettings(to)
   const isEnabled = pathOr(true, ['value', type], notificationSettings)
 
@@ -16,10 +16,11 @@ export default async ({ data, userId, to, type }, translate) => {
   }
 
   const { token } = await getDeviceToken(to)
+  const locale = await getUserLocale(to)
   const user = await getUserById(userId)
 
   const message = {
-    notification: formatNotification(type, data, user, translate),
+    notification: formatNotification(type, data, user, locale),
     token,
   }
 

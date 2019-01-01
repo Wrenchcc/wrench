@@ -8,7 +8,12 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
+import { pathOr } from 'ramda'
+import { defaultLocale } from 'shared/locale'
 import User from '../User'
+
+export const NOTIFICATIONS_COLUMN = 'notifications'
+export const LOCALE_COLUMN = 'locale'
 
 @Entity('users_settings')
 export default class UserSettings extends BaseEntity {
@@ -36,20 +41,31 @@ export default class UserSettings extends BaseEntity {
   public updatedAt: Date
 
   @Column()
-  public userId: number
+  public userId: string
 
   @Column()
   public type: string
 
-  @Column('simple-json')
+  @Column()
   public value: string
 }
 
 export function getNotificationSettings(userId) {
   return getRepository(UserSettings).findOne({
     where: {
-      type: 'notifications',
+      type: NOTIFICATIONS_COLUMN,
       userId,
     },
   })
+}
+
+export async function getUserLocale(userId) {
+  const locale = await getRepository(UserSettings).findOne({
+    where: {
+      type: LOCALE_COLUMN,
+      userId,
+    },
+  })
+
+  return pathOr(defaultLocale, ['value'], locale)
 }

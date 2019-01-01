@@ -24,18 +24,15 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   })
 
   // Send notification to post owner
-  await ctx.services.firebase.sendPushNotification(
-    {
-      data: {
-        text: input.text,
-        title: project.title,
-      },
-      to: post.userId,
-      type: NOTIFICATION_TYPES.NEW_COMMENT,
-      userId: ctx.userId,
+  await ctx.services.firebase.sendPushNotification({
+    data: {
+      text: input.text,
+      title: project.title,
     },
-    ctx.translate
-  )
+    to: post.userId,
+    type: NOTIFICATION_TYPES.NEW_COMMENT,
+    userId: ctx.userId,
+  })
 
   // Send notification to mentioned users
   const mentions = input.text.match(MENTION_REGEX)
@@ -44,18 +41,15 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
       const username = mention.replace('@', '')
       const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
-      await ctx.services.firebase.sendPushNotification(
-        {
-          data: {
-            text: input.text,
-            title: project.title,
-          },
-          to: mentionedUser.id,
-          type: notificationType,
-          userId: ctx.userId,
+      await ctx.services.firebase.sendPushNotification({
+        data: {
+          text: input.text,
+          title: project.title,
         },
-        ctx.translate
-      )
+        to: mentionedUser.id,
+        type: notificationType,
+        userId: ctx.userId,
+      })
 
       // Add new notification to db
       await ctx.db.Notification.save({
