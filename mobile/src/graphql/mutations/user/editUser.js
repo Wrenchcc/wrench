@@ -2,7 +2,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import currentUserInfoFragment from 'graphql/fragments/user/currentUserInfo'
 
-const EditUserMutation = gql`
+export const EditUserMutation = gql`
   mutation editUser($input: EditUserInput!) {
     editUser(input: $input) {
       ...currentUserInfo

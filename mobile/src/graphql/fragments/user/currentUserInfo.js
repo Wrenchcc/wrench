@@ -9,6 +9,9 @@ export default gql`
     username
     avatarUrl
     projectCount
+    settings {
+      locale
+    }
     interestedIn {
       id
     }

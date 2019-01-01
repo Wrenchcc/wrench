@@ -3,9 +3,6 @@ import { reactI18nextModule } from 'react-i18next'
 import humanFormat from 'human-format'
 import { getLocale } from './helpers'
 
-export * from './helpers'
-export { default as languages } from './languages'
-
 const resources = require('translations/index.json')
 
 const languageDetector = {
@@ -42,3 +39,7 @@ i18next
       },
     },
   })
+
+export * from './helpers'
+export * from './registerUserLocale'
+export { default as languages } from './languages'

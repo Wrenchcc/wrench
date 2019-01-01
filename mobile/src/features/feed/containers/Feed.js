@@ -4,10 +4,10 @@ import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
 import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
+import { registerRemoteUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
-// TODO: Only poll when focus
 class Feed extends PureComponent {
   static propTypes = {
     posts: PropTypes.array,
@@ -18,9 +18,9 @@ class Feed extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
   }
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     registerForPushNotifications()
+    registerRemoteUserLocale()
   }
 
   renderItem = ({ item }) => <Post post={item.node} />
