@@ -2,7 +2,7 @@ import { pathOr } from 'ramda'
 import { getDeviceToken } from 'api/models/DeviceToken'
 import { getNotificationSettings, getUserLocale } from 'api/models/UserSettings'
 import { getUserById } from 'api/models/User'
-import formatNotification from 'api/utils/formatNotification'
+import formatNotification from './formatNotification'
 import admin from './config'
 
 const debug = require('debug')('api:firebase')

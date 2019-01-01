@@ -27,8 +27,5 @@
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2"
-  },
-  "dependencies": {
-    "i18n": "^0.8.3"
   }
 }

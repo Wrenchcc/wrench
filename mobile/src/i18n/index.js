@@ -1,9 +1,8 @@
 import i18next from 'i18next'
 import { reactI18nextModule } from 'react-i18next'
 import humanFormat from 'human-format'
+import resources from 'translations/index.json'
 import { getLocale } from './helpers'
-
-const resources = require('translations/index.json')
 
 const languageDetector = {
   type: 'languageDetector',
