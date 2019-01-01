@@ -14,9 +14,10 @@ export default function Badge() {
           return (
             <View
               style={{
+                position: 'absolute',
                 zIndex: 10,
-                marginRight: -12,
-                marginBottom: -8,
+                right: -3,
+                top: -4,
                 width: 13,
                 height: 13,
                 borderRadius: 13,
