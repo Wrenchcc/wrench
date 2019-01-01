@@ -6,7 +6,6 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   const user = await ctx.db.User.findOne(ctx.userId)
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
-
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
 
   const comment = await ctx.db.Comment.save({
@@ -25,15 +24,18 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
   })
 
   // Send notification to post owner
-  await ctx.services.firebase.sendPushNotification({
-    data: {
-      text: input.text,
-      title: project.title,
+  await ctx.services.firebase.sendPushNotification(
+    {
+      data: {
+        text: input.text,
+        title: project.title,
+      },
+      to: post.userId,
+      type: NOTIFICATION_TYPES.NEW_COMMENT,
+      userId: ctx.userId,
     },
-    to: post.userId,
-    type: NOTIFICATION_TYPES.NEW_COMMENT,
-    userId: ctx.userId,
-  })
+    ctx.translate
+  )
 
   // Send notification to mentioned users
   const mentions = input.text.match(MENTION_REGEX)
@@ -42,15 +44,18 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
       const username = mention.replace('@', '')
       const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
-      await ctx.services.firebase.sendPushNotification({
-        data: {
-          text: input.text,
-          title: project.title,
+      await ctx.services.firebase.sendPushNotification(
+        {
+          data: {
+            text: input.text,
+            title: project.title,
+          },
+          to: mentionedUser.id,
+          type: notificationType,
+          userId: ctx.userId,
         },
-        to: mentionedUser.id,
-        type: notificationType,
-        userId: ctx.userId,
-      })
+        ctx.translate
+      )
 
       // Add new notification to db
       await ctx.db.Notification.save({

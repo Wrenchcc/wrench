@@ -14,7 +14,7 @@ const { PORT = 4000, NODE_ENV } = process.env
 createConnection(options)
   .then(async () => {
     const server = new ApolloServer({
-      context: ({ req }) => ({
+      context: ({ req, res }) => ({
         db,
         loaders,
         services,

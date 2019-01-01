@@ -16,12 +16,15 @@ export default requireAuth(async (_, { id }, ctx) => {
   } else {
     await ctx.db.Following.save({ projectId: id, userId })
 
-    await ctx.services.firebase.sendPushNotification({
-      data: project,
-      to: project.userId,
-      type: NOTIFICATION_TYPES.NEW_FOLLOWER,
-      userId,
-    })
+    await ctx.services.firebase.sendPushNotification(
+      {
+        data: project,
+        to: project.userId,
+        type: NOTIFICATION_TYPES.NEW_FOLLOWER,
+        userId,
+      },
+      ctx.translate
+    )
   }
 
   return ctx.db.Project.findOne(id)

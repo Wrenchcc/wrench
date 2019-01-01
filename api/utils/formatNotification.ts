@@ -1,7 +1,14 @@
+import * as i18n from 'i18n'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 
+i18n.configure({
+  defaultLocale: 'en',
+  directory: `${__dirname}/i18n`,
+  locales: ['en', 'sv'],
+})
+
 // TODO: Fix dynamicLink and locale
-export default function formatNotification(type, data, user) {
+export default function formatNotification(type, data, user, translate) {
   switch (type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
       return {
@@ -9,7 +16,11 @@ export default function formatNotification(type, data, user) {
       }
     case NOTIFICATION_TYPES.NEW_COMMENT:
       return {
-        body: `${user.fullName} commented: "${data.text}" on your project ${data.title}.`,
+        body: i18n.__(NOTIFICATION_TYPES.NEW_COMMENT, {
+          comment: data.text,
+          name: user.fullName,
+          project: data.title,
+        }),
       }
     case NOTIFICATION_TYPES.NEW_MENTION:
       return {

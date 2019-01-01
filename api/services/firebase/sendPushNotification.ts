@@ -7,7 +7,7 @@ import admin from './config'
 
 const debug = require('debug')('api:firebase')
 
-export default async ({ data, userId, to, type }) => {
+export default async ({ data, userId, to, type }, translate) => {
   const notificationSettings = await getNotificationSettings(to)
   const isEnabled = pathOr(true, ['value', type], notificationSettings)
 
@@ -19,7 +19,7 @@ export default async ({ data, userId, to, type }) => {
   const user = await getUserById(userId)
 
   const message = {
-    notification: formatNotification(type, data, user),
+    notification: formatNotification(type, data, user, translate),
     token,
   }
 
