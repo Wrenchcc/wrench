@@ -280,6 +280,13 @@
 			remoteGlobalIDString = 64AA15081EF7F30100718508;
 			remoteInfo = "BVLinearGradient-tvOS";
 		};
+		16FB166221DD43A400AC6CC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDC95D1E86E64D3EB9631044 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
+			remoteInfo = "ReactNativeConfig-tvOS";
+		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -487,6 +494,7 @@
 		16C95E9D20C5421200C0CD93 /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		16D21E092095F32B0000599F /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		16F3F6CD20CAC2E100F0A214 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		16FB167021DD43E900AC6CC3 /* notification.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = notification.aif; path = ../../../../notification.aif; sourceTree = "<group>"; };
 		21E2EC5993376B076BB74F28 /* libPods-Wrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wrench.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29D53CB22902401BB8FF774A /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -726,6 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				16900BC8205E8A8100B471EE /* libReactNativeConfig.a */,
+				16FB166321DD43A400AC6CC3 /* libReactNativeConfig-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -781,6 +790,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		16FB166F21DD43B700AC6CC3 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				16FB167021DD43E900AC6CC3 /* notification.aif */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -821,6 +838,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				16FB166F21DD43B700AC6CC3 /* Sounds */,
 				16ABF74E218B9BB50035C96E /* RNScreens.xcodeproj */,
 				165226CD20D18837006037C0 /* ReactNativePermissions.xcodeproj */,
 				160E6E7820D070CB00A4B595 /* RNReactNativeHapticFeedback.xcodeproj */,
@@ -1347,6 +1365,13 @@
 			fileType = archive.ar;
 			path = libBVLinearGradient.a;
 			remoteRef = 16D21E132095F32B0000599F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16FB166321DD43A400AC6CC3 /* libReactNativeConfig-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactNativeConfig-tvOS.a";
+			remoteRef = 16FB166221DD43A400AC6CC3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
