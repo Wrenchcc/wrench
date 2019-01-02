@@ -1,4 +1,5 @@
 import currentUser from './currentUser'
+import dynamicLink from './dynamicLink'
 import followingProjects from './followingProjects'
 import interestedIn from './interestedIn'
 import postsConnection from './postsConnection'
@@ -13,6 +14,7 @@ export default {
     user,
   },
   User: {
+    dynamicLink,
     followingProjects,
     interestedIn,
     postsConnection,

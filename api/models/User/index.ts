@@ -1,19 +1,18 @@
 import {
-  getRepository,
   BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn,
-  OneToMany,
-  ManyToMany,
-  JoinTable,
+  Entity,
+  getRepository,
   Index,
+  JoinTable,
   Like,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
-import { createDynamicLink } from 'api/services/firebase'
 import AuthToken from '../AuthToken'
 import AuthProvider from '../AuthProvider'
 import UserSettings from '../UserSettings'
@@ -51,17 +50,7 @@ export default class User extends BaseEntity {
       times += 1
     }
 
-    const dynamicLink = await createDynamicLink({
-      description: `See Wrench projects and posts from ${user.fullName}. (@${user.username})`,
-      image: user.avatarUrl,
-      path: `user/${user.username}`,
-      title: `${user.fullName}. (@${user.username}) • Wrench projects and posts`,
-    })
-
-    return User.save({
-      ...user,
-      dynamicLink,
-    })
+    return user
   }
 
   @OneToMany(() => Project, project => project.user)
@@ -118,9 +107,6 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   public avatarUrl: string
-
-  @Column({ unique: true, nullable: true })
-  public dynamicLink: string
 }
 
 export function getUserById(userId) {

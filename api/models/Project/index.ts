@@ -9,7 +9,6 @@ import {
   OneToMany,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
-import { createDynamicLink } from 'api/services/firebase'
 import User from '../User'
 import Post from '../Post'
 import ProjectType from '../ProjectType'
@@ -39,12 +38,7 @@ export default class Project extends BaseEntity {
       times += 1
     }
 
-    const dynamicLink = await createDynamicLink({ path: `project/${project.slug}` })
-
-    return Project.save({
-      ...project,
-      dynamicLink,
-    })
+    return project
   }
 
   @ManyToOne(() => User, user => user.projects)
@@ -82,9 +76,6 @@ export default class Project extends BaseEntity {
 
   @Column({ unique: true, nullable: true })
   public slug: string
-
-  @Column({ unique: true, nullable: true })
-  public dynamicLink: string
 
   @Column({ default: false })
   public isPrivate: boolean

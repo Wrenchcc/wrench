@@ -15,3 +15,8 @@ export enum NotificationTypes {
   NEW_MENTION = 'NEW_MENTION',
   NEW_REPLY = 'NEW_REPLY',
 }
+
+export enum DynamicLinkTypes {
+  USER = 'USER',
+  PROJECT = 'PROJECT',
+}

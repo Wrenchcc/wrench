@@ -1,20 +1,21 @@
 import { ConnectionOptions, getRepository } from 'typeorm'
 
+import AuthProvider from './AuthProvider'
+import AuthToken from './AuthToken'
+import Brand from './Brand'
+import Comment from './Comment'
+import DeviceToken from './DeviceToken'
+import DynamicLink from './DynamicLink'
+import File from './File'
+import Following from './Following'
+import Model from './Model'
+import Notification from './Notification'
+import Post from './Post'
+import Project from './Project'
+import ProjectType from './ProjectType'
 import User from './User'
 import UserInterestedIn from './UserInterestedIn'
 import UserSettings from './UserSettings'
-import AuthToken from './AuthToken'
-import AuthProvider from './AuthProvider'
-import ProjectType from './ProjectType'
-import Project from './Project'
-import Model from './Model'
-import Brand from './Brand'
-import Post from './Post'
-import Comment from './Comment'
-import File from './File'
-import Notification from './Notification'
-import Following from './Following'
-import DeviceToken from './DeviceToken'
 
 const {
   DB_PORT = 5432,
@@ -34,6 +35,7 @@ export const options: ConnectionOptions = {
     Brand,
     Comment,
     DeviceToken,
+    DynamicLink,
     File,
     Following,
     Model,
@@ -60,6 +62,7 @@ export const db = {
   Brand,
   Comment,
   DeviceToken,
+  DynamicLink,
   File,
   Following,
   Model,

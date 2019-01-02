@@ -12,3 +12,8 @@ export const PLATFORM_TYPES = {
   MOBILE: 'MOBILE',
   WEB: 'WEB',
 }
+
+export const DYNAMIC_LINK_TYPES = {
+  USER: 'USER',
+  PROJECT: 'PROJECT',
+}
