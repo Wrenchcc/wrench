@@ -30,5 +30,5 @@ export default requireAuth(async (_, { id }, ctx) => {
     ])
   }
 
-  return ctx.db.Project.findOne(id)
+  return project
 })
