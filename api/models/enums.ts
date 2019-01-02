@@ -20,3 +20,7 @@ export enum DynamicLinkTypes {
   USER = 'USER',
   PROJECT = 'PROJECT',
 }
+
+export enum AuthProviderTypes {
+  FACEBOOK = 'FACEBOOK',
+}

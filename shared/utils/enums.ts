@@ -17,3 +17,7 @@ export const DYNAMIC_LINK_TYPES = {
   USER: 'USER',
   PROJECT: 'PROJECT',
 }
+
+export const AUTH_PROVIDER_TYPES = {
+  FACEBOOK: 'FACEBOOK',
+}

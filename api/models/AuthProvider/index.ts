@@ -8,6 +8,7 @@ import {
   ManyToOne,
 } from 'typeorm'
 import User from '../User'
+import { AuthProviderTypes } from '../enums'
 
 @Entity('auth_providers')
 export default class AuthProvider extends BaseEntity {
@@ -17,8 +18,11 @@ export default class AuthProvider extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id: number
 
+  @Column('enum', { enum: AuthProviderTypes })
+  public type: AuthProviderTypes
+
   @Column()
-  public providerName: string
+  public typeId: string
 
   @Column({ type: 'bigint', nullable: true })
   public providerId: number

@@ -1,9 +1,7 @@
 import { omit } from 'ramda'
 import { generateTokens } from 'api/utils/tokens'
 import { createDynamicLink } from 'api/services/firebase'
-import { PLATFORM_TYPES, DYNAMIC_LINK_TYPES } from 'shared/utils/enums'
-
-const PROVIDER_NAME = 'facebook'
+import { PLATFORM_TYPES, DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from 'shared/utils/enums'
 
 // TODO: Get platform from client
 export default async (_, { facebookToken }, ctx) => {
@@ -12,8 +10,8 @@ export default async (_, { facebookToken }, ctx) => {
   // Find user from facebook id
   const authProvider = await ctx.db.AuthProvider.findOne({
     where: {
-      providerId: fbUser.id,
-      providerName: PROVIDER_NAME,
+      typeId: fbUser.id,
+      type: AUTH_PROVIDER_TYPES.FACEBOOK,
     },
   })
 
@@ -57,8 +55,8 @@ export default async (_, { facebookToken }, ctx) => {
 
   // Save provider using facebook
   await ctx.db.AuthProvider.save({
-    providerId: fbUser.id,
-    providerName: PROVIDER_NAME,
+    typeId: fbUser.id,
+    type: AUTH_PROVIDER_TYPES.FACEBOOK,
     user: createdUser,
   })
 
