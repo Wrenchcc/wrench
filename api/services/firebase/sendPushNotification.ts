@@ -22,13 +22,13 @@ export default async ({ data, userId, to, type }) => {
   const message = {
     android: {
       notification: {
-        sound: 'notification',
+        sound: 'notification.aiff',
       },
     },
     apns: {
       payload: {
         aps: {
-          sound: 'notification',
+          sound: 'notification.aiff',
         },
       },
     },
