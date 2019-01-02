@@ -21,15 +21,12 @@ export default requireAuth(async (_, { id }, ctx) => {
         typeId: project.id,
         userId: ctx.userId,
       }),
-      ctx.services.firebase.sendPushNotification(
-        {
-          data: project,
-          to: project.userId,
-          type: NOTIFICATION_TYPES.NEW_FOLLOWER,
-          userId: ctx.userId,
-        },
-        ctx.translate
-      ),
+      ctx.services.firebase.sendPushNotification({
+        data: project,
+        to: project.userId,
+        type: NOTIFICATION_TYPES.NEW_FOLLOWER,
+        userId: ctx.userId,
+      }),
     ])
   }
 

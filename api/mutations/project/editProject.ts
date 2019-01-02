@@ -34,7 +34,5 @@ export default requireAuth(async (_, { id, input }, ctx) => {
     }
   }
 
-  await ctx.db.Project.save(data)
-
-  return ctx.db.Project.findOne(id)
+  return ctx.db.Project.save(data)
 })

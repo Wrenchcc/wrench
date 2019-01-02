@@ -10,8 +10,8 @@ export default async (_, { facebookToken }, ctx) => {
   // Find user from facebook id
   const authProvider = await ctx.db.AuthProvider.findOne({
     where: {
-      typeId: fbUser.id,
       type: AUTH_PROVIDER_TYPES.FACEBOOK,
+      typeId: fbUser.id,
     },
   })
 
@@ -53,8 +53,8 @@ export default async (_, { facebookToken }, ctx) => {
       url: dynamicLink,
     }),
     ctx.db.AuthProvider.save({
-      typeId: fbUser.id,
       type: AUTH_PROVIDER_TYPES.FACEBOOK,
+      typeId: fbUser.id,
       userId: createdUser.id,
     }),
   ])

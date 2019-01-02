@@ -3,7 +3,6 @@ import { requireAuth, canModerateProject } from 'api/utils/permissions'
 import { FILE_TYPES } from 'shared/utils/enums'
 
 // TODO: Check if filename excists and ForbiddenError
-// TODO: Send pushnotification
 export default requireAuth(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)
 
