@@ -19,7 +19,7 @@ export default requireAuth(async (_, args, ctx) => {
   })
 
   const edges = await Promise.all(
-    notifications.map(async ({ typeId, type, ...rest }) => {
+    notifications.map(async ({ typeId, type, userId, ...rest }) => {
       switch (type) {
         case NOTIFICATION_TYPES.NEW_FOLLOWER:
           const project = await ctx.db.Project.findOne(typeId)
@@ -34,7 +34,7 @@ export default requireAuth(async (_, args, ctx) => {
               ...rest,
               project,
               type,
-              user: await ctx.db.User.findOne(ctx.userId),
+              user: await ctx.db.User.findOne(userId),
             },
           }
         case NOTIFICATION_TYPES.NEW_MENTION:
@@ -52,7 +52,7 @@ export default requireAuth(async (_, args, ctx) => {
               ...rest,
               comment,
               type,
-              user: await ctx.db.User.findOne(ctx.userId),
+              user: await ctx.db.User.findOne(userId),
             },
           }
         default:
