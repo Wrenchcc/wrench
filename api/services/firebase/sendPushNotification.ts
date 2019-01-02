@@ -20,7 +20,19 @@ export default async ({ data, userId, to, type }) => {
   const user = await getUserById(userId)
 
   const message = {
-    ...formatNotification(type, data, user, locale),
+    android: {
+      notification: {
+        sound: 'notification',
+      },
+    },
+    apns: {
+      payload: {
+        aps: {
+          sound: 'notification',
+        },
+      },
+    },
+    notification: formatNotification(type, data, user, locale),
     token,
   }
 
