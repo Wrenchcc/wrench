@@ -15,9 +15,7 @@ export default requireAuth(async ({ id }, _, ctx) => {
       case NOTIFICATIONS_COLUMN:
         return {
           notifications: {
-            types: value
-              ? mergeRight(DEFAULT_NOTIFICATIONS, JSON.parse(value))
-              : DEFAULT_NOTIFICATIONS,
+            types: mergeRight(DEFAULT_NOTIFICATIONS, JSON.parse(value)),
           },
         }
       case LOCALE_COLUMN:
@@ -27,5 +25,12 @@ export default requireAuth(async ({ id }, _, ctx) => {
     }
   })
 
-  return mergeAll(transformSettings)
+  return mergeRight(
+    {
+      notifications: {
+        types: DEFAULT_NOTIFICATIONS,
+      },
+    },
+    mergeAll(transformSettings)
+  )
 })

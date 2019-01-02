@@ -15,5 +15,5 @@
     },
     "types": ["node"]
   },
-  "exclude": ["node_modules", "dist", "webpack.config.js"]
+  "exclude": ["node_modules", "dist"]
 }
