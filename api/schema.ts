@@ -1,3 +1,4 @@
+import gql from 'graphql-tag'
 import { makeExecutableSchema } from 'apollo-server-express'
 import * as merge from 'lodash.merge'
 import scalars from './types/scalars'
@@ -35,7 +36,7 @@ import notificationMutations from './mutations/notification'
 
 const debug = require('debug')('api:resolvers')
 
-const Root = `
+const Root = gql`
   # The dummy queries and mutations are necessary because
   # graphql-js cannot have empty root types and we only extend
   # these types later on

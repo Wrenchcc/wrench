@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type User {
     id: ID!
     username: LowercaseString
@@ -19,14 +21,14 @@ export default `
   }
 
   type UserConnection {
-		pageInfo: PageInfo
-		edges: [UserEdge]
-	}
+    pageInfo: PageInfo
+    edges: [UserEdge]
+  }
 
   type UserEdge {
-		cursor: String
-		node: User
-	}
+    cursor: String
+    node: User
+  }
 
   type NotificationSettingsType {
     NEW_FOLLOWER: Boolean
@@ -44,7 +46,7 @@ export default `
   type UserSettings {
     locale: String
     notifications: UserNotificationsSettings
- }
+  }
 
   extend type Query {
     user(id: ID, username: LowercaseString): User

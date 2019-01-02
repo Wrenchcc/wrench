@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type PageInfo {
     hasNextPage: Boolean
     hasPreviousPage: Boolean
@@ -7,6 +9,5 @@ export default `
   enum PlatformType {
     MOBILE
     WEB
-	}
-
+  }
 `

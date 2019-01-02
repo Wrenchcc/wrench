@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type File {
     id: ID
     type: FileType
@@ -15,7 +17,7 @@ export default `
   enum FileType {
     IMAGE
     VIDEO
-	}
+  }
 
   type FileEdge {
     cursor: String!
@@ -23,6 +25,13 @@ export default `
   }
 
   extend type Query {
-    files(first: Int, after: String, maxWidth: Int, maxHeight: Int, scale: Int, type: FileType): FileConnection
+    files(
+      first: Int
+      after: String
+      maxWidth: Int
+      maxHeight: Int
+      scale: Int
+      type: FileType
+    ): FileConnection
   }
 `

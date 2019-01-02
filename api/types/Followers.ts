@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type FollowersConnection {
     totalCount: Int
     pageInfo: PageInfo!
@@ -11,6 +13,12 @@ export default `
   }
 
   extend type Query {
-    followers(projectId: ID!, first: Int, after: String, last: Int, before: String): FollowersConnection
+    followers(
+      projectId: ID!
+      first: Int
+      after: String
+      last: Int
+      before: String
+    ): FollowersConnection
   }
 `

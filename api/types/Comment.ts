@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type Comment {
     id: ID
     createdAt: Date

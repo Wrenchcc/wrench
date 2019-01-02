@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type Post {
     id: ID
     createdAt: Date
@@ -8,7 +10,14 @@ export default `
     project: Project
     postPermissions: PostPermissions
 
-    filesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int, type: FileType): FileConnection
+    filesConnection(
+      first: Int
+      after: String
+      reverse: Boolean
+      maxWidth: Int
+      maxHeight: Int
+      type: FileType
+    ): FileConnection
     commentsConnection(first: Int, after: String, last: Int, before: String): CommentConnection
   }
 

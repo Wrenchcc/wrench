@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type Project {
     id: ID
     slug: String
@@ -11,7 +13,14 @@ export default `
     isPrivate: Boolean
     commentsDisabled: Boolean
 
-    filesConnection(first: Int, after: String, reverse: Boolean, maxWidth: Int, maxHeight: Int, type: FileType): FileConnection
+    filesConnection(
+      first: Int
+      after: String
+      reverse: Boolean
+      maxWidth: Int
+      maxHeight: Int
+      type: FileType
+    ): FileConnection
     followersConnection(first: Int, after: String, last: Int, before: String): FollowersConnection
     postsConnection(first: Int, after: String, last: Int, before: String): PostConnection
   }
@@ -52,9 +61,27 @@ export default `
   }
 
   extend type Query {
-    project(id: ID, slug: LowercaseString, first: Int, after: String, last: Int, before: String): Project
-    projects(first: Int, after: String, last: Int, before: String, type: ProjectSortType): ProjectsConnection
-    projectSuggestions(first: Int, after: String, last: Int, before: String): [ProjectSuggestionsConnection]
+    project(
+      id: ID
+      slug: LowercaseString
+      first: Int
+      after: String
+      last: Int
+      before: String
+    ): Project
+    projects(
+      first: Int
+      after: String
+      last: Int
+      before: String
+      type: ProjectSortType
+    ): ProjectsConnection
+    projectSuggestions(
+      first: Int
+      after: String
+      last: Int
+      before: String
+    ): [ProjectSuggestionsConnection]
     projectTypes: [ProjectType]
   }
 

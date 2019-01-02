@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type Notification {
     id: ID!
     user: User!
@@ -15,24 +17,24 @@ export default `
     NEW_FOLLOWER
     NEW_MENTION
     NEW_REPLY
-	}
+  }
 
   type NotificationsConnection {
     unreadCount: Int
-		pageInfo: PageInfo
-		edges: [NotificationEdge]
-	}
+    pageInfo: PageInfo
+    edges: [NotificationEdge]
+  }
 
   type NotificationEdge {
-		cursor: String
-		node: Notification
-	}
+    cursor: String
+    node: Notification
+  }
 
   extend type Query {
-		notifications(first: Int = 10, after: String): NotificationsConnection
-	}
+    notifications(first: Int = 10, after: String): NotificationsConnection
+  }
 
   extend type Mutation {
-		markAllNotificationsSeen: Boolean
-	}
+    markAllNotificationsSeen: Boolean
+  }
 `

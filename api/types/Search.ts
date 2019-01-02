@@ -1,4 +1,6 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   enum SearchType {
     PROJECTS
     USERS
@@ -32,5 +34,5 @@ export default `
       # The types of items that can be searched
       type: SearchType!
     ): SearchResults
-	}
+  }
 `

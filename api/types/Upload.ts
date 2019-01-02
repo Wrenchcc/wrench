@@ -1,9 +1,11 @@
-export default `
+import gql from 'graphql-tag'
+
+export default gql`
   type PreSignedUrl {
-     url: String
-     type: String
-     id: ID
-     filename: String
+    url: String
+    type: String
+    id: ID
+    filename: String
   }
 
   input PreSignedUrlnput {
@@ -11,6 +13,6 @@ export default `
   }
 
   extend type Mutation {
-		preSignUrls(input: [PreSignedUrlnput]): [PreSignedUrl]
-	}
+    preSignUrls(input: [PreSignedUrlnput]): [PreSignedUrl]
+  }
 `
