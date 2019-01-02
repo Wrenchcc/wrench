@@ -170,6 +170,7 @@ const routeSections = {
   language: [{ headerTitle: 'language' }],
   membership: [{ headerTitle: 'membership' }],
   support: [{ headerTitle: 'support' }],
+  credits: [{ headerTitle: 'credits' }],
 }
 
 export const mapRouteForSection = component => mergeAll(
