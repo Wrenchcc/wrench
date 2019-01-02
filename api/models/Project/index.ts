@@ -65,6 +65,9 @@ export default class Project extends BaseEntity {
   @Column()
   public projectTypeId: string
 
+  @Column()
+  public modelId: string
+
   @CreateDateColumn()
   public createdAt: Date
 

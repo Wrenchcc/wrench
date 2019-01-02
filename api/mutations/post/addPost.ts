@@ -1,12 +1,9 @@
 import { ForbiddenError } from 'apollo-server-express'
 import { requireAuth, canModerateProject } from 'api/utils/permissions'
-
-const FILE_TYPES = {
-  IMAGE: 'image',
-  VIDEO: 'video',
-}
+import { FILE_TYPES } from 'shared/utils/enums'
 
 // TODO: Check if filename excists and ForbiddenError
+// TODO: Send pushnotification
 export default requireAuth(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)
 
@@ -14,14 +11,12 @@ export default requireAuth(async (_, { input }, ctx) => {
     return new ForbiddenError('You don’t have permission to post to this project.')
   }
 
-  const user = await ctx.db.User.findOne(ctx.userId)
-
   // TODO: Check if files
   const filesToSave = input.files.map(({ filename }) => ({
     filename,
     project,
     type: FILE_TYPES.IMAGE,
-    user,
+    userId: ctx.userId,
   }))
 
   const files = await ctx.db.File.save(filesToSave)
@@ -30,6 +25,6 @@ export default requireAuth(async (_, { input }, ctx) => {
     caption: input.caption,
     files,
     project,
-    user,
+    userId: ctx.userId,
   })
 })

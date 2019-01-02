@@ -3,28 +3,28 @@ import { requireAuth, canModerateProject } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 
 export default requireAuth(async (_, { id }, ctx) => {
-  const userId = ctx.userId
   const project = await ctx.db.Project.findOne(id)
-  const isFollower = await ctx.db.Following.isFollower(userId, id)
+  const isFollower = await ctx.db.Following.isFollower(ctx.userId, id)
 
-  if (canModerateProject(project, userId)) {
+  if (canModerateProject(project, ctx.userId)) {
     return new ForbiddenError('You can’t follow your own project.')
   }
 
   if (isFollower) {
-    await ctx.db.Following.delete({ projectId: id, userId })
+    await ctx.db.Following.delete({ projectId: id, userId: ctx.userId })
   } else {
-    await ctx.db.Following.save({ projectId: id, userId })
-
-    await ctx.services.firebase.sendPushNotification(
-      {
-        data: project,
-        to: project.userId,
-        type: NOTIFICATION_TYPES.NEW_FOLLOWER,
-        userId,
-      },
-      ctx.translate
-    )
+    await Promise.all([
+      ctx.db.Following.save({ projectId: id, userId: ctx.userId }),
+      ctx.services.firebase.sendPushNotification(
+        {
+          data: project,
+          to: project.userId,
+          type: NOTIFICATION_TYPES.NEW_FOLLOWER,
+          userId: ctx.userId,
+        },
+        ctx.translate
+      ),
+    ])
   }
 
   return ctx.db.Project.findOne(id)

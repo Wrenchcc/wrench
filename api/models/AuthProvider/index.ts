@@ -24,9 +24,6 @@ export default class AuthProvider extends BaseEntity {
   @Column()
   public typeId: string
 
-  @Column({ type: 'bigint', nullable: true })
-  public providerId: number
-
   @CreateDateColumn()
   public createdAt: Date
 

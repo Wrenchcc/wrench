@@ -7,6 +7,6 @@ i18n.configure({
   locales: SUPPORTED_LOCALES,
 })
 
-export function translate({ key, params = {}, locale = DEFAULT_LOCALE }) {
+export function translate({ key, params = {}, locale }) {
   return i18n.__({ phrase: key, locale }, params)
 }

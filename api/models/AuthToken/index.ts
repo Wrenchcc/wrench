@@ -29,4 +29,7 @@ export default class AuthTokens extends BaseEntity {
 
   @Column('enum', { enum: PlatformType })
   public platform: PlatformType
+
+  @Column()
+  public userId: string
 }

@@ -22,6 +22,9 @@ export default class Notification extends BaseEntity {
   @Column('uuid')
   public to: string
 
+  @Column()
+  public userId: string
+
   @CreateDateColumn()
   public createdAt: Date
 

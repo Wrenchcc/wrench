@@ -17,20 +17,19 @@ export default async (_, { facebookToken }, ctx) => {
 
   if (authProvider) {
     const tokens = generateTokens(authProvider.userId)
-    const user = await ctx.db.User.findOne(authProvider.userId)
 
     // Delete all previous tokens
-    await ctx.db.AuthToken.delete({
-      platform: PLATFORM_TYPES.MOBILE,
-      userId: authProvider.userId,
-    })
-
-    // Save new token with user
-    await ctx.db.AuthToken.save({
-      platform: PLATFORM_TYPES.MOBILE,
-      refreshToken: tokens.refreshToken,
-      user,
-    })
+    await Promise.all([
+      ctx.db.AuthToken.delete({
+        platform: PLATFORM_TYPES.MOBILE,
+        userId: authProvider.userId,
+      }),
+      ctx.db.AuthToken.save({
+        platform: PLATFORM_TYPES.MOBILE,
+        refreshToken: tokens.refreshToken,
+        userId: authProvider.userId,
+      }),
+    ])
 
     return tokens
   }
@@ -47,18 +46,18 @@ export default async (_, { facebookToken }, ctx) => {
     title: `${createdUser.fullName}. (@${createdUser.username}) • Wrench projects and posts`,
   })
 
-  await ctx.db.DynamicLink.save({
-    type: DYNAMIC_LINK_TYPES.USER,
-    typeId: createdUser.id,
-    url: dynamicLink,
-  })
-
-  // Save provider using facebook
-  await ctx.db.AuthProvider.save({
-    typeId: fbUser.id,
-    type: AUTH_PROVIDER_TYPES.FACEBOOK,
-    user: createdUser,
-  })
+  await Promise.all([
+    ctx.db.DynamicLink.save({
+      type: DYNAMIC_LINK_TYPES.USER,
+      typeId: createdUser.id,
+      url: dynamicLink,
+    }),
+    ctx.db.AuthProvider.save({
+      typeId: fbUser.id,
+      type: AUTH_PROVIDER_TYPES.FACEBOOK,
+      userId: createdUser.id,
+    }),
+  ])
 
   const newTokens = generateTokens(createdUser.id)
 
@@ -66,7 +65,7 @@ export default async (_, { facebookToken }, ctx) => {
   await ctx.db.AuthToken.save({
     platform: PLATFORM_TYPES.MOBILE,
     refreshToken: newTokens.refreshToken,
-    user: createdUser,
+    userId: createdUser.id,
   })
 
   return newTokens

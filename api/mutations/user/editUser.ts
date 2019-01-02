@@ -14,7 +14,6 @@ export default requireAuth(async (_, args, ctx) => {
     await ctx.db.UserInterestedIn.save(interestedIn)
   }
 
-  // TODO: One of type supportedLocales
   if (args.input.locale) {
     if (!SUPPORTED_LOCALES.includes(args.input.locale)) {
       return new UserInputError('Not a supported locale.')

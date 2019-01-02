@@ -3,23 +3,21 @@ import { createDynamicLink } from 'api/services/firebase'
 import { DYNAMIC_LINK_TYPES } from 'shared/utils/enums'
 
 export default requireAuth(async (_, { input }, ctx) => {
-  const model = await ctx.db.Model.findOne(input.modelId)
   const user = await ctx.db.User.findOne(ctx.userId)
-  const projectType = await ctx.db.ProjectType.findOne(input.projectTypeId)
 
   const project = await ctx.db.Project.createProject({
-    model,
-    projectType,
+    modelId: input.modelId,
+    projectTypeId: input.projectTypeId,
     title: input.title,
     userId: ctx.userId,
   })
 
   // TODO: Logo from CDN
   const dynamicLink = await createDynamicLink({
-    description: `Follow ${user.fullName} project "${project.title}" on Wrench.`,
+    description: `Follow ${user.fullName} project “${project.title}“ on Wrench.`,
     // image: user.avatarUrl,
     path: `project/${project.slug}`,
-    title: `Project "${project.title}". By (@${user.username}) • Wrench`,
+    title: `Project “${project.title}“. By (@${user.username}) • Wrench`,
   })
 
   await ctx.db.DynamicLink.save({

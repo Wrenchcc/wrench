@@ -20,10 +20,7 @@ export default async ({ data, userId, to, type }) => {
   const user = await getUserById(userId)
 
   const message = {
-    data: {
-      dynamicLink: 'https://google.se',
-    },
-    notification: formatNotification(type, data, user, locale),
+    ...formatNotification(type, data, user, locale),
     token,
   }
 

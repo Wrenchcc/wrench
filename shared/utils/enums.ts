@@ -21,3 +21,8 @@ export const DYNAMIC_LINK_TYPES = {
 export const AUTH_PROVIDER_TYPES = {
   FACEBOOK: 'FACEBOOK',
 }
+
+export const FILE_TYPES = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+}

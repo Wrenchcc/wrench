@@ -9,6 +9,7 @@ import {
   ManyToOne,
 } from 'typeorm'
 import { pathOr } from 'ramda'
+import { DEFAULT_LOCALE } from 'shared/locale'
 import User from '../User'
 
 export const NOTIFICATIONS_COLUMN = 'notifications'
@@ -66,5 +67,5 @@ export async function getUserLocale(userId) {
     },
   })
 
-  return pathOr(null, ['value'], locale)
+  return pathOr(DEFAULT_LOCALE, ['value'], locale)
 }
