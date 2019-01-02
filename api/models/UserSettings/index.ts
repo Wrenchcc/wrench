@@ -46,7 +46,7 @@ export default class UserSettings extends BaseEntity {
   @Column()
   public type: string
 
-  @Column()
+  @Column('json')
   public value: string
 }
 
@@ -58,7 +58,7 @@ export async function getNotificationSettings(userId) {
     },
   })
 
-  return JSON.parse(pathOr(false, ['value'], notificationSettings))
+  return pathOr(false, ['value'], notificationSettings)
 }
 
 export async function getUserLocale(userId) {

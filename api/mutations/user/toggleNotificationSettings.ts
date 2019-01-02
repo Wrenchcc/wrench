@@ -11,6 +11,8 @@ export default requireAuth(async (_, args, ctx) => {
     return new UserInputError('Not a valid notificationType.')
   }
 
+  const user = await ctx.db.User.findOne(ctx.userId)
+
   // Get prev state
   const prevSettings = await ctx.db.UserSettings.findOrCreate(
     {
@@ -20,7 +22,7 @@ export default requireAuth(async (_, args, ctx) => {
     {
       type: NOTIFICATIONS_COLUMN,
       userId: ctx.userId,
-      value: JSON.stringify(DEFAULT_NOTIFICATIONS),
+      value: DEFAULT_NOTIFICATIONS,
     }
   )
 
@@ -28,10 +30,10 @@ export default requireAuth(async (_, args, ctx) => {
   await ctx.db.UserSettings.update(prevSettings.id, {
     value: {
       ...DEFAULT_NOTIFICATIONS,
-      ...JSON.parse(prevSettings.value),
-      [notificationType]: !JSON.parse(prevSettings.value)[notificationType],
+      ...prevSettings.value,
+      [notificationType]: !prevSettings.value[notificationType],
     },
   })
 
-  return true
+  return user
 })

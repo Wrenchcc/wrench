@@ -27,15 +27,17 @@ export default requireAuth(async (_, args, ctx) => {
     })
 
     if (savedLocale) {
-      return ctx.db.UserSettings.update(savedLocale.id, {
+      await ctx.db.UserSettings.update(savedLocale.id, {
+        value: args.input.locale,
+      })
+    } else {
+      await ctx.db.UserSettings.save({
+        type: LOCALE_COLUMN,
+        userId: ctx.userId,
         value: args.input.locale,
       })
     }
 
-    return ctx.db.UserSettings.save({
-      type: LOCALE_COLUMN,
-      userId: ctx.userId,
-      value: args.input.locale,
-    })
+    return ctx.db.User.findOne(ctx.userId)
   }
 })
