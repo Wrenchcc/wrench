@@ -50,13 +50,15 @@ export default class UserSettings extends BaseEntity {
   public value: string
 }
 
-export function getNotificationSettings(userId) {
-  return getRepository(UserSettings).findOne({
+export async function getNotificationSettings(userId) {
+  const notificationSettings = await getRepository(UserSettings).findOne({
     where: {
       type: NOTIFICATIONS_COLUMN,
       userId,
     },
   })
+
+  return JSON.parse(pathOr(false, ['value'], notificationSettings))
 }
 
 export async function getUserLocale(userId) {

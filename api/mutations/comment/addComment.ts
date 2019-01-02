@@ -3,9 +3,9 @@ import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 import { MENTION_REGEX } from 'shared/utils/regex'
 
 export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
+  const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
-  const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
 
   const comment = await ctx.db.Comment.save({
     commentId,
@@ -30,7 +30,7 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
         title: project.title,
       },
       to: post.userId,
-      type: NOTIFICATION_TYPES.NEW_COMMENT,
+      type: notificationType,
       userId: ctx.userId,
     }),
   ])
@@ -41,7 +41,12 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
     await Promise.all(
       mentions.map(async mention => {
         const username = mention.replace('@', '')
-        const mentionedUser = await ctx.db.User.findOne({ where: { username } })
+        const user = await ctx.db.User.findOne({ where: { username } })
+
+        // Skip "Mention" notification to owner of reply comment.
+        if (notificationType === NOTIFICATION_TYPES.NEW_REPLY && comment.userId === user.id) {
+          return null
+        }
 
         return Promise.all([
           ctx.services.firebase.sendPushNotification({
@@ -49,15 +54,15 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
               text: input.text,
               title: project.title,
             },
-            to: mentionedUser.id,
-            type: notificationType,
+            to: user.id,
+            type: NOTIFICATION_TYPES.NEW_MENTION,
             userId: ctx.userId,
           }),
 
           // Add new notification to db
           ctx.db.Notification.save({
-            to: mentionedUser.id,
-            type: notificationType,
+            to: user.id,
+            type: NOTIFICATION_TYPES.NEW_MENTION,
             typeId: comment.id,
             userId: ctx.userId,
           }),
