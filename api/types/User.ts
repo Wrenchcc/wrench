@@ -14,6 +14,8 @@ export default gql`
     interestedIn: [ProjectType]
     settings: UserSettings
     dynamicLink: String
+    isOnline: Boolean
+    lastSeen: Date
 
     projectsConnection(first: Int, after: String, last: Int, before: String): ProjectsConnection
     followingProjects(first: Int, after: String, last: Int, before: String): ProjectsConnection

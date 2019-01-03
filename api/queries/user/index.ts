@@ -2,6 +2,7 @@ import currentUser from './currentUser'
 import dynamicLink from './dynamicLink'
 import followingProjects from './followingProjects'
 import interestedIn from './interestedIn'
+import isOnline from './isOnline'
 import postsConnection from './postsConnection'
 import projectCount from './projectCount'
 import projectsConnection from './projectsConnection'
@@ -17,6 +18,7 @@ export default {
     dynamicLink,
     followingProjects,
     interestedIn,
+    isOnline,
     postsConnection,
     projectCount,
     projectsConnection,

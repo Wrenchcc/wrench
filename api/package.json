@@ -20,6 +20,7 @@
     "i18n": "^0.8.3",
     "jsonwebtoken": "^8.4.0",
     "lodash.merge": "^4.6.1",
+    "ms": "^2.1.1",
     "pg": "^7.7.1",
     "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.12",

@@ -92,6 +92,9 @@ export default class User extends BaseEntity {
   @UpdateDateColumn()
   public updatedAt: Date
 
+  @CreateDateColumn()
+  public lastSeen: Date
+
   @Column()
   public firstName: string
 
