@@ -1,11 +1,13 @@
 import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { removeTokens } from 'graphql/utils/auth'
 import { track, events } from 'utils/analytics'
-import HttpLink from './links/Http'
 import AuthLink from './links/Auth'
-import RefreshLink from './links/Refresh'
-import { removeTokens } from './utils/auth'
+import HttpLink from './links/Http'
+import OfflineLink from './links/Offline'
+import RefreshTokenLink from './links/RefreshToken'
+import RetryLink from './links/Retry'
 
 export let client = null
 
@@ -16,7 +18,7 @@ export default () => {
 
   client = new ApolloClient({
     cache,
-    link: ApolloLink.from([AuthLink, RefreshLink, HttpLink]),
+    link: ApolloLink.from([RetryLink, OfflineLink, AuthLink, RefreshTokenLink, HttpLink]),
   })
 
   client.onResetStore(() => {
