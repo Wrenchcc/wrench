@@ -14,8 +14,13 @@ export const PLATFORM_TYPES = {
 }
 
 export const DYNAMIC_LINK_TYPES = {
-  USER: 'USER',
   PROJECT: 'PROJECT',
+  USER: 'USER',
+}
+
+export const PROJECT_SORT_TYPES = {
+  POPULAR: 'POPULAR',
+  RECENT: 'RECENT',
 }
 
 export const AUTH_PROVIDER_TYPES = {

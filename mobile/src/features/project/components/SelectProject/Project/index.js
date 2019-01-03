@@ -10,7 +10,7 @@ const Project = ({ id, files, title, followers, onPress, selected }) => {
 
   return (
     <Base key={id} onPress={() => onPress(id)}>
-      <Cover source={image} />
+      {image && <Cover source={image} />}
 
       <Middle>
         <Content>
