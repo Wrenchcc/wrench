@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import hitSlop from 'utils/hitSlop'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Touchable, Image } from 'ui'
 
 const Avatar = ({ uri, size = 30, onPress, disabled = false, style = {} }) => onPress ? (
-    <Touchable hitSlop={hitSlop(10)} onPress={onPress} style={style} disabled={disabled}>
+    <Touchable onPress={onPress} style={style} disabled={disabled}>
       <Image
         source={{ uri }}
         width={size}

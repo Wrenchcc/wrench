@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import NativeShare from 'react-native-share'
 import { track, events } from 'utils/analytics'
-import hitSlop from 'utils/hitSlop'
 import { share } from 'images'
 import { Base, Button, Icon } from './styles'
 
@@ -27,7 +26,7 @@ export default class Share extends PureComponent {
   render() {
     return (
       <Base>
-        <Button hapticFeedback="impactLight" onPress={this.openShare} hitSlop={hitSlop(20)}>
+        <Button hapticFeedback="impactLight" onPress={this.openShare} hitSlop={20}>
           <Icon source={share} />
         </Button>
       </Base>

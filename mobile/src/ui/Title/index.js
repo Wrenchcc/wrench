@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import hitSlop from 'utils/hitSlop'
 import Touchable from 'ui/Touchable'
 import { Base } from './styles'
 
@@ -15,12 +14,7 @@ const Title = ({
   disabled = false,
   ...props
 }) => onPress ? (
-    <Touchable
-      hitSlop={hitSlop(10)}
-      onPress={onPress}
-      onLongPress={onLongPress}
-      disabled={disabled}
-    >
+    <Touchable onPress={onPress} onLongPress={onLongPress} disabled={disabled}>
       <Base numberOfLines={numberOfLines} medium={medium} large={large} style={style} {...props}>
         {children}
       </Base>

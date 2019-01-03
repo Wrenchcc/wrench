@@ -1,10 +1,10 @@
 import React from 'react'
 import { Image } from 'react-native'
+import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { navigateToAddMedia, navigateToAddProject } from 'navigation'
 import { add } from 'images'
-import hitSlop from 'utils/hitSlop'
 import { Button } from './styles'
 
 function Add(props) {
@@ -16,10 +16,14 @@ function Add(props) {
   }
 
   return (
-    <Button hitSlop={hitSlop(20)} onPress={onPress} {...props}>
+    <Button hitSlop={20} onPress={onPress} {...props}>
       <Image source={add} />
     </Button>
   )
+}
+
+Add.propTypes = {
+  projects: PropTypes.array,
 }
 
 export default compose(getCurrentUserProjects)(Add)
