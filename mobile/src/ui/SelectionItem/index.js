@@ -19,7 +19,7 @@ const getActionType = ({ type, selected, onPress }) => {
 
 function SelectionItem({ title, hasChildren, last, ...rest }) {
   return (
-    <Base onPress={rest.onPress} disables={!rest.onPress} last={last} hapticFeedback="impactLight">
+    <Base onPress={rest.onPress} disabled={!rest.onPress} last={last} hapticFeedback="impactLight">
       <Text color={last && 'orange'}>{title}</Text>
       {hasChildren && <Icon source={arrowRight} />}
       {getActionType(rest)}

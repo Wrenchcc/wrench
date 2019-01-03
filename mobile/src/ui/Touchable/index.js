@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity } from 'react-native'
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
-import hitSlop from 'utils/hitSlop'
+import evenHitSlop from 'utils/hitSlop'
 
 const onPressWrapper = (onPress, hapticFeedback = false) => {
   if (hapticFeedback) {
@@ -13,16 +13,17 @@ const onPressWrapper = (onPress, hapticFeedback = false) => {
 }
 
 const Touchable = ({
-  children,
-  onPress,
   activeOpacity = 0.8,
+  children,
   hapticFeedback = false,
+  hitSlop = 10,
+  onPress,
   ...props
 }) => (
   <TouchableOpacity
     activeOpacity={activeOpacity}
     onPress={() => onPressWrapper(onPress, hapticFeedback)}
-    hitSlop={hitSlop(10)}
+    hitSlop={evenHitSlop(hitSlop)}
     {...props}
   >
     {children}
@@ -33,7 +34,8 @@ Touchable.propTypes = {
   activeOpacity: PropTypes.number,
   children: PropTypes.any,
   hapticFeedback: PropTypes.string,
-  onPress: PropTypes.func.isRequired,
+  hitSlop: PropTypes.number,
+  onPress: PropTypes.func,
 }
 
 export default Touchable
