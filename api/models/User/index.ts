@@ -86,13 +86,13 @@ export default class User extends BaseEntity {
   @Column({ unique: true, nullable: true })
   public username: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public lastSeen: Date
 
   @Column()

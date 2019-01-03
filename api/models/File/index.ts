@@ -26,10 +26,10 @@ export default class File extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column({ unique: true })

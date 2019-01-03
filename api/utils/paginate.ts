@@ -30,12 +30,12 @@ const mapOperators = ({ after, before }, { column, sort }) => {
 
   if (after) {
     const [id, columnValue] = decodeCursor(after)
-    comparator = sort === ORDER_BY.sort ? MoreThan(columnValue) : LessThan(columnValue)
+    comparator = sort === ORDER_BY.sort ? LessThan(columnValue) : MoreThan(columnValue)
   }
 
   if (before) {
     const [id, columnValue] = decodeCursor(before)
-    comparator = sort === ORDER_BY.sort ? LessThan(columnValue) : MoreThan(columnValue)
+    comparator = sort === ORDER_BY.sort ? MoreThan(columnValue) : LessThan(columnValue)
   }
 
   return { [column]: comparator }

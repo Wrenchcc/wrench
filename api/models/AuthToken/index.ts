@@ -21,10 +21,10 @@ export default class AuthTokens extends BaseEntity {
   @Column()
   public refreshToken: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column('enum', { enum: PlatformType })

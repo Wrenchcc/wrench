@@ -25,10 +25,10 @@ export default class Notification extends BaseEntity {
   @Column()
   public userId: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column('enum', { enum: NotificationTypes })

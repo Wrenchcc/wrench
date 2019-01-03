@@ -30,10 +30,10 @@ export default class Comment extends BaseEntity {
   @Column({ nullable: true })
   public commentId: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column('text')

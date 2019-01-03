@@ -27,9 +27,9 @@ export default class UserInterestedIn extends BaseEntity {
   @JoinColumn()
   public projectType: ProjectType
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 }

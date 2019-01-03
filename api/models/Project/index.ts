@@ -68,10 +68,10 @@ export default class Project extends BaseEntity {
   @Column()
   public modelId: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column()

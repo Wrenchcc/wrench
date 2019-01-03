@@ -1,10 +1,12 @@
 import * as express from 'express'
 import { ApolloServer, ForbiddenError } from 'apollo-server-express'
 import { createConnection } from 'typeorm'
+import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import * as depthLimit from 'graphql-depth-limit'
 import { getUserId } from 'api/utils/tokens'
 import formatError from 'api/utils/formatError'
 import debugOptions from 'api/utils/debugOptions'
+import { types } from 'pg'
 import schema from './schema'
 import { options, db } from './models'
 import loaders from './loaders'
@@ -14,8 +16,14 @@ const debug = require('debug')('api:server')
 
 const { PORT = 4000, NODE_ENV } = process.env
 
+const TIMESTAMPTZ_OID = 1184
+
 createConnection(options)
-  .then(async () => {
+  .then(async connection => {
+    const driver = connection.driver as PostgresDriver
+    driver.postgres.defaults.parseInputDatesAsUTC = true
+    driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
+
     const server = new ApolloServer({
       ...debugOptions,
       context: ({ req, res }) => ({

@@ -15,10 +15,10 @@ export default class DynamicLink extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column('enum', { enum: DynamicLinkTypes })

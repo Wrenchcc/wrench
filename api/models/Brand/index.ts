@@ -17,10 +17,10 @@ export default class Brands extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column()
