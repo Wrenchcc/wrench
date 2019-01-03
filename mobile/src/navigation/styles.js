@@ -8,7 +8,14 @@ export default {
     borderBottomWidth: 0,
     elevation: 0,
   },
-  headerForceInset: {
-    horizontal: 20,
+  headerRightContainerStyle: {
+    paddingRight: 20,
+  },
+  headerLeftContainerStyle: {
+    paddingLeft: 20,
+  },
+  headerTitleContainerStyle: {
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 }
