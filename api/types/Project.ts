@@ -14,14 +14,21 @@ export default gql`
     commentsDisabled: Boolean
 
     filesConnection(
-      first: Int = 10
       after: String
-      reverse: Boolean
-      maxWidth: Int
+      first: Int = 10
       maxHeight: Int
+      maxWidth: Int
+      reverse: Boolean
       type: FileType
     ): FileConnection
-    followersConnection(first: Int = 10, after: String, last: Int, before: String): FollowersConnection
+
+    followersConnection(
+      after: String
+      before: String
+      first: Int = 10
+      last: Int
+    ): FollowersConnection
+
     postsConnection(first: Int = 10, after: String, last: Int, before: String): PostConnection
   }
 
@@ -61,27 +68,23 @@ export default gql`
   }
 
   extend type Query {
-    project(
-      id: ID
-      slug: LowercaseString
-      first: Int = 10
-      after: String
-      last: Int
-      before: String
-    ): Project
+    project(id: ID, slug: LowercaseString): Project
+
     projects(
-      first: Int = 10
       after: String
-      last: Int
       before: String
+      first: Int = 10
+      last: Int
       type: ProjectSortType
     ): ProjectsConnection
+
     projectSuggestions(
-      first: Int = 10
       after: String
-      last: Int
       before: String
+      first: Int = 10
+      last: Int
     ): [ProjectSuggestionsConnection]
+
     projectTypes: [ProjectType]
   }
 

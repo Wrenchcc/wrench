@@ -15,7 +15,12 @@ export default async ({ data, userId, to, type }) => {
     return null
   }
 
-  const { token } = await getDeviceToken(to)
+  const token = await getDeviceToken(to)
+  if (!token) {
+    debug('No device token found for userId: %o', userId)
+    return null
+  }
+
   const locale = await getUserLocale(to)
   const user = await getUserById(userId)
 

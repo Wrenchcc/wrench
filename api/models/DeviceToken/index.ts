@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
+import { pathOr } from 'ramda'
 import User from '../User'
 import { PlatformType } from '../enums'
 
@@ -35,6 +36,8 @@ export default class DeviceToken extends BaseEntity {
   public platform: PlatformType
 }
 
-export function getDeviceToken(userId) {
-  return getRepository(DeviceToken).findOne({ where: { userId } })
+export async function getDeviceToken(userId) {
+  const token = await getRepository(DeviceToken).findOne({ where: { userId } })
+
+  return pathOr(false, ['token'], token)
 }
