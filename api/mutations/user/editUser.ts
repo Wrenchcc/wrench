@@ -37,7 +37,7 @@ export default requireAuth(async (_, args, ctx) => {
         value: args.input.locale,
       })
     }
-
-    return ctx.db.User.findOne(ctx.userId)
   }
+
+  return ctx.db.User.findOne(ctx.userId)
 })
