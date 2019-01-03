@@ -36,7 +36,7 @@ class AddPostHeader extends PureComponent {
 
     if (hasSelectedFiles) {
       return (
-        <Text color="white" medium onPress={() => navigateToAddPost()}>
+        <Text color="white" medium onPress={() => navigateToAddPost()} hapticFeedback="impactLight">
           {t('AddPostHeader:next')}
         </Text>
       )
@@ -44,7 +44,7 @@ class AddPostHeader extends PureComponent {
 
     if (addPostAction) {
       return (
-        <Text color="dark" medium onPress={addPostAction}>
+        <Text color="dark" medium onPress={addPostAction} hapticFeedback="impactLight">
           {t('AddPostHeader:share')}
         </Text>
       )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, FlatList } from 'react-native'
+import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
@@ -27,11 +27,32 @@ class Onboarding extends Component {
   }
 
   state = {
+    isSaving: false,
     items: {},
   }
 
   componentDidMount() {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
+  }
+
+  get renderHeaderRight() {
+    if (!this.isComplete()) return null
+
+    const { isSaving } = this.state
+
+    return isSaving ? (
+      <ActivityIndicator size="small" />
+    ) : (
+      <Text
+        color="white"
+        medium
+        opacity={1}
+        onPress={this.handleSubmit}
+        hapticFeedback="impactLight"
+      >
+        {this.props.t('Onboarding:next')}
+      </Text>
+    )
   }
 
   toggleSelection = item => {
@@ -60,19 +81,13 @@ class Onboarding extends Component {
   isAdded = item => this.state.items[item.id]
 
   handleSubmit = () => {
+    this.setState({ isSaving: true })
+
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
     const interestedIn = Object.keys(this.state.items).map(id => ({ id }))
-    this.props.editUser({ interestedIn })
-  }
-
-  headerRight = () => {
-    if (!this.isComplete()) return null
-
-    return (
-      <Text color="white" medium opacity={1} onPress={this.handleSubmit}>
-        {this.props.t('Onboarding:next')}
-      </Text>
-    )
+    this.props
+      .editUser({ interestedIn })
+      .then(setTimeout(() => this.setState({ isSaving: false }), 500))
   }
 
   renderItem = ({ item }) => (
@@ -96,7 +111,7 @@ class Onboarding extends Component {
 
     return (
       <Base>
-        <Header headerRight={this.headerRight()} />
+        <Header headerRight={this.renderHeaderRight} />
         <FlatList
           ListHeaderComponent={<Content />}
           ListEmptyComponent={isFetching && <Loader color="grey" />}
