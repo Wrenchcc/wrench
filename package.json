@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start:api": "node api/dist/server.js",
+    "start:api": "NODE_ENV=production node api/dist/index.js",
     "build:api": "yarn && cd api && yarn && cd .. && ncc build api/index.ts -o api/dist",
     "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- ncc run api/index.ts -w"
   },

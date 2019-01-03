@@ -1,9 +1,6 @@
 {
   "name": "api",
   "private": true,
-  "scripts": {
-    "start": "NODE_ENV=production node dist/index.js"
-  },
   "dependencies": {
     "@types/pg": "^7.4.11",
     "apollo-server-express": "^2.3.1",
