@@ -17,9 +17,14 @@ export default gql`
     isOnline: Boolean
     lastSeen: Date
 
-    projectsConnection(first: Int, after: String, last: Int, before: String): ProjectsConnection
-    followingProjects(first: Int, after: String, last: Int, before: String): ProjectsConnection
-    postsConnection(first: Int, after: String, last: Int, before: String): PostConnection
+    projectsConnection(
+      first: Int = 10
+      after: String
+      last: Int
+      before: String
+    ): ProjectsConnection
+    followingProjects(first: Int = 10, after: String, last: Int, before: String): ProjectsConnection
+    postsConnection(first: Int = 10, after: String, last: Int, before: String): PostConnection
   }
 
   type UserConnection {
@@ -52,8 +57,8 @@ export default gql`
 
   extend type Query {
     user(id: ID, username: LowercaseString): User
-    users(first: Int, after: String, last: Int, before: String): UserConnection
-    currentUser(first: Int, after: String, last: Int, before: String): User
+    users(first: Int = 10, after: String, last: Int, before: String): UserConnection
+    currentUser(first: Int = 10, after: String, last: Int, before: String): User
   }
 
   input EditUserInput {

@@ -14,15 +14,15 @@ export default gql`
     commentsDisabled: Boolean
 
     filesConnection(
-      first: Int
+      first: Int = 10
       after: String
       reverse: Boolean
       maxWidth: Int
       maxHeight: Int
       type: FileType
     ): FileConnection
-    followersConnection(first: Int, after: String, last: Int, before: String): FollowersConnection
-    postsConnection(first: Int, after: String, last: Int, before: String): PostConnection
+    followersConnection(first: Int = 10, after: String, last: Int, before: String): FollowersConnection
+    postsConnection(first: Int = 10, after: String, last: Int, before: String): PostConnection
   }
 
   type ProjectPermissions {
@@ -64,20 +64,20 @@ export default gql`
     project(
       id: ID
       slug: LowercaseString
-      first: Int
+      first: Int = 10
       after: String
       last: Int
       before: String
     ): Project
     projects(
-      first: Int
+      first: Int = 10
       after: String
       last: Int
       before: String
       type: ProjectSortType
     ): ProjectsConnection
     projectSuggestions(
-      first: Int
+      first: Int = 10
       after: String
       last: Int
       before: String

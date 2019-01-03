@@ -22,7 +22,7 @@ export default gql`
   extend type Query {
     search(
       # Returns the first *n* results from the list
-      first: Int
+      first: Int = 10
       # Returns the elements in the list that come after the specified ID
       after: String
       # Returns the last *n* results from the list

@@ -11,14 +11,14 @@ export default gql`
     postPermissions: PostPermissions
 
     filesConnection(
-      first: Int
+      first: Int = 10
       after: String
       reverse: Boolean
       maxWidth: Int
       maxHeight: Int
       type: FileType
     ): FileConnection
-    commentsConnection(first: Int, after: String, last: Int, before: String): CommentConnection
+    commentsConnection(first: Int = 10, after: String, last: Int, before: String): CommentConnection
   }
 
   type PostPermissions {
@@ -42,13 +42,13 @@ export default gql`
 
   extend type Query {
     post(id: ID!): Post
-    posts(userId: ID, first: Int, after: String, last: Int, before: String): PostConnection
+    posts(userId: ID, first: Int = 10, after: String, last: Int, before: String): PostConnection
   }
 
   input PostInput {
     projectId: ID!
     caption: String
-    files: [FileInput]
+    files: [FileInput]!
   }
 
   extend type Mutation {

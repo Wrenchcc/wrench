@@ -15,7 +15,7 @@ export default gql`
   extend type Query {
     followers(
       projectId: ID!
-      first: Int
+      first: Int = 10
       after: String
       last: Int
       before: String

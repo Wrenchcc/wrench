@@ -26,7 +26,7 @@ export default gql`
 
   extend type Query {
     files(
-      first: Int
+      first: Int = 10
       after: String
       maxWidth: Int
       maxHeight: Int
