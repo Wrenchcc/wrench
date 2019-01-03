@@ -3,8 +3,8 @@
  * both their type definitions and their resolvers
  */
 import gql from 'graphql-tag'
-import { GraphQLDateTime } from 'graphql-iso-date'
 import LowercaseString from './LowercaseString'
+import Date from './Date'
 
 const typeDefs = gql`
   scalar Date
@@ -12,7 +12,7 @@ const typeDefs = gql`
 `
 
 const resolvers = {
-  Date: GraphQLDateTime,
+  Date,
   LowercaseString,
 }
 
