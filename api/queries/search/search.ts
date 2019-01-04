@@ -1,15 +1,16 @@
 import { ApolloError } from 'apollo-server-express'
+import { SEARCH_TYPES } from 'shared/utils/enums'
 import searchUsers from './searchUsers'
 import searchProject from './searchProjects'
 import searchModels from './searchModels'
 
 export default (_, args, ctx) => {
   switch (args.type) {
-    case 'USERS':
+    case SEARCH_TYPES.USERS:
       return searchUsers(args, ctx)
-    case 'PROJECTS':
+    case SEARCH_TYPES.PROJECTS:
       return searchProject(args, ctx)
-    case 'MODELS': {
+    case SEARCH_TYPES.MODELS: {
       return searchModels(args, ctx)
     }
     default:

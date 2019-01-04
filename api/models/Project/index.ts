@@ -7,6 +7,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  getRepository,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
 import User from '../User'
@@ -14,6 +15,7 @@ import Post from '../Post'
 import ProjectType from '../ProjectType'
 import Model from '../Model'
 import File from '../File'
+import Following from '../Following'
 
 // TODO: Check latest created Project with slug
 @Entity('projects')
@@ -41,6 +43,18 @@ export default class Project extends BaseEntity {
     return project
   }
 
+  public static async getPopularProjects() {
+    return getRepository(Project)
+      .createQueryBuilder('projects')
+      .select('count(projects.id)', 'count')
+      .addSelect('projects.id', 'id')
+      .innerJoin('projects.followers', 'followers')
+      .where(`"followers"."createdAt" > current_date - interval '7 days'`) // eslint-disable-line
+      .groupBy('projects.id')
+      .orderBy('count', 'DESC')
+      .getRawMany()
+  }
+
   @ManyToOne(() => User, user => user.projects)
   public user: User
 
@@ -52,6 +66,9 @@ export default class Project extends BaseEntity {
 
   @OneToMany(() => File, file => file.project)
   public files: File[]
+
+  @OneToMany(type => Following, following => following.project)
+  followers: Following[]
 
   @ManyToOne(() => Model, model => model)
   public model: Model
