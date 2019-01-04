@@ -20,7 +20,12 @@ export const DYNAMIC_LINK_TYPES = {
 
 export const PROJECT_SORT_TYPES = {
   POPULAR: 'POPULAR',
-  RECENT: 'RECENT',
+}
+
+export const SEARCH_TYPES = {
+  USERS: 'USERS',
+  PROJECTS: 'PROJECTS',
+  MODELS: 'MODELS',
 }
 
 export const AUTH_PROVIDER_TYPES = {
