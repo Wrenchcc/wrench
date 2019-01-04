@@ -5366,10 +5366,10 @@ react-native-tab-view@^1.3.1:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-video@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.3.0.tgz#5d9569cea928d8125b839aac9653f3dbcb6efe06"
-  integrity sha512-HKbc1XHXI2YDwLosDYtXaOePbaO/FoAqvbC0n9CsC2Cj2G0Z2po46Xsjf388rhqxUBRA8AGpReFLwrVCG576ZQ==
+react-native-video@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.3.1.tgz#dd5cd7feeba1068dffb36ca0406214fe6ffc01aa"
+  integrity sha512-Xvup8RRJCIXM7SjfxhzOP7XCZIhSBpuMvLYnlAYkt/eCl8mzkqRSmXqqu4KZXgdvdU4rtRVvVZ9CwUEESPCJuA==
   dependencies:
     keymirror "^0.1.1"
     prop-types "^15.5.10"

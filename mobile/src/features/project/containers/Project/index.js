@@ -12,7 +12,7 @@ import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
 
-// TODO: make platform specific and translate
+// TODO: make platform specific
 const FOOTER_HEIGHT = 500
 const START_OPACITY = 50
 

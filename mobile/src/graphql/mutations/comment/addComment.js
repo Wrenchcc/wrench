@@ -24,7 +24,6 @@ const addCommentToFeedOptions = {
         },
       },
       update: (cache, { data: { addComment } }) => {
-        // TODO: Update variables to match ROOT query
         const data = cache.readQuery({ query: FeedQuery, variables: { userId: null } })
         const index = data.posts.edges.findIndex(post => post.node.id === postId)
         const { user } = cache.readQuery({ query: CurrentUserQuery })

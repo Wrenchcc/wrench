@@ -6,7 +6,6 @@ import { Avatar, Text, TimeAgo } from 'ui'
 import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
 
-// TODO: Refactor and fix date
 // TODO: Pass correct data to profile
 const Item = ({ id, user, text, isReply, onReply, createdAt, commentId = null, t }) => {
   const animatedValue = new Animated.Value(0)

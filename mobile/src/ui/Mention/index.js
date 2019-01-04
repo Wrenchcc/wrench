@@ -7,8 +7,9 @@ import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { TOTAL_HEADER_HEIGHT } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 
-// And same offset on comments and posts
+// TODO: And same offset on comments and posts
 // Keyboard height + input
+// No result
 const DEFAULT_OFFSET_BOTTOM = isIphone ? 360 : 122
 
 const styles = {
@@ -22,7 +23,6 @@ const styles = {
   },
 }
 
-// TODO: Pass query to search
 class Mention extends Component {
   static propTypes = {
     users: PropTypes.array,

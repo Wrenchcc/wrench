@@ -1,10 +1,10 @@
 import { navigateToWebView, navigateToUser } from 'navigation/actions'
 import { COLORS, FONTS } from 'ui/constants'
 
-// Actions
 const handleUrlPress = url => navigateToWebView({ url })
 
 // TODO: Fix regex to return value without @
+// TODO: Use shared regex
 const handleNamePress = name => {
   const username = name.replace('@', '')
   navigateToUser({ user: { username } })

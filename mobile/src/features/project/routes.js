@@ -13,6 +13,7 @@ import Project from './containers/Project'
 export default {
   [ROUTE_NAMES.PROJECT]: {
     component: Project,
+    path: 'project/:slug',
   },
   [ROUTE_NAMES.COMMENTS]: {
     component: Comments,
