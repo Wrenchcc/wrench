@@ -142,6 +142,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-reanimated')
     implementation project(':react-native-screens')
     implementation project(':react-native-gesture-handler')
     implementation 'com.google.firebase:firebase-core:16.0.4'
