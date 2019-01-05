@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { Gallery } from 'ui'
+import { Gallery, Placeholder } from 'ui'
 import { followProject } from 'graphql/mutations/project/followProject'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
@@ -18,13 +18,18 @@ class ProjectCard extends PureComponent {
   render() {
     const { t, onPress, project, followProject, style } = this.props
 
-    const files = pathOr(null, ['files', 'edges'], project)
+    const files = pathOr([], ['files', 'edges'], project)
 
     return (
       <Base onPress={onPress} style={style}>
-        <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
-
-        {files && <Gallery files={files} />}
+        {files.length ? (
+          <>
+            <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
+            <Gallery files={files} />
+          </>
+        ) : (
+          <Placeholder />
+        )}
 
         <Content>
           <Info>
