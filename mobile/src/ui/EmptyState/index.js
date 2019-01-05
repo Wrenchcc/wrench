@@ -35,7 +35,7 @@ function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
       <Title>{t(`EmptyState:${type}:title`)}</Title>
       <Description color="grey">{t(`EmptyState:${type}:description`)}</Description>
       {showButton(type) && (
-        <Button onPress={() => onPressAction(type, params)}>
+        <Button onPress={() => onPressAction(type, params)} hapticFeedback="impactLight">
           <Text medium fontSize={15}>
             {t(`EmptyState:${type}:button`)}
           </Text>
