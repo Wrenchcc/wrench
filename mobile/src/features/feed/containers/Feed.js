@@ -4,7 +4,7 @@ import { compose } from 'react-apollo'
 import { getFeed } from 'graphql/queries/getFeed'
 import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
-import { registerRemoteUserLocale } from 'i18n'
+import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { INITIAL_POSTS_COUNT } from '../constants'
 
@@ -20,7 +20,7 @@ class Feed extends PureComponent {
 
   componentWillMount() {
     registerForPushNotifications()
-    registerRemoteUserLocale()
+    registerUserLocale()
   }
 
   renderItem = ({ item }) => <Post post={item.node} />

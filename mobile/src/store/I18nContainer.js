@@ -1,6 +1,6 @@
 import { Container } from 'unstated'
 import i18next from 'i18next'
-import { setLocale, languages, registerUserLocale } from 'i18n'
+import { setLocale, languages, updateUserLanguage } from 'i18n'
 import { track, events, logError } from 'utils/analytics'
 
 export default class I18nContainer extends Container {
@@ -17,7 +17,7 @@ export default class I18nContainer extends Container {
     }
 
     i18next.changeLanguage(locale)
-    registerUserLocale(locale)
+    updateUserLanguage(locale)
 
     this.setState({ currentLocale: locale }, () => {
       track(events.USER_CHANGED_LOCALE, { locale })

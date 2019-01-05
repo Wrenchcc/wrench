@@ -10,6 +10,7 @@ export default gql`
     avatarUrl
     projectCount
     settings {
+      timezone
       locale
     }
     interestedIn {
