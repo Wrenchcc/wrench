@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Dimensions } from 'react-native'
 import { PanGestureHandler, State, PinchGestureHandler } from 'react-native-gesture-handler'
 import Animated, { Easing } from 'react-native-reanimated'
 
@@ -26,6 +27,8 @@ const {
   Clock,
   event,
 } = Animated
+
+const { width } = Dimensions.get('window')
 
 function scaleDiff(value) {
   const tmp = new Value(1)
@@ -205,8 +208,8 @@ function bouncy(value, gestureDiv, gestureActive, lowerBound, upperBound, fricti
   )
 }
 
-const WIDTH = 300
-const HEIGHT = 300
+const WIDTH = width
+const HEIGHT = width
 
 export default class ImageEditor extends Component {
   pinchRef = React.createRef()
@@ -339,7 +342,7 @@ export default class ImageEditor extends Component {
                 ],
               }}
               resizeMode="stretch"
-              source={this.props.source}
+              source={this.props.image}
             />
           </PanGestureHandler>
         </Animated.View>

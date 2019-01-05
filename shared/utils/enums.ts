@@ -23,9 +23,9 @@ export const PROJECT_SORT_TYPES = {
 }
 
 export const SEARCH_TYPES = {
-  USERS: 'USERS',
-  PROJECTS: 'PROJECTS',
   MODELS: 'MODELS',
+  PROJECTS: 'PROJECTS',
+  USERS: 'USERS',
 }
 
 export const AUTH_PROVIDER_TYPES = {

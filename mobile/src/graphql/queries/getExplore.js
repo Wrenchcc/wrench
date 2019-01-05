@@ -1,13 +1,14 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
+import { PROJECT_SORT_TYPES } from 'utils/enums'
 import postsInfoFragment from 'graphql/fragments/post/postsInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 // TODO: Fragments and on refresh get popular projects too
 const PopularProjectsQuery = gql`
-  query getExplore($after: String) {
-    projects(after: $after) {
+  query getPopularProjects($type: ProjectSortType!, $after: String) {
+    projects(type: $type, after: $after) {
       pageInfo {
         hasNextPage
       }
@@ -42,7 +43,7 @@ const getPopularProjectsOptions = {
   options: ({ after = null }) => ({
     variables: {
       after,
-      type: 'POPULAR',
+      type: PROJECT_SORT_TYPES.POPULAR,
     },
     fetchPolicy: 'cache-and-network',
   }),
