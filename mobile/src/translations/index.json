@@ -142,7 +142,7 @@
       "description": "Post your projects, watch others, discuss and learn together."
     },
     "CommentField": {
-      "placeholder": "Comment",
+      "placeholder": "Add a comment...",
       "post": "Post"
     },
     "CommentItem": {
@@ -380,7 +380,7 @@
       "description": "Dela dina project, kolla på andra, diskutera och lär av varandra."
     },
     "CommentField": {
-      "placeholder": "Kommentera",
+      "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
     },
     "CommentItem": {

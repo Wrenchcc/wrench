@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard } from 'react-native'
+import { Query } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
+import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { COLORS } from 'ui/constants'
-import { Text } from 'ui'
+import { Text, Avatar } from 'ui'
 import { isIphone } from 'utils/platform'
 import { Base, Input, Button } from './styles'
 
@@ -90,24 +92,29 @@ class CommentField extends PureComponent {
   render() {
     const { t, disabled, onSubmit, onChangeText, ...props } = this.props
     return (
-      <Base>
-        <Input
-          placeholder={t('CommentField:placeholder')}
-          placeholderTextColor={COLORS.LIGHT_GREY}
-          keyboardType="twitter"
-          onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
-          onChangeText={this.onChangeText}
-          value={this.props.value}
-          color="dark"
-          inputRef={this.textInput}
-          {...props}
-        />
-        {!disabled && (
-          <Button onPress={this.handleSubmit}>
-            <Text medium>{t('CommentField:post')}</Text>
-          </Button>
+      <Query query={CurrentUserQuery}>
+        {({ data }) => (
+          <Base>
+            <Avatar uri={data.user.avatarUrl} />
+            <Input
+              placeholder={t('CommentField:placeholder')}
+              placeholderTextColor={COLORS.LIGHT_GREY}
+              keyboardType="twitter"
+              onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
+              onChangeText={this.onChangeText}
+              value={this.props.value}
+              color="dark"
+              inputRef={this.textInput}
+              {...props}
+            />
+            {!disabled && (
+              <Button onPress={this.handleSubmit}>
+                <Text medium>{t('CommentField:post')}</Text>
+              </Button>
+            )}
+          </Base>
         )}
-      </Base>
+      </Query>
     )
   }
 }

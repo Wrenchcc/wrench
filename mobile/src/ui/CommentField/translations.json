@@ -1,11 +1,11 @@
 {
   "CommentField": {
     "en": {
-      "placeholder": "Comment",
+      "placeholder": "Add a comment...",
       "post": "Post"
     },
     "sv": {
-      "placeholder": "Kommentera",
+      "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
     }
   }

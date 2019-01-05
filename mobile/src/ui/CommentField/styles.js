@@ -6,9 +6,10 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   flex-direction: row;
+  margin-bottom: 10;
+  align-items: center;
   border-bottom-color: ${COLORS.DIVIDER};
   border-bottom-width: ${StyleSheet.hairlineWidth};
-  margin-bottom: 10;
 `
 
 export const Input = styled(UiInput)`
@@ -16,6 +17,7 @@ export const Input = styled(UiInput)`
   font-size: 17;
   border-bottom-width: 0;
   padding-right: 10;
+  padding-left: 10;
 `
 
 export const Button = styled(UiTouchable)`
