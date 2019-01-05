@@ -10,5 +10,6 @@ export default gql`
     avatarUrl
     projectCount
     dynamicLink
+    isOnline
   }
 `

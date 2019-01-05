@@ -19,7 +19,7 @@ const getFeedOptions = {
     variables: {
       userId: getUserId(navigation),
     },
-    pollInterval: ms('1m'),
+    pollInterval: ms('3m'),
     fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('posts'),

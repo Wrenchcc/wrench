@@ -46,6 +46,7 @@ function Notification({ data, t }) {
         uri={data.user.avatarUrl}
         size={40}
         onPress={() => navigateToUser({ user: data.user })}
+        isOnline={data.user.isOnline}
       />
       <Content>
         <Text onPress={() => navigateToUser({ user: data.user })}>{data.user.fullName}</Text>

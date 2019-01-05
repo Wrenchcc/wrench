@@ -1,11 +1,10 @@
 import React from 'react'
-import { Image } from 'react-native'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { navigateToAddMedia, navigateToAddProject } from 'navigation'
+import { Icon } from 'ui'
 import { add } from 'images'
-import { Button } from './styles'
 
 function Add(props) {
   let onPress
@@ -16,9 +15,7 @@ function Add(props) {
   }
 
   return (
-    <Button hitSlop={20} onPress={onPress} {...props}>
-      <Image source={add} />
-    </Button>
+    <Icon hitSlop={20} onPress={onPress} source={add} hapticFeedback="impactLight" {...props} />
   )
 }
 
