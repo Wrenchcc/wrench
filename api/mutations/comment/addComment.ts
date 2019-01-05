@@ -1,4 +1,4 @@
-import { requireAuth } from 'api/utils/permissions'
+import { requireAuth, canModeratePost, canModerateComment } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 import { MENTION_REGEX } from 'shared/utils/regex'
 
@@ -14,26 +14,29 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
     userId: ctx.userId,
   })
 
-  // Add new notification to db
-  await Promise.all([
-    ctx.db.Notification.save({
-      to: post.userId,
-      type: notificationType,
-      typeId: comment.id,
-      userId: ctx.userId,
-    }),
+  // Skip "New comment" notification if post owner.
+  if (!canModeratePost(post, ctx.userId)) {
+    await Promise.all([
+      // Add new notification to db
+      ctx.db.Notification.save({
+        to: post.userId,
+        type: notificationType,
+        typeId: comment.id,
+        userId: ctx.userId,
+      }),
 
-    // Send notification to post owner
-    ctx.services.firebase.sendPushNotification({
-      data: {
-        text: input.text,
-        title: project.title,
-      },
-      to: post.userId,
-      type: notificationType,
-      userId: ctx.userId,
-    }),
-  ])
+      // Send notification to post owner
+      ctx.services.firebase.sendPushNotification({
+        data: {
+          text: input.text,
+          title: project.title,
+        },
+        to: post.userId,
+        type: notificationType,
+        userId: ctx.userId,
+      }),
+    ])
+  }
 
   // Send notification to mentioned users
   const mentions = input.text.match(MENTION_REGEX)
@@ -41,27 +44,28 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
     await Promise.all(
       mentions.map(async mention => {
         const username = mention.replace('@', '')
-        const user = await ctx.db.User.findOne({ where: { username } })
+        const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
-        // Skip "Mention" notification to owner of reply comment.
-        if (notificationType === NOTIFICATION_TYPES.NEW_REPLY && comment.userId === user.id) {
+        // Skip "New Mention" notification if comment owner.
+        if (canModerateComment(comment, mentionedUser.id)) {
           return null
         }
 
         return Promise.all([
+          // Send notification to mentioned user
           ctx.services.firebase.sendPushNotification({
             data: {
               text: input.text,
               title: project.title,
             },
-            to: user.id,
+            to: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,
             userId: ctx.userId,
           }),
 
           // Add new notification to db
           ctx.db.Notification.save({
-            to: user.id,
+            to: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,
             typeId: comment.id,
             userId: ctx.userId,
