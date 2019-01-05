@@ -52,6 +52,7 @@ export default gql`
 
   type UserSettings {
     locale: String
+    timezone: String
     notifications: UserNotificationsSettings
   }
 
@@ -63,6 +64,7 @@ export default gql`
 
   input EditUserInput {
     interestedIn: [ProjectTypeInput]
+    timezone: String
     locale: String
   }
 

@@ -1,6 +1,7 @@
 import { UserInputError } from 'apollo-server-express'
+import { DateTime } from 'luxon'
 import { requireAuth } from 'api/utils/permissions'
-import { LOCALE_COLUMN } from 'api/models/UserSettings'
+import { LOCALE_COLUMN, TIMEZONE_COLUMN } from 'api/models/UserSettings'
 import { SUPPORTED_LOCALES } from 'shared/locale'
 
 // TODO: Use dataloader
@@ -35,6 +36,31 @@ export default requireAuth(async (_, args, ctx) => {
         type: LOCALE_COLUMN,
         userId: ctx.userId,
         value: args.input.locale,
+      })
+    }
+  }
+
+  if (args.input.timezone) {
+    if (!DateTime.local().setZone(args.input.timezone).isValid) {
+      return new UserInputError('Not a supported timezone.')
+    }
+
+    const savedTimezone = await ctx.db.UserSettings.findOne({
+      where: {
+        type: TIMEZONE_COLUMN,
+        userId: ctx.userId,
+      },
+    })
+
+    if (savedTimezone) {
+      await ctx.db.UserSettings.update(savedTimezone.id, {
+        value: args.input.timezone,
+      })
+    } else {
+      await ctx.db.UserSettings.save({
+        type: TIMEZONE_COLUMN,
+        userId: ctx.userId,
+        value: args.input.timezone,
       })
     }
   }

@@ -14,6 +14,7 @@ import User from '../User'
 
 export const NOTIFICATIONS_COLUMN = 'notifications'
 export const LOCALE_COLUMN = 'locale'
+export const TIMEZONE_COLUMN = 'timezone'
 
 @Entity('users_settings')
 export default class UserSettings extends BaseEntity {
