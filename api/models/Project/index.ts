@@ -49,7 +49,7 @@ export default class Project extends BaseEntity {
       .select('count(projects.id)', 'count')
       .addSelect('projects.id', 'id')
       .innerJoin('projects.followers', 'followers')
-      .where(`"followers"."createdAt" > current_date - interval '1 day'`) // eslint-disable-line
+      .where(`"followers"."createdAt" > current_date - interval '7 day'`) // eslint-disable-line
       .groupBy('projects.id')
       .orderBy('count', 'DESC')
       .getRawMany()
@@ -66,6 +66,9 @@ export default class Project extends BaseEntity {
 
   @OneToMany(() => File, file => file.project)
   public files: File[]
+
+  @OneToMany(() => Following, following => following.project)
+  public followers: Following[]
 
   @ManyToOne(() => Model, model => model)
   public model: Model

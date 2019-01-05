@@ -11,7 +11,7 @@ export default async (_, args, ctx) => {
       const ids = projects.map(({ id }) => id)
 
       return paginate(ctx.db.Project, args, {
-        where: { id: In(ids) },
+        where: { id: ids.length ? In(ids) : null },
       })
     default:
       throw new ApolloError('Invalid ProjectSortType supplied to Projects query')
