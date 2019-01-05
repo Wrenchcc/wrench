@@ -15,21 +15,25 @@ class ProjectCard extends PureComponent {
     style: PropTypes.any,
   }
 
+  get renderImages() {
+    const files = pathOr([], ['project', 'files', 'edges'], this.props)
+
+    return files.length ? (
+      <>
+        <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
+        <Gallery files={files} />
+      </>
+    ) : (
+      <Placeholder />
+    )
+  }
+
   render() {
     const { t, onPress, project, followProject, style } = this.props
 
-    const files = pathOr([], ['files', 'edges'], project)
-
     return (
       <Base onPress={onPress} style={style}>
-        {files.length ? (
-          <>
-            <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
-            <Gallery files={files} />
-          </>
-        ) : (
-          <Placeholder />
-        )}
+        {this.renderImages}
 
         <Content>
           <Info>
