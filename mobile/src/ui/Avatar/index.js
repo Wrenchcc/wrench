@@ -4,11 +4,19 @@ import PropTypes from 'prop-types'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Touchable, Image, IsOnline } from 'ui'
 
-const Avatar = ({ uri, size = 30, onPress, disabled = false, isOnline = false, style = {} }) => {
+const Avatar = ({
+  uri,
+  size = 30,
+  onPress,
+  disabled = false,
+  isOnline = false,
+  badgeSize,
+  style = {},
+}) => {
   if (onPress) {
     return (
       <View style={{ position: 'relative', height: size, width: size }}>
-        {isOnline && <IsOnline />}
+        {isOnline && <IsOnline badgeSize={badgeSize} />}
         <Touchable onPress={onPress} style={style} disabled={disabled}>
           <Image
             source={{ uri }}
@@ -24,7 +32,7 @@ const Avatar = ({ uri, size = 30, onPress, disabled = false, isOnline = false, s
 
   return (
     <View style={{ position: 'relative' }}>
-      {isOnline && <IsOnline />}
+      {isOnline && <IsOnline badgeSize={badgeSize} />}
       <Image
         source={{ uri }}
         width={size}
@@ -44,6 +52,7 @@ Avatar.propTypes = {
   disabled: PropTypes.bool,
   style: PropTypes.any,
   isOnline: PropTypes.bool,
+  badgeSize: PropTypes.string,
 }
 
 export default Avatar

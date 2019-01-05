@@ -19,7 +19,7 @@ class User extends PureComponent {
     const { t, data } = this.props
     return (
       <Base onPress={this.goToProfile}>
-        <Avatar uri={data.avatarUrl} size={40} />
+        <Avatar uri={data.avatarUrl} size={40} isOnline={data.isOnline} />
         <Content>
           <Text medium>{data.fullName}</Text>
           <Text color="light_grey" fontSize={15}>

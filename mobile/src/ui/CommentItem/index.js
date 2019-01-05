@@ -34,6 +34,8 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, commentId = null, t
         <Avatar
           uri={user.avatarUrl}
           size={isReply ? 20 : 30}
+          isOnline={user.isOnline}
+          badgeSize={isReply && 'small'}
           onPress={() => navigateToUser({ user })}
         />
         <Content>

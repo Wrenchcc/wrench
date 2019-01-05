@@ -20,6 +20,7 @@ export const CommentsQuery = gql`
             fullName
             username
             avatarUrl
+            isOnline
           }
           replies: repliesConnection {
             edges {
@@ -32,6 +33,7 @@ export const CommentsQuery = gql`
                   fullName
                   username
                   avatarUrl
+                  isOnline
                 }
               }
             }
