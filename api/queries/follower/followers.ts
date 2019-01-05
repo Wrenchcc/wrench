@@ -1,5 +1,5 @@
-import paginate from 'api/utils/paginate'
 import { In } from 'typeorm'
+import paginate from 'api/utils/paginate'
 
 // TODO: User dataloader
 export default async (_, args, ctx) => {

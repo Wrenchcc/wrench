@@ -1,22 +1,27 @@
 import { filter } from 'ramda'
+import { DateTime } from 'luxon'
 import { requireAuth } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 
 // TODO: User dataloader
+// TODO: Paginate
 export default requireAuth(async (_, args, ctx) => {
-  const [__, unreadCount] = await ctx.db.Notification.findAndCount({
-    where: {
-      isSeen: false,
-      to: ctx.userId,
-    },
+  // Set user last seen for isOnline (clients are polling every 1m)
+  await ctx.db.User.update(ctx.userId, {
+    lastSeen: DateTime.local().toFormat('yyyy-MM-dd HH:mm:ss+00'),
   })
 
-  const notifications = await ctx.db.Notification.find({
-    order: {
-      createdAt: 'DESC',
+  const { unreadCount } = await ctx.db.Notification.unreadCount(ctx.userId)
+
+  const notifications = await ctx.db.Notification.find(
+    {
+      order: {
+        createdAt: 'DESC',
+      },
+      where: { to: ctx.userId },
     },
-    where: { to: ctx.userId },
-  })
+    args
+  )
 
   const edges = await Promise.all(
     notifications.map(async ({ typeId, type, userId, ...rest }) => {
