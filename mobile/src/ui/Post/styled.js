@@ -12,8 +12,6 @@ export const Top = styled.View`
 
 export const Content = styled.View`
   padding-top: 18;
-  position: relative;
-  z-index: 100;
 `
 
 export const Title = styled(UiTitle)`
