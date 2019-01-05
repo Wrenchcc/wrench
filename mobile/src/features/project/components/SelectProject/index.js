@@ -43,9 +43,18 @@ class SelectProject extends PureComponent {
   renderProjects = () => {
     const { projects, onPress, selectedProjectId } = this.props
 
-    return projects.map(({ node }) => (
-      <Project key={node.id} {...node} onPress={onPress} selected={selectedProjectId === node.id} />
-    ))
+    return projects
+      .slice()
+      .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)
+      .reverse()
+      .map(({ node }) => (
+        <Project
+          key={node.id}
+          {...node}
+          onPress={onPress}
+          selected={selectedProjectId === node.id}
+        />
+      ))
   }
 
   handleNewProject = () => {
