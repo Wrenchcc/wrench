@@ -1,9 +1,7 @@
 import * as jwt from 'jsonwebtoken'
+import * as ms from 'ms'
 
-// TODO: Use ms lib
 const { APP_JWT_SECRET } = process.env
-const TWENTY_FOUR_HOURS = 86400
-const FIFTEEN_MINUTES = 900
 
 export const getUserId = req => {
   const authorization = req.headers.authorization || ''
@@ -33,6 +31,6 @@ export const verifyRefreshToken = refreshToken => {
 export const createToken = data => jwt.sign(data, APP_JWT_SECRET)
 
 export const generateTokens = userId => ({
-  accessToken: createToken({ userId, expiresIn: FIFTEEN_MINUTES }),
-  refreshToken: createToken({ userId, expiresIn: TWENTY_FOUR_HOURS }),
+  accessToken: createToken({ userId, expiresIn: ms('15m') }),
+  refreshToken: createToken({ userId, expiresIn: ms('1d') }),
 })

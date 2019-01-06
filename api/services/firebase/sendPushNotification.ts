@@ -7,21 +7,21 @@ import admin from './config'
 
 const debug = require('debug')('api:firebase')
 
-export default async ({ data, userId, to, type }) => {
-  const notificationSettings = await getNotificationSettings(to)
+export default async ({ data, userId, sendTo, type }) => {
+  const notificationSettings = await getNotificationSettings(sendTo)
   const isEnabled = pathOr(true, [type], notificationSettings)
 
   if (!isEnabled) {
     return null
   }
 
-  const token = await getDeviceToken(to)
+  const token = await getDeviceToken(sendTo)
   if (!token) {
     debug('No device token found for userId: %o', userId)
     return null
   }
 
-  const locale = await getUserLocale(to)
+  const locale = await getUserLocale(sendTo)
   const user = await getUserById(userId)
 
   const message = {

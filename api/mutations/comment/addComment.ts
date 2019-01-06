@@ -19,7 +19,7 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
     await Promise.all([
       // Add new notification to db
       ctx.db.Notification.save({
-        to: post.userId,
+        sendTo: post.userId,
         type: notificationType,
         typeId: comment.id,
         userId: ctx.userId,
@@ -31,7 +31,7 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
           text: input.text,
           title: project.title,
         },
-        to: post.userId,
+        sendTo: post.userId,
         type: notificationType,
         userId: ctx.userId,
       }),
@@ -58,14 +58,14 @@ export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
               text: input.text,
               title: project.title,
             },
-            to: mentionedUser.id,
+            sendTo: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,
             userId: ctx.userId,
           }),
 
           // Add new notification to db
           ctx.db.Notification.save({
-            to: mentionedUser.id,
+            sendTo: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,
             typeId: comment.id,
             userId: ctx.userId,
