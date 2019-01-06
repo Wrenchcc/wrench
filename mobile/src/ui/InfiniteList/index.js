@@ -137,7 +137,7 @@ class InfiniteList extends PureComponent {
             justifyContent: 'center',
             paddingLeft: paddingHorizontal,
             paddingRight: paddingHorizontal,
-            paddingTop: (defaultPaddingTop && 50) || 0,
+            paddingTop,
             paddingBottom: (paddingBottom && paddingBottom) || 0,
             ...contentContainerStyle,
           }}

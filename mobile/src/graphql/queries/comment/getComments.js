@@ -11,6 +11,7 @@ export const CommentsQuery = gql`
         hasPreviousPage
       }
       edges {
+        cursor
         node {
           id
           text
