@@ -1,14 +1,17 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, Dimensions } from 'react-native'
+import { Dimensions } from 'react-native'
 import { PanGestureHandler, State, PinchGestureHandler } from 'react-native-gesture-handler'
+import Animated from 'react-native-reanimated'
 import { COLORS } from 'ui/constants'
+import { friction, bouncyPinch, bouncy, dragDiff } from './helpers'
+
+const { set, cond, eq, or, sub, max, multiply, divide, lessThan, Value, event, add } = Animated
 
 const { width } = Dimensions.get('window')
 
-const IMAGE_EDITOR_HEIGHT = width
 const IMAGE_EDITOR_WIDTH = width
-const SCALE_MULTIPLIER = 1.2
+const IMAGE_EDITOR_HEIGHT = width
 
 export default class ImageEditor extends PureComponent {
   static propTypes = {
@@ -16,94 +19,108 @@ export default class ImageEditor extends PureComponent {
     // onCropping: PropTypes.func.isRequired,
   }
 
-  scaledImageSize = null
-
-  gesturePosition = new Animated.ValueXY()
-
-  gestureOffset = new Animated.ValueXY()
-
-  baseScale = new Animated.Value(1)
-
-  pinchScale = new Animated.Value(1)
-
-  // scale = Animated.multiply(this.baseScale, this.pinchScale)
-
-  lastScale = 1
+  pinchRef = React.createRef()
 
   panRef = React.createRef()
 
-  lastOffset = { x: 0, y: 0 }
-
   constructor(props) {
     super(props)
-    this.onPinchGestureEvent = Animated.event([{ nativeEvent: { scale: this.pinchScale } }], {
-      useNativeDriver: true,
-    })
 
     this.setImageProperties(props.image)
-  }
 
-  onPanGestureStateChange = ({ nativeEvent }) => {
-    if (nativeEvent.oldState === State.ACTIVE) {
-      this.lastOffset.x += nativeEvent.translationX
-      this.lastOffset.y += nativeEvent.translationY
-      this.gesturePosition.setValue({ x: 0, y: 0 })
-      this.gestureOffset.setValue({ x: this.lastOffset.x, y: this.lastOffset.y })
+    // DECLARE TRANSX
+    const panTransX = new Value(0)
+    const panTransY = new Value(0)
 
-      const maxOffsetX = -Math.abs(this.scaledImageSize.width - IMAGE_EDITOR_WIDTH)
-      if (maxOffsetX > this.lastOffset.x) {
-        this.lastOffset.x = maxOffsetX
-        Animated.spring(this.gestureOffset.x, {
-          bounciness: 3,
-          toValue: maxOffsetX,
-          useNativeDriver: true,
-        }).start()
-      }
+    // PINCH
+    const pinchScale = new Value(1)
+    const pinchFocalX = new Value(0)
+    const pinchFocalY = new Value(0)
+    const pinchState = new Value(-1)
 
-      if (this.lastOffset.x > 0) {
-        this.lastOffset.x = 0
+    this.onPinchEvent = event([
+      {
+        nativeEvent: {
+          state: pinchState,
+          scale: pinchScale,
+          focalX: pinchFocalX,
+          focalY: pinchFocalY,
+        },
+      },
+    ])
 
-        Animated.spring(this.gestureOffset.x, {
-          bounciness: 3,
-          toValue: 0,
-          useNativeDriver: true,
-        }).start()
-      }
+    // SCALE
+    const scale = new Value(1)
+    const pinchActive = eq(pinchState, State.ACTIVE)
 
-      const maxOffsetY = -Math.abs(this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT)
-      if (maxOffsetY > this.lastOffset.y) {
-        this.lastOffset.y = maxOffsetY
-        Animated.spring(this.gestureOffset.y, {
-          bounciness: 3,
-          toValue: maxOffsetY,
-          useNativeDriver: true,
-        }).start()
-      }
+    this.focalDisplacementX = new Value(0)
+    const relativeFocalX = sub(pinchFocalX, add(panTransX, this.focalDisplacementX))
 
-      if (this.lastOffset.y > 0) {
-        this.lastOffset.y = 0
-        Animated.spring(this.gestureOffset.y, {
-          bounciness: 3,
-          toValue: 0,
-          useNativeDriver: true,
-        }).start()
-      }
-    }
-  }
+    this.focalDisplacementY = new Value(0)
+    const relativeFocalY = sub(pinchFocalY, add(panTransY, this.focalDisplacementY))
 
-  onPanGestureEvent = ({ nativeEvent }) => {
-    this.gesturePosition.setValue({
-      x: nativeEvent.translationX,
-      y: nativeEvent.translationY,
-    })
-  }
+    this.scale = set(
+      scale,
+      bouncyPinch(
+        scale,
+        pinchScale,
+        pinchActive,
+        relativeFocalX,
+        this.focalDisplacementX,
+        relativeFocalY,
+        this.focalDisplacementY
+      )
+    )
 
-  onPinchHandlerStateChange = ({ nativeEvent }) => {
-    if (nativeEvent.oldState === State.ACTIVE) {
-      this.lastScale *= nativeEvent.scale
-      this.baseScale.setValue(this.lastScale)
-      this.pinchScale.setValue(1)
-    }
+    // PAN
+    const dragX = new Value(0)
+    const dragY = new Value(0)
+    const panState = new Value(-1)
+
+    this.onPanEvent = event([
+      {
+        nativeEvent: {
+          translationX: dragX,
+          translationY: dragY,
+          state: panState,
+        },
+      },
+    ])
+
+    const panActive = eq(panState, State.ACTIVE)
+    const panFriction = value => friction(value)
+
+    // X
+    const panUpX = cond(lessThan(this.scale, 1), 0, multiply(-1, this.focalDisplacementX))
+    const panLowX = add(panUpX, multiply(-IMAGE_EDITOR_WIDTH, add(max(1, this.scale), -1)))
+
+    this.panTransX = set(
+      panTransX,
+      bouncy(
+        panTransX,
+        dragDiff(dragX, panActive),
+        or(panActive, pinchActive),
+        panLowX,
+        panUpX,
+        panFriction
+      )
+    )
+
+    // Y
+    const panUpY = cond(lessThan(this.scale, 1), 0, multiply(-1, this.focalDisplacementY))
+    const panLowY = add(panUpY, multiply(-IMAGE_EDITOR_HEIGHT, add(max(1, this.scale), -1)))
+
+    this.panTransY = set(
+      panTransY,
+      bouncy(
+        panTransY,
+        dragDiff(dragY, panActive),
+        or(panActive, pinchActive),
+        panLowY,
+        panUpY,
+        panFriction
+      )
+    )
   }
 
   setImageProperties(image) {
@@ -123,18 +140,6 @@ export default class ImageEditor extends PureComponent {
       }
     }
 
-    this.contentOffset = {
-      x: -Math.abs((this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2),
-      y: -Math.abs((this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2),
-    }
-
-    // Set default offset (Center image)
-    this.gestureOffset.setValue(this.contentOffset)
-    this.lastOffset = this.contentOffset
-
-    // Default zoom
-    this.pinchScale.setValue(1)
-
     this.maximumZoomScale = Math.min(
       image.width / this.scaledImageSize.width,
       image.height / this.scaledImageSize.height
@@ -147,46 +152,49 @@ export default class ImageEditor extends PureComponent {
   }
 
   render() {
+    // The below two animated values makes it so that scale appears to be done
+    // from the top left corner of the image view instead of its center. This
+    // is required for the "scale focal point" math to work correctly
+    const scaleTopLeftFixX = divide(multiply(IMAGE_EDITOR_WIDTH, add(this.scale, -1)), 2)
+    const scaleTopLeftFixY = divide(multiply(IMAGE_EDITOR_HEIGHT, add(this.scale, -1)), 2)
+
     return (
-      <PanGestureHandler
-        onGestureEvent={this.onPanGestureEvent}
-        onHandlerStateChange={this.onPanGestureStateChange}
-        ref={this.panRef}
-        minPointers={0}
-        maxPointers={2}
-        minDist={0}
-        minDeltaX={0}
-        avgTouches
+      <PinchGestureHandler
+        ref={this.pinchRef}
+        simultaneousHandlers={this.panRef}
+        onGestureEvent={this.onPinchEvent}
+        onHandlerStateChange={this.onPinchEvent}
       >
         <Animated.View>
-          <PinchGestureHandler
-            simultaneousHandlers={this.panRef}
-            onGestureEvent={this.onPinchGestureEvent}
-            onHandlerStateChange={this.onPinchHandlerStateChange}
+          <PanGestureHandler
+            ref={this.panRef}
+            avgTouches
+            simultaneousHandlers={this.pinchRef}
+            onGestureEvent={this.onPanEvent}
+            onHandlerStateChange={this.onPanEvent}
           >
             <Animated.Image
               style={[
                 {
                   backgroundColor: COLORS.DARK_GREY,
                   transform: [
-                    { translateX: Animated.add(this.gesturePosition.x, this.gestureOffset.x) },
-                    { translateY: Animated.add(this.gesturePosition.y, this.gestureOffset.y) },
-                    {
-                      scale: this.pinchScale.interpolate({
-                        inputRange: [this.minimumZoomScale, this.maximumZoomScale],
-                        outputRange: [this.minimumZoomScale, this.maximumZoomScale],
-                        extrapolate: 'clamp',
-                      }),
-                    },
+                    { translateX: this.panTransX },
+                    { translateY: this.panTransY },
+                    { translateX: this.focalDisplacementX },
+                    { translateY: this.focalDisplacementY },
+                    { translateX: scaleTopLeftFixX },
+                    { translateY: scaleTopLeftFixY },
+                    { scale: this.scale },
                   ],
                 },
                 this.scaledImageSize,
               ]}
+              resizeMode="stretch"
               source={this.props.image}
             />
-          </PinchGestureHandler>
+          </PanGestureHandler>
         </Animated.View>
-      </PanGestureHandler>
+      </PinchGestureHandler>
     )
   }
 }
