@@ -4,7 +4,7 @@ import { createAppContainer } from 'react-navigation'
 import { links } from 'react-native-firebase'
 import { setNavigationRef } from 'navigation'
 import { withNamespaces } from 'react-i18next'
-import { Gateway, Zoomable, ToastNotification } from 'ui'
+import { Gateway, ToastNotification } from 'ui'
 import { extractDeepLinkFromDynamicLink, uriPrefix } from 'utils/dynamicLinks'
 import handleStatusBar from 'navigation/handleStatusBar'
 import Navigator from './navigator'
@@ -17,10 +17,6 @@ class AppNavigator extends PureComponent {
 
     this.unsubcribe = links().onLink(url => {
       const path = extractDeepLinkFromDynamicLink(url)
-      if (!path.length) {
-        return
-      }
-
       Linking.canOpenURL(path).then(() => Linking.openURL(path))
     })
   }
@@ -33,15 +29,13 @@ class AppNavigator extends PureComponent {
     const { t } = this.props
     return (
       <Gateway.Provider>
-        <Zoomable.Provider>
-          <NavigatorContainer
-            ref={ref => setNavigationRef(ref)}
-            screenProps={{ t }}
-            onNavigationStateChange={handleStatusBar}
-            uriPrefix={uriPrefix}
-          />
-          <ToastNotification />
-        </Zoomable.Provider>
+        <NavigatorContainer
+          ref={ref => setNavigationRef(ref)}
+          screenProps={{ t }}
+          onNavigationStateChange={handleStatusBar}
+          uriPrefix={uriPrefix}
+        />
+        <ToastNotification />
       </Gateway.Provider>
     )
   }

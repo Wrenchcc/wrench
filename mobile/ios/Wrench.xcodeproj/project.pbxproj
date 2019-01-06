@@ -27,6 +27,7 @@
 		161CC43420CA76C2005139C4 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16900BC8205E8A8100B471EE /* libReactNativeConfig.a */; };
 		164D793220CA826B00310D9B /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 167E8CBB20B96EE200F8EC77 /* libRCTFBSDK.a */; };
 		1652270B20D18846006037C0 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1652270120D18838006037C0 /* libReactNativePermissions.a */; };
+		16725AC521E29971006AD3E5 /* libRNPinchable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16725ABD21E29960006AD3E5 /* libRNPinchable.a */; };
 		168152BF21E01B7100DBF547 /* libRNReanimated.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 168152B221E01B1100DBF547 /* libRNReanimated.a */; };
 		16900BD2205E8ADF00B471EE /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16900BCF205E8AA700B471EE /* libRCTVideo.a */; };
 		16995C7E207BF32A00A02189 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16995C56207BF2D300A02189 /* libRCTCameraRoll.a */; };
@@ -148,6 +149,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNRate;
+		};
+		16725ABC21E29960006AD3E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16725A8221E29960006AD3E5 /* RNPinchable.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A4F1327121E2480100BF68EE;
+			remoteInfo = RNPinchable;
 		};
 		167E8CBA20B96EE200F8EC77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -502,6 +510,7 @@
 		160004682092711200B3F2D9 /* FastImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastImage.xcodeproj; path = "../node_modules/react-native-fast-image/ios/FastImage.xcodeproj"; sourceTree = "<group>"; };
 		160E6E7820D070CB00A4B595 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		165226CD20D18837006037C0 /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativePermissions.xcodeproj; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; };
+		16725A8221E29960006AD3E5 /* RNPinchable.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNPinchable.xcodeproj; path = "../node_modules/react-native-pinchable/ios/RNPinchable.xcodeproj"; sourceTree = "<group>"; };
 		168152AD21E01B1100DBF547 /* RNReanimated.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReanimated.xcodeproj; path = "../node_modules/react-native-reanimated/ios/RNReanimated.xcodeproj"; sourceTree = "<group>"; };
 		168152B921E01B3300DBF547 /* RNReanimated.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReanimated.xcodeproj; path = "../node_modules/react-native-reanimated/ios/RNReanimated.xcodeproj"; sourceTree = "<group>"; };
 		16900BC9205E8AA700B471EE /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
@@ -543,6 +552,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16725AC521E29971006AD3E5 /* libRNPinchable.a in Frameworks */,
 				168152BF21E01B7100DBF547 /* libRNReanimated.a in Frameworks */,
 				16ABF78D218B9BC70035C96E /* libRNScreens.a in Frameworks */,
 				1652270B20D18846006037C0 /* libReactNativePermissions.a in Frameworks */,
@@ -741,6 +751,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		16725A8321E29960006AD3E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16725ABD21E29960006AD3E5 /* libRNPinchable.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		167E8CB720B96EE200F8EC77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,6 +892,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				16725A8221E29960006AD3E5 /* RNPinchable.xcodeproj */,
 				168152B921E01B3300DBF547 /* RNReanimated.xcodeproj */,
 				16FB166F21DD43B700AC6CC3 /* Sounds */,
 				16ABF74E218B9BB50035C96E /* RNScreens.xcodeproj */,
@@ -1145,6 +1164,10 @@
 					ProjectRef = C0D0E3E0EA53486697F7A86D /* RNGestureHandler.xcodeproj */;
 				},
 				{
+					ProductGroup = 16725A8321E29960006AD3E5 /* Products */;
+					ProjectRef = 16725A8221E29960006AD3E5 /* RNPinchable.xcodeproj */;
+				},
+				{
 					ProductGroup = 165E5423213AC5C8006A5CB3 /* Products */;
 					ProjectRef = 07335A0E27EC4779AD2A401A /* RNRate.xcodeproj */;
 				},
@@ -1277,6 +1300,13 @@
 			fileType = archive.ar;
 			path = libRNRate.a;
 			remoteRef = 165E5426213AC5C8006A5CB3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16725ABD21E29960006AD3E5 /* libRNPinchable.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNPinchable.a;
+			remoteRef = 16725ABC21E29960006AD3E5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		167E8CBB20B96EE200F8EC77 /* libRCTFBSDK.a */ = {

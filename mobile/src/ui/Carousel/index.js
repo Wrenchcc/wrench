@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList } from 'react-native'
-import { Touchable, Zoomable } from 'ui'
+import Pinchable from 'react-native-pinchable'
+import { Touchable } from 'ui'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { width, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 
@@ -26,13 +27,13 @@ export default class Carousel extends PureComponent {
           disabled={disabled}
           activeOpacity={1}
         >
-          <Zoomable.Element>
+          <Pinchable maximumZoomScale={5}>
             <Picture
               source={{ uri: item.node.uri }}
               priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
               index={index}
             />
-          </Zoomable.Element>
+          </Pinchable>
         </Touchable>
       </Wrapper>
     )

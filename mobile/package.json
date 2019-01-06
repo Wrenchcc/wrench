@@ -49,6 +49,7 @@
     "react-native-linear-gradient": "^2.5.3",
     "react-native-parsed-text": "^0.0.21",
     "react-native-permissions": "^1.1.1",
+    "react-native-pinchable": "^0.1.0",
     "react-native-rate": "^1.1.6",
     "react-native-reanimated": "^1.0.0-alpha.11",
     "react-native-screens": "^1.0.0-alpha.20",

@@ -5313,6 +5313,11 @@ react-native-permissions@^1.1.1:
   resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.1.1.tgz#4876004681ff8556454613d85249b01baff9b35b"
   integrity sha512-t0Ujm177bagjUOSzhpmkSz+LqFW04HnY9TeZFavDCmV521fQvFz82aD+POXqWsAdsJVOK3umJYBNNqCjC3g0hQ==
 
+react-native-pinchable@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-pinchable/-/react-native-pinchable-0.1.0.tgz#cd02e434f6938ae9981b8e828cd2d8283339a71d"
+  integrity sha512-Zh0Mk5bgZA/Ey9D/JxhEMo3AOFgkkQD2bkPR5AkpHexZ4PQu556hNpB7f/NJ572+mSEmF0QcVQ7XuGRCmZKmOw==
+
 react-native-rate@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/react-native-rate/-/react-native-rate-1.1.6.tgz#55f087a8376fc6e5bdca02698c03662b450e3d12"
