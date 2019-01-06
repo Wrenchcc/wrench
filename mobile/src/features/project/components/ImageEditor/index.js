@@ -13,10 +13,11 @@ const { width } = Dimensions.get('window')
 const IMAGE_EDITOR_WIDTH = width
 const IMAGE_EDITOR_HEIGHT = width
 
+// https://github.com/facebook/react-native/blob/bd32234e6ec0006ede180d09b464f1277737e789/RNTester/js/ImageEditingExample.js
 export default class ImageEditor extends PureComponent {
   static propTypes = {
     image: PropTypes.object.isRequired,
-    // onCropping: PropTypes.func.isRequired,
+    // onEditImage: PropTypes.func.isRequired,
   }
 
   pinchRef = React.createRef()
@@ -92,7 +93,7 @@ export default class ImageEditor extends PureComponent {
 
     // X
     const panUpX = cond(lessThan(this.scale, 1), 0, multiply(-1, this.focalDisplacementX))
-    const panLowX = add(panUpX, multiply(-IMAGE_EDITOR_WIDTH, add(max(1, this.scale), -1)))
+    const panLowX = add(panUpX, multiply(-this.scaledImageSize.width, add(max(1, this.scale), -1)))
 
     this.panTransX = set(
       panTransX,
@@ -108,7 +109,7 @@ export default class ImageEditor extends PureComponent {
 
     // Y
     const panUpY = cond(lessThan(this.scale, 1), 0, multiply(-1, this.focalDisplacementY))
-    const panLowY = add(panUpY, multiply(-IMAGE_EDITOR_HEIGHT, add(max(1, this.scale), -1)))
+    const panLowY = add(panUpY, multiply(-this.scaledImageSize.height, add(max(1, this.scale), -1)))
 
     this.panTransY = set(
       panTransY,
@@ -140,23 +141,41 @@ export default class ImageEditor extends PureComponent {
       }
     }
 
-    this.maximumZoomScale = Math.min(
-      image.width / this.scaledImageSize.width,
-      image.height / this.scaledImageSize.height
-    )
-
-    this.minimumZoomScale = Math.max(
-      IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
-      IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
-    )
+    // this.maximumZoomScale = Math.min(
+    //   image.width / this.scaledImageSize.width,
+    //   image.height / this.scaledImageSize.height
+    // )
+    //
+    // this.minimumZoomScale = Math.max(
+    //   IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
+    //   IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
+    // )
   }
+
+  // handleOnEditImage(offset, scaledImageSize, croppedImageSize) {
+  //   const offsetRatioX = offset.x / scaledImageSize.width
+  //   const offsetRatioY = offset.y / scaledImageSize.height
+  //   const sizeRatioX = croppedImageSize.width / scaledImageSize.width
+  //   const sizeRatioY = croppedImageSize.height / scaledImageSize.height
+  //
+  //   this.props.onEditImage({
+  //     offset: {
+  //       x: this.props.image.width * offsetRatioX,
+  //       y: this.props.image.height * offsetRatioY,
+  //     },
+  //     size: {
+  //       width: this.props.image.width * sizeRatioX,
+  //       height: this.props.image.height * sizeRatioY,
+  //     },
+  //   })
+  // }
 
   render() {
     // The below two animated values makes it so that scale appears to be done
     // from the top left corner of the image view instead of its center. This
     // is required for the "scale focal point" math to work correctly
-    const scaleTopLeftFixX = divide(multiply(IMAGE_EDITOR_WIDTH, add(this.scale, -1)), 2)
-    const scaleTopLeftFixY = divide(multiply(IMAGE_EDITOR_HEIGHT, add(this.scale, -1)), 2)
+    const scaleTopLeftFixX = divide(multiply(this.scaledImageSize.width, add(this.scale, -1)), 2)
+    const scaleTopLeftFixY = divide(multiply(this.scaledImageSize.height, add(this.scale, -1)), 2)
 
     return (
       <PinchGestureHandler
