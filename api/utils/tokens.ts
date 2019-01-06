@@ -1,5 +1,6 @@
 import * as jwt from 'jsonwebtoken'
 
+// TODO: Use ms lib
 const { APP_JWT_SECRET } = process.env
 const TWENTY_FOUR_HOURS = 86400
 const FIFTEEN_MINUTES = 900
