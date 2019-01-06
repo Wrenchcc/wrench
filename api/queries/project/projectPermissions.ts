@@ -1,6 +1,6 @@
-import { requireAuth } from 'api/utils/permissions'
+import { isAuthenticated } from 'api/utils/permissions'
 
-export default requireAuth(async ({ id, userId }, args, ctx) => {
+export default isAuthenticated(async ({ id, userId }, args, ctx) => {
   try {
     return {
       isFollower: await ctx.db.Following.isFollower(ctx.userId, id),

@@ -1,8 +1,8 @@
-import { requireAuth, canModerateProject } from 'api/utils/permissions'
+import { isAuthenticated, canModerateProject } from 'api/utils/permissions'
 import { createDynamicLink } from 'api/services/firebase'
 import { DYNAMIC_LINK_TYPES } from 'shared/utils/enums'
 
-export default requireAuth(async (_, { input }, ctx) => {
+export default isAuthenticated(async (_, { input }, ctx) => {
   const user = await ctx.db.User.findOne(ctx.userId)
 
   const project = await ctx.db.Project.createProject({

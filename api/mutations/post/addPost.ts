@@ -1,8 +1,8 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { requireAuth, canModerateProject } from 'api/utils/permissions'
+import { isAuthenticated, canModerateProject } from 'api/utils/permissions'
 import { FILE_TYPES } from 'shared/utils/enums'
 
-export default requireAuth(async (_, { input }, ctx) => {
+export default isAuthenticated(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)
 
   if (!canModerateProject(project, ctx.userId)) {

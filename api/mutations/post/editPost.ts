@@ -1,7 +1,7 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { requireAuth, canModeratePost } from 'api/utils/permissions'
+import { isAuthenticated, canModeratePost } from 'api/utils/permissions'
 
-export default requireAuth(async (_, { id, input }, ctx) => {
+export default isAuthenticated(async (_, { id, input }, ctx) => {
   const post = await ctx.db.Post.findOne(id)
 
   if (!canModeratePost(post, ctx.userId)) {

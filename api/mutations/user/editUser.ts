@@ -1,11 +1,11 @@
 import { UserInputError } from 'apollo-server-express'
 import { DateTime } from 'luxon'
-import { requireAuth } from 'api/utils/permissions'
+import { isAuthenticated } from 'api/utils/permissions'
 import { LOCALE_COLUMN, TIMEZONE_COLUMN } from 'api/models/UserSettings'
 import { SUPPORTED_LOCALES } from 'shared/locale'
 
 // TODO: Use dataloader
-export default requireAuth(async (_, args, ctx) => {
+export default isAuthenticated(async (_, args, ctx) => {
   if (args.input.interestedIn) {
     const interestedIn = args.input.interestedIn.map(({ id }) => ({
       projectTypeId: id,

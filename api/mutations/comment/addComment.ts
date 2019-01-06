@@ -1,8 +1,8 @@
-import { requireAuth, canModeratePost, canModerateComment } from 'api/utils/permissions'
+import { isAuthenticated, canModeratePost, canModerateComment } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 import { MENTION_REGEX } from 'shared/utils/regex'
 
-export default requireAuth(async (_, { postId, commentId, input }, ctx) => {
+export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)

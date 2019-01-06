@@ -1,6 +1,6 @@
-import { requireAuth } from 'api/utils/permissions'
+import { isAuthenticated } from 'api/utils/permissions'
 
-export default requireAuth(async (_, { token, platform }, ctx) => {
+export default isAuthenticated(async (_, { token, platform }, ctx) => {
   const tokenExists = await ctx.db.DeviceToken.findOne({ token })
 
   if (!tokenExists) {

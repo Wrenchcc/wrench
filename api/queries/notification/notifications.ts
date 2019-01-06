@@ -1,11 +1,11 @@
 import { filter } from 'ramda'
 import { DateTime } from 'luxon'
-import { requireAuth } from 'api/utils/permissions'
+import { isAuthenticated } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 
 // TODO: User dataloader
 // TODO: Paginate
-export default requireAuth(async (_, args, ctx) => {
+export default isAuthenticated(async (_, args, ctx) => {
   // Set user last seen for isOnline (clients are polling every 1m)
   await ctx.db.User.update(ctx.userId, {
     lastSeen: DateTime.local().toFormat('yyyy-MM-dd HH:mm:ss+00'),

@@ -1,8 +1,8 @@
 import { In } from 'typeorm'
-import { requireAuth } from 'api/utils/permissions'
+import { isAuthenticated } from 'api/utils/permissions'
 import paginate from 'api/utils/paginate'
 
-export default requireAuth(async (_, args, ctx) => {
+export default isAuthenticated(async (_, args, ctx) => {
   const projectTypes = await ctx.db.UserInterestedIn.find({
     userId: ctx.userId,
   })

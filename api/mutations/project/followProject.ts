@@ -1,8 +1,8 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { requireAuth, canModerateProject } from 'api/utils/permissions'
+import { isAuthenticated, canModerateProject } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared/utils/enums'
 
-export default requireAuth(async (_, { id }, ctx) => {
+export default isAuthenticated(async (_, { id }, ctx) => {
   const project = await ctx.db.Project.findOne(id)
   const isFollower = await ctx.db.Following.isFollower(ctx.userId, id)
 

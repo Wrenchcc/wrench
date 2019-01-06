@@ -1,7 +1,7 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { requireAuth, canModerateComment } from 'api/utils/permissions'
+import { isAuthenticated, canModerateComment } from 'api/utils/permissions'
 
-export default requireAuth(async (_, { id, input }, ctx) => {
+export default isAuthenticated(async (_, { id, input }, ctx) => {
   const comment = await ctx.db.Comment.findOne(id)
 
   if (!canModerateComment(comment, ctx.userId)) {
