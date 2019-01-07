@@ -1,3 +1,4 @@
 {
+  "SLACK_WEBHOOK_URL": "",
   "SLACK_CHANNEL": "deployments"
 }

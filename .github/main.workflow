@@ -5,7 +5,7 @@ workflow "Deploy API" {
 
 action "Build" {
   uses = "nuxt/actions-yarn@master"
-  args = "build"
+  args = "build:api"
 }
 
 action "Deploy production" {
