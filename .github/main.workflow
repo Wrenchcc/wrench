@@ -3,22 +3,21 @@ workflow "Deploy API" {
   resolves = ["Notification"]
 }
 
-action "Build" {
-  uses = "nuxt/actions-yarn@master"
-  args = "build:api"
-}
-
 # Filter for master branch
 action "Filter Master" {
-  needs = "Build"
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
 
 action "Filter Staging" {
-  needs = "Build"
   uses = "actions/bin/filter@master"
   args = "branch"
+}
+
+action "Build" {
+  needs = ["Filter Master", "Filter Staging"]
+  uses = "nuxt/actions-yarn@master"
+  args = "build:api"
 }
 
 action "Deploy Production" {
