@@ -9,10 +9,10 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm'
-import User from '../User'
-import Project from '../Project'
-import Comment from '../Comment'
-import File from '../File'
+import User from './User'
+import Project from './Project'
+import Comment from './Comment'
+import File from './File'
 
 @Entity('posts')
 export default class Post extends BaseEntity {

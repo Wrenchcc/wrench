@@ -7,8 +7,8 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from '../User'
-import { PlatformType } from '../enums'
+import User from './User'
+import { PlatformType } from './enums'
 
 @Entity('auth_tokens')
 export default class AuthTokens extends BaseEntity {

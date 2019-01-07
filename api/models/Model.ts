@@ -3,16 +3,16 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
+  ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import Model from '../Model'
+import Brand from './Brand'
 
-@Entity('brands')
-export default class Brands extends BaseEntity {
-  @OneToMany(() => Model, model => model.brand)
-  public models: Model[]
+@Entity('models')
+export default class Model extends BaseEntity {
+  @ManyToOne(() => Brand, brand => brand.models)
+  public brand: Brand
 
   @PrimaryGeneratedColumn('uuid')
   public id: string
@@ -24,5 +24,8 @@ export default class Brands extends BaseEntity {
   public updatedAt: Date
 
   @Column()
-  public name: string
+  public model: string
+
+  @Column()
+  public year: number
 }

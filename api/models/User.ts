@@ -13,15 +13,15 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
-import AuthToken from '../AuthToken'
-import AuthProvider from '../AuthProvider'
-import UserSettings from '../UserSettings'
-import Notification from '../Notification'
-import Project from '../Project'
-import File from '../File'
-import Post from '../Post'
-import Comment from '../Comment'
-import DeviceToken from '../DeviceToken'
+import AuthToken from './AuthToken'
+import AuthProvider from './AuthProvider'
+import UserSettings from './UserSettings'
+import Notification from './Notification'
+import Project from './Project'
+import File from './File'
+import Post from './Post'
+import Comment from './Comment'
+import DeviceToken from './DeviceToken'
 
 // TODO: Check latest created User with username
 @Entity('users')

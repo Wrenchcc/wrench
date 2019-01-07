@@ -7,10 +7,10 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from '../User'
-import Post from '../Post'
-import Project from '../Project'
-import { FileType } from '../enums'
+import User from './User'
+import Post from './Post'
+import Project from './Project'
+import { FileType } from './enums'
 
 @Entity('files')
 export default class File extends BaseEntity {

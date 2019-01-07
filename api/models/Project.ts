@@ -10,12 +10,12 @@ import {
   getRepository,
 } from 'typeorm'
 import generateSlug from 'api/utils/generateSlug'
-import User from '../User'
-import Post from '../Post'
-import ProjectType from '../ProjectType'
-import Model from '../Model'
-import File from '../File'
-import Following from '../Following'
+import User from './User'
+import Post from './Post'
+import ProjectType from './ProjectType'
+import Model from './Model'
+import File from './File'
+import Following from './Following'
 
 // TODO: Check latest created Project with slug
 @Entity('projects')

@@ -7,8 +7,8 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
-import User from '../User'
-import { AuthProviderTypes } from '../enums'
+import User from './User'
+import { AuthProviderTypes } from './enums'
 
 @Entity('auth_providers')
 export default class AuthProvider extends BaseEntity {

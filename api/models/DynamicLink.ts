@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 import { pathOr } from 'ramda'
-import { DynamicLinkTypes } from '../enums'
+import { DynamicLinkTypes } from './enums'
 
 @Entity('dynamic_links')
 export default class DynamicLink extends BaseEntity {

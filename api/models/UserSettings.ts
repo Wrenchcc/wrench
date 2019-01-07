@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 import { pathOr } from 'ramda'
 import { DEFAULT_LOCALE } from 'shared/locale'
-import User from '../User'
+import User from './User'
 
 export const NOTIFICATIONS_COLUMN = 'notifications'
 export const LOCALE_COLUMN = 'locale'

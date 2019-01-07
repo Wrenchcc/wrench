@@ -9,8 +9,8 @@ import {
   ManyToOne,
 } from 'typeorm'
 import { pathOr } from 'ramda'
-import User from '../User'
-import { PlatformType } from '../enums'
+import User from './User'
+import { PlatformType } from './enums'
 
 @Entity('device_tokens')
 export default class DeviceToken extends BaseEntity {

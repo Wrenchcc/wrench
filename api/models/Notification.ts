@@ -8,9 +8,9 @@ import {
   ManyToOne,
   getRepository,
 } from 'typeorm'
-import User from '../User'
-import Comment from '../Comment'
-import { NotificationTypes } from '../enums'
+import User from './User'
+import Comment from './Comment'
+import { NotificationTypes } from './enums'
 
 @Entity('notifications')
 export default class Notification extends BaseEntity {
