@@ -1,4 +1,4 @@
-workflow "Deploy Application" {
+workflow "Deploy API" {
   on = "push"
   resolves = ["Deploy"]
 }
@@ -12,5 +12,5 @@ action "Deploy" {
   needs = "Build"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
-  args = "deploy -C api deploy production --no-build"
+  args = "deploy production -C api --no-build"
 }
