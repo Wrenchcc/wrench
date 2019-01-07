@@ -8,8 +8,15 @@ action "Build" {
   args = "build:api"
 }
 
-action "Deploy" {
+# Filter for master branch
+action "Master" {
   needs = "Build"
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
+action "Deploy" {
+  needs = "Master"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
   args = "-C api deploy production"
