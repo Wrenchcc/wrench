@@ -8,7 +8,7 @@ action "Build" {
   args = "build:api"
 }
 
-action "Deploy production" {
+action "Deploy" {
   needs = "Build"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
