@@ -5,10 +5,10 @@ workflow "Deploy API" {
 
 action "Build" {
   uses = "nuxt/actions-yarn@master"
-  args = "install"
+  args = "build"
 }
 
-action "Deploy" {
+action "Deploy production" {
   needs = "Build"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
