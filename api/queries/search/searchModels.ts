@@ -1,22 +1,27 @@
-import { Raw, Like } from 'typeorm'
+import { Raw, Like, getRepository } from 'typeorm'
 import paginate from 'api/utils/paginate'
+import Brand from 'api/models/Brand'
 
 // TODO: brand (name and year), sort by year
-// SELECT * FROM "brands"
-// JOIN "models" ON "models.brandId" = "brands"."id"
-// WHERE "brands"."name" LIKE '%query%' AND "models"."name" LIKE '%query%' AND "models"."year" LIKE '%query%'
 export default async (args, ctx) => {
   const query = args.query.toLowerCase()
-  try {
-    return paginate(ctx.db.Model, args, {
-      relations: ['brand'],
-      where: {
-        brand: '',
-        model: Raw(alias => `LOWER (${alias}) LIKE '%${query}%'`),
-        // year: Like(`%${query}%`),
-      },
-    })
-  } catch (err) {
-    console.log(err)
-  }
+  const words = query.split(' ')
+
+  let base = getRepository(Brand)
+    .createQueryBuilder('brand')
+    .select('*')
+    .innerJoin('brand.models', 'models')
+
+  words.forEach(word => {
+    const year = parseInt(word, 10)
+    if (Number.isInteger(year)) {
+      base = base.orWhere('models.year = :year', { year })
+    } else {
+      base = base
+        .orWhere('brand.name LIKE :word', { word: `%${word}%` })
+        .orWhere(`models.model LIKE :word`, { word: `%${word}%` }) // eslint-disable-line
+    }
+  })
+
+  console.log(await base.getRawMany())
 }
