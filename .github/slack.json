@@ -1,4 +1,4 @@
 {
-  "SLACK_WEBHOOK_URL": "",
-  "SLACK_CHANNEL": "deployments"
+  "SLACK_WEBHOOK_URL": "https://hooks.slack.com/services/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",
+  "SLACK_CHANNEL": "release"
 }
