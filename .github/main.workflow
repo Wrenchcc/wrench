@@ -12,5 +12,5 @@ action "Deploy" {
   needs = "Build"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
-  args = "deploy production -C api --no-build"
+  args = "-C api deploy production"
 }
