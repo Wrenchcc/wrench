@@ -1,16 +1,16 @@
-workflow "Deploy" {
+workflow "Deploy Application" {
   on = "push"
-  resolves = ["Deploy API"]
+  resolves = ["Deploy"]
 }
 
-action "Build API" {
-  uses = "./actions/build-api/"
-  args = "build:api"
+action "Build" {
+  uses = "nuxt/actions-yarn@master"
+  args = "install"
 }
 
-action "Deploy API" {
-  needs = "Build API"
-  uses = "./actions/deploy-api/"
+action "Deploy" {
+  needs = "Build"
+  uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
-  args = "-C api deploy production"
+  args = "deploy -C api deploy production --no-build"
 }
