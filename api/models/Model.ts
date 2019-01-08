@@ -24,7 +24,7 @@ export default class Model extends BaseEntity {
   public updatedAt: Date
 
   @Column()
-  public model: string
+  public name: string
 
   @Column()
   public year: number
