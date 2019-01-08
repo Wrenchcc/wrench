@@ -17,7 +17,7 @@ export default gql`
       projectId: ID!
       first: Int = 10
       after: String
-      last: Int
+      last: Int = 10
       before: String
     ): FollowersConnection
   }

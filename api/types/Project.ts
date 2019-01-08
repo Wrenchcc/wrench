@@ -26,10 +26,10 @@ export default gql`
       after: String
       before: String
       first: Int = 10
-      last: Int
+      last: Int = 10
     ): FollowersConnection
 
-    postsConnection(first: Int = 10, after: String, last: Int, before: String): PostConnection
+    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
   }
 
   type ProjectPermissions {
@@ -73,7 +73,7 @@ export default gql`
       after: String
       before: String
       first: Int = 10
-      last: Int
+      last: Int = 10
       type: ProjectSortType!
     ): ProjectsConnection
 
@@ -81,7 +81,7 @@ export default gql`
       after: String
       before: String
       first: Int = 10
-      last: Int
+      last: Int = 10
     ): [ProjectSuggestionsConnection]
 
     projectTypes: [ProjectType]

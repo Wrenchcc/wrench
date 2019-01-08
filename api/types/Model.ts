@@ -1,15 +1,10 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  type Brand {
-    id: ID!
-    name: String!
-  }
-
   type Model {
     id: ID!
+    name: String
     model: String
     year: Int
-    brand: Brand
   }
 `

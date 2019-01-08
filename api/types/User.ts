@@ -20,11 +20,11 @@ export default gql`
     projectsConnection(
       first: Int = 10
       after: String
-      last: Int
+      last: Int = 10
       before: String
     ): ProjectsConnection
-    followingProjects(first: Int = 10, after: String, last: Int, before: String): ProjectsConnection
-    postsConnection(first: Int = 10, after: String, last: Int, before: String): PostConnection
+    followingProjects(first: Int = 10, after: String, last: Int = 10, before: String): ProjectsConnection
+    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
   }
 
   type UserConnection {
@@ -58,8 +58,8 @@ export default gql`
 
   extend type Query {
     user(id: ID, username: LowercaseString): User
-    users(first: Int = 10, after: String, last: Int, before: String): UserConnection
-    currentUser(first: Int = 10, after: String, last: Int, before: String): User
+    users(first: Int = 10, after: String, last: Int = 10, before: String): UserConnection
+    currentUser(first: Int = 10, after: String, last: Int = 10, before: String): User
   }
 
   input EditUserInput {

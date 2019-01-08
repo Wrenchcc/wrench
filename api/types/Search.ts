@@ -26,7 +26,7 @@ export default gql`
       # Returns the elements in the list that come after the specified ID
       after: String
       # Returns the last *n* results from the list
-      last: Int
+      last: Int = 10
       # Returns the elements in the list that come before the specified ID
       before: String
       # The string typed by the user to search for

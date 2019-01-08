@@ -41,9 +41,7 @@ class SearchModel extends PureComponent {
           justifyContent: 'center',
         }}
       >
-        <Text medium style={{ marginBottom: 3 }}>{`${item.node.brand.name} ${
-          item.node.model
-        }`}</Text>
+        <Text medium style={{ marginBottom: 3 }}>{`${item.node.name} ${item.node.model}`}</Text>
         <Text fontSize={15} color="light_grey">
           {item.node.year}
         </Text>

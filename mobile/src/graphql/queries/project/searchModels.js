@@ -12,9 +12,7 @@ export const SearchModelsQuery = gql`
         node {
           ... on Model {
             id
-            brand {
-              name
-            }
+            name
             model
             year
           }

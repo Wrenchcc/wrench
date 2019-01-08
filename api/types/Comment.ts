@@ -8,7 +8,7 @@ export default gql`
     text: String!
     user: User
     postId: ID
-    repliesConnection(first: Int = 10, after: String, last: Int, before: String): CommentConnection
+    repliesConnection(first: Int = 10, after: String, last: Int = 10, before: String): CommentConnection
   }
 
   type CommentConnection {
@@ -33,6 +33,6 @@ export default gql`
   }
 
   extend type Query {
-    comments(postId: ID!, first: Int = 10, after: String, last: Int, before: String): CommentConnection
+    comments(postId: ID!, first: Int = 10, after: String, last: Int = 10, before: String): CommentConnection
   }
 `

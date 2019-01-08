@@ -1,15 +1,25 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { Raw, Like, getRepository } from 'typeorm'
-import paginate from 'api/utils/paginate'
+import { Raw, Like, Brackets, getRepository } from 'typeorm'
+import { convertNodesToEdges, mapOperatorsRaw } from 'api/utils/paginate'
 import Brand from 'api/models/Brand'
 
-export default async (args, ctx) => {
-  if (!args.query) {
+const ORDER_BY = {
+  column: 'year',
+  sort: 'DESC',
+}
+
+export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
+  if (!query) {
     return new ForbiddenError('Please provide a search term.')
   }
 
-  const words = args.query
+  if (first > 50) {
+    return new ForbiddenError('Your limit is to big.')
+  }
+
+  const words = query
     .trim()
+    .replace(/\s\s+/g, ' ')
     .toLowerCase()
     .split(' ')
 
@@ -21,23 +31,37 @@ export default async (args, ctx) => {
     .createQueryBuilder('brand')
     .select('*')
     .innerJoin('brand.models', 'models')
+    .where(
+      new Brackets(q => {
+        words.forEach((word, i) => {
+          const year = parseInt(word, 10)
+          if (Number.isInteger(year)) {
+            q.orWhere('models.year = :year', { year })
+          } else {
+            q.orWhere(`LOWER(brand.name) LIKE :word${i}`, { [`word${i}`]: `%${word}%` }).orWhere(
+              `LOWER(models.model) LIKE :word${i}`,
+              { [`word${i}`]: `%${word}%` }
+            )
+          }
+        })
+      })
+    )
 
-  words.forEach((word, i) => {
-    const year = parseInt(word, 10)
-    if (Number.isInteger(year)) {
-      base.orWhere('models.year = :year', { year })
-    } else {
-      base
-        .orWhere(`LOWER(brand.name) LIKE :word${i}`, { [`word${i}`]: `%${word}%` })
-        .orWhere(`LOWER(models.model) LIKE :word${i}`, { [`word${i}`]: `%${word}%` })
-    }
-  })
+  if (after || before) {
+    const comparator = mapOperatorsRaw({ after, before }, { column: 'models.year', sort: 'DESC' })
+    base.andWhere(comparator)
+  }
 
-  base.orderBy('models.year', 'DESC')
+  base.orderBy('models.year', 'DESC').limit(first)
 
-  const edges = await base.getRawMany()
+  const nodes = await base.getRawMany()
+  const edges = convertNodesToEdges(nodes, ORDER_BY)
 
   return {
-    edges: edges.map(node => ({ node })),
+    edges,
+    pageInfo: {
+      // hasNextPage: totalCount > first,
+      // hasPreviousPage: totalCount > last,
+    },
   }
 }

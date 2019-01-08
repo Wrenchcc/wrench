@@ -1,11 +1,13 @@
+import { ForbiddenError } from 'apollo-server-express'
 import { encode, decode } from 'base-64'
 import { LessThan, MoreThan, Between } from 'typeorm'
 
+const MAX_LIMIT = 50
 const SEPARATION_TOKEN = '___'
 
 const ORDER_BY = {
   column: 'createdAt',
-  sort: 'desc',
+  sort: 'DESC',
 }
 
 const encodeCursor = (id, columnValue) => encode(`${id}${SEPARATION_TOKEN}${columnValue}`)
@@ -19,14 +21,20 @@ const decodeCursor = cursor => {
   return data
 }
 
+export const mapOperatorsRaw = ({ after, before }, { column, sort }) => {
+  if (after) {
+    const [id, columnValue] = decodeCursor(after)
+    return sort === ORDER_BY.sort ? `(${column} < ${columnValue})` : `(${column} > ${columnValue})`
+  }
+
+  if (before) {
+    const [id, columnValue] = decodeCursor(before)
+    return sort === ORDER_BY.sort ? `(${column} > ${columnValue})` : `(${column} < ${columnValue})`
+  }
+}
+
 const mapOperators = ({ after, before }, { column, sort }) => {
   let comparator
-
-  if (after && before) {
-    const [id1, afterColumnValue] = decodeCursor(after)
-    const [id2, beforeColumnValue] = decodeCursor(before)
-    comparator = Between(afterColumnValue, beforeColumnValue)
-  }
 
   if (after) {
     const [id, columnValue] = decodeCursor(after)
@@ -41,17 +49,21 @@ const mapOperators = ({ after, before }, { column, sort }) => {
   return { [column]: comparator }
 }
 
-const convertNodesToEdges = (nodes, { column }) => nodes.map(node => ({
+export const convertNodesToEdges = (nodes, { column }) => nodes.map(node => ({
   cursor: encodeCursor(node.id, node[column]),
   node,
 }))
 
 export default async (
   model,
-  { after, before, first = 10, last },
+  { after, before, first = 10, last = 10 },
   options = null,
   orderBy = ORDER_BY
 ) => {
+  if (first > MAX_LIMIT) {
+    return new ForbiddenError('Your limit is to big.')
+  }
+
   const findOptions = {
     ...options,
     order: {
