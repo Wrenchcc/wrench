@@ -27,9 +27,10 @@ export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
     return new ForbiddenError('Invalid search term.')
   }
 
-  const base = getRepository(Brand)
+  const qb = getRepository(Brand)
     .createQueryBuilder('brand')
     .select('*')
+    // .addSelect('COUNT(DISTINCT("models"."id"))', 'totalCount')
     .innerJoin('brand.models', 'models')
     .where(
       new Brackets(q => {
@@ -47,21 +48,28 @@ export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
       })
     )
 
+  const totalCount = 10 // TODO: Get totalCount of current querry
+
   if (after || before) {
     const comparator = mapOperatorsRaw({ after, before }, { column: 'models.year', sort: 'DESC' })
-    base.andWhere(comparator)
+    qb.andWhere(comparator)
   }
 
-  base.orderBy('models.year', 'DESC').limit(first)
+  qb
+    // .groupBy('brand.id')
+    // .addGroupBy('models.id')
+    .orderBy('models.year', 'DESC')
+    .limit(first)
 
-  const nodes = await base.getRawMany()
+  const nodes = await qb.getRawMany()
+  console.log(nodes)
   const edges = convertNodesToEdges(nodes, ORDER_BY)
 
   return {
     edges,
     pageInfo: {
-      // hasNextPage: totalCount > first,
-      // hasPreviousPage: totalCount > last,
+      hasNextPage: totalCount > first,
+      hasPreviousPage: totalCount > last,
     },
   }
 }
