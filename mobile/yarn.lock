@@ -3247,10 +3247,10 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
-i18next@^13.1.0:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-13.1.0.tgz#d8656bbc53216ffcd428364fbfb75f75647846a5"
-  integrity sha512-BuDhYRFReCXJiUJ8GdC2m0wXw4vC/BS6e7UJO+wTrkE3K+92VmJn5p/wxqEE+pdffquh9GYYAMfK9rUlb48pcg==
+i18next@^13.1.1:
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-13.1.1.tgz#2c3adf91884b1d5a6d72ddba4814a678109a95d4"
+  integrity sha512-g/Aov1Xtj+XCs9hkT4S0UFuQxAGweX5MLXgoc9XgLR/8nmgKDflmEDHTNaPun16Thc8ojD8AJLAr8e5HawHB6A==
 
 iconv-lite@0.4.23:
   version "0.4.23"

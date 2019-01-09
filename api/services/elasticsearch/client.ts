@@ -1,4 +1,6 @@
-// import elasticsearch from 'elasticsearch'
+import * as elasticsearch from 'elasticsearch'
+
+console.log(elasticsearch)
 //
 // const { ELASTICSEARCH_HOST, ELASTICSEARCH_LOG } = process.env
 //
