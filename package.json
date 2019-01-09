@@ -11,6 +11,7 @@
     "@types/node": "^10.12.18",
     "@zeit/ncc": "^0.8.1",
     "babel-eslint": "^10.0.1",
+    "bluebird": "^3.5.3",
     "chokidar": "^2.0.4",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",

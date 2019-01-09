@@ -28,4 +28,7 @@ export default class Model extends BaseEntity {
 
   @Column()
   public year: number
+
+  @Column()
+  public brandId: string
 }

@@ -15,6 +15,7 @@ export default gql`
   }
 
   type SearchResults {
+    totalCount: Int
     edges: [SearchResultEdge]
     pageInfo: PageInfo
   }

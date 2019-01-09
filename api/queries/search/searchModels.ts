@@ -42,8 +42,9 @@ export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
     )
     .getRawMany()
 
-  // TODO: Should return partial brand search
-  const restWords = words.filter(word => !brands.find(brand => brand.name.toLowerCase() === word))
+  const restWords = words.filter(
+    word => !brands.find(brand => brand.name.toLowerCase().indexOf(word) > -1)
+  )
 
   const models = await getRepository(Model)
     .createQueryBuilder('model')
