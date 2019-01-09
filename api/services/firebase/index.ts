@@ -1,2 +1,2 @@
-export { default as sendPushNotification } from './sendPushNotification'
-export { default as createDynamicLink } from './createDynamicLink'
+export { default as send } from './send'
+export { default as dynamicLink } from './dynamicLink'

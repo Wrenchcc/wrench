@@ -18,19 +18,20 @@
     }
   },
   "environment": {
-    "PORT": "4000",
-    "TZ": "utc﻿",
-    "APP_JWT_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867",
-    "APP_CDN_DOMAIN": "https://edge-files.wrench.cc",
+    "APP_AWS_ACCESS_KEY": "AKIAJVH6ND2VCM4LRJPQ",
     "APP_AWS_REGION": "us-east-2",
     "APP_AWS_S3_BUCKET": "wrench-files",
-    "APP_AWS_ACCESS_KEY": "AKIAJVH6ND2VCM4LRJPQ",
     "APP_AWS_SECRET_ACCESS_KEY": "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",
+    "APP_CDN_DOMAIN": "https://edge-files.wrench.cc",
+    "APP_JWT_SECRET": "ergB)#f92pgNFb823r#F73f223rvf867",
     "DB_DATABASE": "wrench",
+    "DB_HOST": "wrench-production.cgydxeouwpfa.eu-central-1.rds.amazonaws.com",
+    "DB_PASSWORD": "ZDjQJM8MrkQq5m7sHK68jAWNXugMwG",
     "DB_PORT": "5432",
     "DB_USERNAME": "wrench",
-    "DB_PASSWORD": "ZDjQJM8MrkQq5m7sHK68jAWNXugMwG",
-    "DB_HOST": "wrench-production.cgydxeouwpfa.eu-central-1.rds.amazonaws.com",
-    "GOOGLE_FIREBASE_API_KEY": "AIzaSyArEOJzCoryKP88xKVHMQFXMhEgvKl5ljk"
+    "ELASTICSEARCH_HOST": "https://",
+    "GOOGLE_FIREBASE_API_KEY": "AIzaSyArEOJzCoryKP88xKVHMQFXMhEgvKl5ljk",
+    "PORT": "4000",
+    "TZ": "utc﻿"
   }
 }

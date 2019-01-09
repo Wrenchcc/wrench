@@ -26,7 +26,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
       }),
 
       // Send notification to post owner
-      ctx.services.firebase.sendPushNotification({
+      ctx.services.firebase.send({
         data: {
           text: input.text,
           title: project.title,
@@ -53,7 +53,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
 
         return Promise.all([
           // Send notification to mentioned user
-          ctx.services.firebase.sendPushNotification({
+          ctx.services.firebase.send({
             data: {
               text: input.text,
               title: project.title,

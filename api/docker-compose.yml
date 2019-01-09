@@ -1,40 +1,26 @@
 version: '3.7'
 services:
-  db:
+  postgres:
+    container_name: postgres
     image: postgres:11.1
     ports:
       - 5432:5432
-    volumes_from:
-      - postgres
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
 
-  postgres:
-    image: alpine:latest
-    volumes:
-      - /var/lib/postgresql/data/pgdata
-    command: 'true'
-
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.3
     container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
     environment:
-      - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
       - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - esdata1:/usr/share/elasticsearch/data
+      - discovery.type=single-node
     ports:
       - 9200:9200
-    networks:
-      - esnet
 
 volumes:
-  esdata1:
-    driver: local
+  esdata:

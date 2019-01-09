@@ -21,7 +21,7 @@ export default isAuthenticated(async (_, { id }, ctx) => {
         typeId: project.id,
         userId: ctx.userId,
       }),
-      ctx.services.firebase.sendPushNotification({
+      ctx.services.firebase.send({
         data: project,
         sendTo: project.userId,
         type: NOTIFICATION_TYPES.NEW_FOLLOWER,
