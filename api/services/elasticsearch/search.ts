@@ -1,6 +1,7 @@
-import client from './client'
+import { resetIndex } from './utils/mapping'
 
 const debug = require('debug')('api:elasticsearch')
 
-console.log('katttt')
-export default async () => {}
+export default async () => {
+  await resetIndex()
+}
