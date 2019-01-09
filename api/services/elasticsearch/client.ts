@@ -1,12 +1,7 @@
-import * as elasticsearch from 'elasticsearch'
+import axios from 'axios'
 
-console.log(elasticsearch)
-//
-// const { ELASTICSEARCH_HOST, ELASTICSEARCH_LOG } = process.env
-//
-// export default new elasticsearch.Client({
-//   host: ELASTICSEARCH_HOST,
-//   log: ELASTICSEARCH_LOG,
-// })
+const { ELASTICSEARCH_HOST } = process.env
 
-export default () => {}
+export default axios.create({
+  baseURL: ELASTICSEARCH_HOST,
+})
