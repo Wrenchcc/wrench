@@ -1,3 +1,7 @@
-const debug = require('debug')('api:elasticsearch')
+import client from '../client'
 
-export default async () => {}
+export default async query => {
+  const result = client.get('q', {
+    query,
+  })
+}

@@ -6,6 +6,7 @@ import { options } from 'api/models'
 
 const debug = require('debug')('task:elasticsearch')
 
+const BATCH_SIZE = 500
 const INDEX_NAME = 'vehicles'
 const INDEX_TYPE = 'vehicle'
 
@@ -13,7 +14,10 @@ createConnection(options).then(async connection => {
   try {
     debug(`Importing to index: ${INDEX_NAME}.`)
 
-    const models = await getRepository(Model).find({ relations: ['brand'], take: 1000 })
+    const [models, totalCount] = await getRepository(Model).findAndCount({
+      relations: ['brand'],
+      take: BATCH_SIZE,
+    })
 
     await Promise.map(
       models,
