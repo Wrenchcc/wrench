@@ -1,9 +1,13 @@
 import client from '../services/elasticsearch/client'
 
+const debug = require('debug')('task:elasticsearch')
+
 const INDEX_NAME = 'vehicles'
 
-export async function createIndex() {
+async function createIndex() {
   try {
+    debug(`Creating index: ${INDEX_NAME}.`)
+
     await client.put(INDEX_NAME, {
       mappings: {
         _doc: {
@@ -19,8 +23,10 @@ export async function createIndex() {
         number_of_shards: 1,
       },
     })
-  } catch (err) {
-    console.log(err)
+
+    debug('Index created.')
+  } catch {
+    debug(`Could not create index: ${INDEX_NAME}.`)
   }
 }
 

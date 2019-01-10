@@ -1,12 +1,16 @@
 import client from '../services/elasticsearch/client'
 
+const debug = require('debug')('task:elasticsearch')
+
 const INDEX_NAME = 'vehicles'
 
-export async function deleteIndex() {
+async function deleteIndex() {
   try {
+    debug(`Deleting index: ${INDEX_NAME}.`)
     await client.delete(INDEX_NAME)
-  } catch (err) {
-    console.log(err)
+    debug('Index deleted.')
+  } catch {
+    debug(`Could not delete index: ${INDEX_NAME}.`)
   }
 }
 
