@@ -1,8 +1,11 @@
 import * as fs from 'fs'
-import { Raw, Like, Brackets, getRepository } from 'typeorm'
+import { createConnection, getRepository } from 'typeorm'
 import Brand from 'api/models/Brand'
 import Model from 'api/models/Model'
 import * as Promise from 'bluebird'
+import { options } from 'api/models'
+
+const debug = require('debug')('task:database:import')
 
 const vehicles = JSON.parse(fs.readFileSync(`${__dirname}/vehicles.json`, 'utf8'))
 
@@ -17,8 +20,8 @@ async function findOrCreate(where, save) {
   return brandRepo.save(save)
 }
 
-export async function seedBrandsData() {
-  console.log('----Loading brands into DB----')
+createConnection(options).then(async connection => {
+  debug('Loading brands into DB')
 
   await Promise.map(
     vehicles,
@@ -39,7 +42,5 @@ export async function seedBrandsData() {
     { concurrency: 1 }
   )
 
-  console.log('----Done----')
-}
-
-seedBrandsData()
+  debug('Done')
+})

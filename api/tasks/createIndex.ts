@@ -11,23 +11,52 @@ async function createIndex() {
 
     await client.put(INDEX_NAME, {
       mappings: {
-        [INDEX_TYPE]: {
+        vehicle: {
           properties: {
-            brand: { type: 'keyword' },
-            model: { type: 'keyword' },
-            year: { type: 'integer' },
+            brand: {
+              analyzer: 'autocomplete',
+              search_analyzer: 'autocomplete_search',
+              type: 'text',
+            },
+            model: {
+              analyzer: 'autocomplete',
+              search_analyzer: 'autocomplete_search',
+              type: 'text',
+            },
+            year: {
+              analyzer: 'autocomplete',
+              search_analyzer: 'autocomplete_search',
+              type: 'text',
+            },
           },
         },
       },
       settings: {
-        number_of_replicas: 1,
-        number_of_shards: 1,
+        analysis: {
+          analyzer: {
+            autocomplete: {
+              filter: ['lowercase'],
+              tokenizer: 'autocomplete',
+            },
+            autocomplete_search: {
+              tokenizer: 'lowercase',
+            },
+          },
+          tokenizer: {
+            autocomplete: {
+              max_gram: 20,
+              min_gram: 2,
+              token_chars: ['letter', 'digit', 'whitespace'],
+              type: 'edge_ngram',
+            },
+          },
+        },
       },
     })
 
     debug('Index created.')
-  } catch {
-    debug(`Could not create index: ${INDEX_NAME}.`)
+  } catch (err) {
+    debug('Could not create index. %s', err.response.data.error.reason)
   }
 }
 
