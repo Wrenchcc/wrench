@@ -1,8 +1,9 @@
-import client from '../services/elasticsearch/client'
+import client from 'api/services/elasticsearch/client'
 
 const debug = require('debug')('task:elasticsearch')
 
 const INDEX_NAME = 'vehicles'
+const INDEX_TYPE = 'vehicle'
 
 async function createIndex() {
   try {
@@ -10,7 +11,7 @@ async function createIndex() {
 
     await client.put(INDEX_NAME, {
       mappings: {
-        _doc: {
+        [INDEX_TYPE]: {
           properties: {
             brand: { type: 'keyword' },
             model: { type: 'keyword' },

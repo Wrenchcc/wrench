@@ -1,4 +1,4 @@
-import client from '../services/elasticsearch/client'
+import client from 'api/services/elasticsearch/client'
 
 const debug = require('debug')('task:elasticsearch')
 

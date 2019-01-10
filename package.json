@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:api": "yarn && cd api && yarn && cd .. && ncc build api/index.ts -e aws-sdk -o api/dist",
-    "db:import": "ncc run api/tasks/import.ts",
+    "db:import": "ncc run api/tasks/dbImport.ts",
     "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- ncc run api/index.ts -w",
     "es:create": "cross-env DEBUG=task* dotenv -e api/.env -- ncc run api/tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e api/.env -- ncc run api/tasks/deleteIndex.ts",
