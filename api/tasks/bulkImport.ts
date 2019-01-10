@@ -1,4 +1,5 @@
 import { createConnection, getRepository } from 'typeorm'
+import * as Promise from 'bluebird'
 import client from 'api/services/elasticsearch/client'
 import Model from 'api/models/Model'
 import { options } from 'api/models'
@@ -9,27 +10,30 @@ const INDEX_NAME = 'vehicles'
 const INDEX_TYPE = 'vehicle'
 
 createConnection(options).then(async connection => {
-  const models = await getRepository(Model).find()
-  //   id: '844d9a2b-cbae-4d53-83c6-1f5359da0262',
-  //   createdAt: 2019-01-10T18:38:34.561Z,
-  //   updatedAt: 2019-01-10T18:38:34.561Z,
-  //   name: 'CRF150R',
-  //   year: 2019,
-  //   brandId: 'e2525beb-3252-4411-85dd-03bc2cbf1ac2'
-
   try {
     debug(`Importing to index: ${INDEX_NAME}.`)
-    // const data = {
-    //   brand: 'BMW',
-    //   model: 'R 100',
-    //   year: 1981,
-    // }
-    //
-    // await client.post(`${INDEX_NAME}/${INDEX_TYPE}/1`, data, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // })
+
+    const models = await getRepository(Model).find({ relations: ['brand'], take: 1000 })
+
+    await Promise.map(
+      models,
+      async model => {
+        const data = {
+          brand: model.brand.name,
+          createdAt: model.createdAt,
+          model: model.name,
+          updatedAt: model.updatedAt,
+          year: model.year,
+        }
+
+        await client.post(`${INDEX_NAME}/${INDEX_TYPE}/${model.id}`, data, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+      },
+      { concurrency: 5 }
+    )
 
     debug('Import done.')
   } catch (err) {
