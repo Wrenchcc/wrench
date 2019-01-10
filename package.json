@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start:api": "NODE_ENV=production node api/dist/index.js",
     "build:api": "yarn && cd api && yarn && cd .. && ncc build api/index.ts -e aws-sdk -o api/dist",
-    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- ncc run api/index.ts -w"
+    "db:import": "ncc run api/tasks/import.ts",
+    "dev:api": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e api/.env -- ncc run api/index.ts -w",
+    "es:create": "ncc run api/tasks/createIndex.ts",
+    "es:delete": "ncc run api/tasks/deleteIndex.ts",
+    "es:index": "ncc run api/tasks/index.ts",
+    "start:api": "NODE_ENV=production node api/dist/index.js"
   },
   "devDependencies": {
     "@types/node": "^10.12.18",

@@ -41,3 +41,5 @@ export async function seedBrandsData() {
 
   console.log('----Done----')
 }
+
+seedBrandsData()
