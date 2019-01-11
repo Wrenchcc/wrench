@@ -29,7 +29,7 @@
     "DB_PASSWORD": "ZDjQJM8MrkQq5m7sHK68jAWNXugMwG",
     "DB_PORT": "5432",
     "DB_USERNAME": "wrench",
-    "ELASTICSEARCH_HOST": "https://",
+    "ELASTICSEARCH_URL": "https://",
     "GOOGLE_FIREBASE_API_KEY": "AIzaSyArEOJzCoryKP88xKVHMQFXMhEgvKl5ljk",
     "PORT": "4000",
     "TZ": "utc﻿"
