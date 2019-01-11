@@ -48,27 +48,6 @@ createConnection(options).then(async connection => {
   try {
     debug(`Importing to index: ${INDEX_NAME}.`)
     await batch()
-
-    // await Promise.map(
-    //   models,
-    //   async model => {
-    //     const data = {
-    //       brand: model.brand.name,
-    //       createdAt: model.createdAt,
-    //       model: model.name,
-    //       updatedAt: model.updatedAt,
-    //       year: model.year,
-    //     }
-    //
-    //     await client.post(`${INDEX_NAME}/${INDEX_TYPE}/${model.id}`, data, {
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     })
-    //   },
-    //   { concurrency: 1 }
-    // )
-
     debug('Import done.')
   } catch (err) {
     debug('Could not import to index. %s', err.response.data.error.reason)
