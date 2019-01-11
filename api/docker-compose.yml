@@ -1,16 +1,35 @@
-db:
-  image: postgres:11.1
-  ports:
-    - 5432:5432
-  volumes_from:
-    - postgres
-  environment:
-    POSTGRES_PASSWORD: postgres
-    POSTGRES_USER: postgres
-    PGDATA: /var/lib/postgresql/data/pgdata
+version: '3.7'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:11.1
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
 
-postgres:
-  image: alpine:latest
-  volumes:
-    - /var/lib/postgresql/data/pgdata
-  command: 'true'
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    environment:
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:6.5.4
+    environment:
+      SERVER_NAME: localhost
+      ELASTICSEARCH_URL: http://elasticsearch:9200/
+    ports:
+      - 5601:5601
+
+volumes:
+  esdata:

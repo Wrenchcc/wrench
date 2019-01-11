@@ -1,5 +1,5 @@
 import { isAuthenticated, canModerateProject } from 'api/utils/permissions'
-import { createDynamicLink } from 'api/services/firebase'
+import { dynamicLink } from 'api/services/firebase'
 import { DYNAMIC_LINK_TYPES } from 'shared/utils/enums'
 
 export default isAuthenticated(async (_, { input }, ctx) => {
@@ -13,7 +13,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   })
 
   // TODO: Logo from CDN
-  const dynamicLink = await createDynamicLink({
+  const url = await dynamicLink({
     description: `Follow ${user.fullName} project “${project.title}“ on Wrench.`,
     // image: user.avatarUrl,
     path: `project/${project.slug}`,
@@ -23,7 +23,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   await ctx.db.DynamicLink.save({
     type: DYNAMIC_LINK_TYPES.PROJECT,
     typeId: project.id,
-    url: dynamicLink,
+    url,
   })
 
   return project

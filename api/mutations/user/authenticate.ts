@@ -1,6 +1,6 @@
 import { omit } from 'ramda'
 import { generateTokens } from 'api/utils/tokens'
-import { createDynamicLink } from 'api/services/firebase'
+import { dynamicLink } from 'api/services/firebase'
 import { PLATFORM_TYPES, DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from 'shared/utils/enums'
 
 // TODO: Get platform from client
@@ -37,7 +37,7 @@ export default async (_, { facebookToken }, ctx) => {
   // Create new user
   const createdUser = await ctx.db.User.createUser(omit(['id'], fbUser))
 
-  const dynamicLink = await createDynamicLink({
+  const url = await dynamicLink({
     description: `See Wrench projects and posts from ${createdUser.fullName}. (@${
       createdUser.username
     })`,
@@ -50,7 +50,7 @@ export default async (_, { facebookToken }, ctx) => {
     ctx.db.DynamicLink.save({
       type: DYNAMIC_LINK_TYPES.USER,
       typeId: createdUser.id,
-      url: dynamicLink,
+      url,
     }),
     ctx.db.AuthProvider.save({
       type: AUTH_PROVIDER_TYPES.FACEBOOK,
