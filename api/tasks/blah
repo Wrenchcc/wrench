@@ -9,46 +9,48 @@ then
   TARGET_ENV=$1
 fi
 
-curl -XPUT $TARGET_ENV'/klapp-search-1' -H 'Content-Type: application/json' -d'
+curl -XPUT $TARGET_ENV'/klapp-search-1' -H 'Content-Type: application/json' -d '
 {
-  "aliases" : {
-    "klapp-search" : { }
+  "aliases": {
+    "klapp-search": {}
   },
   "settings": {
-    "index" : {
-      "number_of_shards" : 6,
-      "number_of_replicas" : 1
-    },
+    "number_of_shards" : 6,
+    "number_of_replicas" : 1,
     "analysis": {
+      "analyzer": {
+        "autocomplete": {
+          "tokenizer": "autocomplete",
+          "filter": [
+            "lowercase", "word_delimiter_graph", "unique"
+          ]
+        }
+      },
+      "filter": {
+        "word_delimiter_graph": {
+          "type" : "word_delimiter_graph",
+          "preserve_original": true
+        }
+      },
       "tokenizer": {
-        "merchant_name_tokenizer": {
+        "autocomplete": {
           "type": "edge_ngram",
           "min_gram": 1,
           "max_gram": 20,
-          "token_chars": []
-        },
-        "line_item_name_tokenizer": {
-          "type": "ngram",
-          "min_gram": 1,
-          "max_gram": 2,
-          "token_chars": ["letter", "digit", "symbol"]
-        }
-      },
-      "analyzer": {
-        "merchant_name_analyzer": {
-          "filter": ["lowercase"],
-          "tokenizer": "merchant_name_tokenizer"
-        },
-        "line_item_name_analyzer": {
-          "filter": ["lowercase"],
-          "tokenizer": "standard"
+          "token_chars": [
+            "letter",
+            "digit",
+            "punctuation",
+            "symbol",
+            "whitespace"
+          ]
         }
       }
     }
   },
   "mappings": {
     "doc": {
-      "dynamic" : "false",
+      "dynamic": "false",
       "properties": {
         "generationId": {
           "type": "text",
@@ -81,8 +83,8 @@ curl -XPUT $TARGET_ENV'/klapp-search-1' -H 'Content-Type: application/json' -d'
                   "ignore_above": 256
                 }
               },
-              "analyzer": "line_item_name_analyzer",
-              "search_analyzer": "line_item_name_analyzer"
+              "analyzer": "autocomplete",
+              "search_analyzer": "autocomplete"
             },
             "price": {
               "properties": {
@@ -112,8 +114,8 @@ curl -XPUT $TARGET_ENV'/klapp-search-1' -H 'Content-Type: application/json' -d'
                   "ignore_above": 256
                 }
               },
-              "analyzer": "merchant_name_analyzer",
-              "search_analyzer": "merchant_name_analyzer"
+              "analyzer": "autocomplete",
+              "search_analyzer": "autocomplete"
             },
             "icon": {
               "properties": {
@@ -252,5 +254,4 @@ curl -XPUT $TARGET_ENV'/klapp-search-1' -H 'Content-Type: application/json' -d'
       }
     }
   }
-}
-'
+}'
