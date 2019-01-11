@@ -24,7 +24,9 @@ createConnection(options).then(async connection => {
       async model => {
         const data = {
           brand: model.brand.name,
+          createdAt: model.createdAt,
           model: model.name,
+          updatedAt: model.updatedAt,
           year: model.year,
         }
 
