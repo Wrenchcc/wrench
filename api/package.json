@@ -7,7 +7,7 @@
   "dependencies": {
     "@types/pg": "^7.4.11",
     "apollo-server-express": "^2.3.1",
-    "aws-sdk": "^2.385.0",
+    "aws-sdk": "^2.386.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",
@@ -20,7 +20,7 @@
     "i18n": "^0.8.3",
     "jsonwebtoken": "^8.4.0",
     "lodash.merge": "^4.6.1",
-    "luxon": "^1.9.0",
+    "luxon": "^1.10.0",
     "ms": "^2.1.1",
     "pg": "^7.7.1",
     "ramda": "^0.26.1",
