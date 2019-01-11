@@ -11,13 +11,16 @@ const INDEX_NAME = 'vehicles'
 const INDEX_TYPE = 'vehicle'
 
 createConnection(options).then(async connection => {
-  try {
-    debug(`Importing to index: ${INDEX_NAME}.`)
-
-    const [models, totalCount] = await getRepository(Model).findAndCount({
+  async function batch(skip = 0) {
+    const models = await getRepository(Model).find({
       relations: ['brand'],
       take: BATCH_SIZE,
+      skip,
     })
+
+    if (!models.length) {
+      return null
+    }
 
     await Promise.map(
       models,
@@ -38,6 +41,33 @@ createConnection(options).then(async connection => {
       },
       { concurrency: 1 }
     )
+
+    batch(skip + BATCH_SIZE)
+  }
+
+  try {
+    debug(`Importing to index: ${INDEX_NAME}.`)
+    await batch()
+
+    // await Promise.map(
+    //   models,
+    //   async model => {
+    //     const data = {
+    //       brand: model.brand.name,
+    //       createdAt: model.createdAt,
+    //       model: model.name,
+    //       updatedAt: model.updatedAt,
+    //       year: model.year,
+    //     }
+    //
+    //     await client.post(`${INDEX_NAME}/${INDEX_TYPE}/${model.id}`, data, {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     })
+    //   },
+    //   { concurrency: 1 }
+    // )
 
     debug('Import done.')
   } catch (err) {
