@@ -14,18 +14,20 @@ async function createIndex() {
         vehicle: {
           properties: {
             brand: {
-              analyzer: 'autocomplete',
-              search_analyzer: 'autocomplete_search',
+              copy_to: 'suggest',
               type: 'text',
             },
             model: {
+              copy_to: 'suggest',
+              type: 'text',
+            },
+            suggest: {
               analyzer: 'autocomplete',
               search_analyzer: 'autocomplete_search',
               type: 'text',
             },
             year: {
-              analyzer: 'autocomplete',
-              search_analyzer: 'autocomplete_search',
+              copy_to: 'suggest',
               type: 'text',
             },
           },
@@ -46,7 +48,7 @@ async function createIndex() {
             autocomplete: {
               max_gram: 20,
               min_gram: 2,
-              token_chars: ['letter', 'digit', 'whitespace'],
+              token_chars: ['letter', 'digit', 'whitespace', 'punctuation', 'symbol'],
               type: 'edge_ngram',
             },
           },

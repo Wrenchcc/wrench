@@ -9,6 +9,8 @@ const debug = require('debug')('task:database:import')
 
 const vehicles = JSON.parse(fs.readFileSync(`${__dirname}/vehicles.json`, 'utf8'))
 
+const CONCURRENCY = 100
+
 async function findOrCreate(where, save) {
   const brandRepo = getRepository(Brand)
   const brand = await brandRepo.findOne({ where })
@@ -39,7 +41,7 @@ createConnection(options).then(async connection => {
         year: item.year,
       })
     },
-    { concurrency: 1 }
+    { concurrency: CONCURRENCY }
   )
 
   debug('Done')
