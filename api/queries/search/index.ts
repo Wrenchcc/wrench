@@ -14,7 +14,7 @@ export default {
         return 'Project'
       }
 
-      if (root.name) {
+      if (root.model) {
         return 'Model'
       }
 

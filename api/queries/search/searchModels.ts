@@ -4,11 +4,6 @@ import { convertNodesToEdges, mapOperatorsRaw } from 'api/utils/paginate'
 import Brand from 'api/models/Brand'
 import Model from 'api/models/Model'
 
-const ORDER_BY = {
-  column: 'year',
-  sort: 'DESC',
-}
-
 const MAX_LIMIT = 50
 
 export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
@@ -20,73 +15,29 @@ export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
     return new ForbiddenError('Your limit is to big.')
   }
 
-  const words = query
-    .trim()
-    .replace(/\s\s+/g, ' ')
-    .toLowerCase()
-    .split(' ')
+  const result = await ctx.services.elasticsearch.search(query)
 
-  if (words.length > 5) {
-    return new ForbiddenError('Invalid search term.')
-  }
-
-  const brands = await getRepository(Brand)
-    .createQueryBuilder('brand')
-    .select('*')
-    .where(
-      new Brackets(q => {
-        words.forEach((word, i) => {
-          q.orWhere(`LOWER(brand.name) LIKE :word${i}`, { [`word${i}`]: `%${word}%` })
-        })
-      })
-    )
-    .getRawMany()
-
-  const restWords = words.filter(
-    word => !brands.find(brand => brand.name.toLowerCase().indexOf(word) > -1)
-  )
-
-  const models = await getRepository(Model)
-    .createQueryBuilder('model')
-    .select('*')
-    .where(
-      new Brackets(q => {
-        restWords.forEach((word, i) => {
-          const year = parseInt(word, 10)
-          if (Number.isInteger(year)) {
-            q.andWhere('model.year = :year', { year })
-          } else {
-            q.andWhere(`LOWER(model.name) LIKE :word${i}`, { [`word${i}`]: `%${word}%` })
-          }
-        })
-      })
-    )
-
-  if (after || before) {
-    const comparator = mapOperatorsRaw({ after, before }, { column: 'model.year', sort: 'DESC' })
-    models.andWhere(comparator)
-  }
-
-  models.orderBy('model.year', 'DESC').limit(first)
-
-  const [totalCount, nodes] = await Promise.all([models.getCount(), await models.getRawMany()])
-
-  const transformedNodes = nodes.map(node => ({
-    ...node,
-    brand: {
-      id: node.brandId,
-      name: null,
+  const edges = result.data.hits.hits.map(({ _id, _source }) => ({
+    cursor: '123',
+    node: {
+      id: _id,
+      brand: {
+        name: _source.brand,
+        id: '123',
+      },
+      model: _source.model,
+      year: _source.year,
     },
   }))
 
-  const edges = convertNodesToEdges(transformedNodes, ORDER_BY)
+  const totalCount = result.data.hits.total
 
   return {
     totalCount,
-    edges,
     pageInfo: {
       hasNextPage: first < totalCount,
       hasPreviousPage: last < totalCount,
     },
+    edges,
   }
 }

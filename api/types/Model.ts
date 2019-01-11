@@ -9,7 +9,7 @@ export default gql`
   type Model {
     id: ID!
     brand: Brand
-    name: String
+    model: String
     year: Int
   }
 `
