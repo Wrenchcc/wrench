@@ -1,10 +1,11 @@
 import { ForbiddenError } from 'apollo-server-express'
 import { Raw, Like, Brackets, getRepository } from 'typeorm'
-import { convertNodesToEdges, mapOperatorsRaw } from 'api/utils/paginate'
+import { encodeCursor } from 'api/utils/paginate'
 import Brand from 'api/models/Brand'
 import Model from 'api/models/Model'
 
 const MAX_LIMIT = 50
+const ORDER_BY = 'year'
 
 export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
   if (!query) {
@@ -15,29 +16,29 @@ export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
     return new ForbiddenError('Your limit is to big.')
   }
 
-  const result = await ctx.services.elasticsearch.search(query)
+  const { data } = await ctx.services.elasticsearch.search(query)
 
-  const edges = result.data.hits.hits.map(({ _id, _source }) => ({
-    cursor: '123',
+  const edges = data.hits.hits.map(({ _id, _source }) => ({
+    cursor: encodeCursor(_id, ORDER_BY),
     node: {
-      id: _id,
       brand: {
+        id: _source.brandId,
         name: _source.brand,
-        id: '123',
       },
+      id: _id,
       model: _source.model,
       year: _source.year,
     },
   }))
 
-  const totalCount = result.data.hits.total
+  const totalCount = data.hits.total
 
   return {
-    totalCount,
+    edges,
     pageInfo: {
       hasNextPage: first < totalCount,
       hasPreviousPage: last < totalCount,
     },
-    edges,
+    totalCount,
   }
 }

@@ -10,9 +10,9 @@ const ORDER_BY = {
   sort: 'DESC',
 }
 
-const encodeCursor = (id, columnValue) => encode(`${id}${SEPARATION_TOKEN}${columnValue}`)
+export const encodeCursor = (id, columnValue) => encode(`${id}${SEPARATION_TOKEN}${columnValue}`)
 
-const decodeCursor = cursor => {
+export const decodeCursor = cursor => {
   const data = decode(cursor).split(SEPARATION_TOKEN)
 
   if (data[0] === undefined || data[1] === undefined) {
