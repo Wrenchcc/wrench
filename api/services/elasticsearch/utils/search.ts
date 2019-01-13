@@ -1,8 +1,8 @@
 import client from '../client'
 
-export default async query => {
+export default async ({ query, index, type }) => {
   try {
-    return client.get(`vehicles/_search?q=${query}`)
+    return client.get(`${index}/_search?q=${query}`)
   } catch (err) {
     console.log(err.response)
   }

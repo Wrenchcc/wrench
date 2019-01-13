@@ -62,7 +62,7 @@ function AddProjectModel({ t, addProject }) {
                 autoFocus
                 large
                 onChangeText={value => updateField('query', value)}
-                value={state.model ? `${state.model.name} ${state.model.model}` : state.query}
+                value={state.model ? `${state.model.brand.name} ${state.model.model}` : state.query}
                 borderColor="dark"
                 color="dark"
                 returnKeyType="next"

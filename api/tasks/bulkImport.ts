@@ -9,7 +9,7 @@ const debug = require('debug')('task:elasticsearch')
 const BATCH_SIZE = 500
 const CONCURRENCY = 10
 const INDEX_NAME = 'vehicles'
-const INDEX_TYPE = 'vehicle'
+const DOCUMENT_TYPE = 'vehicle'
 
 createConnection(options).then(async connection => {
   async function batch(skip = 0) {
@@ -35,7 +35,7 @@ createConnection(options).then(async connection => {
           year: model.year,
         }
 
-        await client.post(`${INDEX_NAME}/${INDEX_TYPE}/${model.id}`, data, {
+        await client.post(`${INDEX_NAME}/${DOCUMENT_TYPE}/${model.id}`, data, {
           headers: {
             'Content-Type': 'application/json',
           },

@@ -3,7 +3,6 @@ import client from 'api/services/elasticsearch/client'
 const debug = require('debug')('task:elasticsearch')
 
 const INDEX_NAME = 'vehicles'
-const INDEX_TYPE = 'vehicle'
 
 async function createIndex() {
   try {
@@ -21,7 +20,7 @@ async function createIndex() {
               copy_to: 'suggest',
               type: 'text',
             },
-            suggest: {
+            suggestion: {
               analyzer: 'autocomplete',
               search_analyzer: 'autocomplete_search',
               type: 'text',
@@ -47,7 +46,7 @@ async function createIndex() {
           tokenizer: {
             autocomplete: {
               max_gram: 20,
-              min_gram: 2,
+              min_gram: 1,
               token_chars: ['letter', 'digit', 'whitespace', 'punctuation', 'symbol'],
               type: 'edge_ngram',
             },
