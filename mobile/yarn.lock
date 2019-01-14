@@ -1412,23 +1412,23 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-inmemory@^1.4.0-alpha.2:
-  version "1.4.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.4.0-alpha.2.tgz#4c4a45786e3d203c7bd53ab16f21434266dea87e"
-  integrity sha512-8OcOzvf7RAjSaGpF+ioBmgOetDO6Jvw5ZtPoqVnRy11m7xaIOzWr3DKQoK5YdXv+YoZQ+CQAnPar2pRbA4CGLg==
+apollo-cache-inmemory@^1.4.0-alpha.7:
+  version "1.4.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.4.0-alpha.7.tgz#1bf055eb8c335b547f126a782bca9f8bbe7aeb14"
+  integrity sha512-JR3Gi6vH0gxIGnZtLgnCmzMN4KNodofNFJ7HWMQ/mQQG9xI7M01+Z0WyHvEzcWaWG5e6/t2tLRKXqSdVQ5gJsA==
   dependencies:
-    apollo-cache "^1.2.0-alpha.2"
-    apollo-utilities "^1.1.0-alpha.2"
-    optimism "^0.6.6"
+    apollo-cache "^1.2.0-alpha.7"
+    apollo-utilities "^1.1.0-alpha.7"
+    optimism "^0.6.8"
 
-apollo-cache@1.2.0-verify.4, apollo-cache@^1.2.0-alpha.2:
+apollo-cache@1.2.0-verify.4, apollo-cache@^1.2.0-alpha.7:
   version "1.2.0-verify.4"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.2.0-verify.4.tgz#7b974331015b8ced29ddd6dcf4a852109464d26f"
   integrity sha512-SgSuDoiZU++hcgJnUnH6WueFibZ6X0FpkppVIb0/6Bi8e8hNY6CT0V1GRtx6GMXQOw/vTjeuYYkxGZZJ0aqXaA==
   dependencies:
     apollo-utilities "^1.1.0-verify.4"
 
-apollo-client@^2.5.0-alpha.2:
+apollo-client@^2.5.0-alpha.7:
   version "2.5.0-verify.4"
   resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.5.0-verify.4.tgz#3fc8081283867685271d3845ebe6ab56a487ee60"
   integrity sha512-gtXEXtlIJGF80kcR9w5S6kPhbAcDiis7w5apGBOcU5z9ls+cBphPbWRl3ZXf/FI32lRBVqIVX247qbUZJra35A==
@@ -1519,7 +1519,7 @@ apollo-link@^1.2.6:
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.13"
 
-apollo-utilities@1.1.0-verify.4, apollo-utilities@^1.1.0-alpha.2, apollo-utilities@^1.1.0-verify.4:
+apollo-utilities@1.1.0-verify.4, apollo-utilities@^1.1.0-verify.4:
   version "1.1.0-verify.4"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.1.0-verify.4.tgz#a960aa659e31ccd4467cf6b04e80a04eabc7cc2d"
   integrity sha512-y/a0sOQAZ0IPh3dzVAnLSNdr0FraJnC/0p8HVg99rJZcefhaHsFIG77Jjr6ExwD2sXVJpXWHFgIGbXfQaatXSA==
@@ -1533,6 +1533,13 @@ apollo-utilities@^1.0.0:
   dependencies:
     fast-json-stable-stringify "^2.0.0"
     fclone "^1.0.11"
+
+apollo-utilities@^1.1.0-alpha.7:
+  version "1.1.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.1.0-alpha.8.tgz#db3cc3d2d1c8ab2002c5609ed4ab13f04a48709f"
+  integrity sha512-tzRdRYD2hE2jVTKZPHPKiuVPyVyOCNn8PUPLA+ww96CxakOuwzZw6/mPPavtQtbs1t+wVDgsg5vEYR0GxPcpAw==
+  dependencies:
+    fast-json-stable-stringify "^2.0.0"
 
 aproba@^1.0.3:
   version "1.2.0"
@@ -3278,10 +3285,10 @@ image-size@^0.6.0:
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.6.3.tgz#e7e5c65bb534bd7cdcedd6cb5166272a85f75fb2"
   integrity sha512-47xSUiQioGaB96nqtp5/q55m0aBQSQdyIloMOc/x+QVTDZLNmXE892IIDrJ0hM1A5vcNUDD5tDffkSP5lCaIIA==
 
-immutable-tuple@^0.4.4:
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/immutable-tuple/-/immutable-tuple-0.4.8.tgz#f60b65b863d34be39d307d1bbf4a450e1ac3048a"
-  integrity sha512-1m29EVSrF+LJJAyVo1v12NsIalVKjyi4HNQVQDBx+LNCIuRXnfeMCHuLao5CyN1m3Sn0T63U5JEkmPArPCipQA==
+immutable-tuple@^0.4.9:
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/immutable-tuple/-/immutable-tuple-0.4.9.tgz#473ebdd6c169c461913a454bf87ef8f601a20ff0"
+  integrity sha512-LWbJPZnidF8eczu7XmcnLBsumuyRBkpwIRPCZxlojouhBo5jEBO4toj6n7hMy6IxHU/c+MqDSWkvaTpPlMQcyA==
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -4637,12 +4644,12 @@ opn@^3.0.2:
   dependencies:
     object-assign "^4.0.1"
 
-optimism@^0.6.6:
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.6.6.tgz#5415b2d6a2f8b3745aedb9f97fdf4e52467ecd84"
-  integrity sha512-1Y6LY7pYbXP5y6yeXYfXhxJi9hsxYAZWpt7bBp4seAwfcYtaN7tq9wot/pdrhyI809/K4gDm3BcZcEkmwGevjg==
+optimism@^0.6.8:
+  version "0.6.8"
+  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.6.8.tgz#0780b546da8cd0a72e5207e0c3706c990c8673a6"
+  integrity sha512-bN5n1KCxSqwBDnmgDnzMtQTHdL+uea2HYFx1smvtE+w2AMl0Uy31g0aXnP/Nt85OINnMJPRpJyfRQLTCqn5Weg==
   dependencies:
-    immutable-tuple "^0.4.4"
+    immutable-tuple "^0.4.9"
 
 optimist@^0.6.1:
   version "0.6.1"

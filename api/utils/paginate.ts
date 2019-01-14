@@ -18,6 +18,7 @@ export const decodeCursor = cursor => {
   if (data[0] === undefined || data[1] === undefined) {
     throw new Error(`Could not find edge with cursor ${cursor}`)
   }
+
   return data
 }
 

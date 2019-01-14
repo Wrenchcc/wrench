@@ -15,7 +15,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   // TODO: Logo from CDN
   const url = await dynamicLink({
     description: `Follow ${user.fullName} project “${project.title}“ on Wrench.`,
-    // image: user.avatarUrl,
+    // image: '',
     path: `project/${project.slug}`,
     title: `Project “${project.title}“. By (@${user.username}) • Wrench`,
   })

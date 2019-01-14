@@ -19,6 +19,7 @@ const s3 = new S3({
   useAccelerateEndpoint: true,
 })
 
+// TODO: Promise.map
 export default isAuthenticated(async (_, { input }, ctx) => {
   try {
     return Promise.all(
