@@ -140,16 +140,6 @@ export default class ImageEditor extends PureComponent {
         height: image.height / widthRatio,
       }
     }
-
-    // this.maximumZoomScale = Math.min(
-    //   image.width / this.scaledImageSize.width,
-    //   image.height / this.scaledImageSize.height
-    // )
-    //
-    // this.minimumZoomScale = Math.max(
-    //   IMAGE_EDITOR_WIDTH / this.scaledImageSize.width,
-    //   IMAGE_EDITOR_HEIGHT / this.scaledImageSize.height
-    // )
   }
 
   // handleOnEditImage(offset, scaledImageSize, croppedImageSize) {
@@ -208,7 +198,6 @@ export default class ImageEditor extends PureComponent {
                 },
                 this.scaledImageSize,
               ]}
-              resizeMode="stretch"
               source={this.props.image}
             />
           </PanGestureHandler>
