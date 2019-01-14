@@ -4,6 +4,7 @@ const debug = require('debug')('task:elasticsearch')
 
 const INDEX_NAME = 'vehicles'
 
+// https://engineering.skroutz.gr/blog/implementing-a-fuzzy-suggestion-mechanism/
 async function createIndex() {
   try {
     debug(`Creating index: ${INDEX_NAME}.`)
@@ -36,19 +37,26 @@ async function createIndex() {
         analysis: {
           analyzer: {
             autocomplete: {
-              filter: ['lowercase'],
               tokenizer: 'autocomplete',
+              filter: ['lowercase', 'word_delimiter_graph', 'unique'],
             },
             autocomplete_search: {
-              tokenizer: 'lowercase',
+              filter: ['lowercase'],
+              tokenizer: 'standard',
+            },
+          },
+          filter: {
+            word_delimiter_graph: {
+              type: 'word_delimiter_graph',
+              preserve_original: true,
             },
           },
           tokenizer: {
             autocomplete: {
-              max_gram: 20,
-              min_gram: 1,
-              token_chars: ['letter', 'digit', 'whitespace', 'punctuation', 'symbol'],
               type: 'edge_ngram',
+              min_gram: 1,
+              max_gram: 25,
+              token_chars: ['letter', 'digit', 'punctuation', 'symbol', 'whitespace'],
             },
           },
         },
