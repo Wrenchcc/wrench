@@ -26,8 +26,8 @@ async function createIndex() {
               type: 'text',
             },
             year: {
-              copy_to: 'suggest',
-              type: 'text',
+              // copy_to: 'suggest',
+              type: 'keyword',
             },
           },
         },

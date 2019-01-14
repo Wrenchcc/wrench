@@ -1,8 +1,12 @@
 import client from '../client'
 
-export default async ({ query, index, type }) => {
+export default async ({ body, index }) => {
   try {
-    return client.get(`${index}/_search?q=${query}`)
+    return client.post(`${index}/_search`, body, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
   } catch (err) {
     console.log(err.response)
   }
