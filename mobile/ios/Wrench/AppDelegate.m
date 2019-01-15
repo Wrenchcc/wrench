@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <React/RCTLinkingManager.h>
 
 #import <CodePush/CodePush.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -18,7 +19,6 @@
 #import "RNFirebaseNotifications.h"
 #import "RNFirebaseMessaging.h"
 #import "RNFirebaseLinks.h"
-
 
 @import Firebase;
 
@@ -87,10 +87,11 @@ continueUserActivity:(NSUserActivity *)userActivity
 
 - (BOOL)application:(UIApplication *)application
   openURL:(NSURL *)url
-  options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+  options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
 
   if (!handled) {
-      handled = [[RNFirebaseLinks instance] application:application openURL:url options:options];
+      handled = [RCTLinkingManager application:application openURL:url options:options];
   }
 
   return handled;

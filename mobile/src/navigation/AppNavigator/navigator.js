@@ -90,9 +90,6 @@ const ModalNavigator = createStackNavigator(
   {
     mode: 'modal',
     headerMode: 'screen',
-    navigationOptions: {
-      gesturesEnabled: false, // TODO: See if possible to pass on route
-    },
     cardStyle: {
       backgroundColor: COLORS.WHITE,
     },
