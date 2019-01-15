@@ -7,7 +7,7 @@ const handleUrlPress = url => navigateToWebView({ url })
 // TODO: Use shared regex
 const handleNamePress = name => {
   const username = name.replace('@', '')
-  navigateToUser({ user: { username } })
+  navigateToUser({ slug: username })
 }
 
 const styles = {

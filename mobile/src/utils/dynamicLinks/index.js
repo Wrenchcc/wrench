@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 import Config from 'react-native-config'
 import url from 'url'
 
-export const uriPrefix = Platform.OS === 'android'
+const uriPrefix = Platform.OS === 'android'
   ? `${Config.WRENCH_DEEP_LINK_BASE}wrench/`
   : Config.WRENCH_DEEP_LINK_BASE
 

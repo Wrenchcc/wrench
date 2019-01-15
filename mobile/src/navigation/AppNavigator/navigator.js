@@ -1,5 +1,9 @@
 import React from 'react'
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import {
+  createAppContainer,
+  createBottomTabNavigator,
+  createStackNavigator,
+} from 'react-navigation'
 import { map } from 'ramda'
 import { trackScreen } from 'utils/analytics'
 import { COLORS } from 'ui/constants'
@@ -14,13 +18,14 @@ import { TAB_HEIGHT } from '../constants'
 import { tabRoutes, modalRoutes, modalStackRoutes, stackRoutes } from '../routes'
 import styles from '../styles'
 
+// NOTE: empty path ('') in root navigators
+// https://github.com/react-navigation/react-navigation/issues/1527#issuecomment-439201168
 const TabNavigator = createBottomTabNavigator(map(toTabRoute, tabRoutes), {
   tabBarComponent: TabBarComponent,
   useNativeDriver: true,
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   animationEnabled: false,
-  // lazy: true,
   tabBarOptions: {
     activeTintColor: COLORS.WHITE,
     showLabel: false,
@@ -62,25 +67,29 @@ TabNavigator.navigationOptions = ({ navigation }) => {
   }
 }
 
-const AppNavigator = createStackNavigator(
-  {
-    AppNavigator: {
-      screen: TabNavigator,
+const AppNavigator = createAppContainer(
+  createStackNavigator(
+    {
+      AppNavigator: {
+        screen: TabNavigator,
+        path: '',
+      },
+      ...map(toStackRoute, stackRoutes),
     },
-    ...map(toStackRoute, stackRoutes),
-  },
-  {
-    headerLayoutPreset: 'center',
-    cardStyle: {
-      backgroundColor: COLORS.WHITE,
-    },
-  }
+    {
+      headerLayoutPreset: 'center',
+      cardStyle: {
+        backgroundColor: COLORS.WHITE,
+      },
+    }
+  )
 )
 
 const ModalNavigator = createStackNavigator(
   {
     AppNavigator: {
       screen: AppNavigator,
+      path: '',
       navigationOptions: {
         header: null,
       },
@@ -105,6 +114,7 @@ const ModalStackNavigator = createStackNavigator(
   {
     AppNavigator: {
       screen: ModalNavigator,
+      path: '',
       navigationOptions: {
         header: null,
       },
@@ -120,4 +130,4 @@ const ModalStackNavigator = createStackNavigator(
   }
 )
 
-export default ModalStackNavigator
+export default createAppContainer(ModalStackNavigator)
