@@ -2,41 +2,15 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getPostId } from 'navigation/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
-import userInfoFragment from 'graphql/fragments/user/userInfo'
+import commentInfoFragment from 'graphql/fragments/comment/commentInfo'
 
 export const CommentsQuery = gql`
   query getComments($postId: ID!, $after: String) {
     comments(postId: $postId, after: $after) {
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-      }
-      edges {
-        cursor
-        node {
-          id
-          text
-          createdAt
-          user {
-            ...userInfo
-          }
-          replies: repliesConnection {
-            edges {
-              node {
-                id
-                text
-                createdAt
-                user {
-                  ...userInfo
-                }
-              }
-            }
-          }
-        }
-      }
+      ...commentInfo
     }
   }
-  ${userInfoFragment}
+  ${commentInfoFragment}
 `
 
 const getCommentsOptions = {
