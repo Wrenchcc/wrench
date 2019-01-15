@@ -1,5 +1,5 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { encodeCursor, decodeCursor } from 'api/utils/paginate'
+import { encodeCursor, decodeCursor } from 'api/utils/paginate/cursor'
 
 const MAX_LIMIT = 50
 const INDEX_NAME = 'vehicles'
@@ -22,13 +22,13 @@ export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
 
   const { data } = await ctx.services.elasticsearch.search({
     body: {
-      size: first,
       from,
       query: {
         match: {
           suggest: query,
         },
       },
+      size: first,
       sort: ['_score'],
     },
     index: INDEX_NAME,

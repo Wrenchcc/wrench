@@ -1,25 +1,14 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { encode, decode } from 'base-64'
 import { LessThan, MoreThan, Between } from 'typeorm'
+import { encodeCursor, decodeCursor } from './cursor'
+import convertNodesToEdges from './convertNodesToEdges'
+import convertPageInfo from './convertPageInfo'
 
 const MAX_LIMIT = 50
-const SEPARATION_TOKEN = '___'
 
 const ORDER_BY = {
   column: 'createdAt',
   sort: 'DESC',
-}
-
-export const encodeCursor = (id, columnValue) => encode(`${id}${SEPARATION_TOKEN}${columnValue}`)
-
-export const decodeCursor = cursor => {
-  const data = decode(cursor).split(SEPARATION_TOKEN)
-
-  if (data[0] === undefined || data[1] === undefined) {
-    throw new Error(`Could not find edge with cursor ${cursor}`)
-  }
-
-  return data
 }
 
 export const mapOperatorsRaw = ({ after, before }, { column, sort }) => {
@@ -50,11 +39,6 @@ const mapOperators = ({ after, before }, { column, sort }) => {
   return { [column]: comparator }
 }
 
-export const convertNodesToEdges = (nodes, { column }) => nodes.map(node => ({
-  cursor: encodeCursor(node.id, node[column]),
-  node,
-}))
-
 export default async (
   model,
   { after, before, first = 10, last = 10 },
@@ -81,13 +65,11 @@ export default async (
 
   const [nodes, totalCount] = await model.findAndCount(findOptions)
   const edges = convertNodesToEdges(nodes, orderBy)
+  const pageInfo = convertPageInfo(totalCount, first, last)
 
   return {
     edges,
-    pageInfo: {
-      hasNextPage: totalCount > first,
-      hasPreviousPage: totalCount > last,
-    },
+    pageInfo,
     totalCount,
   }
 }
