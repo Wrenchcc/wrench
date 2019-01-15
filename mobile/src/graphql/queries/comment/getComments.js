@@ -2,6 +2,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { getPostId } from 'navigation/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export const CommentsQuery = gql`
   query getComments($postId: ID!, $after: String) {
@@ -17,11 +18,7 @@ export const CommentsQuery = gql`
           text
           createdAt
           user {
-            id
-            fullName
-            username
-            avatarUrl
-            isOnline
+            ...userInfo
           }
           replies: repliesConnection {
             edges {
@@ -30,11 +27,7 @@ export const CommentsQuery = gql`
                 text
                 createdAt
                 user {
-                  id
-                  fullName
-                  username
-                  avatarUrl
-                  isOnline
+                  ...userInfo
                 }
               }
             }
@@ -43,6 +36,7 @@ export const CommentsQuery = gql`
       }
     }
   }
+  ${userInfoFragment}
 `
 
 const getCommentsOptions = {

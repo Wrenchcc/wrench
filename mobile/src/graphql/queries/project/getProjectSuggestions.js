@@ -6,7 +6,7 @@ import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
 export const ProjectSuggestionsQuery = gql`
   query getProjectSuggestions($after: String) {
-    projects: projectSuggestions(after: $after) {
+    projects: projectSuggestions(after: $after, first: 20) {
       type {
         id
         title
