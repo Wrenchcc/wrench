@@ -14,8 +14,9 @@ export const CommentsQuery = gql`
 `
 
 const getCommentsOptions = {
-  options: ({ navigation }) => ({
+  options: ({ navigation, after = null }) => ({
     variables: {
+      after,
       postId: getPostId(navigation),
     },
     fetchPolicy: 'cache-and-network',

@@ -6,9 +6,9 @@ export default gql`
   fragment commentInfo on CommentConnection {
     pageInfo {
       hasNextPage
-      hasPreviousPage
     }
     edges {
+      cursor
       node {
         id
         text

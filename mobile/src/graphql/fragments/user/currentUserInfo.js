@@ -9,6 +9,8 @@ export default gql`
     username
     avatarUrl
     projectCount
+    dynamicLink
+    isOnline
     settings {
       timezone
       locale

@@ -77,40 +77,46 @@ const addCommentOptions = {
           text,
         },
       },
-      update: (cache, { data: { addComment } }) => {
-        const data = cache.readQuery({
-          query: CommentsQuery,
-          variables: { postId: getPostId(navigation) },
-        })
-
-        const { user } = cache.readQuery({ query: CurrentUserQuery })
-
-        const comments = {
-          ...data,
-          comments: {
-            ...data.comments,
-            edges: prepend(
-              {
-                node: {
-                  id: Math.round(Math.random() * -1000000),
-                  createdAt: new Date().toISOString(),
-                  replies: {
-                    edges: [],
-                    __typename: 'CommentConnection',
-                  },
-                  ...addComment,
-                  user,
-                  __typename: 'Comment',
-                },
-                __typename: 'CommentEdge',
-              },
-              data.comments.edges
-            ),
-          },
-        }
-
-        cache.writeQuery({ query: CommentsQuery, data: comments })
-      },
+      // update: (cache, { data: { addComment } }) => {
+      //   const data = cache.readQuery({
+      //     query: CommentsQuery,
+      //     variables: {
+      //       postId: getPostId(navigation),
+      //     },
+      //   })
+      //
+      //   const { user } = cache.readQuery({ query: CurrentUserQuery })
+      //
+      //   const comments = {
+      //     ...data,
+      //     comments: {
+      //       ...data.comments,
+      //       edges: prepend(
+      //         {
+      //           node: {
+      //             id: Math.round(Math.random() * -1000000),
+      //             createdAt: new Date().toISOString(),
+      //             replies: {
+      //               pageInfo: {
+      //                 hasNextPage: false,
+      //                 __typename: 'RepliesConnection',
+      //               },
+      //               edges: [],
+      //               __typename: 'CommentConnection',
+      //             },
+      //             ...addComment,
+      //             user,
+      //             __typename: 'Comment',
+      //           },
+      //           __typename: 'CommentEdge',
+      //         },
+      //         data.comments.edges
+      //       ),
+      //     },
+      //   }
+      //
+      //   cache.writeQuery({ query: CommentsQuery, data: comments })
+      // },
     }),
   }),
 }
