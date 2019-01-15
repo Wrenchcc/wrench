@@ -31,7 +31,6 @@
     "DB_USERNAME": "wrench",
     "ELASTICSEARCH_URL": "https://",
     "GOOGLE_FIREBASE_API_KEY": "AIzaSyArEOJzCoryKP88xKVHMQFXMhEgvKl5ljk",
-    "PORT": "4000",
-    "TZ": "utc﻿"
+    "PORT": "4000"
   }
 }

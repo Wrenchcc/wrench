@@ -1,43 +1,9 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { LessThan, MoreThan, Between } from 'typeorm'
 import { encodeCursor, decodeCursor } from './cursor'
 import convertNodesToEdges from './convertNodesToEdges'
 import convertPageInfo from './convertPageInfo'
-
-const MAX_LIMIT = 50
-
-const ORDER_BY = {
-  column: 'createdAt',
-  sort: 'DESC',
-}
-
-export const mapOperatorsRaw = ({ after, before }, { column, sort }) => {
-  if (after) {
-    const [id, columnValue] = decodeCursor(after)
-    return sort === ORDER_BY.sort ? `(${column} < ${columnValue})` : `(${column} > ${columnValue})`
-  }
-
-  if (before) {
-    const [id, columnValue] = decodeCursor(before)
-    return sort === ORDER_BY.sort ? `(${column} > ${columnValue})` : `(${column} < ${columnValue})`
-  }
-}
-
-const mapOperators = ({ after, before }, { column, sort }) => {
-  let comparator
-
-  if (after) {
-    const [id, columnValue] = decodeCursor(after)
-    comparator = sort === ORDER_BY.sort ? LessThan(columnValue) : MoreThan(columnValue)
-  }
-
-  if (before) {
-    const [id, columnValue] = decodeCursor(before)
-    comparator = sort === ORDER_BY.sort ? MoreThan(columnValue) : LessThan(columnValue)
-  }
-
-  return { [column]: comparator }
-}
+import findOperators from './findOperators'
+import { ORDER_BY, MAX_LIMIT } from './constants'
 
 export default async (
   model,
@@ -59,7 +25,7 @@ export default async (
 
   if (after || before) {
     findOptions.where = {
-      ...mapOperators({ after, before }, orderBy),
+      ...findOperators({ after, before }, orderBy),
     }
   }
 
