@@ -52,7 +52,7 @@ export function speed(value) {
 }
 
 const MIN_SCALE = 1
-const MAX_SCALE = 2
+const MAX_SCALE = 3
 
 export function scaleRest(value) {
   return cond(
