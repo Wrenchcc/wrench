@@ -19,7 +19,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     await Promise.all([
       // Add new notification to db
       ctx.db.Notification.save({
-        sendTo: post.userId,
+        to: post.userId,
         type: notificationType,
         typeId: comment.id,
         userId: ctx.userId,
@@ -65,7 +65,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
 
           // Add new notification to db
           ctx.db.Notification.save({
-            sendTo: mentionedUser.id,
+            to: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,
             typeId: comment.id,
             userId: ctx.userId,

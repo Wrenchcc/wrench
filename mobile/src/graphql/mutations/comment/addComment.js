@@ -4,7 +4,7 @@ import { prepend, update } from 'ramda'
 import { getPostId } from 'navigation/utils/selectors'
 import { FeedQuery } from 'graphql/queries/getFeed'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
-import { CommentsQuery } from 'graphql/queries/comment/getComments'
+// import { CommentsQuery } from 'graphql/queries/comment/getComments'
 
 const CommentMutation = gql`
   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
