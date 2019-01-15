@@ -43,7 +43,6 @@ export default class AddContainer extends Container {
       postProgress: null,
       selectedFiles: [],
       selectedIndex: 0,
-      selectedProjectId: null,
       selectProjectOpen: false,
       isSearching: false,
       isSaving: false,
@@ -111,5 +110,9 @@ export default class AddContainer extends Container {
 
   showPostProgress = data => {
     this.setState({ postProgress: data })
+  }
+
+  hidePostProgress = () => {
+    this.setState({ postProgress: null })
   }
 }

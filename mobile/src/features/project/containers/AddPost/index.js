@@ -7,25 +7,32 @@ import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
 import { navigateToFeed } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
+import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { track, events } from 'utils/analytics'
 import { uploadFiles } from 'utils/storage/s3'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input } from 'ui'
 
+function getProjectById(id, projects) {
+  return projects.find(({ node }) => node.id === id)
+}
+
 class AddPost extends PureComponent {
   static propTypes = {
     addPost: PropTypes.func.isRequired,
+    projects: PropTypes.array.isRequired,
   }
 
-  addPost = async ({ state, showPostProgress, resetState }, showNotification) => {
-    const { t } = this.props
+  addPost = async (PostContainer, showNotification) => {
+    const { showPostProgress, state, resetState, hidePostProgress } = PostContainer
+    const { t, projects } = this.props
+
     navigateToFeed()
 
-    // TODO: Use selectedProject
     showPostProgress({
       image: state.selectedFiles[0].uri,
-      title: 'BMW R100 project',
+      title: getProjectById(state.selectedProjectId, projects).node.title,
     })
 
     try {
@@ -43,8 +50,10 @@ class AddPost extends PureComponent {
       showNotification({
         type: 'error',
         message: t('AddPost:error'),
-        dismissAfter: 7000,
+        dismissAfter: 6000,
       })
+
+      hidePostProgress()
 
       track(events.POST_CREATED_FAILED)
     }
@@ -85,5 +94,6 @@ class AddPost extends PureComponent {
 
 export default compose(
   addPost,
+  getCurrentUserProjects,
   withNamespaces('AddPost')
 )(AddPost)

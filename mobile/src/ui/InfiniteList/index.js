@@ -35,17 +35,17 @@ class InfiniteList extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      this.props.polling
-      && pathOr(false, ['data'], this.props)
-      && pathOr(false, ['data'], prevProps)
-      && !equals(
-        pathOr(false, ['data', 0, 'node', 'id'], this.props),
-        pathOr(false, ['data', 0, 'node', 'id'], prevProps)
-      )
-    ) {
-      this.setNewDataState(true)
-    }
+    // if (
+    //   this.props.polling
+    //   && pathOr(false, ['data'], this.props)
+    //   && pathOr(false, ['data'], prevProps)
+    //   && !equals(
+    //     pathOr(false, ['data', 0, 'node', 'id'], this.props),
+    //     pathOr(false, ['data', 0, 'node', 'id'], prevProps)
+    //   )
+    // ) {
+    //   this.setNewDataState(true)
+    // }
   }
 
   setNewDataState = hasNewData => {
