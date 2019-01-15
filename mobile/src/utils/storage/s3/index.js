@@ -6,8 +6,8 @@ import makeS3Request from './makeS3Request'
 
 export const uploadFiles = async files => {
   const input = files.map(({ filename }) => ({ filename }))
-  // // Return pre-signed urls
-  // // Resize images and return uris
+  // Return pre-signed urls
+  // Resize images and return uris
   const [preSignedUrls, resizedImages] = await Promise.all([
     client.mutate({ mutation: PreSignUrlsMutation, variables: { input } }),
     runSequentially(files.map(file => () => cropImage(file))),
