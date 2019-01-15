@@ -15,6 +15,7 @@ class User extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     const fullName = pathOr(false, ['user', 'fullName'], params)
+    const dynamicLink = pathOr(false, ['user', 'dynamicLink'], params)
 
     return {
       headerTitle: fullName && (
@@ -25,7 +26,7 @@ class User extends PureComponent {
           {fullName}
         </HeaderTitle>
       ),
-      headerRight: fullName && <Share title={fullName} url={params.user.dynamicLink} />,
+      headerRight: dynamicLink && <Share title={fullName} url={dynamicLink} />,
     }
   }
 

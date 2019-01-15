@@ -41,8 +41,8 @@ const getUserByUsernameOptions = {
     error,
     refetch,
     user: {
-      ...user,
       ...pathOr(user, ['state', 'params', 'user'], navigation),
+      ...user,
     },
     posts: pathOr(null, ['posts', 'edges'], user),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
@@ -58,6 +58,7 @@ const getUserByUsernameOptions = {
         if (!fetchMoreResult.user) {
           return prev
         }
+
         return {
           ...prev,
           user: {
