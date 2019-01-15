@@ -1,4 +1,4 @@
-import { NOTIFICATION_TYPES } from 'shared/utils/enums'
+import { NOTIFICATION_TYPES } from 'shared'
 
 export const DEFAULT_NOTIFICATIONS = {
   [NOTIFICATION_TYPES.NEW_ARTICLE]: true,

@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server-express'
 import { In } from 'typeorm'
-import { PROJECT_SORT_TYPES } from 'shared/utils/enums'
+import { PROJECT_SORT_TYPES } from 'shared'
 import paginate from 'api/utils/paginate'
 
 // TODO: User dataloader

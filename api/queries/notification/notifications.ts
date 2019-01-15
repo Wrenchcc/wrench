@@ -1,7 +1,7 @@
 import { filter } from 'ramda'
 import { DateTime } from 'luxon'
 import { isAuthenticated } from 'api/utils/permissions'
-import { NOTIFICATION_TYPES } from 'shared/utils/enums'
+import { NOTIFICATION_TYPES } from 'shared'
 
 // TODO: User dataloader
 // TODO: Paginate

@@ -9,7 +9,7 @@ import {
   ManyToOne,
 } from 'typeorm'
 import { pathOr } from 'ramda'
-import { DEFAULT_LOCALE } from 'shared/locale'
+import { DEFAULT_LOCALE } from 'shared'
 import User from './User'
 
 export const NOTIFICATIONS_COLUMN = 'notifications'

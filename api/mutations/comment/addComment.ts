@@ -1,6 +1,5 @@
 import { isAuthenticated, canModeratePost, canModerateComment } from 'api/utils/permissions'
-import { NOTIFICATION_TYPES } from 'shared/utils/enums'
-import { MENTION_REGEX } from 'shared/utils/regex'
+import { extractMentionedUsers, NOTIFICATION_TYPES } from 'shared'
 
 export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
@@ -39,11 +38,10 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   }
 
   // Send notification to mentioned users
-  const mentions = input.text.match(MENTION_REGEX)
+  const mentions = extractMentionedUsers(input.text)
   if (mentions) {
     await Promise.all(
-      mentions.map(async mention => {
-        const username = mention.replace('@', '')
+      mentions.map(async username => {
         const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
         // Skip "New Mention" notification if comment owner.

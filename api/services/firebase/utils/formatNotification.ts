@@ -1,5 +1,5 @@
 import { translate } from 'api/i18n'
-import { NOTIFICATION_TYPES } from 'shared/utils/enums'
+import { NOTIFICATION_TYPES } from 'shared'
 
 export default function formatNotification(type, data, user, locale) {
   switch (type) {
