@@ -39,15 +39,16 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
 
   // Send notification to mentioned users
   const mentions = extractMentionedUsers(input.text)
+
   if (mentions) {
     await Promise.all(
       mentions.map(async username => {
         const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
         // Skip "New Mention" notification if comment owner.
-        if (canModerateComment(comment, mentionedUser.id)) {
-          return null
-        }
+        // if (canModerateComment(comment, mentionedUser.id)) {
+        //   return null
+        // }
 
         return Promise.all([
           // Send notification to mentioned user

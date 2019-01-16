@@ -5,6 +5,8 @@ export const Base = styled(UiTouchable)`
   flex-direction: row;
   padding-top: 15;
   padding-bottom: 15;
+  padding-left: 20;
+  padding-right: 20;
 `
 
 export const Content = styled.View`
