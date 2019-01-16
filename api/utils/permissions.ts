@@ -21,6 +21,14 @@ export const canModeratePost = (post, userId) => {
   return post.userId === userId
 }
 
+export const canModerateNotification = (notification, userId) => {
+  if (!userId || !notification) {
+    return false
+  }
+
+  return notification.userId === userId
+}
+
 export const canModerateProject = (project, userId) => {
   if (!userId || !project) {
     return false
