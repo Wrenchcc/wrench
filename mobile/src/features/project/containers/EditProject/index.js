@@ -72,7 +72,7 @@ class EditProject extends PureComponent {
         null,
         [
           { text: t('EditProject:cancel'), style: 'cancel' },
-          { text: t('EditProject:delete'), onPress: this.onDelete },
+          { text: t('EditProject:delete'), onPress: this.onDelete, style: 'destructive' },
         ],
         { cancelable: false }
       )
