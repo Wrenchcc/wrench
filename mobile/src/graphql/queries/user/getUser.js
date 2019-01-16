@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getUsername } from 'navigation/utils/selectors'
+import { getUsername, getUsernameFromDeeplink } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
@@ -29,7 +29,7 @@ const LoadMorePosts = gql`
 const getUserByUsernameOptions = {
   options: ({ navigation, after = null }) => ({
     variables: {
-      username: getUsername(navigation),
+      username: getUsername(navigation) || getUsernameFromDeeplink(navigation),
       after,
     },
     fetchPolicy: 'cache-and-network',

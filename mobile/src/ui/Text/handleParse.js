@@ -5,7 +5,7 @@ const handleUrlPress = url => navigateToWebView({ url })
 
 const handleNamePress = name => {
   const username = name.replace('@', '')
-  navigateToUser({ slug: username })
+  navigateToUser({ user: { username } })
 }
 
 const styles = {
