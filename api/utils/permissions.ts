@@ -26,7 +26,7 @@ export const canModerateNotification = (notification, userId) => {
     return false
   }
 
-  return notification.userId === userId
+  return notification.to === userId
 }
 
 export const canModerateProject = (project, userId) => {

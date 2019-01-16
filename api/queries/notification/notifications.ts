@@ -68,6 +68,10 @@ export default isAuthenticated(async (_, args, ctx) => {
 
   return {
     edges: filter(n => n !== null, edges),
+    pageInfo: {
+      hasNextPage: false,
+      hasPreviousPage: false,
+    },
     unreadCount,
   }
 })
