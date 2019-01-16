@@ -10,9 +10,8 @@ export default (_, args, ctx) => {
       return searchUsers(args, ctx)
     case SEARCH_TYPES.PROJECTS:
       return searchProject(args, ctx)
-    case SEARCH_TYPES.MODELS: {
+    case SEARCH_TYPES.MODELS:
       return searchModels(args, ctx)
-    }
     default:
       throw new ApolloError('Invalid searchType supplied to Search query')
   }

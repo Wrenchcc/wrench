@@ -18,7 +18,17 @@ export default gql`
       maxHeight: Int
       type: FileType
     ): FileConnection
-    commentsConnection(first: Int = 10, after: String, last: Int = 10, before: String): CommentConnection
+    commentsConnection(
+      first: Int = 10
+      after: String
+      last: Int = 10
+      before: String
+    ): CommentConnection
+  }
+
+  enum PostSortType {
+    RECENT
+    FEED
   }
 
   type PostPermissions {
@@ -42,7 +52,13 @@ export default gql`
 
   extend type Query {
     post(id: ID!): Post
-    posts(userId: ID, first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+    posts(
+      type: PostSortType!
+      first: Int = 10
+      after: String
+      last: Int = 10
+      before: String
+    ): PostConnection
   }
 
   input PostInput {
