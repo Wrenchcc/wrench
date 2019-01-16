@@ -50,7 +50,11 @@ class Post extends PureComponent {
       t('Post:options:alertTitle'),
       null,
       [
-        { text: t('Post:options:delete'), onPress: this.deletePost },
+        {
+          text: t('Post:options:delete'),
+          onPress: this.deletePost,
+          style: 'destructive',
+        },
         {
           text: t('Post:options:cancel'),
           style: 'cancel',

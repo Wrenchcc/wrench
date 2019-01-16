@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BorderlessButton } from 'react-native-gesture-handler'
+// import { BorderlessButton } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native'
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 import evenHitSlop from 'utils/hitSlop'
 
@@ -20,14 +21,14 @@ const Touchable = ({
   onPress,
   ...props
 }) => (
-  <BorderlessButton
+  <TouchableOpacity
     activeOpacity={activeOpacity}
     onPress={() => onPressWrapper(onPress, hapticFeedback)}
     hitSlop={evenHitSlop(hitSlop)}
     {...props}
   >
     {children}
-  </BorderlessButton>
+  </TouchableOpacity>
 )
 
 Touchable.propTypes = {

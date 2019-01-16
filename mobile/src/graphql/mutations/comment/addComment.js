@@ -23,46 +23,46 @@ const addCommentToFeedOptions = {
           text,
         },
       },
-      update: (cache, { data: { addComment } }) => {
-        const data = cache.readQuery({ query: FeedQuery })
-        const index = data.posts.edges.findIndex(post => post.node.id === postId)
-        const { user } = cache.readQuery({ query: CurrentUserQuery })
-
-        const comments = {
-          ...data,
-          posts: {
-            ...data.posts,
-            edges: update(
-              index,
-              {
-                ...data.posts.edges[index],
-                node: {
-                  ...data.posts.edges[index].node,
-                  comments: {
-                    ...data.posts.edges[index].node.comments,
-                    edges: prepend(
-                      {
-                        node: {
-                          id: Math.round(Math.random() * -1000000),
-                          ...addComment,
-                          user,
-                          __typename: 'Comment',
-                        },
-                        __typename: 'CommentEdge',
-                      },
-                      data.posts.edges[index].node.comments.edges
-                    ),
-                    totalCount: data.posts.edges[index].node.comments.totalCount + 1,
-                  },
-                },
-              },
-              data.posts.edges
-            ),
-          },
-        }
-
-        cache.writeQuery({ query: FeedQuery, data: comments })
-      },
+      // update: (cache, { data: { addComment } }) => {
+      //   const data = cache.readQuery({ query: FeedQuery })
+      //   const index = data.posts.edges.findIndex(post => post.node.id === postId)
+      //   const { user } = cache.readQuery({ query: CurrentUserQuery })
+      //
+      //   const comments = {
+      //     ...data,
+      //     posts: {
+      //       ...data.posts,
+      //       edges: update(
+      //         index,
+      //         {
+      //           ...data.posts.edges[index],
+      //           node: {
+      //             ...data.posts.edges[index].node,
+      //             comments: {
+      //               ...data.posts.edges[index].node.comments,
+      //               edges: prepend(
+      //                 {
+      //                   node: {
+      //                     id: Math.round(Math.random() * -1000000),
+      //                     ...addComment,
+      //                     user,
+      //                     __typename: 'Comment',
+      //                   },
+      //                   __typename: 'CommentEdge',
+      //                 },
+      //                 data.posts.edges[index].node.comments.edges
+      //               ),
+      //               totalCount: data.posts.edges[index].node.comments.totalCount + 1,
+      //             },
+      //           },
+      //         },
+      //         data.posts.edges
+      //       ),
+      //     },
+      //   }
+      //
+      //   cache.writeQuery({ query: FeedQuery, data: comments })
+      // },
     }),
   }),
 }

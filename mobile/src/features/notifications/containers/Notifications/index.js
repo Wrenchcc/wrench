@@ -4,12 +4,14 @@ import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { getNotifications } from 'graphql/queries/getNotifications'
 import { markAllNotificationsSeen } from 'graphql/mutations/notification/markAllNotificationsSeen'
+import { deleteNotification } from 'graphql/mutations/notification/deleteNotification'
 import { InfiniteListWithHandler, Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import { Header } from './styles'
 
 class Notifications extends PureComponent {
   static propTypes = {
+    deleteNotification: PropTypes.func.isRequired,
     fetchMore: PropTypes.func.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
@@ -28,7 +30,9 @@ class Notifications extends PureComponent {
     })
   }
 
-  renderItem = ({ item }) => <Notification data={item.node} />
+  renderItem = ({ item }) => (
+    <Notification data={item.node} deleteNotification={this.props.deleteNotification} />
+  )
 
   render() {
     const {
@@ -73,5 +77,6 @@ class Notifications extends PureComponent {
 export default compose(
   getNotifications,
   markAllNotificationsSeen,
+  deleteNotification,
   withNamespaces('Notifications')
 )(Notifications)

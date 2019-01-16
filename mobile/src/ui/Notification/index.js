@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { View, Animated, Image } from 'react-native'
+import { Alert, View, Animated, Image } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Swipeable, RectButton } from 'react-native-gesture-handler'
 import { navigateToUser, navigateToProject, navigateToComments } from 'navigation'
@@ -50,8 +50,6 @@ const styles = {
   },
 }
 
-// Hide this Notification
-// Cancel, Hide
 class Notification extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
@@ -66,8 +64,25 @@ class Notification extends PureComponent {
     })
 
     const pressHandler = () => {
+      const { t, deleteNotification } = this.props
       this.swipable.close()
-      this.props.deleteNotification()
+
+      Alert.alert(
+        t('Notification:options:alertTitle'),
+        null,
+        [
+          {
+            text: t('Notification:options:delete'),
+            onPress: () => deleteNotification(this.props.data.id),
+            style: 'destructive',
+          },
+          {
+            text: t('Notification:options:cancel'),
+            style: 'cancel',
+          },
+        ],
+        { cancelable: false }
+      )
     }
 
     return (
