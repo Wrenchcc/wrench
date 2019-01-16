@@ -22,6 +22,11 @@ export const PROJECT_SORT_TYPES = {
   POPULAR: 'POPULAR',
 }
 
+export const POST_SORT_TYPES = {
+  RECENT: 'RECENT',
+  FEED: 'FEED',
+}
+
 export const SEARCH_TYPES = {
   MODELS: 'MODELS',
   PROJECTS: 'PROJECTS',
