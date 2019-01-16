@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Alert } from 'react-native'
+import { Alert, TouchableOpacity } from 'react-native'
 import { compose } from 'react-apollo'
 import { withNamespaces } from 'react-i18next'
 import { navigateToProject, navigateToUser } from 'navigation'
 import { Avatar, Carousel, Comments, ActionSheet } from 'ui'
 import { deletePost } from 'graphql/mutations/post/deletePost'
-import { Base, Top, Title, Content, Caption } from './styled'
+import { Top, Title, Content, Caption } from './styled'
 
 class Post extends PureComponent {
   state = {
@@ -83,7 +83,7 @@ class Post extends PureComponent {
     const { post, onPost = false, avatar = true } = this.props
 
     return (
-      <Base onLongPress={this.toggleActionSheet} activeOpacity={1}>
+      <TouchableOpacity onLongPress={this.toggleActionSheet} activeOpacity={1}>
         <Top>
           {!onPost && (
             <Title
@@ -122,7 +122,7 @@ class Post extends PureComponent {
         {!post.project.commentsDisabled && <Comments data={post} />}
 
         {this.postActions()}
-      </Base>
+      </TouchableOpacity>
     )
   }
 }
