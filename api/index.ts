@@ -9,7 +9,7 @@ import debugOptions from 'api/utils/debugOptions'
 import { types } from 'pg'
 import schema from './schema'
 import { options, db } from './models'
-import loaders from './loaders'
+import createLoaders from './loaders'
 import services from './services'
 
 const debug = require('debug')('api:server')
@@ -28,7 +28,7 @@ createConnection(options)
       ...debugOptions,
       context: ({ req, res }) => ({
         db,
-        loaders,
+        loaders: createLoaders(),
         services,
         userId: getUserId(req),
       }),

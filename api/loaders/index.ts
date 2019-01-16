@@ -1,5 +1,5 @@
-// import { createUserLoader } from './user'
+import { createUserLoader } from './user'
 
-export default options => ({
-  user: () => null, // createUserLoader(options),
+export default () => ({
+  userLoader: createUserLoader(),
 })

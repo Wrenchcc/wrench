@@ -1,6 +1,6 @@
 export default async ({ userId }, args, ctx) => {
   try {
-    return ctx.db.User.findOne(userId)
+    return ctx.loaders.userLoader.load(userId)
   } catch (err) {
     console.log(err)
   }
