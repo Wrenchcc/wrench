@@ -50,9 +50,12 @@ const styles = {
   },
 }
 
+// Hide this Notification
+// Cancel, Hide
 class Notification extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
+    deleteNotification: PropTypes.func.isRequired,
   }
 
   renderRightAction = progress => {
@@ -63,8 +66,8 @@ class Notification extends PureComponent {
     })
 
     const pressHandler = () => {
-      this.close()
-      alert('delete')
+      this.swipable.close()
+      this.props.deleteNotification()
     }
 
     return (
@@ -81,10 +84,6 @@ class Notification extends PureComponent {
 
   setRef = ref => {
     this.swipable = ref
-  }
-
-  close = () => {
-    this.swipable.close()
   }
 
   render() {
