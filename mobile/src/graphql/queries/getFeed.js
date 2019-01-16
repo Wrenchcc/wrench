@@ -1,13 +1,12 @@
 import gql from 'graphql-tag'
 import ms from 'ms'
 import { graphql } from 'react-apollo'
-import { getUserId } from 'navigation/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import postsInfoFragment from 'graphql/fragments/post/postsInfo'
 
 export const FeedQuery = gql`
-  query getFeed($userId: ID, $after: String) {
-    posts(userId: $userId, after: $after) {
+  query getFeed($after: String) {
+    posts(type: FEED, after: $after) {
       ...postsInfo
     }
   }
@@ -15,10 +14,7 @@ export const FeedQuery = gql`
 `
 
 const getFeedOptions = {
-  options: ({ navigation }) => ({
-    variables: {
-      userId: getUserId(navigation),
-    },
+  options: () => ({
     pollInterval: ms('3m'),
     fetchPolicy: 'cache-and-network',
   }),
