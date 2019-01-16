@@ -19,12 +19,8 @@ class User extends PureComponent {
 
     return {
       headerTitle: fullName && (
-        <HeaderTitle
-          opacity={params.opacity || new Animated.Value(0)}
-          onPress={() => this.scrollView.scrollToOffset({ offset: 0 })}
-        >
-          {fullName}
-        </HeaderTitle>
+        // onPress={() => this.scrollView.scrollToOffset({ offset: 0 })}
+        <HeaderTitle opacity={params.opacity || new Animated.Value(0)}>{fullName}</HeaderTitle>
       ),
       headerRight: dynamicLink && <Share title={fullName} url={dynamicLink} />,
     }

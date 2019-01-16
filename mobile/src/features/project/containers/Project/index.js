@@ -27,12 +27,8 @@ class Project extends PureComponent {
 
     return {
       headerTitle: projectTitle && (
-        <HeaderTitle
-          opacity={params.opacity || new Animated.Value(0)}
-          onPress={() => this.scrollView.scrollToOffset({ offset: 0 })}
-        >
-          {projectTitle}
-        </HeaderTitle>
+        // onPress={() => this.scrollView.scrollToOffset({ offset: 0 })}
+        <HeaderTitle opacity={params.opacity || new Animated.Value(0)}>{projectTitle}</HeaderTitle>
       ),
       headerRight: isOwner ? (
         <Edit project={params.project} />
