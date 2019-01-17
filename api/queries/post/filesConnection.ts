@@ -1,8 +1,6 @@
 import paginate from 'api/utils/paginate'
+import transformFileUrl from 'api/utils/transformFileUrl'
 
-const { APP_CDN_DOMAIN } = process.env
-
-// TODO: Transform uri
 export default async ({ id }, args, ctx) => {
   const files = await paginate(ctx.db.File, args, {
     where: {
@@ -15,7 +13,7 @@ export default async ({ id }, args, ctx) => {
     cursor,
     node: {
       ...node,
-      uri: `${APP_CDN_DOMAIN}/${node.filename}`,
+      uri: transformFileUrl(node.filename),
     },
   }))
 
