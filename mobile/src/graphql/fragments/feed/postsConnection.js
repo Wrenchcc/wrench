@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import commentsConnectionFragment from 'graphql/fragments/post/commentsConnection'
+import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 export default gql`
   fragment feedPostsConnection on Feed {
@@ -8,29 +9,7 @@ export default gql`
       edges {
         cursor
         node {
-          id
-          caption
-          postPermissions {
-            isOwner
-          }
-          user {
-            ...userInfo
-          }
-          files: filesConnection(type: IMAGE) {
-            edges {
-              node {
-                type
-                id
-                uri
-              }
-            }
-          }
-          project {
-            id
-            title
-            commentsDisabled
-          }
-          ...commentPostConnection
+          ...postInfo
         }
       }
       pageInfo {
@@ -38,6 +17,7 @@ export default gql`
       }
     }
   }
+  ${postInfoFragment}
   ${userInfoFragment}
   ${commentsConnectionFragment}
 `
