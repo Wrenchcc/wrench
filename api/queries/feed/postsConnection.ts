@@ -1,7 +1,8 @@
 import { In } from 'typeorm'
+import { isAuthenticated } from 'api/utils/permissions'
 import paginate from 'api/utils/paginate'
 
-export default async (args, ctx) => {
+export default isAuthenticated(async (_, args, ctx) => {
   const following = await ctx.db.Following.find({
     userId: ctx.userId,
   })
@@ -11,4 +12,4 @@ export default async (args, ctx) => {
   return paginate(ctx.db.Post, args, {
     where: [{ projectId: ids.length ? In(ids) : null }, { userId: ctx.userId }],
   })
-}
+})

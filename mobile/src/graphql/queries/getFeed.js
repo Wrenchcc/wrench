@@ -6,7 +6,7 @@ import postsInfoFragment from 'graphql/fragments/post/postsInfo'
 
 export const FeedQuery = gql`
   query getFeed($after: String) {
-    posts(type: FEED, after: $after) {
+    feed(after: $after) {
       ...postsInfo
     }
   }
@@ -18,7 +18,7 @@ const getFeedOptions = {
     pollInterval: ms('3m'),
     fetchPolicy: 'cache-and-network',
   }),
-  props: mapListProps('posts'),
+  props: mapListProps('feed'),
 }
 
 export const getFeed = graphql(FeedQuery, getFeedOptions)

@@ -7,8 +7,9 @@ import generalTypes from './types/general'
 // Types
 import Auth from './types/Auth'
 import Comment from './types/Comment'
-import Followers from './types/Followers'
+import Feed from './types/Feed'
 import File from './types/File'
+import Followers from './types/Followers'
 import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
@@ -18,13 +19,14 @@ import Upload from './types/Upload'
 import User from './types/User'
 
 // Queries
-import userQueries from './queries/user'
-import searchQueries from './queries/search'
-import projectQueries from './queries/project'
-import postQueries from './queries/post'
-import followerQueries from './queries/follower'
 import commentQueries from './queries/comment'
+import feedQueries from './queries/feed'
+import followerQueries from './queries/follower'
 import notificationQueries from './queries/notification'
+import postQueries from './queries/post'
+import projectQueries from './queries/project'
+import searchQueries from './queries/search'
+import userQueries from './queries/user'
 
 // Mutations
 import postMutations from './mutations/post'
@@ -60,13 +62,14 @@ const resolvers = merge(
   {},
   // queries
   scalars.resolvers,
+  commentQueries,
+  feedQueries,
+  followerQueries,
+  notificationQueries,
+  postQueries,
   projectQueries,
   searchQueries,
   userQueries,
-  postQueries,
-  followerQueries,
-  commentQueries,
-  notificationQueries,
   // mutations
   postMutations,
   userMutations,
@@ -92,17 +95,18 @@ export default makeExecutableSchema({
   typeDefs: [
     scalars.typeDefs,
     generalTypes,
-    Root,
     Auth,
-    Model,
     Comment,
+    Feed,
+    File,
+    Followers,
+    Model,
     Notification,
     Post,
     Project,
-    Followers,
+    Root,
     Search,
-    User,
-    File,
     Upload,
+    User,
   ],
 })

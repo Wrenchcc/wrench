@@ -32,7 +32,7 @@ const PopularProjectsQuery = gql`
 
 const RecentPostsQuery = gql`
   query getRecentPosts($after: String) {
-    posts(type: RECENT, after: $after) {
+    posts(after: $after) {
       ...postsInfo
     }
   }

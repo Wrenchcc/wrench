@@ -26,11 +26,6 @@ export default gql`
     ): CommentConnection
   }
 
-  enum PostSortType {
-    RECENT
-    FEED
-  }
-
   type PostPermissions {
     isOwner: Boolean
   }
@@ -52,13 +47,7 @@ export default gql`
 
   extend type Query {
     post(id: ID!): Post
-    posts(
-      type: PostSortType!
-      first: Int = 10
-      after: String
-      last: Int = 10
-      before: String
-    ): PostConnection
+    posts(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
   }
 
   input PostInput {
