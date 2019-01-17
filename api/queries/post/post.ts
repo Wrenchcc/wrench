@@ -1,4 +1,4 @@
-// TODO: User dataloader
+// TODO: Use dataloader
 export default async (_, { id }, ctx) => {
   try {
     return ctx.db.Post.findOne(id)

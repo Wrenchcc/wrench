@@ -1,7 +1,7 @@
 import { In } from 'typeorm'
 import paginate from 'api/utils/paginate'
 
-// TODO: User dataloader
+// TODO: Use dataloader
 export default async (_, args, ctx) => {
   try {
     const followers = await ctx.db.Following.find({

@@ -3,7 +3,7 @@ import paginate from 'api/utils/paginate'
 const { APP_CDN_DOMAIN } = process.env
 
 // TODO: Transform uri
-// TODO: User dataloader
+// TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
   try {
     const files = await paginate(ctx.db.File, args, {

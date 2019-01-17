@@ -2,10 +2,12 @@ import { filter } from 'ramda'
 import { DateTime } from 'luxon'
 import { isAuthenticated } from 'api/utils/permissions'
 import { NOTIFICATION_TYPES } from 'shared'
+import convertPageInfo from 'api/utils/paginate/convertPageInfo'
+import findOperators from 'api/utils/paginate/findOperators'
+import { encodeCursor } from 'api/utils/paginate/cursor'
 
-// TODO: User dataloader
-// TODO: Paginate
-export default isAuthenticated(async (_, args, ctx) => {
+// TODO: Use dataloader
+export default isAuthenticated(async (_, { after, before, last = 10, first = 10 }, ctx) => {
   // Set user last seen for isOnline (clients are polling every 1m)
   await ctx.db.User.update(ctx.userId, {
     lastSeen: DateTime.local().toFormat('yyyy-MM-dd HH:mm:ss+00'),
@@ -13,18 +15,25 @@ export default isAuthenticated(async (_, args, ctx) => {
 
   const { unreadCount } = await ctx.db.Notification.unreadCount(ctx.userId)
 
-  const notifications = await ctx.db.Notification.find(
-    {
-      order: {
-        createdAt: 'DESC',
-      },
-      where: { to: ctx.userId },
+  const [notifications, totalCount] = await ctx.db.Notification.findAndCount({
+    order: {
+      createdAt: 'DESC',
     },
-    args
-  )
+    take: first,
+    where: {
+      to: ctx.userId,
+      ...findOperators(
+        { after, before },
+        {
+          column: 'createdAt',
+          sort: 'DESC',
+        }
+      ),
+    },
+  })
 
   const edges = await Promise.all(
-    notifications.map(async ({ typeId, type, userId, ...rest }) => {
+    notifications.map(async ({ typeId, type, userId, id, createdAt, ...rest }) => {
       switch (type) {
         case NOTIFICATION_TYPES.NEW_FOLLOWER:
           const project = await ctx.db.Project.findOne(typeId)
@@ -35,8 +44,11 @@ export default isAuthenticated(async (_, args, ctx) => {
           }
 
           return {
+            cursor: encodeCursor(id, createdAt),
             node: {
               ...rest,
+              createdAt,
+              id,
               project,
               type,
               user: await ctx.db.User.findOne(userId),
@@ -53,9 +65,12 @@ export default isAuthenticated(async (_, args, ctx) => {
           }
 
           return {
+            cursor: encodeCursor(id, createdAt),
             node: {
               ...rest,
+              createdAt,
               comment,
+              id,
               type,
               user: await ctx.db.User.findOne(userId),
             },
@@ -66,12 +81,11 @@ export default isAuthenticated(async (_, args, ctx) => {
     })
   )
 
+  const pageInfo = convertPageInfo(totalCount, first, last)
+
   return {
     edges: filter(n => n !== null, edges),
-    pageInfo: {
-      hasNextPage: false,
-      hasPreviousPage: false,
-    },
+    pageInfo,
     unreadCount,
   }
 })

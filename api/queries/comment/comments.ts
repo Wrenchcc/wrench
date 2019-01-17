@@ -1,7 +1,7 @@
 import { IsNull } from 'typeorm'
 import paginate from 'api/utils/paginate'
 
-// TODO: User dataloader
+// TODO: Use dataloader
 export default async (_, args, ctx) => {
   try {
     return paginate(ctx.db.Comment, args, {

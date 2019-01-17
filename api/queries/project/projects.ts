@@ -3,7 +3,7 @@ import { In } from 'typeorm'
 import { PROJECT_SORT_TYPES } from 'shared'
 import paginate from 'api/utils/paginate'
 
-// TODO: User dataloader
+// TODO: Use dataloader
 export default async (_, args, ctx) => {
   switch (args.type) {
     case PROJECT_SORT_TYPES.POPULAR:
