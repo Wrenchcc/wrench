@@ -1,9 +1,3 @@
-export default ({ userId }, args, ctx) => {
-  try {
-    return {
-      isOwner: userId === ctx.userId,
-    }
-  } catch (err) {
-    console.log(err)
-  }
-}
+export default ({ userId }, args, ctx) => ({
+  isOwner: userId === ctx.userId,
+})

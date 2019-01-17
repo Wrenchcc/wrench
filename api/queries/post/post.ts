@@ -1,8 +1,2 @@
 // TODO: Use dataloader
-export default async (_, { id }, ctx) => {
-  try {
-    return ctx.db.Post.findOne(id)
-  } catch (err) {
-    console.log(err)
-  }
-}
+export default async (_, { id }, ctx) => ctx.db.Post.findOne(id)

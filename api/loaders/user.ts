@@ -12,9 +12,3 @@ export const createUserLoader = () => new DataLoader(async (keys: string[]) => {
 
   return keys.map(k => userMap[k])
 })
-
-export default () => {
-  throw new Error(
-    '⚠️ Do not import loaders directly, get them from the GraphQL context instead! ⚠️'
-  )
-}

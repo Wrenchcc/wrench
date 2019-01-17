@@ -1,11 +1,5 @@
 import paginate from 'api/utils/paginate'
 
-export default async ({ id }, args, ctx) => {
-  try {
-    return paginate(ctx.db.Project, args, {
-      where: { userId: id },
-    })
-  } catch (err) {
-    console.log(err)
-  }
-}
+export default async ({ id }, args, ctx) => paginate(ctx.db.Project, args, {
+  where: { userId: id },
+})

@@ -6,7 +6,6 @@ import convertPageInfo from 'api/utils/paginate/convertPageInfo'
 import findOperators from 'api/utils/paginate/findOperators'
 import { encodeCursor } from 'api/utils/paginate/cursor'
 
-// TODO: Use dataloader
 export default isAuthenticated(async (_, { after, before, last = 10, first = 10 }, ctx) => {
   // Set user last seen for isOnline (clients are polling every 1m)
   await ctx.db.User.update(ctx.userId, {
@@ -34,12 +33,12 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
 
   const edges = await Promise.all(
     notifications.map(async ({ typeId, type, userId, id, createdAt, ...rest }) => {
-      const user = await ctx.loaders.userLoader.load(userId)
+      const user = await ctx.loaders.user.load(userId)
       const cursor = encodeCursor(id, createdAt)
 
       switch (type) {
         case NOTIFICATION_TYPES.NEW_FOLLOWER:
-          const project = await ctx.db.Project.findOne(typeId)
+          const project = await ctx.loaders.project.load(typeId)
 
           if (!project) {
             await ctx.db.Notification.delete({ typeId })
@@ -60,7 +59,7 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
         case NOTIFICATION_TYPES.NEW_MENTION:
         case NOTIFICATION_TYPES.NEW_COMMENT:
         case NOTIFICATION_TYPES.NEW_REPLY:
-          const comment = await ctx.db.Comment.findOne(typeId)
+          const comment = await ctx.loaders.comment.load(typeId)
 
           if (!comment) {
             await ctx.db.Notification.delete({ typeId })
