@@ -36,7 +36,7 @@ class Onboarding extends Component {
   }
 
   get renderHeaderRight() {
-    if (!this.isComplete()) return null
+    if (!this.isComplete) return null
 
     const { isSaving } = this.state
 
@@ -55,6 +55,19 @@ class Onboarding extends Component {
     )
   }
 
+  get progress() {
+    return (Object.keys(this.state.items).length / 3) * 100
+  }
+
+  get isComplete() {
+    if (Object.keys(this.state.items).length >= MIN_ITEMS) {
+      track(events.USER_ONBOARDING_CATEGORIES_SELECTED)
+      return true
+    }
+
+    return false
+  }
+
   toggleSelection = item => {
     if (this.isAdded(item)) {
       this.setState(prevState => ({ items: omit([item.id], prevState.items) }))
@@ -67,16 +80,6 @@ class Onboarding extends Component {
       }))
     }
   }
-
-  isComplete = () => {
-    if (Object.keys(this.state.items).length >= MIN_ITEMS) {
-      track(events.USER_ONBOARDING_CATEGORIES_SELECTED)
-      return true
-    }
-    return false
-  }
-
-  progress = () => (Object.keys(this.state.items).length / 3) * 100
 
   isAdded = item => this.state.items[item.id]
 
@@ -121,7 +124,7 @@ class Onboarding extends Component {
           keyExtractor={item => item.id}
           renderItem={this.renderItem}
         />
-        <Footer progress={this.progress()} />
+        <Footer progress={this.progress} />
       </Base>
     )
   }

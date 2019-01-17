@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ActivityIndicator } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { navigateBack } from 'navigation'
 import { Header, Text, Icon } from 'ui'
@@ -11,6 +12,7 @@ function AddProjectHeader({
   icon = closeDark,
   translationKey = 'next',
   resetState,
+  isSaving = false,
 }) {
   return (
     <Header
@@ -31,10 +33,14 @@ function AddProjectHeader({
         </Text>
       }
       headerRight={
-        actionRight && (
-          <Text color="dark" medium onPress={actionRight}>
-            {t(`AddProjectHeader:${translationKey}`)}
-          </Text>
+        isSaving ? (
+          <ActivityIndicator size="small" color="black" />
+        ) : (
+          actionRight && (
+            <Text color="dark" medium onPress={actionRight}>
+              {t(`AddProjectHeader:${translationKey}`)}
+            </Text>
+          )
         )
       }
     />
@@ -44,6 +50,7 @@ function AddProjectHeader({
 AddProjectHeader.propTypes = {
   actionRight: PropTypes.any,
   icon: PropTypes.number,
+  isSaving: PropTypes.bool,
   resetState: PropTypes.func,
   translationKey: PropTypes.string,
 }
