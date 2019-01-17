@@ -58,6 +58,7 @@ const getProjectOptions = {
         if (!fetchMoreResult.project) {
           return prev
         }
+
         return {
           ...prev,
           project: {
