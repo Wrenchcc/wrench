@@ -34,6 +34,9 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
 
   const edges = await Promise.all(
     notifications.map(async ({ typeId, type, userId, id, createdAt, ...rest }) => {
+      const user = await ctx.loaders.userLoader.load(userId)
+      const cursor = encodeCursor(id, createdAt)
+
       switch (type) {
         case NOTIFICATION_TYPES.NEW_FOLLOWER:
           const project = await ctx.db.Project.findOne(typeId)
@@ -44,14 +47,14 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
           }
 
           return {
-            cursor: encodeCursor(id, createdAt),
+            cursor,
             node: {
               ...rest,
               createdAt,
               id,
               project,
               type,
-              user: await ctx.db.User.findOne(userId),
+              user,
             },
           }
         case NOTIFICATION_TYPES.NEW_MENTION:
@@ -65,14 +68,14 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
           }
 
           return {
-            cursor: encodeCursor(id, createdAt),
+            cursor,
             node: {
               ...rest,
               createdAt,
               comment,
               id,
               type,
-              user: await ctx.db.User.findOne(userId),
+              user,
             },
           }
         default:
