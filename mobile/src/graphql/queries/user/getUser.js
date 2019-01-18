@@ -27,7 +27,7 @@ const LoadMorePosts = gql`
 `
 
 const getUserByUsernameOptions = {
-  options: ({ navigation, after = null }) => ({
+  options: ({ navigation, after }) => ({
     variables: {
       username: getUsername(navigation) || getUsernameFromDeeplink(navigation),
       after,

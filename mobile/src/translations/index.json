@@ -241,6 +241,9 @@
     },
     "WebView": {
       "loading": "Loading..."
+    },
+    "Time": {
+      "now": "now"
     }
   },
   "sv": {
@@ -482,6 +485,9 @@
     },
     "WebView": {
       "loading": "Laddar..."
+    },
+    "Time": {
+      "now": "nyss"
     }
   }
 }

@@ -45,7 +45,7 @@ export const NotificationsQuery = gql`
 `
 
 const getNotificationsOptions = {
-  options: ({ after = null }) => ({
+  options: ({ after }) => ({
     variables: {
       after,
     },

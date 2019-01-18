@@ -40,7 +40,7 @@ const RecentPostsQuery = gql`
 `
 
 const getPopularProjectsOptions = {
-  options: ({ after = null }) => ({
+  options: ({ after }) => ({
     variables: {
       after,
       type: PROJECT_SORT_TYPES.POPULAR,
@@ -51,7 +51,7 @@ const getPopularProjectsOptions = {
 }
 
 const getRecentPostsOptions = {
-  options: ({ after = null }) => ({
+  options: ({ after }) => ({
     variables: {
       after,
     },

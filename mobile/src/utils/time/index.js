@@ -1,3 +1,5 @@
+import i18next from 'i18next'
+
 function timeDifference(current, previous) {
   const milliSecondsPerMinute = 60 * 1000
   const milliSecondsPerHour = milliSecondsPerMinute * 60
@@ -6,6 +8,10 @@ function timeDifference(current, previous) {
   const milliSecondsPerYear = milliSecondsPerDay * 365
 
   const elapsed = current - previous
+
+  if (elapsed < milliSecondsPerMinute / 3) {
+    return i18next.t('Time:now')
+  }
 
   if (elapsed < milliSecondsPerMinute) {
     return `${Math.round(elapsed / 1000)}s`

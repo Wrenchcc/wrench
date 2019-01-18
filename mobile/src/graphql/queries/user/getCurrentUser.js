@@ -38,7 +38,7 @@ const LoadMorePosts = gql`
 `
 
 const getCurrentUserProfileOptions = {
-  options: ({ after = null }) => ({
+  options: ({ after }) => ({
     variables: {
       after,
     },

@@ -26,7 +26,7 @@ export const FollowingProjectsQuery = gql`
 `
 
 const getFollowingProjectsOptions = {
-  options: ({ user, after = null }) => ({
+  options: ({ user, after }) => ({
     variables: {
       username: user.username,
       after,

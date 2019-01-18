@@ -6,7 +6,7 @@ import commentInfoFragment from 'graphql/fragments/comment/commentInfo'
 
 export const CommentsQuery = gql`
   query getComments($postId: ID!, $after: String) {
-    comments(postId: $postId, after: $after) {
+    comments(postId: $postId, after: $after) @connection(key: "comments") {
       ...commentInfo
     }
   }
@@ -14,7 +14,7 @@ export const CommentsQuery = gql`
 `
 
 const getCommentsOptions = {
-  options: ({ navigation, after = null }) => ({
+  options: ({ navigation, after }) => ({
     variables: {
       after,
       postId: getPostId(navigation),
