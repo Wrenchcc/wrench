@@ -32,5 +32,5 @@ export const createToken = data => jwt.sign(data, APP_JWT_SECRET)
 
 export const generateTokens = userId => ({
   accessToken: createToken({ userId, expiresIn: ms('15m') }),
-  refreshToken: createToken({ userId, expiresIn: ms('1d') }),
+  refreshToken: createToken({ userId, expiresIn: ms('1m') }),
 })

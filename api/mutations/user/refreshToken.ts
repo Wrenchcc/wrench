@@ -6,15 +6,10 @@ export default isAuthenticated(async (_, { refreshToken }, ctx) => {
   const id = path(['userId'], verifyRefreshToken(refreshToken))
 
   if (!id) {
-    throw new Error('refresh token was invalid... bad luck')
+    throw new Error('Refresh token is invalid')
   }
 
-  // 1. Check in database if current refreshToken exists
-  // const token = ctx.db.Tokens.findOne({ refreshToken })
-  // RefreshToken.find({ where: { refreshToken } })
-
-  // 2. Check if the user exists (maybe not necessary)
-  const user = ctx.db.User.findOne(id)
+  const refreshToken = await ctx.db.AuthToken.find({ where: { refreshToken } })
 
   return {
     tokens: {

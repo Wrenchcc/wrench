@@ -11,7 +11,7 @@ import User from './User'
 import { PlatformType } from './enums'
 
 @Entity('auth_tokens')
-export default class AuthTokens extends BaseEntity {
+export default class AuthToken extends BaseEntity {
   @ManyToOne(() => User, user => user.authTokens)
   public user: User
 

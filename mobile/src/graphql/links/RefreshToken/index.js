@@ -44,7 +44,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
-      if (err.message === 'token_expired') {
+      if (err.message === 'TOKEN_EXPIRED') {
         return new Observable(fetchNewAccessToken)
       }
     }
