@@ -4,7 +4,6 @@ import { client } from 'graphql/createClient'
 import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getTokens } from 'graphql/utils/auth'
 
-// TODO: Sign out on failure
 export default onError(({ graphQLErrors, operation, forward }) => {
   const { headers } = operation.getContext()
   const fetchNewAccessToken = async observer => {
@@ -19,8 +18,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
         const { accessToken } = data.refreshToken.tokens
 
         if (!accessToken) {
-          // Reset store (logout)
-          // signOut()
+          client.resetStore()
         }
 
         operation.setContext(() => ({
@@ -40,14 +38,13 @@ export default onError(({ graphQLErrors, operation, forward }) => {
         return forward(operation).subscribe(subscriber)
       })
       .catch(() => {
-        // Reset store (logout)
-        // signOut()
+        client.resetStore()
       })
   }
 
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
-      if (err.message === 'tokenExpired') {
+      if (err.message === 'token_expired') {
         return new Observable(fetchNewAccessToken)
       }
     }

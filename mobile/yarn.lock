@@ -5046,17 +5046,17 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.8.0.tgz#e4749b112b99ce04c60f581d24624cd413d2d14a"
-  integrity sha512-fJPSbCZ4ZWI+1kQ2Y41ed0fr3Bnw+qo6eb8uv3HcTkGzBJ1OCzLIcAhpXLhizyiyY9nwSuMy9asQKS3Tun8eXA==
+react-native-camera@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.8.1.tgz#1b62c1cb061b19aaa654f73dc085cb0675aa2250"
+  integrity sha512-rtramvDb1A131u5Z5z1M+84o9/ApFeDttn2dw2uTAZsMg8FpAxM+9ea52jPOQh10b1hO3t0k/lBwC1KNsLIl/g==
   dependencies:
     prop-types "^15.6.2"
 
-react-native-code-push@^5.5.1:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-5.5.1.tgz#3c46eadc568f520c9f2ba0f6bf464855ae47d5a0"
-  integrity sha512-Av5A2ImBPA7YXbkketNHmxVuKOyV+hpBNILGo/MhgT3WC1O1LO1K/brv8PT7OhlhYKwtz6hpryoSl599HOM7GA==
+react-native-code-push@^5.5.2:
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-5.5.2.tgz#b394e8f92f8bc4d184d73ff8d066406def24c1e8"
+  integrity sha512-hBXGhB6DcVqwnN4jWHcCCUBt3GMoC/FZ+ys/mlHMaR9696oKbv5ioW8mAFHMCtPRpdlt2Keo6MoLBMHigTSzug==
   dependencies:
     code-push "2.0.6"
     glob "^5.0.15"
