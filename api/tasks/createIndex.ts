@@ -1,4 +1,4 @@
-import client from 'api/services/elasticsearch/client'
+import * as elasticsearch from 'api/services/elasticsearch'
 
 const debug = require('debug')('task:elasticsearch')
 
@@ -9,54 +9,58 @@ async function createIndex() {
   try {
     debug(`Creating index: ${INDEX_NAME}.`)
 
-    await client.put(INDEX_NAME, {
-      mappings: {
-        vehicle: {
-          properties: {
-            brand: {
-              copy_to: 'suggest',
-              type: 'text',
-            },
-            model: {
-              copy_to: 'suggest',
-              type: 'text',
-            },
-            suggestion: {
-              analyzer: 'autocomplete',
-              search_analyzer: 'autocomplete_search',
-              type: 'text',
-            },
-            year: {
-              // copy_to: 'suggest',
-              type: 'keyword',
+    await elasticsearch.client({
+      path: INDEX_NAME,
+      method: 'PUT',
+      body: {
+        mappings: {
+          vehicle: {
+            properties: {
+              brand: {
+                copy_to: 'suggest',
+                type: 'text',
+              },
+              model: {
+                copy_to: 'suggest',
+                type: 'text',
+              },
+              suggestion: {
+                analyzer: 'autocomplete',
+                search_analyzer: 'autocomplete_search',
+                type: 'text',
+              },
+              year: {
+                // copy_to: 'suggest',
+                type: 'keyword',
+              },
             },
           },
         },
-      },
-      settings: {
-        analysis: {
-          analyzer: {
-            autocomplete: {
-              tokenizer: 'autocomplete',
-              filter: ['lowercase', 'word_delimiter_graph', 'unique'],
+        settings: {
+          analysis: {
+            analyzer: {
+              autocomplete: {
+                tokenizer: 'autocomplete',
+                filter: ['lowercase', 'word_delimiter_graph', 'unique'],
+              },
+              autocomplete_search: {
+                filter: ['lowercase'],
+                tokenizer: 'standard',
+              },
             },
-            autocomplete_search: {
-              filter: ['lowercase'],
-              tokenizer: 'standard',
+            filter: {
+              word_delimiter_graph: {
+                type: 'word_delimiter_graph',
+                preserve_original: true,
+              },
             },
-          },
-          filter: {
-            word_delimiter_graph: {
-              type: 'word_delimiter_graph',
-              preserve_original: true,
-            },
-          },
-          tokenizer: {
-            autocomplete: {
-              type: 'edge_ngram',
-              min_gram: 1,
-              max_gram: 25,
-              token_chars: ['letter', 'digit', 'punctuation', 'symbol', 'whitespace'],
+            tokenizer: {
+              autocomplete: {
+                type: 'edge_ngram',
+                min_gram: 1,
+                max_gram: 25,
+                token_chars: ['letter', 'digit', 'punctuation', 'symbol', 'whitespace'],
+              },
             },
           },
         },

@@ -1,6 +1,5 @@
 import { createConnection, getRepository } from 'typeorm'
-import * as Promise from 'bluebird'
-import client from 'api/services/elasticsearch/client'
+import * as elasticsearch from 'api/services/elasticsearch'
 import Model from 'api/models/Model'
 import { options } from 'api/models'
 
@@ -23,30 +22,23 @@ createConnection(options).then(async connection => {
       return null
     }
 
-    try {
-      await Promise.map(
-        models,
-        async model => {
-          const data = {
-            brand: model.brand.name,
-            brandId: model.brand.id,
-            createdAt: model.createdAt,
-            model: model.name,
-            updatedAt: model.updatedAt,
-            year: model.year,
-          }
+    const documents = models.map(model => ({
+      index: {
+        _type: DOCUMENT_TYPE,
+        _id: model.id,
+        _index: INDEX_NAME,
+      },
+      brand: model.brand.name,
+      brandId: model.brand.id,
+      createdAt: model.createdAt,
+      model: model.name,
+      updatedAt: model.updatedAt,
+      year: model.year,
+    }))
 
-          await client.post(`${INDEX_NAME}/${DOCUMENT_TYPE}/${model.id}`, data, {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
-        },
-        { concurrency: CONCURRENCY }
-      )
-    } catch (err) {
-      console.log(err)
-    }
+    await elasticsearch.bulk({
+      documents,
+    })
 
     batch(skip + BATCH_SIZE)
   }
