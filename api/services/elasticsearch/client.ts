@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const { ELASTICSEARCH_URL } = process.env
+const { ELASTICSEARCH_DOMAIN } = process.env
 
 export default axios.create({
-  baseURL: ELASTICSEARCH_URL,
+  baseURL: ELASTICSEARCH_DOMAIN,
 })

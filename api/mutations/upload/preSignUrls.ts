@@ -6,14 +6,14 @@ import { getContentType, getExtensionType } from 'api/utils/fileExtensions'
 
 const {
   APP_AWS_ACCESS_KEY,
-  APP_AWS_REGION,
+  APP_AWS_S3_REGION,
   APP_AWS_S3_BUCKET,
   APP_AWS_SECRET_ACCESS_KEY,
 } = process.env
 
 const s3 = new S3({
   accessKeyId: APP_AWS_ACCESS_KEY,
-  region: APP_AWS_REGION,
+  region: APP_AWS_S3_REGION,
   secretAccessKey: APP_AWS_SECRET_ACCESS_KEY,
   signatureVersion: 'v4',
   useAccelerateEndpoint: true,
