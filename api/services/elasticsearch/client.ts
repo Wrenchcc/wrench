@@ -10,7 +10,7 @@ const {
 
 export default async ({ body = null, path, method = 'POST' }) => {
   const options = {
-    body,
+    body: JSON.stringify(body),
     data: body,
     headers: {
       'Content-Type': 'application/json',
