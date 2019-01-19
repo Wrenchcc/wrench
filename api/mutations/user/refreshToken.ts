@@ -9,11 +9,11 @@ export default isAuthenticated(async (_, { refreshToken }, ctx) => {
     throw new Error('Refresh token is invalid')
   }
 
-  const refreshToken = await ctx.db.AuthToken.find({ where: { refreshToken } })
+  const token = await ctx.db.AuthToken.find({ where: { refreshToken } })
 
   return {
     tokens: {
-      refreshToken,
+      refreshToken: token,
       token: createToken({ id }),
     },
   }
