@@ -24,7 +24,6 @@ class EditProject extends PureComponent {
     this.state = {
       isSaving: false,
       commentsDisabled: project.commentsDisabled,
-      isPrivate: project.isPrivate,
       title: project.title,
     }
   }
@@ -88,16 +87,16 @@ class EditProject extends PureComponent {
   }
 
   handleEditProject = () => {
-    const { title, isPrivate, commentsDisabled } = this.state
+    const { title, commentsDisabled } = this.state
     this.setState({ isSaving: true })
 
     this.props
-      .editProject({ title, isPrivate, commentsDisabled })
+      .editProject({ title, commentsDisabled })
       .then(setTimeout(() => this.setState({ isSaving: false }, () => navigateBack()), 500))
   }
 
   render() {
-    const { title, isPrivate, commentsDisabled } = this.state
+    const { title, commentsDisabled } = this.state
     const { t } = this.props
 
     return (
@@ -119,12 +118,6 @@ class EditProject extends PureComponent {
           </Inner>
           <Inner>
             <Title>{t('EditProject:projectSettings')}</Title>
-            <SelectionItem
-              type="switch"
-              title={t('EditProject:private')}
-              selected={isPrivate}
-              onPress={value => this.updateField('isPrivate', value)}
-            />
             <SelectionItem
               type="switch"
               title={t('EditProject:disableComments')}

@@ -10,7 +10,6 @@ export default gql`
     dynamicLink: String
     user: User
     projectPermissions: ProjectPermissions
-    isPrivate: Boolean
     commentsDisabled: Boolean
 
     filesConnection(
@@ -93,7 +92,6 @@ export default gql`
 
   input ProjectInput {
     title: String!
-    isPrivate: Boolean
     commentsDisabled: Boolean
     projectTypeId: ID
     modelId: ID

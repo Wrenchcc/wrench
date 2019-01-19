@@ -7,7 +7,6 @@ const EditProjectMutation = gql`
   mutation editProject($id: ID!, $input: ProjectInput!) {
     editProject(id: $id, input: $input) {
       title
-      isPrivate
       commentsDisabled
     }
   }

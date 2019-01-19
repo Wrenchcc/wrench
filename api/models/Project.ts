@@ -98,8 +98,5 @@ export default class Project extends BaseEntity {
   public slug: string
 
   @Column({ default: false })
-  public isPrivate: boolean
-
-  @Column({ default: false })
   public commentsDisabled: boolean
 }

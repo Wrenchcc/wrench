@@ -11,7 +11,6 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
   let data = {
     commentsDisabled: input.commentsDisabled,
     id: project.id,
-    isPrivate: input.isPrivate,
     title: input.title,
     userId: ctx.userId,
   }
