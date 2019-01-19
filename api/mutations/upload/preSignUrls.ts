@@ -4,17 +4,13 @@ import debug from 'debug'
 import { isAuthenticated } from 'api/utils/permissions'
 import { getContentType, getExtensionType } from 'api/utils/fileExtensions'
 
-const {
-  APP_AWS_ACCESS_KEY,
-  APP_AWS_REGION,
-  APP_AWS_S3_BUCKET,
-  APP_AWS_SECRET_ACCESS_KEY,
-} = process.env
+// TODO: Needed?
+const { AWS_ACCESS_KEY, AWS_REGION, AWS_S3_BUCKET, AWS_SECRET_ACCESS_KEY } = process.env
 
 const s3 = new S3({
-  accessKeyId: APP_AWS_ACCESS_KEY,
-  region: APP_AWS_REGION,
-  secretAccessKey: APP_AWS_SECRET_ACCESS_KEY,
+  accessKeyId: AWS_ACCESS_KEY,
+  region: AWS_REGION,
+  secretAccessKey: AWS_SECRET_ACCESS_KEY,
   signatureVersion: 'v4',
   useAccelerateEndpoint: true,
 })
@@ -31,7 +27,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
 
         try {
           const params = {
-            Bucket: APP_AWS_S3_BUCKET,
+            Bucket: AWS_S3_BUCKET,
             ContentType: type,
             Key: filename,
           }
