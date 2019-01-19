@@ -1,6 +1,6 @@
 {
   "profile": "wrench-api",
-  "regions": ["us-east-2"],
+  "regions": ["eu-central-1"],
   "name": "api",
   "lambda": {
     "memory": 1536,
