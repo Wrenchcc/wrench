@@ -4,8 +4,12 @@ import debug from 'debug'
 import { isAuthenticated } from 'api/utils/permissions'
 import { getContentType, getExtensionType } from 'api/utils/fileExtensions'
 
-// TODO: Needed?
-const { APP_AWS_ACCESS_KEY, APP_AWS_REGION, APP_AWS_S3_BUCKET, APP_AWS_SECRET_ACCESS_KEY } = process.env
+const {
+  APP_AWS_ACCESS_KEY,
+  APP_AWS_REGION,
+  APP_AWS_S3_BUCKET,
+  APP_AWS_SECRET_ACCESS_KEY,
+} = process.env
 
 const s3 = new S3({
   accessKeyId: APP_AWS_ACCESS_KEY,
