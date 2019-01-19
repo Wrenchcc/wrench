@@ -1,7 +1,7 @@
 import * as aws4 from 'aws4'
 import axios from 'axios'
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const { ELASTICSEARCH_URL } = process.env
 

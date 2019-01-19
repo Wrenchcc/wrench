@@ -19,7 +19,7 @@
   },
   "environment": {
     "AWS_ACCESS_KEY": "AKIAJVH6ND2VCM4LRJPQ",
-    "AWS_REGION": "us-east-2",
+    "AWS_S3_REGION": "us-east-2",
     "AWS_S3_BUCKET": "wrench-files",
     "AWS_SECRET_ACCESS_KEY": "LYYtJymTMmd9/uX2h8s03KRjWZ49k7EIw7/rbKIF",
     "APP_CDN_DOMAIN": "https://edge-files.wrench.cc",

@@ -5,11 +5,11 @@ import { isAuthenticated } from 'api/utils/permissions'
 import { getContentType, getExtensionType } from 'api/utils/fileExtensions'
 
 // TODO: Needed?
-const { AWS_ACCESS_KEY, AWS_REGION, AWS_S3_BUCKET, AWS_SECRET_ACCESS_KEY } = process.env
+const { AWS_ACCESS_KEY, AWS_S3_REGION, AWS_S3_BUCKET, AWS_SECRET_ACCESS_KEY } = process.env
 
 const s3 = new S3({
   accessKeyId: AWS_ACCESS_KEY,
-  region: AWS_REGION,
+  region: AWS_S3_REGION,
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
   signatureVersion: 'v4',
   useAccelerateEndpoint: true,
