@@ -8,6 +8,7 @@ const { ELASTICSEARCH_URL } = process.env
 export default async ({ body, index }) => {
   const signedRequest = aws4.sign({
     host: ELASTICSEARCH_URL,
+    // region: 'ap-southeast-2',
     method: 'POST',
     url: `${ELASTICSEARCH_URL}/${index}/_search`,
     data: body,
