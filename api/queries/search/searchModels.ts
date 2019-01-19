@@ -68,8 +68,8 @@ export default async ({ query, after, before, first = 10, last = 10 }, ctx) => {
   // return {
   //   edges,
   //   pageInfo: {
-  //     hasNextPage: first < totalCount,
-  //     hasPreviousPage: last < totalCount,
+  // hasNextPage: totalCount > first,
+  // hasPreviousPage: totalCount > last,
   //   },
   //   totalCount,
   // }
