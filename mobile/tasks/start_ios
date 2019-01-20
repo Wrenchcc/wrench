@@ -2,8 +2,7 @@
 concurrently \
   --kill-others-on-fail \
   --prefix "{name} >" \
-  --names "start:packager    ,run:ios    ,watch:graphql" \
+  --names "start:packager    ,run:ios" \
   -c "blue.bold,yellow.bold,magenta.bold" \
   "yarn start:packager" \
-  "yarn run:ios" \
-  # "yarn watch:graphql"
+  "yarn run:ios"
