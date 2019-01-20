@@ -4,7 +4,6 @@ const debug = require('debug')('task:elasticsearch')
 
 const INDEX_NAME = 'vehicles'
 
-// https://engineering.skroutz.gr/blog/implementing-a-fuzzy-suggestion-mechanism/
 async function createIndex() {
   try {
     debug(`Creating index: ${INDEX_NAME}.`)

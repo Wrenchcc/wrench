@@ -6,7 +6,6 @@ import { options } from 'api/models'
 const debug = require('debug')('task:elasticsearch')
 
 const BATCH_SIZE = 500
-const CONCURRENCY = 8
 const INDEX_NAME = 'vehicles'
 const DOCUMENT_TYPE = 'vehicle'
 
