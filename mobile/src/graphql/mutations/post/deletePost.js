@@ -10,7 +10,6 @@ const DeletePostMutation = gql`
   }
 `
 
-// TODO: Optimistic update on delete
 const deletePostOptions = {
   props: ({ mutate }) => ({
     deletePost: id => {
@@ -24,13 +23,16 @@ const deletePostOptions = {
           getCurrentUserProfile: deletePostFromCache({ type: 'user', id }),
           getProjectBySlugQuery: deletePostFromCache({ type: 'project', id }),
           getFeed: prev => {
-            const edges = filter(edge => edge.node.id !== id, prev.posts.edges)
+            const edges = filter(edge => edge.node.id !== id, prev.feed.posts.edges)
 
             return {
               ...prev,
-              posts: {
-                ...prev.posts,
-                edges,
+              feed: {
+                ...prev.feed,
+                posts: {
+                  ...prev.feed.posts,
+                  edges,
+                },
               },
             }
           },

@@ -26,9 +26,12 @@ const addPostOptions = {
 
           return {
             ...prev,
-            posts: {
-              ...prev.posts,
-              edges: prepend(edge, prev.posts.edges),
+            feed: {
+              ...prev.feed,
+              posts: {
+                ...prev.feed.posts,
+                edges: prepend(edge, prev.feed.posts.edges),
+              },
             },
           }
         },
