@@ -1,4 +1,5 @@
 import { S3 } from 'aws-sdk'
+import Promise from 'bluebird'
 import { v4 } from 'uuid'
 import debug from 'debug'
 import { isAuthenticated } from 'api/utils/permissions'
@@ -19,11 +20,13 @@ const s3 = new S3({
   useAccelerateEndpoint: true,
 })
 
-// TODO: Promise.map
+const CONCURRENCY = 5
+
 export default isAuthenticated(async (_, { input }, ctx) => {
   try {
-    return Promise.all(
-      input.map(async file => {
+    return Promise.map(
+      input,
+      async file => {
         const ext = getExtensionType(file.filename)
         const type = getContentType(ext)
         const id = v4()
@@ -42,7 +45,8 @@ export default isAuthenticated(async (_, { input }, ctx) => {
         } catch (err) {
           debug('‰O', err)
         }
-      })
+      },
+      { concurrency: CONCURRENCY }
     )
   } catch (err) {
     debug('‰O', err)
