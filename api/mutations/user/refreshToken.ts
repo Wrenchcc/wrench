@@ -1,27 +1,23 @@
 import { UserInputError } from 'apollo-server-express'
-import { isAuthenticated } from 'api/utils/permissions'
 import { path } from 'ramda'
 import { verifyRefreshToken, createAccessToken } from 'api/utils/tokens'
 
-export default isAuthenticated(async (_, { refreshToken }, ctx) => {
-  const id = path(['userId'], verifyRefreshToken(refreshToken))
+export default async (_, { refreshToken }, ctx) => {
+  const userId = path(['userId'], verifyRefreshToken(refreshToken))
 
-  if (!id) {
-    // TODO: REFRESH_TOKEN_INVALID CODE
-    return new UserInputError('Your refresh token is invalid. Try to relogin.')
+  if (!userId) {
+    return new UserInputError('Your refresh token is invalid. Try to login again.')
   }
 
-  const token = await ctx.db.AuthToken.find({ where: { refreshToken } })
+  const token = await ctx.db.AuthToken.findOne({ where: { refreshToken } })
 
-  if (token) {
-    // TODO: REFRESH_TOKEN_INVALID CODE
-    return null
+  if (!token) {
+    return new UserInputError('Your refresh token is invalid. Try to login again.')
   }
 
+  // TODO: Generate new Refresh token and save here?
   return {
-    tokens: {
-      refreshToken: token,
-      accessToken: createAccessToken({ id }),
-    },
+    refreshToken: token.refreshToken,
+    accessToken: createAccessToken({ userId }),
   }
-})
+}

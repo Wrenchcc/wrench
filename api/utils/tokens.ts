@@ -24,7 +24,7 @@ export const verifyRefreshToken = refreshToken => {
   }
 }
 
-export const createAccessToken = data => jwt.sign(data, ACCESS_TOKEN_SECRET, { expiresIn: '1m' })
+export const createAccessToken = data => jwt.sign(data, ACCESS_TOKEN_SECRET, { expiresIn: '10m' })
 export const createRefreshToken = data => jwt.sign(data, REFRESH_TOKEN_SECRET, { expiresIn: '30d' })
 
 export const generateTokens = userId => ({
