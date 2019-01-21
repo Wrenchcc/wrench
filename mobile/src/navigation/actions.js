@@ -1,4 +1,4 @@
-import { NavigationActions } from 'react-navigation'
+import { StackActions, NavigationActions } from 'react-navigation'
 import { trackScreen } from 'utils/analytics'
 
 let navigator
@@ -25,6 +25,10 @@ export const navigateBack = () => {
       key: null,
     })
   )
+}
+
+export const resetNavigation = () => {
+  navigator.dispatch(StackActions.popToTop())
 }
 
 export const navigateToAddMedia = () => navigate('add-media')

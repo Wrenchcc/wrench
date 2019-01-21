@@ -3,50 +3,60 @@ import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
 import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getTokens } from 'graphql/utils/auth'
+import { track, events } from 'utils/analytics'
+import { resetNavigation } from 'navigation/actions'
+
+function foreceSignOut() {
+  client.resetStore()
+  track(events.REFRESH_TOKEN_FAILED)
+  resetNavigation()
+}
 
 export default onError(({ graphQLErrors, operation, forward }) => {
-  const { headers } = operation.getContext()
-  const fetchNewAccessToken = async observer => {
-    const refreshToken = await getTokens('refreshToken')
-
-    return client
-      .mutate({
-        mutation: RefreshTokenMutation,
-        variables: { refreshToken },
-      })
-      .then(({ data }) => {
-        const { accessToken } = data.refreshToken.tokens
-
-        if (!accessToken) {
-          client.resetStore()
-        }
-
-        operation.setContext(() => ({
-          headers: {
-            ...headers,
-            authorization: `Bearer ${accessToken}`,
-          },
-        }))
-      })
-      .then(() => {
-        const subscriber = {
-          next: observer.next.bind(observer),
-          error: observer.error.bind(observer),
-          complete: observer.complete.bind(observer),
-        }
-
-        return forward(operation).subscribe(subscriber)
-      })
-      .catch(() => {
-        client.resetStore()
-      })
-  }
-
   if (graphQLErrors) {
-    for (const err of graphQLErrors) {
-      if (err.message === 'TOKEN_EXPIRED') {
-        return new Observable(fetchNewAccessToken)
-      }
+    const { extensions } = graphQLErrors[0]
+    if (extensions && extensions.code === 'UNAUTHENTICATED') {
+      return new Observable(async observer => {
+        try {
+          const refreshToken = await getTokens('refreshToken')
+          const { headers } = operation.getContext()
+
+          return client
+            .mutate({
+              mutation: RefreshTokenMutation,
+              variables: { refreshToken },
+            })
+            .then(({ data }) => {
+              const { accessToken } = data.refreshToken
+
+              if (!accessToken) {
+                track(events.REFRESH_TOKEN_FAILED)
+                return foreceSignOut()
+              }
+
+              return operation.setContext(() => ({
+                headers: {
+                  ...headers,
+                  authorization: `Bearer ${accessToken}`,
+                },
+              }))
+            })
+            .then(() => {
+              const subscriber = {
+                next: observer.next.bind(observer),
+                error: observer.error.bind(observer),
+                complete: observer.complete.bind(observer),
+              }
+
+              return forward(operation).subscribe(subscriber)
+            })
+            .catch(() => foreceSignOut())
+        } catch (e) {
+          observer.error(e)
+        }
+
+        return null
+      })
     }
   }
 
