@@ -13,7 +13,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 import slugify from 'api/utils/slugify'
-import AuthToken from './AuthToken'
+// import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
 import UserSettings from './UserSettings'
 import Notification from './Notification'
@@ -70,8 +70,8 @@ export default class User extends BaseEntity {
   @OneToMany(() => UserSettings, settings => settings.user)
   public settings: UserSettings[]
 
-  @OneToMany(() => AuthToken, authToken => authToken.user)
-  public authTokens: AuthToken[]
+  // @OneToMany(() => AuthToken, authToken => authToken.user)
+  // public authTokens: AuthToken[]
 
   @OneToMany(() => AuthProvider, authProvider => authProvider.user)
   public authProviders: AuthProvider[]
