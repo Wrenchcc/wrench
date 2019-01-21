@@ -1,6 +1,4 @@
-import paginate from 'api/utils/paginate'
-
-// TODO: Loader if slug or id
-export default async (_, args, ctx) => ctx.db.User.findOne({
-  where: { ...args },
-})
+export default async (_, args, ctx) => {
+  if (args.username) return ctx.loaders.userByUsername.load(args.username)
+  if (args.id) return ctx.loaders.user.load(args.id)
+}
