@@ -22,7 +22,6 @@
     "jsonwebtoken": "^8.4.0",
     "lodash.merge": "^4.6.1",
     "luxon": "^1.10.0",
-    "ms": "^2.1.1",
     "pg": "^7.8.0",
     "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.13",

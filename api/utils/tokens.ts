@@ -1,7 +1,6 @@
 import * as jwt from 'jsonwebtoken'
-import * as ms from 'ms'
 
-const { APP_JWT_SECRET } = process.env
+const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env
 
 export const getUserId = req => {
   const authorization = req.headers.authorization || ''
@@ -9,28 +8,26 @@ export const getUserId = req => {
   if (authorization) {
     const token = authorization.replace('Bearer ', '')
     try {
-      const { userId } = jwt.verify(token, APP_JWT_SECRET)
+      const { userId } = jwt.verify(token, ACCESS_TOKEN_SECRET)
       return userId
     } catch {
       return null
     }
   }
-
-  // No user authenticated
-  return null
 }
 
 export const verifyRefreshToken = refreshToken => {
   try {
-    return jwt.verify(refreshToken, APP_JWT_SECRET)
+    return jwt.verify(refreshToken, REFRESH_TOKEN_SECRET)
   } catch {
     return null
   }
 }
 
-export const createToken = data => jwt.sign(data, APP_JWT_SECRET)
+export const createAccessToken = data => jwt.sign(data, ACCESS_TOKEN_SECRET, { expiresIn: '1m' })
+export const createRefreshToken = data => jwt.sign(data, REFRESH_TOKEN_SECRET, { expiresIn: '30d' })
 
 export const generateTokens = userId => ({
-  accessToken: createToken({ userId, expiresIn: ms('15m') }),
-  refreshToken: createToken({ userId, expiresIn: ms('1m') }),
+  accessToken: createAccessToken({ userId }),
+  refreshToken: createRefreshToken({ userId }),
 })
