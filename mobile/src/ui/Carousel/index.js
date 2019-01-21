@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
-import { Touchable } from 'ui'
+import Touchable from 'ui/Touchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { width, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
 

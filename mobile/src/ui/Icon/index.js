@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Image } from 'react-native'
-import { Touchable } from 'ui'
+import Touchable from 'ui/Touchable'
 
 function Icon({ onPress = () => {}, source, opacity = 1, ...rest }) {
   return (

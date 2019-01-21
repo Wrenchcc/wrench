@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
-import { navigateToEditProject } from 'navigation'
-import { Text } from 'ui'
+import { navigateToEditProject } from 'navigation/actions'
+import Text from 'ui/Text'
 
 function Edit({ t, project }) {
   return (

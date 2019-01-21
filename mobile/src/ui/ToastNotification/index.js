@@ -3,7 +3,7 @@ import { Spring } from 'react-spring'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { ToastNotificationContainer } from 'store'
-import { Text } from 'ui'
+import Text from 'ui/Text'
 import { Base } from './styles'
 
 const FROM_HEIGHT = 0

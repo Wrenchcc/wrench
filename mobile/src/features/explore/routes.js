@@ -1,4 +1,4 @@
-import { TAB } from 'navigation'
+import { TAB } from 'navigation/constants'
 import { explore } from 'images'
 import { ROUTE_NAMES } from './constants'
 import Explore from './containers/Explore'

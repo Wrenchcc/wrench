@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
-import { Text } from 'ui'
+import Text from 'ui/Text'
 
 function Followers({ t, followers, onPress = null, color = 'dark', opacity = 1 }) {
   return (

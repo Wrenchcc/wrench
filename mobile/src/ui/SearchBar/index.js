@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { withNamespaces } from 'react-i18next'
-import { navigateToSearch, navigateBack } from 'navigation'
-import { Search, Text } from 'ui'
+import { navigateToSearch, navigateBack } from 'navigation/actions'
+import Search from 'ui/Search'
+import Text from 'ui/Text'
 import Add from 'features/project/components/Add'
 
 function SearchBar({ placeholder, cancelButton, t, ...props }) {

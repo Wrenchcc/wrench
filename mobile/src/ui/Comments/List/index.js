@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { slice } from 'ramda'
-import { navigateToUser, navigateToComments } from 'navigation'
+import { navigateToUser, navigateToComments } from 'navigation/actions'
 import Text from 'ui/Text'
 import { Row, Comment, LoadMore } from './styles'
 

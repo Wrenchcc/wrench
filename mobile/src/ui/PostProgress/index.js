@@ -5,7 +5,8 @@ import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { onUploadProgress } from 'utils/storage/s3/uploadProgress'
 import { AddContainer } from 'store'
-import { Text, ProgressBar } from 'ui'
+import Text from 'ui/Text'
+import ProgressBar from 'ui/ProgressBar'
 import { Base, Inner, Cover, Content } from './styles'
 
 const FROM_HEIGHT = 0

@@ -1,4 +1,4 @@
-import { MODAL } from 'navigation'
+import { MODAL } from 'navigation/constants'
 import WebView from './containers/WebView'
 import { ROUTE_NAMES } from './constants'
 

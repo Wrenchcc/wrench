@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import { withNamespaces } from 'react-i18next'
-import { Text } from 'ui'
+import Text from 'ui/Text'
 
 function NoResults({ t }) {
   return (

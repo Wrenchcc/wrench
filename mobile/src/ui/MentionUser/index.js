@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Avatar, Text } from 'ui'
+import Text from 'ui/Text'
+import Avatar from 'ui/Avatar'
 import { Base, Content } from './styles'
 
 function MentionUser({ user, onPress }) {

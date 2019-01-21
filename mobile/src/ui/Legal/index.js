@@ -1,6 +1,6 @@
 import React from 'react'
 import { withNamespaces } from 'react-i18next'
-import { navigateToWebView } from 'navigation'
+import { navigateToWebView } from 'navigation/actions'
 import { Base, Text, Link } from './styles'
 
 const LEGAL_URL = 'https://wrench.cc/legal'

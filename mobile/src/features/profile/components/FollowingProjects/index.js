@@ -4,7 +4,7 @@ import { withNamespaces } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { InfiniteList } from 'ui'
 import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
-import { navigateToProject } from 'navigation'
+import { navigateToProject } from 'navigation/actions'
 import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)

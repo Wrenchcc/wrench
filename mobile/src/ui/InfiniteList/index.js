@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, FlatList } from 'react-native'
-import { pathOr, equals } from 'ramda'
-import { Border, Loader, LoadNewer } from 'ui'
+// import { pathOr, equals } from 'ramda'
+import Border from 'ui/Border'
+import Loader from 'ui/Loader'
+import LoadNewer from 'ui/LoadNewer'
 import withKeyboardHandler from 'ui/helpers/withKeyboardHandler'
 import withNavigationAwareScrollable from 'ui/helpers/withNavigationAwareScrollable'
 

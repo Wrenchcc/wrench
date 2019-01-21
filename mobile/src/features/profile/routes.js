@@ -1,4 +1,4 @@
-import { TAB } from 'navigation'
+import { TAB } from 'navigation/constants'
 import { profile } from 'images'
 import User from './containers/User'
 import Me from './containers/Me'

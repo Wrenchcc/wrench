@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
-import { navigateToAddProject, navigateToAddMedia } from 'navigation'
-import { Text } from 'ui'
+import { navigateToAddProject, navigateToAddMedia } from 'navigation/actions'
+import Text from 'ui/Text'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
 

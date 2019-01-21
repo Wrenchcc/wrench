@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { navigateToProject } from 'navigation'
-import { InfiniteList } from 'ui'
+import { navigateToProject } from 'navigation/actions'
+import InfiniteList from 'ui/InfiniteList'
 import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)

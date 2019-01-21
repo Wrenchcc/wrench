@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Touchable } from 'ui'
+import Touchable from 'ui/Touchable'
 import { Picture, ProjectName } from './styles'
 
 function Card({ image, title, onPress, style = {} }) {

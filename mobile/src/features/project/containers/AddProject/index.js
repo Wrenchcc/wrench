@@ -3,7 +3,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
-import { navigateToAddProjectType } from 'navigation'
+import { navigateToAddProjectType } from 'navigation/actions'
 import { Title, Input } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 

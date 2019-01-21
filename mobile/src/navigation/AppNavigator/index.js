@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Linking } from 'react-native'
 import { links } from 'react-native-firebase'
-import { setNavigationRef } from 'navigation'
+import { setNavigationRef } from 'navigation/actions'
 import { withNamespaces } from 'react-i18next'
 import { Gateway, ToastNotification } from 'ui'
 import { extractDeepLinkFromDynamicLink } from 'utils/dynamicLinks'

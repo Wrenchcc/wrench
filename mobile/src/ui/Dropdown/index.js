@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text } from 'ui'
+import Text from 'ui/Text'
 import { arrowDown, arrowUpGrey, arrowDownGrey } from 'images'
 import { Base, Icon } from './styles'
 

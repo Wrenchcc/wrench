@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { withNamespaces } from 'react-i18next'
-import { Text } from 'ui'
+import Text from 'ui/Text'
 import { Button, HEIGHT, TOP } from './styles'
 
 const DURATION = 650

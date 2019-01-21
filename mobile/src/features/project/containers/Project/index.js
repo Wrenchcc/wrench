@@ -5,7 +5,7 @@ import { pathOr, equals } from 'ramda'
 import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
-import { navigateToUser } from 'navigation'
+import { navigateToUser } from 'navigation/actions'
 import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 

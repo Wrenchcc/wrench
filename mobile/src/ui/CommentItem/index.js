@@ -1,8 +1,10 @@
 import React from 'react'
 import { Animated } from 'react-native'
 import { withNamespaces } from 'react-i18next'
-import { navigateToUser } from 'navigation'
-import { Avatar, Text, TimeAgo } from 'ui'
+import { navigateToUser } from 'navigation/actions'
+import Avatar from 'ui/Avatar'
+import Text from 'ui/Text'
+import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
 

@@ -2,7 +2,9 @@ import React from 'react'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { Touchable, Image, IsOnline } from 'ui'
+import Touchable from 'ui/Touchable'
+import Image from 'ui/Image'
+import IsOnline from 'ui/IsOnline'
 
 const Avatar = ({
   uri,
