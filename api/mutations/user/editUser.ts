@@ -4,7 +4,6 @@ import { isAuthenticated } from 'api/utils/permissions'
 import { LOCALE_COLUMN, TIMEZONE_COLUMN } from 'api/models/UserSettings'
 import { SUPPORTED_LOCALES } from 'shared/locale'
 
-// TODO: Use dataloader
 export default isAuthenticated(async (_, args, ctx) => {
   if (args.input.interestedIn) {
     const interestedIn = args.input.interestedIn.map(({ id }) => ({
@@ -65,5 +64,5 @@ export default isAuthenticated(async (_, args, ctx) => {
     }
   }
 
-  return ctx.db.User.findOne(ctx.userId)
+  return ctx.loaders.user.load(ctx.userId)
 })

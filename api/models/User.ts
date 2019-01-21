@@ -12,7 +12,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import generateSlug from 'api/utils/generateSlug'
+import slugify from 'api/utils/slugify'
 import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
 import UserSettings from './UserSettings'
@@ -23,7 +23,6 @@ import Post from './Post'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
 
-// TODO: Check latest created User with username
 @Entity('users')
 export default class User extends BaseEntity {
   public static async createUser(data) {
@@ -37,8 +36,8 @@ export default class User extends BaseEntity {
         user = await User.save({
           ...data,
           username: times
-            ? generateSlug(`${firstName}.${lastName}-${times}`)
-            : generateSlug(`${firstName}.${lastName}`),
+            ? slugify(`${firstName}.${lastName}-${times}`)
+            : slugify(`${firstName}.${lastName}`),
         })
         break
       } catch (err) {

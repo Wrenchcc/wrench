@@ -9,7 +9,7 @@ import {
   OneToMany,
   getRepository,
 } from 'typeorm'
-import generateSlug from 'api/utils/generateSlug'
+import slugify from 'api/utils/slugify'
 import User from './User'
 import Post from './Post'
 import ProjectType from './ProjectType'
@@ -17,7 +17,6 @@ import Model from './Model'
 import File from './File'
 import Following from './Following'
 
-// TODO: Check latest created Project with slug
 @Entity('projects')
 export default class Project extends BaseEntity {
   public static async createProject(data) {
@@ -28,7 +27,7 @@ export default class Project extends BaseEntity {
       try {
         project = await Project.save({
           ...data,
-          slug: times ? generateSlug(`${data.title}-${times}`) : generateSlug(data.title),
+          slug: times ? slugify(`${data.title}-${times}`) : slugify(data.title),
         })
         break
       } catch (err) {
