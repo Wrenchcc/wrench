@@ -8,30 +8,24 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this project.')
   }
 
-  let data = {
+  const data = {
+    ...project,
     commentsDisabled: input.commentsDisabled,
-    id: project.id,
     title: input.title,
     userId: ctx.userId,
   }
 
   if (input.modelId) {
     const model = await ctx.db.Model.findOne(input.modelId)
-
-    data = {
-      ...project,
-      model,
-    }
+    data.model = model
   }
 
   if (input.projectTypeId) {
     const projectType = await ctx.db.ProjectType.findOne(input.projectTypeId)
-
-    data = {
-      ...project,
-      projectType,
-    }
+    data.projectType = projectType
   }
 
-  return ctx.db.Project.save(data)
+  await ctx.db.Project.save(data)
+
+  return data
 })

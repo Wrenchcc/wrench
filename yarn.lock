@@ -114,10 +114,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
   integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
 
-"@zeit/ncc@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.11.0.tgz#17807a4e486e4e7a232add1edfeb8b861dc08cad"
-  integrity sha512-J6wlJ9PlBqH3+Em+tnQSt/YXmKDQUJykRc2M5LxuJiDyUHAdVLvVjNrRTpRLn7JEDfgMYECPMGZS195N32Pn9Q==
+"@zeit/ncc@0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.9.0.tgz#895c1c2efcd3b400d002afd5f57cd3ced9f92cb3"
+  integrity sha512-+dPp3ro8zy5lk12gQIRUwaQ2aFothladE1Ur/ppVJCRq7BjUYy4+zrqtQGZHlnb1M2VXBxVmHvDXBO9HJgeQow==
 
 abbrev@1:
   version "1.1.1"
