@@ -5019,10 +5019,10 @@ react-dom@^16.7.0:
     prop-types "^15.6.2"
     scheduler "^0.12.0"
 
-react-i18next@^9.0.6:
-  version "9.0.6"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-9.0.6.tgz#2d0f4c422b05133ab3977abfb79192703a4436c3"
-  integrity sha512-HuWWyxola1E9iHngsbuu24jBm9L6qFmRO4bQmeLb5X85KVCRChSfB0LZA5AlUH17IXrbrY18X2Uxx6Z2XYcSVQ==
+react-i18next@^9.0.7:
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-9.0.7.tgz#437ea02e5771c992502be1c7b1101d16048e3177"
+  integrity sha512-+MaYI/MrjHPgcyKapuCflWurLB1GeOkzoU9qU1OAz9Lt3xxZo7q7IULhQQjH433kabikUu1qbiKx2n5MaCCH/A==
   dependencies:
     "@babel/runtime" "^7.3.1"
     hoist-non-react-statics "3.2.1"
@@ -5043,10 +5043,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.9.0.tgz#3c33d0a5f4172785f3515b387937f07e2138072f"
-  integrity sha512-stvA9rWmN95DRr7a+eNr7LQlQLxP2Z7AJEoR8ctjcYx1EUMoL7qPFdz2JKmqZ/DEsW3ZKOC+ZCx68tscj9gDbQ==
+react-native-camera@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.9.1.tgz#278b0eda81b90a6f93b63d9a8de058a07021725b"
+  integrity sha512-U6CCeQN9fkVhePVGUpFgex70Q8ci1KbXRN3i7I8SZQEn2+auiOGU11Unw+UkicHghmL9f+VYH5TpHK0SdNj0Mw==
   dependencies:
     prop-types "^15.6.2"
 
