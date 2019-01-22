@@ -1,24 +1,28 @@
-import { UserInputError } from 'apollo-server-express'
+import { ApolloError } from 'apollo-server-express'
 import { path } from 'ramda'
 import { verifyRefreshToken, createAccessToken, createRefreshToken } from 'api/utils/tokens'
+import { REFRESH_TOKEN_CODES } from 'shared/utils/enums'
 
 export default async (_, { refreshToken }, ctx) => {
-  console.log(ctx.userAgent)
-
   const userId = path(['userId'], verifyRefreshToken(refreshToken))
 
   if (!userId) {
-    return new UserInputError('Your refresh token is invalid. Try to login again.')
+    return new ApolloError('Refresh Token invalid.', REFRESH_TOKEN_CODES.INVALID)
   }
 
   const user = await ctx.db.User.findOne({ where: { id: userId } })
 
   if (!user) {
-    return new UserInputError('Your refresh token is invalid. Try to login again.')
+    return new ApolloError('Refresh Token invalid.', REFRESH_TOKEN_CODES.INVALID)
+  }
+
+  const token = await ctx.db.AuthToken.findOne({ where: { refreshToken } })
+
+  if (!token) {
+    return new ApolloError('Refresh Token has been revoked.', REFRESH_TOKEN_CODES.REVOKED)
   }
 
   return {
-    refreshToken,
-    accessToken: createAccessToken({ userId }),
+    access_token: createAccessToken({ userId }),
   }
 }

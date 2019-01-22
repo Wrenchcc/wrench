@@ -3,11 +3,7 @@ import { generateTokens } from 'api/utils/tokens'
 import { dynamicLink } from 'api/services/firebase'
 import { PLATFORM_TYPES, DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from 'shared/utils/enums'
 
-const userAgent = 'iPhone x'
-
 export default async (_, { facebookToken, platform }, ctx) => {
-  console.log(ctx.userAgent)
-
   const fbUser = await ctx.services.facebook.getAccountData(facebookToken)
 
   // Find user from facebook id
@@ -24,14 +20,12 @@ export default async (_, { facebookToken, platform }, ctx) => {
     // Delete all previous tokens and save new
     await Promise.all([
       ctx.db.AuthToken.delete({
-        userAgent,
-        // platform,
+        platform,
         userId: authProvider.userId,
       }),
       ctx.db.AuthToken.save({
-        userAgent,
-        // platform,
-        refreshToken: tokens.refreshToken,
+        platform,
+        refreshToken: tokens.refresh_token,
         userId: authProvider.userId,
       }),
     ])
@@ -68,9 +62,8 @@ export default async (_, { facebookToken, platform }, ctx) => {
 
   // Save new refreshToken
   await ctx.db.AuthToken.save({
-    userAgent,
-    // platform,
-    refreshToken: newTokens.refreshToken,
+    platform,
+    refreshToken: newTokens.refresh_token,
     userId: createdUser.id,
   })
 

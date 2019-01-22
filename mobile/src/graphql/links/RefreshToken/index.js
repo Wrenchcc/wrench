@@ -18,7 +18,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     if (extensions && extensions.code === 'UNAUTHENTICATED') {
       return new Observable(async observer => {
         try {
-          const refreshToken = await getTokens('refreshToken')
+          const refreshToken = await getTokens('refresh_token')
           const { headers } = operation.getContext()
 
           return client
@@ -27,7 +27,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
               variables: { refreshToken },
             })
             .then(({ data }) => {
-              const { accessToken } = data.refreshToken
+              const accessToken = data.token.access_token
 
               if (!accessToken) {
                 track(events.REFRESH_TOKEN_FAILED)

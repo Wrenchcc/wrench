@@ -8,7 +8,7 @@ import {
   ManyToOne,
 } from 'typeorm'
 import User from './User'
-import { PlatformType } from './enums'
+import { PlatformTypes } from './enums'
 
 @Entity('auth_tokens')
 export default class AuthToken extends BaseEntity {
@@ -27,11 +27,8 @@ export default class AuthToken extends BaseEntity {
   @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
-  // @Column('enum', { enum: PlatformType })
-  // public platform: PlatformType
-
-  @Column()
-  public userAgent: string
+  @Column('enum', { enum: PlatformTypes })
+  public platform: PlatformTypes
 
   @Column()
   public userId: string

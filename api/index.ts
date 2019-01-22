@@ -7,7 +7,6 @@ import { getUserId } from 'api/utils/tokens'
 import formatError from 'api/utils/formatError'
 import debugOptions from 'api/utils/debugOptions'
 import { types } from 'pg'
-import * as useragent from 'express-useragent'
 import schema from './schema'
 import { options, db } from './models'
 import createLoaders from './loaders'
@@ -41,7 +40,6 @@ createConnection(options)
 
     const app = express()
 
-    app.use(useragent.express())
     server.applyMiddleware({ app })
 
     app.listen({ port: PORT }, () => {

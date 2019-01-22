@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 import { pathOr } from 'ramda'
 import User from './User'
-import { PlatformType } from './enums'
+import { PlatformTypes } from './enums'
 
 @Entity('device_tokens')
 export default class DeviceToken extends BaseEntity {
@@ -32,8 +32,8 @@ export default class DeviceToken extends BaseEntity {
   @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
-  @Column('enum', { enum: PlatformType })
-  public platform: PlatformType
+  @Column('enum', { enum: PlatformTypes })
+  public platform: PlatformTypes
 }
 
 export async function getDeviceToken(userId) {

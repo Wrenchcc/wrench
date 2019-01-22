@@ -1,9 +1,9 @@
-export enum PlatformType {
+export enum PlatformTypes {
   MOBILE = 'MOBILE',
   WEB = 'WEB',
 }
 
-export enum FileType {
+export enum FileTypes {
   IMAGE = 'IMAGE',
   VIDEO = 'VIDEO',
 }
