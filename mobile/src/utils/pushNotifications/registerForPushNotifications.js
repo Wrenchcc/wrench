@@ -1,18 +1,6 @@
 import { messaging } from 'react-native-firebase'
-import { client } from 'graphql/createClient'
-import { RegisterDeviceToken } from 'graphql/mutations/user/registerDeviceToken'
+import { savePushNotificationToken } from 'graphql/mutations/user/registerDeviceToken'
 import { track, events } from 'utils/analytics'
-import { PLATFORM_TYPES } from 'utils/enums'
-
-async function savePushNotificationToken(token) {
-  return client.mutate({
-    mutation: RegisterDeviceToken,
-    variables: {
-      token,
-      platform: PLATFORM_TYPES.MOBILE,
-    },
-  })
-}
 
 export default async function requestNotificationToken() {
   if (__DEV__) return
