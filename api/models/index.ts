@@ -1,7 +1,7 @@
 import { ConnectionOptions, getRepository } from 'typeorm'
 
 import AuthProvider from './AuthProvider'
-// import AuthToken from './AuthToken'
+import AuthToken from './AuthToken'
 import Brand from './Brand'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
@@ -31,7 +31,7 @@ export const options: ConnectionOptions = {
   database: DB_DATABASE,
   entities: [
     AuthProvider,
-    // AuthToken,
+    AuthToken,
     Brand,
     Comment,
     DeviceToken,
@@ -58,7 +58,7 @@ export const options: ConnectionOptions = {
 
 export const db = {
   AuthProvider,
-  // AuthToken,
+  AuthToken,
   Brand,
   Comment,
   DeviceToken,

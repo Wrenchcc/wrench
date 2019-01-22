@@ -10,7 +10,7 @@ import {
 import User from './User'
 import Post from './Post'
 import Project from './Project'
-import { FileType } from './enums'
+import { FileTypes } from './enums'
 
 @Entity('files')
 export default class File extends BaseEntity {
@@ -35,8 +35,8 @@ export default class File extends BaseEntity {
   @Column({ unique: true })
   public filename: string
 
-  @Column('enum', { enum: FileType })
-  public type: FileType
+  @Column('enum', { enum: FileTypes })
+  public type: FileTypes
 
   @Column({ nullable: true })
   public postId: string

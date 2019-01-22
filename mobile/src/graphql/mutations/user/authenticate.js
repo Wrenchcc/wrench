@@ -7,8 +7,8 @@ import { PLATFORM_TYPES } from 'utils/enums'
 export const AuthenticateMutation = gql`
   mutation authenticate($facebookToken: String!, $platform: PlatformType!) {
     authenticate(facebookToken: $facebookToken, platform: $platform) {
-      accessToken
-      refreshToken
+      access_token
+      refresh_token
     }
   }
 `

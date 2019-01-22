@@ -17,18 +17,18 @@ export default async (_, { facebookToken, platform }, ctx) => {
   if (authProvider) {
     const tokens = generateTokens(authProvider.userId)
 
-    // Delete all previous tokens
-    // await Promise.all([
-    //   ctx.db.AuthToken.delete({
-    //     platform,
-    //     userId: authProvider.userId,
-    //   }),
-    //   ctx.db.AuthToken.save({
-    //     platform,
-    //     refreshToken: tokens.refreshToken,
-    //     userId: authProvider.userId,
-    //   }),
-    // ])
+    // Delete all previous tokens and save new
+    await Promise.all([
+      ctx.db.AuthToken.delete({
+        platform,
+        userId: authProvider.userId,
+      }),
+      ctx.db.AuthToken.save({
+        platform,
+        refreshToken: tokens.refresh_token,
+        userId: authProvider.userId,
+      }),
+    ])
 
     return tokens
   }
@@ -61,11 +61,11 @@ export default async (_, { facebookToken, platform }, ctx) => {
   const newTokens = generateTokens(createdUser.id)
 
   // Save new refreshToken
-  // await ctx.db.AuthToken.save({
-  //   platform,
-  //   refreshToken: newTokens.refreshToken,
-  //   userId: createdUser.id,
-  // })
+  await ctx.db.AuthToken.save({
+    platform,
+    refreshToken: newTokens.refresh_token,
+    userId: createdUser.id,
+  })
 
   return newTokens
 }
