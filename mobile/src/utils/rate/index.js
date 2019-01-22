@@ -2,7 +2,7 @@ import Rate, { AndroidMarket } from 'react-native-rate'
 import { track, events } from 'utils/analytics'
 
 // TODO: Add correct info
-const APPLE_APP_ID = ''
+const APPLE_APP_ID = '1450213123'
 const GOOGLE_PACKAGE_NAME = ''
 
 export const askForRating = ({
