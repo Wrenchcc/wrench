@@ -3,6 +3,8 @@ import { path } from 'ramda'
 import { verifyRefreshToken, createAccessToken, createRefreshToken } from 'api/utils/tokens'
 
 export default async (_, { refreshToken }, ctx) => {
+  console.log(ctx.userAgent)
+
   const userId = path(['userId'], verifyRefreshToken(refreshToken))
 
   if (!userId) {

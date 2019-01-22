@@ -6,6 +6,8 @@ import { PLATFORM_TYPES, DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from 'shared/
 const userAgent = 'iPhone x'
 
 export default async (_, { facebookToken, platform }, ctx) => {
+  console.log(ctx.userAgent)
+
   const fbUser = await ctx.services.facebook.getAccountData(facebookToken)
 
   // Find user from facebook id
