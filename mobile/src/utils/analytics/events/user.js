@@ -11,3 +11,5 @@ export const USER_ONBOARDING_CATEGORIES_DONE = 'user_onboarding_categories_done'
 export const USER_CHANGED_LOCALE = 'user_changed_locale'
 
 export const REFRESH_TOKEN_FAILED = 'refresh_token_failed'
+
+export const USER_REJECTED_PUSH_NOTIFICATIONS = 'user_rejected_push_notifications'

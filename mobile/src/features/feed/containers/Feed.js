@@ -18,9 +18,13 @@ class Feed extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
   }
 
-  componentWillMount() {
+  componentDidMount() {
     registerForPushNotifications()
     registerUserLocale()
+  }
+
+  componentWillUnmount() {
+    this.onTokenRefreshListener()
   }
 
   renderItem = ({ item }) => <Post post={item.node} />
