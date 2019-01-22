@@ -15,14 +15,8 @@ export default async (_, { refreshToken }, ctx) => {
     return new UserInputError('Your refresh token is invalid. Try to login again.')
   }
 
-  // const token = await ctx.db.AuthToken.findOne({ where: { refreshToken } })
-  //
-  // if (!token) {
-  //   return new UserInputError('Your refresh token is invalid. Try to login again.')
-  // }
-
   return {
-    refreshToken: createRefreshToken({ userId }),
+    refreshToken,
     accessToken: createAccessToken({ userId }),
   }
 }

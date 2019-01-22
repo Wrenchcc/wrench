@@ -3,6 +3,8 @@ import { generateTokens } from 'api/utils/tokens'
 import { dynamicLink } from 'api/services/firebase'
 import { PLATFORM_TYPES, DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from 'shared/utils/enums'
 
+const userAgent = 'iPhone x'
+
 export default async (_, { facebookToken, platform }, ctx) => {
   const fbUser = await ctx.services.facebook.getAccountData(facebookToken)
 
@@ -17,18 +19,20 @@ export default async (_, { facebookToken, platform }, ctx) => {
   if (authProvider) {
     const tokens = generateTokens(authProvider.userId)
 
-    // Delete all previous tokens
-    // await Promise.all([
-    //   ctx.db.AuthToken.delete({
-    //     platform,
-    //     userId: authProvider.userId,
-    //   }),
-    //   ctx.db.AuthToken.save({
-    //     platform,
-    //     refreshToken: tokens.refreshToken,
-    //     userId: authProvider.userId,
-    //   }),
-    // ])
+    // Delete all previous tokens and save new
+    await Promise.all([
+      ctx.db.AuthToken.delete({
+        userAgent,
+        // platform,
+        userId: authProvider.userId,
+      }),
+      ctx.db.AuthToken.save({
+        userAgent,
+        // platform,
+        refreshToken: tokens.refreshToken,
+        userId: authProvider.userId,
+      }),
+    ])
 
     return tokens
   }
@@ -61,11 +65,12 @@ export default async (_, { facebookToken, platform }, ctx) => {
   const newTokens = generateTokens(createdUser.id)
 
   // Save new refreshToken
-  // await ctx.db.AuthToken.save({
-  //   platform,
-  //   refreshToken: newTokens.refreshToken,
-  //   userId: createdUser.id,
-  // })
+  await ctx.db.AuthToken.save({
+    userAgent,
+    // platform,
+    refreshToken: newTokens.refreshToken,
+    userId: createdUser.id,
+  })
 
   return newTokens
 }
