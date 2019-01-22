@@ -31,7 +31,6 @@ createConnection(options)
         loaders: createLoaders(),
         services,
         userId: getUserId(req),
-        userAgent: req.useragent,
       }),
       formatError,
       schema,
