@@ -1,5 +1,5 @@
 {
-  "profile": "wrench-ci",
+  "profile": "wrench-api",
   "regions": ["us-east-1"],
   "name": "api",
   "lambda": {
@@ -18,10 +18,10 @@
     }
   },
   "environment": {
-    "APP_AWS_ACCESS_KEY": "AKIAIR63GWOC62YHCI6Q",
+    "APP_AWS_ACCESS_KEY": "AKIAJWFWXZ4AKS65CKNA",
     "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
-    "APP_AWS_SECRET_ACCESS_KEY": "LJ+l9EgbOi8Lg8AbJ6Art+HtCoemjzy2JnGuPSTW",
+    "APP_AWS_SECRET_ACCESS_KEY": "x75GcyxiL+OW0S3V+AdYGfPuXsU97pCMvJzffmF8",
     "APP_CDN_DOMAIN": "https://edge-files.wrench.cc",
     "ACCESS_TOKEN_SECRET": "5E7MJk*WUsC8c-arTkAV!KLGa=JexLG6VNF#?bL4",
     "REFRESH_TOKEN_SECRET": "#d9EvHc_k#VU#!5nFR2#9dvMcasK$Zv==da-FZ_u",
