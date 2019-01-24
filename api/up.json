@@ -1,6 +1,6 @@
 {
-  "profile": "wrench-api",
-  "regions": ["us-west-1"],
+  "profile": "wrench-ci",
+  "regions": ["us-east-1"],
   "name": "api",
   "lambda": {
     "memory": 1536,
@@ -19,7 +19,7 @@
   },
   "environment": {
     "APP_AWS_ACCESS_KEY": "AKIAIR63GWOC62YHCI6Q",
-    "APP_AWS_S3_REGION": "us-east-2",
+    "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
     "APP_AWS_SECRET_ACCESS_KEY": "LJ+l9EgbOi8Lg8AbJ6Art+HtCoemjzy2JnGuPSTW",
     "APP_CDN_DOMAIN": "https://edge-files.wrench.cc",
