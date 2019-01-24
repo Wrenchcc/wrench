@@ -69,6 +69,16 @@
 	<string>This allows Wrench to share photos from your library and save photos to your camera roll.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This allows Wrench to share photos from your library and save photos to your camera roll.</string>
+  <key>NSCalendarsUsageDescription</key>
+  <string>$(PRODUCT_NAME) user your calendar.</string>
+  <key>NSBluetoothPeripheralUsageDescription</key>
+  <string>$(PRODUCT_NAME) bluetooth use.</string>
+  <key>NSAppleMusicUsageDescription</key>
+  <string>$(PRODUCT_NAME) sound use.</string>
+  <key>NSMotionUsageDescription</key>
+  <string>$(PRODUCT_NAME) motion use.</string>
+  <key>NSSpeechRecognitionUsageDescription</key>
+  <string>$(PRODUCT_NAME) speech recognition use.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>
