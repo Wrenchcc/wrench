@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* nodemon --exec ts-node src/index.ts"
+    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* nodemon --exec ts-node -r dotenv/config src/index.ts"
   },
   "dependencies": {
     "@wrench/shared": "1.0.0",
