@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm'
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 
 @Entity('project_types')
 export default class ProjectType extends BaseEntity {

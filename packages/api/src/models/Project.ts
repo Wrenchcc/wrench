@@ -9,7 +9,7 @@ import {
   OneToMany,
   getRepository,
 } from 'typeorm'
-import slugify from '../../utils/slugify'
+import slugify from '../utils/slugify'
 import User from './User'
 import Post from './Post'
 import ProjectType from './ProjectType'

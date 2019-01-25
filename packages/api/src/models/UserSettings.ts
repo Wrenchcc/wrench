@@ -9,7 +9,7 @@ import {
   ManyToOne,
 } from 'typeorm'
 import { pathOr } from 'ramda'
-import { DEFAULT_LOCALE } from '@wrench/shared'
+import { DEFAULT_LOCALE } from '@wrench/shared/src'
 import User from './User'
 
 export const NOTIFICATIONS_COLUMN = 'notifications'

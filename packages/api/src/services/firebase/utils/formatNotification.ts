@@ -1,5 +1,5 @@
-import { translate } from 'api/i18n'
-import { NOTIFICATION_TYPES } from '@wrench/shared'
+import { NOTIFICATION_TYPES } from '@wrench/shared/src'
+import { translate } from '../../../i18n'
 
 export default function formatNotification(type, data, user, locale) {
   switch (type) {

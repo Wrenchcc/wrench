@@ -1,7 +1,6 @@
-import { UserInputError, ForbiddenError } from 'apollo-server-express'
-import { mergeRight } from 'ramda'
+import { UserInputError } from 'apollo-server-express'
+import { NOTIFICATIONS_COLUMN } from '../../models/UserSettings'
 import { isAuthenticated } from '../../utils/permissions'
-import { NOTIFICATIONS_COLUMN } from 'api/models/UserSettings'
 import { DEFAULT_NOTIFICATIONS } from '../../utils/defaultNotifications'
 
 export default isAuthenticated(async (_, args, ctx) => {

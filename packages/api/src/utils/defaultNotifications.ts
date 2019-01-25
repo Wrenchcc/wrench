@@ -1,4 +1,4 @@
-import { NOTIFICATION_TYPES } from '@wrench/shared'
+import { NOTIFICATION_TYPES } from '@wrench/shared/src'
 
 export const DEFAULT_NOTIFICATIONS = {
   [NOTIFICATION_TYPES.NEW_ARTICLE]: true,

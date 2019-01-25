@@ -1,7 +1,7 @@
 import { omit } from 'ramda'
+import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from '@wrench/shared/src/utils/enums'
 import { generateTokens } from '../../utils/tokens'
-import { dynamicLink } from 'api/services/firebase'
-import { PLATFORM_TYPES, DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from '@wrench/shared/utils/enums'
+import { dynamicLink } from '../../services/firebase'
 
 export default async (_, { facebookToken, platform }, ctx) => {
   const fbUser = await ctx.services.facebook.getAccountData(facebookToken)

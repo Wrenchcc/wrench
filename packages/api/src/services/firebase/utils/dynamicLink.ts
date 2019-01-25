@@ -5,13 +5,7 @@ const { GOOGLE_FIREBASE_API_KEY } = process.env
 const ENDPOINT = `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${GOOGLE_FIREBASE_API_KEY}`
 const BASE = 'https://wrench.cc'
 
-export default async ({
-  path,
-  title = '',
-  description = '',
-  image = '',
-  forcedRedirectEnabled = false,
-}) => {
+export default async ({ path, title = '', description = '', image = '' }) => {
   const result = await axios.post(ENDPOINT, {
     dynamicLinkInfo: {
       androidInfo: {

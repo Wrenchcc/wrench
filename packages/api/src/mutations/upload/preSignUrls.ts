@@ -20,7 +20,7 @@ const s3 = new S3({
   useAccelerateEndpoint: true,
 })
 
-export default isAuthenticated(async (_, { input }, ctx) => {
+export default isAuthenticated(async (_, { input }) => {
   try {
     return Promise.all(
       input.map(async file => {

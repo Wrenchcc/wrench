@@ -1,6 +1,6 @@
-import { isAuthenticated, canModerateProject } from '../../utils/permissions'
-import { dynamicLink } from 'api/services/firebase'
-import { DYNAMIC_LINK_TYPES } from '@wrench/shared/utils/enums'
+import { DYNAMIC_LINK_TYPES } from '@wrench/shared/src/utils/enums'
+import { dynamicLink } from '../../services/firebase'
+import { isAuthenticated } from '../../utils/permissions'
 
 export default isAuthenticated(async (_, { input }, ctx) => {
   const user = await ctx.db.User.findOne(ctx.userId)

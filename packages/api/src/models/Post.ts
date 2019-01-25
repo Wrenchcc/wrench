@@ -7,7 +7,6 @@ import {
   UpdateDateColumn,
   OneToMany,
   ManyToOne,
-  JoinColumn,
 } from 'typeorm'
 import User from './User'
 import Project from './Project'

@@ -5,14 +5,11 @@ import {
   Entity,
   getRepository,
   Index,
-  JoinTable,
-  Like,
-  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import slugify from '../../utils/slugify'
+import slugify from '../utils/slugify'
 import AuthToken from './AuthToken'
 import AuthProvider from './AuthProvider'
 import UserSettings from './UserSettings'

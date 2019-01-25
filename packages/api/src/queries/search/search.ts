@@ -1,5 +1,5 @@
 import { ApolloError } from 'apollo-server-express'
-// import { SEARCH_TYPES } from '@wrench/shared'
+// import { SEARCH_TYPES } from '@wrench/shared/src'
 import searchUsers from './searchUsers'
 import searchProject from './searchProjects'
 import searchModels from './searchModels'

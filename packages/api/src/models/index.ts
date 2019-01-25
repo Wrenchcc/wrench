@@ -1,5 +1,4 @@
-import { ConnectionOptions, getRepository } from 'typeorm'
-
+import { ConnectionOptions } from 'typeorm'
 import AuthProvider from './AuthProvider'
 import AuthToken from './AuthToken'
 import Brand from './Brand'

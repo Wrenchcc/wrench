@@ -1,5 +1,5 @@
 import { isAuthenticated, canModeratePost, canModerateComment } from '../../utils/permissions'
-import { extractMentionedUsers, NOTIFICATION_TYPES } from '@wrench/shared'
+import { extractMentionedUsers, NOTIFICATION_TYPES } from '@wrench/shared/src'
 
 export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT

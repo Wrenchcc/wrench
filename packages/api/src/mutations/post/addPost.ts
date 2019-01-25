@@ -1,6 +1,6 @@
 import { ForbiddenError } from 'apollo-server-express'
 import { isAuthenticated, canModerateProject } from '../../utils/permissions'
-import { FILE_TYPES } from '@wrench/shared/utils/enums'
+import { FILE_TYPES } from '@wrench/shared/src/utils/enums'
 
 export default isAuthenticated(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)

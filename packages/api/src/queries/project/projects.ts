@@ -1,5 +1,5 @@
 import { ApolloError } from 'apollo-server-express'
-// import { PROJECT_SORT_TYPES } from '@wrench/shared'
+// import { PROJECT_SORT_TYPES } from '@wrench/shared/src'
 import popularProjects from './popularProjects'
 
 export default async (_, args, ctx) => {

@@ -9,7 +9,6 @@ import {
   getRepository,
 } from 'typeorm'
 import User from './User'
-import Comment from './Comment'
 import { NotificationTypes } from './enums'
 
 @Entity('notifications')

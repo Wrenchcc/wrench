@@ -1,8 +1,8 @@
 import { UserInputError } from 'apollo-server-express'
 import { DateTime } from 'luxon'
+import { SUPPORTED_LOCALES } from '@wrench/shared/src/locale'
 import { isAuthenticated } from '../../utils/permissions'
-import { LOCALE_COLUMN, TIMEZONE_COLUMN } from 'api/models/UserSettings'
-import { SUPPORTED_LOCALES } from '@wrench/shared/locale'
+import { LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../models/UserSettings'
 
 export default isAuthenticated(async (_, args, ctx) => {
   if (args.input.interestedIn) {

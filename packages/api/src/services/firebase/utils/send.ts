@@ -1,7 +1,7 @@
 import { pathOr } from 'ramda'
-import { getDeviceToken } from 'api/models/DeviceToken'
-import { getNotificationSettings, getUserLocale } from 'api/models/UserSettings'
-import { getUserById } from 'api/models/User'
+import { getDeviceToken } from '../../../models/DeviceToken'
+import { getNotificationSettings, getUserLocale } from '../../../models/UserSettings'
+import { getUserById } from '../../../models/User'
 import formatNotification from './formatNotification'
 import client from '../client'
 

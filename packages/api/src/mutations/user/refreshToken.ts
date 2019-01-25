@@ -1,7 +1,7 @@
 import { ApolloError } from 'apollo-server-express'
 import { path } from 'ramda'
-import { verifyRefreshToken, createAccessToken, createRefreshToken } from '../../utils/tokens'
-import { REFRESH_TOKEN_CODES } from '@wrench/shared/utils/enums'
+import { REFRESH_TOKEN_CODES } from '@wrench/shared/src/utils/enums'
+import { verifyRefreshToken, createAccessToken } from '../../utils/tokens'
 
 export default async (_, { refreshToken }, ctx) => {
   const userId = path(['userId'], verifyRefreshToken(refreshToken))
