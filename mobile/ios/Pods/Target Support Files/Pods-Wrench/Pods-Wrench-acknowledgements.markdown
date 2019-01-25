@@ -107,7 +107,7 @@ Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is
 
 ## Firebase
 
-Copyright 2018 Google
+Copyright 2019 Google
 
 ## FirebaseABTesting
 
@@ -115,7 +115,7 @@ Copyright 2018 Google
 
 ## FirebaseAnalytics
 
-Copyright 2018 Google
+Copyright 2019 Google
 
 ## FirebaseAnalyticsInterop
 
@@ -737,7 +737,7 @@ Copyright 2018 Google
 
 ## FirebaseInstanceID
 
-Copyright 2018 Google
+Copyright 2019 Google
 
 ## FirebaseMessaging
 
@@ -1161,7 +1161,7 @@ Copyright 2018 Google
 
 ## GoogleAppMeasurement
 
-Copyright 2018 Google
+Copyright 2019 Google
 
 ## GoogleToolboxForMac
 
