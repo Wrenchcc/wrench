@@ -22,14 +22,14 @@ let connection = null
 async function server() {
   if (connection && !connection.isConnected) {
     connection = null
-    console.log('[postgres] connection discard')
+    debug('[postgres] connection discard')
   }
 
   if (connection === null) {
     connection = await createConnection(options)
-    console.log('[postgres] connection init')
+    debug('[postgres] connection init')
   } else if (connection.isConnected) {
-    console.log('[postgres] connection connected, quick return')
+    debug('[postgres] connection connected, quick return')
     return connection
   }
 
