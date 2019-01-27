@@ -30,11 +30,11 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "typescript": "^3.2.4",
     "@firebase/app-types": "^0.3.3",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.11",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "typescript": "^3.2.4"
   },
   "workspaces": {
     "nohoist": [

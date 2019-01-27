@@ -1,7 +1,7 @@
 {
   "name": "wrench",
   "version": 2,
-  "builds": [{ "src": "packages/api/src/*.ts", "use": "@now/node@canary" }],
+  "builds": [{ "src": "packages/api/src/**/*.ts", "use": "@now/node@canary" }],
   "env": {
     "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",

@@ -9,8 +9,6 @@
     "es:import": "cross-env DEBUG=task* dotenv -e api/.env -- ts-node api/tasks/bulkImport.ts"
   },
   "devDependencies": {
-    "typescript": "^3.2.4",
-    "@types/node": "^10.12.18",
     "babel-eslint": "^10.0.1",
     "bluebird": "^3.5.3",
     "cross-env": "^5.2.0",
@@ -25,7 +23,6 @@
     "prettier": "^1.16.1",
     "prettier-eslint": "^8.8.2",
     "ts-node": "^8.0.2",
-    "tsconfig-paths": "^3.7.0",
     "tslint": "^5.12.1",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.17.0"
