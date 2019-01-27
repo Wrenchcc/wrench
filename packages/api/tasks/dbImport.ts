@@ -1,9 +1,9 @@
 import * as fs from 'fs'
 import { createConnection, getRepository } from 'typeorm'
 import * as Promise from 'bluebird'
-import Brand from './src/models/Brand'
-import Model from './src/models/Model'
-import { options } from './.src/models'
+import Brand from '../src/models/Brand'
+import Model from '../src/models/Model'
+import { options } from '../src/models'
 
 const debug = require('debug')('task:database:import')
 

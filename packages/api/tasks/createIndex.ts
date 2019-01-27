@@ -1,4 +1,4 @@
-import * as elasticsearch from './src/services/elasticsearch'
+import * as elasticsearch from '../src/services/elasticsearch'
 
 const debug = require('debug')('task:elasticsearch')
 

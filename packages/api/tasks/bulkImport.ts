@@ -1,7 +1,7 @@
 import { createConnection, getRepository } from 'typeorm'
-import * as elasticsearch from 'api/services/elasticsearch'
-import Model from './src/models/Model'
-import { options } from './src/models'
+import * as elasticsearch from '../src/services/elasticsearch'
+import Model from '../src/models/Model'
+import { options } from '../src/models'
 
 const debug = require('debug')('task:elasticsearch')
 
