@@ -6,7 +6,6 @@
     "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* nodemon --exec ts-node -r dotenv/config src/index.ts"
   },
   "dependencies": {
-    "@wrench/shared": "1.0.0",
     "apollo-server-express": "^2.3.2",
     "aws-sdk": "^2.395.0",
     "aws4": "^1.8.0",
