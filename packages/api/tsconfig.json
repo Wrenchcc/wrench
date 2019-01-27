@@ -25,7 +25,6 @@
     "baseUrl": ".",
     "rootDir": "src"
   },
-  "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts"],
-  "references": [{ "path": "../shared" }]
+  "exclude": ["node_modules", "tasks"],
+  "include": ["./src/**/*.ts"]
 }

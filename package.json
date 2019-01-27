@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "ncc run packages/api/src/index.ts",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e api/.env -- ts-node api/tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e api/.env -- ts-node api/tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e api/.env -- ts-node api/tasks/deleteIndex.ts",
     "es:import": "cross-env DEBUG=task* dotenv -e api/.env -- ts-node api/tasks/bulkImport.ts"
   },
   "devDependencies": {
+    "@zeit/ncc": "^0.12.1",
     "@types/node": "^10.12.18",
     "babel-eslint": "^10.0.1",
     "bluebird": "^3.5.3",
