@@ -10,7 +10,6 @@
     "es:import": "cross-env DEBUG=task* dotenv -e api/.env -- ts-node api/tasks/bulkImport.ts"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.12.1",
     "@types/node": "^10.12.18",
     "babel-eslint": "^10.0.1",
     "bluebird": "^3.5.3",
