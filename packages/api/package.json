@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "@wrench/shared": "1.0.0",
-    "apollo-server-express": "^2.3.1",
-    "aws-sdk": "^2.394.0",
+    "apollo-server-express": "^2.3.2",
+    "aws-sdk": "^2.395.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",

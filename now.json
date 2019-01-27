@@ -1,0 +1,16 @@
+{
+  "name": "wrench",
+  "version": 2,
+  "builds": [
+    {
+      "src": "packages/api/src/**/*.ts",
+      "use": "@now/node@canary"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "packages/api/src/$1"
+    }
+  ]
+}

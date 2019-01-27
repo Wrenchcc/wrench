@@ -1,10 +1,8 @@
 {
   "name": "Wrench",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "build:api": "yarn && cd api && yarn && cd .. && tsc api/index.ts",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e api/.env -- ncc run api/tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e api/.env -- ncc run api/tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e api/.env -- ncc run api/tasks/deleteIndex.ts",
@@ -23,10 +21,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "lerna": "^3.10.7",
     "prettier": "^1.16.1",
     "prettier-eslint": "^8.8.2",
-    "ts-node": "^8.0.1",
+    "ts-node": "^8.0.2",
     "tsconfig-paths": "^3.7.0",
     "tslint": "^5.12.1",
     "tslint-config-airbnb": "^5.11.1",
