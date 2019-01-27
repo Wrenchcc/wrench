@@ -17,31 +17,46 @@ const { PORT = 4000 } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
-createConnection(options)
-  .then(async connection => {
-    const driver = connection.driver as PostgresDriver
-    driver.postgres.defaults.parseInputDatesAsUTC = true
-    driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
+let connection = null
 
-    const server = new ApolloServer({
-      ...debugOptions,
-      context: ({ req }) => ({
-        db,
-        loaders: createLoaders(),
-        services,
-        userId: getUserId(req),
-      }),
-      formatError,
-      schema,
-      validationRules: [depthLimit(10)],
-    })
+async function server() {
+  if (connection && !connection.isConnected) {
+    connection = null
+    console.log('[postgres] connection discard')
+  }
 
-    const app = express()
+  if (connection === null) {
+    connection = await createConnection(options)
+    console.log('[postgres] connection init')
+  } else if (connection.isConnected) {
+    console.log('[postgres] connection connected, quick return')
+    return connection
+  }
 
-    server.applyMiddleware({ app })
+  const driver = connection.driver as PostgresDriver
+  driver.postgres.defaults.parseInputDatesAsUTC = true
+  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
 
-    app.listen({ port: PORT }, () => {
-      debug(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
-    })
+  const server = new ApolloServer({
+    ...debugOptions,
+    context: ({ req }) => ({
+      db,
+      loaders: createLoaders(),
+      services,
+      userId: getUserId(req),
+    }),
+    formatError,
+    schema,
+    validationRules: [depthLimit(10)],
   })
-  .catch(error => debug(error))
+
+  const app = express()
+
+  server.applyMiddleware({ app })
+
+  app.listen({ port: PORT }, () => {
+    debug(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
+  })
+}
+
+server()
