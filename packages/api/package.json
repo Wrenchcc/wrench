@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* nodemon --exec ts-node -r dotenv/config src/index.ts"
+    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* nodemon --exec ts-node -r dotenv/config src/index.ts",
+    "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/dbImport.ts",
+    "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/createIndex.ts",
+    "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/deleteIndex.ts",
+    "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/bulkImport.ts"
   },
   "dependencies": {
     "apollo-server-express": "^2.3.2",

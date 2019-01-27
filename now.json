@@ -1,7 +1,8 @@
 {
   "name": "wrench",
   "version": 2,
-  "builds": [{ "src": "packages/api/src/**/*.ts", "use": "@now/node@canary" }],
+  "regions": ["bru1"],
+  "builds": [{ "src": "packages/api/src/index.ts", "use": "@now/node@canary" }],
   "env": {
     "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
@@ -12,9 +13,9 @@
     "REFRESH_TOKEN_SECRET": "@refresh_token_secret",
     "DB_PASSWORD": "@db_password",
     "DB_USERNAME": "@db_username",
+    "DB_HOST": "@db_host",
     "GOOGLE_FIREBASE_API_KEY": "@google_firebase_api_key",
     "DB_DATABASE": "wrench",
-    "DB_HOST": "wrench-production.cfivu2ysuk6b.us-east-1.rds.amazonaws.com",
     "DB_PORT": "5432",
     "ELASTICSEARCH_DOMAIN": "search-wrench-jgsnkbcupcasu5bxjftpyqrl6q.us-east-1.es.amazonaws.com"
   }
