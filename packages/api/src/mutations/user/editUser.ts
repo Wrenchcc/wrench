@@ -1,6 +1,6 @@
 import { UserInputError } from 'apollo-server-express'
 import { DateTime } from 'luxon'
-import { SUPPORTED_LOCALES } from '@wrench/shared/src/locale'
+import { SUPPORTED_LOCALES } from '../../utils//locale'
 import { isAuthenticated } from '../../utils/permissions'
 import { LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../models/UserSettings'
 

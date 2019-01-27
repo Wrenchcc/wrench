@@ -1,5 +1,5 @@
 import { omit } from 'ramda'
-import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from '@wrench/shared/src/utils/enums'
+import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from '../../utils/enums'
 import { generateTokens } from '../../utils/tokens'
 import { dynamicLink } from '../../services/firebase'
 

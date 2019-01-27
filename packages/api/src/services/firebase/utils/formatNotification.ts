@@ -1,4 +1,4 @@
-import { NOTIFICATION_TYPES } from '@wrench/shared/src'
+import { NOTIFICATION_TYPES } from '../../../utils/enums'
 import { translate } from '../../../i18n'
 
 export default function formatNotification(type, data, user, locale) {

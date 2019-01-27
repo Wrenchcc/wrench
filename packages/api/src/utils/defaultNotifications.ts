@@ -1,4 +1,4 @@
-import { NOTIFICATION_TYPES } from '@wrench/shared/src'
+import { NOTIFICATION_TYPES } from './enums'
 
 export const DEFAULT_NOTIFICATIONS = {
   [NOTIFICATION_TYPES.NEW_ARTICLE]: true,

@@ -1,4 +1,4 @@
-import { DYNAMIC_LINK_TYPES } from '@wrench/shared/src/utils/enums'
+import { DYNAMIC_LINK_TYPES } from '../../utils/enums'
 import { dynamicLink } from '../../services/firebase'
 import { isAuthenticated } from '../../utils/permissions'
 

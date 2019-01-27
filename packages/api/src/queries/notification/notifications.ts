@@ -1,6 +1,6 @@
 import { filter } from 'ramda'
 import { DateTime } from 'luxon'
-import { NOTIFICATION_TYPES } from '@wrench/shared/src'
+import { NOTIFICATION_TYPES } from '../../utils/enums'
 import { isAuthenticated } from '../../utils/permissions'
 import convertPageInfo from '../../utils/paginate/convertPageInfo'
 import findOperators from '../../utils/paginate/findOperators'

@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server-express'
 import { path } from 'ramda'
-import { REFRESH_TOKEN_CODES } from '@wrench/shared/src/utils/enums'
+import { REFRESH_TOKEN_CODES } from '../../utils/enums'
 import { verifyRefreshToken, createAccessToken } from '../../utils/tokens'
 
 export default async (_, { refreshToken }, ctx) => {

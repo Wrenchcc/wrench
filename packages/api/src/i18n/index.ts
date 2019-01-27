@@ -1,5 +1,5 @@
 import * as i18n from 'i18n'
-import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '@wrench/shared/src'
+import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '../utils/locale'
 
 i18n.configure({
   defaultLocale: DEFAULT_LOCALE,
