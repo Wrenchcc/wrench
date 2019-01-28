@@ -14,7 +14,7 @@
       "dest": "packages/api/src/index.ts"
     }
   ],
-  /* "alias": ["api.wrench.cc"], */
+  "alias": ["api.wrench.cc"],
   "env": {
     "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
