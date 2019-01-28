@@ -2,8 +2,18 @@
   "name": "wrench",
   "version": 2,
   "regions": ["bru1"],
-  "builds": [{ "src": "packages/api/src/index.ts", "use": "@now/node-server@0.4.26-canary.7" }],
-  "routes": [{ "src": "/api/(.*)", "dest": "packages/api/src/$1" }],
+  "builds": [
+    {
+      "src": "packages/api/src/index.ts",
+      "use": "@now/node-server@0.4.26-canary.7"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "packages/api/src/index.ts"
+    }
+  ],
   "env": {
     "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
