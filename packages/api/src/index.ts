@@ -39,10 +39,6 @@ async function server() {
 
   const server = new ApolloServer({
     ...debugOptions,
-    debug: true,
-    introspection: true,
-    playground: true,
-    tracing: true,
     context: ({ req }) => ({
       db,
       loaders: createLoaders(),
