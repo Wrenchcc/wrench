@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* nodemon --exec ts-node -r dotenv/config src/index.ts",
+    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e .env -- ncc run src/index.ts -w",
     "build": "ncc build src/index.ts -e aws-sdk -o dist",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/createIndex.ts",
@@ -39,7 +39,7 @@
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.11",
     "@zeit/ncc": "^0.9.0",
-    "nodemon": "^1.18.9",
+    "ts-node": "^8.0.2",
     "typescript": "^3.2.4"
   },
   "workspaces": {
