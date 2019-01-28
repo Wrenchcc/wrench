@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* nodemon --exec ts-node -r dotenv/config src/index.ts",
+    "build": "ncc build src/index.ts -e aws-sdk -o dist",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/deleteIndex.ts",
@@ -37,6 +38,7 @@
     "@firebase/app-types": "^0.3.3",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.11",
+    "@zeit/ncc": "^0.9.0",
     "nodemon": "^1.18.9",
     "typescript": "^3.2.4"
   },
