@@ -11,7 +11,7 @@ export default error => {
 
   const errorId = v4()
 
-  console.log('errorId: %o', errorId)
+  debug('errorId: %o', errorId)
   console.log(error)
 
   return new GraphQLError(`Internal Error: ${errorId}`)
