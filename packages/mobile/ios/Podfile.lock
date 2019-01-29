@@ -247,9 +247,9 @@ DEPENDENCIES:
   - Crashlytics
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Fabric
-  - FBSDKCoreKit (= 4.38)
-  - FBSDKLoginKit (= 4.38)
-  - FBSDKShareKit (= 4.38)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase/Core
   - Firebase/DynamicLinks
   - Firebase/Messaging
@@ -418,6 +418,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: 0709db8346bfb85548d15475e5a7cb9a75724aed
+PODFILE CHECKSUM: 3ccc1f014a4f1e97b3ab3d2f1def7dcdf51164c9
 
 COCOAPODS: 1.6.0.beta.2

@@ -81,6 +81,7 @@ export default class MediaPicker extends Component {
         ...result.page_info,
       })
     } catch (err) {
+      console.log(err)
       logError(err)
     }
   }

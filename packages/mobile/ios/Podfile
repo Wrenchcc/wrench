@@ -42,7 +42,6 @@ target 'Wrench' do
   pod 'react-native-video', :path => '../node_modules/react-native-video'
   pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
@@ -52,11 +51,12 @@ target 'Wrench' do
   pod 'RNShare', :path => '../node_modules/react-native-share'
 
   # Required by Facebook
-  pod 'FBSDKCoreKit', '4.38'
-  pod 'FBSDKLoginKit', '4.38'
-  pod 'FBSDKShareKit', '4.38'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
 
   # Required by Firebase
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
   pod 'Crashlytics'
   pod 'Fabric'
   pod 'Firebase/Core'
