@@ -18,11 +18,11 @@ PODS:
     - Fabric (~> 1.9.0)
   - DoubleConversion (1.1.6)
   - Fabric (1.9.0)
-  - FBSDKCoreKit (4.38.0):
+  - FBSDKCoreKit (4.40.0):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.38.0):
+  - FBSDKLoginKit (4.40.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.38.0):
+  - FBSDKShareKit (4.40.0):
     - FBSDKCoreKit
   - Firebase/Core (5.16.0):
     - Firebase/CoreOnly
@@ -369,14 +369,14 @@ SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BVLinearGradient: 0d985ec461359c82bc254f26d11008bdae50d17a
-  CodePush: 338a023972c64636503e8886cf4cb6ec27dd1c01
+  BVLinearGradient: b0b70acf63ee888829b7c2ebbf6b50e227396e55
+  CodePush: f6b348759cdc42c734d9c3a46ceb2997c270b12e
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  FBSDKCoreKit: 2ab7fdbf600dc6b628ba7a49aa29d357a7b4c74e
-  FBSDKLoginKit: 634fa27e72e33620eb6389253337342c03d4a407
-  FBSDKShareKit: 00290e3db446eed603ff80ac629dcc5e80cf8b74
+  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
+  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
+  FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
@@ -397,27 +397,27 @@ SPEC CHECKSUMS:
   JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
-  React: adbac0757ce35e92fbd447ab98c810209d27d9b0
-  react-native-camera: 046f504650bf9a0a9ec9024107f555feaeca6671
-  react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-fast-image: ec7e5a2420a9e63cf9b2925fce7babc580ea8e05
-  react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
-  react-native-haptic-feedback: 997447262c8900c8afbaac17f4e8c79038d3b19c
-  react-native-pinchable: 4419f998fa458e4780e3ee6b365b489b25bcb1dd
-  react-native-splash-screen: 353334c5ae82d8c74501ea7cbb916cb7cb20c8bf
-  react-native-video: 3117b6696308fa494f3b20b279f57aaa618a6c42
-  ReactNativePermissions: b64e084dff6a5cad51587d38c306f09246246384
-  RNDeviceInfo: e7c5fcde13d40e161d8a27f6c5dc69c638936002
-  RNFirebase: 24ed56149251c99f6cb7d44100cade4b953fbd08
-  RNGestureHandler: 14c09a7361c272efea8f7f3799142c893a6a4485
-  RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
-  RNReanimated: 28e9388f218c1c4652b69a6c9db25598b25c6ef2
-  RNScreens: 720a9e6968beb73e8196239801e887d8401f86ed
-  RNShare: 4f206fa36e384e95a0cbf79f2a92490647e93127
+  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
+  react-native-camera: a8d04ef12749def72cae86b0b8d28c2de891a392
+  react-native-config: 8c2a92aa66a6cec1a23d9eda7ba6fcf31a63ace5
+  react-native-fast-image: cba3d9bf9c2cf8ddb643d887a686c53a5dd90a2c
+  react-native-fbsdk: d5f98cc5abecbcc463e3c35c04743d716d002d37
+  react-native-haptic-feedback: f675486e3889e3229272158943c1e9e075247e5a
+  react-native-pinchable: 377444b464693fe4f4eafa40eab2560f3555bd0c
+  react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
+  react-native-video: 44c6befbc1526283ca1919891fcebe4680feade4
+  ReactNativePermissions: 9f2d9c45c98800795e6c2ed330e25d11a66a8169
+  RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
+  RNFirebase: 57f6c2adb24355b4e6211e028a8e97e473432245
+  RNGestureHandler: afde2addc517e85cc97a25bfe119acbee779a7ce
+  RNRate: 72b5c9c2e62de9a01710918eb83d75fb99b44c7b
+  RNReanimated: 45d9313b7a62318ed00d60a811937321e43e076e
+  RNScreens: 354046589421edc3d83d5c6212475bf1fb9a731d
+  RNShare: d875e8e37f3e5e8eb7a103ae01e06490af1796f6
   SDWebImage: c00ec18ab25d10e5ffac109b0f78d1b4341c9691
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
-  yoga: 74cdf036c30820443b25ade59916236b1e95ee93
+  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
 PODFILE CHECKSUM: 3ccc1f014a4f1e97b3ab3d2f1def7dcdf51164c9
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.5.3
