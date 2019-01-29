@@ -37,6 +37,7 @@ target 'Wrench' do
   pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
   pod 'react-native-haptic-feedback', :path => '../node_modules/react-native-haptic-feedback'
   pod 'react-native-pinchable', :path => '../node_modules/react-native-pinchable'
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
   pod 'react-native-splash-screen', path: '../node_modules/react-native-splash-screen'
   pod 'react-native-video', :path => '../node_modules/react-native-video'
   pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
@@ -71,6 +72,17 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     if target.name == "React"
       target.remove_from_project
+    end
+
+    if target.name == 'react-native-config'
+      phase = target.project.new(Xcodeproj::Project::Object::PBXShellScriptBuildPhase)
+      phase.shell_script = "cd ../../"\
+       " && RNC_ROOT=./node_modules/react-native-config/"\
+       " && export SYMROOT=$RNC_ROOT/ios/ReactNativeConfig"\
+       " && export BUILD_DIR=$RNC_ROOT/ios/ReactNativeConfig"\
+       " && ruby $RNC_ROOT/ios/ReactNativeConfig/BuildDotenvConfig.ruby"
+      target.build_phases << phase
+      target.build_phases.move(phase,0)
     end
   end
 end

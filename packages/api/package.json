@@ -39,6 +39,9 @@
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.11",
     "@zeit/ncc": "^0.13.0",
+    "chokidar": "^2.0.4",
+    "cross-env": "^5.2.0",
+    "dotenv-cli": "^1.4.0",
     "ts-node": "^8.0.2",
     "typescript": "^3.2.4"
   },

@@ -1070,7 +1070,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1081,7 +1081,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1128,9 +1128,9 @@
 					"$(SRCROOT)/../node_modules/react-native-rate/ios",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
-				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
-				INFOPLIST_PREFIX_HEADER = "";
-				INFOPLIST_PREPROCESS = NO;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig/GeneratedInfoPlistDotEnv.h";
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1167,9 +1167,9 @@
 					"$(SRCROOT)/../node_modules/react-native-rate/ios",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
-				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
-				INFOPLIST_PREFIX_HEADER = "";
-				INFOPLIST_PREPROCESS = NO;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig/GeneratedInfoPlistDotEnv.h";
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
