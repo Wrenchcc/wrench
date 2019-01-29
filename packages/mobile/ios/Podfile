@@ -40,6 +40,7 @@ target 'Wrench' do
   pod 'react-native-config', :path => '../node_modules/react-native-config'
   pod 'react-native-splash-screen', path: '../node_modules/react-native-splash-screen'
   pod 'react-native-video', :path => '../node_modules/react-native-video'
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
   pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'

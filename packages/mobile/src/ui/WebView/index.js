@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { View, BackHandler, WebView as RNWebView } from 'react-native'
+import { View, BackHandler } from 'react-native'
+import { WebView as RNWebView } from 'react-native-webview'
 import { withNamespaces } from 'react-i18next'
 import url from 'url'
 import { equals, reject } from 'ramda'
@@ -34,6 +35,7 @@ class WebView extends PureComponent {
 
     this.onLoadStartHandlers = [this.startProgressBar]
     this.onLoadEndHandlers = [this.finishProgressBar, this.onFirstPageLoadEnd]
+    this.onLoadErrorHandlers = []
 
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
   }
@@ -55,11 +57,11 @@ class WebView extends PureComponent {
     }
   }
 
-  onLoadEnd = args => this.onLoadEndHandlers.forEach(fx => fx(args))
+  onLoadEnd = args => this.onLoadEndHandlers.forEach(fn => fn(args))
 
-  onLoadStart = args => this.onLoadStartHandlers.forEach(fx => fx(args))
+  onLoadStart = args => this.onLoadStartHandlers.forEach(fn => fn(args))
 
-  onLoadError = args => this.onLoadErrorHandlers.forEach(fx => fx(args))
+  onLoadError = args => this.onLoadErrorHandlers.forEach(fn => fn(args))
 
   onFirstPageLoadEnd = () => {
     this.removeHandler('onLoadEndHandlers', this.onFirstPageLoadEnd)
@@ -156,7 +158,6 @@ class WebView extends PureComponent {
         />
 
         <RNWebView
-          useWebKit
           style={{ flex: 1, backgroundColor: COLORS.LIGHT_GREY }}
           source={{ uri: this.props.url, headers: this.setCustomHeaders() }}
           javaScriptEnabled

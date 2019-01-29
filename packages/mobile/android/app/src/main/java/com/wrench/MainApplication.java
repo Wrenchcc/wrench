@@ -37,20 +37,20 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactVideoPackage(),
-            new SplashScreenReactPackage(),
-            new RNSharePackage(),
-            new RNScreensPackage(),
-            new ReanimatedPackage(),
-            new LinearGradientPackage(),
-            new RNReactNativeHapticFeedbackPackage(),
-            new RNGestureHandlerPackage(),
-            new RNFirebasePackage(),
-            new FBSDKPackage(),
-            new FastImageViewPackage(),
-            new RNDeviceInfo(),
-            new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
-            new RNCameraPackage()
+          new ReactVideoPackage(),
+          new SplashScreenReactPackage(),
+          new RNSharePackage(),
+          new RNScreensPackage(),
+          new ReanimatedPackage(),
+          new LinearGradientPackage(),
+          new RNReactNativeHapticFeedbackPackage(),
+          new RNGestureHandlerPackage(),
+          new RNFirebasePackage(),
+          new FBSDKPackage(),
+          new FastImageViewPackage(),
+          new RNDeviceInfo(),
+          new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
+          new RNCameraPackage()
       );
     }
 

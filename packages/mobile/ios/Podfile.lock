@@ -173,6 +173,8 @@ PODS:
     - react-native-video/Video (= 4.3.1)
   - react-native-video/Video (4.3.1):
     - React
+  - react-native-webview (3.2.2):
+    - React
   - React/Core (0.57.8):
     - yoga (= 0.57.8.React)
   - React/CxxBridge (0.57.8):
@@ -264,6 +266,7 @@ DEPENDENCIES:
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-video (from `../node_modules/react-native-video`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -346,6 +349,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-splash-screen"
   react-native-video:
     :path: "../node_modules/react-native-video"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   ReactNativePermissions:
     :path: "../node_modules/react-native-permissions"
   RNDeviceInfo:
@@ -406,6 +411,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 377444b464693fe4f4eafa40eab2560f3555bd0c
   react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
   react-native-video: 44c6befbc1526283ca1919891fcebe4680feade4
+  react-native-webview: a42108b827082f8f0333529b0772102031d5960d
   ReactNativePermissions: 9f2d9c45c98800795e6c2ed330e25d11a66a8169
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
   RNFirebase: 57f6c2adb24355b4e6211e028a8e97e473432245
@@ -418,6 +424,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 3ccc1f014a4f1e97b3ab3d2f1def7dcdf51164c9
+PODFILE CHECKSUM: 1ab031264120478ac5f5d19bd4f0d931ee6638d8
 
 COCOAPODS: 1.5.3

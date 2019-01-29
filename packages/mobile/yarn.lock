@@ -2567,7 +2567,7 @@ fbjs-scripts@^1.0.0:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@^0.8.0, fbjs@^0.8.5, fbjs@^0.8.9:
+fbjs@^0.8.0, fbjs@^0.8.17, fbjs@^0.8.5, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -5173,6 +5173,14 @@ react-native-video@^4.3.1:
     keymirror "^0.1.1"
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
+
+react-native-webview@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-3.2.2.tgz#b84cb76ee93b08d14a22b48853d82f6b94497d4a"
+  integrity sha512-7H2aW1kmPZ6GP+m32RvqC1OT8viqeh4joVyyAHDnxz9AvVoWp+b6DaxDGbHaekvx3ZTRNyQbMzdiDc5M6ANdcA==
+  dependencies:
+    escape-string-regexp "^1.0.5"
+    fbjs "^0.8.17"
 
 react-native@v0.57.8:
   version "0.57.8"
