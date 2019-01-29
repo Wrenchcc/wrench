@@ -28,7 +28,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		961D22A2413C8285BAF7724A /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 481871586915EE1B914CF9B7 /* libPods-Wrench.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		D22319F922009B6C0067C6BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D22319F822009B6B0067C6BD /* GoogleService-Info.plist */; };
+		D2F146282200A9B000E8A474 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2F146272200A9B000E8A474 /* GoogleService-Info.plist */; };
 		E8A6BC359299405F9EAC7025 /* inter_ui_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F177B08D61476794C558FF /* inter_ui_medium.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
@@ -341,7 +341,7 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B9622E3B3CB74D06B9F91076 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		D22319F722009AC40067C6BD /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
-		D22319F822009B6B0067C6BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D2F146272200A9B000E8A474 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui.ttf; path = ../assets/fonts/inter_ui.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -546,7 +546,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				D22319F822009B6B0067C6BD /* GoogleService-Info.plist */,
+				D2F146272200A9B000E8A474 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Wrench */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -1016,10 +1016,10 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				D22319F922009B6C0067C6BD /* GoogleService-Info.plist in Resources */,
 				37AEB748558644E38B0C637D /* inter_ui_bold.ttf in Resources */,
 				E8A6BC359299405F9EAC7025 /* inter_ui_medium.ttf in Resources */,
 				485DD1115132424A8A015872 /* inter_ui.ttf in Resources */,
+				D2F146282200A9B000E8A474 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1128,6 +1128,9 @@
 					"$(SRCROOT)/../node_modules/react-native-rate/ios",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1164,6 +1167,9 @@
 					"$(SRCROOT)/../node_modules/react-native-rate/ios",
 				);
 				INFOPLIST_FILE = Wrench/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
+				INFOPLIST_PREFIX_HEADER = "";
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

@@ -141,11 +141,27 @@ PODS:
     - React
   - react-native-camera/RN (1.9.2):
     - React
+  - react-native-config (0.11.7):
+    - React
   - react-native-fast-image (5.1.2):
     - FLAnimatedImage
     - React
     - SDWebImage/Core
     - SDWebImage/GIF
+  - react-native-fbsdk (0.8.0):
+    - React
+    - react-native-fbsdk/Core (= 0.8.0)
+    - react-native-fbsdk/Login (= 0.8.0)
+    - react-native-fbsdk/Share (= 0.8.0)
+  - react-native-fbsdk/Core (0.8.0):
+    - FBSDKCoreKit
+    - React
+  - react-native-fbsdk/Login (0.8.0):
+    - FBSDKLoginKit
+    - React
+  - react-native-fbsdk/Share (0.8.0):
+    - FBSDKShareKit
+    - React
   - react-native-haptic-feedback (1.4.2):
     - React
   - react-native-pinchable (0.1.1):
@@ -241,7 +257,9 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - react-native-camera (from `../node_modules/react-native-camera`)
+  - react-native-config (from `../node_modules/react-native-config`)
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
+  - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - react-native-haptic-feedback (from `../node_modules/react-native-haptic-feedback`)
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -314,8 +332,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-camera:
     :path: "../node_modules/react-native-camera"
+  react-native-config:
+    :path: "../node_modules/react-native-config"
   react-native-fast-image:
     :path: "../node_modules/react-native-fast-image"
+  react-native-fbsdk:
+    :path: "../node_modules/react-native-fbsdk"
   react-native-haptic-feedback:
     :path: "../node_modules/react-native-haptic-feedback"
   react-native-pinchable:
@@ -377,7 +399,9 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-camera: a8d04ef12749def72cae86b0b8d28c2de891a392
+  react-native-config: 8c2a92aa66a6cec1a23d9eda7ba6fcf31a63ace5
   react-native-fast-image: cba3d9bf9c2cf8ddb643d887a686c53a5dd90a2c
+  react-native-fbsdk: d5f98cc5abecbcc463e3c35c04743d716d002d37
   react-native-haptic-feedback: f675486e3889e3229272158943c1e9e075247e5a
   react-native-pinchable: 377444b464693fe4f4eafa40eab2560f3555bd0c
   react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
@@ -394,6 +418,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 2385529656c6f9c0b3bb911e1f1ef2763860a223
+PODFILE CHECKSUM: 5ab0ca906920f0a075b408cf1777587c693819d6
 
 COCOAPODS: 1.5.3

@@ -15,7 +15,6 @@ import io.invertase.firebase.RNFirebasePackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.microsoft.codepush.react.CodePush;
 import org.reactnative.camera.RNCameraPackage;
 import com.facebook.react.ReactNativeHost;
@@ -50,7 +49,6 @@ public class MainApplication extends Application implements ReactApplication {
             new FBSDKPackage(),
             new FastImageViewPackage(),
             new RNDeviceInfo(),
-            new ReactNativeConfigPackage(),
             new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
             new RNCameraPackage()
       );

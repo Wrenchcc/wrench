@@ -11,42 +11,45 @@ target 'Wrench' do
   pod 'React', :path => react_path, :subspecs => [
     'Core',
     'CxxBridge',
-    'RCTAnimation',
-    'RCTImage',
-    'RCTLinkingIOS',
-    'RCTPushNotification',
-    'RCTNetwork',
-    'RCTText',
-    'RCTWebSocket',
     'DevSupport',
     'RCTActionSheet',
+    'RCTAnimation',
     'RCTCameraRoll',
+    'RCTImage',
+    'RCTLinkingIOS',
+    'RCTNetwork',
+    'RCTPushNotification',
+    'RCTText',
+    'RCTWebSocket',
   ]
 
   # the following dependencies are dependencies of React native itself.
-  pod 'yoga', :path => File.join(react_path, 'ReactCommon/yoga')
   pod 'DoubleConversion', :podspec => File.join(react_path,'third-party-podspecs/DoubleConversion.podspec')
-  pod 'glog', :podspec => File.join(react_path,'third-party-podspecs/glog.podspec')
   pod 'Folly', :podspec => File.join(react_path,'third-party-podspecs/Folly.podspec')
+  pod 'glog', :podspec => File.join(react_path,'third-party-podspecs/glog.podspec')
+  pod 'yoga', :path => File.join(react_path, 'ReactCommon/yoga')
 
   # Third party deps podspec link
-  pod 'react-native-camera', path: '../node_modules/react-native-camera'
-  pod 'react-native-splash-screen', path: '../node_modules/react-native-splash-screen'
-  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
-  pod 'RNShare', :path => '../node_modules/react-native-share'
-  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+  pod 'react-native-camera', path: '../node_modules/react-native-camera'
+  pod 'react-native-config', path: '../node_modules/react-native-config'
   pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
+  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+  pod 'react-native-haptic-feedback', :path => '../node_modules/react-native-haptic-feedback'
+  pod 'react-native-pinchable', :path => '../node_modules/react-native-pinchable'
+  pod 'react-native-splash-screen', path: '../node_modules/react-native-splash-screen'
+  pod 'react-native-video', :path => '../node_modules/react-native-video'
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+  pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
   pod 'RNScreens', :path => '../node_modules/react-native-screens'
-  pod 'react-native-haptic-feedback', :path => '../node_modules/react-native-haptic-feedback'
-  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
-  pod 'react-native-pinchable', :path => '../node_modules/react-native-pinchable'
-  pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
-  pod 'react-native-video', :path => '../node_modules/react-native-video'
+  pod 'RNShare', :path => '../node_modules/react-native-share'
 
   # Required by Facebook
   pod 'FBSDKCoreKit', '4.38'
@@ -54,17 +57,12 @@ target 'Wrench' do
   pod 'FBSDKShareKit', '4.38'
 
   # Required by Firebase
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/DynamicLinks'
-  pod 'Firebase/Performance'
-  pod 'Fabric'
   pod 'Crashlytics'
-
-  pod 'react-native-config', :path => '../node_modules/react-native-config'
-
-  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+  pod 'Fabric'
+  pod 'Firebase/Core'
+  pod 'Firebase/DynamicLinks'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Performance'
 
 end
 

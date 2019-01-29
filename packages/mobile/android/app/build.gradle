@@ -146,7 +146,6 @@ dependencies {
     compile project(':react-native-fbsdk')
     compile project(':react-native-fast-image')
     compile project(':react-native-device-info')
-    compile project(':react-native-config')
     compile project(':react-native-code-push')
     compile project(':react-native-camera')
     implementation fileTree(dir: "libs", include: ["*.jar"])
