@@ -1,0 +1,25 @@
+import paginate from '../../utils/paginate'
+import transformFileUrl from '../../utils/transformFileUrl'
+
+// TODO: Use dataloader
+export default async ({ id }, args, ctx) => {
+  const files = await paginate(ctx.db.File, args, {
+    where: {
+      projectId: id,
+      type: args.type,
+    },
+  })
+
+  const edges = files.edges.map(({ cursor, node }) => ({
+    cursor,
+    node: {
+      ...node,
+      uri: transformFileUrl(node.filename),
+    },
+  }))
+
+  return {
+    ...files,
+    edges,
+  }
+}
