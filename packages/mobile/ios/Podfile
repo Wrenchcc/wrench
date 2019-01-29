@@ -33,7 +33,6 @@ target 'Wrench' do
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
   pod 'react-native-camera', path: '../node_modules/react-native-camera'
-  pod 'react-native-config', path: '../node_modules/react-native-config'
   pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
   pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
   pod 'react-native-haptic-feedback', :path => '../node_modules/react-native-haptic-feedback'
