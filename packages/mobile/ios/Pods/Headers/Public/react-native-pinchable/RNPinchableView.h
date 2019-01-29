@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native-pinchable/ios/RNPinchableView.h

@@ -7,6 +7,6 @@ module.exports = {
     path.resolve(__dirname),
 
     // Resolves the monorepo's base folder
-    path.resolve(__dirname, '../..'),
+    // path.resolve(__dirname, '../../../'),
   ],
 }

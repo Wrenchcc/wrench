@@ -1,7 +1,4 @@
 apply plugin: "com.android.application"
-apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
-apply plugin: "io.fabric"
-apply plugin: "com.google.firebase.firebase-perf"
 
 import com.android.build.OutputFile
 
@@ -80,7 +77,6 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -107,17 +103,13 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
     }
-
     splits {
         abi {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a", "x86"
+            include "armeabi-v7a", "x86", "arm64-v8a"
         }
     }
     buildTypes {
@@ -131,7 +123,7 @@ android {
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a":1, "x86":2]
+            def versionCodes = ["armeabi-v7a":1, "x86":2, "arm64-v8a": 3]
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
@@ -142,33 +134,23 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-reanimated')
-    implementation project(':react-native-screens')
-    implementation project(':react-native-gesture-handler')
-    implementation 'com.google.firebase:firebase-core:16.0.4'
-    implementation 'com.google.android.gms:play-services:16.0.0'
-    implementation "com.google.firebase:firebase-messaging:17.0.0"
-    implementation "com.google.firebase:firebase-invites:16.0.3"
-    implementation "com.google.firebase:firebase-perf:16.1.0"
-    implementation(project(':react-native-firebase')) {
-        transitive = false
-    }
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
-        transitive = true
-    }
-    implementation project(':react-native-code-push')
-    implementation project(':react-native-haptic-feedback')
-    implementation project(':react-native-fbsdk')
-    implementation project(':react-native-linear-gradient')
-    implementation project(':react-native-fast-image')
-    implementation project(':react-native-camera')
-    implementation project(':react-native-splash-screen')
-    implementation project(':react-native-device-info')
-    implementation project(':react-native-share')
-    implementation project(':react-native-video')
-    implementation project(':react-native-config')
+    compile project(':react-native-video')
+    compile project(':react-native-splash-screen')
+    compile project(':react-native-share')
+    compile project(':react-native-screens')
+    compile project(':react-native-reanimated')
+    compile project(':react-native-linear-gradient')
+    compile project(':react-native-haptic-feedback')
+    compile project(':react-native-gesture-handler')
+    compile project(':react-native-firebase')
+    compile project(':react-native-fbsdk')
+    compile project(':react-native-fast-image')
+    compile project(':react-native-device-info')
+    compile project(':react-native-config')
+    compile project(':react-native-code-push')
+    compile project(':react-native-camera')
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.android.support:appcompat-v7:23.0.1"
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
 }
 
@@ -178,5 +160,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
-
-apply plugin: 'com.google.gms.google-services'

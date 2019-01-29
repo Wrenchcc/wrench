@@ -1,0 +1,25 @@
+{
+  "name": "RNRate",
+  "version": "1.0.1",
+  "summary": "RNRate",
+  "description": "RNRate",
+  "homepage": "https://github.com/KjellConnelly/react-native-rate",
+  "license": "MIT",
+  "authors": {
+    "author": "author@domain.cn"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://github.com/KjellConnelly/react-native-rate.git",
+    "branch": "master"
+  },
+  "source_files": "*.{h,m}",
+  "requires_arc": true,
+  "dependencies": {
+    "React": [
+
+    ]
+  }
+}
