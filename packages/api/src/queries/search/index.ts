@@ -6,11 +6,11 @@ export default {
   },
   SearchResultNode: {
     __resolveType(root) {
-      if (root.avatarUrl) {
+      if (root.username) {
         return 'User'
       }
 
-      if (root.slug) {
+      if (root.projectTypeId) {
         return 'Project'
       }
 
@@ -18,7 +18,7 @@ export default {
         return 'Model'
       }
 
-      return null
+      return {}
     },
   },
 }
