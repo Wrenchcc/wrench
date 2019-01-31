@@ -59,7 +59,7 @@ export default class MediaPicker extends Component {
   }
 
   permissionAuthorized = () => {
-    this.setState({ photoPermission: AUTHORIZED })
+    this.setState({ photoPermission: AUTHORIZED }, this.getFiles)
   }
 
   getFiles = async after => {
@@ -81,7 +81,6 @@ export default class MediaPicker extends Component {
         ...result.page_info,
       })
     } catch (err) {
-      console.log(err)
       logError(err)
     }
   }

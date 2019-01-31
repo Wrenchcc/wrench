@@ -8,7 +8,6 @@ import {
   Image,
   Platform,
 } from 'react-native'
-import { pathOr } from 'ramda'
 import { COLORS } from 'ui/constants'
 import GridLayout from '../GridLayout'
 
@@ -57,14 +56,10 @@ export default class ImageEditor extends PureComponent {
     this.horizontal = widthRatio > heightRatio
 
     if (this.horizontal) {
-      this.scaledImageSize = pathOr(
-        {
-          width: image.width / heightRatio,
-          height: IMAGE_EDITOR_HEIGHT,
-        },
-        ['crop', 'scaledImageSize'],
-        image
-      )
+      this.scaledImageSize = {
+        width: image.width / heightRatio,
+        height: IMAGE_EDITOR_HEIGHT,
+      }
     } else {
       this.scaledImageSize = {
         width: IMAGE_EDITOR_WIDTH,
@@ -77,14 +72,10 @@ export default class ImageEditor extends PureComponent {
       }
     }
 
-    this.contentOffset = pathOr(
-      {
-        x: (this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2,
-        y: (this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2,
-      },
-      ['crop', 'offset'],
-      image
-    )
+    this.contentOffset = {
+      x: (this.scaledImageSize.width - IMAGE_EDITOR_WIDTH) / 2,
+      y: (this.scaledImageSize.height - IMAGE_EDITOR_HEIGHT) / 2,
+    }
 
     this.maximumZoomScale = Math.min(
       image.width / this.scaledImageSize.width,
