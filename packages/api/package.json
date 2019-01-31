@@ -38,7 +38,7 @@
     "@firebase/app-types": "^0.3.3",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.11",
-    "@zeit/ncc": "^0.13.0",
+    "@zeit/ncc": "^0.13.2",
     "chokidar": "^2.0.4",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",

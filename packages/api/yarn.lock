@@ -362,10 +362,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@zeit/ncc@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.13.0.tgz#90611c7cf15a26ddaa2521b106ca0f021cd83408"
-  integrity sha512-I2pLWVzdq2f4U6jxeu2EV7Q7dMsnXkgf+Jq9vhgYWzPzfMcCLhomPatBuvR3VpNZilqIXePZThlPuGrmA3ReFw==
+"@zeit/ncc@^0.13.2":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.13.2.tgz#85190b66043524a043f7071ab3dffab710172005"
+  integrity sha512-0LB9qGIbSFRyBBlN7NqEcnikjUGQ/ujT6U66L/KHTeROle1I+4SlbqsAK9e8UbmqK1tGly0VyCAKAbqui2UoPQ==
 
 abbrev@1:
   version "1.1.1"
