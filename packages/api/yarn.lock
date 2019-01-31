@@ -292,9 +292,9 @@
   integrity sha512-A2TAGbTFdBw9azHbpVd+/FkdW2T6msN1uct1O9bH3vTerEHKZhTXJUQXy+hNq1B0RagfU8U+KBdqiZpxjhOUQA==
 
 "@types/node@*", "@types/node@^10.1.0":
-  version "10.12.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.19.tgz#ca1018c26be01f07e66ac7fefbeb6407e4490c61"
-  integrity sha512-2NVovndCjJQj6fUUn9jCgpP4WSqr+u1SoUZMZyJkhGeBFsm6dE46l31S7lPUYt9uQ28XI+ibrJA1f5XyH5HNtA==
+  version "10.12.20"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.20.tgz#f79f959acd3422d0889bd1ead1664bd2d17cd367"
+  integrity sha512-9spv6SklidqxevvZyOUGjZVz4QRXGu2dNaLyXIFzFYZW0AGDykzPRIUFJXTlQXyfzAucddwTcGtJNim8zqSOPA==
 
 "@types/node@^8.0.53":
   version "8.10.39"
@@ -362,10 +362,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@zeit/ncc@^0.13.2":
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.13.2.tgz#85190b66043524a043f7071ab3dffab710172005"
-  integrity sha512-0LB9qGIbSFRyBBlN7NqEcnikjUGQ/ujT6U66L/KHTeROle1I+4SlbqsAK9e8UbmqK1tGly0VyCAKAbqui2UoPQ==
+"@zeit/ncc@0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.9.0.tgz#895c1c2efcd3b400d002afd5f57cd3ced9f92cb3"
+  integrity sha512-+dPp3ro8zy5lk12gQIRUwaQ2aFothladE1Ur/ppVJCRq7BjUYy4+zrqtQGZHlnb1M2VXBxVmHvDXBO9HJgeQow==
 
 abbrev@1:
   version "1.1.1"
@@ -1762,9 +1762,9 @@ gauge@~2.7.3:
     wide-align "^1.1.0"
 
 gaxios@^1.0.4:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/gaxios/-/gaxios-1.2.6.tgz#c511473a2fda7518ec142dd15e56489d4d9f4248"
-  integrity sha512-A7IVK12d5SavNAGTtL5aBDJ6auqWDCbyMazX+QQIklMdashrIZs4QIm1a6TpenJYy0OskCks2sMqglGt6ZThEQ==
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/gaxios/-/gaxios-1.2.7.tgz#484b2ec996b0da75898cf8560e7cc6bc5104f840"
+  integrity sha512-E0tFhk7gqyLReJeBE/APaokrVNJ9zVHuuBKNTXTRhfItUhV0pW42NzzOJiK5kKup/4R+2e/SXJRRp2LT5huF8Q==
   dependencies:
     extend "^3.0.2"
     https-proxy-agent "^2.2.1"
@@ -2100,9 +2100,9 @@ hash-stream-validation@^0.2.1:
     through2 "^2.0.0"
 
 highlight.js@^9.6.0:
-  version "9.13.1"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.13.1.tgz#054586d53a6863311168488a0f58d6c505ce641e"
-  integrity sha512-Sc28JNQNDzaH6PORtRLMvif9RSn1mYuOoX3omVjnb0+HbpPygU2ALBI0R/wsiqCb4/fcp07Gdo8g+fhtFrQl6A==
+  version "9.14.1"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.14.1.tgz#62bc7945692a0feb2e2f0cf7c97b6a00411d7ba0"
+  integrity sha512-UpSrdhp5jHPbrf9+/bE1p8kxZlh9QHWD24zp2jMxCP1Po9be7XH7GiK5Q00OvCBlji1FVa+nTYOkZqrBE1pcHw==
 
 http-errors@1.6.3, http-errors@~1.6.2, http-errors@~1.6.3:
   version "1.6.3"
