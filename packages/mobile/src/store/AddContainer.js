@@ -90,7 +90,7 @@ export default class AddContainer extends Container {
     this.setState({ selectedFiles, selectedIndex })
   }
 
-  onCropping = crop => {
+  onEditImage = crop => {
     const { selectedFiles, selectedIndex } = this.state
 
     this.setState({

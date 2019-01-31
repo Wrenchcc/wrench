@@ -3,7 +3,7 @@ import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
-import ImageEditor from 'features/project/components/ImageEditor'
+import ImageEditor from 'features/project/components/ImageEditor/old'
 import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
@@ -14,7 +14,7 @@ export default function AddMedia() {
         addSelectedFiles,
         changeProject,
         closeSelectProject,
-        onCropping,
+        onEditImage,
         onTakePicture,
         resetState,
         selectedFile,
@@ -36,7 +36,7 @@ export default function AddMedia() {
             {selectedFile ? (
               <ImageEditor
                 image={selectedFile}
-                onCropping={onCropping}
+                onEditImage={onEditImage}
                 key={selectedFile.filename}
               />
             ) : (
