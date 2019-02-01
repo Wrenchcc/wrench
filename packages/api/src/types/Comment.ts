@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 export default gql`
   type Comment {
     id: ID
+    commentId: ID
     createdAt: Date
     updatedAt: Date
     text: String!
