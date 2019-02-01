@@ -19,7 +19,7 @@
     "dataloader": "^1.4.0",
     "debug": "^4.1.1",
     "express": "^4.16.4",
-    "firebase-admin": "^6.5.1",
+    "firebase-admin": "^7.0.0",
     "graphql": "^14.1.1",
     "graphql-depth-limit": "^1.1.0",
     "i18n": "^0.8.3",
@@ -43,7 +43,7 @@
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
     "ts-node": "^8.0.2",
-    "typescript": "^3.2.4"
+    "typescript": "^3.3.1"
   },
   "workspaces": {
     "nohoist": [

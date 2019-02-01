@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
+import { pathOr } from 'ramda'
 import { Subscribe } from 'unstated'
 import { AddContainer, ToastNotificationContainer } from 'store'
 import { compose } from 'react-apollo'
@@ -14,8 +15,8 @@ import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input } from 'ui'
 
-function getProjectById(id, projects) {
-  return projects.find(({ node }) => node.id === id)
+function getProjectByIdOrFirst(id, projects) {
+  return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
 }
 
 class AddPost extends PureComponent {
@@ -28,11 +29,13 @@ class AddPost extends PureComponent {
     const { showPostProgress, state, resetState, hidePostProgress } = PostContainer
     const { t, projects } = this.props
 
+    const { title, id } = getProjectByIdOrFirst(state.selectedProjectId, projects)
+
     navigateToFeed()
 
     showPostProgress({
       image: state.selectedFiles[0].uri,
-      title: getProjectById(state.selectedProjectId, projects).node.title,
+      title,
     })
 
     try {
@@ -40,7 +43,7 @@ class AddPost extends PureComponent {
       await this.props
         .addPost({
           caption: state.caption,
-          projectId: state.selectedProjectId,
+          projectId: id,
           files: uploadedFiles,
         })
         .then(resetState)
