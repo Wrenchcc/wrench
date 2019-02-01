@@ -2,7 +2,7 @@ import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
 import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
-import { getTokens } from 'graphql/utils/auth'
+import { getTokens, setTokens } from 'graphql/utils/auth'
 import { track, events } from 'utils/analytics'
 import { resetNavigation } from 'navigation/actions'
 
@@ -33,6 +33,12 @@ export default onError(({ graphQLErrors, operation, forward }) => {
                 track(events.REFRESH_TOKEN_FAILED)
                 return foreceSignOut()
               }
+
+              // Save new tokens to async storage
+              setTokens({
+                access_token: accessToken,
+                refresh_token: refreshToken,
+              })
 
               return operation.setContext(() => ({
                 headers: {
