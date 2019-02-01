@@ -1,5 +1,4 @@
 import React from 'react'
-import ms from 'ms'
 import { View } from 'react-native'
 import { Query } from 'react-apollo'
 import { pathOr } from 'ramda'
@@ -8,7 +7,7 @@ import { COLORS } from 'ui/constants'
 
 export default function Badge() {
   return (
-    <Query query={NotificationsUnreadCountQuery} pollInterval={ms('1m')}>
+    <Query query={NotificationsUnreadCountQuery} fetchPolicy="cache-only">
       {({ data }) => {
         if (pathOr(0, ['notifications', 'unreadCount'], data) > 0) {
           return (
