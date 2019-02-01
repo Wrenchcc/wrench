@@ -7,6 +7,6 @@ export default async (_, args, ctx) => {
     case PROJECT_SORT_TYPES.POPULAR:
       return popularProjects(args, ctx)
     default:
-      throw new ApolloError('Invalid ProjectSortType supplied to Projects query')
+      throw new ApolloError('Invalid type supplied to Projects query')
   }
 }

@@ -13,6 +13,6 @@ export default (_, args, ctx) => {
     case SEARCH_TYPES.MODELS:
       return searchModels(args, ctx)
     default:
-      throw new ApolloError('Invalid searchType supplied to Search query')
+      throw new ApolloError('Invalid type supplied to Search query')
   }
 }
