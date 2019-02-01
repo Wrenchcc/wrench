@@ -71,58 +71,104 @@ const addCommentToFeedOptions = {
 }
 
 const addCommentOptions = {
-  props: ({ mutate, ownProps: { navigation } }) => ({
-    addComment: (text, commentId = null) => mutate({
-      variables: {
-        commentId,
-        postId: getPostId(navigation),
-        input: {
-          text,
+  props: ({ mutate, ownProps: { navigation } }) => {
+    const postId = getPostId(navigation)
+
+    return {
+      addComment: (text, commentId = null) => mutate({
+        variables: {
+          commentId,
+          postId,
+          input: {
+            text,
+          },
         },
-      },
-      update: (cache, { data: { addComment } }) => {
-        const data = cache.readQuery({
-          query: CommentsQuery,
-          variables: {
-            postId: getPostId(navigation),
-          },
-        })
+        update: (cache, { data: { addComment } }) => {
+          const data = cache.readQuery({
+            query: CommentsQuery,
+            variables: {
+              postId,
+            },
+          })
 
-        const { user } = cache.readQuery({ query: CurrentUserQuery })
+          const { user } = cache.readQuery({ query: CurrentUserQuery })
 
-        const comments = {
-          ...data,
-          comments: {
-            ...data.comments,
-            edges: prepend(
-              {
-                cursor: Math.round(Math.random() * -1000000).toString(),
-                node: {
-                  id: Math.round(Math.random() * -1000000).toString(),
-                  createdAt: new Date().toISOString(),
-                  replies: {
-                    pageInfo: {
-                      hasNextPage: false,
-                      __typename: 'RepliesConnection',
+          let comments = {}
+
+          // Is reply
+          if (commentId) {
+            const index = data.comments.edges.findIndex(({ node }) => node.id === commentId)
+            comments = {
+              ...data,
+              comments: {
+                ...data.comments,
+                edges: update(index, {
+                  ...data.comments.edges[index],
+                  node: {
+                    ...data.comments.edges[index].node,
+                    id: Math.round(Math.random() * -1000000).toString(),
+                    createdAt: new Date().toISOString(),
+                    replies: {
+                      ...data.comments.edges[index].node.replies,
+                      edges: prepend(
+                        {
+                          cursor: Math.round(Math.random() * -1000000).toString(),
+                          node: {
+                            id: Math.round(Math.random() * -1000000).toString(),
+                            createdAt: new Date().toISOString(),
+                            user,
+                            ...addComment,
+                            __typename: 'Comment',
+                          },
+                          __typename: 'CommentEdge',
+                        },
+                        data.comments.edges[index].node.replies.edges,
+                      ),
+                      __typename: 'CommentConnection',
                     },
-                    edges: [],
-                    __typename: 'CommentConnection',
+                    __typename: 'Comment',
                   },
-                  ...addComment,
-                  user,
-                  __typename: 'Comment',
+                  __typename: 'CommentEdge',
                 },
-                __typename: 'CommentEdge',
+                data.comments.edges),
               },
-              data.comments.edges
-            ),
-          },
-        }
+            }
+          } else {
+            comments = {
+              ...data,
+              comments: {
+                ...data.comments,
+                edges: prepend(
+                  {
+                    cursor: Math.round(Math.random() * -1000000).toString(),
+                    node: {
+                      id: Math.round(Math.random() * -1000000).toString(),
+                      createdAt: new Date().toISOString(),
+                      replies: {
+                        pageInfo: {
+                          hasNextPage: false,
+                          __typename: 'RepliesConnection',
+                        },
+                        edges: [],
+                        __typename: 'CommentConnection',
+                      },
+                      ...addComment,
+                      user,
+                      __typename: 'Comment',
+                    },
+                    __typename: 'CommentEdge',
+                  },
+                  data.comments.edges
+                ),
+              },
+            }
+          }
 
-        cache.writeQuery({ query: CommentsQuery, data: comments })
-      },
-    }),
-  }),
+          cache.writeQuery({ query: CommentsQuery, data: comments })
+        },
+      }),
+    }
+  },
 }
 
 export const addCommentToFeed = graphql(CommentMutation, addCommentToFeedOptions)
