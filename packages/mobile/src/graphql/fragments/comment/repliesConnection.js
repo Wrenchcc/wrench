@@ -10,6 +10,7 @@ export default gql`
       edges {
         node {
           id
+          commentId
           text
           createdAt
           user {

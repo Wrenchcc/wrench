@@ -9,9 +9,9 @@ import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
 
 // TODO: Pass correct data to profile
-const Item = ({ id, user, text, isReply, onReply, createdAt, commentId = null, t }) => {
+const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null, t }) => {
   const animatedValue = new Animated.Value(0)
-  if (id === commentId) {
+  if (id === highlightedId) {
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 1000,
@@ -49,7 +49,7 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, commentId = null, t
           </Row>
           <Row>
             <TimeAgo date={createdAt} />
-            <Reply medium fontSize={12} onPress={() => onReply(user, id)}>
+            <Reply medium fontSize={12} onPress={() => onReply(user, id)} disabled={id < 0}>
               {t('CommentItem:reply')}
             </Reply>
           </Row>
@@ -63,7 +63,7 @@ const CommentItem = props => props.item.replies ? (
     <>
       <Item {...props.item} onReply={props.onReply} t={props.t} />
       {props.item.replies.edges.map(({ node }) => (
-        <Item key={node.id} isReply {...node} id={node.id} t={props.t} onReply={props.onReply} />
+        <Item key={node.id} isReply {...node} id={node.commentId} t={props.t} onReply={props.onReply} />
       ))}
     </>
 ) : (

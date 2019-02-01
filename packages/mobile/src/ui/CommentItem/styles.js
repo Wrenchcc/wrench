@@ -21,5 +21,6 @@ export const Row = styled.View`
 `
 
 export const Reply = styled(UiText)`
+  opacity: ${props => props.disabled ? 0.7 : 1};
   margin-left: 5;
 `

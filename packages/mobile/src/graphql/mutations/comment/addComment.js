@@ -9,6 +9,8 @@ import { CommentsQuery } from 'graphql/queries/comment/getComments'
 const CommentMutation = gql`
   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
     addComment(postId: $postId, commentId: $commentId, input: $input) {
+      commentId
+      id
       text
     }
   }
@@ -106,7 +108,6 @@ const addCommentOptions = {
                   ...data.comments.edges[index],
                   node: {
                     ...data.comments.edges[index].node,
-                    id: Math.round(Math.random() * -1000000).toString(),
                     createdAt: new Date().toISOString(),
                     replies: {
                       ...data.comments.edges[index].node.replies,
@@ -115,6 +116,7 @@ const addCommentOptions = {
                           cursor: Math.round(Math.random() * -1000000).toString(),
                           node: {
                             id: Math.round(Math.random() * -1000000).toString(),
+                            commentId: Math.round(Math.random() * -1000000).toString(),
                             createdAt: new Date().toISOString(),
                             user,
                             ...addComment,
