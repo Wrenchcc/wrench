@@ -7,7 +7,7 @@ import { COLORS } from 'ui/constants'
 
 export default function Badge() {
   return (
-    <Query query={NotificationsUnreadCountQuery} fetchPolicy="cache-only">
+    <Query query={NotificationsUnreadCountQuery}>
       {({ data }) => {
         if (pathOr(0, ['notifications', 'unreadCount'], data) > 0) {
           return (

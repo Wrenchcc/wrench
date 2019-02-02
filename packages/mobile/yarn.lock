@@ -5181,10 +5181,10 @@ react-native-video@^4.3.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.0.tgz#d202a320698ca84e97961ce36c612f84c3ae86ab"
-  integrity sha512-hMvMStZgbQ81nPZFFhO5IxiZuGcBY7qyA6ad+v58OeTYtTnn5CO8nCUiAnyQKwA1DUwmny5V6f9nLnGGx23VfQ==
+react-native-webview@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.1.tgz#c49d1df98f3eb8366585f45fa4adc8d26a719c8d"
+  integrity sha512-cZoq1ZCICo2W0IPFSkZP+9mK46W8NVKvMkqdtv6c31XM0hzHLTwpaUyDf9noOCkXnLfdIoXEVAd5lZku0xsZWQ==
   dependencies:
     escape-string-regexp "^1.0.5"
     fbjs "^0.8.17"
