@@ -56,6 +56,7 @@ export default async (_, { facebookToken, platform }, ctx) => {
       typeId: fbUser.id,
       userId: createdUser.id,
     }),
+    ctx.services.mail.send(),
   ])
 
   const newTokens = generateTokens(createdUser.id)
