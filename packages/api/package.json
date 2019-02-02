@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e .env -- ncc run src/index.ts -w",
+    "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e .env -- ts-node-dev --no-notify src/index.ts",
     "build": "ncc build src/index.ts -e aws-sdk -o dist",
-    "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/dbImport.ts",
-    "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/createIndex.ts",
-    "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/deleteIndex.ts",
-    "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node tasks/bulkImport.ts"
+    "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/dbImport.ts",
+    "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/createIndex.ts",
+    "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/deleteIndex.ts",
+    "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts"
   },
   "dependencies": {
     "apollo-server-express": "^2.3.3",
@@ -38,12 +38,12 @@
     "@firebase/app-types": "^0.3.3",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.11",
-    "@zeit/ncc": "0.9.0",
+    "@zeit/ncc": "0.14.0",
     "chokidar": "^2.0.4",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",
     "graphql-log": "^0.1.3",
-    "ts-node": "^8.0.2",
+    "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.3.1"
   },
   "workspaces": {
