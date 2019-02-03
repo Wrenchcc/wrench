@@ -11,10 +11,16 @@
   },
   "stages": {
     "production": {
-      "domain": "api.wrench.cc"
+      "domain": "api.wrench.cc",
+      "proxy": {
+        "command": "node dist/index.js"
+      }
     },
     "staging": {
-      "domain": "staging.wrench.cc"
+      "domain": "staging.wrench.cc",
+      "proxy": {
+        "command": "node dist/index.js"
+      }
     }
   },
   "environment": {
