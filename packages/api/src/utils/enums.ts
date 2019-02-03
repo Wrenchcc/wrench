@@ -8,6 +8,10 @@ export const NOTIFICATION_TYPES = {
   SIMILAR_PROJECTS: 'SIMILAR_PROJECTS',
 }
 
+export const MAIL_TYPES = {
+  WELCOME: 'welcome',
+}
+
 export const PLATFORM_TYPES = {
   MOBILE: 'MOBILE',
   WEB: 'WEB',

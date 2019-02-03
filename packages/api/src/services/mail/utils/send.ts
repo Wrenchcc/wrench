@@ -1,18 +1,23 @@
 import client from '../client'
+import { getUserById } from '../../../models/User'
+import formatMail from './formatMail'
 
-export default async ({ to = 'info@wdlinkoping.se', type = 'welcome', data = {} }) => {
-  console.log(type, data)
+const debug = require('debug')('api:mail')
+
+export default async ({ type, userId }) => {
+  if (!userId) return
 
   try {
-    const blah = await client.sendMail({
-      from: 'pontus@wrench.cc',
-      to,
-      subject: 'Welcome to Wrench - Project comunity',
-      text: 'Hello',
-    })
+    const user = await getUserById(userId)
 
-    console.log(blah)
-  } catch(err) {
-    console.log(err)
+    if (!user.email) {
+      debug('No email found for userId: %o', userId)
+      return
+    }
+
+    const message = formatMail(type, user)
+    return client.send(message)
+  } catch (err) {
+    debug(err)
   }
 }
