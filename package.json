@@ -2,6 +2,9 @@
   "name": "Wrench",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build:api": "cd packages/api && yarn && yarn build"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "bluebird": "^3.5.3",

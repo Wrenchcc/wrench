@@ -19,7 +19,7 @@ action "Deploy Production" {
   needs = "Filter Master"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
-  args = "-C api deploy production"
+  args = "-C packages/api deploy production"
 }
 
 action "Notification" {
