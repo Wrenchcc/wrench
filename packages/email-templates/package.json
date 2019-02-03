@@ -1,5 +1,5 @@
 {
-  "name": "@wrench/email",
+  "name": "@wrench/email-templates",
   "private": true,
   "version": "1.0.0",
   "scripts": {
