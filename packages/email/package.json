@@ -1,0 +1,11 @@
+{
+  "name": "@wrench/email",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "http-server src -c-1 -o"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}

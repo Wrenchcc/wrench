@@ -6,7 +6,7 @@ const debug = require('debug')('task:sns:create')
 const { APP_AWS_ACCESS_KEY, APP_AWS_SNS_REGION, APP_AWS_SECRET_ACCESS_KEY } = process.env
 
 const template = process.argv[2]
-const basePath = `${__dirname}/../../email`
+const basePath = `${__dirname}/../../email/src`
 
 if (!template) {
   debug('You need to specify a template name. `yarn ses:create welcome`')
