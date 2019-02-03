@@ -1,11 +1,16 @@
 import { isAuthenticated, canModeratePost, canModerateComment } from '../../utils/permissions'
-import { NOTIFICATION_TYPES } from '../../utils/enums'
+import { NOTIFICATION_TYPES, MAIL_TYPES } from '../../utils/enums'
 import { extractMentionedUsers } from '../../utils/regex'
 
 export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
+
+  ctx.services.mail.send({
+    userId: ctx.userId,
+    type: MAIL_TYPES.NEW_USER_WELCOME,
+  })
 
   const comment = await ctx.db.Comment.save({
     commentId,

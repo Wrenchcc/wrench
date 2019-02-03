@@ -8,7 +8,9 @@
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/deleteIndex.ts",
-    "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts"
+    "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts",
+    "ses:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/createTemplate.ts $*",
+    "ses:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/deleteTemplate.ts $*"
   },
   "dependencies": {
     "apollo-server-express": "2.3.3",
@@ -18,8 +20,6 @@
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",
     "debug": "^4.1.1",
-    "ejs": "^2.6.1",
-    "email-templates": "^5.0.3",
     "express": "^4.16.4",
     "firebase-admin": "^7.0.0",
     "graphql": "^14.1.1",

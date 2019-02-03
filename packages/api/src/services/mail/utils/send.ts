@@ -16,7 +16,13 @@ export default async ({ type, userId }) => {
     }
 
     const message = formatMail(type, user)
-    return client.send(message)
+    client.sendTemplatedEmail(message, error => {
+      if (error) {
+        debug('Error sending message: %o', error.stack)
+      } else {
+        debug('Successfully sent message: %o', message)
+      }
+    })
   } catch (err) {
     debug(err)
   }

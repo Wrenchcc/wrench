@@ -22,7 +22,7 @@
     "APP_AWS_S3_REGION": "eu-central-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
     "APP_AWS_SECRET_ACCESS_KEY": "x75GcyxiL+OW0S3V+AdYGfPuXsU97pCMvJzffmF8",
-    "APP_AWS_SNS_REGION": "eu-central-1",
+    "APP_AWS_SNS_REGION": "eu-west-1",
     "APP_CDN_DOMAIN": "https://edge-files.wrench.cc",
     "ACCESS_TOKEN_SECRET": "5E7MJk*WUsC8c-arTkAV!KLGa=JexLG6VNF#?bL4",
     "REFRESH_TOKEN_SECRET": "#d9EvHc_k#VU#!5nFR2#9dvMcasK$Zv==da-FZ_u",

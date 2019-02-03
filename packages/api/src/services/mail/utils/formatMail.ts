@@ -4,15 +4,15 @@ export default function formatMail(type, user) {
   switch (type) {
     case MAIL_TYPES.WELCOME:
       return {
-        template: 'welcome',
-        message: {
-          to: user.email,
+        Source: 'Wrench <no-reply@wrench.cc>',
+        Template: MAIL_TYPES.WELCOME,
+        Destination: {
+          ToAddresses: [user.email],
         },
-        locals: {
+        TemplateData: JSON.stringify({
           firstName: user.firstName,
-        },
+        }),
       }
-
     default:
       return null
   }
