@@ -11,7 +11,7 @@ const basePath = `${__dirname}/../src`
 if (!template) {
   debug('You need to specify a template name. `yarn ses:create welcome`')
 } else {
-  const config = require(`${basePath}/${template}/config.json`)
+  const config = require(`${basePath}/${template}/config.json`) // eslint-disable-line
   const html = fs.readFileSync(`${basePath}/${template}/index.html`, 'utf8')
 
   const params = {
