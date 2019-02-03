@@ -27,7 +27,7 @@
     "ACCESS_TOKEN_SECRET": "5E7MJk*WUsC8c-arTkAV!KLGa=JexLG6VNF#?bL4",
     "REFRESH_TOKEN_SECRET": "#d9EvHc_k#VU#!5nFR2#9dvMcasK$Zv==da-FZ_u",
     "DB_DATABASE": "wrench",
-    "DB_HOST": "wrench-production.cfivu2ysuk6b.us-east-1.rds.amazonaws.com",
+    "DB_HOST": "wrench-production.cgydxeouwpfa.eu-central-1.rds.amazonaws.com",
     "DB_PASSWORD": "nXPSjUDSeEchbx6b3VPtBr2rxAudYmduwTWCDJhAPwzjKBzbgn98nfGr5hTK9KB6S",
     "DB_PORT": "5432",
     "DB_USERNAME": "wrench_production",
