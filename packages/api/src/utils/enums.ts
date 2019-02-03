@@ -9,7 +9,7 @@ export const NOTIFICATION_TYPES = {
 }
 
 export const MAIL_TYPES = {
-  NEW_USER_WELCOME: 'new_user_welcome',
+  WELCOME: 'welcome',
 }
 
 export const PLATFORM_TYPES = {

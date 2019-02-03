@@ -58,7 +58,7 @@ export default async (_, { facebookToken, platform }, ctx) => {
     }),
     ctx.services.mail.send({
       userId: createdUser.userId,
-      type: MAIL_TYPES.NEW_USER_WELCOME,
+      type: MAIL_TYPES.WELCOME,
     }),
   ])
 

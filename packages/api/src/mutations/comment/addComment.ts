@@ -9,7 +9,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
 
   ctx.services.mail.send({
     userId: ctx.userId,
-    type: MAIL_TYPES.NEW_USER_WELCOME,
+    type: MAIL_TYPES.WELCOME,
   })
 
   const comment = await ctx.db.Comment.save({
