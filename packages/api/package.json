@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e .env -- ts-node-dev --no-notify src/index.ts",
-    "katt": "ncc build src/index.ts -e aws-sdk -o dist",
+    "compile": "ncc build src/index.ts -e aws-sdk -o dist",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/deleteIndex.ts",
