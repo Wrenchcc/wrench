@@ -38,6 +38,7 @@
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.11",
     "@zeit/ncc": "0.9.0",
+    "bluebird": "^3.5.3",
     "chokidar": "^2.0.4",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^1.4.0",

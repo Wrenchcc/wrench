@@ -29,8 +29,8 @@ async function server() {
     connection = await createConnection(options)
     debug('[postgres] connection init')
   } else if (connection.isConnected) {
-    debug('[postgres] connection connected, quick return')
-    return connection
+    debug('[postgres] connected, reuse connection')
+    connection = connection
   }
 
   const driver = connection.driver as PostgresDriver

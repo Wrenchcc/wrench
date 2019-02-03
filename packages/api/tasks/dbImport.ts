@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import { createConnection, getRepository } from 'typeorm'
-import * as Promise from 'bluebird'
+import * as P from 'bluebird'
 import Brand from '../src/models/Brand'
 import Model from '../src/models/Model'
 import { options } from '../src/models'
@@ -22,10 +22,10 @@ async function findOrCreate(where, save) {
   return brandRepo.save(save)
 }
 
-createConnection(options).then(async connection => {
+createConnection(options).then(async () => {
   debug('Loading brands into DB')
 
-  await Promise.map(
+  await P.map(
     vehicles,
     async item => {
       const brand = await findOrCreate(
