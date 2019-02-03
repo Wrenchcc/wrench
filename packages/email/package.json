@@ -3,9 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "http-server src -c-1 -o"
+    "dev": "http-server src -c-1 -o",
+    "ses:create": "cross-env DEBUG=task* dotenv -e .env -- node tasks/createTemplate.js $*",
+    "ses:delete": "cross-env DEBUG=task* dotenv -e .env -- node tasks/deleteTemplate.js $*"
   },
   "devDependencies": {
+    "aws-sdk": "^2.395.0",
+    "cross-env": "^5.2.0",
+    "debug": "^4.1.1",
+    "dotenv-cli": "^1.4.0",
     "http-server": "^0.11.1"
   }
 }
