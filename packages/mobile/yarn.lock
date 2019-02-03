@@ -5035,10 +5035,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.10.0.tgz#cd477cf37ccc023c5e7ec013d0661d1a39ac6aca"
-  integrity sha512-8j5PvEKlniVwr5mZ+HQjLY8GKZuZoPTeXbwGxFwKdQczXV+x40VoIZJx14eXc+ge9HVFmlgVazmK4vSf+OTkIw==
+react-native-camera@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.10.1.tgz#6a2e86e8b1e7d5872832d6bd154a2628c9599567"
+  integrity sha512-sIHeG2dfBlOEkE093QSfXzFvjWdPCEz+ffkonvvLm7kRKPtiS+4gZM2zuH2SP4g3MJyKt8ifB/VIAxfnvtZ6sQ==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5181,10 +5181,10 @@ react-native-video@^4.3.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.1.tgz#c49d1df98f3eb8366585f45fa4adc8d26a719c8d"
-  integrity sha512-cZoq1ZCICo2W0IPFSkZP+9mK46W8NVKvMkqdtv6c31XM0hzHLTwpaUyDf9noOCkXnLfdIoXEVAd5lZku0xsZWQ==
+react-native-webview@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.2.tgz#9ab4dfe9c61e1e447a101d25b1b107e2a7b5d03b"
+  integrity sha512-VyRkUmDc2u+XbyftvkY3+IxZtv3ECLBo3uesg+d3bNxkhAQ3SS9zxYSpHNzoIysPyBMFQTECKpv4Aw8gQ1YQOQ==
   dependencies:
     escape-string-regexp "^1.0.5"
     fbjs "^0.8.17"
