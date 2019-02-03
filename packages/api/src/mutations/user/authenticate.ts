@@ -1,5 +1,5 @@
 import { omit } from 'ramda'
-import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES } from '../../utils/enums'
+import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES, MAIL_TYPES } from '../../utils/enums'
 import { generateTokens } from '../../utils/tokens'
 import { dynamicLink } from '../../services/firebase'
 
@@ -56,7 +56,10 @@ export default async (_, { facebookToken, platform }, ctx) => {
       typeId: fbUser.id,
       userId: createdUser.id,
     }),
-    ctx.services.mail.send(),
+    ctx.services.mail.send({
+      userId: createdUser.userId,
+      type: MAIL_TYPES.WELCOME,
+    }),
   ])
 
   const newTokens = generateTokens(createdUser.id)

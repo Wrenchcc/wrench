@@ -16,6 +16,9 @@ export default new Email({
   },
   send: true,
   transport: {
-    SES: new SES({ apiVersion: '2010-12-01', region: APP_AWS_SNS_REGION }),
+    SES: new SES({
+      apiVersion: '2010-12-01',
+      region: APP_AWS_SNS_REGION,
+    }),
   },
 })
