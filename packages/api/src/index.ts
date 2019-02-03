@@ -17,7 +17,22 @@ const { PORT = 4000 } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
-createConnection(options).then(async connection => {
+let connection = null
+
+async function server() {
+  if (connection && !connection.isConnected) {
+    connection = null
+    debug('[postgres] connection discard')
+  }
+
+  if (connection === null) {
+    connection = await createConnection(options)
+    debug('[postgres] connection init')
+  } else if (connection.isConnected) {
+    debug('[postgres] connected, reuse connection')
+    connection = connection
+  }
+
   const driver = connection.driver as PostgresDriver
   driver.postgres.defaults.parseInputDatesAsUTC = true
   driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
@@ -42,4 +57,6 @@ createConnection(options).then(async connection => {
   app.listen({ port: PORT }, () => {
     debug(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
   })
-})
+}
+
+server()
