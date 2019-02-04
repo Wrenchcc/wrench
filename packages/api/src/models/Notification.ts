@@ -17,7 +17,7 @@ export default class Notification extends BaseEntity {
     return getRepository(Notification)
       .createQueryBuilder('notification')
       .select('COUNT(notification.id)', 'unreadCount')
-      .where('notification.isSeen = :isSeen AND notification.userId = :userId', {
+      .where('notification.isSeen = :isSeen AND notification.to = :userId', {
         isSeen: false,
         userId,
       })
