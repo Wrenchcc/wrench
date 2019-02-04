@@ -19,7 +19,6 @@ let scrollView = null
 // TODO: Make platform specific
 // TODO: Show latest searched users
 // TODO: Remove added user from suggestions
-// TODO: Handle multiline
 const KEYBOARD_OFFSET = isIphone ? 180 : 0
 const MENTION_OFFSET_BOTTOM = isIphone ? 240 : 0
 const TRIGGER = '@'
@@ -149,8 +148,6 @@ class Comments extends Component {
                   ...navigation.state.params,
                   text: navigation.state.params.caption,
                 }}
-                onReply={this.onReply}
-                fetchMoreReplies={this.props.fetchMoreReplies}
               />
             }
             keyExtractor={item => item.node.id}

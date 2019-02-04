@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { pathOr, update, prepend } from 'ramda'
+import { pathOr, update } from 'ramda'
 import { graphql } from 'react-apollo'
 import { getPostId } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'

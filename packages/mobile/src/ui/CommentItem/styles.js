@@ -22,7 +22,7 @@ export const Content = styled.View`
 
 export const Border = styled.View`
   width: 20;
-  height: 1;
+  height: ${StyleSheet.hairlineWidth};
   background-color: ${COLORS.LIGHT_GREY};
   margin-right: 10;
 `
