@@ -41,7 +41,7 @@ class Comments extends Component {
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
-    navigation: PropTypes.object.isRequired,
+    post: PropTypes.object,
   }
 
   state = {
@@ -105,15 +105,7 @@ class Comments extends Component {
   )
 
   render() {
-    const {
-      comments,
-      fetchMore,
-      refetch,
-      isRefetching,
-      isFetching,
-      hasNextPage,
-      navigation,
-    } = this.props
+    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage, post } = this.props
 
     return (
       <View style={{ flex: 1 }}>
@@ -142,13 +134,15 @@ class Comments extends Component {
               paddingRight: 0,
             }}
             ListHeaderComponent={
-              <CommentItem
-                first
-                item={{
-                  ...navigation.state.params,
-                  text: navigation.state.params.caption,
-                }}
-              />
+              post && (
+                <CommentItem
+                  first
+                  item={{
+                    ...post,
+                    text: post.caption,
+                  }}
+                />
+              )
             }
             keyExtractor={item => item.node.id}
             data={comments}

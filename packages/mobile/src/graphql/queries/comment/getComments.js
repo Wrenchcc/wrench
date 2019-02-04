@@ -8,6 +8,14 @@ import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export const CommentsQuery = gql`
   query getComments($postId: ID!, $after: String, $firstReplies: Int) {
+    post(id: $postId) {
+      id
+      caption
+      createdAt
+      user {
+        ...userInfo
+      }
+    }
     comments(postId: $postId, after: $after) @connection(key: "comments") {
       ...commentInfo
     }
@@ -56,9 +64,10 @@ const getCommentsOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: ({ data: { fetchMore, error, loading, comments, networkStatus, refetch } }) => ({
+  props: ({ data: { fetchMore, error, loading, comments, post, networkStatus, refetch } }) => ({
     error,
     refetch,
+    post,
     comments: pathOr(null, ['edges'], comments),
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], comments),
     isRefetching: isRefetching(networkStatus),
@@ -106,7 +115,7 @@ const getCommentsOptions = {
       query: LoadMoreComments,
       variables: {
         after: comments.edges[comments.edges.length - 1].cursor,
-        // postId: post.id,
+        postId: post.id,
         firstReplies: 1,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
