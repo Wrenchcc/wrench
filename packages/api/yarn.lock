@@ -367,10 +367,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@zeit/ncc@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.9.0.tgz#895c1c2efcd3b400d002afd5f57cd3ced9f92cb3"
-  integrity sha512-+dPp3ro8zy5lk12gQIRUwaQ2aFothladE1Ur/ppVJCRq7BjUYy4+zrqtQGZHlnb1M2VXBxVmHvDXBO9HJgeQow==
+"@zeit/ncc@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.14.0.tgz#1ac4c4555b8647a3ae1fb4f6eed95a4d2b3d418d"
+  integrity sha512-kDyiPuimSkIXgLMwudLFqFMQ2l7cCACWjGN/8HIyCGdLWGRqefmGqE903LB785PjURtEso6SX3r35FxJ6dbrrw==
 
 abbrev@1:
   version "1.1.1"
@@ -2254,6 +2254,11 @@ i18n@^0.8.3:
     mustache "*"
     sprintf-js ">=1.0.3"
 
+i18next@^14.0.1:
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-14.0.1.tgz#c5f0292ea6389394b6056f597b75f1f9aa03124f"
+  integrity sha512-wsKfQuYsy4RdCaqqN71eDjWMhizhTfQSIBGttEA7vcboQrUfpQlCezrSzrtmoW9F9tmVyNs38iBgLYLMhRSeIQ==
+
 iconv-lite@0.4.23:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
@@ -2906,7 +2911,7 @@ lru-cache@^5.0.0:
   dependencies:
     yallist "^3.0.2"
 
-luxon@^1.10.0:
+luxon@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.11.0.tgz#e0d87e967fb8c1c6d2279d8ca0c55f2ba76ea9f3"
   integrity sha512-eZRCr3NO83dYOn392giRppz2Z5DVAiHIq3wnt0sKGiTD77v6iscVVH+WAWGPG7A1R7kAVRTK4C0daX/SThEsiQ==

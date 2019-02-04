@@ -1,6 +1,0 @@
-{
-  "NEW_COMMENT": "{{name}} commented: {{comment}} on your project {{project}}.",
-  "NEW_MENTION": "{{name}} mentioned you in a comment: {{comment}}.",
-  "NEW_REPLY": "{{name}} replied to your comment: {{comment}}.",
-  "NEW_FOLLOWER": "{{name}} started following your project: {{project}}."
-}

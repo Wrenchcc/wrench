@@ -1,12 +1,6 @@
-import * as i18n from 'i18n'
-import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '../utils/locale'
+import { DEFAULT_LOCALE } from '../utils/locale'
+import translations from './translations'
 
-i18n.configure({
-  defaultLocale: DEFAULT_LOCALE,
-  directory: __dirname,
-  locales: SUPPORTED_LOCALES,
-})
-
-export function translate({ key, params = {}, locale }) {
-  return i18n.__({ phrase: key, locale }, params)
+export function translate({ key, params = {}, locale = DEFAULT_LOCALE }) {
+  return translations(params)[locale][key]
 }
