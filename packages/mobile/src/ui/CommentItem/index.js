@@ -70,10 +70,10 @@ const Item = ({
   )
 }
 
-const CommentItem = props => props.item.replies ? (
+const CommentItem = props => props.data.node.replies ? (
     <>
-      <Item {...props.item} onReply={props.onReply} t={props.t} />
-      {props.item.replies.edges.map(({ node }) => (
+      <Item {...props.data.node} onReply={props.onReply} t={props.t} />
+      {props.data.node.replies.edges.map(({ node }) => (
         <Item
           key={node.id}
           isReply
@@ -84,22 +84,25 @@ const CommentItem = props => props.item.replies ? (
         />
       ))}
 
-      {props.item.replies.pageInfo.hasNextPage && (
+      {props.data.node.replies.pageInfo.hasNextPage && (
         <LoadReplies>
           <Border />
           <Text
             medium
             fontSize={12}
             color="light_grey"
-            onPress={() => props.fetchMoreReplies(props.item.id)}
+            hapticFeedback="impactLight"
+            onPress={() => props.fetchMoreReplies(props.data.node.id, props.data.cursor)}
           >
-            {props.t('CommentItem:loadReplies', { count: props.item.replies.totalCount })}
+            {props.t('CommentItem:loadReplies', {
+              count: props.data.node.replies.totalCount - props.data.node.replies.edges.length,
+            })}
           </Text>
         </LoadReplies>
       )}
     </>
 ) : (
-    <Item {...props.item} t={props.t} first={props.first} onReply={props.onReply} />
+    <Item {...props.data.node} t={props.t} first={props.first} onReply={props.onReply} />
 )
 
 export default withNamespaces('CommentItem')(CommentItem)

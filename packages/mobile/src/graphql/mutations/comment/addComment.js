@@ -100,39 +100,42 @@ const addCommentOptions = {
           // Is reply
           if (commentId) {
             const index = data.comments.edges.findIndex(({ node }) => node.id === commentId)
+
             comments = {
               ...data,
               comments: {
                 ...data.comments,
-                edges: update(index, {
-                  ...data.comments.edges[index],
-                  node: {
-                    ...data.comments.edges[index].node,
-                    createdAt: new Date().toISOString(),
-                    replies: {
-                      ...data.comments.edges[index].node.replies,
-                      edges: prepend(
-                        {
-                          cursor: Math.round(Math.random() * -1000000).toString(),
-                          node: {
-                            id: Math.round(Math.random() * -1000000).toString(),
-                            commentId: Math.round(Math.random() * -1000000).toString(),
-                            createdAt: new Date().toISOString(),
-                            user,
-                            ...addComment,
-                            __typename: 'Comment',
+                edges: update(
+                  index,
+                  {
+                    ...data.comments.edges[index],
+                    node: {
+                      ...data.comments.edges[index].node,
+                      replies: {
+                        ...data.comments.edges[index].node.replies,
+                        edges: prepend(
+                          {
+                            cursor: Math.round(Math.random() * -1000000).toString(),
+                            node: {
+                              id: Math.round(Math.random() * -1000000).toString(),
+                              commentId: Math.round(Math.random() * -1000000).toString(),
+                              createdAt: new Date().toISOString(),
+                              user,
+                              ...addComment,
+                              __typename: 'Comment',
+                            },
+                            __typename: 'CommentEdge',
                           },
-                          __typename: 'CommentEdge',
-                        },
-                        data.comments.edges[index].node.replies.edges,
-                      ),
-                      __typename: 'CommentConnection',
+                          data.comments.edges[index].node.replies.edges
+                        ),
+                        __typename: 'CommentConnection',
+                      },
+                      __typename: 'Comment',
                     },
-                    __typename: 'Comment',
+                    __typename: 'CommentEdge',
                   },
-                  __typename: 'CommentEdge',
-                },
-                data.comments.edges),
+                  data.comments.edges
+                ),
               },
             }
           } else {
@@ -147,6 +150,7 @@ const addCommentOptions = {
                       id: Math.round(Math.random() * -1000000).toString(),
                       createdAt: new Date().toISOString(),
                       replies: {
+                        totalCount: 0,
                         pageInfo: {
                           hasNextPage: false,
                           __typename: 'RepliesConnection',

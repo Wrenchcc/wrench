@@ -7,7 +7,7 @@ import commentInfoFragment from 'graphql/fragments/comment/commentInfo'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export const CommentsQuery = gql`
-  query getComments($postId: ID!, $after: String, $firstReplies: Int) {
+  query getComments($postId: ID!, $after: String) {
     post(id: $postId) {
       id
       caption
@@ -25,7 +25,7 @@ export const CommentsQuery = gql`
 `
 
 const LoadMoreComments = gql`
-  query loadMoreComments($postId: ID!, $after: String, $firstReplies: Int) {
+  query loadMoreComments($postId: ID!, $after: String) {
     comments(postId: $postId, after: $after) @connection(key: "comments") {
       ...commentInfo
     }
@@ -34,19 +34,22 @@ const LoadMoreComments = gql`
 `
 
 const LoadMoreReplies = gql`
-  query loadMoreReplies($commentId: ID!, $first: Int) {
-    replies(commentId: $commentId, first: $first) {
-      pageInfo {
-        hasNextPage
-      }
-      totalCount
-      edges {
-        node {
-          id
-          text
-          createdAt
-          user {
-            ...userInfo
+  query loadMoreReplies($id: ID!, $after: String, $first: Int) {
+    comment(id: $id) {
+      replies: repliesConnection(after: $after, first: $first) {
+        pageInfo {
+          hasNextPage
+        }
+        totalCount
+        edges {
+          node {
+            id
+            commentId
+            text
+            createdAt
+            user {
+              ...userInfo
+            }
           }
         }
       }
@@ -56,10 +59,8 @@ const LoadMoreReplies = gql`
 `
 
 const getCommentsOptions = {
-  options: ({ navigation, after }) => ({
+  options: ({ navigation }) => ({
     variables: {
-      after,
-      firstReplies: 1,
       postId: getPostId(navigation),
     },
     fetchPolicy: 'cache-and-network',
@@ -72,51 +73,11 @@ const getCommentsOptions = {
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], comments),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMoreReplies: commentId => fetchMore({
-      query: LoadMoreReplies,
-      variables: {
-        // after: replies.edges[replies.edges.length - 1].cursor,
-        commentId,
-        first: 10,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.replies) {
-          return prev
-        }
-
-        const index = fetchMoreResult.replies.edges.findIndex(({ node }) => node.id === commentId)
-
-        return {
-          ...prev,
-          comments: {
-            ...prev.comments,
-            edges: update(
-              index,
-              {
-                ...prev.comments.edges[index],
-                node: {
-                  ...prev.comments.edges[index].node,
-                  replies: {
-                    ...prev.comments.edges[index].node.replies,
-                    edges: [
-                      ...prev.comments.edges[index].node.replies.edges,
-                      ...fetchMoreResult.replies.edges,
-                    ],
-                  },
-                },
-              },
-              prev.comments.edges
-            ),
-          },
-        }
-      },
-    }),
     fetchMore: () => fetchMore({
       query: LoadMoreComments,
       variables: {
         after: comments.edges[comments.edges.length - 1].cursor,
         postId: post.id,
-        firstReplies: 1,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult.comments) {
@@ -132,6 +93,46 @@ const getCommentsOptions = {
               ...fetchMoreResult.comments.pageInfo,
             },
             edges: [...prev.comments.edges, ...fetchMoreResult.comments.edges],
+          },
+        }
+      },
+    }),
+    fetchMoreReplies: (id, after) => fetchMore({
+      query: LoadMoreReplies,
+      variables: {
+        // after,
+        postId: post.id,
+        id,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.comment.replies) {
+          return prev
+        }
+
+        const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
+
+        return {
+          ...prev,
+          comments: {
+            ...prev.comments,
+            edges: update(
+              index,
+              {
+                ...prev.comments.edges[index],
+                node: {
+                  ...prev.comments.edges[index].node,
+                  replies: {
+                    ...prev.comments.edges[index].node.replies,
+                    ...fetchMoreResult.comment.replies,
+                    edges: [
+                      ...prev.comments.edges[index].node.replies.edges,
+                      ...fetchMoreResult.comment.replies.edges,
+                    ],
+                  },
+                },
+              },
+              prev.comments.edges
+            ),
           },
         }
       },

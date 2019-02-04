@@ -1,3 +1,4 @@
+import comment from './comment'
 import commentId from './commentId'
 import comments from './comments'
 import repliesConnection from './repliesConnection'
@@ -10,6 +11,7 @@ export default {
     user,
   },
   Query: {
+    comment,
     comments,
   },
 }

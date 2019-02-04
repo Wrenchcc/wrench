@@ -98,7 +98,7 @@ class Comments extends Component {
 
   renderItem = ({ item }) => (
     <CommentItem
-      item={item.node}
+      data={item}
       onReply={this.onReply}
       fetchMoreReplies={this.props.fetchMoreReplies}
     />
@@ -137,9 +137,11 @@ class Comments extends Component {
               post && (
                 <CommentItem
                   first
-                  item={{
-                    ...post,
-                    text: post.caption,
+                  data={{
+                    node: {
+                      ...post,
+                      text: post.caption,
+                    },
                   }}
                 />
               )
