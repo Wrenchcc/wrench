@@ -6,10 +6,19 @@ import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
-import { Base, Content, Row, Reply } from './styles'
+import { Base, Content, Row, Reply, LoadReplies, Border } from './styles'
 
-// TODO: Pass correct data to profile
-const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = null, t }) => {
+const Item = ({
+  id,
+  user,
+  text,
+  isReply,
+  onReply,
+  createdAt,
+  highlightedId = null,
+  t,
+  first = false,
+}) => {
   const animatedValue = new Animated.Value(0)
   if (id === highlightedId) {
     Animated.timing(animatedValue, {
@@ -32,7 +41,7 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
 
   return (
     <Animated.View style={{ backgroundColor }}>
-      <Base isReply={isReply}>
+      <Base isReply={isReply} first={first}>
         <Avatar
           uri={user.avatarUrl}
           size={isReply ? 20 : 30}
@@ -49,9 +58,11 @@ const Item = ({ id, user, text, isReply, onReply, createdAt, highlightedId = nul
           </Row>
           <Row>
             <TimeAgo date={createdAt} />
-            <Reply medium fontSize={12} onPress={() => onReply(user, id)} disabled={id < 0}>
-              {t('CommentItem:reply')}
-            </Reply>
+            {!first && (
+              <Reply medium fontSize={12} onPress={() => onReply(user, id)} disabled={id < 0}>
+                {t('CommentItem:reply')}
+              </Reply>
+            )}
           </Row>
         </Content>
       </Base>
@@ -63,11 +74,32 @@ const CommentItem = props => props.item.replies ? (
     <>
       <Item {...props.item} onReply={props.onReply} t={props.t} />
       {props.item.replies.edges.map(({ node }) => (
-        <Item key={node.id} isReply {...node} id={node.commentId} t={props.t} onReply={props.onReply} />
+        <Item
+          key={node.id}
+          isReply
+          {...node}
+          id={node.commentId}
+          t={props.t}
+          onReply={props.onReply}
+        />
       ))}
+
+      {props.item.replies.pageInfo.hasNextPage && (
+        <LoadReplies>
+          <Border />
+          <Text
+            medium
+            fontSize={12}
+            color="light_grey"
+            onPress={() => props.fetchMoreReplies(props.item.id)}
+          >
+            {props.t('CommentItem:loadReplies', { count: props.item.replies.totalCount })}
+          </Text>
+        </LoadReplies>
+      )}
     </>
 ) : (
-    <Item {...props.item} t={props.t} onReply={props.onReply} />
+    <Item {...props.item} t={props.t} first={props.first} onReply={props.onReply} />
 )
 
 export default withNamespaces('CommentItem')(CommentItem)

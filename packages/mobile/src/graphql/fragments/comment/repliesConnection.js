@@ -3,10 +3,11 @@ import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export default gql`
   fragment repliesConnection on Comment {
-    replies: repliesConnection {
+    replies: repliesConnection(first: $firstReplies) {
       pageInfo {
         hasNextPage
       }
+      totalCount
       edges {
         node {
           id

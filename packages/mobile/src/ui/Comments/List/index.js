@@ -12,8 +12,7 @@ class List extends PureComponent {
   }
 
   goToComments = () => {
-    const { id } = this.props.data
-    navigateToComments({ id })
+    navigateToComments(this.props.data)
   }
 
   goToProfile = user => {

@@ -145,7 +145,8 @@
       "post": "Post"
     },
     "CommentItem": {
-      "reply": "Reply"
+      "reply": "Reply",
+      "loadReplies": "View replies ({{count}})"
     },
     "List": {
       "loadMore": "Show 1 comment",
@@ -390,7 +391,8 @@
       "post": "Skicka"
     },
     "CommentItem": {
-      "reply": "Svara"
+      "reply": "Svara",
+      "loadReplies": "Visa svar ({{count}})"
     },
     "List": {
       "loadMore": "Visa 1 kommentar",

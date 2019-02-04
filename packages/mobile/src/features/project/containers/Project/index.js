@@ -12,9 +12,8 @@ import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
 
-// TODO: make platform specific
 const FOOTER_HEIGHT = 500
-const START_OPACITY = 50
+const START_OPACITY = 0
 
 class Project extends PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -68,7 +67,7 @@ class Project extends PureComponent {
 
     props.navigation.setParams({
       opacity: this.scrollY.interpolate({
-        inputRange: [START_OPACITY, FOOTER_HEIGHT + START_OPACITY],
+        inputRange: [START_OPACITY, FOOTER_HEIGHT],
         outputRange: [0, 1],
       }),
     })

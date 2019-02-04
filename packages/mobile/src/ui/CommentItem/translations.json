@@ -1,10 +1,12 @@
 {
   "CommentItem": {
     "en": {
-      "reply": "Reply"
+      "reply": "Reply",
+      "loadReplies": "View replies ({{count}})"
     },
     "sv": {
-      "reply": "Svara"
+      "reply": "Svara",
+      "loadReplies": "Visa svar ({{count}})"
     }
   }
 }

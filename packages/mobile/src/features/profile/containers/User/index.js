@@ -9,7 +9,7 @@ import FollowingProjects from 'features/profile/components/FollowingProjects'
 import Header from 'features/profile/components/Header'
 
 const HEADER_HEIGHT = 100
-const START_OPACITY = 50
+const START_OPACITY = 0
 
 class User extends PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -45,7 +45,7 @@ class User extends PureComponent {
 
     props.navigation.setParams({
       opacity: this.scrollY.interpolate({
-        inputRange: [START_OPACITY, HEADER_HEIGHT + START_OPACITY],
+        inputRange: [START_OPACITY, HEADER_HEIGHT],
         outputRange: [0, 1],
       }),
     })

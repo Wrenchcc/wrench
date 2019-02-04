@@ -37,10 +37,12 @@ class Comments extends Component {
     addComment: PropTypes.func.isRequired,
     comments: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
+    fetchMoreReplies: PropTypes.func.isRequired,
     refetch: PropTypes.func.isRequired,
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    navigation: PropTypes.object.isRequired,
   }
 
   state = {
@@ -95,10 +97,24 @@ class Comments extends Component {
     scrollView = null
   }
 
-  renderItem = ({ item }) => <CommentItem item={item.node} onReply={this.onReply} />
+  renderItem = ({ item }) => (
+    <CommentItem
+      item={item.node}
+      onReply={this.onReply}
+      fetchMoreReplies={this.props.fetchMoreReplies}
+    />
+  )
 
   render() {
-    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const {
+      comments,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
+      navigation,
+    } = this.props
 
     return (
       <View style={{ flex: 1 }}>
@@ -122,9 +138,21 @@ class Comments extends Component {
               scrollView = ref
             }}
             contentContainerStyle={{
+              paddingTop: 0,
               paddingLeft: 0,
               paddingRight: 0,
             }}
+            ListHeaderComponent={
+              <CommentItem
+                first
+                item={{
+                  ...navigation.state.params,
+                  text: navigation.state.params.caption,
+                }}
+                onReply={this.onReply}
+                fetchMoreReplies={this.props.fetchMoreReplies}
+              />
+            }
             keyExtractor={item => item.node.id}
             data={comments}
             refetch={refetch}
