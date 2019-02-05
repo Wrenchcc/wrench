@@ -92,7 +92,11 @@ const CommentItem = props => props.data.node.replies ? (
             fontSize={12}
             color="light_grey"
             hapticFeedback="impactLight"
-            onPress={() => props.fetchMoreReplies(props.data.node.id, props.data.cursor)}
+            onPress={() => props.fetchMoreReplies(
+              props.data.node.id,
+              props.data.node.replies.edges[props.data.node.replies.edges.length - 1].cursor
+            )
+            }
           >
             {props.t('CommentItem:loadReplies', {
               count: props.data.node.replies.totalCount - props.data.node.replies.edges.length,

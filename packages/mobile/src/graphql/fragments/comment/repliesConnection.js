@@ -9,6 +9,7 @@ export default gql`
       }
       totalCount
       edges {
+        cursor
         node {
           id
           commentId

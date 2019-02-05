@@ -42,6 +42,7 @@ const LoadMoreReplies = gql`
         }
         totalCount
         edges {
+          cursor
           node {
             id
             commentId
@@ -100,7 +101,7 @@ const getCommentsOptions = {
     fetchMoreReplies: (id, after) => fetchMore({
       query: LoadMoreReplies,
       variables: {
-        // after,
+        after,
         postId: post.id,
         id,
       },
