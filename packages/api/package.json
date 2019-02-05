@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "apollo-server-express": "2.3.3",
-    "aws-sdk": "^2.395.0",
+    "aws-sdk": "^2.396.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
@@ -24,7 +24,7 @@
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.4.0",
     "lodash.merge": "^4.6.1",
-    "luxon": "^1.11.0",
+    "luxon": "^1.11.1",
     "pg": "^7.8.0",
     "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.13",
