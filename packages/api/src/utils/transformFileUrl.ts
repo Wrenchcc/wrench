@@ -1,3 +1,3 @@
-const { APP_CDN_DOMAIN } = process.env
+const { CDN_DOMAIN } = process.env
 
-export default filename => `${APP_CDN_DOMAIN}/${filename}`
+export default filename => `${CDN_DOMAIN}/${filename}`
