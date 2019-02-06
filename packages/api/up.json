@@ -25,7 +25,7 @@
   },
   "environment": {
     "APP_AWS_ACCESS_KEY": "AKIAJWFWXZ4AKS65CKNA",
-    "APP_AWS_S3_REGION": "us-west-1",
+    "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
     "APP_AWS_SECRET_ACCESS_KEY": "x75GcyxiL+OW0S3V+AdYGfPuXsU97pCMvJzffmF8",
     "APP_AWS_SNS_REGION": "us-west-2",
