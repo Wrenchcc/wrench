@@ -14,15 +14,8 @@
           "logs:CreateLogStream",
           "logs:PutLogEvents",
           "ssm:GetParametersByPath",
-          "ec2:CreateNetworkInterface",
-          "ec2:DescribeNetworkInterfaces",
-          "ec2:DeleteNetworkInterface",
           "s3:*",
-          "ses:SendEmail",
-          "ses:SendTemplatedEmail",
-          "ses:SendRawEmail",
-          "ses:CreateTemplate",
-          "ses:DeleteTemplate"
+          "ses:SendTemplatedEmail"
         ]
       }
     ]
@@ -45,7 +38,6 @@
     }
   },
   "environment": {
-    "DEBUG": "api:*",
     "AWS_S3_REGION": "us-east-1",
     "AWS_SNS_REGION": "us-west-2",
     "AWS_S3_BUCKET": "wrench-files",
