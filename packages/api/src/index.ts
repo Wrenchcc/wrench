@@ -13,7 +13,9 @@ import services from './services'
 
 const debug = require('debug')('api:server')
 
-const { PORT = 4000 } = process.env
+const { PORT = 4000, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
+debug('AWS_ACCESS_KEY', AWS_ACCESS_KEY)
+debug('AWS_SECRET_ACCESS_KEY', AWS_SECRET_ACCESS_KEY)
 
 const TIMESTAMPTZ_OID = 1184
 
