@@ -4,7 +4,21 @@
   "name": "api",
   "lambda": {
     "memory": 1536,
-    "runtime": "nodejs8.10"
+    "runtime": "nodejs8.10",
+    "policy": [
+      {
+        "Effect": "Allow",
+        "Resource": "*",
+        "Action": [
+          "s3:*",
+          "ses:SendEmail",
+          "ses:SendTemplatedEmail",
+          "ses:SendRawEmail",
+          "ses:CreateTemplate",
+          "ses:DeleteTemplate"
+        ]
+      }
+    ]
   },
   "cors": {
     "enable": true
