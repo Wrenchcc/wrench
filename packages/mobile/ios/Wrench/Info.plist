@@ -46,7 +46,7 @@
 	<key>FacebookAppID</key>
 	<string>__RN_CONFIG_WRENCH_FACEBOOK_APP_ID</string>
 	<key>FacebookDisplayName</key>
-	<string>__RN_CONFIG_WRENCH_FACEBOOK_DISPLAY_NAME</string>
+	<string>Wrench</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
