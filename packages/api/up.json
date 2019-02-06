@@ -24,7 +24,7 @@
     }
   },
   "environment": {
-    "debug": "*",
+    "DEBUG": "*",
     "APP_AWS_ACCESS_KEY": "AKIAJWFWXZ4AKS65CKNA",
     "APP_AWS_S3_REGION": "us-east-1",
     "APP_AWS_S3_BUCKET": "wrench-files",
