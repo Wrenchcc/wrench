@@ -5,7 +5,7 @@ All email templates must have their CSS inlined before being added to AWS SES. A
 The scripts in this directory solve both of these problems. To get started:
 
 - Make sure you have run yarn: `yarn`
-- Add `APP_AWS_ACCESS_KEY`, `APP_AWS_SECRET_ACCESS_KEY` and `APP_AWS_SNS_REGION` to `.env` file.
+- Add `WS_ACCESS_KEY`, `WS_SECRET_ACCESS_KEY` and `WS_SNS_REGION` to `.env` file.
 
 To develop email, run:
 `yarn dev`

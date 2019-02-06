@@ -3,7 +3,7 @@ const { SES } = require('aws-sdk')
 
 const debug = require('debug')('task:sns:create')
 
-const { APP_AWS_ACCESS_KEY, APP_AWS_SNS_REGION, APP_AWS_SECRET_ACCESS_KEY } = process.env
+const { AWS_SNS_REGION } = process.env
 
 const template = process.argv[2]
 const basePath = `${__dirname}/../src`
@@ -24,9 +24,7 @@ if (!template) {
 
   const ses = new SES({
     apiVersion: '2010-12-01',
-    region: APP_AWS_SNS_REGION,
-    accessKeyId: APP_AWS_ACCESS_KEY,
-    secretAccessKey: APP_AWS_SECRET_ACCESS_KEY,
+    region: AWS_SNS_REGION,
   })
 
   ses.createTemplate(params, err => {
