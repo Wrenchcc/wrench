@@ -5054,7 +5054,7 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^0.26.1:
+react-native-device-info@^0.26.2:
   version "0.26.2"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.26.2.tgz#c9e350e11f0c2f9a65f3e4fec8ddcab6881b7deb"
   integrity sha512-Hbzc3sZxfJX0Do1yLF8Dt+tuz6+IZ61iTNGqF2LPpRhCDiJI5asrEtXF7g6bRS1H5lA2/eJDYCI/c35w63JpKA==
@@ -5176,7 +5176,7 @@ react-native-video@^4.3.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.0.5:
+react-native-webview@^5.0.6:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.6.tgz#52555cc0413ab2d63aa888f4da7e183402eafa68"
   integrity sha512-pcGKny4z39S62rV/1Yh3eU9yhtePXkRFw6Kx65uhIB7Vurku8PZSpi/OJij9DQkxB/5Qn5ldA1a7dZ02CZnYdA==
@@ -5265,7 +5265,7 @@ react-navigation-tabs@1.0.2:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^3.1.4:
+react-navigation@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.1.5.tgz#3e039b195fb5c505db77717f929c2a08d6659a0b"
   integrity sha512-12VqSVt402dfoiXRBIm+6x7S/muZGYKMrbHrCrUnDMZj/QNplgaU45e6p0YIgqpuNW41PI/sP8Ykk+Q31pb52g==
@@ -5284,10 +5284,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^7.2.10:
-  version "7.2.10"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.10.tgz#eacbf429327bea058677c3a01af87b9c387f4aa6"
-  integrity sha512-bsbgQh1DzTqjwuD1tDZ7Nu04G5JhNNXdezkcJ5xXNboedN/MPe0K+X/MtypUxXBUCLYT0r5oKT3zj4STqVpnPA==
+react-spring@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.2.tgz#a17715908c0c0b122c9dd44aba984aa1798d66e1"
+  integrity sha512-E5dVqxwYmsCwvVfp1vdaNRB1p162hSEQZZhqSZuH+9LHDREHixApHX/kQRC1zTmS8jBoqgBILKIxbzsqykqa7g==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
