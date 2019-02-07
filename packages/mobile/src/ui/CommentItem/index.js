@@ -34,7 +34,7 @@ const Item = ({
 
   const backgroundColor = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [COLORS.WHITE, COLORS.BEIGE],
+    outputRange: [COLORS.WHITE, COLORS.ULTRA_LIGHT_GREY],
   })
 
   if (!user) return null

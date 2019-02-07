@@ -17,7 +17,6 @@ export const FONTS = {
 }
 
 export const COLORS = {
-  BEIGE: 'rgb(237, 234, 228)',
   DARK_GREY: 'rgb(34,34,34)',
   DARK: 'rgb(000, 000, 000)',
   DIVIDER: 'rgb(237, 237, 239)',
@@ -29,5 +28,6 @@ export const COLORS = {
   RED: 'rgb(246, 86, 86)',
   SECONDARY: 'rgb(237, 234, 228)',
   TAB: 'rgb(000, 000, 000)',
+  ULTRA_LIGHT_GREY: 'rgb(250, 250, 250)',
   WHITE: 'rgb(255, 255, 255)',
 }
