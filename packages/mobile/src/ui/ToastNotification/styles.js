@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { animated } from 'react-spring'
+import { animated } from 'react-spring/renderprops'
 import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
 
 function mapTypeToColor(type) {

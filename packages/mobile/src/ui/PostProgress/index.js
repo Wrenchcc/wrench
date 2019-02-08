@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { compose } from 'react-apollo'
-import { Spring } from 'react-spring'
+import { Spring } from 'react-spring/renderprops'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { onUploadProgress } from 'utils/storage/s3/uploadProgress'

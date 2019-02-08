@@ -1,5 +1,5 @@
 import React from 'react'
-import { Spring } from 'react-spring'
+import { Spring } from 'react-spring/renderprops'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { ToastNotificationContainer } from 'store'

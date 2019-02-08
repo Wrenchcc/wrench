@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { animated } from 'react-spring'
+import { animated } from 'react-spring/renderprops'
 
 export const Base = styled.View`
   overflow: hidden;

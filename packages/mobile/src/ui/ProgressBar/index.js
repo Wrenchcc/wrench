@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Spring } from 'react-spring'
+import { Spring } from 'react-spring/renderprops'
 import { Base, Bar } from './styles'
 
 const DEFAULT_BAR_HEIGHT = 3
