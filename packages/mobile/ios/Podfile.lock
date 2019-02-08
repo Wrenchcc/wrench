@@ -166,7 +166,7 @@ PODS:
     - React
   - react-native-pinchable (0.1.1):
     - React
-  - react-native-splash-screen (3.1.1):
+  - react-native-splash-screen (3.2.0):
     - React
   - react-native-video (4.3.1):
     - React
@@ -225,7 +225,7 @@ PODS:
     - React
   - RNDeviceInfo (0.21.5):
     - React
-  - RNFirebase (5.2.1):
+  - RNFirebase (5.2.2):
     - Firebase/Core
     - React
   - RNGestureHandler (1.0.15):
@@ -411,7 +411,7 @@ SPEC CHECKSUMS:
   react-native-fbsdk: d5f98cc5abecbcc463e3c35c04743d716d002d37
   react-native-haptic-feedback: f675486e3889e3229272158943c1e9e075247e5a
   react-native-pinchable: 377444b464693fe4f4eafa40eab2560f3555bd0c
-  react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
+  react-native-splash-screen: a49be22f0f6648b8416f3bd28258645eeaa5b42b
   react-native-video: 44c6befbc1526283ca1919891fcebe4680feade4
   react-native-webview: a42108b827082f8f0333529b0772102031d5960d
   ReactNativePermissions: 9f2d9c45c98800795e6c2ed330e25d11a66a8169
