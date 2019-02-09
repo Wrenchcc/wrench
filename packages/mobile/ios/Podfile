@@ -2,6 +2,8 @@ ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 platform :ios, '9.0'
 
+install! 'cocoapods', :deterministic_uuids => false
+
 target 'Wrench' do
   platform :ios, '9.0'
 
