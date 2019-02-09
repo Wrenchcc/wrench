@@ -34,9 +34,9 @@ const LoadMoreComments = gql`
 `
 
 const LoadMoreReplies = gql`
-  query loadMoreReplies($id: ID!, $after: String, $first: Int) {
+  query loadMoreReplies($id: ID!, $after: String) {
     comment(id: $id) {
-      replies: repliesConnection(after: $after, first: $first) {
+      replies: repliesConnection(after: $after, first: 5) {
         pageInfo {
           hasNextPage
         }

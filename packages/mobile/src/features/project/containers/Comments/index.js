@@ -134,7 +134,8 @@ class Comments extends Component {
               paddingRight: 0,
             }}
             ListHeaderComponent={
-              post && (
+              post
+              && post.caption && (
                 <CommentItem
                   first
                   data={{
