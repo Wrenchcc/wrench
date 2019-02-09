@@ -1124,10 +1124,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
   integrity sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg==
 
-"@react-navigation/core@3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.0.3.tgz#2c88f0553656fba04ff84a50711c35618bec1a72"
-  integrity sha512-cE0hfOrh+qbAs0tjvlek99gas6+ecW5rtORhTdfZQ1byDGYBKjYZnDTEMImbWqAaAobyXOLEzK7A/zNrpDfiYA==
+"@react-navigation/core@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.1.0.tgz#2ab34a8d913564d4454dbdf5d68b6b4c70302099"
+  integrity sha512-VeS2npscdcz8n7rchIEEURfg4vS9IaaItOh8o5lHLByeNHKBASfWfu5KEoAFmX9XnrUSxvG98VjptQxyCLjtYA==
   dependencies:
     create-react-context "0.2.2"
     hoist-non-react-statics "^3.0.1"
@@ -5176,10 +5176,10 @@ react-native-video@^4.3.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.0.6:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.6.tgz#52555cc0413ab2d63aa888f4da7e183402eafa68"
-  integrity sha512-pcGKny4z39S62rV/1Yh3eU9yhtePXkRFw6Kx65uhIB7Vurku8PZSpi/OJij9DQkxB/5Qn5ldA1a7dZ02CZnYdA==
+react-native-webview@^5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.7.tgz#1060f7c652d251ea3610eacfc4bd9e9997862f56"
+  integrity sha512-jzYrpxPdHGXc9KW0J6Ec4zOXeDFy8BZQS+nUjCqs/cPSPkQO2H/4e6IXz9Y1DTC4l08H2RQLeWPo9nml69MXmA==
   dependencies:
     escape-string-regexp "^1.0.5"
     fbjs "^0.8.17"
@@ -5265,12 +5265,12 @@ react-navigation-tabs@1.0.2:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.1.5.tgz#3e039b195fb5c505db77717f929c2a08d6659a0b"
-  integrity sha512-12VqSVt402dfoiXRBIm+6x7S/muZGYKMrbHrCrUnDMZj/QNplgaU45e6p0YIgqpuNW41PI/sP8Ykk+Q31pb52g==
+react-navigation@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.2.0.tgz#8d75c7514b3c994d5a1833c2e0512efba095bc60"
+  integrity sha512-/26pZRlDlNTPk7umMJhOAOjzeej4+5/7s48QRlZhehHJCUNnEkXn2yI8eMfx8q+psgIYg+da0ptIZjzE1YD8hg==
   dependencies:
-    "@react-navigation/core" "3.0.3"
+    "@react-navigation/core" "3.1.0"
     "@react-navigation/native" "3.1.4"
     react-navigation-drawer "1.1.0"
     react-navigation-stack "1.0.9"
@@ -5284,10 +5284,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^8.0.4:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.4.tgz#410da78ddb1f30a4567492288f9be963aa9c3d30"
-  integrity sha512-cNAs+ChoA4ZcUnVzd0KjJpkZCWOQSO82FtvYS6JlCgt4aRvpg7qbeq5ySTzFnAHo02mj0vhqQWf5MVpBZexuYA==
+react-spring@^8.0.5:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.5.tgz#4e9f9ba7a2ee7c0c3a4d3c920604c8703c036302"
+  integrity sha512-n8G4NWfbye26SUT9lmU43q70nhIfojD2LSV0gafvYK6jFIAAlP52k5aK6EYs1xxRPRs+1r+ndcPveXYOwEEl2g==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
