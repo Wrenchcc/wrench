@@ -6,7 +6,7 @@ const AWS = require('aws-sdk')
 
 const S3 = new AWS.S3({
   signatureVersion: 'v4',
-  region: 'eu-central-1',
+  region: 'us-east-1',
 })
 
 // set the S3 and API GW endpoints
