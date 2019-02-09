@@ -24,6 +24,7 @@ export default async (
 
   if (after || before) {
     findOptions.where = {
+      ...options.where,
       ...findOperators({ after, before }, orderBy),
     }
   }
