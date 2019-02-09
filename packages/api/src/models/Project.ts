@@ -54,6 +54,16 @@ export default class Project extends BaseEntity {
       .getRawMany()
   }
 
+  public static async projectCount(userId) {
+    return getRepository(Project)
+      .createQueryBuilder('projects')
+      .select('COUNT(projects.id)', 'count')
+      .where('projects.userId = :userId', {
+        userId,
+      })
+      .getRawOne()
+  }
+
   @ManyToOne(() => User, user => user.projects)
   public user: User
 
