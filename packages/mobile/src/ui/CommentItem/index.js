@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { withNamespaces } from 'react-i18next'
 import { navigateToUser } from 'navigation/actions'
@@ -6,18 +7,18 @@ import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
-import { Base, Content, Row, Reply, LoadReplies, Border } from './styles'
+import { Base, Content, Row, Reply, LoadReplies, Border, Spinner } from './styles'
 
 const Item = ({
+  createdAt,
+  first = false,
+  highlightedId = null,
   id,
-  user,
-  text,
   isReply,
   onReply,
-  createdAt,
-  highlightedId = null,
   t,
-  first = false,
+  text,
+  user,
 }) => {
   const animatedValue = new Animated.Value(0)
   if (id === highlightedId) {
@@ -70,21 +71,25 @@ const Item = ({
   )
 }
 
-const CommentItem = props => props.data.node.replies ? (
+Item.propTypes = {
+  createdAt: PropTypes.string.isRequired,
+  first: PropTypes.bool,
+  highlightedId: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  isReply: PropTypes.bool,
+  onReply: PropTypes.func,
+  text: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+}
+
+const CommentItem = ({ t, data, onReply, fetchMoreReplies, first }) => data.node.replies ? (
     <>
-      <Item {...props.data.node} onReply={props.onReply} t={props.t} />
-      {props.data.node.replies.edges.map(({ node }) => (
-        <Item
-          key={node.id}
-          isReply
-          {...node}
-          id={node.commentId}
-          t={props.t}
-          onReply={props.onReply}
-        />
+      <Item {...data.node} onReply={onReply} t={t} />
+      {data.node.replies.edges.map(({ node }) => (
+        <Item key={node.id} isReply {...node} id={node.commentId} t={t} onReply={onReply} />
       ))}
 
-      {props.data.node.replies.pageInfo.hasNextPage && (
+      {data.node.replies.pageInfo.hasNextPage && (
         <LoadReplies>
           <Border />
           <Text
@@ -92,21 +97,28 @@ const CommentItem = props => props.data.node.replies ? (
             fontSize={12}
             color="light_grey"
             hapticFeedback="impactLight"
-            onPress={() => props.fetchMoreReplies(
-              props.data.node.id,
-              props.data.node.replies.edges[props.data.node.replies.edges.length - 1].cursor
+            onPress={() => fetchMoreReplies(
+              data.node.id,
+              data.node.replies.edges[data.node.replies.edges.length - 1].cursor
             )
             }
           >
-            {props.t('CommentItem:loadReplies', {
-              count: props.data.node.replies.totalCount - props.data.node.replies.edges.length,
+            {t('CommentItem:loadReplies', {
+              count: data.node.replies.totalCount - data.node.replies.edges.length,
             })}
           </Text>
         </LoadReplies>
       )}
     </>
 ) : (
-    <Item {...props.data.node} t={props.t} first={props.first} onReply={props.onReply} />
+    <Item {...data.node} t={t} first={first} onReply={onReply} />
 )
+
+CommentItem.propTypes = {
+  data: PropTypes.object.isRequired,
+  fetchMoreReplies: PropTypes.func,
+  onReply: PropTypes.func,
+  first: PropTypes.bool,
+}
 
 export default withNamespaces('CommentItem')(CommentItem)

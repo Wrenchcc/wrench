@@ -20,6 +20,10 @@ export const Content = styled.View`
   flex: 1;
 `
 
+export const Spinner = styled.ActivityIndicator`
+  margin-left: 10;
+`
+
 export const Border = styled.View`
   width: 20;
   height: ${StyleSheet.hairlineWidth};
