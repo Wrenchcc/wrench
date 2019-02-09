@@ -713,10 +713,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.398.0:
-  version "2.398.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.398.0.tgz#f916aae084b5075e7277336dda63399a5bb6fe05"
-  integrity sha512-Czjq9QESO73Quz+Uzyeg80qAMPpUY6vBIrlAGjAPEE9R+eKZ9d2QinuYO4gIjSpyuU+dgKqBEAGyKwNYEyKJcA==
+aws-sdk@^2.400.0:
+  version "2.400.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.400.0.tgz#21041439ceeba8e6339b7bed54f2f3703243bbef"
+  integrity sha512-FJjRXajLnI52F0C1E4nFARk/907x4ZuffwFd6jiBQfaepT03wsY1PcJNEQ5CNHYA2qxAx4HezL2pKySEX+g87g==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -4414,10 +4414,10 @@ typeorm@next:
     yargs "^11.1.0"
     zen-observable "^0.8.9"
 
-typescript@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.1.tgz#6de14e1db4b8a006ac535e482c8ba018c55f750b"
-  integrity sha512-cTmIDFW7O0IHbn1DPYjkiebHxwtCMU+eTy30ZtJNBPF9j2O1ITu5XH2YnBeVRKWHqF+3JQwWJv0Q0aUgX8W7IA==
+typescript@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3.tgz#f1657fc7daa27e1a8930758ace9ae8da31403221"
+  integrity sha512-Y21Xqe54TBVp+VDSNbuDYdGw0BpoR/Q6wo/+35M8PAU0vipahnyduJWirxxdxjsAkS7hue53x2zp8gz7F05u0A==
 
 union-value@^1.0.0:
   version "1.0.0"
