@@ -7,11 +7,11 @@ import InfiniteList from 'ui/InfiniteList'
 import MentionUser from 'ui/MentionUser'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { TOTAL_HEADER_HEIGHT } from 'ui/constants'
+import NoResults from 'ui/NoResults'
 import { isIphone } from 'utils/platform'
 
 // TODO: And same offset on comments and posts
 // Keyboard height + input
-// No result
 const DEFAULT_OFFSET_BOTTOM = isIphone ? 360 : 122
 
 const styles = {
@@ -34,16 +34,9 @@ class Mention extends Component {
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
     onPress: PropTypes.func.isRequired,
-    onNoResults: PropTypes.func.isRequired,
     offsetBottom: PropTypes.number,
     offsetTop: PropTypes.number,
     destination: PropTypes.string,
-  }
-
-  componentDidUpdate() {
-    // if (isEmpty(filter(a => a.fullName.toLowerCase().includes(this.props.query), users))) {
-    //   this.props.onNoResults()
-    // }
   }
 
   renderItem = ({ item }) => {
@@ -69,6 +62,7 @@ class Mention extends Component {
           defaultPadding
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"
+          ListEmptyComponent={<NoResults />}
           data={users}
           refetch={refetch}
           fetchMore={fetchMore}

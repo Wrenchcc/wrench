@@ -5,7 +5,6 @@ import { PROJECT_SORT_TYPES } from 'utils/enums'
 import postsInfoFragment from 'graphql/fragments/post/postsInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
-// TODO: Fragments and on refresh get popular projects too
 const PopularProjectsQuery = gql`
   query getPopularProjects($type: ProjectSortType!, $after: String) {
     projects(type: $type, after: $after) {

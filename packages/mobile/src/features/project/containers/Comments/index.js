@@ -52,11 +52,11 @@ class Comments extends Component {
   }
 
   onReply = (user, commentId) => {
+    this.commentField.focus()
     this.setState({
       commentId,
       text: `${TRIGGER}${user.username} `,
     })
-    this.commentField.focus()
   }
 
   onChangeText = text => {
@@ -118,7 +118,6 @@ class Comments extends Component {
           {this.state.isOpen && (
             <Mention
               query={this.state.query}
-              onNoResults={this.closeMention}
               onPress={this.onMentionPress}
               offsetBottom={MENTION_OFFSET_BOTTOM}
             />
