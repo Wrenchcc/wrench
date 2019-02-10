@@ -9,3 +9,4 @@ export const getProjectSlug = pathOr(null, ['state', 'params', 'project', 'slug'
 
 export const getUsernameFromDeeplink = pathOr(null, ['state', 'params', 'username'])
 export const getProjectSlugFromDeeplink = pathOr(null, ['state', 'params', 'slug'])
+export const getPostIdFromDeeplink = pathOr(null, ['state', 'params', 'postId'])

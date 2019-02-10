@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { pathOr, update } from 'ramda'
 import { graphql } from 'react-apollo'
-import { getPostId } from 'navigation/utils/selectors'
+import { getPostId, getPostIdFromDeeplink } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import commentInfoFragment from 'graphql/fragments/comment/commentInfo'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
@@ -62,7 +62,7 @@ const LoadMoreReplies = gql`
 const getCommentsOptions = {
   options: ({ navigation }) => ({
     variables: {
-      postId: getPostId(navigation),
+      postId: getPostId(navigation) || getPostIdFromDeeplink(navigation),
     },
     fetchPolicy: 'cache-and-network',
   }),
