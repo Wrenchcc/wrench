@@ -17,8 +17,6 @@ import { isIphone } from 'utils/platform'
 let scrollView = null
 
 // TODO: Make platform specific
-// TODO: Show latest searched users
-// TODO: Remove added user from suggestions
 const KEYBOARD_OFFSET = isIphone ? 180 : 0
 const MENTION_OFFSET_BOTTOM = isIphone ? 240 : 0
 const TRIGGER = '@'
