@@ -9,7 +9,13 @@ import Selector from './types/Selector'
 const getActionType = ({ type, selected, onPress }) => {
   switch (type) {
     case 'switch':
-      return <Switch onTintColor={COLORS.DARK} value={selected} onValueChange={onPress} />
+      return (
+        <Switch
+          trackColor={{ true: COLORS.DARK, false: null }}
+          value={selected}
+          onValueChange={onPress}
+        />
+      )
     case 'selector':
       return <Selector selected={selected} />
     default:
