@@ -17,6 +17,7 @@ export default {
   },
   [ROUTE_NAMES.COMMENTS]: {
     component: Comments,
+    path: 'comments/:postId',
   },
   [ROUTE_NAMES.EDIT_PROJECT]: {
     component: EditProject,
@@ -41,6 +42,7 @@ export default {
   },
   [ROUTE_NAMES.FOLLOWERS]: {
     component: Followers,
+    path: 'followers/:projectId',
   },
   [ROUTE_NAMES.ADD_PROJECT]: {
     component: AddProject,

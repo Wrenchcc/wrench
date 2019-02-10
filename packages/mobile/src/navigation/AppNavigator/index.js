@@ -17,13 +17,13 @@ class AppNavigator extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.dynamicLinksListener()
+    this.dynamicLinkListener()
     this.notificationListener()
     this.notificationOpenedListener()
   }
 
   createdynamicLinkListener() {
-    this.dynamicLinksListener = links().onLink(url => {
+    this.dynamicLinkListener = links().onLink(url => {
       const path = extractDeepLinkFromDynamicLink(url)
       Linking.canOpenURL(path).then(() => Linking.openURL(path))
     })
@@ -32,30 +32,27 @@ class AppNavigator extends PureComponent {
   async createNotificationListeners() {
     // Triggered when a particular notification has been received in foreground
     this.notificationListener = notifications().onNotification(notification => {
-      const { title, body } = notification
-      this.showAlert(title, body)
+      // TODO: Show in app banner
+      // const { title, body } = notification
+      Alert.alert('onNotification', JSON.stringify(notification))
     })
 
     // If your app is in background, you can listen for when a
     // notification is clicked / tapped / opened as follows:
     this.notificationOpenedListener = notifications().onNotificationOpened(notificationOpen => {
-      const { title, body } = notificationOpen.notification
-      this.showAlert(title, body)
+      // TODO: Route to view
+      // const { title, body } = notificationOpen.notification
+      Alert.alert('onNotificationOpened', JSON.stringify(notificationOpen.notification))
     })
 
     // If your app is closed, you can check if it was opened by a
     // notification being clicked / tapped / opened as follows:
-    const notificationOpen = await notifications().getInitialNotification()
+    const { notificationOpen } = await notifications().getInitialNotification()
     if (notificationOpen) {
-      const { title, body } = notificationOpen.notification
-      this.showAlert(title, body)
+      // const { title, body } = notificationOpen.notification
+      // TODO: Route to view
+      Alert.alert('getInitialNotification', JSON.stringify(notificationOpen.notification))
     }
-  }
-
-  showAlert(title, body) {
-    Alert.alert(title, body, [{ text: 'OK', onPress: () => console.log('OK Pressed') }], {
-      cancelable: false,
-    })
   }
 
   render() {
