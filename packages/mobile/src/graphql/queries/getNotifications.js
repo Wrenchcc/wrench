@@ -21,6 +21,7 @@ export const NotificationsQuery = gql`
         hasNextPage
       }
       edges {
+        cursor
         node {
           id
           type

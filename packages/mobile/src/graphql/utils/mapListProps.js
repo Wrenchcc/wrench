@@ -11,7 +11,9 @@ export const mapListProps = type => ({ data: { fetchMore, loading, networkStatus
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
     fetchMore: () => fetchMore({
-      variables: { after: data.edges[data.edges.length - 1].cursor },
+      variables: {
+        after: data.edges[data.edges.length - 1].cursor,
+      },
       updateQuery: (previousResult, { fetchMoreResult }) => {
         const { edges, pageInfo, ...rest } = fetchMoreResult[type]
 

@@ -3,7 +3,7 @@ import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
 import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getTokens, setTokens } from 'graphql/utils/auth'
-import { track, events } from 'utils/analytics'
+import { track, events, logError } from 'utils/analytics'
 import { resetNavigation } from 'navigation/actions'
 
 function foreceSignOut() {
@@ -57,8 +57,9 @@ export default onError(({ graphQLErrors, operation, forward }) => {
               return forward(operation).subscribe(subscriber)
             })
             .catch(() => foreceSignOut())
-        } catch (e) {
-          observer.error(e)
+        } catch (err) {
+          observer.error(err)
+          logError(err)
         }
 
         return null
