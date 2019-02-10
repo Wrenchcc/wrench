@@ -3,6 +3,7 @@ import { getDeviceToken } from '../../../models/DeviceToken'
 import { getNotificationSettings, getUserLocale } from '../../../models/UserSettings'
 import { getUserById } from '../../../models/User'
 import formatNotification from './formatNotification'
+import formatCustomData from './formatCustomData'
 import client from '../client'
 
 const debug = require('debug')('api:firebase')
@@ -38,6 +39,7 @@ export default async ({ data, userId, sendTo, type }) => {
       },
     },
     notification: formatNotification(type, data, user, locale),
+    ...formatCustomData(type, data),
     token,
   }
 

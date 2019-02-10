@@ -30,6 +30,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
         data: {
           text: input.text,
           title: project.title,
+          postId: post.id,
         },
         sendTo: post.userId,
         type: notificationType,
@@ -57,6 +58,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
             data: {
               text: input.text,
               title: project.title,
+              postId: post.id,
             },
             sendTo: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,
