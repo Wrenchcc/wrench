@@ -5,7 +5,6 @@ export default gql`
   fragment commentInfoSmall on CommentConnection {
     totalCount
     edges {
-      cursor
       node {
         id
         text

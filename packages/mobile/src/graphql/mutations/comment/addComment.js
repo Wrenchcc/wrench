@@ -170,7 +170,13 @@ const addCommentOptions = {
             }
           }
 
-          cache.writeQuery({ query: CommentsQuery, data: comments })
+          cache.writeQuery({
+            query: CommentsQuery,
+            variables: {
+              postId,
+            },
+            data: comments,
+          })
         },
       }),
     }
