@@ -34,7 +34,9 @@ class AppNavigator extends PureComponent {
     this.notificationListener = notifications().onNotification(notification => {
       // TODO: Show in app banner
       // const { title, body } = notification
-      Alert.alert('onNotification', JSON.stringify(notification))
+      if (notification) {
+        Alert.alert('onNotification', JSON.stringify(notification))
+      }
     })
 
     // If your app is in background, you can listen for when a
@@ -42,7 +44,9 @@ class AppNavigator extends PureComponent {
     this.notificationOpenedListener = notifications().onNotificationOpened(notificationOpen => {
       // TODO: Route to view
       // const { title, body } = notificationOpen.notification
-      Alert.alert('onNotificationOpened', JSON.stringify(notificationOpen.notification))
+      if (notificationOpen) {
+        Alert.alert('onNotificationOpened', JSON.stringify(notificationOpen))
+      }
     })
 
     // If your app is closed, you can check if it was opened by a
@@ -51,7 +55,9 @@ class AppNavigator extends PureComponent {
     if (notificationOpen) {
       // const { title, body } = notificationOpen.notification
       // TODO: Route to view
-      Alert.alert('getInitialNotification', JSON.stringify(notificationOpen.notification))
+      if (notificationOpen) {
+        Alert.alert('getInitialNotification', JSON.stringify(notificationOpen))
+      }
     }
   }
 
