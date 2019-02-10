@@ -9,3 +9,5 @@ export const extractDeepLinkFromDynamicLink = (dynamicLink = '') => {
   const uri = path.substring(1)
   return `${uriPrefix}${uri}`
 }
+
+export const formatDeepLink = path => `${uriPrefix}${path}`

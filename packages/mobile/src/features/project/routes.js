@@ -42,7 +42,6 @@ export default {
   },
   [ROUTE_NAMES.FOLLOWERS]: {
     component: Followers,
-    path: 'followers/:projectId',
   },
   [ROUTE_NAMES.ADD_PROJECT]: {
     component: AddProject,
