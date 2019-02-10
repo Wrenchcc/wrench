@@ -16,14 +16,14 @@ export default isAuthenticated(async (_, { id }, ctx) => {
     await Promise.all([
       ctx.db.Following.save({ projectId: id, userId: ctx.userId }),
       ctx.db.Notification.save({
-        sendTo: project.userId,
+        to: project.userId,
         type: NOTIFICATION_TYPES.NEW_FOLLOWER,
         typeId: project.id,
         userId: ctx.userId,
       }),
       ctx.services.firebase.send({
         data: project,
-        sendTo: project.userId,
+        to: project.userId,
         type: NOTIFICATION_TYPES.NEW_FOLLOWER,
         userId: ctx.userId,
       }),

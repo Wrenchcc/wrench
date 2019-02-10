@@ -8,21 +8,21 @@ import client from '../client'
 
 const debug = require('debug')('api:firebase')
 
-export default async ({ data, userId, sendTo, type }) => {
-  const notificationSettings = await getNotificationSettings(sendTo)
+export default async ({ data, userId, to, type }) => {
+  const notificationSettings = await getNotificationSettings(to)
   const isEnabled = pathOr(true, [type], notificationSettings)
 
   if (!isEnabled) {
     return null
   }
 
-  const token = await getDeviceToken(sendTo)
+  const token = await getDeviceToken(to)
   if (!token) {
     debug('No device token found for userId: %o', userId)
     return null
   }
 
-  const locale = await getUserLocale(sendTo)
+  const locale = await getUserLocale(to)
   const user = await getUserById(userId)
 
   const message = {
