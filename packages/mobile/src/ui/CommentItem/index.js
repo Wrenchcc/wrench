@@ -84,17 +84,9 @@ Item.propTypes = {
 
 const CommentItem = ({ t, data, onReply, fetchMoreReplies, first }) => data.node.replies ? (
     <>
-      <Item {...data.node} onReply={onReply} t={t} highlightedId={highlightedId} />
+      <Item {...data.node} onReply={onReply} t={t} />
       {data.node.replies.edges.map(({ node }) => (
-        <Item
-          key={node.id}
-          isReply
-          {...node}
-          id={node.commentId}
-          t={t}
-          onReply={onReply}
-          highlightedId={highlightedId}
-        />
+        <Item key={node.id} isReply {...node} id={node.commentId} t={t} onReply={onReply} />
       ))}
 
       {data.node.replies.pageInfo.hasNextPage && (
