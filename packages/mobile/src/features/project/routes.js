@@ -17,7 +17,7 @@ export default {
   },
   [ROUTE_NAMES.COMMENTS]: {
     component: Comments,
-    path: 'comments/:postId',
+    path: 'comments/:postId/:commentId',
   },
   [ROUTE_NAMES.EDIT_PROJECT]: {
     component: EditProject,

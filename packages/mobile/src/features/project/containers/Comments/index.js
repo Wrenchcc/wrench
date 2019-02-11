@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
+import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getComments } from 'graphql/queries/comment/getComments'
 import { addComment } from 'graphql/mutations/comment/addComment'
@@ -99,6 +100,7 @@ class Comments extends Component {
       data={item}
       onReply={this.onReply}
       fetchMoreReplies={this.props.fetchMoreReplies}
+      highlightId={pathOr(null, ['navigation', 'state', 'params', 'commentId'], this.props)}
     />
   )
 

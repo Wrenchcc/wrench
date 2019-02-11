@@ -7,7 +7,6 @@ export const Base = styled.View`
   flex-direction: row;
   padding-top: 10;
   padding-bottom: ${props => (props.first ? 20 : 10)};
-  margin-bottom: ${props => (props.first ? 15 : 0)};
   margin-left: ${props => (props.isReply ? 40 : 0)}px;
   padding-left: 20;
   padding-right: 20;

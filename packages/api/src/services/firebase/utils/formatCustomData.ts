@@ -13,7 +13,7 @@ export default function formatCustomData(type, data) {
     case NOTIFICATION_TYPES.NEW_REPLY:
       return {
         data: {
-          path: `comments/${data.postId}`,
+          path: `comments/${data.postId}/${data.commentId}`,
         },
       }
     default:

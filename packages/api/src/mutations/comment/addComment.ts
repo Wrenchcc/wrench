@@ -28,9 +28,10 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
       // Send notification to post owner
       ctx.services.firebase.send({
         data: {
+          commentId: comment.id,
+          postId: post.id,
           text: input.text,
           title: project.title,
-          postId: post.id,
         },
         to: post.userId,
         type: notificationType,
@@ -56,6 +57,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
           // Send notification to mentioned user
           ctx.services.firebase.send({
             data: {
+              commentId: comment.id,
               text: input.text,
               title: project.title,
               postId: post.id,
