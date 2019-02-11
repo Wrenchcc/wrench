@@ -21,7 +21,18 @@ const deletePostOptions = {
         },
         updateQueries: {
           getCurrentUserProfile: deletePostFromCache({ type: 'user', id }),
-          getProjectBySlugQuery: deletePostFromCache({ type: 'project', id }),
+          getProjectBySlug: deletePostFromCache({ type: 'project', id }),
+          getRecentPosts: prev => {
+            const edges = filter(edge => edge.node.id !== id, prev.posts.edges)
+
+            return {
+              ...prev,
+              posts: {
+                ...prev.posts,
+                edges,
+              },
+            }
+          },
           getFeed: prev => {
             const edges = filter(edge => edge.node.id !== id, prev.feed.posts.edges)
 
