@@ -367,10 +367,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@zeit/ncc@0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.14.0.tgz#1ac4c4555b8647a3ae1fb4f6eed95a4d2b3d418d"
-  integrity sha512-kDyiPuimSkIXgLMwudLFqFMQ2l7cCACWjGN/8HIyCGdLWGRqefmGqE903LB785PjURtEso6SX3r35FxJ6dbrrw==
+"@zeit/ncc@0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.15.0.tgz#0f91f7ba5886044081d543ead2ad4ea0c6e45115"
+  integrity sha512-t64mbGZyC5QXqT3ws4NYzg+CX1DSNVelCgJgBithoKrkCVVKoHJ9dMDeGfeIrbvAwEwax0sP/ay+Pndl+T8o7g==
 
 abbrev@1:
   version "1.1.1"
@@ -2811,10 +2811,10 @@ lru-cache@^5.0.0:
   dependencies:
     yallist "^3.0.2"
 
-luxon@^1.11.1:
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.11.1.tgz#4b59f28264ae7ec27b42fe0fb18564dae771d2f7"
-  integrity sha512-ZmfPxP91Swg5MmHOeV/hvdIWiUYm6LCySg0xVRBVtOHZdNqiD32qxUhMek4XbyyXWtKdGMUD+hW+o5pilbRVuA==
+luxon@^1.11.2:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.11.2.tgz#0073566e8b6f493d68891c6b871dd72196547c24"
+  integrity sha512-dD6sJotzprPhqJAp9eZbc1y1cc0CMiwRabsaEfFBJT2lRkWdOqJe3QmxB8GNwjOHZ6fciuGiLK3htgxZgphGxA==
 
 make-dir@^1.0.0:
   version "1.3.0"
