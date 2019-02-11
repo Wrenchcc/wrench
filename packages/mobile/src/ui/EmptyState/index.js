@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { navigateToAddProject, navigateToAddMedia } from 'navigation/actions'
@@ -29,8 +29,7 @@ const showButton = type => {
   }
 }
 
-function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
-  return (
+const EmptyState = memo(({ t, type = TYPES.PROJECT, params = {} }) => (
     <Base>
       <Title>{t(`EmptyState:${type}:title`)}</Title>
       <Description color="grey">{t(`EmptyState:${type}:description`)}</Description>
@@ -42,8 +41,7 @@ function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
         </Button>
       )}
     </Base>
-  )
-}
+))
 
 EmptyState.propTypes = {
   type: PropTypes.string,

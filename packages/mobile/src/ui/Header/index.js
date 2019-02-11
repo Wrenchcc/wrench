@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Base, Left, Center, Right } from './styles'
 
-function Header({ headerLeft, headerCenter, headerRight, transparent = true }) {
-  return (
+const Header = memo(({ headerLeft, headerCenter, headerRight, transparent = true }) => (
     <Base transparent={transparent}>
       <Left>{headerLeft}</Left>
       <Center>{headerCenter && headerCenter}</Center>
       <Right>{headerRight || null}</Right>
     </Base>
-  )
-}
+))
 
 Header.propTypes = {
   transparent: PropTypes.bool,

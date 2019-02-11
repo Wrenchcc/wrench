@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { withNamespaces } from 'react-i18next'
@@ -7,8 +7,7 @@ import Search from 'ui/Search'
 import Text from 'ui/Text'
 import Add from 'features/project/components/Add'
 
-function SearchBar({ placeholder, cancelButton, t, ...props }) {
-  return (
+const SearchBar = memo(({ placeholder, cancelButton, t, ...props }) => (
     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
       <Search
         onPress={() => navigateToSearch()}
@@ -24,8 +23,7 @@ function SearchBar({ placeholder, cancelButton, t, ...props }) {
         <Add style={{ width: 20 }} />
       )}
     </View>
-  )
-}
+))
 
 SearchBar.propTypes = {
   placeholder: PropTypes.bool,

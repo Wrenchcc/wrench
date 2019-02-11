@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Spring } from 'react-spring/renderprops'
 import { Base, Bar } from './styles'
@@ -6,8 +6,14 @@ import { Base, Bar } from './styles'
 const DEFAULT_BAR_HEIGHT = 3
 const DEFAULT_WIDTH = 0
 
-function ProgressBar({ progress, opacity, backgroundColor, borderRadius, fillColor, barHeight }) {
-  return (
+const ProgressBar = memo(({
+  progress,
+  opacity,
+  backgroundColor,
+  borderRadius,
+  fillColor,
+  barHeight,
+}) => (
     <Base
       opacity={opacity}
       height={barHeight}
@@ -18,8 +24,7 @@ function ProgressBar({ progress, opacity, backgroundColor, borderRadius, fillCol
         {({ width }) => <Bar width={width} fillColor={fillColor} height={barHeight} />}
       </Spring>
     </Base>
-  )
-}
+))
 
 ProgressBar.propTypes = {
   backgroundColor: PropTypes.string,

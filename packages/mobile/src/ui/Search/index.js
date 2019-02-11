@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { search } from 'images'
 import { COLORS } from 'ui/constants'
 import { Base, Input, Icon, Placeholder, Text } from './styles'
 
-function Search({ t, style, onPress, placeholder = true, ...props }) {
-  return (
+const Search = memo(({ t, style, onPress, placeholder = true, ...props }) => (
     <Base style={style}>
       <Icon source={search} />
       {placeholder ? (
@@ -26,8 +25,7 @@ function Search({ t, style, onPress, placeholder = true, ...props }) {
         />
       )}
     </Base>
-  )
-}
+))
 
 Search.propTypes = {
   style: PropTypes.object,

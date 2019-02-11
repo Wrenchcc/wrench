@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Spring } from 'react-spring/renderprops'
 import { withNamespaces } from 'react-i18next'
 import { Subscribe } from 'unstated'
@@ -9,8 +9,7 @@ import { Base } from './styles'
 const FROM_HEIGHT = 0
 const TO_HEIGHT = 40
 
-function ToastNotification({ t }) {
-  return (
+const ToastNotification = memo(({ t }) => (
     <Subscribe to={[ToastNotificationContainer]}>
       {({ state: { message, type, show } }) => (
         <Spring
@@ -28,7 +27,6 @@ function ToastNotification({ t }) {
         </Spring>
       )}
     </Subscribe>
-  )
-}
+))
 
 export default withNamespaces('ToastNotification')(ToastNotification)

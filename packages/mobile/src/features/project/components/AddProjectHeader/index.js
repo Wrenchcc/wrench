@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { ActivityIndicator } from 'react-native'
 import { withNamespaces } from 'react-i18next'
@@ -6,15 +6,14 @@ import { navigateBack } from 'navigation/actions'
 import { Header, Text, Icon } from 'ui'
 import { closeDark } from 'images'
 
-function AddProjectHeader({
+const AddProjectHeader = memo(({
   t,
   actionRight,
   icon = closeDark,
   translationKey = 'next',
   resetState,
   isSaving = false,
-}) {
-  return (
+}) => (
     <Header
       headerLeft={
         <Icon
@@ -44,8 +43,7 @@ function AddProjectHeader({
         )
       }
     />
-  )
-}
+))
 
 AddProjectHeader.propTypes = {
   actionRight: PropTypes.any,

@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import { navigateToEditProject } from 'navigation/actions'
 import Text from 'ui/Text'
 
-function Edit({ t, project }) {
-  return (
-    <Text medium onPress={() => navigateToEditProject({ project })}>
-      {t('Edit:edit')}
-    </Text>
-  )
-}
+const Edit = memo(({ t, project }) => (
+  <Text medium onPress={() => navigateToEditProject({ project })}>
+    {t('Edit:edit')}
+  </Text>
+))
 
 Edit.propTypes = {
   project: PropTypes.object.isRequired,

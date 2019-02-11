@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Switch } from 'react-native'
 import PropTypes from 'prop-types'
 import { arrowRight } from 'images'
@@ -23,15 +23,13 @@ const getActionType = ({ type, selected, onPress }) => {
   }
 }
 
-function SelectionItem({ title, hasChildren, last, ...rest }) {
-  return (
+const SelectionItem = memo(({ title, hasChildren, last, ...rest }) => (
     <Base onPress={rest.onPress} disabled={!rest.onPress} last={last}>
       <Text color={last && 'orange'}>{title}</Text>
       {hasChildren && <Icon source={arrowRight} />}
       {getActionType(rest)}
     </Base>
-  )
-}
+))
 
 SelectionItem.propTypes = {
   title: PropTypes.string,

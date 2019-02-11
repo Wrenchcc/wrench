@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Base, Text } from './styles'
 
-function Button({ children, color, ...props }) {
-  return (
-    <Base {...props}>
-      <Text medium color={color} fontSize={15}>
-        {children}
-      </Text>
-    </Base>
-  )
-}
+const Button = memo(({ children, color, ...props }) => (
+  <Base {...props}>
+    <Text medium color={color} fontSize={15}>
+      {children}
+    </Text>
+  </Base>
+))
 
 Button.propTypes = {
   children: PropTypes.any,

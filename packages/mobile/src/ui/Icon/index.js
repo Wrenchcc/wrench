@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Image } from 'react-native'
 import Touchable from 'ui/Touchable'
 
-function Icon({ onPress = () => {}, source, opacity = 1, ...rest }) {
-  return (
+const Icon = memo(({ onPress = () => {}, source, opacity = 1, ...rest }) => (
     <Touchable onPress={onPress} {...rest}>
       <Image source={source} style={{ opacity }} />
     </Touchable>
-  )
-}
+))
 
 Icon.propTypes = {
   opacity: PropTypes.number,
