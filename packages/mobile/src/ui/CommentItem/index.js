@@ -7,7 +7,7 @@ import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
-import { Base, Content, Row, Reply, LoadReplies, Border, Spinner } from './styles'
+import { Base, Content, Row, Reply, LoadReplies, Border } from './styles'
 
 const Item = ({
   createdAt,
@@ -84,9 +84,17 @@ Item.propTypes = {
 
 const CommentItem = ({ t, data, onReply, fetchMoreReplies, first }) => data.node.replies ? (
     <>
-      <Item {...data.node} onReply={onReply} t={t} />
+      <Item {...data.node} onReply={onReply} t={t} highlightedId={highlightedId} />
       {data.node.replies.edges.map(({ node }) => (
-        <Item key={node.id} isReply {...node} id={node.commentId} t={t} onReply={onReply} />
+        <Item
+          key={node.id}
+          isReply
+          {...node}
+          id={node.commentId}
+          t={t}
+          onReply={onReply}
+          highlightedId={highlightedId}
+        />
       ))}
 
       {data.node.replies.pageInfo.hasNextPage && (
@@ -117,8 +125,8 @@ const CommentItem = ({ t, data, onReply, fetchMoreReplies, first }) => data.node
 CommentItem.propTypes = {
   data: PropTypes.object.isRequired,
   fetchMoreReplies: PropTypes.func,
-  onReply: PropTypes.func,
   first: PropTypes.bool,
+  onReply: PropTypes.func,
 }
 
 export default withNamespaces('CommentItem')(CommentItem)
