@@ -15,6 +15,8 @@ import Footer from 'features/project/components/Footer'
 const FOOTER_HEIGHT = 500
 const START_OPACITY = 0
 
+let scrollView = null
+
 class Project extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
@@ -26,8 +28,12 @@ class Project extends PureComponent {
 
     return {
       headerTitle: projectTitle && (
-        // onPress={() => this.scrollView.scrollToOffset({ offset: 0 })}
-        <HeaderTitle opacity={params.opacity || new Animated.Value(0)}>{projectTitle}</HeaderTitle>
+        <HeaderTitle
+          opacity={params.opacity || new Animated.Value(0)}
+          onPress={() => scrollView.scrollToOffset({ offset: 0 })}
+        >
+          {projectTitle}
+        </HeaderTitle>
       ),
       headerRight: isOwner ? (
         <Edit project={params.project} />
@@ -36,8 +42,6 @@ class Project extends PureComponent {
       ),
     }
   }
-
-  scrollView = null
 
   static propTypes = {
     project: PropTypes.object,
@@ -129,7 +133,7 @@ class Project extends PureComponent {
             useNativeDriver: true,
           })}
           scrollRef={ref => {
-            this.scrollView = ref
+            scrollView = ref
           }}
         />
         {this.renderFooter()}

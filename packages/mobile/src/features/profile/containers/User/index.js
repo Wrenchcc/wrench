@@ -11,6 +11,8 @@ import Header from 'features/profile/components/Header'
 const HEADER_HEIGHT = 100
 const START_OPACITY = 0
 
+let scrollView = null
+
 class User extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
@@ -19,14 +21,16 @@ class User extends PureComponent {
 
     return {
       headerTitle: fullName && (
-        // onPress={() => this.scrollView.scrollToOffset({ offset: 0 })}
-        <HeaderTitle opacity={params.opacity || new Animated.Value(0)}>{fullName}</HeaderTitle>
+        <HeaderTitle
+          opacity={params.opacity || new Animated.Value(0)}
+          onPress={() => scrollView.scrollToOffset({ offset: 0 })}
+        >
+          {fullName}
+        </HeaderTitle>
       ),
       headerRight: dynamicLink && <Share title={fullName} url={dynamicLink} />,
     }
   }
-
-  scrollView = null
 
   static propTypes = {
     user: PropTypes.object,
@@ -70,7 +74,7 @@ class User extends PureComponent {
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         scrollRef={ref => {
-          this.scrollView = ref
+          scrollView = ref
         }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
         ListEmptyComponent={<FollowingProjects user={user} />}
