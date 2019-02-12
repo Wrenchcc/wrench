@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { withNamespaces } from 'react-i18next'
 import { Base, Headline, Description } from './styles'
 
-function Content({ t }) {
+const Content = memo(function Content({ t }) {
   return (
     <Base>
       <Headline color="white" medium>
@@ -13,6 +13,6 @@ function Content({ t }) {
       </Description>
     </Base>
   )
-}
+})
 
 export default withNamespaces('OnboardingContent')(Content)

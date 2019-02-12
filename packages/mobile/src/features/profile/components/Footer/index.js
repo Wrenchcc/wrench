@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import DeviceInfo from 'react-native-device-info'
 import { Text } from 'ui'
 import { Base } from './styles'
 
 const appVersion = `v${DeviceInfo.getVersion()}.${DeviceInfo.getBuildNumber()}`
 
-export default function Footer() {
+export default memo(function Footer() {
   return (
     <Base>
       <Text fontSize={15} color="light_grey">
@@ -13,4 +13,4 @@ export default function Footer() {
       </Text>
     </Base>
   )
-}
+})

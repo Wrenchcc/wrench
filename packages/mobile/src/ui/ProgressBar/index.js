@@ -6,14 +6,15 @@ import { Base, Bar } from './styles'
 const DEFAULT_BAR_HEIGHT = 3
 const DEFAULT_WIDTH = 0
 
-const ProgressBar = memo(({
+const ProgressBar = memo(function ProgressBar({
   progress,
   opacity,
   backgroundColor,
   borderRadius,
   fillColor,
   barHeight,
-}) => (
+}) {
+  return (
     <Base
       opacity={opacity}
       height={barHeight}
@@ -24,7 +25,8 @@ const ProgressBar = memo(({
         {({ width }) => <Bar width={width} fillColor={fillColor} height={barHeight} />}
       </Spring>
     </Base>
-))
+  )
+})
 
 ProgressBar.propTypes = {
   backgroundColor: PropTypes.string,

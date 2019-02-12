@@ -23,13 +23,15 @@ const getActionType = ({ type, selected, onPress }) => {
   }
 }
 
-const SelectionItem = memo(({ title, hasChildren, last, ...rest }) => (
+const SelectionItem = memo(function SelectionItem({ title, hasChildren, last, ...rest }) {
+  return (
     <Base onPress={rest.onPress} disabled={!rest.onPress} last={last}>
       <Text color={last && 'orange'}>{title}</Text>
       {hasChildren && <Icon source={arrowRight} />}
       {getActionType(rest)}
     </Base>
-))
+  )
+})
 
 SelectionItem.propTypes = {
   title: PropTypes.string,

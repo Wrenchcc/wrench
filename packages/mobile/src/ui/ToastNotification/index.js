@@ -9,7 +9,8 @@ import { Base } from './styles'
 const FROM_HEIGHT = 0
 const TO_HEIGHT = 40
 
-const ToastNotification = memo(({ t }) => (
+const ToastNotification = memo(function ToastNotification({ t }) {
+  return (
     <Subscribe to={[ToastNotificationContainer]}>
       {({ state: { message, type, show } }) => (
         <Spring
@@ -27,6 +28,7 @@ const ToastNotification = memo(({ t }) => (
         </Spring>
       )}
     </Subscribe>
-))
+  )
+})
 
 export default withNamespaces('ToastNotification')(ToastNotification)

@@ -5,7 +5,8 @@ import { search } from 'images'
 import { COLORS } from 'ui/constants'
 import { Base, Input, Icon, Placeholder, Text } from './styles'
 
-const Search = memo(({ t, style, onPress, placeholder = true, ...props }) => (
+const Search = memo(function Search({ t, style, onPress, placeholder = true, ...props }) {
+  return (
     <Base style={style}>
       <Icon source={search} />
       {placeholder ? (
@@ -25,7 +26,8 @@ const Search = memo(({ t, style, onPress, placeholder = true, ...props }) => (
         />
       )}
     </Base>
-))
+  )
+})
 
 Search.propTypes = {
   style: PropTypes.object,

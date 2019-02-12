@@ -8,59 +8,67 @@ import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
 
-const Item = memo(
-  ({ createdAt, first = false, highlightId = null, id, isReply, onReply, t, text, user }) => {
-    const animatedValue = new Animated.Value(0)
-    if (id === highlightId) {
+const Item = memo(function Item({
+  createdAt,
+  first = false,
+  highlightId = null,
+  id,
+  isReply,
+  onReply,
+  t,
+  text,
+  user,
+}) {
+  const animatedValue = new Animated.Value(0)
+  if (id === highlightId) {
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 1000,
+    }).start(() => {
       Animated.timing(animatedValue, {
-        toValue: 1,
-        duration: 1000,
-      }).start(() => {
-        Animated.timing(animatedValue, {
-          toValue: 0,
-          delay: 3000,
-        }).start()
-      })
-    }
-
-    const backgroundColor = animatedValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [COLORS.WHITE, COLORS.DIVIDER],
+        toValue: 0,
+        delay: 3000,
+      }).start()
     })
-
-    if (!user) return null
-
-    return (
-      <Animated.View style={{ backgroundColor }}>
-        <Base isReply={isReply} first={first}>
-          <Avatar
-            uri={user.avatarUrl}
-            size={isReply ? 20 : 30}
-            isOnline={user.isOnline}
-            badgeSize={isReply && 'small'}
-            onPress={() => navigateToUser({ user })}
-          />
-          <Content>
-            <Row style={{ flexDirection: 'column' }}>
-              <Text fontSize={15} bold>
-                {`${user.fullName} `}
-                <Text fontSize={15}>{text}</Text>
-              </Text>
-            </Row>
-            <Row>
-              <TimeAgo date={createdAt} />
-              {!first && (
-                <Reply medium fontSize={12} onPress={() => onReply(user, id)} disabled={id < 0}>
-                  {t('CommentItem:reply')}
-                </Reply>
-              )}
-            </Row>
-          </Content>
-        </Base>
-      </Animated.View>
-    )
   }
-)
+
+  const backgroundColor = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [COLORS.WHITE, COLORS.DIVIDER],
+  })
+
+  if (!user) return null
+
+  return (
+    <Animated.View style={{ backgroundColor }}>
+      <Base isReply={isReply} first={first}>
+        <Avatar
+          uri={user.avatarUrl}
+          size={isReply ? 20 : 30}
+          isOnline={user.isOnline}
+          badgeSize={isReply && 'small'}
+          onPress={() => navigateToUser({ user })}
+        />
+        <Content>
+          <Row style={{ flexDirection: 'column' }}>
+            <Text fontSize={15} bold>
+              {`${user.fullName} `}
+              <Text fontSize={15}>{text}</Text>
+            </Text>
+          </Row>
+          <Row>
+            <TimeAgo date={createdAt} />
+            {!first && (
+              <Reply medium fontSize={12} onPress={() => onReply(user, id)} disabled={id < 0}>
+                {t('CommentItem:reply')}
+              </Reply>
+            )}
+          </Row>
+        </Content>
+      </Base>
+    </Animated.View>
+  )
+})
 
 Item.propTypes = {
   createdAt: PropTypes.string.isRequired,

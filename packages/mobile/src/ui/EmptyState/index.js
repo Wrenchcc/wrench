@@ -29,7 +29,8 @@ const showButton = type => {
   }
 }
 
-const EmptyState = memo(({ t, type = TYPES.PROJECT, params = {} }) => (
+const EmptyState = memo(function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
+  return (
     <Base>
       <Title>{t(`EmptyState:${type}:title`)}</Title>
       <Description color="grey">{t(`EmptyState:${type}:description`)}</Description>
@@ -41,7 +42,8 @@ const EmptyState = memo(({ t, type = TYPES.PROJECT, params = {} }) => (
         </Button>
       )}
     </Base>
-))
+  )
+})
 
 EmptyState.propTypes = {
   type: PropTypes.string,

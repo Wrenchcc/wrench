@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 import Touchable from 'ui/Touchable'
 import { Picture, ProjectName } from './styles'
 
-const Card = memo(({ image, title, onPress, style = {} }) => (
+const Card = memo(function Card({ image, title, onPress, style = {} }) {
+  return (
     <Touchable onPress={onPress} style={style}>
       <Picture source={image} />
       <ProjectName numberOfLines={1}>{title}</ProjectName>
     </Touchable>
-))
+  )
+})
 
 Card.propTypes = {
   image: PropTypes.object.isRequired,

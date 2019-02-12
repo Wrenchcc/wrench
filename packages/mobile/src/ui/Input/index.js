@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { COLORS } from 'ui/constants'
 import { Field } from './styles'
 
-const Input = memo(({
+const Input = memo(function Input({
   placeholder,
   autoFocus,
   noBorder,
@@ -11,7 +11,8 @@ const Input = memo(({
   selectionColor = COLORS.DARK,
   inputRef,
   ...props
-}) => (
+}) {
+  return (
     <Field
       autoCorrect={false}
       autoFocus={autoFocus}
@@ -25,7 +26,8 @@ const Input = memo(({
       ref={inputRef}
       {...props}
     />
-))
+  )
+})
 
 Input.propTypes = {
   placeholder: PropTypes.string,

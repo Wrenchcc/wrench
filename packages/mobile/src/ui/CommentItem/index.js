@@ -5,7 +5,15 @@ import Text from 'ui/Text'
 import Item from './Item'
 import { LoadReplies, Border } from './styles'
 
-const CommentItem = memo(({ t, data, highlightId, onReply, fetchMoreReplies, first }) => data.node.replies ? (
+const CommentItem = memo(function CommentItem({
+  t,
+  data,
+  highlightId,
+  onReply,
+  fetchMoreReplies,
+  first,
+}) {
+  return data.node.replies ? (
     <>
       <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
       {data.node.replies.edges.map(({ node }) => (
@@ -41,9 +49,10 @@ const CommentItem = memo(({ t, data, highlightId, onReply, fetchMoreReplies, fir
         </LoadReplies>
       )}
     </>
-) : (
+  ) : (
     <Item {...data.node} t={t} first={first} onReply={onReply} highlightId={highlightId} />
-))
+  )
+})
 
 CommentItem.propTypes = {
   data: PropTypes.object.isRequired,
