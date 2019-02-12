@@ -22,6 +22,7 @@ const getSize = size => ({
 const IsOnline = ({ badgeSize = 'medium' }) => (
   <>
     <View
+      pointerEvents="none"
       style={{
         position: 'absolute',
         zIndex: 10,
@@ -30,6 +31,7 @@ const IsOnline = ({ badgeSize = 'medium' }) => (
       }}
     />
     <View
+      pointerEvents="none"
       style={{
         position: 'absolute',
         zIndex: 5,

@@ -8,7 +8,7 @@ export const Base = styled.View``
 export const Placeholder = styled(UiTouchable)`
   position: relative;
   height: 40;
-  background-color: ${COLORS.DIVIDER};
+  background-color: ${COLORS.ULTRA_LIGHT_GREY};
   border-radius: 1;
   justify-content: center;
 `
@@ -21,7 +21,7 @@ export const Text = styled(UiText)`
 export const Input = styled.TextInput`
   position: relative;
   height: 40;
-  background-color: ${COLORS.DIVIDER};
+  background-color: ${COLORS.ULTRA_LIGHT_GREY};
   font-size: 17;
   font-family: ${FONTS.REGULAR};
   border-radius: 1;

@@ -9,7 +9,7 @@ export const Base = styled(UiTouchable)`
   justify-content: space-between;
   height: 60px;
   border-bottom-width: ${({ last }) => (last ? 0 : 1)};
-  border-bottom-color: ${COLORS.DIVIDER};
+  border-bottom-color: ${COLORS.ULTRA_LIGHT_GREY};
 `
 
 export const Text = styled(UiText)``

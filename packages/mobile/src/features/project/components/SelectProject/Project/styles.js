@@ -9,7 +9,7 @@ export const Base = styled(UiTouchable)`
   border-bottom-width: 1;
   padding-bottom: 15;
   margin-bottom: 15;
-  border-bottom-color: ${COLORS.DIVIDER};
+  border-bottom-color: ${COLORS.ULTRA_LIGHT_GREY};
 `
 
 export const Cover = styled.Image`

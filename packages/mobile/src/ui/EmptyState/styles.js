@@ -6,7 +6,7 @@ import UiTouchable from 'ui/Touchable'
 
 export const Base = styled.View`
   flex: 1;
-  background-color: ${COLORS.DIVIDER};
+  background-color: ${COLORS.ULTRA_LIGHT_GREY};
   justify-content: center;
   padding-left: 20;
   padding-right: 20;

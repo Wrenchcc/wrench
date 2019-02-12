@@ -3,7 +3,7 @@ import { animated } from 'react-spring/renderprops'
 import { COLORS } from 'ui/constants'
 
 export const Base = animated(styled.View`
-  background-color: ${COLORS.DIVIDER};
+  background-color: ${COLORS.ULTRA_LIGHT_GREY};
   width: 100%;
   overflow: hidden;
   height: ${props => props.height};

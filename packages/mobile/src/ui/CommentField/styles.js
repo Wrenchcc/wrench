@@ -8,7 +8,7 @@ export const Base = styled.View`
   flex-direction: row;
   margin-bottom: 10;
   align-items: center;
-  border-bottom-color: ${COLORS.DIVIDER};
+  border-bottom-color: ${COLORS.ULTRA_LIGHT_GREY};
   border-bottom-width: ${StyleSheet.hairlineWidth};
 `
 

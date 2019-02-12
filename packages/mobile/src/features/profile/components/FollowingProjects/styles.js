@@ -12,7 +12,7 @@ export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
 
 export const Base = styled.View`
-  background-color: ${COLORS.DIVIDER};
+  background-color: ${COLORS.ULTRA_LIGHT_GREY};
   flex: 1;
   padding-left: 20;
   padding-right: 20;
