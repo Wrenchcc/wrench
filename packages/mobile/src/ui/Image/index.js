@@ -18,7 +18,12 @@ const Image = memo(function Image({
       borderRadius={borderRadius}
       placeholderColor={placeholderColor}
     >
-      <FastImage {...props} priority={priority || IMAGE_PRIORITY.NORMAL} />
+      <FastImage
+        {...props}
+        width={width}
+        height={height}
+        priority={priority || IMAGE_PRIORITY.NORMAL}
+      />
     </Base>
   )
 })
@@ -29,7 +34,6 @@ Image.propTypes = {
   borderRadius: PropTypes.number,
   placeholderColor: PropTypes.string,
   priority: PropTypes.string,
-  disableAnimation: PropTypes.bool,
 }
 
 export default Image
