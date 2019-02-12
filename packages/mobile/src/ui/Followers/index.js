@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import Text from 'ui/Text'
 
-function Followers({ t, followers, onPress = null, color = 'dark', opacity = 1 }) {
+const Followers = memo(function Followers({
+  t,
+  followers,
+  onPress = null,
+  color = 'dark',
+  opacity = 1,
+}) {
   return (
     <Text fontSize={15} onPress={onPress} color={color} opacity={opacity}>
       {t('UiFollowers:followers', { count: followers })}
     </Text>
   )
-}
+})
 
 Followers.propTypes = {
   onPress: PropTypes.func,

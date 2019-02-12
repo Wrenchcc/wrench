@@ -1,12 +1,12 @@
 /* eslint-disable */
-import React from 'react'
+import React, { memo } from 'react'
 import { Base, Container, Cell, Image, Transform, HEIGHT } from './styles'
 
-function One({ files }) {
+const One = memo(function One({ files }) {
   return <Image source={files[0].node} height={HEIGHT} />
-}
+})
 
-function Two({ files }) {
+const Two = memo(function Two({ files }) {
   return (
     <Container>
       <Cell size={1 / 2}>
@@ -17,9 +17,9 @@ function Two({ files }) {
       </Cell>
     </Container>
   )
-}
+})
 
-function Three({ files }) {
+const Three = memo(function Three({ files }) {
   return (
     <Container>
       <Cell size={1 / 2}>
@@ -31,9 +31,9 @@ function Three({ files }) {
       </Cell>
     </Container>
   )
-}
+})
 
-function Four({ files }) {
+const Four = memo(function Four({ files }) {
   return (
     <Container>
       <Cell size={1 / 2}>
@@ -46,9 +46,9 @@ function Four({ files }) {
       </Cell>
     </Container>
   )
-}
+})
 
-function Five({ files }) {
+const Five = memo(function Five({ files }) {
   return (
     <Container>
       <Cell size={1 / 3}>
@@ -64,9 +64,9 @@ function Five({ files }) {
       </Cell>
     </Container>
   )
-}
+})
 
-function Six({ files }) {
+const Six = memo(function Six({ files }) {
   return (
     <Container>
       <Cell size={1 / 3}>
@@ -83,9 +83,9 @@ function Six({ files }) {
       </Cell>
     </Container>
   )
-}
+})
 
-function Grid({ files }) {
+const Grid = memo(function Grid({ files }) {
   switch (files.length) {
     case 1:
       return <One files={files} />
@@ -102,7 +102,7 @@ function Grid({ files }) {
     default:
       return null
   }
-}
+})
 
 export default function Gallery({ files }) {
   return (

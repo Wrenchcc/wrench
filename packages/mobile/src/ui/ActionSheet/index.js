@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import NativeActionSheet from 'react-native-actionsheet'
 
-const ActionSheet = ({ options = [], isOpen, onClose = () => {}, ...restProps }) => {
+const ActionSheet = memo(function ActionSheet({
+  options = [],
+  isOpen,
+  onClose = () => {},
+  ...restProps
+}) {
   const selectAction = index => {
     if (options[index] && typeof options[index].onSelect === 'function') {
       options[index].onSelect()
@@ -26,7 +31,7 @@ const ActionSheet = ({ options = [], isOpen, onClose = () => {}, ...restProps })
       }}
     />
   )
-}
+})
 
 ActionSheet.propTypes = {
   options: PropTypes.array,

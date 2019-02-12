@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { withNamespaces } from 'react-i18next'
 import Text from 'ui/Text'
 import { follow } from 'images'
 import { Button, Icon } from './styles'
 
-function Follow({ onPress, following, t }) {
+const Follow = memo(function Follow({ onPress, following, t }) {
   return (
     <Button onPress={onPress} hapticFeedback="impactLight">
       {following ? (
@@ -18,7 +18,7 @@ function Follow({ onPress, following, t }) {
       )}
     </Button>
   )
-}
+})
 
 Follow.propTypes = {
   onPress: PropTypes.func.isRequired,
