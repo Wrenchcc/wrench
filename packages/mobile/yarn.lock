@@ -5124,10 +5124,10 @@ react-native-permissions@^1.1.1:
   resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.1.1.tgz#4876004681ff8556454613d85249b01baff9b35b"
   integrity sha512-t0Ujm177bagjUOSzhpmkSz+LqFW04HnY9TeZFavDCmV521fQvFz82aD+POXqWsAdsJVOK3umJYBNNqCjC3g0hQ==
 
-react-native-pinchable@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-pinchable/-/react-native-pinchable-0.1.1.tgz#6e7ac9a2dbebb2f5ac560a37aafc24965890f876"
-  integrity sha512-KR4q1VsZnZviUONTrqvuFwWz7s5dfTVm5Xj0BRcTErCqauQdzJc6gmQSFErjhqWGZot0gf/pGBlNUlfAJftczg==
+react-native-pinchable@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-pinchable/-/react-native-pinchable-0.1.2.tgz#e0c75b51d1d4c62e08289fe5f6afb69e349426de"
+  integrity sha512-MtZTakXy8U8J6HF9G9rkggExlHIrrdpiU7qON/QuB8jrBH+7AMvQujgIPS/dJDOA+0RQjTIxy6aEq2w7RAAbXg==
 
 react-native-rate@^1.1.6:
   version "1.1.6"
@@ -5184,10 +5184,10 @@ react-native-video@^4.3.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.1.0.tgz#ddef6b7c66cc5ea42e4e689a51ad81cff8114565"
-  integrity sha512-T/N8LT7GkW/LKHkP3+5Ijva9I07z7/iuOuS4FSRDkp/Uf6ouP2UhpnWNutVfKCyp/a8swIIC8DQu5+8CepqT/w==
+react-native-webview@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.2.0.tgz#909d91ce518681467d0ad11aeac254efe9cc4235"
+  integrity sha512-2jHXIk7+U8k/l6fp/tDVE3ulJEzcF3n1xZUe2xWtbmIm5BTf0qWeLKqhcPWpG+9hBXvFiTiZhL4Jw4qFwOqIYg==
   dependencies:
     escape-string-regexp "^1.0.5"
     fbjs "^0.8.17"
@@ -5292,10 +5292,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^8.0.6:
-  version "8.0.6"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.6.tgz#2ca1752184da8b2383e1d45dcf6424a22e81d8d8"
-  integrity sha512-6qNwpfJalO1x+NEuWssAUjoNdrQOOV5WCUziNdHuFm146LEH8lNEsPtbiLmXCEMFxOGrFKFbXJqlzqbt2HIWFQ==
+react-spring@^8.0.7:
+  version "8.0.7"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.7.tgz#55b1d298be16b308388cb865ee707a1194112fe0"
+  integrity sha512-QHEjWLvEuRCGFRlR29o03CMc+uN1QMPt8Gxxp37szpnkJUq+HDIWNXNCacQ+kJxqzcu65JoeWV6D5q3/y5VK6Q==
   dependencies:
     "@babel/runtime" "^7.3.1"
 

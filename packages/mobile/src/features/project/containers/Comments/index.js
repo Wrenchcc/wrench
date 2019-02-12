@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { pathOr } from 'ramda'
@@ -23,7 +23,7 @@ const KEYBOARD_OFFSET = isIphone ? 180 + SAFE_AREA : 0
 const MENTION_OFFSET_BOTTOM = isIphone ? 240 + SAFE_AREA : 0
 const TRIGGER = '@'
 
-class Comments extends Component {
+class Comments extends PureComponent {
   static navigationOptions = ({ screenProps }) => ({
     headerTitle: (
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
