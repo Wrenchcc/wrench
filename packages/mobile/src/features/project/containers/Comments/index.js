@@ -13,13 +13,14 @@ import {
   Mention,
   HeaderTitle,
 } from 'ui'
-import { isIphone } from 'utils/platform'
+import { isIphone, isIphoneX } from 'utils/platform'
 
 let scrollView = null
 
 // TODO: Make platform specific
-const KEYBOARD_OFFSET = isIphone ? 180 : 0
-const MENTION_OFFSET_BOTTOM = isIphone ? 240 : 0
+const SAFE_AREA = isIphoneX ? 10 : 0
+const KEYBOARD_OFFSET = isIphone ? 180 + SAFE_AREA : 0
+const MENTION_OFFSET_BOTTOM = isIphone ? 240 + SAFE_AREA : 0
 const TRIGGER = '@'
 
 class Comments extends Component {
@@ -108,7 +109,7 @@ class Comments extends Component {
     const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage, post } = this.props
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginBottom: SAFE_AREA }}>
         <KeyboardAvoidingView
           enabled={isIphone}
           behavior="padding"
@@ -117,6 +118,7 @@ class Comments extends Component {
         >
           {this.state.isOpen && (
             <Mention
+              offsetTop={0}
               query={this.state.query}
               onPress={this.onMentionPress}
               offsetBottom={MENTION_OFFSET_BOTTOM}
@@ -154,8 +156,6 @@ class Comments extends Component {
             isFetching={isFetching}
             hasNextPage={hasNextPage}
             renderItem={this.renderItem}
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="none"
             defaultPaddingTop
           />
         </KeyboardAvoidingView>
