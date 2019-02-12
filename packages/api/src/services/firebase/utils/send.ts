@@ -43,6 +43,8 @@ export default async ({ data, userId, to, type }) => {
     token,
   }
 
+  debug('Message payload: %o', message)
+
   client
     .messaging()
     .send(message)
