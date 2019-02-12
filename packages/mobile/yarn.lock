@@ -5184,10 +5184,10 @@ react-native-video@^4.3.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.0.8:
-  version "5.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.0.8.tgz#f13c845273aae3c8b5a25d59adf71c6d56d42d79"
-  integrity sha512-yaQPEsa+cb+iABFBT/NloxIor4lmiBj+/iDhSH+RLWOeYx4mYArf8axzL0vC4NZBptYTfvQyqTJrbdspni/FlQ==
+react-native-webview@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.1.0.tgz#ddef6b7c66cc5ea42e4e689a51ad81cff8114565"
+  integrity sha512-T/N8LT7GkW/LKHkP3+5Ijva9I07z7/iuOuS4FSRDkp/Uf6ouP2UhpnWNutVfKCyp/a8swIIC8DQu5+8CepqT/w==
   dependencies:
     escape-string-regexp "^1.0.5"
     fbjs "^0.8.17"
@@ -5292,12 +5292,12 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^8.0.5:
-  version "8.0.5"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.5.tgz#4e9f9ba7a2ee7c0c3a4d3c920604c8703c036302"
-  integrity sha512-n8G4NWfbye26SUT9lmU43q70nhIfojD2LSV0gafvYK6jFIAAlP52k5aK6EYs1xxRPRs+1r+ndcPveXYOwEEl2g==
+react-spring@^8.0.6:
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.6.tgz#2ca1752184da8b2383e1d45dcf6424a22e81d8d8"
+  integrity sha512-6qNwpfJalO1x+NEuWssAUjoNdrQOOV5WCUziNdHuFm146LEH8lNEsPtbiLmXCEMFxOGrFKFbXJqlzqbt2HIWFQ==
   dependencies:
-    "@babel/runtime" "^7.0.0"
+    "@babel/runtime" "^7.3.1"
 
 react-transform-hmr@^1.0.4:
   version "1.0.4"

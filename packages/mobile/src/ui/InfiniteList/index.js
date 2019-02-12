@@ -17,38 +17,39 @@ class InfiniteList extends PureComponent {
 
   static propTypes = {
     borderSeparator: PropTypes.bool,
-    onScroll: PropTypes.object,
-    scrollRef: PropTypes.func,
-    defaultPaddingTop: PropTypes.bool,
-    paddingBottom: PropTypes.number,
-    paddingHorizontal: PropTypes.number,
     contentContainerStyle: PropTypes.object,
     data: PropTypes.array,
-    refetch: PropTypes.any,
+    defaultPaddingTop: PropTypes.bool,
     fetchMore: PropTypes.func,
-    isRefetching: PropTypes.bool,
-    isFetching: PropTypes.bool,
     hasNextPage: PropTypes.bool,
+    initialNumToRender: PropTypes.number,
     inverted: PropTypes.bool,
-    renderItem: PropTypes.func,
-    ListHeaderComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+    isFetching: PropTypes.bool,
+    isRefetching: PropTypes.bool,
     ListEmptyComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+    ListHeaderComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+    onScroll: PropTypes.object,
+    paddingBottom: PropTypes.number,
+    paddingHorizontal: PropTypes.number,
     polling: PropTypes.bool,
+    refetch: PropTypes.any,
+    renderItem: PropTypes.func,
+    scrollRef: PropTypes.func,
   }
 
-  componentDidUpdate(prevProps) {
-    // if (
-    //   this.props.polling
-    //   && pathOr(false, ['data'], this.props)
-    //   && pathOr(false, ['data'], prevProps)
-    //   && !equals(
-    //     pathOr(false, ['data', 0, 'node', 'id'], this.props),
-    //     pathOr(false, ['data', 0, 'node', 'id'], prevProps)
-    //   )
-    // ) {
-    //   this.setNewDataState(true)
-    // }
-  }
+  // componentDidUpdate(prevProps) {
+  // if (
+  //   this.props.polling
+  //   && pathOr(false, ['data'], this.props)
+  //   && pathOr(false, ['data'], prevProps)
+  //   && !equals(
+  //     pathOr(false, ['data', 0, 'node', 'id'], this.props),
+  //     pathOr(false, ['data', 0, 'node', 'id'], prevProps)
+  //   )
+  // ) {
+  //   this.setNewDataState(true)
+  // }
+  // }
 
   setNewDataState = hasNewData => {
     this.setState({ hasNewData })
@@ -109,6 +110,7 @@ class InfiniteList extends PureComponent {
       ListHeaderComponent,
       ListEmptyComponent,
       inverted,
+      initialNumToRender = 4,
       ...props
     } = this.props
 
@@ -126,6 +128,7 @@ class InfiniteList extends PureComponent {
           onRefresh={refetch}
           onEndReached={this.onEndReached}
           refreshing={isRefetching}
+          initialNumToRender={initialNumToRender}
           ListHeaderComponent={ListHeaderComponent}
           ListFooterComponent={hasNextPage ? this.renderLoader() : null}
           ListEmptyComponent={

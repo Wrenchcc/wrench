@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider, Subscribe } from 'unstated'
 import { ApolloProvider, Query } from 'react-apollo'
+import { useScreens } from 'react-native-screens'
 import { path } from 'ramda'
 import { AuthNavigator, AppNavigator } from 'navigation'
 import { AppContainer } from 'store'
@@ -12,6 +13,8 @@ if (__DEV__) {
   // Setting `global.XMLHttpRequest` will enable showing Network requests in React Native Debugger
   global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest
 }
+
+useScreens()
 
 export default function App() {
   return (
