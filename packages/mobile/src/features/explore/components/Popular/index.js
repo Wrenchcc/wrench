@@ -9,6 +9,8 @@ import { InfiniteList } from 'ui'
 import { INITIAL_POSTS_COUNT } from '../../constants'
 import { Title, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
+const ITEM_HEIGHT = 180
+
 class Popular extends PureComponent {
   static propTypes = {
     projects: PropTypes.array,
@@ -18,6 +20,12 @@ class Popular extends PureComponent {
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
   }
+
+  getItemLayout = (data, index) => ({
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+    index,
+  })
 
   renderItem = ({ item, index }) => {
     const { projects } = this.props
@@ -43,6 +51,7 @@ class Popular extends PureComponent {
       <>
         <Title medium>{t('Popular:popular')}</Title>
         <InfiniteList
+          getItemLayout={this.getItemLayout}
           initialNumToRender={INITIAL_POSTS_COUNT}
           keyExtractor={item => item.node.id}
           data={projects}

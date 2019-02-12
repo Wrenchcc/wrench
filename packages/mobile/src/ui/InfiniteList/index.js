@@ -110,7 +110,7 @@ class InfiniteList extends PureComponent {
       ListHeaderComponent,
       ListEmptyComponent,
       inverted,
-      initialNumToRender = 4,
+      initialNumToRender = 10,
       ...props
     } = this.props
 

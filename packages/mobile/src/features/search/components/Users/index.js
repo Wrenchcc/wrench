@@ -4,6 +4,8 @@ import { compose } from 'react-apollo'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { User, InfiniteList, NoResults } from 'ui'
 
+const ITEM_HEIGHT = 70
+
 class Users extends PureComponent {
   static propTypes = {
     fetchMore: PropTypes.func.isRequired,
@@ -14,6 +16,12 @@ class Users extends PureComponent {
     scrollRef: PropTypes.func.isRequired,
     users: PropTypes.array,
   }
+
+  getItemLayout = (data, index) => ({
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+    index,
+  })
 
   renderItem = ({ item }) => <User data={item.node} />
 
@@ -31,6 +39,7 @@ class Users extends PureComponent {
     return (
       <InfiniteList
         borderSeparator
+        getItemLayout={this.getItemLayout}
         ListEmptyComponent={<NoResults />}
         data={users}
         fetchMore={fetchMore}

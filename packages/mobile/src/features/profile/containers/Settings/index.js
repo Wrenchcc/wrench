@@ -23,6 +23,8 @@ const style = {
   },
 }
 
+const ITEM_HEIGHT = 60
+
 class Settings extends PureComponent {
   static navigationOptions = ({ navigation, screenProps }) => ({
     headerTitle: screenProps.t(`Settings:${navigation.state.routeName}`),
@@ -39,6 +41,12 @@ class Settings extends PureComponent {
     return <Title style={style.header}>{this.props.t(`Settings:${section.titleKey}`)}</Title>
   }
 
+  getItemLayout = (data, index) => ({
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+    index,
+  })
+
   renderItem = ({ item, index }) => (
     <SelectionItem key={index} {...item} title={this.props.t(`Settings:${item.titleKey}`)} />
   )
@@ -54,6 +62,7 @@ class Settings extends PureComponent {
             stickySectionHeadersEnabled={false}
             renderSectionHeader={this.renderSectionHeader}
             renderItem={this.renderItem}
+            initialNumToRender={15}
             sections={
               sections({ ...state, changeLocale, changeLoginState, ...rest })[
                 navigation.state.routeName

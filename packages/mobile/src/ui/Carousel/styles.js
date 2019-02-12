@@ -6,7 +6,7 @@ export const { width } = Dimensions.get('window')
 
 export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
-const SIZE = width - GUTTER * 2
+export const SIZE = width - GUTTER * 2
 
 export const Wrapper = styled.View`
   margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)};

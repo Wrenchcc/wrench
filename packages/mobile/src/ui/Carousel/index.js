@@ -4,7 +4,7 @@ import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Touchable from 'ui/Touchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { width, Wrapper, Picture, GUTTER, BAR_SPACE } from './styles'
+import { width, Wrapper, Picture, GUTTER, BAR_SPACE, SIZE } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
@@ -15,6 +15,12 @@ export default class Carousel extends PureComponent {
     onLongPress: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
   }
+
+  getItemLayout = (data, index) => ({
+    length: SIZE,
+    offset: SIZE * index,
+    index,
+  })
 
   renderItem = ({ item, index }) => {
     const { onPress, onLongPress, disabled, files } = this.props
@@ -45,6 +51,8 @@ export default class Carousel extends PureComponent {
     return (
       <FlatList
         keyExtractor={item => item.node.id}
+        getItemLayout={this.getItemLayout}
+        initialNumToRender={3}
         data={files}
         scrollEnabled={files.length > 1}
         horizontal

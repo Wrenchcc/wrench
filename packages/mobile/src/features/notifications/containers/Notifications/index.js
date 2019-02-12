@@ -60,7 +60,7 @@ class Notifications extends PureComponent {
         }
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
         borderSeparator
-        initialNumToRender={10}
+        initialNumToRender={8}
         data={notifications}
         refetch={refetch}
         fetchMore={fetchMore}

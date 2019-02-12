@@ -5,6 +5,8 @@ import { navigateToProject } from 'navigation/actions'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
 import { ProjectCard, InfiniteList, NoResults } from 'ui'
 
+const ITEM_HEIGHT = 200
+
 class Projects extends PureComponent {
   static propTypes = {
     fetchMore: PropTypes.func.isRequired,
@@ -15,6 +17,12 @@ class Projects extends PureComponent {
     refetch: PropTypes.func.isRequired,
     scrollRef: PropTypes.func.isRequired,
   }
+
+  getItemLayout = (data, index) => ({
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+    index,
+  })
 
   renderItem = ({ item }) => (
     <ProjectCard project={item.node} onPress={() => navigateToProject({ project: item.node })} />
@@ -34,6 +42,8 @@ class Projects extends PureComponent {
     return (
       <InfiniteList
         borderSeparator
+        initialNumToRender={3}
+        getItemLayout={this.getItemLayout}
         ListEmptyComponent={<NoResults />}
         data={projects}
         fetchMore={fetchMore}
