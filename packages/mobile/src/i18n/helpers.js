@@ -7,13 +7,9 @@ export const setLocale = locale => AsyncStorage.setItem(STORAGE_KEY, locale)
 
 export const getLocale = async () => {
   const deviceLocale = DeviceInfo.getDeviceLocale()
-  const savedLocale = AsyncStorage.getItem(STORAGE_KEY)
+  const savedLocale = await AsyncStorage.getItem(STORAGE_KEY)
 
-  if (savedLocale) {
-    return savedLocale
-  }
-
-  return deviceLocale
+  return savedLocale || deviceLocale
 }
 
 export const getTimezone = () => DeviceInfo.getTimezone()

@@ -14,7 +14,6 @@ const Input = memo(function Input({
 }) {
   return (
     <Field
-      autoCorrect={false}
       autoFocus={autoFocus}
       placeholder={placeholder}
       placeholderTextColor={COLORS.LIGHT_GREY}
