@@ -14,7 +14,7 @@ const PopularProjectsQuery = gql`
       edges {
         node {
           ...projectInfo
-          files: filesConnection(first: 1, maxWidth: 180, maxHeight: 180, type: IMAGE) {
+          files: filesConnection(first: 1, type: IMAGE) {
             edges {
               node {
                 id

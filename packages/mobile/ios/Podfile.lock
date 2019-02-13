@@ -164,7 +164,7 @@ PODS:
     - React
   - react-native-haptic-feedback (1.5.0):
     - React
-  - react-native-pinchable (0.1.2):
+  - react-native-pinchable (0.1.1):
     - React
   - react-native-splash-screen (3.2.0):
     - React
@@ -173,7 +173,7 @@ PODS:
     - react-native-video/Video (= 4.3.1)
   - react-native-video/Video (4.3.1):
     - React
-  - react-native-webview (5.2.0):
+  - react-native-webview (5.1.0):
     - React
   - React/Core (0.58.4):
     - yoga (= 0.58.4.React)

@@ -14,7 +14,7 @@ export default gql`
     user {
       ...userInfo
     }
-    files: filesConnection {
+    files: filesConnection(type: IMAGE) {
       edges {
         node {
           type
