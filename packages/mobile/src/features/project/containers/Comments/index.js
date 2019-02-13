@@ -4,6 +4,7 @@ import { View, KeyboardAvoidingView } from 'react-native'
 import { pathOr } from 'ramda'
 import { compose } from 'react-apollo'
 import { getComments } from 'graphql/queries/comment/getComments'
+import { getComment } from 'graphql/queries/comment/getComment'
 import { addComment } from 'graphql/mutations/comment/addComment'
 import {
   InfiniteList,
@@ -35,6 +36,7 @@ class Comments extends PureComponent {
   static propTypes = {
     addComment: PropTypes.func.isRequired,
     comments: PropTypes.array,
+    comment: PropTypes.object,
     fetchMore: PropTypes.func.isRequired,
     fetchMoreReplies: PropTypes.func.isRequired,
     refetch: PropTypes.func.isRequired,
@@ -96,17 +98,60 @@ class Comments extends PureComponent {
     scrollView = null
   }
 
-  renderItem = ({ item }) => (
-    <CommentItem
-      data={item}
-      onReply={this.onReply}
-      fetchMoreReplies={this.props.fetchMoreReplies}
-      highlightId={pathOr(null, ['navigation', 'state', 'params', 'commentId'], this.props)}
-    />
-  )
+  renderItem = ({ item }) => {
+    // Remove comment item from list to skip dublicated
+    if (pathOr(false, ['comment', 'id'], this.props) === item.node.id) {
+      return null
+    }
+
+    return (
+      <CommentItem
+        data={item}
+        onReply={this.onReply}
+        fetchMoreReplies={this.props.fetchMoreReplies}
+      />
+    )
+  }
+
+  renderHeader = () => {
+    let content
+
+    const { post, comment } = this.props
+
+    if (!post) {
+      return null
+    }
+
+    if (comment) {
+      content = (
+        <CommentItem
+          highlight
+          onReply={this.onReply}
+          data={{
+            node: comment,
+          }}
+        />
+      )
+    }
+
+    return (
+      <>
+        <CommentItem
+          first
+          data={{
+            node: {
+              ...post,
+              text: post.caption,
+            },
+          }}
+        />
+        {content}
+      </>
+    )
+  }
 
   render() {
-    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage, post } = this.props
+    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
       <View style={{ flex: 1, marginBottom: SAFE_AREA }}>
@@ -134,20 +179,7 @@ class Comments extends PureComponent {
               paddingLeft: 0,
               paddingRight: 0,
             }}
-            ListHeaderComponent={
-              post
-              && post.caption && (
-                <CommentItem
-                  first
-                  data={{
-                    node: {
-                      ...post,
-                      text: post.caption,
-                    },
-                  }}
-                />
-              )
-            }
+            ListHeaderComponent={this.renderHeader}
             keyExtractor={item => item.node.id}
             data={comments}
             refetch={refetch}
@@ -180,5 +212,6 @@ class Comments extends PureComponent {
 
 export default compose(
   getComments,
+  getComment,
   addComment
 )(Comments)

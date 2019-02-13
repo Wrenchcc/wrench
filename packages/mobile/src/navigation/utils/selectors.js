@@ -6,7 +6,9 @@ export const getUserId = pathOr(null, ['state', 'params', 'user', 'id'])
 
 export const getUsername = pathOr(null, ['state', 'params', 'user', 'username'])
 export const getProjectSlug = pathOr(null, ['state', 'params', 'project', 'slug'])
+export const getCommentId = pathOr(null, ['state', 'params', 'commentId'])
 
+export const getCommentIdFromDeeplink = pathOr(null, ['state', 'params', 'commentId'])
 export const getUsernameFromDeeplink = pathOr(null, ['state', 'params', 'username'])
 export const getProjectSlugFromDeeplink = pathOr(null, ['state', 'params', 'slug'])
 export const getPostIdFromDeeplink = pathOr(null, ['state', 'params', 'postId'])

@@ -8,24 +8,16 @@ import { LoadReplies, Border } from './styles'
 const CommentItem = memo(function CommentItem({
   t,
   data,
-  highlightId,
   onReply,
   fetchMoreReplies,
   first,
+  highlight,
 }) {
   return data.node.replies ? (
     <>
-      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
+      <Item {...data.node} onReply={onReply} t={t} highlight={highlight} />
       {data.node.replies.edges.map(({ node }) => (
-        <Item
-          key={node.id}
-          isReply
-          {...node}
-          id={node.commentId}
-          t={t}
-          onReply={onReply}
-          highlightId={highlightId}
-        />
+        <Item key={node.id} isReply {...node} id={node.commentId} t={t} onReply={onReply} />
       ))}
 
       {data.node.replies.pageInfo.hasNextPage && (
@@ -50,15 +42,15 @@ const CommentItem = memo(function CommentItem({
       )}
     </>
   ) : (
-    <Item {...data.node} t={t} first={first} onReply={onReply} highlightId={highlightId} />
+    <Item {...data.node} t={t} first={first} onReply={onReply} highlight={highlight} />
   )
 })
 
 CommentItem.propTypes = {
+  highlight: PropTypes.bool,
   data: PropTypes.object.isRequired,
   fetchMoreReplies: PropTypes.func,
   first: PropTypes.bool,
-  highlightId: PropTypes.string,
   onReply: PropTypes.func,
 }
 
