@@ -17,8 +17,8 @@
     "wtf": "tasks/wtf"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.4.2",
-    "apollo-client": "^2.4.12",
+    "apollo-cache-inmemory": "^1.4.3",
+    "apollo-client": "^2.4.13",
     "apollo-link": "^1.2.8",
     "apollo-link-batch-http": "^1.2.8",
     "apollo-link-context": "^1.0.14",
@@ -41,7 +41,7 @@
     "react-native-camera": "^1.10.2",
     "react-native-code-push": "^5.5.2",
     "react-native-config": "^0.11.7",
-    "react-native-device-info": "^0.26.2",
+    "react-native-device-info": "^0.26.3",
     "react-native-fast-image": "^5.1.2",
     "react-native-fbsdk": "^0.8.0",
     "react-native-firebase": "^5.2.2",
@@ -75,6 +75,6 @@
     "concurrently": "^4.1.0",
     "librsvg-prebuilt": "^0.7.10",
     "metro-react-native-babel-preset": "^0.51.1",
-    "prop-types": "^15.7.1"
+    "prop-types": "^15.7.2"
   }
 }

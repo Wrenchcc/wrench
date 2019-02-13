@@ -1,6 +1,5 @@
 import { client } from 'graphql/createClient'
 import { PreSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
-import { runSequentially } from 'utils/Promise'
 import { cropImage, clearImageFromStore } from 'utils/image'
 import makeS3Request from './makeS3Request'
 
@@ -10,7 +9,7 @@ export const uploadFiles = async files => {
   // Resize images and return uris
   const [preSignedUrls, resizedImages] = await Promise.all([
     client.mutate({ mutation: PreSignUrlsMutation, variables: { input } }),
-    runSequentially(files.map(file => () => cropImage(file))),
+    Promise.all(files.map(cropImage)),
   ])
 
   // Return filenames
