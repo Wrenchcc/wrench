@@ -1,3 +1,3 @@
 #!/bin/sh
 $ANDROID_HOME/platform-tools/adb reverse tcp:7007 tcp:7007 && \
-  node node_modules/react-native/local-cli/cli.js run-android --no-packager
+  node node_modules/react-native-cli/index.js run-android --no-packager
