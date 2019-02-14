@@ -1,18 +1,23 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getProjectSlug, getProjectSlugFromDeeplink } from 'navigation/utils/selectors'
+import { getProjectSlug, getProjectSlugFromDeeplink, getPostId } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
+import postInfoFragment from 'graphql/fragments/post/postInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectPostsConnectionFragment from 'graphql/fragments/project/postsConnection'
 
 export const ProjectBySlugQuery = gql`
-  query getProjectBySlug($slug: LowercaseString!, $after: String) {
+  query getProjectBySlug($slug: LowercaseString!, $after: String, $id: ID) {
+    post(id: $id) {
+      ...postInfo
+    }
     project(slug: $slug) {
       ...projectInfo
       ...projectPostsConnection
     }
   }
+  ${postInfoFragment}
   ${projectInfoFragment}
   ${projectPostsConnectionFragment}
 `
@@ -31,15 +36,17 @@ const getProjectOptions = {
     variables: {
       slug: getProjectSlug(navigation) || getProjectSlugFromDeeplink(navigation),
       after,
+      id: getPostId(navigation),
     },
     fetchPolicy: 'cache-and-network',
   }),
   props: ({
-    data: { fetchMore, error, loading, project, networkStatus, refetch },
+    data: { fetchMore, error, loading, project, networkStatus, refetch, post },
     ownProps: { navigation },
   }) => ({
     error,
     refetch,
+    post,
     project: {
       ...pathOr(null, ['state', 'params', 'project'], navigation),
       ...project,

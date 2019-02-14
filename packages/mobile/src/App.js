@@ -9,11 +9,6 @@ import { Loader } from 'ui'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
 
-if (__DEV__) {
-  // Setting `global.XMLHttpRequest` will enable showing Network requests in React Native Debugger
-  global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest
-}
-
 useScreens()
 
 export default function App() {

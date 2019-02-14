@@ -6,7 +6,7 @@ import { compose } from 'react-apollo'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
 import { navigateToUser } from 'navigation/actions'
-import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState } from 'ui'
+import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState, Border } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
 import Header from 'features/project/components/Header'
@@ -44,15 +44,16 @@ class Project extends PureComponent {
   }
 
   static propTypes = {
-    project: PropTypes.object,
-    navigation: PropTypes.object.isRequired,
-    posts: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    hasNextPage: PropTypes.bool.isRequired,
     followProject: PropTypes.func.isRequired,
+    hasNextPage: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    navigation: PropTypes.object.isRequired,
+    post: PropTypes.object,
+    posts: PropTypes.array,
+    project: PropTypes.object,
+    refetch: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -84,7 +85,37 @@ class Project extends PureComponent {
     }
   }
 
-  renderItem = ({ item }) => <Post post={item.node} avatar={false} onPost />
+  renderItem = ({ item }) => {
+    // Remove post item from list to skip dublicated
+    if (pathOr(false, ['post', 'id'], this.props) === item.node.id) {
+      return null
+    }
+
+    return <Post post={item.node} avatar={false} onPost />
+  }
+
+  renderHeader = () => {
+    let content
+
+    const { post, posts, project } = this.props
+    const hasPosts = posts && posts.length > 0
+
+    if (post) {
+      content = (
+        <>
+          <Post post={post} avatar={false} onPost />
+          <Border />
+        </>
+      )
+    }
+
+    return (
+      <>
+        {project.title && <Header project={project} spacingHorizontal={!hasPosts} />}
+        {content}
+      </>
+    )
+  }
 
   renderFooter = () => {
     const { project, followProject } = this.props
@@ -105,6 +136,7 @@ class Project extends PureComponent {
 
   render() {
     const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+
     const emptyState = project.projectPermissions.isOwner
       ? TYPES.PROJECT_POST
       : TYPES.PROJECT_NO_POSTS
@@ -118,9 +150,7 @@ class Project extends PureComponent {
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
           defaultPaddingTop
           ListEmptyComponent={<EmptyState type={emptyState} />}
-          ListHeaderComponent={
-            project.title && <Header project={project} spacingHorizontal={!hasPosts} />
-          }
+          ListHeaderComponent={this.renderHeader}
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}

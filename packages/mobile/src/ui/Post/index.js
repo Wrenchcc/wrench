@@ -35,9 +35,9 @@ class Post extends PureComponent {
   }
 
   goToProject = () => {
-    const { project } = this.props.post
+    const { project, id } = this.props.post
     if (!this.props.onPost) {
-      navigateToProject({ project })
+      navigateToProject({ project, id })
     }
   }
 
