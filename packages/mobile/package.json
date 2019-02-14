@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start:packager": "node node_modules/react-native-cli/index.js start --reset-cache",
+    "start:packager": "react-native start --reset-cache",
     "start:ios": "tasks/start_ios",
     "start:android": "tasks/start_android",
     "emulator:start": "tasks/emulator_start",
