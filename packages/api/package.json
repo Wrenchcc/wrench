@@ -11,7 +11,7 @@
     "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts"
   },
   "dependencies": {
-    "apollo-server-express": "^2.4.1",
+    "apollo-server-express": "^2.4.2",
     "aws-sdk": "^2.402.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
