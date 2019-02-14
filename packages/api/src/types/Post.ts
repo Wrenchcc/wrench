@@ -46,7 +46,7 @@ export default gql`
   }
 
   extend type Query {
-    post(id: ID!): Post
+    post(id: ID): Post
     posts(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
   }
 
