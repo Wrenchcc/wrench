@@ -4,6 +4,8 @@ import { COLORS, TOTAL_HEADER_HEIGHT } from 'ui/constants'
 
 function mapTypeToColor(type) {
   switch (type) {
+    case 'warning':
+      return COLORS.RED
     case 'error':
       return COLORS.ORANGE
     case 'success':
@@ -20,5 +22,5 @@ export const Base = animated(styled.View`
   top: ${TOTAL_HEADER_HEIGHT};
   left: 0;
   right: 0;
-  opacity: 0.98;
+  opacity: 0.95;
 `)
