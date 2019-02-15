@@ -5299,10 +5299,10 @@ react-native-webview@^5.2.1:
     escape-string-regexp "^1.0.5"
     fbjs "^0.8.17"
 
-react-native@v0.59.0-rc.0:
-  version "0.59.0-rc.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.0-rc.0.tgz#08da30f648514837ddd2a477ed96f91da109417c"
-  integrity sha512-1sqRvB3KOUNyAsA+Ar0W7UOYpduWm4KVH7YMYyfVkDpJTiHiyBOpSXzaoCda5xTJ3SW4Q7bbg00kP31Tc/y1rQ==
+react-native@^v0.59.0-rc.1:
+  version "0.59.0-rc.1"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.0-rc.1.tgz#7dd85c1a98fa7a6aa50e80dac52c54cb811556dc"
+  integrity sha512-P7OJMv+n/ZMI1v6zjh2wRagbIHLzORbGBiYOXHoHf8XTDjP15kps+0ccTYTcv5AYI8DA9Atb+jnP6dj6WCy2Tg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^1.2.1"
