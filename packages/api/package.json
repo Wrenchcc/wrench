@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.4.2",
-    "aws-sdk": "^2.402.0",
+    "aws-sdk": "^2.403.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
@@ -33,9 +33,9 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@firebase/app-types": "^0.3.3",
+    "@firebase/app-types": "^0.3.4",
     "@types/graphql-depth-limit": "^1.1.0",
-    "@types/pg": "^7.4.12",
+    "@types/pg": "^7.4.13",
     "@zeit/ncc": "0.15.0",
     "bluebird": "^3.5.3",
     "chokidar": "^2.1.1",
