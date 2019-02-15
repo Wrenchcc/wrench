@@ -11,6 +11,7 @@ export const SearchProjectsQuery = gql`
         hasNextPage
       }
       edges {
+        cursor
         node {
           ... on Project {
             ...projectInfo

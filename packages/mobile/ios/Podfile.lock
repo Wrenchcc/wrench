@@ -376,8 +376,8 @@ SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BVLinearGradient: b0b70acf63ee888829b7c2ebbf6b50e227396e55
-  CodePush: f6b348759cdc42c734d9c3a46ceb2997c270b12e
+  BVLinearGradient: 0d985ec461359c82bc254f26d11008bdae50d17a
+  CodePush: 338a023972c64636503e8886cf4cb6ec27dd1c01
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -404,28 +404,28 @@ SPEC CHECKSUMS:
   JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
-  React: 16c4fb7ce3fc30c041bce809ceae33bf57e7c142
-  react-native-camera: a8d04ef12749def72cae86b0b8d28c2de891a392
-  react-native-config: 8c2a92aa66a6cec1a23d9eda7ba6fcf31a63ace5
-  react-native-fast-image: cba3d9bf9c2cf8ddb643d887a686c53a5dd90a2c
-  react-native-fbsdk: d5f98cc5abecbcc463e3c35c04743d716d002d37
-  react-native-haptic-feedback: f675486e3889e3229272158943c1e9e075247e5a
-  react-native-pinchable: 377444b464693fe4f4eafa40eab2560f3555bd0c
-  react-native-splash-screen: a49be22f0f6648b8416f3bd28258645eeaa5b42b
-  react-native-video: 44c6befbc1526283ca1919891fcebe4680feade4
-  react-native-webview: a42108b827082f8f0333529b0772102031d5960d
-  ReactNativePermissions: 9f2d9c45c98800795e6c2ed330e25d11a66a8169
-  RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
-  RNFirebase: 57f6c2adb24355b4e6211e028a8e97e473432245
-  RNGestureHandler: afde2addc517e85cc97a25bfe119acbee779a7ce
-  RNRate: 72b5c9c2e62de9a01710918eb83d75fb99b44c7b
-  RNReanimated: 45d9313b7a62318ed00d60a811937321e43e076e
-  RNScreens: 354046589421edc3d83d5c6212475bf1fb9a731d
-  RNShare: d875e8e37f3e5e8eb7a103ae01e06490af1796f6
+  React: 52cc7336fcbd8f3f81f9592960856fc42f1956c1
+  react-native-camera: 3da74dab49958de829924292ef57bf1427d6efbb
+  react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
+  react-native-fast-image: ec7e5a2420a9e63cf9b2925fce7babc580ea8e05
+  react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
+  react-native-haptic-feedback: c8c526446135d563889ae1b26adf24dee7c99398
+  react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
+  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
+  react-native-video: 3117b6696308fa494f3b20b279f57aaa618a6c42
+  react-native-webview: 763be2e9f8b103d195170fafc2fd77805d5434b5
+  ReactNativePermissions: b64e084dff6a5cad51587d38c306f09246246384
+  RNDeviceInfo: e7c5fcde13d40e161d8a27f6c5dc69c638936002
+  RNFirebase: 59823b25c28b59b87de49ed261fe480cf0ca1824
+  RNGestureHandler: 14c09a7361c272efea8f7f3799142c893a6a4485
+  RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
+  RNReanimated: b7adc1a5e4eca563966cfcbd982429ebd70d6b17
+  RNScreens: 720a9e6968beb73e8196239801e887d8401f86ed
+  RNShare: 4f206fa36e384e95a0cbf79f2a92490647e93127
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
-  yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
+  yoga: 04a956a4f2b10b503343bb49ef52e0fbcb46940a
 
 PODFILE CHECKSUM: 68c5f515559267e9d0660e8ff27a67fbd1d06485
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0
