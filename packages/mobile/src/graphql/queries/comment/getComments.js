@@ -80,20 +80,19 @@ const getCommentsOptions = {
         after: comments.edges[comments.edges.length - 1].cursor,
         postId: post.id,
       },
-      updateQuery: (prev, { fetchMoreResult }) => {
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        const { edges, pageInfo, ...rest } = fetchMoreResult.comments
+
         if (!fetchMoreResult.comments) {
-          return prev
+          return previousResult
         }
 
         return {
-          ...prev,
+          ...previousResult,
           comments: {
-            ...prev.comments,
-            pageInfo: {
-              ...prev.comments.pageInfo,
-              ...fetchMoreResult.comments.pageInfo,
-            },
-            edges: [...prev.comments.edges, ...fetchMoreResult.comments.edges],
+            ...rest,
+            edges: [...previousResult.comments.edges, ...edges],
+            pageInfo,
           },
         }
       },

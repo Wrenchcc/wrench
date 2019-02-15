@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, Keyboard } from 'react-native'
 import { withNamespaces } from 'react-i18next'
@@ -98,7 +98,7 @@ class Search extends PureComponent {
 
   render() {
     return (
-      <Fragment>
+      <>
         <Base>
           <SearchBar placeholder={false} cancelButton onChangeText={this.onChangeText} />
         </Base>
@@ -113,7 +113,7 @@ class Search extends PureComponent {
           animationEnabled
           useNativeDriver
         />
-      </Fragment>
+      </>
     )
   }
 }

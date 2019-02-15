@@ -42,7 +42,6 @@ class Projects extends PureComponent {
     return (
       <InfiniteList
         borderSeparator
-        initialNumToRender={3}
         getItemLayout={this.getItemLayout}
         ListEmptyComponent={<NoResults />}
         data={projects}
