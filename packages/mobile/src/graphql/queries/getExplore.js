@@ -39,23 +39,19 @@ const RecentPostsQuery = gql`
 `
 
 const getPopularProjectsOptions = {
-  options: ({ after }) => ({
+  options: {
     variables: {
-      after,
       type: PROJECT_SORT_TYPES.POPULAR,
     },
     fetchPolicy: 'cache-and-network',
-  }),
+  },
   props: mapListProps('projects'),
 }
 
 const getRecentPostsOptions = {
-  options: ({ after }) => ({
-    variables: {
-      after,
-    },
+  options: {
     fetchPolicy: 'cache-and-network',
-  }),
+  },
   props: mapListProps('posts'),
 }
 
