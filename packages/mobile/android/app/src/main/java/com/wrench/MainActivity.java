@@ -1,6 +1,7 @@
 package com.wrench;
 
 import android.os.Bundle;
+import android.content.Intent;
 import com.facebook.react.ReactActivityDelegate;
 import org.devio.rn.splashscreen.SplashScreen;
 import com.facebook.react.ReactRootView;
@@ -13,6 +14,12 @@ public class MainActivity extends ReactFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
       SplashScreen.show(this);
       super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+      super.onActivityResult(requestCode, resultCode, data);
+      MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
     }
 
     /**
