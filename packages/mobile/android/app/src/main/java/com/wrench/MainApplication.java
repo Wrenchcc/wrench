@@ -3,6 +3,10 @@ package com.wrench;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.swmansion.rnscreens.RNScreensPackage;
+import org.reactnative.camera.RNCameraPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -29,7 +33,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNSharePackage(),
+          new SplashScreenReactPackage(),
+          new RNScreensPackage(),
+          new RNCameraPackage(),
+          new RNDeviceInfo(),
+          new RNSharePackage(),
           new RNGestureHandlerPackage(),
           new RNFirebasePackage(),
           new RNFirebaseAnalyticsPackage(),

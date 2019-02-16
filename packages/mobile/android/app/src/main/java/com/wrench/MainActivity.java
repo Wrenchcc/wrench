@@ -1,11 +1,19 @@
 package com.wrench;
 
-import com.facebook.react.ReactActivity;
+import android.os.Bundle;
 import com.facebook.react.ReactActivityDelegate;
+import org.devio.rn.splashscreen.SplashScreen;
 import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+import com.facebook.react.ReactFragmentActivity;
 
-public class MainActivity extends ReactActivity {
+public class MainActivity extends ReactFragmentActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      SplashScreen.show(this);
+      super.onCreate(savedInstanceState);
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.
