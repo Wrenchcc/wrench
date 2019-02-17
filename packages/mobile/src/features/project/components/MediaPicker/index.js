@@ -14,6 +14,7 @@ const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 32
 const PHOTO_PERMISSION = 'photo'
+const ASSET_TYPE = 'all'
 
 export default class MediaPicker extends Component {
   static propTypes = {
@@ -72,6 +73,7 @@ export default class MediaPicker extends Component {
         after,
         first: PAGE_SIZE,
         groupTypes: GROUP_TYPES,
+        assetType: ASSET_TYPE,
       })
 
       const loadedFiles = result.edges.map(image => image.node.image)
