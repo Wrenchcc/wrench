@@ -10,7 +10,7 @@ const Text = ({
   onPress,
   onLongPress,
   disabled = false,
-  lineHeight = 0,
+  lineHeight = null,
   hapticFeedback = null,
   ...props
 }) => onPress ? (
