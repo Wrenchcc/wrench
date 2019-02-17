@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { navigateToWebView } from 'navigation/actions'
 import { Base, Text, Link } from './styles'
 
@@ -16,4 +16,4 @@ const Legal = memo(function Legal({ t, ...props }) {
   )
 })
 
-export default withNamespaces('Legal')(Legal)
+export default withTranslation('Legal')(Legal)

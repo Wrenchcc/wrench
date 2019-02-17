@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { navigateToAddProject, navigateToAddMedia } from 'navigation/actions'
 import Text from 'ui/Text'
 import { TYPES } from './constants'
@@ -50,4 +50,4 @@ EmptyState.propTypes = {
   params: PropTypes.object,
 }
 
-export default withNamespaces('EmptyState')(EmptyState)
+export default withTranslation('EmptyState')(EmptyState)

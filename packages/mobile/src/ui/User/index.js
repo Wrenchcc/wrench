@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import { navigateToUser } from 'navigation/actions'
@@ -32,4 +32,4 @@ class User extends PureComponent {
   }
 }
 
-export default withNamespaces('UiUser')(User)
+export default withTranslation('UiUser')(User)

@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { navigateToEditProject } from 'navigation/actions'
 import Text from 'ui/Text'
 
@@ -16,4 +16,4 @@ Edit.propTypes = {
   project: PropTypes.object.isRequired,
 }
 
-export default withNamespaces('Edit')(Edit)
+export default withTranslation('Edit')(Edit)

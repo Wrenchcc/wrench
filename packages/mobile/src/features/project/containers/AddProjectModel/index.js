@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { InteractionManager, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { navigateToAddMedia } from 'navigation/actions'
@@ -84,5 +84,5 @@ AddProjectModel.propTypes = {
 
 export default compose(
   addProject,
-  withNamespaces('AddProjectModel')
+  withTranslation('AddProjectModel')
 )(AddProjectModel)

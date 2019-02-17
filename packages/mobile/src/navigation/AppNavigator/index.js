@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { Linking } from 'react-native'
 import { links, notifications } from 'react-native-firebase'
 import { setNavigationRef } from 'navigation/actions'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Gateway, ToastNotification } from 'ui'
 import { extractDeepLinkFromDynamicLink, formatDeepLink } from 'utils/dynamicLinks'
 import handleStatusBar from 'navigation/handleStatusBar'
@@ -71,4 +71,4 @@ class AppNavigator extends PureComponent {
   }
 }
 
-export default withNamespaces()(AppNavigator)
+export default withTranslation()(AppNavigator)

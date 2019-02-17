@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Spring } from 'react-spring/renderprops'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { ToastNotificationContainer } from 'store'
 import Text from 'ui/Text'
@@ -31,4 +31,4 @@ const ToastNotification = memo(function ToastNotification({ t }) {
   )
 })
 
-export default withNamespaces('ToastNotification')(ToastNotification)
+export default withTranslation('ToastNotification')(ToastNotification)

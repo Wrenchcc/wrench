@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Spring } from 'react-spring/renderprops'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import Text from 'ui/Text'
@@ -38,4 +38,4 @@ const PostProgress = memo(function PostProgress({ t }) {
   )
 })
 
-export default withNamespaces('PostProgress')(PostProgress)
+export default withTranslation('PostProgress')(PostProgress)

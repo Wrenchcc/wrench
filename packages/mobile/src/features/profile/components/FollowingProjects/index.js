@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { InfiniteList } from 'ui'
 import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
@@ -72,5 +72,5 @@ class FollowingProjects extends PureComponent {
 
 export default compose(
   getFollowingProjects,
-  withNamespaces('FollowingProjects')
+  withTranslation('FollowingProjects')
 )(FollowingProjects)

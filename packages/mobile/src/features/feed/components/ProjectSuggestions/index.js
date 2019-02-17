@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { getProjectSuggestions } from 'graphql/queries/project/getProjectSuggestions'
 import { ProjectSuggestion, Loader } from 'ui'
@@ -38,5 +38,5 @@ class ProjectSuggestions extends PureComponent {
 
 export default compose(
   getProjectSuggestions,
-  withNamespaces('ProjectSuggestions')
+  withTranslation('ProjectSuggestions')
 )(ProjectSuggestions)

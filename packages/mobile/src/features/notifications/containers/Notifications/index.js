@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { getNotifications } from 'graphql/queries/getNotifications'
 import { markAllNotificationsSeen } from 'graphql/mutations/notification/markAllNotificationsSeen'
@@ -77,5 +77,5 @@ export default compose(
   getNotifications,
   markAllNotificationsSeen,
   deleteNotification,
-  withNamespaces('Notifications')
+  withTranslation('Notifications')
 )(Notifications)

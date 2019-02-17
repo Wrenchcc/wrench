@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Alert, View, Animated, Image } from 'react-native'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Swipeable, RectButton } from 'react-native-gesture-handler'
 import { navigateToUser, navigateToProject, navigateToComments } from 'navigation/actions'
 import Avatar from 'ui/Avatar'
@@ -145,4 +145,4 @@ class Notification extends PureComponent {
   }
 }
 
-export default withNamespaces('Notification')(Notification)
+export default withTranslation('Notification')(Notification)

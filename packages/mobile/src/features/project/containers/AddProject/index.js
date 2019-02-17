@@ -1,6 +1,6 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import { navigateToAddProjectType } from 'navigation/actions'
@@ -48,4 +48,4 @@ function AddProject({ t }) {
   )
 }
 
-export default withNamespaces('AddProject')(AddProject)
+export default withTranslation('AddProject')(AddProject)

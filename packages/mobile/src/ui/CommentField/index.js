@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard } from 'react-native'
 import { Query } from 'react-apollo'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { COLORS } from 'ui/constants'
 import Avatar from 'ui/Avatar'
@@ -120,4 +120,4 @@ class CommentField extends PureComponent {
   }
 }
 
-export default withNamespaces('CommentField')(CommentField)
+export default withTranslation('CommentField')(CommentField)

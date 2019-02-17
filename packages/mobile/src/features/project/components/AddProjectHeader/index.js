@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { ActivityIndicator } from 'react-native'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { navigateBack } from 'navigation/actions'
 import { Header, Text, Icon } from 'ui'
 import { closeDark } from 'images'
@@ -53,4 +53,4 @@ AddProjectHeader.propTypes = {
   translationKey: PropTypes.string,
 }
 
-export default withNamespaces('AddProjectHeader')(AddProjectHeader)
+export default withTranslation('AddProjectHeader')(AddProjectHeader)

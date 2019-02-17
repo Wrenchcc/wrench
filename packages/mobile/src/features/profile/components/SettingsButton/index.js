@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import Text from 'ui/Text'
 import { navigateToSettings } from 'navigation/actions'
 
@@ -9,4 +9,4 @@ const SettingsButton = memo(({ t }) => (
     </Text>
 ))
 
-export default withNamespaces('SettingsButton')(SettingsButton)
+export default withTranslation('SettingsButton')(SettingsButton)

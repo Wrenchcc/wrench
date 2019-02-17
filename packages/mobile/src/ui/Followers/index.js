@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import Text from 'ui/Text'
 
 const Followers = memo(function Followers({
@@ -24,4 +24,4 @@ Followers.propTypes = {
   opacity: PropTypes.number,
 }
 
-export default withNamespaces('UiFollowers')(Followers)
+export default withTranslation('UiFollowers')(Followers)

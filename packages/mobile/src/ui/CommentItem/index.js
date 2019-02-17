@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import Text from 'ui/Text'
 import Item from './Item'
 import { LoadReplies, Border } from './styles'
@@ -54,4 +54,4 @@ CommentItem.propTypes = {
   onReply: PropTypes.func,
 }
 
-export default withNamespaces('CommentItem')(CommentItem)
+export default withTranslation('CommentItem')(CommentItem)

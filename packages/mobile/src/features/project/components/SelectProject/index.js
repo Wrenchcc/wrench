@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, InteractionManager } from 'react-native'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { navigateToAddProject } from 'navigation/actions'
 import { Text } from 'ui'
 import Project from './Project'
@@ -87,4 +87,4 @@ class SelectProject extends PureComponent {
   }
 }
 
-export default withNamespaces('SelectProject')(SelectProject)
+export default withTranslation('SelectProject')(SelectProject)

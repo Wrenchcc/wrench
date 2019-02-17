@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { SectionList } from 'react-native'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
@@ -80,5 +80,5 @@ class Settings extends PureComponent {
 export default compose(
   getCurrentUserSettings,
   toggleUserNotificationSettingsMutation,
-  withNamespaces('Settings')
+  withTranslation('Settings')
 )(Settings)

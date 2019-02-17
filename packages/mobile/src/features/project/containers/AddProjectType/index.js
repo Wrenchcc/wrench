@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import { navigateToAddModel } from 'navigation/actions'
@@ -42,4 +42,4 @@ function AddProjectType({ t }) {
   )
 }
 
-export default withNamespaces('AddProjectType')(AddProjectType)
+export default withTranslation('AddProjectType')(AddProjectType)

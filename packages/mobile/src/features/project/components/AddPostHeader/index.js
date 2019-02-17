@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -138,5 +138,5 @@ class AddPostHeader extends PureComponent {
 
 export default compose(
   getCurrentUserProjects,
-  withNamespaces('AddPostHeader')
+  withTranslation('AddPostHeader')
 )(AddPostHeader)

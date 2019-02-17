@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import Text from 'ui/Text'
 import { follow } from 'images'
 import { Button, Icon } from './styles'
@@ -25,4 +25,4 @@ Follow.propTypes = {
   following: PropTypes.bool.isRequired,
 }
 
-export default withNamespaces('Follow')(Follow)
+export default withTranslation('Follow')(Follow)

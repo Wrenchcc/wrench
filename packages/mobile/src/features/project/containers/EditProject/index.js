@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { ScrollView, ActivityIndicator, Alert } from 'react-native'
 import { compose } from 'react-apollo'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { editProject } from 'graphql/mutations/project/editProject'
 import { deleteProject } from 'graphql/mutations/project/deleteProject'
 import { navigateBack, navigateToFeed } from 'navigation/actions'
@@ -148,5 +148,5 @@ class EditProject extends PureComponent {
 export default compose(
   deleteProject,
   editProject,
-  withNamespaces('EditProject')
+  withTranslation('EditProject')
 )(EditProject)

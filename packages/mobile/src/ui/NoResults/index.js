@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { View } from 'react-native'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import Text from 'ui/Text'
 
 const NoResults = memo(function NoResults({ t }) {
@@ -11,4 +11,4 @@ const NoResults = memo(function NoResults({ t }) {
   )
 })
 
-export default withNamespaces('NoResults')(NoResults)
+export default withTranslation('NoResults')(NoResults)

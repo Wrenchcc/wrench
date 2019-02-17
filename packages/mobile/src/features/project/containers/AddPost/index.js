@@ -5,7 +5,7 @@ import { pathOr } from 'ramda'
 import { Subscribe } from 'unstated'
 import { AddContainer, ToastNotificationContainer } from 'store'
 import { compose } from 'react-apollo'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { navigateToFeed } from 'navigation/actions'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -98,5 +98,5 @@ class AddPost extends PureComponent {
 export default compose(
   addPost,
   getCurrentUserProjects,
-  withNamespaces('AddPost')
+  withTranslation('AddPost')
 )(AddPost)

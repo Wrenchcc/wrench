@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { Base, Headline, Description } from './styles'
 
 const Content = memo(function Content({ t }) {
@@ -15,4 +15,4 @@ const Content = memo(function Content({ t }) {
   )
 })
 
-export default withNamespaces('OnboardingContent')(Content)
+export default withTranslation('OnboardingContent')(Content)

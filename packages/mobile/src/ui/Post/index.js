@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Alert, TouchableOpacity } from 'react-native'
 import { compose } from 'react-apollo'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { navigateToProject, navigateToUser } from 'navigation/actions'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import Avatar from 'ui/Avatar'
@@ -136,5 +136,5 @@ class Post extends PureComponent {
 
 export default compose(
   deletePost,
-  withNamespaces('Post')
+  withTranslation('Post')
 )(Post)

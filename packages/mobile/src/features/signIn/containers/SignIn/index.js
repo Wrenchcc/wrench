@@ -1,7 +1,7 @@
 import React from 'react'
 import { StatusBar } from 'react-native'
 import { Subscribe } from 'unstated'
-import { withNamespaces } from 'react-i18next'
+import withTranslation from 'i18n/withTranslation'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import { AppContainer } from 'store'
@@ -37,4 +37,4 @@ function SignIn({ t }) {
     </>
   )
 }
-export default withNamespaces('SignIn')(SignIn)
+export default withTranslation('SignIn')(SignIn)
