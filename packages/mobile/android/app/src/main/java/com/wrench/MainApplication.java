@@ -14,8 +14,10 @@ import cl.json.RNSharePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
+import io.invertase.firebase.links.RNFirebaseLinksPackage;
 import io.invertase.firebase.perf.RNFirebasePerformancePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -56,7 +58,9 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebasePackage(),
           new RNFirebaseAnalyticsPackage(),
           new RNFirebasePerformancePackage(),
-          new RNFirebaseMessagingPackage()
+          new RNFirebaseMessagingPackage(),
+          new RNFirebaseNotificationsPackage(),
+          new RNFirebaseLinksPackage()
       );
     }
 
