@@ -3,6 +3,7 @@ package com.wrench;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.dylanvann.fastimage.FastImageViewPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.brentvatne.react.ReactVideoPackage;
@@ -24,7 +25,6 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
-import com.facebook.reactnative.androidsdk.FBSDKPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,7 +60,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebasePerformancePackage(),
           new RNFirebaseMessagingPackage(),
           new RNFirebaseNotificationsPackage(),
-          new RNFirebaseLinksPackage()
+          new RNFirebaseLinksPackage(),
+          new FastImageViewPackage()
       );
     }
 
