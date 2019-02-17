@@ -17,6 +17,7 @@ import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.links.RNFirebaseLinksPackage;
 import io.invertase.firebase.perf.RNFirebasePerformancePackage;
@@ -49,9 +50,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNCWebViewPackage(),
-            new LinearGradientPackage(),
-            new RNReactNativeHapticFeedbackPackage(),
+          new RNCWebViewPackage(),
+          new LinearGradientPackage(),
+          new RNReactNativeHapticFeedbackPackage(),
           new FBSDKPackage(mCallbackManager),
           new ReactNativeConfigPackage(),
           new ReactVideoPackage(),
@@ -67,7 +68,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebaseMessagingPackage(),
           new RNFirebaseNotificationsPackage(),
           new RNFirebaseLinksPackage(),
-          new FastImageViewPackage()
+          new FastImageViewPackage(),
+          new RNFirebaseCrashlyticsPackage()
       );
     }
 
