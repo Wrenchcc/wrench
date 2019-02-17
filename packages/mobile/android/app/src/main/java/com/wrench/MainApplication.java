@@ -3,6 +3,7 @@ package com.wrench;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
@@ -48,6 +49,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNCWebViewPackage(),
             new LinearGradientPackage(),
             new RNReactNativeHapticFeedbackPackage(),
           new FBSDKPackage(mCallbackManager),
