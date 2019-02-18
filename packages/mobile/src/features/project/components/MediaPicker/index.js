@@ -8,7 +8,7 @@ import AskForPermission from 'features/project/components/AskForPermission'
 import MediaItem from './Item'
 
 const AUTHORIZED = 'authorized'
-// const GROUP_TYPES = 'All'
+const GROUP_TYPES = 'All'
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
@@ -72,8 +72,8 @@ export default class MediaPicker extends Component {
       const result = await CameraRoll.getPhotos({
         after,
         first: PAGE_SIZE,
-        // groupTypes: GROUP_TYPES,
-        // assetType: ASSET_TYPE,
+        groupTypes: GROUP_TYPES,
+        assetType: ASSET_TYPE,
       })
 
       const loadedFiles = result.edges.map(image => image.node.image)

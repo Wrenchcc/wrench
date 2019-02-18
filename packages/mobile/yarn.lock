@@ -1208,10 +1208,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.2.3.tgz#88444272441b06816f136d06ff0b56d5751dba2a"
-  integrity sha512-5B0ehJki7XnQKfMcrrUTqqaOJkj7htcGYwWVRCby7jX6G17Ue7YyOTXrBqbVSQ0p7E+jFgLmrih630P43RN1Jw==
+"@react-native-community/cli@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.2.4.tgz#a0faef1fcab3935ddb3b3ef5c625862865a6d645"
+  integrity sha512-0ekkItqqhoV9Vpyqmv1Rmf7SNHPgsICxBhugYjrM3USmYkqWKtLMvbOZG3OTuFFdg/c30S8eNPFpUk+uwXQv3w==
   dependencies:
     chalk "^1.1.1"
     commander "^2.9.0"
@@ -5208,10 +5208,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^0.26.3:
-  version "0.26.3"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.26.3.tgz#8dff9e64284ca274a8a574d5ae3bf4ed3f0a236d"
-  integrity sha512-lzdyeKf0brD3OLof0SDmzoJSJCOgjcU37gK5oPrCe/1kqYAAFDM0BYWnQ0JjS+8n91k/nOjwsLHIQ9oI/txIMQ==
+react-native-device-info@^0.26.4:
+  version "0.26.4"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.26.4.tgz#5d747fae91d5abceff2de5430ff92749a09c62dd"
+  integrity sha512-gQo/hSk26E/gK0W3QvkSv+mrBbceFszezxLfUriK3JbiUwvaOlXm6kru2jAu1XGJzfxo/JUO0Mc0lopqiPgw+A==
 
 react-native-fast-image@^5.1.2:
   version "5.1.2"
@@ -5338,10 +5338,10 @@ react-native-webview@^5.2.1:
     escape-string-regexp "^1.0.5"
     fbjs "^0.8.17"
 
-react-native@^v0.59.0-rc.1:
-  version "0.59.0-rc.1"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.0-rc.1.tgz#7dd85c1a98fa7a6aa50e80dac52c54cb811556dc"
-  integrity sha512-P7OJMv+n/ZMI1v6zjh2wRagbIHLzORbGBiYOXHoHf8XTDjP15kps+0ccTYTcv5AYI8DA9Atb+jnP6dj6WCy2Tg==
+react-native@^v0.59.0-rc.2:
+  version "0.59.0-rc.2"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.0-rc.2.tgz#ad1a145be18805be2c55abd1507f473a40220acf"
+  integrity sha512-p6uKqye+PMjLzaBVMm1YJdHSHNDqutAVSCkj11luXf65gnNWuYWta7CDSthXuGGMmhlDFcmFOR8ewpzvo1m46A==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^1.2.1"

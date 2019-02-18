@@ -9,7 +9,12 @@ export default gql`
   }
 
   input PreSignedUrlnput {
-    filename: String
+    type: UploadType!
+  }
+
+  enum UploadType {
+    IMAGE
+    VIDEO
   }
 
   extend type Mutation {

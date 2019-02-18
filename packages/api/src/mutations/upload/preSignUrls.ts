@@ -1,7 +1,7 @@
 import { S3 } from 'aws-sdk'
 import { v4 } from 'uuid'
+import getExtFromType from '../../utils/getExtFromType'
 import { isAuthenticated } from '../../utils/permissions'
-import { getContentType, getExtensionType } from '../../utils/fileExtensions'
 
 const debug = require('debug')('api:s3')
 
@@ -17,9 +17,8 @@ export default isAuthenticated(async (_, { input }) => {
   try {
     return Promise.all(
       input.map(async file => {
-        const ext = getExtensionType(file.filename)
-        const type = getContentType(ext)
-        const filename = `${v4()}.${ext}`
+        const type = getExtFromType(file.type)
+        const filename = `${v4()}.${type}`
 
         try {
           const params = {

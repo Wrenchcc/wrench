@@ -35,12 +35,12 @@
     "react-apollo": "^2.4.1",
     "react-dom": "^16.8.2",
     "react-i18next": "^10.1.2",
-    "react-native": "^v0.59.0-rc.1",
+    "react-native": "^v0.59.0-rc.2",
     "react-native-actionsheet": "^2.4.2",
     "react-native-camera": "^1.11.1",
     "react-native-code-push": "^5.5.2",
     "react-native-config": "^0.11.7",
-    "react-native-device-info": "^0.26.3",
+    "react-native-device-info": "^0.26.4",
     "react-native-fast-image": "^5.1.2",
     "react-native-fbsdk": "^0.8.0",
     "react-native-firebase": "^5.2.2",
@@ -75,6 +75,6 @@
     "librsvg-prebuilt": "^0.7.10",
     "metro-react-native-babel-preset": "^0.51.1",
     "prop-types": "^15.7.2",
-    "@react-native-community/cli": "^1.2.3"
+    "@react-native-community/cli": "^1.2.4"
   }
 }

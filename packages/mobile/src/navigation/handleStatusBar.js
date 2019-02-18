@@ -1,4 +1,5 @@
 import { StatusBar } from 'react-native'
+import { isAndroid } from 'utils/platform'
 
 const NAVIGATE = 'Navigation/NAVIGATE'
 const NAVIGATE_BACK = 'Navigation/BACK'
@@ -13,7 +14,9 @@ const setBarStyle = style => {
 
 const setDefaultStatusBar = () => {
   toggleStatusBar(false)
-  StatusBar.setBackgroundColor('white')
+  if (isAndroid) {
+    StatusBar.setBackgroundColor('white')
+  }
   StatusBar.setBarStyle('dark-content')
 }
 
