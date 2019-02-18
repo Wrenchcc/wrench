@@ -1,5 +1,4 @@
 import { StatusBar } from 'react-native'
-import { isIphone } from 'utils/platform'
 
 const NAVIGATE = 'Navigation/NAVIGATE'
 const NAVIGATE_BACK = 'Navigation/BACK'
@@ -9,13 +8,13 @@ const toggleStatusBar = hide => {
 }
 
 const setBarStyle = style => {
-  if (isIphone) StatusBar.setBarStyle(style, true)
+  StatusBar.setBarStyle(style, true)
 }
 
 const setDefaultStatusBar = () => {
   toggleStatusBar(false)
   StatusBar.setBackgroundColor('white')
-  setBarStyle('dark-content')
+  StatusBar.setBarStyle('dark-content')
 }
 
 const changeStatusBar = routeName => {

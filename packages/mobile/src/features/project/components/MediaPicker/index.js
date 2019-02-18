@@ -73,7 +73,7 @@ export default class MediaPicker extends Component {
         after,
         first: PAGE_SIZE,
         // groupTypes: GROUP_TYPES,
-        assetType: ASSET_TYPE,
+        // assetType: ASSET_TYPE,
       })
 
       const loadedFiles = result.edges.map(image => image.node.image)
