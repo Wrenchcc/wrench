@@ -12,8 +12,7 @@ import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
 
-const FOOTER_HEIGHT = 500
-const START_OPACITY = 0
+const FOOTER_HEIGHT = 0
 
 let scrollView = null
 
@@ -72,7 +71,7 @@ class Project extends PureComponent {
 
     props.navigation.setParams({
       opacity: this.scrollY.interpolate({
-        inputRange: [START_OPACITY, FOOTER_HEIGHT],
+        inputRange: [0, 100],
         outputRange: [0, 1],
       }),
     })

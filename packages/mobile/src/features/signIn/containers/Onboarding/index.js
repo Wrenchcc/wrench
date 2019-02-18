@@ -41,7 +41,7 @@ class Onboarding extends Component {
     const { isSaving } = this.state
 
     return isSaving ? (
-      <ActivityIndicator size="small" />
+      <ActivityIndicator size="small" color="white" />
     ) : (
       <Text
         color="white"

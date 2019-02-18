@@ -14,6 +14,7 @@ const setBarStyle = style => {
 
 const setDefaultStatusBar = () => {
   toggleStatusBar(false)
+  StatusBar.setBackgroundColor('white')
   setBarStyle('dark-content')
 }
 

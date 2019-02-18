@@ -12,6 +12,7 @@ import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
 
 const CAMERA_PERMISSION = 'camera'
 const AUTHORIZED = 'authorized'
+const ORIENTATION = 'portrait'
 
 export default class Camera extends PureComponent {
   static propTypes = {
@@ -52,7 +53,9 @@ export default class Camera extends PureComponent {
   }
 
   takePicture = async camera => {
-    const data = await camera.takePictureAsync({ forceUpOrientation: true })
+    const data = await camera.takePictureAsync({
+      orientation: ORIENTATION,
+    })
     this.props.onTakePicture(data)
   }
 
