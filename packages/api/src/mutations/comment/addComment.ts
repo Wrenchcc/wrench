@@ -1,8 +1,28 @@
+import { ForbiddenError } from 'apollo-server-express'
 import { isAuthenticated, canModeratePost, canModerateComment } from '../../utils/permissions'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 import { extractMentionedUsers } from '../../utils/regex'
 
+const debug = require('debug')('api:mutations:comment:add-comment')
+
+const SPAM_LMIT = 10
+
 export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
+  const userPreviousPublishedPosts = await ctx.db.Comment.usersreviousPublished('5 minutes')
+
+  // if user has published comments in the last 5 minutes, check for spam
+  if (userPreviousPublishedPosts && userPreviousPublishedPosts.length > 0) {
+    debug('User has commented at least once in the previous 5m - running spam checks')
+
+    if (userPreviousPublishedPosts.length >= SPAM_LMIT) {
+      debug('User has commented at least 10 times in the previous 5m')
+
+      return new ForbiddenError(
+        'You’ve been commenting a lot! Please wait a few minutes before posting more.'
+      )
+    }
+  }
+
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
