@@ -1,10 +1,10 @@
 module.exports = {
   transformer: {
-    getTransformOptions: {
+    getTransformOptions: () => ({
       transform: {
         experimentalImportSupport: true,
         inlineRequires: false,
       },
-    },
+    }),
   },
 }
