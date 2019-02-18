@@ -26,8 +26,8 @@ export default class Provider extends React.Component {
   render() {
     return (
       <>
-        <Destination name="global" />
         {this.props.children}
+        <Destination name="global" />
       </>
     )
   }
