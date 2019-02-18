@@ -17,8 +17,8 @@ export default class Comment extends BaseEntity {
     return getRepository(Comment)
       .createQueryBuilder('comment')
       .select('count(comment.id)', 'count')
-      .where(`"followers"."createdAt" > current_date - interval ${interval}`)
-      .getRawMany()
+      .where(`"comment"."createdAt" > current_date - interval '${interval}'`)
+      .getRawOne()
   }
 
   @ManyToOne(() => User, user => user.comments)

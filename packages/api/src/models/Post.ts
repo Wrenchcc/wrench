@@ -20,8 +20,8 @@ export default class Post extends BaseEntity {
     return getRepository(Post)
       .createQueryBuilder('post')
       .select('count(post.id)', 'count')
-      .where(`"followers"."createdAt" > current_date - interval ${interval}`)
-      .getRawMany()
+      .where(`"post"."createdAt" > current_date - interval '${interval}'`)
+      .getRawOne()
   }
 
   @ManyToOne(() => User, user => user.posts)

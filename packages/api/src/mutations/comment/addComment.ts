@@ -11,10 +11,10 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const userPreviousPublishedPosts = await ctx.db.Comment.usersreviousPublished('5 minutes')
 
   // if user has published comments in the last 5 minutes, check for spam
-  if (userPreviousPublishedPosts && userPreviousPublishedPosts.length > 0) {
+  if (userPreviousPublishedPosts.count > 0) {
     debug('User has commented at least once in the previous 5m - running spam checks')
 
-    if (userPreviousPublishedPosts.length >= SPAM_LMIT) {
+    if (userPreviousPublishedPosts.count >= SPAM_LMIT) {
       debug('User has commented at least 10 times in the previous 5m')
 
       return new ForbiddenError(
