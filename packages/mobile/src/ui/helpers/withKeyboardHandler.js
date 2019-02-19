@@ -4,7 +4,7 @@ import { Keyboard, TextInput, findNodeHandle } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import { isIphoneX } from 'utils/platform'
 
-const ADDITIONAL_OFFSET = isIphoneX ? 125 : 95
+const ADDITIONAL_OFFSET = isIphoneX ? 125 : 105
 
 export default function withKeyboardHandler(WrappedComponent) {
   class WithKeyboardHandler extends PureComponent {
@@ -21,7 +21,7 @@ export default function withKeyboardHandler(WrappedComponent) {
       super(props)
 
       props.navigation.addListener('willFocus', () => {
-        this.subscriptions = [Keyboard.addListener('keyboardWillShow', this.keyboardWillShow)]
+        this.subscriptions = [Keyboard.addListener('keyboardDidShow', this.keyboardWillShow)]
       })
 
       props.navigation.addListener('willBlur', () => {
@@ -53,7 +53,9 @@ export default function withKeyboardHandler(WrappedComponent) {
       }
     }
 
-    render = () => <WrappedComponent {...this.props} scrollRef={this.setRef} />
+    render() {
+      return <WrappedComponent {...this.props} scrollRef={this.setRef} />
+    }
   }
 
   function getDisplayName(WrappedComponent) {

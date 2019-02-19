@@ -12,7 +12,7 @@ import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
 
-const FOOTER_HEIGHT = 200
+const FOOTER_HEIGHT = 600
 
 let scrollView = null
 
