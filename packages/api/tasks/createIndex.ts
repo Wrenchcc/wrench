@@ -16,21 +16,13 @@ async function createIndex() {
           vehicle: {
             properties: {
               brand: {
-                copy_to: 'suggest',
                 type: 'text',
               },
               model: {
-                copy_to: 'suggest',
-                type: 'text',
-              },
-              suggestion: {
-                analyzer: 'autocomplete',
-                search_analyzer: 'autocomplete_search',
                 type: 'text',
               },
               year: {
-                // copy_to: 'suggest',
-                type: 'keyword',
+                type: 'text',
               },
             },
           },
