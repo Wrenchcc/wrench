@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard, TextInput, findNodeHandle } from 'react-native'
 import { withNavigation } from 'react-navigation'
-import { isIphoneX } from 'utils/platform'
+import { isIphoneX, isIphone } from 'utils/platform'
 
 const ADDITIONAL_OFFSET = isIphoneX ? 125 : 105
 
@@ -21,7 +21,11 @@ export default function withKeyboardHandler(WrappedComponent) {
       super(props)
 
       props.navigation.addListener('willFocus', () => {
-        this.subscriptions = [Keyboard.addListener('keyboardDidShow', this.keyboardWillShow)]
+        if (isIphone) {
+          this.subscriptions = [Keyboard.addListener('keyboardWillShow', this.keyboardWillShow)]
+        } else {
+          this.subscriptions = [Keyboard.addListener('keyboardDidShow', this.keyboardWillShow)]
+        }
       })
 
       props.navigation.addListener('willBlur', () => {

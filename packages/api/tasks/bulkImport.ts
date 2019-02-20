@@ -9,7 +9,7 @@ const BATCH_SIZE = 500
 const INDEX_NAME = 'vehicles'
 const DOCUMENT_TYPE = 'vehicle'
 
-createConnection(options).then(async connection => {
+createConnection(options).then(async () => {
   async function batch(skip = 0) {
     const models = await getRepository(Model).find({
       relations: ['brand'],
