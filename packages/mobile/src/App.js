@@ -5,7 +5,7 @@ import { useScreens } from 'react-native-screens'
 import { path } from 'ramda'
 import { AuthNavigator, AppNavigator } from 'navigation'
 import { AppContainer } from 'store'
-import { Loader } from 'ui'
+import { ErrorBoundary, Loader } from 'ui'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
 
@@ -26,19 +26,21 @@ export default function App() {
 
           return (
             <ApolloProvider client={client}>
-              {!loggedIn ? (
-                <AuthNavigator />
-              ) : (
-                <Query query={CurrentUserQuery} skip={!loggedIn}>
-                  {({ data, networkStatus }) => {
-                    if (networkStatus === 1 || networkStatus === 2) return <Loader />
-                    if (!path(['user'], data)) return <AuthNavigator />
-                    if (!path(['user', 'interestedIn'], data)) return <Onboarding />
+              <ErrorBoundary>
+                {!loggedIn ? (
+                  <AuthNavigator />
+                ) : (
+                  <Query query={CurrentUserQuery} skip={!loggedIn}>
+                    {({ data, networkStatus }) => {
+                      if (networkStatus === 1 || networkStatus === 2) return <Loader />
+                      if (!path(['user'], data)) return <AuthNavigator />
+                      if (!path(['user', 'interestedIn'], data)) return <Onboarding />
 
-                    return <AppNavigator />
-                  }}
-                </Query>
-              )}
+                      return <AppNavigator />
+                    }}
+                  </Query>
+                )}
+              </ErrorBoundary>
             </ApolloProvider>
           )
         }}
