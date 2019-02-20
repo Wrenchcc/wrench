@@ -180,6 +180,9 @@
         "button": "Add"
       }
     },
+    "ErrorBoundary": {
+      "networkError": "We're sorry but something went wrong"
+    },
     "Follow": {
       "follow": "Follow this project",
       "unfollow": "Following"
@@ -425,6 +428,9 @@
         "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
         "button": "Lägg till"
       }
+    },
+    "ErrorBoundary": {
+      "networkError": "Vi är ledsna men något gick fel"
     },
     "Follow": {
       "follow": "Följ projekt",
