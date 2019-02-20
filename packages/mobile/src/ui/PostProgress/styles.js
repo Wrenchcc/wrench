@@ -17,6 +17,13 @@ export const Cover = styled.Image`
 
 export const Content = styled.View``
 
+export const Loader = styled.ActivityIndicator`
+  position: absolute;
+  z-index: 10;
+  top: 10;
+  left: 10;
+`
+
 export const Inner = styled.View`
   flex: 1;
   flex-direction: row;
