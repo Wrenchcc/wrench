@@ -1,0 +1,10 @@
+{
+  "ErrorBoundary": {
+    "en": {
+      "networkError": "We're sorry but something went wrong"
+    },
+    "sv": {
+      "networkError": "Vi är ledsna men något gick fel"
+    }
+  }
+}
