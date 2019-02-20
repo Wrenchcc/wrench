@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, FlatList } from 'react-native'
-// import { pathOr, equals } from 'ramda'
+import { pathOr, equals } from 'ramda'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 import LoadNewer from 'ui/LoadNewer'
@@ -37,19 +37,20 @@ class InfiniteList extends PureComponent {
     scrollRef: PropTypes.func,
   }
 
-  // componentDidUpdate(prevProps) {
-  // if (
-  //   this.props.polling
-  //   && pathOr(false, ['data'], this.props)
-  //   && pathOr(false, ['data'], prevProps)
-  //   && !equals(
-  //     pathOr(false, ['data', 0, 'node', 'id'], this.props),
-  //     pathOr(false, ['data', 0, 'node', 'id'], prevProps)
-  //   )
-  // ) {
-  //   this.setNewDataState(true)
-  // }
-  // }
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.polling
+      && pathOr(false, ['data'], this.props)
+      && pathOr(false, ['data'], prevProps)
+      && pathOr(false, ['data'], this.props).length > pathOr(false, ['data'], prevProps).length
+      && !equals(
+        pathOr(false, ['data', 0, 'node', 'id'], this.props),
+        pathOr(false, ['data', 0, 'node', 'id'], prevProps)
+      )
+    ) {
+      this.setNewDataState(true)
+    }
+  }
 
   setNewDataState = hasNewData => {
     this.setState({ hasNewData })

@@ -22,5 +22,5 @@ export const Base = animated(styled.View`
   top: ${TOTAL_HEADER_HEIGHT};
   left: 0;
   right: 0;
-  opacity: 0.95;
+  opacity: 0.96;
 `)
