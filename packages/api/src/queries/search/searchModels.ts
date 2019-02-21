@@ -25,11 +25,10 @@ export default async ({ query, after, first = 10, last = 10 }, ctx) => {
       from,
       query: {
         match: {
-          suggest: query,
+          suggestion: query,
         },
       },
       size: first,
-      sort: ['_score'],
     },
     index: INDEX_NAME,
   })

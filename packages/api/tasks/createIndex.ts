@@ -17,11 +17,19 @@ async function createIndex() {
             properties: {
               brand: {
                 type: 'text',
+                copy_to: 'suggestion',
               },
               model: {
                 type: 'text',
+                copy_to: 'suggestion',
               },
               year: {
+                type: 'text',
+                copy_to: 'suggestion',
+              },
+              suggestion: {
+                analyzer: 'autocomplete',
+                search_analyzer: 'autocomplete',
                 type: 'text',
               },
             },
@@ -32,17 +40,30 @@ async function createIndex() {
             analyzer: {
               autocomplete: {
                 tokenizer: 'autocomplete',
-                filter: ['lowercase', 'word_delimiter_graph', 'unique'],
-              },
-              autocomplete_search: {
-                filter: ['lowercase'],
-                tokenizer: 'standard',
+                filter: [
+                  'lowercase',
+                  'word_delimiter_graph',
+                  'unique',
+                  'custom_shingle',
+                  'my_char_filter',
+                ],
               },
             },
             filter: {
               word_delimiter_graph: {
                 type: 'word_delimiter_graph',
                 preserve_original: true,
+              },
+              custom_shingle: {
+                type: 'shingle',
+                min_shingle_size: 2,
+                max_shingle_size: 3,
+                output_unigrams: true,
+              },
+              my_char_filter: {
+                type: 'pattern_replace',
+                pattern: ' ',
+                replacement: '',
               },
             },
             tokenizer: {
