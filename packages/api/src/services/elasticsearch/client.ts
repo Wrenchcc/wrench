@@ -23,10 +23,10 @@ export default async ({ body = null, path, method = 'POST' }) => {
     })
   }
 
-  const signedRequest = aws4.sign(options, {
-    secretAccessKey: AWS_SECRET_ACCESS_KEY,
-    accessKeyId: AWS_ACCESS_KEY,
-  })
-
-  return axios(signedRequest)
+  return axios(
+    aws4.sign(options, {
+      secretAccessKey: AWS_SECRET_ACCESS_KEY,
+      accessKeyId: AWS_ACCESS_KEY,
+    })
+  )
 }
