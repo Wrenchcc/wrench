@@ -55,7 +55,10 @@ export default class AddContainer extends Container {
 
   updateField = (field, value) => {
     if (field === 'query') {
-      this.setState({ isSearching: true })
+      this.setState({
+        isSearching: true,
+        model: null,
+      })
     }
 
     if (field === 'model') {

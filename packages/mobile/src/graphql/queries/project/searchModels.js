@@ -3,12 +3,13 @@ import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
 
 export const SearchModelsQuery = gql`
-  query searchModels($query: String!, $type: SearchType!) {
-    models: search(query: $query, type: $type) {
+  query searchModels($query: String!, $type: SearchType!, $after: String) {
+    models: search(query: $query, type: $type, after: $after) {
       pageInfo {
         hasNextPage
       }
       edges {
+        cursor
         node {
           ... on Model {
             id

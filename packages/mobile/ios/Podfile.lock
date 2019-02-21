@@ -50,7 +50,7 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseAnalyticsInterop (1.1.0)
+  - FirebaseAnalyticsInterop (1.2.0)
   - FirebaseCore (5.2.0):
     - GoogleUtilities/Logger (~> 5.2)
   - FirebaseDynamicLinks (3.4.0):
@@ -234,7 +234,7 @@ PODS:
   - RNFirebase (5.2.2):
     - Firebase/Core
     - React
-  - RNGestureHandler (1.0.15):
+  - RNGestureHandler (1.0.16):
     - React
   - RNRate (1.0.1):
     - React
@@ -393,7 +393,7 @@ SPEC CHECKSUMS:
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
-  FirebaseAnalyticsInterop: e5f21be9af6548372e2f0815834ff909bff395a2
+  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
   FirebaseCore: ea2d1816723ef21492b8e9113303e1350db5e08c
   FirebaseDynamicLinks: 83a0071c95ad715bc324fcb8f51028d5b6a58af0
   FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
@@ -423,7 +423,7 @@ SPEC CHECKSUMS:
   ReactNativePermissions: b64e084dff6a5cad51587d38c306f09246246384
   RNDeviceInfo: e7c5fcde13d40e161d8a27f6c5dc69c638936002
   RNFirebase: 59823b25c28b59b87de49ed261fe480cf0ca1824
-  RNGestureHandler: 14c09a7361c272efea8f7f3799142c893a6a4485
+  RNGestureHandler: 0438a761e8f29be3b809f9e7e43014f3aba4d7a6
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
   RNReanimated: b7adc1a5e4eca563966cfcbd982429ebd70d6b17
   RNScreens: 720a9e6968beb73e8196239801e887d8401f86ed
