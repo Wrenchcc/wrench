@@ -15,7 +15,8 @@
           "logs:PutLogEvents",
           "ssm:GetParametersByPath",
           "s3:*",
-          "ses:SendTemplatedEmail"
+          "ses:SendTemplatedEmail",
+          "es:*"
         ]
       }
     ]
