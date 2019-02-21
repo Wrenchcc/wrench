@@ -1,11 +1,12 @@
 import * as aws4 from 'aws4'
 import axios from 'axios'
 
-const { ELASTICSEARCH_DOMAIN, NODE_ENV, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
+const { ELASTICSEARCH_DOMAIN, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, NODE_ENV } = process.env
 
 export default async ({ body = null, path, method = 'POST' }) => {
   const options = {
-    ...(method === 'POST' ? { body, data: body } : {}),
+    body,
+    data: body,
     url: `https://${ELASTICSEARCH_DOMAIN}/${path}`,
     headers: {
       'Content-Type': 'application/json',

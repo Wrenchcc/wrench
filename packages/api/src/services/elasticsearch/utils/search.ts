@@ -1,6 +1,6 @@
 import client from '../client'
 
 export default async ({ body, index }) => client({
-  body,
+  body: JSON.stringify(body),
   path: `${index}/_search`,
 })
