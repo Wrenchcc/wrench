@@ -19,41 +19,44 @@ export default async ({ query, after, first = 10, last = 10 }, ctx) => {
   if (after) {
     [from] = decodeCursor(after)
   }
-
-  const { data } = await ctx.services.elasticsearch.search({
-    body: {
-      from,
-      query: {
-        match: {
-          suggestion: query,
+  try {
+    const { data } = await ctx.services.elasticsearch.search({
+      body: {
+        from,
+        query: {
+          match: {
+            suggestion: query,
+          },
         },
+        size: first,
       },
-      size: first,
-    },
-    index: INDEX_NAME,
-  })
+      index: INDEX_NAME,
+    })
 
-  const edges = data.hits.hits.map(({ _id, _source }, index) => ({
-    cursor: encodeCursor(index + 1, ORDER_BY),
-    node: {
-      brand: {
-        id: _source.brandId,
-        name: _source.brand,
+    const edges = data.hits.hits.map(({ _id, _source }, index) => ({
+      cursor: encodeCursor(index + 1, ORDER_BY),
+      node: {
+        brand: {
+          id: _source.brandId,
+          name: _source.brand,
+        },
+        id: _id,
+        model: _source.model,
+        year: _source.year,
       },
-      id: _id,
-      model: _source.model,
-      year: _source.year,
-    },
-  }))
+    }))
 
-  const totalCount = data.hits.total
+    const totalCount = data.hits.total
 
-  return {
-    edges,
-    pageInfo: {
-      hasNextPage: totalCount > first,
-      hasPreviousPage: totalCount > last,
-    },
-    totalCount,
+    return {
+      edges,
+      pageInfo: {
+        hasNextPage: totalCount > first,
+        hasPreviousPage: totalCount > last,
+      },
+      totalCount,
+    }
+  } catch (err) {
+    console.log(err)
   }
 }
