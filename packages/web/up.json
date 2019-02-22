@@ -1,0 +1,17 @@
+{
+  "profile": "wrench-api",
+  "regions": ["eu-central-1"],
+  "name": "web",
+  "lambda": {
+    "memory": 256,
+    "runtime": "nodejs8.10"
+  },
+  "stages": {
+    "staging": {
+      "domain": "staging.wrench.cc",
+      "proxy": {
+        "command": "NODE_ENV=production node server.js"
+      }
+    }
+  }
+}
