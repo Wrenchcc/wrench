@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const { ELASTICSEARCH_DOMAIN } = process.env
 
-export default async ({ body = null, path, method = 'POST' }) => {
+export default async ({ body = null, path, method = 'POST', NODE_ENV }) => {
   const options = {
     body,
     data: body,
@@ -16,12 +16,12 @@ export default async ({ body = null, path, method = 'POST' }) => {
     path,
   }
 
-  // if (NODE_ENV !== 'production') {
-  //   return axios({
-  //     ...options,
-  //     url: `http://${ELASTICSEARCH_DOMAIN}/${path}`,
-  //   })
-  // }
+  if (NODE_ENV !== 'production') {
+    return axios({
+      ...options,
+      url: `http://${ELASTICSEARCH_DOMAIN}/${path}`,
+    })
+  }
 
   return axios(aws4.sign(options))
 }

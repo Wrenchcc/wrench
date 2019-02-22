@@ -6,58 +6,54 @@ const INDEX_NAME = 'vehicles'
 const ORDER_BY = 'year'
 
 export default async ({ query, after, first = 10, last = 10 }, ctx) => {
-  try {
-    let from
+  let from
 
-    if (!query) {
-      return new ForbiddenError('Please provide a search term.')
-    }
+  if (!query) {
+    return new ForbiddenError('Please provide a search term.')
+  }
 
-    if (first > MAX_LIMIT) {
-      return new ForbiddenError('Your limit is to big.')
-    }
+  if (first > MAX_LIMIT) {
+    return new ForbiddenError('Your limit is to big.')
+  }
 
-    if (after) {
-      [from] = decodeCursor(after)
-    }
+  if (after) {
+    [from] = decodeCursor(after)
+  }
 
-    const { data } = await ctx.services.elasticsearch.search({
-      body: {
-        from,
-        query: {
-          match: {
-            suggestion: query,
-          },
+  const { data } = await ctx.services.elasticsearch.search({
+    body: {
+      from,
+      query: {
+        match: {
+          suggestion: query,
         },
-        size: first,
       },
-      index: INDEX_NAME,
-    })
+      size: first,
+    },
+    index: INDEX_NAME,
+  })
 
-    const edges = data.hits.hits.map(({ _id, _source }, index) => ({
-      cursor: encodeCursor(index + 1, ORDER_BY),
-      node: {
-        brand: {
-          id: _source.brandId,
-          name: _source.brand,
-        },
-        id: _id,
-        model: _source.model,
-        year: _source.year,
+  const edges = data.hits.hits.map(({ _id, _source }, index) => ({
+    cursor: encodeCursor(index + 1, ORDER_BY),
+    node: {
+      brand: {
+        id: _source.brandId,
+        name: _source.brand,
       },
-    }))
+      id: _id,
+      model: _source.model,
+      year: _source.year,
+    },
+  }))
 
-    const totalCount = data.hits.total
+  const totalCount = data.hits.total
 
-    return {
-      edges,
-      pageInfo: {
-        hasNextPage: totalCount > first,
-        hasPreviousPage: totalCount > last,
-      },
-      totalCount,
-    }
-  } catch (err) {
-    console.log(err)
+  return {
+    edges,
+    pageInfo: {
+      hasNextPage: totalCount > first,
+      hasPreviousPage: totalCount > last,
+    },
+    totalCount,
   }
 }
