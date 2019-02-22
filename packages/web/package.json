@@ -4,8 +4,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --no-notify --ignore-watch .next server.ts",
-    "compile": "NODE_ENV=production next build && ncc build server.ts -m",
+    "dev": "NODE_ENV=development ts-node-dev --no-notify --ignore-watch .next server.ts",
+    "compile": "next build && ncc build server.ts -m",
     "start": "next start"
   },
   "dependencies": {
