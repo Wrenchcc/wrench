@@ -4,16 +4,22 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "next ./src",
-    "build": "next build ./src",
-    "start": "next start ./src"
+    "dev": "ts-node-dev --no-notify --ignore-watch .next server.ts",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "next": "^8.0.3",
+    "next-routes": "^1.4.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
   "devDependencies": {
-    "@zeit/next-typescript": "^1.1.1"
+    "@types/next": "^8.0.1",
+    "@types/node": "^11.9.4",
+    "@types/react": "^16.8.4",
+    "@types/react-dom": "^16.8.2",
+    "@zeit/next-typescript": "^1.1.1",
+    "ts-node-dev": "^1.0.0-pre.32"
   }
 }

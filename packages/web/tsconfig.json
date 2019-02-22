@@ -19,8 +19,8 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "rootDir": "src"
+    "rootDir": "."
   },
-  "exclude": ["node_modules", "tasks"],
-  "include": ["./src/**/*.ts"]
+  "exclude": ["node_modules", "tasks", "next.config.js"],
+  "include": ["**/*.ts"]
 }

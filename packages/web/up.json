@@ -8,10 +8,7 @@
   },
   "stages": {
     "staging": {
-      "domain": "beta.wrench.cc",
-      "proxy": {
-        "command": "NODE_ENV=production node server.js"
-      }
+      "domain": "beta.wrench.cc"
     }
   }
 }
