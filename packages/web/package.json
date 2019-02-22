@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --no-notify --ignore-watch .next server.ts",
-    "build": "next build",
+    "compile": "next build && ncc build server.ts -m -e aws-sdk -o dist",
     "start": "next start"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@types/node": "^11.9.4",
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
+    "@zeit/ncc": "^0.15.2",
     "@zeit/next-typescript": "^1.1.1",
     "ts-node-dev": "^1.0.0-pre.32"
   }

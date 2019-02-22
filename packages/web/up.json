@@ -8,7 +8,10 @@
   },
   "stages": {
     "staging": {
-      "domain": "beta.wrench.cc"
+      "domain": "beta.wrench.cc",
+      "proxy": {
+        "command": "node dist/index.js"
+      }
     }
   }
 }

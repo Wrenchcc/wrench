@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
+    "moduleResolution": "node",
     "target": "es6",
     "module": "commonjs",
     "lib": ["es6", "es2017", "esnext.asynciterable"],
     "sourceMap": true,
     "outDir": "./dist",
-    "moduleResolution": "node",
     "declaration": false,
     "composite": false,
     "removeComments": true,
@@ -21,6 +22,5 @@
     "baseUrl": ".",
     "rootDir": "."
   },
-  "exclude": ["node_modules", "tasks", "next.config.js"],
-  "include": ["**/*.ts"]
+  "exclude": [".next"]
 }
