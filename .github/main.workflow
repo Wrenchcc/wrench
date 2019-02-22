@@ -20,12 +20,6 @@ action "Filter Master" {
   args = "branch master"
 }
 
-action "Filter Master" {
-  needs = "Build Web"
-  uses = "actions/bin/filter@master"
-  args = "branch master"
-}
-
 action "Deploy API Production" {
   needs = "Filter Master"
   uses = "apex/actions/up@master"
@@ -34,7 +28,7 @@ action "Deploy API Production" {
 }
 
 action "Notification" {
-  needs = ["Deploy API Production", "Build API"]
+  needs = "Deploy API Production"
   uses = "apex/actions/slack@master"
   secrets = ["SLACK_WEBHOOK_URL", "SLACK_CHANNEL"]
 }
