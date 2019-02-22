@@ -1,9 +1,9 @@
 import * as aws4 from 'aws4'
 import axios from 'axios'
 
-const { ELASTICSEARCH_DOMAIN } = process.env
+const { ELASTICSEARCH_DOMAIN, NODE_ENV } = process.env
 
-export default async ({ body = null, path, method = 'POST', NODE_ENV }) => {
+export default async ({ body = null, path, method = 'POST' }) => {
   const options = {
     body,
     data: body,
