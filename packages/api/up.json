@@ -1,4 +1,5 @@
 {
+  "profile": "wrench-api",
   "regions": ["eu-central-1"],
   "name": "api",
   "lambda": {
