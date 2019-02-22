@@ -28,7 +28,7 @@ action "Deploy API Production" {
 }
 
 action "Notification" {
-  needs = "Deploy API Production"
+  needs = ["Deploy API Production", "Build Web"]
   uses = "apex/actions/slack@master"
   secrets = ["SLACK_WEBHOOK_URL", "SLACK_CHANNEL"]
 }
