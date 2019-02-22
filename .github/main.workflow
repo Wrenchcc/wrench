@@ -1,21 +1,32 @@
-workflow "Deploy API" {
+workflow "Deploy" {
   on = "push"
   resolves = ["Notification"]
 }
 
-action "Build" {
+action "Build API" {
+  uses = "nuxt/actions-yarn@master"
+  args = "build:api"
+}
+
+action "Build Web" {
   uses = "nuxt/actions-yarn@master"
   args = "build:api"
 }
 
 # Filter for master branch
 action "Filter Master" {
-  needs = "Build"
+  needs = "Build API"
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
 
-action "Deploy Production" {
+action "Filter Master" {
+  needs = "Build Web"
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
+action "Deploy API Production" {
   needs = "Filter Master"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
@@ -23,7 +34,7 @@ action "Deploy Production" {
 }
 
 action "Notification" {
-  needs = "Deploy Production"
+  needs = "Deploy API Production"
   uses = "apex/actions/slack@master"
   secrets = ["SLACK_WEBHOOK_URL", "SLACK_CHANNEL"]
 }
