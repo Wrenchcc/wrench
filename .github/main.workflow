@@ -3,32 +3,33 @@ workflow "Deploy" {
   resolves = ["Notification"]
 }
 
+# Filter for master branch
+action "Filter Master" {
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
 action "Build API" {
+  needs = "Filter Master"
   uses = "nuxt/actions-yarn@master"
   args = "build:api"
 }
 
 action "Build Web" {
+  needs = "Filter Master"
   uses = "nuxt/actions-yarn@master"
   args = "build:web"
 }
 
-# Filter for master branch
-action "Filter Master" {
-  needs = ["Build API", "Build Web"]
-  uses = "actions/bin/filter@master"
-  args = "branch master"
-}
-
 action "Deploy API Production" {
-  needs = ["Filter Master", "Build API"]
+  needs = "Build API"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
   args = "-C packages/api deploy production"
 }
 
 action "Deploy Web Production" {
-  needs = ["Filter Master", "Build Web"]
+  needs = "Build Web"
   uses = "apex/actions/up@master"
   secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
   args = "-C packages/web deploy staging"
