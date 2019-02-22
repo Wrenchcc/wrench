@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:api": "cd packages/api && yarn && yarn compile",
-    "build:web": "cd packages/web && yarn && yarn build"
+    "build:web": "cd packages/web && yarn && yarn compile"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
