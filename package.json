@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:api": "cd packages/api && yarn && yarn compile"
+    "build:api": "cd packages/api && yarn && yarn compile",
+    "build:web": "cd packages/web && yarn && yarn build"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

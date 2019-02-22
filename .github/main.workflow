@@ -8,9 +8,20 @@ action "Build API" {
   args = "build:api"
 }
 
+action "Build Web" {
+  uses = "nuxt/actions-yarn@master"
+  args = "build:web"
+}
+
 # Filter for master branch
 action "Filter Master" {
   needs = "Build API"
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
+action "Filter Master" {
+  needs = "Build Web"
   uses = "actions/bin/filter@master"
   args = "branch master"
 }
