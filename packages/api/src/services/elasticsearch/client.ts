@@ -1,7 +1,9 @@
 import * as aws4 from 'aws4'
 import axios from 'axios'
 
-const { ELASTICSEARCH_DOMAIN, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, NODE_ENV } = process.env
+const { ELASTICSEARCH_DOMAIN, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
+
+console.log(AWS_SECRET_ACCESS_KEY, AWS_ACCESS_KEY)
 
 export default async ({ body = null, path, method = 'POST' }) => {
   const options = {
@@ -16,12 +18,12 @@ export default async ({ body = null, path, method = 'POST' }) => {
     path,
   }
 
-  if (NODE_ENV !== 'production') {
-    return axios({
-      ...options,
-      url: `http://${ELASTICSEARCH_DOMAIN}/${path}`,
-    })
-  }
+  // if (NODE_ENV !== 'production') {
+  //   return axios({
+  //     ...options,
+  //     url: `http://${ELASTICSEARCH_DOMAIN}/${path}`,
+  //   })
+  // }
 
   return axios(
     aws4.sign(options, {

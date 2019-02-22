@@ -4,7 +4,7 @@ import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import * as depthLimit from 'graphql-depth-limit'
 import { getUserId } from './utils/tokens'
-import formatError from './utils/formatError'
+// import formatError from './utils/formatError'
 import debugOptions from './utils/debugOptions'
 import schema from './schema'
 import { options, db } from './models'
@@ -45,7 +45,7 @@ async function server() {
       services,
       userId: getUserId(req),
     }),
-    formatError,
+    // formatError,
     schema,
     validationRules: [depthLimit(10)],
   })
