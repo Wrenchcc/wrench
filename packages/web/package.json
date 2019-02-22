@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --no-notify --ignore-watch .next server.ts",
-    "compile": "next build && ncc build server.ts -m",
+    "compile": "NODE_ENV=production next build && ncc build server.ts -m",
     "start": "next start"
   },
   "dependencies": {
