@@ -1,9 +1,7 @@
 import * as aws4 from 'aws4'
 import axios from 'axios'
 
-const { ELASTICSEARCH_DOMAIN, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } = process.env
-
-console.log('katttttt2', AWS_SECRET_ACCESS_KEY, AWS_ACCESS_KEY_ID)
+const { ELASTICSEARCH_DOMAIN } = process.env
 
 export default async ({ body = null, path, method = 'POST' }) => {
   const options = {
@@ -25,10 +23,5 @@ export default async ({ body = null, path, method = 'POST' }) => {
   //   })
   // }
 
-  return axios(
-    aws4.sign(options, {
-      secretAccessKey: AWS_SECRET_ACCESS_KEY,
-      accessKeyId: AWS_ACCESS_KEY_ID,
-    })
-  )
+  return axios(aws4.sign(options))
 }
