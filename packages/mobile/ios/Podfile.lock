@@ -189,6 +189,8 @@ PODS:
     - React
   - react-native-haptic-feedback (1.5.0):
     - React
+  - react-native-netinfo (1.2.2):
+    - React
   - react-native-pinchable (0.1.2):
     - React
   - react-native-splash-screen (3.2.0):
@@ -299,6 +301,7 @@ DEPENDENCIES:
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - react-native-haptic-feedback (from `../node_modules/react-native-haptic-feedback`)
+  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-video (from `../node_modules/react-native-video`)
@@ -380,6 +383,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fbsdk"
   react-native-haptic-feedback:
     :path: "../node_modules/react-native-haptic-feedback"
+  react-native-netinfo:
+    :path: "../node_modules/@react-native-community/netinfo"
   react-native-pinchable:
     :path: "../node_modules/react-native-pinchable"
   react-native-splash-screen:
@@ -446,6 +451,7 @@ SPEC CHECKSUMS:
   react-native-fast-image: 21b28dc233c17db3df995d26762b370052dd66d1
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   react-native-haptic-feedback: c8c526446135d563889ae1b26adf24dee7c99398
+  react-native-netinfo: 3719a5d3c58b5823e3b10e1098e0cfc2a25841ff
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: e34cded54b134e40fd67fd84fc6f395c584db91d
@@ -462,6 +468,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   yoga: 14d2e9a1e76cc3c9e8bc67476a9b13d3b2edd359
 
-PODFILE CHECKSUM: 68c5f515559267e9d0660e8ff27a67fbd1d06485
+PODFILE CHECKSUM: 102c5cb1ae251c20a0d682a42a8a24dae5689b68
 
 COCOAPODS: 1.6.0

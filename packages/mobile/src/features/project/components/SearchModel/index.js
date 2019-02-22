@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
-import { InfiniteList, Text, Touchable, NoResults } from 'ui'
+import { InfiniteList, Text, Touchable, NoResults, SearchingFor } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
 import { isIphone } from 'utils/platform'
 
@@ -60,13 +60,13 @@ class SearchModel extends PureComponent {
       <View style={styles.container}>
         <InfiniteList
           defaultPadding
-          ListEmptyComponent={<NoResults />}
+          ListHeaderComponent={isFetching && <SearchingFor query={query} />}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"
           data={models}
           fetchMore={fetchMore}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
+          isFetching={false}
+          hasNextPage={isFetching ? false : hasNextPage}
           keyExtractor={item => item.node.id}
           renderItem={this.renderItem}
           borderSeparator

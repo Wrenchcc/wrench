@@ -1,5 +1,5 @@
 import { Container } from 'unstated'
-import { NetInfo } from 'react-native'
+import NetInfo from '@react-native-community/netinfo'
 
 export default class ToastNotificationContainer extends Container {
   state = {

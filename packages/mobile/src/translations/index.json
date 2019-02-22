@@ -235,6 +235,9 @@
     "SearchBar": {
       "cancel": "Cancel"
     },
+    "SearchingFor": {
+      "title": "Searching for"
+    },
     "ToastNotification": {
       "networkError": "No internet connection"
     },
@@ -482,6 +485,9 @@
     },
     "SearchBar": {
       "cancel": "Avbryt"
+    },
+    "SearchingFor": {
+      "title": "Söker efter"
     },
     "ToastNotification": {
       "networkError": "Ingen internetanslutning"
