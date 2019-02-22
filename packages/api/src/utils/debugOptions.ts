@@ -1,8 +1,10 @@
-// const { NODE_ENV } = process.env
+const { NODE_ENV } = process.env
 
-export default {
-  debug: true,
-  introspection: true,
-  playground: true,
-  tracing: true,
-}
+export default (NODE_ENV !== 'production'
+  ? {
+    debug: true,
+    introspection: true,
+    playground: true,
+    tracing: true,
+  }
+  : {})
