@@ -22,11 +22,10 @@ export default async ({ body = null, path, method = 'POST' }) => {
   //     url: `http://${ELASTICSEARCH_DOMAIN}/${path}`,
   //   })
   // }
-
   return axios(
     aws4.sign(options, {
-      secretAccessKey: AWS_SECRET_ACCESS_KEY,
-      accessKeyId: AWS_ACCESS_KEY,
+      secretAccessKey: '7XEhG8QB9KCd6eKIDsc2AuCLoL4ryQhVls5HOTcM',
+      accessKeyId: 'AKIAJXG7FABX5UAYPVQA',
     })
   )
 }
