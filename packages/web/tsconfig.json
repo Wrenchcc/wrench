@@ -22,5 +22,6 @@
     "baseUrl": ".",
     "rootDir": "."
   },
+  "references": [{ "path": "../ui" }],
   "exclude": [".next"]
 }
