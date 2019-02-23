@@ -1,5 +1,5 @@
 *
-!dist
+!dist/**
 !node_modules/**
-!.next
+!.next/**
 !package.json
