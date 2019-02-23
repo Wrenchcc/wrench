@@ -4,7 +4,6 @@ import NextSeo from 'next-seo'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 import { Header } from '../ui'
-
 import SEO from '../../next-seo.config'
 
 const GlobalStyle = createGlobalStyle`
@@ -21,6 +20,18 @@ const GlobalStyle = createGlobalStyle`
 `
 
 class MyApp extends App {
+  public static async getInitialProps({ Component, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return {
+      pageProps,
+    }
+  }
+
   render() {
     const { Component, pageProps } = this.props
     return (

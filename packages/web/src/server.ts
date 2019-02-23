@@ -1,17 +1,31 @@
 import * as express from 'express'
 import * as next from 'next'
-// import * as nextI18NextMiddleware from 'next-i18next/middleware'
-import { format, parse } from 'url'
+import i18n from 'i18next'
+import * as i18nextMiddleware from 'i18next-express-middleware'
 import { routes } from './routes'
-// import { nextI18next } from './i18n'
 
 const PORT = parseInt(process.env.PORT, 10) || 3000
-const DEV = process.env.NODE_ENV === 'development'
+const DEV = process.env.NODE_ENV !== 'production'
 
 const app = next({
   dev: DEV,
-  dir: __dirname,
+  dir: './src',
   conf: !DEV && { poweredByHeader: false },
+})
+
+i18n.use(i18nextMiddleware.LanguageDetector).init({
+  resources: {
+    en: {
+      translation: {
+        'Welcome to React': 'Welcome to React and react-i18next',
+      },
+    },
+  },
+  lng: 'en',
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false,
+  },
 })
 
 const handle = routes.getRequestHandler(app)
@@ -20,28 +34,10 @@ async function blaj() {
   await app.prepare()
   const server = express()
 
-  // server.use(nextI18NextMiddleware(nextI18next))
-  // handle any other requests
+  server.use(i18nextMiddleware.handle(i18n))
+
   server.get('*', (req, res) => {
-    const { pathname, query } = parse(req.url, true)
-
-    if (pathname.length > 1 && pathname.slice(-1) === '/' && pathname.indexOf('/_next/') !== 0) {
-      return res.redirect(
-        format({
-          pathname: pathname.slice(0, -1),
-          query,
-        })
-      )
-    }
-    // (req as any).hostsByLocale = {
-    //   en: env.HOST_EN,
-    //   ru: env.HOST_RU,
-    // };
-    // (req as any).gaTrackingId = env.GA_TRACKING_ID;
-    // (req as any).graphqlUri = env.GRAPHQL_URI;
-    // (req as any).nodeEnv = env.NODE_ENV
-
-    return handle(req, res)
+    handle(req, res)
   })
 
   server.listen(PORT, err => {
