@@ -20,7 +20,8 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "rootDir": "."
+    "rootDir": "src"
   },
-  "exclude": [".next"]
+  "exclude": [".next"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }
