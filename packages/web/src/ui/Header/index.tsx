@@ -1,24 +1,27 @@
 import * as React from 'react'
 import Link from 'next/link'
-import { Base, Nav, Search } from './styles'
+import { withRouter } from 'next/router'
+import { Base, Nav, NavLink, Search } from './styles'
 
-const Header = () => (
-  <Base>
-    <Link href="/">
-      <img src="/static/logo.svg" alt="Wrench" />
-    </Link>
-
-    <Search />
-
-    <Nav>
+function Header({ router }) {
+  return (
+    <Base>
       <Link href="/">
-        <a>Feed</a>
+        <img src="/static/logo.svg" alt="Wrench" />
       </Link>
-      <Link href="/explore">
-        <a>Explore</a>
-      </Link>
-    </Nav>
-  </Base>
-)
 
-export default Header
+      <Search />
+
+      <Nav>
+        <Link passHref href="/">
+          <NavLink active={router.pathname === '/'}>Feed</NavLink>
+        </Link>
+        <Link passHref href="/explore">
+          <NavLink active={router.pathname === '/explore'}>Explore</NavLink>
+        </Link>
+      </Nav>
+    </Base>
+  )
+}
+
+export default withRouter(Header)

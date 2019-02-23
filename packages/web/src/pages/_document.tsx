@@ -28,7 +28,6 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css?v=3.3" />
         </Head>
         <body>
-          <p>{process.env.API_ENDPOINT}</p>
           <Main />
           <NextScript />
         </body>

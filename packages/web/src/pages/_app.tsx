@@ -5,11 +5,17 @@ import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 import { Header } from '../ui'
 
+import SEO from '../../next-seo.config'
+
 const GlobalStyle = createGlobalStyle`
   ${reset}
   @supports (font-variation-settings: normal) {
     body {
       font-family: 'Inter var', system-ui, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
     }
   }
 `
@@ -20,13 +26,7 @@ class MyApp extends App {
     return (
       <Container>
         <GlobalStyle />
-        <NextSeo
-          config={{
-            title: 'Wrench',
-            description:
-              'Wrench is the new app for sharing within the motorcycle community. Post your projects, watch others, discuss and learn together.',
-          }}
-        />
+        <NextSeo config={SEO} />
         <Header />
         <Component {...pageProps} />
       </Container>

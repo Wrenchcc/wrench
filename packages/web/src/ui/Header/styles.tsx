@@ -13,7 +13,11 @@ export const Nav = styled.nav`
   padding-left: 35px;
 `
 
+export const NavLink = styled.a`
+  color: ${props => (props.active ? 'black' : 'grey')};
+  margin-right: 40px;
+`
+
 export const Search = styled(UiSearch)`
-  padding-left: 35px;
-  background: red;
+  margin-left: 35px;
 `
