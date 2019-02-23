@@ -14,7 +14,8 @@ export const Nav = styled.nav`
 `
 
 export const NavLink = styled.a`
-  color: ${props => (props.active ? 'black' : 'grey')};
+  font-size: 17px;
+  color: ${props => (props.active ? '#000000' : '#6d6f76')};
   margin-right: 40px;
 `
 

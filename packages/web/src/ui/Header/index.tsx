@@ -3,6 +3,17 @@ import Link from 'next/link'
 import { withRouter } from 'next/router'
 import { Base, Nav, NavLink, Search } from './styles'
 
+const links = [
+  {
+    href: '/',
+    title: 'Feed',
+  },
+  {
+    href: '/explore',
+    title: 'Explore',
+  },
+]
+
 function Header({ router }) {
   return (
     <Base>
@@ -13,12 +24,11 @@ function Header({ router }) {
       <Search />
 
       <Nav>
-        <Link passHref href="/">
-          <NavLink active={router.pathname === '/'}>Feed</NavLink>
-        </Link>
-        <Link passHref href="/explore">
-          <NavLink active={router.pathname === '/explore'}>Explore</NavLink>
-        </Link>
+        {links.map(({ title, href }) => (
+          <Link passHref href={href}>
+            <NavLink active={router.pathname === href}>{title}</NavLink>
+          </Link>
+        ))}
       </Nav>
     </Base>
   )
