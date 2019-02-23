@@ -6,6 +6,12 @@ import { Header } from '../ui'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+  @supports (font-variation-settings: normal) {
+  body {
+    font-family: 'Inter var', system-ui, sans-serif;
+  }
+}
+
 `
 
 class MyApp extends App {
