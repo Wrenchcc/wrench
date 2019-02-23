@@ -1,0 +1,6 @@
+{
+  "watch": [".babelrc", ".env", "src/next.config.js", "src/*.ts"],
+  "execMap": {
+    "ts": "ts-node --compiler-options '{\"module\":\"commonjs\"}'"
+  }
+}

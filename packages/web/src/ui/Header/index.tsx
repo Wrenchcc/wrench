@@ -25,7 +25,7 @@ function Header({ router }) {
 
       <Nav>
         {links.map(({ title, href }) => (
-          <Link passHref href={href}>
+          <Link passHref href={href} key={href}>
             <NavLink active={router.pathname === href}>{title}</NavLink>
           </Link>
         ))}
