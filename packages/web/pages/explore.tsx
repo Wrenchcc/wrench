@@ -1,3 +1,11 @@
+import NextSeo from 'next-seo'
+
 export default function Explore() {
-  return <h1>Explore</h1>
+  return (
+    <NextSeo
+      config={{
+        title: 'Explore • Wrench',
+      }}
+    />
+  )
 }

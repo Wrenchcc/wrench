@@ -1,3 +1,11 @@
+import NextSeo from 'next-seo'
+
 export default function Home() {
-  return <h1>Home</h1>
+  return (
+    <NextSeo
+      config={{
+        title: 'Feed • Wrench',
+      }}
+    />
+  )
 }

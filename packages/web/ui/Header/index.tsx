@@ -1,19 +1,23 @@
 import * as React from 'react'
 import Link from 'next/link'
-import { Search } from '..'
-import { Base } from './styles'
+import { Base, Nav, Search } from './styles'
 
 const Header = () => (
   <Base>
-    <img src="/static/logo.svg" alt="Wrench" />
+    <Link href="/">
+      <img src="/static/logo.svg" alt="Wrench" />
+    </Link>
 
     <Search />
 
-    <nav>
+    <Nav>
+      <Link href="/">
+        <a>Feed</a>
+      </Link>
       <Link href="/explore">
         <a>Explore</a>
       </Link>
-    </nav>
+    </Nav>
   </Base>
 )
 
