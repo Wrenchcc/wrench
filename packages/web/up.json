@@ -13,5 +13,8 @@
         "command": "node dist/index.js"
       }
     }
+  },
+  "environment": {
+    "API_ENDPOINT": "https://api.wrench.cc/graphql"
   }
 }

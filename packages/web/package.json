@@ -25,6 +25,7 @@
     "@types/react-dom": "^16.8.2",
     "@zeit/ncc": "^0.15.2",
     "@zeit/next-typescript": "^1.1.1",
+    "dotenv-webpack": "^1.7.0",
     "ts-node-dev": "^1.0.0-pre.32"
   }
 }
