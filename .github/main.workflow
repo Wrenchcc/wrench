@@ -3,14 +3,10 @@ workflow "Deploy" {
   resolves = ["Notification"]
 }
 
+# Filter for master branch
 action "Filter Master" {
   uses = "actions/bin/filter@master"
   args = "branch master"
-}
-
-action "Filter Branch" {
-  uses = "actions/bin/filter@master"
-  args = "not branch master"
 }
 
 action "Build API" {
@@ -21,12 +17,6 @@ action "Build API" {
 
 action "Build Web" {
   needs = "Filter Master"
-  uses = "nuxt/actions-yarn@master"
-  args = "build:web"
-}
-
-action "Build Web Staging" {
-  needs = "Filter Branch"
   uses = "nuxt/actions-yarn@master"
   args = "build:web"
 }
@@ -45,15 +35,8 @@ action "Deploy Web Production" {
   args = "-C packages/web deploy staging"
 }
 
-action "Deploy Web Staging" {
-  needs = "Build Web Staging"
-  uses = "apex/actions/up@master"
-  secrets = ["AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID"]
-  args = "-C packages/web deploy staging"
-}
-
 action "Notification" {
-  needs = ["Deploy API Production", "Deploy Web Production", "Build Web Staging"]
+  needs = ["Deploy API Production", "Deploy Web Production"]
   uses = "apex/actions/slack@master"
   secrets = ["SLACK_WEBHOOK_URL", "SLACK_CHANNEL"]
 }
