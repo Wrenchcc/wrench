@@ -16,12 +16,14 @@ export default class MyDocument extends Document {
     return {
       ...initialProps,
       locale: ctx.req.locale,
+      // @ts-ignore
       styles: [...initialProps.styles, ...sheet.getStyleElement()],
     }
   }
 
   render() {
     return (
+      // @ts-ignore
       <html lang={this.props.locale}>
         <Head>
           <meta charSet="utf-8" />

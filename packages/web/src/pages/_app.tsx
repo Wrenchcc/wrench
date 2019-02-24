@@ -6,7 +6,7 @@ import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 import i18n from '../i18n'
 import { Header } from '../ui'
-import SEO from '../../next-seo.config'
+import config from '../../next-seo.config'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -35,7 +35,6 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    // Step 4: Overwrite i18n.toJSON method to be able to serialize the instance
     if (req && req.i18n) {
       req.i18n.languages.forEach(l => {
         initialI18nStore[l] = req.i18n.services.resourceStore.data[l]
@@ -59,13 +58,17 @@ class MyApp extends App {
     const {
       Component,
       pageProps,
+      // @ts-ignorer
       i18nServerInstance,
+      // @ts-ignore
       initialI18nStore,
+      // @ts-ignore
       initialLanguage,
     } = this.props
-
+    // @ts-ignore
     return (
       <I18nextProvider i18n={i18nServerInstance || i18n}>
+        // @ts-ignore
         <AppWithi18n
           Component={Component}
           pageProps={pageProps}
@@ -84,7 +87,7 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }
   return (
     <Container>
       <GlobalStyle />
-      <NextSeo config={SEO} />
+      <NextSeo config={config} />
       <Header />
       <Component {...pageProps} />
     </Container>

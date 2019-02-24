@@ -4,9 +4,9 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --no-notify --ignore-watch .next --project tsconfig.server.json src/server.ts",
-    "compile": "next build src && ncc build src/server.ts",
-    "start": "next start src",
+    "dev": "ts-node-dev --respawn --no-notify --ignore-watch .next src/server.ts",
+    "compile": "next build src && tsc --project tsconfig.server.json",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
@@ -30,8 +30,8 @@
     "@types/node": "^11.9.4",
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
-    "@zeit/ncc": "^0.15.2",
     "@zeit/next-typescript": "^1.1.1",
+    "cross-env": "^5.2.0",
     "dotenv-webpack": "^1.7.0",
     "ramda": "^0.26.1",
     "ts-node-dev": "^1.0.0-pre.32",
