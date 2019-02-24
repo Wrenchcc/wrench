@@ -5,14 +5,16 @@ import { useTranslation } from 'react-i18next'
 import { Base, Nav, NavLink, Search } from './styles'
 
 function Header({ router }) {
+  const { t } = useTranslation()
+
   const links = [
     {
       href: '/',
-      title: 'explore',
+      title: t('Header:feed'),
     },
     {
       href: '/explore',
-      title: 'explore',
+      title: t('Header:explore'),
     },
   ]
 

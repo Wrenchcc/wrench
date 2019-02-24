@@ -1,0 +1,14 @@
+{
+  "en": {
+    "Header": {
+      "explore": "Explore",
+      "feed": "Feed"
+    }
+  },
+  "sv": {
+    "Header": {
+      "explore": "Utforska",
+      "feed": "Feed"
+    }
+  }
+}

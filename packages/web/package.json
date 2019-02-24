@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "i18next": "^15.0.4",
+    "i18next-browser-languagedetector": "^3.0.1",
     "i18next-express-middleware": "^1.7.1",
     "next": "^8.0.3",
     "next-routes": "^1.4.2",
@@ -24,6 +25,7 @@
     "styled-reset": "^1.6.8"
   },
   "devDependencies": {
+    "@types/i18next": "^12.1.0",
     "@types/next": "^8.0.1",
     "@types/node": "^11.9.4",
     "@types/react": "^16.8.4",

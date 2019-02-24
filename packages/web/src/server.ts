@@ -1,7 +1,7 @@
 import * as express from 'express'
 import * as next from 'next'
-import i18n from 'i18next'
 import * as i18nextMiddleware from 'i18next-express-middleware'
+import i18n from './i18n'
 import { routes } from './routes'
 
 const PORT = parseInt(process.env.PORT, 10) || 3000
@@ -13,20 +13,7 @@ const app = next({
   conf: !DEV && { poweredByHeader: false },
 })
 
-i18n.use(i18nextMiddleware.LanguageDetector).init({
-  resources: {
-    en: {
-      translation: {
-        'Welcome to React': 'Welcome to React and react-i18next',
-      },
-    },
-  },
-  lng: 'en',
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false,
-  },
-})
+i18n.use(i18nextMiddleware.LanguageDetector)
 
 const handle = routes.getRequestHandler(app)
 
