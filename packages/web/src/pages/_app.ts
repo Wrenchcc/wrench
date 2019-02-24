@@ -1,9 +1,11 @@
 import * as React from 'react'
 import App, { Container } from 'next/app'
+import { ApolloProvider } from 'react-apollo-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import NextSeo from 'next-seo'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
+import withApolloClient from '../graphql/withApolloClient'
 import i18n from '../i18n'
 import { Header } from '../ui'
 import config from '../../next-seo.config'
@@ -63,21 +65,24 @@ class MyApp extends App {
     const {
       Component,
       pageProps,
+      apolloClient,
       i18nServerInstance,
       initialI18nStore,
       initialLanguage,
     } = this.props
 
     return (
-      <I18nextProvider i18n={i18nServerInstance || i18n}>
-        <AppWithi18n
-          Component={Component}
-          pageProps={pageProps}
-          i18nServerInstance={i18nServerInstance}
-          initialI18nStore={initialI18nStore}
-          initialLanguage={initialLanguage}
-        />
-      </I18nextProvider>
+      <ApolloProvider client={apolloClient}>
+        <I18nextProvider i18n={i18nServerInstance || i18n}>
+          <AppWithi18n
+            Component={Component}
+            pageProps={pageProps}
+            i18nServerInstance={i18nServerInstance}
+            initialI18nStore={initialI18nStore}
+            initialLanguage={initialLanguage}
+          />
+        </I18nextProvider>
+      </ApolloProvider>
     )
   }
 }
@@ -95,4 +100,4 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }
   )
 }
 
-export default MyApp
+export default withApolloClient(MyApp)

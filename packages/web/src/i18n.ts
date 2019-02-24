@@ -6,7 +6,7 @@ import resources from './translations/index.json'
 
 const options = {
   resources,
-  debug: process.env.NODE_ENV !== 'production',
+  debug: Boolean(process.env.DEBUG_TRANSLATION),
   defaultLanguage: 'en',
   fallbackLng: 'en',
   preload: ['en', 'sv'],

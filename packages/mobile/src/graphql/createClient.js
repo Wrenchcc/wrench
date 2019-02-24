@@ -12,7 +12,9 @@ import RetryLink from './links/Retry'
 export let client = null
 
 export default () => {
-  if (client) return client
+  if (client) {
+    return client
+  }
 
   const cache = new InMemoryCache()
 
