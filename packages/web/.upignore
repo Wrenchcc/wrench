@@ -3,5 +3,4 @@
 !node_modules/**
 !.next/**
 !src/**
-!src/.next/**
 !package.json
