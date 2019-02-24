@@ -15,6 +15,11 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Inter var', system-ui, sans-serif;
     }
 
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     a {
       text-decoration: none;
     }

@@ -13,6 +13,7 @@ const app = next({
   conf: !dev && { distDir: '../.next', poweredByHeader: false },
   dev,
 })
+
 const handle = routes.getRequestHandler(app)
 
 app.prepare().then(() => {

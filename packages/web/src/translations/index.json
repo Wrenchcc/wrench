@@ -3,12 +3,18 @@
     "Header": {
       "explore": "Explore",
       "feed": "Feed"
+    },
+    "Search": {
+      "placeholder": "Search"
     }
   },
   "sv": {
     "Header": {
       "explore": "Utforska",
       "feed": "Feed"
+    },
+    "Search": {
+      "placeholder": "Sök"
     }
   }
 }

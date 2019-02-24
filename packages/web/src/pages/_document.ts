@@ -31,6 +31,19 @@ export default class MyDocument extends Document {
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css?v=3.3" />
+          <link
+            rel="apple-touch-icon-precomposed"
+            sizes="144x144"
+            href="static/apple-touch-icon-144x144.png"
+          />
+          <link
+            rel="apple-touch-icon-precomposed"
+            sizes="152x152"
+            href="static/apple-touch-icon-152x152.png"
+          />
+          <link rel="icon" type="image/png" href="static/favicon-32x32.png" sizes="32x32" />
+          <link rel="icon" type="image/png" href="static/favicon-16x16.png" sizes="16x16" />
+          <meta name="msapplication-TileImage" content="static/mstile-144x144.png" />
         </Head>
         <body>
           <Main />

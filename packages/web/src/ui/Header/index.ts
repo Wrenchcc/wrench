@@ -21,7 +21,7 @@ function Header({ router }) {
   return (
     <Base>
       <Link href="/">
-        <img src="/static/logo.svg" alt="Wrench" />
+        <img src={require('./logo.svg')} alt="Wrench" />
       </Link>
 
       <Search />
