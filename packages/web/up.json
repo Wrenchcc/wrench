@@ -10,7 +10,7 @@
     "staging": {
       "domain": "beta.wrench.cc",
       "proxy": {
-        "command": "node dist/index.js"
+        "command": "NODE_ENV=production node dist/server.js"
       }
     }
   },

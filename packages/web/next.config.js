@@ -1,9 +1,9 @@
 const path = require('path')
 const Dotenv = require('dotenv-webpack')
-
 const withTypescript = require('@zeit/next-typescript')
 
 module.exports = withTypescript({
+  distDir: '../.next',
   webpack: config => {
     config.plugins = config.plugins || []
 
