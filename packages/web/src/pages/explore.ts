@@ -22,7 +22,17 @@ export default function Explore() {
           title: 'Explore • Wrench',
         }}
       />
-      <h3>{data.posts.edges.map(({ node }) => node.caption)}</h3>
+
+      {data.posts.edges.map(({ node }) => {
+        {
+          return (
+            node.files
+            && node.files.edges.map(file => (
+              <img style={{ width: 500, height: 500 }} key={file.node.id} src={file.node.uri} />
+            ))
+          )
+        }
+      })}
     </div>
   )
 }

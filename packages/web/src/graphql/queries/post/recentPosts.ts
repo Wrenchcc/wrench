@@ -23,6 +23,15 @@ export const GET_RECENT_POSTS = gql`
             dynamicLink
             isOnline
           }
+          files: filesConnection(type: IMAGE) {
+            edges {
+              node {
+                type
+                id
+                uri
+              }
+            }
+          }
         }
       }
       pageInfo {
