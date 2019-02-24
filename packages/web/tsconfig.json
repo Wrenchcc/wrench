@@ -1,28 +1,21 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "lib": ["es6", "es2017", "esnext.asynciterable"],
-    "sourceMap": true,
-    "outDir": "./dist",
-    "moduleResolution": "node",
+    "noEmit": true,
+    "target": "esnext",
+    "module": "esnext",
     "jsx": "preserve",
-    "declaration": false,
-    "composite": false,
-    "removeComments": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "rootDir": "src"
+    "lib": ["dom", "es2016"],
+    "resolveJsonModule": true
   },
-  "exclude": ["node_modules", "tasks"],
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": ["src/**/*"]
 }

@@ -8,7 +8,11 @@ const PORT = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV === 'development'
 const dir = './src'
 
-const app = next({ dev, dir })
+const app = next({
+  dir,
+  conf: !dev && { distDir: '../.next', poweredByHeader: false },
+  dev,
+})
 const handle = routes.getRequestHandler(app)
 
 app.prepare().then(() => {

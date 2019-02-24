@@ -4,12 +4,13 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --no-notify --ignore-watch .next src/server.ts",
+    "dev": "ts-node-dev --respawn --no-notify --ignore-watch .next --project tsconfig.server.json src/server.ts",
     "compile": "next build src && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
+    "@types/express": "^4.16.1",
     "express": "^4.16.4",
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",

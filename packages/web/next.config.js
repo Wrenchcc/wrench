@@ -3,7 +3,7 @@ const Dotenv = require('dotenv-webpack')
 const withTypescript = require('@zeit/next-typescript')
 
 module.exports = withTypescript({
-  // distDir: '../.next',
+  distDir: '../.next',
   webpack: config => {
     config.plugins = config.plugins || []
 
