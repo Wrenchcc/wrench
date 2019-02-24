@@ -58,17 +58,13 @@ class MyApp extends App {
     const {
       Component,
       pageProps,
-      // @ts-ignorer
       i18nServerInstance,
-      // @ts-ignore
       initialI18nStore,
-      // @ts-ignore
       initialLanguage,
     } = this.props
-    // @ts-ignore
+
     return (
       <I18nextProvider i18n={i18nServerInstance || i18n}>
-        // @ts-ignore
         <AppWithi18n
           Component={Component}
           pageProps={pageProps}

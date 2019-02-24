@@ -14,8 +14,6 @@ const handle = routes.getRequestHandler(app)
 app.prepare().then(() => {
   const server = express()
 
-  i18n.use(i18nextMiddleware.LanguageDetector)
-
   server.disable('x-powered-by').use(i18nextMiddleware.handle(i18n))
 
   server.get('*', (req, res) => {
