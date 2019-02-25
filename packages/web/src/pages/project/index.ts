@@ -28,8 +28,12 @@ function Project({ slug }) {
           title: `${data.project.title} - ${data.project.type.title} Project`,
         }}
       />
-      <Title large>{first}</Title>
-      <Title large>{second}</Title>
+
+      <Title large lineHeight={85}>
+        {first}
+        <br />
+        {second}
+      </Title>
       <Followers count={data.project.followers.totalCount} />
 
       <div style={{ marginTop: 80 }}>
