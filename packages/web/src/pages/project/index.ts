@@ -25,7 +25,7 @@ function Project({ slug }) {
     >
       <NextSeo
         config={{
-          title: `${data.project.title} • Wrench`,
+          title: `${data.project.title} - ${data.project.type.title} Project`,
         }}
       />
       <Title large>{first}</Title>

@@ -8,8 +8,8 @@ import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectPostsConnectionFragment from 'graphql/fragments/project/postsConnection'
 
 export const ProjectBySlugQuery = gql`
-  query getProjectBySlug($slug: LowercaseString!, $after: String, $id: ID) {
-    post(id: $id) {
+  query getProjectBySlug($slug: LowercaseString!, $after: String, $postId: ID) {
+    post(id: $postId) {
       ...postInfo
     }
     project(slug: $slug) {
@@ -36,7 +36,7 @@ const getProjectOptions = {
     variables: {
       slug: getProjectSlug(navigation) || getProjectSlugFromDeeplink(navigation),
       after,
-      id: getPostId(navigation),
+      postId: getPostId(navigation),
     },
     fetchPolicy: 'cache-and-network',
   }),

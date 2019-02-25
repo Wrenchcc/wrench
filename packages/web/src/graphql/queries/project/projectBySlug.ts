@@ -99,6 +99,9 @@ export const PROJECT_BY_SLUG = gql`
       followers: followersConnection {
         totalCount
       }
+      type {
+        title
+      }
       posts: postsConnection(after: $after) {
         edges {
           cursor

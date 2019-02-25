@@ -11,6 +11,7 @@ export default gql`
     user: User
     projectPermissions: ProjectPermissions
     commentsDisabled: Boolean
+    type: ProjectType
 
     filesConnection(
       after: String

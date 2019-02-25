@@ -7,6 +7,7 @@ import projectPermissions from './projectPermissions'
 import projects from './projects'
 import projectSuggestions from './projectSuggestions'
 import projectTypes from './projectTypes'
+import type from './type'
 import user from './user'
 
 export default {
@@ -16,6 +17,7 @@ export default {
     followersConnection,
     postsConnection,
     projectPermissions,
+    type,
     user,
   },
   Query: {

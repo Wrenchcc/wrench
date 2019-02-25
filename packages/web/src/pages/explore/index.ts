@@ -26,7 +26,7 @@ export default function Explore() {
     >
       <NextSeo
         config={{
-          title: 'Explore • Wrench',
+          title: 'Explore',
         }}
       />
 
