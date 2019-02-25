@@ -5,7 +5,7 @@ const withTypescript = require('@zeit/next-typescript')
 
 module.exports = withPlugins([withTypescript, optimizedImages], {
   distDir: '../.next',
-  publicRuntimeConfig: {
-    API_ENDPOINT: 'https://api.wrench.cc/graphql',
+  env: {
+    API_ENDPOINT: process.env.API_ENDPOINT,
   },
 })
