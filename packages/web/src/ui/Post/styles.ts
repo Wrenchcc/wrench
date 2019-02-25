@@ -11,7 +11,11 @@ export const Base = styled.div`
 `
 
 export const Content = styled.div`
+  margin-top: 20px;
   margin-left: 60px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 `
 
 export const Title = styled(UiTitle)`

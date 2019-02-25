@@ -1,0 +1,12 @@
+{
+  "List": {
+    "en": {
+      "loadMore": "Show 1 comment",
+      "loadMore_plural": "Show all {{count, humanFormat}} comments"
+    },
+    "sv": {
+      "loadMore": "Visa 1 kommentar",
+      "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
+    }
+  }
+}

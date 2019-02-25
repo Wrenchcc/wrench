@@ -1,5 +1,13 @@
 {
   "en": {
+    "CommentField": {
+      "placeholder": "Add a comment...",
+      "post": "Post"
+    },
+    "List": {
+      "loadMore": "Show 1 comment",
+      "loadMore_plural": "Show all {{count, humanFormat}} comments"
+    },
     "Header": {
       "explore": "Explore",
       "feed": "Feed"
@@ -9,6 +17,14 @@
     }
   },
   "sv": {
+    "CommentField": {
+      "placeholder": "Skriv en kommentar...",
+      "post": "Skicka"
+    },
+    "List": {
+      "loadMore": "Visa 1 kommentar",
+      "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
+    },
     "Header": {
       "explore": "Utforska",
       "feed": "Feed"

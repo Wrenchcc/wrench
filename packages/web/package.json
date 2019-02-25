@@ -19,6 +19,7 @@
     "express": "^4.16.4",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
+    "human-format": "^0.10.1",
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-express-middleware": "^1.7.1",
