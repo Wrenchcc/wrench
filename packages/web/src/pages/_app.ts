@@ -16,10 +16,10 @@ const GlobalStyle = createGlobalStyle`
     body {
       font-family: 'Inter var', system-ui, sans-serif;
     }
-    
-    a {
-      text-decoration: none;
-    }
+  }
+
+  a {
+    text-decoration: none;
   }
 `
 

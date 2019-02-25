@@ -8,6 +8,10 @@
       "loadMore": "Show 1 comment",
       "loadMore_plural": "Show all {{count, humanFormat}} comments"
     },
+    "UiFollowers": {
+      "followers": "{{count}} follower",
+      "followers_plural": "{{count}} followers"
+    },
     "Header": {
       "explore": "Explore",
       "feed": "Feed"
@@ -24,6 +28,9 @@
     "List": {
       "loadMore": "Visa 1 kommentar",
       "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
+    },
+    "UiFollowers": {
+      "followers": "{{count}} följare"
     },
     "Header": {
       "explore": "Utforska",

@@ -1,0 +1,11 @@
+{
+  "UiFollowers": {
+    "en": {
+      "followers": "{{count}} follower",
+      "followers_plural": "{{count}} followers"
+    },
+    "sv": {
+      "followers": "{{count}} följare"
+    }
+  }
+}

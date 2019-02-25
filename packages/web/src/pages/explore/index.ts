@@ -19,10 +19,9 @@ export default function Explore() {
   return (
     <div
       style={{
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
         paddingTop: '100px',
+        maxWidth: '1000px',
+        margin: '0 auto',
       }}
     >
       <NextSeo

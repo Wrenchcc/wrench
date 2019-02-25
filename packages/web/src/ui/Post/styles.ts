@@ -4,7 +4,6 @@ import UiText from '../Text'
 import UiComments from '../Comments'
 
 export const Base = styled.div`
-  width: 1000px;
   display: flex;
   flex-direction: row;
   margin-bottom: 70px;
