@@ -1,7 +1,7 @@
 export const FONTS = {
-  BOLD: 700,
+  BOLD: 600,
   MEDIUM: 500,
-  REGULAR: 200,
+  REGULAR: 400,
 }
 
 export const COLORS = {

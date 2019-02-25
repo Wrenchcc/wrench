@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import UiTitle from '../Title'
 import UiText from '../Text'
+import UiComments from '../Comments'
 
 export const Base = styled.div`
   width: 1000px;
@@ -20,3 +21,5 @@ export const Title = styled(UiTitle)`
 export const Text = styled(UiText)`
   margin-top: 10px;
 `
+
+export const Comments = styled(UiComments)``

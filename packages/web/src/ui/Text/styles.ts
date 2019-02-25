@@ -3,11 +3,11 @@ import { toUpper } from 'ramda'
 import { FONTS, COLORS } from '../constants'
 
 export const Base = styled.p`
-  font-family: ${props => (props.bold && FONTS.BOLD) || (props.medium ? FONTS.MEDIUM : FONTS.REGULAR)};
+  font-weight: ${props => (props.bold && FONTS.BOLD) || (props.medium ? FONTS.MEDIUM : FONTS.REGULAR)};
   text-align: ${props => (props.center ? 'center' : 'left')};
   color: ${props => (props.color ? COLORS[toUpper(props.color)] : COLORS.DARK)};
   line-height: ${props => props.lineHeight || 25}px;
-  font-size: ${props => props.fontSize || 17};
+  font-size: ${props => props.fontSize || 17}px;
   text-decoration-line: ${props => (props.underline ? 'underline' : 'none')};
   opacity: ${props => props.opacity || 1};
 `

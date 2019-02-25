@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import UiSearch from '../Search'
+import UiAvatar from '../Avatar'
 
 export const Base = styled.div`
   display: flex;
@@ -21,4 +22,8 @@ export const NavLink = styled.a`
 
 export const Search = styled(UiSearch)`
   margin-left: 35px;
+`
+
+export const Avatar = styled(UiAvatar)`
+  margin-left: auto;
 `

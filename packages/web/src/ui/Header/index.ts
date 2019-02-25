@@ -2,7 +2,7 @@ import * as React from 'react'
 import Link from 'next/link'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import { Base, Nav, NavLink, Search } from './styles'
+import { Base, Nav, NavLink, Search, Avatar } from './styles'
 
 function Header({ router }) {
   const { t } = useTranslation()
@@ -33,6 +33,11 @@ function Header({ router }) {
           </Link>
         ))}
       </Nav>
+
+      <Avatar
+        size={40}
+        uri="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10154469969811953&height=200&width=200&ext=1551825024&hash=AeTR1gsNZaSpjTjh"
+      />
     </Base>
   )
 }

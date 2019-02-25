@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base } from './styles'
 
 const Image = memo(function Image({
@@ -17,6 +16,7 @@ const Image = memo(function Image({
       height={height}
       borderRadius={borderRadius}
       placeholderColor={placeholderColor}
+      {...props}
     >
       <img src={source} width={width} height={height} style={{ width: '100%', height: '100%' }} />
     </Base>

@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
 export const Base = styled.div`
-  min-width: 500px;
-  height: 500px;
-  overflow: hidden;
+  margin-bottom: 40;
 `

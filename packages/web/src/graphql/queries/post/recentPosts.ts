@@ -57,6 +57,30 @@ export const GET_RECENT_POSTS = gql`
               }
             }
           }
+          comments: commentsConnection(first: 2) {
+            pageInfo {
+              hasNextPage
+            }
+            edges {
+              cursor
+              node {
+                id
+                text
+                createdAt
+                user {
+                  id
+                  fullName
+                  firstName
+                  lastName
+                  username
+                  avatarUrl
+                  projectCount
+                  dynamicLink
+                  isOnline
+                }
+              }
+            }
+          }
         }
       }
       pageInfo {
