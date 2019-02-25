@@ -1,7 +1,7 @@
 import NextSeo from 'next-seo'
 import { useQuery } from 'react-apollo-hooks'
-import { GET_RECENT_POSTS } from '../graphql/queries/post/recentPosts'
-import { Post } from '../ui'
+import { GET_RECENT_POSTS } from '../../graphql/queries/post/recentPosts'
+import { Post } from '../../ui'
 
 export default function Explore() {
   const { data, error, loading } = useQuery(GET_RECENT_POSTS, {

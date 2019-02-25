@@ -1,8 +1,7 @@
 import * as React from 'react'
 import Avatar from '../Avatar'
 import Carousel from '../Carousel'
-import Title from '../Title'
-import { Base, Content } from './styles'
+import { Base, Content, Title, Text } from './styles'
 
 function Post({ data }) {
   return (
@@ -11,6 +10,7 @@ function Post({ data }) {
       <Content>
         <Avatar uri={data.user.avatarUrl} size={40} />
         <Title>{data.project.title}</Title>
+        <Text color="light_grey">{data.caption}</Text>
       </Content>
     </Base>
   )
