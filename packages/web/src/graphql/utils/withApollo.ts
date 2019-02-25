@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import * as blah from 'react-apollo-hooks'
 import { renderToString } from 'react-dom/server'
-import initApollo from './initApollo'
+import createClient from '../createClient'
 
 const isBrowser = typeof window !== 'undefined'
 
@@ -19,7 +19,7 @@ export default App => class Apollo extends React.Component {
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
-      const apollo = initApollo()
+      const apollo = createClient()
       if (!isBrowser) {
         try {
           // Run all GraphQL queries
@@ -52,7 +52,7 @@ export default App => class Apollo extends React.Component {
 
     constructor(props) {
       super(props)
-      this.apolloClient = initApollo(props.apolloState)
+      this.apolloClient = createClient(props.apolloState)
     }
 
     public render() {

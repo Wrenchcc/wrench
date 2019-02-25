@@ -1,3 +1,9 @@
+export const FONTS = {
+  BOLD: 700,
+  MEDIUM: 500,
+  REGULAR: 200,
+}
+
 export const COLORS = {
   DARK_GREY: 'rgb(34,34,34)',
   DARK: 'rgb(000, 000, 000)',

@@ -1,6 +1,7 @@
 import NextSeo from 'next-seo'
 import { useQuery } from 'react-apollo-hooks'
 import { GET_RECENT_POSTS } from '../graphql/queries/post/recentPosts'
+import { Post } from '../ui'
 
 export default function Explore() {
   const { data, error, loading } = useQuery(GET_RECENT_POSTS, {
@@ -16,23 +17,23 @@ export default function Explore() {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        paddingTop: '100px',
+      }}
+    >
       <NextSeo
         config={{
           title: 'Explore • Wrench',
         }}
       />
 
-      {data.posts.edges.map(({ node }) => {
-        {
-          return (
-            node.files
-            && node.files.edges.map(file => (
-              <img style={{ width: 500, height: 500 }} key={file.node.id} src={file.node.uri} />
-            ))
-          )
-        }
-      })}
+      {data.posts.edges.map(({ node }) => (
+        <Post data={node} key={node.id} />
+      ))}
     </div>
   )
 }

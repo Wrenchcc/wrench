@@ -5,7 +5,7 @@ import { I18nextProvider, useSSR } from 'react-i18next'
 import NextSeo from 'next-seo'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
-import withApolloClient from '../graphql/withApolloClient'
+import withApollo from '../graphql/utils/withApollo'
 import i18n from '../i18n'
 import { Header } from '../ui'
 import config from '../../next-seo.config'
@@ -100,4 +100,4 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }
   )
 }
 
-export default withApolloClient(MyApp)
+export default withApollo(MyApp)
