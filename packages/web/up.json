@@ -13,8 +13,5 @@
         "command": "NODE_ENV=production node dist/server.js"
       }
     }
-  },
-  "environment": {
-    "API_ENDPOINT": "https://api.wrench.cc/graphql"
   }
 }
