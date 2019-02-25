@@ -6,6 +6,7 @@ export const Base = styled.p`
   font-family: ${props => (props.bold && FONTS.BOLD) || (props.medium ? FONTS.MEDIUM : FONTS.REGULAR)};
   text-align: ${props => (props.center ? 'center' : 'left')};
   color: ${props => (props.color ? COLORS[toUpper(props.color)] : COLORS.DARK)};
+  line-height: ${props => props.lineHeight || 25}px;
   font-size: ${props => props.fontSize || 17};
   text-decoration-line: ${props => (props.underline ? 'underline' : 'none')};
   opacity: ${props => props.opacity || 1};
