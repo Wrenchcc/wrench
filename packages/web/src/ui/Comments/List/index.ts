@@ -6,6 +6,8 @@ import { Row, Comment, LoadMore } from './styles'
 const List = memo(function List({ comments, className }) {
   const { t } = useTranslation()
 
+  if (!comments.edges.length) return null
+
   return (
     <Fragment>
       {comments.map(({ node }) => (
