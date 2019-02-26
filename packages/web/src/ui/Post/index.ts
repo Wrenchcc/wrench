@@ -15,7 +15,7 @@ function Post({ data, onPost }) {
             query: { username: data.user.username },
           }}
           as={{
-            pathname: `/user/${data.user.username}`,
+            pathname: `/${data.user.username}`,
           }}
         >
           <a>

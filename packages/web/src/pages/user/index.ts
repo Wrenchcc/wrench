@@ -22,10 +22,10 @@ function User({ username }) {
     >
       <NextSeo
         config={{
-          title: `${data.user.fullName} Profile`,
+          title: `${data.user.fullName}. (@${username}) - projects and posts`,
           description: `See Wrench projects and posts from ${data.user.fullName}. (@${username})`,
           openGraph: {
-            title: `${data.user.fullName} Profile`,
+            title: `${data.user.fullName}. (@${username}) - projects and posts`,
             description: `See Wrench projects and posts from ${data.user.fullName}. (@${username})`,
             url: `https://wrench.cc/user/${data.user.username}`,
             type: 'profile',

@@ -41,7 +41,7 @@ export default async (_, { facebookToken, platform }, ctx) => {
       createdUser.username
     })`,
     image: createdUser.avatarUrl,
-    path: `user/${createdUser.username}`,
+    path: createdUser.username,
     title: `${createdUser.fullName}. (@${createdUser.username}) • Wrench projects and posts`,
   })
 
