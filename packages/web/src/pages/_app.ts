@@ -33,6 +33,9 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   #nprogress {
     pointer-events: none;
   }
