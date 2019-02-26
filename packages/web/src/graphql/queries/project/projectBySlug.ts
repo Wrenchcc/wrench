@@ -5,19 +5,11 @@ export const PROJECT_BY_SLUG = gql`
     post(id: $postId) {
       id
       caption
-      createdAt
-      postPermissions {
-        isOwner
-      }
       user {
         id
         fullName
-        firstName
-        lastName
         username
         avatarUrl
-        projectCount
-        dynamicLink
         isOnline
       }
       files: filesConnection(type: IMAGE) {
@@ -29,31 +21,6 @@ export const PROJECT_BY_SLUG = gql`
           }
         }
       }
-      project {
-        id
-        title
-        slug
-        dynamicLink
-        commentsDisabled
-        user {
-          id
-          fullName
-          firstName
-          lastName
-          username
-          avatarUrl
-          projectCount
-          dynamicLink
-          isOnline
-        }
-        projectPermissions {
-          isOwner
-          isFollower
-        }
-        followers: followersConnection {
-          totalCount
-        }
-      }
       comments: commentsConnection(first: 2) {
         totalCount
         edges {
@@ -63,12 +30,8 @@ export const PROJECT_BY_SLUG = gql`
             user {
               id
               fullName
-              firstName
-              lastName
               username
               avatarUrl
-              projectCount
-              dynamicLink
               isOnline
             }
           }
@@ -84,17 +47,9 @@ export const PROJECT_BY_SLUG = gql`
       user {
         id
         fullName
-        firstName
-        lastName
         username
         avatarUrl
-        projectCount
-        dynamicLink
         isOnline
-      }
-      projectPermissions {
-        isOwner
-        isFollower
       }
       followers: followersConnection {
         totalCount
@@ -108,18 +63,11 @@ export const PROJECT_BY_SLUG = gql`
           node {
             id
             caption
-            postPermissions {
-              isOwner
-            }
             user {
               id
               fullName
-              firstName
-              lastName
               username
               avatarUrl
-              projectCount
-              dynamicLink
               isOnline
             }
             files: filesConnection(type: IMAGE) {
@@ -131,11 +79,6 @@ export const PROJECT_BY_SLUG = gql`
                 }
               }
             }
-            project {
-              id
-              title
-              commentsDisabled
-            }
             comments: commentsConnection(first: 2) {
               totalCount
               edges {
@@ -145,12 +88,8 @@ export const PROJECT_BY_SLUG = gql`
                   user {
                     id
                     fullName
-                    firstName
-                    lastName
                     username
                     avatarUrl
-                    projectCount
-                    dynamicLink
                     isOnline
                   }
                 }

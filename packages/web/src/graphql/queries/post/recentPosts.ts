@@ -8,51 +8,23 @@ export const GET_RECENT_POSTS = gql`
         node {
           id
           caption
-          createdAt
-          postPermissions {
-            isOwner
-          }
           user {
             id
-            fullName
-            firstName
-            lastName
             username
             avatarUrl
-            projectCount
-            dynamicLink
             isOnline
           }
           project {
             id
             title
             slug
-            dynamicLink
             commentsDisabled
-            user {
-              id
-              fullName
-              firstName
-              lastName
-              username
-              avatarUrl
-              projectCount
-              dynamicLink
-              isOnline
-            }
-            projectPermissions {
-              isOwner
-              isFollower
-            }
-            followers: followersConnection {
-              totalCount
-            }
           }
           files: filesConnection(type: IMAGE) {
             edges {
               node {
-                type
                 id
+                type
                 uri
               }
             }
@@ -66,16 +38,11 @@ export const GET_RECENT_POSTS = gql`
               node {
                 id
                 text
-                createdAt
                 user {
                   id
                   fullName
-                  firstName
-                  lastName
                   username
                   avatarUrl
-                  projectCount
-                  dynamicLink
                   isOnline
                 }
               }

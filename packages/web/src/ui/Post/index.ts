@@ -9,7 +9,19 @@ function Post({ data, onPost }) {
     <Base>
       <Carousel files={data.files} />
       <Content>
-        <Avatar uri={data.user.avatarUrl} size={onPost ? 60 : 40} />
+        <Link
+          href={{
+            pathname: '/user',
+            query: { username: data.user.username },
+          }}
+          as={{
+            pathname: `/user/${data.user.username}`,
+          }}
+        >
+          <a>
+            <Avatar uri={data.user.avatarUrl} size={onPost ? 60 : 40} />
+          </a>
+        </Link>
         {!onPost && (
           <Link
             href={{
