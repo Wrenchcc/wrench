@@ -1,5 +1,5 @@
 export const FONTS = {
-  BOLD: 600,
+  BOLD: 700,
   MEDIUM: 500,
   REGULAR: 400,
 }

@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="stylesheet" href="https://rsms.me/inter/inter.css?v=3.3" />
+          <link rel="stylesheet" href="https://edge-files.wrench.cc/static/fonts/main.css" />
           <link
             rel="apple-touch-icon-precomposed"
             sizes="144x144"
