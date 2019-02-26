@@ -3,7 +3,7 @@
   "regions": ["eu-central-1"],
   "name": "web",
   "lambda": {
-    "memory": 1024,
+    "memory": 1536,
     "runtime": "nodejs8.10"
   },
   "stages": {
