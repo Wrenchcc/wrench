@@ -37,7 +37,7 @@ function Post({ data, onPost }) {
             </a>
           </Link>
         )}
-        <Text color="light_grey">{data.caption}</Text>
+        <Text color={onPost ? 'black' : 'grey'}>{data.caption}</Text>
         <Comments data={data.comments.edges} />
       </Content>
     </Base>
