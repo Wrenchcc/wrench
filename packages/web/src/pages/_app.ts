@@ -3,12 +3,19 @@ import App, { Container } from 'next/app'
 import { ApolloProvider } from 'react-apollo-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import NextSeo from 'next-seo'
+import * as NProgress from 'nprogress'
+import Router from 'next/router'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 import withApollo from '../graphql/utils/withApollo'
 import i18n from '../i18n'
 import { Header } from '../ui'
 import config from '../../next-seo.config'
+
+NProgress.configure({ showSpinner: false })
+Router.onRouteChangeStart = () => NProgress.start()
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -18,8 +25,37 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  input[type="search"] {
+    -webkit-appearance: textfield;
+  }
+
   a {
     text-decoration: none;
+  }
+
+  #nprogress {
+    pointer-events: none;
+  }
+
+  #nprogress .bar {
+    background: black;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+
+  #nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+    opacity: 1.0;
+    transform: rotate(3deg) translate(0px, -4px);
   }
 `
 
@@ -54,6 +90,10 @@ class MyApp extends App {
       initialLanguage,
       pageProps,
     }
+  }
+
+  constructor(props) {
+    super(props)
   }
 
   render() {

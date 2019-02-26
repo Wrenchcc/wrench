@@ -9,7 +9,7 @@ export default function Explore() {
   })
 
   if (loading) {
-    return <div>Loading...</div>
+    return null
   }
 
   if (error) {

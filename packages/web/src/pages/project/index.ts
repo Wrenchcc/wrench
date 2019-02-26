@@ -10,7 +10,7 @@ function Project({ slug }) {
   })
 
   if (loading) {
-    return <div>Loading...</div>
+    return null
   }
 
   const [first, second] = splitString(data.project.title)
