@@ -6,7 +6,7 @@ const Carousel = memo(function Carousel({ files }) {
   return (
     <Base>
       {files.edges.map(({ node }) => (
-        <Image source={node.uri} key={node.id} width={500} height={500} />
+        <Image source={node.uri} key={node.id} />
       ))}
     </Base>
   )

@@ -5,6 +5,8 @@ export const USER_BY_USERNAME = gql`
     user(username: $username) {
       id
       fullName
+      firstName
+      lastName
       avatarUrl
       isOnline
     }

@@ -23,11 +23,27 @@ function User({ username }) {
       <NextSeo
         config={{
           title: `${data.user.fullName} Profile`,
+          description: `See Wrench projects and posts from ${data.user.fullName}. (@${username})`,
+          openGraph: {
+            title: `${data.user.fullName} Profile`,
+            description: `See Wrench projects and posts from ${data.user.fullName}. (@${username})`,
+            url: `https://wrench.cc/user/${data.user.username}`,
+            type: 'profile',
+            profile: {
+              firstName: data.user.firstName,
+              lastName: data.user.lastName,
+              username,
+            },
+            images: [
+              {
+                url: data.user.avatarUrl,
+                alt: 'Profile Photo',
+              },
+            ],
+          },
         }}
       />
-
       <Avatar uri={data.user.avatarUrl} size={80} />
-
       <Title medium>{data.user.fullName}</Title>
     </div>
   )

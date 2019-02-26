@@ -11,6 +11,7 @@ export const Base = styled.div`
   position: sticky;
   top: 0;
   background: white;
+  z-index: 100;
 `
 
 export const Nav = styled.nav`
