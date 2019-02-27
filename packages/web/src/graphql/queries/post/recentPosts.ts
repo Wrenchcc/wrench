@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import userInfoSmall from '../../fragments/user/userInfoSmall'
 
 export const GET_RECENT_POSTS = gql`
   query getRecentPosts($after: String) {
@@ -9,10 +10,7 @@ export const GET_RECENT_POSTS = gql`
           id
           caption
           user {
-            id
-            username
-            avatarUrl
-            isOnline
+            ...userInfoSmall
           }
           project {
             id
@@ -39,11 +37,7 @@ export const GET_RECENT_POSTS = gql`
                 id
                 text
                 user {
-                  id
-                  fullName
-                  username
-                  avatarUrl
-                  isOnline
+                  ...userInfoSmall
                 }
               }
             }
@@ -55,4 +49,5 @@ export const GET_RECENT_POSTS = gql`
       }
     }
   }
+  ${userInfoSmall}
 `

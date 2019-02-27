@@ -24,7 +24,7 @@ function Project({ slug }) {
           title: t('project:title', { title: data.project.title, type: data.project.type.title }),
           description: t('project:description', {
             followers: data.project.followers.totalCount,
-            posts: 3000,
+            posts: data.project.posts.totalCount,
             fullName: data.project.user.fullName,
             username: data.project.user.username,
           }),

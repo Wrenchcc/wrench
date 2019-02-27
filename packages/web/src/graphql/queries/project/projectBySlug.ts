@@ -1,42 +1,11 @@
 import gql from 'graphql-tag'
+import postInfo from '../../fragments/post/postInfo'
+import userInfoSmall from '../../fragments/user/userInfoSmall'
 
 export const PROJECT_BY_SLUG = gql`
   query getProjectBySlug($slug: LowercaseString!, $after: String, $postId: ID) {
     post(id: $postId) {
-      id
-      caption
-      user {
-        id
-        fullName
-        username
-        avatarUrl
-        isOnline
-      }
-      files: filesConnection(type: IMAGE) {
-        edges {
-          node {
-            type
-            id
-            uri
-          }
-        }
-      }
-      comments: commentsConnection(first: 2) {
-        totalCount
-        edges {
-          node {
-            id
-            text
-            user {
-              id
-              fullName
-              username
-              avatarUrl
-              isOnline
-            }
-          }
-        }
-      }
+      ...postInfo
     }
     project(slug: $slug) {
       id
@@ -45,11 +14,7 @@ export const PROJECT_BY_SLUG = gql`
       dynamicLink
       commentsDisabled
       user {
-        id
-        fullName
-        username
-        avatarUrl
-        isOnline
+        ...userInfoSmall
       }
       followers: followersConnection {
         totalCount
@@ -64,11 +29,7 @@ export const PROJECT_BY_SLUG = gql`
             id
             caption
             user {
-              id
-              fullName
-              username
-              avatarUrl
-              isOnline
+              ...userInfoSmall
             }
             files: filesConnection(type: IMAGE) {
               edges {
@@ -86,11 +47,7 @@ export const PROJECT_BY_SLUG = gql`
                   id
                   text
                   user {
-                    id
-                    fullName
-                    username
-                    avatarUrl
-                    isOnline
+                    ...userInfoSmall
                   }
                 }
               }
@@ -104,4 +61,6 @@ export const PROJECT_BY_SLUG = gql`
       }
     }
   }
+  ${postInfo}
+  ${userInfoSmall}
 `

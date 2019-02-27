@@ -2,7 +2,7 @@ import { useQuery } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
-import { Title, Avatar, Layout } from '../../ui'
+import { Title, Avatar, Layout, Post } from '../../ui'
 
 function User({ username }) {
   const { t } = useTranslation()
@@ -46,6 +46,10 @@ function User({ username }) {
       />
       <Avatar uri={data.user.avatarUrl} size={80} />
       <Title medium>{data.user.fullName}</Title>
+
+      {data.user.posts.edges.map(({ node }) => (
+        <Post data={node} key={node.id} />
+      ))}
     </Layout>
   )
 }
