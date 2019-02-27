@@ -74,7 +74,11 @@ function User({ username }) {
         })
         }
         hasMore={data.user.posts.pageInfo.hasNextPage}
-        loader={<div className="loader">Loading ...</div>}
+        loader={
+          <div className="loader" key={0}>
+            Loading ...
+          </div>
+        }
       >
         {data.user.posts.edges.map(({ node }) => (
           <Post data={node} key={node.id} withoutAvatar />

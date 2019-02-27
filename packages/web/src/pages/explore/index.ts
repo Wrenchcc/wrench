@@ -44,7 +44,11 @@ export default function Explore() {
         })
         }
         hasMore={data.posts.pageInfo.hasNextPage}
-        loader={<div className="loader">Loading ...</div>}
+        loader={
+          <div className="loader" key={0}>
+            Loading ...
+          </div>
+        }
       >
         {data.posts.edges.map(({ node }) => (
           <Post data={node} key={node.id} />

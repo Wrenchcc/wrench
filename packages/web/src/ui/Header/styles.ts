@@ -28,6 +28,12 @@ export const Search = styled(UiSearch)`
   margin-left: 35px;
 `
 
-export const Avatar = styled(UiAvatar)`
+export const Right = styled.div`
   margin-left: auto;
+  display: flex;
+  align-items: center;
+`
+
+export const Avatar = styled(UiAvatar)`
+  margin-left: 30px;
 `
