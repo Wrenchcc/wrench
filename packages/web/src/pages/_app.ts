@@ -2,15 +2,14 @@ import * as React from 'react'
 import App, { Container } from 'next/app'
 import { ApolloProvider } from 'react-apollo-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'
-import NextSeo from 'next-seo'
 import * as NProgress from 'nprogress'
 import Router from 'next/router'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
+import Seo from '../utils/seo'
 import withApollo from '../graphql/utils/withApollo'
 import i18n from '../i18n'
 import { Header } from '../ui'
-import config from '../../next-seo.config'
 
 NProgress.configure({ showSpinner: false })
 Router.onRouteChangeStart = () => NProgress.start()
@@ -43,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
   #nprogress .bar {
     background: black;
     position: fixed;
-    z-index: 10;
+    z-index: 101;
     top: 0;
     left: 0;
     width: 100%;
@@ -131,7 +130,7 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }
   return (
     <Container>
       <GlobalStyle />
-      <NextSeo config={config} />
+      <Seo />
       <Header />
       <Component {...pageProps} />
     </Container>

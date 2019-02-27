@@ -5,12 +5,14 @@ import * as i18nextMiddleware from 'i18next-express-middleware'
 import * as humanFormat from 'human-format'
 import resources from './translations/index.json'
 
+export const SUPPORTED_LOCALS = ['en', 'sv']
+
 const options = {
   resources,
   debug: Boolean(process.env.DEBUG_TRANSLATION),
   defaultLanguage: 'en',
   fallbackLng: 'en',
-  preload: ['en', 'sv'],
+  preload: SUPPORTED_LOCALS,
   interpolation: {
     escapeValue: false,
     format(value, format) {

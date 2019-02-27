@@ -1,5 +1,5 @@
-import NextSeo from 'next-seo'
 import { useQuery } from 'react-apollo-hooks'
+import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
 import { Title, Avatar } from '../../ui'
 
@@ -20,7 +20,7 @@ function User({ username }) {
         margin: '0 auto',
       }}
     >
-      <NextSeo
+      <Seo
         config={{
           title: `${data.user.fullName}. (@${username}) - projects and posts`,
           description: `See Wrench projects and posts from ${data.user.fullName}. (@${username})`,

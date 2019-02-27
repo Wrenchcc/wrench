@@ -4960,10 +4960,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo-hooks@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-apollo-hooks/-/react-apollo-hooks-0.4.1.tgz#563c4168a1e6b79c1fae75996aa13d7cc88843a8"
-  integrity sha512-pDeeB2djHEZrffbx2/TJDuUI960KDYYGpkEwpeKUPx+NBT4hYFpnza/NwRKXPENDInr1BNSdnWIf4vE/iIkYLg==
+react-apollo-hooks@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-apollo-hooks/-/react-apollo-hooks-0.4.2.tgz#e031845f59b5daa1a322b4d857dafd207ab9553f"
+  integrity sha512-o4ZgTxLVf9p4cCQ8VRsplJ/xrrqyYt46EXfRl7UXLcl71R9rBLHkXwJ21mgbKwgP8aiqDG2oHKZaQY3lchEemQ==
   dependencies:
     lodash "^4.17.11"
 

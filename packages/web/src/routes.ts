@@ -5,6 +5,6 @@ export const routes = nextRoutes() as Routes
 export const { Router } = routes
 export const { Link } = routes
 
-routes.add('user/index', '/:username')
 routes.add('project/index', '/project/:slug')
 routes.add('explore/index', '/explore')
+routes.add('user/index', '/:username')

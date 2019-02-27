@@ -1,5 +1,5 @@
-import NextSeo from 'next-seo'
 import { useQuery } from 'react-apollo-hooks'
+import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
 import { Post, Title, Followers } from '../../ui'
 import splitString from '../../utils/splitString'
@@ -15,6 +15,7 @@ function Project({ slug }) {
 
   const [first, second] = splitString(data.project.title)
 
+  // <meta content="604 Likes, 4 Comments - Hookie Co. (@hookieco) on Instagram: “Bye bye 2018! The best comes last and were honoured to be on the TOP 10 customs of @bikeexif…”" name="description" />
   return (
     <div
       style={{
@@ -23,7 +24,7 @@ function Project({ slug }) {
         margin: '0 auto',
       }}
     >
-      <NextSeo
+      <Seo
         config={{
           title: `${data.project.title} - ${data.project.type.title} Project`,
         }}
