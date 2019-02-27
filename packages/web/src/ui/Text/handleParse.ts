@@ -1,14 +1,5 @@
-import Router from 'next/router'
+import Link from 'next/link'
 import { COLORS, FONTS } from '../constants'
-
-const handleUrlPress = url => console.log(url)
-const handleNamePress = name => Router.push(
-  {
-    pathname: '/user',
-    query: { username: 'pontus.abrahamsson' },
-  },
-  '/pontus.abrahamsson'
-)
 
 const styles = {
   link: {
@@ -26,16 +17,33 @@ export default [
   {
     type: 'url',
     style: styles.link,
-    onPress: handleUrlPress,
-    renderText: matchingString => {
+    renderText: url => {
       const pattern = /^(?:https?:\/\/)?(?:www\.)?/i
-      return matchingString.replace(pattern, '')
+      return (
+        <a href={url} rel="nofollow">
+          {url.replace(pattern, '')}
+        </a>
+      )
     },
   },
   {
     pattern: /\/?\B@[a-z0-9.-]+/gi,
     style: styles.link,
-    onPress: handleNamePress,
-    renderText: username => username,
+    renderText: mention => {
+      const username = mention.replace('@', '')
+      return (
+        <Link
+          href={{
+            pathname: '/user',
+            query: { username },
+          }}
+          as={{
+            pathname: `/${username}`,
+          }}
+        >
+          <a>{mention}</a>
+        </Link>
+      )
+    },
   },
 ]

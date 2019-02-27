@@ -8,13 +8,6 @@ export const PATTERNS = {
 }
 
 export default class ParsedText extends PureComponent {
-  static displayName = 'ParsedText'
-
-  static defaultProps = {
-    parse: null,
-    childrenProps: {},
-  }
-
   getPatterns() {
     return this.props.parse.map(option => {
       const { type, ...patternOption } = option
@@ -34,18 +27,11 @@ export default class ParsedText extends PureComponent {
 
     return textExtraction
       .parse()
-      .map(({ onPress, ...props }, index) => (
-        <span
-          key={`parsedText-${index}`}
-          {...this.props.childrenProps}
-          {...props}
-          onClick={onPress}
-        />
-      ))
+      .map((props, index) => <span key={`parsedText-${index}`} {...props} />)
   }
 
   render() {
-    const { parse, childrenProps, className } = this.props
+    const { parse, className } = this.props
     return <p className={className}>{this.getParsedText()}</p>
   }
 }
