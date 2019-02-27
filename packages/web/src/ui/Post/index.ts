@@ -4,25 +4,27 @@ import Avatar from '../Avatar'
 import Carousel from '../Carousel'
 import { Base, Content, Title, Text, Comments } from './styles'
 
-function Post({ data, onPost }) {
+function Post({ data, withoutTitle, withoutAvatar }) {
   return (
     <Base>
       <Carousel files={data.files} />
       <Content>
-        <Link
-          href={{
-            pathname: '/user',
-            query: { username: data.user.username },
-          }}
-          as={{
-            pathname: `/${data.user.username}`,
-          }}
-        >
-          <a>
-            <Avatar uri={data.user.avatarUrl} size={onPost ? 60 : 40} />
-          </a>
-        </Link>
-        {!onPost && (
+        {!withoutAvatar && (
+          <Link
+            href={{
+              pathname: '/user',
+              query: { username: data.user.username },
+            }}
+            as={{
+              pathname: `/${data.user.username}`,
+            }}
+          >
+            <a>
+              <Avatar uri={data.user.avatarUrl} size={withoutTitle ? 60 : 40} />
+            </a>
+          </Link>
+        )}
+        {!withoutTitle && (
           <Link
             href={{
               pathname: '/project',
@@ -37,7 +39,7 @@ function Post({ data, onPost }) {
             </a>
           </Link>
         )}
-        <Text color={onPost ? 'black' : 'grey'}>{data.caption}</Text>
+        <Text color={withoutTitle ? 'black' : 'grey'}>{data.caption}</Text>
         <Comments data={data.comments.edges} />
       </Content>
     </Base>

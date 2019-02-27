@@ -1,4 +1,5 @@
 import React, { memo, Fragment } from 'react'
+import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import Text from '../../Text'
 import { Row, Comment, LoadMore } from './styles'
@@ -12,9 +13,21 @@ const List = memo(function List({ comments, className }) {
     <Fragment>
       {comments.map(({ node }) => (
         <Row key={node.id}>
-          <Text bold fontSize={15}>
-            {`${node.user.fullName}`}
-          </Text>
+          <Link
+            href={{
+              pathname: '/user',
+              query: { username: node.user.username },
+            }}
+            as={{
+              pathname: `/${node.user.username}`,
+            }}
+          >
+            <a>
+              <Text bold fontSize={15}>
+                {`${node.user.fullName}`}
+              </Text>
+            </a>
+          </Link>
           <Comment fontSize={15} lineHeight={22}>
             {node.text}
           </Comment>

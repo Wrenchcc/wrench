@@ -41,7 +41,7 @@ function Project({ slug }) {
 
       <div style={{ marginTop: 80 }}>
         {data.project.posts.edges.map(({ node }) => (
-          <Post data={node} key={node.id} onPost />
+          <Post data={node} key={node.id} withoutTitle />
         ))}
       </div>
     </Layout>

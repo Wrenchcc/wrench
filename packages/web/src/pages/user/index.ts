@@ -48,7 +48,7 @@ function User({ username }) {
       <Title medium>{data.user.fullName}</Title>
 
       {data.user.posts.edges.map(({ node }) => (
-        <Post data={node} key={node.id} />
+        <Post data={node} key={node.id} withoutAvatar />
       ))}
     </Layout>
   )
