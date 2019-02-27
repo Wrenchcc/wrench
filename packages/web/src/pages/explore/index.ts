@@ -1,5 +1,5 @@
-import NextSeo from 'next-seo'
 import { useQuery } from 'react-apollo-hooks'
+import Seo from '../../utils/seo'
 import { GET_RECENT_POSTS } from '../../graphql/queries/post/recentPosts'
 import { Post } from '../../ui'
 
@@ -24,7 +24,7 @@ export default function Explore() {
         margin: '0 auto',
       }}
     >
-      <NextSeo
+      <Seo
         config={{
           title: 'Explore',
         }}

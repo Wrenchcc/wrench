@@ -1,4 +1,4 @@
-import NextSeo from 'next-seo'
+import Seo from '../utils/seo'
 
 export default function Home() {
   return (
