@@ -1,3 +1,4 @@
+import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
@@ -7,7 +8,7 @@ import splitString from '../../utils/splitString'
 
 function Project({ slug }) {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(PROJECT_BY_SLUG, {
+  const { data, loading, fetchMore } = useQuery(PROJECT_BY_SLUG, {
     variables: { slug },
   })
 
@@ -39,11 +40,38 @@ function Project({ slug }) {
 
       <Followers count={data.project.followers.totalCount} />
 
-      <div style={{ marginTop: 80 }}>
+      <InfiniteScroll
+        loadMore={() => fetchMore({
+          variables: {
+            after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor,
+          },
+          updateQuery: (prev, { fetchMoreResult }) => {
+            if (!fetchMoreResult) return prev
+
+            return {
+              ...prev,
+              project: {
+                ...prev.project,
+                posts: {
+                  ...prev.project.posts,
+                  pageInfo: {
+                    ...prev.project.posts.pageInfo,
+                    ...fetchMoreResult.project.posts.pageInfo,
+                  },
+                  edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
+                },
+              },
+            }
+          },
+        })
+        }
+        hasMore={data.project.posts.pageInfo.hasNextPage}
+        loader={<div className="loader">Loading ...</div>}
+      >
         {data.project.posts.edges.map(({ node }) => (
           <Post data={node} key={node.id} withoutTitle />
         ))}
-      </div>
+      </InfiniteScroll>
     </Layout>
   )
 }

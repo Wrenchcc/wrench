@@ -1,3 +1,4 @@
+import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
@@ -6,7 +7,7 @@ import { Title, Avatar, Layout, Post } from '../../ui'
 
 function User({ username }) {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(USER_BY_USERNAME, {
+  const { data, loading, fetchMore } = useQuery(USER_BY_USERNAME, {
     variables: { username },
   })
 
@@ -47,9 +48,38 @@ function User({ username }) {
       <Avatar uri={data.user.avatarUrl} size={80} />
       <Title medium>{data.user.fullName}</Title>
 
-      {data.user.posts.edges.map(({ node }) => (
-        <Post data={node} key={node.id} withoutAvatar />
-      ))}
+      <InfiniteScroll
+        loadMore={() => fetchMore({
+          variables: {
+            after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor,
+          },
+          updateQuery: (prev, { fetchMoreResult }) => {
+            if (!fetchMoreResult) return prev
+
+            return {
+              ...prev,
+              user: {
+                ...prev.user,
+                posts: {
+                  ...prev.user.posts,
+                  pageInfo: {
+                    ...prev.user.posts.pageInfo,
+                    ...fetchMoreResult.user.posts.pageInfo,
+                  },
+                  edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
+                },
+              },
+            }
+          },
+        })
+        }
+        hasMore={data.user.posts.pageInfo.hasNextPage}
+        loader={<div className="loader">Loading ...</div>}
+      >
+        {data.user.posts.edges.map(({ node }) => (
+          <Post data={node} key={node.id} withoutAvatar />
+        ))}
+      </InfiniteScroll>
     </Layout>
   )
 }
