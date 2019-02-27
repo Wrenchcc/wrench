@@ -1,7 +1,7 @@
 import { useQuery } from 'react-apollo-hooks'
 import Seo from '../../utils/seo'
 import { GET_RECENT_POSTS } from '../../graphql/queries/post/recentPosts'
-import { Post } from '../../ui'
+import { Post, Layout } from '../../ui'
 
 export default function Explore() {
   const { data, error, loading } = useQuery(GET_RECENT_POSTS, {
@@ -17,13 +17,7 @@ export default function Explore() {
   }
 
   return (
-    <div
-      style={{
-        paddingTop: '100px',
-        maxWidth: '1000px',
-        margin: '0 auto',
-      }}
-    >
+    <Layout>
       <Seo
         config={{
           title: 'Explore',
@@ -33,6 +27,6 @@ export default function Explore() {
       {data.posts.edges.map(({ node }) => (
         <Post data={node} key={node.id} />
       ))}
-    </div>
+    </Layout>
   )
 }

@@ -2,7 +2,7 @@ import { useQuery } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
-import { Post, Title, Followers } from '../../ui'
+import { Post, Title, Followers, Layout } from '../../ui'
 import splitString from '../../utils/splitString'
 
 function Project({ slug }) {
@@ -18,13 +18,7 @@ function Project({ slug }) {
   const [first, second] = splitString(data.project.title)
 
   return (
-    <div
-      style={{
-        paddingTop: '100px',
-        maxWidth: '1000px',
-        margin: '0 auto',
-      }}
-    >
+    <Layout>
       <Seo
         config={{
           title: t('project:title', { title: data.project.title, type: data.project.type.title }),
@@ -50,7 +44,7 @@ function Project({ slug }) {
           <Post data={node} key={node.id} onPost />
         ))}
       </div>
-    </div>
+    </Layout>
   )
 }
 

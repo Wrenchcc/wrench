@@ -2,7 +2,7 @@ import { useQuery } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
-import { Title, Avatar } from '../../ui'
+import { Title, Avatar, Layout } from '../../ui'
 
 function User({ username }) {
   const { t } = useTranslation()
@@ -20,13 +20,7 @@ function User({ username }) {
   }
 
   return (
-    <div
-      style={{
-        paddingTop: '100px',
-        maxWidth: '1000px',
-        margin: '0 auto',
-      }}
-    >
+    <Layout>
       <Seo
         config={{
           title: t('user:title', params),
@@ -52,7 +46,7 @@ function User({ username }) {
       />
       <Avatar uri={data.user.avatarUrl} size={80} />
       <Title medium>{data.user.fullName}</Title>
-    </div>
+    </Layout>
   )
 }
 

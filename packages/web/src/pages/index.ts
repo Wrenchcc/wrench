@@ -2,7 +2,7 @@ import Seo from '../utils/seo'
 
 export default function Home() {
   return (
-    <NextSeo
+    <Seo
       config={{
         title: 'Feed',
       }}
