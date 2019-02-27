@@ -97,6 +97,7 @@ export const PROJECT_BY_SLUG = gql`
             }
           }
         }
+        totalCount
         pageInfo {
           hasNextPage
         }

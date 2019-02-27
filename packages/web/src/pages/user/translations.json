@@ -1,0 +1,14 @@
+{
+  "user": {
+    "en": {
+      "title": "{{fullName}}. (@{{username}}) - projects and posts",
+      "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
+      "imgalt": "Profile Photo"
+    },
+    "sv": {
+      "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",
+      "description": "Se {{fullName}}. (@{{username}}) projekt och inlägg på Wrench",
+      "imgalt": "Profilbild"
+    }
+  }
+}

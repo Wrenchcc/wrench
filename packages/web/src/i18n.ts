@@ -36,7 +36,12 @@ if (process && !process.release) {
   i18n
     .use(initReactI18next)
     .use(i18nextMiddleware.LanguageDetector)
-    .init(options)
+    .init({
+      ...options,
+      detection: {
+        lookupQuerystring: 'hl',
+      },
+    })
 }
 
 // initialize if not already initialized

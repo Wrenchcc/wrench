@@ -1,5 +1,15 @@
 {
   "en": {
+    "project": {
+      "title": "{{title}} - {{type}} Project",
+      "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
+      "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench"
+    },
+    "user": {
+      "title": "{{fullName}}. (@{{username}}) - projects and posts",
+      "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
+      "imgalt": "Profile Photo"
+    },
     "CommentField": {
       "placeholder": "Add a comment...",
       "post": "Post"
@@ -9,8 +19,8 @@
       "loadMore_plural": "Show all {{count, humanFormat}} comments"
     },
     "UiFollowers": {
-      "followers": "{{count}} follower",
-      "followers_plural": "{{count}} followers"
+      "followers": "{{count, humanFormat}} follower",
+      "followers_plural": "{{count, humanFormat}} followers"
     },
     "Header": {
       "explore": "Explore",
@@ -21,6 +31,15 @@
     }
   },
   "sv": {
+    "project": {
+      "title": "{{title}} - {{type}} Projekt",
+      "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench"
+    },
+    "user": {
+      "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",
+      "description": "Se {{fullName}}. (@{{username}}) projekt och inlägg på Wrench",
+      "imgalt": "Profilbild"
+    },
     "CommentField": {
       "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
@@ -30,7 +49,7 @@
       "loadMore_plural": "Visa alla {{count, humanFormat}} kommentarer"
     },
     "UiFollowers": {
-      "followers": "{{count}} följare"
+      "followers": "{{count, humanFormat}} följare"
     },
     "Header": {
       "explore": "Utforska",
