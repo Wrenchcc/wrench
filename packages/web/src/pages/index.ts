@@ -5,15 +5,7 @@ import Seo from '../utils/seo'
 import { AUTHENTICATE_USER } from '../graphql/mutations/user/authenticate'
 
 export default function Home() {
-  const handleAuth = fb => useMutation(AUTHENTICATE_USER, {
-    update: (proxy, mutationResult) => {
-      console.log(mutationResult)
-    },
-    variables: {
-      facebookToken: fb.accessToken,
-      platform: 'WEB',
-    },
-  })
+  const handleAuth = useMutation(AUTHENTICATE_USER)
 
   return (
     <Fragment>
@@ -22,7 +14,16 @@ export default function Home() {
         appId="1174076712654826"
         autoLoad
         fields="name,email,picture"
-        callback={handleAuth}
+        callback={({ accessToken }) => handleAuth({
+          update: (proxy, mutationResult) => {
+            console.log(mutationResult)
+          },
+          variables: {
+            facebookToken: accessToken,
+            platform: 'WEB',
+          },
+        })
+        }
         render={({ onClick }) => <button onClick={onClick}>Login with Facebook</button>}
       />
     </Fragment>
