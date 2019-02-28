@@ -4,46 +4,52 @@ import { getMarkupFromTree } from 'react-apollo-hooks'
 import { renderToString } from 'react-dom/server'
 import createClient from '../createClient'
 import { getTokens } from '../utils/auth'
-
-const isBrowser = typeof window !== 'undefined'
+import { isBrowser } from '../../utils/platform'
 
 export default App => class Apollo extends React.Component {
     public static displayName = 'withApollo(App)'
 
-    public static async getInitialProps(ctx) {
-      const { Component, router } = ctx
+    public static async getInitialProps(appCtx) {
+      const { Component, router, ctx } = appCtx
+      const accesToken = getTokens(appCtx.ctx, 'access_token')
+      const apollo = createClient({}, accesToken)
+      const apolloState = {}
+      const { getInitialProps } = App
 
-      let appProps = {}
-      if (App.getInitialProps) {
-        appProps = await App.getInitialProps(ctx)
+      let appProps = { pageProps: {} }
+
+      if (getInitialProps) {
+        ctx.apolloClient = apollo
+        appProps = await getInitialProps(appCtx)
+      }
+
+      if (ctx.res && (ctx.res.headersSent || ctx.res.finished)) {
+        return {}
       }
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
-      const accesToken = getTokens(ctx.ctx, 'access_token')
-      const apollo = createClient({}, accesToken)
-
       if (!isBrowser) {
         try {
           // Run all GraphQL queries
           await getMarkupFromTree({
             renderFunction: renderToString,
-            tree: <App {...appProps} Component={Component} router={router} apolloClient={apollo} />,
+            tree: <App {...appProps} Component={Component} router={router} client={apollo} />,
           })
         } catch (error) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
-          // Handle them in components via the data.error prop:
-          // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-          console.error('Error while running `getDataFromTree`', error)
+          if (process.env.NODE_ENV !== 'production') {
+            // tslint:disable-next-line no-console This is a necessary debugging log
+            console.error('GraphQL error occurred [getDataFromTree]', error)
+          }
         }
 
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
         Head.rewind()
-      }
 
-      // Extract query data from the Apollo store
-      const apolloState = apollo.cache.extract()
+        apolloState.data = apollo.cache.extract()
+      }
 
       return {
         ...appProps,
@@ -52,14 +58,14 @@ export default App => class Apollo extends React.Component {
       }
     }
 
-    private apolloClient
+    public apollo
 
     constructor(props) {
       super(props)
-      this.apolloClient = createClient(props.apolloState, props.accesToken)
+      this.apollo = createClient(props.apolloState.data, props.accesToken)
     }
 
     public render() {
-      return <App {...this.props} apolloClient={this.apolloClient} />
+      return <App {...this.props} client={this.apollo} />
     }
 }

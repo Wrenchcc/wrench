@@ -95,22 +95,18 @@ class MyApp extends App {
     }
   }
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const {
       Component,
       pageProps,
-      apolloClient,
+      client,
       i18nServerInstance,
       initialI18nStore,
       initialLanguage,
     } = this.props
 
     return (
-      <ApolloProvider client={apolloClient}>
+      <ApolloProvider client={client}>
         <I18nextProvider i18n={i18nServerInstance || i18n}>
           <AppWithi18n
             Component={Component}

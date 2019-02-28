@@ -9,11 +9,7 @@ import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
 function Header({ router }) {
   const { t } = useTranslation()
-  // const { data, loading, fetchMore, error } = useQuery(CURRENT_USER)
-  //
-  // if (loading || error) {
-  //   return null
-  // }
+  const { data } = useQuery(CURRENT_USER)
 
   const links = [
     {
@@ -43,7 +39,7 @@ function Header({ router }) {
       </Nav>
 
       <Right>
-        {false ? (
+        {data.user ? (
           <Fragment>
             <Badge />
 

@@ -17,14 +17,14 @@ function create(initialState, tokens) {
   const autLink = AuthLink(tokens)
 
   return new ApolloClient({
-    connectToDevTools: isBrowser,
+    connectToDevTools: true, // isBrowser,
     ssrMode: !isBrowser,
     link: ApolloLink.from([autLink, HttpLink]),
     cache: new InMemoryCache().restore(initialState || {}),
   })
 }
 
-export default function initApollo(initialState, tokens) {
+export default function createClient(initialState, tokens) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!isBrowser) {

@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import { useMutation, useQuery } from 'react-apollo-hooks'
+import { useMutation, useApolloClient } from 'react-apollo-hooks'
 import Seo from '../utils/seo'
 import { setTokens } from '../graphql/utils/auth'
 import { AUTHENTICATE_USER } from '../graphql/mutations/user/authenticate'
-// import { CURRENT_USER } from '../graphql/queries/user/currentUser'
+import { CURRENT_USER } from '../graphql/queries/user/currentUser'
 
 export default function Home() {
   const handleAuth = useMutation(AUTHENTICATE_USER)
-  // const currentUser = useQuery(CURRENT_USER)
+  const client = useApolloClient()
 
   return (
     <Fragment>
@@ -19,6 +19,12 @@ export default function Home() {
         callback={({ accessToken }) => handleAuth({
           update: (proxy, { data }) => {
             setTokens(data.authenticate)
+
+            setTimeout(async () => {
+              await client.query({
+                query: CURRENT_USER,
+              })
+            }, 1000)
           },
           variables: {
             facebookToken: accessToken,
