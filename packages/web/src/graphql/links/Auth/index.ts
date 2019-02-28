@@ -1,9 +1,8 @@
 import { setContext } from 'apollo-link-context'
-// import { getTokens } from 'graphql/utils/auth'
 
-export default setContext(async (_, { headers }) => ({
+export default tokens => setContext((_, { headers }) => ({
   headers: {
     ...headers,
-    // authorization: `Bearer ${await getTokens('access_token')}`,
+    authorization: `Bearer ${tokens.access_token}`,
   },
 }))

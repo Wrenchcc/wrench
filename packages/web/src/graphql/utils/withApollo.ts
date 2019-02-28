@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import React from 'react'
-import * as blah from 'react-apollo-hooks'
+import { getMarkupFromTree } from 'react-apollo-hooks'
 import { renderToString } from 'react-dom/server'
 import createClient from '../createClient'
+import { getTokens } from '../utils/auth'
 
 const isBrowser = typeof window !== 'undefined'
 
@@ -19,11 +20,13 @@ export default App => class Apollo extends React.Component {
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
-      const apollo = createClient()
+      const tokens = getTokens(ctx.ctx)
+      const apollo = createClient({}, tokens)
+
       if (!isBrowser) {
         try {
           // Run all GraphQL queries
-          await blah.getMarkupFromTree({
+          await getMarkupFromTree({
             renderFunction: renderToString,
             tree: <App {...appProps} Component={Component} router={router} apolloClient={apollo} />,
           })
@@ -45,6 +48,7 @@ export default App => class Apollo extends React.Component {
       return {
         ...appProps,
         apolloState,
+        tokens,
       }
     }
 
@@ -52,7 +56,7 @@ export default App => class Apollo extends React.Component {
 
     constructor(props) {
       super(props)
-      this.apolloClient = createClient(props.apolloState)
+      this.apolloClient = createClient(props.apolloState, props.tokens)
     }
 
     public render() {
