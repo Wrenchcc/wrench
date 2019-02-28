@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { Fragment } from 'react'
 import Link from 'next/link'
 import { useQuery } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
@@ -9,11 +9,11 @@ import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
 function Header({ router }) {
   const { t } = useTranslation()
-  const { data, loading, fetchMore } = useQuery(CURRENT_USER)
-
-  if (loading) {
-    return null
-  }
+  // const { data, loading, fetchMore, error } = useQuery(CURRENT_USER)
+  //
+  // if (loading || error) {
+  //   return null
+  // }
 
   const links = [
     {
@@ -43,9 +43,25 @@ function Header({ router }) {
       </Nav>
 
       <Right>
-        <Badge />
+        {false ? (
+          <Fragment>
+            <Badge />
 
-        <Avatar size={40} uri={data.user.avatarUrl} />
+            <Link
+              href={{
+                pathname: '/user',
+                query: { username: data.user.username },
+              }}
+              as={{
+                pathname: `/${data.user.username}`,
+              }}
+            >
+              <a>
+                <Avatar size={40} uri={data.user.avatarUrl} />
+              </a>
+            </Link>
+          </Fragment>
+        ) : null}
       </Right>
     </Base>
   )

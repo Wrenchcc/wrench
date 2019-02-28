@@ -1,12 +1,15 @@
 import React, { Fragment } from 'react'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import { useMutation } from 'react-apollo-hooks'
+import { useMutation, useQuery } from 'react-apollo-hooks'
 import Seo from '../utils/seo'
 import { setTokens } from '../graphql/utils/auth'
 import { AUTHENTICATE_USER } from '../graphql/mutations/user/authenticate'
+// import { CURRENT_USER } from '../graphql/queries/user/currentUser'
 
 export default function Home() {
   const handleAuth = useMutation(AUTHENTICATE_USER)
+  // const currentUser = useQuery(CURRENT_USER)
+
   return (
     <Fragment>
       <Seo config={{ title: 'Feed' }} />
