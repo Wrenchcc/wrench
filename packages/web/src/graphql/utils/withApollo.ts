@@ -20,8 +20,8 @@ export default App => class Apollo extends React.Component {
 
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
-      const tokens = getTokens(ctx.ctx)
-      const apollo = createClient({}, tokens)
+      const accesToken = getTokens(ctx.ctx, 'access_token')
+      const apollo = createClient({}, accesToken)
 
       if (!isBrowser) {
         try {
@@ -48,7 +48,7 @@ export default App => class Apollo extends React.Component {
       return {
         ...appProps,
         apolloState,
-        tokens,
+        accesToken,
       }
     }
 
@@ -56,7 +56,7 @@ export default App => class Apollo extends React.Component {
 
     constructor(props) {
       super(props)
-      this.apolloClient = createClient(props.apolloState, props.tokens)
+      this.apolloClient = createClient(props.apolloState, props.accesToken)
     }
 
     public render() {

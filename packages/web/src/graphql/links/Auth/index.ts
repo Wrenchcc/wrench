@@ -1,8 +1,8 @@
 import { setContext } from 'apollo-link-context'
 
-export default tokens => setContext((_, { headers }) => ({
+export default accesToken => setContext((_, { headers }) => ({
   headers: {
     ...headers,
-    ...(tokens && { authorization: `Bearer ${tokens.access_token}` }),
+    ...(accesToken && { authorization: `Bearer ${accesToken}` }),
   },
 }))
