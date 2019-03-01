@@ -17,7 +17,7 @@ function create(initialState, tokens) {
   const autLink = AuthLink(tokens)
 
   return new ApolloClient({
-    connectToDevTools: true, // isBrowser,
+    connectToDevTools: isBrowser,
     ssrMode: !isBrowser,
     link: ApolloLink.from([autLink, HttpLink]),
     cache: new InMemoryCache().restore(initialState || {}),

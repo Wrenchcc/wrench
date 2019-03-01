@@ -21,10 +21,10 @@ export default function Home() {
             setTokens(data.authenticate)
 
             setTimeout(async () => {
-              await client.query({
+              const user = await client.query({
                 query: CURRENT_USER,
               })
-            }, 1000)
+            }, 100)
           },
           variables: {
             facebookToken: accessToken,
