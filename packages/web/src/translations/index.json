@@ -1,5 +1,13 @@
 {
   "en": {
+    "Header": {
+      "explore": "Explore",
+      "feed": "Feed"
+    },
+    "feed": {
+      "title": "Feed",
+      "description": ""
+    },
     "project": {
       "title": "{{title}} - {{type}} Project",
       "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
@@ -22,15 +30,19 @@
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
     },
-    "Header": {
-      "explore": "Explore",
-      "feed": "Feed"
-    },
     "Search": {
       "placeholder": "Search"
     }
   },
   "sv": {
+    "Header": {
+      "explore": "Utforska",
+      "feed": "Feed"
+    },
+    "feed": {
+      "title": "Feed",
+      "description": ""
+    },
     "project": {
       "title": "{{title}} - {{type}} Projekt",
       "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench"
@@ -50,10 +62,6 @@
     },
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"
-    },
-    "Header": {
-      "explore": "Utforska",
-      "feed": "Feed"
     },
     "Search": {
       "placeholder": "Sök"

@@ -5,8 +5,9 @@ import UiComments from '../Comments'
 
 export const Base = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 70px;
+  max-width: 640px;
 `
 
 export const Content = styled.div`
