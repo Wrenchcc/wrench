@@ -7,7 +7,6 @@ import { Base, Content, Title, Text, Comments } from './styles'
 function Post({ data, withoutTitle, withoutAvatar }) {
   return (
     <Base>
-      <Carousel files={data.files} />
       <Content>
         {!withoutAvatar && (
           <Link
@@ -40,6 +39,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
           </Link>
         )}
         <Text color={withoutTitle ? 'black' : 'grey'}>{data.caption}</Text>
+        <Carousel files={data.files} />
         <Comments data={data.comments.edges} />
       </Content>
     </Base>

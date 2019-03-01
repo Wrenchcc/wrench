@@ -6,6 +6,5 @@ export default gql`
     fullName
     username
     avatarUrl
-    isOnline
   }
 `

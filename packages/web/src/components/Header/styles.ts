@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import UiSearch from '../Search'
-import UiAvatar from '../Avatar'
+import UiSearch from '../../ui/Search'
+import UiAvatar from '../../ui/Avatar'
 
 export const Base = styled.div`
   display: flex;

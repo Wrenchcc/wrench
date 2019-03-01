@@ -23,7 +23,12 @@ export default gql`
       last: Int = 10
       before: String
     ): ProjectsConnection
-    followingProjects(first: Int = 10, after: String, last: Int = 10, before: String): ProjectsConnection
+    followingProjects(
+      first: Int = 10
+      after: String
+      last: Int = 10
+      before: String
+    ): ProjectsConnection
     postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
   }
 
