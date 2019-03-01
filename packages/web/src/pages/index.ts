@@ -1,39 +1,69 @@
 import React, { Fragment } from 'react'
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import { useMutation, useApolloClient } from 'react-apollo-hooks'
+import InfiniteScroll from 'react-infinite-scroller'
+import { useQuery } from 'react-apollo-hooks'
 import Seo from '../utils/seo'
-import { setTokens } from '../graphql/utils/auth'
-import { AUTHENTICATE_USER } from '../graphql/mutations/user/authenticate'
-import { CURRENT_USER } from '../graphql/queries/user/currentUser'
+import { Post, Layout } from '../ui'
+import { GET_FEED } from '../graphql/queries/feed/feed'
 
 export default function Home() {
-  const handleAuth = useMutation(AUTHENTICATE_USER)
-  const client = useApolloClient()
+  const { data, loading, fetchMore, error } = useQuery(GET_FEED)
+
+  if (loading || error) {
+    return null
+  }
 
   return (
-    <Fragment>
-      <Seo config={{ title: 'Feed' }} />
-      <FacebookLogin
-        appId="1174076712654826"
-        fields="name,email,picture"
-        callback={({ accessToken }) => handleAuth({
-          update: (proxy, { data }) => {
-            setTokens(data.authenticate)
+    <Layout>
+      <Seo
+        config={
+          {
+            // title: t('feed:title', { title: data.feed.title, type: data.feed.type.title }),
+            // description: t('feed:description', {
+            //   followers: data.feed.followers.totalCount,
+            //   posts: data.feed.posts.totalCount,
+            //   fullName: data.feed.user.fullName,
+            //   username: data.feed.user.username,
+            // }),
+          }
+        }
+      />
 
-            setTimeout(async () => {
-              const user = await client.query({
-                query: CURRENT_USER,
-              })
-            }, 100)
-          },
+      <InfiniteScroll
+        loadMore={() => fetchMore({
           variables: {
-            facebookToken: accessToken,
-            platform: 'WEB',
+            after: data.feed.posts.edges[data.feed.posts.edges.length - 1].cursor,
+          },
+          updateQuery: (prev, { fetchMoreResult }) => {
+            if (!fetchMoreResult) return prev
+
+            return {
+              ...prev,
+              feed: {
+                ...prev.feed,
+                posts: {
+                  ...prev.feed.posts,
+                  pageInfo: {
+                    ...prev.feed.posts.pageInfo,
+                    ...fetchMoreResult.feed.posts.pageInfo,
+                  },
+                  edges: [...prev.feed.posts.edges, ...fetchMoreResult.feed.posts.edges],
+                },
+              },
+            }
           },
         })
         }
-        render={({ onClick }) => <button onClick={onClick}>Login with Facebook</button>}
-      />
-    </Fragment>
+        hasMore={data.feed.posts.pageInfo.hasNextPage}
+        loader={
+          <div className="loader" key={0}>
+            Loading ...
+          </div>
+        }
+      >
+        {data.feed.posts.edges.map(({ node }) => (
+          <Post data={node} key={node.id} withoutTitle />
+        ))}
+      </InfiniteScroll>
+    </Layout>
   )
 }

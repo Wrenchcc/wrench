@@ -1,15 +1,20 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery, useMutation, useApolloClient } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import Badge from '../Badge'
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import Badge from '../../ui/Badge'
 import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
+import { setTokens } from '../../graphql/utils/auth'
+import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
 import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
 function Header({ router }) {
   const { t } = useTranslation()
   const { data } = useQuery(CURRENT_USER)
+  const handleAuth = useMutation(AUTHENTICATE_USER)
+  // const client = useApolloClient()
 
   const links = [
     {
@@ -57,7 +62,29 @@ function Header({ router }) {
               </a>
             </Link>
           </Fragment>
-        ) : null}
+        ) : (
+          <FacebookLogin
+            appId="1174076712654826"
+            fields="name,email,picture"
+            callback={({ accessToken }) => handleAuth({
+              update: (proxy, { data }) => {
+                setTokens(data.authenticate)
+
+                // setTimeout(async () => {
+                //   await client.query({
+                //     query: CURRENT_USER,
+                //   })
+                // }, 1000)
+              },
+              variables: {
+                facebookToken: accessToken,
+                platform: 'WEB',
+              },
+            })
+            }
+            render={({ onClick }) => <button onClick={onClick}>Login with Facebook</button>}
+          />
+        )}
       </Right>
     </Base>
   )

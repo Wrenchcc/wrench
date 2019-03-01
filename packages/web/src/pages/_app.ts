@@ -9,7 +9,7 @@ import reset from 'styled-reset'
 import Seo from '../utils/seo'
 import withApollo from '../graphql/utils/withApollo'
 import i18n from '../i18n'
-import { Header } from '../ui'
+import Header from '../components/Header'
 
 NProgress.configure({ showSpinner: false })
 Router.onRouteChangeStart = () => NProgress.start()
