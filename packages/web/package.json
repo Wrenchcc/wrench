@@ -28,6 +28,7 @@
     "next-cookies": "^1.1.2",
     "next-routes": "^1.4.2",
     "nprogress": "^0.2.0",
+    "pure-react-carousel": "^1.18.0",
     "ramda": "^0.26.1",
     "react": "^16.8.3",
     "react-apollo-hooks": "^0.4.3",

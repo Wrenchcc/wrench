@@ -10,6 +10,9 @@ export const Base = styled.div`
   box-shadow: 0 1px 1px 0 #e6e7e9;
   padding: 0 20px;
   background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 `
 
 export const Nav = styled.nav`
