@@ -1,9 +1,12 @@
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from 'react-apollo-hooks'
+import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
 import { Title, Avatar, Layout, Post } from '../../ui'
+import UserProjects from '../../components/UserProjects'
+import { Left, Right } from './styles'
 
 function User({ username }) {
   const { t } = useTranslation()
@@ -21,7 +24,7 @@ function User({ username }) {
   }
 
   return (
-    <Layout column>
+    <Layout>
       <Seo
         config={{
           title: t('user:title', params),
@@ -45,45 +48,54 @@ function User({ username }) {
           },
         }}
       />
-      <Avatar uri={data.user.avatarUrl} size={80} />
-      <Title medium>{data.user.fullName}</Title>
 
-      <InfiniteScroll
-        loadMore={() => fetchMore({
-          variables: {
-            after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor,
-          },
-          updateQuery: (prev, { fetchMoreResult }) => {
-            if (!fetchMoreResult) return prev
+      {/* <Avatar uri={data.user.avatarUrl} size={80} />
+      <Title medium>{data.user.fullName}</Title> */}
 
-            return {
-              ...prev,
-              user: {
-                ...prev.user,
-                posts: {
-                  ...prev.user.posts,
-                  pageInfo: {
-                    ...prev.user.posts.pageInfo,
-                    ...fetchMoreResult.user.posts.pageInfo,
+      <Left>
+        <InfiniteScroll
+          loadMore={() => fetchMore({
+            variables: {
+              after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor,
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+              if (!fetchMoreResult) return prev
+
+              return {
+                ...prev,
+                user: {
+                  ...prev.user,
+                  posts: {
+                    ...prev.user.posts,
+                    pageInfo: {
+                      ...prev.user.posts.pageInfo,
+                      ...fetchMoreResult.user.posts.pageInfo,
+                    },
+                    edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
                   },
-                  edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
                 },
-              },
-            }
-          },
-        })
-        }
-        hasMore={data.user.posts.pageInfo.hasNextPage}
-        loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
-        }
-      >
-        {data.user.posts.edges.map(({ node }) => (
-          <Post data={node} key={node.id} withoutAvatar />
-        ))}
-      </InfiniteScroll>
+              }
+            },
+          })
+          }
+          hasMore={data.user.posts.pageInfo.hasNextPage}
+          loader={
+            <div className="loader" key={0}>
+              Loading ...
+            </div>
+          }
+        >
+          {data.user.posts.edges.map(({ node }) => (
+            <Post data={node} key={node.id} withoutAvatar />
+          ))}
+        </InfiniteScroll>
+      </Left>
+
+      {data.user.projects && (
+        <Right>
+          <UserProjects projects={data.user.projects} fullName={data.user.firstName} />
+        </Right>
+      )}
     </Layout>
   )
 }

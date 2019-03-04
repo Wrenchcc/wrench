@@ -10,6 +10,26 @@ export const USER_BY_USERNAME = gql`
       lastName
       avatarUrl
       isOnline
+      projects: projectsConnection {
+        edges {
+          node {
+            id
+            title
+            slug
+            files: filesConnection(first: 1, type: IMAGE) {
+              edges {
+                node {
+                  id
+                  uri
+                }
+              }
+            }
+            followers: followersConnection {
+              totalCount
+            }
+          }
+        }
+      }
       posts: postsConnection(after: $after) {
         edges {
           cursor

@@ -2,8 +2,8 @@ import React from 'react'
 // import Touchable from 'ui/Touchable'
 import { Base } from './styles'
 
-const Title = ({ children, style = {}, large, medium, ...props }) => (
-  <Base medium={medium} large={large} style={style} {...props}>
+const Title = ({ children, style = {}, large, medium, lineHeight, ...props }) => (
+  <Base medium={medium} large={large} style={style} lineHeight={lineHeight} {...props}>
     {children}
   </Base>
 )

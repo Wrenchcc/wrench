@@ -8,8 +8,8 @@ import { Base, Top, Title, Comments, Bottom } from './styles'
 function Post({ data, withoutTitle, withoutAvatar }) {
   return (
     <Base>
-      <Top>
-        {!withoutAvatar && (
+      {!withoutAvatar && (
+        <Top>
           <Link
             href={{
               pathname: '/user',
@@ -23,8 +23,8 @@ function Post({ data, withoutTitle, withoutAvatar }) {
               <Avatar uri={data.user.avatarUrl} size={40} />
             </a>
           </Link>
-        )}
-      </Top>
+        </Top>
+      )}
 
       {!withoutTitle && (
         <Link

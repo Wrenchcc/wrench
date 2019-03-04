@@ -9,6 +9,7 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   margin-left: 420px;
+  width: 100%;
 `
 
 export const Follow = styled(UiButton)`
