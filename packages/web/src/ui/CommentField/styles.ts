@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { COLORS } from '../constants'
 
 export const Input = styled.input`
-  width: 70%;
   border: 0;
+  width: 100%;
   outline: none;
   font-size: 17px;
   color: ${COLORS.BLACK};

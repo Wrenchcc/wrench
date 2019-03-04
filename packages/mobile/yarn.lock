@@ -5307,10 +5307,10 @@ react-native-firebase@^5.2.3:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
 
-react-native-gesture-handler@^1.0.17:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.17.tgz#a046f371f277092157fc2781323d35a02a93daaf"
-  integrity sha512-0czy7SZvF4q2aCQUGFaBu/yBjYYEbcqSU1/r2bZ/IoXj+DgYuIPBL60SSXhJdYJU8G3brfUHmtgSdcNte8Lh0w==
+react-native-gesture-handler@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.1.0.tgz#2a7d545ad2e0ca23adce22b2af441ad360ecccee"
+  integrity sha512-E9IKHpmL+sz/iCYkUriTUjBaQBORWV+oheYPQleADkxjo2sYsQfnlyTz4EQYFONkUwJ6WmfTNkYt2/yc5U4Ziw==
   dependencies:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
@@ -5517,10 +5517,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^8.0.10:
-  version "8.0.10"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.10.tgz#65f0c50e6ec6b2a6466cc267dd1597ddbe18e37b"
-  integrity sha512-ZPiXFNEg2r8hQ+LEbXjvyN/cPIk5hcjk1+BehBGjTZoF5VNTc8igtCtSxSzHpSo+dZr2lYm8HEY+w+Jf+5mGCw==
+react-spring@^8.0.11:
+  version "8.0.11"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.11.tgz#73b11e04bb61b3c297d2a92364fb32d6c9c34c32"
+  integrity sha512-CCW4Nj6pWJyZrBp/PWF1PopI9x0lj+6imx4sWzzPLXYoLuhUQbbYQgcNRh6KvshwiGJJABlVREUIB/Tm8/36/g==
   dependencies:
     "@babel/runtime" "^7.3.1"
 

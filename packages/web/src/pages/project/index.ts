@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
 import { Post, Title, Followers, Layout } from '../../ui'
-import splitString from '../../utils/splitString'
+import { Left, Right } from './styles'
 
 function Project({ slug }) {
   const { t } = useTranslation()
@@ -15,8 +15,6 @@ function Project({ slug }) {
   if (loading) {
     return null
   }
-
-  const [first, second] = splitString(data.project.title)
 
   return (
     <Layout>
@@ -32,50 +30,52 @@ function Project({ slug }) {
         }}
       />
 
-      <Title large lineHeight={85}>
-        {first}
-        <br />
-        {second}
-      </Title>
+      <Left>
+        <Title large lineHeight={78}>
+          {data.project.title}
+        </Title>
 
-      <Followers count={data.project.followers.totalCount} />
+        <Followers count={data.project.followers.totalCount} />
+      </Left>
 
-      <InfiniteScroll
-        loadMore={() => fetchMore({
-          variables: {
-            after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor,
-          },
-          updateQuery: (prev, { fetchMoreResult }) => {
-            if (!fetchMoreResult) return prev
+      <Right>
+        <InfiniteScroll
+          loadMore={() => fetchMore({
+            variables: {
+              after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor,
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+              if (!fetchMoreResult) return prev
 
-            return {
-              ...prev,
-              project: {
-                ...prev.project,
-                posts: {
-                  ...prev.project.posts,
-                  pageInfo: {
-                    ...prev.project.posts.pageInfo,
-                    ...fetchMoreResult.project.posts.pageInfo,
+              return {
+                ...prev,
+                project: {
+                  ...prev.project,
+                  posts: {
+                    ...prev.project.posts,
+                    pageInfo: {
+                      ...prev.project.posts.pageInfo,
+                      ...fetchMoreResult.project.posts.pageInfo,
+                    },
+                    edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
                   },
-                  edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
                 },
-              },
-            }
-          },
-        })
-        }
-        hasMore={data.project.posts.pageInfo.hasNextPage}
-        loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
-        }
-      >
-        {data.project.posts.edges.map(({ node }) => (
-          <Post data={node} key={node.id} withoutTitle />
-        ))}
-      </InfiniteScroll>
+              }
+            },
+          })
+          }
+          hasMore={data.project.posts.pageInfo.hasNextPage}
+          loader={
+            <div className="loader" key={0}>
+              Loading ...
+            </div>
+          }
+        >
+          {data.project.posts.edges.map(({ node }) => (
+            <Post data={node} key={node.id} withoutTitle />
+          ))}
+        </InfiniteScroll>
+      </Right>
     </Layout>
   )
 }

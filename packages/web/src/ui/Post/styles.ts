@@ -1,29 +1,25 @@
 import styled from 'styled-components'
 import UiTitle from '../Title'
-import UiText from '../Text'
 import UiComments from '../Comments'
 
 export const Base = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 70px;
+  margin-bottom: 45px;
   max-width: 640px;
 `
+export const Top = styled.div`
+  margin-bottom: 20px;
+`
 
-export const Content = styled.div`
+export const Bottom = styled.div`
   margin-top: 20px;
-  margin-left: 60px;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
 `
 
 export const Title = styled(UiTitle)`
-  margin-top: 20px;
+  margin-bottom: 10px;
 `
 
-export const Text = styled(UiText)`
+export const Comments = styled(UiComments)`
   margin-top: 10px;
 `
-
-export const Comments = styled(UiComments)``
