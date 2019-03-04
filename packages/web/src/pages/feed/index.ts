@@ -5,6 +5,7 @@ import { useQuery } from 'react-apollo-hooks'
 import Seo from '../../utils/seo'
 import { Post, Layout } from '../../ui'
 import { GET_FEED } from '../../graphql/queries/feed/feed'
+import { Left, Right } from './styles'
 
 export default function Home() {
   const { t } = useTranslation()
@@ -23,42 +24,45 @@ export default function Home() {
         }}
       />
 
-      <InfiniteScroll
-        loadMore={() => fetchMore({
-          variables: {
-            after: data.feed.posts.edges[data.feed.posts.edges.length - 1].cursor,
-          },
-          updateQuery: (prev, { fetchMoreResult }) => {
-            if (!fetchMoreResult) return prev
+      <Left>
+        <InfiniteScroll
+          loadMore={() => fetchMore({
+            variables: {
+              after: data.feed.posts.edges[data.feed.posts.edges.length - 1].cursor,
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+              if (!fetchMoreResult) return prev
 
-            return {
-              ...prev,
-              feed: {
-                ...prev.feed,
-                posts: {
-                  ...prev.feed.posts,
-                  pageInfo: {
-                    ...prev.feed.posts.pageInfo,
-                    ...fetchMoreResult.feed.posts.pageInfo,
+              return {
+                ...prev,
+                feed: {
+                  ...prev.feed,
+                  posts: {
+                    ...prev.feed.posts,
+                    pageInfo: {
+                      ...prev.feed.posts.pageInfo,
+                      ...fetchMoreResult.feed.posts.pageInfo,
+                    },
+                    edges: [...prev.feed.posts.edges, ...fetchMoreResult.feed.posts.edges],
                   },
-                  edges: [...prev.feed.posts.edges, ...fetchMoreResult.feed.posts.edges],
                 },
-              },
-            }
-          },
-        })
-        }
-        hasMore={data.feed.posts.pageInfo.hasNextPage}
-        loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
-        }
-      >
-        {data.feed.posts.edges.map(({ node }) => (
-          <Post data={node} key={node.id} withoutTitle />
-        ))}
-      </InfiniteScroll>
+              }
+            },
+          })
+          }
+          hasMore={data.feed.posts.pageInfo.hasNextPage}
+          loader={
+            <div className="loader" key={0}>
+              Loading ...
+            </div>
+          }
+        >
+          {data.feed.posts.edges.map(({ node }) => (
+            <Post data={node} key={node.id} withoutTitle />
+          ))}
+        </InfiniteScroll>
+      </Left>
+      <Right>hejk</Right>
     </Layout>
   )
 }

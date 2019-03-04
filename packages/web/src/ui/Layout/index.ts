@@ -1,16 +1,6 @@
 import React from 'react'
+import { Base } from './styles'
 
-export default function Layout({ children }) {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        paddingTop: '100px',
-        maxWidth: '1000px',
-        margin: '0 auto',
-      }}
-    >
-      {children}
-    </div>
-  )
+export default function Layout({ children, column }) {
+  return <Base column={column}>{children}</Base>
 }

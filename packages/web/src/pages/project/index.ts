@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
 import { Post, Title, Followers, Layout } from '../../ui'
-import { Left, Right } from './styles'
+import { Left, Right, Follow, Share } from './styles'
 
 function Project({ slug }) {
   const { t } = useTranslation()
@@ -36,6 +36,8 @@ function Project({ slug }) {
         </Title>
 
         <Followers count={data.project.followers.totalCount} />
+        <Follow>Follow this project</Follow>
+        <Share>Share</Share>
       </Left>
 
       <Right>

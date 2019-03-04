@@ -3,24 +3,26 @@ import { useQuery } from 'react-apollo-hooks'
 import Seo from '../../utils/seo'
 import { GET_RECENT_POSTS } from '../../graphql/queries/post/recentPosts'
 import { Post, Layout } from '../../ui'
+import { Title } from './styles'
 
 export default function Explore() {
-  const { data, loading, fetchMore } = useQuery(GET_RECENT_POSTS, {
-    variables: { after: null },
-  })
+  const { data, loading, fetchMore } = useQuery(GET_RECENT_POSTS)
 
   if (loading) {
     return null
   }
 
   return (
-    <Layout>
+    <Layout column>
       <Seo
         config={{
           title: 'Explore',
         }}
       />
 
+      <Title medium>Popular projects</Title>
+
+      <Title medium>Recent posts & Articles</Title>
       <InfiniteScroll
         loadMore={() => fetchMore({
           variables: {

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import UiButton from '../../ui/Button'
 
 export const Left = styled.div`
   margin-right: 60px;
@@ -8,4 +9,14 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   margin-left: 420px;
+`
+
+export const Follow = styled(UiButton)`
+  margin-top: 50px;
+  margin-bottom: 10px;
+  width: 220px;
+`
+
+export const Share = styled(UiButton)`
+  width: 220px;
 `

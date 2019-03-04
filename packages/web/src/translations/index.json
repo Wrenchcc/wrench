@@ -11,7 +11,9 @@
     "project": {
       "title": "{{title}} - {{type}} Project",
       "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
-      "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench"
+      "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
+      "follow": "Follow this project",
+      "share": "Share"
     },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projects and posts",
@@ -45,7 +47,9 @@
     },
     "project": {
       "title": "{{title}} - {{type}} Projekt",
-      "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench"
+      "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench",
+      "follow": "Följ projektet",
+      "share": "Dela"
     },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",

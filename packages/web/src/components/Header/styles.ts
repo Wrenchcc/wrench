@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import UiSearch from '../../ui/Search'
 import UiAvatar from '../../ui/Avatar'
+import { FONTS } from '../../ui/constants'
 
 export const Base = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ export const Nav = styled.nav`
 export const NavLink = styled.a`
   font-size: 17px;
   color: ${props => (props.active ? '#000000' : '#6d6f76')};
+  font-weight: ${props => (props.active ? FONTS.MEDIUM : FONTS.REGULAR)};
   margin-right: 40px;
 `
 

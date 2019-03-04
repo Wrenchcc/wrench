@@ -21,7 +21,7 @@ function User({ username }) {
   }
 
   return (
-    <Layout>
+    <Layout column>
       <Seo
         config={{
           title: t('user:title', params),
