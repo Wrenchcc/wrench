@@ -23,7 +23,7 @@ export default function Explore() {
 
       <Popular projects={data.projects} />
 
-      <Title medium>Recent posts & Articles</Title>
+      <Title medium>Recent posts</Title>
       <InfiniteScroll
         loadMore={() => fetchMore({
           variables: {
@@ -46,16 +46,14 @@ export default function Explore() {
           },
         })
         }
-        hasMore={data.posts.pageInfo.hasNextPage}
+        hasMore={data.posts && data.posts.pageInfo.hasNextPage}
         loader={
           <div className="loader" key={0}>
             Loading ...
           </div>
         }
       >
-        {data.posts.edges.map(({ node }) => (
-          <Post data={node} key={node.id} />
-        ))}
+        {data.posts && data.posts.edges.map(({ node }) => <Post data={node} key={node.id} />)}
       </InfiniteScroll>
     </Layout>
   )

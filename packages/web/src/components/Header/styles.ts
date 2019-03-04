@@ -9,10 +9,7 @@ export const Base = styled.div`
   align-items: center;
   box-shadow: 0 1px 1px 0 #e6e7e9;
   padding: 0 20px;
-  position: sticky;
-  top: 0;
   background: white;
-  z-index: 100;
 `
 
 export const Nav = styled.nav`

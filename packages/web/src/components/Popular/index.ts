@@ -9,14 +9,16 @@ function Popular({ projects }) {
       <Title medium>Popular projects</Title>
 
       <List>
-        {projects.edges.map(({ node }) => (
-          <Card
-            key={node.id}
-            image={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
-            title={node.title}
-            slug={node.slug}
-          />
-        ))}
+        {projects
+          && projects.edges.map(({ node }) => (
+            <Card
+              key={node.id}
+              image={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
+              title={node.title}
+              slug={node.slug}
+              user={node.user}
+            />
+          ))}
       </List>
     </Base>
   )

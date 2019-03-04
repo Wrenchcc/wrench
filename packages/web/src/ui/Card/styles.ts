@@ -2,17 +2,19 @@ import styled from 'styled-components'
 import UiImage from '../Image'
 import UiText from '../Text'
 
-const SIZE = 180
+const SIZE = 235
 
 export const Base = styled.div`
   width: ${SIZE}px;
+  margin-right: 40px;
+  margin-bottom: 70px;
 `
 
 export const ProjectName = styled(UiText)`
-  margin-top: 10;
+  margin-top: 10px;
 `
 
 export const Picture = styled(UiImage)`
-  height: ${SIZE};
-  width: ${SIZE};
+  height: ${SIZE}px;
+  width: ${SIZE}px;
 `

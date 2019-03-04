@@ -1,8 +1,9 @@
 import React, { memo } from 'react'
 import Link from 'next/link'
+import Text from '../Text'
 import { Base, Picture, ProjectName } from './styles'
 
-const Card = memo(function Card({ image, title, slug }) {
+const Card = memo(function Card({ image, title, slug, user }) {
   return (
     <Base>
       <Link
@@ -16,7 +17,22 @@ const Card = memo(function Card({ image, title, slug }) {
       >
         <a>
           <Picture source={image} />
-          <ProjectName numberOfLines={1}>{title}</ProjectName>
+          <ProjectName medium>{title}</ProjectName>
+        </a>
+      </Link>
+      <Link
+        href={{
+          pathname: '/user',
+          query: { username: user.username },
+        }}
+        as={{
+          pathname: `/${user.username}`,
+        }}
+      >
+        <a>
+          <Text fontSize={15} color="grey">
+            {user.fullName}
+          </Text>
         </a>
       </Link>
     </Base>

@@ -8,7 +8,7 @@ export const Base = styled(ParsedText)`
   text-align: ${props => (props.center ? 'center' : 'left')};
   color: ${props => (props.color ? COLORS[toUpper(props.color)] : COLORS.DARK)};
   line-height: ${props => props.lineHeight || 25}px;
-  font-size: ${props => props.fontSize || 17}px;
+  font-size: ${props => props.fontSize || 16}px;
   text-decoration-line: ${props => (props.underline ? 'underline' : 'none')};
   opacity: ${props => props.opacity || 1};
 `

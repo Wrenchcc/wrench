@@ -12,7 +12,7 @@ import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
 function Header({ router }) {
   const { t } = useTranslation()
-  const { data } = useQuery(CURRENT_USER)
+  // const { data } = useQuery(CURRENT_USER)
   const handleAuth = useMutation(AUTHENTICATE_USER)
   // const client = useApolloClient()
 
@@ -44,7 +44,7 @@ function Header({ router }) {
       </Nav>
 
       <Right>
-        {data.user ? (
+        {false ? (
           <Fragment>
             <Badge />
 
