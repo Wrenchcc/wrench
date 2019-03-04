@@ -1,8 +1,28 @@
 import gql from 'graphql-tag'
 import userInfoSmall from '../../fragments/user/userInfoSmall'
+import projectInfoSmall from '../../fragments/project/projectInfoSmall'
 
-export const GET_RECENT_POSTS = gql`
-  query getRecentPosts($after: String) {
+export const GET_EXPLORE = gql`
+  query getExplore($after: String) {
+    projects(type: POPULAR, after: $after, first: 8) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        node {
+          ...projectInfoSmall
+          files: filesConnection(first: 1, type: IMAGE) {
+            edges {
+              node {
+                id
+                uri
+              }
+            }
+          }
+        }
+      }
+    }
+
     posts(after: $after) {
       edges {
         cursor
@@ -50,4 +70,5 @@ export const GET_RECENT_POSTS = gql`
     }
   }
   ${userInfoSmall}
+  ${projectInfoSmall}
 `

@@ -1,12 +1,13 @@
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from 'react-apollo-hooks'
 import Seo from '../../utils/seo'
-import { GET_RECENT_POSTS } from '../../graphql/queries/post/recentPosts'
+import { GET_EXPLORE } from '../../graphql/queries/explore/explore'
 import { Post, Layout } from '../../ui'
+import Popular from '../../components/Popular'
 import { Title } from './styles'
 
 export default function Explore() {
-  const { data, loading, fetchMore } = useQuery(GET_RECENT_POSTS)
+  const { data, loading, fetchMore } = useQuery(GET_EXPLORE)
 
   if (loading) {
     return null
@@ -20,7 +21,7 @@ export default function Explore() {
         }}
       />
 
-      <Title medium>Popular projects</Title>
+      <Popular projects={data.projects} />
 
       <Title medium>Recent posts & Articles</Title>
       <InfiniteScroll
