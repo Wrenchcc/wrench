@@ -1,4 +1,5 @@
 import * as express from 'express'
+import * as cors from 'cors'
 import { ApolloServer } from 'apollo-server-express'
 import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
@@ -51,6 +52,8 @@ async function server() {
   })
 
   const app = express()
+
+  app.use(cors())
 
   server.applyMiddleware({ app })
 
