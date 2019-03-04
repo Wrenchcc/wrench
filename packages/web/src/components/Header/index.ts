@@ -10,15 +10,38 @@ import { setTokens } from '../../graphql/utils/auth'
 import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
 import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
+// <FacebookLogin
+//   appId="1174076712654826"
+//   fields="name,email,picture"
+//   callback={({ accessToken }) => handleAuth({
+//     update: (proxy, { data }) => {
+//       setTokens(data.authenticate)
+//
+//       // setTimeout(async () => {
+//       //   await client.query({
+//       //     query: CURRENT_USER,
+//       //   })
+//       // }, 1000)
+//     },
+//     variables: {
+//       facebookToken: accessToken,
+//       platform: 'WEB',
+//     },
+//   })
+//   }
+//   render={({ onClick }) => <button onClick={onClick}>Login with Facebook</button>}
+// />
+
 function Header({ router }) {
   const { t } = useTranslation()
-  // const { data } = useQuery(CURRENT_USER)
+  const { data } = useQuery(CURRENT_USER)
   const handleAuth = useMutation(AUTHENTICATE_USER)
   // const client = useApolloClient()
 
   const links = [
     {
       href: '/',
+      requireAuth: true,
       title: t('Header:feed'),
     },
     {
@@ -36,15 +59,18 @@ function Header({ router }) {
       <Search />
 
       <Nav>
-        {links.map(({ title, href }) => (
-          <Link passHref href={href} key={href}>
-            <NavLink active={router.pathname === href}>{title}</NavLink>
-          </Link>
-        ))}
+        {links.map(({ title, href, requireAuth }) => {
+          if (!data.user && requireAuth) return null
+          return (
+            <Link passHref href={href} key={href}>
+              <NavLink active={router.pathname === href}>{title}</NavLink>
+            </Link>
+          )
+        })}
       </Nav>
 
       <Right>
-        {false ? (
+        {data.user ? (
           <Fragment>
             <Badge />
 
@@ -63,27 +89,17 @@ function Header({ router }) {
             </Link>
           </Fragment>
         ) : (
-          <FacebookLogin
-            appId="1174076712654826"
-            fields="name,email,picture"
-            callback={({ accessToken }) => handleAuth({
-              update: (proxy, { data }) => {
-                setTokens(data.authenticate)
-
-                // setTimeout(async () => {
-                //   await client.query({
-                //     query: CURRENT_USER,
-                //   })
-                // }, 1000)
-              },
-              variables: {
-                facebookToken: accessToken,
-                platform: 'WEB',
-              },
-            })
-            }
-            render={({ onClick }) => <button onClick={onClick}>Login with Facebook</button>}
-          />
+          <Fragment>
+            <Link passHref href="/download">
+              <NavLink>Download app</NavLink>
+            </Link>
+            <Link>
+              <NavLink>Log in</NavLink>
+            </Link>
+            <Link>
+              <NavLink>Sign up</NavLink>
+            </Link>
+          </Fragment>
         )}
       </Right>
     </Base>

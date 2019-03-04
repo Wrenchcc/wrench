@@ -7,4 +7,7 @@ export const { Link } = routes
 
 routes.add('project/index', '/project/:slug')
 routes.add('explore/index', '/explore')
+routes.add('download', '/download')
+
+// Need to be last for matching
 routes.add('user/index', '/:username')

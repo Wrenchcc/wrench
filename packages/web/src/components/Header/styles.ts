@@ -15,15 +15,13 @@ export const Base = styled.div`
   z-index: 100;
 `
 
-export const Nav = styled.nav`
-  padding-left: 35px;
-`
+export const Nav = styled.nav``
 
 export const NavLink = styled.a`
   font-size: 17px;
   color: ${props => (props.active ? '#000000' : '#6d6f76')};
   font-weight: ${props => (props.active ? FONTS.MEDIUM : FONTS.REGULAR)};
-  margin-right: 40px;
+  margin-left: 40px;
 `
 
 export const Search = styled(UiSearch)`
