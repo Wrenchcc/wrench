@@ -1263,10 +1263,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/netinfo@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-1.2.2.tgz#16a592cc746d4c9d3502b00f0b39e321e27888c9"
-  integrity sha512-ARLquPxqspSo3lN4aI7aRLXTSh7HV8IiKOist7cRVY4eFNQnvjIyKLTgWlP0/CMIlCZqKV57zqY76cRicjB+eg==
+"@react-native-community/netinfo@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-1.2.3.tgz#200a9b087cec90b37d3ec10d17bb9edbde4bf6ac"
+  integrity sha512-N6kiTCkVkTEdsOwO3Bs42tBL6qVUnXveVQOVCF2qEudLNXJac8Xr8rt5a8eQKKDVMvjo6Ge71jkT/aljVQEUlg==
 
 "@react-navigation/core@3.1.1":
   version "3.1.1"
@@ -5229,10 +5229,10 @@ react-dom@^16.8.3:
     prop-types "^15.6.2"
     scheduler "^0.13.3"
 
-react-i18next@^10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.2.0.tgz#68674945711d4ccfaca52af9e20fe648f84ffad5"
-  integrity sha512-b+AryBB2QiLCEmk8PaNGMkowEZVSY032crKuQToa+W1lBgrNiWVKstmi0z4bZqqcK9GL4cJr8Mevw4XpPFvpeQ==
+react-i18next@^10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.2.1.tgz#004fc82642dad2b49144ed9fa967076c6682bf85"
+  integrity sha512-5upJtZ0WvCWI/C9+NTITuzlAGdte1rSCexT3rHpisLcdEk+RZ/zvjSLzgqbB/6AGLU2SNHomErMVpibcY8U6Zg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"

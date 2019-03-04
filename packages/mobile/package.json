@@ -17,7 +17,7 @@
     "wtf": "tasks/wtf"
   },
   "dependencies": {
-    "@react-native-community/netinfo": "^1.2.2",
+    "@react-native-community/netinfo": "^1.2.3",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link": "^1.2.8",
@@ -35,7 +35,7 @@
     "react": "^16.8.3",
     "react-apollo": "^2.5.1",
     "react-dom": "^16.8.3",
-    "react-i18next": "^10.2.0",
+    "react-i18next": "^10.2.1",
     "react-native": "^v0.59.0-rc.2",
     "react-native-actionsheet": "^2.4.2",
     "react-native-camera": "^1.12.0",
