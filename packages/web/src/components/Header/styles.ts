@@ -20,7 +20,7 @@ export const Nav = styled.nav``
 export const NavLink = styled.a`
   font-size: 16px;
   color: ${props => (props.active ? '#000000' : '#6d6f76')};
-  font-weight: ${props => (props.active ? FONTS.MEDIUM : FONTS.REGULAR)};
+  font-weight: ${FONTS.MEDIUM};
   margin-left: 40px;
 `
 

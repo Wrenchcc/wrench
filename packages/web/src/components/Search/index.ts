@@ -33,7 +33,7 @@ function Search({ className }) {
         onChange={onChange}
       />
 
-      <Result query={value} active={value && active} />
+      {value && active && <Result query={value} onPress={() => setValue('')} />}
     </Base>
   )
 }

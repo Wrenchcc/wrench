@@ -1,18 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
 import { Base, Row, Content, Text, List, Image } from './styles'
 
 function UserProjects({ projects, fullName }) {
+  const { t } = useTranslation()
+
   return (
     <Base>
       <Text medium fontSize={24}>
-        {fullName} projects
+        {t('UserProjects:title', { fullName })}
       </Text>
 
       <List>
         {projects.edges.map(({ node }) => (
           <Link
+            key={node.id}
             href={{
               pathname: '/project',
               query: { slug: node.slug },
@@ -22,12 +26,12 @@ function UserProjects({ projects, fullName }) {
             }}
           >
             <a>
-              <Row key={node.id}>
+              <Row>
                 <Image source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)} />
                 <Content>
                   <Text>{node.title}</Text>
                   <Text color="light_grey" fontSize={15} lineHeight={18}>
-                    {node.followers.totalCount} Followers
+                    {t('UserProjects:followers', { count: node.followers.totalCount })}
                   </Text>
                 </Content>
               </Row>

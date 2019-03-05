@@ -2,7 +2,18 @@
   "en": {
     "Header": {
       "explore": "Explore",
-      "feed": "Feed"
+      "feed": "Feed",
+      "download": "Download",
+      "login": "Login",
+      "signup": "Sign up"
+    },
+    "Search": {
+      "placeholder": "Search"
+    },
+    "UserProjects": {
+      "title": "{{fullName}}'s projects",
+      "followers": "{{count, humanFormat}} follower",
+      "followers_plural": "{{count, humanFormat}} followers"
     },
     "feed": {
       "title": "Feed",
@@ -31,15 +42,22 @@
     "UiFollowers": {
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
-    },
-    "Search": {
-      "placeholder": "Search"
     }
   },
   "sv": {
     "Header": {
       "explore": "Utforska",
-      "feed": "Feed"
+      "feed": "Feed",
+      "download": "Ladda ner",
+      "login": "Logga in",
+      "signup": "Registrera dig"
+    },
+    "Search": {
+      "placeholder": "Sök"
+    },
+    "UserProjects": {
+      "title": "{{fullName}} projekt",
+      "followers": "{{count, humanFormat}} följare"
     },
     "feed": {
       "title": "Feed",
@@ -66,9 +84,6 @@
     },
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"
-    },
-    "Search": {
-      "placeholder": "Sök"
     }
   }
 }

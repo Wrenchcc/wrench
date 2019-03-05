@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { COLORS, FONTS } from '../constants'
 
 export const Base = styled.button`
+  background: transparent;
   font-weight: ${FONTS.MEDIUM};
   cursor: pointer;
   font-size: 15px;

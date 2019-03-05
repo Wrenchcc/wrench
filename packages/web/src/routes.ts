@@ -6,6 +6,7 @@ export const { Router } = routes
 export const { Link } = routes
 
 routes.add('project/index', '/project/:slug')
+routes.add('followers/index', '/project/:slug/followers')
 routes.add('explore/index', '/explore')
 routes.add('download', '/download')
 

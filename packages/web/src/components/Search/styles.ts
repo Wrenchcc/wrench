@@ -5,6 +5,7 @@ export const Base = styled.div`
   position: relative;
   width: ${props => (props.active ? '375px' : '290px')};
   transition: 0.15s ease-in-out;
+  will-change: transform;
 `
 
 export const Field = styled.input`

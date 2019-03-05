@@ -2,11 +2,17 @@
   "Header": {
     "en": {
       "explore": "Explore",
-      "feed": "Feed"
+      "feed": "Feed",
+      "download": "Download",
+      "login": "Login",
+      "signup": "Sign up"
     },
     "sv": {
       "explore": "Utforska",
-      "feed": "Feed"
+      "feed": "Feed",
+      "download": "Ladda ner",
+      "login": "Logga in",
+      "signup": "Registrera dig"
     }
   }
 }

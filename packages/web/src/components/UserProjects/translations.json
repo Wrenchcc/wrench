@@ -1,0 +1,13 @@
+{
+  "UserProjects": {
+    "en": {
+      "title": "{{fullName}}'s projects",
+      "followers": "{{count, humanFormat}} follower",
+      "followers_plural": "{{count, humanFormat}} followers"
+    },
+    "sv": {
+      "title": "{{fullName}} projekt",
+      "followers": "{{count, humanFormat}} följare"
+    }
+  }
+}

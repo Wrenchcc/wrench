@@ -6,7 +6,7 @@ import { Loader, Avatar } from '../../../ui'
 import { SEARCH_USER } from '../../../graphql/queries/search/searchUser'
 import { List, Base, Content } from './styles'
 
-function Result({ query, active }) {
+function Result({ query, onPress }) {
   const { data, loading } = useQuery(SEARCH_USER, {
     variables: { query },
   })
@@ -16,15 +16,15 @@ function Result({ query, active }) {
   }
 
   return (
-    <List active={active}>
+    <List>
       <InfiniteScroll
         hasMore={data.users.pageInfo.hasNextPage}
         loader={<Loader key={0} />}
         useWindow={false}
       >
         {data.users
-          && data.users.edges.map(({ node }) => (
-            <Base>
+          && data.users.edges.map(({ node }, index) => (
+            <Base first={index === 0} onClick={onPress}>
               <Link
                 href={{
                   pathname: '/user',

@@ -38,7 +38,7 @@ function Header({ router }) {
   const handleAuth = useMutation(AUTHENTICATE_USER)
   // const client = useApolloClient()
 
-  const links = [
+  const nav = [
     {
       href: '/',
       requireAuth: true,
@@ -47,6 +47,21 @@ function Header({ router }) {
     {
       href: '/explore',
       title: t('Header:explore'),
+    },
+  ]
+
+  const links = [
+    {
+      href: '/download',
+      title: t('Header:download'),
+    },
+    {
+      href: '/login',
+      title: t('Header:login'),
+    },
+    {
+      href: '/sign-up',
+      title: t('Header:signup'),
     },
   ]
 
@@ -59,7 +74,7 @@ function Header({ router }) {
       <Search />
 
       <Nav>
-        {links.map(({ title, href, requireAuth }) => {
+        {nav.map(({ title, href, requireAuth }) => {
           if (!false && requireAuth) return null
           return (
             <Link passHref href={href} key={href}>
@@ -90,15 +105,11 @@ function Header({ router }) {
           </Fragment>
         ) : (
           <Fragment>
-            <Link passHref href="/download">
-              <NavLink>Download app</NavLink>
-            </Link>
-            <Link>
-              <NavLink>Log in</NavLink>
-            </Link>
-            <Link>
-              <NavLink>Sign up</NavLink>
-            </Link>
+            {links.map(({ title, href }) => (
+              <Link passHref href={href} key={href}>
+                <NavLink active={router.pathname === href}>{title}</NavLink>
+              </Link>
+            ))}
           </Fragment>
         )}
       </Right>
