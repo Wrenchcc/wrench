@@ -7,6 +7,10 @@
       "login": "Login",
       "signup": "Sign up"
     },
+    "Result": {
+      "projects": "{{count, humanFormat}} project",
+      "projects_plural": "{{count, humanFormat}} projects"
+    },
     "Search": {
       "placeholder": "Search"
     },
@@ -51,6 +55,9 @@
       "download": "Ladda ner",
       "login": "Logga in",
       "signup": "Registrera dig"
+    },
+    "Result": {
+      "projects": "{{count, humanFormat}} projekt"
     },
     "Search": {
       "placeholder": "Sök"

@@ -14,6 +14,7 @@ export const SEARCH_USER = gql`
             fullName
             avatarUrl
             username
+            projectCount
           }
         }
       }

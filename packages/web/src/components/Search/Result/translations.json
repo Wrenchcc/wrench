@@ -1,0 +1,11 @@
+{
+  "Result": {
+    "en": {
+      "projects": "{{count, humanFormat}} project",
+      "projects_plural": "{{count, humanFormat}} projects"
+    },
+    "sv": {
+      "projects": "{{count, humanFormat}} projekt"
+    }
+  }
+}
