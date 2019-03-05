@@ -44,7 +44,6 @@ target 'Wrench' do
   pod 'react-native-video', :path => '../node_modules/react-native-video'
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
-  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
@@ -53,6 +52,12 @@ target 'Wrench' do
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
   pod 'RNScreens', :path => '../node_modules/react-native-screens'
   pod 'RNShare', :path => '../node_modules/react-native-share'
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
+    'Core',
+    'Camera',
+    'Notifications',
+    'PhotoLibrary',
+  ]
 
   # Required by Facebook
   pod 'FBSDKCoreKit'

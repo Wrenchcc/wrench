@@ -5342,10 +5342,10 @@ react-native-parsed-text@^0.0.21:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-permissions@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.1.1.tgz#4876004681ff8556454613d85249b01baff9b35b"
-  integrity sha512-t0Ujm177bagjUOSzhpmkSz+LqFW04HnY9TeZFavDCmV521fQvFz82aD+POXqWsAdsJVOK3umJYBNNqCjC3g0hQ==
+react-native-permissions@^2.0.0-alpha.1:
+  version "2.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.0-alpha.1.tgz#845d8509070490343efbb97fa9ac9a348c78cd5d"
+  integrity sha512-suZVlVw7n3LQp+OMc1tTyjUGApxsH0s0mU6txailxupAENSl/tyXz7p0M4LV4hR5x7qCiyk5Cy9CG7uw4zdmbg==
 
 react-native-pinchable@^0.1.2:
   version "0.1.2"
