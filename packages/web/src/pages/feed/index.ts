@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-apollo-hooks'
 import Seo from '../../utils/seo'
-import { Post, Layout } from '../../ui'
+import { Post, Layout, Loader } from '../../ui'
 import { GET_FEED } from '../../graphql/queries/feed/feed'
 import { Left, Right } from './styles'
 
@@ -51,11 +51,7 @@ export default function Home() {
           })
           }
           hasMore={data.feed.posts.pageInfo.hasNextPage}
-          loader={
-            <div className="loader" key={0}>
-              Loading ...
-            </div>
-          }
+          loader={<Loader key={0} />}
         >
           {data.feed.posts.edges.map(({ node }) => (
             <Post data={node} key={node.id} withoutTitle />

@@ -3,7 +3,7 @@ import { useQuery } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
-import { Post, Title, Followers, Layout } from '../../ui'
+import { Post, Title, Followers, Layout, Loader } from '../../ui'
 import { Left, Right, Follow, Share } from './styles'
 
 function Project({ slug }) {
@@ -67,11 +67,7 @@ function Project({ slug }) {
           })
           }
           hasMore={data.project.posts.pageInfo.hasNextPage}
-          loader={
-            <div className="loader" key={0}>
-              Loading ...
-            </div>
-          }
+          loader={<Loader key={0} />}
         >
           {data.project.posts.edges.map(({ node }) => (
             <Post data={node} key={node.id} withoutTitle />

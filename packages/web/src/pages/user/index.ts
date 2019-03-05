@@ -5,7 +5,7 @@ import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
-import { Text, Avatar, Layout, Post } from '../../ui'
+import { Text, Avatar, Layout, Post, Loader } from '../../ui'
 import UserProjects from '../../components/UserProjects'
 import { Top, Name, Left, Right } from './styles'
 
@@ -91,11 +91,7 @@ function User({ username }) {
           })
           }
           hasMore={data.user.posts.pageInfo.hasNextPage}
-          loader={
-            <div className="loader" key={0}>
-              Loading ...
-            </div>
-          }
+          loader={<Loader key={0} />}
         >
           {data.user.posts.edges.map(({ node }) => (
             <Post data={node} key={node.id} withoutAvatar />
