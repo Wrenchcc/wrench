@@ -8,7 +8,7 @@ export const Base = styled.div`
   height: 80px;
   align-items: center;
   box-shadow: 0 1px 1px 0 #e6e7e9;
-  padding: 0 20px;
+  padding: 0 50px;
   background: white;
   position: sticky;
   top: 0;

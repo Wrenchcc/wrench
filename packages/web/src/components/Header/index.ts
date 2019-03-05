@@ -32,7 +32,7 @@ import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 //   render={({ onClick }) => <button onClick={onClick}>Login with Facebook</button>}
 // />
 
-function Header({ router, home }) {
+function Header({ router }) {
   const { t } = useTranslation()
   const { data } = useQuery(CURRENT_USER)
   const handleAuth = useMutation(AUTHENTICATE_USER)
@@ -56,7 +56,7 @@ function Header({ router, home }) {
         <img src={require('./logo.svg')} alt="Wrench" />
       </Link>
 
-      {!home && <Search />}
+      <Search />
 
       <Nav>
         {links.map(({ title, href, requireAuth }) => {

@@ -2,7 +2,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from 'react-apollo-hooks'
 import Seo from '../../utils/seo'
 import { GET_EXPLORE } from '../../graphql/queries/explore/explore'
-import { Post, Layout } from '../../ui'
+import { Post, Layout, Loader } from '../../ui'
 import Popular from '../../components/Popular'
 import { Title } from './styles'
 
@@ -47,11 +47,7 @@ export default function Explore() {
         })
         }
         hasMore={data.posts && data.posts.pageInfo.hasNextPage}
-        loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
-        }
+        loader={<Loader key={0} />}
       >
         {data.posts && data.posts.edges.map(({ node }) => <Post data={node} key={node.id} />)}
       </InfiniteScroll>
