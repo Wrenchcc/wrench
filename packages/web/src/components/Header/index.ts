@@ -7,9 +7,18 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import Badge from '../../ui/Badge'
 import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
 import { setTokens } from '../../graphql/utils/auth'
+import { useModal } from '../../ui/Modal'
 import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
 import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
+// const [showModal, hideModal] = useModal(() => (
+//     <ReactModal isOpen>
+//       <p>Modal content</p>
+//       <button onClick={hideModal}>Hide modal</button>
+//     </ReactModal>
+//   ));
+//
+//   return <button onClick={showModal}>Show modal</button>;
 // <FacebookLogin
 //   appId="1174076712654826"
 //   fields="name,email,picture"
@@ -38,6 +47,10 @@ function Header({ router }) {
   const handleAuth = useMutation(AUTHENTICATE_USER)
   // const client = useApolloClient()
 
+  const [showModal] = useModal(() => (
+    <div style={{ width: '200px', height: '200px', position: 'absolute', background: 'black' }} />
+  ))
+
   const nav = [
     {
       href: '/',
@@ -57,6 +70,7 @@ function Header({ router }) {
     },
     {
       href: '/login',
+      onPress: showModal,
       title: t('Header:login'),
     },
     {
@@ -105,8 +119,8 @@ function Header({ router }) {
           </Fragment>
         ) : (
           <Fragment>
-            {links.map(({ title, href }) => (
-              <Link passHref href={href} key={href}>
+            {links.map(({ title, href, onPress }) => (
+              <Link passHref href={href} key={href} onClick={onPress}>
                 <NavLink active={router.pathname === href}>{title}</NavLink>
               </Link>
             ))}

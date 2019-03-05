@@ -4,6 +4,7 @@ import { ApolloProvider } from 'react-apollo-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import * as NProgress from 'nprogress'
 import Router from 'next/router'
+import { ModalProvider } from '../ui/Modal'
 import Seo from '../utils/seo'
 import withApollo from '../graphql/utils/withApollo'
 import i18n from '../i18n'
@@ -81,8 +82,10 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }
     <Container>
       <GlobalStyle />
       <Seo />
-      <Header home />
-      <Component {...pageProps} />
+      <ModalProvider>
+        <Header />
+        <Component {...pageProps} />
+      </ModalProvider>
     </Container>
   )
 }
