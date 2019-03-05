@@ -1,12 +1,13 @@
+import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from 'react-apollo-hooks'
 import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
-import { Title, Avatar, Layout, Post } from '../../ui'
+import { Text, Avatar, Layout, Post } from '../../ui'
 import UserProjects from '../../components/UserProjects'
-import { Left, Right } from './styles'
+import { Top, Name, Left, Right } from './styles'
 
 function User({ username }) {
   const { t } = useTranslation()
@@ -24,7 +25,21 @@ function User({ username }) {
   }
 
   return (
-    <Layout>
+    <Layout
+      top={
+        <Top>
+          <Avatar uri={data.user.avatarUrl} size={80} />
+          <Name>
+            <Text medium fontSize={36} lineHeight={38}>
+              {data.user.firstName}
+            </Text>
+            <Text medium fontSize={36} lineHeight={38}>
+              {data.user.lastName}
+            </Text>
+          </Name>
+        </Top>
+      }
+    >
       <Seo
         config={{
           title: t('user:title', params),
@@ -48,9 +63,6 @@ function User({ username }) {
           },
         }}
       />
-
-      {/* <Avatar uri={data.user.avatarUrl} size={80} />
-      <Title medium>{data.user.fullName}</Title> */}
 
       <Left>
         <InfiniteScroll

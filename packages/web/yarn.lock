@@ -5052,11 +5052,6 @@ react-is@^16.6.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
   integrity sha512-Y4rC1ZJmsxxkkPuMLwvKvlL1Zfpbcu+Bf4ZigkHup3v9EfdYhAlWAaVyA19olXq2o2mGn0w+dFKvk3pVVlYcIA==
 
-react-modal-hook@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-modal-hook/-/react-modal-hook-1.1.0.tgz#842551a98e6703bbb149651bdf7f54d735aab034"
-  integrity sha512-ggf/HZqddEyQGfeZA07l1YMpyN03X5+zw3Z+UzLBDJn+PCPYkB54cB9LzDX0ewrwh68sxka4OsrKGo6XeW3YcA==
-
 react@^16.8.3:
   version "16.8.3"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.3.tgz#c6f988a2ce895375de216edcfaedd6b9a76451d9"

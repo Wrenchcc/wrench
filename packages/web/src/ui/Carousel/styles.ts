@@ -27,10 +27,34 @@ export const Slide = styled(PSlide)`
 
 export const ButtonBack = styled(PButtonBack)`
   cursor: pointer;
+  background: url(${require('./arrow-back.svg')}) no-repeat left center;
+  background-size: 31px;
+  width: 31px;
+  height: 31px;
+  border: none;
+  outline: none;
+  text-indent: -99999px;
+  margin-left: 20px;
+
+  &:disabled {
+    opacity: 0.3;
+  }
 `
 
 export const ButtonNext = styled(PButtonNext)`
   cursor: pointer;
+  background: url(${require('./arrow-forward.svg')}) no-repeat;
+  background-size: 31px;
+  width: 31px;
+  height: 31px;
+  border: none;
+  outline: none;
+  text-indent: -99999px;
+  margin-right: 20px;
+
+  &:disabled {
+    opacity: 0.3;
+  }
 `
 
 export const DotGroup = styled(PDotGroup)``

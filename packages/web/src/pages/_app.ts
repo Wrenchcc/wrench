@@ -31,21 +31,22 @@ const GlobalStyle = createGlobalStyle`
   .carousel {position: relative;}
   .carousel__dot {
     cursor: pointer;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     display: inline-block;
     padding: 0;
+    border: 1px solid white;
     border-radius: 8px;
-    background: rgba(255, 255, 255, .4);
+    background: transparent;
     margin: 0 4px;
     outline: none;
-    border: none;
   }
 
   .carousel__dot--selected {
-    background-color: #ffffff;
+    border-color: white;
+    background: white;
   }
-
+ 
   .carousel__dot-group {
     position: absolute;
     bottom: 15px;
@@ -172,7 +173,7 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }
     <Container>
       <GlobalStyle />
       <Seo />
-      <Header />
+      <Header home />
       <Component {...pageProps} />
     </Container>
   )

@@ -1,6 +1,11 @@
 import React from 'react'
-import { Base } from './styles'
+import { Base, Inner } from './styles'
 
-export default function Layout({ children, column }) {
-  return <Base column={column}>{children}</Base>
+export default function Layout({ children, column, top }) {
+  return (
+    <Base>
+      {top}
+      <Inner column={column}>{children}</Inner>
+    </Base>
+  )
 }
