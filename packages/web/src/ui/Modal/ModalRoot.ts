@@ -1,6 +1,7 @@
 import React, { memo, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { ModalType } from './ModalContext'
+import { isBrowser } from '../../utils/platform'
 
 /**
  * Modal Root Props
@@ -27,24 +28,18 @@ interface ModalRootProps {
  * Renders modals using react portal.
  */
 
-export function ModalRoot({ modals, container }) {
-  let el
-
-  useEffect(() => {
-    el = document.body
-  })
-
-  if (el === undefined) {
-    return null
+export function ModalRoot({ modals, container: Container = React.Fragment }) {
+  if (isBrowser) {
+    return createPortal(
+      <Container>
+        {Object.keys(modals).map(key => {
+          const Component = modals[key]
+          return <Component key={key} />
+        })}
+      </Container>,
+      document.body
+    )
   }
 
-  return createPortal(
-    <Container>
-      {Object.keys(modals).map(key => {
-        const Component = modals[key]
-        return <Component key={key} />
-      })}
-    </Container>,
-    el
-  )
+  return null
 }

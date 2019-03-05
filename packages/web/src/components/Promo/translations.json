@@ -1,0 +1,14 @@
+{
+  "Promo": {
+    "en": {
+      "title": "Download the Wrench app on Appstore and Google play",
+      "description": "Enter your number and get a one time SMS link.",
+      "button": "Send"
+    },
+    "sv": {
+      "title": "Download the Wrench app on Appstore and Google play",
+      "description": "Enter your number and get a one time SMS link.",
+      "button": "Send"
+    }
+  }
+}

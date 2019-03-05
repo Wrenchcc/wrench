@@ -3,9 +3,17 @@
     "Header": {
       "explore": "Explore",
       "feed": "Feed",
-      "download": "Download",
-      "login": "Login",
-      "signup": "Sign up"
+      "download": "Download app",
+      "signin": "Sign in"
+    },
+    "Login": {
+      "title": "Sign in to follow your favorite projects and more.",
+      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
+    },
+    "Promo": {
+      "title": "Download the Wrench app on Appstore and Google play",
+      "description": "Enter your number and get a one time SMS link.",
+      "button": "Send"
     },
     "Result": {
       "projects": "{{count, humanFormat}} project",
@@ -52,9 +60,17 @@
     "Header": {
       "explore": "Utforska",
       "feed": "Feed",
-      "download": "Ladda ner",
-      "login": "Logga in",
-      "signup": "Registrera dig"
+      "download": "Ladda ner app",
+      "signin": "Logga in"
+    },
+    "Login": {
+      "title": "Sign in to follow your favorite projects and more.",
+      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
+    },
+    "Promo": {
+      "title": "Download the Wrench app on Appstore and Google play",
+      "description": "Enter your number and get a one time SMS link.",
+      "button": "Send"
     },
     "Result": {
       "projects": "{{count, humanFormat}} projekt"

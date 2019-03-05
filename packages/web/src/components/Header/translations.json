@@ -3,16 +3,14 @@
     "en": {
       "explore": "Explore",
       "feed": "Feed",
-      "download": "Download",
-      "login": "Login",
-      "signup": "Sign up"
+      "download": "Download app",
+      "signin": "Sign in"
     },
     "sv": {
       "explore": "Utforska",
       "feed": "Feed",
-      "download": "Ladda ner",
-      "login": "Logga in",
-      "signup": "Registrera dig"
+      "download": "Ladda ner app",
+      "signin": "Logga in"
     }
   }
 }

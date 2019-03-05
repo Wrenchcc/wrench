@@ -4,7 +4,7 @@ import projectInfoSmall from '../../fragments/project/projectInfoSmall'
 
 export const GET_EXPLORE = gql`
   query getExplore($after: String) {
-    projects(type: POPULAR, after: $after, first: 8) {
+    projects(type: POPULAR, after: $after, first: 4) {
       pageInfo {
         hasNextPage
       }

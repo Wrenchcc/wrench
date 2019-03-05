@@ -18,6 +18,7 @@ export const Base = styled.div`
 export const Nav = styled.nav``
 
 export const NavLink = styled.a`
+  cursor: pointer;
   font-size: 16px;
   color: ${props => (props.active ? '#000000' : '#6d6f76')};
   font-weight: ${FONTS.MEDIUM};

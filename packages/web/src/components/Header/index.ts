@@ -1,54 +1,23 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
-import { useQuery, useMutation, useApolloClient } from 'react-apollo-hooks'
+import { useQuery, useApolloClient } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import Badge from '../../ui/Badge'
 import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
-import { setTokens } from '../../graphql/utils/auth'
-import { useModal } from '../../ui/Modal'
-import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
+import { Modal, useModal } from '../../ui/Modal'
+import Login from '../Login'
 import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
-
-// const [showModal, hideModal] = useModal(() => (
-//     <ReactModal isOpen>
-//       <p>Modal content</p>
-//       <button onClick={hideModal}>Hide modal</button>
-//     </ReactModal>
-//   ));
-//
-//   return <button onClick={showModal}>Show modal</button>;
-// <FacebookLogin
-//   appId="1174076712654826"
-//   fields="name,email,picture"
-//   callback={({ accessToken }) => handleAuth({
-//     update: (proxy, { data }) => {
-//       setTokens(data.authenticate)
-//
-//       // setTimeout(async () => {
-//       //   await client.query({
-//       //     query: CURRENT_USER,
-//       //   })
-//       // }, 1000)
-//     },
-//     variables: {
-//       facebookToken: accessToken,
-//       platform: 'WEB',
-//     },
-//   })
-//   }
-//   render={({ onClick }) => <button onClick={onClick}>Login with Facebook</button>}
-// />
 
 function Header({ router }) {
   const { t } = useTranslation()
   // const { data } = useQuery(CURRENT_USER)
-  const handleAuth = useMutation(AUTHENTICATE_USER)
   // const client = useApolloClient()
 
-  const [showModal] = useModal(() => (
-    <div style={{ width: '200px', height: '200px', position: 'absolute', background: 'black' }} />
+  const [showModal, closeModal] = useModal(() => (
+    <Modal close={closeModal}>
+      <Login />
+    </Modal>
   ))
 
   const nav = [
@@ -60,22 +29,6 @@ function Header({ router }) {
     {
       href: '/explore',
       title: t('Header:explore'),
-    },
-  ]
-
-  const links = [
-    {
-      href: '/download',
-      title: t('Header:download'),
-    },
-    {
-      href: '/login',
-      onPress: showModal,
-      title: t('Header:login'),
-    },
-    {
-      href: '/sign-up',
-      title: t('Header:signup'),
     },
   ]
 
@@ -119,11 +72,10 @@ function Header({ router }) {
           </Fragment>
         ) : (
           <Fragment>
-            {links.map(({ title, href, onPress }) => (
-              <Link passHref href={href} key={href} onClick={onPress}>
-                <NavLink active={router.pathname === href}>{title}</NavLink>
-              </Link>
-            ))}
+            <Link passHref href="/download">
+              <NavLink active={router.pathname === '/download'}>{t('Header:download')}</NavLink>
+            </Link>
+            <NavLink onClick={showModal}>{t('Header:signin')}</NavLink>
           </Fragment>
         )}
       </Right>
