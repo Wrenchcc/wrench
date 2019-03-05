@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import UiSearch from '../../ui/Search'
+import UiSearch from '../Search'
 import UiAvatar from '../../ui/Avatar'
 import { FONTS } from '../../ui/constants'
 
@@ -18,14 +18,14 @@ export const Base = styled.div`
 export const Nav = styled.nav``
 
 export const NavLink = styled.a`
-  font-size: 17px;
+  font-size: 16px;
   color: ${props => (props.active ? '#000000' : '#6d6f76')};
   font-weight: ${props => (props.active ? FONTS.MEDIUM : FONTS.REGULAR)};
   margin-left: 40px;
 `
 
 export const Search = styled(UiSearch)`
-  margin-left: 35px;
+  margin-left: 40px;
 `
 
 export const Right = styled.div`

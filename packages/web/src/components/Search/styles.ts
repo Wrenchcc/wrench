@@ -1,8 +1,10 @@
 import styled from 'styled-components'
-import { COLORS } from '../constants'
+import { COLORS } from '../../ui/constants'
 
 export const Base = styled.div`
   position: relative;
+  width: ${props => (props.active ? '375px' : '290px')};
+  transition: 0.15s ease-in-out;
 `
 
 export const Field = styled.input`
@@ -12,8 +14,8 @@ export const Field = styled.input`
   outline: none;
   padding: 0 20px 0 40px;
   color: ${COLORS.GREY};
-  font-size: 17px;
-  width: 290px;
+  font-size: 16px;
+  width: 100%;
 `
 
 export const Icon = styled.img`
