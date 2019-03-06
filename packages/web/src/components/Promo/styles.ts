@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import UiText from '../../ui/Text'
 import { COLORS } from '../../ui/constants'
 
 export const Base = styled.div`
@@ -14,6 +15,10 @@ export const Base = styled.div`
   box-sizing: border-box;
 `
 
+export const Description = styled(UiText)`
+  margin-top: 8px;
+`
+
 export const Icon = styled.img`
   margin-bottom: 20px;
 `
@@ -25,12 +30,24 @@ export const Close = styled.img`
   cursor: pointer;
 `
 
+export const Placeholder = styled.div`
+  height: 48px;
+  border-radius: 1px;
+  border: solid 1px #e6e7e9;
+  width: 100%;
+  font-size: 15px;
+  margin-right: 25px;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+`
+
 export const Bottom = styled.div`
   display: flex;
-  margin-top: 20px;
+  margin-top: 25px;
 
   .react-tel-input {
-    font-family: InterUI;
+    font-family: 'Inter var', system-ui, sans-serif;
     font-size: 15px;
     margin-right: 25px;
 

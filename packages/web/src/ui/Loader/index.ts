@@ -1,9 +1,9 @@
 import React from 'react'
 import { Base, Bounce1, Bounce2, Bounce3 } from './styles'
 
-export default function Loader() {
+export default function Loader({ small }) {
   return (
-    <Base>
+    <Base small={small}>
       <Bounce1 />
       <Bounce2 />
       <Bounce3 />

@@ -9,11 +9,11 @@
       }
     },
     "sv": {
-      "title": "Download the Wrench app on Appstore and Google play",
-      "description": "Enter your number and get a one time SMS link.",
+      "title": "Ladda ner Wrench appen på Appstore och Google play",
+      "description": "Ange ditt telefonnummer och få en SMS länk.",
       "button": {
-        "default": "Send",
-        "success": "Sent"
+        "default": "Skicka",
+        "success": "Skickat"
       }
     }
   }

@@ -2,12 +2,17 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useMutation } from 'react-apollo-hooks'
 import dynamic from 'next/dynamic'
-import { Text } from '../../ui'
+import { Text, Loader } from '../../ui'
 import { SEND_PROMO } from '../../graphql/mutations/invite/sendPromo'
-import { Base, Icon, Bottom, Send, Close } from './styles'
+import { Base, Icon, Description, Bottom, Send, Close, Placeholder } from './styles'
 
 const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
   ssr: false,
+  loading: () => (
+    <Placeholder>
+      <Loader small />
+    </Placeholder>
+  ),
 })
 
 function Promo() {
@@ -30,9 +35,9 @@ function Promo() {
         <Text medium fontSize={19}>
           {t('Promo:title')}
         </Text>
-        <Text color="grey" fontSize={15}>
+        <Description color="grey" fontSize={15}>
           {t('Promo:description')}
-        </Text>
+        </Description>
 
         <Bottom>
           <ReactPhoneInput

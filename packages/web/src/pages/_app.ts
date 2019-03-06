@@ -22,7 +22,7 @@ class MyApp extends App {
   public static async getInitialProps({ Component, ctx }) {
     const cookies = nextCookies(ctx)
     const { req } = ctx
-
+    console.log('blah', req)
     const initialI18nStore = {}
     let i18nServerInstance = null
     let initialLanguage = null

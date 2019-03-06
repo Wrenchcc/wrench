@@ -9,15 +9,13 @@ const bounce = keyframes`
 `
 
 export const Base = styled.div`
-  text-align: center;
-  max-width: 650px;
-  margin-bottom: 50px;
+  display: flex;
 
   > div {
-    width: 8px;
-    height: 8px;
+    width: ${props => (props.small ? 6 : 8)}px;
+    height: ${props => (props.small ? 6 : 8)}px;
     background-color: ${COLORS.DARK_GREY};
-    margin: 0 4px;
+    margin: 0 ${props => (props.small ? 3 : 4)}px;
     border-radius: 100%;
     display: inline-block;
     animation-name: ${bounce};
