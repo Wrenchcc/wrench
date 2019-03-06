@@ -44,12 +44,16 @@ class MyApp extends App {
       i18nServerInstance = req.i18n
     }
 
+    console.log('REQQQ', req)
+    console.log('HEADERSSS', req.headers)
+    console.log('KATTT', req.headers['Cloudfront-Viewer-Country'])
+
     return {
       i18nServerInstance,
       initialI18nStore,
       initialLanguage,
       pageProps,
-      viewerCountry: (req && req.headers['Cloudfront-Viewer-Country']) || 'us',
+      viewerCountry: (req && req.headers['Cloudfront-Viewer-Country'].toLowerCase()) || 'us',
       hidePromo: cookies['show-promo-banner'],
     }
   }
