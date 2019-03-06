@@ -10,7 +10,7 @@ export default async number => {
     }
 
     const params = {
-      Message: 'Download our app here: https://apple.com',
+      Message: 'Click here to download Wrench https://wrench.cc',
       PhoneNumber: number,
     }
 

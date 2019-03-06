@@ -7,8 +7,8 @@ export const Base = styled.div`
   height: 284px;
   border-radius: 1px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.12);
-  background-color: #ffffff;
-  position: fixed;
+  background: ${props => (props.inverted ? 'transparent' : 'white')};
+  position: ${props => (props.sticky ? 'fixed' : 'relative')};
   bottom: 40px;
   right: 40px;
   padding: 30px;
@@ -54,9 +54,10 @@ export const Bottom = styled.div`
     .form-control {
       height: 50px;
       border-radius: 1px;
-      border: solid 1px #e6e7e9;
+      border: solid 1px ${props => (props.inverted ? COLORS.GREY : '#e6e7e9')};
       color: ${COLORS.LIGHT_GREY};
       width: 100%;
+      background: transparent;
     }
 
     .flag-dropdown {
@@ -82,6 +83,8 @@ export const Send = styled.button`
   font-size: 15px;
   font-weight: 500;
   outline: none;
-  color: ${props => (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : COLORS.GREY)};
+  color: ${props => props.inverted
+    ? (props.success && COLORS.GREEN) || (props.active ? COLORS.WHITE : COLORS.GREY)
+    : (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : COLORS.GREY)};
   padding: 0;
 `

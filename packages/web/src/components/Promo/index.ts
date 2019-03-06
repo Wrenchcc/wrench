@@ -15,7 +15,7 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
   ),
 })
 
-function Promo({ viewerCountry = 'us' }) {
+function Promo({ viewerCountry = 'us', sticky = true, inverted = false }) {
   const { t } = useTranslation()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
@@ -29,17 +29,22 @@ function Promo({ viewerCountry = 'us' }) {
 
   return (
     !hide && (
-      <Base>
-        <Icon src={require('./icon.svg')} />
-        <Close src={require('./close.svg')} width={13} height={13} onClick={hidePromo} />
-        <Text medium fontSize={19}>
+      <Base sticky={sticky} inverted={inverted}>
+        <Icon src={inverted ? require('./icon-white.svg') : require('./icon.svg')} />
+
+        {!inverted && (
+          <Close src={require('./close.svg')} width={13} height={13} onClick={hidePromo} />
+        )}
+
+        <Text medium fontSize={19} color={inverted ? 'white' : 'black'}>
           {t('Promo:title')}
         </Text>
+
         <Description color="grey" fontSize={15}>
           {t('Promo:description')}
         </Description>
 
-        <Bottom>
+        <Bottom inverted={inverted}>
           <ReactPhoneInput
             defaultCountry={viewerCountry.toLowerCase()}
             disableDropdown
@@ -47,6 +52,7 @@ function Promo({ viewerCountry = 'us' }) {
             value={number}
           />
           <Send
+            inverted={inverted}
             success={success}
             active={number.length >= 10}
             onClick={() => number

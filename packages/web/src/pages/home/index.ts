@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Title, Text } from '../../ui'
 import { GET_POPULAR_PROJECTS } from '../../graphql/queries/project/popularProjects'
 import Popular from '../../components/Popular'
+import Promo from '../../components/Promo'
 import { Hero, Inner, Projects, AppPromo, Blah } from './styles'
 
 export default function Home(props) {
@@ -38,7 +39,10 @@ export default function Home(props) {
       </Projects>
 
       <AppPromo>
-        Download the Wrench app on both Appstore or Google play and upload your projects now.
+        <Inner>
+          <Promo inverted sticky={false} />
+          Download the Wrench app on both Appstore or Google play and upload your projects now.
+        </Inner>
       </AppPromo>
     </Fragment>
   )
