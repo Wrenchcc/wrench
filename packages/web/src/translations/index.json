@@ -13,7 +13,10 @@
     "Promo": {
       "title": "Download the Wrench app on Appstore and Google play",
       "description": "Enter your number and get a one time SMS link.",
-      "button": "Send"
+      "button": {
+        "default": "Send",
+        "success": "Sent"
+      }
     },
     "Result": {
       "projects": "{{count, humanFormat}} project",
@@ -70,7 +73,10 @@
     "Promo": {
       "title": "Download the Wrench app on Appstore and Google play",
       "description": "Enter your number and get a one time SMS link.",
-      "button": "Send"
+      "button": {
+        "default": "Send",
+        "success": "Sent"
+      }
     },
     "Result": {
       "projects": "{{count, humanFormat}} projekt"

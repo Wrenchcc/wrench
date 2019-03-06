@@ -17,4 +17,5 @@ export const COLORS = {
   TAB: 'rgb(000, 000, 000)',
   ULTRA_LIGHT_GREY: 'rgb(237, 237, 239)',
   WHITE: 'rgb(255, 255, 255)',
+  GREEN: 'rgb(5, 176, 30)',
 }

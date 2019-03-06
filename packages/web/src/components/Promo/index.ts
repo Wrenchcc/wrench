@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useMutation } from 'react-apollo-hooks'
 import dynamic from 'next/dynamic'
 import { Text } from '../../ui'
+import { SEND_PROMO } from '../../graphql/mutations/invite/sendPromo'
 import { Base, Icon, Bottom, Send, Close } from './styles'
 
 const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
@@ -11,7 +13,9 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
 function Promo() {
   const { t } = useTranslation()
   const [hide, setHidden] = useState(false)
-  const [value, setValue] = useState('')
+  const [number, setNumber] = useState('')
+  const [success, setSuccess] = useState(false)
+  const handleSubmit = useMutation(SEND_PROMO)
 
   const hidePromo = () => {
     setHidden(true)
@@ -34,10 +38,28 @@ function Promo() {
           <ReactPhoneInput
             defaultCountry="us"
             disableDropdown
-            onChange={val => setValue(val)}
-            value={value}
+            onChange={val => setNumber(val)}
+            value={number}
           />
-          <Send active={value.length >= 10}>{t('Promo:button')}</Send>
+          <Send
+            success={success}
+            active={number.length >= 10}
+            onClick={() => number
+              && handleSubmit({
+                update: (proxy, { data, error }) => {
+                  if (data.sendPromo) {
+                    setSuccess(true)
+                    setNumber('')
+                  }
+                },
+                variables: {
+                  number,
+                },
+              })
+            }
+          >
+            {success ? t('Promo:button.success') : t('Promo:button.default')}
+          </Send>
         </Bottom>
       </Base>
     )

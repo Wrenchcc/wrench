@@ -65,6 +65,6 @@ export const Send = styled.button`
   font-size: 15px;
   font-weight: 500;
   outline: none;
-  color: ${props => (props.active ? COLORS.BLACK : COLORS.GREY)};
+  color: ${props => (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : COLORS.GREY)};
   padding: 0;
 `
