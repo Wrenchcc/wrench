@@ -51,33 +51,17 @@ class MyApp extends App {
       pageProps,
       viewerCountry: req && req.headers['cloudfront-viewer-country'],
       hidePromo: cookies['show-promo-banner'],
+      isAuthenticated: false,
     }
   }
 
   render() {
-    const {
-      Component,
-      pageProps,
-      client,
-      i18nServerInstance,
-      initialI18nStore,
-      initialLanguage,
-      hidePromo,
-      viewerCountry,
-    } = this.props
+    const { client, i18nServerInstance } = this.props
 
     return (
       <ApolloProvider client={client}>
         <I18nextProvider i18n={i18nServerInstance || i18n}>
-          <AppWithi18n
-            Component={Component}
-            hidePromo={hidePromo}
-            pageProps={pageProps}
-            viewerCountry={viewerCountry}
-            i18nServerInstance={i18nServerInstance}
-            initialI18nStore={initialI18nStore}
-            initialLanguage={initialLanguage}
-          />
+          <AppWithi18n {...this.props} />
         </I18nextProvider>
       </ApolloProvider>
     )
@@ -91,6 +75,7 @@ function AppWithi18n({
   Component,
   hidePromo,
   viewerCountry,
+  isAuthenticated,
 }) {
   useSSR(initialI18nStore, initialLanguage)
 
@@ -99,7 +84,7 @@ function AppWithi18n({
       <GlobalStyle />
       <Seo />
       <ModalProvider>
-        <Header inverted />
+        <Header isAuthenticated={isAuthenticated} />
         <Component {...pageProps} />
         {!hidePromo && <Promo viewerCountry={viewerCountry} />}
       </ModalProvider>

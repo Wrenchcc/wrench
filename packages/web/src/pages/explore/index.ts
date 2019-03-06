@@ -7,7 +7,11 @@ import Popular from '../../components/Popular'
 import { Title } from './styles'
 
 export default function Explore() {
-  const { data, loading, fetchMore } = useQuery(GET_EXPLORE)
+  const { data, loading, fetchMore } = useQuery(GET_EXPLORE, {
+    variables: {
+      first: 4,
+    },
+  })
 
   if (loading) {
     return null

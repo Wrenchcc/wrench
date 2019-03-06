@@ -9,10 +9,14 @@ import { Modal, useModal } from '../../ui/Modal'
 import Login from '../Login'
 import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
-function Header({ router, inverted }) {
+function Header({ router, isAuthenticated }) {
   const { t } = useTranslation()
-  // const { data } = useQuery(CURRENT_USER)
+  const { data } = useQuery(CURRENT_USER, {
+    skip: !isAuthenticated,
+  })
+
   // const client = useApolloClient()
+  const inverted = !isAuthenticated && router.route === '/'
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
