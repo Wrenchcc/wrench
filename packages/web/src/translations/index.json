@@ -35,10 +35,10 @@
       "description": ""
     },
     "home": {
-      "title": "Post, explore \nand learn.",
+      "title": "Post, explore",
+      "subtitle": "and learn.",
       "description": "Post your projects, explore others and learn from each other.",
-      "explore": "Explore more projects",
-      "promo": "Download the Wrench app on both Appstore or Google play and upload your projects now."
+      "explore": "Explore more projects"
     },
     "project": {
       "title": "{{title}} - {{type}} Project",
@@ -99,10 +99,10 @@
       "description": ""
     },
     "home": {
-      "title": "Post, explore \nand learn.",
-      "description": "Post your projects, explore others and learn from each other.",
-      "explore": "Explore more projects",
-      "promo": "Download the Wrench app on both Appstore or Google play and upload your projects now."
+      "title": "Posta, utforska",
+      "subtitle": "och lär.",
+      "description": "Dela dina project, kolla på andra, diskutera och lär av varandra.",
+      "explore": "Upptäck fler projekt"
     },
     "project": {
       "title": "{{title}} - {{type}} Projekt",

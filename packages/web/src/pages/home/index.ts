@@ -25,7 +25,8 @@ export default function Home(props) {
       <Hero>
         <Inner>
           <Title color="white" fontSize={92} lineHeight={104}>
-            {t('home:title')}
+            {t('home:title')} <br />
+            {t('home:subtitle')}
           </Title>
           <Text color="white">{t('home:description')}</Text>
         </Inner>
