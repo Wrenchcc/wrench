@@ -44,9 +44,11 @@ class MyApp extends App {
       i18nServerInstance = req.i18n
     }
 
-    console.log('REQQQ', req)
-    console.log('HEADERSSS', req.headers)
-    console.log('KATTT', req.headers['Cloudfront-Viewer-Country'])
+    if (req) {
+      console.log('REQQQ', req)
+      console.log('HEADERSSS', req.headers)
+      console.log('KATTT', req.headers['Cloudfront-Viewer-Country'])
+    }
 
     return {
       i18nServerInstance,
