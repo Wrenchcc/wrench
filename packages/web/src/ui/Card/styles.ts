@@ -6,7 +6,7 @@ const SIZE = 235
 
 export const Base = styled.div`
   width: ${SIZE}px;
-  margin-right: 40px;
+  margin-left: 40px;
   margin-bottom: 70px;
 `
 

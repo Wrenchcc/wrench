@@ -188,8 +188,8 @@
       "unfollow": "Following"
     },
     "UiFollowers": {
-      "followers": "{{count}} follower",
-      "followers_plural": "{{count}} followers"
+      "followers": "{{count, humanFormat}} follower",
+      "followers_plural": "{{count, humanFormat}} followers"
     },
     "Legal": {
       "description": "By continuing you agree to Wrench's ",
@@ -440,7 +440,7 @@
       "unfollow": "Följer"
     },
     "UiFollowers": {
-      "followers": "{{count}} följare"
+      "followers": "{{count, humanFormat}} följare"
     },
     "Legal": {
       "description": "Genom att fortsätta hålla du med Wrench's ",

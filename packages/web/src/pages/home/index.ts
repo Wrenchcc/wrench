@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-apollo-hooks'
 import Link from 'next/link'
 import { Title, Text } from '../../ui'
@@ -8,9 +9,10 @@ import Promo from '../../components/Promo'
 import { Hero, Inner, Projects, AppPromo, Blah } from './styles'
 
 export default function Home(props) {
+  const { t } = useTranslation()
   const { data, loading } = useQuery(GET_POPULAR_PROJECTS, {
     variables: {
-      first: 4,
+      first: 8,
     },
   })
 
@@ -23,10 +25,9 @@ export default function Home(props) {
       <Hero>
         <Inner>
           <Title color="white" fontSize={92} lineHeight={104}>
-            Post, explore <br />
-            and learn.
+            {t('home:title')}
           </Title>
-          <Text color="white">Post your projects, explore others and learn from each other.</Text>
+          <Text color="white">{t('home:description')}</Text>
         </Inner>
       </Hero>
 
@@ -34,14 +35,14 @@ export default function Home(props) {
         <Popular projects={data.projects} />
 
         <Link href="/explore">
-          <Blah>Explore more projects</Blah>
+          <Blah>{t('home:explore')}</Blah>
         </Link>
       </Projects>
 
       <AppPromo>
         <Inner>
           <Promo inverted sticky={false} />
-          Download the Wrench app on both Appstore or Google play and upload your projects now.
+          {t('home:promo')}
         </Inner>
       </AppPromo>
     </Fragment>

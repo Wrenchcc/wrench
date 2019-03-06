@@ -34,6 +34,12 @@
       "title": "Feed",
       "description": ""
     },
+    "home": {
+      "title": "Post, explore \nand learn.",
+      "description": "Post your projects, explore others and learn from each other.",
+      "explore": "Explore more projects",
+      "promo": "Download the Wrench app on both Appstore or Google play and upload your projects now."
+    },
     "project": {
       "title": "{{title}} - {{type}} Project",
       "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
@@ -71,11 +77,11 @@
       "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
     },
     "Promo": {
-      "title": "Download the Wrench app on Appstore and Google play",
-      "description": "Enter your number and get a one time SMS link.",
+      "title": "Ladda ner Wrench appen på Appstore och Google play",
+      "description": "Ange ditt telefonnummer och få en SMS länk.",
       "button": {
-        "default": "Send",
-        "success": "Sent"
+        "default": "Skicka",
+        "success": "Skickat"
       }
     },
     "Result": {
@@ -91,6 +97,12 @@
     "feed": {
       "title": "Feed",
       "description": ""
+    },
+    "home": {
+      "title": "Post, explore \nand learn.",
+      "description": "Post your projects, explore others and learn from each other.",
+      "explore": "Explore more projects",
+      "promo": "Download the Wrench app on both Appstore or Google play and upload your projects now."
     },
     "project": {
       "title": "{{title}} - {{type}} Projekt",
