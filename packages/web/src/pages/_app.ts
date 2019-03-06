@@ -49,7 +49,7 @@ class MyApp extends App {
       initialI18nStore,
       initialLanguage,
       pageProps,
-      viewerCountry: req.headers['Cloudfront-Viewer-Country'] || 'us',
+      viewerCountry: (req && req.headers['Cloudfront-Viewer-Country']) || 'us',
       hidePromo: cookies['show-promo-banner'],
     }
   }
