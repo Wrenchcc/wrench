@@ -4,6 +4,7 @@ import { ApolloProvider } from 'react-apollo-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import * as NProgress from 'nprogress'
 import Router from 'next/router'
+import nextCookies from 'next-cookies'
 import { ModalProvider } from '../ui/Modal'
 import Seo from '../utils/seo'
 import withApollo from '../graphql/utils/withApollo'
@@ -19,6 +20,7 @@ Router.onRouteChangeError = () => NProgress.done()
 
 class MyApp extends App {
   public static async getInitialProps({ Component, ctx }) {
+    const cookies = nextCookies(ctx)
     const { req } = ctx
 
     const initialI18nStore = {}
@@ -47,6 +49,7 @@ class MyApp extends App {
       initialI18nStore,
       initialLanguage,
       pageProps,
+      hidePromo: cookies['show-promo-banner'],
     }
   }
 
@@ -58,6 +61,7 @@ class MyApp extends App {
       i18nServerInstance,
       initialI18nStore,
       initialLanguage,
+      hidePromo,
     } = this.props
 
     return (
@@ -65,6 +69,7 @@ class MyApp extends App {
         <I18nextProvider i18n={i18nServerInstance || i18n}>
           <AppWithi18n
             Component={Component}
+            hidePromo={hidePromo}
             pageProps={pageProps}
             i18nServerInstance={i18nServerInstance}
             initialI18nStore={initialI18nStore}
@@ -76,7 +81,7 @@ class MyApp extends App {
   }
 }
 
-function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }) {
+function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component, hidePromo }) {
   useSSR(initialI18nStore, initialLanguage)
 
   return (
@@ -86,7 +91,7 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component }
       <ModalProvider>
         <Header />
         <Component {...pageProps} />
-        <Promo />
+        {!hidePromo && <Promo />}
       </ModalProvider>
     </Container>
   )

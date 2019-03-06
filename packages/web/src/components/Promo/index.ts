@@ -10,24 +10,32 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
 
 function Promo() {
   const { t } = useTranslation()
+  const [hide, setHidden] = useState(false)
   const [value, setValue] = useState('')
 
-  return (
-    <Base>
-      <Icon src={require('./icon.svg')} />
-      <Close src={require('./close.svg')} width={13} height={13} />
-      <Text medium fontSize={19}>
-        {t('Promo:title')}
-      </Text>
-      <Text color="grey" fontSize={15}>
-        {t('Promo:description')}
-      </Text>
+  const hidePromo = () => {
+    setHidden(true)
+    document.cookie = 'show-promo-banner=false'
+  }
 
-      <Bottom>
-        <ReactPhoneInput defaultCountry="us" disableDropdown onChange={setValue} value={value} />
-        <Send>{t('Promo:button')}</Send>
-      </Bottom>
-    </Base>
+  return (
+    !hide && (
+      <Base>
+        <Icon src={require('./icon.svg')} />
+        <Close src={require('./close.svg')} width={13} height={13} onClick={hidePromo} />
+        <Text medium fontSize={19}>
+          {t('Promo:title')}
+        </Text>
+        <Text color="grey" fontSize={15}>
+          {t('Promo:description')}
+        </Text>
+
+        <Bottom>
+          <ReactPhoneInput defaultCountry="us" disableDropdown onChange={setValue} value={value} />
+          <Send>{t('Promo:button')}</Send>
+        </Bottom>
+      </Base>
+    )
   )
 }
 
