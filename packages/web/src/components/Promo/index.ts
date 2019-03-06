@@ -15,7 +15,7 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
   ),
 })
 
-function Promo() {
+function Promo({ viewerCountry }) {
   const { t } = useTranslation()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
@@ -41,7 +41,7 @@ function Promo() {
 
         <Bottom>
           <ReactPhoneInput
-            defaultCountry="us"
+            defaultCountry={viewerCountry}
             disableDropdown
             onChange={val => setNumber(val)}
             value={number}

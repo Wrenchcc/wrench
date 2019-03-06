@@ -22,7 +22,7 @@ class MyApp extends App {
   public static async getInitialProps({ Component, ctx }) {
     const cookies = nextCookies(ctx)
     const { req } = ctx
-    console.log('blah', req)
+
     const initialI18nStore = {}
     let i18nServerInstance = null
     let initialLanguage = null
@@ -49,6 +49,7 @@ class MyApp extends App {
       initialI18nStore,
       initialLanguage,
       pageProps,
+      viewerCountry: req.headers['Cloudfront-Viewer-Country'] || 'us',
       hidePromo: cookies['show-promo-banner'],
     }
   }
@@ -62,6 +63,7 @@ class MyApp extends App {
       initialI18nStore,
       initialLanguage,
       hidePromo,
+      viewerCountry,
     } = this.props
 
     return (
@@ -71,6 +73,7 @@ class MyApp extends App {
             Component={Component}
             hidePromo={hidePromo}
             pageProps={pageProps}
+            viewerCountry={viewerCountry}
             i18nServerInstance={i18nServerInstance}
             initialI18nStore={initialI18nStore}
             initialLanguage={initialLanguage}
@@ -81,7 +84,14 @@ class MyApp extends App {
   }
 }
 
-function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component, hidePromo }) {
+function AppWithi18n({
+  initialI18nStore,
+  initialLanguage,
+  pageProps,
+  Component,
+  hidePromo,
+  viewerCountry,
+}) {
   useSSR(initialI18nStore, initialLanguage)
 
   return (
@@ -91,7 +101,7 @@ function AppWithi18n({ initialI18nStore, initialLanguage, pageProps, Component, 
       <ModalProvider>
         <Header />
         <Component {...pageProps} />
-        {!hidePromo && <Promo />}
+        {!hidePromo && <Promo viewerCountry={viewerCountry} />}
       </ModalProvider>
     </Container>
   )
