@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import Result from './Result'
 import { Base, Field, Icon } from './styles'
 
-function Search({ className }) {
+function Search({ className, inverted }) {
   const { t } = useTranslation()
   const inputRef = useRef()
 
@@ -24,6 +24,7 @@ function Search({ className }) {
     <Base className={className} active={active}>
       <Icon src={require('./search.svg')} />
       <Field
+        inverted={inverted}
         placeholder={t('Search:placeholder')}
         type="search"
         value={value}

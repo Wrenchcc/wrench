@@ -9,7 +9,7 @@ export const Base = styled.div`
 `
 
 export const Field = styled.input`
-  background: ${COLORS.ULTRA_LIGHT_GREY};
+  background: ${props => (props.inverted ? 'rgb(168, 168, 173, 0.2)' : COLORS.ULTRA_LIGHT_GREY)};
   border: none;
   height: 40px;
   outline: none;

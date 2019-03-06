@@ -49,7 +49,7 @@ class MyApp extends App {
       initialI18nStore,
       initialLanguage,
       pageProps,
-      viewerCountry: req.headers['cloudfront-viewer-country'],
+      viewerCountry: req && req.headers['cloudfront-viewer-country'],
       hidePromo: cookies['show-promo-banner'],
     }
   }
@@ -99,7 +99,7 @@ function AppWithi18n({
       <GlobalStyle />
       <Seo />
       <ModalProvider>
-        <Header />
+        <Header inverted />
         <Component {...pageProps} />
         {!hidePromo && <Promo viewerCountry={viewerCountry} />}
       </ModalProvider>

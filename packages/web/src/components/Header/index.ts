@@ -9,7 +9,7 @@ import { Modal, useModal } from '../../ui/Modal'
 import Login from '../Login'
 import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
 
-function Header({ router }) {
+function Header({ router, inverted }) {
   const { t } = useTranslation()
   // const { data } = useQuery(CURRENT_USER)
   // const client = useApolloClient()
@@ -33,19 +33,21 @@ function Header({ router }) {
   ]
 
   return (
-    <Base>
+    <Base inverted={inverted}>
       <Link href="/">
-        <img src={require('./logo.svg')} alt="Wrench" />
+        <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" />
       </Link>
 
-      <Search />
+      <Search inverted={inverted} />
 
       <Nav>
         {nav.map(({ title, href, requireAuth }) => {
           if (!false && requireAuth) return null
           return (
             <Link passHref href={href} key={href}>
-              <NavLink active={router.pathname === href}>{title}</NavLink>
+              <NavLink inverted={inverted} active={router.pathname === href}>
+                {title}
+              </NavLink>
             </Link>
           )
         })}
@@ -73,9 +75,13 @@ function Header({ router }) {
         ) : (
           <Fragment>
             <Link passHref href="/download">
-              <NavLink active={router.pathname === '/download'}>{t('Header:download')}</NavLink>
+              <NavLink inverted={inverted} active={router.pathname === '/download'}>
+                {t('Header:download')}
+              </NavLink>
             </Link>
-            <NavLink onClick={showModal}>{t('Header:signin')}</NavLink>
+            <NavLink inverted={inverted} onClick={showModal}>
+              {t('Header:signin')}
+            </NavLink>
           </Fragment>
         )}
       </Right>

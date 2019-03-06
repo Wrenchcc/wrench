@@ -7,12 +7,14 @@ export const Base = styled.div`
   display: flex;
   height: 80px;
   align-items: center;
-  box-shadow: 0 1px 1px 0 #e6e7e9;
+  box-shadow: ${props => (props.inverted ? ' 0 0 0 0' : ' 0 1px 1px 0 #e6e7e9')};
   padding: 0 50px;
-  background: white;
-  position: sticky;
+  background: ${props => (props.inverted ? 'transparent' : 'white')};
+  position: ${props => (props.inverted ? 'absolute' : 'sticky')};
   top: 0;
   z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
 `
 
 export const Nav = styled.nav``
@@ -20,7 +22,7 @@ export const Nav = styled.nav``
 export const NavLink = styled.a`
   cursor: pointer;
   font-size: 16px;
-  color: ${props => (props.active ? '#000000' : '#6d6f76')};
+  color: ${props => (props.inverted && 'white') || (props.active ? '#000000' : '#6d6f76')};
   font-weight: ${FONTS.MEDIUM};
   margin-left: 40px;
 `

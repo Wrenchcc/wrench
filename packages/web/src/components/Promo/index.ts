@@ -51,7 +51,7 @@ function Promo({ viewerCountry = 'us' }) {
             active={number.length >= 10}
             onClick={() => number
               && handleSubmit({
-                update: (proxy, { data, error }) => {
+                update: (_, { data }) => {
                   if (data.sendPromo) {
                     setSuccess(true)
                     setNumber('')
