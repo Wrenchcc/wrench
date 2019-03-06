@@ -31,8 +31,13 @@ function Promo() {
         </Text>
 
         <Bottom>
-          <ReactPhoneInput defaultCountry="us" disableDropdown onChange={setValue} value={value} />
-          <Send>{t('Promo:button')}</Send>
+          <ReactPhoneInput
+            defaultCountry="us"
+            disableDropdown
+            onChange={val => setValue(val)}
+            value={value}
+          />
+          <Send active={value.length >= 10}>{t('Promo:button')}</Send>
         </Bottom>
       </Base>
     )

@@ -16,7 +16,8 @@
           "ssm:GetParametersByPath",
           "s3:*",
           "ses:SendTemplatedEmail",
-          "es:*"
+          "es:*",
+          "sns:*"
         ]
       }
     ]
@@ -42,6 +43,7 @@
     "AWS_S3_REGION": "us-east-1",
     "AWS_SNS_REGION": "us-east-1",
     "AWS_S3_BUCKET": "wrench-files",
+    "AWS_SNS_REGION": "us-east-1",
     "CDN_DOMAIN": "https://edge-files.wrench.cc",
     "ACCESS_TOKEN_SECRET": "5E7MJk*WUsC8c-arTkAV!KLGa=JexLG6VNF#?bL4",
     "REFRESH_TOKEN_SECRET": "#d9EvHc_k#VU#!5nFR2#9dvMcasK$Zv==da-FZ_u",

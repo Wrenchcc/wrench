@@ -65,6 +65,6 @@ export const Send = styled.button`
   font-size: 15px;
   font-weight: 500;
   outline: none;
-  opacity: ${props => (props.acitve ? 1 : 0.7)};
+  color: ${props => (props.active ? COLORS.BLACK : COLORS.GREY)};
   padding: 0;
 `

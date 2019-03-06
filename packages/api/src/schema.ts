@@ -17,6 +17,7 @@ import Project from './types/Project'
 import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
+import Invite from './types/Invite'
 
 // Queries
 import commentQueries from './queries/comment'
@@ -29,12 +30,13 @@ import searchQueries from './queries/search'
 import userQueries from './queries/user'
 
 // Mutations
-import postMutations from './mutations/post'
-import userMutations from './mutations/user'
-import uploadMutations from './mutations/upload'
-import projectMutations from './mutations/project'
 import commentMutations from './mutations/comment'
+import inviteMutations from './mutations/invite'
 import notificationMutations from './mutations/notification'
+import postMutations from './mutations/post'
+import projectMutations from './mutations/project'
+import uploadMutations from './mutations/upload'
+import userMutations from './mutations/user'
 
 const debug = require('debug')('api:resolvers')
 
@@ -71,12 +73,13 @@ const resolvers = merge(
   searchQueries,
   userQueries,
   // mutations
-  postMutations,
-  userMutations,
-  uploadMutations,
-  projectMutations,
   commentMutations,
-  notificationMutations
+  inviteMutations,
+  notificationMutations,
+  postMutations,
+  projectMutations,
+  uploadMutations,
+  userMutations
 )
 
 // Logging
@@ -100,6 +103,7 @@ export default makeExecutableSchema({
     Feed,
     File,
     Followers,
+    Invite,
     Model,
     Notification,
     Post,
