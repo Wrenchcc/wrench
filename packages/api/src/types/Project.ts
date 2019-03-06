@@ -16,8 +16,6 @@ export default gql`
     filesConnection(
       after: String
       first: Int = 10
-      maxHeight: Int
-      maxWidth: Int
       reverse: Boolean
       type: FileType
     ): FileConnection

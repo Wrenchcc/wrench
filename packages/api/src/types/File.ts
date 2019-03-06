@@ -25,13 +25,6 @@ export default gql`
   }
 
   extend type Query {
-    files(
-      first: Int = 10
-      after: String
-      maxWidth: Int
-      maxHeight: Int
-      scale: Int
-      type: FileType
-    ): FileConnection
+    files(first: Int = 10, after: String, scale: Int, type: FileType): FileConnection
   }
 `

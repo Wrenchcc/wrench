@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import { useQuery } from 'react-apollo-hooks'
+import Link from 'next/link'
 import { Title, Text } from '../../ui'
 import { GET_POPULAR_PROJECTS } from '../../graphql/queries/project/popularProjects'
 import Popular from '../../components/Popular'
-import { Hero, Inner, Section } from './styles'
+import { Hero, Inner, Projects, AppPromo, Blah } from './styles'
 
 export default function Home(props) {
   const { data, loading } = useQuery(GET_POPULAR_PROJECTS, {
@@ -15,8 +16,6 @@ export default function Home(props) {
   if (loading) {
     return null
   }
-
-  console.log(data)
 
   return (
     <Fragment>
@@ -30,9 +29,17 @@ export default function Home(props) {
         </Inner>
       </Hero>
 
-      <Section>
+      <Projects>
         <Popular projects={data.projects} />
-      </Section>
+
+        <Link href="/explore">
+          <Blah>Explore more projects</Blah>
+        </Link>
+      </Projects>
+
+      <AppPromo>
+        Download the Wrench app on both Appstore or Google play and upload your projects now.
+      </AppPromo>
     </Fragment>
   )
 }

@@ -14,8 +14,6 @@ export default gql`
       first: Int = 10
       after: String
       reverse: Boolean
-      maxWidth: Int
-      maxHeight: Int
       type: FileType
     ): FileConnection
     commentsConnection(
