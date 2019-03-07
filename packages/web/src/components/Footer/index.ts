@@ -23,6 +23,11 @@ function Footer() {
                 <Link href="/press">
                   <a>{t('Footer:press')}</a>
                 </Link>
+                <NavItem>
+                  <a href="https://status.wrench.cc" rel="nofollow">
+                    {t('Footer:status')}
+                  </a>
+                </NavItem>
               </NavItem>
             </ul>
           </Column>
