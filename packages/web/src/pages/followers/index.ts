@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function Followers(props) {
+export default function Settings(props) {
   return null
 }

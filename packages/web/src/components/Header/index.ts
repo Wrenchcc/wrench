@@ -23,9 +23,7 @@ function Header({ router, isAuthenticated }) {
     pollInterval: ms('1m'),
   })
 
-  const {
-    data: { user },
-  } = useQuery(CURRENT_USER, {
+  const { data } = useQuery(CURRENT_USER, {
     skip: !isAuthenticated,
   })
 
@@ -115,7 +113,7 @@ function Header({ router, isAuthenticated }) {
       </Nav>
 
       <Right>
-        {user ? (
+        {data && data.user ? (
           <Fragment>
             <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
               <Badge unread={notifications.unreadCount > 0} />
@@ -123,8 +121,8 @@ function Header({ router, isAuthenticated }) {
             </UserNotifications>
 
             <UserMenu ref={logoutRef} onClick={toggleMenu}>
-              <Avatar size={40} uri={user.avatarUrl} style={{ zIndex: 100 }} />
-              {openUserMenu && <Logout username={user.username} />}
+              <Avatar size={40} uri={data.user.avatarUrl} style={{ zIndex: 100 }} />
+              {openUserMenu && <Logout username={data.user.username} />}
             </UserMenu>
           </Fragment>
         ) : (
