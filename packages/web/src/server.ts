@@ -4,6 +4,8 @@ import * as i18nextMiddleware from 'i18next-express-middleware'
 import i18n from './i18n'
 import { routes } from './routes'
 
+const debug = require('debug')('web:server')
+
 const PORT = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV === 'development'
 const dir = './src'
@@ -28,6 +30,6 @@ app.prepare().then(() => {
 
   server.listen(PORT, err => {
     if (err) throw err
-    console.log(`> Ready on port ${PORT}`)
+    debug(`🚀 Server ready at http://localhost:${PORT}`)
   })
 })

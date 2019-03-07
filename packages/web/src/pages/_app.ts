@@ -21,7 +21,7 @@ Router.onRouteChangeError = () => NProgress.done()
 class MyApp extends App {
   public static async getInitialProps({ Component, ctx }) {
     const cookies = nextCookies(ctx)
-    const { req } = ctx
+    const { req, res } = ctx
 
     const initialI18nStore = {}
     let i18nServerInstance = null
@@ -44,12 +44,16 @@ class MyApp extends App {
       i18nServerInstance = req.i18n
     }
 
+    if (req && req.headers['cloudfront-viewer-country']) {
+      res.cookie('viewer-country', req.headers['cloudfront-viewer-country'])
+    }
+
     return {
       i18nServerInstance,
       initialI18nStore,
       initialLanguage,
       pageProps,
-      viewerCountry: req && req.headers['cloudfront-viewer-country'],
+      viewerCountry: (req && req.headers['cloudfront-viewer-country']) || cookies['viewer-country'],
       hidePromo: cookies['show-promo-banner'],
       isAuthenticated: false,
     }
@@ -85,7 +89,7 @@ function AppWithi18n({
       <Seo />
       <ModalProvider>
         <Header isAuthenticated={isAuthenticated} />
-        <Component {...pageProps} />
+        <Component {...pageProps} viewerCountry={viewerCountry} />
         {!hidePromo && <Promo viewerCountry={viewerCountry} />}
       </ModalProvider>
     </Container>

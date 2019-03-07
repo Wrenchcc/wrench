@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import * as i18nextMiddleware from 'i18next-express-middleware'
 import * as humanFormat from 'human-format'
 import resources from './translations/index.json'
+import { isBrowser } from './utils/platform'
 
 export const SUPPORTED_LOCALS = ['en', 'sv']
 
@@ -26,11 +27,11 @@ const options = {
       return value
     },
   },
-  wait: process && !process.release,
+  wait: isBrowser,
 }
 
 // for browser
-if (process && !process.release) {
+if (isBrowser) {
   i18n.use(initReactI18next).use(LanguageDetector)
 } else {
   i18n

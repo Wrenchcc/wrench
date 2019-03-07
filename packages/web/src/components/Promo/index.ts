@@ -61,6 +61,7 @@ function Promo({ viewerCountry = 'us', sticky = true, inverted = false }) {
                   if (data.sendPromo) {
                     setSuccess(true)
                     setNumber('')
+                    setTimeout(() => setSuccess(false), 3500)
                   }
                 },
                 variables: {

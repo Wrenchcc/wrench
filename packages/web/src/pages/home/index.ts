@@ -42,7 +42,7 @@ export default function Home(props) {
 
       <AppPromo>
         <Inner>
-          <Promo inverted sticky={false} />
+          <Promo inverted sticky={false} viewerCountry={props.viewerCountry} />
           {t('home:promo')}
         </Inner>
       </AppPromo>
