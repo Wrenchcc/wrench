@@ -23,11 +23,11 @@ function Footer() {
                 <Link href="/press">
                   <a>{t('Footer:press')}</a>
                 </Link>
-                <NavItem>
-                  <a href="https://status.wrench.cc" rel="nofollow">
-                    {t('Footer:status')}
-                  </a>
-                </NavItem>
+              </NavItem>
+              <NavItem>
+                <a href="https://status.wrench.cc" rel="nofollow">
+                  {t('Footer:status')}
+                </a>
               </NavItem>
             </ul>
           </Column>
@@ -87,7 +87,7 @@ function Footer() {
             {t('Footer:description')}
           </Text>
           <Text fontSize={13} color="grey">
-            © Wrench
+            © Wrench (v.){process.env.BUILD_ID}
           </Text>
         </Bottom>
       </Inner>
