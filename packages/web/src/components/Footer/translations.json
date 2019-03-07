@@ -1,0 +1,28 @@
+{
+  "Footer": {
+    "en": {
+      "about": "About",
+      "press": "Press",
+      "help": "Help",
+      "mail": "Mail Support",
+      "feedback": "Feedback",
+      "legal": "Legal",
+      "terms": "Terms",
+      "policy": "Policy",
+      "social": "Social",
+      "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm."
+    },
+    "sv": {
+      "about": "Om oss",
+      "press": "Press",
+      "help": "Hjälp",
+      "mail": "Mail Support",
+      "feedback": "Feedback",
+      "legal": "Legal",
+      "terms": "Villkor",
+      "policy": "Policy",
+      "social": "Social",
+      "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm."
+    }
+  }
+}

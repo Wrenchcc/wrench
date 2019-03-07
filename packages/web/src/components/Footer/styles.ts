@@ -25,7 +25,7 @@ export const NavItem = styled.li`
   margin-top: 20px;
 
   a {
-    color: ${COLORS.LIGHT_GREY};
+    color: ${COLORS.GREY};
   }
 `
 

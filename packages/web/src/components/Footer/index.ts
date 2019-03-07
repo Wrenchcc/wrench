@@ -1,9 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 import { Text } from '../../ui'
 import { Base, Inner, Bottom, Navigation, Column, NavItem } from './styles'
 
 function Footer() {
+  const { t } = useTranslation()
+
   return (
     <Base>
       <Inner>
@@ -13,47 +16,47 @@ function Footer() {
             <ul>
               <NavItem>
                 <Link href="/about">
-                  <a>About</a>
+                  <a>{t('Footer:about')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/press">
-                  <a>Press</a>
+                  <a>{t('Footer:press')}</a>
                 </Link>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>Help</Text>
+            <Text medium>{t('Footer:help')}</Text>
             <ul>
               <NavItem>
-                <a href="mailto:support@wrench.cc">Mail Support</a>
+                <a href="mailto:support@wrench.cc">{t('Footer:mail')}</a>
               </NavItem>
               <NavItem>
-                <a href="mailto:feedback@wrench.cc">Feedback</a>
+                <a href="mailto:feedback@wrench.cc">{t('Footer:feedback')}</a>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>Legal</Text>
+            <Text medium>{t('Footer:legal')}</Text>
             <ul>
               <NavItem>
                 <Link href="/terms">
-                  <a>Terms</a>
+                  <a>{t('Footer:terms')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/policy">
-                  <a>Policy</a>
+                  <a>{t('Footer:policy')}</a>
                 </Link>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>Social</Text>
+            <Text medium>{t('Footer:social')}</Text>
             <ul>
               <NavItem>
                 <a href="https://instagram.com/wrench.cc" rel="nofollow">
@@ -76,8 +79,7 @@ function Footer() {
 
         <Bottom>
           <Text fontSize={13} color="grey">
-            Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run
-            from the heart of Stockholm.
+            {t('Footer:description')}
           </Text>
           <Text fontSize={13} color="grey">
             © Wrench
