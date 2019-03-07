@@ -23,7 +23,10 @@
     ]
   },
   "cors": {
-    "enable": true
+    "enable": true,
+    "debug": true,
+    "allowed_headers": ["*"],
+    "allow_credentials": true
   },
   "stages": {
     "production": {

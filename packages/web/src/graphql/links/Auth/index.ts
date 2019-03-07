@@ -4,6 +4,6 @@ import { getTokens } from '../../utils/auth'
 export default accesToken => setContext((_, { headers }) => ({
   headers: {
     ...headers,
-    // authorization: `Bearer ${accesToken || getTokens(null, 'access_token')}`,
+    authorization: `Bearer ${accesToken || getTokens(null, 'access_token')}`,
   },
 }))

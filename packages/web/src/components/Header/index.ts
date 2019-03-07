@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
-import { useQuery, useApolloClient } from 'react-apollo-hooks'
+import { useQuery } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import Badge from '../../ui/Badge'
@@ -15,7 +15,6 @@ function Header({ router, isAuthenticated }) {
     skip: !isAuthenticated,
   })
 
-  // const client = useApolloClient()
   const inverted = !isAuthenticated && router.route === '/'
 
   const [showModal, closeModal] = useModal(() => (
@@ -60,7 +59,7 @@ function Header({ router, isAuthenticated }) {
       </Nav>
 
       <Right>
-        {false ? (
+        {data && data.user ? (
           <Fragment>
             <Badge />
 

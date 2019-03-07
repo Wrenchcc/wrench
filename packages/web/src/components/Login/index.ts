@@ -1,13 +1,15 @@
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import { useMutation } from 'react-apollo-hooks'
+import { useMutation, useApolloClient } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import { setTokens } from '../../graphql/utils/auth'
 import { Title } from '../../ui'
 import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
+import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
 import { Base, Description, FacebookButton } from './styles'
 
 export default function Login() {
   const { t } = useTranslation()
+  const client = useApolloClient()
   const handleAuth = useMutation(AUTHENTICATE_USER)
 
   return (
@@ -25,11 +27,11 @@ export default function Login() {
           update: (proxy, { data }) => {
             setTokens(data.authenticate)
 
-            // setTimeout(async () => {
-            //   await client.query({
-            //     query: CURRENT_USER,
-            //   })
-            // }, 1000)
+            setTimeout(async () => {
+              await client.query({
+                query: CURRENT_USER,
+              })
+            }, 1000)
           },
           variables: {
             facebookToken: accessToken,

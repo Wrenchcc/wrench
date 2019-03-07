@@ -16,7 +16,7 @@ function SignIn({ t }) {
       <Subscribe to={[AppContainer]}>
         {({ changeLoginState }) => (
           <Base>
-            <Video source={video} muted resizeMode="cover" repeat paused={__DEV__} />
+            <Video source={video} muted resizeMode="cover" />
             <Inner>
               <Icon source={logo} />
 
