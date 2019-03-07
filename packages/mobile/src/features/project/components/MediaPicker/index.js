@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CameraRoll, FlatList, View, ActivityIndicator } from 'react-native'
-import Permissions from 'react-native-permissions'
+import { check, IOS_PERMISSIONS } from 'react-native-permissions'
 import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
@@ -13,7 +13,6 @@ const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 32
-const PHOTO_PERMISSION = 'photo'
 const ASSET_TYPE = 'all'
 
 export default class MediaPicker extends Component {
@@ -48,7 +47,7 @@ export default class MediaPicker extends Component {
   }
 
   checkPhotoPermission = () => {
-    Permissions.check(PHOTO_PERMISSION).then(response => {
+    check(IOS_PERMISSIONS.PHOTO_LIBRARY).then(response => {
       if (response === AUTHORIZED) {
         this.getFiles()
       }
@@ -149,7 +148,10 @@ export default class MediaPicker extends Component {
 
     if (photoPermission !== AUTHORIZED) {
       return (
-        <AskForPermission permission={PHOTO_PERMISSION} onSuccess={this.permissionAuthorized} />
+        <AskForPermission
+          permission={IOS_PERMISSIONS.PHOTO_LIBRARY}
+          onSuccess={this.permissionAuthorized}
+        />
       )
     }
 
