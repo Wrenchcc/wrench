@@ -36,7 +36,7 @@ export default function Home(props) {
   return (
     <Fragment>
       <Hero>
-        <Inner>
+        <Inner paddingTop={50}>
           <Title color="white" fontSize={92} lineHeight={104}>
             {t('home:title')} <br />
             {t('home:subtitle')}

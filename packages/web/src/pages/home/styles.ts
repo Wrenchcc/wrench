@@ -45,6 +45,7 @@ export const Inner = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
+  padding-top: ${props => props.paddingTop || '0'}px;
   align-items: ${props => props.alignItems || 'flex-start'};
   justify-content: ${props => props.justifyContent || 'center'};
   flex-direction: ${props => props.direction || 'column'};
