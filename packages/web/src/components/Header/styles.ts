@@ -22,7 +22,7 @@ export const Nav = styled.nav``
 export const NavLink = styled.a`
   cursor: pointer;
   font-size: 16px;
-  color: ${props => (props.inverted && 'white') || (props.active ? '#000000' : '#6d6f76')};
+  color: ${props => (props.inverted && 'rgba(255, 255, 255, .6)') || (props.active ? '#000000' : '#6d6f76')};
   font-weight: ${FONTS.MEDIUM};
   margin-left: 40px;
 `

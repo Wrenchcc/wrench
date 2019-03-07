@@ -2,11 +2,22 @@ import React, { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-apollo-hooks'
 import Link from 'next/link'
-import { Title, Text } from '../../ui'
+import { Title } from '../../ui'
 import { GET_POPULAR_PROJECTS } from '../../graphql/queries/project/popularProjects'
 import Popular from '../../components/Popular'
+import Footer from '../../components/Footer'
 import Promo from '../../components/Promo'
-import { Hero, Video, Inner, Projects, AppPromo, ExploreLink, AppScreens } from './styles'
+import {
+  Hero,
+  Video,
+  Inner,
+  Projects,
+  AppPromo,
+  Description,
+  ExploreLink,
+  AppScreens,
+  Signup,
+} from './styles'
 
 const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing.mp4'
 
@@ -30,7 +41,10 @@ export default function Home(props) {
             {t('home:title')} <br />
             {t('home:subtitle')}
           </Title>
-          <Text color="white">{t('home:description')}</Text>
+          <Description color="white" fontSize={19}>
+            {t('home:description')}
+          </Description>
+          <Signup>Sign up now</Signup>
         </Inner>
         <Video autoPlay muted>
           <source src={VIDEO_URL} type="video/mp4" />
@@ -51,6 +65,8 @@ export default function Home(props) {
           <AppScreens src="/static/phones@2x.jpg" />
         </Inner>
       </AppPromo>
+
+      <Footer />
     </Fragment>
   )
 }

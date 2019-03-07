@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import UiButton from '../../ui/Button'
+import UiText from '../../ui/Text'
 
 export const Hero = styled.section`
   width: 100%;
@@ -15,6 +17,18 @@ export const Hero = styled.section`
     height: 100%;
     background: rgba(000, 000, 000, 0.5);
   }
+`
+
+export const Signup = styled(UiButton)`
+  background: white;
+  padding: 0 50px;
+  height: 50px;
+  border: none;
+  margin-top: 45px;
+`
+
+export const Description = styled(UiText)`
+  margin-top: 10px;
 `
 
 export const Video = styled.video`
