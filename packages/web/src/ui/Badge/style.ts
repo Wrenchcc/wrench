@@ -7,6 +7,7 @@ export const Base = styled.div`
   height: 19px;
 
   &:before {
+    display: ${props => (props.unread ? 'block' : 'none')};
     content: '';
     position: absolute;
     top: -5px;

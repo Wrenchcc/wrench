@@ -1,11 +1,14 @@
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
-import { useQuery } from 'react-apollo-hooks'
+import * as ms from 'ms'
+import { useQuery, useMutation } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import useOutsideClick from '@rooks/use-outside-click'
 import Badge from '../../ui/Badge'
 import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
+import { UNREAD_NOTIFICATIONS } from '../../graphql/queries/notifications/unreadNotifications'
+import { MARK_ALL_NOTIFICATIONS_SEEN } from '../../graphql/mutations/notifications/markAllNotificationsSeen'
 import { Modal, useModal } from '../../ui/Modal'
 import Login from '../Login'
 import Logout from '../Logout'
@@ -14,7 +17,15 @@ import { Base, Nav, NavLink, Search, Avatar, Right, UserMenu, UserNotifications 
 
 function Header({ router, isAuthenticated }) {
   const { t } = useTranslation()
-  const { data } = useQuery(CURRENT_USER, {
+  const {
+    data: { notifications },
+  } = useQuery(UNREAD_NOTIFICATIONS, {
+    pollInterval: ms('1m'),
+  })
+
+  const {
+    data: { user },
+  } = useQuery(CURRENT_USER, {
     skip: !isAuthenticated,
   })
 
@@ -29,7 +40,30 @@ function Header({ router, isAuthenticated }) {
 
   const [openNotifications, setNotificationsMenu] = useState(false)
 
+  const markNotificationsSeen = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
+
   const toggleNotifications = () => {
+    if (notifications.unreadCount > 0) {
+      markNotificationsSeen({
+        update: proxy => {
+          const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
+
+          const notifications = {
+            ...data,
+            notifications: {
+              ...data.notifications,
+              unreadCount: 0,
+            },
+          }
+
+          proxy.writeQuery({
+            query: UNREAD_NOTIFICATIONS,
+            data: notifications,
+          })
+        },
+      })
+    }
+
     setNotificationsMenu(!openNotifications)
   }
 
@@ -69,6 +103,7 @@ function Header({ router, isAuthenticated }) {
       <Nav>
         {nav.map(({ title, href, requireAuth }) => {
           if (!isAuthenticated && requireAuth) return null
+
           return (
             <Link passHref href={href} key={href}>
               <NavLink inverted={inverted} active={router.pathname === href}>
@@ -80,16 +115,16 @@ function Header({ router, isAuthenticated }) {
       </Nav>
 
       <Right>
-        {data && data.user ? (
+        {user ? (
           <Fragment>
             <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
-              <Badge />
+              <Badge unread={notifications.unreadCount > 0} />
               {openNotifications && <Notifications />}
             </UserNotifications>
 
             <UserMenu ref={logoutRef} onClick={toggleMenu}>
-              <Avatar size={40} uri={data.user.avatarUrl} style={{ zIndex: 100 }} />
-              {openUserMenu && <Logout username={data.user.username} />}
+              <Avatar size={40} uri={user.avatarUrl} style={{ zIndex: 100 }} />
+              {openUserMenu && <Logout username={user.username} />}
             </UserMenu>
           </Fragment>
         ) : (
