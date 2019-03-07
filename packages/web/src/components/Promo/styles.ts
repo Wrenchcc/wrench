@@ -13,6 +13,7 @@ export const Base = styled.div`
   right: 40px;
   padding: 30px;
   box-sizing: border-box;
+  z-index: 101;
 `
 
 export const Description = styled(UiText)`

@@ -31,9 +31,9 @@ export const Inner = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
+  align-items: ${props => props.alignItems || 'flex-start'};
+  justify-content: ${props => props.justifyContent || 'center'};
+  flex-direction: ${props => props.direction || 'column'};
   height: 100%;
   position: relative;
   z-index: 10;
@@ -53,10 +53,19 @@ export const AppPromo = styled.section`
   background: black;
   height: 600px;
   margin-top: 90px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 `
 
-export const Blah = styled.a`
+export const ExploreLink = styled.a`
   cursor: pointer;
   border-bottom: 1.5px solid black;
   font-weight: 500;
+`
+
+export const AppScreens = styled.img`
+  width: 482px;
+  height: 524px;
+  align-self: flex-end;
 `

@@ -6,7 +6,7 @@ import { Title, Text } from '../../ui'
 import { GET_POPULAR_PROJECTS } from '../../graphql/queries/project/popularProjects'
 import Popular from '../../components/Popular'
 import Promo from '../../components/Promo'
-import { Hero, Video, Inner, Projects, AppPromo, Blah } from './styles'
+import { Hero, Video, Inner, Projects, AppPromo, ExploreLink, AppScreens } from './styles'
 
 const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing.mp4'
 
@@ -41,14 +41,14 @@ export default function Home(props) {
         <Popular projects={data.projects} />
 
         <Link href="/explore">
-          <Blah>{t('home:explore')}</Blah>
+          <ExploreLink>{t('home:explore')}</ExploreLink>
         </Link>
       </Projects>
 
       <AppPromo>
-        <Inner>
+        <Inner direction="row" alignItems="center" justifyContent="space-between">
           <Promo inverted sticky={false} viewerCountry={props.viewerCountry} />
-          {t('home:promo')}
+          <AppScreens src="/static/phones@2x.jpg" />
         </Inner>
       </AppPromo>
     </Fragment>
