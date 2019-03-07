@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { COLORS } from '../../ui/constants'
 
 export const Base = styled.footer`
-  height: 450px;
   background: white;
 `
 
@@ -11,8 +10,27 @@ export const Inner = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
+`
+
+export const Navigation = styled.nav`
+  height: 100%;
+  margin-top: 100px;
+  display: flex;
+  width: 100%;
+`
+
+export const NavItem = styled.li`
+  margin-top: 20px;
+
+  a {
+    color: ${COLORS.LIGHT_GREY};
+  }
+`
+
+export const Column = styled.div`
+  width: 25%;
 `
 
 export const Bottom = styled.div`
@@ -20,5 +38,6 @@ export const Bottom = styled.div`
   align-self: flex-end;
   padding-bottom: 75px;
   padding-top: 35px;
+  margin-top: 80px;
   border-top: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
 `
