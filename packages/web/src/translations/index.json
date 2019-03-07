@@ -10,6 +10,10 @@
       "title": "Sign in to follow your favorite projects and more.",
       "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
     },
+    "Popular": {
+      "title": "Popular projects",
+      "description": "You’ve read about the importance of being courageous."
+    },
     "Promo": {
       "title": "Download the Wrench app on Appstore and Google play",
       "description": "Enter your number and get a one time SMS link.",
@@ -75,6 +79,10 @@
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
       "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
+    },
+    "Popular": {
+      "title": "Populära projekt",
+      "description": "You’ve read about the importance of being courageous."
     },
     "Promo": {
       "title": "Ladda ner Wrench appen på Appstore och Google play",

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { pathOr } from 'ramda'
-import { Card } from '../../ui'
-import { Base, Title, List } from './styles'
+import { useTranslation } from 'react-i18next'
+import { Card, Text } from '../../ui'
+import { List, Title } from './styles'
 
 function Popular({ projects }) {
+  const { t } = useTranslation()
+
   return (
-    <Base>
-      <Title medium>Popular projects</Title>
+    <Fragment>
+      <Title medium>{t('Popular:title')}</Title>
+      <Text color="grey">{t('Popular:description')}</Text>
 
       <List>
         {projects
@@ -20,7 +24,7 @@ function Popular({ projects }) {
             />
           ))}
       </List>
-    </Base>
+    </Fragment>
   )
 }
 

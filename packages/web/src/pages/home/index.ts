@@ -6,7 +6,9 @@ import { Title, Text } from '../../ui'
 import { GET_POPULAR_PROJECTS } from '../../graphql/queries/project/popularProjects'
 import Popular from '../../components/Popular'
 import Promo from '../../components/Promo'
-import { Hero, Inner, Projects, AppPromo, Blah } from './styles'
+import { Hero, Video, Inner, Projects, AppPromo, Blah } from './styles'
+
+const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing.mp4'
 
 export default function Home(props) {
   const { t } = useTranslation()
@@ -30,6 +32,9 @@ export default function Home(props) {
           </Title>
           <Text color="white">{t('home:description')}</Text>
         </Inner>
+        <Video autoPlay muted>
+          <source src={VIDEO_URL} type="video/mp4" />
+        </Video>
       </Hero>
 
       <Projects>

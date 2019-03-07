@@ -63,11 +63,11 @@ class MyApp extends App {
     const { client, i18nServerInstance } = this.props
 
     return (
-      <ApolloProvider client={client}>
-        <I18nextProvider i18n={i18nServerInstance || i18n}>
+      <I18nextProvider i18n={i18nServerInstance || i18n}>
+        <ApolloProvider client={client}>
           <AppWithi18n {...this.props} />
-        </I18nextProvider>
-      </ApolloProvider>
+        </ApolloProvider>
+      </I18nextProvider>
     )
   }
 }

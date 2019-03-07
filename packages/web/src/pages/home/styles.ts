@@ -4,6 +4,26 @@ export const Hero = styled.section`
   width: 100%;
   height: calc(100vh - 98px);
   background: black;
+  overflow: hidden;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '';
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(000, 000, 000, 0.5);
+  }
+`
+
+export const Video = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 `
 
 export const Inner = styled.div`
@@ -15,6 +35,8 @@ export const Inner = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100%;
+  position: relative;
+  z-index: 10;
 `
 
 export const Projects = styled.section`
