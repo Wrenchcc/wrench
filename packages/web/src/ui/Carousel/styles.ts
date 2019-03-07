@@ -26,7 +26,6 @@ export const Slide = styled(PSlide)`
 `
 
 export const ButtonBack = styled(PButtonBack)`
-  cursor: pointer;
   background: url(${require('./arrow-back.svg')}) no-repeat left center;
   background-size: 31px;
   width: 31px;

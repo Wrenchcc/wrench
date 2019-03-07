@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from '../../ui/constants'
 
 export const Base = styled.div`
   width: 335px;
@@ -13,17 +12,4 @@ export const Base = styled.div`
   z-index: 100;
   display: flex;
   flex-direction: column;
-
-  li {
-    line-height: 60px;
-    height: 60px;
-    border-bottom: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
-
-    &:last-child {
-      a {
-        color: ${COLORS.RED};
-        border: none;
-      }
-    }
-  }
 `

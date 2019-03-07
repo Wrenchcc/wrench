@@ -10,6 +10,7 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
+    "@rooks/use-outside-click": "^1.1.2",
     "@types/express": "^4.16.1",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",

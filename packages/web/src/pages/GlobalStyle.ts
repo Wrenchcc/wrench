@@ -61,9 +61,15 @@ export default createGlobalStyle`
     -webkit-appearance: textfield;
   }
 
+
+  button {
+    cursor: pointer;
+  }
+  
   a {
     color: black;
     text-decoration: none;
+    cursor: pointer;
   }
 
   #nprogress {

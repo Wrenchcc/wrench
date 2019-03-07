@@ -20,5 +20,4 @@ export const FacebookButton = styled.button`
   font-weight: 500;
   outline: none;
   border: none;
-  cursor: pointer;
 `

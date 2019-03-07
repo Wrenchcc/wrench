@@ -20,7 +20,6 @@ export const Base = styled.div`
 export const Nav = styled.nav``
 
 export const NavLink = styled.a`
-  cursor: pointer;
   font-size: 16px;
   color: ${props => (props.inverted && 'rgba(255, 255, 255, .6)') || (props.active ? '#000000' : '#6d6f76')};
   font-weight: ${FONTS.MEDIUM};
@@ -39,8 +38,13 @@ export const Right = styled.div`
 
 export const Avatar = styled(UiAvatar)`
   margin-left: 30px;
+  cursor: pointer;
 `
 
 export const UserMenu = styled.div`
+  position: relative;
+`
+
+export const UserNotifications = styled.div`
   position: relative;
 `

@@ -2,7 +2,9 @@ import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'isomorphic-unfetch'
+import Router from 'next/router'
 import { isBrowser } from '../utils/platform'
+import { removeAccessToken } from './utils/auth'
 import AuthLink from './links/Auth'
 import HttpLink from './links/Http'
 
@@ -35,6 +37,11 @@ export default function createClient(initialState, options) {
   if (!client) {
     client = create(initialState, options)
   }
+
+  client.onResetStore(() => {
+    removeAccessToken()
+    Router.push('/')
+  })
 
   return client
 }

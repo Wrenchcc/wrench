@@ -23,6 +23,11 @@
       "title": "Sign in to follow your favorite projects and more.",
       "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
     },
+    "Logout": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
+    },
     "Popular": {
       "title": "Popular projects",
       "description": "You’ve read about the importance of being courageous."
@@ -105,6 +110,11 @@
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
       "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
+    },
+    "Logout": {
+      "profile": "Profil",
+      "settings": "Inställningar",
+      "logout": "Logga ut"
     },
     "Popular": {
       "title": "Populära projekt",

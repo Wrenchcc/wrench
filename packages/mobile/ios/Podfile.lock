@@ -57,10 +57,10 @@ PODS:
     - FirebaseAnalytics (~> 5.1)
     - FirebaseAnalyticsInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
-  - FirebaseInstanceID (3.6.0):
-    - FirebaseCore (~> 5.3)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebaseInstanceID (3.7.0):
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/UserDefaults (~> 5.2)
   - FirebaseMessaging (3.3.2):
     - FirebaseAnalyticsInterop (~> 1.1)
     - FirebaseCore (~> 5.2)
@@ -201,7 +201,7 @@ PODS:
     - react-native-video/Video (= 4.4.0)
   - react-native-video/Video (4.4.0):
     - React
-  - react-native-webview (5.2.4):
+  - react-native-webview (5.3.0):
     - React
   - React/Core (0.59.0-rc.2):
     - yoga (= 0.59.0-rc.2.React)
@@ -443,7 +443,7 @@ SPEC CHECKSUMS:
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
   FirebaseCore: 52f851b30e11360f1e67cf04b1edfebf0a47a2d3
   FirebaseDynamicLinks: f209c3caccd82102caa0e91d393e3ccc593501fd
-  FirebaseInstanceID: 7221670e908b41e7ae669600db9d0d201417d0cd
+  FirebaseInstanceID: bd6fc5a258884e206fd5c474ebe4f5b00e21770e
   FirebaseMessaging: d740150547f7686b33799f6489f5b69a4706631b
   FirebasePerformance: b97b1c301790b4fddc9fe675bca05b71c04e24a6
   FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
@@ -468,7 +468,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: e34cded54b134e40fd67fd84fc6f395c584db91d
-  react-native-webview: 117086e1dc8e28ca4d64b6a72c7c38e71aa69024
+  react-native-webview: cca202b9f4d3da2af7743a123e69260d166cc7eb
   RNDeviceInfo: e7c5fcde13d40e161d8a27f6c5dc69c638936002
   RNFirebase: fb4f66d93810b53aa4d1cc50c9fb91ee3548abe2
   RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0

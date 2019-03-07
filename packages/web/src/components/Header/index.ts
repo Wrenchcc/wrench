@@ -1,14 +1,16 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import { useQuery } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
+import useOutsideClick from '@rooks/use-outside-click'
 import Badge from '../../ui/Badge'
 import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
 import { Modal, useModal } from '../../ui/Modal'
 import Login from '../Login'
 import Logout from '../Logout'
-import { Base, Nav, NavLink, Search, Avatar, Right, UserMenu } from './styles'
+import Notifications from '../Notifications'
+import { Base, Nav, NavLink, Search, Avatar, Right, UserMenu, UserNotifications } from './styles'
 
 function Header({ router, isAuthenticated }) {
   const { t } = useTranslation()
@@ -16,17 +18,29 @@ function Header({ router, isAuthenticated }) {
     skip: !isAuthenticated,
   })
 
-  const [open, setOpen] = useState(false)
+  const [openUserMenu, setUserMenu] = useState(false)
 
   const toggleMenu = () => {
-    setOpen(!open)
+    setUserMenu(!openUserMenu)
   }
+
+  const logoutRef = useRef()
+  useOutsideClick(logoutRef, () => setUserMenu(false))
+
+  const [openNotifications, setNotificationsMenu] = useState(false)
+
+  const toggleNotifications = () => {
+    setNotificationsMenu(!openNotifications)
+  }
+
+  const notificationsRef = useRef()
+  useOutsideClick(notificationsRef, () => setNotificationsMenu(false))
 
   const inverted = !isAuthenticated && router.route === '/'
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
-      <Login />
+      <Login closeModal={closeModal} />
     </Modal>
   ))
 
@@ -68,11 +82,14 @@ function Header({ router, isAuthenticated }) {
       <Right>
         {data && data.user ? (
           <Fragment>
-            <Badge />
+            <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
+              <Badge />
+              {openNotifications && <Notifications />}
+            </UserNotifications>
 
-            <UserMenu onClick={toggleMenu}>
-              <Avatar size={40} uri={data.user.avatarUrl} />
-              {open && <Logout username={data.user.username} />}
+            <UserMenu ref={logoutRef} onClick={toggleMenu}>
+              <Avatar size={40} uri={data.user.avatarUrl} style={{ zIndex: 100 }} />
+              {openUserMenu && <Logout username={data.user.username} />}
             </UserMenu>
           </Fragment>
         ) : (

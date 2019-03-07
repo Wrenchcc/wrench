@@ -78,7 +78,6 @@ export const Bottom = styled.div`
 `
 
 export const Send = styled.button`
-  cursor: pointer;
   background: none;
   border: none;
   font-size: 15px;

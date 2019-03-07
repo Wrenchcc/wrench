@@ -1,0 +1,14 @@
+{
+  "Logout": {
+    "en": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
+    },
+    "sv": {
+      "profile": "Profil",
+      "settings": "Inställningar",
+      "logout": "Logga ut"
+    }
+  }
+}

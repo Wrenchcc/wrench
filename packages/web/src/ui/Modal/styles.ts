@@ -28,7 +28,6 @@ export const Close = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
-  cursor: pointer;
   height: 15px;
   border: none;
   width: 15px;
