@@ -15,7 +15,7 @@ export const Base = styled.div`
 `
 
 export const Content = styled.div`
-  max-width: 500px;
+  max-width: ${props => (props.large ? 700 : 450)}px;
   width: 100%;
   background: white;
   padding: 40px;

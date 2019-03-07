@@ -13,7 +13,7 @@ export const Description = styled(UiText)`
 
 export const FacebookButton = styled.button`
   background: ${COLORS.FACEBOOK};
-  height: 60px;
+  height: 50px;
   width: 100%;
   color: white;
   font-size: 16px;
