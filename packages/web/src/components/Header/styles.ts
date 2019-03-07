@@ -40,3 +40,7 @@ export const Right = styled.div`
 export const Avatar = styled(UiAvatar)`
   margin-left: 30px;
 `
+
+export const UserMenu = styled.div`
+  position: relative;
+`

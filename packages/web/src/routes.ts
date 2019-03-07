@@ -13,6 +13,7 @@ routes.add('about', '/about')
 routes.add('press', '/press')
 routes.add('terms', '/terms')
 routes.add('policy', '/policy')
+routes.add('settings', '/settings')
 
 // Need to be last for matching
 routes.add('user/index', '/:username')

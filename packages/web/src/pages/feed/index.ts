@@ -58,7 +58,6 @@ export default function Home() {
           ))}
         </InfiniteScroll>
       </Left>
-      <Right>hejk</Right>
     </Layout>
   )
 }

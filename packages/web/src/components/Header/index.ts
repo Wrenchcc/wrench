@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import Link from 'next/link'
 import { useQuery } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
@@ -7,13 +7,20 @@ import Badge from '../../ui/Badge'
 import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
 import { Modal, useModal } from '../../ui/Modal'
 import Login from '../Login'
-import { Base, Nav, NavLink, Search, Avatar, Right } from './styles'
+import Logout from '../Logout'
+import { Base, Nav, NavLink, Search, Avatar, Right, UserMenu } from './styles'
 
 function Header({ router, isAuthenticated }) {
   const { t } = useTranslation()
   const { data } = useQuery(CURRENT_USER, {
     skip: !isAuthenticated,
   })
+
+  const [open, setOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setOpen(!open)
+  }
 
   const inverted = !isAuthenticated && router.route === '/'
 
@@ -47,7 +54,7 @@ function Header({ router, isAuthenticated }) {
 
       <Nav>
         {nav.map(({ title, href, requireAuth }) => {
-          if (!false && requireAuth) return null
+          if (!isAuthenticated && requireAuth) return null
           return (
             <Link passHref href={href} key={href}>
               <NavLink inverted={inverted} active={router.pathname === href}>
@@ -63,19 +70,10 @@ function Header({ router, isAuthenticated }) {
           <Fragment>
             <Badge />
 
-            <Link
-              href={{
-                pathname: '/user',
-                query: { username: data.user.username },
-              }}
-              as={{
-                pathname: `/${data.user.username}`,
-              }}
-            >
-              <a>
-                <Avatar size={40} uri={data.user.avatarUrl} />
-              </a>
-            </Link>
+            <UserMenu onClick={toggleMenu}>
+              <Avatar size={40} uri={data.user.avatarUrl} />
+              {open && <Logout username={data.user.username} />}
+            </UserMenu>
           </Fragment>
         ) : (
           <Fragment>
