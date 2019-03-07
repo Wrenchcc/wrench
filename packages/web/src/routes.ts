@@ -9,6 +9,10 @@ routes.add('project/index', '/project/:slug')
 routes.add('followers/index', '/project/:slug/followers')
 routes.add('explore/index', '/explore')
 routes.add('download', '/download')
+routes.add('about', '/about')
+routes.add('press', '/press')
+routes.add('terms', '/terms')
+routes.add('policy', '/policy')
 
 // Need to be last for matching
 routes.add('user/index', '/:username')

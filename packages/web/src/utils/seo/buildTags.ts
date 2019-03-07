@@ -35,8 +35,8 @@ export default config => {
     if (config.dangerouslySetAllPagesToNoIndex) {
       defaults.noindex = true
     }
-    tagsToRender.push(<meta key="robots" name="robots" content="noindex,nofollow" />)
-    tagsToRender.push(<meta key="googlebot" name="googlebot" content="noindex,nofollow" />)
+    tagsToRender.push(<meta key="robots" name="robots" content="noindex, nofollow" />)
+    tagsToRender.push(<meta key="googlebot" name="googlebot" content="noindex, nofollow" />)
   } else {
     tagsToRender.push(<meta key="robots" name="robots" content="index,follow" />)
     tagsToRender.push(<meta key="googlebot" name="googlebot" content="index,follow" />)

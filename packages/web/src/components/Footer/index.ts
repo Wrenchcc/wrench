@@ -12,10 +12,14 @@ function Footer() {
             <Text medium>Wrench</Text>
             <ul>
               <NavItem>
-                <Link href="/about">About</Link>
+                <Link href="/about">
+                  <a>About</a>
+                </Link>
               </NavItem>
               <NavItem>
-                <Link href="/press">Press</Link>
+                <Link href="/press">
+                  <a>Press</a>
+                </Link>
               </NavItem>
             </ul>
           </Column>
@@ -36,10 +40,14 @@ function Footer() {
             <Text medium>Legal</Text>
             <ul>
               <NavItem>
-                <Link href="/terms">Terms</Link>
+                <Link href="/terms">
+                  <a>Terms</a>
+                </Link>
               </NavItem>
               <NavItem>
-                <Link href="/policy">Policy</Link>
+                <Link href="/policy">
+                  <a>Policy</a>
+                </Link>
               </NavItem>
             </ul>
           </Column>
@@ -48,17 +56,17 @@ function Footer() {
             <Text medium>Social</Text>
             <ul>
               <NavItem>
-                <a href="https://instagram.com/wrench.cc" nofollow>
+                <a href="https://instagram.com/wrench.cc" rel="nofollow">
                   Instagram
                 </a>
               </NavItem>
               <NavItem>
-                <a href="https://facebook.com/wrench.cc" nofollow>
+                <a href="https://facebook.com/wrench.cc" rel="nofollow">
                   Facebook
                 </a>
               </NavItem>
               <NavItem>
-                <a href="https://twitter.com/wrench.cc" nofollow>
+                <a href="https://twitter.com/wrench.cc" rel="nofollow">
                   Twitter
                 </a>
               </NavItem>

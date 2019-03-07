@@ -39,7 +39,9 @@ function Header({ router, isAuthenticated }) {
   return (
     <Base inverted={inverted}>
       <Link href="/">
-        <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" />
+        <a>
+          <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" />
+        </a>
       </Link>
 
       <Search inverted={inverted} />
