@@ -24,7 +24,6 @@
   },
   "cors": {
     "enable": true,
-    "debug": true,
     "allowed_headers": ["*"],
     "allow_credentials": true
   },
