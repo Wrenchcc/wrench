@@ -13,8 +13,8 @@ if (!isBrowser) {
   global.fetch = fetch
 }
 
-function create(initialState, tokens) {
-  const autLink = AuthLink(tokens)
+function create(initialState, options) {
+  const autLink = AuthLink(options)
 
   return new ApolloClient({
     connectToDevTools: isBrowser,
@@ -24,16 +24,16 @@ function create(initialState, tokens) {
   })
 }
 
-export default function createClient(initialState, tokens) {
+export default function createClient(initialState, options) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!isBrowser) {
-    return create(initialState, tokens)
+    return create(initialState, options)
   }
 
   // Reuse client on the client-side
   if (!client) {
-    client = create(initialState, tokens)
+    client = create(initialState, options)
   }
 
   return client

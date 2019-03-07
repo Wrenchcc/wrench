@@ -1,17 +1,12 @@
 import { path } from 'ramda'
 import cookies from 'next-cookies'
 
-const STORAGE_KEY = '@wrench:tokens'
+const ACCESS_TOKEN_KEY = 'access_token'
 
-export const setTokens = value => (document.cookie = `${STORAGE_KEY}=${JSON.stringify(value)}`)
-export const removeTokens = () => {}
+export const setAccessToken = token => (document.cookie = `${ACCESS_TOKEN_KEY}=${token}`)
 
-// Can return specific token or both refresh_token and
-// access_token if no name is provided
-export const getTokens = (ctx = {}, name) => {
-  const tokens = cookies(ctx)[STORAGE_KEY]
-  if (!tokens) return null
-  if (name) return path([name], JSON.parse(tokens))
-
-  return JSON.parse(tokens)
+export const getAccessToken = (ctx = {}) => {
+  const token = cookies(ctx)[ACCESS_TOKEN_KEY]
+  if (!token) return null
+  return token
 }

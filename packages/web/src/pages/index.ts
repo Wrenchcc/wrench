@@ -3,8 +3,8 @@ import Feed from './feed'
 import Home from './home'
 
 export default function Index(props) {
-  if (true) {
-    return <Home {...props} />
+  if (props.isAuthenticated) {
+    return <Feed {...props} />
   }
-  return <Feed {...props} />
+  return <Home {...props} />
 }

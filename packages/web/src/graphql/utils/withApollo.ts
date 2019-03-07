@@ -3,7 +3,7 @@ import React from 'react'
 import { getMarkupFromTree } from 'react-apollo-hooks'
 import { renderToString } from 'react-dom/server'
 import createClient from '../createClient'
-import { getTokens } from '../utils/auth'
+import { getAccessToken } from '../utils/auth'
 import { isBrowser } from '../../utils/platform'
 
 export default App => class Apollo extends React.Component {
@@ -11,8 +11,12 @@ export default App => class Apollo extends React.Component {
 
     public static async getInitialProps(appCtx) {
       const { Component, router, ctx } = appCtx
-      const accesToken = getTokens(appCtx.ctx, 'access_token')
-      const apollo = createClient({}, accesToken)
+      const apollo = createClient(
+        {},
+        {
+          getToken: () => getAccessToken(ctx),
+        }
+      )
       const apolloState = {}
       const { getInitialProps } = App
 
@@ -54,7 +58,6 @@ export default App => class Apollo extends React.Component {
       return {
         ...appProps,
         apolloState,
-        accesToken,
       }
     }
 
@@ -62,7 +65,9 @@ export default App => class Apollo extends React.Component {
 
     constructor(props) {
       super(props)
-      this.apollo = createClient(props.apolloState.data, props.accesToken)
+      this.apollo = createClient(props.apolloState.data, {
+        getToken: () => getAccessToken(),
+      })
     }
 
     public render() {

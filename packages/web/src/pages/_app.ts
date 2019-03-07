@@ -55,7 +55,7 @@ class MyApp extends App {
       pageProps,
       viewerCountry: (req && req.headers['cloudfront-viewer-country']) || cookies['viewer-country'],
       hidePromo: cookies['show-promo-banner'],
-      isAuthenticated: false,
+      isAuthenticated: !!cookies.access_token,
     }
   }
 
@@ -89,7 +89,7 @@ function AppWithi18n({
       <Seo />
       <ModalProvider>
         <Header isAuthenticated={isAuthenticated} />
-        <Component {...pageProps} viewerCountry={viewerCountry} />
+        <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
         {!hidePromo && <Promo viewerCountry={viewerCountry} />}
       </ModalProvider>
     </Container>
