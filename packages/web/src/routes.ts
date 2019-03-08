@@ -13,6 +13,8 @@ routes.add('about', '/about')
 routes.add('press', '/press')
 routes.add('terms', '/terms')
 routes.add('policy', '/policy')
+routes.add('cookies', '/cookies')
+routes.add('gdpr', '/gdpr')
 routes.add('settings', '/settings')
 
 // Need to be last for matching

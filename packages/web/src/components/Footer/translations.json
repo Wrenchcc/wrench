@@ -8,8 +8,10 @@
       "mail": "Mail Support",
       "feedback": "Feedback",
       "legal": "Legal",
-      "terms": "Terms",
-      "policy": "Policy",
+      "terms": "Terms & Conditions",
+      "policy": "Privacy Policy",
+      "gdpr": "GDPR",
+      "cookies": "Cookies Policy",
       "social": "Social",
       "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm."
     },
@@ -23,6 +25,8 @@
       "legal": "Legal",
       "terms": "Villkor",
       "policy": "Policy",
+      "gdpr": "GDPR",
+      "cookies": "Cookies Policy",
       "social": "Social",
       "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm."
     }

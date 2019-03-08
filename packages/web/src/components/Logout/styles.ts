@@ -21,7 +21,7 @@ export const Base = styled.div`
 
     &:last-child {
       a {
-        color: ${COLORS.RED};
+        color: ${COLORS.ORANGE};
         border: none;
       }
     }

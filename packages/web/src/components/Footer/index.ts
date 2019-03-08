@@ -57,6 +57,16 @@ function Footer() {
                   <a>{t('Footer:policy')}</a>
                 </Link>
               </NavItem>
+              <NavItem>
+                <Link href="/gdpr">
+                  <a>{t('Footer:gdpr')}</a>
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link href="/cookies">
+                  <a>{t('Footer:cookies')}</a>
+                </Link>
+              </NavItem>
             </ul>
           </Column>
 
@@ -87,7 +97,7 @@ function Footer() {
             {t('Footer:description')}
           </Text>
           <Text fontSize={13} color="grey">
-            © Wrench (v.){process.env.BUILD_ID}
+            © Wrench (v.{process.env.BUILD_ID})
           </Text>
         </Bottom>
       </Inner>
