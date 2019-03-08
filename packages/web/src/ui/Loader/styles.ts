@@ -12,10 +12,10 @@ export const Base = styled.div`
   display: flex;
 
   > div {
-    width: ${props => (props.small ? 6 : 8)}px;
-    height: ${props => (props.small ? 6 : 8)}px;
-    background-color: ${COLORS.DARK_GREY};
-    margin: 0 ${props => (props.small ? 3 : 4)}px;
+    width: 6px;
+    height: 6px;
+    background-color: ${props => (props.white ? COLORS.WHITE : COLORS.DARK_GREY)};
+    margin: 0 3px;
     border-radius: 100%;
     display: inline-block;
     animation-name: ${bounce};

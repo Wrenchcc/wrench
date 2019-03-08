@@ -6,21 +6,21 @@ import { Text, Loader } from '../../ui'
 import { SEND_PROMO } from '../../graphql/mutations/invite/sendPromo'
 import { Base, Icon, Description, Bottom, Send, Close, Placeholder } from './styles'
 
-const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
-  ssr: false,
-  loading: () => (
-    <Placeholder>
-      <Loader small />
-    </Placeholder>
-  ),
-})
-
 function Promo({ viewerCountry = 'us', sticky = true, inverted = false, paddingHorizontal }) {
   const { t } = useTranslation()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
   const [success, setSuccess] = useState(false)
   const handleSubmit = useMutation(SEND_PROMO)
+
+  const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
+    ssr: false,
+    loading: () => (
+      <Placeholder>
+        <Loader white={inverted} />
+      </Placeholder>
+    ),
+  })
 
   const hidePromo = () => {
     setHidden(true)
