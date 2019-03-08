@@ -17,13 +17,11 @@ import { Base, Nav, NavLink, Search, Avatar, Right, UserMenu, UserNotifications 
 
 function Header({ router, isAuthenticated }) {
   const { t } = useTranslation()
-  const {
-    data: { notifications },
-  } = useQuery(UNREAD_NOTIFICATIONS, {
+  const notifications = useQuery(UNREAD_NOTIFICATIONS, {
     pollInterval: ms('1m'),
   })
 
-  const { data } = useQuery(CURRENT_USER, {
+  const currentUser = useQuery(CURRENT_USER, {
     skip: !isAuthenticated,
   })
 
@@ -41,7 +39,7 @@ function Header({ router, isAuthenticated }) {
   const markNotificationsSeen = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
 
   const toggleNotifications = () => {
-    if (notifications.unreadCount > 0) {
+    if (notifications.notifications && notifications.notifications.unreadCount > 0) {
       markNotificationsSeen({
         update: proxy => {
           const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
@@ -113,16 +111,18 @@ function Header({ router, isAuthenticated }) {
       </Nav>
 
       <Right>
-        {data && data.user ? (
+        {currentUser && currentUser.data.user ? (
           <Fragment>
             <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
-              <Badge unread={notifications.unreadCount > 0} />
+              <Badge
+                unread={notifications.notifications && notifications.notifications.unreadCount > 0}
+              />
               {openNotifications && <Notifications />}
             </UserNotifications>
 
             <UserMenu ref={logoutRef} onClick={toggleMenu}>
-              <Avatar size={40} uri={data.user.avatarUrl} style={{ zIndex: 100 }} />
-              {openUserMenu && <Logout username={data.user.username} />}
+              <Avatar size={40} uri={currentUser.data.user.avatarUrl} style={{ zIndex: 100 }} />
+              {openUserMenu && <Logout username={currentUser.data.user.username} />}
             </UserMenu>
           </Fragment>
         ) : (

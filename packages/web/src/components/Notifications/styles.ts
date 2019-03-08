@@ -12,4 +12,7 @@ export const Base = styled.div`
   z-index: 100;
   display: flex;
   flex-direction: column;
+  max-height: 340px;
+  overflow: hidden;
+  overflow: auto;
 `

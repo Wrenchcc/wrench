@@ -2,7 +2,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { useMutation } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Router from 'next/router'
-import { setAccessToken } from '../../graphql/utils/auth'
+import { setAccessToken, setRefreshToken } from '../../graphql/utils/auth'
 import { Title } from '../../ui'
 import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
 import { Base, Description, FacebookButton } from './styles'
@@ -29,6 +29,7 @@ export default function Login({ closeModal }) {
           update: (proxy, { data }) => {
             closeModal()
             setAccessToken(data.authenticate.access_token)
+            setRefreshToken(data.authenticate.refresh_token)
             Router.push('/')
           },
           variables: {

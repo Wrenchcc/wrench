@@ -6,9 +6,10 @@ import Router from 'next/router'
 import { isBrowser } from '../utils/platform'
 import { removeAccessToken } from './utils/auth'
 import AuthLink from './links/Auth'
+import RefreshTokenLink from './links/RefreshToken'
 import HttpLink from './links/Http'
 
-let client
+export let client = null
 
 // Polyfill fetch() on the server (used by apollo-client)
 if (!isBrowser) {
@@ -21,7 +22,7 @@ function create(initialState, options) {
   return new ApolloClient({
     connectToDevTools: isBrowser,
     ssrMode: !isBrowser,
-    link: ApolloLink.from([autLink, HttpLink]),
+    link: ApolloLink.from([autLink, RefreshTokenLink, HttpLink]),
     cache: new InMemoryCache().restore(initialState || {}),
   })
 }
