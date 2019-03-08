@@ -43,6 +43,7 @@ export const Column = styled.div`
 
   @media (max-width: 768px) {
     width: 50%;
+    margin-bottom: 40px;
   }
 `
 
@@ -56,5 +57,6 @@ export const Bottom = styled.div`
 
   @media (max-width: 768px) {
     padding-bottom: 30px;
+    margin-top: 20px;
   }
 `
