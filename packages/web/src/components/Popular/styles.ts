@@ -13,7 +13,8 @@ export const List = styled.div`
     margin-left: -10px;
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-scrolling: touch;
   }
 `
 
