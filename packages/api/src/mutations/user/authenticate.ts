@@ -35,7 +35,7 @@ export default async (_, { facebookToken, platform }, ctx) => {
 
   const createdUser = await ctx.db.User.createUser({
     ...omit(['id', 'avatarUrl'], fbUser),
-    avatarUrl: `https://graph.facebook.com/${fbUser.id}/picture?type=square&width=200&height=200`,
+    avatarUrl: `https://graph.facebook.com/${fbUser.id}/picture`,
   })
 
   const url = await dynamicLink({
