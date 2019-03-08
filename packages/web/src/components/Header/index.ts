@@ -19,6 +19,7 @@ function Header({ router, isAuthenticated }) {
   const { t } = useTranslation()
   const notifications = useQuery(UNREAD_NOTIFICATIONS, {
     pollInterval: ms('1m'),
+    skip: !isAuthenticated,
   })
 
   const currentUser = useQuery(CURRENT_USER, {
@@ -39,7 +40,7 @@ function Header({ router, isAuthenticated }) {
   const markNotificationsSeen = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
 
   const toggleNotifications = () => {
-    if (notifications.data && notifications.data.notifications.unreadCount > 0) {
+    if (notifications.data.notifications && notifications.data.notifications.unreadCount > 0) {
       markNotificationsSeen({
         update: proxy => {
           const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
@@ -115,7 +116,10 @@ function Header({ router, isAuthenticated }) {
           <Fragment>
             <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
               <Badge
-                unread={notifications.data && notifications.data.notifications.unreadCount > 0}
+                unread={
+                  notifications.data.notifications
+                  && notifications.data.notifications.unreadCount > 0
+                }
               />
               {openNotifications && <Notifications />}
             </UserNotifications>

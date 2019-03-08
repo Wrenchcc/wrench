@@ -47,7 +47,6 @@ export default onError(({ graphQLErrors, operation, forward }) => {
             .catch(() => client.resetStore())
         } catch (err) {
           observer.error(err)
-          // logError(err)
         }
 
         return null

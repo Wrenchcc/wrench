@@ -4,7 +4,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'isomorphic-unfetch'
 import Router from 'next/router'
 import { isBrowser } from '../utils/platform'
-import { removeAccessToken } from './utils/auth'
+import { removeAccessToken, removeRefreshToken } from './utils/auth'
 import AuthLink from './links/Auth'
 import RefreshTokenLink from './links/RefreshToken'
 import HttpLink from './links/Http'
@@ -41,6 +41,7 @@ export default function createClient(initialState, options) {
 
   client.onResetStore(() => {
     removeAccessToken()
+    removeRefreshToken()
     Router.push('/')
   })
 
