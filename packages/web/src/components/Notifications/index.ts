@@ -43,8 +43,8 @@ function Notifications() {
             </div>
           }
         >
-          {data.notifications.edges.map(({ node }) => (
-            <Notification key={node.id} data={node} />
+          {data.notifications.edges.map(({ node }, index) => (
+            <Notification key={node.id} data={node} first={index === 0} />
           ))}
         </InfiniteScroll>
       </ul>

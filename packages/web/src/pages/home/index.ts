@@ -44,7 +44,7 @@ export default function Home(props) {
           <Description color="white" fontSize={19}>
             {t('home:description')}
           </Description>
-          <Signup>Sign up now</Signup>
+          <Signup>{t('home:signup')}</Signup>
         </Inner>
         <Video autoPlay muted>
           <source src={VIDEO_URL} type="video/mp4" />

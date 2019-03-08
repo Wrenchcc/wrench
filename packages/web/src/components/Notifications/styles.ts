@@ -8,7 +8,7 @@ export const Base = styled.div`
   background-color: #ffffff;
   position: absolute;
   right: 0;
-  top: 61px;
+  top: 50px;
   z-index: 100;
   display: flex;
   flex-direction: column;

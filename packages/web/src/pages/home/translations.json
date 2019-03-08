@@ -4,13 +4,15 @@
       "title": "Post, explore",
       "subtitle": "and learn.",
       "description": "Post your projects, explore others and learn from each other.",
-      "explore": "Explore more projects"
+      "explore": "Explore more projects",
+      "signup": "Sign up now"
     },
     "sv": {
       "title": "Posta, utforska",
       "subtitle": "och lär.",
       "description": "Dela dina project, kolla på andra, diskutera och lär av varandra.",
-      "explore": "Upptäck fler projekt"
+      "explore": "Upptäck fler projekt",
+      "signup": "Registrera dig"
     }
   }
 }
