@@ -15,9 +15,18 @@ export const Base = styled.div`
   z-index: 100;
   width: 100%;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 25px;
+    height: auto;
+  }
 `
 
-export const Nav = styled.nav``
+export const Nav = styled.nav`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
 
 export const NavLink = styled.a`
   font-size: 16px;
@@ -28,12 +37,20 @@ export const NavLink = styled.a`
 
 export const Search = styled(UiSearch)`
   margin-left: 40px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Right = styled.div`
   margin-left: auto;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Avatar = styled(UiAvatar)`

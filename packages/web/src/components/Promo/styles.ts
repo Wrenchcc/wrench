@@ -8,12 +8,19 @@ export const Base = styled.div`
   border-radius: 1px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.12);
   background: ${props => (props.inverted ? 'transparent' : 'white')};
-  position: ${props => (props.sticky ? 'fixed' : 'relative')};
+  position: ${props => (props.sticky ? 'fixed' : 'static')};
   bottom: 40px;
   right: 40px;
-  padding: 30px;
+  padding: 30px ${props => (props.paddingHorizontal ? 30 : 0)}px;
   box-sizing: border-box;
   z-index: 101;
+
+  @media (max-width: 768px) {
+    display: ${props => (props.inverted ? 'block' : 'none')};
+    width: 100%;
+    margin: 40px 0;
+    padding: 0;
+  }
 `
 
 export const Description = styled(UiText)`

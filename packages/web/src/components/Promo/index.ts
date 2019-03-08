@@ -15,7 +15,7 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
   ),
 })
 
-function Promo({ viewerCountry = 'us', sticky = true, inverted = false }) {
+function Promo({ viewerCountry = 'us', sticky = true, inverted = false, paddingHorizontal }) {
   const { t } = useTranslation()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
@@ -29,7 +29,7 @@ function Promo({ viewerCountry = 'us', sticky = true, inverted = false }) {
 
   return (
     !hide && (
-      <Base sticky={sticky} inverted={inverted}>
+      <Base sticky={sticky} inverted={inverted} paddingHorizontal={paddingHorizontal}>
         <Icon src={inverted ? require('./icon-white.svg') : require('./icon.svg')} />
 
         {!inverted && (

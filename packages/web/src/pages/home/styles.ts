@@ -17,6 +17,20 @@ export const Hero = styled.section`
     height: 100%;
     background: rgba(000, 000, 000, 0.5);
   }
+
+  @media (max-width: 768px) {
+    height: auto;
+
+    h1 {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    div {
+      padding-top: 140px;
+      padding-bottom: 75px;
+    }
+  }
 `
 
 export const Signup = styled(UiButton)`
@@ -52,6 +66,13 @@ export const Inner = styled.div`
   height: 100%;
   position: relative;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 100%;
+  }
 `
 
 export const Projects = styled.section`
@@ -59,6 +80,18 @@ export const Projects = styled.section`
   width: 100%;
   margin: 0 auto;
   padding-top: 80px;
+
+  @media (max-width: 768px) {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 45px;
+    box-sizing: border-box;
+
+    h1 {
+      font-size: 36px;
+      line-height: 45px;
+    }
+  }
 `
 
 export const AppPromo = styled.section`
@@ -66,11 +99,15 @@ export const AppPromo = styled.section`
   width: 100%;
   margin: 0 auto;
   background: black;
-  height: 600px;
   margin-top: 90px;
+  padding-top: 60px;
   display: flex;
   align-items: center;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    padding-top: 0;
+  }
 `
 
 export const ExploreLink = styled.a`

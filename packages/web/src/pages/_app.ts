@@ -90,7 +90,7 @@ function AppWithi18n({
       <ModalProvider>
         <Header isAuthenticated={isAuthenticated} />
         <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
-        {!hidePromo && <Promo viewerCountry={viewerCountry} />}
+        {!hidePromo && <Promo viewerCountry={viewerCountry} paddingHorizontal />}
       </ModalProvider>
     </Container>
   )

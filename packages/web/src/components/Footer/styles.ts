@@ -3,6 +3,10 @@ import { COLORS } from '../../ui/constants'
 
 export const Base = styled.footer`
   background: white;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `
 
 export const Inner = styled.div`
@@ -19,6 +23,11 @@ export const Navigation = styled.nav`
   margin-top: 100px;
   display: flex;
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 30px;
+  }
 `
 
 export const NavItem = styled.li`
@@ -31,6 +40,10 @@ export const NavItem = styled.li`
 
 export const Column = styled.div`
   width: 25%;
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `
 
 export const Bottom = styled.div`
@@ -40,4 +53,8 @@ export const Bottom = styled.div`
   padding-top: 35px;
   margin-top: 80px;
   border-top: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
+
+  @media (max-width: 768px) {
+    padding-bottom: 30px;
+  }
 `
