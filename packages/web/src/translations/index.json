@@ -85,6 +85,17 @@
     "UiFollowers": {
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
+    },
+    "Notification": {
+      "follow": "Now follows your project",
+      "comment": "Commented on your project",
+      "reply": "Replied to your comment",
+      "mention": "Mentioned you in a comment",
+      "options": {
+        "alertTitle": "Hide this Notification",
+        "delete": "Hide",
+        "cancel": "Cancel"
+      }
     }
   },
   "sv": {
@@ -169,6 +180,17 @@
     },
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"
+    },
+    "Notification": {
+      "follow": "Följer nu ditt projekt",
+      "comment": "Kommenterade på ditt projekt",
+      "reply": "Svarade på din kommentar",
+      "mention": "Nämnde dig i en kommentar",
+      "options": {
+        "alertTitle": "Dölj notifikation",
+        "delete": "Dölj",
+        "cancel": "Avbryt"
+      }
     }
   }
 }

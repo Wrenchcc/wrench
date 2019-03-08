@@ -2,7 +2,7 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from 'react-apollo-hooks'
 import { GET_NOTIFICATIONS } from '../../graphql/queries/notifications/notifications'
-import { Avatar } from '../../ui'
+import { Notification } from '../../ui'
 import { Base } from './styles'
 
 function Notifications() {
@@ -14,27 +14,26 @@ function Notifications() {
     <Base>
       <ul>
         <InfiniteScroll
-          loadMore={() => console.log('fire')
-            || fetchMore({
-              variables: {
-                after: data.notifications.edges[data.notifications.edges.length - 1].cursor,
-              },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) return prev
+          loadMore={() => fetchMore({
+            variables: {
+              after: data.notifications.edges[data.notifications.edges.length - 1].cursor,
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+              if (!fetchMoreResult) return prev
 
-                return {
-                  ...prev,
-                  notifications: {
-                    ...prev.notifications,
-                    pageInfo: {
-                      ...prev.notifications.pageInfo,
-                      ...fetchMoreResult.notifications.pageInfo,
-                    },
-                    edges: [...prev.notifications.edges, ...fetchMoreResult.notifications.edges],
+              return {
+                ...prev,
+                notifications: {
+                  ...prev.notifications,
+                  pageInfo: {
+                    ...prev.notifications.pageInfo,
+                    ...fetchMoreResult.notifications.pageInfo,
                   },
-                }
-              },
-            })
+                  edges: [...prev.notifications.edges, ...fetchMoreResult.notifications.edges],
+                },
+              }
+            },
+          })
           }
           useWindow={false}
           hasMore={data.notifications.pageInfo.hasNextPage}
@@ -45,10 +44,7 @@ function Notifications() {
           }
         >
           {data.notifications.edges.map(({ node }) => (
-            <li key={node.id}>
-              <Avatar uri={node.user.avatarUrl} />
-              {node.user.fullName}
-            </li>
+            <Notification key={node.id} data={node} />
           ))}
         </InfiniteScroll>
       </ul>
