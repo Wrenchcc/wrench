@@ -7,6 +7,8 @@ const debug = require('debug')('api:s3')
 
 const { AWS_S3_REGION, AWS_S3_BUCKET } = process.env
 
+const UPLOAD_DIRECTORY = 'images'
+
 const s3 = new S3({
   region: AWS_S3_REGION,
   signatureVersion: 'v4',
@@ -24,7 +26,7 @@ export default isAuthenticated(async (_, { input }) => {
           const params = {
             Bucket: AWS_S3_BUCKET,
             ContentType: type,
-            Key: filename,
+            Key: `${UPLOAD_DIRECTORY}/${filename}`,
           }
 
           const url = await s3.getSignedUrl('putObject', params)

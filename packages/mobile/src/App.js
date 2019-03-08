@@ -11,12 +11,6 @@ import Onboarding from 'features/signIn/containers/Onboarding'
 
 useScreens()
 
-if (__DEV__) {
-  if ('__RND_INTERVAL__' in global && global.originalXMLHttpRequest) {
-    global.XMLHttpRequest = global.originalXMLHttpRequest
-  }
-}
-
 export default function App() {
   return (
     <Provider>
