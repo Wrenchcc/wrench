@@ -158,13 +158,13 @@ PODS:
   - Protobuf (3.7.0)
   - React (0.59.0-rc.2):
     - React/Core (= 0.59.0-rc.2)
-  - react-native-camera (1.12.0):
+  - react-native-camera (1.13.1):
     - React
-    - react-native-camera/RCT (= 1.12.0)
-    - react-native-camera/RN (= 1.12.0)
-  - react-native-camera/RCT (1.12.0):
+    - react-native-camera/RCT (= 1.13.1)
+    - react-native-camera/RN (= 1.13.1)
+  - react-native-camera/RCT (1.13.1):
     - React
-  - react-native-camera/RN (1.12.0):
+  - react-native-camera/RN (1.13.1):
     - React
   - react-native-config (0.11.7):
     - React
@@ -459,7 +459,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   React: 979447eef8a818ee4f1cbd8a1a2c61c4aae470ca
-  react-native-camera: 865a638b7e98a1c3ce3951b2cf21248896e661a6
+  react-native-camera: b322bc25f47536219473c6d00c666d221f7f2695
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-fast-image: 21d2d84a46b12cacbe7958ab6414fe828c094f82
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
