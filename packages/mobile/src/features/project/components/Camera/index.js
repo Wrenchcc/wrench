@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableWithoutFeedback } from 'react-native'
-import { check, IOS_PERMISSIONS } from 'react-native-permissions'
+import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
@@ -10,7 +10,6 @@ import PointOfInterest from '../PointOfInterest'
 import { TakePicture } from './styles'
 import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
 
-const AUTHORIZED = 'authorized'
 const ORIENTATION = 'portrait'
 
 export default class Camera extends PureComponent {
@@ -40,7 +39,7 @@ export default class Camera extends PureComponent {
   }
 
   permissionAuthorized = () => {
-    this.setState({ cameraPermission: AUTHORIZED })
+    this.setState({ cameraPermission: RESULTS.GRANTED })
   }
 
   changeFlashMode = () => {
@@ -69,7 +68,7 @@ export default class Camera extends PureComponent {
 
     if (isLoading) return null
 
-    if (cameraPermission !== AUTHORIZED) {
+    if (cameraPermission !== RESULTS.GRANTED) {
       return (
         <AskForPermission
           permission={IOS_PERMISSIONS.CAMERA}

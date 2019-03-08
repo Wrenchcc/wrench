@@ -1,24 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Alert } from 'react-native'
-import Permissions from 'react-native-permissions'
+import { request, openSettings, canOpenSettings, RESULTS } from 'react-native-permissions'
 import withTranslation from 'i18n/withTranslation'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
-const AUTHORIZED = 'authorized'
-
 const AskForPermission = ({ t, permission, onSuccess }) => {
-  const onPress = () => Permissions.request(permission).then(res => {
-    if (res !== AUTHORIZED) {
+  const onPress = () => request(permission).then(res => {
+    if (res !== RESULTS.GRANTED) {
       const buttons = [{ text: t(`AskForPermission:${permission}:alertCancel`), style: 'cancel' }]
 
-      if (Permissions.canOpenSettings()) {
-        buttons.push({
-          text: t(`AskForPermission:${permission}:alertOpen`),
-          onPress: () => Permissions.openSettings(),
-        })
-      }
+      // if (canOpenSettings()) {
+      buttons.push({
+        text: t(`AskForPermission:${permission}:alertOpen`),
+        onPress: () => openSettings(),
+      })
+      // }
 
       Alert.alert(
         t(`AskForPermission:${permission}.alertTitle`),
