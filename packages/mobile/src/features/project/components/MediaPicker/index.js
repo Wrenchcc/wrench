@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll, FlatList, View, ActivityIndicator, RESULTS } from 'react-native'
-import { check, IOS_PERMISSIONS } from 'react-native-permissions'
+import { CameraRoll, FlatList, View, ActivityIndicator } from 'react-native'
+import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
@@ -12,7 +12,7 @@ const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 32
-const ASSET_TYPE = 'all'
+const ASSET_TYPE = 'All'
 
 export default class MediaPicker extends Component {
   static propTypes = {
@@ -63,7 +63,6 @@ export default class MediaPicker extends Component {
 
   getFiles = async after => {
     const { data, has_next_page: hasNextPage } = this.state
-
     if (!hasNextPage) return
 
     try {

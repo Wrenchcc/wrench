@@ -6,7 +6,7 @@ import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import { AppContainer } from 'store'
 import Facebook from '../../components/Facebook'
-import { Base, Inner, Content, Video, Icon, Description, Headline, Legal } from './styles'
+import { Base, Inner, Content, Video, Icon, Description, Headline, Legal, Overlay } from './styles'
 
 function SignIn({ t }) {
   return (
@@ -17,6 +17,7 @@ function SignIn({ t }) {
         {({ changeLoginState }) => (
           <Base>
             <Video source={video} muted resizeMode="cover" />
+            <Overlay />
             <Inner>
               <Icon source={logo} />
 

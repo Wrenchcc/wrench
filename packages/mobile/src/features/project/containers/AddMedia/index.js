@@ -34,11 +34,7 @@ export default function AddMedia() {
 
           <Placeholder>
             {selectedFile ? (
-              <ImageEditor
-                image={selectedFile}
-                onEditImage={onEditImage}
-                key={selectedFile.filename}
-              />
+              <ImageEditor image={selectedFile} onEditImage={onEditImage} uri={selectedFile.uri} />
             ) : (
               <Camera onTakePicture={onTakePicture} />
             )}

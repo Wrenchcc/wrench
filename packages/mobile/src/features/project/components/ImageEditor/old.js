@@ -43,7 +43,7 @@ export default class ImageEditor extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.image.filename !== prevProps.image.filename) {
+    if (this.props.image.uri !== prevProps.image.uri) {
       this.handleLoading(true)
       this.setImageProperties(this.props.image)
     }
@@ -132,7 +132,7 @@ export default class ImageEditor extends PureComponent {
     const { isMoving, isLoading } = this.state
 
     return (
-      <View key={this.props.image.filename}>
+      <View key={this.props.image.uri}>
         <ScrollView
           alwaysBounceVertical
           automaticallyAdjustContentInsets={false}
