@@ -39,7 +39,7 @@ function Header({ router, isAuthenticated }) {
   const markNotificationsSeen = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
 
   const toggleNotifications = () => {
-    if (notifications.notifications && notifications.notifications.unreadCount > 0) {
+    if (notifications.data && notifications.data.notifications.unreadCount > 0) {
       markNotificationsSeen({
         update: proxy => {
           const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
@@ -111,7 +111,7 @@ function Header({ router, isAuthenticated }) {
       </Nav>
 
       <Right>
-        {currentUser && currentUser.data.user ? (
+        {currentUser.data && currentUser.data.user ? (
           <Fragment>
             <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
               <Badge
