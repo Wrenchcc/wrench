@@ -131,4 +131,9 @@ export const Store = styled.img`
   width: 145px;
   height: 48px;
   margin: 0 5px;
+  display: none;
+
+  @media ${DEVICE.TABLET} {
+    display: initial;
+  }
 `
