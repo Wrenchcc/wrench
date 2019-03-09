@@ -122,6 +122,9 @@
     "Followers": {
       "title": "Followers"
     },
+    "Project": {
+      "recent": "Recent posts"
+    },
     "SearchTab": {
       "users": "People",
       "projects": "Projects"
@@ -373,6 +376,9 @@
     },
     "Followers": {
       "title": "Följare"
+    },
+    "Project": {
+      "recent": "Senaste inlägg"
     },
     "SearchTab": {
       "users": "Personer",

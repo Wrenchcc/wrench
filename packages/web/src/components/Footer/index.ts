@@ -41,6 +41,11 @@ function Footer() {
               <NavItem>
                 <a href="mailto:feedback@wrench.cc">{t('Footer:feedback')}</a>
               </NavItem>
+              <NavItem>
+                <Link href="/faq">
+                  <a>{t('Footer:faq')}</a>
+                </Link>
+              </NavItem>
             </ul>
           </Column>
 

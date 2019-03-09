@@ -15,6 +15,7 @@ routes.add('page/terms', '/terms')
 routes.add('page/policy', '/policy')
 routes.add('page/cookies', '/cookies')
 routes.add('page/eula', '/eula')
+routes.add('page/faq', '/faq')
 routes.add('settings', '/settings')
 
 // Need to be last for matching

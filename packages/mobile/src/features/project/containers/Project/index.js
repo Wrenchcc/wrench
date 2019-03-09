@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
+import { Animated, View } from 'react-native'
 import { pathOr, equals } from 'ramda'
 import { compose } from 'react-apollo'
+import withTranslation from 'i18n/withTranslation'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
 import { navigateToUser } from 'navigation/actions'
-import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState, Border } from 'ui'
+import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState, Title } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
-
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
 
@@ -96,14 +96,18 @@ class Project extends PureComponent {
   renderHeader = () => {
     let content
 
-    const { post, posts, project } = this.props
+    const { post, posts, project, t } = this.props
     const hasPosts = posts && posts.length > 0
 
     if (post) {
       content = (
         <>
           <Post post={post} avatar={false} onPost />
-          <Border />
+          {hasPosts && posts.length > 1 && (
+            <View style={{ mariginTop: 10, marginBottom: 30 }}>
+              <Title medium>{t('Project:recent')}</Title>
+            </View>
+          )}
         </>
       )
     }
@@ -173,5 +177,6 @@ class Project extends PureComponent {
 
 export default compose(
   getProject,
-  followProject
+  followProject,
+  withTranslation('Project')
 )(Project)
