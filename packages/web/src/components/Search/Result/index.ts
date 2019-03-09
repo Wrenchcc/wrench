@@ -37,7 +37,7 @@ function Result({ query, onPress }) {
                 }}
               >
                 <a>
-                  <Avatar size={40} uri={node.avatarUrl} />
+                  <Avatar size={40} uri={node.avatarUrl} isOnline={node.isOnline} />
                   <Content>
                     <Text lineHeight={18}>{node.fullName}</Text>
                     <Text lineHeight={18} fontSize={15} color="light_grey">

@@ -9,6 +9,7 @@ export default gql`
       id
       fullName
       username
+      isOnline
     }
   }
 `

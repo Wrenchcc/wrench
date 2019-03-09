@@ -20,7 +20,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
             }}
           >
             <a>
-              <Avatar uri={data.user.avatarUrl} size={40} />
+              <Avatar uri={data.user.avatarUrl} size={40} isOnline={data.user.isOnline} />
             </a>
           </Link>
         </Top>
