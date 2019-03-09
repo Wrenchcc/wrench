@@ -18,7 +18,7 @@ export const Base = styled.div`
   @media ${DEVICE.TABLET} {
     display: ${props => (props.inverted ? 'block' : 'none')};
     width: 100%;
-    margin: 40px 0 0;
+    margin: 40px 0 20px;
     padding: 0;
   }
 `

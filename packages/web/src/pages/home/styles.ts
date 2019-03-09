@@ -28,8 +28,8 @@ export const Hero = styled.section`
     }
 
     div {
-      padding-top: 140px;
-      padding-bottom: 75px;
+      padding-top: 160px;
+      padding-bottom: 95px;
     }
   }
 `
@@ -124,12 +124,10 @@ export const AppScreens = styled.img`
 `
 
 export const Stores = styled.div`
-  padding-bottom: 40px;
+  padding-bottom: 80px;
 `
 
 export const Store = styled.img`
-  width: 145px;
-  height: 48px;
   margin: 0 5px;
   display: none;
 
