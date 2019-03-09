@@ -3,7 +3,7 @@ import withTranslation from 'i18n/withTranslation'
 import { navigateToWebView } from 'navigation/actions'
 import { Base, Text, Link } from './styles'
 
-const LEGAL_URL = 'https://wrench.cc/legal'
+const LEGAL_URL = 'https://beta.wrench.cc/terms'
 
 const Legal = memo(function Legal({ t, ...props }) {
   return (
