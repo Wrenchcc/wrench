@@ -7,7 +7,9 @@ import { ORDER_BY, MAX_LIMIT } from './constants'
 export default async (
   model,
   { after, before, first = 10, last = 10 },
-  options = null,
+  options = {
+    where: null,
+  },
   orderBy = ORDER_BY
 ) => {
   if (first > MAX_LIMIT) {

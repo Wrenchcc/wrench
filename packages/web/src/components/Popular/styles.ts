@@ -16,6 +16,10 @@ export const List = styled.div`
     flex-wrap: nowrap;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `
 

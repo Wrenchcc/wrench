@@ -33,6 +33,7 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
           />
+
           <link rel="stylesheet" href="https://edge-files.wrench.cc/static/fonts/main.css" />
           <link
             rel="apple-touch-icon-precomposed"

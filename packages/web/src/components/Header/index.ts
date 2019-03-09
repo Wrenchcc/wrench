@@ -83,7 +83,6 @@ function Header({ router, isAuthenticated }) {
     },
     {
       href: '/explore',
-      prefetch: true,
       title: t('Header:explore'),
     },
   ]
@@ -99,11 +98,11 @@ function Header({ router, isAuthenticated }) {
       <Search inverted={inverted} />
 
       <Nav>
-        {nav.map(({ title, href, requireAuth, prefetch }) => {
+        {nav.map(({ title, href, requireAuth }) => {
           if (!isAuthenticated && requireAuth) return null
 
           return (
-            <Link passHref href={href} key={href} prefetch={prefetch}>
+            <Link passHref href={href} key={href}>
               <NavLink inverted={inverted} active={router.pathname === href}>
                 {title}
               </NavLink>
@@ -132,7 +131,7 @@ function Header({ router, isAuthenticated }) {
           </Fragment>
         ) : (
           <Fragment>
-            <Link passHref href="/download" prefetch>
+            <Link passHref href="/download">
               <NavLink inverted={inverted} active={router.pathname === '/download'}>
                 {t('Header:download')}
               </NavLink>
