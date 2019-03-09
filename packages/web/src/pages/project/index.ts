@@ -36,7 +36,7 @@ function Project({ slug }) {
           {data.project.title}
         </Title>
 
-        <Followers count={data.project.followers.totalCount} />
+        <Followers followers={data.project.followers} />
 
         {!data.project.projectPermissions.isOwner && (
           <Follow following={data.project.projectPermissions.isFollower} />

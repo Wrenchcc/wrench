@@ -9,7 +9,7 @@ function Avatar({ uri, size = 30, style = {}, isOnline, className }) {
         source={`${uri}?type=square&width=${size * 2}&height=${size * 2}`}
         width={size}
         height={size}
-        borderRadius={size / 2}
+        borderRadius={size}
         className={className}
       />
     </Base>

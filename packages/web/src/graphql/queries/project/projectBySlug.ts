@@ -20,8 +20,15 @@ export const PROJECT_BY_SLUG = gql`
         isFollower
         isOwner
       }
-      followers: followersConnection {
+      followers: followersConnection(first: 3) {
         totalCount
+        edges {
+          node {
+            id
+            username
+            avatarUrl
+          }
+        }
       }
       type {
         title
