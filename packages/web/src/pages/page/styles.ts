@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { DEVICE } from '../../ui/constants'
 
 export const Base = styled.div`
   padding-top: 80px;
@@ -43,5 +44,10 @@ export const Base = styled.div`
 
   strong {
     font-weight: 500;
+  }
+
+  @media ${DEVICE.TABLET} {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `
