@@ -1,4 +1,5 @@
 import { ForbiddenError } from 'apollo-server-express'
+import { pathOr } from 'ramda'
 import convertNodesToEdges from './convertNodesToEdges'
 import convertPageInfo from './convertPageInfo'
 import findOperators from './findOperators'
@@ -7,9 +8,7 @@ import { ORDER_BY, MAX_LIMIT } from './constants'
 export default async (
   model,
   { after, before, first = 10, last = 10 },
-  options = {
-    where: null,
-  },
+  options = null,
   orderBy = ORDER_BY
 ) => {
   if (first > MAX_LIMIT) {
@@ -26,7 +25,7 @@ export default async (
 
   if (after || before) {
     findOptions.where = {
-      ...options.where,
+      ...pathOr({}, ['where'], options),
       ...findOperators({ after, before }, orderBy),
     }
   }
