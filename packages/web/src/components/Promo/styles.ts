@@ -16,10 +16,7 @@ export const Base = styled.div`
   z-index: 101;
 
   @media ${DEVICE.TABLET} {
-    display: ${props => (props.inverted ? 'block' : 'none')};
-    width: 100%;
-    margin: 40px 0 20px;
-    padding: 0;
+    display: none;
   }
 `
 

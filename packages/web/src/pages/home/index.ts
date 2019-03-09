@@ -48,7 +48,7 @@ export default function Home(props) {
           </Description>
           <Signup>{t('home:signup')}</Signup>
         </Inner>
-        <Video autoPlay muted playsinline>
+        <Video autoPlay muted playsInline>
           <source src={VIDEO_URL} type="video/mp4" />
         </Video>
       </Hero>
