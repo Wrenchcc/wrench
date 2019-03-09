@@ -4,6 +4,9 @@
       "follow": "Follow this project",
       "unfollow": "Following"
     },
+    "FollowingProjects": {
+      "title": "Projects you follow"
+    },
     "Footer": {
       "about": "About",
       "press": "Press",
@@ -111,6 +114,9 @@
     "Follow": {
       "follow": "Följ projekt",
       "unfollow": "Följer"
+    },
+    "FollowingProjects": {
+      "title": "Projekt du följer"
     },
     "Footer": {
       "about": "Om oss",

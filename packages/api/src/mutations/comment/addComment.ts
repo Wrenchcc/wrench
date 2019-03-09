@@ -27,7 +27,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
-  const text = trim(input.text)
+  const text = input.text && trim(input.text)
 
   const comment = await ctx.db.Comment.save({
     commentId,
