@@ -1,4 +1,5 @@
 import { ForbiddenError } from 'apollo-server-express'
+import { trim } from 'ramda'
 import { isAuthenticated, canModerateProject } from '../../utils/permissions'
 import { FILE_TYPES } from '../../utils/enums'
 
@@ -37,7 +38,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   const files = await ctx.db.File.save(filesToSave)
 
   return ctx.db.Post.save({
-    caption: input.caption.trim(),
+    caption: trim(input.caption),
     files,
     project,
     userId: ctx.userId,
