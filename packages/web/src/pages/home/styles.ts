@@ -122,3 +122,13 @@ export const AppScreens = styled.img`
   height: 524px;
   align-self: flex-end;
 `
+
+export const Stores = styled.div`
+  padding-bottom: 40px;
+`
+
+export const Store = styled.img`
+  width: 145px;
+  height: 48px;
+  margin: 0 5px;
+`

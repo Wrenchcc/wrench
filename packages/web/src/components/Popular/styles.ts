@@ -15,7 +15,7 @@ export const List = styled.div`
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-y: scroll;
-    overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
   }
 `
 

@@ -17,6 +17,8 @@ import {
   ExploreLink,
   AppScreens,
   Signup,
+  Stores,
+  Store,
 } from './styles'
 
 const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing.mp4'
@@ -62,6 +64,11 @@ export default function Home(props) {
       <AppPromo>
         <Inner direction="row" alignItems="center" justifyContent="space-between">
           <Promo inverted sticky={false} viewerCountry={props.viewerCountry} />
+
+          <Stores>
+            <Store src={require('./app-store.svg')} />
+            <Store src={require('./google-play.svg')} />
+          </Stores>
           <AppScreens src="/static/phones@2x.jpg" />
         </Inner>
       </AppPromo>
