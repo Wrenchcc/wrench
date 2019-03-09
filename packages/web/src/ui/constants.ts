@@ -19,3 +19,24 @@ export const COLORS = {
   WHITE: 'rgb(255, 255, 255)',
   GREEN: 'rgb(5, 176, 30)',
 }
+
+export const SIZES = {
+  MOBILE_SMALL: '320px',
+  MOBILE_MEDIUM: '375px',
+  MOBILE_LARGE: '425px',
+  TABLET: '768px',
+  LAPTOP: '1024px',
+  LAPTOP_LARGE: '1440px',
+  DESKTOP: '2560px',
+}
+
+export const DEVICE = {
+  MOBILE_SMALL: `(max-width: ${SIZES.MOBILE_SMALL})`,
+  MOBILE_MEDIUM: `(max-width: ${SIZES.MOBILE_MEDIUM})`,
+  MOBILE_LARGE: `(max-width: ${SIZES.MOBILE_LARGE})`,
+  TABLET: `(max-width: ${SIZES.TABLET})`,
+  LAPTOP: `(max-width: ${SIZES.LAPTOP})`,
+  LAPTOP_LARGE: `(max-width: ${SIZES.LAPTOP_LARGE})`,
+  DESKTOP: `(max-width: ${SIZES.DESKTOP})`,
+  DESKTOP: `(max-width: ${SIZES.DESKTOP})`,
+}

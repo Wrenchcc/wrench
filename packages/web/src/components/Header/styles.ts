@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import UiSearch from '../Search'
 import UiAvatar from '../../ui/Avatar'
-import { FONTS } from '../../ui/constants'
+import { FONTS, DEVICE } from '../../ui/constants'
 
 export const Base = styled.div`
   display: flex;
@@ -16,14 +16,14 @@ export const Base = styled.div`
   width: 100%;
   box-sizing: border-box;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     padding: 25px;
     height: auto;
   }
 `
 
 export const Nav = styled.nav`
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     display: none;
   }
 `
@@ -38,7 +38,7 @@ export const NavLink = styled.a`
 export const Search = styled(UiSearch)`
   margin-left: 40px;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     display: none;
   }
 `
@@ -48,7 +48,7 @@ export const Right = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     display: none;
   }
 `

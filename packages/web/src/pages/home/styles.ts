@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import UiButton from '../../ui/Button'
 import UiText from '../../ui/Text'
+import { DEVICE } from '../../ui/constants'
 
 export const Hero = styled.section`
   width: 100%;
@@ -18,7 +19,7 @@ export const Hero = styled.section`
     background: rgba(000, 000, 000, 0.5);
   }
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     height: auto;
 
     h1 {
@@ -67,7 +68,7 @@ export const Inner = styled.div`
   position: relative;
   z-index: 10;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     padding: 20px 20px 0 20px;
     box-sizing: border-box;
     flex-direction: column;
@@ -81,7 +82,7 @@ export const Projects = styled.section`
   margin: 0 auto;
   padding-top: 80px;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 45px;
@@ -105,7 +106,7 @@ export const AppPromo = styled.section`
   align-items: center;
   flex-direction: row;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     padding-top: 0;
   }
 `

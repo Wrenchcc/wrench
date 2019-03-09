@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { COLORS } from '../../ui/constants'
+import { COLORS, DEVICE } from '../../ui/constants'
 
 export const Base = styled.footer`
   background: white;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     padding: 20px;
   }
 `
@@ -24,7 +24,7 @@ export const Navigation = styled.nav`
   display: flex;
   width: 100%;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     flex-direction: column;
     margin-top: 30px;
   }
@@ -41,7 +41,7 @@ export const NavItem = styled.li`
 export const Column = styled.div`
   width: 25%;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     width: 50%;
     margin-bottom: 40px;
   }
@@ -55,7 +55,7 @@ export const Bottom = styled.div`
   margin-top: 80px;
   border-top: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     padding-bottom: 30px;
     margin-top: 20px;
   }

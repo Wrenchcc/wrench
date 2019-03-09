@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import UiTitle from '../../ui/Title'
+import { DEVICE } from '../../ui/constants'
 
 export const List = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const List = styled.div`
   margin-left: -40px;
   margin-top: 50px;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     margin-left: -10px;
     flex-direction: row;
     flex-wrap: nowrap;

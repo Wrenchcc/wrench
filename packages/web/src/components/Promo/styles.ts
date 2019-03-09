@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import UiText from '../../ui/Text'
-import { COLORS } from '../../ui/constants'
+import { COLORS, DEVICE } from '../../ui/constants'
 
 export const Base = styled.div`
   width: 414px;
@@ -15,7 +15,7 @@ export const Base = styled.div`
   box-sizing: border-box;
   z-index: 101;
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     display: ${props => (props.inverted ? 'block' : 'none')};
     width: 100%;
     margin: 40px 0;
