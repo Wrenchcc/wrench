@@ -54,7 +54,7 @@ export default function Home() {
           loader={<Loader key={0} />}
         >
           {data.feed.posts.edges.map(({ node }) => (
-            <Post data={node} key={node.id} withoutTitle />
+            <Post data={node} key={node.id} />
           ))}
         </InfiniteScroll>
       </Left>

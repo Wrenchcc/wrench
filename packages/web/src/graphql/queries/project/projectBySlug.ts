@@ -16,6 +16,10 @@ export const PROJECT_BY_SLUG = gql`
       user {
         ...userInfoSmall
       }
+      projectPermissions {
+        isFollower
+        isOwner
+      }
       followers: followersConnection {
         totalCount
       }

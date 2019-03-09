@@ -1,9 +1,9 @@
 import React from 'react'
 import { Base } from './styles'
 
-function Button({ onPress, children, className }) {
+function Button({ onPress, children, className, black }) {
   return (
-    <Base onClick={onPress} className={className}>
+    <Base onClick={onPress} className={className} black={black}>
       {children}
     </Base>
   )

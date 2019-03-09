@@ -3,8 +3,9 @@ import { useQuery } from 'react-apollo-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
-import { Post, Title, Followers, Layout, Loader } from '../../ui'
-import { Left, Right, Follow, Share } from './styles'
+import Follow from '../../components/Follow'
+import { Post, Title, Layout, Loader } from '../../ui'
+import { Left, Right, Share, Followers } from './styles'
 
 function Project({ slug }) {
   const { t } = useTranslation()
@@ -36,7 +37,11 @@ function Project({ slug }) {
         </Title>
 
         <Followers count={data.project.followers.totalCount} />
-        <Follow>Follow this project</Follow>
+
+        {!data.project.projectPermissions.isOwner && (
+          <Follow following={data.project.projectPermissions.isFollower} />
+        )}
+
         <Share>Share</Share>
       </Left>
 
