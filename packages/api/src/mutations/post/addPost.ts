@@ -37,7 +37,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   const files = await ctx.db.File.save(filesToSave)
 
   return ctx.db.Post.save({
-    caption: input.caption,
+    caption: input.caption.trim(),
     files,
     project,
     userId: ctx.userId,

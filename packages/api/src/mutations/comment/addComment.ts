@@ -26,11 +26,12 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
+  const text = input.text.trim()
 
   const comment = await ctx.db.Comment.save({
     commentId,
     postId,
-    text: input.text,
+    text,
     userId: ctx.userId,
   })
 
@@ -50,7 +51,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
         data: {
           commentId: comment.id,
           postId: post.id,
-          text: input.text,
+          text,
           title: project.title,
         },
         to: post.userId,
@@ -78,7 +79,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
           ctx.services.firebase.send({
             data: {
               commentId: comment.id,
-              text: input.text,
+              text,
               title: project.title,
               postId: post.id,
             },

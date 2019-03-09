@@ -58,8 +58,8 @@ function Footer() {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/gdpr">
-                  <a>{t('Footer:gdpr')}</a>
+                <Link href="/eula">
+                  <a>{t('Footer:eula')}</a>
                 </Link>
               </NavItem>
               <NavItem>
