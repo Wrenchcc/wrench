@@ -111,7 +111,7 @@ class Post extends PureComponent {
               onLongPress={this.toggleActionSheet}
               onPress={this.goToProject}
               disabled={onPost}
-              color={onPost ? 'black' : 'grey'}
+              color={onPost ? 'dark' : 'grey'}
               lineHeight={25}
             >
               {post.caption}

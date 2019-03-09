@@ -23,7 +23,7 @@ export default memo(function Badge() {
                 backgroundColor: COLORS.ORANGE,
                 borderWidth: 3,
                 borderStyle: 'solid',
-                borderColor: COLORS.BLACK,
+                borderColor: COLORS.DARK,
               }}
             />
           )

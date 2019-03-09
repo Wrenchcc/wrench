@@ -33,7 +33,7 @@ const AddProjectHeader = memo(({
       }
       headerRight={
         isSaving ? (
-          <ActivityIndicator size="small" color="black" />
+          <ActivityIndicator size="small" color="dark" />
         ) : (
           actionRight && (
             <Text color="dark" medium onPress={actionRight}>

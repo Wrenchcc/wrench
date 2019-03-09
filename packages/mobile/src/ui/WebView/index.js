@@ -151,7 +151,7 @@ class WebView extends PureComponent {
         />
         <ProgressBar
           opacity={this.isLoading ? 1 : 0}
-          fillColor="black"
+          fillcolor="dark"
           borderRadius={0}
           barHeight={2}
           progress={this.progress}

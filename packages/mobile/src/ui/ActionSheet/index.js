@@ -22,7 +22,7 @@ const ActionSheet = memo(function ActionSheet({
       options={options.map(item => item.name)}
       cancelButtonIndex={cancelButtonIndex}
       onPress={selectAction}
-      tintColor="black"
+      tintcolor="dark"
       {...restProps}
       ref={actionSheetReference => {
         if (actionSheetReference && isOpen) {

@@ -3,9 +3,9 @@ import { COLORS } from 'ui/constants'
 import { isIphoneX } from 'utils/platform'
 
 export const Base = styled.View`
-  padding: 10px 20px 20px 20px;
+  padding: 0 20px 20px 20px;
   padding-bottom: ${isIphoneX ? 40 : 20};
-  height: ${isIphoneX ? 80 : 60};
+  height: ${isIphoneX ? 100 : 60};
   position: absolute;
   bottom: ${isIphoneX ? -20 : 0};
   left: 0;
