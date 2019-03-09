@@ -1,26 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Alert } from 'react-native'
-import { request, openSettings, canOpenSettings, RESULTS } from 'react-native-permissions'
+import { request, openSettings, RESULTS } from 'react-native-permissions'
 import withTranslation from 'i18n/withTranslation'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
 const AskForPermission = ({ t, permission, onSuccess }) => {
+  const key = permission.toLowerCase()
+
   const onPress = () => request(permission).then(res => {
     if (res !== RESULTS.GRANTED) {
-      const buttons = [{ text: t(`AskForPermission:${permission}:alertCancel`), style: 'cancel' }]
+      const buttons = [{ text: t(`AskForPermission:${key}:alertCancel`), style: 'cancel' }]
 
-      // if (canOpenSettings()) {
       buttons.push({
-        text: t(`AskForPermission:${permission}:alertOpen`),
+        text: t(`AskForPermission:${key}:alertOpen`),
         onPress: () => openSettings(),
       })
-      // }
 
       Alert.alert(
-        t(`AskForPermission:${permission}.alertTitle`),
-        t(`AskForPermission:${permission}:alertDescription`),
+        t(`AskForPermission:${key}.alertTitle`),
+        t(`AskForPermission:${key}:alertDescription`),
         buttons
       )
     } else {
@@ -31,15 +31,15 @@ const AskForPermission = ({ t, permission, onSuccess }) => {
   return (
     <Base>
       <Headline color="white" medium numberOfLines={0}>
-        {t(`AskForPermission:${permission}:permissionHeadline`)}
+        {t(`AskForPermission:${key}:permissionHeadline`)}
       </Headline>
       <Description color="white" opacity={0.8}>
-        {t(`AskForPermission:${permission}:permissionDescription`)}
+        {t(`AskForPermission:${key}:permissionDescription`)}
       </Description>
 
       <Touchable onPress={onPress}>
         <Text color="white" medium>
-          {t(`AskForPermission:${permission}:permissionButton`)}
+          {t(`AskForPermission:${key}:permissionButton`)}
         </Text>
       </Touchable>
     </Base>
