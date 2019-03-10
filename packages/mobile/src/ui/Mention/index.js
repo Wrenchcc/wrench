@@ -8,11 +8,12 @@ import MentionUser from 'ui/MentionUser'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { TOTAL_HEADER_HEIGHT } from 'ui/constants'
 import NoResults from 'ui/NoResults'
-import { isIphone } from 'utils/platform'
+import { isIphone, isIphoneX } from 'utils/platform'
 
 // TODO: And same offset on comments and posts
 // Keyboard height + input
-const DEFAULT_OFFSET_BOTTOM = isIphone ? 360 : 70
+const SAFE_AREA = isIphoneX ? 60 : 0
+const DEFAULT_OFFSET_BOTTOM = isIphone ? 300 + SAFE_AREA : 70
 
 const styles = {
   container: {
