@@ -8,6 +8,7 @@ export default isAuthenticated(async (_, { id }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this post.')
   }
 
+  await ctx.db.File.delete({ postId: id })
   await ctx.db.Post.delete(id)
 
   return true

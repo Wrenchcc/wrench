@@ -65,7 +65,7 @@ function Promo({ viewerCountry = 'us', sticky = true, inverted = false, paddingH
                   }
                 },
                 variables: {
-                  number,
+                  number: number.replace(/\D+/g, ''),
                 },
               })
             }
