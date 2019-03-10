@@ -25,7 +25,6 @@ app.prepare().then(() => {
   server.use(i18nextMiddleware.handle(i18n))
 
   server.get('*', (req, res) => {
-    res.redirect(301, 'https://wrench.cc')
     handle(req, res)
   })
 
