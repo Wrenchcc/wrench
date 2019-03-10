@@ -1,0 +1,14 @@
+{
+  "name": "image-rasize",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.22",
+    "@types/node": "^11.11.0",
+    "@types/sharp": "^0.21.3",
+    "aws-sdk": "^2.418.0"
+  },
+  "dependencies": {
+    "sharp": "^0.21.3"
+  }
+}
