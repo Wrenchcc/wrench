@@ -17,7 +17,6 @@ type Result = CloudFrontResultResponse
 
 const resultResponse = (response: CloudFrontResponse): Result => response
 
-// noinspection JSUnusedGlobalSymbols
 export const originResponse: Handler = async (
   event: CloudFrontResponseEvent,
   context: Context,
