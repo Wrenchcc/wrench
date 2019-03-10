@@ -44,7 +44,7 @@ export default createGlobalStyle`
   .carousel__next-button {
     position: absolute;
     top: 50%;
-    z-index: 100;
+    z-index: 50;
   }
 
   .carousel__next-button {
@@ -65,7 +65,7 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-  
+
   a {
     color: black;
     text-decoration: none;

@@ -17,7 +17,7 @@ export default {
   },
   [ROUTE_NAMES.USER]: {
     component: User,
-    path: 'user/:username',
+    path: ':username',
   },
   ...mapRouteForSection(Settings),
 }

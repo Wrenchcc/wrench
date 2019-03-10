@@ -140,7 +140,7 @@ class Project extends PureComponent {
   render() {
     const { posts, project, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
-    const emptyState = project.projectPermissions.isOwner
+    const emptyState = project.projectPermissions && project.projectPermissions.isOwner
       ? TYPES.PROJECT_POST
       : TYPES.PROJECT_NO_POSTS
     const hasPosts = posts && posts.length > 0
