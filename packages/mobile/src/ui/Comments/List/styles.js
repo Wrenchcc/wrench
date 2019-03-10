@@ -4,6 +4,7 @@ import UiTouchable from 'ui/Touchable'
 
 export const Row = styled.View`
   flex-direction: row;
+  align-items: center;
 `
 
 export const Comment = styled(UiText)`
