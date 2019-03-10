@@ -11,6 +11,7 @@ const Image = memo(function Image({
   priority,
   ...props
 }) {
+  console.log(props, width)
   return (
     <Base
       width={width}

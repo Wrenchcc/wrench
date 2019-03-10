@@ -16,13 +16,14 @@ const Avatar = ({
   badgeSize,
   style = {},
 }) => {
+  const image = `${uri}?type=square&width=${size * 2}&height=${size * 2}`
   if (onPress) {
     return (
       <View style={{ position: 'relative', height: size, width: size }}>
         {isOnline && <IsOnline badgeSize={badgeSize} />}
         <Touchable onPress={onPress} style={style} disabled={disabled}>
           <Image
-            source={{ uri: `${uri}?type=square&width=${size * 5}&height=${size * 5}` }}
+            source={{ uri: image }}
             width={size}
             height={size}
             borderRadius={size / 2}
@@ -37,7 +38,7 @@ const Avatar = ({
     <View style={{ position: 'relative' }}>
       {isOnline && <IsOnline badgeSize={badgeSize} />}
       <Image
-        source={{ uri }}
+        source={{ uri: image }}
         width={size}
         height={size}
         style={style}
