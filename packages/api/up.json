@@ -56,6 +56,7 @@
     "DB_USERNAME": "wrench_production",
     "ELASTICSEARCH_DOMAIN": "search-wrench-jgsnkbcupcasu5bxjftpyqrl6q.us-east-1.es.amazonaws.com",
     "GOOGLE_FIREBASE_API_KEY": "AIzaSyArEOJzCoryKP88xKVHMQFXMhEgvKl5ljk",
-    "PORT": "4000"
+    "PORT": "4000",
+    "DEBUG": "*"
   }
 }
