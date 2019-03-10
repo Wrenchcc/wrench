@@ -68,7 +68,7 @@ class EditProject extends PureComponent {
     if (navigation.state.params.project.projectPermissions.isOwner) {
       Alert.alert(
         t('EditProject:deleteAlert'),
-        null,
+        t('EditProject:description'),
         [
           { text: t('EditProject:cancel'), style: 'cancel' },
           {

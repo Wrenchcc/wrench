@@ -34,7 +34,7 @@ export default class Following extends BaseEntity {
   @JoinColumn()
   public user: User
 
-  @ManyToOne(() => Project)
+  @ManyToOne(() => Project, { onDelete: 'CASCADE' })
   @JoinColumn()
   public project: Project
 

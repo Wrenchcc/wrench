@@ -73,10 +73,10 @@ export default class Project extends BaseEntity {
   @OneToMany(() => Post, post => post.project)
   public posts: Post[]
 
-  @OneToMany(() => File, file => file.project)
+  @OneToMany(() => File, file => file.project, { onDelete: 'CASCADE' })
   public files: File[]
 
-  @OneToMany(() => Following, following => following.project)
+  @OneToMany(() => Following, following => following.project, { onDelete: 'CASCADE' })
   public followers: Following[]
 
   @ManyToOne(() => Model, model => model)

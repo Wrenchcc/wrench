@@ -8,6 +8,7 @@
       "disableComments": "Disable comments",
       "deleteTitle": "Delete project",
       "deleteAlert": "Delete project?",
+      "description": "This action cannot be undone.",
       "cancel": "Cancel",
       "delete": "Delete",
       "projectSettings": "Project settings"
@@ -20,6 +21,7 @@
       "disableComments": "Stäng av kommentarer",
       "deleteTitle": "Radera projekt",
       "deleteAlert": "Radera projekt?",
+      "description": "Den här åtgärden kan inte ångras.",
       "cancel": "Avbryt",
       "delete": "Radera",
       "projectSettings": "Projekt inställningar"
