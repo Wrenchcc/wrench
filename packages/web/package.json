@@ -54,7 +54,7 @@
     "dotenv": "^6.2.0",
     "imagemin-svgo": "^7.0.0",
     "next-compose-plugins": "^2.1.1",
-    "next-optimized-images": "^2.3.3",
+    "next-optimized-images": "^2.4.0",
     "prettier": "^1.16.4",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.3.3333"

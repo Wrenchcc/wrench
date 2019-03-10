@@ -4203,10 +4203,10 @@ next-cookies@^1.1.2:
     component-cookie "1.1.3"
     cookie "^0.3.1"
 
-next-optimized-images@^2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-2.3.3.tgz#0eafc503450f103c72c4923d53f9c239fd0be6cb"
-  integrity sha512-R9ROUUg0a8o5bTRJ1ti2Y/OzV+7BTG7uAtmY7934RrdF+gM2zxjvBpPpDPT6OU2DIs5/mykMa03/94y2O9LLHA==
+next-optimized-images@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-2.4.0.tgz#b485297e9d6e0836a102a7d22c3d3c9fb135a683"
+  integrity sha512-5y5FFcpwHcBkrBF1l90wTjs80UGalIYH6BBq6I54zAFtFaJB4btCuTrgVXfmm+OI5ayXLI7mqmPWbXz9oxlKTA==
   dependencies:
     chalk "^2.4.1"
     figures "^2.0.0"
