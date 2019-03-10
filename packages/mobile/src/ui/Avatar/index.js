@@ -6,6 +6,7 @@ import Touchable from 'ui/Touchable'
 import Image from 'ui/Image'
 import IsOnline from 'ui/IsOnline'
 
+// TODO: Request based on density
 const Avatar = ({
   uri,
   size = 30,
