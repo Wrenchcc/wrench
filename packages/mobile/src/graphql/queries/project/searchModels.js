@@ -36,7 +36,7 @@ const searchModelsOptions = {
   }),
   props: ({ data: { fetchMore, loading, networkStatus, ...props } }) => {
     const data = props.models
-    const isFetching = loading // || isFetchingMore(networkStatus)
+    const isFetching = loading
 
     return {
       ...props,
@@ -44,31 +44,30 @@ const searchModelsOptions = {
       hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
       isRefetching: isRefetching(networkStatus),
       isFetching,
-      fetchMore: () => {},
+      isFetchingMore: isFetchingMore(networkStatus),
+      fetchMore: () => fetchMore({
+        variables: {
+          after: data.edges[data.edges.length - 1].cursor,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          if (previousResult && !previousResult.models) {
+            return previousResult
+          }
+
+          const { edges, pageInfo, ...rest } = fetchMoreResult.models
+
+          return {
+            models: {
+              ...rest,
+                __typename: previousResult.models.__typename, // eslint-disable-line
+              edges: [...previousResult.models.edges, ...edges],
+              pageInfo,
+            },
+          }
+        },
+      }),
     }
   },
 }
-
-// fetchMore({
-//   variables: {
-//     after: data.edges[data.edges.length - 1].cursor,
-//   },
-//   updateQuery: (previousResult, { fetchMoreResult }) => {
-//     if (!previousResult) {
-//       return previousResult
-//     }
-//
-//     const { edges, pageInfo, ...rest } = fetchMoreResult.models
-//
-//     return {
-//       models: {
-//         ...rest,
-//           __typename: previousResult.models.__typename, // eslint-disable-line
-//         edges: [...previousResult.models.edges, ...edges],
-//         pageInfo,
-//       },
-//     }
-//   },
-// }),
 
 export const searchModels = graphql(SearchModelsQuery, searchModelsOptions)

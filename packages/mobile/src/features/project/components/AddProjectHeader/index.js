@@ -6,14 +6,8 @@ import { navigateBack } from 'navigation/actions'
 import { Header, Text, Icon } from 'ui'
 import { closeDark } from 'images'
 
-const AddProjectHeader = memo(({
-  t,
-  actionRight,
-  icon = closeDark,
-  translationKey = 'next',
-  resetState,
-  isSaving = false,
-}) => (
+const AddProjectHeader = memo(
+  ({ t, actionRight, icon = closeDark, translationKey = 'next', resetState, isSaving = false }) => (
     <Header
       headerLeft={
         <Icon
@@ -33,7 +27,7 @@ const AddProjectHeader = memo(({
       }
       headerRight={
         isSaving ? (
-          <ActivityIndicator size="small" color="dark" />
+          <ActivityIndicator size="small" color="black" />
         ) : (
           actionRight && (
             <Text color="dark" medium onPress={actionRight}>
@@ -43,7 +37,8 @@ const AddProjectHeader = memo(({
         )
       }
     />
-))
+  )
+)
 
 AddProjectHeader.propTypes = {
   actionRight: PropTypes.any,

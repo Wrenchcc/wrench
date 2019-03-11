@@ -42,7 +42,7 @@ class EditProject extends PureComponent {
     const { isSaving } = this.state
 
     return isSaving ? (
-      <ActivityIndicator size="small" color="dark" />
+      <ActivityIndicator size="small" color="black" />
     ) : (
       <Text medium onPress={this.handleEditProject} hapticFeedback="impactLight">
         {this.props.t('EditProject:done')}

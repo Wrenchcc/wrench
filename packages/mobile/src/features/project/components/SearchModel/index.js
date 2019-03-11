@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
-import { InfiniteList, Text, Touchable, NoResults, SearchingFor } from 'ui'
+import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
 import { isIphone } from 'utils/platform'
 
@@ -52,7 +52,7 @@ class SearchModel extends PureComponent {
   }
 
   render() {
-    const { query, models, fetchMore, isFetching, hasNextPage } = this.props
+    const { query, models, fetchMore, isFetching, hasNextPage, isFetchingMore } = this.props
 
     if (!query) return null
 

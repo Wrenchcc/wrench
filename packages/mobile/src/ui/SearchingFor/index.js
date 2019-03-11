@@ -6,8 +6,15 @@ import Text from 'ui/Text'
 
 const SearchingFor = memo(function SearchingFor({ t, query }) {
   return (
-    <View style={{ flex: 1, aligItems: 'center', flexDirection: 'row', paddingTop: 20 }}>
-      <ActivityIndicator size="small" color="dark" />
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingTop: 20,
+      }}
+    >
+      <ActivityIndicator size="small" color="black" />
       <Text
         style={{ paddingLeft: 20, paddingRight: 20 }}
         color="light_grey"
