@@ -6,7 +6,6 @@ import Touchable from 'ui/Touchable'
 import Image from 'ui/Image'
 import IsOnline from 'ui/IsOnline'
 
-// TODO: Request based on density
 const Avatar = ({
   uri,
   size = 30,
@@ -16,14 +15,13 @@ const Avatar = ({
   badgeSize,
   style = {},
 }) => {
-  const image = `${uri}?type=square&width=${size * 2}&height=${size * 2}`
   if (onPress) {
     return (
       <View style={{ position: 'relative', height: size, width: size }}>
         {isOnline && <IsOnline badgeSize={badgeSize} />}
         <Touchable onPress={onPress} style={style} disabled={disabled}>
           <Image
-            source={{ uri: image }}
+            source={{ uri }}
             width={size}
             height={size}
             borderRadius={size / 2}
@@ -38,7 +36,7 @@ const Avatar = ({
     <View style={{ position: 'relative' }}>
       {isOnline && <IsOnline badgeSize={badgeSize} />}
       <Image
-        source={{ uri: image }}
+        source={{ uri }}
         width={size}
         height={size}
         style={style}

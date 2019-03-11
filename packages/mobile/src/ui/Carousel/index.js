@@ -35,6 +35,8 @@ export default class Carousel extends PureComponent {
         >
           <Pinchable maximumZoomScale={5}>
             <Picture
+              width={SIZE}
+              height={SIZE}
               source={{ uri: item.node.uri }}
               priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
               index={index}

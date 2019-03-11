@@ -11,7 +11,7 @@ import Onboarding from 'features/signIn/containers/Onboarding'
 
 useScreens()
 
-export default function App() {
+function App() {
   return (
     <Provider>
       <Subscribe to={[AppContainer]}>
@@ -40,3 +40,5 @@ export default function App() {
     </Provider>
   )
 }
+
+export default App
