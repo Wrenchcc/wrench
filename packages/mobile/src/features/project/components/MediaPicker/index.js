@@ -7,12 +7,12 @@ import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
 import MediaItem from './Item'
 
-const GROUP_TYPES = 'All'
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 32
-const ASSET_TYPE = 'All'
+const PAGE_SIZE = 40
+const GROUP_TYPES = 'All'
+const ASSET_TYPE = 'Photos'
 
 export default class MediaPicker extends Component {
   static propTypes = {
