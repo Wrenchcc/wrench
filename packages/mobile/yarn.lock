@@ -5246,10 +5246,10 @@ react-dom@^16.8.4:
     prop-types "^15.6.2"
     scheduler "^0.13.4"
 
-react-i18next@^10.3.1:
-  version "10.3.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.3.1.tgz#e88292c0d61d4d82603cf8b8ef4499a2411d83f9"
-  integrity sha512-WGKAz360iAAFurdYYpR+s42UEiHtATaAXWwi3Qr1VvGVWNGLiU0L7B4JRHJtByFyG18GKVcewheDNwyXFu3QPQ==
+react-i18next@^10.4.0:
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.4.0.tgz#d9331cda4ae1d460abfbe7d2ce0fa2674dc62cbc"
+  integrity sha512-14nt+uEAY2sZa/hhV7yvFpMekMWxCZZqlwv9LrRsS+9Lb4HB2d9ALSM1uqGy0VzV7anCOrLIXgVh2BqujAFV/w==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5269,10 +5269,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^1.13.1:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.13.1.tgz#19277ccae0a49dbf1b96049da5b95c847ea7aff2"
-  integrity sha512-wYjMi06ygYIiHRM4dSCH914xFUay7Wplx0bAej4iBkZeh54M4AxJDcF4vVZ5vdkpuAg8zvof3l+L1VhcKziMgw==
+react-native-camera@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.0.0.tgz#6cd4ac447737c0b94b244baea07853b38a096a91"
+  integrity sha512-dLJQ1cEyMtRykXgQ7+hYwhcPGRMqTDJYPmA/6eCudYKnJRwXt1FyeOkO19gYQk1HaZZeKSyr9sN/ktIx8oN/CA==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5293,10 +5293,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.28.0.tgz#2024cea46248935e1139fb9418e73b095b6d6f4f"
-  integrity sha512-Xbu8zG8Ve6vhys1+wVfxKsC2tcYVw35zwgUYUpUGSHYmm9asakpitUKa7IEqNdRYmcShLVt+V/UZtq/sGhxopQ==
+react-native-device-info@^0.28.1:
+  version "0.28.1"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.28.1.tgz#d182d2ddbcfc40223e38c784d75ce6032aa9cc38"
+  integrity sha512-kyyi7j86iPEIXAxrvrKLgdbXqruhYTaSdf7vTUAkxnKeOauAoRd+EhEcmTYvpXbr3kU7vPDCjovGqrqLA9jjFQ==
 
 react-native-fast-image@^5.2.0:
   version "5.2.0"
