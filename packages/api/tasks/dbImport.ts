@@ -9,7 +9,7 @@ const debug = require('debug')('task:database:import')
 
 const vehicles = JSON.parse(fs.readFileSync(`${__dirname}/vehicles.json`, 'utf8'))
 
-const CONCURRENCY = 500
+const CONCURRENCY = 100
 
 async function findOrCreateBrand(where, save) {
   const brandRepo = getRepository(Brand)
