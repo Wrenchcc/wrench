@@ -9,9 +9,9 @@ const debug = require('debug')('task:database:import')
 
 const vehicles = JSON.parse(fs.readFileSync(`${__dirname}/vehicles.json`, 'utf8'))
 
-const CONCURRENCY = 100
+const CONCURRENCY = 500
 
-async function findOrCreate(where, save) {
+async function findOrCreateBrand(where, save) {
   const brandRepo = getRepository(Brand)
   const brand = await brandRepo.findOne({ where })
 
@@ -22,20 +22,33 @@ async function findOrCreate(where, save) {
   return brandRepo.save(save)
 }
 
+async function findOrCreateModel(data) {
+  const modelRepo = getRepository(Model)
+  const model = await modelRepo.findOne({ where: data })
+
+  if (model) {
+    return null
+  }
+
+  debug('Adding model to database.')
+
+  return modelRepo.save(data)
+}
+
 createConnection(options).then(async () => {
   debug('Loading brands into DB')
 
   await P.map(
     vehicles,
     async item => {
-      const brand = await findOrCreate(
+      const brand = await findOrCreateBrand(
         { name: item.brand },
         {
           name: item.brand,
         }
       )
 
-      await getRepository(Model).save({
+      await findOrCreateModel({
         brandId: brand.id,
         name: item.model,
         year: item.year,
