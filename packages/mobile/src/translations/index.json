@@ -95,11 +95,11 @@
     },
     "AddProject": {
       "title": "Choose a title for your project.",
-      "placeholder": "Ex. Honda Cafe Racer"
+      "placeholder": "E.g. Honda Cafe Racer"
     },
     "AddProjectModel": {
       "title": "Search and pick your model.",
-      "placeholder": "Ex. Honda 100 R 1994"
+      "placeholder": "E.g. BMW R100 1981"
     },
     "AddProjectType": {
       "title": "Pick your category"
@@ -355,7 +355,7 @@
     },
     "AddProjectModel": {
       "title": "Sök och välj din modell.",
-      "placeholder": "Ex. Honda 100 R 1994"
+      "placeholder": "Ex. BMW R100 1981"
     },
     "AddProjectType": {
       "title": "Välj din kategori"

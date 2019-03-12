@@ -2,11 +2,11 @@
   "AddProjectModel": {
     "en": {
       "title": "Search and pick your model.",
-      "placeholder": "Ex. Honda 100 R 1994"
+      "placeholder": "E.g. BMW R100 1981"
     },
     "sv": {
       "title": "Sök och välj din modell.",
-      "placeholder": "Ex. Honda 100 R 1994"
+      "placeholder": "Ex. BMW R100 1981"
     }
   }
 }
