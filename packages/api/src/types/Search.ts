@@ -10,7 +10,7 @@ export default gql`
   union SearchResultNode = Project | User | Model
 
   type SearchResultEdge {
-    cursor: String!
+    cursor: String
     node: SearchResultNode
   }
 

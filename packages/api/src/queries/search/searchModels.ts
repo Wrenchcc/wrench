@@ -1,13 +1,9 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { encodeCursor, decodeCursor } from '../../utils/paginate/cursor'
 
 const MAX_LIMIT = 50
 const INDEX_NAME = 'vehicles'
-const ORDER_BY = 'year'
 
-export default async ({ query, after, first = 10, last = 10 }, ctx) => {
-  let from
-
+export default async ({ query, after = 0, first = 10, last = 10 }, ctx) => {
   if (!query) {
     return new ForbiddenError('Please provide a search term.')
   }
@@ -16,13 +12,9 @@ export default async ({ query, after, first = 10, last = 10 }, ctx) => {
     return new ForbiddenError('Your limit is to big.')
   }
 
-  if (after) {
-    [from] = decodeCursor(after)
-  }
-
   const { data } = await ctx.services.elasticsearch.search({
     body: {
-      from,
+      from: after,
       query: {
         match: {
           suggestion: query,
@@ -33,8 +25,7 @@ export default async ({ query, after, first = 10, last = 10 }, ctx) => {
     index: INDEX_NAME,
   })
 
-  const edges = data.hits.hits.map(({ _id, _source }, index) => ({
-    cursor: encodeCursor(index + 1, ORDER_BY),
+  const edges = data.hits.hits.map(({ _id, _source }) => ({
     node: {
       brand: {
         id: _source.brandId,

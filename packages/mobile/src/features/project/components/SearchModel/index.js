@@ -52,15 +52,15 @@ class SearchModel extends PureComponent {
   }
 
   render() {
-    const { query, models, fetchMore, isFetching, hasNextPage, isFetchingMore } = this.props
-
-    if (!query) return null
+    const { query, models, fetchMore, isFetching, hasNextPage } = this.props
 
     return (
       <View style={styles.container}>
         <InfiniteList
           defaultPadding
-          ListHeaderComponent={isFetching && <SearchingFor query={query} />}
+          ListHeaderComponent={
+            (query.length === 1 && !models) || isFetching ? <SearchingFor query={query} /> : null
+          }
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="none"
           data={models}

@@ -1,16 +1,15 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
+import { isFetchingMore } from 'graphql/utils/networkStatus'
 
 export const SearchModelsQuery = gql`
-  query searchModels($query: String!, $type: SearchType!, $after: String) {
-    models: search(query: $query, type: $type, after: $after, first: 20) {
+  query searchModels($query: String!, $after: String, $type: SearchType!) {
+    models: search(query: $query, after: $after, type: $type, first: 20) {
       pageInfo {
         hasNextPage
       }
       edges {
-        cursor
         node {
           ... on Model {
             id
@@ -41,11 +40,10 @@ const searchModelsOptions = {
       ...props,
       models: loading && !isFetchingMore(networkStatus) ? [] : pathOr(null, ['edges'], data),
       hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
-      isRefetching: isRefetching(networkStatus),
       isFetching: loading || isFetchingMore(networkStatus),
       fetchMore: () => fetchMore({
         variables: {
-          after: data.edges[data.edges.length - 1].cursor,
+          after: data.edges.length.toString(),
         },
         updateQuery: (previousResult, { fetchMoreResult }) => {
           if (previousResult && !previousResult.models) {
