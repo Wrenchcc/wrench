@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll, FlatList, View, ActivityIndicator } from 'react-native'
+import { Dimensions, TouchableOpacity, View } from 'react-native'
+import { TabView } from 'react-native-tab-view'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
-import { findIndex, propEq, find, omit, pathOr } from 'ramda'
-import { logError } from 'utils/analytics'
+import Animated from 'react-native-reanimated'
+import { findIndex, propEq } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
-import MediaItem from './Item'
+import List from './List'
+
+const { width } = Dimensions.get('window')
 
 const MAX_SELECTED_FILES = 10
-const NEW_CAMERA_FILE = 'new_camera_file'
-const NUM_COLUMNS = 4
-const PAGE_SIZE = 40
-const GROUP_TYPES = 'SavedPhotos'
-const ASSET_TYPE = 'Photos'
+
+const styles = {
+  tabBar: {
+    flexDirection: 'row',
+    paddingTop: 10,
+  },
+  tabItem: {
+    padding: 16,
+  },
+}
 
 export default class MediaPicker extends Component {
   static propTypes = {
@@ -21,23 +29,50 @@ export default class MediaPicker extends Component {
     selectedIndex: PropTypes.number,
   }
 
-  static getDerivedStateFromProps(props, state) {
-    const newItem = find(propEq(NEW_CAMERA_FILE, true), props.selectedFiles)
-
-    if (newItem && newItem.uri !== pathOr(false, ['data', 0, 'uri'], state)) {
-      return {
-        data: [omit([NEW_CAMERA_FILE], newItem), ...state.data],
-      }
-    }
-
-    return state
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   const newItem = find(propEq(NEW_CAMERA_FILE, true), props.selectedFiles)
+  //
+  //   if (newItem && newItem.uri !== pathOr(false, ['data', 0, 'uri'], state)) {
+  //     return {
+  //       data: [omit([NEW_CAMERA_FILE], newItem), ...state.data],
+  //     }
+  //   }
+  //
+  //   return state
+  // }
 
   state = {
-    data: [],
-    end_cursor: null,
-    has_next_page: true,
-    isLoading: true,
+    index: 0,
+    routes: [
+      {
+        key: 'All',
+        title: 'All',
+      },
+      {
+        key: 'Album',
+        title: 'Album',
+      },
+      // {
+      //   key: 'Event',
+      //   title: 'Event',
+      // },
+      // {
+      //   key: 'Faces',
+      //   title: 'Faces',
+      // },
+      {
+        key: 'Library',
+        title: 'Library',
+      },
+      {
+        key: 'PhotoStream',
+        title: 'Photo stream',
+      },
+      {
+        key: 'SavedPhotos',
+        title: 'Saved photos',
+      },
+    ],
   }
 
   constructor(props) {
@@ -47,48 +82,14 @@ export default class MediaPicker extends Component {
 
   checkPhotoPermission = () => {
     check(IOS_PERMISSIONS.PHOTO_LIBRARY).then(response => {
-      if (response === RESULTS.GRANTED) {
-        this.getFiles()
-      }
       this.setState({
-        isLoading: false,
         photoPermission: response,
       })
     })
   }
 
   permissionAuthorized = () => {
-    this.setState({ photoPermission: RESULTS.GRANTED }, this.getFiles)
-  }
-
-  getFiles = async after => {
-    const { data, has_next_page: hasNextPage } = this.state
-    if (!hasNextPage) return
-
-    try {
-      const result = await CameraRoll.getPhotos({
-        after,
-        first: PAGE_SIZE,
-        groupTypes: GROUP_TYPES,
-        assetType: ASSET_TYPE,
-      })
-
-      const loadedFiles = result.edges.map(image => image.node.image)
-
-      this.setState({
-        data: data.concat(loadedFiles),
-        ...result.page_info,
-      })
-    } catch (err) {
-      logError(err)
-    }
-  }
-
-  onEndReached = () => {
-    const { has_next_page: hasNextPage } = this.state
-    if (hasNextPage) {
-      this.getFiles(this.state.end_cursor)
-    }
+    this.setState({ photoPermission: RESULTS.GRANTED })
   }
 
   toggleSelection = file => {
@@ -109,40 +110,45 @@ export default class MediaPicker extends Component {
     }
   }
 
-  renderFooterLoader = () => {
-    if (this.state.hasNextPage) {
-      return (
-        <View style={{ paddingTop: 30, paddingBottom: 30 }}>
-          <ActivityIndicator color={this.state.activityIndicatorColor} />
-        </View>
-      )
-    }
-
-    return null
-  }
-
-  renderItem = ({ item }) => {
-    const selectedIndex = this.indexOfItem(item)
-    const isSelected = selectedIndex >= 0
-
-    return (
-      <MediaItem
-        item={item}
-        onPress={this.toggleSelection}
-        order={selectedIndex + 1}
-        selected={isSelected}
-      />
-    )
-  }
-
   indexOfItem(item) {
     return findIndex(propEq('uri', item.uri))(this.props.selectedFiles)
   }
 
-  render() {
-    const { data, photoPermission, isLoading } = this.state
+  renderScene = ({ route }) => <List groupType={route.key} />
 
-    if (isLoading) return null
+  renderTabBar = props => {
+    const inputRange = props.navigationState.routes.map((x, i) => i)
+
+    return (
+      <View style={styles.tabBar}>
+        {props.navigationState.routes.map((route, i) => {
+          const color = Animated.color(
+            Animated.round(
+              Animated.interpolate(props.position, {
+                inputRange,
+                outputRange: inputRange.map(inputIndex => (inputIndex === i ? 111 : 255)),
+              })
+            ),
+            255,
+            255
+          )
+
+          return (
+            <TouchableOpacity
+              style={styles.tabItem}
+              onPress={() => this.setState({ index: i })}
+              key={route.key}
+            >
+              <Animated.Text style={{ color }}>{route.title}</Animated.Text>
+            </TouchableOpacity>
+          )
+        })}
+      </View>
+    )
+  }
+
+  render() {
+    const { photoPermission } = this.state
 
     if (photoPermission !== RESULTS.GRANTED) {
       return (
@@ -154,16 +160,12 @@ export default class MediaPicker extends Component {
     }
 
     return (
-      <FlatList
-        contentContainerStyle={{ padding: 3 }}
-        data={data}
-        initialNumToRender={PAGE_SIZE}
-        keyExtractor={item => item.uri}
-        ListFooterComponent={this.renderFooterLoader}
-        numColumns={NUM_COLUMNS}
-        onEndReached={this.onEndReached}
-        renderItem={this.renderItem}
-        style={{ flex: 1 }}
+      <TabView
+        navigationState={this.state}
+        renderScene={this.renderScene}
+        onIndexChange={index => this.setState({ index })}
+        initialLayout={{ width }}
+        renderTabBar={this.renderTabBar}
       />
     )
   }
