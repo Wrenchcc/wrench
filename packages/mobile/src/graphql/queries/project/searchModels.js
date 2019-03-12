@@ -5,7 +5,7 @@ import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 
 export const SearchModelsQuery = gql`
   query searchModels($query: String!, $type: SearchType!, $after: String) {
-    models: search(query: $query, type: $type, after: $after) {
+    models: search(query: $query, type: $type, after: $after, first: 20) {
       pageInfo {
         hasNextPage
       }
@@ -36,15 +36,13 @@ const searchModelsOptions = {
   }),
   props: ({ data: { fetchMore, loading, networkStatus, ...props } }) => {
     const data = props.models
-    const isFetching = loading
 
     return {
       ...props,
-      models: isFetching ? [] : pathOr(null, ['edges'], data),
+      models: loading && !isFetchingMore(networkStatus) ? [] : pathOr(null, ['edges'], data),
       hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
       isRefetching: isRefetching(networkStatus),
-      isFetching,
-      isFetchingMore: isFetchingMore(networkStatus),
+      isFetching: loading || isFetchingMore(networkStatus),
       fetchMore: () => fetchMore({
         variables: {
           after: data.edges[data.edges.length - 1].cursor,
