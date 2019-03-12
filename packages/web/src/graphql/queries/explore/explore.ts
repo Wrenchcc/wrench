@@ -22,7 +22,6 @@ export const GET_EXPLORE = gql`
         }
       }
     }
-
     posts(after: $after) {
       edges {
         cursor

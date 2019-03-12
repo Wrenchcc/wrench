@@ -40,6 +40,7 @@ class Popular extends PureComponent {
         onPress={() => navigateToProject({ project })}
         first={index === 0}
         last={index === projects && projects.length - 1}
+        user={project.user}
       />
     )
   }
