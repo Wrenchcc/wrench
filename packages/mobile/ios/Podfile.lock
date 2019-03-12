@@ -156,8 +156,8 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
-  - React (0.59.0-rc.2):
-    - React/Core (= 0.59.0-rc.2)
+  - React (0.59.0):
+    - React/Core (= 0.59.0)
   - react-native-camera (2.0.0):
     - React
     - react-native-camera/RCT (= 2.0.0)
@@ -203,55 +203,55 @@ PODS:
     - React
   - react-native-webview (5.3.0):
     - React
-  - React/Core (0.59.0-rc.2):
-    - yoga (= 0.59.0-rc.2.React)
-  - React/CxxBridge (0.59.0-rc.2):
+  - React/Core (0.59.0):
+    - yoga (= 0.59.0.React)
+  - React/CxxBridge (0.59.0):
     - Folly (= 2018.10.22.00)
     - React/Core
     - React/cxxreact
     - React/jsiexecutor
-  - React/cxxreact (0.59.0-rc.2):
+  - React/cxxreact (0.59.0):
     - boost-for-react-native (= 1.63.0)
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
     - React/jsinspector
-  - React/DevSupport (0.59.0-rc.2):
+  - React/DevSupport (0.59.0):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.59.0-rc.2)
-  - React/jsi (0.59.0-rc.2):
+  - React/fishhook (0.59.0)
+  - React/jsi (0.59.0):
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
-  - React/jsiexecutor (0.59.0-rc.2):
+  - React/jsiexecutor (0.59.0):
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
     - React/cxxreact
     - React/jsi
-  - React/jsinspector (0.59.0-rc.2)
-  - React/RCTActionSheet (0.59.0-rc.2):
+  - React/jsinspector (0.59.0)
+  - React/RCTActionSheet (0.59.0):
     - React/Core
-  - React/RCTAnimation (0.59.0-rc.2):
+  - React/RCTAnimation (0.59.0):
     - React/Core
-  - React/RCTBlob (0.59.0-rc.2):
+  - React/RCTBlob (0.59.0):
     - React/Core
-  - React/RCTCameraRoll (0.59.0-rc.2):
+  - React/RCTCameraRoll (0.59.0):
     - React/Core
     - React/RCTImage
-  - React/RCTImage (0.59.0-rc.2):
+  - React/RCTImage (0.59.0):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.59.0-rc.2):
+  - React/RCTLinkingIOS (0.59.0):
     - React/Core
-  - React/RCTNetwork (0.59.0-rc.2):
+  - React/RCTNetwork (0.59.0):
     - React/Core
-  - React/RCTPushNotification (0.59.0-rc.2):
+  - React/RCTPushNotification (0.59.0):
     - React/Core
-  - React/RCTText (0.59.0-rc.2):
+  - React/RCTText (0.59.0):
     - React/Core
-  - React/RCTWebSocket (0.59.0-rc.2):
+  - React/RCTWebSocket (0.59.0):
     - React/Core
     - React/fishhook
     - React/RCTBlob
@@ -289,7 +289,7 @@ PODS:
     - libwebp (>= 0.5)
     - SDWebImage/Core
   - SSZipArchive (2.1.4)
-  - yoga (0.59.0-rc.2.React)
+  - yoga (0.59.0.React)
 
 DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
