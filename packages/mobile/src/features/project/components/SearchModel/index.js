@@ -53,7 +53,7 @@ class SearchModel extends PureComponent {
 
   render() {
     const { query, models, fetchMore, isFetching, hasNextPage, isFetchingMore } = this.props
-    console.log(isFetchingMore)
+
     if (!query) return null
 
     return (
