@@ -5245,10 +5245,10 @@ react-dom@^16.8.4:
     prop-types "^15.6.2"
     scheduler "^0.13.4"
 
-react-i18next@^10.4.1:
-  version "10.4.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.4.1.tgz#e3d4d4f629f101cc85db067345b500fd93139134"
-  integrity sha512-h9n+pbjkVmcYRz2khMI0AWQsYkfqJa2A0LWQrixx3gooOwOp2Z6LfOljjFMk48FSk9FVS/j4sqmnSqXaliIiww==
+react-i18next@^10.4.2:
+  version "10.4.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.4.2.tgz#f11b55e429a581371f005170dd9a806706bb00cf"
+  integrity sha512-mmQ4Ud+3r4rOh8GavRLwamGgjHU14BKS/UQ37doPovM+WgsF37rwPNLNOpJE9ORHACWRMV4rXj/CvzQgF5F3Xg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5414,10 +5414,10 @@ react-native-tab-view@^1.0.0, react-native-tab-view@^1.2.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-tab-view@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.0.1.tgz#67ad94be00d751f35367838bb7b089361e58af5d"
-  integrity sha512-kA8CHrcJk7TJA1S55FUL2sN9zjnKzEBg0FpK8MnZnvuuopUQOiLgLauX/rJeQMWg3uBIpGdMajNkRxGwvJkgyA==
+react-native-tab-view@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.0.2.tgz#f592ee80ea1ed49b23076dcf3dbc3a06bbe323e7"
+  integrity sha512-PVKeG2Lb9a+oyZ5tJw5VFH88Ox+5X9NZ/IZifZ+6hwBF4jxn5K6eY08ewtrrIJxyeu3Fn7dkAXPQqAr6yM21fg==
 
 react-native-video@^4.4.0:
   version "4.4.0"
