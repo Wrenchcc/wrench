@@ -201,7 +201,7 @@ PODS:
     - react-native-video/Video (= 4.4.0)
   - react-native-video/Video (4.4.0):
     - React
-  - react-native-webview (5.3.0):
+  - react-native-webview (5.3.1):
     - React
   - React/Core (0.59.0):
     - yoga (= 0.59.0.React)

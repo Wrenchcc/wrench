@@ -59,7 +59,7 @@
     "react-native-swiper": "^1.5.14",
     "react-native-tab-view": "^2.0.2",
     "react-native-video": "^4.4.0",
-    "react-native-webview": "^5.3.0",
+    "react-native-webview": "^5.3.1",
     "react-navigation": "^3.3.2",
     "react-spring": "^8.0.15",
     "styled-components": "^v4.1.3",
