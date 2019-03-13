@@ -78,7 +78,7 @@ const sections = props => ({
         },
         {
           titleKey: 'terms',
-          onPress: () => navigateToWebView({ url: 'https://wrench.cc' }),
+          onPress: () => navigateToWebView({ url: 'https://wrench.cc/terms' }),
         },
         {
           titleKey: 'website',
@@ -137,11 +137,11 @@ const sections = props => ({
       data: [
         {
           titleKey: 'faq',
-          onPress: () => navigateToWebView({ url: 'https://wrench.cc' }),
+          onPress: () => navigateToWebView({ url: 'https://wrench.cc/faq' }),
         },
         {
           titleKey: 'report',
-          onPress: () => openLink('mailto:support@wrench.cc?subject=Bug'),
+          onPress: () => openLink('mailto:support@wrench.cc?subject=Bug Report'),
         },
         {
           titleKey: 'chat',

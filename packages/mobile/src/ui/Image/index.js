@@ -15,9 +15,9 @@ const Image = memo(function Image({
   source,
   ...props
 }) {
-  const uri = `${source.uri}?width=${width ? width * density : 'auto'}&height=${
+  const uri = `${source.uri}?w=${width ? width * density : 0}&h=${
     height ? height * density : 'auto'
-  }&webp=true`
+  }&webp=1`
 
   return (
     <Base
