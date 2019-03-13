@@ -11,6 +11,8 @@ import { options, db } from './models'
 import createLoaders from './loaders'
 import services from './services'
 
+require('./utils/typeormMonkeypatch')
+
 const debug = require('debug')('api:server')
 
 const { PORT = 4000 } = process.env
