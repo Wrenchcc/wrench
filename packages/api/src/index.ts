@@ -1,6 +1,6 @@
 import * as express from 'express'
 import { ApolloServer } from 'apollo-server-express'
-import { createConnection } from 'typeorm'
+import { getConnectionManager, Connection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import * as depthLimit from 'graphql-depth-limit'
 import { getUserId } from './utils/tokens'
@@ -17,20 +17,21 @@ const { PORT = 4000 } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
-let connection = null
+const manager = getConnectionManager()
+let connection: Connection
 
 async function server() {
-  if (connection && !connection.isConnected) {
-    connection = null
-    debug('[postgres] connection discard')
+  if (manager.has('default')) {
+    connection = await manager.get('default')
+    debug('Reusing existing connection from manager.')
+  } else {
+    debug('Creating new connection to DB.')
+    connection = await manager.create(options)
   }
 
-  if (connection === null) {
-    connection = await createConnection(options)
-    debug('[postgres] connection init')
-  } else if (connection.isConnected) {
-    debug('[postgres] connected, reuse connection')
-    connection = connection
+  if (!connection.isConnected) {
+    debug('Cached connection was not connected, attempting to reconnect.')
+    await connection.connect()
   }
 
   const driver = connection.driver as PostgresDriver

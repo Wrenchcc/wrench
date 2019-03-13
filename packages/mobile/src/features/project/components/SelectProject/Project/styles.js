@@ -16,7 +16,6 @@ export const Base = styled(UiTouchable)`
 export const Cover = styled(UiImage)`
   width: 40;
   height: 40;
-  margin-right: 10;
 `
 
 export const Middle = styled.View`
@@ -26,6 +25,7 @@ export const Middle = styled.View`
 
 export const Content = styled.View`
   flex: 1;
+  margin-left: 10;
 `
 
 export const Icon = styled.Image`
