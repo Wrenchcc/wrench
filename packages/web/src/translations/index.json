@@ -40,7 +40,7 @@
     },
     "Popular": {
       "title": "Popular projects",
-      "description": "You’ve read about the importance of being courageous."
+      "description": "Here you see the most popular projects from this week."
     },
     "Promo": {
       "title": "Download the Wrench app on Appstore and Google play",
@@ -126,11 +126,11 @@
       "help": "Hjälp",
       "mail": "Mail Support",
       "feedback": "Feedback",
-      "faq": "FAQ",
+      "faq": "Vanliga frågor",
       "legal": "Legal",
       "terms": "Villkor",
       "policy": "Policy",
-      "eula": "EULA",
+      "eula": "Användaravtal",
       "cookies": "Cookies Policy",
       "social": "Social",
       "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm."
@@ -152,7 +152,7 @@
     },
     "Popular": {
       "title": "Populära projekt",
-      "description": "You’ve read about the importance of being courageous."
+      "description": "Här ser du de mest populära projekten från den här veckan."
     },
     "Promo": {
       "title": "Ladda ner Wrench appen på Appstore och Google play",
