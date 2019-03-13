@@ -4,19 +4,11 @@ service:
 plugins:
   - serverless-plugin-ncc
 
+custom:
+  ncc:
+    minify: true
+
 provider:
   name: aws
-  # profile: wrench-api
   region: us-east-1 # Lambda@Edge restriction
   runtime: nodejs8.10 # Lambda@Edge restriction
-
-custom:
-  webpack:
-    packager: yarn
-    includeModules:
-      forceInclude:
-        - sharp # for native Node.js Add-on
-
-functions:
-  OriginResponse:
-    handler: handler.originResponse

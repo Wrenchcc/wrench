@@ -11,14 +11,12 @@ import { S3 } from 'aws-sdk'
 import * as querystring from 'querystring'
 import { isArray } from 'util'
 
-import { Query, resize } from './lib/resize'
+import { Query, resize } from './utils/resize'
 
 type Result = CloudFrontResultResponse
 
-// 型合わせ
 const resultResponse = (response: CloudFrontResponse): Result => response
 
-// noinspection JSUnusedGlobalSymbols
 export const originResponse: Handler = async (
   event: CloudFrontResponseEvent,
   context: Context,
