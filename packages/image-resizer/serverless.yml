@@ -2,7 +2,7 @@ service:
   name: image-resizer
 
 plugins:
-  - serverless-webpack
+  - serverless-plugin-ncc
 
 provider:
   name: aws
