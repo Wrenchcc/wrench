@@ -16,7 +16,7 @@ const Card = memo(function Card({ image, title, slug, user }) {
         }}
       >
         <a>
-          <Picture source={image} />
+          <Picture source={image} width={235} height={235} />
           <ProjectName medium>{title}</ProjectName>
         </a>
       </Link>

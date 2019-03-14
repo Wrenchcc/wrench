@@ -18,7 +18,7 @@ const Image = memo(function Image({
       placeholderColor={placeholderColor}
       {...props}
     >
-      <Picture src={`${source}?w=${width}&h=${height}&webp=1`} />
+      <Picture src={`${source}?w=${width}&h=${height}&type=square&webp=1`} />
     </Base>
   )
 })

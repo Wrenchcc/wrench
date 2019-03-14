@@ -28,7 +28,11 @@ function UserProjects({ projects, fullName }) {
             >
               <a>
                 <Row>
-                  <Image source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)} />
+                  <Image
+                    source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
+                    width={90}
+                    height={90}
+                  />
                   <Content>
                     <Text>{node.title}</Text>
                     <Text color="light_grey" fontSize={15} lineHeight={18}>
