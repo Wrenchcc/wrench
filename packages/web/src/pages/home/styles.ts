@@ -117,10 +117,14 @@ export const ExploreLink = styled.a`
   font-weight: 500;
 `
 
-export const AppScreens = styled.img`
+export const AppScreens = styled.picture`
   width: 482px;
   height: 524px;
   align-self: flex-end;
+
+  img {
+    width: 100%;
+  }
 `
 
 export const Stores = styled.div`
