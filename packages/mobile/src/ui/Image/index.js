@@ -13,9 +13,10 @@ const Image = memo(function Image({
   placeholderColor,
   priority,
   source,
+  absoluteUrl,
   ...props
 }) {
-  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
+  const uri = absoluteUrl || `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
 
   return (
     <Base
@@ -38,10 +39,11 @@ const Image = memo(function Image({
 Image.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  absoluteUrl: PropTypes.string,
   borderRadius: PropTypes.number,
   placeholderColor: PropTypes.string,
   priority: PropTypes.string,
-  source: PropTypes.object.isRequired,
+  source: PropTypes.object,
 }
 
 export default Image
