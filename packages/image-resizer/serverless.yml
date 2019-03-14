@@ -1,5 +1,5 @@
 service:
-  name: image-resizer
+  name: image-resize
 
 plugins:
   - serverless-webpack
@@ -8,15 +8,17 @@ provider:
   name: aws
   region: us-east-1
   runtime: nodejs8.10
-  # deploymentBucket:
-  #   name: wrench-image-resizer
 
 custom:
   webpack:
-    packager: yarn
     includeModules:
-      forceInclude:
-        - sharp # for native Node.js Add-on
+      forceExclude:
+        - aws-sdk
+        - serverless
+    packager: 'yarn'
+    packagerOptions:
+      scripts:
+        - npm rm sharp && env npm_config_arch=x64 npm_config_platform=linux npm_config_target=8.10.0 npm install sharp
 
 functions:
   OriginResponse:

@@ -23,7 +23,8 @@ export const resize: Resize = query => async data => {
 
   const w = min(meta.width, width)
   const h = min(meta.height, height)
-  // image.resize(w, h).max(); // keep aspect ratio
+
+  image.resize(w, h) // image.resize(w, h).max(); // keep aspect ratio
 
   if (webp) {
     image.webp()
