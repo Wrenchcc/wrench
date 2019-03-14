@@ -10,6 +10,8 @@ const Image = memo(function Image({
   source,
   ...props
 }) {
+  const src = `${source}?w=${width}&h=${height}&type=square&webp=1`
+
   return (
     <Base
       width={width}
@@ -18,7 +20,7 @@ const Image = memo(function Image({
       placeholderColor={placeholderColor}
       {...props}
     >
-      <Picture src={`${source}?w=${width}&h=${height}&type=square&webp=1`} />
+      <Picture srcSet={`${src} 1x, ${src}&dpr=2 2x, ${src}&dpr=3 3x`} src={src} />
     </Base>
   )
 })

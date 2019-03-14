@@ -65,8 +65,6 @@ export const originResponse: Handler = async (
   const bucket = hostname.replace(domainRegex, '')
   const key = uri.slice(1)
 
-  console.log(`s3://${bucket}${uri}`)
-
   const s3 = new S3({
     region: AWS_S3_REGION,
     signatureVersion: 'v4',
@@ -81,11 +79,7 @@ export const originResponse: Handler = async (
 
   const query = parse(request.querystring)
 
-  console.log('query', query)
-
   const resizeResult = await resizeS3Image({ s3Object, query, result })
-
-  console.log('resizeResult', resizeResult)
 
   cb(null, resizeResult)
 }
@@ -108,7 +102,6 @@ const resizeS3Image = ({ s3Object, query, result }) => s3Object
     result.status = '403'
     result.headers['content-type'] = [{ key: 'Content-Type', value: 'text/plain' }]
     result.body = err.toString()
-    console.error(err)
 
     return result
   })

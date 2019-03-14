@@ -6,6 +6,7 @@ type Resize = (query: Query) => (data: Data) => Promise<Buffer>
 export interface Query {
   width?: number
   height?: number
+  dpr?: number
   webp?: boolean
 }
 
@@ -19,10 +20,10 @@ export const resize: Resize = query => async data => {
 
   image.rotate()
 
-  const { width, height, webp } = query
+  const { width, height, webp, dpr = 1 } = query
 
-  const w = min(meta.width, width)
-  const h = min(meta.height, height)
+  const w = min(meta.width, width * dpr)
+  const h = min(meta.height, height * dpr)
 
   image.resize(w, h) // image.resize(w, h).max(); // keep aspect ratio
 
