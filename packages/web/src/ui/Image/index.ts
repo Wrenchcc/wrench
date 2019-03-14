@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { Base } from './styles'
+import { Base, Picture } from './styles'
 
 const Image = memo(function Image({
   width,
@@ -18,7 +18,7 @@ const Image = memo(function Image({
       placeholderColor={placeholderColor}
       {...props}
     >
-      <img src={source} width={width} height={height} style={{ width: '100%', height: '100%' }} />
+      <Picture src={`${source}?w=${width}&h=${height}&webp=1`} />
     </Base>
   )
 })

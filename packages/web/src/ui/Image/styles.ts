@@ -8,3 +8,8 @@ export const Base = styled.div`
   width: ${props => props.width}px;
   height: ${props => props.height}px;
 `
+
+export const Picture = styled.img`
+  width: 100%;
+  height: 100%;
+`

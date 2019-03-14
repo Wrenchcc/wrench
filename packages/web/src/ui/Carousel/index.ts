@@ -15,7 +15,7 @@ const Carousel = memo(function Carousel({ files }) {
         <Slider>
           {files.edges.map(({ node }, index) => (
             <Slide index={index} key={index}>
-              <Image source={node.uri} key={node.id} />
+              <Image source={node.uri} key={node.id} width={640} height={640} />
             </Slide>
           ))}
         </Slider>
