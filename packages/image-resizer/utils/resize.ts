@@ -3,6 +3,9 @@ import * as sharp from 'sharp'
 type Data = Buffer | string
 type Resize = (query: Query) => (data: Data) => Promise<Buffer>
 
+// return null if null
+const min = (defaultNum: number, n?: number) => n && Math.min(defaultNum, n)
+
 export interface Query {
   width?: number
   height?: number
@@ -25,7 +28,7 @@ export const resize: Resize = query => async data => {
   const w = min(meta.width, width * dpr)
   const h = min(meta.height, height * dpr)
 
-  image.resize(w, h) // image.resize(w, h).max(); // keep aspect ratio
+  image.resize(w, h)
 
   if (webp) {
     image.webp()
@@ -33,6 +36,3 @@ export const resize: Resize = query => async data => {
 
   return await image.toBuffer()
 }
-
-// return null if null
-const min = (defaultNum: number, n?: number) => n && Math.min(defaultNum, n)

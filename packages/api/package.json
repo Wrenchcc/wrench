@@ -12,14 +12,14 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.4.8",
-    "aws-sdk": "^2.421.0",
+    "aws-sdk": "^2.422.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",
     "debug": "^4.1.1",
     "express": "^4.16.4",
-    "firebase-admin": "^7.0.0",
+    "firebase-admin": "^7.1.0",
     "graphql": "^14.1.1",
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.5.0",
@@ -33,7 +33,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@firebase/app-types": "^0.3.5",
+    "@firebase/app-types": "^0.3.6",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.13",
     "@zeit/ncc": "0.15.2",
