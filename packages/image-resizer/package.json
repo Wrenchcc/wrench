@@ -1,25 +1,27 @@
 {
-  "name": "image-rasizer",
+  "name": "image-resizer",
   "version": "1.0.0",
-  "private": true,
   "main": "handler.js",
+  "private": true,
   "scripts": {
-    "deploy": "serverless deploy --aws-profile wrench-api"
+    "deploy": "serverless deploy --stage production --aws-profile wrench-api"
   },
   "dependencies": {
-    "sharp": "^0.21.3"
+    "sharp": "^0.21.3",
+    "source-map-support": "^0.5.11"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.23",
     "@types/node": "^11.11.3",
     "@types/sharp": "^0.21.3",
-    "@zeit/ncc": "^0.15.2",
-    "aws-sdk": "^2.420.0",
+    "aws-sdk": "^2.421.0",
     "prettier": "^1.16.4",
     "serverless": "^1.38.0",
-    "serverless-plugin-ncc": "^0.2.0",
+    "serverless-webpack": "^5.2.0",
     "ts-loader": "^5.3.3",
     "tslint": "^5.14.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.6",
+    "webpack-node-externals": "^1.7.2"
   }
 }

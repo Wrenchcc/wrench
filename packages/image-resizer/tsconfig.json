@@ -2,8 +2,12 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "es2017",
-    "lib": ["es2017"],
+    "lib": [
+      "es2017"
+    ],
     "moduleResolution": "node"
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

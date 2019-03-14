@@ -13,21 +13,18 @@ export const resize: Resize = query => async data => {
   const image = sharp(data)
   const meta = await image.metadata()
 
-  // guard
   if (meta.format !== 'jpeg') {
     throw new Error(`file format is not jpeg but: ${meta.format}`)
   }
 
-  image.rotate() // before removing metadata
+  image.rotate()
 
   const { width, height, webp } = query
 
-  // resize
   const w = min(meta.width, width)
   const h = min(meta.height, height)
-  // image.resize(w, h).max() // keep aspect ratio TODO
+  // image.resize(w, h).max(); // keep aspect ratio
 
-  // convert
   if (webp) {
     image.webp()
   }

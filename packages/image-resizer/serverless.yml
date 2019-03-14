@@ -2,13 +2,22 @@ service:
   name: image-resizer
 
 plugins:
-  - serverless-plugin-ncc
-
-custom:
-  ncc:
-    minify: true
+  - serverless-webpack
 
 provider:
   name: aws
-  region: us-east-1 # Lambda@Edge restriction
-  runtime: nodejs8.10 # Lambda@Edge restriction
+  region: us-east-1
+  runtime: nodejs8.10
+  # deploymentBucket:
+  #   name: wrench-image-resizer
+
+custom:
+  webpack:
+    packager: yarn
+    includeModules:
+      forceInclude:
+        - sharp # for native Node.js Add-on
+
+functions:
+  OriginResponse:
+    handler: handler.originResponse
