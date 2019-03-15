@@ -15,27 +15,28 @@ function AddProjectType({ t }) {
       {({ updateField }) => (
         <>
           <AddProjectHeader icon={arrowLeft} />
-          <View
-            style={{
-              flex: 1,
-              paddingTop: 30,
+          <ProjectCategories
+            ListHeaderComponent={
+              <View
+                style={{
+                  flex: 1,
+                  paddingTop: 30,
+                }}
+              >
+                <Title
+                  large
+                  numberOfLines={0}
+                  style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 50 }}
+                >
+                  {t('AddProjectType:title')}
+                </Title>
+              </View>
+            }
+            onSelect={type => {
+              updateField('type', type)
+              navigateToAddModel()
             }}
-          >
-            <Title
-              large
-              numberOfLines={0}
-              style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 50 }}
-            >
-              {t('AddProjectType:title')}
-            </Title>
-
-            <ProjectCategories
-              onSelect={type => {
-                updateField('type', type)
-                navigateToAddModel()
-              }}
-            />
-          </View>
+          />
         </>
       )}
     </Subscribe>

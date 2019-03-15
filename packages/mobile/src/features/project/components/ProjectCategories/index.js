@@ -38,10 +38,11 @@ class ProjectCategories extends PureComponent {
   )
 
   render() {
-    const { isFetching, types } = this.props
+    const { ListHeaderComponent, isFetching, types } = this.props
 
     return (
       <FlatList
+        ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={isFetching && <Loader color="grey" />}
         contentContainerStyle={{
           padding: 5,
