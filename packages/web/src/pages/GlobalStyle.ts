@@ -1,8 +1,35 @@
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 
+const FONTS_ENDPOINT = 'https://edge-files.wrench.cc/static/fonts'
+
 export default createGlobalStyle`
   ${reset}
+
+  @font-face {
+    font-family: 'Inter UI';
+    font-style:  normal;
+    font-weight: 400;
+    src: url("${FONTS_ENDPOINT}/Inter-UI-Regular.woff2") format("woff2"),
+         url("${FONTS_ENDPOINT}/Inter-UI-Regular.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: 'Inter UI';
+    font-style:  normal;
+    font-weight: 500;
+    src: url("${FONTS_ENDPOINT}/Inter-UI-Medium.woff2") format("woff2"),
+         url("${FONTS_ENDPOINT}/Inter-UI-Medium.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: 'Inter UI';
+    font-style:  normal;
+    font-weight: 700;
+    src: url("${FONTS_ENDPOINT}/Inter-UI-Bold.woff2") format("woff2"),
+         url("${FONTS_ENDPOINT}/Inter-UI-Bold.woff") format("woff");
+  }
+
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

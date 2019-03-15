@@ -9,7 +9,11 @@ export const Base = styled.div`
   height: ${props => props.height}px;
 `
 
-export const Picture = styled.img`
+export const Picture = styled.picture`
   width: 100%;
   height: 100%;
+
+  img {
+    width: 100%;
+  }
 `
