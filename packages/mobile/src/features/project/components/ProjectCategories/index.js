@@ -16,6 +16,7 @@ class ProjectCategories extends PureComponent {
     types: PropTypes.array,
     isFetching: PropTypes.bool.isRequired,
     onSelect: PropTypes.func.isRequired,
+    ListHeaderComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   }
 
   renderItem = ({ item }) => (

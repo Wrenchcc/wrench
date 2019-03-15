@@ -8,9 +8,10 @@ const Image = memo(function Image({
   placeholderColor,
   style,
   source,
+  absoluteUrl,
   ...props
 }) {
-  const src = `${source}?w=${width}&h=${height}`
+  const src = absoluteUrl || `${source}?w=${width}&h=${height}`
 
   return (
     <Base
