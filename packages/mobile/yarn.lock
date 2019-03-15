@@ -1223,10 +1223,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.4.4.tgz#eac50597cfa376b431badf8ef441a6ce593d4816"
-  integrity sha512-RlZpnCAGMeuSTkv5/QkJ8HbJ9NNWrV4KC0it58GinLRXHBWzSH3iE/0+3AXA3Iact4+wM4L7haXYQ9Pjqc89Vg==
+"@react-native-community/cli@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.4.5.tgz#6cf35d73e14f65e13e77fbb572f2d5b9d2cbadb5"
+  integrity sha512-WH5E7rEUpftXJ4aAS/U/3euMx1S7FI0+CwT2VN3sFDtErtCVgqmyBXnBNp9Zk3XK5ANbf49cVR25rkOBjf5TVw==
   dependencies:
     chalk "^1.1.1"
     commander "^2.19.0"

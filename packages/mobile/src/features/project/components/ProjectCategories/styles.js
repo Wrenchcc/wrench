@@ -1,14 +1,19 @@
 import styled from 'styled-components'
+import UiImage from 'ui/Image'
 
-export const Image = styled.ImageBackground`
-  margin: ${props => `${props.gutter / 2}px`}
-  height: ${props => props.size}
-  width: ${props => props.size}
+export const Image = styled(UiImage)`
+  height: ${props => props.height - props.gutter / 2};
+  width: ${props => props.width - props.gutter / 2};
   flex: 1;
   justify-content: flex-end;
   padding: 10px;
+  margin: ${props => `${props.gutter / 2}px`};
 `
 
+export const Picture = styled.View`
+  height: ${props => props.height};
+  width: ${props => props.width};
+`
 export const Overlay = styled.View`
   position: absolute;
   top: 0;

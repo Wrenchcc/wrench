@@ -156,6 +156,11 @@ const sections = props => ({
       data: [
         {
           titleKey: 'knallpott',
+          onPress: () => navigateToWebView({ url: 'https://knallpott.de' }),
+        },
+        {
+          titleKey: 'paal',
+          onPress: () => navigateToWebView({ url: 'http://paalmotorcycles.com' }),
         },
       ],
     },

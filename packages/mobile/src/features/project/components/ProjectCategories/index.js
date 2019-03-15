@@ -4,7 +4,7 @@ import { Dimensions, FlatList } from 'react-native'
 import { compose } from 'react-apollo'
 import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
 import { Touchable, Text, Loader } from 'ui'
-import { Cell, Image, Overlay } from './styles'
+import { Cell, Image, Overlay, Picture } from './styles'
 
 const { width } = Dimensions.get('window')
 
@@ -21,10 +21,18 @@ class ProjectCategories extends PureComponent {
   renderItem = ({ item }) => (
     <Cell key={item.id}>
       <Touchable hapticFeedback="impactLight" onPress={() => this.props.onSelect(item)}>
-        <Image source={{ uri: item.imageUrl }} size={ITEM_SIZE} gutter={GUTTER}>
-          <Overlay />
-          <Text color="white">{item.title}</Text>
-        </Image>
+        <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
+          <Image
+            placeholderColor="transparent"
+            source={{ uri: item.imageUrl }}
+            width={ITEM_SIZE}
+            height={ITEM_SIZE}
+            gutter={GUTTER}
+          >
+            <Overlay />
+            <Text color="white">{item.title}</Text>
+          </Image>
+        </Picture>
       </Touchable>
     </Cell>
   )

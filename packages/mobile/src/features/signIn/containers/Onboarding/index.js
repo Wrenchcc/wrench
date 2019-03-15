@@ -11,7 +11,7 @@ import { Header, Touchable, Text, Loader } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
 
-import { Base, Cell, Image, Overlay } from './styles'
+import { Base, Cell, Image, Overlay, Picture } from './styles'
 
 const { width } = Dimensions.get('window')
 
@@ -96,15 +96,19 @@ class Onboarding extends Component {
   renderItem = ({ item }) => (
     <Cell key={item.id}>
       <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
-        <Image
-          selected={this.isAdded(item)}
-          source={{ uri: item.imageUrl }}
-          size={ITEM_SIZE}
-          gutter={GUTTER}
-        >
-          <Overlay selected={false} />
-          <Text color="white">{item.title}</Text>
-        </Image>
+        <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
+          <Image
+            selected={this.isAdded(item)}
+            placeholderColor="transparent"
+            source={{ uri: item.imageUrl }}
+            gutter={GUTTER}
+            width={ITEM_SIZE}
+            height={ITEM_SIZE}
+          >
+            <Overlay selected={false} />
+            <Text color="white">{item.title}</Text>
+          </Image>
+        </Picture>
       </Touchable>
     </Cell>
   )
