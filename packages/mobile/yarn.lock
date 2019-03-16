@@ -1223,10 +1223,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.4.5.tgz#6cf35d73e14f65e13e77fbb572f2d5b9d2cbadb5"
-  integrity sha512-WH5E7rEUpftXJ4aAS/U/3euMx1S7FI0+CwT2VN3sFDtErtCVgqmyBXnBNp9Zk3XK5ANbf49cVR25rkOBjf5TVw==
+"@react-native-community/cli@^1.4.6":
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.4.6.tgz#fc719675cb95d1146c004c8829ae32d50fb4dde3"
+  integrity sha512-xOVUDyrIatFnxz3ot/lKHWPXiOsoYlaTYxvtfLC8lf5d3vZ8TQjH31g2ltFsSTgxWpkOk07R3z2f/ShFP0wguQ==
   dependencies:
     chalk "^1.1.1"
     commander "^2.19.0"
@@ -5296,16 +5296,17 @@ react-native-camera@^2.0.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-native-code-push@^5.5.2:
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-5.5.2.tgz#b394e8f92f8bc4d184d73ff8d066406def24c1e8"
-  integrity sha512-hBXGhB6DcVqwnN4jWHcCCUBt3GMoC/FZ+ys/mlHMaR9696oKbv5ioW8mAFHMCtPRpdlt2Keo6MoLBMHigTSzug==
+react-native-code-push@^5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-5.5.3.tgz#7af07c96c3fc67eaca4f02e9c8b87295c88bb7b3"
+  integrity sha512-BkKNcVIq6NBWJCQHEV1LBiFxuyQUAVmrhh8S5f6U0c+S2y0YBGTQeaGlVp4MCuVnfLX+nC8CEo99OkFD/aiu8g==
   dependencies:
     code-push "2.0.6"
     glob "^5.0.15"
     hoist-non-react-statics "^2.3.1"
     inquirer "1.1.2"
     plist "3.0.1"
+    semver "^5.6.0"
     xcode "1.0.0"
 
 react-native-config@^0.11.7:
@@ -5520,10 +5521,10 @@ react-navigation-drawer@1.3.0:
   dependencies:
     react-native-tab-view "^1.2.0"
 
-react-navigation-stack@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.1.0.tgz#a4e693f7b077945ba04e1d50a653c0dc338f6621"
-  integrity sha512-Yp8ZdVOvddMfUCPFI78x8l1RAubyfuVhq10MvOdcUTtBetQVlXNBfdLKdMRtqXgBLGOjWElGrbpLDxi+TfX8bQ==
+react-navigation-stack@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.1.1.tgz#f9d70db678b50ba581c6aeea1171ad6b1a212693"
+  integrity sha512-x7dpMHIlwMNHNUa91lUXtHoslbD+LcXT9EPagxQJH7JHVECxyo4iDLE1w9yABiJXuVDdNvBeVHYwLk3sjafbTA==
 
 react-navigation-tabs@1.0.2:
   version "1.0.2"
@@ -5535,15 +5536,15 @@ react-navigation-tabs@1.0.2:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^3.4.0-rc.0:
-  version "3.4.0-rc.0"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.4.0-rc.0.tgz#70b085c714b64d5a3340d717058b967c6ca4a3df"
-  integrity sha512-ymqbAlNcZVGG3TLK7r2yyuQoraIRD/f0gLmx1Kl+VoK4SrjRq9Hgfou179Wjsd9qDuSoVZDmWwwCOT6DdSY/Ew==
+react-navigation@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.4.0.tgz#52933cfe33199e776646dbee4d36e384da5bd251"
+  integrity sha512-Cmbl+giMpgEGPIDWL/M3wGhs5u1+wJ+xzFzbon28pxKwFePNvYTSunMnHc4vd89U8xSlmtUY8zBILtm2qOTlQg==
   dependencies:
     "@react-navigation/core" "3.2.0"
     "@react-navigation/native" "3.1.5"
     react-navigation-drawer "1.3.0"
-    react-navigation-stack "1.1.0"
+    react-navigation-stack "1.1.1"
     react-navigation-tabs "1.0.2"
 
 react-proxy@^1.1.7:
@@ -5899,7 +5900,7 @@ scheduler@^0.13.4:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-"semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1:
+"semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==
