@@ -1,12 +1,10 @@
 import React from 'react'
-import { View, PixelRatio } from 'react-native'
+import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Touchable from 'ui/Touchable'
 import Image from 'ui/Image'
 import IsOnline from 'ui/IsOnline'
-
-const density = PixelRatio.get()
 
 const Avatar = ({
   uri,
@@ -17,15 +15,13 @@ const Avatar = ({
   badgeSize,
   style = {},
 }) => {
-  const absoluteUrl = `${uri}?type=square&width=${size * density}&height=${size * density}`
-
   if (onPress) {
     return (
       <View style={{ position: 'relative', height: size, width: size }}>
         {isOnline && <IsOnline badgeSize={badgeSize} />}
         <Touchable onPress={onPress} style={style} disabled={disabled}>
           <Image
-            absoluteUrl={absoluteUrl}
+            absoluteUrl={uri}
             width={size}
             height={size}
             borderRadius={size / 2}
