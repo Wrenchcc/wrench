@@ -45,6 +45,7 @@ async function server() {
       loaders: createLoaders(),
       services,
       userId: getUserId(req),
+      userAgent: req.headers['user-agent'],
     }),
     formatError,
     schema,

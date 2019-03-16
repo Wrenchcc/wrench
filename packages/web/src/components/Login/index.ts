@@ -8,7 +8,6 @@ import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
 import { Base, Description, FacebookButton } from './styles'
 
 const FB_APP_ID = '1174076712654826'
-const PLATFORM = 'WEB'
 
 export default function Login({ closeModal }) {
   const { t } = useTranslation()
@@ -34,7 +33,6 @@ export default function Login({ closeModal }) {
           },
           variables: {
             facebookToken: accessToken,
-            platform: PLATFORM,
           },
         })
         }
