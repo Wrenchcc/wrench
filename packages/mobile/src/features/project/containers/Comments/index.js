@@ -127,6 +127,7 @@ class Comments extends PureComponent {
         <CommentItem
           highlight
           onReply={this.onReply}
+          fetchMoreReplies={this.props.fetchMoreReplies}
           data={{
             node: comment,
           }}
@@ -138,6 +139,7 @@ class Comments extends PureComponent {
       <>
         <CommentItem
           first
+          fetchMoreReplies={this.props.fetchMoreReplies}
           data={{
             node: {
               ...post,
