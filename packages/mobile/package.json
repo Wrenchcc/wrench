@@ -60,7 +60,7 @@
     "react-native-tab-view": "^2.0.3",
     "react-native-video": "^4.4.0",
     "react-native-webview": "^5.3.1",
-    "react-navigation": "^3.4.0",
+    "react-navigation": "^3.4.1",
     "react-spring": "^8.0.15",
     "styled-components": "^v4.1.3",
     "unstated": "^2.1.1",
