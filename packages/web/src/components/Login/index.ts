@@ -28,8 +28,8 @@ export default function Login({ closeModal }) {
         callback={({ accessToken }) => handleAuth({
           update: (proxy, { data }) => {
             closeModal()
-            setAccessToken(data.authenticate.access_token)
-            setRefreshToken(data.authenticate.refresh_token)
+            setAccessToken(data.authenticateFacebook.access_token)
+            setRefreshToken(data.authenticateFacebook.refresh_token)
             Router.push('/')
           },
           variables: {
