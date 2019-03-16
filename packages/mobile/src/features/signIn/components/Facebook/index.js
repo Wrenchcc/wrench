@@ -4,22 +4,26 @@ import withTranslation from 'i18n/withTranslation'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
-import { authenticate } from 'graphql/mutations/user/authenticate'
+import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
 import { Button, Text } from './styled'
 
 class Facebook extends PureComponent {
   static propTypes = {
     changeLoginState: PropTypes.func.isRequired,
-    authenticate: PropTypes.func.isRequired,
+    authenticateFacebook: PropTypes.func.isRequired,
   }
 
   handleLoginManager = async () => {
-    const result = await LoginManager.logInWithReadPermissions(['public_profile'])
-    if (result.isCancelled) return
-    const facebookResponse = await AccessToken.getCurrentAccessToken().then(this.getAccessToken)
+    const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
+
+    if (result.isCancelled) {
+      return
+    }
+
+    const facebookResponse = await AccessToken.getCurrentAccessToken()
 
     try {
-      await this.props.authenticate(facebookResponse.accessToken)
+      await this.props.authenticateFacebook(facebookResponse.accessToken)
       this.props.changeLoginState(true)
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
     } catch (err) {
@@ -39,6 +43,6 @@ class Facebook extends PureComponent {
 }
 
 export default compose(
-  authenticate,
+  authenticateFacebook,
   withTranslation('Facebook')
 )(Facebook)

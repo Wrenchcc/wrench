@@ -1,3 +1,4 @@
+import avatarUrl from './avatarUrl'
 import currentUser from './currentUser'
 import dynamicLink from './dynamicLink'
 import followingProjects from './followingProjects'
@@ -15,6 +16,7 @@ export default {
     user,
   },
   User: {
+    avatarUrl,
     dynamicLink,
     followingProjects,
     interestedIn,

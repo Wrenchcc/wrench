@@ -23,13 +23,11 @@ export default isAuthenticated(async (_, { input }) => {
         const filename = `${v4()}.${type}`
 
         try {
-          const params = {
+          const url = await s3.getSignedUrl('putObject', {
             Bucket: AWS_S3_BUCKET,
-            ContentType: type,
             Key: `${UPLOAD_DIRECTORY}/${filename}`,
-          }
+          })
 
-          const url = await s3.getSignedUrl('putObject', params)
           const res = { url, type, filename }
 
           debug(res, '%O')

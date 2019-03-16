@@ -1,12 +1,12 @@
-import authenticate from './authenticate'
+import authenticateFacebook from './authenticate/facebook'
 import editUser from './editUser'
 import refreshToken from './refreshToken'
-import toggleNotificationSettings from './toggleNotificationSettings'
 import registerDeviceToken from './registerDeviceToken'
+import toggleNotificationSettings from './toggleNotificationSettings'
 
 export default {
   Mutation: {
-    authenticate,
+    authenticateFacebook,
     editUser,
     refreshToken,
     registerDeviceToken,

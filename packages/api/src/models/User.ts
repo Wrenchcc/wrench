@@ -103,9 +103,6 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   public email: string
-
-  @Column({ nullable: true })
-  public avatarUrl: string
 }
 
 export function getUserById(userId) {

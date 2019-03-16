@@ -11,7 +11,7 @@ export default gql`
   }
 
   extend type Mutation {
-    authenticate(facebookToken: String!): Tokens
+    authenticateFacebook(token: String!): Tokens
     refreshToken(refreshToken: String!): AccessToken
   }
 `

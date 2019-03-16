@@ -10,6 +10,7 @@ function foreceSignOut() {
   client.resetStore()
   track(events.REFRESH_TOKEN_FAILED)
   resetNavigation()
+  // TODO: Show alert session expired, please login again.
 }
 
 export default onError(({ graphQLErrors, operation, forward }) => {

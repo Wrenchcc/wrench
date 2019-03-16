@@ -4,14 +4,15 @@ import { useTranslation } from 'react-i18next'
 import Router from 'next/router'
 import { setAccessToken, setRefreshToken } from '../../graphql/utils/auth'
 import { Title } from '../../ui'
-import { AUTHENTICATE_USER } from '../../graphql/mutations/user/authenticate'
+import { AUTHENTICATE_FACEBOOK } from '../../graphql/mutations/user/authenticateFacebook'
 import { Base, Description, FacebookButton } from './styles'
 
-const FB_APP_ID = '1174076712654826'
+const FACEBOOK_APP_ID = '1174076712654826'
+const FACEBOOK_SCOPE = 'public_profile,email'
 
 export default function Login({ closeModal }) {
   const { t } = useTranslation()
-  const handleAuth = useMutation(AUTHENTICATE_USER)
+  const handleAuth = useMutation(AUTHENTICATE_FACEBOOK)
 
   return (
     <Base>
@@ -22,8 +23,8 @@ export default function Login({ closeModal }) {
       <Description color="grey">{t('Login:description')}</Description>
 
       <FacebookLogin
-        appId={FB_APP_ID}
-        fields="name,email,picture"
+        appId={FACEBOOK_APP_ID}
+        fields={FACEBOOK_SCOPE}
         callback={({ accessToken }) => handleAuth({
           update: (proxy, { data }) => {
             closeModal()
@@ -32,7 +33,7 @@ export default function Login({ closeModal }) {
             Router.push('/')
           },
           variables: {
-            facebookToken: accessToken,
+            token: accessToken,
           },
         })
         }
