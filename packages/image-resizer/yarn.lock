@@ -410,22 +410,7 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.373.0:
-  version "2.421.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.421.0.tgz#39c8066b103ef01849f7da587cec40cc874f2fbc"
-  integrity sha512-N0vY++NJc0MV96pu4vcnJIe8MXNKgcNLxlRPDALlIbaYHSC+btJSAdXpC5+4uFFF30uWCaIM1WiX8O/9Obg5oA==
-  dependencies:
-    buffer "4.9.1"
-    events "1.1.1"
-    ieee754 "1.1.8"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.3.2"
-    xml2js "0.4.19"
-
-aws-sdk@^2.422.0:
+aws-sdk@^2.373.0, aws-sdk@^2.422.0:
   version "2.422.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.422.0.tgz#d875ca4098ced6f47d466f4c7addf8a79332651f"
   integrity sha512-t/hUQcRVhbw3EPS84d7YqwIAMSXHT5V/s6m0ivgLjIXnzRng0qRD1KGTkoLkXnY+X/o/NdvVIIfLfO4VF8xqMw==
@@ -1326,9 +1311,9 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
 eslint-scope@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.2.tgz#5f10cd6cabb1965bf479fa65745673439e21cb0e"
-  integrity sha512-5q1+B/ogmHl8+paxtOKx38Z8LtWkVGuNt3+GQNErqwLl6ViNp/gdJGMCjZNxZ8j/VYjDNZ2Fo+eQc1TAVPIzbg==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.3.tgz#ca03833310f6889a3264781aa82e63eb9cfe7848"
+  integrity sha512-p7VutNr1O/QrxysMo3E45FjYDTeXBy0iTltPFNSqKAIfjDSXC+4dj+qfyuD8bfAXrW/y6lW3O76VaYNPKfpKrg==
   dependencies:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
@@ -2620,9 +2605,9 @@ mute-stream@0.0.6:
   integrity sha1-SJYrGeFp/R38JAs/HnMXYnu8R9s=
 
 nan@^2.12.1, nan@^2.9.2:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.0.tgz#7bdfc27dd3c060c46e60b62c72b74012d1a4cd68"
-  integrity sha512-5DDQvN0luhXdut8SCwzm/ZuAX2W+fwhqNzfq7CZ+OJzQ6NwpcqmIGyLD1R8MEt7BeErzcsI0JLr4pND2pNp2Cw==
+  version "2.13.1"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.1.tgz#a15bee3790bde247e8f38f1d446edcdaeb05f2dd"
+  integrity sha512-I6YB/YEuDeUZMmhscXKxGgZlFnhsn5y0hgOZBadkzfTRrZBtJDZeg6eQf7PYMIEclwmorTKK8GztsyOUSVBREA==
 
 nanomatch@^1.2.13, nanomatch@^1.2.9:
   version "1.2.13"
@@ -3424,7 +3409,7 @@ serverless-webpack@^5.2.0:
     semver "^5.5.0"
     ts-node "^3.2.0"
 
-serverless@^1.38.0:
+serverless@1.38.0:
   version "1.38.0"
   resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.38.0.tgz#67f120cb3c2a5dd8a08cf0fb985cba502c5cbfd3"
   integrity sha512-IWzR2MbbPwLW2SwUa+MvU4P52uJAgQwqhivCCFXxl3Ocz1UHXjFlYFP/V/U4hnAIfy77h0HZNbLwk5/A/GxEOg==

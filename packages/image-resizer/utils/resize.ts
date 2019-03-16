@@ -3,7 +3,6 @@ import * as sharp from 'sharp'
 type Data = Buffer | string
 type Resize = (query: Query) => (data: Data) => Promise<Buffer>
 
-// return null if null
 const min = (defaultNum: number, n?: number) => n && Math.min(defaultNum, n)
 
 export interface Query {
@@ -14,6 +13,8 @@ export interface Query {
 }
 
 export const resize: Resize = query => async data => {
+  const { width, height, webp, dpr = 1 } = query
+
   const image = sharp(data)
   const meta = await image.metadata()
 
@@ -23,10 +24,8 @@ export const resize: Resize = query => async data => {
 
   image.rotate()
 
-  const { width, height, webp, dpr = 1 } = query
-
-  const w = min(meta.width, width * dpr)
-  const h = min(meta.height, height * dpr)
+  const w = (width && min(meta.width, width * dpr)) || null
+  const h = (height && min(meta.height, height * dpr)) || null
 
   image.resize(w, h)
 
