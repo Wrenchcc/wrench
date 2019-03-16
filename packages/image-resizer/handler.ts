@@ -50,12 +50,10 @@ export const originResponse: Handler = async (
       return
     case '304':
     default:
-      // response original
       cb(null, response)
   }
 
   const hostname = request.headers.host[0].value
-
   const domainRegex = /\.s3\.amazonaws\.com$/
 
   if (!hostname.match(domainRegex)) {
