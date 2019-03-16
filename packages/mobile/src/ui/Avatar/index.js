@@ -21,7 +21,7 @@ const Avatar = ({
         {isOnline && <IsOnline badgeSize={badgeSize} />}
         <Touchable onPress={onPress} style={style} disabled={disabled}>
           <Image
-            absoluteUrl={uri}
+            source={{ uri }}
             width={size}
             height={size}
             borderRadius={size / 2}
@@ -36,7 +36,7 @@ const Avatar = ({
     <View style={{ position: 'relative' }}>
       {isOnline && <IsOnline badgeSize={badgeSize} />}
       <Image
-        absoluteUrl={absoluteUrl}
+        source={{ uri }}
         width={size}
         height={size}
         style={style}
