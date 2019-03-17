@@ -9,9 +9,10 @@ const Followers = memo(function Followers({
   onPress = null,
   color = 'dark',
   opacity = 1,
+  style,
 }) {
   return (
-    <Text fontSize={15} onPress={onPress} color={color} opacity={opacity}>
+    <Text fontSize={15} onPress={onPress} color={color} opacity={opacity} style={style}>
       {t('UiFollowers:followers', { count: followers })}
     </Text>
   )
@@ -22,6 +23,7 @@ Followers.propTypes = {
   color: PropTypes.string,
   followers: PropTypes.number.isRequired,
   opacity: PropTypes.number,
+  style: PropTypes.object,
 }
 
 export default withTranslation('UiFollowers')(Followers)
