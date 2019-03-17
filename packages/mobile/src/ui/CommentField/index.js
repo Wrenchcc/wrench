@@ -14,6 +14,8 @@ const PATTERN = '\\@[a-z0-9_-]+|\\@'
 const TRIGGER = '@'
 const EMPTY = ' '
 
+// TODO: Fix better perf on CurrentUserQuery
+// Makes the view laggy
 class CommentField extends PureComponent {
   textInput = React.createRef()
 
@@ -93,7 +95,7 @@ class CommentField extends PureComponent {
   render() {
     const { t, disabled, onSubmit, onChangeText, ...props } = this.props
     return (
-      <Query query={CurrentUserQuery} fetchPolicy="cache-only">
+      <Query query={CurrentUserQuery}>
         {({ data, loading }) => {
           if (loading) return null
 

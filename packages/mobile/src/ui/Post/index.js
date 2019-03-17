@@ -8,6 +8,7 @@ import { deletePost } from 'graphql/mutations/post/deletePost'
 import Avatar from 'ui/Avatar'
 import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
+import LazyLoad from 'ui/LazyLoad'
 import ActionSheet from 'ui/ActionSheet'
 import { Top, Title, Content, Caption } from './styled'
 
@@ -17,10 +18,11 @@ class Post extends PureComponent {
   }
 
   static propTypes = {
-    post: PropTypes.object.isRequired,
-    deletePost: PropTypes.func.isRequired,
-    onPost: PropTypes.bool,
     avatar: PropTypes.bool,
+    deletePost: PropTypes.func.isRequired,
+    lazyload: PropTypes.bool,
+    onPost: PropTypes.bool,
+    post: PropTypes.object.isRequired,
   }
 
   toggleActionSheet = () => {
@@ -87,49 +89,51 @@ class Post extends PureComponent {
   }
 
   render() {
-    const { post, onPost = false, avatar = true } = this.props
+    const { post, onPost = false, avatar = true, lazyload } = this.props
 
     return (
-      <TouchableOpacity onLongPress={this.toggleActionSheet} activeOpacity={1}>
-        <Top>
-          {!onPost && (
-            <Title
-              numberOfLines={1}
-              onPress={this.goToProject}
-              onLongPress={this.toggleActionSheet}
-            >
-              {post.project.title}
-            </Title>
-          )}
-          {avatar && (
-            <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
-          )}
-        </Top>
-        <Content>
-          {post.caption && (
-            <Caption
-              onLongPress={this.toggleActionSheet}
-              onPress={this.goToProject}
-              disabled={onPost}
-              color={onPost ? 'dark' : 'grey'}
-              lineHeight={25}
-            >
-              {post.caption}
-            </Caption>
-          )}
-          {post.files && (
-            <Carousel
-              files={post.files}
-              onPress={this.goToProject}
-              onLongPress={this.toggleActionSheet}
-            />
-          )}
-        </Content>
+      <LazyLoad enabled={lazyload}>
+        <TouchableOpacity onLongPress={this.toggleActionSheet} activeOpacity={1}>
+          <Top>
+            {!onPost && (
+              <Title
+                numberOfLines={1}
+                onPress={this.goToProject}
+                onLongPress={this.toggleActionSheet}
+              >
+                {post.project.title}
+              </Title>
+            )}
+            {avatar && (
+              <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
+            )}
+          </Top>
+          <Content>
+            {post.caption && (
+              <Caption
+                onLongPress={this.toggleActionSheet}
+                onPress={this.goToProject}
+                disabled={onPost}
+                color={onPost ? 'dark' : 'grey'}
+                lineHeight={25}
+              >
+                {post.caption}
+              </Caption>
+            )}
+            {post.files && (
+              <Carousel
+                files={post.files}
+                onPress={this.goToProject}
+                onLongPress={this.toggleActionSheet}
+              />
+            )}
+          </Content>
 
-        {!post.project.commentsDisabled && <Comments data={post} />}
+          {!post.project.commentsDisabled && <Comments data={post} />}
 
-        {this.postActions()}
-      </TouchableOpacity>
+          {this.postActions()}
+        </TouchableOpacity>
+      </LazyLoad>
     )
   }
 }

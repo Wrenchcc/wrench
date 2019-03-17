@@ -84,13 +84,13 @@ class Project extends PureComponent {
     }
   }
 
-  renderItem = ({ item }) => {
+  renderItem = ({ item, index }) => {
     // Remove post item from list to skip dublicated
     if (pathOr(false, ['post', 'id'], this.props) === item.node.id) {
       return null
     }
 
-    return <Post post={item.node} avatar={false} onPost />
+    return <Post post={item.node} avatar={false} onPost lazyload={index > 2} />
   }
 
   renderHeader = () => {
