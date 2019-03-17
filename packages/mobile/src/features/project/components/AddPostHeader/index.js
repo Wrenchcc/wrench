@@ -58,6 +58,7 @@ class AddPostHeader extends PureComponent {
     if (addPostAction) {
       return <Icon onPress={() => navigateBack()} source={arrowLeft} />
     }
+
     return <Icon onPress={this.handleClose} source={close} />
   }
 

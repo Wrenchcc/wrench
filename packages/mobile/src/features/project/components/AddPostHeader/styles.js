@@ -4,8 +4,9 @@ import { isIphoneX } from 'utils/platform'
 export const Top = styled.View`
   position: absolute;
   z-index: 20;
-  top: ${isIphoneX ? 50 : 30};
+  top: ${isIphoneX ? 65 : 45};
   align-self: center;
+  justify-content: center;
   max-width: 170;
 `
 

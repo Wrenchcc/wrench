@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, FlatList } from 'react-native'
+import { Animated, FlatList, View } from 'react-native'
 import { pathOr, equals } from 'ramda'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
@@ -35,6 +35,7 @@ class InfiniteList extends PureComponent {
     refetch: PropTypes.any,
     renderItem: PropTypes.func,
     scrollRef: PropTypes.func,
+    spacingSeparator: PropTypes.bool,
   }
 
   componentDidUpdate(prevProps) {
@@ -112,6 +113,7 @@ class InfiniteList extends PureComponent {
       ListEmptyComponent,
       inverted,
       initialNumToRender = 10,
+      spacingSeparator,
       ...props
     } = this.props
 
@@ -144,10 +146,13 @@ class InfiniteList extends PureComponent {
             paddingLeft: paddingHorizontal,
             paddingRight: paddingHorizontal,
             paddingTop,
-            paddingBottom: (paddingBottom && paddingBottom) || 0,
+            paddingBottom: (paddingBottom && paddingBottom) || (spacingSeparator && 40) || 0,
             ...contentContainerStyle,
           }}
           {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
+          {...spacingSeparator && {
+            ItemSeparatorComponent: () => <View style={{ paddingBottom: 40 }} />,
+          }}
           {...onScroll && { onScroll, scrollEventThrottle: 1 }}
           {...props}
         />

@@ -54,6 +54,7 @@ class Me extends PureComponent {
 
     return (
       <InfiniteListWithHandler
+        spacingSeparator
         scrollEnabled={hasPosts}
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}

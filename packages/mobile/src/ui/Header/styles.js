@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { COLORS, HEADER_HEIGHT } from 'ui/constants'
+import { COLORS } from 'ui/constants'
 import { isIphoneX } from 'utils/platform'
 
 export const Base = styled.View`
-  height: ${HEADER_HEIGHT};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
-  padding-top: ${(isIphoneX && 40) || 30}
+  height: 50;
+  margin-top: ${(isIphoneX && 60) || 40}
   background-color: ${({ transparent }) => (transparent ? 'transparent' : COLORS.WHITE)};
 `
 

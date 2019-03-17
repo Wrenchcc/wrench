@@ -104,7 +104,7 @@ class Project extends PureComponent {
         <>
           <Post post={post} avatar={false} onPost />
           {hasPosts && posts.length > 1 && (
-            <View style={{ mariginTop: 10, marginBottom: 30 }}>
+            <View style={{ paddingTop: 40 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
           )}
@@ -148,6 +148,7 @@ class Project extends PureComponent {
     return (
       <>
         <InfiniteListWithHandler
+          spacingSeparator
           scrollEnabled={hasPosts}
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}

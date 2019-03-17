@@ -4,7 +4,7 @@ import withTranslation from 'i18n/withTranslation'
 import { slice } from 'ramda'
 import { navigateToUser, navigateToComments } from 'navigation/actions'
 import Text from 'ui/Text'
-import { Row, Comment, LoadMore } from './styles'
+import { Base, Row, Comment, LoadMore } from './styles'
 
 class List extends PureComponent {
   static propTypes = {
@@ -35,14 +35,14 @@ class List extends PureComponent {
     if (!data.comments.edges.length) return null
 
     return (
-      <>
+      <Base>
         {slice(0, 2, data.comments.edges).map(this.renderComment)}
         <LoadMore onPress={this.goToComments}>
           <Text fontSize={15} color="light_grey">
             {t('List:loadMore', { count: data.comments.totalCount })}
           </Text>
         </LoadMore>
-      </>
+      </Base>
     )
   }
 }

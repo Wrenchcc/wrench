@@ -23,6 +23,7 @@ class Explore extends PureComponent {
 
     return (
       <InfiniteListWithHandler
+        spacingSeparator
         initialNumToRender={INITIAL_POSTS_COUNT}
         ListHeaderComponent={<Popular />}
         data={posts}

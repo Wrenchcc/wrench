@@ -1,11 +1,10 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { addCommentToFeed } from 'graphql/mutations/comment/addComment'
 import CommentField from 'ui/CommentField'
 import Mention from 'ui/Mention'
 import List from './List'
-import { Base } from './styles'
 
 class Comments extends PureComponent {
   static propTypes = {
@@ -54,7 +53,7 @@ class Comments extends PureComponent {
 
   render() {
     return (
-      <Base>
+      <Fragment>
         {this.state.isOpen && (
           <Mention
             query={this.state.query}
@@ -75,7 +74,7 @@ class Comments extends PureComponent {
         />
 
         <List data={this.props.data} />
-      </Base>
+      </Fragment>
     )
   }
 }

@@ -37,6 +37,7 @@ class Feed extends PureComponent {
         <PostProgress />
 
         <InfiniteListWithHandler
+          spacingSeparator
           defaultPaddingTop
           initialNumToRender={INITIAL_POSTS_COUNT}
           data={posts}

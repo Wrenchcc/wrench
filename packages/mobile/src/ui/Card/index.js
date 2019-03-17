@@ -8,7 +8,7 @@ import { Picture, ProjectName, SIZE } from './styles'
 const Card = memo(function Card({ image, title, onPress, style = {}, user }) {
   return (
     <Touchable onPress={onPress} style={style}>
-      <Picture source={image} width={SIZE} height={SIZE} />
+      {image && <Picture source={image} width={SIZE} height={SIZE} />}
       <ProjectName numberOfLines={1}>{title}</ProjectName>
       <Touchable onPress={() => navigateToUser({ user })}>
         <Text fontSize={15} color="grey">
