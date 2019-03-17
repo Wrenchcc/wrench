@@ -43,12 +43,13 @@ export default class Project extends BaseEntity {
   }
 
   public static async getPopularProjects() {
+    // TODO: Change to last 7 days
     return getRepository(Project)
       .createQueryBuilder('projects')
       .select('count(projects.id)', 'count')
       .addSelect('projects.id', 'id')
       .innerJoin('projects.followers', 'followers')
-      .where(`"followers"."createdAt" > current_date - interval '7 day'`) // eslint-disable-line
+      .where(`"followers"."createdAt" > current_date - interval '30 day'`) // eslint-disable-line
       .groupBy('projects.id')
       .orderBy('count', 'DESC')
       .getRawMany()

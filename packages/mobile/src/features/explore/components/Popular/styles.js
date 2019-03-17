@@ -17,5 +17,5 @@ export const Card = styled(UiCard)`
 
 export const Title = styled(UiTitle)`
   margin-bottom: 40;
-  margin-top: 50;
+  margin-top: 20;
 `

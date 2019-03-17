@@ -116,7 +116,7 @@ class InfiniteList extends PureComponent {
     } = this.props
 
     const initialFetch = !data && isFetching
-    const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 50) || 0
+    const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 20) || 0
 
     return (
       <>

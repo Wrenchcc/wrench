@@ -54,7 +54,7 @@ const Item = memo(function Item({
           <Row style={{ flexDirection: 'column' }}>
             <Text fontSize={15} bold>
               {`${user.fullName} `}
-              <Text fontSize={15}>{text}</Text>
+              {text && <Text fontSize={15}>{text}</Text>}
             </Text>
           </Row>
           <Row>
@@ -78,7 +78,7 @@ Item.propTypes = {
   id: PropTypes.string.isRequired,
   isReply: PropTypes.bool,
   onReply: PropTypes.func,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   user: PropTypes.object.isRequired,
 }
 
