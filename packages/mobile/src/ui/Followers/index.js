@@ -23,7 +23,7 @@ Followers.propTypes = {
   color: PropTypes.string,
   followers: PropTypes.number.isRequired,
   opacity: PropTypes.number,
-  style: PropTypes.object,
+  style: PropTypes.array,
 }
 
 export default withTranslation('UiFollowers')(Followers)

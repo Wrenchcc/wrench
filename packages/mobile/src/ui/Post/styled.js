@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import UiTitle from 'ui/Title'
 import UiText from 'ui/Text'
 
 export const Top = styled.View`
@@ -12,8 +11,9 @@ export const Content = styled.View`
   padding-top: 18;
 `
 
-export const Title = styled(UiTitle)`
-  margin-right: 40;
+export const Headline = styled.View`
+  flex: 1;
+  padding-right: 10;
 `
 
 export const Caption = styled(UiText)`

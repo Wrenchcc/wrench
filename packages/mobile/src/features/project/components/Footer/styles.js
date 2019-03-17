@@ -4,8 +4,8 @@ import { isIphoneX } from 'utils/platform'
 
 export const Base = styled.View`
   padding: 0 20px 20px 20px;
-  padding-bottom: ${isIphoneX ? 40 : 10};
-  height: ${isIphoneX ? 100 : 70};
+  padding-bottom: ${isIphoneX ? 40 : 0};
+  height: ${isIphoneX ? 100 : 60};
   position: absolute;
   bottom: ${isIphoneX ? -20 : 0};
   left: 0;

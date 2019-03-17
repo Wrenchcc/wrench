@@ -6,5 +6,5 @@ export const Base = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
-  padding-top: ${(isIphoneX && 60) || 20};
+  padding-top: ${(isIphoneX && 60) || 35};
 `

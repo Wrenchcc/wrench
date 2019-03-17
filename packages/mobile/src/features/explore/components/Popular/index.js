@@ -5,9 +5,9 @@ import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
 import { navigateToProject } from 'navigation/actions'
-import { InfiniteList } from 'ui'
+import { InfiniteList, Title } from 'ui'
 import { INITIAL_POSTS_COUNT } from '../../constants'
-import { Title, Card, GUTTER, SNAP_INTERVAL } from './styles'
+import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
 const ITEM_HEIGHT = 180
 
@@ -50,7 +50,9 @@ class Popular extends PureComponent {
 
     return (
       <>
-        <Title medium>{t('Popular:popular')}</Title>
+        <Header>
+          <Title medium>{t('Popular:popular')}</Title>
+        </Header>
         <InfiniteList
           getItemLayout={this.getItemLayout}
           initialNumToRender={INITIAL_POSTS_COUNT}
@@ -74,7 +76,9 @@ class Popular extends PureComponent {
             marginRight: -GUTTER,
           }}
         />
-        <Title medium>{t('Popular:recent')}</Title>
+        <Footer>
+          <Title medium>{t('Popular:recent')}</Title>
+        </Footer>
       </>
     )
   }

@@ -9,8 +9,9 @@ import Avatar from 'ui/Avatar'
 import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
 import LazyLoad from 'ui/LazyLoad'
+import Title from 'ui/Title'
 import ActionSheet from 'ui/ActionSheet'
-import { Top, Title, Content, Caption } from './styled'
+import { Top, Headline, Content, Caption } from './styled'
 
 class Post extends PureComponent {
   state = {
@@ -96,13 +97,15 @@ class Post extends PureComponent {
         <TouchableOpacity onLongPress={this.toggleActionSheet} activeOpacity={1}>
           <Top>
             {!onPost && (
-              <Title
-                numberOfLines={1}
-                onPress={this.goToProject}
-                onLongPress={this.toggleActionSheet}
-              >
-                {post.project.title}
-              </Title>
+              <Headline>
+                <Title
+                  numberOfLines={1}
+                  onPress={this.goToProject}
+                  onLongPress={this.toggleActionSheet}
+                >
+                  {post.project.title}
+                </Title>
+              </Headline>
             )}
             {avatar && (
               <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
