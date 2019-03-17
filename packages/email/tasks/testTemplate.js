@@ -3,7 +3,7 @@ const { SES } = require('aws-sdk')
 
 const debug = require('debug')('task:sns:test')
 
-const { AWS_SNS_REGION } = process.env
+const { AWS_SES_REGION, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
 
 const template = process.argv[2]
 const email = process.argv[3]
@@ -21,7 +21,9 @@ if (!template) {
 
   const ses = new SES({
     apiVersion: '2010-12-01',
-    region: AWS_SNS_REGION,
+    region: AWS_SES_REGION,
+    accessKeyId: AWS_ACCESS_KEY,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY,
   })
 
   const message = {
