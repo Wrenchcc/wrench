@@ -16,11 +16,13 @@ import File from './File'
 
 @Entity('posts')
 export default class Post extends BaseEntity {
-  public static async usersreviousPublished(interval) {
+  public static async usersPreviousPublished(interval, userId) {
     return getRepository(Post)
       .createQueryBuilder('post')
       .select('count(post.id)', 'count')
-      .where(`"post"."createdAt" > current_date - interval '${interval}'`)
+      .where(
+        `post.createdAt > current_date - interval '${interval}' AND post.userId = '${userId}'` // eslint-disable-line
+      )
       .getRawOne()
   }
 

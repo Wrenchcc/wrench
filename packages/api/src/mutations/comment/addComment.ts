@@ -9,7 +9,10 @@ const debug = require('debug')('api:mutations:comment:add-comment')
 const SPAM_LMIT = 10
 
 export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
-  const userPreviousPublishedPosts = await ctx.db.Comment.usersreviousPublished('5 minutes')
+  const userPreviousPublishedPosts = await ctx.db.Comment.usersPreviousPublished(
+    '5 minutes',
+    ctx.userId
+  )
 
   // if user has published comments in the last 5 minutes, check for spam
   if (userPreviousPublishedPosts.count > 0) {

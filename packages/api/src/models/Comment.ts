@@ -13,11 +13,13 @@ import Post from './Post'
 
 @Entity('comments')
 export default class Comment extends BaseEntity {
-  public static async usersreviousPublished(interval) {
+  public static async usersPreviousPublished(interval, userId) {
     return getRepository(Comment)
       .createQueryBuilder('comment')
       .select('count(comment.id)', 'count')
-      .where(`"comment"."createdAt" > current_date - interval '${interval}'`)
+      .where(
+        `comment.createdAt > current_date - interval '${interval}' AND comment.userId = '${userId}'` // eslint-disable-line
+      )
       .getRawOne()
   }
 

@@ -9,7 +9,10 @@ const SPAM_LMIT = 10
 
 export default isAuthenticated(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)
-  const userPreviousPublishedPosts = await ctx.db.Post.usersreviousPublished('5 minutes')
+  const userPreviousPublishedPosts = await ctx.db.Post.usersPreviousPublished(
+    '5 minutes',
+    ctx.userId
+  )
 
   if (!canModerateProject(project, ctx.userId)) {
     return new ForbiddenError('You don’t have permission to post to this project.')
