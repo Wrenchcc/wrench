@@ -4,12 +4,13 @@ import { mapListProps } from 'graphql/utils/mapListProps'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export const SearchUsersQuery = gql`
-  query searchUsers($query: String!, $type: SearchType!) {
-    users: search(query: $query, type: $type) {
+  query searchUsers($query: String!, $after: String, $type: SearchType!) {
+    users: search(query: $query, after: $after, type: $type) {
       pageInfo {
         hasNextPage
       }
       edges {
+        cursor
         node {
           ... on User {
             ...userInfo
