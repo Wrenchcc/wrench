@@ -39,6 +39,7 @@
       "chat": "Chat with us",
       "knallpott": "Knallpott",
       "paal": "PAAL Motorcycles",
+      "kismo": "Kismo Motors",
       "rate": "Give us a review ⭐",
       "languages": {
         "en": "English",
@@ -297,6 +298,7 @@
       "chat": "Chatta med oss",
       "knallpott": "Knallpott",
       "paal": "PAAL Motorcycles",
+      "kismo": "Kismo Motors",
       "rate": "Ge oss en recension ⭐",
       "languages": {
         "en": "Engelska",
@@ -401,7 +403,7 @@
     },
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",
-      "description": "Dela dina project, kolla på andra, diskutera och lär av varandra."
+      "description": "Dela dina projekt, följ andras, diskutera och lär av varandra."
     },
     "CommentField": {
       "placeholder": "Skriv en kommentar...",

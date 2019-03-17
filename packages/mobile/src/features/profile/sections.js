@@ -162,6 +162,10 @@ const sections = props => ({
           titleKey: 'paal',
           onPress: () => navigateToWebView({ url: 'http://paalmotorcycles.com' }),
         },
+        {
+          titleKey: 'kismo',
+          onPress: () => navigateToWebView({ url: 'http://kismomotors.com' }),
+        },
       ],
     },
   ],
