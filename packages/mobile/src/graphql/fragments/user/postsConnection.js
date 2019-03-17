@@ -5,7 +5,7 @@ import commentsConnectionFragment from 'graphql/fragments/post/commentsConnectio
 
 export default gql`
   fragment userPostsConnection on User {
-    posts: postsConnection(after: $after) {
+    posts: postsConnection(after: $after, first: 5) {
       edges {
         cursor
         node {

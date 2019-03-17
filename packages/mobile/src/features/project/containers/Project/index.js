@@ -7,16 +7,7 @@ import withTranslation from 'i18n/withTranslation'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
 import { navigateToUser } from 'navigation/actions'
-import {
-  InfiniteListWithHandler,
-  Post,
-  Avatar,
-  HeaderTitle,
-  Edit,
-  EmptyState,
-  Title,
-  LazyLoad,
-} from 'ui'
+import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState, Title } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
@@ -99,11 +90,7 @@ class Project extends PureComponent {
       return null
     }
 
-    return (
-      <LazyLoad>
-        <Post post={item.node} avatar={false} onPost />
-      </LazyLoad>
-    )
+    return <Post post={item.node} avatar={false} onPost />
   }
 
   renderHeader = () => {

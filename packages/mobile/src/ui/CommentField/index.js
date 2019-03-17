@@ -93,28 +93,32 @@ class CommentField extends PureComponent {
   render() {
     const { t, disabled, onSubmit, onChangeText, ...props } = this.props
     return (
-      <Query query={CurrentUserQuery}>
-        {({ data }) => (
-          <Base>
-            <Avatar uri={data.user.avatarUrl} />
-            <Input
-              placeholder={t('CommentField:placeholder')}
-              placeholderTextColor={COLORS.LIGHT_GREY}
-              keyboardType="twitter"
-              onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
-              onChangeText={this.onChangeText}
-              value={this.props.value}
-              color="dark"
-              inputRef={this.textInput}
-              {...props}
-            />
-            {!disabled && (
-              <Button onPress={this.handleSubmit} hapticFeedback="impactLight">
-                <Text medium>{t('CommentField:post')}</Text>
-              </Button>
-            )}
-          </Base>
-        )}
+      <Query query={CurrentUserQuery} fetchPolicy="cache-only">
+        {({ data, loading }) => {
+          if (loading) return null
+
+          return (
+            <Base>
+              <Avatar uri={data.user.avatarUrl} />
+              <Input
+                placeholder={t('CommentField:placeholder')}
+                placeholderTextColor={COLORS.LIGHT_GREY}
+                keyboardType="twitter"
+                onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
+                onChangeText={this.onChangeText}
+                value={this.props.value}
+                color="dark"
+                inputRef={this.textInput}
+                {...props}
+              />
+              {!disabled && (
+                <Button onPress={this.handleSubmit} hapticFeedback="impactLight">
+                  <Text medium>{t('CommentField:post')}</Text>
+                </Button>
+              )}
+            </Base>
+          )
+        }}
       </Query>
     )
   }
