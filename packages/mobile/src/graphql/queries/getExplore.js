@@ -12,6 +12,7 @@ const PopularProjectsQuery = gql`
         hasNextPage
       }
       edges {
+        cursor
         node {
           ...projectInfo
           files: filesConnection(first: 1, type: IMAGE) {
