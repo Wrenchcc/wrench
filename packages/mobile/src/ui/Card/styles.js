@@ -7,6 +7,7 @@ export const SIZE = 180
 export const ProjectName = styled(UiText)`
   margin-top: 10;
   margin-bottom: 5;
+  width: ${SIZE};
 `
 
 export const Picture = styled(UiImage)`

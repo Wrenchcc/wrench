@@ -8,7 +8,7 @@ export const Base = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
-  padding-top: ${(isIphoneX && 40) || 20}
+  padding-top: ${(isIphoneX && 40) || 30}
   background-color: ${({ transparent }) => (transparent ? 'transparent' : COLORS.WHITE)};
 `
 

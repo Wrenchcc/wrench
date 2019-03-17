@@ -4,8 +4,9 @@ import { isIphoneX } from 'utils/platform'
 export const Top = styled.View`
   position: absolute;
   z-index: 20;
-  top: ${isIphoneX ? 50 : 20};
+  top: ${isIphoneX ? 50 : 30};
   align-self: center;
+  max-width: 170;
 `
 
 export const Backdrop = styled.TouchableOpacity`

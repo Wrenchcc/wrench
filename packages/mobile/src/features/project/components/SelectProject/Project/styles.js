@@ -26,6 +26,7 @@ export const Middle = styled.View`
 export const Content = styled.View`
   flex: 1;
   margin-left: 10;
+  margin-right: 20;
 `
 
 export const Icon = styled.Image`
