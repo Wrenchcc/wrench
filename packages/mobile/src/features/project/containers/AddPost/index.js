@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { View } from 'react-native'
+import { ScrollView, KeyboardAvoidingView } from 'react-native'
 import { pathOr } from 'ramda'
 import { Subscribe } from 'unstated'
 import { AddContainer, ToastNotificationContainer } from 'store'
@@ -77,17 +77,24 @@ class AddPost extends PureComponent {
               addPostAction={() => this.addPost(PostContainer, showNotification)}
               toggleSelectProject={PostContainer.toggleSelectProject}
             />
-            <View style={{ paddingLeft: 20, paddingRight: 20 }}>
-              <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
+            <KeyboardAvoidingView
+              behavior="padding"
+              keyboardVerticalOffset={20}
+              style={{ flex: 1 }}
+            >
+              <ScrollView style={{ paddingLeft: 20, paddingRight: 20 }}>
+                <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
 
-              <Input
-                autoFocus
-                color="dark"
-                onChangeText={PostContainer.updateCaption}
-                placeholder={t('AddPost:placeholder')}
-                value={PostContainer.state.caption}
-              />
-            </View>
+                <Input
+                  multiline
+                  autoFocus
+                  color="dark"
+                  onChangeText={PostContainer.updateCaption}
+                  placeholder={t('AddPost:placeholder')}
+                  value={PostContainer.state.caption}
+                />
+              </ScrollView>
+            </KeyboardAvoidingView>
           </>
         )}
       </Subscribe>
