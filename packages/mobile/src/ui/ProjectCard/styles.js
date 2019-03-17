@@ -21,6 +21,7 @@ export const Overlay = styled(LinearGradient)`
 export const ProjectName = styled(UiText)`
   margin-top: 10;
   margin-bottom: 3;
+  margin-right: 20;
 `
 
 export const Followers = styled(UiFollowers)``
@@ -43,4 +44,5 @@ export const Content = styled.View`
 
 export const Info = styled.View`
   justify-content: flex-end;
+  flex: 1;
 `
