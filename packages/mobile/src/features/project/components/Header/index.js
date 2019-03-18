@@ -20,7 +20,9 @@ export default class Header extends PureComponent {
     return (
       <Base spacingHorizontal={spacingHorizontal}>
         <ProjectName>
-          <Title large>{project.title}</Title>
+          <Title large numberOfLines={0}>
+            {project.title}
+          </Title>
           <Followers followers={project.followers.totalCount} onPress={this.goToFollowers} />
         </ProjectName>
       </Base>
