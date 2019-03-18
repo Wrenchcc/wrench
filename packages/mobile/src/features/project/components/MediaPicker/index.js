@@ -11,8 +11,8 @@ const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 64
-const GROUP_TYPES = 'All'
-const ASSET_TYPE = 'Photos'
+const GROUP_TYPES = 'all'
+const ASSET_TYPE = 'photos'
 
 export default class MediaPicker extends Component {
   static propTypes = {
