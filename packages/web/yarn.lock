@@ -3811,10 +3811,10 @@ i18next-browser-languagedetector@^3.0.1:
   resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-3.0.1.tgz#a47c43176e8412c91e808afb7c6eb5367649aa8e"
   integrity sha512-WFjPLNPWl62uu07AHY2g+KsC9qz0tyMq+OZEB/H7N58YKL/JLiCz9U709gaR20Mule/Ppn+uyfVx5REJJjn1HA==
 
-i18next-express-middleware@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/i18next-express-middleware/-/i18next-express-middleware-1.7.1.tgz#00436776113ff2e87d3befa81a9aa8a359af1193"
-  integrity sha512-e8JhShjL2sVkWFrO0ySVsmM9Ge7sQ8iDsNXSmpAD/2Fvg/P4uo7Kqm0R+yWWsRYCr+uu8tWsSDiEbmbjrnsyVg==
+i18next-express-middleware@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/i18next-express-middleware/-/i18next-express-middleware-1.7.2.tgz#e5450c8b417d3f2710321dfe760f1ebfe944354c"
+  integrity sha512-4d3zOazLk87zNyckZQBAMFXpffMeHVewZpQEuvks0BnzwO3xYK7KS6AZNkRTpmVtLf/+vs/Qs8Dn03FQpeFDXQ==
   dependencies:
     cookies "0.7.1"
 

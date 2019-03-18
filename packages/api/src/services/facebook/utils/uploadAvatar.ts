@@ -15,14 +15,14 @@ const s3 = new S3({
 
 export default async (userId, fbId) => {
   try {
-    const body = await axios.get(
+    const avatar = await axios.get(
       `https://graph.facebook.com/${fbId}/picture?type=large&width=720&height=720`,
       { responseType: 'arraybuffer' }
     )
 
     return s3
       .upload({
-        Body: body.data,
+        Body: avatar.data,
         Bucket: AWS_S3_BUCKET,
         Key: `${UPLOAD_DIRECTORY}/${userId}.jpg`,
       })
