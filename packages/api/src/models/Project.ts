@@ -44,6 +44,8 @@ export default class Project extends BaseEntity {
 
   public static async getPopularProjects() {
     // TODO: Change to last 7 days
+    // Only when having posts
+    // Sort by amount of followers
     return getRepository(Project)
       .createQueryBuilder('projects')
       .select('count(projects.id)', 'count')
