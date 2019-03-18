@@ -5335,10 +5335,10 @@ react-dom@^16.8.4:
     prop-types "^15.6.2"
     scheduler "^0.13.4"
 
-react-i18next@^10.5.1:
-  version "10.5.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.5.1.tgz#551b6f34694059833ebf93823be27105d56dd3b2"
-  integrity sha512-kyRS7A1ihVZvoPvwpehio7fKf24H6DyYn+6XVU56ECyy/mBkOEfo7NGm5UiRkefkG7WkpdTow534L6/HhPy9zA==
+react-i18next@^10.5.2:
+  version "10.5.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.5.2.tgz#056ee9988137ef9296397d7bb55bbe8d8952a06d"
+  integrity sha512-9sTW1nxW6YCDBW6RLebXu3qlhWe4iV8cHrlTzJ223QWOWM38g392jajOl3J39vyD6JMeM6wdDIAhS0cuubBChg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5370,10 +5370,10 @@ react-native-camera@^2.0.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-native-code-push@^5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-5.5.3.tgz#7af07c96c3fc67eaca4f02e9c8b87295c88bb7b3"
-  integrity sha512-BkKNcVIq6NBWJCQHEV1LBiFxuyQUAVmrhh8S5f6U0c+S2y0YBGTQeaGlVp4MCuVnfLX+nC8CEo99OkFD/aiu8g==
+react-native-code-push@^5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-5.6.0.tgz#e905d32d188c5f7bcff446d813271d03a69543fd"
+  integrity sha512-NDZG+t1K+7ubjdtkuQ5UjcqRZbtqZMiMPCnp3VJRfdcX2KcgivW0piRZ3myuAYd6Jyxs4w13rIXo2kzLW4sxBQ==
   dependencies:
     code-push "2.0.6"
     glob "^5.0.15"
@@ -5442,10 +5442,10 @@ react-native-haptic-feedback@^1.6.0:
   resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.6.0.tgz#32c7fd9bcdb0e639dfd5e3515a238a74e05c4484"
   integrity sha512-caZ0q5UqJQVYXeGvJPt8YMrrWXJ9a+uLNu6ilvSgc61ydjw3BY2fObvOTognJnV9aNn53LjJ7AAhsaVAsbW28g==
 
-react-native-linear-gradient@^2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.3.tgz#d90cf19a13fcccfa8bb32025ac40a15ae1b49e99"
-  integrity sha512-XdusrOXXlkI+yQpUW7YLeiq9cZiBwkvQX4XEkHPVrJ9H47gsKmdgBwObkZBzBQUP0dKK/Sg6aVpETEis4w43bQ==
+react-native-linear-gradient@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
+  integrity sha512-FF1NhlerA4uBiS0gFIHa4FBp8/aftv4vPj14Y47lGNkYjSI94tnI6oYO3EfUxXjEyCUPiOVNKZOB9kScyjc5Ew==
 
 react-native-parsed-text@^0.0.21:
   version "0.0.21"
