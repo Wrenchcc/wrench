@@ -49,7 +49,6 @@ class Notifications extends PureComponent {
 
     return (
       <InfiniteListWithHandler
-        scrollEnabled={hasNotifications}
         paddingHorizontal={0}
         contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
         defaultPaddingTop

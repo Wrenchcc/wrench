@@ -146,7 +146,10 @@ class InfiniteList extends PureComponent {
             paddingLeft: paddingHorizontal,
             paddingRight: paddingHorizontal,
             paddingTop,
-            paddingBottom: (paddingBottom && paddingBottom) || (spacingSeparator && 40) || 0,
+            paddingBottom:
+              (paddingBottom && paddingBottom)
+              || (!ListEmptyComponent && spacingSeparator && 40)
+              || 0,
             ...contentContainerStyle,
           }}
           {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
