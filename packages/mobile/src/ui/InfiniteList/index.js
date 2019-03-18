@@ -148,7 +148,7 @@ class InfiniteList extends PureComponent {
             paddingTop,
             paddingBottom:
               (paddingBottom && paddingBottom)
-              || (!ListEmptyComponent && spacingSeparator && 40)
+              || (!initialFetch && data && data.length > 0 && spacingSeparator && 60)
               || 0,
             ...contentContainerStyle,
           }}
