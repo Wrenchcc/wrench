@@ -86,6 +86,7 @@ class AddPost extends PureComponent {
                 <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
 
                 <Input
+                  scrollEnabled={false}
                   multiline
                   autoFocus
                   color="dark"
