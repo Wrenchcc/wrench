@@ -62,8 +62,8 @@ class Search extends PureComponent {
   }
 
   scrollToTop = () => {
-    this.userRef.scrollToOffset({ offset: 0 })
-    this.projectRef.scrollToOffset({ offset: 0 })
+    if (this.userRef) this.userRef.scrollToOffset({ offset: 0 })
+    if (this.projectRef) this.projectRef.scrollToOffset({ offset: 0 })
   }
 
   renderTabBar = props => (
@@ -110,6 +110,7 @@ class Search extends PureComponent {
           onIndexChange={this.handleIndexChange}
           initialLayout={initialLayout}
           swipeEnabled
+          lazy
           animationEnabled
           useNativeDriver
         />

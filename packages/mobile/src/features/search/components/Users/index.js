@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
-import { User, InfiniteList, NoResults } from 'ui'
+import { User, InfiniteList, NoResults, SearchingFor } from 'ui'
 
 const ITEM_HEIGHT = 70
 
@@ -15,6 +15,7 @@ class Users extends PureComponent {
     refetch: PropTypes.func.isRequired,
     scrollRef: PropTypes.func.isRequired,
     users: PropTypes.array,
+    query: PropTypes.string,
   }
 
   getItemLayout = (data, index) => ({
@@ -34,22 +35,29 @@ class Users extends PureComponent {
       refetch,
       scrollRef,
       users,
+      query,
     } = this.props
 
     return (
       <InfiniteList
         borderSeparator
         getItemLayout={this.getItemLayout}
-        ListEmptyComponent={<NoResults />}
+        ListEmptyComponent={!isFetching && <NoResults />}
         data={users}
         fetchMore={fetchMore}
-        hasNextPage={hasNextPage}
-        isFetching={isFetching}
+        hasNextPage={isFetching ? false : hasNextPage}
+        isFetching={isFetching && query.length === 0}
         isRefetching={isRefetching}
         keyExtractor={item => item.node.id}
         refetch={refetch}
         renderItem={this.renderItem}
         scrollRef={scrollRef}
+        defaultPadding
+        ListFooterComponent={
+          (query.length === 1 && !users) || (isFetching && query.length !== 0) ? (
+            <SearchingFor query={query} />
+          ) : null
+        }
       />
     )
   }

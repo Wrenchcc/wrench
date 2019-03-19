@@ -15,7 +15,7 @@ export const mapListProps = type => ({ data: { fetchMore, loading, networkStatus
         after: data.edges[data.edges.length - 1].cursor,
       },
       updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (!previousResult[type]) {
+        if (!previousResult || !previousResult[type]) {
           return previousResult
         }
 

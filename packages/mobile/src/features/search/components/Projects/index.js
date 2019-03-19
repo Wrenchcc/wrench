@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation/actions'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
-import { ProjectCard, InfiniteList, NoResults } from 'ui'
+import { ProjectCard, InfiniteList, NoResults, SearchingFor } from 'ui'
 
 const ITEM_HEIGHT = 200
 
@@ -16,6 +16,7 @@ class Projects extends PureComponent {
     projects: PropTypes.array,
     refetch: PropTypes.func.isRequired,
     scrollRef: PropTypes.func.isRequired,
+    query: PropTypes.string,
   }
 
   getItemLayout = (data, index) => ({
@@ -37,23 +38,29 @@ class Projects extends PureComponent {
       projects,
       refetch,
       scrollRef,
+      query,
     } = this.props
 
     return (
       <InfiniteList
         borderSeparator
         getItemLayout={this.getItemLayout}
-        ListEmptyComponent={<NoResults />}
+        ListEmptyComponent={!isFetching && <NoResults />}
         data={projects}
         fetchMore={fetchMore}
-        hasNextPage={hasNextPage}
-        isFetching={isFetching}
+        hasNextPage={isFetching ? false : hasNextPage}
+        isFetching={isFetching && query.length === 0}
         isRefetching={isRefetching}
         keyExtractor={item => item.node.id}
-        paddingBottom={20}
         refetch={refetch}
         renderItem={this.renderItem}
         scrollRef={scrollRef}
+        defaultPadding
+        ListFooterComponent={
+          (query.length === 1 && !projects) || (isFetching && query.length !== 0) ? (
+            <SearchingFor query={query} />
+          ) : null
+        }
       />
     )
   }
