@@ -49,7 +49,6 @@
     "react-native-gesture-handler": "^1.1.0",
     "react-native-haptic-feedback": "^1.6.0",
     "react-native-linear-gradient": "^2.5.4",
-    "react-native-parsed-text": "^0.0.21",
     "react-native-permissions": "^2.0.0-alpha.1",
     "react-native-pinchable": "^0.1.2",
     "react-native-rate": "^1.1.6",

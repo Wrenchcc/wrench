@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import ParsedText from 'react-native-parsed-text'
 import { FONTS, COLORS } from 'ui/constants'
 import { toUpper } from 'ramda'
+import ParsedText from './ParsedText'
 
 export const Base = styled(ParsedText)`
   font-family: ${({ bold, medium }) => (bold && FONTS.BOLD) || (medium ? FONTS.MEDIUM : FONTS.REGULAR)};
