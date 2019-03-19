@@ -5447,13 +5447,6 @@ react-native-linear-gradient@^2.5.4:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
   integrity sha512-FF1NhlerA4uBiS0gFIHa4FBp8/aftv4vPj14Y47lGNkYjSI94tnI6oYO3EfUxXjEyCUPiOVNKZOB9kScyjc5Ew==
 
-react-native-parsed-text@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/react-native-parsed-text/-/react-native-parsed-text-0.0.21.tgz#86cf233aedc7a848b801b674c81d6b5ee37162df"
-  integrity sha512-0oqnn7/2TxkQW+6z7MN8SrPdEldDlDYScCK4QfHRsCmzllZFeBfdGNdYaIkSX35JWN++SSq7VBfHR74pUDmb2A==
-  dependencies:
-    prop-types "^15.5.10"
-
 react-native-permissions@^2.0.0-alpha.1:
   version "2.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.0-alpha.1.tgz#845d8509070490343efbb97fa9ac9a348c78cd5d"
