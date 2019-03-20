@@ -39,7 +39,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     userId: ctx.userId,
   })
 
-  // Skip "New comment" notification if post owner.
+  // Skip "New comment" notification if post owner commenting.
   if (!canModeratePost(post, ctx.userId)) {
     await Promise.all([
       // Add new notification to db
@@ -74,7 +74,8 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
         const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
         // Skip "New Mention" notification if comment owner.
-        if (canModerateComment(comment, mentionedUser.id)) {
+        // And post owner
+        if (canModerateComment(comment, mentionedUser.id) || canModeratePost(post, ctx.userId)) {
           return null
         }
 
