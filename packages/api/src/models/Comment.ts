@@ -13,7 +13,7 @@ import Post from './Post'
 
 @Entity('comments')
 export default class Comment extends BaseEntity {
-  public static async usersPreviousPublished(interval, userId) {
+  public static async userPreviousPublished(interval, userId) {
     return getRepository(Comment)
       .createQueryBuilder('comment')
       .select('count(comment.id)', 'count')

@@ -9,7 +9,7 @@ const SPAM_LMIT = 10
 
 export default isAuthenticated(async (_, { input }, ctx) => {
   const project = await ctx.db.Project.findOne(input.projectId)
-  const userPreviousPublishedPosts = await ctx.db.Post.usersPreviousPublished(
+  const userPreviousPublishedPosts = await ctx.db.Post.userPreviousPublished(
     '5 minutes',
     ctx.userId
   )

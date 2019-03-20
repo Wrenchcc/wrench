@@ -16,7 +16,7 @@ import File from './File'
 
 @Entity('posts')
 export default class Post extends BaseEntity {
-  public static async usersPreviousPublished(interval, userId) {
+  public static async userPreviousPublished(interval, userId) {
     return getRepository(Post)
       .createQueryBuilder('post')
       .select('count(post.id)', 'count')

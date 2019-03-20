@@ -9,7 +9,7 @@ const debug = require('debug')('api:mutations:comment:add-comment')
 const SPAM_LMIT = 10
 
 export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
-  const userPreviousPublishedPosts = await ctx.db.Comment.usersPreviousPublished(
+  const userPreviousPublishedPosts = await ctx.db.Comment.userPreviousPublished(
     '5 minutes',
     ctx.userId
   )
