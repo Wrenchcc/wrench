@@ -11,7 +11,7 @@ export default async ({ path, title = '', description = '', image = '' }) => {
       androidInfo: {
         androidPackageName: 'com.wrench',
       },
-      domainUriPrefix: 'wrench.page.link',
+      domainUriPrefix: 'share.wrench.cc',
       iosInfo: {
         iosAppStoreId: 'TODO',
         iosBundleId: 'cc.wrench.app',
