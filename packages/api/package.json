@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.4.8",
-    "aws-sdk": "^2.423.0",
+    "aws-sdk": "^2.424.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@firebase/app-types": "^0.3.6",
     "@types/graphql-depth-limit": "^1.1.0",
-    "@types/pg": "^7.4.13",
+    "@types/pg": "^7.4.14",
     "@zeit/ncc": "0.16.1",
     "bluebird": "^3.5.3",
     "chokidar": "^2.1.2",
@@ -43,6 +43,6 @@
     "dotenv-cli": "^2.0.0",
     "graphql-log": "^0.1.3",
     "ts-node-dev": "^1.0.0-pre.32",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.4000"
   }
 }
