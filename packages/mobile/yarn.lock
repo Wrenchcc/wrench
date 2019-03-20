@@ -5387,10 +5387,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.0.1.tgz#2263d9c656054a137e5abddaaa0d02d14dc3fb38"
-  integrity sha512-ZAKYegDYLVvGu48HfDMOu7CL/ybcxLLr8VdUjXqIFcyd4AVgePGu4yTm9JNSaWMe1G6lbUhERXJPSvGIfApzKA==
+react-native-camera@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.0.2.tgz#484e1116c0b6cb53147385a1b4aeb0fba59466de"
+  integrity sha512-SEEQvl3pwQXl1Qwd+SNuInemQanK1WcWBzEri9E1vlYA1M4SGYNp8Lxyrm+JFDDKJ890ec0MDJuzIvKUyXsK9g==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5412,10 +5412,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.0.0.tgz#f1b2da9ed77439abf07d9eee5f476645639c3d23"
-  integrity sha512-9ch8BAnQxodfIGfzs8rDLYMYeO8PuN01Mro1MTIbUt8kcPez6HdqeE10sTZIzHTDMLtqeAD8LBvxWzu0Kt7PqA==
+react-native-device-info@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.0.1.tgz#4bca46388773ade9a8599dfe0c55d87756b0622b"
+  integrity sha512-TjDO4lPtMmM7Cuj1SanmCPw3RBhXvnUcOHTvX+2QeI2BjrCGjxmc3xFSmBkKn/oy2G67qWdDDgpE4HTSw9ZhUA==
 
 react-native-fast-image@^5.2.0:
   version "5.2.0"
@@ -5660,10 +5660,10 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^8.0.17:
-  version "8.0.17"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.17.tgz#f415f8476c2354e3193e8b8495d7977d08dcd96a"
-  integrity sha512-VZ9pFoozbEQExh0MQZnOQoVUHgTcxfKj3Gg0jhHmGun1zSS8hyL37skslJXmB+gYC/7GmNU00TpDQr8vMIpexw==
+react-spring@^8.0.18:
+  version "8.0.18"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.18.tgz#f6fa09ab5acdeb37618c0e340d59830171b95c33"
+  integrity sha512-gb1Rtsnez2gxIHtbrbwQsAjE4ir/62m+gI+eT+1E0Uky5L1PbLccbywRIdIpK3W5jiNmU6OlEazVk0tfI8pZrA==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
