@@ -27,7 +27,7 @@
         "alertCancel": "Avbryt",
         "alertOpen": "Öppna inställningar",
         "permissionHeadline": "Ta bilder och spela in videoklipp",
-        "permissionDescription": "Tillåt Wrench åtkomst till din kamera för att ta bilder och spela in video i appen.",
+        "permissionDescription": "Tillåt Wrench att få åtkomst till din kamera för att kunna ta bilder och spela in video.",
         "permissionButton": "Tillåt kameraåtkomst"
       },
       "photo_library": {
