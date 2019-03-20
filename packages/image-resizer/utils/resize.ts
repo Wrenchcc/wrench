@@ -18,9 +18,10 @@ export const resize: Resize = query => async data => {
   const image = sharp(data)
   const meta = await image.metadata()
 
-  if (meta.format !== 'jpeg') {
-    throw new Error(`file format is not jpeg but: ${meta.format}`)
-  }
+  // TODO: Guard
+  // if (meta.format !== 'jpeg') {
+  //   throw new Error(`file format is not jpeg but: ${meta.format}`)
+  // }
 
   image.rotate()
 

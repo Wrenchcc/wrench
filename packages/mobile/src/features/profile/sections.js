@@ -166,6 +166,10 @@ const sections = props => ({
           titleKey: 'kismo',
           onPress: () => navigateToWebView({ url: 'http://kismomotors.com' }),
         },
+        {
+          titleKey: 'motorfabriken',
+          onPress: () => navigateToWebView({ url: 'https://www.instagram.com/motorfabriken' }),
+        },
       ],
     },
   ],
