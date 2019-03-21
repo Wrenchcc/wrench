@@ -135,17 +135,15 @@ class Post extends PureComponent {
               onClose={this.toggleEdit}
             />
           ) : (
-            post.caption && (
-              <Text
-                onPress={this.goToProject}
-                disabled={onPost}
-                color={onPost ? 'dark' : 'grey'}
-                fontSize={15}
-                lineHeight={25}
-              >
-                {post.caption}
-              </Text>
-            )
+            <Text
+              onPress={this.goToProject}
+              disabled={onPost}
+              color={onPost ? 'dark' : 'grey'}
+              fontSize={15}
+              lineHeight={25}
+            >
+              {post.caption}
+            </Text>
           )}
 
           <Spacer />
