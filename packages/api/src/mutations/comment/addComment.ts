@@ -39,7 +39,8 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     userId: ctx.userId,
   })
 
-  // Skip "New comment" notification if post owner commenting.
+  // NOTE: If ctx user is not the owner of the post
+  // Add new comment to the post owner from the ctx user
   if (!canModeratePost(post, ctx.userId)) {
     await Promise.all([
       // Add new notification to db
@@ -65,7 +66,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     ])
   }
 
-  // Send notification to mentioned users
+  // NOTE: Send notification to mentioned users
   const mentions = extractMentionedUsers(input.text)
 
   if (mentions) {
@@ -73,14 +74,14 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
       mentions.map(async username => {
         const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
-        // Skip "New Mention" notification if comment owner.
-        // And post owner
-        if (canModerateComment(comment, mentionedUser.id) || canModeratePost(post, ctx.userId)) {
+        // NOTE: Skip "New Mention" notification if comment owner.
+        // And if mentioned user is the post owner, just add "NEW_COMMENT" to notifications.
+        if (canModerateComment(comment, mentionedUser.id) || mentionedUser.id === post.userId) {
           return null
         }
 
         return Promise.all([
-          // Send notification to mentioned user
+          // NOTE: Send mention to mentioned user
           ctx.services.firebase.send({
             data: {
               commentId: comment.id,
@@ -93,7 +94,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
             userId: ctx.userId,
           }),
 
-          // Add new notification to db
+          // NOTE: Add new mention to db
           ctx.db.Notification.save({
             to: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,
