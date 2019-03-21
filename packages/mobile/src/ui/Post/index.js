@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Alert, TouchableOpacity } from 'react-native'
+import { Alert } from 'react-native'
 import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { navigateToProject, navigateToUser } from 'navigation/actions'
@@ -94,48 +94,36 @@ class Post extends PureComponent {
 
     return (
       <LazyLoad enabled={lazyload}>
-        <TouchableOpacity onLongPress={this.toggleActionSheet} activeOpacity={1}>
-          <Top>
-            {!onPost && (
-              <Headline>
-                <Title
-                  numberOfLines={1}
-                  onPress={this.goToProject}
-                  onLongPress={this.toggleActionSheet}
-                >
-                  {post.project.title}
-                </Title>
-              </Headline>
-            )}
-            {avatar && (
-              <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
-            )}
-          </Top>
-          <Content>
-            {post.caption && (
-              <Caption
-                onLongPress={this.toggleActionSheet}
-                onPress={this.goToProject}
-                disabled={onPost}
-                color={onPost ? 'dark' : 'grey'}
-                lineHeight={25}
-              >
-                {post.caption}
-              </Caption>
-            )}
-            {post.files && (
-              <Carousel
-                files={post.files}
-                onPress={this.goToProject}
-                onLongPress={this.toggleActionSheet}
-              />
-            )}
-          </Content>
+        <Top>
+          {!onPost && (
+            <Headline>
+              <Title fontSize={21} numberOfLines={1} onPress={this.goToProject}>
+                {post.project.title}
+              </Title>
+            </Headline>
+          )}
+          {avatar && (
+            <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
+          )}
+        </Top>
+        <Content>
+          {post.caption && (
+            <Caption
+              onPress={this.goToProject}
+              disabled={onPost}
+              color={onPost ? 'dark' : 'grey'}
+              fontSize={17}
+              lineHeight={25}
+            >
+              {post.caption}
+            </Caption>
+          )}
+          {post.files && <Carousel files={post.files} onPress={this.goToProject} />}
+        </Content>
 
-          {!post.project.commentsDisabled && <Comments data={post} />}
+        {!post.project.commentsDisabled && <Comments data={post} />}
 
-          {this.postActions()}
-        </TouchableOpacity>
+        {this.postActions()}
       </LazyLoad>
     )
   }

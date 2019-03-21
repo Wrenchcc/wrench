@@ -21,5 +21,5 @@ export const Header = styled.View`
 
 export const Footer = styled.View`
   margin-bottom: 40;
-  margin-top: 60;
+  margin-top: 50;
 `

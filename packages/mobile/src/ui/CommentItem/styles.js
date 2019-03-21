@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native'
 import styled from 'styled-components'
 import UiText from 'ui/Text'
 import { COLORS } from 'ui/constants'
@@ -10,8 +9,8 @@ export const Base = styled.View`
   margin-left: ${props => (props.isReply ? 40 : 0)}px;
   padding-left: 20;
   padding-right: 20;
-  border-bottom-width: ${props => (props.first ? StyleSheet.hairlineWidth : 0)};
-  border-bottom-color: ${COLORS.LIGHT_GREY};
+  border-bottom-width: ${props => (props.first ? 1 : 0)};
+  border-bottom-color: ${COLORS.DIVIDER};
 `
 
 export const Content = styled.View`
@@ -21,8 +20,8 @@ export const Content = styled.View`
 
 export const Border = styled.View`
   width: 20;
-  height: ${StyleSheet.hairlineWidth};
-  background-color: ${COLORS.LIGHT_GREY};
+  height: 1;
+  background-color: ${COLORS.DIVIDER};
   margin-right: 10;
 `
 

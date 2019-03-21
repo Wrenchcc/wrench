@@ -12,7 +12,6 @@ export default class Carousel extends PureComponent {
   static propTypes = {
     files: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
-    onLongPress: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
   }
 
@@ -23,16 +22,11 @@ export default class Carousel extends PureComponent {
   })
 
   renderItem = ({ item, index }) => {
-    const { onPress, onLongPress, disabled, files } = this.props
+    const { onPress, disabled, files } = this.props
 
     return (
       <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
-        <Touchable
-          onPress={onPress}
-          onLongPress={onLongPress}
-          disabled={disabled}
-          activeOpacity={1}
-        >
+        <Touchable onPress={onPress} disabled={disabled} activeOpacity={1}>
           <Pinchable maximumZoomScale={5}>
             <Picture
               width={SIZE}
