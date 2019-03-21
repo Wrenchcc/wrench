@@ -256,7 +256,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNDeviceInfo (1.0.1):
+  - RNDeviceInfo (1.1.0):
     - React
   - RNFirebase (5.2.3):
     - Firebase/Core
@@ -470,7 +470,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: e34cded54b134e40fd67fd84fc6f395c584db91d
   react-native-webview: 84a2f3b7d1db70f43a58ce492b9449c15827e0ad
-  RNDeviceInfo: ec0ee4e9ce33c1c400f143680634ae71e7c64bc5
+  RNDeviceInfo: 65368bc13851d5690fa8fa0f08c1e97fe3e83041
   RNFirebase: fb4f66d93810b53aa4d1cc50c9fb91ee3548abe2
   RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
