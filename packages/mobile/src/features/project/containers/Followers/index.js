@@ -38,6 +38,7 @@ class Followers extends PureComponent {
         scrollRef={ref => {
           scrollView = ref
         }}
+        paddingBottom={40}
         ListEmptyComponent={<NoResults />}
         borderSeparator
         data={followers}

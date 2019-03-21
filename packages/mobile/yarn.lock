@@ -5412,10 +5412,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.0.1.tgz#4bca46388773ade9a8599dfe0c55d87756b0622b"
-  integrity sha512-TjDO4lPtMmM7Cuj1SanmCPw3RBhXvnUcOHTvX+2QeI2BjrCGjxmc3xFSmBkKn/oy2G67qWdDDgpE4HTSw9ZhUA==
+react-native-device-info@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.1.0.tgz#bcf5b0d4522413eb9970e4299d5bed29ba28b602"
+  integrity sha512-RfWBWTHTyFDDC/Xg4FG0VXE/hv98JkkCGCy5yUzSPT4lIQVHRo5/vN73T4dYR8P9wA8MSlATtqm2Wx+TOnk/Kg==
 
 react-native-fast-image@^5.2.0:
   version "5.2.0"
@@ -5555,10 +5555,10 @@ react-native-video@^4.4.0:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.4.1.tgz#8e97c0f91afec66f21b5ae277763fdd876df8331"
-  integrity sha512-70OZqR0XFMW1frdKi2RerPCiGy5Z4riDtd08h2sVax0F973hwZjadnZ4Yb8fATIpl7TCZnZiKkMreFyhzwo86w==
+react-native-webview@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.4.2.tgz#d301e349015ab542e4f2f8b820836f52101d61fc"
+  integrity sha512-IkK3R+AeJ4wx2ZKp7wYxhYkdqsGgrXL8Vl788o9+0sKtO0K7WUX63Y/pEJ6KaMl8tj8UOppduP+wCIG3TLb3+w==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Alert } from 'react-native'
+import { Alert, Linking } from 'react-native'
 import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { navigateToProject, navigateToUser } from 'navigation/actions'
@@ -10,16 +10,20 @@ import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
 import LazyLoad from 'ui/LazyLoad'
 import Title from 'ui/Title'
+import Text from 'ui/Text'
+import Icon from 'ui/Icon'
 import ActionSheet from 'ui/ActionSheet'
-import { Top, Headline, Content, Caption } from './styled'
+import { share } from 'images'
+import EditPost from 'ui/EditPost'
+import { Top, Headline, Content, Spacer } from './styled'
 
 class Post extends PureComponent {
   state = {
     actionSheetIsOpen: false,
+    edit: false,
   }
 
   static propTypes = {
-    avatar: PropTypes.bool,
     deletePost: PropTypes.func.isRequired,
     lazyload: PropTypes.bool,
     onPost: PropTypes.bool,
@@ -27,9 +31,11 @@ class Post extends PureComponent {
   }
 
   toggleActionSheet = () => {
-    if (this.props.post.postPermissions.isOwner) {
-      this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
-    }
+    this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
+  }
+
+  toggleEdit = () => {
+    this.setState(prevState => ({ edit: !prevState.edit }))
   }
 
   deletePost = () => {
@@ -71,58 +77,81 @@ class Post extends PureComponent {
   }
 
   postActions() {
-    const { t } = this.props
+    const { t, post } = this.props
+
+    const options = []
+
+    if (post.postPermissions.isOwner) {
+      options.push(
+        // {
+        //   name: t('Post:options:edit'),
+        //   onSelect: this.toggleEdit,
+        // },
+        {
+          name: t('Post:options:delete'),
+          onSelect: this.onDelete,
+        }
+      )
+    } else {
+      options.push({
+        name: t('Post:options:report'),
+        onSelect: () => Linking.openURL(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`),
+      })
+    }
 
     return (
       <ActionSheet
         isOpen={this.state.actionSheetIsOpen}
         onClose={this.toggleActionSheet}
-        destructiveButtonIndex={0}
-        options={[
-          {
-            name: t('Post:options:delete'),
-            onSelect: this.onDelete,
-          },
-          { name: t('Post:options:cancel') },
-        ]}
+        destructiveButtonIndex={options.length - 1}
+        options={[...options, { name: t('Post:options:cancel') }]}
       />
     )
   }
 
   render() {
-    const { post, onPost = false, avatar = true, lazyload } = this.props
+    const { post, onPost = false, lazyload } = this.props
 
     return (
       <LazyLoad enabled={lazyload}>
         <Top>
+          <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
+          <Icon source={share} onPress={this.toggleActionSheet} />
+        </Top>
+
+        <Content>
           {!onPost && (
             <Headline>
-              <Title fontSize={21} numberOfLines={1} onPress={this.goToProject}>
+              <Title fontSize={19} numberOfLines={1} onPress={this.goToProject}>
                 {post.project.title}
               </Title>
             </Headline>
           )}
-          {avatar && (
-            <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
-          )}
-        </Top>
-        <Content>
-          {post.caption && (
-            <Caption
+
+          {this.state.edit ? (
+            <EditPost
+              text={post.caption}
+              color={onPost ? 'dark' : 'grey'}
+              onClose={this.toggleEdit}
+            />
+          ) : (
+            <Text
               onPress={this.goToProject}
               disabled={onPost}
               color={onPost ? 'dark' : 'grey'}
-              fontSize={17}
+              fontSize={15}
               lineHeight={25}
             >
               {post.caption}
-            </Caption>
+            </Text>
           )}
+
+          <Spacer />
+
           {post.files && <Carousel files={post.files} onPress={this.goToProject} />}
         </Content>
 
         {!post.project.commentsDisabled && <Comments data={post} />}
-
         {this.postActions()}
       </LazyLoad>
     )

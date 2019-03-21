@@ -45,7 +45,7 @@ class Me extends PureComponent {
     })
   }
 
-  renderItem = ({ item }) => <Post post={item.node} avatar={false} />
+  renderItem = ({ item }) => <Post post={item.node} />
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props

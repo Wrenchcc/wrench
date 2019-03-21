@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import UiText from 'ui/Text'
 
 export const Top = styled.View`
   flex-direction: row;
@@ -14,8 +13,9 @@ export const Content = styled.View`
 export const Headline = styled.View`
   flex: 1;
   padding-right: 10;
+  margin-bottom: 5;
 `
 
-export const Caption = styled(UiText)`
-  margin-bottom: 20;
+export const Spacer = styled.View`
+  margin-top: 20;
 `
