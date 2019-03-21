@@ -62,7 +62,7 @@ class User extends PureComponent {
     }
   }
 
-  renderItem = ({ item, index }) => <Post post={item.node} avatar={false} lazyload={index > 2} />
+  renderItem = ({ item, index }) => <Post post={item.node} lazyload={index > 2} />
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props

@@ -5,7 +5,6 @@
         "alertTitle": "Are you sure?",
         "report": "Report",
         "edit": "Edit",
-        "commenting": "Turn off commenting",
         "delete": "Delete",
         "cancel": "Cancel"
       }
@@ -15,7 +14,6 @@
         "alertTitle": "Är du säker?",
         "report": "Rapportera",
         "edit": "Redigera",
-        "commenting": "Stäng av kommentarer",
         "delete": "Radera",
         "cancel": "Avbryt"
       }

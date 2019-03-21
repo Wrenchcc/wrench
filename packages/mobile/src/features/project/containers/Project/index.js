@@ -102,7 +102,7 @@ class Project extends PureComponent {
     if (post) {
       content = (
         <>
-          <Post post={post} avatar={false} onPost />
+          <Post post={post} onPost />
           {hasPosts && posts.length > 1 && (
             <View style={{ paddingTop: 40 }}>
               <Title medium>{t('Project:recent')}</Title>

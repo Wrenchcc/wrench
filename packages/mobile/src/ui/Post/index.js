@@ -10,7 +10,9 @@ import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
 import LazyLoad from 'ui/LazyLoad'
 import Title from 'ui/Title'
+import Icon from 'ui/Icon'
 import ActionSheet from 'ui/ActionSheet'
+import { share } from 'images'
 import { Top, Headline, Content, Caption } from './styled'
 
 class Post extends PureComponent {
@@ -19,7 +21,6 @@ class Post extends PureComponent {
   }
 
   static propTypes = {
-    avatar: PropTypes.bool,
     deletePost: PropTypes.func.isRequired,
     lazyload: PropTypes.bool,
     onPost: PropTypes.bool,
@@ -27,9 +28,7 @@ class Post extends PureComponent {
   }
 
   toggleActionSheet = () => {
-    if (this.props.post.postPermissions.isOwner) {
-      this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
-    }
+    this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
   }
 
   deletePost = () => {
@@ -71,48 +70,63 @@ class Post extends PureComponent {
   }
 
   postActions() {
-    const { t } = this.props
+    const { t, post } = this.props
+
+    const options = []
+
+    if (post.postPermissions.isOwner) {
+      options.push(
+        {
+          name: t('Post:options:edit'),
+          onSelect: () => alert('edit'),
+        },
+        {
+          name: t('Post:options:delete'),
+          onSelect: this.onDelete,
+        }
+      )
+    } else {
+      options.push({
+        name: t('Post:options:report'),
+        onSelect: () => alert('report'),
+      })
+    }
 
     return (
       <ActionSheet
         isOpen={this.state.actionSheetIsOpen}
         onClose={this.toggleActionSheet}
-        destructiveButtonIndex={0}
-        options={[
-          {
-            name: t('Post:options:delete'),
-            onSelect: this.onDelete,
-          },
-          { name: t('Post:options:cancel') },
-        ]}
+        destructiveButtonIndex={options.length - 1}
+        options={[...options, { name: t('Post:options:cancel') }]}
       />
     )
   }
 
   render() {
-    const { post, onPost = false, avatar = true, lazyload } = this.props
+    const { post, onPost = false, lazyload } = this.props
 
     return (
       <LazyLoad enabled={lazyload}>
         <Top>
+          <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
+          <Icon source={share} onPress={this.toggleActionSheet} />
+        </Top>
+
+        <Content>
           {!onPost && (
             <Headline>
-              <Title fontSize={21} numberOfLines={1} onPress={this.goToProject}>
+              <Title fontSize={19} numberOfLines={1} onPress={this.goToProject}>
                 {post.project.title}
               </Title>
             </Headline>
           )}
-          {avatar && (
-            <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
-          )}
-        </Top>
-        <Content>
+
           {post.caption && (
             <Caption
               onPress={this.goToProject}
               disabled={onPost}
               color={onPost ? 'dark' : 'grey'}
-              fontSize={17}
+              fontSize={15}
               lineHeight={25}
             >
               {post.caption}
