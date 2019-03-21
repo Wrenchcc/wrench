@@ -159,7 +159,7 @@ class InfiniteList extends PureComponent {
           }}
           {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
           {...spacingSeparator && {
-            ItemSeparatorComponent: () => <View style={{ paddingBottom: 40 }} />,
+            ItemSeparatorComponent: () => <View style={{ paddingBottom: 50 }} />,
           }}
           {...onScroll && { onScroll, scrollEventThrottle: 1 }}
           {...props}

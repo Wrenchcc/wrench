@@ -10,11 +10,12 @@ import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
 import LazyLoad from 'ui/LazyLoad'
 import Title from 'ui/Title'
+import Text from 'ui/Text'
 import Icon from 'ui/Icon'
 import ActionSheet from 'ui/ActionSheet'
 import { share } from 'images'
 import EditPost from 'ui/EditPost'
-import { Top, Headline, Content, Caption } from './styled'
+import { Top, Headline, Content, Spacer } from './styled'
 
 class Post extends PureComponent {
   state = {
@@ -82,10 +83,10 @@ class Post extends PureComponent {
 
     if (post.postPermissions.isOwner) {
       options.push(
-        {
-          name: t('Post:options:edit'),
-          onSelect: this.toggleEdit,
-        },
+        // {
+        //   name: t('Post:options:edit'),
+        //   onSelect: this.toggleEdit,
+        // },
         {
           name: t('Post:options:delete'),
           onSelect: this.onDelete,
@@ -135,7 +136,7 @@ class Post extends PureComponent {
             />
           ) : (
             post.caption && (
-              <Caption
+              <Text
                 onPress={this.goToProject}
                 disabled={onPost}
                 color={onPost ? 'dark' : 'grey'}
@@ -143,9 +144,11 @@ class Post extends PureComponent {
                 lineHeight={25}
               >
                 {post.caption}
-              </Caption>
+              </Text>
             )
           )}
+
+          <Spacer />
 
           {post.files && <Carousel files={post.files} onPress={this.goToProject} />}
         </Content>
