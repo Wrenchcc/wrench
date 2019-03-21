@@ -9,6 +9,7 @@ export const Base = styled.View`
 export const Row = styled.View`
   flex-direction: row;
   align-items: center;
+  margin-bottom: 5;
 `
 
 export const Comment = styled(UiText)`

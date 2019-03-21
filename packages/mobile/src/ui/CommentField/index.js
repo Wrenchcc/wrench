@@ -115,7 +115,9 @@ class CommentField extends PureComponent {
               />
               {!disabled && (
                 <Button onPress={this.handleSubmit} hapticFeedback="impactLight">
-                  <Text medium>{t('CommentField:post')}</Text>
+                  <Text fontSize={15} medium>
+                    {t('CommentField:post')}
+                  </Text>
                 </Button>
               )}
             </Base>

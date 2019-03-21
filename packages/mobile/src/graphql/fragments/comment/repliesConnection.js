@@ -3,7 +3,7 @@ import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export default gql`
   fragment repliesConnection on Comment {
-    replies: repliesConnection(first: 1) {
+    replies: repliesConnection(first: 2) {
       pageInfo {
         hasNextPage
       }

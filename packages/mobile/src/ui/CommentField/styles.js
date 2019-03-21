@@ -15,6 +15,7 @@ export const Input = styled(UiInput)`
   border-bottom-width: 0;
   padding-right: 10;
   padding-left: 10;
+  font-size: 15;
 `
 
 export const Button = styled(UiTouchable)`

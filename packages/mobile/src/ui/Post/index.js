@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Alert } from 'react-native'
+import { Alert, Linking } from 'react-native'
 import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { navigateToProject, navigateToUser } from 'navigation/actions'
@@ -88,7 +88,7 @@ class Post extends PureComponent {
     } else {
       options.push({
         name: t('Post:options:report'),
-        onSelect: () => alert('report'),
+        onSelect: () => Linking.openURL(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`),
       })
     }
 

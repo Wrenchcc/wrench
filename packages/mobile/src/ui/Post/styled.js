@@ -18,4 +18,5 @@ export const Headline = styled.View`
 
 export const Caption = styled(UiText)`
   margin-bottom: 20;
+  margin-top: 10;
 `
