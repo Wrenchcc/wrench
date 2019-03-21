@@ -13,11 +13,13 @@ import Title from 'ui/Title'
 import Icon from 'ui/Icon'
 import ActionSheet from 'ui/ActionSheet'
 import { share } from 'images'
+import EditPost from 'ui/EditPost'
 import { Top, Headline, Content, Caption } from './styled'
 
 class Post extends PureComponent {
   state = {
     actionSheetIsOpen: false,
+    edit: false,
   }
 
   static propTypes = {
@@ -29,6 +31,10 @@ class Post extends PureComponent {
 
   toggleActionSheet = () => {
     this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
+  }
+
+  toggleEdit = () => {
+    this.setState(prevState => ({ edit: !prevState.edit }))
   }
 
   deletePost = () => {
@@ -78,7 +84,7 @@ class Post extends PureComponent {
       options.push(
         {
           name: t('Post:options:edit'),
-          onSelect: () => alert('edit'),
+          onSelect: this.toggleEdit,
         },
         {
           name: t('Post:options:delete'),
@@ -121,22 +127,30 @@ class Post extends PureComponent {
             </Headline>
           )}
 
-          {post.caption && (
-            <Caption
-              onPress={this.goToProject}
-              disabled={onPost}
+          {this.state.edit ? (
+            <EditPost
+              text={post.caption}
               color={onPost ? 'dark' : 'grey'}
-              fontSize={15}
-              lineHeight={25}
-            >
-              {post.caption}
-            </Caption>
+              onClose={this.toggleEdit}
+            />
+          ) : (
+            post.caption && (
+              <Caption
+                onPress={this.goToProject}
+                disabled={onPost}
+                color={onPost ? 'dark' : 'grey'}
+                fontSize={15}
+                lineHeight={25}
+              >
+                {post.caption}
+              </Caption>
+            )
           )}
+
           {post.files && <Carousel files={post.files} onPress={this.goToProject} />}
         </Content>
 
         {!post.project.commentsDisabled && <Comments data={post} />}
-
         {this.postActions()}
       </LazyLoad>
     )
