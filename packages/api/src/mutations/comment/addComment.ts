@@ -42,6 +42,9 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   // NOTE: If ctx user is not the owner of the post
   // Add new comment to the post owner from the ctx user
   if (!canModeratePost(post, ctx.userId)) {
+    debug('Save notification to: %o ', post.userId)
+    debug('Send push notification to: %o ', post.userId)
+
     await Promise.all([
       // Add new notification to db
       ctx.db.Notification.save({
@@ -58,6 +61,8 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
           postId: post.id,
           text,
           title: project.title,
+          // attachment: '',
+          // media_type: 'image',
         },
         to: post.userId,
         type: notificationType,
@@ -79,6 +84,9 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
         if (canModerateComment(comment, mentionedUser.id) || mentionedUser.id === post.userId) {
           return null
         }
+
+        debug('Save notification to: %o ', mentionedUser.id)
+        debug('Send push notification to: %o ', mentionedUser.id)
 
         return Promise.all([
           // NOTE: Send mention to mentioned user
