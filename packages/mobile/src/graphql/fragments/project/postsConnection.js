@@ -10,6 +10,7 @@ export default gql`
         node {
           id
           caption
+          createdAt
           postPermissions {
             isOwner
           }
