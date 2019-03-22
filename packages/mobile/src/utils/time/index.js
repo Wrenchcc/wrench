@@ -31,8 +31,12 @@ function timeDifference(current, previous) {
   return `${Math.round(elapsed / milliSecondsPerYear)}y`
 }
 
-export function timeDifferenceForDate(date) {
+export function timeDifferenceForDate(date, long = false) {
   const now = new Date().getTime()
   const updated = new Date(date).getTime()
+
+  if (long) {
+    return i18next.t('Time:long', { time: timeDifference(now, updated) }).toUpperCase()
+  }
   return timeDifference(now, updated)
 }

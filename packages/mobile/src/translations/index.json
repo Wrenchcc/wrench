@@ -257,7 +257,8 @@
       "loading": "Loading..."
     },
     "Time": {
-      "now": "now"
+      "now": "now",
+      "long": "{{time}} ago"
     }
   },
   "sv": {
@@ -516,7 +517,8 @@
       "loading": "Laddar..."
     },
     "Time": {
-      "now": "nyss"
+      "now": "nyss",
+      "long": "{{time}} sedan"
     }
   }
 }

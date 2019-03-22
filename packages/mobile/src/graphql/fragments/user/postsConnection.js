@@ -11,6 +11,7 @@ export default gql`
         node {
           id
           caption
+          createdAt
           user {
             ...userInfo
           }

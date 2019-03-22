@@ -12,6 +12,7 @@ import LazyLoad from 'ui/LazyLoad'
 import Title from 'ui/Title'
 import Text from 'ui/Text'
 import Icon from 'ui/Icon'
+import TimeAgo from 'ui/TimeAgo'
 import ActionSheet from 'ui/ActionSheet'
 import { share } from 'images'
 import EditPost from 'ui/EditPost'
@@ -201,6 +202,9 @@ class Post extends PureComponent {
         </Content>
 
         {!post.project.commentsDisabled && <Comments data={post} />}
+
+        <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
+
         {!this.state.isEditing && this.postActions()}
       </LazyLoad>
     )
