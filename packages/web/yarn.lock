@@ -861,10 +861,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.5.tgz#011eece9d3f839a806b63973e228f85967b79ed3"
   integrity sha512-vVjM0SVzgaOUpflq4GYBvCpozes8OgIIS5gVXVka+OfK3hvnkC1i93U8WiY2OtNE4XUWyyy/86Kf6e0IHTQw1Q==
 
-"@types/node@^11.11.4":
-  version "11.11.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.4.tgz#8808bd5a82bbf6f5d412eff1c228d178e7c24bb3"
-  integrity sha512-02tIL+QIi/RW4E5xILdoAMjeJ9kYq5t5S2vciUdFPXv/ikFTb0zK8q9vXkg4+WAJuYXGiVT1H28AkD2C+IkXVw==
+"@types/node@^11.11.5":
+  version "11.11.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.5.tgz#0c57e12eb44d44e5b6735593925286553ee7cebf"
+  integrity sha512-pz6wNe/XwyesgfVX7P6B0hY3TnTAYXk6KSTLdpQfbuq3be+hnMoCuFzE+yLTskPdBwmNiGRL2TAsnF09aRugvQ==
 
 "@types/prop-types@*":
   version "15.5.9"
@@ -6094,10 +6094,10 @@ react-facebook-login@^4.1.1:
   resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-4.1.1.tgz#005121236a6ac0dee02099976fb1a3265f9d633e"
   integrity sha512-COnHEHlYGTKipz4963safFAK9PaNTcCiXfPXMS/yxo8El+/AJL5ye8kMJf23lKSSGGPgqFQuInskIHVqGqTvSw==
 
-react-i18next@^10.5.2:
-  version "10.5.2"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.5.2.tgz#056ee9988137ef9296397d7bb55bbe8d8952a06d"
-  integrity sha512-9sTW1nxW6YCDBW6RLebXu3qlhWe4iV8cHrlTzJ223QWOWM38g392jajOl3J39vyD6JMeM6wdDIAhS0cuubBChg==
+react-i18next@^10.5.3:
+  version "10.5.3"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.5.3.tgz#96e0fdbd406d226b00d1be9712bc2ec9d93a6679"
+  integrity sha512-RW4oj15dHDNXv06XcAbXfwp3GTXOzjiNfztexS81NfiKnknKBq/XRBgHhX/ODu8jiFm3LFv82OHpyLKkZvBIcg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
