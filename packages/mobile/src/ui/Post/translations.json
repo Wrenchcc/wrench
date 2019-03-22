@@ -3,20 +3,22 @@
     "en": {
       "options": {
         "alertTitle": "Are you sure?",
+        "alertDescription": "If you going back now your edit will be deleted.",
         "report": "Report",
         "edit": "Edit",
         "delete": "Delete",
-        "deleteDraft": "Delete draft",
+        "discard": "Discard",
         "cancel": "Cancel"
       }
     },
     "sv": {
       "options": {
         "alertTitle": "Är du säker?",
+        "alertDescription": "Om du backar nu kommer din redigering att kastas.",
         "report": "Rapportera",
         "edit": "Redigera",
         "delete": "Radera",
-        "deleteDraft": "Radera utkast",
+        "discard": "Släng",
         "cancel": "Avbryt"
       }
     }

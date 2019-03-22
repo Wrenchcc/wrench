@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'react-apollo'
+import { editPost } from 'graphql/mutations/post/editPost'
 import { Input } from './styles'
 
-function EditPost({ text, color, onSubmit, hasChanged }) {
-  const [value, setValue] = useState(text)
+function EditPost({ post, color, onSubmit, hasChanged, editPost }) {
+  const [value, setValue] = useState(post.caption)
 
   const handleEdit = value => {
-    hasChanged(value.trim() !== text)
+    hasChanged(value.trim() !== post.caption)
     setValue(value)
+  }
+
+  const handleSubmit = () => {
+    onSubmit()
+
+    editPost(post, {
+      caption: value,
+    })
   }
 
   return (
@@ -20,16 +30,17 @@ function EditPost({ text, color, onSubmit, hasChanged }) {
       scrollEnabled={false}
       onChangeText={handleEdit}
       value={value}
-      onSubmitEditing={onSubmit}
+      onSubmitEditing={handleSubmit}
     />
   )
 }
 
 EditPost.propTypes = {
   color: PropTypes.string,
+  editPost: PropTypes.func.isRequired,
   hasChanged: PropTypes.func.isRequired,
+  post: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
-  text: PropTypes.string,
 }
 
-export default EditPost
+export default compose(editPost)(EditPost)

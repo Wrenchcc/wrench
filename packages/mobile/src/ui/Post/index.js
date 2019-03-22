@@ -20,7 +20,8 @@ import { Top, Headline, Content, Spacer } from './styled'
 class Post extends PureComponent {
   state = {
     actionSheetIsOpen: false,
-    edit: false,
+    alertOpen: false,
+    isEditing: false,
     hasChanged: false,
   }
 
@@ -44,7 +45,7 @@ class Post extends PureComponent {
   }
 
   toggleEdit = () => {
-    this.setState(prevState => ({ edit: !prevState.edit }))
+    this.setState(prevState => ({ isEditing: !prevState.isEditing }))
   }
 
   deletePost = () => {
@@ -88,26 +89,34 @@ class Post extends PureComponent {
   keyboardDidHide = () => {
     const { t } = this.props
 
-    if (this.state.hasChanged && this.state.edit) {
+    if (this.state.hasChanged && this.state.isEditing && !this.state.alertOpen) {
+      this.setState({ alertOpen: true })
+
       Alert.alert(
         t('Post:options:alertTitle'),
-        null,
+        t('Post:options:alertDescription'),
         [
           {
-            text: t('Post:options:deleteDraft'),
-            onPress: () => this.setState({ edit: false }),
+            text: t('Post:options:discard'),
+            onPress: () => {
+              this.setState({ isEditing: false })
+              this.setState({ alertOpen: false })
+            },
             style: 'destructive',
           },
           {
             text: t('Post:options:cancel'),
-            onPress: () => this.setState({ edit: false }),
+            onPress: () => {
+              this.setState({ alertOpen: false })
+            },
             style: 'cancel',
           },
         ],
         { cancelable: false }
       )
-    } else {
-      this.setState({ edit: false })
+    } else if (!this.state.hasChanged) {
+      this.setState({ isEditing: false })
+      this.setState({ alertOpen: false })
     }
   }
 
@@ -167,9 +176,9 @@ class Post extends PureComponent {
             </Headline>
           )}
 
-          {this.state.edit ? (
+          {this.state.isEditing ? (
             <EditPost
-              text={post.caption}
+              post={post}
               color={onPost ? 'dark' : 'grey'}
               onSubmit={this.toggleEdit}
               hasChanged={hasChanged => this.setState({ hasChanged })}
@@ -192,7 +201,7 @@ class Post extends PureComponent {
         </Content>
 
         {!post.project.commentsDisabled && <Comments data={post} />}
-        {!this.state.edit && this.postActions()}
+        {!this.state.isEditing && this.postActions()}
       </LazyLoad>
     )
   }
