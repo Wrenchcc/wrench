@@ -224,8 +224,8 @@
         "alertTitle": "Are you sure?",
         "report": "Report",
         "edit": "Edit",
-        "commenting": "Turn off commenting",
         "delete": "Delete",
+        "deleteDraft": "Delete draft",
         "cancel": "Cancel"
       }
     },
@@ -345,7 +345,7 @@
         "alertCancel": "Avbryt",
         "alertOpen": "Öppna inställningar",
         "permissionHeadline": "Lägg till foton och videoklipp",
-        "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek ochspara foton till din kamerarulle.",
+        "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek och spara foton till din kamerarulle.",
         "permissionButton": "Aktivera biblioteksåtkomst"
       }
     },
@@ -483,8 +483,8 @@
         "alertTitle": "Är du säker?",
         "report": "Rapportera",
         "edit": "Redigera",
-        "commenting": "Stäng av kommentarer",
         "delete": "Radera",
+        "deleteDraft": "Radera utkast",
         "cancel": "Avbryt"
       }
     },

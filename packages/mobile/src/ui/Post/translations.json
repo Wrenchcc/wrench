@@ -6,6 +6,7 @@
         "report": "Report",
         "edit": "Edit",
         "delete": "Delete",
+        "deleteDraft": "Delete draft",
         "cancel": "Cancel"
       }
     },
@@ -15,6 +16,7 @@
         "report": "Rapportera",
         "edit": "Redigera",
         "delete": "Radera",
+        "deleteDraft": "Radera utkast",
         "cancel": "Avbryt"
       }
     }

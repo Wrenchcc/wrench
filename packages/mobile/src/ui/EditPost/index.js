@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Input } from './styles'
 
-function EditPost({ text, color, onSubmit }) {
+function EditPost({ text, color, onSubmit, hasChanged }) {
   const [value, setValue] = useState(text)
+
+  const handleEdit = value => {
+    hasChanged(value.trim() !== text)
+    setValue(value)
+  }
 
   return (
     <Input
@@ -12,11 +18,18 @@ function EditPost({ text, color, onSubmit }) {
       noBorder
       color={color}
       scrollEnabled={false}
-      onChangeText={setValue}
+      onChangeText={handleEdit}
       value={value}
-      onSubmitEditing={() => onSubmit()}
+      onSubmitEditing={onSubmit}
     />
   )
+}
+
+EditPost.propTypes = {
+  color: PropTypes.string,
+  hasChanged: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  text: PropTypes.string,
 }
 
 export default EditPost

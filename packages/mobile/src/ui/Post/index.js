@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Alert, Linking } from 'react-native'
+import { Alert, Linking, Keyboard } from 'react-native'
 import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { navigateToProject, navigateToUser } from 'navigation/actions'
@@ -21,6 +21,7 @@ class Post extends PureComponent {
   state = {
     actionSheetIsOpen: false,
     edit: false,
+    hasChanged: false,
   }
 
   static propTypes = {
@@ -28,6 +29,14 @@ class Post extends PureComponent {
     lazyload: PropTypes.bool,
     onPost: PropTypes.bool,
     post: PropTypes.object.isRequired,
+  }
+
+  componentDidMount() {
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidHideListener.remove()
   }
 
   toggleActionSheet = () => {
@@ -76,6 +85,32 @@ class Post extends PureComponent {
     )
   }
 
+  keyboardDidHide = () => {
+    const { t } = this.props
+
+    if (this.state.hasChanged && this.state.edit) {
+      Alert.alert(
+        t('Post:options:alertTitle'),
+        null,
+        [
+          {
+            text: t('Post:options:deleteDraft'),
+            onPress: () => this.setState({ edit: false }),
+            style: 'destructive',
+          },
+          {
+            text: t('Post:options:cancel'),
+            onPress: () => this.setState({ edit: false }),
+            style: 'cancel',
+          },
+        ],
+        { cancelable: false }
+      )
+    } else {
+      this.setState({ edit: false })
+    }
+  }
+
   postActions() {
     const { t, post } = this.props
 
@@ -115,7 +150,11 @@ class Post extends PureComponent {
     return (
       <LazyLoad enabled={lazyload}>
         <Top>
-          <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} />
+          <Avatar
+            uri={post.user.avatarUrl}
+            onPress={this.goToProfile}
+            isOnline={post.user.isOnline}
+          />
           <Icon source={share} onPress={this.toggleActionSheet} />
         </Top>
 
@@ -133,6 +172,7 @@ class Post extends PureComponent {
               text={post.caption}
               color={onPost ? 'dark' : 'grey'}
               onSubmit={this.toggleEdit}
+              hasChanged={hasChanged => this.setState({ hasChanged })}
             />
           ) : (
             <Text
@@ -140,7 +180,7 @@ class Post extends PureComponent {
               disabled={onPost}
               color={onPost ? 'dark' : 'grey'}
               fontSize={15}
-              lineHeight={25}
+              lineHeight={22}
             >
               {post.caption}
             </Text>
@@ -152,7 +192,7 @@ class Post extends PureComponent {
         </Content>
 
         {!post.project.commentsDisabled && <Comments data={post} />}
-        {this.postActions()}
+        {!this.state.edit && this.postActions()}
       </LazyLoad>
     )
   }
