@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Input } from './styles'
 
-function EditPost({ text, color, onClose }) {
+function EditPost({ text, color, onSubmit }) {
   const [value, setValue] = useState(text)
 
   return (
@@ -14,7 +14,7 @@ function EditPost({ text, color, onClose }) {
       scrollEnabled={false}
       onChangeText={setValue}
       value={value}
-      onSubmitEditing={() => onClose()}
+      onSubmitEditing={() => onSubmit()}
     />
   )
 }

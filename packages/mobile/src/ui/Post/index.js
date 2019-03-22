@@ -83,10 +83,10 @@ class Post extends PureComponent {
 
     if (post.postPermissions.isOwner) {
       options.push(
-        // {
-        //   name: t('Post:options:edit'),
-        //   onSelect: this.toggleEdit,
-        // },
+        {
+          name: t('Post:options:edit'),
+          onSelect: this.toggleEdit,
+        },
         {
           name: t('Post:options:delete'),
           onSelect: this.onDelete,
@@ -115,7 +115,7 @@ class Post extends PureComponent {
     return (
       <LazyLoad enabled={lazyload}>
         <Top>
-          <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} disabled={onPost} />
+          <Avatar uri={post.user.avatarUrl} onPress={this.goToProfile} />
           <Icon source={share} onPress={this.toggleActionSheet} />
         </Top>
 
@@ -132,7 +132,7 @@ class Post extends PureComponent {
             <EditPost
               text={post.caption}
               color={onPost ? 'dark' : 'grey'}
-              onClose={this.toggleEdit}
+              onSubmit={this.toggleEdit}
             />
           ) : (
             <Text
