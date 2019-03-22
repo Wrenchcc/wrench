@@ -169,7 +169,7 @@ class Post extends PureComponent {
         </Top>
 
         <Content>
-          {!onPost && (
+          {!onPost && post.project.title && (
             <Headline>
               <Title fontSize={19} numberOfLines={1} onPress={this.goToProject}>
                 {post.project.title}
