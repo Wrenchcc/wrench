@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
+import { useTranslation } from 'react-i18next'
 import { editPost } from 'graphql/mutations/post/editPost'
 import { Input } from './styles'
 
 function EditPost({ post, color, onSubmit, hasChanged, editPost }) {
   const [value, setValue] = useState(post.caption)
+  const { t } = useTranslation()
 
   const handleEdit = value => {
     hasChanged(value.trim() !== post.caption)
@@ -31,6 +33,7 @@ function EditPost({ post, color, onSubmit, hasChanged, editPost }) {
       onChangeText={handleEdit}
       value={value}
       onSubmitEditing={handleSubmit}
+      placeholder={t('EditPost:placeholder')}
     />
   )
 }

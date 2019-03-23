@@ -17,7 +17,7 @@
     "wtf": "tasks/wtf"
   },
   "dependencies": {
-    "@react-native-community/netinfo": "^1.3.0",
+    "@react-native-community/netinfo": "^1.4.0",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link": "^1.2.11",
@@ -33,9 +33,9 @@
     "i18next": "^15.0.7",
     "ms": "^2.1.1",
     "ramda": "^0.26.1",
-    "react": "^16.8.4",
+    "react": "^16.8.5",
     "react-apollo": "^2.5.2",
-    "react-dom": "^16.8.4",
+    "react-dom": "^16.8.5",
     "react-i18next": "^10.5.3",
     "react-native": "^v0.59.1",
     "react-native-actionsheet": "^2.4.2",
@@ -70,7 +70,7 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
-    "@react-native-community/cli": "^1.4.6",
+    "@react-native-community/cli": "^1.5.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
     "colors": "^1.3.3",

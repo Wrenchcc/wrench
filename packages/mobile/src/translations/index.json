@@ -162,6 +162,9 @@
     "Edit": {
       "edit": "Edit"
     },
+    "EditPost": {
+      "placeholder": "Add a text about your post"
+    },
     "EmptyState": {
       "project": {
         "title": "1. Create your first project.",
@@ -423,6 +426,9 @@
     },
     "Edit": {
       "edit": "Redigera"
+    },
+    "EditPost": {
+      "placeholder": "Skriv en text för ditt inlägg"
     },
     "EmptyState": {
       "project": {

@@ -1,0 +1,10 @@
+{
+  "EditPost": {
+    "en": {
+      "placeholder": "Add a text about your post"
+    },
+    "sv": {
+      "placeholder": "Skriv en text för ditt inlägg"
+    }
+  }
+}
