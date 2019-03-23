@@ -35,15 +35,16 @@ class Comments extends PureComponent {
 
   static propTypes = {
     addComment: PropTypes.func.isRequired,
-    comments: PropTypes.array,
     comment: PropTypes.object,
+    comments: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
     fetchMoreReplies: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    isRefetching: PropTypes.bool.isRequired,
+    navigation: PropTypes.object,
     post: PropTypes.object,
+    refetch: PropTypes.func.isRequired,
   }
 
   state = {
@@ -91,7 +92,7 @@ class Comments extends PureComponent {
   handleSubmit = () => {
     const { text, commentId } = this.state
     this.setState({ text: '', commentId: null })
-    this.props.addComment(text, commentId)
+    this.props.addComment(this.props.navigation.state.params.id, text, commentId)
   }
 
   componentWillUnmont() {

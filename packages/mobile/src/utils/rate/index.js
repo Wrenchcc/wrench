@@ -1,9 +1,8 @@
 import Rate, { AndroidMarket } from 'react-native-rate'
 import { track, events } from 'utils/analytics'
 
-// TODO: Add correct info
 const APPLE_APP_ID = '1450213123'
-const GOOGLE_PACKAGE_NAME = ''
+const GOOGLE_PACKAGE_NAME = 'com.wrench'
 
 export const askForRating = ({
   preferInApp = false,
