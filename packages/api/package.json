@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.4.8",
-    "aws-sdk": "^2.426.0",
+    "aws-sdk": "^2.427.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
@@ -38,7 +38,7 @@
     "@types/pg": "^7.4.14",
     "@zeit/ncc": "0.16.1",
     "bluebird": "^3.5.3",
-    "chokidar": "^2.1.4",
+    "chokidar": "^2.1.5",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^2.0.0",
     "graphql-log": "^0.1.3",
