@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll, FlatList, View, ActivityIndicator } from 'react-native'
+import { CameraRoll, FlatList, View, ActivityIndicator, Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
@@ -42,7 +42,10 @@ export default class MediaPicker extends Component {
 
   constructor(props) {
     super(props)
-    this.checkPhotoPermission()
+
+    if (Platform.OS === 'ios') {
+      this.checkPhotoPermission()
+    }
   }
 
   checkPhotoPermission = () => {
@@ -144,14 +147,14 @@ export default class MediaPicker extends Component {
 
     if (isLoading) return null
 
-    if (photoPermission !== RESULTS.GRANTED) {
-      return (
-        <AskForPermission
-          permission={IOS_PERMISSIONS.PHOTO_LIBRARY}
-          onSuccess={this.permissionAuthorized}
-        />
-      )
-    }
+    // if (photoPermission !== RESULTS.GRANTED) {
+    //   return (
+    //     <AskForPermission
+    //       permission={IOS_PERMISSIONS.PHOTO_LIBRARY}
+    //       onSuccess={this.permissionAuthorized}
+    //     />
+    //   )
+    // }
 
     return (
       <FlatList

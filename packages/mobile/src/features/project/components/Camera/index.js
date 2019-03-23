@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { TouchableWithoutFeedback } from 'react-native'
-import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
+import { TouchableWithoutFeedback, Platform } from 'react-native'
+import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
@@ -11,6 +11,8 @@ import { TakePicture } from './styles'
 import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
 
 const ORIENTATION = 'portrait'
+
+const permissions = Platform.OS === 'ios' ? IOS_PERMISSIONS : ANDROID_PERMISSIONS
 
 export default class Camera extends PureComponent {
   static propTypes = {
@@ -30,7 +32,7 @@ export default class Camera extends PureComponent {
   }
 
   checkCameraPermission = () => {
-    check(IOS_PERMISSIONS.CAMERA).then(response => {
+    check(permissions.CAMERA).then(response => {
       this.setState({
         isLoading: false,
         cameraPermission: response,
@@ -68,14 +70,11 @@ export default class Camera extends PureComponent {
 
     if (isLoading) return null
 
-    if (cameraPermission !== RESULTS.GRANTED) {
-      return (
-        <AskForPermission
-          permission={IOS_PERMISSIONS.CAMERA}
-          onSuccess={this.permissionAuthorized}
-        />
-      )
-    }
+    // if (cameraPermission !== RESULTS.GRANTED) {
+    //   return (
+    //     <AskForPermission permission={permissions.CAMERA} onSuccess={this.permissionAuthorized} />
+    //   )
+    // }
 
     return (
       <TouchableWithoutFeedback onPressIn={this.setFocus}>
