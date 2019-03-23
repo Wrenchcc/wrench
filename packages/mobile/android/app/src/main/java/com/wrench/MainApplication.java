@@ -17,6 +17,7 @@ import org.reactnative.camera.RNCameraPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.swmansion.reanimated.ReanimatedPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
@@ -51,7 +52,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new NetInfoPackage(),
+          new NetInfoPackage(),
           new RNCWebViewPackage(),
           new LinearGradientPackage(),
           new RNReactNativeHapticFeedbackPackage(),
@@ -64,6 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNDeviceInfo(),
           new RNSharePackage(),
           new RNGestureHandlerPackage(),
+          new ReanimatedPackage(),
           new RNFirebasePackage(),
           new RNFirebaseAnalyticsPackage(),
           new RNFirebasePerformancePackage(),
