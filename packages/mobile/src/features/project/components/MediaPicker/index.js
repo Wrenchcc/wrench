@@ -11,7 +11,7 @@ import MediaItem from './Item'
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 64
+const PAGE_SIZE = 80
 const ASSET_TYPE = 'image'
 
 export default class MediaPicker extends Component {
