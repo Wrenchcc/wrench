@@ -5,7 +5,27 @@ import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
+import GalleryManager from 'react-native-gallery-manager'
 import MediaItem from './Item'
+
+// GalleryManager.getAssets({
+//   type: 'all',
+//   startFrom: 0,
+// })
+//   .then(response => {
+//     console.log(response)
+//   })
+//   .catch(err => {
+//     // no rejects are defined currently on iOS
+//   })
+//
+// GalleryManager.getAlbums()
+//   .then(response => {
+//     console.log(response)
+//   })
+//   .catch(err => {
+//     // no rejects are defined currently on iOS
+//   })
 
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
@@ -147,14 +167,14 @@ export default class MediaPicker extends Component {
 
     if (isLoading) return null
 
-    // if (photoPermission !== RESULTS.GRANTED) {
-    //   return (
-    //     <AskForPermission
-    //       permission={IOS_PERMISSIONS.PHOTO_LIBRARY}
-    //       onSuccess={this.permissionAuthorized}
-    //     />
-    //   )
-    // }
+    if (photoPermission !== RESULTS.GRANTED) {
+      return (
+        <AskForPermission
+          permission={IOS_PERMISSIONS.PHOTO_LIBRARY}
+          onSuccess={this.permissionAuthorized}
+        />
+      )
+    }
 
     return (
       <FlatList
