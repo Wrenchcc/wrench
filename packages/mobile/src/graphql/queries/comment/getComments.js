@@ -17,7 +17,15 @@ export const CommentsQuery = gql`
       }
     }
     comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
-      ...commentInfo
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...commentInfo
+        }
+      }
     }
   }
   ${commentInfoFragment}
@@ -27,7 +35,15 @@ export const CommentsQuery = gql`
 const LoadMoreComments = gql`
   query loadMoreComments($postId: ID!, $after: String) {
     comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
-      ...commentInfo
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...commentInfo
+        }
+      }
     }
   }
   ${commentInfoFragment}

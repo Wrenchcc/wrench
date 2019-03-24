@@ -3,23 +3,16 @@ import repliesConnectionFragment from 'graphql/fragments/comment/repliesConnecti
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export default gql`
-  fragment commentInfo on CommentConnection {
-    pageInfo {
-      hasNextPage
+  fragment commentInfo on Comment {
+    id
+    text
+    createdAt
+    user {
+      ...userInfo
     }
-    edges {
-      cursor
-      node {
-        id
-        text
-        createdAt
-        user {
-          ...userInfo
-        }
-        ...repliesConnection
-      }
-    }
+    ...repliesConnection
   }
+
   ${userInfoFragment}
   ${repliesConnectionFragment}
 `

@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import commentInfoFragment from 'graphql/fragments/comment/commentInfoSmall'
+import commentInfoSmall from 'graphql/fragments/comment/commentInfoSmall'
 
 export default gql`
   fragment commentPostConnection on Post {
@@ -7,5 +7,5 @@ export default gql`
       ...commentInfoSmall
     }
   }
-  ${commentInfoFragment}
+  ${commentInfoSmall}
 `

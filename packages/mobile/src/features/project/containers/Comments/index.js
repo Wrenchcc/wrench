@@ -42,7 +42,6 @@ class Comments extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     isRefetching: PropTypes.bool.isRequired,
-    navigation: PropTypes.object,
     post: PropTypes.object,
     refetch: PropTypes.func.isRequired,
   }
@@ -92,7 +91,7 @@ class Comments extends PureComponent {
   handleSubmit = () => {
     const { text, commentId } = this.state
     this.setState({ text: '', commentId: null })
-    this.props.addComment(this.props.navigation.state.params.id, text, commentId)
+    this.props.addComment(text, commentId)
   }
 
   componentWillUnmont() {
