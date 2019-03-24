@@ -1,4 +1,4 @@
 {
-  "SubjectPart": "Hi {{firstName}}, welcome to Wrench ⚡",
-  "TextPart": "Hi {{firstName}}, welcome to Wrench ⚡"
+  "SubjectPart": "Hi {{firstName}}, welcome to Wrench!",
+  "TextPart": "Hi {{firstName}}, welcome to Wrench!"
 }
