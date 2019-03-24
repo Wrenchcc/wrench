@@ -260,7 +260,7 @@
       "loading": "Loading..."
     },
     "Time": {
-      "now": "now",
+      "now": "just now",
       "long": "{{time}} ago"
     }
   },
@@ -523,7 +523,7 @@
       "loading": "Laddar..."
     },
     "Time": {
-      "now": "nyss",
+      "now": "alldeles nyss",
       "long": "{{time}} sedan"
     }
   }

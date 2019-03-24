@@ -1,11 +1,11 @@
 {
   "Time": {
     "en": {
-      "now": "now",
+      "now": "just now",
       "long": "{{time}} ago"
     },
     "sv": {
-      "now": "nyss",
+      "now": "alldeles nyss",
       "long": "{{time}} sedan"
     }
   }

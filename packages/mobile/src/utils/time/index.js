@@ -9,12 +9,8 @@ function timeDifference(current, previous) {
 
   const elapsed = current - previous
 
-  if (elapsed < milliSecondsPerMinute / 3) {
-    return i18next.t('Time:now')
-  }
-
   if (elapsed < milliSecondsPerMinute) {
-    return `${Math.round(elapsed / 1000)}s`
+    return i18next.t('Time:now')
   }
   if (elapsed < milliSecondsPerHour) {
     return `${Math.round(elapsed / milliSecondsPerMinute)}m`
