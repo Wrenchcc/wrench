@@ -60,7 +60,7 @@ export default async (_, { token }, ctx) => {
       userId: user.id,
     }),
     ctx.services.mail.send({
-      userId: user.userId,
+      userId: user.id,
       type: MAIL_TYPES.WELCOME,
     }),
   ])
