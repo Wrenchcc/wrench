@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 import { prepend } from 'ramda'
 import postInfo from 'graphql/fragments/post/postInfo'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
+import optimisticId from 'graphql/utils/optimisticId'
 
 const CommentMutation = gql`
   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
@@ -28,7 +29,32 @@ const addCommentOptions = {
         __typename: 'Mutation',
         addComment: {
           __typename: 'Comment',
-          id: Math.round(Math.random() * -1000000).toString(),
+          id: optimisticId(),
+          commentId,
+          postId,
+          text,
+        },
+      },
+      update: (proxy, { data: { addComment } }) => {},
+    }),
+  }),
+}
+
+const addCommentToPostOptions = {
+  props: ({ mutate }) => ({
+    addComment: (postId, text, commentId = null) => mutate({
+      variables: {
+        commentId,
+        postId,
+        input: {
+          text,
+        },
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        addComment: {
+          __typename: 'Comment',
+          id: optimisticId(),
           commentId,
           postId,
           text,
@@ -46,7 +72,7 @@ const addCommentOptions = {
         const edges = prepend(
           {
             node: {
-              id: Math.round(Math.random() * -1000000).toString(),
+              id: optimisticId(),
               ...addComment,
               user,
               __typename: 'Comment',
@@ -74,4 +100,5 @@ const addCommentOptions = {
   }),
 }
 
+export const addCommentToPost = graphql(CommentMutation, addCommentToPostOptions)
 export const addComment = graphql(CommentMutation, addCommentOptions)
