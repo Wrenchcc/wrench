@@ -18,10 +18,7 @@ const Item = memo(function Item({ item, selected, onPress, order }) {
       onPress={() => onPress(item)}
       activeOpacity={1}
     >
-      <Image
-        source={{ uri: item.lowQualityUri || item.uri }}
-        style={{ height: IMAGE_SIZE, width: IMAGE_SIZE }}
-      />
+      <Image source={{ uri: item.uri }} style={{ height: IMAGE_SIZE, width: IMAGE_SIZE }} />
 
       <Marker selected={selected}>
         <Text fontSize={12} bold>
