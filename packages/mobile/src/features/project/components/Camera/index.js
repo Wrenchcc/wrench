@@ -70,11 +70,11 @@ export default class Camera extends PureComponent {
 
     if (isLoading) return null
 
-    // if (cameraPermission !== RESULTS.GRANTED) {
-    //   return (
-    //     <AskForPermission permission={permissions.CAMERA} onSuccess={this.permissionAuthorized} />
-    //   )
-    // }
+    if (cameraPermission !== RESULTS.GRANTED) {
+      return (
+        <AskForPermission permission={permissions.CAMERA} onSuccess={this.permissionAuthorized} />
+      )
+    }
 
     return (
       <TouchableWithoutFeedback onPressIn={this.setFocus}>

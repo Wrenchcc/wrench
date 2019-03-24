@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { CameraRoll, FlatList, View, ActivityIndicator, Platform } from 'react-native'
+import { FlatList, View, ActivityIndicator, Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
@@ -8,31 +8,11 @@ import AskForPermission from 'features/project/components/AskForPermission'
 import GalleryManager from 'react-native-gallery-manager'
 import MediaItem from './Item'
 
-// GalleryManager.getAssets({
-//   type: 'all',
-//   startFrom: 0,
-// })
-//   .then(response => {
-//     console.log(response)
-//   })
-//   .catch(err => {
-//     // no rejects are defined currently on iOS
-//   })
-//
-// GalleryManager.getAlbums()
-//   .then(response => {
-//     console.log(response)
-//   })
-//   .catch(err => {
-//     // no rejects are defined currently on iOS
-//   })
-
 const MAX_SELECTED_FILES = 10
 const NEW_CAMERA_FILE = 'new_camera_file'
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 64
-const GROUP_TYPES = 'all'
-const ASSET_TYPE = 'photos'
+const ASSET_TYPE = 'image'
 
 export default class MediaPicker extends Component {
   static propTypes = {
@@ -55,8 +35,7 @@ export default class MediaPicker extends Component {
 
   state = {
     data: [],
-    end_cursor: null,
-    has_next_page: true,
+    hasMore: true,
     isLoading: true,
   }
 
@@ -85,32 +64,28 @@ export default class MediaPicker extends Component {
   }
 
   getFiles = async after => {
-    const { data, has_next_page: hasNextPage } = this.state
-    if (!hasNextPage) return
+    const { data, hasMore } = this.state
+    if (!hasMore) return
 
     try {
-      const result = await CameraRoll.getPhotos({
-        after,
-        first: PAGE_SIZE,
-        groupTypes: GROUP_TYPES,
-        assetType: ASSET_TYPE,
+      const result = await GalleryManager.getAssets({
+        type: ASSET_TYPE,
+        startFrom: after,
+        limit: PAGE_SIZE,
       })
 
-      const loadedFiles = result.edges.map(image => image.node.image)
-
       this.setState({
-        data: data.concat(loadedFiles),
-        ...result.page_info,
+        hasMore: result.hasMore,
+        data: data.concat(result.assets),
       })
     } catch (err) {
       logError(err)
     }
   }
 
-  onEndReached = () => {
-    const { has_next_page: hasNextPage } = this.state
-    if (hasNextPage) {
-      this.getFiles(this.state.end_cursor)
+  onEndReached = ({ distanceFromEnd }) => {
+    if (this.state.hasMore && distanceFromEnd > 0) {
+      this.getFiles(this.state.data.length)
     }
   }
 
@@ -133,7 +108,7 @@ export default class MediaPicker extends Component {
   }
 
   renderFooterLoader = () => {
-    if (this.state.hasNextPage) {
+    if (this.state.hasMore) {
       return (
         <View style={{ paddingTop: 30, paddingBottom: 30 }}>
           <ActivityIndicator color={this.state.activityIndicatorColor} />
