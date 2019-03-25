@@ -107,7 +107,8 @@ class MediaPicker extends PureComponent {
   )
 
   render() {
-    const { photoPermission, isLoading } = this.state
+    const { photoPermission, isLoading, routes } = this.state
+    const showTabs = routes.length > 1
 
     if (isLoading) {
       return null
@@ -128,7 +129,7 @@ class MediaPicker extends PureComponent {
         renderScene={this.renderScene}
         onIndexChange={this.onIndexChange}
         initialLayout={{ width }}
-        renderTabBar={props => <Tabs {...props} />}
+        renderTabBar={props => showTabs && <Tabs {...props} />}
         lazy
       />
     )
