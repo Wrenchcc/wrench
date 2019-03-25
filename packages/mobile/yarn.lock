@@ -5639,6 +5639,11 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
+reanimated-bottom-sheet@^1.0.0-alpha.3:
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.3.tgz#64856c18d8a94ab59b05a0d695f60605b7c34ee2"
+  integrity sha512-bDiuxl/geRpfoW8jJDVryEvj6W+moGzZkyOPDbFcBk01t19MzvoLTwN/OHFAbCyOmuMf8U28j7grIQyR7HZyHA==
+
 recursive-fs@0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/recursive-fs/-/recursive-fs-0.1.4.tgz#47e08b1ddab8d7d9a960aa0d0daea76f875b63fa"
