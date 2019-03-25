@@ -12,6 +12,7 @@ function timeDifference(current, previous, long = false) {
   if (elapsed < milliSecondsPerMinute) {
     return i18next.t('Time:now')
   }
+
   if (elapsed < milliSecondsPerHour) {
     if (long) {
       return i18next.t('Time:long', {

@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard, TextInput, findNodeHandle } from 'react-native'
 import { withNavigation } from 'react-navigation'
-import { isIphoneX, isIphone } from 'utils/platform'
+import { isNotchIPhone, isIphone } from 'utils/platform'
 
-const ADDITIONAL_OFFSET = isIphoneX ? 125 : 105
+const ADDITIONAL_OFFSET = isNotchIPhone ? 125 : 105
 
 export default function withKeyboardHandler(WrappedComponent) {
   class WithKeyboardHandler extends PureComponent {

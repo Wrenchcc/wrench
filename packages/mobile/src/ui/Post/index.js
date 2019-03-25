@@ -165,7 +165,7 @@ class Post extends PureComponent {
             onPress={this.goToProfile}
             isOnline={post.user.isOnline}
           />
-          <Icon source={share} onPress={this.toggleActionSheet} />
+          <Icon source={share} onPress={this.toggleActionSheet} hitSlop={20} />
         </Top>
 
         <Content>

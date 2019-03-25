@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { isIphoneX } from 'utils/platform'
+import { isNotchIPhone } from 'utils/platform'
 
 export const Base = styled.View`
   flex: 1;
 `
 
 export const Footer = styled.View`
-  height: ${isIphoneX ? 80 : 60};
+  height: ${isNotchIPhone ? 80 : 60};
   padding-left: 20;
   padding-right: 20;
   position: absolute;
