@@ -83,8 +83,8 @@ export default class MediaPicker extends Component {
     }
   }
 
-  onEndReached = ({ distanceFromEnd }) => {
-    if (this.state.hasMore && distanceFromEnd > 0) {
+  onEndReached = () => {
+    if (this.state.hasMore) {
       this.getFiles(this.state.data.length)
     }
   }
