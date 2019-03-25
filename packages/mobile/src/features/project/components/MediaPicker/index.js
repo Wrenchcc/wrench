@@ -1,86 +1,39 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, TouchableOpacity, View, Platform } from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 import GalleryManager from 'react-native-gallery-manager'
 import { TabView } from 'react-native-tab-view'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
-import Animated from 'react-native-reanimated'
+import withTranslation from 'i18n/withTranslation'
 import { findIndex, propEq } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
 import List from './List'
 import Tabs from './Tabs'
 
 const MAX_SELECTED_FILES = 10
-// const NEW_CAMERA_FILE = 'new_camera_file'
-
-const styles = {
-  tabBar: {
-    flexDirection: 'row',
-    paddingTop: 10,
-  },
-  tabItem: {
-    padding: 16,
-  },
-}
 
 const { width } = Dimensions.get('window')
 
-export default class MediaPicker extends PureComponent {
+class MediaPicker extends PureComponent {
   static propTypes = {
     onSelect: PropTypes.func.isRequired,
     selectedFiles: PropTypes.array.isRequired,
     selectedIndex: PropTypes.number,
   }
 
-  // static getDerivedStateFromProps(props, state) {
-  //   const newItem = find(propEq(NEW_CAMERA_FILE, true), props.selectedFiles)
-  //
-  //   if (newItem && newItem.uri !== pathOr(false, ['data', 0, 'uri'], state)) {
-  //     return {
-  //       data: [omit([NEW_CAMERA_FILE], newItem), ...state.data],
-  //     }
-  //   }
-  //
-  //   return state
-  // }
-
-  state = {
-    index: 0,
-    isLoading: true,
-    routes: [
-      {
-        key: '',
-        title: 'All',
-      },
-      {
-        key: 'Album',
-        title: 'Album',
-      },
-      {
-        key: 'Event',
-        title: 'Event',
-      },
-      {
-        key: 'Faces',
-        title: 'Faces',
-      },
-      {
-        key: 'Library',
-        title: 'Library',
-      },
-      {
-        key: 'PhotoStream',
-        title: 'Photo stream',
-      },
-      {
-        key: 'SavedPhotos',
-        title: 'Saved photos',
-      },
-    ],
-  }
-
   constructor(props) {
     super(props)
+
+    this.state = {
+      index: 0,
+      isLoading: true,
+      routes: [
+        {
+          key: '',
+          title: props.t('MediaPicker:all'),
+        },
+      ],
+    }
 
     if (Platform.OS === 'ios') {
       this.checkPhotoPermission()
@@ -88,23 +41,6 @@ export default class MediaPicker extends PureComponent {
 
     this.getAlbums()
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   // if (
-  //   //   nextProps.selected
-  //   //   || nextProps.selected.length !== this.props.selected.length
-  //   //   || nextProps.albumName !== this.props.albumName
-  //   //   || nextState.data.length !== this.state.data.length
-  //   // ) {
-  //   //   return true
-  //   // }
-  //
-  //   if (nextState) {
-  //     return true
-  //   }
-  //
-  //   return false
-  // }
 
   getAlbums = async () => {
     try {
@@ -198,3 +134,5 @@ export default class MediaPicker extends PureComponent {
     )
   }
 }
+
+export default withTranslation('MediaPicker')(MediaPicker)

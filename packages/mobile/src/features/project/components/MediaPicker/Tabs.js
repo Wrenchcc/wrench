@@ -4,12 +4,12 @@ import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { BaseButton, PanGestureHandler, State } from 'react-native-gesture-handler'
 import { sum } from 'ramda'
+import { FONTS } from 'ui/constants'
 
 const inactiveOpacity = 0.55
 const tabPadding = 10
 
 const {
-  divide,
   add,
   and,
   block,
@@ -69,9 +69,14 @@ const styles = {
   tab: {
     alignItems: 'center',
   },
+  text: {
+    color: 'white',
+    fontSize: 15,
+    fontFamily: FONTS.MEDIUM,
+  },
 }
 
-class Tabs extends PureComponent {
+export default class Tabs extends PureComponent {
   static propTypes = {
     jumpTo: PropTypes.func.isRequired,
     layout: PropTypes.object.isRequired,
@@ -124,8 +129,7 @@ class Tabs extends PureComponent {
               sub(this.totalTabWidth, this.props.layout.width, this.boundLeft)
             )
             const maxTranslateX = multiply(-1, this.positionTranslateX)
-            const _translationX = add(translationX, this.offsetX)
-            const translateX = clamp(_translationX, minTranslateX, maxTranslateX)
+            const translateX = clamp(add(translationX, this.offsetX), minTranslateX, maxTranslateX)
             const decayClock = new Clock()
 
             return block([
@@ -234,21 +238,21 @@ class Tabs extends PureComponent {
           <View style={styles.container}>
             {this.routes.map((route, index) => {
               const opacity = this.interpolate(this.getTabOpacityByCurrentIndex(index))
+              const paddingLeft = this.isFirst(index) ? 20 : tabPadding
+              const paddingRight = this.isLast(index) ? 20 : tabPadding
 
               return (
                 <BaseButton
                   key={route.key}
                   onPress={() => this.onTabPress(route)}
-                  style={[
-                    {
-                      paddingLeft: this.isFirst(index) ? 20 : tabPadding,
-                      paddingRight: this.isLast(index) ? 20 : tabPadding,
-                    },
-                  ]}
+                  style={{
+                    paddingLeft,
+                    paddingRight,
+                  }}
                 >
                   <View onLayout={this.addTabSize(index)}>
                     <Animated.View style={{ opacity }}>
-                      <Animated.Text style={{ color: 'white' }}>{route.title}</Animated.Text>
+                      <Animated.Text style={styles.text}>{route.title}</Animated.Text>
                     </Animated.View>
                   </View>
                 </BaseButton>
@@ -260,5 +264,3 @@ class Tabs extends PureComponent {
     )
   }
 }
-
-export default Tabs

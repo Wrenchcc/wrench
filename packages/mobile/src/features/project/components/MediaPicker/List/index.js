@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { FlatList, View, ActivityIndicator, Text } from 'react-native'
 import GalleryManager from 'react-native-gallery-manager'
 import { findIndex, propEq } from 'ramda'
@@ -9,7 +9,7 @@ const NUM_COLUMNS = 4
 const PAGE_SIZE = 80
 const ASSET_TYPE = 'image'
 
-class List extends PureComponent {
+export default class List extends Component {
   state = {
     data: [],
     hasMore: true,
@@ -21,23 +21,6 @@ class List extends PureComponent {
 
     this.getFiles()
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   // if (
-  //   //   nextProps.selected
-  //   //   || nextProps.selected.length !== this.props.selected.length
-  //   //   || nextProps.albumName !== this.props.albumName
-  //   //   || nextState.data.length !== this.state.data.length
-  //   // ) {
-  //   //   return true
-  //   // }
-  //
-  //   if (nextState) {
-  //     return true
-  //   }
-  //
-  //   return false
-  // }
 
   getFiles = async after => {
     const { data, hasMore } = this.state
@@ -116,5 +99,3 @@ class List extends PureComponent {
     )
   }
 }
-
-export default List
