@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, View, ActivityIndicator, Text } from 'react-native'
 import GalleryManager from 'react-native-gallery-manager'
-import { findIndex, propEq } from 'ramda'
+import { findIndex, propEq, prepend } from 'ramda'
 import { logError } from 'utils/analytics'
 import MediaItem from '../Item'
 
@@ -20,6 +20,14 @@ export default class List extends Component {
     super(props)
 
     this.getFiles()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.cameraFile && this.props.cameraFile) {
+      this.setState({
+        data: prepend(this.props.cameraFile, this.state.data),
+      })
+    }
   }
 
   getFiles = async after => {

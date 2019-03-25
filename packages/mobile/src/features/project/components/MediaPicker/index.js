@@ -5,7 +5,8 @@ import GalleryManager from 'react-native-gallery-manager'
 import { TabView } from 'react-native-tab-view'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import withTranslation from 'i18n/withTranslation'
-import { findIndex, propEq } from 'ramda'
+import { findIndex, propEq, find, omit, pathOr } from 'ramda'
+import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
 import List from './List'
 import Tabs from './Tabs'
@@ -56,7 +57,7 @@ class MediaPicker extends PureComponent {
         ),
       }))
     } catch (err) {
-      console.log(err)
+      logError(err)
     }
   }
 
@@ -103,6 +104,7 @@ class MediaPicker extends PureComponent {
       albumName={route.key}
       onSelect={this.toggleSelection}
       selected={this.props.selectedFiles}
+      cameraFile={route.key === '' && this.props.cameraFile}
     />
   )
 

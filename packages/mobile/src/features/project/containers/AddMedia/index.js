@@ -44,6 +44,7 @@ export default function AddMedia() {
             onSelect={addSelectedFiles}
             selectedFiles={state.selectedFiles}
             selectedIndex={state.selectedIndex}
+            cameraFile={state.cameraFile}
           />
         </Base>
       )}

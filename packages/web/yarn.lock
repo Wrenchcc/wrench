@@ -6067,10 +6067,10 @@ rc@^1.1.2, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo-hooks@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/react-apollo-hooks/-/react-apollo-hooks-0.4.3.tgz#4d221c0dd49ef0ed706b095c7dae5edd5043189c"
-  integrity sha512-mRFPb7bk42wOlGnIdwLc4XO43uTczdx7CzpdTmNwjzAgb/H/nKEXeZitoF1Wgtj0Zb6R5wTGs2nBIMfz0/DzEA==
+react-apollo-hooks@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/react-apollo-hooks/-/react-apollo-hooks-0.4.4.tgz#542a4ba975ceb16daa232fe7e3271680eff8e225"
+  integrity sha512-UavpOHbqGp4r0Nsqa8ShybGb6vyGcwAaxSjO/VRmj3wcjKx+Bw6Br+wu+1rkvYRSkeDYppq/HYNzMX5oIU+5/A==
   dependencies:
     lodash "^4.17.11"
 
@@ -6094,10 +6094,10 @@ react-facebook-login@^4.1.1:
   resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-4.1.1.tgz#005121236a6ac0dee02099976fb1a3265f9d633e"
   integrity sha512-COnHEHlYGTKipz4963safFAK9PaNTcCiXfPXMS/yxo8El+/AJL5ye8kMJf23lKSSGGPgqFQuInskIHVqGqTvSw==
 
-react-i18next@^10.5.3:
-  version "10.5.3"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.5.3.tgz#96e0fdbd406d226b00d1be9712bc2ec9d93a6679"
-  integrity sha512-RW4oj15dHDNXv06XcAbXfwp3GTXOzjiNfztexS81NfiKnknKBq/XRBgHhX/ODu8jiFm3LFv82OHpyLKkZvBIcg==
+react-i18next@^10.6.0:
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.6.0.tgz#74f680b02f223954489d7b9ecdbb4a7e99ebd23d"
+  integrity sha512-w+ujMkZLU+YqR2IIHH4ON/g5GC9qed868umfAHF8DFSK80BZzcp+JzGqxsD/toSn3jUwwQ85cRvPdgQBdiWFcw==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"

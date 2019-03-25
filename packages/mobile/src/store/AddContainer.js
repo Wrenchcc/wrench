@@ -2,22 +2,24 @@ import { Container } from 'unstated'
 import { CameraRoll } from 'react-native'
 import { assocPath } from 'ramda'
 import LocalStorage from 'utils/storage/local'
+import { logError } from 'utils/analytics'
 
 const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId'
 
 export default class AddContainer extends Container {
   state = {
+    cameraFile: null,
     caption: null,
+    isSaving: false,
+    isSearching: false,
+    model: null,
     postProgress: null,
+    query: '',
     selectedFiles: [],
     selectedIndex: 0,
     selectedProjectId: null,
     selectProjectOpen: false,
-    isSearching: false,
-    isSaving: false,
-    query: '',
     title: null,
-    model: null,
     type: null,
   }
 
@@ -39,16 +41,17 @@ export default class AddContainer extends Container {
 
   resetState = () => {
     this.setState({
+      cameraFile: null,
       caption: null,
+      isSaving: false,
+      isSearching: false,
+      model: null,
       postProgress: null,
+      query: '',
       selectedFiles: [],
       selectedIndex: 0,
       selectProjectOpen: false,
-      isSearching: false,
-      isSaving: false,
-      query: '',
       title: null,
-      model: null,
       type: null,
     })
   }
@@ -102,12 +105,18 @@ export default class AddContainer extends Container {
   }
 
   onTakePicture = async file => {
-    const savedFile = await CameraRoll.saveToCameraRoll(file.uri)
-
     this.setState({
-      selectedFiles: [{ ...file, uri: savedFile, new_camera_file: true }],
+      cameraFile: file,
+      selectedFiles: [{ ...file }],
       selectedIndex: 0,
     })
+
+    try {
+      // Save for later
+      CameraRoll.saveToCameraRoll(file.uri)
+    } catch (err) {
+      logError(err)
+    }
   }
 
   showPostProgress = data => {
