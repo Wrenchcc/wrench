@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, Platform } from 'react-native'
+import { Dimensions, Platform, View } from 'react-native'
 import GalleryManager from 'react-native-gallery-manager'
 import { TabView } from 'react-native-tab-view'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
+import BottomSheet from 'reanimated-bottom-sheet'
 import withTranslation from 'i18n/withTranslation'
 import { findIndex, propEq, find, omit, pathOr } from 'ramda'
 import { logError } from 'utils/analytics'
@@ -108,6 +109,8 @@ class MediaPicker extends PureComponent {
     />
   )
 
+  renderHeader = () => <View style={{ backgroundColor: 'red', height: 60 }} />
+
   render() {
     const { photoPermission, isLoading, routes } = this.state
     const showTabs = routes.length > 1
@@ -126,13 +129,21 @@ class MediaPicker extends PureComponent {
     }
 
     return (
-      <TabView
-        navigationState={this.state}
-        renderScene={this.renderScene}
-        onIndexChange={this.onIndexChange}
-        initialLayout={{ width }}
-        renderTabBar={props => showTabs && <Tabs {...props} />}
-        lazy
+      <BottomSheet
+        snapPoints={['40%', '85%']}
+        renderContent={() => (
+          <View style={{ backgroundColor: 'black', height: '100%' }}>
+            <TabView
+              navigationState={this.state}
+              renderScene={this.renderScene}
+              onIndexChange={this.onIndexChange}
+              initialLayout={{ width }}
+              renderTabBar={props => showTabs && <Tabs {...props} />}
+              lazy
+            />
+          </View>
+        )}
+        renderHeader={this.renderHeader}
       />
     )
   }
