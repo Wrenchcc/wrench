@@ -472,8 +472,8 @@ export default class BottomSheetBehavior extends Component {
         />
         <Animated.View
           style={{
-            flex: 1,
             width: '100%',
+            height: '100%',
             zIndex: 1000,
             position: 'absolute',
             transform: [
@@ -495,9 +495,7 @@ export default class BottomSheetBehavior extends Component {
               {this.props.renderHeader && this.props.renderHeader()}
             </Animated.View>
           </PanGestureHandler>
-          <Animated.View style={{ flex: 1 }}>
-            {this.props.renderContent && this.props.renderContent()}
-          </Animated.View>
+          {this.props.renderContent && this.props.renderContent()}
         </Animated.View>
       </React.Fragment>
     )
