@@ -21,7 +21,7 @@ export default class Post extends BaseEntity {
       .createQueryBuilder('post')
       .select('count(post.id)', 'count')
       .where(
-        `post.createdAt > current_date - interval '${interval}' AND post.userId = '${userId}'` // eslint-disable-line
+        `post.createdAt > NOW()::timestamp - interval '${interval}' AND post.userId = '${userId}'` // eslint-disable-line
       )
       .getRawOne()
   }
