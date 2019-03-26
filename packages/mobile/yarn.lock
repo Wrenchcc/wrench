@@ -5270,10 +5270,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.0.2.tgz#484e1116c0b6cb53147385a1b4aeb0fba59466de"
-  integrity sha512-SEEQvl3pwQXl1Qwd+SNuInemQanK1WcWBzEri9E1vlYA1M4SGYNp8Lxyrm+JFDDKJ890ec0MDJuzIvKUyXsK9g==
+react-native-camera@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.1.1.tgz#437cc62613b386d648baabc4b77147ab33d84558"
+  integrity sha512-lcsV4Pt7Ex402Zof3EYaBhLxytU3wefyxpoSCvQyZ1LligdAmsYwyCZeODj1Otcjuxw3gH/skgr0rl/kRPOq8g==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5442,18 +5442,18 @@ react-native-video@^4.4.0:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.4.2.tgz#d301e349015ab542e4f2f8b820836f52101d61fc"
-  integrity sha512-IkK3R+AeJ4wx2ZKp7wYxhYkdqsGgrXL8Vl788o9+0sKtO0K7WUX63Y/pEJ6KaMl8tj8UOppduP+wCIG3TLb3+w==
+react-native-webview@^5.4.4:
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.4.4.tgz#091ddb4896708a62d72cfae3cb06c77dcb3826d5"
+  integrity sha512-SE/6CE0c2eLynv7Ec2Mr6EfNyOrY55s16K8Nj1xxAFwaocsOzwVL0zAnnuO5GCEdT3MCk2AGSrEcKkpJNdLyRA==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
 
-react-native@^v0.59.1:
-  version "0.59.1"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.1.tgz#3274dcc0f9558799bd41c8092acac2a79bd627ce"
-  integrity sha512-KA/MyoCQLGavPBc/Q2QRfdbxHuKHTcYTks9xwwRPzgDqTfmTuDcyoC6jUBTfhZ0LEes5GMoKVM4eVrYUbprOmw==
+react-native@^v0.59.2:
+  version "0.59.2"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.2.tgz#c2e2d9e185b04e54948f170841d97c24661a0fa9"
+  integrity sha512-gIygrCr42rGEQnfjcAZdCOqgjC0oZtTIp+mdbUW+yqHpNUU1PbYKzUkLlvSFGeN+IUcL8WTaC1JtJvghKhaLmA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^1.2.1"
