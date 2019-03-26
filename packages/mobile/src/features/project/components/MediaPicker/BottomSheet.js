@@ -137,8 +137,6 @@ export default class BottomSheetBehavior extends Component {
     overdragResistanceFactor: 0,
     initialSnap: 0,
     enabledImperativeSnapping: true,
-    enabledGestureInteraction: true,
-    enabledInnerScrolling: true,
     springConfig: {},
   }
 
@@ -293,9 +291,9 @@ export default class BottomSheetBehavior extends Component {
   handlePan = event([
     {
       nativeEvent: {
-        translationY: this.props.enabledInnerScrolling ? this.dragY : this.dragMasterY,
-        state: this.props.enabledInnerScrolling ? this.panState : this.panMasterState,
-        velocityY: this.props.enabledInnerScrolling ? this.velocity : this.masterVelocity,
+        translationY: this.dragMasterY,
+        state: this.panMasterState,
+        velocityY: this.masterVelocity,
       },
     },
   ])
@@ -476,6 +474,7 @@ export default class BottomSheetBehavior extends Component {
         <Animated.View
           style={{
             width: '100%',
+            zIndex: 1000,
             position: 'absolute',
             transform: [
               {
@@ -488,7 +487,6 @@ export default class BottomSheetBehavior extends Component {
           }}
         >
           <PanGestureHandler
-            enabled={this.props.enabledGestureInteraction}
             ref={this.master}
             waitFor={this.panRef}
             onGestureEvent={this.handleMasterPan}
@@ -499,7 +497,7 @@ export default class BottomSheetBehavior extends Component {
             </Animated.View>
           </PanGestureHandler>
 
-          <Animated.View>{this.props.renderContent && this.props.renderContent()}</Animated.View>
+          {this.props.renderContent && this.props.renderContent()}
         </Animated.View>
       </React.Fragment>
     )

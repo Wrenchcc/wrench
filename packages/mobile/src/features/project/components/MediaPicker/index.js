@@ -26,6 +26,8 @@ class MediaPicker extends PureComponent {
   constructor(props) {
     super(props)
 
+    this.bottomSheetRef = React.createRef()
+
     this.state = {
       index: 0,
       isLoading: true,
@@ -77,6 +79,8 @@ class MediaPicker extends PureComponent {
   toggleSelection = file => {
     const { selectedFiles, selectedIndex, onSelect } = this.props
     const index = this.indexOfItem(file)
+
+    this.bottomSheetRef.current.snapTo(0)
 
     if (index >= 0) {
       if (selectedIndex === index) {
@@ -130,10 +134,11 @@ class MediaPicker extends PureComponent {
 
     return (
       <BottomSheet
+        ref={this.bottomSheetRef}
         snapPoints={['40%', '100%']}
         enabledGestureInteraction
         renderContent={() => (
-          <View style={{ backgroundColor: 'black', height: '100%' }}>
+          <View style={{ backgroundColor: 'black' }}>
             <TabView
               navigationState={this.state}
               renderScene={this.renderScene}
