@@ -136,9 +136,8 @@ class MediaPicker extends PureComponent {
       <BottomSheet
         ref={this.bottomSheetRef}
         snapPoints={['40%', '100%']}
-        enabledGestureInteraction
         renderContent={() => (
-          <View style={{ backgroundColor: 'black' }}>
+          <View style={{ backgroundColor: 'black', flex: 1 }}>
             <TabView
               navigationState={this.state}
               renderScene={this.renderScene}

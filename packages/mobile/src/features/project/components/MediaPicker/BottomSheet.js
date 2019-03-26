@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Dimensions, Platform, View } from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { PanGestureHandler, TapGestureHandler, State } from 'react-native-gesture-handler'
+import { PanGestureHandler, State } from 'react-native-gesture-handler'
 
 const { height: screenHeight } = Dimensions.get('window')
 
@@ -167,11 +167,14 @@ export default class BottomSheetBehavior extends Component {
   constructor(props) {
     super(props)
     this.state = BottomSheetBehavior.getDerivedStateFromProps(props)
+
     const { snapPoints, init } = this.state
     const middlesOfSnapPoints = []
+
     for (let i = 1; i < snapPoints.length; i++) {
       middlesOfSnapPoints.push(divide(add(snapPoints[i - 1], snapPoints[i]), 2))
     }
+
     const masterOffseted = new Value(init)
     // destination point is a approximation of movement if finger released
     const destinationPoint = add(masterOffseted, multiply(tossForMaster, this.masterVelocity))
@@ -298,8 +301,6 @@ export default class BottomSheetBehavior extends Component {
     },
   ])
 
-  handleTap = event([{ nativeEvent: { state: this.tapState } }])
-
   withEnhancedLimits(val, masterOffseted) {
     const wasRunMaster = new Value(0)
     const min = multiply(-1, add(this.state.heightOfContent, this.state.heightOfHeaderAnimated))
@@ -387,8 +388,6 @@ export default class BottomSheetBehavior extends Component {
     ])
   }
 
-  panRef = React.createRef()
-
   snapTo = index => {
     if (!this.props.enabledImperativeSnapping) {
       return
@@ -473,6 +472,7 @@ export default class BottomSheetBehavior extends Component {
         />
         <Animated.View
           style={{
+            flex: 1,
             width: '100%',
             zIndex: 1000,
             position: 'absolute',
@@ -488,7 +488,6 @@ export default class BottomSheetBehavior extends Component {
         >
           <PanGestureHandler
             ref={this.master}
-            waitFor={this.panRef}
             onGestureEvent={this.handleMasterPan}
             onHandlerStateChange={this.handleMasterPan}
           >
@@ -496,8 +495,9 @@ export default class BottomSheetBehavior extends Component {
               {this.props.renderHeader && this.props.renderHeader()}
             </Animated.View>
           </PanGestureHandler>
-
-          {this.props.renderContent && this.props.renderContent()}
+          <Animated.View style={{ flex: 1 }}>
+            {this.props.renderContent && this.props.renderContent()}
+          </Animated.View>
         </Animated.View>
       </React.Fragment>
     )
