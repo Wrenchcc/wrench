@@ -366,10 +366,10 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@zeit/ncc@0.16.1":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.16.1.tgz#c12257d2d919fc47447944f5021b33e5997a84fb"
-  integrity sha512-lHScAn2rl2OjBzpzFZlv9YCq9ESvcBz51NWxXV7D1nA02jceUoIqlK8YDQSmA5wa5IqL+UzFyxSpq6ZSyVSAHw==
+"@zeit/ncc@0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.17.0.tgz#f6121a15cf7ec76a65c17a3aa7d38e98151ea76e"
+  integrity sha512-PEu1L+bqj5c/BbkmBu3IRKOP10jprmJu4+EtHaFBQzeTfGcXnzbrssUVhzXpGi2X6Dw5S1FvwLWFGP3X5uEKYA==
 
 abbrev@1:
   version "1.1.1"
@@ -717,10 +717,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.427.0:
-  version "2.427.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.427.0.tgz#74c3d7d3d57229ea07eb19232a9310b3b775ddf6"
-  integrity sha512-NpFNZa7Wt9fQ8hRLt40OD1ii3qnIhUkpXH4fMSjXP2YqGxCYAHYRj2yARN86YJKCMH566+QobTRyPjtgEWmMKA==
+aws-sdk@^2.428.0:
+  version "2.428.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.428.0.tgz#9de2cc986f6fb2b011e0a86a10e415e1e935a2bb"
+  integrity sha512-gHEt62n66+cMp8Gc3S8D2dJ63SmnOArpPXvFhnZijbHOeRwsEI1J0HfHtvtWMcD/K6t5HNanvD7RVWBZU5lOmg==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -4596,10 +4596,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeorm@^0.2.15:
-  version "0.2.15"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.15.tgz#b0cdb4fdc6c38671350135ed72d91d1242e6ea30"
-  integrity sha512-Gpl6fdgb7WLngtuSw2l7dOdOp4jrbVIjlSgpL3P6DX9GKvSzbXmjurmGQ9RRomn+us1Bg+tCYAiSv3j55riplQ==
+typeorm@^0.2.16:
+  version "0.2.16"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.16.tgz#cfc119254e21f37410a60616a726cad97a8d95f6"
+  integrity sha512-Ntx9Hjx2aJcPsbqTsqnhCZOG30bDQ8EalMa9J49CXMCatUuMbn9QTyreM9AuSQb2N91ENCRWPZIuzgRaSmC1Vw==
   dependencies:
     app-root-path "^2.0.1"
     buffer "^5.1.0"
