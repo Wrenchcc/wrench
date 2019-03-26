@@ -51,7 +51,7 @@ export default class Project extends BaseEntity {
       .select('count(projects.id)', 'count')
       .addSelect('projects.id', 'id')
       .innerJoin('projects.followers', 'followers')
-      .where(`"followers"."createdAt" > current_date - interval '30 day'`) // eslint-disable-line
+      .where(`"followers"."createdAt" > NOW()::timestamp - interval '30 day'`) // eslint-disable-line
       .groupBy('projects.id')
       .orderBy('count', 'DESC')
       .getRawMany()

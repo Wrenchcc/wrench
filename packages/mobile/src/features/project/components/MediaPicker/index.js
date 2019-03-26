@@ -4,11 +4,11 @@ import { Dimensions, Platform, View } from 'react-native'
 import GalleryManager from 'react-native-gallery-manager'
 import { TabView } from 'react-native-tab-view'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
-import BottomSheet from 'reanimated-bottom-sheet'
 import withTranslation from 'i18n/withTranslation'
-import { findIndex, propEq, find, omit, pathOr } from 'ramda'
+import { findIndex, propEq } from 'ramda'
 import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
+import BottomSheet from './BottomSheet'
 import List from './List'
 import Tabs from './Tabs'
 
@@ -131,6 +131,7 @@ class MediaPicker extends PureComponent {
     return (
       <BottomSheet
         snapPoints={['40%', '85%']}
+        enabledGestureInteraction
         renderContent={() => (
           <View style={{ backgroundColor: 'black', height: '100%' }}>
             <TabView

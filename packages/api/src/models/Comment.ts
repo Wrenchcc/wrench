@@ -18,7 +18,7 @@ export default class Comment extends BaseEntity {
       .createQueryBuilder('comment')
       .select('count(comment.id)', 'count')
       .where(
-        `comment.createdAt > current_date - interval '${interval}' AND comment.userId = '${userId}'` // eslint-disable-line
+        `comment.createdAt > NOW()::timestamp - interval '${interval}' AND comment.userId = '${userId}'` // eslint-disable-line
       )
       .getRawOne()
   }
