@@ -477,7 +477,6 @@ export default class BottomSheetBehavior extends Component {
           style={{
             width: '100%',
             position: 'absolute',
-            zIndex: 100,
             transform: [
               {
                 translateY: this.translateMaster,
@@ -495,68 +494,12 @@ export default class BottomSheetBehavior extends Component {
             onGestureEvent={this.handleMasterPan}
             onHandlerStateChange={this.handleMasterPan}
           >
-            <Animated.View
-              style={{
-                zIndex: 101,
-              }}
-              onLayout={this.handleLayoutHeader}
-            >
+            <Animated.View style={{ zIndex: 101 }} onLayout={this.handleLayoutHeader}>
               {this.props.renderHeader && this.props.renderHeader()}
             </Animated.View>
           </PanGestureHandler>
-          <View
-            style={
-              this.props.enabledInnerScrolling && {
-                height: this.state.initSnap - this.state.heightOfHeader,
-                overflow: 'hidden',
-              }
-            }
-          >
-            <PanGestureHandler
-              enabled={this.props.enabledGestureInteraction}
-              waitFor={this.master}
-              ref={this.panRef}
-              onGestureEvent={this.handlePan}
-              onHandlerStateChange={this.handlePan}
-            >
-              <Animated.View>
-                <TapGestureHandler
-                  enabled={this.props.enabledGestureInteraction}
-                  onHandlerStateChange={this.handleTap}
-                >
-                  <Animated.View
-                    style={{
-                      width: '100%',
-                      transform: [{ translateY: this.Y }],
-                    }}
-                    onLayout={this.handleLayoutContent}
-                  >
-                    {this.props.renderContent && this.props.renderContent()}
-                  </Animated.View>
-                </TapGestureHandler>
-              </Animated.View>
-            </PanGestureHandler>
-            <Animated.Code
-              exec={onChange(
-                this.tapState,
-                cond(eq(this.tapState, State.BEGAN), stopClock(this.decayClock))
-              )}
-            />
-            {this.props.callbackNode && (
-              <Animated.Code
-                exec={onChange(
-                  this.translateMaster,
-                  set(
-                    this.props.callbackNode,
-                    divide(
-                      this.translateMaster,
-                      this.state.snapPoints[this.state.snapPoints.length - 1]
-                    )
-                  )
-                )}
-              />
-            )}
-          </View>
+
+          <Animated.View>{this.props.renderContent && this.props.renderContent()}</Animated.View>
         </Animated.View>
       </React.Fragment>
     )

@@ -130,7 +130,7 @@ class MediaPicker extends PureComponent {
 
     return (
       <BottomSheet
-        snapPoints={['40%', '85%']}
+        snapPoints={['40%', '100%']}
         enabledGestureInteraction
         renderContent={() => (
           <View style={{ backgroundColor: 'black', height: '100%' }}>

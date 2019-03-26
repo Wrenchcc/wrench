@@ -37,6 +37,7 @@ export default {
     component: AddMedia,
     mode: MODAL,
     navigationOptions: {
+      gesturesEnabled: false,
       header: null,
     },
   },
