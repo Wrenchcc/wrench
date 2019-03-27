@@ -5326,10 +5326,6 @@ react-native-firebase@^5.2.3:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
 
-"react-native-gallery-manager@https://github.com/Wrenchcc/react-native-gallery-manager.git":
-  version "1.0.9"
-  resolved "https://github.com/Wrenchcc/react-native-gallery-manager.git#36692094fd85ca610f1f676e025f0b9060671a53"
-
 react-native-gesture-handler@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.1.0.tgz#2a7d545ad2e0ca23adce22b2af441ad360ecccee"

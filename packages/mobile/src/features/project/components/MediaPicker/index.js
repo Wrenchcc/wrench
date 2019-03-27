@@ -36,6 +36,43 @@ class MediaPicker extends PureComponent {
           key: 'all',
           title: props.t('MediaPicker:all'),
         },
+        {
+          key: 'all2',
+          title: props.t('MediaPicker:all'),
+        },
+
+        {
+          key: 'all3',
+          title: props.t('MediaPicker:all'),
+        },
+        {
+          key: 'all4',
+          title: props.t('MediaPicker:all'),
+        },
+        {
+          key: 'all5',
+          title: props.t('MediaPicker:all'),
+        },
+        {
+          key: 'all6',
+          title: props.t('MediaPicker:all'),
+        },
+        {
+          key: 'all7',
+          title: props.t('MediaPicker:all'),
+        },
+        {
+          key: 'all8',
+          title: props.t('MediaPicker:all'),
+        },
+        {
+          key: 'all9',
+          title: props.t('MediaPicker:all'),
+        },
+        {
+          key: 'all10',
+          title: props.t('MediaPicker:all'),
+        },
       ],
     }
 
@@ -132,6 +169,17 @@ class MediaPicker extends PureComponent {
       )
     }
 
+    return (
+      <TabView
+        navigationState={this.state}
+        renderScene={this.renderScene}
+        onIndexChange={this.onIndexChange}
+        initialLayout={{ width }}
+        renderTabBar={props => showTabs && <Tabs {...props} />}
+        lazy
+      />
+    )
+
     // return (
     //   <BottomSheet
     //     ref={this.bottomSheetRef}
@@ -151,17 +199,6 @@ class MediaPicker extends PureComponent {
     //     renderHeader={this.renderHeader}
     //   />
     // )
-
-    return (
-      <TabView
-        navigationState={this.state}
-        renderScene={this.renderScene}
-        onIndexChange={this.onIndexChange}
-        initialLayout={{ width }}
-        renderTabBar={props => showTabs && <Tabs {...props} />}
-        lazy
-      />
-    )
   }
 }
 

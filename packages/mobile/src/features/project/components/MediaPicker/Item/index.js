@@ -7,18 +7,22 @@ import { Marker, Overlay } from './styles'
 
 const { width } = Dimensions.get('window')
 
-const MARGIN = 3
-const IMAGE_SIZE = (width - 4 * MARGIN) / 4
+const MARGIN_BOTTOM = 3
+export const ITEM_SIZE = (width - 4 * MARGIN_BOTTOM) / 4
 
 const Item = memo(function Item({ item, selected, onPress, order }) {
   return (
     <Touchable
       hapticFeedback="impactLight"
-      style={{ backgroundColor: COLORS.DARK_GREY, marginBottom: MARGIN, marginRight: MARGIN }}
+      style={{
+        backgroundColor: COLORS.DARK_GREY,
+        marginBottom: MARGIN_BOTTOM,
+        marginRight: MARGIN_BOTTOM,
+      }}
       onPress={() => onPress(item)}
       activeOpacity={1}
     >
-      <Image source={{ uri: item.uri }} style={{ height: IMAGE_SIZE, width: IMAGE_SIZE }} />
+      <Image source={{ uri: item.uri }} style={{ height: ITEM_SIZE, width: ITEM_SIZE }} />
 
       <Marker selected={selected}>
         <Text fontSize={12} bold>

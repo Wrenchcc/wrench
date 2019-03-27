@@ -145,7 +145,7 @@ export default class ImageEditor extends PureComponent {
           onScrollEndDrag={() => this.setIsMoving(false)}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          scrollEventThrottle={16}
+          scrollEventThrottle={1}
         >
           <TouchableWithoutFeedback onPressIn={() => this.setIsMoving(true)}>
             <Image

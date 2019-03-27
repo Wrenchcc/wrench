@@ -6,7 +6,7 @@ import { logError } from 'utils/analytics'
 import MediaItem from '../Item'
 
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 40
+const PAGE_SIZE = 20
 
 export default class List extends Component {
   state = {
@@ -22,16 +22,31 @@ export default class List extends Component {
     this.getFiles()
   }
 
-  componentDidUpdate(prevProps) {
-    if (!prevProps.cameraFile && this.props.cameraFile) {
-      this.setState({
-        data: prepend(this.props.cameraFile, this.state.data),
-      })
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.data !== nextState.data) {
+      return true
     }
+
+    return false
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (!prevProps.cameraFile && this.props.cameraFile) {
+  //     this.setState({
+  //       data: prepend(this.props.cameraFile, this.state.data),
+  //     })
+  //   }
+  // }
+
+  // getItemLayout = (data, index) => ({
+  //   length: ITEM_SIZE,
+  //   offset: ITEM_SIZE * index,
+  //   index,
+  // })
 
   getFiles = async after => {
     const { data, hasNextPage } = this.state
+
     if (!hasNextPage) {
       return
     }
@@ -54,10 +69,10 @@ export default class List extends Component {
     }
   }
 
-  onEndReached = () => {
-    if (this.state.hasNextPage) {
-      this.getFiles(this.state.endCursor)
-    }
+  onEndReached = ({ distanceFromEnd }) => {
+    // if (this.state.hasNextPage && distanceFromEnd > 0) {
+    this.getFiles(this.state.endCursor)
+    // }
   }
 
   renderFooterLoader = () => {
@@ -95,7 +110,7 @@ export default class List extends Component {
 
     return (
       <FlatList
-        contentContainerStyle={{ padding: 3 }}
+        contentContainerStyle={{ padding: 3, ...(!data.length && { flex: 1 }) }}
         data={data}
         initialNumToRender={PAGE_SIZE}
         keyExtractor={item => item.uri}
