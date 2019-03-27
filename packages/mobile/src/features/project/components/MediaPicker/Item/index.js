@@ -7,8 +7,8 @@ import { Marker, Overlay } from './styles'
 
 const { width } = Dimensions.get('window')
 
-const MARGIN_BOTTOM = 3
-export const ITEM_SIZE = (width - 4 * MARGIN_BOTTOM) / 4
+const MARGIN = 3
+const ITEM_SIZE = (width - 4 * MARGIN) / 4
 
 const Item = memo(function Item({ item, selected, onPress, order }) {
   return (
@@ -16,8 +16,8 @@ const Item = memo(function Item({ item, selected, onPress, order }) {
       hapticFeedback="impactLight"
       style={{
         backgroundColor: COLORS.DARK_GREY,
-        marginBottom: MARGIN_BOTTOM,
-        marginRight: MARGIN_BOTTOM,
+        marginBottom: MARGIN,
+        marginRight: MARGIN,
       }}
       onPress={() => onPress(item)}
       activeOpacity={1}

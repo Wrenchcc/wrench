@@ -61,10 +61,10 @@ export default class List extends Component {
     }
   }
 
-  onEndReached = ({ distanceFromEnd }) => {
-    // if (this.state.hasNextPage && distanceFromEnd > 0) {
-    this.getFiles(this.state.endCursor)
-    // }
+  onEndReached = () => {
+    if (this.state.hasNextPage) {
+      this.getFiles(this.state.endCursor)
+    }
   }
 
   renderFooterLoader = () => {
