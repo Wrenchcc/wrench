@@ -6,7 +6,7 @@ import { logError } from 'utils/analytics'
 import MediaItem from '../Item'
 
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 80
+const PAGE_SIZE = 40
 
 export default class List extends Component {
   state = {
@@ -32,7 +32,9 @@ export default class List extends Component {
 
   getFiles = async after => {
     const { data, hasNextPage } = this.state
-    if (!hasNextPage) return
+    if (!hasNextPage) {
+      return
+    }
 
     try {
       const result = await MediaLibrary.getAssetsAsync({
@@ -101,7 +103,11 @@ export default class List extends Component {
         numColumns={NUM_COLUMNS}
         onEndReached={this.onEndReached}
         renderItem={this.renderItem}
-        ListEmptyComponent={<Text style={{ color: 'white' }}>No photos.</Text>}
+        ListEmptyComponent={
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ color: 'white' }}>No photos.</Text>
+          </View>
+        }
         style={{ flex: 1 }}
       />
     )
