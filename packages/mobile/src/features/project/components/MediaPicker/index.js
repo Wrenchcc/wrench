@@ -1,20 +1,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Dimensions, Platform, View } from 'react-native'
-import * as MediaLibrary from 'expo-media-library'
-import { TabView } from 'react-native-tab-view'
+import { Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import withTranslation from 'i18n/withTranslation'
 import { findIndex, propEq } from 'ramda'
-import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
-// import BottomSheet from './BottomSheet'
 import List from './List'
-import Tabs from './Tabs'
+// import BottomSheet from './BottomSheet'
 
 const MAX_SELECTED_FILES = 10
-
-const { width } = Dimensions.get('window')
 
 class MediaPicker extends PureComponent {
   static propTypes = {
@@ -26,78 +20,14 @@ class MediaPicker extends PureComponent {
   constructor(props) {
     super(props)
 
-    this.bottomSheetRef = React.createRef()
+    // this.bottomSheetRef = React.createRef()
 
     this.state = {
-      index: 0,
-      isLoading: true,
-      routes: [
-        {
-          key: 'all',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all2',
-          title: props.t('MediaPicker:all'),
-        },
-
-        {
-          key: 'all3',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all4',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all5',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all6',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all7',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all8',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all9',
-          title: props.t('MediaPicker:all'),
-        },
-        {
-          key: 'all10',
-          title: props.t('MediaPicker:all'),
-        },
-      ],
+      album: null,
     }
 
     if (Platform.OS === 'ios') {
       this.checkPhotoPermission()
-    }
-
-    this.getAlbums()
-  }
-
-  getAlbums = async () => {
-    try {
-      const albums = await MediaLibrary.getAlbumsAsync()
-
-      this.setState(prevState => ({
-        isLoading: false,
-        routes: prevState.routes.concat(
-          albums.map(a => ({
-            title: a.title,
-            key: a.id,
-          }))
-        ),
-      }))
-    } catch (err) {
-      logError(err)
     }
   }
 
@@ -110,7 +40,7 @@ class MediaPicker extends PureComponent {
   }
 
   permissionAuthorized = () => {
-    this.setState({ photoPermission: RESULTS.GRANTED }, this.getAlbums)
+    // this.setState({ photoPermission: RESULTS.GRANTED }, this.getAlbums)
   }
 
   toggleSelection = file => {
@@ -133,32 +63,12 @@ class MediaPicker extends PureComponent {
     }
   }
 
-  onIndexChange = index => {
-    this.setState({ index })
-  }
-
   indexOfItem(item) {
     return findIndex(propEq('uri', item.uri))(this.props.selectedFiles)
   }
 
-  renderScene = ({ route }) => (
-    <List
-      album={route.key === 'all' ? null : route.key}
-      onSelect={this.toggleSelection}
-      selected={this.props.selectedFiles}
-      cameraFile={route.key === '' && this.props.cameraFile}
-    />
-  )
-
-  renderHeader = () => <View style={{ backgroundColor: 'red', height: 60 }} />
-
   render() {
-    const { photoPermission, isLoading, routes } = this.state
-    const showTabs = routes.length > 1
-
-    if (isLoading) {
-      return null
-    }
+    const { photoPermission, album } = this.state
 
     if (photoPermission !== RESULTS.GRANTED) {
       return (
@@ -170,35 +80,13 @@ class MediaPicker extends PureComponent {
     }
 
     return (
-      <TabView
-        navigationState={this.state}
-        renderScene={this.renderScene}
-        onIndexChange={this.onIndexChange}
-        initialLayout={{ width }}
-        renderTabBar={props => showTabs && <Tabs {...props} />}
-        lazy
+      <List
+        album={album}
+        onSelect={this.toggleSelection}
+        selected={this.props.selectedFiles}
+        cameraFile={this.props.cameraFile}
       />
     )
-
-    // return (
-    //   <BottomSheet
-    //     ref={this.bottomSheetRef}
-    //     snapPoints={['40%', '100%']}
-    //     renderContent={() => (
-    //       <View style={{ backgroundColor: 'black', flex: 1 }}>
-    //         <TabView
-    //           navigationState={this.state}
-    //           renderScene={this.renderScene}
-    //           onIndexChange={this.onIndexChange}
-    //           initialLayout={{ width }}
-    //           renderTabBar={props => showTabs && <Tabs {...props} />}
-    //           lazy
-    //         />
-    //       </View>
-    //     )}
-    //     renderHeader={this.renderHeader}
-    //   />
-    // )
   }
 }
 

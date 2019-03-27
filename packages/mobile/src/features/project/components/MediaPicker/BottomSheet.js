@@ -7,6 +7,8 @@ const { height: screenHeight } = Dimensions.get('window')
 
 const P = (android, ios) => (Platform.OS === 'ios' ? ios : android)
 
+const BLAH = 360
+
 const magic = {
   damping: 50,
   mass: 0.3,
@@ -303,7 +305,7 @@ export default class BottomSheetBehavior extends Component {
 
   withEnhancedLimits(val, masterOffseted) {
     const wasRunMaster = new Value(0)
-    const min = multiply(-1, add(this.state.heightOfContent, this.state.heightOfHeaderAnimated))
+    const min = multiply(-1, add(this.state.heightOfContent, BLAH))
     const prev = new Value(0)
     const limitedVal = new Value(0)
     const diffPres = new Value(0)
@@ -398,15 +400,6 @@ export default class BottomSheetBehavior extends Component {
 
   height = new Value(0)
 
-  handleLayoutHeader = ({
-    nativeEvent: {
-      layout: { height: heightOfHeader },
-    },
-  }) => {
-    this.state.heightOfHeaderAnimated.setValue(heightOfHeader)
-    this.setState({ heightOfHeader })
-  }
-
   handleFullHeader = ({
     nativeEvent: {
       layout: { height },
@@ -449,11 +442,9 @@ export default class BottomSheetBehavior extends Component {
     return {
       init: sortedPropsSnapPints[0].val - sortedPropsSnapPints[propsToNewIncides[initialSnap]].val,
       propsToNewIncides,
-      heightOfHeaderAnimated: (state && state.heightOfHeaderAnimated) || new Value(0),
       heightOfContent: (state && state.heightOfContent) || new Value(0),
       initSnap: sortedPropsSnapPints[0].val,
       snapPoints,
-      heightOfHeader: (state && state.heightOfHeader) || 0,
     }
   }
 
@@ -486,16 +477,26 @@ export default class BottomSheetBehavior extends Component {
             ],
           }}
         >
-          <PanGestureHandler
-            ref={this.master}
-            onGestureEvent={this.handleMasterPan}
-            onHandlerStateChange={this.handleMasterPan}
-          >
-            <Animated.View style={{ zIndex: 101 }} onLayout={this.handleLayoutHeader}>
-              {this.props.renderHeader && this.props.renderHeader()}
-            </Animated.View>
-          </PanGestureHandler>
-          {this.props.renderContent && this.props.renderContent()}
+          <Animated.View style={{ position: 'relative', flex: 1 }}>
+            <PanGestureHandler
+              ref={this.master}
+              onGestureEvent={this.handleMasterPan}
+              onHandlerStateChange={this.handleMasterPan}
+            >
+              <Animated.View
+                style={{
+                  zIndex: 10000,
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: 100,
+                  backgroundColor: 'red',
+                }}
+              />
+            </PanGestureHandler>
+            {this.props.renderContent()}
+          </Animated.View>
         </Animated.View>
       </React.Fragment>
     )

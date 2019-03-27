@@ -6,7 +6,7 @@ import { logError } from 'utils/analytics'
 import MediaItem from '../Item'
 
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 20
+const PAGE_SIZE = 30
 
 export default class List extends Component {
   state = {
@@ -22,21 +22,13 @@ export default class List extends Component {
     this.getFiles()
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.data !== nextState.data) {
-      return true
+  componentDidUpdate(prevProps) {
+    if (!prevProps.cameraFile && this.props.cameraFile) {
+      this.setState({
+        data: prepend(this.props.cameraFile, this.state.data),
+      })
     }
-
-    return false
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (!prevProps.cameraFile && this.props.cameraFile) {
-  //     this.setState({
-  //       data: prepend(this.props.cameraFile, this.state.data),
-  //     })
-  //   }
-  // }
 
   // getItemLayout = (data, index) => ({
   //   length: ITEM_SIZE,
@@ -53,7 +45,7 @@ export default class List extends Component {
 
     try {
       const result = await MediaLibrary.getAssetsAsync({
-        album: this.props.album,
+        // album: this.props.album,
         after,
         first: PAGE_SIZE,
       })
