@@ -201,8 +201,6 @@ PODS:
   - react-native-fbsdk/Share (0.8.0):
     - FBSDKShareKit
     - React
-  - react-native-gallery-manager (1.0.9):
-    - React
   - react-native-haptic-feedback (1.6.0):
     - React
   - react-native-netinfo (1.4.0):
@@ -344,7 +342,6 @@ DEPENDENCIES:
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
-  - react-native-gallery-manager (from `../node_modules/react-native-gallery-manager`)
   - react-native-haptic-feedback (from `../node_modules/react-native-haptic-feedback`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
@@ -449,8 +446,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fast-image"
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
-  react-native-gallery-manager:
-    :path: "../node_modules/react-native-gallery-manager"
   react-native-haptic-feedback:
     :path: "../node_modules/react-native-haptic-feedback"
   react-native-netinfo:
@@ -548,7 +543,6 @@ SPEC CHECKSUMS:
   react-native-config: 8c2a92aa66a6cec1a23d9eda7ba6fcf31a63ace5
   react-native-fast-image: 4170ad074e9de6c428fc4580ecbaacabf74901a6
   react-native-fbsdk: d5f98cc5abecbcc463e3c35c04743d716d002d37
-  react-native-gallery-manager: 55af5c40a6b017b957cfd9919a6241d19b7f210c
   react-native-haptic-feedback: f675486e3889e3229272158943c1e9e075247e5a
   react-native-netinfo: f4039dc64d3a55da59d6d03d4bd667d0a9f5450e
   react-native-pinchable: 377444b464693fe4f4eafa40eab2560f3555bd0c
@@ -579,6 +573,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: c594f1584e28026f98cca344d10183f635896094
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: c1fc5fe92888402efa75409347fd026b876d86d1
+PODFILE CHECKSUM: 9b2c259155a83e8f457130fd40ab84740e65e171
 
 COCOAPODS: 1.5.3
