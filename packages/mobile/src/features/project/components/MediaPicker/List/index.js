@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View, ActivityIndicator, Text } from 'react-native'
+import { FlatList, View, ActivityIndicator } from 'react-native'
 import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq, prepend } from 'ramda'
 import { logError } from 'utils/analytics'
@@ -71,7 +71,7 @@ export default class List extends Component {
     if (this.state.hasNextPage) {
       return (
         <View style={{ paddingTop: 30, paddingBottom: 30 }}>
-          <ActivityIndicator color={this.state.activityIndicatorColor} />
+          <ActivityIndicator />
         </View>
       )
     }
@@ -102,7 +102,7 @@ export default class List extends Component {
 
     return (
       <FlatList
-        contentContainerStyle={{ padding: 3, ...(!data.length && { flex: 1 }) }}
+        contentContainerStyle={{ padding: 3 }}
         data={data}
         initialNumToRender={PAGE_SIZE}
         keyExtractor={item => item.uri}
@@ -110,11 +110,6 @@ export default class List extends Component {
         numColumns={NUM_COLUMNS}
         onEndReached={this.onEndReached}
         renderItem={this.renderItem}
-        ListEmptyComponent={
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ color: 'white' }}>No photos.</Text>
-          </View>
-        }
         style={{ flex: 1 }}
       />
     )
