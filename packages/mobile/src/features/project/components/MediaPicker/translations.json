@@ -1,10 +1,6 @@
 {
   "MediaPicker": {
-    "en": {
-      "all": "All"
-    },
-    "sv": {
-      "all": "Alla"
-    }
+    "en": {},
+    "sv": {}
   }
 }

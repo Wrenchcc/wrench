@@ -46,7 +46,6 @@
     "react-native-fast-image": "^5.2.0",
     "react-native-fbsdk": "^0.8.0",
     "react-native-firebase": "^5.2.3",
-    "react-native-gallery-manager": "https://github.com/Wrenchcc/react-native-gallery-manager.git",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-haptic-feedback": "^1.6.0",
     "react-native-linear-gradient": "^2.5.4",

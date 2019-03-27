@@ -4,6 +4,8 @@ platform :ios, '10.0'
 
 install! 'cocoapods', :deterministic_uuids => false
 
+require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
+
 target 'Wrench' do
   platform :ios, '10.0'
 
@@ -44,7 +46,6 @@ target 'Wrench' do
   pod 'react-native-video', :path => '../node_modules/react-native-video'
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
-  pod 'react-native-gallery-manager', :path => '../node_modules/react-native-gallery-manager'
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
@@ -73,6 +74,8 @@ target 'Wrench' do
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/Messaging'
   pod 'Firebase/Performance'
+
+  use_unimodules!
 
 end
 

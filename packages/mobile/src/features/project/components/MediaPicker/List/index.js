@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import { FlatList, View, ActivityIndicator, Text } from 'react-native'
-import GalleryManager from 'react-native-gallery-manager'
+import { FlatList, View, ActivityIndicator } from 'react-native'
+import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq, prepend } from 'ramda'
 import { logError } from 'utils/analytics'
 import MediaItem from '../Item'
 
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 80
-const ASSET_TYPE = 'image'
+const PAGE_SIZE = 30
 
 export default class List extends Component {
   state = {
     data: [],
-    hasMore: true,
+    endCursor: null,
+    hasNextPage: true,
     isLoading: true,
   }
 
@@ -30,22 +30,31 @@ export default class List extends Component {
     }
   }
 
+  // getItemLayout = (data, index) => ({
+  //   length: ITEM_SIZE,
+  //   offset: ITEM_SIZE * index,
+  //   index,
+  // })
+
   getFiles = async after => {
-    const { data, hasMore } = this.state
-    if (!hasMore) return
+    const { data, hasNextPage } = this.state
+
+    if (!hasNextPage) {
+      return
+    }
 
     try {
-      const result = await GalleryManager.getAssets({
-        albumName: this.props.albumName,
-        type: ASSET_TYPE,
-        startFrom: after,
-        limit: PAGE_SIZE,
+      const result = await MediaLibrary.getAssetsAsync({
+        // album: this.props.album,
+        after,
+        first: PAGE_SIZE,
       })
 
       this.setState({
-        isLoading: false,
-        hasMore: result.hasMore,
         data: data.concat(result.assets),
+        endCursor: result.endCursor,
+        hasNextPage: result.hasNextPage,
+        isLoading: false,
       })
     } catch (err) {
       logError(err)
@@ -53,8 +62,8 @@ export default class List extends Component {
   }
 
   onEndReached = () => {
-    if (this.state.hasMore) {
-      this.getFiles(this.state.data.length)
+    if (this.state.hasNextPage) {
+      this.getFiles(this.state.endCursor)
     }
   }
 
@@ -62,7 +71,7 @@ export default class List extends Component {
     if (this.state.hasNextPage) {
       return (
         <View style={{ paddingTop: 30, paddingBottom: 30 }}>
-          <ActivityIndicator color={this.state.activityIndicatorColor} />
+          <ActivityIndicator />
         </View>
       )
     }
@@ -101,7 +110,6 @@ export default class List extends Component {
         numColumns={NUM_COLUMNS}
         onEndReached={this.onEndReached}
         renderItem={this.renderItem}
-        ListEmptyComponent={<Text style={{ color: 'white' }}>No photos.</Text>}
         style={{ flex: 1 }}
       />
     )

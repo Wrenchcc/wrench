@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Alert, View, Animated, Image } from 'react-native'
+import { Dimensions, View, Animated, Image } from 'react-native'
 import withTranslation from 'i18n/withTranslation'
 import { Swipeable, RectButton } from 'react-native-gesture-handler'
 import { navigateToUser, navigateToProject, navigateToComments } from 'navigation/actions'
@@ -52,6 +52,8 @@ const styles = {
   },
 }
 
+export const { width } = Dimensions.get('window')
+
 class Notification extends PureComponent {
   static propTypes = {
     data: PropTypes.object.isRequired,
@@ -59,39 +61,16 @@ class Notification extends PureComponent {
   }
 
   renderRightAction = progress => {
-    const width = 80
     const translateX = progress.interpolate({
       inputRange: [0, 1],
       outputRange: [width, 0],
     })
 
-    const pressHandler = () => {
-      const { t, deleteNotification } = this.props
-      this.swipable.close()
-
-      Alert.alert(
-        t('Notification:options:alertTitle'),
-        null,
-        [
-          {
-            text: t('Notification:options:delete'),
-            onPress: () => deleteNotification(this.props.data.id),
-            style: 'destructive',
-          },
-          {
-            text: t('Notification:options:cancel'),
-            style: 'cancel',
-          },
-        ],
-        { cancelable: false }
-      )
-    }
-
     return (
       <Animated.View style={{ width, transform: [{ translateX }] }}>
         <RectButton
           style={[styles.rightAction, { backgroundColor: COLORS.RED }]}
-          onPress={pressHandler}
+          onPress={this.handleDelete}
         >
           <Image source={trash} />
         </RectButton>
@@ -104,14 +83,15 @@ class Notification extends PureComponent {
   }
 
   render() {
-    const { data, t } = this.props
+    const { data, deleteNotification, t } = this.props
+
     return (
       <Swipeable
         ref={this.setRef}
         friction={2}
-        leftThreshold={30}
-        rightThreshold={40}
+        rightThreshold={160}
         renderRightActions={this.renderRightAction}
+        onSwipeableWillOpen={() => deleteNotification(data.id)}
       >
         <Base onPress={() => onPress(data)}>
           <Avatar

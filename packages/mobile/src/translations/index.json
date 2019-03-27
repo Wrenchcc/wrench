@@ -218,12 +218,7 @@
       "follow": "Now follows your project",
       "comment": "Commented on your project",
       "reply": "Replied to your comment",
-      "mention": "Mentioned you in a comment",
-      "options": {
-        "alertTitle": "Hide this Notification",
-        "delete": "Hide",
-        "cancel": "Cancel"
-      }
+      "mention": "Mentioned you in a comment"
     },
     "Post": {
       "options": {
@@ -485,12 +480,7 @@
       "follow": "Följer nu ditt projekt",
       "comment": "Kommenterade på ditt projekt",
       "reply": "Svarade på din kommentar",
-      "mention": "Nämnde dig i en kommentar",
-      "options": {
-        "alertTitle": "Dölj notifikation",
-        "delete": "Dölj",
-        "cancel": "Avbryt"
-      }
+      "mention": "Nämnde dig i en kommentar"
     },
     "Post": {
       "options": {
