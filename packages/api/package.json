@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.4.8",
-    "aws-sdk": "^2.428.0",
+    "aws-sdk": "^2.429.0",
     "aws4": "^1.8.0",
     "axios": "^0.18.0",
     "base-64": "^0.1.0",
@@ -20,7 +20,7 @@
     "debug": "^4.1.1",
     "express": "^4.16.4",
     "firebase-admin": "^7.1.1",
-    "graphql": "^14.1.1",
+    "graphql": "^14.2.0",
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.1",

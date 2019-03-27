@@ -3041,10 +3041,10 @@ graphql-tag@^2.10.1:
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
   integrity sha512-jApXqWBzNXQ8jYa/HLkZJaVw9jgwNqZkywa2zfFn16Iv1Zb7ELNHkJaXHR7Quvd5SIGsy6Ny7SUKATgnu05uEg==
 
-graphql@^14.1.1:
-  version "14.1.1"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.1.1.tgz#d5d77df4b19ef41538d7215d1e7a28834619fac0"
-  integrity sha512-C5zDzLqvfPAgTtP8AUPIt9keDabrdRAqSWjj2OPRKrKxI9Fb65I36s1uCs1UUBFnSWTdO7hyHi7z1ZbwKMKF6Q==
+graphql@^14.2.0:
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.2.0.tgz#ff25813ad6d186f3975977d56bc2d2434871f3b9"
+  integrity sha512-dlFHRtxsL4sBy1C1e3v64IUd5ndZhAOHZ/z3Dr4Nm6+cvr9elrnz4BhMF9h9mRBBnhUCGLc4GH4xvPbKG6sUeA==
   dependencies:
     iterall "^1.2.2"
 
@@ -3178,10 +3178,10 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
-i18next@^15.0.7:
-  version "15.0.7"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-15.0.7.tgz#2f61240c8b2b6656233217a8eee07a09a5707fea"
-  integrity sha512-KCSmTOE0nsku53cI0sSBY21ftXhsAfCjcNQBx54Y0AxcTxSs+v+qGFQ38ab+vi6F4NZEm8JupO36vlWoeF47cA==
+i18next@^15.0.8:
+  version "15.0.8"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-15.0.8.tgz#4a52ba8b422832f334fe2fb464e8ad4785899211"
+  integrity sha512-ayzNwJ9NHtqEeAG0nQ6yKFbIpZULpDeesjVnfWQaPwbH7Anee8QwRAYPNWHtFCmDZV9FZaKiEbfo1scH8+KSDg==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -5438,10 +5438,10 @@ react-native-video@^4.4.0:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.4.4:
-  version "5.4.4"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.4.4.tgz#091ddb4896708a62d72cfae3cb06c77dcb3826d5"
-  integrity sha512-SE/6CE0c2eLynv7Ec2Mr6EfNyOrY55s16K8Nj1xxAFwaocsOzwVL0zAnnuO5GCEdT3MCk2AGSrEcKkpJNdLyRA==
+react-native-webview@^5.4.6:
+  version "5.4.6"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.4.6.tgz#18f33d52ae97cdb2a2eda5483f7d4c010134cce3"
+  integrity sha512-xh0kv/fNT9Uh6gJSBE8qutktb8YvgwWGMA2DJCKfkl7Px1ZSE/a/sT1wyD0G8rhFH5wDv3jmhazNeIt8xTeDtA==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"

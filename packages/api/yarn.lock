@@ -717,10 +717,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.428.0:
-  version "2.428.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.428.0.tgz#9de2cc986f6fb2b011e0a86a10e415e1e935a2bb"
-  integrity sha512-gHEt62n66+cMp8Gc3S8D2dJ63SmnOArpPXvFhnZijbHOeRwsEI1J0HfHtvtWMcD/K6t5HNanvD7RVWBZU5lOmg==
+aws-sdk@^2.429.0:
+  version "2.429.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.429.0.tgz#27c32734f6473f69a39c29a694d54d15b5beb68a"
+  integrity sha512-8RmRyCXYjDC15BQlkkgT5Yqs8GAdPmjaLRP03Lc6kqaKuMMIi4EnNIlXDKi9kwj3zl2AXfm0GE5blcE0+ZfaxQ==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -2068,10 +2068,10 @@ graphql-upload@^8.0.2:
     http-errors "^1.7.1"
     object-path "^0.11.4"
 
-graphql@^14.1.1:
-  version "14.1.1"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.1.1.tgz#d5d77df4b19ef41538d7215d1e7a28834619fac0"
-  integrity sha512-C5zDzLqvfPAgTtP8AUPIt9keDabrdRAqSWjj2OPRKrKxI9Fb65I36s1uCs1UUBFnSWTdO7hyHi7z1ZbwKMKF6Q==
+graphql@^14.2.0:
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.2.0.tgz#ff25813ad6d186f3975977d56bc2d2434871f3b9"
+  integrity sha512-dlFHRtxsL4sBy1C1e3v64IUd5ndZhAOHZ/z3Dr4Nm6+cvr9elrnz4BhMF9h9mRBBnhUCGLc4GH4xvPbKG6sUeA==
   dependencies:
     iterall "^1.2.2"
 
