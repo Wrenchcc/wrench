@@ -61,14 +61,28 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This allows Wrench take photos and record video within the app.</string>
+	<string>Allow $(PRODUCT_NAME) to use the camera</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) experiences to access your contacts</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use your location</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This allows Wrench to add sound when you record a video.</string>
+	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This allows Wrench to share photos from your library and save photos to your camera roll.</string>
+	<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This allows Wrench to share photos from your library and save photos to your camera roll.</string>
+	<string>Give $(PRODUCT_NAME) periences permission to access your photos</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to access your reminders</string>	
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>

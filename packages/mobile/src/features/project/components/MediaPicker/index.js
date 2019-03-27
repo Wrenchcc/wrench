@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, Platform, View } from 'react-native'
-import GalleryManager from 'react-native-gallery-manager'
+import * as MediaLibrary from 'expo-media-library'
 import { TabView } from 'react-native-tab-view'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import withTranslation from 'i18n/withTranslation'
 import { findIndex, propEq } from 'ramda'
 import { logError } from 'utils/analytics'
 import AskForPermission from 'features/project/components/AskForPermission'
-import BottomSheet from './BottomSheet'
+// import BottomSheet from './BottomSheet'
 import List from './List'
 import Tabs from './Tabs'
 
@@ -33,7 +33,7 @@ class MediaPicker extends PureComponent {
       isLoading: true,
       routes: [
         {
-          key: '',
+          key: 'all',
           title: props.t('MediaPicker:all'),
         },
       ],
@@ -48,14 +48,14 @@ class MediaPicker extends PureComponent {
 
   getAlbums = async () => {
     try {
-      const { albums } = await GalleryManager.getAlbums()
+      const albums = await MediaLibrary.getAlbumsAsync()
 
       this.setState(prevState => ({
         isLoading: false,
         routes: prevState.routes.concat(
           albums.map(a => ({
             title: a.title,
-            key: a.title,
+            key: a.id,
           }))
         ),
       }))
@@ -80,7 +80,7 @@ class MediaPicker extends PureComponent {
     const { selectedFiles, selectedIndex, onSelect } = this.props
     const index = this.indexOfItem(file)
 
-    this.bottomSheetRef.current.snapTo(0)
+    // this.bottomSheetRef.current.snapTo(0)
 
     if (index >= 0) {
       if (selectedIndex === index) {
@@ -106,7 +106,7 @@ class MediaPicker extends PureComponent {
 
   renderScene = ({ route }) => (
     <List
-      albumName={route.key}
+      album={route.key === 'all' ? null : route.key}
       onSelect={this.toggleSelection}
       selected={this.props.selectedFiles}
       cameraFile={route.key === '' && this.props.cameraFile}
@@ -132,23 +132,34 @@ class MediaPicker extends PureComponent {
       )
     }
 
+    // return (
+    //   <BottomSheet
+    //     ref={this.bottomSheetRef}
+    //     snapPoints={['40%', '100%']}
+    //     renderContent={() => (
+    //       <View style={{ backgroundColor: 'black', flex: 1 }}>
+    //         <TabView
+    //           navigationState={this.state}
+    //           renderScene={this.renderScene}
+    //           onIndexChange={this.onIndexChange}
+    //           initialLayout={{ width }}
+    //           renderTabBar={props => showTabs && <Tabs {...props} />}
+    //           lazy
+    //         />
+    //       </View>
+    //     )}
+    //     renderHeader={this.renderHeader}
+    //   />
+    // )
+
     return (
-      <BottomSheet
-        ref={this.bottomSheetRef}
-        snapPoints={['40%', '100%']}
-        renderContent={() => (
-          <View style={{ backgroundColor: 'black', flex: 1 }}>
-            <TabView
-              navigationState={this.state}
-              renderScene={this.renderScene}
-              onIndexChange={this.onIndexChange}
-              initialLayout={{ width }}
-              renderTabBar={props => showTabs && <Tabs {...props} />}
-              lazy
-            />
-          </View>
-        )}
-        renderHeader={this.renderHeader}
+      <TabView
+        navigationState={this.state}
+        renderScene={this.renderScene}
+        onIndexChange={this.onIndexChange}
+        initialLayout={{ width }}
+        renderTabBar={props => showTabs && <Tabs {...props} />}
+        lazy
       />
     )
   }
