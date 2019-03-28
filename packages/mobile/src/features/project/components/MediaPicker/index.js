@@ -106,7 +106,7 @@ class MediaPicker extends PureComponent {
         />
         <BottomSheet
           ref={this.bottomSheetRef}
-          snapPoints={[0, '70%']}
+          snapPoints={[0, '60%']}
           renderContent={this.renderInner}
         />
       </>
