@@ -23,6 +23,10 @@ PODS:
   - EXFileSystem (4.0.0):
     - UMCore
     - UMFileSystemInterface
+  - EXImageManipulator (4.0.0):
+    - UMCore
+    - UMFileSystemInterface
+    - UMImageLoaderInterface
   - EXMediaLibrary (4.0.0):
     - UMCore
     - UMPermissionsInterface
@@ -203,7 +207,7 @@ PODS:
     - React
   - react-native-haptic-feedback (1.6.0):
     - React
-  - react-native-netinfo (1.4.0):
+  - react-native-netinfo (1.4.1):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -326,6 +330,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
+  - EXImageManipulator (from `../node_modules/expo-image-manipulator/ios`)
   - EXMediaLibrary (from `../node_modules/expo-media-library/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - Fabric
@@ -428,6 +433,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-constants/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
+  EXImageManipulator:
+    :path: "../node_modules/expo-image-manipulator/ios"
   EXMediaLibrary:
     :path: "../node_modules/expo-media-library/ios"
   EXPermissions:
@@ -511,6 +518,7 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXConstants: 6ad60de0802ba69068b6d7b63e4e82c06d6807a4
   EXFileSystem: 22a53ba7e31987166aca49778e53cce8181b1ad8
+  EXImageManipulator: 9dfbfb167347463a6e444ab04dc73e77a835fd5f
   EXMediaLibrary: 29198a80b055bd1b69e738a44e566abb204f4a90
   EXPermissions: 332e6241b48d34a8363a78d87d90a20436a9eff9
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655

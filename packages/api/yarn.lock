@@ -80,19 +80,16 @@
     pify "^4.0.0"
     retry-request "^4.0.0"
 
-"@google-cloud/firestore@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/firestore/-/firestore-1.1.0.tgz#fb1ee38b5e45392358de55c85bf767adf2e30028"
-  integrity sha512-TOgnsSuHtp4IyaXwFY+asHk3YHPjC7E/x2CRkFi6+h0td1cLv82KEh9rrjWTKPdVd7QupaQOGqiPkOf7c2nc/g==
+"@google-cloud/firestore@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/firestore/-/firestore-1.2.0.tgz#ac81f84f7e55c5a25956011ebab628e1bbf4b2b0"
+  integrity sha512-Xku0KpZ/N+vbqX7rETlJVHV9YannCYja2v8vVvqe4sR9Rz0WkHqyDCZcjaXmcIC4DDKN+vzrb3IinBKDsniFag==
   dependencies:
-    "@google-cloud/projectify" "^0.3.0"
     bun "^0.0.12"
     deep-equal "^1.0.1"
-    extend "^3.0.1"
     functional-red-black-tree "^1.0.1"
     google-gax "^0.25.0"
     lodash.merge "^4.6.1"
-    protobufjs "^6.8.6"
     through2 "^3.0.0"
 
 "@google-cloud/paginator@^0.1.0":
@@ -106,7 +103,7 @@
     split-array-stream "^2.0.0"
     stream-events "^1.0.4"
 
-"@google-cloud/projectify@^0.3.0", "@google-cloud/projectify@^0.3.2":
+"@google-cloud/projectify@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@google-cloud/projectify/-/projectify-0.3.2.tgz#ed54c98cae646dc03a742eac288184a13d33a4c2"
   integrity sha512-t1bs5gE105IpgikX7zPCJZzVyXM5xZ/1kJomUPim2E2pNp4OUUFNyvKm/T2aM6GBP2F30o8abCD+/wbOhHWYYA==
@@ -717,10 +714,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.430.0:
-  version "2.430.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.430.0.tgz#40ff492c6315084b91c85ddf618f961bca0f3862"
-  integrity sha512-xJC1Sd6pjiIUg0W6v189QFWaY/jo+dVdQEJpplzqqBWmdUhZrBVmuWBVjC/wf5r6+Tj2KCc0G1fvjZqVutYnMw==
+aws-sdk@^2.431.0:
+  version "2.431.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.431.0.tgz#26863cf66087fcaefb852ed8d4aaa8d7422710cb"
+  integrity sha512-TcY5miRDCl4ZRFO90GVl85YlrJgVqiGxvT3ygdflw9LEflJt7S8t3MG5KBPGRIfF6xucZqaGj9DTXgmgTxHAkA==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -1756,10 +1753,10 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-firebase-admin@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-7.1.1.tgz#4889149d40f0fac03821ff270268c81ea8805508"
-  integrity sha512-AitJc9vUBOzxpM5OKJw2018L0iccRusnBnXcKoWNiKoplajYQGfDBvUkhd7NUqEQigxw/xx8+DrZrlBlPaKV5A==
+firebase-admin@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-7.2.0.tgz#dd7b78ca93014886090f2ae795ad6669f9157500"
+  integrity sha512-0Ikw5VwnTYk9DBnv73+/wv3eetuSSnNwLQw7x0/NXQ4kUJoGWORcmjFlW9SkBdR/xRXvU3WwTP72S8pkXVhqcQ==
   dependencies:
     "@firebase/app" "^0.3.4"
     "@firebase/database" "^0.3.6"
@@ -1768,7 +1765,7 @@ firebase-admin@^7.1.1:
     jsonwebtoken "8.1.0"
     node-forge "0.7.4"
   optionalDependencies:
-    "@google-cloud/firestore" "^1.1.0"
+    "@google-cloud/firestore" "^1.2.0"
     "@google-cloud/storage" "^2.3.0"
 
 follow-redirects@^1.3.0:
