@@ -5,6 +5,7 @@ import * as MediaLibrary from 'expo-media-library'
 import withTranslation from 'i18n/withTranslation'
 import { logError } from 'utils/analytics'
 import { Text, Touchable } from 'ui'
+import { COLORS } from 'ui/constants'
 import { pathOr, prepend } from 'ramda'
 
 const { height } = Dimensions.get('window')
@@ -72,7 +73,7 @@ class Albums extends PureComponent {
     return (
       <View
         style={{
-          height: data.length * HEIGHT + PADDING_TOP,
+          height: data.length * HEIGHT + PADDING_TOP * 2,
           minHeight: height,
           backgroundColor: 'white',
           paddingLeft: 20,
@@ -80,6 +81,16 @@ class Albums extends PureComponent {
           paddingTop: PADDING_TOP,
         }}
       >
+        <View
+          style={{
+            width: 60,
+            height: 5,
+            backgroundColor: COLORS.LIGHT_GREY,
+            borderRadius: 5,
+            alignSelf: 'center',
+            marginBottom: PADDING_TOP,
+          }}
+        />
         {data.map(({ id, title, totalCount, preview }) => (
           <View key={id} style={{ height: HEIGHT, width: '100%' }}>
             <Touchable onPress={() => this.props.onPress(id)} style={{ flexDirection: 'row' }}>
