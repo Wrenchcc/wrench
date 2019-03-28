@@ -24,6 +24,8 @@ export default class List extends Component {
 
   componentDidMount() {
     this.loadInitial()
+
+    // MediaLibrary.addListener(this.handleMediaLibraryChange)
   }
 
   componentDidUpdate(prevProps) {
@@ -36,11 +38,19 @@ export default class List extends Component {
     }
 
     if (!prevProps.cameraFile && this.props.cameraFile) {
-      this.setState({
-        data: prepend(this.props.cameraFile, this.state.data),
-      })
+      this.setState(prevState => ({
+        data: prepend(this.props.cameraFile, prevState.data),
+      }))
     }
   }
+
+  // componentWillUnmount() {
+  //   MediaLibrary.removeAllListeners(this.handleMediaLibraryChange)
+  // }
+
+  // handleMediaLibraryChange = insertedAssets => {
+  //   console.log(insertedAssets)
+  // }
 
   showSpinner = () => {
     this.setState({ isLoading: true })

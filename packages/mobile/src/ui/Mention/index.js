@@ -29,7 +29,6 @@ class Mention extends Component {
   static propTypes = {
     users: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
-    refetch: PropTypes.func.isRequired,
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
@@ -50,7 +49,6 @@ class Mention extends Component {
       offsetTop = TOTAL_HEADER_HEIGHT,
       users,
       fetchMore,
-      refetch,
       isRefetching,
       isFetching,
       hasNextPage,
@@ -64,7 +62,6 @@ class Mention extends Component {
           keyboardDismissMode="none"
           ListEmptyComponent={<NoResults />}
           data={users}
-          refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
           isFetching={isFetching}
