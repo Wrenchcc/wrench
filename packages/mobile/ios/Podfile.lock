@@ -214,7 +214,7 @@ PODS:
     - react-native-video/Video (= 4.4.0)
   - react-native-video/Video (4.4.0):
     - React
-  - react-native-webview (5.4.4):
+  - react-native-webview (5.5.0):
     - React
   - React/Core (0.59.2):
     - yoga (= 0.59.2.React)
@@ -268,7 +268,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNDeviceInfo (1.1.0):
+  - RNDeviceInfo (1.2.0):
     - React
   - RNFirebase (5.2.3):
     - Firebase/Core

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { FlatList, View, ActivityIndicator } from 'react-native'
+import PropTypes from 'prop-types'
+import { FlatList, View, ActivityIndicator, InteractionManager } from 'react-native'
 import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq, prepend } from 'ramda'
 import { logError } from 'utils/analytics'
@@ -9,6 +10,11 @@ const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
 
 export default class List extends Component {
+  static propTypes = {
+    album: PropTypes.string,
+    cameraFile: PropTypes.object,
+  }
+
   state = {
     data: [],
     endCursor: null,
@@ -16,13 +22,19 @@ export default class List extends Component {
     isLoading: true,
   }
 
-  constructor(props) {
-    super(props)
-
-    this.getFiles()
+  componentDidMount() {
+    this.loadInitial()
   }
 
   componentDidUpdate(prevProps) {
+    if (this.props.album !== prevProps.album) {
+      this.showSpinner()
+
+      InteractionManager.runAfterInteractions(() => {
+        this.loadInitial()
+      })
+    }
+
     if (!prevProps.cameraFile && this.props.cameraFile) {
       this.setState({
         data: prepend(this.props.cameraFile, this.state.data),
@@ -30,28 +42,19 @@ export default class List extends Component {
     }
   }
 
-  // getItemLayout = (data, index) => ({
-  //   length: ITEM_SIZE,
-  //   offset: ITEM_SIZE * index,
-  //   index,
-  // })
+  showSpinner = () => {
+    this.setState({ isLoading: true })
+  }
 
-  getFiles = async after => {
-    const { data, hasNextPage } = this.state
-
-    if (!hasNextPage) {
-      return
-    }
-
+  loadInitial = async () => {
     try {
       const result = await MediaLibrary.getAssetsAsync({
-        // album: this.props.album,
-        after,
+        album: this.props.album,
         first: PAGE_SIZE,
       })
 
       this.setState({
-        data: data.concat(result.assets),
+        data: result.assets,
         endCursor: result.endCursor,
         hasNextPage: result.hasNextPage,
         isLoading: false,
@@ -61,14 +64,38 @@ export default class List extends Component {
     }
   }
 
+  loadMore = async after => {
+    const { data, hasNextPage } = this.state
+
+    if (!hasNextPage) {
+      return
+    }
+
+    try {
+      const result = await MediaLibrary.getAssetsAsync({
+        album: this.props.album,
+        after,
+        first: PAGE_SIZE,
+      })
+
+      this.setState({
+        data: data.concat(result.assets),
+        endCursor: result.endCursor,
+        hasNextPage: result.hasNextPage,
+      })
+    } catch (err) {
+      logError(err)
+    }
+  }
+
   onEndReached = () => {
     if (this.state.hasNextPage) {
-      this.getFiles(this.state.endCursor)
+      this.loadMore(this.state.endCursor)
     }
   }
 
   renderFooterLoader = () => {
-    if (this.state.hasNextPage) {
+    if (this.state.hasNextPage && this.state.data.length) {
       return (
         <View style={{ paddingTop: 30, paddingBottom: 30 }}>
           <ActivityIndicator />
@@ -97,7 +124,11 @@ export default class List extends Component {
     const { data, isLoading } = this.state
 
     if (isLoading) {
-      return null
+      return (
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <ActivityIndicator />
+        </View>
+      )
     }
 
     return (
@@ -110,7 +141,6 @@ export default class List extends Component {
         numColumns={NUM_COLUMNS}
         onEndReached={this.onEndReached}
         renderItem={this.renderItem}
-        style={{ flex: 1 }}
       />
     )
   }

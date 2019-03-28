@@ -2,16 +2,19 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
+import BottomSheet from 'reanimated-bottom-sheet'
 import withTranslation from 'i18n/withTranslation'
 import { findIndex, propEq } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
+import Albums from './Albums'
+import OpenAlbum from './OpenAlbum'
 import List from './List'
-// import BottomSheet from './BottomSheet'
 
 const MAX_SELECTED_FILES = 10
 
 class MediaPicker extends PureComponent {
   static propTypes = {
+    cameraFile: PropTypes.object,
     onSelect: PropTypes.func.isRequired,
     selectedFiles: PropTypes.array.isRequired,
     selectedIndex: PropTypes.number,
@@ -20,10 +23,11 @@ class MediaPicker extends PureComponent {
   constructor(props) {
     super(props)
 
-    // this.bottomSheetRef = React.createRef()
+    this.bottomSheetRef = React.createRef()
 
     this.state = {
       album: null,
+      checkingPermission: true,
     }
 
     if (Platform.OS === 'ios') {
@@ -35,19 +39,20 @@ class MediaPicker extends PureComponent {
     check(IOS_PERMISSIONS.PHOTO_LIBRARY).then(response => {
       this.setState({
         photoPermission: response,
+        checkingPermission: false,
       })
     })
   }
 
   permissionAuthorized = () => {
-    // this.setState({ photoPermission: RESULTS.GRANTED }, this.getAlbums)
+    this.setState({
+      photoPermission: RESULTS.GRANTED,
+    })
   }
 
   toggleSelection = file => {
     const { selectedFiles, selectedIndex, onSelect } = this.props
     const index = this.indexOfItem(file)
-
-    // this.bottomSheetRef.current.snapTo(0)
 
     if (index >= 0) {
       if (selectedIndex === index) {
@@ -63,12 +68,23 @@ class MediaPicker extends PureComponent {
     }
   }
 
+  changeAlbum = album => {
+    this.setState({ album })
+    this.bottomSheetRef.current.snapTo(0)
+  }
+
   indexOfItem(item) {
     return findIndex(propEq('uri', item.uri))(this.props.selectedFiles)
   }
 
+  renderInner = () => <Albums onPress={this.changeAlbum} />
+
   render() {
-    const { photoPermission, album } = this.state
+    const { photoPermission, album, checkingPermission } = this.state
+
+    if (checkingPermission) {
+      return null
+    }
 
     if (photoPermission !== RESULTS.GRANTED) {
       return (
@@ -80,12 +96,20 @@ class MediaPicker extends PureComponent {
     }
 
     return (
-      <List
-        album={album}
-        onSelect={this.toggleSelection}
-        selected={this.props.selectedFiles}
-        cameraFile={this.props.cameraFile}
-      />
+      <>
+        <OpenAlbum onPress={() => this.bottomSheetRef.current.snapTo(1)} />
+        <List
+          album={album}
+          onSelect={this.toggleSelection}
+          selected={this.props.selectedFiles}
+          cameraFile={this.props.cameraFile}
+        />
+        <BottomSheet
+          ref={this.bottomSheetRef}
+          snapPoints={[0, '70%']}
+          renderContent={this.renderInner}
+        />
+      </>
     )
   }
 }

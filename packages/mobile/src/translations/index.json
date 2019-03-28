@@ -89,9 +89,10 @@
         "permissionButton": "Enable Library Access"
       }
     },
-    "MediaPicker": {
-      "all": "All"
+    "Albums": {
+      "cameraroll": "Camera Roll"
     },
+    "MediaPicker": {},
     "SelectProject": {
       "create": "Create a new project"
     },
@@ -352,9 +353,10 @@
         "permissionButton": "Aktivera biblioteksåtkomst"
       }
     },
-    "MediaPicker": {
-      "all": "Alla"
+    "Albums": {
+      "cameraroll": "Kamerarulle"
     },
+    "MediaPicker": {},
     "SelectProject": {
       "create": "Skapa ett nytt projekt"
     },
