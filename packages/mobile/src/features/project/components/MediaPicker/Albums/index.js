@@ -36,7 +36,7 @@ class Albums extends PureComponent {
       }
 
       const results = await MediaLibrary.getAlbumsAsync()
-      const albums = prepend(first, results)
+      const albums = prepend(first, results.filter(a => a.assetCount > 0).sort((a, b) => a - b))
 
       const data = await Promise.all(
         albums.map(async album => {
