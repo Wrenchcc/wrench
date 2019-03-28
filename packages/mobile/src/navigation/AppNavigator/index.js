@@ -9,16 +9,13 @@ import handleStatusBar from 'navigation/handleStatusBar'
 import Navigator from './navigator'
 
 class AppNavigator extends PureComponent {
-  constructor(props) {
-    super(props)
-
+  componentDidMount() {
     this.createNotificationListeners()
     this.createdynamicLinkListener()
   }
 
   componentWillUnmount() {
     this.dynamicLinkListener()
-    this.notificationListener()
     this.notificationOpenedListener()
   }
 
@@ -29,31 +26,14 @@ class AppNavigator extends PureComponent {
     })
   }
 
-  async createNotificationListeners() {
-    // Triggered when a particular notification has been received in foreground
-    this.notificationListener = notifications().onNotification(({ data }) => {
-      if (data.path) {
-        const link = formatDeepLink(data.path)
-        Linking.canOpenURL(link).then(() => Linking.openURL(link))
-      }
-    })
-
-    // If your app is in background, you can listen for when a
-    // notification is clicked / tapped / opened as follows:
+  createNotificationListeners() {
+    // Get the action triggered by the notification being opened
     this.notificationOpenedListener = notifications().onNotificationOpened(({ notification }) => {
       if (notification.data) {
         const link = formatDeepLink(notification.data.path)
         Linking.canOpenURL(link).then(() => Linking.openURL(link))
       }
     })
-
-    // If your app is closed, you can check if it was opened by a
-    // notification being clicked / tapped / opened as follows:
-    // const { notificationOpen } = await notifications().getInitialNotification()
-    // if (notificationOpen) {
-    // const { title, body } = notificationOpen.notification
-    // TODO: Route to view
-    // }
   }
 
   render() {
