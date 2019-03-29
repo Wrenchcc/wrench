@@ -1,8 +1,8 @@
 {
   "List": {
     "en": {
-      "loadMore": "Show 1 comment",
-      "loadMore_plural": "Show all {{count, humanFormat}} comments"
+      "loadMore": "View 1 comment",
+      "loadMore_plural": "View all {{count, humanFormat}} comments"
     },
     "sv": {
       "loadMore": "Visa 1 kommentar",
