@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation/actions'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
-import { ProjectCard, InfiniteList, NoResults, SearchingFor } from 'ui'
+import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 200
 
@@ -60,7 +60,9 @@ class Projects extends PureComponent {
         ListFooterComponent={
           (query.length === 1 && !projects) || (isFetching && query.length !== 0) ? (
             <SearchingFor query={query} />
-          ) : null
+          ) : (
+            hasNextPage && <Loader />
+          )
         }
       />
     )

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
-import { User, InfiniteList, NoResults, SearchingFor } from 'ui'
+import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 70
 
@@ -57,7 +57,9 @@ class Users extends PureComponent {
         ListFooterComponent={
           (query.length === 1 && !users) || (isFetching && query.length !== 0) ? (
             <SearchingFor query={query} />
-          ) : null
+          ) : (
+            hasNextPage && <Loader />
+          )
         }
       />
     )

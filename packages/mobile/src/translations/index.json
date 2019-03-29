@@ -160,8 +160,8 @@
       "loadReplies": "View replies ({{count}})"
     },
     "List": {
-      "loadMore": "Show 1 comment",
-      "loadMore_plural": "Show all {{count, humanFormat}} comments"
+      "loadMore": "View 1 comment",
+      "loadMore_plural": "View all {{count, humanFormat}} comments"
     },
     "Edit": {
       "edit": "Edit"
