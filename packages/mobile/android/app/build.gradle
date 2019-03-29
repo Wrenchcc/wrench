@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: '../../node_modules/react-native-unimodules/gradle.groovy'
 apply plugin: "io.fabric"
 apply plugin: "com.google.firebase.firebase-perf"
 
@@ -143,6 +144,7 @@ android {
 }
 
 dependencies {
+    addUnimodulesDependencies()
     implementation project(':@react-native-community_netinfo')
     implementation project(':react-native-webview')
     implementation project(':react-native-linear-gradient')

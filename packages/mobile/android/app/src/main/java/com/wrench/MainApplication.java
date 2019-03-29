@@ -17,6 +17,7 @@ import org.reactnative.camera.RNCameraPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import expo.modules.imagemanipulator.ImageManipulatorPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
@@ -73,7 +74,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebaseNotificationsPackage(),
           new RNFirebaseLinksPackage(),
           new FastImageViewPackage(),
-          new RNFirebaseCrashlyticsPackage()
+          new RNFirebaseCrashlyticsPackage(),
+          new ImageManipulatorPackage()
       );
     }
 
