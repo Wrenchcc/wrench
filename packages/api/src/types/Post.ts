@@ -59,7 +59,7 @@ export default gql`
   }
 
   extend type Mutation {
-    deletePost(id: ID!): Boolean
+    deletePost(id: ID!): Post
     addPost(input: PostInput!): Post
     editPost(id: ID!, input: EditPostInput!): Post
   }

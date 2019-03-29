@@ -30,9 +30,9 @@ const PopularProjectsQuery = gql`
   ${projectInfoFragment}
 `
 
-const RecentPostsQuery = gql`
+export const RecentPostsQuery = gql`
   query getRecentPosts($after: String) {
-    posts(after: $after) {
+    posts(after: $after) @connection(key: "posts") {
       ...postsInfo
     }
   }

@@ -11,5 +11,5 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   await ctx.db.File.delete({ postId: id })
   await ctx.db.Post.delete(id)
 
-  return true
+  return post
 })
