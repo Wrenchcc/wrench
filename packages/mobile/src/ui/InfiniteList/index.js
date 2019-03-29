@@ -78,7 +78,7 @@ class InfiniteList extends PureComponent {
       this.props.hasNextPage
       && this.props.isRefetching !== true
       && !this.props.isFetching
-      && distanceFromEnd > 0
+      // && distanceFromEnd > 0
     ) {
       this.props.fetchMore()
     }

@@ -1,7 +1,14 @@
 import { navigateToWebView, navigateToUser } from 'navigation/actions'
 import { COLORS, FONTS } from 'ui/constants'
 
-const handleUrlPress = url => navigateToWebView({ url })
+function addhttp(url) {
+  if (!/^(f|ht)tps?:\/\//i.test(url)) {
+    url = `http://${url}`
+  }
+  return url
+}
+
+const handleUrlPress = url => navigateToWebView({ url: addhttp(url) })
 
 const handleNamePress = name => {
   const username = name.replace('@', '')
