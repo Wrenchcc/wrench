@@ -56,33 +56,22 @@ export default class Project extends BaseEntity {
       .orderBy('count', 'DESC')
       .getRawMany()
 
-    // select *
-    // from Projects p
-    // left join (
-    //   select
-    //     project_id,
-    //     count(project_id) as count
-    //   from Followers
-    //   group by project_id
-    // ) f on (f.project_id = p.id)
-    // order by count desc
-
-    // return getRepository(Project)
-    //   .createQueryBuilder('projects')
-    //   .select('"projects"."id"')
-    //   .addSelect('count') // we get this in the subquery
-    //   .innerJoin(
-    //     query => query
-    //       .select('"following"."createdAt"')
-    //       .addSelect('count("following"."createdAt")', 'count')
-    //       .from(Following, null)
-    //         .where(`"following"."createdAt" > current_date - interval '30 day'`) // eslint-disable-line
-    //       .groupBy('"following"."createdAt"'),
-    //     'f',
-    //     '"f"."projectId" = p.id'
-    //   )
-    //   .orderBy('count', 'DESC')
-    //   .getMany()
+    // return getRepository(Project).query(`
+    //   SELECT *
+    //   FROM projects p
+    //   LEFT JOIN
+    //     (SELECT "projectId",
+    //             count("projectId") AS f_count
+    //      FROM following
+    //      GROUP BY "projectId") f ON ("f"."projectId" = "p"."id")
+    //   LEFT JOIN
+    //     (SELECT "posts"."projectId",
+    //             count("posts"."id") AS p_count
+    //      FROM posts
+    //      GROUP BY "posts"."projectId") pp ON ("pp"."projectId" = "p"."id")
+    //   WHERE "f_count" IS NOT NULL
+    //     AND "p_count" IS NOT NULL
+    //   ORDER BY "f_count" DESC`)
   }
 
   public static async projectCount(userId) {
