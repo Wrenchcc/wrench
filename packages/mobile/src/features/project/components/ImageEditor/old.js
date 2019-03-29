@@ -101,8 +101,7 @@ export default class ImageEditor extends PureComponent {
     this.handleOnEditImage(
       evt.nativeEvent.contentOffset,
       evt.nativeEvent.contentSize,
-      evt.nativeEvent.layoutMeasurement,
-      evt.nativeEvent.zoomScale
+      evt.nativeEvent.layoutMeasurement
     )
   }
 
@@ -117,14 +116,10 @@ export default class ImageEditor extends PureComponent {
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
     this.props.onEditImage({
-      offset: {
-        x: this.props.image.width * offsetRatioX,
-        y: this.props.image.height * offsetRatioY,
-      },
-      size: {
-        width: this.props.image.width * sizeRatioX,
-        height: this.props.image.height * sizeRatioY,
-      },
+      originX: this.props.image.width * offsetRatioX,
+      originY: this.props.image.height * offsetRatioY,
+      width: this.props.image.width * sizeRatioX,
+      height: this.props.image.height * sizeRatioY,
     })
   }
 
@@ -142,7 +137,10 @@ export default class ImageEditor extends PureComponent {
           maximumZoomScale={this.maximumZoomScale}
           minimumZoomScale={this.minimumZoomScale}
           onMomentumScrollEnd={this.onScroll}
-          onScrollEndDrag={() => this.setIsMoving(false)}
+          onScrollEndDrag={evt => {
+            this.onScroll(evt)
+            this.setIsMoving(false)
+          }}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           scrollEventThrottle={1}

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, KeyboardAvoidingView, InteractionManager } from 'react-native'
 import { pathOr } from 'ramda'
 import { Subscribe } from 'unstated'
 import { AddContainer, ToastNotificationContainer } from 'store'
@@ -25,7 +25,7 @@ class AddPost extends PureComponent {
     projects: PropTypes.array.isRequired,
   }
 
-  addPost = async (PostContainer, showNotification) => {
+  addPost = (PostContainer, showNotification) => {
     const { showPostProgress, state, resetState, hidePostProgress } = PostContainer
     const { t, projects } = this.props
 
@@ -38,28 +38,30 @@ class AddPost extends PureComponent {
       title,
     })
 
-    try {
-      const uploadedFiles = await uploadFiles(state.selectedFiles)
-      await this.props
-        .addPost({
-          caption: state.caption,
-          projectId: id,
-          files: uploadedFiles,
+    InteractionManager.runAfterInteractions(async () => {
+      try {
+        const uploadedFiles = await uploadFiles(state.selectedFiles)
+        await this.props
+          .addPost({
+            caption: state.caption,
+            projectId: id,
+            files: uploadedFiles,
+          })
+          .then(resetState)
+
+        track(events.POST_CREATED)
+      } catch (err) {
+        showNotification({
+          type: 'error',
+          message: t('AddPost:error'),
+          dismissAfter: 6000,
         })
-        .then(resetState)
 
-      track(events.POST_CREATED)
-    } catch (err) {
-      showNotification({
-        type: 'error',
-        message: t('AddPost:error'),
-        dismissAfter: 6000,
-      })
+        hidePostProgress()
 
-      hidePostProgress()
-
-      track(events.POST_CREATED_FAILED)
-    }
+        track(events.POST_CREATED_FAILED)
+      }
+    })
   }
 
   render() {
