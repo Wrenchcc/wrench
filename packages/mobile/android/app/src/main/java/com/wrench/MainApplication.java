@@ -3,6 +3,16 @@ package com.wrench;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.unimodules.adapters.react.ReactAdapterPackage;
+import org.unimodules.adapters.react.ModuleRegistryAdapter;
+import org.unimodules.adapters.react.ReactModuleRegistryProvider;
+import org.unimodules.core.interfaces.Package;
+import org.unimodules.core.interfaces.SingletonModule;
+import expo.modules.imagemanipulator.ImageManipulatorPackage;
+import expo.modules.medialibrary.MediaLibraryPackage;
+import expo.modules.constants.ConstantsPackage;
+import expo.modules.permissions.PermissionsPackage;
+import expo.modules.filesystem.FileSystemPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -37,6 +47,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
+  private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(Arrays.<Package>asList(
+     new ReactAdapterPackage(),
+     new ConstantsPackage(),
+     new PermissionsPackage(),
+     new FileSystemPackage(),
+     new MediaLibraryPackage(),
+    new ImageManipulatorPackage()
+  ), Arrays.<SingletonModule>asList());
+
+
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
 
   protected static CallbackManager getCallbackManager() {
@@ -53,6 +73,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new ModuleRegistryAdapter(mModuleRegistryProvider),
           new NetInfoPackage(),
           new RNCWebViewPackage(),
           new LinearGradientPackage(),
@@ -74,8 +95,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebaseNotificationsPackage(),
           new RNFirebaseLinksPackage(),
           new FastImageViewPackage(),
-          new RNFirebaseCrashlyticsPackage(),
-          new ImageManipulatorPackage()
+          new RNFirebaseCrashlyticsPackage()
       );
     }
 
