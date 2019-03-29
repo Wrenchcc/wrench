@@ -5,7 +5,8 @@ import userInfoFragment from 'graphql/fragments/user/userInfo'
 
 export const SearchUsersQuery = gql`
   query searchUsers($query: String!, $after: String, $type: SearchType!) {
-    users: search(query: $query, after: $after, type: $type) {
+    users: search(query: $query, after: $after, type: $type)
+      @connection(key: "users", filter: ["query", "type"]) {
       pageInfo {
         hasNextPage
       }

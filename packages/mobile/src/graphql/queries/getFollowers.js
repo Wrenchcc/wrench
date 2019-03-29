@@ -6,7 +6,8 @@ import followersInfoFragment from 'graphql/fragments/followers/followersInfo'
 
 export const FollowersQuery = gql`
   query getFollowers($projectId: ID!, $after: String) {
-    followers(projectId: $projectId, after: $after) {
+    followers(projectId: $projectId, after: $after)
+      @connection(key: "followers", filter: ["projectId"]) {
       ...followersInfo
     }
   }

@@ -5,7 +5,8 @@ import { isFetchingMore } from 'graphql/utils/networkStatus'
 
 export const SearchModelsQuery = gql`
   query searchModels($query: String!, $after: String, $type: SearchType!) {
-    models: search(query: $query, after: $after, type: $type, first: 20) {
+    models: search(query: $query, after: $after, type: $type, first: 20)
+      @connection(key: "models", filter: ["query", "type"]) {
       pageInfo {
         hasNextPage
       }

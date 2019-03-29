@@ -7,7 +7,7 @@ import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
 const PopularProjectsQuery = gql`
   query getPopularProjects($type: ProjectSortType!, $after: String) {
-    projects(type: $type, after: $after) {
+    projects(type: $type, after: $after) @connection(key: "projects", filter: ["type"]) {
       pageInfo {
         hasNextPage
       }

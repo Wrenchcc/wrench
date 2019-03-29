@@ -6,7 +6,8 @@ import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
 export const SearchProjectsQuery = gql`
   query searchProjects($query: String!, $after: String, $type: SearchType!) {
-    projects: search(query: $query, after: $after, type: $type) {
+    projects: search(query: $query, after: $after, type: $type)
+      @connection(key: "projects", filter: ["query", "type"]) {
       pageInfo {
         hasNextPage
       }

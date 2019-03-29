@@ -5,7 +5,7 @@ import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 export default gql`
   fragment feedPostsConnection on Feed {
-    posts: postsConnection(after: $after) {
+    posts: postsConnection(after: $after) @connection(key: "posts") {
       edges {
         cursor
         node {

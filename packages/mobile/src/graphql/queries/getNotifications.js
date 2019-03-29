@@ -15,7 +15,7 @@ export const NotificationsUnreadCountQuery = gql`
 
 export const NotificationsQuery = gql`
   query getNotifications($after: String) {
-    notifications(after: $after) {
+    notifications(after: $after) @connection(key: "notifications") {
       unreadCount
       pageInfo {
         hasNextPage
