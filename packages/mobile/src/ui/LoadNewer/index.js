@@ -6,6 +6,7 @@ import Text from 'ui/Text'
 import { Button, HEIGHT, TOP } from './styles'
 
 const DURATION = 650
+const DELAY = 3000
 
 class LoadNewer extends PureComponent {
   transformY = new Animated.Value(-HEIGHT - TOP)
@@ -20,7 +21,16 @@ class LoadNewer extends PureComponent {
       toValue: TOP,
       duration: DURATION,
       useNativeDriver: true,
-    }).start()
+    }).start(() => {
+      Animated.sequence([
+        Animated.delay(DELAY),
+        Animated.spring(this.transformY, {
+          toValue: -HEIGHT - TOP,
+          duration: DURATION / 2,
+          useNativeDriver: true,
+        }),
+      ]).start()
+    })
   }
 
   handleOnPress = () => {

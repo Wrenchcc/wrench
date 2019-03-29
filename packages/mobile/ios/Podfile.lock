@@ -272,7 +272,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNDeviceInfo (1.2.0):
+  - RNDeviceInfo (1.3.0):
     - React
   - RNFirebase (5.2.3):
     - Firebase/Core

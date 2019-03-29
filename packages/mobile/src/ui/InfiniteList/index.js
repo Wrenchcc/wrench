@@ -48,6 +48,7 @@ class InfiniteList extends PureComponent {
         pathOr(false, ['data', 0, 'node', 'id'], this.props),
         pathOr(false, ['data', 0, 'node', 'id'], prevProps)
       )
+      && !pathOr(false, ['data', 0, 'node', 'postPermissions', 'isOwner'], this.props)
     ) {
       this.setNewDataState(true)
     }
