@@ -18,10 +18,13 @@ const handleNamePress = name => {
 const styles = {
   link: {
     color: COLORS.DARK,
+    fontFamily: FONTS.MEDIUM,
   },
   username: {
     color: COLORS.DARK,
-    fontFamily: FONTS.BOLD,
+  },
+  emoji: {
+    fontFamily: 'System',
   },
 }
 
@@ -38,12 +41,12 @@ export default [
   },
   {
     pattern: /\/?\B@[a-z0-9.-]+/gi,
-    style: styles.link,
+    style: styles.username,
     onPress: handleNamePress,
     renderText: username => username,
   },
   {
     type: 'emoji',
-    style: { fontFamily: 'System' },
+    style: styles.emoji,
   },
 ]

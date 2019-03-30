@@ -40,18 +40,18 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.42.0):
     - FBSDKCoreKit
-  - Firebase/Core (5.19.0):
+  - Firebase/Core (5.20.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
-  - Firebase/CoreOnly (5.19.0):
-    - FirebaseCore (= 5.4.0)
-  - Firebase/DynamicLinks (5.19.0):
+  - Firebase/CoreOnly (5.20.0):
+    - FirebaseCore (= 5.4.1)
+  - Firebase/DynamicLinks (5.20.0):
     - Firebase/CoreOnly
-    - FirebaseDynamicLinks (= 3.4.2)
-  - Firebase/Messaging (5.19.0):
+    - FirebaseDynamicLinks (= 3.4.3)
+  - Firebase/Messaging (5.20.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.4.0)
-  - Firebase/Performance (5.19.0):
+    - FirebaseMessaging (= 3.5.0)
+  - Firebase/Performance (5.20.0):
     - Firebase/Core
     - FirebasePerformance (= 2.2.4)
   - FirebaseABTesting (2.0.0):
@@ -67,18 +67,18 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.2.0)
-  - FirebaseCore (5.4.0):
+  - FirebaseCore (5.4.1):
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseDynamicLinks (3.4.2):
+  - FirebaseDynamicLinks (3.4.3):
     - FirebaseAnalytics (~> 5.1)
     - FirebaseAnalyticsInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
-  - FirebaseInstanceID (3.8.0):
+  - FirebaseInstanceID (3.8.1):
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
-  - FirebaseMessaging (3.4.0):
+  - FirebaseMessaging (3.5.0):
     - FirebaseAnalyticsInterop (~> 1.1)
     - FirebaseCore (~> 5.2)
     - FirebaseInstanceID (~> 3.6)
@@ -272,7 +272,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNDeviceInfo (1.3.0):
+  - RNDeviceInfo (1.4.1):
     - React
   - RNFirebase (5.2.3):
     - Firebase/Core
@@ -525,14 +525,14 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
   FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
-  Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
+  Firebase: 5090da4bb82900179004133bb2b2178919387fd9
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
-  FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
-  FirebaseDynamicLinks: 29dd0deb458bfb8f845349f8b0b7e90af20758c6
-  FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
-  FirebaseMessaging: 2d53d08d752fbe63ce0820428d70be5ab87c11fb
+  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
+  FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
+  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
+  FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
   FirebasePerformance: 25ecee2a260bcf398d7f32d6f4804438df953100
   FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
@@ -557,7 +557,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: e34cded54b134e40fd67fd84fc6f395c584db91d
   react-native-webview: 56e347e13df157eb36aef70884feeef486ae1caa
-  RNDeviceInfo: bff1ac6eb08ef2469d94ee10dd837926ada07f03
+  RNDeviceInfo: f72e930fbde5077e8366346204ba9ad41c7a598f
   RNFirebase: fb4f66d93810b53aa4d1cc50c9fb91ee3548abe2
   RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
