@@ -46,9 +46,11 @@ const description = (data, t) => {
 
 const styles = {
   rightAction: {
-    alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
+  },
+  trash: {
+    paddingLeft: 30,
   },
 }
 
@@ -72,7 +74,9 @@ class Notification extends PureComponent {
           style={[styles.rightAction, { backgroundColor: COLORS.RED }]}
           onPress={this.handleDelete}
         >
-          <Image source={trash} />
+          <View style={styles.trash}>
+            <Image source={trash} />
+          </View>
         </RectButton>
       </Animated.View>
     )
@@ -89,9 +93,9 @@ class Notification extends PureComponent {
       <Swipeable
         ref={this.setRef}
         friction={2}
-        rightThreshold={160}
+        rightThreshold={100}
         renderRightActions={this.renderRightAction}
-        onSwipeableWillOpen={() => deleteNotification(data.id)}
+        onSwipeableRightOpen={() => deleteNotification(data.id)}
       >
         <Base onPress={() => onPress(data)}>
           <Avatar

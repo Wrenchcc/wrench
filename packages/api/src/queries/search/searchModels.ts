@@ -4,10 +4,6 @@ const MAX_LIMIT = 50
 const INDEX_NAME = 'vehicles'
 
 export default async ({ query, after = 0, first = 10, last = 10 }, ctx) => {
-  // if (!query) {
-  //   return new ForbiddenError('Please provide a search term.')
-  // }
-
   if (first > MAX_LIMIT) {
     return new ForbiddenError('Your limit is to big.')
   }
