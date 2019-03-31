@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Spring } from 'react-spring/renderprops'
 import withTranslation from 'i18n/withTranslation'
-import { logError } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 import Text from 'ui/Text'
 import { Base } from './styles'
 

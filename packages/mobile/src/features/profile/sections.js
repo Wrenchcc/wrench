@@ -3,7 +3,7 @@ import { mergeAll } from 'ramda'
 import { navigate, navigateToWebView } from 'navigation/actions'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
-import { logError } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 
 const WEBSITE_URL = 'https://wrench.cc'
 

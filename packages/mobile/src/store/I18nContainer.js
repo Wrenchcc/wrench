@@ -1,7 +1,8 @@
 import { Container } from 'unstated'
 import i18next from 'i18next'
 import { setLocale, languages, updateUserLanguage } from 'i18n'
-import { track, events, logError } from 'utils/analytics'
+import { track, events } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 
 export default class I18nContainer extends Container {
   state = {

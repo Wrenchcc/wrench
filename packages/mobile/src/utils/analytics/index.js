@@ -1,5 +1,5 @@
 import { InteractionManager } from 'react-native'
-import { analytics, perf, crashlytics } from 'react-native-firebase'
+import { analytics, perf } from 'react-native-firebase'
 
 export { events } from './events'
 
@@ -21,6 +21,3 @@ export const track = (event, params = {}) => {
     analytics().logEvent(event, params)
   })
 }
-
-export const logError = message => crashlytics().log(message)
-export const recordError = (code, message = null) => crashlytics().recordError(code, message)

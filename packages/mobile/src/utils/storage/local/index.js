@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-import { logError } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 
 export default {
   async getItem(key) {

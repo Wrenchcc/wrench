@@ -2,7 +2,7 @@ import { Container } from 'unstated'
 import { CameraRoll } from 'react-native'
 import { assocPath } from 'ramda'
 import LocalStorage from 'utils/storage/local'
-import { logError } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 
 const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId'
 

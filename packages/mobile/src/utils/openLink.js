@@ -1,5 +1,5 @@
 import { Linking } from 'react-native'
-import { logError } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 
 export default url => {
   Linking.canOpenURL(url)

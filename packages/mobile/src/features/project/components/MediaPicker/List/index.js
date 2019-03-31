@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { FlatList, View, ActivityIndicator, InteractionManager } from 'react-native'
 import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq, prepend } from 'ramda'
-import { logError } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 import MediaItem from '../Item'
 
 const NUM_COLUMNS = 4
