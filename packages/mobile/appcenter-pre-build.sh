@@ -1,1 +1,1 @@
-sh ./scripts/build-appcenter
+sh ./tasks/build-appcenter
