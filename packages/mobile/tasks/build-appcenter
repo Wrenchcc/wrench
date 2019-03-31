@@ -2,4 +2,4 @@
 
 set -uex
 
-tasks/create-env.sh
+tasks/create-env
