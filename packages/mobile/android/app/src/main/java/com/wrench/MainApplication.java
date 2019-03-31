@@ -31,7 +31,6 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import expo.modules.imagemanipulator.ImageManipulatorPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.links.RNFirebaseLinksPackage;
 import io.invertase.firebase.perf.RNFirebasePerformancePackage;
@@ -54,7 +53,7 @@ public class MainApplication extends Application implements ReactApplication {
      new PermissionsPackage(),
      new FileSystemPackage(),
      new MediaLibraryPackage(),
-    new ImageManipulatorPackage()
+     new ImageManipulatorPackage()
   ), Arrays.<SingletonModule>asList());
 
 
@@ -96,8 +95,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebaseMessagingPackage(),
           new RNFirebaseNotificationsPackage(),
           new RNFirebaseLinksPackage(),
-          new FastImageViewPackage(),
-          new RNFirebaseCrashlyticsPackage()
+          new FastImageViewPackage()
       );
     }
 

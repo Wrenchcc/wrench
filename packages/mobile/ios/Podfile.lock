@@ -14,8 +14,6 @@ PODS:
     - JWT (~> 3.0.0-beta.7)
     - React
     - SSZipArchive (~> 2.1)
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
   - DoubleConversion (1.1.6)
   - EXConstants (4.0.0):
     - UMConstantsInterface
@@ -33,7 +31,6 @@ PODS:
   - EXPermissions (4.0.0):
     - UMCore
     - UMPermissionsInterface
-  - Fabric (1.9.0)
   - FBSDKCoreKit (4.42.0):
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.42.0):
@@ -332,14 +329,12 @@ PODS:
 DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - CodePush (from `../node_modules/react-native-code-push`)
-  - Crashlytics
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXImageManipulator (from `../node_modules/expo-image-manipulator/ios`)
   - EXMediaLibrary (from `../node_modules/expo-media-library/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
-  - Fabric
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -402,8 +397,6 @@ SPEC REPOS:
     - Base64
     - Bolts
     - boost-for-react-native
-    - Crashlytics
-    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -524,14 +517,12 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
   CodePush: 300e90b3481fa82569090406165b83745de3613a
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXConstants: a338ed187829ab25b8817f84cd84eecc13e64fd4
   EXFileSystem: 18c9980f52e3bd6a28670c17e0d33a9c1584a336
   EXImageManipulator: 72cdf69afd64a49694a58cc038484074fcb28b42
   EXMediaLibrary: e716cab8439c95cba04b7040122643b727abce4a
   EXPermissions: ce3e170052df9d496aa51e1c372080cb2508fb16
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
   FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
@@ -593,6 +584,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: f88793bd35248182e15591e0aa5b045132312be0
   yoga: 3768a3026ade0fb46a68f3a31a917cf86bc34fc4
 
-PODFILE CHECKSUM: 22cfc0b210e71ef5cc09d6412212e5c520401b88
+PODFILE CHECKSUM: 1714ecfebde96d8949ca9e173d4569aba3f83ae7
 
 COCOAPODS: 1.6.0
