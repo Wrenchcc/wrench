@@ -56,6 +56,7 @@ export default class Camera extends PureComponent {
     const data = await camera.takePictureAsync({
       orientation: ORIENTATION,
     })
+
     this.props.onTakePicture(data)
   }
 

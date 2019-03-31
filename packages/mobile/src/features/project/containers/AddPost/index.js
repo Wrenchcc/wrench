@@ -10,6 +10,7 @@ import { navigateToFeed } from 'navigation/actions'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { track, events } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 import { uploadFiles } from 'utils/storage/s3'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
@@ -59,6 +60,7 @@ class AddPost extends PureComponent {
 
         hidePostProgress()
 
+        logError(err)
         track(events.POST_CREATED_FAILED)
       }
     })

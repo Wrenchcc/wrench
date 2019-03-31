@@ -4,6 +4,7 @@ import withTranslation from 'i18n/withTranslation'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
 import { Button, Text } from './styled'
 
@@ -32,6 +33,7 @@ class Facebook extends PureComponent {
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
     } catch (err) {
       track(events.USER_SIGNED_IN_FACEBOOK_FAILED)
+      logError(err)
     }
   }
 
