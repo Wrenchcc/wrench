@@ -40,18 +40,18 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.42.0):
     - FBSDKCoreKit
-  - Firebase/Core (5.20.0):
+  - Firebase/Core (5.20.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
-  - Firebase/CoreOnly (5.20.0):
+  - Firebase/CoreOnly (5.20.1):
     - FirebaseCore (= 5.4.1)
-  - Firebase/DynamicLinks (5.20.0):
+  - Firebase/DynamicLinks (5.20.1):
     - Firebase/CoreOnly
     - FirebaseDynamicLinks (= 3.4.3)
-  - Firebase/Messaging (5.20.0):
+  - Firebase/Messaging (5.20.1):
     - Firebase/CoreOnly
     - FirebaseMessaging (= 3.5.0)
-  - Firebase/Performance (5.20.0):
+  - Firebase/Performance (5.20.1):
     - Firebase/Core
     - FirebasePerformance (= 2.2.4)
   - FirebaseABTesting (2.0.0):
@@ -175,13 +175,13 @@ PODS:
   - Protobuf (3.7.0)
   - React (0.59.2):
     - React/Core (= 0.59.2)
-  - react-native-camera (2.1.1):
+  - react-native-camera (2.2.0):
     - React
-    - react-native-camera/RCT (= 2.1.1)
-    - react-native-camera/RN (= 2.1.1)
-  - react-native-camera/RCT (2.1.1):
+    - react-native-camera/RCT (= 2.2.0)
+    - react-native-camera/RN (= 2.2.0)
+  - react-native-camera/RCT (2.2.0):
     - React
-  - react-native-camera/RN (2.1.1):
+  - react-native-camera/RN (2.2.0):
     - React
   - react-native-config (0.11.7):
     - React
@@ -305,6 +305,12 @@ PODS:
   - SDWebImage/WebP (4.4.6):
     - libwebp (>= 0.5)
     - SDWebImage/Core
+  - Sentry (4.1.3):
+    - Sentry/Core (= 4.1.3)
+  - Sentry/Core (4.1.3)
+  - SentryReactNative (0.42.0):
+    - React
+    - Sentry (~> 4.1.3)
   - SSZipArchive (2.1.4)
   - UMBarCodeScannerInterface (1.0.0)
   - UMCameraInterface (1.0.0)
@@ -376,6 +382,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNShare (from `../node_modules/react-native-share`)
+  - SentryReactNative (from `../node_modules/react-native-sentry`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
   - UMCameraInterface (from `../node_modules/unimodules-camera-interface/ios`)
   - UMConstantsInterface (from `../node_modules/unimodules-constants-interface/ios`)
@@ -420,6 +427,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SDWebImage
+    - Sentry
     - SSZipArchive
 
 EXTERNAL SOURCES:
@@ -481,6 +489,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNShare:
     :path: "../node_modules/react-native-share"
+  SentryReactNative:
+    :path: "../node_modules/react-native-sentry"
   UMBarCodeScannerInterface:
     :path: "../node_modules/unimodules-barcode-scanner-interface/ios"
   UMCameraInterface:
@@ -525,7 +535,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
   FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
-  Firebase: 5090da4bb82900179004133bb2b2178919387fd9
+  Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
@@ -547,7 +557,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   React: 9d063e2f356c8cd2f54dd550d4507740037cbabe
-  react-native-camera: 9cd8cf5d5f75917a978d3781f315b8191eaee1ff
+  react-native-camera: bfdef9a41913a5c5c9685fcbe7ba24b9ef49e9ad
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-fast-image: 21d2d84a46b12cacbe7958ab6414fe828c094f82
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
@@ -566,6 +576,8 @@ SPEC CHECKSUMS:
   RNScreens: 720a9e6968beb73e8196239801e887d8401f86ed
   RNShare: 4f206fa36e384e95a0cbf79f2a92490647e93127
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
+  SentryReactNative: 09d5cc89e8bb5d80cfaf3ae11ed2ecb0a47317d2
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   UMBarCodeScannerInterface: 53fd3cbf24fe5c58f3ba82ac8c27f0373fbf52fa
   UMCameraInterface: d5a2727e76d6b47e3201f863102c055ddbcc6206
@@ -581,6 +593,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: f88793bd35248182e15591e0aa5b045132312be0
   yoga: 3768a3026ade0fb46a68f3a31a917cf86bc34fc4
 
-PODFILE CHECKSUM: 9b2c259155a83e8f457130fd40ab84740e65e171
+PODFILE CHECKSUM: 22cfc0b210e71ef5cc09d6412212e5c520401b88
 
 COCOAPODS: 1.6.0

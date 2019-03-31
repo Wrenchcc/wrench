@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>__RN_CONFIG_WRENCH_FACEBOOK_CUSTOM_URL_SCHEME</string>
+				<string>__RN_CONFIG_FACEBOOK_CUSTOM_URL_SCHEME</string>
 			</array>
 		</dict>
 		<dict>
@@ -42,9 +42,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CodePushDeploymentKey</key>
-	<string>__RN_CONFIG_WRENCH_CODE_PUSH_DEPLOYMENT_KEY</string>
+	<string>__RN_CONFIG_CODE_PUSH_DEPLOYMENT_KEY</string>
 	<key>FacebookAppID</key>
-	<string>__RN_CONFIG_WRENCH_FACEBOOK_APP_ID</string>
+	<string>__RN_CONFIG_FACEBOOK_APP_ID</string>
 	<key>FacebookDisplayName</key>
 	<string>Wrench</string>
 	<key>LSApplicationQueriesSchemes</key>

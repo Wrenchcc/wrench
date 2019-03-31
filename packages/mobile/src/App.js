@@ -1,4 +1,6 @@
 import React from 'react'
+import { Sentry } from 'react-native-sentry'
+import Config from 'react-native-config'
 import { Provider, Subscribe } from 'unstated'
 import { ApolloProvider, Query } from 'react-apollo'
 import { useScreens } from 'react-native-screens'
@@ -11,24 +13,18 @@ import Onboarding from 'features/signIn/containers/Onboarding'
 
 useScreens()
 
-if (__DEV__) {
-  global.XMLHttpRequest = global.originalXMLHttpRequest
-    ? global.originalXMLHttpRequest
-    : global.XMLHttpRequest
-  global.FormData = global.originalFormData ? global.originalFormData : global.FormData
+let SentryInstance = Sentry
 
-  fetch // Ensure to get the lazy property
+if (!__DEV__) {
+  const environment = Config.ENVIRONMENT === 'production' ? 'production' : 'test'
 
-  if (window.__FETCH_SUPPORT__) {
-    // it's RNDebugger only to have
-    window.__FETCH_SUPPORT__.blob = false
-  } else {
-    /*
-     * Set __FETCH_SUPPORT__ to false is just work for `fetch`.
-     * If you're using another way you can just use the native Blob and remove the `else` statement
-     */
-    global.Blob = global.originalBlob ? global.originalBlob : global.Blob
-    global.FileReader = global.originalFileReader ? global.originalFileReader : global.FileReader
+  SentryInstance.config(Config.SENTRY_DSN, {
+    environment,
+    deactivateStacktraceMerging: false,
+  }).install()
+} else {
+  SentryInstance = {
+    captureException: e => console.error(e), // eslint-disable-line no-console
   }
 }
 

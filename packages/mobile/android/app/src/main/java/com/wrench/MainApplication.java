@@ -3,6 +3,7 @@ package com.wrench;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.sentry.RNSentryPackage;
 import org.unimodules.adapters.react.ReactAdapterPackage;
 import org.unimodules.adapters.react.ModuleRegistryAdapter;
 import org.unimodules.adapters.react.ReactModuleRegistryProvider;
@@ -74,6 +75,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
           new ModuleRegistryAdapter(mModuleRegistryProvider),
+          new RNSentryPackage(),
           new NetInfoPackage(),
           new RNCWebViewPackage(),
           new LinearGradientPackage(),

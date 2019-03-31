@@ -82,6 +82,13 @@ project.ext.react = [
 
 apply from: "../../node_modules/react-native/react.gradle"
 
+/* Sentry */
+apply from: "../../node_modules/react-native-sentry/sentry.gradle"
+
+project.ext.sentryCli = [
+    logLevel: "debug"
+]
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -146,6 +153,7 @@ android {
 dependencies {
     addUnimodulesDependencies()
     implementation project(':@react-native-community_netinfo')
+    implementation project(':react-native-sentry')
     implementation project(':react-native-webview')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-haptic-feedback')
