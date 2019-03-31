@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import DeviceInfo from 'react-native-device-info'
 
 const STORAGE_KEY = '@wrench:locale'

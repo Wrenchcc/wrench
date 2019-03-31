@@ -16,6 +16,7 @@ import expo.modules.permissions.PermissionsPackage;
 import expo.modules.filesystem.FileSystemPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
@@ -76,6 +77,7 @@ public class MainApplication extends Application implements ReactApplication {
           new ModuleRegistryAdapter(mModuleRegistryProvider),
           new RNSentryPackage(),
           new NetInfoPackage(),
+          new AsyncStoragePackage(),
           new RNCWebViewPackage(),
           new LinearGradientPackage(),
           new RNReactNativeHapticFeedbackPackage(),
