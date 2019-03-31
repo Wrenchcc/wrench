@@ -58,3 +58,5 @@ package-lock.json
 node_modules
 
 Pods
+
+sentry.properties

@@ -1218,9 +1218,9 @@
     yargs "^12.0.2"
 
 "@types/node@*":
-  version "11.12.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.12.0.tgz#ec5594728811dc2797e42396cfcdf786f2052c12"
-  integrity sha512-Lg00egj78gM+4aE0Erw05cuDbvX9sLJbaaPwwRtdCdAMnIudqrQZ0oZX98Ek0yiSK/A2nubHgJfvII/rTT2Dwg==
+  version "11.12.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.12.2.tgz#d7f302e74b10e9801d52852137f652d9ee235da8"
+  integrity sha512-c82MtnqWB/CqqK7/zit74Ob8H1dBdV7bK+BcErwtXbe0+nUGkgzq5NTDmRW/pAv2lFtmeNmW95b0zK2hxpeklg==
 
 "@types/node@^8.0.7":
   version "8.10.45"
@@ -5758,9 +5758,9 @@ readdirp@^2.2.1:
     readable-stream "^2.0.2"
 
 reanimated-bottom-sheet@^1.0.0-alpha.5:
-  version "1.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.5.tgz#cd251de56a20a575f385cbada3d97c7996cf4a62"
-  integrity sha512-eMX2r70f3Z1HsIUAxmf4uVPAgZTTfAik8fWE34RgRgmE02si1tJtWX5MK54TFS04gEa5olAtISAqqu8IpuCaow==
+  version "1.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.6.tgz#752e5b81f93364cc9cf99069efadd9b271f30975"
+  integrity sha512-ePZyRZit2dtX9vCDKlg9GN2kU/zclOq4mVcemAaxmXIFZLkmowAVQABHCo3k38vN1XU4CBOs3rOCboFaswlh7Q==
 
 recursive-fs@0.1.4:
   version "0.1.4"
@@ -6979,9 +6979,9 @@ xcode@^2.0.0:
     simple-plist "^1.0.0"
     uuid "^3.3.2"
 
-"xcode@git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b":
+"xcode@https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b":
   version "1.0.1-dev"
-  resolved "git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b"
+  resolved "https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b"
   dependencies:
     simple-plist "^0.2.1"
     uuid "3.0.1"
