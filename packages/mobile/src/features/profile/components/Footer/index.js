@@ -1,9 +1,7 @@
 import React, { memo } from 'react'
-import DeviceInfo from 'react-native-device-info'
 import { Text } from 'ui'
+import { appVersion } from 'utils/constants'
 import { Base } from './styles'
-
-const appVersion = `v${DeviceInfo.getVersion()}.${DeviceInfo.getBuildNumber()}`
 
 export default memo(function Footer() {
   return (

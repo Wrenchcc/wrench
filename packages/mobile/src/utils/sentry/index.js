@@ -1,6 +1,7 @@
 import DeviceInfo from 'react-native-device-info'
 import { Sentry } from 'react-native-sentry'
 import Config from 'react-native-config'
+import { appVersion } from 'utils/constants'
 
 let SentryInstance = Sentry
 
@@ -13,7 +14,7 @@ if (!__DEV__) {
   }).install()
 
   SentryInstance.setTagsContext({
-    appVersion: DeviceInfo.getVersion(),
+    appVersion,
     buildNumber: DeviceInfo.getBuildNumber(),
     deviceInfo: {
       systemName: DeviceInfo.getSystemName(),
