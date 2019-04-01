@@ -52,7 +52,9 @@ class Albums extends PureComponent {
             totalCount: result.totalCount,
           }
         })
-      )
+      ).catch(err => {
+        logError(err)
+      })
 
       this.setState({
         data: data.filter(a => a.totalCount > 0).sort((a, b) => a - b),

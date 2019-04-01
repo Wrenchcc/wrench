@@ -8,7 +8,7 @@ import { AppContainer } from 'store'
 import { Loader } from 'ui'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import Onboarding from 'features/signIn/containers/Onboarding'
-import 'utils/sentry'
+import { SentryInstance } from 'utils/sentry'
 
 useScreens()
 
@@ -50,6 +50,12 @@ function App() {
                     if (networkStatus === 1 || networkStatus === 2) return <Loader />
                     if (!path(['user'], data)) return <AuthNavigator />
                     if (!path(['user', 'interestedIn'], data)) return <Onboarding />
+
+                    // NOTE: Set user context in Sentry
+                    SentryInstance.setUserContext({
+                      userID: data.user.id,
+                      username: data.user.username,
+                    })
 
                     return <AppNavigator />
                   }}
