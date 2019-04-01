@@ -9,7 +9,7 @@ if (!__DEV__) {
 
   SentryInstance.config(Config.SENTRY_DSN, {
     environment,
-    deactivateStacktraceMerging: false,
+    deactivateStacktraceMerging: true,
   }).install()
 
   SentryInstance.setTagsContext({
