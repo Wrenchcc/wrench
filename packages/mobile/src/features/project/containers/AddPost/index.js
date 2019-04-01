@@ -42,6 +42,7 @@ class AddPost extends PureComponent {
     InteractionManager.runAfterInteractions(async () => {
       try {
         const uploadedFiles = await uploadFiles(state.selectedFiles)
+
         await this.props
           .addPost({
             caption: state.caption,
@@ -52,13 +53,13 @@ class AddPost extends PureComponent {
 
         track(events.POST_CREATED)
       } catch (err) {
+        hidePostProgress()
+
         showNotification({
           type: 'error',
           message: t('AddPost:error'),
           dismissAfter: 6000,
         })
-
-        hidePostProgress()
 
         logError(err)
         track(events.POST_CREATED_FAILED)

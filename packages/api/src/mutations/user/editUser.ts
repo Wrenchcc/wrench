@@ -1,6 +1,5 @@
 import { UserInputError } from 'apollo-server-express'
 import { DateTime } from 'luxon'
-import { SUPPORTED_LOCALES } from '../../utils//locale'
 import { isAuthenticated } from '../../utils/permissions'
 import { LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../models/UserSettings'
 
@@ -15,10 +14,6 @@ export default isAuthenticated(async (_, args, ctx) => {
   }
 
   if (args.input.locale) {
-    if (!SUPPORTED_LOCALES.includes(args.input.locale)) {
-      return new UserInputError('Not a supported locale.')
-    }
-
     const savedLocale = await ctx.db.UserSettings.findOne({
       where: {
         type: LOCALE_COLUMN,

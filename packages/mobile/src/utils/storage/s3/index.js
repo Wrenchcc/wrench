@@ -29,9 +29,15 @@ export const uploadFiles = async files => {
   const result = await Promise.all(
     resizedImages.map(async (uri, index) => {
       const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
-      const uploaded = await makeS3Request(url, { uri, type, filename })
+      try {
+        const uploaded = await makeS3Request(url, { uri, type, filename })
 
-      return uploaded
+        return uploaded
+      } catch (err) {
+        logError(err)
+      }
+
+      return null
     })
   ).catch(err => {
     logError(err)

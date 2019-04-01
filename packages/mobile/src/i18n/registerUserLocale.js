@@ -29,7 +29,12 @@ export async function registerUserLocale() {
     try {
       client.mutate({
         mutation: EditUserMutation,
-        variables: { input: { locale, timezone } },
+        variables: {
+          input: {
+            locale,
+            timezone,
+          },
+        },
       })
     } catch (err) {
       logError(err)
