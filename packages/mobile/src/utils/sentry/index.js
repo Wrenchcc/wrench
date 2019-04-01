@@ -27,4 +27,4 @@ if (!__DEV__) {
   }
 }
 
-export const logError = err => SentryInstance.captureException(err)
+export const logError = (err, extra = null) => SentryInstance.captureException(err, { extra })

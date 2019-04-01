@@ -8,7 +8,7 @@ async function cropImage({ uri, crop }) {
   try {
     return ImageManipulator.manipulateAsync(uri, [{ crop }])
   } catch (err) {
-    logError(err)
+    logError(err, { uri, crop })
   }
 
   return null
@@ -36,7 +36,7 @@ export const uploadFiles = async files => {
 
     return result
   } catch (err) {
-    logError(err)
+    logError(err, { files })
   }
 
   return null
