@@ -15,29 +15,27 @@ async function cropImage({ uri, crop }) {
 }
 
 export const uploadFiles = async files => {
-  try {
-    const input = files.map(() => ({ type: 'IMAGE' }))
-    // Return pre-signed urls
-    // Resize images and return uris
-    const [preSignedUrls, resizedImages] = await Promise.all([
-      client.mutate({ mutation: PreSignUrlsMutation, variables: { input } }),
-      Promise.all(files.map(cropImage)),
-    ])
+  const input = files.map(() => ({ type: 'IMAGE' }))
+  // Return pre-signed urls
+  // Resize images and return uris
+  const [preSignedUrls, resizedImages] = await Promise.all([
+    client.mutate({ mutation: PreSignUrlsMutation, variables: { input } }),
+    Promise.all(files.map(cropImage)),
+  ]).catch(err => {
+    logError(err)
+  })
 
-    // Return filenames
-    const result = await Promise.all(
-      resizedImages.map(async (uri, index) => {
-        const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
-        const uploaded = await makeS3Request(url, { uri, type, filename })
+  // Return filenames
+  const result = await Promise.all(
+    resizedImages.map(async (uri, index) => {
+      const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
+      const uploaded = await makeS3Request(url, { uri, type, filename })
 
-        return uploaded
-      })
-    )
+      return uploaded
+    })
+  ).catch(err => {
+    logError(err)
+  })
 
-    return result
-  } catch (err) {
-    logError(err, { files })
-  }
-
-  return null
+  return result
 }

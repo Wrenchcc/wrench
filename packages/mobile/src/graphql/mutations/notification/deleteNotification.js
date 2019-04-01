@@ -8,6 +8,7 @@ const DeleteNotificationMutation = gql`
   }
 `
 
+// TODO: use update
 const deleteNotificationOptions = {
   props: ({ mutate }) => ({
     deleteNotification: id => mutate({
