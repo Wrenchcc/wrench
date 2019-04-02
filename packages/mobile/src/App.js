@@ -53,7 +53,6 @@ function App() {
 
                     // NOTE: Set user context in Sentry
                     SentryInstance.setUserContext({
-                      userID: data.user.id,
                       username: data.user.username,
                     })
 

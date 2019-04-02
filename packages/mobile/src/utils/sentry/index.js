@@ -3,7 +3,7 @@ import { Sentry } from 'react-native-sentry'
 import Config from 'react-native-config'
 import { appVersion } from 'utils/constants'
 
-let SentryInstance = Sentry
+export let SentryInstance = Sentry
 
 if (!__DEV__) {
   const environment = Config.ENVIRONMENT === 'production' ? 'production' : 'test'
@@ -24,7 +24,8 @@ if (!__DEV__) {
   })
 } else {
   SentryInstance = {
-    captureException: e => console.error(e), // eslint-disable-line no-console
+    captureException: e => console.log(e), // eslint-disable-line no-console
+    setUserContext: c => console.log(c), // eslint-disable-line no-console
   }
 }
 

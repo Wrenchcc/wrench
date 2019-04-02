@@ -62,9 +62,9 @@ target 'Wrench' do
   ]
 
   # Required by Facebook
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+  pod 'FBSDKCoreKit', '4.42.0'
+  pod 'FBSDKLoginKit', '4.42.0'
+  pod 'FBSDKShareKit', '4.42.0'
 
   # Required by Firebase
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
