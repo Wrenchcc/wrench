@@ -363,10 +363,10 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@zeit/ncc@0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.17.0.tgz#f6121a15cf7ec76a65c17a3aa7d38e98151ea76e"
-  integrity sha512-PEu1L+bqj5c/BbkmBu3IRKOP10jprmJu4+EtHaFBQzeTfGcXnzbrssUVhzXpGi2X6Dw5S1FvwLWFGP3X5uEKYA==
+"@zeit/ncc@0.17.3":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.17.3.tgz#a6ec83933d209ac2956d642db772838515d93077"
+  integrity sha512-WV1pZZx3vj7E6HMGPKlwqIrCHNtn21C7kvwRNXKQovhpaU/q5iRCAlQ9Peijd1cDUTfakDKb8e8Kp7IRI8Hp3A==
 
 abbrev@1:
   version "1.1.1"
@@ -714,10 +714,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.432.0:
-  version "2.432.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.432.0.tgz#8cc677d683355df6d11bbc4ec16784a2267fd710"
-  integrity sha512-1Ly0chGU8K+r/8zM5iBiCC5MHOc4h/xReTv1VlRpemL5Fq2ndY6R5/uEEJ8ioqyd2UNban/w6LKwtOB1NF9IWg==
+aws-sdk@^2.433.0:
+  version "2.433.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.433.0.tgz#1f8b122e7697defd4e1ca9707c9187157d7bd544"
+  integrity sha512-p1OL35yw89BpL4Pzpu8Ct0/0w2HNUU/pjx5vC9D0t0rb/5T0cRa4ms13XdeSgGm8tVDLDOwuESlF+vE4oUkNig==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"

@@ -21,5 +21,9 @@
     "tslint": "^5.14.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0"
+  },
+  "dependencies": {
+    "@unimodules/core": "^0.2.1",
+    "expo-media-library": "^3.0.0"
   }
 }
