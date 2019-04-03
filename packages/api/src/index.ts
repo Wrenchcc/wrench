@@ -11,6 +11,9 @@ import { options, db } from './models'
 import createLoaders from './loaders'
 import services from './services'
 
+// NOTE: Required for reuse of connection
+import './utils/typeorm-monkeypatch'
+
 const debug = require('debug')('api:server')
 
 const { PORT = 4000 } = process.env
