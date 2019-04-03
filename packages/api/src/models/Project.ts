@@ -44,8 +44,6 @@ export default class Project extends BaseEntity {
 
   public static async getPopularProjects() {
     // TODO: Change to last 7 days
-    // Only when having posts
-    // Sort by amount of followers
     return getRepository(Project)
       .createQueryBuilder('projects')
       .select('count(projects.id)', 'count')
@@ -56,22 +54,24 @@ export default class Project extends BaseEntity {
       .orderBy('count', 'DESC')
       .getRawMany()
 
-    // return getRepository(Project).query(`
-    //   SELECT *
-    //   FROM projects p
-    //   LEFT JOIN
-    //     (SELECT "projectId",
-    //             count("projectId") AS f_count
-    //      FROM following
-    //      GROUP BY "projectId") f ON ("f"."projectId" = "p"."id")
-    //   LEFT JOIN
-    //     (SELECT "posts"."projectId",
-    //             count("posts"."id") AS p_count
-    //      FROM posts
-    //      GROUP BY "posts"."projectId") pp ON ("pp"."projectId" = "p"."id")
-    //   WHERE "f_count" IS NOT NULL
-    //     AND "p_count" IS NOT NULL
-    //   ORDER BY "f_count" DESC`)
+    // return getRepository(Project).sql(`
+    //     SELECT *
+    //     FROM projects p
+    //     LEFT JOIN
+    //       (SELECT "projectId",
+    //               count("projectId") AS f_count
+    //        FROM following
+    //        GROUP BY "projectId") f ON ("f"."projectId" = "p"."id")
+    //     LEFT JOIN
+    //       (SELECT "posts"."projectId",
+    //               count("posts"."id") AS p_count
+    //        FROM posts
+    //        GROUP BY "posts"."projectId") pp ON ("pp"."projectId" = "p"."id")
+    //     WHERE "f_count" IS NOT NULL
+    //       AND "p_count" IS NOT NULL
+    //       AND "createdAt" > NOW()::TIMESTAMP - interval '30 day'
+    //     ORDER BY "f_count" DESC
+    //   `)
   }
 
   public static async projectCount(userId) {

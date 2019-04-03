@@ -57,6 +57,6 @@
     "ELASTICSEARCH_DOMAIN": "search-wrench-6cbdekg4i6o5uyjdmnc5am3dei.eu-central-1.es.amazonaws.com",
     "GOOGLE_FIREBASE_API_KEY": "AIzaSyArEOJzCoryKP88xKVHMQFXMhEgvKl5ljk",
     "PORT": "4000",
-    "DEBUG": "api"
+    "DEBUG": "api:*"
   }
 }
