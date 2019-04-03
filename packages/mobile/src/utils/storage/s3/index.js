@@ -36,34 +36,40 @@ const cropImage = async ({ uri, crop }) => new Promise((resolve, reject) => {
 // }
 
 export const uploadFiles = async files => {
-  const input = files.map(() => ({ type: 'IMAGE' }))
-  // Return pre-signed urls
-  // Resize images and return uris
-  const [preSignedUrls, resizedImages] = await Promise.all([
-    client.mutate({ mutation: PreSignUrlsMutation, variables: { input } }),
-    Promise.all(files.map(cropImage)),
-  ]).catch(err => {
-    logError(err)
-  })
-
-  // Return filenames
-  const result = await Promise.all(
-    resizedImages.map(async (uri, index) => {
-      const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
-      try {
-        const uploaded = await makeS3Request(url, { uri, type, filename })
-        ImageStore.removeImageForTag(url)
-
-        return uploaded
-      } catch (err) {
-        logError(err)
-      }
-
-      return null
+  try {
+    const input = files.map(() => ({ type: 'IMAGE' }))
+    // Return pre-signed urls
+    // Resize images and return uris
+    const [preSignedUrls, resizedImages] = await Promise.all([
+      client.mutate({ mutation: PreSignUrlsMutation, variables: { input } }),
+      Promise.all(files.map(cropImage)),
+    ]).catch(err => {
+      logError(err)
     })
-  ).catch(err => {
-    logError(err)
-  })
 
-  return result
+    // Return filenames
+    const result = await Promise.all(
+      resizedImages.map(async (uri, index) => {
+        const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
+        try {
+          const uploaded = await makeS3Request(url, { uri, type, filename })
+          ImageStore.removeImageForTag(url)
+
+          return uploaded
+        } catch (err) {
+          logError(err)
+        }
+
+        return null
+      })
+    ).catch(err => {
+      logError(err)
+    })
+
+    return result
+  } catch (err) {
+    logError(err)
+  }
+
+  return null
 }
