@@ -1,18 +1,39 @@
-import * as ImageManipulator from 'expo-image-manipulator'
+// import * as ImageManipulator from 'expo-image-manipulator'
+import { ImageEditor, ImageStore } from 'react-native'
 import { client } from 'graphql/createClient'
 import { PreSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
 import { logError } from 'utils/sentry'
+import { pathOr } from 'ramda'
 import makeS3Request from './makeS3Request'
 
-async function cropImage({ uri, crop }) {
-  try {
-    return ImageManipulator.manipulateAsync(uri, [{ crop }])
-  } catch (err) {
-    logError(err, { uri, crop })
-  }
+const cropImage = async ({ uri, crop }) => new Promise((resolve, reject) => {
+  ImageEditor.cropImage(
+    uri,
+    {
+      offset: {
+        x: pathOr(0, ['originX'], crop),
+        y: pathOr(0, ['originY'], crop),
+      },
+      size: {
+        width: pathOr(0, ['width'], crop),
+        height: pathOr(0, ['height'], crop),
+      },
+      resizeMode: 'contain',
+    },
+    uri => resolve(uri),
+    err => reject(err)
+  )
+})
 
-  return null
-}
+// async function cropImage({ uri, crop }) {
+//   try {
+//     return ImageManipulator.manipulateAsync(uri, [{ crop }])
+//   } catch (err) {
+//     logError(err, { uri, crop })
+//   }
+//
+//   return null
+// }
 
 export const uploadFiles = async files => {
   const input = files.map(() => ({ type: 'IMAGE' }))
@@ -31,6 +52,7 @@ export const uploadFiles = async files => {
       const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
       try {
         const uploaded = await makeS3Request(url, { uri, type, filename })
+        ImageStore.removeImageForTag(url)
 
         return uploaded
       } catch (err) {

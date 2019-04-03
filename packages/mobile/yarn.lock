@@ -5362,10 +5362,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.2.0.tgz#0eabf962ecf569c852a64a4e07f69848c78f3af4"
-  integrity sha512-0naDVFHRpQsrjxOYKTececcN7tVbWUkcLuuZRddVM7H3hncZ4IXEn/RcZttmoxSEsGMfLc83gnbjzM/RY6hMMA==
+react-native-camera@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.2.1.tgz#01331f011048545980463b48c83cf63e0eec0ee0"
+  integrity sha512-N4uwZIXirj2Lk5nQlSz/gXiGKxnouLdpSxYM3jqMUmegwPWIaxvjTqggXjEC2V2Go+8/1Z5ytMCLyoO969inHw==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5538,10 +5538,10 @@ react-native-video@^4.4.0:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.6.0:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.6.0.tgz#684b73ab35e106149bb8a0eed0ed0cbb72f64cb0"
-  integrity sha512-CpxNJ5mupIH/a1d2CqZHTR+ywGYc8lFeOoKnp26NlNgEqZDM3geayUaTuG7gm4yGc6CApk48nnwv5fjzAcEx0g==
+react-native-webview@^5.6.1:
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.6.1.tgz#6b4c7d441e4b4546410c475c2e6e63f6747bc6b5"
+  integrity sha512-lqoN/mvDY5Pgo52ObQvRe7kcbhPi0mqmwWSJc0O22CEjdpBWVH06CfVuR/PuDOkkB6tcBP7xV80lh1PUeM2qkg==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
@@ -6964,9 +6964,9 @@ xcode@^2.0.0:
     simple-plist "^1.0.0"
     uuid "^3.3.2"
 
-"xcode@git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b":
+"xcode@https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b":
   version "1.0.1-dev"
-  resolved "git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b"
+  resolved "https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b"
   dependencies:
     simple-plist "^0.2.1"
     uuid "3.0.1"
