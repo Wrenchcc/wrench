@@ -1,5 +1,3 @@
-// NOTE: Required for reuse of connection
-// import './utils/typeorm-monkeypatch'
 import * as express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { getConnectionManager, Connection } from 'typeorm'
