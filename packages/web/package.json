@@ -47,7 +47,7 @@
     "@types/i18next": "^12.1.0",
     "@types/next": "^8.0.3",
     "@types/node": "^11.13.0",
-    "@types/react": "^16.8.10",
+    "@types/react": "^16.8.12",
     "@types/react-dom": "^16.8.3",
     "@zeit/next-typescript": "^1.1.1",
     "cross-env": "^5.2.0",

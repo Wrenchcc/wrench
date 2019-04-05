@@ -158,7 +158,7 @@ class WebView extends PureComponent {
         />
 
         <RNWebView
-          style={{ flex: 1, backgroundColor: COLORS.LIGHT_GREY }}
+          style={{ flex: 1, backgroundColor: COLORS.WHITE }}
           source={{ uri: this.props.url, headers: this.setCustomHeaders() }}
           javaScriptEnabled
           onLoadStart={this.onLoadStart}

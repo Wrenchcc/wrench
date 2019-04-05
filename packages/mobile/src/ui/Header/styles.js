@@ -8,7 +8,7 @@ export const Base = styled.View`
   justify-content: space-between;
   padding: 0 20px 20px;
   height: 50;
-  margin-top: ${(isNotchIPhone && 60) || 40}
+  margin-top: ${(isNotchIPhone && 60) || 20}
   background-color: ${({ transparent }) => (transparent ? 'transparent' : COLORS.WHITE)};
 `
 

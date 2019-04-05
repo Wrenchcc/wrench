@@ -3,6 +3,7 @@ import { isNotchIPhone } from 'utils/platform'
 
 export const Base = styled.View`
   flex: 1;
+  padding-bottom: ${isNotchIPhone ? 60 : 40};
 `
 
 export const Footer = styled.View`
