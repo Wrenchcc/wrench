@@ -9,6 +9,11 @@ NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
   } else {
     offlineLink.close()
   }
+
+  // TODO: Check why isConnected is false on Android emulator
+  if (__DEV__) {
+    offlineLink.open()
+  }
 })
 
 export default offlineLink

@@ -16,10 +16,6 @@ class Facebook extends PureComponent {
 
   handleLoginManager = async () => {
     try {
-      // If switching accounts reset LoginManager
-      // https://github.com/facebook/react-native-fbsdk/issues/279
-      LoginManager.logOut()
-
       const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
 
       if (result.isCancelled) {
@@ -27,8 +23,8 @@ class Facebook extends PureComponent {
       }
 
       const facebookResponse = await AccessToken.getCurrentAccessToken()
-
       await this.props.authenticateFacebook(facebookResponse.accessToken)
+
       this.props.changeLoginState(true)
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
     } catch (err) {

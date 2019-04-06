@@ -18,7 +18,6 @@ const Avatar = ({
   if (onPress) {
     return (
       <View style={{ position: 'relative', height: size, width: size }}>
-        {isOnline && <IsOnline badgeSize={badgeSize} />}
         <Touchable onPress={onPress} style={style} disabled={disabled}>
           <Image
             source={{ uri }}
@@ -27,6 +26,7 @@ const Avatar = ({
             borderRadius={size / 2}
             priority={IMAGE_PRIORITY.HIGH}
           />
+          {isOnline && <IsOnline badgeSize={badgeSize} />}
         </Touchable>
       </View>
     )
@@ -34,7 +34,6 @@ const Avatar = ({
 
   return (
     <View style={{ position: 'relative' }}>
-      {isOnline && <IsOnline badgeSize={badgeSize} />}
       <Image
         source={{ uri }}
         width={size}
@@ -43,6 +42,7 @@ const Avatar = ({
         borderRadius={size / 2}
         priority={IMAGE_PRIORITY.HIGH}
       />
+      {isOnline && <IsOnline badgeSize={badgeSize} />}
     </View>
   )
 }

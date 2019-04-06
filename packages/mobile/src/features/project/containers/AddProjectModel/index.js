@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { InteractionManager, KeyboardAvoidingView } from 'react-native'
+import { InteractionManager } from 'react-native'
 import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { navigateToAddMedia } from 'navigation/actions'
 import { AddContainer } from 'store'
-import { Title, Input } from 'ui'
+import { Title, Input, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
@@ -41,16 +41,7 @@ function AddProjectModel({ t, addProject }) {
             icon={arrowLeft}
             isSaving={state.isSaving}
           />
-          <KeyboardAvoidingView
-            behavior="padding"
-            keyboardVerticalOffset={20}
-            style={{
-              flex: 1,
-              justifyContent: 'flex-end',
-              paddingLeft: 20,
-              paddingRight: 20,
-            }}
-          >
+          <KeyboardAvoidingView>
             {state.isSearching && (
               <SearchModel query={state.query} onPress={model => updateField('model', model)} />
             )}

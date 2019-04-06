@@ -1124,10 +1124,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
   integrity sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg==
 
-"@react-native-community/async-storage@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.2.3.tgz#0751d328d0e86f30f3bbaba14525e21ed6904574"
-  integrity sha512-Yho8VKIAk6Z2jXzoEW2fPsBB0S2/4aQSfekOHbPhEsIKH7Ym1e6zrLGlKTsfqjl4ORLFXdyx9QxVK4qELog06Q==
+"@react-native-community/async-storage@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.2.4.tgz#34fb252ca296de95d9f8ea0ec106a9c349efdd5c"
+  integrity sha512-DPUdqlG7KDNhKF01272KMBNgPTAM08LQvsqRXYMHC2KhLMBgSea8n4gK7xWW6enYglkc6CInw9vriP1oZ7Kgpw==
 
 "@react-native-community/cli@^1.2.1":
   version "1.5.2"

@@ -82,7 +82,7 @@
         "permissionDescription": "Allow Wrench access to your camera to take photos and record video within the app.",
         "permissionButton": "Allow Camera Access"
       },
-      "photo_library": {
+      "photo": {
         "alertTitle": "Whoops!",
         "alertDescription": "There was a problem getting your permission. Please enable it from settings.",
         "alertCancel": "Cancel",
@@ -349,7 +349,7 @@
         "permissionDescription": "Tillåt Wrench att få åtkomst till din kamera för att kunna ta bilder och spela in video.",
         "permissionButton": "Tillåt kameraåtkomst"
       },
-      "photo_library": {
+      "photo": {
         "alertTitle": "Whoops!",
         "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
         "alertCancel": "Avbryt",
@@ -505,7 +505,7 @@
       "description": "Sparar..."
     },
     "ProjectCard": {
-      "follow": "Följ",
+      "follow": "Följ projekt",
       "unfollow": "Följer"
     },
     "Search": {

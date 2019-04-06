@@ -98,7 +98,7 @@ export default class List extends Component {
     if (this.state.hasNextPage && this.state.data.length) {
       return (
         <View style={{ paddingTop: 30, paddingBottom: 30 }}>
-          <ActivityIndicator />
+          <ActivityIndicator color="white" />
         </View>
       )
     }
@@ -126,7 +126,7 @@ export default class List extends Component {
     if (isLoading) {
       return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <ActivityIndicator />
+          <ActivityIndicator color="white" />
         </View>
       )
     }

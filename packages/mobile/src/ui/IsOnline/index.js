@@ -20,7 +20,7 @@ const getSize = size => ({
 })
 
 const IsOnline = ({ badgeSize = 'medium' }) => (
-  <>
+  <View>
     <View
       pointerEvents="none"
       style={{
@@ -39,7 +39,7 @@ const IsOnline = ({ badgeSize = 'medium' }) => (
         ...getSize(badgeSize).background,
       }}
     />
-  </>
+  </View>
 )
 
 IsOnline.propTypes = {
