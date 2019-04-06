@@ -24,8 +24,6 @@ export default class List extends Component {
 
   componentDidMount() {
     this.loadInitial()
-
-    // MediaLibrary.addListener(this.handleMediaLibraryChange)
   }
 
   componentDidUpdate(prevProps) {
@@ -43,14 +41,6 @@ export default class List extends Component {
       }))
     }
   }
-
-  // componentWillUnmount() {
-  //   MediaLibrary.removeAllListeners(this.handleMediaLibraryChange)
-  // }
-
-  // handleMediaLibraryChange = insertedAssets => {
-  //   console.log(insertedAssets)
-  // }
 
   showSpinner = () => {
     this.setState({ isLoading: true })

@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { View, KeyboardAvoidingView, InteractionManager } from 'react-native'
+import { View, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
+import { pathOr } from 'ramda'
+import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
 import { addComment } from 'graphql/mutations/comment/addComment'
 import {
@@ -49,6 +51,21 @@ class PostContainer extends PureComponent {
     isOpen: false,
     query: '',
     text: '',
+  }
+
+  componentDidUpdate(prevProps) {
+    const { comments, isFetching, isRefetching } = this.props
+    if (
+      pathOr(false, ['isRefetching'], prevProps) === isRefetching
+      && pathOr(false, ['isFetching'], prevProps) === isFetching
+      && !isFetching
+      && comments
+      && comments.length >= 1
+    ) {
+      setTimeout(() => {
+        scrollView.scrollToIndex({ animated: true, index: 0 })
+      }, 100)
+    }
   }
 
   onReply = (user, commentId) => {
@@ -99,6 +116,7 @@ class PostContainer extends PureComponent {
   renderItem = ({ item }) => (
     <CommentItem
       data={item}
+      highlightId={pathOr(false, ['comment', 'id'], this.props)}
       onReply={this.onReply}
       fetchMoreReplies={this.props.fetchMoreReplies}
     />
@@ -112,19 +130,14 @@ class PostContainer extends PureComponent {
     }
 
     return (
-      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 15 }}>
+      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 10 }}>
         <Post post={post} withoutComments />
       </View>
     )
   }
 
   render() {
-    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
-    if (comments && comments.length >= 1) {
-      InteractionManager.runAfterInteractions(() => {
-        scrollView.scrollToIndex({ animated: true, index: 0 })
-      })
-    }
+    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage, post } = this.props
 
     return (
       <View style={{ flex: 1, marginBottom: SAFE_AREA }}>
@@ -158,7 +171,7 @@ class PostContainer extends PureComponent {
             refetch={refetch}
             fetchMore={fetchMore}
             isRefetching={isRefetching}
-            isFetching={isFetching}
+            isFetching={!post || isFetching}
             hasNextPage={hasNextPage}
             renderItem={this.renderItem}
             defaultPaddingTop
@@ -185,5 +198,6 @@ class PostContainer extends PureComponent {
 
 export default compose(
   getComments,
+  getComment,
   addComment
 )(PostContainer)

@@ -11,7 +11,7 @@ import { Base, Content, Row, Reply } from './styles'
 const Item = memo(function Item({
   createdAt,
   first = false,
-  highlight = false,
+  highlightId,
   id,
   isReply,
   onReply,
@@ -21,7 +21,7 @@ const Item = memo(function Item({
 }) {
   const animatedValue = new Animated.Value(0)
 
-  if (highlight) {
+  if (highlightId === id) {
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 1000,
@@ -74,7 +74,7 @@ const Item = memo(function Item({
 Item.propTypes = {
   createdAt: PropTypes.string.isRequired,
   first: PropTypes.bool,
-  highlight: PropTypes.bool,
+  highlightId: PropTypes.string,
   id: PropTypes.string.isRequired,
   isReply: PropTypes.bool,
   onReply: PropTypes.func,

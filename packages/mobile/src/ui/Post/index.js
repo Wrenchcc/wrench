@@ -202,12 +202,10 @@ class Post extends PureComponent {
           {post.files && <Carousel files={post.files} onPress={this.goToProject} />}
         </Content>
 
-        {!withoutComments && (
-          <>
-            {!post.project.commentsDisabled && <Comments data={post} />}
-            <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
-          </>
-        )}
+        {!withoutComments && <>{!post.project.commentsDisabled && <Comments data={post} />}</>}
+
+        <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
+
         {!this.state.isEditing && this.postActions()}
       </LazyLoad>
     )
