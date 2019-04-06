@@ -58,6 +58,7 @@ const Item = memo(function Item({
               {text && <Text fontSize={15}>{text}</Text>}
             </Text>
           </Row>
+
           <Row>
             <TimeAgo date={createdAt} />
             {!first && (

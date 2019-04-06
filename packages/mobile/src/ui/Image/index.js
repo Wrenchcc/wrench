@@ -15,6 +15,11 @@ const Image = memo(function Image({
   source,
   ...props
 }) {
+  // NOTE: Guard for crash on Android
+  if (!source.uri) {
+    return null
+  }
+
   const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
 
   return (
