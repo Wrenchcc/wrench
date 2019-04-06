@@ -39,7 +39,7 @@
     "react-facebook-login": "^4.1.1",
     "react-i18next": "^10.6.1",
     "react-infinite-scroller": "^1.2.4",
-    "react-phone-input-2": "^2.8.0",
+    "react-phone-input-2": "^2.9.2",
     "styled-components": "^4.2.0",
     "styled-reset": "^2.0.5"
   },
@@ -57,7 +57,7 @@
     "next-optimized-images": "^2.4.0",
     "prettier": "^1.16.4",
     "ts-node-dev": "^1.0.0-pre.32",
-    "typescript": "^3.4.1",
+    "typescript": "^3.4.2",
     "webp-loader": "^0.4.0"
   }
 }
