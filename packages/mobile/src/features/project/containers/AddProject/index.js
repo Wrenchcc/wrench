@@ -6,6 +6,7 @@ import { AddContainer } from 'store'
 import { navigateToAddProjectType } from 'navigation/actions'
 import { Title, Input } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
+import { isIphone } from 'utils/platform'
 
 function AddProject({ t }) {
   return (
@@ -19,6 +20,7 @@ function AddProject({ t }) {
           <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={20}
+            enabled={isIphone}
             style={{
               flex: 1,
               justifyContent: 'flex-end',

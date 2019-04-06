@@ -13,7 +13,7 @@ export default async ({ path, title = '', description = '', image = '' }) => {
       },
       domainUriPrefix: 'share.wrench.cc',
       iosInfo: {
-        iosAppStoreId: 'TODO',
+        iosAppStoreId: '1450213123',
         iosBundleId: 'cc.wrench.app',
         iosCustomScheme: 'wrench',
       },

@@ -11,6 +11,7 @@ import { Title, Input } from 'ui'
 import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
+import { isIphone } from 'utils/platform'
 
 function getActionRight(state, addProject, updateField, resetState) {
   if (state.model) {
@@ -44,6 +45,7 @@ function AddProjectModel({ t, addProject }) {
           <KeyboardAvoidingView
             behavior="padding"
             keyboardVerticalOffset={20}
+            enabled={isIphone}
             style={{
               flex: 1,
               justifyContent: 'flex-end',
