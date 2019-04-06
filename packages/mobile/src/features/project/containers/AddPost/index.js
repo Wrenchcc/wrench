@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { ScrollView, KeyboardAvoidingView, InteractionManager } from 'react-native'
+import { ScrollView, InteractionManager } from 'react-native'
 import { pathOr } from 'ramda'
 import { Subscribe } from 'unstated'
 import { AddContainer, ToastNotificationContainer } from 'store'
@@ -14,7 +14,7 @@ import { logError } from 'utils/sentry'
 import { uploadFiles } from 'utils/storage/s3'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
-import { Input } from 'ui'
+import { Input, KeyboardAvoidingView } from 'ui'
 
 function getProjectByIdOrFirst(id, projects) {
   return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
@@ -82,11 +82,7 @@ class AddPost extends PureComponent {
               addPostAction={() => this.addPost(PostContainer, showNotification)}
               toggleSelectProject={PostContainer.toggleSelectProject}
             />
-            <KeyboardAvoidingView
-              behavior="padding"
-              keyboardVerticalOffset={20}
-              style={{ flex: 1 }}
-            >
+            <KeyboardAvoidingView paddingHorizontal={0}>
               <ScrollView style={{ paddingLeft: 20, paddingRight: 20 }}>
                 <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
 

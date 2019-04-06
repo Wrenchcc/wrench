@@ -1,14 +1,14 @@
 import React from 'react'
 import { View } from 'react-native'
 
-function KeyboardAvoidingView({ children }) {
+function KeyboardAvoidingView({ children, paddingHorizontal = 20 }) {
   return (
     <View
       style={{
         flex: 1,
         justifyContent: 'flex-end',
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: paddingHorizontal,
+        paddingRight: paddingHorizontal,
         paddingBottom: 20,
       }}
     >
