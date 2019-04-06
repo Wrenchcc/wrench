@@ -1,7 +1,7 @@
 import React from 'react'
 import { KeyboardAvoidingView as RNKeyboardAvoidingView } from 'react-native'
 
-function KeyboardAvoidingView({ children }) {
+function KeyboardAvoidingView({ children, paddingHorizontal = 20 }) {
   return (
     <RNKeyboardAvoidingView
       behavior="padding"
@@ -9,8 +9,8 @@ function KeyboardAvoidingView({ children }) {
       style={{
         flex: 1,
         justifyContent: 'flex-end',
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: paddingHorizontal,
+        paddingRight: paddingHorizontal,
       }}
     >
       {children}
