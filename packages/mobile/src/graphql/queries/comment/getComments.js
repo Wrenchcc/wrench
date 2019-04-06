@@ -5,16 +5,12 @@ import { getPostId, getPostIdFromDeeplink } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import commentInfoFragment from 'graphql/fragments/comment/commentInfo'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
+import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 export const CommentsQuery = gql`
   query getComments($postId: ID!, $after: String) {
     post(id: $postId) {
-      id
-      caption
-      createdAt
-      user {
-        ...userInfo
-      }
+      ...postInfo
     }
     comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
       pageInfo {
@@ -30,6 +26,7 @@ export const CommentsQuery = gql`
   }
   ${commentInfoFragment}
   ${userInfoFragment}
+  ${postInfoFragment}
 `
 
 const LoadMoreComments = gql`

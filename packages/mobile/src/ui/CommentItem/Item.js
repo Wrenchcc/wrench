@@ -11,8 +11,9 @@ import { Base, Content, Row, Reply } from './styles'
 const Item = memo(function Item({
   createdAt,
   first = false,
-  highlight = false,
+  highlightId,
   id,
+  commentId,
   isReply,
   onReply,
   t,
@@ -21,7 +22,7 @@ const Item = memo(function Item({
 }) {
   const animatedValue = new Animated.Value(0)
 
-  if (highlight) {
+  if (highlightId === id) {
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 1000,
@@ -60,7 +61,12 @@ const Item = memo(function Item({
           <Row>
             <TimeAgo date={createdAt} />
             {!first && (
-              <Reply medium fontSize={12} onPress={() => onReply(user, id)} disabled={id < 0}>
+              <Reply
+                medium
+                fontSize={12}
+                onPress={() => onReply(user, commentId || id)}
+                disabled={id < 0}
+              >
                 {t('CommentItem:reply')}
               </Reply>
             )}
@@ -72,9 +78,10 @@ const Item = memo(function Item({
 })
 
 Item.propTypes = {
+  commentId: PropTypes.string,
   createdAt: PropTypes.string.isRequired,
   first: PropTypes.bool,
-  highlight: PropTypes.bool,
+  highlightId: PropTypes.string,
   id: PropTypes.string.isRequired,
   isReply: PropTypes.bool,
   onReply: PropTypes.func,

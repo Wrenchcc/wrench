@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Dimensions, View, Animated, Image } from 'react-native'
 import withTranslation from 'i18n/withTranslation'
 import { Swipeable, RectButton } from 'react-native-gesture-handler'
-import { navigateToUser, navigateToProject, navigateToComments } from 'navigation/actions'
+import { navigateToUser, navigateToProject, navigateToPost } from 'navigation/actions'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
@@ -19,9 +19,8 @@ const onPress = data => {
     case NOTIFICATION_TYPES.NEW_MENTION:
     case NOTIFICATION_TYPES.NEW_COMMENT:
     case NOTIFICATION_TYPES.NEW_REPLY:
-      return navigateToComments({
+      return navigateToPost({
         id: data.comment.postId,
-        user: data.user,
         commentId: data.comment.id,
       })
     default:

@@ -11,13 +11,21 @@ const CommentItem = memo(function CommentItem({
   onReply,
   fetchMoreReplies,
   first,
-  highlight,
+  highlightId,
 }) {
   return data.node.replies ? (
     <>
-      <Item {...data.node} onReply={onReply} t={t} highlight={highlight} />
+      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
       {data.node.replies.edges.map(({ node }) => (
-        <Item key={node.id} isReply {...node} id={node.commentId} t={t} onReply={onReply} />
+        <Item
+          key={node.id}
+          isReply
+          {...node}
+          commentId={data.node.id}
+          t={t}
+          onReply={onReply}
+          highlightId={highlightId}
+        />
       ))}
 
       {data.node.replies.pageInfo.hasNextPage && (
@@ -42,12 +50,12 @@ const CommentItem = memo(function CommentItem({
       )}
     </>
   ) : (
-    <Item {...data.node} t={t} first={first} onReply={onReply} highlight={highlight} />
+    <Item {...data.node} t={t} first={first} onReply={onReply} highlightId={highlightId} />
   )
 })
 
 CommentItem.propTypes = {
-  highlight: PropTypes.bool,
+  highlightId: PropTypes.string,
   data: PropTypes.object.isRequired,
   fetchMoreReplies: PropTypes.func,
   first: PropTypes.bool,

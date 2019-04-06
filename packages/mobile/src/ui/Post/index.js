@@ -29,8 +29,9 @@ class Post extends PureComponent {
   static propTypes = {
     deletePost: PropTypes.func.isRequired,
     lazyload: PropTypes.bool,
-    onPost: PropTypes.bool,
     post: PropTypes.object.isRequired,
+    withoutComments: PropTypes.bool,
+    withoutTitle: PropTypes.bool,
   }
 
   componentDidMount() {
@@ -56,7 +57,7 @@ class Post extends PureComponent {
 
   goToProject = () => {
     const { project, id } = this.props.post
-    if (!this.props.onPost) {
+    if (!this.props.withoutTitle) {
       navigateToProject({ project, id })
     }
   }
@@ -155,7 +156,7 @@ class Post extends PureComponent {
   }
 
   render() {
-    const { post, onPost = false, lazyload } = this.props
+    const { post, withoutTitle, lazyload, withoutComments } = this.props
 
     return (
       <LazyLoad enabled={lazyload}>
@@ -169,7 +170,7 @@ class Post extends PureComponent {
         </Top>
 
         <Content>
-          {!onPost && post.project.title && (
+          {!withoutTitle && post.project.title && (
             <Headline>
               <Title fontSize={19} numberOfLines={1} onPress={this.goToProject}>
                 {post.project.title}
@@ -180,15 +181,15 @@ class Post extends PureComponent {
           {this.state.isEditing ? (
             <EditPost
               post={post}
-              color={onPost ? 'dark' : 'grey'}
+              color={withoutTitle ? 'dark' : 'grey'}
               onSubmit={this.toggleEdit}
               hasChanged={hasChanged => this.setState({ hasChanged })}
             />
           ) : (
             <Text
               onPress={this.goToProject}
-              disabled={onPost}
-              color={onPost ? 'dark' : 'grey'}
+              disabled={withoutTitle}
+              color={withoutTitle ? 'dark' : 'grey'}
               fontSize={15}
               lineHeight={22}
             >
@@ -201,7 +202,7 @@ class Post extends PureComponent {
           {post.files && <Carousel files={post.files} onPress={this.goToProject} />}
         </Content>
 
-        {!post.project.commentsDisabled && <Comments data={post} />}
+        {!withoutComments && <>{!post.project.commentsDisabled && <Comments data={post} />}</>}
 
         <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
 

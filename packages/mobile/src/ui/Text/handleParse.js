@@ -29,7 +29,14 @@ const styles = {
 }
 
 // Patterns
+// NOTE: Order matters
 export default [
+  {
+    pattern: /\/?\B@[a-z0-9.-]+/gi,
+    style: styles.username,
+    onPress: handleNamePress,
+    renderText: username => username,
+  },
   {
     type: 'url',
     style: styles.link,
@@ -38,12 +45,6 @@ export default [
       const pattern = /^(?:https?:\/\/)?(?:www\.)?/i
       return matchingString.replace(pattern, '')
     },
-  },
-  {
-    pattern: /\/?\B@[a-z0-9.-]+/gi,
-    style: styles.username,
-    onPress: handleNamePress,
-    renderText: username => username,
   },
   {
     type: 'emoji',

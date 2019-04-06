@@ -17,7 +17,7 @@
     "wtf": "tasks/wtf"
   },
   "dependencies": {
-    "@react-native-community/async-storage": "^1.2.2",
+    "@react-native-community/async-storage": "^1.2.3",
     "@react-native-community/netinfo": "^2.0.0",
     "@unimodules/core": "^1.0.0",
     "apollo-cache-inmemory": "^1.5.1",
@@ -37,7 +37,7 @@
     "ms": "^2.1.1",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
-    "react-apollo": "^2.5.3",
+    "react-apollo": "^2.5.4",
     "react-dom": "^16.8.6",
     "react-i18next": "^10.6.1",
     "react-native": "v0.59.2",

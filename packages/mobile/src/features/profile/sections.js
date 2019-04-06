@@ -3,7 +3,6 @@ import { mergeAll } from 'ramda'
 import { navigate, navigateToWebView } from 'navigation/actions'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
-import { logError } from 'utils/sentry'
 
 const WEBSITE_URL = 'https://wrench.cc'
 
@@ -49,7 +48,7 @@ const sections = props => ({
           onPress: () => NativeShare.open({
             title: 'shareContent',
             url: WEBSITE_URL,
-          }).catch(err => logError(err)),
+          }).catch(() => {}),
         },
       ],
     },

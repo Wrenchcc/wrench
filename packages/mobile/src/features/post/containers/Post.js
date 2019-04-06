@@ -2,9 +2,12 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
+import { pathOr } from 'ramda'
+import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
 import { addComment } from 'graphql/mutations/comment/addComment'
 import {
+  Post,
   InfiniteList,
   CommentItem,
   CommentField,
@@ -22,11 +25,11 @@ const KEYBOARD_OFFSET = isIphone ? 180 + SAFE_AREA : 0
 const MENTION_OFFSET_BOTTOM = isIphone ? 240 + SAFE_AREA : 0
 const TRIGGER = '@'
 
-class Comments extends PureComponent {
+class PostContainer extends PureComponent {
   static navigationOptions = ({ screenProps }) => ({
     headerTitle: (
       <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
-        {screenProps.t('Comments:title')}
+        {screenProps.t('PostContainer:title')}
       </HeaderTitle>
     ),
   })
@@ -48,6 +51,21 @@ class Comments extends PureComponent {
     isOpen: false,
     query: '',
     text: '',
+  }
+
+  componentDidUpdate(prevProps) {
+    const { comments, isFetching, isRefetching } = this.props
+    if (
+      pathOr(false, ['isRefetching'], prevProps) === isRefetching
+      && pathOr(false, ['isFetching'], prevProps) === isFetching
+      && !isFetching
+      && comments
+      && comments.length >= 1
+    ) {
+      setTimeout(() => {
+        scrollView.scrollToIndex({ animated: true, index: 0 })
+      }, 100)
+    }
   }
 
   onReply = (user, commentId) => {
@@ -98,6 +116,7 @@ class Comments extends PureComponent {
   renderItem = ({ item }) => (
     <CommentItem
       data={item}
+      highlightId={pathOr('', ['comment', 'id'], this.props)}
       onReply={this.onReply}
       fetchMoreReplies={this.props.fetchMoreReplies}
     />
@@ -111,21 +130,14 @@ class Comments extends PureComponent {
     }
 
     return (
-      <CommentItem
-        first
-        fetchMoreReplies={this.props.fetchMoreReplies}
-        data={{
-          node: {
-            ...post,
-            text: post.caption,
-          },
-        }}
-      />
+      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 10 }}>
+        <Post post={post} withoutComments />
+      </View>
     )
   }
 
   render() {
-    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage, post } = this.props
 
     return (
       <View style={{ flex: 1, marginBottom: SAFE_AREA }}>
@@ -159,7 +171,7 @@ class Comments extends PureComponent {
             refetch={refetch}
             fetchMore={fetchMore}
             isRefetching={isRefetching}
-            isFetching={isFetching}
+            isFetching={!post || isFetching}
             hasNextPage={hasNextPage}
             renderItem={this.renderItem}
             defaultPaddingTop
@@ -186,5 +198,6 @@ class Comments extends PureComponent {
 
 export default compose(
   getComments,
+  getComment,
   addComment
-)(Comments)
+)(PostContainer)
