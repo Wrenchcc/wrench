@@ -52,9 +52,9 @@ const Item = memo(function Item({
           onPress={() => navigateToUser({ user })}
         />
         <Content>
-          <Row style={{ flexDirection: 'column' }}>
-            <Text fontSize={15} bold>
-              {`${user.fullName} `}
+          <Row>
+            <Text>
+              <Text fontSize={15} bold>{`${user.fullName} `}</Text>
               {text && <Text fontSize={15}>{text}</Text>}
             </Text>
           </Row>

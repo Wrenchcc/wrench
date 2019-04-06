@@ -505,7 +505,7 @@
       "description": "Sparar..."
     },
     "ProjectCard": {
-      "follow": "Följ",
+      "follow": "Följ projekt",
       "unfollow": "Följer"
     },
     "Search": {
