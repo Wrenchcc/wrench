@@ -116,7 +116,7 @@ class PostContainer extends PureComponent {
   renderItem = ({ item }) => (
     <CommentItem
       data={item}
-      highlightId={pathOr(false, ['comment', 'id'], this.props)}
+      highlightId={pathOr('', ['comment', 'id'], this.props)}
       onReply={this.onReply}
       fetchMoreReplies={this.props.fetchMoreReplies}
     />

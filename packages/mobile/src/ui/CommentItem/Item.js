@@ -13,6 +13,7 @@ const Item = memo(function Item({
   first = false,
   highlightId,
   id,
+  commentId,
   isReply,
   onReply,
   t,
@@ -60,7 +61,12 @@ const Item = memo(function Item({
           <Row>
             <TimeAgo date={createdAt} />
             {!first && (
-              <Reply medium fontSize={12} onPress={() => onReply(user, id)} disabled={id < 0}>
+              <Reply
+                medium
+                fontSize={12}
+                onPress={() => onReply(user, commentId || id)}
+                disabled={id < 0}
+              >
                 {t('CommentItem:reply')}
               </Reply>
             )}
@@ -72,6 +78,7 @@ const Item = memo(function Item({
 })
 
 Item.propTypes = {
+  commentId: PropTypes.string,
   createdAt: PropTypes.string.isRequired,
   first: PropTypes.bool,
   highlightId: PropTypes.string,

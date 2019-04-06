@@ -17,7 +17,15 @@ const CommentItem = memo(function CommentItem({
     <>
       <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
       {data.node.replies.edges.map(({ node }) => (
-        <Item key={node.id} isReply {...node} t={t} onReply={onReply} highlightId={highlightId} />
+        <Item
+          key={node.id}
+          isReply
+          {...node}
+          commentId={data.node.id}
+          t={t}
+          onReply={onReply}
+          highlightId={highlightId}
+        />
       ))}
 
       {data.node.replies.pageInfo.hasNextPage && (
