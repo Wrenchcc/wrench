@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { filter } from 'ramda'
+// import { filter } from 'ramda'
 
 const DeleteNotificationMutation = gql`
   mutation deleteNotification($id: ID!) {
@@ -15,19 +15,19 @@ const deleteNotificationOptions = {
       variables: {
         id,
       },
-      updateQueries: {
-        getNotifications: prev => {
-          const edges = filter(edge => edge.node.id !== id, prev.notifications.edges)
-
-          return {
-            ...prev,
-            notifications: {
-              ...prev.notifications,
-              edges,
-            },
-          }
-        },
-      },
+      // updateQueries: {
+      //   getNotifications: prev => {
+      //     const edges = filter(edge => edge.node.id !== id, prev.notifications.edges)
+      //
+      //     return {
+      //       ...prev,
+      //       notifications: {
+      //         ...prev.notifications,
+      //         edges,
+      //       },
+      //     }
+      //   },
+      // },
     }),
   }),
 }

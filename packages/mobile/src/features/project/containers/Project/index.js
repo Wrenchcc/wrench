@@ -90,7 +90,7 @@ class Project extends PureComponent {
       return null
     }
 
-    return <Post post={item.node} avatar={false} onPost lazyload={index > 2} />
+    return <Post post={item.node} avatar={false} withoutTitle lazyload={index > 2} />
   }
 
   renderHeader = () => {
@@ -102,7 +102,7 @@ class Project extends PureComponent {
     if (post) {
       content = (
         <>
-          <Post post={post} onPost />
+          <Post post={post} withoutTitle />
           {hasPosts && posts.length > 1 && (
             <View style={{ paddingTop: 40, paddingBottom: 30 }}>
               <Title medium>{t('Project:recent')}</Title>

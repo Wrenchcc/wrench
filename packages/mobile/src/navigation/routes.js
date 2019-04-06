@@ -1,22 +1,25 @@
 import { mergeAll, filter, propEq } from 'ramda'
-import SignInRoutes from 'features/signIn/routes'
-import FeedRoutes from 'features/feed/routes'
 import ExploreRoutes from 'features/explore/routes'
+import FeedRoutes from 'features/feed/routes'
 import NotificationsRoutes from 'features/notifications/routes'
+import PostRoutes from 'features/post/routes'
 import ProfileRoutes from 'features/profile/routes'
 import ProjectRoutes from 'features/project/routes'
 import SearchRoutes from 'features/search/routes'
+import SignInRoutes from 'features/signIn/routes'
 import WebViewRoutes from 'features/webview/routes'
 import { TAB, MODAL, MODAL_STACK, PUBLIC } from './constants'
 
+// NOTE: Order matters
 const routes = mergeAll([
-  SignInRoutes,
-  ProjectRoutes,
   FeedRoutes,
   ExploreRoutes,
   NotificationsRoutes,
+  PostRoutes,
   ProfileRoutes,
+  ProjectRoutes,
   SearchRoutes,
+  SignInRoutes,
   WebViewRoutes,
 ])
 

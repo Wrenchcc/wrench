@@ -1124,10 +1124,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
   integrity sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg==
 
-"@react-native-community/async-storage@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.2.2.tgz#1f9851a6dd2b0af08ed3ab69b7f7353c4e85ea1d"
-  integrity sha512-sjL32DFXSD26RKVZfdBgRBKQCfqO9Vh8yBukjW0ajnMsCmqRxpe0tic6D+g+EW+MI8sohtr/02bhHfVClG8Eqw==
+"@react-native-community/async-storage@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.2.3.tgz#0751d328d0e86f30f3bbaba14525e21ed6904574"
+  integrity sha512-Yho8VKIAk6Z2jXzoEW2fPsBB0S2/4aQSfekOHbPhEsIKH7Ym1e6zrLGlKTsfqjl4ORLFXdyx9QxVK4qELog06Q==
 
 "@react-native-community/cli@^1.2.1":
   version "1.5.2"
@@ -5339,10 +5339,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@^2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.3.tgz#9844a522894a6e0392f6a982c6052348d9a4ae12"
-  integrity sha512-sBh7M3h4xdbck8NFnn1nlUG0mD0hCTeIcvov4A8hagxjOyTVSakoum+DP6rYNaHuAZFDS3oNurNNSbGZmgoU6g==
+react-apollo@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.4.tgz#4b5ad2e9e38001521d072445acdb5b3b5489b22d"
+  integrity sha512-olH9zYijOXVfj14hD7bQlZ0POBJchxg2e+mfnxEiEdqZra4+58SfIY0KPhmM9jqbeeusc6J/P4zzWIHt5DdNDg==
   dependencies:
     apollo-utilities "^1.2.1"
     hoist-non-react-statics "^3.3.0"

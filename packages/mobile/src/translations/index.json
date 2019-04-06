@@ -11,6 +11,9 @@
     "Notifications": {
       "title": "Notifications"
     },
+    "PostContainer": {
+      "title": "Post"
+    },
     "FollowingProjects": {
       "title": "This user don’t have any own projects yet.",
       "description": "But here’s some of the projects {{name}} follows."
@@ -274,6 +277,9 @@
     },
     "Notifications": {
       "title": "Notifikationer"
+    },
+    "PostContainer": {
+      "title": "Inlägg"
     },
     "FollowingProjects": {
       "title": "Den här användaren har inga egna projekt ännu.",
