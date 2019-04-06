@@ -1,12 +1,10 @@
 import React from 'react'
-import { KeyboardAvoidingView } from 'react-native'
 import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import { navigateToAddProjectType } from 'navigation/actions'
-import { Title, Input } from 'ui'
+import { Title, Input, KeyboardAvoidingView } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
-import { isIphone } from 'utils/platform'
 
 function AddProject({ t }) {
   return (
@@ -17,17 +15,7 @@ function AddProject({ t }) {
             actionRight={state.title && (() => navigateToAddProjectType())}
             resetState={resetState}
           />
-          <KeyboardAvoidingView
-            behavior="padding"
-            keyboardVerticalOffset={20}
-            enabled={isIphone}
-            style={{
-              flex: 1,
-              justifyContent: 'flex-end',
-              paddingLeft: 20,
-              paddingRight: 20,
-            }}
-          >
+          <KeyboardAvoidingView>
             <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
               {t('AddProject:title')}
             </Title>
@@ -41,7 +29,7 @@ function AddProject({ t }) {
               color="dark"
               returnKeyType="next"
               enablesReturnKeyAutomatically
-              onSubmitEditing={() => navigateToAddProjectType()}
+              onSubmitEditing={state.title && (() => navigateToAddProjectType())}
             />
           </KeyboardAvoidingView>
         </>

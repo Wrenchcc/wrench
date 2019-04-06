@@ -1,10 +1,12 @@
 import styled from 'styled-components'
-import { isNotchIPhone } from 'utils/platform'
+import { isIphone, isNotchIPhone } from 'utils/platform'
+
+const TOP = isIphone ? (isNotchIPhone ? 65 : 45) : 25
 
 export const Top = styled.View`
   position: absolute;
   z-index: 20;
-  top: ${isNotchIPhone ? 65 : 45};
+  top: ${TOP};
   align-self: center;
   justify-content: center;
   max-width: 170;

@@ -6,7 +6,7 @@ import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
 import { isIphone, isNotchIPhone } from 'utils/platform'
 
-const DEFAULT_OFFSET_BOTTOM = isIphone ? (isNotchIPhone ? 365 : 290) : 127
+const DEFAULT_OFFSET_BOTTOM = isIphone ? (isNotchIPhone ? 365 : 290) : 80
 
 const styles = {
   container: {

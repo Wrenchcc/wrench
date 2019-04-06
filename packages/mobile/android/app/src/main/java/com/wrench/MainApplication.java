@@ -3,6 +3,7 @@ package com.wrench;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.yonahforst.rnpermissions.RNPermissionsPackage;
 import io.sentry.RNSentryPackage;
 import org.unimodules.adapters.react.ReactAdapterPackage;
 import org.unimodules.adapters.react.ModuleRegistryAdapter;
@@ -74,6 +75,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNPermissionsPackage(),
           new ModuleRegistryAdapter(mModuleRegistryProvider),
           new RNSentryPackage(),
           new NetInfoPackage(),

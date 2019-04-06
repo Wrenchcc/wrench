@@ -8,7 +8,6 @@ import { Base, Input, Icon, Placeholder, Text } from './styles'
 const Search = memo(function Search({ t, style, onPress, placeholder = true, ...props }) {
   return (
     <Base style={style}>
-      <Icon source={search} />
       {placeholder ? (
         <Placeholder onPress={onPress} activeOpacity={1}>
           <Text color="light_grey">{t('Search:placeholder')}</Text>
@@ -25,6 +24,7 @@ const Search = memo(function Search({ t, style, onPress, placeholder = true, ...
           {...props}
         />
       )}
+      <Icon source={search} />
     </Base>
   )
 })

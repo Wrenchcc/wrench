@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Platform } from 'react-native'
-import { check, IOS_PERMISSIONS, RESULTS } from 'react-native-permissions'
+import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import BottomSheet from 'reanimated-bottom-sheet'
 import withTranslation from 'i18n/withTranslation'
 import { findIndex, propEq } from 'ramda'
@@ -9,6 +9,8 @@ import AskForPermission from 'features/project/components/AskForPermission'
 import Albums from './Albums'
 import OpenAlbum from './OpenAlbum'
 import List from './List'
+
+const PERMISSION = Platform.OS === 'ios' ? IOS_PERMISSIONS.PHOTO_LIBRARY : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
 
 const MAX_SELECTED_FILES = 10
 
@@ -30,13 +32,11 @@ class MediaPicker extends PureComponent {
       checkingPermission: true,
     }
 
-    if (Platform.OS === 'ios') {
-      this.checkPhotoPermission()
-    }
+    this.checkPhotoPermission()
   }
 
   checkPhotoPermission = () => {
-    check(IOS_PERMISSIONS.PHOTO_LIBRARY).then(response => {
+    check(PERMISSION).then(response => {
       this.setState({
         photoPermission: response,
         checkingPermission: false,
@@ -89,8 +89,9 @@ class MediaPicker extends PureComponent {
     if (photoPermission !== RESULTS.GRANTED) {
       return (
         <AskForPermission
-          permission={IOS_PERMISSIONS.PHOTO_LIBRARY}
+          permission={PERMISSION}
           onSuccess={this.permissionAuthorized}
+          type="photo"
         />
       )
     }

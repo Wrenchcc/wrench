@@ -6,21 +6,19 @@ import withTranslation from 'i18n/withTranslation'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
-const AskForPermission = ({ t, permission, onSuccess }) => {
-  const key = permission.toLowerCase()
-
+const AskForPermission = ({ t, type, permission, onSuccess }) => {
   const onPress = () => request(permission).then(res => {
     if (res !== RESULTS.GRANTED) {
-      const buttons = [{ text: t(`AskForPermission:${key}:alertCancel`), style: 'cancel' }]
+      const buttons = [{ text: t(`AskForPermission:${type}:alertCancel`), style: 'cancel' }]
 
       buttons.push({
-        text: t(`AskForPermission:${key}:alertOpen`),
+        text: t(`AskForPermission:${type}:alertOpen`),
         onPress: () => openSettings(),
       })
 
       Alert.alert(
-        t(`AskForPermission:${key}.alertTitle`),
-        t(`AskForPermission:${key}:alertDescription`),
+        t(`AskForPermission:${type}.alertTitle`),
+        t(`AskForPermission:${type}:alertDescription`),
         buttons
       )
     } else {
@@ -31,15 +29,15 @@ const AskForPermission = ({ t, permission, onSuccess }) => {
   return (
     <Base>
       <Headline color="white" medium numberOfLines={0}>
-        {t(`AskForPermission:${key}:permissionHeadline`)}
+        {t(`AskForPermission:${type}:permissionHeadline`)}
       </Headline>
       <Description color="white" opacity={0.8}>
-        {t(`AskForPermission:${key}:permissionDescription`)}
+        {t(`AskForPermission:${type}:permissionDescription`)}
       </Description>
 
       <Touchable onPress={onPress}>
         <Text color="white" medium>
-          {t(`AskForPermission:${key}:permissionButton`)}
+          {t(`AskForPermission:${type}:permissionButton`)}
         </Text>
       </Touchable>
     </Base>
@@ -47,8 +45,9 @@ const AskForPermission = ({ t, permission, onSuccess }) => {
 }
 
 AskForPermission.propTypes = {
-  permission: PropTypes.string.isRequired,
   onSuccess: PropTypes.func.isRequired,
+  permission: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 }
 
 export default withTranslation('AskForPermission')(AskForPermission)

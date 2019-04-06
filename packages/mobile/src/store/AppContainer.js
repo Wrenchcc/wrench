@@ -17,7 +17,6 @@ export default class AppContainer extends Container {
 
   loadInitialState = async () => {
     const tokens = await getTokens()
-
     SplashScreen.hide()
 
     this.setState({

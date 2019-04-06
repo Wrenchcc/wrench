@@ -12,7 +12,7 @@ import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
 
 const ORIENTATION = 'portrait'
 
-const permissions = Platform.OS === 'ios' ? IOS_PERMISSIONS : ANDROID_PERMISSIONS
+const PERMISSION = Platform.OS === 'ios' ? IOS_PERMISSIONS.CAMERA : ANDROID_PERMISSIONS.CAMERA
 
 export default class Camera extends PureComponent {
   static propTypes = {
@@ -32,7 +32,7 @@ export default class Camera extends PureComponent {
   }
 
   checkCameraPermission = () => {
-    check(permissions.CAMERA).then(response => {
+    check(PERMISSION).then(response => {
       this.setState({
         isLoading: false,
         cameraPermission: response,
@@ -73,7 +73,11 @@ export default class Camera extends PureComponent {
 
     if (cameraPermission !== RESULTS.GRANTED) {
       return (
-        <AskForPermission permission={permissions.CAMERA} onSuccess={this.permissionAuthorized} />
+        <AskForPermission
+          permission={PERMISSION}
+          onSuccess={this.permissionAuthorized}
+          type="camera"
+        />
       )
     }
 
@@ -84,6 +88,8 @@ export default class Camera extends PureComponent {
           flashMode={this.state.flashMode}
           style={{ flex: 1 }}
           autoFocusPointOfInterest={autoFocusPointOfInterest}
+          orientation="portrait"
+          doNotSave
         >
           {({ camera }) => (
             <>
