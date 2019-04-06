@@ -4,6 +4,6 @@ import { ROUTE_NAMES } from './constants'
 export default {
   [ROUTE_NAMES.POST]: {
     component: Post,
-    path: 'post/:id',
+    path: 'post/:id/:commentId',
   },
 }
