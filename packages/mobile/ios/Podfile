@@ -34,6 +34,7 @@ target 'Wrench' do
   pod 'yoga', :path => File.join(react_path, 'ReactCommon/yoga')
 
   # Third party deps podspec link
+  pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
   pod 'react-native-camera', path: '../node_modules/react-native-camera'
@@ -52,7 +53,6 @@ target 'Wrench' do
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
-  pod 'RNScreens', :path => '../node_modules/react-native-screens'
   pod 'RNShare', :path => '../node_modules/react-native-share'
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
     'Core',

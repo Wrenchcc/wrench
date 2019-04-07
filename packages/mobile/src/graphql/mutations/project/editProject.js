@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { getProjectId } from 'navigation/utils/selectors'
+import { getProjectId } from 'navigation-old/utils/selectors'
 
 const EditProjectMutation = gql`
   mutation editProject($id: ID!, $input: ProjectInput!) {

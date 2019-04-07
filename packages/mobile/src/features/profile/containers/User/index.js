@@ -46,23 +46,23 @@ class User extends PureComponent {
   constructor(props) {
     super(props)
     this.scrollY = new Animated.Value(0)
-
-    props.navigation.setParams({
-      opacity: this.scrollY.interpolate({
-        inputRange: [START_OPACITY, HEADER_HEIGHT],
-        outputRange: [0, 1],
-      }),
-    })
+    //
+    // props.navigation.setParams({
+    //   opacity: this.scrollY.interpolate({
+    //     inputRange: [START_OPACITY, HEADER_HEIGHT],
+    //     outputRange: [0, 1],
+    //   }),
+    // })
   }
 
   // Add user to navigationOptions when loaded
-  componentDidUpdate(prevProps) {
-    if (!equals(this.props.user, prevProps.user)) {
-      this.props.navigation.setParams({ user: this.props.user })
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (!equals(this.props.user, prevProps.user)) {
+  //     this.props.navigation.setParams({ user: this.props.user })
+  //   }
+  // }
 
-  renderItem = ({ item, index }) => <Post post={item.node} lazyload={index > 2} />
+  renderItem = ({ item }) => <Post post={item.node} />
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props

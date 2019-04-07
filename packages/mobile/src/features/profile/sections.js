@@ -1,6 +1,6 @@
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'ramda'
-import { navigate, navigateToWebView } from 'navigation/actions'
+import { navigate, navigateToWebView } from 'navigation-old/actions'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
 

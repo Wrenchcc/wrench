@@ -1,4 +1,4 @@
-import { TAB } from 'navigation/constants'
+import { TAB } from 'navigation-old/constants'
 import { notifications } from 'images'
 import { ROUTE_NAMES } from './constants'
 import Notifications from './containers/Notifications'

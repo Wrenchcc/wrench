@@ -6,7 +6,7 @@ import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
-import { navigateToUser } from 'navigation/actions'
+import { navigateToUser } from 'navigation-old/actions'
 import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState, Title } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
@@ -69,20 +69,20 @@ class Project extends PureComponent {
       FOOTER_HEIGHT
     )
 
-    props.navigation.setParams({
-      opacity: this.scrollY.interpolate({
-        inputRange: [0, 100],
-        outputRange: [0, 1],
-      }),
-    })
+    // props.navigation.setParams({
+    //   opacity: this.scrollY.interpolate({
+    //     inputRange: [0, 100],
+    //     outputRange: [0, 1],
+    //   }),
+    // })
   }
 
   // Add project to navigationOptions when loaded
-  componentDidUpdate(prevProps) {
-    if (!equals(this.props.project, prevProps.project)) {
-      this.props.navigation.setParams({ project: this.props.project })
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (!equals(this.props.project, prevProps.project)) {
+  //     this.props.navigation.setParams({ project: this.props.project })
+  //   }
+  // }
 
   renderItem = ({ item, index }) => {
     // Remove post item from list to skip dublicated
@@ -90,7 +90,7 @@ class Project extends PureComponent {
       return null
     }
 
-    return <Post post={item.node} avatar={false} withoutTitle lazyload={index > 2} />
+    return <Post post={item.node} avatar={false} withoutTitle />
   }
 
   renderHeader = () => {

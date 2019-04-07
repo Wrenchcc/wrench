@@ -24,6 +24,8 @@
 #import <UMReactNativeAdapter/UMNativeModulesProxy.h>
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 
+#import <ReactNativeNavigation/ReactNativeNavigation.h>
+
 @import Firebase;
 
 @implementation AppDelegate
@@ -34,6 +36,7 @@
   [RNFirebaseNotifications configure];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
 
+  NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:@"Wrench" initialProperties:nil];
@@ -45,7 +48,9 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
 
-  [RNSplashScreen show];
+  // [RNSplashScreen show];
+
+  [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions bridgeManagerDelegate:self];
 
   return YES;
 }

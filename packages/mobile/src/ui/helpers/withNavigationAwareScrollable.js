@@ -1,24 +1,24 @@
 import React from 'react'
-import hoistStatics from 'hoist-non-react-statics'
-import { withNavigation } from '@react-navigation/core'
+// import hoistStatics from 'hoist-non-react-statics'
+// import { withNavigation } from '@react-navigation/core'
 
 export default function withNavigationAwareScrollable(Component: any) {
   class ComponentWithNavigationScrolling extends React.PureComponent<any> {
     static displayName = `NavigationAwareScrollable(${Component.displayName || Component.name})`
 
     componentDidMount() {
-      this.subscription = this.props.navigation.addListener('refocus', () => {
-        const scrollableNode = this.scrollView
-        if (this.props.navigation.isFocused() && scrollableNode !== null) {
-          if (scrollableNode.scrollToTop != null) {
-            scrollableNode.scrollToTop()
-          } else if (scrollableNode.scrollTo != null) {
-            scrollableNode.scrollTo({ y: 0 })
-          } else {
-            scrollableNode.scrollToOffset({ offset: 0 })
-          }
-        }
-      })
+      // this.subscription = this.props.navigation.addListener('refocus', () => {
+      //   const scrollableNode = this.scrollView
+      //   if (this.props.navigation.isFocused() && scrollableNode !== null) {
+      //     if (scrollableNode.scrollToTop != null) {
+      //       scrollableNode.scrollToTop()
+      //     } else if (scrollableNode.scrollTo != null) {
+      //       scrollableNode.scrollTo({ y: 0 })
+      //     } else {
+      //       scrollableNode.scrollToOffset({ offset: 0 })
+      //     }
+      //   }
+      // })
     }
 
     componentWillUnmount() {
@@ -42,5 +42,7 @@ export default function withNavigationAwareScrollable(Component: any) {
     }
   }
 
-  return hoistStatics(withNavigation(ComponentWithNavigationScrolling), Component)
+  return ComponentWithNavigationScrolling
+
+  // return hoistStatics(withNavigation(ComponentWithNavigationScrolling), Component)
 }

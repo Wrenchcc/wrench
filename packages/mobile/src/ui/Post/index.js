@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import { Alert, Linking, Keyboard } from 'react-native'
 import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
-import { navigateToProject, navigateToUser } from 'navigation/actions'
+import { navigateToProject, navigateToUser } from 'navigation-old/actions'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import Avatar from 'ui/Avatar'
 import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
-import LazyLoad from 'ui/LazyLoad'
 import Title from 'ui/Title'
 import Text from 'ui/Text'
 import Icon from 'ui/Icon'
@@ -28,7 +27,6 @@ class Post extends PureComponent {
 
   static propTypes = {
     deletePost: PropTypes.func.isRequired,
-    lazyload: PropTypes.bool,
     post: PropTypes.object.isRequired,
     withoutComments: PropTypes.bool,
     withoutTitle: PropTypes.bool,
@@ -156,10 +154,10 @@ class Post extends PureComponent {
   }
 
   render() {
-    const { post, withoutTitle, lazyload, withoutComments } = this.props
+    const { post, withoutTitle, withoutComments } = this.props
 
     return (
-      <LazyLoad enabled={lazyload}>
+      <>
         <Top>
           <Avatar
             uri={post.user.avatarUrl}
@@ -207,7 +205,7 @@ class Post extends PureComponent {
         <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
 
         {!this.state.isEditing && this.postActions()}
-      </LazyLoad>
+      </>
     )
   }
 }

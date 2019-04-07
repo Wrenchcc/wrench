@@ -1,4 +1,4 @@
-import { TAB } from 'navigation/constants'
+import { TAB } from 'navigation-old/constants'
 import { feed } from 'images'
 import Feed from './containers/Feed'
 import { ROUTE_NAMES } from './constants'

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { navigateToProject } from 'navigation/actions'
+import { navigateToProject } from 'navigation-old/actions'
 import InfiniteList from 'ui/InfiniteList'
 import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 

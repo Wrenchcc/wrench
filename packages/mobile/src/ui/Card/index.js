@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import Touchable from 'ui/Touchable'
 import Text from 'ui/Text'
-import { navigateToUser } from 'navigation/actions'
+import { navigateToUser } from 'navigation-old/actions'
 import { Picture, ProjectName, SIZE } from './styles'
 
 const Card = memo(function Card({ image, title, onPress, style = {}, user }) {

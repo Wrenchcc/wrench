@@ -271,6 +271,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - ReactNativeNavigation (2.16.0):
+    - React
   - RNDeviceInfo (1.4.2):
     - React
   - RNFirebase (5.2.3):
@@ -369,6 +371,7 @@ DEPENDENCIES:
   - React/RCTPushNotification (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -471,6 +474,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-video"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
+  ReactNativeNavigation:
+    :path: "../node_modules/react-native-navigation"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFirebase:
@@ -564,6 +569,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: a49be22f0f6648b8416f3bd28258645eeaa5b42b
   react-native-video: 44c6befbc1526283ca1919891fcebe4680feade4
   react-native-webview: a42108b827082f8f0333529b0772102031d5960d
+  ReactNativeNavigation: 20522060de61b1c293ec50681a6aa11488596286
   RNDeviceInfo: 08dd79c5adef48b6dc103bf3ddf208039aa78664
   RNFirebase: 57f6c2adb24355b4e6211e028a8e97e473432245
   RNGestureHandler: afde2addc517e85cc97a25bfe119acbee779a7ce
@@ -590,6 +596,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: c594f1584e28026f98cca344d10183f635896094
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: 4f3a6beafcbfcb80a81785af350d4bab42ca26a5
+PODFILE CHECKSUM: ab7cf71645040fec1045fedfac89279269367afc
 
 COCOAPODS: 1.5.3

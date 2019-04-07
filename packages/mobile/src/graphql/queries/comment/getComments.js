@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { pathOr, update } from 'ramda'
 import { graphql } from 'react-apollo'
-import { getPostId, getPostIdFromDeeplink } from 'navigation/utils/selectors'
+import { getPostId, getPostIdFromDeeplink } from 'navigation-old/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import commentInfoFragment from 'graphql/fragments/comment/commentInfo'
 import userInfoFragment from 'graphql/fragments/user/userInfo'

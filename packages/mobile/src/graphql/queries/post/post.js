@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getPostId } from 'navigation/utils/selectors'
+import { getPostId } from 'navigation-old/utils/selectors'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 const PostById = gql`

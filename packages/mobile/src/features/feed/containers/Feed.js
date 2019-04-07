@@ -18,6 +18,19 @@ class Feed extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
   }
 
+  static options(passProps) {
+    return {
+      topBar: {
+        title: {
+          text: 'My Screen',
+        },
+        drawBehind: true,
+        visible: false,
+        animate: false,
+      },
+    }
+  }
+
   componentDidMount() {
     registerForPushNotifications()
     registerUserLocale()

@@ -1,4 +1,4 @@
-import { TAB } from 'navigation/constants'
+import { TAB } from 'navigation-old/constants'
 import Search from './containers/Search'
 import { ROUTE_NAMES } from './constants'
 
