@@ -6,7 +6,6 @@ import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
 import { navigateToProject } from 'navigation-old/actions'
 import { InfiniteList, Title } from 'ui'
-import { INITIAL_POSTS_COUNT } from '../../constants'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
 const ITEM_HEIGHT = 180
@@ -55,7 +54,6 @@ class Popular extends PureComponent {
         </Header>
         <InfiniteList
           getItemLayout={this.getItemLayout}
-          initialNumToRender={INITIAL_POSTS_COUNT}
           keyExtractor={item => item.node.id}
           data={projects}
           horizontal

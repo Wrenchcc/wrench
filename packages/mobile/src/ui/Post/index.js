@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Alert, Linking, Keyboard } from 'react-native'
 import { compose } from 'react-apollo'
+import { useNavigation, SCREENS } from 'navigation'
 import withTranslation from 'i18n/withTranslation'
-import { navigateToProject, navigateToUser } from 'navigation-old/actions'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import Avatar from 'ui/Avatar'
 import Carousel from 'ui/Carousel'
@@ -51,18 +51,6 @@ class Post extends PureComponent {
   deletePost = () => {
     const { id } = this.props.post
     this.props.deletePost(id)
-  }
-
-  goToProject = () => {
-    const { project, id } = this.props.post
-    if (!this.props.withoutTitle) {
-      navigateToProject({ project, id })
-    }
-  }
-
-  goToProfile = () => {
-    const { user } = this.props.post
-    navigateToUser({ user })
   }
 
   onDelete = () => {
@@ -155,22 +143,26 @@ class Post extends PureComponent {
 
   render() {
     const { post, withoutTitle, withoutComments } = this.props
+    const { push } = useNavigation()
 
     return (
       <>
         <Top>
           <Avatar
             uri={post.user.avatarUrl}
-            onPress={this.goToProfile}
+            onPress={() => push(SCREENS.PROFILE, { id: this.props.post.user.id })}
             isOnline={post.user.isOnline}
           />
           <Icon source={share} onPress={this.toggleActionSheet} hitSlop={20} />
         </Top>
-
         <Content>
           {!withoutTitle && post.project.title && (
             <Headline>
-              <Title fontSize={19} numberOfLines={1} onPress={this.goToProject}>
+              <Title
+                fontSize={19}
+                numberOfLines={1}
+                onPress={() => push(SCREENS.PROJECT, { id: this.props.project.id })}
+              >
                 {post.project.title}
               </Title>
             </Headline>
@@ -185,7 +177,7 @@ class Post extends PureComponent {
             />
           ) : (
             <Text
-              onPress={this.goToProject}
+              onPress={() => push(SCREENS.PROJECT, { id: this.props.project.id })}
               disabled={withoutTitle}
               color={withoutTitle ? 'dark' : 'grey'}
               fontSize={15}
@@ -197,13 +189,15 @@ class Post extends PureComponent {
 
           <Spacer />
 
-          {post.files && <Carousel files={post.files} onPress={this.goToProject} />}
+          {post.files && (
+            <Carousel
+              files={post.files}
+              onPress={() => push(SCREENS.PROJECT, { id: this.props.project.id })}
+            />
+          )}
         </Content>
-
         {!withoutComments && <>{!post.project.commentsDisabled && <Comments data={post} />}</>}
-
         <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
-
         {!this.state.isEditing && this.postActions()}
       </>
     )

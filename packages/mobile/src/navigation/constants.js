@@ -1,0 +1,7 @@
+export const SCREENS = {
+  FEED: 'FEED',
+  EXPLORE: 'EXPLORE',
+  NOTIFICATIONS: 'NOTIFICATIONS',
+  ME: 'ME',
+  PROJECT: 'PROJECT',
+}

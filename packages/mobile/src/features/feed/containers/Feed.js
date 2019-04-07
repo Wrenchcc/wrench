@@ -6,7 +6,6 @@ import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
-import { INITIAL_POSTS_COUNT } from '../constants'
 
 class Feed extends PureComponent {
   static propTypes = {
@@ -18,26 +17,9 @@ class Feed extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
   }
 
-  static options(passProps) {
-    return {
-      topBar: {
-        title: {
-          text: 'My Screen',
-        },
-        drawBehind: true,
-        visible: false,
-        animate: false,
-      },
-    }
-  }
-
   componentDidMount() {
     registerForPushNotifications()
     registerUserLocale()
-  }
-
-  componentWillUnmount() {
-    this.onTokenRefreshListener()
   }
 
   renderItem = ({ item }) => <Post post={item.node} />
@@ -52,7 +34,6 @@ class Feed extends PureComponent {
         <InfiniteListWithHandler
           spacingSeparator
           defaultPaddingTop
-          initialNumToRender={INITIAL_POSTS_COUNT}
           data={posts}
           ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}
