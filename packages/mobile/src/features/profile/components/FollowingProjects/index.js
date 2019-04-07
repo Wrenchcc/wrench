@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { InfiniteList } from 'ui'
-import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
+import { getFollowingProjects } from 'graphql-old/queries/user/getFollowingProjects'
 import { navigateToProject } from 'navigation-old/actions'
 import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 

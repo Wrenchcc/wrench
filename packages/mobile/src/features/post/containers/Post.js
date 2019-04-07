@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getComment } from 'graphql/queries/comment/getComment'
-import { getComments } from 'graphql/queries/comment/getComments'
-import { addComment } from 'graphql/mutations/comment/addComment'
+import { getComment } from 'graphql-old/queries/comment/getComment'
+import { getComments } from 'graphql-old/queries/comment/getComments'
+import { addComment } from 'graphql-old/mutations/comment/addComment'
 import {
   Post,
   InfiniteList,

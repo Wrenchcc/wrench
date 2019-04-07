@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { View } from 'react-native'
 import { Query } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { NotificationsUnreadCountQuery } from 'graphql/queries/getNotifications'
+import { NotificationsUnreadCountQuery } from 'graphql-old/queries/getNotifications'
 import { COLORS } from 'ui/constants'
 
 export default memo(function Badge() {

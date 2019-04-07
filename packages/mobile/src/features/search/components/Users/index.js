@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { searchUsers } from 'graphql/queries/user/searchUsers'
+import { searchUsers } from 'graphql-old/queries/user/searchUsers'
 import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 70

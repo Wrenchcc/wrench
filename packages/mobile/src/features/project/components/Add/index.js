@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import { getCurrentUserProjects } from 'graphql-old/queries/user/getCurrentUserProjects'
 import { navigateToAddMedia, navigateToAddProject } from 'navigation-old/actions'
 import Icon from 'ui/Icon'
 import { add } from 'images'

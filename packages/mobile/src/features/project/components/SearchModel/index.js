@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
-import { searchModels } from 'graphql/queries/project/searchModels'
+import { searchModels } from 'graphql-old/queries/project/searchModels'
 import { isIphone, isNotchIPhone } from 'utils/platform'
 
 const DEFAULT_OFFSET_BOTTOM = isIphone ? (isNotchIPhone ? 365 : 290) : 80

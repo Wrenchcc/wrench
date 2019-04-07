@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { Alert, Linking, Keyboard } from 'react-native'
+import React from 'react'
+// import PropTypes from 'prop-types'
+// import { Alert, Linking, Keyboard } from 'react-native'
 import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
 import withTranslation from 'i18n/withTranslation'
-import { deletePost } from 'graphql/mutations/post/deletePost'
+import { deletePost } from 'graphql-old/mutations/post/deletePost'
 import Avatar from 'ui/Avatar'
 import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
@@ -12,196 +12,69 @@ import Title from 'ui/Title'
 import Text from 'ui/Text'
 import Icon from 'ui/Icon'
 import TimeAgo from 'ui/TimeAgo'
-import ActionSheet from 'ui/ActionSheet'
+// import ActionSheet from 'ui/ActionSheet'
 import { share } from 'images'
 import EditPost from 'ui/EditPost'
+import Touchable from 'ui/Touchable'
 import { Top, Headline, Content, Spacer } from './styled'
 
-class Post extends PureComponent {
-  state = {
-    actionSheetIsOpen: false,
-    alertOpen: false,
-    isEditing: false,
-    hasChanged: false,
-  }
+function Post({ post, withoutTitle, withoutComments, disabled }) {
+  const { navigate } = useNavigation()
 
-  static propTypes = {
-    deletePost: PropTypes.func.isRequired,
-    post: PropTypes.object.isRequired,
-    withoutComments: PropTypes.bool,
-    withoutTitle: PropTypes.bool,
-  }
+  const navigateToUser = () => navigate(SCREENS.USER, {
+    id: post.user.id,
+  })
 
-  componentDidMount() {
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
-  }
+  const navigateToProject = () => navigate(SCREENS.PROJECT, {
+    slug: post.project.slug,
+  })
 
-  componentWillUnmount() {
-    this.keyboardDidHideListener.remove()
-  }
+  return (
+    <>
+      <Top>
+        <Avatar uri={post.user.avatarUrl} onPress={navigateToUser} isOnline={post.user.isOnline} />
+        <Icon source={share} onPress={this.toggleActionSheet} hitSlop={20} />
+      </Top>
+      <Content>
+        {!withoutTitle && post.project.title && (
+          <Headline>
+            <Title fontSize={19} numberOfLines={1} onPress={navigateToProject}>
+              {post.project.title}
+            </Title>
+          </Headline>
+        )}
 
-  toggleActionSheet = () => {
-    this.setState(prevState => ({ actionSheetIsOpen: !prevState.actionSheetIsOpen }))
-  }
-
-  toggleEdit = () => {
-    this.setState(prevState => ({ isEditing: !prevState.isEditing }))
-  }
-
-  deletePost = () => {
-    const { id } = this.props.post
-    this.props.deletePost(id)
-  }
-
-  onDelete = () => {
-    const { t } = this.props
-
-    Alert.alert(
-      t('Post:options:alertTitle'),
-      null,
-      [
-        {
-          text: t('Post:options:delete'),
-          onPress: this.deletePost,
-          style: 'destructive',
-        },
-        {
-          text: t('Post:options:cancel'),
-          style: 'cancel',
-        },
-      ],
-      { cancelable: false }
-    )
-  }
-
-  keyboardDidHide = () => {
-    const { t } = this.props
-
-    if (this.state.hasChanged && this.state.isEditing && !this.state.alertOpen) {
-      this.setState({ alertOpen: true })
-
-      Alert.alert(
-        t('Post:options:alertTitle'),
-        t('Post:options:alertDescription'),
-        [
-          {
-            text: t('Post:options:discard'),
-            onPress: () => {
-              this.setState({ isEditing: false })
-              this.setState({ alertOpen: false })
-            },
-            style: 'destructive',
-          },
-          {
-            text: t('Post:options:cancel'),
-            onPress: () => {
-              this.setState({ alertOpen: false })
-            },
-            style: 'cancel',
-          },
-        ],
-        { cancelable: false }
-      )
-    } else if (!this.state.hasChanged) {
-      this.setState({ isEditing: false })
-      this.setState({ alertOpen: false })
-    }
-  }
-
-  postActions() {
-    const { t, post } = this.props
-
-    const options = []
-
-    if (post.postPermissions.isOwner) {
-      options.push(
-        {
-          name: t('Post:options:edit'),
-          onSelect: this.toggleEdit,
-        },
-        {
-          name: t('Post:options:delete'),
-          onSelect: this.onDelete,
-        }
-      )
-    } else {
-      options.push({
-        name: t('Post:options:report'),
-        onSelect: () => Linking.openURL(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`),
-      })
-    }
-
-    return (
-      <ActionSheet
-        isOpen={this.state.actionSheetIsOpen}
-        onClose={this.toggleActionSheet}
-        destructiveButtonIndex={options.length - 1}
-        options={[...options, { name: t('Post:options:cancel') }]}
-      />
-    )
-  }
-
-  render() {
-    const { post, withoutTitle, withoutComments } = this.props
-    const { push } = useNavigation()
-
-    return (
-      <>
-        <Top>
-          <Avatar
-            uri={post.user.avatarUrl}
-            onPress={() => push(SCREENS.PROFILE, { id: this.props.post.user.id })}
-            isOnline={post.user.isOnline}
+        {false ? (
+          <EditPost
+            post={post}
+            color={withoutTitle ? 'dark' : 'grey'}
+            onSubmit={this.toggleEdit}
+            hasChanged={hasChanged => this.setState({ hasChanged })}
           />
-          <Icon source={share} onPress={this.toggleActionSheet} hitSlop={20} />
-        </Top>
-        <Content>
-          {!withoutTitle && post.project.title && (
-            <Headline>
-              <Title
-                fontSize={19}
-                numberOfLines={1}
-                onPress={() => push(SCREENS.PROJECT, { id: this.props.project.id })}
-              >
-                {post.project.title}
-              </Title>
-            </Headline>
-          )}
+        ) : (
+          <Text
+            onPress={navigateToProject}
+            disabled={withoutTitle}
+            color={withoutTitle ? 'dark' : 'grey'}
+            fontSize={15}
+            lineHeight={22}
+          >
+            {post.caption}
+          </Text>
+        )}
 
-          {this.state.isEditing ? (
-            <EditPost
-              post={post}
-              color={withoutTitle ? 'dark' : 'grey'}
-              onSubmit={this.toggleEdit}
-              hasChanged={hasChanged => this.setState({ hasChanged })}
-            />
-          ) : (
-            <Text
-              onPress={() => push(SCREENS.PROJECT, { id: this.props.project.id })}
-              disabled={withoutTitle}
-              color={withoutTitle ? 'dark' : 'grey'}
-              fontSize={15}
-              lineHeight={22}
-            >
-              {post.caption}
-            </Text>
-          )}
+        <Spacer />
 
-          <Spacer />
-
-          {post.files && (
-            <Carousel
-              files={post.files}
-              onPress={() => push(SCREENS.PROJECT, { id: this.props.project.id })}
-            />
-          )}
-        </Content>
-        {!withoutComments && <>{!post.project.commentsDisabled && <Comments data={post} />}</>}
-        <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
-        {!this.state.isEditing && this.postActions()}
-      </>
-    )
-  }
+        {post.files && (
+          <Touchable onPress={navigateToProject} disabled={disabled} activeOpacity={1}>
+            <Carousel files={post.files} />
+          </Touchable>
+        )}
+      </Content>
+      {!withoutComments && <>{!post.project.commentsDisabled && <Comments data={post} />}</>}
+      <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
+    </>
+  )
 }
 
 export default compose(

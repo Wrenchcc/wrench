@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { getFeed } from 'graphql/queries/getFeed'
+import { getFeed } from 'graphql-old/queries/getFeed'
 import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'

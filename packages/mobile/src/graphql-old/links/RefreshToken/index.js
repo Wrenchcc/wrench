@@ -1,0 +1,74 @@
+import { Observable } from 'apollo-link'
+import { onError } from 'apollo-link-error'
+import { client } from 'graphql-old/createClient'
+import { RefreshTokenMutation } from 'graphql-old/mutations/user/refreshToken'
+import { getTokens, setTokens } from 'graphql-old/utils/auth'
+import { track, events } from 'utils/analytics'
+import { logError } from 'utils/sentry'
+
+import { resetNavigation } from 'navigation-old/actions'
+
+function foreceSignOut() {
+  client.resetStore()
+  track(events.REFRESH_TOKEN_FAILED)
+  resetNavigation()
+  // TODO: Show alert session expired, please login again.
+}
+
+export default onError(({ graphQLErrors, operation, forward }) => {
+  if (graphQLErrors) {
+    const { extensions } = graphQLErrors[0]
+    if (extensions && extensions.code === 'UNAUTHENTICATED') {
+      return new Observable(async observer => {
+        try {
+          const refreshToken = await getTokens('refresh_token')
+          const { headers } = operation.getContext()
+
+          return client
+            .mutate({
+              mutation: RefreshTokenMutation,
+              variables: { refreshToken },
+            })
+            .then(({ data }) => {
+              const accessToken = data.token.access_token
+
+              if (!accessToken) {
+                track(events.REFRESH_TOKEN_FAILED)
+                return foreceSignOut()
+              }
+
+              // Save new tokens to async storage
+              setTokens({
+                access_token: accessToken,
+                refresh_token: refreshToken,
+              })
+
+              return operation.setContext(() => ({
+                headers: {
+                  ...headers,
+                  authorization: `Bearer ${accessToken}`,
+                },
+              }))
+            })
+            .then(() => {
+              const subscriber = {
+                next: observer.next.bind(observer),
+                error: observer.error.bind(observer),
+                complete: observer.complete.bind(observer),
+              }
+
+              return forward(operation).subscribe(subscriber)
+            })
+            .catch(() => foreceSignOut())
+        } catch (err) {
+          observer.error(err)
+          logError(err)
+        }
+
+        return null
+      })
+    }
+  }
+
+  return null
+})

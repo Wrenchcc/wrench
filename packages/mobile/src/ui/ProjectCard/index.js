@@ -5,7 +5,7 @@ import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import Gallery from 'ui/Gallery'
 import Placeholder from 'ui/Placeholder'
-import { followProject } from 'graphql/mutations/project/followProject'
+import { followProject } from 'graphql-old/mutations/project/followProject'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
 class ProjectCard extends PureComponent {

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { getFollowers } from 'graphql/queries/getFollowers'
+import { getFollowers } from 'graphql-old/queries/getFollowers'
 import { InfiniteList, User, HeaderTitle, NoResults } from 'ui'
 
 let scrollView = null

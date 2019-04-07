@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
-import { editPost } from 'graphql/mutations/post/editPost'
+import { editPost } from 'graphql-old/mutations/post/editPost'
 import { Input } from './styles'
 
 function EditPost({ post, color, onSubmit, hasChanged, editPost }) {

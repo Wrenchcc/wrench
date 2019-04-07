@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
-import { getProjectSuggestions } from 'graphql/queries/project/getProjectSuggestions'
+import { getProjectSuggestions } from 'graphql-old/queries/project/getProjectSuggestions'
 import { ProjectSuggestion, Loader } from 'ui'
 import { Base, Headline, Description } from './styles'
 

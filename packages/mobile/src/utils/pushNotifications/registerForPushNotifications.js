@@ -1,5 +1,5 @@
 import { messaging } from 'react-native-firebase'
-import { savePushNotificationToken } from 'graphql/mutations/user/registerDeviceToken'
+import { savePushNotificationToken } from 'graphql-old/mutations/user/registerDeviceToken'
 import { track, events } from 'utils/analytics'
 
 export default async function requestNotificationToken() {

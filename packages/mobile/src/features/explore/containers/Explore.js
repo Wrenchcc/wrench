@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
-import { getRecentPosts } from 'graphql/queries/getExplore'
+import { getRecentPosts } from 'graphql-old/queries/getExplore'
 import { Post, InfiniteListWithHandler } from 'ui'
 import Popular from 'features/explore/components/Popular'
 

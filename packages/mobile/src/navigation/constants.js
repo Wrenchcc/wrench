@@ -4,4 +4,5 @@ export const SCREENS = {
   NOTIFICATIONS: 'NOTIFICATIONS',
   ME: 'ME',
   PROJECT: 'PROJECT',
+  USER: 'USER',
 }

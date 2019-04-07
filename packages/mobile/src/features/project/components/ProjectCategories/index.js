@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, FlatList } from 'react-native'
 import { compose } from 'react-apollo'
-import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
+import { getProjectTypes } from 'graphql-old/queries/project/getProjectTypes'
 import { Touchable, Text, Loader } from 'ui'
 import { Cell, Image, Overlay, Picture } from './styles'
 

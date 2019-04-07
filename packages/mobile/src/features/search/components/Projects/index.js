@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation-old/actions'
-import { searchProjects } from 'graphql/queries/project/searchProjects'
+import { searchProjects } from 'graphql-old/queries/project/searchProjects'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 200
