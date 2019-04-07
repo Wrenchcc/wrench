@@ -23,13 +23,13 @@ const MENTION_OFFSET_BOTTOM = isIphone ? 240 + SAFE_AREA : 0
 const TRIGGER = '@'
 
 class Comments extends PureComponent {
-  static navigationOptions = ({ screenProps }) => ({
-    headerTitle: (
-      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
-        {screenProps.t('Comments:title')}
-      </HeaderTitle>
-    ),
-  })
+  // static navigationOptions = ({ screenProps }) => ({
+  //   headerTitle: (
+  //     <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
+  //       {screenProps.t('Comments:title')}
+  //     </HeaderTitle>
+  //   ),
+  // })
 
   static propTypes = {
     addComment: PropTypes.func.isRequired,

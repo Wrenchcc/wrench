@@ -6,7 +6,6 @@ export default gql`
     fullName
     firstName
     lastName
-    username
     avatarUrl
     projectCount
     dynamicLink

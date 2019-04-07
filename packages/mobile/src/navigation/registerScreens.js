@@ -5,8 +5,11 @@ import Notifications from 'features/notifications/containers/Notifications'
 import Me from 'features/profile/containers/Me'
 import User from 'features/profile/containers/User'
 import Project from 'features/project/containers/Project'
-import HOC from './hoc'
+import Followers from 'features/project/containers/Followers'
+import Post from 'features/post/containers/Post'
+import Comments from 'features/project/containers/Comments'
 import { SCREENS } from './constants'
+import HOC from './hoc'
 
 export default function registerScreens() {
   Navigation.registerComponent(SCREENS.FEED, () => HOC(Feed))
@@ -15,4 +18,7 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.ME, () => HOC(Me))
   Navigation.registerComponent(SCREENS.PROJECT, () => HOC(Project))
   Navigation.registerComponent(SCREENS.USER, () => HOC(User))
+  Navigation.registerComponent(SCREENS.FOLLOWERS, () => HOC(Followers))
+  Navigation.registerComponent(SCREENS.POST, () => HOC(Post))
+  Navigation.registerComponent(SCREENS.COMMENTS, () => HOC(Comments))
 }

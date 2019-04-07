@@ -1,31 +1,31 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Title } from 'ui'
-import { navigateToFollowers } from 'navigation-old/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import { Base, ProjectName, Followers } from './styles'
 
-export default class Header extends PureComponent {
-  static propTypes = {
-    project: PropTypes.object.isRequired,
-    spacingHorizontal: PropTypes.bool.isRequired,
-  }
+function Header({ project, spacingHorizontal }) {
+  const { navigate } = useNavigation()
 
-  goToFollowers = () => {
-    const { project } = this.props
-    navigateToFollowers({ project })
-  }
+  const navigateToFollowers = () => navigate(SCREENS.FOLLOWERS, {
+    id: project.id,
+  })
 
-  render() {
-    const { project, spacingHorizontal } = this.props
-    return (
-      <Base spacingHorizontal={spacingHorizontal}>
-        <ProjectName>
-          <Title large numberOfLines={0}>
-            {project.title}
-          </Title>
-          <Followers followers={project.followers.totalCount} onPress={this.goToFollowers} />
-        </ProjectName>
-      </Base>
-    )
-  }
+  return (
+    <Base spacingHorizontal={spacingHorizontal}>
+      <ProjectName>
+        <Title large numberOfLines={0}>
+          {project.title}
+        </Title>
+        <Followers followers={project.followers.totalCount} onPress={navigateToFollowers} />
+      </ProjectName>
+    </Base>
+  )
 }
+
+Header.propTypes = {
+  project: PropTypes.object.isRequired,
+  spacingHorizontal: PropTypes.bool.isRequired,
+}
+
+export default Header

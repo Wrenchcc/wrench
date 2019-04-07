@@ -6,13 +6,9 @@ export default gql`
       cursor
       node {
         id
-        username
         fullName
-        firstName
-        lastName
         avatarUrl
         projectCount
-        dynamicLink
         isOnline
       }
     }

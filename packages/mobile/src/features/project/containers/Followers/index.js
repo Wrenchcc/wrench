@@ -7,13 +7,13 @@ import { InfiniteList, User, HeaderTitle, NoResults } from 'ui'
 let scrollView = null
 
 class Followers extends PureComponent {
-  static navigationOptions = ({ screenProps }) => ({
-    headerTitle: (
-      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
-        {screenProps.t('Followers:title')}
-      </HeaderTitle>
-    ),
-  })
+  // static navigationOptions = ({ screenProps }) => ({
+  //   headerTitle: (
+  //     <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
+  //       {screenProps.t('Followers:title')}
+  //     </HeaderTitle>
+  //   ),
+  // })
 
   static propTypes = {
     followers: PropTypes.array,

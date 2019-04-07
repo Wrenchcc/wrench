@@ -27,6 +27,7 @@ function Post({ post, withoutTitle, withoutComments, disabled }) {
 
   const navigateToProject = () => navigate(SCREENS.PROJECT, {
     slug: post.project.slug,
+    postId: post.id,
   })
 
   return (

@@ -1,14 +1,13 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getUsername, getUsernameFromDeeplink } from 'navigation-old/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql-old/utils/networkStatus'
 import userInfoFragment from 'graphql-old/fragments/user/userInfo'
 import userPostsConnectionFragment from 'graphql-old/fragments/user/postsConnection'
 
 export const UserByUsernameQuery = gql`
-  query getUserByUsername($username: LowercaseString!, $after: String) {
-    user(username: $username) {
+  query getUserByUsername($username: LowercaseString, $id: ID, $after: String) {
+    user(id: $id, username: $username) {
       ...userInfo
       ...userPostsConnection
     }
@@ -18,8 +17,8 @@ export const UserByUsernameQuery = gql`
 `
 
 const LoadMorePosts = gql`
-  query loadMoreUserPosts($username: LowercaseString!, $after: String) {
-    user(username: $username) {
+  query loadMoreUserPosts($id: ID, $username: LowercaseString, $after: String) {
+    user(id: $id, username: $username) {
       ...userPostsConnection
     }
   }
@@ -27,23 +26,17 @@ const LoadMorePosts = gql`
 `
 
 const getUserByUsernameOptions = {
-  options: ({ navigation, after }) => ({
+  options: ({ id, username }) => ({
     variables: {
-      username: getUsername(navigation) || getUsernameFromDeeplink(navigation),
-      after,
+      id,
+      username,
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: ({
-    data: { fetchMore, error, loading, user, networkStatus, refetch },
-    ownProps: { navigation },
-  }) => ({
+  props: ({ data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
     error,
     refetch,
-    user: {
-      ...pathOr(user, ['state', 'params', 'user'], navigation),
-      ...user,
-    },
+    user,
     posts: pathOr(null, ['posts', 'edges'], user),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
     isRefetching: isRefetching(networkStatus),

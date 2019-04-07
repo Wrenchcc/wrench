@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getPostId } from 'navigation-old/utils/selectors'
 import postInfoFragment from 'graphql-old/fragments/post/postInfo'
 
 const PostById = gql`
@@ -14,9 +13,9 @@ const PostById = gql`
 `
 
 const getPostByOptions = {
-  options: ({ navigation }) => ({
+  options: ({ id }) => ({
     variables: {
-      id: getPostId(navigation),
+      id,
     },
     fetchPolicy: 'cache-and-network',
   }),

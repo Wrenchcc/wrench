@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, View, Animated, Image } from 'react-native'
 import withTranslation from 'i18n/withTranslation'
-import { Swipeable, RectButton } from 'react-native-gesture-handler'
-import { navigateToUser, navigateToProject, navigateToPost } from 'navigation-old/actions'
+import { Swipeable } from 'react-native-gesture-handler'
+import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
@@ -12,23 +12,9 @@ import { trash } from 'images'
 import { NOTIFICATION_TYPES } from 'utils/enums'
 import { Base, Content, Bottom } from './styles'
 
-const onPress = data => {
-  switch (data.type) {
-    case NOTIFICATION_TYPES.NEW_FOLLOWER:
-      return navigateToProject({ project: data.project })
-    case NOTIFICATION_TYPES.NEW_MENTION:
-    case NOTIFICATION_TYPES.NEW_COMMENT:
-    case NOTIFICATION_TYPES.NEW_REPLY:
-      return navigateToPost({
-        id: data.comment.postId,
-        commentId: data.comment.id,
-      })
-    default:
-      return null
-  }
-}
+export const { width } = Dimensions.get('window')
 
-const description = (data, t) => {
+function description(data, t) {
   switch (data.type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
       return `${t('Notification:follow')}: "${data.project.title}"`
@@ -43,89 +29,90 @@ const description = (data, t) => {
   }
 }
 
-const styles = {
-  rightAction: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  trash: {
-    paddingLeft: 30,
-  },
+function renderRightAction(progress) {
+  const translateX = progress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [width, 0],
+  })
+
+  return (
+    <Animated.View style={{ width, transform: [{ translateX }] }}>
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: COLORS.RED }}>
+        <View style={{ paddingLeft: 30 }}>
+          <Image source={trash} />
+        </View>
+      </View>
+    </Animated.View>
+  )
 }
 
-export const { width } = Dimensions.get('window')
-
-class Notification extends PureComponent {
-  static propTypes = {
-    data: PropTypes.object.isRequired,
-    deleteNotification: PropTypes.func.isRequired,
+function onPress(data, navigate) {
+  switch (data.type) {
+    case NOTIFICATION_TYPES.NEW_FOLLOWER:
+      return navigate(SCREENS.PROJECT, {
+        slug: data.project.slug,
+      })
+    case NOTIFICATION_TYPES.NEW_MENTION:
+    case NOTIFICATION_TYPES.NEW_COMMENT:
+    case NOTIFICATION_TYPES.NEW_REPLY:
+      return navigate(SCREENS.POST, {
+        postId: data.comment.postId,
+        commentId: data.comment.id,
+      })
+    default:
+      return null
   }
+}
 
-  renderRightAction = progress => {
-    const translateX = progress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [width, 0],
-    })
+function Notification({ data, deleteNotification, t }) {
+  const { navigate } = useNavigation()
+  const navigateToUser = () => navigate(SCREENS.USER, {
+    id: data.user.id,
+  })
+  const handleOnPress = () => onPress(data, navigate)
+  const handleDelete = () => deleteNotification(data.id)
 
-    return (
-      <Animated.View style={{ width, transform: [{ translateX }] }}>
-        <RectButton
-          style={[styles.rightAction, { backgroundColor: COLORS.RED }]}
-          onPress={this.handleDelete}
-        >
-          <View style={styles.trash}>
-            <Image source={trash} />
-          </View>
-        </RectButton>
-      </Animated.View>
-    )
-  }
+  return (
+    <Swipeable
+      friction={2}
+      rightThreshold={100}
+      renderRightActions={renderRightAction}
+      onSwipeableRightOpen={handleDelete}
+    >
+      <Base onPress={handleOnPress}>
+        <Avatar
+          uri={data.user.avatarUrl}
+          size={40}
+          onPress={navigateToUser}
+          isOnline={data.user.isOnline}
+        />
+        <Content>
+          <Text onPress={navigateToUser}>{data.user.fullName}</Text>
+          <Bottom>
+            <View style={{ marginRight: 50 }}>
+              <Text
+                color="light_grey"
+                fontSize={15}
+                lineHeight={22}
+                onPress={handleOnPress}
+                numberOfLines={2}
+              >
+                {description(data, t)}
+              </Text>
+            </View>
+            <View style={{ marginLeft: 'auto' }}>
+              <TimeAgo date={data.createdAt} fontSize={15} />
+            </View>
+          </Bottom>
+        </Content>
+      </Base>
+    </Swipeable>
+  )
+}
 
-  setRef = ref => {
-    this.swipable = ref
-  }
-
-  render() {
-    const { data, deleteNotification, t } = this.props
-
-    return (
-      <Swipeable
-        ref={this.setRef}
-        friction={2}
-        rightThreshold={100}
-        renderRightActions={this.renderRightAction}
-        onSwipeableRightOpen={() => deleteNotification(data.id)}
-      >
-        <Base onPress={() => onPress(data)}>
-          <Avatar
-            uri={data.user.avatarUrl}
-            size={40}
-            onPress={() => navigateToUser({ user: data.user })}
-            isOnline={data.user.isOnline}
-          />
-          <Content>
-            <Text onPress={() => navigateToUser({ user: data.user })}>{data.user.fullName}</Text>
-            <Bottom>
-              <View style={{ marginRight: 50 }}>
-                <Text
-                  color="light_grey"
-                  fontSize={15}
-                  lineHeight={22}
-                  onPress={() => onPress(data)}
-                  numberOfLines={2}
-                >
-                  {description(data, t)}
-                </Text>
-              </View>
-              <View style={{ marginLeft: 'auto' }}>
-                <TimeAgo date={data.createdAt} fontSize={15} />
-              </View>
-            </Bottom>
-          </Content>
-        </Base>
-      </Swipeable>
-    )
-  }
+Notification.propTypes = {
+  data: PropTypes.object.isRequired,
+  deleteNotification: PropTypes.func.isRequired,
 }
 
 export default withTranslation('Notification')(Notification)

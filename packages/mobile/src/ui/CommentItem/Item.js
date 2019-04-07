@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { navigateToUser } from 'navigation-old/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
@@ -20,8 +20,16 @@ const Item = memo(function Item({
   text,
   user,
 }) {
+  if (!user) return null
+
+  const { navigate } = useNavigation()
+  const navigateToUser = () => navigate(SCREENS.USER, {
+    id: user.id,
+  })
+
   const animatedValue = new Animated.Value(0)
 
+  // TODO: Use react-spring
   if (highlightId === id) {
     Animated.timing(animatedValue, {
       toValue: 1,
@@ -39,8 +47,6 @@ const Item = memo(function Item({
     outputRange: [COLORS.WHITE, COLORS.ULTRA_LIGHT_GREY],
   })
 
-  if (!user) return null
-
   return (
     <Animated.View style={{ backgroundColor }}>
       <Base isReply={isReply} first={first}>
@@ -49,7 +55,7 @@ const Item = memo(function Item({
           size={isReply ? 20 : 30}
           isOnline={user.isOnline}
           badgeSize={isReply && 'small'}
-          onPress={() => navigateToUser({ user })}
+          onPress={navigateToUser}
         />
         <Content>
           <Row>

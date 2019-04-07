@@ -6,7 +6,6 @@ import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { getProject } from 'graphql-old/queries/project/getProject'
 import { followProject } from 'graphql-old/mutations/project/followProject'
-import { navigateToUser } from 'navigation-old/actions'
 import { InfiniteListWithHandler, Post, Avatar, HeaderTitle, Edit, EmptyState, Title } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
@@ -17,30 +16,30 @@ const FOOTER_HEIGHT = 600
 let scrollView = null
 
 class Project extends PureComponent {
-  static navigationOptions = ({ navigation }) => {
-    const params = navigation.state.params || {}
-    const user = pathOr(null, ['project', 'user'], params)
-    const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
-    const projectTitle = pathOr(false, ['project', 'title'], params)
-    const goToProfile = () => navigateToUser({ user })
-    const avatarUrl = pathOr(null, ['avatarUrl'], user)
-
-    return {
-      headerTitle: projectTitle && (
-        <HeaderTitle
-          opacity={params.opacity || new Animated.Value(0)}
-          onPress={() => scrollView.scrollToOffset({ offset: 0 })}
-        >
-          {projectTitle}
-        </HeaderTitle>
-      ),
-      headerRight: isOwner ? (
-        <Edit project={params.project} />
-      ) : (
-        <Avatar uri={avatarUrl || ''} onPress={goToProfile} />
-      ),
-    }
-  }
+  // static navigationOptions = ({ navigation }) => {
+  //   const params = navigation.state.params || {}
+  //   const user = pathOr(null, ['project', 'user'], params)
+  //   const isOwner = pathOr(false, ['project', 'projectPermissions', 'isOwner'], params)
+  //   const projectTitle = pathOr(false, ['project', 'title'], params)
+  //   const goToProfile = () => navigateToUser({ user })
+  //   const avatarUrl = pathOr(null, ['avatarUrl'], user)
+  //
+  //   return {
+  //     headerTitle: projectTitle && (
+  //       <HeaderTitle
+  //         opacity={params.opacity || new Animated.Value(0)}
+  //         onPress={() => scrollView.scrollToOffset({ offset: 0 })}
+  //       >
+  //         {projectTitle}
+  //       </HeaderTitle>
+  //     ),
+  //     headerRight: isOwner ? (
+  //       <Edit project={params.project} />
+  //     ) : (
+  //       <Avatar uri={avatarUrl || ''} onPress={goToProfile} />
+  //     ),
+  //   }
+  // }
 
   static propTypes = {
     fetchMore: PropTypes.func.isRequired,
@@ -48,7 +47,6 @@ class Project extends PureComponent {
     hasNextPage: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     isRefetching: PropTypes.bool.isRequired,
-    navigation: PropTypes.object.isRequired,
     post: PropTypes.object,
     posts: PropTypes.array,
     project: PropTypes.object,
@@ -77,14 +75,7 @@ class Project extends PureComponent {
     // })
   }
 
-  // Add project to navigationOptions when loaded
-  // componentDidUpdate(prevProps) {
-  //   if (!equals(this.props.project, prevProps.project)) {
-  //     this.props.navigation.setParams({ project: this.props.project })
-  //   }
-  // }
-
-  renderItem = ({ item, index }) => {
+  renderItem = ({ item }) => {
     // Remove post item from list to skip dublicated
     if (pathOr(false, ['post', 'id'], this.props) === item.node.id) {
       return null
