@@ -1,16 +1,10 @@
 import styled from 'styled-components'
-import UiTouchable from 'ui/Touchable'
+import { Transitioning } from 'react-native-reanimated'
 import UiText from 'ui/Text'
 import { FONTS, COLORS } from 'ui/constants'
 
-export const Base = styled.View``
-
-export const Placeholder = styled(UiTouchable)`
-  position: relative;
-  height: 40;
-  background-color: ${COLORS.ULTRA_LIGHT_GREY};
-  border-radius: 1;
-  justify-content: center;
+export const Base = styled(Transitioning.View)`
+  flex: 1;
 `
 
 export const Text = styled(UiText)`

@@ -13,7 +13,7 @@ export default function withKeyboardHandler(WrappedComponent) {
     subscriptions = []
 
     static propTypes = {
-      navigation: PropTypes.object.isRequired,
+      // navigation: PropTypes.object.isRequired,
       scrollRef: PropTypes.func,
     }
 

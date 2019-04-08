@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const Base = styled.View`
+  padding-left: 20;
+  padding-right: 20;
+`
+
 export const Top = styled.View`
   flex-direction: row;
   justify-content: space-between;

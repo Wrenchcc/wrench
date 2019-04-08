@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { withListProvider, withListContext } from './ListContext'
 import Header from '../Header'
-// import SearchResult from 'ui/next/SearchResult'
+import { withListProvider, withListContext } from './ListContext'
 
 const DEFAULT_QUERY = ''
 
@@ -20,7 +19,6 @@ class Layout extends PureComponent {
     search: PropTypes.object,
     renderSearch: PropTypes.func,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-    listContext: PropTypes.object,
   }
 
   constructor(props) {
@@ -48,25 +46,12 @@ class Layout extends PureComponent {
     this.handleQueryChange(DEFAULT_QUERY)
   }
 
-  renderTabBar() {
-    // const { routes, index, handleTabChange } = this.props.listContext
-    // return (
-    //   <TabView
-    //     routes={routes}
-    //     index={index}
-    //     renderTabBar={this.renderHeader}
-    //     onIndexChange={handleTabChange}
-    //   />
-    // )
-  }
-
   renderSearch() {
     const { renderSearch } = this.props
 
     if (!renderSearch) return null
 
     // return <SearchResult active={this.state.searchActive}>{renderSearch(this.state)}</SearchResult>
-    return null
   }
 
   renderHeader = () => {

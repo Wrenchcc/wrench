@@ -15,8 +15,7 @@ import TimeAgo from 'ui/TimeAgo'
 // import ActionSheet from 'ui/ActionSheet'
 import { share } from 'images'
 import EditPost from 'ui/EditPost'
-import Touchable from 'ui/Touchable'
-import { Top, Headline, Content, Spacer } from './styled'
+import { Base, Top, Headline, Content, Spacer } from './styled'
 
 function Post({ post, withoutTitle, withoutComments, disabled }) {
   const { navigate } = useNavigation()
@@ -31,7 +30,7 @@ function Post({ post, withoutTitle, withoutComments, disabled }) {
   })
 
   return (
-    <>
+    <Base>
       <Top>
         <Avatar
           uri={post.user.avatarUrl}
@@ -71,15 +70,11 @@ function Post({ post, withoutTitle, withoutComments, disabled }) {
 
         <Spacer />
 
-        {post.files && (
-          <Touchable onPress={navigateToProject} disabled={disabled} activeOpacity={1}>
-            <Carousel files={post.files} />
-          </Touchable>
-        )}
+        {post.files && <Carousel files={post.files} />}
       </Content>
       {!withoutComments && <>{!post.project.commentsDisabled && <Comments data={post} />}</>}
       <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
-    </>
+    </Base>
   )
 }
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import PropTypes from 'prop-types'
-import SearchBar from 'ui/SearchBar'
+import { Search } from 'ui'
 import { withListContext } from 'navigation/Layout/ListContext'
 import styles from './styles'
 
@@ -11,7 +11,6 @@ const { interpolate } = Animated
 class Header extends Component {
   static propTypes = {
     onQueryChange: PropTypes.func,
-    headerTitle: PropTypes.string,
     query: PropTypes.string,
     search: PropTypes.object,
     onSearchFocus: PropTypes.func,
@@ -19,15 +18,6 @@ class Header extends Component {
     searchActive: PropTypes.bool,
     tabBar: PropTypes.node,
     listContext: PropTypes.object.isRequired,
-  }
-
-  get hasTitle() {
-    const { headerTitle } = this.props
-    return !this.hasSearch && headerTitle
-  }
-
-  get hasSearch() {
-    return this.props.search
   }
 
   get showActions() {
@@ -38,7 +28,6 @@ class Header extends Component {
   render() {
     const {
       search,
-      headerTitle,
       // actions,
       query,
       onQueryChange,
@@ -73,9 +62,8 @@ class Header extends Component {
         <View style={styles.header}>
           <Animated.View style={opacityContent}>
             <View style={styles.inner}>
-              {this.hasTitle && <Text>{headerTitle}</Text>}
-              {this.hasSearch && (
-                <SearchBar
+              {search && (
+                <Search
                   config={search}
                   onChangeQuery={onQueryChange}
                   onSearchCancel={onSearchCancel}

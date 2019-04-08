@@ -1,3 +1,9 @@
+export const navigationConstants = {
+  listInsetTop: 0,
+  topBarHeight: 60,
+  statusBarHeight: 44,
+}
+
 export const SCREENS = {
   FEED: 'FEED',
   EXPLORE: 'EXPLORE',

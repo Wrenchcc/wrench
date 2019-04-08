@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Animated from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
-import { HEADER_HEIGHT, LIST_INSET_TOP, STATUS_BAR_HEIGHT } from 'ui/constants'
 import { scrollToOffset } from 'navigation/Scrollables/utils'
+import { navigationConstants } from 'navigation/constants'
 
 export const ListContext = React.createContext({})
 export const ListConsumer = ListContext.Consumer
@@ -46,10 +46,6 @@ export class ListProvider extends Component {
       })
     ),
   }
-
-  listInsetTop = LIST_INSET_TOP
-
-  headerHeight = HEADER_HEIGHT
 
   // New stuff
   dragging = new Value(0)
@@ -124,7 +120,10 @@ export class ListProvider extends Component {
       cond(
         or(
           eq(isAndroid, 0),
-          and(neq(translateY, this.initialScroll), neq(translateY, -this.headerHeight))
+          and(
+            neq(translateY, this.initialScroll),
+            neq(translateY, -navigationConstants.topBarHeight)
+          )
         ),
         block([
           cond(clockRunning(clock), 0, [
@@ -133,12 +132,16 @@ export class ListProvider extends Component {
             set(state.position, 0),
             set(
               translateYSnap,
-              cond(greaterOrEq(translateY, this.headerHeight / -2), 0, -this.headerHeight)
+              cond(
+                greaterOrEq(translateY, navigationConstants.topBarHeight / -2),
+                0,
+                -navigationConstants.topBarHeight
+              )
             ),
             set(
               config.toValue,
               cond(
-                greaterThan(scrollY, this.initialScroll + this.headerHeight),
+                greaterThan(scrollY, this.initialScroll + navigationConstants.topBarHeight),
                 sub(translateYSnap, translateY),
                 multiply(-1, translateY)
               )
@@ -176,7 +179,7 @@ export class ListProvider extends Component {
                 [
                   set(
                     translateY,
-                    min(0, max(-this.headerHeight, sub(translateY, scrollYDiff)))
+                    min(0, max(-navigationConstants.topBarHeight, sub(translateY, scrollYDiff)))
                   ),
                   translateY,
                 ],
@@ -202,7 +205,8 @@ export class ListProvider extends Component {
     this.handleBeginDrag = events.map(() => event(
       [
         {
-          nativeEvent: ({ zoomScale, target }) => block([cond(defined(target), set(dragging, target), set(dragging, zoomScale))]),
+          nativeEvent: ({ zoomScale, target }) =>
+              block([cond(defined(target), set(dragging, target), set(dragging, zoomScale))]), // eslint-disable-line
         },
       ],
       { useNativeDriver: true }
@@ -228,7 +232,9 @@ export class ListProvider extends Component {
 
   get contentInset() {
     return (
-      (this.hasTabs ? this.headerHeight : this.headerHeight) + STATUS_BAR_HEIGHT + this.listInsetTop
+      navigationConstants.topBarHeight
+      + navigationConstants.statusBarHeight
+      + navigationConstants.listInsetTop
     )
   }
 
@@ -248,17 +254,15 @@ export class ListProvider extends Component {
     return {
       handleTabChange: this.handleTabChange,
       hasTabs: this.hasTabs,
-      headerHeight: this.headerHeight,
+      headerHeight: navigationConstants.topBarHeight,
       index: this.state.index,
       initialScroll: this.initialScroll,
       contentInset: this.contentInset,
       routes: this.props.routes,
       translateY: this.finalTranslateY,
-
       handleScroll: this.handleScroll,
       handleBeginDrag: this.handleBeginDrag,
       handleEndDrag: this.handleEndDrag,
-
       setListRef: this.setListRef,
     }
   }
@@ -281,6 +285,8 @@ export class ListProvider extends Component {
         scrollToOffset(ref, offset)
       }
     })
+
+    return null
   }
 
   handleTabChange = (index, initial = false) => {
@@ -293,6 +299,8 @@ export class ListProvider extends Component {
     this.setState({
       index,
     })
+
+    return null
   }
 
   render() {
@@ -313,7 +321,3 @@ export const withListProvider = Component => props => (
 export const withListContext = Component => props => (
   <ListConsumer>{context => <Component listContext={context} {...props} />}</ListConsumer>
 )
-
-export default () => {
-  throw new Error('⚠️ Do not import ListContext directly, it should only be used with Layout! ⚠️')
-}

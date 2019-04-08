@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react'
-import { RefreshControl, Platform, View } from 'react-native'
+import { Platform, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { isAndroid } from 'utils/platform'
 import { withListContext } from 'navigation/Layout/ListContext'
 import { withTabContext } from 'navigation/Layout/TabContext'
 import { Border, Loader } from 'ui'
 import { getAnimatedScrollableNode } from './utils'
-
-const VIEW_OFFSET = 145
 
 export default function createNavigationAwareScrollable(Component) {
   class ComponentWithNavigationScrolling extends PureComponent {
@@ -49,19 +47,6 @@ export default function createNavigationAwareScrollable(Component) {
       return getAnimatedScrollableNode(this.ref.current)
     }
 
-    get refreshControl() {
-      const { onRefresh, refreshing } = this.props
-      return (
-        onRefresh && (
-          <RefreshControl
-            progressViewOffset={VIEW_OFFSET}
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-          />
-        )
-      )
-    }
-
     get contentInset() {
       const {
         listContext: { contentInset },
@@ -98,9 +83,7 @@ export default function createNavigationAwareScrollable(Component) {
       }
     }
 
-    renderFullscreenLoader = top => <Loader top={-top} />
-
-    renderLoader = () => <Loader />
+    renderLoader = top => <Loader top={top} />
 
     onEndReached = () => {
       if (this.props.hasNextPage && this.props.isRefetching !== true && !this.props.isFetching) {
@@ -131,9 +114,6 @@ export default function createNavigationAwareScrollable(Component) {
     render() {
       const {
         contentContainerStyle = {},
-        paddingHorizontal = 20,
-        defaultPaddingTop,
-        paddingBottom,
         onScroll,
         borderSeparator,
         data,
@@ -151,7 +131,6 @@ export default function createNavigationAwareScrollable(Component) {
       } = this.props
 
       const initialFetch = !data && isFetching
-      const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 20) || 0
 
       return (
         <Component
@@ -160,7 +139,6 @@ export default function createNavigationAwareScrollable(Component) {
           ref={this.ref}
           contentInset={this.contentInset}
           contentOffset={this.contentOffset}
-          refreshControl={this.refreshControl}
           style={{ flex: 1 }}
           data={data}
           onRefresh={refetch}
@@ -170,28 +148,20 @@ export default function createNavigationAwareScrollable(Component) {
           ListHeaderComponent={ListHeaderComponent}
           ListFooterComponent={hasNextPage ? this.renderLoader() : null}
           ListEmptyComponent={
-            initialFetch ? this.renderFullscreenLoader(paddingTop) : ListEmptyComponent
+            initialFetch ? this.renderLoader(-this.contentInset.top) : ListEmptyComponent
           }
           keyboardShouldPersistTaps="always"
           keyboardDismissMode="on-drag"
           inverted={inverted}
           contentContainerStyle={{
-            flex: initialFetch ? 1 : 0, // Fix for ListEmptyComponent to center loader
+            flex: initialFetch ? 1 : 0,
             justifyContent: 'center',
-            paddingLeft: paddingHorizontal,
-            paddingRight: paddingHorizontal,
-            paddingTop,
-            paddingBottom:
-              (paddingBottom && paddingBottom)
-              || (!initialFetch && data && data.length > 0 && spacingSeparator && 60)
-              || 0,
-            ...contentContainerStyle,
+            ...this.contentContainerStyle,
           }}
           {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
           {...spacingSeparator && {
             ItemSeparatorComponent: () => <View style={{ paddingBottom: 50 }} />,
           }}
-          {...onScroll && { onScroll, scrollEventThrottle: 1 }}
           {...props}
         />
       )

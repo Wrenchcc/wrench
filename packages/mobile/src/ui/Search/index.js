@@ -1,38 +1,44 @@
-import React, { memo } from 'react'
+import React, { memo, useRef } from 'react'
 import PropTypes from 'prop-types'
+import { Transition } from 'react-native-reanimated'
 import withTranslation from 'i18n/withTranslation'
 import { search } from 'images'
 import { COLORS } from 'ui/constants'
-import { Base, Input, Icon, Placeholder, Text } from './styles'
+import { Base, Input, Icon } from './styles'
 
-const Search = memo(function Search({ t, style, onPress, placeholder = true, ...props }) {
+const transition = (
+  <Transition.Sequence>
+    <Transition.Out type="scale" />
+    <Transition.Change interpolation="easeInOut" />
+    <Transition.In type="fade" />
+  </Transition.Sequence>
+)
+
+const Search = memo(function Search({ t, ...props }) {
+  const transitionRef = useRef(null)
+
+  // const handleFocus = () => {
+  //   transitionRef.animateNextTransition()
+  //   onSearchFocus && onSearchFocus()
+  // }
+
   return (
-    <Base style={style}>
-      {placeholder ? (
-        <Placeholder onPress={onPress} activeOpacity={1}>
-          <Text color="light_grey">{t('Search:placeholder')}</Text>
-        </Placeholder>
-      ) : (
-        <Input
-          autoFocus
-          autoCorrect={false}
-          placeholderTextColor={COLORS.LIGHT_GREY}
-          selectionColor={COLORS.DARK}
-          placeholder={t('Search:placeholder')}
-          keyboardAppearance="dark"
-          returnKeyType="search"
-          {...props}
-        />
-      )}
+    <Base ref={transitionRef} transition={transition}>
+      <Input
+        autoCorrect={false}
+        placeholderTextColor={COLORS.LIGHT_GREY}
+        selectionColor={COLORS.DARK}
+        placeholder={t('Search:placeholder')}
+        keyboardAppearance="dark"
+        returnKeyType="search"
+        {...props}
+      />
+
       <Icon source={search} />
     </Base>
   )
 })
 
-Search.propTypes = {
-  style: PropTypes.object,
-  onPress: PropTypes.func.isRequired,
-  placeholder: PropTypes.bool,
-}
+Search.propTypes = {}
 
 export default withTranslation('Search')(Search)

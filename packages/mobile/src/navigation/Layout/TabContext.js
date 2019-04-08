@@ -26,7 +26,3 @@ export class TabProvider extends PureComponent {
 export const withTabContext = Component => props => (
   <TabConsumer>{context => <Component tabContext={context} {...props} />}</TabConsumer>
 )
-
-export default () => {
-  throw new Error('⚠️ Do not import TabContext directly, it should only be used with Layout! ⚠️')
-}

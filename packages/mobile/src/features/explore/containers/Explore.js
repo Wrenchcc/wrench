@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
+import { Layout, FlatList } from 'navigation'
 import { getRecentPosts } from 'graphql-old/queries/getExplore'
-import { Post, InfiniteListWithHandler } from 'ui'
+import { Post } from 'ui'
 import Popular from 'features/explore/components/Popular'
 
 class Explore extends PureComponent {
@@ -21,18 +22,20 @@ class Explore extends PureComponent {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
-      <InfiniteListWithHandler
-        spacingSeparator
-        ListHeaderComponent={<Popular />}
-        data={posts}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
-        renderItem={this.renderItem}
-      />
+      <Layout search={{}}>
+        <FlatList
+          spacingSeparator
+          ListHeaderComponent={<Popular />}
+          data={posts}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          keyExtractor={item => item.node.id}
+          renderItem={this.renderItem}
+        />
+      </Layout>
     )
   }
 }
