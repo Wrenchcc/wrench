@@ -8,4 +8,5 @@ export const SCREENS = {
   USER: 'USER',
   POST: 'POST',
   COMMENTS: 'COMMENTS',
+  WEBVIEW: 'WEBVIEW',
 }

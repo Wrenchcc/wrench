@@ -8,6 +8,7 @@ registerScreens()
 
 export function TabNavigation() {
   Navigation.setDefaultOptions(defaultOptions)
+
   Navigation.setRoot({
     root: {
       bottomTabs: {
@@ -27,9 +28,6 @@ export function TabNavigation() {
                   iconInsets,
                   titleDisplayMode: 'alwaysHide',
                 },
-                topBar: {
-                  visible: false,
-                },
               },
             },
           },
@@ -47,9 +45,6 @@ export function TabNavigation() {
                   icon: explore,
                   iconInsets,
                   titleDisplayMode: 'alwaysHide',
-                },
-                topBar: {
-                  visible: false,
                 },
               },
             },
@@ -69,9 +64,6 @@ export function TabNavigation() {
                   iconInsets,
                   titleDisplayMode: 'alwaysHide',
                 },
-                topBar: {
-                  visible: false,
-                },
               },
             },
           },
@@ -89,9 +81,6 @@ export function TabNavigation() {
                   icon: profile,
                   iconInsets,
                   titleDisplayMode: 'alwaysHide',
-                },
-                topBar: {
-                  visible: false,
                 },
               },
             },

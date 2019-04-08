@@ -1,5 +1,5 @@
-import { navigateToWebView, navigateToUser } from 'navigation-old/actions'
 import { COLORS, FONTS } from 'ui/constants'
+import { navigateTo, showModal, SCREENS } from 'navigation'
 
 function addhttp(url) {
   if (!/^(f|ht)tps?:\/\//i.test(url)) {
@@ -8,11 +8,17 @@ function addhttp(url) {
   return url
 }
 
-const handleUrlPress = url => navigateToWebView({ url: addhttp(url) })
+const handleUrlPress = url => {
+  showModal(SCREENS.WEBVIEW, {
+    url: addhttp(url),
+  })
+}
 
 const handleNamePress = name => {
   const username = name.replace('@', '')
-  navigateToUser({ user: { username } })
+  navigateTo(SCREENS.USER, {
+    username,
+  })
 }
 
 const styles = {

@@ -8,10 +8,13 @@ import Project from 'features/project/containers/Project'
 import Followers from 'features/project/containers/Followers'
 import Post from 'features/post/containers/Post'
 import Comments from 'features/project/containers/Comments'
+import WebView from 'features/webview/containers/WebView'
 import { SCREENS } from './constants'
 import HOC from './hoc'
 
 export default function registerScreens() {
+  // Navigation.registerComponent(`TOP_BAR`, () => CustomTopBar);
+
   Navigation.registerComponent(SCREENS.FEED, () => HOC(Feed))
   Navigation.registerComponent(SCREENS.EXPLORE, () => HOC(Explore))
   Navigation.registerComponent(SCREENS.NOTIFICATIONS, () => HOC(Notifications))
@@ -21,4 +24,5 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.FOLLOWERS, () => HOC(Followers))
   Navigation.registerComponent(SCREENS.POST, () => HOC(Post))
   Navigation.registerComponent(SCREENS.COMMENTS, () => HOC(Comments))
+  Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(WebView))
 }

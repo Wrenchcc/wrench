@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
+import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql-old/queries/getFeed'
 import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
@@ -28,10 +29,10 @@ class Feed extends PureComponent {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
-      <>
+      <Layout>
         <PostProgress />
 
-        <InfiniteListWithHandler
+        <FlatList
           spacingSeparator
           defaultPaddingTop
           data={posts}
@@ -45,7 +46,7 @@ class Feed extends PureComponent {
           renderItem={this.renderItem}
           polling
         />
-      </>
+      </Layout>
     )
   }
 }

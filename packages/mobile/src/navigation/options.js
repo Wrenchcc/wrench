@@ -1,3 +1,5 @@
+import { COLORS } from 'ui/constants'
+
 export const iconInsets = {
   top: 0,
   left: 0,
@@ -7,15 +9,18 @@ export const iconInsets = {
 
 export const defaultOptions = {
   bottomTabs: {
-    backgroundColor: 'black',
+    backgroundColor: COLORS.DARK,
   },
   bottomTab: {
     iconColor: 'grey',
-    selectedIconColor: 'white',
-    textColor: 'white',
+    selectedIconColor: COLORS.WHITE,
+    textColor: COLORS.WHITE,
   },
   layout: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
     orientation: ['portrait'],
+  },
+  topBar: {
+    visible: false,
   },
 }

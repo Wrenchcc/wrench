@@ -33,7 +33,12 @@ function Post({ post, withoutTitle, withoutComments, disabled }) {
   return (
     <>
       <Top>
-        <Avatar uri={post.user.avatarUrl} onPress={navigateToUser} isOnline={post.user.isOnline} />
+        <Avatar
+          uri={post.user.avatarUrl}
+          disabled={disabled}
+          onPress={navigateToUser}
+          isOnline={post.user.isOnline}
+        />
         <Icon source={share} onPress={this.toggleActionSheet} hitSlop={20} />
       </Top>
       <Content>
