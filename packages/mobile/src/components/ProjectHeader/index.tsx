@@ -4,27 +4,29 @@ import { Title } from 'ui'
 import { useNavigation, SCREENS } from 'navigation'
 import { Base, ProjectName, Followers } from './styles'
 
-function Header({ project }) {
+function ProjectHeader({ id, title, followers }) {
   const { navigate } = useNavigation()
 
   const navigateToFollowers = () => navigate(SCREENS.FOLLOWERS, {
-    id: project.id,
+    id,
   })
 
   return (
     <Base>
       <ProjectName>
         <Title large numberOfLines={0}>
-          {project.title}
+          {title}
         </Title>
-        <Followers followers={project.followers.totalCount} onPress={navigateToFollowers} />
+        <Followers followers={followers.totalCount} onPress={navigateToFollowers} />
       </ProjectName>
     </Base>
   )
 }
 
-Header.propTypes = {
-  project: PropTypes.object.isRequired,
+ProjectHeader.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  followers: PropTypes.object.isRequired,
 }
 
-export default Header
+export default ProjectHeader
