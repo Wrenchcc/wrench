@@ -39,17 +39,11 @@ const getProjectOptions = {
     },
     fetchPolicy: 'cache-and-network',
   }),
-  props: ({
-    data: { fetchMore, error, loading, project, networkStatus, refetch, post },
-    ownProps: { navigation },
-  }) => ({
+  props: ({ data: { fetchMore, error, loading, project, networkStatus, refetch, post } }) => ({
     error,
     refetch,
     post,
-    project: {
-      ...pathOr(null, ['state', 'params', 'project'], navigation),
-      ...project,
-    },
+    project,
     posts: pathOr(null, ['posts', 'edges'], project),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
     isRefetching: isRefetching(networkStatus),

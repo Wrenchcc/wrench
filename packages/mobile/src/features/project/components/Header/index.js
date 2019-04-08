@@ -4,7 +4,7 @@ import { Title } from 'ui'
 import { useNavigation, SCREENS } from 'navigation'
 import { Base, ProjectName, Followers } from './styles'
 
-function Header({ project, spacingHorizontal }) {
+function Header({ project }) {
   const { navigate } = useNavigation()
 
   const navigateToFollowers = () => navigate(SCREENS.FOLLOWERS, {
@@ -12,7 +12,7 @@ function Header({ project, spacingHorizontal }) {
   })
 
   return (
-    <Base spacingHorizontal={spacingHorizontal}>
+    <Base>
       <ProjectName>
         <Title large numberOfLines={0}>
           {project.title}
@@ -25,7 +25,6 @@ function Header({ project, spacingHorizontal }) {
 
 Header.propTypes = {
   project: PropTypes.object.isRequired,
-  spacingHorizontal: PropTypes.bool.isRequired,
 }
 
 export default Header

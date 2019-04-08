@@ -134,7 +134,6 @@ export default function createNavigationAwareScrollable(Component) {
 
       return (
         <Component
-          {...this.props}
           scrollEventThrottle={1}
           ref={this.ref}
           contentInset={this.contentInset}

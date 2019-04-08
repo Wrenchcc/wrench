@@ -6,7 +6,7 @@ import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql-old/queries/getExplore'
 import { navigateToProject } from 'navigation-old/actions'
 import { InfiniteList, Title } from 'ui'
-import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
+import { Base, Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
 const ITEM_HEIGHT = 180
 
@@ -48,7 +48,7 @@ class Popular extends PureComponent {
     const { projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t } = this.props
 
     return (
-      <>
+      <Base>
         <Header>
           <Title medium>{t('Popular:popular')}</Title>
         </Header>
@@ -77,7 +77,7 @@ class Popular extends PureComponent {
         <Footer>
           <Title medium>{t('Popular:recent')}</Title>
         </Footer>
-      </>
+      </Base>
     )
   }
 }

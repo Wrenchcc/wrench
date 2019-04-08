@@ -49,7 +49,7 @@ class User extends PureComponent {
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
           ListHeaderComponent={user && <Header user={user} />}
           ListEmptyComponent={<FollowingProjects user={user} />}
-          data={[]}
+          data={posts}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
