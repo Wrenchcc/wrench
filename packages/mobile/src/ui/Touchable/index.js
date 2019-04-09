@@ -6,11 +6,11 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 import evenHitSlop from 'utils/hitSlop'
 
 const onPressWrapper = (onPress, hapticFeedback = false) => {
+  onPress()
+
   if (hapticFeedback) {
     ReactNativeHapticFeedback.trigger(hapticFeedback)
   }
-
-  onPress()
 }
 
 const Touchable = ({

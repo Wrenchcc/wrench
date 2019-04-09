@@ -10,7 +10,7 @@ import Post from 'features/post/containers/Post'
 import Comments from 'features/project/containers/Comments'
 import WebView from 'features/webview/containers/WebView'
 import { SCREENS } from './constants'
-import HOC from './hoc'
+import HOC from './Hoc'
 
 export default function registerScreens() {
   Navigation.registerComponent(SCREENS.FEED, () => HOC(Feed))

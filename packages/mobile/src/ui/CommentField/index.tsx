@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Keyboard } from 'react-native'
-import { Query } from 'react-apollo'
+import { compose, graphql } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
-import { CurrentUserQuery } from 'graphql-old/queries/user/getCurrentUser'
+import { CURRENT_USER } from 'graphql/queries/user/currentUser'
 import { COLORS } from 'ui/constants'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
@@ -14,8 +14,6 @@ const PATTERN = '\\@[a-z0-9_-]+|\\@'
 const TRIGGER = '@'
 const EMPTY = ' '
 
-// TODO: Fix better perf on CurrentUserQuery
-// Makes the view laggy
 class CommentField extends PureComponent {
   textInput = React.createRef()
 
@@ -93,39 +91,35 @@ class CommentField extends PureComponent {
   }
 
   render() {
-    const { t, disabled, onSubmit, onChangeText, ...props } = this.props
-    return (
-      <Query query={CurrentUserQuery}>
-        {({ data, loading }) => {
-          if (loading) return null
+    const { t, disabled, onSubmit, onChangeText, data, ...props } = this.props
 
-          return (
-            <Base>
-              <Avatar uri={data.user.avatarUrl} />
-              <Input
-                placeholder={t('CommentField:placeholder')}
-                placeholderTextColor={COLORS.LIGHT_GREY}
-                keyboardType="twitter"
-                onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
-                onChangeText={this.onChangeText}
-                value={this.props.value}
-                color="dark"
-                inputRef={this.textInput}
-                {...props}
-              />
-              {!disabled && (
-                <Button onPress={this.handleSubmit} hapticFeedback="impactLight">
-                  <Text fontSize={15} medium>
-                    {t('CommentField:post')}
-                  </Text>
-                </Button>
-              )}
-            </Base>
-          )
-        }}
-      </Query>
+    return (
+      <Base>
+        <Avatar uri={data.user.avatarUrl} />
+        <Input
+          placeholder={t('CommentField:placeholder')}
+          placeholderTextColor={COLORS.LIGHT_GREY}
+          keyboardType="twitter"
+          onSubmitEditing={(!this.props.value.length === 0 && this.onSubmitEditing) || null}
+          onChangeText={this.onChangeText}
+          value={this.props.value}
+          color="dark"
+          inputRef={this.textInput}
+          {...props}
+        />
+        {!disabled && (
+          <Button onPress={this.handleSubmit} hapticFeedback="impactLight">
+            <Text fontSize={15} medium>
+              {t('CommentField:post')}
+            </Text>
+          </Button>
+        )}
+      </Base>
     )
   }
 }
 
-export default withTranslation('CommentField')(CommentField)
+export default compose(
+  withTranslation('CommentField'),
+  graphql(CURRENT_USER, { fetchPolicy: 'cache-only' })
+)(CommentField)

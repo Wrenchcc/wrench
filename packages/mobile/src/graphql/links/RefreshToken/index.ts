@@ -1,7 +1,7 @@
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import client from 'graphql/client'
-import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
+import { REFRESH_TOKEN } from 'graphql/mutations/user/refreshToken'
 import { getTokens, setTokens } from 'graphql/utils/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
@@ -26,7 +26,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
           return client
             .mutate({
-              mutation: RefreshTokenMutation,
+              mutation: REFRESH_TOKEN,
               variables: { refreshToken },
             })
             .then(({ data }) => {

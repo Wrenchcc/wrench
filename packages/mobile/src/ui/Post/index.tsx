@@ -1,10 +1,6 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-// import { Alert, Linking, Keyboard } from 'react-native'
-import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
-import withTranslation from 'i18n/withTranslation'
-import { deletePost } from 'graphql-old/mutations/post/deletePost'
+import { useTranslation } from 'react-i18next'
 import Avatar from 'ui/Avatar'
 import Carousel from 'ui/Carousel'
 import Comments from 'ui/Comments'
@@ -12,17 +8,17 @@ import Title from 'ui/Title'
 import Text from 'ui/Text'
 import Icon from 'ui/Icon'
 import TimeAgo from 'ui/TimeAgo'
-// import ActionSheet from 'ui/ActionSheet'
 import { share } from 'images'
-import EditPost from 'ui/EditPost'
+// import EditPost from 'ui/EditPost'
+// import ActionSheet from 'ui/ActionSheet'
+// import { deletePost } from 'graphql-old/mutations/post/deletePost'
+// import PropTypes from 'prop-types'
+// import { Alert, Linking, Keyboard } from 'react-native'
 import { Base, Top, Headline, Content, Spacer } from './styled'
 
 function Post({ post, withoutTitle, withoutComments, disabled }) {
+  const { t } = useTranslation()
   const { navigate } = useNavigation()
-
-  const navigateToUser = () => navigate(SCREENS.USER, {
-    id: post.user.id,
-  })
 
   const navigateToProject = () => navigate(SCREENS.PROJECT, {
     slug: post.project.slug,
@@ -35,7 +31,10 @@ function Post({ post, withoutTitle, withoutComments, disabled }) {
         <Avatar
           uri={post.user.avatarUrl}
           disabled={disabled}
-          onPress={navigateToUser}
+          onPress={() => navigate(SCREENS.USER, {
+            id: post.user.id,
+          })
+          }
           isOnline={post.user.isOnline}
         />
         <Icon source={share} onPress={this.toggleActionSheet} hitSlop={20} />
@@ -49,36 +48,24 @@ function Post({ post, withoutTitle, withoutComments, disabled }) {
           </Headline>
         )}
 
-        {false ? (
-          <EditPost
-            post={post}
-            color={withoutTitle ? 'dark' : 'grey'}
-            onSubmit={this.toggleEdit}
-            hasChanged={hasChanged => this.setState({ hasChanged })}
-          />
-        ) : (
-          <Text
-            onPress={navigateToProject}
-            disabled={withoutTitle}
-            color={withoutTitle ? 'dark' : 'grey'}
-            fontSize={15}
-            lineHeight={22}
-          >
-            {post.caption}
-          </Text>
-        )}
+        <Text
+          onPress={navigateToProject}
+          disabled={withoutTitle}
+          color={withoutTitle ? 'dark' : 'grey'}
+          fontSize={15}
+          lineHeight={22}
+        >
+          {post.caption}
+        </Text>
 
         <Spacer />
-
         {post.files && <Carousel files={post.files} />}
       </Content>
-      {!withoutComments && <>{!post.project.commentsDisabled && <Comments data={post} />}</>}
+
+      {!withoutComments && !post.project.commentsDisabled && <Comments data={post} />}
       <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
     </Base>
   )
 }
 
-export default compose(
-  deletePost,
-  withTranslation('Post')
-)(Post)
+export default Post

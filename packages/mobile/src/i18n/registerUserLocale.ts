@@ -1,5 +1,5 @@
 import { pathOr } from 'ramda'
-import { client } from 'graphql-old/createClient'
+import client from 'graphql/client'
 import { EditUserMutation } from 'graphql-old/mutations/user/editUser'
 import { CurrentUserQuery } from 'graphql-old/queries/user/getCurrentUser'
 import { logError } from 'utils/analytics'
@@ -9,7 +9,9 @@ export function updateUserLanguage(locale) {
   try {
     client.mutate({
       mutation: EditUserMutation,
-      variables: { input: { locale } },
+      variables: {
+        input: { locale },
+      },
     })
   } catch (err) {
     logError(err)
