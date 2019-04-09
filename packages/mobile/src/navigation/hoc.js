@@ -6,10 +6,10 @@ import createClient from 'graphql-old/createClient'
 import { NavigationContext } from './context'
 import { navigate } from './actions'
 
+const client = createClient()
+
 export default Component => {
   function Screen(props) {
-    const client = createClient()
-
     return (
       <Provider>
         <ApolloProvider client={client}>

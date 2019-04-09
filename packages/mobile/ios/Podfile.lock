@@ -204,7 +204,7 @@ PODS:
   - react-native-fbsdk/Share (0.8.0):
     - FBSDKShareKit
     - React
-  - react-native-haptic-feedback (1.7.0):
+  - react-native-haptic-feedback (1.7.1):
     - React
   - react-native-netinfo (2.0.0):
     - React

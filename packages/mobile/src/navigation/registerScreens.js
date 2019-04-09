@@ -13,8 +13,6 @@ import { SCREENS } from './constants'
 import HOC from './hoc'
 
 export default function registerScreens() {
-  // Navigation.registerComponent(`TOP_BAR`, () => CustomTopBar);
-
   Navigation.registerComponent(SCREENS.FEED, () => HOC(Feed))
   Navigation.registerComponent(SCREENS.EXPLORE, () => HOC(Explore))
   Navigation.registerComponent(SCREENS.NOTIFICATIONS, () => HOC(Notifications))
