@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
 import { Layout, FlatList } from 'navigation'
@@ -10,7 +10,7 @@ import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'components/ProjectHeader'
 import Footer from 'features/project/components/Footer'
 
-const Project = memo(function Project({
+function Project({
   posts,
   project,
   fetchMore,
@@ -24,8 +24,7 @@ const Project = memo(function Project({
     ? TYPES.PROJECT_POST
     : TYPES.PROJECT_NO_POSTS
   const hasPosts = posts && posts.length > 0
-  console.log(project)
-  console.log(posts)
+
   return (
     <Layout>
       <FlatList
@@ -58,7 +57,7 @@ const Project = memo(function Project({
       )}
     </Layout>
   )
-})
+}
 
 Project.propTypes = {
   fetchMore: PropTypes.func.isRequired,

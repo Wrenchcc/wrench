@@ -114,7 +114,6 @@ export default function createNavigationAwareScrollable(Component) {
     render() {
       const {
         contentContainerStyle = {},
-        onScroll,
         borderSeparator,
         data,
         isFetching,
