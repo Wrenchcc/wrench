@@ -1,7 +1,7 @@
-import React, { memo, useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useRef } from 'react'
+// import PropTypes from 'prop-types'
 import { Transition } from 'react-native-reanimated'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { search } from 'images'
 import { COLORS } from 'ui/constants'
 import { Base, Input, Icon } from './styles'
@@ -14,8 +14,9 @@ const transition = (
   </Transition.Sequence>
 )
 
-const Search = memo(function Search({ t, ...props }) {
+function Search({ ...props }) {
   const transitionRef = useRef(null)
+  const { t } = useTranslation()
 
   // const handleFocus = () => {
   //   transitionRef.animateNextTransition()
@@ -37,8 +38,8 @@ const Search = memo(function Search({ t, ...props }) {
       <Icon source={search} />
     </Base>
   )
-})
+}
 
 Search.propTypes = {}
 
-export default withTranslation('Search')(Search)
+export default Search

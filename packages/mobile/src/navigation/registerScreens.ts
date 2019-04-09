@@ -1,26 +1,16 @@
 import { Navigation } from 'react-native-navigation'
-import Feed from 'features/feed/containers/Feed'
-import Explore from 'features/explore/containers/Explore'
-import Notifications from 'features/notifications/containers/Notifications'
-import Me from 'features/profile/containers/Me'
-import User from 'features/profile/containers/User'
-import Project from 'features/project/containers/Project'
-import Followers from 'features/project/containers/Followers'
-import Post from 'features/post/containers/Post'
-import Comments from 'features/project/containers/Comments'
-import WebView from 'features/webview/containers/WebView'
 import { SCREENS } from './constants'
 import HOC from './Hoc'
 
 export default function registerScreens() {
-  Navigation.registerComponent(SCREENS.FEED, () => HOC(Feed))
-  Navigation.registerComponent(SCREENS.EXPLORE, () => HOC(Explore))
-  Navigation.registerComponent(SCREENS.NOTIFICATIONS, () => HOC(Notifications))
-  Navigation.registerComponent(SCREENS.ME, () => HOC(Me))
-  Navigation.registerComponent(SCREENS.PROJECT, () => HOC(Project))
-  Navigation.registerComponent(SCREENS.USER, () => HOC(User))
-  Navigation.registerComponent(SCREENS.FOLLOWERS, () => HOC(Followers))
-  Navigation.registerComponent(SCREENS.POST, () => HOC(Post))
-  Navigation.registerComponent(SCREENS.COMMENTS, () => HOC(Comments))
-  Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(WebView))
+  Navigation.registerComponent(SCREENS.FEED, () => HOC(require('features/feed/containers/Feed').default))
+  Navigation.registerComponent(SCREENS.EXPLORE, () => HOC(require('features/explore/containers/Explore').default))
+  Navigation.registerComponent(SCREENS.NOTIFICATIONS, () => HOC(require('features/notifications/containers/Notifications').default))
+  Navigation.registerComponent(SCREENS.ME, () => HOC(require('features/profile/containers/Me').default))
+  Navigation.registerComponent(SCREENS.PROJECT, () => HOC(require('features/project/containers/Project').default))
+  Navigation.registerComponent(SCREENS.USER, () => HOC(require('features/profile/containers/User').default))
+  Navigation.registerComponent(SCREENS.FOLLOWERS, () => HOC(require('features/project/containers/Followers').default))
+  Navigation.registerComponent(SCREENS.POST, () => HOC(require('features/post/containers/Post').default))
+  Navigation.registerComponent(SCREENS.COMMENTS, () => HOC(require('features/project/containers/Comments').default))
+  Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(require('features/webview/containers/WebView').default))
 }

@@ -12,9 +12,7 @@ export default function createNavigationAwareScrollable(Component) {
     static displayName = `NavigationAwareScrollable(${Component.displayName || Component.name})`
 
     static propTypes = {
-      hideHeader: PropTypes.bool,
       onRefresh: PropTypes.func,
-      refreshing: PropTypes.bool,
       scrollRef: PropTypes.func,
       contentContainerStyle: PropTypes.object,
       tabContext: PropTypes.object,

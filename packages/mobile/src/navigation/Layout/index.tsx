@@ -1,5 +1,6 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import Search from 'components/Search'
 import Header from '../Header'
 import { withListProvider, withListContext } from './ListContext'
 
@@ -46,14 +47,6 @@ class Layout extends PureComponent {
     this.handleQueryChange(DEFAULT_QUERY)
   }
 
-  renderSearch() {
-    const { renderSearch } = this.props
-
-    if (!renderSearch) return null
-
-    // return <SearchResult active={this.state.searchActive}>{renderSearch(this.state)}</SearchResult>
-  }
-
   renderHeader = () => {
     const { actions, headerTitle, search } = this.props
 
@@ -76,10 +69,11 @@ class Layout extends PureComponent {
     const { children } = this.props
 
     return (
-      <>
+      <Fragment>
         {this.renderHeader()}
+        <Search active={this.state.searchActive} query={this.state.query} />
         {children}
-      </>
+      </Fragment>
     )
   }
 }
