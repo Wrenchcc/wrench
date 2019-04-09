@@ -5412,10 +5412,10 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-i18next@^10.6.1:
-  version "10.6.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.6.1.tgz#044c39fb463a8d96cc548509187a1bb316e660fa"
-  integrity sha512-uuLksWCYR0i9tRZyKsQpcbJ0kiXYVDcaFXPVapZe8mYXReXvKsBgaOb6EwtqdXqiidO+HJAbyLOq9g3yzuZDEQ==
+react-i18next@^10.6.2:
+  version "10.6.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.6.2.tgz#1100b6f65453c021012b2e120a0754f7905b4de1"
+  integrity sha512-dXr5EGlzIWnGDVmMJzBi14PJUrcrWEedU4vSFLjuOYBU4fiZ1/jJIjnEE71713gGtYd254lcqeKjoQsYOGGKDg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5440,10 +5440,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.2.1.tgz#01331f011048545980463b48c83cf63e0eec0ee0"
-  integrity sha512-N4uwZIXirj2Lk5nQlSz/gXiGKxnouLdpSxYM3jqMUmegwPWIaxvjTqggXjEC2V2Go+8/1Z5ytMCLyoO969inHw==
+react-native-camera@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.2.2.tgz#2636e3ec681aef5a786ae7856820ee64e59fa060"
+  integrity sha512-sdokHPlHsPNL0VoCfpuHwnRl6qISE+olZkCZe0zTgkEaTEniD64p37x3+acaJtNwAzxAznAISUkvsyBprBUETQ==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5465,10 +5465,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.4.2.tgz#d24b09b7a5ea3c0aaf4446089d6d0e20950d0a6d"
-  integrity sha512-esAdN9gl3vQRgnqbBBwHa7r1f6VvgN/SsWQkv+snV2KQXWpR4zdk5FLIw+XT9DdoXCG/O8RKLyaTbVxI/pf2kg==
+react-native-device-info@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.4.3.tgz#dd08fbc37cc97065072045716b1ad3758424358d"
+  integrity sha512-9QdLLmBgclJo5iphsto4Nbhf+8rdM3tF9ZVd3DUN9htE8JpN/r7PSNvdvuLC3bD/XDzG7GwYxuSwi1UelgaGqw==
 
 react-native-fast-image@^5.2.0:
   version "5.2.0"
@@ -5488,10 +5488,10 @@ react-native-fbsdk@^0.8.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
-react-native-firebase@^5.2.3:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.2.3.tgz#1e7867b32028cad24785b181aa9aba07e3787109"
-  integrity sha512-8XLioEQDSN8o0Uiu1cEb4Y50yC5PvECQjSV/+b6A9TzWmLrrfYwXkUWQH1Rua8OUWXAXCobknV6JQeKa3NsvJA==
+react-native-firebase@^5.2.5:
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.2.5.tgz#109a69aa97b53746cbea6483892a0ed8205677ea"
+  integrity sha512-87BZ6zZaB1283OmgcVYuwMH7A/WpTA9wxCDH2eGfpKCcAmzHN7wXe5a+giXmNo9olojCgULIBcvUBBdGfRSt1A==
   dependencies:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
@@ -5505,20 +5505,20 @@ react-native-gesture-handler@^1.1.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-haptic-feedback@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.6.0.tgz#32c7fd9bcdb0e639dfd5e3515a238a74e05c4484"
-  integrity sha512-caZ0q5UqJQVYXeGvJPt8YMrrWXJ9a+uLNu6ilvSgc61ydjw3BY2fObvOTognJnV9aNn53LjJ7AAhsaVAsbW28g==
+react-native-haptic-feedback@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.7.0.tgz#5c30d11a03d4c74a66aa2ff823acfa5448fce422"
+  integrity sha512-2mn5NPk6QV3Dgn8G1msXXUeCa8Z7eTk3EGcxj/61yKjwFpUa8i5m6XG4tm70HRDH0/SCQTnLX1JeZbVvQF4iyA==
 
 react-native-linear-gradient@^2.5.4:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
   integrity sha512-FF1NhlerA4uBiS0gFIHa4FBp8/aftv4vPj14Y47lGNkYjSI94tnI6oYO3EfUxXjEyCUPiOVNKZOB9kScyjc5Ew==
 
-react-native-navigation@^2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.16.0.tgz#017e4c6ad58aa979f75742abf9d7dedda55cd268"
-  integrity sha512-2vVsaIxxNYRuGmIvrhGo0lGGHA0JCKEcHTmsY6RoxAmQ4fUuz4/OGmKu12yDjduQWOOYTTWw4J2YT9ZYmDOVag==
+react-native-navigation@^2.17.0:
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.17.0.tgz#c9b9f98c7511adde02b0c1ca732bee94dc7c57fc"
+  integrity sha512-atZzyBnltJmWWvr+eURq58Vc1YtDq0ol1lwJ9sjae1S56Z6T8FqpfthYwmkzjBv6+PDlLj2q6Udeg8opFVLVpA==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -5635,10 +5635,10 @@ react-native-webview@^5.6.2:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
 
-react-native@v0.59.2:
-  version "0.59.2"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.2.tgz#c2e2d9e185b04e54948f170841d97c24661a0fa9"
-  integrity sha512-gIygrCr42rGEQnfjcAZdCOqgjC0oZtTIp+mdbUW+yqHpNUU1PbYKzUkLlvSFGeN+IUcL8WTaC1JtJvghKhaLmA==
+react-native@v0.59.4:
+  version "0.59.4"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.4.tgz#c0725e2e8efdea135533794ce95fea2289fe619a"
+  integrity sha512-etnXQp9IZgC8Vj5gsxZEDP4xRjJVNIj5/BSE1WcNAONG6tu6+mDBntx1jxHInwh61WYNgoQJuQGsbN5Na59ZDw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^1.2.1"
