@@ -4,9 +4,7 @@ import Animated from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
 import { scrollToOffset } from 'navigation/Scrollables/utils'
 import { navigationConstants } from 'navigation/constants'
-
-export const ListContext = React.createContext({})
-export const ListConsumer = ListContext.Consumer
+import { ListContext } from './context'
 
 const {
   or,
@@ -35,7 +33,7 @@ const {
   min,
 } = Animated
 
-export class ListProvider extends Component {
+export default class Provider extends Component {
   static propTypes = {
     children: PropTypes.any,
     routes: PropTypes.arrayOf(
@@ -47,7 +45,6 @@ export class ListProvider extends Component {
     ),
   }
 
-  // New stuff
   dragging = new Value(0)
 
   scrollY = new Value(0)
@@ -311,13 +308,3 @@ export class ListProvider extends Component {
     )
   }
 }
-
-export const withListProvider = Component => props => (
-  <ListProvider {...props}>
-    <Component {...props} />
-  </ListProvider>
-)
-
-export const withListContext = Component => props => (
-  <ListConsumer>{context => <Component listContext={context} {...props} />}</ListConsumer>
-)

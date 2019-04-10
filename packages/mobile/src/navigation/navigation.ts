@@ -33,7 +33,7 @@ export function AuthNavigation() {
   })
 }
 
-export function TabNavigation() {
+export function AppNavigation() {
   Navigation.setDefaultOptions(defaultOptions)
 
   Navigation.setRoot({

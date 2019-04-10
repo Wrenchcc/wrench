@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { Search } from 'ui'
-import { ListContext } from 'navigation/Layout/ListContext'
+import SearchBar from 'components/SearchBar'
+import { ListContext } from 'navigation/Layout/context'
 import { transformContainer, opacityContent } from './animation'
 import styles from './styles'
 
@@ -22,7 +22,7 @@ function Header({
       <View style={styles.header}>
         <Animated.View style={opacityContent(translateY, headerHeight)}>
           <View style={styles.inner}>
-            <Search
+            <SearchBar
               onChangeQuery={onQueryChange}
               onSearchCancel={onSearchCancel}
               onSearchFocus={onSearchFocus}

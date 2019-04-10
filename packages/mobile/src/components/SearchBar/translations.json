@@ -1,9 +1,11 @@
 {
-  "SearchBar": {
+  "Search": {
     "en": {
+      "placeholder": "Search",
       "cancel": "Cancel"
     },
     "sv": {
+      "placeholder": "Sök",
       "cancel": "Avbryt"
     }
   }

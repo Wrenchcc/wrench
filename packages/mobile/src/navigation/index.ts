@@ -1,4 +1,4 @@
-export { TabNavigation, AuthNavigation } from './navigation'
+export { AppNavigation, AuthNavigation } from './navigation'
 export { default as Layout } from './Layout'
 export * from './hooks'
 export * from './constants'

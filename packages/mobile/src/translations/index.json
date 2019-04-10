@@ -1,5 +1,13 @@
 {
   "en": {
+    "SearchTab": {
+      "users": "People",
+      "projects": "Projects"
+    },
+    "Search": {
+      "placeholder": "Search",
+      "cancel": "Cancel"
+    },
     "Popular": {
       "popular": "Popular projects",
       "recent": "Recent posts"
@@ -136,16 +144,16 @@
     "Project": {
       "recent": "Recent posts"
     },
-    "SearchTab": {
-      "users": "People",
-      "projects": "Projects"
-    },
     "OnboardingContent": {
       "headline": "What are you interested in?",
       "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with."
     },
     "Facebook": {
       "button": "Continue with Facebook"
+    },
+    "Legal": {
+      "description": "By continuing you agree to Wrench's ",
+      "link": "terms and conditions."
     },
     "Onboarding": {
       "next": "Next"
@@ -208,10 +216,6 @@
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
     },
-    "Legal": {
-      "description": "By continuing you agree to Wrench's ",
-      "link": "terms and conditions."
-    },
     "LoadNewer": {
       "button": "New posts"
     },
@@ -242,12 +246,6 @@
       "follow": "Follow",
       "unfollow": "Following"
     },
-    "Search": {
-      "placeholder": "Search"
-    },
-    "SearchBar": {
-      "cancel": "Cancel"
-    },
     "SearchingFor": {
       "title": "Searching for"
     },
@@ -267,6 +265,14 @@
     }
   },
   "sv": {
+    "SearchTab": {
+      "users": "Personer",
+      "projects": "Projekt"
+    },
+    "Search": {
+      "placeholder": "Sök",
+      "cancel": "Avbryt"
+    },
     "Popular": {
       "popular": "Populära projekt",
       "recent": "Senaste inlägg"
@@ -403,16 +409,16 @@
     "Project": {
       "recent": "Senaste inlägg"
     },
-    "SearchTab": {
-      "users": "Personer",
-      "projects": "Projekt"
-    },
     "OnboardingContent": {
       "headline": "Vad är du intresserad av?",
       "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med."
     },
     "Facebook": {
       "button": "Logga in med Facebook"
+    },
+    "Legal": {
+      "description": "Genom att fortsätta hålla du med Wrench's ",
+      "link": "användarvillkor."
     },
     "Onboarding": {
       "next": "Nästa"
@@ -474,10 +480,6 @@
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"
     },
-    "Legal": {
-      "description": "Genom att fortsätta hålla du med Wrench's ",
-      "link": "användarvillkor."
-    },
     "LoadNewer": {
       "button": "Nya inlägg"
     },
@@ -507,12 +509,6 @@
     "ProjectCard": {
       "follow": "Följ projekt",
       "unfollow": "Följer"
-    },
-    "Search": {
-      "placeholder": "Sök"
-    },
-    "SearchBar": {
-      "cancel": "Avbryt"
     },
     "SearchingFor": {
       "title": "Söker efter"

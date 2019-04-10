@@ -68,12 +68,13 @@ class Search extends PureComponent {
     />
   )
 
+  // TODO: Search in active index only
   renderScene = ({ route }) => {
     switch (route.key) {
       case 'users':
         return <Users scrollRef={el => (this.userRef = el)} query={this.props.query} />
       case 'projects':
-        return <Projects scrollRef={el => (this.projectRef = el)} query={query} />
+        return <Projects scrollRef={el => (this.projectRef = el)} query={this.props.query} />
       default:
         return null
     }

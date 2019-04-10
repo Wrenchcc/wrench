@@ -4,7 +4,8 @@ import UiText from 'ui/Text'
 import { FONTS, COLORS } from 'ui/constants'
 
 export const Base = styled(Transitioning.View)`
-  flex: 1;
+  flex-direction: row;
+  align-items: center;
 `
 
 export const Text = styled(UiText)`
@@ -13,6 +14,7 @@ export const Text = styled(UiText)`
 `
 
 export const Input = styled.TextInput`
+  flex: 1;
   position: relative;
   height: 40;
   background-color: ${COLORS.ULTRA_LIGHT_GREY};
