@@ -2,6 +2,7 @@ export const navigationConstants = {
   listInsetTop: 0,
   topBarHeight: 60,
   statusBarHeight: 44,
+  totalTopBarHeight: 60 + 44,
 }
 
 export const SCREENS = {

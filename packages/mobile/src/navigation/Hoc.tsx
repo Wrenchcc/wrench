@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Provider } from 'unstated'
 import { ApolloProvider } from 'react-apollo' // TODO: Remove
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+
 import client from 'graphql/client'
 import { NavigationContext } from './context'
 import { navigate, showModal, dismissModal } from './actions'
@@ -32,5 +34,5 @@ export default Component => {
     componentId: PropTypes.string.isRequired,
   }
 
-  return Screen
+  return gestureHandlerRootHOC(Screen)
 }
