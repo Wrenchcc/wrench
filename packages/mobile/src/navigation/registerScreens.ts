@@ -13,4 +13,5 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.POST, () => HOC(require('features/post/containers/Post').default))
   Navigation.registerComponent(SCREENS.COMMENTS, () => HOC(require('features/project/containers/Comments').default))
   Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(require('features/webview/containers/WebView').default))
+  Navigation.registerComponent(SCREENS.SIGN_IN, () => HOC(require('features/signIn/containers/SignIn').default))
 }

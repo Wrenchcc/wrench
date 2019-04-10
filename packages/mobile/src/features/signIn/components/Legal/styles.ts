@@ -6,6 +6,7 @@ export const Base = styled.View`
   justify-content: center;
   flex-direction: row;
   align-items: center;
+  margin-top: 15px;
 `
 
 export const Text = styled(UiText)`

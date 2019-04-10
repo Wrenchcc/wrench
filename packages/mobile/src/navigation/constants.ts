@@ -15,4 +15,5 @@ export const SCREENS = {
   POST: 'POST',
   COMMENTS: 'COMMENTS',
   WEBVIEW: 'WEBVIEW',
+  SIGN_IN: 'SIGN_IN',
 }

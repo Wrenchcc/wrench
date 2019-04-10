@@ -6,6 +6,33 @@ import { SCREENS } from './constants'
 
 registerScreens()
 
+export function AuthNavigation() {
+  Navigation.setDefaultOptions({
+    topBar: {
+      visible: false,
+    },
+  })
+
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: SCREENS.SIGN_IN,
+              options: {
+                statusBar: {
+                  visible: false,
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  })
+}
+
 export function TabNavigation() {
   Navigation.setDefaultOptions(defaultOptions)
 

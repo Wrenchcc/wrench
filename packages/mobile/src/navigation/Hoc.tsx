@@ -5,7 +5,7 @@ import { ApolloProvider } from 'react-apollo' // TODO: Remove
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 import client from 'graphql/client'
 import { NavigationContext } from './context'
-import { navigate } from './actions'
+import { navigate, showModal, dismissModal } from './actions'
 
 export default Component => {
   function Screen(props) {
@@ -13,7 +13,13 @@ export default Component => {
       <Provider>
         <ApolloProvider client={client}>
           <ApolloHooksProvider client={client}>
-            <NavigationContext.Provider value={{ navigate: navigate(props.componentId) }}>
+            <NavigationContext.Provider
+              value={{
+                navigate: navigate(props.componentId),
+                showModal,
+                dismissModal,
+              }}
+            >
               <Component {...props} />
             </NavigationContext.Provider>
           </ApolloHooksProvider>

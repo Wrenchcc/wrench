@@ -18,7 +18,6 @@ export const defaultOptions = {
   },
   layout: {
     backgroundColor: COLORS.WHITE,
-    orientation: ['portrait'],
   },
   topBar: {
     visible: false,
