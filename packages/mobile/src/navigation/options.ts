@@ -8,14 +8,6 @@ export const iconInsets = {
 }
 
 export const defaultOptions = {
-  // animations: {
-  //   push: {
-  //     waitForRender: true,
-  //   },
-  //   showModal: {
-  //     waitForRender: true,
-  //   },
-  // },
   bottomTabs: {
     backgroundColor: COLORS.DARK,
   },
