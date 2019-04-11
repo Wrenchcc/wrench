@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { navigationConstants } from 'navigation/constants'
+import { NAVIGATION } from 'navigation/constants'
 
 export const Base = styled.View`
   position: absolute;
@@ -7,5 +7,5 @@ export const Base = styled.View`
   height: 100%;
   background: white;
   z-index: 10;
-  padding-top: ${navigationConstants.totalTopBarHeight};
+  padding-top: ${NAVIGATION.TOTAL_TOP_BAR_HEIGHT};
 `

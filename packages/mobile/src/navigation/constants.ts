@@ -1,20 +1,20 @@
-export const navigationConstants = {
-  listInsetTop: 0,
-  topBarHeight: 60,
-  statusBarHeight: 44,
-  totalTopBarHeight: 60 + 44,
+enum NAVIGATION {
+  LIST_INSET_TOP = 0,
+  TOP_BAR_HEIGHT = 60,
+  STATUS_BAR_HEIGHT = 44,
+  TOTAL_TOP_BAR_HEIGHT = 60 + 44,
 }
 
-export const SCREENS = {
-  FEED: 'FEED',
-  EXPLORE: 'EXPLORE',
-  NOTIFICATIONS: 'NOTIFICATIONS',
-  ME: 'ME',
-  PROJECT: 'PROJECT',
-  FOLLOWERS: 'FOLLOWERS',
-  USER: 'USER',
-  POST: 'POST',
-  COMMENTS: 'COMMENTS',
-  WEBVIEW: 'WEBVIEW',
-  SIGN_IN: 'SIGN_IN',
+enum SCREENS {
+  FEED = 'FEED',
+  EXPLORE = 'EXPLORE',
+  NOTIFICATIONS = 'NOTIFICATIONS',
+  ME = 'ME',
+  PROJECT = 'PROJECT',
+  FOLLOWERS = 'FOLLOWERS',
+  USER = 'USER',
+  POST = 'POST',
+  COMMENTS = 'COMMENTS',
+  WEBVIEW = 'WEBVIEW',
+  SIGN_IN = 'SIGN_IN',
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Animated from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
 import { scrollToOffset } from 'navigation/Scrollables/utils'
-import { navigationConstants } from 'navigation/constants'
+import { NAVIGATION } from 'navigation/constants'
 import { ListContext } from './context'
 
 const {
@@ -119,7 +119,7 @@ export default class Provider extends Component {
           eq(isAndroid, 0),
           and(
             neq(translateY, this.initialScroll),
-            neq(translateY, -navigationConstants.topBarHeight)
+            neq(translateY, -NAVIGATION.TOP_BAR_HEIGHT)
           )
         ),
         block([
@@ -130,15 +130,15 @@ export default class Provider extends Component {
             set(
               translateYSnap,
               cond(
-                greaterOrEq(translateY, navigationConstants.topBarHeight / -2),
+                greaterOrEq(translateY, NAVIGATION.TOP_BAR_HEIGHT / -2),
                 0,
-                -navigationConstants.topBarHeight
+                -NAVIGATION.TOP_BAR_HEIGHT
               )
             ),
             set(
               config.toValue,
               cond(
-                greaterThan(scrollY, this.initialScroll + navigationConstants.topBarHeight),
+                greaterThan(scrollY, this.initialScroll + NAVIGATION.TOP_BAR_HEIGHT),
                 sub(translateYSnap, translateY),
                 multiply(-1, translateY)
               )
@@ -176,7 +176,7 @@ export default class Provider extends Component {
                 [
                   set(
                     translateY,
-                    min(0, max(-navigationConstants.topBarHeight, sub(translateY, scrollYDiff)))
+                    min(0, max(-NAVIGATION.TOP_BAR_HEIGHT, sub(translateY, scrollYDiff)))
                   ),
                   translateY,
                 ],
@@ -229,9 +229,9 @@ export default class Provider extends Component {
 
   get contentInset() {
     return (
-      navigationConstants.topBarHeight
-      + navigationConstants.statusBarHeight
-      + navigationConstants.listInsetTop
+      NAVIGATION.TOP_BAR_HEIGHT
+      + NAVIGATION.STATUS_BAR_HEIGHT
+      + NAVIGATION.LIST_INSET_TOP
     )
   }
 
@@ -251,7 +251,7 @@ export default class Provider extends Component {
     return {
       handleTabChange: this.handleTabChange,
       hasTabs: this.hasTabs,
-      headerHeight: navigationConstants.topBarHeight,
+      headerHeight: NAVIGATION.TOP_BAR_HEIGHT,
       index: this.state.index,
       initialScroll: this.initialScroll,
       contentInset: this.contentInset,

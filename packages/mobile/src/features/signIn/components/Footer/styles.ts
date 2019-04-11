@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { navigationConstants } from 'navigation'
+import { NAVIGATION } from 'navigation'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
-  height: ${navigationConstants.topBarHeight};
+  height: ${NAVIGATION.TOP_BAR_HEIGHT};
   background-color: ${COLORS.DARK};
   justify-content: center;
   position: absolute;

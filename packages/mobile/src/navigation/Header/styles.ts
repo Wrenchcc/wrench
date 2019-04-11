@@ -1,4 +1,4 @@
-import { navigationConstants } from 'navigation/constants'
+import { NAVIGATION } from 'navigation/constants'
 
 export default {
   container: {
@@ -20,10 +20,10 @@ export default {
     backgroundColor: 'white',
   },
   header: {
-    marginTop: navigationConstants.statusBarHeight,
+    marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
   },
   inner: {
-    height: navigationConstants.topBarHeight,
+    height: NAVIGATION.TOP_BAR_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
