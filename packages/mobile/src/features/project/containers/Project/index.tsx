@@ -28,6 +28,7 @@ function Project({
   return (
     <Layout>
       <FlatList
+        initialNumToRender={2}
         spacingSeparator
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
         defaultPaddingTop

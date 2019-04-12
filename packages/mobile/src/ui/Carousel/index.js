@@ -43,7 +43,7 @@ export default class Carousel extends PureComponent {
       <FlatList
         keyExtractor={item => item.node.id}
         getItemLayout={this.getItemLayout}
-        initialNumToRender={3}
+        initialNumToRender={2}
         data={files}
         scrollEnabled={files.length > 1}
         horizontal
@@ -52,7 +52,6 @@ export default class Carousel extends PureComponent {
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
-        scrollThrottle={10}
         renderItem={this.renderItem}
         style={{
           marginLeft: -GUTTER,
