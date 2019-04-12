@@ -34,6 +34,7 @@ class Feed extends PureComponent {
 
         <FlatList
           spacingSeparator
+          initialNumToRender={2}
           data={posts}
           ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}

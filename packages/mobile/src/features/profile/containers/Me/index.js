@@ -29,6 +29,7 @@ class Me extends PureComponent {
       <Layout search={{}}>
         <FlatList
           spacingSeparator
+          initialNumToRender={1}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
           ListHeaderComponent={user && <Header user={user} />}
           ListEmptyComponent={<EmptyState type={emptyState} />}

@@ -44,6 +44,7 @@ class Projects extends PureComponent {
     return (
       <InfiniteList
         borderSeparator
+        initialNumToRender={4}
         paddingBottom={40}
         getItemLayout={this.getItemLayout}
         ListEmptyComponent={!isFetching && <NoResults />}

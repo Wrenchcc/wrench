@@ -25,6 +25,7 @@ class Explore extends PureComponent {
       <Layout search={{}}>
         <FlatList
           spacingSeparator
+          initialNumToRender={1}
           ListHeaderComponent={<Popular />}
           data={posts}
           refetch={refetch}

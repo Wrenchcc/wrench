@@ -46,6 +46,7 @@ class User extends PureComponent {
       <Layout>
         <FlatList
           spacingSeparator
+          initialNumToRender={1}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
           ListHeaderComponent={user && <Header user={user} />}
           ListEmptyComponent={<FollowingProjects user={user} />}

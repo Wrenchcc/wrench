@@ -53,6 +53,7 @@ class Popular extends PureComponent {
           <Title medium>{t('Popular:popular')}</Title>
         </Header>
         <InfiniteList
+          initialNumToRender={2}
           getItemLayout={this.getItemLayout}
           keyExtractor={item => item.node.id}
           data={projects}
