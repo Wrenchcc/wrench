@@ -872,10 +872,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
-"@types/react-dom@^16.8.3":
-  version "16.8.3"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.3.tgz#6131b7b6158bc7ed1925a3374b88b7c00481f0cb"
-  integrity sha512-HF5hD5YR3z9Mn6kXcW1VKe4AQ04ZlZj1EdLBae61hzQ3eEWWxMgNLUbIxeZp40BnSxqY1eAYLsH9QopQcxzScA==
+"@types/react-dom@^16.8.4":
+  version "16.8.4"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
+  integrity sha512-eIRpEW73DCzPIMaNBDP5pPIpK1KXyZwNgfxiVagb5iGiz6da+9A5hslSX6GAQKdO7SayVCS/Fr2kjqprgAvkfA==
   dependencies:
     "@types/react" "*"
 
@@ -5942,10 +5942,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-pure-react-carousel@^1.19.3:
-  version "1.19.3"
-  resolved "https://registry.yarnpkg.com/pure-react-carousel/-/pure-react-carousel-1.19.3.tgz#b5dc17a21bd712533bdc59e98956d990ee4cd8ad"
-  integrity sha512-L0SY31kmZ9DEXsRe4RDmezx+H/Pu6yTn6u24ZxXyvuSYujY0WRTv6aflWK5eZLWcQxiWtbfZwBB5aaNpbz0HXQ==
+pure-react-carousel@^1.19.4:
+  version "1.19.4"
+  resolved "https://registry.yarnpkg.com/pure-react-carousel/-/pure-react-carousel-1.19.4.tgz#28597dd056e7a487fc39d633bf99a491f11c99f4"
+  integrity sha512-kord2Fvr9E+QiByexF/39Vv9CPQA8h/bQ22xxCNTULhc0TAWQmtUieXD7WP0vN6ZzWu6MTIreWuSFmw5Fh9Mdw==
   dependencies:
     deep-freeze "0.0.1"
     deepmerge "^2.2.1"
