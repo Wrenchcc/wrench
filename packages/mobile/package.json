@@ -26,6 +26,7 @@
     "apollo-link-batch-http": "^1.2.11",
     "apollo-link-context": "^1.0.17",
     "apollo-link-error": "^1.1.10",
+    "apollo-link-http": "^1.5.14",
     "apollo-link-queue": "^2.2.0",
     "apollo-link-retry": "^2.2.13",
     "expo-image-manipulator": "^4.0.0",
