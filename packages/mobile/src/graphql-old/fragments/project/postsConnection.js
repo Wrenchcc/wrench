@@ -4,7 +4,7 @@ import commentsConnectionFragment from 'graphql-old/fragments/post/commentsConne
 
 export default gql`
   fragment projectPostsConnection on Project {
-    posts: postsConnection(after: $after) @connection(key: "posts") {
+    posts: postsConnection(after: $after, first: 5) @connection(key: "posts") {
       edges {
         cursor
         node {
