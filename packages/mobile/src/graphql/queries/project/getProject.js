@@ -38,7 +38,7 @@ const getProjectOptions = {
       after,
       postId: getPostId(navigation),
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: ({
     data: { fetchMore, error, loading, project, networkStatus, refetch, post },

@@ -32,7 +32,7 @@ const getUserByUsernameOptions = {
       username: getUsername(navigation) || getUsernameFromDeeplink(navigation),
       after,
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: ({
     data: { fetchMore, error, loading, user, networkStatus, refetch },

@@ -44,14 +44,14 @@ const getPopularProjectsOptions = {
     variables: {
       type: PROJECT_SORT_TYPES.POPULAR,
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   },
   props: mapListProps('projects'),
 }
 
 const getRecentPostsOptions = {
   options: {
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   },
   props: mapListProps('posts'),
 }

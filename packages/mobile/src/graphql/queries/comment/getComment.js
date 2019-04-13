@@ -25,7 +25,7 @@ const getCommentOptions = {
     variables: {
       id: getCommentId(navigation) || getCommentIdFromDeeplink(navigation),
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: ({ data: { error, loading, comment } }) => ({
     error,

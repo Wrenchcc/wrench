@@ -32,7 +32,7 @@ const searchProjectsOptions = {
       query,
       type: 'PROJECTS',
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('projects'),
 }

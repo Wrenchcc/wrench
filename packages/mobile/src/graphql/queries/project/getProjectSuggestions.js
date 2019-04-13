@@ -28,7 +28,7 @@ export const ProjectSuggestionsQuery = gql`
 
 const getProjectsSuggestionsOptions = {
   options: () => ({
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: ({ data }) => ({
     isFetching: pathOr(false, ['loading'], data),

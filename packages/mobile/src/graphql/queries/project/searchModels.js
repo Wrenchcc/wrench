@@ -32,7 +32,7 @@ const searchModelsOptions = {
       query,
       type: 'MODELS',
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: ({ data: { fetchMore, loading, networkStatus, ...props } }) => {
     const data = props.models

@@ -18,7 +18,7 @@ const getPostByOptions = {
     variables: {
       id: getPostId(navigation),
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: ({ data }) => ({
     post: pathOr(null, ['post'], data),

@@ -19,7 +19,7 @@ const getFollowersOptions = {
     variables: {
       projectId: getProjectId(navigation),
     },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('followers'),
 }
