@@ -6,7 +6,7 @@ import Notifications from './containers/Notifications'
 export default {
   [ROUTE_NAMES.NOTIFICATIONS]: {
     component: Notifications,
-    path: 'notifications',
+    path: 'root/notifications',
     mode: TAB,
     navigationOptions: {
       tabBarIconSource: notifications,
