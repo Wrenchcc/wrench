@@ -77,7 +77,7 @@ const getCommentsOptions = {
     variables: {
       postId: getPostId(navigation) || getPostIdFromDeeplink(navigation),
     },
-    fetchPolicy: 'cache-and-network',
+    // fetchPolicy: 'cache-and-network',
   }),
   props: ({ data: { fetchMore, error, loading, comments, post, networkStatus, refetch } }) => ({
     error,

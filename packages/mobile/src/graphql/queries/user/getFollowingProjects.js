@@ -31,7 +31,7 @@ const getFollowingProjectsOptions = {
       username: user.username,
       after,
     },
-    fetchPolicy: 'cache-and-network',
+    // fetchPolicy: 'cache-and-network',
   }),
   props: ({ data }) => ({
     isFetching: data.loading,
