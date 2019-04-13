@@ -157,6 +157,7 @@ class PostContainer extends PureComponent {
           )}
 
           <InfiniteList
+            initialNumToRender={6}
             scrollRef={ref => {
               scrollView = ref
             }}

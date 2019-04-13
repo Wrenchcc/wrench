@@ -135,7 +135,7 @@ export default class List extends Component {
       <FlatList
         contentContainerStyle={{ padding: 3 }}
         data={data}
-        initialNumToRender={PAGE_SIZE}
+        initialNumToRender={16}
         keyExtractor={item => item.uri}
         ListFooterComponent={this.renderFooterLoader}
         numColumns={NUM_COLUMNS}

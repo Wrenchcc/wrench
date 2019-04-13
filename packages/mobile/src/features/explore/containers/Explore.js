@@ -4,7 +4,6 @@ import { compose } from 'react-apollo'
 import { getRecentPosts } from 'graphql/queries/getExplore'
 import { Post, InfiniteListWithHandler } from 'ui'
 import Popular from 'features/explore/components/Popular'
-import { INITIAL_POSTS_COUNT } from '../constants'
 
 class Explore extends PureComponent {
   static propTypes = {
@@ -24,7 +23,7 @@ class Explore extends PureComponent {
     return (
       <InfiniteListWithHandler
         spacingSeparator
-        initialNumToRender={INITIAL_POSTS_COUNT}
+        initialNumToRender={1}
         ListHeaderComponent={<Popular />}
         data={posts}
         refetch={refetch}

@@ -1,10 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
+import PromoStyle from '../components/Promo/style'
 
 const FONTS_ENDPOINT = 'https://edge-files.wrench.cc/static/fonts'
 
 export default createGlobalStyle`
   ${reset}
+  ${PromoStyle}
 
   @font-face {
     font-family: 'Inter UI';

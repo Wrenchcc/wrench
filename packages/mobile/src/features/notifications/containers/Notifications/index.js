@@ -49,6 +49,7 @@ class Notifications extends PureComponent {
 
     return (
       <InfiniteListWithHandler
+        initialNumToRender={6}
         paddingHorizontal={0}
         contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
         defaultPaddingTop

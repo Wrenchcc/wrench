@@ -37,9 +37,9 @@ class Feed extends PureComponent {
         <PostProgress />
 
         <InfiniteListWithHandler
+          initialNumToRender={2}
           spacingSeparator
           defaultPaddingTop
-          initialNumToRender={INITIAL_POSTS_COUNT}
           data={posts}
           ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}

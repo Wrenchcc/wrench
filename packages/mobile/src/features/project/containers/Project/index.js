@@ -90,7 +90,7 @@ class Project extends PureComponent {
       return null
     }
 
-    return <Post post={item.node} avatar={false} withoutTitle lazyload={index > 2} />
+    return <Post post={item.node} avatar={false} withoutTitle />
   }
 
   renderHeader = () => {
@@ -148,6 +148,7 @@ class Project extends PureComponent {
     return (
       <>
         <InfiniteListWithHandler
+          initialNumToRender={1}
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}

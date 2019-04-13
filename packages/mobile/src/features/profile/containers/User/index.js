@@ -62,7 +62,7 @@ class User extends PureComponent {
     }
   }
 
-  renderItem = ({ item, index }) => <Post post={item.node} lazyload={index > 2} />
+  renderItem = ({ item }) => <Post post={item.node} />
 
   render() {
     const { posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
@@ -70,6 +70,7 @@ class User extends PureComponent {
 
     return (
       <InfiniteListWithHandler
+        initialNumToRender={1}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}
         contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
