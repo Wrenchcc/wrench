@@ -1,4 +1,5 @@
 module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
   plugins: [
     [
       'module-resolver',
@@ -8,9 +9,8 @@ module.exports = {
           images: './assets/images',
           videos: './assets/videos',
         },
-        extensions: ['.js'],
+        extensions: ['.js', '.ts', '.tsx'],
       },
     ],
   ],
-  presets: ['module:metro-react-native-babel-preset'],
 }

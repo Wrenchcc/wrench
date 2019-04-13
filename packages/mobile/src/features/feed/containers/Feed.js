@@ -6,7 +6,6 @@ import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
-import { INITIAL_POSTS_COUNT } from '../constants'
 
 class Feed extends PureComponent {
   static propTypes = {
