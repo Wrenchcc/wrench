@@ -7,13 +7,7 @@ import { search } from 'images'
 import { COLORS } from 'ui/constants'
 import { Text } from 'ui'
 import { Base, Input, Icon } from './styles'
-
-const transition = (
-  <Transition.Sequence>
-    <Transition.Change interpolation="easeInOut" durationMs={100} />
-    <Transition.In type="fade" durationMs={80} />
-  </Transition.Sequence>
-)
+import transition from './transition'
 
 function Search({
   onChangeQuery,

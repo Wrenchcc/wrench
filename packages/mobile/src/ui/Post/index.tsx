@@ -59,7 +59,7 @@ function Post({ post, withoutTitle, withoutComments, disabled }) {
         </Text>
 
         <Spacer />
-        {post.files && <Carousel files={post.files} />}
+        {post.files && <Carousel files={post.files} onPress={navigateToProject} />}
       </Content>
 
       {!withoutComments && !post.project.commentsDisabled && <Comments data={post} />}

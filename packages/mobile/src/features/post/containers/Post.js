@@ -116,7 +116,7 @@ class PostContainer extends PureComponent {
   renderItem = ({ item }) => (
     <CommentItem
       data={item}
-      highlightId={pathOr('', ['comment', 'id'], this.props)}
+      highlightId={pathOr('', ['commentId'], this.props)}
       onReply={this.onReply}
       fetchMoreReplies={this.props.fetchMoreReplies}
     />
@@ -130,7 +130,7 @@ class PostContainer extends PureComponent {
     }
 
     return (
-      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 10 }}>
+      <View style={{ marginBottom: 10 }}>
         <Post post={post} withoutComments />
       </View>
     )

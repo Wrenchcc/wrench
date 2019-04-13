@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
 import { Platform, View } from 'react-native'
 import PropTypes from 'prop-types'
+import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { withListContext } from 'navigation/Layout/context'
 import { withTabContext } from 'navigation/Layout/TabContext'
 import { Border, Loader } from 'ui'
-import { getAnimatedScrollableNode } from './utils'
+import { getAnimatedScrollableNode, scrollToOffset } from './utils'
 
 export default function createNavigationAwareScrollable(Component) {
   class ComponentWithNavigationScrolling extends PureComponent {
@@ -38,6 +39,20 @@ export default function createNavigationAwareScrollable(Component) {
       // Pass node to component that is using our Scrollables
       if (scrollRef) {
         scrollRef(this.node)
+      }
+
+      // this.bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
+      //   this.navigationEventHandler
+      // )
+    }
+
+    // componentWillUnmount() {
+    //   this.bottomTabEventListener.remove()
+    // }
+
+    navigationEventHandler = ({ unselectedTabIndex, selectedTabIndex }) => {
+      if (unselectedTabIndex === selectedTabIndex) {
+        scrollToOffset(this.node, 0, true)
       }
     }
 
@@ -121,7 +136,6 @@ export default function createNavigationAwareScrollable(Component) {
         isRefetching,
         ListHeaderComponent,
         ListEmptyComponent,
-        inverted,
         initialNumToRender = 10,
         spacingSeparator,
         ...props
@@ -148,7 +162,6 @@ export default function createNavigationAwareScrollable(Component) {
           }
           keyboardShouldPersistTaps="always"
           keyboardDismissMode="on-drag"
-          inverted={inverted}
           contentContainerStyle={{
             flex: initialFetch ? 1 : 0,
             justifyContent: 'center',

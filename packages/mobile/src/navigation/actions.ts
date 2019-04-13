@@ -39,7 +39,14 @@ export function navigate(id) {
     component: {
       name: screen,
       passProps: params,
-      options,
+      options: {
+        ...options,
+        // bottomTabs: {
+        //   visible: false,
+        //   drawBehind: true,
+        //   animate: true,
+        // },
+      },
     },
   })
 }

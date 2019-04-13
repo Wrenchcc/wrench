@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef, memo } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, View, Animated, Image } from 'react-native'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { Swipeable } from 'react-native-gesture-handler'
+import { Transitioning } from 'react-native-reanimated'
 import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
@@ -11,6 +12,7 @@ import { COLORS } from 'ui/constants'
 import { trash } from 'images'
 import { NOTIFICATION_TYPES } from 'utils/enums'
 import { Base, Content, Bottom } from './styles'
+import transition from './transition'
 
 export const { width } = Dimensions.get('window')
 
@@ -64,55 +66,64 @@ function onPress(data, navigate) {
   }
 }
 
-function Notification({ data, deleteNotification, t }) {
+const Notification = memo(function Notification({ data, deleteNotification }) {
+  const transitionRef = useRef(null)
+  const { t } = useTranslation()
+
   const { navigate } = useNavigation()
   const navigateToUser = () => navigate(SCREENS.USER, {
     id: data.user.id,
   })
+
   const handleOnPress = () => onPress(data, navigate)
-  const handleDelete = () => deleteNotification(data.id)
+  const handleDelete = () => {
+    deleteNotification(data.id)
+    transitionRef.current.animateNextTransition()
+  }
 
   return (
-    <Swipeable
-      friction={2}
-      rightThreshold={100}
-      renderRightActions={renderRightAction}
-      onSwipeableRightOpen={handleDelete}
-    >
-      <Base onPress={handleOnPress}>
-        <Avatar
-          uri={data.user.avatarUrl}
-          size={40}
-          onPress={navigateToUser}
-          isOnline={data.user.isOnline}
-        />
-        <Content>
-          <Text onPress={navigateToUser}>{data.user.fullName}</Text>
-          <Bottom>
-            <View style={{ marginRight: 50 }}>
-              <Text
-                color="light_grey"
-                fontSize={15}
-                lineHeight={22}
-                onPress={handleOnPress}
-                numberOfLines={2}
-              >
-                {description(data, t)}
-              </Text>
-            </View>
-            <View style={{ marginLeft: 'auto' }}>
-              <TimeAgo date={data.createdAt} fontSize={15} />
-            </View>
-          </Bottom>
-        </Content>
-      </Base>
-    </Swipeable>
+    <Transitioning.View ref={transitionRef} transition={transition}>
+      <Swipeable
+        friction={2}
+        rightThreshold={100}
+        renderRightActions={renderRightAction}
+        onSwipeableRightOpen={handleDelete}
+      >
+        <Base onPress={handleOnPress}>
+          <Avatar
+            uri={data.user.avatarUrl}
+            size={40}
+            onPress={navigateToUser}
+            isOnline={data.user.isOnline}
+          />
+          <Content>
+            <Text onPress={navigateToUser}>{data.user.fullName}</Text>
+            <Bottom>
+              <View style={{ marginRight: 50 }}>
+                <Text
+                  color="light_grey"
+                  fontSize={15}
+                  lineHeight={22}
+                  onPress={handleOnPress}
+                  numberOfLines={2}
+                >
+                  {description(data, t)}
+                </Text>
+              </View>
+              <View style={{ marginLeft: 'auto' }}>
+                <TimeAgo date={data.createdAt} fontSize={15} />
+              </View>
+            </Bottom>
+          </Content>
+        </Base>
+      </Swipeable>
+    </Transitioning.View>
   )
-}
+})
 
 Notification.propTypes = {
   data: PropTypes.object.isRequired,
   deleteNotification: PropTypes.func.isRequired,
 }
 
-export default withTranslation('Notification')(Notification)
+export default Notification
