@@ -1209,10 +1209,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/netinfo@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-2.0.0.tgz#b98171aeaa4326bc9d9834399a3f6cecf8fd4781"
-  integrity sha512-/wjahsPhkWmkxEzXmz93gGDXyR/9B4tJqo2eV5ENxwimUk/qIP5XrHzqWtyqxkwIr7dnYGIlZyWkvuzUslgYYw==
+"@react-native-community/netinfo@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-2.0.3.tgz#3d6786714270fca4f5e293b01bcb7ac05b9a4075"
+  integrity sha512-O5pVNTLZEfnqCurKzj5upMWf79lbDZDgn+WEnLL0feCgoWK7UFNz8ZyXD+9TE1O9bp4Ib4cw3pdMnYK3yPMU0Q==
 
 "@react-navigation/core@~3.3.0":
   version "3.3.1"
@@ -5379,10 +5379,10 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-i18next@^10.7.0:
-  version "10.7.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.7.0.tgz#58013086d552429307b3cb557e45fbd1a3dabcb7"
-  integrity sha512-tkz0u9p+GeCUelTgn14mDP6ZgzvTNwdYQ1pCL5dnRzf8j28id00GwNrYY/Z67QmV/MbZ88Ejjh8uy5Gfdz7Drg==
+react-i18next@^10.8.0:
+  version "10.8.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.8.0.tgz#ad9ab171200d7d67127686deae6070958e9a6bb1"
+  integrity sha512-/mlyBX2wjhvAL8gpoR6swULx2yMpj1NkKBgldQZszdVFyZXyBjXCpZmFR5PABDJ/GAHUGRSxRSGkLsXNG0lhzA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5402,10 +5402,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.3.0.tgz#b4e4e015609464630b0b2efdf167dcd67a5e040f"
-  integrity sha512-K0CTQ+LGeeJ5UDpjAzF1FFZX8fhAEHwtv2IXuQABJuUsXO0+Pc5Ikq5HvD6onsQNMYor96vU5Di7GltZOiPjMA==
+react-native-camera@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.4.0.tgz#1f3c6fc2afcc556b4f2b7b6a166f86e4a88ca95d"
+  integrity sha512-BPPcZEqnEyVjn9bwnuu9hrLErAb3OCyL9+mU/uOoejmIf/6GpdJdbGAkpP6kPDiBWo3b1ki34b7Zccv6Y3MFBA==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5427,10 +5427,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.4.3.tgz#dd08fbc37cc97065072045716b1ad3758424358d"
-  integrity sha512-9QdLLmBgclJo5iphsto4Nbhf+8rdM3tF9ZVd3DUN9htE8JpN/r7PSNvdvuLC3bD/XDzG7GwYxuSwi1UelgaGqw==
+react-native-device-info@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.5.0.tgz#09e17c8199ac51082d72193f17eb445e9c83e68d"
+  integrity sha512-TiZxPkiuKR1GLS9wWAqjKzk37viBLt64EGzjn0IoySosXJpa7E4XKOwAvNR9xcSZ4iSlsVMtRM2QnA8wHe5M2g==
 
 react-native-fast-image@^5.2.0:
   version "5.2.0"
@@ -5578,10 +5578,10 @@ react-native-video@^4.4.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.6.2:
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.6.2.tgz#aa257f01d0038c514874d1c41d99528f83274d8c"
-  integrity sha512-VSn3dMm/OpZH30AgoQ5IQZSgH3//1dCOrTC+63rmHQL3bhggMvk6C+OWen/YL2w3FCw0R0Z+PFs/uccCQI+aEw==
+react-native-webview@^5.7.0:
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.7.0.tgz#a0417e23ff65053be0ba248de3f98938db4688cf"
+  integrity sha512-0QFhZoKer8jV+avXJJALAC9J/T9PkX4uhCxeprDKLBXO6y2tQUIaVv+uPo2k07tGoeaSU1rKgoh3D8fYGaOwLQ==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
