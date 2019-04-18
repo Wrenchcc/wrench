@@ -251,6 +251,9 @@
     "SearchingFor": {
       "title": "Searching for"
     },
+    "Share": {
+      "share": "Share"
+    },
     "ToastNotification": {
       "networkError": "No internet connection"
     },
@@ -516,6 +519,9 @@
     },
     "SearchingFor": {
       "title": "Söker efter"
+    },
+    "Share": {
+      "cancel": "Dela"
     },
     "ToastNotification": {
       "networkError": "Ingen internetanslutning"

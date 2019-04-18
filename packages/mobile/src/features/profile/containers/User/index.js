@@ -28,7 +28,7 @@ class User extends PureComponent {
           {fullName}
         </HeaderTitle>
       ),
-      headerRight: dynamicLink && <Share title={fullName} url={dynamicLink} />,
+      headerRight: dynamicLink && <Share title={fullName} url={dynamicLink} text />,
     }
   }
 

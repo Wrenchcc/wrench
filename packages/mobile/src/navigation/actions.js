@@ -7,11 +7,22 @@ export function setNavigationRef(navigatorRef) {
   navigator = navigatorRef
 }
 
+export function push(routeName, params = {}) {
+  trackScreen(routeName)
+
+  navigator.dispatch(
+    StackActions.push({
+      routeName,
+      params,
+    })
+  )
+}
+
 export function navigate(routeName, params = {}) {
   trackScreen(routeName)
 
   navigator.dispatch(
-    NavigationActions.push({
+    NavigationActions.navigate({
       type: NavigationActions.NAVIGATE,
       routeName,
       params,
@@ -31,19 +42,19 @@ export const resetNavigation = () => {
   navigator.dispatch(StackActions.popToTop())
 }
 
-export const navigateToAddMedia = () => navigate('add-media')
-export const navigateToAddModel = () => navigate('add-project-model')
-export const navigateToAddPost = params => navigate('add-post', params)
-export const navigateToAddProject = params => navigate('add-project', params)
-export const navigateToAddProjectType = () => navigate('add-project-type')
-export const navigateToComments = params => navigate('comments', params)
-export const navigateToEditProject = params => navigate('edit-project', params)
-export const navigateToFeed = params => navigate('feed', params)
-export const navigateToFollowers = params => navigate('followers', params)
-export const navigateToOnboarding = () => navigate('onboarding')
-export const navigateToPost = params => navigate('post', params)
-export const navigateToProject = params => navigate('project', params)
+export const navigateToAddMedia = () => push('add-media')
+export const navigateToAddModel = () => push('add-project-model')
+export const navigateToAddPost = params => push('add-post', params)
+export const navigateToAddProject = params => push('add-project', params)
+export const navigateToAddProjectType = () => push('add-project-type')
+export const navigateToComments = params => push('comments', params)
+export const navigateToEditProject = params => push('edit-project', params)
+export const navigateToFeed = params => push('feed', params)
+export const navigateToFollowers = params => push('followers', params)
+export const navigateToOnboarding = () => push('onboarding')
+export const navigateToPost = params => push('post', params)
+export const navigateToProject = params => push('project', params)
 export const navigateToSearch = params => navigate('search', params)
-export const navigateToSettings = () => navigate('settings')
-export const navigateToUser = params => navigate('user', params)
-export const navigateToWebView = params => navigate('webview', params)
+export const navigateToSettings = () => push('settings')
+export const navigateToUser = params => push('user', params)
+export const navigateToWebView = params => push('webview', params)
