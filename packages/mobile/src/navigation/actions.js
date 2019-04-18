@@ -11,7 +11,7 @@ export function navigate(routeName, params = {}) {
   trackScreen(routeName)
 
   navigator.dispatch(
-    NavigationActions.navigate({
+    NavigationActions.push({
       type: NavigationActions.NAVIGATE,
       routeName,
       params,

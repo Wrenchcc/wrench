@@ -55,6 +55,7 @@ export default class Camera extends PureComponent {
   takePicture = async camera => {
     const data = await camera.takePictureAsync({
       orientation: ORIENTATION,
+      skipProcessing: true,
     })
 
     this.props.onTakePicture(data)
@@ -89,7 +90,7 @@ export default class Camera extends PureComponent {
           style={{ flex: 1 }}
           autoFocusPointOfInterest={autoFocusPointOfInterest}
           orientation="portrait"
-          doNotSave
+          ratio="16:9"
         >
           {({ camera }) => (
             <>
