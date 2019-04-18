@@ -1124,10 +1124,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
   integrity sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg==
 
-"@react-native-community/async-storage@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.3.0.tgz#8254db63d6e2c51574008cce1535447055387b6a"
-  integrity sha512-6nRSNDz8LpN3SXKkDNBXdpsxPt99c3B6hG2YeHoo63KdsEMszvi4JO5vHQVcmyzTE0YNb2whxeieox9uSDYRdg==
+"@react-native-community/async-storage@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.3.3.tgz#fbcd09c68be0f91362c1bc5696802d8e281cf67d"
+  integrity sha512-mypRivxWCO3apTDWpbvc7owcz5gZH0mI60JWPJDW/Pibr3vk9T7TQPA44b8m43qc/o5cnSEJFZk6l/1T4QEM/Q==
 
 "@react-native-community/cli@^1.2.1":
   version "1.5.2"
@@ -1169,10 +1169,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.8.0.tgz#92792e7949c963b1affedb272b3c3af87d1c73f0"
-  integrity sha512-VACBOX7YHbN+9+yqw3ihf3mSNvKRuq0MfR04RADDlMgk9VvdmhTl27miQn3RHsjlSy9xum3nSFYC3zlVlW4Hqw==
+"@react-native-community/cli@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.9.1.tgz#47e261a4a8bdfdcbd9a971b90e56257bee5af1ac"
+  integrity sha512-OPZi/DP3WWBXgZzu+JmhCnGPvmuz/eEgCzXpaumOEnBRXENrKzHvVzi9oG3m2YSgIra0WEQeLBeogw1R/te0vQ==
   dependencies:
     chalk "^1.1.1"
     commander "^2.19.0"
@@ -1209,10 +1209,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/netinfo@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-2.0.3.tgz#3d6786714270fca4f5e293b01bcb7ac05b9a4075"
-  integrity sha512-O5pVNTLZEfnqCurKzj5upMWf79lbDZDgn+WEnLL0feCgoWK7UFNz8ZyXD+9TE1O9bp4Ib4cw3pdMnYK3yPMU0Q==
+"@react-native-community/netinfo@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-2.0.4.tgz#d0d7f7dc77adc9de8621351129816bc0dcacf457"
+  integrity sha512-BNSqLFcOGxcQ8WmsRqTDarMj6PwIAW8hd0WzCTH+4CMcNLmJwGlvUZJFl2RY78kusr8nmUUdbwRtOvGXRORMuQ==
 
 "@react-navigation/core@~3.3.0":
   version "3.3.1"
@@ -5379,10 +5379,10 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-i18next@^10.8.0:
-  version "10.8.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.8.0.tgz#ad9ab171200d7d67127686deae6070958e9a6bb1"
-  integrity sha512-/mlyBX2wjhvAL8gpoR6swULx2yMpj1NkKBgldQZszdVFyZXyBjXCpZmFR5PABDJ/GAHUGRSxRSGkLsXNG0lhzA==
+react-i18next@^10.8.1:
+  version "10.8.1"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.8.1.tgz#3446eaf357e95fef9cafd450a7b5dbdc1ffb15a3"
+  integrity sha512-sR0lgZsHNYH4r4yZAt6uHbS1J3ockCJ2kTXcQmAPXUjdNSQJKsdkhPCh94c+SgH7Oh6LiQoXp++SKZyz5UbUwg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5402,10 +5402,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.4.0.tgz#1f3c6fc2afcc556b4f2b7b6a166f86e4a88ca95d"
-  integrity sha512-BPPcZEqnEyVjn9bwnuu9hrLErAb3OCyL9+mU/uOoejmIf/6GpdJdbGAkpP6kPDiBWo3b1ki34b7Zccv6Y3MFBA==
+react-native-camera@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.6.0.tgz#bf97b0fc68aa8732d815e9bbd92e63529f51d598"
+  integrity sha512-g0Hi4yhUg1yBsYbW9aLxVaX+rgl9sKrrDAGF6difiRTvwCUEqlID2DosLCQQPkLSniJHVa8gc+SwCegahU23aA==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5492,10 +5492,10 @@ react-native-rate@^1.1.6:
   resolved "https://registry.yarnpkg.com/react-native-rate/-/react-native-rate-1.1.6.tgz#55f087a8376fc6e5bdca02698c03662b450e3d12"
   integrity sha512-/vnGkMTsxI+5y1togItXd2l/6JZzlUjsvQjCj9RWsOja9mVJxWdDacCrVHTf041k83fwX2Nw6ru6xxOWyU8Y+w==
 
-react-native-reanimated@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.0.tgz#d4e356e852ec55611de565d8791542eeb25a45ae"
-  integrity sha512-jfg+lYZ2QeeV+JMibjXwHoLDZIRVwZT2qdvDDmbAsMmxRNGI95evMPXKWa3BqkzWLb2SlZ2T/MBSGrqt/CiCAQ==
+react-native-reanimated@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.1.tgz#5ecb6a2f6dad0351077ac9b771ca943b7ad6feda"
+  integrity sha512-RENoo6/sJc3FApP7vJ1Js7WyDuTVh97bbr5aMjJyw3kqpR2/JDHyL/dQFfOvSSAc+VjitpR9/CfPPad7tLRiIA==
 
 react-native-safe-area-view@^0.13.0:
   version "0.13.1"
@@ -5586,10 +5586,10 @@ react-native-webview@^5.7.0:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
 
-react-native@v0.59.2:
-  version "0.59.2"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.2.tgz#c2e2d9e185b04e54948f170841d97c24661a0fa9"
-  integrity sha512-gIygrCr42rGEQnfjcAZdCOqgjC0oZtTIp+mdbUW+yqHpNUU1PbYKzUkLlvSFGeN+IUcL8WTaC1JtJvghKhaLmA==
+react-native@v0.59.5:
+  version "0.59.5"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.59.5.tgz#79500d2885a3dc83216715e1fc6effa878ad6ea9"
+  integrity sha512-8Q/9cS6IMsGNiFhJgzmncbUeuacXQMe5EJl0c63fW30DvjEjeTVCvhM08eGzSpsNlOvL2XDRa4YOiCrwI7S1TA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^1.2.1"

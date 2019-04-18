@@ -30,7 +30,6 @@ export default () => {
 
     // If switching accounts reset LoginManager
     // https://github.com/facebook/react-native-fbsdk/issues/279
-
     LoginManager.logOut()
   })
 
