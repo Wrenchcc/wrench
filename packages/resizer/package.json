@@ -11,15 +11,15 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.24",
-    "@types/node": "^11.13.5",
+    "@types/node": "^11.13.6",
     "@types/sharp": "^0.22.1",
-    "aws-sdk": "^2.439.0",
+    "aws-sdk": "^2.441.0",
     "prettier": "^1.17.0",
     "serverless": "1.41.0",
     "serverless-webpack": "^5.2.0",
     "ts-loader": "^5.3.3",
     "tslint": "^5.16.0",
-    "typescript": "^3.4.3",
+    "typescript": "^3.4.4",
     "webpack": "^4.30.0",
     "webpack-node-externals": "^1.7.2"
   }
