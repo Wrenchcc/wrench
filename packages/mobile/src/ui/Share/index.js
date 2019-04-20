@@ -31,7 +31,7 @@ class Share extends PureComponent {
     return (
       <Base>
         <Button hapticFeedback="impactLight" onPress={this.openShare} hitSlop={20}>
-          {text ? <Text>{t('Share:share')}</Text> : <Icon source={share} />}
+          {text ? <Text medium>{t('Share:share')}</Text> : <Icon source={share} />}
         </Button>
       </Base>
     )
