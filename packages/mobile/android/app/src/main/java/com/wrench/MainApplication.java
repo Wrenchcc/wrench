@@ -75,7 +75,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNPermissionsPackage(),
+          new RNPermissionsPackage(),
           new ModuleRegistryAdapter(mModuleRegistryProvider),
           new RNSentryPackage(),
           new NetInfoPackage(),
