@@ -15,6 +15,7 @@ PODS:
     - React
     - SSZipArchive (~> 2.1)
   - DoubleConversion (1.1.6)
+  - EXAppLoaderProvider (4.0.0)
   - EXConstants (4.0.0):
     - UMConstantsInterface
     - UMCore
@@ -182,7 +183,7 @@ PODS:
     - React
   - react-native-config (0.11.7):
     - React
-  - react-native-fast-image (5.2.0):
+  - react-native-fast-image (5.3.0):
     - FLAnimatedImage
     - React
     - SDWebImage/Core
@@ -215,7 +216,7 @@ PODS:
     - react-native-video/Video (= 4.4.1)
   - react-native-video/Video (4.4.1):
     - React
-  - react-native-webview (5.7.0):
+  - react-native-webview (5.7.1):
     - React
   - React/Core (0.59.5):
     - yoga (= 0.59.5.React)
@@ -332,6 +333,7 @@ DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXImageManipulator (from `../node_modules/expo-image-manipulator/ios`)
@@ -433,6 +435,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-code-push"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EXAppLoaderProvider:
+    :path: "../node_modules/expo-app-loader-provider/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
   EXFileSystem:
@@ -523,6 +527,7 @@ SPEC CHECKSUMS:
   BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
   CodePush: 300e90b3481fa82569090406165b83745de3613a
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
+  EXAppLoaderProvider: a5b88a7e02f92807ad3cd962bb3e0632d71cc5dc
   EXConstants: a338ed187829ab25b8817f84cd84eecc13e64fd4
   EXFileSystem: 18c9980f52e3bd6a28670c17e0d33a9c1584a336
   EXImageManipulator: 72cdf69afd64a49694a58cc038484074fcb28b42
@@ -555,14 +560,14 @@ SPEC CHECKSUMS:
   React: 90adac468c7b72bf1fa6c64bf230650f851a8388
   react-native-camera: 60e1ec7b259a7779b508712f75671701f23a6b4d
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-fast-image: 21d2d84a46b12cacbe7958ab6414fe828c094f82
+  react-native-fast-image: 56efe6ea964cff19fd9bb1cc28e79b432c4b58e4
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   react-native-haptic-feedback: 22c9dc85fd8059f83bf9edd9212ac4bd4ae6074d
   react-native-netinfo: 1ea4efa22c02519ac8043ac3f000062a4e320795
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
-  react-native-webview: 69ca34f590814ae44260d30e293ab4b7b3eea793
+  react-native-webview: ff843ce476f3189da538243134917e10d6784e3b
   RNCAsyncStorage: 02c55fdf22e98cdfdddca674e8ce0bb9f4e32fbf
   RNDeviceInfo: a716865d784cda2df3b073afd659459540c8d321
   RNFirebase: f20e5e4ceaa632aebb1a29a9a91022ae0469c633

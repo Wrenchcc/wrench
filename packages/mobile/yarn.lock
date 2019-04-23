@@ -2612,6 +2612,11 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+expo-app-loader-provider@~4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/expo-app-loader-provider/-/expo-app-loader-provider-4.0.0.tgz#fb875df95dcc009185cec8b2bd66e16a2f5a3dfa"
+  integrity sha512-0NYm/wFgyTcZP9OFl622xCdaWCZaW2Sl9wtpoCG5Sri/85/gLAA3SQGiS8PAqFTCENs9DEuENf1qPs85wh9xYA==
+
 expo-asset@~4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-4.0.0.tgz#41f8de836b0e1426dd4ae461cffbcaad0fdc4e15"
@@ -5332,16 +5337,16 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@^2.5.4:
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.4.tgz#4b5ad2e9e38001521d072445acdb5b3b5489b22d"
-  integrity sha512-olH9zYijOXVfj14hD7bQlZ0POBJchxg2e+mfnxEiEdqZra4+58SfIY0KPhmM9jqbeeusc6J/P4zzWIHt5DdNDg==
+react-apollo@^2.5.5:
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.5.tgz#0f27079a8fa9d9ceea8b29a5977eb42885f88fb9"
+  integrity sha512-zoJYlkI3i7+f1ejCbFtWU2GLCxjrmB3Es6RANyEZcbl0yetf5TI6ofMjBzILTvwoqp6tiQHH/8q66vQF0KcLmQ==
   dependencies:
     apollo-utilities "^1.2.1"
     hoist-non-react-statics "^3.3.0"
     lodash.isequal "^4.5.0"
     prop-types "^15.7.2"
-    ts-invariant "^0.3.2"
+    ts-invariant "^0.4.0"
     tslib "^1.9.3"
 
 react-clone-referenced-element@^1.0.1:
@@ -5425,10 +5430,10 @@ react-native-device-info@^1.5.0:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.5.0.tgz#09e17c8199ac51082d72193f17eb445e9c83e68d"
   integrity sha512-TiZxPkiuKR1GLS9wWAqjKzk37viBLt64EGzjn0IoySosXJpa7E4XKOwAvNR9xcSZ4iSlsVMtRM2QnA8wHe5M2g==
 
-react-native-fast-image@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.2.0.tgz#6730eb06951ea6f9a79abe02a733bc05b7a73412"
-  integrity sha512-S+2gmv9HfLc7CGjjnQ3kO/QoZD9BJnjfwWhsJWgjEvaeOPbpHZaXSUkINSqLcHD5KIHcYidu+U2lgXdEv4Jamg==
+react-native-fast-image@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.3.0.tgz#136e045bc6e95e75b03b89a82eefecb984737fda"
+  integrity sha512-pqp9loZbWHW2pVcaAItV5rtEpj6RyPnk0mRlsxRZpbJvrJArJwRMd+WT8BzC+OyTDV1TOdFJCOxDyVNL9I2XTw==
 
 react-native-fbsdk@^0.8.0:
   version "0.8.0"
@@ -5539,14 +5544,15 @@ react-native-tab-view@^2.2.0:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.2.0.tgz#30d015b8f33f497d82419b56df7d43ecfcc3f9b1"
   integrity sha512-mhFDRvPH/kmvqfAzTwNptbOM/xXmpqYRsD0PSMJX1nP0LzhU4uRI1QmSW6sWZGLyOwKgVw0ZYkwZ54N8AmoO1A==
 
-react-native-unimodules@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.2.0.tgz#3b4fff452cede445c97d1723b5fe5c568b092c3c"
-  integrity sha512-t8fuHLTWx0mHOHsP4Km/XEu7QzuDCis3EKJdHZqVBVpxweIGu9JidM+XrDnKUYpsMoVaq4t1OZ8d1xfsS5p3Ug==
+react-native-unimodules@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.3.0.tgz#ce914d147db7df549b9bb8181a8305b3eb131f7b"
+  integrity sha512-N7Q1uhgJaXkvb01OUvjnaBphlLBOBc05W6hTtSR5IRp9i26hyJd/KC9QWYglyGq8EwxRdMyt2QHz0WGUHqg9zA==
   dependencies:
     "@unimodules/core" "~1.0.0"
     "@unimodules/react-native-adapter" "~1.0.0"
     chalk "^2.4.2"
+    expo-app-loader-provider "~4.0.0"
     expo-asset "~4.0.0"
     expo-constants "~4.0.0"
     expo-file-system "~4.0.0"
@@ -5571,10 +5577,10 @@ react-native-video@^4.4.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^5.7.0:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.7.0.tgz#a0417e23ff65053be0ba248de3f98938db4688cf"
-  integrity sha512-0QFhZoKer8jV+avXJJALAC9J/T9PkX4uhCxeprDKLBXO6y2tQUIaVv+uPo2k07tGoeaSU1rKgoh3D8fYGaOwLQ==
+react-native-webview@^5.7.1:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.7.1.tgz#cfb3fa2d9acc3942378e45f273bbfcfd9ac76309"
+  integrity sha512-QWOG3xPTHB5jjpl3jMdjETu3Iu+9C0Qb6EFkVec3mC0r6ivXqZXx1jRkny4P5ki0hfRhvgsUHalRNEplKpxiNA==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
@@ -6651,6 +6657,13 @@ ts-invariant@^0.3.2:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.3.3.tgz#b5742b1885ecf9e29c31a750307480f045ec0b16"
   integrity sha512-UReOKsrJFGC9tUblgSRWo+BsVNbEd77Cl6WiV/XpMlkifXwNIJbknViCucHvVZkXSC/mcWeRnIGdY7uprcwvdQ==
+  dependencies:
+    tslib "^1.9.3"
+
+ts-invariant@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.4.0.tgz#5b98ddc2b8a067ba400c13d99b808357e4ee9c2e"
+  integrity sha512-dI1qXTqHx/QP6SvwSCen4sEza+CtB9KvHQREdpMVRzt05VlSPEfNxus4PsJWdK9ZfiI4yJnAB8j3+jcD3ct21g==
   dependencies:
     tslib "^1.9.3"
 
