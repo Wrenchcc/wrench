@@ -65,7 +65,7 @@
     "react-native-unimodules": "^0.3.0",
     "react-native-video": "^4.4.1",
     "react-native-webview": "^5.7.1",
-    "react-navigation": "^3.8.1",
+    "react-navigation": "^3.9.0",
     "react-spring": "^8.0.19",
     "reanimated-bottom-sheet": "^1.0.0-alpha.8",
     "styled-components": "^v4.2.0",
