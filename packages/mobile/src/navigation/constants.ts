@@ -1,4 +1,4 @@
-import { isNotchIPhone, isIphone } from 'utils/platform'
+import { hasNotch, isIphone } from 'utils/platform'
 
 // Route presentations
 export const TAB = 'tab'

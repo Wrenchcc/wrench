@@ -12,12 +12,12 @@ import {
   Mention,
   HeaderTitle,
 } from 'ui'
-import { isIphone, isNotchIPhone } from 'utils/platform'
+import { isIphone, hasNotch } from 'utils/platform'
 
 let scrollView = null
 
 // TODO: Make platform specific
-const SAFE_AREA = isNotchIPhone ? 10 : 0
+const SAFE_AREA = hasNotch ? 10 : 0
 const KEYBOARD_OFFSET = isIphone ? 180 + SAFE_AREA : 0
 const MENTION_OFFSET_BOTTOM = isIphone ? 240 + SAFE_AREA : 0
 const TRIGGER = '@'

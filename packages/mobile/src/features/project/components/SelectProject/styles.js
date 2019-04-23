@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { isNotchIPhone } from 'utils/platform'
+import { hasNotch } from 'utils/platform'
 import UiTouchable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 
-export const SPACER = isNotchIPhone ? 110 : 90
+export const SPACER = hasNotch ? 110 : 90
 export const BUTTON_HEIGHT = 60
 export const ITEM_HEIGHT = 65
 

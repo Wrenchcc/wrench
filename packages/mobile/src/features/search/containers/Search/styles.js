@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { isIphone, isNotchIPhone } from 'utils/platform'
+import { isIphone, hasNotch } from 'utils/platform'
 
-const TOP = isIphone ? (isNotchIPhone ? 60 : 35) : 15
+const TOP = isIphone ? (hasNotch ? 60 : 35) : 15
 
 export const Base = styled.View`
   flex-direction: row;

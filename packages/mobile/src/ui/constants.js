@@ -1,7 +1,7 @@
-import { isNotchIPhone, isIphone } from 'utils/platform'
+import { hasNotch, isIphone } from 'utils/platform'
 
 export const STATUS_BAR_HEIGHT = 10
-export const HEADER_HEIGHT = isNotchIPhone ? 100 : 70
+export const HEADER_HEIGHT = hasNotch ? 100 : 70
 export const TOTAL_HEADER_HEIGHT = isIphone ? HEADER_HEIGHT + STATUS_BAR_HEIGHT : HEADER_HEIGHT
 
 export const IMAGE_PRIORITY = {

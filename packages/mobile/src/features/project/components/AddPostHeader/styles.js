@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { isNotchIPhone } from 'utils/platform'
+import { hasNotch } from 'utils/platform'
 
-const TOP = isNotchIPhone ? 65 : 25
+const TOP = hasNotch ? 65 : 25
 
 export const Top = styled.View`
   position: absolute;

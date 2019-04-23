@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
-import { isNotchIPhone } from 'utils/platform'
+import { hasNotch } from 'utils/platform'
 
 export const Base = styled.View`
   flex-direction: row;
@@ -8,7 +8,7 @@ export const Base = styled.View`
   justify-content: space-between;
   padding: 0 20px 20px;
   height: 50;
-  margin-top: ${(isNotchIPhone && 60) || 20}
+  margin-top: ${(hasNotch && 60) || 20}
   background-color: ${({ transparent }) => (transparent ? 'transparent' : COLORS.WHITE)};
 `
 

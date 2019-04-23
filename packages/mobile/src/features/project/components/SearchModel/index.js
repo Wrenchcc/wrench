@@ -4,9 +4,9 @@ import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
-import { isIphone, isNotchIPhone } from 'utils/platform'
+import { isIphone, hasNotch } from 'utils/platform'
 
-const DEFAULT_OFFSET_BOTTOM = isIphone ? (isNotchIPhone ? 365 : 290) : 80
+const DEFAULT_OFFSET_BOTTOM = isIphone ? (hasNotch ? 365 : 290) : 80
 
 const styles = {
   container: {
