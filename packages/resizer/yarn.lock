@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.3.tgz#7c6b0f8eaf16ae530795de2ad1b85d34bf2f5c58"
   integrity sha512-wp6IOGu1lxsfnrD+5mX6qwSwWuqsdkKKxTN4aQc4wByHAKZJf9/D4KXPQ1POUjEbnCP5LMggB0OEFNY9OTsMqg==
 
-"@types/node@^11.13.6":
-  version "11.13.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.6.tgz#37ec75690830acb0d74ce3c6c43caab787081e85"
-  integrity sha512-Xoo/EBzEe8HxTSwaZNLZjaW6M6tA/+GmD3/DZ6uo8qSaolE/9Oarko0oV1fVfrLqOz0tx0nXJB4rdD5c+vixLw==
+"@types/node@^11.13.7":
+  version "11.13.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.7.tgz#85dbb71c510442d00c0631f99dae957ce44fd104"
+  integrity sha512-suFHr6hcA9mp8vFrZTgrmqW2ZU3mbWsryQtQlY/QvwTISCw7nw/j+bCQPPohqmskhmqa5wLNuMHTTsc+xf1MQg==
 
 "@types/sharp@^0.22.1":
   version "0.22.1"
@@ -3476,10 +3476,10 @@ serverless-webpack@^5.2.0:
     semver "^5.5.0"
     ts-node "^3.2.0"
 
-serverless@1.41.0:
-  version "1.41.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.41.0.tgz#58f734456504a938b386dcf6b01a609e9ea8c857"
-  integrity sha512-jL7S6sjMH1NuWQXnJ+czz/Co7RV4ENqX4T51TzqlEA5hJaapzUYw1iV16Xm9dGNyMdzjr0CGIPUMd4Lpvp/p1A==
+serverless@1.41.1:
+  version "1.41.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.41.1.tgz#c8278058eaa3a3c154b3a21fcc6536c165377a02"
+  integrity sha512-mVB8TSOWmLPvG07twtqPTZ9OToNDATZPY+6XIr63/kjbC9mU+ghrhVudLJRRjew0YewPZh+g1KXy5OyfnWZ5Rg==
   dependencies:
     archiver "^1.1.0"
     async "^1.5.2"
@@ -4043,10 +4043,10 @@ trim-repeated@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
-ts-loader@^5.3.3:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.3.3.tgz#8b4af042e773132d86b3c99ef0acf3b4d325f473"
-  integrity sha512-KwF1SplmOJepnoZ4eRIloH/zXL195F51skt7reEsS6jvDqzgc/YSbz9b8E07GxIUwLXdcD4ssrJu6v8CwaTafA==
+ts-loader@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.4.3.tgz#837f7f397799a665fc1774303c9fd0930d1c5947"
+  integrity sha512-pHwZFkZioL7Yi2su0bhW2/djxZ+0iGat1cxlAif4Eg9j5znVYuWGtW0YYY/5w8W+IzLcAlD5KwJDrs5unUKIRA==
   dependencies:
     chalk "^2.3.0"
     enhanced-resolve "^4.0.0"
