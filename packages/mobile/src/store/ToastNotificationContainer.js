@@ -10,10 +10,8 @@ export default class ToastNotificationContainer extends Container {
 
   constructor() {
     super()
-    // TODO: Check why isConnected is false on Android emulator
-    if (!__DEV__) {
-      NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
-    }
+
+    NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange)
   }
 
   handleConnectionChange = isConnected => {

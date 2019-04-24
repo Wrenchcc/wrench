@@ -59,16 +59,6 @@ class Project extends PureComponent {
     super(props)
     this.scrollY = new Animated.Value(0)
 
-    this.footerY = Animated.diffClamp(
-      this.scrollY.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-        extrapolateLeft: 'clamp',
-      }),
-      0,
-      FOOTER_HEIGHT
-    )
-
     props.navigation.setParams({
       opacity: this.scrollY.interpolate({
         inputRange: [0, 100],
@@ -126,7 +116,6 @@ class Project extends PureComponent {
     return (
       project.projectPermissions && (
         <Footer
-          translateY={this.footerY}
           name={project.title}
           dynamicLink={project.dynamicLink}
           following={project.projectPermissions.isFollower}
