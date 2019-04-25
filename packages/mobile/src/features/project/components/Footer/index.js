@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
 import { Share, Follow } from 'ui'
 import { Base } from './styles'
 
@@ -11,7 +10,6 @@ export default class Footer extends PureComponent {
     isOwner: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     dynamicLink: PropTypes.string.isRequired,
-    translateY: PropTypes.object.isRequired,
   }
 
   state = {
@@ -23,15 +21,13 @@ export default class Footer extends PureComponent {
   }
 
   render() {
-    const { onFollowPress, name, dynamicLink, following, isOwner, translateY } = this.props
+    const { onFollowPress, name, dynamicLink, following, isOwner } = this.props
 
     return (
-      <Animated.View style={{ transform: [{ translateY }] }}>
-        <Base>
-          <Share title={name} url={dynamicLink} />
-          {!isOwner && <Follow onPress={onFollowPress} following={following} />}
-        </Base>
-      </Animated.View>
+      <Base>
+        <Share title={name} url={dynamicLink} />
+        {!isOwner && <Follow onPress={onFollowPress} following={following} />}
+      </Base>
     )
   }
 }

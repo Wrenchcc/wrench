@@ -12,8 +12,6 @@ import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
 
-const FOOTER_HEIGHT = 600
-
 let scrollView = null
 
 class Project extends PureComponent {
@@ -59,16 +57,6 @@ class Project extends PureComponent {
     super(props)
     this.scrollY = new Animated.Value(0)
 
-    this.footerY = Animated.diffClamp(
-      this.scrollY.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-        extrapolateLeft: 'clamp',
-      }),
-      0,
-      FOOTER_HEIGHT
-    )
-
     props.navigation.setParams({
       opacity: this.scrollY.interpolate({
         inputRange: [0, 100],
@@ -84,7 +72,7 @@ class Project extends PureComponent {
     }
   }
 
-  renderItem = ({ item, index }) => {
+  renderItem = ({ item }) => {
     // Remove post item from list to skip dublicated
     if (pathOr(false, ['post', 'id'], this.props) === item.node.id) {
       return null
@@ -126,7 +114,6 @@ class Project extends PureComponent {
     return (
       project.projectPermissions && (
         <Footer
-          translateY={this.footerY}
           name={project.title}
           dynamicLink={project.dynamicLink}
           following={project.projectPermissions.isFollower}
