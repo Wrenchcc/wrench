@@ -12,8 +12,6 @@ import { TYPES } from 'ui/EmptyState/constants'
 import Header from 'features/project/components/Header'
 import Footer from 'features/project/components/Footer'
 
-const FOOTER_HEIGHT = 600
-
 let scrollView = null
 
 class Project extends PureComponent {
@@ -74,7 +72,7 @@ class Project extends PureComponent {
     }
   }
 
-  renderItem = ({ item, index }) => {
+  renderItem = ({ item }) => {
     // Remove post item from list to skip dublicated
     if (pathOr(false, ['post', 'id'], this.props) === item.node.id) {
       return null
