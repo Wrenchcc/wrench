@@ -205,7 +205,7 @@ PODS:
     - React
   - react-native-haptic-feedback (1.7.1):
     - React
-  - react-native-netinfo (2.0.4):
+  - react-native-netinfo (2.0.7):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -216,7 +216,7 @@ PODS:
     - react-native-video/Video (= 4.4.1)
   - react-native-video/Video (4.4.1):
     - React
-  - react-native-webview (5.7.1):
+  - react-native-webview (5.8.1):
     - React
   - React/Core (0.59.5):
     - yoga (= 0.59.5.React)
@@ -272,12 +272,12 @@ PODS:
     - React/RCTBlob
   - RNCAsyncStorage (1.3.3):
     - React
-  - RNDeviceInfo (1.5.1):
+  - RNDeviceInfo (1.6.0):
     - React
   - RNFirebase (5.3.1):
     - Firebase/Core
     - React
-  - RNGestureHandler (1.1.0):
+  - RNGestureHandler (1.2.0):
     - React
   - RNPermissions/Camera (2.0.0-alpha.1):
     - React/Core
@@ -436,17 +436,23 @@ EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXAppLoaderProvider:
-    :path: "../node_modules/expo-app-loader-provider/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-app-loader-provider/ios"
   EXConstants:
-    :path: "../node_modules/expo-constants/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-constants/ios"
   EXFileSystem:
-    :path: "../node_modules/expo-file-system/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-file-system/ios"
   EXImageManipulator:
-    :path: "../node_modules/expo-image-manipulator/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-image-manipulator/ios"
   EXMediaLibrary:
-    :path: "../node_modules/expo-media-library/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-media-library/ios"
   EXPermissions:
-    :path: "../node_modules/expo-permissions/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-permissions/ios"
   Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
@@ -494,29 +500,41 @@ EXTERNAL SOURCES:
   SentryReactNative:
     :path: "../node_modules/react-native-sentry"
   UMBarCodeScannerInterface:
-    :path: "../node_modules/unimodules-barcode-scanner-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-barcode-scanner-interface/ios"
   UMCameraInterface:
-    :path: "../node_modules/unimodules-camera-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-camera-interface/ios"
   UMConstantsInterface:
-    :path: "../node_modules/unimodules-constants-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-constants-interface/ios"
   UMCore:
-    :path: "../node_modules/@unimodules/core/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/@unimodules/core/ios"
   UMFaceDetectorInterface:
-    :path: "../node_modules/unimodules-face-detector-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-face-detector-interface/ios"
   UMFileSystemInterface:
-    :path: "../node_modules/unimodules-file-system-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-file-system-interface/ios"
   UMFontInterface:
-    :path: "../node_modules/unimodules-font-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-font-interface/ios"
   UMImageLoaderInterface:
-    :path: "../node_modules/unimodules-image-loader-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-image-loader-interface/ios"
   UMPermissionsInterface:
-    :path: "../node_modules/unimodules-permissions-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-permissions-interface/ios"
   UMReactNativeAdapter:
-    :path: "../node_modules/@unimodules/react-native-adapter/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/@unimodules/react-native-adapter/ios"
   UMSensorsInterface:
-    :path: "../node_modules/unimodules-sensors-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-sensors-interface/ios"
   UMTaskManagerInterface:
-    :path: "../node_modules/unimodules-task-manager-interface/ios"
+    :path: !ruby/object:Pathname
+    path: "../node_modules/unimodules-task-manager-interface/ios"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -563,15 +581,15 @@ SPEC CHECKSUMS:
   react-native-fast-image: 56efe6ea964cff19fd9bb1cc28e79b432c4b58e4
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   react-native-haptic-feedback: 22c9dc85fd8059f83bf9edd9212ac4bd4ae6074d
-  react-native-netinfo: 1ea4efa22c02519ac8043ac3f000062a4e320795
+  react-native-netinfo: 15cad8c39475a4294b648fc62e299ea6e725e7ea
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
-  react-native-webview: ff843ce476f3189da538243134917e10d6784e3b
+  react-native-webview: f3e28b48461c78db833f727feec08b13285e7b61
   RNCAsyncStorage: 02c55fdf22e98cdfdddca674e8ce0bb9f4e32fbf
-  RNDeviceInfo: b0877c3c6b15d44c795d0854dbe7c0dd92eb62a9
+  RNDeviceInfo: 47a8b26b7e367f8d71c4012be7523a23d6512003
   RNFirebase: f20e5e4ceaa632aebb1a29a9a91022ae0469c633
-  RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0
+  RNGestureHandler: c22020b22808a78e9dbea519381dfca2f20f78bd
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
   RNReanimated: c8dd490ca98a4edcba229bfa49f2516c95a43afb
@@ -597,4 +615,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a27607c24510673907af31e7eaee060495208a4c
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1
