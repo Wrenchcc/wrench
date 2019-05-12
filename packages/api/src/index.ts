@@ -1,6 +1,6 @@
 import * as express from 'express'
 import { ApolloServer } from 'apollo-server-express'
-import { getConnectionManager, Connection } from 'typeorm'
+import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import * as depthLimit from 'graphql-depth-limit'
 import { getUserId } from './utils/tokens'
@@ -17,23 +17,7 @@ const { PORT = 4000 } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
-const manager = getConnectionManager()
-let connection: Connection
-
-async function server() {
-  if (manager.has('default')) {
-    connection = await manager.get('default')
-    debug('Reusing existing connection from manager.')
-  } else {
-    debug('Creating new connection to DB.')
-    connection = await manager.create(options)
-  }
-
-  if (!connection.isConnected) {
-    debug('Cached connection was not connected, attempting to reconnect.')
-    await connection.connect()
-  }
-
+createConnection(options).then(async connection => {
   const driver = connection.driver as PostgresDriver
   driver.postgres.defaults.parseInputDatesAsUTC = true
   driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
@@ -59,6 +43,4 @@ async function server() {
   app.listen({ port: PORT }, () => {
     debug(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
   })
-}
-
-server()
+})

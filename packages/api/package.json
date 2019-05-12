@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e .env -- ts-node-dev --no-notify src/index.ts",
-    "compile": "ncc build src/index.ts -e aws-sdk",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/deleteIndex.ts",
-    "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts"
+    "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts",
+    "start": "node ./dist/index.js",
+    "postinstall": "tsc"
   },
   "dependencies": {
     "apollo-server-express": "^2.4.8",
@@ -36,7 +37,6 @@
     "@firebase/app-types": "^0.4.0",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.14",
-    "@zeit/ncc": "0.18.3",
     "bluebird": "^3.5.4",
     "chokidar": "^3.0.0",
     "cross-env": "^5.2.0",
