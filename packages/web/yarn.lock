@@ -830,10 +830,10 @@
     "@types/react" "*"
     "@types/react-loadable" "*"
 
-"@types/next@^8.0.4":
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/@types/next/-/next-8.0.4.tgz#d5c693d95ac26c448ffa16778b6ae65b0feb5c59"
-  integrity sha512-pe28hzhDcQ//X2Le3LRYXPWxXE4WkGqPfkzeJfl27XE5Te4lB0ZMJFPStjpq0sBNINTRoj/2wNOmt3JS4+Lz1w==
+"@types/next@^8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@types/next/-/next-8.0.5.tgz#667551f587f7905388bd89a6962d93e930f6c314"
+  integrity sha512-JZVgbTPuptXEwu2pi928bG0WJARCInJEu9CW6wh0veKGkE2zWNvr9SSb4+7NN2ffNlTPRv9MMS3AE4cTI69HmA==
   dependencies:
     "@types/next-server" "*"
     "@types/node" "*"
@@ -895,10 +895,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@^16.8.15":
-  version "16.8.15"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.15.tgz#a76515fed5aa3e996603056f54427fec5f2a5122"
-  integrity sha512-dMhzw1rWK+wwJWvPp5Pk12ksSrm/z/C/+lOQbMZ7YfDQYnJ02bc0wtg4EJD9qrFhuxFrf/ywNgwTboucobJqQg==
+"@types/react@^16.8.17":
+  version "16.8.17"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.17.tgz#f287b76a5badb93bc9aa3f54521a3eb53d6c2374"
+  integrity sha512-pln3mgc6VfkNg92WXODul/ONo140huK9OMsx62GlBlZ2lvjNK86PQJhYMPLO1i66aF5O9OPyZefogvNltBIszA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -3628,10 +3628,10 @@ graphql-tag@^2.10.1:
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
   integrity sha512-jApXqWBzNXQ8jYa/HLkZJaVw9jgwNqZkywa2zfFn16Iv1Zb7ELNHkJaXHR7Quvd5SIGsy6Ny7SUKATgnu05uEg==
 
-graphql@^14.2.1:
-  version "14.2.1"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.2.1.tgz#779529bf9a01e7207b977a54c20670b48ca6e95c"
-  integrity sha512-2PL1UbvKeSjy/lUeJqHk+eR9CvuErXoCNwJI4jm3oNFEeY+9ELqHNKO1ZuSxAkasPkpWbmT/iMRMFxd3cEL3tQ==
+graphql@^14.3.0:
+  version "14.3.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.3.0.tgz#34dd36faa489ff642bcd25df6c3b4f988a1a2f3e"
+  integrity sha512-MdfI4v7kSNC3NhB7cF8KNijDsifuWO2XOtzpyququqaclO8wVuChYv+KogexDwgP5sp7nFI9Z6N4QHgoLkfjrg==
   dependencies:
     iterall "^1.2.2"
 
@@ -6016,10 +6016,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-pure-react-carousel@^1.19.4:
-  version "1.19.4"
-  resolved "https://registry.yarnpkg.com/pure-react-carousel/-/pure-react-carousel-1.19.4.tgz#28597dd056e7a487fc39d633bf99a491f11c99f4"
-  integrity sha512-kord2Fvr9E+QiByexF/39Vv9CPQA8h/bQ22xxCNTULhc0TAWQmtUieXD7WP0vN6ZzWu6MTIreWuSFmw5Fh9Mdw==
+pure-react-carousel@^1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/pure-react-carousel/-/pure-react-carousel-1.20.0.tgz#ed40325aec738b0075bf6aa6fdd08acde2907aad"
+  integrity sha512-jdEbz4Mhl1YTHDS+bigpxPXBszzciwG0EmlPk3ms5UfqPgFTGFTMLp5fVWMPRjkVJMB4i+xyOBbw3jfN15TpYA==
   dependencies:
     deep-freeze "0.0.1"
     deepmerge "^2.2.1"
@@ -7026,10 +7026,10 @@ styled-jsx@3.2.1:
     stylis "3.5.4"
     stylis-rule-sheet "0.0.10"
 
-styled-reset@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-2.0.9.tgz#8bd14f8bce401ef2a011698b4dabd503992910f2"
-  integrity sha512-MkGNyrvLXz0OicrFNwDtg2Wkn8FYvHlbEQzc1o70w+4rvV9WFxhHKtMmBjaFQ8NekRIkw2V4HtEGWGZ0dEj5bA==
+styled-reset@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/styled-reset/-/styled-reset-2.0.10.tgz#3705ae9c1d939662fcbdb805fb2fd56cea41bcc0"
+  integrity sha512-R2UocY+C4YYMlWLjXQRyokeqcyPdF2jBPInoT61X0SZugWKc+wKJJGHInZY2kkRk+wXnMhoa/0fS6HjnH8T6eQ==
   dependencies:
     opencollective "^1.0.3"
     opencollective-postinstall "2.0.2"

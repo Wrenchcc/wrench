@@ -1,0 +1,6 @@
+cluster: wrench
+service: api
+task: api
+rule: wrench-api
+verbose: false
+nocolor: true
