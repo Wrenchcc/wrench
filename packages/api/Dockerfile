@@ -1,4 +1,4 @@
-FROM node:12.2.0-alpine
+FROM node:alpine
 
 WORKDIR /app
 
@@ -7,4 +7,4 @@ RUN yarn
 RUN yarn build
 
 EXPOSE 4000
-CMD [ "yarn", "start" ]
+CMD ["yarn", "start"]
