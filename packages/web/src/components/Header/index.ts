@@ -4,7 +4,7 @@ import * as ms from 'ms'
 import { useQuery, useMutation } from 'react-apollo-hooks'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import useOutsideClick from '@rooks/use-outside-click'
+// import useOutsideClick from '@rooks/use-outside-click'
 import Badge from '../../ui/Badge'
 import { CURRENT_USER } from '../../graphql/queries/user/currentUser'
 import { UNREAD_NOTIFICATIONS } from '../../graphql/queries/notifications/unreadNotifications'
@@ -33,7 +33,7 @@ function Header({ router, isAuthenticated }) {
   }
 
   const logoutRef = useRef()
-  useOutsideClick(logoutRef, () => setUserMenu(false))
+  // useOutsideClick(logoutRef, () => setUserMenu(false))
 
   const [openNotifications, setNotificationsMenu] = useState(false)
 
@@ -65,7 +65,7 @@ function Header({ router, isAuthenticated }) {
   }
 
   const notificationsRef = useRef()
-  useOutsideClick(notificationsRef, () => setNotificationsMenu(false))
+  // useOutsideClick(notificationsRef, () => setNotificationsMenu(false))
 
   const inverted = !isAuthenticated && router.route === '/'
 

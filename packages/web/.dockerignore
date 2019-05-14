@@ -1,0 +1,9 @@
+.git
+tasks
+.env
+.env-template
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+.next
