@@ -5779,10 +5779,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.6.2.tgz#3c867e7be55f59636ebc91cb28e5151dfe5ed352"
-  integrity sha512-Ihhqg/rTeFPkMKnyXRi1rg0TDfTaSmyNS6h1ckKORCb3w5jAtZkqmuJ5zezHFsXr0WCJz1pfmfwUZs8YAF7dcA==
+react-native-device-info@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.7.0.tgz#69809355db89d37cf1582b7a658876ce0cffc6b0"
+  integrity sha512-Ci3YPtMt7+AFYGdZ+pOSwmHw2Qt7IadfFupHMLvZGRpnwgw+ZdSuKrbv8lDGm6RKqEz7f1rXW31qqsuItSvahA==
 
 react-native-fast-image@^5.4.2:
   version "5.4.2"

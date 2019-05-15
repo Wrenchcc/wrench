@@ -16,7 +16,7 @@ const Image = memo(function Image({
   placeholderColor,
   priority,
   source,
-  placeholderDensity = 10,
+  placeholderDensity = 8,
   ...props
 }) {
   // NOTE: Guard for crash on Android
@@ -38,7 +38,7 @@ const Image = memo(function Image({
 
   const placeholder = `${source.uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
     height / placeholderDensity
-  )}&dpr=1&blur=1&blurRadius=1.5&webp=1`
+  )}&dpr=1&blur=1&blurRadius=10&webp=1`
 
   return (
     <Base

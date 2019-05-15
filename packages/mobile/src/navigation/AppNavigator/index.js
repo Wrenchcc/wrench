@@ -11,8 +11,10 @@ import Navigator from './navigator'
 class AppNavigator extends PureComponent {
   componentDidMount() {
     this.createNotificationListener()
-    this.createdynamicLinkListener()
     this.createInitialNotificationListerer()
+
+    this.createdynamicLinkListener()
+    this.getInitialLink()
 
     // TODO: Show in app notification
     // notifications().onNotification(handleNotification);
@@ -21,6 +23,15 @@ class AppNavigator extends PureComponent {
   componentWillUnmount() {
     this.dynamicLinkListener()
     this.notificationOpenedListener()
+  }
+
+  async getInitialLink() {
+    const url = await links().getInitialLink()
+
+    if (url) {
+      const path = extractDeepLinkFromDynamicLink(url)
+      Linking.canOpenURL(path).then(() => Linking.openURL(path))
+    }
   }
 
   createdynamicLinkListener() {
