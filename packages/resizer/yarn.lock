@@ -28,15 +28,15 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.3.tgz#7c6b0f8eaf16ae530795de2ad1b85d34bf2f5c58"
   integrity sha512-wp6IOGu1lxsfnrD+5mX6qwSwWuqsdkKKxTN4aQc4wByHAKZJf9/D4KXPQ1POUjEbnCP5LMggB0OEFNY9OTsMqg==
 
-"@types/node@^12.0.0":
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
-  integrity sha512-Jrb/x3HT4PTJp6a4avhmJCDEVrPdqLfl3e8GGMbpkGGdwAV5UGlIs4vVEfsHHfylZVOKZWpOqmqFH8CbfOZ6kg==
+"@types/node@^12.0.2":
+  version "12.0.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
+  integrity sha512-5tabW/i+9mhrfEOUcLDu2xBPsHJ+X5Orqy9FKpale3SjDA17j5AEpYq5vfy3oAeAHGcvANRCO3NV3d2D6q3NiA==
 
-"@types/sharp@^0.22.1":
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.22.1.tgz#4fccaa9cc580d859916bee693aa7ae7447d0e0ba"
-  integrity sha512-Reri4hhX77JBx6HWt2a2CLO0xjHMFHDaeBYMslUsTSHGRFQnk+VpoH25g7/L6QzyyNNmxTekK+j+lFFjK3OkqA==
+"@types/sharp@^0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.22.2.tgz#c9b613816ec000d94f153259b25ae41f874a75f5"
+  integrity sha512-oH49f42h3nf/qys0weYsaTGiMv67wPB769ynCoPfBAVwjjxFF3QtIPEe3MfhwyNjQAhQhTEfnmMKvVZfcFkhIw==
   dependencies:
     "@types/node" "*"
 
@@ -446,10 +446,10 @@ aws-sdk@^2.430.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.453.0:
-  version "2.453.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.453.0.tgz#7f1ada4efc78d255dfd43adc3decd5f01a21ac2c"
-  integrity sha512-UsofQeX8XVElr4+bqw47jOZUGNiwUdFVTNyOdOHcK14RHH2ySsve6JWyvQT8L2rS//XQP1OBIQo20PAl1Zf7ig==
+aws-sdk@^2.455.0:
+  version "2.455.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.455.0.tgz#67caab4324e3482b3facd17e522a1fea2ded07e1"
+  integrity sha512-ONb2lrJ9gEenh0QWSv/fVYv6wyJydsBe9CFS9SGFpD/CAVQlzcUHXa9C1j9jhNTWygh5m4buWNOEob/2F+ZubA==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -3147,10 +3147,10 @@ prepend-http@^1.0.1:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier@^1.17.0:
-  version "1.17.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.0.tgz#53b303676eed22cc14a9f0cec09b477b3026c008"
-  integrity sha512-sXe5lSt2WQlCbydGETgfm1YBShgOX4HxQkFPvbxkcwgDvGDeqVau8h+12+lmSVlP3rHPz0oavfddSZg/q+Szjw==
+prettier@^1.17.1:
+  version "1.17.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.1.tgz#ed64b4e93e370cb8a25b9ef7fef3e4fd1c0995db"
+  integrity sha512-TzGRNvuUSmPgwivDqkZ9tM/qTGW9hqDKWOE9YHiyQdixlKbv7kvEqsmDPrcHJTKwthU774TQwZXVtaQ/mMsvjg==
 
 process-nextick-args@~2.0.0:
   version "2.0.0"
@@ -3511,10 +3511,10 @@ serverless-webpack@^5.3.0:
     semver "^5.5.0"
     ts-node "^3.2.0"
 
-serverless@1.42.2:
-  version "1.42.2"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.42.2.tgz#1387d0effb8b19c7ee9cf7af6774227b315d7cbc"
-  integrity sha512-+XV0NhYhqw+lVIoHgqpuYpAJcK0ukw++mPLvcBgOHbooA/ytF2HOYI4hOxQYAGarYMwtBXMUw7y6MWfLWtKggA==
+serverless@1.42.3:
+  version "1.42.3"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.42.3.tgz#7f637a5d788b48a7bbd18b0b904fbb2ed27e87a7"
+  integrity sha512-lwfLn2N+MSYAnp+5VNfc8wF4iBRX1YvtpYA0BwsEN9CyRnmSV7vCCIW4lze2EnErtjzQlFMNg6UKlhL86GhiPQ==
   dependencies:
     archiver "^1.1.0"
     async "^1.5.2"
