@@ -20,7 +20,8 @@ const Image = memo(function Image({
     return null
   }
 
-  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
+  // const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
+  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}`
 
   return (
     <Base
