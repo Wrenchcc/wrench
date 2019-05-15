@@ -25,8 +25,8 @@ const Image = memo(function Image({
           srcSet={`${src}&webp=1 1x, ${src}&dpr=2&webp=1 2x, ${src}&dpr=3&webp=1 3x`}
           type="image/webp"
         />
-        <source srcSet={`${src} 1x, ${src}&dpr=2 2x, ${src}&dpr=3 3x`} type="image/jpeg" />
-        <img src={src} />
+        <source srcSet={`${src}?dpr=1 1x, ${src}&dpr=2 2x, ${src}&dpr=3 3x`} type="image/jpeg" />
+        <img src={`${src}?dpr=1`} />
       </Picture>
     </Base>
   )

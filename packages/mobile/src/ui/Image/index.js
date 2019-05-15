@@ -30,7 +30,7 @@ const Image = memo(function Image({
     Animated.timing(imageAnimated, {
       toValue: 1,
       useNativeDriver: true,
-      duration: 120,
+      duration: 200,
     }).start()
   }
 

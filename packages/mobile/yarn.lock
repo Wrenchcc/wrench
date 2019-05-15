@@ -5754,7 +5754,7 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.8.0:
+react-native-camera@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.9.0.tgz#5ef94a535dbbfd215d672deef8d0c45bf06b1f3a"
   integrity sha512-S1vtsmCx2upnLK/4xYALHKB1itbujHemAIhQ+R0qxxEjb/8TYP7AJUjlxmBJ57tjYR3IaNCAeiashCCnEvGe5Q==
@@ -5893,10 +5893,10 @@ react-native-tab-view@^1.2.0, react-native-tab-view@^1.4.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-tab-view@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.2.1.tgz#1a118d998b6a08bfb6ef4e67dfc4dc1432fc9583"
-  integrity sha512-EHeDwMQ8zvHNG+HmUwNla0okeP6O+lhfr4+A1Y4B4XrlV692jKAwazNFTArE3vbmOnMQMrL33p8lMBcKlNjLgw==
+react-native-tab-view@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.3.0.tgz#858a42a72cbf92e42e18169ad01522edbaa9c0cf"
+  integrity sha512-AdXCqpfNMzWVgGWJ/rObFDpnAy4a4tQSpVfdeQ13k/+bmaP1h65mGHA6YH9YR1OB+iLviewhc03GC+IPpfBNCg==
 
 react-native-unimodules@^0.3.1:
   version "0.3.1"
@@ -7389,9 +7389,9 @@ xcode@^2.0.0:
     simple-plist "^1.0.0"
     uuid "^3.3.2"
 
-"xcode@git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b":
+"xcode@https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b":
   version "1.0.1-dev"
-  resolved "git+https://github.com/apache/cordova-node-xcode.git#e7646f0680d509b590b839e567c217590451505b"
+  resolved "https://github.com/apache/cordova-node-xcode#e7646f0680d509b590b839e567c217590451505b"
   dependencies:
     simple-plist "^0.2.1"
     uuid "3.0.1"
