@@ -1,8 +1,11 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { PixelRatio } from 'react-native'
+import { PixelRatio, Animated } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { Base, FastImage } from './styles'
+import { Base } from './styles'
+
+const AnimatedFastImage = Animated.createAnimatedComponent(FastImage)
 
 const density = PixelRatio.get()
 
@@ -13,6 +16,7 @@ const Image = memo(function Image({
   placeholderColor,
   priority,
   source,
+  placeholderDensity = 10,
   ...props
 }) {
   // NOTE: Guard for crash on Android
@@ -20,8 +24,21 @@ const Image = memo(function Image({
     return null
   }
 
-  // const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
-  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}`
+  const imageAnimated = new Animated.Value(0)
+
+  const onImageLoad = () => {
+    Animated.timing(imageAnimated, {
+      toValue: 1,
+      useNativeDriver: true,
+      duration: 120,
+    }).start()
+  }
+
+  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
+
+  const placeholder = `${source.uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
+    height / placeholderDensity
+  )}&dpr=1&blur=1&blurRadius=1.5&webp=1`
 
   return (
     <Base
@@ -30,12 +47,27 @@ const Image = memo(function Image({
       borderRadius={borderRadius}
       placeholderColor={placeholderColor}
     >
-      <FastImage
+      <AnimatedFastImage
+        {...props}
+        source={{ uri: placeholder }}
+        style={{ width, height }}
+        priority={priority || IMAGE_PRIORITY.NORMAL}
+      />
+      <AnimatedFastImage
         {...props}
         source={{ uri }}
-        width={width}
-        height={height}
+        style={{
+          width,
+          height,
+          opacity: imageAnimated,
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          top: 0,
+        }}
         priority={priority || IMAGE_PRIORITY.NORMAL}
+        onLoad={onImageLoad}
       />
     </Base>
   )
@@ -48,6 +80,7 @@ Image.propTypes = {
   placeholderColor: PropTypes.string,
   priority: PropTypes.string,
   source: PropTypes.object,
+  placeholderDensity: PropTypes.number,
 }
 
 export default Image

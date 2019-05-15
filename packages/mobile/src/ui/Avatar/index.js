@@ -20,6 +20,7 @@ const Avatar = ({
       <View style={{ position: 'relative', height: size, width: size }}>
         <Touchable onPress={onPress} style={style} disabled={disabled}>
           <Image
+            placeholderDensity={3}
             source={{ uri }}
             width={size}
             height={size}
@@ -35,6 +36,7 @@ const Avatar = ({
   return (
     <View style={{ position: 'relative' }}>
       <Image
+        placeholderDensity={3}
         source={{ uri }}
         width={size}
         height={size}

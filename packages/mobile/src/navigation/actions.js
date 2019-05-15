@@ -45,8 +45,8 @@ export const resetNavigation = () => {
 export const navigateToFeed = params => navigate('feed', params)
 export const navigateToAddModel = () => navigate('add-project-model')
 export const navigateToSearch = params => navigate('search', params)
+export const navigateToAddMedia = () => navigate('add-media')
 
-export const navigateToAddMedia = () => push('add-media')
 export const navigateToAddPost = params => push('add-post', params)
 export const navigateToAddProject = params => push('add-project', params)
 export const navigateToAddProjectType = () => push('add-project-type')

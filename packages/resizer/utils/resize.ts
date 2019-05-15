@@ -6,22 +6,19 @@ type Resize = (query: Query) => (data: Data) => Promise<Buffer>
 const min = (defaultNum: number, n?: number) => n && Math.min(defaultNum, n)
 
 export interface Query {
-  width?: number
-  height?: number
+  blur?: boolean
+  blurRadius?: number
   dpr?: number
+  height?: number
   webp?: boolean
+  width?: number
 }
 
 export const resize: Resize = query => async data => {
-  const { width, height, webp, dpr = 1 } = query
+  const { width, height, webp, dpr = 1, blur, blurRadius = 1 } = query
 
   const image = sharp(data)
   const meta = await image.metadata()
-
-  // TODO: Guard
-  // if (meta.format !== 'jpeg') {
-  //   throw new Error(`file format is not jpeg but: ${meta.format}`)
-  // }
 
   image.rotate()
 
@@ -32,6 +29,10 @@ export const resize: Resize = query => async data => {
 
   if (webp) {
     image.webp()
+  }
+
+  if (blur) {
+    image.blur(blurRadius)
   }
 
   return await image.toBuffer()
