@@ -12,12 +12,8 @@ class AppNavigator extends PureComponent {
   componentDidMount() {
     this.createNotificationListener()
     this.createInitialNotificationListerer()
-
     this.createdynamicLinkListener()
     this.getInitialLink()
-
-    // TODO: Show in app notification
-    // notifications().onNotification(handleNotification);
   }
 
   componentWillUnmount() {

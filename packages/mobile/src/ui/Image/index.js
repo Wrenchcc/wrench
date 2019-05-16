@@ -56,16 +56,6 @@ const Image = memo(function Image({
       <AnimatedFastImage
         {...props}
         source={{ uri }}
-        style={{
-          width,
-          height,
-          opacity: imageAnimated,
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          top: 0,
-        }}
         priority={priority || IMAGE_PRIORITY.NORMAL}
         onLoad={onImageLoad}
       />
