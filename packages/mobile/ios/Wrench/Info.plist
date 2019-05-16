@@ -76,7 +76,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
+	<string>Allow $(PRODUCT_NAME) to access your device&apos;s accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -103,11 +103,11 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://share.wrench.cc</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>FirebaseDynamicLinksCustomDomains</key>
-  <array>
-    <string>https://share.wrench.cc</string>
-  </array>
 </dict>
 </plist>

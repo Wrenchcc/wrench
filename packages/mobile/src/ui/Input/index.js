@@ -1,14 +1,17 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { COLORS } from 'ui/constants'
+import { isIphone } from 'utils/platform'
 import { Field } from './styles'
+
+const DEFAULT_SELECTION_COLOR = isIphone ? COLORS.DARK : COLORS.WHITE
 
 const Input = memo(function Input({
   placeholder,
   autoFocus,
   noBorder,
   multiline = false,
-  selectionColor = COLORS.DARK,
+  selectionColor = DEFAULT_SELECTION_COLOR,
   inputRef,
   ...props
 }) {
