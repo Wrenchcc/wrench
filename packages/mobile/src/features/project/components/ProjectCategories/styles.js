@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import UiImage from 'ui/Image'
+import FastImage from 'react-native-fast-image'
 
-export const Image = styled(UiImage)`
+export const Image = styled(FastImage)`
   height: ${props => props.height - props.gutter / 2};
   width: ${props => props.width - props.gutter / 2};
   flex: 1;
