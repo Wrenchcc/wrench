@@ -38,27 +38,27 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.42.0):
     - FBSDKCoreKit
-  - Firebase/Core (5.20.2):
+  - Firebase/Core (5.20.1):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.8.1)
-  - Firebase/CoreOnly (5.20.2):
+    - FirebaseAnalytics (= 5.8.0)
+  - Firebase/CoreOnly (5.20.1):
     - FirebaseCore (= 5.4.1)
-  - Firebase/DynamicLinks (5.20.2):
+  - Firebase/DynamicLinks (5.20.1):
     - Firebase/CoreOnly
     - FirebaseDynamicLinks (= 3.4.3)
-  - Firebase/Messaging (5.20.2):
+  - Firebase/Messaging (5.20.1):
     - Firebase/CoreOnly
     - FirebaseMessaging (= 3.5.0)
-  - Firebase/Performance (5.20.2):
+  - Firebase/Performance (5.20.1):
     - Firebase/Core
     - FirebasePerformance (= 2.2.4)
   - FirebaseABTesting (2.0.0):
     - FirebaseCore (~> 5.0)
     - Protobuf (~> 3.5)
-  - FirebaseAnalytics (5.8.1):
+  - FirebaseAnalytics (5.8.0):
     - FirebaseCore (~> 5.4)
     - FirebaseInstanceID (~> 3.8)
-    - GoogleAppMeasurement (= 5.8.1)
+    - GoogleAppMeasurement (= 5.8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
@@ -108,7 +108,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - GoogleAppMeasurement (5.8.1):
+  - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
@@ -342,10 +342,10 @@ DEPENDENCIES:
   - FBSDKCoreKit (= 4.42.0)
   - FBSDKLoginKit (= 4.42.0)
   - FBSDKShareKit (= 4.42.0)
-  - Firebase/Core (= 5.20.2)
-  - Firebase/DynamicLinks (= 5.20.2)
-  - Firebase/Messaging (= 5.20.2)
-  - Firebase/Performance (= 5.20.2)
+  - Firebase/Core (= 5.20.1)
+  - Firebase/DynamicLinks (= 5.20.1)
+  - Firebase/Messaging (= 5.20.1)
+  - Firebase/Performance (= 5.20.1)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - react-native-camera (from `../node_modules/react-native-camera`)
@@ -554,9 +554,9 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
   FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
-  Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
+  Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
-  FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
+  FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
   FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
   FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
@@ -567,7 +567,7 @@ SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
+  GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
@@ -613,6 +613,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: f88793bd35248182e15591e0aa5b045132312be0
   yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
 
-PODFILE CHECKSUM: 4ac4b33f1589ec85fcd2510bb64415116589d728
+PODFILE CHECKSUM: 21fc44fc3479836ffd17447a2dca8c1bee9bb723
 
 COCOAPODS: 1.6.1
