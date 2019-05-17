@@ -216,7 +216,7 @@ PODS:
     - react-native-video/Video (= 4.4.1)
   - react-native-video/Video (4.4.1):
     - React
-  - react-native-webview (5.8.2):
+  - react-native-webview (6.0.1):
     - React
   - React/Core (0.59.8):
     - yoga (= 0.59.8.React)
@@ -272,7 +272,7 @@ PODS:
     - React/RCTBlob
   - RNCAsyncStorage (1.4.0):
     - React
-  - RNDeviceInfo (1.7.0):
+  - RNDeviceInfo (1.8.0):
     - React
   - RNFirebase (5.3.1):
     - Firebase/Core
@@ -585,9 +585,9 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
-  react-native-webview: 45010be37680adba5ffb0e5a9e8822c6ca117049
+  react-native-webview: 8edb3248597d1ca43c9117287d3dec6c1dd17835
   RNCAsyncStorage: 0c3ef98facf3fecf455b518d6f52e10fc964c523
-  RNDeviceInfo: cb062584b3ca943a6491efbeb1050935d8f91590
+  RNDeviceInfo: 9e6a0aece8e7455515103ce23372b393843a7ee7
   RNFirebase: f20e5e4ceaa632aebb1a29a9a91022ae0469c633
   RNGestureHandler: aea90f0ad8e35fec23438db6fc3ad79be58bb734
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
