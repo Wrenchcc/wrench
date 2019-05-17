@@ -105,9 +105,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>FirebaseDynamicLinksCustomDomains</key>
-  <array>
-    <string>https://share.wrench.cc</string>
-  </array>
 </dict>
 </plist>
