@@ -54,6 +54,10 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
+  <key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://share.wrench.cc</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
