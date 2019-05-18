@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>__RN_CONFIG_FACEBOOK_CUSTOM_URL_SCHEME</string>
+				<string>fb1174076712654826</string>
 			</array>
 		</dict>
 		<dict>
@@ -42,9 +42,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CodePushDeploymentKey</key>
-	<string>__RN_CONFIG_CODE_PUSH_DEPLOYMENT_KEY</string>
+	<string>cW_HgZdJFI_Lt5STiEoGpD78W4blryn9pyhKf</string>
 	<key>FacebookAppID</key>
-	<string>__RN_CONFIG_FACEBOOK_APP_ID</string>
+	<string>1174076712654826</string>
 	<key>FacebookDisplayName</key>
 	<string>Wrench</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -53,10 +53,6 @@
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
-	</array>
-  <key>FirebaseDynamicLinksCustomDomains</key>
-	<array>
-		<string>https://share.wrench.cc</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -109,5 +105,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>FirebaseDynamicLinksCustomDomains</key>
+  <array>
+    <string>https://share.wrench.cc</string>
+  </array>
 </dict>
 </plist>
