@@ -1,8 +1,9 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import PropTypes from 'prop-types'
-import { PixelRatio, Animated } from 'react-native'
+import { PixelRatio, Animated, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
+import Progress from './Progress'
 import { Base } from './styles'
 
 const AnimatedFastImage = Animated.createAnimatedComponent(FastImage)
@@ -23,6 +24,10 @@ const Image = memo(function Image({
   if (!source.uri) {
     return null
   }
+
+  const [progress, setProgress] = useState(0)
+
+  const onProgress = evt => setProgress(evt.nativeEvent.loaded / evt.nativeEvent.total)
 
   const imageAnimated = new Animated.Value(0)
 
@@ -55,6 +60,7 @@ const Image = memo(function Image({
       />
       <AnimatedFastImage
         {...props}
+        onProgress={onProgress}
         source={{ uri }}
         style={{
           width,
@@ -69,6 +75,28 @@ const Image = memo(function Image({
         priority={priority || IMAGE_PRIORITY.NORMAL}
         onLoad={onImageLoad}
       />
+      {false && (
+        <View
+          style={{
+            position: 'absolute',
+            flex: 1,
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Progress
+            value={progress}
+            size={80}
+            thickness={1.5}
+            color="black"
+            unfilledColor="white"
+            animationMethod="spring"
+            animationConfig={{ speed: 4 }}
+          />
+        </View>
+      )}
     </Base>
   )
 })

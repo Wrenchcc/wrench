@@ -205,7 +205,7 @@ PODS:
     - React
   - react-native-haptic-feedback (1.8.0):
     - React
-  - react-native-netinfo (3.0.1):
+  - react-native-netinfo (3.1.0):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -581,7 +581,7 @@ SPEC CHECKSUMS:
   react-native-fast-image: 7278563726f2455ed3ba6e04dea472345173278c
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   react-native-haptic-feedback: 1eb699eb89f477d7997b84eb709842da0f171d91
-  react-native-netinfo: 67ac199f23a50b8796dc02f5d79a12e4add5bef4
+  react-native-netinfo: bb6019953e06182c376be748bdfdde92e13840ce
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
