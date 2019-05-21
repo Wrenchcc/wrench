@@ -68,13 +68,12 @@ target 'Wrench' do
 
   # Required by Firebase
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'Firebase/Core'
-  pod 'Firebase/DynamicLinks'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Performance'
+  pod 'Firebase/Core', '5.20.2'
+  pod 'Firebase/DynamicLinks', '5.20.2'
+  pod 'Firebase/Messaging', '5.20.2'
+  pod 'Firebase/Performance', '5.20.2'
 
   use_unimodules!
-
 end
 
 # The following is needed to ensure the "archive" step works in XCode.

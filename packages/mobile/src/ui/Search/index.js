@@ -17,7 +17,6 @@ const Search = memo(function Search({ t, style, onPress, placeholder = true, ...
           autoFocus
           autoCorrect={false}
           placeholderTextColor={COLORS.LIGHT_GREY}
-          selectionColor={COLORS.DARK}
           placeholder={t('Search:placeholder')}
           keyboardAppearance="dark"
           returnKeyType="search"

@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>__RN_CONFIG_FACEBOOK_CUSTOM_URL_SCHEME</string>
+				<string>fb1174076712654826</string>
 			</array>
 		</dict>
 		<dict>
@@ -42,9 +42,9 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CodePushDeploymentKey</key>
-	<string>__RN_CONFIG_CODE_PUSH_DEPLOYMENT_KEY</string>
+	<string>cW_HgZdJFI_Lt5STiEoGpD78W4blryn9pyhKf</string>
 	<key>FacebookAppID</key>
-	<string>__RN_CONFIG_FACEBOOK_APP_ID</string>
+	<string>1174076712654826</string>
 	<key>FacebookDisplayName</key>
 	<string>Wrench</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -76,13 +76,13 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
+	<string>Allow $(PRODUCT_NAME) to access your device&apos;s accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Give $(PRODUCT_NAME) periences permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to access your reminders</string>	
+	<string>Allow $(PRODUCT_NAME) to access your reminders</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>
@@ -105,5 +105,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>FirebaseDynamicLinksCustomDomains</key>
+  <array>
+    <string>https://share.wrench.cc</string>
+  </array>
 </dict>
 </plist>

@@ -15,6 +15,7 @@ export const Slider = styled(PSlider)`
   position: relative;
   overflow: hidden;
   width: 100%;
+  height: 100%;
 `
 
 export const Slide = styled(PSlide)`

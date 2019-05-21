@@ -7,7 +7,7 @@ import ImageEditor from 'features/project/components/ImageEditor/old'
 import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
-export default function AddMedia() {
+function AddMedia() {
   return (
     <Subscribe to={[AddContainer]}>
       {({
@@ -51,3 +51,5 @@ export default function AddMedia() {
     </Subscribe>
   )
 }
+
+export default AddMedia

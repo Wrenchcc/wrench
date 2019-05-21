@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { TAB_HEIGHT } from 'navigation/constants'
 import { COLORS } from 'ui/constants'
-import UiImage from 'ui/Image'
+import FastImage from 'react-native-fast-image'
 
 export const Base = styled.View`
   flex: 1;
@@ -9,7 +9,7 @@ export const Base = styled.View`
   padding-bottom: ${TAB_HEIGHT};
 `
 
-export const Image = styled(UiImage)`
+export const Image = styled(FastImage)`
   flex: 1;
   justify-content: flex-end;
   padding: 10px;

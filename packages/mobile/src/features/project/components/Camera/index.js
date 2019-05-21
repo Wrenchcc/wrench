@@ -10,8 +10,6 @@ import PointOfInterest from '../PointOfInterest'
 import { TakePicture } from './styles'
 import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
 
-const ORIENTATION = 'portrait'
-
 const PERMISSION = Platform.OS === 'ios' ? IOS_PERMISSIONS.CAMERA : ANDROID_PERMISSIONS.CAMERA
 
 export default class Camera extends PureComponent {
@@ -53,10 +51,7 @@ export default class Camera extends PureComponent {
   }
 
   takePicture = async camera => {
-    const data = await camera.takePictureAsync({
-      orientation: ORIENTATION,
-      skipProcessing: true,
-    })
+    const data = await camera.takePictureAsync()
 
     this.props.onTakePicture(data)
   }
@@ -68,7 +63,7 @@ export default class Camera extends PureComponent {
   }
 
   render() {
-    const { cameraPermission, isLoading, autoFocusPointOfInterest } = this.state
+    const { cameraPermission, isLoading, autoFocusPointOfInterest, flashMode, type } = this.state
 
     if (isLoading) return null
 
@@ -85,19 +80,19 @@ export default class Camera extends PureComponent {
     return (
       <TouchableWithoutFeedback onPressIn={this.setFocus}>
         <RNCamera
-          type={this.state.type}
-          flashMode={this.state.flashMode}
+          type={type}
+          flashMode={flashMode}
           style={{ flex: 1 }}
           autoFocusPointOfInterest={autoFocusPointOfInterest}
           orientation="portrait"
-          ratio="16:9"
+          ratio="1:1"
         >
           {({ camera }) => (
             <>
               <PointOfInterest coordinates={autoFocusPointOfInterest} />
               <CameraType onPress={this.changeCameraType} />
               <TakePicture onPress={() => this.takePicture(camera)} hapticFeedback="impactLight" />
-              <FlashMode onPress={this.changeFlashMode} flashMode={this.state.flashMode} />
+              <FlashMode onPress={this.changeFlashMode} flashMode={flashMode} />
             </>
           )}
         </RNCamera>

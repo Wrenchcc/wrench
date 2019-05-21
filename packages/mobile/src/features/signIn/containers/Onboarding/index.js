@@ -36,8 +36,6 @@ class Onboarding extends Component {
   }
 
   get renderHeaderRight() {
-    if (!this.isComplete) return null
-
     const { isSaving } = this.state
 
     return isSaving ? (
@@ -46,7 +44,8 @@ class Onboarding extends Component {
       <Text
         color="white"
         medium
-        opacity={1}
+        opacity={this.isComplete ? 1 : 0.5}
+        disabled={!this.isComplete}
         onPress={this.handleSubmit}
         hapticFeedback="impactLight"
       >

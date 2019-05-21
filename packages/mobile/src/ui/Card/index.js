@@ -22,7 +22,7 @@ const Card = memo(function Card({ image, title, onPress, style = {}, user }) {
 })
 
 Card.propTypes = {
-  image: PropTypes.object.isRequired,
+  image: PropTypes.object,
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
   style: PropTypes.any,

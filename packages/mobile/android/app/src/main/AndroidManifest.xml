@@ -19,9 +19,9 @@
     android:networkSecurityConfig="@xml/network_security_config"
   >
 
-    <!-- <meta-data
+    <meta-data
     android:name="com.google.firebase.messaging.default_notification_icon"
-    android:resource="@drawable/icon" /> -->
+    android:resource="@drawable/ic_default" />
 
     <meta-data
       android:name="com.google.firebase.messaging.default_notification_color"
@@ -53,8 +53,8 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:host="wrench.page.link" android:scheme="http"/>
-        <data android:host="wrench.page.link" android:scheme="https"/>
+        <data android:host="share.wrench.cc" android:scheme="http"/>
+        <data android:host="share.wrench.cc" android:scheme="https"/>
         <data android:scheme="wrench" android:host="wrench" />
       </intent-filter>
     </activity>

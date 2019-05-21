@@ -6,14 +6,15 @@ type Resize = (query: Query) => (data: Data) => Promise<Buffer>
 const min = (defaultNum: number, n?: number) => n && Math.min(defaultNum, n)
 
 export interface Query {
-  width?: number
-  height?: number
+  blurRadius?: number
   dpr?: number
+  height?: number
   webp?: boolean
+  width?: number
 }
 
 export const resize: Resize = query => async data => {
-  const { width, height, webp, dpr = 1 } = query
+  const { width, height, webp, dpr = 1, blurRadius } = query
 
   const image = sharp(data)
   const meta = await image.metadata()
@@ -27,6 +28,10 @@ export const resize: Resize = query => async data => {
 
   if (webp) {
     image.webp()
+  }
+
+  if (blurRadius) {
+    image.blur(blurRadius)
   }
 
   return await image.toBuffer()
