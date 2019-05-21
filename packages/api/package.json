@@ -37,7 +37,6 @@
     "@firebase/app-types": "^0.4.0",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.14",
-    "@zeit/ncc": "0.18.5",
     "bluebird": "^3.5.4",
     "chokidar": "^3.0.0",
     "cross-env": "^5.2.0",
