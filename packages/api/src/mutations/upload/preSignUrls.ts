@@ -5,7 +5,7 @@ import { isAuthenticated } from '../../utils/permissions'
 
 const debug = require('debug')('api:s3')
 
-const { AWS_S3_REGION, AWS_S3_BUCKET } = process.env
+const { AWS_S3_REGION, AWS_S3_BUCKET, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
 
 const UPLOAD_DIRECTORY = 'images'
 
@@ -13,6 +13,8 @@ const s3 = new S3({
   region: AWS_S3_REGION,
   signatureVersion: 'v4',
   useAccelerateEndpoint: true,
+  accessKeyId: AWS_ACCESS_KEY,
+  secretAccessKey: AWS_SECRET_ACCESS_KEY,
 })
 
 export default isAuthenticated(async (_, { input }) => {
