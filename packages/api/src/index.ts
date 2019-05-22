@@ -1,6 +1,7 @@
 import * as express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { getConnectionManager, Connection } from 'typeorm'
+import './utils/typeorm-monkeypatch'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import * as depthLimit from 'graphql-depth-limit'
 import { getUserId } from './utils/tokens'
@@ -23,14 +24,14 @@ let connection: Connection
 async function server() {
   if (manager.has('default')) {
     connection = await manager.get('default')
-    debug('Reusing existing connection from manager.')
+    console.log('Reusing existing connection from manager.')
   } else {
-    debug('Creating new connection to DB.')
+    console.log('Creating new connection to DB.')
     connection = await manager.create(options)
   }
 
   if (!connection.isConnected) {
-    debug('Cached connection was not connected, attempting to reconnect.')
+    console.log('Cached connection was not connected, attempting to reconnect.')
     await connection.connect()
   }
 
