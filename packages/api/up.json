@@ -3,7 +3,7 @@
   "regions": ["eu-central-1"],
   "name": "api",
   "lambda": {
-    "memory": 1024,
+    "memory": 2048,
     "runtime": "nodejs8.10",
     "policy": [
       {

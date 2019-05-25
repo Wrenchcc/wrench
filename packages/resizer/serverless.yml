@@ -9,7 +9,7 @@ provider:
   region: us-east-1
   runtime: nodejs8.10
   deploymentBucket: wrench-image-resize
-  memorySize: 1536
+  memorySize: 2048
 
 custom:
   webpack:
