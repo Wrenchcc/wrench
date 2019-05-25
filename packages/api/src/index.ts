@@ -1,7 +1,6 @@
 import * as express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { getConnectionManager, Connection } from 'typeorm'
-import './utils/typeorm-monkeypatch'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import * as depthLimit from 'graphql-depth-limit'
 import { getUserId } from './utils/tokens'
