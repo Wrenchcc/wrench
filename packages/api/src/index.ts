@@ -13,7 +13,7 @@ import services from './services'
 
 const debug = require('debug')('api:server')
 
-const { PORT = 4000 } = process.env
+const { PORT = 80 } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
@@ -37,6 +37,11 @@ createConnection(options).then(async connection => {
   })
 
   const app = express()
+
+  // Health check
+  app.get('/', (_, res) => {
+    res.send('ok')
+  })
 
   server.applyMiddleware({ app })
 

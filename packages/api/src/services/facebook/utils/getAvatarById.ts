@@ -1,3 +1,3 @@
-const { CDN_DOMAIN } = process.env
+const { CDN_DOMAIN = 'https://edge-files.wrench.cc' } = process.env
 
 export default id => `${CDN_DOMAIN}/avatar/${id}.jpg`

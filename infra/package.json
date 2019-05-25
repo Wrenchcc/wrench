@@ -1,0 +1,12 @@
+{
+  "name": "infra",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@pulumi/aws": "latest",
+    "@pulumi/awsx": "latest",
+    "@pulumi/docker": "latest",
+    "@pulumi/pulumi": "latest"
+  }
+}
