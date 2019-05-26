@@ -10,17 +10,17 @@
     "sharp": "^0.22.1"
   },
   "devDependencies": {
-    "@types/aws-lambda": "8.10.25",
+    "@types/aws-lambda": "8.10.26",
     "@types/node": "^12.0.2",
     "@types/sharp": "^0.22.2",
-    "aws-sdk": "^2.458.0",
+    "aws-sdk": "^2.463.0",
     "prettier": "^1.17.1",
-    "serverless": "1.42.3",
+    "serverless": "1.43.0",
     "serverless-webpack": "^5.3.0",
-    "ts-loader": "^6.0.0",
+    "ts-loader": "^6.0.1",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5",
-    "webpack": "^4.31.0",
+    "webpack": "^4.32.2",
     "webpack-node-externals": "^1.7.2"
   }
 }
