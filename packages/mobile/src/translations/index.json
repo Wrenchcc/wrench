@@ -1,7 +1,8 @@
 {
   "en": {
-    "Search": {
-      "placeholder": "Search"
+    "SearchBar": {
+      "placeholder": "Search",
+      "cancel": "Cancel"
     },
     "Popular": {
       "popular": "Popular projects",
@@ -245,9 +246,6 @@
       "follow": "Follow",
       "unfollow": "Following"
     },
-    "SearchBar": {
-      "cancel": "Cancel"
-    },
     "SearchingFor": {
       "title": "Searching for"
     },
@@ -270,8 +268,9 @@
     }
   },
   "sv": {
-    "Search": {
-      "placeholder": "Sök"
+    "SearchBar": {
+      "placeholder": "Sök",
+      "cancel": "Avbryt"
     },
     "Popular": {
       "popular": "Populära projekt",
@@ -513,9 +512,6 @@
     "ProjectCard": {
       "follow": "Följ projekt",
       "unfollow": "Följer"
-    },
-    "SearchBar": {
-      "cancel": "Avbryt"
     },
     "SearchingFor": {
       "title": "Söker efter"

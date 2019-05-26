@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react'
 import { BackHandler } from 'react-native'
-// import PropTypes from 'prop-types'
 import { Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { search } from 'images'
@@ -52,7 +51,7 @@ function Search({
         autoCorrect={false}
         placeholderTextColor={COLORS.LIGHT_GREY}
         selectionColor={COLORS.DARK}
-        placeholder={t('Search:placeholder')}
+        placeholder={t('SearchBar:placeholder')}
         keyboardAppearance="dark"
         returnKeyType="search"
         onFocus={handleFocus}
@@ -64,13 +63,11 @@ function Search({
       <Icon source={search} />
       {searchActive && (
         <Text medium onPress={handleCancel} style={{ marginLeft: 10 }}>
-          {t('Search:cancel')}
+          {t('SearchBar:cancel')}
         </Text>
       )}
     </Base>
   )
 }
-
-Search.propTypes = {}
 
 export default Search
