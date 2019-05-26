@@ -1,30 +1,30 @@
 import React from 'react'
-import hoistStatics from 'hoist-non-react-statics'
-// import { withNavigation } from '@react-navigation/core'
+import { Navigation } from 'react-native-navigation'
 
 export default function withNavigationAwareScrollable(Component: any) {
-  class ComponentWithNavigationScrolling extends React.PureComponent<any> {
+  return class ComponentWithNavigationScrolling extends React.PureComponent<any> {
     static displayName = `NavigationAwareScrollable(${Component.displayName || Component.name})`
 
     componentDidMount() {
-      // this.subscription = this.props.navigation.addListener('refocus', () => {
-      //   const scrollableNode = this.scrollView
-      //   if (this.props.navigation.isFocused() && scrollableNode !== null) {
-      //     if (scrollableNode.scrollToTop != null) {
-      //       scrollableNode.scrollToTop()
-      //     } else if (scrollableNode.scrollTo != null) {
-      //       scrollableNode.scrollTo({ y: 0 })
-      //     } else {
-      //       scrollableNode.scrollToOffset({ offset: 0 })
-      //     }
-      //   }
-      // })
+      this.bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
+        ({ selectedTabIndex, unselectedTabIndex }) => {
+          const scrollableNode = this.scrollView
+
+          if (selectedTabIndex === unselectedTabIndex && scrollableNode !== null) {
+            if (scrollableNode.scrollToTop != null) {
+              scrollableNode.scrollToTop()
+            } else if (scrollableNode.scrollTo != null) {
+              scrollableNode.scrollTo({ y: 0 })
+            } else {
+              scrollableNode.scrollToOffset({ offset: 0 })
+            }
+          }
+        }
+      )
     }
 
     componentWillUnmount() {
-      // if (this.subscription != null) {
-      //   this.subscription.remove()
-      // }
+      this.bottomTabEventListener.remove()
     }
 
     setRef = el => {
@@ -35,13 +35,8 @@ export default function withNavigationAwareScrollable(Component: any) {
       }
     }
 
-    subscription: any
-
     render() {
       return <Component scrollRef={this.setRef} {...this.props} />
     }
   }
-
-  return hoistStatics(ComponentWithNavigationScrolling, Component)
-  // return hoistStatics(withNavigation(ComponentWithNavigationScrolling), Component)
 }

@@ -58,7 +58,7 @@ function onPress(data, navigate) {
     case NOTIFICATION_TYPES.NEW_COMMENT:
     case NOTIFICATION_TYPES.NEW_REPLY:
       return navigate(SCREENS.POST, {
-        postId: data.comment.postId,
+        id: data.comment.postId,
         commentId: data.comment.id,
       })
     default:

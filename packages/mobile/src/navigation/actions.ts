@@ -3,6 +3,10 @@ import { SCREENS } from './constants'
 
 let componentId
 
+Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => {
+  componentId = id
+})
+
 export function navigateTo(screen, { options, ...params }) {
   Navigation.push(componentId, {
     component: {
@@ -33,10 +37,8 @@ export function dismissModal() {
   Navigation.dismissModal(componentId)
 }
 
-export function navigate(id) {
-  componentId = id
-
-  return (screen, { options, ...params }) => Navigation.push(id, {
+export function navigate(screen, { options, ...params }) {
+  return Navigation.push(componentId, {
     component: {
       name: screen,
       passProps: params,
@@ -61,6 +63,7 @@ export const resetNavigation = () => {
 
 export const navigateToFeed = params => navigateTo(SCREENS.FEED, params)
 export const navigateToProject = params => navigateTo(SCREENS.PROJECT, params)
+export const navigateToUser = params => navigateTo(SCREENS.USER, params)
 
 export const navigateToSearch = params => navigateTo('search', params)
 export const navigateToAddMedia = () => navigateTo('add-media')

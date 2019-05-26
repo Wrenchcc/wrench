@@ -16,7 +16,7 @@ export default Component => {
         <ApolloProvider client={client}>
           <NavigationContext.Provider
             value={{
-              navigate: navigate(props.componentId),
+              navigate,
               showModal,
               dismissModal,
             }}
