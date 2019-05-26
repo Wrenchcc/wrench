@@ -1,7 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { filter } from 'ramda'
-import { getProjectId } from 'navigation-old/utils/selectors'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 
 const DeleteProjectMutation = gql`
@@ -11,13 +10,12 @@ const DeleteProjectMutation = gql`
 `
 
 const deleteProjectOptions = {
-  props: ({ mutate, ownProps: { navigation } }) => ({
+  props: ({ mutate, ownProps: { id } }) => ({
     deleteProject: () => mutate({
       variables: {
-        id: getProjectId(navigation),
+        id,
       },
       update: cache => {
-        const id = getProjectId(navigation)
         const data = cache.readQuery({ query: CurrentUserQuery })
         const edges = filter(edge => edge.node.id !== id, data.user.projects.edges)
 

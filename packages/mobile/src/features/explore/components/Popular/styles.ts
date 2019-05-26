@@ -16,7 +16,6 @@ export const Card = styled(UiCard)`
 
 export const Header = styled.View`
   margin-bottom: 40;
-  margin-top: 20;
 `
 
 export const Footer = styled.View`

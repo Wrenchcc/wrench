@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import UiWebView from 'ui/WebView'
 
-const WebView = ({ navigation }) => <UiWebView url={navigation.state.params.url} />
+const WebView = ({ url }) => <UiWebView url={url} />
 
 WebView.propTypes = {
-  navigation: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
 }
 
 export default WebView

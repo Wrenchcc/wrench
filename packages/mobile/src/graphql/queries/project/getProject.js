@@ -1,11 +1,11 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import {
-  getProjectSlug,
-  getProjectSlugFromDeeplink,
-  getPostId,
-} from 'navigation-old/utils/selectors'
+// import {
+// getProjectSlug,
+// getProjectSlugFromDeeplink,
+// getPostId,
+// } from 'navigation-old/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
@@ -36,9 +36,9 @@ const LoadMorePosts = gql`
 `
 
 const getProjectOptions = {
-  options: ({ slug, postId, navigation, after }) => ({
+  options: ({ slug, postId, after }) => ({
     variables: {
-      slug: slug || getProjectSlugFromDeeplink(navigation),
+      slug, // || getProjectSlugFromDeeplink(navigation),
       after,
       postId,
     },

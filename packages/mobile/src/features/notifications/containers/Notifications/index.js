@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
+import { Layout, FlatList } from 'navigation'
 import { getNotifications } from 'graphql/queries/getNotifications'
 import { markAllNotificationsSeen } from 'graphql/mutations/notification/markAllNotificationsSeen'
 import { deleteNotification } from 'graphql/mutations/notification/deleteNotification'
-import { InfiniteListWithHandler, Notification, EmptyState } from 'ui'
+import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import { Header } from './styles'
 
@@ -22,13 +23,13 @@ class Notifications extends PureComponent {
     refetch: PropTypes.func.isRequired,
   }
 
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    // props.navigation.addListener('willFocus', () => {
-    //   props.markAllNotificationsSeen()
-    // })
-  }
+  // props.navigation.addListener('willFocus', () => {
+  //   props.markAllNotificationsSeen()
+  // })
+  // }
 
   renderItem = ({ item }) => (
     <Notification data={item.node} deleteNotification={this.props.deleteNotification} />
@@ -48,27 +49,29 @@ class Notifications extends PureComponent {
     const hasNotifications = notifications && notifications.length > 0
 
     return (
-      <InfiniteListWithHandler
-        initialNumToRender={6}
-        paddingHorizontal={0}
-        contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
-        defaultPaddingTop
-        ListHeaderComponent={
-          <Header medium spacingHorizontal={!hasNotifications}>
-            {t('Notifications:title')}
-          </Header>
-        }
-        ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
-        borderSeparator
-        data={notifications}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
-        renderItem={this.renderItem}
-      />
+      <Layout>
+        <FlatList
+          initialNumToRender={6}
+          paddingHorizontal={0}
+          contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
+          defaultPaddingTop
+          ListHeaderComponent={
+            <Header medium spacingHorizontal={!hasNotifications}>
+              {t('Notifications:title')}
+            </Header>
+          }
+          ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
+          borderSeparator
+          data={notifications}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          keyExtractor={item => item.node.id}
+          renderItem={this.renderItem}
+        />
+      </Layout>
     )
   }
 }

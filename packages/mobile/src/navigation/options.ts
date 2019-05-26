@@ -1,5 +1,4 @@
 import { COLORS } from 'ui/constants'
-import { arrowLeft } from 'images'
 
 export const iconInsets = {
   top: 0,
@@ -23,11 +22,6 @@ export const defaultOptions = {
     backgroundColor: COLORS.WHITE,
   },
   topBar: {
-    noBorder: true,
-    borderHeight: 0,
-    backButton: {
-      icon: arrowLeft,
-      color: COLORS.DARK,
-    },
+    visible: false,
   },
 }

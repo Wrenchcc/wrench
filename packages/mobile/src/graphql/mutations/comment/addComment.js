@@ -6,7 +6,7 @@ import commentInfo from 'graphql/fragments/comment/commentInfo'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { CommentsQuery } from 'graphql/queries/comment/getComments'
 import optimisticId from 'graphql/utils/optimisticId'
-import { getPostId } from 'navigation-old/utils/selectors'
+// import { getPostId } from 'navigation/utils/selectors'
 
 const CommentMutation = gql`
   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
@@ -20,7 +20,7 @@ const CommentMutation = gql`
 
 const addCommentOptions = {
   props: ({ mutate, ownProps: { navigation } }) => {
-    const postId = getPostId(navigation)
+    const postId = 123 // getPostId(navigation)
 
     return {
       addComment: (text, commentId = null) => mutate({

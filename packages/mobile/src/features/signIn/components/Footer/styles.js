@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { TAB_HEIGHT } from 'navigation-old/constants'
+import { TAB_HEIGHT } from 'navigation/constants'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`

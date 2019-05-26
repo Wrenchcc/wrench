@@ -1,6 +1,5 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { getProjectId } from 'navigation-old/utils/selectors'
 
 const EditProjectMutation = gql`
   mutation editProject($id: ID!, $input: ProjectInput!) {
@@ -13,10 +12,10 @@ const EditProjectMutation = gql`
 `
 
 const editProjectOptions = {
-  props: ({ mutate, ownProps: { navigation } }) => ({
+  props: ({ mutate, ownProps: { id } }) => ({
     editProject: input => mutate({
       variables: {
-        id: getProjectId(navigation),
+        id,
         input,
       },
     }),

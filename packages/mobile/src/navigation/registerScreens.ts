@@ -3,6 +3,8 @@ import { SCREENS } from './constants'
 import HOC from './Hoc'
 
 export default function registerScreens() {
+  // Navigation.registerComponent('header', () => HOC(require('./Header').default))
+
   Navigation.registerComponent(SCREENS.FEED, () => HOC(require('features/feed/containers/Feed').default))
   Navigation.registerComponent(SCREENS.EXPLORE, () => HOC(require('features/explore/containers/Explore').default))
   Navigation.registerComponent(SCREENS.NOTIFICATIONS, () => HOC(require('features/notifications/containers/Notifications').default))

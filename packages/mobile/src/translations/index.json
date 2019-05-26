@@ -1,5 +1,8 @@
 {
   "en": {
+    "Search": {
+      "placeholder": "Search"
+    },
     "Popular": {
       "popular": "Popular projects",
       "recent": "Recent posts"
@@ -242,9 +245,6 @@
       "follow": "Follow",
       "unfollow": "Following"
     },
-    "Search": {
-      "placeholder": "Search"
-    },
     "SearchBar": {
       "cancel": "Cancel"
     },
@@ -270,6 +270,9 @@
     }
   },
   "sv": {
+    "Search": {
+      "placeholder": "Sök"
+    },
     "Popular": {
       "popular": "Populära projekt",
       "recent": "Senaste inlägg"
@@ -510,9 +513,6 @@
     "ProjectCard": {
       "follow": "Följ projekt",
       "unfollow": "Följer"
-    },
-    "Search": {
-      "placeholder": "Sök"
     },
     "SearchBar": {
       "cancel": "Avbryt"

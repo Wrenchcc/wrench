@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'react-apollo'
+import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql/queries/getFeed'
-import { Post, InfiniteListWithHandler, PostProgress } from 'ui'
+import { Post, PostProgress } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
@@ -22,20 +23,16 @@ class Feed extends PureComponent {
     registerUserLocale()
   }
 
-  componentWillUnmount() {
-    this.onTokenRefreshListener()
-  }
-
   renderItem = ({ item }) => <Post post={item.node} />
 
   render() {
     const { posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
-      <>
+      <Layout>
         <PostProgress />
 
-        <InfiniteListWithHandler
+        <FlatList
           initialNumToRender={2}
           spacingSeparator
           defaultPaddingTop
@@ -50,7 +47,7 @@ class Feed extends PureComponent {
           renderItem={this.renderItem}
           polling
         />
-      </>
+      </Layout>
     )
   }
 }
