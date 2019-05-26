@@ -270,6 +270,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - ReactNativeNavigation (2.20.2):
+    - React
   - RNCAsyncStorage (1.4.1):
     - React
   - RNDeviceInfo (2.0.2):
@@ -370,6 +372,7 @@ DEPENDENCIES:
   - React/RCTPushNotification (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
@@ -479,6 +482,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-video"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
+  ReactNativeNavigation:
+    :path: "../node_modules/react-native-navigation"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
@@ -586,6 +591,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
   react-native-webview: 3c79685b61a68d1fe99136f98f2f34b04dce2e02
+  ReactNativeNavigation: 69bf622b2c5cd6afcf84196cbc7e66672c04c8b0
   RNCAsyncStorage: ee70d057f2576e8060891c98d8babddd46462682
   RNDeviceInfo: a74f061640be5fbb5485a4cc29f7eac534759391
   RNFirebase: f20e5e4ceaa632aebb1a29a9a91022ae0469c633
@@ -613,6 +619,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: f88793bd35248182e15591e0aa5b045132312be0
   yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
 
-PODFILE CHECKSUM: 3a6e19241209cd7fb02d8f2b53a286d21f3c1bdb
+PODFILE CHECKSUM: f50a23ef60baf16006de9862a959f3179662cb1d
 
 COCOAPODS: 1.6.1

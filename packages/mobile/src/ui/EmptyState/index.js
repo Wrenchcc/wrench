@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import withTranslation from 'i18n/withTranslation'
-import { navigateToAddProject, navigateToAddMedia } from 'navigation/actions'
+import { navigateToAddProject, navigateToAddMedia } from 'navigation-old/actions'
 import Text from 'ui/Text'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'

@@ -1,4 +1,4 @@
-import { navigateToWebView, navigateToUser } from 'navigation/actions'
+import { navigateToWebView, navigateToUser } from 'navigation-old/actions'
 import { COLORS, FONTS } from 'ui/constants'
 
 function addhttp(url) {

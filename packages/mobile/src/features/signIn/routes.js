@@ -1,4 +1,4 @@
-import { PUBLIC } from 'navigation/constants'
+import { PUBLIC } from 'navigation-old/constants'
 import SignIn from './containers/SignIn'
 import { ROUTE_NAMES } from './constants'
 

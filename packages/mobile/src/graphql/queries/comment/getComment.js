@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import { getCommentId, getCommentIdFromDeeplink } from 'navigation/utils/selectors'
+import { getCommentId, getCommentIdFromDeeplink } from 'navigation-old/utils/selectors'
 import repliesConnectionFragment from 'graphql/fragments/comment/repliesConnection'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 

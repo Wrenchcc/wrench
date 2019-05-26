@@ -1,4 +1,4 @@
-import { MODAL, MODAL_STACK } from 'navigation/constants'
+import { MODAL, MODAL_STACK } from 'navigation-old/constants'
 import { ROUTE_NAMES } from './constants'
 import AddMedia from './containers/AddMedia'
 import AddPost from './containers/AddPost'

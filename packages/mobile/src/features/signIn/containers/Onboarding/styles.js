@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { TAB_HEIGHT } from 'navigation/constants'
+import { TAB_HEIGHT } from 'navigation-old/constants'
 import { COLORS } from 'ui/constants'
 import FastImage from 'react-native-fast-image'
 

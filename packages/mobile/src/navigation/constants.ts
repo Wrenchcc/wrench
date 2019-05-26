@@ -1,12 +1,20 @@
-import { hasNotch, isIphone } from 'utils/platform'
+export enum NAVIGATION {
+  LIST_INSET_TOP = 0,
+  TOP_BAR_HEIGHT = 60,
+  STATUS_BAR_HEIGHT = 44,
+  TOTAL_TOP_BAR_HEIGHT = 60 + 44,
+}
 
-// Route presentations
-export const TAB = 'tab'
-export const MODAL = 'modal'
-export const MODAL_STACK = 'modal_stack'
-
-// Route scopes
-export const PUBLIC = 'public'
-
-export const TAB_HEIGHT = 60
-export const HEADER_HEIGHT = 70
+export enum SCREENS {
+  FEED = 'FEED',
+  EXPLORE = 'EXPLORE',
+  NOTIFICATIONS = 'NOTIFICATIONS',
+  ME = 'ME',
+  PROJECT = 'PROJECT',
+  FOLLOWERS = 'FOLLOWERS',
+  USER = 'USER',
+  POST = 'POST',
+  COMMENTS = 'COMMENTS',
+  WEBVIEW = 'WEBVIEW',
+  SIGN_IN = 'SIGN_IN',
+}

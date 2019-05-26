@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { navigateToUser } from 'navigation/actions'
+import { navigateToUser } from 'navigation-old/actions'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'

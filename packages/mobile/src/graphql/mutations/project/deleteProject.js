@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { filter } from 'ramda'
-import { getProjectId } from 'navigation/utils/selectors'
+import { getProjectId } from 'navigation-old/utils/selectors'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 
 const DeleteProjectMutation = gql`

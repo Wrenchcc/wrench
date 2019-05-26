@@ -1,8 +1,8 @@
 import { StatusBar } from 'react-native'
 import { isAndroid } from 'utils/platform'
 
-const NAVIGATE = 'Navigation/NAVIGATE'
-const NAVIGATE_BACK = 'Navigation/BACK'
+const NAVIGATE = 'navigation-old/NAVIGATE'
+const NAVIGATE_BACK = 'navigation-old/BACK'
 
 const toggleStatusBar = hide => {
   StatusBar.setHidden(hide, true)

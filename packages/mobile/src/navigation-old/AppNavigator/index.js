@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
 import { Linking } from 'react-native'
 import { links, notifications } from 'react-native-firebase'
-import { setNavigationRef } from 'navigation/actions'
+import { setNavigationRef } from 'navigation-old/actions'
 import withTranslation from 'i18n/withTranslation'
 import { Gateway, ToastNotification } from 'ui'
 import { extractDeepLinkFromDynamicLink, formatDeepLink } from 'utils/dynamicLinks'
-import handleStatusBar from 'navigation/handleStatusBar'
+import handleStatusBar from 'navigation-old/handleStatusBar'
 import Navigator from './navigator'
 
 class AppNavigator extends PureComponent {
