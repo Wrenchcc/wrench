@@ -53,7 +53,6 @@ target 'Wrench' do
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
-  pod 'RNScreens', :path => '../node_modules/react-native-screens'
   pod 'RNShare', :path => '../node_modules/react-native-share'
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
     'Core',
