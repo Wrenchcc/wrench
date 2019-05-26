@@ -1,6 +1,5 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import { getProjectId } from 'navigation-old/utils/selectors'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import followersInfoFragment from 'graphql/fragments/followers/followersInfo'
 
@@ -15,11 +14,10 @@ export const FollowersQuery = gql`
 `
 
 const getFollowersOptions = {
-  options: ({ navigation }) => ({
+  options: ({ id }) => ({
     variables: {
-      projectId: getProjectId(navigation),
+      projectId: id,
     },
-    fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('followers'),
 }

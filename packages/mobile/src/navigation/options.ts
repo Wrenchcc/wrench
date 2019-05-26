@@ -15,6 +15,8 @@ export const defaultOptions = {
     iconColor: 'grey',
     selectedIconColor: COLORS.WHITE,
     textColor: COLORS.WHITE,
+    titleDisplayMode: 'alwaysHide',
+    iconInsets,
   },
   layout: {
     backgroundColor: COLORS.WHITE,

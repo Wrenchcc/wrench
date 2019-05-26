@@ -41,21 +41,3 @@ export const navigateBack = () => {
 export const resetNavigation = () => {
   navigator.dispatch(StackActions.popToTop())
 }
-
-export const navigateToFeed = params => navigate('feed', params)
-export const navigateToAddModel = () => navigate('add-project-model')
-export const navigateToSearch = params => navigate('search', params)
-export const navigateToAddMedia = () => navigate('add-media')
-
-export const navigateToAddPost = params => push('add-post', params)
-export const navigateToAddProject = params => push('add-project', params)
-export const navigateToAddProjectType = () => push('add-project-type')
-export const navigateToEditProject = params => push('edit-project', params)
-export const navigateToFollowers = params => push('followers', params)
-export const navigateToOnboarding = () => push('onboarding')
-export const navigateToSettings = () => push('settings')
-export const navigateToWebView = params => push('webview', params)
-export const navigateToProject = params => push('project', params)
-export const navigateToPost = params => push('post', params)
-export const navigateToUser = params => push('user', params)
-export const navigateToComments = params => push('comments', params)

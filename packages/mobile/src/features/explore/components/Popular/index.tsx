@@ -4,12 +4,14 @@ import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
-import { navigateToProject } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
 import Placeholder from './Placeholder'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
 function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t }) {
+  const { navigate } = useNavigation()
+
   const renderItem = ({ item, index }) => {
     const project = item.node
     const image = pathOr(null, ['files', 'edges', [0], 'node'], project)
@@ -19,7 +21,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
         image={image}
         title={project.title}
         key={project.id}
-        onPress={() => navigateToProject({ project })}
+        onPress={() => navigate(SCREENS.PROJECT, { slug: project.slug })}
         first={index === 0}
         last={index === projects && projects.length - 1}
         user={project.user}

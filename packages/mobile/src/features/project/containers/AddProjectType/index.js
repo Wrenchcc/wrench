@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
-import { navigateToAddModel } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import { Title } from 'ui'
 import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import ProjectCategories from 'features/project/components/ProjectCategories'
 
 function AddProjectType({ t }) {
+  const { navigate } = useNavigation()
+  const handleNavigation = useCallback(() => navigate(SCREENS.ADD_PROJECT_MODEL), [])
+
   return (
     <Subscribe to={[AddContainer]}>
       {({ updateField }) => (
@@ -34,7 +37,7 @@ function AddProjectType({ t }) {
             }
             onSelect={type => {
               updateField('type', type)
-              navigateToAddModel()
+              handleNavigation()
             }}
           />
         </>

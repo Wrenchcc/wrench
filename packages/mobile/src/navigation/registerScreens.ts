@@ -8,6 +8,8 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.NOTIFICATIONS, () => HOC(require('features/notifications/containers/Notifications').default))
   Navigation.registerComponent(SCREENS.ME, () => HOC(require('features/profile/containers/Me').default))
   Navigation.registerComponent(SCREENS.PROJECT, () => HOC(require('features/project/containers/Project').default))
+  Navigation.registerComponent(SCREENS.COMMENTS, () => HOC(require('features/project/containers/Comments').default))
+  Navigation.registerComponent(SCREENS.ADD_PROJECT_MODEL, () => HOC(require('features/project/containers/AddProjectModel').default))
   Navigation.registerComponent(SCREENS.USER, () => HOC(require('features/profile/containers/User').default))
   Navigation.registerComponent(SCREENS.FOLLOWERS, () => HOC(require('features/project/containers/Followers').default))
   Navigation.registerComponent(SCREENS.POST, () => HOC(require('features/post/containers/Post').default))

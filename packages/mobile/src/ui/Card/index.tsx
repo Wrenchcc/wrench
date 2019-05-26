@@ -1,17 +1,22 @@
-import React, { memo } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Touchable from 'ui/Touchable'
 import Text from 'ui/Text'
-import { navigateToUser } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import { Picture, ProjectName, SIZE } from './styles'
 
-const Card = memo(function Card({ image, title, onPress, style = {}, user }) {
+function Card({ image, title, onPress, style = {}, user }) {
+  const { navigate } = useNavigation()
+  const handleNavigation = useCallback(() => navigate(SCREENS.USER, {
+    username: user.username,
+  }))
+
   return (
     image && (
       <Touchable onPress={onPress} style={style}>
         <Picture source={image} width={SIZE} height={SIZE} />
         <ProjectName numberOfLines={1}>{title}</ProjectName>
-        <Touchable onPress={() => navigateToUser({ user })}>
+        <Touchable onPress={handleNavigation}>
           <Text fontSize={15} color="grey">
             {user.fullName}
           </Text>
@@ -19,7 +24,7 @@ const Card = memo(function Card({ image, title, onPress, style = {}, user }) {
       </Touchable>
     )
   )
-})
+}
 
 Card.propTypes = {
   image: PropTypes.object,

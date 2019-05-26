@@ -59,28 +59,15 @@ export const resetNavigation = () => {
   // navigator.dispatch(StackActions.popToTop())
 }
 
-const push = (screen, params) => {
-  Navigation.push(componentId, {
-    component: {
-      name: screen,
-      passProps: params,
-    },
-  })
-}
+export const navigateToFeed = params => navigateTo(SCREENS.FEED, params)
+export const navigateToProject = params => navigateTo(SCREENS.PROJECT, params)
 
-export const navigateToFeed = params => push(SCREENS.FEED, params)
-export const navigateToAddModel = () => push('add-project-model')
-export const navigateToSearch = params => push('search', params)
-export const navigateToAddMedia = () => push('add-media')
-export const navigateToAddPost = params => push('add-post', params)
-export const navigateToAddProject = params => push('add-project', params)
-export const navigateToAddProjectType = () => push('add-project-type')
-export const navigateToEditProject = params => push('edit-project', params)
-export const navigateToFollowers = params => push('followers', params)
-export const navigateToOnboarding = () => push('onboarding')
-export const navigateToSettings = () => push('settings')
-export const navigateToWebView = params => push('webview', params)
-export const navigateToProject = params => push(SCREENS.PROJECT, params)
-export const navigateToPost = params => push('post', params)
-export const navigateToUser = params => push('user', params)
-export const navigateToComments = params => push('comments', params)
+export const navigateToSearch = params => navigateTo('search', params)
+export const navigateToAddMedia = () => navigateTo('add-media')
+export const navigateToAddPost = params => navigateTo('add-post', params)
+export const navigateToAddProject = params => navigateTo('add-project', params)
+export const navigateToAddProjectType = () => navigateTo('add-project-type')
+export const navigateToEditProject = params => navigateTo('edit-project', params)
+export const navigateToOnboarding = () => navigateTo('onboarding')
+export const navigateToSettings = () => navigateTo('settings')
+export const navigateToPost = params => navigateTo('post', params)

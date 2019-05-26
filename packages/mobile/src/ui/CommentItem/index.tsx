@@ -1,18 +1,11 @@
-import React, { memo } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import withTranslation from 'i18n/withTranslation'
 import Text from 'ui/Text'
 import Item from './Item'
 import { LoadReplies, Border } from './styles'
 
-const CommentItem = memo(function CommentItem({
-  t,
-  data,
-  onReply,
-  fetchMoreReplies,
-  first,
-  highlightId,
-}) {
+function CommentItem({ t, data, onReply, fetchMoreReplies, first, highlightId }) {
   return data.node.replies ? (
     <>
       <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
@@ -52,7 +45,7 @@ const CommentItem = memo(function CommentItem({
   ) : (
     <Item {...data.node} t={t} first={first} onReply={onReply} highlightId={highlightId} />
   )
-})
+}
 
 CommentItem.propTypes = {
   highlightId: PropTypes.string,

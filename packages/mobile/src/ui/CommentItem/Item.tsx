@@ -1,14 +1,14 @@
-import React, { memo } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
-import { navigateToUser } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
 import { Base, Content, Row, Reply } from './styles'
 
-const Item = memo(function Item({
+function Item({
   createdAt,
   first = false,
   highlightId,
@@ -20,6 +20,11 @@ const Item = memo(function Item({
   text,
   user,
 }) {
+  const { navigate } = useNavigation()
+  const handleNavigation = useCallback(() => navigate(SCREENS.USER, {
+    username: user.username,
+  }))
+
   const animatedValue = new Animated.Value(0)
 
   if (highlightId === id) {
@@ -49,7 +54,7 @@ const Item = memo(function Item({
           size={isReply ? 20 : 30}
           isOnline={user.isOnline}
           badgeSize={isReply && 'small'}
-          onPress={() => navigateToUser({ user })}
+          onPress={handleNavigation}
         />
         <Content>
           <Row>
@@ -76,7 +81,7 @@ const Item = memo(function Item({
       </Base>
     </Animated.View>
   )
-})
+}
 
 Item.propTypes = {
   commentId: PropTypes.string,

@@ -1,6 +1,6 @@
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'ramda'
-import { navigate, navigateToWebView } from 'navigation/actions'
+import { navigateTo, SCREENS } from 'navigation/actions'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
 
@@ -58,12 +58,12 @@ const sections = props => ({
         {
           titleKey: 'push-notifications',
           hasChildren: true,
-          onPress: () => navigate('push-notifications'),
+          onPress: () => navigateTo('push-notifications'),
         },
         {
           titleKey: 'language',
           hasChildren: true,
-          onPress: () => navigate('language'),
+          onPress: () => navigateTo('language'),
         },
       ],
     },
@@ -73,20 +73,20 @@ const sections = props => ({
         {
           titleKey: 'support',
           hasChildren: true,
-          onPress: () => navigate('support'),
+          onPress: () => navigateTo('support'),
         },
         {
           titleKey: 'terms',
-          onPress: () => navigateToWebView({ url: 'https://wrench.cc/terms' }),
+          onPress: () => navigateTo(SCREENS.WEBVIEW, { url: 'https://wrench.cc/terms' }),
         },
         {
           titleKey: 'website',
-          onPress: () => navigateToWebView({ url: 'https://wrench.cc' }),
+          onPress: () => navigateTo(SCREENS.WEBVIEW, { url: 'https://wrench.cc' }),
         },
         {
           titleKey: 'credits',
           hasChildren: true,
-          onPress: () => navigate('credits'),
+          onPress: () => navigateTo('credits'),
         },
         {
           titleKey: 'rate',
@@ -136,7 +136,7 @@ const sections = props => ({
       data: [
         {
           titleKey: 'faq',
-          onPress: () => navigateToWebView({ url: 'https://wrench.cc/faq' }),
+          onPress: () => navigateTo(SCREENS.WEBVIEW, { url: 'https://wrench.cc/faq' }),
         },
         {
           titleKey: 'report',
@@ -155,19 +155,19 @@ const sections = props => ({
       data: [
         {
           titleKey: 'knallpott',
-          onPress: () => navigateToWebView({ url: 'https://knallpott.de' }),
+          onPress: () => navigateTo(SCREENS.WEBVIEW, { url: 'https://knallpott.de' }),
         },
         {
           titleKey: 'paal',
-          onPress: () => navigateToWebView({ url: 'http://paalmotorcycles.com' }),
+          onPress: () => navigateTo(SCREENS.WEBVIEW, { url: 'http://paalmotorcycles.com' }),
         },
         {
           titleKey: 'kismo',
-          onPress: () => navigateToWebView({ url: 'http://kismomotors.com' }),
+          onPress: () => navigateTo(SCREENS.WEBVIEW, { url: 'http://kismomotors.com' }),
         },
         {
           titleKey: 'motorfabriken',
-          onPress: () => navigateToWebView({ url: 'https://www.instagram.com/motorfabriken' }),
+          onPress: () => navigateTo(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
         },
       ],
     },

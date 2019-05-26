@@ -36,9 +36,9 @@ const LoadMorePosts = gql`
 `
 
 const getProjectOptions = {
-  options: ({ navigation, after }) => ({
+  options: ({ slug, navigation, after }) => ({
     variables: {
-      slug: getProjectSlug(navigation) || getProjectSlugFromDeeplink(navigation),
+      slug: slug || getProjectSlugFromDeeplink(navigation),
       after,
       postId: getPostId(navigation),
     },

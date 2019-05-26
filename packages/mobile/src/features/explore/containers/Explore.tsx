@@ -9,7 +9,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
   return (
     <InfiniteListWithHandler
       spacingSeparator
-      initialNumToRender={1}
+      initialNumToRender={2}
       ListHeaderComponent={<Popular />}
       data={posts}
       refetch={refetch}

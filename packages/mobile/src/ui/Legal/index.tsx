@@ -1,19 +1,22 @@
-import React, { memo } from 'react'
+import React, { useCallback } from 'react'
 import withTranslation from 'i18n/withTranslation'
-import { navigateToWebView } from 'navigation/actions'
+import { navigate, SCREENS } from 'navigation'
 import { Base, Text, Link } from './styles'
 
 const LEGAL_URL = 'https://beta.wrench.cc/terms'
 
-const Legal = memo(function Legal({ t, ...props }) {
+function Legal({ t, ...props }) {
+  const handleNavigation = useCallback(() => navigate(SCREENS.WEBVIEW, {
+    url: LEGAL_URL,
+  }))
   return (
     <Base {...props}>
       <Text>{t('Legal:description')}</Text>
-      <Link onPress={() => navigateToWebView({ url: LEGAL_URL })}>
+      <Link onPress={handleNavigation}>
         <Text underline>{t('Legal:link')}</Text>
       </Link>
     </Base>
   )
-})
+}
 
 export default withTranslation('Legal')(Legal)

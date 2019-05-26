@@ -14,23 +14,23 @@ const START_OPACITY = 0
 let scrollView = null
 
 class User extends PureComponent {
-  static navigationOptions = ({ navigation }) => {
-    const params = navigation.state.params || {}
-    const fullName = pathOr(false, ['user', 'fullName'], params)
-    const dynamicLink = pathOr(false, ['user', 'dynamicLink'], params)
-
-    return {
-      headerTitle: fullName && (
-        <HeaderTitle
-          opacity={params.opacity || new Animated.Value(0)}
-          onPress={() => scrollView.scrollToOffset({ offset: 0 })}
-        >
-          {fullName}
-        </HeaderTitle>
-      ),
-      headerRight: dynamicLink && <Share title={fullName} url={dynamicLink} text />,
-    }
-  }
+  // static navigationOptions = ({ navigation }) => {
+  //   const params = navigation.state.params || {}
+  //   const fullName = pathOr(false, ['user', 'fullName'], params)
+  //   const dynamicLink = pathOr(false, ['user', 'dynamicLink'], params)
+  //
+  //   return {
+  //     headerTitle: fullName && (
+  //       <HeaderTitle
+  //         opacity={params.opacity || new Animated.Value(0)}
+  //         onPress={() => scrollView.scrollToOffset({ offset: 0 })}
+  //       >
+  //         {fullName}
+  //       </HeaderTitle>
+  //     ),
+  //     headerRight: dynamicLink && <Share title={fullName} url={dynamicLink} text />,
+  //   }
+  // }
 
   static propTypes = {
     user: PropTypes.object,
@@ -56,11 +56,11 @@ class User extends PureComponent {
   }
 
   // Add user to navigationOptions when loaded
-  componentDidUpdate(prevProps) {
-    if (!equals(this.props.user, prevProps.user)) {
-      this.props.navigation.setParams({ user: this.props.user })
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (!equals(this.props.user, prevProps.user)) {
+  //     this.props.navigation.setParams({ user: this.props.user })
+  //   }
+  // }
 
   renderItem = ({ item }) => <Post post={item.node} />
 
@@ -78,7 +78,7 @@ class User extends PureComponent {
           scrollView = ref
         }}
         ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
-        ListEmptyComponent={<FollowingProjects user={user} />}
+        ListEmptyComponent={user && <FollowingProjects user={user} />}
         data={posts}
         refetch={refetch}
         fetchMore={fetchMore}

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Alert, Linking, Keyboard } from 'react-native'
 import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
-import { navigateToProject, navigateToUser } from 'navigation/actions'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import Avatar from 'ui/Avatar'
 import Carousel from 'ui/Carousel'
@@ -33,6 +32,7 @@ class Post extends PureComponent {
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
   }
 
@@ -56,13 +56,13 @@ class Post extends PureComponent {
   goToProject = () => {
     const { project, id } = this.props.post
     if (!this.props.withoutTitle) {
-      navigateToProject({ project, id })
+      // navigateToProject({ project, id })
     }
   }
 
   goToProfile = () => {
     const { user } = this.props.post
-    navigateToUser({ user })
+    // navigateToUser({ user })
   }
 
   onDelete = () => {
