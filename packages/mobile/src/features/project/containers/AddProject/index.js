@@ -2,7 +2,7 @@ import React from 'react'
 import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
-import { navigateToAddProjectType } from 'navigation-old/actions'
+import { navigateToAddProjectType } from 'navigation/actions'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 

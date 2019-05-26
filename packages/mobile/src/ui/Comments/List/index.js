@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import withTranslation from 'i18n/withTranslation'
 import { slice } from 'ramda'
-import { navigateToUser, navigateToComments } from 'navigation-old/actions'
+import { navigateToUser, navigateToComments } from 'navigation/actions'
 import Text from 'ui/Text'
 import { Base, Row, Comment, LoadMore } from './styles'
 

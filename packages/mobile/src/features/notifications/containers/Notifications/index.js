@@ -25,9 +25,9 @@ class Notifications extends PureComponent {
   constructor(props) {
     super(props)
 
-    props.navigation.addListener('willFocus', () => {
-      props.markAllNotificationsSeen()
-    })
+    // props.navigation.addListener('willFocus', () => {
+    //   props.markAllNotificationsSeen()
+    // })
   }
 
   renderItem = ({ item }) => (

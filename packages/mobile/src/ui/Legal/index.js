@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import withTranslation from 'i18n/withTranslation'
-import { navigateToWebView } from 'navigation-old/actions'
+import { navigateToWebView } from 'navigation/actions'
 import { Base, Text, Link } from './styles'
 
 const LEGAL_URL = 'https://beta.wrench.cc/terms'

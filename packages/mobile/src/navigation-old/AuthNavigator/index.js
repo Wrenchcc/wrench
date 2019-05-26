@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { createAppContainer } from 'react-navigation'
-import { setNavigationRef } from 'navigation-old/actions'
+import { setNavigationRef } from 'navigation/actions'
 import Navigator from './navigator'
 
 const NavigatorContainer = createAppContainer(Navigator)

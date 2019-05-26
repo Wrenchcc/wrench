@@ -24,6 +24,9 @@ i18next
     },
     ns: ['common'],
     defaultNS: 'common',
+    react: {
+      useSuspense: false,
+    },
     interpolation: {
       escapeValue: false,
       format(value, format) {

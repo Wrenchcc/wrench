@@ -37,12 +37,12 @@ class Me extends PureComponent {
     super(props)
     this.scrollY = new Animated.Value(0)
 
-    props.navigation.setParams({
-      opacity: this.scrollY.interpolate({
-        inputRange: [START_OPACITY, HEADER_HEIGHT],
-        outputRange: [0, 1],
-      }),
-    })
+    // props.navigation.setParams({
+    //   opacity: this.scrollY.interpolate({
+    //     inputRange: [START_OPACITY, HEADER_HEIGHT],
+    //     outputRange: [0, 1],
+    //   }),
+    // })
   }
 
   renderItem = ({ item }) => <Post post={item.node} />

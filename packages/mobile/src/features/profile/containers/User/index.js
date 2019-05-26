@@ -47,12 +47,12 @@ class User extends PureComponent {
     super(props)
     this.scrollY = new Animated.Value(0)
 
-    props.navigation.setParams({
-      opacity: this.scrollY.interpolate({
-        inputRange: [START_OPACITY, HEADER_HEIGHT],
-        outputRange: [0, 1],
-      }),
-    })
+    // props.navigation.setParams({
+    //   opacity: this.scrollY.interpolate({
+    //     inputRange: [START_OPACITY, HEADER_HEIGHT],
+    //     outputRange: [0, 1],
+    //   }),
+    // })
   }
 
   // Add user to navigationOptions when loaded

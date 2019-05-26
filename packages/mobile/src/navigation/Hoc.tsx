@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import { Provider } from 'unstated'
 import { ApolloProvider } from 'react-apollo'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
-import client from 'graphql/client'
+import createClient from 'graphql/createClient'
 import { NavigationContext } from './context'
 import { navigate, showModal, dismissModal } from './actions'
+
+const client = createClient()
 
 export default Component => {
   function Screen(props) {

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Title } from 'ui'
-import { navigateToFollowers } from 'navigation-old/actions'
+import { navigateToFollowers } from 'navigation/actions'
 import { Base, ProjectName, Followers } from './styles'
 
 export default class Header extends PureComponent {

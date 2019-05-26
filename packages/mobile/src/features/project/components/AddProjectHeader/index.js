@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { ActivityIndicator } from 'react-native'
 import withTranslation from 'i18n/withTranslation'
-import { navigateBack } from 'navigation-old/actions'
+import { navigateBack } from 'navigation/actions'
 import { Header, Text, Icon } from 'ui'
 import { closeDark } from 'images'
 

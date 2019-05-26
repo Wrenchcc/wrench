@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import withTranslation from 'i18n/withTranslation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
-import { navigateToUser } from 'navigation-old/actions'
+import { navigateToUser } from 'navigation/actions'
 import { Base, Content } from './styles'
 
 class User extends PureComponent {
