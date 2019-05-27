@@ -12,7 +12,7 @@ function User({ t, data }) {
     () => navigate(SCREENS.USER, {
       username: data.username,
     }),
-    []
+    [data]
   )
 
   return (

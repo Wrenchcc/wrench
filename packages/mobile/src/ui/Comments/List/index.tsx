@@ -14,7 +14,7 @@ function List({ data, t }) {
     () => navigate(SCREENS.COMMENTS, {
       id: data.id,
     }),
-    []
+    [data]
   )
 
   const renderComment = ({ node }) => (

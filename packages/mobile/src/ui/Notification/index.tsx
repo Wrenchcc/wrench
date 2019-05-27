@@ -84,7 +84,7 @@ function Notification({ data, deleteNotification }) {
   const handleDelete = useCallback(() => {
     deleteNotification(data.id)
     transitionRef.current.animateNextTransition()
-  }, [])
+  }, [data, transitionRef])
 
   return (
     <Transitioning.View ref={transitionRef} transition={transition}>

@@ -1,10 +1,17 @@
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { Title, Avatar } from 'ui'
 import { Base, Username } from './styles'
 
-const Header = memo(
-  ({ user: { firstName, lastName, avatarUrl = '' }, spacingHorizontal = false }) => (
+type Props = {
+  spacingHorizontal: bool
+  user: object
+}
+
+function Header({
+  user: { firstName, lastName, avatarUrl = '' },
+  spacingHorizontal = false,
+}: Props) {
+  return (
     <Base spacingHorizontal={spacingHorizontal}>
       <Username>
         <Title medium>{firstName}</Title>
@@ -13,11 +20,6 @@ const Header = memo(
       <Avatar size={80} uri={avatarUrl} />
     </Base>
   )
-)
-
-Header.propTypes = {
-  spacingHorizontal: PropTypes.bool,
-  user: PropTypes.object.isRequired,
 }
 
 export default Header

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { Fragment, useCallback } from 'react'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { useNavigation, SCREENS, PageLayout, FlatList } from 'navigation'
@@ -23,9 +23,12 @@ function Project({
   t,
 }) {
   const { navigate } = useNavigation()
-  const handleNavigation = useCallback(() => navigate(SCREENS.USER, {
-    username: project.user.username,
-  }))
+  const handleNavigation = useCallback(
+    () => navigate(SCREENS.USER, {
+      username: project.user.username,
+    }),
+    [project]
+  )
 
   const hasPosts = posts && posts.length > 0
   const emptyState = project.projectPermissions && project.projectPermissions.isOwner
@@ -46,22 +49,22 @@ function Project({
 
     if (post) {
       content = (
-        <>
+        <Fragment>
           <Post post={post} withoutTitle />
           {hasPosts && posts.length > 1 && (
             <View style={{ paddingTop: 40, paddingBottom: 30 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
           )}
-        </>
+        </Fragment>
       )
     }
 
     return (
-      <>
+      <Fragment>
         {project.title && <Header project={project} spacingHorizontal={!hasPosts} />}
         {content}
-      </>
+      </Fragment>
     )
   }
 
@@ -70,7 +73,7 @@ function Project({
       title={project.title}
       headerRight={
         project.projectPermissions && project.projectPermissions.isOwner ? (
-          <Edit />
+          <Edit project={project} />
         ) : (
           <Avatar uri={(project.user && project.user.avatarUrl) || ''} onPress={handleNavigation} />
         )

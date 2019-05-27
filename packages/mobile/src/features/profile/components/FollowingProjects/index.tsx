@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useNavigation, SCREENS } from 'navigation'
 import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
@@ -8,6 +7,16 @@ import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
 import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
+
+type Props = {
+  user: object
+  projects: array
+  isFetching: bool
+  refetch: bool
+  fetchMore: bool
+  isRefetching: bool
+  hasNextPage: bool
+}
 
 // TODO: Fetch more on end, fix scrollable
 function FollowingProjects({
@@ -60,16 +69,6 @@ function FollowingProjects({
       />
     </Base>
   )
-}
-
-FollowingProjects.propTypes = {
-  user: PropTypes.object,
-  projects: PropTypes.array,
-  isFetching: PropTypes.bool,
-  refetch: PropTypes.bool,
-  fetchMore: PropTypes.bool,
-  isRefetching: PropTypes.bool,
-  hasNextPage: PropTypes.bool,
 }
 
 export default compose(

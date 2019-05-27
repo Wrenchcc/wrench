@@ -20,7 +20,7 @@ function ProjectCard({ t, onPress, project, followProject, style }) {
     ) : (
       <Placeholder />
     )
-  }, [])
+  }, [project])
 
   return (
     <Base onPress={onPress} style={style}>

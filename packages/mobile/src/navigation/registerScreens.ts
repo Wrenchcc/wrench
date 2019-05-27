@@ -10,6 +10,7 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.PROJECT, () => HOC(require('features/project/containers/Project').default))
   Navigation.registerComponent(SCREENS.ADD_MEDIA, () => HOC(require('features/project/containers/AddMedia').default))
   Navigation.registerComponent(SCREENS.ADD_PROJECT, () => HOC(require('features/project/containers/AddProject').default))
+  Navigation.registerComponent(SCREENS.EDIT_PROJECT, () => HOC(require('features/project/containers/EditProject').default))
   Navigation.registerComponent(SCREENS.ADD_PROJECT_MODEL, () => HOC(require('features/project/containers/AddProjectModel').default))
   Navigation.registerComponent(SCREENS.ADD_PROJECT_TYPE, () => HOC(require('features/project/containers/AddProjectType').default))
   Navigation.registerComponent(SCREENS.USER, () => HOC(require('features/profile/containers/User').default))

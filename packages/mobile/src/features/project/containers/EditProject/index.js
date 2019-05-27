@@ -5,21 +5,21 @@ import { compose } from 'react-apollo'
 import withTranslation from 'i18n/withTranslation'
 import { editProject } from 'graphql/mutations/project/editProject'
 import { deleteProject } from 'graphql/mutations/project/deleteProject'
-import { navigateBack, navigateToFeed } from 'navigation/actions'
+import { dismissModal, navigateToFeed } from 'navigation'
 import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
 import { closeDark } from 'images'
 import { Inner, Spacing } from './styles'
 
 class EditProject extends PureComponent {
   static propTypes = {
-    navigation: PropTypes.object.isRequired,
+    project: PropTypes.object.isRequired,
     editProject: PropTypes.func.isRequired,
     deleteProject: PropTypes.func.isRequired,
   }
 
   constructor(props) {
     super(props)
-    const { project } = props.navigation.state.params
+    const { project } = props
 
     this.state = {
       isSaving: false,
@@ -35,7 +35,7 @@ class EditProject extends PureComponent {
       return <Icon source={closeDark} opacity={0.4} />
     }
 
-    return <Icon onPress={() => navigateBack()} source={closeDark} />
+    return <Icon onPress={() => dismissModal()} source={closeDark} />
   }
 
   get renderHeaderRight() {
@@ -51,11 +51,9 @@ class EditProject extends PureComponent {
   }
 
   get renderHeaderCenter() {
-    const { t, navigation } = this.props
+    const { t, project } = this.props
     return (
-      <Text medium numberOfLines={1}>{`${t('EditProject:headerTitle')} ${
-        navigation.state.params.project.title
-      }`}</Text>
+      <Text medium numberOfLines={1}>{`${t('EditProject:headerTitle')} ${project.title}`}</Text>
     )
   }
 
@@ -64,8 +62,8 @@ class EditProject extends PureComponent {
   }
 
   toggleActionSheet = () => {
-    const { t, navigation } = this.props
-    if (navigation.state.params.project.projectPermissions.isOwner) {
+    const { t, project } = this.props
+    if (project.projectPermissions.isOwner) {
       Alert.alert(
         t('EditProject:deleteAlert'),
         t('EditProject:description'),
@@ -96,7 +94,7 @@ class EditProject extends PureComponent {
 
     this.props
       .editProject({ title, commentsDisabled })
-      .then(setTimeout(() => this.setState({ isSaving: false }, () => navigateBack()), 500))
+      .then(setTimeout(() => this.setState({ isSaving: false }, () => dismissModal()), 500))
   }
 
   render() {

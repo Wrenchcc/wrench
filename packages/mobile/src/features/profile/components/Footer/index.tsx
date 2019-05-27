@@ -1,9 +1,9 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Text } from 'ui'
 import { appVersion } from 'utils/constants'
 import { Base } from './styles'
 
-export default memo(function Footer() {
+function Footer() {
   return (
     <Base>
       <Text fontSize={15} color="light_grey">
@@ -11,4 +11,6 @@ export default memo(function Footer() {
       </Text>
     </Base>
   )
-})
+}
+
+export default Footer

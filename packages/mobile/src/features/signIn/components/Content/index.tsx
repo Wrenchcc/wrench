@@ -1,8 +1,8 @@
-import React, { memo } from 'react'
+import React from 'react'
 import withTranslation from 'i18n/withTranslation'
 import { Base, Headline, Description } from './styles'
 
-const Content = memo(function Content({ t }) {
+function Content({ t }) {
   return (
     <Base>
       <Headline color="white" medium>
@@ -13,6 +13,6 @@ const Content = memo(function Content({ t }) {
       </Description>
     </Base>
   )
-})
+}
 
 export default withTranslation('OnboardingContent')(Content)

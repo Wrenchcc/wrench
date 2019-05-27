@@ -6,9 +6,13 @@ import { Base, Text, Link } from './styles'
 const LEGAL_URL = 'https://beta.wrench.cc/terms'
 
 function Legal({ t, ...props }) {
-  const handleNavigation = useCallback(() => navigate(SCREENS.WEBVIEW, {
-    url: LEGAL_URL,
-  }))
+  const handleNavigation = useCallback(
+    () => navigate(SCREENS.WEBVIEW, {
+      url: LEGAL_URL,
+    }),
+    []
+  )
+
   return (
     <Base {...props}>
       <Text>{t('Legal:description')}</Text>

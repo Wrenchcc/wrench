@@ -1,7 +1,10 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
 import { View } from 'react-native'
-import { Text } from 'ui'
+import { navigateBack } from 'navigation'
+import { Text, Icon } from 'ui'
+import { arrowLeft } from 'images'
+
 import styles from './styles'
 
 const { interpolate, Extrapolate } = Animated
@@ -9,6 +12,8 @@ const { interpolate, Extrapolate } = Animated
 const OFFSET_INVERTED = -90
 
 function Header({ scrollY, title, headerRight }) {
+  const handleNavigation = useCallback(() => navigateBack(), [])
+
   const opacity = interpolate(scrollY, {
     inputRange: [OFFSET_INVERTED + 10, OFFSET_INVERTED + 30],
     outputRange: [0, 1],
@@ -20,7 +25,7 @@ function Header({ scrollY, title, headerRight }) {
       <View style={styles.header}>
         <View style={styles.inner}>
           <View style={styles.left}>
-            <Text medium>hello</Text>
+            <Icon onPress={handleNavigation} source={arrowLeft} />
           </View>
           <Animated.View style={{ opacity }}>
             <Text medium center>

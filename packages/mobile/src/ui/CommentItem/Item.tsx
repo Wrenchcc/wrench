@@ -21,9 +21,12 @@ function Item({
   user,
 }) {
   const { navigate } = useNavigation()
-  const handleNavigation = useCallback(() => navigate(SCREENS.USER, {
-    username: user.username,
-  }))
+  const handleNavigation = useCallback(
+    () => navigate(SCREENS.USER, {
+      username: user.username,
+    }),
+    [user]
+  )
 
   const animatedValue = new Animated.Value(0)
 
