@@ -1,11 +1,6 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-// import {
-// getProjectSlug,
-// getProjectSlugFromDeeplink,
-// getPostId,
-// } from 'navigation-old/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
@@ -42,19 +37,12 @@ const getProjectOptions = {
       after,
       postId,
     },
-    fetchPolicy: 'cache-and-network',
   }),
-  props: ({
-    data: { fetchMore, error, loading, project, networkStatus, refetch, post },
-    ownProps: { navigation },
-  }) => ({
+  props: ({ data: { fetchMore, error, loading, project = {}, networkStatus, refetch, post } }) => ({
     error,
     refetch,
     post,
-    project: {
-      ...pathOr(null, ['state', 'params', 'project'], navigation),
-      ...project,
-    },
+    project,
     posts: pathOr(null, ['posts', 'edges'], project),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
     isRefetching: isRefetching(networkStatus),

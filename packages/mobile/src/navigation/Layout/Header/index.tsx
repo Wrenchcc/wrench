@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
@@ -9,11 +8,14 @@ import styles from './styles'
 
 function Header({
   query,
+  search,
   onQueryChange,
   onSearchCancel,
   onSearchClear,
   onSearchFocus,
   searchActive,
+  headerRight,
+  headerLeft,
 }) {
   const { translateY, headerHeight } = useContext(ListContext)
 
@@ -22,28 +24,23 @@ function Header({
       <View style={styles.header}>
         <Animated.View style={opacityContent(translateY, headerHeight)}>
           <View style={styles.inner}>
-            <SearchBar
-              onChangeQuery={onQueryChange}
-              onSearchCancel={onSearchCancel}
-              onSearchFocus={onSearchFocus}
-              onSearchClear={onSearchClear}
-              query={query}
-              searchActive={searchActive}
-            />
+            {headerLeft && headerLeft}
+            {search && (
+              <SearchBar
+                onChangeQuery={onQueryChange}
+                onSearchCancel={onSearchCancel}
+                onSearchFocus={onSearchFocus}
+                onSearchClear={onSearchClear}
+                query={query}
+                searchActive={searchActive}
+              />
+            )}
+            {headerRight && !searchActive && headerRight}
           </View>
         </Animated.View>
       </View>
     </Animated.View>
   )
-}
-
-Header.propTypes = {
-  onQueryChange: PropTypes.func,
-  query: PropTypes.string,
-  onSearchFocus: PropTypes.func,
-  onSearchCancel: PropTypes.func,
-  searchActive: PropTypes.bool,
-  tabBar: PropTypes.node,
 }
 
 export default Header

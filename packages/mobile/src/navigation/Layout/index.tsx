@@ -1,12 +1,12 @@
 import React, { useState, useCallback } from 'react'
-import PropTypes from 'prop-types'
 import Search from 'components/Search'
-import Header from '../Header'
+import Add from 'components/Add'
+import Header from './Header'
 import Provider from './Provider'
 
 const DEFAULT_QUERY = ''
 
-function Layout({ actions, search, headerTitle, children }) {
+function Layout({ headerLeft, headerRight = <Add />, search = true, headerTitle, children }) {
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [isActive, setActive] = useState(false)
 
@@ -18,7 +18,8 @@ function Layout({ actions, search, headerTitle, children }) {
   return (
     <Provider>
       <Header
-        actions={actions}
+        headerLeft={headerLeft}
+        headerRight={headerRight}
         onQueryChange={setQuery}
         headerTitle={headerTitle}
         query={query}
@@ -32,21 +33,6 @@ function Layout({ actions, search, headerTitle, children }) {
       {children}
     </Provider>
   )
-}
-
-Layout.propTypes = {
-  headerTitle: PropTypes.string,
-  actions: PropTypes.arrayOf(
-    PropTypes.shape({
-      component: PropTypes.node,
-      icon: PropTypes.node,
-      onPress: PropTypes.func,
-      testId: PropTypes.object,
-    })
-  ),
-  search: PropTypes.object,
-  renderSearch: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 }
 
 export default Layout

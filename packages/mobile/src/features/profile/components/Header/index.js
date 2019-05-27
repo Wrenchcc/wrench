@@ -5,13 +5,13 @@ import { Base, Username } from './styles'
 
 const Header = memo(
   ({ user: { firstName, lastName, avatarUrl = '' }, spacingHorizontal = false }) => (
-      <Base spacingHorizontal={spacingHorizontal}>
-        <Username>
-          <Title medium>{firstName}</Title>
-          <Title medium>{lastName}</Title>
-        </Username>
-        <Avatar size={80} uri={avatarUrl} />
-      </Base>
+    <Base spacingHorizontal={spacingHorizontal}>
+      <Username>
+        <Title medium>{firstName}</Title>
+        <Title medium>{lastName}</Title>
+      </Username>
+      <Avatar size={80} uri={avatarUrl} />
+    </Base>
   )
 )
 

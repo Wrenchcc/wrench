@@ -103,8 +103,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+  <key>UIViewControllerBasedStatusBarAppearance</key>
+  <true/>
   <key>FirebaseDynamicLinksCustomDomains</key>
   <array>
     <string>https://share.wrench.cc</string>

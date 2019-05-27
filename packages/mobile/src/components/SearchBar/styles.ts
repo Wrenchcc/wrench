@@ -6,6 +6,7 @@ import { FONTS, COLORS } from 'ui/constants'
 export const Base = styled(Transitioning.View)`
   flex-direction: row;
   align-items: center;
+  flex: 1;
 `
 
 export const Text = styled(UiText)`

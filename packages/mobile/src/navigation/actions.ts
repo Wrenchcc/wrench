@@ -7,7 +7,7 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => 
   componentId = id
 })
 
-export function navigateTo(screen, { options, ...params }) {
+export function navigateTo(screen, { options, ...params } = {}) {
   Navigation.push(componentId, {
     component: {
       name: screen,
@@ -17,7 +17,7 @@ export function navigateTo(screen, { options, ...params }) {
   })
 }
 
-export function showModal(screen, { options, ...params }) {
+export function showModal(screen, { options, ...params } = {}) {
   Navigation.showModal({
     stack: {
       children: [
@@ -37,7 +37,7 @@ export function dismissModal() {
   Navigation.dismissModal(componentId)
 }
 
-export function navigate(screen, { options, ...params }) {
+export function navigate(screen, { options, ...params } = {}) {
   return Navigation.push(componentId, {
     component: {
       name: screen,
@@ -49,28 +49,20 @@ export function navigate(screen, { options, ...params }) {
   })
 }
 
-export const navigateBack = () => {
-  // navigator.dispatch(
-  //   NavigationActions.back({
-  //     key: null,
-  //   })
-  // )
-}
+export const navigateBack = () => Navigation.pop(componentId)
 
 export const resetNavigation = () => {
-  // navigator.dispatch(StackActions.popToTop())
+  Navigation.popToRoot(componentId)
 }
 
 export const navigateToFeed = params => navigateTo(SCREENS.FEED, params)
 export const navigateToProject = params => navigateTo(SCREENS.PROJECT, params)
 export const navigateToUser = params => navigateTo(SCREENS.USER, params)
+export const navigateToAddProject = params => showModal(SCREENS.ADD_PROJECT, params)
+export const navigateToAddProjectType = () => navigateTo(SCREENS.ADD_PROJECT_TYPE)
 
-export const navigateToSearch = params => navigateTo('search', params)
 export const navigateToAddMedia = () => navigateTo('add-media')
 export const navigateToAddPost = params => navigateTo('add-post', params)
-export const navigateToAddProject = params => navigateTo('add-project', params)
-export const navigateToAddProjectType = () => navigateTo('add-project-type')
 export const navigateToEditProject = params => navigateTo('edit-project', params)
 export const navigateToOnboarding = () => navigateTo('onboarding')
-export const navigateToSettings = () => navigateTo('settings')
 export const navigateToPost = params => navigateTo('post', params)

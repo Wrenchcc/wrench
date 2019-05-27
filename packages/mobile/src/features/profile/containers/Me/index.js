@@ -1,35 +1,22 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Animated } from 'react-native'
 import { compose } from 'react-apollo'
 import { Layout, FlatList } from 'navigation'
 import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
 import { Post, EmptyState } from 'ui'
+import SettingsButton from 'features/profile/components/SettingsButton'
 import Header from 'features/profile/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 
 class Me extends PureComponent {
   static propTypes = {
     user: PropTypes.object,
-    navigation: PropTypes.object.isRequired,
     posts: PropTypes.array,
     fetchMore: PropTypes.func.isRequired,
     refetch: PropTypes.func.isRequired,
     isRefetching: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     hasNextPage: PropTypes.bool.isRequired,
-  }
-
-  constructor(props) {
-    super(props)
-    this.scrollY = new Animated.Value(0)
-
-    // props.navigation.setParams({
-    //   opacity: this.scrollY.interpolate({
-    //     inputRange: [START_OPACITY, HEADER_HEIGHT],
-    //     outputRange: [0, 1],
-    //   }),
-    // })
   }
 
   renderItem = ({ item }) => <Post post={item.node} />
@@ -40,7 +27,7 @@ class Me extends PureComponent {
     const hasPosts = posts && posts.length > 0
 
     return (
-      <Layout>
+      <Layout headerLeft={<SettingsButton />} search={false}>
         <FlatList
           initialNumToRender={1}
           spacingSeparator

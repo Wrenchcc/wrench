@@ -26,12 +26,11 @@ const style = {
 const ITEM_HEIGHT = 60
 
 class Settings extends PureComponent {
-  static navigationOptions = ({ navigation, screenProps }) => ({
-    headerTitle: screenProps.t(`Settings:${navigation.state.routeName}`),
-  })
+  // static navigationOptions = ({ navigation, screenProps }) => ({
+  //   headerTitle: screenProps.t(`Settings:${navigation.state.routeName}`),
+  // })
 
   static propTypes = {
-    navigation: PropTypes.object.isRequired,
     notifications: PropTypes.object,
   }
 
@@ -52,8 +51,6 @@ class Settings extends PureComponent {
   )
 
   render() {
-    const { navigation, ...rest } = this.props
-
     return (
       <Subscribe to={[I18nContainer, AppContainer]}>
         {({ state, changeLocale }, { changeLoginState }) => (
@@ -64,12 +61,12 @@ class Settings extends PureComponent {
             renderItem={this.renderItem}
             initialNumToRender={15}
             sections={
-              sections({ ...state, changeLocale, changeLoginState, ...rest })[
-                navigation.state.routeName
+              sections({ ...state, changeLocale, changeLoginState, ...this.props })[
+                this.props.section || 'settings'
               ]
             }
             keyExtractor={(item, index) => item + index}
-            ListFooterComponent={navigation.state.routeName === 'settings' && <Footer />}
+            ListFooterComponent={!this.props.section && <Footer />}
           />
         )}
       </Subscribe>

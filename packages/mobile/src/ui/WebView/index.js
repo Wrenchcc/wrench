@@ -6,7 +6,7 @@ import withTranslation from 'i18n/withTranslation'
 import url from 'url'
 import { equals, reject } from 'ramda'
 import DeviceInfo from 'react-native-device-info'
-import { navigateBack } from 'navigation/actions'
+import { dismissModal } from 'navigation/actions'
 import Header from 'ui/Header'
 import ProgressBar from 'ui/ProgressBar'
 import Text from 'ui/Text'
@@ -136,7 +136,7 @@ class WebView extends PureComponent {
       <Base>
         <Header
           transparent={false}
-          headerLeft={<Icon onPress={() => navigateBack()} source={closeDark} />}
+          headerLeft={<Icon onPress={() => dismissModal()} source={closeDark} />}
           headerCenter={
             <View style={{ alignItems: 'center' }}>
               <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>
