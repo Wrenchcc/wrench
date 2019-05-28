@@ -1,0 +1,12 @@
+{
+  "Search": {
+    "en": {
+      "users": "People",
+      "projects": "Projects"
+    },
+    "sv": {
+      "users": "Personer",
+      "projects": "Projekt"
+    }
+  }
+}

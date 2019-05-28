@@ -7,8 +7,6 @@ import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { SentryInstance } from 'utils/sentry'
 import { AuthNavigation, AppNavigation } from './navigation'
 
-console.disableYellowBox = true
-
 function Initializing({ client }) {
   const loadInitialState = async () => {
     let showOnboarding = false

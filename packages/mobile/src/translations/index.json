@@ -1,5 +1,9 @@
 {
   "en": {
+    "Search": {
+      "users": "People",
+      "projects": "Projects"
+    },
     "SearchBar": {
       "placeholder": "Search",
       "cancel": "Cancel"
@@ -140,10 +144,6 @@
     "Project": {
       "recent": "Recent posts"
     },
-    "SearchTab": {
-      "users": "People",
-      "projects": "Projects"
-    },
     "OnboardingContent": {
       "headline": "What are you interested in?",
       "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with."
@@ -200,9 +200,6 @@
         "description": "Now when you have a project it’s time to create your first post.",
         "button": "Add"
       }
-    },
-    "ErrorBoundary": {
-      "networkError": "We're sorry but something went wrong"
     },
     "Follow": {
       "follow": "Follow this project",
@@ -268,6 +265,10 @@
     }
   },
   "sv": {
+    "Search": {
+      "users": "Personer",
+      "projects": "Projekt"
+    },
     "SearchBar": {
       "placeholder": "Sök",
       "cancel": "Avbryt"
@@ -408,10 +409,6 @@
     "Project": {
       "recent": "Senaste inlägg"
     },
-    "SearchTab": {
-      "users": "Personer",
-      "projects": "Projekt"
-    },
     "OnboardingContent": {
       "headline": "Vad är du intresserad av?",
       "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med."
@@ -468,9 +465,6 @@
         "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
         "button": "Lägg till"
       }
-    },
-    "ErrorBoundary": {
-      "networkError": "Vi är ledsna men något gick fel"
     },
     "Follow": {
       "follow": "Följ projekt",

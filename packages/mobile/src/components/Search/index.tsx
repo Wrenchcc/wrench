@@ -61,7 +61,7 @@ class Search extends PureComponent {
       style={styles.tabBar}
       labelStyle={styles.labelStyle}
       indicatorStyle={styles.indicatorStyle}
-      getLabelText={({ route }) => this.props.t(`SearchTab:${route.key}`)}
+      getLabelText={({ route }) => this.props.t(`Search:${route.key}`)}
       swipeEnabled
       scrollEnabled={false}
       onTabPress={this.scrollToTop}
@@ -106,4 +106,4 @@ class Search extends PureComponent {
   }
 }
 
-export default withTranslation('SearchTab')(Search)
+export default withTranslation('Search')(Search)

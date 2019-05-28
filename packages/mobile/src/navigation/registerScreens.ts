@@ -1,6 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 import { SCREENS } from './constants'
-import HOC from './Hoc'
+import HOC from './HOC'
 
 export default function registerScreens() {
   Navigation.registerComponent(SCREENS.INITIALIZING, () => HOC(require('./Initializing').default))
