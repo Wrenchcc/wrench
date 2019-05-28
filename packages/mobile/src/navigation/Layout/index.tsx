@@ -6,7 +6,7 @@ import Provider from './Provider'
 
 const DEFAULT_QUERY = ''
 
-function Layout({ headerLeft, headerRight = <Add />, search = true, children }) {
+function Layout({ headerLeft, headerRight = <Add />, search = true, stickyComponent, children }) {
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [isActive, setActive] = useState(false)
 
@@ -30,6 +30,7 @@ function Layout({ headerLeft, headerRight = <Add />, search = true, children }) 
         onSearchCancel={handleSearchCancel}
         onSearchClear={handleSearchClear}
         searchActive={isActive}
+        stickyComponent={stickyComponent}
       />
       <Search active={isActive} query={query} />
       {children}

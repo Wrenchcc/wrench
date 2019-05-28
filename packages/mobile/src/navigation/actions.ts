@@ -42,9 +42,7 @@ export function navigate(screen, { options, ...params } = {}) {
     component: {
       name: screen,
       passProps: params,
-      options: {
-        ...options,
-      },
+      options,
     },
   })
 }
@@ -63,5 +61,4 @@ export const navigateToAddProjectType = () => navigateTo(SCREENS.ADD_PROJECT_TYP
 
 export const navigateToAddMedia = () => navigateTo('add-media')
 export const navigateToAddPost = params => navigateTo('add-post', params)
-export const navigateToOnboarding = () => navigateTo('onboarding')
 export const navigateToPost = params => navigateTo('post', params)

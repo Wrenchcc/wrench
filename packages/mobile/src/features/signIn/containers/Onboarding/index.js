@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
+import { AppNavigation } from 'navigation'
 import withTranslation from 'i18n/withTranslation'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
@@ -10,7 +11,6 @@ import { editUser } from 'graphql/mutations/user/editUser'
 import { Header, Touchable, Text, Loader } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
-
 import { Base, Cell, Image, Overlay, Picture } from './styles'
 
 const { width } = Dimensions.get('window')
@@ -87,9 +87,8 @@ class Onboarding extends Component {
 
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
     const interestedIn = Object.keys(this.state.items).map(id => ({ id }))
-    this.props
-      .editUser({ interestedIn })
-      .then(setTimeout(() => this.setState({ isSaving: false }), 500))
+
+    this.props.editUser({ interestedIn }).then(setTimeout(AppNavigation, 500))
   }
 
   renderItem = ({ item }) => (

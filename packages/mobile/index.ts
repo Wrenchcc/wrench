@@ -1,4 +1,4 @@
 import { Navigation } from 'react-native-navigation'
-import { AppNavigation } from 'navigation'
+import { Bootstrap } from 'navigation'
 
-Navigation.events().registerAppLaunchedListener(AppNavigation)
+Navigation.events().registerAppLaunchedListener(Bootstrap)

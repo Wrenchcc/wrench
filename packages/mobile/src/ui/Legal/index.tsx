@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react'
 import withTranslation from 'i18n/withTranslation'
-import { navigate, SCREENS } from 'navigation'
+import { showModal, SCREENS } from 'navigation'
 import { Base, Text, Link } from './styles'
 
 const LEGAL_URL = 'https://beta.wrench.cc/terms'
 
 function Legal({ t, ...props }) {
   const handleNavigation = useCallback(
-    () => navigate(SCREENS.WEBVIEW, {
+    () => showModal(SCREENS.WEBVIEW, {
       url: LEGAL_URL,
     }),
     []

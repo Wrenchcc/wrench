@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { TAB_HEIGHT } from 'navigation/constants'
+import { NAVIGATION } from 'navigation'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
-  height: ${TAB_HEIGHT};
+  height: ${NAVIGATION.TAB_HEIGHT};
   background-color: ${COLORS.DARK};
   justify-content: center;
   position: absolute;

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Spring } from 'react-spring/renderprops'
 import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
@@ -9,7 +9,7 @@ import { Base, Inner, Cover, Content, Loader } from './styles'
 const FROM_HEIGHT = 0
 const TO_HEIGHT = 60
 
-const PostProgress = memo(function PostProgress({ t }) {
+function PostProgress({ t }) {
   return (
     <Subscribe to={[AddContainer]}>
       {({ state: { postProgress } }) => (
@@ -38,6 +38,6 @@ const PostProgress = memo(function PostProgress({ t }) {
       )}
     </Subscribe>
   )
-})
+}
 
 export default withTranslation('PostProgress')(PostProgress)

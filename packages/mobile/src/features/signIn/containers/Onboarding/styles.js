@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { TAB_HEIGHT } from 'navigation/constants'
+import { NAVIGATION } from 'navigation'
 import { COLORS } from 'ui/constants'
 import FastImage from 'react-native-fast-image'
 
 export const Base = styled.View`
   flex: 1;
   background-color: ${COLORS.DARK};
-  padding-bottom: ${TAB_HEIGHT};
+  padding-bottom: ${NAVIGATION.TAB_HEIGHT};
 `
 
 export const Image = styled(FastImage)`

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Provider } from 'unstated'
 import { ApolloProvider } from 'react-apollo'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
@@ -9,8 +8,12 @@ import { navigate, showModal, dismissModal } from './actions'
 
 const client = createClient()
 
+type Props = {
+  componentId: string
+}
+
 export default Component => {
-  function Screen(props) {
+  function Screen(props): Props {
     return (
       <Provider>
         <ApolloProvider client={client}>
@@ -26,10 +29,6 @@ export default Component => {
         </ApolloProvider>
       </Provider>
     )
-  }
-
-  Screen.propTypes = {
-    componentId: PropTypes.string.isRequired,
   }
 
   return gestureHandlerRootHOC(Screen)

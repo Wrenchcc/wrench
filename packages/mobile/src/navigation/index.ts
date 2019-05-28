@@ -1,4 +1,4 @@
-export { AppNavigation, AuthNavigation } from './navigation'
+export { AppNavigation, AuthNavigation, Bootstrap } from './navigation'
 export { default as Layout } from './Layout'
 export { default as PageLayout } from './PageLayout'
 export * from './Scrollables'

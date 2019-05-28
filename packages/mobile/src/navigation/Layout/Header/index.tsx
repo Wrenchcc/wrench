@@ -17,6 +17,7 @@ function Header({
   searchActive,
   headerRight,
   headerLeft,
+  stickyComponent,
 }) {
   const { translateY, headerHeight } = useContext(ListContext)
 
@@ -40,6 +41,7 @@ function Header({
           </View>
         </Animated.View>
       </View>
+      {stickyComponent && stickyComponent}
     </Animated.View>
   )
 }

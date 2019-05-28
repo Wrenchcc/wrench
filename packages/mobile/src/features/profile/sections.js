@@ -1,6 +1,7 @@
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'ramda'
 import { navigateTo, showModal, SCREENS } from 'navigation'
+import { client } from 'graphql/createClient'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
 
@@ -102,7 +103,7 @@ const sections = props => ({
         },
         {
           titleKey: 'logout',
-          onPress: () => props.changeLoginState(false),
+          onPress: () => client.resetStore(),
           last: true,
         },
       ],
