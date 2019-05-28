@@ -2,9 +2,8 @@ import React, { memo, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
 import { View } from 'react-native'
 import { navigateBack } from 'navigation'
-import { Text, Icon } from 'ui'
+import { Text, Icon, ToastNotification } from 'ui'
 import { arrowLeft } from 'images'
-
 import styles from './styles'
 
 const { interpolate, Extrapolate } = Animated
@@ -37,6 +36,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true }) {
           <View style={styles.right}>{headerRight && headerRight}</View>
         </View>
       </View>
+      <ToastNotification />
     </Animated.View>
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { NAVIGATION } from 'navigation'
+import { NAVIGATION } from 'navigation/constants'
 import { COLORS } from 'ui/constants'
 import FastImage from 'react-native-fast-image'
 

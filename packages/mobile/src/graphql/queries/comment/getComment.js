@@ -1,6 +1,5 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-// import { getCommentIdFromDeeplink } from 'navigation-old/utils/selectors'
 import repliesConnectionFragment from 'graphql/fragments/comment/repliesConnection'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 
@@ -21,9 +20,9 @@ export const CommentQuery = gql`
 `
 
 const getCommentOptions = {
-  options: ({ id }) => ({
+  options: ({ commentId }) => ({
     variables: {
-      id, // || getCommentIdFromDeeplink(navigation),
+      id: commentId,
     },
   }),
   props: ({ data: { error, loading, comment } }) => ({

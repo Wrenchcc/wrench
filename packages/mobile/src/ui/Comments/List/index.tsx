@@ -12,7 +12,7 @@ function List({ data, t }) {
 
   const navigateToComments = useCallback(
     () => navigate(SCREENS.COMMENTS, {
-      id: data.id,
+      postId: data.id,
     }),
     [data]
   )

@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
 import { ListContext } from 'navigation/Layout/context'
-import { Text } from 'ui'
+import { Text, ToastNotification } from 'ui'
 import { transformContainer, opacityContent } from './animation'
 import styles from './styles'
 
@@ -41,6 +41,7 @@ function Header({
           </View>
         </Animated.View>
       </View>
+      <ToastNotification />
       {stickyComponent && stickyComponent}
     </Animated.View>
   )

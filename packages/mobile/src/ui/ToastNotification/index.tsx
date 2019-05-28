@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Spring } from 'react-spring/renderprops'
 import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
@@ -9,7 +9,7 @@ import { Base } from './styles'
 const FROM_HEIGHT = 0
 const TO_HEIGHT = 40
 
-const ToastNotification = memo(function ToastNotification({ t }) {
+function ToastNotification({ t }) {
   return (
     <Subscribe to={[ToastNotificationContainer]}>
       {({ state: { message, type, show } }) => (
@@ -29,6 +29,6 @@ const ToastNotification = memo(function ToastNotification({ t }) {
       )}
     </Subscribe>
   )
-})
+}
 
 export default withTranslation('ToastNotification')(ToastNotification)

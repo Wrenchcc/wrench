@@ -61,4 +61,3 @@ export const navigateToAddProjectType = () => navigateTo(SCREENS.ADD_PROJECT_TYP
 
 export const navigateToAddMedia = () => navigateTo('add-media')
 export const navigateToAddPost = params => navigateTo('add-post', params)
-export const navigateToPost = params => navigateTo('post', params)

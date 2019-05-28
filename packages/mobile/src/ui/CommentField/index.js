@@ -101,7 +101,7 @@ class CommentField extends PureComponent {
 
           return (
             <Base>
-              <Avatar uri={data.user.avatarUrl} />
+              <Avatar uri={data && data.user.avatarUrl} />
               <Input
                 placeholder={t('CommentField:placeholder')}
                 placeholderTextColor={COLORS.LIGHT_GREY}

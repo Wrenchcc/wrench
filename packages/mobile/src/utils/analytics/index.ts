@@ -1,4 +1,3 @@
-import { InteractionManager } from 'react-native'
 import { analytics, perf } from 'react-native-firebase'
 
 export { events } from './events'
@@ -11,13 +10,9 @@ if (__DEV__) {
 }
 
 export const trackScreen = screenName => {
-  InteractionManager.runAfterInteractions(() => {
-    analytics().setCurrentScreen(screenName)
-  })
+  analytics().setCurrentScreen(screenName)
 }
 
 export const track = (event, params = {}) => {
-  InteractionManager.runAfterInteractions(() => {
-    analytics().logEvent(event, params)
-  })
+  analytics().logEvent(event, params)
 }

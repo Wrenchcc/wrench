@@ -29,3 +29,9 @@ export enum SCREENS {
   EDIT_PROJECT = 'EDIT_PROJECT',
   SETTINGS = 'SETTINGS',
 }
+
+export enum SCREEN_PATH {
+  NOTIFICATIONS = 'notification',
+  POST = 'post',
+  PROJECT = 'project',
+}
