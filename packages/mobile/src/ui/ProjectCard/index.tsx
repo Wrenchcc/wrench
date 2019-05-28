@@ -1,14 +1,13 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
-import withTranslation from 'i18n/withTranslation'
-import { compose } from 'react-apollo'
+import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
 import Gallery from 'ui/Gallery'
 import Placeholder from 'ui/Placeholder'
 import { followProject } from 'graphql/mutations/project/followProject'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
-function ProjectCard({ t, onPress, project, followProject, style }) {
+function ProjectCard({ onPress, project, followProject, style }) {
+  const { t } = useTranslation()
   const renderImages = useCallback(() => {
     const files = pathOr([], ['files', 'edges'], project)
 
@@ -50,14 +49,4 @@ function ProjectCard({ t, onPress, project, followProject, style }) {
   )
 }
 
-ProjectCard.propTypes = {
-  project: PropTypes.object.isRequired,
-  followProject: PropTypes.func.isRequired,
-  onPress: PropTypes.func.isRequired,
-  style: PropTypes.any,
-}
-
-export default compose(
-  followProject,
-  withTranslation('ProjectCard')
-)(ProjectCard)
+export default followProject(ProjectCard)

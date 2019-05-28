@@ -1,8 +1,8 @@
 import React, { Fragment, useCallback } from 'react'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
+import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS, PageLayout, FlatList } from 'navigation'
-import withTranslation from 'i18n/withTranslation'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
 import { Post, Avatar, Edit, EmptyState, Title } from 'ui'
@@ -20,8 +20,8 @@ function Project({
   isFetching,
   hasNextPage,
   post,
-  t,
 }) {
+  const { t } = useTranslation()
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(
     () => navigate(SCREENS.USER, {
@@ -111,6 +111,5 @@ function Project({
 
 export default compose(
   getProject,
-  followProject,
-  withTranslation('Project')
+  followProject
 )(Project)

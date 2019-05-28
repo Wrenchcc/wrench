@@ -1,8 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { InteractionManager } from 'react-native'
-import { compose } from 'react-apollo'
-import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { navigateToAddMedia } from 'navigation/actions'
@@ -30,18 +28,18 @@ function getActionRight(state, addProject, updateField, resetState) {
   return null
 }
 
-function AddProjectModel({ t, addProject }) {
+function AddProjectModel({ addProject }) {
+  const { t } = useTranslation()
+
   return (
     <Subscribe to={[AddContainer]}>
       {({ state, updateField, resetState }) => (
-        <>
-          <AddProjectHeader
+        <>'         '<AddProjectHeader
             actionRight={getActionRight(state, addProject, updateField, resetState)}
             translationKey="add"
             icon={arrowLeft}
             isSaving={state.isSaving}
-          />
-          <KeyboardAvoidingView>
+          />'         '<KeyboardAvoidingView>
             {state.isSearching && (
               <SearchModel query={state.query} onPress={model => updateField('model', model)} />
             )}
@@ -66,18 +64,10 @@ function AddProjectModel({ t, addProject }) {
               onFocus={() => updateField('isSearching', true)}
               onBlur={() => updateField('isSearching', false)}
             />
-          </KeyboardAvoidingView>
-        </>
+          </KeyboardAvoidingView>'       '</>
       )}
     </Subscribe>
   )
 }
 
-AddProjectModel.propTypes = {
-  addProject: PropTypes.func.isRequired,
-}
-
-export default compose(
-  addProject,
-  withTranslation('AddProjectModel')
-)(AddProjectModel)
+export default addProject(AddProjectModel)

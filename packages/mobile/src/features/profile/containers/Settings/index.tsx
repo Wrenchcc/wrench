@@ -1,6 +1,6 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { PageLayout, SectionList } from 'navigation'
-import withTranslation from 'i18n/withTranslation'
 import { Subscribe } from 'unstated'
 import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
@@ -22,7 +22,9 @@ const style = {
   },
 }
 
-function Settings({ t, section, ...rest }) {
+function Settings({ section, ...rest }) {
+  const { t } = useTranslation()
+
   return (
     <Subscribe to={[I18nContainer]}>
       {({ state, changeLocale }) => (
@@ -51,6 +53,5 @@ function Settings({ t, section, ...rest }) {
 
 export default compose(
   getCurrentUserSettings,
-  toggleUserNotificationSettingsMutation,
-  withTranslation('Settings')
+  toggleUserNotificationSettingsMutation
 )(Settings)

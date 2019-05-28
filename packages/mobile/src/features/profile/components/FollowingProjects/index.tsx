@@ -1,6 +1,6 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
-import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { InfiniteList } from 'ui'
 import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
@@ -27,8 +27,8 @@ function FollowingProjects({
   fetchMore,
   isRefetching,
   hasNextPage,
-  t,
 }) {
+  const { t } = useTranslation()
   const { navigate } = useNavigation()
 
   return (
@@ -71,7 +71,4 @@ function FollowingProjects({
   )
 }
 
-export default compose(
-  getFollowingProjects,
-  withTranslation('FollowingProjects')
-)(FollowingProjects)
+export default getFollowingProjects(FollowingProjects)

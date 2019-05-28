@@ -62,13 +62,4 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
   )
 }
 
-Popular.propTypes = {
-  projects: PropTypes.array,
-  fetchMore: PropTypes.func.isRequired,
-  refetch: PropTypes.func.isRequired,
-  isRefetching: PropTypes.bool.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  hasNextPage: PropTypes.bool.isRequired,
-}
-
 export default getPopularProjects(Popular)
