@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import withTranslation from 'i18n/withTranslation'
-import { compose } from 'react-apollo'
+import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
 import { useNavigation, SCREENS } from 'navigation'
@@ -9,8 +7,9 @@ import { InfiniteList, Title } from 'ui'
 import Placeholder from './Placeholder'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
-function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t }) {
+function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const { navigate } = useNavigation()
+  const { t } = useTranslation()
 
   const renderItem = ({ item, index }) => {
     const project = item.node
@@ -72,7 +71,4 @@ Popular.propTypes = {
   hasNextPage: PropTypes.bool.isRequired,
 }
 
-export default compose(
-  getPopularProjects,
-  withTranslation('Popular')
-)(Popular)
+export default getPopularProjects(Popular)

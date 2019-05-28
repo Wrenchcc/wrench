@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'react-apollo'
 import { addCommentToPost } from 'graphql/mutations/comment/addComment'
 import CommentField from 'ui/CommentField'
 import Mention from 'ui/Mention'
@@ -79,4 +78,4 @@ class Comments extends PureComponent {
   }
 }
 
-export default compose(addCommentToPost)(Comments)
+export default addCommentToPost(Comments)

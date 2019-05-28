@@ -1,5 +1,4 @@
 import React from 'react'
-import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
 import { getFollowers } from 'graphql/queries/getFollowers'
 import { FlatList, PageLayout } from 'navigation'
@@ -41,4 +40,4 @@ function Followers({
   )
 }
 
-export default compose(getFollowers)(Followers)
+export default getFollowers(Followers)

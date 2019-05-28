@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'react-apollo'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
@@ -66,4 +65,4 @@ class Users extends PureComponent {
   }
 }
 
-export default compose(searchUsers)(Users)
+export default searchUsers(Users)

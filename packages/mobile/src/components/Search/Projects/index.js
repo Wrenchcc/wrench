@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'react-apollo'
 import { navigateToProject } from 'navigation/actions'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
@@ -69,4 +68,4 @@ class Projects extends PureComponent {
   }
 }
 
-export default compose(searchProjects)(Projects)
+export default searchProjects(Projects)

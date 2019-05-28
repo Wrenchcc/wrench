@@ -1,5 +1,4 @@
 import React from 'react'
-import { compose } from 'react-apollo'
 import { Layout, FlatList } from 'navigation'
 import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
 import { Post, EmptyState } from 'ui'
@@ -32,4 +31,4 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
   )
 }
 
-export default compose(getCurrentUserProfile)(Me)
+export default getCurrentUserProfile(Me)

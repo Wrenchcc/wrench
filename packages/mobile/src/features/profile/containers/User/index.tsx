@@ -1,5 +1,4 @@
 import React from 'react'
-import { compose } from 'react-apollo'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
 import { PageLayout, FlatList } from 'navigation'
 import { Post, Share } from 'ui'
@@ -34,4 +33,4 @@ function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, 
   )
 }
 
-export default compose(getUserByUsername)(User)
+export default getUserByUsername(User)

@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { compose } from 'react-apollo'
 import { Layout, FlatList } from 'navigation'
 import { getRecentPosts } from 'graphql/queries/getExplore'
 import { Post } from 'ui'
@@ -26,13 +24,4 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
   )
 }
 
-Explore.propTypes = {
-  posts: PropTypes.array,
-  fetchMore: PropTypes.func.isRequired,
-  refetch: PropTypes.func.isRequired,
-  isRefetching: PropTypes.bool.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  hasNextPage: PropTypes.bool.isRequired,
-}
-
-export default compose(getRecentPosts)(Explore)
+export default getRecentPosts(Explore)

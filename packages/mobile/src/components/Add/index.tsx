@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import Icon from 'ui/Icon'
@@ -28,4 +27,4 @@ function Add({ projects }: Props) {
   )
 }
 
-export default compose(getCurrentUserProjects)(Add)
+export default getCurrentUserProjects(Add)

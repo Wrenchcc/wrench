@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import { compose } from 'react-apollo'
 import Gateway from 'ui/Gateway'
 import InfiniteList from 'ui/InfiniteList'
 import MentionUser from 'ui/MentionUser'
@@ -84,4 +83,4 @@ class Mention extends Component {
   }
 }
 
-export default compose(searchUsers)(Mention)
+export default searchUsers(Mention)

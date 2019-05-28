@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
 import { editPost } from 'graphql/mutations/post/editPost'
 import { Input } from './styles'
@@ -46,4 +45,4 @@ EditPost.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
 
-export default compose(editPost)(EditPost)
+export default editPost(EditPost)

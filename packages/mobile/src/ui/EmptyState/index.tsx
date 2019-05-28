@@ -1,18 +1,17 @@
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
-import withTranslation from 'i18n/withTranslation'
-import { navigateToAddProject, navigateToAddMedia } from 'navigation/actions'
+import React, { useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
 
-const onPressAction = (type, params) => {
+const onPressAction = (type, navigate) => {
   switch (type) {
     case TYPES.PROJECT:
-      return navigateToAddProject(params)
+      return navigate(SCREENS.ADD_PROJECT)
     case TYPES.POST:
     case TYPES.PROJECT_POST:
-      return navigateToAddMedia(params)
+      return navigate(SCREENS.ADD_MEDIA)
     default:
       return null
   }
@@ -29,13 +28,17 @@ const showButton = type => {
   }
 }
 
-const EmptyState = memo(function EmptyState({ t, type = TYPES.PROJECT, params = {} }) {
+function EmptyState({ type = TYPES.PROJECT }) {
+  const { t } = useTranslation()
+  const { navigate } = useNavigation()
+  const handleNavigation = useCallback(() => onPressAction(type, navigate), [type])
+
   return (
     <Base>
       <Title>{t(`EmptyState:${type}:title`)}</Title>
       <Description color="grey">{t(`EmptyState:${type}:description`)}</Description>
       {showButton(type) && (
-        <Button onPress={() => onPressAction(type, params)} hapticFeedback="impactLight">
+        <Button onPress={handleNavigation} hapticFeedback="impactLight">
           <Text medium fontSize={15}>
             {t(`EmptyState:${type}:button`)}
           </Text>
@@ -43,11 +46,6 @@ const EmptyState = memo(function EmptyState({ t, type = TYPES.PROJECT, params = 
       )}
     </Base>
   )
-})
-
-EmptyState.propTypes = {
-  type: PropTypes.string,
-  params: PropTypes.object,
 }
 
-export default withTranslation('EmptyState')(EmptyState)
+export default EmptyState

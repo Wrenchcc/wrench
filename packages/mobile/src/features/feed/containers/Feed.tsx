@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { compose } from 'react-apollo'
 import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql/queries/getFeed'
 import { Post, PostProgress } from 'ui'
@@ -33,4 +32,4 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   )
 }
 
-export default compose(getFeed)(Feed)
+export default getFeed(Feed)

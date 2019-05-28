@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { View } from 'react-native'
-import { compose } from 'react-apollo'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
 import { isIphone, hasNotch } from 'utils/platform'
@@ -78,4 +77,4 @@ class SearchModel extends PureComponent {
   }
 }
 
-export default compose(searchModels)(SearchModel)
+export default searchModels(SearchModel)
