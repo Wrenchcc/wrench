@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
 import { ListContext } from 'navigation/Layout/context'
+import { Text } from 'ui'
 import { transformContainer, opacityContent } from './animation'
 import styles from './styles'
 

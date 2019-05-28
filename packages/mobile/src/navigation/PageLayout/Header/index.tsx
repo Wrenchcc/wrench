@@ -11,14 +11,16 @@ const { interpolate, Extrapolate } = Animated
 
 const OFFSET_INVERTED = -90
 
-function Header({ scrollY, title, headerRight }) {
+function Header({ scrollY, headerTitle, headerRight, headerAnimation = true }) {
   const handleNavigation = useCallback(() => navigateBack(), [])
 
-  const opacity = interpolate(scrollY, {
-    inputRange: [OFFSET_INVERTED + 10, OFFSET_INVERTED + 30],
-    outputRange: [0, 1],
-    extrapolate: Extrapolate.CLAMP,
-  })
+  const opacity = headerAnimation
+    ? interpolate(scrollY, {
+      inputRange: [OFFSET_INVERTED + 10, OFFSET_INVERTED + 30],
+      outputRange: [0, 1],
+      extrapolate: Extrapolate.CLAMP,
+    })
+    : 1
 
   return (
     <Animated.View style={styles.container}>
@@ -27,9 +29,9 @@ function Header({ scrollY, title, headerRight }) {
           <View style={styles.left}>
             <Icon onPress={handleNavigation} source={arrowLeft} />
           </View>
-          <Animated.View style={{ opacity }}>
-            <Text medium center>
-              {title}
+          <Animated.View style={{ opacity, paddingLeft: 20, paddingRight: 20, flex: 1 }}>
+            <Text medium center numberOfLines={1}>
+              {headerTitle}
             </Text>
           </Animated.View>
           <View style={styles.right}>{headerRight && headerRight}</View>

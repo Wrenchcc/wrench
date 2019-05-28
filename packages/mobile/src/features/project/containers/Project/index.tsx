@@ -70,7 +70,7 @@ function Project({
 
   return (
     <PageLayout
-      title={project.title}
+      headerTitle={project.title}
       headerRight={
         project.projectPermissions && project.projectPermissions.isOwner ? (
           <Edit project={project} />
@@ -101,9 +101,8 @@ function Project({
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={false && isFetching}
-        hasNextPage={false && hasNextPage}
-        keyExtractor={item => item.node.id}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
     </PageLayout>

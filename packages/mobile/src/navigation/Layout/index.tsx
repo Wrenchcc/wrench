@@ -6,7 +6,7 @@ import Provider from './Provider'
 
 const DEFAULT_QUERY = ''
 
-function Layout({ headerLeft, headerRight = <Add />, search = true, headerTitle, children }) {
+function Layout({ headerLeft, headerRight = <Add />, search = true, children }) {
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [isActive, setActive] = useState(false)
 
@@ -15,18 +15,20 @@ function Layout({ headerLeft, headerRight = <Add />, search = true, headerTitle,
     setActive(false)
   }, [])
 
+  const handleSearchFocus = useCallback(() => setActive(true), [])
+  const handleSearchClear = useCallback(() => setQuery(DEFAULT_QUERY), [])
+
   return (
     <Provider>
       <Header
         headerLeft={headerLeft}
         headerRight={headerRight}
         onQueryChange={setQuery}
-        headerTitle={headerTitle}
         query={query}
         search={search}
-        onSearchFocus={() => setActive(true)}
+        onSearchFocus={handleSearchFocus}
         onSearchCancel={handleSearchCancel}
-        onSearchClear={() => setQuery(DEFAULT_QUERY)}
+        onSearchClear={handleSearchClear}
         searchActive={isActive}
       />
       <Search active={isActive} query={query} />

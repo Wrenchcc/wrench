@@ -1,51 +1,21 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { View, KeyboardAvoidingView } from 'react-native'
+import React, { PureComponent, Fragment } from 'react'
+import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
+import { PageLayout, FlatList } from 'navigation'
+import withTranslation from 'i18n/withTranslation'
 import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
 import { addComment } from 'graphql/mutations/comment/addComment'
-import {
-  Post,
-  InfiniteList,
-  CommentItem,
-  CommentField,
-  KeyboardAccessoryView,
-  Mention,
-  HeaderTitle,
-} from 'ui'
+import { Post, CommentItem, CommentField, KeyboardAccessoryView, Mention } from 'ui'
 import { isIphone, hasNotch } from 'utils/platform'
-
-let scrollView = null
 
 // TODO: Make platform specific
 const SAFE_AREA = hasNotch ? 10 : 0
-const KEYBOARD_OFFSET = isIphone ? 180 + SAFE_AREA : 0
-const MENTION_OFFSET_BOTTOM = isIphone ? 240 + SAFE_AREA : 0
+const MENTION_OFFSET_BOTTOM = isIphone ? 340 + SAFE_AREA : 0
 const TRIGGER = '@'
 
 class PostContainer extends PureComponent {
-  static navigationOptions = ({ screenProps }) => ({
-    headerTitle: (
-      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
-        {screenProps.t('PostContainer:title')}
-      </HeaderTitle>
-    ),
-  })
-
-  static propTypes = {
-    addComment: PropTypes.func.isRequired,
-    comments: PropTypes.array,
-    fetchMore: PropTypes.func.isRequired,
-    fetchMoreReplies: PropTypes.func.isRequired,
-    hasNextPage: PropTypes.bool.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    isRefetching: PropTypes.bool.isRequired,
-    post: PropTypes.object,
-    refetch: PropTypes.func.isRequired,
-  }
-
   state = {
     commentId: null,
     isOpen: false,
@@ -63,7 +33,7 @@ class PostContainer extends PureComponent {
       && comments.length >= 1
     ) {
       setTimeout(() => {
-        scrollView.scrollToIndex({ animated: true, index: 0 })
+        // scrollView.scrollToIndex({ animated: true, index: 0 })
       }, 100)
     }
   }
@@ -109,10 +79,6 @@ class PostContainer extends PureComponent {
     this.props.addComment(text, commentId)
   }
 
-  componentWillUnmont() {
-    scrollView = null
-  }
-
   renderItem = ({ item }) => (
     <CommentItem
       data={item}
@@ -137,37 +103,54 @@ class PostContainer extends PureComponent {
   }
 
   render() {
-    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage, post } = this.props
+    const {
+      t,
+      comments,
+      fetchMore,
+      refetch,
+      isRefetching,
+      isFetching,
+      hasNextPage,
+      post,
+    } = this.props
 
     return (
-      <View style={{ flex: 1, marginBottom: SAFE_AREA }}>
-        <KeyboardAvoidingView
-          enabled={isIphone}
-          behavior="padding"
-          style={{ flex: 1 }}
-          keyboardVerticalOffset={KEYBOARD_OFFSET}
+      <Fragment>
+        {this.state.isOpen && (
+          <Mention
+            offsetTop={90}
+            query={this.state.query}
+            onPress={this.onMentionPress}
+            offsetBottom={MENTION_OFFSET_BOTTOM}
+          />
+        )}
+        <PageLayout
+          headerTitle={t('PostContainer:title')}
+          headerAnimation={false}
+          footer={
+            <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
+              <CommentField
+                onRef={this.setRef}
+                onSubmitEditing={this.onSubmitEditing}
+                onChangeText={this.onChangeText}
+                onMention={this.onMention}
+                onSubmit={this.handleSubmit}
+                value={this.state.text}
+                openMention={this.openMention}
+                closeMention={this.closeMention}
+                disabled={this.state.text.length === 0}
+              />
+            </KeyboardAccessoryView>
+          }
         >
-          {this.state.isOpen && (
-            <Mention
-              offsetTop={0}
-              query={this.state.query}
-              onPress={this.onMentionPress}
-              offsetBottom={MENTION_OFFSET_BOTTOM}
-            />
-          )}
-
-          <InfiniteList
+          <FlatList
             initialNumToRender={6}
-            scrollRef={ref => {
-              scrollView = ref
-            }}
             contentContainerStyle={{
               paddingTop: 0,
               paddingLeft: 0,
               paddingRight: 0,
             }}
             ListHeaderComponent={this.renderHeader}
-            keyExtractor={item => item.node.id}
             data={comments}
             refetch={refetch}
             fetchMore={fetchMore}
@@ -177,22 +160,8 @@ class PostContainer extends PureComponent {
             renderItem={this.renderItem}
             defaultPaddingTop
           />
-        </KeyboardAvoidingView>
-
-        <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
-          <CommentField
-            onRef={this.setRef}
-            onSubmitEditing={this.onSubmitEditing}
-            onChangeText={this.onChangeText}
-            onMention={this.onMention}
-            onSubmit={this.handleSubmit}
-            value={this.state.text}
-            openMention={this.openMention}
-            closeMention={this.closeMention}
-            disabled={this.state.text.length === 0}
-          />
-        </KeyboardAccessoryView>
-      </View>
+        </PageLayout>
+      </Fragment>
     )
   }
 }
@@ -200,5 +169,6 @@ class PostContainer extends PureComponent {
 export default compose(
   getComments,
   getComment,
-  addComment
+  addComment,
+  withTranslation('PostContainer')
 )(PostContainer)

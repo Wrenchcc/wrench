@@ -20,13 +20,10 @@ export default {
     justifyContent: 'space-between',
     paddingHorizontal: 20,
   },
-
   left: {
-    flex: 1,
-    alignItems: 'flex-start',
+    marginRight: 'auto',
   },
   right: {
-    flex: 1,
-    alignItems: 'flex-end',
+    marginLeft: 'auto',
   },
 }

@@ -1,36 +1,19 @@
-import React, { PureComponent } from 'react'
+import React, { Fragment, PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { View, KeyboardAvoidingView } from 'react-native'
 import { compose } from 'react-apollo'
+import withTranslation from 'i18n/withTranslation'
+import { PageLayout, FlatList } from 'navigation'
 import { getComments } from 'graphql/queries/comment/getComments'
 import { addComment } from 'graphql/mutations/comment/addComment'
-import {
-  InfiniteList,
-  CommentItem,
-  CommentField,
-  KeyboardAccessoryView,
-  Mention,
-  HeaderTitle,
-} from 'ui'
+import { CommentItem, CommentField, KeyboardAccessoryView, Mention } from 'ui'
 import { isIphone, hasNotch } from 'utils/platform'
-
-let scrollView = null
 
 // TODO: Make platform specific
 const SAFE_AREA = hasNotch ? 10 : 0
-const KEYBOARD_OFFSET = isIphone ? 180 + SAFE_AREA : 0
-const MENTION_OFFSET_BOTTOM = isIphone ? 240 + SAFE_AREA : 0
+const MENTION_OFFSET_BOTTOM = isIphone ? 340 + SAFE_AREA : 0
 const TRIGGER = '@'
 
 class Comments extends PureComponent {
-  static navigationOptions = ({ screenProps }) => ({
-    headerTitle: (
-      <HeaderTitle onPress={() => scrollView.scrollToOffset({ offset: 0 })}>
-        {screenProps.t('Comments:title')}
-      </HeaderTitle>
-    ),
-  })
-
   static propTypes = {
     addComment: PropTypes.func.isRequired,
     comments: PropTypes.array,
@@ -91,10 +74,6 @@ class Comments extends PureComponent {
     this.props.addComment(text, commentId)
   }
 
-  componentWillUnmont() {
-    scrollView = null
-  }
-
   renderItem = ({ item }) => (
     <CommentItem
       data={item}
@@ -125,29 +104,38 @@ class Comments extends PureComponent {
   }
 
   render() {
-    const { comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
+    const { t, comments, fetchMore, refetch, isRefetching, isFetching, hasNextPage } = this.props
 
     return (
-      <View style={{ flex: 1, marginBottom: SAFE_AREA }}>
-        <KeyboardAvoidingView
-          enabled={isIphone}
-          behavior="padding"
-          style={{ flex: 1 }}
-          keyboardVerticalOffset={KEYBOARD_OFFSET}
+      <Fragment>
+        {this.state.isOpen && (
+          <Mention
+            offsetTop={90}
+            query={this.state.query}
+            onPress={this.onMentionPress}
+            offsetBottom={MENTION_OFFSET_BOTTOM}
+          />
+        )}
+        <PageLayout
+          headerAnimation={false}
+          headerTitle={t('Comments:title')}
+          footer={
+            <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
+              <CommentField
+                onRef={this.setRef}
+                onSubmitEditing={this.onSubmitEditing}
+                onChangeText={this.onChangeText}
+                onMention={this.onMention}
+                onSubmit={this.handleSubmit}
+                value={this.state.text}
+                openMention={this.openMention}
+                closeMention={this.closeMention}
+                disabled={this.state.text.length === 0}
+              />
+            </KeyboardAccessoryView>
+          }
         >
-          {this.state.isOpen && (
-            <Mention
-              offsetTop={0}
-              query={this.state.query}
-              onPress={this.onMentionPress}
-              offsetBottom={MENTION_OFFSET_BOTTOM}
-            />
-          )}
-
-          <InfiniteList
-            scrollRef={ref => {
-              scrollView = ref
-            }}
+          <FlatList
             contentContainerStyle={{
               paddingTop: 0,
               paddingLeft: 0,
@@ -164,27 +152,14 @@ class Comments extends PureComponent {
             renderItem={this.renderItem}
             defaultPaddingTop
           />
-        </KeyboardAvoidingView>
-
-        <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
-          <CommentField
-            onRef={this.setRef}
-            onSubmitEditing={this.onSubmitEditing}
-            onChangeText={this.onChangeText}
-            onMention={this.onMention}
-            onSubmit={this.handleSubmit}
-            value={this.state.text}
-            openMention={this.openMention}
-            closeMention={this.closeMention}
-            disabled={this.state.text.length === 0}
-          />
-        </KeyboardAccessoryView>
-      </View>
+        </PageLayout>
+      </Fragment>
     )
   }
 }
 
 export default compose(
   getComments,
-  addComment
+  addComment,
+  withTranslation('Comments')
 )(Comments)

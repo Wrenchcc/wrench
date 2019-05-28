@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Platform, View } from 'react-native'
 import PropTypes from 'prop-types'
-import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { withListContext } from 'navigation/Layout/context'
 import { withTabContext } from 'navigation/Layout/TabContext'
@@ -40,21 +39,7 @@ export default function createNavigationAwareScrollable(Component) {
       if (scrollRef) {
         scrollRef(this.node)
       }
-
-      // this.bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
-      //   this.navigationEventHandler
-      // )
     }
-
-    // componentWillUnmount() {
-    //   this.bottomTabEventListener.remove()
-    // }
-
-    // navigationEventHandler = ({ unselectedTabIndex, selectedTabIndex }) => {
-    //   if (unselectedTabIndex === selectedTabIndex) {
-    //     scrollToOffset(this.node, 0, true)
-    //   }
-    // }
 
     get node() {
       return getAnimatedScrollableNode(this.ref.current)
@@ -96,7 +81,7 @@ export default function createNavigationAwareScrollable(Component) {
       }
     }
 
-    renderLoader = top => <Loader top={top} />
+    renderLoader = top => <Loader fullscreen={top} />
 
     onEndReached = () => {
       if (this.props.hasNextPage && this.props.isRefetching !== true && !this.props.isFetching) {
@@ -134,7 +119,6 @@ export default function createNavigationAwareScrollable(Component) {
         fetchMore,
         refetch,
         isRefetching,
-        ListHeaderComponent,
         ListEmptyComponent,
         initialNumToRender = 10,
         paddingHorizontal = 20,
@@ -156,13 +140,11 @@ export default function createNavigationAwareScrollable(Component) {
           onEndReached={this.onEndReached}
           refreshing={isRefetching}
           initialNumToRender={initialNumToRender}
-          ListHeaderComponent={ListHeaderComponent}
           ListFooterComponent={hasNextPage ? this.renderLoader() : null}
-          ListEmptyComponent={
-            initialFetch ? this.renderLoader(-this.contentInset.top) : ListEmptyComponent
-          }
+          ListEmptyComponent={initialFetch ? this.renderLoader(true) : ListEmptyComponent}
           keyboardShouldPersistTaps="always"
           keyboardDismissMode="on-drag"
+          keyExtractor={({ node }) => node.id}
           contentContainerStyle={{
             flex: initialFetch ? 1 : 0,
             justifyContent: 'center',
