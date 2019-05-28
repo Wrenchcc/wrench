@@ -1,4 +1,3 @@
-import { Linking } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { links, notifications } from 'react-native-firebase'
 import { Bootstrap } from 'navigation'

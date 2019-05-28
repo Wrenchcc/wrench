@@ -26,13 +26,13 @@ function Initializing({ client }) {
       AuthNavigation()
     }
 
-    setTimeout(SplashScreen.hide, 500)
-
     if (user) {
       AppNavigation(showOnboarding)
     } else {
       AuthNavigation()
     }
+
+    SplashScreen.hide()
   }
 
   useEffect(() => {

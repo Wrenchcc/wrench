@@ -5,7 +5,7 @@ export default function formatCustomData(type, data) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
       return {
         data: {
-          path: 'root/notifications',
+          path: 'notifications',
         },
       }
     case NOTIFICATION_TYPES.NEW_MENTION:
