@@ -1,5 +1,4 @@
 import React, { useRef, useCallback } from 'react'
-import PropTypes from 'prop-types'
 import { Dimensions, View, Animated, Image } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Swipeable } from 'react-native-gesture-handler'
@@ -124,11 +123,6 @@ function Notification({ data, deleteNotification }) {
       </Swipeable>
     </Transitioning.View>
   )
-}
-
-Notification.propTypes = {
-  data: PropTypes.object.isRequired,
-  deleteNotification: PropTypes.func.isRequired,
 }
 
 export default Notification

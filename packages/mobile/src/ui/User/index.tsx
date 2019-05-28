@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
-import withTranslation from 'i18n/withTranslation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import { Base, Content } from './styles'
 
-function User({ t, data }) {
+function User({ data }) {
+  const { t } = useTranslation()
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(
     () => navigate(SCREENS.USER, {
@@ -28,8 +28,4 @@ function User({ t, data }) {
   )
 }
 
-User.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export default withTranslation('UiUser')(User)
+export default User

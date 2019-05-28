@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
 import Touchable from 'ui/Touchable'
 import Text from 'ui/Text'
 import { useNavigation, SCREENS } from 'navigation'
@@ -27,14 +26,6 @@ function Card({ image, title, onPress, style = {}, user }) {
       </Touchable>
     )
   )
-}
-
-Card.propTypes = {
-  image: PropTypes.object,
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  style: PropTypes.any,
-  user: PropTypes.object.isRequired,
 }
 
 export default Card

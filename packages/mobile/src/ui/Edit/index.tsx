@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
 
@@ -8,7 +7,8 @@ type Props = {
   project: object
 }
 
-function Edit({ t, project }: Props) {
+function Edit({ project }: Props) {
+  const { t } = useTranslation()
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(() => showModal(SCREENS.EDIT_PROJECT, { project }), [
     project,
@@ -21,4 +21,4 @@ function Edit({ t, project }: Props) {
   )
 }
 
-export default withTranslation('Edit')(Edit)
+export default Edit

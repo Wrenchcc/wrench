@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
 import { Title } from 'ui'
 import { useNavigation, SCREENS } from 'navigation'
 import { Base, ProjectName, Followers } from './styles'
@@ -24,11 +23,6 @@ function Header({ project, spacingHorizontal }) {
       </ProjectName>
     </Base>
   )
-}
-
-Header.propTypes = {
-  project: PropTypes.object.isRequired,
-  spacingHorizontal: PropTypes.bool.isRequired,
 }
 
 export default Header

@@ -1,5 +1,4 @@
-import React, { memo, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import { PixelRatio, Animated, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
@@ -10,7 +9,7 @@ const AnimatedFastImage = Animated.createAnimatedComponent(FastImage)
 
 const density = PixelRatio.get()
 
-const Image = memo(function Image({
+function Image({
   width,
   height,
   borderRadius,
@@ -99,16 +98,6 @@ const Image = memo(function Image({
       )}
     </Base>
   )
-})
-
-Image.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  borderRadius: PropTypes.number,
-  placeholderColor: PropTypes.string,
-  priority: PropTypes.string,
-  source: PropTypes.object,
-  placeholderDensity: PropTypes.number,
 }
 
 export default Image

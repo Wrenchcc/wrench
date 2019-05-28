@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
 import { Animated } from 'react-native'
 import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
@@ -84,18 +83,6 @@ function Item({
       </Base>
     </Animated.View>
   )
-}
-
-Item.propTypes = {
-  commentId: PropTypes.string,
-  createdAt: PropTypes.string.isRequired,
-  first: PropTypes.bool,
-  highlightId: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  isReply: PropTypes.bool,
-  onReply: PropTypes.func,
-  text: PropTypes.string,
-  user: PropTypes.object.isRequired,
 }
 
 export default Item

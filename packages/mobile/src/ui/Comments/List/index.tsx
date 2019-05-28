@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
-import PropTypes from 'prop-types'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { slice } from 'ramda'
 import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
 import { Base, Row, Comment, LoadMore } from './styles'
 
-function List({ data, t }) {
+function List({ data }) {
+  const { t } = useTranslation()
   const { navigate } = useNavigation()
   if (!data.comments.edges.length) return null
 
@@ -44,8 +44,4 @@ function List({ data, t }) {
   )
 }
 
-List.propTypes = {
-  data: PropTypes.object,
-}
-
-export default withTranslation('List')(List)
+export default List
