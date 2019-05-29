@@ -7,15 +7,12 @@ import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { COLORS } from 'ui/constants'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
-import { isIphone } from 'utils/platform'
 import { Base, Input, Button } from './styles'
 
 const PATTERN = '\\@[a-z0-9_-]+|\\@'
 const TRIGGER = '@'
 const EMPTY = ' '
 
-// TODO: Fix better perf on CurrentUserQuery
-// Makes the view laggy
 class CommentField extends PureComponent {
   textInput = React.createRef()
 
@@ -32,18 +29,11 @@ class CommentField extends PureComponent {
 
   componentWillMount() {
     this.props.onRef(this)
-    const keyboardHideEvent = isIphone ? 'keyboardWillHide' : 'keyboardDidHide'
-
-    // Hide mention when scrolling parent list ie keyboard hides
-    this.keyboardHideEventListener = Keyboard.addListener(
-      keyboardHideEvent,
-      this.props.closeMention
-    )
   }
 
   componentWillUnmount() {
     this.props.onRef(undefined)
-    this.keyboardHideEventListener.remove()
+    // this.keyboardHideEventListener.remove()
   }
 
   onChangeText = text => {

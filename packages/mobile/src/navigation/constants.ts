@@ -29,6 +29,7 @@ export enum SCREENS {
   ADD_POST = 'ADD_POST',
   EDIT_PROJECT = 'EDIT_PROJECT',
   SETTINGS = 'SETTINGS',
+  MENTION = 'MENTION',
 }
 
 export enum SCREEN_PATH {

@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react'
-import { Platform, View } from 'react-native'
+import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import { isAndroid } from 'utils/platform'
 import { withListContext } from 'navigation/Layout/context'
-import { withTabContext } from 'navigation/Layout/TabContext'
 import { Border, Loader } from 'ui'
-import { getAnimatedScrollableNode, scrollToOffset } from './utils'
 
 export default function createNavigationAwareScrollable(Component) {
   class ComponentWithNavigationScrolling extends PureComponent {
@@ -13,71 +11,26 @@ export default function createNavigationAwareScrollable(Component) {
 
     static propTypes = {
       onRefresh: PropTypes.func,
-      scrollRef: PropTypes.func,
       contentContainerStyle: PropTypes.object,
-      tabContext: PropTypes.object,
       listContext: PropTypes.object,
     }
 
-    ref = React.createRef()
-
-    componentDidMount() {
-      const {
-        listContext: { setListRef },
-        tabContext: { index },
-        scrollRef,
-      } = this.props
-
-      this.attachEvent()
-
-      // Pass node to ListContext
-      if (setListRef) {
-        setListRef(index || 0, this.node)
-      }
-
-      // Pass node to component that is using our Scrollables
-      if (scrollRef) {
-        scrollRef(this.node)
-      }
-    }
-
-    get node() {
-      return getAnimatedScrollableNode(this.ref.current)
-    }
-
     get contentInset() {
-      const {
-        listContext: { contentInset },
-      } = this.props
-      const ios = contentInset
-      const android = 0
-
       return {
-        top: isAndroid ? android : ios,
+        top: isAndroid ? 0 : this.props.listContext.contentInset,
       }
     }
 
     get contentOffset() {
-      const {
-        listContext: { initialScroll },
-      } = this.props
-
-      return { y: initialScroll }
+      return { y: this.props.listContext.initialScroll }
     }
 
     get contentContainerStyle() {
-      const {
-        listContext: { contentInset },
-        contentContainerStyle,
-      } = this.props
+      const { listContext, contentContainerStyle } = this.props
 
       return {
         ...contentContainerStyle,
-        ...Platform.select({
-          android: {
-            paddingTop: contentInset,
-          },
-        }),
+        paddingTop: isAndroid ? listContext.contentInset : 0,
       }
     }
 
@@ -86,26 +39,6 @@ export default function createNavigationAwareScrollable(Component) {
     onEndReached = () => {
       if (this.props.hasNextPage && this.props.isRefetching !== true && !this.props.isFetching) {
         this.props.fetchMore()
-      }
-    }
-
-    attachEvent = () => {
-      const {
-        tabContext: { index },
-        listContext,
-      } = this.props
-
-      const mapper = [
-        ['onScroll', 'handleScroll'],
-        ['onScrollEndDrag', 'handleEndDrag'],
-        ['onScrollBeginDrag', 'handleBeginDrag'],
-      ]
-
-      for (const [eventName, eventHandler] of mapper) {
-        const handlers = listContext[eventHandler] || []
-        if (handlers.length && this.node && this.node.getScrollableNode) {
-          handlers[index || 0].attachEvent(this.node.getScrollableNode(), eventName)
-        }
       }
     }
 
@@ -123,6 +56,7 @@ export default function createNavigationAwareScrollable(Component) {
         initialNumToRender = 10,
         paddingHorizontal = 20,
         spacingSeparator,
+        listContext,
         ...props
       } = this.props
 
@@ -131,7 +65,9 @@ export default function createNavigationAwareScrollable(Component) {
       return (
         <Component
           scrollEventThrottle={1}
-          ref={this.ref}
+          onScroll={listContext.onScroll}
+          onScrollBeginDrag={listContext.onScrollBeginDrag}
+          onScrollEndDrag={listContext.onScrollEndDrag}
           contentInset={this.contentInset}
           contentOffset={this.contentOffset}
           style={{ flex: 1 }}
@@ -162,5 +98,5 @@ export default function createNavigationAwareScrollable(Component) {
     }
   }
 
-  return withTabContext(withListContext(ComponentWithNavigationScrolling, Component))
+  return withListContext(ComponentWithNavigationScrolling, Component)
 }

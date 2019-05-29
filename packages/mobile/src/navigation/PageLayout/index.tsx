@@ -45,7 +45,7 @@ function PageLayout({ children, headerTitle, headerRight, footer, headerAnimatio
         ),
       })}
 
-      {footer && footer}
+      {footer}
     </Fragment>
   )
 }

@@ -4,7 +4,7 @@ import { ApolloProvider } from 'react-apollo'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 import createClient from 'graphql/createClient'
 import { NavigationContext } from './context'
-import { navigate, showModal, dismissModal } from './actions'
+import * as actions from './actions'
 
 const client = createClient()
 
@@ -17,13 +17,7 @@ export default Component => {
     return (
       <Provider>
         <ApolloProvider client={client}>
-          <NavigationContext.Provider
-            value={{
-              navigate,
-              showModal,
-              dismissModal,
-            }}
-          >
+          <NavigationContext.Provider value={actions}>
             <Component {...props} />
           </NavigationContext.Provider>
         </ApolloProvider>

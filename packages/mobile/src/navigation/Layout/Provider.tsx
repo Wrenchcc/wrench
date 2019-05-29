@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Animated from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
-import { scrollToOffset } from 'navigation/Scrollables/utils'
-import { NAVIGATION } from 'navigation/constants'
+import { NAVIGATION } from 'navigation'
 import { ListContext } from './context'
 
 const {
@@ -36,13 +35,6 @@ const {
 export default class Provider extends Component {
   static propTypes = {
     children: PropTypes.any,
-    routes: PropTypes.arrayOf(
-      PropTypes.shape({
-        key: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        Component: PropTypes.any,
-      })
-    ),
   }
 
   dragging = new Value(0)
@@ -65,21 +57,12 @@ export default class Provider extends Component {
 
   translateYSnap = new Value(0)
 
-  activeTab = new Value(0)
-
-  lastSyncScroll = 0
-
   isAndroid = new Value(isAndroid ? 1 : 0)
 
   constructor(props) {
     super(props)
 
-    const routes = props.routes || []
-
-    this.refList = new Array(routes.length)
-
     const {
-      activeTab,
       dragging,
       scrollY,
       scrollYClamped,
@@ -88,10 +71,6 @@ export default class Provider extends Component {
       endDragVelocity,
       translateYSnap,
     } = this
-
-    this.state = {
-      index: 0,
-    }
 
     const state = {
       finished: new Value(0),
@@ -140,7 +119,6 @@ export default class Provider extends Component {
                 multiply(-1, translateY)
               )
             ),
-            call([translateYSnap], this.syncScroll),
             startClock(clock),
           ]),
           spring(clock, state, config),
@@ -149,63 +127,48 @@ export default class Provider extends Component {
             stopClock(clock),
           ]),
           state.position,
-        ]),
-        block([call([translateY], this.syncScroll)])
+        ])
       ),
       stopClock(clock)
     )
 
     this.finalTranslateY = add(translateY, snapOffset)
 
-    const events = routes.length ? routes : [1]
-
-    this.handleScroll = events.map((_, i) => event(
+    this.onScroll = event(
       [
         {
-          nativeEvent: ({ contentOffset }) => cond(
-            eq(activeTab, i),
-            block([
-              set(scrollY, contentOffset.y),
-              set(scrollYClamped, max(this.initialScroll, contentOffset.y)),
-              set(scrollYDiff, diff(scrollYClamped)),
-              cond(
-                neq(dragging, 0),
-                [
-                  set(
-                    translateY,
-                    min(0, max(-NAVIGATION.TOP_BAR_HEIGHT, sub(translateY, scrollYDiff)))
-                  ),
+          nativeEvent: ({ contentOffset }) => block([
+            set(scrollY, contentOffset.y),
+            set(scrollYClamped, max(this.initialScroll, contentOffset.y)),
+            set(scrollYDiff, diff(scrollYClamped)),
+            cond(
+              neq(dragging, 0),
+              [
+                set(
                   translateY,
-                ],
-                0
-              ),
-            ]),
-            0
-          ),
+                  min(0, max(-NAVIGATION.TOP_BAR_HEIGHT, sub(translateY, scrollYDiff)))
+                ),
+                translateY,
+              ],
+              0
+            ),
+          ]),
         },
       ],
       { useNativeDriver: true }
-    ))
+    )
 
-    /*
-      Some edge cases between ios and android
-      zoomScale is set ios
-      target is set on android
-      If we found any way how to set dragging to "1"
-      without "fake" values like zoomScale and target
-      that would be great
-     */
-    this.handleBeginDrag = events.map(() => event(
+    this.onScrollBeginDrag = event(
       [
         {
           nativeEvent: ({ zoomScale, target }) =>
-              block([cond(defined(target), set(dragging, target), set(dragging, zoomScale))]), // eslint-disable-line
+            block([cond(defined(target), set(dragging, target), set(dragging, zoomScale))]), // eslint-disable-line
         },
       ],
       { useNativeDriver: true }
-    ))
+    )
 
-    this.handleEndDrag = events.map(() => event(
+    this.onScrollEndDrag = event(
       [
         {
           nativeEvent: ({ contentOffset, velocity }) => block([
@@ -216,11 +179,7 @@ export default class Provider extends Component {
         },
       ],
       { useNativeDriver: true }
-    ))
-  }
-
-  setListRef = (index, ref) => {
-    this.refList[index] = ref
+    )
   }
 
   get contentInset() {
@@ -228,73 +187,22 @@ export default class Provider extends Component {
   }
 
   get initialScroll() {
-    if (isAndroid) {
-      return 0
-    }
-
-    return -this.contentInset
-  }
-
-  get hasTabs() {
-    return Array.isArray(this.props.routes) && this.props.routes.length > 0
-  }
-
-  get contextProvider() {
-    return {
-      handleTabChange: this.handleTabChange,
-      hasTabs: this.hasTabs,
-      headerHeight: NAVIGATION.TOP_BAR_HEIGHT,
-      index: this.state.index,
-      initialScroll: this.initialScroll,
-      contentInset: this.contentInset,
-      routes: this.props.routes,
-      translateY: this.finalTranslateY,
-      handleScroll: this.handleScroll,
-      handleBeginDrag: this.handleBeginDrag,
-      handleEndDrag: this.handleEndDrag,
-      setListRef: this.setListRef,
-    }
-  }
-
-  syncScroll = ([translateY]) => {
-    if (this.lastSyncScroll === translateY || this.refList.length === 1) {
-      return null
-    }
-
-    this.lastSyncScroll = translateY
-
-    const offset = translateY === 0
-      ? this.initialScroll
-      : isAndroid
-        ? -translateY
-        : this.initialScroll - translateY
-
-    this.refList.forEach((ref, index) => {
-      if (this.state.index !== index && ref) {
-        scrollToOffset(ref, offset)
-      }
-    })
-
-    return null
-  }
-
-  handleTabChange = (index, initial = false) => {
-    if (index === this.state.index && !initial) {
-      return null
-    }
-
-    this.activeTab.setValue(index)
-
-    this.setState({
-      index,
-    })
-
-    return null
+    return isAndroid ? 0 : -this.contentInset
   }
 
   render() {
     return (
-      <ListContext.Provider value={this.contextProvider}>
+      <ListContext.Provider
+        value={{
+          headerHeight: NAVIGATION.TOP_BAR_HEIGHT,
+          initialScroll: this.initialScroll,
+          contentInset: this.contentInset,
+          translateY: this.finalTranslateY,
+          onScroll: this.onScroll,
+          onScrollBeginDrag: this.onScrollBeginDrag,
+          onScrollEndDrag: this.onScrollEndDrag,
+        }}
+      >
         {this.props.children}
       </ListContext.Provider>
     )

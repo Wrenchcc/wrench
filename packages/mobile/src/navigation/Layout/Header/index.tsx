@@ -26,7 +26,7 @@ function Header({
       <View style={styles.header}>
         <Animated.View style={opacityContent(translateY, headerHeight)}>
           <View style={styles.inner}>
-            {headerLeft && headerLeft}
+            {headerLeft}
             {search && (
               <SearchBar
                 onChangeQuery={onQueryChange}
@@ -37,12 +37,12 @@ function Header({
                 searchActive={searchActive}
               />
             )}
-            {headerRight && !searchActive && headerRight}
+            {!searchActive && headerRight}
           </View>
         </Animated.View>
       </View>
       <ToastNotification />
-      {stickyComponent && stickyComponent}
+      {stickyComponent}
     </Animated.View>
   )
 }

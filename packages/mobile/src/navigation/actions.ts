@@ -33,12 +33,33 @@ export function showModal(screen, { options, ...params } = {}) {
   })
 }
 
+export function showMention(options) {
+  Navigation.showOverlay({
+    component: {
+      name: SCREENS.MENTION,
+      id: SCREENS.MENTION,
+      options: {
+        layout: {
+          backgroundColor: 'transparent',
+        },
+        overlay: {
+          interceptTouchOutside: false,
+        },
+      },
+    },
+  })
+}
+
+export function dismissMention() {
+  Navigation.dismissOverlay(SCREENS.MENTION)
+}
+
 export function dismissModal() {
   Navigation.dismissModal(componentId)
 }
 
 export function navigate(screen, { options, ...params } = {}) {
-  return Navigation.push(componentId, {
+  Navigation.push(componentId, {
     component: {
       name: screen,
       passProps: params,

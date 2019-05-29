@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
 import { View } from 'react-native'
-import { navigateBack } from 'navigation'
+import { useNavigation } from 'navigation'
 import { Text, Icon, ToastNotification } from 'ui'
 import { arrowLeft } from 'images'
 import styles from './styles'
@@ -11,6 +11,7 @@ const { interpolate, Extrapolate } = Animated
 const OFFSET_INVERTED = -90
 
 function Header({ scrollY, headerTitle, headerRight, headerAnimation = true }) {
+  const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
 
   const opacity = headerAnimation

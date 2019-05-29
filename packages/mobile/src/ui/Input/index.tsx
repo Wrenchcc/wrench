@@ -34,7 +34,7 @@ export default forwardRef(function Input(
       () => {
         if (inputRef.current) inputRef.current.focus()
       },
-      waitForRender ? 500 : 0
+      waitForRender ? 600 : 0
     )
   }
 

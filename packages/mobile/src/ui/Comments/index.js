@@ -1,9 +1,13 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { showMention, dismissMention } from 'navigation'
 import { addCommentToPost } from 'graphql/mutations/comment/addComment'
 import CommentField from 'ui/CommentField'
-import Mention from 'ui/Mention'
 import List from './List'
+
+// setTimeout(() => showMention(), 3000)
+//
+// setTimeout(() => dismissMention(), 10000)
 
 class Comments extends PureComponent {
   static propTypes = {
@@ -12,7 +16,6 @@ class Comments extends PureComponent {
   }
 
   state = {
-    isOpen: false,
     query: '',
     text: '',
   }
@@ -36,12 +39,14 @@ class Comments extends PureComponent {
   }
 
   openMention = () => {
-    this.setState({ isOpen: true })
+    // TODO: Check if open
+    // alert('e')
+    showMention()
   }
 
   closeMention = () => {
-    this.setState({ isOpen: false })
-    this.commentField.stopTracking()
+    dismissMention()
+    // this.commentField.stopTracking()
   }
 
   handleSubmit = () => {
@@ -53,14 +58,6 @@ class Comments extends PureComponent {
   render() {
     return (
       <Fragment>
-        {this.state.isOpen && (
-          <Mention
-            query={this.state.query}
-            onPress={this.onMentionPress}
-            onNoResults={this.closeMention}
-            destination="global"
-          />
-        )}
         <CommentField
           onRef={this.setRef}
           onChangeText={this.onChangeText}

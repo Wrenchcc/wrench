@@ -1,0 +1,12 @@
+{
+  "CommentField": {
+    "en": {
+      "placeholder": "Add a comment...",
+      "post": "Post"
+    },
+    "sv": {
+      "placeholder": "Skriv en kommentar...",
+      "post": "Skicka"
+    }
+  }
+}

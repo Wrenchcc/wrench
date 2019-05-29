@@ -3,6 +3,7 @@ import { COLORS } from 'ui/constants'
 import { hasNotch } from 'utils/platform'
 
 export const Base = styled.View`
+  z-index: 10;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
