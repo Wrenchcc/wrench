@@ -16,10 +16,12 @@ Navigation.events().registerAppLaunchedListener(async () => {
   if (initialLink) {
     setTimeout(() => {
       handleDynamicLink(initialLink)
-    }, 200)
+    }, 500)
   }
 
-  links().onLink(handleDynamicLink)
+  setTimeout(() => {
+    links().onLink(link => handleDynamicLink(link))
+  }, 500)
 
   // If your app is closed
   const notificationOpen = await notifications().getInitialNotification()

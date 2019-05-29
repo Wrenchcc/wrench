@@ -9,24 +9,26 @@ import { AuthNavigation, AppNavigation } from './navigation'
 
 function Initializing({ client }) {
   const loadInitialState = async () => {
-    let showOnboarding = false
+    try {
+      const tokens = await getTokens()
+      const user = pathOr(
+        null,
+        ['data', 'user'],
+        await client.query({ query: CurrentUserQuery, skip: !tokens })
+      )
 
-    const tokens = await getTokens()
-    const user = pathOr(null, ['data', 'user'], await client.query({ query: CurrentUserQuery }))
+      if (user) {
+        const showOnboarding = !user.interestedIn
 
-    if (user) {
-      showOnboarding = !user.interestedIn
+        SentryInstance.setUserContext({
+          username: user.username,
+        })
 
-      SentryInstance.setUserContext({
-        username: user.username,
-      })
-    } else {
-      AuthNavigation()
-    }
-
-    if (user) {
-      AppNavigation(showOnboarding)
-    } else {
+        AppNavigation(showOnboarding)
+      } else {
+        AuthNavigation()
+      }
+    } catch {
       AuthNavigation()
     }
 
