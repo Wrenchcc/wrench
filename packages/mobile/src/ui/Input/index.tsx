@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { Field } from './styles'
@@ -14,22 +14,25 @@ type Props = {
   waitForRender: boolean
 }
 
-function Input({
-  placeholder,
-  autoFocus,
-  noBorder,
-  multiline = false,
-  selectionColor = DEFAULT_SELECTION_COLOR,
-  waitForRender,
-  ...props
-}: Props) {
-  const ref = useRef(null)
+export default forwardRef(function Input(
+  {
+    placeholder,
+    autoFocus,
+    noBorder,
+    multiline = false,
+    selectionColor = DEFAULT_SELECTION_COLOR,
+    waitForRender,
+    ...props
+  }: Props,
+  ref
+) {
+  const inputRef = useRef(null)
 
   if (autoFocus) {
     // TODO: RNN flicker when autoFocus and push animation
     setTimeout(
       () => {
-        if (ref.current) ref.current.focus()
+        if (inputRef.current) inputRef.current.focus()
       },
       waitForRender ? 500 : 0
     )
@@ -37,7 +40,7 @@ function Input({
 
   return (
     <Field
-      ref={ref}
+      ref={ref || inputRef}
       placeholder={placeholder}
       placeholderTextColor={COLORS.LIGHT_GREY}
       selectionColor={selectionColor}
@@ -48,6 +51,4 @@ function Input({
       {...props}
     />
   )
-}
-
-export default Input
+})

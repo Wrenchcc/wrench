@@ -28,7 +28,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true }) {
           <View style={styles.left}>
             <Icon onPress={handleNavigation} source={arrowLeft} />
           </View>
-          <Animated.View style={{ opacity, paddingLeft: 20, paddingRight: 20, flex: 1 }}>
+          <Animated.View style={{ opacity, flex: 2 }}>
             <Text medium center numberOfLines={1}>
               {headerTitle}
             </Text>

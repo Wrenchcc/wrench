@@ -21,9 +21,11 @@ export default {
     paddingHorizontal: 20,
   },
   left: {
-    marginRight: 'auto',
+    flex: 1,
+    alignItems: 'flex-start',
   },
   right: {
-    marginLeft: 'auto',
+    flex: 1,
+    alignItems: 'flex-end',
   },
 }

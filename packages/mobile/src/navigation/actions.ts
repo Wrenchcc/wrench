@@ -59,5 +59,4 @@ export const navigateToUser = params => navigateTo(SCREENS.USER, params)
 export const navigateToAddProject = params => showModal(SCREENS.ADD_PROJECT, params)
 export const navigateToAddProjectType = () => navigateTo(SCREENS.ADD_PROJECT_TYPE)
 export const navigateToAddPost = () => navigateTo(SCREENS.ADD_POST)
-
-export const navigateToAddMedia = () => navigateTo('add-media')
+export const navigateToAddMedia = () => navigateTo(SCREENS.ADD_MEDIA)
