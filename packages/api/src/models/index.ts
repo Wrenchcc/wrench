@@ -18,10 +18,10 @@ import UserSettings from './UserSettings'
 
 const {
   DB_PORT = 5432,
-  DB_HOST = 'wrench-production.cgydxeouwpfa.eu-central-1.rds.amazonaws.com',
-  DB_PASSWORD = 'nXPSjUDSeEchbx6b3VPtBr2rxAudYmduwTWCDJhAPwzjKBzbgn98nfGr5hTK9KB6S',
-  DB_USERNAME = 'wrench_production',
-  DB_DATABASE = 'wrench',
+  DB_HOST,
+  DB_PASSWORD,
+  DB_USERNAME,
+  DB_DATABASE,
   DB_LOGGING,
   DB_SYNCHRONIZE,
 } = process.env
