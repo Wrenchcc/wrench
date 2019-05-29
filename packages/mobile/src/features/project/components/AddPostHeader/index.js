@@ -4,7 +4,7 @@ import withTranslation from 'i18n/withTranslation'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
-import { dismissModal, navigateToAddPost } from 'navigation/actions'
+import { dismissModal, navigateBack, navigateToAddPost } from 'navigation/actions'
 import { Header, Dropdown, Icon, Text, ActionSheet } from 'ui'
 import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeft } from 'images'
@@ -56,7 +56,7 @@ class AddPostHeader extends PureComponent {
   get renderHeaderLeft() {
     const { addPostAction } = this.props
     if (addPostAction) {
-      return <Icon onPress={() => dismissModal()} source={arrowLeft} />
+      return <Icon onPress={() => navigateBack()} source={arrowLeft} />
     }
 
     return <Icon onPress={this.handleClose} source={close} />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 import { InteractionManager } from 'react-native'
 import { Subscribe } from 'unstated'
@@ -34,12 +34,14 @@ function AddProjectModel({ addProject }) {
   return (
     <Subscribe to={[AddContainer]}>
       {({ state, updateField, resetState }) => (
-        <>'         '<AddProjectHeader
+        <Fragment>
+          <AddProjectHeader
             actionRight={getActionRight(state, addProject, updateField, resetState)}
             translationKey="add"
             icon={arrowLeft}
             isSaving={state.isSaving}
-          />'         '<KeyboardAvoidingView>
+          />
+          <KeyboardAvoidingView>
             {state.isSearching && (
               <SearchModel query={state.query} onPress={model => updateField('model', model)} />
             )}
@@ -64,7 +66,8 @@ function AddProjectModel({ addProject }) {
               onFocus={() => updateField('isSearching', true)}
               onBlur={() => updateField('isSearching', false)}
             />
-          </KeyboardAvoidingView>'       '</>
+          </KeyboardAvoidingView>
+        </Fragment>
       )}
     </Subscribe>
   )

@@ -22,6 +22,7 @@ export const defaultOptions = {
     backgroundColor: COLORS.WHITE,
   },
   topBar: {
+    height: 0,
     visible: false,
   },
 }
