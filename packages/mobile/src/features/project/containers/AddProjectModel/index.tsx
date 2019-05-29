@@ -53,6 +53,7 @@ function AddProjectModel({ addProject }) {
             <Input
               placeholder={t('AddProjectModel:placeholder')}
               autoFocus
+              waitForRender
               large
               onChangeText={value => updateField('query', value)}
               value={

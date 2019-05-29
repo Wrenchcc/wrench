@@ -1,25 +1,35 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { editPost } from 'graphql/mutations/post/editPost'
 import { Input } from './styles'
 
-function EditPost({ post, color, onSubmit, hasChanged, editPost }) {
+type Props = {
+  color?: string
+  editPost: func
+  hasChanged: func
+  post?: object
+  onSubmit: func
+}
+
+function EditPost({ post, color, onSubmit, hasChanged, editPost }: Props) {
   const [value, setValue] = useState(post.caption)
   const { t } = useTranslation()
 
-  const handleEdit = value => {
-    hasChanged(value.trim() !== post.caption)
-    setValue(value)
-  }
+  const handleEdit = useCallback(
+    value => {
+      hasChanged(value.trim() !== post.caption)
+      setValue(value)
+    },
+    [value, post]
+  )
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     onSubmit()
 
     editPost(post, {
       caption: value,
     })
-  }
+  }, [post, value])
 
   return (
     <Input
@@ -35,14 +45,6 @@ function EditPost({ post, color, onSubmit, hasChanged, editPost }) {
       placeholder={t('EditPost:placeholder')}
     />
   )
-}
-
-EditPost.propTypes = {
-  color: PropTypes.string,
-  editPost: PropTypes.func.isRequired,
-  hasChanged: PropTypes.func.isRequired,
-  post: PropTypes.object,
-  onSubmit: PropTypes.func.isRequired,
 }
 
 export default editPost(EditPost)

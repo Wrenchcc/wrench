@@ -90,6 +90,7 @@ class AddPost extends PureComponent {
                   scrollEnabled={false}
                   multiline
                   autoFocus
+                  waitForRender
                   color="dark"
                   onChangeText={PostContainer.updateCaption}
                   placeholder={t('AddPost:placeholder')}

@@ -29,7 +29,6 @@ const searchUsersOptions = {
       query,
       type: 'USERS',
     },
-    // fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('users'),
 }

@@ -110,7 +110,7 @@ class CommentField extends PureComponent {
                 onChangeText={this.onChangeText}
                 value={this.props.value}
                 color="dark"
-                inputRef={this.textInput}
+                ref={this.textInput}
                 {...props}
               />
               {!disabled && (
