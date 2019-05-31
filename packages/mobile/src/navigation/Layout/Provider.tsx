@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Animated from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
 import { NAVIGATION } from 'navigation'
@@ -33,10 +32,6 @@ const {
 } = Animated
 
 export default class Provider extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-  }
-
   dragging = new Value(0)
 
   scrollY = new Value(0)

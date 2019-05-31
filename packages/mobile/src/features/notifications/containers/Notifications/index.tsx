@@ -40,10 +40,10 @@ function Notifications({
   return (
     <Layout>
       <FlatList
+        tabIndex={2}
         initialNumToRender={6}
         paddingHorizontal={0}
         contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
-        defaultPaddingTop
         ListHeaderComponent={
           <Header medium spacingHorizontal={!hasNotifications}>
             {t('Notifications:title')}

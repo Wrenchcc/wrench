@@ -15,9 +15,9 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   return (
     <Layout stickyComponent={<PostProgress />}>
       <FlatList
+        tabIndex={0}
         initialNumToRender={2}
         spacingSeparator
-        defaultPaddingTop
         data={posts}
         ListEmptyComponent={<ProjectSuggestions />}
         refetch={refetch}
@@ -26,7 +26,6 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
         isFetching={isFetching}
         hasNextPage={hasNextPage}
         renderItem={({ item }) => <Post post={item.node} />}
-        polling
       />
     </Layout>
   )

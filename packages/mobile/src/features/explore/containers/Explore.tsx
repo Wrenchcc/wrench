@@ -8,6 +8,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
   return (
     <Layout>
       <FlatList
+        tabIndex={1}
         spacingSeparator
         initialNumToRender={2}
         ListHeaderComponent={<Popular />}

@@ -158,7 +158,6 @@ class PostContainer extends PureComponent {
             isFetching={!post || isFetching}
             hasNextPage={hasNextPage}
             renderItem={this.renderItem}
-            defaultPaddingTop
           />
         </PageLayout>
       </Fragment>

@@ -1,18 +1,33 @@
 import React, { PureComponent } from 'react'
 import { View } from 'react-native'
-import PropTypes from 'prop-types'
+import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
-import { withListContext } from 'navigation/Layout/context'
 import { Border, Loader } from 'ui'
+import { withListContext } from '../Layout/context'
 
 export default function createNavigationAwareScrollable(Component) {
   class ComponentWithNavigationScrolling extends PureComponent {
     static displayName = `NavigationAwareScrollable(${Component.displayName || Component.name})`
 
-    static propTypes = {
-      onRefresh: PropTypes.func,
-      contentContainerStyle: PropTypes.object,
-      listContext: PropTypes.object,
+    componentDidMount() {
+      this.bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
+        ({ selectedTabIndex, unselectedTabIndex }) => {
+          if (selectedTabIndex === unselectedTabIndex && selectedTabIndex === this.props.tabIndex) {
+            this.scrollRef.scrollToOffset
+              && this.scrollRef.scrollToOffset({ offset: this.props.listContext.initialScroll })
+          }
+        }
+      )
+    }
+
+    componentWillUnmount() {
+      this.bottomTabEventListener.remove()
+    }
+
+    setRef = node => {
+      if (node) {
+        this.scrollRef = node.getNode()
+      }
     }
 
     get contentInset() {
@@ -34,7 +49,7 @@ export default function createNavigationAwareScrollable(Component) {
       }
     }
 
-    renderLoader = top => <Loader fullscreen={top} />
+    renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
 
     onEndReached = () => {
       if (this.props.hasNextPage && this.props.isRefetching !== true && !this.props.isFetching) {
@@ -56,18 +71,20 @@ export default function createNavigationAwareScrollable(Component) {
         initialNumToRender = 10,
         paddingHorizontal = 20,
         spacingSeparator,
-        listContext,
         ...props
       } = this.props
+
+      const { onScroll, onScrollBeginDrag, onScrollEndDrag } = this.props.listContext
 
       const initialFetch = !data && isFetching
 
       return (
         <Component
+          ref={this.setRef}
           scrollEventThrottle={1}
-          onScroll={listContext.onScroll}
-          onScrollBeginDrag={listContext.onScrollBeginDrag}
-          onScrollEndDrag={listContext.onScrollEndDrag}
+          onScroll={onScroll}
+          onScrollBeginDrag={onScrollBeginDrag}
+          onScrollEndDrag={onScrollEndDrag}
           contentInset={this.contentInset}
           contentOffset={this.contentOffset}
           style={{ flex: 1 }}
@@ -83,7 +100,6 @@ export default function createNavigationAwareScrollable(Component) {
           keyExtractor={({ node }) => node.id}
           contentContainerStyle={{
             flex: initialFetch ? 1 : 0,
-            justifyContent: 'center',
             paddingLeft: paddingHorizontal,
             paddingRight: paddingHorizontal,
             ...this.contentContainerStyle,

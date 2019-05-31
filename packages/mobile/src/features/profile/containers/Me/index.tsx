@@ -11,8 +11,9 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
   const hasPosts = posts && posts.length > 0
 
   return (
-    <Layout headerLeft={<SettingsButton />} search={false} headerTitle="hej">
+    <Layout headerLeft={<SettingsButton />} search={false}>
       <FlatList
+        tabIndex={3}
         initialNumToRender={1}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}

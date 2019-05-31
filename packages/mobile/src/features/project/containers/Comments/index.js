@@ -150,7 +150,6 @@ class Comments extends PureComponent {
             isFetching={isFetching}
             hasNextPage={hasNextPage}
             renderItem={this.renderItem}
-            defaultPaddingTop
           />
         </PageLayout>
       </Fragment>
