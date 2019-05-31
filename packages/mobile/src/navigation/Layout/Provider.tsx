@@ -10,7 +10,6 @@ const {
   multiply,
   greaterThan,
   defined,
-  call,
   event,
   Value,
   block,
@@ -37,8 +36,6 @@ export default class Provider extends Component {
   scrollY = new Value(0)
 
   scrollYClamped = new Value(0)
-
-  scrollYTarget = new Value(0)
 
   scrollYDiff = new Value(0)
 
