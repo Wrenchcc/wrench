@@ -64,6 +64,7 @@ function CommentField({ addComment, postId, commentId, username }) {
       {({ data, loading }) => {
         if (loading) return null
 
+        // {/* onSubmitEditing={text.length > 0 && handleSubmit} */}
         return (
           <Base>
             <Avatar uri={data && data.user.avatarUrl} />
@@ -72,7 +73,6 @@ function CommentField({ addComment, postId, commentId, username }) {
               placeholder={t('CommentField:placeholder')}
               placeholderTextColor={COLORS.LIGHT_GREY}
               keyboardType="twitter"
-              onSubmitEditing={text.length > 0}
               onChangeText={handleOnChangeText}
               value={text}
               color="dark"

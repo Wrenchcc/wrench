@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import UiTouchable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 
-export const TakePicture = styled(UiTouchable)`
+export const TakePicture = styled.TouchableOpacity`
   width: 60;
   height: 60;
   border-width: 3;

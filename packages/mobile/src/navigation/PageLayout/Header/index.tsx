@@ -1,9 +1,9 @@
 import React, { memo, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
 import { View } from 'react-native'
-import { useNavigation } from 'navigation'
 import { Text, Icon, ToastNotification } from 'ui'
 import { arrowLeft } from 'images'
+import { useNavigation } from '../../hooks'
 import styles from './styles'
 
 const { interpolate, Extrapolate } = Animated

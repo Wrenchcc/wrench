@@ -1,4 +1,4 @@
-import { NAVIGATION } from 'navigation/constants'
+import { NAVIGATION } from '../../constants'
 
 export default {
   container: {

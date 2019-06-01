@@ -10,10 +10,9 @@ type Props = {
 
 function Add({ projects }: Props) {
   const { showModal } = useNavigation()
-
   const handleNavigation = useCallback(
     () => showModal(projects.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT),
-    [projects]
+    [projects.length]
   )
 
   return (

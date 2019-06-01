@@ -54,7 +54,10 @@ export default function createNavigationAwareScrollable(Component) {
       const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
         const currentlyFocusedField = TextInput.State.currentlyFocusedField()
         const scrollResponder = scrollRef.current.getNode().getScrollResponder()
-        if (!scrollResponder) return
+
+        if (!scrollResponder || !currentlyFocusedField) {
+          return
+        }
 
         UIManager.viewIsDescendantOf(
           currentlyFocusedField,

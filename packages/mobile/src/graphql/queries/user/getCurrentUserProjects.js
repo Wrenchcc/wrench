@@ -14,7 +14,7 @@ export const CurrentUserProjectsQuery = gql`
 
 const getCurrentUserProjectsOptions = {
   props: ({ data }) => ({
-    projects: pathOr(null, ['user', 'projects', 'edges'], data),
+    projects: pathOr([], ['user', 'projects', 'edges'], data),
   }),
 }
 

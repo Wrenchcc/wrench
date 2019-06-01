@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Animated from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
-import { NAVIGATION } from 'navigation'
+import { NAVIGATION } from '../constants'
 import { ListContext } from './context'
 
 const {
