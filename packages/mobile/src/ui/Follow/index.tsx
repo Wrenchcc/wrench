@@ -1,11 +1,12 @@
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
-import withTranslation from 'i18n/withTranslation'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 import { follow } from 'images'
 import { Button, Icon } from './styles'
 
-const Follow = memo(function Follow({ onPress, following, t }) {
+function Follow({ onPress, following }) {
+  const { t } = useTranslation()
+
   return (
     <Button onPress={onPress} hapticFeedback="impactLight">
       {following ? (
@@ -18,11 +19,6 @@ const Follow = memo(function Follow({ onPress, following, t }) {
       )}
     </Button>
   )
-})
-
-Follow.propTypes = {
-  onPress: PropTypes.func.isRequired,
-  following: PropTypes.bool.isRequired,
 }
 
-export default withTranslation('Follow')(Follow)
+export default Follow

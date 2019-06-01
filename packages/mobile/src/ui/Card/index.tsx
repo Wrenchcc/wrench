@@ -10,7 +10,7 @@ function Card({ image, title, onPress, style = {}, user }) {
     () => navigate(SCREENS.USER, {
       username: user.username,
     }),
-    []
+    [user]
   )
 
   return (

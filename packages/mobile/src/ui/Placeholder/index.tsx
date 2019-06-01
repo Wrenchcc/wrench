@@ -1,9 +1,9 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { View, Image } from 'react-native'
 import { COLORS } from 'ui/constants'
 import { fallback } from 'images'
 
-const Placeholder = memo(function Placeholder() {
+function Placeholder() {
   return (
     <View
       style={{
@@ -16,6 +16,6 @@ const Placeholder = memo(function Placeholder() {
       <Image source={fallback} />
     </View>
   )
-})
+}
 
 export default Placeholder

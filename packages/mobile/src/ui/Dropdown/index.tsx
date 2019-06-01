@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Text from 'ui/Text'
 import { arrowDown, arrowUpGrey, arrowDownGrey } from 'images'
 import { Base, Icon } from './styles'
 
-const Dropdown = ({ active, onPress, title, darkMode = false }) => {
+function Dropdown({ active, onPress, title, darkMode = false }) {
   let icon
 
   if (active) {
@@ -28,13 +27,6 @@ const Dropdown = ({ active, onPress, title, darkMode = false }) => {
       <Icon source={icon} />
     </Base>
   )
-}
-
-Dropdown.propTypes = {
-  active: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool,
-  onPress: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
 }
 
 export default Dropdown

@@ -1,21 +1,20 @@
-import React, { useCallback } from 'react'
+import React, { Fragment, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
-import Gallery from 'ui/Gallery'
 import Placeholder from 'ui/Placeholder'
 import { followProject } from 'graphql/mutations/project/followProject'
+import Image from 'ui/Image'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
 function ProjectCard({ onPress, project, followProject, style }) {
   const { t } = useTranslation()
   const renderImages = useCallback(() => {
-    const files = pathOr([], ['files', 'edges'], project)
-
-    return files.length ? (
-      <>
+    const image = pathOr(false, ['files', 'edges', 0, 'node'], project)
+    return image ? (
+      <Fragment>
         <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
-        <Gallery files={files} />
-      </>
+        <Image source={image} height={180} />
+      </Fragment>
     ) : (
       <Placeholder />
     )

@@ -62,7 +62,7 @@ export default function createNavigationAwareScrollable(Component) {
     //     })
     //
     //     return () => keyboardEventListener.remove()
-    //   }, [])
+    //   }, [scrollRef])
     // }
 
     const onEndReached = useCallback(() => {

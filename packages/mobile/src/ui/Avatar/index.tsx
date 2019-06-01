@@ -1,12 +1,11 @@
 import React from 'react'
 import { View } from 'react-native'
-import PropTypes from 'prop-types'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Touchable from 'ui/Touchable'
 import Image from 'ui/Image'
 import IsOnline from 'ui/IsOnline'
 
-const Avatar = ({
+function Avatar({
   uri,
   size = 30,
   onPress,
@@ -14,7 +13,7 @@ const Avatar = ({
   isOnline = false,
   badgeSize,
   style = {},
-}) => {
+}) {
   if (onPress) {
     return (
       <View style={{ position: 'relative', height: size, width: size }}>
@@ -47,16 +46,6 @@ const Avatar = ({
       {isOnline && <IsOnline badgeSize={badgeSize} />}
     </View>
   )
-}
-
-Avatar.propTypes = {
-  uri: PropTypes.string.isRequired,
-  size: PropTypes.number,
-  onPress: PropTypes.func,
-  disabled: PropTypes.bool,
-  style: PropTypes.any,
-  isOnline: PropTypes.bool,
-  badgeSize: PropTypes.string,
 }
 
 export default Avatar

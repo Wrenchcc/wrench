@@ -10,7 +10,8 @@ import { SCREENS } from './constants'
 let componentId
 
 Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => {
-  // NOTE: If overlay is open do not update the componentId, push etc will stop working
+  // NOTE: If overlay is open do not update the componentId
+  // push etc will stop working next navigate
   if (id !== SCREENS.MENTION) {
     componentId = id
   }

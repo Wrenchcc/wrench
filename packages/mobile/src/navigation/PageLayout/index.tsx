@@ -3,9 +3,9 @@ import Animated from 'react-native-reanimated'
 import { RefreshControl } from 'react-native'
 import Header from './Header'
 
-const OFFSET = 70
-
 const { event, set, Value, cond, eq } = Animated
+
+const OFFSET = 70
 
 type Props = {
   headerTitle: string

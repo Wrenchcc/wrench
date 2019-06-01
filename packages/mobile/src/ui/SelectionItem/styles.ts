@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import UiTouchable from 'ui/Touchable'
-import UiText from 'ui/Text'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
@@ -11,8 +10,6 @@ export const Base = styled(UiTouchable)`
   border-bottom-width: ${({ last }) => (last ? 0 : 1)};
   border-bottom-color: ${COLORS.ULTRA_LIGHT_GREY};
 `
-
-export const Text = styled(UiText)``
 
 export const Icon = styled.Image`
   width: 6;

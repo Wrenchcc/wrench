@@ -1,10 +1,11 @@
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 
-const SearchingFor = memo(function SearchingFor({ t, query }) {
+function SearchingFor({ query }) {
+  const { t } = useTranslation()
+
   return (
     <View
       style={{
@@ -22,10 +23,6 @@ const SearchingFor = memo(function SearchingFor({ t, query }) {
       >{`${t('SearchingFor:title')} "${query}"`}</Text>
     </View>
   )
-})
-
-SearchingFor.propTypes = {
-  query: PropTypes.string,
 }
 
-export default withTranslation('SearchingFor')(SearchingFor)
+export default SearchingFor

@@ -1,9 +1,9 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Switch } from 'react-native'
-import PropTypes from 'prop-types'
 import { arrowRight } from 'images'
 import { COLORS } from 'ui/constants'
-import { Base, Text, Icon } from './styles'
+import Text from 'ui/Text'
+import { Base, Icon } from './styles'
 import Selector from './types/Selector'
 
 const getActionType = ({ type, selected, onPress }) => {
@@ -23,7 +23,7 @@ const getActionType = ({ type, selected, onPress }) => {
   }
 }
 
-const SelectionItem = memo(function SelectionItem({ title, hasChildren, last, ...rest }) {
+function SelectionItem({ title, hasChildren, last, ...rest }) {
   return (
     <Base onPress={rest.onPress} disabled={!rest.onPress} last={last}>
       <Text color={last && 'orange'}>{title}</Text>
@@ -31,16 +31,6 @@ const SelectionItem = memo(function SelectionItem({ title, hasChildren, last, ..
       {getActionType(rest)}
     </Base>
   )
-})
-
-SelectionItem.propTypes = {
-  title: PropTypes.string,
-  onPress: PropTypes.func,
-  hasChildren: PropTypes.bool,
-  type: PropTypes.string,
-  last: PropTypes.bool,
-  selected: PropTypes.bool,
-  value: PropTypes.any,
 }
 
 export default SelectionItem
