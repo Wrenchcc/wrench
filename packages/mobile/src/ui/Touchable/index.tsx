@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { BorderlessButton } from 'react-native-gesture-handler'
+import { BaseButton } from 'react-native-gesture-handler'
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 import evenHitSlop from 'utils/hitSlop'
 
@@ -20,14 +20,14 @@ const Touchable = ({
   }, [hapticFeedback])
 
   return (
-    <BorderlessButton
+    <BaseButton
       activeOpacity={activeOpacity}
       onPress={handleOnPress}
       hitSlop={evenHitSlop(hitSlop)}
       {...props}
     >
       {children}
-    </BorderlessButton>
+    </BaseButton>
   )
 }
 

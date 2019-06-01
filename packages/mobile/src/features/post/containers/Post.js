@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { pathOr } from 'ramda'
@@ -6,78 +6,30 @@ import { PageLayout, FlatList } from 'navigation'
 import withTranslation from 'i18n/withTranslation'
 import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
-import { addComment } from 'graphql/mutations/comment/addComment'
 import CommentField from 'components/CommentField'
-import { Post, CommentItem, KeyboardAccessoryView, Mention } from 'ui'
-import { isIphone, hasNotch } from 'utils/platform'
-
-// TODO: Make platform specific
-const SAFE_AREA = hasNotch ? 10 : 0
-const MENTION_OFFSET_BOTTOM = isIphone ? 340 + SAFE_AREA : 0
-const TRIGGER = '@'
+import { Post, CommentItem, KeyboardAccessoryView } from 'ui'
 
 class PostContainer extends PureComponent {
-  state = {
-    commentId: null,
-    isOpen: false,
-    query: '',
-    text: '',
-  }
-
-  componentDidUpdate(prevProps) {
-    const { comments, isFetching, isRefetching } = this.props
-    if (
-      pathOr(false, ['isRefetching'], prevProps) === isRefetching
-      && pathOr(false, ['isFetching'], prevProps) === isFetching
-      && !isFetching
-      && comments
-      && comments.length >= 1
-    ) {
-      setTimeout(() => {
-        // scrollView.scrollToIndex({ animated: true, index: 0 })
-      }, 100)
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { comments, isFetching, isRefetching } = this.props
+  //   if (
+  //     pathOr(false, ['isRefetching'], prevProps) === isRefetching
+  //     && pathOr(false, ['isFetching'], prevProps) === isFetching
+  //     && !isFetching
+  //     && comments
+  //     && comments.length >= 1
+  //   ) {
+  //     setTimeout(() => {
+  //       // scrollView.scrollToIndex({ animated: true, index: 0 })
+  //     }, 100)
+  //   }
+  // }
 
   onReply = (user, commentId) => {
-    this.commentField.focus()
-    this.setState({
-      commentId,
-      text: `${TRIGGER}${user.username} `,
-    })
-  }
-
-  onChangeText = text => {
-    this.setState({ text })
-  }
-
-  onMentionPress = ({ username }) => {
-    const comment = this.state.text.slice(0, -this.state.query.length - 1)
-    this.setState({ text: `${comment}${TRIGGER}${username} ` })
-    this.closeMention()
-  }
-
-  onMention = query => {
-    this.setState({ query })
-  }
-
-  setRef = el => {
-    this.commentField = el
-  }
-
-  openMention = () => {
-    this.setState({ isOpen: true })
-  }
-
-  closeMention = () => {
-    this.setState({ isOpen: false })
-    this.commentField.stopTracking()
-  }
-
-  handleSubmit = () => {
-    const { text, commentId } = this.state
-    this.setState({ text: '', commentId: null })
-    this.props.addComment(text, commentId)
+    // this.setState({
+    //   commentId,
+    //   text: `${TRIGGER}${user.username} `,
+    // })
   }
 
   renderItem = ({ item }) => (
@@ -116,53 +68,33 @@ class PostContainer extends PureComponent {
     } = this.props
 
     return (
-      <Fragment>
-        {this.state.isOpen && (
-          <Mention
-            offsetTop={90}
-            query={this.state.query}
-            onPress={this.onMentionPress}
-            offsetBottom={MENTION_OFFSET_BOTTOM}
-          />
-        )}
-        <PageLayout
-          headerTitle={t('PostContainer:title')}
-          headerAnimation={false}
-          stickyFooter={
-            <KeyboardAccessoryView>
-              <CommentField
-                onRef={this.setRef}
-                onSubmitEditing={this.onSubmitEditing}
-                onChangeText={this.onChangeText}
-                onMention={this.onMention}
-                onSubmit={this.handleSubmit}
-                value={this.state.text}
-                openMention={this.openMention}
-                closeMention={this.closeMention}
-                disabled={this.state.text.length === 0}
-              />
-            </KeyboardAccessoryView>
-          }
-        >
-          <FlatList
-            initialNumToRender={6}
-            contentContainerStyle={{
-              paddingTop: 0,
-              paddingLeft: 0,
-              paddingRight: 0,
-              paddingBottom: 60,
-            }}
-            ListHeaderComponent={this.renderHeader}
-            data={comments}
-            refetch={refetch}
-            fetchMore={fetchMore}
-            isRefetching={isRefetching}
-            isFetching={!post || isFetching}
-            hasNextPage={hasNextPage}
-            renderItem={this.renderItem}
-          />
-        </PageLayout>
-      </Fragment>
+      <PageLayout
+        headerTitle={t('PostContainer:title')}
+        headerAnimation={false}
+        stickyFooter={
+          <KeyboardAccessoryView>
+            <CommentField postId={post.id} />
+          </KeyboardAccessoryView>
+        }
+      >
+        <FlatList
+          initialNumToRender={6}
+          contentContainerStyle={{
+            paddingTop: 0,
+            paddingLeft: 0,
+            paddingRight: 0,
+            paddingBottom: 60,
+          }}
+          ListHeaderComponent={this.renderHeader}
+          data={comments}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={!post || isFetching}
+          hasNextPage={hasNextPage}
+          renderItem={this.renderItem}
+        />
+      </PageLayout>
     )
   }
 }
@@ -170,6 +102,5 @@ class PostContainer extends PureComponent {
 export default compose(
   getComments,
   getComment,
-  addComment,
   withTranslation('PostContainer')
 )(PostContainer)

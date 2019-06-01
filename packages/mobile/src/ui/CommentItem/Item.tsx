@@ -27,6 +27,14 @@ function Item({
     [user]
   )
 
+  const handleOnReply = useCallback(
+    () => onReply({
+      username: user.username,
+      commentId: commentId || id,
+    }),
+    [user.username, commentId, id]
+  )
+
   const animatedValue = new Animated.Value(0)
 
   if (highlightId === id) {
@@ -69,12 +77,7 @@ function Item({
           <Row>
             <TimeAgo date={createdAt} />
             {!first && (
-              <Reply
-                medium
-                fontSize={12}
-                onPress={() => onReply(user, commentId || id)}
-                disabled={id < 0}
-              >
+              <Reply medium fontSize={12} onPress={handleOnReply} disabled={id < 0}>
                 {t('CommentItem:reply')}
               </Reply>
             )}

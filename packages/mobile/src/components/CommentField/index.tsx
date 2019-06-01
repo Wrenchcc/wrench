@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Query } from 'react-apollo'
@@ -13,10 +13,18 @@ const PATTERN = '\\@[a-z0-9_-]+|\\@'
 const TRIGGER = '@'
 const EMPTY = ' '
 
-function CommentField({ addComment, postId }) {
+function CommentField({ addComment, postId, commentId, username }) {
+  const inputRef = useRef()
   const { t } = useTranslation()
   const [text, setText] = useState('')
   const [isTracking, setTracking] = useState(false)
+
+  useEffect(() => {
+    if (username) {
+      setText(`${TRIGGER}${username} `)
+      inputRef.current.focus()
+    }
+  }, [inputRef, username, commentId])
 
   const handleOnChangeText = useCallback(
     text => {
@@ -45,10 +53,11 @@ function CommentField({ addComment, postId }) {
   )
 
   const handleSubmit = useCallback(() => {
-    addComment(postId, text)
+    alert(text)
+    // addComment(postId, text, commentId)
     setText('')
     Keyboard.dismiss()
-  }, [])
+  }, [postId, text, commentId])
 
   return (
     <Query query={CurrentUserQuery}>
@@ -59,6 +68,7 @@ function CommentField({ addComment, postId }) {
           <Base>
             <Avatar uri={data && data.user.avatarUrl} />
             <Input
+              ref={inputRef}
               placeholder={t('CommentField:placeholder')}
               placeholderTextColor={COLORS.LIGHT_GREY}
               keyboardType="twitter"

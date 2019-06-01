@@ -44,6 +44,7 @@ function Settings({ section, ...rest }) {
             sections={sections({ ...state, changeLocale, ...rest })[section || 'settings']}
             keyExtractor={(item, index) => item + index}
             ListFooterComponent={!section && <Footer />}
+            borderSeparator
           />
         </PageLayout>
       )}
