@@ -6,7 +6,7 @@ import { logError } from 'utils/sentry'
 
 const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId'
 
-export default class AddContainer extends Container {
+class AddContainer extends Container {
   state = {
     cameraFile: null,
     caption: null,
@@ -127,3 +127,5 @@ export default class AddContainer extends Container {
     this.setState({ postProgress: null })
   }
 }
+
+export default new AddContainer()

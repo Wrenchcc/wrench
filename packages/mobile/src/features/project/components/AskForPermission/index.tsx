@@ -1,12 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Alert } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import { request, openSettings, RESULTS } from 'react-native-permissions'
-import withTranslation from 'i18n/withTranslation'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
-const AskForPermission = ({ t, type, permission, onSuccess }) => {
+const AskForPermission = ({ type, permission, onSuccess }) => {
+  const { t } = useTranslation()
+
   const onPress = () => request(permission).then(res => {
     if (res !== RESULTS.GRANTED) {
       const buttons = [{ text: t(`AskForPermission:${type}:alertCancel`), style: 'cancel' }]
@@ -44,10 +45,4 @@ const AskForPermission = ({ t, type, permission, onSuccess }) => {
   )
 }
 
-AskForPermission.propTypes = {
-  onSuccess: PropTypes.func.isRequired,
-  permission: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-}
-
-export default withTranslation('AskForPermission')(AskForPermission)
+export default AskForPermission

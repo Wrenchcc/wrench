@@ -1,8 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-// NOTE: Need to copy static for react-naivation
-// When translate headerTitles
 export default function withTranslation(ns) {
   return function Extend(WrappedComponent) {
     function I18nextWithTranslation(props) {

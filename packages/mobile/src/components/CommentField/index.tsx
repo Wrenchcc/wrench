@@ -34,7 +34,12 @@ function CommentField({ addComment, postId, commentId, username }) {
 
       if (lastChar === TRIGGER) {
         setTracking(true)
-        showMention()
+        showMention({
+          onPress: user => {
+            dismissMention()
+            setText(`${TRIGGER}${user.username} `)
+          },
+        })
       } else if ((lastChar === EMPTY && isTracking) || text === '') {
         setTracking(false)
         dismissMention()
@@ -45,7 +50,13 @@ function CommentField({ addComment, postId, commentId, username }) {
         const keywordArray = text.match(pattern)
         if (keywordArray && !!keywordArray.length) {
           const lastKeyword = keywordArray[keywordArray.length - 1]
-          showMention({ query: lastKeyword.replace(TRIGGER, '') })
+          showMention({
+            query: lastKeyword.replace(TRIGGER, ''),
+            onPress: user => {
+              dismissMention()
+              setText(`${TRIGGER}${user.username} `)
+            },
+          })
         }
       }
     },

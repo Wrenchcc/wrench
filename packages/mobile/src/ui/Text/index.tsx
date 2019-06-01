@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Touchable from 'ui/Touchable'
 import handleParse from './handleParse'
 import { Base } from './styles'
@@ -39,15 +38,5 @@ const Text = ({
       {children}
     </Base>
 )
-
-Text.propTypes = {
-  children: PropTypes.any,
-  disabled: PropTypes.bool,
-  hapticFeedback: PropTypes.string,
-  lineHeight: PropTypes.number,
-  numberOfLines: PropTypes.number,
-  onLongPress: PropTypes.func,
-  onPress: PropTypes.func,
-}
 
 export default Text

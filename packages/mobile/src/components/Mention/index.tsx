@@ -1,5 +1,5 @@
-import React from 'react'
-import { View } from 'react-native'
+import React, { useEffect } from 'react'
+import { View, Keyboard } from 'react-native'
 import { InfiniteList, MentionUser, NoResults } from 'ui'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { dismissMention } from 'navigation'
@@ -7,7 +7,15 @@ import { isIphone, hasNotch } from 'utils/platform'
 
 const OFFSET_BOTTOM = isIphone ? 351 : 70 // TODO: Get keyboard height
 
-function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage }) {
+function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPress }) {
+  useEffect(() => {
+    const keyboardHideEventListener = Keyboard.addListener('keyboardWillHide', () => {
+      dismissMention()
+    })
+
+    return () => keyboardHideEventListener.remove()
+  }, [])
+
   return (
     <View
       style={{
@@ -21,8 +29,6 @@ function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage }) {
     >
       <InfiniteList
         defaultPadding
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="none"
         ListEmptyComponent={<NoResults />}
         data={users}
         fetchMore={fetchMore}
@@ -30,7 +36,7 @@ function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage }) {
         isFetching={isFetching}
         hasNextPage={hasNextPage}
         keyExtractor={item => item.node.id}
-        renderItem={({ item }) => <MentionUser user={item.node} onPress={dismissMention} />}
+        renderItem={({ item }) => <MentionUser user={item.node} onPress={onPress} />}
         borderSeparator
       />
     </View>

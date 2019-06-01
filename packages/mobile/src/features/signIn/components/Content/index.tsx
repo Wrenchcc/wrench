@@ -1,8 +1,10 @@
 import React from 'react'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { Base, Headline, Description } from './styles'
 
-function Content({ t }) {
+function Content() {
+  const { t } = useTranslation()
+
   return (
     <Base>
       <Headline color="white" medium>
@@ -15,4 +17,4 @@ function Content({ t }) {
   )
 }
 
-export default withTranslation('OnboardingContent')(Content)
+export default Content

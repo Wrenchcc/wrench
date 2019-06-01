@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Text from 'ui/Text'
 import Avatar from 'ui/Avatar'
 import { Base, Content } from './styles'
@@ -13,11 +12,6 @@ function MentionUser({ user, onPress }) {
       </Content>
     </Base>
   )
-}
-
-MentionUser.propTypes = {
-  user: PropTypes.object.isRequired,
-  onPress: PropTypes.func.isRequired,
 }
 
 export default MentionUser

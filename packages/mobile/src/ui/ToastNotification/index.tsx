@@ -1,6 +1,6 @@
 import React from 'react'
 import { Spring } from 'react-spring/renderprops'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { ToastNotificationContainer } from 'store'
 import Text from 'ui/Text'
@@ -9,7 +9,9 @@ import { Base } from './styles'
 const FROM_HEIGHT = 0
 const TO_HEIGHT = 40
 
-function ToastNotification({ t }) {
+function ToastNotification() {
+  const { t } = useTranslation()
+
   return (
     <Subscribe to={[ToastNotificationContainer]}>
       {({ state: { message, type, show } }) => (
@@ -31,4 +33,4 @@ function ToastNotification({ t }) {
   )
 }
 
-export default withTranslation('ToastNotification')(ToastNotification)
+export default ToastNotification

@@ -53,9 +53,6 @@ export function showMention(params) {
         layout: {
           backgroundColor: 'transparent',
         },
-        overlay: {
-          interceptTouchOutside: false,
-        },
       },
     },
   })

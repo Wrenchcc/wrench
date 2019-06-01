@@ -1,6 +1,6 @@
 import React from 'react'
 import { Spring } from 'react-spring/renderprops'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import Text from 'ui/Text'
@@ -9,7 +9,9 @@ import { Base, Inner, Cover, Content, Loader } from './styles'
 const FROM_HEIGHT = 0
 const TO_HEIGHT = 60
 
-function PostProgress({ t }) {
+function PostProgress() {
+  const { t } = useTranslation()
+
   return (
     <Subscribe to={[AddContainer]}>
       {({ state: { postProgress } }) => (
@@ -40,4 +42,4 @@ function PostProgress({ t }) {
   )
 }
 
-export default withTranslation('PostProgress')(PostProgress)
+export default PostProgress

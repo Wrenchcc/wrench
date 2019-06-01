@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react'
-import withTranslation from 'i18n/withTranslation'
-import Text from 'ui/Text'
+import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
+import Text from 'ui/Text'
 
-const SettingsButton = ({ t }) => {
+function SettingsButton() {
+  const { t } = useTranslation()
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(() => navigate(SCREENS.SETTINGS), [])
 
@@ -14,4 +15,4 @@ const SettingsButton = ({ t }) => {
   )
 }
 
-export default withTranslation('SettingsButton')(SettingsButton)
+export default SettingsButton

@@ -4,7 +4,7 @@ import { setLocale, languages, updateUserLanguage } from 'i18n'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 
-export default class I18nContainer extends Container {
+class I18nContainer extends Container {
   state = {
     currentLocale: i18next.language,
     availableLocales: languages,
@@ -25,3 +25,5 @@ export default class I18nContainer extends Container {
     })
   }
 }
+
+export default new I18nContainer()

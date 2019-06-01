@@ -1,5 +1,4 @@
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { Image, Dimensions } from 'react-native'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -10,7 +9,7 @@ const { width } = Dimensions.get('window')
 const MARGIN = 3
 const ITEM_SIZE = (width - 4 * MARGIN) / 4
 
-const Item = memo(function Item({ item, selected, onPress, order }) {
+function Item({ item, selected, onPress, order }) {
   return (
     <Touchable
       hapticFeedback="impactLight"
@@ -32,13 +31,6 @@ const Item = memo(function Item({ item, selected, onPress, order }) {
       <Overlay selected={selected} />
     </Touchable>
   )
-})
-
-Item.propTypes = {
-  item: PropTypes.object.isRequired,
-  selected: PropTypes.bool.isRequired,
-  onPress: PropTypes.func.isRequired,
-  order: PropTypes.number,
 }
 
 export default Item

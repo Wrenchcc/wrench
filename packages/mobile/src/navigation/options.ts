@@ -23,4 +23,7 @@ export const defaultOptions = {
     height: 0,
     visible: false,
   },
+  overlay: {
+    interceptTouchOutside: false,
+  },
 }

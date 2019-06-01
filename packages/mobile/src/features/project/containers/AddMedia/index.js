@@ -3,7 +3,7 @@ import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
-import ImageEditor from 'features/project/components/ImageEditor/old'
+import ImageEditor from 'features/project/components/ImageEditor'
 import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
