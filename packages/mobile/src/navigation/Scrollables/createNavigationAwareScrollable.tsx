@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useCallback } from 'react'
-import { View, Keyboard, TextInput } from 'react-native'
+import { View, Keyboard, TextInput, UIManager } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
@@ -50,20 +50,25 @@ export default function createNavigationAwareScrollable(Component) {
     }, [scrollRef])
 
     // Scroll to input
-    // TODO: Only on current screen where input is placed
-    // if (tabIndex === 0) {
-    //   useEffect(() => {
-    //     const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
-    //       const currentlyFocusedField = TextInput.State.currentlyFocusedField()
-    //       const responder = scrollRef.current.getNode().getScrollResponder()
-    //       if (currentlyFocusedField && responder) {
-    //         responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
-    //       }
-    //     })
-    //
-    //     return () => keyboardEventListener.remove()
-    //   }, [scrollRef])
-    // }
+    useEffect(() => {
+      const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
+        const currentlyFocusedField = TextInput.State.currentlyFocusedField()
+        const scrollResponder = scrollRef.current.getNode().getScrollResponder()
+        if (!scrollResponder) return
+
+        UIManager.viewIsDescendantOf(
+          currentlyFocusedField,
+          scrollResponder.getInnerViewNode(),
+          isAncestor => {
+            if (isAncestor) {
+              scrollResponder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
+            }
+          }
+        )
+      })
+
+      return () => keyboardEventListener.remove()
+    }, [scrollRef])
 
     const onEndReached = useCallback(() => {
       if (hasNextPage && isRefetching !== true && !isFetching) {
