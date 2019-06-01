@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { Navigation } from 'react-native-navigation'
-import { Layout, FlatList } from 'navigation'
+import { Layout, FlatList, showNotificationBadge, hideNotificationBadge } from 'navigation'
 import { getNotifications } from 'graphql/queries/getNotifications'
 import { markAllNotificationsSeen } from 'graphql/mutations/notification/markAllNotificationsSeen'
 import { deleteNotification } from 'graphql/mutations/notification/deleteNotification'
@@ -20,22 +20,27 @@ function Notifications({
   deleteNotification,
   componentId,
   markAllNotificationsSeen,
+  unreadCount,
 }) {
   const { t } = useTranslation()
+  const hasNotifications = notifications && notifications.length > 0
 
   useEffect(() => {
+    if (unreadCount > 0) {
+      showNotificationBadge()
+    }
+
     const componentAppearListener = Navigation.events().registerComponentDidAppearListener(
-      ({ componentId: compId }) => {
-        if (componentId === compId) {
+      ({ componentId: id }) => {
+        if (componentId === id && unreadCount) {
           markAllNotificationsSeen()
+          hideNotificationBadge()
         }
       }
     )
 
     return () => componentAppearListener.remove()
-  }, [componentId])
-
-  const hasNotifications = notifications && notifications.length > 0
+  }, [componentId, unreadCount])
 
   return (
     <Layout>

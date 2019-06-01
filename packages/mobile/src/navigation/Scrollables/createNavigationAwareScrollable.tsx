@@ -67,17 +67,17 @@ export default function createNavigationAwareScrollable(Component) {
 
     // Scroll to input
     // This needs to be run one at a time
-    useEffect(() => {
-      const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
-        const currentlyFocusedField = TextInput.State.currentlyFocusedField()
-        const responder = scrollRef.current.getNode().getScrollResponder()
-        if (currentlyFocusedField && responder) {
-          responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
-        }
-      })
-
-      return () => keyboardEventListener.remove()
-    }, [])
+    // useEffect(() => {
+    //   const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
+    //     const currentlyFocusedField = TextInput.State.currentlyFocusedField()
+    //     const responder = scrollRef.current.getNode().getScrollResponder()
+    //     if (currentlyFocusedField && responder) {
+    //       responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
+    //     }
+    //   })
+    //
+    //   return () => keyboardEventListener.remove()
+    // }, [])
 
     const onEndReached = useCallback(() => {
       if (hasNextPage && isRefetching !== true && !isFetching) {

@@ -1,4 +1,10 @@
 import { Navigation } from 'react-native-navigation'
+import {
+  notificationsBadge,
+  notificationsUnselectedBadge,
+  notificationsSelected,
+  notifications as notificationsIcon,
+} from 'images'
 import { SCREENS } from './constants'
 
 let componentId
@@ -64,6 +70,24 @@ export function navigate(screen, { options, ...params } = {}) {
       name: screen,
       passProps: params,
       options,
+    },
+  })
+}
+
+export function showNotificationBadge() {
+  Navigation.mergeOptions(SCREENS.NOTIFICATIONS, {
+    bottomTab: {
+      icon: notificationsUnselectedBadge,
+      selectedIcon: notificationsBadge,
+    },
+  })
+}
+
+export function hideNotificationBadge() {
+  Navigation.mergeOptions(SCREENS.NOTIFICATIONS, {
+    bottomTab: {
+      icon: notificationsIcon,
+      selectedIcon: notificationsSelected,
     },
   })
 }

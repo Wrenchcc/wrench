@@ -1,5 +1,6 @@
 import { Navigation } from 'react-native-navigation'
-import { feed, explore, notifications, profile } from 'images'
+import { COLORS } from 'ui/constants'
+import { feed, explore, notifications, notificationsSelected, profile } from 'images'
 import registerScreens from './registerScreens'
 import { defaultOptions } from './options'
 import { SCREENS } from './constants'
@@ -62,9 +63,12 @@ export function AppNavigation(onboarding) {
                   {
                     component: {
                       name: SCREENS.FEED,
+                      id: SCREENS.FEED,
                       options: {
                         bottomTab: {
                           icon: feed,
+                          iconColor: COLORS.TAB_ICON,
+                          selectedIconColor: COLORS.WHITE,
                         },
                       },
                     },
@@ -72,9 +76,12 @@ export function AppNavigation(onboarding) {
                   {
                     component: {
                       name: SCREENS.EXPLORE,
+                      id: SCREENS.EXPLORE,
                       options: {
                         bottomTab: {
                           icon: explore,
+                          iconColor: COLORS.TAB_ICON,
+                          selectedIconColor: COLORS.WHITE,
                         },
                       },
                     },
@@ -82,9 +89,11 @@ export function AppNavigation(onboarding) {
                   {
                     component: {
                       name: SCREENS.NOTIFICATIONS,
+                      id: SCREENS.NOTIFICATIONS,
                       options: {
                         bottomTab: {
                           icon: notifications,
+                          selectedIcon: notificationsSelected,
                         },
                       },
                     },
@@ -92,9 +101,12 @@ export function AppNavigation(onboarding) {
                   {
                     component: {
                       name: SCREENS.ME,
+                      id: SCREENS.ME,
                       options: {
                         bottomTab: {
                           icon: profile,
+                          iconColor: COLORS.TAB_ICON,
+                          selectedIconColor: COLORS.WHITE,
                         },
                       },
                     },

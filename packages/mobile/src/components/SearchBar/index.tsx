@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { BackHandler } from 'react-native'
+import { BackHandler, Keyboard } from 'react-native'
 import { Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { search } from 'images'
@@ -31,6 +31,7 @@ function Search({
 
   const handleCancel = () => {
     inputRef.current.blur()
+    Keyboard.dismiss()
     transitionRef.current.animateNextTransition()
     onSearchCancel && onSearchCancel()
   }

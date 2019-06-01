@@ -12,8 +12,6 @@ export const defaultOptions = {
     backgroundColor: COLORS.DARK,
   },
   bottomTab: {
-    iconColor: 'grey',
-    selectedIconColor: COLORS.WHITE,
     textColor: COLORS.WHITE,
     titleDisplayMode: 'alwaysHide',
     iconInsets,

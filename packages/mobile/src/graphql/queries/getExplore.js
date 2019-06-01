@@ -49,7 +49,6 @@ const getPopularProjectsOptions = {
 }
 
 const getRecentPostsOptions = {
-  options: {},
   props: mapListProps('posts'),
 }
 

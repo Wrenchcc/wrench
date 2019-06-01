@@ -6,6 +6,7 @@ export const mapListProps = type => ({ data: { fetchMore, loading, networkStatus
 
   return {
     ...props,
+    ...data,
     [type]: pathOr(null, ['edges'], data),
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
     isRefetching: isRefetching(networkStatus),

@@ -17,6 +17,7 @@ export const FONTS = {
 }
 
 export const COLORS = {
+  TAB_ICON: '#8E8E8E',
   DARK_GREY: 'rgb(34,34,34)',
   DARK: 'rgb(000, 000, 000)',
   DIVIDER: 'rgb(230, 231, 233)',
