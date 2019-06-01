@@ -5,10 +5,6 @@ import { addCommentToPost } from 'graphql/mutations/comment/addComment'
 import CommentField from 'ui/CommentField'
 import List from './List'
 
-// setTimeout(() => showMention(), 3000)
-//
-// setTimeout(() => dismissMention(), 10000)
-
 class Comments extends PureComponent {
   static propTypes = {
     addComment: PropTypes.func.isRequired,
@@ -40,7 +36,6 @@ class Comments extends PureComponent {
 
   openMention = () => {
     // TODO: Check if open
-    // alert('e')
     showMention()
   }
 

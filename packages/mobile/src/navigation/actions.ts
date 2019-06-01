@@ -39,11 +39,12 @@ export function showModal(screen, { options, ...params } = {}) {
   })
 }
 
-export function showMention(options) {
+export function showMention(params) {
   Navigation.showOverlay({
     component: {
       name: SCREENS.MENTION,
       id: SCREENS.MENTION,
+      passProps: params,
       options: {
         layout: {
           backgroundColor: 'transparent',

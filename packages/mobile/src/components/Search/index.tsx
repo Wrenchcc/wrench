@@ -50,11 +50,6 @@ class Search extends PureComponent {
     this.setState({ index }) // eslint-disable-line
   }
 
-  scrollToTop = () => {
-    if (this.userRef) this.userRef.scrollToOffset({ offset: 0 })
-    if (this.projectRef) this.projectRef.scrollToOffset({ offset: 0 })
-  }
-
   renderTabBar = props => (
     <TabBar
       {...props}
@@ -64,7 +59,6 @@ class Search extends PureComponent {
       getLabelText={({ route }) => this.props.t(`Search:${route.key}`)}
       swipeEnabled
       scrollEnabled={false}
-      onTabPress={this.scrollToTop}
     />
   )
 
@@ -72,9 +66,9 @@ class Search extends PureComponent {
   renderScene = ({ route }) => {
     switch (route.key) {
       case 'users':
-        return <Users scrollRef={el => (this.userRef = el)} query={this.props.query} />
+        return <Users query={this.props.query} />
       case 'projects':
-        return <Projects scrollRef={el => (this.projectRef = el)} query={this.props.query} />
+        return <Projects query={this.props.query} />
       default:
         return null
     }

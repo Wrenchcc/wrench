@@ -14,7 +14,6 @@ class Projects extends PureComponent {
     isRefetching: PropTypes.bool.isRequired,
     projects: PropTypes.array,
     refetch: PropTypes.func.isRequired,
-    scrollRef: PropTypes.func.isRequired,
     query: PropTypes.string,
   }
 
@@ -36,7 +35,6 @@ class Projects extends PureComponent {
       isRefetching,
       projects,
       refetch,
-      scrollRef,
       query,
     } = this.props
 
@@ -54,7 +52,6 @@ class Projects extends PureComponent {
         keyExtractor={item => item.node.id}
         refetch={refetch}
         renderItem={this.renderItem}
-        scrollRef={scrollRef}
         defaultPadding
         ListFooterComponent={
           (query.length === 1 && !projects) || (isFetching && query.length !== 0) ? (

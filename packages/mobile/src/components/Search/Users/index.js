@@ -12,7 +12,6 @@ class Users extends PureComponent {
     isFetching: PropTypes.bool.isRequired,
     isRefetching: PropTypes.bool.isRequired,
     refetch: PropTypes.func.isRequired,
-    scrollRef: PropTypes.func.isRequired,
     users: PropTypes.array,
     query: PropTypes.string,
   }
@@ -26,16 +25,7 @@ class Users extends PureComponent {
   renderItem = ({ item }) => <User data={item.node} />
 
   render() {
-    const {
-      fetchMore,
-      hasNextPage,
-      isFetching,
-      isRefetching,
-      refetch,
-      scrollRef,
-      users,
-      query,
-    } = this.props
+    const { fetchMore, hasNextPage, isFetching, isRefetching, refetch, users, query } = this.props
 
     return (
       <InfiniteList
@@ -51,7 +41,6 @@ class Users extends PureComponent {
         keyExtractor={item => item.node.id}
         refetch={refetch}
         renderItem={this.renderItem}
-        scrollRef={scrollRef}
         defaultPadding
         ListFooterComponent={
           (query.length === 1 && !users) || (isFetching && query.length !== 0) ? (
