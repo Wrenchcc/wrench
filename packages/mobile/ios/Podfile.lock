@@ -170,7 +170,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Protobuf (3.7.0)
+  - Protobuf (3.8.0)
   - React (0.59.8):
     - React/Core (= 0.59.8)
   - react-native-camera (2.9.0):
@@ -270,7 +270,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativeNavigation (2.20.2):
+  - ReactNativeNavigation (2.21.0):
     - React
   - RNCAsyncStorage (1.4.1):
     - React
@@ -574,7 +574,7 @@ SPEC CHECKSUMS:
   JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   React: 76e6aa2b87d05eb6cccb6926d72685c9a07df152
   react-native-camera: 571e4cfe70e7021e9077c1699a53e659db971f96
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
@@ -586,7 +586,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
   react-native-webview: 3c79685b61a68d1fe99136f98f2f34b04dce2e02
-  ReactNativeNavigation: 69bf622b2c5cd6afcf84196cbc7e66672c04c8b0
+  ReactNativeNavigation: 6113c2504bfe0735ee91bb768c4b29f8f008b20e
   RNCAsyncStorage: ee70d057f2576e8060891c98d8babddd46462682
   RNDeviceInfo: a74f061640be5fbb5485a4cc29f7eac534759391
   RNFirebase: f20e5e4ceaa632aebb1a29a9a91022ae0469c633

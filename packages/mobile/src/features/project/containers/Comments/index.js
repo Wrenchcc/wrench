@@ -120,7 +120,7 @@ class Comments extends PureComponent {
           headerAnimation={false}
           headerTitle={t('Comments:title')}
           footer={
-            <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
+            <KeyboardAccessoryView>
               <CommentField
                 onRef={this.setRef}
                 onSubmitEditing={this.onSubmitEditing}

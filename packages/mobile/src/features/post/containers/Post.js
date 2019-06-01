@@ -128,7 +128,7 @@ class PostContainer extends PureComponent {
           headerTitle={t('PostContainer:title')}
           headerAnimation={false}
           footer={
-            <KeyboardAccessoryView style={{ paddingLeft: 20, paddingRight: 20 }}>
+            <KeyboardAccessoryView>
               <CommentField
                 onRef={this.setRef}
                 onSubmitEditing={this.onSubmitEditing}
