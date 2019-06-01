@@ -33,7 +33,7 @@ function Notifications({
     )
 
     return () => componentAppearListener.remove()
-  }, [])
+  }, [componentId])
 
   const hasNotifications = notifications && notifications.length > 0
 

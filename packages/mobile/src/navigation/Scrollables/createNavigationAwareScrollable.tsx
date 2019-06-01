@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useRef, useCallback } from 'react'
-import { View } from 'react-native'
+import { View, Keyboard, TextInput } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { ListContext } from '../Layout/context'
 
-function createNavigationAwareScrollable(Component) {
+const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
+
+export default function createNavigationAwareScrollable(Component) {
   return ({
     contentContainerStyle = {},
     borderSeparator,
@@ -20,6 +22,7 @@ function createNavigationAwareScrollable(Component) {
     paddingHorizontal = 20,
     spacingSeparator,
     tabIndex,
+    componentId,
     ...props
   }) => {
     const {
@@ -32,6 +35,7 @@ function createNavigationAwareScrollable(Component) {
 
     const scrollRef = useRef()
 
+    // Scroll to top
     useEffect(() => {
       const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
         ({ selectedTabIndex, unselectedTabIndex }) => {
@@ -43,6 +47,36 @@ function createNavigationAwareScrollable(Component) {
       )
 
       return () => bottomTabEventListener.remove()
+    }, [scrollRef])
+
+    // useEffect(() => {
+    //   const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
+    //     Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => {
+    //       if (componentId === id) {
+    //         const currentlyFocusedField = TextInput.State.currentlyFocusedField()
+    //         const responder = scrollRef.current.getNode().getScrollResponder()
+    //         if (currentlyFocusedField && responder) {
+    //           responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
+    //         }
+    //       }
+    //     })
+    //   })
+    //
+    //   return () => keyboardEventListener.remove()
+    // }, [componentId])
+
+    // Scroll to input
+    // This needs to be run one at a time
+    useEffect(() => {
+      const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
+        const currentlyFocusedField = TextInput.State.currentlyFocusedField()
+        const responder = scrollRef.current.getNode().getScrollResponder()
+        if (currentlyFocusedField && responder) {
+          responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
+        }
+      })
+
+      return () => keyboardEventListener.remove()
     }, [])
 
     const onEndReached = useCallback(() => {
@@ -70,7 +104,7 @@ function createNavigationAwareScrollable(Component) {
         onEndReached={onEndReached}
         refreshing={isRefetching}
         initialNumToRender={initialNumToRender}
-        ListFooterComponent={hasNextPage ? renderLoader() : null}
+        ListFooterComponent={hasNextPage && renderLoader()}
         ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
@@ -91,5 +125,3 @@ function createNavigationAwareScrollable(Component) {
     )
   }
 }
-
-export default createNavigationAwareScrollable

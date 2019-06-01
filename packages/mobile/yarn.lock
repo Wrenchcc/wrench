@@ -5762,11 +5762,6 @@ react-lifecycles-compat@2.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
-react-lifecycles-compat@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
-  integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
 react-native-actionsheet@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
@@ -5847,10 +5842,10 @@ react-native-linear-gradient@^2.5.4:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
   integrity sha512-FF1NhlerA4uBiS0gFIHa4FBp8/aftv4vPj14Y47lGNkYjSI94tnI6oYO3EfUxXjEyCUPiOVNKZOB9kScyjc5Ew==
 
-react-native-navigation@^2.20.2:
-  version "2.20.2"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.20.2.tgz#8019a92bd20b707f01b18ff0bac222639655bd5e"
-  integrity sha512-Ok1x2bBFLcIGzYF5k9SFikkUSDr4MWp1zLYy6KernL4g20DE9flgPphOrllbOEDSA87NwDUv+QsUPbpOPeW1iw==
+react-native-navigation@^2.21.0:
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.21.0.tgz#e35aa0934852d3423527da0452c2080566ff4666"
+  integrity sha512-6dmwx89OuQrjDXbc4RBT5iHkO50pWBdecFPozmMxWE+RrurjCtkKhEHBuYDPL9bEwrnmpnoAiIp/FaTqrq3p4Q==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -5896,7 +5891,7 @@ react-native-splash-screen@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
   integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
 
-react-native-tab-view@^2.3.0, react-native-tab-view@^2.4.0:
+react-native-tab-view@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.4.0.tgz#0f6092761502da78a89b2600d3d5c1bd25c484f5"
   integrity sha512-SRD+UvzAfKPCvTwMn28+3pw5FBRheveZnVdXhsejUABHAonnW5s402S66jp6nq0h5a3fmLVxqvw+doijUxXTHQ==
@@ -5997,15 +5992,6 @@ react-native@v0.59.8:
     ws "^1.1.5"
     xmldoc "^0.4.0"
     yargs "^9.0.0"
-
-react-navigation-tabs@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/react-navigation-tabs/-/react-navigation-tabs-2.1.3.tgz#fa91f44d824086fb528840e0e5764bea779f0810"
-  integrity sha512-Fh/aSek8LP/CpLSQEYwphrTHVOLiu64MTCDjm3xBMJYa/D4u6IXL3qirYRnR/tKBTqAMJ6csamwU23ZfyqhCSQ==
-  dependencies:
-    hoist-non-react-statics "^3.3.0"
-    react-lifecycles-compat "^3.0.4"
-    react-native-tab-view "^2.3.0"
 
 react-proxy@^1.1.7:
   version "1.1.8"

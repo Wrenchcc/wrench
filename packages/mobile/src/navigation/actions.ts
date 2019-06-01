@@ -69,10 +69,7 @@ export function navigate(screen, { options, ...params } = {}) {
 }
 
 export const navigateBack = () => Navigation.pop(componentId)
-
-export const resetNavigation = () => {
-  Navigation.popToRoot(componentId)
-}
+export const resetNavigation = () => Navigation.popToRoot(componentId)
 
 export const navigateToFeed = () => navigateTo(SCREENS.FEED)
 export const navigateToProject = params => navigateTo(SCREENS.PROJECT, params)

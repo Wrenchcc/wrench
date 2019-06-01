@@ -52,7 +52,7 @@
     "react-native-gesture-handler": "^1.2.1",
     "react-native-haptic-feedback": "^1.8.0",
     "react-native-linear-gradient": "^2.5.4",
-    "react-native-navigation": "^2.20.2",
+    "react-native-navigation": "^2.21.0",
     "react-native-permissions": "^2.0.0-alpha.1",
     "react-native-pinchable": "^0.1.2",
     "react-native-rate": "^1.1.6",
