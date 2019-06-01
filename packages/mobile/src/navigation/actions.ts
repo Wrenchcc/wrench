@@ -10,7 +10,10 @@ import { SCREENS } from './constants'
 let componentId
 
 Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => {
-  componentId = id
+  // NOTE: If overlay is open do not update the componentId, push etc will stop working
+  if (id !== SCREENS.MENTION) {
+    componentId = id
+  }
 })
 
 export function navigateTo(screen, { options, ...params } = {}) {

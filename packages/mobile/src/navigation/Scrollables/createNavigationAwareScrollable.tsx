@@ -49,35 +49,21 @@ export default function createNavigationAwareScrollable(Component) {
       return () => bottomTabEventListener.remove()
     }, [scrollRef])
 
-    // useEffect(() => {
-    //   const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
-    //     Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => {
-    //       if (componentId === id) {
-    //         const currentlyFocusedField = TextInput.State.currentlyFocusedField()
-    //         const responder = scrollRef.current.getNode().getScrollResponder()
-    //         if (currentlyFocusedField && responder) {
-    //           responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
-    //         }
+    // Scroll to input
+    // TODO: Only on current screen where input is placed
+    // if (tabIndex === 0) {
+    //   useEffect(() => {
+    //     const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
+    //       const currentlyFocusedField = TextInput.State.currentlyFocusedField()
+    //       const responder = scrollRef.current.getNode().getScrollResponder()
+    //       if (currentlyFocusedField && responder) {
+    //         responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
     //       }
     //     })
-    //   })
     //
-    //   return () => keyboardEventListener.remove()
-    // }, [componentId])
-
-    // Scroll to input
-    // This needs to be run one at a time
-    // useEffect(() => {
-    //   const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
-    //     const currentlyFocusedField = TextInput.State.currentlyFocusedField()
-    //     const responder = scrollRef.current.getNode().getScrollResponder()
-    //     if (currentlyFocusedField && responder) {
-    //       responder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
-    //     }
-    //   })
-    //
-    //   return () => keyboardEventListener.remove()
-    // }, [])
+    //     return () => keyboardEventListener.remove()
+    //   }, [])
+    // }
 
     const onEndReached = useCallback(() => {
       if (hasNextPage && isRefetching !== true && !isFetching) {

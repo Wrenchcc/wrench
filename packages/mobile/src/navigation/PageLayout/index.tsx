@@ -15,7 +15,7 @@ type Props = {
   headerAnimation: bool
 }
 
-function PageLayout({ children, headerTitle, headerRight, footer, headerAnimation }: Props) {
+function PageLayout({ children, headerTitle, headerRight, stickyFooter, headerAnimation }: Props) {
   const scrollY = useRef(new Value(-OFFSET))
 
   return (
@@ -45,7 +45,7 @@ function PageLayout({ children, headerTitle, headerRight, footer, headerAnimatio
         ),
       })}
 
-      {footer}
+      {stickyFooter}
     </Fragment>
   )
 }

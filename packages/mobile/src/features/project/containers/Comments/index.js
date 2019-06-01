@@ -5,7 +5,8 @@ import withTranslation from 'i18n/withTranslation'
 import { PageLayout, FlatList } from 'navigation'
 import { getComments } from 'graphql/queries/comment/getComments'
 import { addComment } from 'graphql/mutations/comment/addComment'
-import { CommentItem, CommentField, KeyboardAccessoryView, Mention } from 'ui'
+import CommentField from 'components/CommentField'
+import { CommentItem, KeyboardAccessoryView, Mention } from 'ui'
 import { isIphone, hasNotch } from 'utils/platform'
 
 // TODO: Make platform specific
@@ -119,7 +120,7 @@ class Comments extends PureComponent {
         <PageLayout
           headerAnimation={false}
           headerTitle={t('Comments:title')}
-          footer={
+          stickyFooter={
             <KeyboardAccessoryView>
               <CommentField
                 onRef={this.setRef}
@@ -140,6 +141,7 @@ class Comments extends PureComponent {
               paddingTop: 0,
               paddingLeft: 0,
               paddingRight: 0,
+              paddingBottom: 60,
             }}
             ListHeaderComponent={this.renderHeader}
             keyExtractor={item => item.node.id}

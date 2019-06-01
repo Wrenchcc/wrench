@@ -3,31 +3,22 @@ import { View } from 'react-native'
 import { InfiniteList, MentionUser, NoResults } from 'ui'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { dismissMention } from 'navigation'
+import { isIphone, hasNotch } from 'utils/platform'
 
-const styles = {
-  container: {
-    width: '100%',
-    left: 0,
-    bottom: 400,
-    top: 0,
-    backgroundColor: 'white',
-    position: 'absolute',
-  },
-}
-
-// import { isIphone } from 'utils/platform'
-
-// const keyboardHideEvent = isIphone ? 'keyboardWillHide' : 'keyboardDidHide'
-//
-// // Hide mention when scrolling parent list ie keyboard hides
-// this.keyboardHideEventListener = Keyboard.addListener(
-//   keyboardHideEvent,
-//   this.props.closeMention
-// )
+const OFFSET_BOTTOM = isIphone ? 351 : 70 // TODO: Get keyboard height
 
 function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage }) {
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        width: '100%',
+        left: 0,
+        top: hasNotch ? 40 : 20, // TODO: Get header height
+        bottom: OFFSET_BOTTOM,
+        backgroundColor: 'white',
+        position: 'absolute',
+      }}
+    >
       <InfiniteList
         defaultPadding
         keyboardShouldPersistTaps="handled"

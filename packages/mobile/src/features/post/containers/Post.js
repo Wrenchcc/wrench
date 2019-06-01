@@ -7,7 +7,8 @@ import withTranslation from 'i18n/withTranslation'
 import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
 import { addComment } from 'graphql/mutations/comment/addComment'
-import { Post, CommentItem, CommentField, KeyboardAccessoryView, Mention } from 'ui'
+import CommentField from 'components/CommentField'
+import { Post, CommentItem, KeyboardAccessoryView, Mention } from 'ui'
 import { isIphone, hasNotch } from 'utils/platform'
 
 // TODO: Make platform specific
@@ -127,7 +128,7 @@ class PostContainer extends PureComponent {
         <PageLayout
           headerTitle={t('PostContainer:title')}
           headerAnimation={false}
-          footer={
+          stickyFooter={
             <KeyboardAccessoryView>
               <CommentField
                 onRef={this.setRef}
@@ -149,6 +150,7 @@ class PostContainer extends PureComponent {
               paddingTop: 0,
               paddingLeft: 0,
               paddingRight: 0,
+              paddingBottom: 60,
             }}
             ListHeaderComponent={this.renderHeader}
             data={comments}

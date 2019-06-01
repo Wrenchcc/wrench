@@ -78,7 +78,7 @@ function Project({
           <Avatar uri={(project.user && project.user.avatarUrl) || ''} onPress={handleNavigation} />
         )
       }
-      footer={
+      stickyFooter={
         project.projectPermissions && (
           <Footer
             name={project.title}
