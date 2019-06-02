@@ -17,7 +17,7 @@ const Touchable = ({
     }
 
     onPress()
-  }, [hapticFeedback])
+  }, [hapticFeedback, onPress])
 
   return (
     <BaseButton

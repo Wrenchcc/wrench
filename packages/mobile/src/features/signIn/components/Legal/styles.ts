@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
+import UiTouchable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
@@ -15,6 +16,6 @@ export const Text = styled(UiText)`
   font-size: 12;
 `
 
-export const Link = styled.TouchableOpacity`
+export const Link = styled(UiTouchable)`
   margin-top: -2px;
 `

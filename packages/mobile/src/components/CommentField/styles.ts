@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 import styled from 'styled-components'
 import UiInput from 'ui/Input'
+import UiTouchable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
@@ -18,6 +19,6 @@ export const Input = styled(UiInput)`
   font-size: 15;
 `
 
-export const Button = styled.TouchableOpacity`
+export const Button = styled(UiTouchable)`
   align-self: center;
 `

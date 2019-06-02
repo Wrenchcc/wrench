@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { hasNotch } from 'utils/platform'
+import UiTouchable from 'ui/Touchable'
 
 const TOP = hasNotch ? 65 : 25
 
@@ -12,7 +13,7 @@ export const Top = styled.View`
   max-width: 170;
 `
 
-export const Backdrop = styled.TouchableOpacity`
+export const Backdrop = styled(UiTouchable)`
   width: 100%;
   height: ${props => (props.active ? '100%' : 0)};
   position: absolute

@@ -62,7 +62,7 @@
     "react-native-webview": "5.10.0",
     "react-spring": "^8.0.20",
     "reanimated-bottom-sheet": "^1.0.0-alpha.8",
-    "styled-components": "^v4.2.0",
+    "styled-components": "^v4.2.1",
     "unstated": "^2.1.1",
     "url": "^0.11.0"
   },

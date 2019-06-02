@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { TouchableWithoutFeedback, Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
@@ -7,32 +7,65 @@ import FlashMode from '../FlashMode'
 import CameraType from '../CameraType'
 import PointOfInterest from '../PointOfInterest'
 import { TakePicture } from './styles'
-import { changeFlashMode, changeCameraType, DEFAULT_CAMERA } from './utils'
+
+const { Constants } = RNCamera
 
 const PERMISSION = Platform.OS === 'ios' ? IOS_PERMISSIONS.CAMERA : ANDROID_PERMISSIONS.CAMERA
 
-function Camera() {
+function Camera({ onTakePicture }) {
+  const [isLoading, setLoading] = useState(true)
+  const [permission, setPermission] = useState(false)
+  const [cameraType, setCameraType] = useState(Constants.Type.back)
+  const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
+  const autoFocusPointOfInterest = null
+
   useEffect(() => {
     check(PERMISSION).then(response => {
-      this.setState({
-        isLoading: false,
-        cameraPermission: response,
-      })
+      setLoading(false)
+      setPermission(response)
     })
   }, [])
 
+  const takePicture = async camera => {
+    const data = await camera.takePictureAsync()
+
+    onTakePicture(data)
+  }
+
+  const changeFlashMode = () => {
+    const mode = flashMode === Constants.FlashMode.on ? Constants.FlashMode.off : Constants.FlashMode.on
+
+    setFlashMode(mode)
+  }
+
+  const changeCameraType = () => {
+    const type = cameraType === Constants.Type.back ? Constants.Type.front : Constants.Type.back
+
+    setCameraType(type)
+  }
+
+  const setFocus = ({ nativeEvent }) => {
+    // this.setState({
+    //   autoFocusPointOfInterest: { x: nativeEvent.locationX, y: nativeEvent.locationY },
+    // })
+  }
+
   if (isLoading) return null
 
-  if (cameraPermission !== RESULTS.GRANTED) {
+  if (permission !== RESULTS.GRANTED) {
     return (
-      <AskForPermission permission={PERMISSION} onSuccess={permissionAuthorized} type="camera" />
+      <AskForPermission
+        permission={PERMISSION}
+        onSuccess={() => setPermission(RESULTS.GRANTED)}
+        type="camera"
+      />
     )
   }
 
   return (
-    <TouchableWithoutFeedback onPressIn={this.setFocus}>
+    <TouchableWithoutFeedback onPressIn={setFocus}>
       <RNCamera
-        type={type}
+        type={cameraType}
         flashMode={flashMode}
         style={{ flex: 1 }}
         autoFocusPointOfInterest={autoFocusPointOfInterest}
@@ -42,9 +75,9 @@ function Camera() {
         {({ camera }) => (
           <Fragment>
             <PointOfInterest coordinates={autoFocusPointOfInterest} />
-            <CameraType onPress={this.changeCameraType} />
-            <TakePicture onPress={() => this.takePicture(camera)} hapticFeedback="impactLight" />
-            <FlashMode onPress={this.changeFlashMode} flashMode={flashMode} />
+            <CameraType onPress={changeCameraType} />
+            <TakePicture onPress={() => takePicture(camera)} hapticFeedback="impactLight" />
+            <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
           </Fragment>
         )}
       </RNCamera>
@@ -53,52 +86,3 @@ function Camera() {
 }
 
 export default Camera
-
-// export default class Camera extends PureComponent {
-//
-//
-//   state = {
-//     cameraPermission: false,
-//     flashMode: DEFAULT_CAMERA.FLASH_MODE,
-//     isLoading: true,
-//     type: DEFAULT_CAMERA.TYPE,
-//   }
-//
-//
-//
-//
-//   permissionAuthorized = () => {
-//     this.setState({ cameraPermission: RESULTS.GRANTED })
-//   }
-//
-//   changeFlashMode = () => {
-//     this.setState(changeFlashMode)
-//   }
-//
-//   changeCameraType = () => {
-//     this.setState(changeCameraType)
-//   }
-//
-//   takePicture = async camera => {
-//     const data = await camera.takePictureAsync()
-//
-//     this.props.onTakePicture(data)
-//   }
-//
-//   setFocus = ({ nativeEvent }) => {
-//     this.setState({
-//       autoFocusPointOfInterest: { x: nativeEvent.locationX, y: nativeEvent.locationY },
-//     })
-//   }
-//
-//   render() {
-//     const { cameraPermission, isLoading, autoFocusPointOfInterest, flashMode, type } = this.state
-//
-//
-//
-//
-//     return (
-//
-//     )
-//   }
-// }
