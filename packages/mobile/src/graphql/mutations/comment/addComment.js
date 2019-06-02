@@ -1,6 +1,7 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { prepend } from 'ramda'
+import postInfo from 'graphql/fragments/post/postInfo'
 import commentInfo from 'graphql/fragments/comment/commentInfo'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { CommentsQuery } from 'graphql/queries/comment/getComments'
@@ -38,9 +39,48 @@ const addCommentOptions = {
         },
       },
       update: (proxy, { data: { addComment } }) => {
-        try {
-          const { user } = proxy.readQuery({ query: CurrentUserQuery })
+        const { user } = proxy.readQuery({ query: CurrentUserQuery })
 
+        // Post
+        try {
+          const data = proxy.readFragment({
+            id: `Post:${postId}`,
+            fragment: postInfo,
+            fragmentName: 'postInfo',
+          })
+
+          const edges = prepend(
+            {
+              node: {
+                id: optimisticId(),
+                ...addComment,
+                user,
+                __typename: 'Comment',
+              },
+              __typename: 'CommentEdge',
+            },
+            data.comments.edges
+          )
+
+          proxy.writeFragment({
+            id: `Post:${postId}`,
+            fragment: postInfo,
+            fragmentName: 'postInfo',
+            data: {
+              ...data,
+              comments: {
+                ...data.comments,
+                edges,
+                totalCount: data.comments.totalCount + 1,
+              },
+            },
+          })
+        } catch (err) {
+          logError(err)
+        }
+
+        // Comment list
+        try {
           // Is reply
           if (commentId) {
             // Get comment fragment

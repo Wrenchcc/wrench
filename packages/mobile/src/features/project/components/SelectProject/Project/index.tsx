@@ -1,11 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { pathOr } from 'ramda'
 import { Text, Followers } from 'ui'
 import { check } from 'images'
 import { Base, Cover, Middle, Content, Icon } from './styles'
 
-const Project = ({ id, files, title, followers, onPress, selected }) => {
+function Project({ id, files, title, followers, onPress, selected }) {
   const image = pathOr(null, ['edges', 0, 'node'], files)
 
   return (
@@ -21,15 +20,6 @@ const Project = ({ id, files, title, followers, onPress, selected }) => {
       </Middle>
     </Base>
   )
-}
-
-Project.propTypes = {
-  followers: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
-  files: PropTypes.object,
-  onPress: PropTypes.func.isRequired,
-  selected: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
 }
 
 export default Project

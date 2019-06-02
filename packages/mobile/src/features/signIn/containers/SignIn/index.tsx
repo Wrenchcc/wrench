@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import Facebook from '../../components/Facebook'
-import { Base, Inner, Content, Video, Icon, Description, Headline, Legal, Overlay } from './styles'
+import Legal from '../../components/Legal'
+import { Base, Inner, Content, Video, Icon, Description, Headline, Overlay } from './styles'
 
 function SignIn() {
   const { t } = useTranslation()

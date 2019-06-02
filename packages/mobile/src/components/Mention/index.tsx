@@ -29,13 +29,14 @@ function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPr
     >
       <InfiniteList
         defaultPadding
+        keyboardDismissMode="none"
         ListEmptyComponent={<NoResults />}
         data={users}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
+        keyExtractor={({ node }) => node.id}
         renderItem={({ item }) => <MentionUser user={item.node} onPress={onPress} />}
         borderSeparator
       />

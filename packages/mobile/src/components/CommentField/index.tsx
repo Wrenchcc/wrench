@@ -7,21 +7,19 @@ import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { addComment } from 'graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
+import { MENTION } from './constants'
 import { Base, Input, Button } from './styles'
-
-const PATTERN = '\\@[a-z0-9_-]+|\\@'
-const TRIGGER = '@'
-const EMPTY = ' '
 
 function CommentField({ addComment, postId, commentId, username }) {
   const inputRef = useRef()
   const { t } = useTranslation()
-  const [text, setText] = useState('')
   const [isTracking, setTracking] = useState(false)
+  const [text, setText] = useState('')
 
+  // When selecting user
   useEffect(() => {
     if (username) {
-      setText(`${TRIGGER}${username} `)
+      setText(`${MENTION.TRIGGER}${username} `)
       inputRef.current.focus()
     }
   }, [inputRef, username, commentId])
@@ -32,29 +30,32 @@ function CommentField({ addComment, postId, commentId, username }) {
 
       const lastChar = text.substr(text.length - 1)
 
-      if (lastChar === TRIGGER) {
+      if (lastChar === MENTION.TRIGGER) {
         setTracking(true)
         showMention({
+          query: '',
           onPress: user => {
             dismissMention()
-            setText(`${TRIGGER}${user.username} `)
+            setText(`${MENTION.TRIGGER}${user.username} `)
           },
         })
-      } else if ((lastChar === EMPTY && isTracking) || text === '') {
+      } else if ((lastChar === MENTION.EMPTY && isTracking) || text === '') {
         setTracking(false)
         dismissMention()
       }
 
       if (isTracking) {
-        const pattern = new RegExp(PATTERN, 'gi')
+        const pattern = new RegExp(MENTION.PATTERN, 'gi')
         const keywordArray = text.match(pattern)
         if (keywordArray && !!keywordArray.length) {
           const lastKeyword = keywordArray[keywordArray.length - 1]
+          setText(lastKeyword.replace(MENTION.TRIGGER, ''))
+
           showMention({
-            query: lastKeyword.replace(TRIGGER, ''),
+            query: '',
             onPress: user => {
               dismissMention()
-              setText(`${TRIGGER}${user.username} `)
+              setText(lastKeyword.replace(MENTION.TRIGGER, ''))
             },
           })
         }
@@ -64,10 +65,7 @@ function CommentField({ addComment, postId, commentId, username }) {
   )
 
   const handleSubmit = useCallback(() => {
-    alert(text)
     // addComment(postId, text, commentId)
-    setText('')
-    Keyboard.dismiss()
   }, [postId, text, commentId])
 
   return (
@@ -75,12 +73,12 @@ function CommentField({ addComment, postId, commentId, username }) {
       {({ data, loading }) => {
         if (loading) return null
 
-        // {/* onSubmitEditing={text.length > 0 && handleSubmit} */}
         return (
           <Base>
             <Avatar uri={data && data.user.avatarUrl} />
             <Input
               ref={inputRef}
+              onSubmitEditing={(text.length > 0 && handleSubmit) || null}
               placeholder={t('CommentField:placeholder')}
               placeholderTextColor={COLORS.LIGHT_GREY}
               keyboardType="twitter"

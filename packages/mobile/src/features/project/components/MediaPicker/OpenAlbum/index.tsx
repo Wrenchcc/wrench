@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { Icon } from 'ui'
 import { album as albumIcon } from 'images'
@@ -24,10 +23,6 @@ function OpenAlbum({ onPress }) {
       <Icon source={albumIcon} onPress={onPress} />
     </View>
   )
-}
-
-OpenAlbum.propTypes = {
-  onPress: PropTypes.func.isRequired,
 }
 
 export default OpenAlbum

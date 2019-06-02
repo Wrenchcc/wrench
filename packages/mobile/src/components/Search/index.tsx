@@ -1,7 +1,6 @@
-import React, { PureComponent, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useCallback, Fragment } from 'react'
 import { Dimensions, Keyboard } from 'react-native'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
 import { FONTS } from 'ui/constants'
@@ -39,65 +38,66 @@ const styles = {
   },
 }
 
-class Search extends PureComponent {
-  state = {
-    index: 0, // eslint-disable-line
-    routes, // eslint-disable-line
-  }
+function Search({ query, active }) {
+  const { t } = useTranslation()
+  const [index, setIndex] = useState(0)
 
-  handleIndexChange = index => {
-    Keyboard.dismiss()
-    this.setState({ index }) // eslint-disable-line
-  }
-
-  renderTabBar = props => (
-    <TabBar
-      {...props}
-      style={styles.tabBar}
-      labelStyle={styles.labelStyle}
-      indicatorStyle={styles.indicatorStyle}
-      getLabelText={({ route }) => this.props.t(`Search:${route.key}`)}
-      swipeEnabled
-      scrollEnabled={false}
-    />
+  const handleIndexChange = useCallback(
+    index => {
+      Keyboard.dismiss()
+      setIndex(index)
+    },
+    [index]
   )
 
-  // TODO: Search in active index only
-  renderScene = ({ route }) => {
+  const renderPager = props => (
+    <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
+  )
+
+  const renderScene = ({ route }) => {
     switch (route.key) {
       case 'users':
-        return <Users query={this.props.query} />
+        return <Users query={query} />
       case 'projects':
-        return <Projects query={this.props.query} />
+        return <Projects query={query} />
       default:
         return null
     }
   }
 
-  renderPager = props => (
-    <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      style={styles.tabBar}
+      labelStyle={styles.labelStyle}
+      indicatorStyle={styles.indicatorStyle}
+      getLabelText={({ route }) => t(`Search:${route.key}`)}
+      swipeEnabled
+      scrollEnabled={false}
+    />
   )
 
-  render() {
-    if (!this.props.active) return null
+  if (!active) return null
 
-    return (
-      <Base>
-        <TabView
-          navigationState={this.state}
-          renderScene={this.renderScene}
-          renderTabBar={this.renderTabBar}
-          renderPager={this.renderPager}
-          onIndexChange={this.handleIndexChange}
-          initialLayout={initialLayout}
-          swipeEnabled
-          lazy
-          animationEnabled
-          useNativeDriver
-        />
-      </Base>
-    )
-  }
+  return (
+    <Base>
+      <TabView
+        navigationState={{
+          index,
+          routes,
+        }}
+        renderScene={renderScene}
+        renderTabBar={renderTabBar}
+        renderPager={renderPager}
+        onIndexChange={handleIndexChange}
+        initialLayout={initialLayout}
+        swipeEnabled
+        lazy
+        animationEnabled
+        useNativeDriver
+      />
+    </Base>
+  )
 }
 
-export default withTranslation('Search')(Search)
+export default Search

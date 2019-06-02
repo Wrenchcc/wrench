@@ -23,11 +23,12 @@ function Project({
 }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
+  // TODO: username is not return in time, use cache?
   const handleNavigation = useCallback(
     () => navigate(SCREENS.USER, {
-      username: project.user.username,
+      username: project.user && project.user.username,
     }),
-    [project]
+    [project.user, project]
   )
 
   const hasPosts = posts && posts.length > 0

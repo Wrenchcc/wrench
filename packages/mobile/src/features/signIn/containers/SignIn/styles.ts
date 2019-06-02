@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import RVideo from 'react-native-video'
-import { Legal as UiLegal, Text, Title } from 'ui'
+import { Text, Title } from 'ui'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.SafeAreaView`
@@ -44,8 +44,4 @@ export const Description = styled(Text)`
   padding-top: 30;
   line-height: 30;
   color: ${COLORS.WHITE};
-`
-
-export const Legal = styled(UiLegal)`
-  margin-top: 15;
 `

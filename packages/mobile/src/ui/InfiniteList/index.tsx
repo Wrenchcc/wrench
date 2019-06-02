@@ -1,30 +1,9 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { FlatList, View } from 'react-native'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 
 class InfiniteList extends PureComponent {
-  static propTypes = {
-    borderSeparator: PropTypes.bool,
-    contentContainerStyle: PropTypes.object,
-    data: PropTypes.array,
-    defaultPaddingTop: PropTypes.bool,
-    fetchMore: PropTypes.func,
-    hasNextPage: PropTypes.bool,
-    initialNumToRender: PropTypes.number,
-    isFetching: PropTypes.bool,
-    isRefetching: PropTypes.bool,
-    ListEmptyComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-    paddingBottom: PropTypes.number,
-    paddingHorizontal: PropTypes.number,
-    polling: PropTypes.bool,
-    refetch: PropTypes.any,
-    renderItem: PropTypes.func,
-    scrollRef: PropTypes.func,
-    spacingSeparator: PropTypes.bool,
-  }
-
   onEndReached = () => {
     if (this.props.hasNextPage && this.props.isRefetching !== true && !this.props.isFetching) {
       this.props.fetchMore()
