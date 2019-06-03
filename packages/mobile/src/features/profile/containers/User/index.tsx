@@ -1,7 +1,8 @@
 import React from 'react'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
 import { PageLayout, FlatList } from 'navigation'
-import { Post, Share } from 'ui'
+import Post from 'components/Post'
+import { Share } from 'ui'
 import FollowingProjects from 'features/profile/components/FollowingProjects'
 import Header from 'features/profile/components/Header'
 

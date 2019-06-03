@@ -29,7 +29,7 @@ function EditPost({ post, color, onSubmit, hasChanged, editPost }: Props) {
     editPost(post, {
       caption: value,
     })
-  }, [post, value])
+  }, [post, value, onSubmit])
 
   return (
     <Input

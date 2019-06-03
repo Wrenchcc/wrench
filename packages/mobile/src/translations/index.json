@@ -1,5 +1,20 @@
 {
   "en": {
+    "CommentField": {
+      "placeholder": "Add a comment...",
+      "post": "Post"
+    },
+    "Post": {
+      "options": {
+        "alertTitle": "Are you sure?",
+        "alertDescription": "If you going back now your edit will be deleted.",
+        "report": "Report",
+        "edit": "Edit",
+        "delete": "Delete",
+        "discard": "Discard",
+        "cancel": "Cancel"
+      }
+    },
     "Search": {
       "users": "People",
       "projects": "Projects"
@@ -151,16 +166,16 @@
     "Facebook": {
       "button": "Continue with Facebook"
     },
+    "Legal": {
+      "description": "By continuing you agree to Wrench's ",
+      "link": "terms and conditions."
+    },
     "Onboarding": {
       "next": "Next"
     },
     "SignIn": {
       "headline": "Post, \nexplore \nand learn.",
       "description": "Post your projects, watch others, discuss and learn together."
-    },
-    "CommentField": {
-      "placeholder": "Add a comment...",
-      "post": "Post"
     },
     "CommentItem": {
       "reply": "Reply",
@@ -209,10 +224,6 @@
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
     },
-    "Legal": {
-      "description": "By continuing you agree to Wrench's ",
-      "link": "terms and conditions."
-    },
     "LoadNewer": {
       "button": "New posts"
     },
@@ -224,17 +235,6 @@
       "comment": "Commented on your project",
       "reply": "Replied to your comment",
       "mention": "Mentioned you in a comment"
-    },
-    "Post": {
-      "options": {
-        "alertTitle": "Are you sure?",
-        "alertDescription": "If you going back now your edit will be deleted.",
-        "report": "Report",
-        "edit": "Edit",
-        "delete": "Delete",
-        "discard": "Discard",
-        "cancel": "Cancel"
-      }
     },
     "PostProgress": {
       "description": "Posting..."
@@ -265,6 +265,21 @@
     }
   },
   "sv": {
+    "CommentField": {
+      "placeholder": "Skriv en kommentar...",
+      "post": "Skicka"
+    },
+    "Post": {
+      "options": {
+        "alertTitle": "Är du säker?",
+        "alertDescription": "Om du backar nu kommer din redigering att kastas.",
+        "report": "Rapportera",
+        "edit": "Redigera",
+        "delete": "Radera",
+        "discard": "Släng",
+        "cancel": "Avbryt"
+      }
+    },
     "Search": {
       "users": "Personer",
       "projects": "Projekt"
@@ -416,16 +431,16 @@
     "Facebook": {
       "button": "Logga in med Facebook"
     },
+    "Legal": {
+      "description": "Genom att fortsätta hålla du med Wrench's ",
+      "link": "användarvillkor."
+    },
     "Onboarding": {
       "next": "Nästa"
     },
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",
       "description": "Dela dina projekt, följ andras, diskutera och lär av varandra."
-    },
-    "CommentField": {
-      "placeholder": "Skriv en kommentar...",
-      "post": "Skicka"
     },
     "CommentItem": {
       "reply": "Svara",
@@ -473,10 +488,6 @@
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"
     },
-    "Legal": {
-      "description": "Genom att fortsätta hålla du med Wrench's ",
-      "link": "användarvillkor."
-    },
     "LoadNewer": {
       "button": "Nya inlägg"
     },
@@ -488,17 +499,6 @@
       "comment": "Kommenterade på ditt projekt",
       "reply": "Svarade på din kommentar",
       "mention": "Nämnde dig i en kommentar"
-    },
-    "Post": {
-      "options": {
-        "alertTitle": "Är du säker?",
-        "alertDescription": "Om du backar nu kommer din redigering att kastas.",
-        "report": "Rapportera",
-        "edit": "Redigera",
-        "delete": "Radera",
-        "discard": "Släng",
-        "cancel": "Avbryt"
-      }
     },
     "PostProgress": {
       "description": "Sparar..."

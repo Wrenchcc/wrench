@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Layout, FlatList } from 'navigation'
 import { getRecentPosts } from 'graphql/queries/getExplore'
-import { Post } from 'ui'
+import Post from 'components/Post'
 import Popular from 'features/explore/components/Popular'
 
 function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {

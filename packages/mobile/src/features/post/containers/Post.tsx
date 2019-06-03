@@ -3,10 +3,11 @@ import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { PageLayout, FlatList } from 'navigation'
+import Post from 'components/Post'
 import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
-import { Post, CommentItem, KeyboardAccessoryView } from 'ui'
+import { CommentItem, KeyboardAccessoryView } from 'ui'
 
 // TODO: Load comment in top and scroll
 function PostContainer({

@@ -94,12 +94,15 @@ export function hideNotificationBadge() {
   })
 }
 
-export const navigateBack = () => Navigation.pop(componentId)
-export const resetNavigation = () => Navigation.popToRoot(componentId)
+export function navigateBack() {
+  Navigation.pop(componentId)
+}
+
+export function resetNavigation() {
+  Navigation.popToRoot(componentId)
+}
 
 export const navigateToFeed = () => navigateTo(SCREENS.FEED)
-export const navigateToProject = params => navigateTo(SCREENS.PROJECT, params)
-export const navigateToUser = params => navigateTo(SCREENS.USER, params)
 export const navigateToAddProject = params => showModal(SCREENS.ADD_PROJECT, params)
 export const navigateToAddProjectType = () => navigateTo(SCREENS.ADD_PROJECT_TYPE)
 export const navigateToAddPost = () => navigateTo(SCREENS.ADD_POST)
