@@ -4,6 +4,10 @@ import humanFormat from 'human-format'
 import resources from 'translations/index.json'
 import { getLocale } from './helpers'
 
+export * from './helpers'
+export * from './registerUserLocale'
+export { default as languages } from './languages'
+
 const languageDetector = {
   type: 'languageDetector',
   async: true,
@@ -41,7 +45,3 @@ i18next
       },
     },
   })
-
-export * from './helpers'
-export * from './registerUserLocale'
-export { default as languages } from './languages'
