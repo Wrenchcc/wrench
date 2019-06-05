@@ -5,7 +5,7 @@ import { RNCamera } from 'react-native-camera'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
 import CameraType from '../CameraType'
-import PointOfInterest from '../PointOfInterest'
+import AutoFocus from '../AutoFocus'
 import { TakePicture } from './styles'
 
 const { Constants } = RNCamera
@@ -17,6 +17,7 @@ function Camera({ onTakePicture }) {
   const [permission, setPermission] = useState(false)
   const [cameraType, setCameraType] = useState(Constants.Type.back)
   const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
+  const [autofocus, setAutofocus] = useState()
   const autoFocusPointOfInterest = null
 
   useEffect(() => {
@@ -45,9 +46,7 @@ function Camera({ onTakePicture }) {
   }
 
   const setFocus = ({ nativeEvent }) => {
-    // this.setState({
-    //   autoFocusPointOfInterest: { x: nativeEvent.locationX, y: nativeEvent.locationY },
-    // })
+    setAutofocus({ x: nativeEvent.locationX, y: nativeEvent.locationY })
   }
 
   if (isLoading) return null
@@ -74,7 +73,7 @@ function Camera({ onTakePicture }) {
       >
         {({ camera }) => (
           <Fragment>
-            <PointOfInterest coordinates={autoFocusPointOfInterest} />
+            {autofocus && <AutoFocus coordinates={autofocus} />}
             <CameraType onPress={changeCameraType} />
             <TakePicture onPress={() => takePicture(camera)} hapticFeedback="impactLight" />
             <FlashMode onPress={changeFlashMode} flashMode={flashMode} />

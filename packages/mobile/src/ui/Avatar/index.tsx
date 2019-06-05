@@ -16,7 +16,7 @@ function Avatar({
 }) {
   return (
     <View style={{ position: 'relative', height: size, width: size }}>
-      <Touchable onPress={onPress} style={style} disabled={disabled}>
+      <Touchable onPress={onPress} style={style} disabled={disabled || !onPress}>
         <Image
           placeholderDensity={3}
           source={{ uri }}

@@ -10,4 +10,5 @@ export const TakePicture = styled.TouchableOpacity`
   position: absolute;
   align-self: center;
   bottom: 20;
+  z-index: 110;
 `

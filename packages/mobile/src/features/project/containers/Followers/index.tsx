@@ -13,6 +13,8 @@ type Props = {
   hasNextPage: bool
 }
 
+const renderItem = ({ item }) => <User data={item.node} />
+
 function Followers({
   followers,
   fetchMore,
@@ -34,7 +36,7 @@ function Followers({
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => <User data={item.node} />}
+        renderItem={renderItem}
       />
     </PageLayout>
   )

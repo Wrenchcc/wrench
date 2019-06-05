@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import UiTouchable from 'ui/Touchable'
 
-export const Base = styled(UiTouchable)`
+export const Base = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: center;
