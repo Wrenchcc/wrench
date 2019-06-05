@@ -6,9 +6,10 @@ import Text from 'ui/Text'
 import { Base, Row, Comment, LoadMore } from './styles'
 
 function List({ data }) {
+  if (!data.comments.edges.length) return null
+
   const { t } = useTranslation()
   const { navigate } = useNavigation()
-  if (!data.comments.edges.length) return null
 
   const navigateToComments = useCallback(
     () => navigate(SCREENS.COMMENTS, {

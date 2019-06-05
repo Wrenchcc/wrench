@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { PixelRatio, Animated, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import Progress from './Progress'
 import { Base } from './styles'
 
 const AnimatedFastImage = Animated.createAnimatedComponent(FastImage)
@@ -74,28 +73,6 @@ function Image({
         priority={priority || IMAGE_PRIORITY.NORMAL}
         onLoad={onImageLoad}
       />
-      {false && (
-        <View
-          style={{
-            position: 'absolute',
-            flex: 1,
-            width: '100%',
-            height: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Progress
-            value={progress}
-            size={80}
-            thickness={1.5}
-            color="black"
-            unfilledColor="white"
-            animationMethod="spring"
-            animationConfig={{ speed: 4 }}
-          />
-        </View>
-      )}
     </Base>
   )
 }

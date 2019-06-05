@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from 'react'
+import React, { forwardRef, useRef, useEffect } from 'react'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { Field } from './styles'
@@ -30,12 +30,16 @@ export default forwardRef(function Input(
 
   if (autoFocus) {
     // TODO: RNN flicker when autoFocus and push animation
-    setTimeout(
-      () => {
-        if (inputRef.current) inputRef.current.focus()
-      },
-      waitForRender ? 600 : 0
-    )
+    useEffect(() => {
+      const wait = setTimeout(
+        () => {
+          if (inputRef.current) inputRef.current.focus()
+        },
+        waitForRender ? 600 : 0
+      )
+
+      return () => clearTimeout(wait)
+    })
   }
 
   return (

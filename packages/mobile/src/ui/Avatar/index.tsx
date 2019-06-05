@@ -8,42 +8,25 @@ import IsOnline from 'ui/IsOnline'
 function Avatar({
   uri,
   size = 30,
-  onPress,
+  onPress = null,
   disabled = false,
   isOnline = false,
   badgeSize,
   style = {},
 }) {
-  if (onPress) {
-    return (
-      <View style={{ position: 'relative', height: size, width: size }}>
-        <Touchable onPress={onPress} style={style} disabled={disabled}>
-          <Image
-            placeholderDensity={3}
-            source={{ uri }}
-            width={size}
-            height={size}
-            borderRadius={size / 2}
-            priority={IMAGE_PRIORITY.HIGH}
-          />
-          {isOnline && <IsOnline badgeSize={badgeSize} />}
-        </Touchable>
-      </View>
-    )
-  }
-
   return (
-    <View style={{ position: 'relative' }}>
-      <Image
-        placeholderDensity={3}
-        source={{ uri }}
-        width={size}
-        height={size}
-        style={style}
-        borderRadius={size / 2}
-        priority={IMAGE_PRIORITY.HIGH}
-      />
-      {isOnline && <IsOnline badgeSize={badgeSize} />}
+    <View style={{ position: 'relative', height: size, width: size }}>
+      <Touchable onPress={onPress} style={style} disabled={disabled}>
+        <Image
+          placeholderDensity={3}
+          source={{ uri }}
+          width={size}
+          height={size}
+          borderRadius={size / 2}
+          priority={IMAGE_PRIORITY.HIGH}
+        />
+        {isOnline && <IsOnline badgeSize={badgeSize} />}
+      </Touchable>
     </View>
   )
 }

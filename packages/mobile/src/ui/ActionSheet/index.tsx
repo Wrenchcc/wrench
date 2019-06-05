@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import NativeActionSheet from 'react-native-actionsheet'
 
 function ActionSheet({ options = [], isOpen, onClose = () => {}, ...restProps }) {
-  const selectAction = index => {
-    if (options[index] && typeof options[index].onSelect === 'function') {
-      options[index].onSelect()
-    }
-    onClose()
-  }
+  const selectAction = useCallback(
+    index => {
+      if (options[index] && typeof options[index].onSelect === 'function') {
+        options[index].onSelect()
+      }
+      onClose()
+    },
+    [index, onClose]
+  )
 
   const cancelButtonIndex = options.length - 1
 

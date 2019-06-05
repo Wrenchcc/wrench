@@ -1,19 +1,9 @@
 export default class TextExtraction {
-  /**
-   * @param {String} text - Text to be parsed
-   * @param {Object[]} patterns - Patterns to be used when parsed
-   *                              other options than pattern would be added to the parsed content
-   * @param {RegExp} patterns[].pattern - RegExp to be used for parsing
-   */
   constructor(text, patterns) {
     this.text = text
     this.patterns = patterns || []
   }
 
-  /**
-   * Returns parts of the text with their own props
-   * @return {Object[]} - props for all the parts of the text
-   */
   parse() {
     let parsedTexts = [{ children: this.text }]
     this.patterns.forEach(pattern => {
@@ -63,16 +53,6 @@ export default class TextExtraction {
     return parsedTexts.filter(t => !!t.children)
   }
 
-  // private
-
-  /**
-   * @param {Object} matchedPattern - pattern configuration of the pattern used to match the text
-   * @param {RegExp} matchedPattern.pattern - pattern used to match the text
-   * @param {String} text - Text matching the pattern
-   * @param {String[]} matches - Result of the RegExp.exec
-   * @param {Integer} index - Index of the matched string in the whole string
-   * @return {Object} props for the matched text
-   */
   getMatchedPart(matchedPattern, text, matches, index) {
     const props = {}
 
