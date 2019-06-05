@@ -6,6 +6,8 @@ import { Share } from 'ui'
 import FollowingProjects from 'features/profile/components/FollowingProjects'
 import Header from 'features/profile/components/Header'
 
+const renderItem = ({ item }) => <Post post={item.node} />
+
 function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const hasPosts = posts && posts.length > 0
 
@@ -28,7 +30,7 @@ function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, 
         isFetching={isFetching}
         hasNextPage={hasNextPage}
         keyExtractor={item => item.node.id}
-        renderItem={({ item }) => <Post post={item.node} />}
+        renderItem={renderItem}
       />
     </PageLayout>
   )

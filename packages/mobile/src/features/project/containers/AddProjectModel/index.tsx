@@ -1,35 +1,40 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { InteractionManager } from 'react-native'
 import { Subscribe } from 'unstated'
 import { addProject } from 'graphql/mutations/project/addProject'
-import { navigateToAddMedia } from 'navigation/actions'
+import { useNavigation } from 'navigation'
 import { AddContainer } from 'store'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
 
-function getActionRight(state, addProject, updateField, resetState) {
-  if (state.model) {
-    return () => {
-      updateField('isSaving', true)
-      addProject({
-        title: state.title,
-        projectTypeId: state.type.id,
-        modelId: state.model.id,
-      }).then(() => {
-        navigateToAddMedia()
-        InteractionManager.runAfterInteractions(resetState)
-      })
-    }
-  }
-
-  return null
-}
-
 function AddProjectModel({ addProject }) {
   const { t } = useTranslation()
+  const { navigate } = useNavigation()
+
+  const handleNavigation = useCallback(() => {
+    navigate(SCREENS.ADD_MEDIA)
+  }, [])
+
+  const getActionRight = (state, addProject, updateField, resetState) => {
+    if (state.model) {
+      return () => {
+        updateField('isSaving', true)
+        addProject({
+          title: state.title,
+          projectTypeId: state.type.id,
+          modelId: state.model.id,
+        }).then(() => {
+          handleNavigation()
+          InteractionManager.runAfterInteractions(resetState)
+        })
+      }
+    }
+
+    return null
+  }
 
   return (
     <Subscribe to={[AddContainer]}>

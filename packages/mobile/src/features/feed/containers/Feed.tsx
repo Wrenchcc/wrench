@@ -7,6 +7,8 @@ import registerForPushNotifications from 'utils/pushNotifications/registerForPus
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 
+const renderItem = ({ item }) => <Post post={item.node} />
+
 function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   useEffect(() => {
     registerForPushNotifications()
@@ -26,7 +28,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => <Post post={item.node} />}
+        renderItem={renderItem}
       />
     </Layout>
   )

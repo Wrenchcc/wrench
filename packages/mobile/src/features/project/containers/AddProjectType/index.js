@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
-import withTranslation from 'i18n/withTranslation'
+import { useTranslation } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
@@ -9,7 +9,8 @@ import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import ProjectCategories from 'features/project/components/ProjectCategories'
 
-function AddProjectType({ t }) {
+function AddProjectType() {
+  const { t } = useTranslation()
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(() => navigate(SCREENS.ADD_PROJECT_MODEL), [])
 
@@ -46,4 +47,4 @@ function AddProjectType({ t }) {
   )
 }
 
-export default withTranslation('AddProjectType')(AddProjectType)
+export default AddProjectType

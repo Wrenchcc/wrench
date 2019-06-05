@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import { AppNavigation } from 'navigation'
-import withTranslation from 'i18n/withTranslation'
 import { omit } from 'ramda'
 import { compose } from 'react-apollo'
 import { track, events } from 'utils/analytics'
@@ -19,47 +18,19 @@ const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
-class Onboarding extends Component {
-  static propTypes = {
-    editUser: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    types: PropTypes.array,
-  }
+function Onboarding({ isFetching, types, editUser }) {
+  const { t } = useTranslation()
+  const [isSaving, setIsSaving] = useState(false)
+  const [items, setItems] = useState({})
 
-  state = {
-    isSaving: false,
-    items: {},
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
-  }
+  }, [])
 
-  get renderHeaderRight() {
-    const { isSaving } = this.state
+  const progress = () => (Object.keys(items).length / 3) * 100
 
-    return isSaving ? (
-      <ActivityIndicator size="small" color="white" />
-    ) : (
-      <Text
-        color="white"
-        medium
-        opacity={this.isComplete ? 1 : 0.5}
-        disabled={!this.isComplete}
-        onPress={this.handleSubmit}
-        hapticFeedback="impactLight"
-      >
-        {this.props.t('Onboarding:next')}
-      </Text>
-    )
-  }
-
-  get progress() {
-    return (Object.keys(this.state.items).length / 3) * 100
-  }
-
-  get isComplete() {
-    if (Object.keys(this.state.items).length >= MIN_ITEMS) {
+  const isComplete = () => {
+    if (Object.keys(items).length >= MIN_ITEMS) {
       track(events.USER_ONBOARDING_CATEGORIES_SELECTED)
       return true
     }
@@ -67,36 +38,30 @@ class Onboarding extends Component {
     return false
   }
 
-  toggleSelection = item => {
-    if (this.isAdded(item)) {
-      this.setState(prevState => ({ items: omit([item.id], prevState.items) }))
+  const toggleSelection = item => {
+    if (items[item.id]) {
+      setItems(omit([item.id]))
     } else {
-      this.setState(prevState => ({
-        items: {
-          ...prevState.items,
-          [item.id]: item,
-        },
-      }))
+      setItems({
+        ...items,
+        [item.id]: item,
+      })
     }
   }
 
-  isAdded = item => this.state.items[item.id]
-
-  handleSubmit = () => {
-    this.setState({ isSaving: true })
-
+  const handleSubmit = () => {
+    setIsSaving(true)
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
-    const interestedIn = Object.keys(this.state.items).map(id => ({ id }))
-
-    this.props.editUser({ interestedIn }).then(setTimeout(AppNavigation, 500))
+    const interestedIn = Object.keys(items).map(id => ({ id }))
+    editUser({ interestedIn }).then(setTimeout(AppNavigation, 500))
   }
 
-  renderItem = ({ item }) => (
+  const renderItem = ({ item }) => (
     <Cell key={item.id}>
-      <Touchable hapticFeedback="impactLight" onPress={() => this.toggleSelection(item)}>
+      <Touchable hapticFeedback="impactLight" onPress={() => toggleSelection(item)}>
         <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
           <Image
-            selected={this.isAdded(item)}
+            selected={items[item.id]}
             placeholderColor="transparent"
             source={{ uri: item.imageUrl }}
             gutter={GUTTER}
@@ -111,28 +76,39 @@ class Onboarding extends Component {
     </Cell>
   )
 
-  render() {
-    const { isFetching, types } = this.props
+  const renderHeaderRight = () => isSaving ? (
+      <ActivityIndicator size="small" color="white" />
+  ) : (
+      <Text
+        color="white"
+        medium
+        opacity={isComplete() ? 1 : 0.5}
+        disabled={!isComplete()}
+        onPress={handleSubmit}
+        hapticFeedback="impactLight"
+      >
+        {t('Onboarding:next')}
+      </Text>
+  )
 
-    return (
-      <Base>
-        <Header headerRight={this.renderHeaderRight} />
-        <FlatList
-          ListHeaderComponent={<Content />}
-          ListEmptyComponent={isFetching && <Loader color="grey" />}
-          contentContainerStyle={{ padding: 5, flex: isFetching ? 1 : 0 }}
-          numColumns={2}
-          data={types}
-          keyExtractor={item => item.id}
-          renderItem={this.renderItem}
-        />
-        <Footer progress={this.progress} />
-      </Base>
-    )
-  }
+  return (
+    <Base>
+      <Header headerRight={renderHeaderRight()} />
+      <FlatList
+        ListHeaderComponent={<Content />}
+        ListEmptyComponent={isFetching && <Loader color="grey" />}
+        contentContainerStyle={{ padding: 5, flex: isFetching ? 1 : 0 }}
+        numColumns={2}
+        data={types}
+        keyExtractor={item => item.id}
+        renderItem={renderItem}
+      />
+      <Footer progress={progress()} />
+    </Base>
+  )
 }
 
 export default compose(
   getProjectTypes,
   editUser
-)(withTranslation('Onboarding')(Onboarding))
+)(Onboarding)

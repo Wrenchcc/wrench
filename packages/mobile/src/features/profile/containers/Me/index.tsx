@@ -7,6 +7,8 @@ import SettingsButton from 'features/profile/components/SettingsButton'
 import Header from 'features/profile/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 
+const renderItem = ({ item }) => <Post post={item.node} />
+
 function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const emptyState = user && user.projectCount > 0 ? TYPES.POST : TYPES.PROJECT
   const hasPosts = posts && posts.length > 0
@@ -27,7 +29,7 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => <Post post={item.node} />}
+        renderItem={renderItem}
       />
     </Layout>
   )

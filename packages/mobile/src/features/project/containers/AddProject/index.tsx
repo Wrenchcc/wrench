@@ -2,19 +2,20 @@ import React, { Fragment } from 'react'
 import { Subscribe } from 'unstated'
 import { useTranslation } from 'react-i18next'
 import { AddContainer } from 'store'
-import { navigateToAddProjectType } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation/actions'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 
 function AddProject() {
   const { t } = useTranslation()
+  const { navigate } = useNavigation()
 
   return (
     <Subscribe to={[AddContainer]}>
       {({ state, updateField, resetState }) => (
         <Fragment>
           <AddProjectHeader
-            actionRight={state.title && (() => navigateToAddProjectType())}
+            actionRight={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
             resetState={resetState}
             closeAction
           />
@@ -32,7 +33,7 @@ function AddProject() {
               color="dark"
               returnKeyType="next"
               enablesReturnKeyAutomatically
-              onSubmitEditing={state.title && (() => navigateToAddProjectType())}
+              onSubmitEditing={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
             />
           </KeyboardAvoidingView>
         </Fragment>
