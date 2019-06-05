@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { BaseButton } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native'
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 import evenHitSlop from 'utils/hitSlop'
 
@@ -8,6 +9,7 @@ const Touchable = ({
   children,
   hapticFeedback = false,
   hitSlop = 10,
+  nativeButton = true,
   onPress,
   ...props
 }) => {
@@ -19,15 +21,17 @@ const Touchable = ({
     onPress()
   }, [hapticFeedback, onPress])
 
+  const Button = nativeButton ? BaseButton : TouchableOpacity
+
   return (
-    <BaseButton
+    <Button
       activeOpacity={activeOpacity}
       onPress={handleOnPress}
       hitSlop={evenHitSlop(hitSlop)}
       {...props}
     >
       {children}
-    </BaseButton>
+    </Button>
   )
 }
 

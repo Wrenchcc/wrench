@@ -18,6 +18,7 @@ const Text = ({
       onLongPress={onLongPress}
       disabled={disabled}
       hapticFeedback={hapticFeedback}
+      nativeButton={false}
     >
       <Base
         numberOfLines={numberOfLines}

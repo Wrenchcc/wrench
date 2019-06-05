@@ -97,7 +97,3 @@ export function hideNotificationBadge() {
 export function navigateBack() {
   Navigation.pop(componentId)
 }
-
-export function resetNavigation() {
-  Navigation.popToRoot(componentId)
-}

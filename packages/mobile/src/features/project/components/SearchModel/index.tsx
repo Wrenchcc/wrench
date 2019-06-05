@@ -28,7 +28,6 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
         ListHeaderComponent={
           (query.length === 1 && !models) || isFetching ? <SearchingFor query={query} /> : null
         }
-        keyboardShouldPersistTaps="handled"
         keyboardDismissMode="none"
         data={models}
         fetchMore={fetchMore}

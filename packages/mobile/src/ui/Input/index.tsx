@@ -30,16 +30,17 @@ export default forwardRef(function Input(
 
   if (autoFocus) {
     // TODO: RNN flicker when autoFocus and push animation
+    // https://github.com/wix/react-native-navigation/issues/5018
     useEffect(() => {
       const wait = setTimeout(
         () => {
           if (inputRef.current) inputRef.current.focus()
         },
-        waitForRender ? 600 : 0
+        waitForRender ? 500 : 0
       )
 
       return () => clearTimeout(wait)
-    })
+    }, [])
   }
 
   return (

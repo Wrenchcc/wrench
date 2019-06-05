@@ -5,13 +5,11 @@ import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getTokens, setTokens } from 'graphql/utils/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { resetNavigation } from 'navigation'
 
 function foreceSignOut() {
+  // TODO: Show alert session expired, please login again.
   client.resetStore()
   track(events.REFRESH_TOKEN_FAILED)
-  resetNavigation()
-  // TODO: Show alert session expired, please login again.
 }
 
 export default onError(({ graphQLErrors, operation, forward }) => {

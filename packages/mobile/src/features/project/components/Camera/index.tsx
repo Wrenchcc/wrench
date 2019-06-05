@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState, useCallback } from 'react'
 import { TouchableWithoutFeedback, Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
@@ -18,7 +18,6 @@ function Camera({ onTakePicture }) {
   const [cameraType, setCameraType] = useState(Constants.Type.back)
   const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
   const [autofocus, setAutofocus] = useState()
-  const autoFocusPointOfInterest = null
 
   useEffect(() => {
     check(PERMISSION).then(response => {
@@ -27,27 +26,28 @@ function Camera({ onTakePicture }) {
     })
   }, [])
 
-  const takePicture = async camera => {
+  const takePicture = useCallback(async camera => {
     const data = await camera.takePictureAsync()
 
     onTakePicture(data)
-  }
+  }, [])
 
-  const changeFlashMode = () => {
+  const changeFlashMode = useCallback(() => {
     const mode = flashMode === Constants.FlashMode.on ? Constants.FlashMode.off : Constants.FlashMode.on
 
     setFlashMode(mode)
-  }
+  }, [flashMode])
 
-  const changeCameraType = () => {
+  const changeCameraType = useCallback(() => {
     const type = cameraType === Constants.Type.back ? Constants.Type.front : Constants.Type.back
 
     setCameraType(type)
-  }
+    setAutofocus(null)
+  }, [cameraType])
 
-  const setFocus = ({ nativeEvent }) => {
+  const setFocus = useCallback(({ nativeEvent }) => {
     setAutofocus({ x: nativeEvent.locationX, y: nativeEvent.locationY })
-  }
+  }, [])
 
   if (isLoading) return null
 
@@ -67,7 +67,7 @@ function Camera({ onTakePicture }) {
         type={cameraType}
         flashMode={flashMode}
         style={{ flex: 1 }}
-        autoFocusPointOfInterest={autoFocusPointOfInterest}
+        autoFocusPointOfInterest={autofocus}
         orientation="portrait"
         ratio="1:1"
       >
