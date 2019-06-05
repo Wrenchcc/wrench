@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Subscribe } from 'unstated'
 import { useTranslation } from 'react-i18next'
 import { AddContainer } from 'store'
-import { useNavigation, SCREENS } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
 

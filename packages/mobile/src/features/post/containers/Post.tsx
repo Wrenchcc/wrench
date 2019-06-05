@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
@@ -9,7 +9,7 @@ import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 
-// TODO: Load comment in top and scroll
+// TODO: Load comment in top
 function PostContainer({
   comments,
   comment,
@@ -22,14 +22,7 @@ function PostContainer({
   fetchMoreReplies,
   postId,
 }) {
-  const scrollRef = useRef()
   const { t } = useTranslation()
-
-  // useEffect(() => {
-  //   if (scrollRef.current) {
-  //     // scrollRef.current.scrollToIndex({ animated: true, index: 0 })
-  //   }
-  // }, [scrollRef])
 
   const [mention, setMention] = useState({
     username: null,
@@ -52,6 +45,7 @@ function PostContainer({
 
   return (
     <PageLayout
+      scrollToIndex={!!comments}
       headerTitle={t('PostContainer:title')}
       headerAnimation={false}
       stickyFooter={

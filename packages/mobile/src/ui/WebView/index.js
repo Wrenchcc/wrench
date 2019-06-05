@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
 import { View, BackHandler } from 'react-native'
 import { WebView as RNWebView } from 'react-native-webview'
-import withTranslation from 'i18n/withTranslation'
+// import withTranslation from 'i18n/withTranslation'
 import url from 'url'
 import { equals, reject } from 'ramda'
 import DeviceInfo from 'react-native-device-info'
-import { dismissModal } from 'navigation/actions'
+import { dismissModal } from 'navigation'
 import Header from 'ui/Header'
 import ProgressBar from 'ui/ProgressBar'
 import Text from 'ui/Text'
@@ -24,7 +24,7 @@ class WebView extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      title: props.t('WebView:loading'),
+      title: 'Loading...', // props.t('WebView:loading'),
       url: props.url,
     }
 
@@ -175,4 +175,4 @@ class WebView extends PureComponent {
   }
 }
 
-export default withTranslation('WebView')(WebView)
+export default WebView

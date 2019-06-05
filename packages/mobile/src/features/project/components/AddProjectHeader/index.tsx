@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { navigateBack, dismissModal } from 'navigation/actions'
+import { navigateBack, dismissModal } from 'navigation'
 import { Header, Text, Icon } from 'ui'
 import { closeDark } from 'images'
 

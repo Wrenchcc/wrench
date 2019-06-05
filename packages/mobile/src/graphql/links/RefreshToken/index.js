@@ -5,8 +5,7 @@ import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getTokens, setTokens } from 'graphql/utils/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-
-import { resetNavigation } from 'navigation/actions'
+import { resetNavigation } from 'navigation'
 
 function foreceSignOut() {
   client.resetStore()

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useCallback } from 'react'
+import React, { useContext, useEffect, useRef, useCallback, forwardRef } from 'react'
 import { View, Keyboard, TextInput, UIManager } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
@@ -12,23 +12,26 @@ const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 
 export default function createNavigationAwareScrollable(Component) {
-  return ({
-    contentContainerStyle = {},
-    borderSeparator,
-    data,
-    isFetching,
-    hasNextPage,
-    fetchMore,
-    refetch,
-    isRefetching,
-    ListEmptyComponent,
-    initialNumToRender = 10,
-    paddingHorizontal = 20,
-    spacingSeparator,
-    tabIndex,
-    componentId,
-    ...props
-  }) => {
+  return forwardRef(function NavigationAwareScrollable(
+    {
+      contentContainerStyle = {},
+      borderSeparator,
+      data,
+      isFetching,
+      hasNextPage,
+      fetchMore,
+      refetch,
+      isRefetching,
+      ListEmptyComponent,
+      initialNumToRender = 10,
+      paddingHorizontal = 20,
+      spacingSeparator,
+      tabIndex,
+      componentId,
+      ...props
+    },
+    ref
+  ) {
     const {
       onScroll,
       onScrollBeginDrag,
@@ -43,9 +46,12 @@ export default function createNavigationAwareScrollable(Component) {
     useEffect(() => {
       const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
         ({ selectedTabIndex, unselectedTabIndex }) => {
-          if (selectedTabIndex === unselectedTabIndex && selectedTabIndex === tabIndex) {
-            scrollRef.current
-              && scrollRef.current.getNode().scrollToOffset({ offset: initialScroll })
+          if (
+            selectedTabIndex === unselectedTabIndex
+            && selectedTabIndex === tabIndex
+            && scrollRef.current
+          ) {
+            scrollRef.current.getNode().scrollToOffset({ offset: initialScroll })
           }
         }
       )
@@ -57,7 +63,7 @@ export default function createNavigationAwareScrollable(Component) {
     useEffect(() => {
       const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
         const currentlyFocusedField = TextInput.State.currentlyFocusedField()
-        const scrollResponder = scrollRef.current.getNode().getScrollResponder()
+        const scrollResponder = scrollRef.current && scrollRef.current.getNode().getScrollResponder()
 
         if (!scrollResponder || !currentlyFocusedField) {
           return
@@ -87,7 +93,7 @@ export default function createNavigationAwareScrollable(Component) {
 
     return (
       <Component
-        ref={scrollRef}
+        ref={ref || scrollRef}
         scrollEventThrottle={1}
         onScroll={onScroll}
         onScrollBeginDrag={onScrollBeginDrag}
@@ -119,5 +125,5 @@ export default function createNavigationAwareScrollable(Component) {
         {...props}
       />
     )
-  }
+  })
 }

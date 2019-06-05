@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { useNavigation, SCREENS } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import InfiniteList from 'ui/InfiniteList'
 import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 

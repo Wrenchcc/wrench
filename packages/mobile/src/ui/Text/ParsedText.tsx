@@ -26,6 +26,10 @@ function ParsedText({ parse, children, childrenProps, ...restProps }) {
   const getParsedText = () => {
     if (!parse) return children
 
+    if (typeof children !== 'string') {
+      return children
+    }
+
     const textExtraction = new TextExtraction(children, getPatterns())
 
     return textExtraction

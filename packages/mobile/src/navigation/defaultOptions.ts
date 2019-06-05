@@ -1,20 +1,18 @@
 import { COLORS } from 'ui/constants'
 
-export const iconInsets = {
-  top: 0,
-  left: 0,
-  bottom: -20,
-  right: 0,
-}
-
-export const defaultOptions = {
+export default {
   bottomTabs: {
     backgroundColor: COLORS.DARK,
   },
   bottomTab: {
     textColor: COLORS.WHITE,
     titleDisplayMode: 'alwaysHide',
-    iconInsets,
+    iconInsets: {
+      top: 0,
+      left: 0,
+      bottom: -20,
+      right: 0,
+    },
   },
   layout: {
     backgroundColor: COLORS.WHITE,

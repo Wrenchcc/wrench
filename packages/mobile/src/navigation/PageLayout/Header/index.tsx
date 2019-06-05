@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import Animated from 'react-native-reanimated'
 import { View } from 'react-native'
 import { Text, Icon, ToastNotification } from 'ui'
@@ -10,7 +10,7 @@ const { interpolate, Extrapolate } = Animated
 
 const OFFSET_INVERTED = -90
 
-function Header({ scrollY, headerTitle, headerRight, headerAnimation = true }) {
+function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onPress }) {
   const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
 
@@ -30,7 +30,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true }) {
             <Icon onPress={handleNavigation} source={arrowLeft} />
           </View>
           <Animated.View style={{ opacity, flex: 2 }}>
-            <Text medium center numberOfLines={1}>
+            <Text medium center numberOfLines={1} onPress={onPress}>
               {headerTitle}
             </Text>
           </Animated.View>
@@ -42,4 +42,4 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true }) {
   )
 }
 
-export default memo(Header)
+export default Header

@@ -2,7 +2,7 @@ import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notifications, notificationsSelected, profile } from 'images'
 import registerScreens from './registerScreens'
-import { defaultOptions } from './options'
+import defaultOptions from './defaultOptions'
 import { SCREENS } from './constants'
 
 registerScreens()

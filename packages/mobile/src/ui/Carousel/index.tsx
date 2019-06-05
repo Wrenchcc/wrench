@@ -16,7 +16,7 @@ function getItemLayout(_, index) {
 }
 
 function Carousel({ onPress, files }) {
-  const scrollEnabled = files.length > 1
+  const scrollEnabled = files.edges.length > 1
 
   return (
     <FlatList

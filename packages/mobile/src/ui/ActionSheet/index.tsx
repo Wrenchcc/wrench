@@ -9,7 +9,7 @@ function ActionSheet({ options = [], isOpen, onClose = () => {}, ...restProps })
       }
       onClose()
     },
-    [index, onClose]
+    [onClose]
   )
 
   const cancelButtonIndex = options.length - 1
