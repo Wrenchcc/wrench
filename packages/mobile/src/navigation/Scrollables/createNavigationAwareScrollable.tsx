@@ -7,6 +7,10 @@ import { ListContext } from '../Layout/context'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 
+const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
+const Separator = () => <View style={{ paddingBottom: 50 }} />
+const BorderSeparator = () => <Border />
+
 export default function createNavigationAwareScrollable(Component) {
   return ({
     contentContainerStyle = {},
@@ -47,7 +51,7 @@ export default function createNavigationAwareScrollable(Component) {
       )
 
       return () => bottomTabEventListener.remove()
-    }, [scrollRef])
+    }, [scrollRef, tabIndex])
 
     // Scroll to input
     useEffect(() => {
@@ -79,8 +83,6 @@ export default function createNavigationAwareScrollable(Component) {
       }
     }, [hasNextPage, isRefetching, isFetching])
 
-    const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
-
     const initialFetch = !data && isFetching
 
     return (
@@ -110,9 +112,9 @@ export default function createNavigationAwareScrollable(Component) {
           paddingTop: isAndroid ? contentInset : 0,
           ...contentContainerStyle,
         }}
-        {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
+        {...borderSeparator && { ItemSeparatorComponent: BorderSeparator }}
         {...spacingSeparator && {
-          ItemSeparatorComponent: () => <View style={{ paddingBottom: 50 }} />,
+          ItemSeparatorComponent: Separator,
         }}
         {...props}
       />

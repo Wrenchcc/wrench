@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { FlatList, View } from 'react-native'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
@@ -28,11 +28,11 @@ function InfiniteList({
   const initialFetch = !data && isFetching
   const paddingTop = contentContainerStyle.paddingTop || (defaultPaddingTop && 20) || 0
 
-  const onEndReached = () => {
+  const onEndReached = useCallback(() => {
     if (hasNextPage && isRefetching !== true && !isFetching) {
       fetchMore()
     }
-  }
+  }, [hasNextPage, isRefetching, isFetching])
 
   return (
     <FlatList
