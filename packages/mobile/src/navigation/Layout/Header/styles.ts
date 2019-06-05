@@ -8,7 +8,10 @@ export default {
     right: 0,
     zIndex: 10000,
     width: '100%',
+  },
+  background: {
     backgroundColor: 'white',
+    zIndex: 10,
   },
   containerBackground: {
     position: 'absolute',
@@ -21,6 +24,7 @@ export default {
   },
   header: {
     marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
+    backgroundColor: 'white',
   },
   inner: {
     height: NAVIGATION.TOP_BAR_HEIGHT,

@@ -14,5 +14,5 @@ export const Button = styled(Touchable)`
   justify-content: center;
   padding-left: 22;
   padding-right: 22;
-
+ 
 `

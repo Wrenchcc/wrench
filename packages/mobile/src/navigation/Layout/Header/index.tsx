@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { Fragment, useContext } from 'react'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
 import { Text, ToastNotification } from 'ui'
@@ -22,26 +22,32 @@ function Header({
 
   return (
     <Animated.View style={[styles.container, transformContainer(translateY, headerHeight)]}>
-      <Animated.View style={styles.header}>
-        <Animated.View style={opacityContent(translateY, headerHeight)}>
-          <Animated.View style={styles.inner}>
-            {headerLeft}
-            {search && (
-              <SearchBar
-                onChangeQuery={onQueryChange}
-                onSearchCancel={onSearchCancel}
-                onSearchFocus={onSearchFocus}
-                onSearchClear={onSearchClear}
-                query={query}
-                searchActive={searchActive}
-              />
-            )}
-            {!searchActive && headerRight}
+      <Animated.View style={styles.background}>
+        <Animated.View style={styles.header}>
+          <Animated.View style={opacityContent(translateY, headerHeight)}>
+            <Animated.View style={styles.inner}>
+              {headerLeft}
+              {search && (
+                <SearchBar
+                  onChangeQuery={onQueryChange}
+                  onSearchCancel={onSearchCancel}
+                  onSearchFocus={onSearchFocus}
+                  onSearchClear={onSearchClear}
+                  query={query}
+                  searchActive={searchActive}
+                />
+              )}
+              {!searchActive && headerRight}
+            </Animated.View>
           </Animated.View>
         </Animated.View>
       </Animated.View>
-      <ToastNotification />
-      {stickyComponent}
+      {!searchActive && (
+        <Fragment>
+          <ToastNotification />
+          {stickyComponent}
+        </Fragment>
+      )}
     </Animated.View>
   )
 }

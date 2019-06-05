@@ -50,6 +50,8 @@ function Search({ query, active }) {
     [index]
   )
 
+  if (!active) return null
+
   const renderPager = props => (
     <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
   )
@@ -72,12 +74,8 @@ function Search({ query, active }) {
       labelStyle={styles.labelStyle}
       indicatorStyle={styles.indicatorStyle}
       getLabelText={({ route }) => t(`Search:${route.key}`)}
-      swipeEnabled
-      scrollEnabled={false}
     />
   )
-
-  if (!active) return null
 
   return (
     <Base>
@@ -91,10 +89,7 @@ function Search({ query, active }) {
         renderPager={renderPager}
         onIndexChange={handleIndexChange}
         initialLayout={initialLayout}
-        swipeEnabled
         lazy
-        animationEnabled
-        useNativeDriver
       />
     </Base>
   )

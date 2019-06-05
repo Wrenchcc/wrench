@@ -224,9 +224,6 @@
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
     },
-    "LoadNewer": {
-      "button": "New posts"
-    },
     "NoResults": {
       "title": "No results found"
     },
@@ -248,6 +245,9 @@
     },
     "Share": {
       "share": "Share"
+    },
+    "ShowLatest": {
+      "button": "New posts"
     },
     "ToastNotification": {
       "networkError": "No internet connection"
@@ -488,9 +488,6 @@
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"
     },
-    "LoadNewer": {
-      "button": "Nya inlägg"
-    },
     "NoResults": {
       "title": "Inga resultat funna"
     },
@@ -512,6 +509,9 @@
     },
     "Share": {
       "cancel": "Dela"
+    },
+    "ShowLatest": {
+      "button": "Nya inlägg"
     },
     "ToastNotification": {
       "networkError": "Ingen internetanslutning"

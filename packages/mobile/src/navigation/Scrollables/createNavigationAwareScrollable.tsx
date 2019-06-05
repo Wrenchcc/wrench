@@ -89,11 +89,19 @@ export default function createNavigationAwareScrollable(Component) {
       }
     }, [hasNextPage, isRefetching, isFetching])
 
+    const setRef = useCallback(
+      c => {
+        if (ref) ref.current = c
+        if (scrollRef) scrollRef.current = c
+      },
+      [ref, scrollRef]
+    )
+
     const initialFetch = !data && isFetching
 
     return (
       <Component
-        ref={ref || scrollRef}
+        ref={setRef}
         scrollEventThrottle={1}
         onScroll={onScroll}
         onScrollBeginDrag={onScrollBeginDrag}

@@ -7,19 +7,9 @@ import { Button, HEIGHT, TOP } from './styles'
 const DURATION = 650
 const DELAY = 3000
 
-function LoadNewer({ onPress, hide }) {
-  const transformY = useRef(new Animated.Value(-HEIGHT - TOP))
+function ShowLatest({ onPress, onHide }) {
   const { t } = useTranslation()
-
-  const handleOnPress = useCallback(() => {
-    onPress()
-    Animated.spring(transformY.current, {
-      toValue: -50,
-      delay: 50,
-      duration: DURATION,
-      useNativeDriver: true,
-    }).start(hide)
-  }, [onPress, hide])
+  const transformY = useRef(new Animated.Value(-100))
 
   useEffect(() => {
     Animated.spring(transformY.current, {
@@ -38,22 +28,31 @@ function LoadNewer({ onPress, hide }) {
     })
   }, [])
 
+  const handleOnPress = useCallback(() => {
+    onPress()
+    Animated.spring(transformY.current, {
+      toValue: -50,
+      delay: 50,
+      duration: DURATION,
+      useNativeDriver: true,
+    }).start(onHide)
+  }, [onPress, onHide])
+
   return (
     <Animated.View
       style={{
         transform: [{ translateY: transformY.current }],
-        position: 'absolute',
         alignSelf: 'center',
-        zIndex: 10,
+        height: HEIGHT,
       }}
     >
       <Button onPress={handleOnPress}>
         <Text color="white" fontSize={15} medium>
-          {t('LoadNewer:button')}
+          {t('ShowLatest:button')}
         </Text>
       </Button>
     </Animated.View>
   )
 }
 
-export default LoadNewer
+export default ShowLatest
