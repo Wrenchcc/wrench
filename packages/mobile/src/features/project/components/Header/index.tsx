@@ -10,7 +10,7 @@ function Header({ project, spacingHorizontal }) {
     () => navigate(SCREENS.FOLLOWERS, {
       id: project.id,
     }),
-    []
+    [project]
   )
 
   return (

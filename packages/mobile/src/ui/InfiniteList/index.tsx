@@ -4,8 +4,9 @@ import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 
 const renderLoader = () => <Loader />
-
 const renderFullscreenLoader = top => <Loader top={-top} />
+const Separator = () => <View style={{ paddingBottom: 50 }} />
+const BorderSeparator = () => <Border />
 
 function InfiniteList({
   contentContainerStyle = {},
@@ -57,9 +58,9 @@ function InfiniteList({
           || 0,
         ...contentContainerStyle,
       }}
-      {...borderSeparator && { ItemSeparatorComponent: () => <Border /> }}
+      {...borderSeparator && { ItemSeparatorComponent: BorderSeparator }}
       {...spacingSeparator && {
-        ItemSeparatorComponent: () => <View style={{ paddingBottom: 50 }} />,
+        ItemSeparatorComponent: Separator,
       }}
       {...props}
     />
