@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { View, BackHandler } from 'react-native'
 import { WebView as RNWebView } from 'react-native-webview'
 import withTranslation from 'i18n/withTranslation'
@@ -18,9 +17,9 @@ import { closeDark, arrowLeftSmall, arrowRightSmall, refresh } from 'images'
 import { Base, Footer, Inner } from './styles'
 
 class WebView extends PureComponent {
-  static propTypes = {
-    url: PropTypes.string.isRequired,
-  }
+  // static propTypes = {
+  //   url: PropTypes.string.isRequired,
+  // }
 
   constructor(props) {
     super(props)

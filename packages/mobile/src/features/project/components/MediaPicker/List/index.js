@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { FlatList, View, ActivityIndicator, InteractionManager } from 'react-native'
 import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq, prepend } from 'ramda'
@@ -10,10 +9,10 @@ const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
 
 export default class List extends Component {
-  static propTypes = {
-    album: PropTypes.string,
-    cameraFile: PropTypes.object,
-  }
+  // static propTypes = {
+  //   album: PropTypes.string,
+  //   cameraFile: PropTypes.object,
+  // }
 
   state = {
     data: [],

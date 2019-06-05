@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Animated, View } from 'react-native'
 import { equals } from 'ramda'
 import { COLORS } from 'ui/constants'
@@ -13,12 +12,12 @@ export default class PointOfInterest extends PureComponent {
 
   scale = new Animated.Value(2)
 
-  static propTypes = {
-    coordinates: PropTypes.shape({
-      x: PropTypes.number,
-      y: PropTypes.number,
-    }),
-  }
+  // static propTypes = {
+  //   coordinates: PropTypes.shape({
+  //     x: PropTypes.number,
+  //     y: PropTypes.number,
+  //   }),
+  // }
 
   componentDidUpdate(prevProps) {
     if (!equals(this.props.coordinates, prevProps.coordinates)) {

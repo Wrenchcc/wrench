@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import {
   View,
   Dimensions,
@@ -22,10 +21,10 @@ export default class ImageEditor extends PureComponent {
     isLoading: true,
   }
 
-  static propTypes = {
-    image: PropTypes.object.isRequired,
-    onEditImage: PropTypes.func.isRequired,
-  }
+  // static propTypes = {
+  //   image: PropTypes.object.isRequired,
+  //   onEditImage: PropTypes.func.isRequired,
+  // }
 
   contentOffset = {}
 
