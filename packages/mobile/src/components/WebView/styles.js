@@ -3,7 +3,7 @@ import { hasNotch } from 'utils/platform'
 
 export const Base = styled.View`
   flex: 1;
-  padding-bottom: ${hasNotch ? 60 : 40};
+  padding-bottom: ${hasNotch ? 80 : 60};
 `
 
 export const Footer = styled.View`

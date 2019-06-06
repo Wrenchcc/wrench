@@ -1,29 +1,45 @@
-import React from 'react'
-import { Spring } from 'react-spring/renderprops'
-import { Base, Bar } from './styles'
+import React, { useEffect, useRef, useState } from 'react'
+import { View } from 'react-native'
+import { Transitioning, Transition } from 'react-native-reanimated'
 
-const DEFAULT_BAR_HEIGHT = 3
-const DEFAULT_WIDTH = 0
+const transition = <Transition.Change interpolation="easeInOut" />
 
 function ProgressBar({
   backgroundColor = 'rgba(255, 255, 255, 0.4)',
-  barHeight = DEFAULT_BAR_HEIGHT,
+  height = 3,
   borderRadius = 3,
   fillColor = 'white',
   opacity = 1,
-  progress,
+  progress = 0,
 }) {
+  const ref = useRef()
+  const [width, setWidth] = useState(progress)
+
+  useEffect(() => {
+    setWidth(progress)
+    ref.current.animateNextTransition()
+  }, [progress, ref])
+
   return (
-    <Base
-      opacity={opacity}
-      height={barHeight}
-      backgroundColor={backgroundColor}
-      borderRadius={borderRadius}
+    <Transitioning.View
+      ref={ref}
+      transition={transition}
+      style={{
+        opacity,
+        backgroundColor,
+        width: '100%',
+        overflow: 'hidden',
+      }}
     >
-      <Spring from={{ width: `${DEFAULT_WIDTH}%` }} to={{ width: `${progress}%` }} native>
-        {({ width }) => <Bar width={width} fillColor={fillColor} height={barHeight} />}
-      </Spring>
-    </Base>
+      <View
+        style={{
+          width: `${width}%`,
+          height,
+          backgroundColor: fillColor,
+          borderRadius,
+        }}
+      />
+    </Transitioning.View>
   )
 }
 

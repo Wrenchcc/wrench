@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { animated } from 'react-spring/renderprops'
 import { COLORS } from 'ui/constants'
 
-export const Base = animated(styled.View`
+export const Base = styled.View`
   background-color: ${COLORS.ULTRA_LIGHT_GREY};
   opacity: 0.96;
   width: 100%;
   overflow: hidden;
-  height: ${props => props.height};
-`)
+  top: ${props => props.top};
+  height: 60;
+`
 
 export const Cover = styled.Image`
   width: 40;

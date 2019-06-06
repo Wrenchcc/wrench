@@ -5,6 +5,7 @@ import HOC from './HOC'
 export default function registerScreens() {
   Navigation.registerComponent(SCREENS.INITIALIZING, () => HOC(require('./Initializing').default))
   Navigation.registerComponent(SCREENS.MENTION, () => HOC(require('components/Mention').default))
+  Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(require('components/WebView').default))
   Navigation.registerComponent(SCREENS.ONBOARDING, () => HOC(require('features/signIn/containers/Onboarding').default))
   Navigation.registerComponent(SCREENS.SIGN_IN, () => HOC(require('features/signIn/containers/SignIn').default))
   Navigation.registerComponent(SCREENS.FEED, () => HOC(require('features/feed/containers/Feed').default))
@@ -22,7 +23,6 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.FOLLOWERS, () => HOC(require('features/project/containers/Followers').default))
   Navigation.registerComponent(SCREENS.POST, () => HOC(require('features/post/containers/Post').default))
   Navigation.registerComponent(SCREENS.COMMENTS, () => HOC(require('features/project/containers/Comments').default))
-  Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(require('features/webview/containers/WebView').default))
   Navigation.registerComponent(SCREENS.SIGN_IN, () => HOC(require('features/signIn/containers/SignIn').default))
   Navigation.registerComponent(SCREENS.SETTINGS, () => HOC(require('features/profile/containers/Settings').default))
 }

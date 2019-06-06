@@ -1,27 +1,28 @@
-import React from 'react'
-import { Spring } from 'react-spring/renderprops'
+import React, { useRef } from 'react'
+import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { Subscribe } from 'unstated'
 import { AddContainer } from 'store'
 import Text from 'ui/Text'
 import { Base, Inner, Cover, Content, Loader } from './styles'
 
-const FROM_HEIGHT = 0
-const TO_HEIGHT = 60
+const transition = <Transition.Change interpolation="easeInOut" type="fade" durationMs={500} />
 
 function PostProgress() {
+  const ref = useRef()
   const { t } = useTranslation()
 
+  // TODO: Don't run animateNextTransition in render
   return (
     <Subscribe to={[AddContainer]}>
-      {({ state: { postProgress } }) => (
-        <Spring
-          native
-          from={{ height: FROM_HEIGHT }}
-          to={{ height: postProgress ? TO_HEIGHT : FROM_HEIGHT }}
-        >
-          {({ height }) => (
-            <Base height={height}>
+      {({ state: { postProgress } }) => {
+        if (postProgress) {
+          ref.current.animateNextTransition()
+        }
+
+        return (
+          <Transitioning.View ref={ref} transition={transition}>
+            <Base top={postProgress ? 0 : -120}>
               <Inner>
                 <Content>
                   <Loader size="small" color="white" />
@@ -35,9 +36,9 @@ function PostProgress() {
                 </Content>
               </Inner>
             </Base>
-          )}
-        </Spring>
-      )}
+          </Transitioning.View>
+        )
+      }}
     </Subscribe>
   )
 }

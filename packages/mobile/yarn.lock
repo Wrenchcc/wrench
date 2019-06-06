@@ -5987,14 +5987,6 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-spring@^8.0.20:
-  version "8.0.20"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.20.tgz#e25967f6059364b09cf0339168d73014e87c9d17"
-  integrity sha512-40ZUQ5uI5YHsoQWLPchWNcEUh6zQ6qvcVDeTI2vW10ldoCN3PvDsII9wBH2xEbMl+BQvYmHzGdfLTQxPxJWGnQ==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    prop-types "^15.5.8"
-
 react-transform-hmr@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/react-transform-hmr/-/react-transform-hmr-1.0.4.tgz#e1a40bd0aaefc72e8dfd7a7cda09af85066397bb"
