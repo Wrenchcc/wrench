@@ -17,25 +17,25 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => 
   }
 })
 
-export function navigateTo(screen, { options, ...params } = {}) {
+export function navigateTo(screen, { options, ...passProps } = {}) {
   Navigation.push(componentId, {
     component: {
       name: screen,
-      passProps: params,
       options,
+      passProps,
     },
   })
 }
 
-export function showModal(screen, { options, ...params } = {}) {
+export function showModal(screen, { options, ...passProps } = {}) {
   Navigation.showModal({
     stack: {
       children: [
         {
           component: {
             name: screen,
-            passProps: params,
             options,
+            passProps,
           },
         },
       ],
@@ -43,17 +43,17 @@ export function showModal(screen, { options, ...params } = {}) {
   })
 }
 
-export function showMention(params) {
+export function showMention(passProps) {
   Navigation.showOverlay({
     component: {
-      name: SCREENS.MENTION,
       id: SCREENS.MENTION,
-      passProps: params,
+      name: SCREENS.MENTION,
       options: {
         layout: {
           backgroundColor: 'transparent',
         },
       },
+      passProps,
     },
   })
 }
@@ -66,12 +66,12 @@ export function dismissModal() {
   Navigation.dismissModal(componentId)
 }
 
-export function navigate(screen, { options, ...params } = {}) {
+export function navigate(screen, { options, ...passProps } = {}) {
   Navigation.push(componentId, {
     component: {
       name: screen,
-      passProps: params,
       options,
+      passProps,
     },
   })
 }

@@ -1,27 +1,27 @@
 import { COLORS } from 'ui/constants'
 
 export default {
-  bottomTabs: {
-    backgroundColor: COLORS.DARK,
-  },
   bottomTab: {
+    iconInsets: {
+      bottom: -20,
+      left: 0,
+      right: 0,
+      top: 0,
+    },
     textColor: COLORS.WHITE,
     titleDisplayMode: 'alwaysHide',
-    iconInsets: {
-      top: 0,
-      left: 0,
-      bottom: -20,
-      right: 0,
-    },
+  },
+  bottomTabs: {
+    backgroundColor: COLORS.DARK,
   },
   layout: {
     backgroundColor: COLORS.WHITE,
   },
+  overlay: {
+    interceptTouchOutside: false,
+  },
   topBar: {
     height: 0,
     visible: false,
-  },
-  overlay: {
-    interceptTouchOutside: false,
   },
 }

@@ -9,25 +9,25 @@ export * from './registerUserLocale'
 export { default as languages } from './languages'
 
 const languageDetector = {
-  type: 'languageDetector',
   async: true,
+  cacheUserLanguage: () => null,
   detect: async cb => cb(await getLocale()),
-  init: () => {},
-  cacheUserLanguage: () => {},
+  init: () => null,
+  type: 'languageDetector',
 }
 
 i18next
   .use(languageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
-    resources,
-    debug: __DEV__,
     cache: {
       enabled: !__DEV__,
     },
-    ns: ['common'],
+    debug: __DEV__,
     defaultNS: 'common',
+    fallbackLng: 'en',
+    resources,
+    ns: ['common'],
     react: {
       useSuspense: false,
     },
@@ -36,8 +36,8 @@ i18next
       format(value, format) {
         if (format === 'humanFormat') {
           return humanFormat(value, {
-            separator: '',
             decimals: 1,
+            separator: '',
           })
         }
 

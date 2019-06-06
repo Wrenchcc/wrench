@@ -2,30 +2,30 @@ import { NAVIGATION } from '../../constants'
 
 export default {
   container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 10000,
-    width: '100%',
     backgroundColor: 'white',
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    width: '100%',
+    zIndex: 10000,
   },
   header: {
     marginTop: NAVIGATION.STATUS_BAR_HEIGHT,
   },
   inner: {
-    height: NAVIGATION.TOP_BAR_HEIGHT,
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
+    height: NAVIGATION.TOP_BAR_HEIGHT,
     justifyContent: 'space-between',
     paddingHorizontal: 20,
   },
   left: {
-    flex: 1,
     alignItems: 'flex-start',
+    flex: 1,
   },
   right: {
-    flex: 1,
     alignItems: 'flex-end',
+    flex: 1,
   },
 }

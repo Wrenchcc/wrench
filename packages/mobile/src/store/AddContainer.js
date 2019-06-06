@@ -1,7 +1,7 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import { Container } from 'unstated'
 import { CameraRoll } from 'react-native'
 import { assocPath } from 'ramda'
-import LocalStorage from 'utils/storage/local'
 import { logError } from 'utils/sentry'
 
 const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId'
@@ -29,7 +29,7 @@ class AddContainer extends Container {
   }
 
   loadInitialState = async () => {
-    const selectedProjectId = await LocalStorage.getItem(SELECTED_PROJECT_STORAGE_KEY)
+    const selectedProjectId = await AsyncStorage.getItem(SELECTED_PROJECT_STORAGE_KEY)
     if (selectedProjectId) {
       this.setState({ selectedProjectId })
     }
@@ -88,7 +88,7 @@ class AddContainer extends Container {
   changeProject = selectedProjectId => {
     this.setState({ selectedProjectId }, () => {
       this.closeSelectProject()
-      LocalStorage.setItem(SELECTED_PROJECT_STORAGE_KEY, selectedProjectId)
+      AsyncStorage.setItem(SELECTED_PROJECT_STORAGE_KEY, selectedProjectId)
     })
   }
 

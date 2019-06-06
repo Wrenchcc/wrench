@@ -16,10 +16,10 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
 
   const opacity = headerAnimation
     ? interpolate(scrollY, {
-      inputRange: [OFFSET_INVERTED + 10, OFFSET_INVERTED + 30],
-      outputRange: [0, 1],
-      extrapolate: Extrapolate.CLAMP,
-    })
+        extrapolate: Extrapolate.CLAMP,
+        inputRange: [OFFSET_INVERTED + 10, OFFSET_INVERTED + 30],
+        outputRange: [0, 1],
+      })
     : 1
 
   return (

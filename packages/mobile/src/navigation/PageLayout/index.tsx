@@ -7,14 +7,6 @@ const { event, set, Value, cond, eq } = Animated
 
 const OFFSET = 70
 
-type Props = {
-  headerTitle: string
-  children: array
-  headerRight: any
-  footer: any
-  headerAnimation: bool
-}
-
 function PageLayout({
   children,
   headerTitle,
@@ -22,12 +14,14 @@ function PageLayout({
   stickyFooter,
   headerAnimation,
   scrollToIndex,
-}: Props) {
+}) {
   const scrollRef = useRef()
   const scrollY = useRef(new Value(-OFFSET))
 
   const scrollToTop = useCallback(() => {
-    scrollRef.current && scrollRef.current.getNode().scrollToOffset({ offset: 0 })
+    if (scrollRef.current) {
+      scrollRef.current.getNode().scrollToOffset({ offset: 0 })
+    }
   }, [scrollRef])
 
   useEffect(() => {
@@ -47,14 +41,12 @@ function PageLayout({
       />
 
       {cloneElement(children, {
-        ref: scrollRef,
         contentInset: {
           top: OFFSET,
         },
         contentOffset: {
           y: -OFFSET,
         },
-        scrollEventThrottle: 1,
         onScroll: event(
           [
             {
@@ -63,6 +55,8 @@ function PageLayout({
           ],
           { useNativeDriver: true }
         ),
+        ref: scrollRef,
+        scrollEventThrottle: 1,
       })}
 
       {stickyFooter}

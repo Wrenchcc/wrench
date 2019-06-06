@@ -23,6 +23,9 @@
       "placeholder": "Search",
       "cancel": "Cancel"
     },
+    "WebView": {
+      "loading": "Loading..."
+    },
     "Popular": {
       "popular": "Popular projects",
       "recent": "Recent posts"
@@ -256,9 +259,6 @@
       "projects": "{{count, humanFormat}} project",
       "projects_plural": "{{count, humanFormat}} projects"
     },
-    "WebView": {
-      "loading": "Loading..."
-    },
     "Time": {
       "now": "just now",
       "long": "{{time}} ago"
@@ -287,6 +287,9 @@
     "SearchBar": {
       "placeholder": "Sök",
       "cancel": "Avbryt"
+    },
+    "WebView": {
+      "loading": "Laddar..."
     },
     "Popular": {
       "popular": "Populära projekt",
@@ -518,9 +521,6 @@
     },
     "UiUser": {
       "projects": "{{count, humanFormat}} projekt"
-    },
-    "WebView": {
-      "loading": "Laddar..."
     },
     "Time": {
       "now": "alldeles nyss",

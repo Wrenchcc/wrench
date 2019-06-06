@@ -21,8 +21,8 @@ export const handlePushNotification = data => {
       return navigateTo(SCREENS.NOTIFICATIONS)
     case SCREEN_PATH.POST:
       return navigateTo(SCREENS.POST, {
-        postId,
         commentId,
+        postId,
       })
     default:
       return null

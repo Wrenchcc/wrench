@@ -8,12 +8,8 @@ import * as actions from './actions'
 
 const client = createClient()
 
-type Props = {
-  componentId: string
-}
-
 export default Component => {
-  function Screen(props): Props {
+  function Screen(props) {
     return (
       <Provider>
         <ApolloProvider client={client}>

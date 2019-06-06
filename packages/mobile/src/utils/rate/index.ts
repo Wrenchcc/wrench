@@ -11,11 +11,11 @@ export const askForRating = ({
 }) => {
   const options = {
     AppleAppID: APPLE_APP_ID,
-    GooglePackageName: GOOGLE_PACKAGE_NAME,
-    preferredAndroidMarket: AndroidMarket.Google,
-    preferInApp,
-    openAppStoreIfInAppFails,
     fallbackPlatformURL,
+    GooglePackageName: GOOGLE_PACKAGE_NAME,
+    openAppStoreIfInAppFails,
+    preferInApp,
+    preferredAndroidMarket: AndroidMarket.Google,
   }
 
   return Rate.rate(options, success => {

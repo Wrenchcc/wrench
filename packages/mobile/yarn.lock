@@ -2632,11 +2632,6 @@ expo-file-system@~4.0.0:
   dependencies:
     uuid-js "^0.7.5"
 
-expo-image-manipulator@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/expo-image-manipulator/-/expo-image-manipulator-4.0.0.tgz#455bb8d5ae9432aed0ed3cba5fb4e10ee1cc0112"
-  integrity sha512-5na++LDjuIloPornh+0v+kgy0f2b1PixnP+QJ2xUpGvE0Eih2y5zbf6RnXsIEpIXqj7MwYI/k02sSG8nztxnDw==
-
 expo-media-library@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-4.0.0.tgz#2c0c390c994b7efde7b28a9c927e0f93a6da6ebf"

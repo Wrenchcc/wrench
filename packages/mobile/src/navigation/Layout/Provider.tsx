@@ -129,22 +129,23 @@ export default class Provider extends Component {
     this.onScroll = event(
       [
         {
-          nativeEvent: ({ contentOffset }) => block([
-            set(scrollY, contentOffset.y),
-            set(scrollYClamped, max(this.initialScroll, contentOffset.y)),
-            set(scrollYDiff, diff(scrollYClamped)),
-            cond(
-              neq(dragging, 0),
-              [
-                set(
+          nativeEvent: ({ contentOffset }) =>
+            block([
+              set(scrollY, contentOffset.y),
+              set(scrollYClamped, max(this.initialScroll, contentOffset.y)),
+              set(scrollYDiff, diff(scrollYClamped)),
+              cond(
+                neq(dragging, 0),
+                [
+                  set(
+                    translateY,
+                    min(0, max(-NAVIGATION.TOP_BAR_HEIGHT, sub(translateY, scrollYDiff)))
+                  ),
                   translateY,
-                  min(0, max(-NAVIGATION.TOP_BAR_HEIGHT, sub(translateY, scrollYDiff)))
-                ),
-                translateY,
-              ],
-              0
-            ),
-          ]),
+                ],
+                0
+              ),
+            ]),
         },
       ],
       { useNativeDriver: true }
@@ -163,11 +164,12 @@ export default class Provider extends Component {
     this.onScrollEndDrag = event(
       [
         {
-          nativeEvent: ({ contentOffset, velocity }) => block([
-            set(dragging, contentOffset.x),
-            set(endDragVelocity, velocity.y),
-            set(scrollY, contentOffset.y),
-          ]),
+          nativeEvent: ({ contentOffset, velocity }) =>
+            block([
+              set(dragging, contentOffset.x),
+              set(endDragVelocity, velocity.y),
+              set(scrollY, contentOffset.y),
+            ]),
         },
       ],
       { useNativeDriver: true }
@@ -186,13 +188,13 @@ export default class Provider extends Component {
     return (
       <ListContext.Provider
         value={{
+          contentInset: this.contentInset,
           headerHeight: NAVIGATION.TOP_BAR_HEIGHT,
           initialScroll: this.initialScroll,
-          contentInset: this.contentInset,
-          translateY: this.finalTranslateY,
           onScroll: this.onScroll,
           onScrollBeginDrag: this.onScrollBeginDrag,
           onScrollEndDrag: this.onScrollEndDrag,
+          translateY: this.finalTranslateY,
         }}
       >
         {this.props.children}

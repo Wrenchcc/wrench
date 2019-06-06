@@ -9,23 +9,23 @@ if (!__DEV__) {
   const environment = Config.ENVIRONMENT === 'production' ? 'production' : 'test'
 
   SentryInstance.config(Config.SENTRY_DSN, {
-    environment,
     deactivateStacktraceMerging: true,
+    environment,
   }).install()
 
   SentryInstance.setTagsContext({
     appVersion,
     buildNumber: DeviceInfo.getBuildNumber(),
     deviceInfo: {
+      deviceName: DeviceInfo.getDeviceName(),
       systemName: DeviceInfo.getSystemName(),
       systemVersion: DeviceInfo.getSystemVersion(),
-      deviceName: DeviceInfo.getDeviceName(),
     },
   })
 } else {
   SentryInstance = {
-    captureException: e => console.log(e), // eslint-disable-line no-console
-    setUserContext: c => console.log(c), // eslint-disable-line no-console
+    captureException: e => console.log(e),
+    setUserContext: c => console.log(c),
   }
 }
 

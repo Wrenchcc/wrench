@@ -32,7 +32,7 @@ function Settings({ section, ...rest }) {
       return null
     }
 
-    return <Title style={style.header}>{t(`Settings:${section.titleKey}`)}</Title>
+    return <Title style={style.header}>{t(`Settings:${s.titleKey}`)}</Title>
   }, [])
 
   const renderItem = useCallback(

@@ -19,11 +19,11 @@ export function Bootstrap() {
 
 export function AuthNavigation() {
   Navigation.setDefaultOptions({
-    topBar: {
-      visible: false,
-    },
     statusBar: {
       style: 'light',
+    },
+    topBar: {
+      visible: false,
     },
   })
 
@@ -62,8 +62,8 @@ export function AppNavigation(onboarding) {
                 children: [
                   {
                     component: {
-                      name: SCREENS.FEED,
                       id: SCREENS.FEED,
+                      name: SCREENS.FEED,
                       options: {
                         bottomTab: {
                           icon: feed,
@@ -75,8 +75,8 @@ export function AppNavigation(onboarding) {
                   },
                   {
                     component: {
-                      name: SCREENS.EXPLORE,
                       id: SCREENS.EXPLORE,
+                      name: SCREENS.EXPLORE,
                       options: {
                         bottomTab: {
                           icon: explore,
@@ -88,8 +88,8 @@ export function AppNavigation(onboarding) {
                   },
                   {
                     component: {
-                      name: SCREENS.NOTIFICATIONS,
                       id: SCREENS.NOTIFICATIONS,
+                      name: SCREENS.NOTIFICATIONS,
                       options: {
                         bottomTab: {
                           icon: notifications,
@@ -100,8 +100,8 @@ export function AppNavigation(onboarding) {
                   },
                   {
                     component: {
-                      name: SCREENS.ME,
                       id: SCREENS.ME,
+                      name: SCREENS.ME,
                       options: {
                         bottomTab: {
                           icon: profile,

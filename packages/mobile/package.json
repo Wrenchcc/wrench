@@ -24,7 +24,6 @@
     "apollo-link-error": "^1.1.10",
     "apollo-link-queue": "^2.2.0",
     "apollo-link-retry": "^2.2.13",
-    "expo-image-manipulator": "^4.0.0",
     "expo-media-library": "^4.0.0",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",

@@ -3,7 +3,9 @@ import { savePushNotificationToken } from 'graphql/mutations/user/registerDevice
 import { track, events } from 'utils/analytics'
 
 export default async function requestNotificationToken() {
-  if (__DEV__) return
+  if (__DEV__) {
+    return
+  }
 
   const firebase = messaging()
   const enabled = await firebase.hasPermission()
