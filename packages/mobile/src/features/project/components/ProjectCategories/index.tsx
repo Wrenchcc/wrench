@@ -9,19 +9,21 @@ const { width } = Dimensions.get('window')
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
+const keyExtractor = item => item.id
+
 function ProjectCategories({ ListHeaderComponent, isFetching, types, onSelect }) {
   return (
     <FlatList
       ListHeaderComponent={ListHeaderComponent}
       ListEmptyComponent={isFetching && <Loader color="grey" />}
       contentContainerStyle={{
-        padding: 5,
         flex: isFetching ? 1 : 0,
+        padding: 5,
         paddingBottom: 30,
       }}
       numColumns={2}
       data={types}
-      keyExtractor={item => item.id}
+      keyExtractor={keyExtractor}
       renderItem={({ item }) => (
         <Cell key={item.id}>
           <Touchable hapticFeedback="impactLight" onPress={() => onSelect(item)}>

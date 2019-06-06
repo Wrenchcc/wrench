@@ -4,7 +4,7 @@ export default class TextExtraction {
     this.patterns = patterns || []
   }
 
-  parse() {
+  public parse() {
     let parsedTexts = [{ children: this.text }]
     this.patterns.forEach(pattern => {
       const newParts = []
@@ -53,7 +53,7 @@ export default class TextExtraction {
     return parsedTexts.filter(t => !!t.children)
   }
 
-  getMatchedPart(matchedPattern, text, matches, index) {
+  private getMatchedPart(matchedPattern, text, matches, index) {
     const props = {}
 
     Object.keys(matchedPattern).forEach(key => {

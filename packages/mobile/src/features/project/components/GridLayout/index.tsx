@@ -6,8 +6,8 @@ function GridLayout({ active }) {
 
   useEffect(() => {
     Animated.timing(animatedValue.current, {
-      toValue: active ? 1 : 0,
       duration: 200,
+      toValue: active ? 1 : 0,
       useNativeDriver: true,
     }).start()
   }, [active])
@@ -16,67 +16,67 @@ function GridLayout({ active }) {
     <Animated.View
       pointerEvents="none"
       style={{
+        height: '100%',
+        left: 0,
         opacity: animatedValue.current,
         position: 'absolute',
         top: 0,
-        left: 0,
         width: '100%',
-        height: '100%',
         zIndex: 10,
       }}
     >
       <View
         style={{
-          width: '100%',
           height: '100%',
           position: 'absolute',
           top: '33.33%',
+          width: '100%',
         }}
       >
         <View
           style={{
-            width: '100%',
             borderBottomWidth: 1,
             borderColor: 'rgba(000, 000, 000, 0.7)',
+            width: '100%',
           }}
         />
         <View
           style={{
-            marginTop: '33.33%',
-            width: '100%',
             borderBottomWidth: 1,
             borderColor: 'rgba(000, 000, 000, 0.7)',
+            marginTop: '33.33%',
+            width: '100%',
           }}
         />
       </View>
       <View
         style={{
           height: '100%',
-          width: '100%',
+          left: 0,
           position: 'absolute',
           top: 0,
-          left: 0,
+          width: '100%',
         }}
       >
         <View
           style={{
-            height: '100%',
-            position: 'absolute',
-            left: '33.33%',
-            top: 0,
-            borderLeftWidth: 1,
             borderColor: 'rgba(000, 000, 000, 0.7)',
+            borderLeftWidth: 1,
+            height: '100%',
+            left: '33.33%',
+            position: 'absolute',
+            top: 0,
           }}
         />
 
         <View
           style={{
+            borderColor: 'rgba(000, 000, 000, 0.7)',
+            borderLeftWidth: 1,
             height: '100%',
             position: 'absolute',
             right: '33.33%',
             top: 0,
-            borderLeftWidth: 1,
-            borderColor: 'rgba(000, 000, 000, 0.7)',
           }}
         />
       </View>

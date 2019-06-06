@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier",
+    "tslint-react-hooks"
+  ],
+  "globals": {
+    "__DEV__": true,
+    "fetch": true,
+    "path": true,
+    "XMLHttpRequest": true,
+    "requestAnimationFrame": true
+  },
+  "rules": {
+    "no-implicit-dependencies": false,
+    "ordered-imports": false,
+    "no-submodule-imports": false,
+    "jsx-boolean-value": false
+  }
+}

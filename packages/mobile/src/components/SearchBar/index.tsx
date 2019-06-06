@@ -24,8 +24,9 @@ function Search({
 
   const handleFocus = () => {
     transitionRef.current.animateNextTransition()
-    onSearchFocus && onSearchFocus()
-
+    if (onSearchFocus) {
+      onSearchFocus()
+    }
     return true
   }
 
@@ -33,7 +34,9 @@ function Search({
     inputRef.current.blur()
     Keyboard.dismiss()
     transitionRef.current.animateNextTransition()
-    onSearchCancel && onSearchCancel()
+    if (onSearchCancel) {
+      onSearchCancel()
+    }
   }
 
   useEffect(() => {

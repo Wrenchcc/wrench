@@ -18,8 +18,8 @@ function ProjectSuggestions({ projects, isFetching }) {
       </Description>
 
       {isFetching && <Loader />}
-      {projects.length > 0
-        && projects.map(({ type, edges }) => (
+      {projects.length > 0 &&
+        projects.map(({ type, edges }) => (
           <ProjectSuggestion key={type.id} title={type.title} data={edges} />
         ))}
     </Base>

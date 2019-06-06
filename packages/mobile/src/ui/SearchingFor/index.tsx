@@ -9,9 +9,9 @@ function SearchingFor({ query }) {
   return (
     <View
       style={{
+        alignItems: 'center',
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'center',
         paddingTop: 20,
       }}
     >

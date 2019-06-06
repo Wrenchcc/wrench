@@ -6,9 +6,9 @@ const ITEM_HEIGHT = 70
 
 function getItemLayout(data, index) {
   return {
+    index,
     length: ITEM_HEIGHT,
     offset: ITEM_HEIGHT * index,
-    index,
   }
 }
 

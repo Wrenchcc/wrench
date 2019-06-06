@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState, useCallback } from 'react'
 import { Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import BottomSheet from 'reanimated-bottom-sheet'
@@ -8,12 +8,13 @@ import Albums from './Albums'
 import OpenAlbum from './OpenAlbum'
 import List from './List'
 
-const PERMISSION = Platform.OS === 'ios' ? IOS_PERMISSIONS.PHOTO_LIBRARY : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
+const PERMISSION =
+  Platform.OS === 'ios' ? IOS_PERMISSIONS.PHOTO_LIBRARY : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
 
 const MAX_SELECTED_FILES = 10
 
 function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
-  const bottomSheetRef = useRef()
+  const ref = useRef()
   const [album, setAlbum] = useState(null)
   const [checkingPermission, setCheckingPermission] = useState(true)
   const [photoPermission, setPhotoPermission] = useState(false)
@@ -24,6 +25,8 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
       setCheckingPermission(false)
     })
   }, [])
+
+  const handleOpen = useCallback(() => ref.current.snapTo(1), [ref])
 
   const indexOfItem = item => findIndex(propEq('uri', item.uri))(selectedFiles)
 
@@ -48,9 +51,9 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
     setPhotoPermission(RESULTS.GRANTED)
   }
 
-  const changeAlbum = album => {
-    setAlbum(album)
-    bottomSheetRef.current.snapTo(0)
+  const changeAlbum = selected => {
+    setAlbum(selected)
+    ref.current.snapTo(0)
   }
 
   const renderInner = () => <Albums onPress={changeAlbum} />
@@ -67,14 +70,14 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
 
   return (
     <Fragment>
-      <OpenAlbum onPress={() => bottomSheetRef.current.snapTo(1)} />
+      <OpenAlbum onPress={handleOpen} />
       <List
         album={album}
         onSelect={toggleSelection}
         selected={selectedFiles}
         cameraFile={cameraFile}
       />
-      <BottomSheet ref={bottomSheetRef} snapPoints={[0, '60%']} renderContent={renderInner} />
+      <BottomSheet ref={ref} snapPoints={[0, '60%']} renderContent={renderInner} />
     </Fragment>
   )
 }

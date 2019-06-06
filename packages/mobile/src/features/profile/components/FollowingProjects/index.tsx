@@ -8,15 +8,7 @@ import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from 
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
-type Props = {
-  user: object
-  projects: array
-  isFetching: bool
-  refetch: bool
-  fetchMore: bool
-  isRefetching: bool
-  hasNextPage: bool
-}
+const keyExtractor = item => item.node.id
 
 // TODO: Fetch more on end, fix scrollable
 function FollowingProjects({
@@ -37,7 +29,7 @@ function FollowingProjects({
       <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
 
       <InfiniteList
-        keyExtractor={item => item.node.id}
+        keyExtractor={keyExtractor}
         data={projects}
         refetch={refetch}
         fetchMore={fetchMore}
@@ -54,9 +46,10 @@ function FollowingProjects({
         renderItem={({ item }) => (
           <ProjectCard
             project={item.node}
-            onPress={() => navigate(SCREENS.PROJECT, {
-              slug: item.node.slug,
-            })
+            onPress={() =>
+              navigate(SCREENS.PROJECT, {
+                slug: item.node.slug,
+              })
             }
           />
         )}

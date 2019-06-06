@@ -7,9 +7,10 @@ function Header({ project, spacingHorizontal }) {
   const { navigate } = useNavigation()
 
   const handleNavigation = useCallback(
-    () => navigate(SCREENS.FOLLOWERS, {
-      id: project.id,
-    }),
+    () =>
+      navigate(SCREENS.FOLLOWERS, {
+        id: project.id,
+      }),
     [project]
   )
 

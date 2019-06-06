@@ -21,17 +21,19 @@ function Item({
 }) {
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(
-    () => navigate(SCREENS.USER, {
-      username: user.username,
-    }),
+    () =>
+      navigate(SCREENS.USER, {
+        username: user.username,
+      }),
     [user]
   )
 
   const handleOnReply = useCallback(
-    () => onReply({
-      username: user.username,
-      commentId: commentId || id,
-    }),
+    () =>
+      onReply({
+        commentId: commentId || id,
+        username: user.username,
+      }),
     [user.username, commentId, id]
   )
 
@@ -39,12 +41,12 @@ function Item({
 
   if (highlightId === id) {
     Animated.timing(animatedValue, {
-      toValue: 1,
       duration: 1000,
+      toValue: 1,
     }).start(() => {
       Animated.timing(animatedValue, {
-        toValue: 0,
         delay: 3000,
+        toValue: 0,
       }).start()
     })
   }
@@ -54,7 +56,9 @@ function Item({
     outputRange: [COLORS.WHITE, COLORS.ULTRA_LIGHT_GREY],
   })
 
-  if (!user) return null
+  if (!user) {
+    return null
+  }
 
   return (
     <Animated.View style={{ backgroundColor }}>

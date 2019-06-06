@@ -7,17 +7,17 @@ function OpenAlbum({ onPress }) {
   return (
     <View
       style={{
-        position: 'absolute',
-        zIndex: 1,
-        left: 20,
-        bottom: 20,
-        backgroundColor: 'black',
-        width: 40,
-        height: 40,
-        borderRadius: 40,
-        flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'black',
+        borderRadius: 40,
+        bottom: 20,
+        flex: 1,
+        height: 40,
+        justifyContent: 'center',
+        left: 20,
+        position: 'absolute',
+        width: 40,
+        zIndex: 1,
       }}
     >
       <Icon source={albumIcon} onPress={onPress} />

@@ -13,15 +13,15 @@ function ShowLatest({ onPress, onHide }) {
 
   useEffect(() => {
     Animated.spring(transformY.current, {
-      toValue: TOP,
       duration: DURATION,
+      toValue: TOP,
       useNativeDriver: true,
     }).start(() => {
       Animated.sequence([
         Animated.delay(DELAY),
         Animated.spring(transformY.current, {
-          toValue: -HEIGHT - TOP,
           duration: DURATION / 2,
+          toValue: -HEIGHT - TOP,
           useNativeDriver: true,
         }),
       ]).start()
@@ -31,9 +31,9 @@ function ShowLatest({ onPress, onHide }) {
   const handleOnPress = useCallback(() => {
     onPress()
     Animated.spring(transformY.current, {
-      toValue: -50,
       delay: 50,
       duration: DURATION,
+      toValue: -50,
       useNativeDriver: true,
     }).start(onHide)
   }, [onPress, onHide])
@@ -41,9 +41,9 @@ function ShowLatest({ onPress, onHide }) {
   return (
     <Animated.View
       style={{
-        transform: [{ translateY: transformY.current }],
         alignSelf: 'center',
         height: HEIGHT,
+        transform: [{ translateY: transformY.current }],
       }}
     >
       <Button onPress={handleOnPress}>

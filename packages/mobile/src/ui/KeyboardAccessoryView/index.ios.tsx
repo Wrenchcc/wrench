@@ -36,13 +36,13 @@ function KeyboardAccessoryView({ children }) {
     <Transitioning.View ref={ref} transition={transition}>
       <View
         style={{
-          position: 'absolute',
-          height: keyboardHeight,
-          overflow: 'hidden',
-          bottom: 0,
-          left: 0,
-          right: 0,
           backgroundColor: 'white',
+          bottom: 0,
+          height: keyboardHeight,
+          left: 0,
+          overflow: 'hidden',
+          position: 'absolute',
+          right: 0,
         }}
       >
         <View style={{ flex: 1, paddingRight: 20, paddingLeft: 20 }}>{children}</View>

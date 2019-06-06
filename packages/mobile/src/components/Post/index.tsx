@@ -7,7 +7,7 @@ import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ActionSheet, Ed
 import { share } from 'images'
 import { Top, Headline, Content, Spacer } from './styled'
 
-function Post({ post, withoutTitle, withoutComments, deletePost }) {
+function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutation }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
   const [actionSheetIsOpen, setActionSheetIsOpen] = useState(false)
@@ -21,8 +21,8 @@ function Post({ post, withoutTitle, withoutComments, deletePost }) {
   const navigateToProject = useCallback(() => {
     if (!withoutTitle) {
       navigate(SCREENS.PROJECT, {
-        slug: post.project.slug,
         postId: post.id,
+        slug: post.project.slug,
       })
     }
   }, [post, withoutTitle])
@@ -41,17 +41,17 @@ function Post({ post, withoutTitle, withoutComments, deletePost }) {
           t('Post:options:alertDescription'),
           [
             {
-              text: t('Post:options:discard'),
               onPress: () => {
                 setIsEditing(false)
                 setAlertOpen(false)
               },
               style: 'destructive',
+              text: t('Post:options:discard'),
             },
             {
-              text: t('Post:options:cancel'),
               onPress: () => setAlertOpen(false),
               style: 'cancel',
+              text: t('Post:options:cancel'),
             },
           ],
           { cancelable: false }
@@ -81,7 +81,8 @@ function Post({ post, withoutTitle, withoutComments, deletePost }) {
     } else {
       options.push({
         name: t('Post:options:report'),
-        onSelect: () => Linking.openURL(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`),
+        onSelect: () =>
+          Linking.openURL(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`),
       })
     }
 
@@ -101,13 +102,13 @@ function Post({ post, withoutTitle, withoutComments, deletePost }) {
       null,
       [
         {
-          text: t('Post:options:delete'),
-          onPress: () => deletePost(post.id),
+          onPress: () => deletePostMutation(post.id),
           style: 'destructive',
+          text: t('Post:options:delete'),
         },
         {
-          text: t('Post:options:cancel'),
           style: 'cancel',
+          text: t('Post:options:cancel'),
         },
       ],
       { cancelable: false }

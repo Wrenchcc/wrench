@@ -9,18 +9,20 @@ const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 function getItemLayout(_, index) {
   return {
+    index,
     length: SIZE,
     offset: SIZE * index,
-    index,
   }
 }
+
+const keyExtractor = ({ node }) => node.id
 
 function Carousel({ onPress, files }) {
   const scrollEnabled = files.edges.length > 1
 
   return (
     <FlatList
-      keyExtractor={({ node }) => node.id}
+      keyExtractor={keyExtractor}
       getItemLayout={getItemLayout}
       initialNumToRender={3}
       data={files.edges}

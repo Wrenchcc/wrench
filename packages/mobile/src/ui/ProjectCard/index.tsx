@@ -6,7 +6,7 @@ import { followProject } from 'graphql/mutations/project/followProject'
 import Image from 'ui/Image'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
-function ProjectCard({ onPress, project, followProject, style }) {
+function ProjectCard({ onPress, project, followProject: followProjectMutation, style }) {
   const { t } = useTranslation()
   const renderImages = useCallback(() => {
     const image = pathOr(false, ['files', 'edges', 0, 'node'], project)
@@ -20,6 +20,8 @@ function ProjectCard({ onPress, project, followProject, style }) {
     )
   }, [project])
 
+  const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
+
   return (
     <Base onPress={onPress} style={style}>
       {renderImages()}
@@ -32,12 +34,7 @@ function ProjectCard({ onPress, project, followProject, style }) {
           <Followers followers={project.followers.totalCount} color="white" opacity={0.9} />
         </Info>
         {!project.projectPermissions.isOwner && (
-          <Button
-            small
-            background="white"
-            onPress={() => followProject(project.id)}
-            hapticFeedback="impactLight"
-          >
+          <Button small background="white" onPress={handleFollow} hapticFeedback="impactLight">
             {project.projectPermissions.isFollower
               ? t('ProjectCard:unfollow')
               : t('ProjectCard:follow')}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PageLayout, SectionList } from 'navigation'
 import { Subscribe } from 'unstated'
@@ -12,9 +12,9 @@ import sections from '../../sections'
 
 const style = {
   container: {
+    paddingBottom: 40,
     paddingLeft: 20,
     paddingRight: 20,
-    paddingBottom: 40,
   },
   header: {
     marginBottom: 20,
@@ -22,8 +22,25 @@ const style = {
   },
 }
 
+const keyExtractor = (item, index) => item + index
+
 function Settings({ section, ...rest }) {
   const { t } = useTranslation()
+
+  const renderSectionHeader = useCallback(({ section: s }) => {
+    if (!s.titleKey) {
+      return null
+    }
+
+    return <Title style={style.header}>{t(`Settings:${section.titleKey}`)}</Title>
+  }, [])
+
+  const renderItem = useCallback(
+    ({ item, index }) => (
+      <SelectionItem key={index} {...item} title={t(`Settings:${item.titleKey}`)} />
+    ),
+    []
+  )
 
   return (
     <Subscribe to={[I18nContainer]}>
@@ -32,17 +49,11 @@ function Settings({ section, ...rest }) {
           <SectionList
             contentContainerStyle={style.container}
             stickySectionHeadersEnabled={false}
-            renderSectionHeader={({ section }) => {
-              if (!section.titleKey) return null
-
-              return <Title style={style.header}>{t(`Settings:${section.titleKey}`)}</Title>
-            }}
-            renderItem={({ item, index }) => (
-              <SelectionItem key={index} {...item} title={t(`Settings:${item.titleKey}`)} />
-            )}
+            renderSectionHeader={renderSectionHeader}
+            renderItem={renderItem}
             initialNumToRender={15}
             sections={sections({ ...state, changeLocale, ...rest })[section || 'settings']}
-            keyExtractor={(item, index) => item + index}
+            keyExtractor={keyExtractor}
             ListFooterComponent={!section && <Footer />}
             borderSeparator
           />

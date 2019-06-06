@@ -5,15 +5,6 @@ import { Field } from './styles'
 
 const DEFAULT_SELECTION_COLOR = isIphone ? COLORS.DARK : COLORS.WHITE
 
-type Props = {
-  placeholder: string
-  autoFocus: boolean
-  noBorder: boolean
-  multiline: boolean
-  selectionColor: string
-  waitForRender: boolean
-}
-
 export default forwardRef(function Input(
   {
     placeholder,
@@ -23,7 +14,7 @@ export default forwardRef(function Input(
     selectionColor = DEFAULT_SELECTION_COLOR,
     waitForRender,
     ...props
-  }: Props,
+  },
   ref
 ) {
   const inputRef = useRef(null)
@@ -34,7 +25,9 @@ export default forwardRef(function Input(
     useEffect(() => {
       const wait = setTimeout(
         () => {
-          if (inputRef.current) inputRef.current.focus()
+          if (inputRef.current) {
+            inputRef.current.focus()
+          }
         },
         waitForRender ? 500 : 0
       )

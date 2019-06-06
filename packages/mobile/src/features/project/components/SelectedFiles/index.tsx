@@ -2,10 +2,13 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import { Image, GUTTER, SNAP_INTERVAL } from './styles'
 
+const renderItem = ({ item }) => <Image source={item} />
+const keyExtractor = item => item.uri
+
 function SelectedFiles({ selectedFiles }) {
   return (
     <FlatList
-      keyExtractor={item => item.uri}
+      keyExtractor={}
       data={selectedFiles}
       horizontal
       directionalLockEnabled
@@ -13,17 +16,17 @@ function SelectedFiles({ selectedFiles }) {
       decelerationRate="fast"
       snapToInterval={SNAP_INTERVAL}
       snapToAlignment="start"
-      renderItem={({ item }) => <Image source={item} />}
+      renderItem={renderItem}
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         paddingLeft: 20,
         paddingRight: 20,
       }}
       style={{
-        marginTop: 20,
         marginBottom: 30,
-        marginRight: -GUTTER,
         marginLeft: -GUTTER,
+        marginRight: -GUTTER,
+        marginTop: 20,
       }}
     />
   )

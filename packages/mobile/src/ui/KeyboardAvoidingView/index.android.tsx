@@ -7,9 +7,9 @@ function KeyboardAvoidingView({ children, paddingHorizontal = 20 }) {
       style={{
         flex: 1,
         justifyContent: 'flex-end',
+        paddingBottom: 20,
         paddingLeft: paddingHorizontal,
         paddingRight: paddingHorizontal,
-        paddingBottom: 20,
       }}
     >
       {children}

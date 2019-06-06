@@ -22,6 +22,9 @@ const handleNamePress = name => {
 }
 
 const styles = {
+  emoji: {
+    fontFamily: 'System',
+  },
   link: {
     color: COLORS.DARK,
     fontFamily: FONTS.MEDIUM,
@@ -29,31 +32,28 @@ const styles = {
   username: {
     color: COLORS.DARK,
   },
-  emoji: {
-    fontFamily: 'System',
-  },
 }
 
 // Patterns
 // NOTE: Order matters
 export default [
   {
-    pattern: /\/?\B@[a-z0-9.-]+/gi,
-    style: styles.username,
     onPress: handleNamePress,
+    pattern: /\/?\B@[a-z0-9.-]+/gi,
     renderText: username => username,
+    style: styles.username,
   },
   {
-    type: 'url',
-    style: styles.link,
     onPress: handleUrlPress,
     renderText: matchingString => {
       const pattern = /^(?:https?:\/\/)?(?:www\.)?/i
       return matchingString.replace(pattern, '')
     },
+    style: styles.link,
+    type: 'url',
   },
   {
-    type: 'emoji',
     style: styles.emoji,
+    type: 'emoji',
   },
 ]

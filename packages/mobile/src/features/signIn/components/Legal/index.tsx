@@ -9,9 +9,10 @@ function Legal() {
   const { t } = useTranslation()
 
   const handleNavigation = useCallback(
-    () => showModal(SCREENS.WEBVIEW, {
-      url: LEGAL_URL,
-    }),
+    () =>
+      showModal(SCREENS.WEBVIEW, {
+        url: LEGAL_URL,
+      }),
     []
   )
 

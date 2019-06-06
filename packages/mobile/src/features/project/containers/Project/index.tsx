@@ -26,16 +26,20 @@ function Project({
   const { navigate } = useNavigation()
   // TODO: username is not return in time, use cache?
   const handleNavigation = useCallback(
-    () => navigate(SCREENS.USER, {
-      username: project.user && project.user.username,
-    }),
+    () =>
+      navigate(SCREENS.USER, {
+        username: project.user && project.user.username,
+      }),
     [project.user, project]
   )
 
+  const handleFollow = useCallback(() => followProject(project.id), [project])
+
   const hasPosts = posts && posts.length > 0
-  const emptyState = project.projectPermissions && project.projectPermissions.isOwner
-    ? TYPES.PROJECT_POST
-    : TYPES.PROJECT_NO_POSTS
+  const emptyState =
+    project.projectPermissions && project.projectPermissions.isOwner
+      ? TYPES.PROJECT_POST
+      : TYPES.PROJECT_NO_POSTS
 
   const renderItem = ({ item }) => {
     // Remove post item from list to skip dublicated
@@ -87,7 +91,7 @@ function Project({
             dynamicLink={project.dynamicLink}
             following={project.projectPermissions.isFollower}
             isOwner={project.projectPermissions.isOwner}
-            onFollowPress={() => followProject(project.id)}
+            onFollowPress={handleFollow}
           />
         )
       }

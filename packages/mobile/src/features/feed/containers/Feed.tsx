@@ -32,9 +32,9 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
 
   useEffect(() => {
     if (
-      posts
-      && posts.length > 10
-      && !pathOr(false, [0, 'node', 'postPermissions', 'isOwner'], posts)
+      posts &&
+      posts.length > 10 &&
+      !pathOr(false, [0, 'node', 'postPermissions', 'isOwner'], posts)
     ) {
       setHasNewPosts(true)
     }

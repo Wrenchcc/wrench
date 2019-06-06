@@ -13,7 +13,6 @@ export const FONTS = {
 }
 
 export const COLORS = {
-  TAB_ICON: '#8E8E8E',
   DARK_GREY: 'rgb(34,34,34)',
   DARK: 'rgb(000, 000, 000)',
   DIVIDER: 'rgb(230, 231, 233)',
@@ -25,6 +24,7 @@ export const COLORS = {
   PRIMARY: 'rgb(42, 119, 90)',
   RED: 'rgb(246, 86, 86)',
   SECONDARY: 'rgb(237, 234, 228)',
+  TAB_ICON: '#8E8E8E',
   TAB: 'rgb(000, 000, 000)',
   ULTRA_LIGHT_GREY: 'rgb(237, 237, 239)',
   WHITE: 'rgb(255, 255, 255)',

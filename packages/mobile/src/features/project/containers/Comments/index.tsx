@@ -19,8 +19,8 @@ function Comments({
   const { t } = useTranslation()
 
   const [mention, setMention] = useState({
-    username: null,
     commentId: null,
+    username: null,
   })
 
   const handleOnReply = useCallback(data => setMention(data), [])
@@ -56,10 +56,10 @@ function Comments({
     >
       <FlatList
         contentContainerStyle={{
-          paddingTop: 0,
+          paddingBottom: 60,
           paddingLeft: 0,
           paddingRight: 0,
-          paddingBottom: 60,
+          paddingTop: 0,
         }}
         ListHeaderComponent={renderHeader}
         data={comments}

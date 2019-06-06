@@ -33,7 +33,8 @@ function Camera({ onTakePicture }) {
   }, [])
 
   const changeFlashMode = useCallback(() => {
-    const mode = flashMode === Constants.FlashMode.on ? Constants.FlashMode.off : Constants.FlashMode.on
+    const mode =
+      flashMode === Constants.FlashMode.on ? Constants.FlashMode.off : Constants.FlashMode.on
 
     setFlashMode(mode)
   }, [flashMode])
@@ -49,16 +50,14 @@ function Camera({ onTakePicture }) {
     setAutofocus({ x: nativeEvent.locationX, y: nativeEvent.locationY })
   }, [])
 
-  if (isLoading) return null
+  const handlePermission = useCallback(() => setPermission(RESULTS.GRANTED), [])
+
+  if (isLoading) {
+    return null
+  }
 
   if (permission !== RESULTS.GRANTED) {
-    return (
-      <AskForPermission
-        permission={PERMISSION}
-        onSuccess={() => setPermission(RESULTS.GRANTED)}
-        type="camera"
-      />
-    )
+    return <AskForPermission permission={PERMISSION} onSuccess={handlePermission} type="camera" />
   }
 
   return (

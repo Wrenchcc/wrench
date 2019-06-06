@@ -14,15 +14,16 @@ export const AuthenticateFacebookMutation = gql`
 
 const authenticateFacebookOptions = {
   props: ({ mutate }) => ({
-    authenticateFacebook: token => mutate({
-      variables: {
-        token,
-      },
-      update: (_, { data }) => {
-        setTokens(data.authenticateFacebook)
-        track(events.USER_SIGNED_IN)
-      },
-    }),
+    authenticateFacebook: token =>
+      mutate({
+        variables: {
+          token,
+        },
+        update: (_, { data }) => {
+          setTokens(data.authenticateFacebook)
+          track(events.USER_SIGNED_IN)
+        },
+      }),
   }),
 }
 

@@ -3,11 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
 
-type Props = {
-  project: object
-}
-
-function Edit({ project }: Props) {
+function Edit({ project }) {
   const { t } = useTranslation()
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(() => showModal(SCREENS.EDIT_PROJECT, { project }), [

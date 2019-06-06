@@ -3,18 +3,18 @@ import { View } from 'react-native'
 
 const getSize = size => ({
   background: {
-    right: -1,
-    bottom: -1,
-    width: size === 'medium' ? 14 : 10,
-    height: size === 'medium' ? 14 : 10,
     borderRadius: size === 'medium' ? 14 : 10,
+    bottom: -1,
+    height: size === 'medium' ? 14 : 10,
+    right: -1,
+    width: size === 'medium' ? 14 : 10,
   },
   badge: {
-    right: 1,
-    bottom: 1,
-    width: size === 'medium' ? 10 : 6,
-    height: size === 'medium' ? 10 : 6,
     borderRadius: size === 'medium' ? 10 : 6,
+    bottom: 1,
+    height: size === 'medium' ? 10 : 6,
+    right: 1,
+    width: size === 'medium' ? 10 : 6,
   },
 })
 
@@ -24,19 +24,19 @@ function IsOnline({ badgeSize = 'medium' }) {
       <View
         pointerEvents="none"
         style={{
+          ...getSize(badgeSize).badge,
+          backgroundColor: '#05b01e',
           position: 'absolute',
           zIndex: 10,
-          backgroundColor: '#05b01e',
-          ...getSize(badgeSize).badge,
         }}
       />
       <View
         pointerEvents="none"
         style={{
+          ...getSize(badgeSize).background,
+          backgroundColor: 'white',
           position: 'absolute',
           zIndex: 5,
-          backgroundColor: 'white',
-          ...getSize(badgeSize).background,
         }}
       />
     </View>

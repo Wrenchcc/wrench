@@ -25,18 +25,18 @@ function ProgressBar({
       ref={ref}
       transition={transition}
       style={{
-        opacity,
         backgroundColor,
-        width: '100%',
+        opacity,
         overflow: 'hidden',
+        width: '100%',
       }}
     >
       <View
         style={{
-          width: `${width}%`,
-          height,
           backgroundColor: fillColor,
           borderRadius,
+          height,
+          width: `${width}%`,
         }}
       />
     </Transitioning.View>

@@ -57,8 +57,8 @@ function onPress(data, navigate) {
     case NOTIFICATION_TYPES.NEW_COMMENT:
     case NOTIFICATION_TYPES.NEW_REPLY:
       return navigate(SCREENS.POST, {
-        postId: data.comment.postId,
         commentId: data.comment.id,
+        postId: data.comment.postId,
       })
     default:
       return null
@@ -72,9 +72,10 @@ function Notification({ data, deleteNotification }) {
   const { navigate } = useNavigation()
 
   const navigateToUser = useCallback(
-    () => navigate(SCREENS.USER, {
-      username: data.user.username,
-    }),
+    () =>
+      navigate(SCREENS.USER, {
+        username: data.user.username,
+      }),
     []
   )
 

@@ -3,22 +3,14 @@ import { useTranslation } from 'react-i18next'
 import { editPost } from 'graphql/mutations/post/editPost'
 import { Input } from './styles'
 
-type Props = {
-  color?: string
-  editPost: func
-  hasChanged: func
-  post?: object
-  onSubmit: func
-}
-
-function EditPost({ post, color, onSubmit, hasChanged, editPost }: Props) {
+function EditPost({ post, color, onSubmit, hasChanged, editPost: editPostMutation }) {
   const [value, setValue] = useState(post.caption)
   const { t } = useTranslation()
 
   const handleEdit = useCallback(
-    value => {
-      hasChanged(value.trim() !== post.caption)
-      setValue(value)
+    text => {
+      hasChanged(text.trim() !== post.caption)
+      setValue(text)
     },
     [value, post]
   )
@@ -26,7 +18,7 @@ function EditPost({ post, color, onSubmit, hasChanged, editPost }: Props) {
   const handleSubmit = useCallback(() => {
     onSubmit()
 
-    editPost(post, {
+    editPostMutation(post, {
       caption: value,
     })
   }, [post, value, onSubmit])

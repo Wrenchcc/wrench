@@ -9,9 +9,10 @@ function User({ data }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(
-    () => navigate(SCREENS.USER, {
-      username: data.username,
-    }),
+    () =>
+      navigate(SCREENS.USER, {
+        username: data.username,
+      }),
     [data]
   )
 

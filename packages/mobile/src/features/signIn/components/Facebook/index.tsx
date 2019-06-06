@@ -7,11 +7,7 @@ import { logError } from 'utils/sentry'
 import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
 import { Button, Text } from './styled'
 
-type Props = {
-  authenticateFacebook: string
-}
-
-function Facebook({ authenticateFacebook }: Props) {
+function Facebook({ authenticateFacebook }) {
   const { t } = useTranslation()
 
   const handleLoginManager = useCallback(async () => {

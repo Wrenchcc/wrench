@@ -7,10 +7,11 @@ import { LoadReplies, Border } from './styles'
 function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
   const { t } = useTranslation()
   const handleLoadMore = useCallback(
-    () => fetchMoreReplies(
-      data.node.id,
-      data.node.replies.edges[data.node.replies.edges.length - 1].cursor
-    ),
+    () =>
+      fetchMoreReplies(
+        data.node.id,
+        data.node.replies.edges[data.node.replies.edges.length - 1].cursor
+      ),
     [data.node.id]
   )
 

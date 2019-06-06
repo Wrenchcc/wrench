@@ -7,10 +7,10 @@ function Placeholder() {
   return (
     <View
       style={{
-        flex: 1,
-        backgroundColor: COLORS.LIGHT_GREY,
-        justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: COLORS.LIGHT_GREY,
+        flex: 1,
+        justifyContent: 'center',
       }}
     >
       <Image source={fallback} />

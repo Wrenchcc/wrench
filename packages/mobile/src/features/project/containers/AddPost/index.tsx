@@ -19,7 +19,7 @@ function getProjectByIdOrFirst(id, projects) {
   return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
 }
 
-function AddPost({ projects, addPost }) {
+function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
@@ -42,10 +42,10 @@ function AddPost({ projects, addPost }) {
     try {
       const uploadedFiles = await uploadFiles(state.selectedFiles)
 
-      await addPost({
+      await addPostMutation({
         caption: state.caption,
-        projectId: id,
         files: uploadedFiles,
+        projectId: id,
       }).then(resetState)
 
       track(events.POST_CREATED)
@@ -53,9 +53,9 @@ function AddPost({ projects, addPost }) {
       hidePostProgress()
 
       showNotification({
-        type: 'error',
-        message: t('AddPost:error'),
         dismissAfter: 6000,
+        message: t('AddPost:error'),
+        type: 'error',
       })
 
       logError(err)

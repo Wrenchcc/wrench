@@ -27,7 +27,7 @@ function Albums({ onPress }) {
       const results = await MediaLibrary.getAlbumsAsync()
       const albums = prepend(first, results)
 
-      const data = await Promise.all(
+      const assets = await Promise.all(
         albums.map(async album => {
           const result = await MediaLibrary.getAssetsAsync({
             album: album.id,
@@ -44,7 +44,7 @@ function Albums({ onPress }) {
         logError(err)
       })
 
-      setData(data.filter(a => a.totalCount > 0).sort((a, b) => a - b))
+      setData(assets.filter(a => a.totalCount > 0).sort((a, b) => a - b))
       setLoading(false)
     } catch (err) {
       logError(err)
@@ -62,9 +62,9 @@ function Albums({ onPress }) {
   return (
     <View
       style={{
+        backgroundColor: 'white',
         height: data.length * HEIGHT + PADDING_TOP * 2,
         minHeight: height,
-        backgroundColor: 'white',
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: PADDING_TOP,
@@ -72,12 +72,12 @@ function Albums({ onPress }) {
     >
       <View
         style={{
-          width: 60,
-          height: 5,
+          alignSelf: 'center',
           backgroundColor: COLORS.LIGHT_GREY,
           borderRadius: 5,
-          alignSelf: 'center',
+          height: 5,
           marginBottom: PADDING_TOP,
+          width: 60,
         }}
       />
       {data.map(({ id, title, totalCount, preview }) => (

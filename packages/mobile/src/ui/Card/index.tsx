@@ -7,9 +7,10 @@ import { Picture, ProjectName, SIZE } from './styles'
 function Card({ image, title, onPress, style = {}, user }) {
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(
-    () => navigate(SCREENS.USER, {
-      username: user.username,
-    }),
+    () =>
+      navigate(SCREENS.USER, {
+        username: user.username,
+      }),
     [user]
   )
 

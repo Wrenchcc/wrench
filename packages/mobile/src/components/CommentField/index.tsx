@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
-import { Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Query } from 'react-apollo'
 import { showMention, dismissMention } from 'navigation'
@@ -65,8 +64,9 @@ function CommentField({ addComment, postId, commentId, username }) {
   )
 
   const handleSubmit = useCallback(() => {
-    // addComment(postId, text, commentId)
-  }, [postId, text, commentId])
+    addComment(postId, text, commentId)
+    inputRef.current.blur()
+  }, [postId, text, commentId, inputRef])
 
   return (
     <Query query={CurrentUserQuery}>

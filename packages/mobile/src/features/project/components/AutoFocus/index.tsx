@@ -21,8 +21,8 @@ function PointOfInterest({ coordinates }) {
           }),
           Animated.loop(
             Animated.timing(opacity.current, {
-              toValue: 0.8,
               duration: 300,
+              toValue: 0.8,
             }),
             { iterations: 4 }
           ),
@@ -30,8 +30,8 @@ function PointOfInterest({ coordinates }) {
         { useNativeDriver: true }
       ),
       Animated.timing(opacity.current, {
-        toValue: 0.4,
         duration: 400,
+        toValue: 0.4,
       }),
     ]).start()
   }, [coordinates])
@@ -40,58 +40,58 @@ function PointOfInterest({ coordinates }) {
     <Animated.View
       pointerEvents="none"
       style={{
-        opacity: opacity.current,
-        width: DEFAULT_SIZE,
-        height: DEFAULT_SIZE,
-        borderWidth: 1,
         borderColor: COLORS.ORANGE,
-        position: 'relative',
-        zIndex: 100,
-        top: coordinates.y - DEFAULT_SIZE / 2,
+        borderWidth: 1,
+        height: DEFAULT_SIZE,
         left: coordinates.x - DEFAULT_SIZE / 2,
+        opacity: opacity.current,
+        position: 'relative',
+        top: coordinates.y - DEFAULT_SIZE / 2,
         transform: [{ scale: scale.current }],
+        width: DEFAULT_SIZE,
+        zIndex: 100,
       }}
     >
       <View
         style={{
-          position: 'absolute',
-          width: 10,
-          borderTopWidth: 1,
           borderColor: COLORS.ORANGE,
+          borderTopWidth: 1,
+          position: 'absolute',
           top: '50%',
+          width: 10,
         }}
       />
 
       <View
         style={{
-          position: 'absolute',
-          width: 10,
-          borderTopWidth: 1,
           borderColor: COLORS.ORANGE,
-          top: '50%',
+          borderTopWidth: 1,
+          position: 'absolute',
           right: 0,
+          top: '50%',
+          width: 10,
         }}
       />
 
       <View
         style={{
-          position: 'absolute',
-          height: 10,
-          borderRightWidth: 1,
           borderColor: COLORS.ORANGE,
+          borderRightWidth: 1,
           bottom: 0,
+          height: 10,
           left: '50%',
+          position: 'absolute',
         }}
       />
 
       <View
         style={{
-          position: 'absolute',
-          height: 10,
-          borderRightWidth: 1,
           borderColor: COLORS.ORANGE,
-          top: 0,
+          borderRightWidth: 1,
+          height: 10,
           left: '50%',
+          position: 'absolute',
+          top: 0,
         }}
       />
     </Animated.View>

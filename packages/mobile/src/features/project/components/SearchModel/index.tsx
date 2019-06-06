@@ -8,18 +8,22 @@ const DEFAULT_OFFSET_BOTTOM = isIphone ? (hasNotch ? 365 : 290) : 80
 
 const styles = {
   container: {
-    bottom: DEFAULT_OFFSET_BOTTOM,
-    top: 0,
-    right: 0,
-    left: 0,
     backgroundColor: 'white',
+    bottom: DEFAULT_OFFSET_BOTTOM,
+    left: 0,
     position: 'absolute',
+    right: 0,
+    top: 0,
     zIndex: 1000,
   },
 }
 
+const keyExtractor = item => item.node.id
+
 function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPress }) {
-  if (!query) return null
+  if (!query) {
+    return null
+  }
 
   return (
     <View style={styles.container}>
@@ -33,7 +37,7 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
         fetchMore={fetchMore}
         isFetching={false}
         hasNextPage={isFetching ? false : hasNextPage}
-        keyExtractor={item => item.node.id}
+        keyExtractor={keyExtractor}
         renderItem={({ item }) => (
           <Touchable
             onPress={() => onPress(item.node)}

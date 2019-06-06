@@ -2,11 +2,7 @@ import React from 'react'
 import { ProgressBar } from 'ui'
 import { Base } from './styles'
 
-type Props = {
-  progress: number
-}
-
-function Footer({ progress }: Props) {
+function Footer({ progress }) {
   return (
     <Base>
       <ProgressBar progress={progress} />

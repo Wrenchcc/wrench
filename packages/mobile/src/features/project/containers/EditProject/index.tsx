@@ -43,13 +43,14 @@ function EditProject({ project, deleteProject, editProject }) {
     return <Icon onPress={handleClose} source={closeDark} />
   }
 
-  const renderHeaderRight = () => isSaving ? (
+  const renderHeaderRight = () =>
+    isSaving ? (
       <ActivityIndicator size="small" color="black" />
-  ) : (
+    ) : (
       <Text medium onPress={handleEditProject} hapticFeedback="impactLight">
         {t('EditProject:done')}
       </Text>
-  )
+    )
 
   const renderHeaderCenter = () => (
     <Text medium numberOfLines={1}>{`${t('EditProject:headerTitle')} ${project.title}`}</Text>
@@ -63,9 +64,9 @@ function EditProject({ project, deleteProject, editProject }) {
         [
           { text: t('EditProject:cancel'), style: 'cancel' },
           {
-            text: t('EditProject:delete'),
             onPress: onDelete,
             style: 'destructive',
+            text: t('EditProject:delete'),
           },
         ],
         { cancelable: false }

@@ -4,11 +4,7 @@ import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProje
 import Icon from 'ui/Icon'
 import { add } from 'images'
 
-type Props = {
-  projects: Array
-}
-
-function Add({ projects }: Props) {
+function Add({ projects }) {
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(
     () => showModal(projects.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT),

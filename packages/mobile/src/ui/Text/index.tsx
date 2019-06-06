@@ -12,7 +12,8 @@ const Text = ({
   lineHeight = null,
   hapticFeedback = null,
   ...props
-}) => onPress ? (
+}) =>
+  onPress ? (
     <Touchable
       onPress={onPress}
       onLongPress={onLongPress}
@@ -29,7 +30,7 @@ const Text = ({
         {children}
       </Base>
     </Touchable>
-) : (
+  ) : (
     <Base
       numberOfLines={numberOfLines}
       {...props}
@@ -38,6 +39,6 @@ const Text = ({
     >
       {children}
     </Base>
-)
+  )
 
 export default Text

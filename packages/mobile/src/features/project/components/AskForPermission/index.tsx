@@ -9,24 +9,25 @@ const AskForPermission = ({ type, permission, onSuccess }) => {
   const { t } = useTranslation()
 
   const onPress = useCallback(
-    () => request(permission).then(res => {
-      if (res !== RESULTS.GRANTED) {
-        const buttons = [{ text: t(`AskForPermission:${type}:alertCancel`), style: 'cancel' }]
+    () =>
+      request(permission).then(res => {
+        if (res !== RESULTS.GRANTED) {
+          const buttons = [{ text: t(`AskForPermission:${type}:alertCancel`), style: 'cancel' }]
 
-        buttons.push({
-          text: t(`AskForPermission:${type}:alertOpen`),
-          onPress: () => openSettings(),
-        })
+          buttons.push({
+            onPress: () => openSettings(),
+            text: t(`AskForPermission:${type}:alertOpen`),
+          })
 
-        Alert.alert(
-          t(`AskForPermission:${type}.alertTitle`),
-          t(`AskForPermission:${type}:alertDescription`),
-          buttons
-        )
-      } else {
-        onSuccess()
-      }
-    }),
+          Alert.alert(
+            t(`AskForPermission:${type}.alertTitle`),
+            t(`AskForPermission:${type}:alertDescription`),
+            buttons
+          )
+        } else {
+          onSuccess()
+        }
+      }),
     [type, permission, onSuccess]
   )
 

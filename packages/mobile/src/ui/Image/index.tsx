@@ -31,9 +31,9 @@ function Image({
 
   const onImageLoad = () => {
     Animated.timing(imageAnimated, {
+      duration: 200,
       toValue: 1,
       useNativeDriver: true,
-      duration: 200,
     }).start()
   }
 
@@ -61,14 +61,14 @@ function Image({
         onProgress={onProgress}
         source={{ uri }}
         style={{
-          width,
+          bottom: 0,
           height,
+          left: 0,
           opacity: imageAnimated,
           position: 'absolute',
-          left: 0,
           right: 0,
-          bottom: 0,
           top: 0,
+          width,
         }}
         priority={priority || IMAGE_PRIORITY.NORMAL}
         onLoad={onImageLoad}

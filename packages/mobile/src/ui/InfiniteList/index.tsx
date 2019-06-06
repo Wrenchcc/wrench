@@ -49,13 +49,13 @@ function InfiniteList({
       contentContainerStyle={{
         flex: initialFetch ? 1 : 0, // Fix for ListEmptyComponent to center loader
         justifyContent: 'center',
+        paddingBottom:
+          (paddingBottom && paddingBottom) ||
+          (!initialFetch && data && data.length > 0 && spacingSeparator && 60) ||
+          0,
         paddingLeft: paddingHorizontal,
         paddingRight: paddingHorizontal,
         paddingTop,
-        paddingBottom:
-          (paddingBottom && paddingBottom)
-          || (!initialFetch && data && data.length > 0 && spacingSeparator && 60)
-          || 0,
         ...contentContainerStyle,
       }}
       {...borderSeparator && { ItemSeparatorComponent: BorderSeparator }}
