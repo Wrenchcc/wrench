@@ -24,7 +24,6 @@ function Users({ fetchMore, hasNextPage, isFetching, isRefetching, refetch, user
       hasNextPage={isFetching ? false : hasNextPage}
       isFetching={isFetching && query.length === 0}
       isRefetching={isRefetching}
-      keyExtractor={item => item.node.id}
       refetch={refetch}
       renderItem={({ item }) => <User data={item.node} />}
       defaultPadding

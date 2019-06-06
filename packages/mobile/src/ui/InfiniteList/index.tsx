@@ -7,6 +7,7 @@ const renderLoader = () => <Loader />
 const renderFullscreenLoader = top => <Loader top={-top} />
 const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
+const keyExtractor = ({ node }) => node.id
 
 function InfiniteList({
   contentContainerStyle = {},
@@ -38,6 +39,7 @@ function InfiniteList({
     <FlatList
       style={{ flex: 1 }}
       data={data}
+      keyExtractor={keyExtractor}
       onRefresh={refetch}
       onEndReached={onEndReached}
       refreshing={isRefetching}

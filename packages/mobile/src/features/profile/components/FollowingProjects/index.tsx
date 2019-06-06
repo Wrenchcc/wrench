@@ -8,8 +8,6 @@ import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from 
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
-const keyExtractor = item => item.node.id
-
 // TODO: Fetch more on end, fix scrollable
 function FollowingProjects({
   projects,
@@ -29,7 +27,6 @@ function FollowingProjects({
       <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
 
       <InfiniteList
-        keyExtractor={keyExtractor}
         data={projects}
         refetch={refetch}
         fetchMore={fetchMore}

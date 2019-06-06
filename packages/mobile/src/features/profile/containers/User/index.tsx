@@ -29,7 +29,6 @@ function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, 
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
         renderItem={renderItem}
       />
     </PageLayout>

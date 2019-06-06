@@ -8,7 +8,7 @@ const keyExtractor = item => item.uri
 function SelectedFiles({ selectedFiles }) {
   return (
     <FlatList
-      keyExtractor={}
+      keyExtractor={keyExtractor}
       data={selectedFiles}
       horizontal
       directionalLockEnabled

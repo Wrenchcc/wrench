@@ -18,7 +18,6 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        keyExtractor={item => item.node.id}
         renderItem={({ item }) => <Post post={item.node} />}
       />
     </Layout>

@@ -18,8 +18,6 @@ const styles = {
   },
 }
 
-const keyExtractor = item => item.node.id
-
 function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPress }) {
   if (!query) {
     return null
@@ -37,7 +35,6 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
         fetchMore={fetchMore}
         isFetching={false}
         hasNextPage={isFetching ? false : hasNextPage}
-        keyExtractor={keyExtractor}
         renderItem={({ item }) => (
           <Touchable
             onPress={() => onPress(item.node)}

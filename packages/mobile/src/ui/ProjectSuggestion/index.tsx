@@ -5,8 +5,6 @@ import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
-const keyExtractor = item => item.node.id
-
 function ProjectSuggestion({
   title,
   data,
@@ -23,7 +21,6 @@ function ProjectSuggestion({
       <Title fontSize={21}>{title}</Title>
 
       <InfiniteList
-        keyExtractor={keyExtractor}
         data={data}
         refetch={refetch}
         fetchMore={fetchMore}

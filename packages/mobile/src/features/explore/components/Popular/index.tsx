@@ -35,7 +35,6 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
       </Header>
       <InfiniteList
         initialNumToRender={2}
-        keyExtractor={item => item.node.id}
         data={projects}
         horizontal
         directionalLockEnabled

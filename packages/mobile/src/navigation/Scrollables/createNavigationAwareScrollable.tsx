@@ -11,6 +11,8 @@ const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
 const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 
+const keyExtractor = ({ node }) => node.id
+
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(
     {
@@ -47,9 +49,9 @@ export default function createNavigationAwareScrollable(Component) {
       const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
         ({ selectedTabIndex, unselectedTabIndex }) => {
           if (
-            selectedTabIndex === unselectedTabIndex
-            && selectedTabIndex === tabIndex
-            && scrollRef.current
+            selectedTabIndex === unselectedTabIndex &&
+            selectedTabIndex === tabIndex &&
+            scrollRef.current
           ) {
             scrollRef.current.getNode().scrollToOffset({ offset: initialScroll })
           }
@@ -63,7 +65,8 @@ export default function createNavigationAwareScrollable(Component) {
     useEffect(() => {
       const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
         const currentlyFocusedField = TextInput.State.currentlyFocusedField()
-        const scrollResponder = scrollRef.current && scrollRef.current.getNode().getScrollResponder()
+        const scrollResponder =
+          scrollRef.current && scrollRef.current.getNode().getScrollResponder()
 
         if (!scrollResponder || !currentlyFocusedField) {
           return
@@ -91,8 +94,12 @@ export default function createNavigationAwareScrollable(Component) {
 
     const setRef = useCallback(
       c => {
-        if (ref) ref.current = c
-        if (scrollRef) scrollRef.current = c
+        if (ref) {
+          ref.current = c
+        }
+        if (scrollRef) {
+          scrollRef.current = c
+        }
       },
       [ref, scrollRef]
     )
@@ -118,7 +125,7 @@ export default function createNavigationAwareScrollable(Component) {
         ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
-        keyExtractor={({ node }) => node.id}
+        keyExtractor={keyExtractor}
         contentContainerStyle={{
           flex: initialFetch ? 1 : 0,
           paddingLeft: paddingHorizontal,
