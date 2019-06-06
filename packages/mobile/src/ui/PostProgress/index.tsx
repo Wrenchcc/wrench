@@ -22,7 +22,7 @@ function PostProgress() {
 
         return (
           <Transitioning.View ref={ref} transition={transition}>
-            <Base top={postProgress ? 0 : -120}>
+            <Base top={postProgress ? 0 : -200}>
               <Inner>
                 <Content>
                   <Loader size="small" color="white" />

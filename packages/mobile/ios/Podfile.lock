@@ -1,5 +1,4 @@
 PODS:
-  - Base64 (1.1.2)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -9,11 +8,6 @@ PODS:
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.4):
     - React
-  - CodePush (5.6.0):
-    - Base64 (~> 1.1)
-    - JWT (~> 3.0.0-beta.7)
-    - React
-    - SSZipArchive (~> 2.1)
   - DoubleConversion (1.1.6)
   - EXAppLoaderProvider (4.0.0)
   - EXConstants (4.0.0):
@@ -139,8 +133,6 @@ PODS:
   - GoogleUtilities/UserDefaults (5.8.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
-  - JWT (3.0.0-beta.11):
-    - Base64 (~> 1.1.2)
   - libwebp (1.0.2):
     - libwebp/core (= 1.0.2)
     - libwebp/dec (= 1.0.2)
@@ -311,7 +303,6 @@ PODS:
   - SentryReactNative (0.43.1):
     - React
     - Sentry (~> 4.1.3)
-  - SSZipArchive (2.2.1)
   - UMBarCodeScannerInterface (1.0.0)
   - UMCameraInterface (1.0.0)
   - UMConstantsInterface (1.0.0)
@@ -331,7 +322,6 @@ PODS:
 
 DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
-  - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
@@ -399,7 +389,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Base64
     - Bolts
     - boost-for-react-native
     - FBSDKCoreKit
@@ -420,19 +409,15 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
-    - JWT
     - libwebp
     - nanopb
     - Protobuf
     - SDWebImage
     - Sentry
-    - SSZipArchive
 
 EXTERNAL SOURCES:
   BVLinearGradient:
     :path: "../node_modules/react-native-linear-gradient"
-  CodePush:
-    :path: "../node_modules/react-native-code-push"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXAppLoaderProvider:
@@ -539,11 +524,9 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
-  CodePush: 300e90b3481fa82569090406165b83745de3613a
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXAppLoaderProvider: a5b88a7e02f92807ad3cd962bb3e0632d71cc5dc
   EXConstants: a338ed187829ab25b8817f84cd84eecc13e64fd4
@@ -571,7 +554,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
-  JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
@@ -598,7 +580,6 @@ SPEC CHECKSUMS:
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
   SentryReactNative: 227e4ec6f3f1d4e0eac65a4657256cce7b6ef497
-  SSZipArchive: 8e859da2520142e09166bc9161967db296e9d02f
   UMBarCodeScannerInterface: 53fd3cbf24fe5c58f3ba82ac8c27f0373fbf52fa
   UMCameraInterface: d5a2727e76d6b47e3201f863102c055ddbcc6206
   UMConstantsInterface: 800fb8f95fca9bb2c18ae554e4cb4df4383f6cbf
@@ -613,6 +594,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: f88793bd35248182e15591e0aa5b045132312be0
   yoga: 03ff42a6f223fb88deeaed60249020d80c3091ee
 
-PODFILE CHECKSUM: 8cbb06f900075b049b520e84a5ae66f5eccecec7
+PODFILE CHECKSUM: 469ca7704c0d36ea734733e394970bdc8f4b5a36
 
 COCOAPODS: 1.6.1

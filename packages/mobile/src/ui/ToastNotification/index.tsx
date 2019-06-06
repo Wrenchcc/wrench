@@ -22,7 +22,7 @@ function ToastNotification() {
 
         return (
           <Transitioning.View ref={ref} transition={transition}>
-            <Base type={type} top={show ? 0 : -120}>
+            <Base type={type} top={show ? 0 : -200}>
               <Text color="white" medium center fontSize={15}>
                 {type === 'network' ? t('ToastNotification:networkError') : message}
               </Text>
