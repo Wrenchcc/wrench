@@ -33,7 +33,7 @@ const LoadMorePosts = gql`
 const getProjectOptions = {
   options: ({ slug, postId, after }) => ({
     variables: {
-      slug, // || getProjectSlugFromDeeplink(navigation),
+      slug,
       after,
       postId,
     },
@@ -47,33 +47,34 @@ const getProjectOptions = {
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMore: () => fetchMore({
-      query: LoadMorePosts,
-      variables: {
-        after: project.posts.edges[project.posts.edges.length - 1].cursor,
-        slug: project.slug,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.project) {
-          return prev
-        }
+    fetchMore: () =>
+      fetchMore({
+        query: LoadMorePosts,
+        variables: {
+          after: project.posts.edges[project.posts.edges.length - 1].cursor,
+          slug: project.slug,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.project) {
+            return prev
+          }
 
-        return {
-          ...prev,
-          project: {
-            ...prev.project,
-            posts: {
-              ...prev.project.posts,
-              pageInfo: {
-                ...prev.project.posts.pageInfo,
-                ...fetchMoreResult.project.posts.pageInfo,
+          return {
+            ...prev,
+            project: {
+              ...prev.project,
+              posts: {
+                ...prev.project.posts,
+                pageInfo: {
+                  ...prev.project.posts.pageInfo,
+                  ...fetchMoreResult.project.posts.pageInfo,
+                },
+                edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
               },
-              edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
             },
-          },
-        }
-      },
-    }),
+          }
+        },
+      }),
   }),
 }
 

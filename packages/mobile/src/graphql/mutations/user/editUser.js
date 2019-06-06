@@ -13,11 +13,12 @@ export const EditUserMutation = gql`
 
 const editUserOptions = {
   props: ({ mutate }) => ({
-    editUser: input => mutate({
-      variables: {
-        input,
-      },
-    }),
+    editUser: input =>
+      mutate({
+        variables: {
+          input,
+        },
+      }),
   }),
 }
 

@@ -11,28 +11,29 @@ const DeleteProjectMutation = gql`
 
 const deleteProjectOptions = {
   props: ({ mutate, ownProps: { id } }) => ({
-    deleteProject: () => mutate({
-      variables: {
-        id,
-      },
-      update: cache => {
-        const data = cache.readQuery({ query: CurrentUserQuery })
-        const edges = filter(edge => edge.node.id !== id, data.user.projects.edges)
+    deleteProject: () =>
+      mutate({
+        variables: {
+          id,
+        },
+        update: cache => {
+          const data = cache.readQuery({ query: CurrentUserQuery })
+          const edges = filter(edge => edge.node.id !== id, data.user.projects.edges)
 
-        const user = {
-          ...data,
-          user: {
-            ...data.user,
-            projects: {
-              ...data.user.projects,
-              edges,
+          const user = {
+            ...data,
+            user: {
+              ...data.user,
+              projects: {
+                ...data.user.projects,
+                edges,
+              },
             },
-          },
-        }
+          }
 
-        cache.writeQuery({ query: CurrentUserQuery, data: user })
-      },
-    }),
+          cache.writeQuery({ query: CurrentUserQuery, data: user })
+        },
+      }),
   }),
 }
 

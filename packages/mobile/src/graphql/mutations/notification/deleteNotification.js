@@ -11,24 +11,25 @@ const DeleteNotificationMutation = gql`
 // TODO: use update
 const deleteNotificationOptions = {
   props: ({ mutate }) => ({
-    deleteNotification: id => mutate({
-      variables: {
-        id,
-      },
-      updateQueries: {
-        getNotifications: prev => {
-          const edges = filter(edge => edge.node.id !== id, prev.notifications.edges)
-
-          return {
-            ...prev,
-            notifications: {
-              ...prev.notifications,
-              edges,
-            },
-          }
+    deleteNotification: id =>
+      mutate({
+        variables: {
+          id,
         },
-      },
-    }),
+        updateQueries: {
+          getNotifications: prev => {
+            const edges = filter(edge => edge.node.id !== id, prev.notifications.edges)
+
+            return {
+              ...prev,
+              notifications: {
+                ...prev.notifications,
+                edges,
+              },
+            }
+          },
+        },
+      }),
   }),
 }
 

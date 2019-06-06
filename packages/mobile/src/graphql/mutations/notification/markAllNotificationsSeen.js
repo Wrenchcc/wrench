@@ -10,24 +10,25 @@ const MarkAllNotificationsSeenMutation = gql`
 
 const markAllNotificationsSeenOptions = {
   props: ({ mutate }) => ({
-    markAllNotificationsSeen: () => mutate({
-      update: store => {
-        const data = store.readQuery({ query: NotificationsQuery })
+    markAllNotificationsSeen: () =>
+      mutate({
+        update: store => {
+          const data = store.readQuery({ query: NotificationsQuery })
 
-        const notifications = {
-          ...data,
-          notifications: {
-            ...data.notifications,
-            unreadCount: 0,
-          },
-        }
+          const notifications = {
+            ...data,
+            notifications: {
+              ...data.notifications,
+              unreadCount: 0,
+            },
+          }
 
-        store.writeQuery({
-          query: NotificationsQuery,
-          data: notifications,
-        })
-      },
-    }),
+          store.writeQuery({
+            query: NotificationsQuery,
+            data: notifications,
+          })
+        },
+      }),
   }),
 }
 

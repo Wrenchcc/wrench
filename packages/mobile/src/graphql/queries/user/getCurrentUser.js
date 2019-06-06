@@ -51,31 +51,32 @@ const getCurrentUserProfileOptions = {
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMore: () => fetchMore({
-      query: LoadMorePosts,
-      variables: {
-        after: user.posts.edges[user.posts.edges.length - 1].cursor,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.user) {
-          return prev
-        }
-        return {
-          ...prev,
-          user: {
-            ...prev.user,
-            posts: {
-              ...prev.user.posts,
-              pageInfo: {
-                ...prev.user.posts.pageInfo,
-                ...fetchMoreResult.user.posts.pageInfo,
+    fetchMore: () =>
+      fetchMore({
+        query: LoadMorePosts,
+        variables: {
+          after: user.posts.edges[user.posts.edges.length - 1].cursor,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.user) {
+            return prev
+          }
+          return {
+            ...prev,
+            user: {
+              ...prev.user,
+              posts: {
+                ...prev.user.posts,
+                pageInfo: {
+                  ...prev.user.posts.pageInfo,
+                  ...fetchMoreResult.user.posts.pageInfo,
+                },
+                edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
               },
-              edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
             },
-          },
-        }
-      },
-    }),
+          }
+        },
+      }),
   }),
 }
 

@@ -20,156 +20,157 @@ const CommentMutation = gql`
 
 const addCommentOptions = {
   props: ({ mutate }) => ({
-    addComment: (postId, text, commentId = null) => mutate({
-      variables: {
-        commentId,
-        postId,
-        input: {
-          text,
-        },
-      },
-      optimisticResponse: {
-        __typename: 'Mutation',
-        addComment: {
-          __typename: 'Comment',
-          id: optimisticId(),
+    addComment: (postId, text, commentId = null) =>
+      mutate({
+        variables: {
           commentId,
           postId,
-          text,
+          input: {
+            text,
+          },
         },
-      },
-      update: (proxy, { data: { addComment } }) => {
-        const { user } = proxy.readQuery({ query: CurrentUserQuery })
+        optimisticResponse: {
+          __typename: 'Mutation',
+          addComment: {
+            __typename: 'Comment',
+            id: optimisticId(),
+            commentId,
+            postId,
+            text,
+          },
+        },
+        update: (proxy, { data: { addComment } }) => {
+          const { user } = proxy.readQuery({ query: CurrentUserQuery })
 
-        // Post
-        try {
-          const data = proxy.readFragment({
-            id: `Post:${postId}`,
-            fragment: postInfo,
-            fragmentName: 'postInfo',
-          })
-
-          const edges = prepend(
-            {
-              node: {
-                id: optimisticId(),
-                ...addComment,
-                user,
-                __typename: 'Comment',
-              },
-              __typename: 'CommentEdge',
-            },
-            data.comments.edges
-          )
-
-          proxy.writeFragment({
-            id: `Post:${postId}`,
-            fragment: postInfo,
-            fragmentName: 'postInfo',
-            data: {
-              ...data,
-              comments: {
-                ...data.comments,
-                edges,
-                totalCount: data.comments.totalCount + 1,
-              },
-            },
-          })
-        } catch (err) {
-          logError(err)
-        }
-
-        // Comment list
-        try {
-          // Is reply
-          if (commentId) {
-            // Get comment fragment
+          // Post
+          try {
             const data = proxy.readFragment({
-              id: `Comment:${commentId}`,
-              fragment: commentInfo,
-              fragmentName: 'commentInfo',
+              id: `Post:${postId}`,
+              fragment: postInfo,
+              fragmentName: 'postInfo',
             })
 
             const edges = prepend(
               {
-                cursor: optimisticId(),
                 node: {
                   id: optimisticId(),
-                  createdAt: new Date().toISOString(),
                   ...addComment,
                   user,
                   __typename: 'Comment',
                 },
                 __typename: 'CommentEdge',
               },
-              data.replies.edges
+              data.comments.edges
             )
 
-            // Add to top of replies
             proxy.writeFragment({
-              id: `Comment:${commentId}`,
-              fragment: commentInfo,
-              fragmentName: 'commentInfo',
+              id: `Post:${postId}`,
+              fragment: postInfo,
+              fragmentName: 'postInfo',
               data: {
                 ...data,
-                replies: {
-                  ...data.replies,
+                comments: {
+                  ...data.comments,
                   edges,
-                  totalCount: data.replies.totalCount + 1,
+                  totalCount: data.comments.totalCount + 1,
                 },
               },
             })
-          } else {
-            const data = proxy.readQuery({
-              query: CommentsQuery,
-              variables: {
-                postId,
-              },
-            })
-
-            const comments = {
-              ...data,
-              comments: {
-                ...data.comments,
-                edges: prepend(
-                  {
-                    cursor: optimisticId(),
-                    node: {
-                      id: optimisticId(),
-                      createdAt: new Date().toISOString(),
-                      replies: {
-                        totalCount: 0,
-                        pageInfo: {
-                          hasNextPage: false,
-                          __typename: 'RepliesConnection',
-                        },
-                        edges: [],
-                        __typename: 'CommentConnection',
-                      },
-                      ...addComment,
-                      user,
-                      __typename: 'Comment',
-                    },
-                    __typename: 'CommentEdge',
-                  },
-                  data.comments.edges
-                ),
-              },
-            }
-
-            proxy.writeQuery({
-              query: CommentsQuery,
-              variables: {
-                postId,
-              },
-              data: comments,
-            })
+          } catch (err) {
+            logError(err)
           }
-        } catch (err) {
-          logError(err)
-        }
-      },
-    }),
+
+          // Comment list
+          try {
+            // Is reply
+            if (commentId) {
+              // Get comment fragment
+              const data = proxy.readFragment({
+                id: `Comment:${commentId}`,
+                fragment: commentInfo,
+                fragmentName: 'commentInfo',
+              })
+
+              const edges = prepend(
+                {
+                  cursor: optimisticId(),
+                  node: {
+                    id: optimisticId(),
+                    createdAt: new Date().toISOString(),
+                    ...addComment,
+                    user,
+                    __typename: 'Comment',
+                  },
+                  __typename: 'CommentEdge',
+                },
+                data.replies.edges
+              )
+
+              // Add to top of replies
+              proxy.writeFragment({
+                id: `Comment:${commentId}`,
+                fragment: commentInfo,
+                fragmentName: 'commentInfo',
+                data: {
+                  ...data,
+                  replies: {
+                    ...data.replies,
+                    edges,
+                    totalCount: data.replies.totalCount + 1,
+                  },
+                },
+              })
+            } else {
+              const data = proxy.readQuery({
+                query: CommentsQuery,
+                variables: {
+                  postId,
+                },
+              })
+
+              const comments = {
+                ...data,
+                comments: {
+                  ...data.comments,
+                  edges: prepend(
+                    {
+                      cursor: optimisticId(),
+                      node: {
+                        id: optimisticId(),
+                        createdAt: new Date().toISOString(),
+                        replies: {
+                          totalCount: 0,
+                          pageInfo: {
+                            hasNextPage: false,
+                            __typename: 'RepliesConnection',
+                          },
+                          edges: [],
+                          __typename: 'CommentConnection',
+                        },
+                        ...addComment,
+                        user,
+                        __typename: 'Comment',
+                      },
+                      __typename: 'CommentEdge',
+                    },
+                    data.comments.edges
+                  ),
+                },
+              }
+
+              proxy.writeQuery({
+                query: CommentsQuery,
+                variables: {
+                  postId,
+                },
+                data: comments,
+              })
+            }
+          } catch (err) {
+            logError(err)
+          }
+        },
+      }),
   }),
 }
 

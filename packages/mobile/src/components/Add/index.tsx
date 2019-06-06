@@ -8,7 +8,7 @@ function Add({ projects }) {
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(
     () => showModal(projects.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT),
-    [projects.length]
+    [projects]
   )
 
   return (

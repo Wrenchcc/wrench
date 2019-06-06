@@ -13,15 +13,16 @@ const EditPostMutation = gql`
 
 const editPostOptions = {
   props: ({ mutate }) => ({
-    editPost: (post, input) => mutate({
-      variables: { id: post.id, input },
-      optimisticResponse: {
-        editPost: {
-          ...post,
-          caption: input.caption,
+    editPost: (post, input) =>
+      mutate({
+        variables: { id: post.id, input },
+        optimisticResponse: {
+          editPost: {
+            ...post,
+            caption: input.caption,
+          },
         },
-      },
-    }),
+      }),
   }),
 }
 

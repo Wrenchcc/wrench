@@ -13,12 +13,13 @@ const EditProjectMutation = gql`
 
 const editProjectOptions = {
   props: ({ mutate, ownProps: { id } }) => ({
-    editProject: input => mutate({
-      variables: {
-        id,
-        input,
-      },
-    }),
+    editProject: input =>
+      mutate({
+        variables: {
+          id,
+          input,
+        },
+      }),
   }),
 }
 

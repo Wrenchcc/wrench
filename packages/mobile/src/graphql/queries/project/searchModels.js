@@ -41,27 +41,28 @@ const searchModelsOptions = {
       models: loading && !isFetchingMore(networkStatus) ? [] : pathOr(null, ['edges'], data),
       hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
       isFetching: loading || isFetchingMore(networkStatus),
-      fetchMore: () => fetchMore({
-        variables: {
-          after: data.edges.length.toString(),
-        },
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (previousResult && !previousResult.models) {
-            return previousResult
-          }
+      fetchMore: () =>
+        fetchMore({
+          variables: {
+            after: data.edges.length.toString(),
+          },
+          updateQuery: (previousResult, { fetchMoreResult }) => {
+            if (previousResult && !previousResult.models) {
+              return previousResult
+            }
 
-          const { edges, pageInfo, ...rest } = fetchMoreResult.models
+            const { edges, pageInfo, ...rest } = fetchMoreResult.models
 
-          return {
-            models: {
-              ...rest,
+            return {
+              models: {
+                ...rest,
                 __typename: previousResult.models.__typename, // eslint-disable-line
-              edges: [...previousResult.models.edges, ...edges],
-              pageInfo,
-            },
-          }
-        },
-      }),
+                edges: [...previousResult.models.edges, ...edges],
+                pageInfo,
+              },
+            }
+          },
+        }),
     }
   },
 }

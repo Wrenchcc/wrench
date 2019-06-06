@@ -85,69 +85,71 @@ const getCommentsOptions = {
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], comments),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMore: () => fetchMore({
-      query: LoadMoreComments,
-      variables: {
-        after: comments.edges[comments.edges.length - 1].cursor,
-        postId: post.id,
-      },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        const { edges, pageInfo, ...rest } = fetchMoreResult.comments
+    fetchMore: () =>
+      fetchMore({
+        query: LoadMoreComments,
+        variables: {
+          after: comments.edges[comments.edges.length - 1].cursor,
+          postId: post.id,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const { edges, pageInfo, ...rest } = fetchMoreResult.comments
 
-        if (!fetchMoreResult.comments) {
-          return previousResult
-        }
+          if (!fetchMoreResult.comments) {
+            return previousResult
+          }
 
-        return {
-          ...previousResult,
-          comments: {
-            ...rest,
-            edges: [...previousResult.comments.edges, ...edges],
-            pageInfo,
-          },
-        }
-      },
-    }),
-    fetchMoreReplies: (id, after) => fetchMore({
-      query: LoadMoreReplies,
-      variables: {
-        after,
-        postId: post.id,
-        id,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.comment.replies) {
-          return prev
-        }
+          return {
+            ...previousResult,
+            comments: {
+              ...rest,
+              edges: [...previousResult.comments.edges, ...edges],
+              pageInfo,
+            },
+          }
+        },
+      }),
+    fetchMoreReplies: (id, after) =>
+      fetchMore({
+        query: LoadMoreReplies,
+        variables: {
+          after,
+          postId: post.id,
+          id,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.comment.replies) {
+            return prev
+          }
 
-        const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
+          const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
 
-        return {
-          ...prev,
-          comments: {
-            ...prev.comments,
-            edges: update(
-              index,
-              {
-                ...prev.comments.edges[index],
-                node: {
-                  ...prev.comments.edges[index].node,
-                  replies: {
-                    ...prev.comments.edges[index].node.replies,
-                    ...fetchMoreResult.comment.replies,
-                    edges: [
-                      ...prev.comments.edges[index].node.replies.edges,
-                      ...fetchMoreResult.comment.replies.edges,
-                    ],
+          return {
+            ...prev,
+            comments: {
+              ...prev.comments,
+              edges: update(
+                index,
+                {
+                  ...prev.comments.edges[index],
+                  node: {
+                    ...prev.comments.edges[index].node,
+                    replies: {
+                      ...prev.comments.edges[index].node.replies,
+                      ...fetchMoreResult.comment.replies,
+                      edges: [
+                        ...prev.comments.edges[index].node.replies.edges,
+                        ...fetchMoreResult.comment.replies.edges,
+                      ],
+                    },
                   },
                 },
-              },
-              prev.comments.edges
-            ),
-          },
-        }
-      },
-    }),
+                prev.comments.edges
+              ),
+            },
+          }
+        },
+      }),
   }),
 }
 
