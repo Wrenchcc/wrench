@@ -27,6 +27,7 @@ import org.reactnative.camera.RNCameraPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
 import com.swmansion.reanimated.ReanimatedPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.links.RNFirebaseLinksPackage;
@@ -98,6 +99,7 @@ public class MainApplication extends NavigationApplication {
         new RNDeviceInfo(),
         new RNSharePackage(),
         new ReanimatedPackage(),
+        new RNGestureHandlerPackage(),
         new RNFirebasePackage(),
         new RNFirebaseAnalyticsPackage(),
         new RNFirebasePerformancePackage(),
