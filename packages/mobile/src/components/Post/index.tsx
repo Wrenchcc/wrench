@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect, useState, useCallback } from 'react'
-import { Alert, Linking, Keyboard } from 'react-native'
+import { Alert, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
+import openLink from 'utils/openLink'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ActionSheet, EditPost } from 'ui'
 import { share } from 'images'
@@ -81,8 +82,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
     } else {
       options.push({
         name: t('Post:options:report'),
-        onSelect: () =>
-          Linking.openURL(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`),
+        onSelect: () => openLink(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`),
       })
     }
 

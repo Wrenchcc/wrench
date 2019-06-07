@@ -16,10 +16,6 @@ PODS:
   - EXFileSystem (4.0.0):
     - UMCore
     - UMFileSystemInterface
-  - EXImageManipulator (4.0.0):
-    - UMCore
-    - UMFileSystemInterface
-    - UMImageLoaderInterface
   - EXMediaLibrary (4.0.0):
     - UMCore
     - UMPermissionsInterface
@@ -108,11 +104,11 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - GoogleToolboxForMac/Defines (2.2.0)
-  - GoogleToolboxForMac/Logger (2.2.0):
-    - GoogleToolboxForMac/Defines (= 2.2.0)
-  - "GoogleToolboxForMac/NSData+zlib (2.2.0)":
-    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.1)
+  - GoogleToolboxForMac/Logger (2.2.1):
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
+    - GoogleToolboxForMac/Defines (= 2.2.1)
   - GoogleUtilities/AppDelegateSwizzler (5.8.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -132,7 +128,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.8.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.2.1)
+  - GTMSessionFetcher/Core (1.2.2)
   - libwebp (1.0.2):
     - libwebp/core (= 1.0.2)
     - libwebp/dec (= 1.0.2)
@@ -162,7 +158,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Protobuf (3.7.0)
+  - Protobuf (3.8.0)
   - React (0.59.9):
     - React/Core (= 0.59.9)
   - react-native-camera (2.9.0):
@@ -197,7 +193,7 @@ PODS:
     - React
   - react-native-haptic-feedback (1.8.0):
     - React
-  - react-native-netinfo (3.2.0):
+  - react-native-netinfo (3.2.1):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -264,14 +260,14 @@ PODS:
     - React/RCTBlob
   - ReactNativeNavigation (2.21.0):
     - React
-  - RNCAsyncStorage (1.4.1):
+  - RNCAsyncStorage (1.4.2):
     - React
   - RNDeviceInfo (2.0.2):
     - React
   - RNFirebase (5.3.1):
     - Firebase/Core
     - React
-  - RNGestureHandler (1.2.1):
+  - RNGestureHandler (1.3.0):
     - React
   - RNPermissions/Camera (2.0.0-alpha.1):
     - React/Core
@@ -290,12 +286,12 @@ PODS:
     - React
   - RNShare (1.1.3):
     - React
-  - SDWebImage/Core (4.4.6)
-  - SDWebImage/GIF (4.4.6):
+  - SDWebImage/Core (4.4.7)
+  - SDWebImage/GIF (4.4.7):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
-  - SDWebImage/WebP (4.4.6):
-    - libwebp (>= 0.5)
+  - SDWebImage/WebP (4.4.7):
+    - libwebp (< 2.0, >= 0.5)
     - SDWebImage/Core
   - Sentry (4.1.3):
     - Sentry/Core (= 4.1.3)
@@ -326,7 +322,6 @@ DEPENDENCIES:
   - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
-  - EXImageManipulator (from `../node_modules/expo-image-manipulator/ios`)
   - EXMediaLibrary (from `../node_modules/expo-media-library/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - FBSDKCoreKit (= 4.42.0)
@@ -429,9 +424,6 @@ EXTERNAL SOURCES:
   EXFileSystem:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-file-system/ios"
-  EXImageManipulator:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-image-manipulator/ios"
   EXMediaLibrary:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-media-library/ios"
@@ -531,7 +523,6 @@ SPEC CHECKSUMS:
   EXAppLoaderProvider: a5b88a7e02f92807ad3cd962bb3e0632d71cc5dc
   EXConstants: a338ed187829ab25b8817f84cd84eecc13e64fd4
   EXFileSystem: 18c9980f52e3bd6a28670c17e0d33a9c1584a336
-  EXImageManipulator: 72cdf69afd64a49694a58cc038484074fcb28b42
   EXMediaLibrary: e716cab8439c95cba04b7040122643b727abce4a
   EXPermissions: ce3e170052df9d496aa51e1c372080cb2508fb16
   FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
@@ -551,33 +542,33 @@ SPEC CHECKSUMS:
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
-  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
-  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   React: a86b92f00edbe1873a63e4a212c29b7a7ad5224f
   react-native-camera: 571e4cfe70e7021e9077c1699a53e659db971f96
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-fast-image: 7278563726f2455ed3ba6e04dea472345173278c
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
   react-native-haptic-feedback: 1eb699eb89f477d7997b84eb709842da0f171d91
-  react-native-netinfo: 5e4f338e9f667d1a289c1a648dc9cdd2c49436e4
+  react-native-netinfo: 0da34082d2cec3100c9b5073bb217e35f1142bdd
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
   react-native-webview: 3c79685b61a68d1fe99136f98f2f34b04dce2e02
   ReactNativeNavigation: 6113c2504bfe0735ee91bb768c4b29f8f008b20e
-  RNCAsyncStorage: ee70d057f2576e8060891c98d8babddd46462682
+  RNCAsyncStorage: 0d2b0cf659d2def90d8ed7de76f502d335268156
   RNDeviceInfo: a74f061640be5fbb5485a4cc29f7eac534759391
   RNFirebase: f20e5e4ceaa632aebb1a29a9a91022ae0469c633
-  RNGestureHandler: aea90f0ad8e35fec23438db6fc3ad79be58bb734
+  RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
   RNReanimated: c8dd490ca98a4edcba229bfa49f2516c95a43afb
   RNShare: 4f206fa36e384e95a0cbf79f2a92490647e93127
-  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
   SentryReactNative: 227e4ec6f3f1d4e0eac65a4657256cce7b6ef497
   UMBarCodeScannerInterface: 53fd3cbf24fe5c58f3ba82ac8c27f0373fbf52fa

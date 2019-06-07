@@ -14,8 +14,8 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
-    "@react-native-community/async-storage": "1.4.1",
-    "@react-native-community/netinfo": "^3.2.0",
+    "@react-native-community/async-storage": "^1.4.2",
+    "@react-native-community/netinfo": "^3.2.1",
     "@unimodules/core": "^1.0.0",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.2",
@@ -43,7 +43,7 @@
     "react-native-fast-image": "5.4.2",
     "react-native-fbsdk": "^0.8.0",
     "react-native-firebase": "^5.3.1",
-    "react-native-gesture-handler": "^1.2.1",
+    "react-native-gesture-handler": "^1.3.0",
     "react-native-haptic-feedback": "^1.8.0",
     "react-native-linear-gradient": "^2.5.4",
     "react-native-navigation": "^2.21.0",
@@ -54,7 +54,7 @@
     "react-native-sentry": "^0.43.1",
     "react-native-share": "^1.1.3",
     "react-native-splash-screen": "^3.2.0",
-    "react-native-tab-view": "^2.4.0",
+    "react-native-tab-view": "^2.5.0",
     "react-native-unimodules": "^0.3.1",
     "react-native-video": "^4.4.1",
     "react-native-webview": "5.10.0",

@@ -8,6 +8,7 @@ import {
 import { SCREENS } from './constants'
 
 let componentId
+let overlay
 
 // NOTE: If overlay is open do not update the componentId
 // push etc will stop working next navigate
@@ -44,22 +45,29 @@ export function showModal(screen, { options, ...passProps } = {}) {
 }
 
 export function showMention(passProps) {
-  Navigation.showOverlay({
-    component: {
-      id: SCREENS.MENTION,
-      name: SCREENS.MENTION,
-      options: {
-        layout: {
-          backgroundColor: 'transparent',
+  if (!overlay) {
+    Navigation.showOverlay({
+      component: {
+        id: SCREENS.MENTION,
+        name: SCREENS.MENTION,
+        options: {
+          layout: {
+            backgroundColor: 'transparent',
+          },
         },
+        passProps,
       },
-      passProps,
-    },
-  })
+    })
+  }
+
+  overlay = true
 }
 
 export function dismissMention() {
-  Navigation.dismissOverlay(SCREENS.MENTION)
+  if (overlay) {
+    overlay = false
+    Navigation.dismissOverlay(SCREENS.MENTION)
+  }
 }
 
 export function dismissModal() {

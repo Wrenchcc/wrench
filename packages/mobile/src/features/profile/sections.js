@@ -22,16 +22,19 @@ const generateLanguageSettings = props => {
 }
 
 const generateNotificationSettings = ({ settings, toggleNotificationSettings }) => {
-  if (!settings) { return null }
+  if (!settings) {
+    return null
+  }
 
   const types = Object.keys(settings.notifications.types).filter(type => type !== '__typename')
   let items = []
 
   items = types.map(type => ({
     titleKey: `notifications.${type}`,
-    onPress: () => toggleNotificationSettings({
-      notificationType: type,
-    }),
+    onPress: () =>
+      toggleNotificationSettings({
+        notificationType: type,
+      }),
     type: 'switch',
     selected: settings.notifications.types[type],
   }))
@@ -46,10 +49,11 @@ const sections = props => ({
       data: [
         {
           titleKey: 'share',
-          onPress: () => NativeShare.open({
-            title: 'shareContent',
-            url: WEBSITE_URL,
-          }).catch(() => {}),
+          onPress: () =>
+            NativeShare.open({
+              title: 'shareContent',
+              url: WEBSITE_URL,
+            }).catch(() => {}),
         },
       ],
     },
@@ -59,16 +63,18 @@ const sections = props => ({
         {
           titleKey: 'push-notifications',
           hasChildren: true,
-          onPress: () => navigateTo(SCREENS.SETTINGS, {
-            section: 'push-notifications',
-          }),
+          onPress: () =>
+            navigateTo(SCREENS.SETTINGS, {
+              section: 'push-notifications',
+            }),
         },
         {
           titleKey: 'language',
           hasChildren: true,
-          onPress: () => navigateTo(SCREENS.SETTINGS, {
-            section: 'language',
-          }),
+          onPress: () =>
+            navigateTo(SCREENS.SETTINGS, {
+              section: 'language',
+            }),
         },
       ],
     },
@@ -78,9 +84,10 @@ const sections = props => ({
         {
           titleKey: 'support',
           hasChildren: true,
-          onPress: () => navigateTo(SCREENS.SETTINGS, {
-            section: 'support',
-          }),
+          onPress: () =>
+            navigateTo(SCREENS.SETTINGS, {
+              section: 'support',
+            }),
         },
         {
           titleKey: 'terms',
@@ -93,9 +100,10 @@ const sections = props => ({
         {
           titleKey: 'credits',
           hasChildren: true,
-          onPress: () => navigateTo(SCREENS.SETTINGS, {
-            section: 'credits',
-          }),
+          onPress: () =>
+            navigateTo(SCREENS.SETTINGS, {
+              section: 'credits',
+            }),
         },
         {
           titleKey: 'rate',
@@ -176,7 +184,8 @@ const sections = props => ({
         },
         {
           titleKey: 'motorfabriken',
-          onPress: () => showModal(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
+          onPress: () =>
+            showModal(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
         },
       ],
     },
@@ -194,12 +203,13 @@ const routeSections = {
   credits: [{ headerTitle: 'credits' }],
 }
 
-export const mapRouteForSection = component => mergeAll(
-  Object.keys(routeSections).map(section => ({
-    [section]: {
-      component,
-    },
-  }))
-)
+export const mapRouteForSection = component =>
+  mergeAll(
+    Object.keys(routeSections).map(section => ({
+      [section]: {
+        component,
+      },
+    }))
+  )
 
 export default sections
