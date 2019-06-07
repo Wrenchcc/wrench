@@ -9,13 +9,13 @@ import { COLORS } from 'ui/constants'
 import { MENTION } from './constants'
 import { Base, Input, Button } from './styles'
 
-function CommentField({ addComment, postId, commentId, username }) {
+function CommentField({ addComment: addCommentMutation, postId, commentId, username }) {
   const inputRef = useRef()
   const { t } = useTranslation()
-  const [isTracking, setTracking] = useState(false)
   const [text, setText] = useState('')
+  const [isTracking, setTracking] = useState(false)
 
-  // When selecting user
+  // When selecting user from outside
   useEffect(() => {
     if (username) {
       setText(`${MENTION.TRIGGER}${username} `)
@@ -24,54 +24,53 @@ function CommentField({ addComment, postId, commentId, username }) {
   }, [inputRef, username, commentId])
 
   const handleOnChangeText = useCallback(
-    text => {
-      setText(text)
+    val => {
+      setText(val)
 
-      const lastChar = text.substr(text.length - 1)
+      // const lastChar = val.substr(val.length - 1)
+      //
+      // if (lastChar === MENTION.TRIGGER) {
+      //   setTracking(true)
+      //
+      //   showMention({
+      //     onPress: user => {
+      //       dismissMention()
+      //       setText(`${MENTION.TRIGGER}${user.username} `)
+      //     },
+      //   })
+      // } else if ((lastChar === MENTION.EMPTY && isTracking) || val === '') {
+      //   setTracking(false)
+      //   dismissMention()
+      // }
 
-      if (lastChar === MENTION.TRIGGER) {
-        setTracking(true)
-        showMention({
-          query: '',
-          onPress: user => {
-            dismissMention()
-            setText(`${MENTION.TRIGGER}${user.username} `)
-          },
-        })
-      } else if ((lastChar === MENTION.EMPTY && isTracking) || text === '') {
-        setTracking(false)
-        dismissMention()
-      }
-
-      if (isTracking) {
-        const pattern = new RegExp(MENTION.PATTERN, 'gi')
-        const keywordArray = text.match(pattern)
-        if (keywordArray && !!keywordArray.length) {
-          const lastKeyword = keywordArray[keywordArray.length - 1]
-          setText(lastKeyword.replace(MENTION.TRIGGER, ''))
-
-          showMention({
-            query: '',
-            onPress: user => {
-              dismissMention()
-              setText(lastKeyword.replace(MENTION.TRIGGER, ''))
-            },
-          })
-        }
-      }
+      // if (isTracking) {
+      //   const pattern = new RegExp(MENTION.PATTERN, 'gi')
+      //   const keywordArray = val.match(pattern)
+      //
+      //   if (keywordArray) {
+      // const lastKeyword = keywordArray[keywordArray.length - 1].replace(MENTION.TRIGGER, '')
+      // const comment = val.slice(0, -lastKeyword.length - 1)
+      // console.log(comment)
+      // setText(comment)
+      // this.props.onMention(lastKeyword.replace(TRIGGER, ''))
+      // this.props.openMention()
+      // }
+      // }
     },
-    [text, isTracking]
+    [isTracking]
   )
 
   const handleSubmit = useCallback(() => {
-    addComment(postId, text, commentId)
+    // addCommentMutation(postId, text, commentId)
     inputRef.current.blur()
   }, [postId, text, commentId, inputRef])
 
   return (
     <Query query={CurrentUserQuery}>
       {({ data, loading }) => {
-        if (loading) return null
+        if (loading) {
+          return null
+        }
 
         return (
           <Base>
