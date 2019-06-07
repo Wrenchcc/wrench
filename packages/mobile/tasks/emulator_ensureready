@@ -1,0 +1,5 @@
+#!/bin/sh
+while [ "`$ANDROID_HOME/platform-tools/adb shell getprop sys.boot_completed | tr -d '
+' `" != "1" ]; do
+  sleep 1
+done

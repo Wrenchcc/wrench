@@ -8,6 +8,7 @@
     "start:android": "tasks/start_android",
     "emulator:start": "tasks/emulator_start",
     "emulator:create": "tasks/emulator_create",
+    "emulator:ensureready": "tasks/emulator_ensureready",
     "run:android": "tasks/run_android",
     "run:ios": "tasks/run_ios",
     "translations:create": "tasks/translations_create"

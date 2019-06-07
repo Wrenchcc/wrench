@@ -22,8 +22,10 @@ export default {
   },
   left: {
     alignItems: 'flex-start',
+    flex: 2,
   },
   right: {
     alignItems: 'flex-end',
+    flex: 2,
   },
 }

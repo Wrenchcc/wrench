@@ -29,12 +29,12 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
           <View style={styles.left}>
             <Icon onPress={handleNavigation} source={arrowLeft} />
           </View>
-          <Animated.View style={{ opacity, flex: 2 }}>
+          <Animated.View style={{ opacity, width: '60%' }}>
             <Text medium center numberOfLines={1} onPress={onPress}>
               {headerTitle}
             </Text>
           </Animated.View>
-          <View style={styles.right}>{headerRight && headerRight}</View>
+          <View style={styles.right}>{headerRight}</View>
         </View>
       </View>
       <ToastNotification />

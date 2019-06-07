@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { pathOr } from 'ramda'
-import { Layout, FlatList, showModal, SCREENS } from 'navigation'
+import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql/queries/getFeed'
 import Post from 'components/Post'
 import { PostProgress, ShowLatest } from 'ui'
@@ -24,10 +24,6 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   useEffect(() => {
     registerForPushNotifications()
     registerUserLocale()
-
-    // showModal(SCREENS.WEBVIEW, {
-    //   url: 'https://google.com',
-    // })
   }, [])
 
   useEffect(() => {
