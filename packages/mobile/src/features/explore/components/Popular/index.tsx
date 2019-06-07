@@ -4,7 +4,6 @@ import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
-import Placeholder from './Placeholder'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
 function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {

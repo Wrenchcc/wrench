@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Touchable from 'ui/Touchable'

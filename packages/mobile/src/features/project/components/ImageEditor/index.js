@@ -37,7 +37,7 @@ export default class ImageEditor extends PureComponent {
   scaledImageSize = null
 
   componentDidMount() {
-    if (!this.props.image) return
+    if (!this.props.image) { return }
     this.setImageProperties(this.props.image)
   }
 

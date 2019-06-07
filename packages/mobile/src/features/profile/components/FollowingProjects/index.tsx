@@ -1,7 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
-import { compose } from 'react-apollo'
 import { InfiniteList } from 'ui'
 import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
 import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'

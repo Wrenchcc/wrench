@@ -31,25 +31,25 @@ const {
 } = Animated
 
 export default class Provider extends Component {
-  dragging = new Value(0)
+  public dragging = new Value(0)
 
-  scrollY = new Value(0)
+  public scrollY = new Value(0)
 
-  scrollYClamped = new Value(0)
+  public scrollYClamped = new Value(0)
 
-  scrollYDiff = new Value(0)
+  public scrollYDiff = new Value(0)
 
-  translateY = new Value(0)
+  public translateY = new Value(0)
 
-  targetTranslateY = new Value(0)
+  public targetTranslateY = new Value(0)
 
-  endDragVelocity = new Value(0)
+  public endDragVelocity = new Value(0)
 
-  translateYTarget = new Value(0)
+  public translateYTarget = new Value(0)
 
-  translateYSnap = new Value(0)
+  public translateYSnap = new Value(0)
 
-  isAndroid = new Value(isAndroid ? 1 : 0)
+  public isAndroid = new Value(isAndroid ? 1 : 0)
 
   constructor(props) {
     super(props)
@@ -184,7 +184,7 @@ export default class Provider extends Component {
     return isAndroid ? 0 : -this.contentInset
   }
 
-  render() {
+  public render() {
     return (
       <ListContext.Provider
         value={{

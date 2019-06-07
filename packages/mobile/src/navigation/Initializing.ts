@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { pathOr } from 'ramda'
 import SplashScreen from 'react-native-splash-screen'
 import { withApollo } from 'react-apollo'

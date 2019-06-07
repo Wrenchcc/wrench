@@ -1,6 +1,5 @@
 import React, { Fragment, useRef, cloneElement, useCallback, useEffect } from 'react'
 import Animated from 'react-native-reanimated'
-import { RefreshControl } from 'react-native'
 import Header from './Header'
 
 const { event, set, Value, cond, eq } = Animated

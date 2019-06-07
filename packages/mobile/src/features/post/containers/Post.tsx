@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'

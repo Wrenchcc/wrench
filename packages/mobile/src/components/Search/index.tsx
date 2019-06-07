@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Dimensions, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
@@ -50,7 +50,7 @@ function Search({ query, active }) {
     [index]
   )
 
-  if (!active) return null
+  if (!active) { return null }
 
   const renderPager = props => (
     <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />

@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
-import { Text, ToastNotification } from 'ui'
+import { ToastNotification } from 'ui'
 import { ListContext } from '../context'
 import { transformContainer, opacityContent } from './animation'
 import styles from './styles'

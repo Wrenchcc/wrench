@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { SafeAreaView, View, Keyboard } from 'react-native'
+import { View, Keyboard } from 'react-native'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { hasNotch } from 'utils/platform'
 

@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react'
 import { BackHandler, Keyboard } from 'react-native'
-import { Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { search } from 'images'
 import { COLORS } from 'ui/constants'

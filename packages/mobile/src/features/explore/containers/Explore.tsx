@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { Layout, FlatList } from 'navigation'
 import { getRecentPosts } from 'graphql/queries/getExplore'
 import Post from 'components/Post'

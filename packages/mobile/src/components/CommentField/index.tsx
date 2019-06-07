@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Query } from 'react-apollo'
-import { showMention, dismissMention } from 'navigation'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { addComment } from 'graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'

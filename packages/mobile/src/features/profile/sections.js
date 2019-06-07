@@ -22,7 +22,7 @@ const generateLanguageSettings = props => {
 }
 
 const generateNotificationSettings = ({ settings, toggleNotificationSettings }) => {
-  if (!settings) return null
+  if (!settings) { return null }
 
   const types = Object.keys(settings.notifications.types).filter(type => type !== '__typename')
   let items = []

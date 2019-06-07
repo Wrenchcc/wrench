@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useNavigation, SCREENS } from 'navigation'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
