@@ -16,7 +16,6 @@ export const Base = styled.View`
   flex: 1;
   padding-left: 20;
   padding-right: 20;
-  padding-bottom: 50;
 `
 
 export const Headline = styled(UiTitle)`
