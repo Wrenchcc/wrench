@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
 import { ToastNotification } from 'ui'
@@ -22,10 +23,10 @@ function Header({
 
   return (
     <Animated.View style={[styles.container, transformContainer(translateY, headerHeight)]}>
-      <Animated.View style={styles.background}>
-        <Animated.View style={styles.header}>
+      <View style={styles.background}>
+        <View style={styles.header}>
           <Animated.View style={opacityContent(translateY, headerHeight)}>
-            <Animated.View style={styles.inner}>
+            <View style={styles.inner}>
               {headerLeft}
               {search && (
                 <SearchBar
@@ -38,10 +39,10 @@ function Header({
                 />
               )}
               {!searchActive && headerRight}
-            </Animated.View>
+            </View>
           </Animated.View>
-        </Animated.View>
-      </Animated.View>
+        </View>
+      </View>
       {!searchActive && (
         <>
           <ToastNotification />

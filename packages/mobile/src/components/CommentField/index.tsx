@@ -39,6 +39,7 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
 
   const handleSubmit = useCallback(() => {
     // addCommentMutation(postId, text, commentId)
+    setText('')
     inputRef.current.blur()
   }, [postId, text, commentId, inputRef])
 
