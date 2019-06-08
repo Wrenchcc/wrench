@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useNavigation, SCREENS } from 'navigation'
 import InfiniteList from 'ui/InfiniteList'
 import { Title, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
@@ -17,7 +17,7 @@ function ProjectSuggestion({
   const { navigate } = useNavigation()
 
   return (
-    <Fragment>
+    <>
       <Title fontSize={21}>{title}</Title>
 
       <InfiniteList
@@ -48,7 +48,7 @@ function ProjectSuggestion({
           marginRight: -GUTTER,
         }}
       />
-    </Fragment>
+    </>
   )
 }
 

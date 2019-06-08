@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { TouchableWithoutFeedback, Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
@@ -71,12 +71,12 @@ function Camera({ onTakePicture }) {
         ratio="1:1"
       >
         {({ camera }) => (
-          <Fragment>
+          <>
             {autofocus && <AutoFocus coordinates={autofocus} />}
             <CameraType onPress={changeCameraType} />
             <TakePicture onPress={() => takePicture(camera)} hapticFeedback="impactLight" />
             <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
-          </Fragment>
+          </>
         )}
       </RNCamera>
     </TouchableWithoutFeedback>

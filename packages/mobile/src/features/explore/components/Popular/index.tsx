@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
@@ -28,7 +28,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
   }
 
   return (
-    <Fragment>
+    <>
       <Header>
         <Title medium>{t('Popular:popular')}</Title>
       </Header>
@@ -56,7 +56,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
       <Footer>
         <Title medium>{t('Popular:recent')}</Title>
       </Footer>
-    </Fragment>
+    </>
   )
 }
 

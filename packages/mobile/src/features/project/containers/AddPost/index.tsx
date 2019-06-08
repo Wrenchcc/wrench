@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { pathOr } from 'ramda'
 import { Subscribe } from 'unstated'
@@ -66,7 +66,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
   return (
     <Subscribe to={[AddContainer, ToastNotificationContainer]}>
       {(PostContainer, { showNotification }) => (
-        <Fragment>
+        <>
           <AddPostHeader
             changeProject={PostContainer.changeProject}
             closeSelectProject={PostContainer.closeSelectProject}
@@ -91,7 +91,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
               />
             </ScrollView>
           </KeyboardAvoidingView>
-        </Fragment>
+        </>
       )}
     </Subscribe>
   )

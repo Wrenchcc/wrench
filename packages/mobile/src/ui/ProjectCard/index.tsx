@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
 import Placeholder from 'ui/Placeholder'
@@ -11,10 +11,10 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
   const renderImages = useCallback(() => {
     const image = pathOr(false, ['files', 'edges', 0, 'node'], project)
     return image ? (
-      <Fragment>
+      <>
         <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
         <Image source={image} height={180} />
-      </Fragment>
+      </>
     ) : (
       <Placeholder />
     )

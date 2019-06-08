@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState, useCallback } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import BottomSheet from 'reanimated-bottom-sheet'
@@ -69,7 +69,7 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
   }
 
   return (
-    <Fragment>
+    <>
       <OpenAlbum onPress={handleOpen} />
       <List
         album={album}
@@ -78,7 +78,7 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
         cameraFile={cameraFile}
       />
       <BottomSheet ref={ref} snapPoints={[0, '60%']} renderContent={renderInner} />
-    </Fragment>
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { InteractionManager } from 'react-native'
 import { Subscribe } from 'unstated'
@@ -39,7 +39,7 @@ function AddProjectModel({ addProject }) {
   return (
     <Subscribe to={[AddContainer]}>
       {({ state, updateField, resetState }) => (
-        <Fragment>
+        <>
           <AddProjectHeader
             actionRight={getActionRight(state, addProject, updateField, resetState)}
             translationKey="add"
@@ -73,7 +73,7 @@ function AddProjectModel({ addProject }) {
               onBlur={() => updateField('isSearching', false)}
             />
           </KeyboardAvoidingView>
-        </Fragment>
+        </>
       )}
     </Subscribe>
   )

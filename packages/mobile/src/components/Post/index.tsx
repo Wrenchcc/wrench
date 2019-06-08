@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Alert, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
@@ -116,7 +116,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
   }
 
   return (
-    <Fragment>
+    <>
       <Top>
         <Avatar uri={post.user.avatarUrl} onPress={navigateToUser} isOnline={post.user.isOnline} />
         <Icon source={share} onPress={toggleActionSheet} hitSlop={20} />
@@ -157,7 +157,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
       {!withoutComments && !post.project.commentsDisabled && <Comments data={post} />}
       <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
       {!isEditing && postActions()}
-    </Fragment>
+    </>
   )
 }
 

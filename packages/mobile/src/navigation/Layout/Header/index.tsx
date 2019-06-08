@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { useContext } from 'react'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
 import { ToastNotification } from 'ui'
@@ -43,10 +43,10 @@ function Header({
         </Animated.View>
       </Animated.View>
       {!searchActive && (
-        <Fragment>
+        <>
           <ToastNotification />
           {stickyComponent}
-        </Fragment>
+        </>
       )}
     </Animated.View>
   )

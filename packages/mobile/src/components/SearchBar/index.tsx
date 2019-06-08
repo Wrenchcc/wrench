@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import { BackHandler, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { search } from 'images'
@@ -21,22 +21,25 @@ function Search({
   const transitionRef = useRef(null)
   const { t } = useTranslation()
 
-  const handleFocus = () => {
+  const handleFocus = useCallback(() => {
     transitionRef.current.animateNextTransition()
     if (onSearchFocus) {
       onSearchFocus()
     }
-    return true
-  }
 
-  const handleCancel = () => {
+    return true
+  }, [transitionRef, onSearchFocus])
+
+  const handleCancel = useCallback(() => {
     inputRef.current.blur()
     Keyboard.dismiss()
     transitionRef.current.animateNextTransition()
     if (onSearchCancel) {
       onSearchCancel()
     }
-  }
+  }, [inputRef, transitionRef, onSearchCancel])
+
+  const handleQueryChange = useCallback(value => onChangeQuery(query), [])
 
   useEffect(() => {
     if (searchOpen) {
@@ -58,7 +61,7 @@ function Search({
         keyboardAppearance="dark"
         returnKeyType="search"
         onFocus={handleFocus}
-        onChangeText={query => onChangeQuery(query)}
+        onChangeText={handleQueryChange}
         value={query}
         {...props}
       />

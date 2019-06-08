@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, cloneElement, useCallback, useEffect } from 'react'
+import React, { useRef, cloneElement, useCallback, useEffect } from 'react'
 import Animated from 'react-native-reanimated'
 import Header from './Header'
 
@@ -30,7 +30,7 @@ function PageLayout({
   }, [scrollRef, scrollToIndex])
 
   return (
-    <Fragment>
+    <>
       <Header
         headerTitle={headerTitle}
         scrollY={scrollY.current}
@@ -59,7 +59,7 @@ function PageLayout({
       })}
 
       {stickyFooter}
-    </Fragment>
+    </>
   )
 }
 

@@ -23,59 +23,69 @@ const routes = [
 ]
 
 const styles = {
+  indicatorStyle: {
+    backgroundColor: 'black',
+    height: 3,
+  },
   tabBar: {
     backgroundColor: 'white',
     elevation: 0,
   },
   labelStyle: {
     color: 'black',
-    fontSize: 15,
     fontFamily: FONTS.MEDIUM,
-  },
-  indicatorStyle: {
-    backgroundColor: 'black',
-    height: 3,
+    fontSize: 15,
   },
 }
+
+const renderPager = props => (
+  <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
+)
 
 function Search({ query, active }) {
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
 
   const handleIndexChange = useCallback(
-    index => {
+    activeIndex => {
       Keyboard.dismiss()
-      setIndex(index)
+      setIndex(activeIndex)
     },
     [index]
   )
 
-  if (!active) { return null }
+  const handleLabelText = useCallback(({ route }) => t(`Search:${route.key}`), [t])
 
-  const renderPager = props => (
-    <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
+  const renderScene = useCallback(
+    ({ route }) => {
+      switch (route.key) {
+        case 'users':
+          return <Users query={query} />
+        case 'projects':
+          return <Projects query={query} />
+        default:
+          return null
+      }
+    },
+    [query]
   )
 
-  const renderScene = ({ route }) => {
-    switch (route.key) {
-      case 'users':
-        return <Users query={query} />
-      case 'projects':
-        return <Projects query={query} />
-      default:
-        return null
-    }
+  const renderTabBar = useCallback(
+    props => (
+      <TabBar
+        {...props}
+        style={styles.tabBar}
+        labelStyle={styles.labelStyle}
+        indicatorStyle={styles.indicatorStyle}
+        getLabelText={handleLabelText}
+      />
+    ),
+    []
+  )
+
+  if (!active) {
+    return null
   }
-
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      style={styles.tabBar}
-      labelStyle={styles.labelStyle}
-      indicatorStyle={styles.indicatorStyle}
-      getLabelText={({ route }) => t(`Search:${route.key}`)}
-    />
-  )
 
   return (
     <Base>

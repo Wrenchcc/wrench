@@ -16,7 +16,7 @@ function PostProgress() {
   return (
     <Subscribe to={[AddContainer]}>
       {({ state: { postProgress } }) => {
-        if (postProgress) {
+        if (postProgress && ref) {
           ref.current.animateNextTransition()
         }
 

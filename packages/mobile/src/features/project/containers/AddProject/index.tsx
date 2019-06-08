@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { Subscribe } from 'unstated'
 import { useTranslation } from 'react-i18next'
 import { AddContainer } from 'store'
@@ -15,7 +15,7 @@ function AddProject() {
   return (
     <Subscribe to={[AddContainer]}>
       {({ state, updateField, resetState }) => (
-        <Fragment>
+        <>
           <AddProjectHeader
             actionRight={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
             resetState={resetState}
@@ -38,7 +38,7 @@ function AddProject() {
               onSubmitEditing={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
             />
           </KeyboardAvoidingView>
-        </Fragment>
+        </>
       )}
     </Subscribe>
   )

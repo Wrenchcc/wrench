@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
@@ -14,7 +14,7 @@ import Footer from 'features/project/components/Footer'
 function Project({
   posts,
   project,
-  followProject,
+  followProject: followProjectMutation,
   fetchMore,
   refetch,
   isRefetching,
@@ -33,7 +33,7 @@ function Project({
     [project.user, project]
   )
 
-  const handleFollow = useCallback(() => followProject(project.id), [project])
+  const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
 
   const hasPosts = posts && posts.length > 0
   const emptyState =
@@ -55,22 +55,22 @@ function Project({
 
     if (post) {
       content = (
-        <Fragment>
+        <>
           <Post post={post} withoutTitle />
           {hasPosts && posts.length > 1 && (
             <View style={{ paddingTop: 40, paddingBottom: 30 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
           )}
-        </Fragment>
+        </>
       )
     }
 
     return (
-      <Fragment>
+      <>
         {project.title && <Header project={project} spacingHorizontal={!hasPosts} />}
         {content}
-      </Fragment>
+      </>
     )
   }
 

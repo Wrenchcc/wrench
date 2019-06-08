@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { ScrollView, ActivityIndicator, Alert } from 'react-native'
 import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
@@ -75,7 +75,7 @@ function EditProject({ project, deleteProject, editProject }) {
   }
 
   return (
-    <Fragment>
+    <>
       <Header
         headerLeft={renderHeaderLeft()}
         headerRight={renderHeaderRight()}
@@ -107,7 +107,7 @@ function EditProject({ project, deleteProject, editProject }) {
           <SelectionItem last title={t('EditProject:deleteTitle')} onPress={toggleActionSheet} />
         </Inner>
       </ScrollView>
-    </Fragment>
+    </>
   )
 }
 

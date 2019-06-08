@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 import Item from './Item'
@@ -16,7 +16,7 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
   )
 
   return data.node.replies ? (
-    <Fragment>
+    <>
       <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
       {data.node.replies.edges.map(({ node }) => (
         <Item
@@ -46,7 +46,7 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
           </Text>
         </LoadReplies>
       )}
-    </Fragment>
+    </>
   ) : (
     <Item {...data.node} t={t} first={first} onReply={onReply} highlightId={highlightId} />
   )

@@ -12,6 +12,8 @@ function getItemLayout(data, index) {
   }
 }
 
+const renderItem = ({ item }) => <User data={item.node} />
+
 function Users({ fetchMore, hasNextPage, isFetching, isRefetching, refetch, users, query }) {
   return (
     <InfiniteList
@@ -25,7 +27,7 @@ function Users({ fetchMore, hasNextPage, isFetching, isRefetching, refetch, user
       isFetching={isFetching && query.length === 0}
       isRefetching={isRefetching}
       refetch={refetch}
-      renderItem={({ item }) => <User data={item.node} />}
+      renderItem={renderItem}
       defaultPadding
       ListFooterComponent={
         (query.length === 1 && !users) || (isFetching && query.length !== 0) ? (
