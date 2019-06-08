@@ -72,6 +72,9 @@ target 'Wrench' do
   pod 'Firebase/Messaging', '5.20.2'
   pod 'Firebase/Performance', '5.20.2'
 
+  # react-native-fast-image WebP support
+  pod 'SDWebImageWebPCoder'
+
   use_unimodules!
 end
 

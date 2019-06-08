@@ -5427,10 +5427,10 @@ react-native-device-info@^2.1.1:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.1.1.tgz#c6ddc022033756a5e4c5899eb83e390b5a18cc17"
   integrity sha512-H0qq9UdP3zGESYH4HMPuv2A/FwOMszVbktj0JWuT/eVhW97PyRkYcobhFd1ggW0U+ksVSewSyX+JenQejGp7+w==
 
-react-native-fast-image@5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.4.2.tgz#d761cb9dddc0473b537544617e511a11c9e18413"
-  integrity sha512-S4E96Lwmx6z6QD3MaAuP7cNcXRLfgEUYU2GB694TbGEoOjk/FO1OnfbxfFp0vUs/klr4HJwACcwihPPxrFTt8w==
+react-native-fast-image@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-6.0.3.tgz#e644076c5e21dd8695db07905779352b2b9c1cb8"
+  integrity sha512-49OdbWV0XD2mb5VTdLRJCQ9qpMgGdliRwHSue/aJxgLLLmDK6dmFIJ/LvEn0F9e5Je16K++5lS6yJAACvvxAfw==
 
 react-native-fbsdk@^0.8.0:
   version "0.8.0"

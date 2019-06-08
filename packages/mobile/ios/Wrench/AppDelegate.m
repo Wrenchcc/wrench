@@ -10,7 +10,8 @@
 #import <UMReactNativeAdapter/UMNativeModulesProxy.h>
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
-
+#import "SDImageCodersManager.h"
+ 
 @import Firebase;
 
 @implementation AppDelegate
@@ -20,6 +21,9 @@
   [FIRApp configure];
   [RNFirebaseNotifications configure];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
+
+  // Register WebP format support
+  [SDImageCodersManager.sharedManager addCoder:SDImageWebPCoder.sharedCoder];
 
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
