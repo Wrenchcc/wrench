@@ -161,13 +161,13 @@ PODS:
   - Protobuf (3.8.0)
   - React (0.59.9):
     - React/Core (= 0.59.9)
-  - react-native-camera (2.9.0):
+  - react-native-camera (2.10.1):
     - React
-    - react-native-camera/RCT (= 2.9.0)
-    - react-native-camera/RN (= 2.9.0)
-  - react-native-camera/RCT (2.9.0):
+    - react-native-camera/RCT (= 2.10.1)
+    - react-native-camera/RN (= 2.10.1)
+  - react-native-camera/RCT (2.10.1):
     - React
-  - react-native-camera/RN (2.9.0):
+  - react-native-camera/RN (2.10.1):
     - React
   - react-native-config (0.11.7):
     - React
@@ -262,7 +262,7 @@ PODS:
     - React
   - RNCAsyncStorage (1.4.2):
     - React
-  - RNDeviceInfo (2.0.2):
+  - RNDeviceInfo (2.1.1):
     - React
   - RNFirebase (5.3.1):
     - Firebase/Core
@@ -549,7 +549,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   React: a86b92f00edbe1873a63e4a212c29b7a7ad5224f
-  react-native-camera: 571e4cfe70e7021e9077c1699a53e659db971f96
+  react-native-camera: 702c01e2ebbe26c9fb1ad24101282fbb26e9e00b
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-fast-image: 7278563726f2455ed3ba6e04dea472345173278c
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
@@ -561,7 +561,7 @@ SPEC CHECKSUMS:
   react-native-webview: d388bd8c7f3499640feb60f776b4c89f9c069961
   ReactNativeNavigation: 6113c2504bfe0735ee91bb768c4b29f8f008b20e
   RNCAsyncStorage: 0d2b0cf659d2def90d8ed7de76f502d335268156
-  RNDeviceInfo: a74f061640be5fbb5485a4cc29f7eac534759391
+  RNDeviceInfo: 1399caa42e1d89ef1c100200d20114e0b98d7af7
   RNFirebase: f20e5e4ceaa632aebb1a29a9a91022ae0469c633
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
