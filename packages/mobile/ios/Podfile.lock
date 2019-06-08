@@ -204,7 +204,7 @@ PODS:
     - react-native-video/Video (= 4.4.1)
   - react-native-video/Video (4.4.1):
     - React
-  - react-native-webview (5.10.0):
+  - react-native-webview (5.11.0):
     - React
   - React/Core (0.59.9):
     - yoga (= 0.59.9.React)
@@ -558,7 +558,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
-  react-native-webview: 3c79685b61a68d1fe99136f98f2f34b04dce2e02
+  react-native-webview: d388bd8c7f3499640feb60f776b4c89f9c069961
   ReactNativeNavigation: 6113c2504bfe0735ee91bb768c4b29f8f008b20e
   RNCAsyncStorage: 0d2b0cf659d2def90d8ed7de76f502d335268156
   RNDeviceInfo: a74f061640be5fbb5485a4cc29f7eac534759391

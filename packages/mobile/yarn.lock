@@ -3191,10 +3191,10 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
-i18next@^15.1.3:
-  version "15.1.3"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-15.1.3.tgz#f1984cbee0e3cb00cff9008b037264289ce8840a"
-  integrity sha512-hN2DZLoRSY2h/RYeNqth5XxV4N1ekKGSJDCGhFmmuXkOCAfK5CkUG4VBv9OBXrvf93xApv0KKBVrb0zJP31EKg==
+i18next@^17.0.3:
+  version "17.0.3"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.3.tgz#82d67826d13e8ca2cd2a3c87871533414e952d03"
+  integrity sha512-vQyW6a4ZLt3Dxnd6GXSnhbW5DwGYC4uLPKk1MFE5pfFbR9CEiNatdwwUZDQfrcNOh2x0eOGDFYeCEyLlkLvDQA==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -3511,6 +3511,11 @@ is-typedarray@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
+
+is-what@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/is-what/-/is-what-3.2.3.tgz#50f76f1bd8e56967e15765d1d34302513701997b"
+  integrity sha512-c4syLgFnjXTH5qd82Fp/qtUIeM0wA69xbI0KH1QpurMIvDaZFrS8UtAa4U52Dc2qSznaMxHit0gErMp6A/Qk1w==
 
 is-windows@^1.0.2:
   version "1.0.2"
@@ -3940,6 +3945,13 @@ memoize-one@^5.0.0:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.0.4.tgz#005928aced5c43d890a4dfab18ca908b0ec92cbc"
   integrity sha512-P0z5IeAH6qHHGkJIXWw0xC2HNEgkx/9uWWBQw64FJj3/ol14VYdfVGWWr0fXfjhhv3TKVIqUq65os6O4GUNksA==
+
+merge-anything@^2.2.4:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/merge-anything/-/merge-anything-2.2.5.tgz#37ef13f36359ee64f09c657d2cef45f7e29493f9"
+  integrity sha512-WgZGR7EQ1D8pyh57uKBbkPhUCJZLGdMzbDaxL4MDTJSGsvtpGdm8myr6DDtgJwT46xiFBlHqxbveDRpFBWlKWQ==
+  dependencies:
+    is-what "^3.2.3"
 
 merge-stream@^1.0.1:
   version "1.0.1"
@@ -4644,6 +4656,11 @@ ms@2.1.1, ms@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
+
+ms@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
+  integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
 mute-stream@0.0.7:
   version "0.0.7"
@@ -5370,10 +5387,10 @@ react-devtools-core@^3.6.0:
     shell-quote "^1.6.1"
     ws "^3.3.1"
 
-react-i18next@^10.10.0:
-  version "10.10.0"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.10.0.tgz#b341fb6a8deb046e430eb922a55627400d2c77b9"
-  integrity sha512-ZoaWZ4JVfZBzvBQrlFQIvxnnSleZKNTlBl8n2pvxLVxvtNgQVoKDQ6cJjYrjZcnvIGcreJn2ZTyKEYivqgqxPA==
+react-i18next@^10.11.0:
+  version "10.11.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.11.0.tgz#a6854e556d3aff9f5f161b4aa871d43cfff6bd9b"
+  integrity sha512-jmxLZK8mf+KxG3RUIiu/COperTq1c7+iHNsna7LODOYEYaoj6EXFuchOytnB80GoUOb0JC1csT37Zp+U5nPQqQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5542,10 +5559,10 @@ react-native-video@^4.4.1:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@5.10.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.10.0.tgz#01783e77a0724c74cc6d405d7d36f2da3bd9c11c"
-  integrity sha512-CCs1hsQv5w1lHSGrJXI00lL+Ab69wAbYg6uusLk1GqabA4y2vfVDFT0Q4SxGVLTn0X2G39flkvm5nRVnzWVLyw==
+react-native-webview@^5.11.0:
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.11.0.tgz#7b1eeac7f3ea3a6f7bab3eefc10b272f0a008603"
+  integrity sha512-8hqq7Gr5tP6seWUJ5G1qmSmSo53hljhXIkZT09SX07pfAw1pbEoIMg7uYvZGk7BVkYiwIO4nkyg+M501E8CL8g==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
@@ -6280,10 +6297,10 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
-styled-components@^v4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.2.1.tgz#494e35525b5557f7ce7b3c0040fcb0a46af40886"
-  integrity sha512-zBSMOJW1zfQ1rASGHJ5dHXIkn3VoOGLtQAYhkd4Ib7e+eI//uwMJWsI65JRe3aGrN2Xx8IT9jxxnVSXt9LaLCw==
+styled-components@^v4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.3.1.tgz#18c3709f4ed9d582cd206b1acd8b758a211dd114"
+  integrity sha512-04XKQFFSEx3qTeN5I4kiSeajrwG6juDMw2+vUgvfxeXFegE40TuPKS4fFey8RJP1Ii1AoVQVUOglrdUUey0ZHw==
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@emotion/is-prop-valid" "^0.7.3"
@@ -6291,6 +6308,7 @@ styled-components@^v4.2.1:
     babel-plugin-styled-components ">= 1"
     css-to-react-native "^2.2.2"
     memoize-one "^5.0.0"
+    merge-anything "^2.2.4"
     prop-types "^15.5.4"
     react-is "^16.6.0"
     stylis "^3.5.0"

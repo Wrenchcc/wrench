@@ -16,7 +16,7 @@ function ToastNotification() {
   return (
     <Subscribe to={[ToastNotificationContainer]}>
       {({ state: { message, type, show } }) => {
-        if (show) {
+        if (show && ref) {
           ref.current.animateNextTransition()
         }
 
