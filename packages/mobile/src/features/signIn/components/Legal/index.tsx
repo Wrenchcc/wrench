@@ -11,6 +11,11 @@ function Legal() {
   const handleNavigation = useCallback(
     () =>
       showModal(SCREENS.WEBVIEW, {
+        options: {
+          statusBar: {
+            style: 'dark',
+          },
+        },
         url: LEGAL_URL,
       }),
     []

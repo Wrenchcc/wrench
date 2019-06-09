@@ -26,11 +26,6 @@ i18next
     debug: __DEV__,
     defaultNS: 'common',
     fallbackLng: 'en',
-    resources,
-    ns: ['common'],
-    react: {
-      useSuspense: false,
-    },
     interpolation: {
       escapeValue: false,
       format(value, format) {
@@ -44,4 +39,6 @@ i18next
         return value
       },
     },
+    ns: ['common'],
+    resources,
   })

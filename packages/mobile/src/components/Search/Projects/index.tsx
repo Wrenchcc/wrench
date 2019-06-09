@@ -19,6 +19,7 @@ function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, 
   return (
     <InfiniteList
       borderSeparator
+      initialNumToRender={4}
       paddingBottom={40}
       getItemLayout={getItemLayout}
       ListEmptyComponent={!isFetching && <NoResults />}

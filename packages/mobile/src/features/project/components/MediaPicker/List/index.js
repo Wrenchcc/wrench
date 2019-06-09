@@ -9,11 +9,6 @@ const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
 
 export default class List extends Component {
-  // static propTypes = {
-  //   album: PropTypes.string,
-  //   cameraFile: PropTypes.object,
-  // }
-
   state = {
     data: [],
     endCursor: null,

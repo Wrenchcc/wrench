@@ -11,7 +11,8 @@
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import "SDImageCodersManager.h"
- 
+#import <SDWebImageWebPCoder/SDImageWebPCoder.h>
+
 @import Firebase;
 
 @implementation AppDelegate

@@ -1,4 +1,4 @@
-import { ImageEditor, ImageStore } from 'react-native'
+import { ImageEditor } from 'react-native'
 import { client } from 'graphql/createClient'
 import { PreSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
 import { logError } from 'utils/sentry'
@@ -42,10 +42,7 @@ export const uploadFiles = async files => {
       resizedImages.map(async (uri, index) => {
         const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
         try {
-          const uploaded = await makeS3Request(url, { uri, type, filename })
-          ImageStore.removeImageForTag(url)
-
-          return uploaded
+          return makeS3Request(url, { uri, type, filename })
         } catch (err) {
           logError(err)
         }
