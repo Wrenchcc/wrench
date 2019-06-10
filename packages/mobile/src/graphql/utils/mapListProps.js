@@ -26,7 +26,7 @@ export const mapListProps = type => ({ data: { fetchMore, loading, networkStatus
           return {
             [type]: {
               ...rest,
-              __typename: previousResult[type].__typename, // eslint-disable-line
+              __typename: previousResult[type].__typename,
               edges: [...previousResult[type].edges, ...edges],
               pageInfo,
             },

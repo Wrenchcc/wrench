@@ -8,7 +8,7 @@ import IsOnline from 'ui/IsOnline'
 function Avatar({
   uri,
   size = 30,
-  onPress = null,
+  onPress = () => null,
   disabled = false,
   isOnline = false,
   badgeSize,
@@ -16,7 +16,7 @@ function Avatar({
 }) {
   return (
     <View style={{ position: 'relative', height: size, width: size }}>
-      <Touchable onPress={onPress} style={style} disabled={disabled || !onPress}>
+      <Touchable onPress={onPress} style={style} disabled={disabled}>
         <Image
           placeholderDensity={3}
           source={{ uri }}

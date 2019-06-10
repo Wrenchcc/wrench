@@ -22,20 +22,22 @@ function PostProgress() {
 
         return (
           <Transitioning.View ref={ref} transition={transition}>
-            <Base top={postProgress ? 0 : -200}>
-              <Inner>
-                <Content>
-                  <Loader size="small" color="white" />
-                  {postProgress && <Cover source={{ uri: postProgress.image }} />}
-                </Content>
-                <Content>
-                  {postProgress && <Text numberOfLines={1}>{postProgress.title}</Text>}
-                  <Text fontSize={15} color="grey">
-                    {t('PostProgress:description')}
-                  </Text>
-                </Content>
-              </Inner>
-            </Base>
+            {postProgress && (
+              <Base>
+                <Inner>
+                  <Content>
+                    <Loader size="small" color="white" />
+                    {postProgress && <Cover source={{ uri: postProgress.image }} />}
+                  </Content>
+                  <Content>
+                    {postProgress && <Text numberOfLines={1}>{postProgress.title}</Text>}
+                    <Text fontSize={15} color="grey">
+                      {t('PostProgress:description')}
+                    </Text>
+                  </Content>
+                </Inner>
+              </Base>
+            )}
           </Transitioning.View>
         )
       }}

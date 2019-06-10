@@ -97,13 +97,11 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
 
     return (
       <View style={{ paddingLeft: 20, height: 60, alignItems: 'center', flexDirection: 'row' }}>
-        {navigationState.routes.map((route, index) => {
-          return (
-            <Touchable key={index} style={{ marginRight: 30 }} onPress={() => setTabIndex(index)}>
-              <Text color={tabIndex === index ? 'white' : 'grey'}>{route.title}</Text>
-            </Touchable>
-          )
-        })}
+        {navigationState.routes.map((route, index) => (
+          <Touchable key={index} style={{ marginRight: 30 }} onPress={() => setTabIndex(index)}>
+            <Text color={tabIndex === index ? 'white' : 'grey'}>{route.title}</Text>
+          </Touchable>
+        ))}
       </View>
     )
   }

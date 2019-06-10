@@ -6,7 +6,7 @@ export const Base = styled.View`
   opacity: 0.96;
   width: 100%;
   overflow: hidden;
-  top: ${props => props.top};
+  top: 0;
   height: 60;
 `
 

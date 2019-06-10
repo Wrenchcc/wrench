@@ -90,7 +90,7 @@ export default function createNavigationAwareScrollable(Component) {
       if (hasNextPage && isRefetching !== true && !isFetching) {
         fetchMore()
       }
-    }, [hasNextPage, isRefetching, isFetching])
+    }, [hasNextPage, isRefetching, isFetching, fetchMore])
 
     const setRef = useCallback(
       c => {

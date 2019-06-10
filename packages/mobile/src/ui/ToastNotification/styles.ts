@@ -23,6 +23,6 @@ export const Base = styled.View`
   left: 0;
   right: 0;
   opacity: 0.96;
-  top: ${props => props.top};
+  top: 0;
   height: 40;
 `
