@@ -1,6 +1,6 @@
 // TODO Heights
 export enum NAVIGATION {
-  LIST_INSET_TOP = 0,
+  LIST_INSET_TOP = 30,
   TOP_BAR_HEIGHT = 60,
   STATUS_BAR_HEIGHT = 44,
   TOTAL_TOP_BAR_HEIGHT = 104, // Including statusbar

@@ -4,7 +4,7 @@ import Header from './Header'
 
 const { event, set, Value, cond, eq } = Animated
 
-const OFFSET = 70
+const OFFSET = 120
 
 function PageLayout({
   children,
@@ -19,7 +19,7 @@ function PageLayout({
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ offset: 0 })
+      scrollRef.current.getNode().scrollToOffset({ offset: -OFFSET })
     }
   }, [scrollRef])
 
