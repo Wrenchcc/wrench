@@ -124,6 +124,7 @@ export default function createNavigationAwareScrollable(Component) {
         ListFooterComponent={hasNextPage && renderLoader()}
         ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
         contentInsetAdjustmentBehavior="never"
+        automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
         keyExtractor={keyExtractor}

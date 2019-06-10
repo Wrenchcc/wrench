@@ -20,6 +20,19 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
       })
     : 1
 
+  // const value = interpolate(scrollY, {
+  //   inputRange: [OFFSET_INVERTED + 39, OFFSET_INVERTED + 70],
+  //   outputRange: [0, 1],
+  //   extrapolate: Extrapolate.CLAMP,
+  // })
+  //
+  // const containerStyle = {
+  //   opacity: interpolate(value, {
+  //     inputRange: [0, 0.8, 1],
+  //     outputRange: [0, 0, 1],
+  //   }),
+  // }
+
   return (
     <Animated.View style={styles.container}>
       <View style={styles.header}>
