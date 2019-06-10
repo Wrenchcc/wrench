@@ -8,8 +8,6 @@ import styles from './styles'
 
 const { interpolate, Extrapolate } = Animated
 
-const OFFSET_INVERTED = -90
-
 function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onPress }) {
   const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
@@ -17,7 +15,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
   const opacity = headerAnimation
     ? interpolate(scrollY, {
         extrapolate: Extrapolate.CLAMP,
-        inputRange: [OFFSET_INVERTED + 10, OFFSET_INVERTED + 30],
+        inputRange: [0, 1],
         outputRange: [0, 1],
       })
     : 1
