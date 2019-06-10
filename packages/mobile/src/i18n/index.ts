@@ -24,6 +24,9 @@ i18next
       enabled: !__DEV__,
     },
     debug: __DEV__,
+    react: {
+      useSuspense: false,
+    },
     defaultNS: 'common',
     fallbackLng: 'en',
     interpolation: {

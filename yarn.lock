@@ -18,13 +18,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@phenomnomnominal/tsquery@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@phenomnomnominal/tsquery/-/tsquery-3.0.0.tgz#6f2f4dbf6304ff52b12cc7a5b979f20c3794a22a"
-  integrity sha512-SW8lKitBHWJ9fAYkJ9kJivuctwNYCh3BUxLdH0+XiR1GPBiu+7qiZzh8p8jqlj1LgVC1TbvfNFroaEsmYlL8Iw==
-  dependencies:
-    esquery "^1.0.1"
-
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -115,18 +108,6 @@ esprima@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
-
-esquery@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/esquery/-/esquery-1.0.1.tgz#406c51658b1f5991a5f9b62b1dc25b00e3e5c708"
-  integrity sha512-SmiyZ5zIWH9VM+SRUReLS5Q8a7GxtRdxEBVZpm98rJM7Sb+A9DVCndXfkeFUd3byderg+EbDkfnevfCwynWaNA==
-  dependencies:
-    estraverse "^4.0.0"
-
-estraverse@^4.0.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
-  integrity sha1-De4/7TH81GlhjOc0IJn8GvoL2xM=
 
 esutils@^1.1.6:
   version "1.1.6"
@@ -280,16 +261,6 @@ tslint-eslint-rules@^5.4.0:
     tslib "1.9.0"
     tsutils "^3.0.0"
 
-tslint-etc@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/tslint-etc/-/tslint-etc-1.5.3.tgz#c1058636f74452080e7b8a9b633a37b552affe30"
-  integrity sha512-2BQYNBWMV6FvqkGr1GuccEjYS9APbQaYk834gDDIXALpKImYuxfMxkQAZcc1U/KHhyvWrlpMDSfHo3HeyZy7aQ==
-  dependencies:
-    "@phenomnomnominal/tsquery" "^3.0.0"
-    tslib "^1.8.0"
-    tsutils "^3.0.0"
-    tsutils-etc "^1.0.0"
-
 tslint-react-hooks@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tslint-react-hooks/-/tslint-react-hooks-2.1.0.tgz#cc9841da0cef20d3527c8d16412f029c33767898"
@@ -320,11 +291,6 @@ tslint@^5.17.0:
     semver "^5.3.0"
     tslib "^1.8.0"
     tsutils "^2.29.0"
-
-tsutils-etc@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/tsutils-etc/-/tsutils-etc-1.1.0.tgz#82ce1c92da29e07d3cde95692d5c5e8dbdc92fd0"
-  integrity sha512-pJlLtLmQPUyGHqY/Pq6EGnpGmQCnnTDZetQ7eWkeQ5xaw4GtfcR1Zt7HMKFHGDDp53HzQfbqQ+7ps6iJbfa9Hw==
 
 tsutils@^2.29.0:
   version "2.29.0"
