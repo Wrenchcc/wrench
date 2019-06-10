@@ -5445,10 +5445,10 @@ react-native-fbsdk@^0.8.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
-react-native-firebase@^5.3.1:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.3.1.tgz#cfd295f562249f6fcf5e3fb2c62894575ece2c7f"
-  integrity sha512-eOuSqIl+DZPNmN5ivSLgkEcsl5m0sXxttoPBn3bOHfI+apEd4I8F+9fcbHerUFUvLzesXmHR9locjhR6IJ+q3w==
+react-native-firebase@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.4.2.tgz#6a66fea38724a7e76d9486b87e02129fda266290"
+  integrity sha512-xeluQo/dDYGKPvPLL0CH51T+rPVkKmEoR/aYDTDgJXXgiDwqSGAq9v414uF4p6SALLCDcNeb4IA6HA8TcFKcrQ==
   dependencies:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
@@ -5703,11 +5703,6 @@ readdirp@^2.2.1:
     graceful-fs "^4.1.11"
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
-
-reanimated-bottom-sheet@^1.0.0-alpha.8:
-  version "1.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.8.tgz#b4092b2d1bec40a697bae7c77f013fdf7698a0e8"
-  integrity sha512-vzwKx0IBlxx2r0fL1Ur5tBUBAQP1Ep9H0e7QJ9OEJcwIbNuMge0geWJgutAakNIOTrzbKfr2LMJLsl48S8v6JQ==
 
 regenerate-unicode-properties@^8.0.2:
   version "8.1.0"
