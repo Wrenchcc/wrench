@@ -28,6 +28,7 @@ export const SearchProjectsQuery = gql`
 
 const searchProjectsOptions = {
   options: ({ query = '' }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       query,
       type: 'PROJECTS',

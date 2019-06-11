@@ -15,6 +15,7 @@ export const FollowersQuery = gql`
 
 const getFollowersOptions = {
   options: ({ id }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       projectId: id,
     },

@@ -27,6 +27,7 @@ export const FollowingProjectsQuery = gql`
 
 const getFollowingProjectsOptions = {
   options: ({ user, after }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       username: user.username,
       after,

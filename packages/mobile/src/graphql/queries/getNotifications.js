@@ -39,7 +39,8 @@ export const NotificationsQuery = gql`
 
 const getNotificationsOptions = {
   options: {
-    // pollInterval: ms('1m'),
+    fetchPolicy: 'cache-and-network',
+    pollInterval: ms('1m'),
   },
   props: mapListProps('notifications'),
 }

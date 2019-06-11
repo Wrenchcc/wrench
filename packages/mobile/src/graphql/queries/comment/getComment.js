@@ -21,6 +21,7 @@ export const CommentQuery = gql`
 
 const getCommentOptions = {
   options: ({ commentId }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       id: commentId,
     },

@@ -41,6 +41,7 @@ export const RecentPostsQuery = gql`
 
 const getPopularProjectsOptions = {
   options: {
+    fetchPolicy: 'cache-and-network',
     variables: {
       type: PROJECT_SORT_TYPES.POPULAR,
     },
@@ -49,6 +50,9 @@ const getPopularProjectsOptions = {
 }
 
 const getRecentPostsOptions = {
+  options: {
+    fetchPolicy: 'cache-and-network',
+  },
   props: mapListProps('posts'),
 }
 

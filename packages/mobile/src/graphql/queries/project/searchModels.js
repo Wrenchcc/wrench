@@ -28,6 +28,7 @@ export const SearchModelsQuery = gql`
 
 const searchModelsOptions = {
   options: ({ query = '' }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       query,
       type: 'MODELS',

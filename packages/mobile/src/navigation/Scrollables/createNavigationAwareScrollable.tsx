@@ -27,6 +27,7 @@ export default function createNavigationAwareScrollable(Component) {
       ListEmptyComponent,
       initialNumToRender = 10,
       paddingHorizontal = 20,
+      paddingBottom,
       spacingSeparator,
       tabIndex,
       componentId,
@@ -130,6 +131,10 @@ export default function createNavigationAwareScrollable(Component) {
         keyExtractor={keyExtractor}
         contentContainerStyle={{
           flex: initialFetch ? 1 : 0,
+          paddingBottom:
+            (paddingBottom && paddingBottom) ||
+            (!initialFetch && data && data.length > 0 && spacingSeparator && 60) ||
+            0,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
           paddingTop: isAndroid ? contentInset : 0,

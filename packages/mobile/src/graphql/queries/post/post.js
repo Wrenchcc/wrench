@@ -14,6 +14,7 @@ const PostById = gql`
 
 const getPostByOptions = {
   options: ({ id }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       id,
     },

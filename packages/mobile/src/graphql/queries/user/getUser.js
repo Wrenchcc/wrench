@@ -27,6 +27,7 @@ const LoadMorePosts = gql`
 
 const getUserByUsernameOptions = {
   options: ({ username, after }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       username,
       after,

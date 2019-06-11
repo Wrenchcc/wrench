@@ -9,6 +9,7 @@ import AskForPermission from 'features/project/components/AskForPermission'
 import { Text, Touchable } from 'ui'
 import OpenAlbum from './OpenAlbum'
 import List from './List'
+import Tabs from './Tabs'
 
 const { width } = Dimensions.get('window')
 
@@ -83,32 +84,18 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
         onSelect(selectedFiles, lastIndex)
       }
     },
-    [selectedFiles]
+    [selectedFiles, tabIndex, onSelect]
   )
 
   const permissionAuthorized = useCallback(() => {
     setPhotoPermission(RESULTS.GRANTED)
   }, [])
 
-  const renderTabBar = ({ navigationState }) => {
-    if (albums.length === 1) {
-      return null
-    }
-
-    return (
-      <View style={{ paddingLeft: 20, height: 60, alignItems: 'center', flexDirection: 'row' }}>
-        {navigationState.routes.map((route, index) => (
-          <Touchable key={index} style={{ marginRight: 30 }} onPress={() => setTabIndex(index)}>
-            <Text color={tabIndex === index ? 'white' : 'grey'}>{route.title}</Text>
-          </Touchable>
-        ))}
-      </View>
-    )
-  }
-
   const renderScene = ({ route }) => {
     return <List album={route.key} onSelect={toggleSelection} selected={selectedFiles} />
   }
+
+  const renderTabs = useCallback(props => <Tabs {...props} />, [])
 
   const navigationState = useMemo(
     () => ({
@@ -131,7 +118,7 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
   return (
     <TabView
       navigationState={navigationState}
-      renderTabBar={renderTabBar}
+      renderTabBar={renderTabs}
       renderScene={renderScene}
       onIndexChange={handleIndexChange}
       initialLayout={{ width }}

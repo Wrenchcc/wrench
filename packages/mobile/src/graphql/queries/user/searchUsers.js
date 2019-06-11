@@ -25,6 +25,7 @@ export const SearchUsersQuery = gql`
 
 const searchUsersOptions = {
   options: ({ query = '' }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       query,
       type: 'USERS',

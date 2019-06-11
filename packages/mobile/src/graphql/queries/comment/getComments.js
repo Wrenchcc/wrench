@@ -73,6 +73,7 @@ const LoadMoreReplies = gql`
 
 const getCommentsOptions = {
   options: ({ postId }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
       postId,
     },
