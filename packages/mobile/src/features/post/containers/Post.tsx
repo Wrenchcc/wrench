@@ -9,6 +9,9 @@ import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 
+// TODO: Platform specific
+const COMMENT_FIELD_OFFSET = 90
+
 // TODO: Load comment in top
 function PostContainer({
   comments,
@@ -56,12 +59,8 @@ function PostContainer({
     >
       <FlatList
         initialNumToRender={6}
-        contentContainerStyle={{
-          paddingBottom: 60,
-          paddingLeft: 0,
-          paddingRight: 0,
-          paddingTop: 0,
-        }}
+        paddingHorizontal={0}
+        paddingBottom={COMMENT_FIELD_OFFSET}
         ListHeaderComponent={renderHeader}
         data={comments}
         refetch={refetch}
