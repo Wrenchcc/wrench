@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Subscribe } from 'unstated'
 import { useTranslation } from 'react-i18next'
 import { AddContainer } from 'store'
@@ -9,8 +9,6 @@ import AddProjectHeader from 'features/project/components/AddProjectHeader'
 function AddProject() {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
-
-  const handleOnChangeText = useCallback(value => updateField('title', value), [])
 
   return (
     <Subscribe to={[AddContainer]}>
@@ -29,7 +27,7 @@ function AddProject() {
               placeholder={t('AddProject:placeholder')}
               autoFocus
               large
-              onChangeText={handleOnChangeText}
+              onChangeText={value => updateField('title', value)}
               value={state.title}
               borderColor="dark"
               color="dark"

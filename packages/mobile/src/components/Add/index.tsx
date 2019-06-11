@@ -7,7 +7,14 @@ import { add } from 'images'
 function Add({ projects }) {
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(
-    () => showModal(projects.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT),
+    () =>
+      showModal(projects.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT, {
+        options: {
+          layout: {
+            backgroundColor: 'black',
+          },
+        },
+      }),
     [projects]
   )
 
