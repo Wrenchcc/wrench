@@ -65,7 +65,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
     return () => keyboardEventListener.remove()
   }, [hasChanged, isEditing, alertOpen])
 
-  const postActions = () => {
+  const postActions = useCallback(() => {
     const options = []
 
     if (post.postPermissions.isOwner) {
@@ -94,9 +94,9 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
         options={[...options, { name: t('Post:options:cancel') }]}
       />
     )
-  }
+  }, [toggleEdit, onDelete])
 
-  const onDelete = () => {
+  const onDelete = useCallback(() => {
     Alert.alert(
       t('Post:options:alertTitle'),
       null,
@@ -113,7 +113,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
       ],
       { cancelable: false }
     )
-  }
+  }, [post])
 
   return (
     <>

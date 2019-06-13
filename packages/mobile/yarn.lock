@@ -5419,10 +5419,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.10.1:
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.10.1.tgz#c68243e1fce49934240bcea10b5b0978511d320b"
-  integrity sha512-GKiWbBPyPBK3t3Ujc+PQaB2a7g6TyDRSRbiMhNdvmm6TbqRtvjm6n2eA90HPaySre8/o1Xh04KIRfidrGlGGUQ==
+react-native-camera@^2.10.2:
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.10.2.tgz#2aafc6171b0586c32f76232903836135bb7a2655"
+  integrity sha512-SWhAY36PLHRGetCjxALcKAgxuEiqqD6PtBg36E/JYtlH2zXkOQ0N2VIdV5amIo2xr9uDSa28r78emgVrH7z6dA==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5454,10 +5454,10 @@ react-native-fbsdk@^0.8.0:
     pump "^1.0.2"
     xcode "^0.9.3"
 
-react-native-firebase@^5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.4.2.tgz#6a66fea38724a7e76d9486b87e02129fda266290"
-  integrity sha512-xeluQo/dDYGKPvPLL0CH51T+rPVkKmEoR/aYDTDgJXXgiDwqSGAq9v414uF4p6SALLCDcNeb4IA6HA8TcFKcrQ==
+react-native-firebase@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.4.3.tgz#3c14c0f72b5593bb3aa4f91e417cbf459b60f15c"
+  integrity sha512-JnE4IK/NuST+QfgzlCKtHtjpjPcLYB2/us2YnK2jGGNeCRwARWbNUPgATLkkPAJYqRIfjxXBadqBabrVsXGCVw==
   dependencies:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
@@ -5530,10 +5530,10 @@ react-native-splash-screen@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
   integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
 
-react-native-tab-view@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.5.0.tgz#b13ac4d9e0666db58c1a55af62f12dee8a6e4bfa"
-  integrity sha512-nU/zTUA3WFV7wZN3lw0xCJmXvFzBjxHMCJXmTNPQeoQNsmwapNNgpbyZ6CgjfTVTXsv14vOYxx3HwQCy0i1gbA==
+react-native-tab-view@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.6.0.tgz#1de6e8f4e221f21059df1b545a041e42d06dbcf0"
+  integrity sha512-cpdBMGtyk5Wt4k5eHiH7gFLU0khF9gu2mKwZoWLLio4vYQPY1+mk3GYxs0fnEwH94NiXBvnbWAKlHTiWg+j2Yw==
 
 react-native-unimodules@^0.3.1:
   version "0.3.1"
