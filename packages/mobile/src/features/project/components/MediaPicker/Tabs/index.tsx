@@ -3,9 +3,10 @@ import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { BaseButton, PanGestureHandler, State } from 'react-native-gesture-handler'
 import { sum } from 'ramda'
+import { FONTS } from 'ui/constants'
 
 const inactiveOpacity = 0.55
-const tabPadding = 10
+const tabPadding = 15
 
 const {
   divide,
@@ -241,7 +242,11 @@ class Tabs extends PureComponent {
                 >
                   <View onLayout={this.addTabSize(index)}>
                     <Animated.View style={{ opacity }}>
-                      <Animated.Text style={{ color: 'white' }}>{route.title}</Animated.Text>
+                      <Animated.Text
+                        style={{ fontFamily: FONTS.MEDIUM, color: 'white', fontSize: 15 }}
+                      >
+                        {route.title}
+                      </Animated.Text>
                     </Animated.View>
                   </View>
                 </BaseButton>

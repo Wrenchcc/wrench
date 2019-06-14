@@ -160,13 +160,13 @@ PODS:
   - Protobuf (3.8.0)
   - React (0.59.9):
     - React/Core (= 0.59.9)
-  - react-native-camera (2.10.1):
+  - react-native-camera (2.10.2):
     - React
-    - react-native-camera/RCT (= 2.10.1)
-    - react-native-camera/RN (= 2.10.1)
-  - react-native-camera/RCT (2.10.1):
+    - react-native-camera/RCT (= 2.10.2)
+    - react-native-camera/RN (= 2.10.2)
+  - react-native-camera/RCT (2.10.2):
     - React
-  - react-native-camera/RN (2.10.1):
+  - react-native-camera/RN (2.10.2):
     - React
   - react-native-config (0.11.7):
     - React
@@ -200,7 +200,7 @@ PODS:
     - react-native-video/Video (= 4.4.1)
   - react-native-video/Video (4.4.1):
     - React
-  - react-native-webview (5.11.0):
+  - react-native-webview (5.12.0):
     - React
   - React/Core (0.59.9):
     - yoga (= 0.59.9.React)
@@ -260,7 +260,7 @@ PODS:
     - React
   - RNDeviceInfo (2.1.1):
     - React
-  - RNFirebase (5.4.2):
+  - RNFirebase (5.4.3):
     - Firebase/Core
     - React
   - RNGestureHandler (1.3.0):
@@ -544,7 +544,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   React: a86b92f00edbe1873a63e4a212c29b7a7ad5224f
-  react-native-camera: 702c01e2ebbe26c9fb1ad24101282fbb26e9e00b
+  react-native-camera: 89f0367c52e3ed70dd042c6362891cf7869f8e1c
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-fast-image: 3390cc968d598f0c6b5c710df138f4b653a87231
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
@@ -553,11 +553,11 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
-  react-native-webview: d388bd8c7f3499640feb60f776b4c89f9c069961
+  react-native-webview: 8b2761a9bf84bbbbe7f90f49743b9b74c7cb11e7
   ReactNativeNavigation: 6113c2504bfe0735ee91bb768c4b29f8f008b20e
   RNCAsyncStorage: 0d2b0cf659d2def90d8ed7de76f502d335268156
   RNDeviceInfo: 1399caa42e1d89ef1c100200d20114e0b98d7af7
-  RNFirebase: 891477280514b0cef3225cc48709cabedd192d5e
+  RNFirebase: 723f5f6a88316c856f753f701c3233b851cf1f49
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47

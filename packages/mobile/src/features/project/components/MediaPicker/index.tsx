@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react'
-import { View, Platform, Dimensions } from 'react-native'
+import { Platform, Dimensions } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
 import * as MediaLibrary from 'expo-media-library'
@@ -7,7 +7,6 @@ import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-nati
 import { prepend, findIndex, propEq } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
 import { Text, Touchable } from 'ui'
-import OpenAlbum from './OpenAlbum'
 import List from './List'
 import Tabs from './Tabs'
 

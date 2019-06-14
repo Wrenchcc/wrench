@@ -19,6 +19,11 @@ export function Bootstrap() {
 
 export function AuthNavigation() {
   Navigation.setDefaultOptions({
+    options: {
+      layout: {
+        backgroundColor: 'black',
+      },
+    },
     statusBar: {
       style: 'light',
     },

@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
-import { FlatList, View, ActivityIndicator, InteractionManager } from 'react-native'
+import { View, ActivityIndicator, Dimensions } from 'react-native'
+// import Animated from 'react-native-reanimated'
+import { FlatList } from 'react-native-gesture-handler'
 import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq, prepend } from 'ramda'
 import { logError } from 'utils/sentry'
 import MediaItem from '../Item'
 
+// const { interpolate, Extrapolate, event, Value } = Animated
+
+// const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
+
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
+
+const { height } = Dimensions.get('window')
+
+const MIN_HEADER_HEIGHT = 64 + 20
+const MAX_HEADER_HEIGHT = height
 
 export default class List extends Component {
   state = {
@@ -16,6 +27,25 @@ export default class List extends Component {
     isLoading: true,
   }
 
+  // y = new Value(0)
+
+  constructor(props) {
+    super(props)
+
+    // this.handleOnScroll = event(
+    //   [
+    //     {
+    //       nativeEvent: {
+    //         contentOffset: {
+    //           y: this.y,
+    //         },
+    //       },
+    //     },
+    //   ],
+    //   { useNativeDriver: true }
+    // )
+  }
+
   componentDidMount() {
     this.loadInitial()
   }
@@ -23,10 +53,7 @@ export default class List extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.album !== prevProps.album) {
       this.showSpinner()
-
-      InteractionManager.runAfterInteractions(() => {
-        this.loadInitial()
-      })
+      this.loadInitial()
     }
 
     if (!prevProps.cameraFile && this.props.cameraFile) {
@@ -125,6 +152,20 @@ export default class List extends Component {
       )
     }
 
+    // onScroll={this.handleOnScroll}
+    // scrollEventThrottle={1}
+    // <Animated.View
+    //   style={{
+    //     transform: [
+    //       {
+    //         translateY: interpolate(this.y, {
+    //           inputRange: [0, height],
+    //           outputRange: [0, height],
+    //         }),
+    //       },
+    //     ],
+    //   }}
+    // >
     return (
       <FlatList
         contentContainerStyle={{ padding: 3 }}
