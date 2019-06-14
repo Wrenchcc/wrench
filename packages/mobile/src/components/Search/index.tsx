@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import { Dimensions, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
@@ -27,14 +27,14 @@ const styles = {
     backgroundColor: 'black',
     height: 3,
   },
-  tabBar: {
-    backgroundColor: 'white',
-    elevation: 0,
-  },
   labelStyle: {
     color: 'black',
     fontFamily: FONTS.MEDIUM,
     fontSize: 15,
+  },
+  tabBar: {
+    backgroundColor: 'white',
+    elevation: 0,
   },
 }
 
@@ -83,6 +83,14 @@ function Search({ query, active }) {
     []
   )
 
+  const navigationState = useMemo(
+    () => ({
+      index,
+      routes,
+    }),
+    [index, routes]
+  )
+
   if (!active) {
     return null
   }
@@ -90,10 +98,7 @@ function Search({ query, active }) {
   return (
     <Base>
       <TabView
-        navigationState={{
-          index,
-          routes,
-        }}
+        navigationState={navigationState}
         renderScene={renderScene}
         renderTabBar={renderTabBar}
         renderPager={renderPager}

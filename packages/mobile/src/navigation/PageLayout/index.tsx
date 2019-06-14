@@ -25,7 +25,7 @@ function PageLayout({
 
   useEffect(() => {
     if (scrollToIndex && scrollRef.current) {
-      scrollRef.current.getNode().scrollToIndex({ animated: false, index: 0 })
+      scrollRef.current.getNode().scrollToIndex({ index: 0 })
     }
   }, [scrollRef, scrollToIndex])
 

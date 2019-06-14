@@ -84,7 +84,7 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
         onSelect(selectedFiles, lastIndex)
       }
     },
-    [selectedFiles, tabIndex, onSelect]
+    [selectedFiles, tabIndex, onSelect, selectedIndex]
   )
 
   const permissionAuthorized = useCallback(() => {
