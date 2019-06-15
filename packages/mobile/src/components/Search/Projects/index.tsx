@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useNavigation, SCREENS } from 'navigation'
 import { searchProjects } from 'graphql/queries/project/searchProjects'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
@@ -47,4 +47,4 @@ function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, 
   )
 }
 
-export default searchProjects(Projects)
+export default memo(searchProjects(Projects))

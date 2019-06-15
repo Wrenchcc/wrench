@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
+import React, { memo, useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Query } from 'react-apollo'
 import { showMention, dismissMention } from 'navigation'
@@ -20,7 +20,7 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
       setText(`${MENTION.TRIGGER}${username} `)
       inputRef.current.focus()
     }
-  }, [inputRef, username])
+  }, [inputRef, username, commentId])
 
   const handleOnChangeText = useCallback(val => {
     setText(val)
@@ -77,4 +77,4 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
   )
 }
 
-export default addComment(CommentField)
+export default memo(addComment(CommentField))

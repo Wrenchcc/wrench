@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 import Item from './Item'
@@ -6,31 +6,30 @@ import { LoadReplies, Border } from './styles'
 
 function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
   const { t } = useTranslation()
+  const replies = data.node.replies
+  const commentId = data.node.id
+
   const handleLoadMore = useCallback(
-    () =>
-      fetchMoreReplies(
-        data.node.id,
-        data.node.replies.edges[data.node.replies.edges.length - 1].cursor
-      ),
-    [data.node.id]
+    () => fetchMoreReplies(commentId, replies.edges[replies.edges.length - 1].cursor),
+    [commentId]
   )
 
-  return data.node.replies ? (
+  return replies ? (
     <>
       <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
-      {data.node.replies.edges.map(({ node }) => (
+      {replies.edges.map(({ node }) => (
         <Item
           key={node.id}
           isReply
           {...node}
-          commentId={data.node.id}
+          commentId={commentId}
           t={t}
           onReply={onReply}
           highlightId={highlightId}
         />
       ))}
 
-      {data.node.replies.totalCount > data.node.replies.edges.length && (
+      {replies.totalCount > replies.edges.length && (
         <LoadReplies>
           <Border />
           <Text
@@ -41,7 +40,7 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
             onPress={handleLoadMore}
           >
             {t('CommentItem:loadReplies', {
-              count: data.node.replies.totalCount - data.node.replies.edges.length,
+              count: replies.totalCount - replies.edges.length,
             })}
           </Text>
         </LoadReplies>
@@ -52,4 +51,4 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
   )
 }
 
-export default CommentItem
+export default memo(CommentItem)

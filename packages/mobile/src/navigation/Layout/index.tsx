@@ -8,7 +8,7 @@ const DEFAULT_QUERY = ''
 
 function Layout({ headerLeft, headerRight = <Add />, search = true, stickyComponent, children }) {
   const [query, setQuery] = useState(DEFAULT_QUERY)
-  const [isActive, setActive] = useState(false)
+  const [searchActive, setSearchActive] = useState(false)
 
   const handleQueryChange = useCallback(
     text => {
@@ -19,10 +19,10 @@ function Layout({ headerLeft, headerRight = <Add />, search = true, stickyCompon
 
   const handleSearchCancel = useCallback(() => {
     setQuery(DEFAULT_QUERY)
-    setActive(false)
+    setSearchActive(false)
   }, [])
 
-  const handleSearchFocus = useCallback(() => setActive(true), [setActive])
+  const handleSearchFocus = useCallback(() => setSearchActive(true), [setSearchActive])
   const handleSearchClear = useCallback(() => setQuery(DEFAULT_QUERY), [setQuery])
 
   return (
@@ -36,10 +36,10 @@ function Layout({ headerLeft, headerRight = <Add />, search = true, stickyCompon
         onSearchFocus={handleSearchFocus}
         onSearchCancel={handleSearchCancel}
         onSearchClear={handleSearchClear}
-        searchActive={isActive}
+        searchActive={searchActive}
         stickyComponent={stickyComponent}
       />
-      <Search active={isActive} query={query} />
+      {searchActive && <Search query={query} />}
       {children}
     </Provider>
   )

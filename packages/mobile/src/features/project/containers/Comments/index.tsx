@@ -20,13 +20,13 @@ function Comments({
   post,
 }) {
   const { t } = useTranslation()
+  const [commentId, setCommentId] = useState()
+  const [username, setUsername] = useState()
 
-  const [mention, setMention] = useState({
-    commentId: null,
-    username: null,
-  })
-
-  const handleOnReply = useCallback(data => setMention(data), [])
+  const handleOnReply = useCallback(data => {
+    setCommentId(data.commentId)
+    setUsername(data.username)
+  }, [])
 
   const renderHeader = () => {
     if (!post) {
@@ -47,13 +47,17 @@ function Comments({
     )
   }
 
+  const renderItem = ({ item }) => (
+    <CommentItem data={item} onReply={handleOnReply} fetchMoreReplies={fetchMoreReplies} />
+  )
+
   return (
     <PageLayout
       headerAnimation={false}
       headerTitle={t('Comments:title')}
       stickyFooter={
         <KeyboardAccessoryView>
-          <CommentField postId={postId} username={mention.username} commentId={mention.commentId} />
+          <CommentField postId={postId} username={username} commentId={commentId} />
         </KeyboardAccessoryView>
       }
     >
@@ -67,9 +71,7 @@ function Comments({
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => (
-          <CommentItem data={item} onReply={handleOnReply} fetchMoreReplies={fetchMoreReplies} />
-        )}
+        renderItem={renderItem}
       />
     </PageLayout>
   )

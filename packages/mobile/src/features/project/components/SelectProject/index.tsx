@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useCallback, useRef, useEffect } from 'react'
 import { Animated, InteractionManager } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
@@ -11,19 +11,18 @@ function SelectProject({ projects, onPress, selectedProjectId, onClose, expanded
   const animatedValue = useRef(new Animated.Value(0))
   const { showModal } = useNavigation()
 
-  const handleNavigation = () => {
+  const handleNavigation = useCallback(() => {
     showModal(SCREENS.ADD_PROJECT)
-
     InteractionManager.runAfterInteractions(() => {
       onClose()
     })
-  }
+  }, [onClose])
 
-  const getHeight = () => {
+  const getHeight = useCallback(() => {
     const itemCount = Object.keys(projects).length
     const itemsHeight = itemCount >= 4 ? 4 : itemCount
     return itemsHeight * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
-  }
+  }, [projects])
 
   useEffect(() => {
     Animated.spring(animatedValue.current, {
@@ -33,18 +32,19 @@ function SelectProject({ projects, onPress, selectedProjectId, onClose, expanded
     }).start()
   }, [expanded])
 
-  const renderProjects = () => projects
-    .slice()
-    .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)
-    .reverse()
-    .map(({ node }) => (
+  const renderProjects = () =>
+    projects
+      .slice()
+      .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)
+      .reverse()
+      .map(({ node }) => (
         <Project
           key={node.id}
           {...node}
           onPress={onPress}
           selected={selectedProjectId === node.id}
         />
-    ))
+      ))
 
   return (
     <Animated.View

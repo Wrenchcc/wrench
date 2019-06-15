@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
@@ -38,4 +38,4 @@ function Users({ fetchMore, hasNextPage, isFetching, isRefetching, refetch, user
   )
 }
 
-export default searchUsers(Users)
+export default memo(searchUsers(Users))

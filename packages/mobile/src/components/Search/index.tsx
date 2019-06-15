@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, memo } from 'react'
-import { Dimensions, Keyboard } from 'react-native'
+import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
@@ -42,13 +42,12 @@ const renderPager = props => (
   <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
 )
 
-function Search({ query, active }) {
+function Search({ query }) {
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
 
   const handleIndexChange = useCallback(
     activeIndex => {
-      Keyboard.dismiss()
       setIndex(activeIndex)
     },
     [index]
@@ -91,13 +90,10 @@ function Search({ query, active }) {
     [index, routes]
   )
 
-  if (!active) {
-    return null
-  }
-
   return (
     <Base>
       <TabView
+        keyboardDismissMode="none"
         navigationState={navigationState}
         renderScene={renderScene}
         renderTabBar={renderTabBar}

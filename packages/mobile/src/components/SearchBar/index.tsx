@@ -23,6 +23,7 @@ function Search({
 
   const handleFocus = useCallback(() => {
     transitionRef.current.animateNextTransition()
+
     if (onSearchFocus) {
       onSearchFocus()
     }
@@ -32,8 +33,10 @@ function Search({
 
   const handleCancel = useCallback(() => {
     inputRef.current.blur()
-    Keyboard.dismiss()
     transitionRef.current.animateNextTransition()
+
+    Keyboard.dismiss()
+
     if (onSearchCancel) {
       onSearchCancel()
     }
@@ -67,6 +70,7 @@ function Search({
       />
 
       <Icon source={search} />
+
       {searchActive && (
         <Text medium onPress={handleCancel} style={{ marginLeft: 10 }}>
           {t('SearchBar:cancel')}

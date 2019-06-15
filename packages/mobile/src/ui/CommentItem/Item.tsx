@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { memo, useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
 import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
@@ -20,6 +20,8 @@ function Item({
   user,
 }) {
   const { navigate } = useNavigation()
+  const animatedValue = useRef(new Animated.Value(0))
+
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
@@ -34,24 +36,22 @@ function Item({
         commentId: commentId || id,
         username: user.username,
       }),
-    [user.username, commentId, id]
+    [user, commentId, id, onReply]
   )
 
-  const animatedValue = new Animated.Value(0)
-
   if (highlightId === id) {
-    Animated.timing(animatedValue, {
+    Animated.timing(animatedValue.current, {
       duration: 1000,
       toValue: 1,
     }).start(() => {
-      Animated.timing(animatedValue, {
+      Animated.timing(animatedValue.current, {
         delay: 3000,
         toValue: 0,
       }).start()
     })
   }
 
-  const backgroundColor = animatedValue.interpolate({
+  const backgroundColor = animatedValue.current.interpolate({
     inputRange: [0, 1],
     outputRange: [COLORS.WHITE, COLORS.ULTRA_LIGHT_GREY],
   })
@@ -92,4 +92,4 @@ function Item({
   )
 }
 
-export default Item
+export default memo(Item)
