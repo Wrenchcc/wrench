@@ -25,11 +25,12 @@ export const SearchUsersQuery = gql`
 
 const searchUsersOptions = {
   options: ({ query = '' }) => ({
-    fetchPolicy: 'cache-and-network',
     variables: {
       query,
       type: 'USERS',
     },
+    notifyOnNetworkStatusChange: true,
+    fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('users'),
 }

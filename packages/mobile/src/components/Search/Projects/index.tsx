@@ -16,6 +16,11 @@ function getItemLayout(_, index) {
 function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, refetch, query }) {
   const { navigate } = useNavigation()
 
+  const renderItem = ({ item }) => {
+    const onPress = () => navigate(SCREENS.PROJECT, { slug: item.node.slug })
+    return <ProjectCard project={item.node} onPress={onPress} />
+  }
+
   return (
     <InfiniteList
       borderSeparator
@@ -29,12 +34,7 @@ function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, 
       isFetching={isFetching && query.length === 0}
       isRefetching={isRefetching}
       refetch={refetch}
-      renderItem={({ item }) => (
-        <ProjectCard
-          project={item.node}
-          onPress={() => navigate(SCREENS.PROJECT, { slug: item.node.slug })}
-        />
-      )}
+      renderItem={renderItem}
       defaultPadding
       ListFooterComponent={
         (query.length === 1 && !projects) || (isFetching && query.length !== 0) ? (

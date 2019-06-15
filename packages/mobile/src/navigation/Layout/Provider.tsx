@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Animated from 'react-native-reanimated'
 import { isAndroid } from 'utils/platform'
 import { NAVIGATION } from '../constants'
@@ -30,7 +30,7 @@ const {
   min,
 } = Animated
 
-export default class Provider extends Component {
+export default class Provider extends PureComponent {
   public dragging = new Value(0)
 
   public scrollY = new Value(0)

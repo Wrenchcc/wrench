@@ -32,7 +32,6 @@ const LoadMorePosts = gql`
 
 const getProjectOptions = {
   options: ({ slug, postId, after }) => ({
-    fetchPolicy: 'cache-and-network',
     variables: {
       slug,
       after,

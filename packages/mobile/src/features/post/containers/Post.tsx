@@ -34,6 +34,15 @@ function PostContainer({
 
   const handleOnReply = useCallback(data => setMention(data), [])
 
+  const renderItem = ({ item }) => (
+    <CommentItem
+      data={item}
+      highlightId={comment.id}
+      onReply={handleOnReply}
+      fetchMoreReplies={fetchMoreReplies}
+    />
+  )
+
   const renderHeader = () => {
     if (!post) {
       return null
@@ -68,14 +77,7 @@ function PostContainer({
         isRefetching={isRefetching}
         isFetching={!post || isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => (
-          <CommentItem
-            data={item}
-            highlightId={comment.id}
-            onReply={handleOnReply}
-            fetchMoreReplies={fetchMoreReplies}
-          />
-        )}
+        renderItem={renderItem}
       />
     </PageLayout>
   )

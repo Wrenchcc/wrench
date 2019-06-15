@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react'
+import React, { useState, useCallback, useMemo, memo } from 'react'
 import { Dimensions, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
@@ -110,4 +110,4 @@ function Search({ query, active }) {
   )
 }
 
-export default Search
+export default memo(Search)

@@ -33,7 +33,7 @@ function InfiniteList({
     if (hasNextPage && isRefetching !== true && !isFetching) {
       fetchMore()
     }
-  }, [hasNextPage, isRefetching, isFetching])
+  }, [hasNextPage, isRefetching, isFetching, fetchMore])
 
   return (
     <FlatList

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useRef, useEffect, useCallback, memo } from 'react'
 import { BackHandler, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { search } from 'images'
@@ -39,7 +39,7 @@ function Search({
     }
   }, [inputRef, transitionRef, onSearchCancel])
 
-  const handleQueryChange = useCallback(value => onChangeQuery(query), [])
+  const handleQueryChange = useCallback(value => onChangeQuery(value), [onChangeQuery])
 
   useEffect(() => {
     if (searchOpen) {
@@ -48,7 +48,7 @@ function Search({
     if (searchClosed) {
       BackHandler.removeEventListener('hardwareBackPress', handleCancel)
     }
-  }, [searchActive])
+  }, [searchActive, handleCancel])
 
   return (
     <Base ref={transitionRef} transition={transition}>
@@ -76,4 +76,4 @@ function Search({
   )
 }
 
-export default Search
+export default memo(Search)

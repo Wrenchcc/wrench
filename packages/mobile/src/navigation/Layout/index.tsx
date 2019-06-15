@@ -10,20 +10,27 @@ function Layout({ headerLeft, headerRight = <Add />, search = true, stickyCompon
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [isActive, setActive] = useState(false)
 
+  const handleQueryChange = useCallback(
+    text => {
+      setQuery(text)
+    },
+    [setQuery]
+  )
+
   const handleSearchCancel = useCallback(() => {
     setQuery(DEFAULT_QUERY)
     setActive(false)
   }, [])
 
-  const handleSearchFocus = useCallback(() => setActive(true), [])
-  const handleSearchClear = useCallback(() => setQuery(DEFAULT_QUERY), [])
+  const handleSearchFocus = useCallback(() => setActive(true), [setActive])
+  const handleSearchClear = useCallback(() => setQuery(DEFAULT_QUERY), [setQuery])
 
   return (
     <Provider>
       <Header
         headerLeft={headerLeft}
         headerRight={headerRight}
-        onQueryChange={setQuery}
+        onQueryChange={handleQueryChange}
         query={query}
         search={search}
         onSearchFocus={handleSearchFocus}

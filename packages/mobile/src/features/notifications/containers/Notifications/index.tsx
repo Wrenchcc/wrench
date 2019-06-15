@@ -17,9 +17,9 @@ function Notifications({
   isRefetching,
   isFetching,
   hasNextPage,
-  deleteNotification,
+  deleteNotification: deleteNotificationMutation,
   componentId,
-  markAllNotificationsSeen,
+  markAllNotificationsSeen: markAllNotificationsSeenMutation,
   unreadCount,
 }) {
   const { t } = useTranslation()
@@ -33,7 +33,7 @@ function Notifications({
     const componentAppearListener = Navigation.events().registerComponentDidAppearListener(
       ({ componentId: id }) => {
         if (componentId === id && unreadCount) {
-          markAllNotificationsSeen()
+          markAllNotificationsSeenMutation()
           hideNotificationBadge()
         }
       }
@@ -41,6 +41,10 @@ function Notifications({
 
     return () => componentAppearListener.remove()
   }, [componentId, unreadCount])
+
+  const renderItem = ({ item }) => (
+    <Notification data={item.node} deleteNotification={deleteNotificationMutation} />
+  )
 
   return (
     <Layout>
@@ -62,9 +66,7 @@ function Notifications({
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => (
-          <Notification data={item.node} deleteNotification={deleteNotification} />
-        )}
+        renderItem={renderItem}
       />
     </Layout>
   )

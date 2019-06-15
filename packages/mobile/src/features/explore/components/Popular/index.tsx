@@ -14,12 +14,14 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
     const project = item.node
     const image = pathOr(null, ['files', 'edges', [0], 'node'], project)
 
+    const onPress = () => navigate(SCREENS.PROJECT, { slug: project.slug })
+
     return (
       <Card
         image={image}
         title={project.title}
         key={project.id}
-        onPress={() => navigate(SCREENS.PROJECT, { slug: project.slug })}
+        onPress={onPress}
         first={index === 0}
         last={index === projects && projects.length - 1}
         user={project.user}

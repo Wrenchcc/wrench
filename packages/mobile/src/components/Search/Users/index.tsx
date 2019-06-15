@@ -4,13 +4,11 @@ import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 70
 
-function getItemLayout(data, index) {
-  return {
-    index,
-    length: ITEM_HEIGHT,
-    offset: ITEM_HEIGHT * index,
-  }
-}
+const getItemLayout = (data, index) => ({
+  index,
+  length: ITEM_HEIGHT,
+  offset: ITEM_HEIGHT * index,
+})
 
 const renderItem = ({ item }) => <User data={item.node} />
 

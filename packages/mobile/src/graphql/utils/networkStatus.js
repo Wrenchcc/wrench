@@ -1,2 +1,2 @@
 export const isFetchingMore = networkStatus => networkStatus === 3
-export const isRefetching = networkStatus => networkStatus === 4 || networkStatus === 2
+export const isRefetching = networkStatus => networkStatus === 4

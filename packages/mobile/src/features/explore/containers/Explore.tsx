@@ -4,6 +4,8 @@ import { getRecentPosts } from 'graphql/queries/getExplore'
 import Post from 'components/Post'
 import Popular from 'features/explore/components/Popular'
 
+const renderItem = ({ item }) => <Post post={item.node} />
+
 function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   return (
     <Layout>
@@ -18,7 +20,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => <Post post={item.node} />}
+        renderItem={renderItem}
       />
     </Layout>
   )

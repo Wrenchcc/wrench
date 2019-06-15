@@ -10,7 +10,7 @@ const MARGIN = 3
 const ITEM_SIZE = (width - 4 * MARGIN) / 4
 
 function Item({ item, selected, onPress, order }) {
-  const handleOnPress = useCallback(() => onPress(item), [item])
+  const handleOnPress = useCallback(() => onPress(item), [item, onPress])
 
   return (
     <Touchable

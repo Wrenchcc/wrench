@@ -7,7 +7,7 @@ import { logError } from 'utils/sentry'
 import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
 import { Button, Text } from './styled'
 
-function Facebook({ authenticateFacebook }) {
+function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
   const { t } = useTranslation()
 
   const handleLoginManager = useCallback(async () => {
@@ -19,7 +19,7 @@ function Facebook({ authenticateFacebook }) {
       }
 
       const facebookResponse = await AccessToken.getCurrentAccessToken()
-      await authenticateFacebook(facebookResponse.accessToken)
+      await authenticateFacebookMutation(facebookResponse.accessToken)
 
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
 
