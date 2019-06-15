@@ -26,6 +26,7 @@ const LoadMorePosts = gql`
 const getFeedOptions = {
   options: {
     pollInterval: ms('3m'),
+    notifyOnNetworkStatusChange: true,
   },
   props: ({ data: { fetchMore, error, loading, feed, networkStatus, refetch } }) => ({
     error,
