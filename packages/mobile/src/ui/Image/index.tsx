@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { PixelRatio, Animated } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
@@ -62,4 +62,4 @@ function Image({
   )
 }
 
-export default Image
+export default memo(Image)
