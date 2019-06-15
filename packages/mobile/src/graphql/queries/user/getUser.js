@@ -8,6 +8,9 @@ import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 export const UserByUsernameQuery = gql`
   query getUserByUsername($username: LowercaseString!, $after: String) {
     user(username: $username) {
+      firstName
+      lastName
+      dynamicLink
       ...userInfo
       ...userPostsConnection
     }

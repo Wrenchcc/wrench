@@ -15,6 +15,7 @@ export const SearchUsersQuery = gql`
         node {
           ... on User {
             ...userInfo
+            projectCount
           }
         }
       }

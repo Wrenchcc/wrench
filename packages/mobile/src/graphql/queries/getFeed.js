@@ -14,15 +14,6 @@ export const FeedQuery = gql`
   ${feedPostsConnectionFragment}
 `
 
-const LoadMorePosts = gql`
-  query loadMoreFeedPosts($after: String) {
-    feed {
-      ...feedPostsConnection
-    }
-  }
-  ${feedPostsConnectionFragment}
-`
-
 const getFeedOptions = {
   options: {
     pollInterval: ms('3m'),
@@ -37,7 +28,7 @@ const getFeedOptions = {
     isFetching: loading || isFetchingMore(networkStatus),
     fetchMore: () =>
       fetchMore({
-        query: LoadMorePosts,
+        query: FeedQuery,
         variables: {
           after: feed.posts.edges[feed.posts.edges.length - 1].cursor,
         },
