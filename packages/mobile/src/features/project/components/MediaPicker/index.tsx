@@ -7,6 +7,7 @@ import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-nati
 import { prepend, findIndex, propEq } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
 import { Text, Touchable } from 'ui'
+import { logError } from 'utils/sentry'
 import List from './List'
 import Tabs from './Tabs'
 

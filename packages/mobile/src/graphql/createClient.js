@@ -1,7 +1,7 @@
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { removeTokens } from 'graphql/utils/auth'
+import { clearTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
 import { AuthNavigation } from 'navigation'
@@ -29,7 +29,7 @@ export default () => {
     track(events.USER_SIGNED_OUT)
 
     // TODO: Why is this flicker background?
-    setTimeout(removeTokens, 100)
+    setTimeout(clearTokens, 100)
 
     AuthNavigation()
 

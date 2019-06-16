@@ -2,7 +2,7 @@ import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
 import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
-import { getTokens, setTokens } from 'graphql/utils/auth'
+import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 
@@ -18,7 +18,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     if (extensions && extensions.code === 'UNAUTHENTICATED') {
       return new Observable(async observer => {
         try {
-          const refreshToken = await getTokens('refresh_token')
+          const refreshToken = await getRefreshToken()
           const { headers } = operation.getContext()
 
           return client
@@ -35,10 +35,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
               }
 
               // Save new tokens to async storage
-              setTokens({
-                access_token: accessToken,
-                refresh_token: refreshToken,
-              })
+              setTokens(accessToken, refreshToken)
 
               return operation.setContext(() => ({
                 headers: {

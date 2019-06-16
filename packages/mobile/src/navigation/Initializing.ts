@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { pathOr } from 'ramda'
 import SplashScreen from 'react-native-splash-screen'
 import { withApollo } from 'react-apollo'
-import { getTokens } from 'graphql/utils/auth'
+import { getAccessToken } from 'utils/storage/auth'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { SentryInstance } from 'utils/sentry'
 import { AuthNavigation, AppNavigation } from './navigation'
@@ -10,11 +10,11 @@ import { AuthNavigation, AppNavigation } from './navigation'
 function Initializing({ client }) {
   const loadInitialState = async () => {
     try {
-      const tokens = await getTokens()
+      const accessToken = await getAccessToken()
       const user = pathOr(
         null,
         ['data', 'user'],
-        await client.query({ query: CurrentUserQuery, skip: !tokens })
+        await client.query({ query: CurrentUserQuery, skip: !accessToken })
       )
 
       if (user) {
