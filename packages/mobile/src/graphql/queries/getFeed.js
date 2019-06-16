@@ -16,8 +16,8 @@ export const FeedQuery = gql`
 
 const getFeedOptions = {
   options: {
+    fetchPolicy: 'cache-and-network',
     pollInterval: ms('3m'),
-    notifyOnNetworkStatusChange: true,
   },
   props: ({ data: { fetchMore, error, loading, feed, networkStatus, refetch } }) => ({
     error,

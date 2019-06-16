@@ -44,6 +44,7 @@ function Image({
         style={{ width, height }}
         blurRadius={3}
       />
+
       <AnimatedFastImage
         {...props}
         source={{ uri }}

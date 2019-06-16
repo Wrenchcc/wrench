@@ -1,14 +1,10 @@
-import { StyleSheet } from 'react-native'
 import styled from 'styled-components'
 import UiInput from 'ui/Input'
 import UiTouchable from 'ui/Touchable'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   flex-direction: row;
   align-items: center;
-  border-bottom-color: ${COLORS.DIVIDER};
-  border-bottom-width: ${StyleSheet.hairlineWidth};
 `
 
 export const Input = styled(UiInput)`

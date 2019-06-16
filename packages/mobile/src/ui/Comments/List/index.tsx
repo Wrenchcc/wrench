@@ -6,10 +6,6 @@ import Text from 'ui/Text'
 import { Base, Row, Comment, LoadMore } from './styles'
 
 function List({ data }) {
-  if (!data.comments.edges.length) {
-    return null
-  }
-
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
@@ -21,20 +17,24 @@ function List({ data }) {
     [data]
   )
 
-  const renderComment = ({ node }) => (
-    <Row key={node.id}>
-      <Text
-        bold
-        fontSize={15}
-        onPress={() => navigate(SCREENS.USER, { username: node.user.username })}
-      >
-        {`${node.user.fullName} `}
-      </Text>
-      <Comment fontSize={15} numberOfLines={1} lineHeight={22}>
-        {node.text}
-      </Comment>
-    </Row>
-  )
+  const renderComment = ({ node }) => {
+    const onPress = () => navigate(SCREENS.USER, { username: node.user.username })
+
+    return (
+      <Row key={node.id}>
+        <Text bold fontSize={15} onPress={onPress}>
+          {`${node.user.fullName} `}
+        </Text>
+        <Comment fontSize={15} numberOfLines={1} lineHeight={22}>
+          {node.text}
+        </Comment>
+      </Row>
+    )
+  }
+
+  if (!data.comments.edges.length) {
+    return null
+  }
 
   return (
     <Base>
