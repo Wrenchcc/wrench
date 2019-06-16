@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { View } from 'react-native'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Touchable from 'ui/Touchable'
@@ -31,4 +31,4 @@ function Avatar({
   )
 }
 
-export default Avatar
+export default memo(Avatar)

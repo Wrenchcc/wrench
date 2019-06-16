@@ -3,7 +3,6 @@ import { View, BackHandler } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { WebView as RNWebView } from 'react-native-webview'
 import qs from 'url'
-import DeviceInfo from 'react-native-device-info'
 import { dismissModal } from 'navigation'
 import Header from 'ui/Header'
 import ProgressBar from 'ui/ProgressBar'
@@ -24,11 +23,11 @@ function WebView({ url: initialUrl }) {
   const [canGoBack, setCanGoBack] = useState(false)
   const [canGoForward, setCanGoForward] = useState(false)
 
-  const handleGoBack = () => webview.current.goBack()
-  const handleRefresh = () => webview.current.reload()
-  const handleGoForward = () => webview.current.goForward()
+  const handleGoBack = useCallback(() => webview.current.goBack(), [webview])
+  const handleRefresh = useCallback(() => webview.current.reload(), [webview])
+  const handleGoForward = useCallback(() => webview.current.goForward(), [webview])
 
-  const handleClose = () => dismissModal()
+  const handleClose = useCallback(() => dismissModal(), [dismissModal])
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
@@ -38,33 +37,39 @@ function WebView({ url: initialUrl }) {
       }
       return false
     })
+
     return () => backHandler.remove()
   }, [])
 
-  // const onNavigationStateChange = useCallback(navState => {
-  // setUrl(navState.url)
-  // setTitle(navState.title)
-  // setCanGoBack(navState.canGoBack)
-  // setCanGoForward(navState.canGoForward)
-  // if (isLoading.current) {
-  //   progress.current += (1 / Math.pow(2, progressTimes.current)) * 100
-  // }
-  // }, [])
-
-  const onLoadEnd = () => {
-    setProgress(0)
-  }
-
-  const onLoadError = () => {}
-
-  const setCustomHeaders = () => {
-    const appName = DeviceInfo.getApplicationName()
-
-    return {
-      [`X-${appName}-Version`]: `v${DeviceInfo.getVersion()}.${DeviceInfo.getBuildNumber()}`,
-      [`X-${appName}-Type`]: `${appName}-${DeviceInfo.getSystemName()}`,
+  const handleOnNavigationStateChange = useCallback(navState => {
+    if (navState.url) {
+      setUrl(navState.url)
     }
+
+    if (navState.title) {
+      setTitle(navState.title)
+    }
+
+    if (navState.canGoBack) {
+      setCanGoBack(navState.canGoBack)
+    }
+
+    if (navState.canGoForward) {
+      setCanGoForward(navState.canGoForward)
+    }
+  }, [])
+
+  const handleOnLoadProgress = ({ nativeEvent }) => {
+    setProgress(nativeEvent.progress * 100)
   }
+
+  const onLoadEnd = useCallback(() => {
+    setProgress(0)
+  }, [])
+
+  const onLoadError = useCallback(() => {
+    setProgress(0)
+  }, [])
 
   const renderFooter = () => (
     <Footer>
@@ -112,13 +117,12 @@ function WebView({ url: initialUrl }) {
 
       <RNWebView
         style={{ flex: 1, backgroundColor: COLORS.WHITE }}
-        source={{ uri: url, headers: setCustomHeaders() }}
+        source={{ uri: url }}
         useWebKit
         onLoadEnd={onLoadEnd}
         onError={onLoadError}
-        onLoadProgress={({ nativeEvent }) => {
-          setProgress(nativeEvent.progress * 100)
-        }}
+        onNavigationStateChange={handleOnNavigationStateChange}
+        onLoadProgress={handleOnLoadProgress}
         ref={webview}
       />
 
