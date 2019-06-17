@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ActivityIndicator, Dimensions } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq, prepend } from 'ramda'
@@ -8,8 +8,6 @@ import MediaItem from '../Item'
 
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
-
-const { height } = Dimensions.get('window')
 
 export default class List extends Component {
   state = {

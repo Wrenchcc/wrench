@@ -1,4 +1,5 @@
 import React from 'react'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import ImageEditor from 'features/project/components/ImageEditor'
@@ -6,12 +7,15 @@ import MediaPicker from 'features/project/components/MediaPicker'
 import { Base, Placeholder } from './styles'
 
 function AddMedia() {
+  const { selected, files } = useStoreState(state => state.post)
+  const { addFile, editFile, selectFile } = useStoreActions(actions => actions.post)
+
   return (
     <Base>
       {/*<AddPostHeader
             changeProject={changeProject}
             closeSelectProject={closeSelectProject}
-            hasSelectedFiles={!!selectedFile}
+            hasSelectedFiles={!!selected}
             resetState={resetState}
             selectedProjectId={state.selectedProjectId}
             selectProjectOpen={state.selectProjectOpen}
@@ -19,19 +23,14 @@ function AddMedia() {
           />*/}
 
       <Placeholder>
-        {selectedFile ? (
-          <ImageEditor image={selectedFile} onEditImage={onEditImage} uri={selectedFile.uri} />
+        {selected ? (
+          <ImageEditor image={selected} onEditImage={editFile} uri={selected.uri} />
         ) : (
-          <Camera onTakePicture={onTakePicture} />
+          <Camera onTakePicture={addFile} />
         )}
       </Placeholder>
 
-      <MediaPicker
-        onSelect={addSelectedFiles}
-        selectedFiles={state.selectedFiles}
-        selectedIndex={state.selectedIndex}
-        cameraFile={state.cameraFile}
-      />
+      <MediaPicker onSelect={selectFile} files={files} selectedIndex={0} cameraFile={null} />
     </Base>
   )
 }

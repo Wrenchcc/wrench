@@ -26,19 +26,20 @@ const toggleNotificationSettingsOptions = {
         },
       })
 
+      // TODO: Update
       return mutate({
         variables: { input },
-        optimisticResponse: {
-          __typename: 'Mutation',
-          toggleNotificationSettings: {
-            // id: user.id,
-            settings: {
-              notifications: newSettings.notifications,
-              __typename: 'UserSettings',
-            },
-            __typename: 'User',
-          },
-        },
+        // optimisticResponse: {
+        //   __typename: 'Mutation',
+        //   toggleNotificationSettings: {
+        //     // id: user.id,
+        //     settings: {
+        //       notifications: newSettings.notifications,
+        //       __typename: 'UserSettings',
+        //     },
+        //     __typename: 'User',
+        //   },
+        // },
       })
     },
   }),

@@ -14,7 +14,6 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^0.1.0-beta.7",
     "@react-native-community/async-storage": "^1.5.0",
     "@react-native-community/netinfo": "^3.2.1",
     "@unimodules/core": "^1.0.0",
@@ -35,7 +34,7 @@
     "ms": "^2.1.2",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
-    "react-apollo": "beta",
+    "react-apollo": "2.5.6",
     "react-i18next": "^10.11.1",
     "react-native": "v0.59.9",
     "react-native-actionsheet": "^2.4.2",

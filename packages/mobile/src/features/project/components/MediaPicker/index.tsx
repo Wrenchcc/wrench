@@ -18,7 +18,7 @@ const PERMISSION =
 
 const MAX_SELECTED_FILES = 10
 
-function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
+function MediaPicker({ files, selectedIndex, onSelect, cameraFile }) {
   const { t } = useTranslation()
   const [tabIndex, setTabIndex] = useState(0)
   const [albums, setAlbums] = useState([])
@@ -69,22 +69,22 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
 
   const toggleSelection = useCallback(
     file => {
-      const index = findIndex(propEq('uri', file.uri))(selectedFiles)
+      const index = findIndex(propEq('uri', file.uri))(files)
 
       if (index >= 0) {
         if (selectedIndex === index) {
-          selectedFiles.splice(index, 1)
-          const prevIndex = index || selectedFiles.length
-          onSelect(selectedFiles, prevIndex - 1 || 0)
+          files.splice(index, 1)
+          const prevIndex = index || files.length
+          onSelect(files, prevIndex - 1 || 0)
         } else {
-          onSelect(selectedFiles, index)
+          onSelect(files, index)
         }
-      } else if (MAX_SELECTED_FILES > selectedFiles.length) {
-        const lastIndex = selectedFiles.push(file) - 1
-        onSelect(selectedFiles, lastIndex)
+      } else if (MAX_SELECTED_FILES > files.length) {
+        const lastIndex = files.push(file) - 1
+        onSelect(files, lastIndex)
       }
     },
-    [selectedFiles, tabIndex, onSelect, selectedIndex]
+    [files, tabIndex, onSelect, selectedIndex]
   )
 
   const permissionAuthorized = useCallback(() => {
@@ -92,7 +92,7 @@ function MediaPicker({ selectedFiles, selectedIndex, onSelect, cameraFile }) {
   }, [])
 
   const renderScene = ({ route }) => {
-    return <List album={route.key} onSelect={toggleSelection} selected={selectedFiles} />
+    return <List album={route.key} onSelect={toggleSelection} selected={files} />
   }
 
   const renderTabs = useCallback(props => <Tabs {...props} />, [])

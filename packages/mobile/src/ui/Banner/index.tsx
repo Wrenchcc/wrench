@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useStoreState } from 'easy-peasy'
 import { useTranslation } from 'react-i18next'

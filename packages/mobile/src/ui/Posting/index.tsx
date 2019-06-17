@@ -12,6 +12,7 @@ function Posting() {
 
   const image = ''
   const title = 'wef'
+  const isPosting = false
 
   useEffect(() => {
     ref.current.animateNextTransition()
