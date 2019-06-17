@@ -3,6 +3,7 @@ import { client } from 'graphql/createClient'
 import { PreSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
 import { logError } from 'utils/sentry'
 import { pathOr } from 'ramda'
+import { FILE_TYPES } from 'utils/enums'
 import makeS3Request from './makeS3Request'
 
 const cropImage = async ({ uri, crop }) =>
@@ -27,7 +28,8 @@ const cropImage = async ({ uri, crop }) =>
 
 export const uploadFiles = async files => {
   try {
-    const input = files.map(() => ({ type: 'IMAGE' }))
+    const input = files.map(() => ({ type: FILE_TYPES.IMAGE }))
+
     // Return pre-signed urls
     // Resize images and return uris
     const [preSignedUrls, resizedImages] = await Promise.all([

@@ -235,7 +235,7 @@
       "reply": "Replied to your comment",
       "mention": "Mentioned you in a comment"
     },
-    "PostProgress": {
+    "Posting": {
       "description": "Posting..."
     },
     "ProjectCard": {
@@ -498,7 +498,7 @@
       "reply": "Svarade på din kommentar",
       "mention": "Nämnde dig i en kommentar"
     },
-    "PostProgress": {
+    "Posting": {
       "description": "Sparar..."
     },
     "ProjectCard": {

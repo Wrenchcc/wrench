@@ -16,3 +16,7 @@ export enum NOTIFICATION_TYPES {
 export enum PROJECT_SORT_TYPES {
   POPULAR = 'POPULAR',
 }
+
+export enum FILE_TYPES {
+  IMAGE = 'IMAGE',
+}

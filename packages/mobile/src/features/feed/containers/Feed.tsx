@@ -3,7 +3,7 @@ import { pathOr } from 'ramda'
 import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql/queries/getFeed'
 import Post from 'components/Post'
-import { PostProgress, ShowLatest } from 'ui'
+import { Posting, ShowLatest } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
@@ -40,7 +40,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   const StickyComponent = hasNewPosts ? (
     <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
   ) : (
-    <PostProgress />
+    <Posting />
   )
 
   return (

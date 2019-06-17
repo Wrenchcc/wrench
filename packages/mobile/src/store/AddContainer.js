@@ -1,10 +1,8 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { Container } from 'unstated'
-import { CameraRoll } from 'react-native'
 import { assocPath } from 'ramda'
 import { logError } from 'utils/sentry'
-
-const SELECTED_PROJECT_STORAGE_KEY = 'wrench:selectedProjectId'
+import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 
 class AddContainer extends Container {
   state = {
@@ -29,7 +27,7 @@ class AddContainer extends Container {
   }
 
   loadInitialState = async () => {
-    const selectedProjectId = await AsyncStorage.getItem(SELECTED_PROJECT_STORAGE_KEY)
+    const selectedProjectId = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
     if (selectedProjectId) {
       this.setState({ selectedProjectId })
     }
@@ -88,7 +86,7 @@ class AddContainer extends Container {
   changeProject = selectedProjectId => {
     this.setState({ selectedProjectId }, () => {
       this.closeSelectProject()
-      AsyncStorage.setItem(SELECTED_PROJECT_STORAGE_KEY, selectedProjectId)
+      AsyncStorage.setItem(SELECTED_PROJECT_KEY, selectedProjectId)
     })
   }
 
@@ -110,13 +108,6 @@ class AddContainer extends Container {
       selectedFiles: [{ ...file }],
       selectedIndex: 0,
     })
-
-    try {
-      // Save for later
-      CameraRoll.saveToCameraRoll(file.uri)
-    } catch (err) {
-      logError(err)
-    }
   }
 
   showPostProgress = data => {
