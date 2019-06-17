@@ -70,8 +70,7 @@ target 'Wrench' do
   pod 'Firebase/Core', '5.20.2'
   pod 'Firebase/DynamicLinks', '5.20.2'
   pod 'Firebase/Messaging', '5.20.2'
-  pod 'Firebase/Performance', '5.20.2'
-
+ 
   # react-native-fast-image WebP support
   pod 'SDWebImageWebPCoder'
 

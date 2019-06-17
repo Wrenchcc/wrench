@@ -27,11 +27,9 @@ import org.reactnative.camera.RNCameraPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
 import com.swmansion.reanimated.ReanimatedPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.links.RNFirebaseLinksPackage;
-import io.invertase.firebase.perf.RNFirebasePerformancePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -99,10 +97,8 @@ public class MainApplication extends NavigationApplication {
         new RNDeviceInfo(),
         new RNSharePackage(),
         new ReanimatedPackage(),
-        new RNGestureHandlerPackage(),
         new RNFirebasePackage(),
         new RNFirebaseAnalyticsPackage(),
-        new RNFirebasePerformancePackage(),
         new RNFirebaseMessagingPackage(),
         new RNFirebaseNotificationsPackage(),
         new RNFirebaseLinksPackage(),
