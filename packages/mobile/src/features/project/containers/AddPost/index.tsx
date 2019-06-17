@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native'
 import { pathOr } from 'ramda'
 import { Subscribe } from 'unstated'
 import { useTranslation } from 'react-i18next'
-import { AddContainer, ToastNotificationContainer } from 'store'
+import { AddContainer } from 'store'
 import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
@@ -27,17 +27,17 @@ function AddPost({ projects, addPost: addPostMutation }) {
     navigate(SCREENS.FEED)
   }, [])
 
-  const handleAddPost = async (PostContainer, showNotification) => {
-    const { showPostProgress, state, resetState, hidePostProgress } = PostContainer
+  const handleAddPost = async PostContainer => {
+    const { state, resetState, hidePostProgress } = PostContainer
 
     const { title, id } = getProjectByIdOrFirst(state.selectedProjectId, projects)
 
     handleNavigation()
 
-    showPostProgress({
-      image: state.selectedFiles[0].uri,
-      title,
-    })
+    // showPostProgress({
+    //   image: state.selectedFiles[0].uri,
+    //   title,
+    // })
 
     try {
       const uploadedFiles = await uploadFiles(state.selectedFiles)
@@ -52,11 +52,11 @@ function AddPost({ projects, addPost: addPostMutation }) {
     } catch (err) {
       hidePostProgress()
 
-      showNotification({
-        dismissAfter: 6000,
-        message: t('AddPost:error'),
-        type: 'error',
-      })
+      // showNotification({
+      //   dismissAfter: 6000,
+      //   message: t('AddPost:error'),
+      //   type: 'error',
+      // })
 
       logError(err)
       track(events.POST_CREATED_FAILED)
@@ -64,15 +64,15 @@ function AddPost({ projects, addPost: addPostMutation }) {
   }
 
   return (
-    <Subscribe to={[AddContainer, ToastNotificationContainer]}>
-      {(PostContainer, { showNotification }) => (
+    <Subscribe to={[AddContainer]}>
+      {PostContainer => (
         <>
           <AddPostHeader
             changeProject={PostContainer.changeProject}
             closeSelectProject={PostContainer.closeSelectProject}
             selectedProjectId={PostContainer.state.selectedProjectId}
             selectProjectOpen={PostContainer.state.selectProjectOpen}
-            addPostAction={() => handleAddPost(PostContainer, showNotification)}
+            addPostAction={() => handleAddPost(PostContainer)}
             toggleSelectProject={PostContainer.toggleSelectProject}
           />
           <KeyboardAvoidingView paddingHorizontal={0}>
