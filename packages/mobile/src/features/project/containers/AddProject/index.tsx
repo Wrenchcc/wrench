@@ -1,7 +1,5 @@
 import React from 'react'
-import { Subscribe } from 'unstated'
 import { useTranslation } from 'react-i18next'
-import { AddContainer } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
@@ -11,34 +9,30 @@ function AddProject() {
   const { navigate } = useNavigation()
 
   return (
-    <Subscribe to={[AddContainer]}>
-      {({ state, updateField, resetState }) => (
-        <>
-          <AddProjectHeader
-            actionRight={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
-            resetState={resetState}
-            closeAction
-          />
-          <KeyboardAvoidingView>
-            <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-              {t('AddProject:title')}
-            </Title>
-            <Input
-              placeholder={t('AddProject:placeholder')}
-              autoFocus
-              large
-              onChangeText={value => updateField('title', value)}
-              value={state.title}
-              borderColor="dark"
-              color="dark"
-              returnKeyType="next"
-              enablesReturnKeyAutomatically
-              onSubmitEditing={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
-            />
-          </KeyboardAvoidingView>
-        </>
-      )}
-    </Subscribe>
+    <>
+      {/*<AddProjectHeader
+        actionRight={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
+        resetState={resetState}
+        closeAction
+      />*/}
+      <KeyboardAvoidingView>
+        <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
+          {t('AddProject:title')}
+        </Title>
+        <Input
+          placeholder={t('AddProject:placeholder')}
+          autoFocus
+          large
+          onChangeText={value => updateField('title', value)}
+          value={state.title}
+          borderColor="dark"
+          color="dark"
+          returnKeyType="next"
+          enablesReturnKeyAutomatically
+          onSubmitEditing={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
+        />
+      </KeyboardAvoidingView>
+    </>
   )
 }
 

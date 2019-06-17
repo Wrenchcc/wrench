@@ -1,6 +1,4 @@
 import React from 'react'
-import { Subscribe } from 'unstated'
-import { AddContainer } from 'store'
 import Camera from 'features/project/components/Camera'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import ImageEditor from 'features/project/components/ImageEditor'
@@ -9,20 +7,8 @@ import { Base, Placeholder } from './styles'
 
 function AddMedia() {
   return (
-    <Subscribe to={[AddContainer]}>
-      {({
-        addSelectedFiles,
-        changeProject,
-        closeSelectProject,
-        onEditImage,
-        onTakePicture,
-        resetState,
-        selectedFile,
-        state,
-        toggleSelectProject,
-      }) => (
-        <Base>
-          <AddPostHeader
+    <Base>
+      {/*<AddPostHeader
             changeProject={changeProject}
             closeSelectProject={closeSelectProject}
             hasSelectedFiles={!!selectedFile}
@@ -30,25 +16,23 @@ function AddMedia() {
             selectedProjectId={state.selectedProjectId}
             selectProjectOpen={state.selectProjectOpen}
             toggleSelectProject={toggleSelectProject}
-          />
+          />*/}
 
-          <Placeholder>
-            {selectedFile ? (
-              <ImageEditor image={selectedFile} onEditImage={onEditImage} uri={selectedFile.uri} />
-            ) : (
-              <Camera onTakePicture={onTakePicture} />
-            )}
-          </Placeholder>
+      <Placeholder>
+        {selectedFile ? (
+          <ImageEditor image={selectedFile} onEditImage={onEditImage} uri={selectedFile.uri} />
+        ) : (
+          <Camera onTakePicture={onTakePicture} />
+        )}
+      </Placeholder>
 
-          <MediaPicker
-            onSelect={addSelectedFiles}
-            selectedFiles={state.selectedFiles}
-            selectedIndex={state.selectedIndex}
-            cameraFile={state.cameraFile}
-          />
-        </Base>
-      )}
-    </Subscribe>
+      <MediaPicker
+        onSelect={addSelectedFiles}
+        selectedFiles={state.selectedFiles}
+        selectedIndex={state.selectedIndex}
+        cameraFile={state.cameraFile}
+      />
+    </Base>
   )
 }
 

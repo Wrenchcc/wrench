@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { pathOr } from 'ramda'
-import { Subscribe } from 'unstated'
 import { useTranslation } from 'react-i18next'
-import { AddContainer } from 'store'
 import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
@@ -64,36 +62,32 @@ function AddPost({ projects, addPost: addPostMutation }) {
   }
 
   return (
-    <Subscribe to={[AddContainer]}>
-      {PostContainer => (
-        <>
-          <AddPostHeader
-            changeProject={PostContainer.changeProject}
-            closeSelectProject={PostContainer.closeSelectProject}
-            selectedProjectId={PostContainer.state.selectedProjectId}
-            selectProjectOpen={PostContainer.state.selectProjectOpen}
-            addPostAction={() => handleAddPost(PostContainer)}
-            toggleSelectProject={PostContainer.toggleSelectProject}
-          />
-          <KeyboardAvoidingView paddingHorizontal={0}>
-            <ScrollView style={{ paddingLeft: 20, paddingRight: 20 }}>
-              <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
+    <>
+      {/*<AddPostHeader
+        changeProject={PostContainer.changeProject}
+        closeSelectProject={PostContainer.closeSelectProject}
+        selectedProjectId={PostContainer.state.selectedProjectId}
+        selectProjectOpen={PostContainer.state.selectProjectOpen}
+        addPostAction={() => handleAddPost(PostContainer)}
+        toggleSelectProject={PostContainer.toggleSelectProject}
+      />*/}
+      <KeyboardAvoidingView paddingHorizontal={0}>
+        <ScrollView style={{ paddingLeft: 20, paddingRight: 20 }}>
+          <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
 
-              <Input
-                scrollEnabled={false}
-                multiline
-                autoFocus
-                waitForRender
-                color="dark"
-                onChangeText={PostContainer.updateCaption}
-                placeholder={t('AddPost:placeholder')}
-                value={PostContainer.state.caption}
-              />
-            </ScrollView>
-          </KeyboardAvoidingView>
-        </>
-      )}
-    </Subscribe>
+          <Input
+            scrollEnabled={false}
+            multiline
+            autoFocus
+            waitForRender
+            color="dark"
+            onChangeText={PostContainer.updateCaption}
+            placeholder={t('AddPost:placeholder')}
+            value={PostContainer.state.caption}
+          />
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </>
   )
 }
 
