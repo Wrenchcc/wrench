@@ -9,7 +9,6 @@ import Projects from './Projects'
 import { Base } from './styles'
 
 const initialLayout = {
-  height: 0,
   width: Dimensions.get('window').width,
 }
 

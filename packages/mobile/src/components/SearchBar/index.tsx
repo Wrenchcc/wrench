@@ -15,10 +15,9 @@ function Search({
   searchActive,
   onSearchCancel,
   query,
-  ...props
 }) {
-  const inputRef = useRef(null)
-  const transitionRef = useRef(null)
+  const inputRef = useRef()
+  const transitionRef = useRef()
   const { t } = useTranslation()
 
   const handleFocus = useCallback(() => {
@@ -66,7 +65,6 @@ function Search({
         onFocus={handleFocus}
         onChangeText={handleQueryChange}
         value={query}
-        {...props}
       />
 
       <Icon source={search} />

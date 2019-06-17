@@ -14,7 +14,7 @@ export const setTokens = async (accessToken, refreshToken) => {
 
 export const getAccessToken = async () => {
   try {
-    return await AsyncStorage.getItem(ACCESS_TOKEN)
+    return AsyncStorage.getItem(ACCESS_TOKEN)
   } catch (error) {
     logError(`Failed to get ${ACCESS_TOKEN}`)
   }
@@ -22,7 +22,7 @@ export const getAccessToken = async () => {
 
 export const getRefreshToken = async () => {
   try {
-    return await AsyncStorage.getItem(REFRESH_TOKEN)
+    return AsyncStorage.getItem(REFRESH_TOKEN)
   } catch (error) {
     logError(`Failed to get ${REFRESH_TOKEN}`)
   }

@@ -13,7 +13,7 @@ export const ToggleNotificationSettingsMutation = gql`
 `
 
 const toggleNotificationSettingsOptions = {
-  props: ({ mutate, ownProps: { user, settings } }) => ({
+  props: ({ mutate, ownProps: { settings } }) => ({
     toggleNotificationSettings: input => {
       const { notificationType } = input
 
@@ -31,7 +31,7 @@ const toggleNotificationSettingsOptions = {
         optimisticResponse: {
           __typename: 'Mutation',
           toggleNotificationSettings: {
-            id: user.id,
+            // id: user.id,
             settings: {
               notifications: newSettings.notifications,
               __typename: 'UserSettings',

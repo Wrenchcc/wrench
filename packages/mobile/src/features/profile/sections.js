@@ -1,17 +1,31 @@
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'ramda'
+import i18next from 'i18next'
+import { setLocale, languages, updateUserLanguage } from 'i18n'
 import { navigateTo, showModal, SCREENS } from 'navigation'
 import { client } from 'graphql/createClient'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
+import { logError } from 'utils/sentry'
 
 const WEBSITE_URL = 'https://wrench.cc'
 
-const generateLanguageSettings = props => {
-  const { availableLocales, currentLocale, changeLocale } = props
+const changeLocale = async locale => {
+  try {
+    i18next.changeLanguage(locale)
+    await setLocale(locale)
+    updateUserLanguage(locale)
+  } catch (err) {
+    logError(err)
+  }
+}
+
+const generateLanguageSettings = () => {
   let items = []
 
-  items = availableLocales.map(locale => ({
+  const currentLocale = i18next.language
+
+  items = languages.map(locale => ({
     titleKey: `languages.${locale}`,
     onPress: () => currentLocale !== locale && changeLocale(locale),
     type: 'selector',
@@ -138,7 +152,7 @@ const sections = props => ({
   language: [
     {
       headerTitle: 'language',
-      data: generateLanguageSettings(props),
+      data: generateLanguageSettings(),
     },
   ],
   membership: [

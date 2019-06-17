@@ -16,6 +16,8 @@ function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPr
     return () => keyboardHideEventListener.remove()
   }, [])
 
+  const renderItem = ({ item }) => <MentionUser user={item.node} onPress={onPress} />
+
   return (
     <View
       style={{
@@ -36,7 +38,7 @@ function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPr
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
-        renderItem={({ item }) => <MentionUser user={item.node} onPress={onPress} />}
+        renderItem={renderItem}
         borderSeparator
       />
     </View>
