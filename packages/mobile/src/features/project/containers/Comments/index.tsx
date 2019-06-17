@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { PageLayout, FlatList } from 'navigation'
+import { Page, FlatList } from 'navigation'
 import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
@@ -52,7 +52,7 @@ function Comments({
   )
 
   return (
-    <PageLayout
+    <Page
       headerAnimation={false}
       headerTitle={t('Comments:title')}
       stickyFooter={
@@ -73,7 +73,7 @@ function Comments({
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    </PageLayout>
+    </Page>
   )
 }
 

@@ -14,6 +14,7 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^0.1.0-beta.7",
     "@react-native-community/async-storage": "^1.5.0",
     "@react-native-community/netinfo": "^3.2.1",
     "@unimodules/core": "^1.0.0",

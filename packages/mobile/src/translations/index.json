@@ -251,7 +251,7 @@
     "ShowLatest": {
       "button": "New posts"
     },
-    "ToastNotification": {
+    "Banner": {
       "networkError": "No internet connection"
     },
     "UiUser": {
@@ -514,7 +514,7 @@
     "ShowLatest": {
       "button": "Nya inlägg"
     },
-    "ToastNotification": {
+    "Banner": {
       "networkError": "Ingen internetanslutning"
     },
     "UiUser": {

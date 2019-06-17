@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { PageLayout, SectionList } from 'navigation'
+import { Page, SectionList } from 'navigation'
 import { compose } from 'react-apollo'
 import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
 import toggleUserNotificationSettingsMutation from 'graphql/mutations/user/toggleUserNotificationSettings'
@@ -41,7 +41,7 @@ function Settings({ section, toggleNotificationSettings, settings }) {
   )
 
   return (
-    <PageLayout headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>
+    <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>
       <SectionList
         contentContainerStyle={style.container}
         stickySectionHeadersEnabled={false}
@@ -53,7 +53,7 @@ function Settings({ section, toggleNotificationSettings, settings }) {
         ListFooterComponent={!section && <Footer />}
         borderSeparator
       />
-    </PageLayout>
+    </Page>
   )
 }
 

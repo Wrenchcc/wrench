@@ -3,15 +3,16 @@ import { Transitioning, Transition } from 'react-native-reanimated'
 import { useStoreState } from 'easy-peasy'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
+import { BANNER_TYPES } from 'utils/enums'
 import { Base } from './styles'
 
 const transition = <Transition.Change interpolation="easeInOut" type="fade" durationMs={500} />
 
-function ToastNotification() {
+function Banner() {
   const { t } = useTranslation()
   const ref = useRef()
 
-  const { message, type, show } = useStoreState(state => state.notification)
+  const { message, type, show } = useStoreState(state => state.banner)
 
   useEffect(() => {
     ref.current.animateNextTransition()
@@ -22,7 +23,7 @@ function ToastNotification() {
       {show && (
         <Base type={type}>
           <Text color="white" medium center fontSize={15}>
-            {type === 'network' ? t('ToastNotification:networkError') : message}
+            {type === BANNER_TYPES.NETWORK ? t('Banner:networkError') : message}
           </Text>
         </Base>
       )}
@@ -30,4 +31,4 @@ function ToastNotification() {
   )
 }
 
-export default ToastNotification
+export default Banner

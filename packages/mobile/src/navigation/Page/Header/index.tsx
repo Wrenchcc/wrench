@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import Animated from 'react-native-reanimated'
 import { View } from 'react-native'
-import { Text, Icon, ToastNotification } from 'ui'
+import { Text, Icon, Banner } from 'ui'
 import { arrowLeft } from 'images'
 import { useNavigation } from '../../hooks'
 import styles from './styles'
@@ -20,19 +20,6 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
       })
     : 1
 
-  // const value = interpolate(scrollY, {
-  //   inputRange: [OFFSET_INVERTED + 39, OFFSET_INVERTED + 70],
-  //   outputRange: [0, 1],
-  //   extrapolate: Extrapolate.CLAMP,
-  // })
-  //
-  // const containerStyle = {
-  //   opacity: interpolate(value, {
-  //     inputRange: [0, 0.8, 1],
-  //     outputRange: [0, 0, 1],
-  //   }),
-  // }
-
   return (
     <Animated.View style={styles.container}>
       <View style={styles.header}>
@@ -48,7 +35,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
           <View style={styles.right}>{headerRight}</View>
         </View>
       </View>
-      <ToastNotification />
+      <Banner />
     </Animated.View>
   )
 }

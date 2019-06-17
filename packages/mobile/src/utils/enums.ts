@@ -20,3 +20,9 @@ export enum PROJECT_SORT_TYPES {
 export enum FILE_TYPES {
   IMAGE = 'IMAGE',
 }
+
+export enum BANNER_TYPES {
+  DEFAULT = 'DEFAULT',
+  NETWORK = 'NETWORK',
+  SPAM = 'SPAM',
+}

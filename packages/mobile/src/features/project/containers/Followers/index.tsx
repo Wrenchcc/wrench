@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { getFollowers } from 'graphql/queries/getFollowers'
-import { FlatList, PageLayout } from 'navigation'
+import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
 
 const renderItem = ({ item }) => <User data={item.node} />
@@ -10,7 +10,7 @@ function Followers({ followers, fetchMore, refetch, isRefetching, isFetching, ha
   const { t } = useTranslation()
 
   return (
-    <PageLayout headerTitle={t('Followers:title')} headerAnimation={false}>
+    <Page headerTitle={t('Followers:title')} headerAnimation={false}>
       <FlatList
         ListEmptyComponent={<NoResults />}
         borderSeparator
@@ -22,7 +22,7 @@ function Followers({ followers, fetchMore, refetch, isRefetching, isFetching, ha
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    </PageLayout>
+    </Page>
   )
 }
 

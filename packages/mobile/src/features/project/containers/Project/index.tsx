@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
-import { useNavigation, SCREENS, PageLayout, FlatList } from 'navigation'
+import { useNavigation, SCREENS, Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
 import Post from 'components/Post'
@@ -75,7 +75,7 @@ function Project({
   }
 
   return (
-    <PageLayout
+    <Page
       headerTitle={project.title}
       headerRight={
         project.projectPermissions && project.projectPermissions.isOwner ? (
@@ -111,7 +111,7 @@ function Project({
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    </PageLayout>
+    </Page>
   )
 }
 

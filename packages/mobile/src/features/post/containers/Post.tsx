@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
-import { PageLayout, FlatList } from 'navigation'
+import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
 import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
@@ -56,7 +56,7 @@ function PostContainer({
   }
 
   return (
-    <PageLayout
+    <Page
       scrollToIndex={!!comments}
       headerTitle={t('PostContainer:title')}
       headerAnimation={false}
@@ -79,7 +79,7 @@ function PostContainer({
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    </PageLayout>
+    </Page>
   )
 }
 

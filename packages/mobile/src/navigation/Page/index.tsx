@@ -6,7 +6,7 @@ const { event, set, Value, cond, eq } = Animated
 
 const OFFSET = 120
 
-function PageLayout({
+function Page({
   children,
   headerTitle,
   headerRight,
@@ -63,4 +63,4 @@ function PageLayout({
   )
 }
 
-export default PageLayout
+export default Page

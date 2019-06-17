@@ -1,6 +1,6 @@
 export { AppNavigation, AuthNavigation, Bootstrap } from './navigation'
 export { default as Layout } from './Layout'
-export { default as PageLayout } from './PageLayout'
+export { default as Page } from './Page'
 export * from './Scrollables'
 export * from './hooks'
 export * from './constants'

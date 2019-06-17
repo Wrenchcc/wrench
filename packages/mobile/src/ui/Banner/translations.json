@@ -1,5 +1,5 @@
 {
-  "ToastNotification": {
+  "Banner": {
     "en": {
       "networkError": "No internet connection"
     },

@@ -1,6 +1,6 @@
 import React from 'react'
 import { getUserByUsername } from 'graphql/queries/user/getUser'
-import { PageLayout, FlatList } from 'navigation'
+import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
 import { Share } from 'ui'
 import FollowingProjects from 'features/profile/components/FollowingProjects'
@@ -12,7 +12,7 @@ function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, 
   const hasPosts = posts && posts.length > 0
 
   return (
-    <PageLayout
+    <Page
       headerTitle={user.fullName}
       headerRight={user.dynamicLink && <Share title={user.fullName} url={user.dynamicLink} text />}
     >
@@ -31,7 +31,7 @@ function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, 
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
-    </PageLayout>
+    </Page>
   )
 }
 

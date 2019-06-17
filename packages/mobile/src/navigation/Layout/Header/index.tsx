@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
 import SearchBar from 'components/SearchBar'
-import { ToastNotification } from 'ui'
+import { Banner } from 'ui'
 import { ListContext } from '../context'
 import { transformContainer, opacityContent } from './animation'
 import styles from './styles'
@@ -45,7 +45,7 @@ function Header({
       </View>
       {!searchActive && (
         <>
-          <ToastNotification />
+          <Banner />
           {stickyComponent}
         </>
       )}
