@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { pathOr } from 'ramda'
+// import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { dismissModal, navigateBack, useNavigation, SCREENS } from 'navigation'
@@ -8,9 +8,9 @@ import SelectProject from 'features/project/components/SelectProject'
 import { close, arrowLeft } from 'images'
 import { Backdrop, Top } from './styles'
 
-function getProjectByIdOrFirst(id, projects) {
-  return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
-}
+// function getProjectByIdOrFirst(id, projects) {
+//   return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
+// }
 
 function AddPostHeader({
   changeProject,

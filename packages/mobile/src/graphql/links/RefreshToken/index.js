@@ -6,7 +6,7 @@ import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 
-function foreceSignOut() {
+function refreshTokenFailed() {
   // TODO: Show alert session expired, please login again.
   client.resetStore()
   track(events.REFRESH_TOKEN_FAILED)
@@ -31,7 +31,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
               if (!accessToken) {
                 track(events.REFRESH_TOKEN_FAILED)
-                return foreceSignOut()
+                return refreshTokenFailed()
               }
 
               // Save new tokens to async storage
@@ -53,7 +53,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
               return forward(operation).subscribe(subscriber)
             })
-            .catch(() => foreceSignOut())
+            .catch(() => refreshTokenFailed())
         } catch (err) {
           observer.error(err)
           logError(err)

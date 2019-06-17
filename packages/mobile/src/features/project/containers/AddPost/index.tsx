@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
-import { pathOr } from 'ramda'
+// import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
@@ -13,9 +13,9 @@ import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input, KeyboardAvoidingView } from 'ui'
 
-function getProjectByIdOrFirst(id, projects) {
-  return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
-}
+// function getProjectByIdOrFirst(id, projects) {
+//   return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
+// }
 
 function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
