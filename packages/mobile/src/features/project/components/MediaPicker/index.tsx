@@ -4,7 +4,7 @@ import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
 import * as MediaLibrary from 'expo-media-library'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
-import { prepend, findIndex, propEq } from 'ramda'
+import { prepend } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
 import { Text, Touchable } from 'ui'
 import { logError } from 'utils/sentry'
@@ -16,9 +16,7 @@ const { width } = Dimensions.get('window')
 const PERMISSION =
   Platform.OS === 'ios' ? IOS_PERMISSIONS.PHOTO_LIBRARY : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
 
-const MAX_SELECTED_FILES = 10
-
-function MediaPicker({ files, selectedIndex, onSelect }) {
+function MediaPicker({ files, onSelect }) {
   const { t } = useTranslation()
   const [tabIndex, setTabIndex] = useState(0)
   const [albums, setAlbums] = useState([])
@@ -67,33 +65,12 @@ function MediaPicker({ files, selectedIndex, onSelect }) {
     [tabIndex]
   )
 
-  const toggleSelection = useCallback(
-    file => {
-      const index = findIndex(propEq('uri', file.uri))(files)
-      const selectedIndex = 1234 // selected
-
-      if (index >= 0) {
-        if (selectedIndex === index) {
-          files.splice(index, 1)
-          const prevIndex = index || files.length
-          onSelect(files, prevIndex - 1 || 0)
-        } else {
-          onSelect(files, index)
-        }
-      } else if (MAX_SELECTED_FILES > files.length) {
-        const lastIndex = files.push(file) - 1
-        onSelect(files, lastIndex)
-      }
-    },
-    [files, tabIndex, onSelect, selectedIndex]
-  )
-
   const permissionAuthorized = useCallback(() => {
     setPhotoPermission(RESULTS.GRANTED)
   }, [])
 
   const renderScene = ({ route }) => {
-    return <List album={route.key} onSelect={toggleSelection} selected={files} />
+    return <List album={route.key} onSelect={onSelect} selected={files} />
   }
 
   const renderTabs = useCallback(props => <Tabs {...props} />, [])

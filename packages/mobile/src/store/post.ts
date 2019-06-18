@@ -20,6 +20,9 @@ export default {
   }),
 
   selectFile: action((state, payload) => {
+    // If found in store remove
+    // Else add
+    // If 10 do nothing
     // return state.files[payload]
   }),
 
