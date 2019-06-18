@@ -49,7 +49,7 @@ function PostContainer({
     }
 
     return (
-      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 10 }}>
+      <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
         <Post post={post} withoutComments />
       </View>
     )

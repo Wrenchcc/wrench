@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
-// import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
@@ -12,10 +11,6 @@ import { uploadFiles } from 'utils/storage/s3'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Input, KeyboardAvoidingView } from 'ui'
-
-// function getProjectByIdOrFirst(id, projects) {
-//   return pathOr(projects[0].node, ['node'], projects.find(({ node }) => node.id === id))
-// }
 
 function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
@@ -72,7 +67,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
         toggleSelectProject={PostContainer.toggleSelectProject}
       />*/}
       <KeyboardAvoidingView paddingHorizontal={0}>
-        <ScrollView style={{ paddingLeft: 20, paddingRight: 20 }}>
+        <ScrollView style={{ paddingHorizontal: 20 }}>
           <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
 
           <Input

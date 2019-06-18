@@ -22,7 +22,7 @@ export default function registerScreens() {
     HOC(require('features/notifications/containers/Notifications').default)
   )
   Navigation.registerComponent(SCREENS.ME, () =>
-    HOC(require('features/profile/containers/Me').default)
+    HOC(require('features/user/containers/Me').default)
   )
   Navigation.registerComponent(SCREENS.PROJECT, () =>
     HOC(require('features/project/containers/Project').default)
@@ -46,7 +46,7 @@ export default function registerScreens() {
     HOC(require('features/project/containers/AddProjectType').default)
   )
   Navigation.registerComponent(SCREENS.USER, () =>
-    HOC(require('features/profile/containers/User').default)
+    HOC(require('features/user/containers/User').default)
   )
   Navigation.registerComponent(SCREENS.FOLLOWERS, () =>
     HOC(require('features/project/containers/Followers').default)
@@ -61,6 +61,6 @@ export default function registerScreens() {
     HOC(require('features/signIn/containers/SignIn').default)
   )
   Navigation.registerComponent(SCREENS.SETTINGS, () =>
-    HOC(require('features/profile/containers/Settings').default)
+    HOC(require('features/user/containers/Settings').default)
   )
 }

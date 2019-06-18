@@ -50,7 +50,7 @@ function FollowingProjects({
           />
         )}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingLeft: 20, paddingRight: 20 }}
+        contentContainerStyle={{ paddingHorizontal: 20 }}
         style={{
           marginLeft: -GUTTER,
           marginRight: -GUTTER,

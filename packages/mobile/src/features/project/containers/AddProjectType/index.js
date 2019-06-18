@@ -26,7 +26,7 @@ function AddProjectType() {
             <Title
               large
               numberOfLines={0}
-              style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 50 }}
+              style={{ paddingHorizontal: 20, paddingBottom: 50 }}
             >
               {t('AddProjectType:title')}
             </Title>
