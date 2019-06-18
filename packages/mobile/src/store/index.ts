@@ -1,10 +1,33 @@
-import { createStore } from 'easy-peasy'
-import banner from './banner'
-import post from './post'
-import project from './project'
+import create from 'zustand'
 
-export default createStore({
-  banner,
-  post,
-  project,
-})
+const [useStore, api] = create(set => ({
+  post: {
+    caption: null,
+    files: [],
+    isPosting: false,
+    projectId: null,
+    selectedId: null,
+  },
+
+  banner: {},
+
+  project: {},
+
+  actions: {
+    // If found in store remove
+    // Else add
+    // If 10 do nothing
+    // return state.files[payload]
+    selectFile: payload =>
+      set(state => ({
+        ...state,
+        post: {
+          ...state.post,
+          files: [...state.post.files, payload],
+          selectedId: payload.id,
+        },
+      })),
+  },
+}))
+
+export { useStore, api }

@@ -3,8 +3,8 @@ import { getUserByUsername } from 'graphql/queries/user/getUser'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
 import { Share } from 'ui'
-import FollowingProjects from 'features/profile/components/FollowingProjects'
-import Header from 'features/profile/components/Header'
+import FollowingProjects from 'features/user/components/FollowingProjects'
+import Header from 'features/user/components/Header'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 

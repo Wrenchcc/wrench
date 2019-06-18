@@ -3,8 +3,8 @@ import { Layout, FlatList } from 'navigation'
 import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
 import Post from 'components/Post'
 import { EmptyState } from 'ui'
-import SettingsButton from 'features/profile/components/SettingsButton'
-import Header from 'features/profile/components/Header'
+import SettingsButton from 'features/user/components/SettingsButton'
+import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
 
 const renderItem = ({ item }) => <Post post={item.node} />

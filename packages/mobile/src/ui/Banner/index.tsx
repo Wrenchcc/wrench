@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
-import { useStoreState } from 'easy-peasy'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 import { BANNER_TYPES } from 'utils/enums'
@@ -12,7 +11,9 @@ function Banner() {
   const { t } = useTranslation()
   const ref = useRef()
 
-  const { message, type, show } = useStoreState(state => state.banner)
+  const message = null
+  const type = null
+  const show = false
 
   useEffect(() => {
     ref.current.animateNextTransition()

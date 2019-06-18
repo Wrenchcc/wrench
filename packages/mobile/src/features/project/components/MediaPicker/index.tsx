@@ -16,7 +16,7 @@ const { width } = Dimensions.get('window')
 const PERMISSION =
   Platform.OS === 'ios' ? IOS_PERMISSIONS.PHOTO_LIBRARY : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
 
-function MediaPicker({ files, onSelect }) {
+function MediaPicker() {
   const { t } = useTranslation()
   const [tabIndex, setTabIndex] = useState(0)
   const [albums, setAlbums] = useState([])
@@ -24,7 +24,7 @@ function MediaPicker({ files, onSelect }) {
   const [checkingPermission, setCheckingPermission] = useState(true)
   const [photoPermission, setPhotoPermission] = useState(false)
 
-  async function fetchAlbums() {
+  const fetchAlbums = async () => {
     try {
       const first = {
         id: null,
@@ -70,7 +70,7 @@ function MediaPicker({ files, onSelect }) {
   }, [])
 
   const renderScene = ({ route }) => {
-    return <List album={route.key} onSelect={onSelect} selected={files} />
+    return <List album={route.key} />
   }
 
   const renderTabs = useCallback(props => <Tabs {...props} />, [])
