@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import * as MediaLibrary from 'expo-media-library'
 import { findIndex, propEq } from 'ramda'
 import { logError } from 'utils/sentry'
 import MediaItem from '../Item'
@@ -10,12 +9,12 @@ const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
 
 export default class List extends Component {
-  state = {
-    data: [],
-    endCursor: null,
-    hasNextPage: true,
-    isLoading: true,
-  }
+  // state = {
+  //   data: [],
+  //   endCursor: null,
+  //   hasNextPage: true,
+  //   isLoading: true,
+  // }
 
   componentDidMount() {
     this.loadInitial()
