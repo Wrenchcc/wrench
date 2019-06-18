@@ -18,7 +18,7 @@
     "@react-native-community/netinfo": "^3.2.1",
     "@unimodules/core": "^1.0.0",
     "apollo-cache-inmemory": "^1.6.2",
-    "apollo-client": "^2.6.2",
+    "apollo-client": "^2.6.3",
     "apollo-link": "^1.2.12",
     "apollo-link-batch-http": "^1.2.12",
     "apollo-link-context": "^1.0.18",
