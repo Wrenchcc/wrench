@@ -30,7 +30,7 @@ function AddMedia() {
         )}
       </Placeholder>
 
-      <MediaPicker onSelect={selectFile} files={files} selectedIndex={0} cameraFile={null} />
+      <MediaPicker onSelect={selectFile} files={files} selected={selected} />
     </Base>
   )
 }

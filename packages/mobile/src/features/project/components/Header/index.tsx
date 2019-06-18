@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react'
+import React, { Fragment, useCallback } from 'react'
 import { Title } from 'ui'
 import { useNavigation, SCREENS } from 'navigation'
-import { Base, ProjectName, Followers } from './styles'
+import { Base, Followers } from './styles'
 
 function Header({ project, spacingHorizontal }) {
   const { navigate } = useNavigation()
@@ -16,12 +16,12 @@ function Header({ project, spacingHorizontal }) {
 
   return (
     <Base spacingHorizontal={spacingHorizontal}>
-      <ProjectName>
+      <Fragment>
         <Title large numberOfLines={0}>
           {project.title}
         </Title>
         <Followers followers={project.followers.totalCount} onPress={handleNavigation} />
-      </ProjectName>
+      </Fragment>
     </Base>
   )
 }

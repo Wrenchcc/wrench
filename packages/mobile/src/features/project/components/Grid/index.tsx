@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Animated, View } from 'react-native'
 
-function GridLayout({ active }) {
+function Grid({ active }) {
   const animatedValue = useRef(new Animated.Value(0))
 
   useEffect(() => {
@@ -84,4 +84,4 @@ function GridLayout({ active }) {
   )
 }
 
-export default GridLayout
+export default Grid

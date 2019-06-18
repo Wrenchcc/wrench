@@ -18,7 +18,7 @@ const PERMISSION =
 
 const MAX_SELECTED_FILES = 10
 
-function MediaPicker({ files, selectedIndex, onSelect, cameraFile }) {
+function MediaPicker({ files, selectedIndex, onSelect }) {
   const { t } = useTranslation()
   const [tabIndex, setTabIndex] = useState(0)
   const [albums, setAlbums] = useState([])
@@ -70,6 +70,7 @@ function MediaPicker({ files, selectedIndex, onSelect, cameraFile }) {
   const toggleSelection = useCallback(
     file => {
       const index = findIndex(propEq('uri', file.uri))(files)
+      const selectedIndex = 1234 // selected
 
       if (index >= 0) {
         if (selectedIndex === index) {

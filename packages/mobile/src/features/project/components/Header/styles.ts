@@ -9,8 +9,6 @@ export const Base = styled.View`
   margin-bottom: 50;
 `
 
-export const ProjectName = styled.View``
-
 export const Followers = styled(UiFollowers)`
   margin-top: 15;
 `

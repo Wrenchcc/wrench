@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import * as MediaLibrary from 'expo-media-library'
-import { findIndex, propEq, prepend } from 'ramda'
+import { findIndex, propEq } from 'ramda'
 import { logError } from 'utils/sentry'
 import MediaItem from '../Item'
 
@@ -25,12 +25,6 @@ export default class List extends Component {
     if (this.props.album !== prevProps.album) {
       this.showSpinner()
       this.loadInitial()
-    }
-
-    if (!prevProps.cameraFile && this.props.cameraFile) {
-      this.setState(prevState => ({
-        data: prepend(this.props.cameraFile, prevState.data),
-      }))
     }
   }
 

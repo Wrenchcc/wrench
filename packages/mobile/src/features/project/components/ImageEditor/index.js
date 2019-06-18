@@ -8,7 +8,7 @@ import {
   Platform,
 } from 'react-native'
 import { COLORS } from 'ui/constants'
-import GridLayout from '../GridLayout'
+import Grid from '../Grid'
 
 const { width } = Dimensions.get('window')
 
@@ -21,11 +21,6 @@ export default class ImageEditor extends PureComponent {
     isLoading: true,
   }
 
-  // static propTypes = {
-  //   image: PropTypes.object.isRequired,
-  //   onEditImage: PropTypes.func.isRequired,
-  // }
-
   contentOffset = {}
 
   horizontal = false
@@ -37,7 +32,9 @@ export default class ImageEditor extends PureComponent {
   scaledImageSize = null
 
   componentDidMount() {
-    if (!this.props.image) { return }
+    if (!this.props.image) {
+      return
+    }
     this.setImageProperties(this.props.image)
   }
 
@@ -154,7 +151,7 @@ export default class ImageEditor extends PureComponent {
           </TouchableWithoutFeedback>
         </ScrollView>
 
-        <GridLayout active={isMoving} />
+        <Grid active={isMoving} />
       </View>
     )
   }
