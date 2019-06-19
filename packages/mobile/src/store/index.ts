@@ -17,10 +17,9 @@ const [useStore, api] = create(set => ({
   },
 
   project: {
-    id: null,
     model: null,
     title: null,
-    type: null,
+    typeId: null,
   },
 
   actions: {
@@ -37,6 +36,8 @@ const [useStore, api] = create(set => ({
           selectedId: payload.id,
         },
       })),
+
+    updateField: field => {},
   },
 }))
 

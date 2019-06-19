@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { InteractionManager } from 'react-native'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { useNavigation } from 'navigation'
+import { useStore } from 'store'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
@@ -11,40 +11,51 @@ import SearchModel from 'features/project/components/SearchModel'
 function AddProjectModel({ addProject }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
+  const [query, setQuery] = useState()
+  const [isSearching, setIsSearching] = useState(false)
+
+  const { updateField, project } = useStore(store => ({
+    updateField: store.actions.updateField,
+    project: store.project,
+  }))
 
   const handleNavigation = useCallback(() => {
     navigate(SCREENS.ADD_MEDIA)
   }, [])
 
-  const getActionRight = (state, addProject, updateField, resetState) => {
-    if (state.model) {
-      return () => {
-        updateField('isSaving', true)
-        addProject({
-          title: state.title,
-          projectTypeId: state.type.id,
-          modelId: state.model.id,
-        }).then(() => {
-          handleNavigation()
-          InteractionManager.runAfterInteractions(resetState)
-        })
-      }
-    }
+  // const getActionRight = () => {
+  //   if (project.model) {
+  //     return () => {
+  //       updateField('isSaving', true)
+  //       addProject({
+  //         title: project.title,
+  //         projectTypeId: project.typeId,
+  //         modelId: project.model.id,
+  //       }).then(() => {
+  //         handleNavigation()
+  //         resetState
+  //       })
+  //     }
+  //   }
+  //
+  //   return null
+  // }
 
-    return null
-  }
+  const value = project.model
+    ? `${project.model.brand.name} ${project.model.project.model} ${project.model.year}`
+    : query
 
   return (
     <>
       {/*<AddProjectHeader
-        actionRight={getActionRight(state, addProject, updateField, resetState)}
+        actionRight={getActionRight}
         translationKey="add"
         icon={arrowLeft}
         isSaving={state.isSaving}
       />*/}
       <KeyboardAvoidingView>
-        {state.isSearching && (
-          <SearchModel query={state.query} onPress={model => updateField('model', model)} />
+        {isSearching && (
+          <SearchModel query={query} onPress={model => updateField('model', model)} />
         )}
 
         <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
@@ -56,17 +67,13 @@ function AddProjectModel({ addProject }) {
           autoFocus
           waitForRender
           large
-          onChangeText={value => updateField('query', value)}
-          value={
-            state.model
-              ? `${state.model.brand.name} ${state.model.model} ${state.model.year}`
-              : state.query
-          }
+          onChangeText={setQuery}
+          value={value}
           borderColor="dark"
           color="dark"
           returnKeyType="next"
-          onFocus={() => updateField('isSearching', true)}
-          onBlur={() => updateField('isSearching', false)}
+          onFocus={() => setIsSearching(true)}
+          onBlur={() => setIsSearching(false)}
         />
       </KeyboardAvoidingView>
     </>
