@@ -1,14 +1,10 @@
 import create from 'zustand'
 import { TOAST_TYPES } from 'utils/enums'
 
-const initialState = {
+const [useToastStore] = create(set => ({
   message: null,
   show: false,
   type: TOAST_TYPES.NETWORK,
-}
-
-const [useToastStore] = create(set => ({
-  ...initialState,
 
   actions: {
     show: payload => {

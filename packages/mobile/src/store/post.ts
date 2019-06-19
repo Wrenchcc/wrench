@@ -5,16 +5,12 @@ const MAX_SELECTED_FILES = 10
 //   return state
 // }
 
-const initialState = {
+const [usePostStore] = create(set => ({
   caption: null,
   files: [],
   id: null,
   isPosting: false,
   projectId: null,
-}
-
-const [usePostStore] = create(set => ({
-  ...initialState,
 
   actions: {
     onSelect: payload =>
