@@ -23,8 +23,6 @@ function AddPost({ projects, addPost: addPostMutation }) {
   const handleAddPost = async PostContainer => {
     const { state, resetState, hidePostProgress } = PostContainer
 
-    const { title, id } = getProjectByIdOrFirst(state.selectedProjectId, projects)
-
     handleNavigation()
 
     // showPostProgress({

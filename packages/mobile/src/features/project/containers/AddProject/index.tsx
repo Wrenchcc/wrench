@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
@@ -8,10 +9,15 @@ function AddProject() {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
+  const { updateField, title } = useStore(store => ({
+    updateField: store.actions.updateField,
+    title: store.project.title,
+  }))
+
   return (
     <>
       {/*<AddProjectHeader
-        actionRight={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
+        actionRight={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
         resetState={resetState}
         closeAction
       />*/}
@@ -24,12 +30,12 @@ function AddProject() {
           autoFocus
           large
           onChangeText={value => updateField('title', value)}
-          value={state.title}
+          value={title}
           borderColor="dark"
           color="dark"
           returnKeyType="next"
           enablesReturnKeyAutomatically
-          onSubmitEditing={state.title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
+          onSubmitEditing={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
         />
       </KeyboardAvoidingView>
     </>
