@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react'
+import React, { memo, useEffect, useState, useCallback } from 'react'
 import { Platform, Dimensions } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
@@ -69,19 +69,9 @@ function MediaPicker() {
     setPhotoPermission(RESULTS.GRANTED)
   }, [])
 
-  const renderScene = ({ route }) => {
-    return <List album={route.key} />
-  }
+  const renderScene = ({ route }) => <List album={route.key} />
 
   const renderTabs = useCallback(props => <Tabs {...props} />, [])
-
-  const navigationState = useMemo(
-    () => ({
-      index: tabIndex,
-      routes: albums,
-    }),
-    [tabIndex, albums]
-  )
 
   if (checkingPermission || isLoading) {
     return null
@@ -95,7 +85,10 @@ function MediaPicker() {
 
   return (
     <TabView
-      navigationState={navigationState}
+      navigationState={{
+        index: tabIndex,
+        routes: albums,
+      }}
       renderTabBar={renderTabs}
       renderScene={renderScene}
       onIndexChange={handleIndexChange}
@@ -105,4 +98,4 @@ function MediaPicker() {
   )
 }
 
-export default MediaPicker
+export default memo(MediaPicker)

@@ -6,9 +6,9 @@ import ImageEditor from '../../components/ImageEditor'
 import MediaPicker from '../../components/MediaPicker'
 
 function AddMedia() {
-  const { selectFile, editFile } = useStore(store => ({
+  const { onSelect, editFile } = useStore(store => ({
     editFile: store.actions.editFile,
-    selectFile: store.actions.selectFile,
+    onSelect: store.actions.onSelect,
   }))
 
   const file = false
@@ -18,7 +18,7 @@ function AddMedia() {
       {file ? (
         <ImageEditor image={file} onEditImage={editFile} uri={file.uri} />
       ) : (
-        <Camera onTakePicture={selectFile} />
+        <Camera onTakePicture={onSelect} />
       )}
 
       <MediaPicker />

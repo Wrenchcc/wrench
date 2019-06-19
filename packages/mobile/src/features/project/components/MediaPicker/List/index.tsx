@@ -15,9 +15,9 @@ function List({ album }) {
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
 
-  const { files, selectFile } = useStore(store => ({
+  const { files, onSelect } = useStore(store => ({
     files: store.post.files,
-    selectFile: store.actions.selectFile,
+    onSelect: store.actions.onSelect,
   }))
 
   console.log(files)
@@ -56,7 +56,7 @@ function List({ album }) {
   }, [hasNextPage, endCursor, fetchAssets])
 
   const renderItem = ({ item }) => {
-    return <MediaItem item={item} onPress={selectFile} order={0} selected={false} />
+    return <MediaItem item={item} onPress={onSelect} order={0} selected={false} />
   }
 
   const renderFooter = useCallback(() => {

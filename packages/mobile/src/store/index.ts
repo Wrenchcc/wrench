@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { BANNER_TYPES } from 'utils/enums'
 
 const [useStore, api] = create(set => ({
   post: {
@@ -9,16 +10,25 @@ const [useStore, api] = create(set => ({
     selectedId: null,
   },
 
-  banner: {},
+  banner: {
+    message: null,
+    show: false,
+    type: BANNER_TYPES.NETWORK,
+  },
 
-  project: {},
+  project: {
+    id: null,
+    model: null,
+    title: null,
+    type: null,
+  },
 
   actions: {
-    // If found in store remove
-    // Else add
+    // if selected ID already in store, remove
+    // else add
     // If 10 do nothing
-    // return state.files[payload]
-    selectFile: payload =>
+
+    onSelect: payload =>
       set(state => ({
         ...state,
         post: {
