@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
+import { useStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -16,36 +17,35 @@ function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
-  const handleNavigation = useCallback(() => {
+  const { files, caption, projectId } = useStore(store => ({
+    updateField: store.actions.updateField,
+    files: store.post.files,
+    caption: store.post.caption,
+    projectId: store.post.projectId,
+  }))
+
+  const handleAddPost = async () => {
     navigate(SCREENS.FEED)
-  }, [])
 
-  const handleAddPost = async PostContainer => {
-    const { state, resetState, hidePostProgress } = PostContainer
-
-    handleNavigation()
-
-    // showPostProgress({
-    //   image: state.selectedFiles[0].uri,
+    // showNotification({
+    //   image: files[0].uri,
     //   title,
     // })
 
     try {
-      const uploadedFiles = await uploadFiles(state.selectedFiles)
+      const uploadedFiles = await uploadFiles(files)
 
       await addPostMutation({
-        caption: state.caption,
+        caption,
         files: uploadedFiles,
-        projectId: id,
-      }).then(resetState)
+        projectId,
+      })
 
       track(events.POST_CREATED)
     } catch (err) {
-      hidePostProgress()
-
       // showNotification({
       //   dismissAfter: 6000,
-      //   message: t('AddPost:error'),
+      //   content: t('AddPost:error'),
       //   type: 'error',
       // })
 
@@ -61,12 +61,12 @@ function AddPost({ projects, addPost: addPostMutation }) {
         closeSelectProject={PostContainer.closeSelectProject}
         selectedProjectId={PostContainer.state.selectedProjectId}
         selectProjectOpen={PostContainer.state.selectProjectOpen}
-        addPostAction={() => handleAddPost(PostContainer)}
+        addPostAction={handleAddPost}
         toggleSelectProject={PostContainer.toggleSelectProject}
       />*/}
       <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView style={{ paddingHorizontal: 20 }}>
-          <SelectedFiles selectedFiles={PostContainer.state.selectedFiles} />
+          <SelectedFiles selectedFiles={files} />
 
           <Input
             scrollEnabled={false}
@@ -74,9 +74,9 @@ function AddPost({ projects, addPost: addPostMutation }) {
             autoFocus
             waitForRender
             color="dark"
-            onChangeText={PostContainer.updateCaption}
+            onChangeText={value => updateField('caption', value)}
             placeholder={t('AddPost:placeholder')}
-            value={PostContainer.state.caption}
+            value={caption}
           />
         </ScrollView>
       </KeyboardAvoidingView>
