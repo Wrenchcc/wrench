@@ -1,16 +1,12 @@
 import React, { Fragment, useRef } from 'react'
-import { useStore } from 'store'
+import { usePostStore } from 'store'
 import Camera from '../../components/Camera'
 import AddPostHeader from '../../components/AddPostHeader'
 import ImageEditor from '../../components/ImageEditor'
 import MediaPicker from '../../components/MediaPicker'
 
 function AddMedia() {
-  const { onSelect, editFile } = useStore(store => ({
-    editFile: store.actions.editFile,
-    onSelect: store.actions.onSelect,
-  }))
-
+  const { onSelect, editFile } = usePostStore(store => store.actions)
   const file = false
 
   return (

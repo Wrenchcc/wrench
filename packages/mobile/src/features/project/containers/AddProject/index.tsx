@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useStore } from 'store'
+import { useProjectStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
@@ -9,9 +9,9 @@ function AddProject() {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
-  const { updateField, title } = useStore(store => ({
-    updateField: store.actions.updateField,
-    title: store.project.title,
+  const { update, title } = useProjectStore(store => ({
+    update: store.actions.update,
+    title: store.title,
   }))
 
   return (
@@ -29,7 +29,7 @@ function AddProject() {
           placeholder={t('AddProject:placeholder')}
           autoFocus
           large
-          onChangeText={value => updateField('title', value)}
+          onChangeText={value => update('title', value)}
           value={title}
           borderColor="dark"
           color="dark"

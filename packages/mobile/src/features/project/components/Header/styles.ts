@@ -12,3 +12,7 @@ export const Base = styled.View`
 export const Followers = styled(UiFollowers)`
   margin-top: 15;
 `
+
+export const Inner = styled.View`
+  flex-direction: column;
+`

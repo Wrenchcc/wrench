@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
-import { useStore } from 'store'
+import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -17,11 +17,11 @@ function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
-  const { files, caption, projectId } = useStore(store => ({
-    updateField: store.actions.updateField,
-    files: store.post.files,
-    caption: store.post.caption,
-    projectId: store.post.projectId,
+  const { files, caption, projectId } = usePostStore(store => ({
+    update: store.actions.update,
+    files: store.files,
+    caption: store.caption,
+    projectId: store.projectId,
   }))
 
   const handleAddPost = async () => {
@@ -74,7 +74,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
             autoFocus
             waitForRender
             color="dark"
-            onChangeText={value => updateField('caption', value)}
+            onChangeText={value => update('caption', value)}
             placeholder={t('AddPost:placeholder')}
             value={caption}
           />

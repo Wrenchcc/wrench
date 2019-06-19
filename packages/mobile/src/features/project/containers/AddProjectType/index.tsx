@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
-import { useStore } from 'store'
+import { usePostStore } from 'store'
 import { Title } from 'ui'
 import { arrowLeft } from 'images'
 import AddProjectHeader from '../../components/AddProjectHeader'
@@ -12,10 +12,7 @@ function AddProjectType() {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(() => navigate(SCREENS.ADD_PROJECT_MODEL), [])
-
-  const { updateField } = useStore(store => ({
-    updateField: store.actions.updateField,
-  }))
+  const { update } = usePostStore(store => store.actions)
 
   return (
     <>
@@ -34,7 +31,7 @@ function AddProjectType() {
           </View>
         }
         onSelect={type => {
-          updateField('type', type)
+          update('type', type)
           handleNavigation()
         }}
       />

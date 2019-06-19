@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback, memo } from 'react'
 import { View, ActivityIndicator, FlatList } from 'react-native'
 import * as MediaLibrary from 'expo-media-library'
-import { useStore } from 'store'
+import { findIndex, propEq } from 'ramda'
+import { usePostStore } from 'store'
 import { logError } from 'utils/sentry'
 import MediaItem from '../Item'
 
@@ -15,12 +16,10 @@ function List({ album }) {
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
 
-  const { files, onSelect } = useStore(store => ({
-    files: store.post.files,
+  const { files, onSelect } = usePostStore(store => ({
+    files: store.files,
     onSelect: store.actions.onSelect,
   }))
-
-  console.log(files)
 
   const fetchAssets = useCallback(
     async after => {
@@ -56,7 +55,9 @@ function List({ album }) {
   }, [hasNextPage, endCursor, fetchAssets])
 
   const renderItem = ({ item }) => {
-    return <MediaItem item={item} onPress={onSelect} order={0} selected={false} />
+    const order = findIndex(propEq('id', item.id))(files)
+    const selected = files.some(file => file.id === item.id)
+    return <MediaItem item={item} onPress={onSelect} order={order + 1} selected={selected} />
   }
 
   const renderFooter = useCallback(() => {

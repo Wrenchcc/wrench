@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { useNavigation } from 'navigation'
-import { useStore } from 'store'
+import { useProjectStore } from 'store'
 import { Title, Input, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import AddProjectHeader from 'features/project/components/AddProjectHeader'
@@ -14,10 +14,7 @@ function AddProjectModel({ addProject }) {
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
 
-  const { updateField, project } = useStore(store => ({
-    updateField: store.actions.updateField,
-    project: store.project,
-  }))
+  const { update, project } = useProjectStore(store => store.project)
 
   const handleNavigation = useCallback(() => {
     navigate(SCREENS.ADD_MEDIA)
@@ -26,7 +23,7 @@ function AddProjectModel({ addProject }) {
   // const getActionRight = () => {
   //   if (project.model) {
   //     return () => {
-  //       updateField('isSaving', true)
+  //       update('isSaving', true)
   //       addProject({
   //         title: project.title,
   //         projectTypeId: project.typeId,
@@ -54,9 +51,7 @@ function AddProjectModel({ addProject }) {
         isSaving={state.isSaving}
       />*/}
       <KeyboardAvoidingView>
-        {isSearching && (
-          <SearchModel query={query} onPress={model => updateField('model', model)} />
-        )}
+        {isSearching && <SearchModel query={query} onPress={model => update('model', model)} />}
 
         <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
           {t('AddProjectModel:title')}
