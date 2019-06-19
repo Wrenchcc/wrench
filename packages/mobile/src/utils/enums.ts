@@ -21,7 +21,7 @@ export enum FILE_TYPES {
   IMAGE = 'IMAGE',
 }
 
-export enum BANNER_TYPES {
+export enum TOAST_TYPES {
   DEFAULT = 'DEFAULT',
   NETWORK = 'NETWORK',
   SPAM = 'SPAM',

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
+import { usePostStore } from 'store'
 import Text from 'ui/Text'
 import { Base, Inner, Cover, Content, Loader } from './styles'
 
@@ -10,13 +11,15 @@ function Posting() {
   const ref = useRef()
   const { t } = useTranslation()
 
-  const image = ''
-  const title = 'wef'
-  const isPosting = false
+  const { image, title, isPosting } = usePostStore(store => ({
+    image: store.files[0],
+    title: store.title,
+    isPosting: store.isPosting,
+  }))
 
   useEffect(() => {
     ref.current.animateNextTransition()
-  }, [ref, isPosting])
+  }, [isPosting])
 
   return (
     <Transitioning.View ref={ref} transition={transition}>
@@ -25,7 +28,7 @@ function Posting() {
           <Inner>
             <Content>
               <Loader size="small" color="white" />
-              <Cover source={{ uri: image }} />
+              <Cover source={image} />
             </Content>
             <Content>
               <Text numberOfLines={1}>{title}</Text>

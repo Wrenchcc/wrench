@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import Animated from 'react-native-reanimated'
 import { View } from 'react-native'
-import { Text, Icon, Banner } from 'ui'
+import { Text, Icon, Toast } from 'ui'
 import { arrowLeft } from 'images'
 import { useNavigation } from '../../hooks'
 import styles from './styles'
@@ -35,7 +35,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
           <View style={styles.right}>{headerRight}</View>
         </View>
       </View>
-      <Banner />
+      <Toast />
     </Animated.View>
   )
 }

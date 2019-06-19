@@ -2,12 +2,13 @@ import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
-import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
+import { usePostStore, useToastStore } from 'store'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
+import { TOAST_TYPES } from 'utils/enums'
 import { uploadFiles } from 'utils/storage/s3'
 import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
@@ -19,18 +20,18 @@ function AddPost({ projects, addPost: addPostMutation }) {
 
   const { files, caption, projectId } = usePostStore(store => ({
     update: store.actions.update,
+    setIsPosting: store.actions.setIsPosting,
     files: store.files,
     caption: store.caption,
     projectId: store.projectId,
   }))
 
+  const toastActions = useToastStore(store => store.actions)
+
   const handleAddPost = async () => {
     navigate(SCREENS.FEED)
 
-    // showNotification({
-    //   image: files[0].uri,
-    //   title,
-    // })
+    setIsPosting(true)
 
     try {
       const uploadedFiles = await uploadFiles(files)
@@ -41,13 +42,15 @@ function AddPost({ projects, addPost: addPostMutation }) {
         projectId,
       })
 
+      setIsPosting(false)
+
       track(events.POST_CREATED)
     } catch (err) {
-      // showNotification({
-      //   dismissAfter: 6000,
-      //   content: t('AddPost:error'),
-      //   type: 'error',
-      // })
+      toastActions.show({
+        dismissAfter: 6000,
+        content: t('AddPost:error'),
+        type: TOAST_TYPES.ERROR,
+      })
 
       logError(err)
       track(events.POST_CREATED_FAILED)

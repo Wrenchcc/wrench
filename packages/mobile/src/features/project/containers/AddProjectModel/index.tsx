@@ -14,7 +14,10 @@ function AddProjectModel({ addProject }) {
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
 
-  const { update, project } = useProjectStore(store => store.project)
+  const { update, model } = useProjectStore(store => ({
+    update: store.actions.update,
+    model: store.model,
+  }))
 
   const handleNavigation = useCallback(() => {
     navigate(SCREENS.ADD_MEDIA)
@@ -38,9 +41,7 @@ function AddProjectModel({ addProject }) {
   //   return null
   // }
 
-  const value = project.model
-    ? `${project.model.brand.name} ${project.model.project.model} ${project.model.year}`
-    : query
+  const value = model ? `${model.brand.name} ${model.model} ${model.year}` : query
 
   return (
     <>

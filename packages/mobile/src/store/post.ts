@@ -1,30 +1,38 @@
 import create from 'zustand'
 
-const [usePostStore] = create(set => ({
+const MAX_SELECTED_FILES = 10
+// if (state.files.length === MAX_SELECTED_FILES) {
+//   return state
+// }
+
+const initialState = {
   caption: null,
   files: [],
+  id: null,
   isPosting: false,
   projectId: null,
-  selectedId: null,
+}
+
+const [usePostStore] = create(set => ({
+  ...initialState,
 
   actions: {
-    // If 10 do nothing
-    // || state.selectedId === payload.id
     onSelect: payload =>
-      set(state => {
-        return {
-          ...state,
-          files: state.files.some(file => file.id === payload.id)
+      set(state => ({
+        ...state,
+        files:
+          state.id === payload.id && state.files.some(file => file.id === payload.id)
             ? state.files.filter(file => file.id !== payload.id)
             : state.files.concat(payload),
-          selectedId: payload.id,
-        }
-      }),
+        id: payload.id, // TODO: Select next index when remove
+      })),
 
-    update: field => {},
+    onEdit: () => {},
+
+    setIsPosting: payload => set({ isPosting: payload }),
+    update: (field, payload) => set({ [field]: payload }),
+    reset: () => set(initialState),
   },
 }))
 
-export default {
-  useStore,
-}
+export default usePostStore
