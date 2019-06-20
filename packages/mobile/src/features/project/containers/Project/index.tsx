@@ -8,7 +8,7 @@ import { followProject } from 'graphql/mutations/project/followProject'
 import Post from 'components/Post'
 import { Avatar, Edit, EmptyState, Title } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
-import Header from 'features/project/components/Header'
+import ProjectHeader from 'features/project/components/ProjectHeader'
 import Footer from 'features/project/components/Footer'
 
 function Project({
@@ -68,7 +68,7 @@ function Project({
 
     return (
       <>
-        {project.title && <Header project={project} spacingHorizontal={!hasPosts} />}
+        {project.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
         {content}
       </>
     )

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Base, Left, Center, Right } from './styles'
 
-function Header({ headerLeft, headerCenter, headerRight, transparent = true }) {
+function Header({ headerLeft, headerCenter, headerRight, color }) {
   return (
-    <Base transparent={transparent}>
+    <Base color={color}>
       <Left>{headerLeft}</Left>
       <Center>{headerCenter && headerCenter}</Center>
       <Right>{headerRight || null}</Right>

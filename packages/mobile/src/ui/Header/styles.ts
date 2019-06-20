@@ -10,7 +10,7 @@ export const Base = styled.View`
   padding: 0 20px 20px;
   height: 50;
   margin-top: ${(hasNotch && 60) || 20}
-  background-color: ${({ transparent }) => (transparent ? 'transparent' : COLORS.WHITE)};
+  background-color: ${({ color }) => (color ? color : COLORS.WHITE)};
 `
 
 export const Left = styled.View`

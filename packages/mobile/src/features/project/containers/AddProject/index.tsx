@@ -2,8 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useProjectStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
-import { Title, Input, KeyboardAvoidingView } from 'ui'
-import AddProjectHeader from 'features/project/components/AddProjectHeader'
+import { Header, Title, Input, KeyboardAvoidingView } from 'ui'
 
 function AddProject() {
   const { t } = useTranslation()
@@ -16,7 +15,7 @@ function AddProject() {
 
   return (
     <>
-      {/*<AddProjectHeader
+      {/*<Header
         actionRight={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
         resetState={resetState}
         closeAction

@@ -3,9 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { useNavigation } from 'navigation'
 import { useProjectStore } from 'store'
-import { Title, Input, KeyboardAvoidingView } from 'ui'
+import { Header, Title, Input, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
-import AddProjectHeader from 'features/project/components/AddProjectHeader'
 import SearchModel from 'features/project/components/SearchModel'
 
 function AddProjectModel({ addProject }) {
@@ -45,7 +44,7 @@ function AddProjectModel({ addProject }) {
 
   return (
     <>
-      {/*<AddProjectHeader
+      {/*<Header
         actionRight={getActionRight}
         translationKey="add"
         icon={arrowLeft}

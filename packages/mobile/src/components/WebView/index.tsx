@@ -4,12 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { WebView as RNWebView } from 'react-native-webview'
 import qs from 'url'
 import { dismissModal } from 'navigation'
-import Header from 'ui/Header'
-import ProgressBar from 'ui/ProgressBar'
-import Text from 'ui/Text'
-import Icon from 'ui/Icon'
-import Touchable from 'ui/Touchable'
-import Share from 'ui/Share'
+import { Header, ProgressBar, Text, Icon, Touchable, Share } from 'ui'
 import { COLORS } from 'ui/constants'
 import { closeDark, arrowLeftSmall, arrowRightSmall, refresh } from 'images'
 import { Base, Footer, Inner } from './styles'
@@ -92,7 +87,6 @@ function WebView({ url: initialUrl }) {
   return (
     <Base>
       <Header
-        transparent={false}
         headerLeft={<Icon onPress={handleClose} source={closeDark} />}
         headerCenter={
           <View style={{ alignItems: 'center' }}>

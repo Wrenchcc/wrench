@@ -3,9 +3,8 @@ import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { usePostStore } from 'store'
-import { Title } from 'ui'
+import { Header, Title } from 'ui'
 import { arrowLeft } from 'images'
-import AddProjectHeader from '../../components/AddProjectHeader'
 import ProjectCategories from '../../components/ProjectCategories'
 
 function AddProjectType() {
@@ -14,9 +13,17 @@ function AddProjectType() {
   const handleNavigation = useCallback(() => navigate(SCREENS.ADD_PROJECT_MODEL), [])
   const { update } = usePostStore(store => store.actions)
 
+  const handleOnSelect = useCallback(
+    type => {
+      update('type', type)
+      handleNavigation()
+    },
+    [update, handleNavigation]
+  )
+
   return (
     <>
-      <AddProjectHeader icon={arrowLeft} />
+      <Header icon={arrowLeft} />
       <ProjectCategories
         ListHeaderComponent={
           <View
@@ -30,10 +37,7 @@ function AddProjectType() {
             </Title>
           </View>
         }
-        onSelect={type => {
-          update('type', type)
-          handleNavigation()
-        }}
+        onSelect={handleOnSelect}
       />
     </>
   )

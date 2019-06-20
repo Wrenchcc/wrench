@@ -3,7 +3,7 @@ import { Title } from 'ui'
 import { useNavigation, SCREENS } from 'navigation'
 import { Base, Followers, Inner } from './styles'
 
-function Header({ project, spacingHorizontal }) {
+function ProjectHeader({ project, spacingHorizontal }) {
   const { navigate } = useNavigation()
 
   const handleNavigation = useCallback(
@@ -26,4 +26,4 @@ function Header({ project, spacingHorizontal }) {
   )
 }
 
-export default Header
+export default ProjectHeader

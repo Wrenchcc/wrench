@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, memo } from 'react'
 import { Image, Dimensions } from 'react-native'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -35,4 +35,4 @@ function Item({ item, selected, onPress, order }) {
   )
 }
 
-export default Item
+export default memo(Item)

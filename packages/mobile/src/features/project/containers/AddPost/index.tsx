@@ -10,20 +10,19 @@ import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import { uploadFiles } from 'utils/storage/s3'
-import AddPostHeader from 'features/project/components/AddPostHeader'
 import SelectedFiles from 'features/project/components/SelectedFiles'
-import { Input, KeyboardAvoidingView } from 'ui'
+import { Header, Input, KeyboardAvoidingView } from 'ui'
 
 function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
   const { files, caption, projectId } = usePostStore(store => ({
-    update: store.actions.update,
-    setIsPosting: store.actions.setIsPosting,
-    files: store.files,
     caption: store.caption,
+    files: store.files,
     projectId: store.projectId,
+    setIsPosting: store.actions.setIsPosting,
+    update: store.actions.update,
   }))
 
   const toastActions = useToastStore(store => store.actions)
@@ -47,8 +46,8 @@ function AddPost({ projects, addPost: addPostMutation }) {
       track(events.POST_CREATED)
     } catch (err) {
       toastActions.show({
-        dismissAfter: 6000,
         content: t('AddPost:error'),
+        dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
 
@@ -59,7 +58,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
 
   return (
     <>
-      {/*<AddPostHeader
+      {/*<Header
         changeProject={PostContainer.changeProject}
         closeSelectProject={PostContainer.closeSelectProject}
         selectedProjectId={PostContainer.state.selectedProjectId}

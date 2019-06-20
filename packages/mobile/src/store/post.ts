@@ -19,13 +19,13 @@ const [usePostStore] = create(set => ({
         const index = findIndex(propEq('id', currentId))(state.files)
         const id = currentId //prevSelected ? state.files[index - 1 || 0].id : payload.id
 
-        console.log(
-          state.files.length > 0
-            ? prevSelected
-              ? state.files[index - 1 || 0].id
-              : payload.id
-            : null
-        )
+        // console.log(
+        //   state.files.length > 0
+        //     ? prevSelected
+        //       ? state.files[index - 1 || 0].id
+        //       : payload.id
+        //     : null
+        // )
 
         if (!prevSelected && !isAdded && state.files.length === MAX_SELECTED_FILES) {
           return state
