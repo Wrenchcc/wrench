@@ -8,6 +8,8 @@ PODS:
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.4):
     - React
+  - Crashlytics (3.13.2):
+    - Fabric (~> 1.10.2)
   - DoubleConversion (1.1.6)
   - EXAppLoaderProvider (4.0.0)
   - EXConstants (4.0.0):
@@ -22,6 +24,7 @@ PODS:
   - EXPermissions (4.0.0):
     - UMCore
     - UMPermissionsInterface
+  - Fabric (1.10.2)
   - FBSDKCoreKit (4.42.0):
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.42.0):
@@ -129,13 +132,13 @@ PODS:
   - Protobuf (3.8.0)
   - React (0.59.9):
     - React/Core (= 0.59.9)
-  - react-native-camera (2.10.2):
+  - react-native-camera (2.11.0):
     - React
-    - react-native-camera/RCT (= 2.10.2)
-    - react-native-camera/RN (= 2.10.2)
-  - react-native-camera/RCT (2.10.2):
+    - react-native-camera/RCT (= 2.11.0)
+    - react-native-camera/RN (= 2.11.0)
+  - react-native-camera/RCT (2.11.0):
     - React
-  - react-native-camera/RN (2.10.2):
+  - react-native-camera/RN (2.11.0):
     - React
   - react-native-config (0.11.7):
     - React
@@ -223,13 +226,19 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativeNavigation (2.21.0):
+  - ReactNativeNavigation (2.21.1):
     - React
   - RNCAsyncStorage (1.5.0):
     - React
-  - RNDeviceInfo (2.1.1):
+  - RNDeviceInfo (2.1.2):
     - React
-  - RNFirebase (5.4.3):
+  - RNFirebase (5.5.3):
+    - Firebase/Core
+    - React
+    - RNFirebase/Crashlytics (= 5.5.3)
+  - RNFirebase/Crashlytics (5.5.3):
+    - Crashlytics
+    - Fabric
     - Firebase/Core
     - React
   - RNGestureHandler (1.3.0):
@@ -247,7 +256,7 @@ PODS:
     - RNPermissions/Core
   - RNRate (1.0.1):
     - React
-  - RNReanimated (1.0.1):
+  - RNReanimated (1.1.0):
     - React
   - RNShare (1.2.1):
     - React
@@ -260,7 +269,7 @@ PODS:
   - Sentry (4.1.3):
     - Sentry/Core (= 4.1.3)
   - Sentry/Core (4.1.3)
-  - SentryReactNative (0.43.1):
+  - SentryReactNative (0.43.2):
     - React
     - Sentry (~> 4.1.3)
   - UMBarCodeScannerInterface (1.0.0)
@@ -350,6 +359,8 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
     - boost-for-react-native
+    - Crashlytics
+    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -478,12 +489,14 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
+  Crashlytics: 611738c7847f8291a1a51084e35987b86ba6b3ee
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXAppLoaderProvider: a5b88a7e02f92807ad3cd962bb3e0632d71cc5dc
   EXConstants: a338ed187829ab25b8817f84cd84eecc13e64fd4
   EXFileSystem: 18c9980f52e3bd6a28670c17e0d33a9c1584a336
   EXMediaLibrary: e716cab8439c95cba04b7040122643b727abce4a
   EXPermissions: ce3e170052df9d496aa51e1c372080cb2508fb16
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
   FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
@@ -502,7 +515,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   React: a86b92f00edbe1873a63e4a212c29b7a7ad5224f
-  react-native-camera: 89f0367c52e3ed70dd042c6362891cf7869f8e1c
+  react-native-camera: 0d18706a9fd6d30ece4fa7c9c50fe36f484c54fa
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-fast-image: 3390cc968d598f0c6b5c710df138f4b653a87231
   react-native-fbsdk: 5c3ff4dda057e17d3b4b5491033fc653d423e71d
@@ -512,19 +525,19 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 9aecbfc4628128838187df9d9c9f630670cfb1d1
   react-native-webview: 8b2761a9bf84bbbbe7f90f49743b9b74c7cb11e7
-  ReactNativeNavigation: 6113c2504bfe0735ee91bb768c4b29f8f008b20e
+  ReactNativeNavigation: a2ad78e0fc80672aefd57248be2748cd5616fe72
   RNCAsyncStorage: 9436928b444c5f5361960a7eea051a697c244b68
-  RNDeviceInfo: 1399caa42e1d89ef1c100200d20114e0b98d7af7
-  RNFirebase: 723f5f6a88316c856f753f701c3233b851cf1f49
+  RNDeviceInfo: 75dac2d7cd6b638b512cc9266ce48a39661fed0e
+  RNFirebase: 59efea4666efb0a268bc50d77f2498387e962915
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
-  RNReanimated: c8dd490ca98a4edcba229bfa49f2516c95a43afb
+  RNReanimated: 7a52c90473b5e81c13408d40d797b98387eaddde
   RNShare: 48cf88cadf9ca2143cdaa557c1ec7f8808040ffc
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SDWebImageWebPCoder: 7568737603c50f6237850afedd7e9e28e5917e6b
   Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
-  SentryReactNative: 227e4ec6f3f1d4e0eac65a4657256cce7b6ef497
+  SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
   UMBarCodeScannerInterface: 53fd3cbf24fe5c58f3ba82ac8c27f0373fbf52fa
   UMCameraInterface: d5a2727e76d6b47e3201f863102c055ddbcc6206
   UMConstantsInterface: 800fb8f95fca9bb2c18ae554e4cb4df4383f6cbf

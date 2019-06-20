@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, memo } from 'react'
+import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
 import { TouchableWithoutFeedback, Platform } from 'react-native'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
@@ -13,6 +13,7 @@ const { Constants } = RNCamera
 const PERMISSION = Platform.OS === 'ios' ? IOS_PERMISSIONS.CAMERA : ANDROID_PERMISSIONS.CAMERA
 
 function Camera({ onTakePicture }) {
+  const camera = useRef()
   const [isLoading, setLoading] = useState(true)
   const [permission, setPermission] = useState(false)
   const [cameraType, setCameraType] = useState(Constants.Type.back)
@@ -26,11 +27,11 @@ function Camera({ onTakePicture }) {
     })
   }, [])
 
-  const takePicture = useCallback(async camera => {
-    const data = await camera.takePictureAsync()
+  const takePicture = useCallback(async () => {
+    const data = await camera.current.takePictureAsync()
 
     onTakePicture(data)
-  }, [])
+  }, [camera])
 
   const changeFlashMode = useCallback(() => {
     const mode =
@@ -62,23 +63,22 @@ function Camera({ onTakePicture }) {
 
   return (
     <TouchableWithoutFeedback onPressIn={setFocus}>
-      <RNCamera
-        type={cameraType}
-        flashMode={flashMode}
-        style={{ flex: 1 }}
-        autoFocusPointOfInterest={autofocus}
-        orientation="portrait"
-        ratio="1:1"
-      >
-        {({ camera }) => (
-          <>
-            {autofocus && <AutoFocus coordinates={autofocus} />}
-            <CameraType onPress={changeCameraType} />
-            <TakePicture onPress={() => takePicture(camera)} hapticFeedback="impactLight" />
-            <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
-          </>
-        )}
-      </RNCamera>
+      <>
+        <RNCamera
+          ref={camera}
+          type={cameraType}
+          flashMode={flashMode}
+          style={{ flex: 1 }}
+          autoFocusPointOfInterest={autofocus}
+          orientation="portrait"
+          ratio="1:1"
+        />
+
+        {autofocus && <AutoFocus coordinates={autofocus} />}
+        <CameraType onPress={changeCameraType} />
+        <TakePicture onPress={takePicture} hapticFeedback="impactLight" />
+        <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
+      </>
     </TouchableWithoutFeedback>
   )
 }
