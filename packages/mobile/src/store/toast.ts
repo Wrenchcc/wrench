@@ -12,7 +12,7 @@ const [useToastStore] = create(set => ({
         // setTimeout(this.hideNotification, dismissAfter)
       }
     },
-    hide: () => {},
+    // hide: () => {},
   },
 }))
 

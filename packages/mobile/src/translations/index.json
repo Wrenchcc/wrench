@@ -40,64 +40,6 @@
     "PostContainer": {
       "title": "Post"
     },
-    "FollowingProjects": {
-      "title": "This user don’t have any own projects yet.",
-      "description": "But here’s some of the projects {{name}} follows."
-    },
-    "SettingsButton": {
-      "settings": "Settings"
-    },
-    "Settings": {
-      "invite": "Invite people",
-      "share": "Share us",
-      "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
-      "settings": "Settings",
-      "push-notifications": "Push notifications",
-      "language": "Language",
-      "membership": "Membership",
-      "general": "General",
-      "support": "Support",
-      "terms": "Terms and conditions",
-      "website": "Website",
-      "credits": "Credits",
-      "logout": "Logout",
-      "facebook": "Facebook",
-      "contacts": "My contacts",
-      "faq": "FAQ",
-      "report": "Report a bug",
-      "chat": "Chat with us",
-      "knallpott": "Knallpott",
-      "paal": "PAAL Motorcycles",
-      "kismo": "Kismo Motors",
-      "motorfabriken": "Motorfabriken",
-      "rate": "Give us a review ⭐",
-      "languages": {
-        "en": "English",
-        "sv": "Swedish"
-      },
-      "notifications": {
-        "NEW_COMMENT": "Comments",
-        "NEW_MENTION": "Mentions",
-        "NEW_ARTICLE": "Articles",
-        "NEW_FOLLOWER": "Followers",
-        "SIMILAR_PROJECTS": "Similar projects",
-        "PRODUCT_ANNOUNCEMENTS": "Product announcements"
-      }
-    },
-    "AddPostHeader": {
-      "next": "Next",
-      "share": "Share",
-      "options": {
-        "title": "If you go back now, your edits will be discarded.",
-        "discard": "Discard",
-        "cancel": "Cancel"
-      }
-    },
-    "AddProjectHeader": {
-      "add": "Add",
-      "next": "Next",
-      "headerTitle": "Add project"
-    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -124,9 +66,13 @@
     "SelectProject": {
       "create": "Create a new project"
     },
+    "AddMedia": {
+      "next": "Next"
+    },
     "AddPost": {
       "error": "Couldn't post right now",
-      "placeholder": "Add a text about your post"
+      "placeholder": "Add a text about your post",
+      "add": "Share"
     },
     "AddProject": {
       "title": "Choose a title for your project.",
@@ -178,6 +124,50 @@
     "SignIn": {
       "headline": "Post, \nexplore \nand learn.",
       "description": "Post your projects, watch others, discuss and learn together."
+    },
+    "FollowingProjects": {
+      "title": "This user don’t have any own projects yet.",
+      "description": "But here’s some of the projects {{name}} follows."
+    },
+    "SettingsButton": {
+      "settings": "Settings"
+    },
+    "Settings": {
+      "invite": "Invite people",
+      "share": "Share us",
+      "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
+      "settings": "Settings",
+      "push-notifications": "Push notifications",
+      "language": "Language",
+      "membership": "Membership",
+      "general": "General",
+      "support": "Support",
+      "terms": "Terms and conditions",
+      "website": "Website",
+      "credits": "Credits",
+      "logout": "Logout",
+      "facebook": "Facebook",
+      "contacts": "My contacts",
+      "faq": "FAQ",
+      "report": "Report a bug",
+      "chat": "Chat with us",
+      "knallpott": "Knallpott",
+      "paal": "PAAL Motorcycles",
+      "kismo": "Kismo Motors",
+      "motorfabriken": "Motorfabriken",
+      "rate": "Give us a review ⭐",
+      "languages": {
+        "en": "English",
+        "sv": "Swedish"
+      },
+      "notifications": {
+        "NEW_COMMENT": "Comments",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Articles",
+        "NEW_FOLLOWER": "Followers",
+        "SIMILAR_PROJECTS": "Similar projects",
+        "PRODUCT_ANNOUNCEMENTS": "Product announcements"
+      }
     },
     "CommentItem": {
       "reply": "Reply",
@@ -251,7 +241,7 @@
     "ShowLatest": {
       "button": "New posts"
     },
-    "Banner": {
+    "Toast": {
       "networkError": "No internet connection"
     },
     "UiUser": {
@@ -304,64 +294,6 @@
     "PostContainer": {
       "title": "Inlägg"
     },
-    "FollowingProjects": {
-      "title": "Den här användaren har inga egna projekt ännu.",
-      "description": "Men här är några project som {{name}} följer."
-    },
-    "SettingsButton": {
-      "settings": "Inställningar"
-    },
-    "Settings": {
-      "invite": "Bjud in vänner",
-      "share": "Dela oss",
-      "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
-      "settings": "Inställningar",
-      "push-notifications": "Push notifikationer",
-      "language": "Språk",
-      "membership": "Medlemskap",
-      "general": "Almänt",
-      "support": "Support",
-      "terms": "Villkor",
-      "website": "Hemsida",
-      "credits": "Tack till",
-      "logout": "Logga ut",
-      "facebook": "Facebook",
-      "contacts": "Mina kontakter",
-      "faq": "FAQ",
-      "report": "Rapportera en bugg",
-      "chat": "Chatta med oss",
-      "knallpott": "Knallpott",
-      "paal": "PAAL Motorcycles",
-      "kismo": "Kismo Motors",
-      "motorfabriken": "Motorfabriken",
-      "rate": "Ge oss en recension ⭐",
-      "languages": {
-        "en": "Engelska",
-        "sv": "Svenska"
-      },
-      "notifications": {
-        "NEW_COMMENT": "Kommentarer",
-        "NEW_MENTION": "Mentions",
-        "NEW_ARTICLE": "Artiklar",
-        "NEW_FOLLOWER": "Följare",
-        "SIMILAR_PROJECTS": "Liknande projekt",
-        "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
-      }
-    },
-    "AddPostHeader": {
-      "next": "Nästa",
-      "share": "Dela",
-      "options": {
-        "title": "Om du går tillbaka kommer dina val att ignoreras.",
-        "discard": "Släng",
-        "cancel": "Avbryt"
-      }
-    },
-    "AddProjectHeader": {
-      "add": "Lägg till",
-      "next": "Nästa",
-      "headerTitle": "Lägg till projekt"
-    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -388,9 +320,13 @@
     "SelectProject": {
       "create": "Skapa ett nytt projekt"
     },
+    "AddMedia": {
+      "next": "Nästa"
+    },
     "AddPost": {
       "error": "Kunde inte dela just nu",
-      "placeholder": "Skriv en text för ditt inlägg"
+      "placeholder": "Skriv en text för ditt inlägg",
+      "add": "Dela"
     },
     "AddProject": {
       "title": "Välj en titel på ditt projekt.",
@@ -442,6 +378,50 @@
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",
       "description": "Dela dina projekt, följ andras, diskutera och lär av varandra."
+    },
+    "FollowingProjects": {
+      "title": "Den här användaren har inga egna projekt ännu.",
+      "description": "Men här är några project som {{name}} följer."
+    },
+    "SettingsButton": {
+      "settings": "Inställningar"
+    },
+    "Settings": {
+      "invite": "Bjud in vänner",
+      "share": "Dela oss",
+      "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
+      "settings": "Inställningar",
+      "push-notifications": "Push notifikationer",
+      "language": "Språk",
+      "membership": "Medlemskap",
+      "general": "Almänt",
+      "support": "Support",
+      "terms": "Villkor",
+      "website": "Hemsida",
+      "credits": "Tack till",
+      "logout": "Logga ut",
+      "facebook": "Facebook",
+      "contacts": "Mina kontakter",
+      "faq": "FAQ",
+      "report": "Rapportera en bugg",
+      "chat": "Chatta med oss",
+      "knallpott": "Knallpott",
+      "paal": "PAAL Motorcycles",
+      "kismo": "Kismo Motors",
+      "motorfabriken": "Motorfabriken",
+      "rate": "Ge oss en recension ⭐",
+      "languages": {
+        "en": "Engelska",
+        "sv": "Svenska"
+      },
+      "notifications": {
+        "NEW_COMMENT": "Kommentarer",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Artiklar",
+        "NEW_FOLLOWER": "Följare",
+        "SIMILAR_PROJECTS": "Liknande projekt",
+        "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
+      }
     },
     "CommentItem": {
       "reply": "Svara",
@@ -514,7 +494,7 @@
     "ShowLatest": {
       "button": "Nya inlägg"
     },
-    "Banner": {
+    "Toast": {
       "networkError": "Ingen internetanslutning"
     },
     "UiUser": {

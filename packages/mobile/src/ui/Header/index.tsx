@@ -1,12 +1,12 @@
 import React from 'react'
 import { Base, Left, Center, Right } from './styles'
 
-function Header({ headerLeft, headerCenter, headerRight, color }) {
+function Header({ headerLeft, headerTitle, headerRight, color }) {
   return (
     <Base color={color}>
       <Left>{headerLeft}</Left>
-      <Center>{headerCenter && headerCenter}</Center>
-      <Right>{headerRight || null}</Right>
+      <Center>{headerTitle}</Center>
+      <Right>{headerRight}</Right>
     </Base>
   )
 }

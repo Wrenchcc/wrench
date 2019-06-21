@@ -11,13 +11,14 @@ import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import { uploadFiles } from 'utils/storage/s3'
 import SelectedFiles from 'features/project/components/SelectedFiles'
-import { Header, Input, KeyboardAvoidingView } from 'ui'
+import { Header, Input, KeyboardAvoidingView, Icon, Text } from 'ui'
+import { arrowLeft } from 'images'
 
 function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
+  const { dismissModal, navigateBack } = useNavigation()
 
-  const { files, caption, projectId } = usePostStore(store => ({
+  const { files, caption, update, projectId, setIsPosting } = usePostStore(store => ({
     caption: store.caption,
     files: store.files,
     projectId: store.projectId,
@@ -27,21 +28,29 @@ function AddPost({ projects, addPost: addPostMutation }) {
 
   const toastActions = useToastStore(store => store.actions)
 
-  const handleAddPost = async () => {
-    navigate(SCREENS.FEED)
+  const handleNavigationBack = useCallback(() => {
+    navigateBack()
+  }, [])
 
-    setIsPosting(true)
+  const onChangeText = value => useCallback(update('caption', value), [update])
+
+  const handleAddPost = async () => {
+    dismissModal(SCREENS.FEED)
+
+    // setIsPosting(true)
 
     try {
-      const uploadedFiles = await uploadFiles(files)
+      // const uploadedFiles = await uploadFiles(files)
+      //
+      // await addPostMutation({
+      //   caption,
+      //   files: uploadedFiles,
+      //   projectId,
+      // })
 
-      await addPostMutation({
-        caption,
-        files: uploadedFiles,
-        projectId,
-      })
-
-      setIsPosting(false)
+      setTimeout(() => {
+        setIsPosting(false)
+      }, 5000)
 
       track(events.POST_CREATED)
     } catch (err) {
@@ -58,14 +67,15 @@ function AddPost({ projects, addPost: addPostMutation }) {
 
   return (
     <>
-      {/*<Header
-        changeProject={PostContainer.changeProject}
-        closeSelectProject={PostContainer.closeSelectProject}
-        selectedProjectId={PostContainer.state.selectedProjectId}
-        selectProjectOpen={PostContainer.state.selectProjectOpen}
-        addPostAction={handleAddPost}
-        toggleSelectProject={PostContainer.toggleSelectProject}
-      />*/}
+      <Header
+        headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
+        headerRight={
+          <Text medium onPress={handleAddPost}>
+            {t('AddPost:add')}
+          </Text>
+        }
+      />
+
       <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView style={{ paddingHorizontal: 20 }}>
           <SelectedFiles selectedFiles={files} />
@@ -76,7 +86,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
             autoFocus
             waitForRender
             color="dark"
-            onChangeText={value => update('caption', value)}
+            onChangeText={onChangeText}
             placeholder={t('AddPost:placeholder')}
             value={caption}
           />

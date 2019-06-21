@@ -15,7 +15,7 @@ function AddMedia() {
 
   const { onSelect, onEdit, file, hasFiles } = usePostStore(store => ({
     file: store.files.find(f => f.id === store.id),
-    hasFiles: store.files.length,
+    hasFiles: store.files.length > 0,
     onEdit: store.actions.onEdit,
     onSelect: store.actions.onSelect,
   }))
@@ -34,7 +34,7 @@ function AddMedia() {
         headerLeft={<Icon source={close} onPress={handleDismissModal} />}
         headerRight={
           hasFiles && (
-            <Text color="white" onPress={handleNaivgation}>
+            <Text color="white" onPress={handleNaivgation} medium>
               {t('AddMedia:next')}
             </Text>
           )

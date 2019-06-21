@@ -88,7 +88,7 @@ function WebView({ url: initialUrl }) {
     <Base>
       <Header
         headerLeft={<Icon onPress={handleClose} source={closeDark} />}
-        headerCenter={
+        headerTitle={
           <View style={{ alignItems: 'center' }}>
             <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>
               {title}

@@ -5,7 +5,11 @@ import { usePostStore } from 'store'
 import Text from 'ui/Text'
 import { Base, Inner, Cover, Content, Loader } from './styles'
 
-const transition = <Transition.Change interpolation="easeInOut" type="fade" durationMs={500} />
+const transition = (
+  <Transition.Together>
+    <Transition.Change interpolation="easeInOut" />
+  </Transition.Together>
+)
 
 function Posting() {
   const ref = useRef()
@@ -13,13 +17,13 @@ function Posting() {
 
   const { image, title, isPosting } = usePostStore(store => ({
     image: store.files[0],
-    title: store.title,
     isPosting: store.isPosting,
+    title: store.title,
   }))
 
   useEffect(() => {
     ref.current.animateNextTransition()
-  }, [isPosting])
+  }, [ref, isPosting])
 
   return (
     <Transitioning.View ref={ref} transition={transition}>
