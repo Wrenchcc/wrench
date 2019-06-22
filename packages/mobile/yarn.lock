@@ -5299,12 +5299,13 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@2.5.6:
-  version "2.5.6"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.6.tgz#98a59d0eea31432ed001e6a033e11a58139ffc31"
-  integrity sha512-WWX5UykTtmW6+awjqEsSWSdvVyZv/vsavUgpdI4ddn4CBdz47INC+iTdJBnYaUFMB24GmqjFFSoSd98gu1xqKA==
+react-apollo@^2.5.8:
+  version "2.5.8"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.8.tgz#c7a593b027efeefdd8399885e0ac6bec3b32623c"
+  integrity sha512-60yOQrnNosxU/tRbOxGDaYNLFcOKmQqxHPhxyvKTlGIaF/rRCXQRKixUgWVffpEupSHHD7psY5k5ZOuZsdsSGQ==
   dependencies:
     apollo-utilities "^1.3.0"
+    fast-json-stable-stringify "^2.0.0"
     hoist-non-react-statics "^3.3.0"
     lodash.isequal "^4.5.0"
     prop-types "^15.7.2"
@@ -5364,10 +5365,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.1.2.tgz#5c553498e8930410aa65796b83f8f8c8fb9893b4"
-  integrity sha512-q14hVR0eLRXnKeRyKX4naydXstCWetCIL+K+vUqREGkVj6qKoBouKd2yd8AxBfyomQN4uP3XRT6hTCwErIj9Ew==
+react-native-device-info@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.1.3.tgz#7463f826a420a53210be89cf671345d1fa92843f"
+  integrity sha512-PmF2dHjoxzYfq0VQ+a1E82z2Bf+8svUk2JoYmgkAI/EPrWfbrKYSC3WxRv4/VAUS0RsGMLnYw+Ygtuf4hIXpew==
 
 react-native-fast-image@^6.0.3:
   version "6.0.3"
@@ -5463,10 +5464,10 @@ react-native-splash-screen@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
   integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
 
-react-native-tab-view@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.6.1.tgz#6b2400527b992f9410fd818c2dcff151044a07c1"
-  integrity sha512-56F3uUItJ/v3yabp7cUu5GVDCX+0/ARuezJSd1/9HxUyaBB8kc17X+pyK8+vE0rie0ky3gJsKhm2mvyFi7LGnA==
+react-native-tab-view@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.6.2.tgz#ecb712e5669744e712dd36cb3e00cc2e27076a72"
+  integrity sha512-AM1Zjjkrl31BE5q6LUirhvXInXebplXdcnWyBdu1uFR6H6nAxlpr9KBbV/N3I/ylqjAyoD4YNz/hJwkpeaVUcQ==
 
 react-native-unimodules@^0.3.1:
   version "0.3.1"
@@ -5492,10 +5493,10 @@ react-native-unimodules@^0.3.1:
     unimodules-sensors-interface "~1.0.0"
     unimodules-task-manager-interface "~1.0.0"
 
-react-native-video@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.4.1.tgz#12c6a8bfbabfa7641338a52db3d857ac3073a4fd"
-  integrity sha512-gTZKRqa4NkEBx6t6iAzTFlgxDY23IZW/8YClR0hMzhOD0/9I/AzOBBaOXDyFeKj4EQF+uZ/LUS3r+oDnz1ks5w==
+react-native-video@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.4.2.tgz#1abf2a50758cca9285b8807e945fb560316d9ae3"
+  integrity sha512-bF17FOSTdrFHeUmN6t4cCa0kLaJT3uzYw1rCzvHFEdkCmdTG4Kcin/cfJ2E29jFViqw2uBPfW6m1y2yI2cgOCQ==
   dependencies:
     keymirror "^0.1.1"
     prop-types "^15.5.10"

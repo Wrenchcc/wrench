@@ -5,8 +5,6 @@ export const Base = styled.View`
   background-color: ${COLORS.ULTRA_LIGHT_GREY};
   opacity: 0.96;
   width: 100%;
-  overflow: hidden;
-  top: 0;
   height: 60;
 `
 

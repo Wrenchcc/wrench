@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { usePostStore } from 'store'
@@ -6,12 +6,20 @@ import Text from 'ui/Text'
 import { Base, Inner, Cover, Content, Loader } from './styles'
 
 const transition = (
-  <Transition.Together>
+  <Transition.Sequence>
+    {/*<Transition.Out
+      type="slide-bottom"
+      durationMs={550}
+      interpolation="easeOut"
+      propagation="bottom"
+    />*/}
     <Transition.Change interpolation="easeInOut" />
-  </Transition.Together>
+    <Transition.In type="slide-top" durationMs={150} interpolation="easeOut" propagation="top" />
+  </Transition.Sequence>
 )
 
 function Posting() {
+  const [visible, setVisible] = useState(false)
   const ref = useRef()
   const { t } = useTranslation()
 
@@ -23,11 +31,12 @@ function Posting() {
 
   useEffect(() => {
     ref.current.animateNextTransition()
+    setVisible(isPosting)
   }, [ref, isPosting])
 
   return (
     <Transitioning.View ref={ref} transition={transition}>
-      {isPosting && (
+      {visible && (
         <Base>
           <Inner>
             <Content>

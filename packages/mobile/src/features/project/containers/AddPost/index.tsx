@@ -36,8 +36,13 @@ function AddPost({ projects, addPost: addPostMutation }) {
 
   const handleAddPost = async () => {
     dismissModal(SCREENS.FEED)
-
     // setIsPosting(true)
+
+    //  toastActions.show({
+    //   content: t('AddPost:error'),
+    //   dismissAfter: 6000,
+    //   type: TOAST_TYPES.ERROR,
+    // })
 
     try {
       // const uploadedFiles = await uploadFiles(files)
@@ -48,9 +53,9 @@ function AddPost({ projects, addPost: addPostMutation }) {
       //   projectId,
       // })
 
-      setTimeout(() => {
-        setIsPosting(false)
-      }, 5000)
+      // setTimeout(() => {
+      //   setIsPosting(false)
+      // }, 5000)
 
       track(events.POST_CREATED)
     } catch (err) {
