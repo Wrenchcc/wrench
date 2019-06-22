@@ -10,9 +10,10 @@ import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import { uploadFiles } from 'utils/storage/s3'
-import SelectedFiles from 'features/project/components/SelectedFiles'
 import { Header, Input, KeyboardAvoidingView, Icon, Text } from 'ui'
 import { arrowLeft } from 'images'
+import SelectedFiles from '../../components/SelectedFiles'
+import SelectProject from '../../components/SelectProject'
 
 function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
@@ -32,7 +33,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
     navigateBack()
   }, [])
 
-  const onChangeText = value => useCallback(update('caption', value), [update])
+  const onChangeText = useCallback(value => update('caption', value), [update])
 
   const handleAddPost = async () => {
     dismissModal(SCREENS.FEED)
@@ -80,6 +81,8 @@ function AddPost({ projects, addPost: addPostMutation }) {
           </Text>
         }
       />
+
+      <SelectProject />
 
       <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView style={{ paddingHorizontal: 20 }}>

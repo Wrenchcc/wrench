@@ -7,6 +7,7 @@ import { close } from 'images'
 import Camera from '../../components/Camera'
 import ImageEditor from '../../components/ImageEditor'
 import MediaPicker from '../../components/MediaPicker'
+import SelectProject from '../../components/SelectProject'
 import { Placeholder } from './styles'
 
 function AddMedia() {
@@ -20,7 +21,7 @@ function AddMedia() {
     onSelect: store.actions.onSelect,
   }))
 
-  const handleNaivgation = useCallback(() => {
+  const handleNavigation = useCallback(() => {
     navigate(SCREENS.ADD_POST)
   }, [])
 
@@ -34,13 +35,16 @@ function AddMedia() {
         headerLeft={<Icon source={close} onPress={handleDismissModal} />}
         headerRight={
           hasFiles && (
-            <Text color="white" onPress={handleNaivgation} medium>
+            <Text color="white" onPress={handleNavigation} medium>
               {t('AddMedia:next')}
             </Text>
           )
         }
         color="black"
       />
+
+      <SelectProject />
+
       <Placeholder>
         {file ? <ImageEditor file={file} onEdit={onEdit} /> : <Camera onTakePicture={onSelect} />}
       </Placeholder>

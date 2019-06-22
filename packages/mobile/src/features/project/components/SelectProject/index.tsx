@@ -1,69 +1,73 @@
-import React, { useCallback, useRef, useEffect } from 'react'
-import { Animated, InteractionManager } from 'react-native'
-import { useTranslation } from 'react-i18next'
-import { useNavigation, SCREENS } from 'navigation'
-import { Text } from 'ui'
-import Project from './Project'
-import { Base, Scroll, NewProject, SPACER, BUTTON_HEIGHT, ITEM_HEIGHT } from './styles'
+import React, { useState, useCallback } from 'react'
+import { pathOr } from 'ramda'
+import { usePostStore } from 'store'
+import Text from 'ui/Text'
+import { arrowDown, arrowUpGrey, arrowDownGrey } from 'images'
+import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
+import List from './List'
+import { Base, Icon } from './styles'
 
-function SelectProject({ projects, onPress, selectedProjectId, onClose, expanded }) {
-  const { t } = useTranslation()
-  const animatedValue = useRef(new Animated.Value(0))
-  const { showModal } = useNavigation()
+function getProjectById(id, projects) {
+  const project = projects.find(({ node }) => node.id === id)
+  return pathOr(projects[0].node, ['node'], project)
+}
 
-  const handleNavigation = useCallback(() => {
-    showModal(SCREENS.ADD_PROJECT)
-    InteractionManager.runAfterInteractions(() => {
-      onClose()
-    })
-  }, [onClose])
+function SelectProject({ dark = false, projects }) {
+  const [isOpen, setIsOpen] = useState(false)
 
-  const getHeight = useCallback(() => {
-    const itemCount = Object.keys(projects).length
-    const itemsHeight = itemCount >= 4 ? 4 : itemCount
-    return itemsHeight * ITEM_HEIGHT + BUTTON_HEIGHT + SPACER
-  }, [projects])
+  const { id, title, update } = usePostStore(
+    store => ({
+      id: getProjectById(store.id, projects).id,
+      title: getProjectById(store.id, projects).title,
+      update: store.actions.update,
+    }),
+    [projects]
+  )
 
-  useEffect(() => {
-    Animated.spring(animatedValue.current, {
-      toValue: expanded ? getHeight() : 0,
-      bounciness: 0,
-      speed: 7,
-    }).start()
-  }, [expanded])
+  const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
+  const handleClose = useCallback(() => setIsOpen(false), [])
 
-  const renderProjects = () =>
-    projects
-      .slice()
-      .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)
-      .reverse()
-      .map(({ node }) => (
-        <Project
-          key={node.id}
-          {...node}
-          onPress={onPress}
-          selected={selectedProjectId === node.id}
-        />
-      ))
+  const handleOnPress = useCallback(
+    selectedId => {
+      handleClose(false)
+      update('id', selectedId)
+    },
+    [handleClose, update]
+  )
+
+  let icon
+
+  if (isOpen) {
+    icon = arrowUpGrey
+  } else if (dark) {
+    icon = arrowDownGrey
+  } else {
+    icon = arrowDown
+  }
 
   return (
-    <Animated.View
-      style={{
-        position: 'absolute',
-        overflow: 'hidden',
-        width: '100%',
-        zIndex: 10,
-        height: animatedValue.current,
-      }}
-    >
-      <Base>
-        <Scroll>{renderProjects()}</Scroll>
-        <NewProject onPress={handleNavigation}>
-          <Text medium>{t('SelectProject:create')}</Text>
-        </NewProject>
+    <>
+      <Base onPress={toggleOpen} hapticFeedback="impactLight" activeOpacity={0.8}>
+        <Text
+          color={(dark && 'dark') || isOpen ? 'dark' : 'white'}
+          medium
+          style={{ zIndex: 100 }}
+          numberOfLines={1}
+        >
+          {title}
+        </Text>
+        <Icon source={icon} />
       </Base>
-    </Animated.View>
+
+      <List
+        projects={projects}
+        selectedId={id}
+        open={isOpen}
+        onPress={handleOnPress}
+        onClose={handleClose}
+      />
+    </>
   )
 }
 
-export default SelectProject
+export default getCurrentUserProjects(SelectProject)

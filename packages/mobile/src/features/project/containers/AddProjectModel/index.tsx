@@ -3,55 +3,77 @@ import { useTranslation } from 'react-i18next'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { useNavigation } from 'navigation'
 import { useProjectStore } from 'store'
-import { Header, Title, Input, KeyboardAvoidingView } from 'ui'
+import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 
-function AddProjectModel({ addProject }) {
+function formatModel(model) {
+  return `${model.brand.name} ${model.model} ${model.year}`
+}
+
+function AddProjectModel({ addProject: addProjectMutation }) {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
+  const { navigate, navigateBack, dismissModal } = useNavigation()
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
 
   const { update, model } = useProjectStore(store => ({
-    update: store.actions.update,
     model: store.model,
+    update: store.actions.update,
   }))
 
-  const handleNavigation = useCallback(() => {
-    navigate(SCREENS.ADD_MEDIA)
-  }, [])
+  const handleNavigationBack = useCallback(() => {
+    navigateBack()
+  }, [navigateBack])
 
-  // const getActionRight = () => {
-  //   if (project.model) {
-  //     return () => {
-  //       update('isSaving', true)
-  //       addProject({
-  //         title: project.title,
-  //         projectTypeId: project.typeId,
-  //         modelId: project.model.id,
-  //       }).then(() => {
-  //         handleNavigation()
-  //         resetState
-  //       })
-  //     }
-  //   }
-  //
-  //   return null
-  // }
+  const onChangeText = useCallback(
+    value => {
+      if (model) {
+        update('model', null)
+      } else {
+        if (!isSearching) {
+          setIsSearching(true)
+        }
+        setQuery(value)
+      }
+    },
+    [setQuery, update, model]
+  )
 
-  const value = model ? `${model.brand.name} ${model.model} ${model.year}` : query
+  const handleSave = async () => {
+    // await addProjectMutation({
+    //   modelId: project.model.id,
+    //   projectTypeId: project.typeId,
+    //   title: project.title,
+    // })
+
+    dismissModal()
+  }
+
+  const handleModelChange = useCallback(
+    selectedModel => {
+      setIsSearching(false)
+      update('model', selectedModel)
+      setQuery(formatModel(selectedModel))
+    },
+    [update, setIsSearching, setQuery]
+  )
 
   return (
     <>
-      {/*<Header
-        actionRight={getActionRight}
-        translationKey="add"
-        icon={arrowLeft}
-        isSaving={state.isSaving}
-      />*/}
+      <Header
+        headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
+        headerTitle={<Text medium>{t('AddProject:headerTitle')}</Text>}
+        headerRight={
+          model && (
+            <Text onPress={handleSave} medium>
+              {t('AddProject:add')}
+            </Text>
+          )
+        }
+      />
       <KeyboardAvoidingView>
-        {isSearching && <SearchModel query={query} onPress={model => update('model', model)} />}
+        {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
 
         <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
           {t('AddProjectModel:title')}
@@ -62,12 +84,11 @@ function AddProjectModel({ addProject }) {
           autoFocus
           waitForRender
           large
-          onChangeText={setQuery}
-          value={value}
+          onChangeText={onChangeText}
+          value={model ? formatModel(model) : query}
           borderColor="dark"
           color="dark"
           returnKeyType="next"
-          onFocus={() => setIsSearching(true)}
           onBlur={() => setIsSearching(false)}
         />
       </KeyboardAvoidingView>

@@ -75,15 +75,19 @@
       "add": "Share"
     },
     "AddProject": {
+      "headerTitle": "Add project",
       "title": "Choose a title for your project.",
-      "placeholder": "E.g. Honda Cafe Racer"
+      "placeholder": "E.g. Honda Cafe Racer",
+      "next": "Next"
     },
     "AddProjectModel": {
       "title": "Search and pick your model.",
       "placeholder": "E.g. BMW R100 1981"
     },
     "AddProjectType": {
-      "title": "Pick your category"
+      "headerTitle": "Add project",
+      "title": "Pick your category",
+      "next": "Next"
     },
     "Comments": {
       "title": "Comments"
@@ -329,15 +333,19 @@
       "add": "Dela"
     },
     "AddProject": {
+      "headerTitle": "Skapa projekt",
       "title": "Välj en titel på ditt projekt.",
-      "placeholder": "Ex. Honda Cafe Racer"
+      "placeholder": "Ex. Honda Cafe Racer",
+      "next": "Nästa"
     },
     "AddProjectModel": {
       "title": "Sök och välj din modell.",
       "placeholder": "Ex. BMW R100 1981"
     },
     "AddProjectType": {
-      "title": "Välj din kategori"
+      "headerTitle": "Skapa projekt",
+      "title": "Välj din kategori",
+      "next": "Nästa"
     },
     "Comments": {
       "title": "Kommentarer"
