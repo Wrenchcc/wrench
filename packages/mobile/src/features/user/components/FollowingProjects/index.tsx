@@ -20,6 +20,15 @@ function FollowingProjects({
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
+  const renderItem = ({ item }) => {
+    const onPress = () =>
+      navigate(SCREENS.PROJECT, {
+        slug: item.node.slug,
+      })
+
+    return <ProjectCard project={item.node} onPress={onPress} />
+  }
+
   return (
     <Base>
       <Title>{t('FollowingProjects:title')}</Title>
@@ -34,23 +43,12 @@ function FollowingProjects({
         hasNextPage={hasNextPage}
         horizontal
         directionalLockEnabled
-        paddingHorizontal={0}
         showsHorizontalScrollIndicator={false}
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
-        renderItem={({ item }) => (
-          <ProjectCard
-            project={item.node}
-            onPress={() =>
-              navigate(SCREENS.PROJECT, {
-                slug: item.node.slug,
-              })
-            }
-          />
-        )}
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 20 }}
         style={{
           marginLeft: -GUTTER,
           marginRight: -GUTTER,

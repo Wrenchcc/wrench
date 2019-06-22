@@ -12,7 +12,7 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
 
   const handleLoginManager = useCallback(async () => {
     try {
-      const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
+      const result = await LoginManager.logInWithPermissions(['public_profile', 'email'])
 
       if (result.isCancelled) {
         return

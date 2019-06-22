@@ -61,16 +61,16 @@ target 'Wrench' do
   ]
 
   # Required by Facebook
-  pod 'FBSDKCoreKit', '4.42.0'
-  pod 'FBSDKLoginKit', '4.42.0'
-  pod 'FBSDKShareKit', '4.42.0'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
 
   # Required by Firebase
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'Firebase/Core', '5.20.2'
-  pod 'Firebase/DynamicLinks', '5.20.2'
-  pod 'Firebase/Messaging', '5.20.2'
- 
+  pod 'Firebase/Core'
+  pod 'Firebase/DynamicLinks'
+  pod 'Firebase/Messaging'
+
   # react-native-fast-image WebP support
   pod 'SDWebImageWebPCoder'
 

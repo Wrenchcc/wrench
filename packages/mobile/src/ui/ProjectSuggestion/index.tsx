@@ -16,6 +16,19 @@ function ProjectSuggestion({
 }) {
   const { navigate } = useNavigation()
 
+  const renderItem = ({ item, index }) => {
+    const onPress = () => navigate(SCREENS.PROJECT, { slug: item.node.slug })
+
+    return (
+      <ProjectCard
+        first={index === 0}
+        last={index === data.length - 1}
+        project={item.node}
+        onPress={onPress}
+      />
+    )
+  }
+
   return (
     <>
       <Title fontSize={21}>{title}</Title>
@@ -34,14 +47,7 @@ function ProjectSuggestion({
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
-        renderItem={({ item, index }) => (
-          <ProjectCard
-            first={index === 0}
-            last={index === data.length - 1}
-            project={item.node}
-            onPress={() => navigate(SCREENS.PROJECT, { slug: item.node.slug })}
-          />
-        )}
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         style={{
           marginLeft: -GUTTER,
