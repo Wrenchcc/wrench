@@ -81,13 +81,14 @@
       "next": "Next"
     },
     "AddProjectModel": {
+      "add": "Add",
       "title": "Search and pick your model.",
-      "placeholder": "E.g. BMW R100 1981"
+      "placeholder": "E.g. BMW R100 1981",
+      "headerTitle": "Add project"
     },
     "AddProjectType": {
       "headerTitle": "Add project",
-      "title": "Pick your category",
-      "next": "Next"
+      "title": "Pick your category"
     },
     "Comments": {
       "title": "Comments"
@@ -339,13 +340,14 @@
       "next": "Nästa"
     },
     "AddProjectModel": {
+      "add": "Lägg till",
       "title": "Sök och välj din modell.",
-      "placeholder": "Ex. BMW R100 1981"
+      "placeholder": "Ex. BMW R100 1981",
+      "headerTitle": "Skapa projekt"
     },
     "AddProjectType": {
       "headerTitle": "Skapa projekt",
-      "title": "Välj din kategori",
-      "next": "Nästa"
+      "title": "Välj din kategori"
     },
     "Comments": {
       "title": "Kommentarer"

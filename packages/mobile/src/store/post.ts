@@ -5,12 +5,16 @@ import { findIndex, propEq } from 'ramda'
 
 const MAX_SELECTED_FILES = 10
 
-const [usePostStore, api] = create(set => ({
+const initialState = {
   caption: null,
   files: [],
   id: null,
   isPosting: false,
   projectId: null,
+}
+
+const [usePostStore, api] = create(set => ({
+  ...initialState,
 
   actions: {
     onSelect: payload =>
@@ -44,6 +48,8 @@ const [usePostStore, api] = create(set => ({
 
     onEdit: () => {},
 
+    reset: () => set(initialState),
+
     setIsPosting: payload => set({ isPosting: payload }),
     update: async (field, payload) => {
       if (field === 'id') {
@@ -54,7 +60,6 @@ const [usePostStore, api] = create(set => ({
   },
 }))
 
-// TODO: Async Initial state
 async function initSelectedProject() {
   const id = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
   api.setState({ id })

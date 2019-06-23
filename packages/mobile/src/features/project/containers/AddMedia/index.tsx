@@ -14,11 +14,12 @@ function AddMedia() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
 
-  const { onSelect, onEdit, file, hasFiles } = usePostStore(store => ({
-    file: store.files.find(f => f.id === store.id),
+  const { onSelect, onEdit, file, hasFiles, reset } = usePostStore(store => ({
+    file: store.files.find(({ id }) => id === store.id),
     hasFiles: store.files.length > 0,
     onEdit: store.actions.onEdit,
     onSelect: store.actions.onSelect,
+    reset: store.actions.reset,
   }))
 
   const handleNavigation = useCallback(() => {
@@ -26,8 +27,13 @@ function AddMedia() {
   }, [])
 
   const handleDismissModal = useCallback(() => {
+    if (hasFiles) {
+      // alert('dismiss?')
+      reset()
+    }
+
     dismissModal()
-  }, [])
+  }, [hasFiles, reset])
 
   return (
     <>

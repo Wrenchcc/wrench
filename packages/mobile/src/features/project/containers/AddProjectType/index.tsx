@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { usePostStore } from 'store'
@@ -33,16 +32,9 @@ function AddProjectType() {
       />
       <ProjectCategories
         ListHeaderComponent={
-          <View
-            style={{
-              flex: 1,
-              paddingTop: 30,
-            }}
-          >
-            <Title large numberOfLines={0} style={{ paddingHorizontal: 20, paddingBottom: 50 }}>
-              {t('AddProjectType:title')}
-            </Title>
-          </View>
+          <Title large numberOfLines={0} style={{ paddingHorizontal: 20, paddingVertical: 50 }}>
+            {t('AddProjectType:title')}
+          </Title>
         }
         onSelect={handleOnSelect}
       />

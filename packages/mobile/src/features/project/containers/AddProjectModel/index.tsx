@@ -17,8 +17,11 @@ function AddProjectModel({ addProject: addProjectMutation }) {
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
 
-  const { update, model } = useProjectStore(store => ({
+  const { update, reset, model, type, title } = useProjectStore(store => ({
     model: store.model,
+    reset: store.actions.reset,
+    title: store.title,
+    type: store.type,
     update: store.actions.update,
   }))
 
@@ -28,25 +31,27 @@ function AddProjectModel({ addProject: addProjectMutation }) {
 
   const onChangeText = useCallback(
     value => {
+      setQuery(value)
+
       if (model) {
         update('model', null)
       } else {
         if (!isSearching) {
           setIsSearching(true)
         }
-        setQuery(value)
       }
     },
     [setQuery, update, model]
   )
 
   const handleSave = async () => {
-    // await addProjectMutation({
-    //   modelId: project.model.id,
-    //   projectTypeId: project.typeId,
-    //   title: project.title,
-    // })
+    await addProjectMutation({
+      modelId: model.id,
+      projectTypeId: type,
+      title,
+    })
 
+    reset()
     dismissModal()
   }
 
@@ -59,15 +64,17 @@ function AddProjectModel({ addProject: addProjectMutation }) {
     [update, setIsSearching, setQuery]
   )
 
+  const handleOnBlur = useCallback(() => setIsSearching(false), [setIsSearching])
+
   return (
     <>
       <Header
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
-        headerTitle={<Text medium>{t('AddProject:headerTitle')}</Text>}
+        headerTitle={<Text medium>{t('AddProjectModel:headerTitle')}</Text>}
         headerRight={
           model && (
             <Text onPress={handleSave} medium>
-              {t('AddProject:add')}
+              {t('AddProjectModel:add')}
             </Text>
           )
         }
@@ -89,7 +96,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
           borderColor="dark"
           color="dark"
           returnKeyType="next"
-          onBlur={() => setIsSearching(false)}
+          onBlur={handleOnBlur}
         />
       </KeyboardAvoidingView>
     </>

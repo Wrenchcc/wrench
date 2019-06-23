@@ -1,11 +1,16 @@
 import create from 'zustand'
 
-const [useProjectStore] = create(set => ({
+const initialState = {
   model: null,
   title: null,
   type: null,
+}
+
+const [useProjectStore] = create(set => ({
+  ...initialState,
 
   actions: {
+    reset: () => set(initialState),
     update: (field, payload) => set({ [field]: payload }),
   },
 }))

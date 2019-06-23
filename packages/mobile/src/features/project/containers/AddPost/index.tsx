@@ -19,10 +19,11 @@ function AddPost({ projects, addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { dismissModal, navigateBack } = useNavigation()
 
-  const { files, caption, update, projectId, setIsPosting } = usePostStore(store => ({
+  const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({
     caption: store.caption,
     files: store.files,
     projectId: store.projectId,
+    reset: store.actions.reset,
     setIsPosting: store.actions.setIsPosting,
     update: store.actions.update,
   }))
@@ -57,6 +58,8 @@ function AddPost({ projects, addPost: addPostMutation }) {
       // setTimeout(() => {
       //   setIsPosting(false)
       // }, 5000)
+
+      reset()
 
       track(events.POST_CREATED)
     } catch (err) {

@@ -9,8 +9,9 @@ function AddProject() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
 
-  const { update, title, hasTitle } = useProjectStore(store => ({
+  const { update, title, hasTitle, reset } = useProjectStore(store => ({
     hasTitle: !!store.title,
+    reset: store.actions.reset,
     title: store.title,
     update: store.actions.update,
   }))
@@ -20,8 +21,13 @@ function AddProject() {
   }, [])
 
   const handleDismissModal = useCallback(() => {
+    if (hasTitle) {
+      // alert('dismiss?')
+      reset()
+    }
+
     dismissModal()
-  }, [])
+  }, [hasTitle, reset])
 
   const onChangeText = useCallback(value => update('title', value), [update])
 
