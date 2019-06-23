@@ -9,6 +9,7 @@ const MAX_SELECTED_FILES = 10
 const initialState = {
   [POST.CAPTION]: null,
   [POST.FILES]: [],
+  [POST.SELECTED_ID]: null,
   [POST.PROJECT_ID]: null,
   [POST.IS_POSTING]: false,
 }
@@ -21,28 +22,22 @@ const [usePostStore, api] = create(set => ({
       set(state => {
         const currentId = payload.id
         const isAdded = state.files.some(file => file.id === currentId)
-        const prevSelected = state.id === currentId
-        const index = findIndex(propEq('id', currentId))(state.files)
-        const id = currentId //prevSelected ? state.files[index - 1 || 0].id : payload.id
+        const isPrevious = state.selectedId === currentId
+        const currentIndex = findIndex(propEq('id', currentId))(state.files) || state.files.length
+        const selectedId = isPrevious
+          ? state.files.length && state.files[currentIndex - 1 || 0].id
+          : payload.id
 
-        // console.log(
-        //   state.files.length > 0
-        //     ? prevSelected
-        //       ? state.files[index - 1 || 0].id
-        //       : payload.id
-        //     : null
-        // )
-
-        if (!prevSelected && !isAdded && state.files.length === MAX_SELECTED_FILES) {
+        if (!isPrevious && !isAdded && state.files.length === MAX_SELECTED_FILES) {
           return state
         }
 
         return {
           files:
-            prevSelected && isAdded
+            isPrevious && isAdded
               ? state.files.filter(file => file.id !== currentId)
               : state.files.concat(payload),
-          id,
+          selectedId,
         }
       }),
 
@@ -60,11 +55,11 @@ const [usePostStore, api] = create(set => ({
   },
 }))
 
-async function initSelectedProject() {
+async function initSelectedProjectId() {
   const id = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
-  api.setState({ id })
+  api.setState({ [POST.PROJECT_ID]: id })
 }
 
-initSelectedProject()
+initSelectedProjectId()
 
 export default usePostStore

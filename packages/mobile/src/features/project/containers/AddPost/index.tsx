@@ -47,7 +47,6 @@ function AddPost({ addPost: addPostMutation }) {
         projectId,
       })
 
-      setIsPosting(true)
       reset()
       track(events.POST_CREATED)
     } catch (err) {

@@ -17,7 +17,7 @@ function AddMedia() {
   const toggleActionSheet = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
   const { onSelect, onEdit, file, hasFiles, reset } = usePostStore(store => ({
-    file: store.files.find(({ id }) => id === store.id),
+    file: store.files.find(({ id }) => id === store.selectedId),
     hasFiles: store.files.length > 0,
     onEdit: store.actions.onEdit,
     onSelect: store.actions.onSelect,

@@ -27,9 +27,9 @@ function Project({
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
-        username: project.user && project.user.username,
+        username: project.user.username,
       }),
-    [project.user, project]
+    [project, project]
   )
 
   const handleFollow = useCallback(() => followProjectMutation(project.id), [project])

@@ -5,7 +5,6 @@ import { handleDynamicLink, handlePushNotification } from 'utils/dynamicLinks'
 import { trackScreen } from 'utils/analytics'
 import 'i18n'
 
-// TODO: Fix setTimeout
 Navigation.events().registerAppLaunchedListener(async () => {
   Bootstrap()
 
@@ -15,27 +14,19 @@ Navigation.events().registerAppLaunchedListener(async () => {
 
   const initialLink = await links().getInitialLink()
   if (initialLink) {
-    setTimeout(() => {
-      handleDynamicLink(initialLink)
-    }, 500)
+    handleDynamicLink(initialLink)
   }
 
-  setTimeout(() => {
-    links().onLink(handleDynamicLink)
-  }, 500)
+  links().onLink(handleDynamicLink)
 
   const notificationOpen = await notifications().getInitialNotification()
   if (notificationOpen && notificationOpen.notification.data) {
-    setTimeout(() => {
-      handlePushNotification(notificationOpen.notification.data.path)
-    }, 500)
+    handlePushNotification(notificationOpen.notification.data.path)
   }
 
   notifications().onNotificationOpened(({ notification }) => {
     if (notification.data) {
-      setTimeout(() => {
-        handlePushNotification(notification.data.path)
-      }, 500)
+      handlePushNotification(notification.data.path)
     }
   })
 })

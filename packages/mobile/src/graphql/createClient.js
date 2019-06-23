@@ -28,8 +28,7 @@ export default () => {
   client.onResetStore(() => {
     track(events.USER_SIGNED_OUT)
 
-    // TODO: Why is this flicker background?
-    setTimeout(clearTokens, 100)
+    clearTokens()
 
     AuthNavigation()
 
