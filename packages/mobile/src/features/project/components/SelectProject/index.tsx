@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { pathOr } from 'ramda'
-import { usePostStore } from 'store'
+import { usePostStore, POST } from 'store'
 import Text from 'ui/Text'
 import { arrowDown, arrowUpGrey, arrowDownGrey } from 'images'
 import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
@@ -15,10 +15,10 @@ function getProjectById(id, projects) {
 function SelectProject({ dark = false, projects }) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const { id, title, update } = usePostStore(
+  const { projectId, title, update } = usePostStore(
     store => ({
-      id: getProjectById(store.id, projects).id,
-      title: getProjectById(store.id, projects).title,
+      projectId: getProjectById(store.projectId, projects).projectId,
+      title: getProjectById(store.projectId, projects).title,
       update: store.actions.update,
     }),
     [projects]
@@ -30,7 +30,7 @@ function SelectProject({ dark = false, projects }) {
   const handleOnPress = useCallback(
     selectedId => {
       handleClose(false)
-      update('id', selectedId)
+      update(POST.PROJECT_ID, selectedId)
     },
     [handleClose, update]
   )
@@ -61,7 +61,7 @@ function SelectProject({ dark = false, projects }) {
 
       <List
         projects={projects}
-        selectedId={id}
+        selectedId={projectId}
         open={isOpen}
         onPress={handleOnPress}
         onClose={handleClose}

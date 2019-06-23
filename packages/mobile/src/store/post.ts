@@ -2,15 +2,15 @@ import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq } from 'ramda'
+import { POST } from './constants'
 
 const MAX_SELECTED_FILES = 10
 
 const initialState = {
-  caption: null,
-  files: [],
-  id: null,
-  isPosting: false,
-  projectId: null,
+  [POST.CAPTION]: null,
+  [POST.FILES]: [],
+  [POST.PROJECT_ID]: null,
+  [POST.IS_POSTING]: false,
 }
 
 const [usePostStore, api] = create(set => ({
@@ -52,7 +52,7 @@ const [usePostStore, api] = create(set => ({
 
     setIsPosting: payload => set({ isPosting: payload }),
     update: async (field, payload) => {
-      if (field === 'id') {
+      if (field === POST.PROJECT_ID) {
         AsyncStorage.setItem(SELECTED_PROJECT_KEY, payload)
       }
       set({ [field]: payload })

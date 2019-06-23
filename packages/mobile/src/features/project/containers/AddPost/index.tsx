@@ -1,11 +1,9 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { compose } from 'react-apollo'
 import { useNavigation, SCREENS } from 'navigation'
-import { usePostStore, useToastStore } from 'store'
+import { usePostStore, useToastStore, POST } from 'store'
 import { addPost } from 'graphql/mutations/post/addPost'
-import { getCurrentUserProjects } from 'graphql/queries/user/getCurrentUserProjects'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
@@ -15,7 +13,7 @@ import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
 
-function AddPost({ projects, addPost: addPostMutation }) {
+function AddPost({ addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { dismissModal, navigateBack } = useNavigation()
 
@@ -32,35 +30,25 @@ function AddPost({ projects, addPost: addPostMutation }) {
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
-  }, [])
+  }, [navigateBack])
 
-  const onChangeText = useCallback(value => update('caption', value), [update])
+  const onChangeText = useCallback(value => update(POST.CAPTION, value), [update])
 
   const handleAddPost = async () => {
     dismissModal(SCREENS.FEED)
-    // setIsPosting(true)
-
-    //  toastActions.show({
-    //   content: t('AddPost:error'),
-    //   dismissAfter: 6000,
-    //   type: TOAST_TYPES.ERROR,
-    // })
+    setIsPosting(true)
 
     try {
-      // const uploadedFiles = await uploadFiles(files)
-      //
-      // await addPostMutation({
-      //   caption,
-      //   files: uploadedFiles,
-      //   projectId,
-      // })
+      const uploaded = await uploadFiles(files)
 
-      // setTimeout(() => {
-      //   setIsPosting(false)
-      // }, 5000)
+      await addPostMutation({
+        caption,
+        files: uploaded,
+        projectId,
+      })
 
+      setIsPosting(true)
       reset()
-
       track(events.POST_CREATED)
     } catch (err) {
       toastActions.show({
@@ -85,7 +73,7 @@ function AddPost({ projects, addPost: addPostMutation }) {
         }
       />
 
-      <SelectProject />
+      <SelectProject dark />
 
       <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView style={{ paddingHorizontal: 20 }}>
@@ -107,7 +95,4 @@ function AddPost({ projects, addPost: addPostMutation }) {
   )
 }
 
-export default compose(
-  addPost,
-  getCurrentUserProjects
-)(AddPost)
+export default addPost(AddPost)

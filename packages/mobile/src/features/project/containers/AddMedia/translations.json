@@ -1,10 +1,20 @@
 {
   "AddMedia": {
     "en": {
-      "next": "Next"
+      "next": "Next",
+      "options": {
+        "title": "If you go back now, your edits will be discarded.",
+        "discard": "Discard",
+        "cancel": "Cancel"
+      }
     },
     "sv": {
-      "next": "Nästa"
+      "next": "Nästa",
+      "options": {
+        "title": "Om du går tillbaka kommer dina val att ignoreras.",
+        "discard": "Släng",
+        "cancel": "Avbryt"
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
-import { Header, Text, Icon } from 'ui'
+import { Header, Text, Icon, ActionSheet } from 'ui'
 import { close } from 'images'
 import Camera from '../../components/Camera'
 import ImageEditor from '../../components/ImageEditor'
@@ -13,6 +13,8 @@ import { Placeholder } from './styles'
 function AddMedia() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleActionSheet = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
   const { onSelect, onEdit, file, hasFiles, reset } = usePostStore(store => ({
     file: store.files.find(({ id }) => id === store.id),
@@ -28,12 +30,19 @@ function AddMedia() {
 
   const handleDismissModal = useCallback(() => {
     if (hasFiles) {
-      // alert('dismiss?')
-      reset()
+      toggleActionSheet()
+    } else {
+      dismissModal()
     }
+  }, [hasFiles, toggleActionSheet, dismissModal])
 
+  const handleDiscard = useCallback(() => {
     dismissModal()
-  }, [hasFiles, reset])
+    // TODO: Why do reset open modal again? isOpen = true
+    setTimeout(() => {
+      reset()
+    }, 0)
+  }, [reset, dismissModal])
 
   return (
     <>
@@ -56,6 +65,20 @@ function AddMedia() {
       </Placeholder>
 
       <MediaPicker />
+
+      <ActionSheet
+        title={t('AddMedia:options:title')}
+        isOpen={isOpen}
+        onClose={toggleActionSheet}
+        destructiveButtonIndex={0}
+        options={[
+          {
+            name: t('AddMedia:options:discard'),
+            onSelect: handleDiscard,
+          },
+          { name: t('AddMedia:options:cancel') },
+        ]}
+      />
     </>
   )
 }

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { addProject } from 'graphql/mutations/project/addProject'
 import { useNavigation } from 'navigation'
-import { useProjectStore } from 'store'
+import { useProjectStore, PROJECT } from 'store'
 import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
@@ -34,7 +34,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
       setQuery(value)
 
       if (model) {
-        update('model', null)
+        update(PROJECT.MODEL, null)
       } else {
         if (!isSearching) {
           setIsSearching(true)
@@ -44,7 +44,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
     [setQuery, update, model]
   )
 
-  const handleSave = async () => {
+  const handleSave = useCallback(async () => {
     await addProjectMutation({
       modelId: model.id,
       projectTypeId: type,
@@ -53,12 +53,12 @@ function AddProjectModel({ addProject: addProjectMutation }) {
 
     reset()
     dismissModal()
-  }
+  }, [reset, dismissModal, model, type, title])
 
   const handleModelChange = useCallback(
     selectedModel => {
       setIsSearching(false)
-      update('model', selectedModel)
+      update(PROJECT.MODEL, selectedModel)
       setQuery(formatModel(selectedModel))
     },
     [update, setIsSearching, setQuery]

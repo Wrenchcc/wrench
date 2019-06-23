@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useProjectStore } from 'store'
+import { useProjectStore, PROJECT } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
 import { closeDark } from 'images'
@@ -22,14 +22,13 @@ function AddProject() {
 
   const handleDismissModal = useCallback(() => {
     if (hasTitle) {
-      // alert('dismiss?')
       reset()
     }
 
     dismissModal()
   }, [hasTitle, reset])
 
-  const onChangeText = useCallback(value => update('title', value), [update])
+  const onChangeText = useCallback(value => update(PROJECT.TITLE, value), [update])
 
   return (
     <>

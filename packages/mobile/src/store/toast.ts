@@ -1,10 +1,11 @@
 import create from 'zustand'
 import { TOAST_TYPES } from 'utils/enums'
+import { TOAST } from './constants'
 
 const initialState = {
-  content: null,
-  show: false,
-  type: TOAST_TYPES.NETWORK,
+  [TOAST.CONTENT]: null,
+  [TOAST.SHOW]: false,
+  [TOAST.TYPE]: TOAST_TYPES.NETWORK,
 }
 
 const [useToastStore] = create(set => ({

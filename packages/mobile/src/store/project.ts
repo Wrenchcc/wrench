@@ -1,9 +1,10 @@
 import create from 'zustand'
+import { PROJECT } from './constants'
 
 const initialState = {
-  model: null,
-  title: null,
-  type: null,
+  [PROJECT.MODEL]: null,
+  [PROJECT.TITLE]: null,
+  [PROJECT.TYPE]: null,
 }
 
 const [useProjectStore] = create(set => ({

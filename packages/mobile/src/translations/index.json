@@ -67,7 +67,12 @@
       "create": "Create a new project"
     },
     "AddMedia": {
-      "next": "Next"
+      "next": "Next",
+      "options": {
+        "title": "If you go back now, your edits will be discarded.",
+        "discard": "Discard",
+        "cancel": "Cancel"
+      }
     },
     "AddPost": {
       "error": "Couldn't post right now",
@@ -326,7 +331,12 @@
       "create": "Skapa ett nytt projekt"
     },
     "AddMedia": {
-      "next": "Nästa"
+      "next": "Nästa",
+      "options": {
+        "title": "Om du går tillbaka kommer dina val att ignoreras.",
+        "discard": "Släng",
+        "cancel": "Avbryt"
+      }
     },
     "AddPost": {
       "error": "Kunde inte dela just nu",
