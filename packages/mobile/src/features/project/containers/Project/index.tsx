@@ -24,7 +24,6 @@ function Project({
 }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
-  // TODO: username is not return in time, use cache?
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
