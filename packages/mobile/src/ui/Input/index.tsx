@@ -6,14 +6,7 @@ import { Field } from './styles'
 const DEFAULT_SELECTION_COLOR = isIphone ? COLORS.DARK : COLORS.WHITE
 
 export default forwardRef(function Input(
-  {
-    placeholder,
-    autoFocus,
-    noBorder,
-    multiline = false,
-    selectionColor = DEFAULT_SELECTION_COLOR,
-    ...props
-  },
+  { placeholder, noBorder, multiline = false, selectionColor = DEFAULT_SELECTION_COLOR, ...props },
   ref
 ) {
   return (

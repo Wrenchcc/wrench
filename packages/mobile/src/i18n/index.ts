@@ -6,7 +6,8 @@ import { getLocale } from './helpers'
 
 export * from './helpers'
 export * from './registerUserLocale'
-export { default as languages } from './languages'
+
+export const languages = Object.keys(resources)
 
 const languageDetector = {
   async: true,
@@ -24,9 +25,6 @@ i18next
       enabled: !__DEV__,
     },
     debug: __DEV__,
-    react: {
-      useSuspense: false,
-    },
     defaultNS: 'common',
     fallbackLng: 'en',
     interpolation: {
@@ -43,5 +41,8 @@ i18next
       },
     },
     ns: ['common'],
+    react: {
+      useSuspense: false,
+    },
     resources,
   })

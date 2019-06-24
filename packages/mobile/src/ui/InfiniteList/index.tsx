@@ -4,7 +4,6 @@ import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 
 const renderLoader = () => <Loader />
-const renderFullscreenLoader = top => <Loader top={-top} />
 const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 const keyExtractor = ({ node }) => node.id
@@ -45,12 +44,11 @@ function InfiniteList({
       refreshing={isRefetching}
       initialNumToRender={initialNumToRender}
       ListFooterComponent={hasNextPage ? renderLoader() : null}
-      ListEmptyComponent={initialFetch ? renderFullscreenLoader(paddingTop) : ListEmptyComponent}
+      ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
       contentContainerStyle={{
-        flex: initialFetch ? 1 : 0, // Fix for ListEmptyComponent to center loader
-        justifyContent: 'center',
+        flex: initialFetch ? 1 : 0,
         paddingBottom:
           (paddingBottom && paddingBottom) ||
           (!initialFetch && data && data.length > 0 && spacingSeparator && 60) ||

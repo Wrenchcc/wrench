@@ -9,7 +9,6 @@ import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 
-// TODO: Platform specific
 const COMMENT_FIELD_OFFSET = 90
 
 // TODO: Load comment in top
@@ -32,7 +31,7 @@ function PostContainer({
     username: null,
   })
 
-  const handleOnReply = useCallback(data => setMention(data), [])
+  const handleOnReply = useCallback(data => setMention(data), [setMention])
 
   const renderItem = ({ item }) => (
     <CommentItem
