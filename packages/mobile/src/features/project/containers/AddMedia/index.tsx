@@ -25,7 +25,15 @@ function AddMedia() {
   }))
 
   const handleNavigation = useCallback(() => {
-    navigate(SCREENS.ADD_POST)
+    navigate(SCREENS.ADD_POST, {
+      options: {
+        animations: {
+          push: {
+            waitForRender: true,
+          },
+        },
+      },
+    })
   }, [])
 
   const handleDismissModal = useCallback(() => {
