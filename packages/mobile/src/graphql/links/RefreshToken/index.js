@@ -11,9 +11,9 @@ function refreshTokenFailed() {
   client.resetStore()
 
   // TODO
-  Alert.alert('Your session has expired', 'Please login again.', null, {
-    cancelable: false,
-  })
+  // Alert.alert('Your session has expired', 'Please login again.', null, {
+  //   cancelable: false,
+  // })
 
   track(events.REFRESH_TOKEN_FAILED)
 }

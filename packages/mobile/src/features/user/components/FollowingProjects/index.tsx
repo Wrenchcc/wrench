@@ -40,6 +40,7 @@ function FollowingProjects({
         isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
+        loaderPosition={-270}
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}

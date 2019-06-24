@@ -3,7 +3,9 @@ import { FlatList, View } from 'react-native'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 
-const renderLoader = () => <Loader />
+const renderLoader = (fullscreen, loaderPosition) => (
+  <Loader fullscreen={fullscreen} top={loaderPosition} />
+)
 const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 const keyExtractor = ({ node }) => node.id
@@ -23,6 +25,7 @@ function InfiniteList({
   ListEmptyComponent,
   initialNumToRender = 10,
   spacingSeparator,
+  loaderPosition,
   ...props
 }) {
   const initialFetch = !data && isFetching
@@ -44,7 +47,7 @@ function InfiniteList({
       refreshing={isRefetching}
       initialNumToRender={initialNumToRender}
       ListFooterComponent={hasNextPage ? renderLoader() : null}
-      ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
+      ListEmptyComponent={initialFetch ? renderLoader(true, loaderPosition) : ListEmptyComponent}
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
       contentContainerStyle={{
