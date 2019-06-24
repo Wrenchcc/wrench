@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { View, Keyboard } from 'react-native'
+import React from 'react'
+import { View } from 'react-native'
 import { InfiniteList, MentionUser, NoResults } from 'ui'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { dismissMention } from 'navigation'
@@ -8,13 +8,13 @@ import { isIphone, hasNotch } from 'utils/platform'
 const OFFSET_BOTTOM = isIphone ? 351 : 70 // TODO: Get keyboard height
 
 function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPress }) {
-  useEffect(() => {
-    const keyboardHideEventListener = Keyboard.addListener('keyboardWillHide', () => {
-      dismissMention()
-    })
-
-    return () => keyboardHideEventListener.remove()
-  }, [])
+  // useEffect(() => {
+  //   const keyboardHideEventListener = Keyboard.addListener('keyboardWillHide', () => {
+  //     dismissMention()
+  //   })
+  //
+  //   return () => keyboardHideEventListener.remove()
+  // }, [])
 
   const renderItem = ({ item }) => <MentionUser user={item.node} onPress={onPress} />
 

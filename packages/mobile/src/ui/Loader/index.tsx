@@ -16,7 +16,7 @@ function Loader({ size = 'small', color = COLORS.DARK, padding = 32, fullscreen 
               left: 0,
               position: 'absolute',
               right: 0,
-              top: -200,
+              top: -200, // TODO: Count based on screen height
             }
           : {}),
       }}

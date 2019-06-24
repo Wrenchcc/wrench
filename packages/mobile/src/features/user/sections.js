@@ -1,7 +1,7 @@
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'ramda'
 import i18next from 'i18next'
-import { setLocale, languages, updateUserLanguage } from 'i18n'
+import { setLocale, languages, updateUserLocale } from 'i18n'
 import { navigateTo, showModal, SCREENS } from 'navigation'
 import { client } from 'graphql/createClient'
 import { askForRating } from 'utils/rate'
@@ -14,7 +14,7 @@ const changeLocale = async locale => {
   try {
     i18next.changeLanguage(locale)
     await setLocale(locale)
-    updateUserLanguage(locale)
+    updateUserLocale(locale)
   } catch (err) {
     logError(err)
   }

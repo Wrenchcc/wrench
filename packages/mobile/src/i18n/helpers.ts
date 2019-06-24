@@ -11,4 +11,4 @@ export const getLocale = async () => {
   return savedLocale || deviceLocale
 }
 
-export const getTimezone = () => DeviceInfo.getTimezone()
+export const timezone = DeviceInfo.getTimezone()

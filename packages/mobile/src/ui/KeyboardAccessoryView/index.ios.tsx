@@ -45,7 +45,7 @@ function KeyboardAccessoryView({ children }) {
           right: 0,
         }}
       >
-        <View style={{ flex: 1, paddingRight: 20, paddingLeft: 20 }}>{children}</View>
+        <View style={{ flex: 1, paddingHorizontal: 20 }}>{children}</View>
       </View>
     </Transitioning.View>
   )

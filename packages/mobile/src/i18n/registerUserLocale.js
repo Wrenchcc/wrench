@@ -3,9 +3,9 @@ import { client } from 'graphql/createClient'
 import { EditUserMutation } from 'graphql/mutations/user/editUser'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { logError } from 'utils/analytics'
-import { getLocale, getTimezone } from './helpers'
+import { getLocale, timezone } from './helpers'
 
-export function updateUserLanguage(locale) {
+export function updateUserLocale(locale) {
   try {
     client.mutate({
       mutation: EditUserMutation,
@@ -20,11 +20,10 @@ export async function registerUserLocale() {
   const user = await client.query({ query: CurrentUserQuery })
 
   if (
-    !pathOr(false, ['data', 'user', 'settings', 'locale'], user)
-    || !pathOr(false, ['data', 'user', 'settings', 'timezone'], user)
+    !pathOr(false, ['data', 'user', 'settings', 'locale'], user) ||
+    !pathOr(false, ['data', 'user', 'settings', 'timezone'], user)
   ) {
     const locale = await getLocale()
-    const timezone = getTimezone()
 
     try {
       client.mutate({
