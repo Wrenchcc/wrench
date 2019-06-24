@@ -7,7 +7,6 @@ import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from 
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
-// TODO: Fetch more on end, fix scrollable
 function FollowingProjects({
   projects,
   isFetching,

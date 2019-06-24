@@ -1,0 +1,12 @@
+{
+  "RefreshToken": {
+    "en": {
+      "title": "Your session has expired",
+      "description": "Please login again."
+    },
+    "sv": {
+      "title": "Your session has expired",
+      "description": "Please login again."
+    }
+  }
+}

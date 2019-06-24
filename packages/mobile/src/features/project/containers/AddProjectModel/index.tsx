@@ -89,7 +89,6 @@ function AddProjectModel({ addProject: addProjectMutation }) {
         <Input
           placeholder={t('AddProjectModel:placeholder')}
           autoFocus
-          waitForRender
           large
           onChangeText={onChangeText}
           value={model ? formatModel(model) : query}

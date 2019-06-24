@@ -1,3 +1,4 @@
+import { Alert } from 'react-native'
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
@@ -7,8 +8,13 @@ import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 
 function refreshTokenFailed() {
-  // TODO: Show alert session expired, please login again.
   client.resetStore()
+
+  // TODO
+  Alert.alert('Your session has expired', 'Please login again.', null, {
+    cancelable: false,
+  })
+
   track(events.REFRESH_TOKEN_FAILED)
 }
 

@@ -82,7 +82,6 @@ function AddPost({ addPost: addPostMutation }) {
             scrollEnabled={false}
             multiline
             autoFocus
-            waitForRender
             color="dark"
             onChangeText={onChangeText}
             placeholder={t('AddPost:placeholder')}

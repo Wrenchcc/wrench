@@ -2,20 +2,13 @@ import React from 'react'
 import { View } from 'react-native'
 import { InfiniteList, MentionUser, NoResults } from 'ui'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
-import { dismissMention } from 'navigation'
+import { NAVIGATION } from 'navigation/constants'
 import { isIphone, hasNotch } from 'utils/platform'
 
-const OFFSET_BOTTOM = isIphone ? 351 : 70 // TODO: Get keyboard height
+const SAFE_AREA = hasNotch ? 60 : 0
+const OFFSET_BOTTOM = isIphone ? 300 + SAFE_AREA : 70
 
 function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPress }) {
-  // useEffect(() => {
-  //   const keyboardHideEventListener = Keyboard.addListener('keyboardWillHide', () => {
-  //     dismissMention()
-  //   })
-  //
-  //   return () => keyboardHideEventListener.remove()
-  // }, [])
-
   const renderItem = ({ item }) => <MentionUser user={item.node} onPress={onPress} />
 
   return (
@@ -25,7 +18,7 @@ function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPr
         bottom: OFFSET_BOTTOM,
         left: 0,
         position: 'absolute',
-        top: hasNotch ? 40 : 20, // TODO: Get header height
+        top: NAVIGATION.STATUS_BAR_HEIGHT,
         width: '100%',
       }}
     >

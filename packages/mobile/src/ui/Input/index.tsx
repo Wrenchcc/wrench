@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useEffect } from 'react'
+import React, { forwardRef } from 'react'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { Field } from './styles'
@@ -12,33 +12,13 @@ export default forwardRef(function Input(
     noBorder,
     multiline = false,
     selectionColor = DEFAULT_SELECTION_COLOR,
-    waitForRender,
     ...props
   },
   ref
 ) {
-  const inputRef = useRef(null)
-
-  if (autoFocus) {
-    // TODO: RNN flicker when autoFocus and push animation
-    // https://github.com/wix/react-native-navigation/issues/5018
-    useEffect(() => {
-      const wait = setTimeout(
-        () => {
-          if (inputRef.current) {
-            inputRef.current.focus()
-          }
-        },
-        waitForRender ? 500 : 0
-      )
-
-      return () => clearTimeout(wait)
-    }, [])
-  }
-
   return (
     <Field
-      ref={ref || inputRef}
+      ref={ref}
       placeholder={placeholder}
       placeholderTextColor={COLORS.LIGHT_GREY}
       selectionColor={selectionColor}
