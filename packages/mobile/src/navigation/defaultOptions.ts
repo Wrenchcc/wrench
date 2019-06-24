@@ -1,9 +1,10 @@
 import { COLORS } from 'ui/constants'
+import { hasNotch } from 'utils/platform'
 
 export default {
   bottomTab: {
     iconInsets: {
-      bottom: -20,
+      bottom: hasNotch ? -20 : -10,
       left: 0,
       right: 0,
       top: 0,

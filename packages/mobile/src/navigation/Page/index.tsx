@@ -1,10 +1,9 @@
 import React, { useRef, cloneElement, useCallback, useEffect } from 'react'
 import Animated from 'react-native-reanimated'
+import { NAVIGATION } from '../constants'
 import Header from './Header'
 
 const { event, set, Value, cond, eq } = Animated
-
-const OFFSET = 120
 
 function Page({
   children,
@@ -15,11 +14,11 @@ function Page({
   scrollToIndex,
 }) {
   const scrollRef = useRef()
-  const scrollY = useRef(new Value(-OFFSET))
+  const scrollY = useRef(new Value(-NAVIGATION.LIST_OFFSET))
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ offset: -OFFSET })
+      scrollRef.current.getNode().scrollToOffset({ offset: -NAVIGATION.LIST_OFFSET })
     }
   }, [scrollRef])
 
@@ -41,10 +40,10 @@ function Page({
 
       {cloneElement(children, {
         contentInset: {
-          top: OFFSET,
+          top: NAVIGATION.LIST_OFFSET,
         },
         contentOffset: {
-          y: -OFFSET,
+          y: -NAVIGATION.LIST_OFFSET,
         },
         onScroll: event(
           [

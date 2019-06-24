@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
-import { hasNotch } from 'utils/platform'
+import { NAVIGATION } from 'navigation/constants'
 
 export const Base = styled.View`
   z-index: 10;
@@ -8,8 +8,8 @@ export const Base = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
-  height: 50;
-  margin-top: ${(hasNotch && 60) || 20}
+  margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT};
+  height: ${NAVIGATION.TOP_BAR_HEIGHT};
   background-color: ${({ color }) => (color ? color : COLORS.WHITE)};
 `
 

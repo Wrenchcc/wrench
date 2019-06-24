@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, memo } from 'react'
+import React, { useState, useCallback, memo } from 'react'
 import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
@@ -81,19 +81,14 @@ function Search({ query }) {
     []
   )
 
-  const navigationState = useMemo(
-    () => ({
-      index,
-      routes,
-    }),
-    [index, routes]
-  )
-
   return (
     <Base>
       <TabView
         keyboardDismissMode="none"
-        navigationState={navigationState}
+        navigationState={{
+          index,
+          routes,
+        }}
         renderScene={renderScene}
         renderTabBar={renderTabBar}
         renderPager={renderPager}

@@ -1,10 +1,12 @@
-// TODO Heights
+import { hasNotch } from 'utils/platform'
+
 export enum NAVIGATION {
   LIST_INSET_TOP = 30,
   TOP_BAR_HEIGHT = 60,
-  STATUS_BAR_HEIGHT = 44,
-  TOTAL_TOP_BAR_HEIGHT = 104, // Including statusbar
+  STATUS_BAR_HEIGHT = hasNotch ? 40 : 20,
+  TOTAL_TOP_BAR_HEIGHT = hasNotch ? 100 : 80,
   TAB_HEIGHT = 60,
+  LIST_OFFSET = hasNotch ? 120 : 90,
 }
 
 export enum SCREENS {

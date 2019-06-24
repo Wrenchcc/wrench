@@ -71,7 +71,7 @@ function MediaPicker() {
 
   const renderScene = ({ route }) => <List album={route.key} />
 
-  const renderTabs = useCallback(props => <Tabs {...props} />, [])
+  const renderTabs = useCallback(props => albums.length > 1 && <Tabs {...props} />, [albums])
 
   if (checkingPermission || isLoading) {
     return null
