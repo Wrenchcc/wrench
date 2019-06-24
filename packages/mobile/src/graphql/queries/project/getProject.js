@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getProjectSlug, getProjectSlugFromDeeplink, getPostId } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
@@ -32,56 +31,50 @@ const LoadMorePosts = gql`
 `
 
 const getProjectOptions = {
-  options: ({ navigation, after }) => ({
+  options: ({ slug, postId, after }) => ({
     variables: {
-      slug: getProjectSlug(navigation) || getProjectSlugFromDeeplink(navigation),
+      slug,
       after,
-      postId: getPostId(navigation),
+      postId,
     },
-    fetchPolicy: 'cache-and-network',
   }),
-  props: ({
-    data: { fetchMore, error, loading, project, networkStatus, refetch, post },
-    ownProps: { navigation },
-  }) => ({
+  props: ({ data: { fetchMore, error, loading, project = {}, networkStatus, refetch, post } }) => ({
     error,
     refetch,
     post,
-    project: {
-      ...pathOr(null, ['state', 'params', 'project'], navigation),
-      ...project,
-    },
+    project,
     posts: pathOr(null, ['posts', 'edges'], project),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMore: () => fetchMore({
-      query: LoadMorePosts,
-      variables: {
-        after: project.posts.edges[project.posts.edges.length - 1].cursor,
-        slug: project.slug,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.project) {
-          return prev
-        }
+    fetchMore: () =>
+      fetchMore({
+        query: LoadMorePosts,
+        variables: {
+          after: project.posts.edges[project.posts.edges.length - 1].cursor,
+          slug: project.slug,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.project) {
+            return prev
+          }
 
-        return {
-          ...prev,
-          project: {
-            ...prev.project,
-            posts: {
-              ...prev.project.posts,
-              pageInfo: {
-                ...prev.project.posts.pageInfo,
-                ...fetchMoreResult.project.posts.pageInfo,
+          return {
+            ...prev,
+            project: {
+              ...prev.project,
+              posts: {
+                ...prev.project.posts,
+                pageInfo: {
+                  ...prev.project.posts.pageInfo,
+                  ...fetchMoreResult.project.posts.pageInfo,
+                },
+                edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
               },
-              edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
             },
-          },
-        }
-      },
-    }),
+          }
+        },
+      }),
   }),
 }
 

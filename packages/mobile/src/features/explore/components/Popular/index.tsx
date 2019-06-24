@@ -1,25 +1,27 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import withTranslation from 'i18n/withTranslation'
-import { compose } from 'react-apollo'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
-import { navigateToProject } from 'navigation/actions'
+import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
-import Placeholder from './Placeholder'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
 
-function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage, t }) {
+function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
+  const { navigate } = useNavigation()
+  const { t } = useTranslation()
+
   const renderItem = ({ item, index }) => {
     const project = item.node
     const image = pathOr(null, ['files', 'edges', [0], 'node'], project)
+
+    const onPress = () => navigate(SCREENS.PROJECT, { slug: project.slug })
 
     return (
       <Card
         image={image}
         title={project.title}
         key={project.id}
-        onPress={() => navigateToProject({ project })}
+        onPress={onPress}
         first={index === 0}
         last={index === projects && projects.length - 1}
         user={project.user}
@@ -28,13 +30,12 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
   }
 
   return (
-    <Fragment>
+    <>
       <Header>
         <Title medium>{t('Popular:popular')}</Title>
       </Header>
       <InfiniteList
         initialNumToRender={2}
-        keyExtractor={item => item.node.id}
         data={projects}
         horizontal
         directionalLockEnabled
@@ -57,20 +58,8 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
       <Footer>
         <Title medium>{t('Popular:recent')}</Title>
       </Footer>
-    </Fragment>
+    </>
   )
 }
 
-Popular.propTypes = {
-  projects: PropTypes.array,
-  fetchMore: PropTypes.func.isRequired,
-  refetch: PropTypes.func.isRequired,
-  isRefetching: PropTypes.bool.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  hasNextPage: PropTypes.bool.isRequired,
-}
-
-export default compose(
-  getPopularProjects,
-  withTranslation('Popular')
-)(Popular)
+export default getPopularProjects(Popular)

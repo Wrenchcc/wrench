@@ -5,14 +5,6 @@ import { mapListProps } from 'graphql/utils/mapListProps'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 
-export const NotificationsUnreadCountQuery = gql`
-  query {
-    notifications {
-      unreadCount
-    }
-  }
-`
-
 export const NotificationsQuery = gql`
   query getNotifications($after: String) {
     notifications(after: $after) @connection(key: "notifications") {
@@ -47,8 +39,8 @@ export const NotificationsQuery = gql`
 
 const getNotificationsOptions = {
   options: {
-    pollInterval: ms('1m'),
     fetchPolicy: 'cache-and-network',
+    pollInterval: ms('1m'),
   },
   props: mapListProps('notifications'),
 }

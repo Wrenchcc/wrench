@@ -1,12 +1,41 @@
-import { hasNotch, isIphone } from 'utils/platform'
+import { hasNotch } from 'utils/platform'
 
-// Route presentations
-export const TAB = 'tab'
-export const MODAL = 'modal'
-export const MODAL_STACK = 'modal_stack'
+export enum NAVIGATION {
+  LIST_INSET_TOP = 30,
+  TOP_BAR_HEIGHT = 60,
+  STATUS_BAR_HEIGHT = hasNotch ? 40 : 20,
+  TOTAL_TOP_BAR_HEIGHT = hasNotch ? 100 : 80,
+  TAB_HEIGHT = 60,
+  LIST_OFFSET = hasNotch ? 120 : 90,
+}
 
-// Route scopes
-export const PUBLIC = 'public'
+export enum SCREENS {
+  INITIALIZING = 'INITIALIZING',
+  ONBOARDING = 'ONBOARDING',
+  FEED = 'FEED',
+  EXPLORE = 'EXPLORE',
+  COMMENTS = 'COMMENTS',
+  NOTIFICATIONS = 'NOTIFICATIONS',
+  ME = 'ME',
+  PROJECT = 'PROJECT',
+  FOLLOWERS = 'FOLLOWERS',
+  USER = 'USER',
+  POST = 'POST',
+  COMMENTS = 'COMMENTS',
+  WEBVIEW = 'WEBVIEW',
+  SIGN_IN = 'SIGN_IN',
+  ADD_PROJECT_MODEL = 'ADD_PROJECT_MODEL',
+  ADD_PROJECT_TYPE = 'ADD_PROJECT_TYPE',
+  ADD_PROJECT = 'ADD_PROJECT',
+  ADD_MEDIA = 'ADD_MEDIA',
+  ADD_POST = 'ADD_POST',
+  EDIT_PROJECT = 'EDIT_PROJECT',
+  SETTINGS = 'SETTINGS',
+  MENTION = 'MENTION',
+}
 
-export const TAB_HEIGHT = 60
-export const HEADER_HEIGHT = 70
+export enum SCREEN_PATH {
+  NOTIFICATIONS = 'notification',
+  POST = 'post',
+  PROJECT = 'project',
+}

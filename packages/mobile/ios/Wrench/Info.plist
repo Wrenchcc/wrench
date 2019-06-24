@@ -41,8 +41,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>CodePushDeploymentKey</key>
-	<string>cW_HgZdJFI_Lt5STiEoGpD78W4blryn9pyhKf</string>
 	<key>FacebookAppID</key>
 	<string>1174076712654826</string>
 	<key>FacebookDisplayName</key>
@@ -103,8 +101,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+  <key>UIViewControllerBasedStatusBarAppearance</key>
+  <true/>
   <key>FirebaseDynamicLinksCustomDomains</key>
   <array>
     <string>https://share.wrench.cc</string>

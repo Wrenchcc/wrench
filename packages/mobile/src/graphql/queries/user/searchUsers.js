@@ -15,6 +15,7 @@ export const SearchUsersQuery = gql`
         node {
           ... on User {
             ...userInfo
+            projectCount
           }
         }
       }
@@ -29,6 +30,7 @@ const searchUsersOptions = {
       query,
       type: 'USERS',
     },
+    notifyOnNetworkStatusChange: true,
     fetchPolicy: 'cache-and-network',
   }),
   props: mapListProps('users'),

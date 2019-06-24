@@ -34,8 +34,8 @@ target 'Wrench' do
   pod 'yoga', :path => File.join(react_path, 'ReactCommon/yoga')
 
   # Third party deps podspec link
+  pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-  pod 'CodePush', :path => '../node_modules/react-native-code-push'
   pod 'react-native-camera', path: '../node_modules/react-native-camera'
   pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
   pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
@@ -52,7 +52,6 @@ target 'Wrench' do
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
-  pod 'RNScreens', :path => '../node_modules/react-native-screens'
   pod 'RNShare', :path => '../node_modules/react-native-share'
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
     'Core',
@@ -62,16 +61,18 @@ target 'Wrench' do
   ]
 
   # Required by Facebook
-  pod 'FBSDKCoreKit', '4.42.0'
-  pod 'FBSDKLoginKit', '4.42.0'
-  pod 'FBSDKShareKit', '4.42.0'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
 
   # Required by Firebase
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
-  pod 'Firebase/Core', '5.20.2'
-  pod 'Firebase/DynamicLinks', '5.20.2'
-  pod 'Firebase/Messaging', '5.20.2'
-  pod 'Firebase/Performance', '5.20.2'
+  pod 'Firebase/Core'
+  pod 'Firebase/DynamicLinks'
+  pod 'Firebase/Messaging'
+
+  # react-native-fast-image WebP support
+  pod 'SDWebImageWebPCoder'
 
   use_unimodules!
 end

@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
-import { getUsername, getUsernameFromDeeplink } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
@@ -9,6 +8,9 @@ import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 export const UserByUsernameQuery = gql`
   query getUserByUsername($username: LowercaseString!, $after: String) {
     user(username: $username) {
+      firstName
+      lastName
+      dynamicLink
       ...userInfo
       ...userPostsConnection
     }
@@ -27,54 +29,49 @@ const LoadMorePosts = gql`
 `
 
 const getUserByUsernameOptions = {
-  options: ({ navigation, after }) => ({
+  options: ({ username, after }) => ({
+    fetchPolicy: 'cache-and-network',
     variables: {
-      username: getUsername(navigation) || getUsernameFromDeeplink(navigation),
+      username,
       after,
     },
-    fetchPolicy: 'cache-and-network',
   }),
-  props: ({
-    data: { fetchMore, error, loading, user, networkStatus, refetch },
-    ownProps: { navigation },
-  }) => ({
+  props: ({ data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
     error,
     refetch,
-    user: {
-      ...pathOr(user, ['state', 'params', 'user'], navigation),
-      ...user,
-    },
+    user,
     posts: pathOr(null, ['posts', 'edges'], user),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMore: () => fetchMore({
-      query: LoadMorePosts,
-      variables: {
-        after: user.posts.edges[user.posts.edges.length - 1].cursor,
-        username: user.username,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.user) {
-          return prev
-        }
+    fetchMore: () =>
+      fetchMore({
+        query: LoadMorePosts,
+        variables: {
+          after: user.posts.edges[user.posts.edges.length - 1].cursor,
+          username: user.username,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.user) {
+            return prev
+          }
 
-        return {
-          ...prev,
-          user: {
-            ...prev.user,
-            posts: {
-              ...prev.user.posts,
-              pageInfo: {
-                ...prev.user.posts.pageInfo,
-                ...fetchMoreResult.user.posts.pageInfo,
+          return {
+            ...prev,
+            user: {
+              ...prev.user,
+              posts: {
+                ...prev.user.posts,
+                pageInfo: {
+                  ...prev.user.posts.pageInfo,
+                  ...fetchMoreResult.user.posts.pageInfo,
+                },
+                edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
               },
-              edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
             },
-          },
-        }
-      },
-    }),
+          }
+        },
+      }),
   }),
 }
 

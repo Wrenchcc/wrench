@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 import { pathOr, update } from 'ramda'
 import { graphql } from 'react-apollo'
-import { getPostId, getPostIdFromDeeplink } from 'navigation/utils/selectors'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import commentInfoFragment from 'graphql/fragments/comment/commentInfo'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
@@ -73,11 +72,11 @@ const LoadMoreReplies = gql`
 `
 
 const getCommentsOptions = {
-  options: ({ navigation }) => ({
-    variables: {
-      postId: getPostId(navigation) || getPostIdFromDeeplink(navigation),
-    },
+  options: ({ postId }) => ({
     fetchPolicy: 'cache-and-network',
+    variables: {
+      postId,
+    },
   }),
   props: ({ data: { fetchMore, error, loading, comments, post, networkStatus, refetch } }) => ({
     error,
@@ -87,69 +86,71 @@ const getCommentsOptions = {
     hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], comments),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMore: () => fetchMore({
-      query: LoadMoreComments,
-      variables: {
-        after: comments.edges[comments.edges.length - 1].cursor,
-        postId: post.id,
-      },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        const { edges, pageInfo, ...rest } = fetchMoreResult.comments
+    fetchMore: () =>
+      fetchMore({
+        query: LoadMoreComments,
+        variables: {
+          after: comments.edges[comments.edges.length - 1].cursor,
+          postId: post.id,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const { edges, pageInfo, ...rest } = fetchMoreResult.comments
 
-        if (!fetchMoreResult.comments) {
-          return previousResult
-        }
+          if (!fetchMoreResult.comments) {
+            return previousResult
+          }
 
-        return {
-          ...previousResult,
-          comments: {
-            ...rest,
-            edges: [...previousResult.comments.edges, ...edges],
-            pageInfo,
-          },
-        }
-      },
-    }),
-    fetchMoreReplies: (id, after) => fetchMore({
-      query: LoadMoreReplies,
-      variables: {
-        after,
-        postId: post.id,
-        id,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.comment.replies) {
-          return prev
-        }
+          return {
+            ...previousResult,
+            comments: {
+              ...rest,
+              edges: [...previousResult.comments.edges, ...edges],
+              pageInfo,
+            },
+          }
+        },
+      }),
+    fetchMoreReplies: (id, after) =>
+      fetchMore({
+        query: LoadMoreReplies,
+        variables: {
+          after,
+          postId: post.id,
+          id,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.comment.replies) {
+            return prev
+          }
 
-        const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
+          const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
 
-        return {
-          ...prev,
-          comments: {
-            ...prev.comments,
-            edges: update(
-              index,
-              {
-                ...prev.comments.edges[index],
-                node: {
-                  ...prev.comments.edges[index].node,
-                  replies: {
-                    ...prev.comments.edges[index].node.replies,
-                    ...fetchMoreResult.comment.replies,
-                    edges: [
-                      ...prev.comments.edges[index].node.replies.edges,
-                      ...fetchMoreResult.comment.replies.edges,
-                    ],
+          return {
+            ...prev,
+            comments: {
+              ...prev.comments,
+              edges: update(
+                index,
+                {
+                  ...prev.comments.edges[index],
+                  node: {
+                    ...prev.comments.edges[index].node,
+                    replies: {
+                      ...prev.comments.edges[index].node.replies,
+                      ...fetchMoreResult.comment.replies,
+                      edges: [
+                        ...prev.comments.edges[index].node.replies.edges,
+                        ...fetchMoreResult.comment.replies.edges,
+                      ],
+                    },
                   },
                 },
-              },
-              prev.comments.edges
-            ),
-          },
-        }
-      },
-    }),
+                prev.comments.edges
+              ),
+            },
+          }
+        },
+      }),
   }),
 }
 

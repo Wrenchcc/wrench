@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { NotificationsUnreadCountQuery } from 'graphql/queries/getNotifications'
+import { NotificationsQuery } from 'graphql/queries/getNotifications'
 
 const MarkAllNotificationsSeenMutation = gql`
   mutation markAllNotificationsSeen {
@@ -10,24 +10,25 @@ const MarkAllNotificationsSeenMutation = gql`
 
 const markAllNotificationsSeenOptions = {
   props: ({ mutate }) => ({
-    markAllNotificationsSeen: () => mutate({
-      update: store => {
-        const data = store.readQuery({ query: NotificationsUnreadCountQuery })
+    markAllNotificationsSeen: () =>
+      mutate({
+        update: store => {
+          const data = store.readQuery({ query: NotificationsQuery })
 
-        const notifications = {
-          ...data,
-          notifications: {
-            ...data.notifications,
-            unreadCount: 0,
-          },
-        }
+          const notifications = {
+            ...data,
+            notifications: {
+              ...data.notifications,
+              unreadCount: 0,
+            },
+          }
 
-        store.writeQuery({
-          query: NotificationsUnreadCountQuery,
-          data: notifications,
-        })
-      },
-    }),
+          store.writeQuery({
+            query: NotificationsQuery,
+            data: notifications,
+          })
+        },
+      }),
   }),
 }
 

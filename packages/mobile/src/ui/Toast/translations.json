@@ -1,0 +1,10 @@
+{
+  "Toast": {
+    "en": {
+      "networkError": "No internet connection"
+    },
+    "sv": {
+      "networkError": "Ingen internetanslutning"
+    }
+  }
+}

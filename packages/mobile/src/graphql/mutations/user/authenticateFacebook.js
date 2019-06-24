@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { track, events } from 'utils/analytics'
-import { setTokens } from 'graphql/utils/auth'
+import { setTokens } from 'utils/storage/auth'
 
 export const AuthenticateFacebookMutation = gql`
   mutation authenticateFacebook($token: String!) {
@@ -14,15 +14,17 @@ export const AuthenticateFacebookMutation = gql`
 
 const authenticateFacebookOptions = {
   props: ({ mutate }) => ({
-    authenticateFacebook: token => mutate({
-      variables: {
-        token,
-      },
-      update: (_, { data }) => {
-        setTokens(data.authenticateFacebook)
-        track(events.USER_SIGNED_IN)
-      },
-    }),
+    authenticateFacebook: token =>
+      mutate({
+        variables: {
+          token,
+        },
+        update: (_, { data }) => {
+          const { access_token, refresh_token } = data.authenticateFacebook
+          setTokens(access_token, refresh_token)
+          track(events.USER_SIGNED_IN)
+        },
+      }),
   }),
 }
 

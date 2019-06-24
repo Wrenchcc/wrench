@@ -1,18 +1,21 @@
+import { Alert } from 'react-native'
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { client } from 'graphql/createClient'
 import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
-import { getTokens, setTokens } from 'graphql/utils/auth'
+import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 
-import { resetNavigation } from 'navigation/actions'
-
-function foreceSignOut() {
+function refreshTokenFailed() {
   client.resetStore()
+
+  // TODO
+  Alert.alert('Your session has expired', 'Please login again.', null, {
+    cancelable: false,
+  })
+
   track(events.REFRESH_TOKEN_FAILED)
-  resetNavigation()
-  // TODO: Show alert session expired, please login again.
 }
 
 export default onError(({ graphQLErrors, operation, forward }) => {
@@ -21,7 +24,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     if (extensions && extensions.code === 'UNAUTHENTICATED') {
       return new Observable(async observer => {
         try {
-          const refreshToken = await getTokens('refresh_token')
+          const refreshToken = await getRefreshToken()
           const { headers } = operation.getContext()
 
           return client
@@ -34,14 +37,11 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
               if (!accessToken) {
                 track(events.REFRESH_TOKEN_FAILED)
-                return foreceSignOut()
+                return refreshTokenFailed()
               }
 
               // Save new tokens to async storage
-              setTokens({
-                access_token: accessToken,
-                refresh_token: refreshToken,
-              })
+              setTokens(accessToken, refreshToken)
 
               return operation.setContext(() => ({
                 headers: {
@@ -59,7 +59,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
               return forward(operation).subscribe(subscriber)
             })
-            .catch(() => foreceSignOut())
+            .catch(() => refreshTokenFailed())
         } catch (err) {
           observer.error(err)
           logError(err)

@@ -1,9 +1,11 @@
 {
   "AddProjectType": {
     "en": {
+      "headerTitle": "Add project",
       "title": "Pick your category"
     },
     "sv": {
+      "headerTitle": "Skapa projekt",
       "title": "Välj din kategori"
     }
   }

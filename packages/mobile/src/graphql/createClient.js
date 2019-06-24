@@ -1,9 +1,10 @@
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { removeTokens } from 'graphql/utils/auth'
+import { clearTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
+import { AuthNavigation } from 'navigation'
 import AuthLink from './links/Auth'
 import HttpLink from './links/Http'
 import OfflineLink from './links/Offline'
@@ -26,7 +27,10 @@ export default () => {
 
   client.onResetStore(() => {
     track(events.USER_SIGNED_OUT)
-    removeTokens()
+
+    clearTokens()
+
+    AuthNavigation()
 
     // If switching accounts reset LoginManager
     // https://github.com/facebook/react-native-fbsdk/issues/279

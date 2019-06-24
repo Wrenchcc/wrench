@@ -1,5 +1,0 @@
-#!/bin/sh -e
-
-cd ios
-pod install --silent || \
-pod install --silent --repo-update

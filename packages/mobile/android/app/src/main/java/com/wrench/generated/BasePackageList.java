@@ -10,7 +10,6 @@ public class BasePackageList {
         new org.unimodules.adapters.react.ReactAdapterPackage(),
         new expo.modules.constants.ConstantsPackage(),
         new expo.modules.filesystem.FileSystemPackage(),
-        new expo.modules.imagemanipulator.ImageManipulatorPackage(),
         new expo.modules.medialibrary.MediaLibraryPackage(),
         new expo.modules.permissions.PermissionsPackage()
     );

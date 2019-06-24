@@ -14,23 +14,11 @@ export const FeedQuery = gql`
   ${feedPostsConnectionFragment}
 `
 
-const LoadMorePosts = gql`
-  query loadMoreFeedPosts($after: String) {
-    feed {
-      ...feedPostsConnection
-    }
-  }
-  ${feedPostsConnectionFragment}
-`
-
 const getFeedOptions = {
-  options: ({ after }) => ({
-    variables: {
-      after,
-    },
-    pollInterval: ms('3m'),
+  options: {
     fetchPolicy: 'cache-and-network',
-  }),
+    pollInterval: ms('3m'),
+  },
   props: ({ data: { fetchMore, error, loading, feed, networkStatus, refetch } }) => ({
     error,
     refetch,
@@ -38,32 +26,33 @@ const getFeedOptions = {
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], feed),
     isRefetching: isRefetching(networkStatus),
     isFetching: loading || isFetchingMore(networkStatus),
-    fetchMore: () => fetchMore({
-      query: LoadMorePosts,
-      variables: {
-        after: feed.posts.edges[feed.posts.edges.length - 1].cursor,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult.feed) {
-          return prev
-        }
+    fetchMore: () =>
+      fetchMore({
+        query: FeedQuery,
+        variables: {
+          after: feed.posts.edges[feed.posts.edges.length - 1].cursor,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.feed) {
+            return prev
+          }
 
-        return {
-          ...prev,
-          feed: {
-            ...prev.feed,
-            posts: {
-              ...prev.feed.posts,
-              pageInfo: {
-                ...prev.feed.posts.pageInfo,
-                ...fetchMoreResult.feed.posts.pageInfo,
+          return {
+            ...prev,
+            feed: {
+              ...prev.feed,
+              posts: {
+                ...prev.feed.posts,
+                pageInfo: {
+                  ...prev.feed.posts.pageInfo,
+                  ...fetchMoreResult.feed.posts.pageInfo,
+                },
+                edges: [...prev.feed.posts.edges, ...fetchMoreResult.feed.posts.edges],
               },
-              edges: [...prev.feed.posts.edges, ...fetchMoreResult.feed.posts.edges],
             },
-          },
-        }
-      },
-    }),
+          }
+        },
+      }),
   }),
 }
 

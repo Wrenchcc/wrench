@@ -1,6 +1,5 @@
 import gql from 'graphql-tag'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
-import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import commentsConnectionFragment from 'graphql/fragments/post/commentsConnection'
 
 export default gql`
@@ -24,11 +23,12 @@ export default gql`
       }
     }
     project {
-      ...projectInfo
+      id
+      title
+      slug
     }
     ...commentPostConnection
   }
   ${userInfoFragment}
-  ${projectInfoFragment}
   ${commentsConnectionFragment}
 `

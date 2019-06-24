@@ -6,7 +6,6 @@ export default gql`
       edges {
         node {
           id
-          type
           uri
         }
       }

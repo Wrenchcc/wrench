@@ -1,12 +1,16 @@
 {
   "AddProjectModel": {
     "en": {
+      "add": "Add",
       "title": "Search and pick your model.",
-      "placeholder": "E.g. BMW R100 1981"
+      "placeholder": "E.g. BMW R100 1981",
+      "headerTitle": "Add project"
     },
     "sv": {
+      "add": "Lägg till",
       "title": "Sök och välj din modell.",
-      "placeholder": "Ex. BMW R100 1981"
+      "placeholder": "Ex. BMW R100 1981",
+      "headerTitle": "Skapa projekt"
     }
   }
 }
