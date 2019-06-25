@@ -31,12 +31,14 @@ function PostContainer({
     username: null,
   })
 
+  const highlightId = comment && comment.id
+
   const handleOnReply = useCallback(data => setMention(data), [setMention])
 
   const renderItem = ({ item }) => (
     <CommentItem
       data={item}
-      highlightId={comment.id}
+      highlightId={highlightId}
       onReply={handleOnReply}
       fetchMoreReplies={fetchMoreReplies}
     />
