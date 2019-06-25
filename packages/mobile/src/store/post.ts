@@ -41,7 +41,9 @@ const [usePostStore, api] = create(set => ({
         }
       }),
 
-    onEdit: () => {},
+    onEdit: payload => {
+      // console.log(payload)
+    },
 
     reset: () => set(initialState),
 

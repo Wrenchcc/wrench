@@ -5,9 +5,10 @@ export const Base = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: -50;
+  top: 50;
   z-index: 100;
-  max-width: 45%;
+  width: 45%;
+  position: absolute;
 `
 
 export const Icon = styled.Image`

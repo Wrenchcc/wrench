@@ -69,7 +69,11 @@ function AddMedia() {
       <SelectProject />
 
       <Placeholder>
-        {file ? <ImageEditor file={file} onEdit={onEdit} /> : <Camera onTakePicture={onSelect} />}
+        {file ? (
+          <ImageEditor source={file} onPhotoResize={onEdit} />
+        ) : (
+          <Camera onTakePicture={onSelect} />
+        )}
       </Placeholder>
 
       <MediaPicker />
