@@ -1,4 +1,4 @@
-import i18n from 'i18next'
+import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import * as i18nextMiddleware from 'i18next-express-middleware'
@@ -32,9 +32,9 @@ const options = {
 
 // for browser
 if (isBrowser) {
-  i18n.use(initReactI18next).use(LanguageDetector)
+  i18next.use(initReactI18next).use(LanguageDetector)
 } else {
-  i18n
+  i18next
     .use(initReactI18next)
     .use(i18nextMiddleware.LanguageDetector)
     .init({
@@ -46,8 +46,8 @@ if (isBrowser) {
 }
 
 // initialize if not already initialized
-if (!i18n.isInitialized) {
-  i18n.init(options)
+if (!i18next.isInitialized) {
+  i18next.init(options)
 }
 
-export default i18n
+export default i18next
