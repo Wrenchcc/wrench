@@ -26,6 +26,7 @@ import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import cl.json.RNSharePackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
@@ -97,6 +98,7 @@ public class MainApplication extends NavigationApplication {
         new RNDeviceInfo(),
         new RNSharePackage(),
         new ReanimatedPackage(),
+        new RNGestureHandlerPackage(),
         new RNFirebasePackage(),
         new RNFirebaseAnalyticsPackage(),
         new RNFirebaseMessagingPackage(),

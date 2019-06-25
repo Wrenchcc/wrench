@@ -20,7 +20,7 @@ const TIMESTAMPTZ_OID = 1184
 const manager = getConnectionManager()
 let connection: Connection
 
-async function server() {
+async function init() {
   if (manager.has('default')) {
     connection = await manager.get('default')
     console.log('Reusing existing connection from manager.')
@@ -44,8 +44,8 @@ async function server() {
       db,
       loaders: createLoaders(),
       services,
-      userId: getUserId(req),
       userAgent: req.headers['user-agent'],
+      userId: getUserId(req),
     }),
     formatError,
     schema,
@@ -61,4 +61,4 @@ async function server() {
   })
 }
 
-server()
+init()

@@ -1,4 +1,5 @@
 import create from 'zustand'
+import NetInfo from '@react-native-community/netinfo'
 import { TOAST_TYPES } from 'utils/enums'
 import { TOAST } from './constants'
 
@@ -8,7 +9,7 @@ const initialState = {
   [TOAST.TYPE]: TOAST_TYPES.NETWORK,
 }
 
-const [useToastStore] = create(set => ({
+const [useToastStore, api] = create(set => ({
   ...initialState,
 
   actions: {
@@ -24,5 +25,15 @@ const [useToastStore] = create(set => ({
     },
   },
 }))
+
+NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
+  if (isConnected) {
+    api.setState(initialState)
+  } else {
+    api.setState({
+      show: true,
+    })
+  }
+})
 
 export default useToastStore

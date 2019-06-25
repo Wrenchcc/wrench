@@ -11,11 +11,13 @@ function Initializing({ client }) {
   const loadInitialState = async () => {
     try {
       const accessToken = await getAccessToken()
-      const user = pathOr(
-        null,
-        ['data', 'user'],
-        await client.query({ query: CurrentUserQuery, skip: !accessToken })
-      )
+
+      if (!accessToken) {
+        AuthNavigation()
+        return
+      }
+
+      const user = pathOr(null, ['data', 'user'], await client.query({ query: CurrentUserQuery }))
 
       if (user) {
         const showOnboarding = !user.interestedIn
