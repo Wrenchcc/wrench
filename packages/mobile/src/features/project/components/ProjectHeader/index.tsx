@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react'
-import { Title } from 'ui'
+import { Title, Follow } from 'ui'
 import { useNavigation, SCREENS } from 'navigation'
-import { Base, Followers, Inner } from './styles'
+import { followProject } from 'graphql/mutations/project/followProject'
+import { Base, Followers } from './styles'
 
-function ProjectHeader({ project, spacingHorizontal }) {
+function ProjectHeader({ project, spacingHorizontal, followProject: followProjectMutation }) {
   const { navigate } = useNavigation()
 
   const handleNavigation = useCallback(
@@ -14,16 +15,21 @@ function ProjectHeader({ project, spacingHorizontal }) {
     [project]
   )
 
+  const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
+
   return (
     <Base spacingHorizontal={spacingHorizontal}>
-      <Inner>
-        <Title large numberOfLines={0}>
-          {project.title}
-        </Title>
-        <Followers followers={project.followers.totalCount} onPress={handleNavigation} />
-      </Inner>
+      <Title large numberOfLines={0}>
+        {project.title}
+      </Title>
+
+      <Followers followers={project.followers.totalCount} onPress={handleNavigation} />
+
+      {!project.projectPermissions.isOwner && (
+        <Follow following={project.projectPermissions.isFollower} onPress={handleFollow} />
+      )}
     </Base>
   )
 }
 
-export default ProjectHeader
+export default followProject(ProjectHeader)

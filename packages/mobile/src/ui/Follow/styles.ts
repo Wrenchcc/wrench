@@ -1,11 +1,19 @@
 import styled from 'styled-components'
-import Touchable from 'ui/Touchable'
+import { toUpper } from 'ramda'
+import UiTouchable from 'ui/Touchable'
+import UiText from 'ui/Text'
+import { COLORS } from 'ui/constants'
 
-export const Button = styled(Touchable)`
-  flex-direction: row;
+export const Base = styled(UiTouchable)`
+  background-color: ${({ black }) => (black ? COLORS.DARK : COLORS.WHITE)};
+  border-width: 1;
+  border-color: ${({ black }) => (black ? COLORS.DARK : COLORS.DIVIDER)};
+  height: 40;
+  justify-content: center;
   align-items: center;
+  padding-left: 25;
+  padding-right: 25;
+  align-self: flex-start;
 `
 
-export const Icon = styled.Image`
-  margin-right: 10px;
-`
+export const Text = styled(UiText)``
