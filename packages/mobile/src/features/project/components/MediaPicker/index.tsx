@@ -31,7 +31,10 @@ function MediaPicker() {
         title: t('MediaPicker:all'),
       }
 
-      const results = await MediaLibrary.getAlbumsAsync()
+      const results = await MediaLibrary.getAlbumsAsync().filter(
+        ({ assetsCount }) => assetsCount > 0
+      )
+
       const assets = prepend(first, results)
 
       setAlbums(

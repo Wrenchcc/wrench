@@ -11,8 +11,8 @@
     "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts"
   },
   "dependencies": {
-    "apollo-server-express": "^2.6.4",
-    "aws-sdk": "^2.481.0",
+    "apollo-server-express": "^2.6.6",
+    "aws-sdk": "^2.482.0",
     "aws4": "^1.8.0",
     "axios": "^0.19.0",
     "base-64": "^0.1.0",
@@ -36,13 +36,13 @@
     "@firebase/app-types": "^0.4.0",
     "@types/graphql-depth-limit": "^1.1.0",
     "@types/pg": "^7.4.14",
-    "@zeit/ncc": "0.20.1",
+    "@zeit/ncc": "0.20.2",
     "bluebird": "^3.5.5",
     "chokidar": "^3.0.1",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^2.0.0",
     "graphql-log": "^0.1.3",
-    "ts-node-dev": "^1.0.0-pre.39",
+    "ts-node-dev": "^1.0.0-pre.40",
     "typescript": "^3.5.2"
   }
 }

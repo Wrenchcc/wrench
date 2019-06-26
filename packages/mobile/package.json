@@ -25,6 +25,7 @@
     "apollo-link-error": "^1.1.11",
     "apollo-link-queue": "^2.2.0",
     "apollo-link-retry": "^2.2.14",
+    "expo-image-manipulator": "^5.0.1",
     "expo-media-library": "^5.0.1",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",
@@ -68,7 +69,7 @@
     "@react-native-community/cli": "^2.0.0-alpha.15",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
-    "concurrently": "^4.1.0",
+    "concurrently": "^4.1.1",
     "metro-react-native-babel-preset": "^0.54.1"
   }
 }
