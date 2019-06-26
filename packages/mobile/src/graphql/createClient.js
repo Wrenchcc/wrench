@@ -18,9 +18,12 @@ export default () => {
     return client
   }
 
-  const cache = new InMemoryCache()
+  const cache = new InMemoryCache({
+    freezeResults: true,
+  })
 
   client = new ApolloClient({
+    assumeImmutableResults: true,
     cache,
     link: ApolloLink.from([RetryLink, OfflineLink, AuthLink, RefreshTokenLink, HttpLink]),
   })
