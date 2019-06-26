@@ -27,7 +27,7 @@
     "apollo-link-retry": "^2.2.14",
     "expo-image-manipulator": "^5.0.1",
     "expo-media-library": "^5.0.1",
-    "graphql": "^14.3.1",
+    "graphql": "^14.4.0",
     "graphql-tag": "^2.10.1",
     "human-format": "^0.10.1",
     "i18next": "^17.0.4",

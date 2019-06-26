@@ -50,6 +50,8 @@ function AddPost({ addPost: addPostMutation }) {
       reset()
       track(events.POST_CREATED)
     } catch (err) {
+      setIsPosting(false)
+
       toastActions.show({
         content: t('AddPost:error'),
         dismissAfter: 6000,

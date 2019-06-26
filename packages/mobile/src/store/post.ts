@@ -1,6 +1,7 @@
 import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
+import { IMAGE_EDITOR_SIZE } from 'features/project/components/ImageEditor'
 import { findIndex, propEq } from 'ramda'
 import { POST } from './constants'
 
@@ -42,7 +43,19 @@ const [usePostStore, api] = create(set => ({
       }),
 
     onEdit: payload => {
-      // console.log(payload)
+      const [scale, originX, originY] = payload
+      const size = scale * IMAGE_EDITOR_SIZE
+
+      set(state => ({
+        cropping: {
+          [state.selectedId]: {
+            height: size,
+            originX,
+            originY,
+            width: size,
+          },
+        },
+      }))
     },
 
     reset: () => set(initialState),

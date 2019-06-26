@@ -23,10 +23,11 @@ function Posting() {
   const ref = useRef()
   const { t } = useTranslation()
 
+  // TODO: Selected project title
   const { image, title, isPosting } = usePostStore(store => ({
     image: store.files[0],
     isPosting: store.isPosting,
-    title: store.title,
+    title: 'Project title',
   }))
 
   useEffect(() => {

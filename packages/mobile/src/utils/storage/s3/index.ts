@@ -6,12 +6,17 @@ import { pathOr } from 'ramda'
 import { FILE_TYPES } from 'utils/enums'
 import request from './request'
 
-// this.scale,
-// this.transX,
-// this.transY,
-// originX, originY, width, height
 async function cropImage({ uri, crop }) {
-  return ImageManipulator.manipulateAsync(uri, [{ crop }])
+  return ImageManipulator.manipulateAsync(uri, [
+    // {
+    //   crop: {
+    //     originX: 0,
+    //     originY: 0,
+    //     width: 1000,
+    //     height: 1000,
+    //   },
+    // },
+  ])
 }
 
 export const uploadFiles = async files => {

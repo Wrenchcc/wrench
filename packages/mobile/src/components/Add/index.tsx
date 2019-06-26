@@ -13,6 +13,9 @@ function Add({ projects }) {
           layout: {
             backgroundColor: 'black',
           },
+          statusBar: {
+            visible: false,
+          },
         },
       }),
     [projects]

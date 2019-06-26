@@ -11,10 +11,9 @@ import Grid from './Grid'
 
 const { width } = Dimensions.get('window')
 
-const IMAGE_EDITOR_HEIGHT = width
-const IMAGE_EDITOR_WIDTH = width
+export const IMAGE_EDITOR_SIZE = width
 
-const RATIO = IMAGE_EDITOR_HEIGHT / IMAGE_EDITOR_WIDTH
+const RATIO = IMAGE_EDITOR_SIZE / IMAGE_EDITOR_SIZE
 
 const {
   set,
@@ -110,8 +109,8 @@ export default class Cropper extends React.PureComponent<PickerProps> {
     this.opacity = new Value(0)
     this.distanceFromLeft = new Value(0)
     this.distanceFromTop = new Value(0)
-    this.componentWidth = new Value(IMAGE_EDITOR_WIDTH)
-    this.componentHeight = new Value(IMAGE_EDITOR_HEIGHT)
+    this.componentWidth = new Value(IMAGE_EDITOR_SIZE)
+    this.componentHeight = new Value(IMAGE_EDITOR_SIZE)
     this.ratio = new Value(RATIO)
     this.gridClock = new Animated.Clock()
     this.velocityX = new Animated.Value(0)
@@ -556,9 +555,9 @@ export default class Cropper extends React.PureComponent<PickerProps> {
       <View
         style={{
           backgroundColor: 'black',
-          height: IMAGE_EDITOR_HEIGHT,
+          height: IMAGE_EDITOR_SIZE,
           overflow: 'hidden',
-          width: IMAGE_EDITOR_WIDTH,
+          width: IMAGE_EDITOR_SIZE,
         }}
       >
         <Animated.Code
