@@ -30,6 +30,7 @@ const LoadMorePosts = gql`
 
 const getUserByUsernameOptions = {
   options: ({ username, after }) => ({
+    returnPartialData: true,
     fetchPolicy: 'cache-and-network',
     variables: {
       username,
