@@ -10,10 +10,12 @@ export const ProjectBySlugQuery = gql`
   query getProjectBySlug($slug: LowercaseString!, $after: String, $postId: ID) {
     post(id: $postId) {
       ...postInfo
+      __typename
     }
     project(slug: $slug) {
       ...projectInfo
       ...projectPostsConnection
+      __typename
     }
   }
   ${postInfoFragment}
@@ -32,8 +34,8 @@ const LoadMorePosts = gql`
 
 const getProjectOptions = {
   options: ({ slug, postId, after }) => ({
-    // returnPartialData: true,
-    // fetchPolicy: 'cache-and-network',
+    returnPartialData: true,
+    fetchPolicy: 'cache-and-network',
     variables: {
       slug,
       after,

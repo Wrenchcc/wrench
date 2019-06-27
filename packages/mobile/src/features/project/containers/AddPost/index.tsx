@@ -1,5 +1,6 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
+import Share from 'react-native-share'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
@@ -8,7 +9,7 @@ import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import { uploadFiles } from 'utils/storage/s3'
-import { Header, Input, KeyboardAvoidingView, Icon, Text } from 'ui'
+import { Header, Input, KeyboardAvoidingView, Icon, Text, SelectionItem } from 'ui'
 import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
@@ -31,6 +32,15 @@ function AddPost({ addPost: addPostMutation }) {
   const handleNavigationBack = useCallback(() => {
     navigateBack()
   }, [navigateBack])
+
+  const shareOptions = useMemo(
+    () => ({
+      // title: 'Share via', // Project title
+      message: caption,
+      urls: files,
+    }),
+    [caption, files]
+  )
 
   const onChangeText = useCallback(value => update(POST.CAPTION, value), [update])
 
@@ -76,7 +86,7 @@ function AddPost({ addPost: addPostMutation }) {
 
       <SelectProject dark />
 
-      <KeyboardAvoidingView paddingHorizontal={0}>
+      <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
         <ScrollView style={{ paddingHorizontal: 20 }}>
           <SelectedFiles selectedFiles={files} />
 
@@ -88,6 +98,43 @@ function AddPost({ addPost: addPostMutation }) {
             onChangeText={onChangeText}
             placeholder={t('AddPost:placeholder')}
             value={caption}
+          />
+
+          <Text medium style={{ marginTop: 40 }}>
+            {t('AddPost:social')}
+          </Text>
+
+          <SelectionItem
+            type="switch"
+            onPress={() =>
+              Share.shareSingle({
+                ...shareOptions,
+                social: 'instagram',
+              })
+            }
+            title="Instagram"
+          />
+
+          <SelectionItem
+            type="switch"
+            onPress={() =>
+              Share.shareSingle({
+                ...shareOptions,
+                social: 'facebook',
+              })
+            }
+            title="Facebook"
+          />
+
+          <SelectionItem
+            type="switch"
+            onPress={() =>
+              Share.shareSingle({
+                ...shareOptions,
+                social: 'twitter',
+              })
+            }
+            title="Twitter"
           />
         </ScrollView>
       </KeyboardAvoidingView>

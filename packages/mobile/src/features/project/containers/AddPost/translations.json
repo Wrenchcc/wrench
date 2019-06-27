@@ -3,12 +3,14 @@
     "en": {
       "error": "Couldn't post right now",
       "placeholder": "Add a text about your post",
-      "add": "Share"
+      "add": "Share",
+      "social": "Social"
     },
     "sv": {
       "error": "Kunde inte dela just nu",
       "placeholder": "Skriv en text för ditt inlägg",
-      "add": "Dela"
+      "add": "Dela",
+      "social": "Socialt"
     }
   }
 }

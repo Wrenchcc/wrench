@@ -13,6 +13,7 @@ export const UserByUsernameQuery = gql`
       dynamicLink
       ...userInfo
       ...userPostsConnection
+      __typename
     }
   }
   ${userInfoFragment}
@@ -30,8 +31,8 @@ const LoadMorePosts = gql`
 
 const getUserByUsernameOptions = {
   options: ({ username, after }) => ({
-    // returnPartialData: true,
-    // fetchPolicy: 'cache-and-network',
+    returnPartialData: true,
+    fetchPolicy: 'cache-and-network',
     variables: {
       username,
       after,

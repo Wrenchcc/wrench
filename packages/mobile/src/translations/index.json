@@ -77,7 +77,8 @@
     "AddPost": {
       "error": "Couldn't post right now",
       "placeholder": "Add a text about your post",
-      "add": "Share"
+      "add": "Share",
+      "social": "Social"
     },
     "AddProject": {
       "headerTitle": "Add project",
@@ -346,7 +347,8 @@
     "AddPost": {
       "error": "Kunde inte dela just nu",
       "placeholder": "Skriv en text för ditt inlägg",
-      "add": "Dela"
+      "add": "Dela",
+      "social": "Socialt"
     },
     "AddProject": {
       "headerTitle": "Skapa projekt",

@@ -5,9 +5,9 @@ import UiText from 'ui/Text'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
-  background-color: ${({ black }) => (black ? COLORS.WHITE : COLORS.DARK)};
+  background-color: ${({ black }) => (black ? COLORS.DARK : COLORS.WHITE)};
   border-width: 1;
-  border-color: ${({ black }) => (black ? COLORS.DIVIDER : COLORS.DARK)};
+  border-color: ${({ black }) => (black ? COLORS.DARK : COLORS.DIVIDER)};
   height: 40;
   justify-content: center;
   align-items: center;

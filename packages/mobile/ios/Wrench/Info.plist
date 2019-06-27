@@ -51,6 +51,11 @@
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+		<string>whatsapp</string>
+ 		<string>mailto</string>
+		<string>facebook</string>
+		<string>instagram</string>
+		<string>twitter</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
