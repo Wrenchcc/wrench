@@ -6,8 +6,8 @@ function Follow({ onPress, following }) {
   const { t } = useTranslation()
 
   return (
-    <Base onPress={onPress} hapticFeedback="impactLight" black={following}>
-      <Text color={following ? 'white' : 'dark'} medium fontSize={15}>
+    <Base onPress={onPress} hapticFeedback="impactLight" black={!following}>
+      <Text color={following ? 'dark' : 'white'} medium fontSize={15}>
         {following ? t('Follow:unfollow') : t('Follow:follow')}
       </Text>
     </Base>
