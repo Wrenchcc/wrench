@@ -8,7 +8,7 @@ import { addPost } from 'graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
-import { uploadFiles } from 'utils/storage/s3'
+import uploadFiles from 'utils/storage/s3'
 import { Header, Input, KeyboardAvoidingView, Icon, Text, SelectionItem } from 'ui'
 import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
@@ -87,7 +87,7 @@ function AddPost({ addPost: addPostMutation }) {
       <SelectProject dark />
 
       <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
-        <ScrollView style={{ paddingHorizontal: 20 }}>
+        <ScrollView style={{ paddingHorizontal: 20 }} keyboardDismissMode="on-drag">
           <SelectedFiles selectedFiles={files} />
 
           <Input
@@ -100,7 +100,7 @@ function AddPost({ addPost: addPostMutation }) {
             value={caption}
           />
 
-          <Text medium style={{ marginTop: 40 }}>
+          <Text medium style={{ marginTop: 40, marginBottom: 20 }}>
             {t('AddPost:social')}
           </Text>
 

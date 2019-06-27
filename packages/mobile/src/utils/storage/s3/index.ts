@@ -19,7 +19,7 @@ async function cropImage({ uri, crop }) {
   ])
 }
 
-export const uploadFiles = async files => {
+export default async files => {
   try {
     const input = files.map(() => ({ type: FILE_TYPES.IMAGE }))
 
