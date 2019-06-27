@@ -60,10 +60,10 @@ export function AppNavigation(onboarding) {
   } else {
     Navigation.setRoot({
       root: {
-        stack: {
+        bottomTabs: {
           children: [
             {
-              bottomTabs: {
+              stack: {
                 children: [
                   {
                     component: {
@@ -78,6 +78,12 @@ export function AppNavigation(onboarding) {
                       },
                     },
                   },
+                ],
+              },
+            },
+            {
+              stack: {
+                children: [
                   {
                     component: {
                       id: SCREENS.EXPLORE,
@@ -91,6 +97,12 @@ export function AppNavigation(onboarding) {
                       },
                     },
                   },
+                ],
+              },
+            },
+            {
+              stack: {
+                children: [
                   {
                     component: {
                       id: SCREENS.NOTIFICATIONS,
@@ -103,6 +115,12 @@ export function AppNavigation(onboarding) {
                       },
                     },
                   },
+                ],
+              },
+            },
+            {
+              stack: {
+                children: [
                   {
                     component: {
                       id: SCREENS.ME,

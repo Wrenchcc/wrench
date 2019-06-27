@@ -3,27 +3,27 @@ import { View, Keyboard } from 'react-native'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { hasNotch } from 'utils/platform'
 
-const SPACING = hasNotch ? 30 : 0
+const SPACING = hasNotch ? 20 : 0
 const INPUT_HEIGHT = 60
 
 const transition = <Transition.Change interpolation="easeInOut" />
 
 function KeyboardAccessoryView({ children }) {
   const ref = useRef()
-  const [keyboardHeight, setKeyboardHeight] = useState(INPUT_HEIGHT + SPACING)
+  const [keyboardHeight, setKeyboardHeight] = useState(INPUT_HEIGHT)
 
   useEffect(() => {
     const keyboardShowEventListener = Keyboard.addListener(
       'keyboardWillShow',
       ({ endCoordinates }) => {
         ref.current.animateNextTransition()
-        setKeyboardHeight(endCoordinates.height + INPUT_HEIGHT)
+        setKeyboardHeight(endCoordinates.height - SPACING)
       }
     )
 
     const keyboardHideEventListener = Keyboard.addListener('keyboardWillHide', () => {
       ref.current.animateNextTransition()
-      setKeyboardHeight(INPUT_HEIGHT + SPACING)
+      setKeyboardHeight(INPUT_HEIGHT)
     })
 
     return () => {

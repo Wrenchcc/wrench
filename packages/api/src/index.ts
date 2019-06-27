@@ -23,14 +23,14 @@ let connection: Connection
 async function init() {
   if (manager.has('default')) {
     connection = await manager.get('default')
-    console.log('Reusing existing connection from manager.')
+    debug('Reusing existing connection from manager.')
   } else {
-    console.log('Creating new connection to DB.')
+    debug('Creating new connection to DB.')
     connection = await manager.create(options)
   }
 
   if (!connection.isConnected) {
-    console.log('Cached connection was not connected, attempting to reconnect.')
+    debug('Cached connection was not connected, attempting to reconnect.')
     await connection.connect()
   }
 

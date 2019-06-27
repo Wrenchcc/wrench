@@ -18,6 +18,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "no-var-requires": false,
     "baseUrl": ".",
     "rootDir": "src"
   },
