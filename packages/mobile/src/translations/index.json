@@ -87,6 +87,7 @@
     },
     "AddProjectModel": {
       "add": "Add",
+      "skip": "Skip",
       "title": "Search and pick your model.",
       "placeholder": "E.g. BMW R100 1981",
       "headerTitle": "Add project"
@@ -178,6 +179,10 @@
         "SIMILAR_PROJECTS": "Similar projects",
         "PRODUCT_ANNOUNCEMENTS": "Product announcements"
       }
+    },
+    "RefreshToken": {
+      "title": "Your session has expired",
+      "description": "Please login again."
     },
     "CommentItem": {
       "reply": "Reply",
@@ -351,6 +356,7 @@
     },
     "AddProjectModel": {
       "add": "Lägg till",
+      "skip": "Hoppa över",
       "title": "Sök och välj din modell.",
       "placeholder": "Ex. BMW R100 1981",
       "headerTitle": "Skapa projekt"
@@ -442,6 +448,10 @@
         "SIMILAR_PROJECTS": "Liknande projekt",
         "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
       }
+    },
+    "RefreshToken": {
+      "title": "Your session has expired",
+      "description": "Please login again."
     },
     "CommentItem": {
       "reply": "Svara",

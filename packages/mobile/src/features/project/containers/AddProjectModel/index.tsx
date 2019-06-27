@@ -46,7 +46,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
 
   const handleSave = useCallback(async () => {
     await addProjectMutation({
-      modelId: model.id,
+      modelId: model.id || null,
       projectTypeId: type,
       title,
     })
@@ -72,11 +72,9 @@ function AddProjectModel({ addProject: addProjectMutation }) {
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
         headerTitle={<Text medium>{t('AddProjectModel:headerTitle')}</Text>}
         headerRight={
-          model && (
-            <Text onPress={handleSave} medium>
-              {t('AddProjectModel:add')}
-            </Text>
-          )
+          <Text onPress={handleSave} medium>
+            {model ? t('AddProjectModel:add') : t('AddProjectModel:skip')}
+          </Text>
         }
       />
       <KeyboardAvoidingView>

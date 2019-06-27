@@ -3,7 +3,7 @@ import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { usePostStore } from 'store'
 import Text from 'ui/Text'
-import { Base, Inner, Cover, Content, Loader } from './styles'
+import { Base, Inner, Cover } from './styles'
 
 const transition = (
   <Transition.Sequence>
@@ -40,16 +40,12 @@ function Posting() {
       {visible && (
         <Base>
           <Inner>
-            <Content>
-              <Loader size="small" color="white" />
-              <Cover source={image} />
-            </Content>
-            <Content>
-              <Text numberOfLines={1}>{title}</Text>
-              <Text fontSize={15} color="grey">
-                {t('Posting:description')}
-              </Text>
-            </Content>
+            <Cover source={image} />
+
+            <Text numberOfLines={1}>{title}</Text>
+            <Text fontSize={15} color="grey">
+              {t('Posting:description')}
+            </Text>
           </Inner>
         </Base>
       )}
