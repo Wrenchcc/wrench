@@ -115,7 +115,7 @@ export default class Project extends BaseEntity {
   @Column()
   public projectTypeId: string
 
-  @Column()
+  @Column({ nullable: true })
   public modelId: string
 
   @CreateDateColumn({ type: 'timestamptz' })

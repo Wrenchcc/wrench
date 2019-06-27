@@ -22,14 +22,16 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
   const navigateToProject = useCallback(() => {
     if (!withoutTitle) {
       navigate(SCREENS.PROJECT, {
+        id: post.project.id,
         postId: post.id,
-        slug: post.project.slug,
       })
     }
   }, [post, withoutTitle])
 
   const navigateToUser = useCallback(() => {
-    navigate(SCREENS.USER, { username: post.user.username })
+    navigate(SCREENS.USER, {
+      username: post.user.username,
+    })
   }, [post])
 
   useEffect(() => {

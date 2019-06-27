@@ -6,12 +6,12 @@ import postInfoFragment from 'graphql/fragments/post/postInfo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import projectPostsConnectionFragment from 'graphql/fragments/project/postsConnection'
 
-export const ProjectBySlugQuery = gql`
-  query getProjectBySlug($slug: LowercaseString!, $after: String, $postId: ID) {
+export const GET_PROJECT = gql`
+  query getProject($id: ID, $slug: LowercaseString, $after: String, $postId: ID) {
     post(id: $postId) {
       ...postInfo
     }
-    project(slug: $slug) {
+    project(id: $id, slug: $slug) {
       ...projectInfo
       ...projectPostsConnection
     }
@@ -22,8 +22,8 @@ export const ProjectBySlugQuery = gql`
 `
 
 const LoadMorePosts = gql`
-  query loadMoreProjectPosts($slug: LowercaseString!, $after: String) {
-    project(slug: $slug) {
+  query loadMoreProjectPosts($id: ID, $slug: LowercaseString, $after: String) {
+    project(id: $id, slug: $slug) {
       ...projectPostsConnection
     }
   }
@@ -31,10 +31,11 @@ const LoadMorePosts = gql`
 `
 
 const getProjectOptions = {
-  options: ({ slug, postId, after }) => ({
+  options: ({ id, slug, postId, after }) => ({
     // returnPartialData: true,
     // fetchPolicy: 'cache-and-network',
     variables: {
+      id,
       slug,
       after,
       postId,
@@ -80,4 +81,4 @@ const getProjectOptions = {
   }),
 }
 
-export const getProject = graphql(ProjectBySlugQuery, getProjectOptions)
+export const getProject = graphql(GET_PROJECT, getProjectOptions)

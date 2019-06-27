@@ -45,6 +45,9 @@ function AddProjectModel({ addProject: addProjectMutation }) {
   )
 
   const handleSave = useCallback(async () => {
+    // TODO: is saving and move after await
+    dismissModal()
+
     await addProjectMutation({
       modelId: model ? model.id : null,
       projectTypeId: type,
@@ -52,7 +55,6 @@ function AddProjectModel({ addProject: addProjectMutation }) {
     })
 
     reset()
-    dismissModal()
   }, [reset, dismissModal, model, type, title])
 
   const handleModelChange = useCallback(

@@ -9,5 +9,5 @@ export const Base = styled.View`
 
 export const Followers = styled(UiFollowers)`
   margin-top: 15;
-  margin-bottom: 25;
+  margin-bottom: 35;
 `
