@@ -38,7 +38,7 @@ function EmptyState({ type = TYPES.PROJECT }) {
       <Title>{t(`EmptyState:${type}:title`)}</Title>
       <Description color="grey">{t(`EmptyState:${type}:description`)}</Description>
       {showButton(type) && (
-        <Button onPress={handleNavigation} hapticFeedback="impactLight">
+        <Button onPress={handleNavigation}>
           <Text medium fontSize={15}>
             {t(`EmptyState:${type}:button`)}
           </Text>

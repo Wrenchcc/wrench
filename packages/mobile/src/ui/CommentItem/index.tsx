@@ -32,13 +32,7 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
       {replies.totalCount > replies.edges.length && (
         <LoadReplies>
           <Border />
-          <Text
-            medium
-            fontSize={12}
-            color="light_grey"
-            hapticFeedback="impactLight"
-            onPress={handleLoadMore}
-          >
+          <Text medium fontSize={12} color="light_grey" onPress={handleLoadMore}>
             {t('CommentItem:loadReplies', {
               count: replies.totalCount - replies.edges.length,
             })}

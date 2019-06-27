@@ -64,7 +64,7 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
               color="dark"
             />
             {text.length > 0 && (
-              <Button onPress={handleSubmit} hapticFeedback="impactLight">
+              <Button onPress={handleSubmit}>
                 <Text fontSize={15} medium>
                   {t('CommentField:post')}
                 </Text>

@@ -21,15 +21,7 @@ function Add({ projects }) {
     [projects]
   )
 
-  return (
-    <Icon
-      hitSlop={20}
-      onPress={handleNavigation}
-      source={add}
-      hapticFeedback="impactLight"
-      style={{ paddingLeft: 20 }}
-    />
-  )
+  return <Icon hitSlop={20} onPress={handleNavigation} source={add} style={{ paddingLeft: 20 }} />
 }
 
 export default getCurrentUserProjects(Add)

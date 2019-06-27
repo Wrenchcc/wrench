@@ -47,7 +47,7 @@ function EditProject({ project, deleteProject, editProject }) {
     isSaving ? (
       <ActivityIndicator size="small" color="black" />
     ) : (
-      <Text medium onPress={handleEditProject} hapticFeedback="impactLight">
+      <Text medium onPress={handleEditProject}>
         {t('EditProject:done')}
       </Text>
     )

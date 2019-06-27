@@ -76,7 +76,7 @@ function Camera({ onTakePicture }) {
 
         {autofocus && <AutoFocus coordinates={autofocus} />}
         <CameraType onPress={changeCameraType} />
-        <TakePicture onPress={takePicture} hapticFeedback="impactLight" />
+        <TakePicture onPress={takePicture} />
         <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
       </>
     </TouchableWithoutFeedback>

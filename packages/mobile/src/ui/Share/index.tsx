@@ -23,7 +23,7 @@ function Share({ text, url, title }) {
 
   return (
     <View>
-      <Touchable hapticFeedback="impactLight" onPress={handleShare} hitSlop={20}>
+      <Touchable onPress={handleShare} hitSlop={20}>
         {text ? <Text medium>{t('Share:share')}</Text> : <Image source={share} />}
       </Touchable>
     </View>

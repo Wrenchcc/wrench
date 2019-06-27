@@ -4,7 +4,7 @@ import { Button, Icon } from './styles'
 
 function FlashMode({ flashMode, onPress }) {
   return (
-    <Button onPress={onPress} hapticFeedback="impactLight">
+    <Button onPress={onPress}>
       <Icon source={flashMode ? zap : zapOff} />
     </Button>
   )
