@@ -54,7 +54,7 @@ export default function createNavigationAwareScrollable(Component) {
             selectedTabIndex === tabIndex &&
             scrollRef.current
           ) {
-            scrollRef.current.getNode().scrollToOffset({ offset: initialScroll })
+            // scrollRef.current.getNode().scrollToOffset({ offset: initialScroll })
           }
         }
       )

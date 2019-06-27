@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
-import Share from 'react-native-share'
+// import Share from 'react-native-share'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
@@ -33,14 +33,14 @@ function AddPost({ addPost: addPostMutation }) {
     navigateBack()
   }, [navigateBack])
 
-  const shareOptions = useMemo(
-    () => ({
-      // title: 'Share via', // Project title
-      message: caption,
-      urls: files,
-    }),
-    [caption, files]
-  )
+  // const shareOptions = useMemo(
+  //   () => ({
+  //     // title: 'Share via', // Project title
+  //     message: caption,
+  //     urls: files,
+  //   }),
+  //   [caption, files]
+  // )
 
   const onChangeText = useCallback(value => update(POST.CAPTION, value), [update])
 
@@ -100,7 +100,7 @@ function AddPost({ addPost: addPostMutation }) {
             value={caption}
           />
 
-          <Text medium style={{ marginTop: 40, marginBottom: 20 }}>
+          {/*<Text medium style={{ marginTop: 40, marginBottom: 20 }}>
             {t('AddPost:social')}
           </Text>
 
@@ -135,7 +135,7 @@ function AddPost({ addPost: addPostMutation }) {
               })
             }
             title="Twitter"
-          />
+          />*/}
         </ScrollView>
       </KeyboardAvoidingView>
     </>

@@ -46,7 +46,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
 
   const handleSave = useCallback(async () => {
     await addProjectMutation({
-      modelId: model.id || null,
+      modelId: model ? model.id : null,
       projectTypeId: type,
       title,
     })

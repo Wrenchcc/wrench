@@ -6,7 +6,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   const user = await ctx.db.User.findOne(ctx.userId)
 
   const project = await ctx.db.Project.createProject({
-    modelId: input.modelId || null,
+    modelId: input.modelId ? input.modelId : null,
     projectTypeId: input.projectTypeId,
     title: input.title,
     userId: ctx.userId,
