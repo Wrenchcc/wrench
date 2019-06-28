@@ -33,14 +33,14 @@ function AddPost({ addPost: addPostMutation }) {
     navigateBack()
   }, [navigateBack])
 
-  // const shareOptions = useMemo(
-  //   () => ({
-  //     // title: 'Share via', // Project title
-  //     message: caption,
-  //     urls: files,
-  //   }),
-  //   [caption, files]
-  // )
+  const shareOptions = useMemo(
+    () => ({
+      // title: 'Share via', // Project title
+      message: caption,
+      urls: files.map(({ uri }) => uri),
+    }),
+    [caption, files]
+  )
 
   const onChangeText = useCallback(value => update(POST.CAPTION, value), [update])
 
@@ -100,7 +100,7 @@ function AddPost({ addPost: addPostMutation }) {
             value={caption}
           />
 
-          {/*<Text medium style={{ marginTop: 40, marginBottom: 20 }}>
+          <Text medium style={{ marginTop: 40, marginBottom: 20 }}>
             {t('AddPost:social')}
           </Text>
 
@@ -135,7 +135,7 @@ function AddPost({ addPost: addPostMutation }) {
               })
             }
             title="Twitter"
-          />*/}
+          />
         </ScrollView>
       </KeyboardAvoidingView>
     </>
