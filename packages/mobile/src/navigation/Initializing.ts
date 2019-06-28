@@ -6,6 +6,7 @@ import { getAccessToken } from 'utils/storage/auth'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { SentryInstance } from 'utils/sentry'
 import { AuthNavigation, AppNavigation } from './navigation'
+SplashScreen.hide()
 
 function Initializing({ client }) {
   const loadInitialState = async () => {
