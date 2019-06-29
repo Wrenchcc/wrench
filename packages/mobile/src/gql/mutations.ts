@@ -28,7 +28,13 @@ export const AUTHENTICATE_FACEBOOK_MUTATION = gql``
 
 export const EDIT_USER_MUTATION = gql``
 
-export const REFRESH_TOKEN_MUTATION = gql``
+export const REFRESH_TOKEN_MUTATION = gql`
+  mutation refreshToken($refreshToken: String!) {
+    token: refreshToken(refreshToken: $refreshToken) {
+      access_token
+    }
+  }
+`
 
 export const REGISTER_DEVICE_TOKEN_MUTATION = gql``
 

@@ -11,7 +11,7 @@ import OfflineLink from './links/Offline'
 import RefreshTokenLink from './links/RefreshToken'
 import RetryLink from './links/Retry'
 
-let client = null
+export let client = null
 
 export default () => {
   if (client) {

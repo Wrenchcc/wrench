@@ -1,11 +1,10 @@
 import { Alert } from 'react-native'
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
-import client from 'gql/client'
-import { REFRESH_TOKEN_MUTATION } from './mutations'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
+import { client, REFRESH_TOKEN_MUTATION } from '../../'
 
 function refreshTokenFailed() {
   client.resetStore()

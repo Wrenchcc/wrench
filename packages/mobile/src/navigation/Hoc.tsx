@@ -1,7 +1,7 @@
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
-import createClient from 'graphql/createClient'
+import createClient from 'gql/client'
 import { NavigationContext } from './context'
 import * as actions from './actions'
 

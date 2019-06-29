@@ -14,8 +14,6 @@ export const COMMENT_QUERY = gql``
 
 export const COMMENTS_QUERY = gql``
 
-export const COMMENTS_QUERY = gql``
-
 export const POST_QUERY = gql``
 
 export const PROJECT_QUERY = gql``
