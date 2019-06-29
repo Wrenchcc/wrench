@@ -15,14 +15,11 @@ function getProjectById(id, projects) {
 function SelectProject({ dark = false, projects }) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const { projectId, title, update } = usePostStore(
-    store => ({
-      projectId: getProjectById(store.projectId, projects).projectId,
-      title: getProjectById(store.projectId, projects).title,
-      update: store.actions.update,
-    }),
-    [projects]
-  )
+  const { projectId, title, update } = usePostStore(store => ({
+    projectId: getProjectById(store.projectId, projects).projectId,
+    title: getProjectById(store.projectId, projects).title,
+    update: store.actions.update,
+  }))
 
   const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
   const handleClose = useCallback(() => setIsOpen(false), [])

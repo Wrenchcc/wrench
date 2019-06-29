@@ -4,7 +4,8 @@ import { onError } from 'apollo-link-error'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { client, REFRESH_TOKEN_MUTATION } from '../../'
+import { client } from '../../client'
+import { REFRESH_TOKEN_MUTATION } from '../../mutations'
 
 function refreshTokenFailed() {
   client.resetStore()
