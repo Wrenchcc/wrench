@@ -2982,10 +2982,10 @@ graphql-tag@^2.10.1:
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
   integrity sha512-jApXqWBzNXQ8jYa/HLkZJaVw9jgwNqZkywa2zfFn16Iv1Zb7ELNHkJaXHR7Quvd5SIGsy6Ny7SUKATgnu05uEg==
 
-graphql@^14.4.0:
-  version "14.4.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.4.0.tgz#e97086acfc0338e4fdc8f7dba519c6b8a6badfd9"
-  integrity sha512-E55z1oK6e4cGxCqlSsRWytYDPcIUxky3XkbuQUf6TIjCmn6C7CuBJpmkMF1066q95yPAGOZVPTVT7jABKbRFSA==
+graphql@^14.4.1:
+  version "14.4.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.4.1.tgz#7a7818d3f63f66b9528ba5416b6c88460db62280"
+  integrity sha512-g4HUH26CohlMjaHneXMAtvG3QtO6peJIUTFxrPW4g5LNnXkUuFoBI6Bk1c14Q5kW8+FyjM/tTbePTgpiVB/2hQ==
   dependencies:
     iterall "^1.2.2"
 
@@ -6678,7 +6678,7 @@ zen-observable@^0.8.0:
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.14.tgz#d33058359d335bc0db1f0af66158b32872af3bf7"
   integrity sha512-kQz39uonEjEESwh+qCi83kcC3rZJGh4mrZW7xjkSQYXkq//JZHTtKo+6yuVloTgMtzsIWOJrjIrKvk/dqm0L5g==
 
-zustand@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-0.2.2.tgz#d3c7cea8313a31f16974b1c68e872c12d5affa8d"
-  integrity sha512-CGjP58oq0w14wVGWHqq+ay3/vszUjRSunAy2nkYC5B+Z9IcLsfBBuNG0OWIOlppnf1yg1LK+sbmDCz2gxgp74Q==
+zustand@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-1.0.1.tgz#5907521e8f3690e0c4776d27f199cfca915d0d2f"
+  integrity sha512-i2h+lyy9XKZYegbrfOD63FOccr/Ojkmvz33TDGCQonxRHIjuReBKnaiCCKnxQ2hFvqFULRy8hGGkBgrVjG7USw==
