@@ -4,8 +4,7 @@ import { onError } from 'apollo-link-error'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { client } from '../../client'
-import { REFRESH_TOKEN_MUTATION } from '../../mutations'
+import { client, REFRESH_TOKEN_MUTATION } from '../../'
 
 function refreshTokenFailed() {
   client.resetStore()
@@ -52,9 +51,9 @@ export default onError(({ graphQLErrors, operation, forward }) => {
             })
             .then(() => {
               const subscriber = {
-                next: observer.next.bind(observer),
-                error: observer.error.bind(observer),
                 complete: observer.complete.bind(observer),
+                error: observer.error.bind(observer),
+                next: observer.next.bind(observer),
               }
 
               return forward(operation).subscribe(subscriber)

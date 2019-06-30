@@ -1,6 +1,17 @@
 import { messaging } from 'react-native-firebase'
-import { savePushNotificationToken } from 'graphql/mutations/user/registerDeviceToken'
+import { client, REGISTER_DEVICE_TOKEN_MUTATION } from 'gql'
 import { track, events } from 'utils/analytics'
+import { PLATFORM_TYPES } from 'utils/enums'
+
+async function registerDeviceToken(token) {
+  client.mutate({
+    mutation: REGISTER_DEVICE_TOKEN_MUTATION,
+    variables: {
+      platform: PLATFORM_TYPES.MOBILE,
+      token,
+    },
+  })
+}
 
 export default async function requestNotificationToken() {
   if (__DEV__) {
@@ -14,13 +25,13 @@ export default async function requestNotificationToken() {
     const token = await firebase.getToken()
 
     if (token) {
-      await savePushNotificationToken(token)
+      await registerDeviceToken(token)
     }
 
     // Look for new tokens
     firebase.onTokenRefresh(async newToken => {
       if (token !== newToken) {
-        await savePushNotificationToken(newToken)
+        await registerDeviceToken(newToken)
       }
     })
   } else {
@@ -29,7 +40,7 @@ export default async function requestNotificationToken() {
       const token = await firebase.getToken()
 
       if (token) {
-        await savePushNotificationToken(token)
+        await registerDeviceToken(token)
       }
     } catch (error) {
       // User has rejected permissions

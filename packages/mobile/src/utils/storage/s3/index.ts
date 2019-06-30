@@ -1,5 +1,5 @@
 import * as ImageManipulator from 'expo-image-manipulator'
-import { client } from 'graphql/createClient'
+import { client } from 'gql/client'
 import { PreSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
 import { logError } from 'utils/sentry'
 import { pathOr } from 'ramda'

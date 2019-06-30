@@ -10,8 +10,6 @@ export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
   ${USER_SETTINGS_FRAGMENT}
 `
 
-// export const DELETE_COMMENT_MUTATION = gql``
-
 // export const ADD_COMMENT_MUTATION = gql`
 //   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
 //     addComment(postId: $postId, commentId: $commentId, input: $input) {
@@ -117,17 +115,16 @@ export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
 //   }
 // `
 //
-// export const REFRESH_TOKEN_MUTATION = gql`
-//   mutation refreshToken($refreshToken: String!) {
-//     token: refreshToken(refreshToken: $refreshToken) {
-//       access_token
-//     }
-//   }
-// `
-//
-// export const REGISTER_DEVICE_TOKEN_MUTATION = gql`
-//   mutation registerDeviceToken($token: String!, $platform: PlatformType!) {
-//     registerDeviceToken(token: $token, platform: $platform)
-//   }
-// `
-//
+export const REFRESH_TOKEN_MUTATION = gql`
+  mutation refreshToken($refreshToken: String!) {
+    token: refreshToken(refreshToken: $refreshToken) {
+      access_token
+    }
+  }
+`
+
+export const REGISTER_DEVICE_TOKEN_MUTATION = gql`
+  mutation registerDeviceToken($token: String!, $platform: PlatformType!) {
+    registerDeviceToken(token: $token, platform: $platform)
+  }
+`
