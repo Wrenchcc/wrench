@@ -30,7 +30,7 @@
 
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions bridgeManagerDelegate:self];
 
-  // [RNSplashScreen show];
+  [RNSplashScreen show];
 
   return YES;
 }
