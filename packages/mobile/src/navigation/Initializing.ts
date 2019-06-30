@@ -12,8 +12,8 @@ function Initializing() {
       const accessToken = await getAccessToken()
 
       if (!accessToken) {
-        AuthNavigation()
-        return
+        SplashScreen.hide()
+        return AuthNavigation()
       }
 
       const user = pathOr(null, ['data', 'user'], await client.query({ query: CURRENT_USER_QUERY }))
