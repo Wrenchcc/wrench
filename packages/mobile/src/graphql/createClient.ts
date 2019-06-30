@@ -31,7 +31,7 @@ export default () => {
   client.onResetStore(() => {
     track(events.USER_SIGNED_OUT)
     clearTokens()
-    // AuthNavigation()
+    AuthNavigation()
     LoginManager.logOut()
   })
 
