@@ -144,7 +144,7 @@ PODS:
     - React
   - react-native-config (0.11.7):
     - React
-  - react-native-fast-image (6.0.5):
+  - react-native-fast-image (6.1.0):
     - React
     - SDWebImage (~> 5.0)
   - react-native-fbsdk (0.10.1):
@@ -522,7 +522,7 @@ SPEC CHECKSUMS:
   React: a86b92f00edbe1873a63e4a212c29b7a7ad5224f
   react-native-camera: 0d18706a9fd6d30ece4fa7c9c50fe36f484c54fa
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-fast-image: a21f6e33cb7d0aba81ea181f451def8d7b4b726d
+  react-native-fast-image: 1d2a81ae1f7443664205b5683c879ede83cc9be3
   react-native-fbsdk: 38ee580e77319d03f8ed0bf4a020cbfd70dc4d2d
   react-native-haptic-feedback: 1eb699eb89f477d7997b84eb709842da0f171d91
   react-native-netinfo: 0da34082d2cec3100c9b5073bb217e35f1142bdd
