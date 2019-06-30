@@ -1,4 +1,14 @@
 import gql from 'graphql-tag'
+import { USER_SETTINGS_FRAGMENT } from './fragments'
+
+export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
+  mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
+    toggleNotificationSettings(input: $input) {
+      ...userSettingsFragment
+    }
+  }
+  ${USER_SETTINGS_FRAGMENT}
+`
 
 // export const DELETE_COMMENT_MUTATION = gql``
 
@@ -121,10 +131,3 @@ import gql from 'graphql-tag'
 //   }
 // `
 //
-// export const TOGGLE_USER_NOTIFICATINS_SETTINGS_MUTATION = gql`
-//   mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
-//     toggleNotificationSettings(input: $input) {
-//       ...userSettings
-//     }
-//   }
-// `

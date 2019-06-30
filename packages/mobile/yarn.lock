@@ -6678,7 +6678,7 @@ zen-observable@^0.8.0:
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.14.tgz#d33058359d335bc0db1f0af66158b32872af3bf7"
   integrity sha512-kQz39uonEjEESwh+qCi83kcC3rZJGh4mrZW7xjkSQYXkq//JZHTtKo+6yuVloTgMtzsIWOJrjIrKvk/dqm0L5g==
 
-zustand@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-1.0.1.tgz#5907521e8f3690e0c4776d27f199cfca915d0d2f"
-  integrity sha512-i2h+lyy9XKZYegbrfOD63FOccr/Ojkmvz33TDGCQonxRHIjuReBKnaiCCKnxQ2hFvqFULRy8hGGkBgrVjG7USw==
+zustand@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-1.0.2.tgz#03b22d39a4cb4449c0fd9db2999e71f5ef8956af"
+  integrity sha512-Mi7aqoG1u+oQ3JaLuYrMv9idzLGUVR04lqnlP0br5cYQkfaX3Hc61i4VAhkh4GXIr2sZRLV1hoHo+LnvJqlNmA==

@@ -35,7 +35,7 @@ const generateLanguageSettings = () => {
   return items
 }
 
-const generateNotificationSettings = ({ settings, toggleNotificationSettings }) => {
+const generateNotificationSettings = ({ settings, handleToggleNotificationSettings }) => {
   if (!settings) {
     return null
   }
@@ -46,7 +46,7 @@ const generateNotificationSettings = ({ settings, toggleNotificationSettings }) 
   items = types.map(type => ({
     titleKey: `notifications.${type}`,
     onPress: () =>
-      toggleNotificationSettings({
+      handleToggleNotificationSettings({
         notificationType: type,
       }),
     type: 'switch',
