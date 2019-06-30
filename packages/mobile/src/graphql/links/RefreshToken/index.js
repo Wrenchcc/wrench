@@ -1,7 +1,7 @@
 import { Alert } from 'react-native'
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
-import { client } from 'graphql/createClient'
+import { client } from 'gql/client'
 import { RefreshTokenMutation } from 'graphql/mutations/user/refreshToken'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'

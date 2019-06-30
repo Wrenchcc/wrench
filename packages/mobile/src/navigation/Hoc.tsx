@@ -1,5 +1,6 @@
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider as ApolloProviderHooks } from '@apollo/react-hooks'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 import createClient from 'gql/client'
 import { NavigationContext } from './context'
@@ -11,9 +12,11 @@ export default Component => {
   function Screen(props) {
     return (
       <ApolloProvider client={client}>
-        <NavigationContext.Provider value={actions}>
-          <Component {...props} />
-        </NavigationContext.Provider>
+        <ApolloProviderHooks client={client}>
+          <NavigationContext.Provider value={actions}>
+            <Component {...props} />
+          </NavigationContext.Provider>
+        </ApolloProviderHooks>
       </ApolloProvider>
     )
   }

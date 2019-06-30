@@ -1,5 +1,5 @@
 import { pathOr } from 'ramda'
-import { client } from 'graphql/createClient'
+import { client } from 'gql/client'
 import { EditUserMutation } from 'graphql/mutations/user/editUser'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { logError } from 'utils/analytics'

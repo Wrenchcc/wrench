@@ -28,7 +28,7 @@ export default () => {
     link: ApolloLink.from([RetryLink, OfflineLink, AuthLink, RefreshTokenLink, HttpLink]),
   })
 
-  client.onResetStore(() => {
+  client.onResetStore(async () => {
     track(events.USER_SIGNED_OUT)
     clearTokens()
     AuthNavigation()
