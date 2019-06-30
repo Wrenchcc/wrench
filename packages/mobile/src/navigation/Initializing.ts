@@ -31,7 +31,6 @@ function Initializing({ client }) {
         AuthNavigation()
       }
     } catch {
-      SplashScreen.hide()
       AuthNavigation()
     }
 
