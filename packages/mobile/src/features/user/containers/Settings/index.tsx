@@ -27,6 +27,8 @@ const keyExtractor = (item, index) => item + index
 
 function Settings({ section }) {
   const { t } = useTranslation()
+
+  // TODO: only load when needed (Notifications)
   const { data, loading } = useQuery(CURRENT_USER_SETTINGS_QUERY)
   const [toggleNotificationSettings] = useMutation(TOGGLE_NOTIFICATION_SETTINGS_MUTATION)
 

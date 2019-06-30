@@ -28,6 +28,29 @@ export const USER_SETTINGS_FRAGMENT = gql`
   }
 `
 
+export const USER_PROJECTS_FRAGMENT = gql`
+  fragment userProjectsFragment on User {
+    projects: projectsConnection {
+      edges {
+        node {
+          id
+          title
+          followers: followersConnection {
+            totalCount
+          }
+          files: filesConnection(first: 1, type: IMAGE) {
+            edges {
+              node {
+                uri
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 //
 // export const PROJECT_FRAGMENT = gql``
 //

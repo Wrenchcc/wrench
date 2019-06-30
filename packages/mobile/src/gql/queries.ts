@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { USER_SETTINGS_FRAGMENT } from './fragments'
+import { USER_SETTINGS_FRAGMENT, USER_PROJECTS_FRAGMENT } from './fragments'
 
 // export const USER_QUERY = gql``
 //
@@ -37,9 +37,15 @@ export const CURRENT_USER_SETTINGS_QUERY = gql`
   ${USER_SETTINGS_FRAGMENT}
 `
 
-//
-// export const CURRENT_USER_PROJECTS_QUERY = gql``
-//
+export const CURRENT_USER_PROJECTS_QUERY = gql`
+  query getCurrentUserProjects {
+    user: currentUser {
+      ...userProjectsFragment
+    }
+  }
+  ${USER_PROJECTS_FRAGMENT}
+`
+
 //
 // export const COMMENT_QUERY = gql``
 //
