@@ -51,6 +51,47 @@ export const USER_PROJECTS_FRAGMENT = gql`
   }
 `
 
+// export const POST_FRAGMENT = gql`
+//   fragment postFragment on Post {
+//     id
+//     caption
+//     createdAt
+//     postPermissions {
+//       isOwner
+//     }
+//     user {
+//       ...userFragment
+//     }
+//     files: filesConnection(type: IMAGE) {
+//       edges {
+//         node {
+//           type
+//           id
+//           uri
+//         }
+//       }
+//     }
+//     project {
+//       id
+//       title
+//       slug
+//     }
+//     comments: commentsConnection(first: 2) @connection(key: "comments") {
+//       totalCount
+//       edges {
+//         node {
+//           id
+//           text
+//           user {
+//             ...userFragment
+//           }
+//         }
+//       }
+//     }
+//   }
+//   ${USER_FRAGMENT}
+// `
+
 //
 // export const PROJECT_FRAGMENT = gql``
 //
