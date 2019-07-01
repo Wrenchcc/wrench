@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { USER_SETTINGS_FRAGMENT } from './fragments'
+import * as fragment from './fragments'
 
 export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
   mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
@@ -7,7 +7,7 @@ export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
       ...userSettingsFragment
     }
   }
-  ${USER_SETTINGS_FRAGMENT}
+  ${fragment.USER_SETTINGS_FRAGMENT}
 `
 
 // export const ADD_COMMENT_MUTATION = gql`
@@ -88,15 +88,15 @@ export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
 //   }
 // `
 //
-// export const PRE_SING_URLS_MUTATION = gql`
-//   mutation($input: [PreSignedUrlnput]!) {
-//     preSignUrls(input: $input) {
-//       url
-//       type
-//       filename
-//     }
-//   }
-// `
+export const PRE_SING_URLS_MUTATION = gql`
+  mutation($input: [PreSignedUrlnput]!) {
+    preSignUrls(input: $input) {
+      url
+      type
+      filename
+    }
+  }
+`
 //
 // export const AUTHENTICATE_FACEBOOK_MUTATION = gql`
 //   mutation authenticateFacebook($token: String!) {

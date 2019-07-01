@@ -1,17 +1,6 @@
 import { messaging } from 'react-native-firebase'
-import { client, REGISTER_DEVICE_TOKEN_MUTATION } from 'gql'
+import { registerDeviceToken } from 'gql'
 import { track, events } from 'utils/analytics'
-import { PLATFORM_TYPES } from 'utils/enums'
-
-async function registerDeviceToken(token) {
-  client.mutate({
-    mutation: REGISTER_DEVICE_TOKEN_MUTATION,
-    variables: {
-      platform: PLATFORM_TYPES.MOBILE,
-      token,
-    },
-  })
-}
 
 export default async function requestNotificationToken() {
   if (__DEV__) {
