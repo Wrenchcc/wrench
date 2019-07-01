@@ -5,8 +5,10 @@ import Icon from 'ui/Icon'
 import { add } from 'images'
 
 function Add() {
-  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, { fetchPolicy: 'cache-only' })
   const { showModal } = useNavigation()
+  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+    fetchPolicy: 'cache-only',
+  })
 
   const handleNavigation = useCallback(
     () =>

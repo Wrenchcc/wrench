@@ -14,7 +14,9 @@ function getProjectById(id, projects) {
 
 function SelectProject({ dark = false }) {
   const [isOpen, setIsOpen] = useState(false)
-  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, { fetchPolicy: 'cache-only' })
+  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+    fetchPolicy: 'cache-only',
+  })
 
   const projects = data.user.projects.edges
 

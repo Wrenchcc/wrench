@@ -24,8 +24,10 @@ export const CURRENT_USER_QUERY = gql`
       interestedIn {
         id
       }
+      ...userProjectsFragment
     }
   }
+  ${fragment.USER_PROJECTS_FRAGMENT}
 `
 
 export const CURRENT_USER_SETTINGS_QUERY = gql`

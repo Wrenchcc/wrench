@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation'
-import client from 'gql'
+import { client } from 'gql'
 import { SCREENS } from './constants'
 import createScreenHoc from './createScreenHoc'
 
