@@ -3,7 +3,7 @@ import { mergeAll } from 'ramda'
 import i18next from 'i18next'
 import { setLocale, languages, updateUserLocale } from 'i18n'
 import { navigateTo, showModal, SCREENS } from 'navigation'
-import { client } from 'gql/client'
+import { client } from 'gql'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
 import { logError } from 'utils/sentry'
@@ -125,7 +125,7 @@ const sections = props => ({
         },
         {
           titleKey: 'logout',
-          onPress: () => client.resetStore(),
+          // onPress: () => client.resetStore(),
           last: true,
         },
       ],

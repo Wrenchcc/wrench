@@ -58,7 +58,7 @@ function Onboarding({ isFetching, types, editUser }) {
 
   const renderItem = ({ item }) => (
     <Cell key={item.id}>
-      <Touchable hapticFeedback="impactLight" onPress={() => toggleSelection(item)}>
+      <Touchable onPress={() => toggleSelection(item)}>
         <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
           <Image
             selected={items[item.id]}
@@ -76,20 +76,20 @@ function Onboarding({ isFetching, types, editUser }) {
     </Cell>
   )
 
-  const renderHeaderRight = () => isSaving ? (
+  const renderHeaderRight = () =>
+    isSaving ? (
       <ActivityIndicator size="small" color="white" />
-  ) : (
+    ) : (
       <Text
         color="white"
         medium
         opacity={isComplete() ? 1 : 0.5}
         disabled={!isComplete()}
         onPress={handleSubmit}
-        hapticFeedback="impactLight"
       >
         {t('Onboarding:next')}
       </Text>
-  )
+    )
 
   return (
     <Base>

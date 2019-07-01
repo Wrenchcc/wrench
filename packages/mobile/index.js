@@ -3,6 +3,7 @@ import { links, notifications } from 'react-native-firebase'
 import { Bootstrap } from 'navigation'
 import { handleDynamicLink, handlePushNotification } from 'utils/dynamicLinks'
 import { trackScreen } from 'utils/analytics'
+
 import 'i18n'
 
 Navigation.events().registerAppLaunchedListener(async () => {

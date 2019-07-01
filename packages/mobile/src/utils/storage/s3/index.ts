@@ -1,6 +1,5 @@
 import * as ImageManipulator from 'expo-image-manipulator'
-import { client } from 'gql/client'
-import { PreSignUrlsMutation } from 'graphql/mutations/upload/preSignUrls'
+import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
 import { pathOr } from 'ramda'
 import { FILE_TYPES } from 'utils/enums'
@@ -26,7 +25,7 @@ export default async files => {
     // Return pre-signed urls
     // Resize images and return uris
     const [preSignedUrls, resizedImages] = await Promise.all([
-      client.mutate({ mutation: PreSignUrlsMutation, variables: { input } }),
+      preSignUrls(input),
       Promise.all(files.map(cropImage)),
     ]).catch(err => {
       logError(err)

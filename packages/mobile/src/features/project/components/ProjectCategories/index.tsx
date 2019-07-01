@@ -26,7 +26,7 @@ function ProjectCategories({ ListHeaderComponent, isFetching, types, onSelect })
       keyExtractor={keyExtractor}
       renderItem={({ item }) => (
         <Cell key={item.id}>
-          <Touchable hapticFeedback="impactLight" onPress={() => onSelect(item)}>
+          <Touchable onPress={() => onSelect(item)}>
             <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
               <Image
                 placeholderColor="transparent"
