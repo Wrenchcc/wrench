@@ -61,6 +61,7 @@ const [usePostStore, api] = create(set => ({
     reset: () => set(initialState),
 
     setIsPosting: payload => set({ isPosting: payload }),
+
     update: async (field, payload) => {
       if (field === POST.PROJECT_ID) {
         AsyncStorage.setItem(SELECTED_PROJECT_KEY, payload)

@@ -7,11 +7,11 @@ import { LoginManager } from 'react-native-fbsdk'
 import { AuthNavigation } from 'navigation'
 
 const cache = new InMemoryCache({
-  freezeResults: true,
+  // freezeResults: true,
 })
 
 const client = new ApolloClient({
-  assumeImmutableResults: true,
+  // assumeImmutableResults: true,
   cache,
   link,
 })
