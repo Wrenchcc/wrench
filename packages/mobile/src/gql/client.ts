@@ -11,29 +11,21 @@ import OfflineLink from './links/Offline'
 import RefreshTokenLink from './links/RefreshToken'
 import RetryLink from './links/Retry'
 
-export let client = null
+const cache = new InMemoryCache({
+  freezeResults: true,
+})
 
-export default () => {
-  if (client) {
-    return client
-  }
+const client = new ApolloClient({
+  assumeImmutableResults: true,
+  cache,
+  link: ApolloLink.from([RetryLink, OfflineLink, AuthLink, RefreshTokenLink, HttpLink]),
+})
 
-  const cache = new InMemoryCache({
-    freezeResults: true,
-  })
+client.onResetStore(() => {
+  track(events.USER_SIGNED_OUT)
+  clearTokens()
+  AuthNavigation()
+  LoginManager.logOut()
+})
 
-  client = new ApolloClient({
-    assumeImmutableResults: true,
-    cache,
-    link: ApolloLink.from([RetryLink, OfflineLink, AuthLink, RefreshTokenLink, HttpLink]),
-  })
-
-  client.onResetStore(async () => {
-    track(events.USER_SIGNED_OUT)
-    clearTokens()
-    AuthNavigation()
-    LoginManager.logOut()
-  })
-
-  return client
-}
+export default client
