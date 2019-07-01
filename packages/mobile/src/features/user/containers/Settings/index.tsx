@@ -1,9 +1,12 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Page, SectionList } from 'navigation'
-import { compose } from 'react-apollo'
-import { getCurrentUserSettings } from 'graphql/queries/user/getCurrentUserSettings'
-import toggleUserNotificationSettingsMutation from 'graphql/mutations/user/toggleUserNotificationSettings'
+import {
+  useQuery,
+  useMutation,
+  CURRENT_USER_SETTINGS_QUERY,
+  TOGGLE_NOTIFICATION_SETTINGS_MUTATION,
+} from 'gql'
 import { Title, SelectionItem } from 'ui'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
@@ -22,8 +25,20 @@ const style = {
 
 const keyExtractor = (item, index) => item + index
 
-function Settings({ section, toggleNotificationSettings, settings }) {
+function Settings({ section }) {
   const { t } = useTranslation()
+
+  // TODO: only load when needed (Notifications)
+  const { data, loading } = useQuery(CURRENT_USER_SETTINGS_QUERY)
+  const [toggleNotificationSettings] = useMutation(TOGGLE_NOTIFICATION_SETTINGS_MUTATION)
+
+  const handleToggleNotificationSettings = useCallback(
+    input =>
+      toggleNotificationSettings({
+        variables: { input },
+      }),
+    [toggleNotificationSettings]
+  )
 
   const renderSectionHeader = useCallback(({ section: { titleKey } }) => {
     if (!titleKey) {
@@ -40,6 +55,12 @@ function Settings({ section, toggleNotificationSettings, settings }) {
     []
   )
 
+  if (loading) {
+    return null
+  }
+
+  const settings = data.user.settings
+
   return (
     <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>
       <SectionList
@@ -48,7 +69,7 @@ function Settings({ section, toggleNotificationSettings, settings }) {
         renderSectionHeader={renderSectionHeader}
         renderItem={renderItem}
         initialNumToRender={15}
-        sections={sections({ toggleNotificationSettings, settings })[section || 'settings']}
+        sections={sections({ handleToggleNotificationSettings, settings })[section || 'settings']}
         keyExtractor={keyExtractor}
         ListFooterComponent={!section && <Footer />}
         borderSeparator
@@ -57,7 +78,4 @@ function Settings({ section, toggleNotificationSettings, settings }) {
   )
 }
 
-export default compose(
-  getCurrentUserSettings,
-  toggleUserNotificationSettingsMutation
-)(Settings)
+export default Settings

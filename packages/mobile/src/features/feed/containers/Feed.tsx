@@ -44,7 +44,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   )
 
   return (
-    <Layout stickyComponent={StickyComponent}>
+    <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
       <FlatList
         ref={scrollRef}
         tabIndex={0}

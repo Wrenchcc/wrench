@@ -140,10 +140,10 @@ export default function createNavigationAwareScrollable(Component) {
           paddingTop: isAndroid ? contentInset : 0,
           ...contentContainerStyle,
         }}
-        {...borderSeparator && { ItemSeparatorComponent: BorderSeparator }}
-        {...spacingSeparator && {
+        {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
+        {...(spacingSeparator && {
           ItemSeparatorComponent: Separator,
-        }}
+        })}
         {...props}
       />
     )

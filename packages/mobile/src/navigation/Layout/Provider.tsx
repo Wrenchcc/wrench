@@ -66,18 +66,18 @@ export default class Provider extends PureComponent {
 
     const state = {
       finished: new Value(0),
-      velocity: new Value(0),
       position: new Value(0),
       time: new Value(0),
+      velocity: new Value(0),
     }
 
     const config = {
       damping: 1,
       mass: 1,
-      stiffness: 50,
       overshootClamping: true,
-      restSpeedThreshold: 0.001,
       restDisplacementThreshold: 0.001,
+      restSpeedThreshold: 0.001,
+      stiffness: 50,
       toValue: new Value(0),
     }
 

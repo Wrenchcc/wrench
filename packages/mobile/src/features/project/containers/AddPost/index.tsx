@@ -37,7 +37,7 @@ function AddPost({ addPost: addPostMutation }) {
   //   () => ({
   //     // title: 'Share via', // Project title
   //     message: caption,
-  //     urls: files,
+  //     urls: files.map(({ uri }) => uri),
   //   }),
   //   [caption, files]
   // )

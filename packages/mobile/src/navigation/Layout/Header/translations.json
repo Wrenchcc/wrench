@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "en": {
+      "home": "Home",
+      "notifications": "Notifications"
+    },
+    "sv": {
+      "home": "Hem",
+      "notifications": "Notifikationer"
+    }
+  }
+}

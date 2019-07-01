@@ -1,13 +1,12 @@
 import { useEffect } from 'react'
 import { pathOr } from 'ramda'
 import SplashScreen from 'react-native-splash-screen'
-import { withApollo } from 'react-apollo'
 import { getAccessToken } from 'utils/storage/auth'
-import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
+import { getCurrentUser } from 'gql'
 import { SentryInstance } from 'utils/sentry'
 import { AuthNavigation, AppNavigation } from './navigation'
 
-function Initializing({ client }) {
+function Initializing() {
   const loadInitialState = async () => {
     try {
       const accessToken = await getAccessToken()
@@ -17,13 +16,13 @@ function Initializing({ client }) {
         return AuthNavigation()
       }
 
-      const user = pathOr(null, ['data', 'user'], await client.query({ query: CurrentUserQuery }))
+      const { data } = await getCurrentUser()
 
-      if (user) {
-        const showOnboarding = !user.interestedIn
+      if (data.user) {
+        const showOnboarding = !data.user.interestedIn
 
         SentryInstance.setUserContext({
-          username: user.username,
+          username: data.user.username,
         })
 
         AppNavigation(showOnboarding)
@@ -44,4 +43,4 @@ function Initializing({ client }) {
   return null
 }
 
-export default withApollo(Initializing)
+export default Initializing
