@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { Layout, FlatList } from 'navigation'
 import { getRecentPosts } from 'graphql/queries/getExplore'
+import Add from 'components/Add'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
 import Post from 'components/Post'
@@ -33,6 +34,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
     <>
       {searchActive && <Search query={query} />}
       <Layout
+        headerRight={searchActive || <Add />}
         headerLeft={
           <SearchBar
             onChangeQuery={handleQueryChange}
