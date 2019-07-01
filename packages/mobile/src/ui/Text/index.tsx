@@ -10,17 +10,10 @@ const Text = ({
   onLongPress,
   disabled = false,
   lineHeight = null,
-  hapticFeedback = null,
   ...props
 }) =>
   onPress ? (
-    <Touchable
-      onPress={onPress}
-      onLongPress={onLongPress}
-      disabled={disabled}
-      hapticFeedback={hapticFeedback}
-      nativeButton={false}
-    >
+    <Touchable onPress={onPress} onLongPress={onLongPress} disabled={disabled} nativeButton={false}>
       <Base
         numberOfLines={numberOfLines}
         {...props}

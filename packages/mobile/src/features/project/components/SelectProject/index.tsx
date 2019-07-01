@@ -48,7 +48,7 @@ function SelectProject({ dark = false }) {
 
   return (
     <>
-      <Base onPress={toggleOpen} hapticFeedback="impactLight" activeOpacity={0.8}>
+      <Base onPress={toggleOpen} activeOpacity={0.8}>
         <Text
           color={(dark && 'dark') || isOpen ? 'dark' : 'white'}
           medium
