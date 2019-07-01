@@ -125,7 +125,7 @@ const sections = props => ({
         },
         {
           titleKey: 'logout',
-          // onPress: () => client.resetStore(),
+          onPress: () => client.resetStore(),
           last: true,
         },
       ],
