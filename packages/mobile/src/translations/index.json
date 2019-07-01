@@ -34,9 +34,6 @@
       "headline": "Get up to speed and follow some projects.",
       "description": "We’ve selected some projects below you may find interesting."
     },
-    "Notifications": {
-      "title": "Notifications"
-    },
     "PostContainer": {
       "title": "Post"
     },
@@ -185,6 +182,10 @@
       "title": "Your session has expired",
       "description": "Please login again."
     },
+    "Header": {
+      "home": "Home",
+      "notifications": "Notifications"
+    },
     "CommentItem": {
       "reply": "Reply",
       "loadReplies": "View replies ({{count}})"
@@ -303,9 +304,6 @@
     "ProjectSuggestions": {
       "headline": "Kom igång och följ några projekt.",
       "description": "Vi har valt några projekt som vi tror du tycker om."
-    },
-    "Notifications": {
-      "title": "Notifikationer"
     },
     "PostContainer": {
       "title": "Inlägg"
@@ -454,6 +452,10 @@
     "RefreshToken": {
       "title": "Your session has expired",
       "description": "Please login again."
+    },
+    "Header": {
+      "home": "Hem",
+      "notifications": "Notifikationer"
     },
     "CommentItem": {
       "reply": "Svara",

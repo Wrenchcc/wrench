@@ -7,7 +7,7 @@ import { Text } from 'ui'
 import { Base, Input, Icon } from './styles'
 import transition from './transition'
 
-function Search({
+function SearchBar({
   onChangeQuery,
   searchOpen,
   onSearchFocus,
@@ -78,4 +78,4 @@ function Search({
   )
 }
 
-export default memo(Search)
+export default memo(SearchBar)

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
 import { Navigation } from 'react-native-navigation'
 import { Layout, FlatList, showNotificationBadge, hideNotificationBadge } from 'navigation'
@@ -8,7 +7,6 @@ import { markAllNotificationsSeen } from 'graphql/mutations/notification/markAll
 import { deleteNotification } from 'graphql/mutations/notification/deleteNotification'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
-import { Header } from './styles'
 
 function Notifications({
   notifications,
@@ -22,7 +20,6 @@ function Notifications({
   markAllNotificationsSeen: markAllNotificationsSeenMutation,
   unreadCount,
 }) {
-  const { t } = useTranslation()
   const hasNotifications = notifications && notifications.length > 0
 
   useEffect(() => {
@@ -47,17 +44,12 @@ function Notifications({
   )
 
   return (
-    <Layout>
+    <Layout headerTitleKey="notifications">
       <FlatList
         tabIndex={2}
         initialNumToRender={6}
         paddingHorizontal={0}
         contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
-        ListHeaderComponent={
-          <Header medium spacingHorizontal={!hasNotifications}>
-            {t('Notifications:title')}
-          </Header>
-        }
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
         borderSeparator
         data={notifications}
