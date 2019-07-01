@@ -50,11 +50,12 @@ function MediaPicker() {
   }
 
   useEffect(() => {
-    fetchAlbums()
-  }, [])
-
-  useEffect(() => {
     check(PERMISSION).then(response => {
+      if (response === RESULTS.GRANTED) {
+        fetchAlbums()
+      }
+
+      setLoading(false)
       setPhotoPermission(response)
       setCheckingPermission(false)
     })
@@ -73,7 +74,7 @@ function MediaPicker() {
 
   const renderScene = ({ route }) => <List album={route.key} />
 
-  const renderTabs = useCallback(props => albums.length > 1 && <Tabs {...props} />, [albums])
+  const renderTabBar = useCallback(props => albums.length > 1 && <Tabs {...props} />, [albums])
 
   if (checkingPermission || isLoading) {
     return null
@@ -91,7 +92,7 @@ function MediaPicker() {
         index: tabIndex,
         routes: albums,
       }}
-      renderTabBar={renderTabs}
+      renderTabBar={renderTabBar}
       renderScene={renderScene}
       onIndexChange={handleIndexChange}
       initialLayout={{ width }}
