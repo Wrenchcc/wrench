@@ -14,12 +14,13 @@ const [useToastStore, api] = create(set => ({
 
   actions: {
     show: payload => {
+      set({
+        content: payload.content,
+        show: true,
+        type: payload.type,
+      })
+
       if (payload.dismissAfter) {
-        set({
-          content: payload.content,
-          show: true,
-          type: payload.type,
-        })
         setTimeout(() => set(initialState), payload.dismissAfter)
       }
     },
@@ -35,5 +36,14 @@ NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
     })
   }
 })
+
+export function showSpamToast() {
+  api.setState({
+    show: true,
+    type: TOAST_TYPES.SPAM,
+  })
+
+  setTimeout(() => api.setState(initialState), 6000)
+}
 
 export default useToastStore

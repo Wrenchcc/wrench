@@ -41,7 +41,8 @@ export const FILE_TYPES = {
   VIDEO: 'VIDEO',
 }
 
-export const REFRESH_TOKEN_CODES = {
+export const ERROR_CODES = {
   INVALID: 'REFRESH_TOKEN_INVALID',
   REVOKED: 'REFRESH_TOKEN_REVOKED',
+  SPAM: 'SPAM',
 }

@@ -90,7 +90,7 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
 
   return (
     <Base>
-      <Avatar uri={data && data.user.avatarUrl} />
+      <Avatar uri={data.user && data.user.avatarUrl} />
       <Input
         ref={inputRef}
         onSubmitEditing={(text.length > 0 && handleSubmit) || null}

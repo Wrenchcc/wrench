@@ -1,13 +1,15 @@
 import { Alert } from 'react-native'
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
+import { showSpamToast } from 'store'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
+import { ERROR_CODES } from 'utils/enums'
 import { client, REFRESH_TOKEN_MUTATION } from '../../'
 
 function refreshTokenFailed() {
-  client.resetStore()
+  client.clearStore()
 
   // TODO
   // Alert.alert('Your session has expired', 'Please login again.', null, {
@@ -20,7 +22,12 @@ function refreshTokenFailed() {
 export default onError(({ graphQLErrors, operation, forward }) => {
   if (graphQLErrors) {
     const { extensions } = graphQLErrors[0]
-    if (extensions && extensions.code === 'UNAUTHENTICATED') {
+
+    if (extensions && extensions.code === ERROR_CODES.SPAM) {
+      showSpamToast()
+    }
+
+    if (extensions && extensions.code === ERROR_CODES.UNAUTHENTICATED) {
       return new Observable(async observer => {
         try {
           const refreshToken = await getRefreshToken()

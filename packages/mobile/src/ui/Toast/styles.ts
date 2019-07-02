@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
+import { TOAST_TYPES } from 'utils/enums'
 
 function mapTypeToColor(type) {
   switch (type) {
-    case 'warning':
+    case TOAST_TYPES.WARNING:
       return COLORS.RED
-    case 'error':
+    case TOAST_TYPES.SPAM:
+    case TOAST_TYPES.ERROR:
       return COLORS.ORANGE
-    case 'success':
+    case TOAST_TYPES.SUCCESS:
       return COLORS.DARK
     default:
       return COLORS.LIGHT_GREY

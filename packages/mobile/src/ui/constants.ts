@@ -20,7 +20,7 @@ export const COLORS = {
   GREEN: 'rgb(5, 176, 30)',
   GREY: 'rgb(109, 111, 118)',
   LIGHT_GREY: 'rgb(168, 168, 173)',
-  ORANGE: 'rgb(243, 104, 35)',
+  ORANGE: 'rgb(246, 138, 86)',
   PRIMARY: 'rgb(42, 119, 90)',
   RED: 'rgb(246, 86, 86)',
   SECONDARY: 'rgb(237, 234, 228)',

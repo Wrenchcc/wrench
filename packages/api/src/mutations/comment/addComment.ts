@@ -1,7 +1,7 @@
-import { ForbiddenError } from 'apollo-server-express'
+import { ApolloError } from 'apollo-server-express'
 import { trim } from 'ramda'
 import { isAuthenticated, canModeratePost, canModerateComment } from '../../utils/permissions'
-import { NOTIFICATION_TYPES } from '../../utils/enums'
+import { NOTIFICATION_TYPES, ERROR_CODES } from '../../utils/enums'
 import { extractMentionedUsers } from '../../utils/regex'
 
 const debug = require('debug')('api:mutations:comment:add-comment')
@@ -21,8 +21,9 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     if (userPreviousPublishedPosts.count >= SPAM_LMIT) {
       debug('User has commented at least 10 times in the previous 5m')
 
-      return new ForbiddenError(
-        'You’ve been commenting a lot! Please wait a few minutes before posting more.'
+      return new ApolloError(
+        'You’ve been commenting a lot! Please wait a few minutes before posting more.',
+        ERROR_CODES.SPAM
       )
     }
   }

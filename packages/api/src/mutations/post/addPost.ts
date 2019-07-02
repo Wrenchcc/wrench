@@ -1,7 +1,7 @@
-import { ForbiddenError } from 'apollo-server-express'
+import { ForbiddenError, ApolloError } from 'apollo-server-express'
 import { trim } from 'ramda'
 import { isAuthenticated, canModerateProject } from '../../utils/permissions'
-import { FILE_TYPES } from '../../utils/enums'
+import { FILE_TYPES, ERROR_CODES } from '../../utils/enums'
 
 const debug = require('debug')('api:mutations:post:add-post')
 
@@ -25,8 +25,9 @@ export default isAuthenticated(async (_, { input }, ctx) => {
     if (userPreviousPublishedPosts.count >= SPAM_LMIT) {
       debug('User has posted at least 10 times in the previous 5m')
 
-      return new ForbiddenError(
-        'You’ve been posting a lot! Please wait a few minutes before posting more.'
+      return new ApolloError(
+        'You’ve been posting a lot! Please wait a few minutes before posting more.',
+        ERROR_CODES.SPAM
       )
     }
   }

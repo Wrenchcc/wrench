@@ -259,7 +259,8 @@
       "button": "New posts"
     },
     "Toast": {
-      "networkError": "No internet connection"
+      "network": "No internet connection",
+      "spam": "Action blocked. Please try again later."
     },
     "UiUser": {
       "projects": "{{count, humanFormat}} project",
@@ -529,7 +530,8 @@
       "button": "Nya inlägg"
     },
     "Toast": {
-      "networkError": "Ingen internetanslutning"
+      "network": "Ingen internetanslutning",
+      "spam": "Åtgärd blockerad. Vänligen försök igen."
     },
     "UiUser": {
       "projects": "{{count, humanFormat}} projekt"

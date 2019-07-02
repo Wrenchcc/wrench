@@ -16,7 +16,7 @@ const client = new ApolloClient({
   link,
 })
 
-client.onResetStore(() => {
+client.onClearStore(() => {
   track(events.USER_SIGNED_OUT)
   clearTokens()
   AuthNavigation()
