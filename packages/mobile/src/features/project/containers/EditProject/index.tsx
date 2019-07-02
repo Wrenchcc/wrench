@@ -36,7 +36,6 @@ function EditProject({
 
   const onDelete = useCallback(() => {
     deleteProjectMutations(project.id).then(() => {
-      // TOOD: navigate to feed
       dismissModal(true)
     })
   }, [])

@@ -9,6 +9,8 @@ export enum NAVIGATION {
   LIST_OFFSET = hasNotch ? 120 : 90,
 }
 
+export const BOTTOM_TABS_ID = 'BottomTabs'
+
 export enum SCREENS {
   INITIALIZING = 'INITIALIZING',
   ONBOARDING = 'ONBOARDING',

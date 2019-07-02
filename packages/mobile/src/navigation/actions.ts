@@ -5,7 +5,7 @@ import {
   notificationsSelected,
   notifications as notificationsIcon,
 } from 'images'
-import { SCREENS } from './constants'
+import { SCREENS, BOTTOM_TABS_ID } from './constants'
 
 let componentId
 let overlay
@@ -71,12 +71,15 @@ export function dismissMention() {
 }
 
 export function dismissModal(root) {
-  // TODO
-  if (root) {
-    // Navigation.pop(componentId)
-  }
-
   Navigation.dismissModal(componentId)
+
+  if (root) {
+    Navigation.mergeOptions(BOTTOM_TABS_ID, {
+      bottomTabs: {
+        currentTabIndex: 0,
+      },
+    })
+  }
 }
 
 export function navigate(screen, { options, ...passProps } = {}) {

@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+import { useMentionStore } from 'store'
 import { InfiniteList, MentionUser, NoResults } from 'ui'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { NAVIGATION } from 'navigation/constants'
@@ -8,9 +9,9 @@ import { isIphone, hasNotch } from 'utils/platform'
 const SAFE_AREA = hasNotch ? 75 : 0
 const OFFSET_BOTTOM = isIphone ? 275 + SAFE_AREA : 70
 
-function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPress }) {
+// TODO: Use useQuery instead of HoC
+const List = searchUsers(({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPress }) => {
   const renderItem = ({ item }) => <MentionUser user={item.node} onPress={onPress} />
-
   return (
     <View
       style={{
@@ -36,6 +37,14 @@ function Mention({ users, fetchMore, isRefetching, isFetching, hasNextPage, onPr
       />
     </View>
   )
+})
+
+function Mention({ onPress }) {
+  const { query } = useMentionStore(store => ({
+    query: store.query,
+  }))
+
+  return <List query={query} onPress={onPress} />
 }
 
-export default searchUsers(Mention)
+export default Mention

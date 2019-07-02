@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, dismissModal, SCREENS } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
@@ -15,7 +15,7 @@ import SelectProject from '../../components/SelectProject'
 
 function AddPost({ addPost: addPostMutation }) {
   const { t } = useTranslation()
-  const { dismissModal, navigateBack } = useNavigation()
+  const { navigateBack } = useNavigation()
 
   const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({
     caption: store.caption,
@@ -35,7 +35,7 @@ function AddPost({ addPost: addPostMutation }) {
   const onChangeText = useCallback(value => update(POST.CAPTION, value), [update])
 
   const handleAddPost = async () => {
-    dismissModal(SCREENS.FEED)
+    dismissModal(true)
     setIsPosting(true)
 
     try {

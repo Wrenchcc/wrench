@@ -3,7 +3,7 @@ import { COLORS } from 'ui/constants'
 import { feed, explore, notifications, notificationsSelected, profile } from 'images'
 import registerScreens from './registerScreens'
 import defaultOptions from './defaultOptions'
-import { SCREENS } from './constants'
+import { SCREENS, BOTTOM_TABS_ID } from './constants'
 
 registerScreens()
 
@@ -61,6 +61,7 @@ export function AppNavigation(onboarding) {
     Navigation.setRoot({
       root: {
         bottomTabs: {
+          id: BOTTOM_TABS_ID,
           children: [
             {
               stack: {
