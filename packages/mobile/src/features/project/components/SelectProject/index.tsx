@@ -22,7 +22,7 @@ function SelectProject({ dark = false }) {
 
   // TODO: Rerender only when projects change
   const { projectId, title, update } = usePostStore(store => ({
-    projectId: getProjectById(store.projectId, projects).projectId,
+    projectId: getProjectById(store.projectId, projects).id,
     title: getProjectById(store.projectId, projects).title,
     update: store.actions.update,
   }))
