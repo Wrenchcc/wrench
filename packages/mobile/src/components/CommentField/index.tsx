@@ -5,8 +5,11 @@ import { useQuery, CURRENT_USER_QUERY } from 'gql'
 import { addComment } from 'graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
+import { isAndroid } from 'utils/platform'
 import { MENTION } from './constants'
 import { Base, Input, Button } from './styles'
+
+const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
 function CommentField({ addComment: addCommentMutation, postId, commentId, username }) {
   const { t } = useTranslation()
@@ -17,7 +20,6 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
     fetchPolicy: 'cache-only',
   })
 
-  // When selecting user from outside
   useEffect(() => {
     if (username) {
       setText(`${MENTION.TRIGGER}${username} `)
@@ -25,25 +27,33 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
     }
   }, [inputRef, username, commentId])
 
-  const handleOnChangeText = useCallback(val => {
-    setText(val)
-
-    const lastChar = val.substr(val.length - 1)
-
-    if (lastChar === MENTION.TRIGGER) {
-      showMention({
-        onPress: user => {
-          dismissMention()
-          setText(`${MENTION.TRIGGER}${user.username} `)
-        },
-      })
-    }
+  useEffect(() => {
+    const keyboardHideEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, dismissMention)
+    return () => keyboardHideEventListener.remove()
   }, [])
 
+  const handleOnChangeText = useCallback(
+    val => {
+      setText(val)
+
+      const lastChar = val.substr(val.length - 1)
+
+      if (lastChar === MENTION.TRIGGER) {
+        showMention({
+          onPress: user => {
+            dismissMention()
+            setText(`${MENTION.TRIGGER}${user.username} `)
+          },
+        })
+      }
+    },
+    [showMention, dismissMention, setText]
+  )
+
   const handleSubmit = useCallback(() => {
+    inputRef.current.blur()
     addCommentMutation(postId, text, commentId)
     setText('')
-    inputRef.current.blur()
   }, [postId, text, commentId, inputRef])
 
   return (
