@@ -2,28 +2,31 @@ import React, { useState, useCallback } from 'react'
 import { ScrollView, ActivityIndicator, Alert } from 'react-native'
 import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
+import { dismissModal } from 'navigation'
 import { editProject } from 'graphql/mutations/project/editProject'
 import { deleteProject } from 'graphql/mutations/project/deleteProject'
-import { dismissModal, useNavigation, SCREENS } from 'navigation'
 import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
 import { closeDark } from 'images'
 import { Inner, Spacing } from './styles'
 
-function EditProject({ project, deleteProject, editProject }) {
+function EditProject({
+  project,
+  deleteProject: deleteProjectMutations,
+  editProject: editProjectMutation,
+}) {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
   const [title, setTitle] = useState(project.title)
   const [commentsDisabled, setCommentsDisabled] = useState(project.commentsDisabled)
 
-  const onChangeText = useCallback(title => setTitle(title), [])
+  const onChangeText = useCallback(text => setTitle(text), [])
   const onSelectionChange = useCallback(value => setCommentsDisabled(value), [])
   const handleClose = useCallback(() => dismissModal(), [])
 
   const handleEditProject = useCallback(() => {
     setIsSaving(true)
 
-    editProject({ title, commentsDisabled }).then(
+    editProjectMutation({ title, commentsDisabled }).then(
       setTimeout(() => {
         setIsSaving(false)
         dismissModal()
@@ -32,7 +35,10 @@ function EditProject({ project, deleteProject, editProject }) {
   }, [title, commentsDisabled])
 
   const onDelete = useCallback(() => {
-    deleteProject().then(() => navigate(SCREENS.FEED))
+    deleteProjectMutations(project.id).then(() => {
+      // TOOD: navigate to feed
+      dismissModal(true)
+    })
   }, [])
 
   const renderHeaderLeft = () => {

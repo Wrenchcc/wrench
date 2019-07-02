@@ -2,6 +2,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { filter } from 'ramda'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
+import { logError } from 'utils/sentry'
 
 const DeleteProjectMutation = gql`
   mutation deleteProject($id: ID!) {
@@ -10,28 +11,32 @@ const DeleteProjectMutation = gql`
 `
 
 const deleteProjectOptions = {
-  props: ({ mutate, ownProps: { id } }) => ({
-    deleteProject: () =>
+  props: ({ mutate }) => ({
+    deleteProject: id =>
       mutate({
         variables: {
           id,
         },
         update: cache => {
-          const data = cache.readQuery({ query: CurrentUserQuery })
-          const edges = filter(edge => edge.node.id !== id, data.user.projects.edges)
+          try {
+            const data = cache.readQuery({ query: CurrentUserQuery })
+            const edges = filter(edge => edge.node.id !== id, data.user.projects.edges)
 
-          const user = {
-            ...data,
-            user: {
-              ...data.user,
-              projects: {
-                ...data.user.projects,
-                edges,
+            const user = {
+              ...data,
+              user: {
+                ...data.user,
+                projects: {
+                  ...data.user.projects,
+                  edges,
+                },
               },
-            },
-          }
+            }
 
-          cache.writeQuery({ query: CurrentUserQuery, data: user })
+            cache.writeQuery({ query: CurrentUserQuery, data: user })
+          } catch (err) {
+            logError(err)
+          }
         },
       }),
   }),

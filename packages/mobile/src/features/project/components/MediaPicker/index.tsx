@@ -70,7 +70,8 @@ function MediaPicker() {
 
   const permissionAuthorized = useCallback(() => {
     setPhotoPermission(RESULTS.GRANTED)
-  }, [])
+    fetchAlbums()
+  }, [setPhotoPermission, fetchAlbums])
 
   const renderScene = ({ route }) => <List album={route.key} />
 

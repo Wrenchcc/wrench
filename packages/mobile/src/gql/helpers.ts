@@ -9,7 +9,7 @@ import {
 
 export async function registerDeviceToken(token) {
   try {
-    await client.mutate({
+    return client.mutate({
       mutation: REGISTER_DEVICE_TOKEN_MUTATION,
       variables: {
         platform: PLATFORM_TYPES.MOBILE,
@@ -23,7 +23,7 @@ export async function registerDeviceToken(token) {
 
 export async function preSignUrls(input) {
   try {
-    await client.mutate({
+    return client.mutate({
       mutation: PRE_SING_URLS_MUTATION,
       variables: { input },
     })
