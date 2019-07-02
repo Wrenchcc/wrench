@@ -17,7 +17,6 @@ import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
-import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
@@ -89,7 +88,6 @@ public class MainApplication extends NavigationApplication {
         new AsyncStoragePackage(),
         new RNCWebViewPackage(),
         new LinearGradientPackage(),
-        new RNReactNativeHapticFeedbackPackage(),
         new FBSDKPackage(mCallbackManager),
         new ReactNativeConfigPackage(),
         new ReactVideoPackage(),

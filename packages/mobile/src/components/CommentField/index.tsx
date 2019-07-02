@@ -1,8 +1,7 @@
 import React, { memo, useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Query } from 'react-apollo'
 import { showMention, dismissMention } from 'navigation'
-import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
+import { useQuery, CURRENT_USER_QUERY } from 'gql'
 import { addComment } from 'graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -13,6 +12,10 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
   const { t } = useTranslation()
   const inputRef = useRef()
   const [text, setText] = useState('')
+
+  const { data } = useQuery(CURRENT_USER_QUERY, {
+    fetchPolicy: 'cache-only',
+  })
 
   // When selecting user from outside
   useEffect(() => {
@@ -44,36 +47,26 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
   }, [postId, text, commentId, inputRef])
 
   return (
-    <Query query={CurrentUserQuery}>
-      {({ data, loading }) => {
-        if (loading) {
-          return null
-        }
-
-        return (
-          <Base>
-            <Avatar uri={data && data.user.avatarUrl} />
-            <Input
-              ref={inputRef}
-              onSubmitEditing={(text.length > 0 && handleSubmit) || null}
-              placeholder={t('CommentField:placeholder')}
-              placeholderTextColor={COLORS.LIGHT_GREY}
-              keyboardType="twitter"
-              onChangeText={handleOnChangeText}
-              value={text}
-              color="dark"
-            />
-            {text.length > 0 && (
-              <Button onPress={handleSubmit}>
-                <Text fontSize={15} medium>
-                  {t('CommentField:post')}
-                </Text>
-              </Button>
-            )}
-          </Base>
-        )
-      }}
-    </Query>
+    <Base>
+      <Avatar uri={data && data.user.avatarUrl} />
+      <Input
+        ref={inputRef}
+        onSubmitEditing={(text.length > 0 && handleSubmit) || null}
+        placeholder={t('CommentField:placeholder')}
+        placeholderTextColor={COLORS.LIGHT_GREY}
+        keyboardType="twitter"
+        onChangeText={handleOnChangeText}
+        value={text}
+        color="dark"
+      />
+      {text.length > 0 && (
+        <Button onPress={handleSubmit}>
+          <Text fontSize={15} medium>
+            {t('CommentField:post')}
+          </Text>
+        </Button>
+      )}
+    </Base>
   )
 }
 

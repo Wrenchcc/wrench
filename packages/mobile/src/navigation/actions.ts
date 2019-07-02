@@ -70,9 +70,10 @@ export function dismissMention() {
   }
 }
 
-export function dismissModal(screen) {
-  if (screen) {
-    // Change tab
+export function dismissModal(root) {
+  // TODO
+  if (root) {
+    // Navigation.pop(componentId)
   }
 
   Navigation.dismissModal(componentId)

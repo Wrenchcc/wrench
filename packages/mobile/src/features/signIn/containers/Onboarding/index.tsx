@@ -18,7 +18,9 @@ const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
-function Onboarding({ isFetching, types, editUser }) {
+const keyExtractor = item => item.id
+
+function Onboarding({ isFetching, types, editUser: editUserMutation }) {
   const { t } = useTranslation()
   const [isSaving, setIsSaving] = useState(false)
   const [items, setItems] = useState({})
@@ -53,12 +55,12 @@ function Onboarding({ isFetching, types, editUser }) {
     setIsSaving(true)
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
     const interestedIn = Object.keys(items).map(id => ({ id }))
-    editUser({ interestedIn }).then(setTimeout(AppNavigation, 500))
+    editUserMutation({ interestedIn }).then(setTimeout(AppNavigation, 500))
   }
 
   const renderItem = ({ item }) => (
     <Cell key={item.id}>
-      <Touchable hapticFeedback="impactLight" onPress={() => toggleSelection(item)}>
+      <Touchable onPress={() => toggleSelection(item)}>
         <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
           <Image
             selected={items[item.id]}
@@ -76,31 +78,31 @@ function Onboarding({ isFetching, types, editUser }) {
     </Cell>
   )
 
-  const renderHeaderRight = () => isSaving ? (
+  const renderHeaderRight = () =>
+    isSaving ? (
       <ActivityIndicator size="small" color="white" />
-  ) : (
+    ) : (
       <Text
         color="white"
         medium
         opacity={isComplete() ? 1 : 0.5}
         disabled={!isComplete()}
         onPress={handleSubmit}
-        hapticFeedback="impactLight"
       >
         {t('Onboarding:next')}
       </Text>
-  )
+    )
 
   return (
     <Base>
-      <Header headerRight={renderHeaderRight()} />
+      <Header headerRight={renderHeaderRight()} color="black" />
       <FlatList
         ListHeaderComponent={<Content />}
         ListEmptyComponent={isFetching && <Loader color="grey" />}
         contentContainerStyle={{ padding: 5, flex: isFetching ? 1 : 0 }}
         numColumns={2}
         data={types}
-        keyExtractor={item => item.id}
+        keyExtractor={keyExtractor}
         renderItem={renderItem}
       />
       <Footer progress={progress()} />

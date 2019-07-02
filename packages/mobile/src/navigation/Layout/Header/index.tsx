@@ -1,25 +1,15 @@
 import React, { useContext } from 'react'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
-import SearchBar from 'components/SearchBar'
-import { Toast } from 'ui'
+import { useTranslation } from 'react-i18next'
+import { Toast, Title } from 'ui'
 import { ListContext } from '../context'
 import { transformContainer, opacityContent } from './animation'
 import styles from './styles'
 
-function Header({
-  query,
-  search,
-  onQueryChange,
-  onSearchCancel,
-  onSearchClear,
-  onSearchFocus,
-  searchActive,
-  headerRight,
-  headerLeft,
-  stickyComponent,
-}) {
+function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
   const { translateY, headerHeight } = useContext(ListContext)
+  const { t } = useTranslation()
 
   return (
     <Animated.View style={[styles.container, transformContainer(translateY, headerHeight)]}>
@@ -28,27 +18,15 @@ function Header({
           <Animated.View style={opacityContent(translateY, headerHeight)}>
             <View style={styles.inner}>
               {headerLeft}
-              {search && (
-                <SearchBar
-                  onChangeQuery={onQueryChange}
-                  onSearchCancel={onSearchCancel}
-                  onSearchFocus={onSearchFocus}
-                  onSearchClear={onSearchClear}
-                  query={query}
-                  searchActive={searchActive}
-                />
-              )}
-              {!searchActive && headerRight}
+              {headerTitleKey && <Title medium>{t(`Header:${headerTitleKey}`)}</Title>}
+              {headerRight}
             </View>
           </Animated.View>
         </View>
       </View>
-      {!searchActive && (
-        <>
-          <Toast />
-          {stickyComponent}
-        </>
-      )}
+
+      <Toast />
+      {stickyComponent}
     </Animated.View>
   )
 }

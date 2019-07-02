@@ -3,7 +3,7 @@ import { mergeAll } from 'ramda'
 import i18next from 'i18next'
 import { setLocale, languages, updateUserLocale } from 'i18n'
 import { navigateTo, showModal, SCREENS } from 'navigation'
-import { client } from 'graphql/createClient'
+import { client } from 'gql'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
 import { logError } from 'utils/sentry'
@@ -35,7 +35,7 @@ const generateLanguageSettings = () => {
   return items
 }
 
-const generateNotificationSettings = ({ settings, toggleNotificationSettings }) => {
+const generateNotificationSettings = ({ settings, handleToggleNotificationSettings }) => {
   if (!settings) {
     return null
   }
@@ -46,7 +46,7 @@ const generateNotificationSettings = ({ settings, toggleNotificationSettings }) 
   items = types.map(type => ({
     titleKey: `notifications.${type}`,
     onPress: () =>
-      toggleNotificationSettings({
+      handleToggleNotificationSettings({
         notificationType: type,
       }),
     type: 'switch',

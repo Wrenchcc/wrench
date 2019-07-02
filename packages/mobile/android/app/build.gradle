@@ -158,7 +158,6 @@ dependencies {
     implementation project(':react-native-sentry')
     implementation project(':react-native-webview')
     implementation project(':react-native-linear-gradient')
-    implementation project(':react-native-haptic-feedback')
     implementation project(':react-native-config')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-video')
