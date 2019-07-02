@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import Animated from 'react-native-reanimated'
+import { KeyboardAvoidingView } from 'ui'
 import { isAndroid } from 'utils/platform'
 import { NAVIGATION } from '../constants'
 import { ListContext } from './context'
@@ -197,7 +198,9 @@ export default class Provider extends PureComponent {
           translateY: this.finalTranslateY,
         }}
       >
-        {this.props.children}
+        <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
+          {this.props.children}
+        </KeyboardAvoidingView>
       </ListContext.Provider>
     )
   }
