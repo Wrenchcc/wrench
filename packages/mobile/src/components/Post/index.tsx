@@ -3,10 +3,13 @@ import { Alert, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
+import { isAndroid } from 'utils/platform'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ActionSheet, EditPost } from 'ui'
 import { share } from 'images'
 import { Top, Headline, Content, Spacer } from './styled'
+
+const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
 function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutation }) {
   const { t } = useTranslation()
@@ -35,7 +38,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
   }, [post])
 
   useEffect(() => {
-    const keyboardEventListener = Keyboard.addListener('keyboardDidHide', () => {
+    const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
       if (hasChanged && isEditing && !alertOpen) {
         setAlertOpen(true)
 
