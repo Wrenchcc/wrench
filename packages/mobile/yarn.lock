@@ -1311,7 +1311,7 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^2.0.1":
+"@react-native-community/cli@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.0.2.tgz#a157722d2a506e7e9a7d1079e3032b18ef6b0378"
   integrity sha512-U0v8QuFYnX9AvUOew9LfJS9FgnDtYsz7HhbsRyvXtaFu4kUnq2g7MgkC4zG0y3oqQzlOxhcO7Hoyv80XDsBQoQ==
@@ -5380,10 +5380,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.1.3.tgz#7463f826a420a53210be89cf671345d1fa92843f"
-  integrity sha512-PmF2dHjoxzYfq0VQ+a1E82z2Bf+8svUk2JoYmgkAI/EPrWfbrKYSC3WxRv4/VAUS0RsGMLnYw+Ygtuf4hIXpew==
+react-native-device-info@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.2.0.tgz#bde1dc2c59fd56e0d3e7510d5304ecc7a7038b73"
+  integrity sha512-8FteA5fOco/UsI+BVrUDY1GvzsCtRb0sfk9FK1DiuF8iE+1ayULMJxjOldAJZ4zm8CVZhkFtPcCD90isvpTgew==
 
 react-native-fast-image@^6.1.1:
   version "6.1.1"

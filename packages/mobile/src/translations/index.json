@@ -97,6 +97,12 @@
     "Comments": {
       "title": "Comments"
     },
+    "EditModel": {
+      "save": "Save",
+      "title": "Search and pick your model.",
+      "placeholder": "E.g. BMW R100 1981",
+      "headerTitle": "Edit model"
+    },
     "EditProject": {
       "title": "Title",
       "headerTitle": "Edit",
@@ -108,7 +114,8 @@
       "description": "This action cannot be undone.",
       "cancel": "Cancel",
       "delete": "Delete",
-      "projectSettings": "Project settings"
+      "projectSettings": "Project settings",
+      "model": "Edit model"
     },
     "Followers": {
       "title": "Followers"
@@ -369,6 +376,12 @@
     "Comments": {
       "title": "Kommentarer"
     },
+    "EditModel": {
+      "save": "Spara",
+      "title": "Sök och välj din modell.",
+      "placeholder": "Ex. BMW R100 1981",
+      "headerTitle": "Redigera modell"
+    },
     "EditProject": {
       "title": "Titel",
       "headerTitle": "Redigera",
@@ -380,7 +393,8 @@
       "description": "Den här åtgärden kan inte ångras.",
       "cancel": "Avbryt",
       "delete": "Radera",
-      "projectSettings": "Projekt inställningar"
+      "projectSettings": "Projekt inställningar",
+      "model": "Redigera modell"
     },
     "Followers": {
       "title": "Följare"

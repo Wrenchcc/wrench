@@ -34,6 +34,7 @@ export enum SCREENS {
   EDIT_PROJECT = 'EDIT_PROJECT',
   SETTINGS = 'SETTINGS',
   MENTION = 'MENTION',
+  EDIT_MODEL = 'EDIT_MODEL',
 }
 
 export enum SCREEN_PATH {

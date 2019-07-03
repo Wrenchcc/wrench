@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { ScrollView, ActivityIndicator, Alert } from 'react-native'
 import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
-import { dismissModal } from 'navigation'
+import { SCREENS, useNavigation } from 'navigation'
 import { editProject } from 'graphql/mutations/project/editProject'
 import { deleteProject } from 'graphql/mutations/project/deleteProject'
 import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
@@ -15,6 +15,8 @@ function EditProject({
   editProject: editProjectMutation,
 }) {
   const { t } = useTranslation()
+  const { navigate, dismissModal } = useNavigation()
+
   const [isSaving, setIsSaving] = useState(false)
   const [title, setTitle] = useState(project.title)
   const [commentsDisabled, setCommentsDisabled] = useState(project.commentsDisabled)
@@ -33,6 +35,24 @@ function EditProject({
       }, 500)
     )
   }, [title, commentsDisabled])
+
+  const navigateToModel = useCallback(
+    () =>
+      navigate(SCREENS.EDIT_MODEL, {
+        options: {
+          animations: {
+            push: {
+              waitForRender: true,
+            },
+          },
+        },
+        passProps: {
+          id: project.id,
+        },
+      }),
+
+    [project]
+  )
 
   const onDelete = useCallback(() => {
     deleteProjectMutations(project.id).then(() => {
@@ -97,7 +117,12 @@ function EditProject({
             onSubmitEditing={handleEditProject}
             returnKeyType="done"
           />
+
+          <Spacing large />
+
+          <Text onPress={navigateToModel}>{t('EditProject:model')}</Text>
         </Inner>
+
         <Inner>
           <Title>{t('EditProject:projectSettings')}</Title>
           <SelectionItem

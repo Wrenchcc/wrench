@@ -11,7 +11,8 @@
       "description": "This action cannot be undone.",
       "cancel": "Cancel",
       "delete": "Delete",
-      "projectSettings": "Project settings"
+      "projectSettings": "Project settings",
+      "model": "Edit model"
     },
     "sv": {
       "title": "Titel",
@@ -24,7 +25,8 @@
       "description": "Den här åtgärden kan inte ångras.",
       "cancel": "Avbryt",
       "delete": "Radera",
-      "projectSettings": "Projekt inställningar"
+      "projectSettings": "Projekt inställningar",
+      "model": "Redigera modell"
     }
   }
 }

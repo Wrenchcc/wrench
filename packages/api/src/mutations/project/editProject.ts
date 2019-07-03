@@ -10,9 +10,15 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
 
   const data = {
     ...project,
-    commentsDisabled: input.commentsDisabled,
-    title: input.title,
     userId: ctx.userId,
+  }
+
+  if (input.title) {
+    data.title = input.title
+  }
+
+  if (input.commentsDisabled) {
+    data.commentsDisabled = input.commentsDisabled
   }
 
   if (input.modelId) {

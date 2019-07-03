@@ -5,5 +5,5 @@ export const Inner = styled.View`
 `
 
 export const Spacing = styled.View`
-  padding-bottom: 10;
+  padding-bottom: ${props => (props.large ? 20 : 10)};
 `

@@ -42,6 +42,9 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.EDIT_PROJECT, () =>
     HOC(require('features/project/containers/EditProject').default)
   )
+  Navigation.registerComponent(SCREENS.EDIT_MODEL, () =>
+    HOC(require('features/project/containers/EditModel').default)
+  )
   Navigation.registerComponent(SCREENS.ADD_PROJECT_MODEL, () =>
     HOC(require('features/project/containers/AddProjectModel').default)
   )

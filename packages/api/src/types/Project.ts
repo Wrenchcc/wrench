@@ -90,7 +90,7 @@ export default gql`
   }
 
   input ProjectInput {
-    title: String!
+    title: String
     commentsDisabled: Boolean
     projectTypeId: ID
     modelId: ID
