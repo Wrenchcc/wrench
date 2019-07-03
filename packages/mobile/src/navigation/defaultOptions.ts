@@ -13,6 +13,7 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   bottomTabs: {
+    titleDisplayMode: 'alwaysHide',
     backgroundColor: COLORS.DARK,
   },
   layout: {

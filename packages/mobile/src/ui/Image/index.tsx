@@ -18,6 +18,7 @@ function Image({
   placeholderDensity = 8,
   ...props
 }) {
+  return null
   // NOTE: Guard for crash on Android
   if (!source.uri) {
     return null

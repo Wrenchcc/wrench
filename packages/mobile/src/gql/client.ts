@@ -6,12 +6,9 @@ import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
 import { AuthNavigation } from 'navigation'
 
-const cache = new InMemoryCache({
-  // freezeResults: true,
-})
+const cache = new InMemoryCache()
 
 const client = new ApolloClient({
-  // assumeImmutableResults: true,
   cache,
   link,
 })
