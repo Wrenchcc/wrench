@@ -4,8 +4,6 @@ import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base } from './styles'
 
-const AnimatedFastImage = Animated.createAnimatedComponent(FastImage)
-
 const density = PixelRatio.get()
 
 function Image({
@@ -18,7 +16,6 @@ function Image({
   placeholderDensity = 8,
   ...props
 }) {
-  return null
   // NOTE: Guard for crash on Android
   if (!source.uri) {
     return null
@@ -46,7 +43,7 @@ function Image({
         blurRadius={3}
       />
 
-      <AnimatedFastImage
+      <FastImage
         {...props}
         source={{ uri }}
         style={{
