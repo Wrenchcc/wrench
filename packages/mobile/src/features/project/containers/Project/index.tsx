@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS, Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'
 import Post from 'components/Post'
-import { Edit, EmptyState, Title, Share } from 'ui'
+import { Edit, EmptyState, Title, Share, KeyboardAvoidingView } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 
@@ -61,32 +61,34 @@ function Project({
   }
 
   return (
-    <Page
-      headerTitle={project.title}
-      headerRight={
-        project.projectPermissions && project.projectPermissions.isOwner ? (
-          <Edit project={project} />
-        ) : (
-          <Share title={project.title} url={project.dynamicLink} text />
-        )
-      }
-    >
-      <FlatList
-        initialNumToRender={1}
-        spacingSeparator
-        paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-        ListEmptyComponent={<EmptyState type={emptyState} />}
-        ListHeaderComponent={renderHeader}
-        data={posts}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Page>
+    <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
+      <Page
+        headerTitle={project.title}
+        headerRight={
+          project.projectPermissions && project.projectPermissions.isOwner ? (
+            <Edit project={project} />
+          ) : (
+            <Share title={project.title} url={project.dynamicLink} text />
+          )
+        }
+      >
+        <FlatList
+          initialNumToRender={1}
+          spacingSeparator
+          paddingHorizontal={hasPosts ? 20 : 0}
+          contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
+          ListEmptyComponent={<EmptyState type={emptyState} />}
+          ListHeaderComponent={renderHeader}
+          data={posts}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          renderItem={renderItem}
+        />
+      </Page>
+    </KeyboardAvoidingView>
   )
 }
 

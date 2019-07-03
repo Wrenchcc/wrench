@@ -3,7 +3,7 @@ import { pathOr } from 'ramda'
 import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql/queries/getFeed'
 import Post from 'components/Post'
-import { Posting, ShowLatest } from 'ui'
+import { Posting, ShowLatest, KeyboardAvoidingView } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
@@ -44,22 +44,24 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   )
 
   return (
-    <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
-      <FlatList
-        ref={scrollRef}
-        tabIndex={0}
-        initialNumToRender={2}
-        spacingSeparator
-        data={posts}
-        ListEmptyComponent={<ProjectSuggestions />}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Layout>
+    <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
+      <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
+        <FlatList
+          ref={scrollRef}
+          tabIndex={0}
+          initialNumToRender={2}
+          spacingSeparator
+          data={posts}
+          ListEmptyComponent={<ProjectSuggestions />}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          renderItem={renderItem}
+        />
+      </Layout>
+    </KeyboardAvoidingView>
   )
 }
 

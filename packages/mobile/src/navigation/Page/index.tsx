@@ -1,6 +1,5 @@
 import React, { useRef, cloneElement, useCallback, useEffect } from 'react'
 import Animated from 'react-native-reanimated'
-import { KeyboardAvoidingView } from 'ui'
 import { NAVIGATION } from '../constants'
 import Header from './Header'
 
@@ -30,7 +29,7 @@ function Page({
   }, [scrollRef, scrollToIndex])
 
   return (
-    <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
+    <>
       <Header
         headerTitle={headerTitle}
         scrollY={scrollY.current}
@@ -59,7 +58,7 @@ function Page({
       })}
 
       {stickyFooter}
-    </KeyboardAvoidingView>
+    </>
   )
 }
 

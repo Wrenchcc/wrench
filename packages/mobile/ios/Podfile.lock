@@ -144,7 +144,7 @@ PODS:
     - React
   - react-native-config (0.11.7):
     - React
-  - react-native-fast-image (6.1.0):
+  - react-native-fast-image (6.1.1):
     - React
     - SDWebImage (~> 5.0)
   - react-native-fbsdk (0.10.1):
@@ -226,7 +226,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativeNavigation (3.0.0-alpha.2):
+  - ReactNativeNavigation (2.22.3):
     - React
   - RNCAsyncStorage (1.5.0):
     - React
@@ -517,14 +517,14 @@ SPEC CHECKSUMS:
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
   react-native-camera: 0d18706a9fd6d30ece4fa7c9c50fe36f484c54fa
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-fast-image: 1d2a81ae1f7443664205b5683c879ede83cc9be3
+  react-native-fast-image: fdfc612dba58fd73136cf5efdaeb8cfcad7f63b2
   react-native-fbsdk: 38ee580e77319d03f8ed0bf4a020cbfd70dc4d2d
   react-native-netinfo: 0da34082d2cec3100c9b5073bb217e35f1142bdd
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: aed899073f5572418696ba6af3f31e4d371fd2f1
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
-  ReactNativeNavigation: ad6e6a664bc6c8eb2fe0fe0b73e2c8bd52275be3
+  ReactNativeNavigation: 05945cfd4610260b1e6d46a07222dda6223959dd
   RNCAsyncStorage: 9436928b444c5f5361960a7eea051a697c244b68
   RNDeviceInfo: a67eef80ee1e68e1824f3ed3dc0ccf9e2d4fdc59
   RNFirebase: 7d4733713a0f436d55388b55ca3744385c70fd2d
