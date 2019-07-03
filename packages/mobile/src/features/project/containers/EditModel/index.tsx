@@ -36,8 +36,8 @@ function EditModel({ editProject: editProjectMutation, passProps }) {
     [setQuery, setModel, model]
   )
 
-  const handleSave = useCallback(async () => {
-    editProjectMutation({ id: passProps.id, modelId: model.id })
+  const handleSave = useCallback(() => {
+    editProjectMutation(passProps.id, { modelId: model.id })
     navigateBack()
   }, [navigateBack, model, passProps])
 

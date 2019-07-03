@@ -25,15 +25,14 @@ function EditProject({
   const onSelectionChange = useCallback(value => setCommentsDisabled(value), [])
   const handleClose = useCallback(() => dismissModal(), [])
 
-  const handleEditProject = useCallback(() => {
+  const handleEditProject = useCallback(async () => {
     setIsSaving(true)
+    await editProjectMutation(project.id, { title, commentsDisabled })
 
-    editProjectMutation({ title, commentsDisabled }).then(
-      setTimeout(() => {
-        setIsSaving(false)
-        dismissModal()
-      }, 500)
-    )
+    setTimeout(() => {
+      setIsSaving(false)
+      dismissModal()
+    }, 500)
   }, [title, commentsDisabled])
 
   const navigateToModel = useCallback(
@@ -54,10 +53,9 @@ function EditProject({
     [project]
   )
 
-  const onDelete = useCallback(() => {
-    deleteProjectMutations(project.id).then(() => {
-      dismissModal(true)
-    })
+  const onDelete = useCallback(async () => {
+    await deleteProjectMutations(project.id)
+    dismissModal(true)
   }, [])
 
   const renderHeaderLeft = () => {

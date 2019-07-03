@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.27",
-    "@types/node": "^12.0.10",
+    "@types/node": "^12.0.12",
     "@types/sharp": "^0.22.2",
-    "aws-sdk": "^2.485.0",
+    "aws-sdk": "^2.488.0",
     "prettier": "^1.18.2",
     "serverless": "1.46.1",
     "serverless-webpack": "^5.3.1",
