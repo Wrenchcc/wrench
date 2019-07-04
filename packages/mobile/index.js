@@ -14,19 +14,26 @@ Navigation.events().registerAppLaunchedListener(async () => {
 
   const initialLink = await links().getInitialLink()
   if (initialLink) {
-    handleDynamicLink(initialLink)
+    setTimeout(() => {
+      handleDynamicLink(initialLink)
+    }, 500)
   }
 
   links().onLink(handleDynamicLink)
 
   const notificationOpen = await notifications().getInitialNotification()
+
   if (notificationOpen && notificationOpen.notification.data) {
-    handlePushNotification(notificationOpen.notification.data.path)
+    setTimeout(() => {
+      handlePushNotification(notificationOpen.notification.data.path)
+    }, 500)
   }
 
   notifications().onNotificationOpened(({ notification }) => {
     if (notification.data) {
-      handlePushNotification(notification.data.path)
+      setTimeout(() => {
+        handlePushNotification(notification.data.path)
+      }, 500)
     }
   })
 })
