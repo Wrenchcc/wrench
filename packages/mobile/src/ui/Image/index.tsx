@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { PixelRatio, Animated } from 'react-native'
-// import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base } from './styles'
 
@@ -43,7 +43,7 @@ function Image({
         blurRadius={3}
       />
 
-      <Animated.Image
+      <FastImage
         {...props}
         source={{ uri }}
         style={{

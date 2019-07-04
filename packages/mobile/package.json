@@ -41,7 +41,7 @@
     "react-native-actionsheet": "^2.4.2",
     "react-native-camera": "^2.11.0",
     "react-native-config": "^0.11.7",
-    "react-native-device-info": "^2.2.0",
+    "react-native-device-info": "^2.2.1",
     "react-native-fast-image": "^6.1.1",
     "react-native-fbsdk": "^0.10.1",
     "react-native-firebase": "^5.5.4",
@@ -50,7 +50,7 @@
     "react-native-navigation": "2.22.3",
     "react-native-permissions": "^2.0.0-alpha.1",
     "react-native-pinchable": "^0.1.2",
-    "react-native-rate": "^1.1.6",
+    "react-native-rate": "^1.1.7",
     "react-native-reanimated": "^1.1.0",
     "react-native-sentry": "^0.43.2",
     "react-native-share": "^1.2.1",
@@ -64,8 +64,8 @@
     "zustand": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
     "@react-native-community/cli": "^2.0.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",

@@ -230,7 +230,7 @@ PODS:
     - React
   - RNCAsyncStorage (1.5.0):
     - React
-  - RNDeviceInfo (2.2.0):
+  - RNDeviceInfo (2.2.1):
     - React
   - RNFirebase (5.5.4):
     - Firebase/Core
@@ -248,9 +248,6 @@ PODS:
     - RNPermissions/Core
   - RNPermissions/Core (2.0.0-alpha.1):
     - React/Core
-  - RNPermissions/Notifications (2.0.0-alpha.1):
-    - React/Core
-    - RNPermissions/Core
   - RNPermissions/PhotoLibrary (2.0.0-alpha.1):
     - React/Core
     - RNPermissions/Core
@@ -334,7 +331,6 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions/Camera (from `../node_modules/react-native-permissions`)
   - RNPermissions/Core (from `../node_modules/react-native-permissions`)
-  - RNPermissions/Notifications (from `../node_modules/react-native-permissions`)
   - RNPermissions/PhotoLibrary (from `../node_modules/react-native-permissions`)
   - RNRate (from `../node_modules/react-native-rate/ios`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -526,7 +522,7 @@ SPEC CHECKSUMS:
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
   ReactNativeNavigation: 05945cfd4610260b1e6d46a07222dda6223959dd
   RNCAsyncStorage: 9436928b444c5f5361960a7eea051a697c244b68
-  RNDeviceInfo: e2dd07dd0718ab34572cad16c4426fa90d45ebb5
+  RNDeviceInfo: 94d7ce92098f9653c93b8306b7dc40a761d145ff
   RNFirebase: 7d4733713a0f436d55388b55ca3744385c70fd2d
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
@@ -551,6 +547,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 296793ab2a7e181fe5ebe2ba9b40ae208ab4b8fa
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
-PODFILE CHECKSUM: 710a572ca1ac305fbcbab91c3df1058caa88ce9e
+PODFILE CHECKSUM: 2ed664c46e0cece9a0a27bd7b38bc26d2a6d0ca7
 
 COCOAPODS: 1.6.1
