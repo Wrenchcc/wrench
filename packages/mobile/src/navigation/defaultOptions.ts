@@ -1,29 +1,26 @@
-import { Dimensions } from 'react-native'
 import { COLORS } from 'ui/constants'
 import { hasNotch, isAndroid } from 'utils/platform'
-
-const { width } = Dimensions.get('window')
 
 const customAnimations = isAndroid
   ? {
       animations: {
-        push: {
-          content: {
-            x: {
-              from: 2000,
-              to: 0,
-              duration: 280,
-              interpolation: 'accelerate',
-            },
-          },
-        },
         pop: {
           content: {
             x: {
-              from: 0,
-              to: 2000,
               duration: 280,
+              from: 0,
               interpolation: 'decelerate',
+              to: 500,
+            },
+          },
+        },
+        push: {
+          content: {
+            x: {
+              duration: 280,
+              from: 500,
+              interpolation: 'accelerate',
+              to: 0,
             },
           },
         },
@@ -43,9 +40,13 @@ export default {
     textColor: COLORS.WHITE,
     titleDisplayMode: 'alwaysHide',
   },
+  statusBar: {
+    backgroundColor: 'white',
+    style: 'dark',
+  },
   bottomTabs: {
-    titleDisplayMode: 'alwaysHide',
     backgroundColor: COLORS.DARK,
+    titleDisplayMode: 'alwaysHide',
   },
   layout: {
     backgroundColor: COLORS.WHITE,

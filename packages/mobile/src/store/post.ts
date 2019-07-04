@@ -21,25 +21,25 @@ const [usePostStore, api] = create(set => ({
   actions: {
     onSelect: payload =>
       set(state => {
-        const currentId = payload.id
-        const isAdded = state.files.some(file => file.id === currentId)
-        const isPrevious = state.selectedId === currentId
-        const currentIndex = findIndex(propEq('id', currentId))(state.files) || state.files.length
-        const selectedId = isPrevious
-          ? state.files.length && state.files[currentIndex - 1 || 0].id
-          : payload.id
-
-        if (!isPrevious && !isAdded && state.files.length === MAX_SELECTED_FILES) {
-          return state
-        }
-
-        return {
-          files:
-            isPrevious && isAdded
-              ? state.files.filter(file => file.id !== currentId)
-              : state.files.concat(payload),
-          selectedId,
-        }
+        // const currentId = payload.id
+        // const isAdded = state.files.some(file => file.id === currentId)
+        // const isPrevious = state.selectedId === currentId
+        // const currentIndex = findIndex(propEq('id', currentId))(state.files) || state.files.length
+        // const selectedId = isPrevious
+        //   ? state.files.length && state.files[currentIndex - 1 || 0].id
+        //   : payload.id
+        //
+        // if (!isPrevious && !isAdded && state.files.length === MAX_SELECTED_FILES) {
+        //   return state
+        // }
+        //
+        // return {
+        //   files:
+        //     isPrevious && isAdded
+        //       ? state.files.filter(file => file.id !== currentId)
+        //       : state.files.concat(payload),
+        //   selectedId,
+        // }
       }),
 
     onEdit: payload => {

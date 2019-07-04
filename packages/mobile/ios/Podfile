@@ -55,7 +55,6 @@ target 'Wrench' do
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
     'Core',
     'Camera',
-    'Notifications',
     'PhotoLibrary',
   ]
 
