@@ -4,6 +4,7 @@ import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { ListContext } from '../Layout/context'
+import { NAVIGATION } from '../constants'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 
@@ -69,7 +70,7 @@ export default function createNavigationAwareScrollable(Component) {
         const scrollResponder =
           scrollRef.current && scrollRef.current.getNode().getScrollResponder()
 
-        if (!scrollResponder || !currentlyFocusedField) {
+        if (!scrollResponder || !currentlyFocusedField || isAndroid) {
           return
         }
 
@@ -137,7 +138,8 @@ export default function createNavigationAwareScrollable(Component) {
             0,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
-          paddingTop: isAndroid ? contentInset : 0,
+          // contentInset on layout NAVIGATION.LIST_OFFSET on page
+          paddingTop: isAndroid ? contentInset || NAVIGATION.LIST_OFFSET : 0,
           ...contentContainerStyle,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}

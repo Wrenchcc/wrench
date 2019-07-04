@@ -13,7 +13,7 @@ const Text = ({
   ...props
 }) =>
   onPress ? (
-    <Touchable onPress={onPress} onLongPress={onLongPress} disabled={disabled} nativeButton={false}>
+    <Touchable onPress={onPress} onLongPress={onLongPress} disabled={disabled}>
       <Base
         numberOfLines={numberOfLines}
         {...props}
