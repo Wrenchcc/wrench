@@ -3,7 +3,7 @@ import { COLORS } from 'ui/constants'
 import { feed, explore, notifications, notificationsSelected, profile } from 'images'
 import registerScreens from './registerScreens'
 import defaultOptions from './defaultOptions'
-import { SCREENS, BOTTOM_TABS_ID } from './constants'
+import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
 
 registerScreens()
 
@@ -21,11 +21,11 @@ export function AuthNavigation() {
   Navigation.setDefaultOptions({
     options: {
       layout: {
-        backgroundColor: 'black',
+        backgroundColor: COLORS.DARK,
       },
     },
     statusBar: {
-      style: 'light',
+      style: STATUS_BAR.LIGHT,
     },
     topBar: {
       visible: false,
@@ -51,7 +51,7 @@ export function AppNavigation(onboarding) {
           name: SCREENS.ONBOARDING,
           options: {
             statusBar: {
-              style: 'light',
+              style: STATUS_BAR.LIGHT,
             },
           },
         },

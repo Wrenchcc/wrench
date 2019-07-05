@@ -42,3 +42,8 @@ export enum SCREEN_PATH {
   POST = 'post',
   PROJECT = 'project',
 }
+
+export enum STATUS_BAR {
+  LIGHT = 'light',
+  DARK = 'dark',
+}

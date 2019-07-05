@@ -6,7 +6,14 @@ import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
 import { AuthNavigation } from 'navigation'
 
-const cache = new InMemoryCache()
+const cache = new InMemoryCache({
+  // cacheRedirects: {
+  //   Query: {
+  //     project: (_, args, { getCacheKey }) =>
+  //       args.ids.map(id => getCacheKey({ __typename: 'Post', id: id })),
+  //   },
+  // },
+})
 
 const client = new ApolloClient({
   cache,

@@ -30,7 +30,7 @@ function Camera({ onTakePicture }) {
   const takePicture = useCallback(async () => {
     const data = await camera.current.takePictureAsync()
 
-    onTakePicture(data)
+    onTakePicture({ ...data, camera: true })
   }, [camera])
 
   const changeFlashMode = useCallback(() => {

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { showModal, SCREENS } from 'navigation'
+import { showModal, SCREENS, STATUS_BAR } from 'navigation'
 import { Base, Text, Link } from './styles'
 
 const LEGAL_URL = 'https://beta.wrench.cc/terms'
@@ -13,7 +13,7 @@ function Legal() {
       showModal(SCREENS.WEBVIEW, {
         options: {
           statusBar: {
-            style: 'dark',
+            style: STATUS_BAR.DARK,
           },
         },
         url: LEGAL_URL,

@@ -21,6 +21,21 @@ const [usePostStore, api] = create(set => ({
   actions: {
     onSelect: payload =>
       set(state => {
+        // If camera
+        if (payload.camera) {
+          const id = payload.uri
+
+          return {
+            selectedId: id,
+            files: [
+              {
+                id,
+                ...payload,
+              },
+            ],
+          }
+        }
+
         const currentId = payload.id
         // const isAdded = state.files.some(file => file.id === currentId)
         // const isPrevious = state.selectedId === currentId
