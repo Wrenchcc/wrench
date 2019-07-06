@@ -51,7 +51,8 @@ function onPress(data, navigate) {
   switch (data.type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
       return navigate(SCREENS.PROJECT, {
-        slug: data.project.slug,
+        id: data.project.id,
+        project: data.project,
       })
     case NOTIFICATION_TYPES.NEW_MENTION:
     case NOTIFICATION_TYPES.NEW_COMMENT:

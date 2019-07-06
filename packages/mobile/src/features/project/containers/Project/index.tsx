@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { isEmpty } from 'ramda'
 import { useNavigation, SCREENS, Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'
 import Post from 'components/Post'
@@ -40,7 +41,7 @@ function Project({
   const renderHeader = useCallback(() => {
     let content
 
-    if (post) {
+    if (!isEmpty(post)) {
       content = (
         <View style={{ paddingBottom: 30 }}>
           <Post post={post} withoutTitle />

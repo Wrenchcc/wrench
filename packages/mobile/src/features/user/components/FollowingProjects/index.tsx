@@ -22,7 +22,8 @@ function FollowingProjects({
   const renderItem = ({ item }) => {
     const onPress = () =>
       navigate(SCREENS.PROJECT, {
-        slug: item.node.slug,
+        id: item.node.id,
+        project: item.node,
       })
 
     return <ProjectCard project={item.node} onPress={onPress} />

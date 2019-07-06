@@ -17,7 +17,11 @@ function ProjectSuggestion({
   const { navigate } = useNavigation()
 
   const renderItem = ({ item, index }) => {
-    const onPress = () => navigate(SCREENS.PROJECT, { slug: item.node.slug })
+    const onPress = () =>
+      navigate(SCREENS.PROJECT, {
+        id: item.node.id,
+        project: item.node,
+      })
 
     return (
       <ProjectCard

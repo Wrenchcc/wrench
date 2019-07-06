@@ -31,12 +31,12 @@ const LoadMorePosts = gql`
 `
 
 const getProjectOptions = {
-  options: ({ project, slug, post, after }) => ({
+  options: ({ project, slug, id, postId, after }) => ({
     variables: {
-      id: project.id,
+      id,
       slug,
       after,
-      postId: post.id,
+      postId,
     },
   }),
   props: ({
