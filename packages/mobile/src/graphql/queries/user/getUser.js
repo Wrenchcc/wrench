@@ -27,18 +27,19 @@ const LoadMorePosts = gql`
 `
 
 const getUserByUsernameOptions = {
-  options: ({ username, after }) => ({
-    // returnPartialData: true,
-    // fetchPolicy: 'cache-and-network',
+  options: ({ user, after }) => ({
     variables: {
-      username,
+      username: user.username,
       after,
     },
   }),
-  props: ({ data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
+  props: ({ ownProps, data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
     error,
     refetch,
-    user,
+    user: {
+      ...ownProps.user,
+      ...user,
+    },
     posts: pathOr(null, ['posts', 'edges'], user),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
     isRefetching: isRefetching(networkStatus),

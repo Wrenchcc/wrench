@@ -1,5 +1,6 @@
 import gql from 'graphql-tag'
 
+// NOTE: Need dynamicLink
 export default gql`
   fragment userInfo on User {
     id
@@ -7,5 +8,6 @@ export default gql`
     username
     avatarUrl
     isOnline
+    dynamicLink
   }
 `

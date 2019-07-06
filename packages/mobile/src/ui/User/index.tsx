@@ -11,7 +11,7 @@ function User({ data }) {
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
-        username: data.username,
+        user: data,
       }),
     [data]
   )

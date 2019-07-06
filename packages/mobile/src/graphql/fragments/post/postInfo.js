@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 import userInfoFragment from 'graphql/fragments/user/userInfo'
 import commentsConnectionFragment from 'graphql/fragments/post/commentsConnection'
 
-// TODOD: Need projectPermissions, followers
+// NOTE: Need projectPermissions, followers for navigation
 export default gql`
   fragment postInfo on Post {
     id

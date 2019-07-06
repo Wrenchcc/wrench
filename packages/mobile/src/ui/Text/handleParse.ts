@@ -17,7 +17,7 @@ const handleUrlPress = url => {
 const handleNamePress = name => {
   const username = name.replace('@', '')
   navigateTo(SCREENS.USER, {
-    username,
+    user: { username },
   })
 }
 

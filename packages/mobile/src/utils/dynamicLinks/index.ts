@@ -9,7 +9,7 @@ export const handleDynamicLink = link => {
     case SCREEN_PATH.PROJECT:
       return navigateTo(SCREENS.PROJECT, { slug: value })
     default:
-      return navigateTo(SCREENS.USER, { username: route })
+      return navigateTo(SCREENS.USER, { user: { username: route } })
   }
 }
 

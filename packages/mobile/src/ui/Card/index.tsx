@@ -9,7 +9,7 @@ function Card({ image, title, onPress, style = {}, user }) {
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
-        username: user.username,
+        user,
       }),
     [user]
   )

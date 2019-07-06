@@ -25,7 +25,7 @@ function Item({
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
-        username: user.username,
+        user,
       }),
     [user]
   )

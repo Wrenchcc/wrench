@@ -33,7 +33,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
 
   const navigateToUser = useCallback(() => {
     navigate(SCREENS.USER, {
-      username: post.user.username,
+      user: post.user,
     })
   }, [post])
 

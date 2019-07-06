@@ -18,7 +18,7 @@ function List({ data }) {
   )
 
   const renderComment = ({ node }) => {
-    const onPress = () => navigate(SCREENS.USER, { username: node.user.username })
+    const onPress = () => navigate(SCREENS.USER, { user: node.user })
 
     return (
       <Row key={node.id}>

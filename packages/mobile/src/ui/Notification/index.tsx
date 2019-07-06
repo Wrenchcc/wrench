@@ -74,7 +74,7 @@ function Notification({ data, deleteNotification }) {
   const navigateToUser = useCallback(
     () =>
       navigate(SCREENS.USER, {
-        username: data.user.username,
+        user: data.user,
       }),
     []
   )
