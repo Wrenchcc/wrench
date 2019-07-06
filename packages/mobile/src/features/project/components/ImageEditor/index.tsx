@@ -553,6 +553,7 @@ export default class Cropper extends React.PureComponent<PickerProps> {
   private render() {
     return (
       <View
+        key={this.props.source.uri}
         style={{
           backgroundColor: 'black',
           height: IMAGE_EDITOR_SIZE,
