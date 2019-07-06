@@ -10,6 +10,7 @@
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>
+#import <AVFoundation/AVFoundation.h>
 
 @import Firebase;
 
@@ -29,6 +30,8 @@
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions bridgeManagerDelegate:self];
+
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
 
   [RNSplashScreen show];
 

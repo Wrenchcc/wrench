@@ -22,7 +22,7 @@ function Project({
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
-  const hasPosts = !!post || (posts && posts.length > 0)
+  const hasPosts = !isEmpty(post) || (posts && posts.length > 0)
 
   const emptyState =
     project.projectPermissions && project.projectPermissions.isOwner
@@ -43,14 +43,14 @@ function Project({
 
     if (!isEmpty(post)) {
       content = (
-        <View style={{ paddingBottom: 30 }}>
+        <>
           <Post post={post} withoutTitle />
           {hasPosts && posts && posts.length > 1 && (
-            <View style={{ paddingTop: 40, paddingBottom: 30 }}>
+            <View style={{ paddingTop: 40 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
           )}
-        </View>
+        </>
       )
     }
 
