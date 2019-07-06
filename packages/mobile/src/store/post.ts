@@ -26,13 +26,13 @@ const [usePostStore, api] = create(set => ({
           const id = payload.uri
 
           return {
-            selectedId: id,
             files: [
               {
                 id,
                 ...payload,
               },
             ],
+            selectedId: id,
           }
         }
 

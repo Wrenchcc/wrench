@@ -31,25 +31,32 @@ const LoadMorePosts = gql`
 `
 
 const getProjectOptions = {
-  options: ({ id, slug, postId, after }) => ({
-    // returnPartialData: true,
-    // fetchPolicy: 'cache-and-network',
+  options: ({ project, slug, post, after }) => ({
     variables: {
-      id,
+      id: project.id,
       slug,
       after,
-      postId,
+      postId: post.id,
     },
   }),
-  props: ({ data: { fetchMore, error, loading, project = {}, networkStatus, refetch, post } }) => ({
+  props: ({
+    ownProps,
+    data: { fetchMore, error, loading, project, networkStatus, refetch, post },
+  }) => ({
     error,
     refetch,
-    post,
-    project,
+    post: {
+      ...ownProps.post,
+      ...post,
+    },
+    project: {
+      ...ownProps.project,
+      ...project,
+    },
     posts: pathOr(null, ['posts', 'edges'], project),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], project),
     isRefetching: isRefetching(networkStatus),
-    isFetching: loading || isFetchingMore(networkStatus),
+    isFetching: (!ownProps.post && loading) || isFetchingMore(networkStatus),
     fetchMore: () =>
       fetchMore({
         query: LoadMorePosts,

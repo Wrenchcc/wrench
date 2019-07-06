@@ -25,8 +25,8 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
   const navigateToProject = useCallback(() => {
     if (!withoutTitle) {
       navigate(SCREENS.PROJECT, {
-        id: post.project.id,
-        postId: post.id,
+        post,
+        project: post.project,
       })
     }
   }, [post, withoutTitle])

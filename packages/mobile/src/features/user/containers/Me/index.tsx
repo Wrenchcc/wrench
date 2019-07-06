@@ -22,7 +22,15 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-          ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
+          ListHeaderComponent={
+            user && (
+              <Header
+                fullName={user.fullName}
+                avatarUrl={user.avatarUrl}
+                spacingHorizontal={!hasPosts}
+              />
+            )
+          }
           ListEmptyComponent={<EmptyState type={emptyState} />}
           data={posts}
           refetch={refetch}

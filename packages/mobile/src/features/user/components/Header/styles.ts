@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
+import UiTitle from 'ui/Title'
 
 export const Base = styled.View`
   background: ${COLORS.WHITE};
@@ -10,4 +11,7 @@ export const Base = styled.View`
   padding-right: ${props => (props.spacingHorizontal ? 20 : 0)};
 `
 
-export const Username = styled.View``
+export const Username = styled(UiTitle)`
+  flex: 1;
+  padding-right: 10;
+`

@@ -1,13 +1,12 @@
 import React from 'react'
-import { Title, Avatar } from 'ui'
+import { Avatar } from 'ui'
 import { Base, Username } from './styles'
 
-function Header({ user: { firstName, lastName, avatarUrl = '' }, spacingHorizontal = false }) {
+function Header({ fullName, avatarUrl = '', spacingHorizontal = false }) {
   return (
     <Base spacingHorizontal={spacingHorizontal}>
-      <Username>
-        <Title medium>{firstName}</Title>
-        <Title medium>{lastName}</Title>
+      <Username medium numberOfLines={0}>
+        {fullName}
       </Username>
       <Avatar size={80} uri={avatarUrl} />
     </Base>

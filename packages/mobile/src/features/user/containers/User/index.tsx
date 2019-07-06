@@ -24,7 +24,15 @@ function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, 
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-          ListHeaderComponent={user && <Header user={user} spacingHorizontal={!hasPosts} />}
+          ListHeaderComponent={
+            user && (
+              <Header
+                fullName={user.fullName}
+                avatarUrl={user.avatarUrl}
+                spacingHorizontal={!hasPosts}
+              />
+            )
+          }
           ListEmptyComponent={user && <FollowingProjects user={user} />}
           data={posts}
           refetch={refetch}

@@ -230,7 +230,7 @@ PODS:
     - React
   - RNCAsyncStorage (1.5.0):
     - React
-  - RNDeviceInfo (2.2.1):
+  - RNDeviceInfo (2.2.2):
     - React
   - RNFirebase (5.5.4):
     - Firebase/Core
@@ -522,7 +522,7 @@ SPEC CHECKSUMS:
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
   ReactNativeNavigation: 05945cfd4610260b1e6d46a07222dda6223959dd
   RNCAsyncStorage: 9436928b444c5f5361960a7eea051a697c244b68
-  RNDeviceInfo: 94d7ce92098f9653c93b8306b7dc40a761d145ff
+  RNDeviceInfo: 1215084f45c1059b031c530281442dc7079ccf0a
   RNFirebase: 7d4733713a0f436d55388b55ca3744385c70fd2d
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7

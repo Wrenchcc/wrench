@@ -21,7 +21,8 @@ function Project({
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
-  const hasPosts = posts && posts.length > 0
+  const hasPosts = !!post || (posts && posts.length > 0)
+
   const emptyState =
     project.projectPermissions && project.projectPermissions.isOwner
       ? TYPES.PROJECT_POST
@@ -36,19 +37,19 @@ function Project({
     return <Post post={item.node} avatar={false} withoutTitle />
   }
 
-  const renderHeader = () => {
+  const renderHeader = useCallback(() => {
     let content
 
     if (post) {
       content = (
-        <>
+        <View style={{ paddingBottom: 30 }}>
           <Post post={post} withoutTitle />
-          {hasPosts && posts.length > 1 && (
+          {hasPosts && posts && posts.length > 1 && (
             <View style={{ paddingTop: 40, paddingBottom: 30 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
           )}
-        </>
+        </View>
       )
     }
 
@@ -58,7 +59,7 @@ function Project({
         {content}
       </>
     )
-  }
+  }, [post, posts, hasPosts, project])
 
   return (
     <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
@@ -77,7 +78,7 @@ function Project({
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
-          ListEmptyComponent={<EmptyState type={emptyState} />}
+          ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
           ListHeaderComponent={renderHeader}
           data={posts}
           refetch={refetch}
