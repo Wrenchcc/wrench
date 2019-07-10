@@ -6,11 +6,7 @@ import { FILE_TYPES } from 'utils/enums'
 import request from './request'
 
 async function cropImage({ uri, crop }) {
-  return ImageManipulator.manipulateAsync(uri, [
-    {
-      crop,
-    },
-  ])
+  return ImageManipulator.manipulateAsync(uri)
 }
 
 export default async files => {

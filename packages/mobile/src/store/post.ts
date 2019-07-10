@@ -2,7 +2,7 @@ import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { IMAGE_EDITOR_SIZE } from 'features/project/components/ImageEditor'
-import { findIndex, propEq, omit } from 'ramda'
+import { findIndex, propEq } from 'ramda'
 import { POST } from './constants'
 
 const MAX_SELECTED_FILES = 10
@@ -28,14 +28,14 @@ const [usePostStore, api] = create(set => ({
         const currentIndex = findIndex(propEq('id', currentId))(files)
 
         // If camera
-        if (payload.camera) {
+        if (payload.camera && !files.length) {
           const id = payload.uri
 
           return {
             files: [
               {
                 id,
-                ...omit(['camera'], payload),
+                ...payload,
               },
             ],
             selectedId: id,

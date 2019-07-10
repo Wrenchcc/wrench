@@ -38,7 +38,7 @@
     "@types/pg": "^7.4.14",
     "@zeit/ncc": "0.20.4",
     "bluebird": "^3.5.5",
-    "chokidar": "^3.0.1",
+    "chokidar": "^3.0.2",
     "cross-env": "^5.2.0",
     "dotenv-cli": "^2.0.0",
     "graphql-log": "^0.1.3",

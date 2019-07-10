@@ -71,14 +71,14 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.5.0.tgz#6ed6a2881ad48a732c5433096d96d1b0ee5eb734"
-  integrity sha512-6Isr4X98pwXqHvtigw71CKgmhL1etZjPs5A67jL/w0TkLM9eqmFR40YrnJvEc1WnMZFsskjsmid8bHZyxKEAnw==
+"@babel/core@^7.5.4":
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.5.4.tgz#4c32df7ad5a58e9ea27ad025c11276324e0b4ddd"
+  integrity sha512-+DaeBEpYq6b2+ZmHx3tHspC+ZRflrvLqwfv8E3hNr5LVQoyBnL8RPKSBCg+rK2W2My9PWlujBiqd0ZPsR9Q6zQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/generator" "^7.5.0"
-    "@babel/helpers" "^7.5.0"
+    "@babel/helpers" "^7.5.4"
     "@babel/parser" "^7.5.0"
     "@babel/template" "^7.4.4"
     "@babel/traverse" "^7.5.0"
@@ -452,10 +452,10 @@
     "@babel/traverse" "^7.4.4"
     "@babel/types" "^7.4.4"
 
-"@babel/helpers@^7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.5.0.tgz#7f0c17666e7ed8355ed6eff643dde12fb681ddb4"
-  integrity sha512-EgCUEa8cNwuMrwo87l2d7i2oShi8m2Q58H7h3t4TWtqATZalJYFwfL9DulRe02f3KdqM9xmMCw3v/7Ll+EiaWg==
+"@babel/helpers@^7.5.4":
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.5.4.tgz#2f00608aa10d460bde0ccf665d6dcf8477357cf0"
+  integrity sha512-6LJ6xwUEJP51w0sIgKyfvFMJvIb9mWAfohJp0+m6eHJigkFdcH8duZ1sfhn0ltJRzwUIT/yqqhdSfRpCpL7oow==
   dependencies:
     "@babel/template" "^7.4.4"
     "@babel/traverse" "^7.5.0"
@@ -1306,25 +1306,25 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@react-native-community/async-storage@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.5.0.tgz#647ffcd832272068b0be57332e08d73036ed391f"
-  integrity sha512-2yE4RzQ5IL+UTPhuMY0ykNRKHf1m90jOnmp8fcDPUun5U97cXlorjI4p66ovDgF0FuOv8ZpiUKvunGy3qqBxwg==
+"@react-native-community/async-storage@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.5.1.tgz#c496b4969eea5b91da1a5919a611046360b0c51f"
+  integrity sha512-Ssfx2uLYPnsuqIvDCuUOEZT6jh5AVy0U0mr2eHxNO2Syor1nfOrR/n4hTOFcBWc1wamDTGCqo+UHJpxURVXd2Q==
 
-"@react-native-community/cli-platform-android@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-2.1.0.tgz#d87ab4134d549c048e88bc0e432e8c7183fc9b9f"
-  integrity sha512-oJ5NSYEdtd7eQfYMFYmEdeZWgfqP7wJ7kJB2BFcOzS152iKk3otftVTsEC3zTnE70etLQ0ECvzuqZuDxpjKP9Q==
+"@react-native-community/cli-platform-android@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-2.1.1.tgz#32e57988dbb7580d3aef3d2f9e35e9718d6e8077"
+  integrity sha512-M6HNSJYTPNAt8iV8RiclSySyBavo9dsMKAIvKsHJqwbIRNWbRPHONQ71hvw7PzxC+RTwFTHUFKMotWgjKGEKPw==
   dependencies:
     "@react-native-community/cli-tools" "^2.0.2"
     logkitty "^0.5.0"
     slash "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli-platform-ios@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-ios/-/cli-platform-ios-2.1.0.tgz#b36689c5408951f97ed3b660ff748d15ae0b2533"
-  integrity sha512-Ogkrl73PxtI+F5gFJIVQDom6Nc1OmtfsJOMhPvqss5z6YphoOmvXunAstUnSZNUUTBeBsqFgEEJD18m0sPb4XA==
+"@react-native-community/cli-platform-ios@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-ios/-/cli-platform-ios-2.2.0.tgz#8008eee0bee871b52182217f49d86068bdb80efe"
+  integrity sha512-rgqksYcolGZNkG4EnWEX2nECWyTxYRUZXRb+pXc4niBsCvNMU88sXoMTxFIHb3wOAaVT2Eix3nS78yG6TA7dnA==
   dependencies:
     "@react-native-community/cli-tools" "^2.0.2"
     chalk "^1.1.1"
@@ -1380,14 +1380,14 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.1.0.tgz#3f828690b01a13910e1adc0dc310e40bea23efec"
-  integrity sha512-vx+oPVPwaemqZbvr559lDi/yXp1rAGtaX5rgTW2SiQ1NsI6wsKDaDeT6oEOwvnHQpJJ65m4mlf0nNbSOGpEzyA==
+"@react-native-community/cli@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.3.0.tgz#40c1359e68cc7ba5a980cd3e427bdd4ae91bc89f"
+  integrity sha512-Vf11SAW1ZwSfZ3JsYiEhU1/Oq9ozKyh7Uawbg8D4IrBM8dCHSpPGhONNfzSQ6x4k9YQjFHH+bOY274/fcYtNXQ==
   dependencies:
     "@hapi/joi" "^15.0.3"
-    "@react-native-community/cli-platform-android" "^2.1.0"
-    "@react-native-community/cli-platform-ios" "^2.1.0"
+    "@react-native-community/cli-platform-android" "^2.1.1"
+    "@react-native-community/cli-platform-ios" "^2.2.0"
     "@react-native-community/cli-tools" "^2.0.2"
     chalk "^1.1.1"
     command-exists "^1.2.8"
@@ -5478,10 +5478,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.11.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.11.0.tgz#480de13f0ac192e950c406d8ca0157cf4bb5f41a"
-  integrity sha512-ay8te4nvL5mGzRjb2QMTOyJX+JfaIW/9oFjFVIkXOB9DzFipfeVTPMdwNx9GMpdmQ0muSXkuF16pa7K/1QLHlQ==
+react-native-camera@^2.11.1:
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.11.1.tgz#a72062f59bb57c0cb2bd57fe6713fa23b2a90571"
+  integrity sha512-ZmPZHcY7UXEf7Z8PoJX/WhFtmLFtdRPBGDwemOLlPRVwTVyu/OXVINDUWCug4daBqV8Fs3X1O6V927+K2u2GfA==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5605,10 +5605,10 @@ react-native-unimodules@^0.4.1:
     unimodules-sensors-interface "~2.0.0"
     unimodules-task-manager-interface "~2.0.0"
 
-react-native-video@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.4.2.tgz#1abf2a50758cca9285b8807e945fb560316d9ae3"
-  integrity sha512-bF17FOSTdrFHeUmN6t4cCa0kLaJT3uzYw1rCzvHFEdkCmdTG4Kcin/cfJ2E29jFViqw2uBPfW6m1y2yI2cgOCQ==
+react-native-video@^4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.4.3.tgz#4fb5d05cad9420fa5c4c0d359381995543e03273"
+  integrity sha512-j3r99dygZ8SrO1ImEZ8LzUrO/GhlbfBNZrCP41x4YpDOKymQbqtt4UuBxJggKwu3rWe2TZCHOvytwVD3RMqbNg==
   dependencies:
     keymirror "^0.1.1"
     prop-types "^15.5.10"

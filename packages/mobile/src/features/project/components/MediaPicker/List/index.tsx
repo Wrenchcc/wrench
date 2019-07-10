@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, memo } from 'react'
 import { View, ActivityIndicator, FlatList } from 'react-native'
 import * as MediaLibrary from 'expo-media-library'
-import { findIndex, propEq, pathOr } from 'ramda'
+import { findIndex, propEq, pathOr, omit } from 'ramda'
 import { usePostStore } from 'store'
 import { logError } from 'utils/sentry'
 import MediaItem from '../Item'
@@ -49,11 +49,15 @@ function List({ album }) {
   }, [])
 
   // Add camera file to list
-  // useEffect(() => {
-  //   if (pathOr(false, [0, 'id'], assets) !== pathOr(false, [0, 'id'], files)) {
-  //     setAssets([files[0], ...assets])
-  //   }
-  // }, [files, setAssets])
+  useEffect(() => {
+    if (
+      !album &&
+      pathOr(false, [0, 'camera'], files) &&
+      pathOr(false, [0, 'id'], assets) !== pathOr(false, [0, 'id'], files)
+    ) {
+      setAssets([omit(['camera'], files[0]), ...assets])
+    }
+  }, [files, album])
 
   const onEndReached = useCallback(() => {
     if (hasNextPage) {
