@@ -1380,17 +1380,16 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.3.0.tgz#40c1359e68cc7ba5a980cd3e427bdd4ae91bc89f"
-  integrity sha512-Vf11SAW1ZwSfZ3JsYiEhU1/Oq9ozKyh7Uawbg8D4IrBM8dCHSpPGhONNfzSQ6x4k9YQjFHH+bOY274/fcYtNXQ==
+"@react-native-community/cli@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.4.0.tgz#8642e77a17907b007989d1aaf6a5f42ac7bde3ae"
+  integrity sha512-Bzekn+4qpF1fwYCfbgJwphrSkSpJT4FaSDUSNghxmWt8ND05MRDt2Brt4n7Rn+g8ufJ3BHQLQEu4yPK6JxCDaw==
   dependencies:
     "@hapi/joi" "^15.0.3"
     "@react-native-community/cli-platform-android" "^2.1.1"
     "@react-native-community/cli-platform-ios" "^2.2.0"
     "@react-native-community/cli-tools" "^2.0.2"
     chalk "^1.1.1"
-    command-exists "^1.2.8"
     commander "^2.19.0"
     compression "^1.7.1"
     connect "^3.6.5"
@@ -2313,11 +2312,6 @@ colorette@^1.0.7:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.1.0.tgz#1f943e5a357fac10b4e0f5aaef3b14cdc1af6ec7"
   integrity sha512-6S062WDQUXi6hOfkO/sBPVwE5ASXY4G2+b4atvhJfSsuUUhIaUKlkjLe9692Ipyt5/a+IPF5aVTu3V5gvXq5cg==
-
-command-exists@^1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.8.tgz#715acefdd1223b9c9b37110a149c6392c2852291"
-  integrity sha512-PM54PkseWbiiD/mMsbvW351/u+dafwTJ0ye2qB60G1aGQP9j3xK2gmMDc+R34L3nDtx4qMCitXT75mkbkGJDLw==
 
 commander@^2.19.0, commander@^2.8.1, commander@^2.9.0:
   version "2.20.0"
