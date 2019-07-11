@@ -11,6 +11,7 @@ export default {
     commentsConnection,
     filesConnection,
     permissions,
+    postPermission: permissions, // TODO: Remove
     project,
     user,
   },

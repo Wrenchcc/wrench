@@ -10,6 +10,16 @@ export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
   ${fragment.USER_SETTINGS_FRAGMENT}
 `
 
+export const DELETE_COMMENT_MUTATION = gql`
+  mutation deleteComment($commentId: ID) {
+    deleteComment(commentId: $commentId, input: $input) {
+      commentId
+      id
+      text
+    }
+  }
+`
+
 // export const ADD_COMMENT_MUTATION = gql`
 //   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
 //     addComment(postId: $postId, commentId: $commentId, input: $input) {

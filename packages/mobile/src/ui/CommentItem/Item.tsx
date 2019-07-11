@@ -60,6 +60,8 @@ function Item({
     [user, commentId, id, onReply]
   )
 
+  const handleDeleteComment = () => {}
+
   if (highlightId === id) {
     Animated.timing(animatedValue.current, {
       duration: 1000,
@@ -85,8 +87,8 @@ function Item({
     <Swipeable
       friction={2}
       rightThreshold={100}
-      renderRightActions={renderRightAction}
-      onSwipeableRightOpen={() => console.log('wef')}
+      renderRightActions={permissions.isOwner && renderRightAction}
+      onSwipeableRightOpen={handleDeleteComment}
     >
       <Animated.View style={{ backgroundColor }}>
         <Base isReply={isReply} first={first}>

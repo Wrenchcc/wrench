@@ -17,6 +17,7 @@ export default {
     followersConnection,
     permissions,
     postsConnection,
+    projectPermission: permissions, // TODO: Remove
     type,
     user,
   },
