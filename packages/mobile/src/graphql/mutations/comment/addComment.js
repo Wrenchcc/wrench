@@ -37,6 +37,10 @@ const addCommentOptions = {
             commentId,
             postId,
             text,
+            permissions: {
+              isOwner: true,
+              __typename: 'CommentPermissions',
+            },
           },
         },
         update: (proxy, { data: { addComment } }) => {
@@ -97,6 +101,10 @@ const addCommentOptions = {
                   node: {
                     id: optimisticId(),
                     createdAt: new Date().toISOString(),
+                    permissions: {
+                      isOwner: true,
+                      __typename: 'CommentPermissions',
+                    },
                     ...addComment,
                     user,
                     __typename: 'Comment',
@@ -138,6 +146,10 @@ const addCommentOptions = {
                       node: {
                         id: optimisticId(),
                         createdAt: new Date().toISOString(),
+                        permissions: {
+                          isOwner: true,
+                          __typename: 'CommentPermissions',
+                        },
                         replies: {
                           totalCount: 0,
                           pageInfo: {

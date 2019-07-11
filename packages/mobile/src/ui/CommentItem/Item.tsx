@@ -1,7 +1,10 @@
 import React, { memo, useCallback, useRef } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
+import { filter } from 'ramda'
 import { useNavigation, SCREENS } from 'navigation'
+import { useMutation, DELETE_COMMENT_MUTATION } from 'gql'
+import { CommentsQuery } from 'graphql/queries/comment/getComments'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
@@ -51,16 +54,43 @@ function Item({
     [user]
   )
 
+  const commentOrReplyId = commentId || id
+
   const handleOnReply = useCallback(
     () =>
       onReply({
-        commentId: commentId || id,
+        commentId: commentOrReplyId,
         username: user.username,
       }),
-    [user, commentId, id, onReply]
+    [user, commentOrReplyId, onReply]
   )
 
-  const handleDeleteComment = () => {}
+  const [deleteComment] = useMutation(DELETE_COMMENT_MUTATION, {
+    // update: cache => {
+    //   const data = cache.readQuery({ query: CommentsQuery })
+    //   const edges = filter(edge => edge.node.id !== id, data.comments.edges)
+    // cache.writeQuery({
+    //   data: {
+    //     ...data,
+    //     comments: {
+    //       ...data.comments,
+    //       edges,
+    //     },
+    //   },
+    //   query: CommentsQuery,
+    // })
+    // },
+  })
+
+  const handleDeleteComment = useCallback(
+    () =>
+      deleteComment({
+        variables: {
+          id: commentOrReplyId,
+        },
+      }),
+    [deleteComment, commentOrReplyId]
+  )
 
   if (highlightId === id) {
     Animated.timing(animatedValue.current, {
@@ -87,7 +117,7 @@ function Item({
     <Swipeable
       friction={2}
       rightThreshold={100}
-      renderRightActions={permissions.isOwner && renderRightAction}
+      renderRightActions={false && permissions.isOwner && renderRightAction}
       onSwipeableRightOpen={handleDeleteComment}
     >
       <Animated.View style={{ backgroundColor }}>

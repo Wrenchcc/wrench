@@ -11,12 +11,8 @@ export const TOGGLE_NOTIFICATION_SETTINGS_MUTATION = gql`
 `
 
 export const DELETE_COMMENT_MUTATION = gql`
-  mutation deleteComment($commentId: ID) {
-    deleteComment(commentId: $commentId, input: $input) {
-      commentId
-      id
-      text
-    }
+  mutation deleteComment($id: ID!) {
+    deleteComment(id: $id)
   }
 `
 

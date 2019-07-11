@@ -1381,10 +1381,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^2.4.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.4.2.tgz#83d54e5bcdcad65ad9175382d7e263564bbaf87b"
-  integrity sha512-E5WjRNTJN8spsHbSSIhCBz8mb/8VXfR9f08m6mzXJE3pRmReHq33hVkH1B7hrOHSeLqgw83VvYA5sdvdm1DmAw==
+"@react-native-community/cli@^2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.4.3.tgz#6ca1a88d240a593cd10ed43d589f804b4d0ed1ef"
+  integrity sha512-gDmCFZFc3JL8gO8j6ywXJ5nn0B8R4T4dVnSHDuzpFEL/Efx1CD/rKEsR/3/8vCG0g/xbT4GxGIRArNlyaEf4Ng==
   dependencies:
     "@hapi/joi" "^15.0.3"
     "@react-native-community/cli-platform-android" "^2.4.1"
@@ -5576,10 +5576,10 @@ react-native-tab-view@^2.7.3:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.7.3.tgz#fcbc5a50869f54fbdce39372addc1654e3775630"
   integrity sha512-5t70BPiVZ8himmP+A7PTo9LcDlacAUtWzxghcXo2mE1vjnw2oypZanFpEl9UzJlrHfsE1Duyn8FUfLysS9PqPA==
 
-react-native-unimodules@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.4.1.tgz#c01491fd3cb7f4786521fbb7477c35882969a20d"
-  integrity sha512-KU/38iFWdy5LIydmoF21d/dgG6ndOvIyqPZIBr5tFzcZuVArYSp+eyjQ6AXLw9uueyZAq2F2ONqgTJsyfoxwfA==
+react-native-unimodules@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.4.2.tgz#17ebc5a67e12fe9203afbfb2f3cb53f938cc0661"
+  integrity sha512-qK/JmrsPdNpBldr3vqvCi5vsLQM3LN33VAF4fxD66ovV4ZKWw8yJTPQekfrU8Ktny9cFSVQ/KgISzpvUbjUiIA==
   dependencies:
     "@unimodules/core" "~2.0.0"
     "@unimodules/react-native-adapter" "~2.0.0"

@@ -24,7 +24,7 @@
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.2",
-    "luxon": "^1.16.1",
+    "luxon": "^1.17.1",
     "pg": "^7.11.0",
     "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.13",
