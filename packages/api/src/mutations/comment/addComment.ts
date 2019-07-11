@@ -94,9 +94,9 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
           ctx.services.firebase.send({
             data: {
               commentId: comment.id,
+              postId: post.id,
               text,
               title: project.title,
-              postId: post.id,
             },
             to: mentionedUser.id,
             type: NOTIFICATION_TYPES.NEW_MENTION,

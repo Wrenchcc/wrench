@@ -7,6 +7,9 @@ export default gql`
     id
     text
     createdAt
+    permissions {
+      isOwner
+    }
     user {
       ...userInfo
     }

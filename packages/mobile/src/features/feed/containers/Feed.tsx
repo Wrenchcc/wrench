@@ -30,7 +30,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
     if (
       posts &&
       posts.length > 10 &&
-      !pathOr(false, [0, 'node', 'postPermissions', 'isOwner'], posts)
+      !pathOr(false, [0, 'node', 'permissions', 'isOwner'], posts)
     ) {
       setHasNewPosts(true)
     }

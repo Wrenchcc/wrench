@@ -2,7 +2,7 @@ import post from './post'
 import posts from './posts'
 import filesConnection from './filesConnection'
 import commentsConnection from './commentsConnection'
-import postPermissions from './postPermissions'
+import permissions from './permissions'
 import project from './project'
 import user from './user'
 
@@ -10,7 +10,7 @@ export default {
   Post: {
     commentsConnection,
     filesConnection,
-    postPermissions,
+    permissions,
     project,
     user,
   },

@@ -23,8 +23,8 @@ export default async files => {
 
     // Return filenames
     const result = await Promise.all(
-      resizedImages.map(async (uri, index) => {
-        const { url, type, filename } = preSignedUrls.data.preSignUrls[index]
+      resizedImages.map(async (uri, i) => {
+        const { url, type, filename } = preSignedUrls.data.preSignUrls[i]
         try {
           return request(url, { uri, type, filename })
         } catch (err) {

@@ -25,8 +25,8 @@ function ProjectHeader({ project, spacingHorizontal, followProject: followProjec
 
       <Followers followers={project.followers.totalCount} onPress={handleNavigation} />
 
-      {!project.projectPermissions.isOwner && (
-        <Follow following={project.projectPermissions.isFollower} onPress={handleFollow} />
+      {!project.permissions.isOwner && (
+        <Follow following={project.permissions.isFollower} onPress={handleFollow} />
       )}
     </Base>
   )

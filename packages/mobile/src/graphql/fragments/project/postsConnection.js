@@ -11,7 +11,7 @@ export default gql`
           id
           caption
           createdAt
-          postPermissions {
+          permissions {
             isOwner
           }
           user {

@@ -8,7 +8,8 @@ export default gql`
     caption: String
     user: User
     project: Project
-    postPermissions: PostPermissions
+    postPermission: PostPermissions # @deprecated(reason: "Use permissions.")
+    permissions: PostPermissions
 
     filesConnection(
       first: Int = 10

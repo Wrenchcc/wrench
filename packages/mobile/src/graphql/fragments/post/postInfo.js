@@ -8,7 +8,7 @@ export default gql`
     id
     caption
     createdAt
-    postPermissions {
+    permissions {
       isOwner
     }
     user {
@@ -28,7 +28,7 @@ export default gql`
       title
       slug
       dynamicLink
-      projectPermissions {
+      permissions {
         isOwner
         isFollower
       }

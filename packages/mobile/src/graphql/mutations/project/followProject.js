@@ -15,11 +15,11 @@ const ProjectMutation = gql`
 const followProjectOptions = {
   props: ({ mutate, ownProps: { project } }) => ({
     followProject: id => {
-      const totalCount = project.projectPermissions.isFollower
+      const totalCount = project.permissions.isFollower
         ? project.followers.totalCount - 1
         : project.followers.totalCount + 1
 
-      const isFollower = !project.projectPermissions.isFollower
+      const isFollower = !project.permissions.isFollower
 
       track(isFollower ? events.PROJECT_FOLLOWED : events.PROJECT_UNFOLLOWED)
 
@@ -36,8 +36,8 @@ const followProjectOptions = {
               ...project.followers,
               totalCount,
             },
-            projectPermissions: {
-              ...project.projectPermissions,
+            permissions: {
+              ...project.permissions,
               isFollower,
             },
             __typename: 'Project',

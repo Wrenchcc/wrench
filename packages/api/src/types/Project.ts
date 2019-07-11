@@ -9,7 +9,8 @@ export default gql`
     updatedAt: Date
     dynamicLink: String
     user: User
-    projectPermissions: ProjectPermissions
+    projectPermission: ProjectPermissions # @deprecated(reason: "Use permissions.")
+    permissions: ProjectPermissions
     commentsDisabled: Boolean
     type: ProjectType
 

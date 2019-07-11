@@ -1,9 +1,9 @@
 import dynamicLink from './dynamicLink'
 import filesConnection from './filesConnection'
 import followersConnection from './followersConnection'
+import permissions from './permissions'
 import postsConnection from './postsConnection'
 import project from './project'
-import projectPermissions from './projectPermissions'
 import projects from './projects'
 import projectSuggestions from './projectSuggestions'
 import projectTypes from './projectTypes'
@@ -15,8 +15,8 @@ export default {
     dynamicLink,
     filesConnection,
     followersConnection,
+    permissions,
     postsConnection,
-    projectPermissions,
     type,
     user,
   },

@@ -11,7 +11,7 @@ export default gql`
     user {
       ...userInfo
     }
-    projectPermissions {
+    permissions {
       isOwner
       isFollower
     }

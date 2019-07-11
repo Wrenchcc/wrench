@@ -80,7 +80,7 @@ function EditProject({
   )
 
   const toggleActionSheet = () => {
-    if (project.projectPermissions.isOwner) {
+    if (project.permissions.isOwner) {
       Alert.alert(
         t('EditProject:deleteAlert'),
         t('EditProject:description'),

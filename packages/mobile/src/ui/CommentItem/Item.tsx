@@ -1,11 +1,32 @@
 import React, { memo, useCallback, useRef } from 'react'
-import { Animated } from 'react-native'
+import { View, Image, Animated, Dimensions } from 'react-native'
+import { Swipeable } from 'react-native-gesture-handler'
 import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
+import { trash } from 'images'
 import { Base, Content, Row, Reply } from './styles'
+
+export const { width } = Dimensions.get('window')
+
+function renderRightAction(progress) {
+  const translateX = progress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [width, 0],
+  })
+
+  return (
+    <Animated.View style={{ width, transform: [{ translateX }] }}>
+      <View style={{ flex: 1, justifyContent: 'center', backgroundColor: COLORS.RED }}>
+        <View style={{ paddingLeft: 30 }}>
+          <Image source={trash} />
+        </View>
+      </View>
+    </Animated.View>
+  )
+}
 
 function Item({
   createdAt,
@@ -18,10 +39,10 @@ function Item({
   t,
   text,
   user,
+  permissions,
 }) {
   const { navigate } = useNavigation()
   const animatedValue = useRef(new Animated.Value(0))
-
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
@@ -61,34 +82,41 @@ function Item({
   }
 
   return (
-    <Animated.View style={{ backgroundColor }}>
-      <Base isReply={isReply} first={first}>
-        <Avatar
-          uri={user.avatarUrl}
-          size={isReply ? 20 : 30}
-          isOnline={user.isOnline}
-          badgeSize={isReply && 'small'}
-          onPress={handleNavigation}
-        />
-        <Content>
-          <Row>
-            <Text>
-              <Text fontSize={15} bold>{`${user.fullName} `}</Text>
-              {text && <Text fontSize={15}>{text}</Text>}
-            </Text>
-          </Row>
+    <Swipeable
+      friction={2}
+      rightThreshold={100}
+      renderRightActions={renderRightAction}
+      onSwipeableRightOpen={() => console.log('wef')}
+    >
+      <Animated.View style={{ backgroundColor }}>
+        <Base isReply={isReply} first={first}>
+          <Avatar
+            uri={user.avatarUrl}
+            size={isReply ? 20 : 30}
+            isOnline={user.isOnline}
+            badgeSize={isReply && 'small'}
+            onPress={handleNavigation}
+          />
+          <Content>
+            <Row>
+              <Text>
+                <Text fontSize={15} bold>{`${user.fullName} `}</Text>
+                {text && <Text fontSize={15}>{text}</Text>}
+              </Text>
+            </Row>
 
-          <Row>
-            <TimeAgo date={createdAt} />
-            {!first && (
-              <Reply medium fontSize={12} onPress={handleOnReply} disabled={id < 0}>
-                {t('CommentItem:reply')}
-              </Reply>
-            )}
-          </Row>
-        </Content>
-      </Base>
-    </Animated.View>
+            <Row>
+              <TimeAgo date={createdAt} />
+              {!first && (
+                <Reply medium fontSize={12} onPress={handleOnReply} disabled={id < 0}>
+                  {t('CommentItem:reply')}
+                </Reply>
+              )}
+            </Row>
+          </Content>
+        </Base>
+      </Animated.View>
+    </Swipeable>
   )
 }
 

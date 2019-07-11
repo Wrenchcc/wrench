@@ -25,9 +25,7 @@ function Project({
   const hasPosts = !isEmpty(post) || (posts && posts.length > 0)
 
   const emptyState =
-    project.projectPermissions && project.projectPermissions.isOwner
-      ? TYPES.PROJECT_POST
-      : TYPES.PROJECT_NO_POSTS
+    project.permissions && project.permissions.isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
 
   const renderItem = ({ item }) => {
     // Remove post item from list to skip dublicated
@@ -67,7 +65,7 @@ function Project({
       <Page
         headerTitle={project.title}
         headerRight={
-          project.projectPermissions && project.projectPermissions.isOwner ? (
+          project.permissions && project.permissions.isOwner ? (
             <Edit project={project} />
           ) : (
             <Share title={project.title} url={project.dynamicLink} text />

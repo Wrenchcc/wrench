@@ -9,12 +9,17 @@ export default gql`
     text: String!
     user: User
     postId: ID
+    permissions: CommentPermissions
     repliesConnection(
       first: Int = 10
       after: String
       last: Int = 10
       before: String
     ): CommentConnection
+  }
+
+  type CommentPermissions {
+    isOwner: Boolean
   }
 
   type CommentConnection {

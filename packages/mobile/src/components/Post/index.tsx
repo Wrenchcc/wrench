@@ -75,7 +75,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
   const postActions = useCallback(() => {
     const options = []
 
-    if (post.postPermissions.isOwner) {
+    if (post.permissions.isOwner) {
       options.push(
         {
           name: t('Post:options:edit'),

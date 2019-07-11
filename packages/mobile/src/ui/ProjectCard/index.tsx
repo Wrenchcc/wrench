@@ -33,11 +33,9 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
           </ProjectName>
           <Followers followers={project.followers.totalCount} color="white" opacity={0.9} />
         </Info>
-        {!project.projectPermissions.isOwner && (
+        {!project.permissions.isOwner && (
           <Button small background="white" onPress={handleFollow}>
-            {project.projectPermissions.isFollower
-              ? t('ProjectCard:unfollow')
-              : t('ProjectCard:follow')}
+            {project.permissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
           </Button>
         )}
       </Content>

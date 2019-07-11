@@ -15,7 +15,7 @@ export default gql`
           user {
             ...userInfo
           }
-          postPermissions {
+          permissions {
             isOwner
           }
           files: filesConnection(type: IMAGE) {
