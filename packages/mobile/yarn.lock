@@ -1381,10 +1381,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.4.1.tgz#00dd7ebb6a26331f94d0defb4f8ef66e9001ef22"
-  integrity sha512-Kk7VX4M56IV9dM4EtczJgNNhn32KTsrcFzXGEseMGMH8HQqY6BTZr++XLmyCVSgFQXt0nsc9zNa+ORkWVhqO+g==
+"@react-native-community/cli@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.4.2.tgz#83d54e5bcdcad65ad9175382d7e263564bbaf87b"
+  integrity sha512-E5WjRNTJN8spsHbSSIhCBz8mb/8VXfR9f08m6mzXJE3pRmReHq33hVkH1B7hrOHSeLqgw83VvYA5sdvdm1DmAw==
   dependencies:
     "@hapi/joi" "^15.0.3"
     "@react-native-community/cli-platform-android" "^2.4.1"
