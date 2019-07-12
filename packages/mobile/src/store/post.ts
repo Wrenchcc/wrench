@@ -66,16 +66,19 @@ const [usePostStore, api] = create(set => ({
       const [scale, originX, originY] = payload
       const size = scale * IMAGE_EDITOR_SIZE
 
-      set(state => ({
-        crop: {
-          [state.selectedId]: {
-            height: size,
-            originX,
-            originY,
-            width: size,
+      set(state => {
+        // console.log(state.selectedId, state.files)
+        return {
+          crop: {
+            [state.selectedId]: {
+              height: size,
+              originX,
+              originY,
+              width: size,
+            },
           },
-        },
-      }))
+        }
+      })
     },
 
     reset: () => set(initialState),
