@@ -1,8 +1,8 @@
 import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
-import { findIndex, propEq, assocPath } from 'ramda'
-import { IMAGE_EDITOR_SIZE } from 'features/project/components/ImageEditor'
+import { findIndex, propEq, assocPath, pathOr } from 'ramda'
+import { client, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 
 import { POST } from './constants'
 
@@ -63,27 +63,14 @@ const [usePostStore, api] = create(set => ({
         }
       }),
 
-    onEdit: payload => {
-      // const [scale, transX, transY] = payload
-
+    onEdit: payload =>
       set(state => {
         const currentIndex = findIndex(propEq('id', state.selectedId))(state.files)
-        // const { height, width } = state.files[currentIndex]
-        // const originX = (transX * width) / IMAGE_EDITOR_SIZE
-        // const originY = (transY * height) / IMAGE_EDITOR_SIZE
-        //
-        // const crop = {
-        //   height: (height * scale) / IMAGE_EDITOR_SIZE,
-        //   originX,
-        //   originY,
-        //   width: (width * scale) / IMAGE_EDITOR_SIZE,
-        // }
 
         return {
           files: assocPath([currentIndex, 'crop'], payload, state.files),
         }
-      })
-    },
+      }),
 
     reset: () =>
       set({
@@ -105,8 +92,15 @@ const [usePostStore, api] = create(set => ({
 }))
 
 async function initSelectedProjectId() {
-  const id = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
-  api.setState({ [POST.PROJECT_ID]: id })
+  const savedId = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
+
+  if (savedId) {
+    api.setState({ [POST.PROJECT_ID]: savedId })
+  } else {
+    const { data } = await client.query({ query: CURRENT_USER_PROJECTS_QUERY })
+    const id = pathOr(null, ['user', 'projects', 'edges', 0, 'node', 'id'], data)
+    api.setState({ [POST.PROJECT_ID]: id })
+  }
 }
 
 initSelectedProjectId()

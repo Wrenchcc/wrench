@@ -8,8 +8,7 @@ import List from './List'
 import { Base, Icon } from './styles'
 
 function getProjectById(id, projects) {
-  const project = projects.find(({ node }) => node.id === id)
-  return pathOr(projects[0].node, ['node'], project)
+  return projects.find(({ node }) => node.id === id).node
 }
 
 function SelectProject({ dark = false }) {

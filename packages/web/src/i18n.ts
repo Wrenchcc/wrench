@@ -9,11 +9,11 @@ import { isBrowser } from './utils/platform'
 export const SUPPORTED_LOCALS = ['en', 'sv']
 
 const options = {
-  resources,
   debug: Boolean(process.env.DEBUG_TRANSLATION),
   defaultLanguage: 'en',
   fallbackLng: 'en',
   preload: SUPPORTED_LOCALS,
+  resources,
   interpolation: {
     escapeValue: false,
     format(value, format) {
