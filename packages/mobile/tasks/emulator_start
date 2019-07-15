@@ -1,3 +1,3 @@
 #!/bin/sh
 cd $ANDROID_HOME/emulator && \
-  ./emulator -avd pixel -netspeed full -netdelay none -gpu host
+  ./emulator -avd Pixel_3_XL_API_29 -netspeed full -netdelay none -gpu host

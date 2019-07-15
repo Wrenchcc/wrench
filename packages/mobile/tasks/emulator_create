@@ -1,5 +1,12 @@
 #!/bin/sh
-$ANDROID_HOME/tools/bin/avdmanager create avd --force --name pixel --abi google_apis/x86 --device pixel --package 'system-images;android-25;google_apis;x86' && \
-echo "skin.dynamic=yes
+$ANDROID_HOME/tools/bin/avdmanager create avd --force --name pixel --abi google_apis/x86_64 --device pixel --package 'system-images;android-28;google_apis;x86_64' && \
+echo "hw.keyboard=yes
+skin.dynamic=yes
 skin.name=1080x1920
-skin.path=1080x1920" >> ~/.android/avd/pixel.avd/config.ini
+skin.path=1080x1920
+hw.cpu.ncore=4
+hw.gpu.enabled=yes
+hw.gpu.mode=auto
+hw.ramSize=2048
+vm.heapSize=64
+disk.dataPartition.size=1024MB" >> ~/.android/avd/pixel.avd/config.ini
