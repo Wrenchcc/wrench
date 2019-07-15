@@ -8,7 +8,7 @@ import Camera from '../../components/Camera'
 import ImageEditor from '../../components/ImageEditor'
 import MediaPicker from '../../components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
-import { Placeholder } from './styles'
+import { Base, Placeholder } from './styles'
 
 function AddMedia() {
   const { t } = useTranslation()
@@ -53,7 +53,7 @@ function AddMedia() {
   }, [reset, dismissModal])
 
   return (
-    <>
+    <Base>
       <Header
         headerLeft={<Icon source={close} onPress={handleDismissModal} />}
         headerRight={
@@ -91,7 +91,7 @@ function AddMedia() {
           { name: t('AddMedia:options:cancel') },
         ]}
       />
-    </>
+    </Base>
   )
 }
 

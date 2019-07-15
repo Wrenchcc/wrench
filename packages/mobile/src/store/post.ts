@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq, assocPath, pathOr } from 'ramda'
 import { client, CURRENT_USER_PROJECTS_QUERY } from 'gql'
-
 import { POST } from './constants'
 
 const MAX_SELECTED_FILES = 10
@@ -91,7 +90,7 @@ const [usePostStore, api] = create(set => ({
   },
 }))
 
-async function initSelectedProjectId() {
+export async function initSelectedProjectId() {
   const savedId = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
 
   if (savedId) {
@@ -102,7 +101,5 @@ async function initSelectedProjectId() {
     api.setState({ [POST.PROJECT_ID]: id })
   }
 }
-
-initSelectedProjectId()
 
 export default usePostStore

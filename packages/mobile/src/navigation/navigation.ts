@@ -1,11 +1,9 @@
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notifications, notificationsSelected, profile } from 'images'
-import registerScreens from './registerScreens'
+import { initSelectedProjectId } from 'store/post'
 import defaultOptions from './defaultOptions'
 import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
-
-registerScreens()
 
 export function Bootstrap() {
   Navigation.setRoot({
@@ -58,6 +56,9 @@ export function AppNavigation(onboarding) {
       },
     })
   } else {
+    // Load selected project when logged in
+    initSelectedProjectId()
+
     Navigation.setRoot({
       root: {
         bottomTabs: {

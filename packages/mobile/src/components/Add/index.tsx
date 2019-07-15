@@ -15,9 +15,6 @@ function Add() {
     () =>
       showModal(data.user.projects.edges.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT, {
         options: {
-          layout: {
-            backgroundColor: COLORS.DARK,
-          },
           statusBar: {
             drawBehind: true,
             visible: false,

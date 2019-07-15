@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { AppNavigation } from 'navigation'
 import { useTranslation } from 'react-i18next'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
+import { getCurrentUser } from 'gql'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
@@ -22,8 +23,11 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
       await authenticateFacebookMutation(facebookResponse.accessToken)
 
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
+      const { data } = await getCurrentUser()
 
-      AppNavigation()
+      if (data.user) {
+        AppNavigation(!data.user.interestedIn)
+      }
     } catch (err) {
       track(events.USER_SIGNED_IN_FACEBOOK_FAILED)
       logError(err)

@@ -19,9 +19,9 @@ const authenticateFacebookOptions = {
         variables: {
           token,
         },
-        update: (_, { data }) => {
+        update: async (_, { data }) => {
           const { access_token, refresh_token } = data.authenticateFacebook
-          setTokens(access_token, refresh_token)
+          await setTokens(access_token, refresh_token)
           track(events.USER_SIGNED_IN)
         },
       }),
