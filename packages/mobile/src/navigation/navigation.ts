@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notifications, notificationsSelected, profile } from 'images'
-import { initSelectedProjectId } from 'store/post'
+import { loadSelectedProjectId } from 'store/post'
 import defaultOptions from './defaultOptions'
 import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
 
@@ -57,7 +57,7 @@ export function AppNavigation(onboarding) {
     })
   } else {
     // Load selected project when logged in
-    initSelectedProjectId()
+    loadSelectedProjectId()
 
     Navigation.setRoot({
       root: {

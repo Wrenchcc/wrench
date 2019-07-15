@@ -1,6 +1,7 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { prepend } from 'ramda'
+import { saveSelectedProjectId } from 'store/post'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { logError } from 'utils/sentry'
@@ -53,6 +54,7 @@ const addProjectOptions = {
             }
 
             cache.writeQuery({ query: CurrentUserQuery, data: user })
+            saveSelectedProjectId(addProject.id)
           } catch (err) {
             logError(err)
           }

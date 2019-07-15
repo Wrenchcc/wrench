@@ -39,7 +39,6 @@ const LoadMorePosts = gql`
 
 const getCurrentUserProfileOptions = {
   options: ({ after }) => ({
-    fetchPolicy: 'cache-and-network',
     variables: {
       after,
     },

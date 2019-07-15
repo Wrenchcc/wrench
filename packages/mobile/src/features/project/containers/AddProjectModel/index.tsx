@@ -1,7 +1,9 @@
 import React, { useCallback, useState } from 'react'
+import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { addProject } from 'graphql/mutations/project/addProject'
-import { useNavigation } from 'navigation'
+import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
+import { useNavigation, SCREENS } from 'navigation'
 import { useProjectStore, PROJECT } from 'store'
 import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
 import { arrowLeft } from 'images'
@@ -13,9 +15,14 @@ function formatModel(model) {
 
 function AddProjectModel({ addProject: addProjectMutation }) {
   const { t } = useTranslation()
-  const { navigate, navigateBack, dismissModal } = useNavigation()
+  const { showModal, navigateBack, dismissModal } = useNavigation()
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
+
+  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+    fetchPolicy: 'cache-only',
+  })
 
   const { update, reset, model, type, title } = useProjectStore(store => ({
     model: store.model,
@@ -45,8 +52,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
   )
 
   const handleSave = useCallback(async () => {
-    // TODO: is saving and move after await
-    dismissModal()
+    setIsSaving(true)
 
     await addProjectMutation({
       modelId: model ? model.id : null,
@@ -54,8 +60,13 @@ function AddProjectModel({ addProject: addProjectMutation }) {
       title,
     })
 
+    if (data.user.projects.edges.length > 0) {
+      dismissModal()
+    } else {
+      showModal(SCREENS.ADD_MEDIA)
+    }
     reset()
-  }, [reset, dismissModal, model, type, title])
+  }, [reset, dismissModal, model, type, title, data])
 
   const handleModelChange = useCallback(
     selectedModel => {
@@ -74,9 +85,13 @@ function AddProjectModel({ addProject: addProjectMutation }) {
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
         headerTitle={<Text medium>{t('AddProjectModel:headerTitle')}</Text>}
         headerRight={
-          <Text onPress={handleSave} medium>
-            {model ? t('AddProjectModel:add') : t('AddProjectModel:skip')}
-          </Text>
+          isSaving ? (
+            <ActivityIndicator size="small" color="black" />
+          ) : (
+            <Text onPress={handleSave} medium>
+              {model ? t('AddProjectModel:add') : t('AddProjectModel:skip')}
+            </Text>
+          )
         }
       />
       <KeyboardAvoidingView>

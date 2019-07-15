@@ -83,14 +83,14 @@ const [usePostStore, api] = create(set => ({
 
     update: async (field, payload) => {
       if (field === POST.PROJECT_ID) {
-        AsyncStorage.setItem(SELECTED_PROJECT_KEY, payload)
+        return saveSelectedProjectId(payload)
       }
       set({ [field]: payload })
     },
   },
 }))
 
-export async function initSelectedProjectId() {
+export async function loadSelectedProjectId() {
   const savedId = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
 
   if (savedId) {
@@ -100,6 +100,11 @@ export async function initSelectedProjectId() {
     const id = pathOr(null, ['user', 'projects', 'edges', 0, 'node', 'id'], data)
     api.setState({ [POST.PROJECT_ID]: id })
   }
+}
+
+export async function saveSelectedProjectId(id) {
+  api.setState({ [POST.PROJECT_ID]: id })
+  AsyncStorage.setItem(SELECTED_PROJECT_KEY, id)
 }
 
 export default usePostStore
