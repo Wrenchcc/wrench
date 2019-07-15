@@ -15,7 +15,7 @@ function formatModel(model) {
 
 function AddProjectModel({ addProject: addProjectMutation }) {
   const { t } = useTranslation()
-  const { showModal, navigateBack, dismissModal } = useNavigation()
+  const { navigate, navigateBack, dismissModal } = useNavigation()
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
@@ -63,7 +63,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
     if (data.user.projects.edges.length > 0) {
       dismissModal()
     } else {
-      showModal(SCREENS.ADD_MEDIA)
+      navigate(SCREENS.ADD_MEDIA)
     }
     reset()
   }, [reset, dismissModal, model, type, title, data])
