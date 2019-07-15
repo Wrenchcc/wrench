@@ -70,7 +70,7 @@ function AddMedia() {
 
       <Placeholder>
         {file ? (
-          <ImageEditor image={file} onPhotoResize={onEdit} />
+          <ImageEditor source={file} onChange={onEdit} />
         ) : (
           <Camera onTakePicture={onSelect} />
         )}

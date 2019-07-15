@@ -8,33 +8,36 @@ const IMAGE_EDITOR_HEIGHT = width
 const IMAGE_EDITOR_WIDTH = width
 
 export default class ImageEditor extends PureComponent {
-  state = {
+  private state = {
     isLoading: true,
   }
 
-  contentOffset = {}
+  private contentOffset = {}
 
-  horizontal = false
+  private horizontal = false
 
-  maximumZoomScale = 0
+  private maximumZoomScale = 0
 
-  minimumZoomScale = null
+  private minimumZoomScale = null
 
-  scaledImageSize = null
+  private scaledImageSize = null
 
-  componentDidMount() {
-    if (!this.props.image) return
-    this.setImageProperties(this.props.image)
+  private componentDidMount() {
+    if (!this.props.source) {
+      return
+    }
+
+    this.setImageProperties(this.props.source)
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.image.uri !== prevProps.image.uri) {
+  private componentDidUpdate(prevProps) {
+    if (this.props.source.uri !== prevProps.source.uri) {
       this.handleLoading(true)
-      this.setImageProperties(this.props.image)
+      this.setImageProperties(this.props.source)
     }
   }
 
-  setImageProperties(image) {
+  private setImageProperties(image) {
     const widthRatio = image.width / IMAGE_EDITOR_WIDTH
     const heightRatio = image.height / IMAGE_EDITOR_HEIGHT
 
@@ -42,13 +45,13 @@ export default class ImageEditor extends PureComponent {
 
     if (this.horizontal) {
       this.scaledImageSize = {
-        width: image.width / heightRatio,
         height: IMAGE_EDITOR_HEIGHT,
+        width: image.width / heightRatio,
       }
     } else {
       this.scaledImageSize = {
-        width: IMAGE_EDITOR_WIDTH,
         height: image.height / widthRatio,
+        width: IMAGE_EDITOR_WIDTH,
       }
       if (Platform.OS === 'android') {
         this.scaledImageSize.width *= 2
@@ -73,16 +76,16 @@ export default class ImageEditor extends PureComponent {
     )
 
     this.handleOnEditImage(this.contentOffset, this.scaledImageSize, {
-      width: IMAGE_EDITOR_WIDTH,
       height: IMAGE_EDITOR_HEIGHT,
+      width: IMAGE_EDITOR_WIDTH,
     })
   }
 
-  handleLoading = isLoading => {
+  private handleLoading = isLoading => {
     this.setState({ isLoading })
   }
 
-  onScroll = evt => {
+  private onScroll = evt => {
     this.handleOnEditImage(
       evt.nativeEvent.contentOffset,
       evt.nativeEvent.contentSize,
@@ -90,25 +93,25 @@ export default class ImageEditor extends PureComponent {
     )
   }
 
-  handleOnEditImage(offset, scaledImageSize, croppedImageSize) {
+  private handleOnEditImage(offset, scaledImageSize, croppedImageSize) {
     const offsetRatioX = offset.x / scaledImageSize.width
     const offsetRatioY = offset.y / scaledImageSize.height
     const sizeRatioX = croppedImageSize.width / scaledImageSize.width
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
-    this.props.onPhotoResize({
-      originX: this.props.image.width * offsetRatioX,
-      originY: this.props.image.height * offsetRatioY,
-      width: this.props.image.width * sizeRatioX,
-      height: this.props.image.height * sizeRatioY,
+    this.props.onChange({
+      height: this.props.source.height * sizeRatioY,
+      originX: this.props.source.width * offsetRatioX,
+      originY: this.props.source.height * offsetRatioY,
+      width: this.props.source.width * sizeRatioX,
     })
   }
 
-  render() {
+  private render() {
     const { isLoading } = this.state
 
     return (
-      <View key={this.props.image.uri}>
+      <View key={this.props.source.uri}>
         <ScrollView
           alwaysBounceVertical
           automaticallyAdjustContentInsets={false}
@@ -118,16 +121,14 @@ export default class ImageEditor extends PureComponent {
           maximumZoomScale={this.maximumZoomScale}
           minimumZoomScale={this.minimumZoomScale}
           onMomentumScrollEnd={this.onScroll}
-          onScrollEndDrag={evt => {
-            this.onScroll(evt)
-          }}
+          onScrollEndDrag={this.onScroll}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           scrollEventThrottle={1}
         >
           <Image
             style={[{ backgroundColor: COLORS.DARK_GREY }, this.scaledImageSize]}
-            source={this.props.image}
+            source={this.props.source}
             blurRadius={isLoading ? 20 : 0}
             onLoadEnd={() => this.handleLoading(false)}
           />
