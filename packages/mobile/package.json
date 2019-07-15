@@ -55,7 +55,7 @@
     "react-native-sentry": "^0.43.2",
     "react-native-share": "^1.2.1",
     "react-native-splash-screen": "^3.2.0",
-    "react-native-tab-view": "^2.8.0",
+    "react-native-tab-view": "^2.9.0",
     "react-native-unimodules": "^0.4.2",
     "react-native-video": "^4.4.4",
     "react-native-webview": "^5.12.1",

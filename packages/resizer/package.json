@@ -13,7 +13,7 @@
     "@types/aws-lambda": "8.10.28",
     "@types/node": "^12.6.2",
     "@types/sharp": "^0.22.2",
-    "aws-sdk": "^2.491.0",
+    "aws-sdk": "^2.493.0",
     "prettier": "^1.18.2",
     "serverless": "1.47.0",
     "serverless-webpack": "^5.3.1",
