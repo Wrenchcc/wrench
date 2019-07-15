@@ -1,8 +1,9 @@
 import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
+import { findIndex, propEq, assocPath } from 'ramda'
 import { IMAGE_EDITOR_SIZE } from 'features/project/components/ImageEditor'
-import { findIndex, propEq } from 'ramda'
+
 import { POST } from './constants'
 
 const MAX_SELECTED_FILES = 10
@@ -63,25 +64,34 @@ const [usePostStore, api] = create(set => ({
       }),
 
     onEdit: payload => {
-      const [scale, originX, originY] = payload
-      const size = scale * IMAGE_EDITOR_SIZE
+      // const [scale, transX, transY] = payload
 
       set(state => {
-        // console.log(state.selectedId, state.files)
+        const currentIndex = findIndex(propEq('id', state.selectedId))(state.files)
+        // const { height, width } = state.files[currentIndex]
+        // const originX = (transX * width) / IMAGE_EDITOR_SIZE
+        // const originY = (transY * height) / IMAGE_EDITOR_SIZE
+        //
+        // const crop = {
+        //   height: (height * scale) / IMAGE_EDITOR_SIZE,
+        //   originX,
+        //   originY,
+        //   width: (width * scale) / IMAGE_EDITOR_SIZE,
+        // }
+
         return {
-          crop: {
-            [state.selectedId]: {
-              height: size,
-              originX,
-              originY,
-              width: size,
-            },
-          },
+          files: assocPath([currentIndex, 'crop'], payload, state.files),
         }
       })
     },
 
-    reset: () => set(initialState),
+    reset: () =>
+      set({
+        [POST.CAPTION]: null,
+        [POST.FILES]: [],
+        [POST.SELECTED_ID]: null,
+        [POST.IS_POSTING]: false,
+      }),
 
     setIsPosting: payload => set({ isPosting: payload }),
 

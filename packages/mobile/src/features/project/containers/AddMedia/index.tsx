@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
@@ -70,7 +70,7 @@ function AddMedia() {
 
       <Placeholder>
         {file ? (
-          <ImageEditor source={file} onPhotoResize={onEdit} />
+          <ImageEditor image={file} onPhotoResize={onEdit} />
         ) : (
           <Camera onTakePicture={onSelect} />
         )}

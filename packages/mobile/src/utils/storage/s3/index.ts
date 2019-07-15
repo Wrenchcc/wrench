@@ -6,7 +6,13 @@ import { FILE_TYPES } from 'utils/enums'
 import request from './request'
 
 async function cropImage({ uri, crop }) {
-  return ImageManipulator.manipulateAsync(uri)
+  try {
+    return ImageManipulator.manipulateAsync(uri, [{ crop }])
+  } catch (err) {
+    logError(err, { uri, crop })
+  }
+
+  return null
 }
 
 export default async files => {
