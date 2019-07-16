@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { ListContext } from '../Layout/context'
-import { NAVIGATION } from '../constants'
+import { NAVIGATION, SCREENS } from '../constants'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 
@@ -13,6 +13,12 @@ const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 
 const keyExtractor = ({ node }) => node.id
+
+let currentComponentName
+
+Navigation.events().registerComponentDidAppearListener(({ componentName }) => {
+  currentComponentName = componentName
+})
 
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(
@@ -51,9 +57,13 @@ export default function createNavigationAwareScrollable(Component) {
       const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
         ({ selectedTabIndex, unselectedTabIndex }) => {
           if (
-            selectedTabIndex === unselectedTabIndex &&
-            selectedTabIndex === tabIndex &&
-            scrollRef.current
+            (selectedTabIndex === unselectedTabIndex &&
+              selectedTabIndex === tabIndex &&
+              scrollRef.current &&
+              currentComponentName === SCREENS.FEED) ||
+            currentComponentName === SCREENS.EXPLORE ||
+            currentComponentName === SCREENS.NOTIFICATIONS ||
+            currentComponentName === SCREENS.ME
           ) {
             scrollRef.current.getNode().scrollToOffset({ offset: initialScroll })
           }

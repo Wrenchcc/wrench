@@ -73,7 +73,7 @@ function Project({
         }
       >
         <FlatList
-          initialNumToRender={2}
+          initialNumToRender={1}
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
