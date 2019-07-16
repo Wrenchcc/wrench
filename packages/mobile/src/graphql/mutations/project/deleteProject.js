@@ -2,6 +2,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { filter } from 'ramda'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
+import { removeSelectedProjectId } from 'store/post'
 import { logError } from 'utils/sentry'
 
 const DeleteProjectMutation = gql`
@@ -34,6 +35,7 @@ const deleteProjectOptions = {
             }
 
             cache.writeQuery({ query: CurrentUserQuery, data: user })
+            removeSelectedProjectId(id)
           } catch (err) {
             logError(err)
           }

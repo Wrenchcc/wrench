@@ -1,5 +1,6 @@
 import React from 'react'
 import { Layout, FlatList } from 'navigation'
+import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
 import Post from 'components/Post'
 import { EmptyState, KeyboardAvoidingView } from 'ui'
@@ -10,8 +11,13 @@ import { TYPES } from 'ui/EmptyState/constants'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
-  const emptyState = user && user.projectCount > 0 ? TYPES.POST : TYPES.PROJECT
   const hasPosts = posts && posts.length > 0
+
+  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+    fetchPolicy: 'cache-only',
+  })
+
+  const emptyState = data.user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
 
   return (
     <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>

@@ -107,4 +107,12 @@ export async function saveSelectedProjectId(id) {
   AsyncStorage.setItem(SELECTED_PROJECT_KEY, id)
 }
 
+export async function removeSelectedProjectId(id) {
+  const savedId = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
+
+  if (savedId === id) {
+    await AsyncStorage.removeItem(SELECTED_PROJECT_KEY)
+  }
+}
+
 export default usePostStore

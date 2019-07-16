@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import { pathOr } from 'ramda'
 import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { usePostStore, POST } from 'store'
 import Text from 'ui/Text'
