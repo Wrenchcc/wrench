@@ -72,12 +72,7 @@ target 'Wrench' do
   # react-native-fast-image WebP support
   pod 'SDWebImageWebPCoder'
 
-  use_unimodules!(exclude: [
-    'expo-app-loader-provider',
-    'expo-constants',
-    'expo-permissions',
-    'expo-file-system',
-  ])
+  use_unimodules!
 end
 
 # The following is needed to ensure the "archive" step works in XCode.

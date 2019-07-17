@@ -20,13 +20,13 @@ export default async (_, { token }, ctx) => {
     // Delete previous tokens with same user agent and save new
     await Promise.all([
       ctx.db.AuthToken.delete({
-        userId: authProvider.userId,
         userAgent,
+        userId: authProvider.userId,
       }),
       ctx.db.AuthToken.save({
         refreshToken: tokens.refresh_token,
-        userId: authProvider.userId,
         userAgent,
+        userId: authProvider.userId,
       }),
     ])
 
@@ -34,10 +34,10 @@ export default async (_, { token }, ctx) => {
   }
 
   const user = await ctx.db.User.createUser({
-    firstName: fbUser.firstName,
-    lastName: fbUser.lastName,
-    fullName: fbUser.fullName,
     email: fbUser.email,
+    firstName: fbUser.firstName,
+    fullName: fbUser.fullName,
+    lastName: fbUser.lastName,
   })
 
   const url = await dynamicLink({
@@ -60,8 +60,8 @@ export default async (_, { token }, ctx) => {
       userId: user.id,
     }),
     ctx.services.mail.send({
-      userId: user.id,
       type: MAIL_TYPES.WELCOME,
+      userId: user.id,
     }),
   ])
 
@@ -70,8 +70,8 @@ export default async (_, { token }, ctx) => {
   // Save new refreshToken
   await ctx.db.AuthToken.save({
     refreshToken: newTokens.refresh_token,
-    userId: user.id,
     userAgent,
+    userId: user.id,
   })
 
   return newTokens
