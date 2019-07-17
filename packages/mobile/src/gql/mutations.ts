@@ -16,6 +16,18 @@ export const DELETE_COMMENT_MUTATION = gql`
   }
 `
 
+export const LIKE_POST_MUTATION = gql`
+  mutation like($id: ID!) {
+    like(id: $id) {
+      id
+      likes {
+        isLiked
+        totalCount
+      }
+    }
+  }
+`
+
 // export const ADD_COMMENT_MUTATION = gql`
 //   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
 //     addComment(postId: $postId, commentId: $commentId, input: $input) {

@@ -6,6 +6,7 @@ import openLink from 'utils/openLink'
 import { isAndroid } from 'utils/platform'
 import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ActionSheet, EditPost } from 'ui'
+import Like from 'components/Like'
 import { share } from 'images'
 import { Top, Headline, Content, Spacer } from './styled'
 
@@ -161,8 +162,10 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
         {post.files && <Carousel files={post.files} onPress={navigateToProject} />}
       </Content>
 
+      <Like post={post} />
+
       {!withoutComments && !post.project.commentsDisabled && <Comments data={post} />}
-      <TimeAgo date={post.createdAt} fontSize={11} style={{ marginTop: 15 }} long />
+      <TimeAgo date={post.createdAt} fontSize={11} long />
       {!isEditing && postActions()}
     </>
   )

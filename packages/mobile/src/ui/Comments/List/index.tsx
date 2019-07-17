@@ -37,14 +37,14 @@ function List({ data }) {
   }
 
   return (
-    <Base>
+    <>
       {slice(0, 2, data.comments.edges).map(renderComment)}
       <LoadMore onPress={navigateToComments}>
         <Text fontSize={15} color="light_grey">
           {t('List:loadMore', { count: data.comments.totalCount })}
         </Text>
       </LoadMore>
-    </Base>
+    </>
   )
 }
 

@@ -5,7 +5,7 @@ export default (locale, params) => {
       return {
         NEW_COMMENT: `${params.name} kommenterade: ${params.comment} på ditt inlägg.`,
         NEW_FOLLOWER: `${params.name} följer nu ditt projekt: ${params.project} .`,
-        NEW_LIKE: `${params.name} gav en blixt på ditt inlägg.`,
+        NEW_LIKE: `${params.name} gav en gnista på ditt inlägg.`,
         NEW_MENTION: `${params.name} nämnde dig i en kommentar: ${params.comment} .`,
         NEW_REPLY: `${params.name} svarade på din kommentar: ${params.comment} .`,
       }

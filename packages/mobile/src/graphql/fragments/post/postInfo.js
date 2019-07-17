@@ -36,6 +36,10 @@ export default gql`
         totalCount
       }
     }
+    likes {
+      isLiked
+      totalCount
+    }
     ...commentPostConnection
   }
   ${userInfoFragment}

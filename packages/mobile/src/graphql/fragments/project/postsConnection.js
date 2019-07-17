@@ -31,6 +31,10 @@ export default gql`
             title
             commentsDisabled
           }
+          likes {
+            isLiked
+            totalCount
+          }
           ...commentPostConnection
         }
       }

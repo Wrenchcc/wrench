@@ -30,6 +30,10 @@ export default gql`
           project {
             ...projectInfo
           }
+          likes {
+            isLiked
+            totalCount
+          }
           ...commentPostConnection
         }
       }

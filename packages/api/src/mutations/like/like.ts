@@ -8,24 +8,28 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   if (isLiked) {
     await ctx.db.Like.delete({ postId: id, userId: ctx.userId })
   } else {
-    await Promise.all([
-      ctx.db.Like.save({ postId: id, userId: ctx.userId }),
-      ctx.db.Notification.save({
-        to: post.userId,
-        type: NOTIFICATION_TYPES.NEW_LIKE,
-        typeId: post.id,
-        userId: ctx.userId,
-      }),
-      ctx.services.firebase.send({
-        data: {
-          postId: post.id,
-        },
-        to: post.userId,
-        type: NOTIFICATION_TYPES.NEW_LIKE,
-        userId: ctx.userId,
-      }),
-    ])
+    // NOTE: If post owner just add the like
+    if (post.userId === ctx.userId) {
+      await ctx.db.Like.save({ postId: id, userId: ctx.userId })
+    } else {
+      await Promise.all([
+        ctx.db.Like.save({ postId: id, userId: ctx.userId }),
+        ctx.db.Notification.save({
+          to: post.userId,
+          type: NOTIFICATION_TYPES.NEW_LIKE,
+          typeId: post.id,
+          userId: ctx.userId,
+        }),
+        ctx.services.firebase.send({
+          data: {
+            postId: post.id,
+          },
+          to: post.userId,
+          type: NOTIFICATION_TYPES.NEW_LIKE,
+          userId: ctx.userId,
+        }),
+      ])
+    }
   }
-
   return post
 })

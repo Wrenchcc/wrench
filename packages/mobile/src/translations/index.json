@@ -4,6 +4,10 @@
       "placeholder": "Add a comment...",
       "post": "Post"
     },
+    "Like": {
+      "like": "{{count}} spark",
+      "like_plural": "{{count, humanFormat}} sparks"
+    },
     "Post": {
       "options": {
         "alertTitle": "Are you sure?",
@@ -237,7 +241,7 @@
       "unfollow": "Following"
     },
     "UiFollowers": {
-      "followers": "{{count, humanFormat}} follower",
+      "followers": "{{count}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
     },
     "NoResults": {
@@ -283,6 +287,10 @@
     "CommentField": {
       "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
+    },
+    "Like": {
+      "like": "{{count}} gnista",
+      "like_plural": "{{count, humanFormat}} gnistor"
     },
     "Post": {
       "options": {
@@ -527,7 +535,7 @@
       "comment": "Kommenterade på ditt inlägg",
       "reply": "Svarade på din kommentar",
       "mention": "Nämnde dig i en kommentar",
-      "like": "Gav en blixt på ditt inlägg"
+      "like": "Gav en gnista på ditt inlägg"
     },
     "Posting": {
       "description": "Sparar..."
