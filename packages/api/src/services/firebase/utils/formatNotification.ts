@@ -22,7 +22,6 @@ export default function formatNotification(type, data, user, locale) {
           params: {
             comment: data.text,
             name: user.fullName,
-            project: data.title,
           },
         }),
       }
@@ -33,6 +32,16 @@ export default function formatNotification(type, data, user, locale) {
           locale,
           params: {
             comment: data.text,
+            name: user.fullName,
+          },
+        }),
+      }
+    case NOTIFICATION_TYPES.NEW_LIKE:
+      return {
+        body: translate({
+          key: NOTIFICATION_TYPES.NEW_LIKE,
+          locale,
+          params: {
             name: user.fullName,
           },
         }),

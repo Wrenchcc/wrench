@@ -8,6 +8,12 @@ export default function formatCustomData(type, data) {
           path: 'notifications',
         },
       }
+    case NOTIFICATION_TYPES.NEW_LIKE:
+      return {
+        data: {
+          path: `post/${data.postId}`,
+        },
+      }
     case NOTIFICATION_TYPES.NEW_MENTION:
     case NOTIFICATION_TYPES.NEW_COMMENT:
     case NOTIFICATION_TYPES.NEW_REPLY:

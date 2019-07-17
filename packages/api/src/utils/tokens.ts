@@ -1,5 +1,7 @@
 import * as jwt from 'jsonwebtoken'
 
+const debug = require('debug')('api:tokens')
+
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env
 
 export const getUserId = req => {
@@ -10,7 +12,8 @@ export const getUserId = req => {
     try {
       const { userId } = jwt.verify(token, ACCESS_TOKEN_SECRET)
       return userId
-    } catch {
+    } catch (err) {
+      debug(err)
       return null
     }
   }

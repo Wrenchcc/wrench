@@ -245,9 +245,10 @@
     },
     "Notification": {
       "follow": "Now follows your project",
-      "comment": "Commented on your project",
+      "comment": "Commented on your post",
       "reply": "Replied to your comment",
-      "mention": "Mentioned you in a comment"
+      "mention": "Mentioned you in a comment",
+      "like": "Sparked your post"
     },
     "Posting": {
       "description": "Posting..."
@@ -523,9 +524,10 @@
     },
     "Notification": {
       "follow": "Följer nu ditt projekt",
-      "comment": "Kommenterade på ditt projekt",
+      "comment": "Kommenterade på ditt inlägg",
       "reply": "Svarade på din kommentar",
-      "mention": "Nämnde dig i en kommentar"
+      "mention": "Nämnde dig i en kommentar",
+      "like": "Gav en blixt på ditt inlägg"
     },
     "Posting": {
       "description": "Sparar..."

@@ -5,21 +5,11 @@ PODS:
   - Crashlytics (3.13.4):
     - Fabric (~> 1.10.2)
   - DoubleConversion (1.1.6)
-  - EXAppLoaderProvider (5.0.1)
-  - EXConstants (5.0.1):
-    - UMConstantsInterface
-    - UMCore
-  - EXFileSystem (5.0.1):
-    - UMCore
-    - UMFileSystemInterface
   - EXImageManipulator (5.0.1):
     - UMCore
     - UMFileSystemInterface
     - UMImageLoaderInterface
   - EXMediaLibrary (5.0.1):
-    - UMCore
-    - UMPermissionsInterface
-  - EXPermissions (5.0.1):
     - UMCore
     - UMPermissionsInterface
   - Fabric (1.10.2)
@@ -289,12 +279,8 @@ PODS:
 DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
-  - EXConstants (from `../node_modules/expo-constants/ios`)
-  - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXImageManipulator (from `../node_modules/expo-image-manipulator/ios`)
   - EXMediaLibrary (from `../node_modules/expo-media-library/ios`)
-  - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -380,24 +366,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
-  EXAppLoaderProvider:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-app-loader-provider/ios"
-  EXConstants:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-constants/ios"
-  EXFileSystem:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-file-system/ios"
   EXImageManipulator:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-image-manipulator/ios"
   EXMediaLibrary:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-media-library/ios"
-  EXPermissions:
-    :path: !ruby/object:Pathname
-    path: "../node_modules/expo-permissions/ios"
   Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
@@ -486,12 +460,8 @@ SPEC CHECKSUMS:
   BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
   Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
-  EXAppLoaderProvider: 8f2c04a0a8d9be91f7c37c2b8824077ee5d4bc01
-  EXConstants: 9fe56eec8bf0a3ee9beb8f3381fa91340a5b1e57
-  EXFileSystem: 96624bd4b93a0684335c421a6567a92b25bd7ddb
   EXImageManipulator: 8038764aace4dd73af5e7d34869b12116a801ea4
   EXMediaLibrary: 82ef81d52d18b93c34b3b4958ff87d3ef53d1ca8
-  EXPermissions: 8e05008ed4fc8c9be6c17ea95301fc3f3f005a7b
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FBSDKCoreKit: 3e41c402eb64ea7799c71833ff9e5690f27b9c42
   FBSDKLoginKit: a88f36da648e4c5d60eb261c63eac067abb97130
@@ -547,6 +517,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 296793ab2a7e181fe5ebe2ba9b40ae208ab4b8fa
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
-PODFILE CHECKSUM: 2ed664c46e0cece9a0a27bd7b38bc26d2a6d0ca7
+PODFILE CHECKSUM: 4333e1259154f6d67bf70cb07f6e21a94a40c441
 
 COCOAPODS: 1.6.1

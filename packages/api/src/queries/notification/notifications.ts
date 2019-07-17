@@ -37,6 +37,24 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
       const cursor = encodeCursor(id, createdAt)
 
       switch (type) {
+        case NOTIFICATION_TYPES.NEW_LIKE:
+          const like = await ctx.db.Like.findOne({ postId: typeId })
+
+          if (!like) {
+            await ctx.db.Notification.delete({ typeId })
+            return null
+          }
+
+          return {
+            cursor,
+            node: {
+              ...rest,
+              createdAt,
+              id,
+              type,
+              user,
+            },
+          }
         case NOTIFICATION_TYPES.NEW_FOLLOWER:
           const project = await ctx.loaders.project.load(typeId)
 
@@ -70,8 +88,8 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
             cursor,
             node: {
               ...rest,
-              createdAt,
               comment,
+              createdAt,
               id,
               type,
               user,

@@ -7,6 +7,7 @@ import DeviceToken from './DeviceToken'
 import DynamicLink from './DynamicLink'
 import File from './File'
 import Following from './Following'
+import Like from './Like'
 import Model from './Model'
 import Notification from './Notification'
 import Post from './Post'
@@ -37,6 +38,7 @@ export const options: ConnectionOptions = {
     DynamicLink,
     File,
     Following,
+    Like,
     Model,
     Notification,
     Post,
@@ -64,6 +66,7 @@ export const db = {
   DynamicLink,
   File,
   Following,
+  Like,
   Model,
   Notification,
   Post,

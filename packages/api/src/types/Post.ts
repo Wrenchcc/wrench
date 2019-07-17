@@ -10,6 +10,7 @@ export default gql`
     project: Project
     postPermissions: PostPermissions # @deprecated(reason: "Use permissions.")
     permissions: PostPermissions
+    likes: Likes
 
     filesConnection(
       first: Int = 10
@@ -27,6 +28,11 @@ export default gql`
 
   type PostPermissions {
     isOwner: Boolean
+  }
+
+  type Likes {
+    totalCount: Int
+    isLiked: Boolean
   }
 
   type PostConnection {
@@ -60,6 +66,7 @@ export default gql`
   }
 
   extend type Mutation {
+    like(id: ID!): Post
     deletePost(id: ID!): Post
     addPost(input: PostInput!): Post
     editPost(id: ID!, input: EditPostInput!): Post

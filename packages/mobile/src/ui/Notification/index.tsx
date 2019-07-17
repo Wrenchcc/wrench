@@ -25,6 +25,8 @@ function description(data, t) {
       return `${t('Notification:reply')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_MENTION:
       return `${t('Notification:mention')}: "${data.comment.text}"`
+    case NOTIFICATION_TYPES.NEW_LIKE:
+      return t('Notification:like')
     default:
       return null
   }
