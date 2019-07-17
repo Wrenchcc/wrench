@@ -3,6 +3,7 @@ import { View, Keyboard, TextInput, UIManager } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
+import { currentComponentName } from 'navigation'
 import { ListContext } from '../Layout/context'
 import { NAVIGATION, SCREENS } from '../constants'
 
@@ -13,12 +14,6 @@ const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 
 const keyExtractor = ({ node }) => node.id
-
-let currentComponentName
-
-Navigation.events().registerComponentDidAppearListener(({ componentName }) => {
-  currentComponentName = componentName
-})
 
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(

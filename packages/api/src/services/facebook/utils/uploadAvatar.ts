@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { S3 } from 'aws-sdk'
 
+const debug = require('debug')('api:uploadAvatar')
+
 const { AWS_S3_REGION, AWS_S3_BUCKET, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
 
 const UPLOAD_DIRECTORY = 'avatar'
@@ -32,6 +34,6 @@ export default async (userId, fbId, isSilhouette) => {
       })
       .promise()
   } catch (err) {
-    console.log(err)
+    debug(err)
   }
 }

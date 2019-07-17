@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from 'react'
-import { Layout, FlatList } from 'navigation'
+import React, { useState, useCallback, useEffect } from 'react'
+import { Navigation } from 'react-native-navigation'
+import { Layout, FlatList, SCREENS, currentComponentName } from 'navigation'
 import { getRecentPosts } from 'graphql/queries/getExplore'
 import Add from 'components/Add'
 import SearchBar from 'components/SearchBar'
@@ -29,6 +30,20 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
 
   const handleSearchFocus = useCallback(() => setSearchActive(true), [setSearchActive])
   const handleSearchClear = useCallback(() => setQuery(DEFAULT_QUERY), [setQuery])
+
+  // Close on duble tap
+  useEffect(() => {
+    const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
+      ({ selectedTabIndex, unselectedTabIndex }) => {
+        if (selectedTabIndex === unselectedTabIndex && currentComponentName === SCREENS.EXPLORE) {
+          setQuery(DEFAULT_QUERY)
+          setSearchActive(false)
+        }
+      }
+    )
+
+    return () => bottomTabEventListener.remove()
+  }, [])
 
   return (
     <>

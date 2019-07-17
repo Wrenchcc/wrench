@@ -7,12 +7,14 @@ import {
 } from 'images'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 
+export let currentComponentName
 let componentId
 let overlay
 
 // NOTE: If overlay is open do not update the componentId
 // push etc will stop working next navigate
-Navigation.events().registerComponentDidAppearListener(({ componentId: id }) => {
+Navigation.events().registerComponentDidAppearListener(({ componentId: id, componentName }) => {
+  currentComponentName = componentName
   if (id !== SCREENS.MENTION) {
     componentId = id
   }

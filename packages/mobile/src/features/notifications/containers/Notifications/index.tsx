@@ -29,7 +29,7 @@ function Notifications({
 
     const componentAppearListener = Navigation.events().registerComponentDidAppearListener(
       ({ componentId: id }) => {
-        if (componentId === id && unreadCount) {
+        if (componentId === id && unreadCount > 0) {
           markAllNotificationsSeenMutation()
           hideNotificationBadge()
         }
