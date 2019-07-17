@@ -6,6 +6,7 @@ export default gql`
     user: User!
     type: NotificationTypes
     project: Project
+    post: Post
     comment: Comment
     isSeen: Boolean!
     createdAt: Date!

@@ -48,7 +48,7 @@ export default async (_, { token }, ctx) => {
   })
 
   await Promise.all([
-    ctx.services.facebook.uploadAvatar(user.id, fbUser.id),
+    ctx.services.facebook.uploadAvatar(user.id, fbUser.id, fbUser.isSilhouette),
     ctx.db.DynamicLink.save({
       type: DYNAMIC_LINK_TYPES.USER,
       typeId: user.id,

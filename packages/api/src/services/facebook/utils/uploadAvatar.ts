@@ -13,8 +13,12 @@ const s3 = new S3({
   useAccelerateEndpoint: true,
 })
 
-export default async (userId, fbId) => {
+export default async (userId, fbId, isSilhouette) => {
   try {
+    if (isSilhouette) {
+      return
+    }
+
     const avatar = await axios.get(
       `https://graph.facebook.com/${fbId}/picture?type=large&width=720&height=720`,
       { responseType: 'arraybuffer' }

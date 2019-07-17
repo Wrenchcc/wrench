@@ -24,6 +24,9 @@ export const NotificationsQuery = gql`
           project {
             ...projectInfo
           }
+          post {
+            id
+          }
           comment {
             id
             text

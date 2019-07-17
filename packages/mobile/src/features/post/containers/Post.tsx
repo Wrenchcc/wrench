@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'react-apollo'
+import { isEmpty } from 'ramda'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
 import { getComment } from 'graphql/queries/comment/getComment'
@@ -58,7 +59,7 @@ function PostContainer({
 
   return (
     <Page
-      scrollToIndex={!!comments}
+      scrollToIndex={comments && !isEmpty(comments)}
       headerTitle={t('PostContainer:title')}
       headerAnimation={false}
       stickyFooter={

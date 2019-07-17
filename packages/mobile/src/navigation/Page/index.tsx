@@ -24,7 +24,7 @@ function Page({
 
   useEffect(() => {
     if (scrollToIndex && scrollRef.current) {
-      scrollRef.current.getNode().scrollToIndex({ index: 0 })
+      scrollRef.current.getNode().scrollToOffset({ top: 600 })
     }
   }, [scrollRef, scrollToIndex])
 

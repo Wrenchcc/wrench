@@ -38,9 +38,9 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
 
       switch (type) {
         case NOTIFICATION_TYPES.NEW_LIKE:
-          const like = await ctx.db.Like.findOne({ postId: typeId })
+          const post = await ctx.db.Post.findOne(typeId)
 
-          if (!like) {
+          if (!post) {
             await ctx.db.Notification.delete({ typeId })
             return null
           }
@@ -51,6 +51,7 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
               ...rest,
               createdAt,
               id,
+              post,
               type,
               user,
             },

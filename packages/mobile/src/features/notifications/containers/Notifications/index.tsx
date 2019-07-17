@@ -47,7 +47,7 @@ function Notifications({
     <Layout headerTitleKey="notifications">
       <FlatList
         tabIndex={2}
-        initialNumToRender={6}
+        initialNumToRender={8}
         paddingHorizontal={0}
         contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
