@@ -10,7 +10,7 @@ import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 
-const COMMENT_FIELD_OFFSET = 90
+const COMMENT_FIELD_OFFSET = 140
 
 // TODO: Load comment in top
 function PostContainer({
@@ -63,8 +63,13 @@ function PostContainer({
       headerTitle={t('PostContainer:title')}
       headerAnimation={false}
       stickyFooter={
-        <KeyboardAccessoryView>
-          <CommentField postId={postId} username={mention.username} commentId={mention.commentId} />
+        <KeyboardAccessoryView extraHeight={50}>
+          <CommentField
+            postId={postId}
+            username={mention.username}
+            commentId={mention.commentId}
+            emoji
+          />
         </KeyboardAccessoryView>
       }
     >

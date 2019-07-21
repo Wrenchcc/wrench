@@ -1,0 +1,10 @@
+import styled from 'styled-components'
+
+export const Base = styled.View`
+  height: 50;
+  width: 100%;
+  background: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`

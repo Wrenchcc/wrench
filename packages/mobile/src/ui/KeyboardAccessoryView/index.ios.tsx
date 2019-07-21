@@ -8,22 +8,22 @@ const INPUT_HEIGHT = 60
 
 const transition = <Transition.Change interpolation="easeInOut" />
 
-function KeyboardAccessoryView({ children }) {
+function KeyboardAccessoryView({ children, extraHeight = 0 }) {
   const ref = useRef()
-  const [keyboardHeight, setKeyboardHeight] = useState(INPUT_HEIGHT)
+  const [keyboardHeight, setKeyboardHeight] = useState(INPUT_HEIGHT + extraHeight)
 
   useEffect(() => {
     const keyboardShowEventListener = Keyboard.addListener(
       'keyboardWillShow',
       ({ endCoordinates }) => {
         ref.current.animateNextTransition()
-        setKeyboardHeight(endCoordinates.height - SPACING)
+        setKeyboardHeight(endCoordinates.height + extraHeight - SPACING)
       }
     )
 
     const keyboardHideEventListener = Keyboard.addListener('keyboardWillHide', () => {
       ref.current.animateNextTransition()
-      setKeyboardHeight(INPUT_HEIGHT)
+      setKeyboardHeight(INPUT_HEIGHT + extraHeight)
     })
 
     return () => {

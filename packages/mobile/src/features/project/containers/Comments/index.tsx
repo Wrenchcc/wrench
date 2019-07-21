@@ -5,7 +5,7 @@ import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 
-const COMMENT_FIELD_OFFSET = 90
+const COMMENT_FIELD_OFFSET = 140
 
 function Comments({
   comments,
@@ -55,8 +55,8 @@ function Comments({
       headerAnimation={false}
       headerTitle={t('Comments:title')}
       stickyFooter={
-        <KeyboardAccessoryView>
-          <CommentField postId={postId} username={username} commentId={commentId} />
+        <KeyboardAccessoryView extraHeight={50}>
+          <CommentField postId={postId} username={username} commentId={commentId} emoji />
         </KeyboardAccessoryView>
       }
     >

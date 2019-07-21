@@ -60,6 +60,9 @@ const LoadMoreReplies = gql`
             commentId
             text
             createdAt
+            permissions {
+              isOwner
+            }
             user {
               ...userInfo
             }

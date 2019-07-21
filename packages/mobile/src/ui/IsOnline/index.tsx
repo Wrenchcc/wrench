@@ -3,18 +3,18 @@ import { View } from 'react-native'
 
 const getSize = size => ({
   background: {
-    borderRadius: size === 'medium' ? 14 : 10,
+    borderRadius: size === 'medium' ? 12 : 10,
     bottom: -1,
-    height: size === 'medium' ? 14 : 10,
+    height: size === 'medium' ? 12 : 10,
     right: -1,
-    width: size === 'medium' ? 14 : 10,
+    width: size === 'medium' ? 12 : 10,
   },
   badge: {
-    borderRadius: size === 'medium' ? 10 : 6,
+    borderRadius: size === 'medium' ? 8 : 6,
     bottom: 1,
-    height: size === 'medium' ? 10 : 6,
+    height: size === 'medium' ? 8 : 6,
     right: 1,
-    width: size === 'medium' ? 10 : 6,
+    width: size === 'medium' ? 8 : 6,
   },
 })
 

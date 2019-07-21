@@ -8,12 +8,13 @@ import { addComment } from 'graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
 import { isAndroid } from 'utils/platform'
+import EmojiList from 'components/EmojiList'
 import { MENTION } from './constants'
-import { Base, Input, Button } from './styles'
+import { Base, Inner, Input, Button } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
-function CommentField({ addComment: addCommentMutation, postId, commentId, username }) {
+function CommentField({ addComment: addCommentMutation, postId, commentId, username, emoji }) {
   const { t } = useTranslation()
   const inputRef = useRef()
   const isTracking = useRef(false)
@@ -88,26 +89,37 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
     setText('')
   }, [postId, text, commentId, inputRef])
 
+  const handleEmojiShortcut = useCallback(
+    e => {
+      setText(e)
+    },
+    [setText]
+  )
+
   return (
     <Base>
-      <Avatar uri={data && data.user && data.user.avatarUrl} />
-      <Input
-        ref={inputRef}
-        onSubmitEditing={(text.length > 0 && handleSubmit) || null}
-        placeholder={t('CommentField:placeholder')}
-        placeholderTextColor={COLORS.LIGHT_GREY}
-        keyboardType="twitter"
-        onChangeText={handleOnChangeText}
-        value={text}
-        color="dark"
-      />
-      {text.length > 0 && (
-        <Button onPress={handleSubmit}>
-          <Text fontSize={15} medium>
-            {t('CommentField:post')}
-          </Text>
-        </Button>
-      )}
+      {emoji && <EmojiList onPress={handleEmojiShortcut} />}
+
+      <Inner>
+        <Avatar uri={data.user && data.user.avatarUrl} />
+        <Input
+          ref={inputRef}
+          onSubmitEditing={(text.length > 0 && handleSubmit) || null}
+          placeholder={t('CommentField:placeholder')}
+          placeholderTextColor={COLORS.LIGHT_GREY}
+          keyboardType="twitter"
+          onChangeText={handleOnChangeText}
+          value={text}
+          color="dark"
+        />
+        {text.length > 0 && (
+          <Button onPress={handleSubmit}>
+            <Text fontSize={15} medium>
+              {t('CommentField:post')}
+            </Text>
+          </Button>
+        )}
+      </Inner>
     </Base>
   )
 }
