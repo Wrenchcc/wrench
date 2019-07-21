@@ -143,7 +143,7 @@ export default function createNavigationAwareScrollable(Component) {
             0,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
-          // contentInset on layout NAVIGATION.LIST_OFFSET on page
+          // NOTE: contentInset on layout NAVIGATION.LIST_OFFSET on page
           paddingTop: isAndroid ? contentInset || NAVIGATION.LIST_OFFSET : 0,
           ...contentContainerStyle,
         }}

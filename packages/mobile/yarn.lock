@@ -1320,12 +1320,12 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.5.1.tgz#c496b4969eea5b91da1a5919a611046360b0c51f"
   integrity sha512-Ssfx2uLYPnsuqIvDCuUOEZT6jh5AVy0U0mr2eHxNO2Syor1nfOrR/n4hTOFcBWc1wamDTGCqo+UHJpxURVXd2Q==
 
-"@react-native-community/cli-platform-android@^2.6.2":
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-2.6.2.tgz#4e7ce8784e6b4a3139c739ce15672c9c4007b9fb"
-  integrity sha512-1RsugyD24B9hMXgQNvy4MT+DzBYYEJahs8W0G4MwlXEuON5u+3/mqPiFU8bisewJaIktnF+L19fpFblgdtSRXw==
+"@react-native-community/cli-platform-android@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-2.7.0.tgz#511d1db12c52d29cb87b6e4e84d63030ffa2c38d"
+  integrity sha512-hO/gYqzLCeCFnLIgYiGlZhiQMAnMuTxNS6rCbC8leMnlGARzrarnWsepHhvottOKeSctVh0wzchLCLCBcw4zVA==
   dependencies:
-    "@react-native-community/cli-tools" "^2.4.1"
+    "@react-native-community/cli-tools" "^2.7.0"
     chalk "^2.4.2"
     execa "^1.0.0"
     jetifier "^1.6.2"
@@ -1333,19 +1333,19 @@
     slash "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli-platform-ios@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-ios/-/cli-platform-ios-2.4.1.tgz#99b38c6b3feecf061ecf1243fe41013f4112a51c"
-  integrity sha512-EKfnN+ubIcCHbCCo2a1SlYcd4jLZDT12HfoLHhFg8WXG3/zFWc/vMNpBi+omrvT7Hoktr8cTtROXPg9cIS7FCQ==
+"@react-native-community/cli-platform-ios@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-ios/-/cli-platform-ios-2.7.0.tgz#a1e7af6141136da7a0b3f477426bea889a931a17"
+  integrity sha512-x3bJWyd1viszgZxTKa/L247WDHFnQCFv+X9Kdwiqu6S+smyuF9CnS3mEHQZ7BqZDa+VIDJI29iKQKdvqW83iEA==
   dependencies:
-    "@react-native-community/cli-tools" "^2.4.1"
+    "@react-native-community/cli-tools" "^2.7.0"
     chalk "^2.4.2"
     xcode "^2.0.0"
 
-"@react-native-community/cli-tools@^2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli-tools/-/cli-tools-2.4.1.tgz#5a23b92d0b486753add00a27d77d0ea9e8c331e1"
-  integrity sha512-3V5Atno3q5uBGseHcW8gM3d7Gpcr87LJvC3YbB6SwCCM7g93+94u+U1vm9j4KmHt2tnf3Q4urL4rUCrdxzvSfw==
+"@react-native-community/cli-tools@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli-tools/-/cli-tools-2.7.0.tgz#b468ce74cb5ebf5789731d4d330740801679cf81"
+  integrity sha512-9rNoGiokyMkbQ97gAvQde4mpAw2M/GhPBtrQJb4WglgVoJhfj4kpe+qMCWNsOepCrID5JY2Y1nTDEq/v+ETyNA==
   dependencies:
     chalk "^2.4.2"
     lodash "^4.17.5"
@@ -1392,15 +1392,15 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^2.6.2":
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.6.2.tgz#b6bc86d4baafa51776304eff51f1162872f0da1e"
-  integrity sha512-aIwB068/re5TIc4qUnR1gH0Vc/oze3SVbU2sXRtWKa/TTXfHJo/LKqfc9YnYYK5Qerrl7zSmhB/mNpQ6Uc+/0Q==
+"@react-native-community/cli@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.7.0.tgz#d392b6f6092c7fc8da05982f38bd626db4799a10"
+  integrity sha512-53S+z7YyMA1WMigQP7oEgSUIJkDp8SxE7MCXQXosnVRkPuPKkPoL/W6KY/wQZa7dES4SdlkrFbc4AgRz/R+B3Q==
   dependencies:
     "@hapi/joi" "^15.0.3"
-    "@react-native-community/cli-platform-android" "^2.6.2"
-    "@react-native-community/cli-platform-ios" "^2.4.1"
-    "@react-native-community/cli-tools" "^2.4.1"
+    "@react-native-community/cli-platform-android" "^2.7.0"
+    "@react-native-community/cli-platform-ios" "^2.7.0"
+    "@react-native-community/cli-tools" "^2.7.0"
     chalk "^2.4.2"
     commander "^2.19.0"
     compression "^1.7.1"
@@ -5528,10 +5528,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^2.11.1:
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-2.11.1.tgz#a72062f59bb57c0cb2bd57fe6713fa23b2a90571"
-  integrity sha512-ZmPZHcY7UXEf7Z8PoJX/WhFtmLFtdRPBGDwemOLlPRVwTVyu/OXVINDUWCug4daBqV8Fs3X1O6V927+K2u2GfA==
+react-native-camera@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.0.0.tgz#67427cda54bb67afa08aeae1320dd540b14d5cfd"
+  integrity sha512-U8o5Kiv0/Vpwkp+SGpovhVdFMpFJpiXwl7NJLQ6a5EFoAy0CYyMFyfw8aXinplNfLetb3iXv1FmXLNkoawEYDw==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5577,10 +5577,10 @@ react-native-linear-gradient@^2.5.4:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
   integrity sha512-FF1NhlerA4uBiS0gFIHa4FBp8/aftv4vPj14Y47lGNkYjSI94tnI6oYO3EfUxXjEyCUPiOVNKZOB9kScyjc5Ew==
 
-react-native-navigation@2.22.3:
-  version "2.22.3"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.22.3.tgz#95744da9b687bc7b32c6d90787ea529ac5e0271d"
-  integrity sha512-sigBRXqDC59SK0o6oc0tpz4BVuG9rppgOrHtS3kxWJVp/pwBM1c6tczkTdt1myJtBjGn16lcLT2S1CDtgFuKUw==
+react-native-navigation@^2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.23.0.tgz#2d0c331842773edbdb5df393986a20d7b84e4874"
+  integrity sha512-3CSwwRrFBe+ASGdueJzS80tf/cGjWdn5oKBmy0kl3wyaZWz7emH77Y3u2n/cnJ39qBvzGEpgeaXLygvGMol5wg==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

@@ -17,10 +17,10 @@ export default async (_, { token }, ctx) => {
   if (authProvider) {
     const tokens = generateTokens(authProvider.userId)
 
-    // Delete previous tokens with same user agent and save new
     await Promise.all([
       // Upload avatar if new one
       ctx.services.facebook.uploadAvatar(authProvider.id, fbUser.id, fbUser.isSilhouette),
+      // Delete previous tokens with same user agent and save new
       ctx.db.AuthToken.delete({
         userAgent,
         userId: authProvider.userId,
