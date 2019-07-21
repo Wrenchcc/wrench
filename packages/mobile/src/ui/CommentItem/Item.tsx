@@ -4,13 +4,14 @@ import { Swipeable } from 'react-native-gesture-handler'
 import { filter } from 'ramda'
 import { useNavigation, SCREENS } from 'navigation'
 import { useMutation, DELETE_COMMENT_MUTATION } from 'gql'
+import LikeComment from 'components/LikeComment'
 import { CommentsQuery } from 'graphql/queries/comment/getComments'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
 import { trash } from 'images'
-import { Base, Content, Row, Reply } from './styles'
+import { Base, Content, Row, Reply, Action } from './styles'
 
 export const { width } = Dimensions.get('window')
 
@@ -138,11 +139,26 @@ function Item({
             </Row>
 
             <Row>
-              <TimeAgo date={createdAt} />
+              <Action>
+                <TimeAgo date={createdAt} />
+              </Action>
+              <Action>
+                {/*<Text medium color="light_grey" fontSize={12}>
+                  1 like
+                </Text>*/}
+              </Action>
               {!first && (
-                <Reply medium fontSize={12} onPress={handleOnReply} disabled={id < 0}>
-                  {t('CommentItem:reply')}
-                </Reply>
+                <Action>
+                  <Reply
+                    medium
+                    fontSize={12}
+                    onPress={handleOnReply}
+                    disabled={id < 0}
+                    color="light_grey"
+                  >
+                    {t('CommentItem:reply')}
+                  </Reply>
+                </Action>
               )}
             </Row>
           </Content>

@@ -5,7 +5,7 @@ import { Icon, Text } from 'ui'
 import { spark, sparkActive } from 'images'
 import { Base } from './styled'
 
-function Like({ post }) {
+function LikePost({ post }) {
   const { t } = useTranslation()
   const [toggleLike] = useMutation(LIKE_POST_MUTATION)
 
@@ -39,9 +39,9 @@ function Like({ post }) {
         style={{ marginRight: 10 }}
         onPress={handleToggleLike}
       />
-      <Text fontSize={15}>{t('Like:like', { count: post.likes.totalCount })}</Text>
+      <Text fontSize={15}>{t('LikePost:like', { count: post.likes.totalCount })}</Text>
     </Base>
   )
 }
 
-export default Like
+export default LikePost

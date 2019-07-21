@@ -41,3 +41,7 @@ export const LoadReplies = styled.View`
   margin-left: 60;
   margin-bottom: 10;
 `
+
+export const Action = styled.View`
+  margin-right: 10;
+`
