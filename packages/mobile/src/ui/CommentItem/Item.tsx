@@ -132,7 +132,7 @@ function Item({
           <Content>
             <Row>
               <Text>
-                <Text fontSize={15} bold>{`${user.fullName} `}</Text>
+                <Text fontSize={15} bold onPress={handleNavigation}>{`${user.fullName} `}</Text>
                 {text && <Text fontSize={15}>{text}</Text>}
               </Text>
             </Row>

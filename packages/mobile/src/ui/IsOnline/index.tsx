@@ -25,7 +25,7 @@ function IsOnline({ badgeSize = 'medium' }) {
         pointerEvents="none"
         style={{
           ...getSize(badgeSize).badge,
-          backgroundColor: '#05b01e',
+          backgroundColor: '#2db22f',
           position: 'absolute',
           zIndex: 10,
         }}

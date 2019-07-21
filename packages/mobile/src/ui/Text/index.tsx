@@ -1,37 +1,16 @@
 import React from 'react'
-import Touchable from 'ui/Touchable'
 import handleParse from './handleParse'
 import { Base } from './styles'
 
-const Text = ({
-  children,
-  numberOfLines = 0,
-  onPress,
-  onLongPress,
-  disabled = false,
-  lineHeight = null,
-  ...props
-}) =>
-  onPress ? (
-    <Touchable onPress={onPress} onLongPress={onLongPress} disabled={disabled}>
-      <Base
-        numberOfLines={numberOfLines}
-        {...props}
-        parse={handleParse}
-        childrenProps={{ style: { lineHeight } }}
-      >
-        {children}
-      </Base>
-    </Touchable>
-  ) : (
-    <Base
-      numberOfLines={numberOfLines}
-      {...props}
-      parse={handleParse}
-      childrenProps={{ style: { lineHeight } }}
-    >
-      {children}
-    </Base>
-  )
+const Text = ({ children, numberOfLines = 0, disabled = false, lineHeight = null, ...props }) => (
+  <Base
+    numberOfLines={numberOfLines}
+    {...props}
+    parse={handleParse}
+    childrenProps={{ style: { lineHeight } }}
+  >
+    {children}
+  </Base>
+)
 
 export default Text
