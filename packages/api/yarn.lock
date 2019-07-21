@@ -14,10 +14,15 @@
   resolved "https://registry.yarnpkg.com/@apollographql/graphql-playground-html/-/graphql-playground-html-1.6.24.tgz#3ce939cb127fb8aaa3ffc1e90dff9b8af9f2e3dc"
   integrity sha512-8GqG48m1XqyXh4mIZrtB5xOhUwSsh1WsrrsaZQOEYYql3YN9DEu9OOSg0ILzXHZo/h2Q74777YE4YzlArQzQEQ==
 
-"@firebase/app-types@0.4.0", "@firebase/app-types@^0.4.0":
+"@firebase/app-types@0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.4.0.tgz#bb2c651f3b275fef549050cff28af752839c75c0"
   integrity sha512-8erNMHc0V26gA6Nj4W9laVrQrXHsj9K2TEM7eL2IQogGSHLL4vet3UNekYfcGQ2cjfvwUjMzd+BNS/8S7GnfiA==
+
+"@firebase/app-types@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.4.1.tgz#7d2988351575278907d2c9f3f1d94b1b892644ff"
+  integrity sha512-wntbTiqX8xr55x6uRqh+BeZbAqOqGC8kD9/Ks1Bjjoo4kLHg69JwtwyU5oL9pDM3WeIiYBHcFSpGS8Kvp+H66Q==
 
 "@firebase/app@^0.4.4":
   version "0.4.8"
@@ -666,10 +671,10 @@ async@^2.0.1:
   dependencies:
     lodash "^4.17.11"
 
-aws-sdk@^2.494.0:
-  version "2.494.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.494.0.tgz#fdfda21009765774a25e592c8cc4f8db51018ce5"
-  integrity sha512-qhNUe4rUbTfVKgDmfoLHpbkcgam2aFn7JtRZlfnH74g+ZOfNLbSj5ooRcLiHimffhXUo3Epj5bPX2tBOQ+BeXQ==
+aws-sdk@^2.496.0:
+  version "2.496.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.496.0.tgz#073bf36ed868891a656a895bf2c548b2d0bc3588"
+  integrity sha512-6xZ//phdvp7/dUZjOdDsorl+xehhkAgxOMber9vUlMO9ckBOeufIvED7oKF0NvSlfG8laHK4JprXKQvhXqVLqA==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"

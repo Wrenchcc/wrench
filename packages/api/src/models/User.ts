@@ -103,6 +103,9 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   public email: string
+
+  @Column({ default: false })
+  public isSilhouette: boolean
 }
 
 export function getUserById(userId) {

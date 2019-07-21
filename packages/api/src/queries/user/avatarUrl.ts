@@ -1,1 +1,9 @@
-export default async ({ id }, __, ctx) => ctx.services.facebook.getAvatarById(id)
+import { getDefaultAvatar, getAvatarById } from '../../utils/avatar'
+
+export default async ({ id, isSilhouette }) => {
+  if (isSilhouette) {
+    return getDefaultAvatar()
+  }
+
+  return getAvatarById(id)
+}
