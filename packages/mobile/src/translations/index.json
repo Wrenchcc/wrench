@@ -4,7 +4,7 @@
       "placeholder": "Add a comment...",
       "post": "Post"
     },
-    "Like": {
+    "LikePost": {
       "like": "{{count}} spark",
       "like_plural": "{{count, humanFormat}} sparks"
     },
@@ -288,7 +288,7 @@
       "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
     },
-    "Like": {
+    "LikePost": {
       "like": "{{count}} gnista",
       "like_plural": "{{count, humanFormat}} gnistor"
     },
