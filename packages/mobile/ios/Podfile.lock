@@ -226,7 +226,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativeNavigation (2.23.0):
+  - ReactNativeNavigation (2.24.0):
     - React
   - RNCAsyncStorage (1.5.1):
     - React
@@ -520,7 +520,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 8c49eca5a6087de968a05b340933b10e3b58169a
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
-  ReactNativeNavigation: e870bf8c01a632c713b95bdb3af4a30db99e2ddc
+  ReactNativeNavigation: d5f033bd9ecdcc98432265f41e47e44f0fdbc5fd
   RNCAsyncStorage: b63d6e83fc629b01df6b624688f17944cea5637f
   RNDeviceInfo: 1215084f45c1059b031c530281442dc7079ccf0a
   RNFirebase: b627e5991bb10bf34cea84806819f98f95f39f8b
