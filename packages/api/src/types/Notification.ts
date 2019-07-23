@@ -16,7 +16,8 @@ export default gql`
   enum NotificationTypes {
     NEW_COMMENT
     NEW_FOLLOWER
-    NEW_LIKE
+    NEW_POST_LIKE
+    NEW_COMMENT_LIKE
     NEW_MENTION
     NEW_REPLY
   }

@@ -10,6 +10,8 @@ import Comment from './types/Comment'
 import Feed from './types/Feed'
 import File from './types/File'
 import Followers from './types/Followers'
+import Invite from './types/Invite'
+import Like from './types/Like'
 import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
@@ -17,7 +19,6 @@ import Project from './types/Project'
 import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
-import Invite from './types/Invite'
 
 // Queries
 import commentQueries from './queries/comment'
@@ -106,6 +107,7 @@ export default makeExecutableSchema({
     File,
     Followers,
     Invite,
+    Like,
     Model,
     Notification,
     Post,

@@ -4,17 +4,19 @@ export default (locale, params) => {
     case 'sv-SE':
       return {
         NEW_COMMENT: `${params.name} kommenterade: ${params.comment} på ditt inlägg.`,
+        NEW_COMMENT_LIKE: `${params.name} gav en gnista på din kommentar.`,
         NEW_FOLLOWER: `${params.name} följer nu ditt projekt: ${params.project} .`,
-        NEW_LIKE: `${params.name} gav en gnista på ditt inlägg.`,
         NEW_MENTION: `${params.name} nämnde dig i en kommentar: ${params.comment} .`,
+        NEW_POST_LIKE: `${params.name} gav en gnista på ditt inlägg.`,
         NEW_REPLY: `${params.name} svarade på din kommentar: ${params.comment} .`,
       }
     default:
       return {
         NEW_COMMENT: `${params.name} commented: ${params.comment} on your post.`,
+        NEW_COMMENT_LIKE: `${params.name} sparked your comment.`,
         NEW_FOLLOWER: `${params.name} started following your project: ${params.project}.`,
-        NEW_LIKE: `${params.name} sparked your post.`,
         NEW_MENTION: `${params.name} mentioned you in a comment: ${params.comment}.`,
+        NEW_POST_LIKE: `${params.name} sparked your post.`,
         NEW_REPLY: `${params.name} replied to your comment: ${params.comment}.`,
       }
   }

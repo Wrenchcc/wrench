@@ -37,7 +37,7 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
       const cursor = encodeCursor(id, createdAt)
 
       switch (type) {
-        case NOTIFICATION_TYPES.NEW_LIKE:
+        case NOTIFICATION_TYPES.NEW_POST_LIKE:
           const post = await ctx.db.Post.findOne(typeId)
 
           if (!post) {

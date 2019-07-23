@@ -6,17 +6,18 @@ import {
   BaseEntity,
   CreateDateColumn,
   UpdateDateColumn,
+  Column,
 } from 'typeorm'
+import { LikeTypes } from './enums'
 import User from './User'
-import Post from './Post'
 
 @Entity('likes')
 export default class Likes extends BaseEntity {
-  public static async isLiked(userId, postId) {
+  public static async isLiked(userId, typeId) {
     const LikesRepo = Likes.getRepository()
     const isLiked = await LikesRepo.findOne({
       where: {
-        postId,
+        typeId,
         userId,
       },
     })
@@ -27,16 +28,15 @@ export default class Likes extends BaseEntity {
   @PrimaryColumn('uuid')
   public userId: string
 
-  @PrimaryColumn('uuid')
-  public postId: string
-
   @ManyToOne(() => User)
   @JoinColumn()
   public user: User
 
-  @ManyToOne(() => Post)
-  @JoinColumn()
-  public post: Post
+  @Column('enum', { enum: LikeTypes })
+  public type: LikeTypes
+
+  @PrimaryColumn('uuid')
+  public typeId: string
 
   @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date

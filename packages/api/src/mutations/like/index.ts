@@ -1,7 +1,9 @@
-import like from './like'
+import likeComment from './likeComment'
+import likePost from './likePost'
 
 export default {
   Mutation: {
-    like,
+    likeComment,
+    likePost,
   },
 }

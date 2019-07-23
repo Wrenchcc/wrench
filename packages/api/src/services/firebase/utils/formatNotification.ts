@@ -36,10 +36,20 @@ export default function formatNotification(type, data, user, locale) {
           },
         }),
       }
-    case NOTIFICATION_TYPES.NEW_LIKE:
+    case NOTIFICATION_TYPES.NEW_POST_LIKE:
       return {
         body: translate({
-          key: NOTIFICATION_TYPES.NEW_LIKE,
+          key: NOTIFICATION_TYPES.NEW_POST_LIKE,
+          locale,
+          params: {
+            name: user.fullName,
+          },
+        }),
+      }
+    case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
+      return {
+        body: translate({
+          key: NOTIFICATION_TYPES.NEW_COMMENT_LIKE,
           locale,
           params: {
             name: user.fullName,

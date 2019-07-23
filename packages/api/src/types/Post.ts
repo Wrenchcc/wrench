@@ -30,11 +30,6 @@ export default gql`
     isOwner: Boolean
   }
 
-  type Likes {
-    totalCount: Int
-    isLiked: Boolean
-  }
-
   type PostConnection {
     totalCount: Int
     pageInfo: PageInfo!
@@ -66,9 +61,9 @@ export default gql`
   }
 
   extend type Mutation {
-    like(id: ID!): Post
     deletePost(id: ID!): Post
     addPost(input: PostInput!): Post
     editPost(id: ID!, input: EditPostInput!): Post
+    likePost(id: ID!): Post
   }
 `
