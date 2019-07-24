@@ -7,7 +7,7 @@ import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends NavigationActivity {
   @Override
-  // https://github.com/wix/react-native-navigation/issues/3102
+  // NOTE: https://github.com/wix/react-native-navigation/issues/3102
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);

@@ -1,5 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+/* NOTE: FastImage - https://github.com/DylanVann/react-native-fast-image/issues/516#issuecomment-512047577 */
+project.ext {
+    excludeAppGlideModule = true
+    glideVersion = "4.9.0"
+}
+
 buildscript {
     ext {
         buildToolsVersion = "28.0.3"

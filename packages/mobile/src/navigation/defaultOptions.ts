@@ -1,35 +1,7 @@
 import { COLORS } from 'ui/constants'
-import { hasNotch, isAndroid } from 'utils/platform'
-
-const customAnimations = isAndroid
-  ? {
-      animations: {
-        pop: {
-          content: {
-            x: {
-              duration: 280,
-              from: 0,
-              interpolation: 'decelerate',
-              to: 500,
-            },
-          },
-        },
-        push: {
-          content: {
-            x: {
-              duration: 280,
-              from: 500,
-              interpolation: 'accelerate',
-              to: 0,
-            },
-          },
-        },
-      },
-    }
-  : {}
+import { hasNotch } from 'utils/platform'
 
 export default {
-  ...customAnimations,
   bottomTab: {
     iconInsets: {
       bottom: hasNotch ? -20 : -10,
