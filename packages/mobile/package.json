@@ -39,7 +39,7 @@
     "react-i18next": "^10.11.4",
     "react-native": "v0.59.10",
     "react-native-actionsheet": "^2.4.2",
-    "react-native-camera": "^3.0.0",
+    "react-native-camera": "2.11.1",
     "react-native-config": "^0.11.7",
     "react-native-device-info": "^2.3.0",
     "react-native-fast-image": "^6.1.1",
