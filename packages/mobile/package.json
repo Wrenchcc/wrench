@@ -41,7 +41,7 @@
     "react-native-actionsheet": "^2.4.2",
     "react-native-camera": "^3.0.0",
     "react-native-config": "^0.11.7",
-    "react-native-device-info": "^2.2.2",
+    "react-native-device-info": "^2.3.0",
     "react-native-fast-image": "^6.1.1",
     "react-native-fbsdk": "^0.10.1",
     "react-native-firebase": "^5.5.5",
@@ -61,12 +61,11 @@
     "react-native-webview": "^5.12.1",
     "styled-components": "beta",
     "url": "^0.11.0",
-    "zustand": "^1.0.2"
+    "zustand": "^1.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
-    "@react-native-community/cli": "^2.7.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^4.1.1",

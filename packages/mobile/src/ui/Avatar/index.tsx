@@ -15,8 +15,10 @@ function Avatar({
   style = {},
 }) {
   return (
-    <View style={{ position: 'relative', height: size, width: size }}>
+    <View style={{ height: size, width: size }}>
       <Touchable onPress={onPress} style={style} disabled={disabled}>
+        {isOnline && <IsOnline badgeSize={badgeSize} />}
+
         <Image
           placeholderDensity={3}
           source={{ uri }}
@@ -25,7 +27,6 @@ function Avatar({
           borderRadius={size / 2}
           priority={IMAGE_PRIORITY.HIGH}
         />
-        {isOnline && <IsOnline badgeSize={badgeSize} />}
       </Touchable>
     </View>
   )

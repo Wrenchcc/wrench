@@ -4,23 +4,23 @@ import { View } from 'react-native'
 const getSize = size => ({
   background: {
     borderRadius: size === 'medium' ? 12 : 10,
-    bottom: -1,
     height: size === 'medium' ? 12 : 10,
-    right: -1,
+    right: -2,
+    top: -2,
     width: size === 'medium' ? 12 : 10,
   },
   badge: {
     borderRadius: size === 'medium' ? 8 : 6,
-    bottom: 1,
     height: size === 'medium' ? 8 : 6,
-    right: 1,
+    right: 0,
+    top: 0,
     width: size === 'medium' ? 8 : 6,
   },
 })
 
 function IsOnline({ badgeSize = 'medium' }) {
   return (
-    <View>
+    <View style={{ zIndex: 1000 }}>
       <View
         pointerEvents="none"
         style={{

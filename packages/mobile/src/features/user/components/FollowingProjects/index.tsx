@@ -32,7 +32,7 @@ function FollowingProjects({
   return (
     <Base>
       <Title>{t('FollowingProjects:title')}</Title>
-      <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
+      <Description>{t('FollowingProjects:description', { name: user.fullName })}</Description>
 
       <InfiniteList
         data={projects}

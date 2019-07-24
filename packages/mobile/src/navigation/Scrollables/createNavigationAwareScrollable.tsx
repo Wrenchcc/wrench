@@ -15,6 +15,20 @@ const BorderSeparator = () => <Border />
 
 const keyExtractor = ({ node }) => node.id
 
+function getNode(ref) {
+  if (ref.current === null) {
+    return null
+  }
+
+  if (ref.current.getScrollResponder) {
+    return ref.current.getScrollResponder()
+  } else if (ref.current.getNode) {
+    return ref.current.getNode()
+  } else {
+    return ref.current
+  }
+}
+
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(
     {
@@ -49,6 +63,8 @@ export default function createNavigationAwareScrollable(Component) {
 
     // Scroll to top
     useEffect(() => {
+      const scrollableNode = getNode(scrollRef)
+
       const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
         ({ selectedTabIndex, unselectedTabIndex }) => {
           if (
@@ -60,7 +76,9 @@ export default function createNavigationAwareScrollable(Component) {
             currentComponentName === SCREENS.NOTIFICATIONS ||
             currentComponentName === SCREENS.ME
           ) {
-            scrollRef.current.getNode().scrollToOffset({ offset: initialScroll })
+            if (scrollableNode.scrollToOffset != null) {
+              scrollableNode.scrollToOffset({ offset: initialScroll })
+            }
           }
         }
       )
