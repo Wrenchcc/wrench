@@ -60,13 +60,13 @@ function onPress(data, navigate) {
         id: data.project.id,
         project: data.project,
       })
-    case NOTIFICATION_TYPES.NEW_LIKE:
+    case NOTIFICATION_TYPES.NEW_POST_LIKE:
+    case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
       return navigate(SCREENS.POST, {
         postId: data.post.id,
       })
     case NOTIFICATION_TYPES.NEW_MENTION:
     case NOTIFICATION_TYPES.NEW_COMMENT:
-    case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
     case NOTIFICATION_TYPES.NEW_REPLY:
       return navigate(SCREENS.POST, {
         commentId: data.comment.id,
