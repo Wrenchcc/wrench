@@ -1,5 +1,4 @@
 import { graphql } from 'react-apollo'
-import { filter } from 'ramda'
 import gql from 'graphql-tag'
 import { track, events } from 'utils/analytics'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
@@ -26,13 +25,13 @@ const deletePostOptions = {
         variables: {
           id,
         },
-        update: (proxy, { data: { deletePost } }) => {
+        update: (cache, { data: { deletePost } }) => {
           try {
             // Feed
-            const feedData = proxy.readQuery({ query: FeedQuery })
-            const feedEdges = filter(edge => edge.node.id !== id, feedData.feed.posts.edges)
+            const feedData = cache.readQuery({ query: FeedQuery })
+            const feedEdges = feedData.feed.posts.edges.filter(edge => edge.node.id !== id)
 
-            proxy.writeQuery({
+            cache.writeQuery({
               query: FeedQuery,
               data: {
                 ...feedData,
@@ -51,13 +50,10 @@ const deletePostOptions = {
 
           // Recent posts
           try {
-            const recentPostsData = proxy.readQuery({ query: RecentPostsQuery })
-            const recentPostsEdges = filter(
-              edge => edge.node.id !== id,
-              recentPostsData.posts.edges
-            )
+            const recentPostsData = cache.readQuery({ query: RecentPostsQuery })
+            const recentPostsEdges = recentPostsData.posts.edges.filter(edge => edge.node.id !== id)
 
-            proxy.writeQuery({
+            cache.writeQuery({
               query: RecentPostsQuery,
               data: {
                 ...recentPostsData,
@@ -73,10 +69,10 @@ const deletePostOptions = {
 
           // Current user
           try {
-            const userData = proxy.readQuery({ query: CurrentUserProfileQuery })
-            const userPostsEdges = filter(edge => edge.node.id !== id, userData.user.posts.edges)
+            const userData = cache.readQuery({ query: CurrentUserProfileQuery })
+            const userPostsEdges = userData.user.posts.edges.filter(edge => edge.node.id !== id)
 
-            proxy.writeQuery({
+            cache.writeQuery({
               query: CurrentUserProfileQuery,
               data: {
                 ...userData,
@@ -95,7 +91,7 @@ const deletePostOptions = {
 
           // Project
           //   try {
-          //     const projectData = proxy.readQuery({
+          //     const projectData = cache.readQuery({
           //       query: ProjectBySlugQuery,
           //       variables: {
           //         slug: deletePost.project.slug,
@@ -107,7 +103,7 @@ const deletePostOptions = {
           //       projectData.project.posts.edges
           //     )
           //
-          //     proxy.writeQuery({
+          //     cache.writeQuery({
           //       query: ProjectBySlugQuery,
           //       data: {
           //         ...projectData,

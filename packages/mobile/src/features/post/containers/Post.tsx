@@ -42,6 +42,7 @@ function PostContainer({
       highlightId={highlightId}
       onReply={handleOnReply}
       fetchMoreReplies={fetchMoreReplies}
+      postId={postId}
     />
   )
 

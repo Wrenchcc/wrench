@@ -1,6 +1,5 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { filter } from 'ramda'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
 import { removeSelectedProjectId } from 'store/post'
 import { logError } from 'utils/sentry'
@@ -21,7 +20,7 @@ const deleteProjectOptions = {
         update: cache => {
           try {
             const data = cache.readQuery({ query: CurrentUserQuery })
-            const edges = filter(edge => edge.node.id !== id, data.user.projects.edges)
+            const edges = data.user.projects.edges.filter(edge => edge.node.id !== id)
 
             const user = {
               ...data,

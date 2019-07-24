@@ -10,6 +10,10 @@ export default gql`
     permissions {
       isOwner
     }
+    likes {
+      isLiked
+      totalCount
+    }
     user {
       ...userInfo
     }

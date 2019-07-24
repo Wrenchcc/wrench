@@ -64,6 +64,5 @@ export default gql`
     deletePost(id: ID!): Post
     addPost(input: PostInput!): Post
     editPost(id: ID!, input: EditPostInput!): Post
-    likePost(id: ID!): Post
   }
 `

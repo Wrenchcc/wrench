@@ -8,6 +8,7 @@ import MediaItem from '../Item'
 
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
+const FIRST_PAGE_SIZE = 12
 
 const keyExtractor = item => item.uri
 
@@ -31,7 +32,7 @@ function List({ album }) {
         const result = await MediaLibrary.getAssetsAsync({
           after,
           album,
-          first: PAGE_SIZE,
+          first: after ? PAGE_SIZE : FIRST_PAGE_SIZE,
         })
 
         setAssets(p => p.concat(result.assets))
@@ -84,6 +85,7 @@ function List({ album }) {
   }, [hasNextPage])
 
   const renderLoadingComponent = () => null
+  // TODO
   //  (
   //   <View style={{ flex: 1, justifyContent: 'center' }}>
   //     <ActivityIndicator color="white" />

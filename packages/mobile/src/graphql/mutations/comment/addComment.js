@@ -37,18 +37,23 @@ const addCommentOptions = {
             commentId,
             postId,
             text,
+            likes: {
+              isLiked: false,
+              totalCount: 0,
+              __typename: 'Likes',
+            },
             permissions: {
               isOwner: true,
               __typename: 'CommentPermissions',
             },
           },
         },
-        update: (proxy, { data: { addComment } }) => {
-          const { user } = proxy.readQuery({ query: CurrentUserQuery })
+        update: (cache, { data: { addComment } }) => {
+          const { user } = cache.readQuery({ query: CurrentUserQuery })
 
           // Post
           try {
-            const data = proxy.readFragment({
+            const data = cache.readFragment({
               id: `Post:${postId}`,
               fragment: postInfo,
               fragmentName: 'postInfo',
@@ -67,7 +72,7 @@ const addCommentOptions = {
               data.comments.edges
             )
 
-            proxy.writeFragment({
+            cache.writeFragment({
               id: `Post:${postId}`,
               fragment: postInfo,
               fragmentName: 'postInfo',
@@ -89,7 +94,7 @@ const addCommentOptions = {
             // Is reply
             if (commentId) {
               // Get comment fragment
-              const data = proxy.readFragment({
+              const data = cache.readFragment({
                 id: `Comment:${commentId}`,
                 fragment: commentInfo,
                 fragmentName: 'commentInfo',
@@ -101,6 +106,11 @@ const addCommentOptions = {
                   node: {
                     id: optimisticId(),
                     createdAt: new Date().toISOString(),
+                    likes: {
+                      isLiked: false,
+                      totalCount: 0,
+                      __typename: 'Likes',
+                    },
                     permissions: {
                       isOwner: true,
                       __typename: 'CommentPermissions',
@@ -115,7 +125,7 @@ const addCommentOptions = {
               )
 
               // Add to top of replies
-              proxy.writeFragment({
+              cache.writeFragment({
                 id: `Comment:${commentId}`,
                 fragment: commentInfo,
                 fragmentName: 'commentInfo',
@@ -129,7 +139,7 @@ const addCommentOptions = {
                 },
               })
             } else {
-              const data = proxy.readQuery({
+              const data = cache.readQuery({
                 query: CommentsQuery,
                 variables: {
                   postId,
@@ -146,6 +156,11 @@ const addCommentOptions = {
                       node: {
                         id: optimisticId(),
                         createdAt: new Date().toISOString(),
+                        likes: {
+                          isLiked: false,
+                          totalCount: 0,
+                          __typename: 'Likes',
+                        },
                         permissions: {
                           isOwner: true,
                           __typename: 'CommentPermissions',
@@ -170,7 +185,7 @@ const addCommentOptions = {
                 },
               }
 
-              proxy.writeQuery({
+              cache.writeQuery({
                 query: CommentsQuery,
                 variables: {
                   postId,

@@ -1,6 +1,6 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - BVLinearGradient (2.5.4):
+  - BVLinearGradient (2.5.5):
     - React
   - Crashlytics (3.13.4):
     - Fabric (~> 1.10.2)
@@ -226,7 +226,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativeNavigation (2.24.0):
+  - ReactNativeNavigation (2.25.0):
     - React
   - RNCAsyncStorage (1.5.1):
     - React
@@ -483,7 +483,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
+  BVLinearGradient: 443c2260a0757fbf0513a64e792abc2017db9a06
   Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXAppLoaderProvider: 8f2c04a0a8d9be91f7c37c2b8824077ee5d4bc01
@@ -520,7 +520,7 @@ SPEC CHECKSUMS:
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 8c49eca5a6087de968a05b340933b10e3b58169a
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
-  ReactNativeNavigation: d5f033bd9ecdcc98432265f41e47e44f0fdbc5fd
+  ReactNativeNavigation: ff6b3f28cd84412aaa53ebaf459a21fc33936662
   RNCAsyncStorage: b63d6e83fc629b01df6b624688f17944cea5637f
   RNDeviceInfo: 1215084f45c1059b031c530281442dc7079ccf0a
   RNFirebase: b627e5991bb10bf34cea84806819f98f95f39f8b

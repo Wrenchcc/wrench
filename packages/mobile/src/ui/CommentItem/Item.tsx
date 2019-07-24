@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useRef } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
-import { filter } from 'ramda'
 import { useNavigation, SCREENS } from 'navigation'
 import { useMutation, DELETE_COMMENT_MUTATION } from 'gql'
 import LikeComment from 'components/LikeComment'
@@ -44,6 +43,8 @@ function Item({
   text,
   user,
   permissions,
+  likes,
+  postId,
 }) {
   const { navigate } = useNavigation()
   const animatedValue = useRef(new Animated.Value(0))
@@ -67,20 +68,22 @@ function Item({
   )
 
   const [deleteComment] = useMutation(DELETE_COMMENT_MUTATION, {
-    // update: cache => {
-    //   const data = cache.readQuery({ query: CommentsQuery })
-    //   const edges = filter(edge => edge.node.id !== id, data.comments.edges)
-    // cache.writeQuery({
-    //   data: {
-    //     ...data,
-    //     comments: {
-    //       ...data.comments,
-    //       edges,
-    //     },
-    //   },
-    //   query: CommentsQuery,
-    // })
-    // },
+    update: cache => {
+      const data = cache.readQuery({ query: CommentsQuery, variables: { postId } })
+      const edges = data.comments.edges.filter(edge => edge.node.id !== commentOrReplyId)
+
+      cache.writeQuery({
+        data: {
+          ...data,
+          comments: {
+            ...data.comments,
+            edges,
+          },
+        },
+        query: CommentsQuery,
+        variables: { postId },
+      })
+    },
   })
 
   const handleDeleteComment = useCallback(
@@ -118,7 +121,7 @@ function Item({
     <Swipeable
       friction={2}
       rightThreshold={100}
-      renderRightActions={false && permissions.isOwner && renderRightAction}
+      renderRightActions={!first && permissions.isOwner && renderRightAction}
       onSwipeableRightOpen={handleDeleteComment}
     >
       <Animated.View style={{ backgroundColor }}>
@@ -142,11 +145,13 @@ function Item({
               <Action>
                 <TimeAgo date={createdAt} />
               </Action>
-              <Action>
-                {/*<Text medium color="light_grey" fontSize={12}>
-                  1 like
-                </Text>*/}
-              </Action>
+              {!first && likes.totalCount > 0 && (
+                <Action>
+                  <Text medium color="light_grey" fontSize={12}>
+                    {t('CommentItem:like', { count: likes.totalCount })}
+                  </Text>
+                </Action>
+              )}
               {!first && (
                 <Action>
                   <Reply
@@ -162,6 +167,8 @@ function Item({
               )}
             </Row>
           </Content>
+
+          {!first && <LikeComment comment={{ id, text, user, permissions, likes }} />}
         </Base>
       </Animated.View>
     </Swipeable>

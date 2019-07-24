@@ -17,7 +17,7 @@ function LikePost({ post }) {
         },
         optimisticResponse: {
           __typename: 'Mutation',
-          like: {
+          likePost: {
             __typename: 'Post',
             ...post,
             likes: {

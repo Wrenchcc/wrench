@@ -28,8 +28,7 @@ const keyExtractor = (item, index) => item + index
 function Settings({ section }) {
   const { t } = useTranslation()
 
-  // TODO: only load when needed (Notifications)
-  const { data, loading } = useQuery(CURRENT_USER_SETTINGS_QUERY)
+  const { data } = useQuery(CURRENT_USER_SETTINGS_QUERY)
   const [toggleNotificationSettings] = useMutation(TOGGLE_NOTIFICATION_SETTINGS_MUTATION)
 
   const handleToggleNotificationSettings = useCallback(
@@ -55,11 +54,7 @@ function Settings({ section }) {
     []
   )
 
-  if (loading) {
-    return null
-  }
-
-  const settings = data.user.settings
+  const settings = data.user && data.user.settings
 
   return (
     <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>

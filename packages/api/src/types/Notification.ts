@@ -11,6 +11,13 @@ export default gql`
     isSeen: Boolean!
     createdAt: Date!
     updatedAt: Date!
+
+    filesConnection(
+      first: Int = 10
+      after: String
+      reverse: Boolean
+      type: FileType
+    ): FileConnection
   }
 
   enum NotificationTypes {

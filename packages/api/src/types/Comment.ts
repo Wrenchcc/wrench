@@ -42,7 +42,6 @@ export default gql`
     addComment(postId: ID!, commentId: ID, input: CommentInput!): Comment
     editComment(id: ID!, input: CommentInput!): Comment
     deleteComment(id: ID!): Boolean
-    likeComment(id: ID!): Comment
   }
 
   extend type Query {

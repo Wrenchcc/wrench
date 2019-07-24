@@ -77,6 +77,7 @@ export default isAuthenticated(async (_, { after, before, last = 10, first = 10 
           }
         case NOTIFICATION_TYPES.NEW_MENTION:
         case NOTIFICATION_TYPES.NEW_COMMENT:
+        case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
         case NOTIFICATION_TYPES.NEW_REPLY:
           const comment = await ctx.loaders.comment.load(typeId)
 

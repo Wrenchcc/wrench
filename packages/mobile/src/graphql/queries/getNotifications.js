@@ -32,6 +32,14 @@ export const NotificationsQuery = gql`
             text
             postId
           }
+          files: filesConnection(type: IMAGE, first: 1) {
+            edges {
+              node {
+                id
+                uri
+              }
+            }
+          }
         }
       }
     }

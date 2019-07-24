@@ -5,4 +5,9 @@ export default gql`
     totalCount: Int
     isLiked: Boolean
   }
+
+  extend type Mutation {
+    likePost(id: ID!): Post
+    likeComment(id: ID!): Comment
+  }
 `

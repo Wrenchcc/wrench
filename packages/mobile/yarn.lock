@@ -1392,10 +1392,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/cli@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.7.0.tgz#d392b6f6092c7fc8da05982f38bd626db4799a10"
-  integrity sha512-53S+z7YyMA1WMigQP7oEgSUIJkDp8SxE7MCXQXosnVRkPuPKkPoL/W6KY/wQZa7dES4SdlkrFbc4AgRz/R+B3Q==
+"@react-native-community/cli@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-2.7.1.tgz#ae83ddc2f2af146654555a2627ce0d629ad6ab64"
+  integrity sha512-k/MQUqNt5FJFQ5J+syRWAmnR0Sdh+LnSsMqIq77GGj/B0sc7abNrZbycvlHzpaoOMXUbVg6Q/ePhpT2J031kUw==
   dependencies:
     "@hapi/joi" "^15.0.3"
     "@react-native-community/cli-platform-android" "^2.7.0"
@@ -5572,15 +5572,15 @@ react-native-gesture-handler@^1.3.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-linear-gradient@^2.5.4:
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
-  integrity sha512-FF1NhlerA4uBiS0gFIHa4FBp8/aftv4vPj14Y47lGNkYjSI94tnI6oYO3EfUxXjEyCUPiOVNKZOB9kScyjc5Ew==
+react-native-linear-gradient@^2.5.5:
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.5.tgz#efea1f862bde939f6e073a51b4b3ca9e0bb62437"
+  integrity sha512-BoaRqWtQ0Powxrz/4cdkzLQIyV/bwMXCZ+S7fGKSFZr/NtKrOpb9vvyG+d45ufnkuFPbWIqUflFvuLOpf067ag==
 
-react-native-navigation@^2.24.0:
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.24.0.tgz#4661046f5e8808adb9a68e01b2a34d3e99a51fce"
-  integrity sha512-MpXrNaxU/4Mvyf06kRWpmk2kLG0BAgRGe/KphburxaZEqOEPeDjFwqtYb8vR105jJAaxHPegK+BjfFxLqQdXaw==
+react-native-navigation@^2.25.0:
+  version "2.25.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.25.0.tgz#d39fcce0839286e45664671e8724882931322933"
+  integrity sha512-FN7hw1t09J1g+3jwueB29Hon9L0olbSaFzUlbBn+89QfrwQj6NVnysn8ZVsGawlpP9OrihOHCxcQ9fb+iFmFlQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

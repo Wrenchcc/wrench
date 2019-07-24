@@ -63,6 +63,10 @@ const LoadMoreReplies = gql`
             permissions {
               isOwner
             }
+            likes {
+              isLiked
+              totalCount
+            }
             user {
               ...userInfo
             }

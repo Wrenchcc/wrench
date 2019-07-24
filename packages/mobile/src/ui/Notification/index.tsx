@@ -1,10 +1,12 @@
 import React, { useRef, useCallback } from 'react'
-import { Dimensions, View, Animated, Image } from 'react-native'
+import { Dimensions, View, Animated, Image as RNImage } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Swipeable } from 'react-native-gesture-handler'
 import { Transitioning } from 'react-native-reanimated'
+import { pathOr } from 'ramda'
 import { useNavigation, SCREENS } from 'navigation'
 import Avatar from 'ui/Avatar'
+import Image from 'ui/Image'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
 import { COLORS } from 'ui/constants'
@@ -25,8 +27,10 @@ function description(data, t) {
       return `${t('Notification:reply')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_MENTION:
       return `${t('Notification:mention')}: "${data.comment.text}"`
-    case NOTIFICATION_TYPES.NEW_LIKE:
-      return t('Notification:like')
+    case NOTIFICATION_TYPES.NEW_POST_LIKE:
+      return t('Notification:postLike')
+    case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
+      return t('Notification:commentLike')
     default:
       return null
   }
@@ -42,7 +46,7 @@ function renderRightAction(progress) {
     <Animated.View style={{ width, transform: [{ translateX }] }}>
       <View style={{ flex: 1, justifyContent: 'center', backgroundColor: COLORS.RED }}>
         <View style={{ paddingLeft: 30 }}>
-          <Image source={trash} />
+          <RNImage source={trash} />
         </View>
       </View>
     </Animated.View>
@@ -62,6 +66,7 @@ function onPress(data, navigate) {
       })
     case NOTIFICATION_TYPES.NEW_MENTION:
     case NOTIFICATION_TYPES.NEW_COMMENT:
+    case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
     case NOTIFICATION_TYPES.NEW_REPLY:
       return navigate(SCREENS.POST, {
         commentId: data.comment.id,
@@ -75,6 +80,8 @@ function onPress(data, navigate) {
 function Notification({ data, deleteNotification }) {
   const transitionRef = useRef(null)
   const { t } = useTranslation()
+
+  const image = pathOr(false, ['files', 'edges', 0, 'node'], data)
 
   const { navigate } = useNavigation()
 
@@ -111,22 +118,19 @@ function Notification({ data, deleteNotification }) {
           <Content>
             <Text onPress={navigateToUser}>{data.user.fullName}</Text>
             <Bottom>
-              <View style={{ marginRight: 50 }}>
-                <Text
-                  color="light_grey"
-                  fontSize={15}
-                  lineHeight={22}
-                  onPress={handleOnPress}
-                  numberOfLines={2}
-                >
-                  {description(data, t)}
-                </Text>
-              </View>
-              <View style={{ marginLeft: 'auto' }}>
-                <TimeAgo date={data.createdAt} fontSize={15} />
-              </View>
+              <Text
+                color="light_grey"
+                fontSize={15}
+                lineHeight={22}
+                onPress={handleOnPress}
+                numberOfLines={2}
+              >
+                {description(data, t)}. <TimeAgo date={data.createdAt} fontSize={15} />
+              </Text>
             </Bottom>
           </Content>
+
+          <Image source={image} width={40} height={40} />
         </Base>
       </Swipeable>
     </Transitioning.View>

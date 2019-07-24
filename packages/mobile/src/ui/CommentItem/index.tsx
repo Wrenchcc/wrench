@@ -4,7 +4,7 @@ import Text from 'ui/Text'
 import Item from './Item'
 import { LoadReplies, Border } from './styles'
 
-function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
+function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId, postId }) {
   const { t } = useTranslation()
   const replies = data.node.replies
   const commentId = data.node.id
@@ -16,7 +16,7 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
 
   return replies ? (
     <>
-      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} />
+      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} postId={postId} />
       {replies.edges.map(({ node }) => (
         <Item
           key={node.id}
@@ -26,6 +26,7 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
           t={t}
           onReply={onReply}
           highlightId={highlightId}
+          postId={postId}
         />
       ))}
 
@@ -41,7 +42,14 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId }) {
       )}
     </>
   ) : (
-    <Item {...data.node} t={t} first={first} onReply={onReply} highlightId={highlightId} />
+    <Item
+      {...data.node}
+      t={t}
+      first={first}
+      onReply={onReply}
+      highlightId={highlightId}
+      postId={postId}
+    />
   )
 }
 

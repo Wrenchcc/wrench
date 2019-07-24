@@ -12,8 +12,8 @@ const markAllNotificationsSeenOptions = {
   props: ({ mutate }) => ({
     markAllNotificationsSeen: () =>
       mutate({
-        update: store => {
-          const data = store.readQuery({ query: NotificationsQuery })
+        update: cache => {
+          const data = cache.readQuery({ query: NotificationsQuery })
 
           const notifications = {
             ...data,
@@ -23,7 +23,7 @@ const markAllNotificationsSeenOptions = {
             },
           }
 
-          store.writeQuery({
+          cache.writeQuery({
             query: NotificationsQuery,
             data: notifications,
           })

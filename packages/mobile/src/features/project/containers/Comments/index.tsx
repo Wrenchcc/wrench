@@ -47,7 +47,12 @@ function Comments({
   }
 
   const renderItem = ({ item }) => (
-    <CommentItem data={item} onReply={handleOnReply} fetchMoreReplies={fetchMoreReplies} />
+    <CommentItem
+      data={item}
+      onReply={handleOnReply}
+      fetchMoreReplies={fetchMoreReplies}
+      postId={post.id}
+    />
   )
 
   return (
