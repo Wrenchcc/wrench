@@ -82,24 +82,25 @@ export const originResponse: Handler = async (
   cb(null, resizeResult)
 }
 
-const resizeS3Image = ({ s3Object, query, result }) => s3Object
-  .then(data => data.Body)
-  .then(Buffer.from)
-  .then(resize(query))
-  .then(buffer => {
-    // response resized image
-    const encoding = 'base64'
-    result.body = buffer.toString(encoding)
-    result.bodyEncoding = encoding
-    if (query.webp) {
-      result.headers['content-type'] = [{ key: 'Content-Type', value: 'image/webp' }]
-    }
-    return result
-  })
-  .catch(err => {
-    result.status = '403'
-    result.headers['content-type'] = [{ key: 'Content-Type', value: 'text/plain' }]
-    result.body = err.toString()
+const resizeS3Image = ({ s3Object, query, result }) =>
+  s3Object
+    .then(data => data.Body)
+    .then(Buffer.from)
+    .then(resize(query))
+    .then(buffer => {
+      // response resized image
+      const encoding = 'base64'
+      result.body = buffer.toString(encoding)
+      result.bodyEncoding = encoding
+      if (query.webp) {
+        result.headers['content-type'] = [{ key: 'Content-Type', value: 'image/webp' }]
+      }
+      return result
+    })
+    .catch(err => {
+      result.status = '403'
+      result.headers['content-type'] = [{ key: 'Content-Type', value: 'text/plain' }]
+      result.body = err.toString()
 
-    return result
-  })
+      return result
+    })

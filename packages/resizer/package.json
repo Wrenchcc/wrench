@@ -1,5 +1,5 @@
 {
-  "name": "image-resizer",
+  "name": "@wrench/resizer",
   "version": "1.0.0",
   "main": "handler.js",
   "private": true,

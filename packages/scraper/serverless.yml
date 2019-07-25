@@ -1,0 +1,40 @@
+service: '@wrench/scraper'
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  bikeexif:
+    handler: src/providers/bikeexif.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  pipeburn:
+    handler: src/providers/pipeburn.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  silodrome:
+    handler: src/providers/silodrome.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  bikebound:
+    handler: src/providers/bikebound.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  thebikeshed:
+    handler: src/providers/thebikeshed.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  returnofthecaferacers:
+    handler: src/providers/returnofthecaferacers.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)

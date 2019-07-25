@@ -1,0 +1,21 @@
+{
+  "name": "@wrench/scraper",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "serverless deploy --stage production --aws-profile wrench-api",
+    "local": "serverless invoke local --function scraper"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "serverless": "1.48.4",
+    "serverless-plugin-typescript": "^1.1.9",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "rss-parser": "^3.7.2"
+  }
+}
