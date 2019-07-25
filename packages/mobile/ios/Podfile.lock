@@ -228,7 +228,7 @@ PODS:
     - React/RCTBlob
   - ReactNativeNavigation (2.22.3):
     - React
-  - RNCAsyncStorage (1.5.1):
+  - RNCAsyncStorage (1.6.1):
     - React
   - RNDeviceInfo (2.3.0):
     - React
@@ -521,7 +521,7 @@ SPEC CHECKSUMS:
   react-native-video: 8c49eca5a6087de968a05b340933b10e3b58169a
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
   ReactNativeNavigation: 05945cfd4610260b1e6d46a07222dda6223959dd
-  RNCAsyncStorage: b63d6e83fc629b01df6b624688f17944cea5637f
+  RNCAsyncStorage: 2e2e3feb9bdadc752a026703d8c4065ca912e75a
   RNDeviceInfo: 65106cc87ad6f6f71ef2ecc667f4c59b840888e2
   RNFirebase: b627e5991bb10bf34cea84806819f98f95f39f8b
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
