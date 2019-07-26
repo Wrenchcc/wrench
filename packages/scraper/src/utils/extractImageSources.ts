@@ -1,6 +1,5 @@
-const PATTERN = /[^"\'=\s]+\.(jpe?g|png|gif)/g
+const PATTERN = /(?<=<img[^<]+?src=\")[^\"]+/g
 
 export default function extractImageSources(text) {
-  const images = text.match(PATTERN)
-  console.log(images.sort())
+  return text.match(PATTERN)
 }

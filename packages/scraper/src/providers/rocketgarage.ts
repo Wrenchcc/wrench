@@ -3,14 +3,14 @@ import extractImageSources from '../utils/extractImageSources'
 
 const parser = new Parser()
 
-const url = 'https://silodrome.com/feed/'
+const url = 'http://feeds.feedburner.com/blogspot/MvENa'
 
 export default async () => {
   try {
     const response = await parser.parseURL(url)
 
     response.items.forEach(item => {
-      const images = extractImageSources(item['content:encoded'])
+      const images = extractImageSources(item.content)
 
       return {
         categories: item.categories,

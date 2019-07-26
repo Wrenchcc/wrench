@@ -38,3 +38,13 @@ functions:
     events:
       - schedule:
           rate: cron(0 12 * * ? *)
+  deuscustoms:
+    handler: src/providers/deuscustoms.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  rocketgarage:
+    handler: src/providers/rocketgarage.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)

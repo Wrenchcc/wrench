@@ -10,7 +10,17 @@ export default async () => {
     const response = await parser.parseURL(url)
 
     response.items.forEach(item => {
-      extractImageSources(item['content:encoded'])
+      const images = extractImageSources(item['content:encoded'])
+
+      return {
+        categories: item.categories,
+        content: item.contentSnippet,
+        creator: item.creator,
+        date: item.isoDate,
+        images,
+        link: item.link,
+        title: item.title,
+      }
     })
   } catch (err) {
     console.log(err)
