@@ -6,6 +6,7 @@ provider:
 
 plugins:
   - serverless-plugin-typescript
+  - serverless-dotenv-plugin
 
 functions:
   bikeexif:
