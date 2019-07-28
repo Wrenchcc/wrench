@@ -9,7 +9,6 @@ import {
   OneToMany,
 } from 'typeorm'
 import ArticleAuthor from './ArticleAuthor'
-import ArticleCategory from './ArticleCategory'
 import ArticleFile from './ArticleFile'
 import ArticlePublisher from './ArticlePublisher'
 
@@ -45,6 +44,6 @@ export default class Articles extends BaseEntity {
   @OneToMany(() => ArticleFile, file => file.article)
   public files: ArticleFile[]
 
-  @OneToMany(() => ArticleCategory, category => category.article)
-  public categories: ArticleCategory[]
+  // @OneToMany(() => ArticleCategory, category => category.article)
+  // public categories: ArticleCategory[]
 }

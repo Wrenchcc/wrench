@@ -4,10 +4,9 @@ import uploadToS3 from '../utils/uploadToS3'
 import extractImageSources from '../utils/extractImageSources'
 import stripNewLines from '../utils/stripNewLines'
 
-// TODO: Map of images
 const parser = new Parser()
-const FEED_URL = 'http://deuscustoms.com/feed/'
-const PUBLISHER = 'deuscustoms'
+const FEED_URL = 'https://www.caferacerdreams.es/en/blog/feed/'
+const PUBLISHER = 'caferacerdreams'
 
 export default async () => {
   await connection()

@@ -1,27 +1,46 @@
 import * as Parser from 'rss-parser'
+import { connection, db } from '../models'
+import uploadToS3 from '../utils/uploadToS3'
 import extractImageSources from '../utils/extractImageSources'
+import stripNewLines from '../utils/stripNewLines'
 
 const parser = new Parser()
-
-const url = 'http://feeds.feedburner.com/blogspot/MvENa'
+const FEED_URL = 'http://feeds.feedburner.com/blogspot/MvENa'
+const PUBLISHER = 'rocketgarage'
 
 export default async () => {
+  await connection()
+
   try {
-    const response = await parser.parseURL(url)
+    const response = await parser.parseURL(FEED_URL)
 
-    response.items.forEach(item => {
-      const images = extractImageSources(item.content)
+    const item = response.items[1]
 
-      return {
-        categories: item.categories,
-        content: item.contentSnippet,
-        creator: item.creator,
-        date: item.isoDate,
-        images,
-        link: item.link,
+    const article = await db.Article.findOne({ where: { url: item.link } })
+
+    if (!article) {
+      const images = extractImageSources(item['content:encoded'])
+
+      const [uploadedFiles, author, categories, publisher] = await Promise.all([
+        uploadToS3(images),
+        db.ArticleAuthor.findOrCreate(item.creator),
+        db.ArticleCategory.findOrCreate(item.categories),
+        db.ArticlePublisher.findOne({ where: { slug: PUBLISHER } }),
+      ])
+
+      const files = await db.ArticleFile.save(uploadedFiles)
+
+      await db.Article.save({
+        author,
+        categories,
+        description: stripNewLines(item.contentSnippet),
+        files,
+        publishedAt: item.isoDate,
+        publisher,
         title: item.title,
-      }
-    })
+        url: item.link,
+      })
+    }
   } catch (err) {
     // console.log(err)
   }
