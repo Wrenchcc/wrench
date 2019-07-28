@@ -13,8 +13,7 @@ import Project from './Project'
 @Entity('following')
 export default class Following extends BaseEntity {
   public static async isFollower(userId, projectId) {
-    const FollowingRepo = Following.getRepository()
-    const isFollower = await FollowingRepo.findOne({
+    const isFollower = await Following.findOne({
       where: {
         projectId,
         userId,

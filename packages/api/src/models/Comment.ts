@@ -6,7 +6,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  getRepository,
 } from 'typeorm'
 import User from './User'
 import Post from './Post'
@@ -14,8 +13,7 @@ import Post from './Post'
 @Entity('comments')
 export default class Comment extends BaseEntity {
   public static async userPreviousPublished(interval, userId) {
-    return getRepository(Comment)
-      .createQueryBuilder('comment')
+    return Comment.createQueryBuilder('comment')
       .select('count(comment.id)', 'count')
       .where(
         `comment.createdAt > NOW()::timestamp - interval '${interval}' AND comment.userId = '${userId}'` // eslint-disable-line

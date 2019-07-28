@@ -1,5 +1,4 @@
 import {
-  getRepository,
   BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
@@ -19,14 +18,13 @@ export const TIMEZONE_COLUMN = 'timezone'
 @Entity('users_settings')
 export default class UserSettings extends BaseEntity {
   public static async findOrCreate(where, save) {
-    const userSettingsRepo = UserSettings.getRepository()
-    const userSettings = await userSettingsRepo.findOne({ where })
+    const userSettings = await UserSettings.findOne({ where })
 
     if (userSettings) {
       return userSettings
     }
 
-    return userSettingsRepo.save(save)
+    return UserSettings.save(save)
   }
 
   @ManyToOne(() => User, user => user.settings)
@@ -52,7 +50,7 @@ export default class UserSettings extends BaseEntity {
 }
 
 export async function getNotificationSettings(userId) {
-  const notificationSettings = await getRepository(UserSettings).findOne({
+  const notificationSettings = await UserSettings.findOne({
     where: {
       type: NOTIFICATIONS_COLUMN,
       userId,
@@ -63,7 +61,7 @@ export async function getNotificationSettings(userId) {
 }
 
 export async function getUserLocale(userId) {
-  const locale = await getRepository(UserSettings).findOne({
+  const locale = await UserSettings.findOne({
     where: {
       type: LOCALE_COLUMN,
       userId,

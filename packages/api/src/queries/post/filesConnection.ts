@@ -1,5 +1,5 @@
 import paginate from '../../utils/paginate'
-import transformFileUrl from '../../utils/transformFileUrl'
+import { transformFileUrl } from '../../utils/transformFileUrl'
 
 export default async ({ id }, args, ctx) => {
   const files = await paginate(ctx.db.File, args, {

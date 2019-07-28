@@ -1,6 +1,6 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - BVLinearGradient (2.5.5):
+  - BVLinearGradient (2.5.6):
     - React
   - Crashlytics (3.13.4):
     - Fabric (~> 1.10.2)
@@ -483,7 +483,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BVLinearGradient: 443c2260a0757fbf0513a64e792abc2017db9a06
+  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   EXAppLoaderProvider: 8f2c04a0a8d9be91f7c37c2b8824077ee5d4bc01

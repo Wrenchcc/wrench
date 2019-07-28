@@ -7,7 +7,6 @@ import {
   UpdateDateColumn,
   OneToMany,
   ManyToOne,
-  getRepository,
 } from 'typeorm'
 import User from './User'
 import Project from './Project'
@@ -17,8 +16,7 @@ import File from './File'
 @Entity('posts')
 export default class Post extends BaseEntity {
   public static async userPreviousPublished(interval, userId) {
-    return getRepository(Post)
-      .createQueryBuilder('post')
+    return Post.createQueryBuilder('post')
       .select('count(post.id)', 'count')
       .where(
         `post.createdAt > NOW()::timestamp - interval '${interval}' AND post.userId = '${userId}'` // eslint-disable-line

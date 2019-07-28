@@ -1,11 +1,10 @@
 import paginate from '../../utils/paginate'
-import { transformFileUrl } from '../../utils/transformFileUrl'
+import { transformArticleFileUrl } from '../../utils/transformFileUrl'
 
-// TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
-  const files = await paginate(ctx.db.File, args, {
+  const files = await paginate(ctx.db.ArticleFile, args, {
     where: {
-      projectId: id,
+      articleId: id,
       type: args.type,
     },
   })
@@ -14,7 +13,7 @@ export default async ({ id }, args, ctx) => {
     cursor,
     node: {
       ...node,
-      uri: transformFileUrl(node.filename),
+      uri: transformArticleFileUrl(node.filename),
     },
   }))
 

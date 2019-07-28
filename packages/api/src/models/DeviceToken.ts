@@ -1,5 +1,4 @@
 import {
-  getRepository,
   BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
@@ -37,7 +36,7 @@ export default class DeviceToken extends BaseEntity {
 }
 
 export async function getDeviceToken(userId) {
-  const token = await getRepository(DeviceToken).findOne({ where: { userId } })
+  const token = await DeviceToken.findOne({ where: { userId } })
 
   return pathOr(false, ['token'], token)
 }

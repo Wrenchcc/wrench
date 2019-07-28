@@ -6,6 +6,7 @@ import generalTypes from './types/general'
 
 // Types
 import Auth from './types/Auth'
+import Article from './types/Article'
 import Comment from './types/Comment'
 import Feed from './types/Feed'
 import File from './types/File'
@@ -21,6 +22,7 @@ import Upload from './types/Upload'
 import User from './types/User'
 
 // Queries
+import articleQueries from './queries/article'
 import commentQueries from './queries/comment'
 import feedQueries from './queries/feed'
 import followerQueries from './queries/follower'
@@ -66,6 +68,7 @@ const resolvers = merge(
   {},
   // queries
   scalars.resolvers,
+  articleQueries,
   commentQueries,
   feedQueries,
   followerQueries,
@@ -101,6 +104,7 @@ export default makeExecutableSchema({
   typeDefs: [
     scalars.typeDefs,
     generalTypes,
+    Article,
     Auth,
     Comment,
     Feed,

@@ -3,7 +3,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  getRepository,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -32,7 +31,7 @@ export default class DynamicLink extends BaseEntity {
 }
 
 export async function getDynamicLink(typeId) {
-  const dynamicLink = await getRepository(DynamicLink).findOne({
+  const dynamicLink = await DynamicLink.findOne({
     where: {
       typeId,
     },

@@ -7,7 +7,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
-  getRepository,
 } from 'typeorm'
 import slugify from '../utils/slugify'
 import User from './User'
@@ -44,8 +43,7 @@ export default class Project extends BaseEntity {
 
   public static async getPopularProjects() {
     // TODO: Change to last 7 days
-    return getRepository(Project)
-      .createQueryBuilder('projects')
+    return Project.createQueryBuilder('projects')
       .select('count(projects.id)', 'count')
       .addSelect('projects.id', 'id')
       .innerJoin('projects.followers', 'followers')
@@ -54,7 +52,7 @@ export default class Project extends BaseEntity {
       .orderBy('count', 'DESC')
       .getRawMany()
 
-    // return getRepository(Project).query(`
+    // return Project.query(`
     //   SELECT *
     //   FROM projects p
     //   LEFT JOIN
@@ -79,8 +77,7 @@ export default class Project extends BaseEntity {
   }
 
   public static async projectCount(userId) {
-    return getRepository(Project)
-      .createQueryBuilder('projects')
+    return Project.createQueryBuilder('projects')
       .select('COUNT(projects.id)', 'count')
       .where('projects.userId = :userId', {
         userId,

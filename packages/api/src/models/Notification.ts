@@ -6,7 +6,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  getRepository,
 } from 'typeorm'
 import User from './User'
 import { NotificationTypes } from './enums'
@@ -14,8 +13,7 @@ import { NotificationTypes } from './enums'
 @Entity('notifications')
 export default class Notification extends BaseEntity {
   public static async unreadCount(userId) {
-    return getRepository(Notification)
-      .createQueryBuilder('notification')
+    return Notification.createQueryBuilder('notification')
       .select('COUNT(notification.id)', 'unreadCount')
       .where('notification.isSeen = :isSeen AND notification.to = :userId', {
         isSeen: false,

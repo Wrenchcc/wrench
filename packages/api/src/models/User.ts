@@ -3,7 +3,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  getRepository,
   Index,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -109,5 +108,5 @@ export default class User extends BaseEntity {
 }
 
 export function getUserById(userId) {
-  return getRepository(User).findOne(userId)
+  return User.findOne(userId)
 }

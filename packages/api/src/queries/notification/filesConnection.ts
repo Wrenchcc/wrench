@@ -1,5 +1,5 @@
 import paginate from '../../utils/paginate'
-import transformFileUrl from '../../utils/transformFileUrl'
+import { transformFileUrl } from '../../utils/transformFileUrl'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 
 export default async ({ post, comment, type }, args, ctx) => {

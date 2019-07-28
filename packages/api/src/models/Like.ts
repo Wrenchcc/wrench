@@ -14,8 +14,7 @@ import User from './User'
 @Entity('likes')
 export default class Likes extends BaseEntity {
   public static async isLiked(userId, typeId) {
-    const LikesRepo = Likes.getRepository()
-    const isLiked = await LikesRepo.findOne({
+    const isLiked = await Likes.findOne({
       where: {
         typeId,
         userId,

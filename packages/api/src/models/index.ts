@@ -1,4 +1,9 @@
 import { ConnectionOptions } from 'typeorm'
+import Article from './Article'
+import ArticleAuthor from './ArticleAuthor'
+import ArticleCategory from './ArticleCategory'
+import ArticleFile from './ArticleFile'
+import ArticlePublisher from './ArticlePublisher'
 import AuthProvider from './AuthProvider'
 import AuthToken from './AuthToken'
 import Brand from './Brand'
@@ -30,6 +35,11 @@ const {
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
   entities: [
+    Article,
+    ArticleAuthor,
+    ArticleCategory,
+    ArticleFile,
+    ArticlePublisher,
     AuthProvider,
     AuthToken,
     Brand,
@@ -58,6 +68,11 @@ export const options: ConnectionOptions = {
 }
 
 export const db = {
+  Article,
+  ArticleAuthor,
+  ArticleCategory,
+  ArticleFile,
+  ArticlePublisher,
   AuthProvider,
   AuthToken,
   Brand,
