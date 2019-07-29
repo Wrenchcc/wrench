@@ -26,6 +26,6 @@ export default class ArticleFile extends BaseEntity {
   @ManyToOne(() => Article, article => article.files)
   public article: Article
 
-  @Column()
+  @Column({ nullable: true })
   public articleId: string
 }

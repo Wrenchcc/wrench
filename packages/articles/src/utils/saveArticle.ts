@@ -4,12 +4,17 @@ import uploadToS3 from './uploadToS3'
 import extractImageSources from './extractImageSources'
 import stripNewLines from './stripNewLines'
 
-const parser = new Parser()
+const parser = new Parser({
+  customFields: {
+    item: ['media:content'],
+  },
+})
 
 export default async function saveArticle(feed, provider) {
   await connection()
 
   try {
+    let images
     const response = await parser.parseURL(feed)
 
     const item = response.items[0]
@@ -17,7 +22,11 @@ export default async function saveArticle(feed, provider) {
     const article = await db.Article.findOne({ where: { url: item.link } })
 
     if (!article) {
-      const images = extractImageSources(item['content:encoded'])
+      if (provider === 'returnofthecaferacers') {
+        images = [item['media:content']['$'].url]
+      } else {
+        images = extractImageSources(item['content:encoded'])
+      }
 
       const uploadedFiles = await uploadToS3(images)
 
