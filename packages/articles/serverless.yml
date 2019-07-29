@@ -1,8 +1,10 @@
-service: '@wrench/articles'
+service: 'articles'
 
 provider:
   name: aws
   runtime: nodejs10.x
+  deploymentBucket: wrench-articles
+  profile: wrench-api
 
 plugins:
   - serverless-plugin-typescript
@@ -12,60 +14,56 @@ functions:
   bikeexif:
     handler: src/providers/bikeexif.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(2 hours)
+
   pipeburn:
     handler: src/providers/pipeburn.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(2 hours)
+
   silodrome:
     handler: src/providers/silodrome.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(2 hours)
+
   bikebound:
     handler: src/providers/bikebound.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(4 hours)
+
   thebikeshed:
     handler: src/providers/thebikeshed.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
-  # returnofthecaferacers:
-  #   handler: src/providers/returnofthecaferacers.default
-  #   events:
-  #     - schedule:
-  #         rate: cron(0 */2 * * *)
-  # deuscustoms:
-  #   handler: src/providers/deuscustoms.default
-  #   events:
-  #     - schedule:
-  #         rate: cron(0 */2 * * *)
+      - schedule: rate(4 hours)
+
   rocketgarage:
     handler: src/providers/rocketgarage.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(4 hours)
+
   caferacerdreams:
     handler: src/providers/caferacerdreams.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(6 hours)
+
   hookie:
     handler: src/providers/hookie.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(6 hours)
+
   bikebrewers:
     handler: src/providers/bikebrewers.default
     events:
-      - schedule:
-          rate: cron(0 */2 * * *)
+      - schedule: rate(4 hours)
+  # returnofthecaferacers:
+  #   handler: src/providers/returnofthecaferacers.default
+  #   events:
+  #           - schedule: rate(2 hours)
+  # deuscustoms:
+  #   handler: src/providers/deuscustoms.default
+  #   events:
+  #           - schedule: rate(2 hours)
   # zeuscustom:
   #   handler: src/providers/zeuscustom.default
   #   events:
-  #     - schedule:
-  #         rate: cron(0 */2 * * *)
+  #           - schedule: rate(2 hours)

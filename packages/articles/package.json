@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "deploy": "serverless deploy --stage production --aws-profile wrench-api"
+    "deploy": "serverless deploy --stage production"
   },
   "dependencies": {
     "aws-sdk": "^2.501.0",
