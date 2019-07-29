@@ -2,6 +2,7 @@ import { ConnectionOptions } from 'typeorm'
 import Article from './Article'
 import ArticleAuthor from './ArticleAuthor'
 import ArticleCategory from './ArticleCategory'
+import ArticleCategoryRelationships from './ArticleCategoryRelationships'
 import ArticleFile from './ArticleFile'
 import ArticlePublisher from './ArticlePublisher'
 import AuthProvider from './AuthProvider'
@@ -38,6 +39,7 @@ export const options: ConnectionOptions = {
     Article,
     ArticleAuthor,
     ArticleCategory,
+    ArticleCategoryRelationships,
     ArticleFile,
     ArticlePublisher,
     AuthProvider,
@@ -71,6 +73,7 @@ export const db = {
   Article,
   ArticleAuthor,
   ArticleCategory,
+  ArticleCategoryRelationships,
   ArticleFile,
   ArticlePublisher,
   AuthProvider,

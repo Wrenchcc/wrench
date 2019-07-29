@@ -1,8 +1,8 @@
 import { createConnection, Connection, ConnectionOptions } from 'typeorm'
-
 import Article from './Article'
 import ArticleAuthor from './ArticleAuthor'
 import ArticleCategory from './ArticleCategory'
+import ArticleCategoryRelationships from './ArticleCategoryRelationships'
 import ArticleFile from './ArticleFile'
 import ArticlePublisher from './ArticlePublisher'
 
@@ -18,7 +18,14 @@ const {
 
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
-  entities: [Article, ArticleFile, ArticlePublisher, ArticleCategory, ArticleAuthor],
+  entities: [
+    Article,
+    ArticleAuthor,
+    ArticleCategory,
+    ArticleCategoryRelationships,
+    ArticleFile,
+    ArticlePublisher,
+  ],
   host: DB_HOST,
   logging: Boolean(DB_LOGGING),
   password: DB_PASSWORD,
@@ -36,6 +43,7 @@ export const db = {
   Article,
   ArticleAuthor,
   ArticleCategory,
+  ArticleCategoryRelationships,
   ArticleFile,
   ArticlePublisher,
 }

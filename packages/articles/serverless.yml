@@ -1,4 +1,4 @@
-service: '@wrench/scraper'
+service: '@wrench/articles'
 
 provider:
   name: aws
@@ -13,59 +13,59 @@ functions:
     handler: src/providers/bikeexif.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   pipeburn:
     handler: src/providers/pipeburn.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   silodrome:
     handler: src/providers/silodrome.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   bikebound:
     handler: src/providers/bikebound.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   thebikeshed:
     handler: src/providers/thebikeshed.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   # returnofthecaferacers:
   #   handler: src/providers/returnofthecaferacers.default
   #   events:
   #     - schedule:
-  #         rate: cron(0 12 * * ? *)
+  #         rate: cron(0 */2 * * *)
   # deuscustoms:
   #   handler: src/providers/deuscustoms.default
   #   events:
   #     - schedule:
-  #         rate: cron(0 12 * * ? *)
+  #         rate: cron(0 */2 * * *)
   rocketgarage:
     handler: src/providers/rocketgarage.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   caferacerdreams:
     handler: src/providers/caferacerdreams.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   hookie:
     handler: src/providers/hookie.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
   bikebrewers:
     handler: src/providers/bikebrewers.default
     events:
       - schedule:
-          rate: cron(0 12 * * ? *)
-  zeuscustom:
-    handler: src/providers/zeuscustom.default
-    events:
-      - schedule:
-          rate: cron(0 12 * * ? *)
+          rate: cron(0 */2 * * *)
+  # zeuscustom:
+  #   handler: src/providers/zeuscustom.default
+  #   events:
+  #     - schedule:
+  #         rate: cron(0 */2 * * *)

@@ -3,7 +3,6 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
   OneToMany,
@@ -17,14 +16,11 @@ export default class Articles extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string
 
-  @CreateDateColumn({ type: 'timestamptz' })
+  @Column({ type: 'timestamptz' })
   public createdAt: Date
 
   @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
-
-  @Column()
-  public publishedAt: Date
 
   @Column('text')
   public description: string
@@ -43,7 +39,4 @@ export default class Articles extends BaseEntity {
 
   @OneToMany(() => ArticleFile, file => file.article)
   public files: ArticleFile[]
-
-  // @OneToMany(() => ArticleCategory, category => category.article)
-  // public categories: ArticleCategory[]
 }

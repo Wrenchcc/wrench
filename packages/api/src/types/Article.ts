@@ -9,7 +9,6 @@ export default gql`
     title: String
     description: String
     author: ArticleAuthor
-    categories: ArticleCategories
     publisher: ArticlePublisher
     url: String
 
@@ -19,12 +18,13 @@ export default gql`
       reverse: Boolean
       type: FileType
     ): FileConnection
-    commentsConnection(
+
+    categoriesConnection(
       first: Int = 10
       after: String
-      last: Int = 10
-      before: String
-    ): CommentConnection
+      reverse: Boolean
+      type: FileType
+    ): ArticleCategoryConnection
   }
 
   type ArticleConnection {
@@ -33,10 +33,21 @@ export default gql`
     edges: [ArticleEdge!]
   }
 
-  type ArticleCategories {
+  type ArticleCategoryConnection {
+    totalCount: Int
+    pageInfo: PageInfo!
+    edges: [ArticleCategoryEdge!]
+  }
+
+  type ArticleCategory {
     id: ID
     name: String
     slug: LowercaseString
+  }
+
+  type ArticleCategoryEdge {
+    cursor: String!
+    node: ArticleCategory!
   }
 
   type ArticlePublisher {
