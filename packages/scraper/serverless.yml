@@ -34,16 +34,16 @@ functions:
     events:
       - schedule:
           rate: cron(0 12 * * ? *)
-  returnofthecaferacers:
-    handler: src/providers/returnofthecaferacers.default
-    events:
-      - schedule:
-          rate: cron(0 12 * * ? *)
-  deuscustoms:
-    handler: src/providers/deuscustoms.default
-    events:
-      - schedule:
-          rate: cron(0 12 * * ? *)
+  # returnofthecaferacers:
+  #   handler: src/providers/returnofthecaferacers.default
+  #   events:
+  #     - schedule:
+  #         rate: cron(0 12 * * ? *)
+  # deuscustoms:
+  #   handler: src/providers/deuscustoms.default
+  #   events:
+  #     - schedule:
+  #         rate: cron(0 12 * * ? *)
   rocketgarage:
     handler: src/providers/rocketgarage.default
     events:
@@ -56,6 +56,16 @@ functions:
           rate: cron(0 12 * * ? *)
   hookie:
     handler: src/providers/hookie.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  bikebrewers:
+    handler: src/providers/bikebrewers.default
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)
+  zeuscustom:
+    handler: src/providers/zeuscustom.default
     events:
       - schedule:
           rate: cron(0 12 * * ? *)
