@@ -43,7 +43,4 @@ export default class Articles extends BaseEntity {
 
   @OneToMany(() => ArticleFile, file => file.article)
   public files: ArticleFile[]
-
-  // @OneToMany(() => ArticleCategory, category => category.article)
-  // public categories: ArticleCategory[]
 }

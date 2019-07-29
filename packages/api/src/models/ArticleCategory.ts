@@ -9,22 +9,6 @@ import {
 
 @Entity('article_categories')
 export default class ArticleCategory extends BaseEntity {
-  public static async findOrCreate(categories) {
-    return Promise.all(
-      categories.map(async name => {
-        const category = await ArticleCategory.findOne({ name })
-
-        if (category) {
-          return category
-        }
-
-        // return ArticleCategory.save({
-        //   name,
-        // })
-      })
-    )
-  }
-
   @PrimaryGeneratedColumn('uuid')
   public id: string
 
@@ -37,6 +21,6 @@ export default class ArticleCategory extends BaseEntity {
   @Column({ unique: true })
   public name: string
 
-  // @Column({ unique: true })
-  // public slug: string
+  @Column({ unique: true })
+  public slug: string
 }

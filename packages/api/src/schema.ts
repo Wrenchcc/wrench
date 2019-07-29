@@ -5,8 +5,8 @@ import scalars from './types/scalars'
 import generalTypes from './types/general'
 
 // Types
-import Auth from './types/Auth'
 import Article from './types/Article'
+import Auth from './types/Auth'
 import Comment from './types/Comment'
 import Feed from './types/Feed'
 import File from './types/File'
@@ -17,6 +17,7 @@ import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
 import Project from './types/Project'
+import Publisher from './types/Publisher'
 import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
@@ -31,6 +32,7 @@ import postQueries from './queries/post'
 import projectQueries from './queries/project'
 import searchQueries from './queries/search'
 import userQueries from './queries/user'
+import publisherQueries from './queries/publisher'
 
 // Mutations
 import commentMutations from './mutations/comment'
@@ -75,6 +77,7 @@ const resolvers = merge(
   notificationQueries,
   postQueries,
   projectQueries,
+  publisherQueries,
   searchQueries,
   userQueries,
   // mutations
@@ -116,6 +119,7 @@ export default makeExecutableSchema({
     Notification,
     Post,
     Project,
+    Publisher,
     Root,
     Search,
     Upload,

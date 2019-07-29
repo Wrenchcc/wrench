@@ -12,6 +12,7 @@ export default gql`
     categories: ArticleCategories
     publisher: ArticlePublisher
     url: String
+
     filesConnection(
       first: Int = 10
       after: String
@@ -35,6 +36,7 @@ export default gql`
   type ArticleCategories {
     id: ID
     name: String
+    slug: LowercaseString
   }
 
   type ArticlePublisher {
@@ -57,6 +59,12 @@ export default gql`
 
   extend type Query {
     article(id: ID): Article
-    articles(first: Int = 10, after: String, last: Int = 10, before: String): ArticleConnection
+    articles(
+      publisherId: ID
+      first: Int = 10
+      after: String
+      last: Int = 10
+      before: String
+    ): ArticleConnection
   }
 `
