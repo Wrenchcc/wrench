@@ -1,8 +1,9 @@
 import saveArticle from '../utils/saveArticle'
 
-const FEED_URL = 'http://zeuscustom.shop/feed/'
-const PROVIDER = 'zeuscustom'
+const FEED_URL = 'http://www.bonnefication.com/feed/'
+const PROVIDER = 'bonnefication'
 
+// NOTE: Fails on images
 export default async () => {
   try {
     await saveArticle(FEED_URL, PROVIDER)

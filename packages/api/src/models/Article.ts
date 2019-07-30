@@ -42,4 +42,7 @@ export default class Articles extends BaseEntity {
 
   @Column()
   public publisherId: string
+
+  @Column()
+  public authorId: string
 }

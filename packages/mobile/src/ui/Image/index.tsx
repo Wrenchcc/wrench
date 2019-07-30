@@ -14,6 +14,8 @@ function Image({
   priority,
   source,
   placeholderDensity = 8,
+  borderColor,
+  borderWidth,
   ...props
 }) {
   // NOTE: Guard for crash on Android
@@ -47,6 +49,9 @@ function Image({
         {...props}
         source={{ uri }}
         style={{
+          borderColor,
+          borderRadius,
+          borderWidth,
           bottom: 0,
           height,
           left: 0,

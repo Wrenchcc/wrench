@@ -48,6 +48,35 @@ export const CURRENT_USER_PROJECTS_QUERY = gql`
   ${fragment.USER_PROJECTS_FRAGMENT}
 `
 
+export const PUBLISHERS_QUERY = gql`
+  query getPublishers {
+    publishers {
+      edges {
+        node {
+          id
+          name
+          logoUrl
+          url
+        }
+      }
+    }
+  }
+`
+
+export const ARTICLES_QUERY = gql`
+  query getArticles($publisherId: ID) {
+    articles(publisherId: $publisherId) {
+      edges {
+        node {
+          id
+          title
+          description
+        }
+      }
+    }
+  }
+`
+
 //
 // export const COMMENT_QUERY = gql``
 //
