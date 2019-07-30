@@ -7,6 +7,7 @@ import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
 import Post from 'components/Post'
 import Popular from 'features/explore/components/Popular'
+import Publishers from '../components/Publishers'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -65,7 +66,12 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
           tabIndex={1}
           spacingSeparator
           initialNumToRender={2}
-          ListHeaderComponent={<Popular />}
+          ListHeaderComponent={
+            <>
+              <Publishers />
+              <Popular />
+            </>
+          }
           data={posts}
           refetch={refetch}
           fetchMore={fetchMore}

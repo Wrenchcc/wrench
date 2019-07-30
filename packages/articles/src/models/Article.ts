@@ -22,6 +22,15 @@ export default class Articles extends BaseEntity {
   @UpdateDateColumn({ type: 'timestamptz' })
   public updatedAt: Date
 
+  @ManyToOne(() => ArticleAuthor, author => author)
+  public author: ArticleAuthor
+
+  @ManyToOne(() => ArticlePublisher, publisher => publisher)
+  public publisher: ArticlePublisher
+
+  @OneToMany(() => ArticleFile, file => file.article)
+  public files: ArticleFile[]
+
   @Column('text')
   public description: string
 
@@ -31,12 +40,9 @@ export default class Articles extends BaseEntity {
   @Column()
   public title: string
 
-  @ManyToOne(() => ArticleAuthor, author => author)
-  public author: ArticleAuthor
+  @Column()
+  public publisherId: string
 
-  @ManyToOne(() => ArticlePublisher, publisher => publisher)
-  public publisher: ArticlePublisher
-
-  @OneToMany(() => ArticleFile, file => file.article)
-  public files: ArticleFile[]
+  @Column()
+  public authorId: string
 }

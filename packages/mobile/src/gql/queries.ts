@@ -56,6 +56,21 @@ export const PUBLISHERS_QUERY = gql`
           id
           name
           logoUrl
+          url
+        }
+      }
+    }
+  }
+`
+
+export const ARTICLES_QUERY = gql`
+  query getArticles($publisherId: ID) {
+    articles(publisherId: $publisherId) {
+      edges {
+        node {
+          id
+          title
+          description
         }
       }
     }

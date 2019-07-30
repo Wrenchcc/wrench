@@ -69,4 +69,7 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.SETTINGS, () =>
     HOC(require('features/user/containers/Settings').default)
   )
+  Navigation.registerComponent(SCREENS.ARTICLES, () =>
+    HOC(require('features/articles/containers/Articles').default)
+  )
 }

@@ -1,9 +1,11 @@
 import React from 'react'
 import { useQuery, PUBLISHERS_QUERY } from 'gql'
+import { useNavigation, SCREENS } from 'navigation'
 import { COLORS } from 'ui/constants'
 import { List, Item, Image } from './styles'
 
 function Publishers() {
+  const { navigate } = useNavigation()
   const { data, loading } = useQuery(PUBLISHERS_QUERY)
 
   if (loading) {
@@ -27,6 +29,7 @@ function Publishers() {
             key={node.id}
             first={data.publishers.edges[0].node.id === node.id}
             last={data.publishers.edges[data.publishers.edges.length - 1].node.id === node.id}
+            onPress={() => navigate(SCREENS.ARTICLES, { ...node })}
           >
             <Image
               width={40}

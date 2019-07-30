@@ -8,8 +8,8 @@ export const Item = styled(UiTouchable)`
   width: 60;
   height: 60;
   border-radius: 60;
-  border-width: 3;
-  border-color: grey;
+  border-width: 2.5;
+  border-color: black;
   justify-content: center;
   align-items: center;
 `
