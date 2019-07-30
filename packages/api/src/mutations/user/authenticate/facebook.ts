@@ -1,4 +1,5 @@
 import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES, MAIL_TYPES } from '../../../utils/enums'
+import { getAvatarById, getDefaultAvatar } from '../../../utils/avatar'
 import { generateTokens } from '../../../utils/tokens'
 import { dynamicLink } from '../../../services/firebase'
 
@@ -45,7 +46,7 @@ export default async (_, { token }, ctx) => {
 
   const url = await dynamicLink({
     description: `See Wrench projects and posts from ${user.fullName}. (@${user.username})`,
-    image: ctx.services.facebook.getAvatarById(user.id),
+    image: fbUser.isSilhouette ? getDefaultAvatar() : getAvatarById(user.id),
     path: user.username,
     title: `${user.fullName}. (@${user.username}) - projects and posts`,
   })
