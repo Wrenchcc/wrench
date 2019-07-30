@@ -118,6 +118,7 @@ function WebView({ url: initialUrl }) {
         onNavigationStateChange={handleOnNavigationStateChange}
         onLoadProgress={handleOnLoadProgress}
         ref={webview}
+        decelerationRate="fast"
       />
 
       {renderFooter()}
