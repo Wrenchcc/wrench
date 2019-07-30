@@ -1,20 +1,25 @@
 import React, { useCallback } from 'react'
 import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
-import { useQuery, ARTICLES_QUERY } from 'gql'
-import { Image, Touchable, Carousel, Text } from 'ui'
+import { usePaginatedQuery, ARTICLES_QUERY } from 'gql'
+import { Image, Touchable, Carousel, Text, Title } from 'ui'
 import { COLORS } from 'ui/constants'
+import Article from 'components/Article'
 
-const renderItem = ({ item }) => <Text>{item.node.description}</Text> //<Carousel files={post.files} />
+const renderItem = ({ item }) => <Article {...item.node} />
 
 function Articles({ name, logoUrl, url, id }) {
   const { showModal } = useNavigation()
-  const { data, loading } = useQuery(ARTICLES_QUERY, {
+
+  const { articles, isFetching, fetchMore, isRefetching, hasNextPage } = usePaginatedQuery(
+    'articles'
+  )(ARTICLES_QUERY, {
     variables: {
+      first: !articles ? 2 : 5,
       publisherId: id,
     },
   })
 
-  const handleWebview = useCallback(() => {
+  const navigateToWebview = useCallback(() => {
     showModal(SCREENS.WEBVIEW, { url })
   }, [url])
 
@@ -22,7 +27,7 @@ function Articles({ name, logoUrl, url, id }) {
     <Page
       headerTitle={name}
       headerRight={
-        <Touchable onPress={handleWebview}>
+        <Touchable onPress={navigateToWebview}>
           <Image
             source={{ uri: logoUrl }}
             width={30}
@@ -33,16 +38,20 @@ function Articles({ name, logoUrl, url, id }) {
           />
         </Touchable>
       }
-      headerAnimation={false}
     >
       <FlatList
-        initialNumToRender={6}
-        data={data.articles && data.articles.edges}
-        refetch={() => {}}
-        fetchMore={() => {}}
+        initialNumToRender={2}
+        ListHeaderComponent={
+          <Title large numberOfLines={0} style={{ marginBottom: 50 }}>
+            {name}
+          </Title>
+        }
+        data={articles}
+        refetch={isRefetching}
+        fetchMore={fetchMore}
         isRefetching={false}
-        isFetching={loading}
-        hasNextPage={false}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
     </Page>

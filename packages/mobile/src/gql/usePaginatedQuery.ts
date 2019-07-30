@@ -1,41 +1,48 @@
 import { useCallback } from 'react'
 import { useQuery } from '@apollo/react-hooks'
+import { pathOr } from 'ramda'
+import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 
-const usePaginatedQuery = key => (query, options) => {
-  const result = useQuery(query, options)
+const usePaginatedQuery = type => (query, options) => {
+  const { fetchMore, ...result } = useQuery(query, {
+    ...options,
+    notifyOnNetworkStatusChange: true,
+  })
+
+  const data = result.data[type]
 
   const handleFetchMore = useCallback(
-    variables => {
-      const { loading, fetchMore } = result
-
-      if (loading) {
-        return null
-      }
-
-      return fetchMore({
-        variables,
+    variables =>
+      fetchMore({
+        variables: {
+          after: data.edges[data.edges.length - 1].cursor,
+        },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult[key]) {
+          if (!previousResult || !previousResult[type]) {
             return previousResult
           }
 
+          const { edges, pageInfo, ...rest } = fetchMoreResult[type]
+
           return {
-            ...previousResult,
-            [key]: {
-              ...previousResult[key],
-              ...fetchMoreResult[key],
-              rows: [...previousResult[key].rows, ...fetchMoreResult[key].rows],
+            [type]: {
+              ...rest,
+              __typename: previousResult[type].__typename,
+              edges: [...previousResult[type].edges, ...edges],
+              pageInfo,
             },
           }
         },
-      })
-    },
-    [result]
+      })[result]
   )
 
   return {
     ...result,
+    [type]: pathOr(null, ['edges'], data),
     fetchMore: handleFetchMore,
+    hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
+    isFetching: result.loading || isFetchingMore(result.networkStatus),
+    isRefetching: isRefetching(result.networkStatus),
   }
 }
 

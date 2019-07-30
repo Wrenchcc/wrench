@@ -11,7 +11,6 @@ export const Content = styled.View`
 `
 
 export const Headline = styled.View`
-  flex: 1;
   padding-right: 10;
   margin-bottom: 5;
 `

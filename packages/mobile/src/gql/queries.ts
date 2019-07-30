@@ -64,13 +64,31 @@ export const PUBLISHERS_QUERY = gql`
 `
 
 export const ARTICLES_QUERY = gql`
-  query getArticles($publisherId: ID) {
-    articles(publisherId: $publisherId) {
+  query getArticles($publisherId: ID, $after: String, $first: Int) {
+    articles(publisherId: $publisherId, first: $first, after: $after) {
+      pageInfo {
+        hasNextPage
+      }
       edges {
+        cursor
         node {
           id
           title
           description
+          url
+          createdAt
+          publisher {
+            logoUrl
+            url
+          }
+          files: filesConnection(first: 15) {
+            edges {
+              node {
+                id
+                uri
+              }
+            }
+          }
         }
       }
     }

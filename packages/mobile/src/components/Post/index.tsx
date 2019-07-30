@@ -8,7 +8,7 @@ import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ActionSheet, EditPost } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
-import { Top, Headline, Content, Spacer } from './styled'
+import { Top, Headline, Content, Spacer } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
@@ -152,6 +152,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
             color={withoutTitle ? 'dark' : 'grey'}
             fontSize={15}
             lineHeight={22}
+            numberOfLines={!withoutTitle && 3}
           >
             {post.caption}
           </Text>
