@@ -46,7 +46,7 @@ export default async (_, { token }, ctx) => {
 
   const url = await dynamicLink({
     description: `See Wrench projects and posts from ${user.fullName}. (@${user.username})`,
-    image: fbUser.isSilhouette ? getDefaultAvatar() : getAvatarById(user.id), // Default or image
+    image: fbUser.isSilhouette ? getDefaultAvatar() : getAvatarById(user.id),
     path: user.username,
     title: `${user.fullName}. (@${user.username}) - projects and posts`,
   })

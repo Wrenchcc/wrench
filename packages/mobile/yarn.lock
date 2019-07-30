@@ -2996,10 +2996,10 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
-i18next@^17.0.6:
-  version "17.0.6"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.6.tgz#01079cc2bcef408139ea8ce24d18ac0d512fbe85"
-  integrity sha512-bdNhzhcM6RG5m82RypVguCrAQNie/ycxW0Q5C6K9UDWD5hqApZfdJFbj4Ikz9jxIR+Ja1eg0yCQLhlCT+opwIg==
+i18next@^17.0.7:
+  version "17.0.7"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.7.tgz#aae8591634b109c0ecec755b46c6414b0d743e07"
+  integrity sha512-fQn+gcyDaHb3qXIeahjCnGMsCeHaKveSORclang55stBjOL13oK7ZYxXVz1AaFV6p3SzOSu/KW+tgZcUuDdf6Q==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -4855,10 +4855,10 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.3.0.tgz#7b2a8baf8453324bd8d120ce46e5e2bb0181ccd4"
-  integrity sha512-ISEChH2zg4bRX8PL1cYoNWffJ7wmgYosKyJbkWyTxs8g+rpeGkmMf9Wo4COriAt1AJ2jC78IGhJYFzbIc+Przw==
+react-native-device-info@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.3.1.tgz#363267c4574dbd779290cdc06bb423f9c16d68d8"
+  integrity sha512-4kIBeBdYB/IwNjbSTEvfnWgFB4cXL0drvdXKfcAgfI5vxmsLElR5HI6t9fqVkPyMCiRtI7mvS6PbG2kjGdbQMw==
 
 react-native-fast-image@^6.1.1:
   version "6.1.1"
@@ -4870,10 +4870,10 @@ react-native-fbsdk@^0.10.1:
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.10.1.tgz#b3ed4237b1322956f2260c716d49c2ce08514741"
   integrity sha512-/TfpiT7wLdP1ABWk46DhpadbOSXdizWEvrNhLABe+9jK8/ljaCL7nwHj+Xp0Yd6KBnW88in67ukAy2kbfbfZ+A==
 
-react-native-firebase@^5.5.5:
-  version "5.5.5"
-  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.5.5.tgz#d5c7e02eb6ea5650f9ebbb23c2cd796f83e7ca45"
-  integrity sha512-i3MBEQ2xPsEFLLp4NjK5PC4tGA4RgUdULxiTHvmi9qCM2FlVV0YhyFoO+dQIFfW2V9AzSE0v38EPCuhZDp3RdQ==
+react-native-firebase@^5.5.6:
+  version "5.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.5.6.tgz#17b34ec0d5dc39afaaf0e159fd160f6339e0f707"
+  integrity sha512-AdbpGwKEEiMFgaRar9WOPc8Li4sfxR//WOyNQzxYsQ1fpARC908j7feqy2gu73SLqk4wzIrnlfJWakOe0/Bclg==
   dependencies:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.7.2"

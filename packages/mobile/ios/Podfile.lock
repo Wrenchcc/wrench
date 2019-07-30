@@ -230,13 +230,13 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.1):
     - React
-  - RNDeviceInfo (2.3.0):
+  - RNDeviceInfo (2.3.1):
     - React
-  - RNFirebase (5.5.5):
+  - RNFirebase (5.5.6):
     - Firebase/Core
     - React
-    - RNFirebase/Crashlytics (= 5.5.5)
-  - RNFirebase/Crashlytics (5.5.5):
+    - RNFirebase/Crashlytics (= 5.5.6)
+  - RNFirebase/Crashlytics (5.5.6):
     - Crashlytics
     - Fabric
     - Firebase/Core
@@ -522,8 +522,8 @@ SPEC CHECKSUMS:
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
   ReactNativeNavigation: 05945cfd4610260b1e6d46a07222dda6223959dd
   RNCAsyncStorage: 2e2e3feb9bdadc752a026703d8c4065ca912e75a
-  RNDeviceInfo: 65106cc87ad6f6f71ef2ecc667f4c59b840888e2
-  RNFirebase: b627e5991bb10bf34cea84806819f98f95f39f8b
+  RNDeviceInfo: 74ee98a0b3ef57604ea9953f03eca549a9335160
+  RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
