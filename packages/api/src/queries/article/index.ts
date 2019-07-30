@@ -4,6 +4,7 @@ import author from './author'
 import publisher from './publisher'
 import filesConnection from './filesConnection'
 import categoriesConnection from './categoriesConnection'
+import url from './url'
 
 export default {
   Article: {
@@ -11,6 +12,7 @@ export default {
     categoriesConnection,
     filesConnection,
     publisher,
+    url,
   },
   Query: {
     article,
