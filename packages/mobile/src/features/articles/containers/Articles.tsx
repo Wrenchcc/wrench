@@ -10,7 +10,7 @@ const renderItem = ({ item }) => <Article {...item.node} />
 function Articles({ name, logoUrl, url, id }) {
   const { showModal } = useNavigation()
 
-  const { articles, isFetching, fetchMore, isRefetching, hasNextPage } = usePaginatedQuery(
+  const { articles, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery(
     'articles'
   )(ARTICLES_QUERY, {
     variables: {
@@ -47,9 +47,9 @@ function Articles({ name, logoUrl, url, id }) {
           </Title>
         }
         data={articles}
-        refetch={isRefetching}
+        refetch={refetch}
         fetchMore={fetchMore}
-        isRefetching={false}
+        isRefetching={isRefetching}
         isFetching={isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}

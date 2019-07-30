@@ -39,7 +39,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
         <Title medium>{t('Popular:popular')}</Title>
       </Header>
       <InfiniteList
-        initialNumToRender={2}
+        initialNumToRender={3}
         data={projects}
         horizontal
         directionalLockEnabled
