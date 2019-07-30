@@ -7,6 +7,7 @@ import { Posting, ShowLatest } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
+import Publishers from '../components/Publishers'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -51,6 +52,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
         initialNumToRender={2}
         spacingSeparator
         data={posts}
+        ListHeaderComponent={<Publishers />}
         ListEmptyComponent={<ProjectSuggestions />}
         refetch={refetch}
         fetchMore={fetchMore}
