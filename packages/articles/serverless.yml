@@ -1,11 +1,20 @@
 service: 'articles'
 
+custom:
+  bucket: wrench-files
+
 provider:
   name: aws
   runtime: nodejs10.x
   deploymentBucket: wrench-articles
   profile: wrench-api
   timeout: 30
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:PutObjectAcl
+      Resource: 'arn:aws:s3:::${self:custom.bucket}/*'
 
 plugins:
   - serverless-plugin-typescript

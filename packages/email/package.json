@@ -9,7 +9,7 @@
     "ses:test": "cross-env DEBUG=task* dotenv -e .env -- node tasks/testTemplate.js $*"
   },
   "devDependencies": {
-    "aws-sdk": "^2.501.0",
+    "aws-sdk": "^2.502.0",
     "cross-env": "^5.2.0",
     "debug": "^4.1.1",
     "dotenv-cli": "^2.0.1",
