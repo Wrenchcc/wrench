@@ -31,6 +31,7 @@ function Publishers() {
             key={node.id}
             first={data.publishers.edges[0].node.id === node.id}
             last={data.publishers.edges[data.publishers.edges.length - 1].node.id === node.id}
+            seen={node.seen}
           >
             <Item>
               <Image

@@ -57,7 +57,7 @@ export const PUBLISHERS_QUERY = gql`
           name
           logoUrl
           url
-          updatedAt
+          seen
         }
       }
     }

@@ -1,11 +1,13 @@
+import articlesConnection from './articlesConnection'
 import publisher from './publisher'
 import publishers from './publishers'
-import articlesConnection from './articlesConnection'
+import seen from './seen'
 import url from './url'
 
 export default {
   Publisher: {
     articlesConnection,
+    seen,
     url,
   },
   Query: {

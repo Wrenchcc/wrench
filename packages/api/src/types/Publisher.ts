@@ -7,7 +7,7 @@ export default gql`
     name: String
     url: String
     logoUrl: String
-    updatedAt: Date
+    seen: Boolean
 
     articlesConnection(
       first: Int = 10
