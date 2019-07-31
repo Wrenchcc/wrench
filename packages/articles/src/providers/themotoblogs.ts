@@ -14,7 +14,7 @@ export default async () => {
   try {
     const response = await parser.parseURL(FEED_URL)
 
-    const item = response.items[2]
+    const item = response.items[0]
     const res = await fetch(item.link)
     const html = await res.text()
     const $ = cheerio.load(html)

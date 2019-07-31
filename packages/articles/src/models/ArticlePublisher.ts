@@ -1,11 +1,4 @@
-import {
-  BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm'
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm'
 
 @Entity('article_publishers')
 export default class ArticlePublisher extends BaseEntity {
@@ -15,7 +8,7 @@ export default class ArticlePublisher extends BaseEntity {
   @CreateDateColumn({ type: 'timestamptz' })
   public createdAt: Date
 
-  @UpdateDateColumn({ type: 'timestamptz' })
+  @Column({ type: 'timestamptz' })
   public updatedAt: Date
 
   @Column()

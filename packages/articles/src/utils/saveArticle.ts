@@ -43,6 +43,8 @@ export default async function saveArticle(feed, provider) {
           db.ArticlePublisher.findOne({ where: { slug: provider } }),
         ])
 
+        await db.ArticlePublisher.update(publisher.id, { updatedAt: new Date(item.isoDate) })
+
         const data = await db.Article.save({
           author,
           createdAt: new Date(item.isoDate),

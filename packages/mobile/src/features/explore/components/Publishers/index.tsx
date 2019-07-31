@@ -42,7 +42,7 @@ function Publishers() {
                 borderWidth={1}
               />
             </Item>
-            <Text fontSize={12} color="grey" numberOfLines={1}>
+            <Text fontSize={12} color="grey" numberOfLines={1} center>
               {node.name}
             </Text>
           </Base>

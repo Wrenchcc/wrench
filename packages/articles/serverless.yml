@@ -76,11 +76,6 @@ functions:
     events:
       - schedule: rate(4 hours)
 
-  motorcyclistonline:
-    handler: src/providers/motorcyclistonline.default
-    events:
-      - schedule: rate(4 hours)
-
   deuscustoms:
     handler: src/providers/deuscustoms.default
     events:
