@@ -14,7 +14,7 @@ export const Item = styled.View`
   height: 60;
   border-radius: 60;
   border-width: 2.5;
-  border-color: ${props => (props.seen ? COLORS.DIVIDER : COLORS.BLACK)};
+  border-color: ${props => (props.seen ? COLORS.DIVIDER : COLORS.DARK)};
   justify-content: center;
   align-items: center;
   margin-bottom: 10;
