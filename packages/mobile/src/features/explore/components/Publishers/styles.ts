@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import UiImage from 'ui/Image'
 import UiTouchable from 'ui/Touchable'
+import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
   width: 60;
@@ -13,7 +14,7 @@ export const Item = styled.View`
   height: 60;
   border-radius: 60;
   border-width: 2.5;
-  border-color: black;
+  border-color: ${props => (props.new ? COLORS.BLACK : COLORS.DIVIDER)};
   justify-content: center;
   align-items: center;
   margin-bottom: 10;
