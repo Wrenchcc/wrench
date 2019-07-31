@@ -1,40 +1,17 @@
-import * as Parser from 'rss-parser'
 import { connection, db } from '../models'
 import uploadToS3 from './uploadToS3'
 import extractImageSources from './extractImageSources'
 import stripNewLines from './stripNewLines'
 
-const parser = new Parser({
-  customFields: {
-    item: ['media:content'],
-  },
-})
-
-export default async function saveArticle(feed, provider) {
+export default async function saveArticle(feed, provider, item, images) {
   await connection()
 
   try {
-    let images
-    const response = await parser.parseURL(feed)
-
-    const item = response.items[0]
-
     const article = await db.Article.findOne({ where: { url: item.link } })
 
     if (!article) {
-      switch (provider) {
-        case 'returnofthecaferacers': {
-          images = [item['media:content'].$.url]
-        }
-        case 'themotoblogs': {
-          images = [item.content.$.url]
-        }
-        default: {
-          images = extractImageSources(item['content:encoded'])
-        }
-      }
-
       const uploadedFiles = await uploadToS3(images)
+
       if (uploadedFiles.length > 0) {
         const [files, author, categories, publisher] = await Promise.all([
           db.ArticleFile.save(uploadedFiles),

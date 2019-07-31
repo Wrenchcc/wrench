@@ -3,8 +3,8 @@ import * as cheerio from 'cheerio'
 import * as fetch from 'node-fetch'
 import saveArticle from '../utils/saveArticle2'
 
-const FEED_URL = 'http://www.bonnefication.com/feed/'
-const PROVIDER = 'bonnefication'
+const FEED_URL = 'https://themotoblogs.com/feed/'
+const PROVIDER = 'themotoblogs'
 
 const parser = new Parser()
 
@@ -14,12 +14,12 @@ export default async () => {
   try {
     const response = await parser.parseURL(FEED_URL)
 
-    const item = response.items[0]
+    const item = response.items[2]
     const res = await fetch(item.link)
     const html = await res.text()
     const $ = cheerio.load(html)
 
-    $('.size-full').each((i, image) => {
+    $('.size-large').each((i, image) => {
       images.push($(image).attr('src'))
     })
 

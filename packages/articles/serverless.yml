@@ -46,11 +46,6 @@ functions:
     events:
       - schedule: rate(4 hours)
 
-  rocketgarage:
-    handler: src/providers/rocketgarage.default
-    events:
-      - schedule: rate(4 hours)
-
   caferacerdreams:
     handler: src/providers/caferacerdreams.default
     events:
@@ -70,11 +65,23 @@ functions:
     handler: src/providers/returnofthecaferacers.default
     events:
       - schedule: rate(2 hours)
-  # bonnefication:
-  #   handler: src/providers/bonnefication.default
-  #   events:
-  #     - schedule: rate(2 hours)
-  # deuscustoms:
-  #   handler: src/providers/deuscustoms.default
-  #   events:
-  #           - schedule: rate(2 hours)
+
+  bonnefication:
+    handler: src/providers/bonnefication.default
+    events:
+      - schedule: rate(4 hours)
+
+  themotoblogs:
+    handler: src/providers/themotoblogs.default
+    events:
+      - schedule: rate(4 hours)
+
+  motorcyclistonline:
+    handler: src/providers/motorcyclistonline.default
+    events:
+      - schedule: rate(4 hours)
+
+  deuscustoms:
+    handler: src/providers/deuscustoms.default
+    events:
+      - schedule: rate(4 hours)

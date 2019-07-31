@@ -50,7 +50,7 @@ export const CURRENT_USER_PROJECTS_QUERY = gql`
 
 export const PUBLISHERS_QUERY = gql`
   query getPublishers {
-    publishers {
+    publishers(first: 15) {
       edges {
         node {
           id

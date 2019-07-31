@@ -27,11 +27,12 @@ function Publishers() {
       {data.publishers.edges.map(({ node }) => {
         return (
           <Base
+            onPress={() => navigate(SCREENS.ARTICLES, { ...node })}
             key={node.id}
             first={data.publishers.edges[0].node.id === node.id}
             last={data.publishers.edges[data.publishers.edges.length - 1].node.id === node.id}
           >
-            <Item onPress={() => navigate(SCREENS.ARTICLES, { ...node })}>
+            <Item>
               <Image
                 width={40}
                 height={40}

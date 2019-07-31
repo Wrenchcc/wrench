@@ -18,13 +18,11 @@ export default async images => {
   try {
     const results = await Promise.all(
       images.map(async url => {
-        const { data } = await axios.get(url, {
+
+        const { data } = await axios.get(encodeURI(url), {
           responseType: 'arraybuffer',
         })
 
-        if (!data) {
-          return
-        }
 
         const filename = `${v4()}.jpg`
 
