@@ -13,6 +13,8 @@ function Avatar({
   isOnline = false,
   badgeSize,
   style = {},
+  borderWidth = 0,
+  borderColor,
 }) {
   return (
     <View style={{ height: size, width: size }}>
@@ -20,6 +22,8 @@ function Avatar({
         {isOnline && <IsOnline badgeSize={badgeSize} />}
 
         <Image
+          borderWidth={borderWidth}
+          borderColor={borderColor}
           placeholderDensity={3}
           source={{ uri }}
           width={size}

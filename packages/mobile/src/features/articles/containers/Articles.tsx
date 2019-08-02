@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
 import { usePaginatedQuery, ARTICLES_QUERY } from 'gql'
-import { Image, Touchable, Carousel, Text, Title } from 'ui'
+import { Avatar, Carousel, Text, Title } from 'ui'
 import { COLORS } from 'ui/constants'
 import Article from 'components/Article'
 
@@ -27,16 +27,12 @@ function Articles({ name, logoUrl, url, id }) {
     <Page
       headerTitle={name}
       headerRight={
-        <Touchable onPress={navigateToWebview}>
-          <Image
-            source={{ uri: logoUrl }}
-            width={30}
-            height={30}
-            borderRadius={30}
-            borderColor={COLORS.DIVIDER}
-            borderWidth={1}
-          />
-        </Touchable>
+        <Avatar
+          onPress={navigateToWebview}
+          uri={logoUrl}
+          borderWidth={1}
+          borderColor={COLORS.DIVIDER}
+        />
       }
     >
       <FlatList

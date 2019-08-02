@@ -5,6 +5,7 @@ import ArticleCategory from './ArticleCategory'
 import ArticleCategoryRelationships from './ArticleCategoryRelationships'
 import ArticleFile from './ArticleFile'
 import ArticlePublisher from './ArticlePublisher'
+import ArticlePublisherSeen from './ArticlePublisherSeen'
 import AuthProvider from './AuthProvider'
 import AuthToken from './AuthToken'
 import Brand from './Brand'
@@ -42,6 +43,7 @@ export const options: ConnectionOptions = {
     ArticleCategoryRelationships,
     ArticleFile,
     ArticlePublisher,
+    ArticlePublisherSeen,
     AuthProvider,
     AuthToken,
     Brand,
@@ -76,6 +78,7 @@ export const db = {
   ArticleCategoryRelationships,
   ArticleFile,
   ArticlePublisher,
+  ArticlePublisherSeen,
   AuthProvider,
   AuthToken,
   Brand,

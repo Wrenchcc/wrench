@@ -79,8 +79,10 @@ export const ARTICLES_QUERY = gql`
           url
           createdAt
           publisher {
+            id
             logoUrl
             url
+            seen
           }
           files: filesConnection(first: 15) {
             edges {

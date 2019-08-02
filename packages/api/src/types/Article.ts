@@ -9,7 +9,7 @@ export default gql`
     title: String
     description: String
     author: ArticleAuthor
-    publisher: ArticlePublisher
+    publisher: Publisher
     url: String
 
     filesConnection(
@@ -48,14 +48,6 @@ export default gql`
   type ArticleCategoryEdge {
     cursor: String!
     node: ArticleCategory!
-  }
-
-  type ArticlePublisher {
-    id: ID
-    slug: LowercaseString
-    name: String
-    url: String
-    logoUrl: String
   }
 
   type ArticleAuthor {

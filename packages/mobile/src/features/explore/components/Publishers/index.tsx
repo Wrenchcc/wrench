@@ -2,7 +2,6 @@ import React from 'react'
 import { useQuery, PUBLISHERS_QUERY } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
-import { COLORS } from 'ui/constants'
 import { Base, List, Item, Image } from './styles'
 
 function Publishers() {
@@ -33,14 +32,7 @@ function Publishers() {
             last={data.publishers.edges[data.publishers.edges.length - 1].node.id === node.id}
           >
             <Item seen={node.seen}>
-              <Image
-                width={40}
-                height={40}
-                source={{ uri: node.logoUrl }}
-                borderRadius={40}
-                borderColor={COLORS.DIVIDER}
-                borderWidth={1}
-              />
+              <Image width={40} height={40} source={{ uri: node.logoUrl }} borderRadius={40} />
             </Item>
             <Text fontSize={12} color="grey" numberOfLines={1} center>
               {node.name}

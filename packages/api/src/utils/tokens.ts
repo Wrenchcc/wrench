@@ -9,6 +9,7 @@ export const getUserId = req => {
 
   if (authorization) {
     const token = authorization.replace('Bearer ', '')
+
     try {
       const { userId } = jwt.verify(token, ACCESS_TOKEN_SECRET)
       return userId
@@ -28,6 +29,7 @@ export const verifyRefreshToken = refreshToken => {
 }
 
 export const createAccessToken = data => jwt.sign(data, ACCESS_TOKEN_SECRET, { expiresIn: '30m' })
+
 export const createRefreshToken = data => jwt.sign(data, REFRESH_TOKEN_SECRET)
 
 export const generateTokens = userId => ({

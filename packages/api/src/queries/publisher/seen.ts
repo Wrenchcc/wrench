@@ -1,5 +1,16 @@
 import { DateTime } from 'luxon'
 
-const date = DateTime.local()
+export default async ({ id, updatedAt }, __, ctx) => {
+  const data = await ctx.db.ArticlePublisherSeen.findOne({
+    where: {
+      publisherId: id,
+      userId: ctx.userId,
+    },
+  })
 
-export default ({ updatedAt }) => !date.hasSame(DateTime.fromSQL(updatedAt), 'day')
+  if (data) {
+    return DateTime.fromSQL(data.lastSeen) > DateTime.fromSQL(updatedAt)
+  }
+
+  return false
+}

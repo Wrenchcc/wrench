@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import { useNavigation, SCREENS } from 'navigation'
 import { Avatar, Title, Icon, Text, Carousel, TimeAgo } from 'ui'
+import { COLORS } from 'ui/constants'
 import { Top, Headline, Content, Spacer } from './styles'
 
 function Article({ title, description, files, publisher, url, createdAt }) {
@@ -16,7 +17,12 @@ function Article({ title, description, files, publisher, url, createdAt }) {
   return (
     <>
       <Top>
-        <Avatar onPress={navigateToPublisher} uri={publisher.logoUrl} />
+        <Avatar
+          onPress={navigateToPublisher}
+          uri={publisher.logoUrl}
+          borderWidth={1}
+          borderColor={COLORS.DIVIDER}
+        />
       </Top>
 
       <Content>
