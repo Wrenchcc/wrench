@@ -152,7 +152,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
             color={withoutTitle ? 'dark' : 'grey'}
             fontSize={15}
             lineHeight={22}
-            numberOfLines={!withoutTitle && 3}
+            numberOfLines={!withoutTitle ? 3 : 0}
           >
             {post.caption}
           </Text>
