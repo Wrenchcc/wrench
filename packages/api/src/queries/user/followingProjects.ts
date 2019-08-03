@@ -6,10 +6,17 @@ export default async ({ id }, args, ctx) => {
     userId: id,
   })
 
-  const projectIds = following.map(({ projectId }) => projectId)
+  let ids = following.map(({ projectId }) => projectId)
+
+  // NOTE: Show popular project if user doesn't follow any
+  if (!ids.length) {
+    const projects = await ctx.db.Project.getPopularProjects()
+    ids = projects.map(p => p.id)
+  }
+
   return paginate(ctx.db.Project, args, {
     where: {
-      id: projectIds.length ? In(projectIds) : null,
+      id: In(ids),
     },
   })
 }

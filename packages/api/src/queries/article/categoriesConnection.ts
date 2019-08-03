@@ -9,6 +9,8 @@ export default async ({ id }, args, ctx) => {
   const ids = categories.map(({ categoryId }) => categoryId)
 
   return paginate(ctx.db.ArticleCategory, args, {
-    where: [{ id: ids.length ? In(ids) : null }],
+    where: {
+      id: ids.length ? In(ids) : null,
+    },
   })
 }

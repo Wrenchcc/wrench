@@ -5,10 +5,11 @@ export default async ({ id }, _, ctx) => {
     userId: id,
   })
 
-  const interestedInIds = interestedIn.map(({ projectTypeId }) => projectTypeId)
+  const ids = interestedIn.map(({ projectTypeId }) => projectTypeId)
+
   const projectTypes = await ctx.db.ProjectType.find({
     where: {
-      id: interestedInIds.length ? In(interestedInIds) : null,
+      id: ids.length ? In(ids) : null,
     },
   })
 

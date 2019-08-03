@@ -51,29 +51,6 @@ export default class Project extends BaseEntity {
       .groupBy('projects.id')
       .orderBy('count', 'DESC')
       .getRawMany()
-
-    // return Project.query(`
-    //   SELECT *
-    //   FROM projects p
-    //   LEFT JOIN
-    //   (SELECT "projectId",
-    //           count("projectId") AS f_count
-    //    FROM following
-    //    GROUP BY "projectId") f ON ("f"."projectId" = "p"."id")
-    //   LEFT JOIN
-    //   (SELECT "posts"."projectId",
-    //           count("posts"."id") AS p_count
-    //    FROM posts
-    //    GROUP BY "posts"."projectId") pp ON ("pp"."projectId" = "p"."id")
-    //   LEFT JOIN
-    //   (SELECT "createdAt" AS f_date
-    //    FROM following
-    //   GROUP BY "createdAt") f2 ON ("f"."projectId" = "p"."id")
-    //   WHERE "f_count" IS NOT NULL
-    //   AND "p_count" IS NOT NULL
-    //   AND "f_date" > NOW()::TIMESTAMP - interval '30 day'
-    //   ORDER BY "f_count" DESC
-    // `)
   }
 
   public static async projectCount(userId) {

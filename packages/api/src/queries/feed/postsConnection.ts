@@ -10,6 +10,11 @@ export default isAuthenticated(async (_, args, ctx) => {
   const ids = following.map(({ projectId }) => projectId)
 
   return paginate(ctx.db.Post, args, {
-    where: [{ projectId: ids.length ? In(ids) : null }, { userId: ctx.userId }],
+    where: [
+      {
+        projectId: ids.length ? In(ids) : null,
+      },
+      { userId: ctx.userId },
+    ],
   })
 })

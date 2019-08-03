@@ -1,16 +1,10 @@
 import React from 'react'
-import { useQuery, PUBLISHERS_QUERY } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
 import { Base, List, Item, Image } from './styles'
 
-function Publishers() {
+function Publishers({ data }) {
   const { navigate } = useNavigation()
-  const { data, loading } = useQuery(PUBLISHERS_QUERY)
-
-  if (loading) {
-    return null
-  }
 
   return (
     <List
@@ -24,9 +18,11 @@ function Publishers() {
       }}
     >
       {data.publishers.edges.map(({ node }) => {
+        const handleNavigation = () => navigate(SCREENS.ARTICLES, { ...node })
+
         return (
           <Base
-            onPress={() => navigate(SCREENS.ARTICLES, { ...node })}
+            onPress={handleNavigation}
             key={node.id}
             first={data.publishers.edges[0].node.id === node.id}
             last={data.publishers.edges[data.publishers.edges.length - 1].node.id === node.id}

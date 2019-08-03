@@ -7,8 +7,11 @@ export default async ({ id }, args, ctx) => {
     projectId: id,
   })
 
-  const userIds = followers.map(({ userId }) => userId)
+  const ids = followers.map(({ userId }) => userId)
+
   return paginate(ctx.db.User, args, {
-    where: { id: userIds.length ? In(userIds) : null },
+    where: {
+      id: ids.length ? In(ids) : null,
+    },
   })
 }

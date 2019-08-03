@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { Navigation } from 'react-native-navigation'
 import { Layout, FlatList, SCREENS, currentComponentName } from 'navigation'
+import { useQuery, PUBLISHERS_QUERY } from 'gql'
+
 import { getRecentPosts } from 'graphql/queries/getExplore'
 import Add from 'components/Add'
 import SearchBar from 'components/SearchBar'
@@ -16,6 +18,13 @@ const DEFAULT_QUERY = ''
 function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
+
+  const { data, loading, refetch: refetchPublishers } = useQuery(PUBLISHERS_QUERY)
+
+  const handleRefetch = useCallback(() => {
+    refetch()
+    refetchPublishers()
+  }, [refetch, refetchPublishers])
 
   const handleQueryChange = useCallback(
     text => {
@@ -68,12 +77,12 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
           initialNumToRender={2}
           ListHeaderComponent={
             <>
-              <Publishers />
+              {!loading && <Publishers data={data} />}
               <Popular />
             </>
           }
           data={posts}
-          refetch={refetch}
+          refetch={handleRefetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
           isFetching={isFetching}

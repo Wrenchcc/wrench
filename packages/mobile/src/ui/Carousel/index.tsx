@@ -38,7 +38,7 @@ function Carousel({ onPress, files }) {
     <FlatList
       keyExtractor={keyExtractor}
       getItemLayout={getItemLayout}
-      initialNumToRender={3}
+      initialNumToRender={2}
       data={files.edges}
       scrollEnabled={scrollEnabled}
       horizontal
