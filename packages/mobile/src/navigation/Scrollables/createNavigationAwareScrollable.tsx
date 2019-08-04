@@ -9,6 +9,11 @@ import { NAVIGATION, SCREENS } from '../constants'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 
+// NOTE: https://github.com/facebook/react-native/issues/23364
+const keyboardDismissProp = isAndroid
+  ? { onScrollEndDrag: Keyboard.dismiss }
+  : { keyboardDismissMode: 'on-drag' }
+
 const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
 const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
@@ -151,7 +156,6 @@ export default function createNavigationAwareScrollable(Component) {
         contentInsetAdjustmentBehavior="never"
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
         keyExtractor={keyExtractor}
         contentContainerStyle={{
           flex: initialFetch ? 1 : 0,
@@ -169,6 +173,7 @@ export default function createNavigationAwareScrollable(Component) {
         {...(spacingSeparator && {
           ItemSeparatorComponent: Separator,
         })}
+        {...keyboardDismissProp}
         {...props}
       />
     )

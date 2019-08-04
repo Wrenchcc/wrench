@@ -1,13 +1,14 @@
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { COLORS } from 'ui/constants'
+import { isIphone } from 'utils/platform'
 
 function Loader({
   size = 'small',
   color = COLORS.DARK,
   padding = 32,
   fullscreen = false,
-  top = -200,
+  top = isIphone ? -200 : 0,
 }) {
   return (
     <View

@@ -15,16 +15,15 @@ export default {
     backgroundColor: COLORS.DARK,
     titleDisplayMode: 'alwaysHide',
   },
-  statusBar: {
-    backgroundColor: 'white',
-    style: 'dark',
-  },
-
   layout: {
     backgroundColor: COLORS.WHITE,
   },
   overlay: {
     interceptTouchOutside: false,
+  },
+  statusBar: {
+    backgroundColor: 'white',
+    style: 'dark',
   },
   topBar: {
     height: 0,
