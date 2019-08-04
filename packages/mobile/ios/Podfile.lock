@@ -230,7 +230,7 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.1):
     - React
-  - RNDeviceInfo (2.3.1):
+  - RNDeviceInfo (2.3.2):
     - React
   - RNFirebase (5.5.6):
     - Firebase/Core
@@ -257,9 +257,9 @@ PODS:
     - React
   - RNShare (1.2.1):
     - React
-  - SDWebImage (5.0.6):
-    - SDWebImage/Core (= 5.0.6)
-  - SDWebImage/Core (5.0.6)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
   - SDWebImageWebPCoder (0.2.3):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.0)
@@ -522,14 +522,14 @@ SPEC CHECKSUMS:
   react-native-webview: 5036ed4a973ad1deeeff118262d2df7b60b3419d
   ReactNativeNavigation: 05945cfd4610260b1e6d46a07222dda6223959dd
   RNCAsyncStorage: 2e2e3feb9bdadc752a026703d8c4065ca912e75a
-  RNDeviceInfo: 74ee98a0b3ef57604ea9953f03eca549a9335160
+  RNDeviceInfo: 17e34f6dd902f08d88cbe2c0b7a01be948d43641
   RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNPermissions: 064e4eb34c8c3da493ab48bda0af53cdd019b6a7
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
   RNReanimated: 7a52c90473b5e81c13408d40d797b98387eaddde
   RNShare: 48cf88cadf9ca2143cdaa557c1ec7f8808040ffc
-  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SDWebImageWebPCoder: 7568737603c50f6237850afedd7e9e28e5917e6b
   Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
   SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90

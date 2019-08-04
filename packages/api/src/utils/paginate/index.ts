@@ -26,7 +26,7 @@ export default async (
   if (after || before) {
     findOptions.where = {
       ...pathOr({}, ['where'], options),
-      ...findOperators({ after, before }, orderBy),
+      ...findOperators({ after, before }, orderBy), // NOTE: Overrides id from options on followers etc
     }
   }
 
