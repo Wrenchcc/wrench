@@ -4,8 +4,9 @@ import { Page, FlatList } from 'navigation'
 import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
+import { isIphone } from 'utils/platform'
 
-const COMMENT_FIELD_OFFSET = 140
+const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
 
 function Comments({
   comments,

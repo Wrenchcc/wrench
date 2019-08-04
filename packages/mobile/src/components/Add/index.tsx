@@ -3,6 +3,7 @@ import { useNavigation, SCREENS } from 'navigation'
 import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { COLORS } from 'ui/constants'
 import Icon from 'ui/Icon'
+import { isIphone } from 'utils/platform'
 import { add } from 'images'
 
 function Add() {
@@ -19,8 +20,9 @@ function Add() {
             backgroundColor: data.user.projects.edges.length > 0 ? COLORS.DARK : COLORS.WHITE,
           },
           statusBar: {
-            drawBehind: true,
-            visible: false,
+            backgroundColor: 'black',
+            style: 'light',
+            visible: isIphone ? false : true,
           },
         },
       }),

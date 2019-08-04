@@ -9,8 +9,9 @@ import { getComment } from 'graphql/queries/comment/getComment'
 import { getComments } from 'graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
+import { isIphone } from 'utils/platform'
 
-const COMMENT_FIELD_OFFSET = 140
+const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
 
 // TODO: Load comment in top
 function PostContainer({

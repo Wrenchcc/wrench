@@ -23,14 +23,17 @@ function Notifications({
   const hasNotifications = notifications && notifications.length > 0
 
   useEffect(() => {
-    if (unreadCount > 0) {
-      showNotificationBadge()
-    }
+    // if (unreadCount > 0) {
+    showNotificationBadge()
+    // }
 
     const componentAppearListener = Navigation.events().registerComponentDidAppearListener(
       ({ componentId: id }) => {
-        if (componentId === id && unreadCount > 0) {
-          markAllNotificationsSeenMutation()
+        if (componentId === id) {
+          if (unreadCount > 0) {
+            markAllNotificationsSeenMutation()
+          }
+
           hideNotificationBadge()
         }
       }

@@ -1,6 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
-import { feed, explore, notifications, notificationsSelected, profile } from 'images'
+import { feed, explore, notification, profile } from 'images'
 import { loadSelectedProjectId } from 'store/post'
 import defaultOptions from './defaultOptions'
 import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
@@ -111,8 +111,9 @@ export function AppNavigation(onboarding) {
                       name: SCREENS.NOTIFICATIONS,
                       options: {
                         bottomTab: {
-                          icon: notifications,
-                          selectedIcon: notificationsSelected,
+                          icon: notification,
+                          iconColor: COLORS.TAB_ICON,
+                          selectedIconColor: COLORS.WHITE,
                         },
                       },
                     },

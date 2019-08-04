@@ -1,25 +1,25 @@
 import { COLORS } from 'ui/constants'
-import { hasNotch } from 'utils/platform'
 
 export default {
   bottomTab: {
     iconInsets: {
-      bottom: hasNotch ? -20 : -10,
+      bottom: -10,
       left: 0,
       right: 0,
-      top: 0,
+      top: 10,
     },
     textColor: COLORS.WHITE,
+    titleDisplayMode: 'alwaysHide',
+  },
+  bottomTabs: {
+    backgroundColor: COLORS.DARK,
     titleDisplayMode: 'alwaysHide',
   },
   statusBar: {
     backgroundColor: 'white',
     style: 'dark',
   },
-  bottomTabs: {
-    backgroundColor: COLORS.DARK,
-    titleDisplayMode: 'alwaysHide',
-  },
+
   layout: {
     backgroundColor: COLORS.WHITE,
   },

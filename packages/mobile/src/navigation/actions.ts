@@ -1,10 +1,7 @@
 import { Navigation } from 'react-native-navigation'
-import {
-  notificationsBadge,
-  notificationsUnselectedBadge,
-  notificationsSelected,
-  notifications as notificationsIcon,
-} from 'images'
+import { notifications } from 'images'
+import { COLORS } from 'ui/constants'
+import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 
 export let currentComponentName
@@ -97,8 +94,11 @@ export function navigate(screen, { options, ...passProps } = {}) {
 export function showNotificationBadge() {
   Navigation.mergeOptions(SCREENS.NOTIFICATIONS, {
     bottomTab: {
-      icon: notificationsUnselectedBadge,
-      selectedIcon: notificationsBadge,
+      dotIndicator: {
+        color: COLORS.ORANGE,
+        size: isIphone ? 8 : 30,
+        visible: true,
+      },
     },
   })
 }
@@ -106,8 +106,9 @@ export function showNotificationBadge() {
 export function hideNotificationBadge() {
   Navigation.mergeOptions(SCREENS.NOTIFICATIONS, {
     bottomTab: {
-      icon: notificationsIcon,
-      selectedIcon: notificationsSelected,
+      dotIndicator: {
+        visible: false,
+      },
     },
   })
 }
