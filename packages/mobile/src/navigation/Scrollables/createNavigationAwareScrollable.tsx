@@ -98,7 +98,7 @@ export default function createNavigationAwareScrollable(Component) {
         const scrollResponder =
           scrollRef.current && scrollRef.current.getNode().getScrollResponder()
 
-        if (!scrollResponder || !currentlyFocusedField || isAndroid) {
+        if (!scrollResponder || !currentlyFocusedField) {
           return
         }
 

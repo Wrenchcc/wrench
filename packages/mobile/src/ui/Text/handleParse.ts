@@ -22,9 +22,6 @@ const handleNamePress = name => {
 }
 
 const styles = {
-  emoji: {
-    fontFamily: 'System',
-  },
   link: {
     color: COLORS.DARK,
     fontFamily: FONTS.MEDIUM,
@@ -51,9 +48,5 @@ export default [
     },
     style: styles.link,
     type: 'url',
-  },
-  {
-    style: styles.emoji,
-    type: 'emoji',
   },
 ]

@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
-import { Platform, Dimensions } from 'react-native'
+import { Dimensions } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
 import * as MediaLibrary from 'expo-media-library'
@@ -7,14 +7,16 @@ import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-nati
 import { prepend } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
 import { Text, Touchable } from 'ui'
+import { isIphone } from 'utils/platform'
 import { logError } from 'utils/sentry'
 import List from './List'
 import Tabs from './Tabs'
 
 const { width } = Dimensions.get('window')
 
-const PERMISSION =
-  Platform.OS === 'ios' ? IOS_PERMISSIONS.PHOTO_LIBRARY : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
+const PERMISSION = isIphone
+  ? IOS_PERMISSIONS.PHOTO_LIBRARY
+  : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
 
 function MediaPicker() {
   const { t } = useTranslation()
@@ -51,7 +53,7 @@ function MediaPicker() {
 
   useEffect(() => {
     check(PERMISSION).then(response => {
-      if (response === RESULTS.GRANTED) {
+      if (response === RESULTS.GRANTED && isIphone) {
         fetchAlbums()
       }
 
