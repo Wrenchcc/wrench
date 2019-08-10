@@ -20,8 +20,8 @@ function Add() {
             backgroundColor: data.user.projects.edges.length > 0 ? COLORS.DARK : COLORS.WHITE,
           },
           statusBar: {
-            backgroundColor: 'black',
-            style: 'light',
+            backgroundColor: data.user.projects.edges.length > 0 ? 'black' : 'white',
+            style: data.user.projects.edges.length > 0 ? 'light' : 'dark',
             visible: isIphone ? false : true,
           },
         },
