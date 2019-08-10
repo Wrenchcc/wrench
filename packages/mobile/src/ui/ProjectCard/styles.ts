@@ -5,8 +5,9 @@ import UiFollowers from 'ui/Followers'
 import UiText from 'ui/Text'
 import UiButton from 'ui/Button'
 
-export const Base = styled.View`
+export const Base = styled(UiTouchable)`
   margin-top: 20;
+  height: 180;
   position: relative;
 `
 
@@ -33,10 +34,10 @@ export const Content = styled.View`
   position: absolute;
   flex: 1;
   width: 100%;
-  height: 100%;
   padding: 10px;
   justify-content: space-between;
   flex-direction: row;
+  bottom: 0;
   align-items: flex-end;
   z-index: 2;
 `

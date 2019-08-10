@@ -21,13 +21,16 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
     )
   }, [project])
 
-  const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
+  const handleFollow = useCallback(() => {
+    followProjectMutation(project.id)
+  }, [project])
 
   return (
     <Base style={style}>
-      <Touchable onPress={onPress} style={{ height: 180 }}>
+      <Touchable onPress={onPress} style={{ height: '100%' }}>
         {renderImages()}
       </Touchable>
+
       <Content>
         <Info>
           <ProjectName numberOfLines={1} color="white">
@@ -35,6 +38,7 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
           </ProjectName>
           <Followers followers={project.followers.totalCount} color="white" opacity={0.9} />
         </Info>
+
         {!project.permissions.isOwner && (
           <Button small background="white" onPress={handleFollow}>
             {project.permissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
