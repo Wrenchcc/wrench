@@ -5,10 +5,9 @@ import UiFollowers from 'ui/Followers'
 import UiText from 'ui/Text'
 import UiButton from 'ui/Button'
 
-export const Base = styled(UiTouchable)`
+export const Base = styled.View`
   margin-top: 20;
   position: relative;
-  height: 180;
 `
 
 export const Overlay = styled(LinearGradient)`

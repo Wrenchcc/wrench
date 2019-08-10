@@ -1,12 +1,13 @@
 import { COLORS } from 'ui/constants'
+import { hasNotch } from 'utils/platform'
 
 export default {
   bottomTab: {
     iconInsets: {
-      bottom: -10,
+      bottom: hasNotch ? -10 : -5,
       left: 0,
       right: 0,
-      top: 10,
+      top: hasNotch ? 10 : 5,
     },
     textColor: COLORS.WHITE,
     titleDisplayMode: 'alwaysHide',

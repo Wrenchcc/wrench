@@ -7,6 +7,7 @@ import { isAndroid } from 'utils/platform'
 import defaultOptions from './defaultOptions'
 import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
 
+// NOTE: Hide bottom bar
 if (isAndroid) {
   Keyboard.addListener('keyboardDidShow', () => {
     Navigation.mergeOptions(BOTTOM_TABS_ID, {

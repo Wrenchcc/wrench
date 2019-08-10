@@ -4,6 +4,7 @@ import { pathOr } from 'ramda'
 import Placeholder from 'ui/Placeholder'
 import { followProject } from 'graphql/mutations/project/followProject'
 import Image from 'ui/Image'
+import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
 function ProjectCard({ onPress, project, followProject: followProjectMutation, style }) {
@@ -23,9 +24,10 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
   const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
 
   return (
-    <Base onPress={onPress} style={style}>
-      {renderImages()}
-
+    <Base style={style}>
+      <Touchable onPress={onPress} style={{ height: 180 }}>
+        {renderImages()}
+      </Touchable>
       <Content>
         <Info>
           <ProjectName numberOfLines={1} color="white">

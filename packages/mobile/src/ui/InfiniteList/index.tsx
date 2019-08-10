@@ -1,7 +1,13 @@
 import React, { useCallback } from 'react'
-import { FlatList, View } from 'react-native'
+import { FlatList, View, Keyboard } from 'react-native'
+import { isAndroid } from 'utils/platform'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
+
+// NOTE: https://github.com/facebook/react-native/issues/23364
+const keyboardDismissProp = isAndroid
+  ? { onScrollEndDrag: Keyboard.dismiss }
+  : { keyboardDismissMode: 'on-drag' }
 
 const renderLoader = (fullscreen, loaderPosition) => (
   <Loader fullscreen={fullscreen} top={loaderPosition} />
@@ -61,10 +67,11 @@ function InfiniteList({
         paddingTop,
         ...contentContainerStyle,
       }}
-      {...borderSeparator && { ItemSeparatorComponent: BorderSeparator }}
-      {...spacingSeparator && {
+      {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
+      {...(spacingSeparator && {
         ItemSeparatorComponent: Separator,
-      }}
+      })}
+      {...keyboardDismissProp}
       {...props}
     />
   )

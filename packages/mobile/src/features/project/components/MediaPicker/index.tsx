@@ -21,22 +21,22 @@ const PERMISSION = isIphone
 function MediaPicker() {
   const { t } = useTranslation()
   const [tabIndex, setTabIndex] = useState(0)
-  const [albums, setAlbums] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [checkingPermission, setCheckingPermission] = useState(true)
   const [photoPermission, setPhotoPermission] = useState(false)
+  const [albums, setAlbums] = useState([
+    {
+      id: null,
+      title: t('MediaPicker:all'),
+    },
+  ])
 
   const fetchAlbums = async () => {
     try {
-      const first = {
-        id: null,
-        title: t('MediaPicker:all'),
-      }
-
       const results = await MediaLibrary.getAlbumsAsync()
       const filteredAlbums = results.filter(({ assetCount }) => assetCount !== 0)
 
-      const assets = prepend(first, filteredAlbums)
+      const assets = albums.concat(filteredAlbums)
 
       setAlbums(
         assets.map(album => ({
@@ -51,6 +51,8 @@ function MediaPicker() {
     }
   }
 
+  // TODO: Crashes on Android
+  // https://github.com/expo/expo/issues/2004
   useEffect(() => {
     check(PERMISSION).then(response => {
       if (response === RESULTS.GRANTED && isIphone) {
