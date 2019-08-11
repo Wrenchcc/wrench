@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { toUpper } from 'ramda'
 import UiTouchable from 'ui/Touchable'
-import UiText from 'ui/Text'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
@@ -12,5 +11,3 @@ export const Base = styled(UiTouchable)`
   padding-left: 10;
   padding-right: 10;
 `
-
-export const Text = styled(UiText)``

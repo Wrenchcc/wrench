@@ -1,5 +1,6 @@
 import React from 'react'
-import { Base, Text } from './styles'
+import Text from 'ui/Text'
+import { Base } from './styles'
 
 function Button({ children, color, ...props }) {
   return (
