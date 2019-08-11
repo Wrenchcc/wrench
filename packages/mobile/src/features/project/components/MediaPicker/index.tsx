@@ -74,7 +74,11 @@ function MediaPicker() {
 
   const permissionAuthorized = useCallback(() => {
     setPhotoPermission(RESULTS.GRANTED)
-    fetchAlbums()
+    // TODO: Crashes on Android
+    // https://github.com/expo/expo/issues/2004
+    if (isIphone) {
+      fetchAlbums()
+    }
   }, [setPhotoPermission, fetchAlbums])
 
   const renderScene = ({ route }) => <List album={route.key} />

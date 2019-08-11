@@ -54,8 +54,8 @@ export default class ImageEditor extends PureComponent {
         width: IMAGE_EDITOR_WIDTH,
       }
       if (Platform.OS === 'android') {
-        this.scaledImageSize.width *= 2
-        this.scaledImageSize.height *= 2
+        this.scaledImageSize.width *= 1
+        this.scaledImageSize.height *= 1
         this.horizontal = true
       }
     }

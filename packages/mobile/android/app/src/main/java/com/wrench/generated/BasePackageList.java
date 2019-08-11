@@ -9,7 +9,6 @@ public class BasePackageList {
     return Arrays.<Package>asList(
         new expo.modules.constants.ConstantsPackage(),
         new expo.modules.filesystem.FileSystemPackage(),
-        new expo.modules.imagemanipulator.ImageManipulatorPackage(),
         new expo.modules.medialibrary.MediaLibraryPackage(),
         new expo.modules.permissions.PermissionsPackage()
     );

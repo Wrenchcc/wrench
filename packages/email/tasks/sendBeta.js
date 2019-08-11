@@ -17,8 +17,18 @@ const ses = new SES({
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
 })
 
-function sendEmailWithDelay(email) {
-  setTimeout(async () => {
+const waitFor = ms => new Promise(r => setTimeout(r, ms))
+
+async function asyncForEach(array, callback) {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array)
+  }
+}
+
+asyncForEach(JSON.parse(subscribers), async email => {
+  try {
+    await waitFor(50)
+
     // await ses
     //   .sendTemplatedEmail({
     //     Source: 'Wrench <beta@wrench.cc>',
@@ -29,12 +39,7 @@ function sendEmailWithDelay(email) {
     //     TemplateData: fixtures,
     //   })
     //   .promise()
-  }, 50)
-}
 
-JSON.parse(subscribers).map(email => {
-  try {
-    sendEmailWithDelay(email)
     debug('Successfully sent message to: %s', email)
   } catch (err) {
     debug('Error sending message: %o', err)

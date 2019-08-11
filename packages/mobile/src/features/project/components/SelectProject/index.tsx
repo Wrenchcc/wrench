@@ -18,7 +18,6 @@ function SelectProject({ dark = false }) {
 
   const projects = data.user.projects.edges
 
-  // TODO: Rerender only when projects change
   const { projectId, title, update } = usePostStore(store => ({
     projectId: getProjectById(store.projectId, projects).id,
     title: getProjectById(store.projectId, projects).title,

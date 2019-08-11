@@ -15,6 +15,7 @@ import expo.modules.permissions.PermissionsPackage;
 import expo.modules.filesystem.FileSystemPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
+import com.reactnativecommunity.imageeditor.ImageEditorPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
@@ -81,6 +82,7 @@ public class MainApplication extends NavigationApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
       new MainReactPackage(),
+      new ImageEditorPackage(),
       new RNPermissionsPackage(),
       new ModuleRegistryAdapter(mModuleRegistryProvider),
       new RNSentryPackage(),

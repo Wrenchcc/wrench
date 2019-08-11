@@ -16,6 +16,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.0.0",
     "@react-native-community/async-storage": "^1.6.1",
+    "@react-native-community/image-editor": "2.0.0",
     "@react-native-community/netinfo": "^3.2.1",
     "@unimodules/core": "^3.0.2",
     "apollo-cache-inmemory": "^1.6.3",
@@ -26,7 +27,6 @@
     "apollo-link-error": "^1.1.11",
     "apollo-link-queue": "^2.2.0",
     "apollo-link-retry": "^2.2.14",
-    "expo-image-manipulator": "^6.0.0",
     "expo-media-library": "^6.0.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",

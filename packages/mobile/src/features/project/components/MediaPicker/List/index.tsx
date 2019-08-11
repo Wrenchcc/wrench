@@ -84,14 +84,6 @@ function List({ album }) {
     return null
   }, [hasNextPage])
 
-  const renderLoadingComponent = () => null
-  // TODO
-  //  (
-  //   <View style={{ flex: 1, justifyContent: 'center' }}>
-  //     <ActivityIndicator color="white" />
-  //   </View>
-  // )
-
   return (
     <FlatList
       contentContainerStyle={{ padding: 3 }}
@@ -99,7 +91,6 @@ function List({ album }) {
       initialNumToRender={16}
       keyExtractor={keyExtractor}
       ListFooterComponent={renderFooter}
-      ListEmptyComponent={renderLoadingComponent}
       numColumns={NUM_COLUMNS}
       onEndReached={onEndReached}
       renderItem={renderItem}
