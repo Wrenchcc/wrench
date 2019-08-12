@@ -30,4 +30,5 @@ export enum DynamicLinkTypes {
 
 export enum AuthProviderTypes {
   FACEBOOK = 'FACEBOOK',
+  GOOGLE = 'GOOGLE',
 }

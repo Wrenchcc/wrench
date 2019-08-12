@@ -36,6 +36,7 @@ export const SEARCH_TYPES = {
 
 export const AUTH_PROVIDER_TYPES = {
   FACEBOOK: 'FACEBOOK',
+  GOOGLE: 'GOOGLE',
 }
 
 export const FILE_TYPES = {
