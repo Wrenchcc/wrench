@@ -29,16 +29,16 @@ asyncForEach(JSON.parse(subscribers), async email => {
   try {
     await waitFor(50)
 
-    // await ses
-    //   .sendTemplatedEmail({
-    //     Source: 'Wrench <beta@wrench.cc>',
-    //     Template: 'beta',
-    //     Destination: {
-    //       ToAddresses: [email],
-    //     },
-    //     TemplateData: fixtures,
-    //   })
-    //   .promise()
+    await ses
+      .sendTemplatedEmail({
+        Source: 'Wrench <no-reply@wrench.cc>',
+        Template: 'beta',
+        Destination: {
+          ToAddresses: [email],
+        },
+        TemplateData: fixtures,
+      })
+      .promise()
 
     debug('Successfully sent message to: %s', email)
   } catch (err) {

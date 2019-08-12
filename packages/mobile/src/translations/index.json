@@ -134,6 +134,9 @@
     "Facebook": {
       "button": "Continue with Facebook"
     },
+    "Google": {
+      "button": "Continue with Google"
+    },
     "Legal": {
       "description": "By continuing you agree to Wrench's ",
       "link": "terms and conditions."
@@ -421,6 +424,9 @@
     "Facebook": {
       "button": "Logga in med Facebook"
     },
+    "Google": {
+      "button": "Logga in med Google"
+    },
     "Legal": {
       "description": "Genom att fortsätta hålla du med Wrench's ",
       "link": "användarvillkor."
@@ -444,7 +450,7 @@
       "share": "Dela oss",
       "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
       "settings": "Inställningar",
-      "push-notifications": "Push notifikationer",
+      "push-notifications": "Push-notifikationer",
       "language": "Språk",
       "membership": "Medlemskap",
       "general": "Almänt",

@@ -6,7 +6,7 @@ import { getCurrentUser } from 'gql'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
-import { Button, Text, Loader } from './styled'
+import { Button, Text, Loader } from './styles'
 
 function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
   const { t } = useTranslation()

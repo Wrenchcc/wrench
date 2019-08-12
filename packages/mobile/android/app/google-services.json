@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "407610377102-llujh7u4f3aiqkkh6sicmspjbocmq228.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrench",
+            "certificate_hash": "fb246e91e2eb43380fe8e3e0c46befb0e352dfde"
+          }
+        },
+        {
           "client_id": "407610377102-i51cefcjclotos2673d09cbncl1mo02f.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -25,15 +33,21 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407610377102-i51cefcjclotos2673d09cbncl1mo02f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "407610377102-hl7l2de1io4qoog519hmn2766qc5kvh5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "cc.wrench.app",
+                "app_store_id": "544007664"
+              }
+            }
+          ]
         }
       }
     }

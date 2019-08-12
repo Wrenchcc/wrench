@@ -10,6 +10,7 @@ export const Button = styled(Touchable)`
   justify-content: center;
   flex-direction: row;
   padding: 20px;
+  margin-bottom: 15;
 `
 
 export const Text = styled(UiText)`

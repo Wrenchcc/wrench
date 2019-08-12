@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import Facebook from '../../components/Facebook'
+import Google from '../../components/Google'
 import Legal from '../../components/Legal'
 import { Base, Inner, Content, Video, Icon, Description, Headline, Overlay } from './styles'
 
@@ -24,7 +25,10 @@ function SignIn() {
             {t('SignIn:description')}
           </Description>
         </Content>
+
         <Facebook />
+        <Google />
+
         <Legal />
       </Inner>
     </Base>
