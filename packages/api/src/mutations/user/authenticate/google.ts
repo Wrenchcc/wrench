@@ -7,6 +7,32 @@ export default async (_, { idToken, code }, ctx) => {
   const googleUser = await ctx.services.google.userInfo(idToken, code)
   const { userAgent } = ctx
 
+  // User email registred before
+  // const userRegistred = await ctx.db.User.findOne({
+  //   email: googleUser.email,
+  // })
+  //
+  // if (userRegistred) {
+  //   const tokens = generateTokens(userRegistred.userId)
+  //
+  //   await Promise.all([
+  //     // Upload avatar if new one
+  //     ctx.services.facebook.uploadAvatar(userRegistred.id, googleUser.id, googleUser.isSilhouette),
+  //     // Delete previous tokens with same user agent and save new
+  //     ctx.db.AuthToken.delete({
+  //       userAgent,
+  //       userId: userRegistred.userId,
+  //     }),
+  //     ctx.db.AuthToken.save({
+  //       refreshToken: tokens.refresh_token,
+  //       userAgent,
+  //       userId: userRegistred.userId,
+  //     }),
+  //   ])
+  //
+  //   return tokens
+  // }
+
   const authProvider = await ctx.db.AuthProvider.findOne({
     where: {
       type: AUTH_PROVIDER_TYPES.GOOGLE,

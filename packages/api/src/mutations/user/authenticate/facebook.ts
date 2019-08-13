@@ -7,6 +7,32 @@ export default async (_, { token }, ctx) => {
   const fbUser = await ctx.services.facebook.userInfo(token)
   const { userAgent } = ctx
 
+  // User email registred before
+  // const userRegistred = await ctx.db.User.findOne({
+  //   email: fbUser.email,
+  // })
+  //
+  // if (userRegistred) {
+  //   const tokens = generateTokens(userRegistred.userId)
+  //
+  //   await Promise.all([
+  //     // Upload avatar if new one
+  //     ctx.services.facebook.uploadAvatar(userRegistred.id, fbUser.id, fbUser.isSilhouette),
+  //     // Delete previous tokens with same user agent and save new
+  //     ctx.db.AuthToken.delete({
+  //       userAgent,
+  //       userId: userRegistred.userId,
+  //     }),
+  //     ctx.db.AuthToken.save({
+  //       refreshToken: tokens.refresh_token,
+  //       userAgent,
+  //       userId: userRegistred.userId,
+  //     }),
+  //   ])
+  //
+  //   return tokens
+  // }
+
   // Find user from facebook id
   const authProvider = await ctx.db.AuthProvider.findOne({
     where: {

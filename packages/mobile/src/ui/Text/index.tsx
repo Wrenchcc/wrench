@@ -2,12 +2,22 @@ import React from 'react'
 import handleParse from './handleParse'
 import { Base } from './styles'
 
-const Text = ({ children, numberOfLines = 0, disabled = false, lineHeight = null, ...props }) => (
+const Text = ({
+  children,
+  numberOfLines = 0,
+  disabled = false,
+  onPress,
+  lineHeight = null,
+  ...props
+}) => (
   <Base
     numberOfLines={numberOfLines}
+    {...(!disabled && { onPress })}
     {...props}
     parse={handleParse}
-    childrenProps={{ style: { lineHeight } }}
+    childrenProps={{
+      style: { lineHeight },
+    }}
   >
     {children}
   </Base>

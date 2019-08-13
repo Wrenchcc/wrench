@@ -51,11 +51,9 @@ function MediaPicker() {
     }
   }
 
-  // TODO: Crashes on Android
-  // https://github.com/expo/expo/issues/2004
   useEffect(() => {
     check(PERMISSION).then(response => {
-      if (response === RESULTS.GRANTED && isIphone) {
+      if (response === RESULTS.GRANTED) {
         fetchAlbums()
       }
 
@@ -74,11 +72,8 @@ function MediaPicker() {
 
   const permissionAuthorized = useCallback(() => {
     setPhotoPermission(RESULTS.GRANTED)
-    // TODO: Crashes on Android
-    // https://github.com/expo/expo/issues/2004
-    if (isIphone) {
-      fetchAlbums()
-    }
+
+    fetchAlbums()
   }, [setPhotoPermission, fetchAlbums])
 
   const renderScene = ({ route }) => <List album={route.key} />
