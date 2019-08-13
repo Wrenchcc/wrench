@@ -25,8 +25,6 @@ export default async (userId, avatarUrl, isSilhouette) => {
       responseType: 'arraybuffer',
     })
 
-    console.log(avatar)
-
     return s3
       .upload({
         Body: avatar.data,
