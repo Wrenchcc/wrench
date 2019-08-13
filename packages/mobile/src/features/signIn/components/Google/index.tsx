@@ -1,31 +1,32 @@
 import React, { useCallback, useState } from 'react'
 import { AppNavigation } from 'navigation'
 import { useTranslation } from 'react-i18next'
-import { LoginManager, AccessToken } from 'react-native-fbsdk'
+import { GoogleSignin, statusCodes } from 'react-native-google-signin'
 import { getCurrentUser } from 'gql'
+import { authenticateGoogle } from 'graphql/mutations/user/authenticateGoogle'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
 import { Button, Text, Loader } from './styles'
 
-function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
+function Google({ authenticateGoogle: authenticateGoogleMutation }) {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleLoginManager = useCallback(async () => {
     try {
-      const result = await LoginManager.logInWithPermissions(['public_profile', 'email'])
+      GoogleSignin.configure({
+        offlineAccess: true,
+        webClientId: '407610377102-i51cefcjclotos2673d09cbncl1mo02f.apps.googleusercontent.com',
+      })
+
       setIsLoading(true)
 
-      if (result.isCancelled) {
-        setIsLoading(false)
-        return
-      }
+      await GoogleSignin.hasPlayServices()
+      const userInfo = await GoogleSignin.signIn()
 
-      const facebookResponse = await AccessToken.getCurrentAccessToken()
-      await authenticateFacebookMutation(facebookResponse.accessToken)
+      await authenticateGoogleMutation(userInfo.idToken, userInfo.serverAuthCode)
 
-      track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
+      track(events.USER_SIGNED_IN_GOOGLE_SUCCESSFULL)
       const { data } = await getCurrentUser()
 
       if (data.user) {
@@ -33,7 +34,7 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
       }
     } catch (err) {
       setIsLoading(false)
-      track(events.USER_SIGNED_IN_FACEBOOK_FAILED)
+      track(events.USER_SIGNED_IN_GOOGLE_FAILED)
       logError(err)
     }
   }, [])
@@ -41,11 +42,11 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
   return (
     <Button onPress={handleLoginManager}>
       <Text white medium>
-        {t('Facebook:button')}
+        {t('Google:button')}
       </Text>
-      {isLoading && <Loader color="white" />}
+      {isLoading && <Loader color="black" />}
     </Button>
   )
 }
 
-export default authenticateFacebook(Facebook)
+export default authenticateGoogle(Google)

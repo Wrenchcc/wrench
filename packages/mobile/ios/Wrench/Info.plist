@@ -38,6 +38,14 @@
 				<string>wrench</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.407610377102-hl7l2de1io4qoog519hmn2766qc5kvh5</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -45,6 +53,10 @@
 	<string>1174076712654826</string>
 	<key>FacebookDisplayName</key>
 	<string>Wrench</string>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://share.wrench.cc</string>
+	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -52,7 +64,7 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 		<string>whatsapp</string>
- 		<string>mailto</string>
+		<string>mailto</string>
 		<string>facebook</string>
 		<string>instagram</string>
 		<string>twitter</string>
@@ -79,7 +91,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to access your device&apos;s accelerometer</string>
+	<string>Allow $(PRODUCT_NAME) to access your device's accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -106,11 +118,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-  <key>UIViewControllerBasedStatusBarAppearance</key>
-  <true/>
-  <key>FirebaseDynamicLinksCustomDomains</key>
-  <array>
-    <string>https://share.wrench.cc</string>
-  </array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

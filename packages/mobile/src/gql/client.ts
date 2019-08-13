@@ -4,6 +4,7 @@ import link from './links'
 import { clearTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
+import { GoogleSignin } from 'react-native-google-signin'
 import { AuthNavigation } from 'navigation'
 
 const cache = new InMemoryCache()
@@ -18,6 +19,7 @@ client.onClearStore(() => {
   clearTokens()
   AuthNavigation()
   LoginManager.logOut()
+  GoogleSignin.signOut()
 })
 
 export default client

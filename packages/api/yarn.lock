@@ -693,10 +693,10 @@ async-retry@^1.2.1:
   dependencies:
     retry "0.12.0"
 
-aws-sdk@^2.507.0:
-  version "2.507.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.507.0.tgz#afb30dd2a0a5166aa7c2f808064f2d03e4dc3619"
-  integrity sha512-sOtaZONTfUx1jh9HzrWMLwoA2cZK2Xn2RAmGV4Y11NM2qhMePOQ501dhAq/ygKMZRffjw23b8mT1rAaDGTn05g==
+aws-sdk@^2.508.0:
+  version "2.508.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.508.0.tgz#19eeb9da0df41382d45568367837eeb6e7eab3b5"
+  integrity sha512-VXMxsuwK31U+N259562VPiwQblwRQFQoVnv0d4Gp4Ji+JimCvV6qF73zobZy7cQK5ZPAB25BK4JVMdTYkpi+vA==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -1631,6 +1631,20 @@ google-auth-library@^4.0.0:
     lru-cache "^5.0.0"
     semver "^6.0.0"
 
+google-auth-library@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-5.2.0.tgz#fff161ec6ad8630c60b37324f78347e11712512b"
+  integrity sha512-I2726rgOedQ06HgTvoNvBeRCzy5iFe6z3khwj6ugfRd1b0VHwnTYKl/3t2ytOTo7kKc6KivYIBsCIdZf2ep67g==
+  dependencies:
+    arrify "^2.0.0"
+    base64-js "^1.3.0"
+    fast-text-encoding "^1.0.0"
+    gaxios "^2.0.0"
+    gcp-metadata "^2.0.0"
+    gtoken "^4.0.0"
+    jws "^3.1.5"
+    lru-cache "^5.0.0"
+
 google-gax@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-1.1.1.tgz#b0bd56513d52298a5dc9e6bd00389e806120f8ae"
@@ -1748,6 +1762,16 @@ gtoken@^3.0.0:
     jws "^3.1.5"
     mime "^2.2.0"
     pify "^4.0.0"
+
+gtoken@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/gtoken/-/gtoken-4.0.0.tgz#42b63a935a03a61eedf0ec14f74f6875bad627bd"
+  integrity sha512-XaRCfHJxhj06LmnWNBzVTAr85NfAErq0W1oabkdqwbq3uL/QTB1kyvGog361Uu2FMG/8e3115sIy/97Rnd4GjQ==
+  dependencies:
+    gaxios "^2.0.0"
+    google-p12-pem "^2.0.0"
+    jws "^3.1.5"
+    mime "^2.2.0"
 
 has-ansi@^2.0.0:
   version "2.0.0"

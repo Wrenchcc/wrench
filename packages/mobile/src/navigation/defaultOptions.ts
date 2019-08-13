@@ -21,6 +21,7 @@ export default {
   },
   layout: {
     backgroundColor: COLORS.WHITE,
+    orientation: ['portrait'],
   },
   overlay: {
     interceptTouchOutside: false,

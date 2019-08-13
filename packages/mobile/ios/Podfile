@@ -53,6 +53,8 @@ target 'Wrench' do
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
   pod 'RNShare', :path => '../node_modules/react-native-share'
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
     'Core',
     'Camera',
@@ -73,7 +75,11 @@ target 'Wrench' do
   # react-native-fast-image WebP support
   pod 'SDWebImageWebPCoder'
 
+  # react-native-google-signin
+  pod 'GoogleSignIn', '~> 4.4.0'
+
   use_unimodules!
+
 end
 
 # The following is needed to ensure the "archive" step works in XCode.
