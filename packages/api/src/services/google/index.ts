@@ -1,1 +1,2 @@
-export { default as verifyIdToken } from './utils/verifyIdToken'
+export { default as userInfo } from './utils/userInfo'
+export { default as uploadAvatar } from './utils/uploadAvatar'

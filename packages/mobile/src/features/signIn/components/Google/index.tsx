@@ -20,8 +20,6 @@ function Google({ authenticateGoogle: authenticateGoogleMutation }) {
       })
 
       setIsLoading(true)
-      // await GoogleSignin.revokeAccess()
-      // await GoogleSignin.signOut()
 
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()
@@ -29,11 +27,11 @@ function Google({ authenticateGoogle: authenticateGoogleMutation }) {
       await authenticateGoogleMutation(userInfo.idToken, userInfo.serverAuthCode)
 
       track(events.USER_SIGNED_IN_GOOGLE_SUCCESSFULL)
-      // const { data } = await getCurrentUser()
+      const { data } = await getCurrentUser()
 
-      // if (data.user) {
-      //   AppNavigation(!data.user.interestedIn)
-      // }
+      if (data.user) {
+        AppNavigation(!data.user.interestedIn)
+      }
     } catch (err) {
       setIsLoading(false)
       track(events.USER_SIGNED_IN_GOOGLE_FAILED)
