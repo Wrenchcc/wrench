@@ -8,6 +8,8 @@ import { useProjectStore, PROJECT } from 'store'
 import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
+import { COLORS } from 'ui/constants'
+import { isIphone } from 'utils/platform'
 
 function formatModel(model) {
   return `${model.brand.name} ${model.model} ${model.year}`
@@ -63,7 +65,18 @@ function AddProjectModel({ addProject: addProjectMutation }) {
     if (data.user.projects.edges.length > 0) {
       dismissModal()
     } else {
-      navigate(SCREENS.ADD_MEDIA)
+      navigate(SCREENS.ADD_MEDIA, {
+        options: {
+          layout: {
+            backgroundColor: COLORS.DARK,
+          },
+          statusBar: {
+            backgroundColor: 'black',
+            style: 'light',
+            visible: isIphone ? false : true,
+          },
+        },
+      })
     }
     reset()
   }, [reset, dismissModal, model, type, title, data])
