@@ -20,13 +20,13 @@ function Google({ authenticateGoogle: authenticateGoogleMutation }) {
       })
 
       setIsLoading(true)
-      // await GoogleSignin.revokeAccess()
-      // await GoogleSignin.signOut()
+      await GoogleSignin.revokeAccess()
+      await GoogleSignin.signOut()
 
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()
 
-      await authenticateGoogleMutation(userInfo.idToken)
+      await authenticateGoogleMutation(userInfo.idToken, userInfo.serverAuthCode)
 
       track(events.USER_SIGNED_IN_GOOGLE_SUCCESSFULL)
       // const { data } = await getCurrentUser()

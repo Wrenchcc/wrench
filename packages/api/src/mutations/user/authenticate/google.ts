@@ -3,11 +3,18 @@ import { AUTH_PROVIDER_TYPES, MAIL_TYPES } from '../../../utils/enums'
 import { generateTokens } from '../../../utils/tokens'
 // import { dynamicLink } from '../../../services/firebase'
 
-export default async (_, { idToken }, ctx) => {
-  const googleUser = await ctx.services.google.verifyIdToken(idToken)
+export default async (_, { idToken, serverAuthCode }, ctx) => {
+  const googleUser = await ctx.services.google.verifyIdToken(idToken, serverAuthCode)
   const { userAgent } = ctx
 
   const isSilhouette = true
+
+  console.log(serverAuthCode)
+
+  //
+  // if(googleUser.aud)
+
+  return null
 
   // Find user from google id (sub)
   const authProvider = await ctx.db.AuthProvider.findOne({
