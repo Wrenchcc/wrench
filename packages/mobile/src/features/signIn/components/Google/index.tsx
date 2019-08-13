@@ -20,8 +20,8 @@ function Google({ authenticateGoogle: authenticateGoogleMutation }) {
       })
 
       setIsLoading(true)
-      await GoogleSignin.revokeAccess()
-      await GoogleSignin.signOut()
+      // await GoogleSignin.revokeAccess()
+      // await GoogleSignin.signOut()
 
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()

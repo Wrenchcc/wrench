@@ -4,8 +4,8 @@ import { track, events } from 'utils/analytics'
 import { setTokens } from 'utils/storage/auth'
 
 export const AuthenticateGoogleMutation = gql`
-  mutation authenticateGoogle($idToken: String!, $serverAuthCode: String!) {
-    authenticateGoogle(idToken: $idToken, serverAuthCode: $serverAuthCode) {
+  mutation authenticateGoogle($idToken: String!, $code: String!) {
+    authenticateGoogle(idToken: $idToken, code: $code) {
       access_token
       refresh_token
     }
@@ -14,11 +14,11 @@ export const AuthenticateGoogleMutation = gql`
 
 const authenticateGoogleOptions = {
   props: ({ mutate }) => ({
-    authenticateGoogle: (idToken, serverAuthCode) =>
+    authenticateGoogle: (idToken, code) =>
       mutate({
         variables: {
           idToken,
-          serverAuthCode,
+          code,
         },
         update: async (_, { data }) => {
           const { access_token, refresh_token } = data.authenticateGoogle
