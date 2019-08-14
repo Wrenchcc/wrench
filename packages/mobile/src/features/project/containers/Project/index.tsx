@@ -1,13 +1,18 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { View } from 'react-native'
+import Animated from 'react-native-reanimated'
+import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
 import { isEmpty } from 'ramda'
 import { useNavigation, SCREENS, Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'
+import { followProject } from 'graphql/mutations/project/followProject'
 import Post from 'components/Post'
 import { Edit, EmptyState, Title, Share, Text } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
+
+const { add, interpolate, Extrapolate, set, Value } = Animated
 
 function Project({
   posts,
@@ -18,9 +23,25 @@ function Project({
   isFetching,
   hasNextPage,
   post,
+  followProject: followProjectMutation,
 }) {
+  const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
   const { navigate } = useNavigation()
+
+  const opacityFollow = interpolate(scrollY.current, {
+    extrapolate: Extrapolate.CLAMP,
+    inputRange: [300, 350],
+    outputRange: [0, 1],
+  })
+
+  const opacityShare = interpolate(scrollY.current, {
+    extrapolate: Extrapolate.CLAMP,
+    inputRange: [220, 280],
+    outputRange: [1, 0],
+  })
+
+  const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
 
   const hasPosts = !isEmpty(post) || (posts && posts.length > 0)
 
@@ -63,14 +84,18 @@ function Project({
   return (
     <Page
       headerTitle={project.title}
-      onScrollChange={([scrollY]) => console.log(scrollY)}
+      scrollPosition={scrollY.current}
       headerRight={
         project.permissions && project.permissions.isOwner ? (
           <Edit project={project} />
         ) : (
           <>
-            <Share title={project.title} url={project.dynamicLink} text />
-            <Text medium>Follow</Text>
+            <Share title={project.title} url={project.dynamicLink} text opacity={opacityShare} />
+            <Animated.View style={{ opacity: opacityFollow, position: 'absolute' }}>
+              <Text medium onPress={handleFollow}>
+                {project.permissions.isFollower ? t('Project:unfollow') : t('Project:follow')}
+              </Text>
+            </Animated.View>
           </>
         )
       }
@@ -94,4 +119,7 @@ function Project({
   )
 }
 
-export default getProject(Project)
+export default compose(
+  getProject,
+  followProject
+)(Project)

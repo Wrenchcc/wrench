@@ -15,7 +15,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
   const opacity = headerAnimation
     ? interpolate(scrollY, {
         extrapolate: Extrapolate.CLAMP,
-        inputRange: [0, 1],
+        inputRange: [0, 50],
         outputRange: [0, 1],
       })
     : 1
@@ -27,7 +27,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
           <View style={styles.left}>
             <Icon onPress={handleNavigation} source={arrowLeft} />
           </View>
-          <Animated.View style={{ opacity, width: '50%' }}>
+          <Animated.View style={{ opacity, width: '42%' }}>
             <Text medium center numberOfLines={1} onPress={onPress}>
               {headerTitle}
             </Text>

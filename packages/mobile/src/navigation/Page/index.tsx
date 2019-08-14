@@ -6,7 +6,7 @@ import Header from './Header'
 const { call, event, set, Value, cond, eq } = Animated
 
 function Page({
-  onScrollChange,
+  scrollPosition,
   children,
   headerTitle,
   headerRight,
@@ -59,7 +59,7 @@ function Page({
       })}
 
       {stickyFooter}
-      {onScrollChange && <Animated.Code exec={call([scrollY.current], onScrollChange)} />}
+      {scrollPosition && <Animated.Code exec={Animated.set(scrollPosition, scrollY.current)} />}
     </>
   )
 }

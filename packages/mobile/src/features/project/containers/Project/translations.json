@@ -1,10 +1,14 @@
 {
   "Project": {
     "en": {
-      "recent": "Recent posts"
+      "recent": "Recent posts",
+      "follow": "Follow",
+      "unfollow": "Following"
     },
     "sv": {
-      "recent": "Senaste inlägg"
+      "recent": "Senaste inlägg",
+      "follow": "Följ",
+      "unfollow": "Följer"
     }
   }
 }

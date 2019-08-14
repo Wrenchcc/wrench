@@ -125,7 +125,9 @@
       "title": "Followers"
     },
     "Project": {
-      "recent": "Recent posts"
+      "recent": "Recent posts",
+      "follow": "Follow",
+      "unfollow": "Following"
     },
     "OnboardingContent": {
       "headline": "What are you interested in?",
@@ -415,7 +417,9 @@
       "title": "Följare"
     },
     "Project": {
-      "recent": "Senaste inlägg"
+      "recent": "Senaste inlägg",
+      "follow": "Följ",
+      "unfollow": "Följer"
     },
     "OnboardingContent": {
       "headline": "Vad är du intresserad av?",
