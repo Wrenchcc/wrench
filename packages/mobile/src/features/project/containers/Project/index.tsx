@@ -5,7 +5,7 @@ import { isEmpty } from 'ramda'
 import { useNavigation, SCREENS, Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'
 import Post from 'components/Post'
-import { Edit, EmptyState, Title, Share } from 'ui'
+import { Edit, EmptyState, Title, Share, Text } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 
@@ -63,11 +63,15 @@ function Project({
   return (
     <Page
       headerTitle={project.title}
+      onScrollChange={([scrollY]) => console.log(scrollY)}
       headerRight={
         project.permissions && project.permissions.isOwner ? (
           <Edit project={project} />
         ) : (
-          <Share title={project.title} url={project.dynamicLink} text />
+          <>
+            <Share title={project.title} url={project.dynamicLink} text />
+            <Text medium>Follow</Text>
+          </>
         )
       }
     >

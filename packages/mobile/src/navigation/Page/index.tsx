@@ -3,9 +3,10 @@ import Animated from 'react-native-reanimated'
 import { NAVIGATION } from '../constants'
 import Header from './Header'
 
-const { event, set, Value, cond, eq } = Animated
+const { call, event, set, Value, cond, eq } = Animated
 
 function Page({
+  onScrollChange,
   children,
   headerTitle,
   headerRight,
@@ -58,6 +59,7 @@ function Page({
       })}
 
       {stickyFooter}
+      {onScrollChange && <Animated.Code exec={call([scrollY.current], onScrollChange)} />}
     </>
   )
 }
