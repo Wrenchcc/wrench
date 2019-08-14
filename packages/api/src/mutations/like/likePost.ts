@@ -2,8 +2,10 @@ import { isAuthenticated } from '../../utils/permissions'
 import { NOTIFICATION_TYPES, LIKE_TYPES } from '../../utils/enums'
 
 export default isAuthenticated(async (_, { id }, ctx) => {
-  const isLiked = await ctx.db.Like.isLiked(ctx.userId, id)
-  const post = await ctx.db.Post.findOne(id)
+  const [isLiked, post] = await Promise.all([
+    ctx.db.Like.isLiked(ctx.userId, id),
+    ctx.db.Post.findOne(id),
+  ])
 
   if (isLiked) {
     await ctx.db.Like.delete({ typeId: id, userId: ctx.userId })
