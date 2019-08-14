@@ -10,6 +10,7 @@ export const Button = styled(Touchable)`
   justify-content: center;
   flex-direction: row;
   padding: 20px;
+  margin-top: 15;
   margin-bottom: 15;
 `
 

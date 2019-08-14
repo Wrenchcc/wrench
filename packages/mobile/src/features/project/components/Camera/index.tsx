@@ -28,7 +28,9 @@ function Camera({ onTakePicture }) {
   }, [])
 
   const takePicture = useCallback(async () => {
-    const data = await camera.current.takePictureAsync()
+    const data = await camera.current.takePictureAsync({
+      orientation: 'portrait',
+    })
 
     onTakePicture({ ...data, camera: true })
   }, [camera])
@@ -70,7 +72,6 @@ function Camera({ onTakePicture }) {
           flashMode={flashMode}
           style={{ flex: 1 }}
           autoFocusPointOfInterest={autofocus}
-          orientation="portrait"
           ratio="1:1"
         />
 

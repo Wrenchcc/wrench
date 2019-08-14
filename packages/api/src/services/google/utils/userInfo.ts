@@ -33,7 +33,7 @@ export default async function userInfo(token, code) {
       firstName: payload.given_name,
       fullName: payload.name,
       id: payload.sub,
-      isSilhouette: pathOr(true, ['data', 'photos', 0, 'default'], result),
+      isSilhouette: pathOr(false, ['data', 'photos', 0, 'default'], result),
       lastName: payload.family_name,
     }
   } catch (err) {
