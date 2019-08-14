@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Touchable from 'ui/Touchable'
@@ -56,4 +56,4 @@ function Carousel({ onPress, files }) {
   )
 }
 
-export default Carousel
+export default memo(Carousel)
