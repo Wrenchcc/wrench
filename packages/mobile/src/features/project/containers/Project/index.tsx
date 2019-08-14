@@ -93,7 +93,9 @@ function Project({
             <Share title={project.title} url={project.dynamicLink} text opacity={opacityShare} />
             <Animated.View style={{ opacity: opacityFollow, position: 'absolute' }}>
               <Text medium onPress={handleFollow}>
-                {project.permissions.isFollower ? t('Project:unfollow') : t('Project:follow')}
+                {project.permissions && project.permissions.isFollower
+                  ? t('Project:unfollow')
+                  : t('Project:follow')}
               </Text>
             </Animated.View>
           </>

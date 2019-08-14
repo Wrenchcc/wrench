@@ -36,7 +36,7 @@
     "ramda": "^0.26.1",
     "react": "16.8.6",
     "react-apollo": "^2.5.8",
-    "react-i18next": "^10.12.1",
+    "react-i18next": "^10.12.2",
     "react-native": "v0.59.10",
     "react-native-actionsheet": "^2.4.2",
     "react-native-camera": "^2.11.1",
