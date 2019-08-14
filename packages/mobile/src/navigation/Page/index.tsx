@@ -3,7 +3,7 @@ import Animated from 'react-native-reanimated'
 import { NAVIGATION } from '../constants'
 import Header from './Header'
 
-const { call, event, set, Value, cond, eq } = Animated
+const { event, set, Value } = Animated
 
 function Page({
   scrollPosition,
