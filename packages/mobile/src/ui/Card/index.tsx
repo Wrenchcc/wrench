@@ -15,17 +15,15 @@ function Card({ image, title, onPress, style = {}, user }) {
   )
 
   return (
-    image && (
-      <Touchable onPress={onPress} style={style}>
-        <Picture source={image} width={SIZE} height={SIZE} />
-        <ProjectName numberOfLines={1}>{title}</ProjectName>
-        <Touchable onPress={handleNavigation}>
-          <Text fontSize={15} color="grey">
-            {user.fullName}
-          </Text>
-        </Touchable>
+    <Touchable onPress={onPress} style={style}>
+      <Picture source={image} width={SIZE} height={SIZE} />
+      <ProjectName numberOfLines={1}>{title}</ProjectName>
+      <Touchable onPress={handleNavigation}>
+        <Text fontSize={15} color="grey">
+          {user.fullName}
+        </Text>
       </Touchable>
-    )
+    </Touchable>
   )
 }
 

@@ -16,8 +16,8 @@ export default async (args, ctx) => {
       },
     },
     {
-      column: 'id',
-      sort: 'DESC',
+      column: 'createdAt',
+      sort: 'ASC',
     }
   )
 }
