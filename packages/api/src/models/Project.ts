@@ -42,15 +42,49 @@ export default class Project extends BaseEntity {
   }
 
   public static async getPopularProjects() {
-    // TODO: Change to last 7 days
-    return Project.createQueryBuilder('projects')
-      .select('count(projects.id)', 'count')
-      .addSelect('projects.id', 'id')
-      .innerJoin('projects.followers', 'followers')
-      .where(`"followers"."createdAt" > NOW()::timestamp - interval '180 day'`) // eslint-disable-line
-      .groupBy('projects.id')
-      .orderBy('count', 'DESC')
-      .getRawMany()
+    return Project.query(
+      `
+      SELECT
+        "f_count",
+        "p_count",
+        p.*
+      FROM
+        projects p
+        LEFT JOIN (
+          SELECT
+            "projectId",
+            count("projectId") AS f_count
+          FROM
+            following
+          GROUP BY
+            "projectId") f ON ("f"."projectId" = "p"."id")
+        LEFT JOIN (
+          SELECT
+            "posts"."projectId",
+            count("posts"."id") AS p_count
+          FROM
+            posts
+          GROUP BY
+            "posts"."projectId") pp ON ("pp"."projectId" = "p"."id")
+        LEFT JOIN (
+          SELECT
+            "createdAt" AS f_date
+          FROM
+            following
+          GROUP BY
+            "createdAt") f2 ON ("f"."projectId" = "p"."id")
+      WHERE
+        "f_count" IS NOT NULL
+        AND "p_count" IS NOT NULL
+        AND "createdAt" > NOW()::timestamp - interval '7 day'
+      GROUP BY
+        p. "id",
+        "f_count",
+        "p_count"
+      ORDER BY
+        "f_count" DESC
+    `
+    )
   }
 
   public static async projectCount(userId) {
