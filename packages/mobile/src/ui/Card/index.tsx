@@ -14,7 +14,7 @@ function Card({ image, title, onPress, style = {}, user }) {
     [user]
   )
 
-  return (
+  return image && (
     <Touchable onPress={onPress} style={style}>
       <Picture source={image} width={SIZE} height={SIZE} />
       <ProjectName numberOfLines={1}>{title}</ProjectName>

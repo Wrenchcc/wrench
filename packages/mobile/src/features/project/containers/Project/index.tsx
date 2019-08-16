@@ -81,6 +81,8 @@ function Project({
     )
   }, [post, posts, hasPosts, project])
 
+  const fullScreen = hasPosts || (isFetching && !posts.length)
+
   return (
     <Page
       headerTitle={project.title}
@@ -106,7 +108,7 @@ function Project({
         initialNumToRender={1}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
+        contentContainerStyle={{ flex: fullScreen ? 0 : 1 }}
         ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
         ListHeaderComponent={renderHeader}
         data={posts}

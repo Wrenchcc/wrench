@@ -12,6 +12,7 @@ const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const hasPosts = posts && posts.length > 0
+  const fullScreen = hasPosts || (isFetching && !posts.length)
 
   const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
     fetchPolicy: 'cache-only',
@@ -26,7 +27,7 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
         initialNumToRender={1}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flex: hasPosts ? 0 : 1 }}
+        contentContainerStyle={{ flex: fullScreen ? 0 : 1 }}
         ListHeaderComponent={
           user && (
             <Header
