@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState, useCallback } from 'react'
 import { Dimensions } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
-import * as MediaLibrary from 'expo-media-library'
+import * as MediaLibrary from 'react-native-media-library'
 import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { prepend } from 'ramda'
 import AskForPermission from 'features/project/components/AskForPermission'
@@ -33,7 +33,7 @@ function MediaPicker() {
 
   const fetchAlbums = async () => {
     try {
-      const results = await MediaLibrary.getAlbumsAsync()
+      const results = await MediaLibrary.getAlbumsAsync({ includeSmartAlbums: true })
       const filteredAlbums = results.filter(({ assetCount }) => assetCount !== 0)
 
       const assets = albums.concat(filteredAlbums)

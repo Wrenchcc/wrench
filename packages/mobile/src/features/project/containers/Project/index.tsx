@@ -81,7 +81,7 @@ function Project({
     )
   }, [post, posts, hasPosts, project])
 
-  const fullScreen = hasPosts || (isFetching && !posts.length)
+  const fullScreen = hasPosts || (isFetching && !posts)
 
   return (
     <Page

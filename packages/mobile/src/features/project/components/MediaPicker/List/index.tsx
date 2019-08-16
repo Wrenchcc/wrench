@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, memo } from 'react'
 import { View, ActivityIndicator, FlatList } from 'react-native'
-import * as MediaLibrary from 'expo-media-library'
+import * as MediaLibrary from 'react-native-media-library'
 import { findIndex, propEq, pathOr, omit } from 'ramda'
 import { usePostStore } from 'store'
 import { logError } from 'utils/sentry'

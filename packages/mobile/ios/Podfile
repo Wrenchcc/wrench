@@ -4,8 +4,6 @@ platform :ios, '10.0'
 
 install! 'cocoapods', :deterministic_uuids => false
 
-require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
-
 target 'Wrench' do
   platform :ios, '10.0'
 
@@ -47,7 +45,8 @@ target 'Wrench' do
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
-  pod 'react-native-image-editor', :path => '../node_modules/@react-native-community/image-editor'
+  pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator/ios'
+  pod 'react-native-media-library', :path => '../node_modules/react-native-media-library/ios'
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
@@ -77,9 +76,6 @@ target 'Wrench' do
 
   # react-native-google-signin
   pod 'GoogleSignIn', '~> 4.4.0'
-
-  use_unimodules!
-
 end
 
 # The following is needed to ensure the "archive" step works in XCode.

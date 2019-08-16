@@ -4,19 +4,11 @@ import android.app.Application;
 
 import com.yonahforst.rnpermissions.RNPermissionsPackage;
 import io.sentry.RNSentryPackage;
-import org.unimodules.adapters.react.ReactAdapterPackage;
-import org.unimodules.adapters.react.ModuleRegistryAdapter;
-import org.unimodules.adapters.react.ReactModuleRegistryProvider;
-import org.unimodules.core.interfaces.Package;
-import org.unimodules.core.interfaces.SingletonModule;
-import expo.modules.medialibrary.MediaLibraryPackage;
-import expo.modules.constants.ConstantsPackage;
-import expo.modules.permissions.PermissionsPackage;
-import expo.modules.filesystem.FileSystemPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
-import com.reactnativecommunity.imageeditor.ImageEditorPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+import com.reactnativeimagemanipulator.ImageManipulatorPackage;
+// import com.reactnativereactnativemedialibrary.MediaLibraryPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -49,14 +41,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends NavigationApplication {
-    private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(Arrays.<Package>asList(
-      new ReactAdapterPackage(),
-      new ConstantsPackage(),
-      new PermissionsPackage(),
-      new FileSystemPackage(),
-      new MediaLibraryPackage()
-    ), Arrays.<SingletonModule>asList());
-
     @Override
     protected ReactGateway createReactGateway() {
       ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
@@ -82,31 +66,31 @@ public class MainApplication extends NavigationApplication {
 
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-      new MainReactPackage(),
-      new RNGoogleSigninPackage(),
-      new ImageEditorPackage(),
-      new RNPermissionsPackage(),
-      new ModuleRegistryAdapter(mModuleRegistryProvider),
-      new RNSentryPackage(),
-      new NetInfoPackage(),
-      new AsyncStoragePackage(),
-      new RNCWebViewPackage(),
-      new LinearGradientPackage(),
-      new FBSDKPackage(mCallbackManager),
-      new ReactNativeConfigPackage(),
-      new ReactVideoPackage(),
-      new SplashScreenReactPackage(),
-      new RNCameraPackage(),
-      new RNDeviceInfo(),
-      new RNSharePackage(),
-      new ReanimatedPackage(),
-      new RNGestureHandlerPackage(),
-      new RNFirebasePackage(),
-      new RNFirebaseAnalyticsPackage(),
-      new RNFirebaseMessagingPackage(),
-      new RNFirebaseNotificationsPackage(),
-      new RNFirebaseLinksPackage(),
-      new FastImageViewPackage()
+        new MainReactPackage(),
+        new RNGoogleSigninPackage(),
+        new RNPermissionsPackage(),
+        new RNSentryPackage(),
+        new NetInfoPackage(),
+        new AsyncStoragePackage(),
+        new RNCWebViewPackage(),
+        new LinearGradientPackage(),
+        new FBSDKPackage(mCallbackManager),
+        new ReactNativeConfigPackage(),
+        new ReactVideoPackage(),
+        new SplashScreenReactPackage(),
+        new RNCameraPackage(),
+        new RNDeviceInfo(),
+        new RNSharePackage(),
+        new ReanimatedPackage(),
+        new RNGestureHandlerPackage(),
+        new RNFirebasePackage(),
+        new RNFirebaseAnalyticsPackage(),
+        new RNFirebaseMessagingPackage(),
+        new RNFirebaseNotificationsPackage(),
+        new RNFirebaseLinksPackage(),
+        new FastImageViewPackage(),
+        new ImageManipulatorPackage()
+        // new MediaLibraryPackage()
       );
     }
 
