@@ -2,7 +2,6 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { pathOr } from 'ramda'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
-import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
 export const ProjectSuggestionsQuery = gql`
   query getProjectSuggestions($after: String) {
@@ -17,13 +16,12 @@ export const ProjectSuggestionsQuery = gql`
       edges {
         node {
           ...projectInfo
-          ...projectCover
+          coverUrl
         }
       }
     }
   }
   ${projectInfoFragment}
-  ${projectCoverFragment}
 `
 
 const getProjectsSuggestionsOptions = {

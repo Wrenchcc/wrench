@@ -2,7 +2,6 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { mapListProps } from 'graphql/utils/mapListProps'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
-import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
 export const SearchProjectsQuery = gql`
   query searchProjects($query: String!, $after: String, $type: SearchType!) {
@@ -16,14 +15,13 @@ export const SearchProjectsQuery = gql`
         node {
           ... on Project {
             ...projectInfo
-            ...projectCover
+            coverUrl
           }
         }
       }
     }
   }
   ${projectInfoFragment}
-  ${projectCoverFragment}
 `
 
 const searchProjectsOptions = {

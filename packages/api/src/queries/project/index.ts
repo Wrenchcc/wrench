@@ -1,3 +1,4 @@
+import coverUrl from './coverUrl'
 import dynamicLink from './dynamicLink'
 import filesConnection from './filesConnection'
 import followersConnection from './followersConnection'
@@ -12,6 +13,7 @@ import user from './user'
 
 export default {
   Project: {
+    coverUrl,
     dynamicLink,
     filesConnection,
     followersConnection,

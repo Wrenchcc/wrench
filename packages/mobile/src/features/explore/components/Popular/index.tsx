@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { pathOr } from 'ramda'
 import { getPopularProjects } from 'graphql/queries/getExplore'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
@@ -12,7 +11,6 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
 
   const renderItem = ({ item, index }) => {
     const project = item.node
-    const image = pathOr(null, ['files', 'edges', [0], 'node'], project)
 
     const onPress = () =>
       navigate(SCREENS.PROJECT, {
@@ -22,7 +20,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
 
     return (
       <Card
-        image={image}
+        image={{ uri: project.coverUrl }}
         title={project.title}
         key={project.id}
         onPress={onPress}

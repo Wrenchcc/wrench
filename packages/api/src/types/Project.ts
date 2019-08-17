@@ -13,6 +13,7 @@ export default gql`
     permissions: ProjectPermissions
     commentsDisabled: Boolean
     type: ProjectType
+    coverUrl: String
 
     filesConnection(
       after: String

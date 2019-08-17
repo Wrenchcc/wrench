@@ -15,14 +15,7 @@ const PopularProjectsQuery = gql`
         cursor
         node {
           ...projectInfo
-          files: filesConnection(first: 1, type: IMAGE) {
-            edges {
-              node {
-                id
-                uri
-              }
-            }
-          }
+          coverUrl
         }
       }
     }

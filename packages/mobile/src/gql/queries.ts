@@ -1,10 +1,6 @@
 import gql from 'graphql-tag'
 import * as fragment from './fragments'
 
-// export const USER_QUERY = gql``
-//
-// export const USER_FOLLOWING_PROJECTS_QUERY = gql``
-
 export const CURRENT_USER_QUERY = gql`
   query getCurrentUser {
     user: currentUser {
@@ -106,17 +102,43 @@ export const USER_QUERY = gql`
         edges {
           node {
             id
+            coverUrl
             title
             followers: followersConnection {
               totalCount
             }
-            files: filesConnection(first: 1, type: IMAGE) {
-              edges {
-                node {
-                  id
-                  uri
-                }
-              }
+          }
+        }
+      }
+      posts: postsConnection(after: $after, first: 5) @connection(key: "posts") {
+        edges {
+          cursor
+          node {
+            ...postFragment
+          }
+        }
+        pageInfo {
+          hasNextPage
+        }
+      }
+    }
+  }
+  ${fragment.USER_FRAGMENT}
+  ${fragment.POST_FRAGMENT}
+`
+
+export const CURRENT_USER_PROFILE_QUERY = gql`
+  query getCurrentUser($after: String) {
+    user: currentUser {
+      ...userFragment
+      projects: projectsConnection {
+        edges {
+          node {
+            id
+            coverUrl
+            title
+            followers: followersConnection {
+              totalCount
             }
           }
         }
