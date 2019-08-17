@@ -13,5 +13,5 @@ export const Base = styled.View`
 
 export const Username = styled(UiTitle)`
   flex: 1;
-  padding-right: 10;
+  padding-right: 15;
 `

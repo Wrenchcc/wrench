@@ -7,12 +7,13 @@ import { EmptyState } from 'ui'
 import SettingsButton from 'features/user/components/SettingsButton'
 import Header from 'features/user/components/Header'
 import { TYPES } from 'ui/EmptyState/constants'
+import UserProjects from 'features/user/components/UserProjects'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const hasPosts = posts && posts.length > 0
-  const fullScreen = hasPosts || (isFetching && !posts.length)
+  const fullScreen = !hasPosts || (isFetching && !posts)
 
   const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
     fetchPolicy: 'cache-only',
@@ -27,14 +28,18 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
         initialNumToRender={1}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flex: fullScreen ? 0 : 1 }}
+        contentContainerStyle={{ flex: fullScreen ? 1 : 0 }}
         ListHeaderComponent={
           user && (
-            <Header
-              fullName={user.fullName}
-              avatarUrl={user.avatarUrl}
-              spacingHorizontal={!hasPosts}
-            />
+            <>
+              <Header
+                fullName={user.fullName}
+                avatarUrl={user.avatarUrl}
+                spacingHorizontal={!hasPosts}
+              />
+
+              <UserProjects projects={user.projects} />
+            </>
           )
         }
         ListEmptyComponent={<EmptyState type={emptyState} />}

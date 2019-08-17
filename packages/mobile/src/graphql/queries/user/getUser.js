@@ -8,9 +8,23 @@ import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
 export const UserByUsernameQuery = gql`
   query getUserByUsername($username: LowercaseString!, $after: String) {
     user(username: $username) {
-      dynamicLink
       ...userInfo
       ...userPostsConnection
+      projects: projectsConnection {
+        edges {
+          node {
+            id
+            cover {
+              uri
+              default
+            }
+            title
+            followers: followersConnection {
+              totalCount
+            }
+          }
+        }
+      }
     }
   }
   ${userInfoFragment}

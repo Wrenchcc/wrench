@@ -13,6 +13,7 @@ export default gql`
     permissions: ProjectPermissions
     commentsDisabled: Boolean
     type: ProjectType
+    cover: CoverType
 
     filesConnection(
       after: String
@@ -29,6 +30,11 @@ export default gql`
     ): FollowersConnection
 
     postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+  }
+
+  type CoverType {
+    uri: String
+    default: Boolean
   }
 
   type ProjectPermissions {

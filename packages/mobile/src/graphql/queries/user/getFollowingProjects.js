@@ -2,7 +2,6 @@ import gql from 'graphql-tag'
 import { pathOr } from 'ramda'
 import { graphql } from 'react-apollo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
-import projectCoverFragment from 'graphql/fragments/project/projectCover'
 
 export const FollowingProjectsQuery = gql`
   query getFollowingProjects($username: LowercaseString!, $after: String) {
@@ -15,14 +14,16 @@ export const FollowingProjectsQuery = gql`
         edges {
           node {
             ...projectInfo
-            ...projectCover
+            cover {
+              uri
+              default
+            }
           }
         }
       }
     }
   }
   ${projectInfoFragment}
-  ${projectCoverFragment}
 `
 
 const getFollowingProjectsOptions = {
