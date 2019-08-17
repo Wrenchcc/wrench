@@ -15,7 +15,10 @@ export const SearchProjectsQuery = gql`
         node {
           ... on Project {
             ...projectInfo
-            coverUrl
+            cover {
+              uri
+              default
+            }
           }
         }
       }
