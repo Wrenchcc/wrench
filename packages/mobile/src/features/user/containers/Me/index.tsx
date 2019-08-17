@@ -12,7 +12,7 @@ const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const hasPosts = posts && posts.length > 0
-  const fullScreen = hasPosts || (isFetching && !posts.length)
+  const fullScreen = hasPosts || (isFetching && !posts)
 
   const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
     fetchPolicy: 'cache-only',

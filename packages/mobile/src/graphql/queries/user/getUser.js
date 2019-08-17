@@ -32,6 +32,8 @@ const getUserByUsernameOptions = {
       username: user.username,
       after,
     },
+    // notifyOnNetworkStatusChange: true,
+    // fetchPolicy: 'cache-and-network',
   }),
   props: ({ ownProps, data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
     error,

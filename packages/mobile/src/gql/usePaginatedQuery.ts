@@ -3,19 +3,21 @@ import { useQuery } from '@apollo/react-hooks'
 import { pathOr } from 'ramda'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 
-const usePaginatedQuery = type => (query, options) => {
+const usePaginatedQuery = (type, path) => (query, options) => {
   const { fetchMore, ...result } = useQuery(query, {
     ...options,
     notifyOnNetworkStatusChange: true,
   })
 
-  const data = result.data[type]
+  const { data } = result
+
+  const list = pathOr([], path, data)
 
   const handleFetchMore = useCallback(
-    variables =>
+    () =>
       fetchMore({
         variables: {
-          after: data.edges[data.edges.length - 1].cursor,
+          after: list.edges[list.edges.length - 1].cursor,
         },
         updateQuery: (previousResult, { fetchMoreResult }) => {
           if (!previousResult || !previousResult[type]) {
@@ -33,14 +35,16 @@ const usePaginatedQuery = type => (query, options) => {
             },
           }
         },
-      })[result]
+      }),
+    [result]
   )
 
   return {
     ...result,
-    [type]: pathOr(null, ['edges'], data),
+    ...data,
+    [type]: pathOr(null, ['edges'], list),
     fetchMore: handleFetchMore,
-    hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
+    hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], list),
     isFetching: result.loading || isFetchingMore(result.networkStatus),
     isRefetching: isRefetching(result.networkStatus),
   }

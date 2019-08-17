@@ -98,6 +98,46 @@ export const ARTICLES_QUERY = gql`
   }
 `
 
+export const USER_QUERY = gql`
+  query getUserByUsername($username: LowercaseString!, $after: String) {
+    user(username: $username) {
+      ...userFragment
+      projects: projectsConnection {
+        edges {
+          node {
+            id
+            title
+            followers: followersConnection {
+              totalCount
+            }
+            files: filesConnection(first: 1, type: IMAGE) {
+              edges {
+                node {
+                  id
+                  uri
+                }
+              }
+            }
+          }
+        }
+      }
+      posts: postsConnection(after: $after, first: 5) @connection(key: "posts") {
+        edges {
+          cursor
+          node {
+            ...postFragment
+          }
+        }
+        pageInfo {
+          hasNextPage
+        }
+      }
+    }
+  }
+  ${fragment.USER_FRAGMENT}
+  ${fragment.POST_FRAGMENT}
+`
+
 //
 // export const COMMENT_QUERY = gql``
 //

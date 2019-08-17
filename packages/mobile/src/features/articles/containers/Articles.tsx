@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
 import { usePaginatedQuery, ARTICLES_QUERY } from 'gql'
-import { Avatar, Carousel, Text, Title } from 'ui'
+import { Avatar, Title } from 'ui'
 import { COLORS } from 'ui/constants'
 import Article from 'components/Article'
 
@@ -11,7 +11,8 @@ function Articles({ name, logoUrl, url, id }) {
   const { showModal } = useNavigation()
 
   const { articles, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery(
-    'articles'
+    'articles',
+    ['articles']
   )(ARTICLES_QUERY, {
     variables: {
       first: !articles ? 2 : 5,
