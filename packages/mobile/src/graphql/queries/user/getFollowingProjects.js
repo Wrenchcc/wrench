@@ -14,7 +14,10 @@ export const FollowingProjectsQuery = gql`
         edges {
           node {
             ...projectInfo
-            coverUrl
+            cover {
+              uri
+              default
+            }
           }
         }
       }
