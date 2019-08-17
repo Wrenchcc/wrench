@@ -41,6 +41,7 @@ export const USER_PROJECTS_FRAGMENT = gql`
           files: filesConnection(first: 1, type: IMAGE) {
             edges {
               node {
+                id
                 uri
               }
             }
@@ -90,6 +91,7 @@ export const COMMENT_SMALL_FRAGMENT = gql`
 
 export const POST_FRAGMENT = gql`
   fragment postFragment on Post {
+    id
     caption
     createdAt
     user {

@@ -3,7 +3,7 @@ import { View, Image } from 'react-native'
 import { COLORS } from 'ui/constants'
 import { fallback } from 'images'
 
-function Placeholder() {
+function Placeholder({ style = {} }) {
   return (
     <View
       style={{
@@ -11,6 +11,7 @@ function Placeholder() {
         backgroundColor: COLORS.LIGHT_GREY,
         flex: 1,
         justifyContent: 'center',
+        ...style,
       }}
     >
       <Image source={fallback} />

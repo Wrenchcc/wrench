@@ -22,7 +22,7 @@ function UserProjects({ projects }) {
   })
 
   return (
-    <ScrollView horizontal showshorizontalscrollindicator={false} style={{ marginBottom: 50 }}>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 50 }}>
       {renderItems}
     </ScrollView>
   )
