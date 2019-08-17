@@ -15,7 +15,9 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
   return (
     <Base style={style}>
       <Touchable onPress={onPress} style={{ height: '100%' }}>
-        <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
+        {!project.cover.default && (
+          <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
+        )}
         <Image source={project.cover} height={180} />
       </Touchable>
 

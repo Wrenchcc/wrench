@@ -33,12 +33,13 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
           user && (
             <>
               <Header
-                fullName={user.fullName}
+                firstName={user.firstName}
+                lastName={user.lastName}
                 avatarUrl={user.avatarUrl}
                 spacingHorizontal={!hasPosts}
               />
 
-              <UserProjects projects={user.projects} />
+              <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
             </>
           )
         }

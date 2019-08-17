@@ -5,7 +5,7 @@ import { CardSmall, Text } from 'ui'
 
 const { width } = Dimensions.get('window')
 
-function UserProjects({ projects }) {
+function UserProjects({ projects, spacingHorizontal }) {
   if (!projects || projects.edges.length <= 1) {
     return null
   }
@@ -43,8 +43,8 @@ function UserProjects({ projects }) {
         style={{
           marginTop: 20,
           marginBottom: 50,
-          marginRight: -20,
-          marginLeft: -20,
+          marginRight: spacingHorizontal ? 0 : -20,
+          marginLeft: spacingHorizontal ? 0 : -20,
           width,
         }}
       >
