@@ -11,11 +11,10 @@ function Articles({ name, logoUrl, url, id }) {
   const { showModal } = useNavigation()
 
   const { articles, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery(
-    'articles',
-    ['articles']
+    'articles'
   )(ARTICLES_QUERY, {
     variables: {
-      first: !articles ? 2 : 5,
+      first: 3,
       publisherId: id,
     },
   })

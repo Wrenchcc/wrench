@@ -1,11 +1,7 @@
 import React from 'react'
 import { Layout, FlatList } from 'navigation'
-import {
-  useQuery,
-  usePaginatedQuery,
-  CURRENT_USER_PROJECTS_QUERY,
-  CURRENT_USER_PROFILE_QUERY,
-} from 'gql'
+import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
+import { getCurrentUserProfile } from 'graphql/queries/user/getCurrentUser'
 import Post from 'components/Post'
 import { EmptyState } from 'ui'
 import SettingsButton from 'features/user/components/SettingsButton'
@@ -15,17 +11,7 @@ import UserProjects from 'features/user/components/UserProjects'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function Me() {
-  const {
-    user,
-    posts,
-    isFetching,
-    fetchMore,
-    isRefetching,
-    hasNextPage,
-    refetch,
-  } = usePaginatedQuery('posts', ['user', 'posts'])(CURRENT_USER_PROFILE_QUERY)
-
+function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const hasPosts = posts && posts.length > 0
   const fullScreen = !hasPosts || (isFetching && !posts)
 
@@ -69,4 +55,4 @@ function Me() {
   )
 }
 
-export default Me
+export default getCurrentUserProfile(Me)

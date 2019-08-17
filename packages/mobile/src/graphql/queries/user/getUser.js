@@ -1,26 +1,14 @@
 import gql from 'graphql-tag'
-import { pathOr } from 'ramda'
 import { graphql } from 'react-apollo'
+import { pathOr } from 'ramda'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
-import currentUserInfoFragment from 'graphql/fragments/user/currentUserInfo'
+import userInfoFragment from 'graphql/fragments/user/userInfo'
 import userPostsConnectionFragment from 'graphql/fragments/user/postsConnection'
-import projectsConnectionFragment from 'graphql/fragments/user/projectsConnection'
 
-export const CurrentUserQuery = gql`
-  query getCurrentUser {
-    user: currentUser {
-      ...currentUserInfo
-      ...userProjectsConnection
-    }
-  }
-  ${currentUserInfoFragment}
-  ${projectsConnectionFragment}
-`
-
-export const CurrentUserProfileQuery = gql`
-  query getCurrentUserProfile($after: String) {
-    user: currentUser {
-      ...currentUserInfo
+export const UserByUsernameQuery = gql`
+  query getUserByUsername($username: LowercaseString!, $after: String) {
+    user(username: $username) {
+      ...userInfo
       ...userPostsConnection
       projects: projectsConnection {
         edges {
@@ -39,29 +27,33 @@ export const CurrentUserProfileQuery = gql`
       }
     }
   }
-  ${currentUserInfoFragment}
+  ${userInfoFragment}
   ${userPostsConnectionFragment}
 `
 
 const LoadMorePosts = gql`
-  query loadMoreProjectPosts($after: String) {
-    user: currentUser {
+  query loadMoreUserPosts($username: LowercaseString!, $after: String) {
+    user(username: $username) {
       ...userPostsConnection
     }
   }
   ${userPostsConnectionFragment}
 `
 
-const getCurrentUserProfileOptions = {
-  options: ({ after }) => ({
+const getUserByUsernameOptions = {
+  options: ({ user, after }) => ({
     variables: {
+      username: user.username,
       after,
     },
   }),
-  props: ({ data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
+  props: ({ ownProps, data: { fetchMore, error, loading, user, networkStatus, refetch } }) => ({
     error,
     refetch,
-    user,
+    user: {
+      ...ownProps.user,
+      ...user,
+    },
     posts: pathOr(null, ['posts', 'edges'], user),
     hasNextPage: pathOr(false, ['posts', 'pageInfo', 'hasNextPage'], user),
     isRefetching: isRefetching(networkStatus),
@@ -71,11 +63,13 @@ const getCurrentUserProfileOptions = {
         query: LoadMorePosts,
         variables: {
           after: user.posts.edges[user.posts.edges.length - 1].cursor,
+          username: user.username,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!fetchMoreResult.user) {
             return prev
           }
+
           return {
             ...prev,
             user: {
@@ -95,4 +89,4 @@ const getCurrentUserProfileOptions = {
   }),
 }
 
-export const getCurrentUserProfile = graphql(CurrentUserProfileQuery, getCurrentUserProfileOptions)
+export const getUserByUsername = graphql(UserByUsernameQuery, getUserByUsernameOptions)
