@@ -102,7 +102,10 @@ export const USER_QUERY = gql`
         edges {
           node {
             id
-            coverUrl
+            cover {
+              uri
+              default
+            }
             title
             followers: followersConnection {
               totalCount
@@ -135,7 +138,10 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
         edges {
           node {
             id
-            coverUrl
+            cover {
+              uri
+              default
+            }
             title
             followers: followersConnection {
               totalCount

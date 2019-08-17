@@ -20,7 +20,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
 
     return (
       <Card
-        image={{ uri: project.coverUrl }}
+        image={project.cover}
         title={project.title}
         key={project.id}
         onPress={onPress}

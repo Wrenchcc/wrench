@@ -14,8 +14,14 @@ export default async ({ id }, _, ctx) => {
   })
 
   if (file) {
-    return transformFileUrl(file.filename)
+    return {
+      default: false,
+      uri: transformFileUrl(file.filename),
+    }
   }
 
-  return `${CDN_DOMAIN}/static/images/project-fallback.jpg`
+  return {
+    default: true,
+    uri: `${CDN_DOMAIN}/static/images/project-fallback.jpg`,
+  }
 }

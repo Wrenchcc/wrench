@@ -15,7 +15,10 @@ const PopularProjectsQuery = gql`
         cursor
         node {
           ...projectInfo
-          coverUrl
+          cover {
+            uri
+            default
+          }
         }
       }
     }

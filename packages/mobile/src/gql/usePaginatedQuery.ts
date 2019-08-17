@@ -36,7 +36,7 @@ const usePaginatedQuery = (type, path) => (query, options) => {
           }
         },
       }),
-    [result]
+    [list]
   )
 
   return {

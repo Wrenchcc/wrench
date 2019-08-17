@@ -26,7 +26,7 @@ function UserProjects({ projects }) {
         onPress={handleNavigation}
         title={node.title}
         followers={node.followers.totalCount}
-        image={node.coverUrl}
+        image={node.cover}
         style={{
           marginRight: index === projects.edges.length - 1 ? 20 : 10, // Last item
           marginLeft: index === 0 ? 20 : 0, // First item

@@ -6,7 +6,7 @@ import { Picture, ProjectName, SIZE } from './styles'
 function CardSmall({ onPress, image, title, followers, style = {} }) {
   return (
     <Touchable onPress={onPress} style={style}>
-      <Picture source={{ uri: image }} width={SIZE} height={SIZE} />
+      <Picture source={image} width={SIZE} height={SIZE} />
       <ProjectName fontSize={15} numberOfLines={1}>
         {title}
       </ProjectName>
