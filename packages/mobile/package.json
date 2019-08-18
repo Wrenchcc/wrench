@@ -14,7 +14,7 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.0.0",
+    "@apollo/react-hooks": "^3.0.1",
     "@react-native-community/async-storage": "^1.6.1",
     "@react-native-community/netinfo": "^3.2.1",
     "apollo-cache-inmemory": "^1.6.3",
@@ -60,14 +60,14 @@
     "react-native-webview": "^5.12.1",
     "styled-components": "^4.3.2",
     "url": "^0.11.0",
-    "zustand": "^1.0.3"
+    "zustand": "^1.0.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
-    "concurrently": "^4.1.1",
+    "concurrently": "^4.1.2",
     "metro-react-native-babel-preset": "^0.55.0"
   }
 }
