@@ -1,22 +1,18 @@
-import ImageEditor from '@react-native-community/image-editor'
+import * as ImageManipulator from 'react-native-image-manipulator'
 import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
-import { pathOr } from 'ramda'
 import { FILE_TYPES } from 'utils/enums'
 import request from './request'
 
-const cropImage = async ({ uri, crop }) =>
-  ImageEditor.cropImage(uri, {
-    offset: {
-      x: pathOr(0, ['originX'], crop),
-      y: pathOr(0, ['originY'], crop),
-    },
-    resizeMode: 'contain',
-    size: {
-      height: pathOr(0, ['height'], crop),
-      width: pathOr(0, ['width'], crop),
-    },
-  })
+async function cropImage({ uri, crop }) {
+  try {
+    return ImageManipulator.manipulateAsync(uri, [{ crop }])
+  } catch (err) {
+    logError(err, { uri, crop })
+  }
+
+  return null
+}
 
 export default async files => {
   try {
