@@ -32,7 +32,7 @@ function InfiniteList({
   initialNumToRender = 10,
   spacingSeparator,
   loaderPosition,
-  androidDismiss = true,
+  androidDismissKeyboard = true,
   ...props
 }) {
   const initialFetch = !data && isFetching
@@ -72,7 +72,7 @@ function InfiniteList({
       {...(spacingSeparator && {
         ItemSeparatorComponent: Separator,
       })}
-      {...(androidDismiss && keyboardDismissProp)}
+      {...(androidDismissKeyboard && keyboardDismissProp)}
       {...props}
     />
   )

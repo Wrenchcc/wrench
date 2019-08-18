@@ -27,7 +27,7 @@ const List = searchUsers(
       >
         <InfiniteList
           defaultPadding
-          androidDismiss={false}
+          androidDismissKeyboard={false}
           keyboardDismissMode="none"
           ListEmptyComponent={<NoResults />}
           data={users}

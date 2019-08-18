@@ -26,6 +26,7 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
   return (
     <View style={styles.container}>
       <InfiniteList
+        androidDismissKeyboard={false}
         defaultPadding
         ListHeaderComponent={
           (query.length === 1 && !models) || isFetching ? <SearchingFor query={query} /> : null
@@ -44,9 +45,10 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
               justifyContent: 'center',
             }}
           >
-            <Text medium style={{ marginBottom: 3 }}>{`${item.node.brand.name} ${
-              item.node.model
-            }`}</Text>
+            <Text
+              medium
+              style={{ marginBottom: 3 }}
+            >{`${item.node.brand.name} ${item.node.model}`}</Text>
             <Text fontSize={15} color="light_grey">
               {item.node.year}
             </Text>
