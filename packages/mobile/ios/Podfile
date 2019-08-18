@@ -20,6 +20,7 @@ target 'Wrench' do
   pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network'
   pod 'React-RCTSettings', :path => '../node_modules/react-native/Libraries/Settings'
   pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
+  pod 'React-RCTCameraRoll', :path => '../node_modules/react-native/Libraries/CameraRoll'
   pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
   pod 'React-RCTWebSocket', :path => '../node_modules/react-native/Libraries/WebSocket'
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
@@ -32,33 +33,8 @@ target 'Wrench' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   # Third party deps podspec link
-  # pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
-  # pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-  # pod 'react-native-camera', path: '../node_modules/react-native-camera'
-  # pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
-  # pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
-  # pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
-  # pod 'react-native-pinchable', :path => '../node_modules/react-native-pinchable'
-  # pod 'react-native-config', :path => '../node_modules/react-native-config'
-  # pod 'react-native-splash-screen', path: '../node_modules/react-native-splash-screen'
-  # pod 'react-native-video', :path => '../node_modules/react-native-video'
-  # pod 'react-native-webview', :path => '../node_modules/react-native-webview'
-  # pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
-  # pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
-  # pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator/ios'
-  # pod 'react-native-media-library', :path => '../node_modules/react-native-media-library/ios'
-  # pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
-  # pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
-  # pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
-  # pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
-  # pod 'RNShare', :path => '../node_modules/react-native-share'
-  # pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
-
-  # pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
-  #   'Core',
-  #   'Camera',
-  #   'PhotoLibrary',
-  # ]
+  pod 'react-native-media-library', :path => '../node_modules/react-native-media-library/ios'
+  pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
 
   # Required by Facebook
   pod 'FBSDKCoreKit'

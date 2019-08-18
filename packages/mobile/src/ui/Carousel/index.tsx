@@ -21,7 +21,7 @@ function Carousel({ onPress, files }) {
   const renderItem = ({ item, index }) => (
     <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
       <Pinchable maximumZoomScale={5}>
-        <Touchable onPress={onPress} activeOpacity={1}>
+        <Touchable onPress={onPress} activeOpacity={1} nativeHandler>
           <Picture
             width={SIZE}
             height={SIZE}

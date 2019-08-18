@@ -3,20 +3,16 @@ import { Dimensions } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
 import * as MediaLibrary from 'react-native-media-library'
-import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
-import { prepend } from 'ramda'
+import Permissions from 'react-native-permissions'
 import AskForPermission from 'features/project/components/AskForPermission'
-import { Text, Touchable } from 'ui'
-import { isIphone } from 'utils/platform'
 import { logError } from 'utils/sentry'
 import List from './List'
 import Tabs from './Tabs'
 
 const { width } = Dimensions.get('window')
 
-const PERMISSION = isIphone
-  ? IOS_PERMISSIONS.PHOTO_LIBRARY
-  : ANDROID_PERMISSIONS.READ_EXTERNAL_STORAGE
+const PERMISSION = 'photo'
+const AUTHORIZED = 'authorized'
 
 function MediaPicker() {
   const { t } = useTranslation()
@@ -52,8 +48,8 @@ function MediaPicker() {
   }
 
   useEffect(() => {
-    check(PERMISSION).then(response => {
-      if (response === RESULTS.GRANTED) {
+    Permissions.check(PERMISSION).then(response => {
+       if (response === AUTHORIZED) {
         fetchAlbums()
       }
 
@@ -71,7 +67,7 @@ function MediaPicker() {
   )
 
   const permissionAuthorized = useCallback(() => {
-    setPhotoPermission(RESULTS.GRANTED)
+    setPhotoPermission(AUTHORIZED)
 
     fetchAlbums()
   }, [setPhotoPermission, fetchAlbums])
@@ -84,7 +80,7 @@ function MediaPicker() {
     return null
   }
 
-  if (photoPermission !== RESULTS.GRANTED) {
+  if (photoPermission !== AUTHORIZED) {
     return (
       <AskForPermission permission={PERMISSION} onSuccess={permissionAuthorized} type="photo" />
     )

@@ -22,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		0FCD808DF9944B3DB62F05AE /* libRNRate.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNRate.a; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Wrench.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wrench.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Wrench/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Wrench/AppDelegate.m; sourceTree = "<group>"; };
@@ -35,7 +34,6 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		329D2851A526072FF5467805 /* Pods-Wrench.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wrench.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wrench/Pods-Wrench.debug.xcconfig"; sourceTree = "<group>"; };
 		481871586915EE1B914CF9B7 /* libPods-Wrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wrench.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		83E70BFC950A4006A1A5D892 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		94F177B08D61476794C558FF /* inter_ui_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_medium.ttf; path = ../assets/fonts/inter_ui_medium.ttf; sourceTree = "<group>"; };
 		D22319F722009AC40067C6BD /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		D2F146272200A9B000E8A474 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8769D04C1F7E9A9804A73FD8 /* Pods */,
-				D223198C220099290067C6BD /* Recovered References */,
 				667F5285967449079E56D0E4 /* Resources */,
 			);
 			indentWidth = 2;
@@ -134,15 +131,6 @@
 				2851B0BC3F07817977943E02 /* Pods-Wrench.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		D223198C220099290067C6BD /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				83E70BFC950A4006A1A5D892 /* libRNFirebase.a */,
-				0FCD808DF9944B3DB62F05AE /* libRNRate.a */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

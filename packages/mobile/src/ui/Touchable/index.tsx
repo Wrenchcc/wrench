@@ -1,17 +1,27 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity as RNTouchableOpacity } from 'react-native'
+import { TouchableOpacity as RNGHTouchableOpacity } from 'react-native-gesture-handler'
 import evenHitSlop from 'utils/hitSlop'
 
-const Touchable = ({ activeOpacity = 0.8, children, hitSlop = 10, onPress, ...props }) => {
+const Touchable = ({
+  activeOpacity = 0.8,
+  children,
+  hitSlop = 10,
+  onPress,
+  nativeHandler,
+  ...props
+}) => {
+  const Handler = nativeHandler ? RNGHTouchableOpacity : RNTouchableOpacity
+
   return (
-    <TouchableOpacity
+    <Handler
       activeOpacity={activeOpacity}
       onPress={onPress}
       hitSlop={evenHitSlop(hitSlop)}
       {...props}
     >
       {children}
-    </TouchableOpacity>
+    </Handler>
   )
 }
 
