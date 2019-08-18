@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
-import { TouchableWithoutFeedback, Platform } from 'react-native'
-import { check, IOS_PERMISSIONS, ANDROID_PERMISSIONS, RESULTS } from 'react-native-permissions'
+import { TouchableWithoutFeedback } from 'react-native'
+import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
 import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
@@ -10,7 +10,8 @@ import { TakePicture } from './styles'
 
 const { Constants } = RNCamera
 
-const PERMISSION = Platform.OS === 'ios' ? IOS_PERMISSIONS.CAMERA : ANDROID_PERMISSIONS.CAMERA
+const PERMISSION = 'camera'
+const AUTHORIZED = 'authorized'
 
 function Camera({ onTakePicture }) {
   const camera = useRef()
@@ -21,7 +22,7 @@ function Camera({ onTakePicture }) {
   const [autofocus, setAutofocus] = useState()
 
   useEffect(() => {
-    check(PERMISSION).then(response => {
+    Permissions.check(PERMISSION).then(response => {
       setLoading(false)
       setPermission(response)
     })
@@ -53,13 +54,13 @@ function Camera({ onTakePicture }) {
     setAutofocus({ x: nativeEvent.locationX, y: nativeEvent.locationY })
   }, [])
 
-  const handlePermission = useCallback(() => setPermission(RESULTS.GRANTED), [])
+  const handlePermission = useCallback(() => setPermission(AUTHORIZED), [])
 
   if (isLoading) {
     return null
   }
 
-  if (permission !== RESULTS.GRANTED) {
+  if (permission !== AUTHORIZED) {
     return <AskForPermission permission={PERMISSION} onSuccess={handlePermission} type="camera" />
   }
 

@@ -7,7 +7,7 @@ import { NAVIGATION } from 'navigation/constants'
 import { isIphone, hasNotch } from 'utils/platform'
 
 const SAFE_AREA = hasNotch ? 75 : 0
-const OFFSET_BOTTOM = isIphone ? 275 + SAFE_AREA : 70
+const OFFSET_BOTTOM = isIphone ? 275 + SAFE_AREA : 60
 
 // TODO: Use useQuery instead of HoC
 const List = searchUsers(
@@ -27,6 +27,7 @@ const List = searchUsers(
       >
         <InfiniteList
           defaultPadding
+          androidDismissKeyboard={false}
           keyboardDismissMode="none"
           ListEmptyComponent={<NoResults />}
           data={users}

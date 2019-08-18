@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { compose } from 'react-apollo'
 import { Navigation } from 'react-native-navigation'
+import { compose } from 'ramda'
 import { Layout, FlatList, showNotificationBadge, hideNotificationBadge } from 'navigation'
 import { getNotifications } from 'graphql/queries/getNotifications'
 import { markAllNotificationsSeen } from 'graphql/mutations/notification/markAllNotificationsSeen'

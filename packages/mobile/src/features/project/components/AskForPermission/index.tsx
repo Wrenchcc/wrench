@@ -1,34 +1,36 @@
 import React, { useCallback } from 'react'
 import { Alert } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { request, openSettings, RESULTS } from 'react-native-permissions'
+import Permissions from 'react-native-permissions'
 import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
+const AUTHORIZED = 'authorized'
+
 const AskForPermission = ({ type, permission, onSuccess }) => {
   const { t } = useTranslation()
-
+  
   const onPress = useCallback(
-    () =>
-      request(permission).then(res => {
-        if (res !== RESULTS.GRANTED) {
-          const buttons = [{ text: t(`AskForPermission:${type}:alertCancel`), style: 'cancel' }]
+    () => Permissions.request(permission).then(res => {
+    if (res !== AUTHORIZED) {
+      const buttons = [{ text: t(`AskForPermission:${permission}:alertCancel`), style: 'cancel' }]
 
-          buttons.push({
-            onPress: () => openSettings(),
-            text: t(`AskForPermission:${type}:alertOpen`),
-          })
+      if (Permissions.canOpenSettings()) {
+        buttons.push({
+          text: t(`AskForPermission:${permission}:alertOpen`),
+          onPress: () => Permissions.openSettings(),
+        })
+      }
 
-          Alert.alert(
-            t(`AskForPermission:${type}.alertTitle`),
-            t(`AskForPermission:${type}:alertDescription`),
-            buttons
-          )
-        } else {
-          onSuccess()
-        }
-      }),
-    [type, permission, onSuccess]
+      Alert.alert(
+        t(`AskForPermission:${permission}.alertTitle`),
+        t(`AskForPermission:${permission}:alertDescription`),
+        buttons
+      )
+    } else {
+      onSuccess()
+    }
+  }), [type, permission, onSuccess]
   )
 
   return (

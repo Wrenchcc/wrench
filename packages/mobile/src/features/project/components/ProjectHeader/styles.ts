@@ -10,4 +10,9 @@ export const Base = styled.View`
 export const Followers = styled(UiFollowers)`
   margin-top: 15;
   margin-bottom: 35;
+  align-self: flex-start;
+`
+
+export const Actions = styled.View`
+  align-self: flex-start;
 `

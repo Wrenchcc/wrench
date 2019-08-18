@@ -1,5 +1,5 @@
 import React, { useCallback, memo } from 'react'
-import { Image, Dimensions } from 'react-native'
+import {  Dimensions , Image} from 'react-native'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
 import { Marker, Overlay } from './styles'
@@ -22,7 +22,7 @@ function Item({ item, selected, onPress, order }) {
       onPress={handleOnPress}
       activeOpacity={1}
     >
-      <Image source={{ uri: item.uri }} style={{ height: ITEM_SIZE, width: ITEM_SIZE }} />
+      <Image source={item} style={{ height: ITEM_SIZE, width: ITEM_SIZE }} />
 
       <Marker selected={selected}>
         <Text fontSize={12} bold>

@@ -8,6 +8,7 @@ import { ListContext } from '../Layout/context'
 import { NAVIGATION, SCREENS } from '../constants'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
+const KEYBOARD_OFFSET = isAndroid ? 28 : 0
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid
@@ -107,7 +108,10 @@ export default function createNavigationAwareScrollable(Component) {
           scrollResponder.getInnerViewNode(),
           isAncestor => {
             if (isAncestor) {
-              scrollResponder.scrollResponderScrollNativeHandleToKeyboard(currentlyFocusedField)
+              scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
+                currentlyFocusedField,
+                KEYBOARD_OFFSET
+              )
             }
           }
         )
