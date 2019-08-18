@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { compose } from 'react-apollo'
+import { compose } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import { isEmpty } from 'ramda'
 import { Page, FlatList } from 'navigation'
@@ -81,7 +81,7 @@ function Project({
   }, [post, posts, hasPosts, project])
 
   const fullScreen = !hasPosts || (isFetching && !posts)
- 
+
   return (
     <Page
       headerTitle={project.title}

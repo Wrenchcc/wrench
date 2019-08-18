@@ -32,7 +32,7 @@
     "ms": "^2.1.2",
     "ramda": "^0.26.1",
     "react": "16.8.6",
-    "react-apollo": "^2.5.8",
+    "react-apollo": "^3.0.1",
     "react-i18next": "^10.12.2",
     "react-native": "^v0.60.5",
     "react-native-actionsheet": "^2.4.2",

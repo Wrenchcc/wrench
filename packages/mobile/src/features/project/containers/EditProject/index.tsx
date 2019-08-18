@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { ScrollView, ActivityIndicator, Alert } from 'react-native'
-import { compose } from 'react-apollo'
+import { compose } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import { SCREENS, useNavigation } from 'navigation'
 import { editProject } from 'graphql/mutations/project/editProject'

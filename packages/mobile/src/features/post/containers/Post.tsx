@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { compose } from 'react-apollo'
+import { compose } from 'ramda'
 import { isEmpty } from 'ramda'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
