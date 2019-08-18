@@ -84,6 +84,7 @@ function Search({ query }) {
   return (
     <Base>
       <TabView
+        swipeVelocityThreshold={500}
         keyboardDismissMode="none"
         navigationState={{
           index,

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState, useCallback } from 'react'
+import React, { memo, useEffect, useState, useCallback, useMemo } from 'react'
 import { Dimensions } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
@@ -27,6 +27,14 @@ function MediaPicker() {
     },
   ])
 
+  const navigationState = useMemo(
+    () => ({
+      index: tabIndex,
+      routes: albums,
+    }),
+    [tabIndex, albums]
+  )
+
   const fetchAlbums = async () => {
     try {
       const results = await MediaLibrary.getAlbumsAsync({ includeSmartAlbums: true })
@@ -49,7 +57,7 @@ function MediaPicker() {
 
   useEffect(() => {
     Permissions.check(PERMISSION).then(response => {
-       if (response === AUTHORIZED) {
+      if (response === AUTHORIZED) {
         fetchAlbums()
       }
 
@@ -72,7 +80,7 @@ function MediaPicker() {
     fetchAlbums()
   }, [setPhotoPermission, fetchAlbums])
 
-  const renderScene = ({ route }) => <List album={route.key} />
+  const renderScene = useCallback(({ route }) => <List album={route.key} />, [])
 
   const renderTabBar = useCallback(props => albums.length > 1 && <Tabs {...props} />, [albums])
 
@@ -88,10 +96,8 @@ function MediaPicker() {
 
   return (
     <TabView
-      navigationState={{
-        index: tabIndex,
-        routes: albums,
-      }}
+      swipeVelocityThreshold={500}
+      navigationState={navigationState}
       renderTabBar={renderTabBar}
       renderScene={renderScene}
       onIndexChange={handleIndexChange}
