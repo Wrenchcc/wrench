@@ -33,8 +33,12 @@ target 'Wrench' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   # Third party deps podspec link
-  pod 'react-native-media-library', :path => '../node_modules/react-native-media-library/ios'
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+
+  # TODO: fix autolinking (xcode project?)
+  pod 'react-native-media-library', :path => '../node_modules/react-native-media-library'
+  pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator'
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
@@ -42,7 +46,6 @@ target 'Wrench' do
   pod 'FBSDKShareKit'
 
   # Required by Firebase
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
   pod 'Firebase/Core'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/Messaging'
@@ -56,23 +59,25 @@ target 'Wrench' do
   use_native_modules!
 end
 
-# The following is needed to ensure the "archive" step works in XCode.
-# It removes React from the Pods project, as it is already included in the main project.
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    if target.name == "React"
+    targets_to_ignore = %w(React yoga)
+
+    if targets_to_ignore.include? target.name
       target.remove_from_project
     end
 
     if target.name == 'react-native-config'
       phase = target.project.new(Xcodeproj::Project::Object::PBXShellScriptBuildPhase)
       phase.shell_script = "cd ../../"\
-       " && RNC_ROOT=./node_modules/react-native-config/"\
-       " && export SYMROOT=$RNC_ROOT/ios/ReactNativeConfig"\
-       " && export BUILD_DIR=$RNC_ROOT/ios/ReactNativeConfig"\
-       " && ruby $RNC_ROOT/ios/ReactNativeConfig/BuildDotenvConfig.ruby"
+                           " && RNC_ROOT=./node_modules/react-native-config/"\
+                           " && export SYMROOT=$RNC_ROOT/ios/ReactNativeConfig"\
+                           " && export BUILD_DIR=$RNC_ROOT/ios/ReactNativeConfig"\
+                           " && ruby $RNC_ROOT/ios/ReactNativeConfig/BuildDotenvConfig.ruby"
+
       target.build_phases << phase
       target.build_phases.move(phase,0)
     end
+
   end
 end

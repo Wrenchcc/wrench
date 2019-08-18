@@ -199,6 +199,8 @@ PODS:
   - react-native-fbsdk/Share (1.0.1):
     - FBSDKShareKit (~> 5.0)
     - React
+  - react-native-image-manipulator (1.0.1):
+    - React
   - react-native-media-library (1.0.0):
     - React
   - react-native-netinfo (4.1.5):
@@ -266,6 +268,8 @@ PODS:
   - RNGoogleSignin (2.0.0):
     - GoogleSignIn (~> 4.4.0)
     - React
+  - RNRate (1.0.1):
+    - React
   - RNReanimated (1.2.0):
     - React
   - RNShare (2.0.0):
@@ -306,7 +310,8 @@ DEPENDENCIES:
   - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
-  - react-native-media-library (from `../node_modules/react-native-media-library/ios`)
+  - react-native-image-manipulator (from `../node_modules/react-native-image-manipulator`)
+  - react-native-media-library (from `../node_modules/react-native-media-library`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -331,6 +336,7 @@ DEPENDENCIES:
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
+  - RNRate (from `../node_modules/react-native-rate/ios`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNShare (from `../node_modules/react-native-share`)
   - SDWebImageWebPCoder
@@ -397,8 +403,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-config"
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
+  react-native-image-manipulator:
+    :path: "../node_modules/react-native-image-manipulator"
   react-native-media-library:
-    :path: "../node_modules/react-native-media-library/ios"
+    :path: "../node_modules/react-native-media-library"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pinchable:
@@ -447,6 +455,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
     :path: "../node_modules/react-native-google-signin"
+  RNRate:
+    :path: "../node_modules/react-native-rate/ios"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNShare:
@@ -496,7 +506,8 @@ SPEC CHECKSUMS:
   react-native-camera: 1a9833c4fd3da7594ce78518d34dc91a46e13546
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-fbsdk: 080f3bb23513c5b59b6528543206fe0d1436bb7e
-  react-native-media-library: 7bea5fad829d5abf9026127152c0c29cbfe02fd6
+  react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
+  react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
   react-native-netinfo: 0e563248a4b9a99c33ec29bd03c2d50767db22a6
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
@@ -521,6 +532,7 @@ SPEC CHECKSUMS:
   RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
+  RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
   RNReanimated: 1b52415c4302f198cb581282a0166690bad62c43
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
@@ -529,6 +541,6 @@ SPEC CHECKSUMS:
   SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
   yoga: 312528f5bbbba37b4dcea5ef00e8b4033fdd9411
 
-PODFILE CHECKSUM: f57df8eaf67f6728da2cc78921822b38ffdc69bb
+PODFILE CHECKSUM: f629913875489ec2479b2b4d6598765db932faa6
 
 COCOAPODS: 1.6.1

@@ -4556,9 +4556,9 @@ p-limit@^1.1.0:
     p-try "^1.0.0"
 
 p-limit@^2.0.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.0.tgz#417c9941e6027a9abcba5092dd2904e255b5fbc2"
-  integrity sha512-pZbTJpoUsCzV48Mc9Nh51VbwO0X9cuPFE8gYwx9BTCt9SF8/b7Zljd2fVgOxhIF/HDTKgpVzs+GPhyKfjLLFRQ==
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.1.tgz#aa07a788cc3151c939b5131f63570f0dd2009537"
+  integrity sha512-85Tk+90UCVWvbDavCLKPOLC9vvY8OwEX/RtKF+/1OADJMVlFfEHOiMTPVyxg7mk/dKa+ipdHm0OUkTvCpMTuwg==
   dependencies:
     p-try "^2.0.0"
 
@@ -4920,7 +4920,7 @@ react-native-google-signin@^2.0.0:
 
 "react-native-image-manipulator@https://github.com/pontusab/react-native-image-manipulator":
   version "1.0.1"
-  resolved "https://github.com/pontusab/react-native-image-manipulator#e3fdf96a10d0db5a06f87d5263e61cabf52efd92"
+  resolved "https://github.com/pontusab/react-native-image-manipulator#aff49eef7e7d6127a2a97363b349fdeba58ea0e0"
 
 react-native-linear-gradient@^2.5.6:
   version "2.5.6"
@@ -4929,7 +4929,7 @@ react-native-linear-gradient@^2.5.6:
 
 "react-native-media-library@https://github.com/pontusab/react-native-media-library":
   version "1.0.0"
-  resolved "https://github.com/pontusab/react-native-media-library#ddec93a2b3981708f228b89f759348f309d38d44"
+  resolved "https://github.com/pontusab/react-native-media-library#376fae40002a2a1a3c4d1f8f44738b7626fe997e"
 
 react-native-navigation@^3.0.0:
   version "3.0.0"
