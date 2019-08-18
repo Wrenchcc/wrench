@@ -160,7 +160,7 @@ dependencies {
     implementation project(':react-native-google-signin')
     implementation project(':react-native-permissions')
     implementation project(':react-native-image-manipulator')
-    // implementation project(':react-native-media-library')
+    implementation project(':react-native-media-library')
     implementation project(':@react-native-community_netinfo')
     implementation project(':@react-native-community_async-storage')
     implementation project(':react-native-sentry')

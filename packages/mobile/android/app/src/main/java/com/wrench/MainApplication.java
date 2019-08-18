@@ -8,7 +8,7 @@ import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.reactnativeimagemanipulator.ImageManipulatorPackage;
-// import com.reactnativereactnativemedialibrary.MediaLibraryPackage;
+import com.reactnativemedialibrary.MediaLibraryPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -89,8 +89,8 @@ public class MainApplication extends NavigationApplication {
         new RNFirebaseNotificationsPackage(),
         new RNFirebaseLinksPackage(),
         new FastImageViewPackage(),
-        new ImageManipulatorPackage()
-        // new MediaLibraryPackage()
+        new ImageManipulatorPackage(),
+        new MediaLibraryPackage()
       );
     }
 
