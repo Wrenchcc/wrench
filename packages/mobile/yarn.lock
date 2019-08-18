@@ -4872,7 +4872,7 @@ react-native-linear-gradient@^2.5.6:
 
 "react-native-media-library@https://github.com/pontusab/react-native-media-library":
   version "1.0.0"
-  resolved "https://github.com/pontusab/react-native-media-library#4de2247c3fcb6e7d2109371469b7306913dddb02"
+  resolved "https://github.com/pontusab/react-native-media-library#ddec93a2b3981708f228b89f759348f309d38d44"
 
 react-native-navigation@^2.26.5:
   version "2.26.5"
