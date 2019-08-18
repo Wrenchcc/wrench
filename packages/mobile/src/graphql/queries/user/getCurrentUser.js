@@ -22,6 +22,21 @@ export const CurrentUserProfileQuery = gql`
     user: currentUser {
       ...currentUserInfo
       ...userPostsConnection
+      projects: projectsConnection {
+        edges {
+          node {
+            id
+            cover {
+              uri
+              default
+            }
+            title
+            followers: followersConnection {
+              totalCount
+            }
+          }
+        }
+      }
     }
   }
   ${currentUserInfoFragment}

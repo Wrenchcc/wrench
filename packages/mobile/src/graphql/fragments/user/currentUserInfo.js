@@ -4,6 +4,8 @@ export default gql`
   fragment currentUserInfo on User {
     id
     fullName
+    firstName
+    lastName
     username
     avatarUrl
     projectCount

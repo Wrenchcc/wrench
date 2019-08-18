@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated'
 import { compose } from 'react-apollo'
 import { useTranslation } from 'react-i18next'
 import { isEmpty } from 'ramda'
-import { useNavigation, SCREENS, Page, FlatList } from 'navigation'
+import { Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
 import Post from 'components/Post'
@@ -12,7 +12,7 @@ import { Edit, EmptyState, Title, Share, Text } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 
-const { add, interpolate, Extrapolate, set, Value } = Animated
+const { interpolate, Extrapolate, Value } = Animated
 
 function Project({
   posts,
@@ -27,7 +27,6 @@ function Project({
 }) {
   const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
 
   const opacityFollow = interpolate(scrollY.current, {
     extrapolate: Extrapolate.CLAMP,
@@ -81,8 +80,8 @@ function Project({
     )
   }, [post, posts, hasPosts, project])
 
-  const fullScreen = hasPosts || (isFetching && !posts)
-
+  const fullScreen = !hasPosts || (isFetching && !posts)
+ 
   return (
     <Page
       headerTitle={project.title}
@@ -108,7 +107,7 @@ function Project({
         initialNumToRender={1}
         spacingSeparator
         paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flex: fullScreen ? 0 : 1 }}
+        contentContainerStyle={{ flex: fullScreen ? 1 : 0 }}
         ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
         ListHeaderComponent={renderHeader}
         data={posts}

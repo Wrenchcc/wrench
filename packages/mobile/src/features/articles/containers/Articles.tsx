@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
 import { usePaginatedQuery, ARTICLES_QUERY } from 'gql'
-import { Avatar, Carousel, Text, Title } from 'ui'
+import { Avatar, Title } from 'ui'
 import { COLORS } from 'ui/constants'
 import Article from 'components/Article'
 
@@ -14,7 +14,7 @@ function Articles({ name, logoUrl, url, id }) {
     'articles'
   )(ARTICLES_QUERY, {
     variables: {
-      first: !articles ? 2 : 5,
+      first: 3,
       publisherId: id,
     },
   })

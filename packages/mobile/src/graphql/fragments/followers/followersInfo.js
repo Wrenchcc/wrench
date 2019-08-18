@@ -8,6 +8,8 @@ export default gql`
         id
         username
         fullName
+        firstName
+        lastName
         avatarUrl
         isOnline
         projectCount

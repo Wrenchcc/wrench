@@ -1,7 +1,5 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { pathOr } from 'ramda'
-import Placeholder from 'ui/Placeholder'
 import { followProject } from 'graphql/mutations/project/followProject'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
@@ -9,17 +7,6 @@ import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './
 
 function ProjectCard({ onPress, project, followProject: followProjectMutation, style }) {
   const { t } = useTranslation()
-  const renderImages = useCallback(() => {
-    const image = pathOr(false, ['files', 'edges', 0, 'node'], project)
-    return image ? (
-      <>
-        <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
-        <Image source={image} height={180} />
-      </>
-    ) : (
-      <Placeholder />
-    )
-  }, [project])
 
   const handleFollow = useCallback(() => {
     followProjectMutation(project.id)
@@ -28,7 +15,10 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
   return (
     <Base style={style}>
       <Touchable onPress={onPress} style={{ height: '100%' }}>
-        {renderImages()}
+        {!project.cover.default && (
+          <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
+        )}
+        <Image source={project.cover} height={180} />
       </Touchable>
 
       <Content>
