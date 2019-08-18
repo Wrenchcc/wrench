@@ -4918,10 +4918,10 @@ react-native-navigation@^3.0.0:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
-react-native-permissions@^2.0.0-alpha.1:
-  version "2.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.0-alpha.1.tgz#845d8509070490343efbb97fa9ac9a348c78cd5d"
-  integrity sha512-suZVlVw7n3LQp+OMc1tTyjUGApxsH0s0mU6txailxupAENSl/tyXz7p0M4LV4hR5x7qCiyk5Cy9CG7uw4zdmbg==
+react-native-permissions@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.2.0.tgz#0deb616bf1565c17c91f1cb1f953809b2892c29e"
+  integrity sha512-+KrP1JZ30RI9p30wsGlGQx22qwiClDnznSQZPpvBMkOIZQ9kXOkLAFXS+vwiHRiiRu/pBMBXYHfI7ng6t2+LbQ==
 
 react-native-pinchable@^0.1.2:
   version "0.1.2"

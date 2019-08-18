@@ -48,7 +48,7 @@
     "react-native-linear-gradient": "^2.5.6",
     "react-native-media-library": "https://github.com/pontusab/react-native-media-library",
     "react-native-navigation": "^3.0.0",
-    "react-native-permissions": "^2.0.0-alpha.1",
+    "react-native-permissions": "1.2.0",
     "react-native-pinchable": "^0.1.2",
     "react-native-rate": "^1.1.7",
     "react-native-reanimated": "^1.2.0",
