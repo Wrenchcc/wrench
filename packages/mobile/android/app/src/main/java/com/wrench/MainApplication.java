@@ -24,7 +24,6 @@ import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
-import com.yonahforst.rnpermissions.RNPermissionsPackage;
 import io.sentry.RNSentryPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.reactnative.camera.RNCameraPackage;
@@ -85,7 +84,6 @@ public class MainApplication extends NavigationApplication {
         packages.add(new RNFirebasePackage());
         packages.add(new RNGestureHandlerPackage());
         packages.add(new RNGoogleSigninPackage());
-        packages.add(new RNPermissionsPackage());
         packages.add(new RNSentryPackage());
         packages.add(new RNSharePackage());
         packages.add(new SplashScreenReactPackage());

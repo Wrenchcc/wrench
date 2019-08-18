@@ -225,7 +225,6 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation project(':react-native-google-signin')
-    implementation project(':react-native-permissions')
     implementation project(':react-native-image-manipulator')
     implementation project(':react-native-media-library')
     implementation project(':@react-native-community_netinfo')
