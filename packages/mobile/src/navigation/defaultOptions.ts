@@ -13,11 +13,8 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   bottomTabs: {
-    animate: false,
     backgroundColor: COLORS.DARK,
-    drawBehind: false,
     titleDisplayMode: 'alwaysHide',
-    visible: true,
   },
   layout: {
     backgroundColor: COLORS.WHITE,

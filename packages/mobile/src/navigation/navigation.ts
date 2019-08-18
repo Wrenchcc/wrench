@@ -1,32 +1,9 @@
 import { Navigation } from 'react-native-navigation'
-import { Keyboard } from 'react-native'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile } from 'images'
 import { loadSelectedProjectId } from 'store/post'
-import { isAndroid } from 'utils/platform'
 import defaultOptions from './defaultOptions'
 import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
-
-// NOTE: Hide bottom bar
-if (isAndroid) {
-  Keyboard.addListener('keyboardDidShow', () => {
-    Navigation.mergeOptions(BOTTOM_TABS_ID, {
-      bottomTabs: {
-        drawBehind: true,
-        visible: false,
-      },
-    })
-  })
-
-  Keyboard.addListener('keyboardDidHide', () => {
-    Navigation.mergeOptions(BOTTOM_TABS_ID, {
-      bottomTabs: {
-        drawBehind: false,
-        visible: true,
-      },
-    })
-  })
-}
 
 export function Bootstrap() {
   Navigation.setRoot({

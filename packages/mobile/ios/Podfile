@@ -2,63 +2,63 @@ ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 platform :ios, '10.0'
 
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
 install! 'cocoapods', :deterministic_uuids => false
 
 target 'Wrench' do
   platform :ios, '10.0'
 
-  react_path = '../node_modules/react-native'
-  yoga_path = File.join(react_path, 'ReactCommon/yoga')
-
-  pod 'React', :path => react_path, :subspecs => [
-    'Core',
-    'CxxBridge',
-    'DevSupport',
-    'RCTActionSheet',
-    'RCTAnimation',
-    'RCTCameraRoll',
-    'RCTImage',
-    'RCTLinkingIOS',
-    'RCTNetwork',
-    'RCTPushNotification',
-    'RCTText',
-    'RCTWebSocket',
-  ]
-
-  # the following dependencies are dependencies of React native itself.
-  pod 'DoubleConversion', :podspec => File.join(react_path,'third-party-podspecs/DoubleConversion.podspec')
-  pod 'Folly', :podspec => File.join(react_path,'third-party-podspecs/Folly.podspec')
-  pod 'glog', :podspec => File.join(react_path,'third-party-podspecs/glog.podspec')
-  pod 'yoga', :path => File.join(react_path, 'ReactCommon/yoga')
+  pod 'React', :path => '../node_modules/react-native/'
+  pod 'React-Core', :path => '../node_modules/react-native/React'
+  pod 'React-DevSupport', :path => '../node_modules/react-native/React'
+  pod 'React-RCTActionSheet', :path => '../node_modules/react-native/Libraries/ActionSheetIOS'
+  pod 'React-RCTAnimation', :path => '../node_modules/react-native/Libraries/NativeAnimation'
+  pod 'React-RCTBlob', :path => '../node_modules/react-native/Libraries/Blob'
+  pod 'React-RCTImage', :path => '../node_modules/react-native/Libraries/Image'
+  pod 'React-RCTLinking', :path => '../node_modules/react-native/Libraries/LinkingIOS'
+  pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network'
+  pod 'React-RCTSettings', :path => '../node_modules/react-native/Libraries/Settings'
+  pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
+  pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
+  pod 'React-RCTWebSocket', :path => '../node_modules/react-native/Libraries/WebSocket'
+  pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
+  pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
+  pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
+  pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+  pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   # Third party deps podspec link
-  pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
-  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-  pod 'react-native-camera', path: '../node_modules/react-native-camera'
-  pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
-  pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
-  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
-  pod 'react-native-pinchable', :path => '../node_modules/react-native-pinchable'
-  pod 'react-native-config', :path => '../node_modules/react-native-config'
-  pod 'react-native-splash-screen', path: '../node_modules/react-native-splash-screen'
-  pod 'react-native-video', :path => '../node_modules/react-native-video'
-  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
-  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
-  pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator/ios'
-  pod 'react-native-media-library', :path => '../node_modules/react-native-media-library/ios'
-  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
-  pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
-  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
-  pod 'RNShare', :path => '../node_modules/react-native-share'
-  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+  # pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
+  # pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+  # pod 'react-native-camera', path: '../node_modules/react-native-camera'
+  # pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
+  # pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
+  # pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+  # pod 'react-native-pinchable', :path => '../node_modules/react-native-pinchable'
+  # pod 'react-native-config', :path => '../node_modules/react-native-config'
+  # pod 'react-native-splash-screen', path: '../node_modules/react-native-splash-screen'
+  # pod 'react-native-video', :path => '../node_modules/react-native-video'
+  # pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+  # pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
+  # pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+  # pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator/ios'
+  # pod 'react-native-media-library', :path => '../node_modules/react-native-media-library/ios'
+  # pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+  # pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+  # pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
+  # pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+  # pod 'RNShare', :path => '../node_modules/react-native-share'
+  # pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
-  pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
-    'Core',
-    'Camera',
-    'PhotoLibrary',
-  ]
+  # pod 'RNPermissions', :path => '../node_modules/react-native-permissions', :subspecs => [
+  #   'Core',
+  #   'Camera',
+  #   'PhotoLibrary',
+  # ]
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
@@ -76,6 +76,8 @@ target 'Wrench' do
 
   # react-native-google-signin
   pod 'GoogleSignIn', '~> 4.4.0'
+
+  use_native_modules!
 end
 
 # The following is needed to ensure the "archive" step works in XCode.

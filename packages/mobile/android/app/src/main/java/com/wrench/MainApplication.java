@@ -1,56 +1,59 @@
 package com.wrench;
 
 import android.app.Application;
+import android.util.Log;
 
-import com.yonahforst.rnpermissions.RNPermissionsPackage;
-import io.sentry.RNSentryPackage;
-import com.reactnativecommunity.netinfo.NetInfoPackage;
-import com.reactnativecommunity.webview.RNCWebViewPackage;
-import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
-import com.reactnativeimagemanipulator.ImageManipulatorPackage;
-import com.reactnativemedialibrary.MediaLibraryPackage;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
+import com.facebook.react.bridge.JavaScriptExecutorFactory;
+import com.facebook.react.PackageList;
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.facebook.soloader.SoLoader;
+
+import cl.json.RNSharePackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import com.brentvatne.react.ReactVideoPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.brentvatne.react.ReactVideoPackage;
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import org.reactnative.camera.RNCameraPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import cl.json.RNSharePackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
-import io.invertase.firebase.RNFirebasePackage;
+import com.yonahforst.rnpermissions.RNPermissionsPackage;
+import io.sentry.RNSentryPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import org.reactnative.camera.RNCameraPackage;
+
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+import com.reactnativecommunity.netinfo.NetInfoPackage;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
+import com.reactnativeimagemanipulator.ImageManipulatorPackage;
+import com.reactnativemedialibrary.MediaLibraryPackage;
+
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.links.RNFirebaseLinksPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
-import com.facebook.react.ReactNativeHost;
-import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
+import io.invertase.firebase.RNFirebasePackage;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class MainApplication extends NavigationApplication {
     @Override
-    protected ReactGateway createReactGateway() {
-      ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
-        @Override
-        protected String getJSMainModuleName() {
-          return "index";
-        }
-      };
-
-      return new ReactGateway(this, isDebug(), host);
+    protected ReactNativeHost createReactNativeHost() {
+        return new NavigationReactNativeHost(this) {
+            @Override
+            protected String getJSMainModuleName() {
+                return "index";
+            }
+        };
     }
 
     @Override
@@ -58,44 +61,35 @@ public class MainApplication extends NavigationApplication {
       return BuildConfig.DEBUG;
     }
 
-    private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
-
-    protected static CallbackManager getCallbackManager() {
-      return mCallbackManager;
-    }
-
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-        new MainReactPackage(),
-        new RNGoogleSigninPackage(),
-        new RNPermissionsPackage(),
-        new RNSentryPackage(),
-        new NetInfoPackage(),
-        new AsyncStoragePackage(),
-        new RNCWebViewPackage(),
-        new LinearGradientPackage(),
-        new FBSDKPackage(mCallbackManager),
-        new ReactNativeConfigPackage(),
-        new ReactVideoPackage(),
-        new SplashScreenReactPackage(),
-        new RNCameraPackage(),
-        new RNDeviceInfo(),
-        new RNSharePackage(),
-        new ReanimatedPackage(),
-        new RNGestureHandlerPackage(),
-        new RNFirebasePackage(),
-        new RNFirebaseAnalyticsPackage(),
-        new RNFirebaseMessagingPackage(),
-        new RNFirebaseNotificationsPackage(),
-        new RNFirebaseLinksPackage(),
-        new FastImageViewPackage(),
-        new ImageManipulatorPackage(),
-        new MediaLibraryPackage()
-      );
-    }
-
     @Override
     public List<ReactPackage> createAdditionalReactPackages() {
-      return getPackages();
+        List<ReactPackage> packages = new ArrayList<>();
+
+        packages.add(new AsyncStoragePackage());
+        packages.add(new FastImageViewPackage());
+        packages.add(new FBSDKPackage());
+        packages.add(new ImageManipulatorPackage());
+        packages.add(new LinearGradientPackage());
+        packages.add(new MediaLibraryPackage());
+        packages.add(new NetInfoPackage());
+        packages.add(new ReactNativeConfigPackage());
+        packages.add(new ReactVideoPackage());
+        packages.add(new ReanimatedPackage());
+        packages.add(new RNCameraPackage());
+        packages.add(new RNCWebViewPackage());
+        packages.add(new RNDeviceInfo());
+        packages.add(new RNFirebaseAnalyticsPackage());
+        packages.add(new RNFirebaseLinksPackage());
+        packages.add(new RNFirebaseMessagingPackage());
+        packages.add(new RNFirebaseNotificationsPackage());
+        packages.add(new RNFirebasePackage());
+        packages.add(new RNGestureHandlerPackage());
+        packages.add(new RNGoogleSigninPackage());
+        packages.add(new RNPermissionsPackage());
+        packages.add(new RNSentryPackage());
+        packages.add(new RNSharePackage());
+        packages.add(new SplashScreenReactPackage());
+
+        return packages;
     }
 }
