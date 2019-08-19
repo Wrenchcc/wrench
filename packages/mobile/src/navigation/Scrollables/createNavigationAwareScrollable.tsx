@@ -12,7 +12,7 @@ const KEYBOARD_OFFSET = isAndroid ? 28 : 0
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid
-  ? { onScrollEndDrag: Keyboard.dismiss }
+  ? { onMomentumScrollBegin: Keyboard.dismiss }
   : { keyboardDismissMode: 'on-drag' }
 
 const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
