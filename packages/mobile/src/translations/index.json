@@ -157,6 +157,9 @@
     "SettingsButton": {
       "settings": "Settings"
     },
+    "UserProjects": {
+      "title": "Projects"
+    },
     "Settings": {
       "invite": "Invite people",
       "share": "Share us",
@@ -448,6 +451,9 @@
     },
     "SettingsButton": {
       "settings": "Inställningar"
+    },
+    "UserProjects": {
+      "title": "Projekt"
     },
     "Settings": {
       "invite": "Bjud in vänner",

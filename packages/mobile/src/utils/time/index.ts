@@ -10,10 +10,7 @@ function timeDifference(current, previous, long = false) {
   const elapsed = current - previous
 
   if (elapsed < milliSecondsPerMinute) {
-    if (long) {
-      return i18next.t('Time:now')
-    }
-    return `${Math.round(elapsed / 1000)}s`
+    return i18next.t('Time:now')
   }
 
   if (elapsed < milliSecondsPerHour) {

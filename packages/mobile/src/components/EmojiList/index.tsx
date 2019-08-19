@@ -8,7 +8,7 @@ function EmojiList({ onPress }) {
   return (
     <Base>
       {EMOJIS.map(emoji => (
-        <Text fontSize={28} key={emoji} center onPress={() => onPress(emoji)}>
+        <Text fontSize={24} key={emoji} center onPress={() => onPress(emoji)}>
           {emoji}
         </Text>
       ))}

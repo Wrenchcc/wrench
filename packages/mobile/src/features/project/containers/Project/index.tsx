@@ -91,8 +91,12 @@ function Project({
           <Edit project={project} />
         ) : (
           <>
-            <Share title={project.title} url={project.dynamicLink} text opacity={opacityShare} />
-            <Animated.View style={{ opacity: opacityFollow, position: 'absolute' }}>
+            <Animated.View style={{ zIndex: opacityShare }}>
+              <Share title={project.title} url={project.dynamicLink} text opacity={opacityShare} />
+            </Animated.View>
+            <Animated.View
+              style={{ opacity: opacityFollow, position: 'absolute', zIndex: opacityFollow }}
+            >
               <Text medium onPress={handleFollow}>
                 {project.permissions && project.permissions.isFollower
                   ? t('Project:unfollow')

@@ -1,11 +1,13 @@
 import React from 'react'
 import { View, ScrollView, Dimensions } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { CardSmall, Text } from 'ui'
 
 const { width } = Dimensions.get('window')
 
 function UserProjects({ projects, spacingHorizontal }) {
+  const { t } = useTranslation()
   if (!projects || projects.edges.length <= 1) {
     return null
   }
@@ -37,6 +39,9 @@ function UserProjects({ projects, spacingHorizontal }) {
 
   return (
     <View>
+      <Text medium fontSize={21}>
+        {t('UserProjects:title')}
+      </Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
