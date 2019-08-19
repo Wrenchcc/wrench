@@ -693,10 +693,10 @@ async-retry@^1.2.1:
   dependencies:
     retry "0.12.0"
 
-aws-sdk@^2.512.0:
-  version "2.512.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.512.0.tgz#2480184c37964a224b2db1259aa07231403a09cc"
-  integrity sha512-ioZZ6dTiZyETpJJ3aYy81OS3idnU5n8eyFssvgMXdsX8PRJ3KJZ/dQAdCD/680xDt3ymRNClGvlkPcOLPNlDKQ==
+aws-sdk@^2.513.0:
+  version "2.513.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.513.0.tgz#0486047151c8c987f55555cd811baf44716e27cb"
+  integrity sha512-hwI4c0MV7SrN5EOa0pXjiInWpNxBfMQFfPh3XDi9fj+KtPjgRWQUTaKF7pUg6RJ+Su++62kp1yJqT2WWBoNFMA==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -3583,6 +3583,11 @@ uuid@3.3.2, uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
+
+uuid@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.3.tgz#4568f0216e78760ee1dbf3a4d2cf53e224112866"
+  integrity sha512-pW0No1RGHgzlpHJO1nsVrHKpOEIxkGg1xB+v0ZmdNH5OAeAwzAVrCnI2/6Mtx+Uys6iaylxa+D3g4j63IKKjSQ==
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
