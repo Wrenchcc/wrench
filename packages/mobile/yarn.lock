@@ -4890,7 +4890,7 @@ react-native-linear-gradient@^2.5.6:
   version "1.0.0"
   resolved "https://github.com/pontusab/react-native-media-library#f644aa74851abd10d9c732d8e55cb1626c84d224"
 
-react-native-navigation@^3.0.0:
+react-native-navigation@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-3.1.0.tgz#2beea7d929875925d18fb374662bb1c92965adb3"
   integrity sha512-J6r4MgBftUrN4JzaMJ1rau4P0nnMJ7RCjQdIv4ZNSIyn4Hgn264mQyhIImnJB4YBIkgDgSmMffqsv68YadigBQ==
