@@ -61,12 +61,6 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    targets_to_ignore = %w(React yoga)
-
-    if targets_to_ignore.include? target.name
-      target.remove_from_project
-    end
-
     if target.name == 'react-native-config'
       phase = target.project.new(Xcodeproj::Project::Object::PBXShellScriptBuildPhase)
       phase.shell_script = "cd ../../"\
@@ -78,6 +72,5 @@ post_install do |installer|
       target.build_phases << phase
       target.build_phases.move(phase,0)
     end
-
   end
 end

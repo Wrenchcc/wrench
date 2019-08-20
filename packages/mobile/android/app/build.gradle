@@ -176,7 +176,9 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            // AppCenter handles this
+            // https://docs.microsoft.com/en-us/appcenter/build/android/code-signing#2-upload-everything-to-app-center
+            // signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -223,7 +225,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    
+
     implementation project(':react-native-google-signin')
     implementation project(':react-native-image-manipulator')
     implementation project(':react-native-media-library')
