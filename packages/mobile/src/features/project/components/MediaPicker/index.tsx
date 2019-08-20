@@ -37,7 +37,7 @@ function MediaPicker() {
 
   const fetchAlbums = async () => {
     try {
-      const results = await MediaLibrary.getAlbumsAsync({ includeSmartAlbums: true })
+      const results = await MediaLibrary.getAlbumsAsync({ includeSmartAlbums: false })
       const filteredAlbums = results.filter(({ assetCount }) => assetCount !== 0)
 
       const assets = albums.concat(filteredAlbums)

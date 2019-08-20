@@ -2,6 +2,7 @@ export { AppNavigation, AuthNavigation, Bootstrap } from './navigation'
 export { default as Layout } from './Layout'
 export { default as Page } from './Page'
 export { default as registerScreens } from './registerScreens'
+export { default as setDefaultOptions } from './options'
 
 export * from './Scrollables'
 export * from './hooks'

@@ -1,6 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 import { links, notifications } from 'react-native-firebase'
-import { Bootstrap, registerScreens } from 'navigation'
+import { Bootstrap, registerScreens, setDefaultOptions } from 'navigation'
 import { handleDynamicLink, handlePushNotification } from 'utils/dynamicLinks'
 import { trackScreen } from 'utils/analytics'
 import 'i18n'
@@ -8,6 +8,7 @@ import 'i18n'
 registerScreens()
 
 Navigation.events().registerAppLaunchedListener(async () => {
+  setDefaultOptions()
   Bootstrap()
 
   Navigation.events().registerComponentDidAppearListener(({ componentName }) => {

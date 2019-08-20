@@ -2,7 +2,6 @@ import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile } from 'images'
 import { loadSelectedProjectId } from 'store/post'
-import defaultOptions from './defaultOptions'
 import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
 
 export function Bootstrap() {
@@ -16,32 +15,21 @@ export function Bootstrap() {
 }
 
 export function AuthNavigation() {
-  Navigation.setDefaultOptions({
-    options: {
-      layout: {
-        backgroundColor: COLORS.DARK,
-      },
-    },
-    statusBar: {
-      style: STATUS_BAR.LIGHT,
-    },
-    topBar: {
-      visible: false,
-    },
-  })
-
   Navigation.setRoot({
     root: {
       component: {
         name: SCREENS.SIGN_IN,
+        options: {
+          statusBar: {
+            style: STATUS_BAR.LIGHT,
+          },
+        },
       },
     },
   })
 }
 
 export function AppNavigation(onboarding) {
-  Navigation.setDefaultOptions(defaultOptions)
-
   if (onboarding) {
     Navigation.setRoot({
       root: {
