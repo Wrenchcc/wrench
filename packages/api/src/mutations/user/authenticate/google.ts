@@ -3,9 +3,15 @@ import { getAvatarById, getDefaultAvatar } from '../../../utils/avatar'
 import { generateTokens } from '../../../utils/tokens'
 import { dynamicLink } from '../../../services/firebase'
 
+const GOOGLE_EMAIL_DOMAIN = 'cloudtestlabaccounts.com'
+
 export default async (_, { idToken, code }, ctx) => {
   const googleUser = await ctx.services.google.userInfo(idToken, code)
   const { userAgent } = ctx
+
+  if (googleUser.email.includes(GOOGLE_EMAIL_DOMAIN)) {
+    return null
+  }
 
   const authProvider = await ctx.db.AuthProvider.findOne({
     where: {
