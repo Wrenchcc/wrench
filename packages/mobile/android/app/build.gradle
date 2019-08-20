@@ -213,7 +213,7 @@ dependencies {
     } else {
       implementation jscFlavor
     }
-    
+
     implementation "com.google.android.gms:play-services-base:16.1.0"
     implementation "com.google.firebase:firebase-dynamic-links:17.0.0"
     implementation "com.google.firebase:firebase-analytics:16.5.0"
@@ -223,7 +223,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
+    
     implementation project(':react-native-google-signin')
     implementation project(':react-native-image-manipulator')
     implementation project(':react-native-media-library')
@@ -253,6 +253,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); 
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
 applyNativeModulesAppBuildGradle(project)
 apply plugin: 'com.google.gms.google-services'
