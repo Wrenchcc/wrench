@@ -96,6 +96,10 @@
 	<string>Not used</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Not used</string>
+  <key>NSContactsUsageDescription</key>
+  <string>Not used</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Not used</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>
