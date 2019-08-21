@@ -11,15 +11,15 @@
     "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts"
   },
   "dependencies": {
-    "apollo-server-express": "^2.8.1",
-    "aws-sdk": "^2.513.0",
+    "apollo-server-express": "^2.8.2",
+    "aws-sdk": "^2.515.0",
     "aws4": "^1.8.0",
     "axios": "^0.19.0",
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
-    "firebase-admin": "^8.3.0",
+    "firebase-admin": "^8.4.0",
     "google-auth-library": "^5.2.0",
     "graphql": "^14.4.2",
     "graphql-depth-limit": "^1.1.0",
