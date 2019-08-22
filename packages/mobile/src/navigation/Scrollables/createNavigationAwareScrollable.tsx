@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useCallback, forwardRef } from 'react'
-import { View, Keyboard, TextInput, UIManager } from 'react-native'
+import { Keyboard, TextInput, UIManager } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
@@ -16,7 +16,6 @@ const keyboardDismissProp = isAndroid
   : { keyboardDismissMode: 'on-drag' }
 
 const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
-const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 
 const keyExtractor = ({ node }) => node.id
@@ -163,10 +162,6 @@ export default function createNavigationAwareScrollable(Component) {
         keyExtractor={keyExtractor}
         contentContainerStyle={{
           flex: initialFetch ? 1 : 0,
-          paddingBottom:
-            (paddingBottom && paddingBottom) ||
-            (!initialFetch && data && data.length > 0 && spacingSeparator && 60) ||
-            0,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
           // NOTE: contentInset on layout NAVIGATION.LIST_OFFSET on page
@@ -174,9 +169,6 @@ export default function createNavigationAwareScrollable(Component) {
           ...contentContainerStyle,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
-        {...(spacingSeparator && {
-          ItemSeparatorComponent: Separator,
-        })}
         {...keyboardDismissProp}
         {...props}
       />

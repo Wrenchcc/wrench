@@ -8,6 +8,7 @@ const { width } = Dimensions.get('window')
 
 function UserProjects({ projects, spacingHorizontal }) {
   const { t } = useTranslation()
+
   if (!projects || projects.edges.length <= 1) {
     return null
   }
@@ -30,8 +31,8 @@ function UserProjects({ projects, spacingHorizontal }) {
         followers={node.followers.totalCount}
         image={node.cover}
         style={{
-          marginRight: index === projects.edges.length - 1 ? 20 : 10, // Last item
           marginLeft: index === 0 ? 20 : 0, // First item
+          marginRight: index === projects.edges.length - 1 ? 20 : 10, // Last item
         }}
       />
     )
@@ -39,17 +40,17 @@ function UserProjects({ projects, spacingHorizontal }) {
 
   return (
     <View>
-      <Text medium fontSize={21}>
+      <Text medium fontSize={21} style={{ marginLeft: 20 }}>
         {t('UserProjects:title')}
       </Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         style={{
-          marginTop: 20,
           marginBottom: 50,
-          marginRight: spacingHorizontal ? 0 : -20,
           marginLeft: spacingHorizontal ? 0 : -20,
+          marginRight: spacingHorizontal ? 0 : -20,
+          marginTop: 20,
           width,
         }}
       >

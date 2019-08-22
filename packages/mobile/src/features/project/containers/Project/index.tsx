@@ -1,9 +1,8 @@
 import React, { useCallback, useRef } from 'react'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { compose } from 'ramda'
+import { compose, isEmpty } from 'ramda'
 import { useTranslation } from 'react-i18next'
-import { isEmpty } from 'ramda'
 import { Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'
 import { followProject } from 'graphql/mutations/project/followProject'
@@ -64,7 +63,7 @@ function Project({
         <>
           <Post post={post} withoutTitle />
           {hasPosts && posts && posts.length > 1 && (
-            <View style={{ paddingTop: 40 }}>
+            <View style={{ marginTop: -20, paddingBottom: 50 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
           )}

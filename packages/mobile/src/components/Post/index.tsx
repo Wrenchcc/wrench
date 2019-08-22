@@ -8,7 +8,7 @@ import { deletePost } from 'graphql/mutations/post/deletePost'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ActionSheet, EditPost } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
-import { Top, Headline, Content, Spacer } from './styles'
+import { Base, Top, Headline, Content, Spacer } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
@@ -124,7 +124,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
   }, [post])
 
   return (
-    <>
+    <Base>
       <Top>
         <Avatar uri={post.user.avatarUrl} onPress={navigateToUser} isOnline={post.user.isOnline} />
         <Icon source={share} onPress={toggleActionSheet} hitSlop={20} />
@@ -168,7 +168,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
       {!withoutComments && !post.project.commentsDisabled && <Comments data={post} />}
       <TimeAgo date={post.createdAt} fontSize={11} long />
       {!isEditing && postActions()}
-    </>
+    </Base>
   )
 }
 

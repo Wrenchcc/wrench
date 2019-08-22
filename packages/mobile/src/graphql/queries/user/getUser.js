@@ -22,6 +22,10 @@ export const UserByUsernameQuery = gql`
             followers: followersConnection {
               totalCount
             }
+            permissions {
+              isOwner
+              isFollower
+            }
           }
         }
       }

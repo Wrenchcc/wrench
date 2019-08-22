@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const Base = styled.View`
+  padding-bottom: 50;
+`
+
 export const Top = styled.View`
   flex-direction: row;
   justify-content: space-between;

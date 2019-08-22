@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { FlatList, View, Keyboard } from 'react-native'
+import { FlatList, Keyboard } from 'react-native'
 import { isAndroid } from 'utils/platform'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
@@ -12,7 +12,6 @@ const keyboardDismissProp = isAndroid
 const renderLoader = (fullscreen, loaderPosition) => (
   <Loader fullscreen={fullscreen} top={loaderPosition} />
 )
-const Separator = () => <View style={{ paddingBottom: 50 }} />
 const BorderSeparator = () => <Border />
 const keyExtractor = ({ node }) => node.id
 
@@ -59,19 +58,12 @@ function InfiniteList({
       keyboardDismissMode="on-drag"
       contentContainerStyle={{
         flex: initialFetch ? 1 : 0,
-        paddingBottom:
-          (paddingBottom && paddingBottom) ||
-          (!initialFetch && data && data.length > 0 && spacingSeparator && 60) ||
-          0,
         paddingLeft: paddingHorizontal,
         paddingRight: paddingHorizontal,
         paddingTop,
         ...contentContainerStyle,
       }}
       {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
-      {...(spacingSeparator && {
-        ItemSeparatorComponent: Separator,
-      })}
       {...(androidDismissKeyboard && keyboardDismissProp)}
       {...props}
     />
