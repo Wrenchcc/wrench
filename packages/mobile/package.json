@@ -11,8 +11,7 @@
     "emulator:ensureready": "tasks/emulator_ensureready",
     "run:android": "tasks/run_android",
     "run:ios": "tasks/run_ios",
-    "translations:create": "tasks/translations_create",
-    "postinstall": "npx jetify"
+    "translations:create": "tasks/translations_create"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.0.1",
@@ -26,10 +25,10 @@
     "apollo-link-error": "^1.1.11",
     "apollo-link-queue": "^2.2.0",
     "apollo-link-retry": "^2.2.14",
-    "graphql": "^14.4.2",
+    "graphql": "^14.5.0",
     "graphql-tag": "^2.10.1",
     "human-format": "^0.10.1",
-    "i18next": "^17.0.11",
+    "i18next": "^17.0.12",
     "ms": "^2.1.2",
     "ramda": "^0.26.1",
     "react": "16.9.0",
@@ -37,13 +36,13 @@
     "react-i18next": "^10.12.2",
     "react-native": "^v0.60.5",
     "react-native-actionsheet": "^2.4.2",
-    "react-native-camera": "^3.2.0",
+    "react-native-camera": "^3.2.1",
     "react-native-config": "^0.11.7",
     "react-native-device-info": "^2.3.2",
     "react-native-fast-image": "^7.0.2",
     "react-native-fbsdk": "^1.0.1",
     "react-native-firebase": "^5.5.6",
-    "react-native-gesture-handler": "^1.3.0",
+    "react-native-gesture-handler": "^1.4.0",
     "react-native-google-signin": "^2.0.0",
     "react-native-image-manipulator": "https://github.com/pontusab/react-native-image-manipulator",
     "react-native-linear-gradient": "^2.5.6",
@@ -68,7 +67,6 @@
     "@babel/core": "^7.5.5",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
-    "concurrently": "^4.1.2",
-    "jetifier": "^1.6.4"
+    "concurrently": "^4.1.2"
   }
 }
