@@ -11,7 +11,8 @@
     "emulator:ensureready": "tasks/emulator_ensureready",
     "run:android": "tasks/run_android",
     "run:ios": "tasks/run_ios",
-    "translations:create": "tasks/translations_create"
+    "translations:create": "tasks/translations_create",
+    "postinstall": "npx jetify"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.0.1",
