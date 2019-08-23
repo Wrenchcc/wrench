@@ -40,7 +40,7 @@ function UserProjects({ projects, spacingHorizontal }) {
 
   return (
     <View>
-      <Text medium fontSize={21} style={{ marginLeft: 20 }}>
+      <Text medium fontSize={21} style={{ marginLeft: spacingHorizontal ? 20 : 0 }}>
         {t('UserProjects:title')}
       </Text>
       <ScrollView

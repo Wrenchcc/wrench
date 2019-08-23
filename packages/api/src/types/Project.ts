@@ -14,6 +14,7 @@ export default gql`
     commentsDisabled: Boolean
     type: ProjectType
     cover: CoverType
+    model: Model
 
     filesConnection(
       after: String

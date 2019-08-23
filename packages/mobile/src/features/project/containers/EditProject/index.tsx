@@ -27,7 +27,11 @@ function EditProject({
 
   const handleEditProject = useCallback(async () => {
     setIsSaving(true)
-    await editProjectMutation(project.id, { title, commentsDisabled })
+
+    await editProjectMutation(project.id, {
+      title,
+      commentsDisabled,
+    })
 
     setTimeout(() => {
       setIsSaving(false)
@@ -47,6 +51,7 @@ function EditProject({
         },
         passProps: {
           id: project.id,
+          model: project.model,
         },
       }),
 

@@ -6,9 +6,13 @@ import Text from 'ui/Text'
 function Edit({ project }) {
   const { t } = useTranslation()
   const { showModal } = useNavigation()
-  const handleNavigation = useCallback(() => showModal(SCREENS.EDIT_PROJECT, { project }), [
-    project,
-  ])
+  const handleNavigation = useCallback(
+    () =>
+      showModal(SCREENS.EDIT_PROJECT, {
+        project,
+      }),
+    [project]
+  )
 
   return (
     <Text medium onPress={handleNavigation}>

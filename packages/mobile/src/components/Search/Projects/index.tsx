@@ -17,7 +17,11 @@ function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, 
   const { navigate } = useNavigation()
 
   const renderItem = ({ item }) => {
-    const onPress = () => navigate(SCREENS.PROJECT, { id: item.node.id })
+    const onPress = () =>
+      navigate(SCREENS.PROJECT, {
+        ...item.node,
+      })
+
     return <ProjectCard project={item.node} onPress={onPress} />
   }
 
