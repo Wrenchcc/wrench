@@ -21,7 +21,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.4.0",
     "google-auth-library": "^5.2.0",
-    "graphql": "^14.5.0",
+    "graphql": "^14.5.1",
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.2",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@firebase/app-types": "^0.4.3",
-    "@types/graphql-depth-limit": "^1.1.0",
+    "@types/graphql-depth-limit": "^1.1.1",
     "@types/pg": "^7.11.0",
     "@zeit/ncc": "0.20.4",
     "bluebird": "^3.5.5",
