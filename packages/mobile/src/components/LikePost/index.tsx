@@ -38,6 +38,7 @@ function LikePost({ post }) {
         source={post.likes.isLiked ? sparkActive : spark}
         style={{ marginRight: 10 }}
         onPress={handleToggleLike}
+        hapticFeedback="impactLight"
       />
       <Text fontSize={15}>{t('LikePost:like', { count: post.likes.totalCount })}</Text>
     </Base>

@@ -83,6 +83,14 @@ const sections = props => ({
             }),
         },
         {
+          titleKey: 'email-notifications',
+          hasChildren: true,
+          onPress: () =>
+            navigateTo(SCREENS.SETTINGS, {
+              section: 'email-notifications',
+            }),
+        },
+        {
           titleKey: 'language',
           hasChildren: true,
           onPress: () =>
@@ -149,6 +157,12 @@ const sections = props => ({
       data: generateNotificationSettings(props),
     },
   ],
+  // 'email-notifications': [
+  //   {
+  //     headerTitle: 'email-notifications',
+  //     data: generateNotificationSettings(props),
+  //   },
+  // ],
   language: [
     {
       headerTitle: 'language',

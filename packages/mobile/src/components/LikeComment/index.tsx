@@ -36,6 +36,7 @@ function LikeComment({ comment }) {
       <Icon
         source={comment.likes.isLiked ? sparkSmallActive : sparkSmall}
         onPress={handleToggleLike}
+        hapticFeedback="impactLight"
       />
     </Base>
   )

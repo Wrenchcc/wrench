@@ -12,8 +12,8 @@ function formatModel(model) {
 
 function EditModel({ editProject: editProjectMutation, passProps }) {
   const { t } = useTranslation()
-  const { navigate, navigateBack, dismissModal } = useNavigation()
-  const [query, setQuery] = useState()
+  const { navigateBack } = useNavigation()
+  const [query, setQuery] = useState(passProps.model && formatModel(passProps.model))
   const [model, setModel] = useState()
   const [isSearching, setIsSearching] = useState(false)
 
