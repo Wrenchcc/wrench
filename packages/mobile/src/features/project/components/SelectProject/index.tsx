@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react'
 import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { usePostStore, POST } from 'store'
-import Text from 'ui/Text'
-import { arrowDown, arrowUpGrey, arrowDownGrey } from 'images'
+import { Text, Icon } from 'ui'
+import { arrowDown, arrowUp } from 'images'
 import List from './List'
-import { Base, Icon } from './styles'
+import { Base } from './styles'
 
 function getProjectById(id, projects) {
   return projects.find(({ node }) => node.id === id).node
@@ -35,16 +35,6 @@ function SelectProject({ dark = false }) {
     [handleClose, update]
   )
 
-  let icon
-
-  if (isOpen) {
-    icon = arrowUpGrey
-  } else if (dark) {
-    icon = arrowDownGrey
-  } else {
-    icon = arrowDown
-  }
-
   return (
     <>
       <Base onPress={toggleOpen} activeOpacity={0.8}>
@@ -56,7 +46,11 @@ function SelectProject({ dark = false }) {
         >
           {title}
         </Text>
-        <Icon source={icon} />
+        <Icon
+          style={{ marginLeft: 10 }}
+          source={isOpen ? arrowUp : arrowDown}
+          color={(dark && 'dark') || isOpen ? 'light_grey' : 'white'}
+        />
       </Base>
 
       <List

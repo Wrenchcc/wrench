@@ -11,7 +11,3 @@ export const Base = styled.TouchableOpacity`
   width: 45%;
   position: absolute;
 `
-
-export const Icon = styled.Image`
-  margin-left: 10;
-`

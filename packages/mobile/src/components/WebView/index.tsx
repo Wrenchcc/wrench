@@ -6,7 +6,7 @@ import qs from 'url'
 import { dismissModal } from 'navigation'
 import { Header, ProgressBar, Text, Icon, Touchable, Share } from 'ui'
 import { COLORS } from 'ui/constants'
-import { closeDark, arrowLeftSmall, arrowRightSmall, refresh } from 'images'
+import { close, arrowLeftSmall, arrowRightSmall, refresh } from 'images'
 import { Base, Footer, Inner } from './styles'
 
 function WebView({ url: initialUrl }) {
@@ -87,7 +87,7 @@ function WebView({ url: initialUrl }) {
   return (
     <Base>
       <Header
-        headerLeft={<Icon onPress={handleClose} source={closeDark} />}
+        headerLeft={<Icon onPress={handleClose} color="dark" source={close} />}
         headerTitle={
           <View style={{ alignItems: 'center' }}>
             <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>

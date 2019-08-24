@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useProjectStore, PROJECT } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
-import { closeDark } from 'images'
+import { close } from 'images'
 
 function AddProject() {
   const { t } = useTranslation()
@@ -33,7 +33,7 @@ function AddProject() {
   return (
     <>
       <Header
-        headerLeft={<Icon source={closeDark} onPress={handleDismissModal} />}
+        headerLeft={<Icon source={close} color="dark" onPress={handleDismissModal} />}
         headerTitle={<Text medium>{t('AddProject:headerTitle')}</Text>}
         headerRight={
           hasTitle && (

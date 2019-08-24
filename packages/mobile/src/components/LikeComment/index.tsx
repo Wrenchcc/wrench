@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useMutation, LIKE_COMMENT_MUTATION } from 'gql'
 import { Icon } from 'ui'
-import { sparkSmall, sparkSmallActive } from 'images'
+import { sparkSmall } from 'images'
 import { Base } from './styles'
 
 function LikeComment({ comment }) {
@@ -34,7 +34,8 @@ function LikeComment({ comment }) {
   return (
     <Base>
       <Icon
-        source={comment.likes.isLiked ? sparkSmallActive : sparkSmall}
+        source={sparkSmall}
+        color={comment.likes.isLiked ? 'spark' : 'dark'}
         onPress={handleToggleLike}
         hapticFeedback="impactLight"
       />

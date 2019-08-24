@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useMutation, LIKE_POST_MUTATION } from 'gql'
 import { Icon, Text } from 'ui'
-import { spark, sparkActive } from 'images'
+import { spark } from 'images'
 import { Base } from './styled'
 
 function LikePost({ post }) {
@@ -35,7 +35,8 @@ function LikePost({ post }) {
   return (
     <Base>
       <Icon
-        source={post.likes.isLiked ? sparkActive : spark}
+        source={spark}
+        color={post.likes.isLiked ? 'spark' : 'dark'}
         style={{ marginRight: 10 }}
         onPress={handleToggleLike}
         hapticFeedback="impactLight"

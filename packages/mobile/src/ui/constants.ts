@@ -24,6 +24,7 @@ export const COLORS = {
   PRIMARY: 'rgb(42, 119, 90)',
   RED: 'rgb(246, 86, 86)',
   SECONDARY: 'rgb(237, 234, 228)',
+  SPARK: 'rgb(238, 197, 48)',
   TAB_ICON: '#8E8E8E',
   TAB: 'rgb(000, 000, 000)',
   ULTRA_LIGHT_GREY: 'rgb(237, 237, 239)',

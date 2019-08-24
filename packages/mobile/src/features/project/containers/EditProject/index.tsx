@@ -6,7 +6,7 @@ import { SCREENS, useNavigation } from 'navigation'
 import { editProject } from 'graphql/mutations/project/editProject'
 import { deleteProject } from 'graphql/mutations/project/deleteProject'
 import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
-import { closeDark } from 'images'
+import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
 function EditProject({
@@ -65,10 +65,10 @@ function EditProject({
 
   const renderHeaderLeft = () => {
     if (isSaving) {
-      return <Icon source={closeDark} opacity={0.4} />
+      return <Icon source={close} color="dark" opacity={0.4} />
     }
 
-    return <Icon onPress={handleClose} source={closeDark} />
+    return <Icon onPress={handleClose} source={close} color="dark" />
   }
 
   const renderHeaderRight = () =>
