@@ -20,7 +20,9 @@ const Touchable = ({
       ReactNativeHapticFeedback.trigger(hapticFeedback)
     }
 
-    onPress()
+    if (onPress) {
+      onPress()
+    }
   }, [onPress, hapticFeedback])
 
   return (
