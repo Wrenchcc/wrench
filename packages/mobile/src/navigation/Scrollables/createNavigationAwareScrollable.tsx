@@ -49,7 +49,6 @@ export default function createNavigationAwareScrollable(Component) {
       initialNumToRender = 10,
       paddingHorizontal = 20,
       paddingBottom,
-      spacingSeparator,
       tabIndex,
       componentId,
       ...props
@@ -166,6 +165,7 @@ export default function createNavigationAwareScrollable(Component) {
           paddingRight: paddingHorizontal,
           // NOTE: contentInset on layout NAVIGATION.LIST_OFFSET on page
           paddingTop: isAndroid ? contentInset || NAVIGATION.LIST_OFFSET : 0,
+          paddingBottom,
           ...contentContainerStyle,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}

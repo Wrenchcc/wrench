@@ -29,7 +29,6 @@ function InfiniteList({
   isRefetching,
   ListEmptyComponent,
   initialNumToRender = 10,
-  spacingSeparator,
   loaderPosition,
   androidDismissKeyboard = true,
   ...props
@@ -61,6 +60,7 @@ function InfiniteList({
         paddingLeft: paddingHorizontal,
         paddingRight: paddingHorizontal,
         paddingTop,
+        paddingBottom,
         ...contentContainerStyle,
       }}
       {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}

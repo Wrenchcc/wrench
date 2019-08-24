@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from 'react'
+import React, { memo, useCallback, useRef, useEffect } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
 import { useNavigation, SCREENS } from 'navigation'
@@ -96,17 +96,19 @@ function Item({
     [deleteComment, commentOrReplyId]
   )
 
-  if (highlightId === id) {
-    Animated.timing(animatedValue.current, {
-      duration: 1000,
-      toValue: 1,
-    }).start(() => {
+  useEffect(() => {
+    if (highlightId === id) {
       Animated.timing(animatedValue.current, {
-        delay: 3000,
-        toValue: 0,
-      }).start()
-    })
-  }
+        duration: 1000,
+        toValue: 1,
+      }).start(() => {
+        Animated.timing(animatedValue.current, {
+          delay: 3000,
+          toValue: 0,
+        }).start()
+      })
+    }
+  }, [highlightId, id])
 
   const backgroundColor = animatedValue.current.interpolate({
     inputRange: [0, 1],
