@@ -13,7 +13,6 @@ export default isAuthenticated(async (_, __, ctx) => {
   const transformSettings = settings.map(({ type, value }) => {
     switch (type) {
       case NOTIFICATIONS_COLUMN:
-        console.log(mergeDeepRight(DEFAULT_NOTIFICATIONS, value))
         return {
           notifications: {
             types: mergeDeepRight(DEFAULT_NOTIFICATIONS, value),
