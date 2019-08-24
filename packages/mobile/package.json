@@ -26,7 +26,7 @@
     "apollo-link-error": "^1.1.11",
     "apollo-link-queue": "^2.2.0",
     "apollo-link-retry": "^2.2.14",
-    "graphql": "^14.5.1",
+    "graphql": "^14.5.3",
     "graphql-tag": "^2.10.1",
     "human-format": "^0.10.1",
     "i18next": "^17.0.12",
