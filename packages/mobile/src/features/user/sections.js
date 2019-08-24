@@ -35,7 +35,10 @@ const generateLanguageSettings = () => {
   return items
 }
 
-const generateNotificationSettings = ({ settings, handleToggleNotificationSettings }) => {
+const generateNotificationSettings = (
+  { settings, handleToggleNotificationSettings },
+  deliveryMethod
+) => {
   if (!settings) {
     return null
   }
@@ -48,9 +51,10 @@ const generateNotificationSettings = ({ settings, handleToggleNotificationSettin
     onPress: () =>
       handleToggleNotificationSettings({
         notificationType: type,
+        deliveryMethod,
       }),
     type: 'switch',
-    selected: settings.notifications.types[type],
+    selected: settings.notifications.types[type][deliveryMethod],
   }))
 
   return items
@@ -154,15 +158,15 @@ const sections = props => ({
   'push-notifications': [
     {
       headerTitle: 'push-notifications',
-      data: generateNotificationSettings(props),
+      data: generateNotificationSettings(props, 'push'),
     },
   ],
-  // 'email-notifications': [
-  //   {
-  //     headerTitle: 'email-notifications',
-  //     data: generateNotificationSettings(props),
-  //   },
-  // ],
+  'email-notifications': [
+    {
+      headerTitle: 'email-notifications',
+      data: generateNotificationSettings(props, 'email'),
+    },
+  ],
   language: [
     {
       headerTitle: 'language',

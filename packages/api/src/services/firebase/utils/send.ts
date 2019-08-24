@@ -10,7 +10,7 @@ const debug = require('debug')('api:firebase')
 
 export default async ({ data, userId, to, type }) => {
   const notificationSettings = await getNotificationSettings(to)
-  const isEnabled = pathOr(true, [type], notificationSettings)
+  const isEnabled = pathOr(true, [type, 'push'], notificationSettings)
 
   if (!isEnabled) {
     return null

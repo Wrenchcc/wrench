@@ -34,7 +34,9 @@ function Settings({ section }) {
   const handleToggleNotificationSettings = useCallback(
     input =>
       toggleNotificationSettings({
-        variables: { input },
+        variables: {
+          input,
+        },
       }),
     [toggleNotificationSettings]
   )

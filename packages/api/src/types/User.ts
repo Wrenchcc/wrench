@@ -48,12 +48,12 @@ export default gql`
   }
 
   type NotificationSettingsType {
-    NEW_FOLLOWER: Boolean
-    NEW_COMMENT: Boolean
-    NEW_MENTION: Boolean
-    NEW_ARTICLE: Boolean
-    SIMILAR_PROJECTS: Boolean
-    PRODUCT_ANNOUNCEMENTS: Boolean
+    NEW_FOLLOWER: NotificationKindSettings
+    NEW_COMMENT: NotificationKindSettings
+    NEW_MENTION: NotificationKindSettings
+    NEW_ARTICLE: NotificationKindSettings
+    SIMILAR_PROJECTS: NotificationKindSettings
+    PRODUCT_ANNOUNCEMENTS: NotificationKindSettings
   }
 
   type UserNotificationsSettings {
