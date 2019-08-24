@@ -88,5 +88,6 @@ export default gql`
     toggleNotificationSettings(input: ToggleNotificationSettingsInput): User
     registerDeviceToken(token: String!, platform: PlatformType!): Boolean
     banUser(userId: ID!): Boolean
+    deleteCurrentUser: Boolean
   }
 `
