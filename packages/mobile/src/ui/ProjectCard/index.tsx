@@ -14,27 +14,27 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
 
   return (
     <Base style={style}>
-      <Touchable onPress={onPress} style={{ height: '100%' }}>
+      <Touchable onPress={onPress}>
         {!project.cover.default && (
           <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
         )}
         <Image source={project.cover} height={180} />
+
+        <Content>
+          <Info>
+            <ProjectName numberOfLines={1} color="white">
+              {project.title}
+            </ProjectName>
+            <Followers followers={project.followers.totalCount} color="white" opacity={0.9} />
+          </Info>
+
+          {!project.permissions.isOwner && (
+            <Button small background="white" onPress={handleFollow}>
+              {project.permissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
+            </Button>
+          )}
+        </Content>
       </Touchable>
-
-      <Content>
-        <Info>
-          <ProjectName numberOfLines={1} color="white">
-            {project.title}
-          </ProjectName>
-          <Followers followers={project.followers.totalCount} color="white" opacity={0.9} />
-        </Info>
-
-        {!project.permissions.isOwner && (
-          <Button small background="white" onPress={handleFollow}>
-            {project.permissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
-          </Button>
-        )}
-      </Content>
     </Base>
   )
 }
