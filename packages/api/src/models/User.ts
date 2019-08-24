@@ -90,6 +90,12 @@ export default class User extends BaseEntity {
   @CreateDateColumn({ type: 'timestamptz' })
   public lastSeen: Date
 
+  @Column({ type: 'timestamptz', nullable: true, default: null })
+  public bannedAt: Date
+
+  @Column({ type: 'timestamptz', nullable: true, default: null })
+  public deletedAt: Date
+
   @Column()
   public firstName: string
 

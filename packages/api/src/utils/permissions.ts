@@ -9,8 +9,8 @@ export const isAuthenticated = resolver => async (obj, args, ctx, info) => {
 }
 
 export const isAdmin = id => {
-  const userIds = ['']
-  return userIds.indexOf(id) > -1
+  const userIds = ['c1f69907-1355-4f0e-a690-1acbbe848142', '9ad2d1b7-9a85-4c11-b0ef-10faf4e19699']
+  return userIds.includes(id)
 }
 
 export const canModeratePost = (post, userId) => {
