@@ -10,39 +10,42 @@ function timeDifference(current, previous, long = false) {
   const elapsed = current - previous
 
   if (elapsed < milliSecondsPerMinute) {
-    return i18next.t('Time:now')
+    if (long) {
+      return i18next.t('Time:now')
+    }
+    return `${Math.round(elapsed / 1000)}s`
   }
 
   if (elapsed < milliSecondsPerHour) {
     if (long) {
-      return i18next.t('Time:long', {
-        time: `${Math.round(elapsed / milliSecondsPerMinute)}m`,
+      return i18next.t('Time:m', {
+        count: Math.round(elapsed / milliSecondsPerMinute),
       })
     }
     return `${Math.round(elapsed / milliSecondsPerMinute)}m`
   }
   if (elapsed < milliSecondsPerDay) {
     if (long) {
-      return i18next.t('Time:long', { time: `${Math.round(elapsed / milliSecondsPerHour)}h` })
+      return i18next.t('Time:h', { count: Math.round(elapsed / milliSecondsPerHour) })
     }
     return `${Math.round(elapsed / milliSecondsPerHour)}h`
   }
   if (elapsed < milliSecondsPerMonth) {
     if (long) {
-      return i18next.t('Time:long', {
-        time: `${Math.round(elapsed / milliSecondsPerDay)}d`,
+      return i18next.t('Time:d', {
+        count: Math.round(elapsed / milliSecondsPerDay),
       })
     }
     return `${Math.round(elapsed / milliSecondsPerDay)}d`
   }
   if (elapsed < milliSecondsPerYear) {
     if (long) {
-      return i18next.t('Time:long', { time: `${Math.round(elapsed / milliSecondsPerMonth)}mo` })
+      return i18next.t('Time:mo', { count: Math.round(elapsed / milliSecondsPerMonth) })
     }
     return `${Math.round(elapsed / milliSecondsPerMonth)}mo`
   }
   if (long) {
-    return i18next.t('Time:long', { time: `${Math.round(elapsed / milliSecondsPerYear)}y` })
+    return i18next.t('Time:y', { count: Math.round(elapsed / milliSecondsPerYear) })
   }
   return `${Math.round(elapsed / milliSecondsPerYear)}y`
 }
@@ -52,7 +55,7 @@ export function timeDifferenceForDate(date, long) {
   const updated = new Date(date).getTime()
 
   if (long) {
-    return timeDifference(now, updated, long).toUpperCase()
+    return timeDifference(now, updated, long)
   }
 
   return timeDifference(now, updated)

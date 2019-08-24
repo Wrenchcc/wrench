@@ -46,7 +46,7 @@ function Article({ title, description, files, publisher, url, createdAt }) {
       <Carousel files={files} onPress={navigateToWebview} />
       <Spacer />
 
-      <TimeAgo date={createdAt} fontSize={11} long />
+      <TimeAgo date={createdAt} long />
       <Spacer />
     </>
   )

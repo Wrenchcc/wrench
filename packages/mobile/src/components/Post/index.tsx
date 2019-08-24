@@ -166,7 +166,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
       <LikePost post={post} />
 
       {!withoutComments && !post.project.commentsDisabled && <Comments data={post} />}
-      <TimeAgo date={post.createdAt} fontSize={11} long />
+      <TimeAgo date={post.createdAt} long />
       {!isEditing && postActions()}
     </Base>
   )
