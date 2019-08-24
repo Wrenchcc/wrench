@@ -6,7 +6,7 @@ export const { width } = Dimensions.get('window')
 
 export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
-export const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
+export const SNAP_INTERVAL = 180 + BAR_SPACE // Card size
 
 export const Card = styled(UiCard)`
   margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)};

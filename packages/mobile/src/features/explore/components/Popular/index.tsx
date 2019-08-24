@@ -36,6 +36,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
       <Header>
         <Title medium>{t('Popular:popular')}</Title>
       </Header>
+
       <InfiniteList
         initialNumToRender={3}
         data={projects}
