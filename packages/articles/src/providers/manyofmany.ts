@@ -1,7 +1,7 @@
 import * as Parser from 'rss-parser'
 import * as cheerio from 'cheerio'
 import * as fetch from 'node-fetch'
-// import saveArticle from '../utils/saveArticle2'
+import saveArticle from '../utils/saveArticle2'
 
 const FEED_URL = 'https://manofmany.com/rides/motorcycles/feed'
 const PROVIDER = 'manyofmany'
@@ -23,9 +23,7 @@ export default async () => {
       images.push($(image).attr('src'))
     })
 
-    console.log(images, item)
-
-    // await saveArticle(FEED_URL, PROVIDER, item, images)
+    await saveArticle(FEED_URL, PROVIDER, item, images)
   } catch (err) {
     console.log(err)
   }
