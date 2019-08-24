@@ -3,9 +3,14 @@ import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
 import { FILE_TYPES } from 'utils/enums'
 import request from './request'
+import { isAndroid } from 'utils/platform'
 
 async function cropImage({ uri, crop }) {
   try {
+    if (isAndroid) {
+      // Skip crop for now
+      return ImageManipulator.manipulateAsync(uri)
+    }
     return ImageManipulator.manipulateAsync(uri, [{ crop }])
   } catch (err) {
     logError(err, { uri, crop })
