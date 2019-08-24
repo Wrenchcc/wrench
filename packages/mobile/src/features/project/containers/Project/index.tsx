@@ -81,6 +81,7 @@ function Project({
 
   return (
     <Page
+      keyboardAvoidingViewEnabled={!hasNextPage}
       headerTitle={project.title}
       scrollPosition={scrollY.current}
       headerRight={

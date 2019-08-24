@@ -14,6 +14,7 @@ function User({ posts, user = {}, fetchMore, refetch, isRefetching, isFetching, 
 
   return (
     <Page
+      keyboardAvoidingViewEnabled={!hasNextPage}
       headerTitle={user.fullName}
       headerRight={user.dynamicLink && <Share title={user.fullName} url={user.dynamicLink} text />}
     >

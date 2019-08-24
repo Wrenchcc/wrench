@@ -21,7 +21,11 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
   const emptyState = data.user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
 
   return (
-    <Layout headerLeft={<SettingsButton />} search={false}>
+    <Layout
+      headerLeft={<SettingsButton />}
+      search={false}
+      keyboardAvoidingViewEnabled={!hasNextPage}
+    >
       <FlatList
         tabIndex={3}
         initialNumToRender={1}

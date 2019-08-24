@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { Navigation } from 'react-native-navigation'
 import { Layout, FlatList, SCREENS, currentComponentName } from 'navigation'
 import { useQuery, PUBLISHERS_QUERY } from 'gql'
-
 import { getRecentPosts } from 'graphql/queries/getExplore'
 import Add from 'components/Add'
 import SearchBar from 'components/SearchBar'
@@ -59,6 +58,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
     <>
       {searchActive && <Search query={query} />}
       <Layout
+        keyboardAvoidingViewEnabled={!hasNextPage}
         headerRight={searchActive || <Add />}
         headerLeft={
           <SearchBar
