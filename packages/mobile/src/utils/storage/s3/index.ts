@@ -9,7 +9,8 @@ async function cropImage({ uri, crop }) {
   try {
     if (isAndroid) {
       // Skip crop for now
-      return ImageManipulator.manipulateAsync(uri)
+      // File get isTrusted false
+      return Promise.resolve(uri)
     }
     return ImageManipulator.manipulateAsync(uri, [{ crop }])
   } catch (err) {
