@@ -1,13 +1,10 @@
 import React, { useRef, cloneElement, useCallback, useEffect } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { isIphone } from 'utils/platform'
 import { NAVIGATION } from '../constants'
 import Header from './Header'
 
 const { event, set, Value } = Animated
-
-const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 function Page({
   scrollPosition,
@@ -17,7 +14,6 @@ function Page({
   stickyFooter,
   headerAnimation,
   scrollToIndex,
-  keyboardAvoidingViewEnabled,
 }) {
   const scrollRef = useRef()
   const scrollY = useRef(new Value(-NAVIGATION.LIST_OFFSET))
@@ -35,11 +31,7 @@ function Page({
   }, [scrollRef, scrollToIndex])
 
   return (
-    <KeyboardAvoidingView
-      behavior={KEYBOARD_BEHAVIOR}
-      style={{ flex: 1 }}
-      enabled={keyboardAvoidingViewEnabled}
-    >
+    <>
       <Header
         headerTitle={headerTitle}
         scrollY={scrollY.current}
@@ -69,7 +61,7 @@ function Page({
 
       {stickyFooter}
       {scrollPosition && <Animated.Code exec={Animated.set(scrollPosition, scrollY.current)} />}
-    </KeyboardAvoidingView>
+    </>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react'
-import { View } from 'react-native'
+import { View, KeyboardAvoidingView } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { compose, isEmpty } from 'ramda'
 import { useTranslation } from 'react-i18next'
@@ -10,8 +10,11 @@ import Post from 'components/Post'
 import { Edit, EmptyState, Title, Share, Text } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
+import { isIphone } from 'utils/platform'
 
 const { interpolate, Extrapolate, Value } = Animated
+
+const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 function Project({
   posts,
@@ -80,47 +83,53 @@ function Project({
   }, [post, posts, hasPosts, project])
 
   return (
-    <Page
-      keyboardAvoidingViewEnabled={!hasNextPage}
-      headerTitle={project.title}
-      scrollPosition={scrollY.current}
-      headerRight={
-        project.permissions && project.permissions.isOwner ? (
-          <Edit project={project} />
-        ) : (
-          <>
-            <Animated.View style={{ zIndex: opacityShare }}>
-              <Share title={project.title} url={project.dynamicLink} text opacity={opacityShare} />
-            </Animated.View>
-            <Animated.View
-              style={{ opacity: opacityFollow, position: 'absolute', zIndex: opacityFollow }}
-            >
-              <Text medium onPress={handleFollow}>
-                {project.permissions && project.permissions.isFollower
-                  ? t('Project:unfollow')
-                  : t('Project:follow')}
-              </Text>
-            </Animated.View>
-          </>
-        )
-      }
-    >
-      <FlatList
-        initialNumToRender={1}
-        spacingSeparator
-        paddingHorizontal={hasPosts ? 20 : 0}
-        contentContainerStyle={{ flexGrow: 1 }}
-        ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
-        ListHeaderComponent={renderHeader}
-        data={posts}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Page>
+    <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
+      <Page
+        headerTitle={project.title}
+        scrollPosition={scrollY.current}
+        headerRight={
+          project.permissions && project.permissions.isOwner ? (
+            <Edit project={project} />
+          ) : (
+            <>
+              <Animated.View style={{ zIndex: opacityShare }}>
+                <Share
+                  title={project.title}
+                  url={project.dynamicLink}
+                  text
+                  opacity={opacityShare}
+                />
+              </Animated.View>
+              <Animated.View
+                style={{ opacity: opacityFollow, position: 'absolute', zIndex: opacityFollow }}
+              >
+                <Text medium onPress={handleFollow}>
+                  {project.permissions && project.permissions.isFollower
+                    ? t('Project:unfollow')
+                    : t('Project:follow')}
+                </Text>
+              </Animated.View>
+            </>
+          )
+        }
+      >
+        <FlatList
+          initialNumToRender={1}
+          spacingSeparator
+          paddingHorizontal={hasPosts ? 20 : 0}
+          contentContainerStyle={{ flexGrow: 1 }}
+          ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
+          ListHeaderComponent={renderHeader}
+          data={posts}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          renderItem={renderItem}
+        />
+      </Page>
+    </KeyboardAvoidingView>
   )
 }
 

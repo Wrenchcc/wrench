@@ -37,7 +37,6 @@ export default async files => {
       resizedImages.map(async (uri, i) => {
         const { url, type, filename } = preSignedUrls.data.preSignUrls[i]
         try {
-          // TODO: Remove image from cache
           return request(url, { uri, type, filename })
         } catch (err) {
           logError(err)

@@ -58,7 +58,6 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
     <>
       {searchActive && <Search query={query} />}
       <Layout
-        keyboardAvoidingViewEnabled={!hasNextPage}
         headerRight={searchActive || <Add />}
         headerLeft={
           <SearchBar

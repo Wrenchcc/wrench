@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
+import { KeyboardAvoidingView } from 'react-native'
 import { pathOr } from 'ramda'
 import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql/queries/getFeed'
@@ -7,6 +8,9 @@ import { Posting, ShowLatest } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/registerForPushNotifications'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
+import { isIphone } from 'utils/platform'
+
+const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -44,26 +48,24 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   )
 
   return (
-    <Layout
-      headerTitleKey="home"
-      stickyComponent={StickyComponent}
-      keyboardAvoidingViewEnabled={!hasNextPage}
-    >
-      <FlatList
-        ref={scrollRef}
-        tabIndex={0}
-        initialNumToRender={2}
-        spacingSeparator
-        data={posts}
-        ListEmptyComponent={<ProjectSuggestions />}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Layout>
+    <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
+      <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
+        <FlatList
+          ref={scrollRef}
+          tabIndex={0}
+          initialNumToRender={2}
+          spacingSeparator
+          data={posts}
+          ListEmptyComponent={<ProjectSuggestions />}
+          refetch={refetch}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          isFetching={isFetching}
+          hasNextPage={hasNextPage}
+          renderItem={renderItem}
+        />
+      </Layout>
+    </KeyboardAvoidingView>
   )
 }
 
