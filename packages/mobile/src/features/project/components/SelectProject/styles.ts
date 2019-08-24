@@ -6,7 +6,7 @@ export const Base = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  top: ${isIphone ? (hasNotch ? 52 : 30) : 18};
+  top: ${isIphone ? (hasNotch ? 52 : 30) : 10};
   z-index: 100;
   width: 45%;
   position: absolute;

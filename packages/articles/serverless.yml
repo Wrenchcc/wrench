@@ -80,3 +80,8 @@ functions:
     handler: src/providers/deuscustoms.default
     events:
       - schedule: rate(4 hours)
+
+  manyofmany:
+    handler: src/providers/manyofmany.default
+    events:
+      - schedule: rate(4 hours)

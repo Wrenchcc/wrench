@@ -3,6 +3,7 @@ import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile } from 'images'
 import { loadSelectedProjectId } from 'store/post'
 import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
+import defaultOptions from './defaultOptions'
 
 export function Bootstrap() {
   Navigation.setRoot({
@@ -15,21 +16,31 @@ export function Bootstrap() {
 }
 
 export function AuthNavigation() {
+  Navigation.setDefaultOptions({
+    layout: {
+      backgroundColor: COLORS.DARK,
+    },
+    statusBar: {
+      style: STATUS_BAR.LIGHT,
+      backgroundColor: COLORS.DARK,
+    },
+    topBar: {
+      visible: false,
+    },
+  })
+
   Navigation.setRoot({
     root: {
       component: {
         name: SCREENS.SIGN_IN,
-        options: {
-          statusBar: {
-            style: STATUS_BAR.LIGHT,
-          },
-        },
       },
     },
   })
 }
 
 export function AppNavigation(onboarding) {
+  Navigation.setDefaultOptions(defaultOptions)
+
   if (onboarding) {
     Navigation.setRoot({
       root: {
@@ -38,6 +49,7 @@ export function AppNavigation(onboarding) {
           options: {
             statusBar: {
               style: STATUS_BAR.LIGHT,
+              backgroundColor: COLORS.DARK,
             },
           },
         },
