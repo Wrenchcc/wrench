@@ -20,8 +20,6 @@ function Notifications({
   markAllNotificationsSeen: markAllNotificationsSeenMutation,
   unreadCount,
 }) {
-  const hasNotifications = notifications && notifications.length > 0
-
   useEffect(() => {
     if (unreadCount > 0) {
       showNotificationBadge()
@@ -52,7 +50,7 @@ function Notifications({
         tabIndex={2}
         initialNumToRender={8}
         paddingHorizontal={0}
-        contentContainerStyle={{ flex: hasNotifications ? 0 : 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
         borderSeparator
         data={notifications}

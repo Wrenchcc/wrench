@@ -10,6 +10,8 @@ export const Base = styled.View`
   justify-content: center;
   padding-left: 20;
   padding-right: 20;
+  padding-top: 20;
+  padding-bottom: 20;
 `
 
 export const Title = styled(UiTitle)`
