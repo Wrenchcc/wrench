@@ -22,7 +22,22 @@ function List({ album }) {
     onSelect: store.actions.onSelect,
   }))
 
-  const fetchAssets = useCallback(
+  const fetchInitialAssets = useCallback(async () => {
+    try {
+      const result = await MediaLibrary.getAssetsAsync({
+        album,
+        first: FIRST_PAGE_SIZE,
+      })
+
+      setAssets(result.assets)
+      setHasNextPage(result.hasNextPage)
+      setEndCursor(result.endCursor)
+    } catch (err) {
+      logError(err)
+    }
+  }, [album])
+
+  const fetchMoreAssets = useCallback(
     async after => {
       if (!hasNextPage) {
         return
@@ -32,7 +47,7 @@ function List({ album }) {
         const result = await MediaLibrary.getAssetsAsync({
           after,
           album,
-          first: after ? PAGE_SIZE : FIRST_PAGE_SIZE,
+          first: PAGE_SIZE,
         })
 
         setAssets(p => p.concat(result.assets))
@@ -46,8 +61,8 @@ function List({ album }) {
   )
 
   useEffect(() => {
-    fetchAssets()
-  }, [])
+    fetchInitialAssets()
+  }, [album])
 
   // Add camera file to list
   useEffect(() => {
@@ -62,9 +77,9 @@ function List({ album }) {
 
   const onEndReached = useCallback(() => {
     if (hasNextPage) {
-      fetchAssets(endCursor)
+      fetchMoreAssets(endCursor)
     }
-  }, [hasNextPage, endCursor, fetchAssets])
+  }, [hasNextPage, endCursor, fetchMoreAssets])
 
   const renderItem = ({ item }) => {
     const order = findIndex(propEq('id', item.id))(files)

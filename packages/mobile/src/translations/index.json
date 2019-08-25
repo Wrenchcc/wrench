@@ -62,7 +62,7 @@
       }
     },
     "MediaPicker": {
-      "all": "All"
+      "roll": "Camera Roll"
     },
     "SelectProject": {
       "create": "Create a new project"
@@ -367,7 +367,7 @@
       }
     },
     "MediaPicker": {
-      "all": "Alla"
+      "roll": "Kamerarulle"
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"
