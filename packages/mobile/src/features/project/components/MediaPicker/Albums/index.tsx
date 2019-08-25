@@ -40,8 +40,8 @@ function Albums({ onPress }) {
     }
   }
 
-  useEffect(async () => {
-    await getAlbums()
+  useEffect(() => {
+    getAlbums()
   }, [])
 
   if (isLoading) {
