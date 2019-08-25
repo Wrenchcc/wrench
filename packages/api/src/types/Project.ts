@@ -90,6 +90,14 @@ export default gql`
       last: Int = 10
     ): [ProjectSuggestionsConnection]
 
+    similarProjects(
+      id: ID!
+      after: String
+      before: String
+      first: Int = 10
+      last: Int = 10
+    ): ProjectsConnection
+
     projectTypes: [ProjectType]
   }
 

@@ -9,6 +9,7 @@ import project from './project'
 import projects from './projects'
 import projectSuggestions from './projectSuggestions'
 import projectTypes from './projectTypes'
+import similarProjects from './similarProjects'
 import type from './type'
 import user from './user'
 
@@ -30,5 +31,6 @@ export default {
     projects,
     projectSuggestions,
     projectTypes,
+    similarProjects,
   },
 }
