@@ -1,4 +1,4 @@
-export { useQuery, useMutation, useApolloClient } from '@apollo/react-hooks'
+export { useQuery, useMutation, useApolloClient, useLazyQuery } from '@apollo/react-hooks'
 export { default as usePaginatedQuery } from './usePaginatedQuery'
 export { default as client } from './client'
 

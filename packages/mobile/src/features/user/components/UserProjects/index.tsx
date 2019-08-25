@@ -8,12 +8,11 @@ const { width } = Dimensions.get('window')
 
 function UserProjects({ projects, spacingHorizontal }) {
   const { t } = useTranslation()
+  const { navigate } = useNavigation()
 
   if (!projects || projects.edges.length <= 1) {
     return null
   }
-
-  const { navigate } = useNavigation()
 
   const renderItems = projects.edges.map(({ node }, index) => {
     const handleNavigation = () => {

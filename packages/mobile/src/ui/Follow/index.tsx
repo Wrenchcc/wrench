@@ -2,13 +2,19 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Base, Text } from './styles'
 
-function Follow({ onPress, following }) {
+function Follow({ onPress, following, small, ...rest }) {
   const { t } = useTranslation()
 
   return (
-    <Base onPress={onPress} black={!following}>
+    <Base onPress={onPress} black={!following} {...rest}>
       <Text color={following ? 'dark' : 'white'} medium fontSize={15}>
-        {following ? t('Follow:unfollow') : t('Follow:follow')}
+        {following
+          ? small
+            ? t('Follow:unfollowSmall')
+            : t('Follow:unfollow')
+          : small
+          ? t('Follow:followSmall')
+          : t('Follow:follow')}
       </Text>
     </Base>
   )

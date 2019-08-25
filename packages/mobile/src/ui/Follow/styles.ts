@@ -14,6 +14,7 @@ export const Base = styled(UiTouchable)`
   padding-left: 25;
   padding-right: 25;
   align-self: flex-start;
+  margin-right: 10;
 `
 
 export const Text = styled(UiText)``

@@ -166,6 +166,30 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
   ${fragment.POST_FRAGMENT}
 `
 
+export const SIMILAR_PROJECTS_QUERY = gql`
+  query similarProjects($id: ID!) {
+    similarProjects(id: $id) {
+      edges {
+        node {
+          id
+          cover {
+            uri
+            default
+          }
+          title
+          followers: followersConnection {
+            totalCount
+          }
+          permissions {
+            isOwner
+            isFollower
+          }
+        }
+      }
+    }
+  }
+`
+
 //
 // export const COMMENT_QUERY = gql``
 //

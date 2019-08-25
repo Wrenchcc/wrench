@@ -67,6 +67,9 @@
     "SelectProject": {
       "create": "Create a new project"
     },
+    "SimilarProjects": {
+      "title": "Similar projects"
+    },
     "AddMedia": {
       "next": "Next",
       "options": {
@@ -249,7 +252,9 @@
     },
     "Follow": {
       "follow": "Follow this project",
-      "unfollow": "Following"
+      "unfollow": "Following",
+      "followSmall": "Follow",
+      "unfollowSmall": "Following"
     },
     "UiFollowers": {
       "followers": "{{count}} follower",
@@ -371,6 +376,9 @@
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"
+    },
+    "SimilarProjects": {
+      "title": "Liknande projekt"
     },
     "AddMedia": {
       "next": "Nästa",
@@ -554,7 +562,9 @@
     },
     "Follow": {
       "follow": "Följ projekt",
-      "unfollow": "Följer"
+      "unfollow": "Följer",
+      "followSmall": "Följ",
+      "unfollowSmall": "Följer"
     },
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"

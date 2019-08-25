@@ -2,11 +2,15 @@
   "Follow": {
     "en": {
       "follow": "Follow this project",
-      "unfollow": "Following"
+      "unfollow": "Following",
+      "followSmall": "Follow",
+      "unfollowSmall": "Following"
     },
     "sv": {
       "follow": "Följ projekt",
-      "unfollow": "Följer"
+      "unfollow": "Följer",
+      "followSmall": "Följ",
+      "unfollowSmall": "Följer"
     }
   }
 }

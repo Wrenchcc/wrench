@@ -58,6 +58,7 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
           marginRight: -GUTTER,
         }}
       />
+
       <Footer>
         <Title medium>{t('Popular:recent')}</Title>
       </Footer>
