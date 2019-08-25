@@ -6,6 +6,7 @@ export const Base = styled.View`
   width: 100%;
   height: 100%;
   background: white;
-  z-index: 10;
   padding-top: ${NAVIGATION.TOTAL_TOP_BAR_HEIGHT};
+  opacity: ${props => (props.active ? 1 : 0)};
+  z-index: ${props => (props.active ? 1000 : -1)};
 `

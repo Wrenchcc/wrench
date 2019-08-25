@@ -1,5 +1,4 @@
 import { Navigation } from 'react-native-navigation'
-import { notifications } from 'images'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
-import { TouchableWithoutFeedback } from 'react-native'
+import { TouchableWithoutFeedback, View, ActivityIndicator } from 'react-native'
 import Permissions from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
 import AskForPermission from '../AskForPermission'
@@ -74,6 +74,13 @@ function Camera({ onTakePicture }) {
           style={{ flex: 1 }}
           autoFocusPointOfInterest={autofocus}
           ratio="1:1"
+          pendingAuthorizationView={
+            <View
+              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
+            >
+              <ActivityIndicator size="small" color="white" />
+            </View>
+          }
         />
 
         {autofocus && <AutoFocus coordinates={autofocus} />}

@@ -41,7 +41,7 @@ const renderPager = props => (
   <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
 )
 
-function Search({ query }) {
+function Search({ query, active }) {
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
 
@@ -82,7 +82,7 @@ function Search({ query }) {
   )
 
   return (
-    <Base>
+    <Base active={active}>
       <TabView
         swipeVelocityThreshold={500}
         keyboardDismissMode="none"

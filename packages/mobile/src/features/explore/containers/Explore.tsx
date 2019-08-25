@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
+import { BackHandler } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { Layout, FlatList, SCREENS, currentComponentName } from 'navigation'
 import { useQuery, PUBLISHERS_QUERY } from 'gql'
@@ -54,9 +55,25 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
     return () => bottomTabEventListener.remove()
   }, [])
 
+  // Close on android hardware button
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (searchActive) {
+        setQuery(DEFAULT_QUERY)
+        setSearchActive(false)
+
+        return true
+      }
+
+      return false
+    })
+
+    return () => backHandler.remove()
+  }, [searchActive])
+
   return (
     <>
-      {searchActive && <Search query={query} />}
+      <Search query={query} active={searchActive} />
       <Layout
         headerRight={searchActive || <Add />}
         headerLeft={
