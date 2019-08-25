@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, View, Image } from 'react-native'
+import { Dimensions, View, Image, ActivityIndicator } from 'react-native'
 import * as MediaLibrary from 'react-native-media-library'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -45,7 +45,19 @@ function Albums({ onPress }) {
   }, [])
 
   if (isLoading) {
-    return null
+    return (
+      <View
+        style={{
+          backgroundColor: 'white',
+          minHeight: height,
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <ActivityIndicator size="small" color="black" />
+      </View>
+    )
   }
 
   return (

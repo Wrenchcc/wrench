@@ -1,8 +1,10 @@
 import React, { memo, useEffect, useState, useCallback, useRef } from 'react'
 import Permissions from 'react-native-permissions'
 import BottomSheet from 'reanimated-bottom-sheet'
+import AsyncStorage from '@react-native-community/async-storage'
 import { useTranslation } from 'react-i18next'
 import AskForPermission from 'features/project/components/AskForPermission'
+import { SELECTED_ALBUM_KEY } from 'utils/storage/constants'
 import { Text, Icon } from 'ui'
 import { arrowDown } from 'images'
 import List from './List'
@@ -29,10 +31,23 @@ function MediaPicker() {
     })
   }, [])
 
+  const loadSavedAlbum = useCallback(async () => {
+    const album = await AsyncStorage.getItem(SELECTED_ALBUM_KEY)
+
+    if (album) {
+      setAlbum(JSON.parse(album))
+    }
+  }, [setAlbum])
+
+  useEffect(() => {
+    loadSavedAlbum()
+  }, [])
+
   const changeAlbum = useCallback(
     album => {
       setAlbum(album)
       bottomSheet.current.snapTo(0)
+      AsyncStorage.setItem(SELECTED_ALBUM_KEY, JSON.stringify(album))
     },
     [setAlbum, bottomSheet]
   )
