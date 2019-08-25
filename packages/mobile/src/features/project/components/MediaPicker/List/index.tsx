@@ -67,13 +67,12 @@ function List({ album }) {
   // Add camera file to list
   useEffect(() => {
     if (
-      !album &&
       pathOr(false, [0, 'camera'], files) &&
       pathOr(false, [0, 'id'], assets) !== pathOr(false, [0, 'id'], files)
     ) {
       setAssets([omit(['camera'], files[0]), ...assets])
     }
-  }, [files, album])
+  }, [files])
 
   const onEndReached = useCallback(() => {
     if (hasNextPage) {

@@ -11,4 +11,5 @@ export const Header = styled.View`
 export const OpenAlbums = styled(UiTouchable)`
   flex-direction: row;
   align-items: center;
+  max-width: 45%;
 `

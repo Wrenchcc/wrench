@@ -65,14 +65,14 @@ function MediaPicker() {
     <>
       <Header>
         <OpenAlbums onPress={openAlbums}>
-          <Text medium color="white">
+          <Text medium color="white" numberOfLines={1}>
             {(selectedAlbum && selectedAlbum.title) || t('MediaPicker:roll')}
           </Text>
           <Icon source={arrowDown} style={{ marginLeft: 10 }} onPress={openAlbums} />
         </OpenAlbums>
       </Header>
 
-      <List album={selectedAlbum && selectedAlbum.id} />
+      <List album={selectedAlbum && selectedAlbum.id} setAlbum={setAlbum} />
 
       <BottomSheet
         ref={bottomSheet}

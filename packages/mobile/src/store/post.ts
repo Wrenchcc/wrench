@@ -1,5 +1,6 @@
 import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
+import * as MediaLibrary from 'react-native-media-library'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq, assocPath, pathOr } from 'ramda'
 import { client, CURRENT_USER_PROJECTS_QUERY } from 'gql'
@@ -15,52 +16,47 @@ const initialState = {
   [POST.IS_POSTING]: false,
 }
 
-const [usePostStore, api] = create(set => ({
+const [usePostStore, api] = create((set, get) => ({
   ...initialState,
 
   actions: {
-    onSelect: payload =>
-      set(state => {
-        const currentId = payload.id
-        const files = state.files
-        const isAdded = files.some(file => file.id === currentId)
-        const isPrevious = state.selectedId === currentId
-        const currentIndex = findIndex(propEq('id', currentId))(files)
+    onSelect: async payload => {
+      const state = get()
 
-        // If camera
-        if (payload.camera && !files.length) {
-          const id = payload.uri
+      const currentId = payload.id
+      const files = state.files
+      const isAdded = files.some(file => file.id === currentId)
+      const isPrevious = state.selectedId === currentId
+      const currentIndex = findIndex(propEq('id', currentId))(files)
 
-          return {
-            files: [
-              {
-                id,
-                ...payload,
-              },
-            ],
-            selectedId: id,
-          }
-        }
+      // If camera
+      if (payload.camera && !files.length) {
+        // Save file
+        const file = await MediaLibrary.createAssetAsync(payload.uri)
 
-        if (!isPrevious && !isAdded && files.length === MAX_SELECTED_FILES) {
-          return state
-        }
+        return set({
+          files: [{ ...file, camera: true }],
+          selectedId: file.id,
+        })
+      }
 
-        const updatedFiles =
-          isPrevious && isAdded
-            ? files.filter(file => file.id !== currentId)
-            : files.concat(payload)
+      if (!isPrevious && !isAdded && files.length === MAX_SELECTED_FILES) {
+        return state
+      }
 
-        const selectedId = isPrevious
-          ? updatedFiles.length &&
-            updatedFiles[currentIndex > 0 ? currentIndex - 1 : updatedFiles.length - 1 || 0].id
-          : payload.id
+      const updatedFiles =
+        isPrevious && isAdded ? files.filter(file => file.id !== currentId) : files.concat(payload)
 
-        return {
-          files: updatedFiles,
-          selectedId,
-        }
-      }),
+      const selectedId = isPrevious
+        ? updatedFiles.length &&
+          updatedFiles[currentIndex > 0 ? currentIndex - 1 : updatedFiles.length - 1 || 0].id
+        : payload.id
+
+      return set({
+        files: updatedFiles,
+        selectedId,
+      })
+    },
 
     onEdit: payload =>
       set(state => {
