@@ -23,10 +23,13 @@ function Comments({
   const [commentId, setCommentId] = useState()
   const [username, setUsername] = useState()
 
-  const handleOnReply = useCallback(data => {
-    setCommentId(data.commentId)
-    setUsername(data.username)
-  }, [])
+  const handleOnReply = useCallback(
+    data => {
+      setCommentId(data.commentId)
+      setUsername(data.username)
+    },
+    [setCommentId, setUsername]
+  )
 
   const renderHeader = () => {
     if (!post) {

@@ -43,7 +43,7 @@ function LikeComment({ comment }) {
         },
       },
     })
-  }, [toggleLike])
+  }, [toggleLike, comment])
 
   return (
     <Base>

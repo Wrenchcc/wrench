@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { prepend } from 'ramda'
+import { append, prepend } from 'ramda'
 import postInfo from 'graphql/fragments/post/postInfo'
 import commentInfo from 'graphql/fragments/comment/commentInfo'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
@@ -100,7 +100,7 @@ const addCommentOptions = {
                 fragmentName: 'commentInfo',
               })
 
-              const edges = prepend(
+              const edges = append(
                 {
                   cursor: optimisticId(),
                   node: {
