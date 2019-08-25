@@ -12,7 +12,13 @@ import { Base, Top, Headline, Content, Spacer } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
-function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutation }) {
+function Post({
+  post,
+  withoutTitle,
+  withoutComments,
+  deletePost: deletePostMutation,
+  paddingBottom,
+}) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
   const [actionSheetIsOpen, setActionSheetIsOpen] = useState(false)
@@ -124,7 +130,7 @@ function Post({ post, withoutTitle, withoutComments, deletePost: deletePostMutat
   }, [post])
 
   return (
-    <Base>
+    <Base paddingBottom={paddingBottom}>
       <Top>
         <Avatar uri={post.user.avatarUrl} onPress={navigateToUser} isOnline={post.user.isOnline} />
         <Icon source={share} onPress={toggleActionSheet} hitSlop={20} />
