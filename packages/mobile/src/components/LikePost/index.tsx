@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useRef, memo } from 'react'
 import { Animated } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useMutation, LIKE_POST_MUTATION } from 'gql'
@@ -14,7 +14,7 @@ function LikePost({ post }) {
 
   const scale = animatedValue.current.interpolate({
     inputRange: [0, 0.5, 1],
-    outputRange: [1, 1.2, 1],
+    outputRange: [1, 1.25, 1],
   })
 
   const handleToggleLike = useCallback(() => {
@@ -43,7 +43,7 @@ function LikePost({ post }) {
         },
       },
     })
-  }, [toggleLike])
+  }, [toggleLike, post])
 
   return (
     <Base>
@@ -62,4 +62,4 @@ function LikePost({ post }) {
   )
 }
 
-export default LikePost
+export default memo(LikePost)
