@@ -8,7 +8,13 @@ export default isAuthenticated(async (_, { id }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this comment.')
   }
 
-  await ctx.db.Comment.delete(id)
+  await Promise.resolve([
+    ctx.db.Comment.delete(id),
+    // NOTE: Delete replies
+    ctx.db.Comment.delete({
+      commentId: id,
+    }),
+  ])
 
   return true
 })

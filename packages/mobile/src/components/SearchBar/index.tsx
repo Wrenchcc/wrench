@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useCallback, memo } from 'react'
 import { BackHandler, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { search } from 'images'
+import { search, close } from 'images'
 import { COLORS } from 'ui/constants'
 import { Text } from 'ui'
-import { Base, Input, Icon } from './styles'
+import { Base, Inner, Input, SearchIcon, CloseIcon } from './styles'
 import transition from './transition'
 
 function SearchBar({
@@ -42,6 +42,7 @@ function SearchBar({
   }, [inputRef, transitionRef, onSearchCancel])
 
   const handleQueryChange = useCallback(value => onChangeQuery(value), [onChangeQuery])
+  const clearQuery = useCallback(() => onChangeQuery(''), [onChangeQuery])
 
   useEffect(() => {
     if (searchOpen) {
@@ -54,20 +55,26 @@ function SearchBar({
 
   return (
     <Base ref={transitionRef} transition={transition}>
-      <Input
-        ref={inputRef}
-        autoCorrect={false}
-        placeholderTextColor={COLORS.LIGHT_GREY}
-        selectionColor={COLORS.DARK}
-        placeholder={t('SearchBar:placeholder')}
-        keyboardAppearance="dark"
-        returnKeyType="search"
-        onFocus={handleFocus}
-        onChangeText={handleQueryChange}
-        value={query}
-      />
+      <Inner>
+        <Input
+          ref={inputRef}
+          autoCorrect={false}
+          placeholderTextColor={COLORS.LIGHT_GREY}
+          selectionColor={COLORS.DARK}
+          placeholder={t('SearchBar:placeholder')}
+          keyboardAppearance="dark"
+          returnKeyType="search"
+          onFocus={handleFocus}
+          onChangeText={handleQueryChange}
+          value={query}
+        />
 
-      <Icon source={search} />
+        <SearchIcon source={search} />
+
+        {query.length > 0 && (
+          <CloseIcon source={close} color="dark" width={12} height={12} onPress={clearQuery} />
+        )}
+      </Inner>
 
       {searchActive && (
         <Text medium onPress={handleCancel} style={{ marginLeft: 10 }}>
