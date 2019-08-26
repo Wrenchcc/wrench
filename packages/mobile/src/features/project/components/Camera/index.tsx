@@ -47,7 +47,6 @@ function Camera({ onTakePicture }) {
     const type = cameraType === Constants.Type.back ? Constants.Type.front : Constants.Type.back
 
     setCameraType(type)
-    setAutofocus(null)
   }, [cameraType])
 
   const setFocus = useCallback(({ nativeEvent }) => {
