@@ -44,7 +44,7 @@ function ProjectHeader({ project, spacingHorizontal, handleFollow }) {
           {loading ? (
             <ActivityIndicator size="small" color="black" />
           ) : (
-            <Icon source={arrowDown} color="dark" />
+            <Icon source={arrowDown} color="dark" disabled />
           )}
         </OpenSimilar>
       </Actions>

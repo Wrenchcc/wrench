@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState, useCallback, useRef } from 'react'
-import Permissions from 'react-native-permissions'
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import BottomSheet from 'reanimated-bottom-sheet'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useTranslation } from 'react-i18next'
@@ -7,12 +7,14 @@ import AskForPermission from 'features/project/components/AskForPermission'
 import { SELECTED_ALBUM_KEY } from 'utils/storage/constants'
 import { Text, Icon } from 'ui'
 import { arrowDown } from 'images'
+import { isIphone } from 'utils/platform'
 import List from './List'
 import Albums from './Albums'
 import { Header, OpenAlbums } from './styles'
 
-const PERMISSION = 'photo'
-const AUTHORIZED = 'authorized'
+const PERMISSION = isIphone
+  ? PERMISSIONS.IOS.PHOTO_LIBRARY
+  : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
 
 function MediaPicker() {
   const bottomSheet = useRef()
@@ -24,7 +26,7 @@ function MediaPicker() {
   const { t } = useTranslation()
 
   useEffect(() => {
-    Permissions.check(PERMISSION).then(response => {
+    check(PERMISSION).then(response => {
       setLoading(false)
       setPhotoPermission(response)
       setCheckingPermission(false)
@@ -63,14 +65,14 @@ function MediaPicker() {
   ])
 
   const permissionAuthorized = useCallback(() => {
-    setPhotoPermission(AUTHORIZED)
+    setPhotoPermission(RESULTS.GRANTED)
   }, [setPhotoPermission])
 
   if (checkingPermission || isLoading) {
     return null
   }
 
-  if (photoPermission !== AUTHORIZED) {
+  if (photoPermission !== RESULTS.GRANTED) {
     return (
       <AskForPermission permission={PERMISSION} onSuccess={permissionAuthorized} type="photo" />
     )

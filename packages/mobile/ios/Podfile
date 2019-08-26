@@ -31,10 +31,16 @@ target 'Wrench' do
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
-
+  
   # Third party deps podspec link
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
+  pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary.podspec"
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
+  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
 
   # TODO: fix autolinking (xcode project?)
   pod 'react-native-media-library', :path => '../node_modules/react-native-media-library'
