@@ -78,6 +78,13 @@ function MediaPicker() {
 
   return (
     <>
+      <BottomSheet
+        ref={bottomSheet}
+        initialSnap={0}
+        snapPoints={[0, '94%']}
+        renderContent={renderAlbums}
+      />
+
       <Header>
         <OpenAlbums onPress={openAlbums}>
           <Text medium color="white" numberOfLines={1}>
@@ -88,13 +95,6 @@ function MediaPicker() {
       </Header>
 
       <List album={selectedAlbum && selectedAlbum.id} setAlbum={setAlbum} />
-
-      <BottomSheet
-        ref={bottomSheet}
-        initialSnap={0}
-        snapPoints={[0, '94%']}
-        renderContent={renderAlbums}
-      />
     </>
   )
 }
