@@ -110,14 +110,18 @@ export const LIKE_COMMENT_MUTATION = gql`
 //   }
 // `
 //
-// export const FOLLOW_PROJECT_MUTATION = gql`
-//   mutation followProject($id: ID!) {
-//     followProject(id: $id) {
-//       ...projectInfo
-//     }
-//   }
-// `
-//
+export const FOLLOW_PROJECT_MUTATION = gql`
+  mutation followProject($id: ID!) {
+    followProject(id: $id) {
+      cover {
+        uri
+      }
+      ...projectFragment
+    }
+  }
+  ${fragment.PROJECT_FRAGMENT}
+`
+
 export const PRE_SING_URLS_MUTATION = gql`
   mutation($input: [PreSignedUrlnput]!) {
     preSignUrls(input: $input) {

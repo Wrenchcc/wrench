@@ -76,11 +76,17 @@ function Project({
 
     return (
       <>
-        {project.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
+        {project.title && (
+          <ProjectHeader
+            project={project}
+            spacingHorizontal={!hasPosts}
+            handleFollow={handleFollow}
+          />
+        )}
         {content}
       </>
     )
-  }, [post, posts, hasPosts, project])
+  }, [post, posts, hasPosts, project, handleFollow])
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>

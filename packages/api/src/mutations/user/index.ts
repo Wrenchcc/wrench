@@ -1,3 +1,4 @@
+import authenticateApple from './authenticate/apple'
 import authenticateFacebook from './authenticate/facebook'
 import authenticateGoogle from './authenticate/google'
 import banUser from './banUser'
@@ -9,6 +10,7 @@ import toggleNotificationSettings from './toggleNotificationSettings'
 
 export default {
   Mutation: {
+    authenticateApple,
     authenticateFacebook,
     authenticateGoogle,
     banUser,

@@ -6,7 +6,7 @@ function Follow({ onPress, following, small, ...rest }) {
   const { t } = useTranslation()
 
   return (
-    <Base onPress={onPress} black={!following} {...rest}>
+    <Base onPress={onPress} black={!following} small={small} {...rest}>
       <Text color={following ? 'dark' : 'white'} medium fontSize={15}>
         {following
           ? small

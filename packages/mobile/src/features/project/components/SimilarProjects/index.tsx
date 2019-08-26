@@ -1,39 +1,72 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useMutation, FOLLOW_PROJECT_MUTATION } from 'gql'
+import { track, events } from 'utils/analytics'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall } from 'ui'
 import { Base, Follow, SNAP_INTERVAL } from './styles'
 
-function SimilarProjects({ projects, fetchMore, isFetching, hasNextPage }) {
+function SimilarProjects({ projects }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
+  const [toggleFollow] = useMutation(FOLLOW_PROJECT_MUTATION)
 
   const renderItem = ({ item }) => {
+    const project = item.node
+    const id = item.node.id
+
     const handleNavigation = () => {
       navigate(SCREENS.PROJECT, {
-        id: item.node.id,
-        project: item.node,
+        id,
+        project,
+      })
+    }
+
+    const handletoggleFollow = () => {
+      const isFollower = !project.permissions.isFollower
+      const totalCount = project.permissions.isFollower
+        ? project.followers.totalCount - 1
+        : project.followers.totalCount + 1
+
+      track(isFollower ? events.PROJECT_FOLLOWED : events.PROJECT_UNFOLLOWED)
+
+      toggleFollow({
+        variables: {
+          id,
+        },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          followProject: {
+            id,
+            ...project,
+            followers: {
+              ...project.followers,
+              totalCount,
+            },
+            permissions: {
+              ...project.permissions,
+              isFollower,
+            },
+            __typename: 'Project',
+          },
+        },
       })
     }
 
     return (
       <CardSmall
-        key={item.node.id}
+        key={id}
         onPress={handleNavigation}
-        title={item.node.title}
-        followers={item.node.followers.totalCount}
-        image={item.node.cover}
+        title={project.title}
+        followers={project.followers.totalCount}
+        image={project.cover}
         style={{
           marginLeft: 5,
           marginRight: 5,
         }}
       >
-        {item.node.permissions && !item.node.permissions.isOwner && (
-          <Follow
-            small
-            following={item.node.permissions.isFollower}
-            onPress={() => alert('follow')}
-          />
+        {project.permissions && !project.permissions.isOwner && (
+          <Follow small following={project.permissions.isFollower} onPress={handletoggleFollow} />
         )}
       </CardSmall>
     )
@@ -52,9 +85,6 @@ function SimilarProjects({ projects, fetchMore, isFetching, hasNextPage }) {
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"
-        fetchMore={fetchMore}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         style={{

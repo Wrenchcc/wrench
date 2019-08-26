@@ -171,23 +171,15 @@ export const SIMILAR_PROJECTS_QUERY = gql`
     similarProjects(id: $id) {
       edges {
         node {
-          id
           cover {
             uri
-            default
           }
-          title
-          followers: followersConnection {
-            totalCount
-          }
-          permissions {
-            isOwner
-            isFollower
-          }
+          ...projectFragment
         }
       }
     }
   }
+  ${fragment.PROJECT_FRAGMENT}
 `
 
 //

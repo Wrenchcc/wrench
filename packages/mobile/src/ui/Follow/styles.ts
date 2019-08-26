@@ -6,7 +6,7 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
   background-color: ${({ black }) => (black ? COLORS.DARK : COLORS.WHITE)};
-  border-width: 1;
+  border-width: ${({ small }) => (small ? 0 : 1)};
   border-color: ${({ black }) => (black ? COLORS.DARK : COLORS.DIVIDER)};
   height: 40;
   justify-content: center;
