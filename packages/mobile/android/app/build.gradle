@@ -246,6 +246,7 @@ dependencies {
     implementation project(':react-native-firebase')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-navigation')
+    implementation project(':react-native-permissions')
 }
 
 // Run this once to be able to run the application with BUCK
