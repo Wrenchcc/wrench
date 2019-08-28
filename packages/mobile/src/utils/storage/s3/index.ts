@@ -3,15 +3,10 @@ import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
 import { FILE_TYPES } from 'utils/enums'
 import request from './request'
-import { isAndroid } from 'utils/platform'
 
 async function cropImage({ uri, crop }) {
   try {
-    if (isAndroid) {
-      // Skip crop for now
-      // File get isTrusted false
-      return Promise.resolve(uri)
-    }
+    return Promise.resolve(uri)
     return ImageManipulator.manipulateAsync(uri, [{ crop }])
   } catch (err) {
     logError(err, { uri, crop })
@@ -37,7 +32,7 @@ export default async files => {
       resizedImages.map(async (uri, i) => {
         const { url, type, filename } = preSignedUrls.data.preSignUrls[i]
         try {
-          return request(url, { uri, type, filename })
+          return request(url, { uri, type, filename: 'katt' })
         } catch (err) {
           logError(err)
         }

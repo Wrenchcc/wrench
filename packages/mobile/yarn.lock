@@ -4847,7 +4847,7 @@ react-native-haptic-feedback@^1.8.2:
 
 "react-native-image-manipulator@https://github.com/pontusab/react-native-image-manipulator":
   version "1.0.1"
-  resolved "https://github.com/pontusab/react-native-image-manipulator#384c251e85843a5fb32e1631bf670899cfa17d97"
+  resolved "https://github.com/pontusab/react-native-image-manipulator#67b565691ec959aabd69d846606ceb9abe46005a"
 
 react-native-linear-gradient@^2.5.6:
   version "2.5.6"
@@ -4858,10 +4858,10 @@ react-native-linear-gradient@^2.5.6:
   version "1.0.0"
   resolved "https://github.com/pontusab/react-native-media-library#f644aa74851abd10d9c732d8e55cb1626c84d224"
 
-react-native-navigation@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-3.0.0.tgz#eb87b767d48108d151e7efaad47dadfa53a0ac30"
-  integrity sha512-uYWNTfq30KcuFWKUgUIFFrwsGsB0HC23MUwGkvveN7AsmmPMmMcOD5sGAEZ5eTDcO8mTf5I1/U8ocvrqUTqUEw==
+react-native-navigation@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-3.1.2.tgz#1b32e8b42e780ff769611e0bcfa3a7c4d491995c"
+  integrity sha512-x0MDPS0hXz0UNiz4PYRrSq5IDH4l/tQxtio7Xtiqh4mgqIlSULbs6udPgsSWsk6nJcr+AdKofB4vOM5ZvLnRag==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
