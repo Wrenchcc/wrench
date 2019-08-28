@@ -16,15 +16,16 @@ function AddMedia() {
   const [isOpen, setIsOpen] = useState(false)
   const toggleActionSheet = useCallback(() => setIsOpen(!isOpen), [isOpen])
 
-  const { onSelect, onEdit, file, hasFiles, reset } = usePostStore(store => ({
-    file: store.files.find(({ id }) => id === store.selectedId),
-    hasFiles: store.files.length > 0,
+  const { onSelect, onEdit, selectedFile, hasSelectedFiles, reset } = usePostStore(store => ({
+    selectedFile: store.selectedFiles.find(({ id }) => id === store.selectedId),
+    hasSelectedFiles: store.selectedFiles.length > 0,
     onEdit: store.actions.onEdit,
     onSelect: store.actions.onSelect,
     reset: store.actions.reset,
   }))
 
   const handleNavigation = useCallback(() => {
+    // Crop on press
     navigate(SCREENS.ADD_POST, {
       options: {
         animations: {
@@ -37,12 +38,12 @@ function AddMedia() {
   }, [])
 
   const handleDismissModal = useCallback(() => {
-    if (hasFiles) {
+    if (hasSelectedFiles) {
       toggleActionSheet()
     } else {
       dismissModal()
     }
-  }, [hasFiles, toggleActionSheet, dismissModal])
+  }, [hasSelectedFiles, toggleActionSheet, dismissModal])
 
   const handleDiscard = useCallback(() => {
     dismissModal()
@@ -57,7 +58,7 @@ function AddMedia() {
       <Header
         headerLeft={<Icon source={close} onPress={handleDismissModal} />}
         headerRight={
-          hasFiles && (
+          hasSelectedFiles && (
             <Text color="white" onPress={handleNavigation} medium>
               {t('AddMedia:next')}
             </Text>
@@ -69,8 +70,8 @@ function AddMedia() {
       <SelectProject />
 
       <Placeholder>
-        {file ? (
-          <ImageEditor source={file} onChange={onEdit} />
+        {selectedFile ? (
+          <ImageEditor source={selectedFile} onChange={onEdit} />
         ) : (
           <Camera onTakePicture={onSelect} />
         )}

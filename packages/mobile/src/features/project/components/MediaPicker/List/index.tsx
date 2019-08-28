@@ -18,8 +18,8 @@ function List({ album }) {
   const [isLoading, setIsLoading] = useState(true)
   const [endCursor, setEndCursor] = useState()
 
-  const { files, onSelect } = usePostStore(store => ({
-    files: store.files,
+  const { selectedFiles, onSelect } = usePostStore(store => ({
+    selectedFiles: store.selectedFiles,
     onSelect: store.actions.onSelect,
   }))
 
@@ -69,12 +69,12 @@ function List({ album }) {
   // Add camera file to list
   useEffect(() => {
     if (
-      pathOr(false, [0, 'camera'], files) &&
-      pathOr(false, [0, 'id'], assets) !== pathOr(false, [0, 'id'], files)
+      pathOr(false, [0, 'camera'], selectedFiles) &&
+      pathOr(false, [0, 'id'], assets) !== pathOr(false, [0, 'id'], selectedFiles)
     ) {
-      setAssets([omit(['camera'], files[0]), ...assets])
+      setAssets([omit(['camera'], selectedFiles[0]), ...assets])
     }
-  }, [files])
+  }, [selectedFiles])
 
   const onEndReached = useCallback(() => {
     if (hasNextPage) {
@@ -83,8 +83,8 @@ function List({ album }) {
   }, [hasNextPage, endCursor, fetchMoreAssets])
 
   const renderItem = ({ item }) => {
-    const order = findIndex(propEq('id', item.id))(files)
-    const selected = files.some(file => file.id === item.id)
+    const order = findIndex(propEq('id', item.id))(selectedFiles)
+    const selected = selectedFiles.some(file => file.id === item.id)
     return <MediaItem item={item} onPress={onSelect} order={order + 1} selected={selected} />
   }
 

@@ -17,14 +17,16 @@ function AddPost({ addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
 
-  const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({
-    caption: store.caption,
-    files: store.files,
-    projectId: store.projectId,
-    reset: store.actions.reset,
-    setIsPosting: store.actions.setIsPosting,
-    update: store.actions.update,
-  }))
+  const { selectedFiles, caption, update, reset, projectId, setIsPosting } = usePostStore(
+    store => ({
+      caption: store.caption,
+      selectedFiles: store.selectedFiles,
+      projectId: store.projectId,
+      reset: store.actions.reset,
+      setIsPosting: store.actions.setIsPosting,
+      update: store.actions.update,
+    })
+  )
 
   const toastActions = useToastStore(store => store.actions)
 
@@ -39,7 +41,7 @@ function AddPost({ addPost: addPostMutation }) {
     setIsPosting(true)
 
     try {
-      const uploaded = await uploadFiles(files)
+      const uploaded = await uploadFiles(selectedFiles) // TODO: Change to cropped files
 
       await addPostMutation({
         caption,

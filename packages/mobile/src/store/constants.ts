@@ -6,7 +6,7 @@ export const PROJECT = {
 
 export const POST = {
   CAPTION: 'caption',
-  FILES: 'files',
+  SELECED_FILES: 'selectedFiles',
   IS_POSTING: 'isPosting',
   PROJECT_ID: 'projectId',
   SELECTED_ID: 'selectedId',

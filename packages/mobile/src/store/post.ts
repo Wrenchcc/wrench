@@ -10,7 +10,7 @@ const MAX_SELECTED_FILES = 10
 
 const initialState = {
   [POST.CAPTION]: null,
-  [POST.FILES]: [],
+  [POST.SELECED_FILES]: [],
   [POST.SELECTED_ID]: null,
   [POST.PROJECT_ID]: null,
   [POST.IS_POSTING]: false,
@@ -24,28 +24,30 @@ const [usePostStore, api] = create((set, get) => ({
       const state = get()
 
       const currentId = payload.id
-      const files = state.files
-      const isAdded = files.some(file => file.id === currentId)
+      const selectedFiles = state.selectedFiles
+      const isAdded = selectedFiles.some(file => file.id === currentId)
       const isPrevious = state.selectedId === currentId
-      const currentIndex = findIndex(propEq('id', currentId))(files)
+      const currentIndex = findIndex(propEq('id', currentId))(selectedFiles)
 
       // If camera
-      if (payload.camera && !files.length) {
+      if (payload.camera && !selectedFiles.length) {
         // Save file
         const file = await MediaLibrary.createAssetAsync(payload.uri)
 
         return set({
-          files: [{ ...file, camera: true }],
+          selectedFiles: [{ ...file, camera: true }],
           selectedId: file.id,
         })
       }
 
-      if (!isPrevious && !isAdded && files.length === MAX_SELECTED_FILES) {
+      if (!isPrevious && !isAdded && selectedFiles.length === MAX_SELECTED_FILES) {
         return state
       }
 
       const updatedFiles =
-        isPrevious && isAdded ? files.filter(file => file.id !== currentId) : files.concat(payload)
+        isPrevious && isAdded
+          ? selectedFiles.filter(file => file.id !== currentId)
+          : selectedFiles.concat(payload)
 
       const selectedId = isPrevious
         ? updatedFiles.length &&
@@ -53,24 +55,24 @@ const [usePostStore, api] = create((set, get) => ({
         : payload.id
 
       return set({
-        files: updatedFiles,
+        selectedFiles: updatedFiles,
         selectedId,
       })
     },
 
     onEdit: payload =>
       set(state => {
-        const currentIndex = findIndex(propEq('id', state.selectedId))(state.files)
+        const currentIndex = findIndex(propEq('id', state.selectedId))(state.selectedFiles)
 
         return {
-          files: assocPath([currentIndex, 'crop'], payload, state.files),
+          selectedFiles: assocPath([currentIndex, 'crop'], payload, state.selectedFiles),
         }
       }),
 
     reset: () =>
       set({
         [POST.CAPTION]: null,
-        [POST.FILES]: [],
+        [POST.SELECED_FILES]: [],
         [POST.SELECTED_ID]: null,
         [POST.IS_POSTING]: false,
       }),
