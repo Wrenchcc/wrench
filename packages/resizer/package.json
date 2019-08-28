@@ -15,12 +15,12 @@
     "@types/sharp": "^0.22.2",
     "aws-sdk": "^2.518.0",
     "prettier": "^1.18.2",
-    "serverless": "1.50.1",
+    "serverless": "1.51.0",
     "serverless-webpack": "^5.3.1",
     "ts-loader": "^6.0.4",
     "tslint": "^5.19.0",
-    "typescript": "^3.5.3",
-    "webpack": "^4.39.2",
+    "typescript": "^3.6.2",
+    "webpack": "^4.39.3",
     "webpack-node-externals": "^1.7.2"
   }
 }

@@ -18,10 +18,10 @@
   },
   "devDependencies": {
     "prettier": "^1.18.2",
-    "serverless": "1.50.1",
+    "serverless": "1.51.0",
     "serverless-dotenv-plugin": "^2.1.1",
     "serverless-plugin-typescript": "^1.1.9",
     "tslint": "^5.19.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.6.2"
   }
 }
