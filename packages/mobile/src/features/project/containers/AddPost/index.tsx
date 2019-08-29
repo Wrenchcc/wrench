@@ -17,16 +17,14 @@ function AddPost({ addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
 
-  const { selectedFiles, caption, update, reset, projectId, setIsPosting } = usePostStore(
-    store => ({
-      caption: store.caption,
-      selectedFiles: store.selectedFiles,
-      projectId: store.projectId,
-      reset: store.actions.reset,
-      setIsPosting: store.actions.setIsPosting,
-      update: store.actions.update,
-    })
-  )
+  const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({
+    caption: store.caption,
+    files: store.files,
+    projectId: store.projectId,
+    reset: store.actions.reset,
+    setIsPosting: store.actions.setIsPosting,
+    update: store.actions.update,
+  }))
 
   const toastActions = useToastStore(store => store.actions)
 
@@ -41,7 +39,7 @@ function AddPost({ addPost: addPostMutation }) {
     setIsPosting(true)
 
     try {
-      const uploaded = await uploadFiles(selectedFiles) // TODO: Change to cropped files
+      const uploaded = await uploadFiles(files)
 
       await addPostMutation({
         caption,
@@ -80,7 +78,7 @@ function AddPost({ addPost: addPostMutation }) {
 
       <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
         <ScrollView style={{ paddingHorizontal: 20 }} keyboardDismissMode="on-drag">
-          <SelectedFiles selectedFiles={selectedFiles} />
+          <SelectedFiles selectedFiles={files} />
 
           <Input
             scrollEnabled={false}

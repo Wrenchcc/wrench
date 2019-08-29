@@ -10,16 +10,22 @@ const MAX_SELECTED_FILES = 10
 
 const initialState = {
   [POST.CAPTION]: null,
+  [POST.FILES]: [],
+  [POST.IS_POSTING]: false,
+  [POST.PROJECT_ID]: null,
   [POST.SELECED_FILES]: [],
   [POST.SELECTED_ID]: null,
-  [POST.PROJECT_ID]: null,
-  [POST.IS_POSTING]: false,
 }
 
 const [usePostStore, api] = create((set, get) => ({
   ...initialState,
 
   actions: {
+    addFiles: payload =>
+      set({
+        files: payload,
+      }),
+
     onSelect: async payload => {
       const state = get()
 
@@ -72,9 +78,10 @@ const [usePostStore, api] = create((set, get) => ({
     reset: () =>
       set({
         [POST.CAPTION]: null,
+        [POST.FILES]: [],
+        [POST.IS_POSTING]: false,
         [POST.SELECED_FILES]: [],
         [POST.SELECTED_ID]: null,
-        [POST.IS_POSTING]: false,
       }),
 
     setIsPosting: payload => set({ isPosting: payload }),
