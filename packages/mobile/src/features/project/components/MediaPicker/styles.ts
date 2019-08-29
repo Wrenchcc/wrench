@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import UiTouchable from 'ui/Touchable'
 
+export const Base = styled.View`
+  flex: 1;
+`
+
 export const Header = styled.View`
   height: 60;
   padding-left: 20;

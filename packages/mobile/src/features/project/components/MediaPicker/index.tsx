@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useState, useCallback, useRef } from 'react'
+import { Dimensions } from 'react-native'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import BottomSheet from 'reanimated-bottom-sheet'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -7,14 +8,18 @@ import AskForPermission from 'features/project/components/AskForPermission'
 import { SELECTED_ALBUM_KEY } from 'utils/storage/constants'
 import { Text, Icon } from 'ui'
 import { arrowDown } from 'images'
-import { isIphone } from 'utils/platform'
+import { isIphone, isAndroid, hasNotch } from 'utils/platform'
 import List from './List'
 import Albums from './Albums'
-import { Header, OpenAlbums } from './styles'
+import { Base, Header, OpenAlbums } from './styles'
+
+const { height } = Dimensions.get('window')
 
 const PERMISSION = isIphone
   ? PERMISSIONS.IOS.PHOTO_LIBRARY
   : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
+
+const BOTTOM_SHEET_HEIGHT = height - (isAndroid ? 24 : hasNotch ? 44 : 20) // TODO: fix status bar constant from navigation
 
 function MediaPicker() {
   const bottomSheet = useRef()
@@ -83,20 +88,22 @@ function MediaPicker() {
       <BottomSheet
         ref={bottomSheet}
         initialSnap={0}
-        snapPoints={[0, '94%']}
+        snapPoints={[0, BOTTOM_SHEET_HEIGHT]}
         renderContent={renderAlbums}
       />
 
-      <Header>
-        <OpenAlbums onPress={openAlbums}>
-          <Text medium color="white" numberOfLines={1}>
-            {(selectedAlbum && selectedAlbum.title) || t('MediaPicker:roll')}
-          </Text>
-          <Icon source={arrowDown} style={{ marginLeft: 10 }} onPress={openAlbums} />
-        </OpenAlbums>
-      </Header>
+      <Base>
+        <Header>
+          <OpenAlbums onPress={openAlbums}>
+            <Text medium color="white" numberOfLines={1}>
+              {(selectedAlbum && selectedAlbum.title) || t('MediaPicker:roll')}
+            </Text>
+            <Icon source={arrowDown} style={{ marginLeft: 10 }} onPress={openAlbums} />
+          </OpenAlbums>
+        </Header>
 
-      <List album={selectedAlbum && selectedAlbum.id} setAlbum={setAlbum} />
+        <List album={selectedAlbum && selectedAlbum.id} setAlbum={setAlbum} />
+      </Base>
     </>
   )
 }

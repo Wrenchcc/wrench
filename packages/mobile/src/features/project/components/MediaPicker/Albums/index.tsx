@@ -5,6 +5,7 @@ import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
 import { pathOr } from 'ramda'
 import { logError } from 'utils/sentry'
+
 const { height } = Dimensions.get('window')
 
 const PADDING_TOP = 20
