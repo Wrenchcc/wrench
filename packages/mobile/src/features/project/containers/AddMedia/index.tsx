@@ -40,13 +40,16 @@ function AddMedia() {
   const handleCropping = useCallback(async () => {
     setLoading(true)
 
-    const files = await Promise.all(selectedFiles.map(cropImage))
+    try {
+      const files = await Promise.all(selectedFiles.map(cropImage))
+      addFiles(files)
+      // TODO: Show error banner
+    } catch (err) {
+      console.log(err)
+    }
 
     setLoading(false)
 
-    addFiles(files)
-
-    // Crop on press
     navigate(SCREENS.ADD_POST, {
       options: {
         animations: {
