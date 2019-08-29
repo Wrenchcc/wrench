@@ -80,7 +80,7 @@ function AddPost({ addPost: addPostMutation }) {
 
       <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
         <ScrollView style={{ paddingHorizontal: 20 }} keyboardDismissMode="on-drag">
-          <SelectedFiles selectedFiles={files} />
+          <SelectedFiles selectedFiles={selectedFiles} />
 
           <Input
             scrollEnabled={false}

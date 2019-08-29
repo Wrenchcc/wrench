@@ -7,29 +7,17 @@ export default async files => {
   try {
     const input = files.map(() => ({ type: FILE_TYPES.IMAGE }))
 
-    // Return pre-signed urls
-    const preSignedUrls = await preSignUrls(input)
+    const urls = await preSignUrls(input)
 
-    // Return filenames
     const result = await Promise.all(
       files.map(async (uri, i) => {
-        const { url, type, filename } = preSignedUrls.data.preSignUrls[i]
-        try {
-          return request(url, { uri, type, filename })
-        } catch (err) {
-          logError(err)
-        }
-
-        return null
+        const { url, type, filename } = urls.data.preSignUrls[i]
+        return request(url, { uri, type, filename })
       })
-    ).catch(err => {
-      logError(err)
-    })
+    )
 
     return result
   } catch (err) {
     logError(err)
   }
-
-  return null
 }
