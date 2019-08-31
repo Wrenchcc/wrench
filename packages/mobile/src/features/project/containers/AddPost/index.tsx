@@ -7,7 +7,7 @@ import { addPost } from 'graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
-import uploadFiles from 'utils/storage/s3'
+import uploadToS3Async from 'utils/storage/uploadToS3Async'
 import { Header, Input, KeyboardAvoidingView, Icon, Text } from 'ui'
 import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
@@ -39,8 +39,7 @@ function AddPost({ addPost: addPostMutation }) {
     setIsPosting(true)
 
     try {
-      const uploaded = await uploadFiles(files)
-
+      const uploaded = await uploadToS3Async(files)
       await addPostMutation({
         caption,
         files: uploaded,

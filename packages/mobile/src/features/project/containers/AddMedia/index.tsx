@@ -10,6 +10,7 @@ import cropImage from 'utils/cropImage'
 import { close } from 'images'
 import { isAndroid, hasNotch } from 'utils/platform'
 import { SELECTED_ALBUM_KEY } from 'utils/storage/constants'
+import { logError } from 'utils/sentry'
 import Camera from '../../components/Camera'
 import ImageEditor from '../../components/ImageEditor'
 import MediaPicker from '../../components/MediaPicker'
@@ -58,7 +59,7 @@ function AddMedia() {
       addFiles(files)
       // TODO: Show error banner
     } catch (err) {
-      console.log(err)
+      logError(err)
     }
 
     setLoading(false)
@@ -122,46 +123,48 @@ function AddMedia() {
   ])
 
   return (
-    <Base>
-      <Header
-        headerLeft={<Icon source={close} onPress={handleDismissModal} />}
-        headerRight={
-          isLoading ? (
-            <ActivityIndicator size="small" color="white" />
-          ) : hasSelectedFiles ? (
-            <Text color="white" onPress={handleCropping} medium>
-              {t('AddMedia:next')}
-            </Text>
-          ) : null
-        }
-        color="black"
-      />
+    <>
+      <Base>
+        <Header
+          headerLeft={<Icon source={close} onPress={handleDismissModal} />}
+          headerRight={
+            isLoading ? (
+              <ActivityIndicator size="small" color="white" />
+            ) : hasSelectedFiles ? (
+              <Text color="white" onPress={handleCropping} medium>
+                {t('AddMedia:next')}
+              </Text>
+            ) : null
+          }
+          color="black"
+        />
 
-      <SelectProject />
+        <SelectProject />
 
-      <Placeholder>
-        {selectedFile ? (
-          <ImageEditor source={selectedFile} onChange={onEdit} />
-        ) : (
-          <Camera onTakePicture={onSelect} />
-        )}
-      </Placeholder>
+        <Placeholder>
+          {selectedFile ? (
+            <ImageEditor source={selectedFile} onChange={onEdit} />
+          ) : (
+            <Camera onTakePicture={onSelect} />
+          )}
+        </Placeholder>
 
-      <MediaPicker openAlbums={openAlbums} selectedAlbum={selectedAlbum} openAlbums={openAlbums} />
+        <MediaPicker openAlbums={openAlbums} selectedAlbum={selectedAlbum} setAlbum={setAlbum} />
 
-      <ActionSheet
-        title={t('AddMedia:options:title')}
-        isOpen={isOpen}
-        onClose={toggleActionSheet}
-        destructiveButtonIndex={0}
-        options={[
-          {
-            name: t('AddMedia:options:discard'),
-            onSelect: handleDiscard,
-          },
-          { name: t('AddMedia:options:cancel') },
-        ]}
-      />
+        <ActionSheet
+          title={t('AddMedia:options:title')}
+          isOpen={isOpen}
+          onClose={toggleActionSheet}
+          destructiveButtonIndex={0}
+          options={[
+            {
+              name: t('AddMedia:options:discard'),
+              onSelect: handleDiscard,
+            },
+            { name: t('AddMedia:options:cancel') },
+          ]}
+        />
+      </Base>
 
       <BottomSheet
         ref={bottomSheet}
@@ -169,7 +172,7 @@ function AddMedia() {
         snapPoints={[0, BOTTOM_SHEET_HEIGHT]}
         renderContent={renderAlbums}
       />
-    </Base>
+    </>
   )
 }
 

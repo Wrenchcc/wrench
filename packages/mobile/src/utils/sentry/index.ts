@@ -10,11 +10,11 @@ if (!__DEV__) {
 
   SentryInstance.config(Config.SENTRY_DSN, {
     deactivateStacktraceMerging: true,
-    environment,
   }).install()
 
   SentryInstance.setTagsContext({
     appVersion,
+    environment,
     buildNumber: DeviceInfo.getBuildNumber(),
     deviceInfo: {
       deviceName: DeviceInfo.getDeviceName(),
