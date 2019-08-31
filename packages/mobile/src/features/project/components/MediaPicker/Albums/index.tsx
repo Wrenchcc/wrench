@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, View, Image, ActivityIndicator } from 'react-native'
+import { Dimensions, View, Image } from 'react-native'
 import * as MediaLibrary from 'react-native-media-library'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
@@ -13,12 +13,11 @@ const HEIGHT = 100
 
 function Albums({ onPress }) {
   const [albums, setAlbums] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
 
   const getAlbums = async () => {
     try {
       const albums = await MediaLibrary.getAlbumsAsync({
-        includeSmartAlbums: false,
+        includeSmartAlbums: true,
       })
 
       const data = await Promise.all(
@@ -37,7 +36,6 @@ function Albums({ onPress }) {
       )
 
       setAlbums(data.filter(a => a.totalCount > 0).sort((a, b) => b.assetCount - a.assetCount))
-      setIsLoading(false)
     } catch (err) {
       logError(err)
     }
@@ -46,22 +44,6 @@ function Albums({ onPress }) {
   useEffect(() => {
     getAlbums()
   }, [])
-
-  if (isLoading) {
-    return (
-      <View
-        style={{
-          backgroundColor: 'white',
-          minHeight: height,
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <ActivityIndicator size="small" color="black" />
-      </View>
-    )
-  }
 
   return (
     <View

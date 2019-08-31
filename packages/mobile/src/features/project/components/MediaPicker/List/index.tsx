@@ -15,7 +15,6 @@ const keyExtractor = item => item.uri
 function List({ album }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
-  const [isLoading, setIsLoading] = useState(true)
   const [endCursor, setEndCursor] = useState()
 
   const { selectedFiles, onSelect } = usePostStore(store => ({
@@ -33,7 +32,6 @@ function List({ album }) {
       setAssets(result.assets)
       setHasNextPage(result.hasNextPage)
       setEndCursor(result.endCursor)
-      setIsLoading(false)
     } catch (err) {
       logError(err)
     }
@@ -99,20 +97,6 @@ function List({ album }) {
 
     return null
   }, [hasNextPage])
-
-  if (isLoading) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <ActivityIndicator color="white" />
-      </View>
-    )
-  }
 
   return (
     <FlatList
