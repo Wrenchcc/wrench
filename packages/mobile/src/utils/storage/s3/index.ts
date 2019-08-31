@@ -1,7 +1,7 @@
 import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
 import { FILE_TYPES } from 'utils/enums'
-import request from './request'
+import uploadImageAsync from './uploadImageAsync'
 
 export default async files => {
   try {
@@ -12,7 +12,7 @@ export default async files => {
     const result = await Promise.all(
       files.map(async (uri, i) => {
         const { url, type, filename } = urls.data.preSignUrls[i]
-        return request(url, { uri, type, filename })
+        return uploadImageAsync(url, { uri, type, filename })
       })
     )
 

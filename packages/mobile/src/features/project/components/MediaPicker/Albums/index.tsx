@@ -17,7 +17,9 @@ function Albums({ onPress }) {
 
   const getAlbums = async () => {
     try {
-      const albums = await MediaLibrary.getAlbumsAsync({ includeSmartAlbums: true })
+      const albums = await MediaLibrary.getAlbumsAsync({
+        includeSmartAlbums: false,
+      })
 
       const data = await Promise.all(
         albums.map(async album => {
