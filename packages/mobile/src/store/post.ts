@@ -4,6 +4,7 @@ import * as MediaLibrary from 'react-native-media-library'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq, assocPath, pathOr } from 'ramda'
 import { client, CURRENT_USER_PROJECTS_QUERY } from 'gql'
+import { logError } from 'utils/sentry'
 import { POST } from './constants'
 
 const MAX_SELECTED_FILES = 10
@@ -38,12 +39,16 @@ const [usePostStore, api] = create((set, get) => ({
       // If camera
       if (payload.camera && !selectedFiles.length) {
         // Save file
-        const file = await MediaLibrary.createAssetAsync(payload.uri)
+        try {
+          const file = await MediaLibrary.createAssetAsync(payload.uri)
 
-        return set({
-          selectedFiles: [{ ...file, camera: true }],
-          selectedId: file.id,
-        })
+          return set({
+            selectedFiles: [{ ...file, camera: true }],
+            selectedId: file.id,
+          })
+        } catch (err) {
+          logError(err)
+        }
       }
 
       if (!isPrevious && !isAdded && selectedFiles.length === MAX_SELECTED_FILES) {

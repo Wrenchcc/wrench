@@ -30,13 +30,13 @@ function AddMedia() {
     addFiles,
     reset,
   } = usePostStore(store => ({
-    selectedFile: store.selectedFiles.find(({ id }) => id === store.selectedId),
-    hasSelectedFiles: store.selectedFiles.length > 0,
-    selectedFiles: store.selectedFiles,
-    onEdit: store.actions.onEdit,
     addFiles: store.actions.addFiles,
+    hasSelectedFiles: store.selectedFiles.length > 0,
+    onEdit: store.actions.onEdit,
     onSelect: store.actions.onSelect,
     reset: store.actions.reset,
+    selectedFile: store.selectedFiles.find(({ id }) => id === store.selectedId),
+    selectedFiles: store.selectedFiles,
   }))
 
   const handleCropping = useCallback(async () => {
