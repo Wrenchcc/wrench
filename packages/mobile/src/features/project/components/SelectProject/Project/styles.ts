@@ -4,7 +4,7 @@ import UiImage from 'ui/Image'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
-  height: 50px;
+  height: 52px;
   flex-direction: row;
   align-items: center;
   border-bottom-width: 1;

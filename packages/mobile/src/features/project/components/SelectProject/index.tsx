@@ -44,9 +44,7 @@ function SelectProject({ dark = false }) {
           nativeHandler
           style={{
             flexDirection: 'row',
-            // alignSelf: 'center',
             alignItems: 'center',
-            // justifyContent: 'center',
           }}
         >
           <Text

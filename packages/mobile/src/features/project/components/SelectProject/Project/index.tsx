@@ -9,7 +9,7 @@ function Project({ id, files, title, followers, onPress, selected }) {
   const handleOnPress = useCallback(() => onPress(id), [id, onPress])
 
   return (
-    <Base key={id} onPress={handleOnPress}>
+    <Base key={id} onPress={handleOnPress} nativeHandler>
       {image && <Cover source={image} width={40} height={40} />}
 
       <Middle>

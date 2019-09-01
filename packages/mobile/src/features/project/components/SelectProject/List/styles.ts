@@ -20,7 +20,7 @@ export const Scroll = styled.ScrollView`
 
 export const NewProject = styled(UiTouchable)`
   height: ${BUTTON_HEIGHT};
-  padding-top: 20;
+  padding-top: 12;
   padding-left: 20;
   padding-right: 20;
 `
