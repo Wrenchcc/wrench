@@ -54,7 +54,7 @@ function PostContainer({
 
     return (
       <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
-        <Post post={post} withoutComments paddingBottom={10} />
+        <Post post={post} withoutComments paddingBottom={10} numberOfLines={0} />
       </View>
     )
   }

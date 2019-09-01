@@ -50,7 +50,7 @@ function SelectProject({ dark = false }) {
           <Text
             color={(dark && 'dark') || isOpen ? 'dark' : 'white'}
             medium
-            style={{ zIndex: 100 }}
+            style={{ zIndex: 100, maxWidth: '95%' }}
             numberOfLines={1}
           >
             {title}

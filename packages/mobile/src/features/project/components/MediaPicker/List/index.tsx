@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback, memo } from 'react'
-import { View, ActivityIndicator, FlatList } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import * as MediaLibrary from 'react-native-media-library'
 import { findIndex, propEq, pathOr, omit } from 'ramda'
 import { usePostStore } from 'store'

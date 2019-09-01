@@ -55,7 +55,7 @@ function Project({
       return null
     }
 
-    return <Post post={item.node} avatar={false} withoutTitle />
+    return <Post post={item.node} avatar={false} withoutTitle numberOfLines={0} />
   }
 
   const renderHeader = useCallback(() => {
@@ -64,7 +64,7 @@ function Project({
     if (!isEmpty(post)) {
       content = (
         <>
-          <Post post={post} withoutTitle />
+          <Post post={post} withoutTitle numberOfLines={0} />
           {hasPosts && posts && posts.length > 1 && (
             <View style={{ marginTop: -20, paddingBottom: 50 }}>
               <Title medium>{t('Project:recent')}</Title>

@@ -18,6 +18,7 @@ function Post({
   withoutComments,
   deletePost: deletePostMutation,
   paddingBottom,
+  numberOfLines = 3,
 }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
@@ -158,7 +159,7 @@ function Post({
             color={withoutTitle ? 'dark' : 'grey'}
             fontSize={15}
             lineHeight={22}
-            numberOfLines={!withoutTitle ? 3 : 0}
+            numberOfLines={numberOfLines}
           >
             {post.caption}
           </Text>
