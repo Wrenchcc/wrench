@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react'
-import { ActivityIndicator, Dimensions } from 'react-native'
+import { ActivityIndicator, Dimensions, View } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useTranslation } from 'react-i18next'
 import BottomSheet from 'reanimated-bottom-sheet'
@@ -117,54 +117,25 @@ function AddMedia() {
     [setAlbum, bottomSheet]
   )
 
-  const renderAlbums = useCallback(() => loadAlbums && <Albums onPress={changeAlbum} />, [
-    changeAlbum,
-    loadAlbums,
-  ])
+  const renderAlbums = () => <Albums onPress={changeAlbum} />
 
   return (
-    <>
-      <Base>
-        <Header
-          headerLeft={<Icon source={close} onPress={handleDismissModal} />}
-          headerRight={
-            isLoading ? (
-              <ActivityIndicator size="small" color="white" />
-            ) : hasSelectedFiles ? (
-              <Text color="white" onPress={handleCropping} medium>
-                {t('AddMedia:next')}
-              </Text>
-            ) : null
-          }
-          color="black"
-        />
+    <Base>
+      <Header
+        headerLeft={<Icon source={close} onPress={handleDismissModal} />}
+        headerRight={
+          isLoading ? (
+            <ActivityIndicator size="small" color="white" />
+          ) : hasSelectedFiles ? (
+            <Text color="white" onPress={handleCropping} medium>
+              {t('AddMedia:next')}
+            </Text>
+          ) : null
+        }
+        color="black"
+      />
 
-        <SelectProject />
-
-        <Placeholder>
-          {selectedFile ? (
-            <ImageEditor source={selectedFile} onChange={onEdit} />
-          ) : (
-            <Camera onTakePicture={onSelect} />
-          )}
-        </Placeholder>
-
-        <MediaPicker openAlbums={openAlbums} selectedAlbum={selectedAlbum} setAlbum={setAlbum} />
-
-        <ActionSheet
-          title={t('AddMedia:options:title')}
-          isOpen={isOpen}
-          onClose={toggleActionSheet}
-          destructiveButtonIndex={0}
-          options={[
-            {
-              name: t('AddMedia:options:discard'),
-              onSelect: handleDiscard,
-            },
-            { name: t('AddMedia:options:cancel') },
-          ]}
-        />
-      </Base>
+      <SelectProject />
 
       <BottomSheet
         ref={bottomSheet}
@@ -172,7 +143,31 @@ function AddMedia() {
         snapPoints={[0, BOTTOM_SHEET_HEIGHT]}
         renderContent={renderAlbums}
       />
-    </>
+
+      <Placeholder>
+        {selectedFile ? (
+          <ImageEditor source={selectedFile} onChange={onEdit} />
+        ) : (
+          <Camera onTakePicture={onSelect} />
+        )}
+      </Placeholder>
+
+      <MediaPicker openAlbums={openAlbums} selectedAlbum={selectedAlbum} setAlbum={setAlbum} />
+
+      <ActionSheet
+        title={t('AddMedia:options:title')}
+        isOpen={isOpen}
+        onClose={toggleActionSheet}
+        destructiveButtonIndex={0}
+        options={[
+          {
+            name: t('AddMedia:options:discard'),
+            onSelect: handleDiscard,
+          },
+          { name: t('AddMedia:options:cancel') },
+        ]}
+      />
+    </Base>
   )
 }
 
