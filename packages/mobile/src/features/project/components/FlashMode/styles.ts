@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import UiTouchable from 'ui/Touchable'
 
-export const Button = styled(UiTouchable)`
+export const Wrapper = styled.View`
   position: absolute;
   right: 20;
   bottom: 20;

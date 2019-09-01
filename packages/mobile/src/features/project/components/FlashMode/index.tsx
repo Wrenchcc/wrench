@@ -1,12 +1,16 @@
 import React from 'react'
 import { zap, zapOff } from 'images'
-import { Button, Icon } from './styles'
+import { Touchable } from 'ui'
+
+import { Wrapper, Icon } from './styles'
 
 function FlashMode({ flashMode, onPress }) {
   return (
-    <Button onPress={onPress}>
-      <Icon source={flashMode ? zap : zapOff} />
-    </Button>
+    <Wrapper>
+      <Touchable onPress={onPress} nativeHandler>
+        <Icon source={flashMode ? zap : zapOff} />
+      </Touchable>
+    </Wrapper>
   )
 }
 

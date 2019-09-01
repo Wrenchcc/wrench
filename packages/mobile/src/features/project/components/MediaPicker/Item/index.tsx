@@ -1,5 +1,5 @@
 import React, { useCallback, memo } from 'react'
-import {  Dimensions , Image} from 'react-native'
+import { Dimensions, Image } from 'react-native'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
 import { Marker, Overlay } from './styles'
@@ -14,6 +14,7 @@ function Item({ item, selected, onPress, order }) {
 
   return (
     <Touchable
+      nativeHandler
       style={{
         backgroundColor: COLORS.DARK_GREY,
         marginBottom: MARGIN,

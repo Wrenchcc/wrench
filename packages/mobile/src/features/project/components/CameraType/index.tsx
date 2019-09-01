@@ -1,12 +1,16 @@
 import React from 'react'
 import { cameraType } from 'images'
-import { Button, Icon } from './styles'
+import { Touchable } from 'ui'
+
+import { Wrapper, Icon } from './styles'
 
 function CameraType({ onPress }) {
   return (
-    <Button onPress={onPress}>
-      <Icon source={cameraType} />
-    </Button>
+    <Wrapper>
+      <Touchable onPress={onPress} nativeHandler>
+        <Icon source={cameraType} />
+      </Touchable>
+    </Wrapper>
   )
 }
 

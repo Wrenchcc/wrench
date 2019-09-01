@@ -7,7 +7,7 @@ import AskForPermission from '../AskForPermission'
 import FlashMode from '../FlashMode'
 import CameraType from '../CameraType'
 import AutoFocus from '../AutoFocus'
-import { TakePicture } from './styles'
+import { TakePicture, Wrapper } from './styles'
 
 const { Constants } = RNCamera
 
@@ -84,7 +84,9 @@ function Camera({ onTakePicture }) {
 
         {autofocus && <AutoFocus coordinates={autofocus} />}
         <CameraType onPress={changeCameraType} />
-        <TakePicture onPress={takePicture} />
+        <Wrapper>
+          <TakePicture onPress={takePicture} nativeHandler />
+        </Wrapper>
         <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
       </>
     </TouchableWithoutFeedback>

@@ -1,37 +1,25 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react'
-import { ActivityIndicator, Dimensions, View } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import React, { useCallback, useState } from 'react'
+import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import BottomSheet from 'reanimated-bottom-sheet'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
-import { Header, Text, Icon, ActionSheet } from 'ui'
+import { Header, Text, Icon, ActionSheet, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
 import { close } from 'images'
-import { isAndroid, hasNotch } from 'utils/platform'
-import { SELECTED_ALBUM_KEY } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
 import Camera from '../../components/Camera'
 import ImageEditor from '../../components/ImageEditor'
 import MediaPicker from '../../components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
-import Albums from '../../components/MediaPicker/Albums'
 import { Base, Placeholder } from './styles'
-
-const { height } = Dimensions.get('window')
-
-const BOTTOM_SHEET_HEIGHT = height - (isAndroid ? 24 : hasNotch ? 44 : 20) // TODO: fix status bar constant from navigation
 
 function AddMedia() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setLoading] = useState(false)
-  const [loadAlbums, setLoadAlbums] = useState(false)
-  const [selectedAlbum, setAlbum] = useState()
 
   const toggleActionSheet = useCallback(() => setIsOpen(!isOpen), [isOpen])
-  const bottomSheet = useRef()
 
   const {
     onSelect,
@@ -91,58 +79,25 @@ function AddMedia() {
     }, 0)
   }, [reset, dismissModal])
 
-  const loadSavedAlbum = useCallback(async () => {
-    const album = await AsyncStorage.getItem(SELECTED_ALBUM_KEY)
-
-    if (album) {
-      setAlbum(JSON.parse(album))
-    }
-  }, [setAlbum])
-
-  useEffect(() => {
-    loadSavedAlbum()
-  }, [])
-
-  const openAlbums = useCallback(() => {
-    setLoadAlbums(true)
-    bottomSheet.current.snapTo(1)
-  }, [setLoadAlbums, bottomSheet])
-
-  const changeAlbum = useCallback(
-    album => {
-      setAlbum(album)
-      bottomSheet.current.snapTo(0)
-      AsyncStorage.setItem(SELECTED_ALBUM_KEY, JSON.stringify(album))
-    },
-    [setAlbum, bottomSheet]
-  )
-
-  const renderAlbums = () => <Albums onPress={changeAlbum} />
-
   return (
     <Base>
       <Header
-        headerLeft={<Icon source={close} onPress={handleDismissModal} />}
+        headerLeft={<Icon source={close} onPress={handleDismissModal} nativeHandler />}
         headerRight={
           isLoading ? (
             <ActivityIndicator size="small" color="white" />
           ) : hasSelectedFiles ? (
-            <Text color="white" onPress={handleCropping} medium>
-              {t('AddMedia:next')}
-            </Text>
+            <Touchable onPress={handleCropping} nativeHandler>
+              <Text color="white" medium>
+                {t('AddMedia:next')}
+              </Text>
+            </Touchable>
           ) : null
         }
         color="black"
       />
 
       <SelectProject />
-
-      <BottomSheet
-        ref={bottomSheet}
-        initialSnap={0}
-        snapPoints={[0, BOTTOM_SHEET_HEIGHT]}
-        renderContent={renderAlbums}
-      />
 
       <Placeholder>
         {selectedFile ? (
@@ -152,7 +107,7 @@ function AddMedia() {
         )}
       </Placeholder>
 
-      <MediaPicker openAlbums={openAlbums} selectedAlbum={selectedAlbum} setAlbum={setAlbum} />
+      <MediaPicker />
 
       <ActionSheet
         title={t('AddMedia:options:title')}

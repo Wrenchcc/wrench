@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { usePostStore, POST } from 'store'
-import { Text, Icon } from 'ui'
+import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'
 import { Base } from './styles'
@@ -37,20 +37,32 @@ function SelectProject({ dark = false }) {
 
   return (
     <>
-      <Base onPress={toggleOpen} activeOpacity={0.8}>
-        <Text
-          color={(dark && 'dark') || isOpen ? 'dark' : 'white'}
-          medium
-          style={{ zIndex: 100 }}
-          numberOfLines={1}
+      <Base>
+        <Touchable
+          onPress={toggleOpen}
+          activeOpacity={0.8}
+          nativeHandler
+          style={{
+            flexDirection: 'row',
+            // alignSelf: 'center',
+            alignItems: 'center',
+            // justifyContent: 'center',
+          }}
         >
-          {title}
-        </Text>
-        <Icon
-          style={{ marginLeft: 10 }}
-          source={isOpen ? arrowUp : arrowDown}
-          color={(dark && 'dark') || isOpen ? 'light_grey' : 'white'}
-        />
+          <Text
+            color={(dark && 'dark') || isOpen ? 'dark' : 'white'}
+            medium
+            style={{ zIndex: 100 }}
+            numberOfLines={1}
+          >
+            {title}
+          </Text>
+          <Icon
+            style={{ marginLeft: 10 }}
+            source={isOpen ? arrowUp : arrowDown}
+            color={(dark && 'dark') || isOpen ? 'light_grey' : 'white'}
+          />
+        </Touchable>
       </Base>
 
       <List

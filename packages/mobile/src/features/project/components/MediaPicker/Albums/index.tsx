@@ -54,7 +54,6 @@ function Albums({ onPress }) {
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: PADDING_TOP,
-        overflow: 'visible',
       }}
     >
       <View
