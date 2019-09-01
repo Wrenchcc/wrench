@@ -51,7 +51,7 @@ function List({ projects, onPress, onClose, open, selectedId }) {
     >
       <Base>
         <Scroll>{renderProjects()}</Scroll>
-        <NewProject onPress={handleNavigation}>
+        <NewProject onPress={handleNavigation} nativeHandler>
           <Text medium>{t('SelectProject:create')}</Text>
         </NewProject>
       </Base>
