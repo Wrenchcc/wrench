@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState, useRef, useCallback } from 'react'
 import { Dimensions, View } from 'react-native'
-import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
+import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import AsyncStorage from '@react-native-community/async-storage'
 import BottomSheet from 'reanimated-bottom-sheet'
 import { useTranslation } from 'react-i18next'
@@ -21,6 +21,8 @@ const PERMISSION = isIphone
   ? PERMISSIONS.IOS.PHOTO_LIBRARY
   : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
 
+const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
+
 function MediaPicker() {
   const [isLoading, setLoading] = useState(true)
   const [checkingPermission, setCheckingPermission] = useState(true)
@@ -31,11 +33,21 @@ function MediaPicker() {
   const bottomSheet = useRef()
 
   useEffect(() => {
-    check(PERMISSION).then(response => {
+    check(PERMISSION).then(res => {
       setLoading(false)
-      setPhotoPermission(response)
+      setPhotoPermission(res)
       setCheckingPermission(false)
     })
+
+    // NOTE: For saving image
+    if (isAndroid) {
+      check(WRITE_EXTERNAL_STORAGE_PERMISSION).then(res => {
+        // NOTE: Need to ask for permission here
+        if (res !== RESULTS.GRANTED) {
+          request(WRITE_EXTERNAL_STORAGE_PERMISSION)
+        }
+      })
+    }
   }, [])
 
   const loadSavedAlbum = useCallback(async () => {
