@@ -1,5 +1,6 @@
 import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
+import { request, openSettings, RESULTS, PERMISSIONS } from 'react-native-permissions'
 import * as MediaLibrary from 'react-native-media-library'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq, assocPath, pathOr } from 'ramda'
@@ -17,6 +18,8 @@ const initialState = {
   [POST.SELECED_FILES]: [],
   [POST.SELECTED_ID]: null,
 }
+
+const PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
 
 const [usePostStore, api] = create((set, get) => ({
   ...initialState,
@@ -40,6 +43,9 @@ const [usePostStore, api] = create((set, get) => ({
       if (payload.camera && !selectedFiles.length) {
         // Save file
         try {
+          // NOTE: Need to ask for permission here
+          await request(PERMISSION)
+
           const file = await MediaLibrary.createAssetAsync(payload.uri)
 
           return set({

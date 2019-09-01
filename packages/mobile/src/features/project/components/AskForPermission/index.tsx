@@ -40,7 +40,7 @@ const AskForPermission = ({ type, permission, onSuccess }) => {
         {t(`AskForPermission:${type}:permissionDescription`)}
       </Description>
 
-      <Touchable onPress={onPress}>
+      <Touchable onPress={onPress} nativeHandler>
         <Text color="white" medium>
           {t(`AskForPermission:${type}:permissionButton`)}
         </Text>

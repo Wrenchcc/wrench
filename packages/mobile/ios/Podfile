@@ -20,7 +20,6 @@ target 'Wrench' do
   pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network'
   pod 'React-RCTSettings', :path => '../node_modules/react-native/Libraries/Settings'
   pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
-  pod 'React-RCTCameraRoll', :path => '../node_modules/react-native/Libraries/CameraRoll'
   pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
   pod 'React-RCTWebSocket', :path => '../node_modules/react-native/Libraries/WebSocket'
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
@@ -31,7 +30,7 @@ target 'Wrench' do
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
-  
+
   # Third party deps podspec link
   pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
@@ -45,6 +44,7 @@ target 'Wrench' do
   # TODO: fix autolinking (xcode project?)
   pod 'react-native-media-library', :path => '../node_modules/react-native-media-library'
   pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator'
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
 
   # Required by Facebook
   pod 'FBSDKCoreKit'

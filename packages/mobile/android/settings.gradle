@@ -1,6 +1,6 @@
 rootProject.name = 'Wrench'
 
-apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); 
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
 applyNativeModulesSettingsGradle(settings)
 
 include ':react-native-google-signin'
