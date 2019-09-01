@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
-import { View, Dimensions, ScrollView, Image, Platform } from 'react-native'
+import { View, Dimensions, Image, Platform } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import { COLORS } from 'ui/constants'
 
 const { width } = Dimensions.get('window')
