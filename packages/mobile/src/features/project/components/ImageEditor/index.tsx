@@ -100,7 +100,7 @@ export default class ImageEditor extends PureComponent {
     const sizeRatioX = croppedImageSize.width / scaledImageSize.width
     const sizeRatioY = croppedImageSize.height / scaledImageSize.height
 
-    this.props.onChange({
+    this.props.onPhotoResize({
       height: this.props.source.height * sizeRatioY,
       originX: this.props.source.width * offsetRatioX,
       originY: this.props.source.height * offsetRatioY,

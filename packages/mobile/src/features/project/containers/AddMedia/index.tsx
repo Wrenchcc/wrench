@@ -79,6 +79,14 @@ function AddMedia() {
     }, 0)
   }, [reset, dismissModal])
 
+  const renderComponent = useCallback(() => {
+    return selectedFile ? (
+      <ImageEditor source={selectedFile} onPhotoResize={onEdit} />
+    ) : (
+      <Camera onTakePicture={onSelect} />
+    )
+  }, [selectedFile])
+
   return (
     <Base>
       <Header
@@ -99,15 +107,7 @@ function AddMedia() {
 
       <SelectProject />
 
-      <Placeholder>
-        {selectedFile ? (
-          <ImageEditor source={selectedFile} onChange={onEdit} />
-        ) : (
-          <Camera onTakePicture={onSelect} />
-        )}
-      </Placeholder>
-
-      <MediaPicker />
+      <MediaPicker ListHeaderComponent={<Placeholder>{renderComponent()}</Placeholder>} />
 
       <ActionSheet
         title={t('AddMedia:options:title')}

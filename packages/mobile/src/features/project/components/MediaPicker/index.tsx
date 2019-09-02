@@ -1,17 +1,16 @@
 import React, { memo, useEffect, useState, useRef, useCallback } from 'react'
-import { Dimensions, View } from 'react-native'
+import { Dimensions } from 'react-native'
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import AsyncStorage from '@react-native-community/async-storage'
 import BottomSheet from 'reanimated-bottom-sheet'
-import { useTranslation } from 'react-i18next'
 import AskForPermission from 'features/project/components/AskForPermission'
 import { SELECTED_ALBUM_KEY } from 'utils/storage/constants'
-import { Text, Icon } from 'ui'
-import { arrowDown } from 'images'
 import { isIphone, isAndroid, hasNotch } from 'utils/platform'
+import { Icon } from 'ui'
+import { album } from 'images'
 import List from './List'
 import Albums from './Albums'
-import { Base, Header, OpenAlbums } from './styles'
+import { Base, OpenAlbum } from './styles'
 
 const { height } = Dimensions.get('window')
 
@@ -23,13 +22,12 @@ const PERMISSION = isIphone
 
 const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
 
-function MediaPicker() {
+function MediaPicker({ ListHeaderComponent }) {
   const [isLoading, setLoading] = useState(true)
   const [checkingPermission, setCheckingPermission] = useState(true)
   const [photoPermission, setPhotoPermission] = useState(false)
   const [loadAlbums, setLoadAlbums] = useState(false)
   const [selectedAlbum, setAlbum] = useState()
-  const { t } = useTranslation()
   const bottomSheet = useRef()
 
   useEffect(() => {
@@ -66,7 +64,7 @@ function MediaPicker() {
     setPhotoPermission(RESULTS.GRANTED)
   }, [setPhotoPermission])
 
-  const openAlbums = useCallback(() => {
+  const handleOpenAlbum = useCallback(() => {
     setLoadAlbums(true)
     bottomSheet.current.snapTo(1)
   }, [setLoadAlbums, bottomSheet])
@@ -102,17 +100,17 @@ function MediaPicker() {
         snapPoints={[0, BOTTOM_SHEET_HEIGHT]}
         renderContent={renderAlbums}
       />
-      <Base>
-        <Header>
-          <OpenAlbums onPress={openAlbums} nativeHandler>
-            <Text medium color="white" numberOfLines={1}>
-              {(selectedAlbum && selectedAlbum.title) || t('MediaPicker:roll')}
-            </Text>
-            <Icon source={arrowDown} style={{ marginLeft: 10 }} onPress={openAlbums} />
-          </OpenAlbums>
-        </Header>
 
-        <List album={selectedAlbum && selectedAlbum.id} setAlbum={setAlbum} />
+      <Base>
+        <OpenAlbum onPress={handleOpenAlbum} naviteHandler>
+          <Icon source={album} onPress={handleOpenAlbum} naviteHandler />
+        </OpenAlbum>
+
+        <List
+          album={selectedAlbum && selectedAlbum.id}
+          setAlbum={setAlbum}
+          ListHeaderComponent={ListHeaderComponent}
+        />
       </Base>
     </>
   )

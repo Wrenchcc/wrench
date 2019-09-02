@@ -5,15 +5,15 @@ export const Base = styled.View`
   flex: 1;
 `
 
-export const Header = styled.View`
-  height: 60;
-  padding-left: 20;
-  padding-right: 20;
-  flex-direction: row;
-`
-
-export const OpenAlbums = styled(UiTouchable)`
-  flex-direction: row;
+export const OpenAlbum = styled(UiTouchable)`
+  width: 40;
+  height: 40;
+  background: black;
+  position: absolute;
+  bottom: 20;
+  left: 20;
+  border-radius: 40;
+  justify-content: center;
   align-items: center;
-  flex: 1;
+  z-index: 99;
 `
