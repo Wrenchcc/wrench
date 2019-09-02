@@ -4800,10 +4800,10 @@ react-native-actionsheet@^2.4.2:
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.4.2.tgz#6a00dd51a75ef2c8974312130e405af73191500f"
   integrity sha512-DBoWIvVwuWXuptF4t46pBqkFxaUxS+rsIdHiA05t0n4BdTIDV2R4s9bLEUVOGzb94D7VxIamsXZPA/3mmw+SXg==
 
-react-native-camera@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.3.1.tgz#f9111d91647ad3ed5399fdb79fd6f4ecca2c3c45"
-  integrity sha512-+v/E4fg0y5M26rIl05a2zySAraISoGIOp7F/kbjlu1iKiizRD7suRMWiSDgTeyWDnyICwfg2lzuynym5jOUpxg==
+react-native-camera@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.3.2.tgz#fca5c20e8f4cc2695ddd09bc1475343b60251674"
+  integrity sha512-wnVHORvC8jZPS+ueA3X1BPO/x02ovt/Tvrc8PhM6rD5YgiErgS9QlToS5uDHTcZ8/fFJMDctN/WQwzdrgcVRdA==
   dependencies:
     prop-types "^15.6.2"
 
