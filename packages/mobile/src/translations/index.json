@@ -61,6 +61,9 @@
         "permissionButton": "Enable Library Access"
       }
     },
+    "MediaPickerList": {
+      "deselectAll": "Deselect all"
+    },
     "SelectProject": {
       "create": "Create a new project"
     },
@@ -367,6 +370,9 @@
         "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek och spara foton till din kamerarulle.",
         "permissionButton": "Aktivera biblioteksåtkomst"
       }
+    },
+    "MediaPickerList": {
+      "deselectAll": "Avmarkera alla"
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"

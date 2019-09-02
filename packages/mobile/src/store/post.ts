@@ -80,6 +80,11 @@ const [usePostStore, api] = create((set, get) => ({
         }
       }),
 
+    deselectAll: () =>
+      set({
+        [POST.SELECED_FILES]: [],
+      }),
+
     reset: () =>
       set({
         [POST.CAPTION]: null,

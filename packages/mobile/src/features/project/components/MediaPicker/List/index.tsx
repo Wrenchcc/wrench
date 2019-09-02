@@ -2,10 +2,13 @@ import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
 import { View, ActivityIndicator, Dimensions } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import * as MediaLibrary from 'react-native-media-library'
+import { useTranslation } from 'react-i18next'
 import { findIndex, propEq, pathOr, omit } from 'ramda'
 import { usePostStore } from 'store'
 import { logError } from 'utils/sentry'
+import { Text } from 'ui'
 import MediaItem from '../Item'
+import { DeselectAll } from './styles'
 
 const { width } = Dimensions.get('window')
 
@@ -21,10 +24,12 @@ function List({ album, ListHeaderComponent }) {
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
   const ref = useRef()
+  const { t } = useTranslation()
 
-  const { selectedFiles, onSelect } = usePostStore(store => ({
-    selectedFiles: store.selectedFiles,
+  const { selectedFiles, onSelect, deselectAll } = usePostStore(store => ({
+    deselectAll: store.actions.deselectAll,
     onSelect: store.actions.onSelect,
+    selectedFiles: store.selectedFiles,
   }))
 
   const fetchInitialAssets = useCallback(async () => {
@@ -104,6 +109,11 @@ function List({ album, ListHeaderComponent }) {
     [selectedFiles, scrollToTop, onSelect]
   )
 
+  const handleDeselectAll = useCallback(() => {
+    deselectAll()
+    scrollToTop()
+  }, [deselectAll, scrollToTop])
+
   const renderItem = ({ item }) => {
     const order = findIndex(propEq('id', item.id))(selectedFiles)
     const selected = selectedFiles.some(file => file.id === item.id)
@@ -123,21 +133,31 @@ function List({ album, ListHeaderComponent }) {
   }, [hasNextPage])
 
   return (
-    <FlatList
-      ref={ref}
-      contentContainerStyle={{ padding: ITEM_PADDING }}
-      data={assets}
-      decelerationRate="fast"
-      initialNumToRender={16}
-      keyExtractor={keyExtractor}
-      ListFooterComponent={renderFooter}
-      ListHeaderComponent={ListHeaderComponent}
-      numColumns={NUM_COLUMNS}
-      onEndReached={onEndReached}
-      renderItem={renderItem}
-      snapToEnd={false}
-      snapToOffsets={[width + ITEM_PADDING]}
-    />
+    <>
+      <FlatList
+        ref={ref}
+        contentContainerStyle={{ padding: ITEM_PADDING }}
+        data={assets}
+        decelerationRate="fast"
+        initialNumToRender={16}
+        keyExtractor={keyExtractor}
+        ListFooterComponent={renderFooter}
+        ListHeaderComponent={ListHeaderComponent}
+        numColumns={NUM_COLUMNS}
+        onEndReached={onEndReached}
+        renderItem={renderItem}
+        snapToEnd={false}
+        snapToOffsets={[width + ITEM_PADDING]}
+      />
+
+      {selectedFiles.length > 0 && (
+        <DeselectAll activeOpacity={0.9} onPress={handleDeselectAll} naviteHandler>
+          <Text medium fontSize={15}>
+            {t('MediaPickerList:deselectAll')}
+          </Text>
+        </DeselectAll>
+      )}
+    </>
   )
 }
 
