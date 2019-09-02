@@ -195,18 +195,18 @@ PODS:
     - React
   - react-native-config (0.11.7):
     - React
-  - react-native-fbsdk (1.0.2):
+  - react-native-fbsdk (1.0.3):
     - React
-    - react-native-fbsdk/Core (= 1.0.2)
-    - react-native-fbsdk/Login (= 1.0.2)
-    - react-native-fbsdk/Share (= 1.0.2)
-  - react-native-fbsdk/Core (1.0.2):
+    - react-native-fbsdk/Core (= 1.0.3)
+    - react-native-fbsdk/Login (= 1.0.3)
+    - react-native-fbsdk/Share (= 1.0.3)
+  - react-native-fbsdk/Core (1.0.3):
     - FBSDKCoreKit (~> 5.0)
     - React
-  - react-native-fbsdk/Login (1.0.2):
+  - react-native-fbsdk/Login (1.0.3):
     - FBSDKLoginKit (~> 5.0)
     - React
-  - react-native-fbsdk/Share (1.0.2):
+  - react-native-fbsdk/Share (1.0.3):
     - FBSDKShareKit (~> 5.0)
     - React
   - react-native-image-manipulator (1.0.1):
@@ -534,7 +534,7 @@ SPEC CHECKSUMS:
   react-native-camera: a6c0ca5653cbcd9ea1c1894966207346cfeebe09
   react-native-cameraroll: 3e5e34d36d93548ae7770ee8ab7b2ae9e778f571
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-fbsdk: 1309be490bdf18ae29f4cef836f69194b436d9d7
+  react-native-fbsdk: 7bde3b84fc093d2c5e7fdccea03fe8fa9f112834
   react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
   react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
   react-native-netinfo: 0e563248a4b9a99c33ec29bd03c2d50767db22a6

@@ -10,8 +10,8 @@
     "ses:beta": "cross-env DEBUG=task* dotenv -e .env -- node tasks/sendBeta.js $*"
   },
   "devDependencies": {
-    "aws-sdk": "^2.519.0",
-    "cross-env": "^5.2.0",
+    "aws-sdk": "^2.521.0",
+    "cross-env": "^5.2.1",
     "debug": "^4.1.1",
     "dotenv-cli": "^2.0.1",
     "http-server": "^0.11.1"
