@@ -1341,10 +1341,10 @@
     shell-quote "1.6.1"
     ws "^1.1.0"
 
-"@react-native-community/netinfo@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-4.1.5.tgz#4bb44842db6a1a18f00a0f061b0e3dcc638f67dd"
-  integrity sha512-lagdZr9UiVAccNXYfTEj+aUcPCx9ykbMe9puffeIyF3JsRuMmlu3BjHYx1klUHX7wNRmFNC8qVP0puxUt1sZ0A==
+"@react-native-community/netinfo@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-4.2.0.tgz#900681230d4f252a44d72edced45f9df9e48c590"
+  integrity sha512-vDQfzIWbYm/EOnlcsNMDtpvbq7oq/CYrmd7nw8hSTLh+JRLAahBk3jK+7gLGg2iR4SDXRnp4PtvHsC3og1Y2zA==
 
 "@sentry/cli@^1.43.0":
   version "1.47.1"
@@ -4931,10 +4931,10 @@ react-native-video@^5.0.0:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.0.1.tgz#ea2650d30acaa1fd443595d9f7f2a2648f54e0b5"
-  integrity sha512-KySHdf/nvGgFXwQEb7AH8id2dYdzSiIqWjMPdlql6+5Gi9kaEGiojGabXV2UYJRNk54Y8COFMDr65zdgdLlctw==
+react-native-webview@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.0.2.tgz#9513444c5afe6a09842e563ee0df8a70adf36efa"
+  integrity sha512-xauF9uYRbAw2V5mCtRDLzlSixfP1CLhOWj1lf+tssPFrmUbU1yVoh9YF/zAI6dHhEQMu5pQD8uILHdcQ6sU7mA==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"

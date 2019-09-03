@@ -213,7 +213,7 @@ PODS:
     - React
   - react-native-media-library (1.0.0):
     - React
-  - react-native-netinfo (4.1.5):
+  - react-native-netinfo (4.2.0):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -224,7 +224,7 @@ PODS:
     - react-native-video/Video (= 5.0.0)
   - react-native-video/Video (5.0.0):
     - React
-  - react-native-webview (7.0.1):
+  - react-native-webview (7.0.2):
     - React
   - React-RCTActionSheet (0.60.5):
     - React-Core (= 0.60.5)
@@ -537,11 +537,11 @@ SPEC CHECKSUMS:
   react-native-fbsdk: 7bde3b84fc093d2c5e7fdccea03fe8fa9f112834
   react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
   react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
-  react-native-netinfo: 0e563248a4b9a99c33ec29bd03c2d50767db22a6
+  react-native-netinfo: df39948777747f41363d6d57ed5ee1366b5b94cb
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 6555881252c8ca039760e1cd6df28ac28ffb2baf
-  react-native-webview: d67116b15dfff5316cbfcfd1a8b008178811d0f2
+  react-native-webview: 497e33128ff93bf21f1848ea99aa200c97e29e32
   React-RCTActionSheet: b0f1ea83f4bf75fb966eae9bfc47b78c8d3efd90
   React-RCTAnimation: 359ba1b5690b1e87cc173558a78e82d35919333e
   React-RCTBlob: 5e2b55f76e9a1c7ae52b826923502ddc3238df24
