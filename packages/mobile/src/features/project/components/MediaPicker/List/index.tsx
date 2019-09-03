@@ -1,23 +1,27 @@
 import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
-import { View, ActivityIndicator, Dimensions } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import { View, ActivityIndicator, Dimensions, FlatList } from 'react-native'
 import * as MediaLibrary from 'react-native-media-library'
 import { useTranslation } from 'react-i18next'
 import { findIndex, propEq, pathOr, omit } from 'ramda'
 import { usePostStore } from 'store'
 import { logError } from 'utils/sentry'
 import { Text } from 'ui'
-import MediaItem from '../Item'
+import { isAndroid } from 'utils/platform'
+import MediaItem, { MARGIN, ITEM_SIZE } from '../Item'
 import { DeselectAll } from './styles'
 
 const { width } = Dimensions.get('window')
 
 const NUM_COLUMNS = 4
 const PAGE_SIZE = 30
-const FIRST_PAGE_SIZE = 12
-const ITEM_PADDING = 3
 
 const keyExtractor = item => item.uri
+
+const getItemLayout = (_, index) => ({
+  length: ITEM_SIZE,
+  offset: ITEM_SIZE * index,
+  index,
+})
 
 function List({ album, ListHeaderComponent }) {
   const [assets, setAssets] = useState([])
@@ -36,7 +40,7 @@ function List({ album, ListHeaderComponent }) {
     try {
       const result = await MediaLibrary.getAssetsAsync({
         album,
-        first: FIRST_PAGE_SIZE,
+        first: PAGE_SIZE,
       })
 
       setAssets(result.assets)
@@ -136,18 +140,21 @@ function List({ album, ListHeaderComponent }) {
     <>
       <FlatList
         ref={ref}
-        contentContainerStyle={{ padding: ITEM_PADDING }}
+        contentContainerStyle={{ padding: MARGIN }}
         data={assets}
-        decelerationRate="fast"
-        initialNumToRender={16}
+        initialNumToRender={7}
         keyExtractor={keyExtractor}
         ListFooterComponent={renderFooter}
         ListHeaderComponent={ListHeaderComponent}
         numColumns={NUM_COLUMNS}
         onEndReached={onEndReached}
+        decelerationRate="fast"
         renderItem={renderItem}
         snapToEnd={false}
-        snapToOffsets={[width + ITEM_PADDING]}
+        snapToOffsets={[width + MARGIN]}
+        getItemLayout={getItemLayout}
+        removeClippedSubviews={isAndroid}
+        windowSize={17}
       />
 
       {selectedFiles.length > 0 && (
