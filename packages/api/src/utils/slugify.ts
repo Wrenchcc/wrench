@@ -1,5 +1,5 @@
-import s from 'slugify'
+import s from '@sindresorhus/slugify'
 
 export default function slugify(slug) {
-  return s(slug, { lower: true })
+  return s(slug)
 }
