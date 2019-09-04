@@ -13,7 +13,7 @@ import { DeselectAll } from './styles'
 const { width } = Dimensions.get('window')
 
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 30
+const PAGE_SIZE = 34
 
 const keyExtractor = item => item.uri
 
@@ -142,7 +142,7 @@ function List({ album, ListHeaderComponent }) {
         ref={ref}
         contentContainerStyle={{ padding: MARGIN }}
         data={assets}
-        initialNumToRender={7}
+        initialNumToRender={4}
         keyExtractor={keyExtractor}
         ListFooterComponent={renderFooter}
         ListHeaderComponent={ListHeaderComponent}
@@ -154,7 +154,7 @@ function List({ album, ListHeaderComponent }) {
         snapToOffsets={[width + MARGIN]}
         getItemLayout={getItemLayout}
         removeClippedSubviews={isAndroid}
-        windowSize={17}
+        windowSize={11}
       />
 
       {selectedFiles.length > 0 && (
