@@ -15,7 +15,7 @@ const { width } = Dimensions.get('window')
 
 const NUM_COLUMNS = 4
 const INITIAL_PAGE_SIZE = 30
-const PAGE_SIZE = 10
+const PAGE_SIZE = 30
 const SNAP_TO_OFFSET = width + MARGIN
 
 const keyExtractor = item => item.uri
@@ -91,11 +91,14 @@ function List({ album, ListHeaderComponent }) {
     }
   }, [selectedFiles])
 
-  const onEndReached = useCallback(() => {
-    if (hasNextPage) {
-      fetchMoreAssets(endCursor)
-    }
-  }, [hasNextPage, endCursor, fetchMoreAssets])
+  const onEndReached = useCallback(
+    ({ distanceFromEnd }) => {
+      if (hasNextPage && distanceFromEnd > 0) {
+        fetchMoreAssets(endCursor)
+      }
+    },
+    [hasNextPage, endCursor, fetchMoreAssets]
+  )
 
   const scrollToTop = useCallback(() => {
     if (ref.current) {
@@ -157,7 +160,6 @@ function List({ album, ListHeaderComponent }) {
         snapToOffsets={[SNAP_TO_OFFSET]}
         removeClippedSubviews={isAndroid}
         windowSize={17}
-        onEndReachedThreshold={0.9}
         getItemLayout={getItemLayout}
       />
 
