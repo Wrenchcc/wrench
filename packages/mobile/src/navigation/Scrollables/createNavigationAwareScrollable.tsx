@@ -160,13 +160,13 @@ export default function createNavigationAwareScrollable(Component) {
         keyboardShouldPersistTaps="always"
         keyExtractor={keyExtractor}
         contentContainerStyle={{
+          ...contentContainerStyle,
           flex: initialFetch ? 1 : 0,
+          paddingBottom,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
           // NOTE: contentInset on layout NAVIGATION.LIST_OFFSET on page
           paddingTop: isAndroid ? contentInset || NAVIGATION.LIST_OFFSET : 0,
-          paddingBottom,
-          ...contentContainerStyle,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...keyboardDismissProp}
