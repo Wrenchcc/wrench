@@ -14,14 +14,16 @@ import { DeselectAll } from './styles'
 const { width } = Dimensions.get('window')
 
 const NUM_COLUMNS = 4
-const PAGE_SIZE = 34
+const INITIAL_PAGE_SIZE = 30
+const PAGE_SIZE = 10
+const SNAP_TO_OFFSET = width + MARGIN
 
 const keyExtractor = item => item.uri
 
 const getItemLayout = (_, index) => ({
-  length: ITEM_SIZE,
-  offset: ITEM_SIZE * index,
   index,
+  length: Math.round(ITEM_SIZE),
+  offset: Math.round(ITEM_SIZE) * index,
 })
 
 function List({ album, ListHeaderComponent }) {
@@ -41,7 +43,7 @@ function List({ album, ListHeaderComponent }) {
     try {
       const result = await MediaLibrary.getAssetsAsync({
         album,
-        first: PAGE_SIZE,
+        first: INITIAL_PAGE_SIZE,
       })
 
       setAssets(result.assets)
@@ -50,7 +52,7 @@ function List({ album, ListHeaderComponent }) {
     } catch (err) {
       logError(err)
     }
-  }, [album])
+  }, [album, setAssets, setHasNextPage, setEndCursor])
 
   const fetchMoreAssets = useCallback(
     async after => {
@@ -72,7 +74,7 @@ function List({ album, ListHeaderComponent }) {
         logError(err)
       }
     },
-    [album]
+    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor]
   )
 
   useEffect(() => {
@@ -135,7 +137,7 @@ function List({ album, ListHeaderComponent }) {
     }
 
     return null
-  }, [hasNextPage])
+  }, [hasNextPage, assets])
 
   return (
     <>
@@ -152,10 +154,11 @@ function List({ album, ListHeaderComponent }) {
         decelerationRate="fast"
         renderItem={renderItem}
         snapToEnd={false}
-        snapToOffsets={[width + MARGIN]}
-        getItemLayout={getItemLayout}
+        snapToOffsets={[SNAP_TO_OFFSET]}
         removeClippedSubviews={isAndroid}
-        windowSize={11}
+        windowSize={17}
+        onEndReachedThreshold={0.9}
+        getItemLayout={getItemLayout}
       />
 
       {selectedFiles.length > 0 && (

@@ -22,6 +22,7 @@ target 'Wrench' do
   pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
   pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
   pod 'React-RCTWebSocket', :path => '../node_modules/react-native/Libraries/WebSocket'
+  pod 'React-RCTCameraRoll', :path => '../node_modules/react-native/Libraries/CameraRoll'
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
   pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
@@ -44,7 +45,7 @@ target 'Wrench' do
   # TODO: fix autolinking (xcode project?)
   pod 'react-native-media-library', :path => '../node_modules/react-native-media-library'
   pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator'
-  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+  # pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
