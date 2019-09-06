@@ -34,7 +34,7 @@ const deleteProjectOptions = {
             }
 
             cache.writeQuery({ query: CurrentUserQuery, data: user })
-            removeSelectedProjectId(id)
+            removeSelectedProjectId()
           } catch (err) {
             logError(err)
           }

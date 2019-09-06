@@ -7,6 +7,7 @@ import { usePostStore } from 'store'
 import { logError } from 'utils/sentry'
 import { Text } from 'ui'
 import { isAndroid } from 'utils/platform'
+import { MAX_SELECTED_FILES } from 'store/post'
 import MediaItem, { MARGIN, ITEM_SIZE } from '../Item'
 import { DeselectAll } from './styles'
 
@@ -53,7 +54,7 @@ function List({ album, ListHeaderComponent }) {
 
   const fetchMoreAssets = useCallback(
     async after => {
-      if (!hasNextPage) {
+      if (!hasNextPage || after === endCursor) {
         return
       }
 
@@ -104,7 +105,7 @@ function List({ album, ListHeaderComponent }) {
     item => {
       const selected = selectedFiles.some(file => file.id === item.id)
 
-      if (!selected) {
+      if (!selected && selectedFiles.length !== MAX_SELECTED_FILES) {
         scrollToTop()
       }
 

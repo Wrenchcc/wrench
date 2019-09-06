@@ -7,7 +7,7 @@ import { client, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { logError } from 'utils/sentry'
 import { POST } from './constants'
 
-const MAX_SELECTED_FILES = 10
+export const MAX_SELECTED_FILES = 10
 
 const initialState = {
   [POST.CAPTION]: null,
@@ -122,12 +122,8 @@ export async function saveSelectedProjectId(id) {
   AsyncStorage.setItem(SELECTED_PROJECT_KEY, id)
 }
 
-export async function removeSelectedProjectId(id) {
-  const savedId = await AsyncStorage.getItem(SELECTED_PROJECT_KEY)
-
-  if (savedId === id) {
-    await AsyncStorage.removeItem(SELECTED_PROJECT_KEY)
-  }
+export async function removeSelectedProjectId() {
+  await AsyncStorage.removeItem(SELECTED_PROJECT_KEY)
 }
 
 export default usePostStore
