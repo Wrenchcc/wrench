@@ -49,10 +49,10 @@ function MediaPicker({ ListHeaderComponent }) {
   }, [])
 
   const loadSavedAlbum = useCallback(async () => {
-    const album = await AsyncStorage.getItem(SELECTED_ALBUM_KEY)
+    const a = await AsyncStorage.getItem(SELECTED_ALBUM_KEY)
 
-    if (album) {
-      setAlbum(JSON.parse(album))
+    if (a) {
+      setAlbum(JSON.parse(a))
     }
   }, [setAlbum])
 
@@ -70,10 +70,10 @@ function MediaPicker({ ListHeaderComponent }) {
   }, [setLoadAlbums, bottomSheet])
 
   const changeAlbum = useCallback(
-    album => {
-      setAlbum(album)
+    a => {
+      setAlbum(a)
       bottomSheet.current.snapTo(0)
-      AsyncStorage.setItem(SELECTED_ALBUM_KEY, JSON.stringify(album))
+      AsyncStorage.setItem(SELECTED_ALBUM_KEY, JSON.stringify(a))
     },
     [setAlbum, bottomSheet]
   )
