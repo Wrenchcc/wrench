@@ -56,7 +56,7 @@ function Settings({ section }) {
     []
   )
 
-  const settings = data.user && data.user.settings
+  const settings = data && data.user.settings
 
   return (
     <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>

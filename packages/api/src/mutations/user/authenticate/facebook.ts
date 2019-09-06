@@ -36,6 +36,34 @@ export default async (_, { token }, ctx) => {
     return tokens
   }
 
+  // Find user by email
+  if (fbUser.email) {
+    const emailUser = await ctx.db.User.findOne({
+      where: {
+        email: fbUser.email,
+      },
+    })
+
+    if (emailUser) {
+      const tokens = generateTokens(emailUser.userId)
+
+      await Promise.all([
+        // Delete previous tokens with same user agent and save new
+        ctx.db.AuthToken.delete({
+          userAgent,
+          userId: emailUser.id,
+        }),
+        ctx.db.AuthToken.save({
+          refreshToken: tokens.refresh_token,
+          userAgent,
+          userId: emailUser.id,
+        }),
+      ])
+
+      return tokens
+    }
+  }
+
   const user = await ctx.db.User.createUser({
     email: fbUser.email,
     firstName: fbUser.firstName,

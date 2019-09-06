@@ -9,7 +9,7 @@ const usePaginatedQuery = type => (query, options) => {
     notifyOnNetworkStatusChange: true,
   })
 
-  const data = result.data[type]
+  const data = pathOr({}, ['data', type], result)
 
   const handleFetchMore = useCallback(
     variables =>
