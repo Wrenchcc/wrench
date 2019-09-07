@@ -14,8 +14,8 @@ import { DeselectAll } from './styles'
 const { width } = Dimensions.get('window')
 
 const NUM_COLUMNS = 4
-const INITIAL_PAGE_SIZE = 30
-const PAGE_SIZE = 30
+const INITIAL_PAGE_SIZE = 28
+const PAGE_SIZE = 40
 const SNAP_TO_OFFSET = width + MARGIN
 
 const keyExtractor = item => item.uri
@@ -30,6 +30,8 @@ function List({ album, ListHeaderComponent }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
+  const [lastEndCursor, setLastEndCursor] = useState()
+
   const ref = useRef()
   const { t } = useTranslation()
 
@@ -56,9 +58,11 @@ function List({ album, ListHeaderComponent }) {
 
   const fetchMoreAssets = useCallback(
     async after => {
-      if (!hasNextPage || after === endCursor) {
+      if (!hasNextPage) {
         return
       }
+
+      setLastEndCursor(after)
 
       try {
         const result = await MediaLibrary.getAssetsAsync({
@@ -67,14 +71,17 @@ function List({ album, ListHeaderComponent }) {
           first: PAGE_SIZE,
         })
 
-        setAssets(p => p.concat(result.assets))
+        if (after !== lastEndCursor) {
+          setAssets(p => p.concat(result.assets))
+        }
+
         setHasNextPage(result.hasNextPage)
         setEndCursor(result.endCursor)
       } catch (err) {
         logError(err)
       }
     },
-    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor]
+    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor, lastEndCursor]
   )
 
   useEffect(() => {
@@ -148,19 +155,20 @@ function List({ album, ListHeaderComponent }) {
         ref={ref}
         contentContainerStyle={{ padding: MARGIN }}
         data={assets}
-        initialNumToRender={4}
+        decelerationRate="fast"
+        getItemLayout={getItemLayout}
+        initialNumToRender={INITIAL_PAGE_SIZE}
         keyExtractor={keyExtractor}
         ListFooterComponent={renderFooter}
         ListHeaderComponent={ListHeaderComponent}
         numColumns={NUM_COLUMNS}
         onEndReached={onEndReached}
-        decelerationRate="fast"
+        onEndReachedThreshold={0.4}
+        removeClippedSubviews={isAndroid}
         renderItem={renderItem}
         snapToEnd={false}
         snapToOffsets={[SNAP_TO_OFFSET]}
-        removeClippedSubviews={isAndroid}
         windowSize={17}
-        getItemLayout={getItemLayout}
       />
 
       {selectedFiles.length > 0 && (

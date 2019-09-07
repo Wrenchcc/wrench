@@ -211,7 +211,7 @@ PODS:
     - React
   - react-native-media-library (1.0.0):
     - React
-  - react-native-netinfo (4.2.0):
+  - react-native-netinfo (4.2.1):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -537,7 +537,7 @@ SPEC CHECKSUMS:
   react-native-fbsdk: 7bde3b84fc093d2c5e7fdccea03fe8fa9f112834
   react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
   react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
-  react-native-netinfo: df39948777747f41363d6d57ed5ee1366b5b94cb
+  react-native-netinfo: aeb1752abb78a9c15cdcea067a6c95d596dcfc45
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: 6555881252c8ca039760e1cd6df28ac28ffb2baf
