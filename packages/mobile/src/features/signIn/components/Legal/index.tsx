@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { showModal, SCREENS, STATUS_BAR } from 'navigation'
-import { Base, Text, Link } from './styles'
+import { Touchable } from 'ui'
+import { Base, Text } from './styles'
 
-const LEGAL_URL = 'https://beta.wrench.cc/terms'
+const LEGAL_URL = 'https://wrench.cc/terms'
 
 function Legal() {
   const { t } = useTranslation()
@@ -24,9 +25,9 @@ function Legal() {
   return (
     <Base>
       <Text>{t('Legal:description')}</Text>
-      <Link onPress={handleNavigation}>
+      <Touchable onPress={handleNavigation}>
         <Text underline>{t('Legal:link')}</Text>
-      </Link>
+      </Touchable>
     </Base>
   )
 }

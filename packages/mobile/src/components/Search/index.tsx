@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from 'react'
+import React, { useState, useCallback, memo, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
@@ -44,6 +44,10 @@ const renderPager = props => (
 function Search({ query, active }) {
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    setIndex(0)
+  }, [active, setIndex])
 
   const handleIndexChange = useCallback(
     activeIndex => {

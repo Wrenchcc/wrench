@@ -15,7 +15,7 @@ const { width } = Dimensions.get('window')
 
 const NUM_COLUMNS = 4
 const INITIAL_PAGE_SIZE = 28
-const PAGE_SIZE = 40
+const PAGE_SIZE = 48
 const SNAP_TO_OFFSET = width + MARGIN
 
 const keyExtractor = item => item.uri
