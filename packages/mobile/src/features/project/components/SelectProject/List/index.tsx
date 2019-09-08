@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useEffect } from 'react'
-import { Animated } from 'react-native'
+import { Animated, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
@@ -40,22 +40,38 @@ function List({ projects, onPress, onClose, open, selectedId }) {
       ))
 
   return (
-    <Animated.View
-      style={{
-        height: animatedValue.current,
-        overflow: 'hidden',
-        position: 'absolute',
-        width: '100%',
-        zIndex: 10,
-      }}
-    >
-      <Base>
-        <Scroll>{renderProjects()}</Scroll>
-        <NewProject onPress={handleNavigation} nativeHandler>
-          <Text medium>{t('SelectProject:create')}</Text>
-        </NewProject>
-      </Base>
-    </Animated.View>
+    <>
+      <Animated.View
+        style={{
+          height: animatedValue.current,
+          overflow: 'hidden',
+          position: 'absolute',
+          width: '100%',
+          zIndex: 10,
+        }}
+      >
+        <Base>
+          <Scroll>{renderProjects()}</Scroll>
+          <NewProject onPress={handleNavigation} nativeHandler>
+            <Text medium>{t('SelectProject:create')}</Text>
+          </NewProject>
+        </Base>
+      </Animated.View>
+
+      {open && (
+        <TouchableOpacity
+          onPress={onClose}
+          style={{
+            height: '100%',
+            overflow: 'hidden',
+            position: 'absolute',
+            width: '100%',
+            zIndex: 1,
+            bottom: 0,
+          }}
+        />
+      )}
+    </>
   )
 }
 

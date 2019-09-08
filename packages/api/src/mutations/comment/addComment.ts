@@ -79,8 +79,12 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
 
         // NOTE: Skip "New Mention" notification if comment owner.
         // And if mentioned user is the post owner, just add "NEW_COMMENT" to notifications.
-        if (canModerateComment(comment, mentionedUser.id) || mentionedUser.id === post.userId) {
-          return null
+        if (
+          !mentionedUser ||
+          canModerateComment(comment, mentionedUser.id) ||
+          mentionedUser.id === post.userId
+        ) {
+          return
         }
 
         debug('Save notification to: %o ', mentionedUser.id)
