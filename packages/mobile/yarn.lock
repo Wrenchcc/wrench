@@ -4951,10 +4951,10 @@ react-native-linear-gradient@^2.5.6:
   version "1.0.0"
   resolved "https://github.com/pontusab/react-native-media-library#f644aa74851abd10d9c732d8e55cb1626c84d224"
 
-react-native-navigation@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-3.1.2.tgz#1b32e8b42e780ff769611e0bcfa3a7c4d491995c"
-  integrity sha512-x0MDPS0hXz0UNiz4PYRrSq5IDH4l/tQxtio7Xtiqh4mgqIlSULbs6udPgsSWsk6nJcr+AdKofB4vOM5ZvLnRag==
+react-native-navigation@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-3.2.0.tgz#3ed6cb82062959ba3b6c0ca6937e17575ac4d948"
+  integrity sha512-HfdLkwiEEIBGyg0cspSzL/gk+tQ1bfbiF5VvzGcB5t0ym1RRUpkfcf+Uv0P0SoKNDQ6UlUTGCUrjnqfVivwK9w==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -5005,10 +5005,10 @@ react-native-tab-view@^2.10.0:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.10.0.tgz#5e249e5650502010013449ffd4e5edc18a95364b"
   integrity sha512-qgexVz5eO4yaFjdkmn/sURXgVvaBo6pZD/q1eoca96SbPVbaH3WzVhF3bRUfeTHwZkXwznFTpS3JURqIFU8vQA==
 
-react-native-video@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-5.0.0.tgz#30b58e31f0776bfa8dc71109c25114d4e50d9209"
-  integrity sha512-nSG7Zkc0SE2Pa/sKWvMEPUc9Zlo0iVOFTac0GcXd/U5vTsm4L28leQzJ8K/s+Yc5xfCYaeb9bIWROqw2oiB9Ig==
+react-native-video@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-5.0.2.tgz#8f07da0cd85a1d4b316d115f3786409efc9e39fb"
+  integrity sha512-zbItbMH0uZYkK7xFKa41+950QjoTrIl60bY1vAP7gxTn20HGHvHZRw28h9A5npK5T0QuWMAkn8twaGzqcDkTug==
   dependencies:
     keymirror "^0.1.1"
     prop-types "^15.5.10"

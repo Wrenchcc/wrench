@@ -217,10 +217,10 @@ PODS:
     - React
   - react-native-splash-screen (3.2.0):
     - React
-  - react-native-video (5.0.0):
+  - react-native-video (5.0.2):
     - React
-    - react-native-video/Video (= 5.0.0)
-  - react-native-video/Video (5.0.0):
+    - react-native-video/Video (= 5.0.2)
+  - react-native-video/Video (5.0.2):
     - React
   - react-native-webview (7.0.4):
     - React
@@ -250,7 +250,7 @@ PODS:
     - React-Core (= 0.60.5)
   - React-RCTWebSocket (0.60.5):
     - React-Core (= 0.60.5)
-  - ReactNativeNavigation (3.1.2):
+  - ReactNativeNavigation (3.2.0):
     - React
   - RNCAsyncStorage (1.6.1):
     - React
@@ -540,7 +540,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: aeb1752abb78a9c15cdcea067a6c95d596dcfc45
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
-  react-native-video: 6555881252c8ca039760e1cd6df28ac28ffb2baf
+  react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
   react-native-webview: 122ba855a538d6081501246256047613116e08c3
   React-RCTActionSheet: b0f1ea83f4bf75fb966eae9bfc47b78c8d3efd90
   React-RCTAnimation: 359ba1b5690b1e87cc173558a78e82d35919333e
@@ -553,7 +553,7 @@ SPEC CHECKSUMS:
   React-RCTText: b074d89033583d4f2eb5faf7ea2db3a13c7553a2
   React-RCTVibration: 2105b2e0e2b66a6408fc69a46c8a7fb5b2fdade0
   React-RCTWebSocket: cd932a16b7214898b6b7f788c8bddb3637246ac4
-  ReactNativeNavigation: 86a76f888e7e3c42c1b6eaee634142baab6420eb
+  ReactNativeNavigation: aad255980f20cc5d2001ed37972319f3789fea70
   RNCAsyncStorage: 2e2e3feb9bdadc752a026703d8c4065ca912e75a
   RNDeviceInfo: 17e34f6dd902f08d88cbe2c0b7a01be948d43641
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
