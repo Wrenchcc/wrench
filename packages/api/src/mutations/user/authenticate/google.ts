@@ -24,12 +24,6 @@ export default async (_, { idToken, code }, ctx) => {
     const tokens = generateTokens(authProvider.userId)
 
     await Promise.all([
-      // Upload avatar if new one
-      ctx.services.google.uploadAvatar(
-        authProvider.id,
-        googleUser.avatarUrl,
-        googleUser.isSilhouette
-      ),
       // Delete previous tokens with same user agent and save new
       ctx.db.AuthToken.delete({
         userAgent,
