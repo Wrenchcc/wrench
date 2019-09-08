@@ -29,7 +29,7 @@ export const getRefreshToken = async () => {
   }
 }
 
-export const clearTokens = async (token, refreshToken) => {
+export const clearTokens = async () => {
   try {
     await AsyncStorage.multiRemove([ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY])
   } catch (error) {

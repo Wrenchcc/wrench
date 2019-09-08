@@ -22,8 +22,6 @@ export default async function uploadToS3Async(files) {
       })
     )
   } catch (err) {
-    alert(JSON.stringify(err))
-
     logError(err)
   }
 }

@@ -74,13 +74,18 @@ export default function createNavigationAwareScrollable(Component) {
           if (
             (selectedTabIndex === unselectedTabIndex &&
               selectedTabIndex === tabIndex &&
-              scrollRef.current &&
               currentComponentName === SCREENS.FEED) ||
-            currentComponentName === SCREENS.EXPLORE ||
-            currentComponentName === SCREENS.NOTIFICATIONS ||
-            currentComponentName === SCREENS.ME
+            (selectedTabIndex === unselectedTabIndex &&
+              selectedTabIndex === tabIndex &&
+              currentComponentName === SCREENS.EXPLORE) ||
+            (selectedTabIndex === unselectedTabIndex &&
+              selectedTabIndex === tabIndex &&
+              currentComponentName === SCREENS.NOTIFICATIONS) ||
+            (selectedTabIndex === unselectedTabIndex &&
+              selectedTabIndex === tabIndex &&
+              currentComponentName === SCREENS.ME)
           ) {
-            if (scrollableNode.scrollToOffset != null) {
+            if (scrollableNode.scrollToOffset !== null) {
               scrollableNode.scrollToOffset({ offset: initialScroll })
             }
           }
