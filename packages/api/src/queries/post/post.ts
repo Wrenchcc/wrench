@@ -1,3 +1,5 @@
+import { ApolloError } from 'apollo-server-express'
+
 // TODO: Use dataloader
 export default async (_, { id }, ctx) => {
   // Check for id when used in project
@@ -5,5 +7,11 @@ export default async (_, { id }, ctx) => {
     return null
   }
 
-  return ctx.db.Post.findOne(id)
+  const post = await ctx.db.Post.findOne(id)
+
+  if (!post) {
+    return new ApolloError('Post not found')
+  }
+
+  return post
 }

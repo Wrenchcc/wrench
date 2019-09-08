@@ -27,6 +27,10 @@
       "placeholder": "Search",
       "cancel": "Cancel"
     },
+    "Toast": {
+      "network": "No internet connection",
+      "spam": "Action blocked. Please try again later."
+    },
     "WebView": {
       "loading": "Loading..."
     },
@@ -201,6 +205,9 @@
         "PRODUCT_ANNOUNCEMENTS": "Product announcements"
       }
     },
+    "UserProfile": {
+      "notfound": "User not found"
+    },
     "RefreshToken": {
       "title": "Your session has expired",
       "description": "Please login again."
@@ -287,10 +294,6 @@
     "ShowLatest": {
       "button": "New posts"
     },
-    "Toast": {
-      "network": "No internet connection",
-      "spam": "Action blocked. Please try again later."
-    },
     "UiUser": {
       "projects": "{{count, humanFormat}} project",
       "projects_plural": "{{count, humanFormat}} projects"
@@ -336,6 +339,10 @@
     "SearchBar": {
       "placeholder": "Sök",
       "cancel": "Avbryt"
+    },
+    "Toast": {
+      "network": "Ingen internetanslutning",
+      "spam": "Åtgärd blockerad. Vänligen försök igen."
     },
     "WebView": {
       "loading": "Laddar..."
@@ -511,6 +518,9 @@
         "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
       }
     },
+    "UserProfile": {
+      "notfound": "Användaren hittades ej"
+    },
     "RefreshToken": {
       "title": "Your session has expired",
       "description": "Please login again."
@@ -595,10 +605,6 @@
     },
     "ShowLatest": {
       "button": "Nya inlägg"
-    },
-    "Toast": {
-      "network": "Ingen internetanslutning",
-      "spam": "Åtgärd blockerad. Vänligen försök igen."
     },
     "UiUser": {
       "projects": "{{count, humanFormat}} projekt"

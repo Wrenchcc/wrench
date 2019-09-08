@@ -60,8 +60,8 @@ function EditProject({
 
   const onDelete = useCallback(async () => {
     await deleteProjectMutations(project.id)
-    dismissModal(true)
-  }, [])
+    dismissModal()
+  }, [dismissModal])
 
   const renderHeaderLeft = () => {
     if (isSaving) {
@@ -90,14 +90,19 @@ function EditProject({
         t('EditProject:deleteAlert'),
         t('EditProject:description'),
         [
-          { text: t('EditProject:cancel'), style: 'cancel' },
+          {
+            text: t('EditProject:cancel'),
+            style: 'cancel',
+          },
           {
             onPress: onDelete,
             style: 'destructive',
             text: t('EditProject:delete'),
           },
         ],
-        { cancelable: false }
+        {
+          cancelable: false,
+        }
       )
     }
   }

@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react'
+import { pathOr } from 'ramda'
 import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { usePostStore, POST } from 'store'
 import { Text, Icon, Touchable } from 'ui'
@@ -7,7 +8,8 @@ import List from './List'
 import { Base } from './styles'
 
 function getProjectById(id, projects) {
-  return projects.find(({ node }) => node.id === id).node
+  const project = projects && projects.find(({ node }) => node.id === id)
+  return pathOr(projects && projects[0].node, ['node'], project)
 }
 
 function SelectProject({ dark = false }) {

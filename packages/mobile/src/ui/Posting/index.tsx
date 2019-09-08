@@ -17,7 +17,7 @@ function Posting() {
   const { t } = useTranslation()
 
   const { image, isPosting } = usePostStore(store => ({
-    image: store.selectedFiles[0], // TODO: Change to first cropped image
+    image: store.files[0],
     isPosting: store.isPosting,
   }))
 

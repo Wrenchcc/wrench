@@ -33,8 +33,7 @@ const addProjectOptions = {
                   edges: prepend(
                     {
                       node: {
-                        id: addProject.id,
-                        title: addProject.title,
+                        ...addProject,
                         files: {
                           edges: [],
                           __typename: 'FileConnection',

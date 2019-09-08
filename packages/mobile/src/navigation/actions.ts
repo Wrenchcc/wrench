@@ -68,13 +68,13 @@ export function dismissMention() {
   }
 }
 
-export function dismissModal(root) {
+export function dismissModal(root, currentTabIndex = 0) {
   Navigation.dismissModal(componentId)
 
   if (root) {
     Navigation.mergeOptions(BOTTOM_TABS_ID, {
       bottomTabs: {
-        currentTabIndex: 0,
+        currentTabIndex,
       },
     })
   }

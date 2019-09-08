@@ -1,0 +1,10 @@
+{
+  "UserProfile": {
+    "en": {
+      "notfound": "User not found"
+     },
+    "sv": {
+      "notfound": "Användaren hittades ej"
+     }
+  }
+}

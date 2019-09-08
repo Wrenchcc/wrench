@@ -45,7 +45,6 @@ function AddMedia() {
     try {
       const files = await Promise.all(selectedFiles.map(cropImage))
       addFiles(files)
-      // TODO: Show error banner
     } catch (err) {
       logError(err)
     }

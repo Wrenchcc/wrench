@@ -2,9 +2,8 @@ import React, { useRef, useEffect, useState, useCallback } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { useToastStore } from 'store'
-import Text from 'ui/Text'
 import { TOAST_TYPES } from 'utils/enums'
-import { Base } from './styles'
+import { Banner } from 'ui'
 
 const transition = (
   <Transition.Sequence>
@@ -14,10 +13,16 @@ const transition = (
 )
 
 function Toast() {
-  const [visible, setVisible] = useState(false)
   const ref = useRef()
   const { t } = useTranslation()
+  const [visible, setVisible] = useState(false)
+
   const { content, show, type } = useToastStore(store => store)
+
+  useEffect(() => {
+    ref.current.animateNextTransition()
+    setVisible(show)
+  }, [ref, show])
 
   const renderContent = useCallback(() => {
     switch (type) {
@@ -30,20 +35,9 @@ function Toast() {
     }
   }, [t, type, content])
 
-  useEffect(() => {
-    ref.current.animateNextTransition()
-    setVisible(show)
-  }, [ref, show])
-
   return (
     <Transitioning.View ref={ref} transition={transition}>
-      {visible && (
-        <Base type={type}>
-          <Text color="white" medium center fontSize={15}>
-            {renderContent()}
-          </Text>
-        </Base>
-      )}
+      {visible && <Banner type={type} content={renderContent()} />}
     </Transitioning.View>
   )
 }

@@ -24,10 +24,9 @@ export enum FILE_TYPES {
 }
 
 export enum TOAST_TYPES {
-  DEFAULT = 'DEFAULT',
   NETWORK = 'NETWORK',
-  SUCCESS = 'SUCCESS',
   SPAM = 'SPAM',
+  SUCCESS = 'SUCCESS',
 }
 
 export const ERROR_CODES = {

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useNavigation, dismissModal, SCREENS } from 'navigation'
+import { useNavigation, dismissModal } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
 import { addPost } from 'graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
