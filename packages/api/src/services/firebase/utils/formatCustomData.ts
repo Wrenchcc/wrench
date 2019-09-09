@@ -14,6 +14,7 @@ export default function formatCustomData(type, data) {
           path: `post/${data.postId}`,
         },
       }
+    case NOTIFICATION_TYPES.COMMENT_UPDATES:
     case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
     case NOTIFICATION_TYPES.NEW_COMMENT:
     case NOTIFICATION_TYPES.NEW_MENTION:

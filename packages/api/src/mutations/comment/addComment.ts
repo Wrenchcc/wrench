@@ -40,16 +40,30 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     userId: ctx.userId,
   })
 
-  // const comments = await ctx.db.Comment.find({ postId: post.id })
+  const comments = await ctx.db.Comment.find({
+    postId: post.id,
+  })
 
-  // Do not send to comment owner, post owner or current user
-  // comments.map(comment => {
-  // If comment user is not post owner
-  // if (!canModeratePost(comment.userId, ctx.userId) && comment.userId !==) {
-  // }
-  // })
-  // COMMENT_UPDATES
-  // Pontus also commented on Viktors post: "This christmas.."
+  comments.map(comment => {
+    // NOTE:Do not send to comment owner, post owner or current user
+    if (
+      !canModerateComment(comment, comment.userId) &&
+      !canModeratePost(post, comment.userId) &&
+      comment.userId !== ctx.userId
+    ) {
+      // ctx.services.firebase.send({
+      //   data: {
+      //     commentId: comment.id,
+      //     postId: post.id,
+      //     owner: 'Viktor',
+      //     text,
+      //   },
+      //   to: comment.userId,
+      //   type: NOTIFICATION_TYPES.COMMENT_UPDATES,
+      //   userId: ctx.userId,
+      // })
+    }
+  })
 
   // NOTE: If ctx user is not the owner of the post
   // Add new comment to the post owner from the ctx user

@@ -25,6 +25,17 @@ export default function formatNotification(type, data, user, locale) {
           },
         }),
       }
+    case NOTIFICATION_TYPES.COMMENT_UPDATES:
+      return {
+        body: translate({
+          key: NOTIFICATION_TYPES.COMMENT_UPDATES,
+          locale,
+          params: {
+            comment: data.text,
+            name: user.fullName,
+          },
+        }),
+      }
     case NOTIFICATION_TYPES.NEW_MENTION:
       return {
         body: translate({
