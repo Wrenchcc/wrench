@@ -112,7 +112,12 @@ export async function loadSelectedProjectId() {
     api.setState({ [POST.PROJECT_ID]: savedId })
   } else {
     const { data } = await client.query({ query: CURRENT_USER_PROJECTS_QUERY })
-    const id = pathOr(null, ['user', 'projects', 'edges', 0, 'node', 'id'], data)
+
+    const id = pathOr(
+      pathOr(null, ['user', 'projects', 'edges', 0, 'node', 'id'], data),
+      ['user', 'projects', 'edges', 0, 'node', 'id'],
+      data
+    )
     api.setState({ [POST.PROJECT_ID]: id })
   }
 }

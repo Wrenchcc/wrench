@@ -17,9 +17,9 @@ const client = new ApolloClient({
 client.onClearStore(() => {
   track(events.USER_SIGNED_OUT)
   clearTokens()
-  AuthNavigation()
   LoginManager.logOut()
   GoogleSignin.signOut()
+  AuthNavigation()
 })
 
 export default client

@@ -1,4 +1,5 @@
 import { ApolloError } from 'apollo-server-express'
+import { ERROR_CODES } from '../../utils/enums'
 
 // TODO: userByUsername loader
 export default async (_, args, ctx) => {
@@ -10,7 +11,7 @@ export default async (_, args, ctx) => {
     })
 
     if (!user) {
-      return new ApolloError('User not found')
+      return new ApolloError('User not found', ERROR_CODES.NOT_FOUND)
     }
 
     return user
@@ -19,7 +20,7 @@ export default async (_, args, ctx) => {
     const user = await ctx.loaders.user.load(args.id)
 
     if (!user) {
-      return new ApolloError('User not found')
+      return new ApolloError('User not found', ERROR_CODES.NOT_FOUND)
     }
 
     return user

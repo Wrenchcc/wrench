@@ -62,6 +62,7 @@ function List({ album, ListHeaderComponent }) {
         return
       }
 
+      // NOTE: Dirty fix for fetching same data
       setLastEndCursor(after)
 
       try {
@@ -71,6 +72,7 @@ function List({ album, ListHeaderComponent }) {
           first: PAGE_SIZE,
         })
 
+        // NOTE: Dirty fix for fetching same data
         if (after !== lastEndCursor) {
           setAssets(p => p.concat(result.assets))
         }

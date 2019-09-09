@@ -158,7 +158,7 @@ export default function createNavigationAwareScrollable(Component) {
         onEndReached={onEndReached}
         refreshing={isRefetching}
         initialNumToRender={initialNumToRender}
-        ListFooterComponent={hasNextPage && renderLoader()}
+        ListFooterComponent={hasNextPage && renderLoader(false)}
         ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
         contentInsetAdjustmentBehavior="never"
         automaticallyAdjustContentInsets={false}

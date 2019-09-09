@@ -35,10 +35,21 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
 
   const comment = await ctx.db.Comment.save({
     commentId,
-    postId,
+    postId: post.id,
     text,
     userId: ctx.userId,
   })
+
+  // const comments = await ctx.db.Comment.find({ postId: post.id })
+
+  // Do not send to comment owner, post owner or current user
+  // comments.map(comment => {
+  // If comment user is not post owner
+  // if (!canModeratePost(comment.userId, ctx.userId) && comment.userId !==) {
+  // }
+  // })
+  // COMMENT_UPDATES
+  // Pontus also commented on Viktors post: "This christmas.."
 
   // NOTE: If ctx user is not the owner of the post
   // Add new comment to the post owner from the ctx user
