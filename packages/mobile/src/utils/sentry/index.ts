@@ -1,4 +1,4 @@
-import DeviceInfo from 'react-native-device-info'
+import DeviceLocale from 'react-native-device-locale'
 import { Sentry } from 'react-native-sentry'
 import Config from 'react-native-config'
 import { AppVersion } from 'utils/appVersion'
@@ -14,14 +14,9 @@ async function setupSentry() {
     }).install()
 
     SentryInstance.setTagsContext({
-      appVersion: await AppVersion(),
+      appVersion: AppVersion,
       environment,
-      buildNumber: await DeviceInfo.getBuildNumber(),
-      deviceInfo: {
-        deviceName: await DeviceInfo.getDeviceName(),
-        systemName: await DeviceInfo.getSystemName(),
-        systemVersion: await DeviceInfo.getSystemVersion(),
-      },
+      buildNumber: DeviceLocale.buildNumber,
     })
   } else {
     SentryInstance = {

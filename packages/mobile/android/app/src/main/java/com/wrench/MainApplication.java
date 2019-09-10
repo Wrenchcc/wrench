@@ -20,7 +20,6 @@ import com.brentvatne.react.ReactVideoPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
@@ -34,6 +33,7 @@ import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativeimagemanipulator.ImageManipulatorPackage;
 import com.reactnativemedialibrary.MediaLibraryPackage;
+import com.reactnativedevicelocale.DeviceLocalePackage;
 
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.links.RNFirebaseLinksPackage;
@@ -77,7 +77,7 @@ public class MainApplication extends NavigationApplication {
         packages.add(new ReanimatedPackage());
         packages.add(new RNCameraPackage());
         packages.add(new RNCWebViewPackage());
-        packages.add(new RNDeviceInfo());
+        packages.add(new DeviceLocalePackage());
         packages.add(new RNFirebaseAnalyticsPackage());
         packages.add(new RNFirebaseLinksPackage());
         packages.add(new RNFirebaseMessagingPackage());

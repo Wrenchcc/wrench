@@ -78,6 +78,7 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
             gutter={GUTTER}
             width={ITEM_SIZE}
             height={ITEM_SIZE}
+            black={settingsPage}
           >
             <Overlay selected={false} />
             <Text color="white">{item.title}</Text>
@@ -89,10 +90,10 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
 
   const renderHeaderRight = () =>
     isSaving ? (
-      <ActivityIndicator size="small" color="white" />
+      <ActivityIndicator size="small" color={settingsPage ? 'black' : 'white'} />
     ) : (
       <Text
-        color="white"
+        color={settingsPage ? 'dark' : 'white'}
         medium
         opacity={isComplete() ? 1 : 0.5}
         disabled={!isComplete()}
@@ -103,21 +104,15 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
     )
 
   const renderHeaderLeft = () =>
-    settingsPage && <Icon color="white" source={arrowLeft} onPress={handleNavigationBack} />
+    settingsPage && <Icon source={arrowLeft} onPress={handleNavigationBack} />
 
   return (
-    <Base>
+    <Base settingsPage={settingsPage}>
       <Header
         headerLeft={renderHeaderLeft()}
-        headerTitle={
-          settingsPage && (
-            <Text color="white" medium>
-              {t('Onboarding:headerTitle')}
-            </Text>
-          )
-        }
+        headerTitle={settingsPage && <Text medium>{t('Onboarding:headerTitle')}</Text>}
         headerRight={renderHeaderRight()}
-        color="black"
+        color={settingsPage ? 'white' : 'black'}
       />
       <FlatList
         ListHeaderComponent={!settingsPage && <Content />}
@@ -128,7 +123,7 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
         keyExtractor={keyExtractor}
         renderItem={renderItem}
       />
-      <Footer progress={progress()} />
+      {!settingsPage && <Footer progress={progress()} />}
     </Base>
   )
 }

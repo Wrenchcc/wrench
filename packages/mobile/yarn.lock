@@ -4806,10 +4806,9 @@ react-native-config@^0.11.7:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
   integrity sha512-dn5s+zhwLyE25vRT/vaEtLk/j8ZL1UZKvejORNDWakSwpOnLmFurFeaZV83IqkPlfWHXHFdsYe2IRYG1WN4WkQ==
 
-react-native-device-info@next:
-  version "3.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-3.0.0-rc.5.tgz#0e11303abc28580f7e478a529026d6347e396d88"
-  integrity sha512-UHv5McBzx3dlb6Y8Fe5bHCE5brTsPezNOIu6HLAn3+c5m4cClrAFR/Ub/pHbJ1pGr5+VgRkvcQmsq2EvDxbgGw==
+"react-native-device-locale@https://github.com/pontusab/react-native-device-locale":
+  version "1.0.0"
+  resolved "https://github.com/pontusab/react-native-device-locale#abccb953929f6b0540582c7b831e05d702b57d4d"
 
 react-native-fast-image@^7.0.2:
   version "7.0.2"

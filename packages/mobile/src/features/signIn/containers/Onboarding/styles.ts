@@ -5,8 +5,8 @@ import FastImage from 'react-native-fast-image'
 
 export const Base = styled.View`
   flex: 1;
-  background-color: ${COLORS.DARK};
-  padding-bottom: ${NAVIGATION.TAB_HEIGHT};
+  background-color: ${props => (props.settingsPage ? COLORS.WHITE : COLORS.DARK)};
+  padding-bottom: ${props => (props.settingsPage ? 0 : NAVIGATION.TAB_HEIGHT)};
 `
 
 export const Image = styled(FastImage)`
@@ -16,7 +16,8 @@ export const Image = styled(FastImage)`
   margin: ${props => `${props.gutter / 2}px`};
   background: transparent;
   border-width: 3px;
-  border-color: ${props => (props.selected ? COLORS.WHITE : 'transparent')};
+  border-color: ${props =>
+    props.selected ? (props.black ? COLORS.DARK : COLORS.WHITE) : 'transparent'};
   height: ${props => props.height - props.gutter / 2};
   width: ${props => props.width - props.gutter / 2};
 `
