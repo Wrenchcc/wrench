@@ -110,7 +110,13 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
     <Base settingsPage={settingsPage}>
       <Header
         headerLeft={renderHeaderLeft()}
-        headerTitle={settingsPage && <Text medium>{t('Onboarding:headerTitle')}</Text>}
+        headerTitle={
+          settingsPage && (
+            <Text numberOfLines={1} medium>
+              {t('Onboarding:headerTitle')}
+            </Text>
+          )
+        }
         headerRight={renderHeaderRight()}
         color={settingsPage ? 'white' : 'black'}
       />

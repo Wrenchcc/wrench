@@ -80,7 +80,7 @@ function AddMedia() {
 
   const renderComponent = useCallback(() => {
     return selectedFile ? (
-      <ImageEditor source={selectedFile} onPhotoResize={onEdit} />
+      <ImageEditor source={selectedFile} onChange={onEdit} />
     ) : (
       <Camera onTakePicture={onSelect} />
     )
