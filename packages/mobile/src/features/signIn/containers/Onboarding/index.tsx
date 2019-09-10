@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { AppNavigation } from 'navigation'
+import { AppNavigation, useNavigation } from 'navigation'
 import { omit } from 'ramda'
 import { compose } from 'ramda'
 import { track, events } from 'utils/analytics'
 import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
 import { editUser } from 'graphql/mutations/user/editUser'
-import { Header, Touchable, Text, Loader } from 'ui'
+import { Header, Touchable, Text, Loader, Icon } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
+import { arrowLeft } from 'images'
 import { Base, Cell, Image, Overlay, Picture } from './styles'
 
 const { width } = Dimensions.get('window')
@@ -20,14 +21,19 @@ const ITEM_SIZE = width / 2 - GUTTER
 
 const keyExtractor = item => item.id
 
-function Onboarding({ isFetching, types, editUser: editUserMutation }) {
+function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPage }) {
   const { t } = useTranslation()
+  const { navigateBack } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
   const [items, setItems] = useState({})
 
   useEffect(() => {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
   }, [])
+
+  const handleNavigationBack = useCallback(() => {
+    navigateBack()
+  }, [navigateBack])
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
@@ -55,7 +61,10 @@ function Onboarding({ isFetching, types, editUser: editUserMutation }) {
     setIsSaving(true)
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
     const interestedIn = Object.keys(items).map(id => ({ id }))
-    editUserMutation({ interestedIn }).then(setTimeout(AppNavigation, 500))
+
+    editUserMutation({ interestedIn }).then(
+      setTimeout(settingsPage ? navigateBack : AppNavigation, 500)
+    )
   }
 
   const renderItem = ({ item }) => (
@@ -89,15 +98,29 @@ function Onboarding({ isFetching, types, editUser: editUserMutation }) {
         disabled={!isComplete()}
         onPress={handleSubmit}
       >
-        {t('Onboarding:next')}
+        {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
       </Text>
     )
 
+  const renderHeaderLeft = () =>
+    settingsPage && <Icon color="white" source={arrowLeft} onPress={handleNavigationBack} />
+
   return (
     <Base>
-      <Header headerRight={renderHeaderRight()} color="black" />
+      <Header
+        headerLeft={renderHeaderLeft()}
+        headerTitle={
+          settingsPage && (
+            <Text color="white" medium>
+              {t('Onboarding:headerTitle')}
+            </Text>
+          )
+        }
+        headerRight={renderHeaderRight()}
+        color="black"
+      />
       <FlatList
-        ListHeaderComponent={<Content />}
+        ListHeaderComponent={!settingsPage && <Content />}
         ListEmptyComponent={isFetching && <Loader color="grey" />}
         contentContainerStyle={{ padding: 5, flex: isFetching ? 1 : 0 }}
         numColumns={2}

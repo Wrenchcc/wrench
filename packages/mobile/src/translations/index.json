@@ -151,7 +151,9 @@
       "link": "terms and conditions."
     },
     "Onboarding": {
-      "next": "Next"
+      "next": "Next",
+      "save": "Save",
+      "headerTitle": "Customize your interests"
     },
     "SignIn": {
       "headline": "Post, \nexplore \nand learn.",
@@ -172,18 +174,19 @@
       "share": "Share us",
       "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
       "settings": "Settings",
+      "customize-interests": "Customize your interests",
       "push-notifications": "Push notifications",
       "email-notifications": "Email notifications",
       "language": "Language",
       "membership": "Membership",
       "general": "General",
-      "support": "Support",
       "terms": "Terms and conditions",
       "website": "Website",
       "credits": "Credits",
       "logout": "Logout",
       "facebook": "Facebook",
       "contacts": "My contacts",
+      "support": "Support",
       "faq": "FAQ",
       "report": "Report a bug",
       "chat": "Chat with us",
@@ -464,7 +467,9 @@
       "link": "användarvillkor."
     },
     "Onboarding": {
-      "next": "Nästa"
+      "next": "Nästa",
+      "save": "Spara",
+      "headerTitle": "Ändra dina intressen"
     },
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",
@@ -485,18 +490,19 @@
       "share": "Dela oss",
       "shareContent": "The app for motorcycle builders and enthusiasts | Wrench",
       "settings": "Inställningar",
+      "customize-interests": "Ändra dina intressen",
       "push-notifications": "Push-notifikationer",
       "email-notifications": "Email-notifikationer",
       "language": "Språk",
       "membership": "Medlemskap",
       "general": "Almänt",
-      "support": "Support",
       "terms": "Villkor",
       "website": "Hemsida",
       "credits": "Tack till",
       "logout": "Logga ut",
       "facebook": "Facebook",
       "contacts": "Mina kontakter",
+      "support": "Support",
       "faq": "FAQ",
       "report": "Rapportera en bugg",
       "chat": "Chatta med oss",

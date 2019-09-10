@@ -1,10 +1,14 @@
 {
   "Onboarding": {
     "en": {
-      "next": "Next"
+      "next": "Next",
+      "save": "Save",
+      "headerTitle": "Customize your interests"
     },
     "sv": {
-      "next": "Nästa"
+      "next": "Nästa",
+      "save": "Spara",
+      "headerTitle": "Ändra dina intressen"
     }
   }
 }

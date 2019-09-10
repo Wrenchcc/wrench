@@ -79,6 +79,13 @@ const sections = props => ({
       titleKey: 'settings',
       data: [
         {
+          titleKey: 'customize-interests',
+          onPress: () =>
+            navigateTo(SCREENS.ONBOARDING, {
+              settingsPage: true,
+            }),
+        },
+        {
           titleKey: 'push-notifications',
           hasChildren: true,
           onPress: () =>
