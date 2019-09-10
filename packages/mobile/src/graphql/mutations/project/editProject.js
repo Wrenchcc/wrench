@@ -6,7 +6,6 @@ const EditProjectMutation = gql`
     editProject(id: $id, input: $input) {
       id
       title
-      commentsDisabled
     }
   }
 `

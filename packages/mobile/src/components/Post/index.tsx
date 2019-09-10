@@ -172,7 +172,7 @@ function Post({
 
       <LikePost post={post} />
 
-      {!withoutComments && !post.project.commentsDisabled && <Comments data={post} />}
+      {!withoutComments && <Comments data={post} />}
       <TimeAgo date={post.createdAt} long />
       {!isEditing && postActions()}
     </Base>

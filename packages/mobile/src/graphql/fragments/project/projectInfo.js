@@ -7,7 +7,6 @@ export default gql`
     title
     slug
     dynamicLink
-    commentsDisabled
     user {
       ...userInfo
     }

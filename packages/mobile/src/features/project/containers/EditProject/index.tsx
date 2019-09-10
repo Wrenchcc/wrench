@@ -19,10 +19,8 @@ function EditProject({
 
   const [isSaving, setIsSaving] = useState(false)
   const [title, setTitle] = useState(project.title)
-  const [commentsDisabled, setCommentsDisabled] = useState(project.commentsDisabled)
 
   const onChangeText = useCallback(text => setTitle(text), [])
-  const onSelectionChange = useCallback(value => setCommentsDisabled(value), [])
   const handleClose = useCallback(() => dismissModal(), [])
 
   const handleEditProject = useCallback(async () => {
@@ -30,14 +28,13 @@ function EditProject({
 
     await editProjectMutation(project.id, {
       title,
-      commentsDisabled,
     })
 
     setTimeout(() => {
       setIsSaving(false)
       dismissModal()
     }, 500)
-  }, [title, commentsDisabled])
+  }, [title])
 
   const navigateToModel = useCallback(
     () =>
@@ -133,15 +130,6 @@ function EditProject({
 
         <Inner>
           <Title>{t('EditProject:projectSettings')}</Title>
-          <SelectionItem
-            type="switch"
-            title={t('EditProject:disableComments')}
-            selected={commentsDisabled}
-            onPress={onSelectionChange}
-          />
-
-          <Spacing />
-
           <SelectionItem last title={t('EditProject:deleteTitle')} onPress={toggleActionSheet} />
         </Inner>
       </ScrollView>

@@ -29,7 +29,6 @@ export default gql`
           project {
             id
             title
-            commentsDisabled
           }
           likes {
             isLiked

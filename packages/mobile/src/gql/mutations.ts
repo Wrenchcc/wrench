@@ -105,7 +105,6 @@ export const LIKE_COMMENT_MUTATION = gql`
 //     editProject(id: $id, input: $input) {
 //       id
 //       title
-//       commentsDisabled
 //     }
 //   }
 // `

@@ -78,7 +78,6 @@ export const PROJECT_FRAGMENT = gql`
     title
     slug
     dynamicLink
-    commentsDisabled
     user {
       ...userFragment
     }
