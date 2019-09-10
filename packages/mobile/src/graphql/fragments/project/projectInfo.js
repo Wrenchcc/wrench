@@ -17,13 +17,6 @@ export default gql`
     followers: followersConnection {
       totalCount
     }
-    model {
-      year
-      model
-      brand {
-        name
-      }
-    }
   }
   ${userInfoFragment}
 `

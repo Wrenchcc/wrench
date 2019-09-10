@@ -21,7 +21,13 @@ const addPostOptions = {
           getFeed: (prev, { mutationResult }) => {
             const edge = {
               cursor: -1,
-              node: mutationResult.data.addPost,
+              node: {
+                ...mutationResult.data.addPost,
+                project: {
+                  ...mutationResult.data.addPost.project,
+                  user: mutationResult.data.addPost.user,
+                },
+              },
               __typename: 'PostEdge',
             }
 
@@ -39,7 +45,13 @@ const addPostOptions = {
           getRecentPosts: (prev, { mutationResult }) => {
             const edge = {
               cursor: -1,
-              node: mutationResult.data.addPost,
+              node: {
+                ...mutationResult.data.addPost,
+                project: {
+                  ...mutationResult.data.addPost.project,
+                  user: mutationResult.data.addPost.user,
+                },
+              },
               __typename: 'PostEdge',
             }
 
@@ -54,7 +66,13 @@ const addPostOptions = {
           getCurrentUserProfile: (prev, { mutationResult }) => {
             const edge = {
               cursor: -1,
-              node: mutationResult.data.addPost,
+              node: {
+                ...mutationResult.data.addPost,
+                project: {
+                  ...mutationResult.data.addPost.project,
+                  user: mutationResult.data.addPost.user,
+                },
+              },
               __typename: 'PostEdge',
             }
 
