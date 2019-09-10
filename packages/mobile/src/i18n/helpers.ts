@@ -9,6 +9,7 @@ export const getLocale = async () => {
   const deviceLocale = isIphone
     ? NativeModules.SettingsManager.settings.AppleLocale
     : NativeModules.I18nManager.localeIdentifier
+
   const savedLocale = await AsyncStorage.getItem(SELECTED_LOCALE_KEY)
 
   return savedLocale || deviceLocale
