@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation'
-import { links, notifications } from 'react-native-firebase'
+import { notifications } from 'react-native-firebase'
 import { Bootstrap, registerScreens } from 'navigation'
-import { handleDynamicLink, handlePushNotification } from 'utils/dynamicLinks'
+import handlePushNotification from 'utils/pushNotifications/handle'
 import { trackScreen } from 'utils/analytics'
 import 'i18n'
 
@@ -13,15 +13,6 @@ Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.events().registerComponentDidAppearListener(({ componentName }) => {
     trackScreen(componentName)
   })
-
-  const initialLink = await links().getInitialLink()
-  if (initialLink) {
-    setTimeout(() => {
-      handleDynamicLink(initialLink)
-    }, 500)
-  }
-
-  links().onLink(handleDynamicLink)
 
   const notificationOpen = await notifications().getInitialNotification()
 

@@ -35,7 +35,7 @@
     "ramda": "^0.26.1",
     "react": "16.9.0",
     "react-apollo": "^3.1.0",
-    "react-i18next": "^10.12.3",
+    "react-i18next": "^10.12.4",
     "react-native": "^v0.60.5",
     "react-native-actionsheet": "^2.4.2",
     "react-native-camera": "^3.4.0",
@@ -62,7 +62,7 @@
     "react-native-video": "^5.0.2",
     "react-native-webview": "^7.0.5",
     "reanimated-bottom-sheet": "^1.0.0-alpha.13",
-    "styled-components": "^4.3.2",
+    "styled-components": "beta",
     "url": "^0.11.0",
     "zustand": "^1.0.7"
   },

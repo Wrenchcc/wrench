@@ -1,7 +1,5 @@
-import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES, MAIL_TYPES } from '../../../utils/enums'
-import { getAvatarById, getDefaultAvatar } from '../../../utils/avatar'
+import { AUTH_PROVIDER_TYPES, MAIL_TYPES } from '../../../utils/enums'
 import { generateTokens } from '../../../utils/tokens'
-import { dynamicLink } from '../../../services/firebase'
 
 export default async (_, { token }, ctx) => {
   const fbUser = await ctx.services.facebook.userInfo(token)
@@ -70,20 +68,8 @@ export default async (_, { token }, ctx) => {
     lastName: fbUser.lastName,
   })
 
-  const url = await dynamicLink({
-    description: `See Wrench projects and posts from ${user.fullName}. (@${user.username})`,
-    image: fbUser.isSilhouette ? getDefaultAvatar() : getAvatarById(user.id),
-    path: user.username,
-    title: `${user.fullName}. (@${user.username}) - projects and posts`,
-  })
-
   await Promise.all([
     ctx.services.facebook.uploadAvatar(user.id, fbUser.id, fbUser.isSilhouette),
-    ctx.db.DynamicLink.save({
-      type: DYNAMIC_LINK_TYPES.USER,
-      typeId: user.id,
-      url,
-    }),
     ctx.db.AuthProvider.save({
       type: AUTH_PROVIDER_TYPES.FACEBOOK,
       typeId: fbUser.id,

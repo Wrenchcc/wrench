@@ -20,11 +20,6 @@ export const PLATFORM_TYPES = {
   WEB: 'WEB',
 }
 
-export const DYNAMIC_LINK_TYPES = {
-  PROJECT: 'PROJECT',
-  USER: 'USER',
-}
-
 export const PROJECT_SORT_TYPES = {
   POPULAR: 'POPULAR',
 }

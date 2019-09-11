@@ -1,7 +1,5 @@
-import { DYNAMIC_LINK_TYPES, AUTH_PROVIDER_TYPES, MAIL_TYPES } from '../../../utils/enums'
-import { getAvatarById, getDefaultAvatar } from '../../../utils/avatar'
+import { AUTH_PROVIDER_TYPES, MAIL_TYPES } from '../../../utils/enums'
 import { generateTokens } from '../../../utils/tokens'
-import { dynamicLink } from '../../../services/firebase'
 
 const GOOGLE_EMAIL_DOMAIN = 'cloudtestlabaccounts.com'
 
@@ -75,20 +73,8 @@ export default async (_, { idToken, code }, ctx) => {
     lastName: googleUser.lastName,
   })
 
-  const url = await dynamicLink({
-    description: `See Wrench projects and posts from ${user.fullName}. (@${user.username})`,
-    image: googleUser.isSilhouette ? getDefaultAvatar() : getAvatarById(user.id),
-    path: user.username,
-    title: `${user.fullName}. (@${user.username}) - projects and posts`,
-  })
-
   await Promise.all([
     ctx.services.google.uploadAvatar(user.id, googleUser.avatarUrl, googleUser.isSilhouette),
-    ctx.db.DynamicLink.save({
-      type: DYNAMIC_LINK_TYPES.USER,
-      typeId: user.id,
-      url,
-    }),
     ctx.db.AuthProvider.save({
       type: AUTH_PROVIDER_TYPES.GOOGLE,
       typeId: googleUser.id,

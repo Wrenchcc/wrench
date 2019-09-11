@@ -24,12 +24,28 @@ app.prepare().then(() => {
   server.disable('x-powered-by')
   server.use(i18nextMiddleware.handle(i18n))
 
+  server.get('/.well-known/apple-app-site-association', (_, res) => {
+    res.json({
+      applinks: {
+        apps: [],
+        details: [
+          {
+            appID: 'YN735AEV47.cc.wrench.app',
+            paths: ['/project/*'],
+          },
+        ],
+      },
+    })
+  })
+
   server.get('*', (req, res) => {
     handle(req, res)
   })
 
   server.listen(PORT, err => {
-    if (err) throw err
+    if (err) {
+      throw err
+    }
     debug(`🚀 Server ready at http://localhost:${PORT}`)
   })
 })

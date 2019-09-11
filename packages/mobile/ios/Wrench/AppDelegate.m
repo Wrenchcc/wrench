@@ -6,7 +6,6 @@
 #import "RNSplashScreen.h"
 #import "RNFirebaseNotifications.h"
 #import "RNFirebaseMessaging.h"
-#import "RNFirebaseLinks.h"
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>
@@ -62,13 +61,7 @@
   completionHandler();
 }
 
-// Respond to the URL scheme
-- (BOOL)application:(UIApplication *)application
-continueUserActivity:(NSUserActivity *)userActivity
- restorationHandler:(void (^)(NSArray *))restorationHandler {
-     return [[RNFirebaseLinks instance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
-}
-
+// Deep links
 - (BOOL)application:(UIApplication *)application
   openURL:(NSURL *)url
   options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
@@ -80,6 +73,14 @@ continueUserActivity:(NSUserActivity *)userActivity
   }
 
   return handled;
+}
+
+// Universal Links
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity
+  restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+    return [RCTLinkingManager application:application
+                  continueUserActivity:userActivity
+                  restorationHandler:restorationHandler];
 }
 
 @end

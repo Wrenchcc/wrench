@@ -23,11 +23,6 @@ export enum NotificationTypes {
   NEW_REPLY = 'NEW_REPLY',
 }
 
-export enum DynamicLinkTypes {
-  USER = 'USER',
-  PROJECT = 'PROJECT',
-}
-
 export enum AuthProviderTypes {
   FACEBOOK = 'FACEBOOK',
   GOOGLE = 'GOOGLE',
