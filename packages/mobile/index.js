@@ -1,4 +1,3 @@
-import { Linking } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { notifications } from 'react-native-firebase'
 import { Bootstrap, registerScreens } from 'navigation'
@@ -14,8 +13,6 @@ Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.events().registerComponentDidAppearListener(({ componentName }) => {
     trackScreen(componentName)
   })
-
-  Linking.addEventListener('url', e => console.log(e))
 
   const notificationOpen = await notifications().getInitialNotification()
 
