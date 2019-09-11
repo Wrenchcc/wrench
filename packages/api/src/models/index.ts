@@ -11,7 +11,6 @@ import AuthToken from './AuthToken'
 import Brand from './Brand'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
-import DynamicLink from './DynamicLink'
 import File from './File'
 import Following from './Following'
 import Like from './Like'
@@ -49,7 +48,6 @@ export const options: ConnectionOptions = {
     Brand,
     Comment,
     DeviceToken,
-    DynamicLink,
     File,
     Following,
     Like,
@@ -84,7 +82,6 @@ export const db = {
   Brand,
   Comment,
   DeviceToken,
-  DynamicLink,
   File,
   Following,
   Like,
