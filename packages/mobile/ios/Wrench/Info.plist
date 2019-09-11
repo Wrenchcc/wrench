@@ -53,10 +53,6 @@
 	<string>1174076712654826</string>
 	<key>FacebookDisplayName</key>
 	<string>Wrench</string>
-	<key>FirebaseDynamicLinksCustomDomains</key>
-	<array>
-		<string>https://share.wrench.cc</string>
-	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
