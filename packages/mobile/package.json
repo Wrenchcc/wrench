@@ -62,7 +62,7 @@
     "react-native-video": "^5.0.2",
     "react-native-webview": "^7.0.5",
     "reanimated-bottom-sheet": "^1.0.0-alpha.13",
-    "styled-components": "^4.3.2",
+    "styled-components": "beta",
     "url": "^0.11.0",
     "zustand": "^1.0.7"
   },

@@ -1,1 +1,1 @@
-export default async () => 'url'
+export default async () => ''
