@@ -54,7 +54,6 @@ target 'Wrench' do
 
   # Required by Firebase
   pod 'Firebase/Core'
-  pod 'Firebase/DynamicLinks'
   pod 'Firebase/Messaging'
 
   # react-native-fast-image WebP support
