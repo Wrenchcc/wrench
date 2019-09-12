@@ -17,22 +17,22 @@ Links.addRoute('/project/:slug', ({ slug }) => {
   return navigateTo(SCREENS.PROJECT, { slug })
 })
 
-Links.addRoute('/explore', () => {
-  return navigateTo(SCREENS.EXPLORE)
-})
+Links.addRoute('/:root', ({ root }) => {
+  if (root === SCREENS.FEED) {
+    return navigateTo(SCREENS.FEED)
+  }
 
-Links.addRoute('/feed', () => {
-  return navigateTo(SCREENS.FEED)
-})
+  if (root === SCREENS.EXPLORE) {
+    return navigateTo(SCREENS.EXPLORE)
+  }
 
-Links.addRoute('/notifications', () => {
-  return navigateTo(SCREENS.NOTIFICATIONS)
-})
+  if (root === SCREENS.NOTIFICATIONS) {
+    return navigateTo(SCREENS.NOTIFICATIONS)
+  }
 
-Links.addRoute('/me', () => {
-  return navigateTo(SCREENS.ME)
-})
-
-Links.addRoute('/:username', ({ username }) => {
-  return navigateTo(SCREENS.USER, { user: { username } })
+  return navigateTo(SCREENS.USER, {
+    user: {
+      username: root,
+    },
+  })
 })
