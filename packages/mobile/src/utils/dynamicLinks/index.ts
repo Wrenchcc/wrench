@@ -1,23 +1,23 @@
 import { Linking } from 'react-native'
 import { navigateTo, SCREENS } from 'navigation'
-import Links from './Links'
+import Routes from './Routes'
 
 export const createDeepLinkingHandler = ({ url }) => {
   Linking.canOpenURL(url).then(supported => {
     if (supported) {
-      Links.evaluateUrl(url)
+      Routes.evaluateUrl(url)
     }
   })
 }
 
-Links.addScheme('wrench://')
-Links.addScheme('https://wrench.cc')
+Routes.addScheme('wrench://')
+Routes.addScheme('https://wrench.cc')
 
-Links.addRoute('/project/:slug', ({ slug }) => {
+Routes.addRoute('/project/:slug', ({ slug }) => {
   return navigateTo(SCREENS.PROJECT, { slug })
 })
 
-Links.addRoute('/:root', ({ root }) => {
+Routes.addRoute('/:root', ({ root }) => {
   if (root === SCREENS.FEED) {
     return navigateTo(SCREENS.FEED)
   }
