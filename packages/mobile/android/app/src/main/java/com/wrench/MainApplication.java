@@ -36,7 +36,6 @@ import com.reactnativemedialibrary.MediaLibraryPackage;
 import com.reactnativedevicelocale.DeviceLocalePackage;
 
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
-import io.invertase.firebase.links.RNFirebaseLinksPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -79,7 +78,6 @@ public class MainApplication extends NavigationApplication {
         packages.add(new RNCWebViewPackage());
         packages.add(new DeviceLocalePackage());
         packages.add(new RNFirebaseAnalyticsPackage());
-        packages.add(new RNFirebaseLinksPackage());
         packages.add(new RNFirebaseMessagingPackage());
         packages.add(new RNFirebaseNotificationsPackage());
         packages.add(new RNFirebasePackage());

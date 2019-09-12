@@ -31,8 +31,21 @@ app.prepare().then(() => {
         details: [
           {
             appID: 'YN735AEV47.cc.wrench.app',
-            paths: ['/project/*'],
+            paths: ['*'],
           },
+        ],
+      },
+    })
+  })
+
+  server.get('/.well-known/assetlinks.json', (_, res) => {
+    res.json({
+      relation: ['delegate_permission/common.handle_all_urls'],
+      target: {
+        namespace: 'android_app',
+        package_name: 'com.wrench',
+        sha256_cert_fingerprints: [
+          '76:B8:B0:34:C1:35:15:09:1C:7C:7D:7D:F7:60:2D:4D:C6:B0:BE:63:3A:A4:0F:E4:3B:86:9D:43:0F:27:DD:22',
         ],
       },
     })

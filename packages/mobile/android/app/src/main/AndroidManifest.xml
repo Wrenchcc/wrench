@@ -57,12 +57,11 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
 
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-        <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:host="share.wrench.cc" android:scheme="http"/>
-        <data android:host="share.wrench.cc" android:scheme="https"/>
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:host="wrench.cc" android:scheme="https"/>
         <data android:scheme="wrench" android:host="wrench" />
       </intent-filter>
     </activity>

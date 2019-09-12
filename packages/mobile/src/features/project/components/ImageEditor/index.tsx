@@ -546,11 +546,11 @@ export default class ImageEditor extends React.PureComponent<PickerProps> {
   pan: RefObject<PanGestureHandler> = React.createRef()
   tap: RefObject<TapGestureHandler> = React.createRef()
 
-  private blah = ([scale, transX, transY]) => {
+  private transformCropData = ([scale, transX, transY]) => {
     const widthRatio = this.props.source.height / RATIO
     const heightRatio = this.props.source.width / RATIO
 
-     this.props.onChange({
+    this.props.onChange({
       height:  Math.floor(heightRatio / scale),
       width:  Math.floor(widthRatio / scale),
       originX: 0 ,//Math.floor(transX / widthRatio), 
@@ -569,7 +569,7 @@ export default class ImageEditor extends React.PureComponent<PickerProps> {
         }}
       >
         <Animated.Code exec={block([
-          cond(eq(this.throttler, 0), call([this.scale, this.transX, this.transY], this.blah)),
+          cond(eq(this.throttler, 0), call([this.scale, this.transX, this.transY], this.transformCropData)),
           set(this.throttler, modulo(add(this.throttler, 1), this.throttlingFactor))  
         ])} />
 
