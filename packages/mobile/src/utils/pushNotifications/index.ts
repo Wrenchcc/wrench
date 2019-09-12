@@ -1,6 +1,6 @@
 import { navigateTo, SCREENS, SCREEN_PATH } from 'navigation'
 
-export default function handlePushNotification(data) {
+export function createPushNotificationsHandler(data) {
   const [route, postId, commentId] = data.split('/')
 
   switch (route) {
