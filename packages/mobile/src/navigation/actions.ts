@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
-import { SCREENS, BOTTOM_TABS_ID } from './constants'
+import { SCREENS, BOTTOM_TABS_ID, TABS_INDEX } from './constants'
 
 export let currentComponentName
 let componentId
@@ -68,15 +68,11 @@ export function dismissMention() {
   }
 }
 
-export function dismissModal(root, currentTabIndex = 0) {
+export function dismissModal(root, currentTabIndex = TABS_INDEX.FEED) {
   Navigation.dismissModal(componentId)
 
   if (root) {
-    Navigation.mergeOptions(BOTTOM_TABS_ID, {
-      bottomTabs: {
-        currentTabIndex,
-      },
-    })
+    selectTabIndex(currentTabIndex)
   }
 }
 
@@ -114,4 +110,12 @@ export function hideNotificationBadge() {
 
 export function navigateBack() {
   Navigation.pop(componentId)
+}
+
+export function selectTabIndex(currentTabIndex) {
+  Navigation.mergeOptions(BOTTOM_TABS_ID, {
+    bottomTabs: {
+      currentTabIndex,
+    },
+  })
 }

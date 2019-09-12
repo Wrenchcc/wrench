@@ -7,7 +7,6 @@ import {
   TapGestureHandler,
 } from 'react-native-gesture-handler'
 import Animated, { Easing } from 'react-native-reanimated'
-import debounce from 'lodash.debounce'
 import Grid from './Grid'
 
 const { width } = Dimensions.get('window')
@@ -42,6 +41,7 @@ const {
   decay,
   Clock,
   lessThan,
+  modulo,
  } = Animated
 
 type PickerProps = {
@@ -68,6 +68,8 @@ export default class ImageEditor extends React.PureComponent<PickerProps> {
   private readonly panState: Animated.Value<number>
   private readonly tapState: Animated.Value<number>
   private readonly pinchState: Animated.Value<number>
+  private readonly throttler: Animated.Value<number>
+  private readonly throttlingFactor: number
   private readonly distanceFromLeft: any
   private readonly distanceFromTop: any
   private readonly handlePan: any
@@ -107,6 +109,8 @@ export default class ImageEditor extends React.PureComponent<PickerProps> {
     this.gridClock = new Clock()
     this.velocityX = new Value(0)
     this.velocityY = new Value(0)
+    this.throttler = new Value(0)
+    this.throttlingFactor = 16
 
     this.handlePan = event([
       {
@@ -553,7 +557,7 @@ export default class ImageEditor extends React.PureComponent<PickerProps> {
       originY: 0, // Math.floor(transY * scale),
     })
   }
- 
+
   private render() {
     return (
       <View
@@ -564,7 +568,11 @@ export default class ImageEditor extends React.PureComponent<PickerProps> {
           width: IMAGE_EDITOR_SIZE,
         }}
       >
-        <Animated.Code exec={call([this.scale, this.transX, this.transY], debounce(this.blah, 150))} />
+        <Animated.Code exec={block([
+          cond(eq(this.throttler, 0), call([this.scale, this.transX, this.transY], this.blah)),
+          set(this.throttler, modulo(add(this.throttler, 1), this.throttlingFactor))  
+        ])} />
+
         <PinchGestureHandler
           shouldCancelWhenOutside={false}
           ref={this.pinch}

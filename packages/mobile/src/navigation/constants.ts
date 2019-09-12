@@ -37,13 +37,14 @@ export enum SCREENS {
   WEBVIEW = 'WEBVIEW',
 }
 
-export enum SCREEN_PATH {
-  NOTIFICATIONS = 'notification',
-  POST = 'post',
-  PROJECT = 'project',
-}
-
 export enum STATUS_BAR {
   DARK = 'dark',
   LIGHT = 'light',
+}
+
+export enum TABS_INDEX {
+  FEED = 0,
+  EXPLORE = 1,
+  NOTIFICATIONS = 2,
+  ME = 3,
 }

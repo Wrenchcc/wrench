@@ -1,5 +1,5 @@
 import { Linking } from 'react-native'
-import { navigateTo, SCREENS } from 'navigation'
+import { navigateTo, SCREENS, TABS_INDEX, selectTabIndex } from 'navigation'
 import DeepLinking from 'react-native-deep-linking'
 
 export const createDeepLinkingHandler = ({ url }) => {
@@ -17,14 +17,20 @@ DeepLinking.addRoute('/project/:slug', ({ slug }) => {
   return navigateTo(SCREENS.PROJECT, { slug })
 })
 
+DeepLinking.addRoute('/post/:id', ({ id }) => {
+  return navigateTo(SCREENS.POST, { postId: id })
+})
+
 DeepLinking.addRoute('/:root', ({ root }) => {
   switch (root) {
-    case SCREENS.FEED:
-      return navigateTo(SCREENS.FEED)
-    case SCREENS.EXPLORE:
-      return navigateTo(SCREENS.EXPLORE)
-    case SCREENS.NOTIFICATIONS:
-      return navigateTo(SCREENS.NOTIFICATIONS)
+    case SCREENS.FEED.toLowerCase():
+      return selectTabIndex(TABS_INDEX.FEED)
+    case SCREENS.EXPLORE.toLowerCase():
+      return selectTabIndex(TABS_INDEX.EXPLORE)
+    case SCREENS.NOTIFICATIONS.toLowerCase():
+      return selectTabIndex(TABS_INDEX.NOTIFICATIONS)
+    case SCREENS.ME.toLowerCase():
+      return selectTabIndex(TABS_INDEX.ME)
     default:
       return navigateTo(SCREENS.USER, {
         user: {
