@@ -102,11 +102,6 @@ project.ext.sentryCli = [
 def enableSeparateBuildPerCPUArchitecture = false
 
 /**
- * Run Proguard to shrink the Java bytecode in release builds.
- */
-def enableProguardInReleaseBuilds = false
-
-/**
  * The preferred build flavor of JavaScriptCore.
  *
  * For example, to use the international variant, you can use:
@@ -172,6 +167,13 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+
+            /* By default: true; ./gradlew assembleLocalDebug -PUSE_PROGUARD_IN_DEBUG=true */
+            minifyEnabled project.useProguardInDebug
+            
+            /* By default: true; ./gradlew assembleLocalDebug -PUSE_SHRINK_IN_DEBUG=true */
+            shrinkResources project.useShrinkInDebug
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -179,7 +181,7 @@ android {
             // AppCenter handles this
             // https://docs.microsoft.com/en-us/appcenter/build/android/code-signing#2-upload-everything-to-app-center
             // signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
+            minifyEnabled project.useProguard
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
