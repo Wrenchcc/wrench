@@ -11,5 +11,8 @@ export default gql`
     avatarUrl
     isOnline
     dynamicLink
+    website
+    location
+    bio
   }
 `

@@ -41,6 +41,9 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
                   lastName={user.lastName}
                   avatarUrl={user.avatarUrl}
                   spacingHorizontal={!hasPosts}
+                  bio={user.bio}
+                  website={user.website}
+                  location={user.location}
                 />
 
                 <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />

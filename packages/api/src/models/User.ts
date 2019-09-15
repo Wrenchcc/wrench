@@ -111,6 +111,15 @@ export default class User extends BaseEntity {
 
   @Column({ default: false })
   public isSilhouette: boolean
+
+  @Column({ type: 'text', nullable: true })
+  public bio: string
+
+  @Column({ nullable: true })
+  public website: string
+
+  @Column({ nullable: true })
+  public location: string
 }
 
 export function getUserById(userId) {

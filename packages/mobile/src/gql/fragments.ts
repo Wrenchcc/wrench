@@ -9,6 +9,9 @@ export const USER_FRAGMENT = gql`
     username
     avatarUrl
     isOnline
+    website
+    location
+    bio
   }
 `
 

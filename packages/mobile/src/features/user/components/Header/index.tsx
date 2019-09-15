@@ -1,17 +1,49 @@
 import React from 'react'
-import { Avatar, Title } from 'ui'
-import { Base, Username } from './styles'
+import { Avatar, Title, Text } from 'ui'
+import { Base, Inner, Username, Info } from './styles'
 
-function Header({ firstName, lastName, avatarUrl = '', spacingHorizontal = false }) {
+function Header({
+  firstName,
+  lastName,
+  avatarUrl = '',
+  spacingHorizontal = false,
+  location,
+  website,
+  bio,
+}) {
   return (
     <Base spacingHorizontal={spacingHorizontal}>
-      <Username>
-        <Title medium numberOfLines={0}>
-          {firstName}
-        </Title>
-        <Title medium>{lastName}</Title>
-      </Username>
-      <Avatar size={80} uri={avatarUrl} />
+      <Inner>
+        <Username>
+          <Title medium numberOfLines={0}>
+            {firstName}
+          </Title>
+          <Title medium>{lastName}</Title>
+        </Username>
+        <Avatar size={80} uri={avatarUrl} />
+      </Inner>
+
+      {location || bio || website ? (
+        <Info>
+          {location && (
+            <Text color="grey" fontSize={15}>
+              {location}
+            </Text>
+          )}
+
+          {bio && (
+            <Text fontSize={15} style={{ marginTop: 5 }}>
+              {bio}
+            </Text>
+          )}
+
+          {website && (
+            <Text fontSize={15} style={{ marginTop: 5 }}>
+              {website}
+            </Text>
+          )}
+        </Info>
+      ) : null}
     </Base>
   )
 }

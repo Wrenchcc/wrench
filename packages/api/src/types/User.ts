@@ -16,6 +16,9 @@ export default gql`
     dynamicLink: String
     isOnline: Boolean
     lastSeen: Date
+    website: String
+    bio: String
+    location: String
 
     projectsConnection(
       first: Int = 10

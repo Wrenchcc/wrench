@@ -13,6 +13,9 @@ export const CURRENT_USER_QUERY = gql`
       projectCount
       dynamicLink
       isOnline
+      website
+      location
+      bio
       settings {
         timezone
         locale

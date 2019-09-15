@@ -38,7 +38,7 @@ function UserProjects({ projects, spacingHorizontal }) {
   })
 
   return (
-    <View>
+    <View style={{ marginTop: 45 }}>
       <Text medium fontSize={21} style={{ marginLeft: spacingHorizontal ? 20 : 0 }}>
         {t('UserProjects:title')}
       </Text>

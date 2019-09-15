@@ -11,6 +11,9 @@ export default gql`
     projectCount
     dynamicLink
     isOnline
+    website
+    location
+    bio
     settings {
       timezone
       locale
