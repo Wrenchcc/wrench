@@ -80,8 +80,6 @@
 	<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Give $(PRODUCT_NAME) periences permission to access your photos</string>
-  <key>NSAppleMusicUsageDescription</key>
-  <string>Give $(PRODUCT_NAME) periences permission to access your music</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>
