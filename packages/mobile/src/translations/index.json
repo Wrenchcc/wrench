@@ -158,6 +158,9 @@
       "headline": "Post, \nexplore \nand learn.",
       "description": "Post your projects, watch others, discuss and learn together."
     },
+    "EditButton": {
+      "edit": "Edit"
+    },
     "FollowingProjects": {
       "title": "This user don’t have any own projects yet.",
       "description": "But here’s some of the projects {{name}} follows."
@@ -167,6 +170,10 @@
     },
     "UserProjects": {
       "title": "Projects"
+    },
+    "EditProfile": {
+      "headerTitle": "Edit profile",
+      "save": "Save"
     },
     "Settings": {
       "invite": "Invite people",
@@ -473,6 +480,9 @@
       "headline": "Posta, \nutforska \noch lär.",
       "description": "Dela dina projekt, följ andras, diskutera och lär av varandra."
     },
+    "EditButton": {
+      "edit": "Redigera"
+    },
     "FollowingProjects": {
       "title": "Den här användaren har inga egna projekt ännu.",
       "description": "Men här är några project som {{name}} följer."
@@ -482,6 +492,10 @@
     },
     "UserProjects": {
       "title": "Projekt"
+    },
+    "EditProfile": {
+      "headerTitle": "Redigera profil",
+      "save": "Spara"
     },
     "Settings": {
       "invite": "Bjud in vänner",
