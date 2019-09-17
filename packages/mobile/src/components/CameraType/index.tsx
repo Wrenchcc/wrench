@@ -1,17 +1,16 @@
 import React from 'react'
-import { zap, zapOff } from 'images'
+import { cameraType } from 'images'
 import { Touchable } from 'ui'
-
 import { Wrapper, Icon } from './styles'
 
-function FlashMode({ flashMode, onPress }) {
+function CameraType({ onPress }) {
   return (
     <Wrapper>
       <Touchable onPress={onPress} nativeHandler>
-        <Icon source={flashMode ? zap : zapOff} />
+        <Icon source={cameraType} />
       </Touchable>
     </Wrapper>
   )
 }
 
-export default FlashMode
+export default CameraType

@@ -75,4 +75,10 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.EDIT_PROFILE, () =>
     HOC(require('features/user/containers/EditProfile').default)
   )
+  Navigation.registerComponent(SCREENS.ADD_LOCATION, () =>
+    HOC(require('features/user/containers/AddLocation').default)
+  )
+  Navigation.registerComponent(SCREENS.ADD_AVATAR, () =>
+    HOC(require('features/user/containers/AddAvatar').default)
+  )
 }

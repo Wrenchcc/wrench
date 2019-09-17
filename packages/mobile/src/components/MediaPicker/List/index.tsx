@@ -9,7 +9,7 @@ import { Text } from 'ui'
 import { isAndroid } from 'utils/platform'
 import { MAX_SELECTED_FILES } from 'store/post'
 import MediaItem, { MARGIN, ITEM_SIZE } from '../Item'
-import { DeselectAll } from './styles'
+import { DeselectAll, Placeholder } from './styles'
 
 const { width } = Dimensions.get('window')
 
@@ -162,7 +162,7 @@ function List({ album, ListHeaderComponent }) {
         initialNumToRender={INITIAL_PAGE_SIZE}
         keyExtractor={keyExtractor}
         ListFooterComponent={renderFooter}
-        ListHeaderComponent={ListHeaderComponent}
+        ListHeaderComponent={<Placeholder>{ListHeaderComponent()}</Placeholder>}
         numColumns={NUM_COLUMNS}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.4}

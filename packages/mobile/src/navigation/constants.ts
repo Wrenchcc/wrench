@@ -12,6 +12,8 @@ export enum NAVIGATION {
 export const BOTTOM_TABS_ID = 'BottomTabs'
 
 export enum SCREENS {
+  ADD_AVATAR = 'ADD_AVATAR',
+  ADD_LOCATION = 'ADD_LOCATION',
   ADD_MEDIA = 'ADD_MEDIA',
   ADD_POST = 'ADD_POST',
   ADD_PROJECT = 'ADD_PROJECT',

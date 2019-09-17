@@ -1,18 +1,15 @@
 import styled from 'styled-components'
+import { Dimensions } from 'react-native'
 import UiTouchable from 'ui/Touchable'
 import { hasNotch } from 'utils/platform'
 
-export const OpenAlbum = styled(UiTouchable)`
-  width: 40;
-  height: 40;
-  background: black;
-  position: absolute;
-  bottom: ${hasNotch ? 25 : 20};
-  left: 20;
-  border-radius: 40;
-  justify-content: center;
-  align-items: center;
-  z-index: 99;
+const { width } = Dimensions.get('window')
+
+export const Placeholder = styled.View`
+  width: ${width};
+  height: ${width};
+  margin-bottom: 5;
+  overflow: hidden;
 `
 
 export const DeselectAll = styled(UiTouchable)`

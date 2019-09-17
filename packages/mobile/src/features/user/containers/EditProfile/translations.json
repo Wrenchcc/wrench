@@ -1,0 +1,22 @@
+{
+  "EditProfile": {
+    "en": {
+      "headerTitle": "Edit profile",
+      "information":  "Information",
+      "place": "City, Country",
+      "bio": "Bio",
+      "website": "Website",
+      "change": "Change",
+      "save": "Save"
+    },
+    "sv": {
+      "headerTitle": "Redigera profil",
+      "information":  "Information",
+      "place": "Stad, Land",
+      "bio": "Bio",
+      "website": "Hemsida",
+      "change": "Ändra",
+      "save": "Spara"
+    }
+  }
+}

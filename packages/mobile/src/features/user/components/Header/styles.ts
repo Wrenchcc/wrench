@@ -3,7 +3,7 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   background: ${COLORS.WHITE};
-
+  padding-bottom: 45;
   padding-left: ${props => (props.spacingHorizontal ? 20 : 0)};
   padding-right: ${props => (props.spacingHorizontal ? 20 : 0)};
 `

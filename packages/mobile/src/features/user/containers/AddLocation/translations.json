@@ -1,0 +1,14 @@
+{
+  "EditProfile": {
+    "en": {
+      "headerTitle": "Edit profile",
+      "information":  "Information",
+      "save": "Save"
+    },
+    "sv": {
+      "headerTitle": "Redigera profil",
+      "information":  "Information",
+      "save": "Spara"
+    }
+  }
+}

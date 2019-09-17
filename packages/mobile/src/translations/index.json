@@ -1,5 +1,25 @@
 {
   "en": {
+    "AskForPermission": {
+      "camera": {
+        "alertTitle": "Whoops!",
+        "alertDescription": "There was a problem getting your permission. Please enable it from settings.",
+        "alertCancel": "Cancel",
+        "alertOpen": "Open Settings",
+        "permissionHeadline": "Take photos and record videos",
+        "permissionDescription": "Allow Wrench access to your camera to take photos and record video within the app.",
+        "permissionButton": "Allow Camera Access"
+      },
+      "photo": {
+        "alertTitle": "Whoops!",
+        "alertDescription": "There was a problem getting your permission. Please enable it from settings.",
+        "alertCancel": "Cancel",
+        "alertOpen": "Open Settings",
+        "permissionHeadline": "Add photos and videos",
+        "permissionDescription": "This allows Wrench to share photos from your library and save photos to your camera roll.",
+        "permissionButton": "Enable Library Access"
+      }
+    },
     "CommentField": {
       "placeholder": "Add a comment...",
       "post": "Post"
@@ -7,6 +27,9 @@
     "LikePost": {
       "like": "{{count}} spark",
       "like_plural": "{{count, humanFormat}} sparks"
+    },
+    "MediaPickerList": {
+      "deselectAll": "Deselect all"
     },
     "Post": {
       "options": {
@@ -44,29 +67,6 @@
     },
     "PostContainer": {
       "title": "Post"
-    },
-    "AskForPermission": {
-      "camera": {
-        "alertTitle": "Whoops!",
-        "alertDescription": "There was a problem getting your permission. Please enable it from settings.",
-        "alertCancel": "Cancel",
-        "alertOpen": "Open Settings",
-        "permissionHeadline": "Take photos and record videos",
-        "permissionDescription": "Allow Wrench access to your camera to take photos and record video within the app.",
-        "permissionButton": "Allow Camera Access"
-      },
-      "photo": {
-        "alertTitle": "Whoops!",
-        "alertDescription": "There was a problem getting your permission. Please enable it from settings.",
-        "alertCancel": "Cancel",
-        "alertOpen": "Open Settings",
-        "permissionHeadline": "Add photos and videos",
-        "permissionDescription": "This allows Wrench to share photos from your library and save photos to your camera roll.",
-        "permissionButton": "Enable Library Access"
-      }
-    },
-    "MediaPickerList": {
-      "deselectAll": "Deselect all"
     },
     "SelectProject": {
       "create": "Create a new project"
@@ -173,6 +173,11 @@
     },
     "EditProfile": {
       "headerTitle": "Edit profile",
+      "information": "Information",
+      "place": "City, Country",
+      "bio": "Bio",
+      "website": "Website",
+      "change": "Change",
       "save": "Save"
     },
     "Settings": {
@@ -322,6 +327,26 @@
     }
   },
   "sv": {
+    "AskForPermission": {
+      "camera": {
+        "alertTitle": "Whoops!",
+        "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+        "alertCancel": "Avbryt",
+        "alertOpen": "Öppna inställningar",
+        "permissionHeadline": "Ta bilder och spela in videoklipp",
+        "permissionDescription": "Tillåt Wrench att få åtkomst till din kamera för att kunna ta bilder och spela in video.",
+        "permissionButton": "Tillåt kameraåtkomst"
+      },
+      "photo": {
+        "alertTitle": "Whoops!",
+        "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
+        "alertCancel": "Avbryt",
+        "alertOpen": "Öppna inställningar",
+        "permissionHeadline": "Lägg till foton och videoklipp",
+        "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek och spara foton till din kamerarulle.",
+        "permissionButton": "Aktivera biblioteksåtkomst"
+      }
+    },
     "CommentField": {
       "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
@@ -329,6 +354,9 @@
     "LikePost": {
       "like": "{{count}} gnista",
       "like_plural": "{{count, humanFormat}} gnistor"
+    },
+    "MediaPickerList": {
+      "deselectAll": "Avmarkera alla"
     },
     "Post": {
       "options": {
@@ -366,29 +394,6 @@
     },
     "PostContainer": {
       "title": "Inlägg"
-    },
-    "AskForPermission": {
-      "camera": {
-        "alertTitle": "Whoops!",
-        "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
-        "alertCancel": "Avbryt",
-        "alertOpen": "Öppna inställningar",
-        "permissionHeadline": "Ta bilder och spela in videoklipp",
-        "permissionDescription": "Tillåt Wrench att få åtkomst till din kamera för att kunna ta bilder och spela in video.",
-        "permissionButton": "Tillåt kameraåtkomst"
-      },
-      "photo": {
-        "alertTitle": "Whoops!",
-        "alertDescription": "Det gick inte att få tillstånd. Aktivera det från inställningar.",
-        "alertCancel": "Avbryt",
-        "alertOpen": "Öppna inställningar",
-        "permissionHeadline": "Lägg till foton och videoklipp",
-        "permissionDescription": "Detta gör att Wrench kan dela dina foton från din bibliotek och spara foton till din kamerarulle.",
-        "permissionButton": "Aktivera biblioteksåtkomst"
-      }
-    },
-    "MediaPickerList": {
-      "deselectAll": "Avmarkera alla"
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"
@@ -495,6 +500,11 @@
     },
     "EditProfile": {
       "headerTitle": "Redigera profil",
+      "information": "Information",
+      "place": "Stad, Land",
+      "bio": "Bio",
+      "website": "Hemsida",
+      "change": "Ändra",
       "save": "Spara"
     },
     "Settings": {

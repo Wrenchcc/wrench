@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Dimensions } from 'react-native'
+import { ScrollView, Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { CardSmall, Text } from 'ui'
@@ -38,7 +38,7 @@ function UserProjects({ projects, spacingHorizontal }) {
   })
 
   return (
-    <View style={{ marginTop: 45 }}>
+    <>
       <Text medium fontSize={21} style={{ marginLeft: spacingHorizontal ? 20 : 0 }}>
         {t('UserProjects:title')}
       </Text>
@@ -55,7 +55,7 @@ function UserProjects({ projects, spacingHorizontal }) {
       >
         {renderItems}
       </ScrollView>
-    </View>
+    </>
   )
 }
 

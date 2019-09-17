@@ -7,11 +7,11 @@ import { Header, Text, Icon, ActionSheet, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
-import Camera from '../../components/Camera'
-import ImageEditor from '../../components/ImageEditor'
-import MediaPicker from '../../components/MediaPicker'
+import Camera from 'components/Camera'
+import ImageEditor from 'components/ImageEditor'
+import MediaPicker from 'components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
-import { Base, Placeholder } from './styles'
+import { Base } from './styles'
 
 function AddMedia() {
   const { t } = useTranslation()
@@ -106,7 +106,7 @@ function AddMedia() {
 
       <SelectProject />
 
-      <MediaPicker ListHeaderComponent={<Placeholder>{renderComponent()}</Placeholder>} />
+      <MediaPicker ListHeaderComponent={renderComponent} />
 
       <ActionSheet
         title={t('AddMedia:options:title')}

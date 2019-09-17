@@ -3,21 +3,21 @@ import { TouchableWithoutFeedback, View, ActivityIndicator } from 'react-native'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
 import { isIphone } from 'utils/platform'
-import AskForPermission from '../AskForPermission'
-import FlashMode from '../FlashMode'
-import CameraType from '../CameraType'
-import AutoFocus from '../AutoFocus'
+import AskForPermission from 'components/AskForPermission'
+import FlashMode from 'components/FlashMode'
+import CameraType from 'components/CameraType'
+import AutoFocus from 'components/AutoFocus'
 import { TakePicture, Wrapper } from './styles'
 
 const { Constants } = RNCamera
 
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
-function Camera({ onTakePicture }) {
+function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   const camera = useRef()
   const [isLoading, setLoading] = useState(true)
   const [permission, setPermission] = useState(false)
-  const [cameraType, setCameraType] = useState(Constants.Type.back)
+  const [cameraType, setCameraType] = useState(initialCameraType)
   const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
   const [autofocus, setAutofocus] = useState()
 
