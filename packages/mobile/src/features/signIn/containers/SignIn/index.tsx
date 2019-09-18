@@ -24,7 +24,7 @@ import {
   Options,
 } from './styles'
 
-const isAvailableAsync = true
+const isAvailableAsync = false
 
 function renderPreferredSignInProvider(provider) {
   switch (provider) {

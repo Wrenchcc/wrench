@@ -8,8 +8,15 @@ import Google from '../../components/Google'
 import Apple from '../../components/Apple'
 import { Base, Inner, Row, Footer } from './styles'
 
+const isAvailableAsync = false
+
 function Other() {
   const { dismissModal } = useNavigation()
+  const providers = [<Facebook />, <Google border />]
+
+  if (isAvailableAsync) {
+    providers.push(<Apple border />)
+  }
 
   const handleDismissModal = useCallback(() => {
     dismissModal()
@@ -19,15 +26,9 @@ function Other() {
     <Base>
       <Header headerLeft={<Icon source={close} color="dark" onPress={handleDismissModal} />} />
       <Inner>
-        <Row>
-          <Facebook />
-        </Row>
-        <Row>
-          <Google border />
-        </Row>
-        <Row>
-          <Apple border />
-        </Row>
+        {providers.map((Provider, i) => (
+          <Row key={i}>{Provider}</Row>
+        ))}
 
         <Footer>
           <Legal color="grey" />
