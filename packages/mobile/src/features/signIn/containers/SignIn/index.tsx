@@ -1,14 +1,83 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import AsyncStorage from '@react-native-community/async-storage'
+import { useNavigation, SCREENS } from 'navigation'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
+import { Text } from 'ui'
+import { isIphone, isAndroid } from 'utils/platform'
+import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
+import { SIGN_IN_PROVIDERS } from 'utils/enums'
+import Apple from '../../components/Apple'
 import Facebook from '../../components/Facebook'
 import Google from '../../components/Google'
 import Legal from '../../components/Legal'
-import { Base, Inner, Content, Video, Icon, Description, Headline, Overlay } from './styles'
+import {
+  Base,
+  Inner,
+  Content,
+  Video,
+  Icon,
+  Description,
+  Headline,
+  Overlay,
+  Options,
+} from './styles'
+
+const isAvailableAsync = true
+
+function renderPreferredSignInProvider(provider) {
+  switch (provider) {
+    case SIGN_IN_PROVIDERS.APPLEW: {
+      return <Apple />
+    }
+    case SIGN_IN_PROVIDERS.FACEBOOK: {
+      return <Facebook />
+    }
+    case SIGN_IN_PROVIDERS.GOOGLE: {
+      return <Google />
+    }
+    default: {
+      if (isIphone && isAvailableAsync) {
+        return <Apple />
+      } else if (isAndroid) {
+        return <Google />
+      } else {
+        return <Facebook />
+      }
+    }
+  }
+}
 
 function SignIn() {
   const { t } = useTranslation()
+  const { showModal } = useNavigation()
+  const [provider, setProvider] = useState()
+
+  async function fetchPreferredSignInAsync() {
+    const provider = await AsyncStorage.getItem(PREFFERED_SIGN_IN_PROVIDER)
+
+    if (provider) {
+      setProvider(provider)
+    }
+  }
+
+  useEffect(() => {
+    fetchPreferredSignInAsync()
+  }, [])
+
+  const handleOtherOptions = useCallback(() => {
+    showModal(SCREENS.OTHER_SIGN_IN_OPTIONS, {
+      options: {
+        statusBar: {
+          style: 'dark',
+        },
+        layout: {
+          backgroundColor: 'white',
+        },
+      },
+    })
+  }, [showModal])
 
   return (
     <Base>
@@ -26,8 +95,13 @@ function SignIn() {
           </Description>
         </Content>
 
-        <Facebook />
-        <Google />
+        {renderPreferredSignInProvider(provider)}
+
+        <Options onPress={handleOtherOptions}>
+          <Text color="white" medium center>
+            {t('SignIn:other')}
+          </Text>
+        </Options>
 
         <Legal />
       </Inner>

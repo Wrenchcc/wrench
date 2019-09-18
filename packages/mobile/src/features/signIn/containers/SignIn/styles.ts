@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import RVideo from 'react-native-video'
-import { Text, Title } from 'ui'
+import { Text, Title, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.SafeAreaView`
@@ -44,4 +44,9 @@ export const Description = styled(Text)`
   padding-top: 30;
   line-height: 30;
   color: ${COLORS.WHITE};
+`
+
+export const Options = styled(Touchable)`
+  padding-top: 30;
+  padding-bottom: 30;
 `

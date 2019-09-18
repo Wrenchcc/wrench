@@ -81,4 +81,7 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.ADD_AVATAR, () =>
     HOC(require('features/user/containers/AddAvatar').default)
   )
+  Navigation.registerComponent(SCREENS.OTHER_SIGN_IN_OPTIONS, () =>
+    HOC(require('features/signIn/containers/Other').default)
+  )
 }

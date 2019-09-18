@@ -3062,10 +3062,10 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
-i18next@^17.0.15:
-  version "17.0.15"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.15.tgz#a4a378910fa06ca1c34f9e481ff6642acdb16dba"
-  integrity sha512-d+DLqZY1G15jDhSLRtsCVd/+KAWKmcmX1bp/5RjamIhftEFDvSXVgWXXkzsBFIl41VHhBV1y5JORukgz1s3GCQ==
+i18next@^17.0.16:
+  version "17.0.16"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.16.tgz#4bee0f84d6c79db3095f4eca6ded7920eea6b139"
+  integrity sha512-PtPiycw8H/45AAy2nuS3Ehov1X9k5V/gTJ89Uh8VAA3dx8EbsWwyP3c25fd4PWlLUey3YbRLTNPbre/dPho8Og==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -4820,10 +4820,10 @@ react-native-fast-image@^7.0.2:
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-7.0.2.tgz#e06b21f42f4a9786eaa86f3db35d919070fb8403"
   integrity sha512-MfuzJbC0RjYobR2gFCdqe1I7jvNOCfDkjQ7VGOHXniqjohhULMkcWNBE9Umovi9Dx93lJ6t5utcE2wf/09zvlg==
 
-react-native-fbsdk@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-1.0.3.tgz#e52b4dad9c14728e6c43dc1a4f44e25bbfce0a01"
-  integrity sha512-4tnL8ncqKgtrlz7l8P4+3czuKmExGO5l1RbypOIRbPp2vNT6AbKsZExrn0kUcJDP3fsuF1ODnkKUNN7RYNHhLg==
+react-native-fbsdk@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-1.0.4.tgz#ecc0faf235e12de4423af9908f56b999cf144422"
+  integrity sha512-s0fBRDi/k6jfWFRnmwQwJA4WTriKhyes71tYO6LdXF6nAI7k+7DCdFZqIA7PqtTUA7WwEjSP6qjKTibCDWOwLw==
 
 react-native-firebase@^5.5.6:
   version "5.5.6"
@@ -4929,10 +4929,10 @@ react-native-video@^5.0.2:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^7.0.5:
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.0.5.tgz#1dd9d4f2856bda86a40222eca3612bf2152bacd3"
-  integrity sha512-FWY3tjbyV3Uhuw1JxJ0zs2HspJ5HAsIfkJaquURsVWQnTdZPnkSQjHWQp0PzGIwJ1PPVOA/gnhRmd7SZU/Br5Q==
+react-native-webview@^7.0.6:
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.0.6.tgz#b34685ce76c59d90b183a45f1321e1f1148bdab9"
+  integrity sha512-AaDyHlGfzY5LYoe7Z1C1Z9r2wbWit1vV1lKShJqRGEY+MVafXk49VXDll6wxQCT6pMX3bxOsRmrv3GV5daHYWA==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"

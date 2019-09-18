@@ -1,14 +1,17 @@
 import React, { useCallback, useState } from 'react'
 import { AppNavigation } from 'navigation'
 import { useTranslation } from 'react-i18next'
-import { GoogleSignin, statusCodes } from 'react-native-google-signin'
+import { GoogleSignin } from 'react-native-google-signin'
+import AsyncStorage from '@react-native-community/async-storage'
+import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
+import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
 import { authenticateGoogle } from 'graphql/mutations/user/authenticateGoogle'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { Button, Text, Loader } from './styles'
 
-function Google({ authenticateGoogle: authenticateGoogleMutation }) {
+function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -20,6 +23,8 @@ function Google({ authenticateGoogle: authenticateGoogleMutation }) {
       })
 
       setIsLoading(true)
+
+      AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.GOOGLE)
 
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()
@@ -40,7 +45,7 @@ function Google({ authenticateGoogle: authenticateGoogleMutation }) {
   }, [])
 
   return (
-    <Button onPress={handleLoginManager}>
+    <Button onPress={handleLoginManager} border={border}>
       <Text white medium>
         {t('Google:button')}
       </Text>

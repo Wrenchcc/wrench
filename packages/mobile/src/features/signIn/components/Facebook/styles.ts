@@ -11,7 +11,6 @@ export const Button = styled(Touchable)`
   flex-direction: row;
   padding: 20px;
   margin-top: 15;
-  margin-bottom: 15;
 `
 
 export const Text = styled(UiText)`

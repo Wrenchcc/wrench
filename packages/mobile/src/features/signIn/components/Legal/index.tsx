@@ -3,10 +3,11 @@ import { useTranslation } from 'react-i18next'
 import { showModal, SCREENS, STATUS_BAR } from 'navigation'
 import { Touchable } from 'ui'
 import { Base, Text } from './styles'
+import { COLORS } from 'ui/constants'
 
 const LEGAL_URL = 'https://wrench.cc/terms'
 
-function Legal() {
+function Legal({ color = 'white' }) {
   const { t } = useTranslation()
 
   const handleNavigation = useCallback(
@@ -16,6 +17,9 @@ function Legal() {
           statusBar: {
             style: STATUS_BAR.DARK,
           },
+          layout: {
+            backgroundColor: COLORS.WHITE,
+          },
         },
         url: LEGAL_URL,
       }),
@@ -24,9 +28,11 @@ function Legal() {
 
   return (
     <Base>
-      <Text>{t('Legal:description')}</Text>
+      <Text color={color}>{t('Legal:description')}</Text>
       <Touchable onPress={handleNavigation}>
-        <Text underline>{t('Legal:link')}</Text>
+        <Text underline color={color}>
+          {t('Legal:link')}
+        </Text>
       </Touchable>
     </Base>
   )

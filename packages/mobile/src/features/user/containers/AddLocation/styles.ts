@@ -1,24 +1,18 @@
 import styled from 'styled-components'
-import { hasNotch } from 'utils/platform'
-import UiText from 'ui/Text'
+import { COLORS } from 'ui/constants'
+import { NAVIGATION } from 'navigation/constants'
 
-export const Footer = styled.View`
-  position: absolute;
-  bottom: ${hasNotch ? 40 : 20};
-  left: 20;
-  right: 20;
+export const Header = styled.View`
+  z-index: 10;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 20px;
+  margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT};
+  height: ${NAVIGATION.TOP_BAR_HEIGHT};
+  background-color: ${COLORS.WHITE};
 `
 
-export const Information = styled.View`
-  margin-top: 50;
-`
-
-export const Row = styled.View`
-  margin-top: ${props => (props.first ? 30 : 0)};
-`
-
-export const Counter = styled(UiText)`
-  position: absolute;
-  right: 0;
-  top: 20;
+export const Center = styled.View`
+  flex: 1;
 `

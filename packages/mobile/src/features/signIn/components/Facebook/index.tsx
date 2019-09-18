@@ -1,7 +1,10 @@
 import React, { useCallback, useState } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
 import { AppNavigation } from 'navigation'
 import { useTranslation } from 'react-i18next'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
+import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
+import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
@@ -16,6 +19,8 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
     try {
       const result = await LoginManager.logInWithPermissions(['public_profile', 'email'])
       setIsLoading(true)
+
+      AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.FACEBOOK)
 
       if (result.isCancelled) {
         setIsLoading(false)

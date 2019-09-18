@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
-import { Input, Header, Icon } from 'ui'
+import { Icon } from 'ui'
 import { arrowLeft } from 'images'
+import { Header, Center } from './styles'
+import GooglePlacesAutocomplete from 'components/GooglePlacesAutocomplete'
 
 function AddLocation() {
   const { t } = useTranslation()
@@ -13,12 +15,13 @@ function AddLocation() {
   }, [navigateBack])
 
   return (
-    <Header
-      headerLeft={<Icon source={arrowLeft} onPress={handleNavigateBack} />}
-      headerTitle={
-        <Input color="dark" placeholder="Search location" autoFocus style={{ marginLeft: 20 }} />
-      }
-    />
+    <Header>
+      <Icon source={arrowLeft} onPress={handleNavigateBack} />
+
+      <Center>
+        <GooglePlacesAutocomplete autoFocus keyboardAppearance="dark" />
+      </Center>
+    </Header>
   )
 }
 

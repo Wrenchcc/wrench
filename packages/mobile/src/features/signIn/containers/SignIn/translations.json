@@ -2,11 +2,13 @@
   "SignIn": {
     "en": {
       "headline": "Post, \nexplore \nand learn.",
-      "description": "Post your projects, watch others, discuss and learn together."
+      "description": "Post your projects, watch others, discuss and learn together.",
+      "other": "Other sign in options"
     },
     "sv": {
       "headline": "Posta, \nutforska \noch lär.",
-      "description": "Dela dina projekt, följ andras, diskutera och lär av varandra."
+      "description": "Dela dina projekt, följ andras, diskutera och lär av varandra.",
+      "other": "Andra inloggningsalternativ"
     }
   }
 }

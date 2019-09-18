@@ -135,6 +135,9 @@
       "follow": "Follow",
       "unfollow": "Following"
     },
+    "Apple": {
+      "button": "Sign in with Apple"
+    },
     "OnboardingContent": {
       "headline": "What are you interested in?",
       "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with."
@@ -156,7 +159,8 @@
     },
     "SignIn": {
       "headline": "Post, \nexplore \nand learn.",
-      "description": "Post your projects, watch others, discuss and learn together."
+      "description": "Post your projects, watch others, discuss and learn together.",
+      "other": "Other sign in options"
     },
     "EditButton": {
       "edit": "Edit"
@@ -462,6 +466,9 @@
       "follow": "Följ",
       "unfollow": "Följer"
     },
+    "Apple": {
+      "button": "Logga in med Apple"
+    },
     "OnboardingContent": {
       "headline": "Vad är du intresserad av?",
       "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med."
@@ -483,7 +490,8 @@
     },
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",
-      "description": "Dela dina projekt, följ andras, diskutera och lär av varandra."
+      "description": "Dela dina projekt, följ andras, diskutera och lär av varandra.",
+      "other": "Andra inloggningsalternativ"
     },
     "EditButton": {
       "edit": "Redigera"
