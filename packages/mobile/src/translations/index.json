@@ -28,6 +28,9 @@
       "like": "{{count}} spark",
       "like_plural": "{{count, humanFormat}} sparks"
     },
+    "LocationAutocomplete": {
+      "placeholder": "Search location"
+    },
     "MediaPickerList": {
       "deselectAll": "Deselect all"
     },
@@ -358,6 +361,9 @@
     "LikePost": {
       "like": "{{count}} gnista",
       "like_plural": "{{count, humanFormat}} gnistor"
+    },
+    "LocationAutocomplete": {
+      "placeholder": "Sök plats"
     },
     "MediaPickerList": {
       "deselectAll": "Avmarkera alla"

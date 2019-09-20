@@ -4,7 +4,7 @@ import { useNavigation } from 'navigation'
 import { Icon } from 'ui'
 import { arrowLeft } from 'images'
 import { Header, Center } from './styles'
-import GooglePlacesAutocomplete from 'components/GooglePlacesAutocomplete'
+import LocationAutocomplete from 'components/LocationAutocomplete'
 
 function AddLocation() {
   const { t } = useTranslation()
@@ -19,7 +19,7 @@ function AddLocation() {
       <Icon source={arrowLeft} onPress={handleNavigateBack} />
 
       <Center>
-        <GooglePlacesAutocomplete autoFocus keyboardAppearance="dark" />
+        <LocationAutocomplete autoFocus />
       </Center>
     </Header>
   )

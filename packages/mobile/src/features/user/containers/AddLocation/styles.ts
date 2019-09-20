@@ -15,4 +15,8 @@ export const Header = styled.View`
 
 export const Center = styled.View`
   flex: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 `
