@@ -1,27 +1,35 @@
 import React, { useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
 import { Icon } from 'ui'
 import { arrowLeft } from 'images'
-import { Header, Center } from './styles'
-import LocationAutocomplete from 'components/LocationAutocomplete'
+import SearchLocation from 'components/SearchLocation'
+import { useUserStore } from 'store'
 
 function AddLocation() {
-  const { t } = useTranslation()
   const { navigateBack } = useNavigation()
+
+  const { update } = useUserStore(store => ({
+    update: store.actions.update,
+  }))
 
   const handleNavigateBack = useCallback(() => {
     navigateBack()
   }, [navigateBack])
 
-  return (
-    <Header>
-      <Icon source={arrowLeft} onPress={handleNavigateBack} />
+  const handleSelection = useCallback(
+    location => {
+      update('location', location.place_name)
+      navigateBack()
+    },
+    [navigateBack, update]
+  )
 
-      <Center>
-        <LocationAutocomplete autoFocus />
-      </Center>
-    </Header>
+  return (
+    <SearchLocation
+      autoFocus
+      iconLeft={<Icon source={arrowLeft} onPress={handleNavigateBack} />}
+      onPress={handleSelection}
+    />
   )
 }
 

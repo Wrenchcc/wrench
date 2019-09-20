@@ -2,6 +2,8 @@ import React, { useState, useCallback } from 'react'
 import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
+import { useQuery, CURRENT_USER_QUERY } from 'gql'
+import { useUserStore } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
 import { COLORS } from 'ui/constants'
 import { close } from 'images'
@@ -14,16 +16,31 @@ const MAX_CHARACTERS = 100
 function EditProfile() {
   const { t } = useTranslation()
   const { dismissModal, navigateTo } = useNavigation()
-  const [isLoading, setLoading] = useState(false)
-  const [bio, setBio] = useState('')
+  const [isSaving, setSaving] = useState(false)
+
+  const { data } = useQuery(CURRENT_USER_QUERY)
+
+  const { update, location, bio, website } = useUserStore(store => ({
+    update: store.actions.update,
+    location: store.location,
+    bio: store.bio,
+    website: store.website,
+  }))
 
   const handleBio = useCallback(
     text => {
       if (text.length <= MAX_CHARACTERS) {
-        setBio(text)
+        update('bio', text)
       }
     },
-    [setBio]
+    [update]
+  )
+
+  const handleWebsite = useCallback(
+    text => {
+      update('website', text)
+    },
+    [update]
   )
 
   const handleDismissModal = useCallback(() => {
@@ -43,10 +60,10 @@ function EditProfile() {
   }, [navigateTo])
 
   const handleSave = useCallback(() => {
-    setLoading(true)
+    setSaving(true)
 
     setTimeout(dismissModal, 500)
-  }, [setLoading, dismissModal])
+  }, [setSaving, dismissModal])
 
   const handleChangeAvatar = useCallback(() => {
     navigateTo(SCREENS.ADD_AVATAR, {
@@ -73,7 +90,7 @@ function EditProfile() {
           </Text>
         }
         headerRight={
-          isLoading ? (
+          isSaving ? (
             <ActivityIndicator size="small" />
           ) : (
             <Touchable onPress={handleSave}>
@@ -88,10 +105,7 @@ function EditProfile() {
           keyboardDismissMode="on-drag"
         >
           <ChangeAvatar>
-            <Avatar
-              uri="https://edge-files.wrench.cc/avatar/c1f69907-1355-4f0e-a690-1acbbe848142.jpg?w=120&h=120?dpr=2"
-              size={120}
-            />
+            <Avatar uri={data.user.avatarUrl} size={120} />
             <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
               <Text color="white" medium fontSize={15}>
                 {t('EditProfile:change')}
@@ -105,9 +119,11 @@ function EditProfile() {
             <Row first>
               <Touchable onPress={navigateToAddLocation} nativeHandler>
                 <Input
+                  color="dark"
                   placeholder={t('EditProfile:place')}
                   editable={false}
                   textContentType="location"
+                  value={location || (data.user && data.user.location)}
                 />
               </Touchable>
             </Row>
@@ -116,12 +132,12 @@ function EditProfile() {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:bio')}
-                value={bio}
+                value={bio || (data.user && data.user.bio)}
                 onChangeText={handleBio}
-                style={{ paddingRight: 50 }}
+                style={{ paddingRight: 55 }}
               />
               <Counter color="light_grey" fontSize={15}>
-                {`${bio.length}/${MAX_CHARACTERS}`}
+                {`${bio || (data.user && data.user.bio).length}/${MAX_CHARACTERS}`}
               </Counter>
             </Row>
 
@@ -131,6 +147,8 @@ function EditProfile() {
                 placeholder={t('EditProfile:website')}
                 keyboardType="url"
                 textContentType="URL"
+                onChangeText={handleWebsite}
+                value={website || (data.user && data.user.website)}
               />
             </Row>
           </Information>

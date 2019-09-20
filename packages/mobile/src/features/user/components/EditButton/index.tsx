@@ -6,6 +6,7 @@ import Text from 'ui/Text'
 function EditButton() {
   const { t } = useTranslation()
   const { showModal } = useNavigation()
+
   const handleNavigation = useCallback(() => showModal(SCREENS.EDIT_PROFILE), [])
 
   return (

@@ -28,9 +28,6 @@
       "like": "{{count}} spark",
       "like_plural": "{{count, humanFormat}} sparks"
     },
-    "LocationAutocomplete": {
-      "placeholder": "Search location"
-    },
     "MediaPickerList": {
       "deselectAll": "Deselect all"
     },
@@ -52,6 +49,12 @@
     "SearchBar": {
       "placeholder": "Search",
       "cancel": "Cancel"
+    },
+    "SearchLocationFooter": {
+      "poweredBy": "Powered by"
+    },
+    "SearchLocation": {
+      "placeholder": "Search location"
     },
     "Toast": {
       "network": "No internet connection",
@@ -362,9 +365,6 @@
       "like": "{{count}} gnista",
       "like_plural": "{{count, humanFormat}} gnistor"
     },
-    "LocationAutocomplete": {
-      "placeholder": "Sök plats"
-    },
     "MediaPickerList": {
       "deselectAll": "Avmarkera alla"
     },
@@ -386,6 +386,12 @@
     "SearchBar": {
       "placeholder": "Sök",
       "cancel": "Avbryt"
+    },
+    "SearchLocationFooter": {
+      "poweredBy": "Drivs med"
+    },
+    "SearchLocation": {
+      "placeholder": "Sök plats"
     },
     "Toast": {
       "network": "Ingen internetanslutning",
