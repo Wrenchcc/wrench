@@ -3,7 +3,7 @@ import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-nativ
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { useQuery, CURRENT_USER_QUERY } from 'gql'
-import { useUserStore } from 'store'
+import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
 import { COLORS } from 'ui/constants'
 import { close } from 'images'
@@ -30,7 +30,7 @@ function EditProfile() {
   const handleBio = useCallback(
     text => {
       if (text.length <= MAX_CHARACTERS) {
-        update('bio', text)
+        update(USER.BIO, text)
       }
     },
     [update]
@@ -38,7 +38,7 @@ function EditProfile() {
 
   const handleWebsite = useCallback(
     text => {
-      update('website', text)
+      update(USER.BIO, text)
     },
     [update]
   )

@@ -45,7 +45,8 @@ target 'Wrench' do
   pod 'react-native-media-library', :path => '../node_modules/react-native-media-library'
   pod 'react-native-image-manipulator', :path => '../node_modules/react-native-image-manipulator'
   pod 'react-native-device-locale', :path => '../node_modules/react-native-device-locale'
- 
+  # pod 'RNAppleAuthentication', :path => '../node_modules/react-native-apple-authentication/ios'
+  
   # Required by Facebook
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'

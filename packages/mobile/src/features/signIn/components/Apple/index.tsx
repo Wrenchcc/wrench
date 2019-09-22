@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { AppNavigation } from 'navigation'
 import AsyncStorage from '@react-native-community/async-storage'
+import * as AppleAuthentication from 'react-native-apple-authentication'
 import { useTranslation } from 'react-i18next'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
@@ -16,7 +17,7 @@ function Apple({ authenticateApple: authenticateAppleMutation, border }) {
 
   const handleLoginManager = useCallback(async () => {
     try {
-      // AppleAuthentication.signInAsync()
+      AppleAuthentication.signInAsync()
       AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.APPLE)
 
       setIsLoading(true)

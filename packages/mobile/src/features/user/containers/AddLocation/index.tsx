@@ -3,7 +3,7 @@ import { useNavigation } from 'navigation'
 import { Icon } from 'ui'
 import { arrowLeft } from 'images'
 import SearchLocation from 'components/SearchLocation'
-import { useUserStore } from 'store'
+import { useUserStore, USER } from 'store'
 
 function AddLocation() {
   const { navigateBack } = useNavigation()
@@ -18,7 +18,7 @@ function AddLocation() {
 
   const handleSelection = useCallback(
     location => {
-      update('location', location.place_name)
+      update(USER.LOCATION, location.place_name)
       navigateBack()
     },
     [navigateBack, update]

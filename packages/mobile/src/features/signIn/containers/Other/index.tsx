@@ -8,7 +8,7 @@ import Google from '../../components/Google'
 import Apple from '../../components/Apple'
 import { Base, Inner, Row, Footer } from './styles'
 
-const isAvailableAsync = false
+const isAvailableAsync = true
 
 function Other() {
   const { dismissModal } = useNavigation()

@@ -24,11 +24,11 @@ import {
   Options,
 } from './styles'
 
-const isAvailableAsync = false
+const isAvailableAsync = true
 
 function renderPreferredSignInProvider(provider) {
   switch (provider) {
-    case SIGN_IN_PROVIDERS.APPLEW: {
+    case SIGN_IN_PROVIDERS.APPLE: {
       return <Apple />
     }
     case SIGN_IN_PROVIDERS.FACEBOOK: {

@@ -18,3 +18,9 @@ export const TOAST = {
   SHOW: 'show',
   TYPE: 'type',
 }
+
+export const USER = {
+  BIO: 'bio',
+  WEBSITE: 'website',
+  LOCATION: 'location',
+}

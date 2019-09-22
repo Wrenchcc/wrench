@@ -1,0 +1,10 @@
+{
+  "SearchLocation": {
+    "en": {
+      "placeholder": "Search location"
+     },
+    "sv": {
+      "placeholder": "Sök plats"
+     }
+  }
+}

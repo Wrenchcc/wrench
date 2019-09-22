@@ -22,7 +22,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.6.0",
     "google-auth-library": "^5.2.2",
-    "graphql": "^14.5.6",
+    "graphql": "^14.5.7",
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.2",
