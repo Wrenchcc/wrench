@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
@@ -27,6 +27,12 @@ function EditProfile() {
     website: store.website,
   }))
 
+  useEffect(() => {
+    update(USER.BIO, data.user.bio)
+    update(USER.LOCATION, data.user.location)
+    update(USER.WEBSITE, data.user.website)
+  }, [update, data])
+
   const handleBio = useCallback(
     text => {
       if (text.length <= MAX_CHARACTERS) {
@@ -38,7 +44,7 @@ function EditProfile() {
 
   const handleWebsite = useCallback(
     text => {
-      update(USER.BIO, text)
+      update(USER.WEBSITE, text)
     },
     [update]
   )
@@ -123,7 +129,7 @@ function EditProfile() {
                   placeholder={t('EditProfile:place')}
                   editable={false}
                   textContentType="location"
-                  value={location || (data.user && data.user.location)}
+                  value={location}
                 />
               </Touchable>
             </Row>
@@ -132,12 +138,12 @@ function EditProfile() {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:bio')}
-                value={bio || (data.user && data.user.bio)}
+                value={bio}
                 onChangeText={handleBio}
                 style={{ paddingRight: 55 }}
               />
               <Counter color="light_grey" fontSize={15}>
-                {`${bio || (data.user && data.user.bio).length}/${MAX_CHARACTERS}`}
+                {`${bio.length}/${MAX_CHARACTERS}`}
               </Counter>
             </Row>
 
@@ -148,7 +154,7 @@ function EditProfile() {
                 keyboardType="url"
                 textContentType="URL"
                 onChangeText={handleWebsite}
-                value={website || (data.user && data.user.website)}
+                value={website}
               />
             </Row>
           </Information>

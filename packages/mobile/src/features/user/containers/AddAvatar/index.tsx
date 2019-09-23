@@ -20,6 +20,13 @@ function AddAvatar() {
     navigateBack()
   }, [navigateBack])
 
+  const handleSelection = useCallback(
+    item => {
+      setSelected(item)
+    },
+    [setSelected]
+  )
+
   const renderComponent = useCallback(() => {
     return selectedFile ? (
       <ImageEditor source={selectedFile} onChange={() => {}} />
