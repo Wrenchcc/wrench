@@ -13,21 +13,6 @@ import { Information, Row, Counter, ChangeAvatar, Overlay } from './styles'
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
 
-const options = {
-  title: 'Select Avatar',
-  cancelButtonTitle: 'Cancel',
-  takePhotoButtonTitle: 'Take Photo…',
-  chooseFromLibraryButtonTitle: 'Choose from Library…',
-  mediaType: 'photo',
-  permissionDenied: {
-    title: 'Permission denied',
-    text: 'To be able to take pictures with your camera and choose images from your library.',
-    reTryTitle: 're-try',
-    okTitle: "I'm sure",
-  },
-  tintColor: 'black',
-}
-
 function EditProfile() {
   const { t } = useTranslation()
   const { dismissModal, navigateTo } = useNavigation()
@@ -87,17 +72,33 @@ function EditProfile() {
   }, [setSaving, dismissModal])
 
   const handleChangeAvatar = useCallback(() => {
-    ImagePicker.showImagePicker(options, response => {
-      // if (response.didCancel) {
-      //   console.log('User cancelled image picker')
-      // } else if (response.error) {
-      //   console.log('ImagePicker Error: ', response.error)
-      // } else if (response.customButton) {
-      //   console.log('User tapped custom button: ', response.customButton)
-      // } else {
-      //   const source = { uri: response.uri }
-      // }
-    })
+    ImagePicker.showImagePicker(
+      {
+        title: 'Select Avatar',
+        cancelButtonTitle: 'Cancel',
+        takePhotoButtonTitle: 'Take Photo…',
+        chooseFromLibraryButtonTitle: 'Choose from Library…',
+        mediaType: 'photo',
+        permissionDenied: {
+          title: 'Permission denied',
+          text: 'To be able to take pictures with your camera and choose images from your library.',
+          reTryTitle: 're-try',
+          okTitle: "I'm sure",
+        },
+        tintColor: 'black',
+      },
+      res => {
+        // if (res.didCancel) {
+        //   console.log('User cancelled image picker')
+        // } else if (res.error) {
+        //   console.log('ImagePicker Error: ', res.error)
+        // } else if (res.customButton) {
+        //   console.log('User tapped custom button: ', res.customButton)
+        // } else {
+        //   const source = { uri: res.uri }
+        // }
+      }
+    )
   }, [])
 
   return (
