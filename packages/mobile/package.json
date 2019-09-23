@@ -50,6 +50,7 @@
     "react-native-google-signin": "^2.0.0",
     "react-native-haptic-feedback": "^1.8.2",
     "react-native-image-manipulator": "https://github.com/pontusab/react-native-image-manipulator",
+    "react-native-image-picker": "^1.1.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-media-library": "https://github.com/pontusab/react-native-media-library",
     "react-native-navigation": "3.2.0",

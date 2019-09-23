@@ -207,6 +207,8 @@ PODS:
     - React
   - react-native-image-manipulator (1.0.1):
     - React
+  - react-native-image-picker (1.1.0):
+    - React
   - react-native-media-library (1.0.0):
     - React
   - react-native-netinfo (4.2.2):
@@ -320,6 +322,7 @@ DEPENDENCIES:
   - react-native-device-locale (from `../node_modules/react-native-device-locale`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - react-native-image-manipulator (from `../node_modules/react-native-image-manipulator`)
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-media-library (from `../node_modules/react-native-media-library`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
@@ -421,6 +424,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fbsdk"
   react-native-image-manipulator:
     :path: "../node_modules/react-native-image-manipulator"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   react-native-media-library:
     :path: "../node_modules/react-native-media-library"
   react-native-netinfo:
@@ -526,6 +531,7 @@ SPEC CHECKSUMS:
   react-native-device-locale: 1caaa26d37987794e7761b936117f947c08aedab
   react-native-fbsdk: 45e28bbab3e905cbc635c0bdd3444b372e933ae9
   react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
+  react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
   react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
   react-native-netinfo: 2bb2e5094edcfecfb340a85053608526cb20f185
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
