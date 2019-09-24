@@ -140,14 +140,16 @@ export const PRE_SING_URLS_MUTATION = gql`
 //   }
 // `
 //
-// export const EDIT_USER_MUTATION = gql`
-//   mutation editUser($input: EditUserInput!) {
-//     editUser(input: $input) {
-//       ...currentUserInfo
-//     }
-//   }
-// `
-//
+
+export const EDIT_USER_MUTATION = gql`
+  mutation editUser($input: EditUserInput!) {
+    editUser(input: $input) {
+      ...currentUserFragment
+    }
+  }
+  ${fragment.CURRENT_USER_FRAGMENT}
+`
+
 export const REFRESH_TOKEN_MUTATION = gql`
   mutation refreshToken($refreshToken: String!) {
     token: refreshToken(refreshToken: $refreshToken) {

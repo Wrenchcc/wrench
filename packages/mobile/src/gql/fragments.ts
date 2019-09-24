@@ -15,6 +15,30 @@ export const USER_FRAGMENT = gql`
   }
 `
 
+export const CURRENT_USER_FRAGMENT = gql`
+  fragment currentUserFragment on User {
+    id
+    fullName
+    firstName
+    lastName
+    username
+    avatarUrl
+    projectCount
+    dynamicLink
+    isOnline
+    website
+    location
+    bio
+    settings {
+      timezone
+      locale
+    }
+    interestedIn {
+      id
+    }
+  }
+`
+
 export const USER_SETTINGS_FRAGMENT = gql`
   fragment userSettingsFragment on User {
     id

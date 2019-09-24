@@ -1,9 +1,9 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useNavigation, SCREENS } from 'navigation'
-import { useQuery, CURRENT_USER_QUERY } from 'gql'
+import { useQuery, useMutation, CURRENT_USER_QUERY, EDIT_USER_MUTATION } from 'gql'
 import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
 import { close } from 'images'
@@ -16,7 +16,6 @@ const MAX_CHARACTERS = 100
 function EditProfile() {
   const { t } = useTranslation()
   const { dismissModal, navigateTo } = useNavigation()
-  const [isSaving, setSaving] = useState(false)
 
   const { data } = useQuery(CURRENT_USER_QUERY)
 
@@ -26,6 +25,8 @@ function EditProfile() {
     bio: store.bio,
     website: store.website,
   }))
+
+  const [editUser, { loading }] = useMutation(EDIT_USER_MUTATION)
 
   useEffect(() => {
     update(USER.BIO, data.user.bio)
@@ -65,11 +66,24 @@ function EditProfile() {
     })
   }, [navigateTo])
 
-  const handleSave = useCallback(() => {
-    setSaving(true)
+  const handleSave = useCallback(async () => {
+    try {
+      await editUser({
+        variables: {
+          input: {
+            avatarUrl: '',
+            location,
+            bio,
+            website,
+          },
+        },
+      })
 
-    setTimeout(dismissModal, 500)
-  }, [setSaving, dismissModal])
+      setTimeout(dismissModal, 100)
+    } catch (err) {
+      console.log(err)
+    }
+  }, [dismissModal, location, bio, website])
 
   const handleChangeAvatar = useCallback(() => {
     ImagePicker.showImagePicker(
@@ -111,7 +125,7 @@ function EditProfile() {
           </Text>
         }
         headerRight={
-          isSaving ? (
+          loading ? (
             <ActivityIndicator size="small" />
           ) : (
             <Touchable onPress={handleSave}>

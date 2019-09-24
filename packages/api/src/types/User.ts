@@ -79,6 +79,10 @@ export default gql`
     interestedIn: [ProjectTypeInput]
     timezone: String
     locale: String
+    location: String
+    bio: String
+    website: String
+    avatarUrl: String
   }
 
   input ToggleNotificationSettingsInput {

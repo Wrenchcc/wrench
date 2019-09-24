@@ -3,7 +3,7 @@ import { v4 } from 'uuid'
 import getExtFromType from '../../utils/getExtFromType'
 import { isAuthenticated } from '../../utils/permissions'
 
-const debug = require('debug')('api:s3')
+const debug = require('debug')('api:preSignUrls')
 
 const { AWS_S3_REGION, AWS_S3_BUCKET, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
 
