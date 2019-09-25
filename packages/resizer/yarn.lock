@@ -128,10 +128,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@types/aws-lambda@8.10.31":
-  version "8.10.31"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.31.tgz#f34c42412e59824efa21717c71024f7d04405b51"
-  integrity sha512-xcmOvzVILQoex1oR+vjKnBP3OJn+g92r3yVzeTSmRgLQwBvSOghRPRSx3rVMQivLzAIR6atxlVu3AV9bxc/hQw==
+"@types/aws-lambda@8.10.33":
+  version "8.10.33"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.33.tgz#64ad8f2e785e5c2cf86dc2d596c9a0b2e2e14ab5"
+  integrity sha512-BZ8lPY/vyUq+Bid/BgYrKbUF36SZYuGOAMgOq/VgqnTQnCn9GBo3HejKZ6xrUzA8zLf9Pjs707amkt4f7rWujw==
 
 "@types/lodash@^4.14.123":
   version "4.14.138"
@@ -143,15 +143,15 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.4.tgz#64db61e0359eb5a8d99b55e05c729f130a678b04"
   integrity sha512-W0+n1Y+gK/8G2P/piTkBBN38Qc5Q1ZSO6B5H3QmPCUewaiXOo2GCAWZ4ElZCcNhjJuBSUSLGFUJnmlCn5+nxOQ==
 
-"@types/node@^12.7.5":
-  version "12.7.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.5.tgz#e19436e7f8e9b4601005d73673b6dc4784ffcc2f"
-  integrity sha512-9fq4jZVhPNW8r+UYKnxF1e2HkDWOWKM5bC2/7c9wPV835I0aOrVbS/Hw/pWPk2uKrNXQqg9Z959Kz+IYDd5p3w==
+"@types/node@^12.7.7":
+  version "12.7.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.7.tgz#f9bd8c00fa9e1a8129af910fc829f6139c397d6c"
+  integrity sha512-4jUncNe2tj1nmrO/34PsRpZqYVnRV1svbU78cKhuQKkMntKB/AmdLyGgswcZKjFHEHGpiY8pVD8CuVI55nP54w==
 
-"@types/sharp@^0.22.2":
-  version "0.22.2"
-  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.22.2.tgz#c9b613816ec000d94f153259b25ae41f874a75f5"
-  integrity sha512-oH49f42h3nf/qys0weYsaTGiMv67wPB769ynCoPfBAVwjjxFF3QtIPEe3MfhwyNjQAhQhTEfnmMKvVZfcFkhIw==
+"@types/sharp@^0.22.3":
+  version "0.22.3"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.22.3.tgz#db64657398be95c4f4d70d5a81a849bfada6422d"
+  integrity sha512-4fP7DGvNMlk6qy3rtsC24rLttg7oa0yVugFXPRmD8kGxHLvoqiRTVUbcK3qB0eYK6pO9mBWkzAAL7lV1htig3A==
   dependencies:
     "@types/node" "*"
 
@@ -587,10 +587,10 @@ aws-sdk@^2.526.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.533.0:
-  version "2.533.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.533.0.tgz#69298d2e6c646ce5cb5ba2bf414c9e53ec3f7761"
-  integrity sha512-OSe7C0jnBdgfzedOtK+TgBEwtJaaZovm+Q2fbqIlfhUWg3rhhkt3oLyQ9bRD30/CFaunLhLr/8HAAN+/x+DWAA==
+aws-sdk@^2.535.0:
+  version "2.535.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.535.0.tgz#b14bf4fc8e579b4a672eecd900efbb42e29cf10a"
+  integrity sha512-k/ujHppqiEL05jKMPMvABPJhLTxodE/eGLkL9sUjwF5kLcxvzCC6W8K3KbH/pucrKNk5LSz0iQq04+FFvrEy8w==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -5358,10 +5358,10 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.40.2:
-  version "4.40.2"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.40.2.tgz#d21433d250f900bf0facbabe8f50d585b2dc30a7"
-  integrity sha512-5nIvteTDCUws2DVvP9Qe+JPla7kWPPIDFZv55To7IycHWZ+Z5qBdaBYPyuXWdhggTufZkQwfIK+5rKQTVovm2A==
+webpack@^4.41.0:
+  version "4.41.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.41.0.tgz#db6a254bde671769f7c14e90a1a55e73602fc70b"
+  integrity sha512-yNV98U4r7wX1VJAj5kyMsu36T8RPPQntcb5fJLOsMz/pt/WrKC0Vp1bAlqPLkA1LegSwQwf6P+kAbyhRKVQ72g==
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"

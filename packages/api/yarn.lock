@@ -514,10 +514,10 @@ apollo-server-caching@^0.5.0:
   dependencies:
     lru-cache "^5.0.0"
 
-apollo-server-core@^2.9.3:
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-2.9.3.tgz#918f836c8215d371935c831c72d0840c7bf0250f"
-  integrity sha512-KQpOM3nAXdMqKVE0HHcOkH/EVhyDqFEKLNFlsyGHGOn9ujpI6RsltX+YpXRyAdbfQHpTk11v/IAo6XksWN+g1Q==
+apollo-server-core@^2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-2.9.4.tgz#0404455884951804d23ea64e45514c73afd34e5e"
+  integrity sha512-6mzipnn9woJxgo/JQFWTlY13svS7HCr0ZsN035eRmKOsXzROfB9ugXcTuc6MP94ICM7TlB/DtJOP+bLX53mijw==
   dependencies:
     "@apollographql/apollo-tools" "^0.4.0"
     "@apollographql/graphql-playground-html" "1.6.24"
@@ -554,10 +554,10 @@ apollo-server-errors@^2.3.3:
   resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-2.3.3.tgz#83763b00352c10dc68fbb0d41744ade66de549ff"
   integrity sha512-MO4oJ129vuCcbqwr5ZwgxqGGiLz3hCyowz0bstUF7MR+vNGe4oe3DWajC9lv4CxrhcqUHQOeOPViOdIo1IxE3g==
 
-apollo-server-express@^2.9.3:
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/apollo-server-express/-/apollo-server-express-2.9.3.tgz#67573404030c2676be49a7bf97d423b8462e295c"
-  integrity sha512-Hkfs+ce6GqaoSzDOJs8Pj7W3YUjH0BzGglo5HMsOXOnjPZ0pJE9v8fmK76rlkITLw7GjvIq5GKlafymC31FMBw==
+apollo-server-express@^2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/apollo-server-express/-/apollo-server-express-2.9.4.tgz#ae7ca0b70a644ba9fa5e3ac395d1e2d9a4b23522"
+  integrity sha512-diX9n81E0tIJ0Sy2bHvDGPM9QsFBsZ76Nx/dszinY00ViyWG0yIAYEYWeRbsoKTeNDWWTvlMrh/3Eu2oaCIEhQ==
   dependencies:
     "@apollographql/graphql-playground-html" "1.6.24"
     "@types/accepts" "^1.3.5"
@@ -565,7 +565,7 @@ apollo-server-express@^2.9.3:
     "@types/cors" "^2.8.4"
     "@types/express" "4.17.1"
     accepts "^1.3.5"
-    apollo-server-core "^2.9.3"
+    apollo-server-core "^2.9.4"
     apollo-server-types "^0.2.4"
     body-parser "^1.18.3"
     cors "^2.8.4"
@@ -659,10 +659,10 @@ async-retry@^1.2.1:
   dependencies:
     retry "0.12.0"
 
-aws-sdk@^2.534.0:
-  version "2.534.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.534.0.tgz#72eac35c58651eb533044551e5fd06a7a8c8be79"
-  integrity sha512-0wm8mQg+N7vzOaFiM8wwvUXqWayf1ebqfi/SYVygASA79SnRe16pT73X2kEB/DbhXo+487Hf9p3hBGAsjoLcIA==
+aws-sdk@^2.535.0:
+  version "2.535.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.535.0.tgz#b14bf4fc8e579b4a672eecd900efbb42e29cf10a"
+  integrity sha512-k/ujHppqiEL05jKMPMvABPJhLTxodE/eGLkL9sUjwF5kLcxvzCC6W8K3KbH/pucrKNk5LSz0iQq04+FFvrEy8w==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -2102,10 +2102,10 @@ lru-cache@^5.0.0:
   dependencies:
     yallist "^3.0.2"
 
-luxon@^1.19.2:
-  version "1.19.2"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.19.2.tgz#f041a9031e7dff6fdbff46e46c73b3fdf4ab2764"
-  integrity sha512-4Dn6oriheX04QQd7mMhuScnyQPdD7h11aCJgSTq9FqkOWdxX7xRUXoX/OXu4rkw98NmcVz3QSLpLbDnT6lVsMw==
+luxon@^1.19.3:
+  version "1.19.3"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.19.3.tgz#86c04a1395529b4386ae235a8fe16d0a82a0695b"
+  integrity sha512-YwTDjGRQC0QC9Iya2g2eKZfgEFqRId4ZoLHORQcfTMB/5xrTx427V7ZPjQJ1vzvhA2vJfG2bh1Kv8V8IFMWCUA==
 
 make-dir@^3.0.0:
   version "3.0.0"
