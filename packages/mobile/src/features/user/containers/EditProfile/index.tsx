@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
@@ -6,9 +6,11 @@ import { useNavigation, SCREENS } from 'navigation'
 import { useQuery, useMutation, CURRENT_USER_QUERY, EDIT_USER_MUTATION } from 'gql'
 import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
+import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { isIphone } from 'utils/platform'
-import { Information, Row, Counter, ChangeAvatar, Overlay } from './styles'
+import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './styles'
+// import { preSignUrl } from 'src/gql'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
@@ -16,11 +18,25 @@ const MAX_CHARACTERS = 100
 function EditProfile() {
   const { t } = useTranslation()
   const { dismissModal, navigateTo } = useNavigation()
+  const [uploadUrl, setUploadUrl] = useState()
 
   const { data } = useQuery(CURRENT_USER_QUERY)
 
-  const { update, location, bio, website } = useUserStore(store => ({
+  const {
+    update,
+    initialState,
+    avatarUrl,
+    location,
+    bio,
+    firstName,
+    lastName,
+    website,
+  } = useUserStore(store => ({
+    initialState: store.actions.initialState,
     update: store.actions.update,
+    avatarUrl: store.avatarUrl,
+    firstName: store.firstName,
+    lastName: store.lastName,
     location: store.location,
     bio: store.bio,
     website: store.website,
@@ -29,23 +45,14 @@ function EditProfile() {
   const [editUser, { loading }] = useMutation(EDIT_USER_MUTATION)
 
   useEffect(() => {
-    update(USER.BIO, data.user.bio)
-    update(USER.LOCATION, data.user.location)
-    update(USER.WEBSITE, data.user.website)
-  }, [update, data])
+    initialState(data.user)
+  }, [initialState, data])
 
   const handleBio = useCallback(
     text => {
       if (text.length <= MAX_CHARACTERS) {
         update(USER.BIO, text)
       }
-    },
-    [update]
-  )
-
-  const handleWebsite = useCallback(
-    text => {
-      update(USER.WEBSITE, text)
     },
     [update]
   )
@@ -68,10 +75,19 @@ function EditProfile() {
 
   const handleSave = useCallback(async () => {
     try {
+      let avatarUrl
+
+      if (uploadUrl) {
+        // Upload avatar
+        avatarUrl = null
+      }
+
       await editUser({
         variables: {
           input: {
-            avatarUrl: '',
+            avatarUrl,
+            firstName,
+            lastName,
             location,
             bio,
             website,
@@ -79,38 +95,34 @@ function EditProfile() {
         },
       })
 
-      setTimeout(dismissModal, 100)
+      dismissModal()
     } catch (err) {
-      console.log(err)
+      logError(err)
     }
-  }, [dismissModal, location, bio, website])
+  }, [dismissModal, location, bio, website, firstName, lastName, uploadUrl])
 
   const handleChangeAvatar = useCallback(() => {
     ImagePicker.showImagePicker(
       {
-        title: 'Select Avatar',
-        cancelButtonTitle: 'Cancel',
-        takePhotoButtonTitle: 'Take Photo…',
-        chooseFromLibraryButtonTitle: 'Choose from Library…',
+        title: t('EditProfile:imagePickerTitle'), // 'Select Avatar'
+        cancelButtonTitle: t('EditProfile:imagePickerCancel'), // 'Cancel',
+        takePhotoButtonTitle: t('EditProfile:imagePickerPhoto'), // 'Take Photo…',
+        chooseFromLibraryButtonTitle: t('EditProfile:imagePickerLibrary'), // 'Choose from Library…',
         mediaType: 'photo',
         permissionDenied: {
-          title: 'Permission denied',
-          text: 'To be able to take pictures with your camera and choose images from your library.',
-          reTryTitle: 're-try',
-          okTitle: "I'm sure",
+          title: t('EditProfile:imagePickerPermissionTitle'), // 'Permission denied',
+          text: t('EditProfile:imagePickerPermissionText'), // 'To be able to take pictures with your camera and choose images from your library.',
+          reTryTitle: t('EditProfile:imagePickerPermissionRetry'), // 're-try',
+          okTitle: t('EditProfile:imagePickerPermissionOk'), // "I'm sure",
         },
         tintColor: 'black',
       },
-      res => {
-        // if (res.didCancel) {
-        //   console.log('User cancelled image picker')
-        // } else if (res.error) {
-        //   console.log('ImagePicker Error: ', res.error)
-        // } else if (res.customButton) {
-        //   console.log('User tapped custom button: ', res.customButton)
-        // } else {
-        //   const source = { uri: res.uri }
-        // }
+      async res => {
+        if (res.uri) {
+          // const url = await preSignUrl()
+          // setUploadUrl(url)
+          update(USER.AVATAR_URL, res.uri)
+        }
       }
     )
   }, [])
@@ -140,7 +152,7 @@ function EditProfile() {
           keyboardDismissMode="on-drag"
         >
           <ChangeAvatar>
-            <Avatar uri={data.user.avatarUrl} size={120} />
+            <Avatar uri={avatarUrl} size={120} />
             <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
               <Text color="white" medium fontSize={15}>
                 {t('EditProfile:change')}
@@ -152,6 +164,24 @@ function EditProfile() {
             <Title>{t('EditProfile:information')}</Title>
 
             <Row first>
+              <Input
+                color="dark"
+                placeholder={t('EditProfile:firstName')}
+                onChangeText={value => update(USER.FIRST_NAME, value)}
+                value={firstName}
+              />
+            </Row>
+
+            <Row>
+              <Input
+                color="dark"
+                placeholder={t('EditProfile:lastName')}
+                onChangeText={value => update(USER.LAST_NAME, value)}
+                value={lastName}
+              />
+            </Row>
+
+            <Row>
               <Touchable onPress={navigateToAddLocation} nativeHandler>
                 <Input
                   color="dark"
@@ -161,6 +191,14 @@ function EditProfile() {
                   value={location}
                 />
               </Touchable>
+
+              <CloseIcon
+                source={close}
+                color="light_grey"
+                width={12}
+                height={12}
+                onPress={() => update(USER.LOCATION, '')}
+              />
             </Row>
 
             <Row>
@@ -172,7 +210,7 @@ function EditProfile() {
                 style={{ paddingRight: 55 }}
               />
               <Counter color="light_grey" fontSize={15}>
-                {`${bio.length}/${MAX_CHARACTERS}`}
+                {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
             </Row>
 
@@ -182,7 +220,7 @@ function EditProfile() {
                 placeholder={t('EditProfile:website')}
                 keyboardType="url"
                 textContentType="URL"
-                onChangeText={handleWebsite}
+                onChangeText={value => update(USER.WEBSITE, value)}
                 value={website}
               />
             </Row>

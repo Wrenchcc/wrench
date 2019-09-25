@@ -3,6 +3,8 @@
     "en": {
       "headerTitle": "Edit profile",
       "information":  "Information",
+      "firstName": "First name",
+      "lastName": "Last name",
       "place": "City, Country",
       "bio": "Bio",
       "website": "Website",
@@ -12,6 +14,8 @@
     "sv": {
       "headerTitle": "Redigera profil",
       "information":  "Information",
+      "firstName": "Förnamn",
+      "lastName": "Efternamn",
       "place": "Stad, Land",
       "bio": "Bio",
       "website": "Hemsida",

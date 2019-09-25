@@ -20,7 +20,10 @@ export const TOAST = {
 }
 
 export const USER = {
+  AVATAR_URL: 'avatarUrl',
   BIO: 'bio',
   WEBSITE: 'website',
   LOCATION: 'location',
+  FIRST_NAME: 'firstName',
+  LAST_NAME: 'lastName',
 }

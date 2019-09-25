@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
+import UiIcon from 'ui/Icon'
 
 export const Information = styled.View`
   margin-top: 50;
@@ -29,4 +30,10 @@ export const Counter = styled(UiText)`
   position: absolute;
   right: 0;
   top: 20;
+`
+
+export const CloseIcon = styled(UiIcon)`
+  position: absolute;
+  right: 0;
+  top: 22;
 `

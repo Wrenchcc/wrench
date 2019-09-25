@@ -76,6 +76,8 @@ export default gql`
   }
 
   input EditUserInput {
+    firstName: String
+    lastName: String
     interestedIn: [ProjectTypeInput]
     timezone: String
     locale: String

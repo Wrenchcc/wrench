@@ -59,27 +59,28 @@ export default isAuthenticated(async (_, args, ctx) => {
     }
   }
 
-  if (args.input.location) {
+  await ctx.db.User.update(ctx.userId, {
+    location: args.input.location || null,
+    bio: args.input.bio || null,
+    website: args.input.website || null,
+    avatarUrl: args.input.avatarUrl || null,
+  })
+
+  if (args.input.firstName) {
     await ctx.db.User.update(ctx.userId, {
-      location: args.input.location,
+      firstName: args.input.firstName,
     })
   }
 
-  if (args.input.bio) {
+  if (args.input.lastName) {
     await ctx.db.User.update(ctx.userId, {
-      bio: args.input.bio,
+      lastName: args.input.lastName,
     })
   }
 
-  if (args.input.website) {
+  if (args.input.firstName || args.input.lastName) {
     await ctx.db.User.update(ctx.userId, {
-      website: args.input.website,
-    })
-  }
-
-  if (args.input.avatarUrl) {
-    await ctx.db.User.update(ctx.userId, {
-      avatarUrl: args.input.avatarUrl,
+      fullName: `${args.input.firstName} ${args.input.lastName}`,
     })
   }
 

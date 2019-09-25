@@ -17,7 +17,7 @@ export async function registerDeviceToken(token) {
       },
     })
   } catch (err) {
-    logError(errr)
+    logError(err)
   }
 }
 
@@ -25,10 +25,12 @@ export async function preSignUrls(input) {
   try {
     return client.mutate({
       mutation: PRE_SING_URLS_MUTATION,
-      variables: { input },
+      variables: {
+        input,
+      },
     })
   } catch (err) {
-    logError(errr)
+    logError(err)
   }
 }
 
@@ -36,6 +38,6 @@ export async function getCurrentUser() {
   try {
     return client.query({ query: CURRENT_USER_QUERY })
   } catch (err) {
-    logError(errr)
+    logError(err)
   }
 }
