@@ -5,6 +5,7 @@ import {
   REGISTER_DEVICE_TOKEN_MUTATION,
   CURRENT_USER_QUERY,
   PRE_SING_URLS_MUTATION,
+  PRE_SING_URL_MUTATION,
 } from './'
 
 export async function registerDeviceToken(token) {
@@ -25,6 +26,19 @@ export async function preSignUrls(input) {
   try {
     return client.mutate({
       mutation: PRE_SING_URLS_MUTATION,
+      variables: {
+        input,
+      },
+    })
+  } catch (err) {
+    logError(err)
+  }
+}
+
+export async function preSignUrl(input) {
+  try {
+    return client.mutate({
+      mutation: PRE_SING_URL_MUTATION,
       variables: {
         input,
       },

@@ -3,14 +3,13 @@ import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-nativ
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useNavigation, SCREENS } from 'navigation'
-import { useQuery, useMutation, CURRENT_USER_QUERY, EDIT_USER_MUTATION } from 'gql'
+import { useQuery, useMutation, preSignUrl, CURRENT_USER_QUERY, EDIT_USER_MUTATION } from 'gql'
 import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { isIphone } from 'utils/platform'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './styles'
-// import { preSignUrl } from 'src/gql'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
@@ -104,22 +103,39 @@ function EditProfile() {
   const handleChangeAvatar = useCallback(() => {
     ImagePicker.showImagePicker(
       {
-        title: t('EditProfile:imagePickerTitle'), // 'Select Avatar'
-        cancelButtonTitle: t('EditProfile:imagePickerCancel'), // 'Cancel',
-        takePhotoButtonTitle: t('EditProfile:imagePickerPhoto'), // 'Take Photo…',
-        chooseFromLibraryButtonTitle: t('EditProfile:imagePickerLibrary'), // 'Choose from Library…',
+        title: t('EditProfile:imagePickerTitle'),
+        cancelButtonTitle: t('EditProfile:imagePickerCancel'),
+        takePhotoButtonTitle: t('EditProfile:imagePickerPhoto'),
+        chooseFromLibraryButtonTitle: t('EditProfile:imagePickerLibrary'),
         mediaType: 'photo',
         permissionDenied: {
-          title: t('EditProfile:imagePickerPermissionTitle'), // 'Permission denied',
-          text: t('EditProfile:imagePickerPermissionText'), // 'To be able to take pictures with your camera and choose images from your library.',
-          reTryTitle: t('EditProfile:imagePickerPermissionRetry'), // 're-try',
-          okTitle: t('EditProfile:imagePickerPermissionOk'), // "I'm sure",
+          title: t('EditProfile:imagePickerPermissionTitle'),
+          text: t('EditProfile:imagePickerPermissionText'),
+          reTryTitle: t('EditProfile:imagePickerPermissionRetry'),
+          okTitle: t('EditProfile:imagePickerPermissionOk'),
         },
         tintColor: 'black',
       },
       async res => {
         if (res.uri) {
-          // const url = await preSignUrl()
+          const url = await preSignUrl({
+            path: 'avatar',
+            type: 'IMAGE',
+          })
+
+          if (url) {
+            try {
+              const blah = await fetch(url, {
+                body: res.uri,
+                method: 'PUT',
+              })
+
+              console.log(blah)
+            } catch (err) {
+              console.log(err)
+            }
+          }
+
           // setUploadUrl(url)
           update(USER.AVATAR_URL, res.uri)
         }
@@ -222,6 +238,7 @@ function EditProfile() {
                 textContentType="URL"
                 onChangeText={value => update(USER.WEBSITE, value)}
                 value={website}
+                autoCorrect={false}
               />
             </Row>
           </Information>

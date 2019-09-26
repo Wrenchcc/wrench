@@ -130,6 +130,17 @@ export const PRE_SING_URLS_MUTATION = gql`
     }
   }
 `
+
+export const PRE_SING_URL_MUTATION = gql`
+  mutation($input: PreSignedUrlInput!) {
+    preSignUrl(input: $input) {
+      url
+      type
+      filename
+    }
+  }
+`
+
 //
 // export const AUTHENTICATE_FACEBOOK_MUTATION = gql`
 //   mutation authenticateFacebook($token: String!) {

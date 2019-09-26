@@ -30,7 +30,11 @@ export default isAuthenticated(async (_, { input }) => {
             Key: `${UPLOAD_DIRECTORY}/${filename}`,
           })
 
-          const res = { url, type, filename }
+          const res = {
+            url,
+            type,
+            filename,
+          }
 
           debug(res, '%O')
 

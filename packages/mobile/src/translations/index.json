@@ -190,7 +190,15 @@
       "bio": "Bio",
       "website": "Website",
       "change": "Change",
-      "save": "Save"
+      "save": "Save",
+      "imagePickerTitle": "Select Avatar",
+      "imagePickerCancel": "Cancel",
+      "imagePickerPhoto": "Take Photo…",
+      "imagePickerLibrary": "Choose from Library…",
+      "imagePickerPermissionTitle": "Permission denied",
+      "imagePickerPermissionText": "To be able to take pictures with your camera and choose images from your library.",
+      "imagePickerPermissionRetry": "re-try",
+      "imagePickerPermissionOk": "I'm sure"
     },
     "Settings": {
       "invite": "Invite people",
@@ -529,7 +537,15 @@
       "bio": "Bio",
       "website": "Hemsida",
       "change": "Ändra",
-      "save": "Spara"
+      "save": "Spara",
+      "imagePickerTitle": "Välj Avatar",
+      "imagePickerCancel": "Avbryt",
+      "imagePickerPhoto": "Ta ett foto…",
+      "imagePickerLibrary": "Välj från kamerarullen…",
+      "imagePickerPermissionTitle": "Åtkomst nekad",
+      "imagePickerPermissionText": "För att kunna ta bilder med din kamera och välja bilder från ditt bibliotek.",
+      "imagePickerPermissionRetry": "Försök igen",
+      "imagePickerPermissionOk": "Jag är säker"
     },
     "Settings": {
       "invite": "Bjud in vänner",
