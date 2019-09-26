@@ -75,26 +75,25 @@ function EditProfile() {
 
   const handleSave = useCallback(async () => {
     try {
-      let avatarUrl
+      let uploadedAvatar
 
       if (uploadUrl) {
         try {
-          const blah = await fetch(uploadUrl, {
+          const upload = await fetch(uploadUrl, {
             body: avatarUrl,
             method: 'PUT',
           })
 
-          console.log(blah)
-          avatarUrl = null
+          uploadedAvatar = upload._bodyBlob._data.name
         } catch (err) {
-          console.log(err)
+          logError(err)
         }
       }
 
       await editUser({
         variables: {
           input: {
-            avatarUrl,
+            avatarUrl: uploadedAvatar,
             firstName,
             lastName,
             location,
@@ -128,12 +127,12 @@ function EditProfile() {
       },
       async res => {
         if (res.uri) {
-          const url = await preSignUrl({
+          const { data } = await preSignUrl({
             path: 'avatar',
             type: FILE_TYPES.IMAGE,
           })
 
-          setUploadUrl(url)
+          setUploadUrl(data.preSignUrl.url)
           update(USER.AVATAR_URL, res.uri)
         }
       }
