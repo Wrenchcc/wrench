@@ -413,7 +413,7 @@ PODS:
     - React
   - RNReactNativeHapticFeedback (1.8.2):
     - React
-  - RNReanimated (1.2.0):
+  - RNReanimated (1.3.0):
     - React
   - RNShare (2.0.0):
     - React
@@ -708,7 +708,7 @@ SPEC CHECKSUMS:
   RNPermissions: 4de767fb0ff41240a387b4f1275b51fe0f15f950
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
   RNReactNativeHapticFeedback: e11a4da0ce174e9f88b03cbaf5d76d94633cdee2
-  RNReanimated: 1b52415c4302f198cb581282a0166690bad62c43
+  RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SDWebImageWebPCoder: cc72085bb20368b2f8dbb21b7e355c667e1309b7
