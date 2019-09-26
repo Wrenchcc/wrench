@@ -14,10 +14,15 @@
   resolved "https://registry.yarnpkg.com/@apollographql/graphql-playground-html/-/graphql-playground-html-1.6.24.tgz#3ce939cb127fb8aaa3ffc1e90dff9b8af9f2e3dc"
   integrity sha512-8GqG48m1XqyXh4mIZrtB5xOhUwSsh1WsrrsaZQOEYYql3YN9DEu9OOSg0ILzXHZo/h2Q74777YE4YzlArQzQEQ==
 
-"@firebase/app-types@0.x", "@firebase/app-types@^0.4.3":
+"@firebase/app-types@0.x":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.4.3.tgz#80d2b6e5ee43ac99892329ab02301ee7ed82da45"
   integrity sha512-VU5c+ZjejvefLVH4cjiX3Hy1w9HYMv7TtZ1tF9ZmOqT4DSIU1a3VISWoo8///cGGffr5IirMO+Q/WZLI4p8VcA==
+
+"@firebase/app-types@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.4.4.tgz#6423e9b284018109d3658a6ecf7f82ca0e288bbb"
+  integrity sha512-s3rKk6aGnzNTx6bzdtOdJpg2XXMiadLk/hv/PjiFEI/m+8MEKz+wkl+eGwvzxFyOd6BD5GVy637boGFqRt20FQ==
 
 "@firebase/database-types@0.4.3":
   version "0.4.3"
@@ -659,10 +664,10 @@ async-retry@^1.2.1:
   dependencies:
     retry "0.12.0"
 
-aws-sdk@^2.535.0:
-  version "2.535.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.535.0.tgz#b14bf4fc8e579b4a672eecd900efbb42e29cf10a"
-  integrity sha512-k/ujHppqiEL05jKMPMvABPJhLTxodE/eGLkL9sUjwF5kLcxvzCC6W8K3KbH/pucrKNk5LSz0iQq04+FFvrEy8w==
+aws-sdk@^2.536.0:
+  version "2.536.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.536.0.tgz#8ef8465607553408e79cdbe90d661941c32c5cb8"
+  integrity sha512-d91ASAgDtjP5Al8nRtdOhnS6m7XczqdmVfkyFtd7GlWJ2jy2NxQ+PI4QVp7n/74BNRSSLoyxmCqz2Ulqu3TOsQ==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -1631,10 +1636,10 @@ graphql@^14.5.3:
   dependencies:
     iterall "^1.2.2"
 
-graphql@^14.5.7:
-  version "14.5.7"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.7.tgz#8646a3fcc07922319cc3967eba4a64b32929f77f"
-  integrity sha512-as410RMJSUFqF8RcH2QWxZ5ioqHzsH9VWnWbaU+UnDXJ/6azMDIYPrtXCBPXd8rlunEVb7W8z6fuUnNHMbFu9A==
+graphql@^14.5.8:
+  version "14.5.8"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.8.tgz#504f3d3114cb9a0a3f359bbbcf38d9e5bf6a6b3c"
+  integrity sha512-MMwmi0zlVLQKLdGiMfWkgQD7dY/TUKt4L+zgJ/aR0Howebod3aNgP5JkgvAULiR2HPVZaP2VEElqtdidHweLkg==
   dependencies:
     iterall "^1.2.2"
 

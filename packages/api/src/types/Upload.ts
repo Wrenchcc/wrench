@@ -8,13 +8,8 @@ export default gql`
     filename: String
   }
 
-  input PreSignedUrlsInput {
+  input PreSignedUrlnput {
     type: UploadType!
-  }
-
-  input PreSignedUrlInput {
-    type: UploadType!
-    path: String!
   }
 
   enum UploadType {
@@ -23,7 +18,6 @@ export default gql`
   }
 
   extend type Mutation {
-    preSignUrl(input: [PreSignedUrlInput]): PreSignedUrl
-    preSignUrls(input: [PreSignedUrlsInput]): [PreSignedUrl]
+    preSignUrls(input: [PreSignedUrlnput]): [PreSignedUrl]
   }
 `
