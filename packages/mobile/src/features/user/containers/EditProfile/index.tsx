@@ -9,6 +9,7 @@ import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { isIphone } from 'utils/platform'
+import { FILE_TYPES } from 'utils/enums'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './styles'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
@@ -77,8 +78,17 @@ function EditProfile() {
       let avatarUrl
 
       if (uploadUrl) {
-        // Upload avatar
-        avatarUrl = null
+        try {
+          const blah = await fetch(uploadUrl, {
+            body: avatarUrl,
+            method: 'PUT',
+          })
+
+          console.log(blah)
+          avatarUrl = null
+        } catch (err) {
+          console.log(err)
+        }
       }
 
       await editUser({
@@ -98,7 +108,7 @@ function EditProfile() {
     } catch (err) {
       logError(err)
     }
-  }, [dismissModal, location, bio, website, firstName, lastName, uploadUrl])
+  }, [dismissModal, location, bio, website, firstName, lastName, uploadUrl, avatarUrl])
 
   const handleChangeAvatar = useCallback(() => {
     ImagePicker.showImagePicker(
@@ -120,23 +130,10 @@ function EditProfile() {
         if (res.uri) {
           const url = await preSignUrl({
             path: 'avatar',
-            type: 'IMAGE',
+            type: FILE_TYPES.IMAGE,
           })
 
-          if (url) {
-            try {
-              const blah = await fetch(url, {
-                body: res.uri,
-                method: 'PUT',
-              })
-
-              console.log(blah)
-            } catch (err) {
-              console.log(err)
-            }
-          }
-
-          // setUploadUrl(url)
+          setUploadUrl(url)
           update(USER.AVATAR_URL, res.uri)
         }
       }
