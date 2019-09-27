@@ -348,7 +348,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (7.2.5):
+  - react-native-webview (7.2.7):
     - React
   - React-RCTActionSheet (0.61.1):
     - React-Core/RCTActionSheetHeaders (= 0.61.1)
@@ -417,9 +417,9 @@ PODS:
     - React
   - RNShare (2.0.0):
     - React
-  - SDWebImage (5.1.1):
-    - SDWebImage/Core (= 5.1.1)
-  - SDWebImage/Core (5.1.1)
+  - SDWebImage (5.2.0):
+    - SDWebImage/Core (= 5.2.0)
+  - SDWebImage/Core (5.2.0)
   - SDWebImageWebPCoder (0.2.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.0)
@@ -688,7 +688,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 8a5e811e1716e401ebea4a327c7e193ebadcd572
+  react-native-webview: d143130e6993ea015098add115c19a765a7e1422
   React-RCTActionSheet: af4d951113b1e068bb30611f91b984a7a73597ff
   React-RCTAnimation: 4f518d70bb6890b7c3d9d732f84786d6693ca297
   React-RCTBlob: 072a4888c08de0eef6d04eaa727d25e577e6ff26
@@ -710,7 +710,7 @@ SPEC CHECKSUMS:
   RNReactNativeHapticFeedback: e11a4da0ce174e9f88b03cbaf5d76d94633cdee2
   RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
-  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  SDWebImage: 609192dcf3898c910a2848032372ead951e66364
   SDWebImageWebPCoder: cc72085bb20368b2f8dbb21b7e355c667e1309b7
   Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
   SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
