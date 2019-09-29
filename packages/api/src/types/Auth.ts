@@ -10,10 +10,15 @@ export default gql`
     access_token: String
   }
 
+  input ApplePayload {
+    firstName: String
+    lastName: String
+  }
+
   extend type Mutation {
+    authenticateApple(identityToken: String!, user: ApplePayload!): Tokens
     authenticateFacebook(token: String!): Tokens
     authenticateGoogle(idToken: String!, code: String!): Tokens
-    authenticateApple(idToken: String!, code: String!): Tokens
     refreshToken(refreshToken: String!): AccessToken
   }
 `

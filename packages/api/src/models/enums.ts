@@ -24,6 +24,7 @@ export enum NotificationTypes {
 }
 
 export enum AuthProviderTypes {
+  APPLE = 'APPLE',
   FACEBOOK = 'FACEBOOK',
   GOOGLE = 'GOOGLE',
 }

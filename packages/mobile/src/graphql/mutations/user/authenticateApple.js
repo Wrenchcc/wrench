@@ -4,8 +4,8 @@ import { track, events } from 'utils/analytics'
 import { setTokens } from 'utils/storage/auth'
 
 export const AuthenticateAppleMutation = gql`
-  mutation authenticateApple($idToken: String!, $code: String!) {
-    authenticateApple(idToken: $idToken, code: $code) {
+  mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {
+    authenticateApple(identityToken: $identityToken, user: $user) {
       access_token
       refresh_token
     }
@@ -14,11 +14,11 @@ export const AuthenticateAppleMutation = gql`
 
 const authenticateAppleOptions = {
   props: ({ mutate }) => ({
-    authenticateApple: (idToken, code) =>
+    authenticateApple: (identityToken, user) =>
       mutate({
         variables: {
-          idToken,
-          code,
+          identityToken,
+          user,
         },
         update: async (_, { data }) => {
           const { access_token, refresh_token } = data.authenticateApple
