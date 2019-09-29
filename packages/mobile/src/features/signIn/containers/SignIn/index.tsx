@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AsyncStorage from '@react-native-community/async-storage'
+import * as AppleAuthentication from 'react-native-apple-authentication'
 import { useNavigation, SCREENS } from 'navigation'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
@@ -24,9 +25,7 @@ import {
   Options,
 } from './styles'
 
-const isAvailableAsync = true
-
-function renderPreferredSignInProvider(provider) {
+function renderPreferredSignInProvider(provider, isAppleAvailable) {
   switch (provider) {
     case SIGN_IN_PROVIDERS.APPLE: {
       return <Apple />
@@ -38,7 +37,7 @@ function renderPreferredSignInProvider(provider) {
       return <Google />
     }
     default: {
-      if (isIphone && isAvailableAsync) {
+      if (isIphone && isAppleAvailable) {
         return <Apple />
       } else if (isAndroid) {
         return <Google />
@@ -53,9 +52,13 @@ function SignIn() {
   const { t } = useTranslation()
   const { showModal } = useNavigation()
   const [provider, setProvider] = useState()
+  const [isAvailable, setAvailable] = useState(false)
 
   async function fetchPreferredSignInAsync() {
     const provider = await AsyncStorage.getItem(PREFFERED_SIGN_IN_PROVIDER)
+    const isAvailable = await AppleAuthentication.isAvailableAsync()
+
+    setAvailable(isAvailable)
 
     if (provider) {
       setProvider(provider)
@@ -95,7 +98,7 @@ function SignIn() {
           </Description>
         </Content>
 
-        {renderPreferredSignInProvider(provider)}
+        {renderPreferredSignInProvider(provider, isAvailable)}
 
         <Options onPress={handleOtherOptions}>
           <Text color="white" medium center>

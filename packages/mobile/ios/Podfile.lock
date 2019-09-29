@@ -135,11 +135,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Permission-Camera (2.0.0-rc.1):
+  - Permission-Camera (2.0.0):
     - RNPermissions
-  - Permission-Microphone (2.0.0-rc.1):
+  - Permission-Microphone (2.0.0):
     - RNPermissions
-  - Permission-PhotoLibrary (2.0.0-rc.1):
+  - Permission-PhotoLibrary (2.0.0):
     - RNPermissions
   - Protobuf (3.9.2)
   - RCTRequired (0.61.1)
@@ -387,6 +387,8 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.1)
   - ReactNativeNavigation (3.2.0):
     - React
+  - RNAppleAuthentication (1.0.0):
+    - React
   - RNCAsyncStorage (1.6.2):
     - React
   - RNFastImage (7.0.2):
@@ -407,7 +409,7 @@ PODS:
   - RNGoogleSignin (2.0.0):
     - GoogleSignIn (~> 4.4.0)
     - React
-  - RNPermissions (2.0.0-rc.1):
+  - RNPermissions (2.0.0):
     - React
   - RNRate (1.0.1):
     - React
@@ -482,6 +484,7 @@ DEPENDENCIES:
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
+  - RNAppleAuthentication (from `../node_modules/react-native-apple-authentication/ios`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
@@ -609,6 +612,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
+  RNAppleAuthentication:
+    :path: "../node_modules/react-native-apple-authentication/ios"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNFastImage:
@@ -664,9 +669,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Permission-Camera: 40b0be462fac1db38fedddb01ae4aea898991707
-  Permission-Microphone: aad740aeb66b54a84b034c7636de8d5078d005cf
-  Permission-PhotoLibrary: c87959cfabfb54b2324fd1ec5958bf9a57ffce2c
+  Permission-Camera: 550f1b7609fc658fa2e28f930e235aa994c7b315
+  Permission-Microphone: c63c2adf5027d69383e27784622af743207fdf10
+  Permission-PhotoLibrary: 908dceabf4cc66c81c0c485a72e1e6b1d253f58e
   Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
   RCTRequired: 53825815218847d3e9c7b6d92ad2d197a926d51e
   RCTTypeSafety: d886540c518e53064dfa081bf7693fd650699b92
@@ -700,12 +705,13 @@ SPEC CHECKSUMS:
   React-RCTVibration: 8be61459e3749d1fb02cf414edd05b3007622882
   ReactCommon: 4fba5be89efdf0b5720e0adb3d8d7edf6e532db0
   ReactNativeNavigation: aad255980f20cc5d2001ed37972319f3789fea70
+  RNAppleAuthentication: 427b61c8af06c67791d847baf5d033875dd1a94a
   RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
-  RNPermissions: 4de767fb0ff41240a387b4f1275b51fe0f15f950
+  RNPermissions: 0954178834810a675efad2a26041ffa5380e663f
   RNRate: 29be49c24b314c4e8ec09d848c3965f61cb0be47
   RNReactNativeHapticFeedback: e11a4da0ce174e9f88b03cbaf5d76d94633cdee2
   RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
@@ -716,6 +722,6 @@ SPEC CHECKSUMS:
   SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
   Yoga: d8c572ddec8d05b7dba08e4e5f1924004a177078
 
-PODFILE CHECKSUM: b7d3cc179c57849e80d2ee38e40053a71d4e5cce
+PODFILE CHECKSUM: dc80096c2484c400099da98c7b911da1429fde44
 
 COCOAPODS: 1.6.1

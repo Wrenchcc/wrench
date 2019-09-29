@@ -13,7 +13,7 @@
   "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",
     "apollo-server-express": "^2.9.4",
-    "aws-sdk": "^2.536.0",
+    "aws-sdk": "^2.538.0",
     "aws4": "^1.8.0",
     "axios": "^0.19.0",
     "base-64": "^0.1.0",
@@ -21,7 +21,7 @@
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "firebase-admin": "^8.6.0",
-    "google-auth-library": "^5.2.2",
+    "google-auth-library": "^5.3.0",
     "graphql": "^14.5.8",
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@firebase/app-types": "^0.4.4",
     "@types/graphql-depth-limit": "^1.1.2",
-    "@types/pg": "^7.11.1",
+    "@types/pg": "^7.11.2",
     "@zeit/ncc": "0.20.5",
     "bluebird": "^3.5.5",
     "chokidar": "^3.1.1",

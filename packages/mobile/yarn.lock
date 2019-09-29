@@ -1197,9 +1197,9 @@
   integrity sha512-1dVNHT76Uu5N3eJNTYcvxee+jzX4Z9lfciqRRHCU27ihbUcYi+iSc2iml5Ke1LXe1SyJCLA0+14Jh4tXJgOppA==
 
 "@hapi/hoek@8.x.x":
-  version "8.2.4"
-  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-8.2.4.tgz#684a14f4ca35d46f44abc87dfc696e5e4fe8a020"
-  integrity sha512-Ze5SDNt325yZvNO7s5C4fXDscjJ6dcqLFXJQ/M7dZRQCewuDj2iDUuBi6jLQt+APbW9RjjVEvLr35FXuOEqjow==
+  version "8.2.5"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-8.2.5.tgz#b307d3f1aced22e05bd6a2403c302eaebb577da3"
+  integrity sha512-rmGFzok1zR3xZKd5m3ihWdqafXFxvPHoQ/78+AG5URKbEbJiwBBfRgzbu+07W5f3+07JRshw6QqGbVmCp8ntig==
 
 "@hapi/joi@^15.0.3":
   version "15.1.1"
@@ -2185,9 +2185,9 @@ colorette@^1.0.7:
   integrity sha512-6S062WDQUXi6hOfkO/sBPVwE5ASXY4G2+b4atvhJfSsuUUhIaUKlkjLe9692Ipyt5/a+IPF5aVTu3V5gvXq5cg==
 
 commander@^2.19.0, commander@^2.8.1:
-  version "2.20.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
-  integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.1.tgz#3863ce3ca92d0831dcf2a102f5fb4b5926afd0f9"
+  integrity sha512-cCuLsMhJeWQ/ZpsFTbE765kvVfoeSddc4nU3up4fV+fDBcfUXnbITJ+JzhkdjzOqhURjZgujxaioam4RM9yGUg==
 
 commander@~2.13.0:
   version "2.13.0"
@@ -4061,9 +4061,9 @@ minipass@^2.9.0:
     yallist "^3.0.0"
 
 minizlib@^1.2.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-1.3.1.tgz#7335640a57f584320b4fcf41069082c442bc6bf7"
-  integrity sha512-8AgjrT7C8U/HQWM+02YJHLPh4BypAhc5pFddr0nCcowNy1Hj0hmKPMq9WkjBMn0rtUg3ia30MkCexdd1pTiTIA==
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-1.3.2.tgz#5d24764998f98112586f7e566bd4c0999769dad4"
+  integrity sha512-lsNFqSHdJ21EwKzCp12HHJGxSMtHkCW1EMA9cceG3MkMNARjuWotZnMe3NKNshAvFXpm4loZqmYsCmRwhS2JMw==
   dependencies:
     minipass "^2.9.0"
 
@@ -4748,9 +4748,9 @@ react-i18next@^10.13.1:
     html-parse-stringify2 "2.0.1"
 
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
-  version "16.9.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
-  integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
+  version "16.10.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.10.1.tgz#0612786bf19df406502d935494f0450b40b8294f"
+  integrity sha512-BXUMf9sIOPXXZWqr7+c5SeOKJykyVr2u0UDzEf4LNGc6taGkQe1A9DFD07umCIXz45RLr9oAAwZbAJ0Pkknfaw==
 
 react-lifecycles-compat@2.0.0:
   version "2.0.0"
@@ -4764,7 +4764,7 @@ react-native-actionsheet@^2.4.2:
 
 "react-native-apple-authentication@https://github.com/pontusab/react-native-apple-authentication":
   version "1.0.0"
-  resolved "https://github.com/pontusab/react-native-apple-authentication#acc0de380568abfd77146dfc3948022dac39499d"
+  resolved "https://github.com/pontusab/react-native-apple-authentication#bce06b47689b25134f0a1c08d9affd09a21b0412"
   dependencies:
     react "^16.9.0"
 
@@ -4856,10 +4856,10 @@ react-native-navigation@3.2.0:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
-react-native-permissions@^2.0.0-rc.0:
-  version "2.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.0-rc.1.tgz#60d185a632bd97cbf179c0eff13345a6f3a7c7a4"
-  integrity sha512-bF6z8mk/4Sl38ANzqlfMEQ9tyurOAd921eMHmETIDovKC31RKhd433stDyOll14IAPj0NoA1r+NAq0BbjvIGoQ==
+react-native-permissions@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.0.tgz#a18a52bb17f992deb6e48dcc6f2bcc44793cb09c"
+  integrity sha512-cUBGfV5csl0tIhYK69jqXoRyupv7eHUfg2Ua0VkAXXfLOeOxcBgPjC8/BEkUGzi3gUd+tZbwuLg/+teiPbsfcg==
 
 react-native-pinchable@^0.1.2:
   version "0.1.2"
@@ -4956,10 +4956,10 @@ react-refresh@^0.4.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.2.tgz#54a277a6caaac2803d88f1d6f13c1dcfbd81e334"
   integrity sha512-kv5QlFFSZWo7OlJFNYbxRtY66JImuP2LcrFgyJfQaf85gSP+byzG21UbDQEYjU7f//ny8rwiEkO6py2Y+fEgAQ==
 
-react@16.9.0, react@^16.9.0:
-  version "16.9.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.9.0.tgz#40ba2f9af13bc1a38d75dbf2f4359a5185c4f7aa"
-  integrity sha512-+7LQnFBwkiw+BobzOF6N//BdoNw0ouwmSJTEm9cglOOmsg/TMiFHZLe2sEoN5M7LgJTj9oHH0gxklfnQe66S1w==
+react@16.10.1, react@^16.9.0:
+  version "16.10.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.10.1.tgz#967c1e71a2767dfa699e6ba702a00483e3b0573f"
+  integrity sha512-2bisHwMhxQ3XQz4LiJJwG3360pY965pTl/MRrZYxIBKVj4fOHoDs5aZAkYXGxDRO1Li+SyjTAilQEbOmtQJHzA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -6045,9 +6045,9 @@ yallist@^2.1.2:
   integrity sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=
 
 yallist@^3.0.0, yallist@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.3.tgz#b4b049e314be545e3ce802236d6cd22cd91c3de9"
-  integrity sha512-S+Zk8DEWE6oKpV+vI3qWkaK+jSbIK86pCwe2IF/xwIpQ8jEuxpw9NyaGjmp9+BoJv5FV2piqCDcoCtStppiq2A==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.0.tgz#906cc2100972dc2625ae78f566a2577230a1d6f7"
+  integrity sha512-6gpP93MR+VOOehKbCPchro3wFZNSNmek8A2kbkOAZLIZAYx1KP/zAqwO0sOHi3xJEb+UBz8NaYt/17UNit1Q9w==
 
 yargs-parser@^11.1.1:
   version "11.1.1"

@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import * as AppleAuthentication from 'react-native-apple-authentication'
 import { useNavigation } from 'navigation'
 import { close } from 'images'
 import { Header, Icon } from 'ui'
@@ -8,13 +9,21 @@ import Google from '../../components/Google'
 import Apple from '../../components/Apple'
 import { Base, Inner, Row, Footer } from './styles'
 
-const isAvailableAsync = true
-
 function Other() {
   const { dismissModal } = useNavigation()
+  const [isAvailable, setAvailable] = useState(false)
   const providers = [<Facebook />, <Google border />]
 
-  if (isAvailableAsync) {
+  async function isAvailableAsync() {
+    const isAvailable = await AppleAuthentication.isAvailableAsync()
+    setAvailable(isAvailable)
+  }
+
+  useEffect(() => {
+    isAvailableAsync()
+  }, [])
+
+  if (isAvailable) {
     providers.push(<Apple border />)
   }
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { AppNavigation } from 'navigation'
 import AsyncStorage from '@react-native-community/async-storage'
 import * as AppleAuthentication from 'react-native-apple-authentication'
@@ -9,7 +9,21 @@ import { getCurrentUser } from 'gql'
 import { authenticateApple } from 'graphql/mutations/user/authenticateApple'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { Button, Text, Loader } from './styles'
+
+async function signInAsync() {
+  try {
+    const credential = await AppleAuthentication.signInAsync({
+      requestedScopes: [
+        AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+        AppleAuthentication.AppleAuthenticationScope.EMAIL,
+      ],
+    })
+
+    console.log(credential)
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 function Apple({ authenticateApple: authenticateAppleMutation, border }) {
   const { t } = useTranslation()
@@ -40,12 +54,13 @@ function Apple({ authenticateApple: authenticateAppleMutation, border }) {
   }, [])
 
   return (
-    <Button onPress={handleLoginManager} border={border}>
-      <Text white medium>
-        {t('Apple:button')}
-      </Text>
-      {isLoading && <Loader color="black" />}
-    </Button>
+    <AppleAuthentication.AppleAuthenticationButton
+      buttonType={AppleAuthentication.AppleAuthenticationButtonType.CONTINUE}
+      buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.WHITE_OUTLINE}
+      cornerRadius={0}
+      style={{ height: 55, width: '100%', marginBottom: 20 }}
+      onPress={signInAsync}
+    />
   )
 }
 
