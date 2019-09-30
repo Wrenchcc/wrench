@@ -1,5 +1,6 @@
 export { default as add } from './add.png'
 export { default as album } from './album.png'
+export { default as apple } from './apple.png'
 export { default as arrowDown } from './arrowDown.png'
 export { default as arrowLeft } from './arrowLeft.png'
 export { default as arrowLeftSmall } from './arrowLeftSmall.png'

@@ -2,7 +2,7 @@ import { ApolloError } from 'apollo-server-express'
 import { isAuthenticated, isAdmin } from '../../utils/permissions'
 
 /*
-  Occassionally bad actors will show up on Spectrum and become toxic, 
+  Occassionally bad actors will show up on Wrench and become toxic, 
   spam communities, harass others, or violate our code of conduct. 
   We have a safe way to ban these users in a way that respects the 
   integrity of data across the rest of the database.
