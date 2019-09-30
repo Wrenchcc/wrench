@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { useQuery, useMutation, preSignUrl, CURRENT_USER_QUERY, EDIT_USER_MUTATION } from 'gql'
 import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
@@ -15,7 +15,7 @@ import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './s
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
 
-function EditProfile() {
+function EditProfile({ onboarding }) {
   const { t } = useTranslation()
   const { dismissModal, navigateTo } = useNavigation()
   const [uploadUrl, setUploadUrl] = useState()
@@ -103,7 +103,11 @@ function EditProfile() {
         },
       })
 
-      dismissModal()
+      if (onboarding) {
+        AppNavigation()
+      } else {
+        dismissModal()
+      }
     } catch (err) {
       logError(err)
     }

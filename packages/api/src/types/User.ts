@@ -19,6 +19,7 @@ export default gql`
     website: String
     bio: String
     location: String
+    isSilhouette: Boolean
 
     projectsConnection(
       first: Int = 10

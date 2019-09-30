@@ -4,18 +4,19 @@ import * as fragment from './fragments'
 export const CURRENT_USER_QUERY = gql`
   query getCurrentUser {
     user: currentUser {
-      id
-      fullName
-      firstName
-      lastName
-      username
       avatarUrl
-      projectCount
-      dynamicLink
-      isOnline
-      website
-      location
       bio
+      dynamicLink
+      firstName
+      fullName
+      id
+      isOnline
+      isSilhouette
+      lastName
+      location
+      projectCount
+      username
+      website
       settings {
         timezone
         locale

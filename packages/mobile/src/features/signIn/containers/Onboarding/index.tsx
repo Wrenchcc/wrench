@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { AppNavigation, useNavigation } from 'navigation'
+import { AppNavigation, useNavigation, SCREENS } from 'navigation'
 import { omit } from 'ramda'
 import { compose } from 'ramda'
 import { track, events } from 'utils/analytics'
 import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
 import { editUser } from 'graphql/mutations/user/editUser'
+import { useQuery, CURRENT_USER_QUERY } from 'gql'
 import { Header, Touchable, Text, Loader, Icon } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
@@ -23,13 +24,15 @@ const keyExtractor = item => item.id
 
 function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPage }) {
   const { t } = useTranslation()
-  const { navigateBack } = useNavigation()
+  const { navigateBack, showModal } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
   const [items, setItems] = useState({})
 
   useEffect(() => {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
   }, [])
+
+  const { data } = useQuery(CURRENT_USER_QUERY)
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -57,14 +60,20 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSaving(true)
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
     const interestedIn = Object.keys(items).map(id => ({ id }))
 
-    editUserMutation({ interestedIn }).then(
-      setTimeout(settingsPage ? navigateBack : AppNavigation, 300)
-    )
+    const Navigate = data.user.isSilhouette
+      ? () =>
+          showModal(SCREENS.EDIT_PROFILE, {
+            onboarding: true,
+          })
+      : AppNavigation
+
+    await editUserMutation({ interestedIn })
+    setTimeout(settingsPage ? navigateBack : Navigate, 200)
   }
 
   const renderItem = ({ item }) => (

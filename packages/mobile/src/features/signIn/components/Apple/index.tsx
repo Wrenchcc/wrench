@@ -55,7 +55,7 @@ function Apple({ authenticateApple: authenticateAppleMutation, border }) {
       <Text white medium>
         {t('Apple:button')}
       </Text>
-      {isLoading && <Loader color="white" />}
+      {isLoading && <Loader color="black" />}
     </Button>
   )
 }
