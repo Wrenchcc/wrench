@@ -1,0 +1,39 @@
+on: push
+name: Deploy
+jobs:
+  filterMaster:
+    name: Filter Master
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Filter Master
+      uses: actions/bin/filter@master
+      with:
+        args: branch master
+    - name: Build Web
+      uses: nuxt/actions-yarn@master
+      with:
+        args: build:web
+    - name: Build API
+      uses: nuxt/actions-yarn@master
+      with:
+        args: build:api
+    - name: Deploy Web Production
+      uses: apex/actions/up@master
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      with:
+        args: -C packages/web deploy staging
+    - name: Deploy API Production
+      uses: apex/actions/up@master
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      with:
+        args: -C packages/api deploy production
+    - name: Notification
+      uses: apex/actions/slack@master
+      env:
+        SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

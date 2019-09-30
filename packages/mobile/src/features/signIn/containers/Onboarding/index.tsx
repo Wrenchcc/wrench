@@ -63,7 +63,7 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
     const interestedIn = Object.keys(items).map(id => ({ id }))
 
     editUserMutation({ interestedIn }).then(
-      setTimeout(settingsPage ? navigateBack : AppNavigation, 500)
+      setTimeout(settingsPage ? navigateBack : AppNavigation, 300)
     )
   }
 
