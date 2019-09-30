@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'
 import { Linking } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { notifications } from 'react-native-firebase'

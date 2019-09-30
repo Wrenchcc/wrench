@@ -17,7 +17,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
     "@react-native-community/async-storage": "^1.6.2",
-    "@react-native-community/netinfo": "^4.2.2",
+    "@react-native-community/netinfo": "^4.3.0",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link": "^1.2.13",
@@ -33,7 +33,7 @@
     "lodash.debounce": "^4.0.8",
     "ms": "^2.1.2",
     "ramda": "^0.26.1",
-    "react": "16.10.1",
+    "react": "16.10",
     "react-apollo": "^3.1.1",
     "react-i18next": "^10.13.1",
     "react-native": "^v0.61.1",
