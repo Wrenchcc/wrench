@@ -1,6 +1,7 @@
 import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
 import { FILE_TYPES } from 'utils/enums'
+import uploadAsync from './uploadAsync'
 
 export default async function uploadToS3Async(files) {
   try {
@@ -9,12 +10,9 @@ export default async function uploadToS3Async(files) {
 
     return Promise.all(
       files.map(async (uri, i) => {
-        const { url, filename } = urls.data.preSignUrls[i]
+        const { url, filename, type } = urls.data.preSignUrls[i]
 
-        await fetch(url, {
-          body: uri,
-          method: 'PUT',
-        })
+        await uploadAsync(url, { uri, type })
 
         return {
           filename,

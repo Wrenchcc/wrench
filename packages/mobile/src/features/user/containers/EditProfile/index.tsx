@@ -11,14 +11,16 @@ import { close } from 'images'
 import { isIphone } from 'utils/platform'
 import { FILE_TYPES } from 'utils/enums'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './styles'
+import uploadAsync from 'utils/storage/uploadAsync'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
+const UPLOAD_PATH = 'avatar'
 
 function EditProfile({ onboarding }) {
   const { t } = useTranslation()
   const { dismissModal, navigateTo } = useNavigation()
-  const [uploadUrl, setUploadUrl] = useState()
+  const [upload, setUploadFile] = useState()
 
   const { data } = useQuery(CURRENT_USER_QUERY)
 
@@ -77,14 +79,14 @@ function EditProfile({ onboarding }) {
     try {
       let uploadedAvatar
 
-      if (uploadUrl) {
+      if (upload) {
         try {
-          const upload = await fetch(uploadUrl, {
-            body: avatarUrl,
-            method: 'PUT',
+          await uploadAsync(upload.url, {
+            uri: avatarUrl,
+            type: upload.type,
           })
 
-          uploadedAvatar = upload._bodyBlob._data.name
+          uploadedAvatar = upload.filename
         } catch (err) {
           logError(err)
         }
@@ -111,7 +113,7 @@ function EditProfile({ onboarding }) {
     } catch (err) {
       logError(err)
     }
-  }, [dismissModal, location, bio, website, firstName, lastName, uploadUrl, avatarUrl])
+  }, [dismissModal, location, bio, website, firstName, lastName, upload, avatarUrl])
 
   const handleChangeAvatar = useCallback(() => {
     ImagePicker.showImagePicker(
@@ -128,16 +130,19 @@ function EditProfile({ onboarding }) {
           okTitle: t('EditProfile:imagePickerPermissionOk'),
         },
         tintColor: 'black',
+        customButtons: [{ name: 'remove', title: t('EditProfile:remove') }],
       },
       async res => {
-        if (res.uri) {
+        if (res.customButton) {
+          update(USER.AVATAR_URL, '')
+        } else {
+          update(USER.AVATAR_URL, res.uri)
           const { data } = await preSignUrl({
-            path: 'avatar',
+            path: UPLOAD_PATH,
             type: FILE_TYPES.IMAGE,
           })
 
-          setUploadUrl(data.preSignUrl.url)
-          update(USER.AVATAR_URL, res.uri)
+          setUploadFile(data.preSignUrl)
         }
       }
     )

@@ -194,11 +194,12 @@
       "imagePickerTitle": "Select Avatar",
       "imagePickerCancel": "Cancel",
       "imagePickerPhoto": "Take Photo…",
-      "imagePickerLibrary": "Choose from Library…",
+      "imagePickerLibrary": "Choose From Library…",
       "imagePickerPermissionTitle": "Permission denied",
       "imagePickerPermissionText": "To be able to take pictures with your camera and choose images from your library.",
       "imagePickerPermissionRetry": "re-try",
-      "imagePickerPermissionOk": "I'm sure"
+      "imagePickerPermissionOk": "I'm sure",
+      "remove": "Remove Current Photo"
     },
     "Settings": {
       "invite": "Invite people",
@@ -545,7 +546,8 @@
       "imagePickerPermissionTitle": "Åtkomst nekad",
       "imagePickerPermissionText": "För att kunna ta bilder med din kamera och välja bilder från ditt bibliotek.",
       "imagePickerPermissionRetry": "Försök igen",
-      "imagePickerPermissionOk": "Jag är säker"
+      "imagePickerPermissionOk": "Jag är säker",
+      "remove": "Ta bort nuvarande bild"
     },
     "Settings": {
       "invite": "Bjud in vänner",

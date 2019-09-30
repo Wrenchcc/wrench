@@ -1,6 +1,7 @@
 import { S3 } from 'aws-sdk'
 import { v4 } from 'uuid'
 import { isAuthenticated } from '../../utils/permissions'
+import getExtFromType from '../../utils/getExtFromType'
 
 const debug = require('debug')('api:preSignUrl')
 
@@ -16,7 +17,8 @@ const s3 = new S3({
 
 export default isAuthenticated(async (_, { input }) => {
   try {
-    const filename = `${v4()}.jpg`
+    const type = getExtFromType(input.type)
+    const filename = `${v4()}.${type}`
 
     try {
       const url = await s3.getSignedUrl('putObject', {
@@ -26,6 +28,7 @@ export default isAuthenticated(async (_, { input }) => {
 
       const res = {
         url,
+        type,
         filename,
       }
 
