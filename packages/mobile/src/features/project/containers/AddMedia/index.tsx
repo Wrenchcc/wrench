@@ -44,7 +44,6 @@ function AddMedia() {
 
     try {
       const files = await Promise.all(selectedFiles.map(cropImage))
-
       addFiles(files)
     } catch (err) {
       logError(err)

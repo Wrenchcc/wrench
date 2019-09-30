@@ -51,7 +51,7 @@ function Apple({ authenticateApple: authenticateAppleMutation, border }) {
 
   return (
     <Button onPress={handleLoginManager} border={border}>
-      <Icon source={apple} style={{ marginRight: 10 }} />
+      <Icon source={apple} style={{ marginRight: 10, marginTop: -3 }} />
       <Text white medium>
         {t('Apple:button')}
       </Text>
