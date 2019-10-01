@@ -29,7 +29,7 @@
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "human-format": "^0.10.1",
-    "i18next": "^17.0.16",
+    "i18next": "^17.0.17",
     "lodash.debounce": "^4.0.8",
     "ms": "^2.1.2",
     "ramda": "^0.26.1",
