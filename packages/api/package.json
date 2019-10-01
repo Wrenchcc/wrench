@@ -13,7 +13,7 @@
   "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",
     "apollo-server-express": "^2.9.4",
-    "aws-sdk": "^2.538.0",
+    "aws-sdk": "^2.539.0",
     "aws4": "^1.8.0",
     "axios": "^0.19.0",
     "base-64": "^0.1.0",
@@ -40,7 +40,7 @@
     "@types/pg": "^7.11.2",
     "@zeit/ncc": "0.20.5",
     "bluebird": "^3.5.5",
-    "chokidar": "^3.1.1",
+    "chokidar": "^3.2.0",
     "cross-env": "^6.0.0",
     "dotenv-cli": "^2.0.1",
     "graphql-log": "^0.1.3",
