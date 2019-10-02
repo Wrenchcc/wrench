@@ -2,6 +2,11 @@ import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
 import { NAVIGATION } from 'navigation/constants'
 
+export const Background = styled.View`
+  z-index: 10;
+  background-color: ${({ color }) => (color ? color : COLORS.WHITE)};
+`
+
 export const Base = styled.View`
   z-index: 10;
   flex-direction: row;
@@ -10,7 +15,6 @@ export const Base = styled.View`
   padding: 0 20px 20px;
   margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT};
   height: ${NAVIGATION.TOP_BAR_HEIGHT};
-  background-color: ${({ color }) => (color ? color : COLORS.WHITE)};
 `
 
 export const Left = styled.View`

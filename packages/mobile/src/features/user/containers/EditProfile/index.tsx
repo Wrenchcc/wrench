@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ActivityIndicator, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { ActivityIndicator, ScrollView, KeyboardAvoidingView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useNavigation, AppNavigation, SCREENS } from 'navigation'
@@ -12,6 +12,7 @@ import { isIphone } from 'utils/platform'
 import { FILE_TYPES } from 'utils/enums'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './styles'
 import uploadAsync from 'utils/storage/uploadAsync'
+import { COLORS } from 'ui/constants'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
@@ -21,6 +22,7 @@ function EditProfile({ onboarding }) {
   const { t } = useTranslation()
   const { dismissModal, navigateTo } = useNavigation()
   const [upload, setUploadFile] = useState()
+  const [isSaving, setSaving] = useState(false)
 
   const { data } = useQuery(CURRENT_USER_QUERY)
 
@@ -44,7 +46,7 @@ function EditProfile({ onboarding }) {
     website: store.website,
   }))
 
-  const [editUser, { loading }] = useMutation(EDIT_USER_MUTATION)
+  const [editUser] = useMutation(EDIT_USER_MUTATION)
 
   useEffect(() => {
     initialState(data.user)
@@ -76,6 +78,8 @@ function EditProfile({ onboarding }) {
   }, [navigateTo])
 
   const handleSave = useCallback(async () => {
+    setSaving(true)
+
     try {
       let uploadedAvatar
 
@@ -105,12 +109,15 @@ function EditProfile({ onboarding }) {
         },
       })
 
+      setSaving(false)
+
       if (onboarding) {
         AppNavigation()
       } else {
         dismissModal()
       }
     } catch (err) {
+      setSaving(false)
       logError(err)
     }
   }, [dismissModal, location, bio, website, firstName, lastName, upload, avatarUrl])
@@ -133,6 +140,10 @@ function EditProfile({ onboarding }) {
         customButtons: [{ name: 'remove', title: t('EditProfile:remove') }],
       },
       async res => {
+        if (res.didCancel) {
+          return
+        }
+
         if (res.customButton) {
           update(USER.AVATAR_URL, '')
         } else {
@@ -158,7 +169,7 @@ function EditProfile({ onboarding }) {
           </Text>
         }
         headerRight={
-          loading ? (
+          isSaving ? (
             <ActivityIndicator size="small" />
           ) : (
             <Touchable onPress={handleSave}>
@@ -203,15 +214,23 @@ function EditProfile({ onboarding }) {
             </Row>
 
             <Row>
-              <Touchable onPress={navigateToAddLocation} nativeHandler>
-                <Input
-                  color="dark"
-                  placeholder={t('EditProfile:place')}
-                  editable={false}
-                  textContentType="location"
-                  value={location}
-                />
-              </Touchable>
+              <View
+                style={{
+                  flex: 1,
+                  height: 60,
+                  justifyContent: 'center',
+                  borderBottomWidth: 1,
+                  borderBottomColor: COLORS.ULTRA_LIGHT_GREY,
+                }}
+              >
+                <Text
+                  fontSize={17}
+                  color={location ? 'dark' : 'light_grey'}
+                  onPress={navigateToAddLocation}
+                >
+                  {location ? location : t('EditProfile:place')}
+                </Text>
+              </View>
 
               <CloseIcon
                 source={close}
