@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { pathOr } from 'ramda'
 import SplashScreen from 'react-native-splash-screen'
 import { getAccessToken } from 'utils/storage/auth'
 import { getCurrentUser } from 'gql'

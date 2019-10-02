@@ -1,9 +1,13 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
+import { on } from 'jetemit'
 import { usePostStore } from 'store'
+import { UPLOAD_PROGRESS } from 'utils/storage/constants'
 import Text from 'ui/Text'
+import ProgressBar from 'ui/ProgressBar'
 import { Base, Inner, Cover } from './styles'
+import { COLORS } from 'ui/constants'
 
 const transition = (
   <Transition.Sequence>
@@ -14,6 +18,7 @@ const transition = (
 
 function Posting() {
   const ref = useRef()
+  const [progress, setProgress] = useState(0)
   const { t } = useTranslation()
 
   const { image, isPosting } = usePostStore(store => ({
@@ -23,7 +28,18 @@ function Posting() {
 
   useEffect(() => {
     ref.current.animateNextTransition()
-  }, [ref, isPosting])
+  }, [ref])
+
+  useEffect(() => {
+    const unsubscribe = on(UPLOAD_PROGRESS, p => {
+      if (p === 100) {
+        setProgress(0)
+      } else {
+        setProgress(p)
+      }
+    })
+    return () => unsubscribe()
+  }, [setProgress])
 
   return (
     <Transitioning.View ref={ref} transition={transition}>
@@ -36,6 +52,8 @@ function Posting() {
               {t('Posting:description')}
             </Text>
           </Inner>
+
+          <ProgressBar progress={progress} borderRadius={0} fillColor={COLORS.DARK} />
         </Base>
       )}
     </Transitioning.View>

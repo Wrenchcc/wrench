@@ -1,11 +1,10 @@
 import { Navigation } from 'react-native-navigation'
-import { client } from 'gql'
 import { SCREENS } from './constants'
 import createScreenHoc from './createScreenHoc'
 
-const HOC = createScreenHoc(client)
+export default function registerScreens(client) {
+  const HOC = createScreenHoc(client)
 
-export default function registerScreens() {
   Navigation.registerComponent(SCREENS.INITIALIZING, () => HOC(require('./Initializing').default))
   Navigation.registerComponent(SCREENS.MENTION, () => HOC(require('components/Mention').default))
   Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(require('components/WebView').default))

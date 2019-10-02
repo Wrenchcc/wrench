@@ -9,6 +9,7 @@ import { Text } from 'ui'
 import { isIphone, isAndroid } from 'utils/platform'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
+import { logError } from 'utils/sentry'
 import Apple from '../../components/Apple'
 import Facebook from '../../components/Facebook'
 import Google from '../../components/Google'
@@ -53,15 +54,24 @@ function SignIn() {
   const { showModal } = useNavigation()
   const [provider, setProvider] = useState()
   const [isAvailable, setAvailable] = useState(false)
+  const [isLoading, setLoading] = useState(true)
 
   async function fetchPreferredSignInAsync() {
-    const provider = await AsyncStorage.getItem(PREFFERED_SIGN_IN_PROVIDER)
-    const isAvailable = await AppleAuthentication.isAvailableAsync()
+    try {
+      const [provider, isAvailable] = await Promise.all([
+        AsyncStorage.getItem(PREFFERED_SIGN_IN_PROVIDER),
+        AppleAuthentication.isAvailableAsync(),
+      ])
 
-    setAvailable(isAvailable)
+      setAvailable(isAvailable)
+      setLoading(false)
 
-    if (provider) {
-      setProvider(provider)
+      if (provider) {
+        setProvider(provider)
+      }
+    } catch (err) {
+      setLoading(false)
+      logError(err)
     }
   }
 
@@ -98,7 +108,7 @@ function SignIn() {
           </Description>
         </Content>
 
-        {renderPreferredSignInProvider(provider, isAvailable)}
+        {!isLoading && renderPreferredSignInProvider(provider, isAvailable)}
 
         <Options onPress={handleOtherOptions}>
           <Text color="white" medium center>

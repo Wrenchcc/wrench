@@ -12,7 +12,7 @@ export default async function uploadToS3Async(files) {
       files.map(async (uri, i) => {
         const { url, filename, type } = urls.data.preSignUrls[i]
 
-        await uploadAsync(url, { uri, type })
+        await uploadAsync(url, { uri, type }, true)
 
         return {
           filename,
