@@ -7,7 +7,7 @@
     "build:web": "cd packages/web && yarn && yarn compile"
   },
   "devDependencies": {
-    "bluebird": "^3.5.5",
+    "bluebird": "^3.7.0",
     "prettier": "^1.18.2",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
