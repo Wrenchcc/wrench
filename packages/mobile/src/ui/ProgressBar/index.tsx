@@ -18,7 +18,7 @@ function ProgressBar({
   useEffect(() => {
     setWidth(progress)
     ref.current.animateNextTransition()
-  }, [progress, ref])
+  }, [progress, ref, setWidth])
 
   return (
     <Transitioning.View

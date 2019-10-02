@@ -7,7 +7,8 @@ export default async function uploadAsync(url: string, file: any, emitProgress: 
 
     if (emitProgress) {
       xhr.upload.onprogress = evt => {
-        emit(UPLOAD_PROGRESS, (evt.loaded / evt.total) * 100)
+        const progress = Math.round((evt.loaded / evt.total) * 100)
+        emit(UPLOAD_PROGRESS, progress === 100 ? 0 : progress)
       }
     }
 
@@ -20,6 +21,7 @@ export default async function uploadAsync(url: string, file: any, emitProgress: 
       }
       resolve(xhr.responseText)
     }
+
     xhr.send(file)
   })
 }

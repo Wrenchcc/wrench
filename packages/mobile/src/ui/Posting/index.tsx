@@ -21,9 +21,8 @@ function Posting() {
   const [progress, setProgress] = useState(0)
   const { t } = useTranslation()
 
-  const { image, isPosting } = usePostStore(store => ({
+  const { image } = usePostStore(store => ({
     image: store.files[0],
-    isPosting: store.isPosting,
   }))
 
   useEffect(() => {
@@ -31,19 +30,13 @@ function Posting() {
   }, [ref])
 
   useEffect(() => {
-    const unsubscribe = on(UPLOAD_PROGRESS, p => {
-      if (p === 100) {
-        setProgress(0)
-      } else {
-        setProgress(p)
-      }
-    })
+    const unsubscribe = on(UPLOAD_PROGRESS, setProgress)
     return () => unsubscribe()
-  }, [setProgress])
+  }, [])
 
   return (
     <Transitioning.View ref={ref} transition={transition}>
-      {isPosting && (
+      {progress > 0 && (
         <Base>
           <Inner>
             <Cover source={image} />
