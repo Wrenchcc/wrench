@@ -37,6 +37,7 @@
 		94F177B08D61476794C558FF /* inter_ui_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_medium.ttf; path = ../assets/fonts/inter_ui_medium.ttf; sourceTree = "<group>"; };
 		D22319F722009AC40067C6BD /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		D2BE134923350B5E007C0449 /* WrenchRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WrenchRelease.entitlements; path = Wrench/WrenchRelease.entitlements; sourceTree = "<group>"; };
+		D2E5195F234486670097E08B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D2F146272200A9B000E8A474 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2F146A12200B0D000E8A474 /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
 		DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui.ttf; path = ../assets/fonts/inter_ui.ttf; sourceTree = "<group>"; };
@@ -189,6 +190,7 @@
 				English,
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -297,6 +299,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				13B07FB21A68108700A75B9A /* Base */,
+				D2E5195F234486670097E08B /* sv */,
 			);
 			name = LaunchScreen.xib;
 			path = Wrench;
