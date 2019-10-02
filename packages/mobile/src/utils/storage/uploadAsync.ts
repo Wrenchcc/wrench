@@ -1,14 +1,11 @@
-import { emit } from 'jetemit'
-import { UPLOAD_PROGRESS } from 'utils/storage/constants'
-
-export default async function uploadAsync(url: string, file: any, emitProgress: boolean) {
+export default async function uploadAsync(url: string, file: any, onProgress) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest()
 
-    if (emitProgress) {
+    if (onProgress) {
       xhr.upload.onprogress = evt => {
         const progress = Math.round((evt.loaded / evt.total) * 100)
-        emit(UPLOAD_PROGRESS, progress === 100 ? 0 : progress)
+        onProgress(progress)
       }
     }
 
