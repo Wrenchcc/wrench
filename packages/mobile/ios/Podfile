@@ -68,7 +68,7 @@ target 'Wrench' do
   pod 'SDWebImageWebPCoder'
 
   # react-native-google-signin
-  pod 'GoogleSignIn', '~> 4.4.0'
+  pod 'GoogleSignIn'
 
   use_native_modules!
 end

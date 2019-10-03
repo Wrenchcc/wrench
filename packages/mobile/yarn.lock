@@ -4819,10 +4819,10 @@ react-native-gesture-handler@^1.4.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-google-signin@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.0.0.tgz#0d9cb128a65c0b48216716b979c1ada35900ceb0"
-  integrity sha512-9loM4lcCIdbco5BnmNio7yGaXQKCpCaY1VRmYiTSvC5NjuSf6Ui6jZRee46p/YdaU4yRnS3u5Vct6Psrvr0HNg==
+react-native-google-signin@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.0.tgz#1142a74aef16cd7d1fc6f0f1b6c82b443f0c86da"
+  integrity sha512-CcOs/M+Xjp8Oxh84Pf+wceHYgsFn9hzsm3veHJMbmnbQZO01LcwnRtgxCZy37Th1tRr+66Xo+ezYOMAudHdBfw==
 
 react-native-haptic-feedback@^1.8.2:
   version "1.8.2"
@@ -4910,10 +4910,10 @@ react-native-video@^5.0.2:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.4.0.tgz#22d051866099fb86ec1c7d64cc1534a95655c14b"
-  integrity sha512-FIemA3gVaH2jfkzyvJWqiBLvqIdMBAOLJ8tF9VVfa3YP9hpJDFu0VaAUDOz+bbJgXldTOF945STWmX6UGJt31w==
+react-native-webview@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.4.1.tgz#4fe42263506ea06ec56e291dcda8dedf9e900542"
+  integrity sha512-AVT5HIEEWc/NZdNwXRVev0cAs1Si0O3BA4Crqyor8JbwuxUUCllLv+NK7TO3eOw/ENl+QyIPHu9dizkoycmgJQ==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
