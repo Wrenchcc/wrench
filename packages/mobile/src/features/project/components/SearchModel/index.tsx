@@ -2,14 +2,14 @@ import React from 'react'
 import { View } from 'react-native'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { searchModels } from 'graphql/queries/project/searchModels'
-import { isIphone, hasNotch } from 'utils/platform'
+import { keyboardHeight } from 'utils/platform'
 
-const DEFAULT_OFFSET_BOTTOM = isIphone ? (hasNotch ? 365 : 290) : 80
+const INPUT_HEIGHT = 80
 
 const styles = {
   container: {
     backgroundColor: 'white',
-    bottom: DEFAULT_OFFSET_BOTTOM,
+    bottom: keyboardHeight + INPUT_HEIGHT,
     left: 0,
     position: 'absolute',
     right: 0,

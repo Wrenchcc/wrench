@@ -4,10 +4,9 @@ import { useMentionStore } from 'store'
 import { InfiniteList, MentionUser, NoResults, SearchingFor, Loader } from 'ui'
 import { searchUsers } from 'graphql/queries/user/searchUsers'
 import { NAVIGATION } from 'navigation/constants'
-import { isIphone, hasNotch } from 'utils/platform'
+import { keyboardHeight } from 'utils/platform'
 
-const SAFE_AREA = hasNotch ? 75 : 0
-const OFFSET_BOTTOM = isIphone ? 275 + SAFE_AREA : 60
+const INPUT_HEIGHT = 60
 
 // TODO: Use useQuery instead of HoC
 const List = searchUsers(
@@ -18,11 +17,12 @@ const List = searchUsers(
       <View
         style={{
           backgroundColor: 'white',
-          bottom: OFFSET_BOTTOM,
+          bottom: keyboardHeight + INPUT_HEIGHT,
           left: 0,
           position: 'absolute',
           top: NAVIGATION.STATUS_BAR_HEIGHT,
           width: '100%',
+          zIndex: 100,
         }}
       >
         <InfiniteList
