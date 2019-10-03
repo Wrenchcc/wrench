@@ -31,6 +31,7 @@ build/
 local.properties
 *.iml
 !debug.keystore
+!release.keystore
 
 # node.js
 #
