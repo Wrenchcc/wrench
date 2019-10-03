@@ -132,12 +132,6 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        release {
-            storeFile rootProject.file("app/release.keystore")
-            storePassword System.getenv("APPCENTER_KEYSTORE_PASSWORD")
-            keyAlias System.getenv("APPCENTER_KEY_ALIAS")
-            keyPassword System.getenv("APPCENTER_KEY_PASSWORD")
-        }
     }
 
     compileOptions {
@@ -181,13 +175,12 @@ android {
             shrinkResources project.useShrinkInDebug
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
-        // release {
-        //     // Caution! In production, you need to generate your own keystore file.
-        //     // see https://facebook.github.io/react-native/docs/signed-apk-android.
-        //     signingConfig signingConfigs.release
-        //     minifyEnabled project.useProguard
-        //     proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-        // }
+        release {
+            // Caution! In production, you need to generate your own keystore file.
+            // see https://facebook.github.io/react-native/docs/signed-apk-android.
+            minifyEnabled project.useProguard
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
     }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->

@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useActionSheet } from '@expo/react-native-action-sheet'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
-import { Header, Text, Icon, ActionSheet, Touchable } from 'ui'
+import { Header, Text, Icon, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
@@ -16,10 +17,8 @@ import { Base } from './styles'
 function AddMedia() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
-  const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setLoading] = useState(false)
-
-  const toggleActionSheet = useCallback(() => setIsOpen(!isOpen), [isOpen])
+  const { showActionSheetWithOptions } = useActionSheet()
 
   const {
     onSelect,
@@ -64,19 +63,25 @@ function AddMedia() {
 
   const handleDismissModal = useCallback(() => {
     if (hasSelectedFiles) {
-      toggleActionSheet()
+      showActionSheetWithOptions(
+        {
+          title: t('AddMedia:options:title'),
+          options: [t('AddMedia:options:discard'), t('AddMedia:options:cancel')],
+          destructiveButtonIndex: 0,
+          cancelButtonIndex: 1,
+          tintColor: 'black',
+        },
+        index => {
+          if (index === 0) {
+            dismissModal()
+            reset()
+          }
+        }
+      )
     } else {
       dismissModal()
     }
-  }, [hasSelectedFiles, toggleActionSheet, dismissModal])
-
-  const handleDiscard = useCallback(() => {
-    dismissModal()
-    // TODO: Why do reset open modal again? isOpen = true
-    setTimeout(() => {
-      reset()
-    }, 0)
-  }, [reset, dismissModal])
+  }, [hasSelectedFiles, showActionSheetWithOptions, dismissModal, reset])
 
   const renderComponent = useCallback(() => {
     return selectedFile ? (
@@ -107,20 +112,6 @@ function AddMedia() {
       <SelectProject />
 
       <MediaPicker ListHeaderComponent={renderComponent} />
-
-      <ActionSheet
-        title={t('AddMedia:options:title')}
-        isOpen={isOpen}
-        onClose={toggleActionSheet}
-        destructiveButtonIndex={0}
-        options={[
-          {
-            name: t('AddMedia:options:discard'),
-            onSelect: handleDiscard,
-          },
-          { name: t('AddMedia:options:cancel') },
-        ]}
-      />
     </Base>
   )
 }
