@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useRef, useCallback, forwardRef } from 'react'
+import React, { useEffect, useRef, useCallback, forwardRef } from 'react'
 import { Keyboard, TextInput, UIManager } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { currentComponentName } from 'navigation'
-import { ListContext } from '../Layout/context'
-import { NAVIGATION, SCREENS } from '../constants'
+import { SCREENS } from '../constants'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 const KEYBOARD_OFFSET = isAndroid ? 28 : 0
@@ -55,14 +54,6 @@ export default function createNavigationAwareScrollable(Component) {
     },
     ref
   ) {
-    const {
-      onScroll,
-      onScrollBeginDrag,
-      onScrollEndDrag,
-      initialScroll,
-      contentInset,
-    } = useContext(ListContext)
-
     const scrollRef = useRef()
 
     // Scroll to top
@@ -86,7 +77,7 @@ export default function createNavigationAwareScrollable(Component) {
               currentComponentName === SCREENS.ME)
           ) {
             if (scrollableNode.scrollToOffset !== null) {
-              scrollableNode.scrollToOffset({ offset: initialScroll })
+              scrollableNode.scrollToOffset({ offset: 0 })
             }
           }
         }
@@ -147,11 +138,6 @@ export default function createNavigationAwareScrollable(Component) {
       <Component
         ref={setRef}
         scrollEventThrottle={1}
-        onScroll={onScroll}
-        onScrollBeginDrag={onScrollBeginDrag}
-        onScrollEndDrag={onScrollEndDrag}
-        contentInset={{ top: isAndroid ? 0 : contentInset }}
-        contentOffset={{ y: initialScroll }}
         style={{ flex: 1 }}
         data={data}
         onRefresh={refetch}
@@ -170,8 +156,6 @@ export default function createNavigationAwareScrollable(Component) {
           paddingBottom,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
-          // NOTE: contentInset on layout NAVIGATION.LIST_OFFSET on page
-          paddingTop: isAndroid ? contentInset || NAVIGATION.LIST_OFFSET : 0,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...keyboardDismissProp}
