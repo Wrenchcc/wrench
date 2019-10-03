@@ -141,7 +141,7 @@ PODS:
     - RNPermissions
   - Permission-PhotoLibrary (2.0.0):
     - RNPermissions
-  - Protobuf (3.9.2)
+  - Protobuf (3.10.0)
   - RCTRequired (0.61.2)
   - RCTTypeSafety (0.61.2):
     - FBLazyVector (= 0.61.2)
@@ -672,7 +672,7 @@ SPEC CHECKSUMS:
   Permission-Camera: 550f1b7609fc658fa2e28f930e235aa994c7b315
   Permission-Microphone: c63c2adf5027d69383e27784622af743207fdf10
   Permission-PhotoLibrary: 908dceabf4cc66c81c0c485a72e1e6b1d253f58e
-  Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
+  Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   RCTRequired: c639d59ed389cfb1f1203f65c2ea946d8ec586e2
   RCTTypeSafety: dc23fb655d6c77667c78e327bf661bc11e3b8aec
   React: 7e586e5d7bec12b91c1a096826b0fc9ab1da7865
