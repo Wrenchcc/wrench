@@ -1,8 +1,12 @@
-import React, { memo } from 'react'
-import { PixelRatio, Animated } from 'react-native'
+import React, { memo, useState } from 'react'
+import { PixelRatio, Animated, View } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base } from './styles'
+import Spinner from '../Spinner'
+import { COLORS } from '../constants'
+
+const PROGRESS_COLOR = '#E1E1E2'
 
 const density = PixelRatio.get()
 
@@ -16,11 +20,44 @@ function Image({
   placeholderDensity = 8,
   borderColor,
   borderWidth,
+  showIndicator,
   ...props
 }) {
+  const [progress, setProgress] = useState(0)
+  const [loading, setLoading] = useState(false)
+
   // NOTE: Guard for crash on Android
   if (!source.uri) {
     return null
+  }
+
+  const handleLoadStart = () => {
+    if (showIndicator && !loading && progress !== 1) {
+      setLoading(true)
+    }
+  }
+
+  const handleLoadEnd = () => {
+    if (showIndicator) {
+      setLoading(false)
+      setProgress(1)
+    }
+  }
+
+  const handleError = () => {
+    if (showIndicator) {
+      setLoading(false)
+    }
+  }
+
+  const handleProgress = evt => {
+    if (showIndicator) {
+      const loaded = evt.nativeEvent.loaded / evt.nativeEvent.total
+      if (loaded !== progress && progress !== 1) {
+        setLoading(loaded < 1)
+        setProgress(loaded)
+      }
+    }
   }
 
   const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
@@ -48,6 +85,10 @@ function Image({
       <FastImage
         {...props}
         source={{ uri }}
+        onLoadStart={handleLoadStart}
+        onLoadEnd={handleLoadEnd}
+        onProgress={handleProgress}
+        onError={handleError}
         style={{
           borderColor,
           borderRadius,
@@ -62,6 +103,28 @@ function Image({
         }}
         priority={priority || IMAGE_PRIORITY.NORMAL}
       />
+
+      {(showIndicator && loading) || (showIndicator && progress < 1) ? (
+        <View
+          style={{
+            position: 'absolute',
+            zIndex: 100,
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Spinner
+            size={80}
+            width={1.3}
+            progress={progress * 100}
+            color="black"
+            backgroundColor={PROGRESS_COLOR}
+            fullColor={COLORS.DARK}
+          />
+        </View>
+      ) : null}
     </Base>
   )
 }

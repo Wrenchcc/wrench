@@ -23,6 +23,7 @@ function Carousel({ onPress, files }) {
       <Pinchable maximumZoomScale={5}>
         <Touchable onPress={onPress} activeOpacity={1} nativeHandler>
           <Picture
+            showIndicator
             width={SIZE}
             height={SIZE}
             source={{ uri: item.node.uri }}
