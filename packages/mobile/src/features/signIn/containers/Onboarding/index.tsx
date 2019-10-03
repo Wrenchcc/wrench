@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { AppNavigation, useNavigation, SCREENS } from 'navigation'
+import { AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { omit } from 'ramda'
 import { compose } from 'ramda'
 import { track, events } from 'utils/analytics'
@@ -19,8 +19,6 @@ const { width } = Dimensions.get('window')
 const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
-
-const keyExtractor = item => item.id
 
 function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPage }) {
   const { t } = useTranslation()

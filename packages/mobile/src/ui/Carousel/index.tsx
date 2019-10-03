@@ -4,6 +4,7 @@ import Pinchable from 'react-native-pinchable'
 import Touchable from 'ui/Touchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { width, Wrapper, Picture, GUTTER, BAR_SPACE, SIZE } from './styles'
+import { keyExtractor } from 'navigation'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
@@ -12,8 +13,6 @@ const getItemLayout = (_, index) => ({
   length: SIZE,
   offset: SIZE * index,
 })
-
-const keyExtractor = ({ node }) => node.id
 
 function Carousel({ onPress, files }) {
   const scrollEnabled = files.edges.length > 1

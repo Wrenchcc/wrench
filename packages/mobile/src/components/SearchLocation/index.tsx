@@ -4,12 +4,11 @@ import { useTranslation } from 'react-i18next'
 import Config from 'react-native-config'
 import { Input, Text, Loader } from 'ui'
 import { useDebounce } from 'utils/hooks'
+import { keyExtractor } from 'navigation'
 import Footer from './Footer'
 import { Base, Header, Center } from './styles'
 
 const SEARCH_ENDPOINT = 'https://api.mapbox.com/geocoding/v5/mapbox.places'
-
-const keyExtractor = item => item.id
 
 function SearchLocation({ iconLeft, onPress, autoFocus }) {
   const { t } = useTranslation()

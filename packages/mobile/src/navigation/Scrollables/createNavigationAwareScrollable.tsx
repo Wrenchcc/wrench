@@ -4,7 +4,8 @@ import { Navigation } from 'react-native-navigation'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { currentComponentName } from 'navigation'
-import { SCREENS } from '../constants'
+import { SCREENS, CONTENT_INSET } from '../constants'
+import { keyExtractor, getNode } from '../utils'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 const KEYBOARD_OFFSET = isAndroid ? 28 : 0
@@ -16,22 +17,6 @@ const keyboardDismissProp = isAndroid
 
 const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
 const BorderSeparator = () => <Border />
-
-const keyExtractor = ({ node }) => node.id
-
-function getNode(ref) {
-  if (ref.current === null) {
-    return null
-  }
-
-  if (ref.current.getScrollResponder) {
-    return ref.current.getScrollResponder()
-  } else if (ref.current.getNode) {
-    return ref.current.getNode()
-  } else {
-    return ref.current
-  }
-}
 
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(
@@ -150,12 +135,15 @@ export default function createNavigationAwareScrollable(Component) {
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"
         keyExtractor={keyExtractor}
+        contentInset={{ top: CONTENT_INSET }}
+        contentOffset={{ y: -CONTENT_INSET }}
         contentContainerStyle={{
           ...contentContainerStyle,
           flex: initialFetch ? 1 : 0,
           paddingBottom,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
+          paddingTop: isAndroid ? CONTENT_INSET : 0,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...keyboardDismissProp}

@@ -9,6 +9,7 @@ import registerForPushNotifications from 'utils/pushNotifications/register'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { isIphone } from 'utils/platform'
+import { CONTENT_INSET } from 'navigation'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -21,7 +22,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ offset: 0 })
+      scrollRef.current.getNode().scrollToOffset({ offset: -CONTENT_INSET })
     }
   }, [scrollRef])
 
