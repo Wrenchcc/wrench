@@ -132,6 +132,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile rootProject.file("release.keystore")
+            storePassword System.getenv("APPCENTER_KEYSTORE_PASSWORD")
+            keyAlias System.getenv("APPCENTER_KEY_ALIAS")
+            keyPassword System.getenv("APPCENTER_KEY_PASSWORD")
+        }
     }
 
     compileOptions {
@@ -178,9 +184,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            // AppCenter handles this
-            // https://docs.microsoft.com/en-us/appcenter/build/android/code-signing#2-upload-everything-to-app-center
-            // signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled project.useProguard
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

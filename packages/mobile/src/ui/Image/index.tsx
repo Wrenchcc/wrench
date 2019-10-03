@@ -119,9 +119,9 @@ function Image({
             size={80}
             width={1.3}
             progress={progress * 100}
-            color="black"
+            color={PROGRESS_COLOR}
             backgroundColor={PROGRESS_COLOR}
-            fullColor={COLORS.DARK}
+            fullColor="black"
           />
         </View>
       ) : null}
