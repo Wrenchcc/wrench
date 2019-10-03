@@ -66,15 +66,7 @@ function EditProfile({ onboarding }) {
   }, [dismissModal])
 
   const navigateToAddLocation = useCallback(() => {
-    navigateTo(SCREENS.ADD_LOCATION, {
-      options: {
-        animations: {
-          push: {
-            waitForRender: true,
-          },
-        },
-      },
-    })
+    navigateTo(SCREENS.ADD_LOCATION)
   }, [navigateTo])
 
   const handleSave = useCallback(async () => {

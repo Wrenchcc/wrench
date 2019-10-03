@@ -26,7 +26,6 @@ function AddLocation() {
 
   return (
     <SearchLocation
-      autoFocus
       iconLeft={<Icon source={arrowLeft} onPress={handleNavigateBack} />}
       onPress={handleSelection}
     />

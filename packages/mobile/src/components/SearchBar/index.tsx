@@ -41,8 +41,16 @@ function SearchBar({
     }
   }, [inputRef, transitionRef, onSearchCancel])
 
-  const handleQueryChange = useCallback(value => onChangeQuery(value), [onChangeQuery])
-  const clearQuery = useCallback(() => onChangeQuery(''), [onChangeQuery])
+  const handleQueryChange = useCallback(
+    value => {
+      onChangeQuery(value)
+    },
+    [onChangeQuery]
+  )
+
+  const clearQuery = useCallback(() => {
+    onChangeQuery('')
+  }, [onChangeQuery])
 
   useEffect(() => {
     if (searchOpen) {

@@ -11,7 +11,7 @@ const SEARCH_ENDPOINT = 'https://api.mapbox.com/geocoding/v5/mapbox.places'
 
 const keyExtractor = item => item.id
 
-function SearchLocation({ iconLeft, onPress }) {
+function SearchLocation({ iconLeft, onPress, autoFocus }) {
   const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState('')
   const [results, setResults] = useState([])
@@ -67,10 +67,11 @@ function SearchLocation({ iconLeft, onPress }) {
             color="dark"
             placeholder={t('SearchLocation:placeholder')}
             value={searchTerm}
-            autoFocus
             style={{ marginLeft: iconLeft ? 20 : 0, marginRight: 20 }}
             onChangeText={setSearchTerm}
             autoCorrect={false}
+            returnKeyType="search"
+            autoFocus={autoFocus}
           />
         </Center>
       </Header>

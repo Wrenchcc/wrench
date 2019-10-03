@@ -6,8 +6,8 @@ import { usePostStore } from 'store'
 import { UPLOAD_PROGRESS } from 'utils/storage/constants'
 import Text from 'ui/Text'
 import ProgressBar from 'ui/ProgressBar'
-import { Base, Inner, Cover } from './styles'
 import { COLORS } from 'ui/constants'
+import { Base, Inner, Cover } from './styles'
 
 const transition = (
   <Transition.Sequence>
