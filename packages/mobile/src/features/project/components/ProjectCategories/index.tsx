@@ -2,13 +2,14 @@ import React from 'react'
 import { Dimensions, FlatList } from 'react-native'
 import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
 import { Touchable, Text, Loader } from 'ui'
-import { keyExtractor } from 'navigation'
 import { Cell, Image, Overlay, Picture } from './styles'
 
 const { width } = Dimensions.get('window')
 
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
+
+const keyExtractor = item => item.id
 
 function ProjectCategories({ ListHeaderComponent, isFetching, types, onSelect }) {
   return (
