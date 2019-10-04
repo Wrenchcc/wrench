@@ -495,7 +495,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
-  - RNRate (from `../node_modules/react-native-rate/ios`)
+  - RNRate (from `../node_modules/react-native-rate`)
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNShare (from `../node_modules/react-native-share`)
@@ -632,7 +632,7 @@ EXTERNAL SOURCES:
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
   RNRate:
-    :path: "../node_modules/react-native-rate/ios"
+    :path: "../node_modules/react-native-rate"
   RNReactNativeHapticFeedback:
     :path: "../node_modules/react-native-haptic-feedback"
   RNReanimated:
@@ -728,6 +728,6 @@ SPEC CHECKSUMS:
   SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
 
-PODFILE CHECKSUM: ffd8ddaa473bb7af37dfbf7d68650b7865eb1a0a
+PODFILE CHECKSUM: 0f5c13a798de5da6a1c05d87990d561d1f945b17
 
 COCOAPODS: 1.6.1

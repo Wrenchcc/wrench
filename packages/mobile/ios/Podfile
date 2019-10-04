@@ -41,7 +41,6 @@ target 'Wrench' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   # Third party deps podspec link
-  pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
   permissions_path = '../node_modules/react-native-permissions/ios'
