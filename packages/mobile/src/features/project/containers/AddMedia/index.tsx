@@ -9,7 +9,7 @@ import cropImage from 'utils/cropImage'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
 import Camera from 'components/Camera'
-import ImageEditor from 'components/ImageEditor'
+import ImageEditor from 'components/ImageEditor/blah'
 import MediaPicker from 'components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
 import { Base } from './styles'
@@ -85,7 +85,7 @@ function AddMedia() {
 
   const renderComponent = useCallback(() => {
     return selectedFile ? (
-      <ImageEditor source={selectedFile} onChange={onEdit} />
+      <ImageEditor image={selectedFile} onChange={onEdit} editing />
     ) : (
       <Camera onTakePicture={onSelect} />
     )

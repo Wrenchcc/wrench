@@ -73,7 +73,6 @@ const [usePostStore, api] = create((set, get) => ({
     onEdit: payload =>
       set(state => {
         const currentIndex = findIndex(propEq('id', state.selectedId))(state.selectedFiles)
-
         return {
           selectedFiles: assocPath([currentIndex, 'crop'], payload, state.selectedFiles),
         }

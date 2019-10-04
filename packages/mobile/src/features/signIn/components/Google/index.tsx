@@ -8,7 +8,8 @@ import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'gql'
 import { authenticateGoogle } from 'graphql/mutations/user/authenticateGoogle'
 import { track, events } from 'utils/analytics'
-import { logError } from 'utils/sentry'
+import { Icon } from 'ui'
+import { google } from 'images'
 import { Button, Text, Loader } from './styles'
 
 function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
@@ -24,10 +25,10 @@ function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
 
       setIsLoading(true)
 
-      AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.GOOGLE)
-
       await GoogleSignin.hasPlayServices()
       const userInfo = await GoogleSignin.signIn()
+
+      AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.GOOGLE)
 
       await authenticateGoogleMutation(userInfo.idToken, userInfo.serverAuthCode)
 
@@ -37,15 +38,14 @@ function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
       if (data.user) {
         AppNavigation(!data.user.interestedIn)
       }
-    } catch (err) {
+    } catch {
       setIsLoading(false)
-      track(events.USER_SIGNED_IN_GOOGLE_FAILED)
-      logError(err)
     }
   }, [])
 
   return (
     <Button onPress={handleLoginManager} border={border}>
+      <Icon source={google} style={{ marginRight: 10 }} />
       <Text white medium>
         {t('Google:button')}
       </Text>

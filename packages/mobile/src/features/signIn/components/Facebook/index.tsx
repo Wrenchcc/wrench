@@ -9,6 +9,8 @@ import { getCurrentUser } from 'gql'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { authenticateFacebook } from 'graphql/mutations/user/authenticateFacebook'
+import { Icon } from 'ui'
+import { facebook } from 'images'
 import { Button, Text, Loader } from './styles'
 
 function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
@@ -45,6 +47,7 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
 
   return (
     <Button onPress={handleLoginManager}>
+      <Icon source={facebook} style={{ marginRight: 10 }} color="white" />
       <Text white medium>
         {t('Facebook:button')}
       </Text>
