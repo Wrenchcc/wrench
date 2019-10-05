@@ -8,6 +8,7 @@ export default class Grid extends React.Component<{ opacity: Animated.Adaptable<
   private render() {
     return (
       <Animated.View
+        pointerEvents="none"
         style={{
           height: '100%',
           opacity: this.props.opacity,

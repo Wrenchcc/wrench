@@ -3,8 +3,7 @@ import { logError } from 'utils/sentry'
 
 export default async function cropImage({ uri, crop }) {
   try {
-    // return ImageManipulator.manipulateAsync(uri, [{ crop }])
-    return ImageManipulator.manipulateAsync(uri)
+    return ImageManipulator.manipulateAsync(uri, [{ crop }])
   } catch (err) {
     logError(err, { uri, crop })
   }
