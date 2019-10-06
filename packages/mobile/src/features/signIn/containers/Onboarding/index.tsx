@@ -68,7 +68,7 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
           showModal(SCREENS.EDIT_PROFILE, {
             onboarding: true,
           })
-      : AppNavigation
+      : () => AppNavigation(false)
 
     await editUserMutation({ interestedIn })
     setTimeout(settingsPage ? navigateBack : Navigate, 200)
