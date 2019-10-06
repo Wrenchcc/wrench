@@ -5,7 +5,8 @@ import { isAndroid } from 'utils/platform'
 export default async function cropImage({ uri, crop }) {
   try {
     if (isAndroid) {
-      return ImageManipulator.manipulateAsync(uri)
+      // TODO: Enable cropping again dosen't work in prod
+      return Promise.resolve({ uri })
     } else {
       return ImageManipulator.manipulateAsync(uri, [{ crop }])
     }
