@@ -139,11 +139,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Permission-Camera (2.0.1):
+  - Permission-Camera (2.0.2):
     - RNPermissions
-  - Permission-Microphone (2.0.1):
+  - Permission-Microphone (2.0.2):
     - RNPermissions
-  - Permission-PhotoLibrary (2.0.1):
+  - Permission-PhotoLibrary (2.0.2):
     - RNPermissions
   - Protobuf (3.10.0)
   - RCTRequired (0.61.2)
@@ -341,7 +341,7 @@ PODS:
     - React
   - react-native-media-library (1.0.0):
     - React
-  - react-native-netinfo (4.3.3):
+  - react-native-netinfo (4.4.0):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -413,7 +413,7 @@ PODS:
   - RNGoogleSignin (2.1.0):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.0.1):
+  - RNPermissions (2.0.2):
     - React
   - RNRate (1.1.10):
     - React
@@ -675,9 +675,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Permission-Camera: 58bd09e7c82029b467cc981b42777ba27608b927
-  Permission-Microphone: 164a5367e602fb8e282247d96230fcec46d10d3f
-  Permission-PhotoLibrary: c7b56d8021e1b3f964cf79de63b2204dd597b8c4
+  Permission-Camera: 626e0ac1c9e92e680b223522dcf9344bb1041fff
+  Permission-Microphone: 310a87a9de8eae250bf430a63cc3d6f811199405
+  Permission-PhotoLibrary: 5ff534553bd84abcd1190bc80a7dcb8671a41e1a
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   RCTRequired: c639d59ed389cfb1f1203f65c2ea946d8ec586e2
   RCTTypeSafety: dc23fb655d6c77667c78e327bf661bc11e3b8aec
@@ -695,7 +695,7 @@ SPEC CHECKSUMS:
   react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
   react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
-  react-native-netinfo: bd9b833f23ee1165b7e90c1b2c96731636fa9257
+  react-native-netinfo: 6bb847e64f45a2d69c6173741111cfd95c669301
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
@@ -717,7 +717,7 @@ SPEC CHECKSUMS:
   RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNGoogleSignin: bb1393dec8541d997fd12b7b8f43481868a34e93
-  RNPermissions: daa03e029c245fa185728e34bf1e763bf7722d05
+  RNPermissions: 9525b0f4d209fdf9a373d52d1492ae2943e691e5
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
   RNReactNativeHapticFeedback: e11a4da0ce174e9f88b03cbaf5d76d94633cdee2
   RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
