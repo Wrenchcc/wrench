@@ -1,17 +1,12 @@
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { COLORS } from 'ui/constants'
-import { isIphone } from 'utils/platform'
+import { CONTENT_INSET } from 'navigation'
 
-function Loader({
-  size = 'small',
-  color = COLORS.DARK,
-  padding = 32,
-  fullscreen = false,
-  top = isIphone ? -200 : 0,
-}) {
+function Loader({ size = 'small', color = COLORS.DARK, padding = 32, fullscreen = false }) {
   return (
     <View
+      pointerEvents="none"
       style={{
         alignItems: 'center',
         flex: 1,
@@ -19,11 +14,7 @@ function Loader({
         padding,
         ...(fullscreen
           ? {
-              bottom: 0,
-              left: 0,
-              position: 'absolute',
-              right: 0,
-              top,
+              marginTop: -CONTENT_INSET,
             }
           : {}),
       }}

@@ -91,6 +91,7 @@ class Spinner extends PureComponent {
 
   public circleHalf = (styles, isSecondHalf, color) => (
     <Animated.View
+      pointerEvents="none"
       style={[
         styles.container,
         {
