@@ -26,8 +26,9 @@ import com.swmansion.reanimated.ReanimatedPackage;
 import io.sentry.RNSentryPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.reactnative.camera.RNCameraPackage;
-import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
+import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 
+import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
@@ -87,6 +88,7 @@ public class MainApplication extends NavigationApplication {
         packages.add(new RNSharePackage());
         packages.add(new SplashScreenReactPackage());
         packages.add(new RNPermissionsPackage());
+        packages.add(new RNReactNativeHapticFeedbackPackage());
 
         return packages;
     }
