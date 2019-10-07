@@ -3,6 +3,7 @@ import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
 import * as GestureHandler from 'react-native-gesture-handler'
+import { useDebounce } from 'utils/hooks'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
 import Projects from './Projects'
@@ -58,18 +59,20 @@ function Search({ query, active }) {
 
   const handleLabelText = useCallback(({ route }) => t(`Search:${route.key}`), [t])
 
+  const debouncedQuery = useDebounce(query, 300)
+
   const renderScene = useCallback(
     ({ route }) => {
       switch (route.key) {
         case 'users':
-          return <Users query={query} />
+          return <Users query={debouncedQuery} />
         case 'projects':
-          return <Projects query={query} />
+          return <Projects query={debouncedQuery} />
         default:
           return null
       }
     },
-    [query]
+    [debouncedQuery]
   )
 
   const renderTabBar = useCallback(
