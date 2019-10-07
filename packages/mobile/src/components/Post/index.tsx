@@ -78,6 +78,7 @@ function Post({
         setAlertOpen(false)
       }
     })
+
     return () => keyboardEventListener.remove()
   }, [hasChanged, isEditing, alertOpen])
 
@@ -130,7 +131,7 @@ function Post({
         },
         index => {
           if (index === 0) {
-            alert(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`)
+            openLink(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`)
           }
         }
       )
