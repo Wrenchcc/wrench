@@ -6,8 +6,10 @@ export const hasNotch = DeviceInfo.isIPhoneX_deprecated
 
 export let keyboardHeight = 0
 
-Keyboard.addListener('keyboardDidShow', evt => {
-  if (isIphone && keyboardHeight === 0) {
+const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', setKeyboardHeight)
+
+function setKeyboardHeight(evt) {
+  if (keyboardDidShowListener && isIphone) {
     keyboardHeight = evt.endCoordinates.height
   }
-})
+}

@@ -1,15 +1,14 @@
 import React from 'react'
 import { View } from 'react-native'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
-import { searchModels } from 'graphql/queries/project/searchModels'
 import { keyboardHeight } from 'utils/platform'
+import { searchModels } from 'graphql/queries/project/searchModels'
 
 const INPUT_HEIGHT = 80
 
 const styles = {
   container: {
     backgroundColor: 'white',
-    bottom: keyboardHeight + INPUT_HEIGHT,
     left: 0,
     position: 'absolute',
     right: 0,
@@ -24,7 +23,7 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { bottom: keyboardHeight + INPUT_HEIGHT }]}>
       <InfiniteList
         androidDismissKeyboard={false}
         defaultPadding
