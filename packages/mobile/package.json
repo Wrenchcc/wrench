@@ -76,6 +76,6 @@
     "@babel/core": "^7.6.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
-    "concurrently": "^4.1.2"
+    "concurrently": "^5.0.0"
   }
 }
