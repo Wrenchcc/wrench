@@ -73,13 +73,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to use the camera</string>
+	<string>This lets you take photos and record video.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
+	<string>This lets you record video with sound.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Give $(PRODUCT_NAME) periences permission to save photos</string>
+	<string>This lets you share photos from your library and save photos to your Camera Roll.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Give $(PRODUCT_NAME) periences permission to access your photos</string>
+	<string>This lets you share photos from your library and save photos to your Camera Roll.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>
