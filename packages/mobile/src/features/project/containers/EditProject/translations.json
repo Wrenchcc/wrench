@@ -23,7 +23,7 @@
       "description": "Den här åtgärden kan inte ångras.",
       "cancel": "Avbryt",
       "delete": "Radera",
-      "projectSettings": "Projekt inställningar",
+      "projectSettings": "Projektinställningar",
       "model": "Redigera modell"
     }
   }
