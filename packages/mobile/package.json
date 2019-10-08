@@ -41,7 +41,7 @@
     "react-i18next": "^10.13.1",
     "react-native": "^v0.61.2",
     "react-native-apple-authentication": "https://github.com/pontusab/react-native-apple-authentication",
-    "react-native-camera": "^3.6.0",
+    "react-native-camera": "^3.7.0",
     "react-native-config": "^0.11.7",
     "react-native-deep-linking": "^2.2.0",
     "react-native-device-locale": "https://github.com/pontusab/react-native-device-locale",
