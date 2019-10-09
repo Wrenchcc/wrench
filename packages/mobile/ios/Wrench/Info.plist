@@ -73,13 +73,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This lets you take photos and record video.</string>
+	<string>$(PRODUCT_NAME) uses the camera to share photos and videos.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This lets you record video with sound.</string>
+	<string>$(PRODUCT_NAME) uses the microphone to add sound to videos.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This lets you share photos from your library and save photos to your Camera Roll.</string>
+	<string>Enable Wrench to access your camera roll to upload your photos and save once you've taken with the app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This lets you share photos from your library and save photos to your Camera Roll.</string>
+	<string>Enable $(PRODUCT_NAME) to access your camera roll to upload your photos and save once you've taken with the app.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>inter_ui_bold.ttf</string>
