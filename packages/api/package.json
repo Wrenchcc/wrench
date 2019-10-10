@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",
-    "apollo-server-express": "^2.9.5",
+    "apollo-server-express": "^2.9.6",
     "aws-sdk": "^2.546.0",
     "aws4": "^1.8.0",
     "axios": "^0.19.0",
