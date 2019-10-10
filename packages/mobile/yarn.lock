@@ -4858,10 +4858,10 @@ react-lifecycles-compat@2.0.0:
   dependencies:
     react "^16.9.0"
 
-react-native-camera@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.7.0.tgz#777150f8e15ee3ca2f650b47d78a5e25154dc2ce"
-  integrity sha512-2DjZ/gtY6RQbhTgKv9bnmPDPDHCD2bgWKt41g99DkTE+DXz1OhGOk6I+2x0rR4NFAYj0J278WAxMIjXNZp6Zyg==
+react-native-camera@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.7.1.tgz#8429fd7d237a2c71d067508d435b790014fc2450"
+  integrity sha512-+xyWmq0/jGomkctSnmJXZwWy7mHCCfj2NUsrDOnbbpZaOaQG9a646NZzBabxQQfBy38ZyfQm5Q4nxh3AEddfrQ==
   dependencies:
     prop-types "^15.6.2"
 
@@ -6204,7 +6204,7 @@ zen-observable@^0.8.0:
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.14.tgz#d33058359d335bc0db1f0af66158b32872af3bf7"
   integrity sha512-kQz39uonEjEESwh+qCi83kcC3rZJGh4mrZW7xjkSQYXkq//JZHTtKo+6yuVloTgMtzsIWOJrjIrKvk/dqm0L5g==
 
-zustand@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-1.0.7.tgz#b4ff50785073b6e0ce28fdda3f2ede1cc810e99b"
-  integrity sha512-4E5PVD0O4UEWm6ZLFwiyLuK+0LJTg+mqlGO3Mvndqonm44ovTISn3H/EgE6cOA5/PnAXlmdsopRPdZ7MsdLgwQ==
+zustand@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-2.0.0.tgz#638cee67d060a2ab84e5266e7aeb5c8d561c35a6"
+  integrity sha512-dJcO2D637QAT3XAIz4mYkw1vwrl6A20tiJ//ItA+lz7iHiSoD1xGa4Hd5AhMOJQSH+lXoEvezx633PTY08H3sA==
