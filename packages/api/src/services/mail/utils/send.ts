@@ -5,7 +5,9 @@ import formatMail from './formatMail'
 const debug = require('debug')('api:mail')
 
 export default async ({ type, userId }) => {
-  if (!userId) return
+  if (!userId) {
+    return
+  }
 
   try {
     const user = await getUserById(userId)
