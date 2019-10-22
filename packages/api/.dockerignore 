@@ -1,0 +1,7 @@
+node_modules/
+tasks/
+Dockerfile
+docker-compoe.yml
+.env
+.env-template
+README.md
