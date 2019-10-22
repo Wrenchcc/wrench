@@ -1,7 +1,8 @@
 FROM mhart/alpine-node:12
 WORKDIR /app
 COPY . .
-RUN yarn && yarn build
+RUN yarn
+RUN yarn build
 RUN yarn add global pm2
 
 FROM mhart/alpine-node:slim-12
