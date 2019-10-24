@@ -1,8 +1,10 @@
-import * as express from 'express'
+import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
+import { RedisCache } from 'apollo-server-cache-redis'
+import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
-import * as depthLimit from 'graphql-depth-limit'
+import depthLimit from 'graphql-depth-limit'
 import { getUserId } from './utils/tokens'
 import formatError from './utils/formatError'
 import debugOptions from './utils/debugOptions'
@@ -13,7 +15,7 @@ import services from './services'
 
 const debug = require('debug')('api:server')
 
-const { PORT = 4000 } = process.env
+const { PORT = 4000, REDIS_CACHE_URL = 'localhost' } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
@@ -26,6 +28,23 @@ async function server() {
 
   const server = new ApolloServer({
     ...debugOptions,
+    cacheControl: {
+      calculateHttpHeaders: false,
+      // Cache everything for at least a minute since we only cache public responses
+      defaultMaxAge: 60,
+    },
+    cache: new RedisCache({
+      host: REDIS_CACHE_URL,
+      prefix: 'apollo-cache:',
+    }),
+    plugins: [
+      responseCachePlugin({
+        sessionId: ({ context }) => (context.userId ? context.userId : null),
+        // Only cache public responses
+        shouldReadFromCache: ({ context }) => !context.userId,
+        shouldWriteToCache: ({ context }) => !context.userId,
+      }),
+    ],
     context: ({ req }) => ({
       db,
       loaders: createLoaders(),

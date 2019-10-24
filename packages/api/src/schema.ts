@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 import { makeExecutableSchema } from 'apollo-server-express'
-import * as merge from 'lodash.merge'
+import merge from 'lodash.merge'
 import scalars from './types/scalars'
 import generalTypes from './types/general'
 

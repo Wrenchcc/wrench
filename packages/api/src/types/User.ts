@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  type User {
+  type User @cacheControl(maxAge: 600) {
     id: ID!
     username: LowercaseString
     createdAt: Date!
@@ -71,9 +71,11 @@ export default gql`
   }
 
   extend type Query {
-    user(id: ID, username: LowercaseString): User
+    user(id: ID, username: LowercaseString): User @cacheControl(maxAge: 1200)
     users(first: Int = 10, after: String, last: Int = 10, before: String): UserConnection
+      @cacheControl(maxAge: 1200)
     currentUser(first: Int = 10, after: String, last: Int = 10, before: String): User
+      @cacheControl(maxAge: 1200, scope: PRIVATE)
   }
 
   input EditUserInput {

@@ -1,11 +1,11 @@
-FROM mhart/alpine-node:12
+FROM mhart/alpine-node:13
 WORKDIR /app
 COPY . .
 RUN yarn
 RUN yarn build
 RUN yarn add global pm2
 
-FROM mhart/alpine-node:slim-12
+FROM mhart/alpine-node:slim-13
 RUN apk add --no-cache curl
 WORKDIR /app
 COPY --from=0 /app .
