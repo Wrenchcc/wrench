@@ -15,9 +15,9 @@ import services from './services'
 
 const debug = require('debug')('api:server')
 
-const { PORT = 4000, REDIS_CACHE_URL = 'localhost' } = process.env
+const { PORT = 4000, REDIS_HOST, REDIS_PORT } = process.env
 
-const TIMESTAMPTZ_OID = 1184
+ const TIMESTAMPTZ_OID = 1184
 
 async function server() {
   const connection = await createConnection(options)
@@ -34,8 +34,9 @@ async function server() {
       defaultMaxAge: 60,
     },
     cache: new RedisCache({
-      host: REDIS_CACHE_URL,
-      prefix: 'apollo-cache:',
+      host: REDIS_HOST,
+      port: REDIS_PORT,
+      prefix: 'api-cache:',
     }),
     plugins: [
       responseCachePlugin({
