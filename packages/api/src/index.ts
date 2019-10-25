@@ -1,6 +1,6 @@
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
-import { RedisCache } from 'apollo-server-cache-redis'
+import { RedisClusterCache } from 'apollo-server-cache-redis'
 import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
@@ -33,11 +33,11 @@ async function server() {
       // Cache everything for at least a minute since we only cache public responses
       defaultMaxAge: 60,
     },
-    cache: new RedisCache({
+    cache: new RedisClusterCache([{
       host: REDIS_HOST,
       port: REDIS_PORT,
       prefix: 'api-cache:',
-    }),
+    }]),
     plugins: [
       responseCachePlugin({
         sessionId: ({ context }) => (context.userId ? context.userId : null),
