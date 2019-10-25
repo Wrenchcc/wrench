@@ -31,6 +31,7 @@ export default gql`
     ): FollowersConnection
 
     postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+      @cacheControl(maxAge: 86400)
   }
 
   type CoverType {
@@ -73,7 +74,7 @@ export default gql`
   }
 
   extend type Query {
-    project(id: ID, slug: LowercaseString): Project
+    project(id: ID, slug: LowercaseString): Project @cacheControl(maxAge: 1200)
 
     projects(
       after: String
@@ -81,7 +82,7 @@ export default gql`
       first: Int = 10
       last: Int = 10
       type: ProjectSortType!
-    ): ProjectsConnection
+    ): ProjectsConnection @cacheControl(maxAge: 1200)
 
     projectSuggestions(
       after: String
@@ -96,7 +97,7 @@ export default gql`
       before: String
       first: Int = 10
       last: Int = 10
-    ): ProjectsConnection
+    ): ProjectsConnection @cacheControl(maxAge: 86400)
 
     projectTypes: [ProjectType]
   }

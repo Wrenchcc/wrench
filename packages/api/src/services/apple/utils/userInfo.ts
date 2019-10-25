@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken'
-import * as jwksClient from 'jwks-rsa'
+import jwksClient from 'jwks-rsa'
 import * as util from 'util'
 
 const debug = require('debug')('api:services:apple:utils:userInfo')

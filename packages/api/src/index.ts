@@ -1,8 +1,10 @@
-import * as express from 'express'
+import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
-import { getConnectionManager, Connection } from 'typeorm'
+import { RedisClusterCache } from 'apollo-server-cache-redis'
+import responseCachePlugin from 'apollo-server-plugin-response-cache'
+import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
-import * as depthLimit from 'graphql-depth-limit'
+import depthLimit from 'graphql-depth-limit'
 import { getUserId } from './utils/tokens'
 import formatError from './utils/formatError'
 import debugOptions from './utils/debugOptions'
@@ -13,26 +15,12 @@ import services from './services'
 
 const debug = require('debug')('api:server')
 
-const { PORT = 4000 } = process.env
+const { PORT = 4000, REDIS_HOST, REDIS_PORT } = process.env
 
-const TIMESTAMPTZ_OID = 1184
+ const TIMESTAMPTZ_OID = 1184
 
-const manager = getConnectionManager()
-let connection: Connection
-
-async function init() {
-  if (manager.has('default')) {
-    connection = await manager.get('default')
-    debug('Reusing existing connection from manager.')
-  } else {
-    debug('Creating new connection to DB.')
-    connection = await manager.create(options)
-  }
-
-  if (!connection.isConnected) {
-    debug('Cached connection was not connected, attempting to reconnect.')
-    await connection.connect()
-  }
+async function server() {
+  const connection = await createConnection(options)
 
   const driver = connection.driver as PostgresDriver
   driver.postgres.defaults.parseInputDatesAsUTC = true
@@ -40,6 +28,24 @@ async function init() {
 
   const server = new ApolloServer({
     ...debugOptions,
+    cacheControl: {
+      calculateHttpHeaders: false,
+      // Cache everything for at least a minute since we only cache public responses
+      defaultMaxAge: 60,
+    },
+    cache: new RedisClusterCache([{
+      host: REDIS_HOST,
+      port: REDIS_PORT,
+      prefix: 'api-cache:',
+    }]),
+    plugins: [
+      responseCachePlugin({
+        sessionId: ({ context }) => (context.userId ? context.userId : null),
+        // Only cache public responses
+        shouldReadFromCache: ({ context }) => !context.userId,
+        shouldWriteToCache: ({ context }) => !context.userId,
+      }),
+    ],
     context: ({ req }) => ({
       db,
       loaders: createLoaders(),
@@ -61,4 +67,4 @@ async function init() {
   })
 }
 
-init()
+server().catch(err => debug(err))

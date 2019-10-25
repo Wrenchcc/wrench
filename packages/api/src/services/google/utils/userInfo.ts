@@ -2,6 +2,8 @@ import axios from 'axios'
 import { pathOr } from 'ramda'
 import client from '../client'
 
+const debug = require('debug')('api:userInfo')
+
 const { GOOGLE_CLIENT_ID } = process.env
 
 const API_ENDPOINT = 'https://people.googleapis.com'
@@ -37,6 +39,6 @@ export default async function userInfo(token, code) {
       lastName: payload.family_name,
     }
   } catch (err) {
-    console.log(err)
+    debug(err)
   }
 }
