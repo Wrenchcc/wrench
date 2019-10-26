@@ -31,4 +31,6 @@ jobs:
 
       - name: Update service
         run: |
-          echo "A initial message"
+          echo Register task definition...
+          TASK_DEFINITION=$(aws ecs describe-task-definition --region eu-west-1 --task-definition service_api)
+          echo $TASK_DEFINITION
