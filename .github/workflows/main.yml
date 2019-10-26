@@ -15,7 +15,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: "eu-west-1"
           IMAGE_NAME: "api"
-          BUILD_PATH: "packages/api/Dockerfile"
+          BUILD_PATH: "../../packages/api/Dockerfile"
           # TAG_NAME: "v0.0.1"
           LATEST: "true"
     # - name: Checkout master
