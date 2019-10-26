@@ -13,7 +13,7 @@ jobs:
         # with:
         #   fetch-depth: 1
 
-      - name: API Build & Push to AWS ECR
+      - name: Build & Push to AWS ECR
         uses: mr-smithers-excellent/docker-build-push@v1.0
         with:
           image: api
