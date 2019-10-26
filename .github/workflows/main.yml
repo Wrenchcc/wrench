@@ -22,7 +22,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: "eu-west-1"
           IMAGE_NAME: "api"
-          BUILD_PATH: "packages/api"
+          # BUILD_PATH: "packages/api"
           LATEST: "true"
     
     
