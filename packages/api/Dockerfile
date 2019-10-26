@@ -1,8 +1,7 @@
 FROM mhart/alpine-node:13
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn
 COPY . .
+RUN yarn
 RUN yarn build
 
 FROM mhart/alpine-node:slim-13
