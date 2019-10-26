@@ -13,24 +13,22 @@ jobs:
         with:
           fetch-depth: 1
 
-      # - name: Build
-      #   uses: borales/actions-yarn@v2.0.0
-      #   with:
-      #     cmd: build:api
-
-      - name: Build & Push to AWS ECR
+      - name: Build image
         run: |
+          echo Build started on `date`
+          echo Building the Docker image...
           docker build -t api packages/api
-        # uses: mr-smithers-excellent/docker-build-push@v1.0
-        # with:
-        #   image: api
-        #   tag: latest
-        #   dockerfile: packages/api/Dockerfile
-        #   registry: 719104767000.dkr.ecr.eu-west-1.amazonaws.com
-        # env:
-        #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
+          docker tag api:latest 719104767000.dkr.ecr.eu-west-1.amazonaws.com/api:latest
+          echo Build completed on `date`
+      
+      - name: Push to AWS ECR
+          run: |
+            echo Pushing the Docker images...
+            docker push 719104767000.dkr.ecr.eu-west-1.amazonaws.com/api:latest
+          env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            
       - name: Update service
         run: |
           echo Register task definition...
