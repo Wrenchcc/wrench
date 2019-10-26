@@ -7,7 +7,9 @@ push:
     build:
       runs-on: ubuntu-latest
       steps:
+      - name: Checkout master
       - uses: actions/checkout@v1.1.0
+      - name: Publish to Registry
       - uses: mr-smithers-excellent/docker-build-push@v1.0
         with:
           image: api
