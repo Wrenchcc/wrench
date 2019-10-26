@@ -18,9 +18,9 @@ jobs:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           account_id: "719104767000"
-          # repo: docker/repo
+          repo: docker/repo
           region: eu-west-1
           tags: latest,${{ github.sha }}
           path: packages/api
-          # create_repo: true
+          create_repo: true
           extra_build_args: "--verbose"
