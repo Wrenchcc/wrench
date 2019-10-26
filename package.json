@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "bluebird": "^3.7.0",
+    "bluebird": "^3.7.1",
     "prettier": "^1.18.2",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
