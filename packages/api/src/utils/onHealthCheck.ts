@@ -1,5 +1,5 @@
 import { getConnection } from 'typeorm'
-import promiseTimeout from './promise-timeout'
+import promiseTimeout from './promiseTimeout'
 
 const TIMEOUT = 1000
 

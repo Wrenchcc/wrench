@@ -12,7 +12,7 @@ import schema from './schema'
 import { options, db } from './models'
 import createLoaders from './loaders'
 import services from './services'
-import onHealthCheck from './utils/on-health-check'
+import onHealthCheck from './utils/onHealthCheck'
 
 const debug = require('debug')('api:server')
 
