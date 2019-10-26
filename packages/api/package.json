@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development cross-env DEBUG=api* dotenv -e .env -- ts-node-dev --no-notify src/index.ts",
-    "build": "tsc src/index.ts",
-    "test": "echo 'böaj'",
+    "build": "ncc build src/index.ts",
+    "postinstall": "ncc build src/index.ts",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/deleteIndex.ts",
