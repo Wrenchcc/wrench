@@ -13,12 +13,12 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Build
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build:api
+      # - name: Build
+      #   uses: borales/actions-yarn@v2.0.0
+      #   with:
+      #     cmd: build:api
 
-      - name: API Build & Push to AWS ECR
+      - name: Build & Push to AWS ECR
         uses: mr-smithers-excellent/docker-build-push@v1.0
         with:
           image: api
