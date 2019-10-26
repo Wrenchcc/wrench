@@ -2,7 +2,7 @@ FROM mhart/alpine-node:13
 WORKDIR /app
 COPY . .
 RUN yarn
-# RUN yarn build
+RUN yarn build
 
 # FROM mhart/alpine-node:slim-13
 # RUN apk add --no-cache curl
