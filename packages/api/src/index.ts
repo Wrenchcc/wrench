@@ -12,12 +12,13 @@ import schema from './schema'
 import { options, db } from './models'
 import createLoaders from './loaders'
 import services from './services'
+import onHealthCheck from './utils/on-health-check'
 
 const debug = require('debug')('api:server')
 
 const { PORT = 4000, REDIS_HOST, REDIS_PORT } = process.env
 
- const TIMESTAMPTZ_OID = 1184
+const TIMESTAMPTZ_OID = 1184
 
 async function server() {
   const connection = await createConnection(options)
@@ -33,11 +34,13 @@ async function server() {
       // Cache everything for at least a minute since we only cache public responses
       defaultMaxAge: 60,
     },
-    cache: new RedisClusterCache([{
-      host: REDIS_HOST,
-      port: REDIS_PORT,
-      prefix: 'api-cache:',
-    }]),
+    cache: new RedisClusterCache([
+      {
+        host: REDIS_HOST,
+        port: REDIS_PORT,
+        prefix: 'api-cache:',
+      },
+    ]),
     plugins: [
       responseCachePlugin({
         sessionId: ({ context }) => (context.userId ? context.userId : null),
@@ -60,7 +63,10 @@ async function server() {
 
   const app = express()
 
-  server.applyMiddleware({ app })
+  server.applyMiddleware({
+    app,
+    onHealthCheck,
+  })
 
   app.listen({ port: PORT }, () => {
     debug(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
