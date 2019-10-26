@@ -1,0 +1,1 @@
+{"version":3,"file":"projectsConnection.js","sourceRoot":"","sources":["../../../src/queries/user/projectsConnection.ts"],"names":[],"mappings":";;;;;;;;;;;;;;AAAA,oEAA2C;AAE3C,kBAAe,CAAO,EAAE,EAAE,EAAE,EAAE,IAAI,EAAE,GAAG,EAAE,EAAE;IACzC,OAAA,kBAAQ,CAAC,GAAG,CAAC,EAAE,CAAC,OAAO,EAAE,IAAI,EAAE;QAC7B,KAAK,EAAE;YACL,MAAM,EAAE,EAAE;SACX;KACF,CAAC,CAAA;EAAA,CAAA"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"convertNodesToEdges.js","sourceRoot":"","sources":["../../../src/utils/paginate/convertNodesToEdges.ts"],"names":[],"mappings":";;AAAA,qCAAuC;AAEvC,kBAAe,CAAC,KAAK,EAAE,EAAE,MAAM,EAAE,EAAE,EAAE,CAAC,KAAK,CAAC,GAAG,CAAC,IAAI,CAAC,EAAE,CAAC,CAAC;IACvD,MAAM,EAAE,qBAAY,CAAC,IAAI,CAAC,EAAE,EAAE,IAAI,CAAC,MAAM,CAAC,CAAC;IAC3C,IAAI;CACL,CAAC,CAAC,CAAA"}

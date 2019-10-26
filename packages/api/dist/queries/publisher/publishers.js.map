@@ -1,0 +1,1 @@
+{"version":3,"file":"publishers.js","sourceRoot":"","sources":["../../../src/queries/publisher/publishers.ts"],"names":[],"mappings":";;;;;;;;;;;;;;AAAA,oEAA2C;AAG3C,kBAAe,CAAO,CAAC,EAAE,IAAI,EAAE,GAAG,EAAE,EAAE;IACpC,OAAA,kBAAQ,CAAC,GAAG,CAAC,EAAE,CAAC,gBAAgB,EAAE,IAAI,EAAE,IAAI,EAAE;QAC5C,MAAM,EAAE,WAAW;QACnB,IAAI,EAAE,MAAM;KACb,CAAC,CAAA;EAAA,CAAA"}

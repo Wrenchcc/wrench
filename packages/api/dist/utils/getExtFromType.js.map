@@ -1,0 +1,1 @@
+{"version":3,"file":"getExtFromType.js","sourceRoot":"","sources":["../../src/utils/getExtFromType.ts"],"names":[],"mappings":";;AAAA,mCAAoC;AAEpC,SAAwB,cAAc,CAAC,IAAI;IACzC,QAAQ,IAAI,EAAE;QACZ,KAAK,kBAAU,CAAC,KAAK;YACnB,OAAO,KAAK,CAAA;QACd,KAAK,kBAAU,CAAC,KAAK;YACnB,OAAO,KAAK,CAAA;QACd;YACE,OAAO,IAAI,CAAA;KACd;AACH,CAAC;AATD,iCASC"}

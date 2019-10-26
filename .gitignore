@@ -53,7 +53,7 @@ buck-out/
 .env*
 !.env-template
 build
-dist
+# dist
 package-lock.json
 node_modules
 
