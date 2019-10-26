@@ -23,4 +23,3 @@ jobs:
           tags: latest,${{ github.sha }}
           path: packages/api
           create_repo: true
-          extra_build_args: "--verbose"
