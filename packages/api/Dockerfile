@@ -1,7 +1,14 @@
+FROM mhart/alpine-node:13
+WORKDIR /app
+COPY . .
+RUN yarn
+RUN yarn compile
+
 FROM mhart/alpine-node:slim-13
 RUN apk add --no-cache curl
 WORKDIR /app
-COPY dist .
+COPY --from=0 /app/dist .
+COPY . .
 
 EXPOSE 4000
 
