@@ -34,3 +34,6 @@ jobs:
           echo Register task definition...
           TASK_DEFINITION=$(aws ecs describe-task-definition --region eu-west-1 --task-definition service_api)
           echo $TASK_DEFINITION
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
