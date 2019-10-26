@@ -1,1 +1,0 @@
-{"version":3,"file":"isOnline.js","sourceRoot":"","sources":["../../../src/queries/user/isOnline.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;AAAA,uCAAwB;AAExB,kBAAe,CAAO,EAAE,QAAQ,EAAE,EAAE,EAAE;IACpC,MAAM,SAAS,GAAG,IAAI,IAAI,EAAE,CAAC,OAAO,EAAE,GAAG,IAAI,IAAI,CAAC,QAAQ,CAAC,CAAC,OAAO,EAAE,CAAA;IACrE,OAAO,EAAE,CAAC,IAAI,CAAC,GAAG,SAAS,CAAA;AAC7B,CAAC,CAAA,CAAA"}
