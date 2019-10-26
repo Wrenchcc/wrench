@@ -1,11 +1,18 @@
 name: 'Deploy workflow'
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
-    name: Deploy
+  docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
       - name: API Build & Push to AWS ECR
         uses: opspresso/action-docker@master
         with:
@@ -15,10 +22,17 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: "eu-west-1"
           IMAGE_NAME: "api"
-          BUILD_PATH: "../../packages/api/Dockerfile"
-          # TAG_NAME: "v0.0.1"
+          BUILD_PATH: "packages/api"
           LATEST: "true"
-    # - name: Checkout master
+    
+    
+    
+    
+    
+    
+    
+    
+          # - name: Checkout master
     # - uses: actions/checkout@v1.1.0
     # - name: Publish to Registry
     # - uses: mr-smithers-excellent/docker-build-push@v1.0
