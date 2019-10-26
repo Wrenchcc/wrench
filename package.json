@@ -2,6 +2,9 @@
   "name": "wrench",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build:api": "cd packages/api && yarn && yarn build"
+  },
   "devDependencies": {
     "bluebird": "^3.7.1",
     "prettier": "^1.18.2",

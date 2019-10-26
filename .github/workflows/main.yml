@@ -12,16 +12,11 @@ jobs:
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      
-      - name: Install
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
 
       - name: Build
         uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: build
+          cmd: build:api
 
       - name: API Build & Push to AWS ECR
         uses: mr-smithers-excellent/docker-build-push@v1.0
