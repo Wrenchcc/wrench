@@ -31,8 +31,11 @@ Here is a list of all the big technologies we use:
 ```sh
 wrench/
 ├── api        # API server
+├── articles   # Article service
+├── email      # Email service
+├── resizer    # Resize service
 ├── mobile     # Mobile apps
-├── shared     # Shared JavaScript code
+├── ui         # UI library
 └── web        # Web app
 ```
 

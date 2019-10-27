@@ -23,15 +23,7 @@ import User from './User'
 import UserInterestedIn from './UserInterestedIn'
 import UserSettings from './UserSettings'
 
-const {
-  DB_PORT = 5432,
-  DB_HOST,
-  DB_PASSWORD,
-  DB_USERNAME,
-  DB_DATABASE,
-  DB_LOGGING,
-  DB_SYNCHRONIZE,
-} = process.env
+const { DB_PORT = 5432, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_DATABASE, DB_LOGGING } = process.env
 
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
@@ -64,7 +56,7 @@ export const options: ConnectionOptions = {
   logging: Boolean(DB_LOGGING),
   password: DB_PASSWORD,
   port: Number(DB_PORT),
-  synchronize: Boolean(DB_SYNCHRONIZE),
+  synchronize: true,
   type: 'postgres',
   username: DB_USERNAME,
 }
