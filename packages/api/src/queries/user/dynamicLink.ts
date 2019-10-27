@@ -1,1 +1,1 @@
-export default () => 'https://wrench.cc'
+export default ({ username }) => `${process.env.DOMAIN}/${username}`
