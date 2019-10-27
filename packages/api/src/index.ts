@@ -16,7 +16,7 @@ import RedisClient from './services/redis/client'
 
 const debug = require('debug')('api:server')
 
-const { PORT = 4000 } = process.env
+const { PORT } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
