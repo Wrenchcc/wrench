@@ -1,4 +1,4 @@
-import * as ms from 'ms'
+import ms from 'ms'
 
 export default async ({ lastSeen }) => {
   const timestamp = new Date().getTime() - new Date(lastSeen).getTime()
