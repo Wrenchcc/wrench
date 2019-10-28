@@ -8,10 +8,4 @@ export default NODE_ENV !== 'production'
       playground: true,
       tracing: true,
     }
-  : {
-      cacheControl: true,
-      debug: true,
-      introspection: true,
-      playground: true,
-      tracing: true,
-    }
+  : {}

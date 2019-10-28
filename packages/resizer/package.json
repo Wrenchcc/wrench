@@ -7,13 +7,13 @@
     "deploy": "serverless deploy --stage production --aws-profile wrench-api"
   },
   "dependencies": {
-    "sharp": "^0.23.1"
+    "sharp": "^0.23.2"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.34",
     "@types/node": "^12.11.7",
     "@types/sharp": "^0.23.0",
-    "aws-sdk": "^2.556.0",
+    "aws-sdk": "^2.557.0",
     "prettier": "^1.18.2",
     "serverless": "1.55.1",
     "serverless-webpack": "^5.3.1",
