@@ -4,7 +4,7 @@ import axios from 'axios'
 const debug = require('debug')('api:service:elasticsearch')
 
 const { ELASTICSEARCH_DOMAIN, NODE_ENV } = process.env
-
+debug('ELASTICSEARCH_DOMAIN', ELASTICSEARCH_DOMAIN)
 export default async ({ body = null, path }) => {
   try {
     const options = {
