@@ -717,10 +717,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-aws-sdk@^2.559.0:
-  version "2.559.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.559.0.tgz#2f39dad7428839b4fc7a87f943eef1c94a110aec"
-  integrity sha512-hRbomjpfj+rSaWYO/FHRqMMRw0TubZlqQXDbghgEvdJzQGZJfduJqckUgtAvDX0TGnLj2mKkGp3bqtwCfSH5sg==
+aws-sdk@^2.560.0:
+  version "2.560.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.560.0.tgz#602d9b5a9544429221e11a2b39fbf484b6ed28b1"
+  integrity sha512-OrePJS79p26JimjLKaIJrQPpDzknsClrB8uXv6NjVG/CseRi87XaNY5mJA5MhadZtaea11GxKhVd9NNRDYFgAg==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -1479,10 +1479,10 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-firebase-admin@^8.6.1:
-  version "8.6.1"
-  resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-8.6.1.tgz#b4fe5133a759a06afe06d1bf8dee6e302514a304"
-  integrity sha512-efheZmT7w9POLfJGBl0JoIUTRe1OMAWMAs/PgM0CZw+F8AM9C29UTAr+XgzRYMzY3llaDWu7zLGQ0Zl4E9jybg==
+firebase-admin@^8.7.0:
+  version "8.7.0"
+  resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-8.7.0.tgz#10be179f76ca6725f322ab7252812a92f1b879c0"
+  integrity sha512-mAp/58ZHbZHGPlSe8JDyELOT6DAWGUv9N3pA6d+Sg5RS5H3I1xGnKkhXK9BMJsejUfA3mwOqFPMLD4yso7aFxw==
   dependencies:
     "@firebase/database" "^0.5.1"
     "@types/node" "^8.0.53"
