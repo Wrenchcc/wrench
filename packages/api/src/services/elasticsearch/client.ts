@@ -1,33 +1,37 @@
-import * as aws4 from 'aws4'
 import axios from 'axios'
+import https from 'https'
 
 const debug = require('debug')('api:service:elasticsearch')
 
 const { ELASTICSEARCH_DOMAIN, NODE_ENV } = process.env
 
-export default async ({ body = null, path }) => {
+export default async ({ body = null, path, method }) => {
   try {
+    let httpsAgent
+
+    if (NODE_ENV !== 'production') {
+      httpsAgent = new https.Agent({
+        rejectUnauthorized: false,
+      })
+    }
+
     const options = {
       body,
       data: body,
-      url: `https://${ELASTICSEARCH_DOMAIN}/${path}`,
+      url: `${ELASTICSEARCH_DOMAIN}/${path}`,
       headers: {
         'Content-Type': 'application/json',
       },
       host: ELASTICSEARCH_DOMAIN,
-      method: 'POST',
       path,
+      method,
+      httpsAgent,
     }
 
-    if (NODE_ENV !== 'production') {
-      return axios({
-        ...options,
-        method: 'POST',
-        url: `http://${ELASTICSEARCH_DOMAIN}/${path}`,
-      })
-    }
-
-    return axios(aws4.sign(options))
+    await axios({
+      ...options,
+      url: `${ELASTICSEARCH_DOMAIN}/${path}`,
+    })
   } catch (err) {
     debug(err)
   }

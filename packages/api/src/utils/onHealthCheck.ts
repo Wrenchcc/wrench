@@ -1,10 +1,9 @@
-import { getConnection } from 'typeorm'
-import promiseTimeout from './promiseTimeout'
-
-const TIMEOUT = 1000
+import { default as DBHealthCheck } from '../models/healthCheck'
+import { healthCheck as ESHealthCheck } from '../services/elasticsearch'
+// import { healthCheck as RedisHealthCheck } from '../services/redis'
 
 export default async function onHealthCheck() {
-  const connection = getConnection()
-  const check = await connection.query('SELECT 1')
-  return promiseTimeout(TIMEOUT, check)
+  return Promise.all([ESHealthCheck, DBHealthCheck]).catch(() => {
+    return Promise.reject()
+  })
 }

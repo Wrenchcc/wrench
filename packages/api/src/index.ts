@@ -12,7 +12,7 @@ import { options, db } from './models'
 import createLoaders from './loaders'
 import services from './services'
 import onHealthCheck from './utils/onHealthCheck'
-import RedisClient from './services/redis/client'
+import { client as RedisClient } from './services/redis'
 
 const debug = require('debug')('api:server')
 
