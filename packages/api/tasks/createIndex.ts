@@ -4,12 +4,15 @@ const debug = require('debug')('task:elasticsearch')
 
 const INDEX_NAME = 'vehicles'
 
+// TODO: https://www.elastic.co/blog/moving-from-types-to-typeless-apis-in-elasticsearch-7-0
+// https://www.elastic.co/guide/en/elasticsearch/reference/7.0/removal-of-types.html
 async function createIndex() {
   try {
     debug(`Creating index: ${INDEX_NAME}.`)
 
     await elasticsearch.client({
-      path: INDEX_NAME,
+      method: 'PUT',
+      path: `${INDEX_NAME}?include_type_name=true`,
       body: JSON.stringify({
         mappings: {
           vehicle: {
@@ -80,7 +83,7 @@ async function createIndex() {
 
     debug('Index created.')
   } catch (err) {
-    debug('Could not create index. %s', err.response.data.error.reason)
+    debug('Could not create index. %s', err)
   }
 }
 

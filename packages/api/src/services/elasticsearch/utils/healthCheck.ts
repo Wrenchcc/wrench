@@ -4,11 +4,13 @@ const { ELASTICSEARCH_DOMAIN } = process.env
 
 export default async function healthCheck() {
   try {
-    const res = await axios({ url: `${ELASTICSEARCH_DOMAIN}/_cluster/health` })
+    const { data } = await axios({ url: `https://${ELASTICSEARCH_DOMAIN}/_cluster/health` })
 
-    if (res.status === 200) {
-      return Promise.reject()
+    if (data.status === 'green') {
+      return Promise.resolve()
     }
+
+    return Promise.reject()
   } catch {
     return Promise.reject()
   }

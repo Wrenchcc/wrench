@@ -8,6 +8,7 @@ async function deleteIndex() {
   try {
     debug(`Deleting index: ${INDEX_NAME}.`)
     await elasticsearch.client({
+      method: 'DELETE',
       path: INDEX_NAME,
     })
     debug('Index deleted.')

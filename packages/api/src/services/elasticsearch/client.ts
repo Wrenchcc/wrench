@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const { ELASTICSEARCH_DOMAIN } = process.env
 
-export default async ({ body = null, path }) => {
+export default async ({ body = null, path, method }) => {
   const options = {
     body,
     data: body,
@@ -12,10 +12,8 @@ export default async ({ body = null, path }) => {
     },
     host: ELASTICSEARCH_DOMAIN,
     path,
+    method,
   }
 
-  return axios({
-    ...options,
-    method: 'post',
-  })
+  return axios(options)
 }
