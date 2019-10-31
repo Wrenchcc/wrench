@@ -10,7 +10,6 @@ async function createIndex() {
 
     await elasticsearch.client({
       path: INDEX_NAME,
-      method: 'put',
       body: JSON.stringify({
         mappings: {
           vehicle: {
