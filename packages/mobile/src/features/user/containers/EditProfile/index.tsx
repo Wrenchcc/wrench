@@ -130,6 +130,12 @@ function EditProfile({ onboarding }) {
         },
         tintColor: 'black',
         customButtons: [{ name: 'remove', title: t('EditProfile:remove') }],
+        quality: 1.0,
+        maxWidth: 500,
+        maxHeight: 500,
+        storageOptions: {
+          skipBackup: true,
+        },
       },
       async res => {
         if (res.didCancel) {
