@@ -1,1 +1,1 @@
-plutil -replace CFBundleVersion -string "$APPCENTER_BUILD_ID" $APPCENTER_SOURCE_DIRECTORY/packages/mobile/ios/Info.plist
+plutil -replace CFBundleVersion -string "$APPCENTER_BUILD_ID" $APPCENTER_SOURCE_DIRECTORY/ios/Info.plist
