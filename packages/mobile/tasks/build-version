@@ -1,3 +1,1 @@
-echo $APPCENTER_SOURCE_DIRECTORY
-echo "katt"
-plutil -replace CFBundleVersion -string "$APPCENTER_BUILD_ID" $APPCENTER_SOURCE_DIRECTORY/ios/Info.plist
+plutil -replace CFBundleVersion -string "$APPCENTER_BUILD_ID" $APPCENTER_SOURCE_DIRECTORY/packages/mobile/ios/Wrench/Info.plist
