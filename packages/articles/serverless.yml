@@ -5,10 +5,17 @@ custom:
 
 provider:
   name: aws
+  region: eu-west-1
   runtime: nodejs10.x
-  deploymentBucket: wrench-articles
-  profile: wrench-api
+  deploymentBucket: wrench-articles-lambda
   timeout: 30
+  vpc:
+    securityGroupIds:
+      - sg-06fde9e8061be9f5c
+    subnetIds:
+      - subnet-0c04126b
+      - subnet-37041e7e
+      - subnet-44da891f
   iamRoleStatements:
     - Effect: Allow
       Action:

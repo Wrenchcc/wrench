@@ -1,6 +1,5 @@
 import { connection, db } from '../models'
 import uploadToS3 from './uploadToS3'
-import extractImageSources from './extractImageSources'
 import stripNewLines from './stripNewLines'
 
 export default async function saveArticle(feed, provider, item, images) {

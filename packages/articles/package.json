@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "deploy": "serverless deploy --stage production"
+    "deploy": "sls deploy -v -s production -r eu-west-1 --aws-profile ci"
   },
   "dependencies": {
     "aws-sdk": "^2.557.0",
