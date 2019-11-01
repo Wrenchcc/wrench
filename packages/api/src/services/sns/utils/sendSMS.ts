@@ -2,7 +2,7 @@ import client from '../client'
 
 const debug = require('debug')('api:sms')
 
-export default async number => {
+export default async (number, message) => {
   try {
     if (!number) {
       debug('No number provided')
@@ -10,8 +10,7 @@ export default async number => {
     }
 
     const params = {
-      Message:
-        'Click here to download Wrench for iPhone: http://appstore.com/cc.wrench.app Android: https://play.google.com/store/apps/details?id=com.wrench',
+      Message: message,
       PhoneNumber: number,
     }
 
