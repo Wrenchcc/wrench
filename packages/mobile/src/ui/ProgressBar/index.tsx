@@ -5,7 +5,7 @@ import { Transitioning, Transition } from 'react-native-reanimated'
 const transition = <Transition.Change interpolation="easeInOut" />
 
 function ProgressBar({
-  backgroundColor = 'rgba(255, 255, 255, 0.4)',
+  backgroundColor = 'transparent',
   height = 3,
   borderRadius = 3,
   fillColor = 'white',
