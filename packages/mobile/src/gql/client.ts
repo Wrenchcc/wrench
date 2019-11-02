@@ -8,7 +8,8 @@ import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
 import { GoogleSignin } from 'react-native-google-signin'
 import { AuthNavigation } from 'navigation'
-import { SCHEMA_VERSION_KEY, SCHEMA_VERSION } from 'utils/storage/constants'
+import { SCHEMA_VERSION_KEY } from 'utils/storage/constants'
+import appVersion from 'utils/appVersion'
 
 export let client = null
 
@@ -23,7 +24,7 @@ export default async function createClient() {
   // Read the current schema version from AsyncStorage.
   const currentVersion = await AsyncStorage.getItem(SCHEMA_VERSION_KEY)
 
-  if (currentVersion === SCHEMA_VERSION) {
+  if (currentVersion === appVersion) {
     // If the current version matches the latest version,
     // we're good to go and can restore the cache.
     await persistor.restore()
@@ -31,7 +32,7 @@ export default async function createClient() {
     // Otherwise, we'll want to purge the outdated persisted cache
     // and mark ourselves as having updated to the latest version.
     await persistor.purge()
-    await AsyncStorage.setItem(SCHEMA_VERSION_KEY, SCHEMA_VERSION)
+    await AsyncStorage.setItem(SCHEMA_VERSION_KEY, appVersion)
   }
 
   client = new ApolloClient({
