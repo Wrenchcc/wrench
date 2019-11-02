@@ -168,7 +168,7 @@ function EditProfile({ onboarding }) {
         }
         headerRight={
           isSaving ? (
-            <ActivityIndicator size="small" />
+            <ActivityIndicator size="small" color="black" />
           ) : (
             <Touchable onPress={handleSave}>
               <Text medium>{t('EditProfile:save')}</Text>

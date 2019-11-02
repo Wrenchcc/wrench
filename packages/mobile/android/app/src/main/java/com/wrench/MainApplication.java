@@ -27,6 +27,7 @@ import io.sentry.RNSentryPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
+import com.imagepicker.ImagePickerPackage;
 
 import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -89,6 +90,7 @@ public class MainApplication extends NavigationApplication {
         packages.add(new SplashScreenReactPackage());
         packages.add(new RNPermissionsPackage());
         packages.add(new RNReactNativeHapticFeedbackPackage());
+        packages.add(new ImagePickerPackage());
 
         return packages;
     }

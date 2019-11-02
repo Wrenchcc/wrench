@@ -10,6 +10,7 @@ import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { isIphone } from 'utils/platform'
 import { CONTENT_INSET } from 'navigation'
+import { useAppState } from 'utils/hooks'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -17,6 +18,7 @@ const renderItem = ({ item }) => <Post post={item.node} />
 
 function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const scrollRef = useRef()
+  const currentAppState = useAppState()
   const [hasNewPosts, setHasNewPosts] = useState(false)
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
 
@@ -25,6 +27,12 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
       scrollRef.current.getNode().scrollToOffset({ offset: -CONTENT_INSET })
     }
   }, [scrollRef])
+
+  useEffect(() => {
+    if (currentAppState === 'active') {
+      refetch()
+    }
+  }, [currentAppState, refetch])
 
   useEffect(() => {
     registerForPushNotifications()
