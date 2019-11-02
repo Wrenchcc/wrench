@@ -13,6 +13,7 @@ import { CONTENT_INSET } from 'navigation'
 import { useAppState } from 'utils/hooks'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
+const APP_STATE_ACTIVE = 'active'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -29,7 +30,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   }, [scrollRef])
 
   useEffect(() => {
-    if (currentAppState === 'active') {
+    if (currentAppState === APP_STATE_ACTIVE) {
       refetch()
     }
   }, [currentAppState, refetch])
