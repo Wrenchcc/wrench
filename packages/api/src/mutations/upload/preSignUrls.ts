@@ -34,8 +34,6 @@ export default isAuthenticated(async (_, { input }) => {
             filename,
           }
 
-          debug(res, '%O')
-
           return res
         } catch (err) {
           debug(err)
