@@ -4,6 +4,8 @@ const debug = require('debug')('s3:getSignedUrl')
 
 export default async ({ Bucket, Key }) => {
   try {
+    debug({ Bucket, Key })
+
     return client.getSignedUrl('putObject', {
       Bucket,
       Key,
