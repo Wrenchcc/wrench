@@ -66,10 +66,10 @@
     ramda "^0.26.1"
     semver "^6.1.1"
 
-"@serverless/enterprise-plugin@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.2.0.tgz#715c00bd002c2ae9f88e45fece30461512fcce3e"
-  integrity sha512-FNOlna7fdC9HPAM6l0LG/4dV9z+UOgl0Ju/pwfSHmXanl+ROUg6lcU1ZXX4+fK6T0+doWGcGSP+ksd9XWSBNqw==
+"@serverless/enterprise-plugin@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.2.1.tgz#f9e0cdedb01e3fb4e4f1430855651d56fe1d6314"
+  integrity sha512-CLTuvtEYhmvV7qiYuHkDJxoIIdcRU8OQBUhoBhUscK6UVdsKB2Y4ykz8su0rGg5rdgcaaluJF0+H87oBNw77ag==
   dependencies:
     "@serverless/event-mocks" "^1.1.1"
     "@serverless/platform-sdk" "^2.0.3"
@@ -350,25 +350,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.554.0:
-  version "2.556.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.556.0.tgz#5c96bacf7942b530b20c94f3307e6650a97fd7be"
-  integrity sha512-qILMUNl/a7FYWU67Y24OGsXFhyDHM4qYdplMR2tps/g17pN9bEQ5ijxvGzW2T8VVyAsTanmn+dFyl/CH38pC5Q==
-  dependencies:
-    buffer "4.9.1"
-    events "1.1.1"
-    ieee754 "1.1.13"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.3.2"
-    xml2js "0.4.19"
-
-aws-sdk@^2.557.0:
-  version "2.557.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.557.0.tgz#af2f09ecd6c048a9e674966dcb03e3fd2214d5a2"
-  integrity sha512-YnB1PaqpOows/BYLt5BdC4lihsgq+Zh2Frnq4d921QhDXVaiH2aW2rh6QMu3Z/pu75v/aqHUiroI7gaGj7dpKg==
+aws-sdk@^2.560.0, aws-sdk@^2.562.0:
+  version "2.562.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.562.0.tgz#9fdfcd8b6dddf4b7144c0b9a665b3db694a67a99"
+  integrity sha512-Uvt7qUXufjSxWMMfTs62xulGY7wnRut3y3daDtHSUdY62BnGjZGpp0dq/RW/bNi3aAjogEZNjWNZkLdtkHFeiQ==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -1992,7 +1977,7 @@ https-proxy-agent@^2.2.2:
     agent-base "^4.3.0"
     debug "^3.1.0"
 
-https-proxy-agent@^3.0.0:
+https-proxy-agent@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-3.0.1.tgz#b8c286433e87602311b01c8ea34413d856a4af81"
   integrity sha512-+ML2Rbh6DAuee7d07tYGEKOEi2voWPUGan+ExdPbPW6Z3svq+JCqr0v8WmKPOkz1vOVykPCBSuobe7G8GJUtVg==
@@ -2725,7 +2710,7 @@ native-promise-only@^0.8.1:
   resolved "https://registry.yarnpkg.com/native-promise-only/-/native-promise-only-0.8.1.tgz#20a318c30cb45f71fe7adfbf7b21c99c1472ef11"
   integrity sha1-IKMYwwy0X3H+et+/eyHJnBRy7xE=
 
-ncjsm@^4.0.0:
+ncjsm@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/ncjsm/-/ncjsm-4.0.1.tgz#fa51ac13140392ba2450d8e55b91a74a8ef13d2c"
   integrity sha512-gxh5Sgait8HyclaulfhgetHQGyhFm00ZQqISIfqtwFVnyWJ20rk+55SUamo9n3KhM6Vk63gemKPxIDYiSV/xZw==
@@ -3549,16 +3534,16 @@ serverless-plugin-typescript@^1.1.9:
     globby "^9.2.0"
     lodash "^4.17.11"
 
-serverless@1.55.1:
-  version "1.55.1"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.55.1.tgz#4f6db7bcfe899228f99ed8ec61e73ec58f6a67c8"
-  integrity sha512-eLHRFKe5norcgw2ZJEwh66hd/khgR9unocAOSzCOyi9fgB3/F4RTAeIaJVtDHZSGpwCI2APmDYzye11NZ86EfA==
+serverless@1.56.1:
+  version "1.56.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.56.1.tgz#9ceda7a05fa7be7361477c0cd14fc6ec4f087c9a"
+  integrity sha512-yLEQbyHdrgM8MG64J7o1jrjaaCaGOoNThRl9PGzBGZmibtDBDzRBlclVcjcWIWDItw35t6OtMRlwQrXYPtgoqw==
   dependencies:
     "@serverless/cli" "^1.4.0"
-    "@serverless/enterprise-plugin" "^3.2.0"
+    "@serverless/enterprise-plugin" "^3.2.1"
     archiver "^1.3.0"
     async "^1.5.2"
-    aws-sdk "^2.554.0"
+    aws-sdk "^2.560.0"
     bluebird "^3.7.1"
     cachedir "^2.2.0"
     chalk "^2.4.2"
@@ -3570,7 +3555,7 @@ serverless@1.55.1:
     get-stdin "^5.0.1"
     globby "^6.1.0"
     graceful-fs "4.2.1"
-    https-proxy-agent "^3.0.0"
+    https-proxy-agent "^3.0.1"
     inquirer "^6.5.2"
     is-docker "^1.1.0"
     is-wsl "^2.1.1"
@@ -3584,7 +3569,7 @@ serverless@1.55.1:
     mkdirp "^0.5.1"
     moment "^2.24.0"
     nanomatch "^1.2.13"
-    ncjsm "^4.0.0"
+    ncjsm "^4.0.1"
     node-fetch "^1.7.3"
     object-hash "^1.3.1"
     p-limit "^2.2.1"
@@ -3667,10 +3652,10 @@ slash@^2.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
   integrity sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==
 
-slugify@^1.3.5:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.3.5.tgz#90210678818b6d533cb060083aed0e8238133508"
-  integrity sha512-5VCnH7aS13b0UqWOs7Ef3E5rkhFe8Od+cp7wybFv5mv/sYSRkucZlJX0bamAJky7b2TTtGvrJBWVdpdEicsSrA==
+slugify@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.3.6.tgz#ba5fd6159b570fe4811d02ea9b1f4906677638c3"
+  integrity sha512-wA9XS475ZmGNlEnYYLPReSfuz/c3VQsEMoU43mi6OnKMCdbnFXd4/Yg7J0lBv8jkPolacMpOrWEaoYxuE1+hoQ==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
