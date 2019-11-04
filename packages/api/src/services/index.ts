@@ -5,6 +5,7 @@ import * as firebase from './firebase'
 import * as google from './google'
 import * as mail from './mail'
 import * as sns from './sns'
+import * as s3 from './s3'
 
 export default {
   apple,
@@ -14,4 +15,5 @@ export default {
   google,
   mail,
   sns,
+  s3,
 }
