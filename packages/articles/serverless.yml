@@ -9,19 +9,6 @@ provider:
   runtime: nodejs10.x
   deploymentBucket: wrench-articles-lambda
   timeout: 30
-  vpc:
-    securityGroupIds:
-      - sg-06fde9e8061be9f5c
-    subnetIds:
-      - subnet-0c04126b
-      - subnet-37041e7e
-      - subnet-44da891f
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - s3:PutObject
-        - s3:PutObjectAcl
-      Resource: 'arn:aws:s3:::${self:custom.bucket}/*'
 
 plugins:
   - serverless-plugin-typescript
