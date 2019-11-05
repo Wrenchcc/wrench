@@ -60,6 +60,17 @@ export default gql`
     node: Article!
   }
 
+  input ArticleInput {
+    files: [String]!
+    publisher: String!
+    categories: [String]!
+    author: String!
+    createdAt: Date!
+    description: String!
+    title: String!
+    url: String!
+  }
+
   extend type Query {
     article(id: ID): Article
     articles(
@@ -69,5 +80,9 @@ export default gql`
       last: Int = 10
       before: String
     ): ArticleConnection
+  }
+
+  extend type Mutation {
+    addArticle(input: ArticleInput!): Article
   }
 `

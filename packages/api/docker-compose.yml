@@ -20,14 +20,10 @@ services:
       - discovery.type=single-node
     ports:
       - 9200:9200
-  kibana:
-    container_name: kibana
-    image: docker.elastic.co/kibana/kibana:6.5.4
-    environment:
-      SERVER_NAME: localhost
-      ELASTICSEARCH_URL: http://elasticsearch:9200/
+  redis:
+    image: "redis:alpine"
     ports:
-      - 5601:5601
+      - "6379:6379"
       
 volumes:
   esdata:
