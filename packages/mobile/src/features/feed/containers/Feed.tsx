@@ -29,11 +29,11 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
     }
   }, [scrollRef])
 
-  useEffect(() => {
-    if (currentAppState === APP_STATE_ACTIVE) {
-      refetch()
-    }
-  }, [currentAppState, refetch])
+  // useEffect(() => {
+  //   if (currentAppState === APP_STATE_ACTIVE && !isFetching) {
+  //     refetch()
+  //   }
+  // }, [currentAppState, refetch, posts, isFetching])
 
   useEffect(() => {
     registerForPushNotifications()
