@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:12:13
+FROM mhart/alpine-node:12:13.0
 WORKDIR /app
 COPY . .
 RUN yarn
