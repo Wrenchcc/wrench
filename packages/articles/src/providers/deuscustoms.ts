@@ -23,7 +23,7 @@ export default async () => {
       images.push($(image).attr('href'))
     })
 
-    await saveArticle(FEED_URL, PROVIDER, item, images.slice(0, 10))
+    await saveArticle(PROVIDER, item, images.slice(0, 10))
   } catch (err) {
     console.log(err)
   }

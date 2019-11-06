@@ -23,7 +23,7 @@ export default async () => {
       images.push($(image).attr('src'))
     })
 
-    await saveArticle(FEED_URL, PROVIDER, item, images)
+    await saveArticle(PROVIDER, item, images)
   } catch (err) {
     console.log(err)
   }
