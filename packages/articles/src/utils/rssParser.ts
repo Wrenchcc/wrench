@@ -8,23 +8,24 @@ const parser = new Parser({
   },
 })
 
-export default async function rssParser(feed, provider) {
+export default async function rssParser(feed, publisher) {
   try {
-    let images
+    let files
     const response = await parser.parseURL(feed)
 
     const item = response.items[0]
 
-    switch (provider) {
+    switch (publisher) {
       case 'returnofthecaferacers': {
-        images = [item['media:content'].$.url]
+        files = [item['media:content'].$.url]
       }
       case 'themotoblogs': {
-        images = [item.content.$.url]
+        // @ts-ignore
+        files = [item.content.$.url]
       }
       default:
         {
-          images = extractImageSources(item['content:encoded'])
+          files = extractImageSources(item['content:encoded'])
         }
 
         return {
@@ -32,8 +33,8 @@ export default async function rssParser(feed, provider) {
           categories: item.categories,
           createdAt: new Date(item.isoDate),
           description: stripNewLines(item.contentSnippet),
-          images,
-          provider,
+          files,
+          publisher,
           title: item.title,
           url: item.link,
         }

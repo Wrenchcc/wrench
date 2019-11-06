@@ -1,14 +1,15 @@
 import * as Parser from 'rss-parser'
 import * as cheerio from 'cheerio'
 import * as fetch from 'node-fetch'
-import saveArticle from '../utils/saveArticle2'
+import stripNewLines from '../utils/stripNewLines'
+import request from '../utils/request'
 
 const FEED_URL = 'https://manofmany.com/rides/motorcycles/feed'
 const PROVIDER = 'manyofmany'
 
 const parser = new Parser()
 
-const images = []
+const files = []
 
 export default async () => {
   try {
@@ -20,10 +21,21 @@ export default async () => {
     const $ = cheerio.load(html)
 
     $('.size-full').each((i, image) => {
-      images.push($(image).attr('src'))
+      files.push($(image).attr('src'))
     })
 
-    await saveArticle(PROVIDER, item, images)
+    const data = {
+      author: item.creator,
+      categories: item.categories,
+      createdAt: new Date(item.isoDate),
+      description: stripNewLines(item.contentSnippet),
+      files: files.slice(0, 10),
+      publisher: PROVIDER,
+      title: item.title,
+      url: item.link,
+    }
+
+    await request(data)
   } catch (err) {
     console.log(err)
   }

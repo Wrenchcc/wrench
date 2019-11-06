@@ -1,14 +1,15 @@
 import * as Parser from 'rss-parser'
 import * as cheerio from 'cheerio'
 import * as fetch from 'node-fetch'
-import saveArticle from '../utils/saveArticle2'
+import stripNewLines from '../utils/stripNewLines'
+import request from '../utils/request'
 
 const FEED_URL = 'http://deuscustoms.com/feed/'
 const PROVIDER = 'deuscustoms'
 
 const parser = new Parser()
 
-const images = []
+const files = []
 
 export default async () => {
   try {
@@ -20,10 +21,21 @@ export default async () => {
     const $ = cheerio.load(html)
 
     $('.fade-magnify').each((i, image) => {
-      images.push($(image).attr('href'))
+      files.push($(image).attr('href'))
     })
 
-    await saveArticle(PROVIDER, item, images.slice(0, 10))
+    const data = {
+      author: item.creator,
+      categories: item.categories,
+      createdAt: new Date(item.isoDate),
+      description: stripNewLines(item.contentSnippet),
+      files: files.slice(0, 10),
+      publisher: PROVIDER,
+      title: item.title,
+      url: item.link,
+    }
+
+    await request(data)
   } catch (err) {
     console.log(err)
   }

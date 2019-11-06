@@ -1,14 +1,15 @@
 import * as Parser from 'rss-parser'
 import * as cheerio from 'cheerio'
 import * as fetch from 'node-fetch'
-import saveArticle from '../utils/saveArticle2'
+import request from '../utils/request'
+import stripNewLines from '../utils/stripNewLines'
 
 const FEED_URL = 'https://themotoblogs.com/feed/'
 const PROVIDER = 'themotoblogs'
 
 const parser = new Parser()
 
-const images = []
+const files = []
 
 export default async () => {
   try {
@@ -20,10 +21,21 @@ export default async () => {
     const $ = cheerio.load(html)
 
     $('.size-large').each((i, image) => {
-      images.push($(image).attr('src'))
+      files.push($(image).attr('src'))
     })
 
-    await saveArticle(PROVIDER, item, images)
+    const data = {
+      author: item.creator,
+      categories: item.categories,
+      createdAt: new Date(item.isoDate),
+      description: stripNewLines(item.contentSnippet),
+      files,
+      publisher: PROVIDER,
+      title: item.title,
+      url: item.link,
+    }
+
+    await request(data)
   } catch (err) {
     console.log(err)
   }
