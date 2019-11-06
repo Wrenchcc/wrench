@@ -8,7 +8,7 @@ const parser = new Parser({
   },
 })
 
-export default async function saveArticle(feed, provider) {
+export default async function rssParser(feed, provider) {
   try {
     let images
     const response = await parser.parseURL(feed)
@@ -28,12 +28,12 @@ export default async function saveArticle(feed, provider) {
         }
 
         return {
-          provider,
-          images,
-          categories: item.categories,
           author: item.creator,
+          categories: item.categories,
           createdAt: new Date(item.isoDate),
           description: stripNewLines(item.contentSnippet),
+          images,
+          provider,
           title: item.title,
           url: item.link,
         }
