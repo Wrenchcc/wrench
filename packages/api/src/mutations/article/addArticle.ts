@@ -37,6 +37,7 @@ async function downloadAndUploadToS3(files) {
   }
 }
 
+// TODO: Auth
 export default async (_, { input }, ctx) => {
   const article = await ctx.db.Article.findOne({
     where: {

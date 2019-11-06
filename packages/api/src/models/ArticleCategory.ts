@@ -13,13 +13,14 @@ export default class ArticleCategory extends BaseEntity {
   public static async findOrCreate(categories) {
     return Promise.all(
       categories.map(async name => {
-        const slug = slugify(name)
-        const category = await ArticleCategory.findOne({ slug })
+        const slug = slugify(name, '-')
+        const category = await ArticleCategory.findOne({
+          name,
+        })
 
         if (category) {
           return category
         }
-
         // @ts-ignore
         return ArticleCategory.save({
           name,
