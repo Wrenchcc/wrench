@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { v4 } from 'uuid'
+import { isAuthenticated } from '../../utils/permissions'
 import s3 from '../../services/s3/client'
 
 const debug = require('debug')('api:mutations:article:add-article')
@@ -37,7 +38,7 @@ async function downloadAndUploadToS3(files) {
   }
 }
 
-export default async (_, { input }, ctx) => {
+export default isAuthenticated(async (_, { input }, ctx) => {
   const article = await ctx.db.Article.findOne({
     where: {
       url: input.url,
@@ -94,4 +95,4 @@ export default async (_, { input }, ctx) => {
   } catch (err) {
     debug(err)
   }
-}
+})
