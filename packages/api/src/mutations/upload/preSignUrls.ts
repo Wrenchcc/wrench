@@ -15,7 +15,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
         const filename = `${v4()}.${type}`
 
         try {
-          const url = await ctx.services.s3.getSignedUrl('putObject', {
+          const url = await ctx.services.s3.client.getSignedUrl('putObject', {
             Bucket: AWS_S3_BUCKET,
             Key: `${UPLOAD_DIRECTORY}/${filename}`,
           })
