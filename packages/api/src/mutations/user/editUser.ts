@@ -59,11 +59,14 @@ export default isAuthenticated(async (_, args, ctx) => {
     }
   }
 
+  console.log('input', args.input.avatarUrl)
+
   await ctx.db.User.update(ctx.userId, {
     location: args.input.location || null,
     bio: args.input.bio || null,
     website: args.input.website || null,
     avatarUrl: args.input.avatarUrl || null,
+    isSilhouette: !args.input.avatarUrl,
   })
 
   if (args.input.firstName) {
