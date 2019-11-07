@@ -57,12 +57,7 @@ export default async (_, { input }, ctx) => {
 
       const [files, author, categories, publisher] = await Promise.all([
         ctx.db.ArticleFile.save(uploadedFiles),
-        ctx.db.ArticleAuthor.findOrCreate(
-          {
-            fullName: input.author,
-          },
-          { fullName: input.author }
-        ),
+        ctx.db.ArticleAuthor.findOrCreate(input.author),
         ctx.db.ArticleCategory.findOrCreate(input.categories),
         ctx.db.ArticlePublisher.findOne({
           where: {

@@ -18,8 +18,13 @@ export default class ArticleCategory extends BaseEntity {
           name,
         })
 
-        if (category) {
-          return category
+        // NOTE: Used to cover slug genereated with '.'
+        const s = await ArticleCategory.findOne({
+          slug,
+        })
+
+        if (category || s) {
+          return category || s
         }
         // @ts-ignore
         return ArticleCategory.save({
