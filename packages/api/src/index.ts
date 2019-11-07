@@ -29,11 +29,11 @@ async function server() {
 
   const server = new ApolloServer({
     ...debugOptions,
-    cacheControl: {
-      calculateHttpHeaders: false,
-      // Cache everything for at least a minute since we only cache public responses
-      defaultMaxAge: 60,
-    },
+    // cacheControl: {
+    //   calculateHttpHeaders: false,
+    // Cache everything for at least a minute since we only cache public responses
+    //   defaultMaxAge: 60,
+    // },
     // cache: RedisClient(),
     // plugins: [
     //   responseCachePlugin({
