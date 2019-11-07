@@ -14,6 +14,8 @@ import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './s
 import uploadAsync from 'utils/storage/uploadAsync'
 import { COLORS } from 'ui/constants'
 
+const CDN_DOMAIN = 'https://edge-files.wrench.cc'
+const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
 const UPLOAD_PATH = 'avatar'
@@ -73,7 +75,8 @@ function EditProfile({ onboarding }) {
     setSaving(true)
 
     try {
-      let uploadedAvatar
+      // NOTE: Get filename from saved avatarUrl to submit to backend
+      let uploadedAvatar = avatarUrl.replace(`${CDN_DOMAIN}/avatar/`, '')
 
       if (upload) {
         try {
@@ -143,7 +146,7 @@ function EditProfile({ onboarding }) {
         }
 
         if (res.customButton) {
-          update(USER.AVATAR_URL, '')
+          update(USER.AVATAR_URL, DEFAULT_AVATAR_URL)
         } else {
           update(USER.AVATAR_URL, res.uri)
           const { data } = await preSignUrl({

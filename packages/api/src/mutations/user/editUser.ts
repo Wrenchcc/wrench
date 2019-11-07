@@ -59,8 +59,6 @@ export default isAuthenticated(async (_, args, ctx) => {
     }
   }
 
-  console.log('input', args.input.avatarUrl)
-
   await ctx.db.User.update(ctx.userId, {
     location: args.input.location || null,
     bio: args.input.bio || null,
