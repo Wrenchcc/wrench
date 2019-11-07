@@ -4,8 +4,8 @@ import * as facebook from './facebook'
 import * as firebase from './firebase'
 import * as google from './google'
 import * as mail from './mail'
-// import * as sns from './sns'
-// import * as s3 from './s3'
+import * as sns from './sns'
+import * as s3 from './s3'
 
 export default {
   apple,
@@ -14,6 +14,6 @@ export default {
   firebase,
   google,
   mail,
-  // sns,
-  // s3,
+  sns,
+  s3,
 }
