@@ -5,7 +5,7 @@
   "scripts": {
     "deploy": "sls deploy -s production -r eu-west-1 --aws-profile ci",
     "log": "sls logs -f bikeexif -r eu-west-1 --aws-profile ci -s production",
-    "invoke": "serverless invoke local --function bikeexif --aws-profile ci"
+    "invoke": "serverless invoke local --function thebikeshed --aws-profile ci"
   },
   "dependencies": {
     "axios": "^0.19.0",
