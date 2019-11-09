@@ -1,27 +1,18 @@
 import DataLoader from 'dataloader'
 import User from '../models/User'
 
-export const createUserLoader = () =>
-  new DataLoader(async (keys: string[]) => {
-    const users = await User.findByIds(keys)
+type BatchUser = (ids: string[]) => Promise<User[]>
 
-    const userMap: { [key: string]: User } = {}
+const batchUsers: BatchUser = async ids => {
+  const users = await User.findByIds(ids)
 
-    users.forEach(u => {
-      userMap[u.id] = u
-    })
+  const userMap: { [key: string]: User } = {}
 
-    return keys.map(k => userMap[k])
+  users.forEach(u => {
+    userMap[u.id] = u
   })
 
-export const createUserByUsernameLoader = () => {} // new DataLoader(async (keys: string[]) => {
-// const user = await User.find({ where: { username } })
-//
-// const userMap: { [key: string]: User } = {}
-//
-// users.forEach(u => {
-//   userMap[u.id] = u
-// })
-//
-// return keys.map(k => userMap[k])
-// })
+  return ids.map(id => userMap[id])
+}
+
+export const createUserLoader = () => new DataLoader<string, User>(batchUsers)

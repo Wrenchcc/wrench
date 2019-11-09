@@ -1,2 +1,3 @@
-// TODO: Use dataloader
-export default async ({ projectId }, _, ctx) => ctx.db.Project.findOne(projectId)
+export default async ({ projectId }, _, ctx) => {
+  return ctx.loaders.project.load(projectId)
+}

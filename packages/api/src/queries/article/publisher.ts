@@ -1,1 +1,3 @@
-export default ({ publisherId }, _, ctx) => ctx.db.ArticlePublisher.findOne(publisherId)
+export default ({ publisherId }, _, ctx) => {
+  return ctx.db.ArticlePublisher.findOne(publisherId)
+}
