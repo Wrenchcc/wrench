@@ -4,6 +4,8 @@ set -uex
 
 TARGET_FILE=.env
 
+HASH=$(git rev-parse --short HEAD)
+
 echo "GRAPHQL_URL=${GRAPHQL_URL}" >> ${TARGET_FILE}
 echo "ENVIRONMENT=${ENVIRONMENT}" >> ${TARGET_FILE}
 echo "SENTRY_DSN=${SENTRY_DSN}" >> ${TARGET_FILE}
@@ -12,4 +14,4 @@ echo "SENTRY_URL=${SENTRY_URL}" >> ${TARGET_FILE}
 echo "SENTRY_PROJECT=${SENTRY_PROJECT}" >> ${TARGET_FILE}
 echo "SENTRY_AUTH_TOKEN=${SENTRY_AUTH_TOKEN}" >> ${TARGET_FILE}
 echo "MAPBOX_API_KEY=${MAPBOX_API_KEY}" >> ${TARGET_FILE}
-echo "GITHUB_HASH=${$(git rev-parse --short HEAD)}" >> ${TARGET_FILE}
+echo "GITHUB_HASH=${HASH}" >> ${TARGET_FILE}
