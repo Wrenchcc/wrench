@@ -322,19 +322,19 @@ PODS:
     - React
   - react-native-device-locale (1.0.0):
     - React
-  - react-native-fbsdk (1.1.0):
+  - react-native-fbsdk (1.1.1):
     - React
-    - react-native-fbsdk/Core (= 1.1.0)
-    - react-native-fbsdk/Login (= 1.1.0)
-    - react-native-fbsdk/Share (= 1.1.0)
-  - react-native-fbsdk/Core (1.1.0):
-    - FBSDKCoreKit (~> 5.8)
+    - react-native-fbsdk/Core (= 1.1.1)
+    - react-native-fbsdk/Login (= 1.1.1)
+    - react-native-fbsdk/Share (= 1.1.1)
+  - react-native-fbsdk/Core (1.1.1):
+    - FBSDKCoreKit (= 5.8)
     - React
-  - react-native-fbsdk/Login (1.1.0):
-    - FBSDKLoginKit (~> 5.8)
+  - react-native-fbsdk/Login (1.1.1):
+    - FBSDKLoginKit (= 5.8)
     - React
-  - react-native-fbsdk/Share (1.1.0):
-    - FBSDKShareKit (~> 5.8)
+  - react-native-fbsdk/Share (1.1.1):
+    - FBSDKShareKit (= 5.8)
     - React
   - react-native-image-manipulator (1.0.1):
     - React
@@ -424,9 +424,9 @@ PODS:
     - React
   - RNShare (2.0.0):
     - React
-  - SDWebImage (5.3.0):
-    - SDWebImage/Core (= 5.3.0)
-  - SDWebImage/Core (5.3.0)
+  - SDWebImage (5.3.1):
+    - SDWebImage/Core (= 5.3.1)
+  - SDWebImage/Core (5.3.1)
   - SDWebImageWebPCoder (0.2.5):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.0)
@@ -692,7 +692,7 @@ SPEC CHECKSUMS:
   react-native-camera: c529629e3ecd017dcdacfd0355576ef489d9d198
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-device-locale: 1caaa26d37987794e7761b936117f947c08aedab
-  react-native-fbsdk: 9c13a4390b46e489b164588608ec118d155ff720
+  react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
   react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
   react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
@@ -723,7 +723,7 @@ SPEC CHECKSUMS:
   RNReactNativeHapticFeedback: e11a4da0ce174e9f88b03cbaf5d76d94633cdee2
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
-  SDWebImage: f1afa74b86587c2c63f4e80dfd39b21e3c17b45b
+  SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
   SDWebImageWebPCoder: 947093edd1349d820c40afbd9f42acb6cdecd987
   Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
   SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90

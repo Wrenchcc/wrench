@@ -1,15 +1,18 @@
 import DataLoader from 'dataloader'
 import Project from '../models/Project'
 
-export const createProjectLoader = () =>
-  new DataLoader(async (keys: string[]) => {
-    const projects = await Project.findByIds(keys)
+type BatchProject = (ids: string[]) => Promise<Project[]>
 
-    const projectMap: { [key: string]: Project } = {}
+const batchProjects: BatchProject = async ids => {
+  const projects = await Project.findByIds(ids)
 
-    projects.forEach(p => {
-      projectMap[p.id] = p
-    })
+  const projectMap: { [key: string]: Project } = {}
 
-    return keys.map(k => projectMap[k])
+  projects.forEach(u => {
+    projectMap[u.id] = u
   })
+
+  return ids.map(id => projectMap[id])
+}
+
+export const createProjectLoader = () => new DataLoader<string, Project>(batchProjects)
