@@ -1,5 +1,5 @@
 import * as React from 'react'
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import { ApolloProvider } from 'react-apollo-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import * as NProgress from 'nprogress'
@@ -59,7 +59,7 @@ class MyApp extends App {
     }
   }
 
-  render() {
+  public render() {
     const { client, i18nServerInstance } = this.props
 
     return (
@@ -84,7 +84,7 @@ function AppWithi18n({
   useSSR(initialI18nStore, initialLanguage)
 
   return (
-    <Container>
+    <>
       <GlobalStyle />
       <Seo />
       <ModalProvider>
@@ -92,7 +92,7 @@ function AppWithi18n({
         <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
         {!hidePromo && <Promo viewerCountry={viewerCountry} paddingHorizontal />}
       </ModalProvider>
-    </Container>
+    </>
   )
 }
 
