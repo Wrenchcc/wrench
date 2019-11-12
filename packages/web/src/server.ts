@@ -19,6 +19,7 @@ const app = next({
 const handle = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
+  // @ts-ignore
   const server = express()
 
   server.disable('x-powered-by')

@@ -1,11 +1,16 @@
 // @ts-nocheck
 import InfiniteScroll from 'react-infinite-scroller'
+import styled from 'styled-components'
 import { useQuery } from '@apollo/react-hooks'
 import Seo from '../../utils/seo'
 import { GET_EXPLORE } from '../../graphql/queries/explore/explore'
 import { Post, Layout, Loader } from '../../ui'
+import UiTitle from '../../ui/Title'
 import Popular from '../../components/Popular'
-import { Title } from './styles'
+
+const Title = styled(UiTitle)`
+  margin-bottom: 50px;
+`
 
 export default function Explore() {
   const { data, loading, fetchMore } = useQuery(GET_EXPLORE, {

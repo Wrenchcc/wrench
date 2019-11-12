@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Footer from '../../components/Footer'
-import { Base } from './styles'
+import { Base } from '../../ui/PageLayout'
 
 function Cookies() {
   return (
@@ -136,7 +136,8 @@ function Cookies() {
             <p>
               For the Safari web browser, please visit this page from Apple:{' '}
               <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac">
-                https:// support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac
+                https://
+                support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac
               </a>
             </p>
           </li>

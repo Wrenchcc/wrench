@@ -2,8 +2,7 @@
 import React from 'react'
 import { SUPPORTED_LOCALS } from '../../i18n'
 
-// const DOMAIN = 'https://wrench.cc'
-const DOMAIN = 'http://localhost:3000'
+const DOMAIN = 'https://wrench.cc'
 
 const defaults = {
   templateTitle: null,

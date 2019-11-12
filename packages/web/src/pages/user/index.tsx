@@ -7,7 +7,28 @@ import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
 import { Text, Avatar, Layout, Post, Loader } from '../../ui'
 import UserProjects from '../../components/UserProjects'
-import { Top, Name, Left, Right } from './styles'
+import styled from 'styled-components'
+
+const Top = styled.div`
+  display: flex;
+  margin-bottom: 65px;
+`
+
+const Name = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+`
+
+const Left = styled.div`
+  margin-right: 155px;
+  max-width: 640px;
+  width: 100%;
+`
+
+const Right = styled.div`
+  margin-top: -120px;
+`
 
 function User({ username }) {
   const { t } = useTranslation()

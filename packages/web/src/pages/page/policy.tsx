@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Footer from '../../components/Footer'
-import { Base } from './styles'
+import { Base } from '../../ui/PageLayout'
 
 function Privacy() {
   return (

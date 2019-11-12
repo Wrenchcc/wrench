@@ -2,11 +2,32 @@
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
+import styled from 'styled-components'
 import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
 import Follow from '../../components/Follow'
 import { Post, Title, Layout, Loader } from '../../ui'
-import { Left, Right, Share, Followers } from './styles'
+import UiButton from '../../ui/Button'
+import UiFollowers from '../../ui/Followers'
+
+const Left = styled.div`
+  margin-right: 60px;
+  max-width: 360px;
+  position: fixed;
+`
+
+const Right = styled.div`
+  margin-left: 420px;
+  width: 100%;
+`
+
+const Share = styled(UiButton)`
+  width: 220px;
+`
+
+const Followers = styled(UiFollowers)`
+  margin-bottom: 50px;
+`
 
 function Project({ slug }) {
   const { t } = useTranslation()
