@@ -12,6 +12,7 @@ export const MAX_SELECTED_FILES = 10
 const initialState = {
   [POST.CAPTION]: null,
   [POST.FILES]: [],
+  [POST.IS_POSTING]: false,
   [POST.PROJECT_ID]: null,
   [POST.SELECED_FILES]: [],
   [POST.SELECTED_ID]: null,
@@ -87,9 +88,12 @@ const [usePostStore, api] = create((set, get) => ({
       set({
         [POST.CAPTION]: null,
         [POST.FILES]: [],
+        [POST.IS_POSTING]: false,
         [POST.SELECED_FILES]: [],
         [POST.SELECTED_ID]: null,
       }),
+
+    setIsPosting: payload => set({ isPosting: payload }),
 
     update: async (field, payload) => {
       if (field === POST.PROJECT_ID) {

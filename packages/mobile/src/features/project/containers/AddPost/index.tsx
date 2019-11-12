@@ -17,11 +17,12 @@ function AddPost({ addPost: addPostMutation }) {
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
 
-  const { files, caption, update, reset, projectId } = usePostStore(store => ({
+  const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({
     caption: store.caption,
     files: store.files,
     projectId: store.projectId,
     reset: store.actions.reset,
+    setIsPosting: store.actions.setIsPosting,
     update: store.actions.update,
   }))
 
@@ -35,9 +36,11 @@ function AddPost({ addPost: addPostMutation }) {
 
   const handleAddPost = async () => {
     dismissModal(true)
+    setIsPosting(true)
 
     try {
       const uploaded = await uploadToS3Async(files)
+
       await addPostMutation({
         caption,
         files: uploaded,
@@ -47,6 +50,8 @@ function AddPost({ addPost: addPostMutation }) {
       reset()
       track(events.POST_CREATED)
     } catch (err) {
+      setIsPosting(false)
+
       toastActions.show({
         content: t('AddPost:error'),
         dismissAfter: 6000,

@@ -10,6 +10,7 @@ export const POST = {
   PROJECT_ID: 'projectId',
   SELECED_FILES: 'selectedFiles',
   SELECTED_ID: 'selectedId',
+  IS_POSTING: 'isPosting',
 }
 
 export const TOAST = {
