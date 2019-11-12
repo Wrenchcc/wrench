@@ -3,7 +3,7 @@ require('dotenv').config()
 const withOptimizedImages = require('next-optimized-images')
 
 module.exports = withOptimizedImages({
-  distDir: '../.next',
+  target: 'serverless',
   env: {
     BUILD_ID: require('child_process') // eslint-disable-line
       .execSync('git rev-parse --short HEAD')

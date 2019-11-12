@@ -1,3 +1,4 @@
+import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
@@ -48,6 +49,7 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/public/favicon-16x16.png" sizes="16x16" />
           <meta name="msapplication-TileImage" content="/public/mstile-144x144.png" />
         </Head>
+
         <body>
           <Main />
           <NextScript />

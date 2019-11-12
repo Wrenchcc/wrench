@@ -1,5 +1,5 @@
 // @ts-nocheck
-import * as React from 'react'
+import React from 'react'
 import App from 'next/app'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'

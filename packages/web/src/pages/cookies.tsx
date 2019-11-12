@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import Footer from '../../components/Footer'
-import { Base } from '../../ui/PageLayout'
+import Footer from '../components/Footer'
+import { Base } from '../ui/PageLayout'
 
 function Cookies() {
   return (

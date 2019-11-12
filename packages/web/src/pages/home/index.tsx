@@ -8,7 +8,6 @@ import { GET_POPULAR_PROJECTS } from '../../graphql/queries/project/popularProje
 import Popular from '../../components/Popular'
 import Footer from '../../components/Footer'
 import Promo from '../../components/Promo'
-// @ts-nocheck
 import styled from 'styled-components'
 import UiButton from '../../ui/Button'
 import UiText from '../../ui/Text'

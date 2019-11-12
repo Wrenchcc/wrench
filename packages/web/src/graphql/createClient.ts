@@ -2,7 +2,6 @@
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import fetch from 'isomorphic-unfetch'
 import Router from 'next/router'
 import { isBrowser } from '../utils/platform'
 import { removeAccessToken, removeRefreshToken } from './utils/auth'
@@ -11,11 +10,6 @@ import RefreshTokenLink from './links/RefreshToken'
 import HttpLink from './links/Http'
 
 export let client = null
-
-// Polyfill fetch() on the server (used by apollo-client)
-if (!isBrowser) {
-  global.fetch = fetch
-}
 
 function create(initialState, options) {
   const autLink = AuthLink(options)
