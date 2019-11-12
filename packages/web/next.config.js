@@ -1,9 +1,7 @@
 require('dotenv').config()
-const withPlugins = require('next-compose-plugins')
-const optimizedImages = require('next-optimized-images')
-const withTypescript = require('@zeit/next-typescript')
+const withOptimizedImages = require('next-optimized-images')
 
-module.exports = withPlugins([withTypescript, optimizedImages], {
+module.exports = withOptimizedImages({
   distDir: '../.next',
   env: {
     BUILD_ID: require('child_process') // eslint-disable-line

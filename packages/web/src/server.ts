@@ -1,5 +1,5 @@
 import * as express from 'express'
-import * as next from 'next'
+import next from 'next/dist/server/next'
 import * as i18nextMiddleware from 'i18next-express-middleware'
 import i18n from './i18n'
 import { routes } from './routes'

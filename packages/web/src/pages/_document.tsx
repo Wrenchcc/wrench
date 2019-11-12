@@ -2,14 +2,15 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  public static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
 
     const originalRenderPage = ctx.renderPage
 
-    ctx.renderPage = () => originalRenderPage({
-      enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
-    })
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+      })
 
     const initialProps = await Document.getInitialProps(ctx)
 
@@ -21,7 +22,7 @@ export default class MyDocument extends Document {
     }
   }
 
-  render() {
+  public render() {
     return (
       // @ts-ignore
       <html lang={this.props.locale}>
@@ -36,16 +37,16 @@ export default class MyDocument extends Document {
           <link
             rel="apple-touch-icon-precomposed"
             sizes="144x144"
-            href="/static/apple-touch-icon-144x144.png"
+            href="/public/apple-touch-icon-144x144.png"
           />
           <link
             rel="apple-touch-icon-precomposed"
             sizes="152x152"
-            href="/static/apple-touch-icon-152x152.png"
+            href="/public/apple-touch-icon-152x152.png"
           />
-          <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
-          <meta name="msapplication-TileImage" content="/static/mstile-144x144.png" />
+          <link rel="icon" type="image/png" href="/public/favicon-32x32.png" sizes="32x32" />
+          <link rel="icon" type="image/png" href="/public/favicon-16x16.png" sizes="16x16" />
+          <meta name="msapplication-TileImage" content="/public/mstile-144x144.png" />
         </Head>
         <body>
           <Main />
