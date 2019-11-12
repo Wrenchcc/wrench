@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useMutation } from 'react-apollo-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import dynamic from 'next/dynamic'
 import { Text, Loader } from '../../ui'
 import { SEND_PROMO } from '../../graphql/mutations/invite/sendPromo'
@@ -55,8 +55,9 @@ function Promo({ viewerCountry = 'us', sticky = true, inverted = false, paddingH
             inverted={inverted}
             success={success}
             active={number.length >= 10}
-            onClick={() => number
-              && handleSubmit({
+            onClick={() =>
+              number &&
+              handleSubmit({
                 update: (_, { data }) => {
                   if (data.sendPromo) {
                     setSuccess(true)

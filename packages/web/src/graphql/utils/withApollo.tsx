@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import React from 'react'
-import { getMarkupFromTree } from 'react-apollo-hooks'
-import { renderToString } from 'react-dom/server'
+import { getDataFromTree } from '@apollo/react-ssr'
 import createClient from '../createClient'
 import { getAccessToken } from '../utils/auth'
 import { isBrowser } from '../../utils/platform'
 
-export default App => class Apollo extends React.Component {
+export default App =>
+  class Apollo extends React.Component {
     public static displayName = 'withApollo(App)'
 
     public static async getInitialProps(appCtx) {
-      const { Component, router, ctx } = appCtx
+      const { AppTree, ctx } = appCtx
       const apollo = createClient(
         {},
         {
@@ -35,11 +35,7 @@ export default App => class Apollo extends React.Component {
       // and extract the resulting data
       if (!isBrowser) {
         try {
-          // Run all GraphQL queries
-          await getMarkupFromTree({
-            renderFunction: renderToString,
-            tree: <App {...appProps} Component={Component} router={router} client={apollo} />,
-          })
+          await getDataFromTree(<AppTree {...appProps} apolloState={apolloState} apollo={apollo} />)
         } catch (error) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
           if (process.env.NODE_ENV !== 'production') {
@@ -73,4 +69,4 @@ export default App => class Apollo extends React.Component {
     public render() {
       return <App {...this.props} client={this.apollo} />
     }
-}
+  }

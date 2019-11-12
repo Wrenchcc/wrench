@@ -2,7 +2,7 @@ import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import { Loader, Avatar, Text } from '../../../ui'
 import { SEARCH_USER } from '../../../graphql/queries/search/searchUser'
 import { List, Base, Content } from './styles'
@@ -24,8 +24,8 @@ function Result({ query, onPress }) {
         loader={<Loader key={0} />}
         useWindow={false}
       >
-        {data.users
-          && data.users.edges.map(({ node }, index) => (
+        {data.users &&
+          data.users.edges.map(({ node }, index) => (
             <Base first={index === 0} onClick={onPress} key={node.id}>
               <Link
                 href={{

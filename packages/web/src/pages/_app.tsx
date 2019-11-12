@@ -1,6 +1,6 @@
 import * as React from 'react'
 import App from 'next/app'
-import { ApolloProvider } from 'react-apollo-hooks'
+import { ApolloProvider } from '@apollo/react-hooks'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import * as NProgress from 'nprogress'
 import Router from 'next/router'

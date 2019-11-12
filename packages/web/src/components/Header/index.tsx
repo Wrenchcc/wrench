@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
-import { useQuery, useMutation } from 'react-apollo-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 import { withRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import useOutsideClick from '@rooks/use-outside-click'
@@ -99,7 +99,7 @@ function Header({ router, isAuthenticated }) {
 
       <Nav>
         {nav.map(({ title, href, requireAuth }) => {
-          if (!isAuthenticated && requireAuth) return null
+          if (!isAuthenticated && requireAuth) { return null }
 
           return (
             <Link passHref href={href} key={href}>
@@ -117,8 +117,8 @@ function Header({ router, isAuthenticated }) {
             <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
               <Badge
                 unread={
-                  notifications.data.notifications
-                  && notifications.data.notifications.unreadCount > 0
+                  notifications.data.notifications &&
+                  notifications.data.notifications.unreadCount > 0
                 }
               />
               {openNotifications && <Notifications />}

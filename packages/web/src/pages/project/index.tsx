@@ -1,5 +1,5 @@
 import InfiniteScroll from 'react-infinite-scroller'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { PROJECT_BY_SLUG } from '../../graphql/queries/project/projectBySlug'
@@ -47,29 +47,30 @@ function Project({ slug }) {
 
       <Right>
         <InfiniteScroll
-          loadMore={() => fetchMore({
-            variables: {
-              after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor,
-            },
-            updateQuery: (prev, { fetchMoreResult }) => {
-              if (!fetchMoreResult) return prev
+          loadMore={() =>
+            fetchMore({
+              variables: {
+                after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor,
+              },
+              updateQuery: (prev, { fetchMoreResult }) => {
+                if (!fetchMoreResult) { return prev }
 
-              return {
-                ...prev,
-                project: {
-                  ...prev.project,
-                  posts: {
-                    ...prev.project.posts,
-                    pageInfo: {
-                      ...prev.project.posts.pageInfo,
-                      ...fetchMoreResult.project.posts.pageInfo,
+                return {
+                  ...prev,
+                  project: {
+                    ...prev.project,
+                    posts: {
+                      ...prev.project.posts,
+                      pageInfo: {
+                        ...prev.project.posts.pageInfo,
+                        ...fetchMoreResult.project.posts.pageInfo,
+                      },
+                      edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
                     },
-                    edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
                   },
-                },
-              }
-            },
-          })
+                }
+              },
+            })
           }
           hasMore={data.project.posts.pageInfo.hasNextPage}
           loader={<Loader key={0} />}

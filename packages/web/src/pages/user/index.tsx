@@ -1,7 +1,6 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { useQuery } from 'react-apollo-hooks'
-import { pathOr } from 'ramda'
+import { useQuery } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from '../../utils/seo'
 import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
@@ -66,29 +65,30 @@ function User({ username }) {
 
       <Left>
         <InfiniteScroll
-          loadMore={() => fetchMore({
-            variables: {
-              after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor,
-            },
-            updateQuery: (prev, { fetchMoreResult }) => {
-              if (!fetchMoreResult) return prev
+          loadMore={() =>
+            fetchMore({
+              variables: {
+                after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor,
+              },
+              updateQuery: (prev, { fetchMoreResult }) => {
+                if (!fetchMoreResult) { return prev }
 
-              return {
-                ...prev,
-                user: {
-                  ...prev.user,
-                  posts: {
-                    ...prev.user.posts,
-                    pageInfo: {
-                      ...prev.user.posts.pageInfo,
-                      ...fetchMoreResult.user.posts.pageInfo,
+                return {
+                  ...prev,
+                  user: {
+                    ...prev.user,
+                    posts: {
+                      ...prev.user.posts,
+                      pageInfo: {
+                        ...prev.user.posts.pageInfo,
+                        ...fetchMoreResult.user.posts.pageInfo,
+                      },
+                      edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
                     },
-                    edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
                   },
-                },
-              }
-            },
-          })
+                }
+              },
+            })
           }
           hasMore={data.user.posts.pageInfo.hasNextPage}
           loader={<Loader key={0} />}

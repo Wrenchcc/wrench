@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import Link from 'next/link'
 import { Title } from '../../ui'
 import { GET_POPULAR_PROJECTS } from '../../graphql/queries/project/popularProjects'

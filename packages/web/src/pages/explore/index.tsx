@@ -1,5 +1,5 @@
 import InfiniteScroll from 'react-infinite-scroller'
-import { useQuery } from 'react-apollo-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import Seo from '../../utils/seo'
 import { GET_EXPLORE } from '../../graphql/queries/explore/explore'
 import { Post, Layout, Loader } from '../../ui'
@@ -29,26 +29,27 @@ export default function Explore() {
 
       <Title medium>Recent posts</Title>
       <InfiniteScroll
-        loadMore={() => fetchMore({
-          variables: {
-            after: data.posts.edges[data.posts.edges.length - 1].cursor,
-          },
-          updateQuery: (prev, { fetchMoreResult }) => {
-            if (!fetchMoreResult) return prev
+        loadMore={() =>
+          fetchMore({
+            variables: {
+              after: data.posts.edges[data.posts.edges.length - 1].cursor,
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+              if (!fetchMoreResult) { return prev }
 
-            return {
-              ...prev,
-              posts: {
-                ...prev.posts,
-                pageInfo: {
-                  ...prev.posts.pageInfo,
-                  ...fetchMoreResult.posts.pageInfo,
+              return {
+                ...prev,
+                posts: {
+                  ...prev.posts,
+                  pageInfo: {
+                    ...prev.posts.pageInfo,
+                    ...fetchMoreResult.posts.pageInfo,
+                  },
+                  edges: [...prev.posts.edges, ...fetchMoreResult.posts.edges],
                 },
-                edges: [...prev.posts.edges, ...fetchMoreResult.posts.edges],
-              },
-            }
-          },
-        })
+              }
+            },
+          })
         }
         hasMore={data.posts && data.posts.pageInfo.hasNextPage}
         loader={<Loader key={0} />}
