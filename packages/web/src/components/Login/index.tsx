@@ -1,3 +1,4 @@
+// @ts-nocheck
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'

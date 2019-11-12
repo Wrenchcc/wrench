@@ -1,13 +1,16 @@
+// @ts-nocheck
 import React, { memo, Fragment } from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import Text from '../../Text'
 import { Row, Comment, LoadMore } from './styles'
 
-const List = memo(function List({ comments, className }) {
+const List = memo(function List({ comments }) {
   const { t } = useTranslation()
 
-  if (!comments.length) return null
+  if (!comments.length) {
+    return null
+  }
 
   return (
     <Fragment>

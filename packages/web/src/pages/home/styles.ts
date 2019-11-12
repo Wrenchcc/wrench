@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from 'styled-components'
 import UiButton from '../../ui/Button'
 import UiText from '../../ui/Text'

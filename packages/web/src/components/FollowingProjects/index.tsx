@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
@@ -8,7 +9,7 @@ import { Base, Row, Content, Text, List, Image } from './styles'
 
 function FollowingProjects() {
   const { t } = useTranslation()
-  const { data, loading, fetchMore } = useQuery(USER_FOOLOWING_PROJECTS)
+  const { data, loading } = useQuery(USER_FOOLOWING_PROJECTS)
 
   if (loading || !data.currentUser) {
     return null

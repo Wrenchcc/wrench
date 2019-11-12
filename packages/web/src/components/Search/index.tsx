@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import Result from './Result'

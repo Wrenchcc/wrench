@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 import buildTags from './buildTags'

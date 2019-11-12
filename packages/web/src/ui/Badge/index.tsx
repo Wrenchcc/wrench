@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { memo } from 'react'
 import { Icon, Base } from './style'
 

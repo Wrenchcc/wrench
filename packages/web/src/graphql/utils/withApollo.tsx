@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Head from 'next/head'
 import React from 'react'
 import { getDataFromTree } from '@apollo/react-ssr'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { PureComponent } from 'react'
 import TextExtraction from './extraction'
 
@@ -8,7 +9,7 @@ export const PATTERNS = {
 }
 
 export default class ParsedText extends PureComponent {
-  getPatterns() {
+  public getPatterns() {
     return this.props.parse.map(option => {
       const { type, ...patternOption } = option
       if (type) {
@@ -22,7 +23,7 @@ export default class ParsedText extends PureComponent {
     })
   }
 
-  getParsedText() {
+  public getParsedText() {
     const textExtraction = new TextExtraction(this.props.children, this.getPatterns())
 
     return textExtraction
@@ -30,7 +31,7 @@ export default class ParsedText extends PureComponent {
       .map((props, index) => <span key={`parsedText-${index}`} {...props} />)
   }
 
-  render() {
+  public render() {
     const { parse, className } = this.props
     return <p className={className}>{this.getParsedText()}</p>
   }

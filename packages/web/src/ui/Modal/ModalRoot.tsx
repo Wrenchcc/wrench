@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { memo, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { ModalType } from './ModalContext'

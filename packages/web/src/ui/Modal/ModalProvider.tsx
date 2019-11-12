@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useCallback, useState, useMemo } from 'react'
 import { ModalType, ModalContext } from './ModalContext'
 import { ModalRoot } from './ModalRoot'
@@ -25,18 +26,20 @@ export interface ModalProviderProps {
 export const ModalProvider = ({ container, children }: ModalProviderProps) => {
   const [modals, setModals] = useState<Record<string, ModalType>>({})
   const showModal = useCallback(
-    (key: string, modal: ModalType) => setModals(modals => ({
-      ...modals,
-      [key]: modal,
-    })),
+    (key: string, modal: ModalType) =>
+      setModals(modals => ({
+        ...modals,
+        [key]: modal,
+      })),
     []
   )
   const hideModal = useCallback(
-    (key: string) => setModals(modals => {
-      const newModals = { ...modals }
-      delete newModals[key]
-      return newModals
-    }),
+    (key: string) =>
+      setModals(modals => {
+        const newModals = { ...modals }
+        delete newModals[key]
+        return newModals
+      }),
     []
   )
   const contextValue = useMemo(() => ({ showModal, hideModal }), [])

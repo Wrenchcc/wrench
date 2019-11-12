@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from 'styled-components'
 import { toUpper } from 'ramda'
 import { FONTS, COLORS } from '../constants'

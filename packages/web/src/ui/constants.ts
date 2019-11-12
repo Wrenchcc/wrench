@@ -38,5 +38,4 @@ export const DEVICE = {
   LAPTOP: `(max-width: ${SIZES.LAPTOP})`,
   LAPTOP_LARGE: `(max-width: ${SIZES.LAPTOP_LARGE})`,
   DESKTOP: `(max-width: ${SIZES.DESKTOP})`,
-  DESKTOP: `(max-width: ${SIZES.DESKTOP})`,
 }

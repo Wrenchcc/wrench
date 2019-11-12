@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Base } from './styles'
 import handleParse from './handleParse'

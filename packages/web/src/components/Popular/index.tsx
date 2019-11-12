@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment } from 'react'
 import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
@@ -13,8 +14,8 @@ function Popular({ projects }) {
       <Text color="grey">{t('Popular:description')}</Text>
 
       <List>
-        {projects
-          && projects.edges.map(({ node }) => (
+        {projects &&
+          projects.edges.map(({ node }) => (
             <Card
               key={node.id}
               image={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}

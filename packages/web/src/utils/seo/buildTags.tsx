@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { SUPPORTED_LOCALS } from '../../i18n'
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useTranslation } from 'react-i18next'

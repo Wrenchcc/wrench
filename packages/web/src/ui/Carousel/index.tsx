@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { memo, Fragment } from 'react'
 import { CarouselProvider } from 'pure-react-carousel'
 import Image from '../Image'

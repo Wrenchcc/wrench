@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
@@ -41,6 +42,7 @@ function Header({ router, isAuthenticated }) {
 
   const toggleNotifications = () => {
     if (notifications.data.notifications && notifications.data.notifications.unreadCount > 0) {
+      // @ts-ignore
       markNotificationsSeen({
         update: proxy => {
           const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
@@ -99,7 +101,9 @@ function Header({ router, isAuthenticated }) {
 
       <Nav>
         {nav.map(({ title, href, requireAuth }) => {
-          if (!isAuthenticated && requireAuth) { return null }
+          if (!isAuthenticated && requireAuth) {
+            return null
+          }
 
           return (
             <Link passHref href={href} key={href}>

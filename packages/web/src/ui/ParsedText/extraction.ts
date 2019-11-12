@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default class TextExtraction {
   /**
    * @param {String} text - Text to be parsed
@@ -14,7 +15,7 @@ export default class TextExtraction {
    * Returns parts of the text with their own props
    * @return {Object[]} - props for all the parts of the text
    */
-  parse() {
+  public parse() {
     let parsedTexts = [{ children: this.text }]
     this.patterns.forEach(pattern => {
       const newParts = []
@@ -73,7 +74,7 @@ export default class TextExtraction {
    * @param {Integer} index - Index of the matched string in the whole string
    * @return {Object} props for the matched text
    */
-  getMatchedPart(matchedPattern, text, matches, index) {
+  public getMatchedPart(matchedPattern, text, matches, index) {
     const props = {}
 
     Object.keys(matchedPattern).forEach(key => {

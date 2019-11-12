@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
@@ -9,8 +10,8 @@ const Followers = memo(function Followers({ followers, className }) {
   return (
     <Base className={className}>
       <Users>
-        {followers.edges
-          && followers.edges.map(({ node }, index) => (
+        {followers.edges &&
+          followers.edges.map(({ node }, index) => (
             <User first={index === 0} key={node.id}>
               <Link
                 href={{

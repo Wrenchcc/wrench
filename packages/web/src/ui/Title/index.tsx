@@ -1,5 +1,5 @@
+// @ts-nocheck
 import React from 'react'
-// import Touchable from 'ui/Touchable'
 import { Base } from './styles'
 
 const Title = ({ children, style = {}, large, medium, lineHeight, ...props }) => (

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --no-notify --ignore-watch .next --project tsconfig.server.json src/server.ts",
-    "compile": "next build src && tsc --project tsconfig.server.json",
+    "build": "next build src && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "translations:create": "tasks/translations_create"
   },

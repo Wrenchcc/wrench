@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ApolloClient } from 'apollo-client'
 import { ApolloLink } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'

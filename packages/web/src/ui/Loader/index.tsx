@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Base, Bounce1, Bounce2, Bounce3 } from './styles'
 

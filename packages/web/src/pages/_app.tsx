@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react'
 import App from 'next/app'
 import { ApolloProvider } from '@apollo/react-hooks'

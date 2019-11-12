@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react'
 import Image from '../Image'
 import { Base } from './styles'

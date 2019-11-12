@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { REFRESH_TOKEN } from '../../mutations/user/refreshToken'

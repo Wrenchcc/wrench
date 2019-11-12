@@ -1,3 +1,4 @@
+// @ts-nocheck
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from '@apollo/react-hooks'
 import Seo from '../../utils/seo'
@@ -35,7 +36,9 @@ export default function Explore() {
               after: data.posts.edges[data.posts.edges.length - 1].cursor,
             },
             updateQuery: (prev, { fetchMoreResult }) => {
-              if (!fetchMoreResult) { return prev }
+              if (!fetchMoreResult) {
+                return prev
+              }
 
               return {
                 ...prev,

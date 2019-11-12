@@ -1,10 +1,10 @@
+// @ts-nocheck
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import TimeAgo from '../TimeAgo'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 import Avatar from '../Avatar'
 import Text from '../Text'
-import { COLORS } from '../constants'
 import { Base, Content, Description, Bottom } from './styles'
 
 const description = (data, t) => {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
@@ -53,7 +54,9 @@ function Project({ slug }) {
                 after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor,
               },
               updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) { return prev }
+                if (!fetchMoreResult) {
+                  return prev
+                }
 
                 return {
                   ...prev,
