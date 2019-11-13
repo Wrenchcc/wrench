@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { Text } from '../../ui'
+import { Text } from 'ui'
 import { Base, Inner, Bottom, Navigation, Column, NavItem } from './styles'
 
 function Footer() {

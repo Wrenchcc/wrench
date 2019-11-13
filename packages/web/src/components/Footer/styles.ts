@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { COLORS, DEVICE } from '../../ui/constants'
+import { COLORS, DEVICE } from 'ui/constants'
 
 export const Base = styled.footer`
   background: white;

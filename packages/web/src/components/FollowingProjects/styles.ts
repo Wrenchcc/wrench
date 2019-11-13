@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import UiText from '../../ui/Text'
-import UiImage from '../../ui/Image'
+import UiText from 'ui/Text'
+import UiImage from 'ui/Image'
 
 export const Base = styled.div``
 

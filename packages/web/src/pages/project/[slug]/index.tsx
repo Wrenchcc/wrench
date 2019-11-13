@@ -3,12 +3,12 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import Seo from '../../../utils/seo'
-import { PROJECT_BY_SLUG } from '../../../graphql/queries/project/projectBySlug'
-import Follow from '../../../components/Follow'
-import { Post, Title, Layout, Loader } from '../../../ui'
-import UiButton from '../../../ui/Button'
-import UiFollowers from '../../../ui/Followers'
+import Seo from 'utils/seo'
+import { PROJECT_BY_SLUG } from 'graphql/queries/project/projectBySlug'
+import Follow from 'components/Follow'
+import { Post, Title, Layout, Loader } from 'ui'
+import UiButton from 'ui/Button'
+import UiFollowers from 'ui/Followers'
 
 const Left = styled.div`
   margin-right: 60px;

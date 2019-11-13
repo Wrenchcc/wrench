@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useMutation } from '@apollo/react-hooks'
 import dynamic from 'next/dynamic'
-import { Text, Loader } from '../../ui'
-import { SEND_PROMO } from '../../graphql/mutations/invite/sendPromo'
+import { Text, Loader } from 'ui'
+import { SEND_PROMO } from 'graphql/mutations/invite/sendPromo'
 import { Base, Icon, Description, Bottom, Send, Close, Placeholder } from './styles'
 
 const ReactPhoneInput = dynamic(import('react-phone-input-2'), {

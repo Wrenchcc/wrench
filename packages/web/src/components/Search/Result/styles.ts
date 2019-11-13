@@ -1,6 +1,6 @@
 // @ts-nocheck
 import styled from 'styled-components'
-import { COLORS } from '../../../ui/constants'
+import { COLORS } from 'ui/constants'
 
 export const List = styled.div`
   max-height: 300px;

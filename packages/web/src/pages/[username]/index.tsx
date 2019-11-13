@@ -2,12 +2,12 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from '@apollo/react-hooks'
-import { useTranslation } from 'react-i18next'
-import Seo from '../../utils/seo'
-import { USER_BY_USERNAME } from '../../graphql/queries/user/userByUsername'
-import { Text, Avatar, Layout, Post, Loader } from '../../ui'
-import UserProjects from '../../components/UserProjects'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
+import Seo from 'utils/seo'
+import { USER_BY_USERNAME } from 'graphql/queries/user/userByUsername'
+import { Text, Avatar, Layout, Post, Loader } from 'ui'
+import UserProjects from 'components/UserProjects'
 
 const Top = styled.div`
   display: flex;

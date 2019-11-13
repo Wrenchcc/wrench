@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react'
 import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
-import { Card, Text } from '../../ui'
+import { Card, Text } from 'ui'
 import { List, Title } from './styles'
 
 function Popular({ projects }) {

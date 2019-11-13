@@ -1,14 +1,16 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from '@apollo/react-hooks'
-import { GET_NOTIFICATIONS } from '../../graphql/queries/notifications/notifications'
-import { Notification } from '../../ui'
+import { GET_NOTIFICATIONS } from 'graphql/queries/notifications/notifications'
+import { Notification } from 'ui'
 import { Base } from './styles'
 
 function Notifications() {
   const { data, fetchMore, loading } = useQuery(GET_NOTIFICATIONS)
 
-  if (loading) { return null }
+  if (loading) {
+    return null
+  }
 
   return (
     <Base>
@@ -20,7 +22,9 @@ function Notifications() {
                 after: data.notifications.edges[data.notifications.edges.length - 1].cursor,
               },
               updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) { return prev }
+                if (!fetchMoreResult) {
+                  return prev
+                }
 
                 return {
                   ...prev,

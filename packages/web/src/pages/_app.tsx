@@ -1,100 +1,51 @@
-// @ts-nocheck
 import React from 'react'
-import App from 'next/app'
-import { ApolloProvider } from '@apollo/react-hooks'
-import { I18nextProvider, useSSR } from 'react-i18next'
-import * as NProgress from 'nprogress'
+import NextApp from 'next/app'
 import Router from 'next/router'
-import nextCookies from 'next-cookies'
-import { ModalProvider } from '../ui/Modal'
-import Seo from '../utils/seo'
-import withApollo from '../graphql/utils/withApollo'
-import i18n from '../i18n'
-import Header from '../components/Header'
-import Promo from '../components/Promo'
-import GlobalStyle from '../ui/GlobalStyle'
+import NProgress from 'nprogress'
+import ApolloClient from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
+import withApollo from 'hocs/withApollo'
+import GoogleAnalyticsSDK from 'components/GoogleAnalyticsSDK'
+import GoogleAnalytics from 'services/google-analytics'
+import GlobalStyle from 'ui/GlobalStyle'
+import { ModalProvider } from 'ui/Modal'
+import Seo from 'utils/seo'
+import Header from 'components/Header'
 
-NProgress.configure({ showSpinner: false })
-Router.onRouteChangeStart = () => NProgress.start()
-Router.onRouteChangeComplete = () => NProgress.done()
-Router.onRouteChangeError = () => NProgress.done()
+interface Props {
+  apollo: ApolloClient<any>
+  err?: any
+}
 
-class MyApp extends App {
-  public static async getInitialProps({ Component, ctx }) {
-    const cookies = nextCookies(ctx)
-    const { req, res } = ctx
-
-    const initialI18nStore = {}
-    let i18nServerInstance = null
-    let initialLanguage = null
-
-    let pageProps = {}
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    if (req && req.i18n) {
-      req.i18n.languages.forEach(l => {
-        initialI18nStore[l] = req.i18n.services.resourceStore.data[l]
-      })
-
-      initialLanguage = req.i18n.language
-
-      req.i18n.toJSON = () => null
-      i18nServerInstance = req.i18n
-    }
-
-    if (req && req.headers['cloudfront-viewer-country']) {
-      res.cookie('viewer-country', req.headers['cloudfront-viewer-country'])
-    }
-
-    return {
-      i18nServerInstance,
-      initialI18nStore,
-      initialLanguage,
-      pageProps,
-      viewerCountry: (req && req.headers['cloudfront-viewer-country']) || cookies['viewer-country'],
-      hidePromo: cookies['show-promo-banner'],
-      isAuthenticated: !!cookies.access_token,
-    }
-  }
-
+class App extends NextApp<Props> {
   public render() {
-    const { client, i18nServerInstance } = this.props
+    const { Component, pageProps, apollo } = this.props
+
+    // https://github.com/zeit/next.js/issues/8592
+    const { err } = this.props
 
     return (
-      <I18nextProvider i18n={i18nServerInstance || i18n}>
-        <ApolloProvider client={client}>
-          <AppWithi18n {...this.props} />
+      <>
+        <GlobalStyle />
+        <Seo />
+        <GoogleAnalyticsSDK />
+
+        <ApolloProvider client={apollo}>
+          <ModalProvider>
+            <Header isAuthenticated={false} />
+            <Component {...pageProps} err={err} />
+          </ModalProvider>
         </ApolloProvider>
-      </I18nextProvider>
+      </>
     )
   }
 }
 
-function AppWithi18n({
-  initialI18nStore,
-  initialLanguage,
-  pageProps,
-  Component,
-  hidePromo,
-  viewerCountry,
-  isAuthenticated,
-}) {
-  useSSR(initialI18nStore, initialLanguage)
+Router.events.on('routeChangeStart', () => NProgress.start())
+Router.events.on('routeChangeComplete', (path: string) => {
+  NProgress.done()
+  GoogleAnalytics.pageView(path)
+})
+Router.events.on('routeChangeError', () => NProgress.done())
 
-  return (
-    <>
-      <GlobalStyle />
-      <Seo />
-      <ModalProvider>
-        <Header isAuthenticated={isAuthenticated} />
-        <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
-        {!hidePromo && <Promo viewerCountry={viewerCountry} paddingHorizontal />}
-      </ModalProvider>
-    </>
-  )
-}
-
-export default withApollo(MyApp)
+export default withApollo(App)

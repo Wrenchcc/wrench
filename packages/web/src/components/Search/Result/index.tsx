@@ -4,8 +4,8 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { useQuery } from '@apollo/react-hooks'
-import { Loader, Avatar, Text } from '../../../ui'
-import { SEARCH_USER } from '../../../graphql/queries/search/searchUser'
+import { Loader, Avatar, Text } from 'ui'
+import { SEARCH_USER } from 'graphql/queries/search/searchUser'
 import { List, Base, Content } from './styles'
 
 function Result({ query, onPress }) {

@@ -1,8 +1,8 @@
 // @ts-nocheck
-import React, { memo, useEffect } from 'react'
+import React from 'react'
 import { createPortal } from 'react-dom'
 import { ModalType } from './ModalContext'
-import { isBrowser } from '../../utils/platform'
+import { isBrowser } from 'utils/platform'
 
 /**
  * Modal Root Props

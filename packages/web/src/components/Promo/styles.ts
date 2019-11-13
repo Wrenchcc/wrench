@@ -1,7 +1,7 @@
 // @ts-nocheck
 import styled from 'styled-components'
-import UiText from '../../ui/Text'
-import { COLORS, DEVICE } from '../../ui/constants'
+import UiText from 'ui/Text'
+import { COLORS, DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   width: 414px;

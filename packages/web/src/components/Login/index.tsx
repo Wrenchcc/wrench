@@ -3,9 +3,9 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import Router from 'next/router'
-import { setAccessToken, setRefreshToken } from '../../graphql/utils/auth'
-import { Title } from '../../ui'
-import { AUTHENTICATE_FACEBOOK } from '../../graphql/mutations/user/authenticateFacebook'
+// import { setAccessToken, setRefreshToken } from 'graphql/utils/auth'
+import { Title } from 'ui'
+import { AUTHENTICATE_FACEBOOK } from 'graphql/mutations/user/authenticateFacebook'
 import { Base, Description, FacebookButton } from './styles'
 
 const FACEBOOK_APP_ID = '1174076712654826'
@@ -30,8 +30,8 @@ export default function Login({ closeModal }) {
           handleAuth({
             update: (proxy, { data }) => {
               closeModal()
-              setAccessToken(data.authenticateFacebook.access_token)
-              setRefreshToken(data.authenticateFacebook.refresh_token)
+              // setAccessToken(data.authenticateFacebook.access_token)
+              // setRefreshToken(data.authenticateFacebook.refresh_token)
               Router.push('/')
             },
             variables: {

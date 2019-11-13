@@ -1,6 +1,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ],
+    "baseUrl": "./",
+    "paths": { "*": [ "src/*" ] },
     "noEmit": true,
     "target": "esnext",
     "module": "esnext",

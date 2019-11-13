@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/react-hooks'
 import { pathOr } from 'ramda'
-import { USER_FOOLOWING_PROJECTS } from '../../graphql/queries/user/followingProjects'
+import { USER_FOOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
 import { Base, Row, Content, Text, List, Image } from './styles'
 
 function FollowingProjects() {

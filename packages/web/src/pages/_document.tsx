@@ -1,32 +1,37 @@
-import React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
+import React, { ReactType } from 'react'
 import { ServerStyleSheet } from 'styled-components'
 
-export default class MyDocument extends Document {
-  public static async getInitialProps(ctx) {
+export default class Document extends NextDocument {
+  public static async getInitialProps(ctx: any) {
     const sheet = new ServerStyleSheet()
-
     const originalRenderPage = ctx.renderPage
 
-    ctx.renderPage = () =>
-      originalRenderPage({
-        enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
-      })
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App: ReactType) => (props: object) =>
+            sheet.collectStyles(<App {...props} />),
+        })
 
-    const initialProps = await Document.getInitialProps(ctx)
-
-    return {
-      ...initialProps,
-      locale: ctx.req.locale,
-      // @ts-ignore
-      styles: [...initialProps.styles, ...sheet.getStyleElement()],
+      const initialProps = await NextDocument.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      }
+    } finally {
+      sheet.seal()
     }
   }
 
-  public render() {
+  render() {
     return (
-      // @ts-ignore
-      <html lang={this.props.locale}>
+      <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -38,23 +43,22 @@ export default class MyDocument extends Document {
           <link
             rel="apple-touch-icon-precomposed"
             sizes="144x144"
-            href="/public/apple-touch-icon-144x144.png"
+            href="/static/apple-touch-icon-144x144.png"
           />
           <link
             rel="apple-touch-icon-precomposed"
             sizes="152x152"
-            href="/public/apple-touch-icon-152x152.png"
+            href="/static/apple-touch-icon-152x152.png"
           />
-          <link rel="icon" type="image/png" href="/public/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/public/favicon-16x16.png" sizes="16x16" />
-          <meta name="msapplication-TileImage" content="/public/mstile-144x144.png" />
+          <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
+          <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
+          <meta name="msapplication-TileImage" content="/static/mstile-144x144.png" />
         </Head>
-
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }

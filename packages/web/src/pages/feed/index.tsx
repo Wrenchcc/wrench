@@ -4,10 +4,10 @@ import InfiniteScroll from 'react-infinite-scroller'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/react-hooks'
-import Seo from '../../utils/seo'
-import { Post, Layout, Loader } from '../../ui'
-import FollowingProjects from '../../components/FollowingProjects'
-import { GET_FEED } from '../../graphql/queries/feed/feed'
+import Seo from 'utils/seo'
+import { Post, Layout, Loader } from 'ui'
+import FollowingProjects from 'components/FollowingProjects'
+import { GET_FEED } from 'graphql/queries/feed/feed'
 
 const Left = styled.div`
   margin-right: 155px;
