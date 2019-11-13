@@ -2,5 +2,5 @@ myNextApplication:
   component: serverless-next.js
   inputs:
     domain: "wrench.cc"
-    bucketName: wrench-web
+    bucketName: wrench-web-edge
     build: true

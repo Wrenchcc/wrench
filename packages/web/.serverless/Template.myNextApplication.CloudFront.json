@@ -1,0 +1,34 @@
+{
+  "id": "E3E7KOV0RIGZB1",
+  "arn": "arn:aws:cloudfront::719104767000:distribution/E3E7KOV0RIGZB1",
+  "url": "https://d1ltwpltzzi61w.cloudfront.net",
+  "region": "us-east-1",
+  "origins": [
+    {
+      "url": "http://wrench-web-edge.s3.amazonaws.com",
+      "private": true,
+      "pathPatterns": {
+        "_next/*": {
+          "ttl": 86400
+        },
+        "static/*": {
+          "ttl": 86400
+        }
+      }
+    }
+  ],
+  "defaults": {
+    "ttl": 5,
+    "allowedHttpMethods": [
+      "HEAD",
+      "GET"
+    ],
+    "forward": {
+      "cookies": "all",
+      "queryString": true
+    },
+    "lambda@edge": {
+      "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:vir0asf-xxvpggn:6"
+    }
+  }
+}

@@ -27,6 +27,7 @@ module.exports = withPlugins(
       return config
     },
     poweredByHeader: false,
+    target: 'serverless',
     env: {
       BUILD_ID: require('child_process') // eslint-disable-line
         .execSync('git rev-parse --short HEAD')

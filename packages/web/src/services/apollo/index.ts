@@ -12,23 +12,23 @@ class Apollo {
     this.client = this.createApolloClient()
   }
 
-  public init(initialState = {}, jwtToken?: string) {
-    this.client = this.createApolloClient(initialState, jwtToken)
+  public init(initialState = {}, accessToken?: string) {
+    this.client = this.createApolloClient(initialState, accessToken)
   }
 
   public getClient() {
     return this.client
   }
 
-  private createApolloClient(initialState = {}, jwtToken?: string) {
-    const JWT_TOKEN = jwtToken || Cookie.get(Cookies.JWT)
+  private createApolloClient(initialState = {}, accessToken?: string) {
+    const ACCESS_TOKEN = accessToken || Cookie.get(Cookies.ACCESS_TOKEN)
 
     return new ApolloClient({
       ssrMode: isBrowser,
       link: new BatchHttpLink({
-        uri: `${process.env.API_ENDPOINT}`,
+        uri: process.env.API_ENDPOINT,
         fetch,
-        headers: JWT_TOKEN ? { authorization: `Bearer ${JWT_TOKEN}` } : {},
+        headers: ACCESS_TOKEN ? { authorization: `Bearer ${ACCESS_TOKEN}` } : {},
       }),
       cache: new InMemoryCache().restore(initialState),
     })

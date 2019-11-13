@@ -4,7 +4,10 @@ import UniversalCookie, {
 } from 'universal-cookie'
 
 export enum Cookies {
-  JWT = 'jwt',
+  ACCESS_TOKEN = 'access_token',
+  REFRESH_TOKEN = 'refresh_token',
+  VIEWER_COUNTRY = 'viewer_country',
+  SHOW_PROMO = 'show_promo',
 }
 
 export type CookieGetOptions = _CookieGetOptions

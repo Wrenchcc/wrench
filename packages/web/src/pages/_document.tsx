@@ -15,6 +15,7 @@ export default class Document extends NextDocument {
         })
 
       const initialProps = await NextDocument.getInitialProps(ctx)
+
       return {
         ...initialProps,
         styles: (
@@ -43,16 +44,16 @@ export default class Document extends NextDocument {
           <link
             rel="apple-touch-icon-precomposed"
             sizes="144x144"
-            href="/static/apple-touch-icon-144x144.png"
+            href="/public/apple-touch-icon-144x144.png"
           />
           <link
             rel="apple-touch-icon-precomposed"
             sizes="152x152"
-            href="/static/apple-touch-icon-152x152.png"
+            href="/public/apple-touch-icon-152x152.png"
           />
-          <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
-          <meta name="msapplication-TileImage" content="/static/mstile-144x144.png" />
+          <link rel="icon" type="image/png" href="/public/favicon-32x32.png" sizes="32x32" />
+          <link rel="icon" type="image/png" href="/public/favicon-16x16.png" sizes="16x16" />
+          <meta name="msapplication-TileImage" content="/public/mstile-144x144.png" />
         </Head>
         <body>
           <Main />

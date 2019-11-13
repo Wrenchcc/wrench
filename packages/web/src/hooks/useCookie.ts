@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Cookie, { Cookies, CookieSetOptions } from 'services/cookie'
-export { Cookies } from 'services/cookie'
 
 export const useCookie = (
   key: Cookies,

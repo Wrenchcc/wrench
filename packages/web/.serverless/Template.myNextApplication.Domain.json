@@ -1,0 +1,13 @@
+{
+  "region": "us-east-1",
+  "privateZone": false,
+  "domain": "wrench.cc",
+  "subdomains": [
+    {
+      "domain": "www.wrench.cc",
+      "distributionId": "E3E7KOV0RIGZB1",
+      "url": "https://d1ltwpltzzi61w.cloudfront.net",
+      "type": "awsCloudFront"
+    }
+  ]
+}
