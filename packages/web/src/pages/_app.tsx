@@ -12,7 +12,7 @@ import withApollo from '../graphql/utils/withApollo'
 import i18n from '../i18n'
 import Header from '../components/Header'
 import Promo from '../components/Promo'
-import GlobalStyle from './GlobalStyle'
+import GlobalStyle from '../ui/GlobalStyle'
 
 NProgress.configure({ showSpinner: false })
 Router.onRouteChangeStart = () => NProgress.start()

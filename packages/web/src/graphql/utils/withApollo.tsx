@@ -1,73 +1,101 @@
-// @ts-nocheck
-import Head from 'next/head'
 import React from 'react'
-import { getDataFromTree } from '@apollo/react-ssr'
-import createClient from '../createClient'
-import { getAccessToken } from '../utils/auth'
-import { isBrowser } from '../../utils/platform'
+import Head from 'next/head'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloClient } from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { BatchHttpLink } from 'apollo-link-batch-http'
+import fetch from 'isomorphic-unfetch'
 
-export default App =>
+let apolloClient = null
+const server = typeof window === 'undefined'
+
+export default () =>
   class Apollo extends React.Component {
-    public static displayName = 'withApollo(App)'
+    public apollo
 
-    public static async getInitialProps(appCtx) {
-      const { AppTree, ctx } = appCtx
-      const apollo = createClient(
-        {},
-        {
-          getToken: () => getAccessToken(ctx),
-        }
-      )
-      const apolloState = {}
-      const { getInitialProps } = App
+    static async getInitialProps(appCtx) {
+      const { Component, AppTree, ctx } = appCtx
+      const apollo = (ctx.apollo = initApolloClient({}))
+      let pageProps = {}
 
-      let appProps = { pageProps: {} }
-
-      if (getInitialProps) {
-        ctx.apolloClient = apollo
-        appProps = await getInitialProps(appCtx)
+      // Get component's getInitialProps if any
+      if (Component.getInitialProps) {
+        pageProps = await Component.getInitialProps(ctx)
       }
 
+      // Return if finished
       if (ctx.res && (ctx.res.headersSent || ctx.res.finished)) {
         return {}
       }
 
-      // Run all GraphQL queries in the component tree
-      // and extract the resulting data
-      if (!isBrowser) {
-        try {
-          await getDataFromTree(<AppTree {...appProps} apolloState={apolloState} apollo={apollo} />)
-        } catch (error) {
-          // Prevent Apollo Client GraphQL errors from crashing SSR.
-          if (process.env.NODE_ENV !== 'production') {
-            // tslint:disable-next-line no-console This is a necessary debugging log
-            console.error('GraphQL error occurred [getDataFromTree]', error)
-          }
-        }
+      // Run all GraphQL queries
+      try {
+        const { getDataFromTree } = await import('@apollo/react-ssr')
 
-        // getDataFromTree does not call componentWillUnmount
-        // head side effect therefore need to be cleared manually
-        Head.rewind()
-
-        apolloState.data = apollo.cache.extract()
+        await getDataFromTree(<AppTree {...pageProps} apollo={apollo} />)
+      } catch (error) {
+        // Prevent Apollo Client GraphQL errors from crashing SSR
+        console.error('Error while running `getDataFromTree`', error)
       }
 
+      // getDataFromTree does not call componentWillUnmount head side effect therefore need to be cleared manually
+      if (server) {
+        Head.rewind()
+      }
+
+      // Extract query data from the Apollo store
+      const apolloState = apollo.cache.extract()
+
+      // Prevent initApollo twice on server
+      apollo.toJSON = () => null
+
       return {
-        ...appProps,
+        pageProps,
+        apollo,
         apolloState,
       }
     }
 
-    public apollo
-
     constructor(props) {
       super(props)
-      this.apollo = createClient(props.apolloState.data, {
-        getToken: () => getAccessToken(),
-      })
+
+      this.apollo = props.apollo || initApolloClient(props.apolloState)
     }
 
-    public render() {
-      return <App {...this.props} client={this.apollo} />
+    render() {
+      // @ts-ignore
+      const { Component, pageProps } = this.props
+
+      return (
+        <ApolloProvider client={this.apollo}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      )
     }
   }
+
+function initApolloClient(initialState) {
+  // Make sure to create a new client for every server-side request so that data isn't shared between connections
+  if (server) {
+    return createApolloClient(initialState)
+  }
+
+  // Reuse client on the client-side
+  if (!apolloClient) {
+    apolloClient = createApolloClient(initialState)
+  }
+
+  return apolloClient
+}
+
+function createApolloClient(initialState = {}) {
+  return new ApolloClient({
+    ssrMode: server,
+    link: new BatchHttpLink({
+      uri: process.env.API_ENDPOINT,
+      credentials: 'same-origin',
+      fetch,
+    }),
+    cache: new InMemoryCache().restore(initialState),
+  })
+}
