@@ -28,15 +28,7 @@ function Result({ query, onPress }) {
         {data.users &&
           data.users.edges.map(({ node }, index) => (
             <Base first={index === 0} onClick={onPress} key={node.id}>
-              <Link
-                href={{
-                  pathname: '/user',
-                  query: { username: node.username },
-                }}
-                as={{
-                  pathname: `/${node.username}`,
-                }}
-              >
+              <Link href="/[username]" as={`/${node.username}`}>
                 <a>
                   <Avatar size={40} uri={node.avatarUrl} isOnline={node.isOnline} />
                   <Content>

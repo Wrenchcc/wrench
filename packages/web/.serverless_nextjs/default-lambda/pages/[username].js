@@ -103,7 +103,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "d9Wa");
+/******/ 	return __webpack_require__(__webpack_require__.s = "kMJd");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -36295,555 +36295,6 @@ const Title = (_ref) => {
 
 /***/ }),
 
-/***/ "d9Wa":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var _username_namespaceObject = {};
-__webpack_require__.r(_username_namespaceObject);
-__webpack_require__.d(_username_namespaceObject, "default", function() { return _username_; });
-
-// EXTERNAL MODULE: external "url"
-var external_url_ = __webpack_require__("bzos");
-
-// EXTERNAL MODULE: external "querystring"
-var external_querystring_ = __webpack_require__("8xkj");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
-var render = __webpack_require__("/bjS");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
-var send_html = __webpack_require__("LuNM");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
-var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
-var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/lib/router/utils/index.js
-var utils = __webpack_require__("uV6m");
-
-// EXTERNAL MODULE: ./.next/build-manifest.json
-var build_manifest = __webpack_require__("LZ9C");
-
-// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
-var react_loadable_manifest = __webpack_require__("67Bq");
-
-// EXTERNAL MODULE: ./src/pages/_document.tsx
-var _document = __webpack_require__("mT+M");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
-var _error = __webpack_require__("/a9y");
-var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
-
-// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
-var _app = __webpack_require__("hUgY");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js
-var define_property = __webpack_require__("hfKm");
-var define_property_default = /*#__PURE__*/__webpack_require__.n(define_property);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js
-var define_properties = __webpack_require__("2Eek");
-var define_properties_default = /*#__PURE__*/__webpack_require__.n(define_properties);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js
-var get_own_property_descriptors = __webpack_require__("XoMD");
-var get_own_property_descriptors_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptors);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
-var get_own_property_descriptor = __webpack_require__("Jo+v");
-var get_own_property_descriptor_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptor);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js
-var get_own_property_symbols = __webpack_require__("4mXO");
-var get_own_property_symbols_default = /*#__PURE__*/__webpack_require__.n(get_own_property_symbols);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js
-var object_keys = __webpack_require__("pLtp");
-var keys_default = /*#__PURE__*/__webpack_require__.n(object_keys);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__("vYYK");
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__("q1tI");
-var react_default = /*#__PURE__*/__webpack_require__.n(react);
-
-// EXTERNAL MODULE: ./node_modules/react-infinite-scroller/index.js
-var react_infinite_scroller = __webpack_require__("RotF");
-var react_infinite_scroller_default = /*#__PURE__*/__webpack_require__.n(react_infinite_scroller);
-
-// EXTERNAL MODULE: ./node_modules/@apollo/react-hooks/lib/react-hooks.cjs.js
-var react_hooks_cjs = __webpack_require__("gZqA");
-
-// EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.cjs.js
-var styled_components_cjs = __webpack_require__("VJA7");
-var styled_components_cjs_default = /*#__PURE__*/__webpack_require__.n(styled_components_cjs);
-
-// EXTERNAL MODULE: ./node_modules/react-i18next/dist/commonjs/index.js
-var commonjs = __webpack_require__("pH5e");
-
-// EXTERNAL MODULE: ./src/utils/seo/index.tsx + 2 modules
-var seo = __webpack_require__("wYgI");
-
-// EXTERNAL MODULE: ./node_modules/graphql-tag/lib/graphql-tag.umd.js
-var graphql_tag_umd = __webpack_require__("Dugd");
-var graphql_tag_umd_default = /*#__PURE__*/__webpack_require__.n(graphql_tag_umd);
-
-// EXTERNAL MODULE: ./src/graphql/fragments/user/userInfoSmall.ts
-var userInfoSmall = __webpack_require__("YIBd");
-
-// CONCATENATED MODULE: ./src/graphql/queries/user/userByUsername.ts
-
-
-const USER_BY_USERNAME = graphql_tag_umd_default.a`
-  query getUserByUsername($username: LowercaseString!, $after: String) {
-    user(username: $username) {
-      id
-      fullName
-      firstName
-      lastName
-      avatarUrl
-      isOnline
-      projects: projectsConnection(first: 4) {
-        edges {
-          node {
-            id
-            title
-            slug
-            files: filesConnection(first: 1, type: IMAGE) {
-              edges {
-                node {
-                  id
-                  uri
-                }
-              }
-            }
-            followers: followersConnection {
-              totalCount
-            }
-          }
-        }
-      }
-      posts: postsConnection(after: $after) {
-        edges {
-          cursor
-          node {
-            id
-            caption
-            user {
-              ...userInfoSmall
-            }
-            project {
-              id
-              title
-              slug
-              commentsDisabled
-            }
-            files: filesConnection(type: IMAGE) {
-              edges {
-                node {
-                  type
-                  id
-                  uri
-                }
-              }
-            }
-            comments: commentsConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    ...userInfoSmall
-                  }
-                }
-              }
-            }
-          }
-        }
-        totalCount
-        pageInfo {
-          hasNextPage
-        }
-      }
-    }
-  }
-  ${userInfoSmall["a" /* default */]}
-`;
-// EXTERNAL MODULE: ./src/ui/index.ts + 21 modules
-var ui = __webpack_require__("95u7");
-
-// EXTERNAL MODULE: ./node_modules/next/link.js
-var next_link = __webpack_require__("YFqc");
-var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
-
-// EXTERNAL MODULE: ./node_modules/ramda/src/index.js
-var src = __webpack_require__("644N");
-
-// EXTERNAL MODULE: ./src/ui/Text/index.tsx + 4 modules
-var Text = __webpack_require__("vUwE");
-
-// EXTERNAL MODULE: ./src/ui/Image/index.tsx + 1 modules
-var Image = __webpack_require__("DVhp");
-
-// CONCATENATED MODULE: ./src/components/UserProjects/styles.ts
-
-
-
-const Base = styled_components_cjs_default.a.div.withConfig({
-  displayName: "styles__Base",
-  componentId: "sc-1x72u7p-0"
-})([""]);
-const styles_Image = styled_components_cjs_default()(Image["a" /* default */]).withConfig({
-  displayName: "styles__Image",
-  componentId: "sc-1x72u7p-1"
-})(["width:87px;height:87px;"]);
-const List = styled_components_cjs_default.a.div.withConfig({
-  displayName: "styles__List",
-  componentId: "sc-1x72u7p-2"
-})(["margin-top:40px;"]);
-const Row = styled_components_cjs_default.a.div.withConfig({
-  displayName: "styles__Row",
-  componentId: "sc-1x72u7p-3"
-})(["margin-bottom:10px;display:flex;"]);
-const Content = styled_components_cjs_default.a.div.withConfig({
-  displayName: "styles__Content",
-  componentId: "sc-1x72u7p-4"
-})(["margin-left:15px;"]);
-const styles_Text = styled_components_cjs_default()(Text["a" /* default */]).withConfig({
-  displayName: "styles__Text",
-  componentId: "sc-1x72u7p-5"
-})([""]);
-// CONCATENATED MODULE: ./src/components/UserProjects/index.tsx
-var __jsx = react_default.a.createElement;
-// @ts-nocheck
-
-
-
-
-
-
-function UserProjects({
-  projects,
-  fullName
-}) {
-  const {
-    t
-  } = Object(commonjs["useTranslation"])();
-  return projects.edges.length > 0 && __jsx(Base, null, __jsx(styles_Text, {
-    medium: true,
-    fontSize: 24
-  }, t('UserProjects:title', {
-    fullName
-  })), __jsx(List, null, projects.edges.map(({
-    node
-  }) => __jsx(link_default.a, {
-    key: node.id,
-    href: {
-      pathname: '/project',
-      query: {
-        slug: node.slug
-      }
-    },
-    as: {
-      pathname: `/project/${node.slug}`
-    }
-  }, __jsx("a", null, __jsx(Row, null, __jsx(styles_Image, {
-    source: Object(src["pathOr"])(null, ['files', 'edges', [0], 'node', 'uri'], node),
-    width: 90,
-    height: 90
-  }), __jsx(Content, null, __jsx(styles_Text, null, node.title), __jsx(styles_Text, {
-    color: "light_grey",
-    fontSize: 15,
-    lineHeight: 18
-  }, t('UserProjects:followers', {
-    count: node.followers.totalCount
-  })))))))));
-}
-
-/* harmony default export */ var components_UserProjects = (UserProjects);
-// CONCATENATED MODULE: ./src/pages/[username]/index.tsx
-
-
-
-
-
-
-
-var _username_jsx = react_default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = keys_default()(object); if (get_own_property_symbols_default.a) { var symbols = get_own_property_symbols_default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return get_own_property_descriptor_default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (get_own_property_descriptors_default.a) { define_properties_default()(target, get_own_property_descriptors_default()(source)); } else { ownKeys(source).forEach(function (key) { define_property_default()(target, key, get_own_property_descriptor_default()(source, key)); }); } } return target; }
-
-// @ts-nocheck
-
-
-
-
-
-
-
-
-
-const Top = styled_components_cjs_default.a.div.withConfig({
-  displayName: "username__Top",
-  componentId: "sg20g7-0"
-})(["display:flex;margin-bottom:65px;"]);
-const Name = styled_components_cjs_default.a.div.withConfig({
-  displayName: "username__Name",
-  componentId: "sg20g7-1"
-})(["display:flex;flex-direction:column;margin-left:20px;"]);
-const Left = styled_components_cjs_default.a.div.withConfig({
-  displayName: "username__Left",
-  componentId: "sg20g7-2"
-})(["margin-right:155px;max-width:640px;width:100%;"]);
-const Right = styled_components_cjs_default.a.div.withConfig({
-  displayName: "username__Right",
-  componentId: "sg20g7-3"
-})(["margin-top:-120px;"]);
-
-function User({
-  username
-}) {
-  const {
-    t
-  } = Object(commonjs["useTranslation"])();
-  const {
-    data,
-    loading,
-    fetchMore
-  } = Object(react_hooks_cjs["useQuery"])(USER_BY_USERNAME, {
-    variables: {
-      username
-    }
-  });
-
-  if (loading) {
-    return null;
-  }
-
-  const params = {
-    fullName: data.user.fullName,
-    username
-  };
-  return _username_jsx(ui["c" /* Layout */], {
-    top: _username_jsx(Top, null, _username_jsx(ui["a" /* Avatar */], {
-      uri: data.user.avatarUrl,
-      size: 80
-    }), _username_jsx(Name, null, _username_jsx(ui["g" /* Text */], {
-      medium: true,
-      fontSize: 36,
-      lineHeight: 38
-    }, data.user.firstName), _username_jsx(ui["g" /* Text */], {
-      medium: true,
-      fontSize: 36,
-      lineHeight: 38
-    }, data.user.lastName)))
-  }, _username_jsx(seo["a" /* default */], {
-    config: {
-      title: t('user:title', params),
-      description: t('user:description', params),
-      openGraph: {
-        title: t('user:title', params),
-        description: t('user:description', params),
-        url: `https://wrench.cc/user/${username}`,
-        type: 'profile',
-        profile: {
-          firstName: data.user.firstName,
-          lastName: data.user.lastName,
-          username
-        },
-        images: [{
-          url: data.user.avatarUrl,
-          alt: t('user:imagealt')
-        }]
-      }
-    }
-  }), _username_jsx(Left, null, _username_jsx(react_infinite_scroller_default.a, {
-    loadMore: () => fetchMore({
-      variables: {
-        after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor
-      },
-      updateQuery: (prev, {
-        fetchMoreResult
-      }) => {
-        if (!fetchMoreResult) {
-          return prev;
-        }
-
-        return _objectSpread({}, prev, {
-          user: _objectSpread({}, prev.user, {
-            posts: _objectSpread({}, prev.user.posts, {
-              pageInfo: _objectSpread({}, prev.user.posts.pageInfo, {}, fetchMoreResult.user.posts.pageInfo),
-              edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges]
-            })
-          })
-        });
-      }
-    }),
-    hasMore: data.user.posts.pageInfo.hasNextPage,
-    loader: _username_jsx(ui["d" /* Loader */], {
-      key: 0
-    })
-  }, data.user.posts.edges.map(({
-    node
-  }) => _username_jsx(ui["f" /* Post */], {
-    data: node,
-    key: node.id,
-    withoutAvatar: true
-  })))), data.user.projects && _username_jsx(Right, null, _username_jsx(components_UserProjects, {
-    projects: data.user.projects,
-    fullName: data.user.firstName
-  })));
-}
-
-User.getInitialProps = ({
-  query
-}) => query;
-
-/* harmony default export */ var _username_ = (User);
-// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2F%5Busername%5D&absolutePagePath=private-next-pages%2F%5Busername%5D%2Findex.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=qrOphKk56qwi-cJIGjRpY&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    const Component = _username_
-    /* harmony default export */ var next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
-    const unstable_getStaticProps = _username_namespaceObject['unstable_getStaticProp' + 's']
-    const unstable_getStaticParams = _username_namespaceObject['unstable_getStaticParam' + 's']
-    const config = _username_namespaceObject['confi' + 'g'] || {}
-    const next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
-    async function renderReqToHTML(req, res, fromExport) {
-      const options = {
-        App: _app["a" /* default */],
-        Document: _document["a" /* default */],
-        buildManifest: build_manifest,
-        unstable_getStaticProps,
-        reactLoadableManifest: react_loadable_manifest,
-        canonicalBase: "",
-        buildId: "qrOphKk56qwi-cJIGjRpY",
-        assetPrefix: "",
-        ampBindInitData: false,
-      }
-      let sprData = false
-
-      if (req.url.match(/_next\/data/)) {
-        sprData = true
-        req.url = req.url
-          .replace(new RegExp('/_next/data/qrOphKk56qwi\-cJIGjRpY/'), '/')
-          .replace(/\.json$/, '')
-      }
-      const parsedUrl = Object(external_url_["parse"])(req.url, true)
-      const renderOpts = Object.assign(
-        {
-          Component,
-          pageConfig: config,
-          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
-          nextExport: fromExport
-        },
-        options,
-      )
-      try {
-        
-        const params = fromExport && !unstable_getStaticProps ? {} : Object(utils["getRouteMatcher"])(Object(utils["getRouteRegex"])("/[username]"))(parsedUrl.pathname) || {};
-        const nowParams = req.headers && req.headers["x-now-route-matches"]
-              ? Object(utils["getRouteMatcher"])(
-                  (function() {
-                    const { re, groups } = Object(utils["getRouteRegex"])("/[username]");
-                    return {
-                      re: {
-                        // Simulate a RegExp match from the `req.url` input
-                        exec: str => {
-                          const obj = Object(external_querystring_["parse"])(str);
-                          return Object.keys(obj).reduce(
-                            (prev, key) =>
-                              Object.assign(prev, {
-                                [key]: encodeURIComponent(obj[key])
-                              }),
-                            {}
-                          );
-                        }
-                      },
-                      groups
-                    };
-                  })()
-                )(req.headers["x-now-route-matches"])
-              : null;
-          
-        let result = await Object(render["renderToHTML"])(req, res, "/[username]", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
-
-        if (sprData && !fromExport) {
-          const payload = JSON.stringify(renderOpts.sprData)
-          res.setHeader('Content-Type', 'application/json')
-          res.setHeader('Content-Length', Buffer.byteLength(payload))
-          res.setHeader(
-            'Cache-Control',
-            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
-          )
-          res.end(payload)
-          return null
-        }
-
-        if (fromExport) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a
-          }))
-          return result
-        } else {
-          console.error(err)
-          res.statusCode = 500
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a,
-            err
-          }))
-          return result
-        }
-      }
-    }
-    async function next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
-      try {
-        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
-        }
-      } catch(err) {
-        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
-        console.error(err)
-        res.statusCode = 500
-        res.end('Internal Server Error')
-      }
-    }
-  
-
-/***/ }),
-
 /***/ "d9yW":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44861,6 +44312,555 @@ var _xdropRepeatsWith = /*#__PURE__*/_curry2(function _xdropRepeatsWith(pred, xf
   return new XDropRepeatsWith(pred, xf);
 });
 module.exports = _xdropRepeatsWith;
+
+/***/ }),
+
+/***/ "kMJd":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var _username_namespaceObject = {};
+__webpack_require__.r(_username_namespaceObject);
+__webpack_require__.d(_username_namespaceObject, "default", function() { return _username_; });
+
+// EXTERNAL MODULE: external "url"
+var external_url_ = __webpack_require__("bzos");
+
+// EXTERNAL MODULE: external "querystring"
+var external_querystring_ = __webpack_require__("8xkj");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
+var render = __webpack_require__("/bjS");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
+var send_html = __webpack_require__("LuNM");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
+var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
+var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/lib/router/utils/index.js
+var utils = __webpack_require__("uV6m");
+
+// EXTERNAL MODULE: ./.next/build-manifest.json
+var build_manifest = __webpack_require__("LZ9C");
+
+// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
+var react_loadable_manifest = __webpack_require__("67Bq");
+
+// EXTERNAL MODULE: ./src/pages/_document.tsx
+var _document = __webpack_require__("mT+M");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
+var _error = __webpack_require__("/a9y");
+var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
+
+// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
+var _app = __webpack_require__("hUgY");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js
+var define_property = __webpack_require__("hfKm");
+var define_property_default = /*#__PURE__*/__webpack_require__.n(define_property);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js
+var define_properties = __webpack_require__("2Eek");
+var define_properties_default = /*#__PURE__*/__webpack_require__.n(define_properties);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js
+var get_own_property_descriptors = __webpack_require__("XoMD");
+var get_own_property_descriptors_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptors);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
+var get_own_property_descriptor = __webpack_require__("Jo+v");
+var get_own_property_descriptor_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptor);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js
+var get_own_property_symbols = __webpack_require__("4mXO");
+var get_own_property_symbols_default = /*#__PURE__*/__webpack_require__.n(get_own_property_symbols);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js
+var object_keys = __webpack_require__("pLtp");
+var keys_default = /*#__PURE__*/__webpack_require__.n(object_keys);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__("vYYK");
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("q1tI");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./node_modules/react-infinite-scroller/index.js
+var react_infinite_scroller = __webpack_require__("RotF");
+var react_infinite_scroller_default = /*#__PURE__*/__webpack_require__.n(react_infinite_scroller);
+
+// EXTERNAL MODULE: ./node_modules/@apollo/react-hooks/lib/react-hooks.cjs.js
+var react_hooks_cjs = __webpack_require__("gZqA");
+
+// EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.cjs.js
+var styled_components_cjs = __webpack_require__("VJA7");
+var styled_components_cjs_default = /*#__PURE__*/__webpack_require__.n(styled_components_cjs);
+
+// EXTERNAL MODULE: ./node_modules/react-i18next/dist/commonjs/index.js
+var commonjs = __webpack_require__("pH5e");
+
+// EXTERNAL MODULE: ./src/utils/seo/index.tsx + 2 modules
+var seo = __webpack_require__("wYgI");
+
+// EXTERNAL MODULE: ./node_modules/graphql-tag/lib/graphql-tag.umd.js
+var graphql_tag_umd = __webpack_require__("Dugd");
+var graphql_tag_umd_default = /*#__PURE__*/__webpack_require__.n(graphql_tag_umd);
+
+// EXTERNAL MODULE: ./src/graphql/fragments/user/userInfoSmall.ts
+var userInfoSmall = __webpack_require__("YIBd");
+
+// CONCATENATED MODULE: ./src/graphql/queries/user/userByUsername.ts
+
+
+const USER_BY_USERNAME = graphql_tag_umd_default.a`
+  query getUserByUsername($username: LowercaseString!, $after: String) {
+    user(username: $username) {
+      id
+      fullName
+      firstName
+      lastName
+      avatarUrl
+      isOnline
+      projects: projectsConnection(first: 4) {
+        edges {
+          node {
+            id
+            title
+            slug
+            files: filesConnection(first: 1, type: IMAGE) {
+              edges {
+                node {
+                  id
+                  uri
+                }
+              }
+            }
+            followers: followersConnection {
+              totalCount
+            }
+          }
+        }
+      }
+      posts: postsConnection(after: $after) {
+        edges {
+          cursor
+          node {
+            id
+            caption
+            user {
+              ...userInfoSmall
+            }
+            project {
+              id
+              title
+              slug
+              commentsDisabled
+            }
+            files: filesConnection(type: IMAGE) {
+              edges {
+                node {
+                  type
+                  id
+                  uri
+                }
+              }
+            }
+            comments: commentsConnection(first: 2) {
+              totalCount
+              edges {
+                node {
+                  id
+                  text
+                  user {
+                    ...userInfoSmall
+                  }
+                }
+              }
+            }
+          }
+        }
+        totalCount
+        pageInfo {
+          hasNextPage
+        }
+      }
+    }
+  }
+  ${userInfoSmall["a" /* default */]}
+`;
+// EXTERNAL MODULE: ./src/ui/index.ts + 21 modules
+var ui = __webpack_require__("95u7");
+
+// EXTERNAL MODULE: ./node_modules/next/link.js
+var next_link = __webpack_require__("YFqc");
+var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
+
+// EXTERNAL MODULE: ./node_modules/ramda/src/index.js
+var src = __webpack_require__("644N");
+
+// EXTERNAL MODULE: ./src/ui/Text/index.tsx + 4 modules
+var Text = __webpack_require__("vUwE");
+
+// EXTERNAL MODULE: ./src/ui/Image/index.tsx + 1 modules
+var Image = __webpack_require__("DVhp");
+
+// CONCATENATED MODULE: ./src/components/UserProjects/styles.ts
+
+
+
+const Base = styled_components_cjs_default.a.div.withConfig({
+  displayName: "styles__Base",
+  componentId: "sc-1x72u7p-0"
+})([""]);
+const styles_Image = styled_components_cjs_default()(Image["a" /* default */]).withConfig({
+  displayName: "styles__Image",
+  componentId: "sc-1x72u7p-1"
+})(["width:87px;height:87px;"]);
+const List = styled_components_cjs_default.a.div.withConfig({
+  displayName: "styles__List",
+  componentId: "sc-1x72u7p-2"
+})(["margin-top:40px;"]);
+const Row = styled_components_cjs_default.a.div.withConfig({
+  displayName: "styles__Row",
+  componentId: "sc-1x72u7p-3"
+})(["margin-bottom:10px;display:flex;"]);
+const Content = styled_components_cjs_default.a.div.withConfig({
+  displayName: "styles__Content",
+  componentId: "sc-1x72u7p-4"
+})(["margin-left:15px;"]);
+const styles_Text = styled_components_cjs_default()(Text["a" /* default */]).withConfig({
+  displayName: "styles__Text",
+  componentId: "sc-1x72u7p-5"
+})([""]);
+// CONCATENATED MODULE: ./src/components/UserProjects/index.tsx
+var __jsx = react_default.a.createElement;
+// @ts-nocheck
+
+
+
+
+
+
+function UserProjects({
+  projects,
+  fullName
+}) {
+  const {
+    t
+  } = Object(commonjs["useTranslation"])();
+  return projects.edges.length > 0 && __jsx(Base, null, __jsx(styles_Text, {
+    medium: true,
+    fontSize: 24
+  }, t('UserProjects:title', {
+    fullName
+  })), __jsx(List, null, projects.edges.map(({
+    node
+  }) => __jsx(link_default.a, {
+    key: node.id,
+    href: {
+      pathname: '/project',
+      query: {
+        slug: node.slug
+      }
+    },
+    as: {
+      pathname: `/project/${node.slug}`
+    }
+  }, __jsx("a", null, __jsx(Row, null, __jsx(styles_Image, {
+    source: Object(src["pathOr"])(null, ['files', 'edges', [0], 'node', 'uri'], node),
+    width: 90,
+    height: 90
+  }), __jsx(Content, null, __jsx(styles_Text, null, node.title), __jsx(styles_Text, {
+    color: "light_grey",
+    fontSize: 15,
+    lineHeight: 18
+  }, t('UserProjects:followers', {
+    count: node.followers.totalCount
+  })))))))));
+}
+
+/* harmony default export */ var components_UserProjects = (UserProjects);
+// CONCATENATED MODULE: ./src/pages/[username]/index.tsx
+
+
+
+
+
+
+
+var _username_jsx = react_default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = keys_default()(object); if (get_own_property_symbols_default.a) { var symbols = get_own_property_symbols_default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return get_own_property_descriptor_default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (get_own_property_descriptors_default.a) { define_properties_default()(target, get_own_property_descriptors_default()(source)); } else { ownKeys(source).forEach(function (key) { define_property_default()(target, key, get_own_property_descriptor_default()(source, key)); }); } } return target; }
+
+// @ts-nocheck
+
+
+
+
+
+
+
+
+
+const Top = styled_components_cjs_default.a.div.withConfig({
+  displayName: "username__Top",
+  componentId: "sg20g7-0"
+})(["display:flex;margin-bottom:65px;"]);
+const Name = styled_components_cjs_default.a.div.withConfig({
+  displayName: "username__Name",
+  componentId: "sg20g7-1"
+})(["display:flex;flex-direction:column;margin-left:20px;"]);
+const Left = styled_components_cjs_default.a.div.withConfig({
+  displayName: "username__Left",
+  componentId: "sg20g7-2"
+})(["margin-right:155px;max-width:640px;width:100%;"]);
+const Right = styled_components_cjs_default.a.div.withConfig({
+  displayName: "username__Right",
+  componentId: "sg20g7-3"
+})(["margin-top:-120px;"]);
+
+function User({
+  username
+}) {
+  const {
+    t
+  } = Object(commonjs["useTranslation"])();
+  const {
+    data,
+    loading,
+    fetchMore
+  } = Object(react_hooks_cjs["useQuery"])(USER_BY_USERNAME, {
+    variables: {
+      username
+    }
+  });
+
+  if (loading) {
+    return null;
+  }
+
+  const params = {
+    fullName: data.user.fullName,
+    username
+  };
+  return _username_jsx(ui["c" /* Layout */], {
+    top: _username_jsx(Top, null, _username_jsx(ui["a" /* Avatar */], {
+      uri: data.user.avatarUrl,
+      size: 80
+    }), _username_jsx(Name, null, _username_jsx(ui["g" /* Text */], {
+      medium: true,
+      fontSize: 36,
+      lineHeight: 38
+    }, data.user.firstName), _username_jsx(ui["g" /* Text */], {
+      medium: true,
+      fontSize: 36,
+      lineHeight: 38
+    }, data.user.lastName)))
+  }, _username_jsx(seo["a" /* default */], {
+    config: {
+      title: t('user:title', params),
+      description: t('user:description', params),
+      openGraph: {
+        title: t('user:title', params),
+        description: t('user:description', params),
+        url: `https://wrench.cc/user/${username}`,
+        type: 'profile',
+        profile: {
+          firstName: data.user.firstName,
+          lastName: data.user.lastName,
+          username
+        },
+        images: [{
+          url: data.user.avatarUrl,
+          alt: t('user:imagealt')
+        }]
+      }
+    }
+  }), _username_jsx(Left, null, _username_jsx(react_infinite_scroller_default.a, {
+    loadMore: () => fetchMore({
+      variables: {
+        after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor
+      },
+      updateQuery: (prev, {
+        fetchMoreResult
+      }) => {
+        if (!fetchMoreResult) {
+          return prev;
+        }
+
+        return _objectSpread({}, prev, {
+          user: _objectSpread({}, prev.user, {
+            posts: _objectSpread({}, prev.user.posts, {
+              pageInfo: _objectSpread({}, prev.user.posts.pageInfo, {}, fetchMoreResult.user.posts.pageInfo),
+              edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges]
+            })
+          })
+        });
+      }
+    }),
+    hasMore: data.user.posts.pageInfo.hasNextPage,
+    loader: _username_jsx(ui["d" /* Loader */], {
+      key: 0
+    })
+  }, data.user.posts.edges.map(({
+    node
+  }) => _username_jsx(ui["f" /* Post */], {
+    data: node,
+    key: node.id,
+    withoutAvatar: true
+  })))), data.user.projects && _username_jsx(Right, null, _username_jsx(components_UserProjects, {
+    projects: data.user.projects,
+    fullName: data.user.firstName
+  })));
+}
+
+User.getInitialProps = ({
+  query
+}) => query;
+
+/* harmony default export */ var _username_ = (User);
+// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2F%5Busername%5D&absolutePagePath=private-next-pages%2F%5Busername%5D%2Findex.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=3B-wb9NbNf2xYw1hIJ2W1&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_3B_wb9NbNf2xYw1hIJ2W1_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_3B_wb9NbNf2xYw1hIJ2W1_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const Component = _username_
+    /* harmony default export */ var next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_3B_wb9NbNf2xYw1hIJ2W1_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
+    const unstable_getStaticProps = _username_namespaceObject['unstable_getStaticProp' + 's']
+    const unstable_getStaticParams = _username_namespaceObject['unstable_getStaticParam' + 's']
+    const config = _username_namespaceObject['confi' + 'g'] || {}
+    const next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_3B_wb9NbNf2xYw1hIJ2W1_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
+    async function renderReqToHTML(req, res, fromExport) {
+      const options = {
+        App: _app["a" /* default */],
+        Document: _document["a" /* default */],
+        buildManifest: build_manifest,
+        unstable_getStaticProps,
+        reactLoadableManifest: react_loadable_manifest,
+        canonicalBase: "",
+        buildId: "3B-wb9NbNf2xYw1hIJ2W1",
+        assetPrefix: "",
+        ampBindInitData: false,
+      }
+      let sprData = false
+
+      if (req.url.match(/_next\/data/)) {
+        sprData = true
+        req.url = req.url
+          .replace(new RegExp('/_next/data/3B\-wb9NbNf2xYw1hIJ2W1/'), '/')
+          .replace(/\.json$/, '')
+      }
+      const parsedUrl = Object(external_url_["parse"])(req.url, true)
+      const renderOpts = Object.assign(
+        {
+          Component,
+          pageConfig: config,
+          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
+          nextExport: fromExport
+        },
+        options,
+      )
+      try {
+        
+        const params = fromExport && !unstable_getStaticProps ? {} : Object(utils["getRouteMatcher"])(Object(utils["getRouteRegex"])("/[username]"))(parsedUrl.pathname) || {};
+        const nowParams = req.headers && req.headers["x-now-route-matches"]
+              ? Object(utils["getRouteMatcher"])(
+                  (function() {
+                    const { re, groups } = Object(utils["getRouteRegex"])("/[username]");
+                    return {
+                      re: {
+                        // Simulate a RegExp match from the `req.url` input
+                        exec: str => {
+                          const obj = Object(external_querystring_["parse"])(str);
+                          return Object.keys(obj).reduce(
+                            (prev, key) =>
+                              Object.assign(prev, {
+                                [key]: encodeURIComponent(obj[key])
+                              }),
+                            {}
+                          );
+                        }
+                      },
+                      groups
+                    };
+                  })()
+                )(req.headers["x-now-route-matches"])
+              : null;
+          
+        let result = await Object(render["renderToHTML"])(req, res, "/[username]", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
+
+        if (sprData && !fromExport) {
+          const payload = JSON.stringify(renderOpts.sprData)
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Content-Length', Buffer.byteLength(payload))
+          res.setHeader(
+            'Cache-Control',
+            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
+          )
+          res.end(payload)
+          return null
+        }
+
+        if (fromExport) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a
+          }))
+          return result
+        } else {
+          console.error(err)
+          res.statusCode = 500
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a,
+            err
+          }))
+          return result
+        }
+      }
+    }
+    async function next_serverless_loaderpage_2F_5Busername_5D_absolutePagePath_private_next_pages_2F_5Busername_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_3B_wb9NbNf2xYw1hIJ2W1_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
+      try {
+        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
+        }
+      } catch(err) {
+        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
+        console.error(err)
+        res.statusCode = 500
+        res.end('Internal Server Error')
+      }
+    }
+  
 
 /***/ }),
 

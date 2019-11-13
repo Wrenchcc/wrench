@@ -11,15 +11,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
     <Base>
       {!withoutAvatar && (
         <Top>
-          <Link
-            href={{
-              pathname: '/user',
-              query: { username: data.user.username },
-            }}
-            as={{
-              pathname: `/${data.user.username}`,
-            }}
-          >
+          <Link href="/[username]" as={`/${data.user.username}`}>
             <a>
               <Avatar uri={data.user.avatarUrl} size={40} isOnline={data.user.isOnline} />
             </a>
@@ -28,15 +20,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
       )}
 
       {!withoutTitle && (
-        <Link
-          href={{
-            pathname: '/project',
-            query: { slug: data.project.slug },
-          }}
-          as={{
-            pathname: `/project/${data.project.slug}`,
-          }}
-        >
+        <Link href="/project/[slug]" as={`/project/${data.project.slug}`}>
           <a>
             <Title>{data.project.title}</Title>
           </a>

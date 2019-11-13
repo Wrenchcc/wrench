@@ -13,15 +13,7 @@ const Followers = memo(function Followers({ followers, className }) {
         {followers.edges &&
           followers.edges.map(({ node }, index) => (
             <User first={index === 0} key={node.id}>
-              <Link
-                href={{
-                  pathname: '/user',
-                  query: { username: node.username },
-                }}
-                as={{
-                  pathname: `/${node.username}`,
-                }}
-              >
+              <Link href="/[username]" as={`/${node.username}`}>
                 <a>
                   <Avatar uri={node.avatarUrl} size={30} />
                 </a>

@@ -32,15 +32,7 @@ export default [
     renderText: mention => {
       const username = mention.replace('@', '')
       return (
-        <Link
-          href={{
-            pathname: '/user',
-            query: { username },
-          }}
-          as={{
-            pathname: `/${username}`,
-          }}
-        >
+        <Link href="/[username]" as={`/${username}`}>
           <a>{mention}</a>
         </Link>
       )

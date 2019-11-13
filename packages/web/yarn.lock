@@ -1067,10 +1067,10 @@
     "@sentry/types" "5.7.1"
     tslib "^1.9.3"
 
-"@sentry/node@^5.8.0":
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-5.8.0.tgz#68ec032b0e7fb840cc8ccc1b39c09ac6febc1046"
-  integrity sha512-hIzt1BysyQJez8ChgWpFkLcGq3t/HaLMqzrXF5vu+Uuekl5OfwsvzZ+8Dlv78rI4CvlL9a2EuI/94iqUNwhOSQ==
+"@sentry/node@^5.9.0":
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-5.9.0.tgz#9a8da70990e64c88a391ef86dcf29f43e0a52e59"
+  integrity sha512-1CWwSGhRfMr4Bvt1i0vIms+BBZd4dBzlDyWpyCboodCXF1rTJRci9roQ+Wh9XWwFEWvgDD2PzuKzfvu638v2Wg==
   dependencies:
     "@sentry/core" "5.8.0"
     "@sentry/hub" "5.8.0"
@@ -7885,10 +7885,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-pure-react-carousel@^1.23.2:
-  version "1.23.2"
-  resolved "https://registry.yarnpkg.com/pure-react-carousel/-/pure-react-carousel-1.23.2.tgz#a221ebf168a30caabee95b3af70f69e25ecc08c1"
-  integrity sha512-/0/FwHQ7conu8IvgiKP89HFD//52m4TE7ujkKO35F9w76XoJj914W27LbXMZ8UK9XTdeJC+Jz5dZZFhhPllMSg==
+pure-react-carousel@^1.23.3:
+  version "1.23.3"
+  resolved "https://registry.yarnpkg.com/pure-react-carousel/-/pure-react-carousel-1.23.3.tgz#f6ebf4bbacd34018375c26292ecef47d69d6d58b"
+  integrity sha512-dZ/O77e4+HpxdbVpXImSmoKCSMTjt9h1u8btfDfKw9BdVjUxovRCcZYCiJAtFiSB0odB8A3yHegrQ0hdcR9Rnw==
   dependencies:
     "@babel/runtime" "^7.5.5"
     deep-freeze "0.0.1"

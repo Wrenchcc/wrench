@@ -25,16 +25,7 @@ function FollowingProjects() {
 
       <List>
         {projects.edges.map(({ node }) => (
-          <Link
-            key={node.id}
-            href={{
-              pathname: '/project',
-              query: { slug: node.slug },
-            }}
-            as={{
-              pathname: `/project/${node.slug}`,
-            }}
-          >
+          <Link key={node.id} href="/project/[slug]" as={`/project/${node.slug}`}>
             <a>
               <Row>
                 <Image

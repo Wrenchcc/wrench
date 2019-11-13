@@ -2,8 +2,8 @@
   "name": "an55j5m-m6nau66v",
   "arn": "arn:aws:iam::719104767000:role/an55j5m-m6nau66v",
   "service": [
-    "lambda.amazonaws.com",
-    "edgelambda.amazonaws.com"
+    "edgelambda.amazonaws.com",
+    "lambda.amazonaws.com"
   ],
   "policy": {
     "arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"

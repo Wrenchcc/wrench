@@ -16,15 +16,7 @@ const List = memo(function List({ comments }) {
     <Fragment>
       {comments.map(({ node }) => (
         <Row key={node.id}>
-          <Link
-            href={{
-              pathname: '/user',
-              query: { username: node.user.username },
-            }}
-            as={{
-              pathname: `/${node.user.username}`,
-            }}
-          >
+          <Link href="/[username]" as={`/${node.user.username}`}>
             <a>
               <Text bold fontSize={15}>
                 {`${node.user.fullName}`}
