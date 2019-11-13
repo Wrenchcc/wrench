@@ -103,7 +103,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "cLWH");
+/******/ 	return __webpack_require__(__webpack_require__.s = "SxX9");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -12689,7 +12689,7 @@ function Footer() {
   }, t('Footer:description')), __jsx(ui["g" /* Text */], {
     fontSize: 13,
     color: "grey"
-  }, "\xA9 Wrench (v.", "61e57f97f", ")"))));
+  }, "\xA9 Wrench (v.", "f16d594ff", ")"))));
 }
 
 /* harmony default export */ var components_Footer = __webpack_exports__["a"] = (Footer);
@@ -19357,7 +19357,7 @@ exports['default'] = result;
 /***/ "LZ9C":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"devFiles\":[],\"pages\":{\"/\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/[username]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/_app\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/_error\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/_polyfills\":[\"static/runtime/polyfills-69427cfeebf2a45437b1.js\",\"static/runtime/polyfills-69427cfeebf2a45437b1.js.map\"],\"/cookies\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/download\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/eula\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/explore\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/faq\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/feed\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/home\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/index\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/policy\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/project/[slug]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/settings\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/terms\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"]}}");
+module.exports = JSON.parse("{\"devFiles\":[],\"pages\":{\"/\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/[username]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/_app\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/_error\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/_polyfills\":[\"static/runtime/polyfills-36008e35608a66475cd4.js\",\"static/runtime/polyfills-36008e35608a66475cd4.js.map\"],\"/cookies\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/download\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/eula\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/explore\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/faq\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/feed\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/home\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/index\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/policy\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/project/[slug]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/settings\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/terms\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"]}}");
 
 /***/ }),
 
@@ -24922,6 +24922,192 @@ var _xaperture = /*#__PURE__*/__webpack_require__("egd9");
 
 var aperture = /*#__PURE__*/_curry2( /*#__PURE__*/_dispatchable([], _xaperture, _aperture));
 module.exports = aperture;
+
+/***/ }),
+
+/***/ "SxX9":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var policy_namespaceObject = {};
+__webpack_require__.r(policy_namespaceObject);
+__webpack_require__.d(policy_namespaceObject, "default", function() { return policy; });
+
+// EXTERNAL MODULE: external "url"
+var external_url_ = __webpack_require__("bzos");
+
+// EXTERNAL MODULE: external "querystring"
+var external_querystring_ = __webpack_require__("8xkj");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
+var render = __webpack_require__("/bjS");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
+var send_html = __webpack_require__("LuNM");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
+var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
+var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
+
+// EXTERNAL MODULE: ./.next/build-manifest.json
+var build_manifest = __webpack_require__("LZ9C");
+
+// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
+var react_loadable_manifest = __webpack_require__("67Bq");
+
+// EXTERNAL MODULE: ./src/pages/_document.tsx
+var _document = __webpack_require__("mT+M");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
+var _error = __webpack_require__("/a9y");
+var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
+
+// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
+var _app = __webpack_require__("hUgY");
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("q1tI");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
+var Footer = __webpack_require__("CwrG");
+
+// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
+var PageLayout = __webpack_require__("+whY");
+
+// CONCATENATED MODULE: ./src/pages/policy.tsx
+var __jsx = react_default.a.createElement;
+
+
+
+
+function Privacy() {
+  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "Privacy Policy"), __jsx("p", null, "Effective date: March 09, 2019"), __jsx("p", null, "Wrench AB (\"us\", \"we\", or \"our\") operates the Wrench mobile application (hereinafter referred to as the \"Service\")."), __jsx("p", null, "This page informs you of our policies regarding the collection, use and disclosure of personal data when you use our Service and the choices you have associated with that data."), __jsx("p", null, "We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions."), __jsx("h2", null, "Definitions"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Service")), __jsx("p", null, "Service is the Wrench mobile application operated by Wrench AB")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Personal Data")), __jsx("p", null, "Personal Data means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Usage Data")), __jsx("p", null, "Usage Data is data collected automatically either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Cookies")), __jsx("p", null, "Cookies are small files stored on your device (computer or mobile device).")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Data Controller")), __jsx("p", null, "Data Controller means the natural or legal person who (either alone or jointly or in common with other persons) determines the purposes for which and the manner in which any personal information are, or are to be, processed."), __jsx("p", null, "For the purpose of this Privacy Policy, we are a Data Controller of your Personal Data.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Data Processors (or Service Providers)")), __jsx("p", null, "Data Processor (or Service Provider) means any natural or legal person who processes the data on behalf of the Data Controller."), __jsx("p", null, "We may use the services of various Service Providers in order to process your data more effectively.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Data Subject (or User)")), __jsx("p", null, "Data Subject is any living individual who is using our Service and is the subject of Personal Data."))), __jsx("h2", null, "Information Collection and Use"), __jsx("p", null, "We collect several different types of information for various purposes to provide and improve our Service to you."), __jsx("h3", null, "Types of Data Collected"), __jsx("h4", null, "Personal Data"), __jsx("p", null, "While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (\"Personal Data\"). Personally identifiable information may include, but is not limited to:"), __jsx("ul", null, __jsx("li", null, "Email address"), " ", __jsx("li", null, "First name and last name"), " ", __jsx("li", null, "Cookies and Usage Data")), __jsx("p", null, "We may use your Personal Data to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. You may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or the instructions provided in any email we send."), __jsx("h4", null, "Usage Data"), __jsx("p", null, "When you access the Service with a mobile device, we may collect certain information automatically, including, but not limited to, the type of mobile device you use, your mobile device unique ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browser you use, unique device identifiers and other diagnostic data (\"Usage Data\")."), __jsx("h4", null, "Tracking & Cookies Data"), __jsx("p", null, "We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information."), __jsx("p", null, "Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyse our Service."), __jsx("p", null, "You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service."), __jsx("p", null, "Examples of Cookies we use:"), __jsx("ul", null, __jsx("li", null, __jsx("strong", null, "Session Cookies."), " We use Session Cookies to operate our Service."), __jsx("li", null, __jsx("strong", null, "Preference Cookies."), " We use Preference Cookies to remember your preferences and various settings."), __jsx("li", null, __jsx("strong", null, "Security Cookies."), " We use Security Cookies for security purposes.")), __jsx("h2", null, "Use of Data"), __jsx("p", null, "Wrench AB uses the collected data for various purposes:"), __jsx("ul", null, __jsx("li", null, "To provide and maintain our Service"), __jsx("li", null, "To notify you about changes to our Service"), __jsx("li", null, "To allow you to participate in interactive features of our Service when you choose to do so"), __jsx("li", null, "To provide customer support"), __jsx("li", null, "To gather analysis or valuable information so that we can improve our Service"), __jsx("li", null, "To monitor the usage of our Service"), __jsx("li", null, "To detect, prevent and address technical issues"), __jsx("li", null, "To provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information")), __jsx("h2", null, "Legal Basis for Processing Personal Data under the General Data Protection Regulation (GDPR)"), __jsx("p", null, "If you are from the European Economic Area (EEA), Wrench AB legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Data we collect and the specific context in which we collect it."), __jsx("p", null, "Wrench AB may process your Personal Data because:"), __jsx("ul", null, __jsx("li", null, "We need to perform a contract with you"), __jsx("li", null, "You have given us permission to do so"), __jsx("li", null, "The processing is in our legitimate interests and it is not overridden by your rights"), __jsx("li", null, "For payment processing purposes"), " ", __jsx("li", null, "To comply with the law")), __jsx("h2", null, "Retention of Data"), __jsx("p", null, "Wrench AB will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes and enforce our legal agreements and policies."), __jsx("p", null, "Wrench AB will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer periods."), __jsx("h2", null, "Transfer of Data"), __jsx("p", null, "Your information, including Personal Data, may be transferred to - and maintained on - computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction."), __jsx("p", null, "If you are located outside Sweden and choose to provide information to us, please note that we transfer the data, including Personal Data, to Sweden and process it there."), __jsx("p", null, "Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer."), __jsx("p", null, "Wrench AB will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information."), __jsx("h2", null, "Disclosure of Data"), __jsx("h3", null, "Business Transaction"), __jsx("p", null, "If Wrench AB is involved in a merger, acquisition or asset sale, your Personal Data may be transferred. We will provide notice before your Personal Data is transferred and becomes subject to a different Privacy Policy."), __jsx("h3", null, "Disclosure for Law Enforcement"), __jsx("p", null, "Under certain circumstances, Wrench AB may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency)."), __jsx("h3", null, "Legal Requirements"), __jsx("p", null, "Wrench AB may disclose your Personal Data in the good faith belief that such action is necessary to:"), __jsx("ul", null, __jsx("li", null, "To comply with a legal obligation"), __jsx("li", null, "To protect and defend the rights or property of Wrench AB"), __jsx("li", null, "To prevent or investigate possible wrongdoing in connection with the Service"), __jsx("li", null, "To protect the personal safety of users of the Service or the public"), __jsx("li", null, "To protect against legal liability")), __jsx("h2", null, "Security of Data"), __jsx("p", null, "The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security."), __jsx("h2", null, "Our Policy on \"Do Not Track\" Signals under the California Online Protection Act (CalOPPA)"), __jsx("p", null, "We do not support Do Not Track (\"DNT\"). Do Not Track is a preference you can set in your web browser to inform websites that you do not want to be tracked."), __jsx("p", null, "You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser."), __jsx("h2", null, "Your Data Protection Rights under the General Data Protection Regulation (GDPR)"), __jsx("p", null, "If you are a resident of the European Economic Area (EEA), you have certain data protection rights. Wrench AB aims to take reasonable steps to allow you to correct, amend, delete or limit the use of your Personal Data."), __jsx("p", null, "If you wish to be informed about what Personal Data we hold about you and if you want it to be removed from our systems, please contact us."), __jsx("p", null, "In certain circumstances, you have the following data protection rights:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to access, update or delete the information we have on you."), ' ', "Whenever made possible, you can access, update or request deletion of your Personal Data directly within your account settings section. If you are unable to perform these actions yourself, please contact us to assist you.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right of rectification."), " You have the right to have your information rectified if that information is inaccurate or incomplete.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to object."), " You have the right to object to our processing of your Personal Data.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right of restriction."), " You have the right to request that we restrict the processing of your personal information.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to data portability."), " You have the right to be provided with a copy of the information we have on you in a structured, machine-readable and commonly used format.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to withdraw consent."), " You also have the right to withdraw your consent at any time where Wrench AB relied on your consent to process your personal information."))), __jsx("p", null, "Please note that we may ask you to verify your identity before responding to such requests."), __jsx("p", null, "You have the right to complain to a Data Protection Authority about our collection and use of your Personal Data. For more information, please contact your local data protection authority in the European Economic Area (EEA)."), __jsx("h2", null, "Service Providers"), __jsx("p", null, "We may employ third party companies and individuals to facilitate our Service (\"Service Providers\"), provide the Service on our behalf, perform Service-related services or assist us in analysing how our Service is used."), __jsx("p", null, "These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose."), __jsx("h3", null, "Analytics"), __jsx("p", null, "We may use third-party Service Providers to monitor and analyse the use of our Service."), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Firebase")), __jsx("p", null, "Firebase is analytics service provided by Google Inc."), __jsx("p", null, "You may opt-out of certain Firebase features through your mobile device settings, such as your device advertising settings or by following the instructions provided by Google in their Privacy Policy:", ' ', __jsx("a", {
+    href: "https://policies.google.com/privacy?hl=en"
+  }, "https:// policies.google.com/privacy?hl=en")), __jsx("p", null, "We also encourage you to review the Google's policy for safeguarding your data:", ' ', __jsx("a", {
+    href: "https://support.google.com/analytics/answer/6004245"
+  }, "https:// support.google.com/analytics/answer/6004245"), "."), __jsx("p", null, "For more information on what type of information Firebase collects, please visit the Google Privacy & Terms web page:", ' ', __jsx("a", {
+    href: "https://policies.google.com/privacy?hl=en"
+  }, "https:// policies.google.com/privacy?hl=en")))), __jsx("h3", null, "Payments"), __jsx("p", null, "We may provide paid products and/or services within the Service. In that case, we use third-party services for payment processing (e.g. payment processors)."), __jsx("p", null, "We will not store or collect your payment card details. That information is provided directly to our third-party payment processors whose use of your personal information is governed by their Privacy Policy. These payment processors adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, MasterCard, American Express and Discover. PCI-DSS requirements help ensure the secure handling of payment information."), __jsx("p", null, "The payment processors we work with are:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Apple Store In-App Payments")), __jsx("p", null, "Their Privacy Policy can be viewed at", ' ', __jsx("a", {
+    href: "https://www.apple.com/legal/privacy/en-ww/"
+  }, "https:// www.apple.com/legal/privacy/en-ww/"))), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Google Play In-App Payments")), __jsx("p", null, "Their Privacy Policy can be viewed at", ' ', __jsx("a", {
+    href: "https://www.google.com/policies/privacy/"
+  }, "https:// www.google.com/policies/privacy/")))), __jsx("h2", null, "Links to Other Sites"), __jsx("p", null, "Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit."), __jsx("p", null, "We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services."), __jsx("h2", null, "Children's Privacy"), __jsx("p", null, "Our Service does not address anyone under the age of 18 (\"Children\")."), __jsx("p", null, "We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Child has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers."), __jsx("h2", null, "Changes to This Privacy Policy"), __jsx("p", null, "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page."), __jsx("p", null, "We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the \"effective date\" at the top of this Privacy Policy."), __jsx("p", null, "You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page."), __jsx("h2", null, "Contact Us"), __jsx("p", null, "If you have any questions about this Privacy Policy, please contact us:"), __jsx("ul", null, __jsx("li", null, "By email: support@wrench.cc"))), __jsx(Footer["a" /* default */], null));
+}
+
+/* harmony default export */ var policy = (Privacy);
+// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fpolicy&absolutePagePath=private-next-pages%2Fpolicy.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=qrOphKk56qwi-cJIGjRpY&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const Component = policy
+    /* harmony default export */ var next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
+    const unstable_getStaticProps = policy_namespaceObject['unstable_getStaticProp' + 's']
+    
+    const config = policy_namespaceObject['confi' + 'g'] || {}
+    const next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
+    async function renderReqToHTML(req, res, fromExport) {
+      const options = {
+        App: _app["a" /* default */],
+        Document: _document["a" /* default */],
+        buildManifest: build_manifest,
+        unstable_getStaticProps,
+        reactLoadableManifest: react_loadable_manifest,
+        canonicalBase: "",
+        buildId: "qrOphKk56qwi-cJIGjRpY",
+        assetPrefix: "",
+        ampBindInitData: false,
+      }
+      let sprData = false
+
+      if (req.url.match(/_next\/data/)) {
+        sprData = true
+        req.url = req.url
+          .replace(new RegExp('/_next/data/qrOphKk56qwi\-cJIGjRpY/'), '/')
+          .replace(/\.json$/, '')
+      }
+      const parsedUrl = Object(external_url_["parse"])(req.url, true)
+      const renderOpts = Object.assign(
+        {
+          Component,
+          pageConfig: config,
+          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
+          nextExport: fromExport
+        },
+        options,
+      )
+      try {
+        
+        const params = {};
+        const nowParams = null;
+        let result = await Object(render["renderToHTML"])(req, res, "/policy", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
+
+        if (sprData && !fromExport) {
+          const payload = JSON.stringify(renderOpts.sprData)
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Content-Length', Buffer.byteLength(payload))
+          res.setHeader(
+            'Cache-Control',
+            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
+          )
+          res.end(payload)
+          return null
+        }
+
+        if (fromExport) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a
+          }))
+          return result
+        } else {
+          console.error(err)
+          res.statusCode = 500
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a,
+            err
+          }))
+          return result
+        }
+      }
+    }
+    async function next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
+      try {
+        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
+        }
+      } catch(err) {
+        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
+        console.error(err)
+        res.statusCode = 500
+        res.end('Internal Server Error')
+      }
+    }
+  
 
 /***/ }),
 
@@ -35943,192 +36129,6 @@ __webpack_require__.r(__webpack_exports__);
     /* harmony default export */ __webpack_exports__["default"] = (function (ctx) {
       return Promise.all([])
     });
-  
-
-/***/ }),
-
-/***/ "cLWH":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var policy_namespaceObject = {};
-__webpack_require__.r(policy_namespaceObject);
-__webpack_require__.d(policy_namespaceObject, "default", function() { return policy; });
-
-// EXTERNAL MODULE: external "url"
-var external_url_ = __webpack_require__("bzos");
-
-// EXTERNAL MODULE: external "querystring"
-var external_querystring_ = __webpack_require__("8xkj");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
-var render = __webpack_require__("/bjS");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
-var send_html = __webpack_require__("LuNM");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
-var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
-var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
-
-// EXTERNAL MODULE: ./.next/build-manifest.json
-var build_manifest = __webpack_require__("LZ9C");
-
-// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
-var react_loadable_manifest = __webpack_require__("67Bq");
-
-// EXTERNAL MODULE: ./src/pages/_document.tsx
-var _document = __webpack_require__("mT+M");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
-var _error = __webpack_require__("/a9y");
-var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
-
-// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
-var _app = __webpack_require__("hUgY");
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__("q1tI");
-var react_default = /*#__PURE__*/__webpack_require__.n(react);
-
-// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
-var Footer = __webpack_require__("CwrG");
-
-// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
-var PageLayout = __webpack_require__("+whY");
-
-// CONCATENATED MODULE: ./src/pages/policy.tsx
-var __jsx = react_default.a.createElement;
-
-
-
-
-function Privacy() {
-  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "Privacy Policy"), __jsx("p", null, "Effective date: March 09, 2019"), __jsx("p", null, "Wrench AB (\"us\", \"we\", or \"our\") operates the Wrench mobile application (hereinafter referred to as the \"Service\")."), __jsx("p", null, "This page informs you of our policies regarding the collection, use and disclosure of personal data when you use our Service and the choices you have associated with that data."), __jsx("p", null, "We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions."), __jsx("h2", null, "Definitions"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Service")), __jsx("p", null, "Service is the Wrench mobile application operated by Wrench AB")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Personal Data")), __jsx("p", null, "Personal Data means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Usage Data")), __jsx("p", null, "Usage Data is data collected automatically either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Cookies")), __jsx("p", null, "Cookies are small files stored on your device (computer or mobile device).")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Data Controller")), __jsx("p", null, "Data Controller means the natural or legal person who (either alone or jointly or in common with other persons) determines the purposes for which and the manner in which any personal information are, or are to be, processed."), __jsx("p", null, "For the purpose of this Privacy Policy, we are a Data Controller of your Personal Data.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Data Processors (or Service Providers)")), __jsx("p", null, "Data Processor (or Service Provider) means any natural or legal person who processes the data on behalf of the Data Controller."), __jsx("p", null, "We may use the services of various Service Providers in order to process your data more effectively.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Data Subject (or User)")), __jsx("p", null, "Data Subject is any living individual who is using our Service and is the subject of Personal Data."))), __jsx("h2", null, "Information Collection and Use"), __jsx("p", null, "We collect several different types of information for various purposes to provide and improve our Service to you."), __jsx("h3", null, "Types of Data Collected"), __jsx("h4", null, "Personal Data"), __jsx("p", null, "While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (\"Personal Data\"). Personally identifiable information may include, but is not limited to:"), __jsx("ul", null, __jsx("li", null, "Email address"), " ", __jsx("li", null, "First name and last name"), " ", __jsx("li", null, "Cookies and Usage Data")), __jsx("p", null, "We may use your Personal Data to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. You may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or the instructions provided in any email we send."), __jsx("h4", null, "Usage Data"), __jsx("p", null, "When you access the Service with a mobile device, we may collect certain information automatically, including, but not limited to, the type of mobile device you use, your mobile device unique ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browser you use, unique device identifiers and other diagnostic data (\"Usage Data\")."), __jsx("h4", null, "Tracking & Cookies Data"), __jsx("p", null, "We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information."), __jsx("p", null, "Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyse our Service."), __jsx("p", null, "You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service."), __jsx("p", null, "Examples of Cookies we use:"), __jsx("ul", null, __jsx("li", null, __jsx("strong", null, "Session Cookies."), " We use Session Cookies to operate our Service."), __jsx("li", null, __jsx("strong", null, "Preference Cookies."), " We use Preference Cookies to remember your preferences and various settings."), __jsx("li", null, __jsx("strong", null, "Security Cookies."), " We use Security Cookies for security purposes.")), __jsx("h2", null, "Use of Data"), __jsx("p", null, "Wrench AB uses the collected data for various purposes:"), __jsx("ul", null, __jsx("li", null, "To provide and maintain our Service"), __jsx("li", null, "To notify you about changes to our Service"), __jsx("li", null, "To allow you to participate in interactive features of our Service when you choose to do so"), __jsx("li", null, "To provide customer support"), __jsx("li", null, "To gather analysis or valuable information so that we can improve our Service"), __jsx("li", null, "To monitor the usage of our Service"), __jsx("li", null, "To detect, prevent and address technical issues"), __jsx("li", null, "To provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information")), __jsx("h2", null, "Legal Basis for Processing Personal Data under the General Data Protection Regulation (GDPR)"), __jsx("p", null, "If you are from the European Economic Area (EEA), Wrench AB legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Data we collect and the specific context in which we collect it."), __jsx("p", null, "Wrench AB may process your Personal Data because:"), __jsx("ul", null, __jsx("li", null, "We need to perform a contract with you"), __jsx("li", null, "You have given us permission to do so"), __jsx("li", null, "The processing is in our legitimate interests and it is not overridden by your rights"), __jsx("li", null, "For payment processing purposes"), " ", __jsx("li", null, "To comply with the law")), __jsx("h2", null, "Retention of Data"), __jsx("p", null, "Wrench AB will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes and enforce our legal agreements and policies."), __jsx("p", null, "Wrench AB will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer periods."), __jsx("h2", null, "Transfer of Data"), __jsx("p", null, "Your information, including Personal Data, may be transferred to - and maintained on - computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction."), __jsx("p", null, "If you are located outside Sweden and choose to provide information to us, please note that we transfer the data, including Personal Data, to Sweden and process it there."), __jsx("p", null, "Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer."), __jsx("p", null, "Wrench AB will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information."), __jsx("h2", null, "Disclosure of Data"), __jsx("h3", null, "Business Transaction"), __jsx("p", null, "If Wrench AB is involved in a merger, acquisition or asset sale, your Personal Data may be transferred. We will provide notice before your Personal Data is transferred and becomes subject to a different Privacy Policy."), __jsx("h3", null, "Disclosure for Law Enforcement"), __jsx("p", null, "Under certain circumstances, Wrench AB may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency)."), __jsx("h3", null, "Legal Requirements"), __jsx("p", null, "Wrench AB may disclose your Personal Data in the good faith belief that such action is necessary to:"), __jsx("ul", null, __jsx("li", null, "To comply with a legal obligation"), __jsx("li", null, "To protect and defend the rights or property of Wrench AB"), __jsx("li", null, "To prevent or investigate possible wrongdoing in connection with the Service"), __jsx("li", null, "To protect the personal safety of users of the Service or the public"), __jsx("li", null, "To protect against legal liability")), __jsx("h2", null, "Security of Data"), __jsx("p", null, "The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security."), __jsx("h2", null, "Our Policy on \"Do Not Track\" Signals under the California Online Protection Act (CalOPPA)"), __jsx("p", null, "We do not support Do Not Track (\"DNT\"). Do Not Track is a preference you can set in your web browser to inform websites that you do not want to be tracked."), __jsx("p", null, "You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser."), __jsx("h2", null, "Your Data Protection Rights under the General Data Protection Regulation (GDPR)"), __jsx("p", null, "If you are a resident of the European Economic Area (EEA), you have certain data protection rights. Wrench AB aims to take reasonable steps to allow you to correct, amend, delete or limit the use of your Personal Data."), __jsx("p", null, "If you wish to be informed about what Personal Data we hold about you and if you want it to be removed from our systems, please contact us."), __jsx("p", null, "In certain circumstances, you have the following data protection rights:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to access, update or delete the information we have on you."), ' ', "Whenever made possible, you can access, update or request deletion of your Personal Data directly within your account settings section. If you are unable to perform these actions yourself, please contact us to assist you.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right of rectification."), " You have the right to have your information rectified if that information is inaccurate or incomplete.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to object."), " You have the right to object to our processing of your Personal Data.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right of restriction."), " You have the right to request that we restrict the processing of your personal information.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to data portability."), " You have the right to be provided with a copy of the information we have on you in a structured, machine-readable and commonly used format.")), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "The right to withdraw consent."), " You also have the right to withdraw your consent at any time where Wrench AB relied on your consent to process your personal information."))), __jsx("p", null, "Please note that we may ask you to verify your identity before responding to such requests."), __jsx("p", null, "You have the right to complain to a Data Protection Authority about our collection and use of your Personal Data. For more information, please contact your local data protection authority in the European Economic Area (EEA)."), __jsx("h2", null, "Service Providers"), __jsx("p", null, "We may employ third party companies and individuals to facilitate our Service (\"Service Providers\"), provide the Service on our behalf, perform Service-related services or assist us in analysing how our Service is used."), __jsx("p", null, "These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose."), __jsx("h3", null, "Analytics"), __jsx("p", null, "We may use third-party Service Providers to monitor and analyse the use of our Service."), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Firebase")), __jsx("p", null, "Firebase is analytics service provided by Google Inc."), __jsx("p", null, "You may opt-out of certain Firebase features through your mobile device settings, such as your device advertising settings or by following the instructions provided by Google in their Privacy Policy:", ' ', __jsx("a", {
-    href: "https://policies.google.com/privacy?hl=en"
-  }, "https:// policies.google.com/privacy?hl=en")), __jsx("p", null, "We also encourage you to review the Google's policy for safeguarding your data:", ' ', __jsx("a", {
-    href: "https://support.google.com/analytics/answer/6004245"
-  }, "https:// support.google.com/analytics/answer/6004245"), "."), __jsx("p", null, "For more information on what type of information Firebase collects, please visit the Google Privacy & Terms web page:", ' ', __jsx("a", {
-    href: "https://policies.google.com/privacy?hl=en"
-  }, "https:// policies.google.com/privacy?hl=en")))), __jsx("h3", null, "Payments"), __jsx("p", null, "We may provide paid products and/or services within the Service. In that case, we use third-party services for payment processing (e.g. payment processors)."), __jsx("p", null, "We will not store or collect your payment card details. That information is provided directly to our third-party payment processors whose use of your personal information is governed by their Privacy Policy. These payment processors adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, MasterCard, American Express and Discover. PCI-DSS requirements help ensure the secure handling of payment information."), __jsx("p", null, "The payment processors we work with are:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Apple Store In-App Payments")), __jsx("p", null, "Their Privacy Policy can be viewed at", ' ', __jsx("a", {
-    href: "https://www.apple.com/legal/privacy/en-ww/"
-  }, "https:// www.apple.com/legal/privacy/en-ww/"))), __jsx("li", null, __jsx("p", null, __jsx("strong", null, "Google Play In-App Payments")), __jsx("p", null, "Their Privacy Policy can be viewed at", ' ', __jsx("a", {
-    href: "https://www.google.com/policies/privacy/"
-  }, "https:// www.google.com/policies/privacy/")))), __jsx("h2", null, "Links to Other Sites"), __jsx("p", null, "Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit."), __jsx("p", null, "We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services."), __jsx("h2", null, "Children's Privacy"), __jsx("p", null, "Our Service does not address anyone under the age of 18 (\"Children\")."), __jsx("p", null, "We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Child has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers."), __jsx("h2", null, "Changes to This Privacy Policy"), __jsx("p", null, "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page."), __jsx("p", null, "We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the \"effective date\" at the top of this Privacy Policy."), __jsx("p", null, "You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page."), __jsx("h2", null, "Contact Us"), __jsx("p", null, "If you have any questions about this Privacy Policy, please contact us:"), __jsx("ul", null, __jsx("li", null, "By email: support@wrench.cc"))), __jsx(Footer["a" /* default */], null));
-}
-
-/* harmony default export */ var policy = (Privacy);
-// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fpolicy&absolutePagePath=private-next-pages%2Fpolicy.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=KWLw88KgS7Voht6CVeJf0&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    const Component = policy
-    /* harmony default export */ var next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
-    const unstable_getStaticProps = policy_namespaceObject['unstable_getStaticProp' + 's']
-    
-    const config = policy_namespaceObject['confi' + 'g'] || {}
-    const next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
-    async function renderReqToHTML(req, res, fromExport) {
-      const options = {
-        App: _app["a" /* default */],
-        Document: _document["a" /* default */],
-        buildManifest: build_manifest,
-        unstable_getStaticProps,
-        reactLoadableManifest: react_loadable_manifest,
-        canonicalBase: "",
-        buildId: "KWLw88KgS7Voht6CVeJf0",
-        assetPrefix: "",
-        ampBindInitData: false,
-      }
-      let sprData = false
-
-      if (req.url.match(/_next\/data/)) {
-        sprData = true
-        req.url = req.url
-          .replace(new RegExp('/_next/data/KWLw88KgS7Voht6CVeJf0/'), '/')
-          .replace(/\.json$/, '')
-      }
-      const parsedUrl = Object(external_url_["parse"])(req.url, true)
-      const renderOpts = Object.assign(
-        {
-          Component,
-          pageConfig: config,
-          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
-          nextExport: fromExport
-        },
-        options,
-      )
-      try {
-        
-        const params = {};
-        const nowParams = null;
-        let result = await Object(render["renderToHTML"])(req, res, "/policy", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
-
-        if (sprData && !fromExport) {
-          const payload = JSON.stringify(renderOpts.sprData)
-          res.setHeader('Content-Type', 'application/json')
-          res.setHeader('Content-Length', Buffer.byteLength(payload))
-          res.setHeader(
-            'Cache-Control',
-            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
-          )
-          res.end(payload)
-          return null
-        }
-
-        if (fromExport) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a
-          }))
-          return result
-        } else {
-          console.error(err)
-          res.statusCode = 500
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a,
-            err
-          }))
-          return result
-        }
-      }
-    }
-    async function next_serverless_loaderpage_2Fpolicy_absolutePagePath_private_next_pages_2Fpolicy_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
-      try {
-        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
-        }
-      } catch(err) {
-        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
-        console.error(err)
-        res.statusCode = 500
-        res.end('Internal Server Error')
-      }
-    }
   
 
 /***/ }),

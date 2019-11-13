@@ -103,7 +103,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "kyTD");
+/******/ 	return __webpack_require__(__webpack_require__.s = "QXIs");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -19224,7 +19224,7 @@ exports['default'] = result;
 /***/ "LZ9C":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"devFiles\":[],\"pages\":{\"/\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/[username]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/_app\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/_error\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/_polyfills\":[\"static/runtime/polyfills-69427cfeebf2a45437b1.js\",\"static/runtime/polyfills-69427cfeebf2a45437b1.js.map\"],\"/cookies\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/download\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/eula\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/explore\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/faq\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/feed\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/home\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/index\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/policy\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/project/[slug]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/settings\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"],\"/terms\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-31959a1f6ed202458d96.js\"]}}");
+module.exports = JSON.parse("{\"devFiles\":[],\"pages\":{\"/\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/[username]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/_app\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/_error\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/_polyfills\":[\"static/runtime/polyfills-36008e35608a66475cd4.js\",\"static/runtime/polyfills-36008e35608a66475cd4.js.map\"],\"/cookies\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/download\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/eula\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/explore\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/faq\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/feed\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/home\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/index\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/policy\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/project/[slug]\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/settings\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"],\"/terms\":[\"static/runtime/webpack-7a9effbbda2651a31601.js\",\"static/chunks/commons.40122c4e76c335a71231.js\",\"static/runtime/main-4899bd8f44f2650cf1ea.js\"]}}");
 
 /***/ }),
 
@@ -23172,6 +23172,512 @@ var nth = /*#__PURE__*/_curry2(function nth(offset, list) {
   return _isString(list) ? list.charAt(idx) : list[idx];
 });
 module.exports = nth;
+
+/***/ }),
+
+/***/ "QXIs":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var _slug_namespaceObject = {};
+__webpack_require__.r(_slug_namespaceObject);
+__webpack_require__.d(_slug_namespaceObject, "default", function() { return _slug_; });
+
+// EXTERNAL MODULE: external "url"
+var external_url_ = __webpack_require__("bzos");
+
+// EXTERNAL MODULE: external "querystring"
+var external_querystring_ = __webpack_require__("8xkj");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
+var render = __webpack_require__("/bjS");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
+var send_html = __webpack_require__("LuNM");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
+var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
+var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/lib/router/utils/index.js
+var utils = __webpack_require__("uV6m");
+
+// EXTERNAL MODULE: ./.next/build-manifest.json
+var build_manifest = __webpack_require__("LZ9C");
+
+// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
+var react_loadable_manifest = __webpack_require__("67Bq");
+
+// EXTERNAL MODULE: ./src/pages/_document.tsx
+var _document = __webpack_require__("mT+M");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
+var _error = __webpack_require__("/a9y");
+var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
+
+// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
+var _app = __webpack_require__("hUgY");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js
+var define_property = __webpack_require__("hfKm");
+var define_property_default = /*#__PURE__*/__webpack_require__.n(define_property);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js
+var define_properties = __webpack_require__("2Eek");
+var define_properties_default = /*#__PURE__*/__webpack_require__.n(define_properties);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js
+var get_own_property_descriptors = __webpack_require__("XoMD");
+var get_own_property_descriptors_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptors);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
+var get_own_property_descriptor = __webpack_require__("Jo+v");
+var get_own_property_descriptor_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptor);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js
+var get_own_property_symbols = __webpack_require__("4mXO");
+var get_own_property_symbols_default = /*#__PURE__*/__webpack_require__.n(get_own_property_symbols);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js
+var object_keys = __webpack_require__("pLtp");
+var keys_default = /*#__PURE__*/__webpack_require__.n(object_keys);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__("vYYK");
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("q1tI");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./node_modules/react-infinite-scroller/index.js
+var react_infinite_scroller = __webpack_require__("RotF");
+var react_infinite_scroller_default = /*#__PURE__*/__webpack_require__.n(react_infinite_scroller);
+
+// EXTERNAL MODULE: ./node_modules/@apollo/react-hooks/lib/react-hooks.cjs.js
+var react_hooks_cjs = __webpack_require__("gZqA");
+
+// EXTERNAL MODULE: ./node_modules/react-i18next/dist/commonjs/index.js
+var commonjs = __webpack_require__("pH5e");
+
+// EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.cjs.js
+var styled_components_cjs = __webpack_require__("VJA7");
+var styled_components_cjs_default = /*#__PURE__*/__webpack_require__.n(styled_components_cjs);
+
+// EXTERNAL MODULE: ./src/utils/seo/index.tsx + 2 modules
+var seo = __webpack_require__("wYgI");
+
+// EXTERNAL MODULE: ./node_modules/graphql-tag/lib/graphql-tag.umd.js
+var graphql_tag_umd = __webpack_require__("Dugd");
+var graphql_tag_umd_default = /*#__PURE__*/__webpack_require__.n(graphql_tag_umd);
+
+// EXTERNAL MODULE: ./src/graphql/fragments/user/userInfoSmall.ts
+var userInfoSmall = __webpack_require__("YIBd");
+
+// CONCATENATED MODULE: ./src/graphql/fragments/post/postInfo.ts
+
+
+/* harmony default export */ var postInfo = (graphql_tag_umd_default.a`
+  fragment postInfo on Post {
+    id
+    caption
+    user {
+      ...userInfoSmall
+    }
+    files: filesConnection(type: IMAGE) {
+      edges {
+        node {
+          type
+          id
+          uri
+        }
+      }
+    }
+    comments: commentsConnection(first: 2) {
+      totalCount
+      edges {
+        node {
+          id
+          text
+          user {
+            ...userInfoSmall
+          }
+        }
+      }
+    }
+  }
+  ${userInfoSmall["a" /* default */]}
+`);
+// CONCATENATED MODULE: ./src/graphql/queries/project/projectBySlug.ts
+
+
+
+const PROJECT_BY_SLUG = graphql_tag_umd_default.a`
+  query getProjectBySlug($slug: LowercaseString!, $after: String, $postId: ID) {
+    post(id: $postId) {
+      ...postInfo
+    }
+    project(slug: $slug) {
+      id
+      title
+      slug
+      dynamicLink
+      commentsDisabled
+      user {
+        ...userInfoSmall
+      }
+      projectPermissions {
+        isFollower
+        isOwner
+      }
+      followers: followersConnection(first: 3) {
+        totalCount
+        edges {
+          node {
+            id
+            username
+            avatarUrl
+          }
+        }
+      }
+      type {
+        title
+      }
+      posts: postsConnection(after: $after) {
+        edges {
+          cursor
+          node {
+            id
+            caption
+            user {
+              ...userInfoSmall
+            }
+            files: filesConnection(type: IMAGE) {
+              edges {
+                node {
+                  type
+                  id
+                  uri
+                }
+              }
+            }
+            comments: commentsConnection(first: 2) {
+              totalCount
+              edges {
+                node {
+                  id
+                  text
+                  user {
+                    ...userInfoSmall
+                  }
+                }
+              }
+            }
+          }
+        }
+        totalCount
+        pageInfo {
+          hasNextPage
+        }
+      }
+    }
+  }
+  ${postInfo}
+  ${userInfoSmall["a" /* default */]}
+`;
+// EXTERNAL MODULE: ./src/ui/Button/index.tsx + 1 modules
+var Button = __webpack_require__("BY2E");
+
+// CONCATENATED MODULE: ./src/components/Follow/styles.ts
+
+
+const Base = styled_components_cjs_default()(Button["a" /* default */]).withConfig({
+  displayName: "styles__Base",
+  componentId: "sc-7j47su-0"
+})(["margin-bottom:10px;width:220px;"]);
+// CONCATENATED MODULE: ./src/components/Follow/index.tsx
+var __jsx = react_default.a.createElement;
+// @ts-nocheck
+
+
+
+
+function Follow({
+  following
+}) {
+  const {
+    t
+  } = Object(commonjs["useTranslation"])();
+  return __jsx(Base, {
+    black: following
+  }, following ? t('Follow:unfollow') : t('Follow:follow'));
+}
+
+/* harmony default export */ var components_Follow = (Follow);
+// EXTERNAL MODULE: ./src/ui/index.ts + 21 modules
+var ui = __webpack_require__("95u7");
+
+// EXTERNAL MODULE: ./src/ui/Followers/index.tsx + 1 modules
+var Followers = __webpack_require__("a9+Q");
+
+// CONCATENATED MODULE: ./src/pages/project/[slug]/index.tsx
+
+
+
+
+
+
+
+
+var _slug_jsx = react_default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = keys_default()(object); if (get_own_property_symbols_default.a) { var symbols = get_own_property_symbols_default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return get_own_property_descriptor_default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (get_own_property_descriptors_default.a) { define_properties_default()(target, get_own_property_descriptors_default()(source)); } else { ownKeys(source).forEach(function (key) { define_property_default()(target, key, get_own_property_descriptor_default()(source, key)); }); } } return target; }
+
+// @ts-nocheck
+
+
+
+
+
+
+
+
+
+
+const Left = styled_components_cjs_default.a.div.withConfig({
+  displayName: "slug__Left",
+  componentId: "lh1inl-0"
+})(["margin-right:60px;max-width:360px;position:fixed;"]);
+const Right = styled_components_cjs_default.a.div.withConfig({
+  displayName: "slug__Right",
+  componentId: "lh1inl-1"
+})(["margin-left:420px;width:100%;"]);
+const Share = styled_components_cjs_default()(Button["a" /* default */]).withConfig({
+  displayName: "slug__Share",
+  componentId: "lh1inl-2"
+})(["width:220px;"]);
+const _slug_Followers = styled_components_cjs_default()(Followers["a" /* default */]).withConfig({
+  displayName: "slug__Followers",
+  componentId: "lh1inl-3"
+})(["margin-bottom:50px;"]);
+
+function Project({
+  slug
+}) {
+  const {
+    t
+  } = Object(commonjs["useTranslation"])();
+  const {
+    data,
+    loading,
+    fetchMore
+  } = Object(react_hooks_cjs["useQuery"])(PROJECT_BY_SLUG, {
+    variables: {
+      slug
+    }
+  });
+
+  if (loading) {
+    return null;
+  }
+
+  return _slug_jsx(ui["c" /* Layout */], null, _slug_jsx(seo["a" /* default */], {
+    config: {
+      title: t('project:title', {
+        title: data.project.title,
+        type: data.project.type.title
+      }),
+      description: t('project:description', {
+        followers: data.project.followers.totalCount,
+        posts: data.project.posts.totalCount,
+        fullName: data.project.user.fullName,
+        username: data.project.user.username
+      })
+    }
+  }), _slug_jsx(Left, null, _slug_jsx(ui["h" /* Title */], {
+    large: true,
+    lineHeight: 78
+  }, data.project.title), _slug_jsx(_slug_Followers, {
+    followers: data.project.followers
+  }), !data.project.projectPermissions.isOwner && _slug_jsx(components_Follow, {
+    following: data.project.projectPermissions.isFollower
+  }), _slug_jsx(Share, null, "Share")), _slug_jsx(Right, null, _slug_jsx(react_infinite_scroller_default.a, {
+    loadMore: () => fetchMore({
+      variables: {
+        after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor
+      },
+      updateQuery: (prev, {
+        fetchMoreResult
+      }) => {
+        if (!fetchMoreResult) {
+          return prev;
+        }
+
+        return _objectSpread({}, prev, {
+          project: _objectSpread({}, prev.project, {
+            posts: _objectSpread({}, prev.project.posts, {
+              pageInfo: _objectSpread({}, prev.project.posts.pageInfo, {}, fetchMoreResult.project.posts.pageInfo),
+              edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges]
+            })
+          })
+        });
+      }
+    }),
+    hasMore: data.project.posts.pageInfo.hasNextPage,
+    loader: _slug_jsx(ui["d" /* Loader */], {
+      key: 0
+    })
+  }, data.project.posts.edges.map(({
+    node
+  }) => _slug_jsx(ui["f" /* Post */], {
+    data: node,
+    key: node.id,
+    withoutTitle: true
+  })))));
+}
+
+Project.getInitialProps = ({
+  query
+}) => query;
+
+/* harmony default export */ var _slug_ = (Project);
+// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fproject%2F%5Bslug%5D&absolutePagePath=private-next-pages%2Fproject%2F%5Bslug%5D%2Findex.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=qrOphKk56qwi-cJIGjRpY&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const Component = _slug_
+    /* harmony default export */ var next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
+    const unstable_getStaticProps = _slug_namespaceObject['unstable_getStaticProp' + 's']
+    const unstable_getStaticParams = _slug_namespaceObject['unstable_getStaticParam' + 's']
+    const config = _slug_namespaceObject['confi' + 'g'] || {}
+    const next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
+    async function renderReqToHTML(req, res, fromExport) {
+      const options = {
+        App: _app["a" /* default */],
+        Document: _document["a" /* default */],
+        buildManifest: build_manifest,
+        unstable_getStaticProps,
+        reactLoadableManifest: react_loadable_manifest,
+        canonicalBase: "",
+        buildId: "qrOphKk56qwi-cJIGjRpY",
+        assetPrefix: "",
+        ampBindInitData: false,
+      }
+      let sprData = false
+
+      if (req.url.match(/_next\/data/)) {
+        sprData = true
+        req.url = req.url
+          .replace(new RegExp('/_next/data/qrOphKk56qwi\-cJIGjRpY/'), '/')
+          .replace(/\.json$/, '')
+      }
+      const parsedUrl = Object(external_url_["parse"])(req.url, true)
+      const renderOpts = Object.assign(
+        {
+          Component,
+          pageConfig: config,
+          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
+          nextExport: fromExport
+        },
+        options,
+      )
+      try {
+        
+        const params = fromExport && !unstable_getStaticProps ? {} : Object(utils["getRouteMatcher"])(Object(utils["getRouteRegex"])("/project/[slug]"))(parsedUrl.pathname) || {};
+        const nowParams = req.headers && req.headers["x-now-route-matches"]
+              ? Object(utils["getRouteMatcher"])(
+                  (function() {
+                    const { re, groups } = Object(utils["getRouteRegex"])("/project/[slug]");
+                    return {
+                      re: {
+                        // Simulate a RegExp match from the `req.url` input
+                        exec: str => {
+                          const obj = Object(external_querystring_["parse"])(str);
+                          return Object.keys(obj).reduce(
+                            (prev, key) =>
+                              Object.assign(prev, {
+                                [key]: encodeURIComponent(obj[key])
+                              }),
+                            {}
+                          );
+                        }
+                      },
+                      groups
+                    };
+                  })()
+                )(req.headers["x-now-route-matches"])
+              : null;
+          
+        let result = await Object(render["renderToHTML"])(req, res, "/project/[slug]", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
+
+        if (sprData && !fromExport) {
+          const payload = JSON.stringify(renderOpts.sprData)
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Content-Length', Buffer.byteLength(payload))
+          res.setHeader(
+            'Cache-Control',
+            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
+          )
+          res.end(payload)
+          return null
+        }
+
+        if (fromExport) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a
+          }))
+          return result
+        } else {
+          console.error(err)
+          res.statusCode = 500
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a,
+            err
+          }))
+          return result
+        }
+      }
+    }
+    async function next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_qrOphKk56qwi_cJIGjRpY_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
+      try {
+        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
+        }
+      } catch(err) {
+        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
+        console.error(err)
+        res.statusCode = 500
+        res.end('Internal Server Error')
+      }
+    }
+  
 
 /***/ }),
 
@@ -44937,512 +45443,6 @@ var sort = /*#__PURE__*/_curry2(function sort(comparator, list) {
   return Array.prototype.slice.call(list, 0).sort(comparator);
 });
 module.exports = sort;
-
-/***/ }),
-
-/***/ "kyTD":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var _slug_namespaceObject = {};
-__webpack_require__.r(_slug_namespaceObject);
-__webpack_require__.d(_slug_namespaceObject, "default", function() { return _slug_; });
-
-// EXTERNAL MODULE: external "url"
-var external_url_ = __webpack_require__("bzos");
-
-// EXTERNAL MODULE: external "querystring"
-var external_querystring_ = __webpack_require__("8xkj");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
-var render = __webpack_require__("/bjS");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
-var send_html = __webpack_require__("LuNM");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
-var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
-var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/lib/router/utils/index.js
-var utils = __webpack_require__("uV6m");
-
-// EXTERNAL MODULE: ./.next/build-manifest.json
-var build_manifest = __webpack_require__("LZ9C");
-
-// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
-var react_loadable_manifest = __webpack_require__("67Bq");
-
-// EXTERNAL MODULE: ./src/pages/_document.tsx
-var _document = __webpack_require__("mT+M");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
-var _error = __webpack_require__("/a9y");
-var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
-
-// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
-var _app = __webpack_require__("hUgY");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js
-var define_property = __webpack_require__("hfKm");
-var define_property_default = /*#__PURE__*/__webpack_require__.n(define_property);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js
-var define_properties = __webpack_require__("2Eek");
-var define_properties_default = /*#__PURE__*/__webpack_require__.n(define_properties);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js
-var get_own_property_descriptors = __webpack_require__("XoMD");
-var get_own_property_descriptors_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptors);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
-var get_own_property_descriptor = __webpack_require__("Jo+v");
-var get_own_property_descriptor_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptor);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js
-var get_own_property_symbols = __webpack_require__("4mXO");
-var get_own_property_symbols_default = /*#__PURE__*/__webpack_require__.n(get_own_property_symbols);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js
-var object_keys = __webpack_require__("pLtp");
-var keys_default = /*#__PURE__*/__webpack_require__.n(object_keys);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__("vYYK");
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__("q1tI");
-var react_default = /*#__PURE__*/__webpack_require__.n(react);
-
-// EXTERNAL MODULE: ./node_modules/react-infinite-scroller/index.js
-var react_infinite_scroller = __webpack_require__("RotF");
-var react_infinite_scroller_default = /*#__PURE__*/__webpack_require__.n(react_infinite_scroller);
-
-// EXTERNAL MODULE: ./node_modules/@apollo/react-hooks/lib/react-hooks.cjs.js
-var react_hooks_cjs = __webpack_require__("gZqA");
-
-// EXTERNAL MODULE: ./node_modules/react-i18next/dist/commonjs/index.js
-var commonjs = __webpack_require__("pH5e");
-
-// EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.cjs.js
-var styled_components_cjs = __webpack_require__("VJA7");
-var styled_components_cjs_default = /*#__PURE__*/__webpack_require__.n(styled_components_cjs);
-
-// EXTERNAL MODULE: ./src/utils/seo/index.tsx + 2 modules
-var seo = __webpack_require__("wYgI");
-
-// EXTERNAL MODULE: ./node_modules/graphql-tag/lib/graphql-tag.umd.js
-var graphql_tag_umd = __webpack_require__("Dugd");
-var graphql_tag_umd_default = /*#__PURE__*/__webpack_require__.n(graphql_tag_umd);
-
-// EXTERNAL MODULE: ./src/graphql/fragments/user/userInfoSmall.ts
-var userInfoSmall = __webpack_require__("YIBd");
-
-// CONCATENATED MODULE: ./src/graphql/fragments/post/postInfo.ts
-
-
-/* harmony default export */ var postInfo = (graphql_tag_umd_default.a`
-  fragment postInfo on Post {
-    id
-    caption
-    user {
-      ...userInfoSmall
-    }
-    files: filesConnection(type: IMAGE) {
-      edges {
-        node {
-          type
-          id
-          uri
-        }
-      }
-    }
-    comments: commentsConnection(first: 2) {
-      totalCount
-      edges {
-        node {
-          id
-          text
-          user {
-            ...userInfoSmall
-          }
-        }
-      }
-    }
-  }
-  ${userInfoSmall["a" /* default */]}
-`);
-// CONCATENATED MODULE: ./src/graphql/queries/project/projectBySlug.ts
-
-
-
-const PROJECT_BY_SLUG = graphql_tag_umd_default.a`
-  query getProjectBySlug($slug: LowercaseString!, $after: String, $postId: ID) {
-    post(id: $postId) {
-      ...postInfo
-    }
-    project(slug: $slug) {
-      id
-      title
-      slug
-      dynamicLink
-      commentsDisabled
-      user {
-        ...userInfoSmall
-      }
-      projectPermissions {
-        isFollower
-        isOwner
-      }
-      followers: followersConnection(first: 3) {
-        totalCount
-        edges {
-          node {
-            id
-            username
-            avatarUrl
-          }
-        }
-      }
-      type {
-        title
-      }
-      posts: postsConnection(after: $after) {
-        edges {
-          cursor
-          node {
-            id
-            caption
-            user {
-              ...userInfoSmall
-            }
-            files: filesConnection(type: IMAGE) {
-              edges {
-                node {
-                  type
-                  id
-                  uri
-                }
-              }
-            }
-            comments: commentsConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    ...userInfoSmall
-                  }
-                }
-              }
-            }
-          }
-        }
-        totalCount
-        pageInfo {
-          hasNextPage
-        }
-      }
-    }
-  }
-  ${postInfo}
-  ${userInfoSmall["a" /* default */]}
-`;
-// EXTERNAL MODULE: ./src/ui/Button/index.tsx + 1 modules
-var Button = __webpack_require__("BY2E");
-
-// CONCATENATED MODULE: ./src/components/Follow/styles.ts
-
-
-const Base = styled_components_cjs_default()(Button["a" /* default */]).withConfig({
-  displayName: "styles__Base",
-  componentId: "sc-7j47su-0"
-})(["margin-bottom:10px;width:220px;"]);
-// CONCATENATED MODULE: ./src/components/Follow/index.tsx
-var __jsx = react_default.a.createElement;
-// @ts-nocheck
-
-
-
-
-function Follow({
-  following
-}) {
-  const {
-    t
-  } = Object(commonjs["useTranslation"])();
-  return __jsx(Base, {
-    black: following
-  }, following ? t('Follow:unfollow') : t('Follow:follow'));
-}
-
-/* harmony default export */ var components_Follow = (Follow);
-// EXTERNAL MODULE: ./src/ui/index.ts + 21 modules
-var ui = __webpack_require__("95u7");
-
-// EXTERNAL MODULE: ./src/ui/Followers/index.tsx + 1 modules
-var Followers = __webpack_require__("a9+Q");
-
-// CONCATENATED MODULE: ./src/pages/project/[slug]/index.tsx
-
-
-
-
-
-
-
-
-var _slug_jsx = react_default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = keys_default()(object); if (get_own_property_symbols_default.a) { var symbols = get_own_property_symbols_default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return get_own_property_descriptor_default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (get_own_property_descriptors_default.a) { define_properties_default()(target, get_own_property_descriptors_default()(source)); } else { ownKeys(source).forEach(function (key) { define_property_default()(target, key, get_own_property_descriptor_default()(source, key)); }); } } return target; }
-
-// @ts-nocheck
-
-
-
-
-
-
-
-
-
-
-const Left = styled_components_cjs_default.a.div.withConfig({
-  displayName: "slug__Left",
-  componentId: "lh1inl-0"
-})(["margin-right:60px;max-width:360px;position:fixed;"]);
-const Right = styled_components_cjs_default.a.div.withConfig({
-  displayName: "slug__Right",
-  componentId: "lh1inl-1"
-})(["margin-left:420px;width:100%;"]);
-const Share = styled_components_cjs_default()(Button["a" /* default */]).withConfig({
-  displayName: "slug__Share",
-  componentId: "lh1inl-2"
-})(["width:220px;"]);
-const _slug_Followers = styled_components_cjs_default()(Followers["a" /* default */]).withConfig({
-  displayName: "slug__Followers",
-  componentId: "lh1inl-3"
-})(["margin-bottom:50px;"]);
-
-function Project({
-  slug
-}) {
-  const {
-    t
-  } = Object(commonjs["useTranslation"])();
-  const {
-    data,
-    loading,
-    fetchMore
-  } = Object(react_hooks_cjs["useQuery"])(PROJECT_BY_SLUG, {
-    variables: {
-      slug
-    }
-  });
-
-  if (loading) {
-    return null;
-  }
-
-  return _slug_jsx(ui["c" /* Layout */], null, _slug_jsx(seo["a" /* default */], {
-    config: {
-      title: t('project:title', {
-        title: data.project.title,
-        type: data.project.type.title
-      }),
-      description: t('project:description', {
-        followers: data.project.followers.totalCount,
-        posts: data.project.posts.totalCount,
-        fullName: data.project.user.fullName,
-        username: data.project.user.username
-      })
-    }
-  }), _slug_jsx(Left, null, _slug_jsx(ui["h" /* Title */], {
-    large: true,
-    lineHeight: 78
-  }, data.project.title), _slug_jsx(_slug_Followers, {
-    followers: data.project.followers
-  }), !data.project.projectPermissions.isOwner && _slug_jsx(components_Follow, {
-    following: data.project.projectPermissions.isFollower
-  }), _slug_jsx(Share, null, "Share")), _slug_jsx(Right, null, _slug_jsx(react_infinite_scroller_default.a, {
-    loadMore: () => fetchMore({
-      variables: {
-        after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor
-      },
-      updateQuery: (prev, {
-        fetchMoreResult
-      }) => {
-        if (!fetchMoreResult) {
-          return prev;
-        }
-
-        return _objectSpread({}, prev, {
-          project: _objectSpread({}, prev.project, {
-            posts: _objectSpread({}, prev.project.posts, {
-              pageInfo: _objectSpread({}, prev.project.posts.pageInfo, {}, fetchMoreResult.project.posts.pageInfo),
-              edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges]
-            })
-          })
-        });
-      }
-    }),
-    hasMore: data.project.posts.pageInfo.hasNextPage,
-    loader: _slug_jsx(ui["d" /* Loader */], {
-      key: 0
-    })
-  }, data.project.posts.edges.map(({
-    node
-  }) => _slug_jsx(ui["f" /* Post */], {
-    data: node,
-    key: node.id,
-    withoutTitle: true
-  })))));
-}
-
-Project.getInitialProps = ({
-  query
-}) => query;
-
-/* harmony default export */ var _slug_ = (Project);
-// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fproject%2F%5Bslug%5D&absolutePagePath=private-next-pages%2Fproject%2F%5Bslug%5D%2Findex.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=KWLw88KgS7Voht6CVeJf0&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    const Component = _slug_
-    /* harmony default export */ var next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
-    const unstable_getStaticProps = _slug_namespaceObject['unstable_getStaticProp' + 's']
-    const unstable_getStaticParams = _slug_namespaceObject['unstable_getStaticParam' + 's']
-    const config = _slug_namespaceObject['confi' + 'g'] || {}
-    const next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
-    async function renderReqToHTML(req, res, fromExport) {
-      const options = {
-        App: _app["a" /* default */],
-        Document: _document["a" /* default */],
-        buildManifest: build_manifest,
-        unstable_getStaticProps,
-        reactLoadableManifest: react_loadable_manifest,
-        canonicalBase: "",
-        buildId: "KWLw88KgS7Voht6CVeJf0",
-        assetPrefix: "",
-        ampBindInitData: false,
-      }
-      let sprData = false
-
-      if (req.url.match(/_next\/data/)) {
-        sprData = true
-        req.url = req.url
-          .replace(new RegExp('/_next/data/KWLw88KgS7Voht6CVeJf0/'), '/')
-          .replace(/\.json$/, '')
-      }
-      const parsedUrl = Object(external_url_["parse"])(req.url, true)
-      const renderOpts = Object.assign(
-        {
-          Component,
-          pageConfig: config,
-          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
-          nextExport: fromExport
-        },
-        options,
-      )
-      try {
-        
-        const params = fromExport && !unstable_getStaticProps ? {} : Object(utils["getRouteMatcher"])(Object(utils["getRouteRegex"])("/project/[slug]"))(parsedUrl.pathname) || {};
-        const nowParams = req.headers && req.headers["x-now-route-matches"]
-              ? Object(utils["getRouteMatcher"])(
-                  (function() {
-                    const { re, groups } = Object(utils["getRouteRegex"])("/project/[slug]");
-                    return {
-                      re: {
-                        // Simulate a RegExp match from the `req.url` input
-                        exec: str => {
-                          const obj = Object(external_querystring_["parse"])(str);
-                          return Object.keys(obj).reduce(
-                            (prev, key) =>
-                              Object.assign(prev, {
-                                [key]: encodeURIComponent(obj[key])
-                              }),
-                            {}
-                          );
-                        }
-                      },
-                      groups
-                    };
-                  })()
-                )(req.headers["x-now-route-matches"])
-              : null;
-          
-        let result = await Object(render["renderToHTML"])(req, res, "/project/[slug]", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
-
-        if (sprData && !fromExport) {
-          const payload = JSON.stringify(renderOpts.sprData)
-          res.setHeader('Content-Type', 'application/json')
-          res.setHeader('Content-Length', Buffer.byteLength(payload))
-          res.setHeader(
-            'Cache-Control',
-            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
-          )
-          res.end(payload)
-          return null
-        }
-
-        if (fromExport) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a
-          }))
-          return result
-        } else {
-          console.error(err)
-          res.statusCode = 500
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a,
-            err
-          }))
-          return result
-        }
-      }
-    }
-    async function next_serverless_loaderpage_2Fproject_2F_5Bslug_5D_absolutePagePath_private_next_pages_2Fproject_2F_5Bslug_5D_2Findex_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_KWLw88KgS7Voht6CVeJf0_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
-      try {
-        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
-        }
-      } catch(err) {
-        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
-        console.error(err)
-        res.statusCode = 500
-        res.end('Internal Server Error')
-      }
-    }
-  
 
 /***/ }),
 

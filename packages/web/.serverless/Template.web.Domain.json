@@ -5,8 +5,8 @@
   "subdomains": [
     {
       "domain": "www.wrench.cc",
-      "distributionId": "E3E7KOV0RIGZB1",
-      "url": "https://d1ltwpltzzi61w.cloudfront.net",
+      "distributionId": "E1YZYZJFN6CGRP",
+      "url": "https://d2t5t75hp9ar7j.cloudfront.net",
       "type": "awsCloudFront"
     }
   ]
