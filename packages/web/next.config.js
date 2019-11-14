@@ -30,7 +30,7 @@ module.exports = withPlugins(
     env: {
       GA_TRACKING_ID: process.env.GA_TRACKING_ID,
       SENTRY_DSN: process.env.SENTRY_DSN,
-      API_ENDPOINT: propsprocess.env.API_ENDPOINT,
+      API_ENDPOINT: process.env.API_ENDPOINT,
       BUILD_ID: require('child_process')
         .execSync('git rev-parse --short HEAD')
         .toString()
