@@ -1,5 +1,5 @@
-const manifest = require("./manifest.json");
-const cloudFrontCompat = require("./next-aws-cloudfront");
+const manifest = require('./manifest.json');
+const cloudFrontCompat = require('./next-aws-cloudfront');
 
 const router = manifest => {
   const {
@@ -21,7 +21,7 @@ const router = manifest => {
     for (route in dynamic) {
       const { file, regex } = dynamic[route];
 
-      const re = new RegExp(regex, "i");
+      const re = new RegExp(regex, 'i');
       const pathMatchesRoute = re.test(path);
 
       if (pathMatchesRoute) {
@@ -30,11 +30,11 @@ const router = manifest => {
     }
 
     // path didn't match any route, return error page
-    return "pages/_error.js";
+    return 'pages/_error.js';
   };
 };
 
-const normaliseUri = uri => (uri === "/" ? "/index" : uri);
+const normaliseUri = uri => (uri === '/' ? '/index' : uri);
 
 exports.handler = async event => {
   const request = event.Records[0].cf.request;
@@ -45,10 +45,10 @@ exports.handler = async event => {
   const isPublicFile = publicFiles[uri];
 
   if (isStaticPage || isPublicFile) {
-    request.origin.s3.path = isStaticPage ? "/static-pages" : "/public";
+    request.origin.s3.path = isStaticPage ? '/static-pages' : '/public';
 
     if (isStaticPage) {
-      request.uri = uri + ".html";
+      request.uri = uri + '.html';
     }
 
     return request;

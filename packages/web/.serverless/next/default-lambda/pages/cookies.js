@@ -103,7 +103,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "7akP");
+/******/ 	return __webpack_require__(__webpack_require__.s = "Bpo8");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -7827,194 +7827,6 @@ module.exports = _xfilter;
 
 /***/ }),
 
-/***/ "7akP":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var cookies_namespaceObject = {};
-__webpack_require__.r(cookies_namespaceObject);
-__webpack_require__.d(cookies_namespaceObject, "default", function() { return cookies; });
-
-// EXTERNAL MODULE: external "url"
-var external_url_ = __webpack_require__("bzos");
-
-// EXTERNAL MODULE: external "querystring"
-var external_querystring_ = __webpack_require__("8xkj");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
-var render = __webpack_require__("/bjS");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
-var send_html = __webpack_require__("LuNM");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
-var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
-var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
-
-// EXTERNAL MODULE: ./.next/build-manifest.json
-var build_manifest = __webpack_require__("LZ9C");
-
-// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
-var react_loadable_manifest = __webpack_require__("67Bq");
-
-// EXTERNAL MODULE: ./src/pages/_document.tsx
-var _document = __webpack_require__("mT+M");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
-var _error = __webpack_require__("/a9y");
-var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
-
-// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
-var _app = __webpack_require__("hUgY");
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__("q1tI");
-var react_default = /*#__PURE__*/__webpack_require__.n(react);
-
-// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
-var Footer = __webpack_require__("CwrG");
-
-// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
-var PageLayout = __webpack_require__("+whY");
-
-// CONCATENATED MODULE: ./src/pages/cookies.tsx
-var __jsx = react_default.a.createElement;
-
-
-
-
-function Cookies() {
-  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "Cookies Policy"), __jsx("p", null, "Last updated: March 09, 2019"), __jsx("p", null, "Wrench AB (\"us\", \"we\", or \"our\") uses cookies on the https:// wrench.cc website (the \"Service\"). By using the Service, you consent to the use of cookies."), __jsx("p", null, "Our Cookies Policy explains what cookies are, how we use cookies, how third-parties we may partner with may use cookies on the Service, your choices regarding cookies and further information about cookies."), __jsx("h2", null, "What are cookies"), __jsx("p", null, "Cookies are small pieces of text sent to your web browser by a website you visit. A cookie file is stored in your web browser and allows the Service or a third-party to recognize you and make your next visit easier and the Service more useful to you."), __jsx("p", null, "Cookies can be \"persistent\" or \"session\" cookies. Persistent cookies remain on your personal computer or mobile device when you go offline, while session cookies are deleted as soon as you close your web browser."), __jsx("h2", null, "How Wrench AB uses cookies"), __jsx("p", null, "When you use and access the Service, we may place a number of cookies files in your web browser."), __jsx("p", null, "We use cookies for the following purposes:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "To enable certain functions of the Service")), __jsx("li", null, __jsx("p", null, "To provide analytics")), __jsx("li", null, __jsx("p", null, "To store your preferences"))), __jsx("p", null, "We use both session and persistent cookies on the Service and we use different types of cookies to run the Service:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "Essential cookies. We may use cookies to remember information that changes the way the Service behaves or looks, such as a user's language preference on the Service.")), __jsx("li", null, __jsx("p", null, "Accounts-related cookies. We may use accounts-related cookies to authenticate users and prevent fraudulent use of user accounts. We may use these cookies to remember information that changes the way the Service behaves or looks, such as the \"remember me\" functionality.")), __jsx("li", null, __jsx("p", null, "Analytics cookies. We may use analytics cookies to track information how the Service is used so that we can make improvements. We may also use analytics cookies to test new advertisements, pages, features or new functionality of the Service to see how our users react to them."))), __jsx("h2", null, "Third-party cookies"), __jsx("p", null, "In addition to our own cookies, we may also use various third-parties cookies to report usage statistics of the Service, deliver advertisements on and through the Service, and so on."), __jsx("h2", null, "What are your choices regarding cookies"), __jsx("p", null, "If you'd like to delete cookies or instruct your web browser to delete or refuse cookies, please visit the help pages of your web browser."), __jsx("p", null, "Please note, however, that if you delete cookies or refuse to accept them, you might not be able to use all of the features we offer, you may not be able to store your preferences, and some of our pages might not display properly."), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "For the Chrome web browser, please visit this page from Google:", ' ', __jsx("a", {
-    href: "https://support.google.com/accounts/answer/32050"
-  }, "https:// support.google.com/accounts/answer/32050"))), __jsx("li", null, __jsx("p", null, "For the Internet Explorer web browser, please visit this page from Microsoft:", ' ', __jsx("a", {
-    href: "http://support.microsoft.com/kb/278835"
-  }, "http:// support.microsoft.com/kb/278835"))), __jsx("li", null, __jsx("p", null, "For the Firefox web browser, please visit this page from Mozilla:", ' ', __jsx("a", {
-    href: "https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
-  }, "https:// support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"))), __jsx("li", null, __jsx("p", null, "For the Safari web browser, please visit this page from Apple:", ' ', __jsx("a", {
-    href: "https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
-  }, "https:// support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"))), __jsx("li", null, __jsx("p", null, "For any other web browser, please visit your web browser's official web pages."))), __jsx("h2", null, "Where can you find more information about cookies"), __jsx("p", null, "You can learn more about cookies and the following third-party websites:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "AllAboutCookies:", ' ', __jsx("a", {
-    href: "http://www.allaboutcookies.org/"
-  }, "http:// www.allaboutcookies.org/"))), __jsx("li", null, __jsx("p", null, "Network Advertising Initiative:", ' ', __jsx("a", {
-    href: "http://www.networkadvertising.org/"
-  }, "http:// www.networkadvertising.org/"))))), __jsx(Footer["a" /* default */], null));
-}
-
-/* harmony default export */ var cookies = (Cookies);
-// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fcookies&absolutePagePath=private-next-pages%2Fcookies.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=Pqoxx0_hpK4ziJGeGnhJm&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    const Component = cookies
-    /* harmony default export */ var next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
-    const unstable_getStaticProps = cookies_namespaceObject['unstable_getStaticProp' + 's']
-    
-    const config = cookies_namespaceObject['confi' + 'g'] || {}
-    const next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
-    async function renderReqToHTML(req, res, fromExport) {
-      const options = {
-        App: _app["a" /* default */],
-        Document: _document["a" /* default */],
-        buildManifest: build_manifest,
-        unstable_getStaticProps,
-        reactLoadableManifest: react_loadable_manifest,
-        canonicalBase: "",
-        buildId: "Pqoxx0_hpK4ziJGeGnhJm",
-        assetPrefix: "",
-        ampBindInitData: false,
-      }
-      let sprData = false
-
-      if (req.url.match(/_next\/data/)) {
-        sprData = true
-        req.url = req.url
-          .replace(new RegExp('/_next/data/Pqoxx0_hpK4ziJGeGnhJm/'), '/')
-          .replace(/\.json$/, '')
-      }
-      const parsedUrl = Object(external_url_["parse"])(req.url, true)
-      const renderOpts = Object.assign(
-        {
-          Component,
-          pageConfig: config,
-          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
-          nextExport: fromExport
-        },
-        options,
-      )
-      try {
-        
-        const params = {};
-        const nowParams = null;
-        let result = await Object(render["renderToHTML"])(req, res, "/cookies", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
-
-        if (sprData && !fromExport) {
-          const payload = JSON.stringify(renderOpts.sprData)
-          res.setHeader('Content-Type', 'application/json')
-          res.setHeader('Content-Length', Buffer.byteLength(payload))
-          res.setHeader(
-            'Cache-Control',
-            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
-          )
-          res.end(payload)
-          return null
-        }
-
-        if (fromExport) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a
-          }))
-          return result
-        } else {
-          console.error(err)
-          res.statusCode = 500
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a,
-            err
-          }))
-          return result
-        }
-      }
-    }
-    async function next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
-      try {
-        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
-        }
-      } catch(err) {
-        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
-        console.error(err)
-        res.statusCode = 500
-        res.end('Internal Server Error')
-      }
-    }
-  
-
-/***/ }),
-
 /***/ "7bm4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11695,6 +11507,194 @@ exports.default = zenObservable_1.Observable;
 
 /***/ }),
 
+/***/ "Bpo8":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var cookies_namespaceObject = {};
+__webpack_require__.r(cookies_namespaceObject);
+__webpack_require__.d(cookies_namespaceObject, "default", function() { return cookies; });
+
+// EXTERNAL MODULE: external "url"
+var external_url_ = __webpack_require__("bzos");
+
+// EXTERNAL MODULE: external "querystring"
+var external_querystring_ = __webpack_require__("8xkj");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
+var render = __webpack_require__("/bjS");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
+var send_html = __webpack_require__("LuNM");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
+var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
+var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
+
+// EXTERNAL MODULE: ./.next/build-manifest.json
+var build_manifest = __webpack_require__("LZ9C");
+
+// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
+var react_loadable_manifest = __webpack_require__("67Bq");
+
+// EXTERNAL MODULE: ./src/pages/_document.tsx
+var _document = __webpack_require__("mT+M");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
+var _error = __webpack_require__("/a9y");
+var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
+
+// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
+var _app = __webpack_require__("hUgY");
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("q1tI");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
+var Footer = __webpack_require__("CwrG");
+
+// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
+var PageLayout = __webpack_require__("+whY");
+
+// CONCATENATED MODULE: ./src/pages/cookies.tsx
+var __jsx = react_default.a.createElement;
+
+
+
+
+function Cookies() {
+  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "Cookies Policy"), __jsx("p", null, "Last updated: March 09, 2019"), __jsx("p", null, "Wrench AB (\"us\", \"we\", or \"our\") uses cookies on the https:// wrench.cc website (the \"Service\"). By using the Service, you consent to the use of cookies."), __jsx("p", null, "Our Cookies Policy explains what cookies are, how we use cookies, how third-parties we may partner with may use cookies on the Service, your choices regarding cookies and further information about cookies."), __jsx("h2", null, "What are cookies"), __jsx("p", null, "Cookies are small pieces of text sent to your web browser by a website you visit. A cookie file is stored in your web browser and allows the Service or a third-party to recognize you and make your next visit easier and the Service more useful to you."), __jsx("p", null, "Cookies can be \"persistent\" or \"session\" cookies. Persistent cookies remain on your personal computer or mobile device when you go offline, while session cookies are deleted as soon as you close your web browser."), __jsx("h2", null, "How Wrench AB uses cookies"), __jsx("p", null, "When you use and access the Service, we may place a number of cookies files in your web browser."), __jsx("p", null, "We use cookies for the following purposes:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "To enable certain functions of the Service")), __jsx("li", null, __jsx("p", null, "To provide analytics")), __jsx("li", null, __jsx("p", null, "To store your preferences"))), __jsx("p", null, "We use both session and persistent cookies on the Service and we use different types of cookies to run the Service:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "Essential cookies. We may use cookies to remember information that changes the way the Service behaves or looks, such as a user's language preference on the Service.")), __jsx("li", null, __jsx("p", null, "Accounts-related cookies. We may use accounts-related cookies to authenticate users and prevent fraudulent use of user accounts. We may use these cookies to remember information that changes the way the Service behaves or looks, such as the \"remember me\" functionality.")), __jsx("li", null, __jsx("p", null, "Analytics cookies. We may use analytics cookies to track information how the Service is used so that we can make improvements. We may also use analytics cookies to test new advertisements, pages, features or new functionality of the Service to see how our users react to them."))), __jsx("h2", null, "Third-party cookies"), __jsx("p", null, "In addition to our own cookies, we may also use various third-parties cookies to report usage statistics of the Service, deliver advertisements on and through the Service, and so on."), __jsx("h2", null, "What are your choices regarding cookies"), __jsx("p", null, "If you'd like to delete cookies or instruct your web browser to delete or refuse cookies, please visit the help pages of your web browser."), __jsx("p", null, "Please note, however, that if you delete cookies or refuse to accept them, you might not be able to use all of the features we offer, you may not be able to store your preferences, and some of our pages might not display properly."), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "For the Chrome web browser, please visit this page from Google:", ' ', __jsx("a", {
+    href: "https://support.google.com/accounts/answer/32050"
+  }, "https:// support.google.com/accounts/answer/32050"))), __jsx("li", null, __jsx("p", null, "For the Internet Explorer web browser, please visit this page from Microsoft:", ' ', __jsx("a", {
+    href: "http://support.microsoft.com/kb/278835"
+  }, "http:// support.microsoft.com/kb/278835"))), __jsx("li", null, __jsx("p", null, "For the Firefox web browser, please visit this page from Mozilla:", ' ', __jsx("a", {
+    href: "https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
+  }, "https:// support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"))), __jsx("li", null, __jsx("p", null, "For the Safari web browser, please visit this page from Apple:", ' ', __jsx("a", {
+    href: "https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
+  }, "https:// support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"))), __jsx("li", null, __jsx("p", null, "For any other web browser, please visit your web browser's official web pages."))), __jsx("h2", null, "Where can you find more information about cookies"), __jsx("p", null, "You can learn more about cookies and the following third-party websites:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "AllAboutCookies:", ' ', __jsx("a", {
+    href: "http://www.allaboutcookies.org/"
+  }, "http:// www.allaboutcookies.org/"))), __jsx("li", null, __jsx("p", null, "Network Advertising Initiative:", ' ', __jsx("a", {
+    href: "http://www.networkadvertising.org/"
+  }, "http:// www.networkadvertising.org/"))))), __jsx(Footer["a" /* default */], null));
+}
+
+/* harmony default export */ var cookies = (Cookies);
+// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fcookies&absolutePagePath=private-next-pages%2Fcookies.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=Fqowd8m8BhSej0Hhs9bfD&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Fqowd8m8BhSej0Hhs9bfD_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Fqowd8m8BhSej0Hhs9bfD_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const Component = cookies
+    /* harmony default export */ var next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Fqowd8m8BhSej0Hhs9bfD_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
+    const unstable_getStaticProps = cookies_namespaceObject['unstable_getStaticProp' + 's']
+    
+    const config = cookies_namespaceObject['confi' + 'g'] || {}
+    const next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Fqowd8m8BhSej0Hhs9bfD_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
+    async function renderReqToHTML(req, res, fromExport) {
+      const options = {
+        App: _app["a" /* default */],
+        Document: _document["a" /* default */],
+        buildManifest: build_manifest,
+        unstable_getStaticProps,
+        reactLoadableManifest: react_loadable_manifest,
+        canonicalBase: "",
+        buildId: "Fqowd8m8BhSej0Hhs9bfD",
+        assetPrefix: "",
+        ampBindInitData: false,
+      }
+      let sprData = false
+
+      if (req.url.match(/_next\/data/)) {
+        sprData = true
+        req.url = req.url
+          .replace(new RegExp('/_next/data/Fqowd8m8BhSej0Hhs9bfD/'), '/')
+          .replace(/\.json$/, '')
+      }
+      const parsedUrl = Object(external_url_["parse"])(req.url, true)
+      const renderOpts = Object.assign(
+        {
+          Component,
+          pageConfig: config,
+          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
+          nextExport: fromExport
+        },
+        options,
+      )
+      try {
+        
+        const params = {};
+        const nowParams = null;
+        let result = await Object(render["renderToHTML"])(req, res, "/cookies", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
+
+        if (sprData && !fromExport) {
+          const payload = JSON.stringify(renderOpts.sprData)
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Content-Length', Buffer.byteLength(payload))
+          res.setHeader(
+            'Cache-Control',
+            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
+          )
+          res.end(payload)
+          return null
+        }
+
+        if (fromExport) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a
+          }))
+          return result
+        } else {
+          console.error(err)
+          res.statusCode = 500
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a,
+            err
+          }))
+          return result
+        }
+      }
+    }
+    async function next_serverless_loaderpage_2Fcookies_absolutePagePath_private_next_pages_2Fcookies_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Fqowd8m8BhSej0Hhs9bfD_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
+      try {
+        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
+        }
+      } catch(err) {
+        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
+        console.error(err)
+        res.statusCode = 500
+        res.end('Internal Server Error')
+      }
+    }
+  
+
+/***/ }),
+
 /***/ "ByzD":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12842,7 +12842,7 @@ function Footer() {
   }, t('Footer:description')), __jsx(ui["g" /* Text */], {
     fontSize: 13,
     color: "grey"
-  }, "\xA9 Wrench (v.", "1d8960c5a", ")"))));
+  }, "\xA9 Wrench (v.", "6fdc66fc2", ")"))));
 }
 
 /* harmony default export */ var components_Footer = __webpack_exports__["a"] = (Footer);

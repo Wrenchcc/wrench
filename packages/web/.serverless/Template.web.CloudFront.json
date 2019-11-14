@@ -33,11 +33,12 @@
       "cookies": "all",
       "queryString": true,
       "headers": [
-        "CloudFront-Viewer-Country"
+        "CloudFront-Viewer-Country",
+        "Accept-Language"
       ]
     },
     "lambda@edge": {
-      "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:an55j5m-qy1sw5p:40"
+      "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:an55j5m-qy1sw5p:42"
     }
   }
 }

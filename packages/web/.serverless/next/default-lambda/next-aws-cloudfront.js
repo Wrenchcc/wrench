@@ -1,33 +1,33 @@
-const Stream = require("stream");
+const Stream = require('stream');
 
 const specialNodeHeaders = [
-  "age",
-  "authorization",
-  "content-length",
-  "content-type",
-  "etag",
-  "expires",
-  "from",
-  "host",
-  "if-modified-since",
-  "if-unmodified-since",
-  "last-modified",
-  "location",
-  "max-forwards",
-  "proxy-authorization",
-  "referer",
-  "retry-after",
-  "user-agent"
+  'age',
+  'authorization',
+  'content-length',
+  'content-type',
+  'etag',
+  'expires',
+  'from',
+  'host',
+  'if-modified-since',
+  'if-unmodified-since',
+  'last-modified',
+  'location',
+  'max-forwards',
+  'proxy-authorization',
+  'referer',
+  'retry-after',
+  'user-agent'
 ];
 
 const readOnlyCloudFrontHeaders = {
-  "accept-encoding": true,
-  "content-length": true,
-  "if-modified-since": true,
-  "if-none-match": true,
-  "if-range": true,
-  "if-unmodified-since": true,
-  "transfer-encoding": true,
+  'accept-encoding': true,
+  'content-length': true,
+  'if-modified-since': true,
+  'if-none-match': true,
+  'if-range': true,
+  'if-unmodified-since': true,
+  'transfer-encoding': true,
   via: true
 };
 
@@ -52,10 +52,10 @@ const handler = event => {
   const { request: cfRequest } = event;
 
   const response = {
-    body: Buffer.from(""),
-    bodyEncoding: "base64",
+    body: Buffer.from(''),
+    bodyEncoding: 'base64',
     status: 200,
-    statusDescription: "OK",
+    statusDescription: 'OK',
     headers: {}
   };
 
@@ -94,7 +94,7 @@ const handler = event => {
   if (cfRequest.body && cfRequest.body.data) {
     req.push(
       cfRequest.body.data,
-      cfRequest.body.encoding ? "base64" : undefined
+      cfRequest.body.encoding ? 'base64' : undefined
     );
   }
 
@@ -103,7 +103,7 @@ const handler = event => {
   const res = new Stream();
   res.finished = false;
 
-  Object.defineProperty(res, "statusCode", {
+  Object.defineProperty(res, 'statusCode', {
     get() {
       return response.status;
     },
@@ -130,7 +130,7 @@ const handler = event => {
     res.end = text => {
       if (text) res.write(text);
       res.finished = true;
-      response.body = Buffer.from(response.body).toString("base64");
+      response.body = Buffer.from(response.body).toString('base64');
       response.headers = toCloudFrontHeaders(res.headers);
 
       resolve(response);
