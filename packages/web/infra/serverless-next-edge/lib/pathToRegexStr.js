@@ -1,6 +1,6 @@
-const { pathToRegexp } = require('path-to-regexp');
+const pathToRegexp = require('path-to-regexp')
 
 module.exports = path =>
   pathToRegexp(path)
     .toString()
-    .replace(/\/(.*)\/\i/, '$1');
+    .replace(/\/(.*)\/\i/, '$1')
