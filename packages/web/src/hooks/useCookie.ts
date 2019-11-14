@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Cookie, { Cookies, CookieSetOptions } from 'services/cookie'
 
-export const useCookie = (
+export default (
   key: Cookies,
   initialValue: string = ''
 ): [string, (item: string, options?: CookieSetOptions) => void] => {

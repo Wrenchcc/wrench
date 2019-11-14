@@ -27,7 +27,6 @@ interface Props {
 class App extends NextApp<Props> {
   public static async getInitialProps({ Component, ctx }) {
     const { req } = ctx
-
     // const initialI18nStore = {}
     // let i18nServerInstance = null
     // let initialLanguage = null
