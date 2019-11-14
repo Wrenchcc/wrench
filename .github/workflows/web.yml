@@ -28,7 +28,7 @@ jobs:
       - name: Push to AWS Lambda@edge
         run: |
            cd packages/web
-           serverless
+           yarn deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
