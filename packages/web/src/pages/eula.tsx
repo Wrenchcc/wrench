@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Eula() {
   return (
-    <Fragment>
+    <>
       <Base>
         <h1>End-User License Agreement ("Agreement")</h1>
 
@@ -296,7 +296,7 @@ function Eula() {
         </p>
       </Base>
       <Footer />
-    </Fragment>
+    </>
   )
 }
 

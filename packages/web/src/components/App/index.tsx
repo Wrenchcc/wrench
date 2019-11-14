@@ -14,7 +14,7 @@ import { ModalProvider } from 'ui/Modal'
 import Seo from 'utils/seo'
 import Header from 'components/Header'
 import Cookie, { Cookies } from 'services/cookie'
-import i18n from '../i18n'
+import i18n from '../../i18n'
 
 interface Props {
   apollo: ApolloClient<any>

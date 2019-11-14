@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Terms() {
   return (
-    <Fragment>
+    <>
       <Base>
         <h1>Terms and Conditions</h1>
 
@@ -269,7 +269,7 @@ function Terms() {
         <p>If you have any questions about these Terms, please contact us.</p>
       </Base>
       <Footer />
-    </Fragment>
+    </>
   )
 }
 

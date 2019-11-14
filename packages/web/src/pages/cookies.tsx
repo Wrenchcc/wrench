@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Cookies() {
   return (
-    <Fragment>
+    <>
       <Base>
         <h1>Cookies Policy</h1>
 
@@ -166,7 +166,7 @@ function Cookies() {
         </ul>
       </Base>
       <Footer />
-    </Fragment>
+    </>
   )
 }
 

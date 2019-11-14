@@ -6,7 +6,7 @@ import { FONTS, DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   display: flex;
-  height: 80px;
+  height: 70px;
   align-items: center;
   box-shadow: ${props => (props.inverted ? ' 0 0 0 0' : ' 0 1px 1px 0 #e6e7e9')};
   padding: 0 50px;

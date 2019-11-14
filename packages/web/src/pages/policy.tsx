@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Privacy() {
   return (
-    <Fragment>
+    <>
       <Base>
         <h1>Privacy Policy</h1>
 
@@ -479,7 +479,7 @@ function Privacy() {
         </ul>
       </Base>
       <Footer />
-    </Fragment>
+    </>
   )
 }
 

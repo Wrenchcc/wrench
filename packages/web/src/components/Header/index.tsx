@@ -69,7 +69,7 @@ function Header({ router, isAuthenticated }) {
   const notificationsRef = useRef()
   useOutsideClick(notificationsRef, () => setNotificationsMenu(false))
 
-  const inverted = !isAuthenticated && router.route === '/'
+  const inverted = (!isAuthenticated && router.route === '/') || router.route === '/download'
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
