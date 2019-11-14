@@ -1,6 +1,6 @@
  
 web:
-  component: ./infra/serverless-next
+  component: ./infra/serverless-next-edge
   inputs:
     domain: "wrench.cc"
     bucketName: wrench-web-edge

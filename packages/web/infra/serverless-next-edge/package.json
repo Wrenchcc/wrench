@@ -1,0 +1,12 @@
+{
+  "name": "serverless-next",
+  "version": "1.0.0",
+  "main": "serverless.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@serverless/core": "^2.0.4",
+    "execa": "^3.3.0",
+    "fs-extra": "^8.1.0",
+    "path-to-regexp": "^5.0.0"
+  }
+}

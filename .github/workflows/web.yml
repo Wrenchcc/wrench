@@ -16,7 +16,7 @@ jobs:
       - name: Build infra
         run: |
           echo Building serverless component...
-          cd packages/web/infra/serverless-next
+          cd packages/web/infra/serverless-next-edge
           yarn
 
       - name: Build web
