@@ -390,11 +390,11 @@ PODS:
     - React-cxxreact (= 0.61.4)
     - React-jsi (= 0.61.4)
     - ReactCommon/jscallinvoker (= 0.61.4)
-  - ReactNativeNavigation (3.5.1):
+  - ReactNativeNavigation (3.6.0):
     - React
   - RNAppleAuthentication (1.0.1):
     - React
-  - RNCAsyncStorage (1.6.2):
+  - RNCAsyncStorage (1.6.3):
     - React
   - RNFastImage (7.0.2):
     - React
@@ -711,9 +711,9 @@ SPEC CHECKSUMS:
   React-RCTText: 21934e0a51d522abcd0a275407e80af45d6fd9ec
   React-RCTVibration: 0f76400ee3cec6edb9c125da49fed279340d145a
   ReactCommon: a6a294e7028ed67b926d29551aa9394fd989c24c
-  ReactNativeNavigation: 3fad99b3843e8840affd70577aaa30bf14b272d5
+  ReactNativeNavigation: 0578dfc8ac95ad6b1358b46a0e7358088ec4de45
   RNAppleAuthentication: 7c5cc7a8a553d48f92ad022e23081d87f0141d53
-  RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
+  RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: a4ddde1ffc6e590c8127b8b7eabfdade45475c74

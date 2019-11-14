@@ -11,4 +11,4 @@ web:
     cloudfront:
       compress: true
       forward:
-        headers: ['CloudFront-Viewer-Country']
+        headers: ['CloudFront-Viewer-Country', 'Accept-Language']

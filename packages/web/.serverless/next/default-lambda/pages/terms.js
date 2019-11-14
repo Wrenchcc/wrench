@@ -103,7 +103,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "TCk7");
+/******/ 	return __webpack_require__(__webpack_require__.s = "Y5Ra");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -12654,7 +12654,7 @@ function Footer() {
   }, t('Footer:description')), __jsx(ui["g" /* Text */], {
     fontSize: 13,
     color: "grey"
-  }, "\xA9 Wrench (v.", "f1656156c", ")"))));
+  }, "\xA9 Wrench (v.", "1d8960c5a", ")"))));
 }
 
 /* harmony default export */ var components_Footer = __webpack_exports__["a"] = (Footer);
@@ -24988,182 +24988,6 @@ const Badge_Badge = Object(react["memo"])(function Badge({
 
 /***/ }),
 
-/***/ "TCk7":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var terms_namespaceObject = {};
-__webpack_require__.r(terms_namespaceObject);
-__webpack_require__.d(terms_namespaceObject, "default", function() { return terms; });
-
-// EXTERNAL MODULE: external "url"
-var external_url_ = __webpack_require__("bzos");
-
-// EXTERNAL MODULE: external "querystring"
-var external_querystring_ = __webpack_require__("8xkj");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
-var render = __webpack_require__("/bjS");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
-var send_html = __webpack_require__("LuNM");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
-var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
-var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
-
-// EXTERNAL MODULE: ./.next/build-manifest.json
-var build_manifest = __webpack_require__("LZ9C");
-
-// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
-var react_loadable_manifest = __webpack_require__("67Bq");
-
-// EXTERNAL MODULE: ./src/pages/_document.tsx
-var _document = __webpack_require__("mT+M");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
-var _error = __webpack_require__("/a9y");
-var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
-
-// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
-var _app = __webpack_require__("hUgY");
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__("q1tI");
-var react_default = /*#__PURE__*/__webpack_require__.n(react);
-
-// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
-var Footer = __webpack_require__("CwrG");
-
-// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
-var PageLayout = __webpack_require__("+whY");
-
-// CONCATENATED MODULE: ./src/pages/terms.tsx
-var __jsx = react_default.a.createElement;
-
-
-
-
-function Terms() {
-  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "Terms and Conditions"), __jsx("p", null, "Last updated: March 09, 2019"), __jsx("p", null, "These Terms and Conditions (\"Terms\", \"Terms and Conditions\") govern your relationship with Wrench mobile application (the \"Service\") operated by Wrench AB (\"us\", \"we\", or \"our\")."), __jsx("p", null, "Please read these Terms and Conditions carefully before using our Wrench mobile application (the \"Service\")."), __jsx("p", null, "Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service."), __jsx("p", null, "By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service."), __jsx("h2", null, "Subscriptions"), __jsx("p", null, "Some parts of the Service are billed on a subscription basis (\"Subscription(s)\"). You will be billed in advance on a recurring and periodic basis (\"Billing Cycle\"). Billing cycles are set on a monthly basis."), __jsx("p", null, "At the end of each Billing Cycle, your Subscription will automatically renew under the exact same conditions unless you cancel it or Wrench AB cancels it. You may cancel your Subscription renewal either through your online account management page or by contacting Wrench AB customer support team."), __jsx("p", null, "A valid payment method, including credit card, is required to process the payment for your Subscription. You shall provide Wrench AB with accurate and complete billing information including full name, address, state, zip code, telephone number, and a valid payment method information. By submitting such payment information, you automatically authorize Wrench AB to charge all Subscription fees incurred through your account to any such payment instruments."), __jsx("p", null, "Should automatic billing fail to occur for any reason, Wrench AB will issue an electronic invoice indicating that you must proceed manually, within a certain deadline date, with the full payment corresponding to the billing period as indicated on the invoice."), __jsx("h2", null, "Fee Changes"), __jsx("p", null, "Wrench AB, in its sole discretion and at any time, may modify the Subscription fees for the Subscriptions. Any Subscription fee change will become effective at the end of the then-current Billing Cycle."), __jsx("p", null, "Wrench AB will provide you with a reasonable prior notice of any change in Subscription fees to give you an opportunity to terminate your Subscription before such change becomes effective."), __jsx("p", null, "Your continued use of the Service after the Subscription fee change comes into effect constitutes your agreement to pay the modified Subscription fee amount."), __jsx("h2", null, "Refunds"), __jsx("p", null, "Certain refund requests for Subscriptions may be considered by Wrench AB on a case-by-case basis and granted in sole discretion of Wrench AB."), __jsx("h2", null, "Content"), __jsx("p", null, "Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material (\"Content\"). You are responsible for the Content that you post to the Service, including its legality, reliability, and appropriateness."), __jsx("p", null, "By posting Content to the Service, you grant us the right and license to use, modify, publicly perform, publicly display, reproduce, and distribute such Content on and through the Service. You retain any and all of your rights to any Content you submit, post or display on or through the Service and you are responsible for protecting those rights. You agree that this license includes the right for us to make your Content available to other users of the Service, who may also use your Content subject to these Terms."), __jsx("p", null, "You represent and warrant that: (i) the Content is yours (you own it) or you have the right to use it and grant us the rights and license as provided in these Terms, and (ii) the posting of your Content on or through the Service does not violate the privacy rights, publicity rights, copyrights, contract rights or any other rights of any person."), __jsx("h2", null, "Accounts"), __jsx("p", null, "When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service."), __jsx("p", null, "You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service."), __jsx("p", null, "You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account."), __jsx("p", null, "You may not use as a username the name of another person or entity or that is not lawfully available for use, a name or trade mark that is subject to any rights of another person or entity other than you without appropriate authorization, or a name that is otherwise offensive, vulgar or obscene."), __jsx("h2", null, "Copyright Policy"), __jsx("p", null, "We respect the intellectual property rights of others. It is our policy to respond to any claim that Content posted on the Service infringes the copyright or other intellectual property infringement (\"Infringement\") of any person."), __jsx("p", null, "If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement that is taking place through the Service, you must submit your notice in writing to the attention of \"Copyright Infringement\" of dmca@wrench.cc and include in your notice a detailed description of the alleged Infringement."), __jsx("p", null, "You may be held accountable for damages (including costs and attorneys' fees) for misrepresenting that any Content is infringing your copyright."), __jsx("h2", null, "Intellectual Property"), __jsx("p", null, "The Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Wrench AB and its licensors. The Service is protected by copyright, trademark, and other laws of both the Sweden and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Wrench AB."), __jsx("h2", null, "Links To Other Web Sites"), __jsx("p", null, "Our Service may contain links to third-party web sites or services that are not owned or controlled by Wrench AB."), __jsx("p", null, "Wrench AB has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Wrench AB shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services."), __jsx("p", null, "We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit."), __jsx("h2", null, "Termination"), __jsx("p", null, "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms."), __jsx("p", null, "Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service."), __jsx("h2", null, "Limitation Of Liability"), __jsx("p", null, "In no event shall Wrench AB, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose."), __jsx("h2", null, "Disclaimer"), __jsx("p", null, "Your use of the Service is at your sole risk. The Service is provided on an \"AS IS\" and \"AS AVAILABLE\" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance."), __jsx("p", null, "Wrench AB its subsidiaries, affiliates, and its licensors do not warrant that a) the Service will function uninterrupted, secure or available at any particular time or location; b) any errors or defects will be corrected; c) the Service is free of viruses or other harmful components; or d) the results of using the Service will meet your requirements."), __jsx("h2", null, "Governing Law"), __jsx("p", null, "These Terms shall be governed and construed in accordance with the laws of Sweden, without regard to its conflict of law provisions."), __jsx("p", null, "Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service."), __jsx("h2", null, "Changes"), __jsx("p", null, "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion."), __jsx("p", null, "By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service."), __jsx("h2", null, "Contact Us"), __jsx("p", null, "If you have any questions about these Terms, please contact us.")), __jsx(Footer["a" /* default */], null));
-}
-
-/* harmony default export */ var terms = (Terms);
-// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fterms&absolutePagePath=private-next-pages%2Fterms.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=ejAOQCKcYHzhiCby6F_xT&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    const Component = terms
-    /* harmony default export */ var next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
-    const unstable_getStaticProps = terms_namespaceObject['unstable_getStaticProp' + 's']
-    
-    const config = terms_namespaceObject['confi' + 'g'] || {}
-    const next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
-    async function renderReqToHTML(req, res, fromExport) {
-      const options = {
-        App: _app["a" /* default */],
-        Document: _document["a" /* default */],
-        buildManifest: build_manifest,
-        unstable_getStaticProps,
-        reactLoadableManifest: react_loadable_manifest,
-        canonicalBase: "",
-        buildId: "ejAOQCKcYHzhiCby6F_xT",
-        assetPrefix: "",
-        ampBindInitData: false,
-      }
-      let sprData = false
-
-      if (req.url.match(/_next\/data/)) {
-        sprData = true
-        req.url = req.url
-          .replace(new RegExp('/_next/data/ejAOQCKcYHzhiCby6F_xT/'), '/')
-          .replace(/\.json$/, '')
-      }
-      const parsedUrl = Object(external_url_["parse"])(req.url, true)
-      const renderOpts = Object.assign(
-        {
-          Component,
-          pageConfig: config,
-          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
-          nextExport: fromExport
-        },
-        options,
-      )
-      try {
-        
-        const params = {};
-        const nowParams = null;
-        let result = await Object(render["renderToHTML"])(req, res, "/terms", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
-
-        if (sprData && !fromExport) {
-          const payload = JSON.stringify(renderOpts.sprData)
-          res.setHeader('Content-Type', 'application/json')
-          res.setHeader('Content-Length', Buffer.byteLength(payload))
-          res.setHeader(
-            'Cache-Control',
-            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
-          )
-          res.end(payload)
-          return null
-        }
-
-        if (fromExport) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a
-          }))
-          return result
-        } else {
-          console.error(err)
-          res.statusCode = 500
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a,
-            err
-          }))
-          return result
-        }
-      }
-    }
-    async function next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
-      try {
-        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
-        }
-      } catch(err) {
-        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
-        console.error(err)
-        res.statusCode = 500
-        res.end('Internal Server Error')
-      }
-    }
-  
-
-/***/ }),
-
 /***/ "TD0+":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33542,6 +33366,182 @@ var append = /*#__PURE__*/_curry2(function append(el, list) {
   return _concat(list, [el]);
 });
 module.exports = append;
+
+/***/ }),
+
+/***/ "Y5Ra":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var terms_namespaceObject = {};
+__webpack_require__.r(terms_namespaceObject);
+__webpack_require__.d(terms_namespaceObject, "default", function() { return terms; });
+
+// EXTERNAL MODULE: external "url"
+var external_url_ = __webpack_require__("bzos");
+
+// EXTERNAL MODULE: external "querystring"
+var external_querystring_ = __webpack_require__("8xkj");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
+var render = __webpack_require__("/bjS");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
+var send_html = __webpack_require__("LuNM");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
+var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
+var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
+
+// EXTERNAL MODULE: ./.next/build-manifest.json
+var build_manifest = __webpack_require__("LZ9C");
+
+// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
+var react_loadable_manifest = __webpack_require__("67Bq");
+
+// EXTERNAL MODULE: ./src/pages/_document.tsx
+var _document = __webpack_require__("mT+M");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
+var _error = __webpack_require__("/a9y");
+var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
+
+// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
+var _app = __webpack_require__("hUgY");
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("q1tI");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
+var Footer = __webpack_require__("CwrG");
+
+// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
+var PageLayout = __webpack_require__("+whY");
+
+// CONCATENATED MODULE: ./src/pages/terms.tsx
+var __jsx = react_default.a.createElement;
+
+
+
+
+function Terms() {
+  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "Terms and Conditions"), __jsx("p", null, "Last updated: March 09, 2019"), __jsx("p", null, "These Terms and Conditions (\"Terms\", \"Terms and Conditions\") govern your relationship with Wrench mobile application (the \"Service\") operated by Wrench AB (\"us\", \"we\", or \"our\")."), __jsx("p", null, "Please read these Terms and Conditions carefully before using our Wrench mobile application (the \"Service\")."), __jsx("p", null, "Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service."), __jsx("p", null, "By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service."), __jsx("h2", null, "Subscriptions"), __jsx("p", null, "Some parts of the Service are billed on a subscription basis (\"Subscription(s)\"). You will be billed in advance on a recurring and periodic basis (\"Billing Cycle\"). Billing cycles are set on a monthly basis."), __jsx("p", null, "At the end of each Billing Cycle, your Subscription will automatically renew under the exact same conditions unless you cancel it or Wrench AB cancels it. You may cancel your Subscription renewal either through your online account management page or by contacting Wrench AB customer support team."), __jsx("p", null, "A valid payment method, including credit card, is required to process the payment for your Subscription. You shall provide Wrench AB with accurate and complete billing information including full name, address, state, zip code, telephone number, and a valid payment method information. By submitting such payment information, you automatically authorize Wrench AB to charge all Subscription fees incurred through your account to any such payment instruments."), __jsx("p", null, "Should automatic billing fail to occur for any reason, Wrench AB will issue an electronic invoice indicating that you must proceed manually, within a certain deadline date, with the full payment corresponding to the billing period as indicated on the invoice."), __jsx("h2", null, "Fee Changes"), __jsx("p", null, "Wrench AB, in its sole discretion and at any time, may modify the Subscription fees for the Subscriptions. Any Subscription fee change will become effective at the end of the then-current Billing Cycle."), __jsx("p", null, "Wrench AB will provide you with a reasonable prior notice of any change in Subscription fees to give you an opportunity to terminate your Subscription before such change becomes effective."), __jsx("p", null, "Your continued use of the Service after the Subscription fee change comes into effect constitutes your agreement to pay the modified Subscription fee amount."), __jsx("h2", null, "Refunds"), __jsx("p", null, "Certain refund requests for Subscriptions may be considered by Wrench AB on a case-by-case basis and granted in sole discretion of Wrench AB."), __jsx("h2", null, "Content"), __jsx("p", null, "Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material (\"Content\"). You are responsible for the Content that you post to the Service, including its legality, reliability, and appropriateness."), __jsx("p", null, "By posting Content to the Service, you grant us the right and license to use, modify, publicly perform, publicly display, reproduce, and distribute such Content on and through the Service. You retain any and all of your rights to any Content you submit, post or display on or through the Service and you are responsible for protecting those rights. You agree that this license includes the right for us to make your Content available to other users of the Service, who may also use your Content subject to these Terms."), __jsx("p", null, "You represent and warrant that: (i) the Content is yours (you own it) or you have the right to use it and grant us the rights and license as provided in these Terms, and (ii) the posting of your Content on or through the Service does not violate the privacy rights, publicity rights, copyrights, contract rights or any other rights of any person."), __jsx("h2", null, "Accounts"), __jsx("p", null, "When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service."), __jsx("p", null, "You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service."), __jsx("p", null, "You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account."), __jsx("p", null, "You may not use as a username the name of another person or entity or that is not lawfully available for use, a name or trade mark that is subject to any rights of another person or entity other than you without appropriate authorization, or a name that is otherwise offensive, vulgar or obscene."), __jsx("h2", null, "Copyright Policy"), __jsx("p", null, "We respect the intellectual property rights of others. It is our policy to respond to any claim that Content posted on the Service infringes the copyright or other intellectual property infringement (\"Infringement\") of any person."), __jsx("p", null, "If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement that is taking place through the Service, you must submit your notice in writing to the attention of \"Copyright Infringement\" of dmca@wrench.cc and include in your notice a detailed description of the alleged Infringement."), __jsx("p", null, "You may be held accountable for damages (including costs and attorneys' fees) for misrepresenting that any Content is infringing your copyright."), __jsx("h2", null, "Intellectual Property"), __jsx("p", null, "The Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Wrench AB and its licensors. The Service is protected by copyright, trademark, and other laws of both the Sweden and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Wrench AB."), __jsx("h2", null, "Links To Other Web Sites"), __jsx("p", null, "Our Service may contain links to third-party web sites or services that are not owned or controlled by Wrench AB."), __jsx("p", null, "Wrench AB has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Wrench AB shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services."), __jsx("p", null, "We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit."), __jsx("h2", null, "Termination"), __jsx("p", null, "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms."), __jsx("p", null, "Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service."), __jsx("h2", null, "Limitation Of Liability"), __jsx("p", null, "In no event shall Wrench AB, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose."), __jsx("h2", null, "Disclaimer"), __jsx("p", null, "Your use of the Service is at your sole risk. The Service is provided on an \"AS IS\" and \"AS AVAILABLE\" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance."), __jsx("p", null, "Wrench AB its subsidiaries, affiliates, and its licensors do not warrant that a) the Service will function uninterrupted, secure or available at any particular time or location; b) any errors or defects will be corrected; c) the Service is free of viruses or other harmful components; or d) the results of using the Service will meet your requirements."), __jsx("h2", null, "Governing Law"), __jsx("p", null, "These Terms shall be governed and construed in accordance with the laws of Sweden, without regard to its conflict of law provisions."), __jsx("p", null, "Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service."), __jsx("h2", null, "Changes"), __jsx("p", null, "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion."), __jsx("p", null, "By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service."), __jsx("h2", null, "Contact Us"), __jsx("p", null, "If you have any questions about these Terms, please contact us.")), __jsx(Footer["a" /* default */], null));
+}
+
+/* harmony default export */ var terms = (Terms);
+// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Fterms&absolutePagePath=private-next-pages%2Fterms.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=Pqoxx0_hpK4ziJGeGnhJm&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const Component = terms
+    /* harmony default export */ var next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
+    const unstable_getStaticProps = terms_namespaceObject['unstable_getStaticProp' + 's']
+    
+    const config = terms_namespaceObject['confi' + 'g'] || {}
+    const next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
+    async function renderReqToHTML(req, res, fromExport) {
+      const options = {
+        App: _app["a" /* default */],
+        Document: _document["a" /* default */],
+        buildManifest: build_manifest,
+        unstable_getStaticProps,
+        reactLoadableManifest: react_loadable_manifest,
+        canonicalBase: "",
+        buildId: "Pqoxx0_hpK4ziJGeGnhJm",
+        assetPrefix: "",
+        ampBindInitData: false,
+      }
+      let sprData = false
+
+      if (req.url.match(/_next\/data/)) {
+        sprData = true
+        req.url = req.url
+          .replace(new RegExp('/_next/data/Pqoxx0_hpK4ziJGeGnhJm/'), '/')
+          .replace(/\.json$/, '')
+      }
+      const parsedUrl = Object(external_url_["parse"])(req.url, true)
+      const renderOpts = Object.assign(
+        {
+          Component,
+          pageConfig: config,
+          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
+          nextExport: fromExport
+        },
+        options,
+      )
+      try {
+        
+        const params = {};
+        const nowParams = null;
+        let result = await Object(render["renderToHTML"])(req, res, "/terms", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
+
+        if (sprData && !fromExport) {
+          const payload = JSON.stringify(renderOpts.sprData)
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Content-Length', Buffer.byteLength(payload))
+          res.setHeader(
+            'Cache-Control',
+            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
+          )
+          res.end(payload)
+          return null
+        }
+
+        if (fromExport) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a
+          }))
+          return result
+        } else {
+          console.error(err)
+          res.statusCode = 500
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a,
+            err
+          }))
+          return result
+        }
+      }
+    }
+    async function next_serverless_loaderpage_2Fterms_absolutePagePath_private_next_pages_2Fterms_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
+      try {
+        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
+        }
+      } catch(err) {
+        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
+        console.error(err)
+        res.statusCode = 500
+        res.end('Internal Server Error')
+      }
+    }
+  
 
 /***/ }),
 
@@ -52311,6 +52311,10 @@ const defaults = {
     hrefLang: "x-default",
     key: "alternate"
   }));
+  tagsToRender.push(__jsx("meta", {
+    name: "apple-itunes-app",
+    content: "app-id=1450213123"
+  }));
   tagsToRender.push(i18n["a" /* SUPPORTED_LOCALS */].map(lng => __jsx("link", {
     rel: "alternate",
     href: `${href}?hl=${lng}`,
@@ -52323,7 +52327,6 @@ const defaults = {
   title: 'Wrench',
   titleTemplate: '%s | Wrench',
   description: 'Wrench is the new app for sharing within the motorcycle community. Post your projects, watch others, discuss and learn together.',
-  dangerouslySetAllPagesToNoIndex: process.env.UP_STAGE !== 'production',
   facebook: {
     appId: 1174076712654826
   }

@@ -103,7 +103,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "8KpB");
+/******/ 	return __webpack_require__(__webpack_require__.s = "IO3E");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -8350,182 +8350,6 @@ module.exports = once;
 
 /***/ }),
 
-/***/ "8KpB":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var eula_namespaceObject = {};
-__webpack_require__.r(eula_namespaceObject);
-__webpack_require__.d(eula_namespaceObject, "default", function() { return eula; });
-
-// EXTERNAL MODULE: external "url"
-var external_url_ = __webpack_require__("bzos");
-
-// EXTERNAL MODULE: external "querystring"
-var external_querystring_ = __webpack_require__("8xkj");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
-var render = __webpack_require__("/bjS");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
-var send_html = __webpack_require__("LuNM");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
-var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
-var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
-
-// EXTERNAL MODULE: ./.next/build-manifest.json
-var build_manifest = __webpack_require__("LZ9C");
-
-// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
-var react_loadable_manifest = __webpack_require__("67Bq");
-
-// EXTERNAL MODULE: ./src/pages/_document.tsx
-var _document = __webpack_require__("mT+M");
-
-// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
-var _error = __webpack_require__("/a9y");
-var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
-
-// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
-var _app = __webpack_require__("hUgY");
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__("q1tI");
-var react_default = /*#__PURE__*/__webpack_require__.n(react);
-
-// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
-var Footer = __webpack_require__("CwrG");
-
-// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
-var PageLayout = __webpack_require__("+whY");
-
-// CONCATENATED MODULE: ./src/pages/eula.tsx
-var __jsx = react_default.a.createElement;
-
-
-
-
-function Eula() {
-  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "End-User License Agreement (\"Agreement\")"), __jsx("p", null, "Last updated: March 09, 2019"), __jsx("p", null, "Please read this End-User License Agreement (\"Agreement\") carefully before clicking the \"I Agree\" button, downloading or using Wrench (\"Application\")."), __jsx("p", null, "By clicking the \"I Agree\" button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement."), __jsx("p", null, "This Agreement is a legal agreement between you (either an individual or a single entity) and Wrench AB and it governs your use of the Application made available to you by Wrench AB."), __jsx("p", null, "If you do not agree to the terms of this Agreement, do not click on the \"I Agree\" button and do not download or use the Application."), __jsx("p", null, "The Application is licensed, not sold, to you by Wrench AB for use strictly in accordance with the terms of this Agreement."), __jsx("h2", null, "License"), __jsx("p", null, "Wrench AB grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application strictly in accordance with the terms of this Agreement."), __jsx("h2", null, "Restrictions"), __jsx("p", null, "You agree not to, and you will not permit others to:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.")), __jsx("li", null, __jsx("p", null, "modify, make derivative works of, disassemble, decrypt, reverse compile or reverse engineer any part of the Application.")), __jsx("li", null, __jsx("p", null, "remove, alter or obscure any proprietary notice (including any notice of copyright or trademark) of Wrench AB or its affiliates, partners, suppliers or the licensors of the Application."))), __jsx("h2", null, "Intellectual Property"), __jsx("p", null, "The Application, including without limitation all copyrights, patents, trademarks, trade secrets and other intellectual property rights are, and shall remain, the sole and exclusive property of Wrench AB."), __jsx("h2", null, "Modifications to Application"), __jsx("p", null, "Wrench AB reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you."), __jsx("h2", null, "Updates to Application"), __jsx("p", null, "Wrench AB may from time to time provide enhancements or improvements to the features/functionality of the Application, which may include patches, bug fixes, updates, upgrades and other modifications (\"Updates\")."), __jsx("p", null, "Updates may modify or delete certain features and/or functionalities of the Application. You agree that Wrench AB has no obligation to (i) provide any Updates, or (ii) continue to provide or enable any particular features and/or functionalities of the Application to you."), __jsx("p", null, "You further agree that all Updates will be (i) deemed to constitute an integral part of the Application, and (ii) subject to the terms and conditions of this Agreement."), __jsx("h2", null, "Third-Party Services"), __jsx("p", null, "The Application may display, include or make available third-party content (including data, information, applications and other products services) or provide links to third-party websites or services (\"Third-Party Services\")."), __jsx("p", null, "You acknowledge and agree that Wrench AB shall not be responsible for any Third-Party Services, including their accuracy, completeness, timeliness, validity, copyright compliance, legality, decency, quality or any other aspect thereof. Wrench AB does not assume and shall not have any liability or responsibility to you or any other person or entity for any Third-Party Services."), __jsx("p", null, "Third-Party Services and links thereto are provided solely as a convenience to you and you access and use them entirely at your own risk and subject to such third parties' terms and conditions."), __jsx("h2", null, "Privacy Policy"), __jsx("p", null, "Wrench AB collects, stores, maintains, and shares information about you in accordance with its Privacy Policy, which is available at https:// wrench.cc/policy. By accepting this Agreement, you acknowledge that you hereby agree and consent to the terms and conditions of our Privacy Policy."), __jsx("h2", null, "Term and Termination"), __jsx("p", null, "This Agreement shall remain in effect until terminated by you or Wrench AB."), __jsx("p", null, "Wrench AB may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice."), __jsx("p", null, "This Agreement will terminate immediately, without prior notice from Wrench AB, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your computer."), __jsx("p", null, "Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your computer."), __jsx("p", null, "Termination of this Agreement will not limit any of Wrench AB's rights or remedies at law or in equity in case of breach by you (during the term of this Agreement) of any of your obligations under the present Agreement."), __jsx("h2", null, "Indemnification"), __jsx("p", null, "You agree to indemnify and hold Wrench AB and its parents, subsidiaries, affiliates, officers, employees, agents, partners and licensors (if any) harmless from any claim or demand, including reasonable attorneys' fees, due to or arising out of your: (a) use of the Application; (b) violation of this Agreement or any law or regulation; or (c) violation of any right of a third party."), __jsx("h2", null, "No Warranties"), __jsx("p", null, "The Application is provided to you \"AS IS\" and \"AS AVAILABLE\" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, Wrench AB, on its own behalf and on behalf of its affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Application, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, Wrench AB provides no warranty or undertaking, and makes no representation of any kind that the Application will meet your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected."), __jsx("p", null, "Without limiting the foregoing, neither Wrench AB nor any Wrench AB's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Application, or the information, content, and materials or products included thereon; (ii) that the Application will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Application; or (iv) that the Application, its servers, the content, or e-mails sent from or on behalf of Wrench AB are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components."), __jsx("p", null, "Some jurisdictions do not allow the exclusion of or limitations on implied warranties or the limitations on the applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to you."), __jsx("h2", null, "Limitation of Liability"), __jsx("p", null, "Notwithstanding any damages that you might incur, the entire liability of Wrench AB and any of its suppliers under any provision of this Agreement and your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by you for the Application."), __jsx("p", null, "To the maximum extent permitted by applicable law, in no event shall Wrench AB or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, for loss of data or other information, for business interruption, for personal injury, for loss of privacy arising out of or in any way related to the use of or inability to use the Application, third-party software and/or third-party hardware used with the Application, or otherwise in connection with any provision of this Agreement), even if Wrench AB or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose."), __jsx("p", null, "Some states/jurisdictions do not allow the exclusion or limitation of incidental or consequential damages, so the above limitation or exclusion may not apply to you."), __jsx("h2", null, "Severability"), __jsx("p", null, "If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect."), __jsx("h2", null, "Waiver"), __jsx("p", null, "Except as provided herein, the failure to exercise a right or to require performance of an obligation under this Agreement shall not effect a party's ability to exercise such right or require such performance at any time thereafter nor shall be the waiver of a breach constitute waiver of any subsequent breach."), __jsx("h2", null, "Amendments to this Agreement"), __jsx("p", null, "Wrench AB reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion."), __jsx("p", null, "By continuing to access or use our Application after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Application."), __jsx("h2", null, "Governing Law"), __jsx("p", null, "The laws of Sweden, excluding its conflicts of law rules, shall govern this Agreement and your use of the Application. Your use of the Application may also be subject to other local, state, national, or international laws."), __jsx("h2", null, "Contact Information"), __jsx("p", null, "If you have any questions about this Agreement, please contact us."), __jsx("h2", null, "Entire Agreement"), __jsx("p", null, "The Agreement constitutes the entire agreement between you and Wrench AB regarding your use of the Application and supersedes all prior and contemporaneous written or oral agreements between you and Wrench AB."), __jsx("p", null, "You may be subject to additional terms and conditions that apply when you use or purchase other Wrench AB's services, which Wrench AB will provide to you at the time of such use or purchase.")), __jsx(Footer["a" /* default */], null));
-}
-
-/* harmony default export */ var eula = (Eula);
-// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Feula&absolutePagePath=private-next-pages%2Feula.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=ejAOQCKcYHzhiCby6F_xT&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    const Component = eula
-    /* harmony default export */ var next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
-    const unstable_getStaticProps = eula_namespaceObject['unstable_getStaticProp' + 's']
-    
-    const config = eula_namespaceObject['confi' + 'g'] || {}
-    const next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
-    async function renderReqToHTML(req, res, fromExport) {
-      const options = {
-        App: _app["a" /* default */],
-        Document: _document["a" /* default */],
-        buildManifest: build_manifest,
-        unstable_getStaticProps,
-        reactLoadableManifest: react_loadable_manifest,
-        canonicalBase: "",
-        buildId: "ejAOQCKcYHzhiCby6F_xT",
-        assetPrefix: "",
-        ampBindInitData: false,
-      }
-      let sprData = false
-
-      if (req.url.match(/_next\/data/)) {
-        sprData = true
-        req.url = req.url
-          .replace(new RegExp('/_next/data/ejAOQCKcYHzhiCby6F_xT/'), '/')
-          .replace(/\.json$/, '')
-      }
-      const parsedUrl = Object(external_url_["parse"])(req.url, true)
-      const renderOpts = Object.assign(
-        {
-          Component,
-          pageConfig: config,
-          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
-          nextExport: fromExport
-        },
-        options,
-      )
-      try {
-        
-        const params = {};
-        const nowParams = null;
-        let result = await Object(render["renderToHTML"])(req, res, "/eula", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
-
-        if (sprData && !fromExport) {
-          const payload = JSON.stringify(renderOpts.sprData)
-          res.setHeader('Content-Type', 'application/json')
-          res.setHeader('Content-Length', Buffer.byteLength(payload))
-          res.setHeader(
-            'Cache-Control',
-            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
-          )
-          res.end(payload)
-          return null
-        }
-
-        if (fromExport) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a
-          }))
-          return result
-        } else {
-          console.error(err)
-          res.statusCode = 500
-          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-            Component: _error_default.a,
-            err
-          }))
-          return result
-        }
-      }
-    }
-    async function next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_ejAOQCKcYHzhiCby6F_xT_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
-      try {
-        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
-        }
-      } catch(err) {
-        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
-        console.error(err)
-        res.statusCode = 500
-        res.end('Internal Server Error')
-      }
-    }
-  
-
-/***/ }),
-
 /***/ "8Kt/":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12830,7 +12654,7 @@ function Footer() {
   }, t('Footer:description')), __jsx(ui["g" /* Text */], {
     fontSize: 13,
     color: "grey"
-  }, "\xA9 Wrench (v.", "f1656156c", ")"))));
+  }, "\xA9 Wrench (v.", "1d8960c5a", ")"))));
 }
 
 /* harmony default export */ var components_Footer = __webpack_exports__["a"] = (Footer);
@@ -17598,6 +17422,182 @@ var reject = /*#__PURE__*/__webpack_require__("0KeI");
 
 var partition = /*#__PURE__*/juxt([filter, reject]);
 module.exports = partition;
+
+/***/ }),
+
+/***/ "IO3E":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var eula_namespaceObject = {};
+__webpack_require__.r(eula_namespaceObject);
+__webpack_require__.d(eula_namespaceObject, "default", function() { return eula; });
+
+// EXTERNAL MODULE: external "url"
+var external_url_ = __webpack_require__("bzos");
+
+// EXTERNAL MODULE: external "querystring"
+var external_querystring_ = __webpack_require__("8xkj");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/render.js
+var render = __webpack_require__("/bjS");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/next-server/server/send-html.js
+var send_html = __webpack_require__("LuNM");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-init-server
+var next_plugin_loadermiddleware_on_init_server = __webpack_require__("GX0O");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-plugin-loader.js?middleware=on-error-server
+var next_plugin_loadermiddleware_on_error_server = __webpack_require__("KqAr");
+
+// EXTERNAL MODULE: ./.next/build-manifest.json
+var build_manifest = __webpack_require__("LZ9C");
+
+// EXTERNAL MODULE: ./.next/react-loadable-manifest.json
+var react_loadable_manifest = __webpack_require__("67Bq");
+
+// EXTERNAL MODULE: ./src/pages/_document.tsx
+var _document = __webpack_require__("mT+M");
+
+// EXTERNAL MODULE: ./node_modules/next/dist/pages/_error.js
+var _error = __webpack_require__("/a9y");
+var _error_default = /*#__PURE__*/__webpack_require__.n(_error);
+
+// EXTERNAL MODULE: ./src/pages/_app.tsx + 31 modules
+var _app = __webpack_require__("hUgY");
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("q1tI");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./src/components/Footer/index.tsx + 1 modules
+var Footer = __webpack_require__("CwrG");
+
+// EXTERNAL MODULE: ./src/ui/PageLayout/index.tsx
+var PageLayout = __webpack_require__("+whY");
+
+// CONCATENATED MODULE: ./src/pages/eula.tsx
+var __jsx = react_default.a.createElement;
+
+
+
+
+function Eula() {
+  return __jsx(react["Fragment"], null, __jsx(PageLayout["a" /* Base */], null, __jsx("h1", null, "End-User License Agreement (\"Agreement\")"), __jsx("p", null, "Last updated: March 09, 2019"), __jsx("p", null, "Please read this End-User License Agreement (\"Agreement\") carefully before clicking the \"I Agree\" button, downloading or using Wrench (\"Application\")."), __jsx("p", null, "By clicking the \"I Agree\" button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement."), __jsx("p", null, "This Agreement is a legal agreement between you (either an individual or a single entity) and Wrench AB and it governs your use of the Application made available to you by Wrench AB."), __jsx("p", null, "If you do not agree to the terms of this Agreement, do not click on the \"I Agree\" button and do not download or use the Application."), __jsx("p", null, "The Application is licensed, not sold, to you by Wrench AB for use strictly in accordance with the terms of this Agreement."), __jsx("h2", null, "License"), __jsx("p", null, "Wrench AB grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application strictly in accordance with the terms of this Agreement."), __jsx("h2", null, "Restrictions"), __jsx("p", null, "You agree not to, and you will not permit others to:"), __jsx("ul", null, __jsx("li", null, __jsx("p", null, "license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.")), __jsx("li", null, __jsx("p", null, "modify, make derivative works of, disassemble, decrypt, reverse compile or reverse engineer any part of the Application.")), __jsx("li", null, __jsx("p", null, "remove, alter or obscure any proprietary notice (including any notice of copyright or trademark) of Wrench AB or its affiliates, partners, suppliers or the licensors of the Application."))), __jsx("h2", null, "Intellectual Property"), __jsx("p", null, "The Application, including without limitation all copyrights, patents, trademarks, trade secrets and other intellectual property rights are, and shall remain, the sole and exclusive property of Wrench AB."), __jsx("h2", null, "Modifications to Application"), __jsx("p", null, "Wrench AB reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you."), __jsx("h2", null, "Updates to Application"), __jsx("p", null, "Wrench AB may from time to time provide enhancements or improvements to the features/functionality of the Application, which may include patches, bug fixes, updates, upgrades and other modifications (\"Updates\")."), __jsx("p", null, "Updates may modify or delete certain features and/or functionalities of the Application. You agree that Wrench AB has no obligation to (i) provide any Updates, or (ii) continue to provide or enable any particular features and/or functionalities of the Application to you."), __jsx("p", null, "You further agree that all Updates will be (i) deemed to constitute an integral part of the Application, and (ii) subject to the terms and conditions of this Agreement."), __jsx("h2", null, "Third-Party Services"), __jsx("p", null, "The Application may display, include or make available third-party content (including data, information, applications and other products services) or provide links to third-party websites or services (\"Third-Party Services\")."), __jsx("p", null, "You acknowledge and agree that Wrench AB shall not be responsible for any Third-Party Services, including their accuracy, completeness, timeliness, validity, copyright compliance, legality, decency, quality or any other aspect thereof. Wrench AB does not assume and shall not have any liability or responsibility to you or any other person or entity for any Third-Party Services."), __jsx("p", null, "Third-Party Services and links thereto are provided solely as a convenience to you and you access and use them entirely at your own risk and subject to such third parties' terms and conditions."), __jsx("h2", null, "Privacy Policy"), __jsx("p", null, "Wrench AB collects, stores, maintains, and shares information about you in accordance with its Privacy Policy, which is available at https:// wrench.cc/policy. By accepting this Agreement, you acknowledge that you hereby agree and consent to the terms and conditions of our Privacy Policy."), __jsx("h2", null, "Term and Termination"), __jsx("p", null, "This Agreement shall remain in effect until terminated by you or Wrench AB."), __jsx("p", null, "Wrench AB may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice."), __jsx("p", null, "This Agreement will terminate immediately, without prior notice from Wrench AB, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your computer."), __jsx("p", null, "Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your computer."), __jsx("p", null, "Termination of this Agreement will not limit any of Wrench AB's rights or remedies at law or in equity in case of breach by you (during the term of this Agreement) of any of your obligations under the present Agreement."), __jsx("h2", null, "Indemnification"), __jsx("p", null, "You agree to indemnify and hold Wrench AB and its parents, subsidiaries, affiliates, officers, employees, agents, partners and licensors (if any) harmless from any claim or demand, including reasonable attorneys' fees, due to or arising out of your: (a) use of the Application; (b) violation of this Agreement or any law or regulation; or (c) violation of any right of a third party."), __jsx("h2", null, "No Warranties"), __jsx("p", null, "The Application is provided to you \"AS IS\" and \"AS AVAILABLE\" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, Wrench AB, on its own behalf and on behalf of its affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Application, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, Wrench AB provides no warranty or undertaking, and makes no representation of any kind that the Application will meet your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected."), __jsx("p", null, "Without limiting the foregoing, neither Wrench AB nor any Wrench AB's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Application, or the information, content, and materials or products included thereon; (ii) that the Application will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Application; or (iv) that the Application, its servers, the content, or e-mails sent from or on behalf of Wrench AB are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components."), __jsx("p", null, "Some jurisdictions do not allow the exclusion of or limitations on implied warranties or the limitations on the applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to you."), __jsx("h2", null, "Limitation of Liability"), __jsx("p", null, "Notwithstanding any damages that you might incur, the entire liability of Wrench AB and any of its suppliers under any provision of this Agreement and your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by you for the Application."), __jsx("p", null, "To the maximum extent permitted by applicable law, in no event shall Wrench AB or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, for loss of data or other information, for business interruption, for personal injury, for loss of privacy arising out of or in any way related to the use of or inability to use the Application, third-party software and/or third-party hardware used with the Application, or otherwise in connection with any provision of this Agreement), even if Wrench AB or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose."), __jsx("p", null, "Some states/jurisdictions do not allow the exclusion or limitation of incidental or consequential damages, so the above limitation or exclusion may not apply to you."), __jsx("h2", null, "Severability"), __jsx("p", null, "If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect."), __jsx("h2", null, "Waiver"), __jsx("p", null, "Except as provided herein, the failure to exercise a right or to require performance of an obligation under this Agreement shall not effect a party's ability to exercise such right or require such performance at any time thereafter nor shall be the waiver of a breach constitute waiver of any subsequent breach."), __jsx("h2", null, "Amendments to this Agreement"), __jsx("p", null, "Wrench AB reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion."), __jsx("p", null, "By continuing to access or use our Application after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Application."), __jsx("h2", null, "Governing Law"), __jsx("p", null, "The laws of Sweden, excluding its conflicts of law rules, shall govern this Agreement and your use of the Application. Your use of the Application may also be subject to other local, state, national, or international laws."), __jsx("h2", null, "Contact Information"), __jsx("p", null, "If you have any questions about this Agreement, please contact us."), __jsx("h2", null, "Entire Agreement"), __jsx("p", null, "The Agreement constitutes the entire agreement between you and Wrench AB regarding your use of the Application and supersedes all prior and contemporaneous written or oral agreements between you and Wrench AB."), __jsx("p", null, "You may be subject to additional terms and conditions that apply when you use or purchase other Wrench AB's services, which Wrench AB will provide to you at the time of such use or purchase.")), __jsx(Footer["a" /* default */], null));
+}
+
+/* harmony default export */ var eula = (Eula);
+// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-serverless-loader.js?page=%2Feula&absolutePagePath=private-next-pages%2Feula.tsx&absoluteAppPath=private-next-pages%2F_app.tsx&absoluteDocumentPath=private-next-pages%2F_document.tsx&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&distDir=private-dot-next&buildId=Pqoxx0_hpK4ziJGeGnhJm&assetPrefix=&generateEtags=true&ampBindInitData=false&canonicalBase=
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render; });
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const Component = eula
+    /* harmony default export */ var next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_ = __webpack_exports__["default"] = (Component);
+    const unstable_getStaticProps = eula_namespaceObject['unstable_getStaticProp' + 's']
+    
+    const config = eula_namespaceObject['confi' + 'g'] || {}
+    const next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_app = _app["a" /* default */]
+    async function renderReqToHTML(req, res, fromExport) {
+      const options = {
+        App: _app["a" /* default */],
+        Document: _document["a" /* default */],
+        buildManifest: build_manifest,
+        unstable_getStaticProps,
+        reactLoadableManifest: react_loadable_manifest,
+        canonicalBase: "",
+        buildId: "Pqoxx0_hpK4ziJGeGnhJm",
+        assetPrefix: "",
+        ampBindInitData: false,
+      }
+      let sprData = false
+
+      if (req.url.match(/_next\/data/)) {
+        sprData = true
+        req.url = req.url
+          .replace(new RegExp('/_next/data/Pqoxx0_hpK4ziJGeGnhJm/'), '/')
+          .replace(/\.json$/, '')
+      }
+      const parsedUrl = Object(external_url_["parse"])(req.url, true)
+      const renderOpts = Object.assign(
+        {
+          Component,
+          pageConfig: config,
+          dataOnly: req.headers && (req.headers.accept || '').indexOf('application/amp.bind+json') !== -1,
+          nextExport: fromExport
+        },
+        options,
+      )
+      try {
+        
+        const params = {};
+        const nowParams = null;
+        let result = await Object(render["renderToHTML"])(req, res, "/eula", Object.assign({}, unstable_getStaticProps ? {} : parsedUrl.query, nowParams ? nowParams : params, sprData ? { _nextSprData: '1' } : {}), renderOpts)
+
+        if (sprData && !fromExport) {
+          const payload = JSON.stringify(renderOpts.sprData)
+          res.setHeader('Content-Type', 'application/json')
+          res.setHeader('Content-Length', Buffer.byteLength(payload))
+          res.setHeader(
+            'Cache-Control',
+            `s-maxage=${renderOpts.revalidate}, stale-while-revalidate`
+          )
+          res.end(payload)
+          return null
+        }
+
+        if (fromExport) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a
+          }))
+          return result
+        } else {
+          console.error(err)
+          res.statusCode = 500
+          const result = await Object(render["renderToHTML"])(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+            Component: _error_default.a,
+            err
+          }))
+          return result
+        }
+      }
+    }
+    async function next_serverless_loaderpage_2Feula_absolutePagePath_private_next_pages_2Feula_tsx_absoluteAppPath_private_next_pages_2F_app_tsx_absoluteDocumentPath_private_next_pages_2F_document_tsx_absoluteErrorPath_next_2Fdist_2Fpages_2F_error_distDir_private_dot_next_buildId_Pqoxx0_hpK4ziJGeGnhJm_assetPrefix_generateEtags_true_ampBindInitData_false_canonicalBase_render (req, res) {
+      try {
+        await Object(next_plugin_loadermiddleware_on_init_server["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          Object(send_html["sendHTML"])(req, res, html, {generateEtags: true})
+        }
+      } catch(err) {
+        await Object(next_plugin_loadermiddleware_on_error_server["default"])(err)
+        console.error(err)
+        res.statusCode = 500
+        res.end('Internal Server Error')
+      }
+    }
+  
 
 /***/ }),
 
@@ -52311,6 +52311,10 @@ const defaults = {
     hrefLang: "x-default",
     key: "alternate"
   }));
+  tagsToRender.push(__jsx("meta", {
+    name: "apple-itunes-app",
+    content: "app-id=1450213123"
+  }));
   tagsToRender.push(i18n["a" /* SUPPORTED_LOCALS */].map(lng => __jsx("link", {
     rel: "alternate",
     href: `${href}?hl=${lng}`,
@@ -52323,7 +52327,6 @@ const defaults = {
   title: 'Wrench',
   titleTemplate: '%s | Wrench',
   description: 'Wrench is the new app for sharing within the motorcycle community. Post your projects, watch others, discuss and learn together.',
-  dangerouslySetAllPagesToNoIndex: process.env.UP_STAGE !== 'production',
   facebook: {
     appId: 1174076712654826
   }
