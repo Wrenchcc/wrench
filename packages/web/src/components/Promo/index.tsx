@@ -24,7 +24,7 @@ function Promo({ viewerCountry = 'us', sticky = true, inverted = false, paddingH
   const [number, setNumber] = useState('')
   const [success, setSuccess] = useState(false)
   const handleSubmit = useMutation(SEND_PROMO)
-  const [_, setCookie] = useCookie(Cookies.SHOW_PROMO)
+  const [_, setValue] = useCookie(Cookies.SHOW_PROMO)
   const router = useRouter()
 
   if (sticky && router.pathname === '/download') {
@@ -33,7 +33,7 @@ function Promo({ viewerCountry = 'us', sticky = true, inverted = false, paddingH
 
   const hidePromo = () => {
     setHidden(true)
-    setCookie(Cookies.SHOW_PROMO, false)
+    setValue(false)
   }
 
   return (
