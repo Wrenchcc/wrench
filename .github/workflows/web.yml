@@ -1,4 +1,4 @@
-name: 'Deploy WEB'
+name: 'Deploy Web'
 on:
   push:
     branches:
@@ -16,18 +16,18 @@ jobs:
       - name: Build infra
         run: |
           echo Building serverless component...
-          cd ../packages/web/infra/serverless-next
+          cd packages/web/infra/serverless-next
           yarn
 
       - name: Build web
         run: |
           echo Building web...
-          cd ../packages/web
+          cd packages/web
           yarn
 
       - name: Push to AWS Lambda@edge
         run: |
-           cd ../packages/web
+           cd packages/web
            serverless
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
