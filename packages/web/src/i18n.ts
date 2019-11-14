@@ -1,7 +1,6 @@
 import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
-import * as i18nextMiddleware from 'i18next-express-middleware'
 import * as humanFormat from 'human-format'
 import resources from './translations/index.json'
 import { isBrowser } from './utils/platform'
@@ -33,16 +32,6 @@ const options = {
 // for browser
 if (isBrowser) {
   i18next.use(initReactI18next).use(LanguageDetector)
-} else {
-  i18next
-    .use(initReactI18next)
-    .use(i18nextMiddleware.LanguageDetector)
-    .init({
-      ...options,
-      detection: {
-        lookupQuerystring: 'hl',
-      },
-    })
 }
 
 // initialize if not already initialized

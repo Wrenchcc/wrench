@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { COLORS } from '../../ui/constants'
+import { COLORS } from 'ui/constants'
 
 export const Base = styled.div`
   width: 335px;

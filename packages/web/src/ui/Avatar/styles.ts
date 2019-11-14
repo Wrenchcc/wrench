@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled, { css } from 'styled-components'
 import { COLORS } from '../constants'
 
@@ -5,8 +6,9 @@ export const Base = styled.div`
   position: relative;
   display: inline-block;
 
-  ${props => props.isOnline
-    && css`
+  ${props =>
+    props.isOnline &&
+    css`
       &:before {
         background: ${COLORS.WHITE};
         width: 12px;

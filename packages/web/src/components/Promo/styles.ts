@@ -1,6 +1,7 @@
+// @ts-nocheck
 import styled from 'styled-components'
-import UiText from '../../ui/Text'
-import { COLORS, DEVICE } from '../../ui/constants'
+import UiText from 'ui/Text'
+import { COLORS, DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   width: 414px;
@@ -87,8 +88,9 @@ export const Send = styled.button`
   font-size: 15px;
   font-weight: 500;
   outline: none;
-  color: ${props => props.inverted
-    ? (props.success && COLORS.GREEN) || (props.active ? COLORS.WHITE : COLORS.GREY)
-    : (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : COLORS.GREY)};
+  color: ${props =>
+    props.inverted
+      ? (props.success && COLORS.GREEN) || (props.active ? COLORS.WHITE : COLORS.GREY)
+      : (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : COLORS.GREY)};
   padding: 0;
 `

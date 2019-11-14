@@ -6,7 +6,7 @@ export const Input = styled.input`
   width: 100%;
   outline: none;
   font-size: 16px;
-  color: ${COLORS.BLACK};
+  color: ${COLORS.DARK};
   padding: 10px 0 20px 0;
   margin-bottom: 10px;
   border-bottom: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
