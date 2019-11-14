@@ -7,7 +7,7 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "deploy": "serverless -D",
+    "deploy": "serverless",
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
