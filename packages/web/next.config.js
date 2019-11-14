@@ -16,7 +16,6 @@ module.exports = withPlugins(
         ...config.plugins,
         new dotenv({
           path: path.join(__dirname, '.env'),
-          systemvars: true,
         }),
       ]
 
@@ -29,7 +28,9 @@ module.exports = withPlugins(
     poweredByHeader: false,
     target: 'serverless',
     env: {
-      BUILD_ID: require('child_process') // eslint-disable-line
+      GA_TRACKING_ID: process.env.GA_TRACKING_ID,
+      SENTRY_DSN: process.env.SENTRY_DSN,
+      BUILD_ID: require('child_process')
         .execSync('git rev-parse --short HEAD')
         .toString()
         .trim(),

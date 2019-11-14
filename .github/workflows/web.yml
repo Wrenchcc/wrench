@@ -1,4 +1,4 @@
-name: 'Deploy web'
+name: 'Deploy WEB'
 on:
   push:
     branches:
@@ -13,14 +13,24 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Build
-        run: 
-        env:
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+      - name: Build infra
+        run: |
+          echo Building serverless component...
+          cd ../packages/web/infra/serverless-next
+          yarn
+
+      - name: Build web
+        run: |
+          echo Building web...
+          cd ../packages/web
+          yarn
 
       - name: Push to AWS Lambda@edge
-        run: 
+        run: |
+           cd ../packages/web
+           serverless
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
