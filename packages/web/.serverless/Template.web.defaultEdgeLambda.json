@@ -1,10 +1,10 @@
 {
   "name": "an55j5m-qy1sw5p",
-  "hash": "Q810UVeuZlLtmtRcR13R2osjEq+bS5ldcgsuCf00twQ=",
+  "hash": "ednkIZKQo5WeGj1p/sXZRmEz1s0iA9SMcoES0RxPyYk=",
   "description": "Default Lambda@Edge for Next CloudFront distribution",
-  "memory": 512,
+  "memory": 2048,
   "timeout": 10,
-  "code": "/Users/pontus.abrahamsson/Desktop/wrench/packages/web/.serverless_nextjs/default-lambda",
+  "code": "/Users/pontus.abrahamsson/Desktop/wrench/packages/web/.serverless/next/default-lambda",
   "shims": [],
   "handler": "index.handler",
   "runtime": "nodejs10.x",

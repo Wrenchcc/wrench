@@ -1,8 +1,14 @@
  
 web:
-  component: serverless-next.js
+  component: ../../../serverless.js
   inputs:
     domain: "wrench.cc"
     bucketName: wrench-web-edge
     build: true
-    memory: 2048
+    lambda:
+      name: wrench-web #todo
+      memory: 2048
+    cloudfront:
+      compress: true
+      forward:
+        headers: ['CloudFront-Viewer-Country']
