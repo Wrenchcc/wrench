@@ -1,20 +1,11 @@
-name: 'Deploy workflow'
+name: 'Deploy API'
 on:
   push:
     branches:
       - master
 
 jobs:
-  # web:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v1
-  #       with:
-  #         fetch-depth: 1
-  #     - name: Build
-
-  docker:
+  api:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
