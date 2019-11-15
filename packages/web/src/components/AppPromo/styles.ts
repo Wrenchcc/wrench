@@ -51,6 +51,11 @@ export const AppScreens = styled.picture`
 
 export const Stores = styled.div`
   padding-bottom: 80px;
+
+  @media ${DEVICE.TABLET} {
+    padding-bottom: 40px;
+    padding-top: 20px;
+  }
 `
 
 export const Store = styled.img`

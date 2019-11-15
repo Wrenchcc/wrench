@@ -72,7 +72,9 @@ class App extends NextApp<Props> {
       initialLanguage,
       pageProps,
       viewerCountry:
-        Cookie.get(Cookies.VIEWER_COUNTRY) || (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]),
+        Cookie.get(Cookies.VIEWER_COUNTRY) ||
+        (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) ||
+        'us',
       hidePromo: !!Cookie.get(Cookies.SHOW_PROMO),
       isAuthenticated: !!Cookie.get(Cookies.ACCESS_TOKEN),
     }

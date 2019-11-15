@@ -46,10 +46,19 @@ export const AppScreens = styled.picture`
   img {
     width: 100%;
   }
+
+  @media ${DEVICE.TABLET} {
+    width: 100%;
+    align-self: center;
+  }
 `
 
 export const Stores = styled.div`
   padding-bottom: 80px;
+
+  @media ${DEVICE.TABLET} {
+    padding-top: 30px;
+  }
 `
 
 export const Store = styled.img`
