@@ -34,7 +34,13 @@ export const NavLink = styled.a`
   color: ${props =>
     (props.inverted && 'rgba(255, 255, 255, .6)') || (props.active ? '#000000' : '#6d6f76')};
   font-weight: ${FONTS.MEDIUM};
-  margin-left: 40px;
+  margin-left: ${props => (props.last ? 10 : 40)}px;
+`
+
+export const Separator = styled.span`
+  margin-left: 10px;
+  color: ${props =>
+    (props.inverted && 'rgba(255, 255, 255, .6)') || (props.active ? '#000000' : '#6d6f76')};
 `
 
 export const Search = styled(UiSearch)`

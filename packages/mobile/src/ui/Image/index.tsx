@@ -4,7 +4,6 @@ import FastImage from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base } from './styles'
 import Spinner from '../Spinner'
-import { COLORS } from '../constants'
 
 const PROGRESS_COLOR = '#E1E1E2'
 

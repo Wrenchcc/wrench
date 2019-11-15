@@ -4,13 +4,15 @@
       "explore": "Explore",
       "feed": "Feed",
       "download": "Download app",
-      "signin": "Sign in"
+      "login": "Log in",
+      "register": "Sign up"
     },
     "sv": {
       "explore": "Utforska",
       "feed": "Feed",
       "download": "Ladda ner app",
-      "signin": "Logga in"
+      "login": "Logga in",
+      "register": "Registrera dig"
     }
   }
 }

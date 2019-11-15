@@ -15,7 +15,7 @@
     "@sindresorhus/slugify": "^0.9.1",
     "apollo-server-express": "^2.9.9",
     "apollo-server-plugin-response-cache": "^0.3.5",
-    "aws-sdk": "^2.571.0",
+    "aws-sdk": "^2.572.0",
     "axios": "^0.19.0",
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",

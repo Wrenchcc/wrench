@@ -14,7 +14,17 @@ import { Modal, useModal } from 'ui/Modal'
 import Login from '../Login'
 import Logout from '../Logout'
 import Notifications from '../Notifications'
-import { Base, Nav, NavLink, Search, Avatar, Right, UserMenu, UserNotifications } from './styles'
+import {
+  Base,
+  Nav,
+  NavLink,
+  Search,
+  Avatar,
+  Right,
+  UserMenu,
+  UserNotifications,
+  Separator,
+} from './styles'
 
 function Header({ router, isAuthenticated }) {
   const { t } = useTranslation()
@@ -141,7 +151,11 @@ function Header({ router, isAuthenticated }) {
               </NavLink>
             </Link>
             <NavLink inverted={inverted} onClick={showModal}>
-              {t('Header:signin')}
+              {t('Header:login')}
+            </NavLink>
+            <Separator inverted={inverted}>/</Separator>
+            <NavLink inverted={inverted} onClick={showModal} last>
+              {t('Header:register')}
             </NavLink>
           </Fragment>
         )}

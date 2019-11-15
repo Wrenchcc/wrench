@@ -1,5 +1,9 @@
 {
   "en": {
+    "feed": {
+      "title": "Feed",
+      "description": ""
+    },
     "Follow": {
       "follow": "Follow this project",
       "unfollow": "Following"
@@ -27,7 +31,15 @@
       "explore": "Explore",
       "feed": "Feed",
       "download": "Download app",
-      "signin": "Sign in"
+      "login": "Log in",
+      "register": "Sign up"
+    },
+    "home": {
+      "title": "Post, explore",
+      "subtitle": "and learn.",
+      "description": "Post your projects, explore others and learn from each other.",
+      "explore": "Explore more projects",
+      "signup": "Sign up now"
     },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
@@ -41,6 +53,12 @@
     "Popular": {
       "title": "Popular projects",
       "description": "Here you see the most popular projects from this week."
+    },
+    "project": {
+      "title": "{{title}} - {{type}} Project",
+      "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
+      "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
+      "share": "Share"
     },
     "Promo": {
       "title": "Download the Wrench app on Appstore and Google play",
@@ -57,40 +75,23 @@
     "Search": {
       "placeholder": "Search"
     },
-    "UserProjects": {
-      "title": "{{fullName}}'s projects",
-      "followers": "{{count, humanFormat}} follower",
-      "followers_plural": "{{count, humanFormat}} followers"
-    },
-    "feed": {
-      "title": "Feed",
-      "description": ""
-    },
-    "home": {
-      "title": "Post, explore",
-      "subtitle": "and learn.",
-      "description": "Post your projects, explore others and learn from each other.",
-      "explore": "Explore more projects",
-      "signup": "Sign up now"
-    },
-    "project": {
-      "title": "{{title}} - {{type}} Project",
-      "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
-      "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
-      "share": "Share"
-    },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projects and posts",
       "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
       "imgalt": "Profile Photo"
+    },
+    "UserProjects": {
+      "title": "{{fullName}}'s projects",
+      "followers": "{{count, humanFormat}} follower",
+      "followers_plural": "{{count, humanFormat}} followers"
     },
     "CommentField": {
       "placeholder": "Add a comment...",
       "post": "Post"
     },
     "List": {
-      "loadMore": "Show 1 comment",
-      "loadMore_plural": "Show all {{count, humanFormat}} comments"
+      "loadMore": "View 1 comment",
+      "loadMore_plural": "View all {{count, humanFormat}} comments"
     },
     "UiFollowers": {
       "followers": "{{count, humanFormat}} follower",
@@ -108,10 +109,15 @@
       }
     },
     "Time": {
-      "now": "now"
+      "now": "now",
+      "long": "{{time}} ago"
     }
   },
   "sv": {
+    "feed": {
+      "title": "Feed",
+      "description": ""
+    },
     "Follow": {
       "follow": "Följ projekt",
       "unfollow": "Följer"
@@ -139,7 +145,15 @@
       "explore": "Utforska",
       "feed": "Feed",
       "download": "Ladda ner app",
-      "signin": "Logga in"
+      "login": "Logga in",
+      "register": "Registrera dig"
+    },
+    "home": {
+      "title": "Posta, utforska",
+      "subtitle": "och lär.",
+      "description": "Dela dina project, kolla på andra, diskutera och lär av varandra.",
+      "explore": "Upptäck fler projekt",
+      "signup": "Registrera dig"
     },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
@@ -153,6 +167,11 @@
     "Popular": {
       "title": "Populära projekt",
       "description": "Här ser du de mest populära projekten från den här veckan."
+    },
+    "project": {
+      "title": "{{title}} - {{type}} Projekt",
+      "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench",
+      "share": "Dela"
     },
     "Promo": {
       "title": "Ladda ner Wrench appen på Appstore och Google play",
@@ -168,30 +187,14 @@
     "Search": {
       "placeholder": "Sök"
     },
-    "UserProjects": {
-      "title": "{{fullName}} projekt",
-      "followers": "{{count, humanFormat}} följare"
-    },
-    "feed": {
-      "title": "Feed",
-      "description": ""
-    },
-    "home": {
-      "title": "Posta, utforska",
-      "subtitle": "och lär.",
-      "description": "Dela dina project, kolla på andra, diskutera och lär av varandra.",
-      "explore": "Upptäck fler projekt",
-      "signup": "Registrera dig"
-    },
-    "project": {
-      "title": "{{title}} - {{type}} Projekt",
-      "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench",
-      "share": "Dela"
-    },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",
       "description": "Se {{fullName}}. (@{{username}}) projekt och inlägg på Wrench",
       "imgalt": "Profilbild"
+    },
+    "UserProjects": {
+      "title": "{{fullName}} projekt",
+      "followers": "{{count, humanFormat}} följare"
     },
     "CommentField": {
       "placeholder": "Skriv en kommentar...",
@@ -216,7 +219,8 @@
       }
     },
     "Time": {
-      "now": "nyss"
+      "now": "nyss",
+      "long": "{{time}} sedan"
     }
   }
 }
