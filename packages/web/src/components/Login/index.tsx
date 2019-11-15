@@ -3,8 +3,8 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import Router from 'next/router'
-// import { setAccessToken, setRefreshToken } from 'graphql/utils/auth'
 import { Title } from 'ui'
+import { useCookie, Cookies } from 'hooks'
 import { AUTHENTICATE_FACEBOOK } from 'graphql/mutations/user/authenticateFacebook'
 import { Base, Description, FacebookButton } from './styles'
 
@@ -14,6 +14,8 @@ const FACEBOOK_SCOPE = 'public_profile,email'
 export default function Login({ closeModal }) {
   const { t } = useTranslation()
   const [handleAuth] = useMutation(AUTHENTICATE_FACEBOOK)
+  const [, setAccessToken] = useCookie(Cookies.ACCESS_TOKEN)
+  const [, setRefreshToken] = useCookie(Cookies.REFRESH_TOKEN)
 
   return (
     <Base>
@@ -28,10 +30,10 @@ export default function Login({ closeModal }) {
         fields={FACEBOOK_SCOPE}
         callback={({ accessToken }) =>
           handleAuth({
-            update: (proxy, { data }) => {
+            update: (_, { data }) => {
               closeModal()
-              // setAccessToken(data.authenticateFacebook.access_token)
-              // setRefreshToken(data.authenticateFacebook.refresh_token)
+              setAccessToken(data.authenticateFacebook.access_token)
+              setRefreshToken(data.authenticateFacebook.refresh_token)
               Router.push('/')
             },
             variables: {
@@ -40,7 +42,7 @@ export default function Login({ closeModal }) {
           })
         }
         render={({ onClick }) => (
-          <FacebookButton onClick={onClick}>Login with Facebook</FacebookButton>
+          <FacebookButton onClick={onClick}>{t('Login:fbbutton')}</FacebookButton>
         )}
       />
     </Base>

@@ -27,6 +27,8 @@ class Cookie {
 
   public set = (name: string, value: any, options?: CookieSetOptions) =>
     this.client.set(name, value, options)
+
+  public remove = (name: string, options?: CookieSetOptions) => this.client.remove(name, options)
 }
 
 export default new Cookie()

@@ -1,9 +1,14 @@
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { BatchHttpLink } from 'apollo-link-batch-http'
-import fetch from 'isomorphic-unfetch'
+import { ApolloLink } from 'apollo-link'
+import AuthLink from './links/Auth'
+import RefreshTokenLink from './links/RefreshToken'
+import HttpLink from './links/Http'
+import Router from 'next/router'
 import Cookie, { Cookies } from 'services/cookie'
 import { isBrowser } from 'utils/platform'
+
+export let client = null
 
 class Apollo {
   private client: ApolloClient<any>
@@ -22,16 +27,24 @@ class Apollo {
 
   private createApolloClient(initialState = {}, accessToken?: string) {
     const ACCESS_TOKEN = accessToken || Cookie.get(Cookies.ACCESS_TOKEN)
+    const autLink = AuthLink(ACCESS_TOKEN)
 
-    return new ApolloClient({
+    client = new ApolloClient({
       ssrMode: isBrowser,
-      link: new BatchHttpLink({
-        uri: process.env.API_ENDPOINT,
-        fetch,
-        headers: ACCESS_TOKEN ? { authorization: `Bearer ${ACCESS_TOKEN}` } : {},
-      }),
+      connectToDevTools: isBrowser,
+      link: ApolloLink.from([autLink, RefreshTokenLink, HttpLink]),
+
       cache: new InMemoryCache().restore(initialState),
     })
+
+    // @ts-ignore
+    client.onResetStore(() => {
+      Cookie.remove(Cookies.ACCESS_TOKEN)
+      Cookie.remove(Cookies.REFRESH_TOKEN)
+      Router.push('/')
+    })
+
+    return client
   }
 }
 

@@ -15,7 +15,7 @@
     "@sindresorhus/slugify": "^0.9.1",
     "apollo-server-express": "^2.9.9",
     "apollo-server-plugin-response-cache": "^0.3.5",
-    "aws-sdk": "^2.572.0",
+    "aws-sdk": "^2.573.0",
     "axios": "^0.19.0",
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@firebase/app-types": "^0.4.7",
     "@types/graphql-depth-limit": "^1.1.2",
-    "@types/node": "^12.12.7",
+    "@types/node": "^12.12.8",
     "@types/pg": "^7.11.2",
     "@zeit/ncc": "0.20.5",
     "bluebird": "^3.7.1",

@@ -1,9 +1,9 @@
 // @ts-nocheck
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
-import { REFRESH_TOKEN } from '../../mutations/user/refreshToken'
-import { client } from '../../createClient'
-import { getRefreshToken, setAccessToken, setRefreshToken } from '../../utils/auth'
+import { REFRESH_TOKEN } from 'graphql/mutations/user/refreshToken'
+import { client } from '../../'
+import Cookie, { Cookies } from 'services/cookie'
 
 export default onError(({ graphQLErrors, operation, forward }) => {
   if (graphQLErrors) {
@@ -11,7 +11,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     if (extensions && extensions.code === 'UNAUTHENTICATED') {
       return new Observable(async observer => {
         try {
-          const refreshToken = await getRefreshToken()
+          const refreshToken = Cookie.get(Cookies.REFRESH_TOKEN)
           const { headers } = operation.getContext()
 
           return client
@@ -26,8 +26,8 @@ export default onError(({ graphQLErrors, operation, forward }) => {
                 return client.resetStore()
               }
 
-              setAccessToken(accessToken)
-              setRefreshToken(refreshToken)
+              Cookie.set(Cookies.ACCESS_TOKEN, accessToken)
+              Cookie.set(Cookies.REFRESH_TOKEN, refreshToken)
 
               return operation.setContext(() => ({
                 headers: {
