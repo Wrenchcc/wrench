@@ -55,6 +55,10 @@ export const Stores = styled.div`
   @media ${DEVICE.TABLET} {
     padding-bottom: 40px;
     padding-top: 20px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
   }
 `
 
@@ -63,6 +67,6 @@ export const Store = styled.img`
   display: none;
 
   @media ${DEVICE.TABLET} {
-    display: initial;
+    display: inline;
   }
 `

@@ -25,6 +25,11 @@ function Footer() {
                 </Link>
               </NavItem>
               <NavItem>
+                <Link href="/download">
+                  <a>{t('Footer:download')}</a>
+                </Link>
+              </NavItem>
+              <NavItem>
                 <a href="https://status.wrench.cc" rel="nofollow">
                   {t('Footer:status')}
                 </a>
