@@ -1,5 +1,6 @@
 // @ts-nocheck
 import styled from 'styled-components'
+import { DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   padding-top: 80px;
@@ -10,4 +11,9 @@ export const Base = styled.div`
 export const Inner = styled.div`
   display: flex;
   flex-direction: ${props => (props.column ? 'column' : 'row')};
+
+  @media ${DEVICE.TABLET} {
+    flex-direction: column;
+    margin: 0 20px;
+  }
 `
