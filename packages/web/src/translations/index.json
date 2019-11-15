@@ -44,7 +44,8 @@
     },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
-      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
+      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo.",
+      "fbbutton": "Login with Facebook"
     },
     "Logout": {
       "profile": "Profile",
@@ -159,7 +160,8 @@
     },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
-      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo."
+      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo.",
+      "fbbutton": "Logga in med Facebook"
     },
     "Logout": {
       "profile": "Profil",

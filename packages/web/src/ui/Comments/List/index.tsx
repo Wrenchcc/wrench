@@ -29,7 +29,9 @@ const List = memo(function List({ comments }) {
         </Row>
       ))}
       <LoadMore fontSize={15} color="light_grey">
-        {t('List:loadMore', { count: comments.totalCount })}
+        {t('List:loadMore', {
+          count: comments.totalCount,
+        })}
       </LoadMore>
     </Fragment>
   )

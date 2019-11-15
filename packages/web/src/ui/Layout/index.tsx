@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React from 'react'
-import { Base, Inner } from './styles'
+import { Base, Top, Inner } from './styles'
 
 export default function Layout({ children, column, top }) {
   return (
     <Base>
-      {top}
+      <Top>{top}</Top>
       <Inner column={column}>{children}</Inner>
     </Base>
   )

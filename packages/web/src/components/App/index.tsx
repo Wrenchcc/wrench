@@ -26,7 +26,7 @@ interface Props {
   isAuthenticated: boolean
 }
 
-const CLOUDFRONT_COUNTRY_VIEWER = 'cloudfront-viewer-country'
+const CLOUDFRONT_COUNTRY_VIEWER = 'CloudFront-Viewer-Country'
 const ACCEPT_LANGUAGE = 'Accept-Language'
 
 Router.events.on('routeChangeError', () => NProgress.done())

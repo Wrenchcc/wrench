@@ -4,7 +4,7 @@ export const USER_FOOLOWING_PROJECTS = gql`
   query getUserFollowingProjects {
     currentUser {
       id
-      following: followingProjects {
+      following: followingProjects(first: 5) {
         pageInfo {
           hasNextPage
         }

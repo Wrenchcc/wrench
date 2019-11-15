@@ -21,8 +21,6 @@ const Name = styled.div`
 `
 
 const Left = styled.div`
-  margin-right: 155px;
-  max-width: 640px;
   width: 100%;
 `
 

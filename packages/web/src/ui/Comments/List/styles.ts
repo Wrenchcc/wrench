@@ -10,6 +10,9 @@ export const Row = styled.div`
 export const Comment = styled(UiText)`
   flex: 1;
   margin-left: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `
 
 export const LoadMore = styled(UiText)`

@@ -9,6 +9,11 @@ export const Image = styled(UiImage)`
   height: 87px;
 `
 
+export const Box = styled.div`
+  width: 87px;
+  height: 87px;
+`
+
 export const List = styled.div`
   margin-top: 40px;
 `

@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
-import { Base, Row, Content, Text, List, Image } from './styles'
+import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function UserProjects({ projects, fullName }) {
   const { t } = useTranslation()
@@ -20,11 +20,13 @@ function UserProjects({ projects, fullName }) {
             <Link key={node.id} href="/project/[slug]" as={`/project/${node.slug}`}>
               <a>
                 <Row>
-                  <Image
-                    source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
-                    width={90}
-                    height={90}
-                  />
+                  <Box>
+                    <Image
+                      source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
+                      width={90}
+                      height={90}
+                    />
+                  </Box>
                   <Content>
                     <Text>{node.title}</Text>
                     <Text color="light_grey" fontSize={15} lineHeight={18}>
