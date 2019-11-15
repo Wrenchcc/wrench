@@ -48,7 +48,7 @@ function Header({ router, isAuthenticated }) {
 
   const [openNotifications, setNotificationsMenu] = useState(false)
 
-  const markNotificationsSeen = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
+  const [markNotificationsSeen] = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
 
   const toggleNotifications = () => {
     if (notifications.data.notifications && notifications.data.notifications.unreadCount > 0) {

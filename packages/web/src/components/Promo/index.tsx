@@ -23,7 +23,7 @@ function Promo({ viewerCountry = 'us', sticky = true, inverted = false, paddingH
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
   const [success, setSuccess] = useState(false)
-  const handleSubmit = useMutation(SEND_PROMO)
+  const [handleSubmit] = useMutation(SEND_PROMO)
   const [_, setValue] = useCookie(Cookies.SHOW_PROMO)
   const router = useRouter()
 

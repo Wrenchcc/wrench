@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { toUpper } from 'ramda'
 import UiTouchable from 'ui/Touchable'
 import UiText from 'ui/Text'
 import { COLORS } from 'ui/constants'

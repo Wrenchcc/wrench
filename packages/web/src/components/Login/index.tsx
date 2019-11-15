@@ -13,7 +13,7 @@ const FACEBOOK_SCOPE = 'public_profile,email'
 
 export default function Login({ closeModal }) {
   const { t } = useTranslation()
-  const handleAuth = useMutation(AUTHENTICATE_FACEBOOK)
+  const [handleAuth] = useMutation(AUTHENTICATE_FACEBOOK)
 
   return (
     <Base>
