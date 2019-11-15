@@ -15,6 +15,7 @@ export const List = styled.div`
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.11);
   transition: 0.15s ease-in-out;
   will-change: transform;
+  overflow-y: auto;
 
   a {
     display: flex;

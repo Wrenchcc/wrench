@@ -24,6 +24,7 @@ import {
   UserMenu,
   UserNotifications,
   Separator,
+  OpenMobileMenu,
 } from './styles'
 
 function Header({ router, isAuthenticated }) {
@@ -106,6 +107,10 @@ function Header({ router, isAuthenticated }) {
           <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" />
         </a>
       </Link>
+
+      <OpenMobileMenu inverted={inverted}>
+        <img src={inverted ? require('./menu-white.svg') : require('./menu.svg')} alt="Wrench" />
+      </OpenMobileMenu>
 
       <Search inverted={inverted} />
 

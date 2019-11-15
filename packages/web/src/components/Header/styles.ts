@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 import UiSearch from '../Search'
 import UiAvatar from 'ui/Avatar'
-import { FONTS, DEVICE } from 'ui/constants'
+import { FONTS, DEVICE, COLORS } from 'ui/constants'
 
 export const Base = styled.div`
   display: flex;
@@ -18,14 +18,32 @@ export const Base = styled.div`
   box-sizing: border-box;
 
   @media ${DEVICE.TABLET} {
-    padding: 25px;
+    padding: 10px;
     height: auto;
+    box-shadow: none;
   }
 `
 
 export const Nav = styled.nav`
   @media ${DEVICE.TABLET} {
     display: none;
+  }
+`
+
+export const OpenMobileMenu = styled.button`
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid
+    ${props => (props.inverted ? 'rgba(230 231 233, 0.3)' : COLORS.ULTRA_LIGHT_GREY)};
+  border-radius: 1px;
+  display: none;
+  justify-content: center;
+
+  @media ${DEVICE.TABLET} {
+    display: block;
   }
 `
 

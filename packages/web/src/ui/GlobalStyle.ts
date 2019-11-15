@@ -8,6 +8,11 @@ export default createGlobalStyle`
   ${reset}
   ${PromoStyle}
 
+  button {
+    outline: none;
+    background: none;
+  }
+
   @font-face {
     font-family: 'Inter UI';
     font-style:  normal;
