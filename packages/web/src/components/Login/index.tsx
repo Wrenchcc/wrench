@@ -47,7 +47,7 @@ export default function Login({ closeModal }) {
         )}
       />
 
-      <AppleSignIn clientId="cc.wrench" scope="email" redirectURI="/feed" state="test">
+      <AppleSignIn clientId="cc.wrench" scope="email" redirectURI="/auth/apple" state="test">
         {({ signIn }) => <AppleButton onClick={signIn}>{t('Login:applebutton')}</AppleButton>}
       </AppleSignIn>
 
