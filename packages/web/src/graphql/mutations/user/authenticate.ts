@@ -8,3 +8,12 @@ export const AUTHENTICATE_FACEBOOK = gql`
     }
   }
 `
+
+export const AUTHENTICATE_GOOGLE = gql`
+  mutation authenticateGoogle($idToken: String!) {
+    authenticateGoogle(idToken: $idToken) {
+      access_token
+      refresh_token
+    }
+  }
+`

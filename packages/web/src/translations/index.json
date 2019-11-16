@@ -26,7 +26,8 @@
       "eula": "EULA",
       "cookies": "Cookies Policy",
       "social": "Social",
-      "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm."
+      "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+      "trademarks": "App Store is a service mark of Apple Inc. Google Play is a trademark of Google LLC."
     },
     "Header": {
       "explore": "Explore",
@@ -44,8 +45,9 @@
     },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
-      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo.",
-      "fbbutton": "Login with Facebook"
+      "fbbutton": "Login with Facebook",
+      "applebutton": "Login with Apple",
+      "googlebutton": "Login with Google"
     },
     "Logout": {
       "profile": "Profile",
@@ -142,7 +144,8 @@
       "eula": "Användaravtal",
       "cookies": "Cookies Policy",
       "social": "Social",
-      "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm."
+      "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+      "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
     },
     "Header": {
       "explore": "Utforska",
@@ -160,8 +163,9 @@
     },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
-      "description": "Maecenas et finibus quam. Aliquam non mi varius, aliquam libero ac, ultrices nunc. Fusce dictum eu dolor nec commodo.",
-      "fbbutton": "Logga in med Facebook"
+      "fbbutton": "Logga in med Facebook",
+      "applebutton": "Logga in med Apple",
+      "googlebutton": "Logga in med Google"
     },
     "Logout": {
       "profile": "Profil",

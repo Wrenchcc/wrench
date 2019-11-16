@@ -37,7 +37,7 @@ Router.events.on('routeChangeComplete', (path: string) => {
 })
 
 class App extends NextApp<Props> {
-  public static async getInitialProps({ Component, ctx }) {
+  public static async getInitialProps({ Component, ctx, router }) {
     const { req } = ctx
     const initialI18nStore = {}
     let i18nServerInstance = null
@@ -53,13 +53,16 @@ class App extends NextApp<Props> {
       initialI18nStore[l] = resources[l]
     })
 
+    const queryLanguage = router.query.hl
+
     initialLanguage =
-      Cookie.get(Cookies.PREFERRED_LANGUAGE) || (req && req.headers[ACCEPT_LANGUAGE]) // req.i18n.language
+      queryLanguage ||
+      Cookie.get(Cookies.PREFERRED_LANGUAGE) ||
+      (req && req.headers[ACCEPT_LANGUAGE])
 
     // Set lanugage
-    const queryLanguage = false
     if (queryLanguage || (req && req.headers[ACCEPT_LANGUAGE])) {
-      Cookie.set(Cookies.PREFERRED_LANGUAGE, req.headers[ACCEPT_LANGUAGE])
+      Cookie.set(Cookies.PREFERRED_LANGUAGE, queryLanguage || req.headers[ACCEPT_LANGUAGE])
     }
 
     if (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {

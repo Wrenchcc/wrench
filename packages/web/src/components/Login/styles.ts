@@ -1,14 +1,8 @@
 import styled from 'styled-components'
-import UiText from '../../ui/Text'
-import { COLORS } from '../../ui/constants'
+import { COLORS } from 'ui/constants'
 
 export const Base = styled.div`
   margin-top: 30px;
-`
-
-export const Description = styled(UiText)`
-  margin-top: 15px;
-  margin-bottom: 60px;
 `
 
 export const FacebookButton = styled.button`
@@ -20,4 +14,30 @@ export const FacebookButton = styled.button`
   font-weight: 500;
   outline: none;
   border: none;
+  margin-top: 60px;
+  margin-bottom: 10px;
+`
+
+export const AppleButton = styled.button`
+  background: black;
+  height: 50px;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  margin-bottom: 10px;
+`
+
+export const GoogleButton = styled.button`
+  background: white;
+  border: solid 1px #a8a8ad;
+  height: 50px;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  color: black;
 `

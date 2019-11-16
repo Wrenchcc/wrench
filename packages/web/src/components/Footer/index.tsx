@@ -106,6 +106,11 @@ function Footer() {
           <Text fontSize={13} color="grey">
             {t('Footer:description')}
           </Text>
+
+          <Text fontSize={13} color="grey">
+            {t('Footer:trademarks')}
+          </Text>
+
           <Text fontSize={13} color="grey">
             © Wrench (v.{process.env.BUILD_ID})
           </Text>

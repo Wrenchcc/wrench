@@ -20,7 +20,7 @@ function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
     try {
       GoogleSignin.configure({
         offlineAccess: true,
-        webClientId: '407610377102-i51cefcjclotos2673d09cbncl1mo02f.apps.googleusercontent.com',
+        webClientId: '407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com',
       })
 
       setIsLoading(true)
