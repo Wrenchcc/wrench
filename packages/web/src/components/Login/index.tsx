@@ -7,6 +7,7 @@ import Router from 'next/router'
 import { Title } from 'ui'
 import { useCookie, Cookies } from 'hooks'
 import { AUTHENTICATE_FACEBOOK, AUTHENTICATE_GOOGLE } from 'graphql/mutations/user/authenticate'
+import AppleSignIn from '../AppleSignIn'
 import { Base, FacebookButton, AppleButton, GoogleButton } from './styles'
 
 const FACEBOOK_APP_ID = '1174076712654826'
@@ -46,7 +47,9 @@ export default function Login({ closeModal }) {
         )}
       />
 
-      <AppleButton>{t('Login:applebutton')}</AppleButton>
+      <AppleSignIn clientId="cc.wrench" scope="email" redirectURI="/feed" state="test">
+        {({ signIn }) => <AppleButton onClick={signIn}>{t('Login:applebutton')}</AppleButton>}
+      </AppleSignIn>
 
       <GoogleLogin
         responseType="id_token"
@@ -60,9 +63,9 @@ export default function Login({ closeModal }) {
           handleGoogleAuth({
             update: (_, { data }) => {
               closeModal()
-              // setAccessToken(data.authenticateGoogle.access_token)
-              // setRefreshToken(data.authenticateGoogle.refresh_token)
-              // Router.push('/')
+              setAccessToken(data.authenticateGoogle.access_token)
+              setRefreshToken(data.authenticateGoogle.refresh_token)
+              Router.push('/')
             },
             variables: {
               idToken: tokenId,

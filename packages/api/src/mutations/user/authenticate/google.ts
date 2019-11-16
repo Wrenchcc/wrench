@@ -3,8 +3,8 @@ import { generateTokens } from '../../../utils/tokens'
 
 const GOOGLE_EMAIL_DOMAIN = 'cloudtestlabaccounts.com'
 
-export default async (_, { idToken, code }, ctx) => {
-  const googleUser = await ctx.services.google.userInfo(idToken, code)
+export default async (_, { idToken }, ctx) => {
+  const googleUser = await ctx.services.google.userInfo(idToken)
   const { userAgent } = ctx
 
   if (googleUser.email.includes(GOOGLE_EMAIL_DOMAIN)) {
