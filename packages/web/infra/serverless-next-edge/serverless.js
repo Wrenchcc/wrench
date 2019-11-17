@@ -298,7 +298,7 @@ class NextjsComponent extends Component {
       apiEdgeLambdaPublishOutputs = await apiEdgeLambda.publishVersion()
 
       cloudFrontOrigins[0].pathPatterns['api/*'] = {
-        ttl: 0,
+        ttl: 5,
         'lambda@edge': {
           'origin-request': `${apiEdgeLambdaOutputs.arn}:${apiEdgeLambdaPublishOutputs.version}`,
         },
@@ -325,7 +325,7 @@ class NextjsComponent extends Component {
 
     const cloudFrontOutputs = await cloudFront({
       defaults: {
-        ttl: 0,
+        ttl: 5,
         allowedHttpMethods: ['HEAD', 'GET'],
         ...(inputs.cloudfront || {}),
         forward: {
