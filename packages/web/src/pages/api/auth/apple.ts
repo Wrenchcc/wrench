@@ -32,7 +32,6 @@ export default async function handle({ body }, res) {
     })
 
     const { data } = await response.json()
-    res.json(data)
 
     if (data.authenticateApple) {
       res.setHeader('Set-Cookie', [
@@ -44,20 +43,17 @@ export default async function handle({ body }, res) {
         }),
       ])
 
-      // res.writeHead(302, {
-      //   Location: '/feed',
-      // })
-      // res.end()
+      res.writeHead(302, {
+        Location: '/feed',
+      })
+      res.end()
     }
   } catch (err) {
     console.log(err)
-    res.json(err)
   }
 
-  // res.writeHead(302, {
-  //   Location: '/',
-  // })
-  // res.end()
-
-  res.json(body)
+  res.writeHead(302, {
+    Location: '/',
+  })
+  res.end()
 }
