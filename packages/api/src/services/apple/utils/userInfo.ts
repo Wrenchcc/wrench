@@ -6,7 +6,6 @@ const debug = require('debug')('api:services:apple:utils:userInfo')
 
 const AUTH_KEY_ENDPOINT = 'https://appleid.apple.com/auth/keys'
 const APPLE_ISSUER = 'https://appleid.apple.com'
-const APP_IDENTIFYER = 'cc.wrench.app'
 
 const client = jwksClient({
   jwksUri: AUTH_KEY_ENDPOINT,
@@ -27,7 +26,6 @@ export default async identityToken => {
 
     const data = jwt.verify(identityToken, publicKey, {
       issuer: APPLE_ISSUER,
-      audience: APP_IDENTIFYER,
       algorithms: [alg],
     })
 

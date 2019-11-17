@@ -10,6 +10,8 @@ import { AUTHENTICATE_FACEBOOK, AUTHENTICATE_GOOGLE } from 'graphql/mutations/us
 import AppleSignIn from '../AppleSignIn'
 import { Base, FacebookButton, AppleButton, GoogleButton } from './styles'
 
+const { APPLE_REDRECT_URI } = process.env
+
 const FACEBOOK_APP_ID = '1174076712654826'
 const FACEBOOK_SCOPE = 'public_profile,email'
 
@@ -47,7 +49,7 @@ export default function Login({ closeModal }) {
         )}
       />
 
-      <AppleSignIn clientId="cc.wrench" scope="email" redirectURI="/auth/apple" state="test">
+      <AppleSignIn clientId="cc.wrench" scope="name email" redirectURI={APPLE_REDRECT_URI}>
         {({ signIn }) => <AppleButton onClick={signIn}>{t('Login:applebutton')}</AppleButton>}
       </AppleSignIn>
 

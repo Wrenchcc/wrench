@@ -21,6 +21,7 @@
     "apollo-link-batch-http": "^1.2.13",
     "apollo-link-context": "^1.0.19",
     "apollo-link-error": "^1.1.12",
+    "cookie": "^0.4.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "human-format": "^0.10.1",
