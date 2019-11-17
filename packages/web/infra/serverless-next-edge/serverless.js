@@ -326,7 +326,7 @@ class NextjsComponent extends Component {
     const cloudFrontOutputs = await cloudFront({
       defaults: {
         ttl: 0,
-        allowedHttpMethods: ['HEAD', 'GET', 'POST'],
+        allowedHttpMethods: ['HEAD', 'GET'],
         ...(inputs.cloudfront || {}),
         forward: {
           cookies: 'all',
