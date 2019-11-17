@@ -10,10 +10,10 @@
     "sharp": "^0.23.2"
   },
   "devDependencies": {
-    "@types/aws-lambda": "8.10.35",
-    "@types/node": "^12.12.7",
+    "@types/aws-lambda": "8.10.36",
+    "@types/node": "^12.12.8",
     "@types/sharp": "^0.23.0",
-    "aws-sdk": "^2.568.0",
+    "aws-sdk": "^2.573.0",
     "prettier": "^1.19.1",
     "serverless-webpack": "^5.3.1",
     "serverless": "^1.57.0",
