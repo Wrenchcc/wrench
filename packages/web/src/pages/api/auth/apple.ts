@@ -32,6 +32,7 @@ export default async function handle({ body }, res) {
     })
 
     const { data } = await response.json()
+    res.json(data)
 
     if (data.authenticateApple) {
       res.setHeader('Set-Cookie', [
@@ -50,6 +51,7 @@ export default async function handle({ body }, res) {
     }
   } catch (err) {
     console.log(err)
+    res.json(err)
   }
 
   res.writeHead(302, {
