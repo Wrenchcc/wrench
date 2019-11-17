@@ -1,7 +1,7 @@
 import { pathOr } from 'ramda'
 import fetch from 'isomorphic-unfetch'
-// import { Cookies } from 'services/cookie'
-// import { serialize } from 'cookie'
+import { Cookies } from 'services/cookie'
+import { serialize } from 'cookie'
 
 const { API_ENDPOINT } = process.env
 
@@ -29,17 +29,23 @@ export default async function handle({ body }, res) {
       }),
     })
 
+    res.writeHead(302, {
+      Location: '/' + pathOr('null', ['user', 'firstName'], body),
+    })
+
+    res.end()
+
     const { data } = await response.json()
 
     if (data.authenticateApple) {
-      // res.setHeader('Set-Cookie', [
-      //   serialize(Cookies.ACCESS_TOKEN, data.authenticateApple.access_token, {
-      //     path: '/',
-      //   }),
-      //   serialize(Cookies.REFRESH_TOKEN, data.authenticateApple.refresh_token, {
-      //     path: '/',
-      //   }),
-      // ])
+      res.setHeader('Set-Cookie', [
+        serialize(Cookies.ACCESS_TOKEN, data.authenticateApple.access_token, {
+          path: '/',
+        }),
+        serialize(Cookies.REFRESH_TOKEN, data.authenticateApple.refresh_token, {
+          path: '/',
+        }),
+      ])
 
       res.writeHead(302, {
         Location: '/feed',
