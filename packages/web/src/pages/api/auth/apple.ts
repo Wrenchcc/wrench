@@ -44,18 +44,20 @@ export default async function handle({ body }, res) {
         }),
       ])
 
-      res.writeHead(302, {
-        Location: '/feed',
-      })
-      res.end()
+      // res.writeHead(302, {
+      //   Location: '/feed',
+      // })
+      // res.end()
     }
   } catch (err) {
     console.log(err)
     res.json(err)
   }
 
-  res.writeHead(302, {
-    Location: '/',
-  })
-  res.end()
+  // res.writeHead(302, {
+  //   Location: '/',
+  // })
+  // res.end()
+
+  res.json(body)
 }
