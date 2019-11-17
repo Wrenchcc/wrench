@@ -55,6 +55,11 @@ export default async function handle({ body }, res) {
     }
   } catch (err) {
     console.log(err)
+    res.writeHead(302, {
+      Location: '/error',
+    })
+
+    res.end()
   }
 
   res.writeHead(302, {
