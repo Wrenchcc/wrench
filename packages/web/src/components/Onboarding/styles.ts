@@ -2,8 +2,7 @@
 import styled from 'styled-components'
 import UiImage from 'ui/Image'
 import UiTitle from 'ui/Title'
-import UiText from 'ui/Text'
-import { COLORS } from 'ui/constants'
+import { COLORS, FONTS, DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   position: absolute;
@@ -20,13 +19,18 @@ export const Base = styled.div`
 
 export const Inner = styled.div`
   width: 640px;
-  height: 90%;
+  height: 85%;
   background: black;
   padding: 50px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   position: relative;
+
+  @media ${DEVICE.TABLET} {
+    height: 100%;
+    width: 100%;
+  }
 `
 
 export const Scroll = styled.div`
@@ -42,6 +46,10 @@ export const Scroll = styled.div`
 export const Types = styled.div`
   column-count: 3;
   column-gap: 10px;
+
+  @media ${DEVICE.TABLET} {
+    column-count: 2;
+  }
 `
 
 export const Image = styled(UiImage)`
@@ -50,17 +58,27 @@ export const Image = styled(UiImage)`
   width: ${props => props.width};
   border: 3px solid ${props => (props.selected ? COLORS.WHITE : 'transparent')};
   box-sizing: border-box;
+
+  @media ${DEVICE.TABLET} {
+    height: 50%;
+    width: 50%;
+  }
 `
 
 export const Title = styled(UiTitle)`
   margin-bottom: 15px;
 `
 
-export const Next = styled(UiText)`
+export const Next = styled.button`
+  font-weight: ${FONTS.MEDIUM};
   position: absolute;
   right: 20px;
   top: 20px;
   cursor: pointer;
+  border: none;
+  color: white;
+  font-size: 15px;
+  opacity: ${props => props.opacity};
 `
 
 export const Picture = styled.div`
@@ -69,6 +87,11 @@ export const Picture = styled.div`
   height: ${props => props.height};
   width: ${props => props.width};
   padding-top: 10px;
+
+  @media ${DEVICE.TABLET} {
+    height: 50%;
+    width: 50%;
+  }
 `
 
 export const Overlay = styled.div`

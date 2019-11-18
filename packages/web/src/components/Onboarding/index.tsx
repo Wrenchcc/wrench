@@ -1,17 +1,20 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 import { omit } from 'ramda'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import { GET_PROJECT_TYPES } from 'graphql/queries/project/projectTypes'
-import { Text, ProgressBar } from 'ui'
+import { EDIT_USER_MUTATION } from 'graphql/mutations/user/editUser'
+import { Text, ProgressBar, Button } from 'ui'
 import { Base, Inner, Types, Title, Scroll, Image, Picture, Overlay, Next } from './styles'
 
 const MIN_ITEMS = 3
+const ITEM_SIZE = 172.5
 
 export default function Onboarding() {
   const { t } = useTranslation()
   const { data, loading } = useQuery(GET_PROJECT_TYPES)
+  const [editUser] = useMutation(EDIT_USER_MUTATION)
   const [items, setItems] = useState({})
 
   const isComplete = () => {
@@ -35,10 +38,24 @@ export default function Onboarding() {
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
+  const interestedIn = Object.keys(items).map(id => ({ id }))
+
   return (
     <Base>
       <Inner>
-        <Next color="white" medium opacity={isComplete() ? 1 : 0.5}>
+        <Next
+          opacity={isComplete() ? 1 : 0.5}
+          disabled={!isComplete()}
+          onClick={() =>
+            editUser({
+              variables: {
+                input: {
+                  interestedIn,
+                },
+              },
+            })
+          }
+        >
           {t('Onboarding:next')}
         </Next>
 
@@ -55,15 +72,15 @@ export default function Onboarding() {
                 return (
                   <Picture
                     key={item.id}
-                    width={172.5}
-                    height={172.5}
+                    width={ITEM_SIZE}
+                    height={ITEM_SIZE}
                     onClick={() => toggleSelection(item)}
                   >
                     <Image
                       key={item.id}
                       source={item.imageUrl}
-                      width={172.5}
-                      height={172.5}
+                      width={ITEM_SIZE}
+                      height={ITEM_SIZE}
                       selected={items[item.id]}
                       lazy={false}
                     />

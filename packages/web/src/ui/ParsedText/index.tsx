@@ -32,7 +32,7 @@ export default class ParsedText extends PureComponent {
   }
 
   public render() {
-    const { parse, className } = this.props
+    const { className } = this.props
     return <p className={className}>{this.getParsedText()}</p>
   }
 }

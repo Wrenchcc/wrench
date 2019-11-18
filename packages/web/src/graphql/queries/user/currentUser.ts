@@ -1,11 +1,11 @@
 import gql from 'graphql-tag'
-import userInfoSmall from '../../fragments/user/userInfoSmall'
+import currentUserInfo from '../../fragments/user/currentUserInfo'
 
 export const CURRENT_USER = gql`
   query getCurrentUser {
     user: currentUser {
-      ...userInfoSmall
+      ...currentUserInfo
     }
   }
-  ${userInfoSmall}
+  ${currentUserInfo}
 `

@@ -1,11 +1,14 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  fragment userInfoSmall on User {
+  fragment currentUserInfo on User {
     id
     fullName
     username
     avatarUrl
     isOnline
+    interestedIn {
+      id
+    }
   }
 `

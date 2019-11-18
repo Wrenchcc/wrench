@@ -11,15 +11,8 @@ export const Base = styled.div`
 `
 
 export const Progress = styled.div`
-  @keyframes progressBar {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 100%;
-    }
-  }
   display: block;
+  transition: width 200ms ease-in-out;
   width: ${props => props.progress || 0}%;
   height: 3px;
   background-color: white;

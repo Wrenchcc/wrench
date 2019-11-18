@@ -1,7 +1,6 @@
 // @ts-nocheck
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/react-hooks'
 import Seo from 'utils/seo'
@@ -9,15 +8,9 @@ import { Post, Layout, Loader } from 'ui'
 import FollowingProjects from 'components/FollowingProjects'
 import { GET_FEED } from 'graphql/queries/feed/feed'
 import { CURRENT_USER } from 'graphql/queries/user/currentUser'
-import Onboarding from '../Onboarding'
-
-const Left = styled.div`
-  margin-right: 155px;
-  max-width: 640px;
-  width: 100%;
-`
-
-const Right = styled.div``
+import Onboarding from 'components/Onboarding'
+import ProjectSuggestion from 'components/ProjectSuggestion'
+import { Left, Right } from './styles'
 
 export default function Home() {
   const { t } = useTranslation()
@@ -30,6 +23,10 @@ export default function Home() {
 
   if (loading || error) {
     return null
+  }
+
+  if (!data.feed.posts.length) {
+    return <ProjectSuggestion />
   }
 
   return (
