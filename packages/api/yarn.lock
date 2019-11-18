@@ -345,10 +345,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.17.tgz#b96d4dd3e427382482848948041d3754d40fd5ce"
   integrity sha512-p/sGgiPaathCfOtqu2fx5Mu1bcjuP8ALFg4xpGgNkcin7LwRyzUKniEHBKdcE1RPsenq5JVPIpMTJSygLboygQ==
 
-"@types/node@^12.12.8":
-  version "12.12.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.8.tgz#dab418655af39ce2fa99286a0bed21ef8072ac9d"
-  integrity sha512-XLla8N+iyfjvsa0KKV+BP/iGSoTmwxsu5Ci5sM33z9TjohF72DEz95iNvD6pPmemvbQgxAv/909G73gUn8QR7w==
+"@types/node@^12.12.9":
+  version "12.12.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.9.tgz#0b5ae05516b757cbff2e82c04500190aef986c7b"
+  integrity sha512-kV3w4KeLsRBW+O2rKhktBwENNJuqAUQHS3kf4ia2wIaF/MN6U7ANgTsx7tGremcA0Pk3Yh0Hl0iKiLPuBdIgmw==
 
 "@types/node@^8.0.53":
   version "8.10.53"
@@ -712,10 +712,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-aws-sdk@^2.573.0:
-  version "2.573.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.573.0.tgz#e4d35b6ac7e039eda2b1a365574380521b87e065"
-  integrity sha512-NC6A0d96aowA1L1UW8idNTUnDTzjoCysiZY0rDiumMu9jhAouLp07ffc2sXgTWg9pWvXrEex2Aeps9oQWq/6OA==
+aws-sdk@^2.574.0:
+  version "2.574.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.574.0.tgz#9ec8a8bcfa35483587e66a1fc9dfcf8ec454ae81"
+  integrity sha512-EUSZ+c6nav2hoF8ALCGBCVRv/QYFqLbaktqgfbSm7Ewh3/6vPCo7aMTxsQJJ+7ceUKaUNhQY/qqnwd5ZxIrXmQ==
   dependencies:
     buffer "^4.9.1"
     events "^1.1.1"
@@ -1057,10 +1057,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dataloader@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-1.4.0.tgz#bca11d867f5d3f1b9ed9f737bd15970c65dff5c8"
-  integrity sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==
+dataloader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-2.0.0.tgz#41eaf123db115987e21ca93c005cd7753c55fe6f"
+  integrity sha512-YzhyDAwA4TaQIhM5go+vCLmU0UikghC/t9DTQYZR2M/UvZ1MdOhPezSDZcjj9uqQJOMqjLcpWtyW2iNINdlatQ==
 
 date-and-time@^0.9.0:
   version "0.9.0"

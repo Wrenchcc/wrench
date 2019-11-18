@@ -1240,10 +1240,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
   integrity sha512-5tabW/i+9mhrfEOUcLDu2xBPsHJ+X5Orqy9FKpale3SjDA17j5AEpYq5vfy3oAeAHGcvANRCO3NV3d2D6q3NiA==
 
-"@types/node@^12.12.8":
-  version "12.12.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.8.tgz#dab418655af39ce2fa99286a0bed21ef8072ac9d"
-  integrity sha512-XLla8N+iyfjvsa0KKV+BP/iGSoTmwxsu5Ci5sM33z9TjohF72DEz95iNvD6pPmemvbQgxAv/909G73gUn8QR7w==
+"@types/node@^12.12.9":
+  version "12.12.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.9.tgz#0b5ae05516b757cbff2e82c04500190aef986c7b"
+  integrity sha512-kV3w4KeLsRBW+O2rKhktBwENNJuqAUQHS3kf4ia2wIaF/MN6U7ANgTsx7tGremcA0Pk3Yh0Hl0iKiLPuBdIgmw==
 
 "@types/object-assign@^4.0.30":
   version "4.0.30"
@@ -2905,6 +2905,13 @@ convert-source-map@1.6.0, convert-source-map@^1.1.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.6.0.tgz#51b537a8c43e0f04dec1993bffcdd504e758ac20"
   integrity sha512-eFu7XigvxdZ1ETfbgPBohgyQ/Z++C0eEhTor0qRwBw9unw+L0/6V8wkSuGgzdThkiS5lSpdptOQPD8Ak40a+7A==
+  dependencies:
+    safe-buffer "~5.1.1"
+
+convert-source-map@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.7.0.tgz#17a2cb882d7f77d3490585e2ce6c524424a3a442"
+  integrity sha512-4FJkXzKXEDB1snCFZlLP4gpC3JILicCpGbzG9f9G7tGqGCzETQ2hWPrcinA9oU4wtf2biUaEH5065UnMeR33oA==
   dependencies:
     safe-buffer "~5.1.1"
 
@@ -6232,7 +6239,7 @@ next-with-apollo@^4.3.0:
     "@apollo/react-ssr" "^3.0.1"
     isomorphic-unfetch "^3.0.0"
 
-next@*, next@^9.1.3:
+next@*:
   version "9.1.3"
   resolved "https://registry.yarnpkg.com/next/-/next-9.1.3.tgz#9fd833b2e14e3fd566fc4718e7005c3e8dacf3e4"
   integrity sha512-B9/acWnr/qK+R6fU79GLvPxDKEJXS7Db1a+02cRhcVfHWaHDRzehE2WCUDhBc8cFQtbb6fYKg+sMuOYClPNXJw==
@@ -6299,6 +6306,84 @@ next@*, next@^9.1.3:
     strip-ansi "5.2.0"
     style-loader "1.0.0"
     styled-jsx "3.2.2"
+    terser "4.0.0"
+    unfetch "4.1.0"
+    url "0.11.0"
+    use-subscription "1.1.1"
+    watchpack "2.0.0-beta.5"
+    webpack "4.39.0"
+    webpack-dev-middleware "3.7.0"
+    webpack-hot-middleware "2.25.0"
+    webpack-sources "1.4.3"
+    whatwg-fetch "3.0.0"
+
+next@^9.1.4:
+  version "9.1.4"
+  resolved "https://registry.yarnpkg.com/next/-/next-9.1.4.tgz#32991dd6b49adca4bac302828eb5a1b3654591b6"
+  integrity sha512-NJA6bBdqEWLDksQEylUQ/R2PO0fXb63pOldEvkqggbhcB8j7TGe/UnyZeC0kipatez8h52emJEfoeYPdnTxxVQ==
+  dependencies:
+    "@ampproject/toolbox-optimizer" "1.1.1"
+    "@babel/core" "7.6.4"
+    "@babel/plugin-proposal-class-properties" "7.5.5"
+    "@babel/plugin-proposal-object-rest-spread" "7.6.2"
+    "@babel/plugin-syntax-dynamic-import" "7.2.0"
+    "@babel/plugin-transform-modules-commonjs" "7.6.0"
+    "@babel/plugin-transform-runtime" "7.6.2"
+    "@babel/preset-env" "7.6.3"
+    "@babel/preset-react" "7.6.3"
+    "@babel/preset-typescript" "7.6.0"
+    "@babel/runtime" "7.6.3"
+    "@babel/runtime-corejs2" "7.6.3"
+    amphtml-validator "1.0.23"
+    async-retry "1.2.3"
+    async-sema "3.0.0"
+    autodll-webpack-plugin "0.4.2"
+    babel-core "7.0.0-bridge.0"
+    babel-loader "8.0.6"
+    babel-plugin-syntax-jsx "6.18.0"
+    babel-plugin-transform-define "1.3.1"
+    babel-plugin-transform-react-remove-prop-types "0.4.24"
+    chalk "2.4.2"
+    ci-info "2.0.0"
+    compression "1.7.4"
+    conf "5.0.0"
+    content-type "1.0.4"
+    cookie "0.4.0"
+    css-loader "3.2.0"
+    cssnano-simple "1.0.0"
+    devalue "2.0.0"
+    etag "1.8.1"
+    file-loader "4.2.0"
+    find-up "4.0.0"
+    fork-ts-checker-webpack-plugin "1.3.4"
+    fresh "0.5.2"
+    ignore-loader "0.1.2"
+    is-docker "2.0.0"
+    is-wsl "2.1.1"
+    jest-worker "24.9.0"
+    launch-editor "2.2.1"
+    loader-utils "1.2.3"
+    lru-cache "5.1.1"
+    mini-css-extract-plugin "0.8.0"
+    mkdirp "0.5.1"
+    node-fetch "2.6.0"
+    ora "3.4.0"
+    path-to-regexp "3.1.0"
+    pnp-webpack-plugin "1.5.0"
+    postcss-flexbugs-fixes "4.1.0"
+    postcss-loader "3.0.0"
+    postcss-preset-env "6.7.0"
+    prop-types "15.7.2"
+    prop-types-exact "1.2.0"
+    raw-body "2.4.0"
+    react-error-overlay "5.1.6"
+    react-is "16.8.6"
+    send "0.17.1"
+    source-map "0.6.1"
+    string-hash "1.1.3"
+    strip-ansi "5.2.0"
+    style-loader "1.0.0"
+    styled-jsx "3.2.4"
     terser "4.0.0"
     unfetch "4.1.0"
     url "0.11.0"
@@ -6956,6 +7041,11 @@ path-to-regexp@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.1.0.tgz#7e30f9f5b134bd6a28ffc2e3ef1e47075ac5259b"
   integrity sha512-dZY7QPCPp5r9cnNuQ955mOv4ZFVDXY/yvqeV7Y1W2PJA3PEFcuow9xKFfJxbBj1pIjOAP+M2B4/7xubmykLrXw==
+
+path-to-regexp@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.1.0.tgz#f45a9cc4dc6331ae8f131e0ce4fde8607f802367"
+  integrity sha512-PtHLisEvUOepjc+sStXxJ/pDV/s5UBTOKWJY2SOz3e6E/iN/jLknY9WL72kTwRrwXDUbZTEAtSnJbz2fF127DA==
 
 path-type@^1.0.0:
   version "1.1.0"
@@ -8714,6 +8804,20 @@ styled-jsx@3.2.2:
     babel-plugin-syntax-jsx "6.18.0"
     babel-types "6.26.0"
     convert-source-map "1.6.0"
+    loader-utils "1.2.3"
+    source-map "0.7.3"
+    string-hash "1.1.3"
+    stylis "3.5.4"
+    stylis-rule-sheet "0.0.10"
+
+styled-jsx@3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-3.2.4.tgz#cbcdedcfb81d717fd355c4a0d8443f8e74527b60"
+  integrity sha512-UMclQzI1lss38RhyjTf7SmtXJEMbB6Q9slDz8adGtzHjirYb1PPgeWLSP8SlZc8c9f3LF6axmtv+6K/553ANdg==
+  dependencies:
+    babel-plugin-syntax-jsx "6.18.0"
+    babel-types "6.26.0"
+    convert-source-map "1.7.0"
     loader-utils "1.2.3"
     source-map "0.7.3"
     string-hash "1.1.3"
