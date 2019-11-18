@@ -2,9 +2,9 @@
   "Login": {
     "en": {
       "title": "Sign in to follow your favorite projects and more.",
-      "fbbutton": "Login with Facebook",
-      "applebutton": "Login with Apple",
-      "googlebutton": "Login with Google"
+      "fbbutton": "Continue with Facebook",
+      "applebutton": "Continue with Apple",
+      "googlebutton": "Continue with Google"
     },
     "sv": {
       "title": "Sign in to follow your favorite projects and more.",

@@ -8,6 +8,8 @@ import Seo from 'utils/seo'
 import { Post, Layout, Loader } from 'ui'
 import FollowingProjects from 'components/FollowingProjects'
 import { GET_FEED } from 'graphql/queries/feed/feed'
+import { CURRENT_USER } from 'graphql/queries/user/currentUser'
+import Onboarding from '../Onboarding'
 
 const Left = styled.div`
   margin-right: 155px;
@@ -20,6 +22,11 @@ const Right = styled.div``
 export default function Home() {
   const { t } = useTranslation()
   const { data, loading, fetchMore, error } = useQuery(GET_FEED)
+  const currentUser = useQuery(CURRENT_USER)
+
+  if (currentUser.data && !currentUser.data.user.interestedIn) {
+    return <Onboarding />
+  }
 
   if (loading || error) {
     return null

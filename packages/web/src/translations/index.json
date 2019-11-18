@@ -43,16 +43,25 @@
       "explore": "Explore more projects",
       "signup": "Sign up now"
     },
+    "Legal": {
+      "description": "By continuing you agree to Wrench's ",
+      "link": "terms and conditions."
+    },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
-      "fbbutton": "Login with Facebook",
-      "applebutton": "Login with Apple",
-      "googlebutton": "Login with Google"
+      "fbbutton": "Continue with Facebook",
+      "applebutton": "Continue with Apple",
+      "googlebutton": "Continue with Google"
     },
     "Logout": {
       "profile": "Profile",
       "settings": "Settings",
       "logout": "Logout"
+    },
+    "Onboarding": {
+      "next": "Next",
+      "title": "What are you interested in?",
+      "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with."
     },
     "Popular": {
       "title": "Popular projects",
@@ -161,6 +170,10 @@
       "explore": "Upptäck fler projekt",
       "signup": "Registrera dig"
     },
+    "Legal": {
+      "description": "Genom att fortsätta hålla du med Wrench's ",
+      "link": "användarvillkor."
+    },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
       "fbbutton": "Logga in med Facebook",
@@ -171,6 +184,11 @@
       "profile": "Profil",
       "settings": "Inställningar",
       "logout": "Logga ut"
+    },
+    "Onboarding": {
+      "next": "Nästa",
+      "title": "title",
+      "description": "description"
     },
     "Popular": {
       "title": "Populära projekt",

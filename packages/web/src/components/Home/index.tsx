@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/react-hooks'
 import Link from 'next/link'
@@ -8,6 +8,8 @@ import { GET_POPULAR_PROJECTS } from 'graphql/queries/project/popularProjects'
 import Popular from 'components/Popular'
 import Footer from 'components/Footer'
 import AppPromo from 'components/AppPromo'
+import Login from 'components/Login'
+import { Modal, useModal } from 'ui/Modal'
 import { Hero, Inner, Signup, Description, Video, Projects, ExploreLink } from './styles'
 
 const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing.mp4'
@@ -20,12 +22,18 @@ export default function Home(props) {
     },
   })
 
+  const [showModal, closeModal] = useModal(() => (
+    <Modal close={closeModal}>
+      <Login closeModal={closeModal} />
+    </Modal>
+  ))
+
   if (loading) {
     return null
   }
 
   return (
-    <Fragment>
+    <>
       <Hero>
         <Inner paddingTop={50}>
           <Title color="white" fontSize={92} lineHeight={104}>
@@ -35,7 +43,7 @@ export default function Home(props) {
           <Description color="white" fontSize={19}>
             {t('home:description')}
           </Description>
-          <Signup>{t('home:signup')}</Signup>
+          <Signup onPress={showModal}>{t('home:signup')}</Signup>
         </Inner>
         <Video autoPlay muted playsInline>
           <source src={VIDEO_URL} type="video/mp4" />
@@ -53,6 +61,6 @@ export default function Home(props) {
       <AppPromo viewerCountry={props.viewerCountry} />
 
       <Footer />
-    </Fragment>
+    </>
   )
 }

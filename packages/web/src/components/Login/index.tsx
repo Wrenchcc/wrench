@@ -8,6 +8,7 @@ import { Title } from 'ui'
 import { useCookie, Cookies } from 'hooks'
 import { AUTHENTICATE_FACEBOOK, AUTHENTICATE_GOOGLE } from 'graphql/mutations/user/authenticate'
 import AppleSignIn from '../AppleSignIn'
+import Legal from '../Legal'
 import { Base, FacebookButton, AppleButton, GoogleButton } from './styles'
 
 const { APPLE_REDIRECT_URI } = process.env
@@ -77,6 +78,8 @@ export default function Login({ closeModal }) {
         onFailure={res => console.log(res)}
         cookiePolicy={'single_host_origin'}
       />
+
+      <Legal />
     </Base>
   )
 }

@@ -11,9 +11,9 @@ import { CURRENT_USER } from 'graphql/queries/user/currentUser'
 import { UNREAD_NOTIFICATIONS } from 'graphql/queries/notifications/unreadNotifications'
 import { MARK_ALL_NOTIFICATIONS_SEEN } from 'graphql/mutations/notifications/markAllNotificationsSeen'
 import { Modal, useModal } from 'ui/Modal'
-import Login from '../Login'
-import Logout from '../Logout'
-import Notifications from '../Notifications'
+import Login from 'components/Login'
+import Logout from 'components/Logout'
+import Notifications from 'components/Notifications'
 import {
   Base,
   Nav,

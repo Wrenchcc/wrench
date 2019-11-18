@@ -14,7 +14,7 @@ export const FacebookButton = styled.button`
   font-weight: 500;
   outline: none;
   border: none;
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 10px;
 `
 
