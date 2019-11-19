@@ -15,6 +15,8 @@ import UiButton from 'ui/Button'
 import UiFollowers from 'ui/Followers'
 import { DEVICE } from 'ui/constants'
 
+const FOLLOW_ACTION = 'follow'
+
 const Left = styled.div`
   margin-right: 60px;
   max-width: 360px;
@@ -54,7 +56,7 @@ function Project({ slug, isAuthenticated, action }) {
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
-      <Login closeModal={closeModal} referral={`/project/${slug}?action=follow`} />
+      <Login closeModal={closeModal} referral={`/project/${slug}?action=${FOLLOW_ACTION}`} />
     </Modal>
   ))
 
@@ -94,8 +96,7 @@ function Project({ slug, isAuthenticated, action }) {
   }
 
   useEffect(() => {
-    if (action === 'follow' && !data.project.permissions.isFollower) {
-      console.log('here')
+    if (action === FOLLOW_ACTION && !data.project.permissions.isFollower) {
       toggleFollow(data.project)
     }
   }, [action])

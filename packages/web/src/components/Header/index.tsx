@@ -134,7 +134,7 @@ function Header({ router, isAuthenticated }) {
         {currentUser.data && currentUser.data.user ? (
           <Fragment>
             <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
-              <Badge />
+              <Badge unread={data.notifications && data.notifications.unreadCount > 0} />
               {openNotifications && <Notifications />}
             </UserNotifications>
 

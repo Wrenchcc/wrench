@@ -25,7 +25,7 @@ export default function Home() {
     return null
   }
 
-  if (!data.feed.posts.length) {
+  if (!data.feed.posts.edges.length) {
     return <ProjectSuggestion />
   }
 
