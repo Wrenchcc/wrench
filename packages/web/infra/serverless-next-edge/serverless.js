@@ -284,6 +284,7 @@ class NextjsComponent extends Component {
     if (hasAPIPages) {
       apiEdgeLambdaOutputs = await apiEdgeLambda({
         description: 'API Lambda@Edge for Next CloudFront distribution',
+        ...(inputs.defaultLambda || {}),
         handler: 'index.handler',
         code: join(nextConfigPath, API_LAMBDA_CODE_DIR),
         role: {
@@ -308,7 +309,7 @@ class NextjsComponent extends Component {
 
     const defaultEdgeLambdaOutputs = await defaultEdgeLambda({
       description: 'Default Lambda@Edge for Next CloudFront distribution',
-      ...(inputs.lambda || {}),
+      ...(inputs.defaultLambda || {}),
       handler: 'index.handler',
       code: join(nextConfigPath, DEFAULT_LAMBDA_CODE_DIR),
       role: {

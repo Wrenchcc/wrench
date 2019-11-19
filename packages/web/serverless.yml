@@ -5,9 +5,12 @@ web:
     domain: "wrench.cc"
     bucketName: wrench-web-edge
     build: true
-    lambda:
-      name: wrench-web #todo
+    defaultLambda:
       memory: 2048
+      runtime: nodejs12.x
+    apiLambda:
+      memory: 2048
+      runtime: nodejs12.x
     cloudfront:
       compress: true
       forward:
