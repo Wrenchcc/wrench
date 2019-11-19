@@ -24,3 +24,7 @@ export const Base = styled.div`
 export const Empty = styled.div`
   padding: 40px 0px;
 `
+
+export const LoaderContainer = styled.div`
+  padding: 20px;
+`

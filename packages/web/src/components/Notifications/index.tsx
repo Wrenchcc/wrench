@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_NOTIFICATIONS } from 'graphql/queries/notifications/notifications'
 import { Notification, Loader, Text } from 'ui'
-import { Base, Empty } from './styles'
+import { Base, Empty, LoaderContainer } from './styles'
 
 function Notifications() {
   const { t } = useTranslation()
@@ -23,6 +23,7 @@ function Notifications() {
     <Base>
       <ul>
         <InfiniteScroll
+          threshold={20}
           loadMore={() =>
             fetchMore({
               variables: {
@@ -49,7 +50,11 @@ function Notifications() {
           }
           useWindow={false}
           hasMore={data.notifications.pageInfo.hasNextPage}
-          loader={<Loader key={0} />}
+          loader={
+            <LoaderContainer>
+              <Loader key={0} />
+            </LoaderContainer>
+          }
         >
           {data.notifications.edges.length > 0 ? (
             data.notifications.edges.map(({ node }, index) => (
