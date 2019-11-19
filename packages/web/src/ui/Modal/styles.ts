@@ -16,10 +16,11 @@ export const Base = styled.div`
 `
 
 export const Content = styled.div`
-  max-width: ${props => (props.large ? 700 : 450)}px;
+  max-width: ${props => (props.large ? 640 : 450)}px;
   width: 100%;
   background: white;
-  padding: 40px;
+  padding: ${props => (props.large ? 20 : 40)}px;
+  height: ${props => (props.large ? '65%' : 'auto')};
   box-sizing: border-box;
   position: relative;
 `

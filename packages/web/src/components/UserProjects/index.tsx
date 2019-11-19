@@ -5,14 +5,14 @@ import { useTranslation } from 'react-i18next'
 import { pathOr } from 'ramda'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
-function UserProjects({ projects, fullName }) {
+function UserProjects({ projects }) {
   const { t } = useTranslation()
 
   return (
     projects.edges.length > 0 && (
       <Base>
         <Text medium fontSize={24}>
-          {t('UserProjects:title', { fullName })}
+          {t('UserProjects:title')}
         </Text>
 
         <List>

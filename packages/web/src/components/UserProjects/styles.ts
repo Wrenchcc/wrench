@@ -15,7 +15,7 @@ export const Box = styled.div`
 `
 
 export const List = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
 `
 
 export const Row = styled.div`

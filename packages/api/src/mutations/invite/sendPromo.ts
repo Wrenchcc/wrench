@@ -1,7 +1,6 @@
 import { UserInputError } from 'apollo-server-express'
 
-const message =
-  'Click here to download Wrench for iPhone: https://apps.apple.com/us/app/id1450213123 Android: https://play.google.com/store/apps/details?id=com.wrench'
+const message = 'Tap: https://wrench.cc/app to download Wrench.'
 
 export default async (_, { number }, ctx) => {
   if (!number) {

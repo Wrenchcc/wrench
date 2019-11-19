@@ -8,6 +8,7 @@ export const Base = styled.div`
 
 export const Button = styled.button`
   align-self: center;
+  border: none;
 `
 
 export const Inner = styled.div`

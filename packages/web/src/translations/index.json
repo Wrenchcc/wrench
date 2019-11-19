@@ -1,5 +1,9 @@
 {
   "en": {
+    "CommentField": {
+      "placeholder": "Add a comment...",
+      "post": "Post"
+    },
     "feed": {
       "title": "Feed",
       "description": ""
@@ -102,13 +106,9 @@
       "imgalt": "Profile Photo"
     },
     "UserProjects": {
-      "title": "{{fullName}}'s projects",
+      "title": "Projects",
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
-    },
-    "CommentField": {
-      "placeholder": "Add a comment...",
-      "post": "Post"
     },
     "List": {
       "loadMore": "View 1 comment",
@@ -135,6 +135,10 @@
     }
   },
   "sv": {
+    "CommentField": {
+      "placeholder": "Skriv en kommentar...",
+      "post": "Skicka"
+    },
     "feed": {
       "title": "Feed",
       "description": ""
@@ -235,12 +239,8 @@
       "imgalt": "Profilbild"
     },
     "UserProjects": {
-      "title": "{{fullName}} projekt",
+      "title": "Projekt",
       "followers": "{{count, humanFormat}} följare"
-    },
-    "CommentField": {
-      "placeholder": "Skriv en kommentar...",
-      "post": "Skicka"
     },
     "List": {
       "loadMore": "Visa 1 kommentar",

@@ -17,4 +17,6 @@ export const Comment = styled(UiText)`
 
 export const LoadMore = styled(UiText)`
   margin-top: 10px;
+  cursor: pointer;
+  display: inline-flex;
 `

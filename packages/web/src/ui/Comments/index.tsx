@@ -7,7 +7,7 @@ import { Base } from './styles'
 function Comments({ data, className, postId }) {
   return (
     <Base className={className}>
-      <List comments={data} />
+      <List comments={data} postId={postId} />
       <CommentField postId={postId} />
     </Base>
   )

@@ -2,31 +2,12 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery } from '@apollo/react-hooks'
-import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import Seo from 'utils/seo'
 import { USER_BY_USERNAME } from 'graphql/queries/user/userByUsername'
 import { Text, Avatar, Layout, Post, Loader } from 'ui'
 import UserProjects from 'components/UserProjects'
-
-const Top = styled.div`
-  display: flex;
-  margin-bottom: 65px;
-`
-
-const Name = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-`
-
-const Left = styled.div`
-  width: 100%;
-`
-
-const Right = styled.div`
-  margin-top: -120px;
-`
+import { Top, Name, Left, Right } from './styles'
 
 function User({ username }) {
   const { t } = useTranslation()
@@ -123,7 +104,7 @@ function User({ username }) {
 
       {data.user.projects && (
         <Right>
-          <UserProjects projects={data.user.projects} fullName={data.user.firstName} />
+          <UserProjects projects={data.user.projects} />
         </Right>
       )}
     </Layout>

@@ -1,12 +1,12 @@
 {
   "UserProjects": {
     "en": {
-      "title": "{{fullName}}'s projects",
+      "title": "Projects",
       "followers": "{{count, humanFormat}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
     },
     "sv": {
-      "title": "{{fullName}} projekt",
+      "title": "Projekt",
       "followers": "{{count, humanFormat}} följare"
     }
   }
