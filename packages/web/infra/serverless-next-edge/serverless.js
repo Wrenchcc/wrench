@@ -315,9 +315,7 @@ class NextjsComponent extends Component {
       role: {
         service: ['lambda.amazonaws.com', 'edgelambda.amazonaws.com'],
         policy: {
-          arn:
-            inputs.lambda.policy ||
-            'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+          arn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
         },
       },
     })
