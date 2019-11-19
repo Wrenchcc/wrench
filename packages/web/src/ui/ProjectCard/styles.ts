@@ -18,20 +18,31 @@ export const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
   opacity: 0.8;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
 `
 
 export const Inner = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   padding: 10px;
   z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+`
+
+export const Content = styled.div`
+  width: 216px;
+  padding-right: 20px;
 `
 
 export const ProjectName = styled(UiText)`
   margin-top: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `
 
 export const Picture = styled(UiImage)`

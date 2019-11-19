@@ -1,5 +1,4 @@
 import gql from 'graphql-tag'
-import projectInfoSmall from '../../fragments/project/projectInfoSmall'
 
 export const GET_PROJECT_SUGGESTIONS = gql`
   query getProjectSuggestions($after: String) {
@@ -13,14 +12,27 @@ export const GET_PROJECT_SUGGESTIONS = gql`
       }
       edges {
         node {
-          ...projectInfoSmall
+          id
+          title
+          slug
           cover {
             uri
-            default
+          }
+          permissions {
+            isOwner
+            isFollower
+          }
+          followers: followersConnection {
+            totalCount
+          }
+          user {
+            id
+            fullName
+            username
+            isOnline
           }
         }
       }
     }
   }
-  ${projectInfoSmall}
 `

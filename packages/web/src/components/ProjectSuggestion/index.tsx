@@ -1,12 +1,46 @@
 // @ts-nocheck
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useTranslation } from 'react-i18next'
 import { GET_PROJECT_SUGGESTIONS } from 'graphql/queries/project/projectSuggestions'
+import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
 import { Title, Layout, ProjectCard } from 'ui'
 import { Category, Description } from './styles'
 
 function ProjectSuggestion() {
+  const { t } = useTranslation()
   const { data, loading } = useQuery(GET_PROJECT_SUGGESTIONS)
+  const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
+
+  const toggleFollow = project => {
+    const totalCount = project.permissions.isFollower
+      ? project.followers.totalCount - 1
+      : project.followers.totalCount + 1
+
+    const isFollower = !project.permissions.isFollower
+
+    followProject({
+      variables: {
+        id: project.id,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        followProject: {
+          id: project.id,
+          ...project,
+          followers: {
+            ...project.followers,
+            totalCount,
+          },
+          permissions: {
+            ...project.permissions,
+            isFollower,
+          },
+          __typename: 'Project',
+        },
+      },
+    })
+  }
 
   if (loading) {
     return null
@@ -17,13 +51,8 @@ function ProjectSuggestion() {
       column
       top={
         <>
-          <Title medium>
-            Get up to speed and follow <br />
-            some projects.
-          </Title>
-          <Description color="grey">
-            We’ve selected some categories below you may find interesting.{' '}
-          </Description>
+          <Title medium>{t('ProjectSuggestion:title')}</Title>
+          <Description color="grey">{t('ProjectSuggestion:description')}</Description>
         </>
       }
     >
@@ -34,20 +63,14 @@ function ProjectSuggestion() {
           <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: 50 }}>
             {edges.map(({ node }) => (
               <div
+                key={node.id}
                 style={{
                   width: 353,
-                  // paddingRight: 20,
                   paddingBottom: 20,
                   boxSizing: 'border-box',
                 }}
               >
-                <ProjectCard
-                  key={node.id}
-                  image={node.cover.uri}
-                  user={node.user}
-                  slug={node.slug}
-                  title={node.title}
-                />
+                <ProjectCard key={node.id} project={node} onFollow={toggleFollow} />
               </div>
             ))}
           </div>

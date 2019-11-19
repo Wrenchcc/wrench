@@ -2,26 +2,41 @@
 import React from 'react'
 import Link from 'next/link'
 import Text from '../Text'
-import { Base, Picture, ProjectName, Inner, Overlay, WIDTH, HEIGHT } from './styles'
+import FollowSmall from 'components/FollowSmall'
+import { Base, Picture, ProjectName, Inner, Content, Overlay, WIDTH, HEIGHT } from './styles'
 
-function Card({ image, title, slug, user }) {
+function ProjectCard({ project, onFollow }) {
   return (
     <Base>
-      <Picture source={image} width={WIDTH} height={HEIGHT} />
-      <Overlay />
+      <Link href="/project/[slug]" as={`/project/${project.slug}`}>
+        <a>
+          <Picture source={project.cover.uri} width={WIDTH} height={HEIGHT} />
+          <Overlay />
+        </a>
+      </Link>
 
       <Inner>
-        <ProjectName medium color="white">
-          {title}
-        </ProjectName>
-        <Link href="/[username]" as={`/${user.username}`}>
-          <Text fontSize={15} color="white">
-            {user.fullName}
-          </Text>
-        </Link>
+        <Content>
+          <Link href="/project/[slug]" as={`/project/${project.slug}`}>
+            <a>
+              <ProjectName medium color="white">
+                {project.title}
+              </ProjectName>
+            </a>
+          </Link>
+          <Link href="/[username]" as={`/${project.user.username}`}>
+            <a>
+              <Text fontSize={15} color="white">
+                {project.user.fullName}
+              </Text>
+            </a>
+          </Link>
+        </Content>
+
+        <FollowSmall onPress={() => onFollow(project)} following={project.permissions.isFollower} />
       </Inner>
     </Base>
   )
 }
 
-export default Card
+export default ProjectCard
