@@ -21,55 +21,53 @@ function Notifications() {
 
   return (
     <Base>
-      <ul>
-        <InfiniteScroll
-          threshold={20}
-          loadMore={() =>
-            fetchMore({
-              variables: {
-                after: data.notifications.edges[data.notifications.edges.length - 1].cursor,
-              },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) {
-                  return prev
-                }
+      <InfiniteScroll
+        threshold={1}
+        loadMore={() =>
+          fetchMore({
+            variables: {
+              after: data.notifications.edges[data.notifications.edges.length - 1].cursor,
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+              if (!fetchMoreResult) {
+                return prev
+              }
 
-                return {
-                  ...prev,
-                  notifications: {
-                    ...prev.notifications,
-                    pageInfo: {
-                      ...prev.notifications.pageInfo,
-                      ...fetchMoreResult.notifications.pageInfo,
-                    },
-                    edges: [...prev.notifications.edges, ...fetchMoreResult.notifications.edges],
+              return {
+                ...prev,
+                notifications: {
+                  ...prev.notifications,
+                  pageInfo: {
+                    ...prev.notifications.pageInfo,
+                    ...fetchMoreResult.notifications.pageInfo,
                   },
-                }
-              },
-            })
-          }
-          useWindow={false}
-          hasMore={data.notifications.pageInfo.hasNextPage}
-          loader={
-            <LoaderContainer>
-              <Loader key={0} />
-            </LoaderContainer>
-          }
-        >
-          {data.notifications.edges.length > 0 ? (
-            data.notifications.edges.map(({ node }, index) => (
-              <Notification key={node.id} data={node} first={index === 0} />
-            ))
-          ) : (
-            <Empty>
-              <Text medium>{t('Notifications:title')}</Text>
-              <Text color="grey" fontSize={15}>
-                {t('Notifications:description')}
-              </Text>
-            </Empty>
-          )}
-        </InfiniteScroll>
-      </ul>
+                  edges: [...prev.notifications.edges, ...fetchMoreResult.notifications.edges],
+                },
+              }
+            },
+          })
+        }
+        useWindow={false}
+        hasMore={data.notifications.pageInfo.hasNextPage}
+        loader={
+          <LoaderContainer>
+            <Loader key={20} />
+          </LoaderContainer>
+        }
+      >
+        {data.notifications.edges.length > 0 ? (
+          data.notifications.edges.map(({ node }, index) => (
+            <Notification key={node.id} data={node} first={index === 0} />
+          ))
+        ) : (
+          <Empty>
+            <Text medium>{t('Notifications:title')}</Text>
+            <Text color="grey" fontSize={15}>
+              {t('Notifications:description')}
+            </Text>
+          </Empty>
+        )}
+      </InfiniteScroll>
     </Base>
   )
 }

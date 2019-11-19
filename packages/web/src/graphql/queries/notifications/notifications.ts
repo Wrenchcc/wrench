@@ -13,9 +13,11 @@ export const GET_NOTIFICATIONS = gql`
           type
           createdAt
           user {
+            id
             isOnline
             fullName
             avatarUrl
+            username
           }
           project {
             id

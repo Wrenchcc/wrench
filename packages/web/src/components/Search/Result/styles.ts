@@ -27,8 +27,19 @@ export const Base = styled.div`
   border-top: 1px solid ${props => (props.first ? 'transparent' : COLORS.ULTRA_LIGHT_GREY)};
 `
 
+export const Empty = styled.div`
+  padding: 20px;
+`
+
 export const Content = styled.div`
   margin-left: 10px;
   display: flex;
   flex-direction: column;
+`
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
 `

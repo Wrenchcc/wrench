@@ -5,27 +5,34 @@ import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { useQuery } from '@apollo/react-hooks'
 import { Loader, Avatar, Text } from 'ui'
+import { useDebounce } from 'hooks'
 import { SEARCH_USER } from 'graphql/queries/search/searchUser'
-import { List, Base, Content } from './styles'
+import { List, Base, Content, LoaderContainer, Empty } from './styles'
 
 function Result({ query, onPress }) {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(SEARCH_USER, {
-    variables: { query },
-  })
+  const debouncedQuery = useDebounce(query, 50)
 
-  if (loading) {
-    return null
-  }
+  const { data, loading } = useQuery(SEARCH_USER, {
+    variables: {
+      query: debouncedQuery,
+    },
+  })
 
   return (
     <List>
+      {!loading && data.users.edges.length === 0 && <Empty>{t('Result:notfound')}</Empty>}
+
       <InfiniteScroll
-        hasMore={data.users.pageInfo.hasNextPage}
-        loader={<Loader key={0} />}
+        hasMore={data && data.users.pageInfo.hasNextPage}
+        loader={
+          <LoaderContainer>
+            <Loader key={0} />
+          </LoaderContainer>
+        }
         useWindow={false}
       >
-        {data.users &&
+        {data &&
           data.users.edges.map(({ node }, index) => (
             <Base first={index === 0} onClick={onPress} key={node.id}>
               <Link href="/[username]" as={`/${node.username}`}>

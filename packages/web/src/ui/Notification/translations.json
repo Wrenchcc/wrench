@@ -2,25 +2,19 @@
   "Notification": {
     "en": {
       "follow": "Now follows your project",
-      "comment": "Commented on your project",
+      "comment": "Commented on your post",
       "reply": "Replied to your comment",
       "mention": "Mentioned you in a comment",
-      "options": {
-        "alertTitle": "Hide this Notification",
-        "delete": "Hide",
-        "cancel": "Cancel"
-      }
+      "postLike": "Sparked your post",
+      "commentLike": "Sparked your comment"
     },
     "sv": {
       "follow": "Följer nu ditt projekt",
-      "comment": "Kommenterade på ditt projekt",
+      "comment": "Kommenterade på ditt inlägg",
       "reply": "Svarade på din kommentar",
       "mention": "Nämnde dig i en kommentar",
-      "options": {
-        "alertTitle": "Dölj notifikation",
-        "delete": "Dölj",
-        "cancel": "Avbryt"
-      }
+      "postLike": "Gav en gnista på ditt inlägg",
+      "commentLike": "Gav en gnista på din kommentar"
     }
   }
 }

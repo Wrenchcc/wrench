@@ -2,10 +2,12 @@
   "Result": {
     "en": {
       "projects": "{{count, humanFormat}} project",
-      "projects_plural": "{{count, humanFormat}} projects"
+      "projects_plural": "{{count, humanFormat}} projects",
+      "notfound": "No search results found."
     },
     "sv": {
-      "projects": "{{count, humanFormat}} projekt"
+      "projects": "{{count, humanFormat}} projekt",
+      "notfound": "Inga sökresultat funna."
     }
   }
 }
