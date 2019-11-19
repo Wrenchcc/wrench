@@ -16,6 +16,9 @@ export const PROJECT_BY_SLUG = gql`
       user {
         ...userInfoSmall
       }
+      cover {
+        uri
+      }
       projectPermissions {
         isFollower
         isOwner
@@ -32,6 +35,10 @@ export const PROJECT_BY_SLUG = gql`
       }
       type {
         title
+      }
+      permissions {
+        isOwner
+        isFollower
       }
       posts: postsConnection(after: $after) {
         edges {

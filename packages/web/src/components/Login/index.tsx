@@ -16,7 +16,7 @@ const { APPLE_REDIRECT_URI } = process.env
 const FACEBOOK_APP_ID = '1174076712654826'
 const FACEBOOK_SCOPE = 'public_profile,email'
 
-export default function Login({ closeModal }) {
+export default function Login({ closeModal, referral = '/' }) {
   const { t } = useTranslation()
   const [handleFacebookAuth] = useMutation(AUTHENTICATE_FACEBOOK)
   const [handleGoogleAuth] = useMutation(AUTHENTICATE_GOOGLE)
@@ -38,7 +38,7 @@ export default function Login({ closeModal }) {
               closeModal()
               setAccessToken(data.authenticateFacebook.access_token)
               setRefreshToken(data.authenticateFacebook.refresh_token)
-              Router.push('/')
+              Router.push(referral)
             },
             variables: {
               token: accessToken,
@@ -68,7 +68,7 @@ export default function Login({ closeModal }) {
               closeModal()
               setAccessToken(data.authenticateGoogle.access_token)
               setRefreshToken(data.authenticateGoogle.refresh_token)
-              Router.push('/')
+              Router.push(referral)
             },
             variables: {
               idToken: tokenId,

@@ -1,11 +1,15 @@
 // @ts-nocheck
+import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import Seo from 'utils/seo'
 import { PROJECT_BY_SLUG } from 'graphql/queries/project/projectBySlug'
+import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
 import Follow from 'components/Follow'
+import Login from 'components/Login'
+import { Modal, useModal } from 'ui/Modal'
 import { Post, Title, Layout, Loader } from 'ui'
 import UiButton from 'ui/Button'
 import UiFollowers from 'ui/Followers'
@@ -40,11 +44,61 @@ const Followers = styled(UiFollowers)`
   margin-bottom: 50px;
 `
 
-function Project({ slug }) {
+function Project({ slug, isAuthenticated, action }) {
   const { t } = useTranslation()
   const { data, loading, fetchMore } = useQuery(PROJECT_BY_SLUG, {
     variables: { slug },
   })
+
+  const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
+
+  const [showModal, closeModal] = useModal(() => (
+    <Modal close={closeModal}>
+      <Login closeModal={closeModal} referral={`/project/${slug}?action=follow`} />
+    </Modal>
+  ))
+
+  const toggleFollow = project => {
+    if (!isAuthenticated) {
+      showModal()
+      return
+    }
+
+    const totalCount = project.permissions.isFollower
+      ? project.followers.totalCount - 1
+      : project.followers.totalCount + 1
+
+    const isFollower = !project.permissions.isFollower
+
+    followProject({
+      variables: {
+        id: project.id,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        followProject: {
+          id: project.id,
+          ...project,
+          followers: {
+            ...project.followers,
+            totalCount,
+          },
+          permissions: {
+            ...project.permissions,
+            isFollower,
+          },
+          __typename: 'Project',
+        },
+      },
+    })
+  }
+
+  useEffect(() => {
+    if (action === 'follow' && !data.project.permissions.isFollower) {
+      console.log('here')
+      toggleFollow(data.project)
+    }
+  }, [action])
 
   if (loading) {
     return null
@@ -71,8 +125,11 @@ function Project({ slug }) {
 
         <Followers followers={data.project.followers} />
 
-        {!data.project.projectPermissions.isOwner && (
-          <Follow following={data.project.projectPermissions.isFollower} />
+        {!data.project.permissions.isOwner && (
+          <Follow
+            following={data.project.permissions.isFollower}
+            onPress={() => toggleFollow(data.project)}
+          />
         )}
 
         <Share>Share</Share>

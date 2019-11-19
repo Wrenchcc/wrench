@@ -94,7 +94,7 @@ function Footer() {
                 </a>
               </NavItem>
               <NavItem>
-                <a href="https://twitter.com/wrench.cc" rel="nofollow">
+                <a href="https://twitter.com/cc_wrench" rel="nofollow">
                   Twitter
                 </a>
               </NavItem>
