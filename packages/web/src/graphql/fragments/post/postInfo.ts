@@ -17,6 +17,16 @@ export default gql`
         }
       }
     }
+    likes {
+      isLiked
+      totalCount
+    }
+    project {
+      id
+      title
+      slug
+      commentsDisabled
+    }
     comments: commentsConnection(first: 2) {
       totalCount
       edges {

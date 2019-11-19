@@ -37,32 +37,7 @@ export const PROJECT_BY_SLUG = gql`
         edges {
           cursor
           node {
-            id
-            caption
-            user {
-              ...userInfoSmall
-            }
-            files: filesConnection(type: IMAGE) {
-              edges {
-                node {
-                  type
-                  id
-                  uri
-                }
-              }
-            }
-            comments: commentsConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    ...userInfoSmall
-                  }
-                }
-              }
-            }
+            ...postInfo
           }
         }
         totalCount

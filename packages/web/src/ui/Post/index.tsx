@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Avatar from '../Avatar'
 import Carousel from '../Carousel'
 import Text from '../Text'
+import LikePost from 'components/LikePost'
 import { Base, Top, Title, Comments, Bottom } from './styles'
 
 function Post({ data, withoutTitle, withoutAvatar }) {
@@ -30,6 +31,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
 
       <Bottom>
         <Carousel files={data.files} />
+        <LikePost post={data} />
         <Comments data={data.comments.edges} />
       </Bottom>
     </Base>

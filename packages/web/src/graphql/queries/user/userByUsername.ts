@@ -1,5 +1,6 @@
 import gql from 'graphql-tag'
 import userInfoSmall from '../../fragments/user/userInfoSmall'
+import postInfo from '../../fragments/post/postInfo'
 
 export const USER_BY_USERNAME = gql`
   query getUserByUsername($username: LowercaseString!, $after: String) {
@@ -34,38 +35,7 @@ export const USER_BY_USERNAME = gql`
         edges {
           cursor
           node {
-            id
-            caption
-            user {
-              ...userInfoSmall
-            }
-            project {
-              id
-              title
-              slug
-              commentsDisabled
-            }
-            files: filesConnection(type: IMAGE) {
-              edges {
-                node {
-                  type
-                  id
-                  uri
-                }
-              }
-            }
-            comments: commentsConnection(first: 2) {
-              totalCount
-              edges {
-                node {
-                  id
-                  text
-                  user {
-                    ...userInfoSmall
-                  }
-                }
-              }
-            }
+            ...postInfo
           }
         }
         totalCount
@@ -75,5 +45,6 @@ export const USER_BY_USERNAME = gql`
       }
     }
   }
+  ${postInfo}
   ${userInfoSmall}
 `

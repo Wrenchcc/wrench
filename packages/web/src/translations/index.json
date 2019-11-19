@@ -47,6 +47,10 @@
       "description": "By continuing you agree to Wrench's ",
       "link": "terms and conditions."
     },
+    "LikePost": {
+      "like": "{{count}} spark",
+      "like_plural": "{{count, humanFormat}} sparks"
+    },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
       "fbbutton": "Continue with Facebook",
@@ -177,6 +181,10 @@
     "Legal": {
       "description": "Genom att fortsätta hålla du med Wrench's ",
       "link": "användarvillkor."
+    },
+    "LikePost": {
+      "like": "{{count}} gnista",
+      "like_plural": "{{count, humanFormat}} gnistor"
     },
     "Login": {
       "title": "Sign in to follow your favorite projects and more.",
