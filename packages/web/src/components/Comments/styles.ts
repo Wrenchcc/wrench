@@ -11,13 +11,15 @@ export const Footer = styled.div`
   right: 20px;
 `
 
-export const Content = styled.div``
+export const Content = styled.div`
+  margin-left: 10px;
+`
 
 export const Inner = styled.div`
   margin-left: 10px;
+  margin-bottom: 20px;
   flex-direction: row;
   display: flex;
-  align-items: center;
 `
 
 export const Scroll = styled.div`

@@ -38,10 +38,12 @@ function Comments({ postId }) {
                 <Link href="/[username]" as={`/${node.user.username}`}>
                   <a>
                     <Text bold fontSize={15}>
-                      {node.user.fullName}
+                      {node.user.fullName}&nbsp;
                     </Text>
                   </a>
                 </Link>
+
+                <Text fontSize={15}>{node.text}</Text>
               </Content>
             </Inner>
           ))}

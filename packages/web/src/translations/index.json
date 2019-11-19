@@ -66,6 +66,10 @@
       "settings": "Settings",
       "logout": "Logout"
     },
+    "Notifications": {
+      "title": "No notifications yet.",
+      "description": "Here you will see comments, new followers and other activities."
+    },
     "Onboarding": {
       "next": "Next",
       "title": "What are you interested in?",
@@ -200,6 +204,10 @@
       "profile": "Profil",
       "settings": "Inställningar",
       "logout": "Logga ut"
+    },
+    "Notifications": {
+      "title": "Inga notifikationer ännu.",
+      "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter."
     },
     "Onboarding": {
       "next": "Nästa",
