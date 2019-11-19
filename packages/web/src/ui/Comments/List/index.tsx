@@ -27,7 +27,7 @@ function List({ comments, postId }) {
           <Link href="/[username]" as={`/${node.user.username}`}>
             <a>
               <Text bold fontSize={15}>
-                {`${node.user.fullName}`}
+                {node.user.fullName}
               </Text>
             </a>
           </Link>

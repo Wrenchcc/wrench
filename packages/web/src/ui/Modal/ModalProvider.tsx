@@ -25,23 +25,25 @@ export interface ModalProviderProps {
  */
 export const ModalProvider = ({ container, children }: ModalProviderProps) => {
   const [modals, setModals] = useState<Record<string, ModalType>>({})
-  const showModal = useCallback(
-    (key: string, modal: ModalType) =>
-      setModals(modals => ({
-        ...modals,
-        [key]: modal,
-      })),
-    []
-  )
+  const showModal = useCallback((key: string, modal: ModalType) => {
+    document.body.style.overflow = 'hidden'
+    setModals(modals => ({
+      ...modals,
+      [key]: modal,
+    }))
+  }, [])
+
   const hideModal = useCallback(
     (key: string) =>
       setModals(modals => {
+        document.body.style.overflow = ''
         const newModals = { ...modals }
         delete newModals[key]
         return newModals
       }),
     []
   )
+
   const contextValue = useMemo(() => ({ showModal, hideModal }), [])
 
   return (

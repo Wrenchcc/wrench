@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
 
 export const List = styled.div`
-  max-height: 300px;
   top: 60px;
   box-sizing: border-box;
   max-height: 300px;
