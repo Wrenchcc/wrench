@@ -33,7 +33,6 @@ class Apollo {
       ssrMode: isBrowser,
       connectToDevTools: isBrowser,
       link: ApolloLink.from([autLink, RefreshTokenLink, HttpLink]),
-
       cache: new InMemoryCache().restore(initialState),
     })
 

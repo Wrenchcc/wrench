@@ -24,7 +24,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
   const [number, setNumber] = useState('')
   const [success, setSuccess] = useState(false)
   const [handleSubmit] = useMutation(SEND_PROMO)
-  const [_, setValue] = useCookie(Cookies.SHOW_PROMO)
+  const [, setValue] = useCookie(Cookies.SHOW_PROMO)
   const router = useRouter()
 
   if (sticky && router.pathname === '/download') {

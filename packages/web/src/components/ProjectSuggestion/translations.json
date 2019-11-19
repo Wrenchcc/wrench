@@ -1,12 +1,12 @@
 {
   "ProjectSuggestion": {
     "en": {
-      "title": "Get up to speed and follow \nsome projects.",
+      "title": "Get up to speed and follow some projects.",
       "description": "We’ve selected some categories below you may find interesting."
     },
     "sv": {
-      "title": "Get up to speed and follow \nsome projects.",
-      "description": "We’ve selected some categories below you may find interesting."
+      "headline": "Kom igång och följ några projekt.",
+      "description": "Vi har valt några projekt som vi tror du tycker om."
     }
   }
 }

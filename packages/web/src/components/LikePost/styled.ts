@@ -4,6 +4,6 @@ export const Base = styled.div`
   flex-direction: row;
   align-items: center;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   margin-top: 20px;
 `

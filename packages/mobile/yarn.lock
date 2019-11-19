@@ -1324,10 +1324,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.4.tgz#a87b4b04e5ae14a88d48ebef15015f6b7d1f5677"
   integrity sha512-kBa+cDHOR9jpRJ+kcGMsysrls0leukrm68DmFQoMIWQcXdr2cZvyvypWuGYT7U+9kAExUE7+T7r6G3C3A6L8MQ==
 
-"@expo/react-native-action-sheet@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/@expo/react-native-action-sheet/-/react-native-action-sheet-3.3.2.tgz#11ebee96294056df5bdf51d877a089f9a0178832"
-  integrity sha512-mnR2fuwMPtibXHnIiJel3fL4zxLKuNRrXI7Vei5ozcmLbzbEyEWVCgnAE1edJPQ6Inc8hJqMwrITmDJSQHLnag==
+"@expo/react-native-action-sheet@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@expo/react-native-action-sheet/-/react-native-action-sheet-3.4.0.tgz#b385b650a1296a8f7411ef3cdccbaa5aef8429d5"
+  integrity sha512-jT9ebYH3Vrf70NDgk3wGfY90UMGLweF9Eav4fuGOSEKzRCH/l/uaHZOKzeoMVua0hE4lanfL6jtcpbEjEXGP0w==
   dependencies:
     "@types/hoist-non-react-statics" "^3.3.1"
     hoist-non-react-statics "^3.3.0"
@@ -4901,10 +4901,10 @@ react-devtools-core@^3.6.3:
     shell-quote "^1.6.1"
     ws "^3.3.1"
 
-react-i18next@^11.2.1:
-  version "11.2.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.2.1.tgz#a56d9f1f52d003eb4fa8f1c7d6752123827160f0"
-  integrity sha512-F9uO4YMNgH5wnPzpyZo2NLaKJM8+JhrXSKUqe0gTRd79mRWVOq+mh/CjYeZuF8Wk+ocoOaJvfwE0lRjlfUNk9w==
+react-i18next@^11.2.2:
+  version "11.2.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.2.2.tgz#e5e55ae4187521b01b4eafe483dd96b280106670"
+  integrity sha512-g0Nqa9HBVbS1UMWaUD+tgrlnpDT+wiID1hHj51uYcz6aPS1YFSkH5U4XhEQrJf4Ms5c+vbma12abyT2Mq7e65w==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -5002,10 +5002,10 @@ react-native-linear-gradient@^2.5.6:
   version "1.0.0"
   resolved "https://github.com/pontusab/react-native-media-library#db9a59f398814ddd6c55a62ddeeb30b319b0d8a8"
 
-react-native-navigation@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-3.6.0.tgz#4772231b6a5dc06b9562f70f03c5a4b90797ae18"
-  integrity sha512-ZVlN86gTrCFKIvnnN5/+eBT3DNrmPo0mUdzWvXHLbLixhpAbrhkybpfiC72KUrsitQBIeiqP/R2XYYAt4L6NuA==
+react-native-navigation@3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-3.7.0.tgz#cc0469d391e0e2bb2496d5a9853e036e7ec8ed11"
+  integrity sha512-MVJi95+P0zuaR+8M3VJzBr85rzebWUqYQpEaFI0yHeN3EsyyRTRYZZj5rUpOFVD3LI0P+b8pR4wI1rYakheMlg==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

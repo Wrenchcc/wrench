@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
 import Seo from 'utils/seo'
 import { PROJECT_BY_SLUG } from 'graphql/queries/project/projectBySlug'
 import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
@@ -11,52 +10,23 @@ import Follow from 'components/Follow'
 import Login from 'components/Login'
 import { Modal, useModal } from 'ui/Modal'
 import { Post, Title, Layout, Loader } from 'ui'
-import UiButton from 'ui/Button'
-import UiFollowers from 'ui/Followers'
-import { DEVICE } from 'ui/constants'
+import { Left, Right, Share, Followers } from './styles'
 
-const FOLLOW_ACTION = 'follow'
-
-const Left = styled.div`
-  margin-right: 60px;
-  max-width: 360px;
-  position: fixed;
-
-  @media ${DEVICE.TABLET} {
-    margin-right: 0;
-    max-width: 100%;
-    position: static;
-  }
-`
-
-const Right = styled.div`
-  margin-left: 420px;
-  width: 100%;
-
-  @media ${DEVICE.TABLET} {
-    margin-left: 0;
-  }
-`
-
-const Share = styled(UiButton)`
-  width: 220px;
-`
-
-const Followers = styled(UiFollowers)`
-  margin-bottom: 50px;
-`
+const ACTION = 'follow'
 
 function Project({ slug, isAuthenticated, action }) {
   const { t } = useTranslation()
   const { data, loading, fetchMore } = useQuery(PROJECT_BY_SLUG, {
-    variables: { slug },
+    variables: {
+      slug,
+    },
   })
 
   const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
-      <Login closeModal={closeModal} referral={`/project/${slug}?action=${FOLLOW_ACTION}`} />
+      <Login closeModal={closeModal} referral={`/project/${slug}?action=${ACTION}`} />
     </Modal>
   ))
 
@@ -96,7 +66,7 @@ function Project({ slug, isAuthenticated, action }) {
   }
 
   useEffect(() => {
-    if (action === FOLLOW_ACTION && !data.project.permissions.isFollower) {
+    if (action === ACTION && !data.project.permissions.isFollower) {
       toggleFollow(data.project)
     }
   }, [action])
@@ -133,7 +103,7 @@ function Project({ slug, isAuthenticated, action }) {
           />
         )}
 
-        <Share>Share</Share>
+        <Share>{t('Project:share')}</Share>
       </Left>
 
       <Right>

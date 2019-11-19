@@ -32,7 +32,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
       <Bottom>
         <Carousel files={data.files} />
         <LikePost post={data} />
-        <Comments data={data.comments.edges} />
+        <Comments data={data.comments.edges} postId={data.id} />
       </Bottom>
     </Base>
   )
