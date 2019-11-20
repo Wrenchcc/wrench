@@ -4925,10 +4925,10 @@ react-lifecycles-compat@2.0.0:
   dependencies:
     react "^16.9.0"
 
-react-native-camera@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.9.0.tgz#334d9d7be5476d673af4df954929958ecc36ed55"
-  integrity sha512-qUhog1yd7FQ9xRTxN1SP+T5f4uLuVY5eXx6mMlBCNsqvYSoKCWFHH1Kpil9fx7d2iOl/o09o/7kHNcSl9RkrkQ==
+react-native-camera@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.11.0.tgz#0a4a05884bb073fb3104998d3dac2ac8f46f68aa"
+  integrity sha512-XuqDpyyxCbBK16TCGVwwS+zq8xZ+00xzlKFSNoEUdmZZRWhSHHoN1QzrD2dOO4Q7znEZnbqmU+jjgfu/hm1yIg==
   dependencies:
     prop-types "^15.6.2"
 
