@@ -1,22 +1,48 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useRef, useState, useCallback } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import InfiniteScroll from 'react-infinite-scroller'
 import Link from 'next/link'
 import { GET_COMMENTS } from 'graphql/queries/comments'
 import CommentField from 'components/CommentField'
-import { Avatar, Text, Loader } from 'ui'
-import { Base, Footer, Inner, Scroll, Content } from './styles'
+import { Avatar, Loader, TimeAgo, Text } from 'ui'
+import {
+  Base,
+  Footer,
+  Inner,
+  Comment,
+  Scroll,
+  Content,
+  Username,
+  Meta,
+  Reply,
+  LoaderContainer,
+} from './styles'
 
 function Comments({ postId }) {
-  const { data, loading } = useQuery(GET_COMMENTS, {
+  const [mention, setMention] = useState()
+  const inputRef = useRef()
+
+  const { data, loading, fetchMore } = useQuery(GET_COMMENTS, {
     variables: {
       postId,
     },
   })
 
+  const handleReply = useCallback(
+    ({ id, user }) => {
+      setMention(`@${user.username} `)
+      inputRef.current.focus()
+    },
+    [setMention, inputRef]
+  )
+
   if (loading) {
-    return null
+    return (
+      <LoaderContainer fullscreen>
+        <Loader />
+      </LoaderContainer>
+    )
   }
 
   return (
@@ -24,7 +50,36 @@ function Comments({ postId }) {
       <Scroll>
         <InfiniteScroll
           hasMore={data.comments.pageInfo.hasNextPage}
-          loader={<Loader key={0} />}
+          loadMore={() =>
+            fetchMore({
+              variables: {
+                after: data.comments.edges[data.comments.edges.length - 1].cursor,
+              },
+              updateQuery: (prev, { fetchMoreResult }) => {
+                if (!fetchMoreResult) {
+                  return prev
+                }
+
+                return {
+                  ...prev,
+                  comments: {
+                    ...prev.comments,
+                    pageInfo: {
+                      ...prev.comments.pageInfo,
+                      ...fetchMoreResult.comments.pageInfo,
+                    },
+                    edges: [...prev.comments.edges, ...fetchMoreResult.comments.edges],
+                  },
+                }
+              },
+            })
+          }
+          useWindow={false}
+          loader={
+            <LoaderContainer>
+              <Loader key={0} />
+            </LoaderContainer>
+          }
           useWindow={false}
         >
           {data.comments.edges.map(({ node }) => (
@@ -34,16 +89,26 @@ function Comments({ postId }) {
                   <Avatar uri={node.user.avatarUrl} isOnline={node.user.isOnline} />
                 </a>
               </Link>
+
               <Content>
                 <Link href="/[username]" as={`/${node.user.username}`}>
                   <a>
-                    <Text bold fontSize={15}>
+                    <Username bold fontSize={15}>
                       {node.user.fullName}&nbsp;
-                    </Text>
+                    </Username>
                   </a>
                 </Link>
 
-                <Text fontSize={15}>{node.text}</Text>
+                <Comment fontSize={15}>{node.text}</Comment>
+
+                <Meta>
+                  <TimeAgo date={node.createdAt} />
+                  <Reply onClick={() => handleReply(node)}>
+                    <Text medium fontSize={12}>
+                      Reply
+                    </Text>
+                  </Reply>
+                </Meta>
               </Content>
             </Inner>
           ))}
@@ -51,7 +116,7 @@ function Comments({ postId }) {
       </Scroll>
 
       <Footer>
-        <CommentField postId={postId} />
+        <CommentField postId={postId} ref={inputRef} initialValue={mention} />
       </Footer>
     </Base>
   )

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { memo, useState, useCallback } from 'react'
+import React, { memo, useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { prepend } from 'ramda'
@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 
 const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
 
-function CommentField({ postId, commentId }) {
+const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' }, ref) => {
   const { t } = useTranslation()
   const router = useRouter()
   const [isAuthenticated] = useCookie(Cookies.ACCESS_TOKEN)
@@ -28,6 +28,10 @@ function CommentField({ postId, commentId }) {
   })
 
   const [addCommentMutation] = useMutation(ADD_COMMENT_MUTATION)
+
+  useEffect(() => {
+    setText(initialValue)
+  }, [initialValue])
 
   const handleOnChangeText = useCallback(
     ({ target }) => {
@@ -112,6 +116,7 @@ function CommentField({ postId, commentId }) {
         <Avatar uri={(currentUser.data && currentUser.data.user.avatarUrl) || DEFAULT_AVATAR_URL} />
 
         <Input
+          ref={ref}
           placeholder={t('CommentField:placeholder')}
           placeholderTextColor={COLORS.LIGHT_GREY}
           onChange={handleOnChangeText}
@@ -129,6 +134,6 @@ function CommentField({ postId, commentId }) {
       </Inner>
     </Base>
   )
-}
+})
 
 export default memo(CommentField)

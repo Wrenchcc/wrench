@@ -7,7 +7,7 @@ import { Modal, useModal } from 'ui/Modal'
 import Comments from 'components/Comments'
 import { Row, Comment, LoadMore } from './styles'
 
-function List({ comments, postId }) {
+function List({ data, postId }) {
   const { t } = useTranslation()
 
   const [showModal, closeModal] = useModal(() => (
@@ -16,13 +16,13 @@ function List({ comments, postId }) {
     </Modal>
   ))
 
-  if (!comments.length) {
+  if (!data.comments.edges.length) {
     return null
   }
 
   return (
     <>
-      {comments.map(({ node }) => (
+      {data.comments.edges.map(({ node }) => (
         <Row key={node.id}>
           <Link href="/[username]" as={`/${node.user.username}`}>
             <a>
@@ -39,7 +39,7 @@ function List({ comments, postId }) {
       <span onClick={showModal}>
         <LoadMore fontSize={15} color="light_grey">
           {t('List:loadMore', {
-            count: comments.totalCount,
+            count: data.comments.totalCount,
           })}
         </LoadMore>
       </span>

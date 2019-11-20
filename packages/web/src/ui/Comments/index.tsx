@@ -4,10 +4,10 @@ import List from './List'
 import CommentField from 'components/CommentField'
 import { Base } from './styles'
 
-function Comments({ data, className, postId }) {
+function Comments({ data, postId, className }) {
   return (
     <Base className={className}>
-      <List comments={data} postId={postId} />
+      <List data={data} postId={postId} />
       <CommentField postId={postId} />
     </Base>
   )

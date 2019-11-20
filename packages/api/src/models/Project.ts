@@ -26,7 +26,7 @@ export default class Project extends BaseEntity {
       try {
         project = await Project.save({
           ...data,
-          slug: times ? slugify(`${data.title}-${times}`) : slugify(data.title),
+          slug: times ? slugify(`${data.title}-${times}`, '-') : slugify(data.title, '-'),
         })
         break
       } catch (err) {
@@ -97,22 +97,42 @@ export default class Project extends BaseEntity {
       .getRawOne()
   }
 
-  @ManyToOne(() => User, user => user.projects)
+  @ManyToOne(
+    () => User,
+    user => user.projects
+  )
   public user: User
 
-  @ManyToOne(() => ProjectType, projectType => projectType)
+  @ManyToOne(
+    () => ProjectType,
+    projectType => projectType
+  )
   public projectType: ProjectType
 
-  @OneToMany(() => Post, post => post.project)
+  @OneToMany(
+    () => Post,
+    post => post.project
+  )
   public posts: Post[]
 
-  @OneToMany(() => File, file => file.project, { onDelete: 'CASCADE' })
+  @OneToMany(
+    () => File,
+    file => file.project,
+    { onDelete: 'CASCADE' }
+  )
   public files: File[]
 
-  @OneToMany(() => Following, following => following.project, { onDelete: 'CASCADE' })
+  @OneToMany(
+    () => Following,
+    following => following.project,
+    { onDelete: 'CASCADE' }
+  )
   public followers: Following[]
 
-  @ManyToOne(() => Model, model => model)
+  @ManyToOne(
+    () => Model,
+    model => model
+  )
   public model: Model
 
   @PrimaryGeneratedColumn('uuid')
