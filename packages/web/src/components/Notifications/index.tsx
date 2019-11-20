@@ -7,7 +7,7 @@ import { GET_NOTIFICATIONS } from 'graphql/queries/notifications/notifications'
 import { Notification, Loader, Text } from 'ui'
 import { Base, Empty, LoaderContainer } from './styles'
 
-function Notifications() {
+function Notifications({ onPress }) {
   const { t } = useTranslation()
   const { data, fetchMore, loading } = useQuery(GET_NOTIFICATIONS)
 
@@ -57,7 +57,7 @@ function Notifications() {
       >
         {data.notifications.edges.length > 0 ? (
           data.notifications.edges.map(({ node }, index) => (
-            <Notification key={node.id} data={node} first={index === 0} />
+            <Notification key={node.id} data={node} first={index === 0} onPress={onPress} />
           ))
         ) : (
           <Empty>

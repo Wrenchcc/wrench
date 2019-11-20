@@ -27,18 +27,22 @@ function description(data, t) {
   }
 }
 
-function Notification({ data, first }) {
+function Notification({ data, first, onPress }) {
   const { t } = useTranslation()
 
   return (
     <Base first={first}>
       <Link href="/[username]" as={`/${data.user.username}`}>
-        <a>
+        <a onClick={onPress}>
           <Avatar uri={data.user.avatarUrl} size={40} isOnline={data.user.isOnline} />
         </a>
       </Link>
       <Content>
-        <Text>{data.user.fullName}</Text>
+        <Link href="/[username]" as={`/${data.user.username}`}>
+          <a onClick={onPress}>
+            <Text>{data.user.fullName}</Text>
+          </a>
+        </Link>
         <Bottom>
           <Description color="grey" fontSize={15} lineHeight={22}>
             {description(data, t)}

@@ -3,9 +3,9 @@ import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
 import { useQuery, useMutation } from '@apollo/react-hooks'
-import { withRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import useOutsideClick from '@rooks/use-outside-click'
+import { useClickOutside } from 'hooks'
 import Badge from 'ui/Badge'
 import { CURRENT_USER } from 'graphql/queries/user/currentUser'
 import { UNREAD_NOTIFICATIONS } from 'graphql/queries/notifications/unreadNotifications'
@@ -27,7 +27,8 @@ import {
   OpenMobileMenu,
 } from './styles'
 
-function Header({ router, isAuthenticated }) {
+function Header({ isAuthenticated }) {
+  const router = useRouter()
   const { t } = useTranslation()
   const { data } = useQuery(UNREAD_NOTIFICATIONS, {
     pollInterval: ms('1m'),
@@ -45,11 +46,16 @@ function Header({ router, isAuthenticated }) {
   }
 
   const logoutRef = useRef()
-  useOutsideClick(logoutRef, () => setUserMenu(false))
+  useClickOutside(logoutRef, () => setUserMenu(false))
 
   const [openNotifications, setNotificationsMenu] = useState(false)
 
   const [markNotificationsSeen] = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
+
+  const handleClose = () => {
+    setUserMenu(false)
+    setNotificationsMenu(false)
+  }
 
   const toggleNotifications = () => {
     if (data.notifications && data.notifications.unreadCount > 0) {
@@ -78,7 +84,7 @@ function Header({ router, isAuthenticated }) {
   }
 
   const notificationsRef = useRef()
-  useOutsideClick(notificationsRef, () => setNotificationsMenu(false))
+  useClickOutside(notificationsRef, () => setNotificationsMenu(false))
 
   const inverted = (!isAuthenticated && router.route === '/') || router.route === '/download'
 
@@ -133,14 +139,24 @@ function Header({ router, isAuthenticated }) {
       <Right>
         {currentUser.data && currentUser.data.user ? (
           <Fragment>
-            <UserNotifications ref={notificationsRef} onClick={toggleNotifications}>
-              <Badge unread={data.notifications && data.notifications.unreadCount > 0} />
-              {openNotifications && <Notifications />}
+            <UserNotifications ref={notificationsRef}>
+              <Badge
+                unread={data.notifications && data.notifications.unreadCount > 0}
+                onPress={toggleNotifications}
+              />
+              {openNotifications && <Notifications onPress={handleClose} />}
             </UserNotifications>
 
-            <UserMenu ref={logoutRef} onClick={toggleMenu}>
-              <Avatar size={40} uri={currentUser.data.user.avatarUrl} style={{ zIndex: 100 }} />
-              {openUserMenu && <Logout username={currentUser.data.user.username} />}
+            <UserMenu ref={logoutRef}>
+              <Avatar
+                size={40}
+                uri={currentUser.data.user.avatarUrl}
+                style={{ zIndex: 100 }}
+                onPress={toggleMenu}
+              />
+              {openUserMenu && (
+                <Logout username={currentUser.data.user.username} onPress={handleClose} />
+              )}
             </UserMenu>
           </Fragment>
         ) : (
@@ -164,4 +180,4 @@ function Header({ router, isAuthenticated }) {
   )
 }
 
-export default withRouter(Header)
+export default Header

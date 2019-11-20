@@ -44,7 +44,13 @@ export const ModalProvider = ({ container, children }: ModalProviderProps) => {
     []
   )
 
-  const contextValue = useMemo(() => ({ showModal, hideModal }), [])
+  const contextValue = useMemo(
+    () => ({
+      showModal,
+      hideModal,
+    }),
+    []
+  )
 
   return (
     <ModalContext.Provider value={contextValue}>

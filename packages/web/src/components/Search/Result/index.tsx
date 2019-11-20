@@ -34,11 +34,16 @@ function Result({ query, onPress }) {
       >
         {data &&
           data.users.edges.map(({ node }, index) => (
-            <Base first={index === 0} onClick={onPress} key={node.id}>
+            <Base first={index === 0} key={node.id}>
               <Link href="/[username]" as={`/${node.username}`}>
                 <a>
-                  <Avatar size={40} uri={node.avatarUrl} isOnline={node.isOnline} />
-                  <Content>
+                  <Avatar
+                    size={40}
+                    uri={node.avatarUrl}
+                    isOnline={node.isOnline}
+                    onPress={onPress}
+                  />
+                  <Content onClick={onPress}>
                     <Text lineHeight={18}>{node.fullName}</Text>
                     <Text lineHeight={18} fontSize={15} color="light_grey">
                       {t('Result:projects', { count: node.projectCount })}
