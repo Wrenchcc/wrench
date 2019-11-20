@@ -25,12 +25,23 @@ export const LoaderContainer = styled.div`
 
 export const Reply = styled.button`
   border: none;
-  margin-top: -1px;
+  padding: 0;
 `
 
 export const Meta = styled.div`
   display: flex;
   flex-direction: row;
+`
+
+export const LoadReplies = styled.button`
+  margin-left: 70px;
+  margin-bottom: 20px;
+  border: none;
+  padding: 0;
+`
+
+export const Action = styled.div`
+  margin-right: 10px;
 `
 
 export const Comment = styled(UiText)`
@@ -44,7 +55,8 @@ export const Content = styled.div`
 
 export const Inner = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  padding: 10px 0;
+  margin-left: ${props => (props.isReply ? 40 : 0)}px;
 `
 
 export const Username = styled(UiText)`

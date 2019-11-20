@@ -1,10 +1,10 @@
 import React from 'react'
-import { timeDifferenceForDate } from '../../utils/time'
-import Text from '../Text'
+import Text from 'ui/Text'
+import { timeDifferenceForDate } from 'utils/time'
 
-const TimeAgo = ({ date, fontSize = 12 }) => (
-  <Text color="light_grey" fontSize={fontSize}>
-    {timeDifferenceForDate(date)}
+const TimeAgo = ({ date, fontSize = 12, style = {}, long = false }) => (
+  <Text color="light_grey" fontSize={fontSize} style={style}>
+    {timeDifferenceForDate(date, long)}
   </Text>
 )
 

@@ -28,4 +28,5 @@ export const Title = styled(UiTitle)`
 
 export const Comments = styled(UiComments)`
   margin-top: 10px;
+  margin-bottom: 10px;
 `

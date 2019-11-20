@@ -5,6 +5,7 @@ export default gql`
   fragment postInfo on Post {
     id
     caption
+    createdAt
     user {
       ...userInfoSmall
     }
