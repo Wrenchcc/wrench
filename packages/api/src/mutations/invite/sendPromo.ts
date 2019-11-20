@@ -1,6 +1,6 @@
 import { UserInputError } from 'apollo-server-express'
 
-const message = 'Tap: https://wrench.cc/api/app to download Wrench.'
+const message = 'Tap: http://onelink.to/3trs2f to download Wrench.'
 
 export default async (_, { number }, ctx) => {
   if (!number) {
