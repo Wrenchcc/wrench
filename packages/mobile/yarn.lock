@@ -4925,10 +4925,10 @@ react-lifecycles-compat@2.0.0:
   dependencies:
     react "^16.9.0"
 
-react-native-camera@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.11.0.tgz#0a4a05884bb073fb3104998d3dac2ac8f46f68aa"
-  integrity sha512-XuqDpyyxCbBK16TCGVwwS+zq8xZ+00xzlKFSNoEUdmZZRWhSHHoN1QzrD2dOO4Q7znEZnbqmU+jjgfu/hm1yIg==
+react-native-camera@^3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.11.1.tgz#5c2851d8208f2aa47007bd123f6056aaf9c58e18"
+  integrity sha512-uzsGgXVKEh9PrOOOfYuFj9X/jnSv8i0b6upcsCkFVBtF7iIs/nED23ZSf2UTWsRH5LR07/yqA9PDebjh76hKVQ==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5051,10 +5051,10 @@ react-native-splash-screen@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
   integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
 
-react-native-tab-view@^2.10.2:
-  version "2.10.2"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.10.2.tgz#35ae92f574f2220312138f479a99ad3cbf981b6f"
-  integrity sha512-DJMz7WDlQiykgvojaEPM5MKFNMlGC89SMhX++wkD6iJ4TK04NyUgvUKsZYuY7u6k0o0HtG7sNeexFsbxfwhrVg==
+react-native-tab-view@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.11.0.tgz#2e57d1f617ccc88c7f452708804f3409f880b700"
+  integrity sha512-vqetlxGO7A8bnqvXcB50MWpRZAImXFrDGz1WCQKdCqe03Ey3ZzENe7yLuWrtBJYlepGfOLAsmCXv+wW82Yfm1w==
 
 react-native-video@^5.0.2:
   version "5.0.2"
