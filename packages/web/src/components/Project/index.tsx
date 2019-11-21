@@ -8,9 +8,10 @@ import { PROJECT_BY_SLUG } from 'graphql/queries/project/projectBySlug'
 import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
 import Follow from 'components/Follow'
 import Login from 'components/Login'
+import Share from 'components/Share'
 import { Modal, useModal } from 'ui/Modal'
 import { Post, Title, Layout, Loader } from 'ui'
-import { Left, Right, Share, Followers } from './styles'
+import { Left, Right, ShareButton, Followers } from './styles'
 
 const ACTION = 'follow'
 
@@ -27,6 +28,12 @@ function Project({ slug, isAuthenticated, action }) {
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
       <Login closeModal={closeModal} referral={`/project/${slug}?action=${ACTION}`} />
+    </Modal>
+  ))
+
+  const [showShare, closeShareModal] = useModal(() => (
+    <Modal close={closeShareModal}>
+      <Share closeModal={closeShareModal} />
     </Modal>
   ))
 
@@ -103,7 +110,7 @@ function Project({ slug, isAuthenticated, action }) {
           />
         )}
 
-        <Share>{t('Project:share')}</Share>
+        <ShareButton onPress={showShare}>{t('Project:share')}</ShareButton>
       </Left>
 
       <Right>

@@ -147,6 +147,14 @@
       "chat": "Chat with us",
       "feedback": "Feedback"
     },
+    "Share": {
+      "facebook": "Share to Facebook",
+      "twitter": "Share to Twitter",
+      "messenger": "Share to Messenger",
+      "email": "Share via Email",
+      "copy": "Copy Link",
+      "cancel": "Cancel"
+    },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projects and posts",
       "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
@@ -340,6 +348,14 @@
       "mail": "Mail Support",
       "chat": "Chatta med oss",
       "feedback": "Feedback"
+    },
+    "Share": {
+      "facebook": "Dela på Facebook",
+      "twitter": "Dela på Twitter",
+      "messenger": "Dela på Messenger",
+      "email": "Dela via Email",
+      "copy": "Kopiera länk",
+      "cancel": "Avbryt"
     },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",

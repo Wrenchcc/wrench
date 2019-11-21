@@ -24,7 +24,7 @@ export const Right = styled.div`
   }
 `
 
-export const Share = styled(UiButton)`
+export const ShareButton = styled(UiButton)`
   width: 220px;
 `
 
