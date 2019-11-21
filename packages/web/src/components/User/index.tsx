@@ -10,8 +10,9 @@ import { Text, Avatar, Layout, Post, Loader } from 'ui'
 import UserProjects from 'components/UserProjects'
 import { Top, Name, Left, Right } from './styles'
 
-function User({ username }) {
+function User({ username, isAuthenticated }) {
   const { t } = useTranslation()
+
   const { data, loading, fetchMore } = useQuery(USER_BY_USERNAME, {
     variables: { username },
   })
@@ -102,12 +103,12 @@ function User({ username }) {
               <Post data={node} key={node.id} withoutAvatar />
             ))
           ) : (
-            <UserFollowingProjects username={username} />
+            <UserFollowingProjects username={username} isAuthenticated={isAuthenticated} />
           )}
         </InfiniteScroll>
       </Left>
 
-      {data.user.projects.length && (
+      {data.user.projects.edges.length > 0 && (
         <Right>
           <UserProjects projects={data.user.projects} />
         </Right>

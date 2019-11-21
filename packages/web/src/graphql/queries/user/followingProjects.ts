@@ -17,11 +17,13 @@ export const USER_FOLOWING_PROJECTS = gql`
             slug
             permissions {
               isFollower
+              isOwner
             }
             user {
               id
               fullName
               username
+              isOnline
             }
             cover {
               uri

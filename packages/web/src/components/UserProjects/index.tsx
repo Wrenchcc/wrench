@@ -9,37 +9,35 @@ function UserProjects({ projects }) {
   const { t } = useTranslation()
 
   return (
-    projects.edges.length > 0 && (
-      <Base>
-        <Text medium fontSize={24}>
-          {t('UserProjects:title')}
-        </Text>
+    <Base>
+      <Text medium fontSize={24}>
+        {t('UserProjects:title')}
+      </Text>
 
-        <List>
-          {projects.edges.map(({ node }) => (
-            <Link key={node.id} href="/project/[slug]" as={`/project/${node.slug}`}>
-              <a>
-                <Row>
-                  <Box>
-                    <Image
-                      source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
-                      width={90}
-                      height={90}
-                    />
-                  </Box>
-                  <Content>
-                    <Text>{node.title}</Text>
-                    <Text color="light_grey" fontSize={15} lineHeight={18}>
-                      {t('UserProjects:followers', { count: node.followers.totalCount })}
-                    </Text>
-                  </Content>
-                </Row>
-              </a>
-            </Link>
-          ))}
-        </List>
-      </Base>
-    )
+      <List>
+        {projects.edges.map(({ node }) => (
+          <Link key={node.id} href="/project/[slug]" as={`/project/${node.slug}`}>
+            <a>
+              <Row>
+                <Box>
+                  <Image
+                    source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
+                    width={90}
+                    height={90}
+                  />
+                </Box>
+                <Content>
+                  <Text>{node.title}</Text>
+                  <Text color="light_grey" fontSize={15} lineHeight={18}>
+                    {t('UserProjects:followers', { count: node.followers.totalCount })}
+                  </Text>
+                </Content>
+              </Row>
+            </a>
+          </Link>
+        ))}
+      </List>
+    </Base>
   )
 }
 
