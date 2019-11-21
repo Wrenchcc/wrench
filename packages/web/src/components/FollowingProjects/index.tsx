@@ -4,12 +4,12 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/react-hooks'
 import { pathOr } from 'ramda'
-import { USER_FOOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
+import { CURRENT_USER_FOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function FollowingProjects() {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(USER_FOOLOWING_PROJECTS)
+  const { data, loading } = useQuery(CURRENT_USER_FOLOWING_PROJECTS)
 
   if (loading || !data.currentUser) {
     return null

@@ -86,7 +86,7 @@
       "title": "Popular projects",
       "description": "Here you see the most popular projects from this week."
     },
-    "project": {
+    "Project": {
       "title": "{{title}} - {{type}} Project",
       "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
       "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
@@ -94,7 +94,7 @@
     },
     "ProjectSuggestion": {
       "title": "Get up to speed and follow some projects.",
-      "description": "We’ve selected some categories below you may find interesting."
+      "description": "We’ve selected some projects below you may find interesting."
     },
     "Promo": {
       "title": "Download the Wrench app on Appstore and Google play",
@@ -151,6 +151,10 @@
       "title": "{{fullName}}. (@{{username}}) - projects and posts",
       "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
       "imgalt": "Profile Photo"
+    },
+    "UserFollowingProjects": {
+      "title": "This user don’t have any own projects yet.",
+      "description": "But here’s some of the projects {{name}} follows."
     },
     "UserProjects": {
       "title": "Projects",
@@ -278,7 +282,7 @@
       "title": "Populära projekt",
       "description": "Här ser du de mest populära projekten från den här veckan."
     },
-    "project": {
+    "Project": {
       "title": "{{title}} - {{type}} Projekt",
       "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench",
       "share": "Dela"
@@ -341,6 +345,10 @@
       "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",
       "description": "Se {{fullName}}. (@{{username}}) projekt och inlägg på Wrench",
       "imgalt": "Profilbild"
+    },
+    "UserFollowingProjects": {
+      "title": "Den här användaren har inga egna projekt ännu.",
+      "description": "Men här är några project som {{name}} följer."
     },
     "UserProjects": {
       "title": "Projekt",

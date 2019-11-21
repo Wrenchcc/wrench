@@ -1,5 +1,5 @@
 {
-  "project": {
+  "Project": {
     "en": {
       "title": "{{title}} - {{type}} Project",
       "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",

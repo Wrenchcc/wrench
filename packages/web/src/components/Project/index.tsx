@@ -79,8 +79,8 @@ function Project({ slug, isAuthenticated, action }) {
     <Layout>
       <Seo
         config={{
-          title: t('project:title', { title: data.project.title, type: data.project.type.title }),
-          description: t('project:description', {
+          title: t('Project:title', { title: data.project.title, type: data.project.type.title }),
+          description: t('Project:description', {
             followers: data.project.followers.totalCount,
             posts: data.project.posts.totalCount,
             fullName: data.project.user.fullName,
@@ -120,7 +120,7 @@ function Project({ slug, isAuthenticated, action }) {
 
                 return {
                   ...prev,
-                  project: {
+                  Project: {
                     ...prev.project,
                     posts: {
                       ...prev.project.posts,

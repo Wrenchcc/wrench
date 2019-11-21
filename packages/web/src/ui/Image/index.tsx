@@ -21,8 +21,8 @@ const Image = memo(function Image({
 
   return (
     <Base
-      width={width}
-      height={height}
+      w={width}
+      h={height}
       borderRadius={borderRadius}
       placeholderColor={placeholderColor}
       {...props}

@@ -26,7 +26,11 @@ import {
 const MAX_CHARACTERS = 100
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 
-function Settings() {
+function Settings({ isAuthenticated }) {
+  if (!isAuthenticated) {
+    return null
+  }
+
   const { t } = useTranslation()
   const [saved, setSaved] = useState(false)
   const [selectedLanguage] = useCookie(Cookies.PREFERRED_LANGUAGE)

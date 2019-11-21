@@ -31,10 +31,11 @@ export const Inner = styled.div`
   align-items: flex-end;
   width: 100%;
   box-sizing: border-box;
+  justify-content: space-between;
 `
 
 export const Content = styled.div`
-  width: 216px;
+  width: 60%;
   padding-right: 20px;
 `
 

@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import Seo from 'utils/seo'
 import { USER_BY_USERNAME } from 'graphql/queries/user/userByUsername'
+import UserFollowingProjects from 'components/UserFollowingProjects'
 import { Text, Avatar, Layout, Post, Loader } from 'ui'
 import UserProjects from 'components/UserProjects'
 import { Top, Name, Left, Right } from './styles'
@@ -96,13 +97,17 @@ function User({ username }) {
           hasMore={data.user.posts.pageInfo.hasNextPage}
           loader={<Loader key={0} />}
         >
-          {data.user.posts.edges.map(({ node }) => (
-            <Post data={node} key={node.id} withoutAvatar />
-          ))}
+          {data.user.posts.edges.length ? (
+            data.user.posts.edges.map(({ node }) => (
+              <Post data={node} key={node.id} withoutAvatar />
+            ))
+          ) : (
+            <UserFollowingProjects username={username} />
+          )}
         </InfiniteScroll>
       </Left>
 
-      {data.user.projects && (
+      {data.user.projects.length && (
         <Right>
           <UserProjects projects={data.user.projects} />
         </Right>
