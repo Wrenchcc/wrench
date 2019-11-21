@@ -28,6 +28,7 @@
       "status": "Status",
       "help": "Help",
       "mail": "Mail Support",
+      "chat": "Chat with us",
       "feedback": "Feedback",
       "faq": "FAQ",
       "legal": "Legal",
@@ -111,6 +112,16 @@
     "Search": {
       "placeholder": "Search"
     },
+    "Settings": {
+      "notifications": {
+        "NEW_COMMENT": "Comments",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Articles",
+        "NEW_FOLLOWER": "Followers",
+        "SIMILAR_PROJECTS": "Similar projects",
+        "PRODUCT_ANNOUNCEMENTS": "Product announcements"
+      }
+    },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projects and posts",
       "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
@@ -184,6 +195,7 @@
       "status": "Status",
       "help": "Hjälp",
       "mail": "Mail Support",
+      "chat": "Chatta med oss",
       "feedback": "Feedback",
       "faq": "Vanliga frågor",
       "legal": "Legal",
@@ -264,6 +276,16 @@
     },
     "Search": {
       "placeholder": "Sök"
+    },
+    "Settings": {
+      "notifications": {
+        "NEW_COMMENT": "Kommentarer",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Artiklar",
+        "NEW_FOLLOWER": "Följare",
+        "SIMILAR_PROJECTS": "Liknande projekt",
+        "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
+      }
     },
     "user": {
       "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",

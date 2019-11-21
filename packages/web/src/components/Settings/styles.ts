@@ -1,6 +1,6 @@
 // @ts-nocheck
 import styled from 'styled-components'
-import { DEVICE } from 'ui/constants'
+import { DEVICE, COLORS } from 'ui/constants'
 import UiText from 'ui/Text'
 import UiTitle from 'ui/Title'
 
@@ -26,6 +26,7 @@ export const Toast = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  z-index: 1001;
 `
 
 export const Row = styled.div`
@@ -33,12 +34,22 @@ export const Row = styled.div`
   position: relative;
 `
 
+export const Setting = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+`
+
 export const MenuTitle = styled(UiTitle)`
   margin-bottom: 50px;
 `
 
 export const MenuItem = styled.a`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: block;
 `
 

@@ -1,14 +1,18 @@
 import React from 'react'
-import { Blah1, Label, Button } from './styles'
+import { COLORS } from 'ui/constants'
+import { Base, Blah1, Label, Circle } from './styles'
 
-const Switch = ({ isOn, handleToggle, onColor }) => {
+const Switch = ({ selected, onPress, onColor, name }) => {
   return (
-    <>
-      <Blah1 checked={isOn} onChange={handleToggle} id="react-switch-new" type="checkbox" />
-      <Label style={{ background: isOn && onColor }} htmlFor="react-switch-new">
-        <Button />
+    <Base>
+      <Blah1 checked={selected} onChange={onPress} id={name} type="checkbox" />
+      <Label
+        style={{ background: (selected && onColor) || COLORS.ULTRA_LIGHT_GREY }}
+        htmlFor={name}
+      >
+        <Circle />
       </Label>
-    </>
+    </Base>
   )
 }
 

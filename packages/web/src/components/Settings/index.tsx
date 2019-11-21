@@ -1,15 +1,30 @@
 // @ts-nocheck
 import React, { useState, useCallback, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { CURRENT_USER } from 'graphql/queries/user/currentUser'
+import { CURRENT_USER_SETTINGS_QUERY } from 'graphql/queries/user/currentUserSettings'
 import { EDIT_USER_MUTATION } from 'graphql/mutations/user/editUser'
+import { TOGGLE_NOTIFICATION_SETTINGS_MUTATION } from 'graphql/mutations/user/toggleNotificationSettings'
 import { Layout, Title, Text, Switch, Input, SearchLocation, Button } from 'ui'
-import { Left, Right, MenuItem, MenuTitle, Section, Row, Counter, Headline, Toast } from './styles'
+import {
+  Left,
+  Right,
+  MenuItem,
+  MenuTitle,
+  Section,
+  Row,
+  Counter,
+  Headline,
+  Toast,
+  Setting,
+} from './styles'
 
 const MAX_CHARACTERS = 100
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 
 function Settings() {
+  const { t } = useTranslation()
   const [saved, setSaved] = useState(false)
   const [data, setData] = useState({
     lastName: '',
@@ -21,7 +36,46 @@ function Settings() {
   })
 
   const currentUser = useQuery(CURRENT_USER)
+  const userSettings = useQuery(CURRENT_USER_SETTINGS_QUERY)
   const [editUser, { error }] = useMutation(EDIT_USER_MUTATION)
+  const [toggleNotificationSettings] = useMutation(TOGGLE_NOTIFICATION_SETTINGS_MUTATION)
+
+  const generateNotificationSettings = ({ notifications }, deliveryMethod) => {
+    if (!notifications) {
+      return null
+    }
+
+    const types = Object.keys(notifications.types).filter(type => type !== '__typename')
+
+    return types.map(type => ({
+      titleKey: `notifications.${type}`,
+      type,
+      onPress: () => {
+        setSaved(true)
+
+        setTimeout(() => {
+          setSaved(false)
+        }, 4000)
+
+        return toggleNotificationSettings({
+          variables: {
+            input: {
+              notificationType: type,
+              deliveryMethod,
+            },
+          },
+        })
+      },
+      selected: notifications.types[type][deliveryMethod],
+    }))
+  }
+
+  const notifications = generateNotificationSettings(
+    {
+      notifications: userSettings.data && userSettings.data.user.settings.notifications,
+    },
+    'email'
+  )
 
   useEffect(() => {
     setData({
@@ -81,10 +135,18 @@ function Settings() {
       <Left>
         <MenuTitle fontSize={36}>Settings</MenuTitle>
 
-        <MenuItem href="#edit-profile">Edit profile</MenuItem>
-        <MenuItem href="#notifications">Notifications</MenuItem>
-        <MenuItem href="#language">Language</MenuItem>
-        <MenuItem href="#support">Support</MenuItem>
+        <MenuItem href="#edit-profile">
+          <Text medium>Edit profile</Text>
+        </MenuItem>
+        <MenuItem href="#notifications">
+          <Text color="grey">Notifications</Text>
+        </MenuItem>
+        <MenuItem href="#language">
+          <Text color="grey">Language</Text>
+        </MenuItem>
+        <MenuItem href="#support">
+          <Text color="grey">Support</Text>
+        </MenuItem>
       </Left>
       <Right>
         <Section id="edit-profile">
@@ -144,26 +206,40 @@ function Settings() {
           <Headline>
             <Title medium>Notifications</Title>
           </Headline>
-          Email notifications Followers <Switch isOn={true} onColor="black" />
-          Comments <Switch isOn={true} onColor="black" />
-          Mentions <Switch isOn={true} onColor="black" />
-          Articles <Switch isOn={true} onColor="black" />
-          Similar projects <Switch isOn={true} onColor="black" />
-          Product announcments <Switch isOn={true} onColor="black" />
+
+          {notifications &&
+            notifications.map(({ titleKey, onPress, selected, type }) => (
+              <Setting key={titleKey}>
+                {t(`Settings:${titleKey}`)}
+                <Switch selected={selected} onColor="black" name={type} onPress={onPress} />
+              </Setting>
+            ))}
         </Section>
 
         <Section id="language">
           <Headline>
             <Title medium>Language</Title>
           </Headline>
-          English Swedish
+
+          <Setting>English</Setting>
+          <Setting>Swedish</Setting>
         </Section>
 
         <Section id="support">
           <Headline>
             <Title medium>Support</Title>
           </Headline>
-          Mail Support Feedback Chat with us
+
+          <Setting>
+            <a href="mailto:support@wrench.cc">Mail Support</a>
+          </Setting>
+          <Setting>
+            {' '}
+            <a href="mailto:feedback@wrench.cc">Feedback</a>
+          </Setting>
+          <Setting>
+            <a href="https://m.me/wrench.cc">Chat with us</a>
+          </Setting>
         </Section>
       </Right>
     </Layout>

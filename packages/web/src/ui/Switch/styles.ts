@@ -34,13 +34,20 @@ import styled from 'styled-components'
 // }
 
 // .react-switch-checkbox:checked + .react-switch-label .react-switch-button {
-//   left: calc(100% - 2px);
-//   transform: translateX(-100%);
+// left: calc(100% - 2px);
+// transform: translateX(-100%);
 // }
 
 // .react-switch-label:active .react-switch-button {
 //   width: 60px;
 // }
+
+export const Base = styled.div`
+  input:checked + label > span {
+    transform: translateX(100%);
+    left: calc(100% - 52px);
+  }
+`
 
 export const Blah1 = styled.input`
   height: 0;
@@ -61,7 +68,7 @@ export const Label = styled.label`
   transition: background-color 0.2s;
 `
 
-export const Button = styled.span`
+export const Circle = styled.span`
   content: '';
   position: absolute;
   top: 2px;
