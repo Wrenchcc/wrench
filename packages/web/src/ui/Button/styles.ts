@@ -10,5 +10,6 @@ export const Base = styled.button`
   font-size: 15px;
   outline: none;
   height: 40px;
+  padding: 0 20px;
   border: solid 1px ${props => (props.black ? COLORS.DARK : COLORS.ULTRA_LIGHT_GREY)};
 `
