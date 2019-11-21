@@ -124,7 +124,7 @@ function Settings() {
       {saved && (
         <Toast>
           <Text color="white" medium>
-            Settings saved
+            {t('Settings:toast.saved')}
           </Text>
         </Toast>
       )}
@@ -132,7 +132,7 @@ function Settings() {
       {error && (
         <Toast error>
           <Text color="white" medium>
-            Something went wrong
+            {t('Settings:toast.error')}
           </Text>
         </Toast>
       )}
@@ -163,7 +163,7 @@ function Settings() {
 
             <Row>
               <Input
-                placeholder="Firstname"
+                placeholder={t('Settings:field.firstName')}
                 value={data.firstName}
                 required
                 onChangeText={firstName => updateField('firstName', firstName)}
@@ -172,7 +172,7 @@ function Settings() {
 
             <Row>
               <Input
-                placeholder="Lastname"
+                placeholder={t('Settings:field.lastName')}
                 value={data.lastName}
                 required
                 onChangeText={lastName => updateField('lastName', lastName)}
@@ -187,7 +187,11 @@ function Settings() {
             </Row>
 
             <Row>
-              <Input placeholder="Bio" onChangeText={handleBio} value={data.bio} />
+              <Input
+                placeholder={t('Settings:field.bio')}
+                onChangeText={handleBio}
+                value={data.bio}
+              />
               <Counter color="light_grey" fontSize={15}>
                 {`${data.bio ? data.bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
@@ -195,7 +199,7 @@ function Settings() {
 
             <Row>
               <Input
-                placeholder="Website"
+                placeholder={t('Settings:field.website')}
                 type="url"
                 onChangeText={website => updateField('website', website)}
                 value={data.website}
@@ -204,7 +208,7 @@ function Settings() {
 
             <Row last>
               <Button black onPress={handleSave}>
-                Save
+                {t('Settings:save')}
               </Button>
             </Row>
           </Section>
@@ -250,14 +254,14 @@ function Settings() {
             </Headline>
 
             <Setting>
-              <a href="mailto:support@wrench.cc">Mail Support</a>
+              <a href="mailto:support@wrench.cc">{t('Settings:mail')}</a>
             </Setting>
             <Setting>
               {' '}
-              <a href="mailto:feedback@wrench.cc">Feedback</a>
+              <a href="mailto:feedback@wrench.cc">{t('Settings:feedback')}</a>
             </Setting>
             <Setting>
-              <a href="https://m.me/wrench.cc">Chat with us</a>
+              <a href="https://m.me/wrench.cc">{t('Settings:chat')}</a>
             </Setting>
           </Section>
         </Element>
