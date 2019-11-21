@@ -1,11 +1,14 @@
 // @ts-nocheck
 import React, { useState, useCallback, useEffect } from 'react'
+import { Element } from 'react-scroll'
 import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { CURRENT_USER } from 'graphql/queries/user/currentUser'
 import { CURRENT_USER_SETTINGS_QUERY } from 'graphql/queries/user/currentUserSettings'
 import { EDIT_USER_MUTATION } from 'graphql/mutations/user/editUser'
 import { TOGGLE_NOTIFICATION_SETTINGS_MUTATION } from 'graphql/mutations/user/toggleNotificationSettings'
+import { SUPPORTED_LOCALS } from 'i18n'
+import { useCookie, Cookies } from 'hooks'
 import { Layout, Title, Text, Switch, Input, SearchLocation, Button } from 'ui'
 import {
   Left,
@@ -26,6 +29,8 @@ const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 function Settings() {
   const { t } = useTranslation()
   const [saved, setSaved] = useState(false)
+  const [selectedLanguage] = useCookie(Cookies.PREFERRED_LANGUAGE)
+
   const [data, setData] = useState({
     lastName: '',
     firstName: '',
@@ -133,114 +138,129 @@ function Settings() {
       )}
 
       <Left>
-        <MenuTitle fontSize={36}>Settings</MenuTitle>
+        <MenuTitle fontSize={36}>{t('Settings:title')}</MenuTitle>
 
-        <MenuItem href="#edit-profile">
-          <Text medium>Edit profile</Text>
+        <MenuItem to="edit-profile" smooth duration={250} spy offset={-150}>
+          <Text color="grey">{t('Settings:sections.profile')}</Text>
         </MenuItem>
-        <MenuItem href="#notifications">
-          <Text color="grey">Notifications</Text>
+        <MenuItem to="notifications" smooth duration={250} spy offset={-150}>
+          <Text color="grey">{t('Settings:sections.notifications')}</Text>
         </MenuItem>
-        <MenuItem href="#language">
-          <Text color="grey">Language</Text>
+        <MenuItem to="language" smooth duration={250} spy offset={-150}>
+          <Text color="grey">{t('Settings:sections.language')}</Text>
         </MenuItem>
-        <MenuItem href="#support">
-          <Text color="grey">Support</Text>
+        <MenuItem to="support" smooth duration={250} spy offset={-150}>
+          <Text color="grey">{t('Settings:sections.support')}</Text>
         </MenuItem>
       </Left>
+
       <Right>
-        <Section id="edit-profile">
-          <Headline>
-            <Title medium>Edit profile</Title>
-          </Headline>
+        <Element name={'edit-profile'}>
+          <Section>
+            <Headline>
+              <Title medium>{t('Settings:sections.profile')}</Title>
+            </Headline>
 
-          <Row>
-            <Input
-              placeholder="Firstname"
-              value={data.firstName}
-              required
-              onChangeText={firstName => updateField('firstName', firstName)}
-            />
-          </Row>
+            <Row>
+              <Input
+                placeholder="Firstname"
+                value={data.firstName}
+                required
+                onChangeText={firstName => updateField('firstName', firstName)}
+              />
+            </Row>
 
-          <Row>
-            <Input
-              placeholder="Lastname"
-              value={data.lastName}
-              required
-              onChangeText={lastName => updateField('lastName', lastName)}
-            />
-          </Row>
+            <Row>
+              <Input
+                placeholder="Lastname"
+                value={data.lastName}
+                required
+                onChangeText={lastName => updateField('lastName', lastName)}
+              />
+            </Row>
 
-          <Row>
-            <SearchLocation
-              onPress={location => updateField('location', location)}
-              value={data.location}
-            />
-          </Row>
+            <Row>
+              <SearchLocation
+                onPress={location => updateField('location', location)}
+                value={data.location}
+              />
+            </Row>
 
-          <Row>
-            <Input placeholder="Bio" onChangeText={handleBio} value={data.bio} />
-            <Counter color="light_grey" fontSize={15}>
-              {`${data.bio ? data.bio.length : 0}/${MAX_CHARACTERS}`}
-            </Counter>
-          </Row>
+            <Row>
+              <Input placeholder="Bio" onChangeText={handleBio} value={data.bio} />
+              <Counter color="light_grey" fontSize={15}>
+                {`${data.bio ? data.bio.length : 0}/${MAX_CHARACTERS}`}
+              </Counter>
+            </Row>
 
-          <Row>
-            <Input
-              placeholder="Website"
-              type="url"
-              onChangeText={website => updateField('website', website)}
-              value={data.website}
-            />
-          </Row>
+            <Row>
+              <Input
+                placeholder="Website"
+                type="url"
+                onChangeText={website => updateField('website', website)}
+                value={data.website}
+              />
+            </Row>
 
-          <Row last>
-            <Button black onPress={handleSave}>
-              Save
-            </Button>
-          </Row>
-        </Section>
+            <Row last>
+              <Button black onPress={handleSave}>
+                Save
+              </Button>
+            </Row>
+          </Section>
+        </Element>
 
-        <Section id="notifications">
-          <Headline>
-            <Title medium>Notifications</Title>
-          </Headline>
+        <Element name="notifications">
+          <Section>
+            <Headline>
+              <Title medium>{t('Settings:sections.notifications')}</Title>
+            </Headline>
 
-          {notifications &&
-            notifications.map(({ titleKey, onPress, selected, type }) => (
-              <Setting key={titleKey}>
-                {t(`Settings:${titleKey}`)}
-                <Switch selected={selected} onColor="black" name={type} onPress={onPress} />
-              </Setting>
-            ))}
-        </Section>
+            {notifications &&
+              notifications.map(({ titleKey, onPress, selected, type }) => (
+                <Setting key={titleKey}>
+                  {t(`Settings:${titleKey}`)}
+                  <Switch selected={selected} onColor="black" name={type} onPress={onPress} />
+                </Setting>
+              ))}
+          </Section>
+        </Element>
 
-        <Section id="language">
-          <Headline>
-            <Title medium>Language</Title>
-          </Headline>
+        <Element name="language">
+          <Section>
+            <Headline>
+              <Title medium>{t('Settings:sections.language')}</Title>
+            </Headline>
 
-          <Setting>English</Setting>
-          <Setting>Swedish</Setting>
-        </Section>
+            {SUPPORTED_LOCALS.map(locale => {
+              return (
+                <Setting key={locale}>
+                  <a href={`?hl=${locale}`}>{t(`Settings:languages.${locale}`)}</a>
+                  {selectedLanguage === locale && <img src={require('./check.svg')} />}
+                </Setting>
+              )
+            })}
+          </Section>
+        </Element>
 
-        <Section id="support">
-          <Headline>
-            <Title medium>Support</Title>
-          </Headline>
+        <Element name="support">
+          <Section>
+            <Headline>
+              <Title medium>{t('Settings:sections.support')}</Title>
+            </Headline>
 
-          <Setting>
-            <a href="mailto:support@wrench.cc">Mail Support</a>
-          </Setting>
-          <Setting>
-            {' '}
-            <a href="mailto:feedback@wrench.cc">Feedback</a>
-          </Setting>
-          <Setting>
-            <a href="https://m.me/wrench.cc">Chat with us</a>
-          </Setting>
-        </Section>
+            <Setting>
+              <a href="mailto:support@wrench.cc">Mail Support</a>
+            </Setting>
+            <Setting>
+              {' '}
+              <a href="mailto:feedback@wrench.cc">Feedback</a>
+            </Setting>
+            <Setting>
+              <a href="https://m.me/wrench.cc">Chat with us</a>
+            </Setting>
+          </Section>
+        </Element>
       </Right>
     </Layout>
   )

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import styled from 'styled-components'
+import { Link } from 'react-scroll'
 import { DEVICE, COLORS } from 'ui/constants'
 import UiText from 'ui/Text'
 import UiTitle from 'ui/Title'
@@ -42,15 +43,27 @@ export const Setting = styled.div`
   padding-bottom: 10px;
   margin-bottom: 10px;
   height: 40px;
+
+  a {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+  }
 `
 
 export const MenuTitle = styled(UiTitle)`
   margin-bottom: 50px;
 `
 
-export const MenuItem = styled.a`
+export const MenuItem = styled(Link)`
   margin-bottom: 20px;
   display: block;
+
+  &.active p {
+    color: black;
+    font-weight: 500;
+  }
 `
 
 export const Headline = styled.div`

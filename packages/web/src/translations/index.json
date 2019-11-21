@@ -113,6 +113,17 @@
       "placeholder": "Search"
     },
     "Settings": {
+      "title": "Settings",
+      "sections": {
+        "profile": "Edit profile",
+        "notifications": "Notifications",
+        "language": "Language",
+        "support": "Support"
+      },
+      "languages": {
+        "en": "English",
+        "sv": "Swedish"
+      },
       "notifications": {
         "NEW_COMMENT": "Comments",
         "NEW_MENTION": "Mentions",
@@ -278,6 +289,17 @@
       "placeholder": "Sök"
     },
     "Settings": {
+      "title": "Inställningar",
+      "sections": {
+        "profile": "Redigera profil",
+        "notifications": "Notifications",
+        "language": "Språk",
+        "support": "Support"
+      },
+      "languages": {
+        "en": "Engelska",
+        "sv": "Svenska"
+      },
       "notifications": {
         "NEW_COMMENT": "Kommentarer",
         "NEW_MENTION": "Mentions",

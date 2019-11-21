@@ -16,7 +16,7 @@ import Seo from 'utils/seo'
 import Header from 'components/Header'
 import Cookie, { Cookies } from 'services/cookie'
 import resources from 'translations/index.json'
-import i18n, { SUPPORTED_LOCALS } from '../../i18n'
+import i18n, { SUPPORTED_LOCALS } from 'i18n'
 
 interface Props {
   apollo: ApolloClient<any>
