@@ -11,6 +11,12 @@ export enum Cookies {
   PREFERRED_LANGUAGE = 'preferred_language',
 }
 
+const defaultOptions = {
+  sameSite: true,
+  secure: true,
+  path: '/',
+}
+
 export type CookieGetOptions = _CookieGetOptions
 export type CookieSetOptions = _CookieSetOptions
 
@@ -26,7 +32,10 @@ class Cookie {
   public get = (name: string, options?: CookieGetOptions) => this.client.get(name, options)
 
   public set = (name: string, value: any, options?: CookieSetOptions) =>
-    this.client.set(name, value, options)
+    this.client.set(name, value, {
+      ...defaultOptions,
+      ...options,
+    })
 
   public remove = (name: string, options?: CookieSetOptions) => this.client.remove(name, options)
 }
