@@ -116,7 +116,13 @@ function Project({ slug, isAuthenticated, action }) {
             }),
             url: `https://wrench.cc/project/${slug}`,
             type: 'website',
-            images: [{ url: data.project.cover.uri }],
+            images: [
+              {
+                url: data.project.cover.uri,
+                width: 640,
+                height: 640,
+              },
+            ],
             site_name: 'Wrench',
           },
         }}

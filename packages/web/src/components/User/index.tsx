@@ -60,6 +60,8 @@ function User({ username, isAuthenticated }) {
               {
                 url: data.user.avatarUrl,
                 alt: t('user:imagealt'),
+                width: 160,
+                height: 160,
               },
             ],
           },
@@ -108,7 +110,7 @@ function User({ username, isAuthenticated }) {
         </InfiniteScroll>
       </Left>
 
-      {data.user.projects.edges.length > 0 && (
+      {data.user.posts.edges.length > 0 && (
         <Right>
           <UserProjects projects={data.user.projects} />
         </Right>
