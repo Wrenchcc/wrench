@@ -26,17 +26,23 @@ function Project({ slug, isAuthenticated, action }) {
 
   const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
 
-  const [showLoginModal, closeLoginModal] = useModal(() => (
-    <Modal close={closeLoginModal}>
-      <Login closeModal={closeLoginModal} referral={`/project/${slug}?action=${ACTION}`} />
-    </Modal>
-  ))
+  const [showLoginModal, closeLoginModal] = useModal(
+    () => (
+      <Modal close={closeLoginModal}>
+        <Login closeModal={closeLoginModal} referral={`/project/${slug}?action=${ACTION}`} />
+      </Modal>
+    ),
+    [slug]
+  )
 
-  const [showSimilarModal, closeSimilarModal] = useModal(() => (
-    <Modal large close={closeSimilarModal}>
-      {data && <SimilarProjects id={data.project.id} closeModal={closeSimilarModal} />}
-    </Modal>
-  ))
+  const [showSimilarModal, closeSimilarModal] = useModal(
+    () => (
+      <Modal large close={closeSimilarModal}>
+        <SimilarProjects id={data.project.id} closeModal={closeSimilarModal} />
+      </Modal>
+    ),
+    [data]
+  )
 
   const [showShare, closeShareModal] = useModal(() => (
     <Modal close={closeShareModal}>
