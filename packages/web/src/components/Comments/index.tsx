@@ -36,8 +36,6 @@ function Comments({ postId }) {
             return prev
           }
 
-          console.log(prev)
-
           const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
 
           return {

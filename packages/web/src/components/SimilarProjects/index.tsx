@@ -2,14 +2,10 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { SIMILAR_PROJECTS_QUERY } from 'graphql/queries/project/similarProjects'
-import { Card } from 'ui'
-import { Inner, Scroll, Types } from './styles'
+import { Card, Loader } from 'ui'
+import { Inner, Scroll, Types, LoaderContainer } from './styles'
 
-function SimilarProjects({ id }) {
-  if (!id) {
-    return null
-  }
-
+function SimilarProjects({ id, closeModal }) {
   const { data, loading } = useQuery(SIMILAR_PROJECTS_QUERY, {
     variables: {
       id,
@@ -18,7 +14,11 @@ function SimilarProjects({ id }) {
   })
 
   if (loading) {
-    return null
+    return (
+      <LoaderContainer fullscreen>
+        <Loader />
+      </LoaderContainer>
+    )
   }
 
   return (
@@ -27,6 +27,7 @@ function SimilarProjects({ id }) {
         <Types>
           {data.similarProjects.edges.map(({ node }) => (
             <Card
+              onPress={closeModal}
               marginLeft={10}
               marginBottom={40}
               key={node.id}

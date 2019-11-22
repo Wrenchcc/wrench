@@ -12,9 +12,10 @@ const Card = memo(function Card({
   size = 235,
   marginLeft,
   marginBottom,
+  onPress,
 }) {
   return (
-    <Base size={size} marginLeft={marginLeft} marginBottom={marginBottom}>
+    <Base size={size} marginLeft={marginLeft} marginBottom={marginBottom} onClick={onPress}>
       <Link href="/project/[slug]" as={`/project/${slug}`}>
         <a>
           <Picture source={image} width={size} height={size} size={size} />

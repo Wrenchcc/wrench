@@ -34,7 +34,7 @@ function Project({ slug, isAuthenticated, action }) {
 
   const [showSimilarModal, closeSimilarModal] = useModal(() => (
     <Modal large close={closeSimilarModal}>
-      <SimilarProjects id={data && data.project.id} />
+      {data && <SimilarProjects id={data.project.id} closeModal={closeSimilarModal} />}
     </Modal>
   ))
 

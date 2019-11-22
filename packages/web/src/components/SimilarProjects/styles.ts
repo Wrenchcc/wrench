@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from 'styled-components'
 import { DEVICE } from 'ui/constants'
 
@@ -12,6 +13,14 @@ export const Inner = styled.div`
     height: 100%;
     width: 100%;
   }
+`
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  height: ${props => (props.fullscreen ? '100%' : 'auto')};
 `
 
 export const Scroll = styled.div`
