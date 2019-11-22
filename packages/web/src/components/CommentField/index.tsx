@@ -122,7 +122,9 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
 
   const handleOnChangeText = useCallback(
     ({ target }) => {
-      setText(target.value)
+      // TODO: Fix
+      const text = target.value.replace('[', '').replace(']', '')
+      setText(text)
     },
     [setText]
   )
@@ -323,10 +325,13 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
           onFocus={handleFocus}
           value={text}
           onKeyDown={handleOnKeyDown}
+          allowSpaceInQuery
+          singleLine
         >
           <Mention
-            markup="@__display__"
-            displayTransform={(id, display) => `@${display}`}
+            appendSpaceOnAdd
+            markup="@[__display__]"
+            displayTransform={(_, display) => `@${display}`}
             trigger="@"
             data={fetchUsers}
             style={{ left: 0 }}
