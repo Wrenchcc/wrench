@@ -49,7 +49,7 @@ function User({ username, isAuthenticated }) {
           openGraph: {
             title: t('user:title', params),
             description: t('user:description', params),
-            url: `https://wrench.cc/user/${username}`,
+            url: `https://wrench.cc/${username}`,
             type: 'profile',
             profile: {
               firstName: data.user.firstName,

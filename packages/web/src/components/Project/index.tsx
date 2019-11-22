@@ -100,6 +100,19 @@ function Project({ slug, isAuthenticated, action }) {
             fullName: data.project.user.fullName,
             username: data.project.user.username,
           }),
+          openGraph: {
+            title: t('Project:title', { title: data.project.title, type: data.project.type.title }),
+            description: t('Project:description', {
+              followers: data.project.followers.totalCount,
+              posts: data.project.posts.totalCount,
+              fullName: data.project.user.fullName,
+              username: data.project.user.username,
+            }),
+            url: `https://wrench.cc/project/${slug}`,
+            type: 'website',
+            images: [{ url: data.project.cover.uri }],
+            site_name: 'Wrench',
+          },
         }}
       />
 
