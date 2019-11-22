@@ -128,9 +128,9 @@
         "firstName": "First name",
         "lastName": "Last name",
         "bio": "Bio",
-        "website": "Website",
-        "save": "Save"
+        "website": "Website"
       },
+      "save": "Save",
       "toast": {
         "saves": "Settings saved",
         "error": "Something went wrong"
