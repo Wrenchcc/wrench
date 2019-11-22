@@ -1,8 +1,7 @@
 // @ts-nocheck
 import React, { memo } from 'react'
 import Link from 'next/link'
-import Text from '../Text'
-import { Base, Picture, ProjectName } from './styles'
+import { Base, Picture, Username, ProjectName } from './styles'
 
 const Card = memo(function Card({
   image,
@@ -24,9 +23,9 @@ const Card = memo(function Card({
       </Link>
       <Link href="/[username]" as={`/${user.username}`}>
         <a>
-          <Text fontSize={15} color="grey">
+          <Username fontSize={15} color="grey">
             {user.fullName}
-          </Text>
+          </Username>
         </a>
       </Link>
     </Base>

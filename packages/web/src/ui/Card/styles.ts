@@ -15,6 +15,13 @@ export const Base = styled.div`
   }
 `
 
+export const Username = styled(UiText)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+`
+
 export const ProjectName = styled(UiText)`
   margin-top: 10px;
   white-space: nowrap;
