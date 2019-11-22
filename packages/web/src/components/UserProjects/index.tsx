@@ -2,7 +2,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { pathOr } from 'ramda'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function UserProjects({ projects }) {
@@ -20,11 +19,7 @@ function UserProjects({ projects }) {
             <a>
               <Row>
                 <Box>
-                  <Image
-                    source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
-                    width={90}
-                    height={90}
-                  />
+                  <Image source={node.cover.uri} width={90} height={90} />
                 </Box>
                 <Content>
                   <Text>{node.title}</Text>

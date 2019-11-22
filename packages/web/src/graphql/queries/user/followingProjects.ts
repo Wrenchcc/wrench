@@ -28,14 +28,6 @@ export const USER_FOLOWING_PROJECTS = gql`
             cover {
               uri
             }
-            files: filesConnection(first: 1, type: IMAGE) {
-              edges {
-                node {
-                  id
-                  uri
-                }
-              }
-            }
           }
         }
       }
@@ -62,13 +54,8 @@ export const CURRENT_USER_FOLOWING_PROJECTS = gql`
               fullName
               username
             }
-            files: filesConnection(first: 1, type: IMAGE) {
-              edges {
-                node {
-                  id
-                  uri
-                }
-              }
+            cover {
+              uri
             }
           }
         }

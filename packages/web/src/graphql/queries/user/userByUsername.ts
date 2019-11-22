@@ -17,13 +17,8 @@ export const USER_BY_USERNAME = gql`
             id
             title
             slug
-            files: filesConnection(first: 1, type: IMAGE) {
-              edges {
-                node {
-                  id
-                  uri
-                }
-              }
+            cover {
+              uri
             }
             followers: followersConnection {
               totalCount

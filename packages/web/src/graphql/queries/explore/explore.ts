@@ -11,13 +11,8 @@ export const GET_EXPLORE = gql`
       edges {
         node {
           ...projectInfoSmall
-          files: filesConnection(first: 1, type: IMAGE) {
-            edges {
-              node {
-                id
-                uri
-              }
-            }
+          cover {
+            uri
           }
         }
       }

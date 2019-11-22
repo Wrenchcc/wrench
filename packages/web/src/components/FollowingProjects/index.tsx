@@ -3,7 +3,6 @@ import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/react-hooks'
-import { pathOr } from 'ramda'
 import { CURRENT_USER_FOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
@@ -29,11 +28,7 @@ function FollowingProjects() {
             <a>
               <Row>
                 <Box>
-                  <Image
-                    source={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
-                    width={90}
-                    height={90}
-                  />
+                  <Image source={node.cover.uri} width={90} height={90} />
                 </Box>
                 <Content>
                   <Text>{node.title}</Text>

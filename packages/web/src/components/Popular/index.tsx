@@ -1,6 +1,5 @@
 // @ts-nocheck
 import React, { Fragment } from 'react'
-import { pathOr } from 'ramda'
 import { useTranslation } from 'react-i18next'
 import { Card, Text } from 'ui'
 import { List, Title } from './styles'
@@ -18,7 +17,7 @@ function Popular({ projects }) {
           projects.edges.map(({ node }) => (
             <Card
               key={node.id}
-              image={pathOr(null, ['files', 'edges', [0], 'node', 'uri'], node)}
+              image={node.cover.uri}
               title={node.title}
               slug={node.slug}
               user={node.user}

@@ -10,13 +10,8 @@ export const GET_POPULAR_PROJECTS = gql`
       edges {
         node {
           ...projectInfoSmall
-          files: filesConnection(first: 1, type: IMAGE) {
-            edges {
-              node {
-                id
-                uri
-              }
-            }
+          cover {
+            uri
           }
         }
       }
