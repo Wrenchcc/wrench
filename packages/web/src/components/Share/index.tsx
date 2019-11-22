@@ -35,6 +35,9 @@ const generateShareableUrl = url => [
   {
     provider: 'copy',
     url,
+    style: {
+      width: 23,
+    },
   },
   {
     provider: 'cancel',
@@ -79,7 +82,7 @@ function Share({ closeModal }) {
       >
         {!cancel && (
           <div style={{ width: 24, marginRight: 15 }}>
-            <img style={{ height: '100%', ...style }} src={require(`./${provider}.svg`)} />
+            <img style={{ height: 'auto', ...style }} src={require(`./${provider}.svg`)} />
           </div>
         )}
         <Text medium>{renderComponent({ provider, url, closeModal })}</Text>

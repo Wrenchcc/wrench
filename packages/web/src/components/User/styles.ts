@@ -9,6 +9,7 @@ export const Name = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
+  justify-content: center;
 `
 
 export const Left = styled.div`
