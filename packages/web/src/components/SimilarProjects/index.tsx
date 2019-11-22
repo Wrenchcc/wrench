@@ -6,6 +6,10 @@ import { Card } from 'ui'
 import { Inner, Scroll, Types } from './styles'
 
 function SimilarProjects({ id }) {
+  if (!id) {
+    return null
+  }
+
   const { data, loading } = useQuery(SIMILAR_PROJECTS_QUERY, {
     variables: {
       id,
