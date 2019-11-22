@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { memo, useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Mention as M, MentionsInput } from 'react-mentions'
+import { Mention, MentionsInput } from 'react-mentions'
 import { useQuery, useLazyQuery, useMutation } from '@apollo/react-hooks'
 import { prepend, append } from 'ramda'
 import optimisticId from 'utils/optimisticId'
@@ -324,7 +324,8 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
           value={text}
           onKeyDown={handleOnKeyDown}
         >
-          <M
+          <Mention
+            markup="@__display__"
             displayTransform={(id, display) => `@${display}`}
             trigger="@"
             data={fetchUsers}
