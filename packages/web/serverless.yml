@@ -9,10 +9,10 @@ web:
     build: true
     defaultLambda:
       memory: 2048
-      runtime: nodejs12.x
+      runtime: nodejs10.x
     apiLambda:
       memory: 2048
-      runtime: nodejs12.x
+      runtime: nodejs10.x
     cloudfront:
       compress: true
       forward:
