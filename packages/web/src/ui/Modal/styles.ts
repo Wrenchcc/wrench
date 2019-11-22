@@ -35,4 +35,5 @@ export const Close = styled.button`
   width: 15px;
   background: url(${require('./close.svg')}) no-repeat;
   background-size: 15px;
+  z-index: 1001;
 `

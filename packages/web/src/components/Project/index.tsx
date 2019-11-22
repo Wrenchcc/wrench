@@ -9,9 +9,10 @@ import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
 import Follow from 'components/Follow'
 import Login from 'components/Login'
 import Share from 'components/Share'
+import SimilarProjects from 'components/SimilarProjects'
 import { Modal, useModal } from 'ui/Modal'
 import { Post, Title, Layout, Loader } from 'ui'
-import { Left, Right, ShareButton, Followers } from './styles'
+import { Left, Right, ShareButton, Similar, Followers } from './styles'
 
 const ACTION = 'follow'
 
@@ -25,9 +26,15 @@ function Project({ slug, isAuthenticated, action }) {
 
   const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
 
-  const [showModal, closeModal] = useModal(() => (
-    <Modal close={closeModal}>
-      <Login closeModal={closeModal} referral={`/project/${slug}?action=${ACTION}`} />
+  const [showLoginModal, closeLoginModal] = useModal(() => (
+    <Modal close={closeLoginModal}>
+      <Login closeModal={closeLoginModal} referral={`/project/${slug}?action=${ACTION}`} />
+    </Modal>
+  ))
+
+  const [showSimilarModal, closeSimilarModal] = useModal(() => (
+    <Modal large close={closeSimilarModal}>
+      <SimilarProjects id={data && data.project.id} />
     </Modal>
   ))
 
@@ -39,7 +46,7 @@ function Project({ slug, isAuthenticated, action }) {
 
   const toggleFollow = project => {
     if (!isAuthenticated) {
-      showModal()
+      showLoginModal()
       return
     }
 
@@ -111,6 +118,8 @@ function Project({ slug, isAuthenticated, action }) {
         )}
 
         <ShareButton onPress={showShare}>{t('Project:share')}</ShareButton>
+
+        <Similar onPress={showSimilarModal}>{t('Project:similar')}</Similar>
       </Left>
 
       <Right>

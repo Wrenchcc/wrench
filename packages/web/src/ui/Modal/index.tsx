@@ -11,6 +11,7 @@ export function Modal({ children, close, large = false }) {
     <Base>
       <Content large={large}>
         <Close onClick={close} />
+
         {children}
       </Content>
     </Base>

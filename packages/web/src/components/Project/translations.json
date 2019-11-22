@@ -4,12 +4,14 @@
       "title": "{{title}} - {{type}} Project",
       "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
       "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
-      "share": "Share"
+      "share": "Share",
+      "similar": "Similar projects"
     },
     "sv": {
       "title": "{{title}} - {{type}} Projekt",
       "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench",
-      "share": "Dela"
+      "share": "Dela",
+      "similar": "Liknande project"
     }
   }
 }

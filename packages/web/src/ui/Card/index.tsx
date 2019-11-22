@@ -4,12 +4,20 @@ import Link from 'next/link'
 import Text from '../Text'
 import { Base, Picture, ProjectName } from './styles'
 
-const Card = memo(function Card({ image, title, slug, user }) {
+const Card = memo(function Card({
+  image,
+  title,
+  slug,
+  user,
+  size = 235,
+  marginLeft,
+  marginBottom,
+}) {
   return (
-    <Base>
+    <Base size={size} marginLeft={marginLeft} marginBottom={marginBottom}>
       <Link href="/project/[slug]" as={`/project/${slug}`}>
         <a>
-          <Picture source={image} width={235} height={235} />
+          <Picture source={image} width={size} height={size} size={size} />
           <ProjectName medium>{title}</ProjectName>
         </a>
       </Link>

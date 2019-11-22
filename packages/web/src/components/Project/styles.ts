@@ -26,6 +26,11 @@ export const Right = styled.div`
 
 export const ShareButton = styled(UiButton)`
   width: 220px;
+  margin-bottom: 10px;
+`
+
+export const Similar = styled(UiButton)`
+  width: 220px;
 `
 
 export const Followers = styled(UiFollowers)`

@@ -20,7 +20,7 @@
       },
       "save": "Save",
       "toast": {
-        "saves": "Settings saved",
+        "saved": "Settings saved",
         "error": "Something went wrong"
       },
       "notifications": {
@@ -54,7 +54,7 @@
         "website": "Hemsida"
       },
       "toast": {
-        "saves": "Inställningar sparade",
+        "saved": "Inställningar sparade",
         "error": "Något gick fel"
       },
       "save": "Spara",
