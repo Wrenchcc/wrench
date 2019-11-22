@@ -19,3 +19,7 @@ export const Right = styled.div`
   margin-top: -120px;
   width: 300px;
 `
+
+export const Info = styled.div`
+  padding-top: 10px;
+`

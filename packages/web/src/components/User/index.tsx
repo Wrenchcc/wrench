@@ -8,7 +8,8 @@ import { USER_BY_USERNAME } from 'graphql/queries/user/userByUsername'
 import UserFollowingProjects from 'components/UserFollowingProjects'
 import { Text, Avatar, Layout, Post, Loader } from 'ui'
 import UserProjects from 'components/UserProjects'
-import { Top, Name, Left, Right } from './styles'
+import { withHttp } from 'utils/url'
+import { Top, Name, Left, Right, Info } from './styles'
 
 function User({ username, isAuthenticated }) {
   const { t } = useTranslation()
@@ -33,11 +34,32 @@ function User({ username, isAuthenticated }) {
           <Avatar uri={data.user.avatarUrl} size={80} />
           <Name>
             <Text medium fontSize={36} lineHeight={38}>
-              {data.user.firstName}
+              {data.user.fullName}
             </Text>
-            <Text medium fontSize={36} lineHeight={38}>
-              {data.user.lastName}
-            </Text>
+
+            {data.user.location || data.user.bio || data.user.website ? (
+              <Info>
+                {data.user.location && (
+                  <Text color="grey" fontSize={15}>
+                    {data.user.location}
+                  </Text>
+                )}
+
+                {data.user.bio && (
+                  <Text fontSize={15} style={{ marginTop: 5 }}>
+                    {data.user.bio}
+                  </Text>
+                )}
+
+                {data.user.website && (
+                  <Text fontSize={15} style={{ marginTop: 5 }}>
+                    <a rel="nofollow" href={withHttp(data.user.website)}>
+                      {data.user.website}
+                    </a>
+                  </Text>
+                )}
+              </Info>
+            ) : null}
           </Name>
         </Top>
       }

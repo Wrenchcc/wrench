@@ -51,6 +51,7 @@ export const Comment = styled(UiText)`
 export const Content = styled.div`
   margin-left: 10px;
   margin-top: -7px;
+  margin-right: 20px;
 `
 
 export const Inner = styled.div`

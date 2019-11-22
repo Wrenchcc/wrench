@@ -11,6 +11,9 @@ export const USER_BY_USERNAME = gql`
       lastName
       avatarUrl
       isOnline
+      bio
+      location
+      website
       projects: projectsConnection(first: 4) {
         edges {
           node {

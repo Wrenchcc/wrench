@@ -47,7 +47,9 @@ function Footer() {
                 <a href="mailto:feedback@wrench.cc">{t('Footer:feedback')}</a>
               </NavItem>
               <NavItem>
-                <a href="https://m.me/wrench.cc">{t('Footer:chat')}</a>
+                <a href="https://m.me/wrench.cc" rel="nofollow">
+                  {t('Footer:chat')}
+                </a>
               </NavItem>
               <NavItem>
                 <Link href="/faq">
