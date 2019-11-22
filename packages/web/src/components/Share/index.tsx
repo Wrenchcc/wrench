@@ -9,10 +9,17 @@ const generateShareableUrl = url => [
   {
     provider: 'facebook',
     url: `https://www.facebook.com/sharer/sharer.php?app_id=1174076712654826&u=${url}`,
+    style: {
+      marginLeft: 5,
+      width: 14,
+    },
   },
   {
     provider: 'messenger',
     url: `https://www.facebook.com/dialog/send?app_id=1174076712654826&link=${url}`,
+    style: {
+      width: 23,
+    },
   },
   // {
   //   provider: 'twitter',
@@ -21,6 +28,9 @@ const generateShareableUrl = url => [
   {
     provider: 'email',
     url: `mailto:?subject=See this Wrench project&body=See this Wrench project ${url}`,
+    style: {
+      width: 23,
+    },
   },
   {
     provider: 'copy',
@@ -56,7 +66,7 @@ function Share({ closeModal }) {
     }
   }
 
-  return providers.map(({ provider, cancel, url }) => {
+  return providers.map(({ provider, cancel, url, style }) => {
     return (
       <div
         key={provider}
@@ -68,7 +78,9 @@ function Share({ closeModal }) {
         }}
       >
         {!cancel && (
-          <img style={{ width: 24, marginRight: 15 }} src={require(`./${provider}.svg`)} />
+          <div style={{ width: 24, marginRight: 15 }}>
+            <img style={{ height: '100%', ...style }} src={require(`./${provider}.svg`)} />
+          </div>
         )}
         <Text medium>{renderComponent({ provider, url, closeModal })}</Text>
       </div>
