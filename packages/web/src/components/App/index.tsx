@@ -61,7 +61,7 @@ class App extends NextApp<Props> {
     const initialLanguage = queryLanguage || cookies.get(Cookies.PREFERRED_LANGUAGE) || 'en'
 
     // Set new lanugage
-    if (queryLanguage) {
+    if (queryLanguage && req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {
       res.setHeader(SET_COOKIE_HEADER, `${Cookies.PREFERRED_LANGUAGE}=${queryLanguage}; path=/;`)
     }
 
