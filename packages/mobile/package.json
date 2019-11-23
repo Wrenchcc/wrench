@@ -71,8 +71,8 @@
     "zustand": "^2.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.2",
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^5.0.0"

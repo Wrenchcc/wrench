@@ -1,6 +1,9 @@
 // @ts-nocheck
 import React from 'react'
+import * as parser from 'cookie'
+
 import NextApp from 'next/app'
+import nextCookies from 'next-cookies'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import ApolloClient from 'apollo-client'
@@ -14,9 +17,11 @@ import GlobalStyle from 'ui/GlobalStyle'
 import { ModalProvider } from 'ui/Modal'
 import Seo from 'utils/seo'
 import Header from 'components/Header'
-import Cookie, { Cookies } from 'services/cookie'
+import { Cookies } from 'services/cookie'
 import resources from 'translations/index.json'
 import i18n, { SUPPORTED_LOCALS } from 'i18n'
+
+const SET_COOKIE_HEADER = 'Set-Cookie'
 
 interface Props {
   apollo: ApolloClient<any>
@@ -38,7 +43,9 @@ Router.events.on('routeChangeComplete', (path: string) => {
 
 class App extends NextApp<Props> {
   public static async getInitialProps({ Component, ctx, router }) {
-    const { req } = ctx
+    const cookies = nextCookies(ctx)
+    const { req, res } = ctx
+
     const initialI18nStore = {}
     let i18nServerInstance = null
     let initialLanguage = null
@@ -56,17 +63,21 @@ class App extends NextApp<Props> {
     const queryLanguage = router.query.hl
 
     initialLanguage =
-      queryLanguage ||
-      Cookie.get(Cookies.PREFERRED_LANGUAGE) ||
-      (req && req.headers[ACCEPT_LANGUAGE])
+      queryLanguage || cookies[Cookies.PREFERRED_LANGUAGE] || (req && req.headers[ACCEPT_LANGUAGE])
 
     // Set lanugage
-    if (queryLanguage || (req && req.headers[ACCEPT_LANGUAGE])) {
-      Cookie.set(Cookies.PREFERRED_LANGUAGE, queryLanguage || req.headers[ACCEPT_LANGUAGE])
-    }
+    // if (queryLanguage || (req && req.headers[ACCEPT_LANGUAGE])) {
+    //   res.setHeader(
+    //     SET_COOKIE_HEADER,
+    //     parser.serialize(Cookies.PREFERRED_LANGUAGE, queryLanguage || req.headers[ACCEPT_LANGUAGE])
+    //   )
+    // }
 
     if (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {
-      Cookie.set(Cookies.VIEWER_COUNTRY, req.headers[CLOUDFRONT_COUNTRY_VIEWER])
+      res.setHeader(
+        SET_COOKIE_HEADER,
+        parser.serialize(Cookies.VIEWER_COUNTRY, req.headers[CLOUDFRONT_COUNTRY_VIEWER])
+      )
     }
 
     return {
@@ -75,11 +86,9 @@ class App extends NextApp<Props> {
       initialLanguage,
       pageProps,
       viewerCountry:
-        Cookie.get(Cookies.VIEWER_COUNTRY) ||
-        (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) ||
-        'us',
-      hidePromo: !!Cookie.get(Cookies.SHOW_PROMO),
-      isAuthenticated: !!Cookie.get(Cookies.ACCESS_TOKEN),
+        cookies['viewer-country'] || (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) || 'us',
+      hidePromo: cookies['show-promo-banner'],
+      isAuthenticated: !!cookies.access_token,
     }
   }
 
