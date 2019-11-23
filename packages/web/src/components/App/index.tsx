@@ -30,7 +30,6 @@ interface Props {
 }
 
 const CLOUDFRONT_COUNTRY_VIEWER = 'cloudfront-viewer-country'
-const ACCEPT_LANGUAGE = 'accept-language'
 
 Router.events.on('routeChangeError', () => NProgress.done())
 Router.events.on('routeChangeStart', () => NProgress.start())
@@ -59,17 +58,11 @@ class App extends NextApp<Props> {
 
     const queryLanguage = router.query.hl
 
-    const initialLanguage =
-      queryLanguage ||
-      cookies.get(Cookies.PREFERRED_LANGUAGE) ||
-      (req && req.headers[ACCEPT_LANGUAGE])
+    const initialLanguage = queryLanguage || cookies.get(Cookies.PREFERRED_LANGUAGE) || 'en'
 
     // Set new lanugage
-    if (queryLanguage || (req && req.headers[ACCEPT_LANGUAGE])) {
-      res.setHeader(
-        SET_COOKIE_HEADER,
-        `${Cookies.PREFERRED_LANGUAGE}=${queryLanguage || req.headers[ACCEPT_LANGUAGE]}; path=/;`
-      )
+    if (queryLanguage) {
+      res.setHeader(SET_COOKIE_HEADER, `${Cookies.PREFERRED_LANGUAGE}=${queryLanguage}; path=/;`)
     }
 
     if (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {
