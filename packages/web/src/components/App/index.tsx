@@ -1,7 +1,5 @@
 // @ts-nocheck
 import React from 'react'
-import * as parser from 'cookie'
-
 import NextApp from 'next/app'
 import nextCookies from 'next-cookies'
 import Router from 'next/router'
@@ -76,7 +74,7 @@ class App extends NextApp<Props> {
     if (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {
       res.setHeader(
         SET_COOKIE_HEADER,
-        parser.serialize(Cookies.VIEWER_COUNTRY, req.headers[CLOUDFRONT_COUNTRY_VIEWER])
+        `${Cookies.VIEWER_COUNTRY}=${req.headers[CLOUDFRONT_COUNTRY_VIEWER]} value; path=/;`
       )
     }
 
