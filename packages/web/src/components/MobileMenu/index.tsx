@@ -31,18 +31,12 @@ function MobileMenu({ isAuthenticated, onClose }) {
     },
     {
       onlyPublic: true,
-      openModal: () => {
-        showModal()
-        onClose()
-      },
+      openModal: showModal,
       title: t('MobileMenu:login'),
     },
     {
       onlyPublic: true,
-      openModal: () => {
-        showModal()
-        onClose()
-      },
+      openModal: showModal,
       title: t('MobileMenu:register'),
     },
     {
