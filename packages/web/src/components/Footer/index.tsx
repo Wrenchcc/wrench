@@ -14,7 +14,7 @@ function Footer() {
           <Column>
             <Text medium>Wrench</Text>
             <ul>
-              <NavItem>
+              {/*<NavItem>
                 <Link href="/about">
                   <a>{t('Footer:about')}</a>
                 </Link>
@@ -23,7 +23,7 @@ function Footer() {
                 <Link href="/press">
                   <a>{t('Footer:press')}</a>
                 </Link>
-              </NavItem>
+              </NavItem>*/}
               <NavItem>
                 <Link href="/download">
                   <a>{t('Footer:download')}</a>
@@ -51,11 +51,11 @@ function Footer() {
                   {t('Footer:chat')}
                 </a>
               </NavItem>
-              <NavItem>
+              {/*<NavItem>
                 <Link href="/faq">
                   <a>{t('Footer:faq')}</a>
                 </Link>
-              </NavItem>
+              </NavItem>*/}
             </ul>
           </Column>
 
