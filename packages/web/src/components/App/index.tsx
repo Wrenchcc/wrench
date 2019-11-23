@@ -88,7 +88,7 @@ class App extends NextApp<Props> {
         (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) ||
         cookies.get(Cookies.VIEWER_COUNTRY) ||
         'US',
-      hidePromo: cookies['show-promo-banner'],
+      hidePromo: cookies.get(Cookies.SHOW_PROMO),
       isAuthenticated: !!cookies.get(Cookies.ACCESS_TOKEN),
     }
   }
