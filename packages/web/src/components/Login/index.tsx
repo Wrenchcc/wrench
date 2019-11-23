@@ -31,7 +31,7 @@ export default function Login({ closeModal, referral = '/' }) {
 
       <FacebookLogin
         appId={FACEBOOK_APP_ID}
-        redirectUri="https://wrench.cc/feed"
+        redirectUri="https://wrench.cc"
         fields={FACEBOOK_SCOPE}
         callback={({ accessToken }) =>
           handleFacebookAuth({
