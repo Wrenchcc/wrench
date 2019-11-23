@@ -14,9 +14,9 @@ export default {
     type: 'website',
     images: [
       {
-        url: '/public/logo.png',
-        width: 750,
-        height: 750,
+        url: 'https://wrench.cc/public/preview@3x.jpg',
+        width: 1800,
+        height: 1128,
       },
     ],
     site_name: 'Wrench',
