@@ -1,8 +1,14 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
 import UiImage from 'ui/Image'
+import { DEVICE } from 'ui/constants'
 
-export const Base = styled.div``
+// TODO: Fix in mobile
+export const Base = styled.div`
+  @media ${DEVICE.TABLET} {
+    display: none;
+  }
+`
 
 export const Image = styled(UiImage)`
   width: 87px;

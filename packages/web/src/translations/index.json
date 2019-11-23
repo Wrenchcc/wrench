@@ -73,6 +73,13 @@
       "settings": "Settings",
       "logout": "Logout"
     },
+    "MobileMenu": {
+      "explore": "Explore",
+      "feed": "Feed",
+      "download": "Download Apps",
+      "login": "Log in",
+      "register": "Sign up"
+    },
     "Notifications": {
       "title": "No notifications yet.",
       "description": "Here you will see comments, new followers and other activities."
@@ -277,6 +284,13 @@
       "profile": "Profil",
       "settings": "Inställningar",
       "logout": "Logga ut"
+    },
+    "MobileMenu": {
+      "explore": "Utforska",
+      "feed": "Feed",
+      "download": "Ladda ner Appar",
+      "login": "Logga in",
+      "register": "Registrera dig"
     },
     "Notifications": {
       "title": "Inga notifikationer ännu.",

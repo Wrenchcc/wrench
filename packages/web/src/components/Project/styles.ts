@@ -12,6 +12,7 @@ export const Left = styled.div`
     margin-right: 0;
     max-width: 100%;
     position: static;
+    margin-bottom: 50px;
   }
 `
 
@@ -27,10 +28,18 @@ export const Right = styled.div`
 export const ShareButton = styled(UiButton)`
   width: 220px;
   margin-bottom: 10px;
+
+  @media ${DEVICE.TABLET} {
+    display: none;
+  }
 `
 
 export const Similar = styled(UiButton)`
   width: 220px;
+
+  @media ${DEVICE.TABLET} {
+    display: none;
+  }
 `
 
 export const Followers = styled(UiFollowers)`

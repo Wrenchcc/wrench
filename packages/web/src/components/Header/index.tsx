@@ -14,6 +14,7 @@ import { Modal, useModal } from 'ui/Modal'
 import Login from 'components/Login'
 import Logout from 'components/Logout'
 import Notifications from 'components/Notifications'
+import MobileMenu from 'components/MobileMenu'
 import {
   Base,
   Nav,
@@ -40,6 +41,8 @@ function Header({ isAuthenticated }) {
   })
 
   const [openUserMenu, setUserMenu] = useState(false)
+  const [isMobileMenuOpen, setMobileMenu] = useState(false)
+  const toggleMobileMenu = () => setMobileMenu(!isMobileMenuOpen)
 
   const toggleMenu = () => {
     setUserMenu(!openUserMenu)
@@ -114,9 +117,13 @@ function Header({ isAuthenticated }) {
         </a>
       </Link>
 
-      <OpenMobileMenu inverted={inverted}>
+      <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>
         <img src={inverted ? require('./menu-white.svg') : require('./menu.svg')} alt="Wrench" />
       </OpenMobileMenu>
+
+      {isMobileMenuOpen && (
+        <MobileMenu isAuthenticated={isAuthenticated} onClose={toggleMobileMenu} />
+      )}
 
       <Search inverted={inverted} />
 

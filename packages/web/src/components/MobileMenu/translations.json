@@ -1,0 +1,18 @@
+{
+  "MobileMenu": {
+    "en": {
+      "explore": "Explore",
+      "feed": "Feed",
+      "download": "Download Apps",
+      "login": "Log in",
+      "register": "Sign up"
+    },
+    "sv": {
+      "explore": "Utforska",
+      "feed": "Feed",
+      "download": "Ladda ner Appar",
+      "login": "Logga in",
+      "register": "Registrera dig"
+    }
+  }
+}

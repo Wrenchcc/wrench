@@ -11,10 +11,13 @@ export const List = styled.div`
   margin-top: 50px;
 
   @media ${DEVICE.TABLET} {
-    margin-left: -10px;
     flex-direction: row;
     flex-wrap: nowrap;
+    margin-left: -10px;
+    flex-flow: row nowrap;
     overflow-y: scroll;
+    margin-right: -20px;
+
     -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {

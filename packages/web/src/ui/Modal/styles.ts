@@ -1,5 +1,6 @@
 // @ts-nocheck
 import styled from 'styled-components'
+import { DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   width: 100%;
@@ -23,6 +24,12 @@ export const Content = styled.div`
   height: ${props => (props.large ? '65%' : 'auto')};
   box-sizing: border-box;
   position: relative;
+
+  @media ${DEVICE.TABLET} {
+    width: 100%;
+    height: 100vh;
+    max-width: initial;
+  }
 `
 
 export const Close = styled.button`

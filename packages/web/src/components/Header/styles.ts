@@ -18,7 +18,7 @@ export const Base = styled.div`
   box-sizing: border-box;
 
   @media ${DEVICE.TABLET} {
-    padding: 10px;
+    padding: 20px;
     height: auto;
     box-shadow: none;
   }
@@ -32,12 +32,12 @@ export const Nav = styled.nav`
 
 export const OpenMobileMenu = styled.button`
   position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 50px;
-  height: 50px;
+  right: 20px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
   border: 1px solid
-    ${props => (props.inverted ? 'rgba(230 231 233, 0.3)' : COLORS.ULTRA_LIGHT_GREY)};
+    ${props => (props.inverted ? 'rgba(230, 231, 233, 0.3)' : COLORS.ULTRA_LIGHT_GREY)};
   border-radius: 1px;
   display: none;
   justify-content: center;

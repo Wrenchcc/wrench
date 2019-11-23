@@ -11,6 +11,25 @@ export default createGlobalStyle`
   button {
     outline: none;
     background: none;
+
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    color: inherit;
+    font: inherit;
+
+   line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    -webkit-appearance: none;
   }
 
   @font-face {
@@ -69,7 +88,6 @@ export default createGlobalStyle`
   .carousel__dot-group {
     position: absolute;
     bottom: 15px;
-    z-index: 100;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
   }

@@ -48,7 +48,7 @@ export const AppScreens = styled.picture`
   }
 
   @media ${DEVICE.TABLET} {
-    width: 95%;
+    width: 80%;
     align-self: center;
   }
 `
