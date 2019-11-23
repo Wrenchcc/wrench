@@ -31,21 +31,26 @@ function MobileMenu({ isAuthenticated, onClose }) {
     },
     {
       onlyPublic: true,
-      openModal: showModal,
+      openModal: () => {
+        showModal()
+        onClose()
+      },
       title: t('MobileMenu:login'),
     },
     {
       onlyPublic: true,
-      openModal: showModal,
+      openModal: () => {
+        showModal()
+        onClose()
+      },
       title: t('MobileMenu:register'),
     },
     {
       requireAuth: true,
       signOut: () => {
         client.resetStore()
-        closeModal()
+        onClose()
       },
-
       title: t('MobileMenu:signout'),
     },
     {
