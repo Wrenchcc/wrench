@@ -45,8 +45,13 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
               return forward(operation).subscribe(subscriber)
             })
-            .catch(() => client.resetStore())
+            .catch(() => {
+              client.resetStore()
+            })
         } catch (err) {
+          // TODO
+          Cookie.remove(Cookies.ACCESS_TOKEN)
+          Cookie.remove(Cookies.REFRESH_TOKEN)
           observer.error(err)
         }
 

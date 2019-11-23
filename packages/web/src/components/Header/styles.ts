@@ -36,6 +36,7 @@ export const OpenMobileMenu = styled.button`
   top: 20px;
   width: 40px;
   height: 40px;
+  z-index: 100;
   border: 1px solid
     ${props => (props.inverted ? 'rgba(230, 231, 233, 0.3)' : COLORS.ULTRA_LIGHT_GREY)};
   border-radius: 1px;
