@@ -31,6 +31,7 @@ export default function Login({ closeModal, referral = '/' }) {
 
       <FacebookLogin
         appId={FACEBOOK_APP_ID}
+        disableMobileRedirect
         fields={FACEBOOK_SCOPE}
         callback={({ accessToken }) =>
           handleFacebookAuth({
