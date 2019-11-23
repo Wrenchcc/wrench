@@ -2,12 +2,14 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useApolloClient } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'
 import { Base, Nav, NavLink, Close } from './styles'
 
 function MobileMenu({ isAuthenticated, onClose }) {
+  const client = useApolloClient()
   const router = useRouter()
   const { t } = useTranslation()
 
@@ -28,12 +30,23 @@ function MobileMenu({ isAuthenticated, onClose }) {
       title: t('MobileMenu:explore'),
     },
     {
+      onlyPublic: true,
       openModal: showModal,
       title: t('MobileMenu:login'),
     },
     {
+      onlyPublic: true,
       openModal: showModal,
       title: t('MobileMenu:register'),
+    },
+    {
+      requireAuth: true,
+      signOut: () => {
+        client.resetStore()
+        closeModal()
+      },
+
+      title: t('MobileMenu:signout'),
     },
     {
       href: '/download',
@@ -55,13 +68,21 @@ function MobileMenu({ isAuthenticated, onClose }) {
       </Close>
 
       <Nav>
-        {nav.map(({ title, href, requireAuth, openModal, last }) => {
+        {nav.map(({ title, href, requireAuth, openModal, last, onlyPublic, signOut }) => {
           if (!isAuthenticated && requireAuth) {
+            return null
+          }
+
+          if (isAuthenticated && onlyPublic) {
             return null
           }
 
           if (openModal) {
             return <NavLink onClick={openModal}>{title}</NavLink>
+          }
+
+          if (signOut) {
+            return <NavLink onClick={signOut}>{title}</NavLink>
           }
 
           return (

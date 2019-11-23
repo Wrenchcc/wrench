@@ -5,14 +5,17 @@
       "feed": "Feed",
       "download": "Download Apps",
       "login": "Log in",
-      "register": "Sign up"
+      "register": "Sign up",
+      "signout": "Sign out"
     },
     "sv": {
       "explore": "Utforska",
       "feed": "Feed",
       "download": "Ladda ner Appar",
       "login": "Logga in",
-      "register": "Registrera dig"
+      "register": "Registrera dig",
+      "signout": "Logga ut"
+
     }
   }
 }
