@@ -83,7 +83,7 @@ class App extends NextApp<Props> {
       initialLanguage,
       pageProps,
       viewerCountry:
-        (req && req.headers['cloudfront-viewer-country']) || cookies['viewer-country'] || 'US',
+        (req && req.headers['cloudfront-viewer-country']) || cookies['viewer_country'] || 'US',
       hidePromo: cookies['show-promo-banner'],
       isAuthenticated: !!cookies.access_token,
     }

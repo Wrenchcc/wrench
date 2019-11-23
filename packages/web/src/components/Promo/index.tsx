@@ -33,7 +33,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
 
   const hidePromo = () => {
     setHidden(true)
-    setValue(false)
+    setValue('false')
   }
 
   return (
