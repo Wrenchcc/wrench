@@ -46,7 +46,6 @@ class App extends NextApp<Props> {
 
     const initialI18nStore = {}
     let i18nServerInstance = null
-    let initialLanguage = null
 
     let pageProps = {}
 
@@ -60,21 +59,21 @@ class App extends NextApp<Props> {
 
     const queryLanguage = router.query.hl
 
-    initialLanguage =
+    const initialLanguage =
       queryLanguage || cookies[Cookies.PREFERRED_LANGUAGE] || (req && req.headers[ACCEPT_LANGUAGE])
 
-    // Set lanugage
+    // Set new lanugage
     // if (queryLanguage || (req && req.headers[ACCEPT_LANGUAGE])) {
     //   res.setHeader(
     //     SET_COOKIE_HEADER,
-    //     parser.serialize(Cookies.PREFERRED_LANGUAGE, queryLanguage || req.headers[ACCEPT_LANGUAGE])
+    //     `${Cookies.PREFERRED_LANGUAGE}=${queryLanguage || req.headers[ACCEPT_LANGUAGE]}; path=/;`
     //   )
     // }
 
     if (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {
       res.setHeader(
         SET_COOKIE_HEADER,
-        `${Cookies.VIEWER_COUNTRY}=${req.headers[CLOUDFRONT_COUNTRY_VIEWER]} value; path=/;`
+        `${Cookies.VIEWER_COUNTRY}=${req.headers[CLOUDFRONT_COUNTRY_VIEWER]}; path=/;`
       )
     }
 
@@ -84,7 +83,7 @@ class App extends NextApp<Props> {
       initialLanguage,
       pageProps,
       viewerCountry:
-        cookies['viewer-country'] || (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) || 'us',
+        cookies['viewer-country'] || (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) || 'US',
       hidePromo: cookies['show-promo-banner'],
       isAuthenticated: !!cookies.access_token,
     }
