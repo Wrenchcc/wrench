@@ -3,11 +3,11 @@ import fetch from 'isomorphic-unfetch'
 import { Cookies } from 'services/cookie'
 import { serialize } from 'cookie'
 
-const API_ENDPOINT = 'https://api.wrench.cc/graphql'
+// const API_ENDPOINT = 'https://api.wrench.cc/graphql'
 
 export default async function handle({ body }, res) {
   try {
-    const response = await fetch(API_ENDPOINT, {
+    const response = await fetch('https://api.wrench.cc/graphql', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
