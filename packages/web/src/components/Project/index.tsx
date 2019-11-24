@@ -44,11 +44,14 @@ function Project({ slug, isAuthenticated, action }) {
     [data]
   )
 
-  const [showShare, closeShareModal] = useModal(() => (
-    <Modal close={closeShareModal}>
-      <Share closeModal={closeShareModal} />
-    </Modal>
-  ))
+  const [showShare, closeShareModal] = useModal(
+    () => (
+      <Modal close={closeShareModal}>
+        <Share closeModal={closeShareModal} dynamicLink={data.project.dynamicLink} />
+      </Modal>
+    ),
+    [data]
+  )
 
   const toggleFollow = project => {
     if (!isAuthenticated) {

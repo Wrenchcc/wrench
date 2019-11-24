@@ -1,7 +1,6 @@
 // @ts-nocheck
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRouter } from 'next/router'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Text } from 'ui'
 
@@ -45,10 +44,9 @@ const generateShareableUrl = url => [
   },
 ]
 
-function Share({ closeModal }) {
+function Share({ closeModal, dynamicLink }) {
   const { t } = useTranslation()
-  const router = useRouter()
-  const providers = generateShareableUrl(`https://wrench.cc/${router.query.slug}`)
+  const providers = generateShareableUrl(dynamicLink)
 
   const renderComponent = ({ provider, url, closeModal }) => {
     switch (provider) {
