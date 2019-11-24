@@ -121,7 +121,7 @@ function Project({ slug, isAuthenticated, action }) {
             type: 'website',
             images: [
               {
-                url: data.project.cover.uri,
+                url: `${data.project.cover.uri}?w=650&h=650&dpr=1`,
                 width: 640,
                 height: 640,
               },

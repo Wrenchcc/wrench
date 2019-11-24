@@ -1,6 +1,3 @@
-name: wrench-web
-stage: production
-
 web:
   component: ./infra/serverless-next-edge
   inputs:

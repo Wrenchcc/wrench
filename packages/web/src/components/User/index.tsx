@@ -80,7 +80,7 @@ function User({ username, isAuthenticated }) {
             },
             images: [
               {
-                url: data.user.avatarUrl,
+                url: `${data.user.avatarUrl}?w=160&h=160&dpr=1`,
                 alt: t('user:imagealt'),
                 width: 160,
                 height: 160,
