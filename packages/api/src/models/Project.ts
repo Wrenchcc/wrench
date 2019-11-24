@@ -42,7 +42,6 @@ export default class Project extends BaseEntity {
   }
 
   public static async getPopularProjects() {
-    // TODO: Change to 7 day
     return Project.query(
       `
       SELECT
@@ -77,7 +76,7 @@ export default class Project extends BaseEntity {
       WHERE
         "f_count" IS NOT NULL
         AND "p_count" IS NOT NULL
-        AND "createdAt" > NOW()::timestamp - interval '60 day'
+        AND "createdAt" > NOW()::timestamp - interval '14 day'
       GROUP BY
         p. "id",
         "f_count",
