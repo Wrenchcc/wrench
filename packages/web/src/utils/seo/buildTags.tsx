@@ -295,14 +295,19 @@ export default config => {
   }
 
   const href = `${DOMAIN}${config.router.asPath}`
-  tagsToRender.push(<link rel="canonical" href={href} key="canonical" />)
-  tagsToRender.push(<link rel="alternate" href={href} hrefLang="x-default" key="alternate" />)
+
+  const cleanHref = href.indexOf('?') > 0 ? href.substring(0, href.indexOf('?')) : href
+
+  tagsToRender.push(<link rel="canonical" href={cleanHref} key="canonical" />)
+  tagsToRender.push(<link rel="alternate" href={cleanHref} hrefLang="x-default" key="alternate" />)
   tagsToRender.push(
     <meta name="apple-itunes-app" content="app-id=1450213123" key="apple-itunes-app" />
   )
 
   tagsToRender.push(
-    SUPPORTED_LOCALS.map(lng => <link rel="alternate" href={`${href}?hl=${lng}`} hrefLang={lng} />)
+    SUPPORTED_LOCALS.map(lng => (
+      <link rel="alternate" href={`${cleanHref}?hl=${lng}`} hrefLang={lng} />
+    ))
   )
 
   return tagsToRender

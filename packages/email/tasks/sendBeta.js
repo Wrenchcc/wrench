@@ -1,14 +1,14 @@
 const fs = require('fs')
 const { SES } = require('aws-sdk')
 
-const debug = require('debug')('task:sns:launch')
+const debug = require('debug')('task:sns:beta')
 
 const { AWS_SES_REGION, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY } = process.env
 
 const basePath = `${__dirname}/../src`
 
-const fixtures = fs.readFileSync(`${basePath}/launch/fixtures.json`, 'utf8')
-const subscribers = fs.readFileSync(`${basePath}/launch/subscribers.json`, 'utf8')
+const fixtures = fs.readFileSync(`${basePath}/beta/fixtures.json`, 'utf8')
+const subscribers = fs.readFileSync(`${basePath}/beta/subscribers.json`, 'utf8')
 
 const ses = new SES({
   apiVersion: '2010-12-01',
@@ -25,22 +25,24 @@ async function asyncForEach(array, callback) {
   }
 }
 
-asyncForEach(JSON.parse(subscribers), async email => {
+asyncForEach(JSON.parse(subscribers), async ({ email, firstName }) => {
   try {
     await waitFor(50)
 
     await ses
       .sendTemplatedEmail({
         Source: 'Wrench <no-reply@wrench.cc>',
-        Template: 'launch',
+        Template: 'beta',
         Destination: {
           ToAddresses: [email],
         },
-        TemplateData: fixtures,
+        TemplateData: JSON.stringify({
+          firstName,
+        }),
       })
       .promise()
 
-    debug('Successfully sent message to: %s', email)
+    debug('Successfully sent message to: %s', email, firstName)
   } catch (err) {
     debug('Error sending message: %o', err)
   }

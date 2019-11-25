@@ -7,7 +7,7 @@
     "ses:create": "cross-env DEBUG=task* dotenv -e .env -- node tasks/createTemplate.js $*",
     "ses:delete": "cross-env DEBUG=task* dotenv -e .env -- node tasks/deleteTemplate.js $*",
     "ses:test": "cross-env DEBUG=task* dotenv -e .env -- node tasks/testTemplate.js $*",
-    "ses:launch": "cross-env DEBUG=task* dotenv -e .env -- node tasks/sendLaunch.js $*"
+    "ses:beta": "cross-env DEBUG=task* dotenv -e .env -- node tasks/sendBeta.js $*"
   },
   "devDependencies": {
     "aws-sdk": "^2.573.0",
