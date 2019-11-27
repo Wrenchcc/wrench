@@ -18,6 +18,7 @@ export default async function createClient() {
 
   const persistor = new CachePersistor({
     cache,
+    trigger: 'background',
     storage: AsyncStorage,
   })
 

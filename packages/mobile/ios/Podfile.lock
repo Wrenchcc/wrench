@@ -140,13 +140,13 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
-  - Permission-Camera (2.0.3):
+  - Permission-Camera (2.0.4):
     - RNPermissions
-  - Permission-Microphone (2.0.3):
+  - Permission-Microphone (2.0.4):
     - RNPermissions
-  - Permission-PhotoLibrary (2.0.3):
+  - Permission-PhotoLibrary (2.0.4):
     - RNPermissions
-  - Protobuf (3.10.0)
+  - Protobuf (3.11.0)
   - RCTRequired (0.61.5)
   - RCTTypeSafety (0.61.5):
     - FBLazyVector (= 0.61.5)
@@ -353,7 +353,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (7.5.1):
+  - react-native-webview (7.5.2):
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -414,7 +414,7 @@ PODS:
   - RNGoogleSignin (2.1.1):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.0.3):
+  - RNPermissions (2.0.4):
     - React
   - RNRate (1.1.10):
     - React
@@ -676,10 +676,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  Permission-Camera: 731959b8ffb5757e1ee85893fb49c3aa021ef512
-  Permission-Microphone: aa3ee97912920c0faeaf8d6dd8ef91de1449386c
-  Permission-PhotoLibrary: 23a656a9694dfba3f8ae1cbc0f33c67b35db0065
-  Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
+  Permission-Camera: 907d26263ce6cf10983b07e8801a6939f8b74567
+  Permission-Microphone: ed3bfe858d5d0fd0bf0f21d00ceb3a98a809eec6
+  Permission-PhotoLibrary: 1aef9e4154a236d1239cf5ffc717de8217932658
+  Protobuf: 394b2bf29ec303f4325e3ee4892c09e675647152
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
@@ -700,7 +700,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 2aadbfef6b9eaa9e89b306ae3e31e6e870a6306d
+  react-native-webview: d1b30cc9128256ec1a9c6d10fb572231bd371337
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -718,7 +718,7 @@ SPEC CHECKSUMS:
   RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: 7add966bb5d90ee8cf38d4341f87814474357972
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
-  RNPermissions: 9e437a90de84a5402ff689d4da233730b81556c2
+  RNPermissions: 35959d09546f1cd60c129ee128146a120ea595c3
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
   RNReactNativeHapticFeedback: e11a4da0ce174e9f88b03cbaf5d76d94633cdee2
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
