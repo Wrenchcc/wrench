@@ -76,7 +76,7 @@ export default class Project extends BaseEntity {
       WHERE
         "f_count" IS NOT NULL
         AND "p_count" IS NOT NULL
-        AND "createdAt" > NOW()::timestamp - interval '14 day'
+        AND "createdAt" > NOW()::timestamp - interval '7 day'
       GROUP BY
         p. "id",
         "f_count",
