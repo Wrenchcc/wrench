@@ -1,8 +1,7 @@
 import React, { useState, useCallback, memo, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { TabView, TabBar, PagerExperimental } from 'react-native-tab-view'
-import * as GestureHandler from 'react-native-gesture-handler'
+import { TabView, TabBar } from 'react-native-tab-view'
 import { useDebounce } from 'utils/hooks'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
@@ -37,10 +36,6 @@ const styles = {
     elevation: 0,
   },
 }
-
-const renderPager = props => (
-  <PagerExperimental GestureHandler={GestureHandler} swipeEnabled animationEnabled {...props} />
-)
 
 function Search({ query, active }) {
   const { t } = useTranslation()
@@ -99,7 +94,6 @@ function Search({ query, active }) {
         }}
         renderScene={renderScene}
         renderTabBar={renderTabBar}
-        renderPager={renderPager}
         onIndexChange={handleIndexChange}
         initialLayout={initialLayout}
         lazy

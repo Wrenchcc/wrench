@@ -180,7 +180,6 @@
 -dontwarn com.facebook.datasource.**
 -keep class com.wrench.BuildConfig { *; }
 
-
 # Startup
 
 -keep class com.google.firebase.provider.FirebaseInitProvider
