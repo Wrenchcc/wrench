@@ -16,6 +16,7 @@ import { COLORS } from 'ui/constants'
 
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
+const DEFAULT_AVATAR = 'default.jpg'
 const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
 const UPLOAD_PATH = 'avatar'
@@ -78,7 +79,7 @@ function EditProfile({ onboarding }) {
       // NOTE: Get filename from saved avatarUrl to submit to backend
       let uploadedAvatar = avatarUrl.replace(`${CDN_DOMAIN}/avatar/`, '')
 
-      if (upload) {
+      if (upload && uploadedAvatar !== DEFAULT_AVATAR) {
         try {
           await uploadAsync(upload.url, {
             uri: avatarUrl,
@@ -94,7 +95,7 @@ function EditProfile({ onboarding }) {
       await editUser({
         variables: {
           input: {
-            avatarUrl: uploadedAvatar,
+            avatarUrl: uploadedAvatar === DEFAULT_AVATAR ? '' : uploadedAvatar,
             firstName,
             lastName,
             location,
