@@ -14,6 +14,7 @@ const keyExtractor = item => item.id
 function SearchLocation({ iconLeft, onPress, autoFocus }) {
   const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState('')
+  const [focus, setFocus] = useState(false)
   const [results, setResults] = useState([])
 
   const query = useDebounce(searchTerm, 300)
@@ -72,6 +73,8 @@ function SearchLocation({ iconLeft, onPress, autoFocus }) {
             autoCorrect={false}
             returnKeyType="search"
             autoFocus={autoFocus}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
           />
         </Center>
       </Header>
@@ -87,7 +90,7 @@ function SearchLocation({ iconLeft, onPress, autoFocus }) {
         keyboardShouldPersistTaps="always"
       />
 
-      <Footer />
+      {!focus && <Footer />}
     </Base>
   )
 }

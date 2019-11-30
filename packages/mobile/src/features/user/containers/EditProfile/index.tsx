@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ActivityIndicator, ScrollView, KeyboardAvoidingView, View } from 'react-native'
+import { ActivityIndicator, ScrollView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { useQuery, useMutation, preSignUrl, CURRENT_USER_QUERY, EDIT_USER_MUTATION } from 'gql'
 import { useUserStore, USER } from 'store'
-import { Header, Text, Title, Icon, Touchable, Avatar, Input } from 'ui'
+import { Header, Text, Title, Icon, Touchable, Avatar, Input, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
-import { isIphone } from 'utils/platform'
 import { FILE_TYPES } from 'utils/enums'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './styles'
 import uploadAsync from 'utils/storage/uploadAsync'
@@ -17,7 +16,6 @@ import { COLORS } from 'ui/constants'
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
 const DEFAULT_AVATAR = 'default.jpg'
-const KEYBOARD_BEHAVIOR = isIphone && 'position'
 const MAX_CHARACTERS = 100
 const UPLOAD_PATH = 'avatar'
 
@@ -180,9 +178,9 @@ function EditProfile({ onboarding }) {
           )
         }
       />
-      <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR}>
+      <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 20, marginTop: 45 }}
+          contentContainerStyle={{ paddingHorizontal: 20, marginTop: 45, paddingBottom: 60 }}
           keyboardDismissMode="on-drag"
         >
           <ChangeAvatar>
