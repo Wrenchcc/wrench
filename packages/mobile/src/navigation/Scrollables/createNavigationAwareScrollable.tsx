@@ -50,6 +50,7 @@ export default function createNavigationAwareScrollable(Component) {
       paddingBottom,
       tabIndex,
       componentId,
+      extraContentInset = 0,
       ...props
     },
     ref
@@ -77,7 +78,7 @@ export default function createNavigationAwareScrollable(Component) {
               currentComponentName === SCREENS.ME)
           ) {
             if (scrollableNode.scrollToOffset !== null) {
-              scrollableNode.scrollToOffset({ offset: -CONTENT_INSET })
+              scrollableNode.scrollToOffset({ offset: -(CONTENT_INSET + extraContentInset) })
             }
           }
         }
@@ -150,15 +151,15 @@ export default function createNavigationAwareScrollable(Component) {
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"
         keyExtractor={keyExtractor}
-        contentInset={{ top: CONTENT_INSET }}
-        contentOffset={{ y: -CONTENT_INSET }}
+        contentInset={{ top: CONTENT_INSET + extraContentInset }}
+        contentOffset={{ y: -(CONTENT_INSET + extraContentInset) }}
         contentContainerStyle={{
           ...contentContainerStyle,
           flex: initialFetch ? 1 : 0,
           paddingBottom,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
-          paddingTop: isAndroid ? CONTENT_INSET : 0,
+          paddingTop: isAndroid ? CONTENT_INSET + extraContentInset : 0,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...keyboardDismissProp}

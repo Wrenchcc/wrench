@@ -195,6 +195,36 @@ export const GET_POST = gql`
   ${fragment.POST_FRAGMENT}
 `
 
+export const GET_PROJECT_TYPES = gql`
+  query getProjectTypes {
+    types: projectTypes {
+      id
+      title
+      imageUrl
+    }
+  }
+`
+
+export const GET_PROJECTS = gql`
+  query getProjects($typeId: ID, $after: String, $first: Int, $type: ProjectSortType!) {
+    projects(typeId: $typeId, after: $after, first: $first, type: $type) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          cover {
+            uri
+          }
+          ...projectFragment
+        }
+      }
+    }
+  }
+  ${fragment.PROJECT_FRAGMENT}
+`
+
 //
 // export const COMMENT_QUERY = gql``
 //

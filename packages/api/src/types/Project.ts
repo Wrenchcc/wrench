@@ -45,6 +45,7 @@ export default gql`
 
   enum ProjectSortType {
     POPULAR
+    RECENT
   }
 
   type ProjectType {
@@ -81,6 +82,7 @@ export default gql`
       first: Int = 10
       last: Int = 10
       type: ProjectSortType!
+      typeId: ID
     ): ProjectsConnection
 
     projectSuggestions(

@@ -4,7 +4,7 @@ import { pathOr } from 'ramda'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 
 const usePaginatedQuery = type => (query, options) => {
-  const { fetchMore, ...result } = useQuery(query, {
+  const { fetchMore, error, ...result } = useQuery(query, {
     ...options,
     notifyOnNetworkStatusChange: true,
   })
@@ -12,7 +12,7 @@ const usePaginatedQuery = type => (query, options) => {
   const data = pathOr({}, ['data', type], result)
 
   const handleFetchMore = useCallback(
-    variables =>
+    () =>
       fetchMore({
         variables: {
           after: data.edges[data.edges.length - 1].cursor,
@@ -33,7 +33,8 @@ const usePaginatedQuery = type => (query, options) => {
             },
           }
         },
-      })[result]
+      }),
+    [result]
   )
 
   return {

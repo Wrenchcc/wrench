@@ -53,7 +53,6 @@ function LikePost({ post }) {
           color={post.likes.isLiked ? 'spark' : 'dark'}
           style={{ marginRight: 10 }}
           onPress={handleToggleLike}
-          hapticFeedback="impactLight"
         />
       </Animated.View>
 

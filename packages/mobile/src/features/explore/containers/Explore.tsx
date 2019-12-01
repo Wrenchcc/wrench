@@ -1,15 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { BackHandler } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { Layout, FlatList, SCREENS, currentComponentName } from 'navigation'
-import { useQuery, PUBLISHERS_QUERY } from 'gql'
+import { FlatList, SCREENS, currentComponentName } from 'navigation'
+import Header from 'navigation/Layout/Header'
 import { getRecentPosts } from 'graphql/queries/getExplore'
 import Add from 'components/Add'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
 import Post from 'components/Post'
+import ProjectTypes from 'components/ProjectTypes'
 import Popular from 'features/explore/components/Popular'
-import Publishers from '../components/Publishers'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -19,12 +19,9 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
 
-  const { data, loading, refetch: refetchPublishers } = useQuery(PUBLISHERS_QUERY)
-
   const handleRefetch = useCallback(() => {
     refetch()
-    refetchPublishers()
-  }, [refetch, refetchPublishers])
+  }, [refetch])
 
   const handleQueryChange = useCallback(
     text => {
@@ -74,8 +71,8 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
   return (
     <>
       <Search query={query} active={searchActive} />
-      <Layout
-        headerRight={searchActive || <Add />}
+
+      <Header
         headerLeft={
           <SearchBar
             onChangeQuery={handleQueryChange}
@@ -86,26 +83,24 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
             searchActive={searchActive}
           />
         }
-      >
-        <FlatList
-          tabIndex={1}
-          spacingSeparator
-          initialNumToRender={2}
-          ListHeaderComponent={
-            <>
-              {!loading && <Publishers data={data} />}
-              <Popular />
-            </>
-          }
-          data={posts}
-          refetch={handleRefetch}
-          fetchMore={fetchMore}
-          isRefetching={isRefetching}
-          isFetching={isFetching}
-          hasNextPage={hasNextPage}
-          renderItem={renderItem}
-        />
-      </Layout>
+        headerRight={searchActive || <Add />}
+        stickyComponent={!searchActive && <ProjectTypes />}
+      />
+
+      <FlatList
+        extraContentInset={50}
+        tabIndex={1}
+        spacingSeparator
+        initialNumToRender={2}
+        ListHeaderComponent={<Popular />}
+        data={posts}
+        refetch={handleRefetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
     </>
   )
 }

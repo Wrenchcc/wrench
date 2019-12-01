@@ -9,6 +9,9 @@ export default function registerScreens(client) {
   Navigation.registerComponent(SCREENS.MENTION, () => HOC(require('components/Mention').default))
   Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(require('components/WebView').default))
   Navigation.registerComponent(SCREENS.EDIT_POST, () => HOC(require('components/EditPost').default))
+  Navigation.registerComponent(SCREENS.CATEGORIES, () =>
+    HOC(require('features/explore/containers/Categories').default)
+  )
   Navigation.registerComponent(SCREENS.ONBOARDING, () =>
     HOC(require('features/signIn/containers/Onboarding').default)
   )

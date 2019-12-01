@@ -5,7 +5,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks'
 import { useTranslation } from 'react-i18next'
 import { GET_PROJECT_TYPES } from 'graphql/queries/project/projectTypes'
 import { EDIT_USER_MUTATION } from 'graphql/mutations/user/editUser'
-import { Text, ProgressBar, Button } from 'ui'
+import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Types, Title, Scroll, Image, Picture, Overlay, Next } from './styles'
 
 const MIN_ITEMS = 3

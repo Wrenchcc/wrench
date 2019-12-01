@@ -22,6 +22,7 @@ export const PLATFORM_TYPES = {
 
 export const PROJECT_SORT_TYPES = {
   POPULAR: 'POPULAR',
+  RECENT: 'RECENT',
 }
 
 export const SEARCH_TYPES = {

@@ -52,7 +52,6 @@ function LikeComment({ comment }) {
           source={sparkSmall}
           color={comment.likes.isLiked ? 'spark' : 'dark'}
           onPress={handleToggleLike}
-          hapticFeedback="impactLight"
         />
       </Animated.View>
     </Base>

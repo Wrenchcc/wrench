@@ -418,8 +418,6 @@ PODS:
     - React
   - RNRate (1.1.10):
     - React
-  - RNReactNativeHapticFeedback (1.8.2):
-    - React
   - RNReanimated (1.4.0):
     - React
   - RNShare (2.0.0):
@@ -497,7 +495,6 @@ DEPENDENCIES:
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNRate (from `../node_modules/react-native-rate`)
-  - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNShare (from `../node_modules/react-native-share`)
   - SDWebImageWebPCoder
@@ -634,8 +631,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions"
   RNRate:
     :path: "../node_modules/react-native-rate"
-  RNReactNativeHapticFeedback:
-    :path: "../node_modules/react-native-haptic-feedback"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNShare:
@@ -720,7 +715,6 @@ SPEC CHECKSUMS:
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNPermissions: 35959d09546f1cd60c129ee128146a120ea595c3
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
-  RNReactNativeHapticFeedback: e11a4da0ce174e9f88b03cbaf5d76d94633cdee2
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
   SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
