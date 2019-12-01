@@ -40,6 +40,15 @@ export const LIKE_COMMENT_MUTATION = gql`
   }
 `
 
+export const EDIT_POST_MUTATION = gql`
+  mutation editPost($id: ID!, $input: EditPostInput!) {
+    editPost(id: $id, input: $input) {
+      ...postFragment
+    }
+  }
+  ${fragment.POST_FRAGMENT}
+`
+
 // export const ADD_COMMENT_MUTATION = gql`
 //   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
 //     addComment(postId: $postId, commentId: $commentId, input: $input) {
@@ -78,13 +87,6 @@ export const LIKE_COMMENT_MUTATION = gql`
 //   }
 // `
 //
-// export const EDIT_POST_MUTATION = gql`
-//   mutation editPost($id: ID!, $input: EditPostInput!) {
-//     editPost(id: $id, input: $input) {
-//       ...postInfo
-//     }
-//   }
-// `
 //
 // export const ADD_PROJECT_MUTATION = gql`
 //   mutation addProject($input: ProjectInput!) {

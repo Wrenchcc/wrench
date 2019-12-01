@@ -1,0 +1,16 @@
+{
+  "EditPost": {
+    "en": {
+      "placeholder": "Add a text about your post",
+      "cancel": "Cancel",
+      "headerTitle": "Edit post",
+      "save": "Save"
+    },
+    "sv": {
+      "placeholder": "Skriv en text för ditt inlägg",
+      "cancel": "Avbryt",
+      "headerTitle": "Redigera inlägg",
+      "save": "Spara"
+    }
+  }
+}

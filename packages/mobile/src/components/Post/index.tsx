@@ -1,17 +1,14 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import { Alert, Keyboard } from 'react-native'
+import React, { useCallback } from 'react'
+import { Alert } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useActionSheet } from '@expo/react-native-action-sheet'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, showEditPost, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
-import { isAndroid } from 'utils/platform'
 import { deletePost } from 'graphql/mutations/post/deletePost'
-import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, EditPost } from 'ui'
+import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
 import { Base, Top, Headline, Content, Spacer } from './styles'
-
-const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
 function Post({
   post,
@@ -23,11 +20,14 @@ function Post({
 }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
-  const [isEditing, setIsEditing] = useState(false)
-  const [alertOpen, setAlertOpen] = useState(false)
-  const [hasChanged, setHasChanged] = useState(false)
 
-  const toggleEdit = () => setIsEditing(!isEditing)
+  const handleEdit = useCallback(
+    () =>
+      showEditPost({
+        id: post.id,
+      }),
+    [post]
+  )
 
   const { showActionSheetWithOptions } = useActionSheet()
 
@@ -47,40 +47,6 @@ function Post({
       user: post.user,
     })
   }, [post])
-
-  useEffect(() => {
-    const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
-      if (hasChanged && isEditing && !alertOpen) {
-        setAlertOpen(true)
-
-        Alert.alert(
-          t('Post:options:alertTitle'),
-          t('Post:options:alertDescription'),
-          [
-            {
-              onPress: () => {
-                setIsEditing(false)
-                setAlertOpen(false)
-              },
-              style: 'destructive',
-              text: t('Post:options:discard'),
-            },
-            {
-              onPress: () => setAlertOpen(false),
-              style: 'cancel',
-              text: t('Post:options:cancel'),
-            },
-          ],
-          { cancelable: false }
-        )
-      } else if (!hasChanged) {
-        setIsEditing(false)
-        setAlertOpen(false)
-      }
-    })
-
-    return () => keyboardEventListener.remove()
-  }, [hasChanged, isEditing, alertOpen])
 
   const onDelete = useCallback(() => {
     Alert.alert(
@@ -113,7 +79,7 @@ function Post({
         },
         index => {
           if (index === 0) {
-            toggleEdit()
+            handleEdit()
           }
           if (index === 1) {
             onDelete()
@@ -136,7 +102,7 @@ function Post({
         }
       )
     }
-  }, [toggleEdit, onDelete, showActionSheetWithOptions])
+  }, [handleEdit, onDelete, showActionSheetWithOptions])
 
   return (
     <Base paddingBottom={paddingBottom}>
@@ -153,25 +119,16 @@ function Post({
           </Headline>
         )}
 
-        {isEditing ? (
-          <EditPost
-            post={post}
-            color={withoutTitle ? 'dark' : 'grey'}
-            onSubmit={toggleEdit}
-            hasChanged={hasChanged => setHasChanged(hasChanged)}
-          />
-        ) : (
-          <Text
-            onPress={navigateToProject}
-            disabled={withoutTitle}
-            color={withoutTitle ? 'dark' : 'grey'}
-            fontSize={15}
-            lineHeight={22}
-            numberOfLines={numberOfLines}
-          >
-            {post.caption}
-          </Text>
-        )}
+        <Text
+          onPress={navigateToProject}
+          disabled={withoutTitle}
+          color={withoutTitle ? 'dark' : 'grey'}
+          fontSize={15}
+          lineHeight={22}
+          numberOfLines={numberOfLines}
+        >
+          {post.caption}
+        </Text>
 
         <Spacer />
 

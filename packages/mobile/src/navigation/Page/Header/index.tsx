@@ -9,7 +9,14 @@ import styles from './styles'
 
 const { interpolate, Extrapolate } = Animated
 
-function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onPress }) {
+function Header({
+  scrollY,
+  headerTitle,
+  headerLeft,
+  headerRight,
+  headerAnimation = true,
+  onPress,
+}) {
   const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
 
@@ -26,7 +33,7 @@ function Header({ scrollY, headerTitle, headerRight, headerAnimation = true, onP
       <View style={styles.header}>
         <View style={styles.inner}>
           <View style={styles.left}>
-            <Icon onPress={handleNavigation} source={arrowLeft} />
+            {headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}
           </View>
           <Animated.View style={{ opacity, width: '42%' }}>
             <Text medium center numberOfLines={1} onPress={onPress}>

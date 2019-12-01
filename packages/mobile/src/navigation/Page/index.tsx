@@ -1,5 +1,4 @@
 import React, { useRef, cloneElement, useCallback, useEffect } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { NAVIGATION } from '../constants'
 import Header from './Header'
@@ -10,6 +9,7 @@ function Page({
   scrollPosition,
   children,
   headerTitle,
+  headerLeft,
   headerRight,
   stickyFooter,
   headerAnimation,
@@ -35,6 +35,7 @@ function Page({
       <Header
         headerTitle={headerTitle}
         scrollY={scrollY.current}
+        headerLeft={headerLeft}
         headerRight={headerRight}
         headerAnimation={headerAnimation}
         onPress={scrollToTop}

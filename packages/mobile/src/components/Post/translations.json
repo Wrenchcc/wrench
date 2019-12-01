@@ -7,7 +7,6 @@
         "report": "Report",
         "edit": "Edit",
         "delete": "Delete",
-        "discard": "Discard",
         "cancel": "Cancel"
       }
     },
@@ -18,7 +17,6 @@
         "report": "Rapportera",
         "edit": "Redigera",
         "delete": "Radera",
-        "discard": "Släng",
         "cancel": "Avbryt"
       }
     }

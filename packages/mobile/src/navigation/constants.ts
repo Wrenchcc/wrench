@@ -41,6 +41,7 @@ export enum SCREENS {
   SIGN_IN = 'SIGN_IN',
   USER = 'USER',
   WEBVIEW = 'WEBVIEW',
+  EDIT_POST = 'EDIT_POST',
 }
 
 export enum STATUS_BAR {

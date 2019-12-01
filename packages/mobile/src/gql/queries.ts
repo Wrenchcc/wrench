@@ -186,6 +186,15 @@ export const SIMILAR_PROJECTS_QUERY = gql`
   ${fragment.PROJECT_FRAGMENT}
 `
 
+export const GET_POST = gql`
+  query getPost($id: ID!) {
+    post(id: $id) {
+      ...postFragment
+    }
+  }
+  ${fragment.POST_FRAGMENT}
+`
+
 //
 // export const COMMENT_QUERY = gql``
 //

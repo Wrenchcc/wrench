@@ -24,6 +24,12 @@
       "placeholder": "Add a comment...",
       "post": "Post"
     },
+    "EditPost": {
+      "placeholder": "Add a text about your post",
+      "cancel": "Cancel",
+      "headerTitle": "Edit post",
+      "save": "Save"
+    },
     "LikePost": {
       "like": "{{count}} spark",
       "like_plural": "{{count, humanFormat}} sparks"
@@ -38,7 +44,6 @@
         "report": "Report",
         "edit": "Edit",
         "delete": "Delete",
-        "discard": "Discard",
         "cancel": "Cancel"
       }
     },
@@ -264,9 +269,6 @@
     "Edit": {
       "edit": "Edit"
     },
-    "EditPost": {
-      "placeholder": "Add a text about your post"
-    },
     "EmptyState": {
       "project": {
         "title": "1. Create your first project.",
@@ -372,6 +374,12 @@
       "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
     },
+    "EditPost": {
+      "placeholder": "Skriv en text för ditt inlägg",
+      "cancel": "Avbryt",
+      "headerTitle": "Redigera inlägg",
+      "save": "Spara"
+    },
     "LikePost": {
       "like": "{{count}} gnista",
       "like_plural": "{{count, humanFormat}} gnistor"
@@ -386,7 +394,6 @@
         "report": "Rapportera",
         "edit": "Redigera",
         "delete": "Radera",
-        "discard": "Släng",
         "cancel": "Avbryt"
       }
     },
@@ -535,7 +542,7 @@
       "firstName": "Förnamn",
       "lastName": "Efternamn",
       "place": "Stad, Land",
-      "bio": "Bio",
+      "bio": "Beskrivning",
       "website": "Hemsida",
       "change": "Ändra",
       "save": "Spara",
@@ -611,9 +618,6 @@
     },
     "Edit": {
       "edit": "Redigera"
-    },
-    "EditPost": {
-      "placeholder": "Skriv en text för ditt inlägg"
     },
     "EmptyState": {
       "project": {

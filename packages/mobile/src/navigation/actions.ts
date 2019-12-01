@@ -68,6 +68,32 @@ export function dismissMention() {
   }
 }
 
+export function showEditPost(passProps) {
+  if (!overlay) {
+    Navigation.showOverlay({
+      component: {
+        id: SCREENS.EDIT_POST,
+        name: SCREENS.EDIT_POST,
+        options: {
+          overlay: {
+            handleKeyboardEvents: true,
+          },
+        },
+        passProps,
+      },
+    })
+  }
+
+  overlay = true
+}
+
+export function dismissEditPost() {
+  if (overlay) {
+    overlay = false
+    Navigation.dismissOverlay(SCREENS.EDIT_POST)
+  }
+}
+
 export function dismissModal(root, currentTabIndex = TABS_INDEX.FEED) {
   Navigation.dismissModal(componentId)
 

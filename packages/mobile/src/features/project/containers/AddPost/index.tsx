@@ -82,6 +82,7 @@ function AddPost({ addPost: addPostMutation }) {
 
           <Input
             scrollEnabled={false}
+            keyboardType="twitter"
             multiline
             autoFocus
             color="dark"
