@@ -5,7 +5,7 @@ import TextExtraction from './TextExtraction'
 export const PATTERNS = {
   email: /\S+@\S+\.\S+/,
   phone: /[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,7}/,
-  url: /((http|https):\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,15}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
+  url: /((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/))?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,15}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
 }
 
 function ParsedText({ parse, children, childrenProps, ...restProps }) {
