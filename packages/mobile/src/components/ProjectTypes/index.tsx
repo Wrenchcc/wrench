@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, memo } from 'react'
 import { ScrollView } from 'react-native'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
@@ -19,10 +19,8 @@ function ProjectTypes() {
     return null
   }
 
-  const data = typesData.types.sort((a, b) => {
-    return userData.user.interestedIn.indexOf(a.id) > userData.user.interestedIn.indexOf(b.id)
-      ? 1
-      : -1
+  const data = typesData.types.sort(a => {
+    return userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1
   })
 
   return (
@@ -50,4 +48,4 @@ function ProjectTypes() {
   )
 }
 
-export default ProjectTypes
+export default memo(ProjectTypes)
