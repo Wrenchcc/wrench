@@ -4941,10 +4941,10 @@ react-lifecycles-compat@2.0.0:
   dependencies:
     react "^16.9.0"
 
-react-native-camera@^3.13.0:
-  version "3.13.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.13.0.tgz#999741e3b5e56426ee678055d0bc4e57e90631cc"
-  integrity sha512-iMB8ODN1abcuUiWy62+YD2ae/p/ADMOGcFi+41KV7FpNKjbIM8fYbIx2oLyljTxXvBPL5pMovqW2aw5DEwf3IQ==
+react-native-camera@^3.13.1:
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.13.1.tgz#016a011ca264d7044e2f1ad11fc624b90020aeb9"
+  integrity sha512-HXCo75sFYOJRqtbiG12ttoG6K4UdS1mfOwu6NoQmxj6IV2KrNgdOYO4YTyLymGUXNs3LyOWpJskVvCRupoFA3A==
   dependencies:
     prop-types "^15.6.2"
 
@@ -5013,10 +5013,10 @@ react-native-linear-gradient@^2.5.6:
   version "1.0.0"
   resolved "https://github.com/pontusab/react-native-media-library#db9a59f398814ddd6c55a62ddeeb30b319b0d8a8"
 
-react-native-navigation@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-4.0.0.tgz#3e73e2cf2d30a44e74e1db8fa2edf0fbf6410e4a"
-  integrity sha512-hYkro/zU5+K0x1VY3Gr0x9PDuu2b+/SbDd3fKZDxtGoCfltOs1xXW4m4MIYcW6WfEwMuBXr6/BXc1SwQDetkrg==
+react-native-navigation@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-4.0.2.tgz#171cf65c29cad70c7e227f3ad4575e91d66020ba"
+  integrity sha512-bc8vWL76IGnAeg3F59S9LBhzVHHPAKDIKNKgL+bRAjFakr4CvWhoo/tWPZThzw1ScrueEGyCj+4Z/1wT6dIgwQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"

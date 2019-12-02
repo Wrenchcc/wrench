@@ -21,7 +21,6 @@ function ProjectTypes() {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      decelerationRate="fast"
       style={{
         paddingBottom: 10,
         backgroundColor: 'white',
