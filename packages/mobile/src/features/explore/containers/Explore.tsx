@@ -40,6 +40,7 @@ const {
 } = Animated
 
 const HEADER_HEIGHT = 60
+const INITIAL_SCROLL_OFFSET = -170
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
@@ -58,8 +59,6 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
 
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
-
-  const initialScroll = 0
 
   const state = {
     finished: new Value(0),
@@ -83,7 +82,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
     cond(
       or(
         eq(isAndroid.current, 0),
-        and(neq(translateY.current, initialScroll), neq(translateY.current, -HEADER_HEIGHT))
+        and(neq(translateY.current, INITIAL_SCROLL_OFFSET), neq(translateY.current, -HEADER_HEIGHT))
       ),
       block([
         cond(clockRunning(clock.current), 0, [
@@ -97,7 +96,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
           set(
             config.toValue,
             cond(
-              greaterThan(scrollY.current, initialScroll + HEADER_HEIGHT),
+              greaterThan(scrollY.current, INITIAL_SCROLL_OFFSET + HEADER_HEIGHT),
               sub(translateYSnap.current, translateY.current),
               multiply(-1, translateY.current)
             )
@@ -172,7 +171,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
         nativeEvent: ({ contentOffset }) =>
           block([
             set(scrollY.current, contentOffset.y),
-            set(scrollYClamped.current, max(initialScroll, contentOffset.y)),
+            set(scrollYClamped.current, max(INITIAL_SCROLL_OFFSET, contentOffset.y)),
             set(scrollYDiff.current, diff(scrollYClamped.current)),
             cond(
               neq(dragging.current, 0),
