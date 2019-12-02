@@ -8,6 +8,7 @@ export const USER_FRAGMENT = gql`
     lastName
     username
     avatarUrl
+    isSilhouette
     isOnline
     website
     location

@@ -101,7 +101,11 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
       {emoji && <EmojiList onPress={handleEmojiShortcut} />}
 
       <Inner>
-        <Avatar uri={data.user && data.user.avatarUrl} />
+        <Avatar
+          uri={data.user && data.user.avatarUrl}
+          fallback={data.user.isSilhouette}
+          fullName={data.user.fullName}
+        />
         <Input
           ref={inputRef}
           onSubmitEditing={(text.length > 0 && handleSubmit) || null}

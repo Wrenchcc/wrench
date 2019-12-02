@@ -8,7 +8,12 @@ function MentionUser({ user, onPress }) {
 
   return (
     <Base onPress={handleOnPress}>
-      <Avatar uri={user.avatarUrl} size={40} />
+      <Avatar
+        uri={user.avatarUrl}
+        size={40}
+        fallback={user.isSilhouette}
+        fullName={user.fullName}
+      />
       <Content>
         <Text>{user.fullName}</Text>
       </Content>

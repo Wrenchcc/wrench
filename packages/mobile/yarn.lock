@@ -2977,10 +2977,10 @@ find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-flipper-plugin-react-native-performance@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/flipper-plugin-react-native-performance/-/flipper-plugin-react-native-performance-0.3.0.tgz#88d06f2d6fa800ff6220a6a4f8163581f12d11b0"
-  integrity sha512-LTqK1moCVzudeKcfzGIOt+Si4m4ajTxwr2ZQi7+5zGVPCPyIoARpyttoXOCvRrVidODU1AjdRgW/rCNX/ug7ig==
+flipper-plugin-react-native-performance@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/flipper-plugin-react-native-performance/-/flipper-plugin-react-native-performance-0.4.0.tgz#b008c499da1d5835e7f2acce09e4ed43a6e6714a"
+  integrity sha512-hXE1YwqSZbFgI+cwxeQsd3Pt9t/QpM4B6ygOJsMws4uvZbsJ5HOfZ2jkH5cP61xF3dTSLjQd/EZnif6gj02vug==
 
 for-in@^1.0.2:
   version "1.0.2"

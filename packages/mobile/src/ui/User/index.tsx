@@ -18,7 +18,14 @@ function User({ data }) {
 
   return (
     <Base onPress={handleNavigation}>
-      <Avatar uri={data.avatarUrl} size={40} isOnline={data.isOnline} onPress={handleNavigation} />
+      <Avatar
+        uri={data.avatarUrl}
+        size={40}
+        isOnline={data.isOnline}
+        onPress={handleNavigation}
+        fallback={data.isSilhouette}
+        fullName={data.fullName}
+      />
       <Content>
         <Text medium>{data.fullName}</Text>
         <Text color="light_grey" fontSize={15}>

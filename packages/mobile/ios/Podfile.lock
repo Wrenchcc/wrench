@@ -88,7 +88,7 @@ PODS:
     - glog
     - OpenSSL-Universal (= 1.0.2.19)
   - Flipper-PeerTalk (0.0.4)
-  - flipper-plugin-react-native-performance (0.3.0):
+  - flipper-plugin-react-native-performance (0.4.0):
     - React
   - Flipper-RSocket (1.0.0):
     - Flipper-Folly (~> 2.0)
@@ -735,7 +735,7 @@ SPEC CHECKSUMS:
   Flipper: de4c7cd47f5af3a51e18ddcafcb848b2bf681c2a
   Flipper-Folly: bcae82405dafd18ac9f8d9d4902fd1c2ef2a7e77
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
-  flipper-plugin-react-native-performance: d909e365b47de70131f4cf0e2701bcf89fcc991f
+  flipper-plugin-react-native-performance: 7ac4a94bf3656b6a998929a2e3b918f69631fa04
   Flipper-RSocket: 1260a31c05c238eabfa9bb8a64e3983049048371
   FlipperKit: baf8f573cb47ae9ae9aedb543edb02824d6dc451
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51

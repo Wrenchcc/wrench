@@ -11,6 +11,7 @@ export default gql`
         firstName
         lastName
         avatarUrl
+        isSilhouette
         isOnline
         projectCount
       }

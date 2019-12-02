@@ -184,7 +184,12 @@ function EditProfile({ onboarding }) {
           keyboardDismissMode="on-drag"
         >
           <ChangeAvatar>
-            <Avatar uri={avatarUrl} size={120} />
+            <Avatar
+              uri={avatarUrl}
+              size={120}
+              fullName={data.user.fullName}
+              fallback={data.user.isSilhouette}
+            />
             <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
               <Text color="white" medium fontSize={15}>
                 {t('EditProfile:change')}

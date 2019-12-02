@@ -101,7 +101,13 @@ function Post({
   return (
     <Base paddingBottom={paddingBottom}>
       <Top>
-        <Avatar uri={post.user.avatarUrl} onPress={navigateToUser} isOnline={post.user.isOnline} />
+        <Avatar
+          uri={post.user.avatarUrl}
+          onPress={navigateToUser}
+          isOnline={post.user.isOnline}
+          fallback={post.user.isSilhouette}
+          fullName={post.user.fullName}
+        />
         <Icon source={share} onPress={handleActionSheet} hitSlop={20} />
       </Top>
       <Content>

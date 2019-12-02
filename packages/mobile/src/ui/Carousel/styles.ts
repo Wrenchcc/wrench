@@ -21,9 +21,9 @@ export const DotBase = styled.View`
 `
 
 export const Dot = styled.View`
-  width: 10;
-  height: 10;
-  border-radius: 10;
+  width: 8;
+  height: 8;
+  border-radius: 8;
   border-width: 1.5;
   border-color: white;
   margin-left: 3.5;

@@ -134,6 +134,8 @@ function Item({
             isOnline={user.isOnline}
             badgeSize={isReply && 'small'}
             onPress={handleNavigation}
+            fallback={user.isSilhouette}
+            fullName={user.fullName}
           />
           <Content>
             <Row>

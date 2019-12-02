@@ -9,6 +9,7 @@ export default gql`
     lastName
     username
     avatarUrl
+    isSilhouette
     isOnline
     dynamicLink
     website

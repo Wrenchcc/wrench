@@ -3,6 +3,7 @@ import { hasNotch } from 'utils/platform'
 import { STATUS_BAR } from './constants'
 
 export default {
+  modalPresentationStyle: 'fullScreen',
   bottomTab: {
     iconInsets: {
       bottom: hasNotch ? -10 : -5,

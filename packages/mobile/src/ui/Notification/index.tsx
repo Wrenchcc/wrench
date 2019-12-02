@@ -118,6 +118,8 @@ function Notification({ data, deleteNotification }) {
             size={40}
             onPress={navigateToUser}
             isOnline={data.user.isOnline}
+            fallback={data.user.isSilhouette}
+            fullName={data.user.fullName}
           />
           <Content>
             <Text onPress={navigateToUser}>{data.user.fullName}</Text>

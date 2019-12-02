@@ -33,7 +33,7 @@ function Categories({ id, title }) {
 
     return (
       <Card
-        style={{ paddingBottom: 20, paddingLeft: 10, paddingRight: 10 }}
+        style={{ paddingBottom: 40, paddingLeft: 10, paddingRight: 10 }}
         size={ITEM_SIZE}
         image={project.cover}
         title={project.title}
