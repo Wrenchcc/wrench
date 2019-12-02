@@ -1,11 +1,11 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Touchable from 'ui/Touchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { width, Wrapper, Picture, GUTTER, BAR_SPACE, SIZE } from './styles'
+import { Wrapper, Picture, GUTTER, SIZE, DotBase, Dot } from './styles'
 
-const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
+const SNAP_INTERVAL = SIZE
 
 const getItemLayout = (_, index) => ({
   index,
@@ -15,8 +15,28 @@ const getItemLayout = (_, index) => ({
 
 const keyExtractor = ({ node }) => node.id
 
+function Pagination({ files, currentIndex }) {
+  return (
+    <DotBase pointerEvents="none">
+      {files.map((_, index) => (
+        <Dot key={index} active={currentIndex === index} />
+      ))}
+    </DotBase>
+  )
+}
+
 function Carousel({ onPress, files }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const scrollEnabled = files.edges.length > 1
+
+  const handleScroll = ({ nativeEvent }) => {
+    const offset = nativeEvent.contentOffset.x
+    const index = Math.round(offset / SIZE)
+
+    if (index !== currentIndex) {
+      setCurrentIndex(index)
+    }
+  }
 
   const renderItem = ({ item, index }) => (
     <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
@@ -36,24 +56,30 @@ function Carousel({ onPress, files }) {
   )
 
   return (
-    <FlatList
-      keyExtractor={keyExtractor}
-      getItemLayout={getItemLayout}
-      initialNumToRender={2}
-      data={files.edges}
-      scrollEnabled={scrollEnabled}
-      horizontal
-      directionalLockEnabled
-      showsHorizontalScrollIndicator={false}
-      decelerationRate="fast"
-      snapToInterval={SNAP_INTERVAL}
-      snapToAlignment="start"
-      renderItem={renderItem}
-      style={{
-        marginLeft: -GUTTER,
-        marginRight: -GUTTER,
-      }}
-    />
+    <>
+      <FlatList
+        keyExtractor={keyExtractor}
+        getItemLayout={getItemLayout}
+        initialNumToRender={2}
+        data={files.edges}
+        scrollEnabled={scrollEnabled}
+        scrollEventThrottle={200}
+        horizontal
+        directionalLockEnabled
+        showsHorizontalScrollIndicator={false}
+        decelerationRate="fast"
+        snapToInterval={SNAP_INTERVAL}
+        snapToAlignment="center"
+        onScroll={handleScroll}
+        renderItem={renderItem}
+        style={{
+          marginLeft: -GUTTER,
+          marginRight: -GUTTER,
+        }}
+      />
+
+      {scrollEnabled && <Pagination files={files.edges} currentIndex={currentIndex} />}
+    </>
   )
 }
 
