@@ -39,8 +39,8 @@ const {
   interpolate,
 } = Animated
 
-const HEADER_HEIGHT = 60
-const INITIAL_SCROLL_OFFSET = -170
+const HEADER_HEIGHT = 50
+const INITIAL_SCROLL_OFFSET = -160
 
 const renderItem = ({ item }) => <Post post={item.node} />
 

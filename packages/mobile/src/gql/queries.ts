@@ -23,6 +23,7 @@ export const CURRENT_USER_QUERY = gql`
       }
       interestedIn {
         id
+        title
       }
       ...userProjectsFragment
     }
