@@ -13,6 +13,8 @@ export default isAuthenticated(async (_, args, ctx) => {
       userId: ctx.userId,
     }))
 
+    // Note: Delete pre saved and then save new ones
+    await ctx.db.UserInterestedIn.delete({ userId: ctx.userId })
     await ctx.db.UserInterestedIn.save(interestedIn)
   }
 
