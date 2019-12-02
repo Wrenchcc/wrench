@@ -75,5 +75,8 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^5.0.0"
+  },
+  "resolutions": {
+    "@react-native-community/cli-platform-android": "2.9.0"
   }
 }
