@@ -49,56 +49,6 @@ export const CURRENT_USER_PROJECTS_QUERY = gql`
   ${fragment.USER_PROJECTS_FRAGMENT}
 `
 
-export const PUBLISHERS_QUERY = gql`
-  query getPublishers {
-    publishers(first: 15) {
-      edges {
-        node {
-          id
-          name
-          logoUrl
-          url
-          seen
-        }
-      }
-    }
-  }
-`
-
-export const ARTICLES_QUERY = gql`
-  query getArticles($publisherId: ID, $after: String, $first: Int) {
-    articles(publisherId: $publisherId, first: $first, after: $after) {
-      pageInfo {
-        hasNextPage
-      }
-      edges {
-        cursor
-        node {
-          id
-          title
-          description
-          url
-          createdAt
-          publisher {
-            id
-            logoUrl
-            url
-            seen
-          }
-          files: filesConnection(first: 15) {
-            edges {
-              node {
-                id
-                uri
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
 export const USER_QUERY = gql`
   query getUserByUsername($username: LowercaseString!, $after: String) {
     user(username: $username) {
