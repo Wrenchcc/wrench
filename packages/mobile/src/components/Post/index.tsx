@@ -21,13 +21,7 @@ function Post({
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
-  const handleEdit = useCallback(
-    () =>
-      showEditPost({
-        id: post.id,
-      }),
-    [post]
-  )
+  const handleEdit = useCallback(() => showEditPost({ post }), [post])
 
   const { showActionSheetWithOptions } = useActionSheet()
 

@@ -1,35 +1,23 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useQuery, useMutation, GET_POST, EDIT_POST_MUTATION } from 'gql'
+import { useMutation, EDIT_POST_MUTATION } from 'gql'
 import { Page, ScrollView, dismissEditPost } from 'navigation'
 import { Text, Carousel } from 'ui'
 import { Content, Input } from './styles'
 
-function EditPost({ id }) {
+function EditPost({ post }) {
   const { t } = useTranslation()
   const [isSaving, setIsSaving] = useState(false)
-  const [caption, setCaption] = useState()
+  const [caption, setCaption] = useState(post.caption)
   const [editPost] = useMutation(EDIT_POST_MUTATION)
-
-  const { loading, data } = useQuery(GET_POST, {
-    variables: {
-      id,
-    },
-  })
-
-  useEffect(() => {
-    if (data) {
-      setCaption(data.post.caption)
-    }
-  }, [data])
 
   const handleSave = useCallback(async () => {
     setIsSaving(true)
 
     await editPost({
       variables: {
-        id,
+        id: post.id,
         input: {
           caption,
         },
@@ -38,11 +26,7 @@ function EditPost({ id }) {
 
     setIsSaving(false)
     dismissEditPost()
-  }, [id, editPost, caption])
-
-  if (loading) {
-    return null
-  }
+  }, [post, editPost, caption])
 
   return (
     <Page
@@ -77,7 +61,7 @@ function EditPost({ id }) {
             placeholder={t('EditPost:placeholder')}
             style={{ marginBottom: 20 }}
           />
-          <Carousel files={data.post.files} />
+          <Carousel files={post.files} />
         </Content>
       </ScrollView>
     </Page>

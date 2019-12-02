@@ -19,9 +19,9 @@ function ProjectTypes() {
     return null
   }
 
-  const data = typesData.types.sort(a => {
-    return userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1
-  })
+  const data = typesData.types.sort(a =>
+    userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1
+  )
 
   return (
     <ScrollView

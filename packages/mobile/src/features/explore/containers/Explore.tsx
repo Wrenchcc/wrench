@@ -40,7 +40,7 @@ const {
 } = Animated
 
 const HEADER_HEIGHT = 50
-const INITIAL_SCROLL_OFFSET = -160
+const INITIAL_SCROLL_OFFSET = -180
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
