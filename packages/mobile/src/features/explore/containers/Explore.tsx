@@ -195,12 +195,11 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
 
   return (
     <>
+      <Search query={query} active={searchActive} />
+
       <Animated.View
         style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          zIndex: 100,
+          zIndex: 100000,
           transform: [
             {
               translateY: interpolate(finalTranslateY, {
@@ -211,8 +210,6 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
           ],
         }}
       >
-        <Search query={query} active={searchActive} />
-
         <Header
           style={{
             opacity: interpolate(translateY.current, {
