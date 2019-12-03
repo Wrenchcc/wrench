@@ -369,7 +369,7 @@ PODS:
     - React
   - react-native-camera/RN (3.13.1):
     - React
-  - react-native-config (0.12.0):
+  - react-native-config (0.11.7):
     - React
   - react-native-device-locale (1.0.0):
     - React
@@ -764,7 +764,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
   react-native-camera: 1df7f9a047591bbc2c9a7ec80bd6412d3c19579f
-  react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
+  react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-device-locale: 1caaa26d37987794e7761b936117f947c08aedab
   react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
   react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
@@ -803,6 +803,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: df9e91dfc0caaba463710f1b85fbefee2055943a
+PODFILE CHECKSUM: c8a50dd35271012d1e07b84257b0bf162bc655da
 
 COCOAPODS: 1.6.1
