@@ -43,7 +43,7 @@
     "react-native-apple-authentication": "https://github.com/pontusab/react-native-apple-authentication",
     "react-native-bundle-splitter": "^1.0.5",
     "react-native-camera": "^3.13.1",
-    "react-native-config": "^0.11.7",
+    "react-native-config": "0.11.7",
     "react-native-deep-linking": "^2.2.0",
     "react-native-device-locale": "https://github.com/pontusab/react-native-device-locale",
     "react-native-fast-image": "^7.0.2",
