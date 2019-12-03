@@ -3,6 +3,16 @@ import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
 import { usePaginatedQuery, GET_PROJECTS } from 'gql'
 import { ProjectCard } from 'ui'
 
+const ITEM_HEIGHT = 200
+
+function getItemLayout(_, index) {
+  return {
+    index,
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+  }
+}
+
 function Categories({ id, title }) {
   const { navigate } = useNavigation()
 
@@ -31,7 +41,9 @@ function Categories({ id, title }) {
   return (
     <Page headerTitle={title} headerAnimation={false}>
       <FlatList
-        initialNumToRender={3}
+        initialNumToRender={4}
+        paddingBottom={40}
+        getItemLayout={getItemLayout}
         data={projects}
         refetch={refetch}
         fetchMore={fetchMore}

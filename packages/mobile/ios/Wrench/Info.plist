@@ -53,6 +53,8 @@
 	<string>1174076712654826</string>
 	<key>FacebookDisplayName</key>
 	<string>Wrench</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
