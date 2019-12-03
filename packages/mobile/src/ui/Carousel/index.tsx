@@ -3,7 +3,8 @@ import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Touchable from 'ui/Touchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
-import { Wrapper, Picture, GUTTER, SIZE, DotBase, Dot } from './styles'
+import Pagination from './Pagination'
+import { Wrapper, Picture, SIZE, GUTTER } from './styles'
 
 const SNAP_INTERVAL = SIZE
 
@@ -14,16 +15,6 @@ const getItemLayout = (_, index) => ({
 })
 
 const keyExtractor = ({ node }) => node.id
-
-function Pagination({ files, currentIndex }) {
-  return (
-    <DotBase pointerEvents="none">
-      {files.map((_, index) => (
-        <Dot key={index} active={currentIndex === index} />
-      ))}
-    </DotBase>
-  )
-}
 
 function Carousel({ onPress, files }) {
   const [currentIndex, setCurrentIndex] = useState(0)
