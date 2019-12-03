@@ -167,6 +167,7 @@ export const GET_PROJECTS = gql`
         node {
           cover {
             uri
+            default
           }
           ...projectFragment
         }

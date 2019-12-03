@@ -1,5 +1,6 @@
 import React, { useCallback, memo } from 'react'
 import { ScrollView } from 'react-native'
+import { sort } from 'ramda'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
 import { GET_PROJECT_TYPES, CURRENT_USER_QUERY, useQuery } from 'gql'
@@ -19,8 +20,9 @@ function ProjectTypes() {
     return null
   }
 
-  const data = typesData.types.sort(a =>
-    userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1
+  const data = sort(
+    a => (userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1),
+    typesData.types
   )
 
   return (

@@ -5,7 +5,7 @@ import Text from 'ui/Text'
 import { Button, HEIGHT, TOP } from './styles'
 
 const DURATION = 650
-const DELAY = 3000
+const DELAY = 5000
 
 function ShowLatest({ onPress, onHide }) {
   const { t } = useTranslation()
