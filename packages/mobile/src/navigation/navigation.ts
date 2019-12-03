@@ -17,6 +17,7 @@ export function Bootstrap() {
 
 export function AuthNavigation() {
   Navigation.setDefaultOptions({
+    modalPresentationStyle: 'fullScreen',
     layout: {
       backgroundColor: COLORS.DARK,
     },
