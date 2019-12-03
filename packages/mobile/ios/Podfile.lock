@@ -88,7 +88,7 @@ PODS:
     - glog
     - OpenSSL-Universal (= 1.0.2.19)
   - Flipper-PeerTalk (0.0.4)
-  - flipper-plugin-react-native-performance (0.4.0):
+  - flipper-plugin-react-native-performance (0.4.3):
     - React
   - Flipper-RSocket (1.0.0):
     - Flipper-Folly (~> 2.0)
@@ -197,7 +197,7 @@ PODS:
     - RNPermissions
   - Permission-PhotoLibrary (2.0.5):
     - RNPermissions
-  - Protobuf (3.11.0)
+  - Protobuf (3.11.1)
   - RCTRequired (0.61.5)
   - RCTTypeSafety (0.61.5):
     - FBLazyVector (= 0.61.5)
@@ -735,7 +735,7 @@ SPEC CHECKSUMS:
   Flipper: de4c7cd47f5af3a51e18ddcafcb848b2bf681c2a
   Flipper-Folly: bcae82405dafd18ac9f8d9d4902fd1c2ef2a7e77
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
-  flipper-plugin-react-native-performance: 7ac4a94bf3656b6a998929a2e3b918f69631fa04
+  flipper-plugin-react-native-performance: d54b331105c1a3c33ba32a7a759b553d16a2906d
   Flipper-RSocket: 1260a31c05c238eabfa9bb8a64e3983049048371
   FlipperKit: baf8f573cb47ae9ae9aedb543edb02824d6dc451
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
@@ -753,7 +753,7 @@ SPEC CHECKSUMS:
   Permission-Camera: 7e1b0512b1a6e439e84be004a7edd33d4e94b3fd
   Permission-Microphone: adf8c94351948119936285495c4f0d3f69c99cd9
   Permission-PhotoLibrary: d6d09cca5d0de1fda1958175106234773a566893
-  Protobuf: 394b2bf29ec303f4325e3ee4892c09e675647152
+  Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78

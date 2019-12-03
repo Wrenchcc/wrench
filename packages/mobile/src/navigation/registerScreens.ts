@@ -1,3 +1,4 @@
+import { register } from 'react-native-bundle-splitter'
 import { Navigation } from 'react-native-navigation'
 import { SCREENS } from './constants'
 import createScreenHoc from './createScreenHoc'
@@ -5,80 +6,92 @@ import createScreenHoc from './createScreenHoc'
 export default function registerScreens(client) {
   const HOC = createScreenHoc(client)
 
-  Navigation.registerComponent(SCREENS.INITIALIZING, () => HOC(require('./Initializing').default))
-  Navigation.registerComponent(SCREENS.MENTION, () => HOC(require('components/Mention').default))
-  Navigation.registerComponent(SCREENS.WEBVIEW, () => HOC(require('components/WebView').default))
-  Navigation.registerComponent(SCREENS.EDIT_POST, () => HOC(require('components/EditPost').default))
+  Navigation.registerComponent(SCREENS.INITIALIZING, () =>
+    HOC(register({ require: () => require('./Initializing') }))
+  )
+  Navigation.registerComponent(SCREENS.MENTION, () =>
+    HOC(register({ require: () => require('components/Mention') }))
+  )
+  Navigation.registerComponent(SCREENS.WEBVIEW, () =>
+    HOC(register({ require: () => require('components/WebView') }))
+  )
+  Navigation.registerComponent(SCREENS.EDIT_POST, () =>
+    HOC(register({ require: () => require('components/EditPost') }))
+  )
   Navigation.registerComponent(SCREENS.CATEGORIES, () =>
-    HOC(require('features/explore/containers/Categories').default)
+    HOC(register({ require: () => require('features/explore/containers/Categories') }))
   )
   Navigation.registerComponent(SCREENS.ONBOARDING, () =>
-    HOC(require('features/signIn/containers/Onboarding').default)
+    HOC(register({ require: () => require('features/signIn/containers/Onboarding') }))
   )
   Navigation.registerComponent(SCREENS.SIGN_IN, () =>
-    HOC(require('features/signIn/containers/SignIn').default)
+    HOC(register({ require: () => require('features/signIn/containers/SignIn') }))
   )
   Navigation.registerComponent(SCREENS.FEED, () =>
-    HOC(require('features/feed/containers/Feed').default)
+    HOC(register({ require: () => require('features/feed/containers/Feed') }))
   )
   Navigation.registerComponent(SCREENS.EXPLORE, () =>
-    HOC(require('features/explore/containers/Explore').default)
+    HOC(register({ require: () => require('features/explore/containers/Explore') }))
   )
   Navigation.registerComponent(SCREENS.NOTIFICATIONS, () =>
-    HOC(require('features/notifications/containers/Notifications').default)
+    HOC(
+      register({
+        require: () => require('features/notifications/containers/Notifications'),
+      })
+    )
   )
   Navigation.registerComponent(SCREENS.ME, () =>
-    HOC(require('features/user/containers/Me').default)
+    HOC(register({ require: () => require('features/user/containers/Me') }))
   )
   Navigation.registerComponent(SCREENS.PROJECT, () =>
-    HOC(require('features/project/containers/Project').default)
+    HOC(register({ require: () => require('features/project/containers/Project') }))
   )
   Navigation.registerComponent(SCREENS.ADD_MEDIA, () =>
-    HOC(require('features/project/containers/AddMedia').default)
+    HOC(register({ require: () => require('features/project/containers/AddMedia') }))
   )
   Navigation.registerComponent(SCREENS.ADD_PROJECT, () =>
-    HOC(require('features/project/containers/AddProject').default)
+    HOC(register({ require: () => require('features/project/containers/AddProject') }))
   )
   Navigation.registerComponent(SCREENS.ADD_POST, () =>
-    HOC(require('features/project/containers/AddPost').default)
+    HOC(register({ require: () => require('features/project/containers/AddPost') }))
   )
   Navigation.registerComponent(SCREENS.EDIT_PROJECT, () =>
-    HOC(require('features/project/containers/EditProject').default)
+    HOC(register({ require: () => require('features/project/containers/EditProject') }))
   )
   Navigation.registerComponent(SCREENS.EDIT_MODEL, () =>
-    HOC(require('features/project/containers/EditModel').default)
+    HOC(register({ require: () => require('features/project/containers/EditModel') }))
   )
   Navigation.registerComponent(SCREENS.ADD_PROJECT_MODEL, () =>
-    HOC(require('features/project/containers/AddProjectModel').default)
+    HOC(register({ require: () => require('features/project/containers/AddProjectModel') }))
   )
   Navigation.registerComponent(SCREENS.ADD_PROJECT_TYPE, () =>
-    HOC(require('features/project/containers/AddProjectType').default)
+    HOC(register({ require: () => require('features/project/containers/AddProjectType') }))
   )
   Navigation.registerComponent(SCREENS.USER, () =>
-    HOC(require('features/user/containers/User').default)
+    HOC(register({ require: () => require('features/user/containers/User') }))
   )
   Navigation.registerComponent(SCREENS.FOLLOWERS, () =>
-    HOC(require('features/project/containers/Followers').default)
+    HOC(register({ require: () => require('features/project/containers/Followers') }))
   )
   Navigation.registerComponent(SCREENS.POST, () =>
-    HOC(require('features/post/containers/Post').default)
+    HOC(register({ require: () => require('features/post/containers/Post') }))
   )
   Navigation.registerComponent(SCREENS.COMMENTS, () =>
-    HOC(require('features/project/containers/Comments').default)
+    HOC(register({ require: () => require('features/project/containers/Comments') }))
   )
   Navigation.registerComponent(SCREENS.SIGN_IN, () =>
-    HOC(require('features/signIn/containers/SignIn').default)
+    HOC(register({ require: () => require('features/signIn/containers/SignIn') }))
   )
   Navigation.registerComponent(SCREENS.SETTINGS, () =>
-    HOC(require('features/user/containers/Settings').default)
+    HOC(register({ require: () => require('features/user/containers/Settings') }))
   )
   Navigation.registerComponent(SCREENS.EDIT_PROFILE, () =>
-    HOC(require('features/user/containers/EditProfile').default)
+    HOC(register({ require: () => require('features/user/containers/EditProfile') }))
   )
   Navigation.registerComponent(SCREENS.ADD_LOCATION, () =>
-    HOC(require('features/user/containers/AddLocation').default)
+    HOC(register({ require: () => require('features/user/containers/AddLocation') }))
   )
   Navigation.registerComponent(SCREENS.OTHER_SIGN_IN_OPTIONS, () =>
-    HOC(require('features/signIn/containers/Other').default)
+    HOC(register({ require: () => require('features/signIn/containers/Other') }))
   )
 }
