@@ -91,7 +91,8 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
 
   const handleEmojiShortcut = useCallback(
     e => {
-      setText(`${text} ${e}`)
+      const value = text.length > 0 ? `${text} ${e}` : e
+      setText(value)
     },
     [setText, text]
   )

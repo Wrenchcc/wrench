@@ -21,7 +21,7 @@ export const Actions = styled.View`
 `
 
 export const OpenSimilar = styled(UiTouchable)`
-  border-width: 1;
+  border-width: 1px;
   border-color: ${COLORS.DIVIDER};
   height: 40px;
   justify-content: center;

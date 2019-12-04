@@ -13,7 +13,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "@apollo/react-ssr": "^3.1.3",
-    "@sentry/node": "^5.9.0",
+    "@sentry/node": "^5.10.0",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link": "^1.2.13",
@@ -44,7 +44,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-lazyload": "^2.6.5",
     "react-mentions": "^3.3.1",
-    "react-phone-input-2": "^2.10.1",
+    "react-phone-input-2": "^2.11.0",
     "react-scroll": "^1.7.14",
     "react-scrollable-anchor": "^0.6.1",
     "styled-components": "5.0.0-rc.1",
@@ -67,8 +67,8 @@
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.5.4",
     "prettier": "^1.19.1",
-    "serverless": "^1.58.0",
-    "typescript": "^3.7.2",
+    "serverless": "^1.59.0",
+    "typescript": "^3.7.3",
     "webp-loader": "^0.6.0"
   }
 }

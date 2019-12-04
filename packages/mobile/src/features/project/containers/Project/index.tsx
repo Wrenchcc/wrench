@@ -139,7 +139,4 @@ function Project({
   )
 }
 
-export default compose(
-  getProject,
-  followProject
-)(Project)
+export default compose(getProject, followProject)(Project)

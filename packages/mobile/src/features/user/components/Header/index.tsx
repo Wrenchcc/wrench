@@ -32,7 +32,7 @@ function Header({
           )}
 
           {bio && (
-            <Text fontSize={15} style={{ marginTop: 5 }}>
+            <Text fontSize={15} style={{ marginTop: 5 }} lineHeight={22}>
               {bio}
             </Text>
           )}

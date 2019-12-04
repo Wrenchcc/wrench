@@ -197,9 +197,8 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
     <>
       <Search query={query} active={searchActive} />
 
-      <Animated.View
+      <Header
         style={{
-          zIndex: 100000,
           transform: [
             {
               translateY: interpolate(finalTranslateY, {
@@ -209,28 +208,25 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
             },
           ],
         }}
-      >
-        <Header
-          style={{
-            opacity: interpolate(translateY.current, {
-              inputRange: [-HEADER_HEIGHT, 0],
-              outputRange: [0, 1],
-            }),
-          }}
-          headerLeft={
-            <SearchBar
-              onChangeQuery={handleQueryChange}
-              query={query}
-              onSearchFocus={handleSearchFocus}
-              onSearchCancel={handleSearchCancel}
-              onSearchClear={handleSearchClear}
-              searchActive={searchActive}
-            />
-          }
-          headerRight={searchActive || <Add />}
-          stickyComponent={!searchActive && <ProjectTypes />}
-        />
-      </Animated.View>
+        innerStyle={{
+          opacity: interpolate(translateY.current, {
+            inputRange: [-HEADER_HEIGHT, 0],
+            outputRange: [0, 1],
+          }),
+        }}
+        headerLeft={
+          <SearchBar
+            onChangeQuery={handleQueryChange}
+            query={query}
+            onSearchFocus={handleSearchFocus}
+            onSearchCancel={handleSearchCancel}
+            onSearchClear={handleSearchClear}
+            searchActive={searchActive}
+          />
+        }
+        headerRight={searchActive || <Add />}
+        stickyComponent={!searchActive && <ProjectTypes />}
+      />
 
       <FlatList
         scrollEventThrottle={1}

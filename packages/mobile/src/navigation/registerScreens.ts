@@ -62,10 +62,18 @@ export default function registerScreens(client) {
     HOC(register({ require: () => require('features/project/containers/EditModel') }))
   )
   Navigation.registerComponent(SCREENS.ADD_PROJECT_MODEL, () =>
-    HOC(register({ require: () => require('features/project/containers/AddProjectModel') }))
+    HOC(
+      register({
+        require: () => require('features/project/containers/AddProjectModel'),
+      })
+    )
   )
   Navigation.registerComponent(SCREENS.ADD_PROJECT_TYPE, () =>
-    HOC(register({ require: () => require('features/project/containers/AddProjectType') }))
+    HOC(
+      register({
+        require: () => require('features/project/containers/AddProjectType'),
+      })
+    )
   )
   Navigation.registerComponent(SCREENS.USER, () =>
     HOC(register({ require: () => require('features/user/containers/User') }))

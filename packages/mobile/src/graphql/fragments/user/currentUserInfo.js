@@ -11,6 +11,7 @@ export default gql`
     projectCount
     dynamicLink
     isOnline
+    isSilhouette
     website
     location
     bio

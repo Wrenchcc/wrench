@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Base = styled.View`
-  padding-bottom: ${props => (props.paddingBottom ? props.paddingBottom : 50)};
+  padding-bottom: ${props => (props.paddingBottom ? props.paddingBottom : 50)}px;
 `
 
 export const Top = styled.View`
