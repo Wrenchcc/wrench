@@ -20,7 +20,7 @@ function Header({
           </Title>
           <Title medium>{lastName}</Title>
         </Username>
-        <Avatar size={80} uri={avatarUrl} />
+        <Avatar size={80} uri={avatarUrl} disabled />
       </Inner>
 
       {location || bio || website ? (

@@ -5,7 +5,7 @@ import UiTouchable from 'ui/Touchable'
 export const Row = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-bottom: 5;
+  margin-bottom: 5px;
 `
 
 export const Comment = styled(UiText)`
@@ -13,5 +13,5 @@ export const Comment = styled(UiText)`
 `
 
 export const LoadMore = styled(UiTouchable)`
-  margin-top: 5;
+  margin-top: 5px;
 `

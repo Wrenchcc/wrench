@@ -3,9 +3,9 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   background: ${COLORS.WHITE};
-  padding-bottom: 45;
-  padding-left: ${props => (props.spacingHorizontal ? 20 : 0)};
-  padding-right: ${props => (props.spacingHorizontal ? 20 : 0)};
+  padding-bottom: 45px;
+  padding-left: ${props => (props.spacingHorizontal ? 20 : 0)}px;
+  padding-right: ${props => (props.spacingHorizontal ? 20 : 0)}px;
 `
 
 export const Inner = styled.View`
@@ -15,9 +15,9 @@ export const Inner = styled.View`
 
 export const Username = styled.View`
   flex: 1;
-  padding-right: 10;
+  padding-right: 10px;
 `
 
 export const Info = styled.View`
-  padding-top: 20;
+  padding-top: 20px;
 `

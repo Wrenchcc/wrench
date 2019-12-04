@@ -16,7 +16,7 @@ export const Header = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
-  margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT};
-  height: ${NAVIGATION.TOP_BAR_HEIGHT};
+  margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT}px;
+  height: ${NAVIGATION.TOP_BAR_HEIGHT}px;
   background-color: ${COLORS.WHITE};
 `

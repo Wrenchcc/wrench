@@ -7,15 +7,15 @@ export const Base = styled(UiTouchable)`
   height: 52px;
   flex-direction: row;
   align-items: center;
-  border-bottom-width: 1;
-  padding-bottom: 15;
-  margin-bottom: 15;
+  border-bottom-width: 1px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
   border-bottom-color: ${COLORS.ULTRA_LIGHT_GREY};
 `
 
 export const Cover = styled(UiImage)`
-  width: 40;
-  height: 40;
+  width: 40px;
+  height: 40px;
 `
 
 export const Middle = styled.View`
@@ -25,8 +25,8 @@ export const Middle = styled.View`
 
 export const Content = styled.View`
   flex: 1;
-  margin-left: 10;
-  margin-right: 20;
+  margin-left: 10px;
+  margin-right: 20px;
 `
 
 export const Icon = styled.Image`

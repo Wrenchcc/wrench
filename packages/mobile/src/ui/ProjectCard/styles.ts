@@ -6,8 +6,8 @@ import UiText from 'ui/Text'
 import UiButton from 'ui/Button'
 
 export const Base = styled(UiTouchable)`
-  margin-top: 20;
-  height: 180;
+  margin-top: 20px;
+  height: 180px;
   position: relative;
 `
 
@@ -19,15 +19,15 @@ export const Overlay = styled(LinearGradient)`
 `
 
 export const ProjectName = styled(UiText)`
-  margin-top: 10;
-  margin-bottom: 3;
-  margin-right: 20;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-right: 20px;
 `
 
 export const Followers = styled(UiFollowers)``
 
 export const Button = styled(UiButton)`
-  margin-bottom: 5;
+  margin-bottom: 5px;
 `
 
 export const Content = styled.View`
@@ -37,7 +37,7 @@ export const Content = styled.View`
   padding: 10px;
   justify-content: space-between;
   flex-direction: row;
-  bottom: 0;
+  bottom: 0px;
   align-items: flex-end;
   z-index: 2;
 `

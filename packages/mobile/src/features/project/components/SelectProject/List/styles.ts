@@ -9,18 +9,18 @@ export const ITEM_HEIGHT = 65
 
 export const Base = styled.View`
   background-color: ${COLORS.WHITE};
-  padding-top: ${SPACER};
+  padding-top: ${SPACER}px;
 `
 
 export const Scroll = styled.ScrollView`
-  padding-left: 20;
-  padding-right: 20;
-  max-height: ${ITEM_HEIGHT * 4};
+  padding-left: 20px;
+  padding-right: 20px;
+  max-height: ${ITEM_HEIGHT * 4}px;
 `
 
 export const NewProject = styled(UiTouchable)`
-  height: ${BUTTON_HEIGHT};
-  padding-top: 12;
-  padding-left: 20;
-  padding-right: 20;
+  height: ${BUTTON_HEIGHT}px;
+  padding-top: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
 `

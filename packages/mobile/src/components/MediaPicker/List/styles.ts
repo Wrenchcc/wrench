@@ -6,21 +6,21 @@ import { hasNotch } from 'utils/platform'
 const { width } = Dimensions.get('window')
 
 export const Placeholder = styled.View`
-  width: ${width};
-  height: ${width};
-  margin-bottom: 5;
+  width: ${width}px;
+  height: ${width}px;
+  margin-bottom: 5px;
   overflow: hidden;
 `
 
 export const DeselectAll = styled(UiTouchable)`
-  height: 40;
+  height: 40px;
   background: white;
   position: absolute;
-  bottom: ${hasNotch ? 25 : 20};
-  right: 20;
-  border-radius: 40;
+  bottom: ${hasNotch ? 25 : 20}px;
+  right: 20px;
+  border-radius: 40px;
   z-index: 99;
-  padding-left: 20;
-  padding-right: 20;
+  padding-left: 20px;
+  padding-right: 20px;
   justify-content: center;
 `

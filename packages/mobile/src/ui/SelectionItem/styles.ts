@@ -9,6 +9,6 @@ export const Base = styled(UiTouchable)`
 `
 
 export const Icon = styled.Image`
-  width: 6;
-  height: 11;
+  width: 6px;
+  height: 11px;
 `

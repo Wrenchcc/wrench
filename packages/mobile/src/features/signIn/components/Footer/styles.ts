@@ -8,8 +8,8 @@ export const Base = styled.View`
   justify-content: center;
   position: absolute;
   padding: 0 20px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
   z-index: 10;
 `

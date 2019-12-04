@@ -11,14 +11,14 @@ export const Top = styled.View`
 `
 
 export const Content = styled.View`
-  padding-top: 18;
+  padding-top: 18px;
 `
 
 export const Headline = styled.View`
-  padding-right: 10;
-  margin-bottom: 5;
+  padding-right: 10px;
+  margin-bottom: 5px;
 `
 
 export const Spacer = styled.View`
-  margin-top: 20;
+  margin-top: 20px;
 `

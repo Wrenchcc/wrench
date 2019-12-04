@@ -5,10 +5,10 @@ export const Base = styled.View`
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  margin-top: 15;
+  margin-top: 15px;
 `
 
 export const Text = styled(UiText)`
   opacity: 0.8;
-  font-size: 12;
+  font-size: 12px;
 `

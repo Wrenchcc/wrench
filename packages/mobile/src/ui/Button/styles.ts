@@ -5,9 +5,9 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
   background-color: ${({ background }) => (background ? COLORS[toUpper(background)] : COLORS.DARK)};
-  height: ${props => (props.small ? 30 : 60)};
+  height: ${props => (props.small ? 30 : 60)}px;
   justify-content: center;
   align-items: center;
-  padding-left: 10;
-  padding-right: 10;
+  padding-left: 10px;
+  padding-right: 10px;
 `

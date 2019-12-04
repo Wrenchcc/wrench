@@ -11,10 +11,10 @@ export const Inner = styled.View`
 
 export const Input = styled(UiInput)`
   flex: 1;
-  border-bottom-width: 0;
-  padding-right: 10;
-  padding-left: 10;
-  font-size: 15;
+  border-bottom-width: 0px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 15px;
 `
 
 export const Button = styled(UiTouchable)`

@@ -4,14 +4,14 @@ import UiText from 'ui/Text'
 
 export const Base = styled.View`
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   width: 100%;
   height: 100%;
   flex: 1;
   justify-content: center;
-  padding-left: 40;
-  padding-right: 40;
+  padding-left: 40px;
+  padding-right: 40px;
   background: black;
 `
 

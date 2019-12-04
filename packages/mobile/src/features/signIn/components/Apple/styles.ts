@@ -11,7 +11,7 @@ export const Button = styled(Touchable)`
   flex-direction: row;
   padding: 20px;
   border-color: ${COLORS.LIGHT_GREY};
-  border-width: ${props => (props.border ? 1 : 0)};
+  border-width: ${props => (props.border ? 1 : 0)}px;
 `
 
 export const Text = styled(UiText)`
@@ -20,5 +20,5 @@ export const Text = styled(UiText)`
 `
 
 export const Loader = styled.ActivityIndicator`
-  margin-left: 10;
+  margin-left: 10px;
 `

@@ -8,22 +8,22 @@ export const Base = styled.View`
   flex: 1;
   background-color: ${COLORS.ULTRA_LIGHT_GREY};
   justify-content: center;
-  padding-left: 20;
-  padding-right: 20;
-  padding-top: 20;
-  padding-bottom: 20;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `
 
 export const Title = styled(UiTitle)`
-  margin-bottom: 10;
+  margin-bottom: 10px;
 `
 
 export const Description = styled(UiText)`
-  margin-bottom: 30;
+  margin-bottom: 30px;
 `
 
 export const Button = styled(UiTouchable)`
-  height: 40;
+  height: 40px;
   background-color: ${COLORS.WHITE};
   align-items: center;
   justify-content: center;

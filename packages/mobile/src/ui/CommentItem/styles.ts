@@ -4,45 +4,45 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   flex-direction: row;
-  padding-top: 10;
-  padding-bottom: ${props => (props.first ? 20 : 10)};
+  padding-top: 10px;
+  padding-bottom: ${props => (props.first ? 20 : 10)}px;
   margin-left: ${props => (props.isReply ? 40 : 0)}px;
-  padding-left: 20;
-  padding-right: 20;
-  border-bottom-width: ${props => (props.first ? 1 : 0)};
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom-width: ${props => (props.first ? 1 : 0)}px;
   border-bottom-color: ${COLORS.DIVIDER};
 `
 
 export const Content = styled.View`
-  margin-left: 10;
-  margin-right: 10;
+  margin-left: 10px;
+  margin-right: 10px;
   flex: 1;
 `
 
 export const Border = styled.View`
-  width: 20;
-  height: 1;
+  width: 20px;
+  height: 1px;
   background-color: ${COLORS.DIVIDER};
-  margin-right: 10;
+  margin-right: 10px;
 `
 
 export const Row = styled.View`
-  margin-bottom: 5;
+  margin-bottom: 5px;
   flex-direction: row;
 `
 
 export const Reply = styled(UiText)`
   opacity: ${props => (props.disabled ? 0.7 : 1)};
-  margin-left: 5;
+  margin-left: 5px;
 `
 
 export const LoadReplies = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-left: 60;
-  margin-bottom: 10;
+  margin-left: 60px;
+  margin-bottom: 10px;
 `
 
 export const Action = styled.View`
-  margin-right: 10;
+  margin-right: 10px;
 `

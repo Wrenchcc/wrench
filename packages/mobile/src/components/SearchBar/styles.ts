@@ -12,36 +12,36 @@ export const Base = styled(Transitioning.View)`
 
 export const Inner = styled.View`
   flex: 1;
-  height: 40;
+  height: 40px;
 `
 
 export const Text = styled(UiText)`
-  padding-left: 41;
-  font-size: 17;
+  padding-left: 41px;
+  font-size: 17px;
 `
 
 export const Input = styled.TextInput`
   flex: 1;
   position: relative;
   background-color: ${COLORS.ULTRA_LIGHT_GREY};
-  font-size: 17;
+  font-size: 17px;
   font-family: ${FONTS.REGULAR};
-  border-radius: 1;
-  padding-left: 41;
-  padding-bottom: 0;
-  padding-top: 0;
+  border-radius: 1px;
+  padding-left: 41px;
+  padding-bottom: 0px;
+  padding-top: 0px;
 `
 
 export const SearchIcon = styled(UiIcon)`
   position: absolute;
-  left: 20;
-  top: 12;
-  width: 14;
-  height: 14;
+  left: 20px;
+  top: 12px;
+  width: 14px;
+  height: 14px;
 `
 
 export const CloseIcon = styled(UiIcon)`
   position: absolute;
-  right: 20;
-  top: 14;
+  right: 20px;
+  top: 14px;
 `

@@ -9,7 +9,7 @@ export const BAR_SPACE = GUTTER / 2
 export const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 export const Image = styled.Image`
-  width: ${SIZE};
-  height: ${SIZE};
-  margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)};
+  width: ${SIZE}px;
+  height: ${SIZE}px;
+  margin-right: ${({ last }) => (last ? GUTTER : BAR_SPACE)}px;
 `

@@ -11,19 +11,19 @@ export const Icon = styled.Image``
 
 export const Video = styled(RVideo)`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 `
 
 export const Overlay = styled.View`
   background: rgba(000, 000, 000, 0.6);
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 `
 
 export const Inner = styled.View`
@@ -41,12 +41,12 @@ export const Headline = styled(Title)`
 `
 
 export const Description = styled(Text)`
-  padding-top: 30;
-  line-height: 30;
+  padding-top: 30px;
+  line-height: 30px;
   color: ${COLORS.WHITE};
 `
 
 export const Options = styled(Touchable)`
-  padding-top: 30;
-  padding-bottom: 30;
+  padding-top: 30px;
+  padding-bottom: 30px;
 `

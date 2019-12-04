@@ -7,13 +7,13 @@ export const Base = styled.View`
 `
 
 export const OpenAlbum = styled(UiTouchable)`
-  width: 40;
-  height: 40;
+  width: 40px;
+  height: 40px;
   background: black;
   position: absolute;
-  bottom: ${hasNotch ? 25 : 20};
-  left: 20;
-  border-radius: 40;
+  bottom: ${hasNotch ? 25 : 20}px;
+  left: 20px;
+  border-radius: 40px;
   justify-content: center;
   align-items: center;
   z-index: 99;

@@ -4,14 +4,14 @@ import UiTouchable from 'ui/Touchable'
 import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
-  padding-left: ${props => (props.spacingHorizontal ? 20 : 0)};
-  padding-right: ${props => (props.spacingHorizontal ? 20 : 0)};
-  margin-bottom: 50;
+  padding-left: ${props => (props.spacingHorizontal ? 20 : 0)}px;
+  padding-right: ${props => (props.spacingHorizontal ? 20 : 0)}px;
+  margin-bottom: 50px;
 `
 
 export const Followers = styled(UiFollowers)`
-  margin-top: 15;
-  margin-bottom: 35;
+  margin-top: 15px;
+  margin-bottom: 35px;
   align-self: flex-start;
 `
 
@@ -23,10 +23,10 @@ export const Actions = styled.View`
 export const OpenSimilar = styled(UiTouchable)`
   border-width: 1;
   border-color: ${COLORS.DIVIDER};
-  height: 40;
+  height: 40px;
   justify-content: center;
   align-items: center;
-  padding-left: 15;
-  padding-right: 15;
+  padding-left: 15px;
+  padding-right: 15px;
   align-self: flex-start;
 `

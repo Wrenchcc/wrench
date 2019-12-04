@@ -3,10 +3,10 @@ import UiTouchable from 'ui/Touchable'
 
 export const Base = styled(UiTouchable)`
   flex-direction: row;
-  padding-top: 15;
-  padding-bottom: 15;
+  padding-top: 15px;
+  padding-bottom: 15px;
 `
 
 export const Content = styled.View`
-  margin-left: 10;
+  margin-left: 10px;
 `

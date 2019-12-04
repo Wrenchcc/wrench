@@ -21,5 +21,5 @@ export const Base = styled.View`
   justify-content: center;
   opacity: 0.96;
   width: 100%;
-  height: 40;
+  height: 40px;
 `

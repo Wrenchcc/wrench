@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 export const Icon = styled.Image`
-  width: 22;
-  height: 18;
+  width: 22px;
+  height: 18px;
 `
 
 export const Wrapper = styled.View`
   position: absolute;
-  left: 20;
-  bottom: 20;
+  left: 20px;
+  bottom: 20px;
 `

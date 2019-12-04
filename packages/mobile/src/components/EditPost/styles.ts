@@ -3,16 +3,16 @@ import { FONTS } from 'ui/constants'
 import UiInput from 'ui/Input'
 
 export const Content = styled.View`
-  padding-top: 10;
-  margin-right: 20;
-  margin-left: 20;
+  padding-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
 `
 
 export const Input = styled(UiInput)`
-  font-size: 15;
-  line-height: 22;
+  font-size: 15px;
+  line-height: 22px;
   font-family: ${FONTS.REGULAR};
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: -2;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: -2px;
 `

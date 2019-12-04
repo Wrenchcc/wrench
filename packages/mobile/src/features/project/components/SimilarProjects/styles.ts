@@ -7,23 +7,23 @@ export const SIZE = 120
 export const SNAP_INTERVAL = SIZE + GUTTER // Card size
 
 export const Base = styled.View`
-  margin-top: 40;
+  margin-top: 40px;
   background-color: ${COLORS.ULTRA_LIGHT_GREY};
-  margin-left: -20;
-  margin-right: -20;
-  padding-left: 20;
-  padding-right: 20;
-  padding-top: 20;
-  padding-bottom: 20;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `
 
 export const Follow = styled(UiFollow)`
   position: absolute;
-  top: 80;
-  left: 10;
-  right: 10;
-  width: 100;
-  height: 30;
-  padding-left: 5;
-  padding-right: 5;
+  top: 80px;
+  left: 10px;
+  right: 10px;
+  width: 100px;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
 `

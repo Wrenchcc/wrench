@@ -10,6 +10,6 @@ export const GUTTER = 20
 export const Wrapper = styled.View``
 
 export const Picture = styled(UiImage)`
-  height: ${SIZE};
-  width: ${SIZE};
+  height: ${SIZE}px;
+  width: ${SIZE}px;
 `

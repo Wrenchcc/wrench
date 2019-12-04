@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const Inner = styled.View`
-  padding-bottom: 40;
+  padding-bottom: 40px;
 `
 
 export const Spacing = styled.View`
-  padding-bottom: ${props => (props.large ? 20 : 10)};
+  padding-bottom: ${props => (props.large ? 20 : 10)}px;
 `
