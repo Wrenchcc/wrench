@@ -4958,10 +4958,10 @@ r2@^2.0.1:
     node-fetch "^2.0.0-alpha.8"
     typedarray-to-buffer "^3.1.2"
 
-ramda@^0.26.1:
-  version "0.26.1"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
-  integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
+rambda@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-4.4.0.tgz#c300335e2c0a560f0d6334c200728cd753c5cce4"
+  integrity sha512-NbQBX5LOfSIHnLQww+QPiHqllTTnKqPLs0pqwBcVctkPh+o0AHCJ985rwGVS9OgaT+GGKI1lOIX3aTQnqXjoPA==
 
 range-parser@~1.2.1:
   version "1.2.1"
@@ -5114,10 +5114,10 @@ react-native-navigation@4.0.3:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
-react-native-permissions@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.5.tgz#fbb338f5f4fd3dfcaff415d614a5d3b4af63885b"
-  integrity sha512-6eKWGPvBL3RpobqumNNjXxCvZIfIZOKwOSPq8rGu2jL9O9jSllm0IqBcamRKhi3BN+uwh4gWaOBzFLLq2/94zQ==
+react-native-permissions@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.6.tgz#4b4d5a18180a8c9325ca0f0d5be99a907799defc"
+  integrity sha512-oW4A6HU5B0dtiD5m4sI5UeJqnBhdZMU4bRp9L+cEoTl8giViGNfuhY4SJQjX6R9BSR3oSwul/8sNDlkhWtMWKQ==
 
 react-native-pinchable@^0.1.2:
   version "0.1.2"

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
-import { toUpper } from 'ramda'
+import { toUpper } from 'rambda'
 
 export const Field = styled.TextInput`
   font-size: ${props => (props.large ? 27 : 17)}px;

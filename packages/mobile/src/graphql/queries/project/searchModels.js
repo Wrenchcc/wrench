@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { isFetchingMore } from 'graphql/utils/networkStatus'
 
 export const SearchModelsQuery = gql`

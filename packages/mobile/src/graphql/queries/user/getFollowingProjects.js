@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { graphql } from 'react-apollo'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
 import { usePostStore, POST } from 'store'
 import { Text, Icon, Touchable } from 'ui'

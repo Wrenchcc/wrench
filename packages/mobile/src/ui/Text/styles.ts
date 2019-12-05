@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FONTS, COLORS } from 'ui/constants'
-import { toUpper } from 'ramda'
+import { toUpper } from 'rambda'
 import ParsedText from './ParsedText'
 
 export const Base = styled(ParsedText)`

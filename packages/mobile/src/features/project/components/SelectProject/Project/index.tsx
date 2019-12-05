@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { Text, Followers } from 'ui'
 import { check } from 'images'
 import { Base, Cover, Middle, Content, Icon } from './styles'

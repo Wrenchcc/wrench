@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { toUpper } from 'ramda'
+import { toUpper } from 'rambda'
 import { FONTS, COLORS } from 'ui/constants'
 
 export const Base = styled.Text`

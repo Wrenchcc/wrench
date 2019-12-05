@@ -1,5 +1,5 @@
 import NativeShare from 'react-native-share'
-import { mergeAll } from 'ramda'
+import { mergeAll } from 'rambda'
 import i18next from 'i18next'
 import { setLocale, languages, updateUserLocale } from 'i18n'
 import { navigateTo, showModal, SCREENS } from 'navigation'

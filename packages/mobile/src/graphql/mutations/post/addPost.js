@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { prepend } from 'ramda'
+import { prepend } from 'rambda'
 import postInfoFragment from 'graphql/fragments/post/postInfo'
 
 const PostMutation = gql`

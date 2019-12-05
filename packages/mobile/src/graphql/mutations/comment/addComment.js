@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { append, prepend } from 'ramda'
+import { append, prepend } from 'rambda'
 import postInfo from 'graphql/fragments/post/postInfo'
 import commentInfo from 'graphql/fragments/comment/commentInfo'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'

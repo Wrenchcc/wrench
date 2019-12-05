@@ -3,7 +3,7 @@ import { Dimensions, View, Image } from 'react-native'
 import * as MediaLibrary from 'react-native-media-library'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { logError } from 'utils/sentry'
 
 const { height } = Dimensions.get('window')

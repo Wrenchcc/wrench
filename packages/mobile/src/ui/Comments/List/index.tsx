@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { slice } from 'ramda'
+import { slice } from 'rambda'
 import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
 import { Base, Row, Comment, LoadMore } from './styles'

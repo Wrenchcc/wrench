@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { pathOr, update } from 'ramda'
+import { pathOr, update } from 'rambda'
 import { graphql } from 'react-apollo'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 import commentInfoFragment from 'graphql/fragments/comment/commentInfo'

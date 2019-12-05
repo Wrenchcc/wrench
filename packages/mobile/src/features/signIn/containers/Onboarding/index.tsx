@@ -2,8 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
-import { omit } from 'ramda'
-import { compose } from 'ramda'
+import { compose, omit } from 'rambda'
 import { track, events } from 'utils/analytics'
 import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
 import { editUser } from 'graphql/mutations/user/editUser'
@@ -141,7 +140,4 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
   )
 }
 
-export default compose(
-  getProjectTypes,
-  editUser
-)(Onboarding)
+export default compose(getProjectTypes, editUser)(Onboarding)

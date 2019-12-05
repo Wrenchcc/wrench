@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { isRefetching, isFetchingMore } from 'graphql/utils/networkStatus'
 
 const usePaginatedQuery = type => (query, options) => {

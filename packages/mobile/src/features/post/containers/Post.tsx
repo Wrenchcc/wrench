@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { compose } from 'ramda'
-import { isEmpty } from 'ramda'
+import { compose, isEmpty } from 'rambda'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
 import { getComment } from 'graphql/queries/comment/getComment'
@@ -92,7 +91,4 @@ function PostContainer({
   )
 }
 
-export default compose(
-  getComments,
-  getComment
-)(PostContainer)
+export default compose(getComments, getComment)(PostContainer)

@@ -1,4 +1,4 @@
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { client, getCurrentUser } from 'gql'
 import { EditUserMutation } from 'graphql/mutations/user/editUser'
 import { logError } from 'utils/analytics'

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { Layout, FlatList } from 'navigation'
 import { getFeed } from 'graphql/queries/getFeed'
 import Post from 'components/Post'

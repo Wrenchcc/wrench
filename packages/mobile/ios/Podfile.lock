@@ -191,11 +191,11 @@ PODS:
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
-  - Permission-Camera (2.0.5):
+  - Permission-Camera (2.0.6):
     - RNPermissions
-  - Permission-Microphone (2.0.5):
+  - Permission-Microphone (2.0.6):
     - RNPermissions
-  - Permission-PhotoLibrary (2.0.5):
+  - Permission-PhotoLibrary (2.0.6):
     - RNPermissions
   - Protobuf (3.11.1)
   - RCTRequired (0.61.5)
@@ -465,7 +465,7 @@ PODS:
   - RNGoogleSignin (2.1.1):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.0.5):
+  - RNPermissions (2.0.6):
     - React
   - RNRate (1.1.10):
     - React
@@ -750,9 +750,9 @@ SPEC CHECKSUMS:
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
-  Permission-Camera: 7e1b0512b1a6e439e84be004a7edd33d4e94b3fd
-  Permission-Microphone: adf8c94351948119936285495c4f0d3f69c99cd9
-  Permission-PhotoLibrary: d6d09cca5d0de1fda1958175106234773a566893
+  Permission-Camera: 3845424e82e98fae9e9086bb1397e9602d0cb10a
+  Permission-Microphone: 8284f30665588dc60102522221aae957a880a0cd
+  Permission-PhotoLibrary: 5ec33ed00660cfe4ef79b88a1ed7ebe230d7a752
   Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
@@ -792,7 +792,7 @@ SPEC CHECKSUMS:
   RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
   RNGestureHandler: 946a7691e41df61e2c4b1884deab41a4cdc3afff
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
-  RNPermissions: c40561e25ae1d4ca4ad987bde1026f9294a89f74
+  RNPermissions: 4fa81b28a6e07b31ed9068fa7dab24e2b8a3902b
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c

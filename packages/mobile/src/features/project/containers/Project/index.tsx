@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
 import Animated from 'react-native-reanimated'
-import { compose, isEmpty } from 'ramda'
+import { compose, isEmpty } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
 import { getProject } from 'graphql/queries/project/getProject'

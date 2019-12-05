@@ -1,6 +1,6 @@
 import React, { useCallback, memo } from 'react'
 import { ScrollView } from 'react-native'
-// import { sort } from 'ramda'
+// import { sort } from 'rambda'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
 import { GET_PROJECT_TYPES, useQuery } from 'gql'

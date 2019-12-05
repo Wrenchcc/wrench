@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from 'react-native'
 import { COLORS } from '../constants'
-import { toUpper } from 'ramda'
+import { toUpper } from 'rambda'
 import Touchable from 'ui/Touchable'
 
 function Icon({ onPress = () => {}, source, opacity = 1, color, width, height, ...rest }) {

@@ -1,4 +1,4 @@
-import { pathOr } from 'ramda'
+import { pathOr } from 'rambda'
 import { isRefetching, isFetchingMore } from './networkStatus'
 
 export const mapListProps = type => ({ data: { fetchMore, loading, networkStatus, ...props } }) => {

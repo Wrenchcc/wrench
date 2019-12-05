@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { prepend } from 'ramda'
+import { prepend } from 'rambda'
 import { saveSelectedProjectId } from 'store/post'
 import projectInfoFragment from 'graphql/fragments/project/projectInfo'
 import { CurrentUserQuery } from 'graphql/queries/user/getCurrentUser'
