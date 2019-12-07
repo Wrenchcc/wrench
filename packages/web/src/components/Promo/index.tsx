@@ -55,7 +55,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
 
         <Bottom inverted={inverted}>
           <ReactPhoneInput
-            defaultCountry={viewerCountry && viewerCountry.toLowerCase()}
+            country={viewerCountry && viewerCountry.toLowerCase()}
             disableDropdown
             onChange={val => setNumber(val)}
             value={number}
