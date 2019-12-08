@@ -84,7 +84,6 @@ function AddPost({ addPost: addPostMutation }) {
             scrollEnabled={false}
             keyboardType="twitter"
             multiline
-            autoFocus
             color="dark"
             onChangeText={onChangeText}
             placeholder={t('AddPost:placeholder')}

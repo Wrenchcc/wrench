@@ -58,15 +58,12 @@ export default function registerScreens(client) {
   Navigation.registerComponent(SCREENS.EDIT_PROJECT, () =>
     HOC(register({ require: () => require('features/project/containers/EditProject') }))
   )
+  // NOTE: AutoFocus problem when using splitting
   Navigation.registerComponent(SCREENS.EDIT_MODEL, () =>
-    HOC(register({ require: () => require('features/project/containers/EditModel') }))
+    HOC(require('features/project/containers/EditModel').default)
   )
   Navigation.registerComponent(SCREENS.ADD_PROJECT_MODEL, () =>
-    HOC(
-      register({
-        require: () => require('features/project/containers/AddProjectModel'),
-      })
-    )
+    HOC(require('features/project/containers/AddProjectModel').default)
   )
   Navigation.registerComponent(SCREENS.ADD_PROJECT_TYPE, () =>
     HOC(

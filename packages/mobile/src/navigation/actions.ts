@@ -11,7 +11,7 @@ let overlay
 // push etc will stop working next navigate
 Navigation.events().registerComponentDidAppearListener(({ componentId: id, componentName }) => {
   currentComponentName = componentName
-  if (id !== SCREENS.MENTION) {
+  if (id !== SCREENS.MENTION && id !== SCREENS.EDIT_POST) {
     componentId = id
   }
 })

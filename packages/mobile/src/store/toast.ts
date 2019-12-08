@@ -27,8 +27,8 @@ const [useToastStore, api] = create(set => ({
   },
 }))
 
-NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
-  if (isConnected) {
+NetInfo.addEventListener(state => {
+  if (state.isConnected) {
     api.setState(initialState)
   } else {
     api.setState({

@@ -3,8 +3,8 @@ import QueueLink from 'apollo-link-queue'
 
 const offlineLink = new QueueLink()
 
-NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
-  if (isConnected) {
+NetInfo.addEventListener(state => {
+  if (state.isConnected) {
     offlineLink.open()
   } else {
     offlineLink.close()
