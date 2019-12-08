@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AsyncStorage from '@react-native-community/async-storage'
 import * as AppleAuthentication from 'react-native-apple-authentication'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import { Text } from 'ui'
@@ -82,9 +82,12 @@ function SignIn() {
   const handleOtherOptions = useCallback(() => {
     showModal(SCREENS.OTHER_SIGN_IN_OPTIONS, {
       options: {
-        statusBar: {
-          style: 'dark',
-        },
+        ...(isIphone && {
+          statusBar: {
+            // TODO: StatusBar change on android crashes second time
+            style: STATUS_BAR.DARK,
+          },
+        }),
         layout: {
           backgroundColor: 'white',
         },

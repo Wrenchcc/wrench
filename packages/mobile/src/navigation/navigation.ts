@@ -23,7 +23,7 @@ export function AuthNavigation() {
     },
     statusBar: {
       style: STATUS_BAR.LIGHT,
-      backgroundColor: COLORS.DARK,
+      backgroundColor: 'transparent',
     },
     topBar: {
       visible: false,
@@ -33,6 +33,11 @@ export function AuthNavigation() {
   Navigation.setRoot({
     root: {
       component: {
+        options: {
+          statusBar: {
+            drawBehind: true,
+          },
+        },
         name: SCREENS.SIGN_IN,
       },
     },
@@ -49,6 +54,7 @@ export function AppNavigation(onboarding) {
           name: SCREENS.ONBOARDING,
           options: {
             statusBar: {
+              drawBehind: true,
               style: STATUS_BAR.LIGHT,
               backgroundColor: COLORS.DARK,
             },

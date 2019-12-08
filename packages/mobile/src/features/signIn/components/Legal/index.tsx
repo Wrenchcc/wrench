@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { showModal, SCREENS, STATUS_BAR } from 'navigation'
+import { isIphone } from 'utils/platform'
 import { Touchable } from 'ui'
 import { Base, Text } from './styles'
 import { COLORS } from 'ui/constants'
@@ -14,9 +15,12 @@ function Legal({ color = 'white' }) {
     () =>
       showModal(SCREENS.WEBVIEW, {
         options: {
-          statusBar: {
-            style: STATUS_BAR.DARK,
-          },
+          ...(isIphone && {
+            statusBar: {
+              // TODO: StatusBar change on android crashes second time
+              style: STATUS_BAR.DARK,
+            },
+          }),
           layout: {
             backgroundColor: COLORS.WHITE,
           },

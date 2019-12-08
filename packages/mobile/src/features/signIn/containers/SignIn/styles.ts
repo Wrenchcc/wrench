@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import RVideo from 'react-native-video'
+import { isAndroid } from 'utils/platform'
 import { Text, Title, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
 
@@ -29,6 +30,7 @@ export const Overlay = styled.View`
 export const Inner = styled.View`
   flex: 1;
   padding: 20px;
+  padding-top: ${isAndroid ? 40 : 20}px;
 `
 
 export const Content = styled.View`
