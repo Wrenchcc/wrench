@@ -31,6 +31,7 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   const takePicture = useCallback(async () => {
     const data = await camera.current.takePictureAsync({
       orientation: 'portrait',
+      width: 1500,
     })
 
     onTakePicture({ ...data, camera: true })
