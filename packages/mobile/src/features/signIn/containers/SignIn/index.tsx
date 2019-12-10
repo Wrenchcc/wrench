@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AsyncStorage from '@react-native-community/async-storage'
-import * as AppleAuthentication from 'react-native-apple-authentication'
+import * as AppleAuthentication from '@pontusab/react-native-apple-authentication'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'

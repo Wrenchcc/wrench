@@ -1,4 +1,4 @@
-import DeviceLocale from 'react-native-device-locale'
+import DeviceLocale from '@pontusab/react-native-device-locale'
 import { Sentry } from 'react-native-sentry'
 import Config from 'react-native-config'
 import { AppVersion } from 'utils/appVersion'

@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import DeviceLocale from 'react-native-device-locale'
+import DeviceLocale from '@pontusab/react-native-device-locale'
 import { SELECTED_LOCALE_KEY } from 'utils/storage/constants'
 
 export const setLocale = locale => AsyncStorage.setItem(SELECTED_LOCALE_KEY, locale)

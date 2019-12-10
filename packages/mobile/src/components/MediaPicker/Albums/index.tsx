@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Dimensions, View, Image } from 'react-native'
-import * as MediaLibrary from 'react-native-media-library'
+import * as MediaLibrary from '@pontusab/react-native-media-library'
 import { Text, Touchable } from 'ui'
 import { COLORS } from 'ui/constants'
 import { pathOr } from 'rambda'

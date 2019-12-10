@@ -1302,6 +1302,28 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@pontusab/react-native-apple-authentication@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-apple-authentication/-/react-native-apple-authentication-1.0.2.tgz#e9e22dd9c8b52d1ccfc054e3c182ccbcc951e273"
+  integrity sha512-vW8bygeLS8Po7XgRrE859XzB+ZKPZ8221fnQY7vSGYTo/rxVC79zxXMAdr+g+cza4Gm1u5K0EVkecwaykQYb4A==
+  dependencies:
+    react "^16.9.0"
+
+"@pontusab/react-native-device-locale@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-device-locale/-/react-native-device-locale-1.0.0.tgz#d4718757aa4720f338c8748a230eae435c49306f"
+  integrity sha512-MU3ZxbBMNLjmXknyLBp3LtQFSAHJHGNFGkiXEdpVZEi1LXZ5e8bWfnmsunIjGqMmADjcube7iqpe5mAX0UUYYw==
+
+"@pontusab/react-native-image-manipulator@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-image-manipulator/-/react-native-image-manipulator-1.0.1.tgz#ef9a43d543d252e7549512c4a1c663a6e2af18b8"
+  integrity sha512-e8cPHPjy3MISjpvTYZgQ17MDu9S39TuJpmRYOZYPOqC8xAAPL4QyZP3DOUJIEAm4rgRw2FluP98PNjp01U02Ig==
+
+"@pontusab/react-native-media-library@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-media-library/-/react-native-media-library-1.0.0.tgz#f3f8a505501094a215ce6e9b872019d54c906b03"
+  integrity sha512-Qsbl410gLoVNJ+zT+fu7mvaNf1Lu2PiVSee8wMlCOF6j78VnFzIDLOmNA7SNXx8zKZtcpjwbON1fzm1jtZ+Ung==
+
 "@react-native-community/async-storage@^1.7.0":
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.7.0.tgz#75e8795cfadef5005228fd1f8a0b0178d50924a2"
@@ -5059,12 +5081,6 @@ react-lifecycles-compat@2.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
-"react-native-apple-authentication@https://github.com/pontusab/react-native-apple-authentication":
-  version "1.0.1"
-  resolved "https://github.com/pontusab/react-native-apple-authentication#0aa224010b93cfc300b096f91edaed435e2d417f"
-  dependencies:
-    react "^16.9.0"
-
 react-native-bundle-splitter@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-native-bundle-splitter/-/react-native-bundle-splitter-1.0.6.tgz#91eb47f36c458255754059dba99934072bd27d7d"
@@ -5086,10 +5102,6 @@ react-native-deep-linking@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
   integrity sha512-PKShbOsa/oxjSzZ/Bag98O/J+jaZOI6ic5YdanPirTpRAraAvKUzJWQUhE5Yy0Isl9yfIkSogOClE9BRfSyUbA==
-
-"react-native-device-locale@https://github.com/pontusab/react-native-device-locale":
-  version "1.0.0"
-  resolved "https://github.com/pontusab/react-native-device-locale#abccb953929f6b0540582c7b831e05d702b57d4d"
 
 react-native-fast-image@^7.0.2:
   version "7.0.2"
@@ -5124,10 +5136,6 @@ react-native-google-signin@^2.1.1:
   resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.1.tgz#4281940eee88602b0181dd49affdf8c92980c85c"
   integrity sha512-6l3fiLdX/bfhh0BoxGq+jGkagFsO+mrE/eRV4+3/0k8+FDxO90vdPpQdDiwlM5vWXRxWthTzMM09/jHw+4cvNw==
 
-"react-native-image-manipulator@https://github.com/pontusab/react-native-image-manipulator":
-  version "1.0.1"
-  resolved "https://github.com/pontusab/react-native-image-manipulator#643217d390758279b37d3bb6a34a6852b02b180f"
-
 react-native-image-picker@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-1.1.0.tgz#c2a0523886edb4cf2cdc008ad0a71433142a4d53"
@@ -5137,10 +5145,6 @@ react-native-linear-gradient@^2.5.6:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
-
-"react-native-media-library@https://github.com/pontusab/react-native-media-library":
-  version "1.0.0"
-  resolved "https://github.com/pontusab/react-native-media-library#db9a59f398814ddd6c55a62ddeeb30b319b0d8a8"
 
 react-native-navigation@4.0.4-snapshot.629:
   version "4.0.4-snapshot.629"

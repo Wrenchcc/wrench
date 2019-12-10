@@ -443,7 +443,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - ReactNativeNavigation (4.0.4-snapshot.629):
     - React
-  - RNAppleAuthentication (1.0.1):
+  - RNAppleAuthentication (1.0.2):
     - React
   - RNCAsyncStorage (1.7.0):
     - React
@@ -546,7 +546,7 @@ DEPENDENCIES:
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
-  - RNAppleAuthentication (from `../node_modules/react-native-apple-authentication/ios`)
+  - "RNAppleAuthentication (from `../node_modules/@pontusab/react-native-apple-authentication/ios`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
@@ -686,7 +686,7 @@ EXTERNAL SOURCES:
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
   RNAppleAuthentication:
-    :path: "../node_modules/react-native-apple-authentication/ios"
+    :path: "../node_modules/@pontusab/react-native-apple-authentication/ios"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNFastImage:
@@ -786,7 +786,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   ReactNativeNavigation: a1cbf5b9fad924f3be4f84f466b643619a0c65ba
-  RNAppleAuthentication: 7c5cc7a8a553d48f92ad022e23081d87f0141d53
+  RNAppleAuthentication: 38961e2b822886e624d84301aacf6d7aaa6fe54a
   RNCAsyncStorage: 8a2fadab0c6cc58d6a0629e24f978cc2ff3151fc
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
@@ -803,6 +803,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c8a50dd35271012d1e07b84257b0bf162bc655da
+PODFILE CHECKSUM: 6fa137722477fd45120b71149dc4bbb4bfad99ca
 
 COCOAPODS: 1.6.1

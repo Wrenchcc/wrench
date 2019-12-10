@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
 import { View, ActivityIndicator, Dimensions, FlatList } from 'react-native'
-import * as MediaLibrary from 'react-native-media-library'
+import * as MediaLibrary from '@pontusab/react-native-media-library'
 import { useTranslation } from 'react-i18next'
 import { findIndex, propEq, pathOr, omit } from 'rambda'
 import { usePostStore } from 'store'

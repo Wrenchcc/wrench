@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import * as AppleAuthentication from 'react-native-apple-authentication'
+import * as AppleAuthentication from '@pontusab/react-native-apple-authentication'
 import { useNavigation } from 'navigation'
 import { close } from 'images'
 import { Header, Icon } from 'ui'

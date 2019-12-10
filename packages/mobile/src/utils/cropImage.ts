@@ -1,4 +1,4 @@
-import * as ImageManipulator from 'react-native-image-manipulator'
+import * as ImageManipulator from '@pontusab/react-native-image-manipulator'
 import { logError } from 'utils/sentry'
 import { isAndroid } from 'utils/platform'
 
