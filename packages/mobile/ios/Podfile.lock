@@ -441,21 +441,21 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (4.0.4):
+  - ReactNativeNavigation (4.0.4-snapshot.629):
     - React
   - RNAppleAuthentication (1.0.1):
     - React
-  - RNCAsyncStorage (1.6.3):
+  - RNCAsyncStorage (1.7.0):
     - React
   - RNFastImage (7.0.2):
     - React
     - SDWebImage (~> 5.0)
     - SDWebImageWebPCoder (~> 0.2.3)
-  - RNFirebase (5.5.6):
+  - RNFirebase (5.6.0):
     - Firebase/Core
     - React
-    - RNFirebase/Crashlytics (= 5.5.6)
-  - RNFirebase/Crashlytics (5.5.6):
+    - RNFirebase/Crashlytics (= 5.6.0)
+  - RNFirebase/Crashlytics (5.6.0):
     - Crashlytics
     - Fabric
     - Firebase/Core
@@ -561,7 +561,7 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - AppAuth
     - boost-for-react-native
     - CocoaAsyncSocket
@@ -785,11 +785,11 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: bf2951e30fb873b3ed1e736419c38ed1efe0f6c2
+  ReactNativeNavigation: a1cbf5b9fad924f3be4f84f466b643619a0c65ba
   RNAppleAuthentication: 7c5cc7a8a553d48f92ad022e23081d87f0141d53
-  RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
+  RNCAsyncStorage: 8a2fadab0c6cc58d6a0629e24f978cc2ff3151fc
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
-  RNFirebase: ac0de8b24c6f91ae9459575491ed6a77327619c6
+  RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: 946a7691e41df61e2c4b1884deab41a4cdc3afff
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNPermissions: 923c1506d0bde387fbcfc18a8f87945806d03c19
@@ -805,4 +805,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c8a50dd35271012d1e07b84257b0bf162bc655da
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.6.1
