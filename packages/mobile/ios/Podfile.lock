@@ -361,17 +361,17 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-camera (3.13.1):
+  - react-native-camera (3.14.0):
     - React
-    - react-native-camera/RCT (= 3.13.1)
-    - react-native-camera/RN (= 3.13.1)
-  - react-native-camera/RCT (3.13.1):
+    - react-native-camera/RCT (= 3.14.0)
+    - react-native-camera/RN (= 3.14.0)
+  - react-native-camera/RCT (3.14.0):
     - React
-  - react-native-camera/RN (3.13.1):
+  - react-native-camera/RN (3.14.0):
     - React
   - react-native-config (0.11.7):
     - React
-  - react-native-device-locale (1.0.0):
+  - react-native-device-locale (1.0.5):
     - React
   - react-native-fbsdk (1.1.1):
     - React
@@ -387,11 +387,11 @@ PODS:
   - react-native-fbsdk/Share (1.1.1):
     - FBSDKShareKit (= 5.8)
     - React
-  - react-native-image-manipulator (1.0.1):
+  - react-native-image-manipulator (1.0.5):
     - React
   - react-native-image-picker (1.1.0):
     - React
-  - react-native-media-library (1.0.0):
+  - react-native-media-library (1.0.5):
     - React
   - react-native-netinfo (5.0.0):
     - React
@@ -443,7 +443,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - ReactNativeNavigation (4.0.4-snapshot.629):
     - React
-  - RNAppleAuthentication (1.0.2):
+  - RNAppleAuthentication (1.0.6):
     - React
   - RNCAsyncStorage (1.7.0):
     - React
@@ -524,11 +524,11 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-config (from `../node_modules/react-native-config`)
-  - react-native-device-locale (from `../node_modules/react-native-device-locale`)
+  - "react-native-device-locale (from `../node_modules/@pontusab/react-native-device-locale/ios`)"
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
-  - react-native-image-manipulator (from `../node_modules/react-native-image-manipulator`)
+  - "react-native-image-manipulator (from `../node_modules/@pontusab/react-native-image-manipulator/ios`)"
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
-  - react-native-media-library (from `../node_modules/react-native-media-library`)
+  - "react-native-media-library (from `../node_modules/@pontusab/react-native-media-library/ios`)"
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pinchable (from `../node_modules/react-native-pinchable`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -644,15 +644,15 @@ EXTERNAL SOURCES:
   react-native-config:
     :path: "../node_modules/react-native-config"
   react-native-device-locale:
-    :path: "../node_modules/react-native-device-locale"
+    :path: "../node_modules/@pontusab/react-native-device-locale/ios"
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
   react-native-image-manipulator:
-    :path: "../node_modules/react-native-image-manipulator"
+    :path: "../node_modules/@pontusab/react-native-image-manipulator/ios"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
   react-native-media-library:
-    :path: "../node_modules/react-native-media-library"
+    :path: "../node_modules/@pontusab/react-native-media-library/ios"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pinchable:
@@ -763,13 +763,13 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-camera: 1df7f9a047591bbc2c9a7ec80bd6412d3c19579f
+  react-native-camera: 9f79d18f91fc8c35d693f1846d84a8b9094bcc65
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-device-locale: 1caaa26d37987794e7761b936117f947c08aedab
+  react-native-device-locale: 0c0ebac177a947c1c2b66571bd67e74980943723
   react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
-  react-native-image-manipulator: 05e0a08ea0a31fb3217281690f301326873597e3
+  react-native-image-manipulator: 0a50f00b7aac4c004d26c2ef80ebe296dd779e0e
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
-  react-native-media-library: ec7242c9dfea9cffe53c814ba85170d3e1f8892a
+  react-native-media-library: 47901d9885a18be2caab8a0d3b867b9fa703b4c8
   react-native-netinfo: 841c2a83fe7df998fed56fd48b73229f17a5aa5b
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
@@ -786,7 +786,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   ReactNativeNavigation: a1cbf5b9fad924f3be4f84f466b643619a0c65ba
-  RNAppleAuthentication: 38961e2b822886e624d84301aacf6d7aaa6fe54a
+  RNAppleAuthentication: e1494867df56ee7467943f4d1802895050845413
   RNCAsyncStorage: 8a2fadab0c6cc58d6a0629e24f978cc2ff3151fc
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
@@ -803,6 +803,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 6fa137722477fd45120b71149dc4bbb4bfad99ca
+PODFILE CHECKSUM: 9a1a574b277b104784c4da8322228512de86eb9f
 
 COCOAPODS: 1.6.1

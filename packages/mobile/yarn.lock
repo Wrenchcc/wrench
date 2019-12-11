@@ -1302,27 +1302,27 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@pontusab/react-native-apple-authentication@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@pontusab/react-native-apple-authentication/-/react-native-apple-authentication-1.0.2.tgz#e9e22dd9c8b52d1ccfc054e3c182ccbcc951e273"
-  integrity sha512-vW8bygeLS8Po7XgRrE859XzB+ZKPZ8221fnQY7vSGYTo/rxVC79zxXMAdr+g+cza4Gm1u5K0EVkecwaykQYb4A==
+"@pontusab/react-native-apple-authentication@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-apple-authentication/-/react-native-apple-authentication-1.0.6.tgz#5c9b68e777fd8b439e6d78cc57e99196486a35c9"
+  integrity sha512-/Jzpbj3CBoyDoH3LdsJn68S5Q7NZzPYJuAxMfHdMg3D7ruDjTvZELfbGDD1QbcUh6KnZwOfHExar7Vchu5/ehw==
   dependencies:
     react "^16.9.0"
 
-"@pontusab/react-native-device-locale@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@pontusab/react-native-device-locale/-/react-native-device-locale-1.0.0.tgz#d4718757aa4720f338c8748a230eae435c49306f"
-  integrity sha512-MU3ZxbBMNLjmXknyLBp3LtQFSAHJHGNFGkiXEdpVZEi1LXZ5e8bWfnmsunIjGqMmADjcube7iqpe5mAX0UUYYw==
+"@pontusab/react-native-device-locale@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-device-locale/-/react-native-device-locale-1.0.5.tgz#1653d54a78f5741f90034ce3439291d36f5d90ad"
+  integrity sha512-JY2r/sOHoOPdqPA6Zvo2M8GHvnPK98xlkRdNIict9VYsj57tJMQRwV4axP7nrdDqyPoH1TLo/kfQ07Lter/TRA==
 
-"@pontusab/react-native-image-manipulator@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pontusab/react-native-image-manipulator/-/react-native-image-manipulator-1.0.1.tgz#ef9a43d543d252e7549512c4a1c663a6e2af18b8"
-  integrity sha512-e8cPHPjy3MISjpvTYZgQ17MDu9S39TuJpmRYOZYPOqC8xAAPL4QyZP3DOUJIEAm4rgRw2FluP98PNjp01U02Ig==
+"@pontusab/react-native-image-manipulator@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-image-manipulator/-/react-native-image-manipulator-1.0.5.tgz#73cb80476f8f0a6bfe586cb1d051c9e54e880940"
+  integrity sha512-UwzpNTUomHfFmfm/Dks9rIo43e83k0MRqJA0l5O6CuN79cr+MKvV9q7Gum37e3E79Huhwf27Dv70Dq/+Tmdxcg==
 
-"@pontusab/react-native-media-library@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@pontusab/react-native-media-library/-/react-native-media-library-1.0.0.tgz#f3f8a505501094a215ce6e9b872019d54c906b03"
-  integrity sha512-Qsbl410gLoVNJ+zT+fu7mvaNf1Lu2PiVSee8wMlCOF6j78VnFzIDLOmNA7SNXx8zKZtcpjwbON1fzm1jtZ+Ung==
+"@pontusab/react-native-media-library@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@pontusab/react-native-media-library/-/react-native-media-library-1.0.5.tgz#596c0c772ffa5e5813a066d4a32cbcd51cd5650b"
+  integrity sha512-EwD1JPkG1TYZlamgCB4si7+F/hx7F4x09Bb/4A0tCv0rxwPV59Zz5ZiF48ZBR28mzkxYa97iuOMjEJgnRa+5RQ==
 
 "@react-native-community/async-storage@^1.7.0":
   version "1.7.0"
@@ -5086,10 +5086,10 @@ react-native-bundle-splitter@^1.0.6:
   resolved "https://registry.yarnpkg.com/react-native-bundle-splitter/-/react-native-bundle-splitter-1.0.6.tgz#91eb47f36c458255754059dba99934072bd27d7d"
   integrity sha512-hdSnueK/jc1lXmynv4IcqYWVk6GVpXA2LvDR4AJinfuXh/jW8pqL+HuECvVAyAbdOVznNu5lzkj+yo9eFb6LUQ==
 
-react-native-camera@^3.13.1:
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.13.1.tgz#016a011ca264d7044e2f1ad11fc624b90020aeb9"
-  integrity sha512-HXCo75sFYOJRqtbiG12ttoG6K4UdS1mfOwu6NoQmxj6IV2KrNgdOYO4YTyLymGUXNs3LyOWpJskVvCRupoFA3A==
+react-native-camera@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.14.0.tgz#04d74444691bab68adce718daea459c7949b61c1"
+  integrity sha512-F+n9Ap91vXBqkfX2sbWFpMUIAADhCXOJEkggEqxh/ul9oL81vP8WscpcCBlbei7NZ3BLvrgFa8qgauNrZelQgw==
   dependencies:
     prop-types "^15.6.2"
 
