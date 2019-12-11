@@ -8,7 +8,7 @@ import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'
 import { USER_FOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
 import { ProjectCard, Text } from 'ui'
-import { Base, Title, List } from './styles'
+import { Base, Title, List, Inner } from './styles'
 
 function UserFollowingProjects({ username, isAuthenticated }) {
   const { t } = useTranslation()
@@ -74,16 +74,9 @@ function UserFollowingProjects({ username, isAuthenticated }) {
       <List>
         <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: 50 }}>
           {data.user.following.edges.map(({ node }) => (
-            <div
-              key={node.id}
-              style={{
-                width: '33.33%',
-                paddingBottom: 20,
-                boxSizing: 'border-box',
-              }}
-            >
+            <Inner key={node.id}>
               <ProjectCard key={node.id} project={node} onFollow={() => toggleFollow(node)} />
-            </div>
+            </Inner>
           ))}
         </div>
       </List>

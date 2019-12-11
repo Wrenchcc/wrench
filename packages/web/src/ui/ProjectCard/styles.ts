@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { DEVICE } from 'ui/constants'
 import UiImage from '../Image'
 import UiText from '../Text'
 
@@ -8,6 +9,10 @@ export const HEIGHT = 180
 export const Base = styled.div`
   position: relative;
   margin-right: 20px;
+
+  @media ${DEVICE.MOBILE_LARGE} {
+    margin-right: 0;
+  }
 `
 
 export const Overlay = styled.div`

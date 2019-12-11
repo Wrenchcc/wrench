@@ -32,6 +32,7 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
     const data = await camera.current.takePictureAsync({
       orientation: 'portrait',
       width: 1500,
+      writeExif: false,
     })
 
     onTakePicture({ ...data, camera: true })
