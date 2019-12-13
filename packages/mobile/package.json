@@ -40,6 +40,7 @@
     "i18next": "^19.0.2",
     "lodash.debounce": "^4.0.8",
     "ms": "^2.1.2",
+    "npm-check-updates": "^4.0.1",
     "rambda": "^4.4.0",
     "react": "16.12",
     "react-apollo": "^3.1.3",
