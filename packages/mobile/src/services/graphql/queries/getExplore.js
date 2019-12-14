@@ -1,0 +1,56 @@
+import gql from 'graphql-tag'
+import { graphql } from 'react-apollo'
+import { mapListProps } from 'services/graphql/utils/mapListProps'
+import { PROJECT_SORT_TYPES } from 'utils/enums'
+import postsInfoFragment from 'services/graphql/fragments/post/postsInfo'
+import projectInfoFragment from 'services/graphql/fragments/project/projectInfo'
+
+const PopularProjectsQuery = gql`
+  query getPopularProjects($type: ProjectSortType!, $after: String) {
+    projects(type: $type, after: $after) @connection(key: "projects", filter: ["type"]) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...projectInfo
+          cover {
+            uri
+            default
+          }
+        }
+      }
+    }
+  }
+  ${projectInfoFragment}
+`
+
+export const RecentPostsQuery = gql`
+  query getRecentPosts($after: String) {
+    posts(after: $after) @connection(key: "posts") {
+      ...postsInfo
+    }
+  }
+  ${postsInfoFragment}
+`
+
+const getPopularProjectsOptions = {
+  options: {
+    fetchPolicy: 'cache-and-network',
+    variables: {
+      type: PROJECT_SORT_TYPES.POPULAR,
+    },
+  },
+  props: mapListProps('projects'),
+}
+
+const getRecentPostsOptions = {
+  options: {
+    fetchPolicy: 'cache-and-network',
+  },
+  props: mapListProps('posts'),
+}
+
+export const getPopularProjects = graphql(PopularProjectsQuery, getPopularProjectsOptions)
+export const getRecentPosts = graphql(RecentPostsQuery, getRecentPostsOptions)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useMutation, FOLLOW_PROJECT_MUTATION } from 'gql'
+import { useMutation, FOLLOW_PROJECT_MUTATION } from 'services/gql'
 import { track, events } from 'utils/analytics'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall } from 'ui'

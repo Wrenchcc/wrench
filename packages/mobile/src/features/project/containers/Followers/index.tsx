@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { getFollowers } from 'graphql/queries/getFollowers'
+import { getFollowers } from 'services/graphql/queries/getFollowers'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
 

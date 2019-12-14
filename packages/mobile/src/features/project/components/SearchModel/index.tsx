@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { keyboardHeight } from 'utils/platform'
-import { searchModels } from 'graphql/queries/project/searchModels'
+import { searchModels } from 'services/graphql/queries/project/searchModels'
 
 const INPUT_HEIGHT = 80
 

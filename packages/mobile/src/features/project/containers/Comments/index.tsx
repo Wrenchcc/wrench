@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
-import { getComments } from 'graphql/queries/comment/getComments'
+import { getComments } from 'services/graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 import { isIphone } from 'utils/platform'

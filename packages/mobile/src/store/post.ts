@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import * as MediaLibrary from '@pontusab/react-native-media-library'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq, assocPath, pathOr } from 'rambda'
-import { client, CURRENT_USER_PROJECTS_QUERY } from 'gql'
+import { client, CURRENT_USER_PROJECTS_QUERY } from 'services/gql'
 import { logError } from 'utils/sentry'
 import { POST } from './constants'
 

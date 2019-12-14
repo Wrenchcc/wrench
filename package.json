@@ -2,6 +2,14 @@
   "name": "wrench",
   "version": "1.0.0",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "dependencies": {
+    "react-native": "v0.61.5"
+  },
   "devDependencies": {
     "bluebird": "^3.7.2",
     "prettier": "^1.19.1",

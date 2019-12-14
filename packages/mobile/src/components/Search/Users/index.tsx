@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
-import { searchUsers } from 'graphql/queries/user/searchUsers'
+import { searchUsers } from 'services/graphql/queries/user/searchUsers'
 import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 70
 
-const getItemLayout = (data, index) => ({
+const getItemLayout = (_, index) => ({
   index,
   length: ITEM_HEIGHT,
   offset: ITEM_HEIGHT * index,

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { pathOr } from 'rambda'
-import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'gql'
+import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'services/gql'
 import { usePostStore, POST } from 'store'
 import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'

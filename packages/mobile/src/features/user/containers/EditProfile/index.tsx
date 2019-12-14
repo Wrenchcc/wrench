@@ -3,7 +3,13 @@ import { ActivityIndicator, ScrollView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useNavigation, AppNavigation, SCREENS } from 'navigation'
-import { useQuery, useMutation, preSignUrl, CURRENT_USER_QUERY, EDIT_USER_MUTATION } from 'gql'
+import {
+  useQuery,
+  useMutation,
+  preSignUrl,
+  CURRENT_USER_QUERY,
+  EDIT_USER_MUTATION,
+} from 'services/gql'
 import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'

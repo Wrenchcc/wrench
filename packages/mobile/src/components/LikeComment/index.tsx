@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
-import { useMutation, LIKE_COMMENT_MUTATION } from 'gql'
+import { useMutation, LIKE_COMMENT_MUTATION } from 'services/gql'
 import { Icon } from 'ui'
 import { sparkSmall } from 'images'
 import { Base } from './styles'

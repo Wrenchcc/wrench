@@ -6,7 +6,7 @@ import {
   useMutation,
   CURRENT_USER_SETTINGS_QUERY,
   TOGGLE_NOTIFICATION_SETTINGS_MUTATION,
-} from 'gql'
+} from 'services/gql'
 import { Title, SelectionItem } from 'ui'
 import Footer from '../../components/Footer'
 import sections from '../../sections'

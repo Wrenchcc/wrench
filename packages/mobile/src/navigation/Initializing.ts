@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 import { getAccessToken } from 'utils/storage/auth'
-import { getCurrentUser } from 'gql'
+import { getCurrentUser } from 'services/gql'
 import { SentryInstance } from 'utils/sentry'
 import { AuthNavigation, AppNavigation } from './navigation'
 
