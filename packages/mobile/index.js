@@ -9,12 +9,9 @@ import { createPushNotificationsHandler } from 'utils/pushNotifications'
 import { createDeepLinkingHandler } from 'utils/dynamicLinks'
 import { trackScreen } from 'utils/analytics'
 import createClient from 'services/gql/client'
-import { investigate } from 'react-native-bundle-splitter/dist/utils'
 
 Navigation.events().registerAppLaunchedListener(async () => {
   const client = await createClient()
-
-  console.log(`module.exports = ${JSON.stringify(investigate().loaded.sort())};`)
 
   registerScreens(client)
 
