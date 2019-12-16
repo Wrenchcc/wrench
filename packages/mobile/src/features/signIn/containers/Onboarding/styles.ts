@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { NAVIGATION } from 'navigation/constants'
 import { COLORS } from 'ui/constants'
+import { isAndroid } from 'utils/platform'
 import FastImage from 'react-native-fast-image'
 
 export const Base = styled.View`
   flex: 1;
+  padding-top: ${isAndroid ? 20: 0}px;
   background-color: ${props => (props.settingsPage ? COLORS.WHITE : COLORS.DARK)};
   padding-bottom: ${props => (props.settingsPage ? 0 : NAVIGATION.TAB_HEIGHT)}px;
 `

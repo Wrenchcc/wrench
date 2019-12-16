@@ -68,16 +68,13 @@ public class MainApplication extends NavigationApplication {
         packages.add(new AsyncStoragePackage());
         packages.add(new FastImageViewPackage());
         packages.add(new FBSDKPackage());
-        packages.add(new ImageManipulatorPackage());
         packages.add(new LinearGradientPackage());
-        packages.add(new MediaLibraryPackage());
         packages.add(new NetInfoPackage());
         packages.add(new ReactNativeConfigPackage());
         packages.add(new ReactVideoPackage());
         packages.add(new ReanimatedPackage());
         packages.add(new RNCameraPackage());
         packages.add(new RNCWebViewPackage());
-        packages.add(new DeviceLocalePackage());
         packages.add(new RNFirebaseAnalyticsPackage());
         packages.add(new RNFirebaseMessagingPackage());
         packages.add(new RNFirebaseNotificationsPackage());
@@ -89,6 +86,9 @@ public class MainApplication extends NavigationApplication {
         packages.add(new SplashScreenReactPackage());
         packages.add(new RNPermissionsPackage());
         packages.add(new ImagePickerPackage());
+        packages.add(new ImageManipulatorPackage());
+        packages.add(new MediaLibraryPackage());
+        packages.add(new DeviceLocalePackage());
 
         return packages;
     }

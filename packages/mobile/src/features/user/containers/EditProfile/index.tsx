@@ -63,8 +63,12 @@ function EditProfile({ onboarding }) {
   )
 
   const handleDismissModal = useCallback(() => {
-    dismissModal()
-  }, [dismissModal])
+    if (onboarding) {
+      AppNavigation()
+    } else {
+      dismissModal()
+    }
+  }, [dismissModal, onboarding])
 
   const navigateToAddLocation = useCallback(() => {
     navigateTo(SCREENS.ADD_LOCATION)
@@ -172,10 +176,10 @@ function EditProfile({ onboarding }) {
           isSaving ? (
             <ActivityIndicator size="small" color="black" />
           ) : (
-            <Touchable onPress={handleSave}>
-              <Text medium>{t('EditProfile:save')}</Text>
-            </Touchable>
-          )
+              <Touchable onPress={handleSave}>
+                <Text medium>{t('EditProfile:save')}</Text>
+              </Touchable>
+            )
         }
       />
       <KeyboardAvoidingView paddingHorizontal={0}>
