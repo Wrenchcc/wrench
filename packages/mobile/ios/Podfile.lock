@@ -197,7 +197,7 @@ PODS:
     - RNPermissions
   - Permission-PhotoLibrary (2.0.8):
     - RNPermissions
-  - Protobuf (3.11.1)
+  - Protobuf (3.11.2)
   - RCTRequired (0.61.5)
   - RCTTypeSafety (0.61.5):
     - FBLazyVector (= 0.61.5)
@@ -361,17 +361,17 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-camera (3.15.0):
+  - react-native-camera (3.13.1):
     - React
-    - react-native-camera/RCT (= 3.15.0)
-    - react-native-camera/RN (= 3.15.0)
-  - react-native-camera/RCT (3.15.0):
+    - react-native-camera/RCT (= 3.13.1)
+    - react-native-camera/RN (= 3.13.1)
+  - react-native-camera/RCT (3.13.1):
     - React
-  - react-native-camera/RN (3.15.0):
+  - react-native-camera/RN (3.13.1):
     - React
   - react-native-config (0.11.7):
     - React
-  - react-native-device-locale (1.0.5):
+  - react-native-device-locale (1.0.7):
     - React
   - react-native-fbsdk (1.1.1):
     - React
@@ -387,11 +387,11 @@ PODS:
   - react-native-fbsdk/Share (1.1.1):
     - FBSDKShareKit (= 5.8)
     - React
-  - react-native-image-manipulator (1.0.5):
+  - react-native-image-manipulator (1.0.6):
     - React
   - react-native-image-picker (1.1.0):
     - React
-  - react-native-media-library (1.0.5):
+  - react-native-media-library (1.0.6):
     - React
   - react-native-netinfo (5.0.0):
     - React
@@ -753,7 +753,7 @@ SPEC CHECKSUMS:
   Permission-Camera: f9a7b0b01c71febe320436aa74630f23c9483547
   Permission-Microphone: 49c91ea622029b8c36a6ecfb65482cf4c513b53c
   Permission-PhotoLibrary: c15c7245aeb74aff3ad5edf70ce34adbcf02541b
-  Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
+  Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
@@ -763,13 +763,13 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-camera: 52114c432860b89986c9ee4919d00a48a6ba7abb
+  react-native-camera: 1df7f9a047591bbc2c9a7ec80bd6412d3c19579f
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
-  react-native-device-locale: 0c0ebac177a947c1c2b66571bd67e74980943723
+  react-native-device-locale: 90a1fffcb69ddb4f7f6053e3d6275d77d8d83613
   react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
-  react-native-image-manipulator: 0a50f00b7aac4c004d26c2ef80ebe296dd779e0e
+  react-native-image-manipulator: 01433a6b3714da14d453e2f1fa83eab09dadef4d
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
-  react-native-media-library: 47901d9885a18be2caab8a0d3b867b9fa703b4c8
+  react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
   react-native-netinfo: 841c2a83fe7df998fed56fd48b73229f17a5aa5b
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
