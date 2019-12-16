@@ -68,21 +68,7 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   return (
     <TouchableWithoutFeedback onPressIn={setFocus}>
       <>
-        <RNCamera
-          ref={camera}
-          type={cameraType}
-          flashMode={flashMode}
-          style={{ flex: 1 }}
-          autoFocusPointOfInterest={autofocus}
-          ratio="1:1"
-          pendingAuthorizationView={
-            <View
-              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
-            >
-              <ActivityIndicator size="small" color="white" />
-            </View>
-          }
-        />
+
 
         {autofocus && <AutoFocus coordinates={autofocus} />}
         <CameraType onPress={changeCameraType} />

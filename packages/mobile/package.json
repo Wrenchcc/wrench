@@ -46,7 +46,7 @@
     "react-i18next": "^11.2.6",
     "react-native": "^v0.61.5",
     "react-native-bundle-splitter": "^1.0.6",
-    "react-native-camera": "^3.15.0",
+    "react-native-camera": "3.13.1",
     "react-native-config": "0.11.7",
     "react-native-deep-linking": "^2.2.0",
     "react-native-fast-image": "^7.0.2",
