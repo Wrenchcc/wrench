@@ -52,7 +52,10 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   }, [cameraType])
 
   const setFocus = useCallback(({ nativeEvent }) => {
-    setAutofocus({ x: nativeEvent.locationX, y: nativeEvent.locationY })
+    setAutofocus({
+      x: nativeEvent.locationX,
+      y: nativeEvent.locationY
+    })
   }, [])
 
   const handlePermission = useCallback(() => setPermission(RESULTS.GRANTED), [])
