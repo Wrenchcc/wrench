@@ -64,9 +64,9 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
 
     const Navigate = data.user.isSilhouette
       ? () =>
-          showModal(SCREENS.EDIT_PROFILE, {
-            onboarding: true,
-          })
+        showModal(SCREENS.EDIT_PROFILE, {
+          onboarding: true,
+        })
       : () => AppNavigation(false)
 
     await editUserMutation({ interestedIn })
@@ -98,16 +98,16 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
     isSaving ? (
       <ActivityIndicator size="small" color={settingsPage ? 'black' : 'white'} />
     ) : (
-      <Text
-        color={settingsPage ? 'dark' : 'white'}
-        medium
-        opacity={isComplete() ? 1 : 0.5}
-        disabled={!isComplete()}
-        onPress={handleSubmit}
-      >
-        {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
-      </Text>
-    )
+        <Text
+          color={settingsPage ? 'dark' : 'white'}
+          medium
+          opacity={isComplete() ? 1 : 0.5}
+          disabled={!isComplete()}
+          onPress={handleSubmit}
+        >
+          {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
+        </Text>
+      )
 
   const renderHeaderLeft = () =>
     settingsPage && <Icon source={arrowLeft} onPress={handleNavigationBack} />
