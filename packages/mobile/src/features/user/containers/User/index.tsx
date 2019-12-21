@@ -1,7 +1,7 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { getUserByUsername } from 'graphql/queries/user/getUser'
+import { getUserByUsername } from 'services/graphql/queries/user/getUser'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
 import { Share, Banner } from 'ui'

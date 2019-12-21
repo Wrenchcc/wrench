@@ -37,7 +37,7 @@
   // Register WebP format support
   [SDImageCodersManager.sharedManager addCoder:SDImageWebPCoder.sharedCoder];
 
-  NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+  NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"packages/mobile/index" fallbackResource:nil];
 
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
 

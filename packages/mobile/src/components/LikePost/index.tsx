@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, memo } from 'react'
 import { Animated } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useMutation, LIKE_POST_MUTATION } from 'gql'
+import { useMutation, LIKE_POST_MUTATION } from 'services/gql'
 import { Icon, Text } from 'ui'
 import { spark } from 'images'
 import { Base } from './styled'

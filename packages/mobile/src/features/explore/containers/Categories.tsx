@@ -1,6 +1,6 @@
 import React from 'react'
 import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
-import { usePaginatedQuery, GET_PROJECTS } from 'gql'
+import { usePaginatedQuery, GET_PROJECTS } from 'services/gql'
 import { ProjectCard } from 'ui'
 
 const ITEM_HEIGHT = 200

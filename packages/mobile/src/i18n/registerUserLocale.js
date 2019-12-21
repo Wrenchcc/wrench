@@ -1,6 +1,6 @@
 import { pathOr } from 'rambda'
-import { client, getCurrentUser } from 'gql'
-import { EditUserMutation } from 'graphql/mutations/user/editUser'
+import { client, getCurrentUser } from 'services/gql'
+import { EditUserMutation } from 'services/graphql/mutations/user/editUser'
 import { logError } from 'utils/analytics'
 import { getLocale, timezone } from './helpers'
 

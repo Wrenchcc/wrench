@@ -2,6 +2,18 @@
   "name": "wrench",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "postinstall": "npx jetify",
+    "run:ios": "yarn workspace @wrench/mobile run:ios",
+    "run:android": "yarn workspace @wrench/mobile run:android",
+    "run:web": "yarn workspace @wrench/web dev",
+    "run:api": "yarn workspace @wrench/web dev"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "devDependencies": {
     "bluebird": "^3.7.2",
     "prettier": "^1.19.1",

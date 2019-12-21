@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { useNavigation, SCREENS } from 'navigation'
-import { searchProjects } from 'graphql/queries/project/searchProjects'
+import { searchProjects } from 'services/graphql/queries/project/searchProjects'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 200

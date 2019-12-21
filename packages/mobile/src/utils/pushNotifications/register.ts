@@ -1,5 +1,5 @@
 import { messaging } from 'react-native-firebase'
-import { registerDeviceToken } from 'gql'
+import { registerDeviceToken } from 'services/gql'
 import { track, events } from 'utils/analytics'
 
 export default async function requestNotificationToken() {

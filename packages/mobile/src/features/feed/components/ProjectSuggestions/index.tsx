@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { getProjectSuggestions } from 'graphql/queries/project/getProjectSuggestions'
+import { getProjectSuggestions } from 'services/graphql/queries/project/getProjectSuggestions'
 import { ProjectSuggestion, Loader } from 'ui'
 import { Base, Headline, Description } from './styles'
 

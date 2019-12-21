@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { getPopularProjects } from 'graphql/queries/getExplore'
+import { getPopularProjects } from 'services/graphql/queries/getExplore'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'

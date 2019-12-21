@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
 import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
-import { editProject } from 'graphql/mutations/project/editProject'
+import { editProject } from 'services/graphql/mutations/project/editProject'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 

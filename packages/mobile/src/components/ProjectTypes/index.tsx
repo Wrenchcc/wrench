@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native'
 // import { sort } from 'rambda'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
-import { GET_PROJECT_TYPES, useQuery } from 'gql'
+import { GET_PROJECT_TYPES, useQuery } from 'services/gql'
 import { Wrapper } from './styles'
 
 function ProjectTypes() {

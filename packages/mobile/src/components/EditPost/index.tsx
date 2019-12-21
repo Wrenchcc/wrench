@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useMutation, EDIT_POST_MUTATION } from 'gql'
+import { useMutation, EDIT_POST_MUTATION } from 'services/gql'
 import { Page, ScrollView, dismissEditPost } from 'navigation'
 import { Text, Carousel } from 'ui'
 import { Content, Input } from './styles'

@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList } from 'ui'
-import { getFollowingProjects } from 'graphql/queries/user/getFollowingProjects'
+import { getFollowingProjects } from 'services/graphql/queries/user/getFollowingProjects'
 import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)

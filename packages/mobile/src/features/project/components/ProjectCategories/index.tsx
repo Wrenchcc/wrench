@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dimensions, FlatList } from 'react-native'
-import { getProjectTypes } from 'graphql/queries/project/getProjectTypes'
+import { getProjectTypes } from 'services/graphql/queries/project/getProjectTypes'
 import { Touchable, Text, Loader } from 'ui'
 import { Cell, Image, Overlay, Picture } from './styles'
 
