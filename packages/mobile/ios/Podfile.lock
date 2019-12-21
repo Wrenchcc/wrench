@@ -393,7 +393,7 @@ PODS:
     - React
   - react-native-media-library (1.0.6):
     - React
-  - react-native-netinfo (5.0.0):
+  - react-native-netinfo (5.0.1):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -770,7 +770,7 @@ SPEC CHECKSUMS:
   react-native-image-manipulator: 01433a6b3714da14d453e2f1fa83eab09dadef4d
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
   react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
-  react-native-netinfo: 841c2a83fe7df998fed56fd48b73229f17a5aa5b
+  react-native-netinfo: f85616b5f5819085624f2c26dcb98ff3ab013a41
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
@@ -803,6 +803,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 16b3113fc7f6f5c34b29a0c0bc8262f19be95a66
+PODFILE CHECKSUM: b13406047a5b6ae919da0b9df63899d2e5d87b6c
 
 COCOAPODS: 1.6.1
