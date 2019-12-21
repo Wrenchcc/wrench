@@ -51,7 +51,7 @@ public class MainApplication extends NavigationApplication {
         return new NavigationReactNativeHost(this) {
             @Override
             protected String getJSMainModuleName() {
-                return "index";
+                return "packages/mobile/index";
             }
         };
     }
