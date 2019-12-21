@@ -10,6 +10,7 @@
     "run:api": "yarn workspace @wrench/web dev"
   },
   "workspaces": {
+    "nohoist": ["**/react-native", "**/react-native/**"],
     "packages": [
       "packages/*"
     ]
