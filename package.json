@@ -13,10 +13,7 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "nohoist": [
-      "**/react-native", 
-      "**/react-native/**"]
+    ]
   },
   "devDependencies": {
     "bluebird": "^3.7.2",
