@@ -3,7 +3,7 @@
 set -ex
 
 brew uninstall node@6
-NODE_VERSION='$(cat .nvmrc)'
+NODE_VERSION=$(cat ../../.nvmrc)
 curl "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.pkg" > "$HOME/Downloads/node-installer.pkg"
 sudo installer -store -pkg "$HOME/Downloads/node-installer.pkg" -target "/"
 
