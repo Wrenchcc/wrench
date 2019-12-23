@@ -1,1 +1,1 @@
-import 'packages/mobile'
+import './packages/mobile'
