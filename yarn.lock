@@ -15232,10 +15232,10 @@ react-native-linear-gradient@^2.5.6:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
-react-native-navigation@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-4.0.8.tgz#7ea75e2e9dd18ebbc16ebc5615ef3e7de03f617e"
-  integrity sha512-PqHfYYiYlguKBZKKKf35ug0p0yLnHsZzDKss0CPdrUcUb+2vgui215kbdO/jdmWmaWF5aqAvS/J30kDjf/4RyA==
+react-native-navigation@^4.0.9:
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-4.0.9.tgz#be05823c929e57457bb2a322c5ad7d3ff8ff507d"
+  integrity sha512-9mKwx67V2HQvch6KxKr3Dms6+NAlAiX1ijd8lJr2Srgtw/GfeN6KBRxxNOGmROSG8t3bwzHyxLK8sRtwMD/uSA==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
