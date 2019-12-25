@@ -238,7 +238,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export EXTRA_PACKAGER_ARGS=\"--entry-file packages/mobile/index.js\"\n\nexport BUNDLE_COMMAND=\"ram-bundle\"\n\n# First set the path to sentry.properties\n# export SENTRY_PROPERTIES=sentry.properties\n\n#$NODE_BINARY ../../../node_modules/@sentry/cli/bin/sentry-cli react-native xcode \\\n  ../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "export EXTRA_PACKAGER_ARGS=\"--entry-file packages/mobile/index.js\"\n\nexport BUNDLE_COMMAND=\"ram-bundle\"\n";
 		};
 		6DEEC572FA9997913A1A38D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
