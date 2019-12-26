@@ -2,6 +2,11 @@
   "name": "@wrench/mobile",
   "version": "1.0.0",
   "private": true,
+  "workspaces": {
+    "nohoist": [
+      "**/**"
+    ]
+  },
   "scripts": {
     "bundle:analysis": "visualize-bundle",
     "emulator:create": "tasks/emulator_create",
