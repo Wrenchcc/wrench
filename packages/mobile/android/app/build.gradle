@@ -87,7 +87,7 @@ project.ext.react = [
 apply from: projectRoot + "node_modules/react-native/react.gradle"
 
 /* Sentry */
-apply from: projectRoot + "node_modules/react-native-sentry/sentry.gradle"
+// apply from: projectRoot + "node_modules/react-native-sentry/sentry.gradle"
 
 project.ext.sentryCli = [
     logLevel: "debug"
