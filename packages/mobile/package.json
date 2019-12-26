@@ -80,8 +80,5 @@
     "flipper-plugin-react-native-performance": "^0.4.3",
     "metro-react-native-babel-preset": "^0.57.0",
     "visualize-bundle": "^1.3.0"
-  },
-  "resolutions": {
-    "@react-native-community/cli-platform-android": "2.9.0"
   }
 }
