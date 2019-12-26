@@ -8,7 +8,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "npx patch-package",
+    "postinstall": "npx jetifier && npx patch-package",
     "emulator:create": "tasks/emulator_create",
     "emulator:ensureready": "tasks/emulator_ensureready",
     "emulator:start": "tasks/emulator_start",
