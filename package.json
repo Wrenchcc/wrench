@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "npx jetifier && npx patch-package",
+    "postinstall": "npx jetifier",
     "run:ios": "yarn workspace @wrench/mobile run:ios",
     "start:packager": "yarn workspace @wrench/mobile start:packager",
     "run:android": "yarn workspace @wrench/mobile run:android",
