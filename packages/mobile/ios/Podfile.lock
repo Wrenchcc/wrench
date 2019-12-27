@@ -404,7 +404,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (8.0.1):
+  - react-native-webview (8.0.2):
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -471,20 +471,20 @@ PODS:
     - React
   - RNReanimated (1.4.0):
     - React
+  - RNSentry (1.2.1):
+    - React
+    - Sentry (~> 4.4.0)
   - RNShare (2.0.0):
     - React
-  - SDWebImage (5.4.0):
-    - SDWebImage/Core (= 5.4.0)
-  - SDWebImage/Core (5.4.0)
+  - SDWebImage (5.4.1):
+    - SDWebImage/Core (= 5.4.1)
+  - SDWebImage/Core (5.4.1)
   - SDWebImageWebPCoder (0.2.5):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.0)
-  - Sentry (4.1.3):
-    - Sentry/Core (= 4.1.3)
-  - Sentry/Core (4.1.3)
-  - SentryReactNative (0.43.2):
-    - React
-    - Sentry (~> 4.1.3)
+  - Sentry (4.4.3):
+    - Sentry/Core (= 4.4.3)
+  - Sentry/Core (4.4.3)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -555,9 +555,9 @@ DEPENDENCIES:
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNRate (from `../node_modules/react-native-rate`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
   - SDWebImageWebPCoder
-  - SentryReactNative (from `../node_modules/react-native-sentry`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -703,10 +703,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-rate"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNShare:
     :path: "../node_modules/react-native-share"
-  SentryReactNative:
-    :path: "../node_modules/react-native-sentry"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -774,7 +774,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 52af6e38e861f449ce486db98ee54d39c682655e
+  react-native-webview: 99bdfd6c189772b0f15494f728430c23b18b93e4
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -795,11 +795,11 @@ SPEC CHECKSUMS:
   RNPermissions: 923c1506d0bde387fbcfc18a8f87945806d03c19
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
+  RNSentry: 9b1d983b2d5d1c215ba6490348fd2a4cc23a8a9d
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
-  SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+  SDWebImage: 29c340dbdcef342bb13125553f4e19ce056b07a7
   SDWebImageWebPCoder: 947093edd1349d820c40afbd9f42acb6cdecd987
-  Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
-  SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
+  Sentry: 14bdd673870e8cf64932b149fad5bbbf39a9b390
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

@@ -2294,12 +2294,12 @@
   dependencies:
     serve-static "^1.13.1"
 
-"@react-native-community/cli-platform-android@^3.0.0":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-3.0.3.tgz#e652abce79a7c1e3a8280228123e99df2c4b97b6"
-  integrity sha512-rNO9DmRiVhB6aP2DVUjEJv7ecriTARDZND88ny3xNVUkrD1Y+zwF6aZu3eoT52VXOxLCSLiJzz19OiyGmfqxYg==
+"@react-native-community/cli-platform-android@3.0.0-alpha.2", "@react-native-community/cli-platform-android@^3.0.0":
+  version "3.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-3.0.0-alpha.2.tgz#63cb00060c58a87d04b46229ef7140e056551dfa"
+  integrity sha512-9HxWvBiK29AJQjavug658rEWHXVsqdAdL7rzMK9+gOid5zFoHrb1GoIeJm3byEowNZvqoy09nVcQvrUea41kQQ==
   dependencies:
-    "@react-native-community/cli-tools" "^3.0.0"
+    "@react-native-community/cli-tools" "^2.8.3"
     chalk "^2.4.2"
     execa "^1.0.0"
     jetifier "^1.6.2"
@@ -2316,6 +2316,16 @@
     chalk "^2.4.2"
     js-yaml "^3.13.1"
     xcode "^2.0.0"
+
+"@react-native-community/cli-tools@^2.8.3":
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli-tools/-/cli-tools-2.8.3.tgz#0e2249f48cf4603fb8d740a9f0715c31ac131ceb"
+  integrity sha512-N5Pz+pR+GFq3JApjd0SW4jp9KC7kbKsMH65QLRh30JNsxdPvNkYox6/ZZdkvdXaI5ev3EckR7eqlcwi5gpVTYQ==
+  dependencies:
+    chalk "^2.4.2"
+    lodash "^4.17.5"
+    mime "^2.4.1"
+    node-fetch "^2.5.0"
 
 "@react-native-community/cli-tools@^3.0.0":
   version "3.0.0"
@@ -2392,7 +2402,17 @@
     "@sentry/utils" "5.10.2"
     tslib "^1.9.3"
 
-"@sentry/cli@^1.43.0":
+"@sentry/browser@^5.10.0":
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-5.10.2.tgz#0bbb05505c58ea998c833cffec3f922fe4b4fa58"
+  integrity sha512-r3eyBu2ln7odvWtXARCZPzpuGrKsD6U9F3gKTu4xdFkA0swSLUvS7AC2FUksj/1BE23y+eB/zzPT+RYJ58tidA==
+  dependencies:
+    "@sentry/core" "5.10.2"
+    "@sentry/types" "5.10.0"
+    "@sentry/utils" "5.10.2"
+    tslib "^1.9.3"
+
+"@sentry/cli@^1.48.0":
   version "1.49.0"
   resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.49.0.tgz#174152978acbe6023986a8fb0b247cf58b4653d8"
   integrity sha512-Augz7c42Cxz/xWQ/NOVjUGePKVA370quvskWbCICMUwxcTvKnCLI+7KDdzEoCexj4MSuxFfBzLnrrn4w2+c9TQ==
@@ -2404,7 +2424,7 @@
     progress "2.0.0"
     proxy-from-env "^1.0.0"
 
-"@sentry/core@5.10.2":
+"@sentry/core@5.10.2", "@sentry/core@^5.10.0":
   version "5.10.2"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-5.10.2.tgz#1cb64489e6f8363c3249415b49d3f1289814825f"
   integrity sha512-sKVeFH3v8K8xw2vM5MKMnnyAAwih+JSE3pbNL0CcCCA+/SwX+3jeAo2BhgXev2SAR/TjWW+wmeC9TdIW7KyYbg==
@@ -2419,6 +2439,15 @@
   version "5.10.2"
   resolved "https://registry.yarnpkg.com/@sentry/hub/-/hub-5.10.2.tgz#25d9f36b8f7c5cb65cf486737fa61dc9bf69b7e3"
   integrity sha512-hSlZIiu3hcR/I5yEhlpN9C0nip+U7hiRzRzUQaBiHO4YG4TC58NqnOPR89D/ekiuHIXzFpjW9OQmqtAMRoSUYA==
+  dependencies:
+    "@sentry/types" "5.10.0"
+    "@sentry/utils" "5.10.2"
+    tslib "^1.9.3"
+
+"@sentry/integrations@^5.10.0":
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/@sentry/integrations/-/integrations-5.10.2.tgz#44f5c55d1619d816c0f20208a3727bb07abb98c8"
+  integrity sha512-yvIJ6aXpzWlwD1WGTxvaeCm7JmNs4flWXKLlPWm2CEwgWBfjyaWjW7PqlA0jUOnLGCeYzgFD3AdUPlpgCsFXXA==
   dependencies:
     "@sentry/types" "5.10.0"
     "@sentry/utils" "5.10.2"
@@ -2448,12 +2477,24 @@
     lru_map "^0.3.3"
     tslib "^1.9.3"
 
-"@sentry/types@5.10.0":
+"@sentry/react-native@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-1.2.1.tgz#a015ed280ffa8afde3f775b91d173ad7c884e169"
+  integrity sha512-JE2B/pMvd7+3TFdzs03+DOdrALAHd8bAphJ8tk+nWjX7oQVJNgVn/IvnJfKxasHHBXQ2z+42Xy9n2Fqam/Gq0w==
+  dependencies:
+    "@sentry/browser" "^5.10.0"
+    "@sentry/core" "^5.10.0"
+    "@sentry/integrations" "^5.10.0"
+    "@sentry/types" "^5.10.0"
+    "@sentry/utils" "^5.10.0"
+    "@sentry/wizard" "^1.0.2"
+
+"@sentry/types@5.10.0", "@sentry/types@^5.10.0":
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-5.10.0.tgz#4f0ba31b6e4d5371112c38279f11f66c73b43746"
   integrity sha512-TW20GzkCWsP6uAxR2JIpIkiitCKyIOfkyDsKBeLqYj4SaZjfvBPnzgNCcYR0L0UsP1/Es6oHooZfIGSkp6GGxQ==
 
-"@sentry/utils@5.10.2":
+"@sentry/utils@5.10.2", "@sentry/utils@^5.10.0":
   version "5.10.2"
   resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-5.10.2.tgz#261f575079d30aaf604e59f5f4de0aa21db22252"
   integrity sha512-UcbbaFpYrGSV448lQ16Cr+W/MPuKUflQQUdrMCt5vgaf5+M7kpozlcji4GGGZUCXIA7oRP93ABoXj55s1OM9zw==
@@ -2461,16 +2502,16 @@
     "@sentry/types" "5.10.0"
     tslib "^1.9.3"
 
-"@sentry/wizard@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@sentry/wizard/-/wizard-0.13.0.tgz#9eb2c2a9051f849815856293bca086725ecfc298"
-  integrity sha512-tI1B9NVIWZvAjgGOdI6JZuHVzIxOoO2JDNWJHD4voS4JyImko0zqGCDz15Nm4vh6RJKdHBUR841PTV2X3k2WaQ==
+"@sentry/wizard@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@sentry/wizard/-/wizard-1.0.2.tgz#346d1ecbeef7b765120ec8627053443456660f0d"
+  integrity sha512-/mS9SWcgc8uqrOhiwyGqusGnWXf4hvIiYpUGJGw4vxL8gZ3k+UMSKaEw46p+ND1X8y2RRgFJh7h7q2dtXa8QvQ==
   dependencies:
-    "@sentry/cli" "^1.43.0"
+    "@sentry/cli" "^1.48.0"
     chalk "^2.4.1"
     glob "^7.1.3"
     inquirer "^6.2.0"
-    lodash "^4.17.11"
+    lodash "^4.17.15"
     opn "^5.4.0"
     r2 "^2.0.1"
     read-env "^1.3.0"
@@ -14957,11 +14998,6 @@ range-parser@^1.2.1, range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-raven-js@^3.27.1:
-  version "3.27.2"
-  resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.27.2.tgz#6c33df952026cd73820aa999122b7b7737a66775"
-  integrity sha512-mFWQcXnhRFEQe5HeFroPaEghlnqy7F5E2J3Fsab189ondqUzcjwSVi7el7F36cr6PvQYXoZ1P2F5CSF2/azeMQ==
-
 raven@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/raven/-/raven-1.2.1.tgz#949c134db028a190b7bbf8f790aae541b7c020bd"
@@ -15256,14 +15292,6 @@ react-native-reanimated@^1.4.0:
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.4.0.tgz#7f1acbf9be08492d834f512700570978052be2f9"
   integrity sha512-tO7nSNNP+iRLVbkcSS5GXyDBb7tSI02+XuRL3/S39EAr35rnvUy2JfeLUQG+fWSObJjnMVhasUDEUwlENk8IXw==
 
-react-native-sentry@^0.43.2:
-  version "0.43.2"
-  resolved "https://registry.yarnpkg.com/react-native-sentry/-/react-native-sentry-0.43.2.tgz#1505d16d334656f25f4d515e004d0c5a4ac5a01b"
-  integrity sha512-MDrMkt/ntyQhhn+b3EVUuB/lXvQbSLvCOpkAvioNOzddoyo2R6i3rVZ3aZmPN1oK3O9GFE4tSa0M+eTHni7AaQ==
-  dependencies:
-    "@sentry/wizard" "^0.13.0"
-    raven-js "^3.27.1"
-
 react-native-share@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-2.0.0.tgz#4543a746013e0d8fa9f765fb8937007cfbcffcf7"
@@ -15288,10 +15316,10 @@ react-native-video@^5.0.2:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-8.0.1.tgz#f4dccb95b0f8d0c6e2afd92f3dc42470f1b537ef"
-  integrity sha512-qGjd0Solqss6MFAfDqZj14jOoKNSUtjlcJMIWILUDdd9djXIbaYJGiGkAvjSBj6NpO7c7UEnnO3z4hkjcR1PIA==
+react-native-webview@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-8.0.2.tgz#1afac4cd859ab24141490e105d1a27e18e3984a9"
+  integrity sha512-Higfj0CCPM9N76S3rQsKHKS8Rw5QA7h7UENrREmMarEN/2saZJ+ko0aIVYOlEJ4P9ZhhRLNH/3mWvzmT4spncw==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
@@ -15574,7 +15602,7 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reanimated-bottom-sheet@^1.0.0-alpha.13:
+reanimated-bottom-sheet@^1.0.0-alpha.18:
   version "1.0.0-alpha.18"
   resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.18.tgz#f1f3ddbcee67473000647173b33bf41b1c069739"
   integrity sha512-fBISS7XzSz1F/k0rQDWTKO1tWu3FgibRSoV59pcPTxWmxFzO6SJs/ZqEugMRWncLhdCejJ3wRWLwWYelEv1gRA==

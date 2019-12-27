@@ -106,13 +106,6 @@
 -dontwarn okio.**
 -dontnote okio.**
 
-# Sentry | https://docs.sentry.io/clients/java/modules/android/
-
--keep class io.sentry.event.Event { *; }
--dontwarn org.slf4j.**
--dontwarn javax.**
--dontnote io.sentry.**
-
 # Glide, https://github.com/bumptech/glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule

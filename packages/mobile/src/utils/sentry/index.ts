@@ -1,5 +1,5 @@
 import DeviceLocale from '@pontusab/react-native-device-locale'
-import { Sentry } from 'react-native-sentry'
+import * as Sentry from '@sentry/react-native'
 import Config from 'react-native-config'
 import { AppVersion } from 'utils/appVersion'
 
@@ -9,15 +9,13 @@ async function setupSentry() {
   if (!__DEV__) {
     const environment = Config.ENVIRONMENT === 'production' ? 'production' : 'test'
 
-    SentryInstance.config(Config.SENTRY_DSN, {
-      deactivateStacktraceMerging: true,
-    }).install()
-
-    SentryInstance.setTagsContext({
-      appVersion: AppVersion,
+    SentryInstance.init({
+      dsn: Config.SENTRY_DSN,
       environment,
-      buildNumber: DeviceLocale.buildNumber,
     })
+
+    SentryInstance.setExtra('appVersion', AppVersion)
+    SentryInstance.setExtra('buildNumber', DeviceLocale.buildNumber)
   } else {
     SentryInstance = {
       captureException: e => console.log(e),
@@ -28,4 +26,4 @@ async function setupSentry() {
 
 setupSentry()
 
-export const logError = (err, extra = null) => SentryInstance.captureException(err, { extra })
+export const logError = err => SentryInstance.captureException(err)

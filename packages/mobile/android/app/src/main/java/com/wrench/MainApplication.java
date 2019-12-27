@@ -23,7 +23,6 @@ import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
-import io.sentry.RNSentryPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.imagepicker.ImagePickerPackage;
@@ -81,7 +80,6 @@ public class MainApplication extends NavigationApplication {
         packages.add(new RNFirebasePackage());
         packages.add(new RNGestureHandlerPackage());
         packages.add(new RNGoogleSigninPackage());
-        packages.add(new RNSentryPackage());
         packages.add(new RNSharePackage());
         packages.add(new SplashScreenReactPackage());
         packages.add(new RNPermissionsPackage());
