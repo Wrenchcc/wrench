@@ -46,5 +46,7 @@ include ':react-native-device-locale'
 project(':react-native-device-locale').projectDir = new File(rootProject.projectDir, '../node_modules/@pontusab/react-native-device-locale/android')
 include ':react-native-permissions'
 project(':react-native-permissions').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-permissions/android')
+include ':@sentry_react-native'
+project(':@sentry_react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@sentry/react-native/android')
 
 include ':app'

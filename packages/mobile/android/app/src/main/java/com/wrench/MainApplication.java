@@ -26,6 +26,7 @@ import com.swmansion.reanimated.ReanimatedPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.imagepicker.ImagePickerPackage;
+import io.sentry.RNSentryPackage;
 
 import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -87,6 +88,7 @@ public class MainApplication extends NavigationApplication {
         packages.add(new ImageManipulatorPackage());
         packages.add(new MediaLibraryPackage());
         packages.add(new DeviceLocalePackage());
+        packages.add(new RNSentryPackage());
 
         return packages;
     }
