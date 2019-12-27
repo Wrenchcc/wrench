@@ -4,7 +4,7 @@ const alias = {
   images: './packages/mobile/assets/images',
   videos: './packages/mobile/assets/videos',
 
-  ...readdirSync('./src', { withFileTypes: true })
+  ...readdirSync('./packages/mobile/src', { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
     .reduce(
