@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { Mention, MentionsInput } from 'react-mentions'
 import { useQuery, useLazyQuery, useMutation } from '@apollo/react-hooks'
 import { prepend, append } from 'ramda'
+import { useCurrentUserQuery } from '@wrench/common'
 import optimisticId from 'utils/optimisticId'
-import { CURRENT_USER } from 'graphql/queries/user/currentUser'
 import { GET_COMMENTS } from 'graphql/queries/comments'
 import { ADD_COMMENT_MUTATION } from 'graphql/mutations/comment/addComment'
 import { SEARCH_USER } from 'graphql/queries/search/searchUser'
@@ -76,7 +76,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
   const [isAuthenticated] = useCookie(Cookies.ACCESS_TOKEN)
   const [text, setText] = useState('')
 
-  const currentUser = useQuery(CURRENT_USER, {
+  const currentUser = useCurrentUserQuery({
     skip: !isAuthenticated,
   })
 
