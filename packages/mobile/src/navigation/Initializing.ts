@@ -20,7 +20,7 @@ function Initializing() {
       if (data.user) {
         const showOnboarding = !data.user.interestedIn
 
-        SentryInstance.setUserContext({
+        SentryInstance.setUser({
           username: data.user.username,
         })
 

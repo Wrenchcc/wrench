@@ -1,7 +1,5 @@
-import DeviceLocale from '@pontusab/react-native-device-locale'
 import * as Sentry from '@sentry/react-native'
 import Config from 'react-native-config'
-import { AppVersion } from 'utils/appVersion'
 
 export let SentryInstance = Sentry
 
@@ -13,9 +11,6 @@ async function setupSentry() {
       dsn: Config.SENTRY_DSN,
       environment,
     })
-
-    SentryInstance.setExtra('appVersion', AppVersion)
-    SentryInstance.setExtra('buildNumber', DeviceLocale.buildNumber)
   } else {
     SentryInstance = {
       captureException: e => console.log(e),
