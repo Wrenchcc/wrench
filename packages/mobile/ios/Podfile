@@ -2,7 +2,7 @@ ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 platform :ios, '10.0'
 
-root_path = "../node_modules"
+root_path = "../../../node_modules"
 
 require_relative "#{root_path}/@react-native-community/cli-platform-ios/native_modules"
 
@@ -16,7 +16,7 @@ def flipper_pods()
   pod 'FlipperKit/SKIOSNetworkPlugin', '~>' + flipperkit_version, :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitUserDefaultsPlugin', '~>' + flipperkit_version, :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitReactPlugin', '~>' + flipperkit_version, :configuration => 'Debug'
-  pod 'flipper-plugin-react-native-performance', :path => "../node_modules/flipper-plugin-react-native-performance/ios", :configuration => 'Debug'
+  pod 'flipper-plugin-react-native-performance', :path => "#{root_path}//flipper-plugin-react-native-performance/ios", :configuration => 'Debug'
 end
 
 # Post Install processing for Flipper

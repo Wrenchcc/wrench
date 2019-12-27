@@ -2,11 +2,6 @@
   "name": "@wrench/mobile",
   "version": "1.0.0",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "**/**"
-    ]
-  },
   "scripts": {
     "postinstall": "npx jetifier",
     "emulator:create": "tasks/emulator_create",
@@ -20,6 +15,7 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
+    "@wrench/common": "1.0.0",
     "@apollo/react-hooks": "^3.1.3",
     "@expo/react-native-action-sheet": "^3.4.1",
     "@pontusab/react-native-apple-authentication": "^1.0.6",

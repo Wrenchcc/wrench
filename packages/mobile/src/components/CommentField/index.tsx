@@ -1,8 +1,8 @@
 import React, { memo, useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Keyboard } from 'react-native'
+import { useCurrentUserQuery } from '@wrench/common'
 import { showMention, dismissMention } from 'navigation'
-import { useQuery, CURRENT_USER_QUERY } from 'services/gql'
 import { useMentionStore } from 'store'
 import { addComment } from 'services/graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'
@@ -25,7 +25,7 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
     updateQuery: store.actions.updateQuery,
   }))
 
-  const { data } = useQuery(CURRENT_USER_QUERY)
+  const { data } = useCurrentUserQuery()
 
   useEffect(() => {
     if (username) {
