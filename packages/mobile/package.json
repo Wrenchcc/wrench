@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "npx jetifier",
     "emulator:create": "tasks/emulator_create",
     "emulator:ensureready": "tasks/emulator_ensureready",
     "emulator:start": "tasks/emulator_start",
@@ -24,7 +23,6 @@
     "@pontusab/react-native-media-library": "^1.0.6",
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/netinfo": "^5.0.1",
-    "@react-native-community/cli-platform-android": "3.0.0-alpha.2",
     "@sentry/react-native": "^1.2.1",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-cache-persist": "^0.1.1",
@@ -41,7 +39,6 @@
     "i18next": "^19.0.2",
     "lodash.debounce": "^4.0.8",
     "ms": "^2.1.2",
-    "npm-check-updates": "^4.0.1",
     "rambda": "^4.4.0",
     "react": "16.12",
     "react-apollo": "^3.1.3",
