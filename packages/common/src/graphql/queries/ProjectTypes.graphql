@@ -1,0 +1,7 @@
+query projectTypes {
+  types: projectTypes {
+    id
+    title
+    imageUrl
+  }
+}

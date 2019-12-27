@@ -1,0 +1,14 @@
+#import "./UserFragment.graphql"
+
+fragment Comments on CommentConnection {
+  totalCount
+  edges {
+    node {
+      id
+      text
+      user {
+        ...User
+      }
+    }
+  }
+}

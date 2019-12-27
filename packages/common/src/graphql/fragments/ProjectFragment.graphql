@@ -1,0 +1,18 @@
+#import "./UserFragment.graphql"
+
+fragment Project on Project {
+  id
+  title
+  slug
+  dynamicLink
+  user {
+    ...User
+  }
+  permissions {
+    isOwner
+    isFollower
+  }
+  followers: followersConnection {
+    totalCount
+  }
+}

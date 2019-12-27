@@ -1,0 +1,13 @@
+ fragment User on User {
+  id
+  fullName
+  firstName
+  lastName
+  username
+  avatarUrl
+  isSilhouette
+  isOnline
+  website
+  location
+  bio
+}

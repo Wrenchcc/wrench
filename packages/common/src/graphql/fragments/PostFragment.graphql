@@ -1,0 +1,34 @@
+#import "./UserFragment.graphql"
+#import "./ProjectFragment.graphql"
+#import "./CommentsFragment.graphql"
+
+fragment Post on Post {
+  id
+  caption
+  createdAt
+  user {
+    ...User
+  }
+  permissions {
+    isOwner
+  }
+  files: filesConnection(type: IMAGE) {
+    edges {
+      node {
+        id
+        type
+        uri
+      }
+    }
+  }
+  project {
+    ...Project
+  }
+  likes {
+    isLiked
+    totalCount
+  }
+  comments: commentsConnection(first: 2) @connection(key: "comments") {
+    ...Comments
+  }
+}

@@ -1,0 +1,14 @@
+#import "../fragments/ProjectFragment.graphql"
+
+query similarProjects($id: ID!) {
+  similarProjects(id: $id) {
+    edges {
+      node {
+        cover {
+          uri
+        }
+        ...Project
+      }
+    }
+  }
+}

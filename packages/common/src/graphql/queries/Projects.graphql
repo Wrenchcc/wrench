@@ -1,0 +1,19 @@
+#import "../fragments/ProjectFragment.graphql"
+
+query projects($typeId: ID, $after: String, $first: Int, $type: ProjectSortType!) {
+  projects(typeId: $typeId, after: $after, first: $first, type: $type) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        cover {
+          uri
+          default
+        }
+        ...Project
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+#import "../fragments/UserProjectsFragment.graphql"
+
+query CurrentUser {
+  user: currentUser {
+    avatarUrl
+    bio
+    dynamicLink
+    firstName
+    fullName
+    id
+    isOnline
+    isSilhouette
+    lastName
+    location
+    projectCount
+    username
+    website
+    settings {
+      timezone
+      locale
+    }
+    interestedIn {
+      id
+      title
+    }
+    ...UserProjects
+  }
+}
