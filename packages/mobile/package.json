@@ -28,6 +28,7 @@
     "@pontusab/react-native-media-library": "^1.0.6",
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/netinfo": "^5.0.1",
+    "@react-native-community/cli-platform-android": "3.0.0-alpha.2",
     "@sentry/react-native": "^1.2.1",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-cache-persist": "^0.1.1",
@@ -84,8 +85,5 @@
     "concurrently": "^5.0.2",
     "flipper-plugin-react-native-performance": "^0.4.3",
     "metro-react-native-babel-preset": "^0.57.0"
-  },
-  "resolutions": {
-    "@react-native-community/cli-platform-android": "3.0.0-alpha.2"
   }
 }
