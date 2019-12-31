@@ -80,18 +80,20 @@ def projectRoot = "../../../../";
  */
 
 project.ext.react = [
-    entryFile: "index.js",
-    enableHermes: true
+    composeSourceMapsPath: "../../node_modules/react-native/scripts/compose-source-maps.js",
+    enableHermes: true,
+    entryFile: "./packages/mobile/index.js",
+    hermesCommand: "../../../../node_modules/hermes-engine/%OS-BIN%/hermes",
 ]
 
 apply from: projectRoot + "node_modules/react-native/react.gradle"
 
 // Sentry
-apply from: projectRoot + "node_modules/@sentry/react-native/sentry.gradle"
+// apply from: projectRoot + "node_modules/@sentry/react-native/sentry.gradle"
 
-project.ext.sentryCli = [
-    logLevel: "debug"
-]
+// project.ext.sentryCli = [
+//     logLevel: "debug"
+// ]
 
 /**
  * Set this to true to create two separate APKs instead of one:
