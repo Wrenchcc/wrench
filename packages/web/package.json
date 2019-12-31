@@ -50,12 +50,12 @@
     "react-scrollable-anchor": "^0.6.1",
     "styled-components": "5.0.0-rc.1",
     "styled-reset": "^4.0.8",
-    "universal-cookie": "^4.0.2"
+    "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
     "@types/i18next": "^13.0.0",
     "@types/next": "^9.0.0",
-    "@types/node": "^13.1.1",
+    "@types/node": "^13.1.2",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/styled-components": "^4.4.1",

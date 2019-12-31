@@ -2,22 +2,23 @@
   "name": "wrench",
   "version": "1.0.0",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
-    "postinstall": "npx jetifier",
+    "postinstall": "npx jetifier && npx patch-package",
     "run:ios": "yarn workspace @wrench/mobile run:ios",
     "start:packager": "yarn workspace @wrench/mobile start:packager",
     "run:android": "yarn workspace @wrench/mobile run:android",
     "run:web": "yarn workspace @wrench/web dev",
     "run:api": "yarn workspace @wrench/web dev"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
   "devDependencies": {
     "bluebird": "^3.7.2",
     "prettier": "^1.19.1",
+    "react-native": "*",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",

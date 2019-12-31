@@ -59,6 +59,17 @@ node_modules
 
 Pods
 
+# fastlane specific
+fastlane/report.xml
 
-# Fastlane
-.builds
+# deliver temporary files
+fastlane/Preview.html
+
+# snapshot generated screenshots
+fastlane/screenshots
+
+# scan temporary files
+fastlane/test_output
+
+# Fastlane builds
+.builds/*

@@ -393,7 +393,7 @@ PODS:
     - React
   - react-native-media-library (1.0.6):
     - React
-  - react-native-netinfo (5.0.1):
+  - react-native-netinfo (5.2.0):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -460,7 +460,7 @@ PODS:
     - Fabric
     - Firebase/Core
     - React
-  - RNGestureHandler (1.5.2):
+  - RNGestureHandler (1.5.3):
     - React
   - RNGoogleSignin (2.1.1):
     - GoogleSignIn (~> 5.0.0)
@@ -770,7 +770,7 @@ SPEC CHECKSUMS:
   react-native-image-manipulator: 01433a6b3714da14d453e2f1fa83eab09dadef4d
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
   react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
-  react-native-netinfo: f85616b5f5819085624f2c26dcb98ff3ab013a41
+  react-native-netinfo: d3fb9723582eb9a111c128d37f896bae88c00f99
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
@@ -790,7 +790,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 44395cb9c7c1523104c2b499eb426ef7aff82bca
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
-  RNGestureHandler: 946a7691e41df61e2c4b1884deab41a4cdc3afff
+  RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNPermissions: 923c1506d0bde387fbcfc18a8f87945806d03c19
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
