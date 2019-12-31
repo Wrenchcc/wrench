@@ -1,8 +1,7 @@
 // @ts-nocheck
 import React, { memo, Fragment } from 'react'
 import { CarouselProvider } from 'pure-react-carousel'
-import Image from '../Image'
-import { Base, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from './styles'
+import { Base, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Image } from './styles'
 
 const Carousel = memo(function Carousel({ files }) {
   return (

@@ -6,9 +6,23 @@ import {
   ButtonNext as PButtonNext,
   DotGroup as PDotGroup,
 } from 'pure-react-carousel'
+import UiImage from 'ui/Image'
+import { DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   overflow: hidden;
+
+  @media ${DEVICE.TABLET} {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+`
+
+export const Image = styled(UiImage)`
+  @media ${DEVICE.TABLET} {
+    max-width: 100%;
+    max-height: auto;
+  }
 `
 
 export const Slider = styled(PSlider)`

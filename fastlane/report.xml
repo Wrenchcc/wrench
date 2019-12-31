@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="00: actions/create-env" time="0.038945">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: latest_testflight_build_number" time="2.464741">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: increment_build_number" time="1.137893">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: latest_testflight_build_number" time="2.722822">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: increment_version_number" time="0.7589">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: get_certificates" time="4.319244">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: get_provisioning_profile" time="10.363671">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: update_project_provisioning" time="0.110614">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: update_project_team" time="0.016214">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: build_app" time="428.194617">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: upload_to_testflight" time="689.084142">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

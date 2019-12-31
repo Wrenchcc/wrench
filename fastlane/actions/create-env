@@ -2,7 +2,8 @@
 
 set -uex
 
-TARGET_FILE=.env
+# Relative to fastlane tool
+TARGET_FILE=../packages/mobile/.env
 
 HASH=$(git rev-parse --short HEAD)
 
