@@ -8,7 +8,7 @@
     ]
   },
   "scripts": {
-    "postinstall": "npx jetifier && npx patch-package",
+    "postinstall": "npx jetifier",
     "run:ios": "yarn workspace @wrench/mobile run:ios",
     "start:packager": "yarn workspace @wrench/mobile start:packager",
     "run:android": "yarn workspace @wrench/mobile run:android",
@@ -16,6 +16,7 @@
     "run:api": "yarn workspace @wrench/web dev"
   },
   "devDependencies": {
+    "@react-native-community/cli-platform-android": "3.0.0-alpha.2",
     "bluebird": "^3.7.2",
     "prettier": "^1.19.1",
     "react-native": "*",
