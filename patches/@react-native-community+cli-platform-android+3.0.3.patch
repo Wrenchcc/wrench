@@ -1,5 +1,5 @@
 diff --git a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
-index b82f325..9d218bc 100644
+index b82f325..092aeda 100644
 --- a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
 +++ b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
 @@ -190,8 +190,8 @@ class ReactNativeModules {
@@ -9,7 +9,7 @@ index b82f325..9d218bc 100644
 -    def dir = new File(this.jsAppDir)
 -    def reactNativeConfigOutput = this.getCommandOutput(command, /* dir */) // Temporary disable changing dir, as it introduces regressions
 +    def dir = new File("packages/mobile")
-+    def reactNativeConfigOutput = this.getCommandOutput(command, dir) // Temporary disable changing dir, as it introduces regressions
++    def reactNativeConfigOutput = this.getCommandOutput(command, /*dir*/) // Temporary disable changing dir, as it introduces regressions
      def json
      try {
        json = new JsonSlurper().parseText(reactNativeConfigOutput)
