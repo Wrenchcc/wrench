@@ -16,7 +16,7 @@ jobs:
       - name: Build app
         uses: maierj/fastlane-action@v1.2.0
         with:
-          lane: 'beta'
+          lane: 'android beta'
           subdirectory: 'fastlane'
           skip-tracking: true
               
