@@ -1,22 +1,15 @@
 diff --git a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
-index b82f325..f942873 100644
+index b82f325..08002d8 100644
 --- a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
 +++ b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
-@@ -183,15 +183,14 @@ class ReactNativeModules {
-     if (this.reactNativeModules != null) return this.reactNativeModules
- 
-     ArrayList<HashMap<String, String>> reactNativeModules = new ArrayList<HashMap<String, String>>()
--    def npx = Os.isFamily(Os.FAMILY_WINDOWS) ? "npx.cmd" : "npx"
--    def command = "${npx} --quiet --no-install react-native config"
-+    def command = "yarn --silent react-native config"
-     /**
-      * Running npx from the directory of the JS app which holds this script in its node_modules.
+@@ -190,8 +190,9 @@ class ReactNativeModules {
       * We do so, because Gradle may be ran with a different directory as CWD, that's outside of JS project
       * (e.g. when running with -p flag), in which case npx wouldn't resolve correct `react-native` binary.
       */
 -    def dir = new File(this.jsAppDir)
 -    def reactNativeConfigOutput = this.getCommandOutput(command, /* dir */) // Temporary disable changing dir, as it introduces regressions
-+    def dir = new File("packages/mobile")
++     
++    def dir = new File(jsAppDir + "packages/mobile")
 +    def reactNativeConfigOutput = this.getCommandOutput(command, dir) // Temporary disable changing dir, as it introduces regressions
      def json
      try {

@@ -29,7 +29,7 @@ Push a new beta build to TestFlight
 ```
 fastlane android beta
 ```
-Submit a new Beta Build to Crashlytics Beta
+Submit a new Beta Build to Play Store
 
 ----
 

@@ -1,5 +1,6 @@
 xcodeproj = "packages/mobile/ios/Wrench.xcodeproj"
 workspace = "packages/mobile/ios/Wrench.xcworkspace"
+android = "packages/mobile/android"
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
@@ -49,12 +50,25 @@ platform :ios do
   end
 end
 
+# gradlew app:assembleRelease
 platform :android do
-  desc "Submit a new Beta Build to Crashlytics Beta"
+  desc "Submit a new Beta Build to Play Store"
   lane :beta do
-    gradle(task: "clean assembleRelease")
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+    # store_password = prompt(text: "Signing Store Password: ", secure_text: true)
+    # key_password = prompt(text: "Alias Key Password: ", secure_text: true)
+    # releaseFilePath = android + "/app/release.keystore"
+    gradle(
+      task: 'clean',
+      project_dir: android
+    )
+    gradle(
+      project_dir: android,
+      task: 'app:assemble',
+      build_type: 'Release',
+      print_command: false
+    )
+    upload_to_play_store(
+      track: 'internal'
+    )
   end
 end

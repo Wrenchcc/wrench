@@ -7,20 +7,20 @@
     "deploy": "serverless deploy --stage production --aws-profile wrench-api"
   },
   "dependencies": {
-    "sharp": "^0.23.3"
+    "sharp": "^0.23.4"
   },
   "devDependencies": {
-    "@types/aws-lambda": "8.10.36",
-    "@types/node": "^12.12.11",
-    "@types/sharp": "^0.23.0",
-    "aws-sdk": "^2.577.0",
+    "@types/aws-lambda": "8.10.39",
+    "@types/node": "^13.1.2",
+    "@types/sharp": "^0.23.1",
+    "aws-sdk": "^2.596.0",
     "prettier": "^1.19.1",
     "serverless-webpack": "^5.3.1",
-    "serverless": "^1.58.0",
+    "serverless": "^1.60.4",
     "ts-loader": "^6.2.1",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.2",
-    "webpack": "^4.41.2",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
     "webpack-node-externals": "^1.7.2"
   }
 }

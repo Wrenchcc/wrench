@@ -5,57 +5,19 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="00: actions/create-env" time="0.038945">
+      <testcase classname="fastlane.lanes" name="0: gradle" time="14.358785">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="01: latest_testflight_build_number" time="2.464741">
+      <testcase classname="fastlane.lanes" name="1: gradle" time="109.110187">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="02: increment_build_number" time="1.137893">
+      <testcase classname="fastlane.lanes" name="2: upload_to_play_store" time="0.013558">
         
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="03: latest_testflight_build_number" time="2.722822">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="04: increment_version_number" time="0.7589">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="05: get_certificates" time="4.319244">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="06: get_provisioning_profile" time="10.363671">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="07: update_project_provisioning" time="0.110614">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="08: update_project_team" time="0.016214">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="09: build_app" time="428.194617">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="10: upload_to_testflight" time="689.084142">
+          <failure message="/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/actions/actions_helper.rb:48:in `execute_action'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/runner.rb:235:in `block in execute_action'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/runner.rb:227:in `chdir'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/runner.rb:227:in `execute_action'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:70:in `block (2 levels) in parsing_binding'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/lane_manager.rb:56:in `cruise_lane'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/commands_generator.rb:349:in `run'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/fastlane/lib/fastlane/cli_tools_distributor.rb:119:in `take_off'&#10;/Users/pontus.abrahamsson/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/fastlane-2.139.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/bin/fastlane:23:in `load'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/bin/fastlane:23:in `&lt;main&gt;'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `eval'&#10;/Users/pontus.abrahamsson/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `&lt;main&gt;'&#10;&#10;No authentication parameters were specified. These must be provided in order to authenticate with Google" />
         
       </testcase>
     
