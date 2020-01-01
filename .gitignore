@@ -72,4 +72,4 @@ fastlane/screenshots
 fastlane/test_output
 
 # Fastlane builds
-.builds/*
+.builds

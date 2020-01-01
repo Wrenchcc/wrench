@@ -1,0 +1,23 @@
+name: 'Deploy Android to Internal channel'
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  api:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Build app
+        uses: maierj/fastlane-action@v1.2.0
+        with:
+          lane: 'beta'
+          subdirectory: 'fastlane'
+          skip-tracking: true
+              
+          
