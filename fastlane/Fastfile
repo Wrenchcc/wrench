@@ -34,7 +34,7 @@ platform :ios do
     )
     # Generate env file
     build_app(
-      workspace: workspace, 
+      workspace: workspace,
       scheme: "Wrench",
       clean: true,
       export_method: "app-store",
@@ -46,11 +46,11 @@ platform :ios do
       build_path: "./.builds",
       output_directory: "./.builds"
     )
+    changelog_from_git_commits(merge_commit_filtering: exclude_merges)
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 end
 
-# gradlew app:assembleRelease
 platform :android do
   desc "Submit a new Beta Build to Play Store"
   lane :beta do
