@@ -2,73 +2,67 @@ xcodeproj = "packages/mobile/ios/Wrench.xcodeproj"
 workspace = "packages/mobile/ios/Wrench.xcworkspace"
 android = "packages/mobile/android"
 
-platform :ios do
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
-    increment_build_number({
-      build_number: latest_testflight_build_number + 1,
-      xcodeproj: xcodeproj
-    })
-    increment_version_number({
-      version_number: (latest_testflight_build_number + 1).to_s,
-      xcodeproj: xcodeproj
-    })
-    get_certificates( # Create or get certificate, and install it
-      output_path: "./.builds" # Download certificate in the build folder (you don't need to create the folder)
-    )
-    get_provisioning_profile( # Create or get provisioning profile
-      provisioning_name: "Wrench App Store Distribution",
-      output_path: "./.builds",  # Download provisioning profile in the build folder
-      filename: "Wrench_App_Store_Distribution.mobileprovision" # Rename the local provisioning profile
-    )
-    update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
-      xcodeproj: xcodeproj,
-      target_filter: "Wrench", # Name of your project
-      profile: "./.builds/Wrench_App_Store_Distribution.mobileprovision",
-      build_configuration: "Release"
-    )
-    update_project_team( # Set the right team on your project
-      path: xcodeproj,
-      teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-    )
-    sh "actions/create-env"
-    build_app(
-      workspace: workspace,
-      scheme: "Wrench",
-      clean: true,
-      export_method: "app-store",
-      export_options: {
-        provisioningProfiles: { 
-          CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier) => CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier) + " AppStore" # Value of this parameter is the name of the Provisioning Profile. By default, it will be "{bundleId} AppStore"
-        }
-      },
-      build_path: "./.builds",
-      output_directory: "./.builds"
-    )
-    changelog_from_git_commits(merge_commit_filtering: exclude_merges)
-    upload_to_testflight(skip_waiting_for_build_processing: true)
-  end
+lane :ios do
+  increment_build_number({
+    build_number: latest_testflight_build_number + 1,
+    xcodeproj: xcodeproj
+  })
+  increment_version_number({
+    version_number: (latest_testflight_build_number + 1).to_s,
+    xcodeproj: xcodeproj
+  })
+  get_certificates( # Create or get certificate, and install it
+    output_path: "./.builds" # Download certificate in the build folder (you don't need to create the folder)
+  )
+  get_provisioning_profile( # Create or get provisioning profile
+    provisioning_name: "Wrench App Store Distribution",
+    output_path: "./.builds",  # Download provisioning profile in the build folder
+    filename: "Wrench_App_Store_Distribution.mobileprovision" # Rename the local provisioning profile
+  )
+  update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
+    xcodeproj: xcodeproj,
+    target_filter: "Wrench", # Name of your project
+    profile: "./.builds/Wrench_App_Store_Distribution.mobileprovision",
+    build_configuration: "Release"
+  )
+  update_project_team( # Set the right team on your project
+    path: xcodeproj,
+    teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+  )
+  sh "actions/create-env"
+  build_app(
+    workspace: workspace,
+    scheme: "Wrench",
+    clean: true,
+    export_method: "app-store",
+    export_options: {
+      provisioningProfiles: { 
+        CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier) => CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier) + " AppStore" # Value of this parameter is the name of the Provisioning Profile. By default, it will be "{bundleId} AppStore"
+      }
+    },
+    build_path: "./.builds",
+    output_directory: "./.builds"
+  )
+  changelog_from_git_commits(merge_commit_filtering: exclude_merges)
+  upload_to_testflight(skip_waiting_for_build_processing: true)
 end
 
-platform :android do
-  desc "Submit a new Beta Build to Play Store"
-  lane :beta do
-    sh "actions/create-env"
-    # store_password = prompt(text: "Signing Store Password: ", secure_text: true)
-    # key_password = prompt(text: "Alias Key Password: ", secure_text: true)
-    # releaseFilePath = android + "/app/release.keystore"
-    gradle(
-      task: 'clean',
-      project_dir: android
-    )
-    gradle(
-      project_dir: android,
-      task: 'app:assemble',
-      build_type: 'Release',
-      print_command: false
-    )
-    upload_to_play_store(
-      track: 'internal'
-    )
-  end
+lane :android do
+  sh "actions/create-env"
+  # store_password = prompt(text: "Signing Store Password: ", secure_text: true)
+  # key_password = prompt(text: "Alias Key Password: ", secure_text: true)
+  # releaseFilePath = android + "/app/release.keystore"
+  gradle(
+    task: 'clean',
+    project_dir: android
+  )
+  gradle(
+    project_dir: android,
+    task: 'app:assemble',
+    build_type: 'Release',
+    print_command: false
+  )
+  upload_to_play_store(
+    track: 'internal'
+  )
 end

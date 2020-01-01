@@ -6,7 +6,7 @@ on:
 
 jobs:
   android:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -16,7 +16,7 @@ jobs:
       - name: Build app
         uses: maierj/fastlane-action@v1.2.0
         with:
-          lane: 'android beta'
+          lane: 'android'
           subdirectory: 'fastlane'
           skip-tracking: true
               
