@@ -33,7 +33,7 @@ platform :ios do
     )
     sh "actions/create-env"
     build_app(
-      workspace: workspace,c
+      workspace: workspace,
       scheme: "Wrench",
       clean: true,
       export_method: "app-store",
