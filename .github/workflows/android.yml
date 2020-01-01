@@ -13,6 +13,11 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Install dependencies
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+
       - name: Build app
         uses: maierj/fastlane-action@v1.2.0
         with:
