@@ -19,5 +19,13 @@ jobs:
           lane: 'android'
           subdirectory: 'fastlane'
           skip-tracking: true
-              
-          
+        env:
+          GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_URL: ${{ secrets.SENTRY_URL }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
+
