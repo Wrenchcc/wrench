@@ -2,6 +2,7 @@ xcodeproj = "packages/mobile/ios/Wrench.xcodeproj"
 workspace = "packages/mobile/ios/Wrench.xcworkspace"
 android = "packages/mobile/android"
 
+# iOS Beta
 lane :ios do
   increment_build_number({
     build_number: latest_testflight_build_number + 1,
@@ -47,6 +48,7 @@ lane :ios do
   upload_to_testflight(skip_waiting_for_build_processing: true)
 end
 
+# Android Beta
 lane :android do
   sh "actions/create-env"
   # store_password = prompt(text: "Signing Store Password: ", secure_text: true)
