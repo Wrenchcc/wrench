@@ -1,15 +1,12 @@
 diff --git a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
-index b82f325..08002d8 100644
+index b82f325..df02efa 100644
 --- a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
 +++ b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
-@@ -190,8 +190,9 @@ class ReactNativeModules {
-      * We do so, because Gradle may be ran with a different directory as CWD, that's outside of JS project
+@@ -191,7 +191,7 @@ class ReactNativeModules {
       * (e.g. when running with -p flag), in which case npx wouldn't resolve correct `react-native` binary.
       */
--    def dir = new File(this.jsAppDir)
+     def dir = new File(this.jsAppDir)
 -    def reactNativeConfigOutput = this.getCommandOutput(command, /* dir */) // Temporary disable changing dir, as it introduces regressions
-+     
-+    def dir = new File(jsAppDir + "packages/mobile")
 +    def reactNativeConfigOutput = this.getCommandOutput(command, dir) // Temporary disable changing dir, as it introduces regressions
      def json
      try {
