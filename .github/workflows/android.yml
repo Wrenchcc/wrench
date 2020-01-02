@@ -8,15 +8,16 @@ jobs:
   android:
     runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v1
+      - name: Uses Node.js 13
+        uses: actions/setup-node@v1
         with:
-          fetch-depth: 1
+        node-version: 13
+      - run: npm install -g yarn
 
       - name: Install dependencies
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
+        run: |
+          yarn install
 
       - name: Build app
         uses: maierj/fastlane-action@v1.2.0
