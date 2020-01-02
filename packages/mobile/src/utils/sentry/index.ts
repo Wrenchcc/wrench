@@ -14,7 +14,7 @@ async function setupSentry() {
   } else {
     SentryInstance = {
       captureException: e => console.log(e),
-      setUserContext: c => console.log(c),
+      setUser: c => console.log(c),
     }
   }
 }

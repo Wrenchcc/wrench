@@ -1,4 +1,4 @@
-name: 'Deploy Android to Internal channel'
+name: 'Deploy Android'
 on:
   push:
     branches:

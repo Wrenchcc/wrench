@@ -1,2 +1,37 @@
-# name: 'Deploy iOS to TestFlight'
-# macos-latest
+name: 'Deploy iOS'
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  android:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Uses Node.js 13
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13
+      - run: npm install -g yarn
+
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      # - name: Build app
+      #   uses: maierj/fastlane-action@v1.2.0
+      #   with:
+      #     lane: 'ios'
+      #     subdirectory: 'fastlane'
+      #     skip-tracking: true
+      #   env:
+      #     GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
+      #     SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      #     ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+      #     SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      #     SENTRY_URL: ${{ secrets.SENTRY_URL }}
+      #     SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      #     MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
+

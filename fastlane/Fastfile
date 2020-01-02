@@ -51,9 +51,6 @@ end
 # Android Beta
 lane :android do
   sh "actions/create-env"
-  # store_password = prompt(text: "Signing Store Password: ", secure_text: true)
-  # key_password = prompt(text: "Alias Key Password: ", secure_text: true)
-  # releaseFilePath = android + "/app/release.keystore"
   gradle(
     task: 'clean',
     project_dir: android
