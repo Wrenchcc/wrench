@@ -50,7 +50,7 @@ end
 
 # Android Beta
 lane :android do
-  # sh "actions/create-env"
+  sh "actions/create-env"
   gradle(
     task: 'clean',
     project_dir: android
