@@ -1,5 +1,5 @@
 diff --git a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
-index b82f325..1c98d75 100644
+index b82f325..cbf6ace 100644
 --- a/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
 +++ b/node_modules/@react-native-community/cli-platform-android/native_modules.gradle
 @@ -184,15 +184,15 @@ class ReactNativeModules {
@@ -7,7 +7,7 @@ index b82f325..1c98d75 100644
      ArrayList<HashMap<String, String>> reactNativeModules = new ArrayList<HashMap<String, String>>()
      def npx = Os.isFamily(Os.FAMILY_WINDOWS) ? "npx.cmd" : "npx"
 -    def command = "${npx} --quiet --no-install react-native config"
-+    def command = "yarn react-native config"
++    def command = "${npx} --no-install react-native config"
      /**
       * Running npx from the directory of the JS app which holds this script in its node_modules.
       * We do so, because Gradle may be ran with a different directory as CWD, that's outside of JS project
