@@ -50,7 +50,7 @@ end
 
 # Android Beta
 lane :android do
-  sh "actions/create-env"
+  # sh "actions/create-env"
   gradle(
     task: 'clean',
     project_dir: android
@@ -62,6 +62,10 @@ lane :android do
     print_command: false
   )
   upload_to_play_store(
-    track: 'internal'
+    track: 'internal',
+    json_key: "#{Dir.pwd}/google-play-service-account.json",
+    skip_upload_metadata: true,
+    skip_upload_images: true,
+    skip_upload_screenshots: true
   )
 end
