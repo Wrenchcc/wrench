@@ -49,7 +49,7 @@
     "react-scroll": "^1.7.15",
     "react-scrollable-anchor": "^0.6.1",
     "styled-components": "5.0.0-rc.1",
-    "styled-reset": "^4.0.8",
+    "styled-reset": "^4.0.9",
     "universal-cookie": "^4.0.3"
   },
   "devDependencies": {
