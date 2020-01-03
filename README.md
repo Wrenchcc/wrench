@@ -60,4 +60,3 @@ wrench/
 - `yarn storybook:create`
 - `yarn translations:create`
 - `yarn storybook`
-

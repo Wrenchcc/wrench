@@ -1,8 +1,9 @@
+import com.android.build.OutputFile
+import groovy.json.JsonSlurper
+
 apply plugin: "com.android.application"
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 apply plugin: "io.fabric"
-
-import com.android.build.OutputFile
 
 def projectRoot = "../../../../";
 
@@ -157,9 +158,8 @@ android {
         applicationId "com.wrench"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-
+        versionCode project.hasProperty('versionCode') ? project.property('versionCode') as int : 1
+        versionName project.hasProperty('versionName') ? project.property('versionName') : "No versionName"
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
         multiDexEnabled true
         missingDimensionStrategy 'react-native-camera', 'general'

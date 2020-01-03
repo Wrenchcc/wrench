@@ -1,11 +1,11 @@
-name: 'Deploy Android'
+name: 'Deploy Apps'
 on:
   push:
     branches:
       - master
 
 jobs:
-  android:
+  mobile:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
@@ -19,7 +19,7 @@ jobs:
         run: |
           yarn install
 
-      - name: Build app
+      - name: Deploy Android
         uses: maierj/fastlane-action@v1.2.0
         with:
           lane: 'android'
@@ -37,3 +37,19 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+
+      # - name: Deploy iOS
+      #   uses: maierj/fastlane-action@v1.2.0
+      #   with:
+      #     lane: 'ios'
+      #     subdirectory: 'fastlane'
+      #     skip-tracking: true
+      #   env:
+      #     GRAPHQL_URL: ${{ secrets.GRAPHQL_URL }}
+      #     SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      #     ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+      #     SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      #     SENTRY_URL: ${{ secrets.SENTRY_URL }}
+      #     SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      #     MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
