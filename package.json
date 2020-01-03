@@ -5,6 +5,10 @@
   "workspaces": {
     "packages": [
       "packages/*"
+    ],
+    "nohoist": [
+      "**/@sentry/react-native",
+      "**/@sentry/react-native/**"
     ]
   },
   "scripts": {
