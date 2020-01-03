@@ -15,6 +15,11 @@ jobs:
           node-version: 13
       - run: npm install -g yarn
 
+      - name: Generate build number
+        uses: einaregilsson/build-number@v2 
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}        
+
       - name: Install dependencies
         run: |
           yarn install
