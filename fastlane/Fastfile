@@ -68,7 +68,7 @@ lane :android do
     build_type: 'Release',
     print_command: false,
     properties: {
-      "versionCode" => 100,
+      "versionCode" => 600,
       "versionName" => version_name,
     }
   )
