@@ -1,6 +1,6 @@
 {
   "name": "wrench",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "workspaces": {
     "packages": [
@@ -18,9 +18,9 @@
     "run:api": "yarn workspace @wrench/web dev"
   },
   "devDependencies": {
-    "react-native": "*",
     "bluebird": "^3.7.2",
     "prettier": "^1.19.1",
+    "react-native": "*",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
