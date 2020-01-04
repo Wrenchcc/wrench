@@ -5,6 +5,7 @@ on:
       - master
     paths:
       - 'packages/mobile/**'
+      - 'fastlane/**'
 
 jobs:
   mobile:
