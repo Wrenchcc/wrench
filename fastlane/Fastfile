@@ -7,6 +7,8 @@ android = "packages/mobile/android"
 # Build number
 if ENV["BUMP_VERSION"]
   sh "yarn version --patch"
+  git_commit(path: 'yarn.lock', message: 'Version Bump')
+  push_to_git_remote
 end
 
 package = File.read("../package.json")
