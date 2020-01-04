@@ -21,7 +21,7 @@
     "@pontusab/react-native-image-manipulator": "^1.0.6",
     "@pontusab/react-native-media-library": "^1.0.6",
     "@react-native-community/async-storage": "^1.7.1",
-    "@react-native-community/netinfo": "^5.2.0",
+    "@react-native-community/netinfo": "^5.3.1",
     "@sentry/react-native": "^1.2.1",
     "@wrench/common": "1.0.0",
     "apollo-cache-inmemory": "^1.6.5",

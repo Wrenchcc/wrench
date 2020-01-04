@@ -2697,10 +2697,10 @@
     wcwidth "^1.0.1"
     ws "^1.1.0"
 
-"@react-native-community/netinfo@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.2.0.tgz#0ad6d5d5cfd01d31d16ef819fe15c29fa7352bd4"
-  integrity sha512-AhpRzJEAPnqNS6hN8xluoKC5t0toaTQTl+IlGdKhGbvvTvarANnBvmvwLbvTyOOkDCZJc2RTPKVXqhPk/O6P/g==
+"@react-native-community/netinfo@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.3.1.tgz#ee61eb6bee6f7d5c51a8be4f19be031eccae16ab"
+  integrity sha512-mX5E99/LXtZNPdn9ar0Yscho85QiOm4iWrSyz6uhDKzTj8xZT+Sd2T62hvT5wsPcWR2Z2iu6bXUilrCiMXLGpg==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -2871,7 +2871,7 @@
     ramda "^0.26.1"
     semver "^6.1.1"
 
-"@serverless/enterprise-plugin@^3.2.5":
+"@serverless/enterprise-plugin@^3.2.5", "@serverless/enterprise-plugin@^3.2.7":
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.2.7.tgz#a023a23e37c6d1ba170955e79ef94d5ff4dde707"
   integrity sha512-6NP50gRqqu9fWSuMw0vFec9qHGFZaIDHvYuSVicdb3vuiXQaZXtwuGq/eMCC2kufK3A7uJZu9XULU3rO3KQJgw==
@@ -3376,6 +3376,11 @@
   version "12.12.22"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.22.tgz#b8d9eae3328b96910a373cf06ac8d3c5abe9c200"
   integrity sha512-r5i93jqbPWGXYXxianGATOxTelkp6ih/U0WVnvaqAvTqM+0U6J3kw6Xk6uq/dWNRkEVw/0SLcO5ORXbVNz4FMQ==
+
+"@types/node@^13.1.4":
+  version "13.1.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.4.tgz#4cfd90175a200ee9b02bd6b1cd19bc349741607e"
+  integrity sha512-Lue/mlp2egZJoHXZr4LndxDAd7i/7SQYhV0EjWfb/a4/OZ6tuVwMCVPiwkU5nsEipxEf7hmkSU7Em5VQ8P5NGA==
 
 "@types/node@^8.10.59":
   version "8.10.59"
@@ -4690,7 +4695,7 @@ await-to-js@^2.0.1:
   resolved "https://registry.yarnpkg.com/await-to-js/-/await-to-js-2.1.1.tgz#c2093cd5a386f2bb945d79b292817bbc3f41b31b"
   integrity sha512-CHBC6gQGCIzjZ09tJ+XmpQoZOn4GdWePB4qUweCaKNJ0D3f115YdhmYVTZ4rMVpiJ3cFzZcTYK1VMYEICV4YXw==
 
-aws-sdk@^2.585.0, aws-sdk@^2.592.0, aws-sdk@^2.596.0:
+aws-sdk@^2.585.0, aws-sdk@^2.592.0, aws-sdk@^2.596.0, aws-sdk@^2.597.0:
   version "2.597.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.597.0.tgz#028c7778b4fdc742ac040e7071b85a070d18bf2a"
   integrity sha512-xdhm1bYnh46b7pEOmIsptQcPAJmq9MT31cUsn3WzOr6IPtiRLz5XIHIusFFsJYpyjiFB99b1n8SabRR7j6H1AA==
@@ -5415,6 +5420,11 @@ buffer-indexof@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-indexof/-/buffer-indexof-1.1.1.tgz#52fabcc6a606d1a00302802648ef68f639da268c"
   integrity sha512-4/rOEg86jivtPTeOUUT61jJO1Ya1TrR/OkqCSZDyq84WJh3LuuiphBYJN+fm5xufIk4XAFcEwte/8WzC8If/1g==
 
+buffer-json@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/buffer-json/-/buffer-json-2.0.0.tgz#f73e13b1e42f196fe2fd67d001c7d7107edd7c23"
+  integrity sha512-+jjPFVqyfF1esi9fvfUs3NqM0pH1ziZ36VP4hmA/y/Ssfo/5w5xHKfTw9BwQjoJ1w/oVtpLomqwUHKdefGyuHw==
+
 buffer-writer@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/buffer-writer/-/buffer-writer-2.0.0.tgz#ce7eb81a38f7829db09c873f2fbb792c0c98ec04"
@@ -5549,6 +5559,18 @@ cache-base@^1.0.1:
     to-object-path "^0.3.0"
     union-value "^1.0.0"
     unset-value "^1.0.0"
+
+cache-loader@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/cache-loader/-/cache-loader-4.1.0.tgz#9948cae353aec0a1fcb1eafda2300816ec85387e"
+  integrity sha512-ftOayxve0PwKzBF/GLsZNC9fJBXl8lkZE3TOsjkboHfVHVkL39iUEs1FO07A33mizmci5Dudt38UZrrYXDtbhw==
+  dependencies:
+    buffer-json "^2.0.0"
+    find-cache-dir "^3.0.0"
+    loader-utils "^1.2.3"
+    mkdirp "^0.5.1"
+    neo-async "^2.6.1"
+    schema-utils "^2.0.0"
 
 cacheable-request@^2.1.1:
   version "2.1.4"
@@ -11946,7 +11968,7 @@ loader-fs-cache@^1.0.2:
     find-cache-dir "^0.1.1"
     mkdirp "0.5.1"
 
-loader-runner@^2.4.0:
+loader-runner@^2.3.1, loader-runner@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.4.0.tgz#ed47066bfe534d7e84c4c7b9998c2a75607d9357"
   integrity sha512-Jsmr89RcXGIwivFY21FcRrisYZfvLMTWx5kOLc+JTxtpBOG6xML0vzbc6SEQG2FO9/4Fc3wW4LVcB5DmGflaRw==
@@ -13090,6 +13112,13 @@ native-url@0.2.3:
   dependencies:
     querystring "^0.2.0"
 
+native-url@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/native-url/-/native-url-0.2.4.tgz#37623b3db2c7bb6670e50e379634248ba5ca9d90"
+  integrity sha512-McE+8BrgMw2ANypdYX9s1L+aUkbWDCEtsBGIbs8TfKBfQrFcZ2jMXX9LxGjOIOtoRXkwLTSlz38XHm8J3U6hgQ==
+  dependencies:
+    querystring "^0.2.0"
+
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
@@ -13149,7 +13178,7 @@ next-with-apollo@^4.3.0:
     "@apollo/react-ssr" "^3.0.1"
     isomorphic-unfetch "^3.0.0"
 
-next@*, next@^9.1.6:
+next@*:
   version "9.1.6"
   resolved "https://registry.yarnpkg.com/next/-/next-9.1.6.tgz#b3ede59d9069214807d9bde7d05b42e7fabcae51"
   integrity sha512-sqvEZBEirXQhDPOsHTLka0swKjp8KB3PmNnX9iWn5nPdOFw0/CIlfa0hFl6aAQY0bP6ucKRQqtwGY4D8mKtM2g==
@@ -13225,6 +13254,95 @@ next@*, next@^9.1.6:
     style-loader "1.0.0"
     styled-jsx "3.2.4"
     terser "4.4.2"
+    unfetch "4.1.0"
+    url "0.11.0"
+    url-polyfill "1.1.7"
+    use-subscription "1.1.1"
+    watchpack "2.0.0-beta.5"
+    webpack "4.41.2"
+    webpack-dev-middleware "3.7.0"
+    webpack-hot-middleware "2.25.0"
+    webpack-sources "1.4.3"
+    whatwg-fetch "3.0.0"
+
+next@^9.1.7:
+  version "9.1.7"
+  resolved "https://registry.yarnpkg.com/next/-/next-9.1.7.tgz#d813ab3a21a98aac3713f6c1934a8533b6162eb0"
+  integrity sha512-qG6TsPl7ANuNPFhKq/1Pd4pAf24QCmUAjc0P8qYrSSsbwNIco1KNNXOyZajV/YlqBjBy/fCrZoErKK3zEUVz6w==
+  dependencies:
+    "@ampproject/toolbox-optimizer" "1.1.1"
+    "@babel/core" "7.7.2"
+    "@babel/plugin-proposal-class-properties" "7.7.0"
+    "@babel/plugin-proposal-nullish-coalescing-operator" "7.7.4"
+    "@babel/plugin-proposal-object-rest-spread" "7.6.2"
+    "@babel/plugin-proposal-optional-chaining" "7.7.4"
+    "@babel/plugin-syntax-dynamic-import" "7.2.0"
+    "@babel/plugin-transform-modules-commonjs" "7.7.0"
+    "@babel/plugin-transform-runtime" "7.6.2"
+    "@babel/preset-env" "7.7.1"
+    "@babel/preset-modules" "0.1.1"
+    "@babel/preset-react" "7.7.0"
+    "@babel/preset-typescript" "7.7.2"
+    "@babel/runtime" "7.7.2"
+    "@babel/runtime-corejs2" "7.7.2"
+    amphtml-validator "1.0.23"
+    async-retry "1.2.3"
+    async-sema "3.0.0"
+    autodll-webpack-plugin "0.4.2"
+    babel-core "7.0.0-bridge.0"
+    babel-loader "8.0.6"
+    babel-plugin-syntax-jsx "6.18.0"
+    babel-plugin-transform-define "2.0.0"
+    babel-plugin-transform-react-remove-prop-types "0.4.24"
+    cache-loader "4.1.0"
+    chalk "2.4.2"
+    ci-info "2.0.0"
+    compression "1.7.4"
+    conf "5.0.0"
+    content-type "1.0.4"
+    cookie "0.4.0"
+    css-loader "3.3.0"
+    cssnano-simple "1.0.0"
+    devalue "2.0.1"
+    etag "1.8.1"
+    file-loader "4.2.0"
+    find-up "4.0.0"
+    fork-ts-checker-webpack-plugin "3.1.1"
+    fresh "0.5.2"
+    gzip-size "5.1.1"
+    ignore-loader "0.1.2"
+    is-docker "2.0.0"
+    is-wsl "2.1.1"
+    jest-worker "24.9.0"
+    json5 "2.1.1"
+    launch-editor "2.2.1"
+    loader-utils "1.2.3"
+    lodash.curry "4.1.1"
+    lru-cache "5.1.1"
+    mini-css-extract-plugin "0.8.0"
+    mkdirp "0.5.1"
+    native-url "0.2.4"
+    node-fetch "2.6.0"
+    object-assign "4.1.1"
+    ora "3.4.0"
+    path-to-regexp "6.1.0"
+    pnp-webpack-plugin "1.5.0"
+    postcss-flexbugs-fixes "4.1.0"
+    postcss-loader "3.0.0"
+    postcss-preset-env "6.7.0"
+    prop-types "15.7.2"
+    prop-types-exact "1.2.0"
+    raw-body "2.4.0"
+    react-error-overlay "5.1.6"
+    react-is "16.8.6"
+    send "0.17.1"
+    source-map "0.6.1"
+    string-hash "1.1.3"
+    strip-ansi "5.2.0"
+    style-loader "1.0.0"
+    styled-jsx "3.2.4"
+    terser "4.4.2"
+    thread-loader "2.1.3"
     unfetch "4.1.0"
     url "0.11.0"
     url-polyfill "1.1.7"
@@ -13838,7 +13956,7 @@ p-limit@^1.1.0:
   dependencies:
     p-try "^1.0.0"
 
-p-limit@^2.0.0, p-limit@^2.2.0, p-limit@^2.2.1:
+p-limit@^2.0.0, p-limit@^2.2.0, p-limit@^2.2.1, p-limit@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.2.tgz#61279b67721f5287aa1c13a9a7fbbc48c9291b1e"
   integrity sha512-WGR+xHecKTr7EbUEhyLSh5Dube9JtdiG78ufaeLxTgpudf/20KqyMioIUZJAezlTIi6evxuoUs9YXc11cU+yzQ==
@@ -16899,6 +17017,61 @@ serverless@^1.60.4:
     write-file-atomic "^2.4.3"
     yaml-ast-parser "0.0.43"
 
+serverless@^1.60.5:
+  version "1.60.5"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.60.5.tgz#5005d4a268b30bb50971fe9ffea2d7201d609a0c"
+  integrity sha512-b5+UK7rBttxhmtf7I+gZMgNCM2Bh61LyM44Fb3wN0f53CtqGEtwDNGqeYENJe0rd1nt4LddNrp/A3ybuXTpisw==
+  dependencies:
+    "@serverless/cli" "^1.4.0"
+    "@serverless/enterprise-plugin" "^3.2.7"
+    archiver "^1.3.0"
+    async "^1.5.2"
+    aws-sdk "^2.597.0"
+    bluebird "^3.7.2"
+    boxen "^3.2.0"
+    cachedir "^2.3.0"
+    chalk "^2.4.2"
+    ci-info "^1.6.0"
+    dayjs "^1.8.18"
+    download "^7.1.0"
+    essentials "^1.1.1"
+    fast-levenshtein "^2.0.6"
+    filesize "^3.6.1"
+    fs-extra "^0.30.0"
+    get-stdin "^5.0.1"
+    globby "^6.1.0"
+    graceful-fs "4.2.1"
+    https-proxy-agent "^3.0.1"
+    inquirer "^6.5.2"
+    is-docker "^1.1.0"
+    is-wsl "^2.1.1"
+    js-yaml "^3.13.1"
+    json-cycle "^1.3.0"
+    json-refs "^2.1.7"
+    jszip "^3.2.2"
+    jwt-decode "^2.2.0"
+    lodash "^4.17.15"
+    minimist "^1.2.0"
+    mkdirp "^0.5.1"
+    nanomatch "^1.2.13"
+    ncjsm "^4.0.1"
+    node-fetch "^1.7.3"
+    object-hash "^1.3.1"
+    p-limit "^2.2.2"
+    promise-queue "^2.2.5"
+    raven "^1.2.1"
+    rc "^1.2.8"
+    replaceall "^0.1.6"
+    semver "^5.7.1"
+    semver-regex "^1.0.0"
+    stream-promise "^3.2.0"
+    tabtab "^3.0.2"
+    untildify "^3.0.3"
+    update-notifier "^2.5.0"
+    uuid "^2.0.3"
+    write-file-atomic "^2.4.3"
+    yaml-ast-parser "0.0.43"
+
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
@@ -18050,6 +18223,15 @@ thenify-all@^1.0.0:
   integrity sha1-5p44obq+lpsBCCB5eLn2K4hgSDk=
   dependencies:
     any-promise "^1.0.0"
+
+thread-loader@2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/thread-loader/-/thread-loader-2.1.3.tgz#cbd2c139fc2b2de6e9d28f62286ab770c1acbdda"
+  integrity sha512-wNrVKH2Lcf8ZrWxDF/khdlLlsTMczdcwPA9VEK4c2exlEPynYWxi9op3nPTo5lAnDIkE0rQEB3VBP+4Zncc9Hg==
+  dependencies:
+    loader-runner "^2.3.1"
+    loader-utils "^1.1.0"
+    neo-async "^2.6.0"
 
 throat@^4.0.0, throat@^4.1.0:
   version "4.1.0"

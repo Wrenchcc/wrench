@@ -5,7 +5,12 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: yarn version --patch" time="0.302422">
+      <testcase classname="fastlane.lanes" name="0: gradle" time="7.682186">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: gradle" time="152.596492">
         
       </testcase>
     
