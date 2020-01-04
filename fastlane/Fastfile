@@ -4,14 +4,13 @@ xcodeproj = "packages/mobile/ios/Wrench.xcodeproj"
 workspace = "packages/mobile/ios/Wrench.xcworkspace"
 android = "packages/mobile/android"
 
-# Build number and commit
+# Build number and push tag
 if ENV["BUMP_VERSION"]
   package = File.read("../package.json")
   version_name = JSON.parse(package)["version"]
   sh "yarn version --patch"
   add_git_tag(tag: "#{version_name}")
   sh "git push https://#{ENV['GITHUB_ACTOR']}:#{ENV['GITHUB_TOKEN']}@github.com/#{ENV['INPUT_REPO']}.git HEAD:HEAD --tags"
-  puts "git push https://#{ENV['GITHUB_ACTOR']}:#{ENV['GITHUB_TOKEN']}@github.com/#{ENV['INPUT_REPO']}.git HEAD:HEAD --tags"
 end
 
 # iOS Beta
