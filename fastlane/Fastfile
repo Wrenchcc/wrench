@@ -4,7 +4,7 @@ xcodeproj = "packages/mobile/ios/Wrench.xcodeproj"
 workspace = "packages/mobile/ios/Wrench.xcworkspace"
 android = "packages/mobile/android"
 
-# Build number
+# Build number and commit
 if ENV["BUMP_VERSION"]
   sh "yarn version --patch"
   git_commit(path: 'package.json', message: 'Version Bump')
