@@ -555,7 +555,7 @@ DEPENDENCIES:
   - RNPermissions (from `../../../node_modules/react-native-permissions`)
   - RNRate (from `../../../node_modules/react-native-rate`)
   - RNReanimated (from `../../../node_modules/react-native-reanimated`)
-  - "RNSentry (from `../node_modules/@sentry/react-native`)"
+  - "RNSentry (from `../../../node_modules/@sentry/react-native`)"
   - RNShare (from `../../../node_modules/react-native-share`)
   - SDWebImageWebPCoder
   - Yoga (from `../../../node_modules/react-native/ReactCommon/yoga`)
@@ -704,7 +704,7 @@ EXTERNAL SOURCES:
   RNReanimated:
     :path: "../../../node_modules/react-native-reanimated"
   RNSentry:
-    :path: "../node_modules/@sentry/react-native"
+    :path: "../../../node_modules/@sentry/react-native"
   RNShare:
     :path: "../../../node_modules/react-native-share"
   Yoga:

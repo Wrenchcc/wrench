@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'packages/mobile/**'
 
 jobs:
   mobile:
