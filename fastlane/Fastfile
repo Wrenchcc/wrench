@@ -6,22 +6,12 @@ android = "packages/mobile/android"
 
 # Build number and commit
 if ENV["BUMP_VERSION"]
+  package = File.read("../package.json")
+  version_name = JSON.parse(package)["version"]
   sh "yarn version --patch"
-  git_commit(path: 'package.json', message: 'Version Bump')
+  add_git_tag(tag: "#{version_name}")
   push_to_git_remote
 end
-
-# sh "yarn version --patch"
-# package = File.read("../package.json")
-# version_name = JSON.parse(package)["version"]
-# git_add(path: "../package.json")
-# git_commit(path: "../package.json", message: "#{version_name} release")
-# add_git_tag(tag: "#{version_name}")
-# push_to_git_remote
-
-package = File.read("../package.json")
-version_name = JSON.parse(package)["version"]
-build_number = ENV["BUILD_NUMBER"] || 1
 
 # iOS Beta
 lane :ios do
