@@ -24,11 +24,9 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}} 
 
       - name: "Version Bump"
-        uses: "phips28/gh-action-bump-version@master"
-        with:
-          tag-prefix: ''
+        uses: tool3/bump@v1
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
+          github_token: ${{secrets.GITHUB_TOKEN}}   
 
       - name: Install dependencies
         run: |
