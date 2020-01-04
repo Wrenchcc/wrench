@@ -25,7 +25,7 @@ jobs:
 
       - name: "Version Bump"
         uses: tool3/bump@v1
-        env:
+        with:
           github_token: ${{secrets.GITHUB_TOKEN}}   
 
       - name: Install dependencies
