@@ -18,10 +18,17 @@ jobs:
           node-version: 13
       - run: npm install -g yarn
 
-      - name: Generate build number
+      - name: Build number
         uses: einaregilsson/build-number@v2 
         with:
-          token: ${{secrets.GITHUB_TOKEN}}        
+          token: ${{secrets.GITHUB_TOKEN}} 
+
+      - name: "Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          tag-prefix: ''
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
 
       - name: Install dependencies
         run: |
@@ -45,7 +52,6 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          BUMP_VERSION: true
 
       # - name: Deploy iOS
       #   uses: maierj/fastlane-action@v1.2.0
