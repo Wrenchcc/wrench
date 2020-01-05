@@ -5,6 +5,8 @@ on:
       - master
     paths:
       - 'packages/web/**'
+      - 'packages/common/**'
+      - 'packages/ui/**'
 
 jobs:
   web:

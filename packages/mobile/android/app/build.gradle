@@ -127,6 +127,15 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+// NOTE: Fixes blank splash when using abb (Remove when using RN 0.62)
+// https://github.com/facebook/react-native/issues/26400
+configurations.all {
+    resolutionStrategy {
+        force "com.facebook.soloader:soloader:0.8.0"
+    }
+}
+
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 

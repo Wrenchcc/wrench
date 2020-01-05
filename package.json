@@ -20,7 +20,6 @@
   "devDependencies": {
     "bluebird": "^3.7.2",
     "prettier": "^1.19.1",
-    "react-native": "*",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
