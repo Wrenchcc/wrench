@@ -5,53 +5,46 @@ workspace = "packages/mobile/ios/Wrench.xcworkspace"
 android = "packages/mobile/android"
 
 package = File.read("../package.json")
-version_name = JSON.parse(package)["version"]
+version = JSON.parse(package)["version"]
 build_number = ENV["BUILD_NUMBER"]
+
+# def slack_notification()
+#   slack(
+#     message: "Wrench (iOS)",
+#     channel: "#release",
+#     payload: { 
+#       "Build ##{build_number}" => "Succeeded.",
+#       "Version ##{version}" => "Succeeded.",
+#       "Build Date" => Time.new.to_s,
+#       "Built by" => "Github Actions",
+#     },
+#     default_payloads: [:git_branch, :git_author], # Optional, lets you specify a whitelist of default payloads to include. Pass an empty array to suppress all the default payloads.
+#     attachment_properties: { # Optional, lets you specify any other properties available for attachments in the slack API (see https://api.slack.com/docs/attachments).
+#       thumb_url: "http://example.com/path/to/thumb.png",
+#     }
+#   )
+# end
 
 # iOS Beta
 lane :ios do
-  increment_build_number({
-    build_number: latest_testflight_build_number + 1,
-    xcodeproj: xcodeproj
-  })
-  increment_version_number({
-    version_number: (latest_testflight_build_number + 1).to_s,
-    xcodeproj: xcodeproj
-  })
-  get_certificates( # Create or get certificate, and install it
-    output_path: "./.builds" # Download certificate in the build folder (you don't need to create the folder)
-  )
-  get_provisioning_profile( # Create or get provisioning profile
-    provisioning_name: "Wrench App Store Distribution",
-    output_path: "./.builds",  # Download provisioning profile in the build folder
-    filename: "Wrench_App_Store_Distribution.mobileprovision" # Rename the local provisioning profile
-  )
-  update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
-    xcodeproj: xcodeproj,
-    target_filter: "Wrench", # Name of your project
-    profile: "./.builds/Wrench_App_Store_Distribution.mobileprovision",
-    build_configuration: "Release"
-  )
-  update_project_team( # Set the right team on your project
-    path: xcodeproj,
-    teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-  )
-  sh "actions/create-env"
-  build_app(
+  # setup_ci(force: true)
+  match(app_identifier: 'cc.wrench.app', type: 'appstore', readonly: true)
+  increment_build_number({ build_number: build_number, xcodeproj: xcodeproj })
+  increment_version_number({ version_number: version, xcodeproj: xcodeproj })
+  # # sh "actions/create-env"
+  gym(
     workspace: workspace,
     scheme: "Wrench",
     clean: true,
     export_method: "app-store",
-    export_options: {
-      provisioningProfiles: { 
-        CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier) => CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier) + " AppStore" # Value of this parameter is the name of the Provisioning Profile. By default, it will be "{bundleId} AppStore"
-      }
-    },
     build_path: "./.builds",
     output_directory: "./.builds"
   )
-  changelog_from_git_commits(merge_commit_filtering: exclude_merges)
-  upload_to_testflight(skip_waiting_for_build_processing: true)
+
+  changelog = read_changelog
+  pilot(skip_waiting_for_build_processing: true, changelog: changelog)
+  stamp_changelog(section_identifier: "Build #{build_number}")
+  # slack_notification(platform: 'iOS', version: version)
 end
 
 # Android Beta
@@ -68,14 +61,14 @@ lane :android do
     print_command: false,
     properties: {
       "versionCode" => build_number,
-      "versionName" => version_name,
+      "versionName" => version,
     }
   )
-  upload_to_play_store(
+  supply(
     track: 'internal',
-    json_key: "#{Dir.pwd}/google-play-service-account.json",
     skip_upload_metadata: true,
     skip_upload_images: true,
     skip_upload_screenshots: true
   )
+  # slack_notification(platform: 'Android', version: version)
 end
