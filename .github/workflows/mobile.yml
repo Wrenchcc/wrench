@@ -24,8 +24,10 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
 
   deploy:
+    needs: version_tag
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Uses Node.js 13
         uses: actions/setup-node@v1
         with:
