@@ -13,22 +13,24 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Build number
-        uses: einaregilsson/build-number@v2 
-        with:
-          token: ${{secrets.GITHUB_TOKEN}} 
-
-  deploy:
-    needs: version_tag
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v1
       - name: "Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
           tag-prefix: ''
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
+     
+
+  deploy:
+    needs: version_tag
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Build number
+        uses: einaregilsson/build-number@v2 
+        with:
+          token: ${{secrets.GITHUB_TOKEN}} 
 
       - name: Uses Node.js 13
         uses: actions/setup-node@v1
