@@ -8,15 +8,10 @@ on:
       - 'fastlane/**'
 
 jobs:
-  mobile:
-    runs-on: macos-latest
+  version_tag:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Uses Node.js 13
-        uses: actions/setup-node@v1
-        with:
-          node-version: 13
-      - run: npm install -g yarn
 
       - name: Build number
         uses: einaregilsson/build-number@v2 
@@ -24,10 +19,18 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}} 
 
       - name: "Version Bump"
-        uses: tool3/bump@v1
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}   
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
 
+  deploy:
+    runs-on: macos-latest
+    steps:
+      - name: Uses Node.js 13
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13
+      - run: npm install -g yarn
       - name: Install dependencies
         run: |
           yarn install
