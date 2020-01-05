@@ -15,6 +15,7 @@
 		485DD1115132424A8A015872 /* inter_ui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */; };
 		961D22A2413C8285BAF7724A /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 481871586915EE1B914CF9B7 /* libPods-Wrench.a */; };
 		D2002BDB2395A01800BF4AD8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2002BDA2395A01800BF4AD8 /* File.swift */; };
+		D2DD6BC423C2A0190088677E /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = D2F59F0B23C23C090099D2E1 /* main.jsbundle */; };
 		D2F146282200A9B000E8A474 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2F146272200A9B000E8A474 /* GoogleService-Info.plist */; };
 		D2F146A22200B0D100E8A474 /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = D2F146A12200B0D000E8A474 /* notification.aiff */; };
 		DF645E3F3A51435396A73CDF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B64C1CCF164695A4C09BB9 /* libz.tbd */; };
@@ -23,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		08B64C1CCF164695A4C09BB9 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		13B07F961A680F5B00A75B9A /* Wrench.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wrench.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Wrench/AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +45,7 @@
 		D2E5195F234486670097E08B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D2F146272200A9B000E8A474 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2F146A12200B0D000E8A474 /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
+		D2F59F0B23C23C090099D2E1 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui.ttf; path = ../assets/fonts/inter_ui.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -67,9 +68,9 @@
 		13B07FAE1A68108700A75B9A /* Wrench */ = {
 			isa = PBXGroup;
 			children = (
+				D2F59F0B23C23C090099D2E1 /* main.jsbundle */,
 				D2BE134923350B5E007C0449 /* WrenchRelease.entitlements */,
 				D22319F722009AC40067C6BD /* Wrench.entitlements */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -158,7 +159,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				F63723D1898916649CB8AC5C /* [CP] Copy Pods Resources */,
-				6923D5919F5C44DAB8093DAD /* Upload Debug Symbols to Sentry */,
+				D2DD6BC523C2A2940088677E /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -218,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DD6BC423C2A0190088677E /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D2F146A22200B0D100E8A474 /* notification.aiff in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
@@ -243,21 +245,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export EXTRA_PACKAGER_ARGS=\"--entry-file packages/mobile/index.js\"\n\nexport BUNDLE_COMMAND=\"ram-bundle\"\n";
-		};
-		6923D5919F5C44DAB8093DAD /* Upload Debug Symbols to Sentry */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Debug Symbols to Sentry";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#export SENTRY_PROPERTIES=sentry.properties\n#../../../../node_modules/@sentry/cli/bin/sentry-cli upload-dsym\n";
+			shellScript = "export NODE_ENV=production\nexport BUNDLE_COMMAND=\"ram-bundle\"\n\nexport SENTRY_PROPERTIES=sentry.properties\n\nexport NODE_BINARY=$(which node)\n\n../../../node_modules/@sentry/cli/bin/sentry-cli react-native xcode \\\n../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		6DEEC572FA9997913A1A38D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -280,6 +268,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D2DD6BC523C2A2940088677E /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n\n../../../node_modules/@sentry/cli/bin/sentry-cli upload-dif \"$DWARF_DSYM_FOLDER_PATH\"\n";
 		};
 		F63723D1898916649CB8AC5C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

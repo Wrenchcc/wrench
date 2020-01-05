@@ -6,7 +6,7 @@ android = "packages/mobile/android"
 
 package = File.read("../package.json")
 version = JSON.parse(package)["version"]
-build_number = ENV["BUILD_NUMBER"]
+build_number = ENV["BUILD_NUMBER"] # version + "." + ENV["BUILD_NUMBER"]
 
 # def slack_notification()
 #   slack(
@@ -40,10 +40,7 @@ lane :ios do
     build_path: "./.builds",
     output_directory: "./.builds"
   )
-
-  changelog = read_changelog
-  pilot(skip_waiting_for_build_processing: true, changelog: changelog)
-  stamp_changelog(section_identifier: "Build #{build_number}")
+  pilot(skip_waiting_for_build_processing: true)
   # slack_notification(platform: 'iOS', version: version)
 end
 

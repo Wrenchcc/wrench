@@ -15731,7 +15731,7 @@ react-native-webview@^8.0.2:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
-react-native@v0.61.5:
+react-native@*, react-native@v0.61.5:
   version "0.61.5"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.61.5.tgz#6e21acb56cbd75a3baeb1f70201a66f42600bba8"
   integrity sha512-MXqE3NoGO0T3dUKIKkIppijBhRRMpfN6ANbhMXHDuyfA+fSilRWgCwYgR/YNCC7ntECoJYikKaNTUBB0DeQy6Q==
