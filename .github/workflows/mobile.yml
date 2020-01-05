@@ -18,6 +18,11 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}} 
 
+  deploy:
+    needs: version_tag
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
       - name: "Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
@@ -25,11 +30,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
 
-  deploy:
-    needs: version_tag
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v1
       - name: Uses Node.js 13
         uses: actions/setup-node@v1
         with:
