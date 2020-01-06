@@ -15668,10 +15668,10 @@ react-native-linear-gradient@^2.5.6:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
-react-native-navigation@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-4.1.0.tgz#a1e3f2866918bdce3cda64b24a105775a8b4e236"
-  integrity sha512-2pu7S6aXjo8zEnpsbFgkG1OdjMyLIxHxcNxFMCrNiJ6oqxAu9uG9b4lOVS5mLhOLj9DVYFr+7I3dcfa7heEzgA==
+react-native-navigation@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-4.2.0.tgz#76a37231244d904c2376f6c5a567b468934163a2"
+  integrity sha512-UMFJuKTvh95/LqPC/OJTkTo/X7BL5wv6aY/pG3AnoIRF+3CML5nfnEL/vg7jqqu8jHL+37YfklvYLXdYqQqzXA==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -15679,10 +15679,10 @@ react-native-navigation@^4.1.0:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
-react-native-permissions@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.8.tgz#e6d20a7b6e3df5333a3d80cc83024686fa2f49e3"
-  integrity sha512-qK8Thp+9PTl/YjhKkRr8LPHfX5Evv5Zj/3CmAiqE45qCTB5UbWTKBWUfg3iqfMrjv9nE2rcS1PrIjZCDh6s/gQ==
+react-native-permissions@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-2.0.9.tgz#5eabdaa952dd099d14e3790af691f49ff2de0895"
+  integrity sha512-64F95x4Y1RqsQiPco+Qs+OAm3rKUTRfWDMpp1f0If9YfRXOxxVFJqf7mSlVvlSY4pZAhZgLVydOmA7aTTduPUw==
 
 react-native-pinchable@^0.1.2:
   version "0.1.2"
@@ -15731,7 +15731,7 @@ react-native-webview@^8.0.2:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
-react-native@*, react-native@v0.61.5:
+react-native@v0.61.5:
   version "0.61.5"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.61.5.tgz#6e21acb56cbd75a3baeb1f70201a66f42600bba8"
   integrity sha512-MXqE3NoGO0T3dUKIKkIppijBhRRMpfN6ANbhMXHDuyfA+fSilRWgCwYgR/YNCC7ntECoJYikKaNTUBB0DeQy6Q==
