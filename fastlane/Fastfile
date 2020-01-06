@@ -8,6 +8,7 @@ package = File.read("../package.json")
 version = JSON.parse(package)["version"]
 build_number = ENV["BUILD_NUMBER"]
 
+
 # def slack_notification(platform, version, build_number)
 #   slack(
 #     message: "Wrench (#{platform})",
