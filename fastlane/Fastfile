@@ -6,7 +6,7 @@ android = "packages/mobile/android"
 
 package = File.read("../package.json")
 version = JSON.parse(package)["version"]
-build_number = ENV["BUILD_NUMBER"]
+build_number = ENV["BUILD_NUMBER"] || 1
 
 
 # def slack_notification(platform, version, build_number)

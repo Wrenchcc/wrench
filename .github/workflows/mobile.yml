@@ -27,6 +27,12 @@ jobs:
         uses: einaregilsson/build-number@v2 
         with:
           token: ${{secrets.GITHUB_TOKEN}} 
+     
+      - name: Upload build number
+        uses: actions/upload-artifact@v1
+        with:
+          name: BUILD_NUMBER
+          path: BUILD_NUMBER
 
   android:
     needs: version_tag
@@ -42,6 +48,15 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
+     
+      - name: Download build number
+        uses: actions/download-artifact@v1
+        with:
+          name: BUILD_NUMBER
+      - name: Restore build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v2 
+    
 
       - name: Deploy Android
         uses: maierj/fastlane-action@v1.2.0
@@ -78,6 +93,13 @@ jobs:
         run: |
           yarn install
 
+      - name: Download build number
+        uses: actions/download-artifact@v1
+        with:
+          name: BUILD_NUMBER
+      - name: Restore build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v2 
 
       - name: Deploy iOS
         uses: maierj/fastlane-action@v1.2.0

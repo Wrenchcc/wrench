@@ -17,6 +17,9 @@
     "run:web": "yarn workspace @wrench/web dev",
     "run:api": "yarn workspace @wrench/web dev"
   },
+  "dependencies": {
+    "react-native": "*"
+  },
   "devDependencies": {
     "bluebird": "^3.7.2",
     "prettier": "^1.19.1",
