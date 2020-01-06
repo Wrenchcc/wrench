@@ -94,3 +94,5 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           MAPBOX_API_KEY: ${{ secrets.MAPBOX_API_KEY }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{secrets.MATCH_GIT_BASIC_AUTHORIZATION}} 
+          MATCH_PASSWORD: ${{secrets.MATCH_PASSWORD}} 
