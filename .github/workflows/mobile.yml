@@ -21,8 +21,12 @@ jobs:
         with:
           tag-prefix: ''
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
-     
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          
+      - name: Build number
+        uses: einaregilsson/build-number@v2 
+        with:
+          token: ${{secrets.GITHUB_TOKEN}} 
 
   android:
     needs: version_tag
@@ -30,12 +34,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
-      
-      - name: Build number
-        uses: einaregilsson/build-number@v2 
-        with:
-          token: ${{secrets.GITHUB_TOKEN}} 
-
       - name: Uses Node.js 13
         uses: actions/setup-node@v1
         with:
@@ -70,12 +68,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
-      
-      - name: Build number
-        uses: einaregilsson/build-number@v2 
-        with:
-          token: ${{secrets.GITHUB_TOKEN}} 
-
+  
       - name: Uses Node.js 13
         uses: actions/setup-node@v1
         with:
