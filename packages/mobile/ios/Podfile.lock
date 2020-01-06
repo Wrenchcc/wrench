@@ -191,11 +191,11 @@ PODS:
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
-  - Permission-Camera (2.0.8):
+  - Permission-Camera (2.0.9):
     - RNPermissions
-  - Permission-Microphone (2.0.8):
+  - Permission-Microphone (2.0.9):
     - RNPermissions
-  - Permission-PhotoLibrary (2.0.8):
+  - Permission-PhotoLibrary (2.0.9):
     - RNPermissions
   - Protobuf (3.11.2)
   - RCTRequired (0.61.5)
@@ -393,7 +393,7 @@ PODS:
     - React
   - react-native-media-library (1.0.6):
     - React
-  - react-native-netinfo (5.3.1):
+  - react-native-netinfo (5.3.2):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -441,7 +441,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (4.1.0):
+  - ReactNativeNavigation (4.2.0):
     - React
   - RNAppleAuthentication (1.0.6):
     - React
@@ -465,7 +465,7 @@ PODS:
   - RNGoogleSignin (2.1.1):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.0.8):
+  - RNPermissions (2.0.9):
     - React
   - RNRate (1.1.10):
     - React
@@ -750,9 +750,9 @@ SPEC CHECKSUMS:
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
-  Permission-Camera: f9a7b0b01c71febe320436aa74630f23c9483547
-  Permission-Microphone: 49c91ea622029b8c36a6ecfb65482cf4c513b53c
-  Permission-PhotoLibrary: c15c7245aeb74aff3ad5edf70ce34adbcf02541b
+  Permission-Camera: 8fe4753b02396489b11c5089e4f57bab7fe1ef42
+  Permission-Microphone: 735c46c5a8e2ace954897680def376186bad1446
+  Permission-PhotoLibrary: 42d41b53adefcfa94f42fb628f143d97136120bd
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
@@ -770,7 +770,7 @@ SPEC CHECKSUMS:
   react-native-image-manipulator: 01433a6b3714da14d453e2f1fa83eab09dadef4d
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
   react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
-  react-native-netinfo: 54a7323159edfcd97e7be4141d8d1c232ddfbbef
+  react-native-netinfo: 817823a90f13ced48413875c0820df04c3aae28d
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
@@ -785,14 +785,14 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: e1b038e3d3e35d05636ccaafd1af8b65d44804fb
+  ReactNativeNavigation: 937d03602ab4eaeb4684f9c18fc69e580336478c
   RNAppleAuthentication: e1494867df56ee7467943f4d1802895050845413
   RNCAsyncStorage: 44395cb9c7c1523104c2b499eb426ef7aff82bca
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
-  RNPermissions: 923c1506d0bde387fbcfc18a8f87945806d03c19
+  RNPermissions: 2f74237e97b08beda01e914301e12524ddddf5b8
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: 9b1d983b2d5d1c215ba6490348fd2a4cc23a8a9d
