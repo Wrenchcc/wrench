@@ -142,7 +142,6 @@
 				1811CBD059EAD56520E2744A /* Pods-Wrench.debug.xcconfig */,
 				C78D2A3CD3EAA5BB0308DA25 /* Pods-Wrench.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
