@@ -11,6 +11,7 @@ on:
 
 jobs:
   version_tag:
+    name: Version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -25,6 +26,7 @@ jobs:
 
   android:
     needs: version_tag
+    name: Build Android
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
@@ -64,6 +66,7 @@ jobs:
 
   ios:
     needs: version_tag
+    name: Build iOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
