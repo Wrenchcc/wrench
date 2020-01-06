@@ -29,7 +29,7 @@ build_number = ENV["BUILD_NUMBER"]
 # iOS Beta
 lane :ios do
   setup_ci(force: true)
-  match(app_identifier: 'cc.wrench.app', type: 'appstore', readonly: true )
+  # match(app_identifier: 'cc.wrench.app', type: 'appstore', readonly: true )
   increment_build_number({ build_number: build_number, xcodeproj: xcodeproj })
   increment_version_number({ version_number: version, xcodeproj: xcodeproj })
   sh "actions/create-env"
