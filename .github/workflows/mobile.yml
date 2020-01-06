@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
      
 
-  deploy:
+  android:
     needs: version_tag
     runs-on: macos-latest
     steps:
@@ -61,6 +61,27 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+
+  ios:
+    needs: version_tag
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Build number
+        uses: einaregilsson/build-number@v2 
+        with:
+          token: ${{secrets.GITHUB_TOKEN}} 
+
+      - name: Uses Node.js 13
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13
+      - run: npm install -g yarn
+      - name: Install dependencies
+        run: |
+          yarn install
+
 
       - name: Deploy iOS
         uses: maierj/fastlane-action@v1.2.0
