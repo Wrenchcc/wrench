@@ -9,10 +9,11 @@ version = JSON.parse(package)["version"]
 build_number = ENV["BUILD_NUMBER"]
 
 # TODO: Add bundle size, apk and ipa size
-def slack_notification(platform, build_number, version)
+def slack_notification(platform, build_number, version, success)
   slack(
     message: "Wrench (#{platform})",
     channel: "#release",
+    success: success,
     use_webhook_configured_username_and_icon: true,
     payload: { 
       "Build" => build_number,
@@ -23,6 +24,16 @@ def slack_notification(platform, build_number, version)
     attachment_properties: { 
       thumb_url: "https://edge-files.wrench.cc/static/email/logo.jpg?w=60&h=60&dpr=3",
     }
+  )
+end
+
+# Slack error message
+error do |lane, exception|
+  slack_notification(
+    lane.to_s == 'ios' ? 'iOS' : 'Android',
+    version, 
+    build_number,
+    false,
   )
 end
 
@@ -48,7 +59,8 @@ lane :ios do
   slack_notification(
    'iOS', 
     version, 
-    build_number
+    build_number,
+    true
   )
 end
 
@@ -78,6 +90,7 @@ lane :android do
   slack_notification(
     'Android', 
     version,
-    build_number
+    build_number,
+    true
   )
 end
