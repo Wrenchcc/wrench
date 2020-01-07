@@ -1,0 +1,14 @@
+#!/bin/sh
+
+DEST=$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH
+BUNDLE_FILE="$DEST/main.jsbundle"
+ENTRY_FILE="packages/mobile/index.js"
+
+../../../node_modules/react-native/cli.js \
+  ram-bundle \
+  --entry-file "$ENTRY_FILE"  \
+  --platform ios \
+  --dev false \
+  --reset-cache \
+  --bundle-output "$BUNDLE_FILE" \
+  --assets-dest "$DEST"
