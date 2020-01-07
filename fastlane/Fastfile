@@ -8,7 +8,6 @@ package = File.read("../package.json")
 version = JSON.parse(package)["version"]
 build_number = ENV["BUILD_NUMBER"]
 
-
 # TODO: Add bundle size, apk and ipa size
 def slack_notification(platform, build_number, version, success)
   slack(
@@ -46,7 +45,7 @@ lane :ios do
   )
   match(app_identifier: 'cc.wrench.app', type: 'appstore', readonly: true )
   increment_build_number({ build_number: build_number, xcodeproj: xcodeproj })
-  increment_version_number({ version_number: version, xcodeproj: xcodeproj })
+  increment_version_number({ version_number: build_number, xcodeproj: xcodeproj }) # TODO: Change to version if possible to reset in Apple
   sh "actions/create-env"
   gym(
     workspace: workspace,
