@@ -8,7 +8,6 @@ package = File.read("../package.json")
 version = JSON.parse(package)["version"]
 build_number = ENV["BUILD_NUMBER"]
 
-
 # TODO: Add bundle size, apk and ipa size
 def slack_notification(platform, build_number, version, success)
   slack(
