@@ -14,6 +14,7 @@
     "run:android": "yarn workspace @wrench/mobile run:android",
     "start:android": "yarn workspace @wrench/mobile start:android",
     "start:ios": "yarn workspace @wrench/mobile start:ios",
+    "emulator:start": "yarn workspace @wrench/mobile emulator:start",
     "run:web": "yarn workspace @wrench/web dev",
     "run:api": "yarn workspace @wrench/web dev"
   },

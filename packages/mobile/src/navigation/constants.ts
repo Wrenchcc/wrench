@@ -1,9 +1,10 @@
 import { hasNotch, isAndroid } from 'utils/platform'
+import { StatusBar } from 'react-native'
 
 export enum NAVIGATION {
   LIST_INSET_TOP = 30,
   LIST_OFFSET = hasNotch ? 120 : 90,
-  STATUS_BAR_HEIGHT = isAndroid ? 0 : hasNotch ? 44 : 20,
+  STATUS_BAR_HEIGHT = isAndroid ? StatusBar.currentHeight : hasNotch ? 44 : 20,
   TAB_HEIGHT = 60,
   TOP_BAR_HEIGHT = 60,
   TOTAL_TOP_BAR_HEIGHT = hasNotch ? 104 : 80,
