@@ -57,6 +57,8 @@
 	<string>Wrench</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

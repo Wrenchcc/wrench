@@ -157,7 +157,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				D2DD6BC523C2A2940088677E /* Upload Debug Symbols to Sentry */,
 				221ED1C8FA630DD86F6ADFE4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -243,7 +242,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "../tasks/react-native-xcode.sh\n";
+			shellScript = "../tasks/bundle_ios.sh\n";
 		};
 		0AF81E7812D4CC4727DD7D92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -286,24 +285,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		D2DD6BC523C2A2940088677E /* Upload Debug Symbols to Sentry */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Debug Symbols to Sentry";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n\n# Setup nvm and set node\n[ -z \"$NVM_DIR\" ] && export NVM_DIR=\"$HOME/.nvm\"\n\nif [[ -s \"$HOME/.nvm/nvm.sh\" ]]; then\n. \"$HOME/.nvm/nvm.sh\"\nelif [[ -x \"$(command -v brew)\" && -s \"$(brew --prefix nvm)/nvm.sh\" ]]; then\n. \"$(brew --prefix nvm)/nvm.sh\"\nfi\n\n# Set up the nodenv node version manager if present\nif [[ -x \"$HOME/.nodenv/bin/nodenv\" ]]; then\neval \"$(\"$HOME/.nodenv/bin/nodenv\" init -)\"\nfi\n\n[ -z \"$NODE_BINARY\" ] && export NODE_BINARY=\"node\"\n\n$NODE_BINARY ../../../node_modules/@sentry/cli/bin/sentry-cli upload-dsym\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
