@@ -57,18 +57,15 @@ lane :ios do
   )
   pilot(skip_waiting_for_build_processing: true)
   sentry_upload_dsym(
-    project_slug: "wrench",
     dsym_path: './.builds/Wrench.app.dSYM.zip',
   )
   sentry_upload_sourcemap(
-    project_slug: 'wrench',
     version: version,
     dist: version,
     sourcemap: './.builds/ios.bundle.map',
     rewrite: true
   )
   sentry_create_release(
-    project_slug: 'wrench',
     version: version,
     finalize: true 
   )
