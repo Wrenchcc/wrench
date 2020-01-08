@@ -9,9 +9,7 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  /** Date custom scalar type */
   Date: any,
-  /** Returns all strings in lower case */
   LowercaseString: any,
 };
 
