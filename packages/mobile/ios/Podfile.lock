@@ -397,6 +397,8 @@ PODS:
     - React
   - react-native-pinchable (0.1.2):
     - React
+  - react-native-safe-area-context (0.6.2):
+    - React
   - react-native-splash-screen (3.2.0):
     - React
   - react-native-video (5.0.2):
@@ -404,7 +406,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (8.0.2):
+  - react-native-webview (8.0.3):
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -531,6 +533,7 @@ DEPENDENCIES:
   - "react-native-media-library (from `../../../node_modules/@pontusab/react-native-media-library/ios`)"
   - "react-native-netinfo (from `../../../node_modules/@react-native-community/netinfo`)"
   - react-native-pinchable (from `../../../node_modules/react-native-pinchable`)
+  - react-native-safe-area-context (from `../../../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../../../node_modules/react-native-splash-screen`)
   - react-native-video (from `../../../node_modules/react-native-video`)
   - react-native-webview (from `../../../node_modules/react-native-webview`)
@@ -657,6 +660,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@react-native-community/netinfo"
   react-native-pinchable:
     :path: "../../../node_modules/react-native-pinchable"
+  react-native-safe-area-context:
+    :path: "../../../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
     :path: "../../../node_modules/react-native-splash-screen"
   react-native-video:
@@ -772,9 +777,10 @@ SPEC CHECKSUMS:
   react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
   react-native-netinfo: 817823a90f13ced48413875c0820df04c3aae28d
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
+  react-native-safe-area-context: 25260c5d0b9c53fd7aa88e569e2edae72af1f6a3
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 99bdfd6c189772b0f15494f728430c23b18b93e4
+  react-native-webview: 57cdcf9981594a1a7de36ecfe7f079379543ef1f
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72

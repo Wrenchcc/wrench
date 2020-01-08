@@ -256,6 +256,7 @@ dependencies {
     implementation project(':react-native-image-manipulator')
     implementation project(':react-native-media-library')
     implementation project(':react-native-device-locale')
+    implementation project(':react-native-safe-area-context')
 }
 
 // Run this once to be able to run the application with BUCK
