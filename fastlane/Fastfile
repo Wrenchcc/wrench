@@ -71,9 +71,9 @@ lane :ios do
   )
   slack_notification(
    'iOS', 
-    version, 
-    build_number,
-    true
+   build_number,
+   version,
+   true
   )
 end
 
@@ -102,8 +102,8 @@ lane :android do
   )
   slack_notification(
     'Android', 
-    version,
     build_number,
+    version,
     true
   )
 end

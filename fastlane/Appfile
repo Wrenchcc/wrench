@@ -1,6 +1,6 @@
 # iOS
 app_identifier("cc.wrench.app") # The bundle identifier of your app
-apple_id("pontus@lostisland.co") # Your Apple email address
+apple_id("ci@wrench.cc") # Your Apple email address
 
 itc_team_id("118650970") # App Store Connect Team ID
 team_id("YN735AEV47") # Developer Portal Team ID
