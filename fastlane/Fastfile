@@ -12,6 +12,7 @@ build_number = ENV["BUILD_NUMBER"]
 def slack_notification(platform, build_number, version, success)
   slack(
     message: "Wrench (#{platform})",
+    pretext: success ? "Build ##{build_number} succeeded :rocket:" : "Build ##{build_number} just broked :scream:",
     channel: "#release",
     success: success,
     use_webhook_configured_username_and_icon: true,
