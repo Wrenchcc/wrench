@@ -1,0 +1,22 @@
+#import "../fragments/ProjectFragment.graphql"
+
+query projectSuggestions($after: String, $first: Int) {
+  projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
+    type {
+      id
+      title
+    }
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      node {
+        ...Project
+        cover {
+          uri
+          default
+        }
+      }
+    }
+  }
+}

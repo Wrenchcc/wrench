@@ -982,6 +982,35 @@ export declare type PostQuery = ({
         __typename?: 'Post';
     } & PostFragment)>;
 });
+export declare type ProjectSuggestionsQueryVariables = {
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type ProjectSuggestionsQuery = ({
+    __typename?: 'Query';
+} & {
+    projects: Maybe<Array<Maybe<({
+        __typename?: 'ProjectSuggestionsConnection';
+    } & {
+        type: Maybe<({
+            __typename?: 'ProjectType';
+        } & Pick<ProjectType, 'id' | 'title'>)>;
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges: Maybe<Array<({
+            __typename?: 'ProjectEdge';
+        } & {
+            node: ({
+                __typename?: 'Project';
+            } & {
+                cover: Maybe<({
+                    __typename?: 'CoverType';
+                } & Pick<CoverType, 'uri' | 'default'>)>;
+            } & ProjectFragment);
+        })>>;
+    })>>>;
+});
 export declare type ProjectTypesQueryVariables = {};
 export declare type ProjectTypesQuery = ({
     __typename?: 'Query';
@@ -1197,6 +1226,29 @@ export declare function usePostLazyQuery(baseOptions?: ApolloReactHooks.LazyQuer
 export declare type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export declare type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
 export declare type PostQueryResult = ApolloReactCommon.QueryResult<PostQuery, PostQueryVariables>;
+export declare const ProjectSuggestionsDocument: any;
+/**
+ * __useProjectSuggestionsQuery__
+ *
+ * To run a query within a React component, call `useProjectSuggestionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectSuggestionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectSuggestionsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useProjectSuggestionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>): ApolloReactCommon.QueryResult<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>;
+export declare function useProjectSuggestionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<ProjectSuggestionsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>];
+export declare type ProjectSuggestionsQueryHookResult = ReturnType<typeof useProjectSuggestionsQuery>;
+export declare type ProjectSuggestionsLazyQueryHookResult = ReturnType<typeof useProjectSuggestionsLazyQuery>;
+export declare type ProjectSuggestionsQueryResult = ApolloReactCommon.QueryResult<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>;
 export declare const ProjectTypesDocument: any;
 /**
  * __useProjectTypesQuery__

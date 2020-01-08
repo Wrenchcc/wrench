@@ -1,10 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { getProjectSuggestions } from 'services/graphql/queries/project/getProjectSuggestions'
+import { useProjectSuggestionsQuery } from '@wrench/common'
 import { ProjectSuggestion, Loader } from 'ui'
 import { Base, Headline, Description } from './styles'
 
-function ProjectSuggestions({ projects, isFetching }) {
+function ProjectSuggestions() {
+  const { data, isLoading } = useProjectSuggestionsQuery()
   const { t } = useTranslation()
 
   return (
@@ -17,13 +18,15 @@ function ProjectSuggestions({ projects, isFetching }) {
         {t('ProjectSuggestions:description')}
       </Description>
 
-      {isFetching && <Loader />}
-      {projects.length > 0 &&
-        projects.map(({ type, edges }) => (
+      {isLoading && <Loader />}
+
+      {data &&
+        data.projects.length > 0 &&
+        data.projects.map(({ type, edges }) => (
           <ProjectSuggestion key={type.id} title={type.title} data={edges} />
         ))}
     </Base>
   )
 }
 
-export default getProjectSuggestions(ProjectSuggestions)
+export default ProjectSuggestions
