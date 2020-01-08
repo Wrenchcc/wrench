@@ -1,7 +1,7 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { Layout, FlatList } from 'navigation'
-import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'services/gql'
+import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { getCurrentUserProfile } from 'services/graphql/queries/user/getCurrentUser'
 import Post from 'components/Post'
 import { EmptyState, Text } from 'ui'
@@ -19,7 +19,7 @@ const renderItem = ({ item }) => <Post post={item.node} />
 function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
   const hasPosts = posts && posts.length > 0
 
-  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+  const { data } = useCurrentUserProjectsQuery({
     fetchPolicy: 'cache-only',
   })
 

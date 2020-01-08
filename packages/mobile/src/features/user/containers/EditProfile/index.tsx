@@ -2,14 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
+import { useCurrentUserQuery } from '@wrench/common'
 import { useNavigation, AppNavigation, SCREENS } from 'navigation'
-import {
-  useQuery,
-  useMutation,
-  preSignUrl,
-  CURRENT_USER_QUERY,
-  EDIT_USER_MUTATION,
-} from 'services/gql'
+import { useMutation, preSignUrl, EDIT_USER_MUTATION } from 'services/gql'
 import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
@@ -31,7 +26,7 @@ function EditProfile({ onboarding }) {
   const [upload, setUploadFile] = useState()
   const [isSaving, setSaving] = useState(false)
 
-  const { data } = useQuery(CURRENT_USER_QUERY)
+  const { data } = useCurrentUserQuery()
 
   const {
     update,
@@ -182,10 +177,10 @@ function EditProfile({ onboarding }) {
           isSaving ? (
             <ActivityIndicator size="small" color="black" />
           ) : (
-              <Touchable onPress={handleSave}>
-                <Text medium>{t('EditProfile:save')}</Text>
-              </Touchable>
-            )
+            <Touchable onPress={handleSave}>
+              <Text medium>{t('EditProfile:save')}</Text>
+            </Touchable>
+          )
         }
       />
       <KeyboardAvoidingView paddingHorizontal={0}>

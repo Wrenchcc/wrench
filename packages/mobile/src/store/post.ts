@@ -1,9 +1,10 @@
 import create from 'zustand'
 import AsyncStorage from '@react-native-community/async-storage'
 import * as MediaLibrary from '@pontusab/react-native-media-library'
+import { CurrentUserProjectsDocument } from '@wrench/common'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq, assocPath, pathOr } from 'rambda'
-import { client, CURRENT_USER_PROJECTS_QUERY } from 'services/gql'
+import { client } from 'services/gql'
 import { logError } from 'utils/sentry'
 import { POST } from './constants'
 
@@ -110,7 +111,7 @@ export async function loadSelectedProjectId() {
   if (savedId) {
     api.setState({ [POST.PROJECT_ID]: savedId })
   } else {
-    const { data } = await client.query({ query: CURRENT_USER_PROJECTS_QUERY })
+    const { data } = await client.query({ query: CurrentUserProjectsDocument })
 
     const id = pathOr(
       pathOr(null, ['user', 'projects', 'edges', 0, 'node', 'id'], data),

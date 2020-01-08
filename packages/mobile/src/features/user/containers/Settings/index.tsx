@@ -1,12 +1,8 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useCurrentUserSettingsQuery } from '@wrench/common'
 import { Page, SectionList } from 'navigation'
-import {
-  useQuery,
-  useMutation,
-  CURRENT_USER_SETTINGS_QUERY,
-  TOGGLE_NOTIFICATION_SETTINGS_MUTATION,
-} from 'services/gql'
+import { useMutation, TOGGLE_NOTIFICATION_SETTINGS_MUTATION } from 'services/gql'
 import { Title, SelectionItem } from 'ui'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
@@ -28,7 +24,7 @@ const keyExtractor = (item, index) => item + index
 function Settings({ section }) {
   const { t } = useTranslation()
 
-  const { data } = useQuery(CURRENT_USER_SETTINGS_QUERY)
+  const { data } = useCurrentUserSettingsQuery()
   const [toggleNotificationSettings] = useMutation(TOGGLE_NOTIFICATION_SETTINGS_MUTATION)
 
   const handleToggleNotificationSettings = useCallback(

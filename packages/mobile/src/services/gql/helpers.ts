@@ -1,9 +1,9 @@
+import { CurrentUserDocument } from '@wrench/common'
 import { PLATFORM_TYPES } from 'utils/enums'
 import { logError } from 'utils/sentry'
 import {
   client,
   REGISTER_DEVICE_TOKEN_MUTATION,
-  CURRENT_USER_QUERY,
   PRE_SING_URLS_MUTATION,
   PRE_SING_URL_MUTATION,
 } from './'
@@ -50,7 +50,7 @@ export async function preSignUrl(input) {
 
 export async function getCurrentUser() {
   try {
-    return client.query({ query: CURRENT_USER_QUERY })
+    return client.query({ query: CurrentUserDocument })
   } catch (err) {
     logError(err)
   }

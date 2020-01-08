@@ -1,14 +1,14 @@
 import React, { useCallback, memo } from 'react'
 import { ScrollView } from 'react-native'
 // import { sort } from 'rambda'
+import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
-import { GET_PROJECT_TYPES, useQuery } from 'services/gql'
 import { Wrapper } from './styles'
 
 function ProjectTypes() {
-  const { data: typesData, loading: loadingTypes } = useQuery(GET_PROJECT_TYPES)
-  // const { data: userData, loading: loadingUser } = useQuery(CURRENT_USER_QUERY)
+  const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
+  // const { data: userData, loading: loadingUser } = useCurrentUserQuery()
 
   const { navigateTo } = useNavigation()
 

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useCurrentUserQuery } from '@wrench/common'
 import { AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { compose, omit } from 'rambda'
 import { track, events } from 'utils/analytics'
 import { getProjectTypes } from 'services/graphql/queries/project/getProjectTypes'
 import { editUser } from 'services/graphql/mutations/user/editUser'
-import { useQuery, CURRENT_USER_QUERY } from 'services/gql'
 import { Header, Touchable, Text, Loader, Icon } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
@@ -29,7 +29,7 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
   }, [])
 
-  const { data } = useQuery(CURRENT_USER_QUERY)
+  const { data } = useCurrentUserQuery()
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -64,9 +64,9 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
 
     const Navigate = data.user.isSilhouette
       ? () =>
-        showModal(SCREENS.EDIT_PROFILE, {
-          onboarding: true,
-        })
+          showModal(SCREENS.EDIT_PROFILE, {
+            onboarding: true,
+          })
       : () => AppNavigation(false)
 
     await editUserMutation({ interestedIn })
@@ -98,16 +98,16 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
     isSaving ? (
       <ActivityIndicator size="small" color={settingsPage ? 'black' : 'white'} />
     ) : (
-        <Text
-          color={settingsPage ? 'dark' : 'white'}
-          medium
-          opacity={isComplete() ? 1 : 0.5}
-          disabled={!isComplete()}
-          onPress={handleSubmit}
-        >
-          {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
-        </Text>
-      )
+      <Text
+        color={settingsPage ? 'dark' : 'white'}
+        medium
+        opacity={isComplete() ? 1 : 0.5}
+        disabled={!isComplete()}
+        onPress={handleSubmit}
+      >
+        {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
+      </Text>
+    )
 
   const renderHeaderLeft = () =>
     settingsPage && <Icon source={arrowLeft} onPress={handleNavigationBack} />

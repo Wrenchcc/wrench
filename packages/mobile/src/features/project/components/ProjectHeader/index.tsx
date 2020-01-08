@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react'
 import { ActivityIndicator } from 'react-native'
+import { useSimilarProjectsLazyQuery } from '@wrench/common'
 import { Title, Follow, Icon } from 'ui'
 import { arrowDown } from 'images'
-import { useLazyQuery, SIMILAR_PROJECTS_QUERY } from 'services/gql'
 import { useNavigation, SCREENS } from 'navigation'
 import SimilarProjects from '../SimilarProjects'
 import { Base, Actions, Followers, OpenSimilar } from './styles'
 
 function ProjectHeader({ project, spacingHorizontal, handleFollow }) {
   const { navigate } = useNavigation()
-  const [getSimilarProjects, { loading, data }] = useLazyQuery(SIMILAR_PROJECTS_QUERY, {
+  const [getSimilarProjects, { loading, data }] = useSimilarProjectsLazyQuery({
     variables: {
       id: project.id,
     },

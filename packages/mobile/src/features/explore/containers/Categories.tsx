@@ -1,6 +1,6 @@
 import React from 'react'
+import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { Page, FlatList, useNavigation, SCREENS } from 'navigation'
-import { usePaginatedQuery, GET_PROJECTS } from 'services/gql'
 import { ProjectCard } from 'ui'
 
 const ITEM_HEIGHT = 200
@@ -18,7 +18,7 @@ function Categories({ id, title }) {
 
   const { projects, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery(
     'projects'
-  )(GET_PROJECTS, {
+  )(ProjectsDocument, {
     variables: {
       first: 6,
       typeId: id,

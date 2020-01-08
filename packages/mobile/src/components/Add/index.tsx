@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useNavigation, SCREENS } from 'navigation'
-import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'services/gql'
+import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { COLORS } from 'ui/constants'
 import Icon from 'ui/Icon'
 import { isIphone } from 'utils/platform'
@@ -8,7 +8,7 @@ import { add } from 'images'
 
 function Add() {
   const { showModal } = useNavigation()
-  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+  const { data } = useCurrentUserProjectsQuery({
     fetchPolicy: 'cache-only',
   })
 

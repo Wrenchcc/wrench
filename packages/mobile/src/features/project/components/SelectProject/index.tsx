@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { pathOr } from 'rambda'
-import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'services/gql'
+import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { usePostStore, POST } from 'store'
 import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'
@@ -14,7 +14,7 @@ function getProjectById(id, projects) {
 
 function SelectProject({ dark = false }) {
   const [isOpen, setIsOpen] = useState(false)
-  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+  const { data } = useCurrentUserProjectsQuery({
     fetchPolicy: 'cache-only',
   })
 

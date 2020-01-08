@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { addProject } from 'services/graphql/mutations/project/addProject'
-import { useQuery, CURRENT_USER_PROJECTS_QUERY } from 'services/gql'
 import { useNavigation, SCREENS } from 'navigation'
 import { useProjectStore, PROJECT } from 'store'
 import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
@@ -22,7 +22,7 @@ function AddProjectModel({ addProject: addProjectMutation }) {
   const [isSearching, setIsSearching] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
 
-  const { data } = useQuery(CURRENT_USER_PROJECTS_QUERY, {
+  const { data } = useCurrentUserProjectsQuery({
     fetchPolicy: 'cache-only',
   })
 
