@@ -13,7 +13,6 @@ def slack_notification(platform, build_number, version, success)
     payload: { 
       "Build" => build_number,
       "Version" => version,
-      "Build Date" => Time.new.to_s,
       "Bundle Size" => bundle_size
     },
     default_payloads: [:git_branch, :git_author],

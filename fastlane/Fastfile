@@ -1,5 +1,6 @@
 require "json"
 require './utils/slack'  
+require './utils/session'
 
 xcodeproj = "packages/mobile/ios/Wrench.xcodeproj"
 workspace = "packages/mobile/ios/Wrench.xcworkspace"
@@ -22,6 +23,7 @@ end
 # iOS Beta
 lane :ios do
   setup_ci(force: true)
+  retrieve_fastlane_session()
   cocoapods(
     podfile: "packages/mobile/ios/Podfile"
   )
