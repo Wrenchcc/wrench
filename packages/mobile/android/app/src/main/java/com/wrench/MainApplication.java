@@ -35,7 +35,6 @@ import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativeimagemanipulator.ImageManipulatorPackage;
 import com.reactnativemedialibrary.MediaLibraryPackage;
 import com.reactnativedevicelocale.DeviceLocalePackage;
-import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
@@ -90,7 +89,6 @@ public class MainApplication extends NavigationApplication {
         packages.add(new MediaLibraryPackage());
         packages.add(new DeviceLocalePackage());
         packages.add(new RNSentryPackage());
-        packages.add(new SafeAreaContextPackage());
 
         return packages;
     }

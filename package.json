@@ -3,6 +3,9 @@
   "version": "1.0.67",
   "private": true,
   "workspaces": {
+    "nohoist": [
+      "**/react-native-bundle-splitter"
+    ],
     "packages": [
       "packages/*"
     ]

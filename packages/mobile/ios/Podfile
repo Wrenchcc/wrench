@@ -94,7 +94,6 @@ target 'Wrench' do
   pod 'react-native-image-manipulator', :path => "#{root_path}/@pontusab/react-native-image-manipulator/ios"
   pod 'react-native-device-locale', :path => "#{root_path}/@pontusab/react-native-device-locale/ios"
   pod 'RNAppleAuthentication', :path => "#{root_path}/@pontusab/react-native-apple-authentication/ios"
-  pod 'react-native-safe-area-context', :path => "#{root_path}/react-native-safe-area-context"
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
