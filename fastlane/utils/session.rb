@@ -6,7 +6,6 @@ def retrieve_fastlane_session
     new_session = match[:session].gsub("\e[4m\e[36m", "").gsub("\e[0m\e[0m", "")
   end
 
-  # Yell and quit if unable to parse out session from spaceauth output
   if new_session.nil?
     puts "Unable to obtain new session via fastlane spaceauth"
     exit 1

@@ -1,3 +1,5 @@
+opt_out_usage # Disable Sending anonymous analytics information
+
 require "json"
 require './utils/slack'  
 require './utils/session'
