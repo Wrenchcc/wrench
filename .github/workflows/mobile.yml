@@ -14,7 +14,8 @@ jobs:
     name: Version
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
 
       - name: "Version Bump"
         uses: "phips28/gh-action-bump-version@master"
@@ -37,22 +38,34 @@ jobs:
   android:
     needs: version_tag
     name: Build Android
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
+
       - name: Uses Node.js 13
         uses: actions/setup-node@v1
         with:
           node-version: 13
-      - run: npm install -g yarn
+        run: npm install -g yarn
+      
       - name: Install dependencies
         run: |
           yarn install
-     
+
+      # https://github.com/expo/expo-github-action/issues/20
+      - name: Patching system watchers for the `ENOSPC` error...
+        run: | 
+          sudo sysctl fs.inotify.max_user_instances=524288 
+          sudo sysctl fs.inotify.max_user_watches=524288
+          sudo sysctl fs.inotify.max_queued_events=524288
+          sudo sysctl -p
+
       - name: Download build number
         uses: actions/download-artifact@v1
         with:
           name: BUILD_NUMBER
+      
       - name: Restore build number
         id: buildnumber
         uses: einaregilsson/build-number@v2 
@@ -86,13 +99,15 @@ jobs:
     name: Build iOS
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
   
       - name: Uses Node.js 13
         uses: actions/setup-node@v1
         with:
           node-version: 13
-      - run: npm install -g yarn
+        run: npm install -g yarn
+
       - name: Install dependencies
         run: |
           yarn install
@@ -101,6 +116,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: BUILD_NUMBER
+
       - name: Restore build number
         id: buildnumber
         uses: einaregilsson/build-number@v2 

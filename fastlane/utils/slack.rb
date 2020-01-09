@@ -11,7 +11,7 @@ def slack_notification(platform, build_number, version, success)
     payload: { 
       "Build" => build_number,
       "Version" => version,
-      "Bundle Size" => platfrom == 'iOS' ? filesize(File.size('../../.builds/main.jsbundle')) : "0"
+      "Bundle Size" => platform == 'iOS' ? filesize(File.size('../../.builds/main.jsbundle')) : "0"
     },
     attachment_properties: { 
       thumb_url: "https://edge-files.wrench.cc/static/email/logo.jpg?w=60&h=60&dpr=3",

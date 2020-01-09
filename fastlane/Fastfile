@@ -1,8 +1,8 @@
-opt_out_usage # Disable Sending anonymous analytics information
+# Disable Sending anonymous analytics information
+opt_out_usage 
 
 require "json"
 require './utils/slack'  
-require './utils/session'
 
 xcodeproj = "packages/mobile/ios/Wrench.xcodeproj"
 workspace = "packages/mobile/ios/Wrench.xcworkspace"
@@ -10,7 +10,7 @@ android = "packages/mobile/android"
 
 package = File.read("../package.json")
 version = JSON.parse(package)["version"]
-build_number = ENV["BUILD_NUMBER"] || 1
+build_number = ENV["BUILD_NUMBER"] || "1"
 
 # Slack error message
 error do |lane, exception|
@@ -25,7 +25,6 @@ end
 # iOS Beta
 lane :ios do
   setup_ci(force: true)
-  retrieve_fastlane_session()
   cocoapods(
     podfile: "packages/mobile/ios/Podfile"
   )
