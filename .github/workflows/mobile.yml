@@ -47,7 +47,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 13
-        run: npm install -g yarn
+      - run: npm install -g yarn
       
       - name: Install dependencies
         run: |
@@ -106,7 +106,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 13
-        run: npm install -g yarn
+      - run: npm install -g yarn
 
       - name: Install dependencies
         run: |
