@@ -12,7 +12,6 @@ package = File.read("../package.json")
 version = JSON.parse(package)["version"]
 build_number = ENV["BUILD_NUMBER"] || "1"
 
-
 # Slack error message
 error do |lane, exception|
   slack_notification(
@@ -67,10 +66,6 @@ end
 # Android Beta
 lane :android do
   sh "actions/create-env"
-  gradle(
-    task: 'clean',
-    project_dir: android
-  )
   gradle(
     project_dir: android,
     task: 'bundle',

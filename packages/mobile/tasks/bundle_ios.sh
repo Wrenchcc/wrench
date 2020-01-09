@@ -24,8 +24,5 @@ $PROJECT_ROOT/node_modules/react-native/cli.js \
   --sourcemap-output $SOURCEMAP_FILE \
   $EXTRA_PACKAGER_ARGS
 
-echo "🗄 Copy bundle for bundle size..."
-cp $BUNDLE_FILE $PROJECT_ROOT/.builds
-
 echo "✅ Bundle saved in $DEST"
 echo "✅ Sourcemap saved $SOURCEMAP_FILE"
