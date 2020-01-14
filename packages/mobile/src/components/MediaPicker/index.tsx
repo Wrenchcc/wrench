@@ -22,7 +22,7 @@ const PERMISSION = isIphone
 
 const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
 
-function MediaPicker({ ListHeaderComponent }) {
+function MediaPicker({ onScroll, contentContainerStyle }) {
   const [isLoading, setLoading] = useState(true)
   const [checkingPermission, setCheckingPermission] = useState(true)
   const [photoPermission, setPhotoPermission] = useState(false)
@@ -109,7 +109,8 @@ function MediaPicker({ ListHeaderComponent }) {
         <List
           album={selectedAlbum && selectedAlbum.id}
           setAlbum={setAlbum}
-          ListHeaderComponent={ListHeaderComponent}
+          onScroll={onScroll}
+          contentContainerStyle={contentContainerStyle}
         />
       </Base>
     </>

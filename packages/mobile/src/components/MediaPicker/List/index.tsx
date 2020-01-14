@@ -1,41 +1,33 @@
 import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
-import { View, ActivityIndicator, Dimensions, FlatList } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
+import Animated from 'react-native-reanimated'
 import * as MediaLibrary from '@pontusab/react-native-media-library'
-import { useTranslation } from 'react-i18next'
 import { findIndex, propEq, pathOr, omit } from 'rambda'
 import { usePostStore } from 'store'
 import { logError } from 'utils/sentry'
-import { Text } from 'ui'
-import { isAndroid } from 'utils/platform'
-import { MAX_SELECTED_FILES } from 'store/post'
-import MediaItem, { MARGIN, ITEM_SIZE } from '../Item'
-import { DeselectAll, Placeholder } from './styles'
-
-const { width } = Dimensions.get('window')
+import MediaItem, { MARGIN } from '../Item'
 
 const NUM_COLUMNS = 4
-const INITIAL_PAGE_SIZE = 28
+const INITIAL_PAGE_SIZE = 12
 const PAGE_SIZE = 48
-const SNAP_TO_OFFSET = width + MARGIN
 
 const keyExtractor = item => item.uri
 
-const getItemLayout = (_, index) => ({
-  index,
-  length: Math.round(ITEM_SIZE),
-  offset: Math.round(ITEM_SIZE) * index,
-})
+// const getItemLayout = (_, index) => ({
+//   index,
+//   length: Math.round(ITEM_SIZE),
+//   offset: Math.round(ITEM_SIZE) * index,
+// })
 
-function List({ album, ListHeaderComponent }) {
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
+
+function List({ album, onScroll, contentContainerStyle }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState()
-  const [lastEndCursor, setLastEndCursor] = useState()
 
-  const ref = useRef()
-  const { t } = useTranslation()
-
-  const { selectedFiles, onSelect, deselectAll } = usePostStore(store => ({
+  const { selectedFiles, onSelect } = usePostStore(store => ({
     deselectAll: store.actions.deselectAll,
     onSelect: store.actions.onSelect,
     selectedFiles: store.selectedFiles,
@@ -62,9 +54,6 @@ function List({ album, ListHeaderComponent }) {
         return
       }
 
-      // NOTE: Dirty fix for fetching same data
-      setLastEndCursor(after)
-
       try {
         const result = await MediaLibrary.getAssetsAsync({
           after,
@@ -72,10 +61,7 @@ function List({ album, ListHeaderComponent }) {
           first: PAGE_SIZE,
         })
 
-        // NOTE: Dirty fix for fetching same data
-        if (after !== lastEndCursor) {
-          setAssets(p => p.concat(result.assets))
-        }
+        setAssets(p => p.concat(result.assets))
 
         setHasNextPage(result.hasNextPage)
         setEndCursor(result.endCursor)
@@ -83,7 +69,7 @@ function List({ album, ListHeaderComponent }) {
         logError(err)
       }
     },
-    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor, lastEndCursor]
+    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor]
   )
 
   useEffect(() => {
@@ -109,29 +95,12 @@ function List({ album, ListHeaderComponent }) {
     [hasNextPage, endCursor, fetchMoreAssets]
   )
 
-  const scrollToTop = useCallback(() => {
-    if (ref.current) {
-      ref.current.scrollToOffset({ offset: 0 })
-    }
-  }, [ref])
-
   const handleOnSelect = useCallback(
     item => {
-      const selected = selectedFiles.some(file => file.id === item.id)
-
-      if (!selected && selectedFiles.length !== MAX_SELECTED_FILES) {
-        scrollToTop()
-      }
-
       onSelect(item)
     },
-    [selectedFiles, scrollToTop, onSelect]
+    [onSelect]
   )
-
-  const handleDeselectAll = useCallback(() => {
-    deselectAll()
-    scrollToTop()
-  }, [deselectAll, scrollToTop])
 
   const renderItem = ({ item }) => {
     const order = findIndex(propEq('id', item.id))(selectedFiles)
@@ -152,35 +121,21 @@ function List({ album, ListHeaderComponent }) {
   }, [hasNextPage, assets])
 
   return (
-    <>
-      <FlatList
-        ref={ref}
-        contentContainerStyle={{ padding: MARGIN }}
-        data={assets}
-        decelerationRate="fast"
-        getItemLayout={getItemLayout}
-        initialNumToRender={INITIAL_PAGE_SIZE}
-        keyExtractor={keyExtractor}
-        ListFooterComponent={renderFooter}
-        ListHeaderComponent={<Placeholder>{ListHeaderComponent()}</Placeholder>}
-        numColumns={NUM_COLUMNS}
-        onEndReached={onEndReached}
-        onEndReachedThreshold={0.4}
-        removeClippedSubviews={isAndroid}
-        renderItem={renderItem}
-        snapToEnd={false}
-        snapToOffsets={[SNAP_TO_OFFSET]}
-        windowSize={17}
-      />
-
-      {selectedFiles.length > 0 && (
-        <DeselectAll activeOpacity={0.9} onPress={handleDeselectAll} naviteHandler>
-          <Text medium fontSize={15}>
-            {t('MediaPickerList:deselectAll')}
-          </Text>
-        </DeselectAll>
-      )}
-    </>
+    <AnimatedFlatList
+      onScroll={onScroll}
+      contentContainerStyle={{ padding: MARGIN, ...contentContainerStyle }}
+      data={assets}
+      // getItemLayout={getItemLayout}
+      initialNumToRender={INITIAL_PAGE_SIZE}
+      keyExtractor={keyExtractor}
+      ListFooterComponent={renderFooter}
+      numColumns={NUM_COLUMNS}
+      onEndReached={onEndReached}
+      // onEndReachedThreshold={0.4}
+      // removeClippedSubviews={isAndroid}
+      renderItem={renderItem}
+      // windowSize={17}
+    />
   )
 }
 
