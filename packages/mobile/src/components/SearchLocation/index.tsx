@@ -3,7 +3,7 @@ import { FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import Config from 'react-native-config'
 import { Input, Text, Loader } from 'ui'
-import { useDebounce } from 'utils/hooks'
+// import { useDebounce } from 'utils/hooks'
 import Footer from './Footer'
 import { Base, Header, Center } from './styles'
 
@@ -17,12 +17,12 @@ function SearchLocation({ iconLeft, onPress, autoFocus }) {
   const [focus, setFocus] = useState(false)
   const [results, setResults] = useState([])
 
-  const query = useDebounce(searchTerm, 300)
+  // const query = useDebounce(searchTerm, 300)
 
   async function fetchResult() {
     const data = await fetch(
       `${SEARCH_ENDPOINT}/${encodeURIComponent(
-        query
+        searchTerm
       )}.json?types=country%2Cregion%2Cplace&autocomplete=true&language=en&limit=10&access_token=${
         Config.MAPBOX_API_KEY
       }`
@@ -34,12 +34,12 @@ function SearchLocation({ iconLeft, onPress, autoFocus }) {
   }
 
   useEffect(() => {
-    if (query) {
+    if (searchTerm) {
       fetchResult()
     } else {
       setResults([])
     }
-  }, [query])
+  }, [searchTerm])
 
   const renderItem = ({ item }) => {
     return (

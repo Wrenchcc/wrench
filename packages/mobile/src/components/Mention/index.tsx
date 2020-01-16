@@ -5,7 +5,7 @@ import { InfiniteList, MentionUser, NoResults, SearchingFor, Loader } from 'ui'
 import { searchUsers } from 'services/graphql/queries/user/searchUsers'
 import { NAVIGATION } from 'navigation/constants'
 import { keyboardHeight } from 'utils/platform'
-import { useDebounce } from 'utils/hooks'
+// import { useDebounce } from 'utils/hooks'
 
 const INPUT_HEIGHT = 60
 
@@ -56,9 +56,9 @@ function Mention({ onPress }) {
     query: store.query,
   }))
 
-  const debouncedQuery = useDebounce(query, 300)
+  // const debouncedQuery = useDebounce(query, 300)
 
-  return <List query={debouncedQuery} onPress={onPress} />
+  return <List query={query} onPress={onPress} />
 }
 
 export default Mention

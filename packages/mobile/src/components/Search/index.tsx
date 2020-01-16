@@ -2,7 +2,7 @@ import React, { useState, useCallback, memo, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar } from 'react-native-tab-view'
-import { useDebounce } from 'utils/hooks'
+// import { useDebounce } from 'utils/hooks'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
 import Projects from './Projects'
@@ -54,20 +54,20 @@ function Search({ query, active }) {
 
   const handleLabelText = useCallback(({ route }) => t(`Search:${route.key}`), [t])
 
-  const debouncedQuery = useDebounce(query, 300)
+  // const debouncedQuery = useDebounce(query, 300)
 
   const renderScene = useCallback(
     ({ route }) => {
       switch (route.key) {
         case 'users':
-          return <Users query={debouncedQuery} />
+          return <Users query={query} />
         case 'projects':
-          return <Projects query={debouncedQuery} />
+          return <Projects query={query} />
         default:
           return null
       }
     },
-    [debouncedQuery]
+    [query]
   )
 
   const renderTabBar = useCallback(

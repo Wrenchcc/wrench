@@ -65,8 +65,11 @@ function MediaPicker({ ListHeaderComponent }) {
   }, [setPhotoPermission])
 
   const handleOpenAlbum = useCallback(() => {
-    setLoadAlbums(true)
-    bottomSheet.current.snapTo(1)
+    // NOTE: setImmediate fixes issue with pressing twice
+    setImmediate(() => {
+      setLoadAlbums(true)
+      bottomSheet.current.snapTo(1)
+    })
   }, [setLoadAlbums, bottomSheet])
 
   const changeAlbum = useCallback(
