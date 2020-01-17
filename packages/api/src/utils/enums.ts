@@ -53,3 +53,8 @@ export const ERROR_CODES = {
   REVOKED: 'REFRESH_TOKEN_REVOKED',
   SPAM: 'SPAM',
 }
+
+export const USER_ROLES = {
+  ADMIN: 'ADMIN',
+  USER: 'USER',
+}
