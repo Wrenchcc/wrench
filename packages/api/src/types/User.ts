@@ -20,6 +20,7 @@ export default gql`
     bio: String
     location: String
     isSilhouette: Boolean
+    role: UserRole
 
     projectsConnection(
       first: Int = 10
@@ -34,6 +35,11 @@ export default gql`
       before: String
     ): ProjectsConnection
     postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+  }
+
+  enum UserRole {
+    USER
+    ADMIN
   }
 
   type UserConnection {

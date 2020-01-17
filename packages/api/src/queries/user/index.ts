@@ -7,6 +7,7 @@ import isOnline from './isOnline'
 import postsConnection from './postsConnection'
 import projectCount from './projectCount'
 import projectsConnection from './projectsConnection'
+import role from './role'
 import settings from './settings'
 import user from './user'
 
@@ -24,6 +25,7 @@ export default {
     postsConnection,
     projectCount,
     projectsConnection,
+    role,
     settings,
   },
 }
