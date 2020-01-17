@@ -195,7 +195,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
 
   return (
     <>
-      <Search query={query} active={searchActive} />
+      {searchActive && <Search query={query} />}
 
       <Header
         style={{

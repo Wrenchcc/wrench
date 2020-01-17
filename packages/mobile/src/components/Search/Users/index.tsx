@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { searchUsers } from 'services/graphql/queries/user/searchUsers'
 import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 70
@@ -12,15 +11,21 @@ const getItemLayout = (_, index) => ({
 
 const renderItem = ({ item }) => <User data={item.node} />
 
-function Users({ fetchMore, hasNextPage, isFetching, isRefetching, refetch, users, query }) {
+function Users({ query }) {
+  const isFetching = false
+  const data = null
+  const hasNextPage = false
+  const isRefetching = false
+  const refetch = () => {}
+
   return (
     <InfiniteList
       borderSeparator
       paddingBottom={40}
       getItemLayout={getItemLayout}
       ListEmptyComponent={!isFetching && <NoResults />}
-      data={users}
-      fetchMore={fetchMore}
+      data={data}
+      fetchMore={null}
       hasNextPage={isFetching ? false : hasNextPage}
       isFetching={isFetching && query.length === 0}
       isRefetching={isRefetching}
@@ -28,7 +33,7 @@ function Users({ fetchMore, hasNextPage, isFetching, isRefetching, refetch, user
       renderItem={renderItem}
       defaultPadding
       ListFooterComponent={
-        (query.length === 1 && !users) || (isFetching && query.length !== 0) ? (
+        (query.length === 1 && !data) || (isFetching && query.length !== 0) ? (
           <SearchingFor query={query} />
         ) : (
           hasNextPage && <Loader />
@@ -38,4 +43,4 @@ function Users({ fetchMore, hasNextPage, isFetching, isRefetching, refetch, user
   )
 }
 
-export default memo(searchUsers(Users))
+export default memo(Users)

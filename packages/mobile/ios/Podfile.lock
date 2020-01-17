@@ -65,7 +65,7 @@ PODS:
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
-  - FirebaseInstallations (1.0.0):
+  - FirebaseInstallations (1.1.0):
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
@@ -397,7 +397,7 @@ PODS:
     - React
   - react-native-image-manipulator (1.0.6):
     - React
-  - react-native-image-picker (1.1.0):
+  - react-native-image-picker (2.0.0):
     - React
   - react-native-media-library (1.0.6):
     - React
@@ -477,7 +477,7 @@ PODS:
     - React
   - RNRate (1.1.10):
     - React
-  - RNReanimated (1.4.0):
+  - RNReanimated (1.7.0):
     - React
   - RNSentry (1.2.1):
     - React
@@ -742,7 +742,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 4aeb81ff53dcd9a3634ca725dc1fb8c2a4622046
   FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
-  FirebaseInstallations: ae1dbf899b1f071b1f93dff78f748380bb6616d0
+  FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
   FirebaseMessaging: 448cf4c727f3c95f4f90816907d67306ba785cfe
   Flipper: de4c7cd47f5af3a51e18ddcafcb848b2bf681c2a
@@ -784,7 +784,7 @@ SPEC CHECKSUMS:
   react-native-device-locale: 90a1fffcb69ddb4f7f6053e3d6275d77d8d83613
   react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
   react-native-image-manipulator: 01433a6b3714da14d453e2f1fa83eab09dadef4d
-  react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
+  react-native-image-picker: a878ed6ac8c54ec4f5d7ab7a019c7b5eb7a737d4
   react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
   react-native-netinfo: 8884d510fe67349940b4399c01db3e3591c922aa
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
@@ -810,7 +810,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNPermissions: 2f74237e97b08beda01e914301e12524ddddf5b8
   RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
-  RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
+  RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
   RNSentry: 9b1d983b2d5d1c215ba6490348fd2a4cc23a8a9d
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
   SDWebImage: 86589f0d47a7de15827640c71813e23fd428965c

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import Config from 'react-native-config'
-import { Input, Text, Loader } from 'ui'
-// import { useDebounce } from 'utils/hooks'
+import { Input, Text, NoResults, SearchingFor } from 'ui'
 import Footer from './Footer'
 import { Base, Header, Center } from './styles'
 
@@ -14,12 +13,12 @@ const keyExtractor = item => item.id
 function SearchLocation({ iconLeft, onPress, autoFocus }) {
   const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState('')
-  const [focus, setFocus] = useState(false)
+  const [isFetching, setFetching] = useState(false)
   const [results, setResults] = useState([])
 
-  // const query = useDebounce(searchTerm, 300)
-
   async function fetchResult() {
+    setFetching(true)
+
     const data = await fetch(
       `${SEARCH_ENDPOINT}/${encodeURIComponent(
         searchTerm
@@ -30,6 +29,7 @@ function SearchLocation({ iconLeft, onPress, autoFocus }) {
 
     const result = await data.json()
 
+    setFetching(false)
     setResults(result.features)
   }
 
@@ -43,7 +43,7 @@ function SearchLocation({ iconLeft, onPress, autoFocus }) {
 
   const renderItem = ({ item }) => {
     return (
-      <View style={{ height: 50 }}>
+      <View style={{ height: 30, marginTop: 20 }}>
         <Text
           key={item.id}
           color="dark"
@@ -73,24 +73,28 @@ function SearchLocation({ iconLeft, onPress, autoFocus }) {
             autoCorrect={false}
             returnKeyType="search"
             autoFocus={autoFocus}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
           />
         </Center>
       </Header>
 
       <FlatList
-        contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 20 }}
-        ListEmptyComponent={<Loader fullscreen />}
+        contentContainerStyle={{ paddingHorizontal: 20 }}
         style={{ flex: 1 }}
         data={results}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         keyboardDismissMode="on-drag"
         keyboardShouldPersistTaps="always"
+        ListFooterComponent={
+          isFetching && searchTerm.length !== 0 ? (
+            <SearchingFor query={searchTerm} />
+          ) : (
+            searchTerm.length > 0 && !results.length && <NoResults />
+          )
+        }
       />
 
-      {!focus && <Footer />}
+      {!searchTerm.length && <Footer />}
     </Base>
   )
 }
