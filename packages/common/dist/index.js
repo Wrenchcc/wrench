@@ -5,5 +5,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var usePaginatedQuery_1 = require("./utils/usePaginatedQuery");
 exports.usePaginatedQuery = usePaginatedQuery_1.default;
+var usePaginatedLazyQuery_1 = require("./utils/usePaginatedLazyQuery");
+exports.usePaginatedLazyQuery = usePaginatedLazyQuery_1.default;
 __export(require("./generated/graphql-hooks"));
 //# sourceMappingURL=index.js.map
