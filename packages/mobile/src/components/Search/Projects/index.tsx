@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import { useNavigation, SCREENS } from 'navigation'
-import { searchProjects } from 'services/graphql/queries/project/searchProjects'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
 const ITEM_HEIGHT = 200
@@ -13,8 +12,14 @@ function getItemLayout(_, index) {
   }
 }
 
-function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, refetch, query }) {
+function Projects({ query }) {
   const { navigate } = useNavigation()
+  const isFetching = false
+  const data = null
+  const fetchMore = () => {}
+  const refetch = () => {}
+  const hasNextPage = false
+  const isRefetching = false
 
   const renderItem = ({ item }) => {
     const onPress = () =>
@@ -32,7 +37,7 @@ function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, 
       paddingBottom={40}
       getItemLayout={getItemLayout}
       ListEmptyComponent={!isFetching && <NoResults />}
-      data={projects}
+      data={data}
       fetchMore={fetchMore}
       hasNextPage={isFetching ? false : hasNextPage}
       isFetching={isFetching && query.length === 0}
@@ -41,7 +46,7 @@ function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, 
       renderItem={renderItem}
       defaultPadding
       ListFooterComponent={
-        (query.length === 1 && !projects) || (isFetching && query.length !== 0) ? (
+        (query.length === 1 && !data) || (isFetching && query.length !== 0) ? (
           <SearchingFor query={query} />
         ) : (
           hasNextPage && <Loader />
@@ -51,4 +56,4 @@ function Projects({ fetchMore, hasNextPage, isFetching, isRefetching, projects, 
   )
 }
 
-export default memo(searchProjects(Projects))
+export default memo(Projects)

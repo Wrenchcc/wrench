@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import { Transitioning } from 'react-native-reanimated'
 import UiText from 'ui/Text'
 import UiIcon from 'ui/Icon'
 import { FONTS, COLORS } from 'ui/constants'
 
-export const Base = styled(Transitioning.View)`
+export const Base = styled.View`
   flex-direction: row;
   align-items: center;
   flex: 1;

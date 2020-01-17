@@ -5,7 +5,6 @@ import { search, close } from 'images'
 import { COLORS } from 'ui/constants'
 import { Text } from 'ui'
 import { Base, Inner, Input, SearchIcon, CloseIcon } from './styles'
-import transition from './transition'
 
 function SearchBar({
   onChangeQuery,
@@ -21,25 +20,22 @@ function SearchBar({
   const { t } = useTranslation()
 
   const handleFocus = useCallback(() => {
-    transitionRef.current.animateNextTransition()
-
     if (onSearchFocus) {
       onSearchFocus()
     }
 
     return true
-  }, [transitionRef, onSearchFocus])
+  }, [onSearchFocus])
 
   const handleCancel = useCallback(() => {
     inputRef.current.blur()
-    transitionRef.current.animateNextTransition()
 
     Keyboard.dismiss()
 
     if (onSearchCancel) {
       onSearchCancel()
     }
-  }, [inputRef, transitionRef, onSearchCancel])
+  }, [inputRef, onSearchCancel])
 
   const handleQueryChange = useCallback(
     value => {
@@ -62,7 +58,7 @@ function SearchBar({
   }, [searchActive, handleCancel])
 
   return (
-    <Base ref={transitionRef} transition={transition}>
+    <Base>
       <Inner>
         <Input
           ref={inputRef}

@@ -2,7 +2,6 @@ import React, { useState, useCallback, memo, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar } from 'react-native-tab-view'
-// import { useDebounce } from 'utils/hooks'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
 import Projects from './Projects'
@@ -37,13 +36,13 @@ const styles = {
   },
 }
 
-function Search({ query, active }) {
+function Search({ query }) {
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     setIndex(0)
-  }, [active, setIndex])
+  }, [setIndex])
 
   const handleIndexChange = useCallback(
     activeIndex => {
@@ -53,8 +52,6 @@ function Search({ query, active }) {
   )
 
   const handleLabelText = useCallback(({ route }) => t(`Search:${route.key}`), [t])
-
-  // const debouncedQuery = useDebounce(query, 300)
 
   const renderScene = useCallback(
     ({ route }) => {
@@ -84,9 +81,8 @@ function Search({ query, active }) {
   )
 
   return (
-    <Base active={active}>
+    <Base>
       <TabView
-        swipeVelocityThreshold={500}
         keyboardDismissMode="none"
         navigationState={{
           index,

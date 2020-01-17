@@ -35,5 +35,5 @@ export const Counter = styled(UiText)`
 export const CloseIcon = styled(UiIcon)`
   position: absolute;
   right: 0;
-  top: 22;
+  top: 22px;
 `
