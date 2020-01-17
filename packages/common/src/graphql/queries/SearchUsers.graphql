@@ -1,0 +1,19 @@
+#import "../fragments/UserFragment.graphql"
+ 
+query searchUsers($query: String!, $after: String) {
+  users: search(query: $query, after: $after, type: USERS)
+    @connection(key: "users", filter: ["query", "type"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ... on User {
+          ...User
+          projectCount
+        }
+      }
+    }
+  }
+}

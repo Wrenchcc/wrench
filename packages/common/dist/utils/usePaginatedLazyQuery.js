@@ -35,7 +35,7 @@ var react_hooks_1 = require("@apollo/react-hooks");
 var rambda_1 = require("rambda");
 var networkStatus_1 = require("./networkStatus");
 exports.default = (function (type) { return function (query, options) {
-    var _a = react_hooks_1.useQuery(query, __assign(__assign({}, options), { notifyOnNetworkStatusChange: true })), fetchMore = _a.fetchMore, error = _a.error, result = __rest(_a, ["fetchMore", "error"]);
+    var _a = react_hooks_1.useLazyQuery(query, __assign(__assign({}, options), { notifyOnNetworkStatusChange: true })), loadData = _a[0], _b = _a[1], fetchMore = _b.fetchMore, error = _b.error, result = __rest(_b, ["fetchMore", "error"]);
     var data = rambda_1.pathOr({}, ['data', type], result);
     var handleFetchMore = react_1.useCallback(function () {
         return fetchMore({
@@ -55,6 +55,6 @@ exports.default = (function (type) { return function (query, options) {
             },
         });
     }, [result]);
-    return __assign(__assign({}, result), { data: rambda_1.pathOr(null, ['edges'], data), fetchMore: handleFetchMore, hasNextPage: rambda_1.pathOr(false, ['pageInfo', 'hasNextPage'], data), isFetching: result.loading || networkStatus_1.isFetchingMore(result.networkStatus), isRefetching: networkStatus_1.isRefetching(result.networkStatus) });
+    return __assign(__assign({}, result), { loadData: loadData, data: rambda_1.pathOr(null, ['edges'], data), fetchMore: handleFetchMore, hasNextPage: rambda_1.pathOr(false, ['pageInfo', 'hasNextPage'], data), isFetching: result.loading || networkStatus_1.isFetchingMore(result.networkStatus), isRefetching: networkStatus_1.isRefetching(result.networkStatus) });
 }; });
-//# sourceMappingURL=usePaginatedQuery.js.map
+//# sourceMappingURL=usePaginatedLazyQuery.js.map

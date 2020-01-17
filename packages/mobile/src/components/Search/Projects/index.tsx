@@ -1,4 +1,5 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
+import { usePaginatedLazyQuery, SearchProjectsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
@@ -14,17 +15,32 @@ function getItemLayout(_, index) {
 
 function Projects({ query }) {
   const { navigate } = useNavigation()
-  const isFetching = false
-  const data = null
-  const fetchMore = () => {}
-  const refetch = () => {}
-  const hasNextPage = false
-  const isRefetching = false
+
+  const {
+    loadData,
+    data,
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedLazyQuery('projects')(SearchProjectsDocument)
+
+  useEffect(() => {
+    if (query.length > 0 || (data && query.length === 0)) {
+      loadData({
+        variables: {
+          query,
+        },
+      })
+    }
+  }, [query])
 
   const renderItem = ({ item }) => {
     const onPress = () =>
       navigate(SCREENS.PROJECT, {
-        ...item.node,
+        id: item.node.id,
+        project: item.node,
       })
 
     return <ProjectCard project={item.node} onPress={onPress} />
@@ -36,7 +52,7 @@ function Projects({ query }) {
       initialNumToRender={4}
       paddingBottom={40}
       getItemLayout={getItemLayout}
-      ListEmptyComponent={!isFetching && <NoResults />}
+      ListEmptyComponent={!isFetching && query.lenght && <NoResults />}
       data={data}
       fetchMore={fetchMore}
       hasNextPage={isFetching ? false : hasNextPage}
@@ -46,11 +62,7 @@ function Projects({ query }) {
       renderItem={renderItem}
       defaultPadding
       ListFooterComponent={
-        (query.length === 1 && !data) || (isFetching && query.length !== 0) ? (
-          <SearchingFor query={query} />
-        ) : (
-          hasNextPage && <Loader />
-        )
+        isFetching && !data ? <SearchingFor query={query} /> : hasNextPage && <Loader />
       }
     />
   )

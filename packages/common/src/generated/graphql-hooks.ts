@@ -911,6 +911,7 @@ export type User = {
   bio?: Maybe<Scalars['String']>,
   location?: Maybe<Scalars['String']>,
   isSilhouette?: Maybe<Scalars['Boolean']>,
+  role?: Maybe<UserRole>,
   projectsConnection?: Maybe<ProjectsConnection>,
   followingProjects?: Maybe<ProjectsConnection>,
   postsConnection?: Maybe<PostConnection>,
@@ -956,6 +957,11 @@ export type UserNotificationsSettings = {
    __typename?: 'UserNotificationsSettings',
   types?: Maybe<NotificationSettingsType>,
 };
+
+export enum UserRole {
+  User = 'USER',
+  Admin = 'ADMIN'
+}
 
 export type UserSettings = {
    __typename?: 'UserSettings',
@@ -1255,6 +1261,59 @@ export type ProjectsQuery = (
         & ProjectFragment
       ) }
     )>> }
+  )> }
+);
+
+export type SearchProjectsQueryVariables = {
+  query: Scalars['String'],
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type SearchProjectsQuery = (
+  { __typename?: 'Query' }
+  & { projects: Maybe<(
+    { __typename?: 'SearchResults' }
+    & { pageInfo: Maybe<(
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    )>, edges: Maybe<Array<Maybe<(
+      { __typename?: 'SearchResultEdge' }
+      & Pick<SearchResultEdge, 'cursor'>
+      & { node: Maybe<(
+        { __typename?: 'Project' }
+        & { cover: Maybe<(
+          { __typename?: 'CoverType' }
+          & Pick<CoverType, 'uri' | 'default'>
+        )> }
+        & ProjectFragment
+      ) | { __typename?: 'User' } | { __typename?: 'Model' }> }
+    )>>> }
+  )> }
+);
+
+export type SearchUsersQueryVariables = {
+  query: Scalars['String'],
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type SearchUsersQuery = (
+  { __typename?: 'Query' }
+  & { users: Maybe<(
+    { __typename?: 'SearchResults' }
+    & { pageInfo: Maybe<(
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    )>, edges: Maybe<Array<Maybe<(
+      { __typename?: 'SearchResultEdge' }
+      & Pick<SearchResultEdge, 'cursor'>
+      & { node: Maybe<{ __typename?: 'Project' } | (
+        { __typename?: 'User' }
+        & Pick<User, 'projectCount'>
+        & UserFragment
+      ) | { __typename?: 'Model' }> }
+    )>>> }
   )> }
 );
 
@@ -1805,6 +1864,99 @@ export function useProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHoo
 export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
 export type ProjectsQueryResult = ApolloReactCommon.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export const SearchProjectsDocument = gql`
+    query searchProjects($query: String!, $after: String) {
+  projects: search(query: $query, after: $after, type: PROJECTS) @connection(key: "projects", filter: ["query", "type"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ... on Project {
+          ...Project
+          cover {
+            uri
+            default
+          }
+        }
+      }
+    }
+  }
+}
+    ${ProjectFragmentDoc}`;
+
+/**
+ * __useSearchProjectsQuery__
+ *
+ * To run a query within a React component, call `useSearchProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchProjectsQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useSearchProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
+        return ApolloReactHooks.useQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
+      }
+export function useSearchProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
+        }
+export type SearchProjectsQueryHookResult = ReturnType<typeof useSearchProjectsQuery>;
+export type SearchProjectsLazyQueryHookResult = ReturnType<typeof useSearchProjectsLazyQuery>;
+export type SearchProjectsQueryResult = ApolloReactCommon.QueryResult<SearchProjectsQuery, SearchProjectsQueryVariables>;
+export const SearchUsersDocument = gql`
+    query searchUsers($query: String!, $after: String) {
+  users: search(query: $query, after: $after, type: USERS) @connection(key: "users", filter: ["query", "type"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ... on User {
+          ...User
+          projectCount
+        }
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}`;
+
+/**
+ * __useSearchUsersQuery__
+ *
+ * To run a query within a React component, call `useSearchUsersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchUsersQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useSearchUsersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+        return ApolloReactHooks.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
+      }
+export function useSearchUsersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
+        }
+export type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
+export type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
+export type SearchUsersQueryResult = ApolloReactCommon.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
 export const SimilarProjectsDocument = gql`
     query similarProjects($id: ID!) {
   similarProjects(id: $id) {

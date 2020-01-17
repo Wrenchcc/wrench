@@ -1,7 +1,8 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
+import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { User, InfiniteList, NoResults, SearchingFor, Loader } from 'ui'
 
-const ITEM_HEIGHT = 70
+const ITEM_HEIGHT = 71
 
 const getItemLayout = (_, index) => ({
   index,
@@ -12,20 +13,34 @@ const getItemLayout = (_, index) => ({
 const renderItem = ({ item }) => <User data={item.node} />
 
 function Users({ query }) {
-  const isFetching = false
-  const data = null
-  const hasNextPage = false
-  const isRefetching = false
-  const refetch = () => {}
+  const {
+    loadData,
+    data,
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedLazyQuery('users')(SearchUsersDocument)
+
+  useEffect(() => {
+    if (query.length > 0 || (data && query.length === 0)) {
+      loadData({
+        variables: {
+          query,
+        },
+      })
+    }
+  }, [query])
 
   return (
     <InfiniteList
       borderSeparator
       paddingBottom={40}
       getItemLayout={getItemLayout}
-      ListEmptyComponent={!isFetching && <NoResults />}
+      ListEmptyComponent={!isFetching && query.lenght && <NoResults />}
       data={data}
-      fetchMore={null}
+      fetchMore={fetchMore}
       hasNextPage={isFetching ? false : hasNextPage}
       isFetching={isFetching && query.length === 0}
       isRefetching={isRefetching}
@@ -33,11 +48,7 @@ function Users({ query }) {
       renderItem={renderItem}
       defaultPadding
       ListFooterComponent={
-        (query.length === 1 && !data) || (isFetching && query.length !== 0) ? (
-          <SearchingFor query={query} />
-        ) : (
-          hasNextPage && <Loader />
-        )
+        isFetching && !data ? <SearchingFor query={query} /> : hasNextPage && <Loader />
       }
     />
   )
