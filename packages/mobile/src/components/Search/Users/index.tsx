@@ -38,7 +38,7 @@ function Users({ query }) {
       borderSeparator
       paddingBottom={40}
       getItemLayout={getItemLayout}
-      ListEmptyComponent={!isFetching && query.lenght && <NoResults />}
+      ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
       data={data}
       fetchMore={fetchMore}
       hasNextPage={isFetching ? false : hasNextPage}
