@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
+import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useMentionStore } from 'store'
 import { InfiniteList, MentionUser, NoResults, SearchingFor, Loader } from 'ui'
 import { NAVIGATION } from 'navigation/constants'
@@ -8,17 +9,28 @@ import { keyboardHeight } from 'utils/platform'
 const INPUT_HEIGHT = 60
 
 function Mention({ onPress }) {
-  const isFetching = false
-  const data = null
-  const fetchMore = () => {}
-  const hasNextPage = false
-  const isRefetching = false
-
   const renderItem = ({ item }) => <MentionUser user={item.node} onPress={onPress} />
 
   const { query } = useMentionStore(store => ({
     query: store.query,
   }))
+
+  const {
+    loadData,
+    data,
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+  } = usePaginatedLazyQuery('users')(SearchUsersDocument)
+
+  useEffect(() => {
+    loadData({
+      variables: {
+        query,
+      },
+    })
+  }, [query])
 
   return (
     <View
@@ -36,20 +48,16 @@ function Mention({ onPress }) {
         defaultPadding
         androidDismissKeyboard={false}
         keyboardDismissMode="none"
-        ListEmptyComponent={<NoResults />}
+        ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
         data={data}
         fetchMore={fetchMore}
+        hasNextPage={isFetching ? false : hasNextPage}
+        isFetching={isFetching && query.length === 0}
         isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
         renderItem={renderItem}
         borderSeparators
         ListFooterComponent={
-          (query.length === 1 && !data) || (isFetching && query.length !== 0) ? (
-            <SearchingFor query={query} />
-          ) : (
-            hasNextPage && <Loader />
-          )
+          isFetching && !data ? <SearchingFor query={query} /> : hasNextPage && <Loader />
         }
       />
     </View>
