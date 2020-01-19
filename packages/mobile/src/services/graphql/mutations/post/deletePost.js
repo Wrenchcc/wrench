@@ -1,11 +1,9 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import { PostsDocument, FeedDocument } from '@wrench/common'
 import { track, events } from 'utils/analytics'
 import postInfoFragment from 'services/graphql/fragments/post/postInfo'
-import { FeedQuery } from 'services/graphql/queries/getFeed'
-import { RecentPostsQuery } from 'services/graphql/queries/getExplore'
-import { CurrentUserProfileQuery } from 'services/graphql/queries/user/getCurrentUser'
-import { ProjectBySlugQuery } from 'services/graphql/queries/project/getProject'
+// import { ProjectBySlugQuery } from 'services/graphql/queries/project/getProject'
 
 const DeletePostMutation = gql`
   mutation deletePost($id: ID!) {
@@ -28,11 +26,11 @@ const deletePostOptions = {
         update: (cache, { data: { deletePost } }) => {
           try {
             // Feed
-            const feedData = cache.readQuery({ query: FeedQuery })
+            const feedData = cache.readQuery({ query: FeedDocument })
             const feedEdges = feedData.feed.posts.edges.filter(edge => edge.node.id !== id)
 
             cache.writeQuery({
-              query: FeedQuery,
+              query: FeedDocument,
               data: {
                 ...feedData,
                 feed: {
@@ -50,7 +48,7 @@ const deletePostOptions = {
 
           // Recent posts
           try {
-            const recentPostsData = cache.readQuery({ query: RecentPostsQuery })
+            const recentPostsData = cache.readQuery({ query: PostsDocument })
             const recentPostsEdges = recentPostsData.posts.edges.filter(edge => edge.node.id !== id)
 
             cache.writeQuery({
@@ -68,26 +66,26 @@ const deletePostOptions = {
           }
 
           // Current user
-          try {
-            const userData = cache.readQuery({ query: CurrentUserProfileQuery })
-            const userPostsEdges = userData.user.posts.edges.filter(edge => edge.node.id !== id)
+          // try {
+          //   const userData = cache.readQuery({ query: CurrentUserProfileQuery })
+          //   const userPostsEdges = userData.user.posts.edges.filter(edge => edge.node.id !== id)
 
-            cache.writeQuery({
-              query: CurrentUserProfileQuery,
-              data: {
-                ...userData,
-                user: {
-                  ...userData.user,
-                  posts: {
-                    ...userData.user.posts,
-                    edges: userPostsEdges,
-                  },
-                },
-              },
-            })
-          } catch (err) {
-            // Swollow error when no post is found
-          }
+          //   cache.writeQuery({
+          //     query: CurrentUserProfileQuery,
+          //     data: {
+          //       ...userData,
+          //       user: {
+          //         ...userData.user,
+          //         posts: {
+          //           ...userData.user.posts,
+          //           edges: userPostsEdges,
+          //         },
+          //       },
+          //     },
+          //   })
+          // } catch (err) {
+          //   // Swollow error when no post is found
+          // }
 
           // Project
           //   try {

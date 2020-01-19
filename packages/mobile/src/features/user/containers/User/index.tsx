@@ -1,7 +1,7 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { getUserByUsername } from 'services/graphql/queries/user/getUser'
+import { usePaginatedQuery, UserDocument } from '@wrench/common'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
 import { Share, Banner } from 'ui'
@@ -14,18 +14,24 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function User({
-  posts,
-  user = {},
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  error,
-}) {
+function User({ user }) {
   const { t } = useTranslation()
-  const hasPosts = posts && posts.length > 0
+
+  const {
+    data,
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+    error,
+  } = usePaginatedQuery(['user', 'posts'])(UserDocument, {
+    variables: {
+      username: user.username,
+    },
+  })
+
+  const hasPosts = data && data && data.length > 0
 
   const ListHeaderComponent = error ? (
     <Banner content={t('UserProfile:notfound')} />
@@ -62,7 +68,7 @@ function User({
           contentContainerStyle={{ flexGrow: 1 }}
           ListHeaderComponent={ListHeaderComponent}
           ListEmptyComponent={user && !error && <FollowingProjects user={user} />}
-          data={posts}
+          data={data}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
@@ -75,4 +81,4 @@ function User({
   )
 }
 
-export default getUserByUsername(User)
+export default User

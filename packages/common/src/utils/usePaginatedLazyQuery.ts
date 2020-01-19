@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks'
 import { pathOr } from 'rambda'
 import { isRefetching, isFetchingMore } from './networkStatus'
 
-export default type => (query, options) => {
+export default type => (query, options?) => {
   const [loadData, { fetchMore, error, ...result }] = useLazyQuery(query, {
     ...options,
     notifyOnNetworkStatusChange: true,

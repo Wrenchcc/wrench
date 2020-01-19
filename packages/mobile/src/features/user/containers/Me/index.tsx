@@ -1,10 +1,9 @@
 import React from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import { Layout, FlatList } from 'navigation'
-import { useCurrentUserProjectsQuery } from '@wrench/common'
-import { getCurrentUserProfile } from 'services/graphql/queries/user/getCurrentUser'
+import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
 import Post from 'components/Post'
-import { EmptyState, Text } from 'ui'
+import { EmptyState } from 'ui'
 import SettingsButton from 'features/user/components/SettingsButton'
 import EditButton from 'features/user/components/EditButton'
 import Header from 'features/user/components/Header'
@@ -16,12 +15,15 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
+function Me({ posts }) {
   const hasPosts = posts && posts.length > 0
 
-  const { data } = useCurrentUserProjectsQuery({
-    fetchPolicy: 'cache-only',
-  })
+  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
+    'user',
+    'posts',
+  ])(CurrentUserProfileDocument)
+
+  return null
 
   const emptyState = data.user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
 
@@ -35,24 +37,24 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flexGrow: 1 }}
           ListHeaderComponent={
-            user && (
+            data && (
               <>
                 <Header
-                  firstName={user.firstName}
-                  lastName={user.lastName}
-                  avatarUrl={user.avatarUrl}
+                  firstName={data.user.firstName}
+                  lastName={data.user.lastName}
+                  avatarUrl={data.user.avatarUrl}
                   spacingHorizontal={!hasPosts}
-                  bio={user.bio}
-                  website={user.website}
-                  location={user.location}
+                  bio={data.user.bio}
+                  website={data.user.website}
+                  location={data.user.location}
                 />
 
-                <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
+                <UserProjects projects={data.user.projects} spacingHorizontal={!hasPosts} />
               </>
             )
           }
           ListEmptyComponent={<EmptyState type={emptyState} />}
-          data={posts}
+          data={data.posts}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
@@ -65,4 +67,4 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
   )
 }
 
-export default getCurrentUserProfile(Me)
+export default Me

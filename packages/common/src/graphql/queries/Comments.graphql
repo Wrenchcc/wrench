@@ -1,0 +1,15 @@
+#import "../fragments/CommentFragment.graphql"
+
+query comments($postId: ID!, $after: String) {
+  comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...CommentFragment
+      }
+    }
+  }
+}

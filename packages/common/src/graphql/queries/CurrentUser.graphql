@@ -1,6 +1,6 @@
 #import "../fragments/UserProjectsFragment.graphql"
 
-query CurrentUser {
+query currentUser {
   user: currentUser {
     avatarUrl
     bio

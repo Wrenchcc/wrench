@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useCurrentUserQuery } from '@wrench/common'
+import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
 import { AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
-import { compose, omit } from 'rambda'
+import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
-import { getProjectTypes } from 'services/graphql/queries/project/getProjectTypes'
 import { editUser } from 'services/graphql/mutations/user/editUser'
 import { Header, Touchable, Text, Loader, Icon } from 'ui'
 import Content from 'features/signIn/components/Content'
@@ -19,7 +18,7 @@ const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
-function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPage }) {
+function Onboarding({ editUser: editUserMutation, settingsPage }) {
   const { t } = useTranslation()
   const { navigateBack, showModal } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
@@ -28,6 +27,11 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
   useEffect(() => {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
   }, [])
+
+  const {
+    data: { types },
+    loading,
+  } = useProjectTypesQuery()
 
   const { data } = useCurrentUserQuery()
 
@@ -128,8 +132,8 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
       />
       <FlatList
         ListHeaderComponent={!settingsPage && <Content />}
-        ListEmptyComponent={isFetching && <Loader color="grey" />}
-        contentContainerStyle={{ padding: 5, flex: isFetching ? 1 : 0 }}
+        ListEmptyComponent={loading && <Loader color="grey" />}
+        contentContainerStyle={{ padding: 5, flex: loading ? 1 : 0 }}
         numColumns={2}
         data={types}
         keyExtractor={keyExtractor}
@@ -140,4 +144,4 @@ function Onboarding({ isFetching, types, editUser: editUserMutation, settingsPag
   )
 }
 
-export default compose(getProjectTypes, editUser)(Onboarding)
+export default editUser(Onboarding)

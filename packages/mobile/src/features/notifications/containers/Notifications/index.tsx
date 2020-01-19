@@ -1,34 +1,36 @@
 import React, { useEffect } from 'react'
+import { usePaginatedQuery, NotificationsDocument } from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
+import ms from 'ms'
 import { compose } from 'rambda'
 import { Layout, FlatList, showNotificationBadge, hideNotificationBadge } from 'navigation'
-import { getNotifications } from 'services/graphql/queries/getNotifications'
 import { markAllNotificationsSeen } from 'services/graphql/mutations/notification/markAllNotificationsSeen'
 import { deleteNotification } from 'services/graphql/mutations/notification/deleteNotification'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
 function Notifications({
-  notifications,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  deleteNotification: deleteNotificationMutation,
   componentId,
+  deleteNotification: deleteNotificationMutation,
   markAllNotificationsSeen: markAllNotificationsSeenMutation,
-  unreadCount,
 }) {
+  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
+    'notifications',
+  ])(NotificationsDocument, {
+    options: {
+      pollInterval: ms('1m'),
+    },
+  })
+
   useEffect(() => {
-    if (unreadCount > 0) {
+    if (data && data.unreadCount > 0) {
       showNotificationBadge()
     }
 
     const componentAppearListener = Navigation.events().registerComponentDidAppearListener(
       ({ componentId: id }) => {
         if (componentId === id) {
-          if (unreadCount > 0) {
+          if (data && data.unreadCount > 0) {
             markAllNotificationsSeenMutation()
           }
 
@@ -38,7 +40,7 @@ function Notifications({
     )
 
     return () => componentAppearListener.remove()
-  }, [componentId, unreadCount])
+  }, [componentId, data])
 
   const renderItem = ({ item }) => (
     <Notification data={item.node} deleteNotification={deleteNotificationMutation} />
@@ -52,7 +54,7 @@ function Notifications({
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
         borderSeparator
-        data={notifications}
+        data={data}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
@@ -64,8 +66,4 @@ function Notifications({
   )
 }
 
-export default compose(
-  getNotifications,
-  markAllNotificationsSeen,
-  deleteNotification
-)(Notifications)
+export default compose(markAllNotificationsSeen, deleteNotification)(Notifications)

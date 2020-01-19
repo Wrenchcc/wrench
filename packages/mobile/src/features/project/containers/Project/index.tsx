@@ -1,10 +1,10 @@
 import React, { useCallback, useRef } from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
+import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import Animated from 'react-native-reanimated'
-import { compose, isEmpty } from 'rambda'
+import { isEmpty } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
-import { getProject } from 'services/graphql/queries/project/getProject'
 import { followProject } from 'services/graphql/mutations/project/followProject'
 import Post from 'components/Post'
 import { Edit, EmptyState, Title, Share, Text } from 'ui'
@@ -16,19 +16,23 @@ const { interpolate, Extrapolate, Value } = Animated
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
-function Project({
-  posts,
-  project,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  post,
-  followProject: followProjectMutation,
-}) {
+// TODO: add initialData from nav (Project, user etc)
+// Return data as edges
+// Rest like "user", "post"
+function Project({ project, slug, id, postId, followProject: followProjectMutation }) {
   const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
+
+  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
+    'project',
+    'posts',
+  ])(ProjectDocument, {
+    variables: {
+      slug,
+      id,
+      postId,
+    },
+  })
 
   const opacityFollow = interpolate(scrollY.current, {
     extrapolate: Extrapolate.CLAMP,
@@ -139,4 +143,4 @@ function Project({
   )
 }
 
-export default compose(getProject, followProject)(Project)
+export default followProject(Project)

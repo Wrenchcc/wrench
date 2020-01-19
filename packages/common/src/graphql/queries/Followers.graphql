@@ -1,0 +1,15 @@
+#import "../fragments/UserFragment.graphql"
+
+query followers($projectId: ID!, $after: String) {
+  followers(projectId: $projectId, after: $after) @connection(key: "followers", filter: ["projectId"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...User
+      }
+    }
+  }
+}

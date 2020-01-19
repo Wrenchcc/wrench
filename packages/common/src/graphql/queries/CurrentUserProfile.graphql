@@ -1,7 +1,7 @@
 #import "../fragments/UserFragment.graphql"
 #import "../fragments/PostFragment.graphql"
 
-query getCurrentUser($after: String) {
+query currentUserProfile($after: String) {
   user: currentUser {
     ...User
     projects: projectsConnection {

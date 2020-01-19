@@ -1,4 +1,4 @@
-declare const _default: (type: any) => (query: any, options: any) => {
+declare const _default: (type: any) => (query: any, options?: any) => {
     loadData: (options?: import("@apollo/react-hooks").QueryLazyOptions<Record<string, any>> | undefined) => void;
     data: any;
     fetchMore: () => Promise<import("apollo-client").ApolloQueryResult<any>>;

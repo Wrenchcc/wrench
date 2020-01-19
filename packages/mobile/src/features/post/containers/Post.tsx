@@ -1,11 +1,10 @@
 import React, { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { compose, isEmpty } from 'rambda'
+import { usePaginatedQuery, useCommentQuery, usePostQuery, CommentsDocument } from '@wrench/common'
+import { isEmpty } from 'rambda'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
-import { getComment } from 'services/graphql/queries/comment/getComment'
-import { getComments } from 'services/graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 import { isIphone } from 'utils/platform'
@@ -13,18 +12,7 @@ import { isIphone } from 'utils/platform'
 const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
 
 // TODO: Load comment in top
-function PostContainer({
-  comments,
-  comment,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  post,
-  fetchMoreReplies,
-  postId,
-}) {
+function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
 
   const [mention, setMention] = useState({
@@ -32,7 +20,29 @@ function PostContainer({
     username: null,
   })
 
-  const highlightId = comment && comment.id
+  const fetchMoreReplies = () => {}
+
+  const { data: commentData } = useCommentQuery({
+    variables: {
+      id: commentId,
+    },
+  })
+
+  const { data: postData } = usePostQuery({
+    variables: {
+      id: postId,
+    },
+  })
+
+  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
+    'comments',
+  ])(CommentsDocument, {
+    variables: {
+      postId,
+    },
+  })
+
+  const highlightId = commentData && commentData.comment.id
 
   const handleOnReply = useCallback(data => setMention(data), [setMention])
 
@@ -47,20 +57,20 @@ function PostContainer({
   )
 
   const renderHeader = () => {
-    if (!post) {
+    if (!postData) {
       return null
     }
 
     return (
       <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
-        <Post post={post} withoutComments paddingBottom={10} numberOfLines={0} />
+        <Post post={postData.post} withoutComments paddingBottom={10} numberOfLines={0} />
       </View>
     )
   }
 
   return (
     <Page
-      scrollToIndex={comments && !isEmpty(comments)}
+      scrollToIndex={data && !isEmpty(data)}
       headerTitle={t('PostContainer:title')}
       headerAnimation={false}
       stickyFooter={
@@ -79,11 +89,11 @@ function PostContainer({
         paddingHorizontal={0}
         paddingBottom={COMMENT_FIELD_OFFSET}
         ListHeaderComponent={renderHeader}
-        data={comments}
+        data={data}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={!post || isFetching}
+        isFetching={!postData || isFetching}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
@@ -91,4 +101,4 @@ function PostContainer({
   )
 }
 
-export default compose(getComments, getComment)(PostContainer)
+export default PostContainer

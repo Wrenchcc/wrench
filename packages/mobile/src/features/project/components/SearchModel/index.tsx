@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
+import { usePaginatedLazyQuery, SearchModelsDocument } from '@wrench/common'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { keyboardHeight } from 'utils/platform'
-import { searchModels } from 'services/graphql/queries/project/searchModels'
 
 const INPUT_HEIGHT = 80
 
@@ -17,7 +17,23 @@ const styles = {
   },
 }
 
-function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPress }) {
+function SearchModel({ query, onPress }) {
+  const { loadData, data, isFetching, fetchMore, hasNextPage } = usePaginatedLazyQuery('models')(
+    SearchModelsDocument
+  )
+
+  useEffect(() => {
+    if (query) {
+      loadData({
+        variables: {
+          query,
+        },
+      })
+    }
+  }, [query])
+
+  console.log('katt', data)
+
   if (!query) {
     return null
   }
@@ -28,10 +44,10 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
         androidDismissKeyboard={false}
         defaultPadding
         ListHeaderComponent={
-          (query.length === 1 && !models) || isFetching ? <SearchingFor query={query} /> : null
+          (query.length === 1 && !data) || isFetching ? <SearchingFor query={query} /> : null
         }
         keyboardDismissMode="none"
-        data={models}
+        data={data}
         fetchMore={fetchMore}
         isFetching={false}
         hasNextPage={isFetching ? false : hasNextPage}
@@ -59,4 +75,4 @@ function SearchModel({ query, models, fetchMore, isFetching, hasNextPage, onPres
   )
 }
 
-export default searchModels(SearchModel)
+export default SearchModel

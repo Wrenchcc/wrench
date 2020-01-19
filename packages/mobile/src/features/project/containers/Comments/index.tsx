@@ -1,24 +1,15 @@
 import React, { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
-import { getComments } from 'services/graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
 import { CommentItem, KeyboardAccessoryView } from 'ui'
 import { isIphone } from 'utils/platform'
 
 const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
 
-function Comments({
-  comments,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  postId,
-  fetchMoreReplies,
-  post,
-}) {
+// TODO: FIX
+function Comments({ postId }) {
+  return null
   const { t } = useTranslation()
   const [commentId, setCommentId] = useState()
   const [username, setUsername] = useState()
@@ -85,4 +76,4 @@ function Comments({
   )
 }
 
-export default getComments(Comments)
+export default Comments

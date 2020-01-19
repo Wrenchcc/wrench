@@ -5,7 +5,7 @@ import { ProjectSuggestion, Loader } from 'ui'
 import { Base, Headline, Description } from './styles'
 
 function ProjectSuggestions() {
-  const { data, isLoading } = useProjectSuggestionsQuery()
+  const { data, loading } = useProjectSuggestionsQuery()
   const { t } = useTranslation()
 
   return (
@@ -18,7 +18,7 @@ function ProjectSuggestions() {
         {t('ProjectSuggestions:description')}
       </Description>
 
-      {isLoading && <Loader />}
+      {loading && <Loader />}
 
       {data &&
         data.projects.length > 0 &&

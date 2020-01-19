@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { NotificationsQuery } from 'services/graphql/queries/getNotifications'
+import { NotificationsDocument } from '@wrench/common'
 
 const MarkAllNotificationsSeenMutation = gql`
   mutation markAllNotificationsSeen {
@@ -13,7 +13,7 @@ const markAllNotificationsSeenOptions = {
     markAllNotificationsSeen: () =>
       mutate({
         update: cache => {
-          const data = cache.readQuery({ query: NotificationsQuery })
+          const data = cache.readQuery({ query: NotificationsDocument })
 
           const notifications = {
             ...data,

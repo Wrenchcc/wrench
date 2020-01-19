@@ -49,68 +49,6 @@ export const EDIT_POST_MUTATION = gql`
   ${fragment.POST_FRAGMENT}
 `
 
-// export const ADD_COMMENT_MUTATION = gql`
-//   mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
-//     addComment(postId: $postId, commentId: $commentId, input: $input) {
-//       commentId
-//       id
-//       text
-//     }
-//   }
-// `
-//
-// export const DELETE_NOTIFICATION_MUTATION = gql`
-//   mutation deleteNotification($id: ID!) {
-//     deleteNotification(id: $id)
-//   }
-// `
-//
-// export const MARK_NOTIFICATION_SEEN_MUTATION = gql`
-//   mutation markAllNotificationsSeen {
-//     markAllNotificationsSeen
-//   }
-// `
-//
-// export const ADD_POST_MUTATION = gql`
-//   mutation addPost($input: PostInput!) {
-//     addPost(input: $input) {
-//       ...postInfo
-//     }
-//   }
-// `
-//
-// export const DELETE_POST_MUTATION = gql`
-//   mutation deletePost($id: ID!) {
-//     deletePost(id: $id) {
-//       ...postInfo
-//     }
-//   }
-// `
-//
-//
-// export const ADD_PROJECT_MUTATION = gql`
-//   mutation addProject($input: ProjectInput!) {
-//     addProject(input: $input) {
-//       ...projectInfo
-//     }
-//   }
-// `
-//
-// export const DELETE_PROJECT_MUTATION = gql`
-//   mutation deleteProject($id: ID!) {
-//     deleteProject(id: $id)
-//   }
-// `
-//
-// export const EDIT_PROJECT_MUTATION = gql`
-//   mutation editProject($id: ID!, $input: ProjectInput!) {
-//     editProject(id: $id, input: $input) {
-//       id
-//       title
-//     }
-//   }
-// `
-//
 export const FOLLOW_PROJECT_MUTATION = gql`
   mutation followProject($id: ID!) {
     followProject(id: $id) {
@@ -142,17 +80,6 @@ export const PRE_SING_URL_MUTATION = gql`
     }
   }
 `
-
-//
-// export const AUTHENTICATE_FACEBOOK_MUTATION = gql`
-//   mutation authenticateFacebook($token: String!) {
-//     authenticateFacebook(token: $token) {
-//       access_token
-//       refresh_token
-//     }
-//   }
-// `
-//
 
 export const EDIT_USER_MUTATION = gql`
   mutation editUser($input: EditUserInput!) {

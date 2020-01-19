@@ -1,7 +1,7 @@
 #import "../fragments/UserFragment.graphql"
 #import "../fragments/PostFragment.graphql"
 
-query UserByUsername($username: LowercaseString!, $after: String) {
+query user($username: LowercaseString!, $after: String) {
   user(username: $username) {
     ...User
     projects: projectsConnection {

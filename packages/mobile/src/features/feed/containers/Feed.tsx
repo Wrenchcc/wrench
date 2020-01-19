@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
+import ms from 'ms'
+import { usePaginatedQuery, FeedDocument } from '@wrench/common'
 import { pathOr } from 'rambda'
 import { Layout, FlatList } from 'navigation'
-import { getFeed } from 'services/graphql/queries/getFeed'
 import Post from 'components/Post'
 import { Posting, ShowLatest } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/register'
@@ -15,10 +16,19 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
+function Feed() {
   const scrollRef = useRef()
   const [hasNewPosts, setHasNewPosts] = useState(false)
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
+
+  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
+    'feed',
+    'posts',
+  ])(FeedDocument, {
+    options: {
+      pollInterval: ms('3m'),
+    },
+  })
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
@@ -31,16 +41,16 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
     registerUserLocale()
   }, [])
 
-  useEffect(() => {
-    if (
-      posts &&
-      posts.length > 10 &&
-      !pathOr(false, [0, 'node', 'permissions', 'isOwner'], posts)
-    ) {
-      setHasNewPosts(true)
-    }
-    // If first id change
-  }, [pathOr(false, [0, 'node', 'id'], posts)])
+  // useEffect(() => {
+  //   if (
+  //     posts &&
+  //     posts.length > 10 &&
+  //     !pathOr(false, [0, 'node', 'permissions', 'isOwner'], posts)
+  //   ) {
+  //     setHasNewPosts(true)
+  //   }
+  //   // If first id change
+  // }, [pathOr(false, [0, 'node', 'id'], posts)])
 
   const StickyComponent = hasNewPosts ? (
     <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
@@ -56,7 +66,7 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
           tabIndex={0}
           initialNumToRender={2}
           spacingSeparator
-          data={posts}
+          data={data}
           ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}
           fetchMore={fetchMore}
@@ -70,4 +80,4 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   )
 }
 
-export default getFeed(Feed)
+export default Feed

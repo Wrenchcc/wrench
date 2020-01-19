@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dimensions, FlatList } from 'react-native'
-import { getProjectTypes } from 'services/graphql/queries/project/getProjectTypes'
+import { useProjectTypesQuery } from '@wrench/common'
 import { Touchable, Text, Loader } from 'ui'
 import { Cell, Image, Overlay, Picture } from './styles'
 
@@ -11,18 +11,20 @@ const ITEM_SIZE = width / 2 - GUTTER
 
 const keyExtractor = item => item.id
 
-function ProjectCategories({ ListHeaderComponent, isFetching, types, onSelect }) {
+function ProjectCategories({ ListHeaderComponent, onSelect }) {
+  const { data, loading } = useProjectTypesQuery()
+
   return (
     <FlatList
       ListHeaderComponent={ListHeaderComponent}
-      ListEmptyComponent={isFetching && <Loader color="grey" />}
+      ListEmptyComponent={loading && <Loader color="grey" />}
       contentContainerStyle={{
-        flex: isFetching ? 1 : 0,
+        flex: loading ? 1 : 0,
         padding: 5,
         paddingBottom: 30,
       }}
       numColumns={2}
-      data={types}
+      data={data.types}
       keyExtractor={keyExtractor}
       renderItem={({ item }) => (
         <Cell key={item.id}>
@@ -46,4 +48,4 @@ function ProjectCategories({ ListHeaderComponent, isFetching, types, onSelect })
   )
 }
 
-export default getProjectTypes(ProjectCategories)
+export default ProjectCategories

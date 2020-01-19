@@ -1,0 +1,41 @@
+#import "../fragments/UserFragment.graphql"
+#import "../fragments/ProjectFragment.graphql"
+
+query notifications($after: String) {
+  notifications(after: $after) @connection(key: "notifications") {
+    unreadCount
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        type
+        createdAt
+        user {
+          ...User
+        }
+        project {
+          ...Project
+        }
+        post {
+          id
+        }
+        comment {
+          id
+          text
+          postId
+        }
+        files: filesConnection(type: IMAGE, first: 1) {
+          edges {
+            node {
+              id
+              uri
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,10 +2,10 @@ import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { BackHandler } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import Animated from 'react-native-reanimated'
+import { usePaginatedQuery, PostsDocument } from '@wrench/common'
 import { isAndroid as _isAndroid } from 'utils/platform'
 import { FlatList, SCREENS, currentComponentName } from 'navigation'
 import Header from 'navigation/Layout/Header'
-import { getRecentPosts } from 'services/graphql/queries/getExplore'
 import Add from 'components/Add'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
@@ -46,7 +46,7 @@ const renderItem = ({ item }) => <Post post={item.node} />
 
 const DEFAULT_QUERY = ''
 
-function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
+function Explore() {
   const scrollY = useRef(new Value(0))
   const clock = useRef(new Clock())
   const scrollYClamped = useRef(new Value(0))
@@ -59,6 +59,14 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
 
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
+
+  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
+    'posts',
+  ])(PostsDocument, {
+    variables: {
+      first: 6,
+    },
+  })
 
   const state = {
     finished: new Value(0),
@@ -238,7 +246,7 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
         spacingSeparator
         initialNumToRender={2}
         ListHeaderComponent={<Popular />}
-        data={posts}
+        data={data}
         refetch={handleRefetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
@@ -250,4 +258,4 @@ function Explore({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextP
   )
 }
 
-export default getRecentPosts(Explore)
+export default Explore

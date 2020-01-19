@@ -1,10 +1,10 @@
 import React, { memo, useCallback, useRef, useEffect } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
 import { Swipeable } from 'react-native-gesture-handler'
+import { CommentsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { useMutation, DELETE_COMMENT_MUTATION } from 'services/gql'
 import LikeComment from 'components/LikeComment'
-import { CommentsQuery } from 'services/graphql/queries/comment/getComments'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import TimeAgo from 'ui/TimeAgo'
@@ -69,7 +69,7 @@ function Item({
 
   const [deleteComment] = useMutation(DELETE_COMMENT_MUTATION, {
     update: cache => {
-      const data = cache.readQuery({ query: CommentsQuery, variables: { postId } })
+      const data = cache.readQuery({ query: CommentsDocument, variables: { postId } })
       const edges = data.comments.edges.filter(edge => edge.node.id !== commentOrReplyId)
 
       cache.writeQuery({
@@ -80,7 +80,7 @@ function Item({
             edges,
           },
         },
-        query: CommentsQuery,
+        query: CommentsDocument,
         variables: { postId },
       })
     },

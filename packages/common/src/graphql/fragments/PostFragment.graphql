@@ -1,6 +1,6 @@
 #import "./UserFragment.graphql"
 #import "./ProjectFragment.graphql"
-#import "./CommentsFragment.graphql"
+#import "./CommentFragment.graphql"
 
 fragment Post on Post {
   id
@@ -29,6 +29,11 @@ fragment Post on Post {
     totalCount
   }
   comments: commentsConnection(first: 2) @connection(key: "comments") {
-    ...Comments
+    totalCount
+    edges {
+      node {
+        ...CommentFragment
+      }
+    }
   }
 }

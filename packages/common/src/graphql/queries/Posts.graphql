@@ -1,0 +1,15 @@
+#import "../fragments/PostFragment.graphql"
+
+query posts($after: String, $first: Int) @connection(key: "posts") {
+  posts(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}

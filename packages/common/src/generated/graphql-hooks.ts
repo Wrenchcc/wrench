@@ -970,20 +970,19 @@ export type UserSettings = {
   notifications?: Maybe<UserNotificationsSettings>,
 };
 
-export type CommentsFragment = (
-  { __typename?: 'CommentConnection' }
-  & Pick<CommentConnection, 'totalCount'>
-  & { edges: Maybe<Array<(
-    { __typename?: 'CommentEdge' }
-    & { node: (
-      { __typename?: 'Comment' }
-      & Pick<Comment, 'id' | 'text'>
-      & { user: Maybe<(
-        { __typename?: 'User' }
-        & UserFragment
-      )> }
-    ) }
-  )>> }
+export type CommentFragmentFragment = (
+  { __typename?: 'Comment' }
+  & Pick<Comment, 'id' | 'text' | 'createdAt'>
+  & { permissions: Maybe<(
+    { __typename?: 'CommentPermissions' }
+    & Pick<CommentPermissions, 'isOwner'>
+  )>, likes: Maybe<(
+    { __typename?: 'Likes' }
+    & Pick<Likes, 'isLiked' | 'totalCount'>
+  )>, user: Maybe<(
+    { __typename?: 'User' }
+    & UserFragment
+  )> }
 );
 
 export type PostFragment = (
@@ -1012,7 +1011,14 @@ export type PostFragment = (
     & Pick<Likes, 'isLiked' | 'totalCount'>
   )>, comments: Maybe<(
     { __typename?: 'CommentConnection' }
-    & CommentsFragment
+    & Pick<CommentConnection, 'totalCount'>
+    & { edges: Maybe<Array<(
+      { __typename?: 'CommentEdge' }
+      & { node: (
+        { __typename?: 'Comment' }
+        & CommentFragmentFragment
+      ) }
+    )>> }
   )> }
 );
 
@@ -1031,9 +1037,38 @@ export type ProjectFragment = (
   )> }
 );
 
+export type RepliesFragment = (
+  { __typename?: 'Comment' }
+  & { replies: Maybe<(
+    { __typename?: 'CommentConnection' }
+    & Pick<CommentConnection, 'totalCount'>
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges: Maybe<Array<(
+      { __typename?: 'CommentEdge' }
+      & Pick<CommentEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Comment' }
+        & Pick<Comment, 'id' | 'commentId' | 'text' | 'createdAt'>
+        & { permissions: Maybe<(
+          { __typename?: 'CommentPermissions' }
+          & Pick<CommentPermissions, 'isOwner'>
+        )>, likes: Maybe<(
+          { __typename?: 'Likes' }
+          & Pick<Likes, 'isLiked' | 'totalCount'>
+        )>, user: Maybe<(
+          { __typename?: 'User' }
+          & UserFragment
+        )> }
+      ) }
+    )>> }
+  )> }
+);
+
 export type UserFragment = (
   { __typename?: 'User' }
-  & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio'>
+  & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>
 );
 
 export type UserProjectsFragment = (
@@ -1096,6 +1131,44 @@ export type UserSettingsFragment = (
   )> }
 );
 
+export type CommentQueryVariables = {
+  id: Scalars['ID']
+};
+
+
+export type CommentQuery = (
+  { __typename?: 'Query' }
+  & { comment: Maybe<(
+    { __typename?: 'Comment' }
+    & CommentFragmentFragment
+    & RepliesFragment
+  )> }
+);
+
+export type CommentsQueryVariables = {
+  postId: Scalars['ID'],
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type CommentsQuery = (
+  { __typename?: 'Query' }
+  & { comments: Maybe<(
+    { __typename?: 'CommentConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges: Maybe<Array<(
+      { __typename?: 'CommentEdge' }
+      & Pick<CommentEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Comment' }
+        & CommentFragmentFragment
+      ) }
+    )>> }
+  )> }
+);
+
 export type CurrentUserQueryVariables = {};
 
 
@@ -1115,12 +1188,12 @@ export type CurrentUserQuery = (
   )> }
 );
 
-export type GetCurrentUserQueryVariables = {
+export type CurrentUserProfileQueryVariables = {
   after?: Maybe<Scalars['String']>
 };
 
 
-export type GetCurrentUserQuery = (
+export type CurrentUserProfileQuery = (
   { __typename?: 'Query' }
   & { user: Maybe<(
     { __typename?: 'User' }
@@ -1180,6 +1253,102 @@ export type CurrentUserSettingsQuery = (
   )> }
 );
 
+export type FeedQueryVariables = {
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type FeedQuery = (
+  { __typename?: 'Query' }
+  & { feed: Maybe<(
+    { __typename?: 'Feed' }
+    & { posts: Maybe<(
+      { __typename?: 'PostConnection' }
+      & { pageInfo: (
+        { __typename?: 'PageInfo' }
+        & Pick<PageInfo, 'hasNextPage'>
+      ), edges: Maybe<Array<(
+        { __typename?: 'PostEdge' }
+        & Pick<PostEdge, 'cursor'>
+        & { node: (
+          { __typename?: 'Post' }
+          & PostFragment
+        ) }
+      )>> }
+    )> }
+  )> }
+);
+
+export type FollowersQueryVariables = {
+  projectId: Scalars['ID'],
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type FollowersQuery = (
+  { __typename?: 'Query' }
+  & { followers: Maybe<(
+    { __typename?: 'FollowersConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges: Maybe<Array<(
+      { __typename?: 'FollowersEdge' }
+      & Pick<FollowersEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'User' }
+        & UserFragment
+      ) }
+    )>> }
+  )> }
+);
+
+export type NotificationsQueryVariables = {
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type NotificationsQuery = (
+  { __typename?: 'Query' }
+  & { notifications: Maybe<(
+    { __typename?: 'NotificationsConnection' }
+    & Pick<NotificationsConnection, 'unreadCount'>
+    & { pageInfo: Maybe<(
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    )>, edges: Maybe<Array<Maybe<(
+      { __typename?: 'NotificationEdge' }
+      & Pick<NotificationEdge, 'cursor'>
+      & { node: Maybe<(
+        { __typename?: 'Notification' }
+        & Pick<Notification, 'id' | 'type' | 'createdAt'>
+        & { user: (
+          { __typename?: 'User' }
+          & UserFragment
+        ), project: Maybe<(
+          { __typename?: 'Project' }
+          & ProjectFragment
+        )>, post: Maybe<(
+          { __typename?: 'Post' }
+          & Pick<Post, 'id'>
+        )>, comment: Maybe<(
+          { __typename?: 'Comment' }
+          & Pick<Comment, 'id' | 'text' | 'postId'>
+        )>, files: Maybe<(
+          { __typename?: 'FileConnection' }
+          & { edges: Maybe<Array<Maybe<(
+            { __typename?: 'FileEdge' }
+            & { node: (
+              { __typename?: 'File' }
+              & Pick<File, 'id' | 'uri'>
+            ) }
+          )>>> }
+        )> }
+      )> }
+    )>>> }
+  )> }
+);
+
 export type PostQueryVariables = {
   id: Scalars['ID']
 };
@@ -1190,6 +1359,60 @@ export type PostQuery = (
   & { post: Maybe<(
     { __typename?: 'Post' }
     & PostFragment
+  )> }
+);
+
+export type PostsQueryVariables = {
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
+};
+
+
+export type PostsQuery = (
+  { __typename?: 'Query' }
+  & { posts: Maybe<(
+    { __typename?: 'PostConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges: Maybe<Array<(
+      { __typename?: 'PostEdge' }
+      & Pick<PostEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Post' }
+        & PostFragment
+      ) }
+    )>> }
+  )> }
+);
+
+export type ProjectQueryVariables = {
+  id?: Maybe<Scalars['ID']>,
+  slug?: Maybe<Scalars['LowercaseString']>,
+  after?: Maybe<Scalars['String']>,
+  postId?: Maybe<Scalars['ID']>
+};
+
+
+export type ProjectQuery = (
+  { __typename?: 'Query' }
+  & { post: Maybe<(
+    { __typename?: 'Post' }
+    & PostFragment
+  )>, project: Maybe<(
+    { __typename?: 'Project' }
+    & { posts: Maybe<(
+      { __typename?: 'PostConnection' }
+      & { edges: Maybe<Array<(
+        { __typename?: 'PostEdge' }
+        & Pick<PostEdge, 'cursor'>
+        & { node: (
+          { __typename?: 'Post' }
+          & PostFragment
+        ) }
+      )>> }
+    )> }
+    & ProjectFragment
   )> }
 );
 
@@ -1261,6 +1484,33 @@ export type ProjectsQuery = (
         & ProjectFragment
       ) }
     )>> }
+  )> }
+);
+
+export type SearchModelsQueryVariables = {
+  query: Scalars['String'],
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type SearchModelsQuery = (
+  { __typename?: 'Query' }
+  & { models: Maybe<(
+    { __typename?: 'SearchResults' }
+    & { pageInfo: Maybe<(
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    )>, edges: Maybe<Array<Maybe<(
+      { __typename?: 'SearchResultEdge' }
+      & { node: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | (
+        { __typename?: 'Model' }
+        & Pick<Model, 'id' | 'model' | 'year'>
+        & { brand: Maybe<(
+          { __typename?: 'Brand' }
+          & Pick<Brand, 'name'>
+        )> }
+      )> }
+    )>>> }
   )> }
 );
 
@@ -1340,13 +1590,13 @@ export type SimilarProjectsQuery = (
   )> }
 );
 
-export type UserByUsernameQueryVariables = {
+export type UserQueryVariables = {
   username: Scalars['LowercaseString'],
   after?: Maybe<Scalars['String']>
 };
 
 
-export type UserByUsernameQuery = (
+export type UserQuery = (
   { __typename?: 'Query' }
   & { user: Maybe<(
     { __typename?: 'User' }
@@ -1384,6 +1634,37 @@ export type UserByUsernameQuery = (
   )> }
 );
 
+export type UserFollowingProjectsQueryVariables = {
+  username: Scalars['LowercaseString'],
+  after?: Maybe<Scalars['String']>
+};
+
+
+export type UserFollowingProjectsQuery = (
+  { __typename?: 'Query' }
+  & { user: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id'>
+    & { projects: Maybe<(
+      { __typename?: 'ProjectsConnection' }
+      & { pageInfo: (
+        { __typename?: 'PageInfo' }
+        & Pick<PageInfo, 'hasNextPage'>
+      ), edges: Maybe<Array<(
+        { __typename?: 'ProjectEdge' }
+        & { node: (
+          { __typename?: 'Project' }
+          & { cover: Maybe<(
+            { __typename?: 'CoverType' }
+            & Pick<CoverType, 'uri' | 'default'>
+          )> }
+          & ProjectFragment
+        ) }
+      )>> }
+    )> }
+  )> }
+);
+
 export const UserFragmentDoc = gql`
     fragment User on User {
   id
@@ -1397,6 +1678,7 @@ export const UserFragmentDoc = gql`
   website
   location
   bio
+  projectCount
 }
     `;
 export const ProjectFragmentDoc = gql`
@@ -1417,17 +1699,20 @@ export const ProjectFragmentDoc = gql`
   }
 }
     ${UserFragmentDoc}`;
-export const CommentsFragmentDoc = gql`
-    fragment Comments on CommentConnection {
-  totalCount
-  edges {
-    node {
-      id
-      text
-      user {
-        ...User
-      }
-    }
+export const CommentFragmentFragmentDoc = gql`
+    fragment CommentFragment on Comment {
+  id
+  text
+  createdAt
+  permissions {
+    isOwner
+  }
+  likes {
+    isLiked
+    totalCount
+  }
+  user {
+    ...User
   }
 }
     ${UserFragmentDoc}`;
@@ -1459,12 +1744,46 @@ export const PostFragmentDoc = gql`
     totalCount
   }
   comments: commentsConnection(first: 2) @connection(key: "comments") {
-    ...Comments
+    totalCount
+    edges {
+      node {
+        ...CommentFragment
+      }
+    }
   }
 }
     ${UserFragmentDoc}
 ${ProjectFragmentDoc}
-${CommentsFragmentDoc}`;
+${CommentFragmentFragmentDoc}`;
+export const RepliesFragmentDoc = gql`
+    fragment Replies on Comment {
+  replies: repliesConnection(first: 2) @connection(key: "replies") {
+    pageInfo {
+      hasNextPage
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        id
+        commentId
+        text
+        createdAt
+        permissions {
+          isOwner
+        }
+        likes {
+          isLiked
+          totalCount
+        }
+        user {
+          ...User
+        }
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}`;
 export const UserProjectsFragmentDoc = gql`
     fragment UserProjects on User {
   projects: projectsConnection {
@@ -1523,8 +1842,85 @@ export const UserSettingsFragmentDoc = gql`
   }
 }
     `;
+export const CommentDocument = gql`
+    query comment($id: ID!) {
+  comment(id: $id) {
+    ...CommentFragment
+    ...Replies
+  }
+}
+    ${CommentFragmentFragmentDoc}
+${RepliesFragmentDoc}`;
+
+/**
+ * __useCommentQuery__
+ *
+ * To run a query within a React component, call `useCommentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCommentQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useCommentQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CommentQuery, CommentQueryVariables>) {
+        return ApolloReactHooks.useQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
+      }
+export function useCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
+        }
+export type CommentQueryHookResult = ReturnType<typeof useCommentQuery>;
+export type CommentLazyQueryHookResult = ReturnType<typeof useCommentLazyQuery>;
+export type CommentQueryResult = ApolloReactCommon.QueryResult<CommentQuery, CommentQueryVariables>;
+export const CommentsDocument = gql`
+    query comments($postId: ID!, $after: String) {
+  comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...CommentFragment
+      }
+    }
+  }
+}
+    ${CommentFragmentFragmentDoc}`;
+
+/**
+ * __useCommentsQuery__
+ *
+ * To run a query within a React component, call `useCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCommentsQuery({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
+        return ApolloReactHooks.useQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
+      }
+export function useCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
+        }
+export type CommentsQueryHookResult = ReturnType<typeof useCommentsQuery>;
+export type CommentsLazyQueryHookResult = ReturnType<typeof useCommentsLazyQuery>;
+export type CommentsQueryResult = ApolloReactCommon.QueryResult<CommentsQuery, CommentsQueryVariables>;
 export const CurrentUserDocument = gql`
-    query CurrentUser {
+    query currentUser {
   user: currentUser {
     avatarUrl
     bio
@@ -1576,8 +1972,8 @@ export function useCurrentUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
 export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
 export type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
-export const GetCurrentUserDocument = gql`
-    query getCurrentUser($after: String) {
+export const CurrentUserProfileDocument = gql`
+    query currentUserProfile($after: String) {
   user: currentUser {
     ...User
     projects: projectsConnection {
@@ -1612,32 +2008,32 @@ export const GetCurrentUserDocument = gql`
 ${PostFragmentDoc}`;
 
 /**
- * __useGetCurrentUserQuery__
+ * __useCurrentUserProfileQuery__
  *
- * To run a query within a React component, call `useGetCurrentUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * To run a query within a React component, call `useCurrentUserProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetCurrentUserQuery({
+ * const { data, loading, error } = useCurrentUserProfileQuery({
  *   variables: {
  *      after: // value for 'after'
  *   },
  * });
  */
-export function useGetCurrentUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetCurrentUserQuery, GetCurrentUserQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetCurrentUserQuery, GetCurrentUserQueryVariables>(GetCurrentUserDocument, baseOptions);
+export function useCurrentUserProfileQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
+        return ApolloReactHooks.useQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
       }
-export function useGetCurrentUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetCurrentUserQuery, GetCurrentUserQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetCurrentUserQuery, GetCurrentUserQueryVariables>(GetCurrentUserDocument, baseOptions);
+export function useCurrentUserProfileLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
         }
-export type GetCurrentUserQueryHookResult = ReturnType<typeof useGetCurrentUserQuery>;
-export type GetCurrentUserLazyQueryHookResult = ReturnType<typeof useGetCurrentUserLazyQuery>;
-export type GetCurrentUserQueryResult = ApolloReactCommon.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
+export type CurrentUserProfileQueryHookResult = ReturnType<typeof useCurrentUserProfileQuery>;
+export type CurrentUserProfileLazyQueryHookResult = ReturnType<typeof useCurrentUserProfileLazyQuery>;
+export type CurrentUserProfileQueryResult = ApolloReactCommon.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>;
 export const CurrentUserProjectsDocument = gql`
-    query CurrentUserProjects {
+    query currentUserProjects {
   user: currentUser {
     ...UserProjects
   }
@@ -1669,7 +2065,7 @@ export type CurrentUserProjectsQueryHookResult = ReturnType<typeof useCurrentUse
 export type CurrentUserProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserProjectsLazyQuery>;
 export type CurrentUserProjectsQueryResult = ApolloReactCommon.QueryResult<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>;
 export const CurrentUserSettingsDocument = gql`
-    query CurrentUserSettings {
+    query currentUserSettings {
   user: currentUser {
     ...UserSettings
   }
@@ -1700,6 +2096,158 @@ export function useCurrentUserSettingsLazyQuery(baseOptions?: ApolloReactHooks.L
 export type CurrentUserSettingsQueryHookResult = ReturnType<typeof useCurrentUserSettingsQuery>;
 export type CurrentUserSettingsLazyQueryHookResult = ReturnType<typeof useCurrentUserSettingsLazyQuery>;
 export type CurrentUserSettingsQueryResult = ApolloReactCommon.QueryResult<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>;
+export const FeedDocument = gql`
+    query feed($after: String) {
+  feed {
+    posts: postsConnection(after: $after) @connection(key: "posts") {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Post
+        }
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useFeedQuery__
+ *
+ * To run a query within a React component, call `useFeedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useFeedQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
+        return ApolloReactHooks.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
+      }
+export function useFeedLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
+        }
+export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
+export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
+export type FeedQueryResult = ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>;
+export const FollowersDocument = gql`
+    query followers($projectId: ID!, $after: String) {
+  followers(projectId: $projectId, after: $after) @connection(key: "followers", filter: ["projectId"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...User
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}`;
+
+/**
+ * __useFollowersQuery__
+ *
+ * To run a query within a React component, call `useFollowersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFollowersQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFollowersQuery({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useFollowersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
+        return ApolloReactHooks.useQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
+      }
+export function useFollowersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
+        }
+export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
+export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
+export type FollowersQueryResult = ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
+export const NotificationsDocument = gql`
+    query notifications($after: String) {
+  notifications(after: $after) @connection(key: "notifications") {
+    unreadCount
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        type
+        createdAt
+        user {
+          ...User
+        }
+        project {
+          ...Project
+        }
+        post {
+          id
+        }
+        comment {
+          id
+          text
+          postId
+        }
+        files: filesConnection(type: IMAGE, first: 1) {
+          edges {
+            node {
+              id
+              uri
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}
+${ProjectFragmentDoc}`;
+
+/**
+ * __useNotificationsQuery__
+ *
+ * To run a query within a React component, call `useNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNotificationsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useNotificationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+        return ApolloReactHooks.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
+      }
+export function useNotificationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
+        }
+export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
+export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
+export type NotificationsQueryResult = ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
 export const PostDocument = gql`
     query post($id: ID!) {
   post(id: $id) {
@@ -1733,6 +2281,96 @@ export function usePostLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOpt
 export type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
 export type PostQueryResult = ApolloReactCommon.QueryResult<PostQuery, PostQueryVariables>;
+export const PostsDocument = gql`
+    query posts($after: String, $first: Int) @connection(key: "posts") {
+  posts(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __usePostsQuery__
+ *
+ * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function usePostsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
+        return ApolloReactHooks.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
+      }
+export function usePostsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
+        }
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
+export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
+export const ProjectDocument = gql`
+    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID) {
+  post(id: $postId) {
+    ...Post
+  }
+  project(id: $id, slug: $slug) {
+    ...Project
+    posts: postsConnection(first: 5, after: $after) @connection(key: "posts") {
+      edges {
+        cursor
+        node {
+          ...Post
+        }
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}
+${ProjectFragmentDoc}`;
+
+/**
+ * __useProjectQuery__
+ *
+ * To run a query within a React component, call `useProjectQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      slug: // value for 'slug'
+ *      after: // value for 'after'
+ *      postId: // value for 'postId'
+ *   },
+ * });
+ */
+export function useProjectQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
+        return ApolloReactHooks.useQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
+      }
+export function useProjectLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
+        }
+export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
+export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
+export type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectSuggestionsDocument = gql`
     query projectSuggestions($after: String, $first: Int) {
   projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
@@ -1818,7 +2456,7 @@ export type ProjectTypesLazyQueryHookResult = ReturnType<typeof useProjectTypesL
 export type ProjectTypesQueryResult = ApolloReactCommon.QueryResult<ProjectTypesQuery, ProjectTypesQueryVariables>;
 export const ProjectsDocument = gql`
     query projects($typeId: ID, $after: String, $first: Int, $type: ProjectSortType!) {
-  projects(typeId: $typeId, after: $after, first: $first, type: $type) {
+  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: "projects", filter: ["type", "typeId"]) {
     pageInfo {
       hasNextPage
     }
@@ -1864,6 +2502,54 @@ export function useProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHoo
 export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
 export type ProjectsQueryResult = ApolloReactCommon.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export const SearchModelsDocument = gql`
+    query searchModels($query: String!, $after: String) {
+  models: search(query: $query, after: $after, type: MODELS, first: 20) @connection(key: "models", filter: ["query", "type"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      node {
+        ... on Model {
+          id
+          brand {
+            name
+          }
+          model
+          year
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useSearchModelsQuery__
+ *
+ * To run a query within a React component, call `useSearchModelsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchModelsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchModelsQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useSearchModelsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
+        return ApolloReactHooks.useQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
+      }
+export function useSearchModelsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
+        }
+export type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery>;
+export type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>;
+export type SearchModelsQueryResult = ApolloReactCommon.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
 export const SearchProjectsDocument = gql`
     query searchProjects($query: String!, $after: String) {
   projects: search(query: $query, after: $after, type: PROJECTS) @connection(key: "projects", filter: ["query", "type"]) {
@@ -1997,8 +2683,8 @@ export function useSimilarProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
 export type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
 export type SimilarProjectsQueryResult = ApolloReactCommon.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
-export const UserByUsernameDocument = gql`
-    query UserByUsername($username: LowercaseString!, $after: String) {
+export const UserDocument = gql`
+    query user($username: LowercaseString!, $after: String) {
   user(username: $username) {
     ...User
     projects: projectsConnection {
@@ -2033,28 +2719,76 @@ export const UserByUsernameDocument = gql`
 ${PostFragmentDoc}`;
 
 /**
- * __useUserByUsernameQuery__
+ * __useUserQuery__
  *
- * To run a query within a React component, call `useUserByUsernameQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserByUsernameQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useUserByUsernameQuery({
+ * const { data, loading, error } = useUserQuery({
  *   variables: {
  *      username: // value for 'username'
  *      after: // value for 'after'
  *   },
  * });
  */
-export function useUserByUsernameQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserByUsernameQuery, UserByUsernameQueryVariables>) {
-        return ApolloReactHooks.useQuery<UserByUsernameQuery, UserByUsernameQueryVariables>(UserByUsernameDocument, baseOptions);
+export function useUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserQuery, UserQueryVariables>) {
+        return ApolloReactHooks.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
       }
-export function useUserByUsernameLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserByUsernameQuery, UserByUsernameQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<UserByUsernameQuery, UserByUsernameQueryVariables>(UserByUsernameDocument, baseOptions);
+export function useUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
         }
-export type UserByUsernameQueryHookResult = ReturnType<typeof useUserByUsernameQuery>;
-export type UserByUsernameLazyQueryHookResult = ReturnType<typeof useUserByUsernameLazyQuery>;
-export type UserByUsernameQueryResult = ApolloReactCommon.QueryResult<UserByUsernameQuery, UserByUsernameQueryVariables>;
+export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
+export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
+export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
+export const UserFollowingProjectsDocument = gql`
+    query userFollowingProjects($username: LowercaseString!, $after: String) {
+  user(username: $username) {
+    id
+    projects: followingProjects(after: $after) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        node {
+          ...Project
+          cover {
+            uri
+            default
+          }
+        }
+      }
+    }
+  }
+}
+    ${ProjectFragmentDoc}`;
+
+/**
+ * __useUserFollowingProjectsQuery__
+ *
+ * To run a query within a React component, call `useUserFollowingProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserFollowingProjectsQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useUserFollowingProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
+        return ApolloReactHooks.useQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
+      }
+export function useUserFollowingProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
+        }
+export type UserFollowingProjectsQueryHookResult = ReturnType<typeof useUserFollowingProjectsQuery>;
+export type UserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useUserFollowingProjectsLazyQuery>;
+export type UserFollowingProjectsQueryResult = ApolloReactCommon.QueryResult<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>;
