@@ -1,12 +1,12 @@
 import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
-import { useMutation, LIKE_COMMENT_MUTATION } from 'services/gql'
+import { useLikeCommentMutation } from '@wrench/common'
 import { Icon } from 'ui'
 import { sparkSmall } from 'images'
 import { Base } from './styles'
 
 function LikeComment({ comment }) {
-  const [toggleLike] = useMutation(LIKE_COMMENT_MUTATION)
+  const [toggleLike] = useLikeCommentMutation()
 
   const animatedValue = useRef(new Animated.Value(0))
 

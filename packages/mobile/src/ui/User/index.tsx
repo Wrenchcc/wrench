@@ -5,16 +5,18 @@ import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
 import { Base, Content } from './styles'
 
-function User({ data }) {
+function User({ data, onPress }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
-  const handleNavigation = useCallback(
-    () =>
-      navigate(SCREENS.USER, {
-        user: data,
-      }),
-    [data]
-  )
+  const handleNavigation = useCallback(() => {
+    if (onPress) {
+      onPress(data)
+    }
+
+    navigate(SCREENS.USER, {
+      user: data,
+    })
+  }, [data, onPress])
 
   return (
     <Base onPress={handleNavigation}>

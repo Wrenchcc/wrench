@@ -32,8 +32,6 @@ function SearchModel({ query, onPress }) {
     }
   }, [query])
 
-  console.log('katt', data)
-
   if (!query) {
     return null
   }

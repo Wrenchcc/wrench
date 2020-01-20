@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, View } from 'react-native'
+import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useCurrentUserQuery } from '@wrench/common'
 import { useNavigation, AppNavigation, SCREENS } from 'navigation'
-import { useMutation, preSignUrl, EDIT_USER_MUTATION } from 'services/gql'
+import { preSignUrl } from 'services/gql'
 import { useUserStore, USER } from 'store'
 import { Header, Text, Title, Icon, Touchable, Avatar, Input, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
@@ -48,7 +49,7 @@ function EditProfile({ onboarding }) {
     website: store.website,
   }))
 
-  const [editUser] = useMutation(EDIT_USER_MUTATION)
+  const [editUser] = useEditUserMutation()
 
   useEffect(() => {
     initialState(data.user)
