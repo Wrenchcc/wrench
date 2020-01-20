@@ -12,6 +12,6 @@ fragment CommentFragment on Comment {
     totalCount
   }
   user {
-    ...User
+    ...UserFragment
   }
 }

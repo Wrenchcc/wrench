@@ -1,0 +1,3 @@
+ mutation deleteComment($id: ID!) {
+  deleteComment(id: $id)
+}

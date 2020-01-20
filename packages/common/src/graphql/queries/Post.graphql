@@ -2,6 +2,6 @@
 
 query post($id: ID!) {
   post(id: $id) {
-    ...Post
+    ...PostFragment
   }
 }

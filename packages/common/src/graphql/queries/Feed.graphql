@@ -9,7 +9,7 @@ query feed($after: String) {
       edges {
         cursor
         node {
-          ...Post
+          ...PostFragment
         }
       }
     }

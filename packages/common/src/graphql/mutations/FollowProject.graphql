@@ -1,0 +1,10 @@
+#import "../fragments/ProjectFragment.graphql"
+
+mutation followProject($id: ID!) {
+  followProject(id: $id) {
+    cover {
+      uri
+    }
+    ...ProjectFragment
+  }
+}

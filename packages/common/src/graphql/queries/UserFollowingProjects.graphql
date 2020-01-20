@@ -9,7 +9,7 @@ query userFollowingProjects($username: LowercaseString!, $after: String) {
       }
       edges {
         node {
-          ...Project
+          ...ProjectFragment
           cover {
             uri
             default

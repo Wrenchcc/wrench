@@ -2,12 +2,12 @@
 #import "./ProjectFragment.graphql"
 #import "./CommentFragment.graphql"
 
-fragment Post on Post {
+fragment PostFragment on Post {
   id
   caption
   createdAt
   user {
-    ...User
+    ...UserFragment
   }
   permissions {
     isOwner
@@ -22,7 +22,7 @@ fragment Post on Post {
     }
   }
   project {
-    ...Project
+    ...ProjectFragment
   }
   likes {
     isLiked

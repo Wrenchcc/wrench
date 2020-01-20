@@ -1,0 +1,7 @@
+#import "../fragments/PostFragment.graphql"
+
+mutation editPost($id: ID!, $input: EditPostInput!) {
+  editPost(id: $id, input: $input) {
+    ...PostFragment
+  }
+}

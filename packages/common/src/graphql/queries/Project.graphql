@@ -3,16 +3,16 @@
 
 query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID) {
   post(id: $postId) {
-    ...Post
+    ...PostFragment
   }
   project(id: $id, slug: $slug) {
-    ...Project
+    ...ProjectFragment
 
      posts: postsConnection(first: 5, after: $after) @connection(key: "posts") {
       edges {
         cursor
         node {
-          ...Post
+          ...PostFragment
         }
       }
     }

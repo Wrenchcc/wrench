@@ -981,16 +981,16 @@ export type CommentFragmentFragment = (
     & Pick<Likes, 'isLiked' | 'totalCount'>
   )>, user: Maybe<(
     { __typename?: 'User' }
-    & UserFragment
+    & UserFragmentFragment
   )> }
 );
 
-export type PostFragment = (
+export type PostFragmentFragment = (
   { __typename?: 'Post' }
   & Pick<Post, 'id' | 'caption' | 'createdAt'>
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserFragment
+    & UserFragmentFragment
   )>, permissions: Maybe<(
     { __typename?: 'PostPermissions' }
     & Pick<PostPermissions, 'isOwner'>
@@ -1005,7 +1005,7 @@ export type PostFragment = (
     )>>> }
   )>, project: Maybe<(
     { __typename?: 'Project' }
-    & ProjectFragment
+    & ProjectFragmentFragment
   )>, likes: Maybe<(
     { __typename?: 'Likes' }
     & Pick<Likes, 'isLiked' | 'totalCount'>
@@ -1022,12 +1022,12 @@ export type PostFragment = (
   )> }
 );
 
-export type ProjectFragment = (
+export type ProjectFragmentFragment = (
   { __typename?: 'Project' }
   & Pick<Project, 'id' | 'title' | 'slug' | 'dynamicLink'>
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserFragment
+    & UserFragmentFragment
   )>, permissions: Maybe<(
     { __typename?: 'ProjectPermissions' }
     & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>
@@ -1037,7 +1037,7 @@ export type ProjectFragment = (
   )> }
 );
 
-export type RepliesFragment = (
+export type RepliesFragmentFragment = (
   { __typename?: 'Comment' }
   & { replies: Maybe<(
     { __typename?: 'CommentConnection' }
@@ -1059,19 +1059,19 @@ export type RepliesFragment = (
           & Pick<Likes, 'isLiked' | 'totalCount'>
         )>, user: Maybe<(
           { __typename?: 'User' }
-          & UserFragment
+          & UserFragmentFragment
         )> }
       ) }
     )>> }
   )> }
 );
 
-export type UserFragment = (
+export type UserFragmentFragment = (
   { __typename?: 'User' }
   & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>
 );
 
-export type UserProjectsFragment = (
+export type UserProjectsFragmentFragment = (
   { __typename?: 'User' }
   & { projects: Maybe<(
     { __typename?: 'ProjectsConnection' }
@@ -1098,7 +1098,7 @@ export type UserProjectsFragment = (
   )> }
 );
 
-export type UserSettingsFragment = (
+export type UserSettingsFragmentFragment = (
   { __typename?: 'User' }
   & Pick<User, 'id'>
   & { settings: Maybe<(
@@ -1131,6 +1131,107 @@ export type UserSettingsFragment = (
   )> }
 );
 
+export type DeleteCommentMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type DeleteCommentMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteComment'>
+);
+
+export type EditPostMutationVariables = {
+  id: Scalars['ID'],
+  input: EditPostInput
+};
+
+
+export type EditPostMutation = (
+  { __typename?: 'Mutation' }
+  & { editPost: Maybe<(
+    { __typename?: 'Post' }
+    & PostFragmentFragment
+  )> }
+);
+
+export type EditUserMutationVariables = {
+  input: EditUserInput
+};
+
+
+export type EditUserMutation = (
+  { __typename?: 'Mutation' }
+  & { editUser: Maybe<(
+    { __typename?: 'User' }
+    & UserFragmentFragment
+  )> }
+);
+
+export type FollowProjectMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type FollowProjectMutation = (
+  { __typename?: 'Mutation' }
+  & { followProject: Maybe<(
+    { __typename?: 'Project' }
+    & { cover: Maybe<(
+      { __typename?: 'CoverType' }
+      & Pick<CoverType, 'uri'>
+    )> }
+    & ProjectFragmentFragment
+  )> }
+);
+
+export type LikeCommentMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type LikeCommentMutation = (
+  { __typename?: 'Mutation' }
+  & { likeComment: Maybe<(
+    { __typename?: 'Comment' }
+    & Pick<Comment, 'id'>
+    & { likes: Maybe<(
+      { __typename?: 'Likes' }
+      & Pick<Likes, 'isLiked' | 'totalCount'>
+    )> }
+  )> }
+);
+
+export type LikePostMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type LikePostMutation = (
+  { __typename?: 'Mutation' }
+  & { likePost: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id'>
+    & { likes: Maybe<(
+      { __typename?: 'Likes' }
+      & Pick<Likes, 'isLiked' | 'totalCount'>
+    )> }
+  )> }
+);
+
+export type ToggleNotificationSettingsMutationVariables = {
+  input?: Maybe<ToggleNotificationSettingsInput>
+};
+
+
+export type ToggleNotificationSettingsMutation = (
+  { __typename?: 'Mutation' }
+  & { toggleNotificationSettings: Maybe<(
+    { __typename?: 'User' }
+    & UserSettingsFragmentFragment
+  )> }
+);
+
 export type CommentQueryVariables = {
   id: Scalars['ID']
 };
@@ -1141,7 +1242,7 @@ export type CommentQuery = (
   & { comment: Maybe<(
     { __typename?: 'Comment' }
     & CommentFragmentFragment
-    & RepliesFragment
+    & RepliesFragmentFragment
   )> }
 );
 
@@ -1184,7 +1285,7 @@ export type CurrentUserQuery = (
       { __typename?: 'ProjectType' }
       & Pick<ProjectType, 'id' | 'title'>
     )>>> }
-    & UserProjectsFragment
+    & UserProjectsFragmentFragment
   )> }
 );
 
@@ -1220,14 +1321,14 @@ export type CurrentUserProfileQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragment
+          & PostFragmentFragment
         ) }
       )>>, pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
       ) }
     )> }
-    & UserFragment
+    & UserFragmentFragment
   )> }
 );
 
@@ -1238,7 +1339,7 @@ export type CurrentUserProjectsQuery = (
   { __typename?: 'Query' }
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserProjectsFragment
+    & UserProjectsFragmentFragment
   )> }
 );
 
@@ -1249,7 +1350,7 @@ export type CurrentUserSettingsQuery = (
   { __typename?: 'Query' }
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserSettingsFragment
+    & UserSettingsFragmentFragment
   )> }
 );
 
@@ -1272,7 +1373,7 @@ export type FeedQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragment
+          & PostFragmentFragment
         ) }
       )>> }
     )> }
@@ -1297,7 +1398,7 @@ export type FollowersQuery = (
       & Pick<FollowersEdge, 'cursor'>
       & { node: (
         { __typename?: 'User' }
-        & UserFragment
+        & UserFragmentFragment
       ) }
     )>> }
   )> }
@@ -1324,10 +1425,10 @@ export type NotificationsQuery = (
         & Pick<Notification, 'id' | 'type' | 'createdAt'>
         & { user: (
           { __typename?: 'User' }
-          & UserFragment
+          & UserFragmentFragment
         ), project: Maybe<(
           { __typename?: 'Project' }
-          & ProjectFragment
+          & ProjectFragmentFragment
         )>, post: Maybe<(
           { __typename?: 'Post' }
           & Pick<Post, 'id'>
@@ -1358,7 +1459,7 @@ export type PostQuery = (
   { __typename?: 'Query' }
   & { post: Maybe<(
     { __typename?: 'Post' }
-    & PostFragment
+    & PostFragmentFragment
   )> }
 );
 
@@ -1380,7 +1481,7 @@ export type PostsQuery = (
       & Pick<PostEdge, 'cursor'>
       & { node: (
         { __typename?: 'Post' }
-        & PostFragment
+        & PostFragmentFragment
       ) }
     )>> }
   )> }
@@ -1398,7 +1499,7 @@ export type ProjectQuery = (
   { __typename?: 'Query' }
   & { post: Maybe<(
     { __typename?: 'Post' }
-    & PostFragment
+    & PostFragmentFragment
   )>, project: Maybe<(
     { __typename?: 'Project' }
     & { posts: Maybe<(
@@ -1408,11 +1509,11 @@ export type ProjectQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragment
+          & PostFragmentFragment
         ) }
       )>> }
     )> }
-    & ProjectFragment
+    & ProjectFragmentFragment
   )> }
 );
 
@@ -1440,7 +1541,7 @@ export type ProjectSuggestionsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
-        & ProjectFragment
+        & ProjectFragmentFragment
       ) }
     )>> }
   )>>> }
@@ -1481,7 +1582,7 @@ export type ProjectsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
-        & ProjectFragment
+        & ProjectFragmentFragment
       ) }
     )>> }
   )> }
@@ -1536,7 +1637,7 @@ export type SearchProjectsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
-        & ProjectFragment
+        & ProjectFragmentFragment
       ) | { __typename?: 'User' } | { __typename?: 'Model' }> }
     )>>> }
   )> }
@@ -1561,7 +1662,7 @@ export type SearchUsersQuery = (
       & { node: Maybe<{ __typename?: 'Project' } | (
         { __typename?: 'User' }
         & Pick<User, 'projectCount'>
-        & UserFragment
+        & UserFragmentFragment
       ) | { __typename?: 'Model' }> }
     )>>> }
   )> }
@@ -1584,7 +1685,7 @@ export type SimilarProjectsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri'>
         )> }
-        & ProjectFragment
+        & ProjectFragmentFragment
       ) }
     )>> }
   )> }
@@ -1623,14 +1724,14 @@ export type UserQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragment
+          & PostFragmentFragment
         ) }
       )>>, pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
       ) }
     )> }
-    & UserFragment
+    & UserFragmentFragment
   )> }
 );
 
@@ -1658,15 +1759,15 @@ export type UserFollowingProjectsQuery = (
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
           )> }
-          & ProjectFragment
+          & ProjectFragmentFragment
         ) }
       )>> }
     )> }
   )> }
 );
 
-export const UserFragmentDoc = gql`
-    fragment User on User {
+export const UserFragmentFragmentDoc = gql`
+    fragment UserFragment on User {
   id
   fullName
   firstName
@@ -1681,14 +1782,14 @@ export const UserFragmentDoc = gql`
   projectCount
 }
     `;
-export const ProjectFragmentDoc = gql`
-    fragment Project on Project {
+export const ProjectFragmentFragmentDoc = gql`
+    fragment ProjectFragment on Project {
   id
   title
   slug
   dynamicLink
   user {
-    ...User
+    ...UserFragment
   }
   permissions {
     isOwner
@@ -1698,7 +1799,7 @@ export const ProjectFragmentDoc = gql`
     totalCount
   }
 }
-    ${UserFragmentDoc}`;
+    ${UserFragmentFragmentDoc}`;
 export const CommentFragmentFragmentDoc = gql`
     fragment CommentFragment on Comment {
   id
@@ -1712,17 +1813,17 @@ export const CommentFragmentFragmentDoc = gql`
     totalCount
   }
   user {
-    ...User
+    ...UserFragment
   }
 }
-    ${UserFragmentDoc}`;
-export const PostFragmentDoc = gql`
-    fragment Post on Post {
+    ${UserFragmentFragmentDoc}`;
+export const PostFragmentFragmentDoc = gql`
+    fragment PostFragment on Post {
   id
   caption
   createdAt
   user {
-    ...User
+    ...UserFragment
   }
   permissions {
     isOwner
@@ -1737,7 +1838,7 @@ export const PostFragmentDoc = gql`
     }
   }
   project {
-    ...Project
+    ...ProjectFragment
   }
   likes {
     isLiked
@@ -1752,11 +1853,11 @@ export const PostFragmentDoc = gql`
     }
   }
 }
-    ${UserFragmentDoc}
-${ProjectFragmentDoc}
+    ${UserFragmentFragmentDoc}
+${ProjectFragmentFragmentDoc}
 ${CommentFragmentFragmentDoc}`;
-export const RepliesFragmentDoc = gql`
-    fragment Replies on Comment {
+export const RepliesFragmentFragmentDoc = gql`
+    fragment RepliesFragment on Comment {
   replies: repliesConnection(first: 2) @connection(key: "replies") {
     pageInfo {
       hasNextPage
@@ -1777,15 +1878,15 @@ export const RepliesFragmentDoc = gql`
           totalCount
         }
         user {
-          ...User
+          ...UserFragment
         }
       }
     }
   }
 }
-    ${UserFragmentDoc}`;
-export const UserProjectsFragmentDoc = gql`
-    fragment UserProjects on User {
+    ${UserFragmentFragmentDoc}`;
+export const UserProjectsFragmentFragmentDoc = gql`
+    fragment UserProjectsFragment on User {
   projects: projectsConnection {
     edges {
       node {
@@ -1807,8 +1908,8 @@ export const UserProjectsFragmentDoc = gql`
   }
 }
     `;
-export const UserSettingsFragmentDoc = gql`
-    fragment UserSettings on User {
+export const UserSettingsFragmentFragmentDoc = gql`
+    fragment UserSettingsFragment on User {
   id
   settings {
     notifications {
@@ -1842,15 +1943,249 @@ export const UserSettingsFragmentDoc = gql`
   }
 }
     `;
+export const DeleteCommentDocument = gql`
+    mutation deleteComment($id: ID!) {
+  deleteComment(id: $id)
+}
+    `;
+export type DeleteCommentMutationFn = ApolloReactCommon.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
+
+/**
+ * __useDeleteCommentMutation__
+ *
+ * To run a mutation, you first call `useDeleteCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCommentMutation, { data, loading, error }] = useDeleteCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>(DeleteCommentDocument, baseOptions);
+      }
+export type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
+export type DeleteCommentMutationResult = ApolloReactCommon.MutationResult<DeleteCommentMutation>;
+export type DeleteCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export const EditPostDocument = gql`
+    mutation editPost($id: ID!, $input: EditPostInput!) {
+  editPost(id: $id, input: $input) {
+    ...PostFragment
+  }
+}
+    ${PostFragmentFragmentDoc}`;
+export type EditPostMutationFn = ApolloReactCommon.MutationFunction<EditPostMutation, EditPostMutationVariables>;
+
+/**
+ * __useEditPostMutation__
+ *
+ * To run a mutation, you first call `useEditPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editPostMutation, { data, loading, error }] = useEditPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useEditPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditPostMutation, EditPostMutationVariables>) {
+        return ApolloReactHooks.useMutation<EditPostMutation, EditPostMutationVariables>(EditPostDocument, baseOptions);
+      }
+export type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>;
+export type EditPostMutationResult = ApolloReactCommon.MutationResult<EditPostMutation>;
+export type EditPostMutationOptions = ApolloReactCommon.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
+export const EditUserDocument = gql`
+    mutation editUser($input: EditUserInput!) {
+  editUser(input: $input) {
+    ...UserFragment
+  }
+}
+    ${UserFragmentFragmentDoc}`;
+export type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMutation, EditUserMutationVariables>;
+
+/**
+ * __useEditUserMutation__
+ *
+ * To run a mutation, you first call `useEditUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editUserMutation, { data, loading, error }] = useEditUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useEditUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditUserMutation, EditUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<EditUserMutation, EditUserMutationVariables>(EditUserDocument, baseOptions);
+      }
+export type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>;
+export type EditUserMutationResult = ApolloReactCommon.MutationResult<EditUserMutation>;
+export type EditUserMutationOptions = ApolloReactCommon.BaseMutationOptions<EditUserMutation, EditUserMutationVariables>;
+export const FollowProjectDocument = gql`
+    mutation followProject($id: ID!) {
+  followProject(id: $id) {
+    cover {
+      uri
+    }
+    ...ProjectFragment
+  }
+}
+    ${ProjectFragmentFragmentDoc}`;
+export type FollowProjectMutationFn = ApolloReactCommon.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
+
+/**
+ * __useFollowProjectMutation__
+ *
+ * To run a mutation, you first call `useFollowProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useFollowProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [followProjectMutation, { data, loading, error }] = useFollowProjectMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFollowProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<FollowProjectMutation, FollowProjectMutationVariables>) {
+        return ApolloReactHooks.useMutation<FollowProjectMutation, FollowProjectMutationVariables>(FollowProjectDocument, baseOptions);
+      }
+export type FollowProjectMutationHookResult = ReturnType<typeof useFollowProjectMutation>;
+export type FollowProjectMutationResult = ApolloReactCommon.MutationResult<FollowProjectMutation>;
+export type FollowProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<FollowProjectMutation, FollowProjectMutationVariables>;
+export const LikeCommentDocument = gql`
+    mutation likeComment($id: ID!) {
+  likeComment(id: $id) {
+    id
+    likes {
+      isLiked
+      totalCount
+    }
+  }
+}
+    `;
+export type LikeCommentMutationFn = ApolloReactCommon.MutationFunction<LikeCommentMutation, LikeCommentMutationVariables>;
+
+/**
+ * __useLikeCommentMutation__
+ *
+ * To run a mutation, you first call `useLikeCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLikeCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [likeCommentMutation, { data, loading, error }] = useLikeCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLikeCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikeCommentMutation, LikeCommentMutationVariables>) {
+        return ApolloReactHooks.useMutation<LikeCommentMutation, LikeCommentMutationVariables>(LikeCommentDocument, baseOptions);
+      }
+export type LikeCommentMutationHookResult = ReturnType<typeof useLikeCommentMutation>;
+export type LikeCommentMutationResult = ApolloReactCommon.MutationResult<LikeCommentMutation>;
+export type LikeCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<LikeCommentMutation, LikeCommentMutationVariables>;
+export const LikePostDocument = gql`
+    mutation likePost($id: ID!) {
+  likePost(id: $id) {
+    id
+    likes {
+      isLiked
+      totalCount
+    }
+  }
+}
+    `;
+export type LikePostMutationFn = ApolloReactCommon.MutationFunction<LikePostMutation, LikePostMutationVariables>;
+
+/**
+ * __useLikePostMutation__
+ *
+ * To run a mutation, you first call `useLikePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLikePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [likePostMutation, { data, loading, error }] = useLikePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLikePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikePostMutation, LikePostMutationVariables>) {
+        return ApolloReactHooks.useMutation<LikePostMutation, LikePostMutationVariables>(LikePostDocument, baseOptions);
+      }
+export type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
+export type LikePostMutationResult = ApolloReactCommon.MutationResult<LikePostMutation>;
+export type LikePostMutationOptions = ApolloReactCommon.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
+export const ToggleNotificationSettingsDocument = gql`
+    mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
+  toggleNotificationSettings(input: $input) {
+    ...UserSettingsFragment
+  }
+}
+    ${UserSettingsFragmentFragmentDoc}`;
+export type ToggleNotificationSettingsMutationFn = ApolloReactCommon.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+
+/**
+ * __useToggleNotificationSettingsMutation__
+ *
+ * To run a mutation, you first call `useToggleNotificationSettingsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useToggleNotificationSettingsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [toggleNotificationSettingsMutation, { data, loading, error }] = useToggleNotificationSettingsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useToggleNotificationSettingsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>) {
+        return ApolloReactHooks.useMutation<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>(ToggleNotificationSettingsDocument, baseOptions);
+      }
+export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
+export type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
+export type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 export const CommentDocument = gql`
     query comment($id: ID!) {
   comment(id: $id) {
     ...CommentFragment
-    ...Replies
+    ...RepliesFragment
   }
 }
     ${CommentFragmentFragmentDoc}
-${RepliesFragmentDoc}`;
+${RepliesFragmentFragmentDoc}`;
 
 /**
  * __useCommentQuery__
@@ -1943,10 +2278,10 @@ export const CurrentUserDocument = gql`
       id
       title
     }
-    ...UserProjects
+    ...UserProjectsFragment
   }
 }
-    ${UserProjectsFragmentDoc}`;
+    ${UserProjectsFragmentFragmentDoc}`;
 
 /**
  * __useCurrentUserQuery__
@@ -1975,7 +2310,7 @@ export type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQu
 export const CurrentUserProfileDocument = gql`
     query currentUserProfile($after: String) {
   user: currentUser {
-    ...User
+    ...UserFragment
     projects: projectsConnection {
       edges {
         node {
@@ -1995,7 +2330,7 @@ export const CurrentUserProfileDocument = gql`
       edges {
         cursor
         node {
-          ...Post
+          ...PostFragment
         }
       }
       pageInfo {
@@ -2004,8 +2339,8 @@ export const CurrentUserProfileDocument = gql`
     }
   }
 }
-    ${UserFragmentDoc}
-${PostFragmentDoc}`;
+    ${UserFragmentFragmentDoc}
+${PostFragmentFragmentDoc}`;
 
 /**
  * __useCurrentUserProfileQuery__
@@ -2035,10 +2370,10 @@ export type CurrentUserProfileQueryResult = ApolloReactCommon.QueryResult<Curren
 export const CurrentUserProjectsDocument = gql`
     query currentUserProjects {
   user: currentUser {
-    ...UserProjects
+    ...UserProjectsFragment
   }
 }
-    ${UserProjectsFragmentDoc}`;
+    ${UserProjectsFragmentFragmentDoc}`;
 
 /**
  * __useCurrentUserProjectsQuery__
@@ -2067,10 +2402,10 @@ export type CurrentUserProjectsQueryResult = ApolloReactCommon.QueryResult<Curre
 export const CurrentUserSettingsDocument = gql`
     query currentUserSettings {
   user: currentUser {
-    ...UserSettings
+    ...UserSettingsFragment
   }
 }
-    ${UserSettingsFragmentDoc}`;
+    ${UserSettingsFragmentFragmentDoc}`;
 
 /**
  * __useCurrentUserSettingsQuery__
@@ -2106,13 +2441,13 @@ export const FeedDocument = gql`
       edges {
         cursor
         node {
-          ...Post
+          ...PostFragment
         }
       }
     }
   }
 }
-    ${PostFragmentDoc}`;
+    ${PostFragmentFragmentDoc}`;
 
 /**
  * __useFeedQuery__
@@ -2148,12 +2483,12 @@ export const FollowersDocument = gql`
     edges {
       cursor
       node {
-        ...User
+        ...UserFragment
       }
     }
   }
 }
-    ${UserFragmentDoc}`;
+    ${UserFragmentFragmentDoc}`;
 
 /**
  * __useFollowersQuery__
@@ -2195,10 +2530,10 @@ export const NotificationsDocument = gql`
         type
         createdAt
         user {
-          ...User
+          ...UserFragment
         }
         project {
-          ...Project
+          ...ProjectFragment
         }
         post {
           id
@@ -2220,8 +2555,8 @@ export const NotificationsDocument = gql`
     }
   }
 }
-    ${UserFragmentDoc}
-${ProjectFragmentDoc}`;
+    ${UserFragmentFragmentDoc}
+${ProjectFragmentFragmentDoc}`;
 
 /**
  * __useNotificationsQuery__
@@ -2251,10 +2586,10 @@ export type NotificationsQueryResult = ApolloReactCommon.QueryResult<Notificatio
 export const PostDocument = gql`
     query post($id: ID!) {
   post(id: $id) {
-    ...Post
+    ...PostFragment
   }
 }
-    ${PostFragmentDoc}`;
+    ${PostFragmentFragmentDoc}`;
 
 /**
  * __usePostQuery__
@@ -2290,12 +2625,12 @@ export const PostsDocument = gql`
     edges {
       cursor
       node {
-        ...Post
+        ...PostFragment
       }
     }
   }
 }
-    ${PostFragmentDoc}`;
+    ${PostFragmentFragmentDoc}`;
 
 /**
  * __usePostsQuery__
@@ -2326,22 +2661,22 @@ export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQu
 export const ProjectDocument = gql`
     query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID) {
   post(id: $postId) {
-    ...Post
+    ...PostFragment
   }
   project(id: $id, slug: $slug) {
-    ...Project
+    ...ProjectFragment
     posts: postsConnection(first: 5, after: $after) @connection(key: "posts") {
       edges {
         cursor
         node {
-          ...Post
+          ...PostFragment
         }
       }
     }
   }
 }
-    ${PostFragmentDoc}
-${ProjectFragmentDoc}`;
+    ${PostFragmentFragmentDoc}
+${ProjectFragmentFragmentDoc}`;
 
 /**
  * __useProjectQuery__
@@ -2383,7 +2718,7 @@ export const ProjectSuggestionsDocument = gql`
     }
     edges {
       node {
-        ...Project
+        ...ProjectFragment
         cover {
           uri
           default
@@ -2392,7 +2727,7 @@ export const ProjectSuggestionsDocument = gql`
     }
   }
 }
-    ${ProjectFragmentDoc}`;
+    ${ProjectFragmentFragmentDoc}`;
 
 /**
  * __useProjectSuggestionsQuery__
@@ -2467,12 +2802,12 @@ export const ProjectsDocument = gql`
           uri
           default
         }
-        ...Project
+        ...ProjectFragment
       }
     }
   }
 }
-    ${ProjectFragmentDoc}`;
+    ${ProjectFragmentFragmentDoc}`;
 
 /**
  * __useProjectsQuery__
@@ -2560,7 +2895,7 @@ export const SearchProjectsDocument = gql`
       cursor
       node {
         ... on Project {
-          ...Project
+          ...ProjectFragment
           cover {
             uri
             default
@@ -2570,7 +2905,7 @@ export const SearchProjectsDocument = gql`
     }
   }
 }
-    ${ProjectFragmentDoc}`;
+    ${ProjectFragmentFragmentDoc}`;
 
 /**
  * __useSearchProjectsQuery__
@@ -2608,14 +2943,14 @@ export const SearchUsersDocument = gql`
       cursor
       node {
         ... on User {
-          ...User
+          ...UserFragment
           projectCount
         }
       }
     }
   }
 }
-    ${UserFragmentDoc}`;
+    ${UserFragmentFragmentDoc}`;
 
 /**
  * __useSearchUsersQuery__
@@ -2651,12 +2986,12 @@ export const SimilarProjectsDocument = gql`
         cover {
           uri
         }
-        ...Project
+        ...ProjectFragment
       }
     }
   }
 }
-    ${ProjectFragmentDoc}`;
+    ${ProjectFragmentFragmentDoc}`;
 
 /**
  * __useSimilarProjectsQuery__
@@ -2686,7 +3021,7 @@ export type SimilarProjectsQueryResult = ApolloReactCommon.QueryResult<SimilarPr
 export const UserDocument = gql`
     query user($username: LowercaseString!, $after: String) {
   user(username: $username) {
-    ...User
+    ...UserFragment
     projects: projectsConnection {
       edges {
         node {
@@ -2706,7 +3041,7 @@ export const UserDocument = gql`
       edges {
         cursor
         node {
-          ...Post
+          ...PostFragment
         }
       }
       pageInfo {
@@ -2715,8 +3050,8 @@ export const UserDocument = gql`
     }
   }
 }
-    ${UserFragmentDoc}
-${PostFragmentDoc}`;
+    ${UserFragmentFragmentDoc}
+${PostFragmentFragmentDoc}`;
 
 /**
  * __useUserQuery__
@@ -2754,7 +3089,7 @@ export const UserFollowingProjectsDocument = gql`
       }
       edges {
         node {
-          ...Project
+          ...ProjectFragment
           cover {
             uri
             default
@@ -2764,7 +3099,7 @@ export const UserFollowingProjectsDocument = gql`
     }
   }
 }
-    ${ProjectFragmentDoc}`;
+    ${ProjectFragmentFragmentDoc}`;
 
 /**
  * __useUserFollowingProjectsQuery__

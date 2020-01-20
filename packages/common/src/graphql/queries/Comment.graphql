@@ -4,6 +4,6 @@
 query comment($id: ID!) {
   comment(id: $id) {
     ...CommentFragment
-    ...Replies
+    ...RepliesFragment
   }
 }

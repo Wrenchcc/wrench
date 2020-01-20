@@ -789,14 +789,14 @@ export declare type CommentFragmentFragment = ({
     } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
     user: Maybe<({
         __typename?: 'User';
-    } & UserFragment)>;
+    } & UserFragmentFragment)>;
 });
-export declare type PostFragment = ({
+export declare type PostFragmentFragment = ({
     __typename?: 'Post';
 } & Pick<Post, 'id' | 'caption' | 'createdAt'> & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserFragment)>;
+    } & UserFragmentFragment)>;
     permissions: Maybe<({
         __typename?: 'PostPermissions';
     } & Pick<PostPermissions, 'isOwner'>)>;
@@ -813,7 +813,7 @@ export declare type PostFragment = ({
     })>;
     project: Maybe<({
         __typename?: 'Project';
-    } & ProjectFragment)>;
+    } & ProjectFragmentFragment)>;
     likes: Maybe<({
         __typename?: 'Likes';
     } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
@@ -829,12 +829,12 @@ export declare type PostFragment = ({
         })>>;
     })>;
 });
-export declare type ProjectFragment = ({
+export declare type ProjectFragmentFragment = ({
     __typename?: 'Project';
 } & Pick<Project, 'id' | 'title' | 'slug' | 'dynamicLink'> & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserFragment)>;
+    } & UserFragmentFragment)>;
     permissions: Maybe<({
         __typename?: 'ProjectPermissions';
     } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>)>;
@@ -842,7 +842,7 @@ export declare type ProjectFragment = ({
         __typename?: 'FollowersConnection';
     } & Pick<FollowersConnection, 'totalCount'>)>;
 });
-export declare type RepliesFragment = ({
+export declare type RepliesFragmentFragment = ({
     __typename?: 'Comment';
 } & {
     replies: Maybe<({
@@ -865,15 +865,15 @@ export declare type RepliesFragment = ({
                 } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
                 user: Maybe<({
                     __typename?: 'User';
-                } & UserFragment)>;
+                } & UserFragmentFragment)>;
             });
         })>>;
     })>;
 });
-export declare type UserFragment = ({
+export declare type UserFragmentFragment = ({
     __typename?: 'User';
 } & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>);
-export declare type UserProjectsFragment = ({
+export declare type UserProjectsFragmentFragment = ({
     __typename?: 'User';
 } & {
     projects: Maybe<({
@@ -903,7 +903,7 @@ export declare type UserProjectsFragment = ({
         })>>;
     })>;
 });
-export declare type UserSettingsFragment = ({
+export declare type UserSettingsFragmentFragment = ({
     __typename?: 'User';
 } & Pick<User, 'id'> & {
     settings: Maybe<({
@@ -937,6 +937,85 @@ export declare type UserSettingsFragment = ({
         })>;
     })>;
 });
+export declare type DeleteCommentMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type DeleteCommentMutation = ({
+    __typename?: 'Mutation';
+} & Pick<Mutation, 'deleteComment'>);
+export declare type EditPostMutationVariables = {
+    id: Scalars['ID'];
+    input: EditPostInput;
+};
+export declare type EditPostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    editPost: Maybe<({
+        __typename?: 'Post';
+    } & PostFragmentFragment)>;
+});
+export declare type EditUserMutationVariables = {
+    input: EditUserInput;
+};
+export declare type EditUserMutation = ({
+    __typename?: 'Mutation';
+} & {
+    editUser: Maybe<({
+        __typename?: 'User';
+    } & UserFragmentFragment)>;
+});
+export declare type FollowProjectMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type FollowProjectMutation = ({
+    __typename?: 'Mutation';
+} & {
+    followProject: Maybe<({
+        __typename?: 'Project';
+    } & {
+        cover: Maybe<({
+            __typename?: 'CoverType';
+        } & Pick<CoverType, 'uri'>)>;
+    } & ProjectFragmentFragment)>;
+});
+export declare type LikeCommentMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type LikeCommentMutation = ({
+    __typename?: 'Mutation';
+} & {
+    likeComment: Maybe<({
+        __typename?: 'Comment';
+    } & Pick<Comment, 'id'> & {
+        likes: Maybe<({
+            __typename?: 'Likes';
+        } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
+    })>;
+});
+export declare type LikePostMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type LikePostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    likePost: Maybe<({
+        __typename?: 'Post';
+    } & Pick<Post, 'id'> & {
+        likes: Maybe<({
+            __typename?: 'Likes';
+        } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
+    })>;
+});
+export declare type ToggleNotificationSettingsMutationVariables = {
+    input?: Maybe<ToggleNotificationSettingsInput>;
+};
+export declare type ToggleNotificationSettingsMutation = ({
+    __typename?: 'Mutation';
+} & {
+    toggleNotificationSettings: Maybe<({
+        __typename?: 'User';
+    } & UserSettingsFragmentFragment)>;
+});
 export declare type CommentQueryVariables = {
     id: Scalars['ID'];
 };
@@ -945,7 +1024,7 @@ export declare type CommentQuery = ({
 } & {
     comment: Maybe<({
         __typename?: 'Comment';
-    } & CommentFragmentFragment & RepliesFragment)>;
+    } & CommentFragmentFragment & RepliesFragmentFragment)>;
 });
 export declare type CommentsQueryVariables = {
     postId: Scalars['ID'];
@@ -982,7 +1061,7 @@ export declare type CurrentUserQuery = ({
         interestedIn: Maybe<Array<Maybe<({
             __typename?: 'ProjectType';
         } & Pick<ProjectType, 'id' | 'title'>)>>>;
-    } & UserProjectsFragment)>;
+    } & UserProjectsFragmentFragment)>;
 });
 export declare type CurrentUserProfileQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1019,13 +1098,13 @@ export declare type CurrentUserProfileQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragment);
+                } & PostFragmentFragment);
             })>>;
             pageInfo: ({
                 __typename?: 'PageInfo';
             } & Pick<PageInfo, 'hasNextPage'>);
         })>;
-    } & UserFragment)>;
+    } & UserFragmentFragment)>;
 });
 export declare type CurrentUserProjectsQueryVariables = {};
 export declare type CurrentUserProjectsQuery = ({
@@ -1033,7 +1112,7 @@ export declare type CurrentUserProjectsQuery = ({
 } & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserProjectsFragment)>;
+    } & UserProjectsFragmentFragment)>;
 });
 export declare type CurrentUserSettingsQueryVariables = {};
 export declare type CurrentUserSettingsQuery = ({
@@ -1041,7 +1120,7 @@ export declare type CurrentUserSettingsQuery = ({
 } & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserSettingsFragment)>;
+    } & UserSettingsFragmentFragment)>;
 });
 export declare type FeedQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1063,7 +1142,7 @@ export declare type FeedQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragment);
+                } & PostFragmentFragment);
             })>>;
         })>;
     })>;
@@ -1086,7 +1165,7 @@ export declare type FollowersQuery = ({
         } & Pick<FollowersEdge, 'cursor'> & {
             node: ({
                 __typename?: 'User';
-            } & UserFragment);
+            } & UserFragmentFragment);
         })>>;
     })>;
 });
@@ -1110,10 +1189,10 @@ export declare type NotificationsQuery = ({
             } & Pick<Notification, 'id' | 'type' | 'createdAt'> & {
                 user: ({
                     __typename?: 'User';
-                } & UserFragment);
+                } & UserFragmentFragment);
                 project: Maybe<({
                     __typename?: 'Project';
-                } & ProjectFragment)>;
+                } & ProjectFragmentFragment)>;
                 post: Maybe<({
                     __typename?: 'Post';
                 } & Pick<Post, 'id'>)>;
@@ -1143,7 +1222,7 @@ export declare type PostQuery = ({
 } & {
     post: Maybe<({
         __typename?: 'Post';
-    } & PostFragment)>;
+    } & PostFragmentFragment)>;
 });
 export declare type PostsQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1163,7 +1242,7 @@ export declare type PostsQuery = ({
         } & Pick<PostEdge, 'cursor'> & {
             node: ({
                 __typename?: 'Post';
-            } & PostFragment);
+            } & PostFragmentFragment);
         })>>;
     })>;
 });
@@ -1178,7 +1257,7 @@ export declare type ProjectQuery = ({
 } & {
     post: Maybe<({
         __typename?: 'Post';
-    } & PostFragment)>;
+    } & PostFragmentFragment)>;
     project: Maybe<({
         __typename?: 'Project';
     } & {
@@ -1190,10 +1269,10 @@ export declare type ProjectQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragment);
+                } & PostFragmentFragment);
             })>>;
         })>;
-    } & ProjectFragment)>;
+    } & ProjectFragmentFragment)>;
 });
 export declare type ProjectSuggestionsQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1220,7 +1299,7 @@ export declare type ProjectSuggestionsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragment);
+            } & ProjectFragmentFragment);
         })>>;
     })>>>;
 });
@@ -1256,7 +1335,7 @@ export declare type ProjectsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragment);
+            } & ProjectFragmentFragment);
         })>>;
     })>;
 });
@@ -1312,7 +1391,7 @@ export declare type SearchProjectsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragment) | {
+            } & ProjectFragmentFragment) | {
                 __typename?: 'User';
             } | {
                 __typename?: 'Model';
@@ -1340,7 +1419,7 @@ export declare type SearchUsersQuery = ({
                 __typename?: 'Project';
             } | ({
                 __typename?: 'User';
-            } & Pick<User, 'projectCount'> & UserFragment) | {
+            } & Pick<User, 'projectCount'> & UserFragmentFragment) | {
                 __typename?: 'Model';
             }>;
         })>>>;
@@ -1364,7 +1443,7 @@ export declare type SimilarProjectsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri'>)>;
-            } & ProjectFragment);
+            } & ProjectFragmentFragment);
         })>>;
     })>;
 });
@@ -1404,13 +1483,13 @@ export declare type UserQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragment);
+                } & PostFragmentFragment);
             })>>;
             pageInfo: ({
                 __typename?: 'PageInfo';
             } & Pick<PageInfo, 'hasNextPage'>);
         })>;
-    } & UserFragment)>;
+    } & UserFragmentFragment)>;
 });
 export declare type UserFollowingProjectsQueryVariables = {
     username: Scalars['LowercaseString'];
@@ -1437,18 +1516,180 @@ export declare type UserFollowingProjectsQuery = ({
                     cover: Maybe<({
                         __typename?: 'CoverType';
                     } & Pick<CoverType, 'uri' | 'default'>)>;
-                } & ProjectFragment);
+                } & ProjectFragmentFragment);
             })>>;
         })>;
     })>;
 });
-export declare const UserFragmentDoc: any;
-export declare const ProjectFragmentDoc: any;
+export declare const UserFragmentFragmentDoc: any;
+export declare const ProjectFragmentFragmentDoc: any;
 export declare const CommentFragmentFragmentDoc: any;
-export declare const PostFragmentDoc: any;
-export declare const RepliesFragmentDoc: any;
-export declare const UserProjectsFragmentDoc: any;
-export declare const UserSettingsFragmentDoc: any;
+export declare const PostFragmentFragmentDoc: any;
+export declare const RepliesFragmentFragmentDoc: any;
+export declare const UserProjectsFragmentFragmentDoc: any;
+export declare const UserSettingsFragmentFragmentDoc: any;
+export declare const DeleteCommentDocument: any;
+export declare type DeleteCommentMutationFn = ApolloReactCommon.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
+/**
+ * __useDeleteCommentMutation__
+ *
+ * To run a mutation, you first call `useDeleteCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCommentMutation, { data, loading, error }] = useDeleteCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useDeleteCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>): ApolloReactHooks.MutationTuple<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export declare type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
+export declare type DeleteCommentMutationResult = ApolloReactCommon.MutationResult<DeleteCommentMutation>;
+export declare type DeleteCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export declare const EditPostDocument: any;
+export declare type EditPostMutationFn = ApolloReactCommon.MutationFunction<EditPostMutation, EditPostMutationVariables>;
+/**
+ * __useEditPostMutation__
+ *
+ * To run a mutation, you first call `useEditPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editPostMutation, { data, loading, error }] = useEditPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useEditPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditPostMutation, EditPostMutationVariables>): ApolloReactHooks.MutationTuple<EditPostMutation, EditPostMutationVariables>;
+export declare type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>;
+export declare type EditPostMutationResult = ApolloReactCommon.MutationResult<EditPostMutation>;
+export declare type EditPostMutationOptions = ApolloReactCommon.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
+export declare const EditUserDocument: any;
+export declare type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMutation, EditUserMutationVariables>;
+/**
+ * __useEditUserMutation__
+ *
+ * To run a mutation, you first call `useEditUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editUserMutation, { data, loading, error }] = useEditUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useEditUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditUserMutation, EditUserMutationVariables>): ApolloReactHooks.MutationTuple<EditUserMutation, EditUserMutationVariables>;
+export declare type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>;
+export declare type EditUserMutationResult = ApolloReactCommon.MutationResult<EditUserMutation>;
+export declare type EditUserMutationOptions = ApolloReactCommon.BaseMutationOptions<EditUserMutation, EditUserMutationVariables>;
+export declare const FollowProjectDocument: any;
+export declare type FollowProjectMutationFn = ApolloReactCommon.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
+/**
+ * __useFollowProjectMutation__
+ *
+ * To run a mutation, you first call `useFollowProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useFollowProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [followProjectMutation, { data, loading, error }] = useFollowProjectMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useFollowProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<FollowProjectMutation, FollowProjectMutationVariables>): ApolloReactHooks.MutationTuple<FollowProjectMutation, FollowProjectMutationVariables>;
+export declare type FollowProjectMutationHookResult = ReturnType<typeof useFollowProjectMutation>;
+export declare type FollowProjectMutationResult = ApolloReactCommon.MutationResult<FollowProjectMutation>;
+export declare type FollowProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<FollowProjectMutation, FollowProjectMutationVariables>;
+export declare const LikeCommentDocument: any;
+export declare type LikeCommentMutationFn = ApolloReactCommon.MutationFunction<LikeCommentMutation, LikeCommentMutationVariables>;
+/**
+ * __useLikeCommentMutation__
+ *
+ * To run a mutation, you first call `useLikeCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLikeCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [likeCommentMutation, { data, loading, error }] = useLikeCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useLikeCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikeCommentMutation, LikeCommentMutationVariables>): ApolloReactHooks.MutationTuple<LikeCommentMutation, LikeCommentMutationVariables>;
+export declare type LikeCommentMutationHookResult = ReturnType<typeof useLikeCommentMutation>;
+export declare type LikeCommentMutationResult = ApolloReactCommon.MutationResult<LikeCommentMutation>;
+export declare type LikeCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<LikeCommentMutation, LikeCommentMutationVariables>;
+export declare const LikePostDocument: any;
+export declare type LikePostMutationFn = ApolloReactCommon.MutationFunction<LikePostMutation, LikePostMutationVariables>;
+/**
+ * __useLikePostMutation__
+ *
+ * To run a mutation, you first call `useLikePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLikePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [likePostMutation, { data, loading, error }] = useLikePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useLikePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikePostMutation, LikePostMutationVariables>): ApolloReactHooks.MutationTuple<LikePostMutation, LikePostMutationVariables>;
+export declare type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
+export declare type LikePostMutationResult = ApolloReactCommon.MutationResult<LikePostMutation>;
+export declare type LikePostMutationOptions = ApolloReactCommon.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
+export declare const ToggleNotificationSettingsDocument: any;
+export declare type ToggleNotificationSettingsMutationFn = ApolloReactCommon.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+/**
+ * __useToggleNotificationSettingsMutation__
+ *
+ * To run a mutation, you first call `useToggleNotificationSettingsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useToggleNotificationSettingsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [toggleNotificationSettingsMutation, { data, loading, error }] = useToggleNotificationSettingsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useToggleNotificationSettingsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>): ApolloReactHooks.MutationTuple<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
+export declare type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
+export declare type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 export declare const CommentDocument: any;
 /**
  * __useCommentQuery__

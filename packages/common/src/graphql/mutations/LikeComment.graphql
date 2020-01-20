@@ -1,0 +1,9 @@
+mutation likeComment($id: ID!) {
+  likeComment(id: $id) {
+    id
+    likes {
+      isLiked
+      totalCount
+    }
+  }
+}

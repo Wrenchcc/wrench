@@ -1,6 +1,6 @@
 #import "./UserFragment.graphql"
 
-fragment Replies on Comment {
+fragment RepliesFragment on Comment {
   replies: repliesConnection(first: 2) @connection(key: "replies") {
     pageInfo {
       hasNextPage
@@ -21,7 +21,7 @@ fragment Replies on Comment {
           totalCount
         }
         user {
-          ...User
+          ...UserFragment
         }
       }
     }

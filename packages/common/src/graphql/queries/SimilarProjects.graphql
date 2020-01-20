@@ -7,7 +7,7 @@ query similarProjects($id: ID!) {
         cover {
           uri
         }
-        ...Project
+        ...ProjectFragment
       }
     }
   }

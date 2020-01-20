@@ -1,12 +1,12 @@
 #import "./UserFragment.graphql"
 
-fragment Project on Project {
+fragment ProjectFragment on Project {
   id
   title
   slug
   dynamicLink
   user {
-    ...User
+    ...UserFragment
   }
   permissions {
     isOwner
