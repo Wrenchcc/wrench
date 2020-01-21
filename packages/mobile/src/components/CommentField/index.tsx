@@ -1,10 +1,9 @@
-import React, { memo, useState, useCallback, useRef, useEffect } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Keyboard } from 'react-native'
 import { useCurrentUserQuery } from '@wrench/common'
 import { showMention, dismissMention } from 'navigation'
 import { useMentionStore } from 'store'
-import { addComment } from 'services/graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
 import { isAndroid } from 'utils/platform'
@@ -14,7 +13,8 @@ import { Base, Inner, Input, Button } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
-function CommentField({ addComment: addCommentMutation, postId, commentId, username, emoji }) {
+function CommentField({ postId, commentId, username, emoji }) {
+  const addCommentMutation = () => {}
   const { t } = useTranslation()
   const inputRef = useRef()
   const isTracking = useRef(false)
@@ -85,7 +85,7 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
 
   const handleSubmit = useCallback(() => {
     inputRef.current.blur()
-    addCommentMutation(postId, text, commentId)
+    // addCommentMutation(postId, text, commentId)
     setText('')
   }, [postId, text, commentId, inputRef])
 
@@ -129,4 +129,4 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
   )
 }
 
-export default memo(addComment(CommentField))
+export default CommentField

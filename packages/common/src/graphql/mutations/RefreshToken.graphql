@@ -1,0 +1,5 @@
+mutation refreshToken($refreshToken: String!) {
+  token: refreshToken(refreshToken: $refreshToken) {
+    access_token
+  }
+}

@@ -4,20 +4,13 @@ import { useTranslation } from 'react-i18next'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, showEditPost, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
-import { deletePost } from 'services/graphql/mutations/post/deletePost'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
 import { Base, Top, Headline, Content, Spacer } from './styles'
 
-function Post({
-  post,
-  withoutTitle,
-  withoutComments,
-  deletePost: deletePostMutation,
-  paddingBottom,
-  numberOfLines = 3,
-}) {
+function Post({ post, withoutTitle, withoutComments, paddingBottom, numberOfLines = 3 }) {
+  const deletePostMutation = () => {}
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
@@ -143,4 +136,4 @@ function Post({
   )
 }
 
-export default deletePost(Post)
+export default Post

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
+import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
 import { AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
-import { editUser } from 'services/graphql/mutations/user/editUser'
 import { Header, Touchable, Text, Loader, Icon } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
@@ -18,11 +18,13 @@ const MIN_ITEMS = 3
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
-function Onboarding({ editUser: editUserMutation, settingsPage }) {
+function Onboarding({ settingsPage }) {
   const { t } = useTranslation()
   const { navigateBack, showModal } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
   const [items, setItems] = useState({})
+
+  const [editUser] = useEditUserMutation()
 
   useEffect(() => {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
@@ -73,7 +75,7 @@ function Onboarding({ editUser: editUserMutation, settingsPage }) {
           })
       : () => AppNavigation(false)
 
-    await editUserMutation({ interestedIn })
+    await editUser({ interestedIn })
     setTimeout(settingsPage ? navigateBack : Navigate, 200)
   }
 
@@ -144,4 +146,4 @@ function Onboarding({ editUser: editUserMutation, settingsPage }) {
   )
 }
 
-export default editUser(Onboarding)
+export default Onboarding

@@ -2,18 +2,17 @@ import React, { useEffect } from 'react'
 import { usePaginatedQuery, NotificationsDocument } from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
 import ms from 'ms'
-import { compose } from 'rambda'
 import { Layout, FlatList, showNotificationBadge, hideNotificationBadge } from 'navigation'
-import { markAllNotificationsSeen } from 'services/graphql/mutations/notification/markAllNotificationsSeen'
-import { deleteNotification } from 'services/graphql/mutations/notification/deleteNotification'
+// import { deleteNotification } from 'services/graphql/mutations/notification/deleteNotification'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
 function Notifications({
   componentId,
-  deleteNotification: deleteNotificationMutation,
-  markAllNotificationsSeen: markAllNotificationsSeenMutation,
+  // deleteNotification: deleteNotificationMutation,
+  // markAllNotificationsSeen: markAllNotisficationsSeenMutation,
 }) {
+  const deleteNotificationMutation = () => {}
   const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
     'notifications',
   ])(NotificationsDocument, {
@@ -31,7 +30,7 @@ function Notifications({
       ({ componentId: id }) => {
         if (componentId === id) {
           if (data && data.unreadCount > 0) {
-            markAllNotificationsSeenMutation()
+            // s()
           }
 
           hideNotificationBadge()
@@ -66,4 +65,4 @@ function Notifications({
   )
 }
 
-export default compose(markAllNotificationsSeen, deleteNotification)(Notifications)
+export default Notifications

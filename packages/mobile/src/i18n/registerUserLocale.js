@@ -1,13 +1,13 @@
 import { pathOr } from 'rambda'
+import { EditUserDocument } from '@wrench/common'
 import { client, getCurrentUser } from 'services/gql'
-import { EditUserMutation } from 'services/graphql/mutations/user/editUser'
 import { logError } from 'utils/analytics'
 import { getLocale, timezone } from './helpers'
 
 export function updateUserLocale(locale) {
   try {
     client.mutate({
-      mutation: EditUserMutation,
+      mutation: EditUserDocument,
       variables: {
         input: { locale },
       },
@@ -28,7 +28,7 @@ export async function registerUserLocale() {
 
     try {
       client.mutate({
-        mutation: EditUserMutation,
+        mutation: EditUserDocument,
         variables: {
           input: {
             locale,

@@ -1131,6 +1131,46 @@ export type UserSettingsFragmentFragment = (
   )> }
 );
 
+export type AuthenticateAppleMutationVariables = {
+  identityToken: Scalars['String'],
+  user: ApplePayload
+};
+
+
+export type AuthenticateAppleMutation = (
+  { __typename?: 'Mutation' }
+  & { authenticateApple: Maybe<(
+    { __typename?: 'Tokens' }
+    & Pick<Tokens, 'access_token' | 'refresh_token'>
+  )> }
+);
+
+export type AuthenticateFacebookMutationVariables = {
+  token: Scalars['String']
+};
+
+
+export type AuthenticateFacebookMutation = (
+  { __typename?: 'Mutation' }
+  & { authenticateFacebook: Maybe<(
+    { __typename?: 'Tokens' }
+    & Pick<Tokens, 'access_token' | 'refresh_token'>
+  )> }
+);
+
+export type AuthenticateGoogleMutationVariables = {
+  idToken: Scalars['String']
+};
+
+
+export type AuthenticateGoogleMutation = (
+  { __typename?: 'Mutation' }
+  & { authenticateGoogle: Maybe<(
+    { __typename?: 'Tokens' }
+    & Pick<Tokens, 'access_token' | 'refresh_token'>
+  )> }
+);
+
 export type DeleteCommentMutationVariables = {
   id: Scalars['ID']
 };
@@ -1217,6 +1257,56 @@ export type LikePostMutation = (
       & Pick<Likes, 'isLiked' | 'totalCount'>
     )> }
   )> }
+);
+
+export type PreSignUrlMutationVariables = {
+  input: PreSignedUrlInput
+};
+
+
+export type PreSignUrlMutation = (
+  { __typename?: 'Mutation' }
+  & { preSignUrl: Maybe<(
+    { __typename?: 'PreSignedUrl' }
+    & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>
+  )> }
+);
+
+export type PreSignUrlsMutationVariables = {
+  input: Array<Maybe<PreSignedUrlnput>>
+};
+
+
+export type PreSignUrlsMutation = (
+  { __typename?: 'Mutation' }
+  & { preSignUrls: Maybe<Array<Maybe<(
+    { __typename?: 'PreSignedUrl' }
+    & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>
+  )>>> }
+);
+
+export type RefreshTokenMutationVariables = {
+  refreshToken: Scalars['String']
+};
+
+
+export type RefreshTokenMutation = (
+  { __typename?: 'Mutation' }
+  & { token: Maybe<(
+    { __typename?: 'AccessToken' }
+    & Pick<AccessToken, 'access_token'>
+  )> }
+);
+
+export type RegisterDeviceTokenMutationVariables = {
+  token: Scalars['String'],
+  platform: PlatformType
+};
+
+
+export type RegisterDeviceTokenMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'registerDeviceToken'>
 );
 
 export type ToggleNotificationSettingsMutationVariables = {
@@ -1943,6 +2033,106 @@ export const UserSettingsFragmentFragmentDoc = gql`
   }
 }
     `;
+export const AuthenticateAppleDocument = gql`
+    mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {
+  authenticateApple(identityToken: $identityToken, user: $user) {
+    access_token
+    refresh_token
+  }
+}
+    `;
+export type AuthenticateAppleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+
+/**
+ * __useAuthenticateAppleMutation__
+ *
+ * To run a mutation, you first call `useAuthenticateAppleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAuthenticateAppleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [authenticateAppleMutation, { data, loading, error }] = useAuthenticateAppleMutation({
+ *   variables: {
+ *      identityToken: // value for 'identityToken'
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export function useAuthenticateAppleMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>) {
+        return ApolloReactHooks.useMutation<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>(AuthenticateAppleDocument, baseOptions);
+      }
+export type AuthenticateAppleMutationHookResult = ReturnType<typeof useAuthenticateAppleMutation>;
+export type AuthenticateAppleMutationResult = ApolloReactCommon.MutationResult<AuthenticateAppleMutation>;
+export type AuthenticateAppleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+export const AuthenticateFacebookDocument = gql`
+    mutation authenticateFacebook($token: String!) {
+  authenticateFacebook(token: $token) {
+    access_token
+    refresh_token
+  }
+}
+    `;
+export type AuthenticateFacebookMutationFn = ApolloReactCommon.MutationFunction<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+
+/**
+ * __useAuthenticateFacebookMutation__
+ *
+ * To run a mutation, you first call `useAuthenticateFacebookMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAuthenticateFacebookMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [authenticateFacebookMutation, { data, loading, error }] = useAuthenticateFacebookMutation({
+ *   variables: {
+ *      token: // value for 'token'
+ *   },
+ * });
+ */
+export function useAuthenticateFacebookMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>) {
+        return ApolloReactHooks.useMutation<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>(AuthenticateFacebookDocument, baseOptions);
+      }
+export type AuthenticateFacebookMutationHookResult = ReturnType<typeof useAuthenticateFacebookMutation>;
+export type AuthenticateFacebookMutationResult = ApolloReactCommon.MutationResult<AuthenticateFacebookMutation>;
+export type AuthenticateFacebookMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+export const AuthenticateGoogleDocument = gql`
+    mutation authenticateGoogle($idToken: String!) {
+  authenticateGoogle(idToken: $idToken) {
+    access_token
+    refresh_token
+  }
+}
+    `;
+export type AuthenticateGoogleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+
+/**
+ * __useAuthenticateGoogleMutation__
+ *
+ * To run a mutation, you first call `useAuthenticateGoogleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAuthenticateGoogleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [authenticateGoogleMutation, { data, loading, error }] = useAuthenticateGoogleMutation({
+ *   variables: {
+ *      idToken: // value for 'idToken'
+ *   },
+ * });
+ */
+export function useAuthenticateGoogleMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>) {
+        return ApolloReactHooks.useMutation<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>(AuthenticateGoogleDocument, baseOptions);
+      }
+export type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
+export type AuthenticateGoogleMutationResult = ApolloReactCommon.MutationResult<AuthenticateGoogleMutation>;
+export type AuthenticateGoogleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
 export const DeleteCommentDocument = gql`
     mutation deleteComment($id: ID!) {
   deleteComment(id: $id)
@@ -2145,6 +2335,137 @@ export function useLikePostMutation(baseOptions?: ApolloReactHooks.MutationHookO
 export type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
 export type LikePostMutationResult = ApolloReactCommon.MutationResult<LikePostMutation>;
 export type LikePostMutationOptions = ApolloReactCommon.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
+export const PreSignUrlDocument = gql`
+    mutation preSignUrl($input: PreSignedUrlInput!) {
+  preSignUrl(input: $input) {
+    url
+    type
+    filename
+  }
+}
+    `;
+export type PreSignUrlMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlMutation, PreSignUrlMutationVariables>;
+
+/**
+ * __usePreSignUrlMutation__
+ *
+ * To run a mutation, you first call `usePreSignUrlMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePreSignUrlMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [preSignUrlMutation, { data, loading, error }] = usePreSignUrlMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function usePreSignUrlMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<PreSignUrlMutation, PreSignUrlMutationVariables>) {
+        return ApolloReactHooks.useMutation<PreSignUrlMutation, PreSignUrlMutationVariables>(PreSignUrlDocument, baseOptions);
+      }
+export type PreSignUrlMutationHookResult = ReturnType<typeof usePreSignUrlMutation>;
+export type PreSignUrlMutationResult = ApolloReactCommon.MutationResult<PreSignUrlMutation>;
+export type PreSignUrlMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlMutation, PreSignUrlMutationVariables>;
+export const PreSignUrlsDocument = gql`
+    mutation preSignUrls($input: [PreSignedUrlnput]!) {
+  preSignUrls(input: $input) {
+    url
+    type
+    filename
+  }
+}
+    `;
+export type PreSignUrlsMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+
+/**
+ * __usePreSignUrlsMutation__
+ *
+ * To run a mutation, you first call `usePreSignUrlsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePreSignUrlsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [preSignUrlsMutation, { data, loading, error }] = usePreSignUrlsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function usePreSignUrlsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>) {
+        return ApolloReactHooks.useMutation<PreSignUrlsMutation, PreSignUrlsMutationVariables>(PreSignUrlsDocument, baseOptions);
+      }
+export type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>;
+export type PreSignUrlsMutationResult = ApolloReactCommon.MutationResult<PreSignUrlsMutation>;
+export type PreSignUrlsMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+export const RefreshTokenDocument = gql`
+    mutation refreshToken($refreshToken: String!) {
+  token: refreshToken(refreshToken: $refreshToken) {
+    access_token
+  }
+}
+    `;
+export type RefreshTokenMutationFn = ApolloReactCommon.MutationFunction<RefreshTokenMutation, RefreshTokenMutationVariables>;
+
+/**
+ * __useRefreshTokenMutation__
+ *
+ * To run a mutation, you first call `useRefreshTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRefreshTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [refreshTokenMutation, { data, loading, error }] = useRefreshTokenMutation({
+ *   variables: {
+ *      refreshToken: // value for 'refreshToken'
+ *   },
+ * });
+ */
+export function useRefreshTokenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>) {
+        return ApolloReactHooks.useMutation<RefreshTokenMutation, RefreshTokenMutationVariables>(RefreshTokenDocument, baseOptions);
+      }
+export type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>;
+export type RefreshTokenMutationResult = ApolloReactCommon.MutationResult<RefreshTokenMutation>;
+export type RefreshTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RefreshTokenMutation, RefreshTokenMutationVariables>;
+export const RegisterDeviceTokenDocument = gql`
+    mutation registerDeviceToken($token: String!, $platform: PlatformType!) {
+  registerDeviceToken(token: $token, platform: $platform)
+}
+    `;
+export type RegisterDeviceTokenMutationFn = ApolloReactCommon.MutationFunction<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+
+/**
+ * __useRegisterDeviceTokenMutation__
+ *
+ * To run a mutation, you first call `useRegisterDeviceTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterDeviceTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [registerDeviceTokenMutation, { data, loading, error }] = useRegisterDeviceTokenMutation({
+ *   variables: {
+ *      token: // value for 'token'
+ *      platform: // value for 'platform'
+ *   },
+ * });
+ */
+export function useRegisterDeviceTokenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>) {
+        return ApolloReactHooks.useMutation<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>(RegisterDeviceTokenDocument, baseOptions);
+      }
+export type RegisterDeviceTokenMutationHookResult = ReturnType<typeof useRegisterDeviceTokenMutation>;
+export type RegisterDeviceTokenMutationResult = ApolloReactCommon.MutationResult<RegisterDeviceTokenMutation>;
+export type RegisterDeviceTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
 export const ToggleNotificationSettingsDocument = gql`
     mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
   toggleNotificationSettings(input: $input) {

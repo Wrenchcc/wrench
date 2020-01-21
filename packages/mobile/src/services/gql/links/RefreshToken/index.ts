@@ -1,5 +1,4 @@
-import { Alert } from 'react-native'
-import { Observable } from 'apollo-link'
+import { Observable } from '@apollo/client'
 import { onError } from 'apollo-link-error'
 import { showSpamToast } from 'store'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'

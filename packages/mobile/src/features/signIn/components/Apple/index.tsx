@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import { useAuthenticateAppleMutation } from '@wrench/common'
 import { AppNavigation } from 'navigation'
 import { useTranslation } from 'react-i18next'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -7,16 +8,17 @@ import { pathOr } from 'rambda'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'services/gql'
-import { authenticateApple } from 'services/graphql/mutations/user/authenticateApple'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
+import { setTokens } from 'utils/storage/auth'
 import { Icon } from 'ui'
 import { apple } from 'images'
 import { Button, Text, Loader } from './styles'
 
-function Apple({ authenticateApple: authenticateAppleMutation, border }) {
+function Apple({ border }) {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
+  const [authenticate] = useAuthenticateAppleMutation()
 
   const handleLoginManager = useCallback(async () => {
     try {
@@ -31,9 +33,19 @@ function Apple({ authenticateApple: authenticateAppleMutation, border }) {
 
       AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.APPLE)
 
-      await authenticateAppleMutation(appleResponse.identityToken, {
-        firstName: pathOr(null, ['fullName', 'givenName'], appleResponse),
-        lastName: pathOr(null, ['fullName', 'familyName'], appleResponse),
+      await authenticate({
+        variables: {
+          identityToken: appleResponse.identityToken,
+          user: {
+            firstName: pathOr(null, ['fullName', 'givenName'], appleResponse),
+            lastName: pathOr(null, ['fullName', 'familyName'], appleResponse),
+          },
+        },
+        update: async (_, { data }) => {
+          const { access_token, refresh_token } = data.authenticateApple
+          await setTokens(access_token, refresh_token)
+          track(events.USER_SIGNED_IN)
+        },
       })
 
       track(events.USER_SIGNED_IN_APPLE_SUCCESSFULL)
@@ -60,4 +72,4 @@ function Apple({ authenticateApple: authenticateAppleMutation, border }) {
   )
 }
 
-export default authenticateApple(Apple)
+export default Apple

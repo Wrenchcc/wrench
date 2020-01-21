@@ -1,4 +1,4 @@
-import { ApolloLink } from 'apollo-link'
+import { ApolloLink } from '@apollo/client'
 import AuthLink from './Auth'
 import HttpLink from './Http'
 import OfflineLink from './Offline'

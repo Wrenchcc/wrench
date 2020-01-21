@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
+import { useAuthenticateFacebookMutation } from '@wrench/common'
+import { setTokens } from 'utils/storage/auth'
 import { AppNavigation } from 'navigation'
 import { useTranslation } from 'react-i18next'
 import { LoginManager, AccessToken } from 'react-native-fbsdk'
@@ -8,14 +10,14 @@ import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'services/gql'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
-import { authenticateFacebook } from 'services/graphql/mutations/user/authenticateFacebook'
 import { Icon } from 'ui'
 import { facebook } from 'images'
 import { Button, Text, Loader } from './styles'
 
-function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
+function Facebook() {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
+  const [authenticate] = useAuthenticateFacebookMutation()
 
   const handleLoginManager = useCallback(async () => {
     try {
@@ -30,7 +32,16 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
       }
 
       const facebookResponse = await AccessToken.getCurrentAccessToken()
-      await authenticateFacebookMutation(facebookResponse.accessToken)
+      await authenticate({
+        variables: {
+          token: facebookResponse.accessToken,
+        },
+        update: async (_, { data }) => {
+          const { access_token, refresh_token } = data.authenticateFacebook
+          await setTokens(access_token, refresh_token)
+          track(events.USER_SIGNED_IN)
+        },
+      })
 
       track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
       const { data } = await getCurrentUser()
@@ -56,4 +67,4 @@ function Facebook({ authenticateFacebook: authenticateFacebookMutation }) {
   )
 }
 
-export default authenticateFacebook(Facebook)
+export default Facebook

@@ -1,0 +1,6 @@
+mutation authenticateFacebook($token: String!) {
+  authenticateFacebook(token: $token) {
+    access_token
+    refresh_token
+  }
+}

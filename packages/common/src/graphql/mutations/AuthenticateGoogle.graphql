@@ -1,0 +1,6 @@
+mutation authenticateGoogle($idToken: String!) {
+  authenticateGoogle(idToken: $idToken) {
+    access_token
+    refresh_token
+  }
+}

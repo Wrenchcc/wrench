@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import { gql } from '@apollo/client'
 import userInfoFragment from 'services/graphql/fragments/user/userInfo'
 import projectInfoFragment from 'services/graphql/fragments/project/projectInfo'
 import commentsConnectionFragment from 'services/graphql/fragments/post/commentsConnection'

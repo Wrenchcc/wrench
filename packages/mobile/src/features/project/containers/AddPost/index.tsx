@@ -3,7 +3,6 @@ import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, dismissModal } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
-import { addPost } from 'services/graphql/mutations/post/addPost'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
@@ -13,7 +12,8 @@ import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
 
-function AddPost({ addPost: addPostMutation }) {
+function AddPost() {
+  const addPostMutation = () => {}
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
 
@@ -95,4 +95,4 @@ function AddPost({ addPost: addPostMutation }) {
   )
 }
 
-export default addPost(AddPost)
+export default AddPost

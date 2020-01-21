@@ -1,5 +1,5 @@
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { graphql } from '@apollo/react-hoc'
+import { gql } from '@apollo/client'
 import { removeSelectedProjectId } from 'store/post'
 import { logError } from 'utils/sentry'
 

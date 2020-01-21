@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import { gql } from '@apollo/client'
 import commentInfoSmall from 'services/graphql/fragments/comment/commentInfoSmall'
 
 export default gql`

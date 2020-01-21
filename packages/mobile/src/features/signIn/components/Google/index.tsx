@@ -1,20 +1,22 @@
 import React, { useCallback, useState } from 'react'
 import { AppNavigation } from 'navigation'
+import { useAuthenticateGoogleMutation } from '@wrench/common'
+import { setTokens } from 'utils/storage/auth'
 import { useTranslation } from 'react-i18next'
 import { GoogleSignin } from 'react-native-google-signin'
 import AsyncStorage from '@react-native-community/async-storage'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'services/gql'
-import { authenticateGoogle } from 'services/graphql/mutations/user/authenticateGoogle'
 import { track, events } from 'utils/analytics'
 import { Icon } from 'ui'
 import { google } from 'images'
 import { Button, Text, Loader } from './styles'
 
-function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
+function Google({ border }) {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
+  const [authenticate] = useAuthenticateGoogleMutation()
 
   const handleLoginManager = useCallback(async () => {
     try {
@@ -30,7 +32,16 @@ function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
 
       AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.GOOGLE)
 
-      await authenticateGoogleMutation(userInfo.idToken, userInfo.serverAuthCode)
+      await authenticate({
+        variables: {
+          idToken: userInfo.idToken,
+        },
+        update: async (_, { data }) => {
+          const { access_token, refresh_token } = data.authenticateGoogle
+          await setTokens(access_token, refresh_token)
+          track(events.USER_SIGNED_IN)
+        },
+      })
 
       track(events.USER_SIGNED_IN_GOOGLE_SUCCESSFULL)
       const { data } = await getCurrentUser()
@@ -54,4 +65,4 @@ function Google({ authenticateGoogle: authenticateGoogleMutation, border }) {
   )
 }
 
-export default authenticateGoogle(Google)
+export default Google
