@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { followProject } from 'services/graphql/mutations/project/followProject'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
-function ProjectCard({ onPress, project, followProject: followProjectMutation, style }) {
+function ProjectCard({ onPress, project, style }) {
+  const followProjectMutation = () => {}
   const { t } = useTranslation()
 
   const handleFollow = useCallback(() => {
@@ -39,4 +39,4 @@ function ProjectCard({ onPress, project, followProject: followProjectMutation, s
   )
 }
 
-export default followProject(ProjectCard)
+export default ProjectCard

@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
-import { addProject } from 'services/graphql/mutations/project/addProject'
 import { useNavigation, SCREENS } from 'navigation'
 import { useProjectStore, PROJECT } from 'store'
 import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
@@ -15,7 +14,8 @@ function formatModel(model) {
   return `${model.brand.name} ${model.model} ${model.year}`
 }
 
-function AddProjectModel({ addProject: addProjectMutation }) {
+function AddProjectModel() {
+  const addProjectMutation = () => {}
   const { t } = useTranslation()
   const { navigate, navigateBack, dismissModal } = useNavigation()
   const [query, setQuery] = useState()
@@ -130,4 +130,4 @@ function AddProjectModel({ addProject: addProjectMutation }) {
   )
 }
 
-export default addProject(AddProjectModel)
+export default AddProjectModel

@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
 import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
-import { editProject } from 'services/graphql/mutations/project/editProject'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 
@@ -10,7 +9,8 @@ function formatModel(model) {
   return `${model.brand.name} ${model.model} ${model.year}`
 }
 
-function EditModel({ editProject: editProjectMutation, passProps }) {
+function EditModel({ passProps }) {
+  const editProjectMutation = () => {}
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
   const [query, setQuery] = useState('')
@@ -88,4 +88,4 @@ function EditModel({ editProject: editProjectMutation, passProps }) {
   )
 }
 
-export default editProject(EditModel)
+export default EditModel

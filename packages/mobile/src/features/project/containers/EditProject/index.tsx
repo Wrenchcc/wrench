@@ -1,19 +1,15 @@
 import React, { useState, useCallback } from 'react'
 import { ScrollView, ActivityIndicator, Alert } from 'react-native'
-import { compose } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { SCREENS, useNavigation } from 'navigation'
-import { editProject } from 'services/graphql/mutations/project/editProject'
-import { deleteProject } from 'services/graphql/mutations/project/deleteProject'
 import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
-function EditProject({
-  project,
-  deleteProject: deleteProjectMutations,
-  editProject: editProjectMutation,
-}) {
+function EditProject({ project }) {
+  const deleteProjectMutations = () => {}
+  const editProjectMutation = () => {}
+
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
 
@@ -137,4 +133,4 @@ function EditProject({
   )
 }
 
-export default compose(deleteProject, editProject)(EditProject)
+export default EditProject

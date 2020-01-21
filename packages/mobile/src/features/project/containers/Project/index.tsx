@@ -5,7 +5,6 @@ import Animated from 'react-native-reanimated'
 import { isEmpty } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
-import { followProject } from 'services/graphql/mutations/project/followProject'
 import Post from 'components/Post'
 import { Edit, EmptyState, Title, Share, Text } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
@@ -19,7 +18,8 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 // TODO: add initialData from nav (Project, user etc)
 // Return data as edges
 // Rest like "user", "post"
-function Project({ project, slug, id, postId, followProject: followProjectMutation }) {
+function Project({ project, slug, id, postId }) {
+  const followProjectMutation = () => {}
   const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
 
@@ -143,4 +143,4 @@ function Project({ project, slug, id, postId, followProject: followProjectMutati
   )
 }
 
-export default followProject(Project)
+export default Project
