@@ -1,7 +1,7 @@
 #import "../fragments/UserFragment.graphql"
 
-query followers($projectId: ID!, $after: String) {
-  followers(projectId: $projectId, after: $after) @connection(key: "followers", filter: ["projectId"]) {
+query followers($projectId: ID!, $after: String, $first: Int = 10) {
+  followers(projectId: $projectId, after: $after, first: $first) @connection(key: "followers", filter: ["projectId"]) {
     pageInfo {
       hasNextPage
     }

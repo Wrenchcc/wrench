@@ -1,7 +1,7 @@
 #import "../fragments/UserFragment.graphql"
 #import "../fragments/PostFragment.graphql"
 
-query currentUserProfile($after: String) {
+query currentUserProfile($after: String, $first: Int = 5) {
   user: currentUser {
     ...UserFragment
     projects: projectsConnection {
@@ -19,7 +19,7 @@ query currentUserProfile($after: String) {
         }
       }
     }
-    posts: postsConnection(after: $after, first: 5) @connection(key: "posts") {
+    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
       edges {
         cursor
         node {

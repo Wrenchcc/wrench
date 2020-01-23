@@ -1,0 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
+exports.isFetchingMore = function (networkStatus) { return networkStatus === 3; };
+exports.isRefetching = function (networkStatus) { return networkStatus === 4; };
+//# sourceMappingURL=networkStatus.js.map

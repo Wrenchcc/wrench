@@ -1,6 +1,6 @@
 #import "../fragments/PostFragment.graphql"
 
-query posts($after: String, $first: Int) @connection(key: "posts") {
+query posts($after: String, $first: Int = 5) @connection(key: "posts") {
   posts(after: $after, first: $first) {
     pageInfo {
       hasNextPage

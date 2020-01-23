@@ -1,8 +1,9 @@
 #import "../fragments/ProjectFragment.graphql"
 
-query similarProjects($id: ID!) {
-  similarProjects(id: $id) {
+query similarProjects($id: ID!, $first: Int = 5) {
+  similarProjects(id: $id, first: $first) {
     edges {
+      cursor
       node {
         cover {
           uri

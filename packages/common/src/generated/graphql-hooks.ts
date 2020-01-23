@@ -1131,6 +1131,47 @@ export type UserSettingsFragmentFragment = (
   )> }
 );
 
+export type AddCommentMutationVariables = {
+  postId: Scalars['ID'],
+  commentId?: Maybe<Scalars['ID']>,
+  input: CommentInput
+};
+
+
+export type AddCommentMutation = (
+  { __typename?: 'Mutation' }
+  & { addComment: Maybe<(
+    { __typename?: 'Comment' }
+    & Pick<Comment, 'commentId' | 'id' | 'text'>
+  )> }
+);
+
+export type AddPostMutationVariables = {
+  input: PostInput
+};
+
+
+export type AddPostMutation = (
+  { __typename?: 'Mutation' }
+  & { addPost: Maybe<(
+    { __typename?: 'Post' }
+    & PostFragmentFragment
+  )> }
+);
+
+export type AddProjectMutationVariables = {
+  input: ProjectInput
+};
+
+
+export type AddProjectMutation = (
+  { __typename?: 'Mutation' }
+  & { addProject: Maybe<(
+    { __typename?: 'Project' }
+    & ProjectFragmentFragment
+  )> }
+);
+
 export type AuthenticateAppleMutationVariables = {
   identityToken: Scalars['String'],
   user: ApplePayload
@@ -1181,6 +1222,39 @@ export type DeleteCommentMutation = (
   & Pick<Mutation, 'deleteComment'>
 );
 
+export type DeleteNotificationMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type DeleteNotificationMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteNotification'>
+);
+
+export type DeletePostMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type DeletePostMutation = (
+  { __typename?: 'Mutation' }
+  & { deletePost: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id'>
+  )> }
+);
+
+export type DeleteProjectMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type DeleteProjectMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteProject'>
+);
+
 export type EditPostMutationVariables = {
   id: Scalars['ID'],
   input: EditPostInput
@@ -1192,6 +1266,20 @@ export type EditPostMutation = (
   & { editPost: Maybe<(
     { __typename?: 'Post' }
     & PostFragmentFragment
+  )> }
+);
+
+export type EditProjectMutationVariables = {
+  id: Scalars['ID'],
+  input: ProjectInput
+};
+
+
+export type EditProjectMutation = (
+  { __typename?: 'Mutation' }
+  & { editProject: Maybe<(
+    { __typename?: 'Project' }
+    & Pick<Project, 'id' | 'title'>
   )> }
 );
 
@@ -1257,6 +1345,14 @@ export type LikePostMutation = (
       & Pick<Likes, 'isLiked' | 'totalCount'>
     )> }
   )> }
+);
+
+export type MarkAllNotificationsSeenMutationVariables = {};
+
+
+export type MarkAllNotificationsSeenMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'markAllNotificationsSeen'>
 );
 
 export type PreSignUrlMutationVariables = {
@@ -1344,7 +1440,10 @@ export type CommentsQueryVariables = {
 
 export type CommentsQuery = (
   { __typename?: 'Query' }
-  & { comments: Maybe<(
+  & { post: Maybe<(
+    { __typename?: 'Post' }
+    & PostFragmentFragment
+  )>, comments: Maybe<(
     { __typename?: 'CommentConnection' }
     & { pageInfo: (
       { __typename?: 'PageInfo' }
@@ -1380,7 +1479,8 @@ export type CurrentUserQuery = (
 );
 
 export type CurrentUserProfileQueryVariables = {
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1445,7 +1545,8 @@ export type CurrentUserSettingsQuery = (
 );
 
 export type FeedQueryVariables = {
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1472,7 +1573,8 @@ export type FeedQuery = (
 
 export type FollowersQueryVariables = {
   projectId: Scalars['ID'],
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1495,7 +1597,8 @@ export type FollowersQuery = (
 );
 
 export type NotificationsQueryVariables = {
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1581,7 +1684,8 @@ export type ProjectQueryVariables = {
   id?: Maybe<Scalars['ID']>,
   slug?: Maybe<Scalars['LowercaseString']>,
   after?: Maybe<Scalars['String']>,
-  postId?: Maybe<Scalars['ID']>
+  postId?: Maybe<Scalars['ID']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1678,9 +1782,49 @@ export type ProjectsQuery = (
   )> }
 );
 
+export type RepliesQueryVariables = {
+  id: Scalars['ID'],
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
+};
+
+
+export type RepliesQuery = (
+  { __typename?: 'Query' }
+  & { comment: Maybe<(
+    { __typename?: 'Comment' }
+    & { replies: Maybe<(
+      { __typename?: 'CommentConnection' }
+      & Pick<CommentConnection, 'totalCount'>
+      & { pageInfo: (
+        { __typename?: 'PageInfo' }
+        & Pick<PageInfo, 'hasNextPage'>
+      ), edges: Maybe<Array<(
+        { __typename?: 'CommentEdge' }
+        & Pick<CommentEdge, 'cursor'>
+        & { node: (
+          { __typename?: 'Comment' }
+          & Pick<Comment, 'id' | 'commentId' | 'text' | 'createdAt'>
+          & { permissions: Maybe<(
+            { __typename?: 'CommentPermissions' }
+            & Pick<CommentPermissions, 'isOwner'>
+          )>, likes: Maybe<(
+            { __typename?: 'Likes' }
+            & Pick<Likes, 'isLiked' | 'totalCount'>
+          )>, user: Maybe<(
+            { __typename?: 'User' }
+            & UserFragmentFragment
+          )> }
+        ) }
+      )>> }
+    )> }
+  )> }
+);
+
 export type SearchModelsQueryVariables = {
   query: Scalars['String'],
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1707,7 +1851,8 @@ export type SearchModelsQuery = (
 
 export type SearchProjectsQueryVariables = {
   query: Scalars['String'],
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1735,7 +1880,8 @@ export type SearchProjectsQuery = (
 
 export type SearchUsersQueryVariables = {
   query: Scalars['String'],
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1759,7 +1905,8 @@ export type SearchUsersQuery = (
 );
 
 export type SimilarProjectsQueryVariables = {
-  id: Scalars['ID']
+  id: Scalars['ID'],
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1769,6 +1916,7 @@ export type SimilarProjectsQuery = (
     { __typename?: 'ProjectsConnection' }
     & { edges: Maybe<Array<(
       { __typename?: 'ProjectEdge' }
+      & Pick<ProjectEdge, 'cursor'>
       & { node: (
         { __typename?: 'Project' }
         & { cover: Maybe<(
@@ -1783,7 +1931,8 @@ export type SimilarProjectsQuery = (
 
 export type UserQueryVariables = {
   username: Scalars['LowercaseString'],
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1827,7 +1976,8 @@ export type UserQuery = (
 
 export type UserFollowingProjectsQueryVariables = {
   username: Scalars['LowercaseString'],
-  after?: Maybe<Scalars['String']>
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
 };
 
 
@@ -1843,6 +1993,7 @@ export type UserFollowingProjectsQuery = (
         & Pick<PageInfo, 'hasNextPage'>
       ), edges: Maybe<Array<(
         { __typename?: 'ProjectEdge' }
+        & Pick<ProjectEdge, 'cursor'>
         & { node: (
           { __typename?: 'Project' }
           & { cover: Maybe<(
@@ -2033,6 +2184,106 @@ export const UserSettingsFragmentFragmentDoc = gql`
   }
 }
     `;
+export const AddCommentDocument = gql`
+    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
+  addComment(postId: $postId, commentId: $commentId, input: $input) {
+    commentId
+    id
+    text
+  }
+}
+    `;
+export type AddCommentMutationFn = ApolloReactCommon.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
+
+/**
+ * __useAddCommentMutation__
+ *
+ * To run a mutation, you first call `useAddCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCommentMutation, { data, loading, error }] = useAddCommentMutation({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      commentId: // value for 'commentId'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAddCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>) {
+        return ApolloReactHooks.useMutation<AddCommentMutation, AddCommentMutationVariables>(AddCommentDocument, baseOptions);
+      }
+export type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>;
+export type AddCommentMutationResult = ApolloReactCommon.MutationResult<AddCommentMutation>;
+export type AddCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCommentMutation, AddCommentMutationVariables>;
+export const AddPostDocument = gql`
+    mutation addPost($input: PostInput!) {
+  addPost(input: $input) {
+    ...PostFragment
+  }
+}
+    ${PostFragmentFragmentDoc}`;
+export type AddPostMutationFn = ApolloReactCommon.MutationFunction<AddPostMutation, AddPostMutationVariables>;
+
+/**
+ * __useAddPostMutation__
+ *
+ * To run a mutation, you first call `useAddPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addPostMutation, { data, loading, error }] = useAddPostMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAddPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddPostMutation, AddPostMutationVariables>) {
+        return ApolloReactHooks.useMutation<AddPostMutation, AddPostMutationVariables>(AddPostDocument, baseOptions);
+      }
+export type AddPostMutationHookResult = ReturnType<typeof useAddPostMutation>;
+export type AddPostMutationResult = ApolloReactCommon.MutationResult<AddPostMutation>;
+export type AddPostMutationOptions = ApolloReactCommon.BaseMutationOptions<AddPostMutation, AddPostMutationVariables>;
+export const AddProjectDocument = gql`
+    mutation addProject($input: ProjectInput!) {
+  addProject(input: $input) {
+    ...ProjectFragment
+  }
+}
+    ${ProjectFragmentFragmentDoc}`;
+export type AddProjectMutationFn = ApolloReactCommon.MutationFunction<AddProjectMutation, AddProjectMutationVariables>;
+
+/**
+ * __useAddProjectMutation__
+ *
+ * To run a mutation, you first call `useAddProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addProjectMutation, { data, loading, error }] = useAddProjectMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAddProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddProjectMutation, AddProjectMutationVariables>) {
+        return ApolloReactHooks.useMutation<AddProjectMutation, AddProjectMutationVariables>(AddProjectDocument, baseOptions);
+      }
+export type AddProjectMutationHookResult = ReturnType<typeof useAddProjectMutation>;
+export type AddProjectMutationResult = ApolloReactCommon.MutationResult<AddProjectMutation>;
+export type AddProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<AddProjectMutation, AddProjectMutationVariables>;
 export const AuthenticateAppleDocument = gql`
     mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {
   authenticateApple(identityToken: $identityToken, user: $user) {
@@ -2163,6 +2414,98 @@ export function useDeleteCommentMutation(baseOptions?: ApolloReactHooks.Mutation
 export type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
 export type DeleteCommentMutationResult = ApolloReactCommon.MutationResult<DeleteCommentMutation>;
 export type DeleteCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export const DeleteNotificationDocument = gql`
+    mutation deleteNotification($id: ID!) {
+  deleteNotification(id: $id)
+}
+    `;
+export type DeleteNotificationMutationFn = ApolloReactCommon.MutationFunction<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+
+/**
+ * __useDeleteNotificationMutation__
+ *
+ * To run a mutation, you first call `useDeleteNotificationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteNotificationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteNotificationMutation, { data, loading, error }] = useDeleteNotificationMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteNotificationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteNotificationMutation, DeleteNotificationMutationVariables>(DeleteNotificationDocument, baseOptions);
+      }
+export type DeleteNotificationMutationHookResult = ReturnType<typeof useDeleteNotificationMutation>;
+export type DeleteNotificationMutationResult = ApolloReactCommon.MutationResult<DeleteNotificationMutation>;
+export type DeleteNotificationMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+export const DeletePostDocument = gql`
+    mutation deletePost($id: ID!) {
+  deletePost(id: $id) {
+    id
+  }
+}
+    `;
+export type DeletePostMutationFn = ApolloReactCommon.MutationFunction<DeletePostMutation, DeletePostMutationVariables>;
+
+/**
+ * __useDeletePostMutation__
+ *
+ * To run a mutation, you first call `useDeletePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeletePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deletePostMutation, { data, loading, error }] = useDeletePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeletePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeletePostMutation, DeletePostMutationVariables>(DeletePostDocument, baseOptions);
+      }
+export type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>;
+export type DeletePostMutationResult = ApolloReactCommon.MutationResult<DeletePostMutation>;
+export type DeletePostMutationOptions = ApolloReactCommon.BaseMutationOptions<DeletePostMutation, DeletePostMutationVariables>;
+export const DeleteProjectDocument = gql`
+    mutation deleteProject($id: ID!) {
+  deleteProject(id: $id)
+}
+    `;
+export type DeleteProjectMutationFn = ApolloReactCommon.MutationFunction<DeleteProjectMutation, DeleteProjectMutationVariables>;
+
+/**
+ * __useDeleteProjectMutation__
+ *
+ * To run a mutation, you first call `useDeleteProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteProjectMutation, { data, loading, error }] = useDeleteProjectMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteProjectMutation, DeleteProjectMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteProjectMutation, DeleteProjectMutationVariables>(DeleteProjectDocument, baseOptions);
+      }
+export type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>;
+export type DeleteProjectMutationResult = ApolloReactCommon.MutationResult<DeleteProjectMutation>;
+export type DeleteProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
 export const EditPostDocument = gql`
     mutation editPost($id: ID!, $input: EditPostInput!) {
   editPost(id: $id, input: $input) {
@@ -2196,6 +2539,40 @@ export function useEditPostMutation(baseOptions?: ApolloReactHooks.MutationHookO
 export type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>;
 export type EditPostMutationResult = ApolloReactCommon.MutationResult<EditPostMutation>;
 export type EditPostMutationOptions = ApolloReactCommon.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
+export const EditProjectDocument = gql`
+    mutation editProject($id: ID!, $input: ProjectInput!) {
+  editProject(id: $id, input: $input) {
+    id
+    title
+  }
+}
+    `;
+export type EditProjectMutationFn = ApolloReactCommon.MutationFunction<EditProjectMutation, EditProjectMutationVariables>;
+
+/**
+ * __useEditProjectMutation__
+ *
+ * To run a mutation, you first call `useEditProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editProjectMutation, { data, loading, error }] = useEditProjectMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useEditProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditProjectMutation, EditProjectMutationVariables>) {
+        return ApolloReactHooks.useMutation<EditProjectMutation, EditProjectMutationVariables>(EditProjectDocument, baseOptions);
+      }
+export type EditProjectMutationHookResult = ReturnType<typeof useEditProjectMutation>;
+export type EditProjectMutationResult = ApolloReactCommon.MutationResult<EditProjectMutation>;
+export type EditProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<EditProjectMutation, EditProjectMutationVariables>;
 export const EditUserDocument = gql`
     mutation editUser($input: EditUserInput!) {
   editUser(input: $input) {
@@ -2335,6 +2712,35 @@ export function useLikePostMutation(baseOptions?: ApolloReactHooks.MutationHookO
 export type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
 export type LikePostMutationResult = ApolloReactCommon.MutationResult<LikePostMutation>;
 export type LikePostMutationOptions = ApolloReactCommon.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
+export const MarkAllNotificationsSeenDocument = gql`
+    mutation markAllNotificationsSeen {
+  markAllNotificationsSeen
+}
+    `;
+export type MarkAllNotificationsSeenMutationFn = ApolloReactCommon.MutationFunction<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+
+/**
+ * __useMarkAllNotificationsSeenMutation__
+ *
+ * To run a mutation, you first call `useMarkAllNotificationsSeenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMarkAllNotificationsSeenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [markAllNotificationsSeenMutation, { data, loading, error }] = useMarkAllNotificationsSeenMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMarkAllNotificationsSeenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>) {
+        return ApolloReactHooks.useMutation<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>(MarkAllNotificationsSeenDocument, baseOptions);
+      }
+export type MarkAllNotificationsSeenMutationHookResult = ReturnType<typeof useMarkAllNotificationsSeenMutation>;
+export type MarkAllNotificationsSeenMutationResult = ApolloReactCommon.MutationResult<MarkAllNotificationsSeenMutation>;
+export type MarkAllNotificationsSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
 export const PreSignUrlDocument = gql`
     mutation preSignUrl($input: PreSignedUrlInput!) {
   preSignUrl(input: $input) {
@@ -2535,6 +2941,9 @@ export type CommentLazyQueryHookResult = ReturnType<typeof useCommentLazyQuery>;
 export type CommentQueryResult = ApolloReactCommon.QueryResult<CommentQuery, CommentQueryVariables>;
 export const CommentsDocument = gql`
     query comments($postId: ID!, $after: String) {
+  post(id: $postId) {
+    ...PostFragment
+  }
   comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
     pageInfo {
       hasNextPage
@@ -2547,7 +2956,8 @@ export const CommentsDocument = gql`
     }
   }
 }
-    ${CommentFragmentFragmentDoc}`;
+    ${PostFragmentFragmentDoc}
+${CommentFragmentFragmentDoc}`;
 
 /**
  * __useCommentsQuery__
@@ -2629,7 +3039,7 @@ export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
 export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
 export type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
 export const CurrentUserProfileDocument = gql`
-    query currentUserProfile($after: String) {
+    query currentUserProfile($after: String, $first: Int = 5) {
   user: currentUser {
     ...UserFragment
     projects: projectsConnection {
@@ -2647,7 +3057,7 @@ export const CurrentUserProfileDocument = gql`
         }
       }
     }
-    posts: postsConnection(after: $after, first: 5) @connection(key: "posts") {
+    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
       edges {
         cursor
         node {
@@ -2676,6 +3086,7 @@ ${PostFragmentFragmentDoc}`;
  * const { data, loading, error } = useCurrentUserProfileQuery({
  *   variables: {
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -2753,9 +3164,9 @@ export type CurrentUserSettingsQueryHookResult = ReturnType<typeof useCurrentUse
 export type CurrentUserSettingsLazyQueryHookResult = ReturnType<typeof useCurrentUserSettingsLazyQuery>;
 export type CurrentUserSettingsQueryResult = ApolloReactCommon.QueryResult<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>;
 export const FeedDocument = gql`
-    query feed($after: String) {
+    query feed($after: String, $first: Int = 5) {
   feed {
-    posts: postsConnection(after: $after) @connection(key: "posts") {
+    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
       pageInfo {
         hasNextPage
       }
@@ -2783,6 +3194,7 @@ export const FeedDocument = gql`
  * const { data, loading, error } = useFeedQuery({
  *   variables: {
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -2796,8 +3208,8 @@ export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
 export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
 export type FeedQueryResult = ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>;
 export const FollowersDocument = gql`
-    query followers($projectId: ID!, $after: String) {
-  followers(projectId: $projectId, after: $after) @connection(key: "followers", filter: ["projectId"]) {
+    query followers($projectId: ID!, $after: String, $first: Int = 10) {
+  followers(projectId: $projectId, after: $after, first: $first) @connection(key: "followers", filter: ["projectId"]) {
     pageInfo {
       hasNextPage
     }
@@ -2825,6 +3237,7 @@ export const FollowersDocument = gql`
  *   variables: {
  *      projectId: // value for 'projectId'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -2838,8 +3251,8 @@ export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
 export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
 export type FollowersQueryResult = ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
 export const NotificationsDocument = gql`
-    query notifications($after: String) {
-  notifications(after: $after) @connection(key: "notifications") {
+    query notifications($after: String, $first: Int = 10) {
+  notifications(after: $after, first: $first) @connection(key: "notifications") {
     unreadCount
     pageInfo {
       hasNextPage
@@ -2892,6 +3305,7 @@ ${ProjectFragmentFragmentDoc}`;
  * const { data, loading, error } = useNotificationsQuery({
  *   variables: {
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -2938,7 +3352,7 @@ export type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
 export type PostQueryResult = ApolloReactCommon.QueryResult<PostQuery, PostQueryVariables>;
 export const PostsDocument = gql`
-    query posts($after: String, $first: Int) @connection(key: "posts") {
+    query posts($after: String, $first: Int = 5) @connection(key: "posts") {
   posts(after: $after, first: $first) {
     pageInfo {
       hasNextPage
@@ -2980,13 +3394,13 @@ export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
 export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
 export const ProjectDocument = gql`
-    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID) {
+    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {
   post(id: $postId) {
     ...PostFragment
   }
   project(id: $id, slug: $slug) {
     ...ProjectFragment
-    posts: postsConnection(first: 5, after: $after) @connection(key: "posts") {
+    posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
       edges {
         cursor
         node {
@@ -3015,6 +3429,7 @@ ${ProjectFragmentFragmentDoc}`;
  *      slug: // value for 'slug'
  *      after: // value for 'after'
  *      postId: // value for 'postId'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -3028,7 +3443,7 @@ export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectSuggestionsDocument = gql`
-    query projectSuggestions($after: String, $first: Int) {
+    query projectSuggestions($after: String, $first: Int = 5) {
   projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
     type {
       id
@@ -3111,7 +3526,7 @@ export type ProjectTypesQueryHookResult = ReturnType<typeof useProjectTypesQuery
 export type ProjectTypesLazyQueryHookResult = ReturnType<typeof useProjectTypesLazyQuery>;
 export type ProjectTypesQueryResult = ApolloReactCommon.QueryResult<ProjectTypesQuery, ProjectTypesQueryVariables>;
 export const ProjectsDocument = gql`
-    query projects($typeId: ID, $after: String, $first: Int, $type: ProjectSortType!) {
+    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {
   projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: "projects", filter: ["type", "typeId"]) {
     pageInfo {
       hasNextPage
@@ -3158,9 +3573,68 @@ export function useProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHoo
 export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
 export type ProjectsQueryResult = ApolloReactCommon.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export const RepliesDocument = gql`
+    query replies($id: ID!, $after: String, $first: Int = 5) {
+  comment(id: $id) {
+    replies: repliesConnection(after: $after, first: $first) {
+      pageInfo {
+        hasNextPage
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          id
+          commentId
+          text
+          createdAt
+          permissions {
+            isOwner
+          }
+          likes {
+            isLiked
+            totalCount
+          }
+          user {
+            ...UserFragment
+          }
+        }
+      }
+    }
+  }
+}
+    ${UserFragmentFragmentDoc}`;
+
+/**
+ * __useRepliesQuery__
+ *
+ * To run a query within a React component, call `useRepliesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRepliesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRepliesQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useRepliesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
+        return ApolloReactHooks.useQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
+      }
+export function useRepliesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
+        }
+export type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
+export type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
+export type RepliesQueryResult = ApolloReactCommon.QueryResult<RepliesQuery, RepliesQueryVariables>;
 export const SearchModelsDocument = gql`
-    query searchModels($query: String!, $after: String) {
-  models: search(query: $query, after: $after, type: MODELS, first: 20) @connection(key: "models", filter: ["query", "type"]) {
+    query searchModels($query: String!, $after: String, $first: Int = 20) {
+  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: "models", filter: ["query", "type"]) {
     pageInfo {
       hasNextPage
     }
@@ -3194,6 +3668,7 @@ export const SearchModelsDocument = gql`
  *   variables: {
  *      query: // value for 'query'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -3207,8 +3682,8 @@ export type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery
 export type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>;
 export type SearchModelsQueryResult = ApolloReactCommon.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
 export const SearchProjectsDocument = gql`
-    query searchProjects($query: String!, $after: String) {
-  projects: search(query: $query, after: $after, type: PROJECTS) @connection(key: "projects", filter: ["query", "type"]) {
+    query searchProjects($query: String!, $after: String, $first: Int = 10) {
+  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: "projects", filter: ["query", "type"]) {
     pageInfo {
       hasNextPage
     }
@@ -3242,6 +3717,7 @@ export const SearchProjectsDocument = gql`
  *   variables: {
  *      query: // value for 'query'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -3255,8 +3731,8 @@ export type SearchProjectsQueryHookResult = ReturnType<typeof useSearchProjectsQ
 export type SearchProjectsLazyQueryHookResult = ReturnType<typeof useSearchProjectsLazyQuery>;
 export type SearchProjectsQueryResult = ApolloReactCommon.QueryResult<SearchProjectsQuery, SearchProjectsQueryVariables>;
 export const SearchUsersDocument = gql`
-    query searchUsers($query: String!, $after: String) {
-  users: search(query: $query, after: $after, type: USERS) @connection(key: "users", filter: ["query", "type"]) {
+    query searchUsers($query: String!, $after: String, $first: Int = 10) {
+  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: "users", filter: ["query", "type"]) {
     pageInfo {
       hasNextPage
     }
@@ -3287,6 +3763,7 @@ export const SearchUsersDocument = gql`
  *   variables: {
  *      query: // value for 'query'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -3300,9 +3777,10 @@ export type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
 export type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
 export type SearchUsersQueryResult = ApolloReactCommon.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
 export const SimilarProjectsDocument = gql`
-    query similarProjects($id: ID!) {
-  similarProjects(id: $id) {
+    query similarProjects($id: ID!, $first: Int = 5) {
+  similarProjects(id: $id, first: $first) {
     edges {
+      cursor
       node {
         cover {
           uri
@@ -3327,6 +3805,7 @@ export const SimilarProjectsDocument = gql`
  * const { data, loading, error } = useSimilarProjectsQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -3340,7 +3819,7 @@ export type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProject
 export type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
 export type SimilarProjectsQueryResult = ApolloReactCommon.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
 export const UserDocument = gql`
-    query user($username: LowercaseString!, $after: String) {
+    query user($username: LowercaseString!, $after: String, $first: Int = 5) {
   user(username: $username) {
     ...UserFragment
     projects: projectsConnection {
@@ -3358,7 +3837,7 @@ export const UserDocument = gql`
         }
       }
     }
-    posts: postsConnection(after: $after, first: 5) @connection(key: "posts") {
+    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
       edges {
         cursor
         node {
@@ -3388,6 +3867,7 @@ ${PostFragmentFragmentDoc}`;
  *   variables: {
  *      username: // value for 'username'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -3401,14 +3881,15 @@ export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
 export const UserFollowingProjectsDocument = gql`
-    query userFollowingProjects($username: LowercaseString!, $after: String) {
+    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {
   user(username: $username) {
     id
-    projects: followingProjects(after: $after) {
+    projects: followingProjects(after: $after, first: $first) {
       pageInfo {
         hasNextPage
       }
       edges {
+        cursor
         node {
           ...ProjectFragment
           cover {
@@ -3436,6 +3917,7 @@ export const UserFollowingProjectsDocument = gql`
  *   variables: {
  *      username: // value for 'username'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */

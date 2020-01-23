@@ -1,6 +1,6 @@
 #import "../fragments/ProjectFragment.graphql"
 
-query projects($typeId: ID, $after: String, $first: Int, $type: ProjectSortType!) {
+query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {
   projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: "projects", filter: ["type", "typeId"]) {
     pageInfo {
       hasNextPage

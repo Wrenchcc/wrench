@@ -1,0 +1,6 @@
+mutation editProject($id: ID!, $input: ProjectInput!) {
+  editProject(id: $id, input: $input) {
+    id
+    title
+  }
+}

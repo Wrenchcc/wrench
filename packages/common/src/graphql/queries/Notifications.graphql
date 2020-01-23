@@ -1,8 +1,8 @@
 #import "../fragments/UserFragment.graphql"
 #import "../fragments/ProjectFragment.graphql"
 
-query notifications($after: String) {
-  notifications(after: $after) @connection(key: "notifications") {
+query notifications($after: String, $first: Int = 10) {
+  notifications(after: $after, first: $first) @connection(key: "notifications") {
     unreadCount
     pageInfo {
       hasNextPage
