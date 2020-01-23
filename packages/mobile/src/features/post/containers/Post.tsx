@@ -34,9 +34,14 @@ function PostContainer({ postId, commentId }) {
     },
   })
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'comments',
-  ])(CommentsDocument, {
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['comments'])(CommentsDocument, {
     variables: {
       postId,
     },
@@ -70,7 +75,7 @@ function PostContainer({ postId, commentId }) {
 
   return (
     <Page
-      scrollToIndex={data && !isEmpty(data)}
+      scrollToIndex={edges && !isEmpty(edges)}
       headerTitle={t('PostContainer:title')}
       headerAnimation={false}
       stickyFooter={
@@ -89,7 +94,7 @@ function PostContainer({ postId, commentId }) {
         paddingHorizontal={0}
         paddingBottom={COMMENT_FIELD_OFFSET}
         ListHeaderComponent={renderHeader}
-        data={data}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

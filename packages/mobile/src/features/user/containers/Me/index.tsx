@@ -15,17 +15,19 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function Me({ posts }) {
-  const hasPosts = posts && posts.length > 0
+function Me() {
+  const {
+    data: { edges, user },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['user', 'posts'])(CurrentUserProfileDocument)
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'user',
-    'posts',
-  ])(CurrentUserProfileDocument)
+  const hasPosts = edges && edges.length > 0
 
-  return null
-
-  const emptyState = data.user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
+  const emptyState = user && user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
@@ -37,24 +39,24 @@ function Me({ posts }) {
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flexGrow: 1 }}
           ListHeaderComponent={
-            data && (
+            user && (
               <>
                 <Header
-                  firstName={data.user.firstName}
-                  lastName={data.user.lastName}
-                  avatarUrl={data.user.avatarUrl}
+                  firstName={user.firstName}
+                  lastName={user.lastName}
+                  avatarUrl={user.avatarUrl}
                   spacingHorizontal={!hasPosts}
-                  bio={data.user.bio}
-                  website={data.user.website}
-                  location={data.user.location}
+                  bio={user.bio}
+                  website={user.website}
+                  location={user.location}
                 />
 
-                <UserProjects projects={data.user.projects} spacingHorizontal={!hasPosts} />
+                <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
               </>
             )
           }
           ListEmptyComponent={<EmptyState type={emptyState} />}
-          data={data.posts}
+          data={edges}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}

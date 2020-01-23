@@ -11,10 +11,18 @@ function FollowingProjects({ user }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
 
-  const { data, refetch, isFetching, isRefetching, fetchMore, hasNextPage } = usePaginatedQuery([
-    'user',
-    'projects',
-  ])(UserFollowingProjectsDocument)
+  const {
+    data: { edges },
+    refetch,
+    isFetching,
+    isRefetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['user', 'projects'])(UserFollowingProjectsDocument, {
+    variables: {
+      username: user.username,
+    },
+  })
 
   const renderItem = ({ item }) => {
     const onPress = () =>
@@ -32,7 +40,7 @@ function FollowingProjects({ user }) {
       <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
 
       <InfiniteList
-        data={data}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

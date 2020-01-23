@@ -60,13 +60,14 @@ function Explore() {
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'posts',
-  ])(PostsDocument, {
-    variables: {
-      first: 6,
-    },
-  })
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['posts'])(PostsDocument)
 
   const state = {
     finished: new Value(0),
@@ -246,7 +247,7 @@ function Explore() {
         spacingSeparator
         initialNumToRender={2}
         ListHeaderComponent={<Popular />}
-        data={data}
+        data={edges}
         refetch={handleRefetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

@@ -9,9 +9,14 @@ const renderItem = ({ item }) => <User data={item.node} />
 function Followers({ id }) {
   const { t } = useTranslation()
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'followers',
-  ])(FollowersDocument, {
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['followers'])(FollowersDocument, {
     variables: {
       projectId: id,
     },
@@ -22,7 +27,7 @@ function Followers({ id }) {
       <FlatList
         ListEmptyComponent={<NoResults />}
         borderSeparator
-        data={data}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

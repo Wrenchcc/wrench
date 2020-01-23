@@ -57,7 +57,7 @@ function Users({ query }) {
 
   const handleSave = useCallback(
     item => {
-      const items = recent.concat({ node: item })
+      const items = [{ node: item }, ...recent]
       const saved = recent.some(({ node }) => node.id === item.id)
 
       if (!saved) {

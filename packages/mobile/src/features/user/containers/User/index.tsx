@@ -14,24 +14,26 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function User({ user }) {
+function User({ user: initialUserData }) {
   const { t } = useTranslation()
 
   const {
-    data,
+    data: { edges, user },
     isFetching,
     fetchMore,
     isRefetching,
     hasNextPage,
     refetch,
     error,
-  } = usePaginatedQuery(['user', 'posts'])(UserDocument, {
+  } = usePaginatedQuery(['user', 'posts'], {
+    user: initialUserData,
+  })(UserDocument, {
     variables: {
-      username: user.username,
+      username: initialUserData.username,
     },
   })
 
-  const hasPosts = data && data && data.length > 0
+  const hasPosts = edges && edges.length > 0
 
   const ListHeaderComponent = error ? (
     <Banner content={t('UserProfile:notfound')} />
@@ -48,7 +50,7 @@ function User({ user }) {
           location={user.location}
         />
 
-        <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />
+        {user.projects && <UserProjects projects={user.projects} spacingHorizontal={!hasPosts} />}
       </>
     )
   )
@@ -68,7 +70,7 @@ function User({ user }) {
           contentContainerStyle={{ flexGrow: 1 }}
           ListHeaderComponent={ListHeaderComponent}
           ListEmptyComponent={user && !error && <FollowingProjects user={user} />}
-          data={data}
+          data={edges}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}

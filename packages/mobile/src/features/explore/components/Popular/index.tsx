@@ -9,9 +9,14 @@ function Popular() {
   const { navigate } = useNavigation()
   const { t } = useTranslation()
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'projects',
-  ])(ProjectsDocument, {
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
       type: 'POPULAR',
     },
@@ -33,7 +38,7 @@ function Popular() {
         key={project.id}
         onPress={onPress}
         first={index === 0}
-        last={index === data && data.length - 1}
+        last={index === edges && edges.length - 1}
         user={project.user}
       />
     )
@@ -47,7 +52,7 @@ function Popular() {
 
       <InfiniteList
         initialNumToRender={3}
-        data={data}
+        data={edges}
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}

@@ -13,23 +13,28 @@ function Notifications({
   // markAllNotificationsSeen: markAllNotisficationsSeenMutation,
 }) {
   const deleteNotificationMutation = () => {}
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'notifications',
-  ])(NotificationsDocument, {
+  const {
+    data: { edges, unreadCount },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['notifications'])(NotificationsDocument, {
     options: {
       pollInterval: ms('1m'),
     },
   })
 
   useEffect(() => {
-    if (data && data.unreadCount > 0) {
+    if (unreadCount > 0) {
       showNotificationBadge()
     }
 
     const componentAppearListener = Navigation.events().registerComponentDidAppearListener(
       ({ componentId: id }) => {
         if (componentId === id) {
-          if (data && data.unreadCount > 0) {
+          if (unreadCount > 0) {
             // s()
           }
 
@@ -39,7 +44,7 @@ function Notifications({
     )
 
     return () => componentAppearListener.remove()
-  }, [componentId, data])
+  }, [componentId, unreadCount])
 
   const renderItem = ({ item }) => (
     <Notification data={item.node} deleteNotification={deleteNotificationMutation} />
@@ -53,7 +58,7 @@ function Notifications({
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
         borderSeparator
-        data={data}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

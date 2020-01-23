@@ -21,10 +21,14 @@ function Feed() {
   const [hasNewPosts, setHasNewPosts] = useState(false)
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'feed',
-    'posts',
-  ])(FeedDocument, {
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['feed', 'posts'])(FeedDocument, {
     options: {
       pollInterval: ms('3m'),
     },
@@ -41,16 +45,16 @@ function Feed() {
     registerUserLocale()
   }, [])
 
-  // useEffect(() => {
-  //   if (
-  //     posts &&
-  //     posts.length > 10 &&
-  //     !pathOr(false, [0, 'node', 'permissions', 'isOwner'], posts)
-  //   ) {
-  //     setHasNewPosts(true)
-  //   }
-  //   // If first id change
-  // }, [pathOr(false, [0, 'node', 'id'], posts)])
+  useEffect(() => {
+    if (
+      edges &&
+      edges.length > 10 &&
+      !pathOr(false, [0, 'node', 'permissions', 'isOwner'], edges)
+    ) {
+      setHasNewPosts(true)
+    }
+    // If first id change
+  }, [pathOr(false, [0, 'node', 'id'], edges)])
 
   const StickyComponent = hasNewPosts ? (
     <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
@@ -66,7 +70,7 @@ function Feed() {
           tabIndex={0}
           initialNumToRender={2}
           spacingSeparator
-          data={data}
+          data={edges}
           ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}
           fetchMore={fetchMore}

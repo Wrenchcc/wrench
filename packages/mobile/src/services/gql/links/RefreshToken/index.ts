@@ -1,11 +1,12 @@
 import { Observable } from '@apollo/client'
 import { onError } from 'apollo-link-error'
+import { RefreshTokenDocument } from '@wrench/common'
 import { showSpamToast } from 'store'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { ERROR_CODES } from 'utils/enums'
-import { client, REFRESH_TOKEN_MUTATION } from '../../'
+import { client } from '../../'
 
 function refreshTokenFailed() {
   client.clearStore()
@@ -34,7 +35,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
           return client
             .mutate({
-              mutation: REFRESH_TOKEN_MUTATION,
+              mutation: RefreshTokenDocument,
               variables: { refreshToken },
             })
             .then(({ data }) => {

@@ -2,7 +2,6 @@ import React, { useCallback, useRef } from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import Animated from 'react-native-reanimated'
-import { isEmpty } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
@@ -15,18 +14,22 @@ const { interpolate, Extrapolate, Value } = Animated
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
-// TODO: add initialData from nav (Project, user etc)
-// Return data as edges
-// Rest like "user", "post"
-function Project({ project, slug, id, postId }) {
+function Project({ slug, id, postId, project: initialProjectData, post: initialPostData }) {
   const followProjectMutation = () => {}
   const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery([
-    'project',
-    'posts',
-  ])(ProjectDocument, {
+  const {
+    data: { edges, post, project },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['project', 'posts'], {
+    project: initialProjectData,
+    post: initialPostData,
+  })(ProjectDocument, {
     variables: {
       slug,
       id,
@@ -48,7 +51,7 @@ function Project({ project, slug, id, postId }) {
 
   const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
 
-  const hasPosts = !isEmpty(post) || (posts && posts.length > 0)
+  const hasPosts = post || (edges && edges.length > 0)
 
   const emptyState =
     project.permissions && project.permissions.isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
@@ -65,11 +68,11 @@ function Project({ project, slug, id, postId }) {
   const renderHeader = useCallback(() => {
     let content
 
-    if (!isEmpty(post)) {
+    if (post) {
       content = (
         <>
           <Post post={post} withoutTitle numberOfLines={0} />
-          {hasPosts && posts && posts.length > 1 && (
+          {hasPosts && edges && edges.length > 1 && (
             <View style={{ marginTop: -20, paddingBottom: 50 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
@@ -90,7 +93,7 @@ function Project({ project, slug, id, postId }) {
         {content}
       </>
     )
-  }, [post, posts, hasPosts, project, handleFollow])
+  }, [post, edges, hasPosts, project, handleFollow])
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
@@ -130,7 +133,7 @@ function Project({ project, slug, id, postId }) {
           contentContainerStyle={{ flexGrow: 1 }}
           ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
           ListHeaderComponent={renderHeader}
-          data={posts}
+          data={edges}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
