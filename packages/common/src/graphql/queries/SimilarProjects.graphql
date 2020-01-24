@@ -8,7 +8,7 @@ query similarProjects($id: ID!, $first: Int = 5) {
         cover {
           uri
         }
-        ...ProjectFragment
+        ...Project
       }
     }
   }

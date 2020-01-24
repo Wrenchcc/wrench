@@ -4,13 +4,17 @@ import Text from 'ui/Text'
 import Item from './Item'
 import { LoadReplies, Border } from './styles'
 
-function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId, postId }) {
+function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }) {
   const { t } = useTranslation()
   const replies = data.node.replies
   const commentId = data.node.id
 
   const handleLoadMore = useCallback(
-    () => fetchMoreReplies(commentId, replies.edges[replies.edges.length - 1].cursor),
+    () =>
+      fetchReplies({
+        id: commentId,
+        after: replies.edges[replies.edges.length - 1].cursor,
+      }),
     [commentId]
   )
 

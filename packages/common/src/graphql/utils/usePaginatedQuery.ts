@@ -24,7 +24,7 @@ const {
 })
 */
 
-export default (path, initialData) => (query, options?) => {
+export default (path, initialData?) => (query, options?) => {
   const { fetchMore, error, data, error, refetch, loading, networkStatus } = useQuery(query, {
     ...options,
     notifyOnNetworkStatusChange: true,
@@ -34,14 +34,14 @@ export default (path, initialData) => (query, options?) => {
   const blaj = pathOr({}, path, data)
 
   const handleFetchMore = useCallback(
-    () =>
+    (options = {}) =>
       fetchMore({
         variables: {
           after: blaj.edges[blaj.edges.length - 1].cursor,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!pathOr(false, path, fetchMoreResult)) {
-            return previousResult
+            return prev
           }
 
           if (path.length > 1) {
@@ -77,6 +77,7 @@ export default (path, initialData) => (query, options?) => {
             },
           }
         },
+        ...options,
       }),
     [data]
   )

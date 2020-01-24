@@ -8,7 +8,7 @@ query followers($projectId: ID!, $after: String, $first: Int = 10) {
     edges {
       cursor
       node {
-        ...UserFragment
+        ...User
       }
     }
   }

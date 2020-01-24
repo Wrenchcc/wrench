@@ -4,8 +4,9 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   flex-direction: row;
-  padding-top: 10px;
-  padding-bottom: ${props => (props.first ? 20 : 10)}px;
+  padding-top: ${props => (props.first ? 0 : 10)}px;
+  padding-bottom: ${props => (props.first ? 10 : 0)}px;
+  margin-bottom: ${props => (props.first ? 20 : 10)}px;
   margin-left: ${props => (props.isReply ? 40 : 0)}px;
   padding-left: 20px;
   padding-right: 20px;

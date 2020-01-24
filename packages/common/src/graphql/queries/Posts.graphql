@@ -8,7 +8,7 @@ query posts($after: String, $first: Int = 5) @connection(key: "posts") {
     edges {
       cursor
       node {
-        ...PostFragment
+        ...Post
       }
     }
   }

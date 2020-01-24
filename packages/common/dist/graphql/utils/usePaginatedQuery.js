@@ -45,16 +45,15 @@ const {
 exports.default = (function (path, initialData) { return function (query, options) {
     var _a = react_hooks_1.useQuery(query, __assign(__assign({}, options), { notifyOnNetworkStatusChange: true, fetchPolicy: 'cache-and-network' })), fetchMore = _a.fetchMore, error = _a.error, data = _a.data, error = _a.error, refetch = _a.refetch, loading = _a.loading, networkStatus = _a.networkStatus;
     var blaj = rambda_1.pathOr({}, path, data);
-    var handleFetchMore = react_1.useCallback(function () {
-        return fetchMore({
-            variables: {
+    var handleFetchMore = react_1.useCallback(function (options) {
+        if (options === void 0) { options = {}; }
+        return fetchMore(__assign({ variables: {
                 after: blaj.edges[blaj.edges.length - 1].cursor,
-            },
-            updateQuery: function (prev, _a) {
+            }, updateQuery: function (prev, _a) {
                 var _b, _c, _d;
                 var fetchMoreResult = _a.fetchMoreResult;
                 if (!rambda_1.pathOr(false, path, fetchMoreResult)) {
-                    return previousResult;
+                    return prev;
                 }
                 if (path.length > 1) {
                     return __assign(__assign({}, prev), (_b = {}, _b[path[0]] = __assign(__assign({}, rambda_1.pathOr({}, [path[0]], prev)), (_c = {}, _c[path[1]] = __assign(__assign({}, rambda_1.pathOr({}, path, prev)), { pageInfo: __assign(__assign({}, rambda_1.pathOr({}, __spreadArrays(path, ['pageInfo']), prev)), rambda_1.pathOr({}, __spreadArrays(path, ['pageInfo']), fetchMoreResult)), edges: __spreadArrays(rambda_1.pathOr({}, __spreadArrays(path, ['edges']), prev), rambda_1.pathOr({}, __spreadArrays(path, ['edges']), fetchMoreResult)) }), _c)), _b));
@@ -63,8 +62,7 @@ exports.default = (function (path, initialData) { return function (query, option
                 return _d = {},
                     _d[path] = __assign(__assign({}, rambda_1.pathOr({}, path, fetchMoreResult)), { __typename: prev[path].__typename, edges: __spreadArrays(rambda_1.pathOr({}, [path, 'edges'], prev), rambda_1.pathOr({}, [path, 'edges'], fetchMoreResult)), pageInfo: rambda_1.pathOr({}, [path, 'pageInfo'], fetchMoreResult) }),
                     _d;
-            },
-        });
+            } }, options));
     }, [data]);
     return {
         error: error,

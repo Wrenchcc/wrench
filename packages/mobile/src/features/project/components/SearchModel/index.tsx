@@ -18,7 +18,7 @@ const styles = {
 }
 
 function SearchModel({ query, onPress }) {
-  const { loadData, data, isFetching, fetchMore, hasNextPage } = usePaginatedLazyQuery('models')(
+  const { loadData, data, isFetching, fetchMore, hasNextPage } = usePaginatedLazyQuery(['models'])(
     SearchModelsDocument
   )
 

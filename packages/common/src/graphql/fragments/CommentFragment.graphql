@@ -1,6 +1,6 @@
 #import "./UserFragment.graphql"
 
-fragment CommentFragment on Comment {
+fragment Comment on Comment {
   id
   text
   createdAt
@@ -12,6 +12,6 @@ fragment CommentFragment on Comment {
     totalCount
   }
   user {
-    ...UserFragment
+    ...User
   }
 }

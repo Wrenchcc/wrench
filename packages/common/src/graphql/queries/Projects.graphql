@@ -12,7 +12,7 @@ query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortT
           uri
           default
         }
-        ...ProjectFragment
+        ...Project
       }
     }
   }

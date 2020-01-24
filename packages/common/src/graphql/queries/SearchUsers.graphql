@@ -10,7 +10,7 @@ query searchUsers($query: String!, $after: String, $first: Int = 10) {
       cursor
       node {
         ... on User {
-          ...UserFragment
+          ...User
           projectCount
         }
       }

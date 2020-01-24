@@ -1,4 +1,4 @@
-fragment UserProjectsFragment on User {
+fragment UserProjects on User {
   projects: projectsConnection {
     edges {
       node {

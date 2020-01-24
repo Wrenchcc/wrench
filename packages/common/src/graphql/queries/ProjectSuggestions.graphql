@@ -11,7 +11,7 @@ query projectSuggestions($after: String, $first: Int = 5) {
     }
     edges {
       node {
-        ...ProjectFragment
+        ...Project
         cover {
           uri
           default

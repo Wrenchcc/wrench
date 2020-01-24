@@ -13,8 +13,7 @@ import { Base, Inner, Input, Button } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
-function CommentField({ postId, commentId, username, emoji }) {
-  const addCommentMutation = () => {}
+function CommentField({ commentId, username, emoji, onSubmit, blurOnSubmit }) {
   const { t } = useTranslation()
   const inputRef = useRef()
   const isTracking = useRef(false)
@@ -25,7 +24,9 @@ function CommentField({ postId, commentId, username, emoji }) {
     updateQuery: store.actions.updateQuery,
   }))
 
-  const { data } = useCurrentUserQuery()
+  const {
+    data: { user },
+  } = useCurrentUserQuery()
 
   useEffect(() => {
     if (username) {
@@ -84,10 +85,13 @@ function CommentField({ postId, commentId, username, emoji }) {
   )
 
   const handleSubmit = useCallback(() => {
-    inputRef.current.blur()
-    // addCommentMutation(postId, text, commentId)
+    if (blurOnSubmit) {
+      inputRef.current.blur()
+    }
+
+    onSubmit(text)
     setText('')
-  }, [postId, text, commentId, inputRef])
+  }, [inputRef, onSubmit, text, blurOnSubmit])
 
   const handleEmojiShortcut = useCallback(
     e => {
@@ -103,9 +107,9 @@ function CommentField({ postId, commentId, username, emoji }) {
 
       <Inner>
         <Avatar
-          uri={data.user && data.user.avatarUrl}
-          fallback={data.user.isSilhouette}
-          fullName={data.user.fullName}
+          uri={user && user.avatarUrl}
+          fallback={user.isSilhouette}
+          fullName={user.fullName}
         />
         <Input
           ref={inputRef}

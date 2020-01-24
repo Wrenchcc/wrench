@@ -14,10 +14,10 @@ query notifications($after: String, $first: Int = 10) {
         type
         createdAt
         user {
-          ...UserFragment
+          ...User
         }
         project {
-          ...ProjectFragment
+          ...Project
         }
         post {
           id

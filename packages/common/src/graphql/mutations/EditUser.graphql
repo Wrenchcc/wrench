@@ -2,6 +2,6 @@
 
 mutation editUser($input: EditUserInput!) {
   editUser(input: $input) {
-    ...UserFragment
+    ...User
   }
 }

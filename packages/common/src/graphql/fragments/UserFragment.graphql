@@ -1,4 +1,4 @@
- fragment UserFragment on User {
+ fragment User on User {
   id
   fullName
   firstName

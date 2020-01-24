@@ -2,6 +2,6 @@
 
 mutation editPost($id: ID!, $input: EditPostInput!) {
   editPost(id: $id, input: $input) {
-    ...PostFragment
+    ...Post
   }
 }

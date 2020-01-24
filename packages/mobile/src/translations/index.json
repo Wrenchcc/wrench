@@ -51,7 +51,7 @@
       "users": "People",
       "projects": "Projects",
       "recent": "Recent",
-      "clear": "Clear"
+      "clear": "Clear all"
     },
     "SearchBar": {
       "placeholder": "Search",
@@ -119,7 +119,8 @@
       "title": "Pick your category"
     },
     "Comments": {
-      "title": "Comments"
+      "title": "Comments",
+      "loadMore": "Load more comments"
     },
     "EditModel": {
       "save": "Save",
@@ -471,7 +472,8 @@
       "title": "Välj din kategori"
     },
     "Comments": {
-      "title": "Kommentarer"
+      "title": "Kommentarer",
+      "loadMore": "Ladda fler kommentarer"
     },
     "EditModel": {
       "save": "Spara",

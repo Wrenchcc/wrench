@@ -32,7 +32,7 @@ function Projects({ query }) {
     isRefetching,
     hasNextPage,
     refetch,
-  } = usePaginatedLazyQuery('projects')(SearchProjectsDocument)
+  } = usePaginatedLazyQuery(['projects'])(SearchProjectsDocument)
 
   useEffect(() => {
     if (query) {

@@ -2,12 +2,12 @@
 #import "./ProjectFragment.graphql"
 #import "./CommentFragment.graphql"
 
-fragment PostFragment on Post {
+fragment Post on Post {
   id
   caption
   createdAt
   user {
-    ...UserFragment
+    ...User
   }
   permissions {
     isOwner
@@ -22,7 +22,7 @@ fragment PostFragment on Post {
     }
   }
   project {
-    ...ProjectFragment
+    ...Project
   }
   likes {
     isLiked
@@ -32,7 +32,7 @@ fragment PostFragment on Post {
     totalCount
     edges {
       node {
-        ...CommentFragment
+        ...Comment
       }
     }
   }

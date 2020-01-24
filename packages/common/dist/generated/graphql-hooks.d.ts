@@ -778,7 +778,7 @@ export declare type UserSettings = {
     timezone?: Maybe<Scalars['String']>;
     notifications?: Maybe<UserNotificationsSettings>;
 };
-export declare type CommentFragmentFragment = ({
+export declare type CommentFragment = ({
     __typename?: 'Comment';
 } & Pick<Comment, 'id' | 'text' | 'createdAt'> & {
     permissions: Maybe<({
@@ -789,14 +789,14 @@ export declare type CommentFragmentFragment = ({
     } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
     user: Maybe<({
         __typename?: 'User';
-    } & UserFragmentFragment)>;
+    } & UserFragment)>;
 });
-export declare type PostFragmentFragment = ({
+export declare type PostFragment = ({
     __typename?: 'Post';
 } & Pick<Post, 'id' | 'caption' | 'createdAt'> & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserFragmentFragment)>;
+    } & UserFragment)>;
     permissions: Maybe<({
         __typename?: 'PostPermissions';
     } & Pick<PostPermissions, 'isOwner'>)>;
@@ -813,7 +813,7 @@ export declare type PostFragmentFragment = ({
     })>;
     project: Maybe<({
         __typename?: 'Project';
-    } & ProjectFragmentFragment)>;
+    } & ProjectFragment)>;
     likes: Maybe<({
         __typename?: 'Likes';
     } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
@@ -825,16 +825,16 @@ export declare type PostFragmentFragment = ({
         } & {
             node: ({
                 __typename?: 'Comment';
-            } & CommentFragmentFragment);
+            } & CommentFragment);
         })>>;
     })>;
 });
-export declare type ProjectFragmentFragment = ({
+export declare type ProjectFragment = ({
     __typename?: 'Project';
 } & Pick<Project, 'id' | 'title' | 'slug' | 'dynamicLink'> & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserFragmentFragment)>;
+    } & UserFragment)>;
     permissions: Maybe<({
         __typename?: 'ProjectPermissions';
     } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>)>;
@@ -842,38 +842,10 @@ export declare type ProjectFragmentFragment = ({
         __typename?: 'FollowersConnection';
     } & Pick<FollowersConnection, 'totalCount'>)>;
 });
-export declare type RepliesFragmentFragment = ({
-    __typename?: 'Comment';
-} & {
-    replies: Maybe<({
-        __typename?: 'CommentConnection';
-    } & Pick<CommentConnection, 'totalCount'> & {
-        pageInfo: ({
-            __typename?: 'PageInfo';
-        } & Pick<PageInfo, 'hasNextPage'>);
-        edges: Maybe<Array<({
-            __typename?: 'CommentEdge';
-        } & Pick<CommentEdge, 'cursor'> & {
-            node: ({
-                __typename?: 'Comment';
-            } & Pick<Comment, 'id' | 'commentId' | 'text' | 'createdAt'> & {
-                permissions: Maybe<({
-                    __typename?: 'CommentPermissions';
-                } & Pick<CommentPermissions, 'isOwner'>)>;
-                likes: Maybe<({
-                    __typename?: 'Likes';
-                } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
-                user: Maybe<({
-                    __typename?: 'User';
-                } & UserFragmentFragment)>;
-            });
-        })>>;
-    })>;
-});
-export declare type UserFragmentFragment = ({
+export declare type UserFragment = ({
     __typename?: 'User';
 } & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>);
-export declare type UserProjectsFragmentFragment = ({
+export declare type UserProjectsFragment = ({
     __typename?: 'User';
 } & {
     projects: Maybe<({
@@ -903,7 +875,7 @@ export declare type UserProjectsFragmentFragment = ({
         })>>;
     })>;
 });
-export declare type UserSettingsFragmentFragment = ({
+export declare type UserSettingsFragment = ({
     __typename?: 'User';
 } & Pick<User, 'id'> & {
     settings: Maybe<({
@@ -957,7 +929,7 @@ export declare type AddPostMutation = ({
 } & {
     addPost: Maybe<({
         __typename?: 'Post';
-    } & PostFragmentFragment)>;
+    } & PostFragment)>;
 });
 export declare type AddProjectMutationVariables = {
     input: ProjectInput;
@@ -967,7 +939,7 @@ export declare type AddProjectMutation = ({
 } & {
     addProject: Maybe<({
         __typename?: 'Project';
-    } & ProjectFragmentFragment)>;
+    } & ProjectFragment)>;
 });
 export declare type AuthenticateAppleMutationVariables = {
     identityToken: Scalars['String'];
@@ -1037,7 +1009,7 @@ export declare type EditPostMutation = ({
 } & {
     editPost: Maybe<({
         __typename?: 'Post';
-    } & PostFragmentFragment)>;
+    } & PostFragment)>;
 });
 export declare type EditProjectMutationVariables = {
     id: Scalars['ID'];
@@ -1058,7 +1030,7 @@ export declare type EditUserMutation = ({
 } & {
     editUser: Maybe<({
         __typename?: 'User';
-    } & UserFragmentFragment)>;
+    } & UserFragment)>;
 });
 export declare type FollowProjectMutationVariables = {
     id: Scalars['ID'];
@@ -1072,7 +1044,7 @@ export declare type FollowProjectMutation = ({
         cover: Maybe<({
             __typename?: 'CoverType';
         } & Pick<CoverType, 'uri'>)>;
-    } & ProjectFragmentFragment)>;
+    } & ProjectFragment)>;
 });
 export declare type LikeCommentMutationVariables = {
     id: Scalars['ID'];
@@ -1151,7 +1123,7 @@ export declare type ToggleNotificationSettingsMutation = ({
 } & {
     toggleNotificationSettings: Maybe<({
         __typename?: 'User';
-    } & UserSettingsFragmentFragment)>;
+    } & UserSettingsFragment)>;
 });
 export declare type CommentQueryVariables = {
     id: Scalars['ID'];
@@ -1161,7 +1133,7 @@ export declare type CommentQuery = ({
 } & {
     comment: Maybe<({
         __typename?: 'Comment';
-    } & CommentFragmentFragment & RepliesFragmentFragment)>;
+    } & CommentFragment)>;
 });
 export declare type CommentsQueryVariables = {
     postId: Scalars['ID'];
@@ -1172,7 +1144,7 @@ export declare type CommentsQuery = ({
 } & {
     post: Maybe<({
         __typename?: 'Post';
-    } & PostFragmentFragment)>;
+    } & PostFragment)>;
     comments: Maybe<({
         __typename?: 'CommentConnection';
     } & {
@@ -1184,7 +1156,22 @@ export declare type CommentsQuery = ({
         } & Pick<CommentEdge, 'cursor'> & {
             node: ({
                 __typename?: 'Comment';
-            } & CommentFragmentFragment);
+            } & {
+                replies: Maybe<({
+                    __typename?: 'CommentConnection';
+                } & Pick<CommentConnection, 'totalCount'> & {
+                    pageInfo: ({
+                        __typename?: 'PageInfo';
+                    } & Pick<PageInfo, 'hasNextPage'>);
+                    edges: Maybe<Array<({
+                        __typename?: 'CommentEdge';
+                    } & Pick<CommentEdge, 'cursor'> & {
+                        node: ({
+                            __typename?: 'Comment';
+                        } & CommentFragment);
+                    })>>;
+                })>;
+            } & CommentFragment);
         })>>;
     })>;
 });
@@ -1201,7 +1188,7 @@ export declare type CurrentUserQuery = ({
         interestedIn: Maybe<Array<Maybe<({
             __typename?: 'ProjectType';
         } & Pick<ProjectType, 'id' | 'title'>)>>>;
-    } & UserProjectsFragmentFragment)>;
+    } & UserProjectsFragment)>;
 });
 export declare type CurrentUserProfileQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1239,13 +1226,13 @@ export declare type CurrentUserProfileQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragmentFragment);
+                } & PostFragment);
             })>>;
             pageInfo: ({
                 __typename?: 'PageInfo';
             } & Pick<PageInfo, 'hasNextPage'>);
         })>;
-    } & UserFragmentFragment)>;
+    } & UserFragment)>;
 });
 export declare type CurrentUserProjectsQueryVariables = {};
 export declare type CurrentUserProjectsQuery = ({
@@ -1253,7 +1240,7 @@ export declare type CurrentUserProjectsQuery = ({
 } & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserProjectsFragmentFragment)>;
+    } & UserProjectsFragment)>;
 });
 export declare type CurrentUserSettingsQueryVariables = {};
 export declare type CurrentUserSettingsQuery = ({
@@ -1261,7 +1248,7 @@ export declare type CurrentUserSettingsQuery = ({
 } & {
     user: Maybe<({
         __typename?: 'User';
-    } & UserSettingsFragmentFragment)>;
+    } & UserSettingsFragment)>;
 });
 export declare type FeedQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1284,7 +1271,7 @@ export declare type FeedQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragmentFragment);
+                } & PostFragment);
             })>>;
         })>;
     })>;
@@ -1308,7 +1295,7 @@ export declare type FollowersQuery = ({
         } & Pick<FollowersEdge, 'cursor'> & {
             node: ({
                 __typename?: 'User';
-            } & UserFragmentFragment);
+            } & UserFragment);
         })>>;
     })>;
 });
@@ -1333,10 +1320,10 @@ export declare type NotificationsQuery = ({
             } & Pick<Notification, 'id' | 'type' | 'createdAt'> & {
                 user: ({
                     __typename?: 'User';
-                } & UserFragmentFragment);
+                } & UserFragment);
                 project: Maybe<({
                     __typename?: 'Project';
-                } & ProjectFragmentFragment)>;
+                } & ProjectFragment)>;
                 post: Maybe<({
                     __typename?: 'Post';
                 } & Pick<Post, 'id'>)>;
@@ -1366,7 +1353,7 @@ export declare type PostQuery = ({
 } & {
     post: Maybe<({
         __typename?: 'Post';
-    } & PostFragmentFragment)>;
+    } & PostFragment)>;
 });
 export declare type PostsQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1386,7 +1373,7 @@ export declare type PostsQuery = ({
         } & Pick<PostEdge, 'cursor'> & {
             node: ({
                 __typename?: 'Post';
-            } & PostFragmentFragment);
+            } & PostFragment);
         })>>;
     })>;
 });
@@ -1402,7 +1389,7 @@ export declare type ProjectQuery = ({
 } & {
     post: Maybe<({
         __typename?: 'Post';
-    } & PostFragmentFragment)>;
+    } & PostFragment)>;
     project: Maybe<({
         __typename?: 'Project';
     } & {
@@ -1414,10 +1401,10 @@ export declare type ProjectQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragmentFragment);
+                } & PostFragment);
             })>>;
         })>;
-    } & ProjectFragmentFragment)>;
+    } & ProjectFragment)>;
 });
 export declare type ProjectSuggestionsQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1444,7 +1431,7 @@ export declare type ProjectSuggestionsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragmentFragment);
+            } & ProjectFragment);
         })>>;
     })>>>;
 });
@@ -1480,7 +1467,7 @@ export declare type ProjectsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragmentFragment);
+            } & ProjectFragment);
         })>>;
     })>;
 });
@@ -1506,17 +1493,7 @@ export declare type RepliesQuery = ({
             } & Pick<CommentEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Comment';
-                } & Pick<Comment, 'id' | 'commentId' | 'text' | 'createdAt'> & {
-                    permissions: Maybe<({
-                        __typename?: 'CommentPermissions';
-                    } & Pick<CommentPermissions, 'isOwner'>)>;
-                    likes: Maybe<({
-                        __typename?: 'Likes';
-                    } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
-                    user: Maybe<({
-                        __typename?: 'User';
-                    } & UserFragmentFragment)>;
-                });
+                } & CommentFragment);
             })>>;
         })>;
     })>;
@@ -1575,7 +1552,7 @@ export declare type SearchProjectsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri' | 'default'>)>;
-            } & ProjectFragmentFragment) | {
+            } & ProjectFragment) | {
                 __typename?: 'User';
             } | {
                 __typename?: 'Model';
@@ -1604,7 +1581,7 @@ export declare type SearchUsersQuery = ({
                 __typename?: 'Project';
             } | ({
                 __typename?: 'User';
-            } & Pick<User, 'projectCount'> & UserFragmentFragment) | {
+            } & Pick<User, 'projectCount'> & UserFragment) | {
                 __typename?: 'Model';
             }>;
         })>>>;
@@ -1629,7 +1606,7 @@ export declare type SimilarProjectsQuery = ({
                 cover: Maybe<({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri'>)>;
-            } & ProjectFragmentFragment);
+            } & ProjectFragment);
         })>>;
     })>;
 });
@@ -1670,13 +1647,13 @@ export declare type UserQuery = ({
             } & Pick<PostEdge, 'cursor'> & {
                 node: ({
                     __typename?: 'Post';
-                } & PostFragmentFragment);
+                } & PostFragment);
             })>>;
             pageInfo: ({
                 __typename?: 'PageInfo';
             } & Pick<PageInfo, 'hasNextPage'>);
         })>;
-    } & UserFragmentFragment)>;
+    } & UserFragment)>;
 });
 export declare type UserFollowingProjectsQueryVariables = {
     username: Scalars['LowercaseString'];
@@ -1704,18 +1681,17 @@ export declare type UserFollowingProjectsQuery = ({
                     cover: Maybe<({
                         __typename?: 'CoverType';
                     } & Pick<CoverType, 'uri' | 'default'>)>;
-                } & ProjectFragmentFragment);
+                } & ProjectFragment);
             })>>;
         })>;
     })>;
 });
-export declare const UserFragmentFragmentDoc: any;
-export declare const ProjectFragmentFragmentDoc: any;
-export declare const CommentFragmentFragmentDoc: any;
-export declare const PostFragmentFragmentDoc: any;
-export declare const RepliesFragmentFragmentDoc: any;
-export declare const UserProjectsFragmentFragmentDoc: any;
-export declare const UserSettingsFragmentFragmentDoc: any;
+export declare const UserFragmentDoc: any;
+export declare const ProjectFragmentDoc: any;
+export declare const CommentFragmentDoc: any;
+export declare const PostFragmentDoc: any;
+export declare const UserProjectsFragmentDoc: any;
+export declare const UserSettingsFragmentDoc: any;
 export declare const AddCommentDocument: any;
 export declare type AddCommentMutationFn = ApolloReactCommon.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
 /**

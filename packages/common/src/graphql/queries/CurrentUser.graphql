@@ -23,6 +23,6 @@ query currentUser {
       id
       title
     }
-    ...UserProjectsFragment
+    ...UserProjects
   }
 }

@@ -22,7 +22,7 @@ function Mention({ onPress }) {
     fetchMore,
     isRefetching,
     hasNextPage,
-  } = usePaginatedLazyQuery('users')(SearchUsersDocument)
+  } = usePaginatedLazyQuery(['users'])(SearchUsersDocument)
 
   useEffect(() => {
     loadData({

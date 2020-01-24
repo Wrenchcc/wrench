@@ -10,7 +10,7 @@ query searchProjects($query: String!, $after: String, $first: Int = 10) {
       cursor
       node {
         ... on Project {
-          ...ProjectFragment
+          ...Project
           cover {
             uri
             default

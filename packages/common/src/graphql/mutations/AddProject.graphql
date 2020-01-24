@@ -2,6 +2,6 @@
 
 mutation addProject($input: ProjectInput!) {
   addProject(input: $input) {
-    ...ProjectFragment
+    ...Project
   }
 }

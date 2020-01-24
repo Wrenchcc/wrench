@@ -27,7 +27,7 @@ function Users({ query }) {
     isRefetching,
     hasNextPage,
     refetch,
-  } = usePaginatedLazyQuery('users')(SearchUsersDocument)
+  } = usePaginatedLazyQuery(['users'])(SearchUsersDocument)
 
   useEffect(() => {
     if (query) {

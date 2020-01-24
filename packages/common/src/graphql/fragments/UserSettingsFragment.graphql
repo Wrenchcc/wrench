@@ -1,4 +1,4 @@
-fragment UserSettingsFragment on User {
+fragment UserSettings on User {
   id
   settings {
     notifications {

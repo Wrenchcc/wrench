@@ -2,6 +2,6 @@
 
 mutation addPost($input: PostInput!) {
   addPost(input: $input) {
-    ...PostFragment
+    ...Post
   }
 }

@@ -3,7 +3,7 @@
 
 query user($username: LowercaseString!, $after: String, $first: Int = 5) {
   user(username: $username) {
-    ...UserFragment
+    ...User
     projects: projectsConnection {
       edges {
         node {
@@ -23,7 +23,7 @@ query user($username: LowercaseString!, $after: String, $first: Int = 5) {
       edges {
         cursor
         node {
-          ...PostFragment
+          ...Post
         }
       }
       pageInfo {

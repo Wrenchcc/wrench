@@ -1,7 +1,13 @@
 import React, { useState, useCallback } from 'react'
 import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { usePaginatedQuery, useCommentQuery, usePostQuery, CommentsDocument } from '@wrench/common'
+import {
+  usePaginatedQuery,
+  useCommentQuery,
+  usePostQuery,
+  CommentsDocument,
+  useRepliesLazyQuery,
+} from '@wrench/common'
 import { isEmpty } from 'rambda'
 import { Page, FlatList } from 'navigation'
 import Post from 'components/Post'
@@ -11,7 +17,7 @@ import { isIphone } from 'utils/platform'
 
 const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
 
-// TODO: Load comment in top
+// TODO: Load passed comment in top
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
 
@@ -20,7 +26,15 @@ function PostContainer({ postId, commentId }) {
     username: null,
   })
 
-  const fetchMoreReplies = () => {}
+  const [loadReplies] = useRepliesLazyQuery()
+
+  const fetchMoreReplies = (id, after) =>
+    loadReplies({
+      variables: {
+        after,
+        id,
+      },
+    })
 
   const { data: commentData } = useCommentQuery({
     variables: {

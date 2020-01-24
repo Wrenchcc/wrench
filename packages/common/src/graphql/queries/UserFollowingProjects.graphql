@@ -10,7 +10,7 @@ query userFollowingProjects($username: LowercaseString!, $after: String, $first:
       edges {
         cursor
         node {
-          ...ProjectFragment
+          ...Project
           cover {
             uri
             default

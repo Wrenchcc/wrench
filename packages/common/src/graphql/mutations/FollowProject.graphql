@@ -5,6 +5,6 @@ mutation followProject($id: ID!) {
     cover {
       uri
     }
-    ...ProjectFragment
+    ...Project
   }
 }

@@ -4,47 +4,99 @@ import { useLazyQuery } from '@apollo/react-hooks'
 import { pathOr } from 'rambda'
 import { isRefetching, isFetchingMore } from './networkStatus'
 
-export default type => (query, options?) => {
-  const [loadData, { fetchMore, error, ...result }] = useLazyQuery(query, {
+/*
+const {
+  data: { edges, post, project },
+  isFetching,
+  fetchMore,
+  isRefetching,
+  hasNextPage,
+  refetch,
+} = usePaginatedQuery(['project', 'posts'], {
+  project: initialProjectData,
+  post: initialPostData,
+})(ProjectDocument, {
+  variables: {
+    slug,
+    id,
+    postId,
+  },
+})
+*/
+
+export default (path, initialData?) => (query, options?) => {
+  const [
+    loadData,
+    { fetchMore, error, data, error, refetch, loading, networkStatus },
+  ] = useLazyQuery(query, {
     ...options,
     notifyOnNetworkStatusChange: true,
+    fetchPolicy: 'cache-and-network',
   })
 
-  const data = pathOr({}, ['data', type], result)
+  const blaj = pathOr({}, path, data)
 
   const handleFetchMore = useCallback(
-    () =>
+    (options = {}) =>
       fetchMore({
         variables: {
-          after: data.edges[data.edges.length - 1].cursor,
+          after: blaj.edges[blaj.edges.length - 1].cursor,
         },
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!previousResult || !previousResult[type]) {
-            return previousResult
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!pathOr(false, path, fetchMoreResult)) {
+            return prev
           }
 
-          const { edges, pageInfo, ...rest } = fetchMoreResult[type]
+          if (path.length > 1) {
+            return {
+              ...prev,
+              [path[0]]: {
+                ...pathOr({}, [path[0]], prev),
+                [path[1]]: {
+                  ...pathOr({}, path, prev),
+                  pageInfo: {
+                    ...pathOr({}, [...path, 'pageInfo'], prev),
+                    ...pathOr({}, [...path, 'pageInfo'], fetchMoreResult),
+                  },
+                  edges: [
+                    ...pathOr({}, [...path, 'edges'], prev),
+                    ...pathOr({}, [...path, 'edges'], fetchMoreResult),
+                  ],
+                },
+              },
+            }
+          }
 
+          // Fix fetch more
           return {
-            [type]: {
-              ...rest,
-              __typename: previousResult[type].__typename,
-              edges: [...previousResult[type].edges, ...edges],
-              pageInfo,
+            [path]: {
+              ...pathOr({}, path, fetchMoreResult),
+              __typename: prev[path].__typename,
+              edges: [
+                ...pathOr({}, [path, 'edges'], prev),
+                ...pathOr({}, [path, 'edges'], fetchMoreResult),
+              ],
+              pageInfo: pathOr({}, [path, 'pageInfo'], fetchMoreResult),
             },
           }
         },
+        ...options,
       }),
-    [result]
+    [data]
   )
 
   return {
-    ...result,
     loadData,
-    data: pathOr(null, ['edges'], data),
+    error,
+    refetch,
+    data: {
+      ...initialData,
+      ...data,
+      edges: pathOr(null, ['edges'], blaj),
+    },
     fetchMore: handleFetchMore,
-    hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], data),
-    isFetching: result.loading || isFetchingMore(result.networkStatus),
-    isRefetching: isRefetching(result.networkStatus),
+    hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], blaj),
+    isFetching: loading || isFetchingMore(networkStatus),
+    isRefetching: isRefetching(networkStatus),
   }
 }

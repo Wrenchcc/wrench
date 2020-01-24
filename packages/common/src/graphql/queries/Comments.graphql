@@ -3,7 +3,7 @@
 
 query comments($postId: ID!, $after: String) {
   post(id: $postId) {
-    ...PostFragment
+    ...Post
   }
   comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
     pageInfo {
@@ -12,8 +12,25 @@ query comments($postId: ID!, $after: String) {
     edges {
       cursor
       node {
-        ...CommentFragment
+        ...Comment
+
+        replies: repliesConnection(first: 2) {
+          pageInfo {
+            hasNextPage
+          }
+          totalCount
+          edges {
+            cursor
+            node {
+              ...Comment
+            }
+          }
+        }
       }
     }
   }
 }
+
+
+
+ 

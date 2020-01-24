@@ -3,7 +3,7 @@
 
 query currentUserProfile($after: String, $first: Int = 5) {
   user: currentUser {
-    ...UserFragment
+    ...User
     projects: projectsConnection {
       edges {
         node {
@@ -23,7 +23,7 @@ query currentUserProfile($after: String, $first: Int = 5) {
       edges {
         cursor
         node {
-          ...PostFragment
+          ...Post
         }
       }
       pageInfo {

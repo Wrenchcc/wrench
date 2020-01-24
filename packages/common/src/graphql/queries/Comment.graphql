@@ -1,9 +1,7 @@
 #import "../fragments/CommentFragment.graphql"
-#import "../fragments/RepliesFragment.graphql"
 
 query comment($id: ID!) {
   comment(id: $id) {
-    ...CommentFragment
-    ...RepliesFragment
+    ...Comment
   }
 }

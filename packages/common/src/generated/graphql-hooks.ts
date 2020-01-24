@@ -970,7 +970,7 @@ export type UserSettings = {
   notifications?: Maybe<UserNotificationsSettings>,
 };
 
-export type CommentFragmentFragment = (
+export type CommentFragment = (
   { __typename?: 'Comment' }
   & Pick<Comment, 'id' | 'text' | 'createdAt'>
   & { permissions: Maybe<(
@@ -981,16 +981,16 @@ export type CommentFragmentFragment = (
     & Pick<Likes, 'isLiked' | 'totalCount'>
   )>, user: Maybe<(
     { __typename?: 'User' }
-    & UserFragmentFragment
+    & UserFragment
   )> }
 );
 
-export type PostFragmentFragment = (
+export type PostFragment = (
   { __typename?: 'Post' }
   & Pick<Post, 'id' | 'caption' | 'createdAt'>
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserFragmentFragment
+    & UserFragment
   )>, permissions: Maybe<(
     { __typename?: 'PostPermissions' }
     & Pick<PostPermissions, 'isOwner'>
@@ -1005,7 +1005,7 @@ export type PostFragmentFragment = (
     )>>> }
   )>, project: Maybe<(
     { __typename?: 'Project' }
-    & ProjectFragmentFragment
+    & ProjectFragment
   )>, likes: Maybe<(
     { __typename?: 'Likes' }
     & Pick<Likes, 'isLiked' | 'totalCount'>
@@ -1016,18 +1016,18 @@ export type PostFragmentFragment = (
       { __typename?: 'CommentEdge' }
       & { node: (
         { __typename?: 'Comment' }
-        & CommentFragmentFragment
+        & CommentFragment
       ) }
     )>> }
   )> }
 );
 
-export type ProjectFragmentFragment = (
+export type ProjectFragment = (
   { __typename?: 'Project' }
   & Pick<Project, 'id' | 'title' | 'slug' | 'dynamicLink'>
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserFragmentFragment
+    & UserFragment
   )>, permissions: Maybe<(
     { __typename?: 'ProjectPermissions' }
     & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>
@@ -1037,41 +1037,12 @@ export type ProjectFragmentFragment = (
   )> }
 );
 
-export type RepliesFragmentFragment = (
-  { __typename?: 'Comment' }
-  & { replies: Maybe<(
-    { __typename?: 'CommentConnection' }
-    & Pick<CommentConnection, 'totalCount'>
-    & { pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
-      { __typename?: 'CommentEdge' }
-      & Pick<CommentEdge, 'cursor'>
-      & { node: (
-        { __typename?: 'Comment' }
-        & Pick<Comment, 'id' | 'commentId' | 'text' | 'createdAt'>
-        & { permissions: Maybe<(
-          { __typename?: 'CommentPermissions' }
-          & Pick<CommentPermissions, 'isOwner'>
-        )>, likes: Maybe<(
-          { __typename?: 'Likes' }
-          & Pick<Likes, 'isLiked' | 'totalCount'>
-        )>, user: Maybe<(
-          { __typename?: 'User' }
-          & UserFragmentFragment
-        )> }
-      ) }
-    )>> }
-  )> }
-);
-
-export type UserFragmentFragment = (
+export type UserFragment = (
   { __typename?: 'User' }
   & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>
 );
 
-export type UserProjectsFragmentFragment = (
+export type UserProjectsFragment = (
   { __typename?: 'User' }
   & { projects: Maybe<(
     { __typename?: 'ProjectsConnection' }
@@ -1098,7 +1069,7 @@ export type UserProjectsFragmentFragment = (
   )> }
 );
 
-export type UserSettingsFragmentFragment = (
+export type UserSettingsFragment = (
   { __typename?: 'User' }
   & Pick<User, 'id'>
   & { settings: Maybe<(
@@ -1155,7 +1126,7 @@ export type AddPostMutation = (
   { __typename?: 'Mutation' }
   & { addPost: Maybe<(
     { __typename?: 'Post' }
-    & PostFragmentFragment
+    & PostFragment
   )> }
 );
 
@@ -1168,7 +1139,7 @@ export type AddProjectMutation = (
   { __typename?: 'Mutation' }
   & { addProject: Maybe<(
     { __typename?: 'Project' }
-    & ProjectFragmentFragment
+    & ProjectFragment
   )> }
 );
 
@@ -1265,7 +1236,7 @@ export type EditPostMutation = (
   { __typename?: 'Mutation' }
   & { editPost: Maybe<(
     { __typename?: 'Post' }
-    & PostFragmentFragment
+    & PostFragment
   )> }
 );
 
@@ -1292,7 +1263,7 @@ export type EditUserMutation = (
   { __typename?: 'Mutation' }
   & { editUser: Maybe<(
     { __typename?: 'User' }
-    & UserFragmentFragment
+    & UserFragment
   )> }
 );
 
@@ -1309,7 +1280,7 @@ export type FollowProjectMutation = (
       { __typename?: 'CoverType' }
       & Pick<CoverType, 'uri'>
     )> }
-    & ProjectFragmentFragment
+    & ProjectFragment
   )> }
 );
 
@@ -1414,7 +1385,7 @@ export type ToggleNotificationSettingsMutation = (
   { __typename?: 'Mutation' }
   & { toggleNotificationSettings: Maybe<(
     { __typename?: 'User' }
-    & UserSettingsFragmentFragment
+    & UserSettingsFragment
   )> }
 );
 
@@ -1427,8 +1398,7 @@ export type CommentQuery = (
   { __typename?: 'Query' }
   & { comment: Maybe<(
     { __typename?: 'Comment' }
-    & CommentFragmentFragment
-    & RepliesFragmentFragment
+    & CommentFragment
   )> }
 );
 
@@ -1442,7 +1412,7 @@ export type CommentsQuery = (
   { __typename?: 'Query' }
   & { post: Maybe<(
     { __typename?: 'Post' }
-    & PostFragmentFragment
+    & PostFragment
   )>, comments: Maybe<(
     { __typename?: 'CommentConnection' }
     & { pageInfo: (
@@ -1453,7 +1423,22 @@ export type CommentsQuery = (
       & Pick<CommentEdge, 'cursor'>
       & { node: (
         { __typename?: 'Comment' }
-        & CommentFragmentFragment
+        & { replies: Maybe<(
+          { __typename?: 'CommentConnection' }
+          & Pick<CommentConnection, 'totalCount'>
+          & { pageInfo: (
+            { __typename?: 'PageInfo' }
+            & Pick<PageInfo, 'hasNextPage'>
+          ), edges: Maybe<Array<(
+            { __typename?: 'CommentEdge' }
+            & Pick<CommentEdge, 'cursor'>
+            & { node: (
+              { __typename?: 'Comment' }
+              & CommentFragment
+            ) }
+          )>> }
+        )> }
+        & CommentFragment
       ) }
     )>> }
   )> }
@@ -1474,7 +1459,7 @@ export type CurrentUserQuery = (
       { __typename?: 'ProjectType' }
       & Pick<ProjectType, 'id' | 'title'>
     )>>> }
-    & UserProjectsFragmentFragment
+    & UserProjectsFragment
   )> }
 );
 
@@ -1511,14 +1496,14 @@ export type CurrentUserProfileQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragmentFragment
+          & PostFragment
         ) }
       )>>, pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
       ) }
     )> }
-    & UserFragmentFragment
+    & UserFragment
   )> }
 );
 
@@ -1529,7 +1514,7 @@ export type CurrentUserProjectsQuery = (
   { __typename?: 'Query' }
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserProjectsFragmentFragment
+    & UserProjectsFragment
   )> }
 );
 
@@ -1540,7 +1525,7 @@ export type CurrentUserSettingsQuery = (
   { __typename?: 'Query' }
   & { user: Maybe<(
     { __typename?: 'User' }
-    & UserSettingsFragmentFragment
+    & UserSettingsFragment
   )> }
 );
 
@@ -1564,7 +1549,7 @@ export type FeedQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragmentFragment
+          & PostFragment
         ) }
       )>> }
     )> }
@@ -1590,7 +1575,7 @@ export type FollowersQuery = (
       & Pick<FollowersEdge, 'cursor'>
       & { node: (
         { __typename?: 'User' }
-        & UserFragmentFragment
+        & UserFragment
       ) }
     )>> }
   )> }
@@ -1618,10 +1603,10 @@ export type NotificationsQuery = (
         & Pick<Notification, 'id' | 'type' | 'createdAt'>
         & { user: (
           { __typename?: 'User' }
-          & UserFragmentFragment
+          & UserFragment
         ), project: Maybe<(
           { __typename?: 'Project' }
-          & ProjectFragmentFragment
+          & ProjectFragment
         )>, post: Maybe<(
           { __typename?: 'Post' }
           & Pick<Post, 'id'>
@@ -1652,7 +1637,7 @@ export type PostQuery = (
   { __typename?: 'Query' }
   & { post: Maybe<(
     { __typename?: 'Post' }
-    & PostFragmentFragment
+    & PostFragment
   )> }
 );
 
@@ -1674,7 +1659,7 @@ export type PostsQuery = (
       & Pick<PostEdge, 'cursor'>
       & { node: (
         { __typename?: 'Post' }
-        & PostFragmentFragment
+        & PostFragment
       ) }
     )>> }
   )> }
@@ -1693,7 +1678,7 @@ export type ProjectQuery = (
   { __typename?: 'Query' }
   & { post: Maybe<(
     { __typename?: 'Post' }
-    & PostFragmentFragment
+    & PostFragment
   )>, project: Maybe<(
     { __typename?: 'Project' }
     & { posts: Maybe<(
@@ -1703,11 +1688,11 @@ export type ProjectQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragmentFragment
+          & PostFragment
         ) }
       )>> }
     )> }
-    & ProjectFragmentFragment
+    & ProjectFragment
   )> }
 );
 
@@ -1735,7 +1720,7 @@ export type ProjectSuggestionsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
-        & ProjectFragmentFragment
+        & ProjectFragment
       ) }
     )>> }
   )>>> }
@@ -1776,7 +1761,7 @@ export type ProjectsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
-        & ProjectFragmentFragment
+        & ProjectFragment
       ) }
     )>> }
   )> }
@@ -1804,17 +1789,7 @@ export type RepliesQuery = (
         & Pick<CommentEdge, 'cursor'>
         & { node: (
           { __typename?: 'Comment' }
-          & Pick<Comment, 'id' | 'commentId' | 'text' | 'createdAt'>
-          & { permissions: Maybe<(
-            { __typename?: 'CommentPermissions' }
-            & Pick<CommentPermissions, 'isOwner'>
-          )>, likes: Maybe<(
-            { __typename?: 'Likes' }
-            & Pick<Likes, 'isLiked' | 'totalCount'>
-          )>, user: Maybe<(
-            { __typename?: 'User' }
-            & UserFragmentFragment
-          )> }
+          & CommentFragment
         ) }
       )>> }
     )> }
@@ -1872,7 +1847,7 @@ export type SearchProjectsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
-        & ProjectFragmentFragment
+        & ProjectFragment
       ) | { __typename?: 'User' } | { __typename?: 'Model' }> }
     )>>> }
   )> }
@@ -1898,7 +1873,7 @@ export type SearchUsersQuery = (
       & { node: Maybe<{ __typename?: 'Project' } | (
         { __typename?: 'User' }
         & Pick<User, 'projectCount'>
-        & UserFragmentFragment
+        & UserFragment
       ) | { __typename?: 'Model' }> }
     )>>> }
   )> }
@@ -1923,7 +1898,7 @@ export type SimilarProjectsQuery = (
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri'>
         )> }
-        & ProjectFragmentFragment
+        & ProjectFragment
       ) }
     )>> }
   )> }
@@ -1963,14 +1938,14 @@ export type UserQuery = (
         & Pick<PostEdge, 'cursor'>
         & { node: (
           { __typename?: 'Post' }
-          & PostFragmentFragment
+          & PostFragment
         ) }
       )>>, pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
       ) }
     )> }
-    & UserFragmentFragment
+    & UserFragment
   )> }
 );
 
@@ -2000,15 +1975,15 @@ export type UserFollowingProjectsQuery = (
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
           )> }
-          & ProjectFragmentFragment
+          & ProjectFragment
         ) }
       )>> }
     )> }
   )> }
 );
 
-export const UserFragmentFragmentDoc = gql`
-    fragment UserFragment on User {
+export const UserFragmentDoc = gql`
+    fragment User on User {
   id
   fullName
   firstName
@@ -2023,14 +1998,14 @@ export const UserFragmentFragmentDoc = gql`
   projectCount
 }
     `;
-export const ProjectFragmentFragmentDoc = gql`
-    fragment ProjectFragment on Project {
+export const ProjectFragmentDoc = gql`
+    fragment Project on Project {
   id
   title
   slug
   dynamicLink
   user {
-    ...UserFragment
+    ...User
   }
   permissions {
     isOwner
@@ -2040,9 +2015,9 @@ export const ProjectFragmentFragmentDoc = gql`
     totalCount
   }
 }
-    ${UserFragmentFragmentDoc}`;
-export const CommentFragmentFragmentDoc = gql`
-    fragment CommentFragment on Comment {
+    ${UserFragmentDoc}`;
+export const CommentFragmentDoc = gql`
+    fragment Comment on Comment {
   id
   text
   createdAt
@@ -2054,17 +2029,17 @@ export const CommentFragmentFragmentDoc = gql`
     totalCount
   }
   user {
-    ...UserFragment
+    ...User
   }
 }
-    ${UserFragmentFragmentDoc}`;
-export const PostFragmentFragmentDoc = gql`
-    fragment PostFragment on Post {
+    ${UserFragmentDoc}`;
+export const PostFragmentDoc = gql`
+    fragment Post on Post {
   id
   caption
   createdAt
   user {
-    ...UserFragment
+    ...User
   }
   permissions {
     isOwner
@@ -2079,7 +2054,7 @@ export const PostFragmentFragmentDoc = gql`
     }
   }
   project {
-    ...ProjectFragment
+    ...Project
   }
   likes {
     isLiked
@@ -2089,45 +2064,16 @@ export const PostFragmentFragmentDoc = gql`
     totalCount
     edges {
       node {
-        ...CommentFragment
+        ...Comment
       }
     }
   }
 }
-    ${UserFragmentFragmentDoc}
-${ProjectFragmentFragmentDoc}
-${CommentFragmentFragmentDoc}`;
-export const RepliesFragmentFragmentDoc = gql`
-    fragment RepliesFragment on Comment {
-  replies: repliesConnection(first: 2) @connection(key: "replies") {
-    pageInfo {
-      hasNextPage
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        id
-        commentId
-        text
-        createdAt
-        permissions {
-          isOwner
-        }
-        likes {
-          isLiked
-          totalCount
-        }
-        user {
-          ...UserFragment
-        }
-      }
-    }
-  }
-}
-    ${UserFragmentFragmentDoc}`;
-export const UserProjectsFragmentFragmentDoc = gql`
-    fragment UserProjectsFragment on User {
+    ${UserFragmentDoc}
+${ProjectFragmentDoc}
+${CommentFragmentDoc}`;
+export const UserProjectsFragmentDoc = gql`
+    fragment UserProjects on User {
   projects: projectsConnection {
     edges {
       node {
@@ -2149,8 +2095,8 @@ export const UserProjectsFragmentFragmentDoc = gql`
   }
 }
     `;
-export const UserSettingsFragmentFragmentDoc = gql`
-    fragment UserSettingsFragment on User {
+export const UserSettingsFragmentDoc = gql`
+    fragment UserSettings on User {
   id
   settings {
     notifications {
@@ -2223,10 +2169,10 @@ export type AddCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<Ad
 export const AddPostDocument = gql`
     mutation addPost($input: PostInput!) {
   addPost(input: $input) {
-    ...PostFragment
+    ...Post
   }
 }
-    ${PostFragmentFragmentDoc}`;
+    ${PostFragmentDoc}`;
 export type AddPostMutationFn = ApolloReactCommon.MutationFunction<AddPostMutation, AddPostMutationVariables>;
 
 /**
@@ -2255,10 +2201,10 @@ export type AddPostMutationOptions = ApolloReactCommon.BaseMutationOptions<AddPo
 export const AddProjectDocument = gql`
     mutation addProject($input: ProjectInput!) {
   addProject(input: $input) {
-    ...ProjectFragment
+    ...Project
   }
 }
-    ${ProjectFragmentFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 export type AddProjectMutationFn = ApolloReactCommon.MutationFunction<AddProjectMutation, AddProjectMutationVariables>;
 
 /**
@@ -2509,10 +2455,10 @@ export type DeleteProjectMutationOptions = ApolloReactCommon.BaseMutationOptions
 export const EditPostDocument = gql`
     mutation editPost($id: ID!, $input: EditPostInput!) {
   editPost(id: $id, input: $input) {
-    ...PostFragment
+    ...Post
   }
 }
-    ${PostFragmentFragmentDoc}`;
+    ${PostFragmentDoc}`;
 export type EditPostMutationFn = ApolloReactCommon.MutationFunction<EditPostMutation, EditPostMutationVariables>;
 
 /**
@@ -2576,10 +2522,10 @@ export type EditProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<E
 export const EditUserDocument = gql`
     mutation editUser($input: EditUserInput!) {
   editUser(input: $input) {
-    ...UserFragment
+    ...User
   }
 }
-    ${UserFragmentFragmentDoc}`;
+    ${UserFragmentDoc}`;
 export type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMutation, EditUserMutationVariables>;
 
 /**
@@ -2611,10 +2557,10 @@ export const FollowProjectDocument = gql`
     cover {
       uri
     }
-    ...ProjectFragment
+    ...Project
   }
 }
-    ${ProjectFragmentFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 export type FollowProjectMutationFn = ApolloReactCommon.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
 
 /**
@@ -2875,10 +2821,10 @@ export type RegisterDeviceTokenMutationOptions = ApolloReactCommon.BaseMutationO
 export const ToggleNotificationSettingsDocument = gql`
     mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
   toggleNotificationSettings(input: $input) {
-    ...UserSettingsFragment
+    ...UserSettings
   }
 }
-    ${UserSettingsFragmentFragmentDoc}`;
+    ${UserSettingsFragmentDoc}`;
 export type ToggleNotificationSettingsMutationFn = ApolloReactCommon.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 
 /**
@@ -2907,12 +2853,10 @@ export type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMu
 export const CommentDocument = gql`
     query comment($id: ID!) {
   comment(id: $id) {
-    ...CommentFragment
-    ...RepliesFragment
+    ...Comment
   }
 }
-    ${CommentFragmentFragmentDoc}
-${RepliesFragmentFragmentDoc}`;
+    ${CommentFragmentDoc}`;
 
 /**
  * __useCommentQuery__
@@ -2942,7 +2886,7 @@ export type CommentQueryResult = ApolloReactCommon.QueryResult<CommentQuery, Com
 export const CommentsDocument = gql`
     query comments($postId: ID!, $after: String) {
   post(id: $postId) {
-    ...PostFragment
+    ...Post
   }
   comments(postId: $postId, after: $after) @connection(key: "comments", filter: ["postId"]) {
     pageInfo {
@@ -2951,13 +2895,25 @@ export const CommentsDocument = gql`
     edges {
       cursor
       node {
-        ...CommentFragment
+        ...Comment
+        replies: repliesConnection(first: 2) {
+          pageInfo {
+            hasNextPage
+          }
+          totalCount
+          edges {
+            cursor
+            node {
+              ...Comment
+            }
+          }
+        }
       }
     }
   }
 }
-    ${PostFragmentFragmentDoc}
-${CommentFragmentFragmentDoc}`;
+    ${PostFragmentDoc}
+${CommentFragmentDoc}`;
 
 /**
  * __useCommentsQuery__
@@ -3009,10 +2965,10 @@ export const CurrentUserDocument = gql`
       id
       title
     }
-    ...UserProjectsFragment
+    ...UserProjects
   }
 }
-    ${UserProjectsFragmentFragmentDoc}`;
+    ${UserProjectsFragmentDoc}`;
 
 /**
  * __useCurrentUserQuery__
@@ -3041,7 +2997,7 @@ export type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQu
 export const CurrentUserProfileDocument = gql`
     query currentUserProfile($after: String, $first: Int = 5) {
   user: currentUser {
-    ...UserFragment
+    ...User
     projects: projectsConnection {
       edges {
         node {
@@ -3061,7 +3017,7 @@ export const CurrentUserProfileDocument = gql`
       edges {
         cursor
         node {
-          ...PostFragment
+          ...Post
         }
       }
       pageInfo {
@@ -3070,8 +3026,8 @@ export const CurrentUserProfileDocument = gql`
     }
   }
 }
-    ${UserFragmentFragmentDoc}
-${PostFragmentFragmentDoc}`;
+    ${UserFragmentDoc}
+${PostFragmentDoc}`;
 
 /**
  * __useCurrentUserProfileQuery__
@@ -3102,10 +3058,10 @@ export type CurrentUserProfileQueryResult = ApolloReactCommon.QueryResult<Curren
 export const CurrentUserProjectsDocument = gql`
     query currentUserProjects {
   user: currentUser {
-    ...UserProjectsFragment
+    ...UserProjects
   }
 }
-    ${UserProjectsFragmentFragmentDoc}`;
+    ${UserProjectsFragmentDoc}`;
 
 /**
  * __useCurrentUserProjectsQuery__
@@ -3134,10 +3090,10 @@ export type CurrentUserProjectsQueryResult = ApolloReactCommon.QueryResult<Curre
 export const CurrentUserSettingsDocument = gql`
     query currentUserSettings {
   user: currentUser {
-    ...UserSettingsFragment
+    ...UserSettings
   }
 }
-    ${UserSettingsFragmentFragmentDoc}`;
+    ${UserSettingsFragmentDoc}`;
 
 /**
  * __useCurrentUserSettingsQuery__
@@ -3173,13 +3129,13 @@ export const FeedDocument = gql`
       edges {
         cursor
         node {
-          ...PostFragment
+          ...Post
         }
       }
     }
   }
 }
-    ${PostFragmentFragmentDoc}`;
+    ${PostFragmentDoc}`;
 
 /**
  * __useFeedQuery__
@@ -3216,12 +3172,12 @@ export const FollowersDocument = gql`
     edges {
       cursor
       node {
-        ...UserFragment
+        ...User
       }
     }
   }
 }
-    ${UserFragmentFragmentDoc}`;
+    ${UserFragmentDoc}`;
 
 /**
  * __useFollowersQuery__
@@ -3264,10 +3220,10 @@ export const NotificationsDocument = gql`
         type
         createdAt
         user {
-          ...UserFragment
+          ...User
         }
         project {
-          ...ProjectFragment
+          ...Project
         }
         post {
           id
@@ -3289,8 +3245,8 @@ export const NotificationsDocument = gql`
     }
   }
 }
-    ${UserFragmentFragmentDoc}
-${ProjectFragmentFragmentDoc}`;
+    ${UserFragmentDoc}
+${ProjectFragmentDoc}`;
 
 /**
  * __useNotificationsQuery__
@@ -3321,10 +3277,10 @@ export type NotificationsQueryResult = ApolloReactCommon.QueryResult<Notificatio
 export const PostDocument = gql`
     query post($id: ID!) {
   post(id: $id) {
-    ...PostFragment
+    ...Post
   }
 }
-    ${PostFragmentFragmentDoc}`;
+    ${PostFragmentDoc}`;
 
 /**
  * __usePostQuery__
@@ -3360,12 +3316,12 @@ export const PostsDocument = gql`
     edges {
       cursor
       node {
-        ...PostFragment
+        ...Post
       }
     }
   }
 }
-    ${PostFragmentFragmentDoc}`;
+    ${PostFragmentDoc}`;
 
 /**
  * __usePostsQuery__
@@ -3396,22 +3352,22 @@ export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQu
 export const ProjectDocument = gql`
     query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {
   post(id: $postId) {
-    ...PostFragment
+    ...Post
   }
   project(id: $id, slug: $slug) {
-    ...ProjectFragment
+    ...Project
     posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
       edges {
         cursor
         node {
-          ...PostFragment
+          ...Post
         }
       }
     }
   }
 }
-    ${PostFragmentFragmentDoc}
-${ProjectFragmentFragmentDoc}`;
+    ${PostFragmentDoc}
+${ProjectFragmentDoc}`;
 
 /**
  * __useProjectQuery__
@@ -3454,7 +3410,7 @@ export const ProjectSuggestionsDocument = gql`
     }
     edges {
       node {
-        ...ProjectFragment
+        ...Project
         cover {
           uri
           default
@@ -3463,7 +3419,7 @@ export const ProjectSuggestionsDocument = gql`
     }
   }
 }
-    ${ProjectFragmentFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 
 /**
  * __useProjectSuggestionsQuery__
@@ -3538,12 +3494,12 @@ export const ProjectsDocument = gql`
           uri
           default
         }
-        ...ProjectFragment
+        ...Project
       }
     }
   }
 }
-    ${ProjectFragmentFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 
 /**
  * __useProjectsQuery__
@@ -3584,26 +3540,13 @@ export const RepliesDocument = gql`
       edges {
         cursor
         node {
-          id
-          commentId
-          text
-          createdAt
-          permissions {
-            isOwner
-          }
-          likes {
-            isLiked
-            totalCount
-          }
-          user {
-            ...UserFragment
-          }
+          ...Comment
         }
       }
     }
   }
 }
-    ${UserFragmentFragmentDoc}`;
+    ${CommentFragmentDoc}`;
 
 /**
  * __useRepliesQuery__
@@ -3691,7 +3634,7 @@ export const SearchProjectsDocument = gql`
       cursor
       node {
         ... on Project {
-          ...ProjectFragment
+          ...Project
           cover {
             uri
             default
@@ -3701,7 +3644,7 @@ export const SearchProjectsDocument = gql`
     }
   }
 }
-    ${ProjectFragmentFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 
 /**
  * __useSearchProjectsQuery__
@@ -3740,14 +3683,14 @@ export const SearchUsersDocument = gql`
       cursor
       node {
         ... on User {
-          ...UserFragment
+          ...User
           projectCount
         }
       }
     }
   }
 }
-    ${UserFragmentFragmentDoc}`;
+    ${UserFragmentDoc}`;
 
 /**
  * __useSearchUsersQuery__
@@ -3785,12 +3728,12 @@ export const SimilarProjectsDocument = gql`
         cover {
           uri
         }
-        ...ProjectFragment
+        ...Project
       }
     }
   }
 }
-    ${ProjectFragmentFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 
 /**
  * __useSimilarProjectsQuery__
@@ -3821,7 +3764,7 @@ export type SimilarProjectsQueryResult = ApolloReactCommon.QueryResult<SimilarPr
 export const UserDocument = gql`
     query user($username: LowercaseString!, $after: String, $first: Int = 5) {
   user(username: $username) {
-    ...UserFragment
+    ...User
     projects: projectsConnection {
       edges {
         node {
@@ -3841,7 +3784,7 @@ export const UserDocument = gql`
       edges {
         cursor
         node {
-          ...PostFragment
+          ...Post
         }
       }
       pageInfo {
@@ -3850,8 +3793,8 @@ export const UserDocument = gql`
     }
   }
 }
-    ${UserFragmentFragmentDoc}
-${PostFragmentFragmentDoc}`;
+    ${UserFragmentDoc}
+${PostFragmentDoc}`;
 
 /**
  * __useUserQuery__
@@ -3891,7 +3834,7 @@ export const UserFollowingProjectsDocument = gql`
       edges {
         cursor
         node {
-          ...ProjectFragment
+          ...Project
           cover {
             uri
             default
@@ -3901,7 +3844,7 @@ export const UserFollowingProjectsDocument = gql`
     }
   }
 }
-    ${ProjectFragmentFragmentDoc}`;
+    ${ProjectFragmentDoc}`;
 
 /**
  * __useUserFollowingProjectsQuery__

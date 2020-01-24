@@ -1,4 +1,4 @@
-#import "../fragments/UserFragment.graphql"
+#import "../fragments/CommentFragment.graphql"
 
 query replies($id: ID!, $after: String, $first: Int = 5) {
   comment(id: $id) {
@@ -10,20 +10,7 @@ query replies($id: ID!, $after: String, $first: Int = 5) {
       edges {
         cursor
         node {
-          id
-          commentId
-          text
-          createdAt
-          permissions {
-            isOwner
-          }
-          likes {
-            isLiked
-            totalCount
-          }
-          user {
-            ...UserFragment
-          }
+          ...Comment
         }
       }
     }
