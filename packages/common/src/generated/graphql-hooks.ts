@@ -970,6 +970,26 @@ export type UserSettings = {
   notifications?: Maybe<UserNotificationsSettings>,
 };
 
+export type CommentAndRepliesFragment = (
+  { __typename?: 'Comment' }
+  & { replies: Maybe<(
+    { __typename?: 'CommentConnection' }
+    & Pick<CommentConnection, 'totalCount'>
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges: Maybe<Array<(
+      { __typename?: 'CommentEdge' }
+      & Pick<CommentEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Comment' }
+        & CommentFragment
+      ) }
+    )>> }
+  )> }
+  & CommentFragment
+);
+
 export type CommentFragment = (
   { __typename?: 'Comment' }
   & Pick<Comment, 'id' | 'text' | 'createdAt'>
@@ -1423,22 +1443,7 @@ export type CommentsQuery = (
       & Pick<CommentEdge, 'cursor'>
       & { node: (
         { __typename?: 'Comment' }
-        & { replies: Maybe<(
-          { __typename?: 'CommentConnection' }
-          & Pick<CommentConnection, 'totalCount'>
-          & { pageInfo: (
-            { __typename?: 'PageInfo' }
-            & Pick<PageInfo, 'hasNextPage'>
-          ), edges: Maybe<Array<(
-            { __typename?: 'CommentEdge' }
-            & Pick<CommentEdge, 'cursor'>
-            & { node: (
-              { __typename?: 'Comment' }
-              & CommentFragment
-            ) }
-          )>> }
-        )> }
-        & CommentFragment
+        & CommentAndRepliesFragment
       ) }
     )>> }
   )> }
@@ -1998,6 +2003,40 @@ export const UserFragmentDoc = gql`
   projectCount
 }
     `;
+export const CommentFragmentDoc = gql`
+    fragment Comment on Comment {
+  id
+  text
+  createdAt
+  permissions {
+    isOwner
+  }
+  likes {
+    isLiked
+    totalCount
+  }
+  user {
+    ...User
+  }
+}
+    ${UserFragmentDoc}`;
+export const CommentAndRepliesFragmentDoc = gql`
+    fragment CommentAndReplies on Comment {
+  ...Comment
+  replies: repliesConnection(first: 1) {
+    pageInfo {
+      hasNextPage
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ...Comment
+      }
+    }
+  }
+}
+    ${CommentFragmentDoc}`;
 export const ProjectFragmentDoc = gql`
     fragment Project on Project {
   id
@@ -2013,23 +2052,6 @@ export const ProjectFragmentDoc = gql`
   }
   followers: followersConnection {
     totalCount
-  }
-}
-    ${UserFragmentDoc}`;
-export const CommentFragmentDoc = gql`
-    fragment Comment on Comment {
-  id
-  text
-  createdAt
-  permissions {
-    isOwner
-  }
-  likes {
-    isLiked
-    totalCount
-  }
-  user {
-    ...User
   }
 }
     ${UserFragmentDoc}`;
@@ -2895,25 +2917,13 @@ export const CommentsDocument = gql`
     edges {
       cursor
       node {
-        ...Comment
-        replies: repliesConnection(first: 2) {
-          pageInfo {
-            hasNextPage
-          }
-          totalCount
-          edges {
-            cursor
-            node {
-              ...Comment
-            }
-          }
-        }
+        ...CommentAndReplies
       }
     }
   }
 }
     ${PostFragmentDoc}
-${CommentFragmentDoc}`;
+${CommentAndRepliesFragmentDoc}`;
 
 /**
  * __useCommentsQuery__

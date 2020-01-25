@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 import Item from './Item'
@@ -20,7 +20,6 @@ function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }
 
   return replies ? (
     <>
-      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} postId={postId} />
       {replies.edges.map(({ node }) => (
         <Item
           key={node.id}
@@ -44,6 +43,8 @@ function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }
           </Text>
         </LoadReplies>
       )}
+
+      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} postId={postId} />
     </>
   ) : (
     <Item
@@ -57,4 +58,4 @@ function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }
   )
 }
 
-export default memo(CommentItem)
+export default CommentItem

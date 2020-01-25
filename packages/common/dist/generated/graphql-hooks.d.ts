@@ -778,6 +778,24 @@ export declare type UserSettings = {
     timezone?: Maybe<Scalars['String']>;
     notifications?: Maybe<UserNotificationsSettings>;
 };
+export declare type CommentAndRepliesFragment = ({
+    __typename?: 'Comment';
+} & {
+    replies: Maybe<({
+        __typename?: 'CommentConnection';
+    } & Pick<CommentConnection, 'totalCount'> & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges: Maybe<Array<({
+            __typename?: 'CommentEdge';
+        } & Pick<CommentEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'Comment';
+            } & CommentFragment);
+        })>>;
+    })>;
+} & CommentFragment);
 export declare type CommentFragment = ({
     __typename?: 'Comment';
 } & Pick<Comment, 'id' | 'text' | 'createdAt'> & {
@@ -1156,22 +1174,7 @@ export declare type CommentsQuery = ({
         } & Pick<CommentEdge, 'cursor'> & {
             node: ({
                 __typename?: 'Comment';
-            } & {
-                replies: Maybe<({
-                    __typename?: 'CommentConnection';
-                } & Pick<CommentConnection, 'totalCount'> & {
-                    pageInfo: ({
-                        __typename?: 'PageInfo';
-                    } & Pick<PageInfo, 'hasNextPage'>);
-                    edges: Maybe<Array<({
-                        __typename?: 'CommentEdge';
-                    } & Pick<CommentEdge, 'cursor'> & {
-                        node: ({
-                            __typename?: 'Comment';
-                        } & CommentFragment);
-                    })>>;
-                })>;
-            } & CommentFragment);
+            } & CommentAndRepliesFragment);
         })>>;
     })>;
 });
@@ -1687,8 +1690,9 @@ export declare type UserFollowingProjectsQuery = ({
     })>;
 });
 export declare const UserFragmentDoc: any;
-export declare const ProjectFragmentDoc: any;
 export declare const CommentFragmentDoc: any;
+export declare const CommentAndRepliesFragmentDoc: any;
+export declare const ProjectFragmentDoc: any;
 export declare const PostFragmentDoc: any;
 export declare const UserProjectsFragmentDoc: any;
 export declare const UserSettingsFragmentDoc: any;

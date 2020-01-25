@@ -21,7 +21,7 @@ function Users({ query }) {
 
   const {
     loadData,
-    data,
+    data: { edges },
     isFetching,
     fetchMore,
     isRefetching,
@@ -79,7 +79,7 @@ function Users({ query }) {
       paddingBottom={40}
       getItemLayout={getItemLayout}
       ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
-      data={query ? data : recent}
+      data={query ? edges : recent}
       fetchMore={fetchMore}
       hasNextPage={isFetching ? false : hasNextPage}
       isFetching={isFetching && query.length === 0}
@@ -99,7 +99,7 @@ function Users({ query }) {
         )
       }
       ListFooterComponent={
-        isFetching && !data ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
+        isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
       }
     />
   )

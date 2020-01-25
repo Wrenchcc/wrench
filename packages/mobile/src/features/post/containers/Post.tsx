@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { View } from 'react-native'
+import { View, FlatList, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import {
   usePaginatedQuery,
@@ -8,16 +8,11 @@ import {
   CommentsDocument,
   useRepliesLazyQuery,
 } from '@wrench/common'
-import { isEmpty } from 'rambda'
-import { Page, FlatList } from 'navigation'
+import Header from 'navigation/Page/Header'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
-import { CommentItem, KeyboardAccessoryView } from 'ui'
-import { isIphone } from 'utils/platform'
+import { CommentItem } from 'ui'
 
-const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
-
-// TODO: Load passed comment in top
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
 
@@ -52,9 +47,7 @@ function PostContainer({ postId, commentId }) {
     data: { edges },
     isFetching,
     fetchMore,
-    isRefetching,
     hasNextPage,
-    refetch,
   } = usePaginatedQuery(['comments'])(CommentsDocument, {
     variables: {
       postId,
@@ -75,48 +68,75 @@ function PostContainer({ postId, commentId }) {
     />
   )
 
-  const renderHeader = () => {
-    if (!postData) {
-      return null
+  const renderTopComponent = useCallback(() => {
+    let content = []
+
+    if (postData) {
+      content = [
+        <View style={{ paddingHorizontal: 20, marginBottom: 10 }} key="1">
+          <Post post={postData.post} withoutComments paddingBottom={10} numberOfLines={0} />
+        </View>,
+      ]
     }
 
-    return (
-      <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
-        <Post post={postData.post} withoutComments paddingBottom={10} numberOfLines={0} />
-      </View>
-    )
-  }
+    if (hasNextPage) {
+      content.push(
+        <View style={{ paddingLeft: 60, height: 40 }} key="2">
+          {isFetching ? (
+            <ActivityIndicator size="small" color="black" />
+          ) : (
+            <Text medium fontSize={14} color="light_grey" onPress={fetchMore}>
+              {t('PostContainer:loadMore')}
+            </Text>
+          )}
+        </View>
+      )
+    }
+
+    return content
+  }, [postData, hasNextPage, fetchMore, isFetching])
+
+  const initialFetch = isFetching && !edges
 
   return (
-    <Page
-      scrollToIndex={edges && !isEmpty(edges)}
-      headerTitle={t('PostContainer:title')}
-      headerAnimation={false}
-      stickyFooter={
-        <KeyboardAccessoryView extraHeight={50}>
+    <View style={{ flex: 1 }}>
+      <Header headerTitle={t('PostContainer:title')} headerAnimation={false} />
+
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+        <FlatList
+          inverted
+          initialNumToRender={8}
+          contentInsetAdjustmentBehavior="never"
+          automaticallyAdjustContentInsets={false}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="always"
+          keyExtractor={({ node }) => node.id}
+          ListFooterComponent={renderTopComponent}
+          ListEmptyComponent={
+            initialFetch && (
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="small" color="black" />
+              </View>
+            )
+          }
+          data={edges}
+          renderItem={renderItem}
+          contentContainerStyle={{
+            paddingBottom: 90,
+            flexGrow: 1,
+            justifyContent: 'flex-end',
+          }}
+        />
+        <View style={{ paddingHorizontal: 20 }}>
           <CommentField
             postId={postId}
             username={mention.username}
             commentId={mention.commentId}
             emoji
           />
-        </KeyboardAccessoryView>
-      }
-    >
-      <FlatList
-        initialNumToRender={6}
-        paddingHorizontal={0}
-        paddingBottom={COMMENT_FIELD_OFFSET}
-        ListHeaderComponent={renderHeader}
-        data={edges}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={!postData || isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Page>
+        </View>
+      </KeyboardAvoidingView>
+    </View>
   )
 }
 
