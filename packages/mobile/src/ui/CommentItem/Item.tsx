@@ -86,6 +86,7 @@ function Item({
     },
   })
 
+  // TODO: Remove from post fragment
   const handleDeleteComment = useCallback(
     () =>
       deleteComment({

@@ -6,8 +6,9 @@ import {
   useCommentQuery,
   usePostQuery,
   CommentsDocument,
-  useRepliesLazyQuery,
+  RepliesDocument,
 } from '@wrench/common'
+import { update } from 'rambda'
 import Header from 'navigation/Page/Header'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
@@ -20,16 +21,6 @@ function PostContainer({ postId, commentId }) {
     commentId: null,
     username: null,
   })
-
-  const [loadReplies] = useRepliesLazyQuery()
-
-  const fetchMoreReplies = (id, after) =>
-    loadReplies({
-      variables: {
-        after,
-        id,
-      },
-    })
 
   const { data: commentData } = useCommentQuery({
     variables: {
@@ -54,6 +45,47 @@ function PostContainer({ postId, commentId }) {
     },
   })
 
+  const fetchReplies = ({ id, after }) =>
+    fetchMore({
+      query: RepliesDocument,
+      variables: {
+        after,
+        id,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.comment.replies) {
+          return prev
+        }
+
+        const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
+
+        return {
+          ...prev,
+          comments: {
+            ...prev.comments,
+            edges: update(
+              index,
+              {
+                ...prev.comments.edges[index],
+                node: {
+                  ...prev.comments.edges[index].node,
+                  replies: {
+                    ...prev.comments.edges[index].node.replies,
+                    ...fetchMoreResult.comment.replies,
+                    edges: [
+                      ...prev.comments.edges[index].node.replies.edges,
+                      ...fetchMoreResult.comment.replies.edges,
+                    ],
+                  },
+                },
+              },
+              prev.comments.edges
+            ),
+          },
+        }
+      },
+    })
+
   const highlightId = commentData && commentData.comment.id
 
   const handleOnReply = useCallback(data => setMention(data), [setMention])
@@ -63,7 +95,7 @@ function PostContainer({ postId, commentId }) {
       data={item}
       highlightId={highlightId}
       onReply={handleOnReply}
-      fetchMoreReplies={fetchMoreReplies}
+      fetchReplies={fetchReplies}
       postId={postId}
     />
   )

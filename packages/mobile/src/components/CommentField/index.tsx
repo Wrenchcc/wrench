@@ -51,7 +51,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
     return () => keyboardHideEventListener.remove()
   }, [])
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = () => {
     if (blurOnSubmit) {
       inputRef.current.blur()
     }
@@ -108,11 +108,9 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
                 edges: [
                   {
                     node: {
-                      ...addComment,
                       user,
-                      __typename: 'Comment',
+                      ...addComment,
                     },
-                    __typename: 'CommentEdge',
                   },
                   ...data.comments.edges,
                 ],
@@ -231,7 +229,8 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         }
       },
     })
-  }, [postId, commentId, inputRef, text, blurOnSubmit])
+  }
+  // [postId, commentId, inputRef, text, blurOnSubmit])
 
   const handleOnChangeText = useCallback(
     val => {

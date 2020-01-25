@@ -14,7 +14,7 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-beta.24",
+    "@apollo/client": "^3.0.0-beta.25",
     "@expo/react-native-action-sheet": "^3.4.1",
     "@pontusab/react-native-apple-authentication": "^1.0.6",
     "@pontusab/react-native-device-locale": "^1.0.7",
@@ -46,7 +46,7 @@
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-google-signin": "^2.1.1",
-    "react-native-image-picker": "^2.0.0",
+    "react-native-image-picker": "^2.2.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-navigation": "4.0.2",
     "react-native-permissions": "^2.0.9",
