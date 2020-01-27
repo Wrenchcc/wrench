@@ -35,13 +35,6 @@ function EditProject({ project }) {
   const navigateToModel = useCallback(
     () =>
       navigate(SCREENS.EDIT_MODEL, {
-        options: {
-          animations: {
-            push: {
-              waitForRender: true,
-            },
-          },
-        },
         passProps: {
           id: project.id,
           model: project.model,

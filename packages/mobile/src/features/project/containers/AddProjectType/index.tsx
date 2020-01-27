@@ -10,20 +10,7 @@ function AddProjectType() {
   const { t } = useTranslation()
   const { navigate, navigateBack } = useNavigation()
   const { update } = useProjectStore(store => store.actions)
-  const handleNavigation = useCallback(
-    () =>
-      navigate(SCREENS.ADD_PROJECT_MODEL, {
-        options: {
-          animations: {
-            push: {
-              waitForRender: true,
-            },
-          },
-        },
-      }),
-
-    []
-  )
+  const handleNavigation = useCallback(() => navigate(SCREENS.ADD_PROJECT_MODEL), [])
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()

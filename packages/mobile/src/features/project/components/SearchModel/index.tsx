@@ -18,9 +18,13 @@ const styles = {
 }
 
 function SearchModel({ query, onPress }) {
-  const { loadData, data, isFetching, fetchMore, hasNextPage } = usePaginatedLazyQuery(['models'])(
-    SearchModelsDocument
-  )
+  const {
+    loadData,
+    data: { edges },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedLazyQuery(['models'])(SearchModelsDocument)
 
   useEffect(() => {
     if (query) {
@@ -42,10 +46,10 @@ function SearchModel({ query, onPress }) {
         androidDismissKeyboard={false}
         defaultPadding
         ListHeaderComponent={
-          (query.length === 1 && !data) || isFetching ? <SearchingFor query={query} /> : null
+          (query.length === 1 && !edges) || isFetching ? <SearchingFor query={query} /> : null
         }
         keyboardDismissMode="none"
-        data={data}
+        data={edges}
         fetchMore={fetchMore}
         isFetching={false}
         hasNextPage={isFetching ? false : hasNextPage}

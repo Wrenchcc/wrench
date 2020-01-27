@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, KeyboardAvoidingView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { useProjectStore, PROJECT } from 'store'
-import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
+import { Header, Title, Text, Input, Icon } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 import { COLORS } from 'ui/constants'
@@ -107,25 +107,28 @@ function AddProjectModel() {
           )
         }
       />
-      <KeyboardAvoidingView>
+      <View style={{ flex: 1 }}>
         {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
 
-        <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-          {t('AddProjectModel:title')}
-        </Title>
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+          <View style={{ flex: 1, paddingHorizontal: 20 }}>
+            <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
+              {t('AddProjectModel:title')}
+            </Title>
 
-        <Input
-          placeholder={t('AddProjectModel:placeholder')}
-          autoFocus
-          large
-          onChangeText={onChangeText}
-          value={model ? formatModel(model) : query}
-          borderColor="dark"
-          color="dark"
-          returnKeyType="next"
-          onBlur={handleOnBlur}
-        />
-      </KeyboardAvoidingView>
+            <Input
+              placeholder={t('AddProjectModel:placeholder')}
+              large
+              onChangeText={onChangeText}
+              value={model ? formatModel(model) : query}
+              borderColor="dark"
+              color="dark"
+              returnKeyType="next"
+              onBlur={handleOnBlur}
+            />
+          </View>
+        </KeyboardAvoidingView>
+      </View>
     </>
   )
 }
