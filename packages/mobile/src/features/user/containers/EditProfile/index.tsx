@@ -23,7 +23,7 @@ const UPLOAD_PATH = 'avatar'
 
 function EditProfile({ onboarding }) {
   const { t } = useTranslation()
-  const { dismissModal, navigateTo } = useNavigation()
+  const { dismissModal, navigate } = useNavigation()
   const [upload, setUploadFile] = useState()
   const [isSaving, setSaving] = useState(false)
 
@@ -73,8 +73,8 @@ function EditProfile({ onboarding }) {
   }, [dismissModal, onboarding])
 
   const navigateToAddLocation = useCallback(() => {
-    navigateTo(SCREENS.ADD_LOCATION)
-  }, [navigateTo])
+    navigate(SCREENS.ADD_LOCATION)
+  }, [navigate])
 
   const handleSave = useCallback(async () => {
     setSaving(true)

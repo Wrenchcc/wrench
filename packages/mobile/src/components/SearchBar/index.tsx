@@ -16,7 +16,6 @@ function SearchBar({
   query,
 }) {
   const inputRef = useRef()
-  const transitionRef = useRef()
   const { t } = useTranslation()
 
   const handleFocus = useCallback(() => {

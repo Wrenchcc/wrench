@@ -10,10 +10,10 @@ function ProjectTypes() {
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
   // const { data: userData, loading: loadingUser } = useCurrentUserQuery()
 
-  const { navigateTo } = useNavigation()
+  const { navigate } = useNavigation()
 
   const handleNavigation = useCallback(category => {
-    navigateTo(SCREENS.CATEGORIES, category)
+    navigate(SCREENS.CATEGORIES, category)
   }, [])
 
   if (loadingTypes) {

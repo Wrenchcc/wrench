@@ -1,3 +1,4 @@
+import { TextInput } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
@@ -15,16 +16,6 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
     componentId = id
   }
 })
-
-export function navigateTo(screen, { options, ...passProps } = {}) {
-  Navigation.push(componentId, {
-    component: {
-      name: screen,
-      options,
-      passProps,
-    },
-  })
-}
 
 export function showModal(screen, { options, ...passProps } = {}) {
   Navigation.showModal({
@@ -103,6 +94,11 @@ export function dismissModal(root, currentTabIndex = TABS_INDEX.FEED) {
 }
 
 export function navigate(screen, { options, ...passProps } = {}) {
+  const currentlyFocusedField = TextInput.State
+  if (currentlyFocusedField) {
+    currentlyFocusedField.blurTextInput()
+  }
+
   Navigation.push(componentId, {
     component: {
       name: screen,

@@ -1,5 +1,5 @@
 import { COLORS, FONTS } from 'ui/constants'
-import { navigateTo, showModal, SCREENS } from 'navigation'
+import { navigate, showModal, SCREENS } from 'navigation'
 
 function addhttp(url) {
   if (!/^(f|ht)tps?:\/\//i.test(url)) {
@@ -16,7 +16,7 @@ const handleUrlPress = url => {
 
 const handleNamePress = name => {
   const username = name.replace('@', '')
-  navigateTo(SCREENS.USER, {
+  navigate(SCREENS.USER, {
     user: { username },
   })
 }
