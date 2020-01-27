@@ -1,5 +1,6 @@
 import {
   CurrentUserDocument,
+  CurrentUserProjectsDocument,
   PreSignUrlsDocument,
   PreSignUrlDocument,
   RegisterDeviceTokenDocument,
@@ -51,6 +52,17 @@ export async function preSignUrl(input) {
 export async function getCurrentUser() {
   try {
     return client.query({ query: CurrentUserDocument })
+  } catch (err) {
+    logError(err)
+  }
+}
+
+export async function getCurrentUserProjects() {
+  try {
+    return client.query({
+      query: CurrentUserProjectsDocument,
+      fetchPolicy: 'cache-only',
+    })
   } catch (err) {
     logError(err)
   }

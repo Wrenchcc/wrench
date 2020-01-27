@@ -1,8 +1,7 @@
 import React from 'react'
-import Add from 'components/Add'
 import Header from './Header'
 
-function Layout({ headerTitleKey, headerLeft, headerRight = <Add />, stickyComponent, children }) {
+function Layout({ headerTitleKey, headerLeft, headerRight, stickyComponent, children }) {
   return (
     <>
       <Header

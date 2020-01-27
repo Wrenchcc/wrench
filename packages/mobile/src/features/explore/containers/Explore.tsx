@@ -6,7 +6,6 @@ import { usePaginatedQuery, PostsDocument } from '@wrench/common'
 import { isAndroid as _isAndroid } from 'utils/platform'
 import { FlatList, SCREENS, currentComponentName } from 'navigation'
 import Header from 'navigation/Layout/Header'
-import Add from 'components/Add'
 import SearchBar from 'components/SearchBar'
 import Search from 'components/Search'
 import Post from 'components/Post'
@@ -233,7 +232,7 @@ function Explore() {
             searchActive={searchActive}
           />
         }
-        headerRight={searchActive || <Add />}
+        headerRight={searchActive}
         stickyComponent={!searchActive && <ProjectTypes />}
       />
 

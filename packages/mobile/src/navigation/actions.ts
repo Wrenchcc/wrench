@@ -2,6 +2,8 @@ import { TextInput } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
+import { getCurrentUserProjects } from 'services/gql'
+import { logError } from 'utils/sentry'
 import { SCREENS, BOTTOM_TABS_ID, TABS_INDEX } from './constants'
 
 export let currentComponentName
@@ -14,6 +16,34 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
   currentComponentName = componentName
   if (id !== SCREENS.MENTION && id !== SCREENS.EDIT_POST) {
     componentId = id
+  }
+})
+
+Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
+  if (tabIndex === 2) {
+    try {
+      const { data } = await getCurrentUserProjects()
+      const screen = data.user.projects.edges.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT
+
+      Navigation.showModal({
+        component: {
+          id: screen,
+          name: screen,
+          options: {
+            layout: {
+              backgroundColor: data.user.projects.edges.length > 0 ? COLORS.DARK : COLORS.WHITE,
+            },
+            statusBar: {
+              backgroundColor: data.user.projects.edges.length > 0 ? 'black' : 'white',
+              style: data.user.projects.edges.length > 0 ? 'light' : 'dark',
+              visible: isIphone ? false : true,
+            },
+          },
+        },
+      })
+    } catch (err) {
+      logError(err)
+    }
   }
 })
 
