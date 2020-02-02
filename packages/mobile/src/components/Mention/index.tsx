@@ -17,7 +17,7 @@ function Mention({ onPress }) {
 
   const {
     loadData,
-    data,
+    data: { edges },
     isFetching,
     fetchMore,
     isRefetching,
@@ -49,7 +49,7 @@ function Mention({ onPress }) {
         androidDismissKeyboard={false}
         keyboardDismissMode="none"
         ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
-        data={data}
+        data={edges}
         fetchMore={fetchMore}
         hasNextPage={isFetching ? false : hasNextPage}
         isFetching={isFetching && query.length === 0}
@@ -57,7 +57,7 @@ function Mention({ onPress }) {
         renderItem={renderItem}
         borderSeparators
         ListFooterComponent={
-          isFetching && !data ? <SearchingFor query={query} /> : hasNextPage && <Loader />
+          isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && <Loader />
         }
       />
     </View>

@@ -7,6 +7,7 @@ export const Base = styled.View``
 export const Inner = styled.View`
   flex-direction: row;
   align-items: center;
+  margin-bottom: 15px;
 `
 
 export const Input = styled(UiInput)`

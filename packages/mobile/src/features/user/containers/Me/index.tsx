@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
-import { Layout, FlatList } from 'navigation'
+import { Layout, FlatList, SCREENS, useScrollToTop } from 'navigation'
 import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
 import Post from 'components/Post'
 import { EmptyState } from 'ui'
@@ -16,6 +16,8 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me() {
+  const scrollRef = useRef()
+
   const {
     data: { edges, user },
     isFetching,
@@ -25,15 +27,17 @@ function Me() {
     refetch,
   } = usePaginatedQuery(['user', 'posts'])(CurrentUserProfileDocument)
 
+  useScrollToTop(scrollRef, SCREENS.ME)
+
   const hasPosts = edges && edges.length > 0
 
   const emptyState = user && user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      <Layout headerLeft={<SettingsButton />} search={false} headerRight={<EditButton />}>
+      <Layout headerLeft={<SettingsButton />} headerRight={<EditButton />}>
         <FlatList
-          tabIndex={3}
+          ref={scrollRef}
           initialNumToRender={1}
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}

@@ -303,6 +303,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           onChangeText={handleOnChangeText}
           value={text}
           color="dark"
+          height={40}
         />
         {text.length > 0 && (
           <Button onPress={handleSubmit}>

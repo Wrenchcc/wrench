@@ -1,2 +1,2 @@
 #!/bin/sh
-react-native run-ios --no-packager --simulator='iPhone X'
+react-native run-ios --no-packager

@@ -18,6 +18,7 @@ const styles = {
 }
 
 function SearchModel({ query, onPress }) {
+  // TODO: Fetch more
   const {
     loadData,
     data: { edges },

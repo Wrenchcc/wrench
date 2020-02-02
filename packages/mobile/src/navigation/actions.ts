@@ -7,7 +7,7 @@ import { logError } from 'utils/sentry'
 import { SCREENS, BOTTOM_TABS_ID, TABS_INDEX } from './constants'
 
 export let currentComponentName
-let componentId
+export let componentId
 let overlay
 
 // NOTE: If overlay is open do not update the componentId

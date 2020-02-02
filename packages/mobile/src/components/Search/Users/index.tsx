@@ -57,7 +57,7 @@ function Users({ query }) {
 
   const handleSave = useCallback(
     item => {
-      const items = [{ node: item }, ...recent]
+      const items = [{ node: { ...item, isOnline: false } }, ...recent]
       const saved = recent.some(({ node }) => node.id === item.id)
 
       if (!saved) {

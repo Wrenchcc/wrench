@@ -3,7 +3,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import ms from 'ms'
 import { usePaginatedQuery, FeedDocument } from '@wrench/common'
 import { pathOr } from 'rambda'
-import { Layout, FlatList } from 'navigation'
+import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
 import { Posting, ShowLatest } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/register'
@@ -40,6 +40,8 @@ function Feed() {
     }
   }, [scrollRef])
 
+  useScrollToTop(scrollRef, SCREENS.FEED)
+
   useEffect(() => {
     registerForPushNotifications()
     registerUserLocale()
@@ -67,7 +69,6 @@ function Feed() {
       <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
         <FlatList
           ref={scrollRef}
-          tabIndex={0}
           initialNumToRender={2}
           spacingSeparator
           data={edges}

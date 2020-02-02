@@ -1,8 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { usePaginatedQuery, NotificationsDocument } from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
 import ms from 'ms'
-import { Layout, FlatList, showNotificationBadge, hideNotificationBadge } from 'navigation'
+import {
+  Layout,
+  FlatList,
+  SCREENS,
+  showNotificationBadge,
+  hideNotificationBadge,
+  useScrollToTop,
+} from 'navigation'
 // import { deleteNotification } from 'services/graphql/mutations/notification/deleteNotification'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
@@ -12,6 +19,8 @@ function Notifications({
   // deleteNotification: deleteNotificationMutation,
   // markAllNotificationsSeen: markAllNotisficationsSeenMutation,
 }) {
+  const scrollRef = useRef()
+
   const deleteNotificationMutation = () => {}
   const {
     data: { edges, unreadCount },
@@ -25,6 +34,8 @@ function Notifications({
       pollInterval: ms('1m'),
     },
   })
+
+  useScrollToTop(scrollRef, SCREENS.NOTIFICATIONS)
 
   useEffect(() => {
     if (unreadCount > 0) {
@@ -53,7 +64,7 @@ function Notifications({
   return (
     <Layout headerTitleKey="notifications">
       <FlatList
-        tabIndex={2}
+        ref={scrollRef}
         paddingHorizontal={0}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
