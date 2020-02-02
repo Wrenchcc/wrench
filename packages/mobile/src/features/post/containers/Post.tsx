@@ -10,6 +10,7 @@ import {
 } from '@wrench/common'
 import { update } from 'rambda'
 import Header from 'navigation/Page/Header'
+import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
 import { CommentItem } from 'ui'
@@ -154,7 +155,7 @@ function PostContainer({ postId, commentId }) {
           data={edges}
           renderItem={renderItem}
           contentContainerStyle={{
-            paddingBottom: 90,
+            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
             flexGrow: 1,
             justifyContent: 'flex-end',
           }}

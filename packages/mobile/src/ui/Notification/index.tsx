@@ -63,23 +63,11 @@ function onPress(data, navigate) {
     case NOTIFICATION_TYPES.NEW_POST_LIKE: {
       return navigate(SCREENS.POST, {
         postId: data.post.id,
-        options: {
-          bottomTabs: {
-            visible: false,
-            animate: false,
-          },
-        },
       })
     }
     case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
       return navigate(SCREENS.POST, {
         postId: data.comment.postId,
-        options: {
-          bottomTabs: {
-            visible: false,
-            animate: false,
-          },
-        },
       })
     case NOTIFICATION_TYPES.NEW_MENTION:
     case NOTIFICATION_TYPES.NEW_COMMENT:
@@ -87,12 +75,6 @@ function onPress(data, navigate) {
       return navigate(SCREENS.POST, {
         commentId: data.comment.id,
         postId: data.comment.postId,
-        options: {
-          bottomTabs: {
-            visible: false,
-            animate: false,
-          },
-        },
       })
     default:
       return null

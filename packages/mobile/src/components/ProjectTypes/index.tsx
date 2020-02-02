@@ -33,6 +33,7 @@ function ProjectTypes() {
       showsHorizontalScrollIndicator={false}
       style={{
         paddingBottom: 10,
+        paddingTop: 10,
         backgroundColor: 'white',
       }}
     >

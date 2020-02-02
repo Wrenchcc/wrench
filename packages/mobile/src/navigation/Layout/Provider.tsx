@@ -1,5 +1,7 @@
 import React, { useRef, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
+import { NAVIGATION, CONTENT_INSET } from 'navigation/constants'
+import { isAndroid as _isAndroid } from 'utils/platform'
 import { ScrollContext } from './context'
 
 const {
@@ -27,12 +29,11 @@ const {
   Value,
 } = Animated
 
-const HEADER_HEIGHT = 50
-const INITIAL_SCROLL_OFFSET = -180
+const HEADER_HEIGHT = NAVIGATION.TOP_BAR_HEIGHT
 
-const _isAndroid = false
+function Provider({ children, extraContentInset }) {
+  const INITIAL_SCROLL_OFFSET = -(CONTENT_INSET + extraContentInset)
 
-function Provider({ children }) {
   const scrollY = useRef(new Value(0))
   const clock = useRef(new Clock())
   const scrollYClamped = useRef(new Value(0))

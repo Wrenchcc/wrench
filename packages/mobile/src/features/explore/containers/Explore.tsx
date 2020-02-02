@@ -83,6 +83,7 @@ function Explore() {
 
   return (
     <Layout
+      extraContentInset={STICKY_HEIGHT}
       headerComponent={
         <Header
           headerLeft={

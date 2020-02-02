@@ -3,6 +3,7 @@ import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-n
 import { useTranslation } from 'react-i18next'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
 import Header from 'navigation/Page/Header'
+import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { CommentItem, Text } from 'ui'
 import { update } from 'rambda'
@@ -138,7 +139,7 @@ function Comments({ postId }) {
           data={edges}
           renderItem={renderItem}
           contentContainerStyle={{
-            paddingBottom: 90,
+            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
             flexGrow: 1,
             justifyContent: 'flex-end',
           }}

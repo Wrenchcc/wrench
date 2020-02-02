@@ -9,9 +9,10 @@ function Layout({
   headerRight,
   stickyComponent,
   children,
+  extraContentInset = 0,
 }) {
   return (
-    <Provider>
+    <Provider extraContentInset={extraContentInset}>
       {headerComponent || (
         <Header
           headerLeft={headerLeft}

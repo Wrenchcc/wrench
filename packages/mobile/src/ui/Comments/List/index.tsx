@@ -13,12 +13,6 @@ function List({ data }) {
     () =>
       navigate(SCREENS.COMMENTS, {
         postId: data.id,
-        options: {
-          bottomTabs: {
-            visible: false,
-            animate: false,
-          },
-        },
       }),
     [data]
   )

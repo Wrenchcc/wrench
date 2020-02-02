@@ -53,6 +53,7 @@ export enum STATUS_BAR {
 export enum TABS_INDEX {
   FEED = 0,
   EXPLORE = 1,
-  NOTIFICATIONS = 2,
-  ME = 3,
+  ADD = 2,
+  NOTIFICATIONS = 3,
+  ME = 4,
 }
