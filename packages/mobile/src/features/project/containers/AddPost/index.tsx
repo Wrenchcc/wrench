@@ -39,6 +39,77 @@ function AddPost() {
     dismissModal(true)
     setIsPosting(true)
 
+    // updateQueries: {
+    //   getFeed: (prev, { mutationResult }) => {
+    //     const edge = {
+    //       cursor: -1,
+    //       node: {
+    //         ...mutationResult.data.addPost,
+    //         project: {
+    //           ...mutationResult.data.addPost.project,
+    //           user: mutationResult.data.addPost.user,
+    //         },
+    //       },
+    //       __typename: 'PostEdge',
+    //     }
+
+    //     return {
+    //       ...prev,
+    //       feed: {
+    //         ...prev.feed,
+    //         posts: {
+    //           ...prev.feed.posts,
+    //           edges: prepend(edge, prev.feed.posts.edges),
+    //         },
+    //       },
+    //     }
+    //   },
+    //   getRecentPosts: (prev, { mutationResult }) => {
+    //     const edge = {
+    //       cursor: -1,
+    //       node: {
+    //         ...mutationResult.data.addPost,
+    //         project: {
+    //           ...mutationResult.data.addPost.project,
+    //           user: mutationResult.data.addPost.user,
+    //         },
+    //       },
+    //       __typename: 'PostEdge',
+    //     }
+
+    //     return {
+    //       ...prev,
+    //       posts: {
+    //         ...prev.posts,
+    //         edges: prepend(edge, prev.posts.edges),
+    //       },
+    //     }
+    //   },
+    //   getCurrentUserProfile: (prev, { mutationResult }) => {
+    //     const edge = {
+    //       cursor: -1,
+    //       node: {
+    //         ...mutationResult.data.addPost,
+    //         project: {
+    //           ...mutationResult.data.addPost.project,
+    //           user: mutationResult.data.addPost.user,
+    //         },
+    //       },
+    //       __typename: 'PostEdge',
+    //     }
+
+    //     return {
+    //       ...prev,
+    //       user: {
+    //         ...prev.user,
+    //         posts: {
+    //           ...prev.user.posts,
+    //           edges: prepend(edge, prev.user.posts.edges),
+    //         },
+    //       },
+    //     }
+    //   },
+
     try {
       const uploaded = await uploadToS3Async(files)
 
@@ -50,6 +121,7 @@ function AddPost() {
             projectId,
           },
         },
+        update: cache => {},
       })
 
       reset()
