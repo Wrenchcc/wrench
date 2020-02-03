@@ -55,10 +55,11 @@
     "react-native-reanimated": "^1.7.0",
     "react-native-share": "^3.0.0",
     "react-native-splash-screen": "^3.2.0",
-    "react-native-tab-view": "^2.12.0",
+    "react-native-tab-view": "^2.13.0",
     "react-native-video": "^5.0.2",
     "react-native-webview": "^8.0.6",
     "reanimated-bottom-sheet": "^1.0.0-alpha.18",
+    "rn-placeholder": "^3.0.0",
     "styled-components": "^5.0.0",
     "url": "^0.11.0",
     "zustand": "^2.2.2"

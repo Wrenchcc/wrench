@@ -4,8 +4,11 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
+import Placeholder from './Placeholder'
 
 function Popular() {
+  let content = <Placeholder />
+
   const { navigate } = useNavigation()
   const { t } = useTranslation()
 
@@ -44,12 +47,8 @@ function Popular() {
     )
   }
 
-  return (
-    <>
-      <Header>
-        <Title medium>{t('Popular:popular')}</Title>
-      </Header>
-
+  if (edges) {
+    content = (
       <InfiniteList
         initialNumToRender={3}
         data={edges}
@@ -71,6 +70,16 @@ function Popular() {
           marginRight: -GUTTER,
         }}
       />
+    )
+  }
+
+  return (
+    <>
+      <Header>
+        <Title medium>{t('Popular:popular')}</Title>
+      </Header>
+
+      {content}
 
       <Footer>
         <Title medium>{t('Popular:recent')}</Title>

@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
+import CategoriesPlaceholder from './Placeholder'
 import { Wrapper } from './styles'
 
 function ProjectTypes() {
@@ -17,10 +18,8 @@ function ProjectTypes() {
   }, [])
 
   if (loadingTypes) {
-    return null
+    return <CategoriesPlaceholder />
   }
-
-  // return null
 
   // const data = sort(
   //   a => (userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1),
