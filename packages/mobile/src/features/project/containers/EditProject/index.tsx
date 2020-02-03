@@ -59,7 +59,7 @@ function EditProject({ project }) {
     })
 
     dismissModal()
-  }, [dismissModal, navigateBack])
+  }, [dismissModal])
 
   const renderHeaderLeft = () => {
     if (isSaving) {
