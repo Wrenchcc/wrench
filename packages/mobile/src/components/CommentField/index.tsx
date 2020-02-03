@@ -125,36 +125,11 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         try {
           // Is reply
           if (commentId) {
-            // Get comment fragment
             const data = cache.readFragment({
               id: `Comment:${commentId}`,
               fragment: CommentAndRepliesFragmentDoc,
               fragmentName: 'CommentAndReplies',
             })
-
-            const edges = [
-              {
-                cursor: optimisticId(),
-                node: {
-                  id: optimisticId(),
-                  createdAt: new Date().toISOString(),
-                  likes: {
-                    isLiked: false,
-                    totalCount: 0,
-                    __typename: 'Likes',
-                  },
-                  permissions: {
-                    isOwner: true,
-                    __typename: 'CommentPermissions',
-                  },
-                  ...addComment,
-                  user,
-                  __typename: 'Comment',
-                },
-                __typename: 'CommentEdge',
-              },
-              ...data.replies.edges,
-            ]
 
             cache.writeFragment({
               id: `Comment:${commentId}`,
@@ -164,7 +139,29 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
                 ...data,
                 replies: {
                   ...data.replies,
-                  edges,
+                  edges: [
+                    {
+                      cursor: optimisticId(),
+                      node: {
+                        id: optimisticId(),
+                        createdAt: new Date().toISOString(),
+                        likes: {
+                          isLiked: false,
+                          totalCount: 0,
+                          __typename: 'Likes',
+                        },
+                        permissions: {
+                          isOwner: true,
+                          __typename: 'CommentPermissions',
+                        },
+                        ...addComment,
+                        user,
+                        __typename: 'Comment',
+                      },
+                      __typename: 'CommentEdge',
+                    },
+                    ...data.replies.edges,
+                  ],
                   totalCount: data.replies.totalCount + 1,
                 },
               },

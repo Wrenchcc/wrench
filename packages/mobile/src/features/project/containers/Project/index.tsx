@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
-import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
+import { usePaginatedQuery, ProjectDocument, useFollowProjectMutation } from '@wrench/common'
 import Animated from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
@@ -15,9 +15,9 @@ const { interpolate, Extrapolate, Value } = Animated
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 function Project({ slug, id, postId, project: initialProjectData, post: initialPostData }) {
-  const followProjectMutation = () => {}
   const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
+  const [followProject] = useFollowProjectMutation()
 
   const {
     data: { edges, post, project },
@@ -49,7 +49,34 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     outputRange: [1, 0],
   })
 
-  const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
+  const handleFollow = useCallback(() => {
+    const totalCount = project.permissions.isFollower
+      ? project.followers.totalCount - 1
+      : project.followers.totalCount + 1
+
+    const isFollower = !project.permissions.isFollower
+
+    followProject({
+      variables: {
+        id: project.id,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        followProject: {
+          ...project,
+          followers: {
+            ...project.followers,
+            totalCount,
+          },
+          permissions: {
+            ...project.permissions,
+            isFollower,
+          },
+          __typename: 'Project',
+        },
+      },
+    })
+  }, [project])
 
   const hasPosts = post || (edges && edges.length > 0)
 
@@ -83,13 +110,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
 
     return (
       <>
-        {project.title && (
-          <ProjectHeader
-            project={project}
-            spacingHorizontal={!hasPosts}
-            handleFollow={handleFollow}
-          />
-        )}
+        {project.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
         {content}
       </>
     )

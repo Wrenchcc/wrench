@@ -1,9 +1,9 @@
 import React, { memo, useCallback, useRef, useEffect } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
-import { useDeleteCommentMutation } from '@wrench/common'
+import { useDeleteCommentMutation, PostFragmentDoc, CommentsDocument } from '@wrench/common'
 import { Swipeable } from 'react-native-gesture-handler'
-import { CommentsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
+import { logError } from 'utils/sentry'
 import LikeComment from 'components/LikeComment'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
@@ -67,31 +67,71 @@ function Item({
     [user, commentOrReplyId, onReply]
   )
 
-  const [deleteComment] = useDeleteCommentMutation({
-    update: cache => {
-      const data = cache.readQuery({ query: CommentsDocument, variables: { postId } })
-      const edges = data.comments.edges.filter(edge => edge.node.id !== commentOrReplyId)
+  const [deleteComment] = useDeleteCommentMutation()
 
-      cache.writeQuery({
-        data: {
-          ...data,
-          comments: {
-            ...data.comments,
-            edges,
-          },
-        },
-        query: CommentsDocument,
-        variables: { postId },
-      })
-    },
-  })
-
-  // TODO: Remove from post fragment
   const handleDeleteComment = useCallback(
     () =>
       deleteComment({
         variables: {
           id: commentOrReplyId,
+        },
+        update: cache => {
+          // Post
+          try {
+            const data = cache.readFragment({
+              id: `Post:${postId}`,
+              fragment: PostFragmentDoc,
+              fragmentName: 'Post',
+            })
+
+            const edges = data.comments.edges.filter(edge => edge.node.id !== commentOrReplyId)
+
+            cache.writeFragment({
+              id: `Post:${postId}`,
+              fragment: PostFragmentDoc,
+              fragmentName: 'Post',
+              data: {
+                ...data,
+                comments: {
+                  ...data.comments,
+                  edges,
+                  totalCount: data.comments.totalCount - 1 || 0,
+                },
+              },
+            })
+          } catch (err) {
+            logError(err)
+          }
+
+          // Comment list
+          try {
+            const data = cache.readQuery({
+              query: CommentsDocument,
+              variables: {
+                postId,
+              },
+            })
+
+            const edges = data.comments.edges.filter(edge => edge.node.id !== commentOrReplyId)
+
+            const comments = {
+              ...data,
+              comments: {
+                ...data.comments,
+                edges,
+              },
+            }
+
+            cache.writeQuery({
+              query: CommentsDocument,
+              variables: {
+                postId,
+              },
+              data: comments,
+            })
+          } catch (err) {
+            logError(err)
+          }
         },
       }),
     [deleteComment, commentOrReplyId]

@@ -263,6 +263,7 @@ export type Mutation = {
   likePost?: Maybe<Post>,
   likeComment?: Maybe<Comment>,
   markAllNotificationsSeen?: Maybe<Scalars['Boolean']>,
+  markNotificationSeen?: Maybe<Notification>,
   deleteNotification?: Maybe<Scalars['Boolean']>,
   deletePost?: Maybe<Post>,
   addPost?: Maybe<Post>,
@@ -336,6 +337,11 @@ export type MutationLikePostArgs = {
 
 
 export type MutationLikeCommentArgs = {
+  id: Scalars['ID']
+};
+
+
+export type MutationMarkNotificationSeenArgs = {
   id: Scalars['ID']
 };
 
@@ -1005,6 +1011,33 @@ export type CommentFragment = (
   )> }
 );
 
+export type NotificationFragment = (
+  { __typename?: 'Notification' }
+  & Pick<Notification, 'id' | 'type' | 'createdAt'>
+  & { user: (
+    { __typename?: 'User' }
+    & UserFragment
+  ), project: Maybe<(
+    { __typename?: 'Project' }
+    & ProjectFragment
+  )>, post: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id'>
+  )>, comment: Maybe<(
+    { __typename?: 'Comment' }
+    & Pick<Comment, 'id' | 'text' | 'postId'>
+  )>, files: Maybe<(
+    { __typename?: 'FileConnection' }
+    & { edges: Maybe<Array<Maybe<(
+      { __typename?: 'FileEdge' }
+      & { node: (
+        { __typename?: 'File' }
+        & Pick<File, 'id' | 'uri'>
+      ) }
+    )>>> }
+  )> }
+);
+
 export type PostFragment = (
   { __typename?: 'Post' }
   & Pick<Post, 'id' | 'caption' | 'createdAt'>
@@ -1346,6 +1379,19 @@ export type MarkAllNotificationsSeenMutation = (
   & Pick<Mutation, 'markAllNotificationsSeen'>
 );
 
+export type MarkNotificationSeenMutationVariables = {
+  id: Scalars['ID']
+};
+
+
+export type MarkNotificationSeenMutation = (
+  { __typename?: 'Mutation' }
+  & { markNotificationSeen: Maybe<(
+    { __typename?: 'Notification' }
+    & NotificationFragment
+  )> }
+);
+
 export type PreSignUrlMutationVariables = {
   input: PreSignedUrlInput
 };
@@ -1484,14 +1530,11 @@ export type CurrentUserProfileQuery = (
         { __typename?: 'ProjectEdge' }
         & { node: (
           { __typename?: 'Project' }
-          & Pick<Project, 'id' | 'title'>
           & { cover: Maybe<(
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
-          )>, followers: Maybe<(
-            { __typename?: 'FollowersConnection' }
-            & Pick<FollowersConnection, 'totalCount'>
           )> }
+          & ProjectFragment
         ) }
       )>> }
     )>, posts: Maybe<(
@@ -1605,29 +1648,7 @@ export type NotificationsQuery = (
       & Pick<NotificationEdge, 'cursor'>
       & { node: Maybe<(
         { __typename?: 'Notification' }
-        & Pick<Notification, 'id' | 'type' | 'createdAt'>
-        & { user: (
-          { __typename?: 'User' }
-          & UserFragment
-        ), project: Maybe<(
-          { __typename?: 'Project' }
-          & ProjectFragment
-        )>, post: Maybe<(
-          { __typename?: 'Post' }
-          & Pick<Post, 'id'>
-        )>, comment: Maybe<(
-          { __typename?: 'Comment' }
-          & Pick<Comment, 'id' | 'text' | 'postId'>
-        )>, files: Maybe<(
-          { __typename?: 'FileConnection' }
-          & { edges: Maybe<Array<Maybe<(
-            { __typename?: 'FileEdge' }
-            & { node: (
-              { __typename?: 'File' }
-              & Pick<File, 'id' | 'uri'>
-            ) }
-          )>>> }
-        )> }
+        & NotificationFragment
       )> }
     )>>> }
   )> }
@@ -2055,6 +2076,36 @@ export const ProjectFragmentDoc = gql`
   }
 }
     ${UserFragmentDoc}`;
+export const NotificationFragmentDoc = gql`
+    fragment Notification on Notification {
+  id
+  type
+  createdAt
+  user {
+    ...User
+  }
+  project {
+    ...Project
+  }
+  post {
+    id
+  }
+  comment {
+    id
+    text
+    postId
+  }
+  files: filesConnection(type: IMAGE, first: 1) {
+    edges {
+      node {
+        id
+        uri
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}
+${ProjectFragmentDoc}`;
 export const PostFragmentDoc = gql`
     fragment Post on Post {
   id
@@ -2709,6 +2760,38 @@ export function useMarkAllNotificationsSeenMutation(baseOptions?: ApolloReactHoo
 export type MarkAllNotificationsSeenMutationHookResult = ReturnType<typeof useMarkAllNotificationsSeenMutation>;
 export type MarkAllNotificationsSeenMutationResult = ApolloReactCommon.MutationResult<MarkAllNotificationsSeenMutation>;
 export type MarkAllNotificationsSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+export const MarkNotificationSeenDocument = gql`
+    mutation markNotificationSeen($id: ID!) {
+  markNotificationSeen(id: $id) {
+    ...Notification
+  }
+}
+    ${NotificationFragmentDoc}`;
+export type MarkNotificationSeenMutationFn = ApolloReactCommon.MutationFunction<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+
+/**
+ * __useMarkNotificationSeenMutation__
+ *
+ * To run a mutation, you first call `useMarkNotificationSeenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMarkNotificationSeenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [markNotificationSeenMutation, { data, loading, error }] = useMarkNotificationSeenMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useMarkNotificationSeenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>) {
+        return ApolloReactHooks.useMutation<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>(MarkNotificationSeenDocument, baseOptions);
+      }
+export type MarkNotificationSeenMutationHookResult = ReturnType<typeof useMarkNotificationSeenMutation>;
+export type MarkNotificationSeenMutationResult = ApolloReactCommon.MutationResult<MarkNotificationSeenMutation>;
+export type MarkNotificationSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
 export const PreSignUrlDocument = gql`
     mutation preSignUrl($input: PreSignedUrlInput!) {
   preSignUrl(input: $input) {
@@ -3011,14 +3094,10 @@ export const CurrentUserProfileDocument = gql`
     projects: projectsConnection {
       edges {
         node {
-          id
+          ...Project
           cover {
             uri
             default
-          }
-          title
-          followers: followersConnection {
-            totalCount
           }
         }
       }
@@ -3037,6 +3116,7 @@ export const CurrentUserProfileDocument = gql`
   }
 }
     ${UserFragmentDoc}
+${ProjectFragmentDoc}
 ${PostFragmentDoc}`;
 
 /**
@@ -3226,37 +3306,12 @@ export const NotificationsDocument = gql`
     edges {
       cursor
       node {
-        id
-        type
-        createdAt
-        user {
-          ...User
-        }
-        project {
-          ...Project
-        }
-        post {
-          id
-        }
-        comment {
-          id
-          text
-          postId
-        }
-        files: filesConnection(type: IMAGE, first: 1) {
-          edges {
-            node {
-              id
-              uri
-            }
-          }
-        }
+        ...Notification
       }
     }
   }
 }
-    ${UserFragmentDoc}
-${ProjectFragmentDoc}`;
+    ${NotificationFragmentDoc}`;
 
 /**
  * __useNotificationsQuery__

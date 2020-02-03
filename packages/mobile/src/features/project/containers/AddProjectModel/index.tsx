@@ -1,9 +1,14 @@
 import React, { useCallback, useState } from 'react'
 import { ActivityIndicator, KeyboardAvoidingView, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useCurrentUserProjectsQuery } from '@wrench/common'
+import {
+  useCurrentUserProjectsQuery,
+  useAddProjectMutation,
+  CurrentUserDocument,
+} from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { useProjectStore, PROJECT } from 'store'
+import { saveSelectedProjectId } from 'store/post'
 import { Header, Title, Text, Input, Icon } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
@@ -15,9 +20,9 @@ function formatModel(model) {
 }
 
 function AddProjectModel() {
-  const addProjectMutation = () => {}
   const { t } = useTranslation()
   const { navigate, navigateBack, dismissModal } = useNavigation()
+  const [addProject] = useAddProjectMutation()
   const [query, setQuery] = useState()
   const [isSearching, setIsSearching] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
@@ -56,10 +61,54 @@ function AddProjectModel() {
   const handleSave = useCallback(async () => {
     setIsSaving(true)
 
-    await addProjectMutation({
-      modelId: model ? model.id : null,
-      projectTypeId: type,
-      title,
+    await addProject({
+      variables: {
+        input: {
+          modelId: model ? model.id : null,
+          projectTypeId: type,
+          title,
+        },
+      },
+      update: (cache, { data: { addProject } }) => {
+        try {
+          const data = cache.readQuery({ query: CurrentUserDocument })
+
+          cache.writeQuery({
+            query: CurrentUserDocument,
+            data: {
+              ...data,
+              user: {
+                ...data.user,
+                projects: {
+                  ...data.user.projects,
+                  edges: [
+                    {
+                      node: {
+                        ...addProject,
+                        files: {
+                          edges: [],
+                          __typename: 'FileConnection',
+                        },
+                        followers: {
+                          totalCount: 0,
+                          __typename: 'FollowersConnection',
+                        },
+                        __typename: 'Project',
+                      },
+                      __typename: 'ProjectEdge',
+                    },
+                    ...data.user.projects.edges,
+                  ],
+                },
+              },
+            },
+          })
+
+          saveSelectedProjectId(addProject.id)
+        } catch (err) {
+          console.log(err)
+        }
+      },
     })
 
     if (data.user.projects.edges.length > 0) {

@@ -3,6 +3,8 @@ import { ScrollView } from 'react-native'
 import { Placeholder, PlaceholderLine } from 'rn-placeholder'
 import { PlaceholderAnimation } from 'ui'
 
+const COUNT = 6
+
 export const CategoriesPlaceholder: React.FC = () => {
   return (
     <Placeholder Animation={PlaceholderAnimation}>
@@ -15,10 +17,14 @@ export const CategoriesPlaceholder: React.FC = () => {
           backgroundColor: 'white',
         }}
       >
-        {new Array(12).fill({}).map((_, index) => (
+        {new Array(COUNT).fill({}).map((_, index) => (
           <PlaceholderLine
             key={index}
-            style={[styles.category, index === 0 && styles.first, index === 11 && styles.last]}
+            style={[
+              styles.category,
+              index === 0 && styles.first,
+              index === COUNT - 1 && styles.last,
+            ]}
             noMargin
             width={100}
             height={40}

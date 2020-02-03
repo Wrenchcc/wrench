@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { KeyboardAvoidingView, View } from 'react-native'
+import { useEditProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
 import { Header, Title, Text, Input, Icon } from 'ui'
@@ -11,12 +12,13 @@ function formatModel(model) {
 }
 
 function EditModel({ passProps }) {
-  const editProjectMutation = () => {}
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
   const [query, setQuery] = useState('')
   const [model, setModel] = useState()
   const [isSearching, setIsSearching] = useState(false)
+
+  const [editProject] = useEditProjectMutation()
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -38,7 +40,14 @@ function EditModel({ passProps }) {
   )
 
   const handleSave = useCallback(() => {
-    editProjectMutation(passProps.id, { modelId: model.id })
+    editProject({
+      variables: {
+        id: passProps.id,
+        input: {
+          modelId: model.id,
+        },
+      },
+    })
     navigateBack()
   }, [navigateBack, model, passProps])
 

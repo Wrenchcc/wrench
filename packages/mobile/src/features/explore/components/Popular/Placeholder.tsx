@@ -4,6 +4,8 @@ import { Placeholder, PlaceholderLine } from 'rn-placeholder'
 import { PlaceholderAnimation } from 'ui'
 import { GUTTER } from './styles'
 
+const COUNT = 3
+
 export const PopularPlaceholder: React.FC = () => {
   return (
     <Placeholder Animation={PlaceholderAnimation}>
@@ -15,10 +17,14 @@ export const PopularPlaceholder: React.FC = () => {
           marginRight: -GUTTER,
         }}
       >
-        {new Array(3).fill({}).map((_, index) => (
+        {new Array(COUNT).fill({}).map((_, index) => (
           <View
             key={index}
-            style={[styles.container, index === 0 && styles.first, index === 3 && styles.last]}
+            style={[
+              styles.container,
+              index === 0 && styles.first,
+              index === COUNT - 1 && styles.last,
+            ]}
           >
             <PlaceholderLine noMargin style={styles.image} />
             <PlaceholderLine style={styles.projectName} noMargin width={90} />

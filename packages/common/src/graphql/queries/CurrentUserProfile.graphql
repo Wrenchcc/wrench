@@ -1,5 +1,6 @@
 #import "../fragments/UserFragment.graphql"
 #import "../fragments/PostFragment.graphql"
+#import "../fragments/ProjectFragment.graphql"
 
 query currentUserProfile($after: String, $first: Int = 5) {
   user: currentUser {
@@ -7,14 +8,10 @@ query currentUserProfile($after: String, $first: Int = 5) {
     projects: projectsConnection {
       edges {
         node {
-          id
+          ...Project
           cover {
             uri
             default
-          }
-          title
-          followers: followersConnection {
-            totalCount
           }
         }
       }

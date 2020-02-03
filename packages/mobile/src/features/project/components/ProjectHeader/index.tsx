@@ -1,19 +1,57 @@
 import React, { useCallback } from 'react'
 import { ActivityIndicator } from 'react-native'
-import { useSimilarProjectsLazyQuery } from '@wrench/common'
+import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
 import { Title, Follow, Icon } from 'ui'
 import { arrowDown } from 'images'
 import { useNavigation, SCREENS } from 'navigation'
 import SimilarProjects from '../SimilarProjects'
 import { Base, Actions, Followers, OpenSimilar } from './styles'
 
-function ProjectHeader({ project, spacingHorizontal, handleFollow }) {
+function ProjectHeader({ project, spacingHorizontal }) {
   const { navigate } = useNavigation()
+
   const [getSimilarProjects, { loading, data }] = useSimilarProjectsLazyQuery({
     variables: {
       id: project.id,
     },
   })
+
+  const isFollower = !project.permissions.isFollower
+
+  const handleSimilarProjects = useCallback(() => {
+    getSimilarProjects()
+  }, [getSimilarProjects])
+
+  const [followProject] = useFollowProjectMutation({
+    onCompleted: () => !isFollower && getSimilarProjects(),
+  })
+
+  const handleFollow = useCallback(() => {
+    const totalCount = project.permissions.isFollower
+      ? project.followers.totalCount - 1
+      : project.followers.totalCount + 1
+
+    followProject({
+      variables: {
+        id: project.id,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        followProject: {
+          ...project,
+          followers: {
+            ...project.followers,
+            totalCount,
+          },
+          permissions: {
+            ...project.permissions,
+            isFollower,
+          },
+          __typename: 'Project',
+        },
+      },
+    })
+  }, [project])
 
   const handleNavigation = useCallback(
     () =>
@@ -22,10 +60,6 @@ function ProjectHeader({ project, spacingHorizontal, handleFollow }) {
       }),
     [project]
   )
-
-  const handleSimilarProjects = useCallback(() => {
-    getSimilarProjects()
-  }, [getSimilarProjects])
 
   return (
     <Base spacingHorizontal={spacingHorizontal}>

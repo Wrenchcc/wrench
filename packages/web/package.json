@@ -23,7 +23,7 @@
     "apollo-link-error": "^1.1.12",
     "apollo-link-token-refresh": "^0.2.7",
     "cookie": "^0.4.0",
-    "graphql": "^14.5.8",
+    "graphql": "^14.6.0",
     "graphql-tag": "^2.10.1",
     "human-format": "^0.10.1",
     "i18next": "19.0.3",

@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useAddPostMutation } from '@wrench/common'
 import { useNavigation, dismissModal } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
 import { track, events } from 'utils/analytics'
@@ -13,9 +14,9 @@ import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
 
 function AddPost() {
-  const addPostMutation = () => {}
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
+  const [addPost] = useAddPostMutation()
 
   const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({
     caption: store.caption,
@@ -41,10 +42,14 @@ function AddPost() {
     try {
       const uploaded = await uploadToS3Async(files)
 
-      await addPostMutation({
-        caption,
-        files: uploaded,
-        projectId,
+      await addPost({
+        variables: {
+          input: {
+            caption,
+            files: uploaded,
+            projectId,
+          },
+        },
       })
 
       reset()

@@ -12,7 +12,7 @@ export default async ({ data, userId, to, type }) => {
   const notificationSettings = await getNotificationSettings(to)
   const isEnabled = pathOr(true, [type, 'push'], notificationSettings)
 
-  if (!isEnabled && process.env.NODE_ENV === 'production') {
+  if (!isEnabled) {
     return null
   }
 

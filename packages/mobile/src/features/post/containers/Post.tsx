@@ -1,15 +1,17 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { View, FlatList, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import {
   usePaginatedQuery,
   useCommentQuery,
+  useMarkAllNotificationsSeenMutation,
   usePostQuery,
   CommentsDocument,
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
 import Header from 'navigation/Page/Header'
+import { hideNotificationBadge } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
@@ -34,6 +36,13 @@ function PostContainer({ postId, commentId }) {
       id: postId,
     },
   })
+
+  const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
+
+  useEffect(() => {
+    markAllNotificationsSeen()
+    hideNotificationBadge()
+  }, [])
 
   const {
     data: { edges },

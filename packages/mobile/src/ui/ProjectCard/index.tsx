@@ -1,15 +1,41 @@
 import React, { useCallback } from 'react'
+import { useFollowProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
 function ProjectCard({ onPress, project, style }) {
-  const followProjectMutation = () => {}
   const { t } = useTranslation()
+  const [followProject] = useFollowProjectMutation()
 
   const handleFollow = useCallback(() => {
-    followProjectMutation(project.id)
+    const totalCount = project.permissions.isFollower
+      ? project.followers.totalCount - 1
+      : project.followers.totalCount + 1
+
+    const isFollower = !project.permissions.isFollower
+
+    followProject({
+      variables: {
+        id: project.id,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        followProject: {
+          ...project,
+          followers: {
+            ...project.followers,
+            totalCount,
+          },
+          permissions: {
+            ...project.permissions,
+            isFollower,
+          },
+          __typename: 'Project',
+        },
+      },
+    })
   }, [project])
 
   return (

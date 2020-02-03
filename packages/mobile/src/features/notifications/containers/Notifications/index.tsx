@@ -1,5 +1,10 @@
-import React, { useEffect, useRef } from 'react'
-import { usePaginatedQuery, NotificationsDocument } from '@wrench/common'
+import React, { useEffect, useRef, useCallback } from 'react'
+import {
+  usePaginatedQuery,
+  NotificationsDocument,
+  useMarkAllNotificationsSeenMutation,
+  useDeleteNotificationMutation,
+} from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
 import ms from 'ms'
 import {
@@ -10,18 +15,38 @@ import {
   hideNotificationBadge,
   useScrollToTop,
 } from 'navigation'
-// import { deleteNotification } from 'services/graphql/mutations/notification/deleteNotification'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
-function Notifications({
-  componentId,
-  // deleteNotification: deleteNotificationMutation,
-  // markAllNotificationsSeen: markAllNotisficationsSeenMutation,
-}) {
+function Notifications({ componentId }) {
   const scrollRef = useRef()
+  const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
+  const [deleteNotification] = useDeleteNotificationMutation()
 
-  const deleteNotificationMutation = () => {}
+  const handleDeleteNotification = useCallback(id => {
+    deleteNotification({
+      variables: {
+        id,
+      },
+      update: cache => {
+        const data = cache.readQuery({ query: NotificationsDocument })
+
+        const edges = data.notifications.edges.filter(edge => edge.node.id !== id)
+
+        cache.writeQuery({
+          query: NotificationsDocument,
+          data: {
+            ...data,
+            notifications: {
+              ...data.notifications,
+              edges,
+            },
+          },
+        })
+      },
+    })
+  }, [])
+
   const {
     data: { edges, unreadCount },
     isFetching,
@@ -46,7 +71,22 @@ function Notifications({
       ({ componentId: id }) => {
         if (componentId === id) {
           if (unreadCount > 0) {
-            // s()
+            markAllNotificationsSeen({
+              update: cache => {
+                const data = cache.readQuery({ query: NotificationsDocument })
+
+                cache.writeQuery({
+                  query: NotificationsDocument,
+                  data: {
+                    ...data,
+                    notifications: {
+                      ...data.notifications,
+                      unreadCount: 0,
+                    },
+                  },
+                })
+              },
+            })
           }
 
           hideNotificationBadge()
@@ -58,7 +98,7 @@ function Notifications({
   }, [componentId, unreadCount])
 
   const renderItem = ({ item }) => (
-    <Notification data={item.node} deleteNotification={deleteNotificationMutation} />
+    <Notification data={item.node} deleteNotification={handleDeleteNotification} />
   )
 
   return (

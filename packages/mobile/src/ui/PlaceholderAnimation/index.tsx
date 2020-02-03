@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Shine, ShineOverlay } from 'rn-placeholder'
+import React from 'react'
+import { ShineOverlay } from 'rn-placeholder'
 // import { AppContext } from '../../context'
 // import { ThemeVariant } from '../../theme'
 

@@ -222,6 +222,7 @@ export declare type Mutation = {
     likePost?: Maybe<Post>;
     likeComment?: Maybe<Comment>;
     markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
+    markNotificationSeen?: Maybe<Notification>;
     deleteNotification?: Maybe<Scalars['Boolean']>;
     deletePost?: Maybe<Post>;
     addPost?: Maybe<Post>;
@@ -273,6 +274,9 @@ export declare type MutationLikePostArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationLikeCommentArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationMarkNotificationSeenArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationDeleteNotificationArgs = {
@@ -809,6 +813,33 @@ export declare type CommentFragment = ({
         __typename?: 'User';
     } & UserFragment)>;
 });
+export declare type NotificationFragment = ({
+    __typename?: 'Notification';
+} & Pick<Notification, 'id' | 'type' | 'createdAt'> & {
+    user: ({
+        __typename?: 'User';
+    } & UserFragment);
+    project: Maybe<({
+        __typename?: 'Project';
+    } & ProjectFragment)>;
+    post: Maybe<({
+        __typename?: 'Post';
+    } & Pick<Post, 'id'>)>;
+    comment: Maybe<({
+        __typename?: 'Comment';
+    } & Pick<Comment, 'id' | 'text' | 'postId'>)>;
+    files: Maybe<({
+        __typename?: 'FileConnection';
+    } & {
+        edges: Maybe<Array<Maybe<({
+            __typename?: 'FileEdge';
+        } & {
+            node: ({
+                __typename?: 'File';
+            } & Pick<File, 'id' | 'uri'>);
+        })>>>;
+    })>;
+});
 export declare type PostFragment = ({
     __typename?: 'Post';
 } & Pick<Post, 'id' | 'caption' | 'createdAt'> & {
@@ -1096,6 +1127,16 @@ export declare type MarkAllNotificationsSeenMutationVariables = {};
 export declare type MarkAllNotificationsSeenMutation = ({
     __typename?: 'Mutation';
 } & Pick<Mutation, 'markAllNotificationsSeen'>);
+export declare type MarkNotificationSeenMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type MarkNotificationSeenMutation = ({
+    __typename?: 'Mutation';
+} & {
+    markNotificationSeen: Maybe<({
+        __typename?: 'Notification';
+    } & NotificationFragment)>;
+});
 export declare type PreSignUrlMutationVariables = {
     input: PreSignedUrlInput;
 };
@@ -1211,14 +1252,11 @@ export declare type CurrentUserProfileQuery = ({
             } & {
                 node: ({
                     __typename?: 'Project';
-                } & Pick<Project, 'id' | 'title'> & {
+                } & {
                     cover: Maybe<({
                         __typename?: 'CoverType';
                     } & Pick<CoverType, 'uri' | 'default'>)>;
-                    followers: Maybe<({
-                        __typename?: 'FollowersConnection';
-                    } & Pick<FollowersConnection, 'totalCount'>)>;
-                });
+                } & ProjectFragment);
             })>>;
         })>;
         posts: Maybe<({
@@ -1320,31 +1358,7 @@ export declare type NotificationsQuery = ({
         } & Pick<NotificationEdge, 'cursor'> & {
             node: Maybe<({
                 __typename?: 'Notification';
-            } & Pick<Notification, 'id' | 'type' | 'createdAt'> & {
-                user: ({
-                    __typename?: 'User';
-                } & UserFragment);
-                project: Maybe<({
-                    __typename?: 'Project';
-                } & ProjectFragment)>;
-                post: Maybe<({
-                    __typename?: 'Post';
-                } & Pick<Post, 'id'>)>;
-                comment: Maybe<({
-                    __typename?: 'Comment';
-                } & Pick<Comment, 'id' | 'text' | 'postId'>)>;
-                files: Maybe<({
-                    __typename?: 'FileConnection';
-                } & {
-                    edges: Maybe<Array<Maybe<({
-                        __typename?: 'FileEdge';
-                    } & {
-                        node: ({
-                            __typename?: 'File';
-                        } & Pick<File, 'id' | 'uri'>);
-                    })>>>;
-                })>;
-            })>;
+            } & NotificationFragment)>;
         })>>>;
     })>;
 });
@@ -1693,6 +1707,7 @@ export declare const UserFragmentDoc: any;
 export declare const CommentFragmentDoc: any;
 export declare const CommentAndRepliesFragmentDoc: any;
 export declare const ProjectFragmentDoc: any;
+export declare const NotificationFragmentDoc: any;
 export declare const PostFragmentDoc: any;
 export declare const UserProjectsFragmentDoc: any;
 export declare const UserSettingsFragmentDoc: any;
@@ -2091,6 +2106,29 @@ export declare function useMarkAllNotificationsSeenMutation(baseOptions?: Apollo
 export declare type MarkAllNotificationsSeenMutationHookResult = ReturnType<typeof useMarkAllNotificationsSeenMutation>;
 export declare type MarkAllNotificationsSeenMutationResult = ApolloReactCommon.MutationResult<MarkAllNotificationsSeenMutation>;
 export declare type MarkAllNotificationsSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+export declare const MarkNotificationSeenDocument: any;
+export declare type MarkNotificationSeenMutationFn = ApolloReactCommon.MutationFunction<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+/**
+ * __useMarkNotificationSeenMutation__
+ *
+ * To run a mutation, you first call `useMarkNotificationSeenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMarkNotificationSeenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [markNotificationSeenMutation, { data, loading, error }] = useMarkNotificationSeenMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useMarkNotificationSeenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>): ApolloReactHooks.MutationTuple<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+export declare type MarkNotificationSeenMutationHookResult = ReturnType<typeof useMarkNotificationSeenMutation>;
+export declare type MarkNotificationSeenMutationResult = ApolloReactCommon.MutationResult<MarkNotificationSeenMutation>;
+export declare type MarkNotificationSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
 export declare const PreSignUrlDocument: any;
 export declare type PreSignUrlMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlMutation, PreSignUrlMutationVariables>;
 /**
