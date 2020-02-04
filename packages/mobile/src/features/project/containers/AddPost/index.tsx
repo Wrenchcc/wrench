@@ -1,7 +1,12 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useAddPostMutation } from '@wrench/common'
+import {
+  useAddPostMutation,
+  FeedDocument,
+  PostsDocument,
+  CurrentUserProfileDocument,
+} from '@wrench/common'
 import { useNavigation, dismissModal } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
 import { track, events } from 'utils/analytics'
@@ -39,77 +44,6 @@ function AddPost() {
     dismissModal(true)
     setIsPosting(true)
 
-    // updateQueries: {
-    //   getFeed: (prev, { mutationResult }) => {
-    //     const edge = {
-    //       cursor: -1,
-    //       node: {
-    //         ...mutationResult.data.addPost,
-    //         project: {
-    //           ...mutationResult.data.addPost.project,
-    //           user: mutationResult.data.addPost.user,
-    //         },
-    //       },
-    //       __typename: 'PostEdge',
-    //     }
-
-    //     return {
-    //       ...prev,
-    //       feed: {
-    //         ...prev.feed,
-    //         posts: {
-    //           ...prev.feed.posts,
-    //           edges: prepend(edge, prev.feed.posts.edges),
-    //         },
-    //       },
-    //     }
-    //   },
-    //   getRecentPosts: (prev, { mutationResult }) => {
-    //     const edge = {
-    //       cursor: -1,
-    //       node: {
-    //         ...mutationResult.data.addPost,
-    //         project: {
-    //           ...mutationResult.data.addPost.project,
-    //           user: mutationResult.data.addPost.user,
-    //         },
-    //       },
-    //       __typename: 'PostEdge',
-    //     }
-
-    //     return {
-    //       ...prev,
-    //       posts: {
-    //         ...prev.posts,
-    //         edges: prepend(edge, prev.posts.edges),
-    //       },
-    //     }
-    //   },
-    //   getCurrentUserProfile: (prev, { mutationResult }) => {
-    //     const edge = {
-    //       cursor: -1,
-    //       node: {
-    //         ...mutationResult.data.addPost,
-    //         project: {
-    //           ...mutationResult.data.addPost.project,
-    //           user: mutationResult.data.addPost.user,
-    //         },
-    //       },
-    //       __typename: 'PostEdge',
-    //     }
-
-    //     return {
-    //       ...prev,
-    //       user: {
-    //         ...prev.user,
-    //         posts: {
-    //           ...prev.user.posts,
-    //           edges: prepend(edge, prev.user.posts.edges),
-    //         },
-    //       },
-    //     }
-    //   },
-
     try {
       const uploaded = await uploadToS3Async(files)
 
@@ -121,7 +55,85 @@ function AddPost() {
             projectId,
           },
         },
-        update: cache => {},
+        update: (cache, { data: { addPost } }) => {
+          // Feed
+          try {
+            const data = cache.readQuery({ query: FeedDocument })
+
+            cache.writeQuery({
+              query: FeedDocument,
+              data: {
+                ...data,
+                feed: {
+                  ...data.feed,
+                  posts: {
+                    ...data.feed.posts,
+                    edges: [
+                      {
+                        cursor: -1,
+                        node: addPost,
+                      },
+                      ...data.feed.posts.edges,
+                    ],
+                  },
+                },
+              },
+            })
+          } catch (err) {
+            console.log(err)
+          }
+
+          // Explore
+          try {
+            const data = cache.readQuery({ query: PostsDocument })
+
+            cache.writeQuery({
+              query: PostsDocument,
+              data: {
+                ...data,
+                posts: {
+                  ...data.posts,
+                  edges: [
+                    {
+                      cursor: -1,
+                      node: addPost,
+                    },
+                    ...data.feed.posts.edges,
+                  ],
+                },
+              },
+            })
+          } catch (err) {
+            console.log(err)
+          }
+
+          // Current user profile
+          try {
+            const data = cache.readQuery({ query: CurrentUserProfileDocument })
+
+            cache.writeQuery({
+              query: CurrentUserProfileDocument,
+              data: {
+                ...data,
+                user: {
+                  ...data.user,
+                  posts: {
+                    ...data.user.posts,
+                    edges: [
+                      {
+                        cursor: -1,
+                        node: addPost,
+                      },
+                      ...data.user.posts.edges,
+                    ],
+                  },
+                },
+              },
+            })
+          } catch (err) {
+            console.log(err)
+          }
+        },
       })
 
       reset()
