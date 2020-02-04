@@ -75,7 +75,7 @@ jobs:
           curl -sL https://sentry.io/get-cli/ | bash
     
       - name: Deploy Android
-        uses: maierj/fastlane-action@v1.2.0
+        uses: maierj/fastlane-action@v1.3.0
         with:
           lane: 'android'
           subdirectory: 'fastlane'
@@ -126,7 +126,7 @@ jobs:
           curl -sL https://sentry.io/get-cli/ | bash
 
       - name: Deploy iOS
-        uses: maierj/fastlane-action@v1.2.0
+        uses: maierj/fastlane-action@v1.3.0
         with:
           lane: 'ios'
           subdirectory: 'fastlane'
