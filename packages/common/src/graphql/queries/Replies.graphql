@@ -1,0 +1,18 @@
+#import "../fragments/CommentFragment.graphql"
+
+query replies($id: ID!, $after: String, $first: Int = 5) {
+  comment(id: $id) {
+    replies: repliesConnection(after: $after, first: $first) {
+      pageInfo {
+        hasNextPage
+      }
+      totalCount
+      edges {
+        cursor
+        node {
+          ...Comment
+        }
+      }
+    }
+  }
+}

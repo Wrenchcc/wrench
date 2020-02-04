@@ -1,6 +1,6 @@
 #import "../fragments/ProjectFragment.graphql"
 
-query projectSuggestions($after: String, $first: Int) {
+query projectSuggestions($after: String, $first: Int = 5) {
   projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
     type {
       id

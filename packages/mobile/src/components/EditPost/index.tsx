@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { ActivityIndicator } from 'react-native'
+import { useEditPostMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { useMutation, EDIT_POST_MUTATION } from 'services/gql'
 import { Page, ScrollView, dismissEditPost } from 'navigation'
 import { Text, Carousel } from 'ui'
 import { Content, Input } from './styles'
@@ -10,7 +10,7 @@ function EditPost({ post }) {
   const { t } = useTranslation()
   const [isSaving, setIsSaving] = useState(false)
   const [caption, setCaption] = useState(post.caption)
-  const [editPost] = useMutation(EDIT_POST_MUTATION)
+  const [editPost] = useEditPostMutation()
 
   const handleSave = useCallback(async () => {
     setIsSaving(true)

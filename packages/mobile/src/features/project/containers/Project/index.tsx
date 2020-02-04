@@ -1,11 +1,9 @@
 import React, { useCallback, useRef } from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
+import { usePaginatedQuery, ProjectDocument, useFollowProjectMutation } from '@wrench/common'
 import Animated from 'react-native-reanimated'
-import { compose, isEmpty } from 'rambda'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
-import { getProject } from 'services/graphql/queries/project/getProject'
-import { followProject } from 'services/graphql/mutations/project/followProject'
 import Post from 'components/Post'
 import { Edit, EmptyState, Title, Share, Text } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
@@ -16,19 +14,28 @@ const { interpolate, Extrapolate, Value } = Animated
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
-function Project({
-  posts,
-  project,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  post,
-  followProject: followProjectMutation,
-}) {
+function Project({ slug, id, postId, project: initialProjectData, post: initialPostData }) {
   const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
+  const [followProject] = useFollowProjectMutation()
+
+  const {
+    data: { edges, post, project },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['project', 'posts'], {
+    project: initialProjectData,
+    post: initialPostData,
+  })(ProjectDocument, {
+    variables: {
+      slug,
+      id,
+      postId,
+    },
+  })
 
   const opacityFollow = interpolate(scrollY.current, {
     extrapolate: Extrapolate.CLAMP,
@@ -42,9 +49,36 @@ function Project({
     outputRange: [1, 0],
   })
 
-  const handleFollow = useCallback(() => followProjectMutation(project.id), [project])
+  const handleFollow = useCallback(() => {
+    const totalCount = project.permissions.isFollower
+      ? project.followers.totalCount - 1
+      : project.followers.totalCount + 1
 
-  const hasPosts = !isEmpty(post) || (posts && posts.length > 0)
+    const isFollower = !project.permissions.isFollower
+
+    followProject({
+      variables: {
+        id: project.id,
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        followProject: {
+          ...project,
+          followers: {
+            ...project.followers,
+            totalCount,
+          },
+          permissions: {
+            ...project.permissions,
+            isFollower,
+          },
+          __typename: 'Project',
+        },
+      },
+    })
+  }, [project])
+
+  const hasPosts = post || (edges && edges.length > 0)
 
   const emptyState =
     project.permissions && project.permissions.isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
@@ -61,11 +95,11 @@ function Project({
   const renderHeader = useCallback(() => {
     let content
 
-    if (!isEmpty(post)) {
+    if (post) {
       content = (
         <>
           <Post post={post} withoutTitle numberOfLines={0} />
-          {hasPosts && posts && posts.length > 1 && (
+          {hasPosts && edges && edges.length > 1 && (
             <View style={{ marginTop: -20, paddingBottom: 50 }}>
               <Title medium>{t('Project:recent')}</Title>
             </View>
@@ -76,17 +110,11 @@ function Project({
 
     return (
       <>
-        {project.title && (
-          <ProjectHeader
-            project={project}
-            spacingHorizontal={!hasPosts}
-            handleFollow={handleFollow}
-          />
-        )}
+        {project.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
         {content}
       </>
     )
-  }, [post, posts, hasPosts, project, handleFollow])
+  }, [post, edges, hasPosts, project, handleFollow])
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
@@ -126,7 +154,7 @@ function Project({
           contentContainerStyle={{ flexGrow: 1 }}
           ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
           ListHeaderComponent={renderHeader}
-          data={posts}
+          data={edges}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
@@ -139,4 +167,4 @@ function Project({
   )
 }
 
-export default compose(getProject, followProject)(Project)
+export default Project

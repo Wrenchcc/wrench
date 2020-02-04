@@ -1,10 +1,12 @@
 {
   "PostContainer": {
     "en": {
-      "title": "Post"
+      "title": "Post",
+      "loadMore": "Load more comments"
     },
     "sv": {
-      "title": "Inlägg"
+      "title": "Inlägg",
+      "loadMore": "Ladda fler kommentarer"
     }
   }
 }

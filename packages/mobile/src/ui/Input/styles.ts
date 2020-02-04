@@ -4,7 +4,7 @@ import { toUpper } from 'rambda'
 
 export const Field = styled.TextInput`
   font-size: ${props => (props.large ? 27 : 17)}px;
-  height: ${({ multiline }) => (multiline ? 'auto' : `${60}px`)};
+  height: ${({ multiline, height }) => (multiline ? 'auto' : `${height || 60}px`)};
   padding-bottom: ${({ multiline }) => (multiline ? 20 : 0)}px;
   border-bottom-width: ${({ noBorder }) => (noBorder ? 0 : 1)}px;
   border-bottom-color: ${({ borderColor }) =>

@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from 'react'
+import { KeyboardAvoidingView, View } from 'react-native'
+import { useEditProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
-import { Header, Title, Text, Input, KeyboardAvoidingView, Icon } from 'ui'
-import { editProject } from 'services/graphql/mutations/project/editProject'
+import { Header, Title, Text, Input, Icon } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 
@@ -10,12 +11,14 @@ function formatModel(model) {
   return `${model.brand.name} ${model.model} ${model.year}`
 }
 
-function EditModel({ editProject: editProjectMutation, passProps }) {
+function EditModel({ passProps }) {
   const { t } = useTranslation()
   const { navigateBack } = useNavigation()
   const [query, setQuery] = useState('')
   const [model, setModel] = useState()
   const [isSearching, setIsSearching] = useState(false)
+
+  const [editProject] = useEditProjectMutation()
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -37,7 +40,14 @@ function EditModel({ editProject: editProjectMutation, passProps }) {
   )
 
   const handleSave = useCallback(() => {
-    editProjectMutation(passProps.id, { modelId: model.id })
+    editProject({
+      variables: {
+        id: passProps.id,
+        input: {
+          modelId: model.id,
+        },
+      },
+    })
     navigateBack()
   }, [navigateBack, model, passProps])
 
@@ -65,27 +75,30 @@ function EditModel({ editProject: editProjectMutation, passProps }) {
           )
         }
       />
-      <KeyboardAvoidingView>
+      <View style={{ flex: 1 }}>
         {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
 
-        <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-          {t('EditModel:title')}
-        </Title>
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+          <View style={{ flex: 1, paddingHorizontal: 20 }}>
+            <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
+              {t('AddProjectModel:title')}
+            </Title>
 
-        <Input
-          placeholder={t('EditModel:placeholder')}
-          autoFocus
-          large
-          onChangeText={onChangeText}
-          value={model ? formatModel(model) : query}
-          borderColor="dark"
-          color="dark"
-          returnKeyType="next"
-          onBlur={handleOnBlur}
-        />
-      </KeyboardAvoidingView>
+            <Input
+              placeholder={t('AddProjectModel:placeholder')}
+              large
+              onChangeText={onChangeText}
+              value={model ? formatModel(model) : query}
+              borderColor="dark"
+              color="dark"
+              returnKeyType="next"
+              onBlur={handleOnBlur}
+            />
+          </View>
+        </KeyboardAvoidingView>
+      </View>
     </>
   )
 }
 
-export default editProject(EditModel)
+export default EditModel

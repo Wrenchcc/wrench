@@ -1,23 +1,28 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { usePaginatedQuery, UserFollowingProjectsDocument } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList } from 'ui'
-import { getFollowingProjects } from 'services/graphql/queries/user/getFollowingProjects'
 import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from './styles'
 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
-function FollowingProjects({
-  projects,
-  isFetching,
-  user,
-  refetch,
-  fetchMore,
-  isRefetching,
-  hasNextPage,
-}) {
+function FollowingProjects({ user }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
+
+  const {
+    data: { edges },
+    refetch,
+    isFetching,
+    isRefetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['user', 'projects'])(UserFollowingProjectsDocument, {
+    variables: {
+      username: user.username,
+    },
+  })
 
   const renderItem = ({ item }) => {
     const onPress = () =>
@@ -35,7 +40,7 @@ function FollowingProjects({
       <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
 
       <InfiniteList
-        data={projects}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
@@ -59,4 +64,4 @@ function FollowingProjects({
   )
 }
 
-export default getFollowingProjects(FollowingProjects)
+export default FollowingProjects

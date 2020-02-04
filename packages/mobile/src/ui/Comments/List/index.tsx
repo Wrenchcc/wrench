@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { slice } from 'rambda'
 import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
-import { Base, Row, Comment, LoadMore } from './styles'
+import { Row, Comment, LoadMore } from './styles'
 
 function List({ data }) {
   const { t } = useTranslation()
@@ -38,7 +38,9 @@ function List({ data }) {
 
   return (
     <>
-      {slice(0, 2, data.comments.edges).map(renderComment)}
+      {slice(0, 2, data.comments.edges)
+        .reverse()
+        .map(renderComment)}
       <LoadMore onPress={navigateToComments}>
         <Text fontSize={15} color="light_grey">
           {t('List:loadMore', { count: data.comments.totalCount })}

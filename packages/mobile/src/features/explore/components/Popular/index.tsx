@@ -1,13 +1,29 @@
 import React from 'react'
+import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { getPopularProjects } from 'services/graphql/queries/getExplore'
 import { useNavigation, SCREENS } from 'navigation'
 import { InfiniteList, Title } from 'ui'
 import { Header, Footer, Card, GUTTER, SNAP_INTERVAL } from './styles'
+import Placeholder from './Placeholder'
 
-function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
+function Popular() {
+  let content = <Placeholder />
+
   const { navigate } = useNavigation()
   const { t } = useTranslation()
+
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['projects'])(ProjectsDocument, {
+    variables: {
+      type: 'POPULAR',
+    },
+  })
 
   const renderItem = ({ item, index }) => {
     const project = item.node
@@ -25,21 +41,17 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
         key={project.id}
         onPress={onPress}
         first={index === 0}
-        last={index === projects && projects.length - 1}
+        last={index === edges && edges.length - 1}
         user={project.user}
       />
     )
   }
 
-  return (
-    <>
-      <Header>
-        <Title medium>{t('Popular:popular')}</Title>
-      </Header>
-
+  if (edges) {
+    content = (
       <InfiniteList
         initialNumToRender={3}
-        data={projects}
+        data={edges}
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}
@@ -58,6 +70,16 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
           marginRight: -GUTTER,
         }}
       />
+    )
+  }
+
+  return (
+    <>
+      <Header>
+        <Title medium>{t('Popular:popular')}</Title>
+      </Header>
+
+      {content}
 
       <Footer>
         <Title medium>{t('Popular:recent')}</Title>
@@ -66,4 +88,4 @@ function Popular({ projects, fetchMore, refetch, isRefetching, isFetching, hasNe
   )
 }
 
-export default getPopularProjects(Popular)
+export default Popular

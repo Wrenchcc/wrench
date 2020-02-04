@@ -1,6 +1,6 @@
 #import "../fragments/UserSettingsFragment.graphql"
 
-query CurrentUserSettings {
+query currentUserSettings {
   user: currentUser {
     ...UserSettings
   }

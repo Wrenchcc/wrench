@@ -9,3 +9,9 @@ export const Base = styled.View`
   padding-top: ${NAVIGATION.TOTAL_TOP_BAR_HEIGHT}px;
   z-index: 1000;
 `
+
+export const Header = styled.View`
+  margin-top: 20px;
+  justify-content: space-between;
+  flex-direction: row;
+`

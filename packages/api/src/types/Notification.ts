@@ -46,6 +46,7 @@ export default gql`
 
   extend type Mutation {
     markAllNotificationsSeen: Boolean
+    markNotificationSeen(id: ID!): Notification
     deleteNotification(id: ID!): Boolean
   }
 `

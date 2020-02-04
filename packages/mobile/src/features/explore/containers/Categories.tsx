@@ -16,11 +16,15 @@ function getItemLayout(_, index) {
 function Categories({ id, title }) {
   const { navigate } = useNavigation()
 
-  const { data, isFetching, fetchMore, isRefetching, hasNextPage, refetch } = usePaginatedQuery(
-    'projects'
-  )(ProjectsDocument, {
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
-      first: 6,
       typeId: id,
       type: 'RECENT',
     },
@@ -44,7 +48,7 @@ function Categories({ id, title }) {
         initialNumToRender={4}
         paddingBottom={40}
         getItemLayout={getItemLayout}
-        data={data}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}

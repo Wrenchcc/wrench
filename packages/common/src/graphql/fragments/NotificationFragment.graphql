@@ -1,0 +1,30 @@
+#import "./UserFragment.graphql"
+#import "./ProjectFragment.graphql"
+
+fragment Notification on Notification {
+  id
+  type
+  createdAt
+  user {
+    ...User
+  }
+  project {
+    ...Project
+  }
+  post {
+    id
+  }
+  comment {
+    id
+    text
+    postId
+  }
+  files: filesConnection(type: IMAGE, first: 1) {
+    edges {
+      node {
+        id
+        uri
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 import { ActionSheetProvider } from '@expo/react-native-action-sheet'
+import { isAndroid } from 'utils/platform'
 import { NavigationContext } from './context'
 import * as actions from './actions'
 
@@ -18,5 +19,5 @@ export default client => Component => {
     )
   }
 
-  return gestureHandlerRootHOC(Screen)
+  return isAndroid ? gestureHandlerRootHOC(Screen) : Screen
 }

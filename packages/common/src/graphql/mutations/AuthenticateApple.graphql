@@ -1,0 +1,6 @@
+mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {
+  authenticateApple(identityToken: $identityToken, user: $user) {
+    access_token
+    refresh_token
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useMutation, FOLLOW_PROJECT_MUTATION } from 'services/gql'
+import { useFollowProjectMutation } from '@wrench/common'
 import { track, events } from 'utils/analytics'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall } from 'ui'
@@ -9,7 +9,7 @@ import { Base, Follow, SNAP_INTERVAL } from './styles'
 function SimilarProjects({ projects }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
-  const [toggleFollow] = useMutation(FOLLOW_PROJECT_MUTATION)
+  const [toggleFollow] = useFollowProjectMutation()
 
   const renderItem = ({ item }) => {
     const project = item.node

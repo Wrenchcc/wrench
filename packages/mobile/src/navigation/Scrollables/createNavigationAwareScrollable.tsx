@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useCallback, forwardRef } from 'react'
+import React, { useEffect, useRef, useCallback, forwardRef, useContext } from 'react'
 import { Keyboard, TextInput, UIManager } from 'react-native'
-import { Navigation } from 'react-native-navigation'
+import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
-import { currentComponentName } from 'navigation'
-import { SCREENS, CONTENT_INSET } from '../constants'
+import { CONTENT_INSET } from '../constants'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
-const KEYBOARD_OFFSET = isAndroid ? 28 : 0
+const KEYBOARD_OFFSET = isAndroid ? 28 : 10
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid
@@ -18,20 +17,6 @@ const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
 const BorderSeparator = () => <Border />
 
 const keyExtractor = ({ node }) => node.id
-
-function getNode(ref) {
-  if (ref.current === null) {
-    return null
-  }
-
-  if (ref.current.getScrollResponder) {
-    return ref.current.getScrollResponder()
-  } else if (ref.current.getNode) {
-    return ref.current.getNode()
-  } else {
-    return ref.current
-  }
-}
 
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(
@@ -47,45 +32,14 @@ export default function createNavigationAwareScrollable(Component) {
       ListEmptyComponent,
       initialNumToRender = 10,
       paddingHorizontal = 20,
-      paddingBottom,
-      tabIndex,
-      componentId,
       extraContentInset = 0,
+      paddingBottom,
       ...props
     },
     ref
   ) {
     const scrollRef = useRef()
-
-    // Scroll to top
-    useEffect(() => {
-      const scrollableNode = getNode(scrollRef)
-
-      const bottomTabEventListener = Navigation.events().registerBottomTabSelectedListener(
-        ({ selectedTabIndex, unselectedTabIndex }) => {
-          if (
-            (selectedTabIndex === unselectedTabIndex &&
-              selectedTabIndex === tabIndex &&
-              currentComponentName === SCREENS.FEED) ||
-            (selectedTabIndex === unselectedTabIndex &&
-              selectedTabIndex === tabIndex &&
-              currentComponentName === SCREENS.EXPLORE) ||
-            (selectedTabIndex === unselectedTabIndex &&
-              selectedTabIndex === tabIndex &&
-              currentComponentName === SCREENS.NOTIFICATIONS) ||
-            (selectedTabIndex === unselectedTabIndex &&
-              selectedTabIndex === tabIndex &&
-              currentComponentName === SCREENS.ME)
-          ) {
-            if (scrollableNode.scrollToOffset !== null) {
-              scrollableNode.scrollToOffset({ offset: -(CONTENT_INSET + extraContentInset) })
-            }
-          }
-        }
-      )
-
-      return () => bottomTabEventListener.remove()
-    }, [scrollRef, tabIndex])
+    const scrollContext = useContext(ScrollContext)
 
     // Scroll to input
     useEffect(() => {
@@ -164,6 +118,7 @@ export default function createNavigationAwareScrollable(Component) {
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...keyboardDismissProp}
         {...props}
+        {...scrollContext} // TODO
       />
     )
   })

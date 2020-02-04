@@ -222,6 +222,7 @@ export declare type Mutation = {
     likePost?: Maybe<Post>;
     likeComment?: Maybe<Comment>;
     markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
+    markNotificationSeen?: Maybe<Notification>;
     deleteNotification?: Maybe<Scalars['Boolean']>;
     deletePost?: Maybe<Post>;
     addPost?: Maybe<Post>;
@@ -273,6 +274,9 @@ export declare type MutationLikePostArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationLikeCommentArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationMarkNotificationSeenArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationDeleteNotificationArgs = {
@@ -778,20 +782,63 @@ export declare type UserSettings = {
     timezone?: Maybe<Scalars['String']>;
     notifications?: Maybe<UserNotificationsSettings>;
 };
-export declare type CommentsFragment = ({
-    __typename?: 'CommentConnection';
-} & Pick<CommentConnection, 'totalCount'> & {
-    edges: Maybe<Array<({
-        __typename?: 'CommentEdge';
+export declare type CommentAndRepliesFragment = ({
+    __typename?: 'Comment';
+} & {
+    replies: Maybe<({
+        __typename?: 'CommentConnection';
+    } & Pick<CommentConnection, 'totalCount'> & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges: Maybe<Array<({
+            __typename?: 'CommentEdge';
+        } & Pick<CommentEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'Comment';
+            } & CommentFragment);
+        })>>;
+    })>;
+} & CommentFragment);
+export declare type CommentFragment = ({
+    __typename?: 'Comment';
+} & Pick<Comment, 'id' | 'text' | 'createdAt'> & {
+    permissions: Maybe<({
+        __typename?: 'CommentPermissions';
+    } & Pick<CommentPermissions, 'isOwner'>)>;
+    likes: Maybe<({
+        __typename?: 'Likes';
+    } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
+    user: Maybe<({
+        __typename?: 'User';
+    } & UserFragment)>;
+});
+export declare type NotificationFragment = ({
+    __typename?: 'Notification';
+} & Pick<Notification, 'id' | 'type' | 'createdAt'> & {
+    user: ({
+        __typename?: 'User';
+    } & UserFragment);
+    project: Maybe<({
+        __typename?: 'Project';
+    } & ProjectFragment)>;
+    post: Maybe<({
+        __typename?: 'Post';
+    } & Pick<Post, 'id'>)>;
+    comment: Maybe<({
+        __typename?: 'Comment';
+    } & Pick<Comment, 'id' | 'text' | 'postId'>)>;
+    files: Maybe<({
+        __typename?: 'FileConnection';
     } & {
-        node: ({
-            __typename?: 'Comment';
-        } & Pick<Comment, 'id' | 'text'> & {
-            user: Maybe<({
-                __typename?: 'User';
-            } & UserFragment)>;
-        });
-    })>>;
+        edges: Maybe<Array<Maybe<({
+            __typename?: 'FileEdge';
+        } & {
+            node: ({
+                __typename?: 'File';
+            } & Pick<File, 'id' | 'uri'>);
+        })>>>;
+    })>;
 });
 export declare type PostFragment = ({
     __typename?: 'Post';
@@ -821,7 +868,15 @@ export declare type PostFragment = ({
     } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
     comments: Maybe<({
         __typename?: 'CommentConnection';
-    } & CommentsFragment)>;
+    } & Pick<CommentConnection, 'totalCount'> & {
+        edges: Maybe<Array<({
+            __typename?: 'CommentEdge';
+        } & {
+            node: ({
+                __typename?: 'Comment';
+            } & CommentFragment);
+        })>>;
+    })>;
 });
 export declare type ProjectFragment = ({
     __typename?: 'Project';
@@ -838,7 +893,7 @@ export declare type ProjectFragment = ({
 });
 export declare type UserFragment = ({
     __typename?: 'User';
-} & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio'>);
+} & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>);
 export declare type UserProjectsFragment = ({
     __typename?: 'User';
 } & {
@@ -903,6 +958,267 @@ export declare type UserSettingsFragment = ({
         })>;
     })>;
 });
+export declare type AddCommentMutationVariables = {
+    postId: Scalars['ID'];
+    commentId?: Maybe<Scalars['ID']>;
+    input: CommentInput;
+};
+export declare type AddCommentMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addComment: Maybe<({
+        __typename?: 'Comment';
+    } & Pick<Comment, 'commentId' | 'id' | 'text'>)>;
+});
+export declare type AddPostMutationVariables = {
+    input: PostInput;
+};
+export declare type AddPostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addPost: Maybe<({
+        __typename?: 'Post';
+    } & PostFragment)>;
+});
+export declare type AddProjectMutationVariables = {
+    input: ProjectInput;
+};
+export declare type AddProjectMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addProject: Maybe<({
+        __typename?: 'Project';
+    } & ProjectFragment)>;
+});
+export declare type AuthenticateAppleMutationVariables = {
+    identityToken: Scalars['String'];
+    user: ApplePayload;
+};
+export declare type AuthenticateAppleMutation = ({
+    __typename?: 'Mutation';
+} & {
+    authenticateApple: Maybe<({
+        __typename?: 'Tokens';
+    } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
+});
+export declare type AuthenticateFacebookMutationVariables = {
+    token: Scalars['String'];
+};
+export declare type AuthenticateFacebookMutation = ({
+    __typename?: 'Mutation';
+} & {
+    authenticateFacebook: Maybe<({
+        __typename?: 'Tokens';
+    } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
+});
+export declare type AuthenticateGoogleMutationVariables = {
+    idToken: Scalars['String'];
+};
+export declare type AuthenticateGoogleMutation = ({
+    __typename?: 'Mutation';
+} & {
+    authenticateGoogle: Maybe<({
+        __typename?: 'Tokens';
+    } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
+});
+export declare type DeleteCommentMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type DeleteCommentMutation = ({
+    __typename?: 'Mutation';
+} & Pick<Mutation, 'deleteComment'>);
+export declare type DeleteNotificationMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type DeleteNotificationMutation = ({
+    __typename?: 'Mutation';
+} & Pick<Mutation, 'deleteNotification'>);
+export declare type DeletePostMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type DeletePostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    deletePost: Maybe<({
+        __typename?: 'Post';
+    } & Pick<Post, 'id'>)>;
+});
+export declare type DeleteProjectMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type DeleteProjectMutation = ({
+    __typename?: 'Mutation';
+} & Pick<Mutation, 'deleteProject'>);
+export declare type EditPostMutationVariables = {
+    id: Scalars['ID'];
+    input: EditPostInput;
+};
+export declare type EditPostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    editPost: Maybe<({
+        __typename?: 'Post';
+    } & PostFragment)>;
+});
+export declare type EditProjectMutationVariables = {
+    id: Scalars['ID'];
+    input: ProjectInput;
+};
+export declare type EditProjectMutation = ({
+    __typename?: 'Mutation';
+} & {
+    editProject: Maybe<({
+        __typename?: 'Project';
+    } & Pick<Project, 'id' | 'title'>)>;
+});
+export declare type EditUserMutationVariables = {
+    input: EditUserInput;
+};
+export declare type EditUserMutation = ({
+    __typename?: 'Mutation';
+} & {
+    editUser: Maybe<({
+        __typename?: 'User';
+    } & UserFragment)>;
+});
+export declare type FollowProjectMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type FollowProjectMutation = ({
+    __typename?: 'Mutation';
+} & {
+    followProject: Maybe<({
+        __typename?: 'Project';
+    } & {
+        cover: Maybe<({
+            __typename?: 'CoverType';
+        } & Pick<CoverType, 'uri'>)>;
+    } & ProjectFragment)>;
+});
+export declare type LikeCommentMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type LikeCommentMutation = ({
+    __typename?: 'Mutation';
+} & {
+    likeComment: Maybe<({
+        __typename?: 'Comment';
+    } & Pick<Comment, 'id'> & {
+        likes: Maybe<({
+            __typename?: 'Likes';
+        } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
+    })>;
+});
+export declare type LikePostMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type LikePostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    likePost: Maybe<({
+        __typename?: 'Post';
+    } & Pick<Post, 'id'> & {
+        likes: Maybe<({
+            __typename?: 'Likes';
+        } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
+    })>;
+});
+export declare type MarkAllNotificationsSeenMutationVariables = {};
+export declare type MarkAllNotificationsSeenMutation = ({
+    __typename?: 'Mutation';
+} & Pick<Mutation, 'markAllNotificationsSeen'>);
+export declare type MarkNotificationSeenMutationVariables = {
+    id: Scalars['ID'];
+};
+export declare type MarkNotificationSeenMutation = ({
+    __typename?: 'Mutation';
+} & {
+    markNotificationSeen: Maybe<({
+        __typename?: 'Notification';
+    } & NotificationFragment)>;
+});
+export declare type PreSignUrlMutationVariables = {
+    input: PreSignedUrlInput;
+};
+export declare type PreSignUrlMutation = ({
+    __typename?: 'Mutation';
+} & {
+    preSignUrl: Maybe<({
+        __typename?: 'PreSignedUrl';
+    } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>)>;
+});
+export declare type PreSignUrlsMutationVariables = {
+    input: Array<Maybe<PreSignedUrlnput>>;
+};
+export declare type PreSignUrlsMutation = ({
+    __typename?: 'Mutation';
+} & {
+    preSignUrls: Maybe<Array<Maybe<({
+        __typename?: 'PreSignedUrl';
+    } & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>)>>>;
+});
+export declare type RefreshTokenMutationVariables = {
+    refreshToken: Scalars['String'];
+};
+export declare type RefreshTokenMutation = ({
+    __typename?: 'Mutation';
+} & {
+    token: Maybe<({
+        __typename?: 'AccessToken';
+    } & Pick<AccessToken, 'access_token'>)>;
+});
+export declare type RegisterDeviceTokenMutationVariables = {
+    token: Scalars['String'];
+    platform: PlatformType;
+};
+export declare type RegisterDeviceTokenMutation = ({
+    __typename?: 'Mutation';
+} & Pick<Mutation, 'registerDeviceToken'>);
+export declare type ToggleNotificationSettingsMutationVariables = {
+    input?: Maybe<ToggleNotificationSettingsInput>;
+};
+export declare type ToggleNotificationSettingsMutation = ({
+    __typename?: 'Mutation';
+} & {
+    toggleNotificationSettings: Maybe<({
+        __typename?: 'User';
+    } & UserSettingsFragment)>;
+});
+export declare type CommentQueryVariables = {
+    id: Scalars['ID'];
+};
+export declare type CommentQuery = ({
+    __typename?: 'Query';
+} & {
+    comment: Maybe<({
+        __typename?: 'Comment';
+    } & CommentFragment)>;
+});
+export declare type CommentsQueryVariables = {
+    postId: Scalars['ID'];
+    after?: Maybe<Scalars['String']>;
+};
+export declare type CommentsQuery = ({
+    __typename?: 'Query';
+} & {
+    post: Maybe<({
+        __typename?: 'Post';
+    } & PostFragment)>;
+    comments: Maybe<({
+        __typename?: 'CommentConnection';
+    } & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges: Maybe<Array<({
+            __typename?: 'CommentEdge';
+        } & Pick<CommentEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'Comment';
+            } & CommentAndRepliesFragment);
+        })>>;
+    })>;
+});
 export declare type CurrentUserQueryVariables = {};
 export declare type CurrentUserQuery = ({
     __typename?: 'Query';
@@ -918,10 +1234,11 @@ export declare type CurrentUserQuery = ({
         } & Pick<ProjectType, 'id' | 'title'>)>>>;
     } & UserProjectsFragment)>;
 });
-export declare type GetCurrentUserQueryVariables = {
+export declare type CurrentUserProfileQueryVariables = {
     after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
 };
-export declare type GetCurrentUserQuery = ({
+export declare type CurrentUserProfileQuery = ({
     __typename?: 'Query';
 } & {
     user: Maybe<({
@@ -935,14 +1252,11 @@ export declare type GetCurrentUserQuery = ({
             } & {
                 node: ({
                     __typename?: 'Project';
-                } & Pick<Project, 'id' | 'title'> & {
+                } & {
                     cover: Maybe<({
                         __typename?: 'CoverType';
                     } & Pick<CoverType, 'uri' | 'default'>)>;
-                    followers: Maybe<({
-                        __typename?: 'FollowersConnection';
-                    } & Pick<FollowersConnection, 'totalCount'>)>;
-                });
+                } & ProjectFragment);
             })>>;
         })>;
         posts: Maybe<({
@@ -977,6 +1291,77 @@ export declare type CurrentUserSettingsQuery = ({
         __typename?: 'User';
     } & UserSettingsFragment)>;
 });
+export declare type FeedQueryVariables = {
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type FeedQuery = ({
+    __typename?: 'Query';
+} & {
+    feed: Maybe<({
+        __typename?: 'Feed';
+    } & {
+        posts: Maybe<({
+            __typename?: 'PostConnection';
+        } & {
+            pageInfo: ({
+                __typename?: 'PageInfo';
+            } & Pick<PageInfo, 'hasNextPage'>);
+            edges: Maybe<Array<({
+                __typename?: 'PostEdge';
+            } & Pick<PostEdge, 'cursor'> & {
+                node: ({
+                    __typename?: 'Post';
+                } & PostFragment);
+            })>>;
+        })>;
+    })>;
+});
+export declare type FollowersQueryVariables = {
+    projectId: Scalars['ID'];
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type FollowersQuery = ({
+    __typename?: 'Query';
+} & {
+    followers: Maybe<({
+        __typename?: 'FollowersConnection';
+    } & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges: Maybe<Array<({
+            __typename?: 'FollowersEdge';
+        } & Pick<FollowersEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'User';
+            } & UserFragment);
+        })>>;
+    })>;
+});
+export declare type NotificationsQueryVariables = {
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type NotificationsQuery = ({
+    __typename?: 'Query';
+} & {
+    notifications: Maybe<({
+        __typename?: 'NotificationsConnection';
+    } & Pick<NotificationsConnection, 'unreadCount'> & {
+        pageInfo: Maybe<({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>)>;
+        edges: Maybe<Array<Maybe<({
+            __typename?: 'NotificationEdge';
+        } & Pick<NotificationEdge, 'cursor'> & {
+            node: Maybe<({
+                __typename?: 'Notification';
+            } & NotificationFragment)>;
+        })>>>;
+    })>;
+});
 export declare type PostQueryVariables = {
     id: Scalars['ID'];
 };
@@ -986,6 +1371,57 @@ export declare type PostQuery = ({
     post: Maybe<({
         __typename?: 'Post';
     } & PostFragment)>;
+});
+export declare type PostsQueryVariables = {
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type PostsQuery = ({
+    __typename?: 'Query';
+} & {
+    posts: Maybe<({
+        __typename?: 'PostConnection';
+    } & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges: Maybe<Array<({
+            __typename?: 'PostEdge';
+        } & Pick<PostEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'Post';
+            } & PostFragment);
+        })>>;
+    })>;
+});
+export declare type ProjectQueryVariables = {
+    id?: Maybe<Scalars['ID']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
+    after?: Maybe<Scalars['String']>;
+    postId?: Maybe<Scalars['ID']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type ProjectQuery = ({
+    __typename?: 'Query';
+} & {
+    post: Maybe<({
+        __typename?: 'Post';
+    } & PostFragment)>;
+    project: Maybe<({
+        __typename?: 'Project';
+    } & {
+        posts: Maybe<({
+            __typename?: 'PostConnection';
+        } & {
+            edges: Maybe<Array<({
+                __typename?: 'PostEdge';
+            } & Pick<PostEdge, 'cursor'> & {
+                node: ({
+                    __typename?: 'Post';
+                } & PostFragment);
+            })>>;
+        })>;
+    } & ProjectFragment)>;
 });
 export declare type ProjectSuggestionsQueryVariables = {
     after?: Maybe<Scalars['String']>;
@@ -1052,9 +1488,68 @@ export declare type ProjectsQuery = ({
         })>>;
     })>;
 });
+export declare type RepliesQueryVariables = {
+    id: Scalars['ID'];
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type RepliesQuery = ({
+    __typename?: 'Query';
+} & {
+    comment: Maybe<({
+        __typename?: 'Comment';
+    } & {
+        replies: Maybe<({
+            __typename?: 'CommentConnection';
+        } & Pick<CommentConnection, 'totalCount'> & {
+            pageInfo: ({
+                __typename?: 'PageInfo';
+            } & Pick<PageInfo, 'hasNextPage'>);
+            edges: Maybe<Array<({
+                __typename?: 'CommentEdge';
+            } & Pick<CommentEdge, 'cursor'> & {
+                node: ({
+                    __typename?: 'Comment';
+                } & CommentFragment);
+            })>>;
+        })>;
+    })>;
+});
+export declare type SearchModelsQueryVariables = {
+    query: Scalars['String'];
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type SearchModelsQuery = ({
+    __typename?: 'Query';
+} & {
+    models: Maybe<({
+        __typename?: 'SearchResults';
+    } & {
+        pageInfo: Maybe<({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>)>;
+        edges: Maybe<Array<Maybe<({
+            __typename?: 'SearchResultEdge';
+        } & {
+            node: Maybe<{
+                __typename?: 'Project';
+            } | {
+                __typename?: 'User';
+            } | ({
+                __typename?: 'Model';
+            } & Pick<Model, 'id' | 'model' | 'year'> & {
+                brand: Maybe<({
+                    __typename?: 'Brand';
+                } & Pick<Brand, 'name'>)>;
+            })>;
+        })>>>;
+    })>;
+});
 export declare type SearchProjectsQueryVariables = {
     query: Scalars['String'];
     after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
 };
 export declare type SearchProjectsQuery = ({
     __typename?: 'Query';
@@ -1085,6 +1580,7 @@ export declare type SearchProjectsQuery = ({
 export declare type SearchUsersQueryVariables = {
     query: Scalars['String'];
     after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
 };
 export declare type SearchUsersQuery = ({
     __typename?: 'Query';
@@ -1110,6 +1606,7 @@ export declare type SearchUsersQuery = ({
 });
 export declare type SimilarProjectsQueryVariables = {
     id: Scalars['ID'];
+    first?: Maybe<Scalars['Int']>;
 };
 export declare type SimilarProjectsQuery = ({
     __typename?: 'Query';
@@ -1119,7 +1616,7 @@ export declare type SimilarProjectsQuery = ({
     } & {
         edges: Maybe<Array<({
             __typename?: 'ProjectEdge';
-        } & {
+        } & Pick<ProjectEdge, 'cursor'> & {
             node: ({
                 __typename?: 'Project';
             } & {
@@ -1130,11 +1627,12 @@ export declare type SimilarProjectsQuery = ({
         })>>;
     })>;
 });
-export declare type UserByUsernameQueryVariables = {
+export declare type UserQueryVariables = {
     username: Scalars['LowercaseString'];
     after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
 };
-export declare type UserByUsernameQuery = ({
+export declare type UserQuery = ({
     __typename?: 'Query';
 } & {
     user: Maybe<({
@@ -1174,12 +1672,624 @@ export declare type UserByUsernameQuery = ({
         })>;
     } & UserFragment)>;
 });
+export declare type UserFollowingProjectsQueryVariables = {
+    username: Scalars['LowercaseString'];
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type UserFollowingProjectsQuery = ({
+    __typename?: 'Query';
+} & {
+    user: Maybe<({
+        __typename?: 'User';
+    } & Pick<User, 'id'> & {
+        projects: Maybe<({
+            __typename?: 'ProjectsConnection';
+        } & {
+            pageInfo: ({
+                __typename?: 'PageInfo';
+            } & Pick<PageInfo, 'hasNextPage'>);
+            edges: Maybe<Array<({
+                __typename?: 'ProjectEdge';
+            } & Pick<ProjectEdge, 'cursor'> & {
+                node: ({
+                    __typename?: 'Project';
+                } & {
+                    cover: Maybe<({
+                        __typename?: 'CoverType';
+                    } & Pick<CoverType, 'uri' | 'default'>)>;
+                } & ProjectFragment);
+            })>>;
+        })>;
+    })>;
+});
 export declare const UserFragmentDoc: any;
+export declare const CommentFragmentDoc: any;
+export declare const CommentAndRepliesFragmentDoc: any;
 export declare const ProjectFragmentDoc: any;
-export declare const CommentsFragmentDoc: any;
+export declare const NotificationFragmentDoc: any;
 export declare const PostFragmentDoc: any;
 export declare const UserProjectsFragmentDoc: any;
 export declare const UserSettingsFragmentDoc: any;
+export declare const AddCommentDocument: any;
+export declare type AddCommentMutationFn = ApolloReactCommon.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
+/**
+ * __useAddCommentMutation__
+ *
+ * To run a mutation, you first call `useAddCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCommentMutation, { data, loading, error }] = useAddCommentMutation({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      commentId: // value for 'commentId'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useAddCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>): ApolloReactHooks.MutationTuple<AddCommentMutation, AddCommentMutationVariables>;
+export declare type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>;
+export declare type AddCommentMutationResult = ApolloReactCommon.MutationResult<AddCommentMutation>;
+export declare type AddCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCommentMutation, AddCommentMutationVariables>;
+export declare const AddPostDocument: any;
+export declare type AddPostMutationFn = ApolloReactCommon.MutationFunction<AddPostMutation, AddPostMutationVariables>;
+/**
+ * __useAddPostMutation__
+ *
+ * To run a mutation, you first call `useAddPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addPostMutation, { data, loading, error }] = useAddPostMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useAddPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddPostMutation, AddPostMutationVariables>): ApolloReactHooks.MutationTuple<AddPostMutation, AddPostMutationVariables>;
+export declare type AddPostMutationHookResult = ReturnType<typeof useAddPostMutation>;
+export declare type AddPostMutationResult = ApolloReactCommon.MutationResult<AddPostMutation>;
+export declare type AddPostMutationOptions = ApolloReactCommon.BaseMutationOptions<AddPostMutation, AddPostMutationVariables>;
+export declare const AddProjectDocument: any;
+export declare type AddProjectMutationFn = ApolloReactCommon.MutationFunction<AddProjectMutation, AddProjectMutationVariables>;
+/**
+ * __useAddProjectMutation__
+ *
+ * To run a mutation, you first call `useAddProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addProjectMutation, { data, loading, error }] = useAddProjectMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useAddProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddProjectMutation, AddProjectMutationVariables>): ApolloReactHooks.MutationTuple<AddProjectMutation, AddProjectMutationVariables>;
+export declare type AddProjectMutationHookResult = ReturnType<typeof useAddProjectMutation>;
+export declare type AddProjectMutationResult = ApolloReactCommon.MutationResult<AddProjectMutation>;
+export declare type AddProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<AddProjectMutation, AddProjectMutationVariables>;
+export declare const AuthenticateAppleDocument: any;
+export declare type AuthenticateAppleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+/**
+ * __useAuthenticateAppleMutation__
+ *
+ * To run a mutation, you first call `useAuthenticateAppleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAuthenticateAppleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [authenticateAppleMutation, { data, loading, error }] = useAuthenticateAppleMutation({
+ *   variables: {
+ *      identityToken: // value for 'identityToken'
+ *      user: // value for 'user'
+ *   },
+ * });
+ */
+export declare function useAuthenticateAppleMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>): ApolloReactHooks.MutationTuple<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+export declare type AuthenticateAppleMutationHookResult = ReturnType<typeof useAuthenticateAppleMutation>;
+export declare type AuthenticateAppleMutationResult = ApolloReactCommon.MutationResult<AuthenticateAppleMutation>;
+export declare type AuthenticateAppleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+export declare const AuthenticateFacebookDocument: any;
+export declare type AuthenticateFacebookMutationFn = ApolloReactCommon.MutationFunction<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+/**
+ * __useAuthenticateFacebookMutation__
+ *
+ * To run a mutation, you first call `useAuthenticateFacebookMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAuthenticateFacebookMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [authenticateFacebookMutation, { data, loading, error }] = useAuthenticateFacebookMutation({
+ *   variables: {
+ *      token: // value for 'token'
+ *   },
+ * });
+ */
+export declare function useAuthenticateFacebookMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>): ApolloReactHooks.MutationTuple<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+export declare type AuthenticateFacebookMutationHookResult = ReturnType<typeof useAuthenticateFacebookMutation>;
+export declare type AuthenticateFacebookMutationResult = ApolloReactCommon.MutationResult<AuthenticateFacebookMutation>;
+export declare type AuthenticateFacebookMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+export declare const AuthenticateGoogleDocument: any;
+export declare type AuthenticateGoogleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+/**
+ * __useAuthenticateGoogleMutation__
+ *
+ * To run a mutation, you first call `useAuthenticateGoogleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAuthenticateGoogleMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [authenticateGoogleMutation, { data, loading, error }] = useAuthenticateGoogleMutation({
+ *   variables: {
+ *      idToken: // value for 'idToken'
+ *   },
+ * });
+ */
+export declare function useAuthenticateGoogleMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>): ApolloReactHooks.MutationTuple<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export declare type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
+export declare type AuthenticateGoogleMutationResult = ApolloReactCommon.MutationResult<AuthenticateGoogleMutation>;
+export declare type AuthenticateGoogleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export declare const DeleteCommentDocument: any;
+export declare type DeleteCommentMutationFn = ApolloReactCommon.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
+/**
+ * __useDeleteCommentMutation__
+ *
+ * To run a mutation, you first call `useDeleteCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCommentMutation, { data, loading, error }] = useDeleteCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useDeleteCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>): ApolloReactHooks.MutationTuple<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export declare type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
+export declare type DeleteCommentMutationResult = ApolloReactCommon.MutationResult<DeleteCommentMutation>;
+export declare type DeleteCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export declare const DeleteNotificationDocument: any;
+export declare type DeleteNotificationMutationFn = ApolloReactCommon.MutationFunction<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+/**
+ * __useDeleteNotificationMutation__
+ *
+ * To run a mutation, you first call `useDeleteNotificationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteNotificationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteNotificationMutation, { data, loading, error }] = useDeleteNotificationMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useDeleteNotificationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>): ApolloReactHooks.MutationTuple<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+export declare type DeleteNotificationMutationHookResult = ReturnType<typeof useDeleteNotificationMutation>;
+export declare type DeleteNotificationMutationResult = ApolloReactCommon.MutationResult<DeleteNotificationMutation>;
+export declare type DeleteNotificationMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+export declare const DeletePostDocument: any;
+export declare type DeletePostMutationFn = ApolloReactCommon.MutationFunction<DeletePostMutation, DeletePostMutationVariables>;
+/**
+ * __useDeletePostMutation__
+ *
+ * To run a mutation, you first call `useDeletePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeletePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deletePostMutation, { data, loading, error }] = useDeletePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useDeletePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>): ApolloReactHooks.MutationTuple<DeletePostMutation, DeletePostMutationVariables>;
+export declare type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>;
+export declare type DeletePostMutationResult = ApolloReactCommon.MutationResult<DeletePostMutation>;
+export declare type DeletePostMutationOptions = ApolloReactCommon.BaseMutationOptions<DeletePostMutation, DeletePostMutationVariables>;
+export declare const DeleteProjectDocument: any;
+export declare type DeleteProjectMutationFn = ApolloReactCommon.MutationFunction<DeleteProjectMutation, DeleteProjectMutationVariables>;
+/**
+ * __useDeleteProjectMutation__
+ *
+ * To run a mutation, you first call `useDeleteProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteProjectMutation, { data, loading, error }] = useDeleteProjectMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useDeleteProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteProjectMutation, DeleteProjectMutationVariables>): ApolloReactHooks.MutationTuple<DeleteProjectMutation, DeleteProjectMutationVariables>;
+export declare type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>;
+export declare type DeleteProjectMutationResult = ApolloReactCommon.MutationResult<DeleteProjectMutation>;
+export declare type DeleteProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
+export declare const EditPostDocument: any;
+export declare type EditPostMutationFn = ApolloReactCommon.MutationFunction<EditPostMutation, EditPostMutationVariables>;
+/**
+ * __useEditPostMutation__
+ *
+ * To run a mutation, you first call `useEditPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editPostMutation, { data, loading, error }] = useEditPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useEditPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditPostMutation, EditPostMutationVariables>): ApolloReactHooks.MutationTuple<EditPostMutation, EditPostMutationVariables>;
+export declare type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>;
+export declare type EditPostMutationResult = ApolloReactCommon.MutationResult<EditPostMutation>;
+export declare type EditPostMutationOptions = ApolloReactCommon.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
+export declare const EditProjectDocument: any;
+export declare type EditProjectMutationFn = ApolloReactCommon.MutationFunction<EditProjectMutation, EditProjectMutationVariables>;
+/**
+ * __useEditProjectMutation__
+ *
+ * To run a mutation, you first call `useEditProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editProjectMutation, { data, loading, error }] = useEditProjectMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useEditProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditProjectMutation, EditProjectMutationVariables>): ApolloReactHooks.MutationTuple<EditProjectMutation, EditProjectMutationVariables>;
+export declare type EditProjectMutationHookResult = ReturnType<typeof useEditProjectMutation>;
+export declare type EditProjectMutationResult = ApolloReactCommon.MutationResult<EditProjectMutation>;
+export declare type EditProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<EditProjectMutation, EditProjectMutationVariables>;
+export declare const EditUserDocument: any;
+export declare type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMutation, EditUserMutationVariables>;
+/**
+ * __useEditUserMutation__
+ *
+ * To run a mutation, you first call `useEditUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editUserMutation, { data, loading, error }] = useEditUserMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useEditUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditUserMutation, EditUserMutationVariables>): ApolloReactHooks.MutationTuple<EditUserMutation, EditUserMutationVariables>;
+export declare type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>;
+export declare type EditUserMutationResult = ApolloReactCommon.MutationResult<EditUserMutation>;
+export declare type EditUserMutationOptions = ApolloReactCommon.BaseMutationOptions<EditUserMutation, EditUserMutationVariables>;
+export declare const FollowProjectDocument: any;
+export declare type FollowProjectMutationFn = ApolloReactCommon.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
+/**
+ * __useFollowProjectMutation__
+ *
+ * To run a mutation, you first call `useFollowProjectMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useFollowProjectMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [followProjectMutation, { data, loading, error }] = useFollowProjectMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useFollowProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<FollowProjectMutation, FollowProjectMutationVariables>): ApolloReactHooks.MutationTuple<FollowProjectMutation, FollowProjectMutationVariables>;
+export declare type FollowProjectMutationHookResult = ReturnType<typeof useFollowProjectMutation>;
+export declare type FollowProjectMutationResult = ApolloReactCommon.MutationResult<FollowProjectMutation>;
+export declare type FollowProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<FollowProjectMutation, FollowProjectMutationVariables>;
+export declare const LikeCommentDocument: any;
+export declare type LikeCommentMutationFn = ApolloReactCommon.MutationFunction<LikeCommentMutation, LikeCommentMutationVariables>;
+/**
+ * __useLikeCommentMutation__
+ *
+ * To run a mutation, you first call `useLikeCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLikeCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [likeCommentMutation, { data, loading, error }] = useLikeCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useLikeCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikeCommentMutation, LikeCommentMutationVariables>): ApolloReactHooks.MutationTuple<LikeCommentMutation, LikeCommentMutationVariables>;
+export declare type LikeCommentMutationHookResult = ReturnType<typeof useLikeCommentMutation>;
+export declare type LikeCommentMutationResult = ApolloReactCommon.MutationResult<LikeCommentMutation>;
+export declare type LikeCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<LikeCommentMutation, LikeCommentMutationVariables>;
+export declare const LikePostDocument: any;
+export declare type LikePostMutationFn = ApolloReactCommon.MutationFunction<LikePostMutation, LikePostMutationVariables>;
+/**
+ * __useLikePostMutation__
+ *
+ * To run a mutation, you first call `useLikePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLikePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [likePostMutation, { data, loading, error }] = useLikePostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useLikePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikePostMutation, LikePostMutationVariables>): ApolloReactHooks.MutationTuple<LikePostMutation, LikePostMutationVariables>;
+export declare type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
+export declare type LikePostMutationResult = ApolloReactCommon.MutationResult<LikePostMutation>;
+export declare type LikePostMutationOptions = ApolloReactCommon.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
+export declare const MarkAllNotificationsSeenDocument: any;
+export declare type MarkAllNotificationsSeenMutationFn = ApolloReactCommon.MutationFunction<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+/**
+ * __useMarkAllNotificationsSeenMutation__
+ *
+ * To run a mutation, you first call `useMarkAllNotificationsSeenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMarkAllNotificationsSeenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [markAllNotificationsSeenMutation, { data, loading, error }] = useMarkAllNotificationsSeenMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useMarkAllNotificationsSeenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>): ApolloReactHooks.MutationTuple<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+export declare type MarkAllNotificationsSeenMutationHookResult = ReturnType<typeof useMarkAllNotificationsSeenMutation>;
+export declare type MarkAllNotificationsSeenMutationResult = ApolloReactCommon.MutationResult<MarkAllNotificationsSeenMutation>;
+export declare type MarkAllNotificationsSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+export declare const MarkNotificationSeenDocument: any;
+export declare type MarkNotificationSeenMutationFn = ApolloReactCommon.MutationFunction<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+/**
+ * __useMarkNotificationSeenMutation__
+ *
+ * To run a mutation, you first call `useMarkNotificationSeenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMarkNotificationSeenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [markNotificationSeenMutation, { data, loading, error }] = useMarkNotificationSeenMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useMarkNotificationSeenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>): ApolloReactHooks.MutationTuple<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+export declare type MarkNotificationSeenMutationHookResult = ReturnType<typeof useMarkNotificationSeenMutation>;
+export declare type MarkNotificationSeenMutationResult = ApolloReactCommon.MutationResult<MarkNotificationSeenMutation>;
+export declare type MarkNotificationSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+export declare const PreSignUrlDocument: any;
+export declare type PreSignUrlMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlMutation, PreSignUrlMutationVariables>;
+/**
+ * __usePreSignUrlMutation__
+ *
+ * To run a mutation, you first call `usePreSignUrlMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePreSignUrlMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [preSignUrlMutation, { data, loading, error }] = usePreSignUrlMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function usePreSignUrlMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<PreSignUrlMutation, PreSignUrlMutationVariables>): ApolloReactHooks.MutationTuple<PreSignUrlMutation, PreSignUrlMutationVariables>;
+export declare type PreSignUrlMutationHookResult = ReturnType<typeof usePreSignUrlMutation>;
+export declare type PreSignUrlMutationResult = ApolloReactCommon.MutationResult<PreSignUrlMutation>;
+export declare type PreSignUrlMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlMutation, PreSignUrlMutationVariables>;
+export declare const PreSignUrlsDocument: any;
+export declare type PreSignUrlsMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+/**
+ * __usePreSignUrlsMutation__
+ *
+ * To run a mutation, you first call `usePreSignUrlsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePreSignUrlsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [preSignUrlsMutation, { data, loading, error }] = usePreSignUrlsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function usePreSignUrlsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>): ApolloReactHooks.MutationTuple<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+export declare type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>;
+export declare type PreSignUrlsMutationResult = ApolloReactCommon.MutationResult<PreSignUrlsMutation>;
+export declare type PreSignUrlsMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+export declare const RefreshTokenDocument: any;
+export declare type RefreshTokenMutationFn = ApolloReactCommon.MutationFunction<RefreshTokenMutation, RefreshTokenMutationVariables>;
+/**
+ * __useRefreshTokenMutation__
+ *
+ * To run a mutation, you first call `useRefreshTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRefreshTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [refreshTokenMutation, { data, loading, error }] = useRefreshTokenMutation({
+ *   variables: {
+ *      refreshToken: // value for 'refreshToken'
+ *   },
+ * });
+ */
+export declare function useRefreshTokenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>): ApolloReactHooks.MutationTuple<RefreshTokenMutation, RefreshTokenMutationVariables>;
+export declare type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>;
+export declare type RefreshTokenMutationResult = ApolloReactCommon.MutationResult<RefreshTokenMutation>;
+export declare type RefreshTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RefreshTokenMutation, RefreshTokenMutationVariables>;
+export declare const RegisterDeviceTokenDocument: any;
+export declare type RegisterDeviceTokenMutationFn = ApolloReactCommon.MutationFunction<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+/**
+ * __useRegisterDeviceTokenMutation__
+ *
+ * To run a mutation, you first call `useRegisterDeviceTokenMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useRegisterDeviceTokenMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [registerDeviceTokenMutation, { data, loading, error }] = useRegisterDeviceTokenMutation({
+ *   variables: {
+ *      token: // value for 'token'
+ *      platform: // value for 'platform'
+ *   },
+ * });
+ */
+export declare function useRegisterDeviceTokenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>): ApolloReactHooks.MutationTuple<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+export declare type RegisterDeviceTokenMutationHookResult = ReturnType<typeof useRegisterDeviceTokenMutation>;
+export declare type RegisterDeviceTokenMutationResult = ApolloReactCommon.MutationResult<RegisterDeviceTokenMutation>;
+export declare type RegisterDeviceTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+export declare const ToggleNotificationSettingsDocument: any;
+export declare type ToggleNotificationSettingsMutationFn = ApolloReactCommon.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+/**
+ * __useToggleNotificationSettingsMutation__
+ *
+ * To run a mutation, you first call `useToggleNotificationSettingsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useToggleNotificationSettingsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [toggleNotificationSettingsMutation, { data, loading, error }] = useToggleNotificationSettingsMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useToggleNotificationSettingsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>): ApolloReactHooks.MutationTuple<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
+export declare type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
+export declare type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export declare const CommentDocument: any;
+/**
+ * __useCommentQuery__
+ *
+ * To run a query within a React component, call `useCommentQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCommentQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useCommentQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CommentQuery, CommentQueryVariables>): ApolloReactCommon.QueryResult<CommentQuery, CommentQueryVariables>;
+export declare function useCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<CommentQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<CommentQuery, CommentQueryVariables>];
+export declare type CommentQueryHookResult = ReturnType<typeof useCommentQuery>;
+export declare type CommentLazyQueryHookResult = ReturnType<typeof useCommentLazyQuery>;
+export declare type CommentQueryResult = ApolloReactCommon.QueryResult<CommentQuery, CommentQueryVariables>;
+export declare const CommentsDocument: any;
+/**
+ * __useCommentsQuery__
+ *
+ * To run a query within a React component, call `useCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCommentsQuery({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export declare function useCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CommentsQuery, CommentsQueryVariables>): ApolloReactCommon.QueryResult<CommentsQuery, CommentsQueryVariables>;
+export declare function useCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<CommentsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<CommentsQuery, CommentsQueryVariables>];
+export declare type CommentsQueryHookResult = ReturnType<typeof useCommentsQuery>;
+export declare type CommentsLazyQueryHookResult = ReturnType<typeof useCommentsLazyQuery>;
+export declare type CommentsQueryResult = ApolloReactCommon.QueryResult<CommentsQuery, CommentsQueryVariables>;
 export declare const CurrentUserDocument: any;
 /**
  * __useCurrentUserQuery__
@@ -1201,28 +2311,29 @@ export declare function useCurrentUserLazyQuery(baseOptions?: ApolloReactHooks.L
 export declare type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
 export declare type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
 export declare type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
-export declare const GetCurrentUserDocument: any;
+export declare const CurrentUserProfileDocument: any;
 /**
- * __useGetCurrentUserQuery__
+ * __useCurrentUserProfileQuery__
  *
- * To run a query within a React component, call `useGetCurrentUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useCurrentUserProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetCurrentUserQuery({
+ * const { data, loading, error } = useCurrentUserProfileQuery({
  *   variables: {
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
-export declare function useGetCurrentUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetCurrentUserQuery, GetCurrentUserQueryVariables>): ApolloReactCommon.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
-export declare function useGetCurrentUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetCurrentUserQuery, GetCurrentUserQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<GetCurrentUserQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>];
-export declare type GetCurrentUserQueryHookResult = ReturnType<typeof useGetCurrentUserQuery>;
-export declare type GetCurrentUserLazyQueryHookResult = ReturnType<typeof useGetCurrentUserLazyQuery>;
-export declare type GetCurrentUserQueryResult = ApolloReactCommon.QueryResult<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
+export declare function useCurrentUserProfileQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>): ApolloReactCommon.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>;
+export declare function useCurrentUserProfileLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<CurrentUserProfileQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>];
+export declare type CurrentUserProfileQueryHookResult = ReturnType<typeof useCurrentUserProfileQuery>;
+export declare type CurrentUserProfileLazyQueryHookResult = ReturnType<typeof useCurrentUserProfileLazyQuery>;
+export declare type CurrentUserProfileQueryResult = ApolloReactCommon.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>;
 export declare const CurrentUserProjectsDocument: any;
 /**
  * __useCurrentUserProjectsQuery__
@@ -1265,6 +2376,76 @@ export declare function useCurrentUserSettingsLazyQuery(baseOptions?: ApolloReac
 export declare type CurrentUserSettingsQueryHookResult = ReturnType<typeof useCurrentUserSettingsQuery>;
 export declare type CurrentUserSettingsLazyQueryHookResult = ReturnType<typeof useCurrentUserSettingsLazyQuery>;
 export declare type CurrentUserSettingsQueryResult = ApolloReactCommon.QueryResult<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>;
+export declare const FeedDocument: any;
+/**
+ * __useFeedQuery__
+ *
+ * To run a query within a React component, call `useFeedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFeedQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useFeedQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedQuery, FeedQueryVariables>): ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>;
+export declare function useFeedLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<FeedQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>];
+export declare type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
+export declare type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
+export declare type FeedQueryResult = ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>;
+export declare const FollowersDocument: any;
+/**
+ * __useFollowersQuery__
+ *
+ * To run a query within a React component, call `useFollowersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFollowersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFollowersQuery({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useFollowersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FollowersQuery, FollowersQueryVariables>): ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
+export declare function useFollowersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<FollowersQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>];
+export declare type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
+export declare type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
+export declare type FollowersQueryResult = ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
+export declare const NotificationsDocument: any;
+/**
+ * __useNotificationsQuery__
+ *
+ * To run a query within a React component, call `useNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNotificationsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useNotificationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>): ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
+export declare function useNotificationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<NotificationsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>];
+export declare type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
+export declare type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
+export declare type NotificationsQueryResult = ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
 export declare const PostDocument: any;
 /**
  * __usePostQuery__
@@ -1287,6 +2468,55 @@ export declare function usePostLazyQuery(baseOptions?: ApolloReactHooks.LazyQuer
 export declare type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export declare type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
 export declare type PostQueryResult = ApolloReactCommon.QueryResult<PostQuery, PostQueryVariables>;
+export declare const PostsDocument: any;
+/**
+ * __usePostsQuery__
+ *
+ * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function usePostsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<PostsQuery, PostsQueryVariables>): ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
+export declare function usePostsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<PostsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>];
+export declare type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
+export declare type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
+export declare type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
+export declare const ProjectDocument: any;
+/**
+ * __useProjectQuery__
+ *
+ * To run a query within a React component, call `useProjectQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      slug: // value for 'slug'
+ *      after: // value for 'after'
+ *      postId: // value for 'postId'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useProjectQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectQuery, ProjectQueryVariables>): ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
+export declare function useProjectLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<ProjectQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>];
+export declare type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
+export declare type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
+export declare type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export declare const ProjectSuggestionsDocument: any;
 /**
  * __useProjectSuggestionsQuery__
@@ -1356,6 +2586,54 @@ export declare function useProjectsLazyQuery(baseOptions?: ApolloReactHooks.Lazy
 export declare type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export declare type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
 export declare type ProjectsQueryResult = ApolloReactCommon.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export declare const RepliesDocument: any;
+/**
+ * __useRepliesQuery__
+ *
+ * To run a query within a React component, call `useRepliesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRepliesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRepliesQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useRepliesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RepliesQuery, RepliesQueryVariables>): ApolloReactCommon.QueryResult<RepliesQuery, RepliesQueryVariables>;
+export declare function useRepliesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<RepliesQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<RepliesQuery, RepliesQueryVariables>];
+export declare type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
+export declare type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
+export declare type RepliesQueryResult = ApolloReactCommon.QueryResult<RepliesQuery, RepliesQueryVariables>;
+export declare const SearchModelsDocument: any;
+/**
+ * __useSearchModelsQuery__
+ *
+ * To run a query within a React component, call `useSearchModelsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchModelsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchModelsQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useSearchModelsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>): ApolloReactCommon.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
+export declare function useSearchModelsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<SearchModelsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>];
+export declare type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery>;
+export declare type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>;
+export declare type SearchModelsQueryResult = ApolloReactCommon.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
 export declare const SearchProjectsDocument: any;
 /**
  * __useSearchProjectsQuery__
@@ -1371,6 +2649,7 @@ export declare const SearchProjectsDocument: any;
  *   variables: {
  *      query: // value for 'query'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -1394,6 +2673,7 @@ export declare const SearchUsersDocument: any;
  *   variables: {
  *      query: // value for 'query'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -1416,6 +2696,7 @@ export declare const SimilarProjectsDocument: any;
  * const { data, loading, error } = useSimilarProjectsQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -1424,26 +2705,51 @@ export declare function useSimilarProjectsLazyQuery(baseOptions?: ApolloReactHoo
 export declare type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
 export declare type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
 export declare type SimilarProjectsQueryResult = ApolloReactCommon.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
-export declare const UserByUsernameDocument: any;
+export declare const UserDocument: any;
 /**
- * __useUserByUsernameQuery__
+ * __useUserQuery__
  *
- * To run a query within a React component, call `useUserByUsernameQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserByUsernameQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useUserByUsernameQuery({
+ * const { data, loading, error } = useUserQuery({
  *   variables: {
  *      username: // value for 'username'
  *      after: // value for 'after'
+ *      first: // value for 'first'
  *   },
  * });
  */
-export declare function useUserByUsernameQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserByUsernameQuery, UserByUsernameQueryVariables>): ApolloReactCommon.QueryResult<UserByUsernameQuery, UserByUsernameQueryVariables>;
-export declare function useUserByUsernameLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserByUsernameQuery, UserByUsernameQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<UserByUsernameQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<UserByUsernameQuery, UserByUsernameQueryVariables>];
-export declare type UserByUsernameQueryHookResult = ReturnType<typeof useUserByUsernameQuery>;
-export declare type UserByUsernameLazyQueryHookResult = ReturnType<typeof useUserByUsernameLazyQuery>;
-export declare type UserByUsernameQueryResult = ApolloReactCommon.QueryResult<UserByUsernameQuery, UserByUsernameQueryVariables>;
+export declare function useUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserQuery, UserQueryVariables>): ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
+export declare function useUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserQuery, UserQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<UserQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>];
+export declare type UserQueryHookResult = ReturnType<typeof useUserQuery>;
+export declare type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
+export declare type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
+export declare const UserFollowingProjectsDocument: any;
+/**
+ * __useUserFollowingProjectsQuery__
+ *
+ * To run a query within a React component, call `useUserFollowingProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserFollowingProjectsQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useUserFollowingProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>): ApolloReactCommon.QueryResult<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>;
+export declare function useUserFollowingProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<UserFollowingProjectsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>];
+export declare type UserFollowingProjectsQueryHookResult = ReturnType<typeof useUserFollowingProjectsQuery>;
+export declare type UserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useUserFollowingProjectsLazyQuery>;
+export declare type UserFollowingProjectsQueryResult = ApolloReactCommon.QueryResult<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>;

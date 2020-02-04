@@ -1,17 +1,18 @@
-import { CurrentUserDocument } from '@wrench/common'
+import {
+  CurrentUserDocument,
+  CurrentUserProjectsDocument,
+  PreSignUrlsDocument,
+  PreSignUrlDocument,
+  RegisterDeviceTokenDocument,
+} from '@wrench/common'
 import { PLATFORM_TYPES } from 'utils/enums'
 import { logError } from 'utils/sentry'
-import {
-  client,
-  REGISTER_DEVICE_TOKEN_MUTATION,
-  PRE_SING_URLS_MUTATION,
-  PRE_SING_URL_MUTATION,
-} from './'
+import { client } from './'
 
 export async function registerDeviceToken(token) {
   try {
     return client.mutate({
-      mutation: REGISTER_DEVICE_TOKEN_MUTATION,
+      mutation: RegisterDeviceTokenDocument,
       variables: {
         platform: PLATFORM_TYPES.MOBILE,
         token,
@@ -25,7 +26,7 @@ export async function registerDeviceToken(token) {
 export async function preSignUrls(input) {
   try {
     return client.mutate({
-      mutation: PRE_SING_URLS_MUTATION,
+      mutation: PreSignUrlsDocument,
       variables: {
         input,
       },
@@ -38,7 +39,7 @@ export async function preSignUrls(input) {
 export async function preSignUrl(input) {
   try {
     return client.mutate({
-      mutation: PRE_SING_URL_MUTATION,
+      mutation: PreSignUrlDocument,
       variables: {
         input,
       },
@@ -51,6 +52,17 @@ export async function preSignUrl(input) {
 export async function getCurrentUser() {
   try {
     return client.query({ query: CurrentUserDocument })
+  } catch (err) {
+    logError(err)
+  }
+}
+
+export async function getCurrentUserProjects() {
+  try {
+    return client.query({
+      query: CurrentUserProjectsDocument,
+      fetchPolicy: 'cache-only',
+    })
   } catch (err) {
     logError(err)
   }

@@ -1,0 +1,18 @@
+#import "./UserFragment.graphql"
+#import "./CommentFragment.graphql"
+
+fragment CommentAndReplies on Comment {
+  ...Comment
+  replies: repliesConnection(first: 1) {
+    pageInfo {
+      hasNextPage
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ...Comment
+      }
+    }
+  }
+}

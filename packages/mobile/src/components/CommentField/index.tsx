@@ -1,10 +1,18 @@
-import React, { memo, useState, useCallback, useRef, useEffect } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Keyboard } from 'react-native'
 import { useCurrentUserQuery } from '@wrench/common'
 import { showMention, dismissMention } from 'navigation'
+import {
+  CommentAndRepliesFragmentDoc,
+  CommentsDocument,
+  CurrentUserDocument,
+  optimisticId,
+  PostFragmentDoc,
+  useAddCommentMutation,
+} from '@wrench/common'
+import { logError } from 'utils/sentry'
 import { useMentionStore } from 'store'
-import { addComment } from 'services/graphql/mutations/comment/addComment'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
 import { isAndroid } from 'utils/platform'
@@ -14,18 +22,22 @@ import { Base, Inner, Input, Button } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 
-function CommentField({ addComment: addCommentMutation, postId, commentId, username, emoji }) {
+function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   const { t } = useTranslation()
   const inputRef = useRef()
   const isTracking = useRef(false)
   const [text, setText] = useState('')
+
+  const [addComment] = useAddCommentMutation()
 
   const { updateQuery, query } = useMentionStore(store => ({
     query: store.query,
     updateQuery: store.actions.updateQuery,
   }))
 
-  const { data } = useCurrentUserQuery()
+  const {
+    data: { user },
+  } = useCurrentUserQuery()
 
   useEffect(() => {
     if (username) {
@@ -38,6 +50,183 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
     const keyboardHideEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, dismissMention)
     return () => keyboardHideEventListener.remove()
   }, [])
+
+  const handleSubmit = () => {
+    if (blurOnSubmit) {
+      inputRef.current.blur()
+    }
+
+    setText('')
+
+    addComment({
+      variables: {
+        postId,
+        commentId,
+        input: {
+          text,
+        },
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        addComment: {
+          __typename: 'Comment',
+          id: optimisticId(),
+          commentId,
+          createdAt: new Date().toISOString(),
+          postId,
+          text,
+          likes: {
+            isLiked: false,
+            totalCount: 0,
+            __typename: 'Likes',
+          },
+          permissions: {
+            isOwner: true,
+            __typename: 'CommentPermissions',
+          },
+        },
+      },
+      update: (cache, { data: { addComment } }) => {
+        const { user } = cache.readQuery({ query: CurrentUserDocument })
+
+        // Post
+        try {
+          const data = cache.readFragment({
+            id: `Post:${postId}`,
+            fragment: PostFragmentDoc,
+            fragmentName: 'Post',
+          })
+
+          cache.writeFragment({
+            id: `Post:${postId}`,
+            fragment: PostFragmentDoc,
+            fragmentName: 'Post',
+            data: {
+              ...data,
+              comments: {
+                ...data.comments,
+                edges: [
+                  {
+                    node: {
+                      user,
+                      ...addComment,
+                    },
+                  },
+                  ...data.comments.edges,
+                ],
+                totalCount: data.comments.totalCount + 1,
+              },
+            },
+          })
+        } catch (err) {
+          logError(err)
+        }
+
+        try {
+          // Is reply
+          if (commentId) {
+            const data = cache.readFragment({
+              id: `Comment:${commentId}`,
+              fragment: CommentAndRepliesFragmentDoc,
+              fragmentName: 'CommentAndReplies',
+            })
+
+            cache.writeFragment({
+              id: `Comment:${commentId}`,
+              fragment: CommentAndRepliesFragmentDoc,
+              fragmentName: 'CommentAndReplies',
+              data: {
+                ...data,
+                replies: {
+                  ...data.replies,
+                  edges: [
+                    {
+                      cursor: optimisticId(),
+                      node: {
+                        id: optimisticId(),
+                        createdAt: new Date().toISOString(),
+                        likes: {
+                          isLiked: false,
+                          totalCount: 0,
+                          __typename: 'Likes',
+                        },
+                        permissions: {
+                          isOwner: true,
+                          __typename: 'CommentPermissions',
+                        },
+                        ...addComment,
+                        user,
+                        __typename: 'Comment',
+                      },
+                      __typename: 'CommentEdge',
+                    },
+                    ...data.replies.edges,
+                  ],
+                  totalCount: data.replies.totalCount + 1,
+                },
+              },
+            })
+          } else {
+            const data = cache.readQuery({
+              query: CommentsDocument,
+              variables: {
+                postId,
+              },
+            })
+
+            const comments = {
+              ...data,
+              comments: {
+                ...data.comments,
+                edges: [
+                  {
+                    cursor: optimisticId(),
+                    node: {
+                      id: optimisticId(),
+                      createdAt: new Date().toISOString(),
+                      likes: {
+                        isLiked: false,
+                        totalCount: 0,
+                        __typename: 'Likes',
+                      },
+                      permissions: {
+                        isOwner: true,
+                        __typename: 'CommentPermissions',
+                      },
+                      replies: {
+                        totalCount: 0,
+                        pageInfo: {
+                          hasNextPage: false,
+                          __typename: 'RepliesConnection',
+                        },
+                        edges: [],
+                        __typename: 'CommentConnection',
+                      },
+                      ...addComment,
+                      user,
+                      __typename: 'Comment',
+                    },
+                    __typename: 'CommentEdge',
+                  },
+                  ...data.comments.edges,
+                ],
+              },
+            }
+
+            cache.writeQuery({
+              query: CommentsDocument,
+              variables: {
+                postId,
+              },
+              data: comments,
+            })
+          }
+        } catch (err) {
+          logError(err)
+        }
+      },
+    })
+  }
 
   const handleOnChangeText = useCallback(
     val => {
@@ -83,12 +272,6 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
     [showMention, dismissMention, setText, updateQuery, query]
   )
 
-  const handleSubmit = useCallback(() => {
-    inputRef.current.blur()
-    addCommentMutation(postId, text, commentId)
-    setText('')
-  }, [postId, text, commentId, inputRef])
-
   const handleEmojiShortcut = useCallback(
     e => {
       const value = text.length > 0 ? `${text} ${e}` : e
@@ -103,9 +286,9 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
 
       <Inner>
         <Avatar
-          uri={data.user && data.user.avatarUrl}
-          fallback={data.user.isSilhouette}
-          fullName={data.user.fullName}
+          uri={user && user.avatarUrl}
+          fallback={user.isSilhouette}
+          fullName={user.fullName}
         />
         <Input
           ref={inputRef}
@@ -116,6 +299,7 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
           onChangeText={handleOnChangeText}
           value={text}
           color="dark"
+          height={40}
         />
         {text.length > 0 && (
           <Button onPress={handleSubmit}>
@@ -129,4 +313,4 @@ function CommentField({ addComment: addCommentMutation, postId, commentId, usern
   )
 }
 
-export default memo(addComment(CommentField))
+export default CommentField

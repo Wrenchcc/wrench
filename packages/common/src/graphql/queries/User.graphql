@@ -1,0 +1,34 @@
+#import "../fragments/UserFragment.graphql"
+#import "../fragments/PostFragment.graphql"
+
+query user($username: LowercaseString!, $after: String, $first: Int = 5) {
+  user(username: $username) {
+    ...User
+    projects: projectsConnection {
+      edges {
+        node {
+          id
+          cover {
+            uri
+            default
+          }
+          title
+          followers: followersConnection {
+            totalCount
+          }
+        }
+      }
+    }
+    posts: postsConnection(after: $after, first: $first) @connection(key: "posts") {
+      edges {
+        cursor
+        node {
+          ...Post
+        }
+      }
+      pageInfo {
+        hasNextPage
+      }
+    }
+  }
+}

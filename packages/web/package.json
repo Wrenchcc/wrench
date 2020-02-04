@@ -23,7 +23,7 @@
     "apollo-link-error": "^1.1.12",
     "apollo-link-token-refresh": "^0.2.7",
     "cookie": "^0.4.0",
-    "graphql": "^14.5.8",
+    "graphql": "^14.6.0",
     "graphql-tag": "^2.10.1",
     "human-format": "^0.10.1",
     "i18next": "19.0.3",
@@ -46,7 +46,7 @@
     "react-lazyload": "^2.6.5",
     "react-mentions": "^3.3.1",
     "react-phone-input-2": "^2.11.0",
-    "react-scroll": "^1.7.15",
+    "react-scroll": "^1.7.16",
     "react-scrollable-anchor": "^0.6.1",
     "styled-components": "5.0.0",
     "styled-reset": "^4.0.9",
@@ -55,7 +55,7 @@
   "devDependencies": {
     "@types/i18next": "^13.0.0",
     "@types/next": "^9.0.0",
-    "@types/node": "^13.1.7",
+    "@types/node": "^13.1.8",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/styled-components": "^4.4.2",
@@ -69,7 +69,7 @@
     "next-optimized-images": "^2.5.4",
     "prettier": "^1.19.1",
     "serverless": "^1.61.2",
-    "typescript": "^3.7.4",
+    "typescript": "^3.7.5",
     "webp-loader": "^0.6.0"
   }
 }

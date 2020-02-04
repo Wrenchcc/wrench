@@ -2,7 +2,7 @@ import NativeShare from 'react-native-share'
 import { mergeAll } from 'rambda'
 import i18next from 'i18next'
 import { setLocale, languages, updateUserLocale } from 'i18n'
-import { navigateTo, showModal, SCREENS } from 'navigation'
+import { navigate, showModal, SCREENS } from 'navigation'
 import { client } from 'services/gql'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
@@ -81,7 +81,7 @@ const sections = props => ({
         {
           titleKey: 'customize-interests',
           onPress: () =>
-            navigateTo(SCREENS.ONBOARDING, {
+            navigate(SCREENS.ONBOARDING, {
               settingsPage: true,
             }),
         },
@@ -89,7 +89,7 @@ const sections = props => ({
           titleKey: 'push-notifications',
           hasChildren: true,
           onPress: () =>
-            navigateTo(SCREENS.SETTINGS, {
+            navigate(SCREENS.SETTINGS, {
               section: 'push-notifications',
             }),
         },
@@ -97,7 +97,7 @@ const sections = props => ({
           titleKey: 'email-notifications',
           hasChildren: true,
           onPress: () =>
-            navigateTo(SCREENS.SETTINGS, {
+            navigate(SCREENS.SETTINGS, {
               section: 'email-notifications',
             }),
         },
@@ -105,7 +105,7 @@ const sections = props => ({
           titleKey: 'language',
           hasChildren: true,
           onPress: () =>
-            navigateTo(SCREENS.SETTINGS, {
+            navigate(SCREENS.SETTINGS, {
               section: 'language',
             }),
         },
@@ -118,7 +118,7 @@ const sections = props => ({
           titleKey: 'support',
           hasChildren: true,
           onPress: () =>
-            navigateTo(SCREENS.SETTINGS, {
+            navigate(SCREENS.SETTINGS, {
               section: 'support',
             }),
         },
@@ -134,7 +134,7 @@ const sections = props => ({
           titleKey: 'credits',
           hasChildren: true,
           onPress: () =>
-            navigateTo(SCREENS.SETTINGS, {
+            navigate(SCREENS.SETTINGS, {
               section: 'credits',
             }),
         },

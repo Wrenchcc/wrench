@@ -1,0 +1,7 @@
+#import "../fragments/UserSettingsFragment.graphql"
+
+mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
+  toggleNotificationSettings(input: $input) {
+    ...UserSettings
+  }
+}

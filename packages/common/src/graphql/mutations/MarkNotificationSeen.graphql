@@ -1,0 +1,7 @@
+#import "../fragments/NotificationFragment.graphql"
+
+mutation markNotificationSeen($id: ID!) {
+  markNotificationSeen(id: $id) {
+    ...Notification
+  }
+}

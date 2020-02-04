@@ -1,21 +1,19 @@
 import React, { useState, useCallback } from 'react'
 import { ScrollView, ActivityIndicator, Alert } from 'react-native'
-import { compose } from 'rambda'
+import { useEditProjectMutation, useDeleteProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { SCREENS, useNavigation } from 'navigation'
-import { editProject } from 'services/graphql/mutations/project/editProject'
-import { deleteProject } from 'services/graphql/mutations/project/deleteProject'
 import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
-function EditProject({
-  project,
-  deleteProject: deleteProjectMutations,
-  editProject: editProjectMutation,
-}) {
+function EditProject({ project }) {
   const { t } = useTranslation()
-  const { navigate, dismissModal } = useNavigation()
+  const { navigate, dismissModal, navigateBack } = useNavigation()
+
+  const [editProject] = useEditProjectMutation()
+  // TODO: And remove project from store
+  const [deleteProject] = useDeleteProjectMutation({ onCompleted: () => navigateBack() })
 
   const [isSaving, setIsSaving] = useState(false)
   const [title, setTitle] = useState(project.title)
@@ -26,8 +24,13 @@ function EditProject({
   const handleEditProject = useCallback(async () => {
     setIsSaving(true)
 
-    await editProjectMutation(project.id, {
-      title,
+    await editProject({
+      variables: {
+        id: project.id,
+        input: {
+          title,
+        },
+      },
     })
 
     setTimeout(() => {
@@ -39,13 +42,6 @@ function EditProject({
   const navigateToModel = useCallback(
     () =>
       navigate(SCREENS.EDIT_MODEL, {
-        options: {
-          animations: {
-            push: {
-              waitForRender: true,
-            },
-          },
-        },
         passProps: {
           id: project.id,
           model: project.model,
@@ -56,7 +52,12 @@ function EditProject({
   )
 
   const onDelete = useCallback(async () => {
-    await deleteProjectMutations(project.id)
+    await deleteProject({
+      variables: {
+        id: project.id,
+      },
+    })
+
     dismissModal()
   }, [dismissModal])
 
@@ -137,4 +138,4 @@ function EditProject({
   )
 }
 
-export default compose(deleteProject, editProject)(EditProject)
+export default EditProject

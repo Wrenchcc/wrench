@@ -2,11 +2,15 @@
   "Search": {
     "en": {
       "users": "People",
-      "projects": "Projects"
+      "projects": "Projects",
+      "recent": "Recent",
+      "clear": "Clear all"
     },
     "sv": {
       "users": "Personer",
-      "projects": "Projekt"
+      "projects": "Projekt",
+      "recent": "Senast",
+      "clear": "Rensa"
     }
   }
 }

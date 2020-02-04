@@ -1,27 +1,69 @@
 import React, { useState, useCallback } from 'react'
+import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { Page, FlatList } from 'navigation'
-import { getComments } from 'services/graphql/queries/comment/getComments'
+import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
+import Header from 'navigation/Page/Header'
+import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
-import { CommentItem, KeyboardAccessoryView } from 'ui'
-import { isIphone } from 'utils/platform'
+import { CommentItem, Text } from 'ui'
+import { update } from 'rambda'
 
-const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
-
-function Comments({
-  comments,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  postId,
-  fetchMoreReplies,
-  post,
-}) {
+function Comments({ postId }) {
   const { t } = useTranslation()
   const [commentId, setCommentId] = useState()
   const [username, setUsername] = useState()
+
+  const {
+    data: { edges, post },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['comments'])(CommentsDocument, {
+    variables: {
+      postId,
+    },
+  })
+
+  const fetchReplies = ({ id, after }) =>
+    fetchMore({
+      query: RepliesDocument,
+      variables: {
+        after,
+        id,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.comment.replies) {
+          return prev
+        }
+
+        const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
+
+        return {
+          ...prev,
+          comments: {
+            ...prev.comments,
+            edges: update(
+              index,
+              {
+                ...prev.comments.edges[index],
+                node: {
+                  ...prev.comments.edges[index].node,
+                  replies: {
+                    ...prev.comments.edges[index].node.replies,
+                    ...fetchMoreResult.comment.replies,
+                    edges: [
+                      ...prev.comments.edges[index].node.replies.edges,
+                      ...fetchMoreResult.comment.replies.edges,
+                    ],
+                  },
+                },
+              },
+              prev.comments.edges
+            ),
+          },
+        }
+      },
+    })
 
   const handleOnReply = useCallback(
     data => {
@@ -31,58 +73,83 @@ function Comments({
     [setCommentId, setUsername]
   )
 
-  const renderHeader = () => {
-    if (!post) {
-      return null
+  const renderTopComponent = useCallback(() => {
+    let content = []
+
+    if (post) {
+      content = [
+        <CommentItem
+          key="1"
+          first
+          fetchReplies={fetchReplies}
+          data={{
+            node: {
+              ...post,
+              text: post.caption,
+            },
+          }}
+        />,
+      ]
     }
 
-    return (
-      <CommentItem
-        first
-        fetchMoreReplies={fetchMoreReplies}
-        data={{
-          node: {
-            ...post,
-            text: post.caption,
-          },
-        }}
-      />
-    )
-  }
+    if (hasNextPage) {
+      content.push(
+        <View style={{ paddingLeft: 60, height: 40 }} key="2">
+          {isFetching ? (
+            <ActivityIndicator size="small" color="black" />
+          ) : (
+            <Text medium fontSize={14} color="light_grey" onPress={fetchMore}>
+              {t('Comments:loadMore')}
+            </Text>
+          )}
+        </View>
+      )
+    }
+
+    return content
+  }, [post, hasNextPage, fetchMore, isFetching])
 
   const renderItem = ({ item }) => (
-    <CommentItem
-      data={item}
-      onReply={handleOnReply}
-      fetchMoreReplies={fetchMoreReplies}
-      postId={post.id}
-    />
+    <CommentItem data={item} onReply={handleOnReply} fetchReplies={fetchReplies} postId={post.id} />
   )
 
+  const initialFetch = isFetching && !edges
+
   return (
-    <Page
-      headerAnimation={false}
-      headerTitle={t('Comments:title')}
-      stickyFooter={
-        <KeyboardAccessoryView extraHeight={50}>
+    <View style={{ flex: 1 }}>
+      <Header headerTitle={t('Comments:title')} headerAnimation={false} />
+
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+        <FlatList
+          inverted
+          initialNumToRender={8}
+          contentInsetAdjustmentBehavior="never"
+          automaticallyAdjustContentInsets={false}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="always"
+          keyExtractor={({ node }) => node.id}
+          ListFooterComponent={renderTopComponent}
+          ListEmptyComponent={
+            initialFetch && (
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="small" color="black" />
+              </View>
+            )
+          }
+          data={edges}
+          renderItem={renderItem}
+          contentContainerStyle={{
+            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+            flexGrow: 1,
+            justifyContent: 'flex-end',
+          }}
+        />
+        <View style={{ paddingHorizontal: 20 }}>
           <CommentField postId={postId} username={username} commentId={commentId} emoji />
-        </KeyboardAccessoryView>
-      }
-    >
-      <FlatList
-        paddingHorizontal={0}
-        paddingBottom={COMMENT_FIELD_OFFSET}
-        ListHeaderComponent={renderHeader}
-        data={comments}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Page>
+        </View>
+      </KeyboardAvoidingView>
+    </View>
   )
 }
 
-export default getComments(Comments)
+export default Comments

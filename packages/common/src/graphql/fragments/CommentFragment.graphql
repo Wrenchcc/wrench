@@ -1,0 +1,17 @@
+#import "./UserFragment.graphql"
+
+fragment Comment on Comment {
+  id
+  text
+  createdAt
+   permissions {
+    isOwner
+  }
+  likes {
+    isLiked
+    totalCount
+  }
+  user {
+    ...User
+  }
+}

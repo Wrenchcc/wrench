@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useCurrentUserSettingsQuery } from '@wrench/common'
+import { useCurrentUserSettingsQuery, useToggleNotificationSettingsMutation } from '@wrench/common'
 import { Page, SectionList } from 'navigation'
-import { useMutation, TOGGLE_NOTIFICATION_SETTINGS_MUTATION } from 'services/gql'
 import { Title, SelectionItem } from 'ui'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
@@ -25,7 +24,7 @@ function Settings({ section }) {
   const { t } = useTranslation()
 
   const { data } = useCurrentUserSettingsQuery()
-  const [toggleNotificationSettings] = useMutation(TOGGLE_NOTIFICATION_SETTINGS_MUTATION)
+  const [toggleNotificationSettings] = useToggleNotificationSettingsMutation()
 
   const handleToggleNotificationSettings = useCallback(
     input =>

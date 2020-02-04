@@ -1,22 +1,25 @@
-import React, { memo, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
 import Item from './Item'
 import { LoadReplies, Border } from './styles'
 
-function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId, postId }) {
+function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }) {
   const { t } = useTranslation()
   const replies = data.node.replies
   const commentId = data.node.id
 
   const handleLoadMore = useCallback(
-    () => fetchMoreReplies(commentId, replies.edges[replies.edges.length - 1].cursor),
+    () =>
+      fetchReplies({
+        id: commentId,
+        after: replies.edges[replies.edges.length - 1].cursor,
+      }),
     [commentId]
   )
 
   return replies ? (
     <>
-      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} postId={postId} />
       {replies.edges.map(({ node }) => (
         <Item
           key={node.id}
@@ -40,6 +43,8 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId, post
           </Text>
         </LoadReplies>
       )}
+
+      <Item {...data.node} onReply={onReply} t={t} highlightId={highlightId} postId={postId} />
     </>
   ) : (
     <Item
@@ -53,4 +58,4 @@ function CommentItem({ data, onReply, fetchMoreReplies, first, highlightId, post
   )
 }
 
-export default memo(CommentItem)
+export default CommentItem

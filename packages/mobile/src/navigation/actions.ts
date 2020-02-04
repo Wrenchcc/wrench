@@ -1,10 +1,13 @@
+import { TextInput } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
+import { getCurrentUserProjects } from 'services/gql'
+import { logError } from 'utils/sentry'
 import { SCREENS, BOTTOM_TABS_ID, TABS_INDEX } from './constants'
 
 export let currentComponentName
-let componentId
+export let componentId
 let overlay
 
 // NOTE: If overlay is open do not update the componentId
@@ -16,15 +19,40 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
   }
 })
 
-export function navigateTo(screen, { options, ...passProps } = {}) {
-  Navigation.push(componentId, {
-    component: {
-      name: screen,
-      options,
-      passProps,
-    },
-  })
-}
+Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
+  if (tabIndex === TABS_INDEX.ADD) {
+    try {
+      const { data } = await getCurrentUserProjects()
+      const screen = data.user.projects.edges.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT
+
+      Navigation.showModal({
+        stack: {
+          children: [
+            {
+              component: {
+                id: screen,
+                name: screen,
+                options: {
+                  layout: {
+                    backgroundColor:
+                      data.user.projects.edges.length > 0 ? COLORS.DARK : COLORS.WHITE,
+                  },
+                  statusBar: {
+                    backgroundColor: data.user.projects.edges.length > 0 ? 'black' : 'white',
+                    style: data.user.projects.edges.length > 0 ? 'light' : 'dark',
+                    visible: isIphone ? false : true,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      })
+    } catch (err) {
+      logError(err)
+    }
+  }
+})
 
 export function showModal(screen, { options, ...passProps } = {}) {
   Navigation.showModal({
@@ -103,6 +131,11 @@ export function dismissModal(root, currentTabIndex = TABS_INDEX.FEED) {
 }
 
 export function navigate(screen, { options, ...passProps } = {}) {
+  const currentlyFocusedField = TextInput.State
+  if (currentlyFocusedField) {
+    currentlyFocusedField.blurTextInput()
+  }
+
   Navigation.push(componentId, {
     component: {
       name: screen,

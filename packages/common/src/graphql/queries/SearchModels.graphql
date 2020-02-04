@@ -1,0 +1,20 @@
+query searchModels($query: String!, $after: String, $first: Int = 20) {
+  models: search(query: $query, after: $after, type: MODELS, first: $first)
+    @connection(key: "models", filter: ["query", "type"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      node {
+        ... on Model {
+          id
+          brand {
+            name
+          }
+          model
+          year
+        }
+      }
+    }
+  }
+}

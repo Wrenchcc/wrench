@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
+import ms from 'ms'
+import { usePaginatedQuery, FeedDocument } from '@wrench/common'
 import { pathOr } from 'rambda'
-import { Layout, FlatList } from 'navigation'
-import { getFeed } from 'services/graphql/queries/getFeed'
+import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
 import { Posting, ShowLatest } from 'ui'
 import registerForPushNotifications from 'utils/pushNotifications/register'
@@ -15,16 +16,31 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
+function Feed() {
   const scrollRef = useRef()
   const [hasNewPosts, setHasNewPosts] = useState(false)
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
+
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['feed', 'posts'])(FeedDocument, {
+    options: {
+      pollInterval: ms('3m'),
+    },
+  })
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
       scrollRef.current.getNode().scrollToOffset({ offset: -CONTENT_INSET })
     }
   }, [scrollRef])
+
+  useScrollToTop(scrollRef, SCREENS.FEED)
 
   useEffect(() => {
     registerForPushNotifications()
@@ -33,14 +49,14 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
 
   useEffect(() => {
     if (
-      posts &&
-      posts.length > 10 &&
-      !pathOr(false, [0, 'node', 'permissions', 'isOwner'], posts)
+      edges &&
+      edges.length > 10 &&
+      !pathOr(false, [0, 'node', 'permissions', 'isOwner'], edges)
     ) {
       setHasNewPosts(true)
     }
     // If first id change
-  }, [pathOr(false, [0, 'node', 'id'], posts)])
+  }, [pathOr(false, [0, 'node', 'id'], edges)])
 
   const StickyComponent = hasNewPosts ? (
     <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
@@ -53,10 +69,9 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
       <Layout headerTitleKey="home" stickyComponent={StickyComponent}>
         <FlatList
           ref={scrollRef}
-          tabIndex={0}
           initialNumToRender={2}
           spacingSeparator
-          data={posts}
+          data={edges}
           ListEmptyComponent={<ProjectSuggestions />}
           refetch={refetch}
           fetchMore={fetchMore}
@@ -70,4 +85,4 @@ function Feed({ posts, fetchMore, refetch, isRefetching, isFetching, hasNextPage
   )
 }
 
-export default getFeed(Feed)
+export default Feed

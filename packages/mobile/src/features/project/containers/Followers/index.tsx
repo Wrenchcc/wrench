@@ -1,20 +1,33 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { getFollowers } from 'services/graphql/queries/getFollowers'
+import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
 
 const renderItem = ({ item }) => <User data={item.node} />
 
-function Followers({ followers, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
+function Followers({ id }) {
   const { t } = useTranslation()
+
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['followers'])(FollowersDocument, {
+    variables: {
+      projectId: id,
+    },
+  })
 
   return (
     <Page headerTitle={t('Followers:title')} headerAnimation={false}>
       <FlatList
         ListEmptyComponent={<NoResults />}
         borderSeparator
-        data={followers}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
@@ -26,4 +39,4 @@ function Followers({ followers, fetchMore, refetch, isRefetching, isFetching, ha
   )
 }
 
-export default getFollowers(Followers)
+export default Followers

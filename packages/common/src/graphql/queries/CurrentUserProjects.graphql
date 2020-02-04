@@ -1,6 +1,6 @@
 #import "../fragments/UserProjectsFragment.graphql"
 
-query CurrentUserProjects {
+query currentUserProjects {
   user: currentUser {
     ...UserProjects
   }

@@ -1,10 +1,12 @@
 {
   "Comments": {
     "en": {
-      "title": "Comments"
+      "title": "Comments",
+      "loadMore": "Load more comments"
     },
     "sv": {
-      "title": "Kommentarer"
+      "title": "Kommentarer",
+      "loadMore": "Ladda fler kommentarer"
     }
   }
 }

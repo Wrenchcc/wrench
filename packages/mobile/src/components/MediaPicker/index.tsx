@@ -74,9 +74,12 @@ function MediaPicker({ ListHeaderComponent }) {
 
   const changeAlbum = useCallback(
     a => {
-      setAlbum(a)
-      bottomSheet.current.snapTo(0)
-      AsyncStorage.setItem(SELECTED_ALBUM_KEY, JSON.stringify(a))
+      // NOTE: setImmediate fixes issue with pressing twice
+      setImmediate(() => {
+        setAlbum(a)
+        bottomSheet.current.snapTo(0)
+        AsyncStorage.setItem(SELECTED_ALBUM_KEY, JSON.stringify(a))
+      })
     },
     [setAlbum, bottomSheet]
   )

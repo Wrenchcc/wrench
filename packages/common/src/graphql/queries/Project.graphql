@@ -1,0 +1,20 @@
+#import "../fragments/ProjectFragment.graphql"
+#import "../fragments/PostFragment.graphql"
+
+query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {
+  post(id: $postId) {
+    ...Post
+  }
+  project(id: $id, slug: $slug) {
+    ...Project
+
+     posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+      edges {
+        cursor
+        node {
+          ...Post
+        }
+      }
+    }
+  }
+}

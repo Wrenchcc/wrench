@@ -1,25 +1,67 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useCallback } from 'react'
+import {
+  usePaginatedQuery,
+  NotificationsDocument,
+  useMarkAllNotificationsSeenMutation,
+  useDeleteNotificationMutation,
+} from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
-import { compose } from 'rambda'
-import { Layout, FlatList, showNotificationBadge, hideNotificationBadge } from 'navigation'
-import { getNotifications } from 'services/graphql/queries/getNotifications'
-import { markAllNotificationsSeen } from 'services/graphql/mutations/notification/markAllNotificationsSeen'
-import { deleteNotification } from 'services/graphql/mutations/notification/deleteNotification'
+import ms from 'ms'
+import {
+  Layout,
+  FlatList,
+  SCREENS,
+  showNotificationBadge,
+  hideNotificationBadge,
+  useScrollToTop,
+} from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
-function Notifications({
-  notifications,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  deleteNotification: deleteNotificationMutation,
-  componentId,
-  markAllNotificationsSeen: markAllNotificationsSeenMutation,
-  unreadCount,
-}) {
+function Notifications({ componentId }) {
+  const scrollRef = useRef()
+  const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
+  const [deleteNotification] = useDeleteNotificationMutation()
+
+  const handleDeleteNotification = useCallback(id => {
+    deleteNotification({
+      variables: {
+        id,
+      },
+      update: cache => {
+        const data = cache.readQuery({ query: NotificationsDocument })
+
+        const edges = data.notifications.edges.filter(edge => edge.node.id !== id)
+
+        cache.writeQuery({
+          query: NotificationsDocument,
+          data: {
+            ...data,
+            notifications: {
+              ...data.notifications,
+              edges,
+            },
+          },
+        })
+      },
+    })
+  }, [])
+
+  const {
+    data: { edges, unreadCount },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['notifications'])(NotificationsDocument, {
+    options: {
+      pollInterval: ms('1m'),
+    },
+  })
+
+  useScrollToTop(scrollRef, SCREENS.NOTIFICATIONS)
+
   useEffect(() => {
     if (unreadCount > 0) {
       showNotificationBadge()
@@ -29,7 +71,22 @@ function Notifications({
       ({ componentId: id }) => {
         if (componentId === id) {
           if (unreadCount > 0) {
-            markAllNotificationsSeenMutation()
+            markAllNotificationsSeen({
+              update: cache => {
+                const data = cache.readQuery({ query: NotificationsDocument })
+
+                cache.writeQuery({
+                  query: NotificationsDocument,
+                  data: {
+                    ...data,
+                    notifications: {
+                      ...data.notifications,
+                      unreadCount: 0,
+                    },
+                  },
+                })
+              },
+            })
           }
 
           hideNotificationBadge()
@@ -41,18 +98,18 @@ function Notifications({
   }, [componentId, unreadCount])
 
   const renderItem = ({ item }) => (
-    <Notification data={item.node} deleteNotification={deleteNotificationMutation} />
+    <Notification data={item.node} deleteNotification={handleDeleteNotification} />
   )
 
   return (
     <Layout headerTitleKey="notifications">
       <FlatList
-        tabIndex={2}
+        ref={scrollRef}
         paddingHorizontal={0}
         contentContainerStyle={{ flexGrow: 1 }}
         ListEmptyComponent={<EmptyState type={TYPES.NOTIFICATIONS} />}
         borderSeparator
-        data={notifications}
+        data={edges}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
@@ -64,8 +121,4 @@ function Notifications({
   )
 }
 
-export default compose(
-  getNotifications,
-  markAllNotificationsSeen,
-  deleteNotification
-)(Notifications)
+export default Notifications

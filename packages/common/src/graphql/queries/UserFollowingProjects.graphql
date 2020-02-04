@@ -1,0 +1,22 @@
+#import "../fragments/ProjectFragment.graphql"
+
+query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {
+  user(username: $username) {
+    id
+    projects: followingProjects(after: $after, first: $first) {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Project
+          cover {
+            uri
+            default
+          }
+        }
+      }
+    }
+  }
+}

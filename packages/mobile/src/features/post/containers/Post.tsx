@@ -1,30 +1,23 @@
-import React, { useState, useCallback } from 'react'
-import { View } from 'react-native'
+import React, { useState, useCallback, useEffect } from 'react'
+import { View, FlatList, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { compose, isEmpty } from 'rambda'
-import { Page, FlatList } from 'navigation'
+import {
+  usePaginatedQuery,
+  useCommentQuery,
+  useMarkAllNotificationsSeenMutation,
+  usePostQuery,
+  CommentsDocument,
+  RepliesDocument,
+} from '@wrench/common'
+import { update } from 'rambda'
+import Header from 'navigation/Page/Header'
+import { hideNotificationBadge } from 'navigation'
+import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
-import { getComment } from 'services/graphql/queries/comment/getComment'
-import { getComments } from 'services/graphql/queries/comment/getComments'
 import CommentField from 'components/CommentField'
-import { CommentItem, KeyboardAccessoryView } from 'ui'
-import { isIphone } from 'utils/platform'
+import { CommentItem } from 'ui'
 
-const COMMENT_FIELD_OFFSET = isIphone ? 140 : 40
-
-// TODO: Load comment in top
-function PostContainer({
-  comments,
-  comment,
-  fetchMore,
-  refetch,
-  isRefetching,
-  isFetching,
-  hasNextPage,
-  post,
-  fetchMoreReplies,
-  postId,
-}) {
+function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
 
   const [mention, setMention] = useState({
@@ -32,7 +25,78 @@ function PostContainer({
     username: null,
   })
 
-  const highlightId = comment && comment.id
+  const { data: commentData } = useCommentQuery({
+    variables: {
+      id: commentId,
+    },
+  })
+
+  const { data: postData } = usePostQuery({
+    variables: {
+      id: postId,
+    },
+  })
+
+  const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
+
+  useEffect(() => {
+    markAllNotificationsSeen()
+    hideNotificationBadge()
+  }, [])
+
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['comments'])(CommentsDocument, {
+    variables: {
+      postId,
+    },
+  })
+
+  const fetchReplies = ({ id, after }) =>
+    fetchMore({
+      query: RepliesDocument,
+      variables: {
+        after,
+        id,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.comment.replies) {
+          return prev
+        }
+
+        const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
+
+        return {
+          ...prev,
+          comments: {
+            ...prev.comments,
+            edges: update(
+              index,
+              {
+                ...prev.comments.edges[index],
+                node: {
+                  ...prev.comments.edges[index].node,
+                  replies: {
+                    ...prev.comments.edges[index].node.replies,
+                    ...fetchMoreResult.comment.replies,
+                    edges: [
+                      ...prev.comments.edges[index].node.replies.edges,
+                      ...fetchMoreResult.comment.replies.edges,
+                    ],
+                  },
+                },
+              },
+              prev.comments.edges
+            ),
+          },
+        }
+      },
+    })
+
+  const highlightId = commentData && commentData.comment.id
 
   const handleOnReply = useCallback(data => setMention(data), [setMention])
 
@@ -41,54 +105,81 @@ function PostContainer({
       data={item}
       highlightId={highlightId}
       onReply={handleOnReply}
-      fetchMoreReplies={fetchMoreReplies}
+      fetchReplies={fetchReplies}
       postId={postId}
     />
   )
 
-  const renderHeader = () => {
-    if (!post) {
-      return null
+  const renderTopComponent = useCallback(() => {
+    let content = []
+
+    if (postData) {
+      content = [
+        <View style={{ paddingHorizontal: 20, marginBottom: 10 }} key="1">
+          <Post post={postData.post} withoutComments paddingBottom={10} numberOfLines={0} />
+        </View>,
+      ]
     }
 
-    return (
-      <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
-        <Post post={post} withoutComments paddingBottom={10} numberOfLines={0} />
-      </View>
-    )
-  }
+    if (hasNextPage) {
+      content.push(
+        <View style={{ paddingLeft: 60, height: 40 }} key="2">
+          {isFetching ? (
+            <ActivityIndicator size="small" color="black" />
+          ) : (
+            <Text medium fontSize={14} color="light_grey" onPress={fetchMore}>
+              {t('PostContainer:loadMore')}
+            </Text>
+          )}
+        </View>
+      )
+    }
+
+    return content
+  }, [postData, hasNextPage, fetchMore, isFetching])
+
+  const initialFetch = isFetching && !edges
 
   return (
-    <Page
-      scrollToIndex={comments && !isEmpty(comments)}
-      headerTitle={t('PostContainer:title')}
-      headerAnimation={false}
-      stickyFooter={
-        <KeyboardAccessoryView extraHeight={50}>
+    <View style={{ flex: 1 }}>
+      <Header headerTitle={t('PostContainer:title')} headerAnimation={false} />
+
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+        <FlatList
+          inverted
+          initialNumToRender={8}
+          contentInsetAdjustmentBehavior="never"
+          automaticallyAdjustContentInsets={false}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="always"
+          keyExtractor={({ node }) => node.id}
+          ListFooterComponent={renderTopComponent}
+          ListEmptyComponent={
+            initialFetch && (
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="small" color="black" />
+              </View>
+            )
+          }
+          data={edges}
+          renderItem={renderItem}
+          contentContainerStyle={{
+            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+            flexGrow: 1,
+            justifyContent: 'flex-end',
+          }}
+        />
+        <View style={{ paddingHorizontal: 20 }}>
           <CommentField
             postId={postId}
             username={mention.username}
             commentId={mention.commentId}
             emoji
           />
-        </KeyboardAccessoryView>
-      }
-    >
-      <FlatList
-        initialNumToRender={6}
-        paddingHorizontal={0}
-        paddingBottom={COMMENT_FIELD_OFFSET}
-        ListHeaderComponent={renderHeader}
-        data={comments}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={!post || isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
-    </Page>
+        </View>
+      </KeyboardAvoidingView>
+    </View>
   )
 }
 
-export default compose(getComments, getComment)(PostContainer)
+export default PostContainer

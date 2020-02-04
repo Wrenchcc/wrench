@@ -1,5 +1,5 @@
 import { Linking } from 'react-native'
-import { navigateTo, SCREENS, TABS_INDEX, selectTabIndex } from 'navigation'
+import { navigate, SCREENS, TABS_INDEX, selectTabIndex } from 'navigation'
 import DeepLinking from 'react-native-deep-linking'
 
 export const createDeepLinkingHandler = ({ url }) => {
@@ -14,11 +14,11 @@ DeepLinking.addScheme('wrench://')
 DeepLinking.addScheme('https://wrench.cc')
 
 DeepLinking.addRoute('/project/:slug', ({ slug }) => {
-  return navigateTo(SCREENS.PROJECT, { slug })
+  return navigate(SCREENS.PROJECT, { slug })
 })
 
 DeepLinking.addRoute('/post/:id', ({ id }) => {
-  return navigateTo(SCREENS.POST, { postId: id })
+  return navigate(SCREENS.POST, { postId: id })
 })
 
 DeepLinking.addRoute('/:root', ({ root }) => {
@@ -32,7 +32,7 @@ DeepLinking.addRoute('/:root', ({ root }) => {
     case SCREENS.ME.toLowerCase():
       return selectTabIndex(TABS_INDEX.ME)
     default:
-      return navigateTo(SCREENS.USER, {
+      return navigate(SCREENS.USER, {
         user: {
           username: root,
         },

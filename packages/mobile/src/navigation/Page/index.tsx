@@ -57,7 +57,6 @@ function Page({
           { useNativeDriver: true }
         ),
         ref: scrollRef,
-        scrollEventThrottle: 1,
       })}
 
       {stickyFooter}

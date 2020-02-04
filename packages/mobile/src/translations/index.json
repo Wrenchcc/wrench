@@ -49,7 +49,9 @@
     },
     "Search": {
       "users": "People",
-      "projects": "Projects"
+      "projects": "Projects",
+      "recent": "Recent",
+      "clear": "Clear all"
     },
     "SearchBar": {
       "placeholder": "Search",
@@ -117,7 +119,8 @@
       "title": "Pick your category"
     },
     "Comments": {
-      "title": "Comments"
+      "title": "Comments",
+      "loadMore": "Load more comments"
     },
     "EditModel": {
       "save": "Save",
@@ -248,13 +251,13 @@
     "UserProfile": {
       "notfound": "User not found"
     },
-    "RefreshToken": {
-      "title": "Your session has expired",
-      "description": "Please login again."
-    },
     "Header": {
       "home": "Home",
       "notifications": "Notifications"
+    },
+    "RefreshToken": {
+      "title": "Your session has expired",
+      "description": "Please login again."
     },
     "CommentItem": {
       "reply": "Reply",
@@ -399,7 +402,9 @@
     },
     "Search": {
       "users": "Personer",
-      "projects": "Projekt"
+      "projects": "Projekt",
+      "recent": "Senast",
+      "clear": "Rensa"
     },
     "SearchBar": {
       "placeholder": "Sök",
@@ -467,7 +472,8 @@
       "title": "Välj din kategori"
     },
     "Comments": {
-      "title": "Kommentarer"
+      "title": "Kommentarer",
+      "loadMore": "Ladda fler kommentarer"
     },
     "EditModel": {
       "save": "Spara",
@@ -598,13 +604,13 @@
     "UserProfile": {
       "notfound": "Användaren hittades ej"
     },
-    "RefreshToken": {
-      "title": "Your session has expired",
-      "description": "Please login again."
-    },
     "Header": {
       "home": "Hem",
       "notifications": "Notifikationer"
+    },
+    "RefreshToken": {
+      "title": "Your session has expired",
+      "description": "Please login again."
     },
     "CommentItem": {
       "reply": "Svara",

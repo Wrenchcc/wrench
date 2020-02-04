@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
-import { Layout, FlatList } from 'navigation'
-import { useCurrentUserProjectsQuery } from '@wrench/common'
-import { getCurrentUserProfile } from 'services/graphql/queries/user/getCurrentUser'
+import { Layout, FlatList, SCREENS, useScrollToTop } from 'navigation'
+import { usePaginatedQuery, CurrentUserProfileDocument } from '@wrench/common'
 import Post from 'components/Post'
-import { EmptyState, Text } from 'ui'
+import { EmptyState } from 'ui'
 import SettingsButton from 'features/user/components/SettingsButton'
 import EditButton from 'features/user/components/EditButton'
 import Header from 'features/user/components/Header'
@@ -16,20 +15,29 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNextPage }) {
-  const hasPosts = posts && posts.length > 0
+function Me() {
+  const scrollRef = useRef()
 
-  const { data } = useCurrentUserProjectsQuery({
-    fetchPolicy: 'cache-only',
-  })
+  const {
+    data: { edges, user },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['user', 'posts'])(CurrentUserProfileDocument)
 
-  const emptyState = data.user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
+  useScrollToTop(scrollRef, SCREENS.ME)
+
+  const hasPosts = edges && edges.length > 0
+
+  const emptyState = user && user.projects.edges.length > 0 ? TYPES.POST : TYPES.PROJECT
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
-      <Layout headerLeft={<SettingsButton />} search={false} headerRight={<EditButton />}>
+      <Layout headerLeft={<SettingsButton />} headerRight={<EditButton />}>
         <FlatList
-          tabIndex={3}
+          ref={scrollRef}
           initialNumToRender={1}
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
@@ -52,7 +60,7 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
             )
           }
           ListEmptyComponent={<EmptyState type={emptyState} />}
-          data={posts}
+          data={edges}
           refetch={refetch}
           fetchMore={fetchMore}
           isRefetching={isRefetching}
@@ -65,4 +73,4 @@ function Me({ posts, user, fetchMore, refetch, isRefetching, isFetching, hasNext
   )
 }
 
-export default getCurrentUserProfile(Me)
+export default Me

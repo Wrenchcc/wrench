@@ -4,23 +4,22 @@ import { ScrollView } from 'react-native'
 import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
+import CategoriesPlaceholder from './Placeholder'
 import { Wrapper } from './styles'
 
 function ProjectTypes() {
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
   // const { data: userData, loading: loadingUser } = useCurrentUserQuery()
 
-  const { navigateTo } = useNavigation()
+  const { navigate } = useNavigation()
 
   const handleNavigation = useCallback(category => {
-    navigateTo(SCREENS.CATEGORIES, category)
+    navigate(SCREENS.CATEGORIES, category)
   }, [])
 
   if (loadingTypes) {
-    return null
+    return <CategoriesPlaceholder />
   }
-
-  // return null
 
   // const data = sort(
   //   a => (userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1),
@@ -33,6 +32,7 @@ function ProjectTypes() {
       showsHorizontalScrollIndicator={false}
       style={{
         paddingBottom: 10,
+        paddingTop: 10,
         backgroundColor: 'white',
       }}
     >

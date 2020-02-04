@@ -1,27 +1,130 @@
 import React, { useCallback } from 'react'
 import { Alert } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import {
+  useDeletePostMutation,
+  FeedDocument,
+  PostsDocument,
+  CurrentUserProfileDocument,
+  ProjectDocument,
+} from '@wrench/common'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, showEditPost, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
-import { deletePost } from 'services/graphql/mutations/post/deletePost'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
 import { Base, Top, Headline, Content, Spacer } from './styles'
 
-function Post({
-  post,
-  withoutTitle,
-  withoutComments,
-  deletePost: deletePostMutation,
-  paddingBottom,
-  numberOfLines = 3,
-}) {
+function Post({ post, withoutTitle, withoutComments, paddingBottom, numberOfLines = 3 }) {
   const { t } = useTranslation()
   const { navigate } = useNavigation()
-
+  const [deletePost] = useDeletePostMutation()
   const handleEdit = useCallback(() => showEditPost({ post }), [post])
+
+  const handleDeletePost = useCallback(
+    id => {
+      deletePost({
+        variables: {
+          id,
+        },
+        update: cache => {
+          // Feed
+          try {
+            const data = cache.readQuery({ query: FeedDocument })
+            const edges = data.feed.posts.edges.filter(edge => edge.node.id !== id)
+
+            cache.writeQuery({
+              query: FeedDocument,
+              data: {
+                ...data,
+                feed: {
+                  ...data.feed,
+                  posts: {
+                    ...data.feed.posts,
+                    edges,
+                  },
+                },
+              },
+            })
+          } catch (err) {
+            // Swollow error when no post is found
+          }
+
+          // Recent posts
+          try {
+            const data = cache.readQuery({ query: PostsDocument })
+            const edges = data.posts.edges.filter(edge => edge.node.id !== id)
+
+            cache.writeQuery({
+              query: PostsDocument,
+              data: {
+                ...data,
+                posts: {
+                  ...data.posts,
+                  edges,
+                },
+              },
+            })
+          } catch (err) {
+            // Swollow error when no post is found
+          }
+
+          // Current user
+          try {
+            const data = cache.readQuery({ query: CurrentUserProfileDocument })
+            const edges = data.user.posts.edges.filter(edge => edge.node.id !== id)
+
+            cache.writeQuery({
+              query: CurrentUserProfileDocument,
+              data: {
+                ...data,
+                user: {
+                  ...data.user,
+                  posts: {
+                    ...data.user.posts,
+                    edges,
+                  },
+                },
+              },
+            })
+          } catch (err) {
+            // Swollow error when no post is found
+          }
+
+          // Project
+          try {
+            const data = cache.readQuery({
+              query: ProjectDocument,
+              variables: {
+                id: post.project.id,
+              },
+            })
+
+            const edges = data.project.posts.edges.filter(edge => edge.node.id !== id)
+
+            cache.writeQuery({
+              query: ProjectDocument,
+              data: {
+                ...data,
+                project: {
+                  ...data.project,
+                  posts: {
+                    ...data.project.posts,
+                    edges,
+                  },
+                },
+              },
+            })
+          } catch (err) {
+            console.log(err)
+            // Swollow error when no post is found
+          }
+        },
+      })
+    },
+    [deletePost]
+  )
 
   const { showActionSheetWithOptions } = useActionSheet()
 
@@ -48,7 +151,7 @@ function Post({
       null,
       [
         {
-          onPress: () => deletePostMutation(post.id),
+          onPress: () => handleDeletePost(post.id),
           style: 'destructive',
           text: t('Post:options:delete'),
         },
@@ -143,4 +246,4 @@ function Post({
   )
 }
 
-export default deletePost(Post)
+export default Post

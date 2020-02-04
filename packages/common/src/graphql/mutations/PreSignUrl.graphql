@@ -1,0 +1,7 @@
+mutation preSignUrl($input: PreSignedUrlInput!) {
+  preSignUrl(input: $input) {
+    url
+    type
+    filename
+  }
+}
