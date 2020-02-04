@@ -21,7 +21,7 @@ function Explore() {
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
 
-  useScrollToTop(scrollRef, SCREENS.EXPLORE)
+  useScrollToTop(scrollRef, SCREENS.EXPLORE, !searchActive)
 
   const {
     data: { edges },

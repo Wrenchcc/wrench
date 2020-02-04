@@ -80,7 +80,7 @@ function AddPost() {
               },
             })
           } catch (err) {
-            console.log(err)
+            logError(err)
           }
 
           // Explore
@@ -104,7 +104,7 @@ function AddPost() {
               },
             })
           } catch (err) {
-            console.log(err)
+            logError(err)
           }
 
           // Current user profile
@@ -131,7 +131,7 @@ function AddPost() {
               },
             })
           } catch (err) {
-            console.log(err)
+            logError(err)
           }
         },
       })

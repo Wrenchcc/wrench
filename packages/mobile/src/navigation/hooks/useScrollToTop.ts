@@ -43,7 +43,11 @@ function getScrollableNode(ref: React.RefObject<ScrollableWrapper>) {
   }
 }
 
-export default function useScrollToTop(ref: React.RefObject<ScrollableWrapper>, name) {
+export default function useScrollToTop(
+  ref: React.RefObject<ScrollableWrapper>,
+  name,
+  enabled = true
+) {
   useLayoutEffect(() => {
     const unsubscribe = Navigation.events().registerBottomTabSelectedListener(
       ({ selectedTabIndex, unselectedTabIndex }) => {
@@ -55,7 +59,7 @@ export default function useScrollToTop(ref: React.RefObject<ScrollableWrapper>, 
         requestAnimationFrame(() => {
           const scrollable = getScrollableNode(ref)
 
-          if (isFocused && selectedTabIndex === unselectedTabIndex && scrollable) {
+          if (enabled && isFocused && selectedTabIndex === unselectedTabIndex && scrollable) {
             if ('scrollToTop' in scrollable) {
               scrollable.scrollToTop()
             } else if ('scrollTo' in scrollable) {
@@ -71,5 +75,5 @@ export default function useScrollToTop(ref: React.RefObject<ScrollableWrapper>, 
     )
 
     return () => unsubscribe.remove()
-  }, [ref, componentId])
+  }, [ref, componentId, enabled])
 }
