@@ -233,12 +233,33 @@ export type FollowersEdge = {
   node: User,
 };
 
+export type GrowthData = {
+   __typename?: 'GrowthData',
+  date?: Maybe<Scalars['Date']>,
+  count?: Maybe<Scalars['Int']>,
+};
+
+export enum GrowthType {
+  Projects = 'PROJECTS',
+  Users = 'USERS'
+}
+
 export type Likes = {
    __typename?: 'Likes',
   totalCount?: Maybe<Scalars['Int']>,
   isLiked?: Maybe<Scalars['Boolean']>,
 };
 
+
+export type Meta = {
+   __typename?: 'Meta',
+  isAdmin?: Maybe<Scalars['Boolean']>,
+  totalUsers?: Maybe<Scalars['Int']>,
+  totalProjects?: Maybe<Scalars['Int']>,
+  totalPosts?: Maybe<Scalars['Int']>,
+  totalComments?: Maybe<Scalars['Int']>,
+  totalFiles?: Maybe<Scalars['Int']>,
+};
 
 export type Model = {
    __typename?: 'Model',
@@ -712,6 +733,8 @@ export type Query = {
   user?: Maybe<User>,
   users?: Maybe<UserConnection>,
   currentUser?: Maybe<User>,
+  meta?: Maybe<Meta>,
+  growth?: Maybe<Array<Maybe<GrowthData>>>,
 };
 
 
@@ -858,6 +881,13 @@ export type QueryCurrentUserArgs = {
   after?: Maybe<Scalars['String']>,
   last?: Maybe<Scalars['Int']>,
   before?: Maybe<Scalars['String']>
+};
+
+
+export type QueryGrowthArgs = {
+  type: GrowthType,
+  startDate?: Maybe<Scalars['Date']>,
+  endDate?: Maybe<Scalars['Date']>
 };
 
 export type SearchResultEdge = {
@@ -1626,6 +1656,17 @@ export type FollowersQuery = (
         & UserFragment
       ) }
     )>> }
+  )> }
+);
+
+export type MetaQueryVariables = {};
+
+
+export type MetaQuery = (
+  { __typename?: 'Query' }
+  & { meta: Maybe<(
+    { __typename?: 'Meta' }
+    & Pick<Meta, 'totalUsers' | 'totalPosts' | 'totalFiles' | 'totalProjects' | 'totalComments'>
   )> }
 );
 
@@ -3296,6 +3337,42 @@ export function useFollowersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHo
 export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
 export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
 export type FollowersQueryResult = ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
+export const MetaDocument = gql`
+    query meta {
+  meta {
+    totalUsers
+    totalPosts
+    totalFiles
+    totalProjects
+    totalComments
+  }
+}
+    `;
+
+/**
+ * __useMetaQuery__
+ *
+ * To run a query within a React component, call `useMetaQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMetaQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMetaQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMetaQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MetaQuery, MetaQueryVariables>) {
+        return ApolloReactHooks.useQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
+      }
+export function useMetaLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MetaQuery, MetaQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
+        }
+export type MetaQueryHookResult = ReturnType<typeof useMetaQuery>;
+export type MetaLazyQueryHookResult = ReturnType<typeof useMetaLazyQuery>;
+export type MetaQueryResult = ApolloReactCommon.QueryResult<MetaQuery, MetaQueryVariables>;
 export const NotificationsDocument = gql`
     query notifications($after: String, $first: Int = 10) {
   notifications(after: $after, first: $first) @connection(key: "notifications") {

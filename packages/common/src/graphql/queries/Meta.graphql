@@ -1,0 +1,9 @@
+query meta {
+  meta {
+    totalUsers
+    totalPosts
+    totalFiles
+    totalProjects
+    totalComments
+  }
+}

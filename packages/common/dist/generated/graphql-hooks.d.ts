@@ -195,10 +195,28 @@ export declare type FollowersEdge = {
     cursor: Scalars['String'];
     node: User;
 };
+export declare type GrowthData = {
+    __typename?: 'GrowthData';
+    date?: Maybe<Scalars['Date']>;
+    count?: Maybe<Scalars['Int']>;
+};
+export declare enum GrowthType {
+    Projects = "PROJECTS",
+    Users = "USERS"
+}
 export declare type Likes = {
     __typename?: 'Likes';
     totalCount?: Maybe<Scalars['Int']>;
     isLiked?: Maybe<Scalars['Boolean']>;
+};
+export declare type Meta = {
+    __typename?: 'Meta';
+    isAdmin?: Maybe<Scalars['Boolean']>;
+    totalUsers?: Maybe<Scalars['Int']>;
+    totalProjects?: Maybe<Scalars['Int']>;
+    totalPosts?: Maybe<Scalars['Int']>;
+    totalComments?: Maybe<Scalars['Int']>;
+    totalFiles?: Maybe<Scalars['Int']>;
 };
 export declare type Model = {
     __typename?: 'Model';
@@ -576,6 +594,8 @@ export declare type Query = {
     user?: Maybe<User>;
     users?: Maybe<UserConnection>;
     currentUser?: Maybe<User>;
+    meta?: Maybe<Meta>;
+    growth?: Maybe<Array<Maybe<GrowthData>>>;
 };
 export declare type QueryArticleArgs = {
     id?: Maybe<Scalars['ID']>;
@@ -684,6 +704,11 @@ export declare type QueryCurrentUserArgs = {
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
+};
+export declare type QueryGrowthArgs = {
+    type: GrowthType;
+    startDate?: Maybe<Scalars['Date']>;
+    endDate?: Maybe<Scalars['Date']>;
 };
 export declare type SearchResultEdge = {
     __typename?: 'SearchResultEdge';
@@ -1340,6 +1365,14 @@ export declare type FollowersQuery = ({
         })>>;
     })>;
 });
+export declare type MetaQueryVariables = {};
+export declare type MetaQuery = ({
+    __typename?: 'Query';
+} & {
+    meta: Maybe<({
+        __typename?: 'Meta';
+    } & Pick<Meta, 'totalUsers' | 'totalPosts' | 'totalFiles' | 'totalProjects' | 'totalComments'>)>;
+});
 export declare type NotificationsQueryVariables = {
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
@@ -1703,15 +1736,15 @@ export declare type UserFollowingProjectsQuery = ({
         })>;
     })>;
 });
-export declare const UserFragmentDoc: any;
-export declare const CommentFragmentDoc: any;
-export declare const CommentAndRepliesFragmentDoc: any;
-export declare const ProjectFragmentDoc: any;
-export declare const NotificationFragmentDoc: any;
-export declare const PostFragmentDoc: any;
-export declare const UserProjectsFragmentDoc: any;
-export declare const UserSettingsFragmentDoc: any;
-export declare const AddCommentDocument: any;
+export declare const UserFragmentDoc: import("graphql").DocumentNode;
+export declare const CommentFragmentDoc: import("graphql").DocumentNode;
+export declare const CommentAndRepliesFragmentDoc: import("graphql").DocumentNode;
+export declare const ProjectFragmentDoc: import("graphql").DocumentNode;
+export declare const NotificationFragmentDoc: import("graphql").DocumentNode;
+export declare const PostFragmentDoc: import("graphql").DocumentNode;
+export declare const UserProjectsFragmentDoc: import("graphql").DocumentNode;
+export declare const UserSettingsFragmentDoc: import("graphql").DocumentNode;
+export declare const AddCommentDocument: import("graphql").DocumentNode;
 export declare type AddCommentMutationFn = ApolloReactCommon.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
 /**
  * __useAddCommentMutation__
@@ -1736,7 +1769,7 @@ export declare function useAddCommentMutation(baseOptions?: ApolloReactHooks.Mut
 export declare type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>;
 export declare type AddCommentMutationResult = ApolloReactCommon.MutationResult<AddCommentMutation>;
 export declare type AddCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCommentMutation, AddCommentMutationVariables>;
-export declare const AddPostDocument: any;
+export declare const AddPostDocument: import("graphql").DocumentNode;
 export declare type AddPostMutationFn = ApolloReactCommon.MutationFunction<AddPostMutation, AddPostMutationVariables>;
 /**
  * __useAddPostMutation__
@@ -1759,7 +1792,7 @@ export declare function useAddPostMutation(baseOptions?: ApolloReactHooks.Mutati
 export declare type AddPostMutationHookResult = ReturnType<typeof useAddPostMutation>;
 export declare type AddPostMutationResult = ApolloReactCommon.MutationResult<AddPostMutation>;
 export declare type AddPostMutationOptions = ApolloReactCommon.BaseMutationOptions<AddPostMutation, AddPostMutationVariables>;
-export declare const AddProjectDocument: any;
+export declare const AddProjectDocument: import("graphql").DocumentNode;
 export declare type AddProjectMutationFn = ApolloReactCommon.MutationFunction<AddProjectMutation, AddProjectMutationVariables>;
 /**
  * __useAddProjectMutation__
@@ -1782,7 +1815,7 @@ export declare function useAddProjectMutation(baseOptions?: ApolloReactHooks.Mut
 export declare type AddProjectMutationHookResult = ReturnType<typeof useAddProjectMutation>;
 export declare type AddProjectMutationResult = ApolloReactCommon.MutationResult<AddProjectMutation>;
 export declare type AddProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<AddProjectMutation, AddProjectMutationVariables>;
-export declare const AuthenticateAppleDocument: any;
+export declare const AuthenticateAppleDocument: import("graphql").DocumentNode;
 export declare type AuthenticateAppleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
 /**
  * __useAuthenticateAppleMutation__
@@ -1806,7 +1839,7 @@ export declare function useAuthenticateAppleMutation(baseOptions?: ApolloReactHo
 export declare type AuthenticateAppleMutationHookResult = ReturnType<typeof useAuthenticateAppleMutation>;
 export declare type AuthenticateAppleMutationResult = ApolloReactCommon.MutationResult<AuthenticateAppleMutation>;
 export declare type AuthenticateAppleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
-export declare const AuthenticateFacebookDocument: any;
+export declare const AuthenticateFacebookDocument: import("graphql").DocumentNode;
 export declare type AuthenticateFacebookMutationFn = ApolloReactCommon.MutationFunction<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
 /**
  * __useAuthenticateFacebookMutation__
@@ -1829,7 +1862,7 @@ export declare function useAuthenticateFacebookMutation(baseOptions?: ApolloReac
 export declare type AuthenticateFacebookMutationHookResult = ReturnType<typeof useAuthenticateFacebookMutation>;
 export declare type AuthenticateFacebookMutationResult = ApolloReactCommon.MutationResult<AuthenticateFacebookMutation>;
 export declare type AuthenticateFacebookMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
-export declare const AuthenticateGoogleDocument: any;
+export declare const AuthenticateGoogleDocument: import("graphql").DocumentNode;
 export declare type AuthenticateGoogleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
 /**
  * __useAuthenticateGoogleMutation__
@@ -1852,7 +1885,7 @@ export declare function useAuthenticateGoogleMutation(baseOptions?: ApolloReactH
 export declare type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
 export declare type AuthenticateGoogleMutationResult = ApolloReactCommon.MutationResult<AuthenticateGoogleMutation>;
 export declare type AuthenticateGoogleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
-export declare const DeleteCommentDocument: any;
+export declare const DeleteCommentDocument: import("graphql").DocumentNode;
 export declare type DeleteCommentMutationFn = ApolloReactCommon.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
 /**
  * __useDeleteCommentMutation__
@@ -1875,7 +1908,7 @@ export declare function useDeleteCommentMutation(baseOptions?: ApolloReactHooks.
 export declare type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
 export declare type DeleteCommentMutationResult = ApolloReactCommon.MutationResult<DeleteCommentMutation>;
 export declare type DeleteCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
-export declare const DeleteNotificationDocument: any;
+export declare const DeleteNotificationDocument: import("graphql").DocumentNode;
 export declare type DeleteNotificationMutationFn = ApolloReactCommon.MutationFunction<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
 /**
  * __useDeleteNotificationMutation__
@@ -1898,7 +1931,7 @@ export declare function useDeleteNotificationMutation(baseOptions?: ApolloReactH
 export declare type DeleteNotificationMutationHookResult = ReturnType<typeof useDeleteNotificationMutation>;
 export declare type DeleteNotificationMutationResult = ApolloReactCommon.MutationResult<DeleteNotificationMutation>;
 export declare type DeleteNotificationMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
-export declare const DeletePostDocument: any;
+export declare const DeletePostDocument: import("graphql").DocumentNode;
 export declare type DeletePostMutationFn = ApolloReactCommon.MutationFunction<DeletePostMutation, DeletePostMutationVariables>;
 /**
  * __useDeletePostMutation__
@@ -1921,7 +1954,7 @@ export declare function useDeletePostMutation(baseOptions?: ApolloReactHooks.Mut
 export declare type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>;
 export declare type DeletePostMutationResult = ApolloReactCommon.MutationResult<DeletePostMutation>;
 export declare type DeletePostMutationOptions = ApolloReactCommon.BaseMutationOptions<DeletePostMutation, DeletePostMutationVariables>;
-export declare const DeleteProjectDocument: any;
+export declare const DeleteProjectDocument: import("graphql").DocumentNode;
 export declare type DeleteProjectMutationFn = ApolloReactCommon.MutationFunction<DeleteProjectMutation, DeleteProjectMutationVariables>;
 /**
  * __useDeleteProjectMutation__
@@ -1944,7 +1977,7 @@ export declare function useDeleteProjectMutation(baseOptions?: ApolloReactHooks.
 export declare type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>;
 export declare type DeleteProjectMutationResult = ApolloReactCommon.MutationResult<DeleteProjectMutation>;
 export declare type DeleteProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
-export declare const EditPostDocument: any;
+export declare const EditPostDocument: import("graphql").DocumentNode;
 export declare type EditPostMutationFn = ApolloReactCommon.MutationFunction<EditPostMutation, EditPostMutationVariables>;
 /**
  * __useEditPostMutation__
@@ -1968,7 +2001,7 @@ export declare function useEditPostMutation(baseOptions?: ApolloReactHooks.Mutat
 export declare type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>;
 export declare type EditPostMutationResult = ApolloReactCommon.MutationResult<EditPostMutation>;
 export declare type EditPostMutationOptions = ApolloReactCommon.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
-export declare const EditProjectDocument: any;
+export declare const EditProjectDocument: import("graphql").DocumentNode;
 export declare type EditProjectMutationFn = ApolloReactCommon.MutationFunction<EditProjectMutation, EditProjectMutationVariables>;
 /**
  * __useEditProjectMutation__
@@ -1992,7 +2025,7 @@ export declare function useEditProjectMutation(baseOptions?: ApolloReactHooks.Mu
 export declare type EditProjectMutationHookResult = ReturnType<typeof useEditProjectMutation>;
 export declare type EditProjectMutationResult = ApolloReactCommon.MutationResult<EditProjectMutation>;
 export declare type EditProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<EditProjectMutation, EditProjectMutationVariables>;
-export declare const EditUserDocument: any;
+export declare const EditUserDocument: import("graphql").DocumentNode;
 export declare type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMutation, EditUserMutationVariables>;
 /**
  * __useEditUserMutation__
@@ -2015,7 +2048,7 @@ export declare function useEditUserMutation(baseOptions?: ApolloReactHooks.Mutat
 export declare type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>;
 export declare type EditUserMutationResult = ApolloReactCommon.MutationResult<EditUserMutation>;
 export declare type EditUserMutationOptions = ApolloReactCommon.BaseMutationOptions<EditUserMutation, EditUserMutationVariables>;
-export declare const FollowProjectDocument: any;
+export declare const FollowProjectDocument: import("graphql").DocumentNode;
 export declare type FollowProjectMutationFn = ApolloReactCommon.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
 /**
  * __useFollowProjectMutation__
@@ -2038,7 +2071,7 @@ export declare function useFollowProjectMutation(baseOptions?: ApolloReactHooks.
 export declare type FollowProjectMutationHookResult = ReturnType<typeof useFollowProjectMutation>;
 export declare type FollowProjectMutationResult = ApolloReactCommon.MutationResult<FollowProjectMutation>;
 export declare type FollowProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<FollowProjectMutation, FollowProjectMutationVariables>;
-export declare const LikeCommentDocument: any;
+export declare const LikeCommentDocument: import("graphql").DocumentNode;
 export declare type LikeCommentMutationFn = ApolloReactCommon.MutationFunction<LikeCommentMutation, LikeCommentMutationVariables>;
 /**
  * __useLikeCommentMutation__
@@ -2061,7 +2094,7 @@ export declare function useLikeCommentMutation(baseOptions?: ApolloReactHooks.Mu
 export declare type LikeCommentMutationHookResult = ReturnType<typeof useLikeCommentMutation>;
 export declare type LikeCommentMutationResult = ApolloReactCommon.MutationResult<LikeCommentMutation>;
 export declare type LikeCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<LikeCommentMutation, LikeCommentMutationVariables>;
-export declare const LikePostDocument: any;
+export declare const LikePostDocument: import("graphql").DocumentNode;
 export declare type LikePostMutationFn = ApolloReactCommon.MutationFunction<LikePostMutation, LikePostMutationVariables>;
 /**
  * __useLikePostMutation__
@@ -2084,7 +2117,7 @@ export declare function useLikePostMutation(baseOptions?: ApolloReactHooks.Mutat
 export declare type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
 export declare type LikePostMutationResult = ApolloReactCommon.MutationResult<LikePostMutation>;
 export declare type LikePostMutationOptions = ApolloReactCommon.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
-export declare const MarkAllNotificationsSeenDocument: any;
+export declare const MarkAllNotificationsSeenDocument: import("graphql").DocumentNode;
 export declare type MarkAllNotificationsSeenMutationFn = ApolloReactCommon.MutationFunction<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
 /**
  * __useMarkAllNotificationsSeenMutation__
@@ -2106,7 +2139,7 @@ export declare function useMarkAllNotificationsSeenMutation(baseOptions?: Apollo
 export declare type MarkAllNotificationsSeenMutationHookResult = ReturnType<typeof useMarkAllNotificationsSeenMutation>;
 export declare type MarkAllNotificationsSeenMutationResult = ApolloReactCommon.MutationResult<MarkAllNotificationsSeenMutation>;
 export declare type MarkAllNotificationsSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
-export declare const MarkNotificationSeenDocument: any;
+export declare const MarkNotificationSeenDocument: import("graphql").DocumentNode;
 export declare type MarkNotificationSeenMutationFn = ApolloReactCommon.MutationFunction<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
 /**
  * __useMarkNotificationSeenMutation__
@@ -2129,7 +2162,7 @@ export declare function useMarkNotificationSeenMutation(baseOptions?: ApolloReac
 export declare type MarkNotificationSeenMutationHookResult = ReturnType<typeof useMarkNotificationSeenMutation>;
 export declare type MarkNotificationSeenMutationResult = ApolloReactCommon.MutationResult<MarkNotificationSeenMutation>;
 export declare type MarkNotificationSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
-export declare const PreSignUrlDocument: any;
+export declare const PreSignUrlDocument: import("graphql").DocumentNode;
 export declare type PreSignUrlMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlMutation, PreSignUrlMutationVariables>;
 /**
  * __usePreSignUrlMutation__
@@ -2152,7 +2185,7 @@ export declare function usePreSignUrlMutation(baseOptions?: ApolloReactHooks.Mut
 export declare type PreSignUrlMutationHookResult = ReturnType<typeof usePreSignUrlMutation>;
 export declare type PreSignUrlMutationResult = ApolloReactCommon.MutationResult<PreSignUrlMutation>;
 export declare type PreSignUrlMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlMutation, PreSignUrlMutationVariables>;
-export declare const PreSignUrlsDocument: any;
+export declare const PreSignUrlsDocument: import("graphql").DocumentNode;
 export declare type PreSignUrlsMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
 /**
  * __usePreSignUrlsMutation__
@@ -2175,7 +2208,7 @@ export declare function usePreSignUrlsMutation(baseOptions?: ApolloReactHooks.Mu
 export declare type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>;
 export declare type PreSignUrlsMutationResult = ApolloReactCommon.MutationResult<PreSignUrlsMutation>;
 export declare type PreSignUrlsMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
-export declare const RefreshTokenDocument: any;
+export declare const RefreshTokenDocument: import("graphql").DocumentNode;
 export declare type RefreshTokenMutationFn = ApolloReactCommon.MutationFunction<RefreshTokenMutation, RefreshTokenMutationVariables>;
 /**
  * __useRefreshTokenMutation__
@@ -2198,7 +2231,7 @@ export declare function useRefreshTokenMutation(baseOptions?: ApolloReactHooks.M
 export declare type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>;
 export declare type RefreshTokenMutationResult = ApolloReactCommon.MutationResult<RefreshTokenMutation>;
 export declare type RefreshTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RefreshTokenMutation, RefreshTokenMutationVariables>;
-export declare const RegisterDeviceTokenDocument: any;
+export declare const RegisterDeviceTokenDocument: import("graphql").DocumentNode;
 export declare type RegisterDeviceTokenMutationFn = ApolloReactCommon.MutationFunction<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
 /**
  * __useRegisterDeviceTokenMutation__
@@ -2222,7 +2255,7 @@ export declare function useRegisterDeviceTokenMutation(baseOptions?: ApolloReact
 export declare type RegisterDeviceTokenMutationHookResult = ReturnType<typeof useRegisterDeviceTokenMutation>;
 export declare type RegisterDeviceTokenMutationResult = ApolloReactCommon.MutationResult<RegisterDeviceTokenMutation>;
 export declare type RegisterDeviceTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
-export declare const ToggleNotificationSettingsDocument: any;
+export declare const ToggleNotificationSettingsDocument: import("graphql").DocumentNode;
 export declare type ToggleNotificationSettingsMutationFn = ApolloReactCommon.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 /**
  * __useToggleNotificationSettingsMutation__
@@ -2245,7 +2278,7 @@ export declare function useToggleNotificationSettingsMutation(baseOptions?: Apol
 export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
-export declare const CommentDocument: any;
+export declare const CommentDocument: import("graphql").DocumentNode;
 /**
  * __useCommentQuery__
  *
@@ -2267,7 +2300,7 @@ export declare function useCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export declare type CommentQueryHookResult = ReturnType<typeof useCommentQuery>;
 export declare type CommentLazyQueryHookResult = ReturnType<typeof useCommentLazyQuery>;
 export declare type CommentQueryResult = ApolloReactCommon.QueryResult<CommentQuery, CommentQueryVariables>;
-export declare const CommentsDocument: any;
+export declare const CommentsDocument: import("graphql").DocumentNode;
 /**
  * __useCommentsQuery__
  *
@@ -2290,7 +2323,7 @@ export declare function useCommentsLazyQuery(baseOptions?: ApolloReactHooks.Lazy
 export declare type CommentsQueryHookResult = ReturnType<typeof useCommentsQuery>;
 export declare type CommentsLazyQueryHookResult = ReturnType<typeof useCommentsLazyQuery>;
 export declare type CommentsQueryResult = ApolloReactCommon.QueryResult<CommentsQuery, CommentsQueryVariables>;
-export declare const CurrentUserDocument: any;
+export declare const CurrentUserDocument: import("graphql").DocumentNode;
 /**
  * __useCurrentUserQuery__
  *
@@ -2311,7 +2344,7 @@ export declare function useCurrentUserLazyQuery(baseOptions?: ApolloReactHooks.L
 export declare type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
 export declare type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
 export declare type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
-export declare const CurrentUserProfileDocument: any;
+export declare const CurrentUserProfileDocument: import("graphql").DocumentNode;
 /**
  * __useCurrentUserProfileQuery__
  *
@@ -2334,7 +2367,7 @@ export declare function useCurrentUserProfileLazyQuery(baseOptions?: ApolloReact
 export declare type CurrentUserProfileQueryHookResult = ReturnType<typeof useCurrentUserProfileQuery>;
 export declare type CurrentUserProfileLazyQueryHookResult = ReturnType<typeof useCurrentUserProfileLazyQuery>;
 export declare type CurrentUserProfileQueryResult = ApolloReactCommon.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>;
-export declare const CurrentUserProjectsDocument: any;
+export declare const CurrentUserProjectsDocument: import("graphql").DocumentNode;
 /**
  * __useCurrentUserProjectsQuery__
  *
@@ -2355,7 +2388,7 @@ export declare function useCurrentUserProjectsLazyQuery(baseOptions?: ApolloReac
 export declare type CurrentUserProjectsQueryHookResult = ReturnType<typeof useCurrentUserProjectsQuery>;
 export declare type CurrentUserProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserProjectsLazyQuery>;
 export declare type CurrentUserProjectsQueryResult = ApolloReactCommon.QueryResult<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>;
-export declare const CurrentUserSettingsDocument: any;
+export declare const CurrentUserSettingsDocument: import("graphql").DocumentNode;
 /**
  * __useCurrentUserSettingsQuery__
  *
@@ -2376,7 +2409,7 @@ export declare function useCurrentUserSettingsLazyQuery(baseOptions?: ApolloReac
 export declare type CurrentUserSettingsQueryHookResult = ReturnType<typeof useCurrentUserSettingsQuery>;
 export declare type CurrentUserSettingsLazyQueryHookResult = ReturnType<typeof useCurrentUserSettingsLazyQuery>;
 export declare type CurrentUserSettingsQueryResult = ApolloReactCommon.QueryResult<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>;
-export declare const FeedDocument: any;
+export declare const FeedDocument: import("graphql").DocumentNode;
 /**
  * __useFeedQuery__
  *
@@ -2399,7 +2432,7 @@ export declare function useFeedLazyQuery(baseOptions?: ApolloReactHooks.LazyQuer
 export declare type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
 export declare type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
 export declare type FeedQueryResult = ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>;
-export declare const FollowersDocument: any;
+export declare const FollowersDocument: import("graphql").DocumentNode;
 /**
  * __useFollowersQuery__
  *
@@ -2423,7 +2456,28 @@ export declare function useFollowersLazyQuery(baseOptions?: ApolloReactHooks.Laz
 export declare type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
 export declare type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
 export declare type FollowersQueryResult = ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
-export declare const NotificationsDocument: any;
+export declare const MetaDocument: import("graphql").DocumentNode;
+/**
+ * __useMetaQuery__
+ *
+ * To run a query within a React component, call `useMetaQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMetaQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMetaQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useMetaQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MetaQuery, MetaQueryVariables>): ApolloReactCommon.QueryResult<MetaQuery, MetaQueryVariables>;
+export declare function useMetaLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MetaQuery, MetaQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<MetaQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<MetaQuery, MetaQueryVariables>];
+export declare type MetaQueryHookResult = ReturnType<typeof useMetaQuery>;
+export declare type MetaLazyQueryHookResult = ReturnType<typeof useMetaLazyQuery>;
+export declare type MetaQueryResult = ApolloReactCommon.QueryResult<MetaQuery, MetaQueryVariables>;
+export declare const NotificationsDocument: import("graphql").DocumentNode;
 /**
  * __useNotificationsQuery__
  *
@@ -2446,7 +2500,7 @@ export declare function useNotificationsLazyQuery(baseOptions?: ApolloReactHooks
 export declare type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
 export declare type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
 export declare type NotificationsQueryResult = ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
-export declare const PostDocument: any;
+export declare const PostDocument: import("graphql").DocumentNode;
 /**
  * __usePostQuery__
  *
@@ -2468,7 +2522,7 @@ export declare function usePostLazyQuery(baseOptions?: ApolloReactHooks.LazyQuer
 export declare type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export declare type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
 export declare type PostQueryResult = ApolloReactCommon.QueryResult<PostQuery, PostQueryVariables>;
-export declare const PostsDocument: any;
+export declare const PostsDocument: import("graphql").DocumentNode;
 /**
  * __usePostsQuery__
  *
@@ -2491,7 +2545,7 @@ export declare function usePostsLazyQuery(baseOptions?: ApolloReactHooks.LazyQue
 export declare type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
 export declare type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
 export declare type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
-export declare const ProjectDocument: any;
+export declare const ProjectDocument: import("graphql").DocumentNode;
 /**
  * __useProjectQuery__
  *
@@ -2517,7 +2571,7 @@ export declare function useProjectLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export declare type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export declare type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export declare type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
-export declare const ProjectSuggestionsDocument: any;
+export declare const ProjectSuggestionsDocument: import("graphql").DocumentNode;
 /**
  * __useProjectSuggestionsQuery__
  *
@@ -2540,7 +2594,7 @@ export declare function useProjectSuggestionsLazyQuery(baseOptions?: ApolloReact
 export declare type ProjectSuggestionsQueryHookResult = ReturnType<typeof useProjectSuggestionsQuery>;
 export declare type ProjectSuggestionsLazyQueryHookResult = ReturnType<typeof useProjectSuggestionsLazyQuery>;
 export declare type ProjectSuggestionsQueryResult = ApolloReactCommon.QueryResult<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>;
-export declare const ProjectTypesDocument: any;
+export declare const ProjectTypesDocument: import("graphql").DocumentNode;
 /**
  * __useProjectTypesQuery__
  *
@@ -2561,7 +2615,7 @@ export declare function useProjectTypesLazyQuery(baseOptions?: ApolloReactHooks.
 export declare type ProjectTypesQueryHookResult = ReturnType<typeof useProjectTypesQuery>;
 export declare type ProjectTypesLazyQueryHookResult = ReturnType<typeof useProjectTypesLazyQuery>;
 export declare type ProjectTypesQueryResult = ApolloReactCommon.QueryResult<ProjectTypesQuery, ProjectTypesQueryVariables>;
-export declare const ProjectsDocument: any;
+export declare const ProjectsDocument: import("graphql").DocumentNode;
 /**
  * __useProjectsQuery__
  *
@@ -2586,7 +2640,7 @@ export declare function useProjectsLazyQuery(baseOptions?: ApolloReactHooks.Lazy
 export declare type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export declare type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
 export declare type ProjectsQueryResult = ApolloReactCommon.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
-export declare const RepliesDocument: any;
+export declare const RepliesDocument: import("graphql").DocumentNode;
 /**
  * __useRepliesQuery__
  *
@@ -2610,7 +2664,7 @@ export declare function useRepliesLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export declare type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
 export declare type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
 export declare type RepliesQueryResult = ApolloReactCommon.QueryResult<RepliesQuery, RepliesQueryVariables>;
-export declare const SearchModelsDocument: any;
+export declare const SearchModelsDocument: import("graphql").DocumentNode;
 /**
  * __useSearchModelsQuery__
  *
@@ -2634,7 +2688,7 @@ export declare function useSearchModelsLazyQuery(baseOptions?: ApolloReactHooks.
 export declare type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery>;
 export declare type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>;
 export declare type SearchModelsQueryResult = ApolloReactCommon.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
-export declare const SearchProjectsDocument: any;
+export declare const SearchProjectsDocument: import("graphql").DocumentNode;
 /**
  * __useSearchProjectsQuery__
  *
@@ -2658,7 +2712,7 @@ export declare function useSearchProjectsLazyQuery(baseOptions?: ApolloReactHook
 export declare type SearchProjectsQueryHookResult = ReturnType<typeof useSearchProjectsQuery>;
 export declare type SearchProjectsLazyQueryHookResult = ReturnType<typeof useSearchProjectsLazyQuery>;
 export declare type SearchProjectsQueryResult = ApolloReactCommon.QueryResult<SearchProjectsQuery, SearchProjectsQueryVariables>;
-export declare const SearchUsersDocument: any;
+export declare const SearchUsersDocument: import("graphql").DocumentNode;
 /**
  * __useSearchUsersQuery__
  *
@@ -2682,7 +2736,7 @@ export declare function useSearchUsersLazyQuery(baseOptions?: ApolloReactHooks.L
 export declare type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
 export declare type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
 export declare type SearchUsersQueryResult = ApolloReactCommon.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
-export declare const SimilarProjectsDocument: any;
+export declare const SimilarProjectsDocument: import("graphql").DocumentNode;
 /**
  * __useSimilarProjectsQuery__
  *
@@ -2705,7 +2759,7 @@ export declare function useSimilarProjectsLazyQuery(baseOptions?: ApolloReactHoo
 export declare type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
 export declare type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
 export declare type SimilarProjectsQueryResult = ApolloReactCommon.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
-export declare const UserDocument: any;
+export declare const UserDocument: import("graphql").DocumentNode;
 /**
  * __useUserQuery__
  *
@@ -2729,7 +2783,7 @@ export declare function useUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQuer
 export declare type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export declare type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export declare type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
-export declare const UserFollowingProjectsDocument: any;
+export declare const UserFollowingProjectsDocument: import("graphql").DocumentNode;
 /**
  * __useUserFollowingProjectsQuery__
  *
