@@ -1,0 +1,13 @@
+name: admin
+
+admin:
+  component: "@serverless/website"
+  inputs:
+    code:
+      src: ./build
+      hook: yarn build
+    region: us-east-1
+    env: # Environment variables to include in a 'env.js' file with your uploaded code.
+      # API_URL: https://api.com
+      
+    domain: admin.wrench.cc 

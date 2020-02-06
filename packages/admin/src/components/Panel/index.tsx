@@ -1,4 +1,6 @@
+// @ts-nocheck
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import Avatar from '../../components/Avatar'
 
@@ -26,7 +28,7 @@ export const Section = styled.div`
   margin-bottom: 20px;
 `
 
-export const Link = styled.a`
+export const Link = styled(NavLink)`
   margin-bottom: 15px;
   display: inline-block;
   padding-left: 30px;
@@ -55,19 +57,60 @@ function Panel() {
 
         <ul>
           <li>
-            <Link>Dashboard</Link>
+            <Link
+              exact
+              activeStyle={{
+                fontWeight: '500',
+                color: 'black',
+              }}
+              to="/"
+            >
+              Dashboard
+            </Link>
           </li>
           <li>
-            <Link>Posts</Link>
+            <Link
+              activeStyle={{
+                fontWeight: '500',
+                color: 'black',
+              }}
+              to="/posts"
+            >
+              Posts
+            </Link>
           </li>
           <li>
-            <Link>Projects</Link>
+            <Link
+              activeStyle={{
+                fontWeight: '500',
+                color: 'black',
+              }}
+              to="/projects"
+            >
+              Projects
+            </Link>
           </li>
           <li>
-            <Link>Users</Link>
+            <Link
+              activeStyle={{
+                fontWeight: '500',
+                color: 'black',
+              }}
+              to="/users"
+            >
+              Users
+            </Link>
           </li>
           <li>
-            <Link>Comments</Link>
+            <Link
+              activeStyle={{
+                fontWeight: '500',
+                color: 'black',
+              }}
+              to="/comments"
+            >
+              Comments
+            </Link>
           </li>
         </ul>
       </Row>
@@ -77,15 +120,31 @@ function Panel() {
 
         <ul>
           <li>
-            <Link>Push notifications</Link>
+            <Link
+              activeStyle={{
+                fontWeight: '500',
+                color: 'black',
+              }}
+              to="/push-notifications"
+            >
+              Push notifications
+            </Link>
           </li>
           <li>
-            <Link>Newsletter</Link>
+            <Link
+              activeStyle={{
+                fontWeight: '500',
+                color: 'black',
+              }}
+              to="/newsletter"
+            >
+              Newsletter
+            </Link>
           </li>
         </ul>
       </Row>
 
-      <Link>Log out</Link>
+      {/* <Link>Log out</Link> */}
     </Base>
   )
 }

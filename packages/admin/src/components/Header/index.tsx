@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Base = styled.header`
@@ -24,7 +25,9 @@ export const Title = styled.h2`
 function Header() {
   return (
     <Base>
-      <img src={require('./logo.svg')} />
+      <Link to="/">
+        <img src={require('./logo.svg')} />
+      </Link>
       <Title>Admin</Title>
     </Base>
   )

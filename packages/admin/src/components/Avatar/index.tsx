@@ -3,14 +3,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Base = styled.img`
-  border-radius: 80px;
-  height: 80px;
-  width: 80px;
+  border-radius: ${props => props.size || 80}px;
+  height: ${props => props.size || 80}px;
+  width: ${props => props.size || 80}px;
   overflow: none;
 `
 
-function Avatar({ src }) {
-  return <Base src={src} />
+function Avatar({ src, size = 80 }) {
+  return <Base src={src} size={size} />
 }
 
 export default Avatar

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useMetaQuery } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Chart from '../../components/Chart'
+import { PlaceholderBox } from '../../components/Placeholder'
 
 export const Box = styled.div`
   width: 235px;
@@ -51,29 +52,44 @@ export const Cat = styled.div`
 function Dashboard() {
   const { data, loading } = useMetaQuery()
 
-  if (loading) {
-    return null
-  }
-
   return (
     <Layout title="Hightlights">
       <Row>
-        <Box>
-          <Count>{data.meta?.totalProjects}</Count>
-          <Cat>Total projects</Cat>
-        </Box>
-        <Box>
-          <Count>{data.meta?.totalUsers}</Count>
-          <Cat>Total users</Cat>
-        </Box>
-        <Box>
-          <Count>{data.meta?.totalComments}</Count>
-          <Cat>Total comments</Cat>
-        </Box>
-        <Box>
-          <Count>{data.meta?.totalPosts}</Count>
-          <Cat>Total posts</Cat>
-        </Box>
+        {loading ? (
+          <PlaceholderBox />
+        ) : (
+          <Box>
+            <Count>{data.meta?.totalProjects}</Count>
+            <Cat>Total projects</Cat>
+          </Box>
+        )}
+
+        {loading ? (
+          <PlaceholderBox />
+        ) : (
+          <Box>
+            <Count>{data.meta?.totalUsers}</Count>
+            <Cat>Total users</Cat>
+          </Box>
+        )}
+
+        {loading ? (
+          <PlaceholderBox />
+        ) : (
+          <Box>
+            <Count>{data.meta?.totalComments}</Count>
+            <Cat>Total comments</Cat>
+          </Box>
+        )}
+
+        {loading ? (
+          <PlaceholderBox />
+        ) : (
+          <Box>
+            <Count>{data.meta?.totalPosts}</Count>
+            <Cat>Total posts</Cat>
+          </Box>
+        )}
       </Row>
 
       <Section>

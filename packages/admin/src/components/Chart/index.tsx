@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
+import { LineChart, Line, CartesianGrid, XAxis, Tooltip } from 'recharts'
 
 const data = [
   {
@@ -41,7 +41,7 @@ function Chart() {
           bottom: 54,
         }}
       >
-        Aug 2019
+        {data[0].name}
       </span>
     </>
   )

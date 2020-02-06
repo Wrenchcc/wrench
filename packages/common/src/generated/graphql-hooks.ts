@@ -1122,7 +1122,7 @@ export type ProjectFragment = (
 
 export type UserFragment = (
   { __typename?: 'User' }
-  & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>
+  & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount' | 'dynamicLink'>
 );
 
 export type UserProjectsFragment = (
@@ -2063,6 +2063,7 @@ export const UserFragmentDoc = gql`
   location
   bio
   projectCount
+  dynamicLink
 }
     `;
 export const CommentFragmentDoc = gql`

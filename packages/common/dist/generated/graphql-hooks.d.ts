@@ -918,7 +918,7 @@ export declare type ProjectFragment = ({
 });
 export declare type UserFragment = ({
     __typename?: 'User';
-} & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount'>);
+} & Pick<User, 'id' | 'fullName' | 'firstName' | 'lastName' | 'username' | 'avatarUrl' | 'isSilhouette' | 'isOnline' | 'website' | 'location' | 'bio' | 'projectCount' | 'dynamicLink'>);
 export declare type UserProjectsFragment = ({
     __typename?: 'User';
 } & {
