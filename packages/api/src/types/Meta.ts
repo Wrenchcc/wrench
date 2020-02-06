@@ -10,7 +10,18 @@ export default gql`
     totalFiles: Int
   }
 
+  enum GrowthType {
+    PROJECTS
+    USERS
+  }
+
+  type GrowthData {
+    date: Date
+    count: Int
+  }
+
   extend type Query {
     meta: Meta
+    growth(type: GrowthType!, startDate: Date, endDate: Date): [GrowthData]
   }
 `
