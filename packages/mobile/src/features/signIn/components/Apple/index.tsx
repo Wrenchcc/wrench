@@ -8,7 +8,6 @@ import { pathOr } from 'rambda'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'services/gql'
-import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { setTokens } from 'utils/storage/auth'
 import { Icon } from 'ui'
@@ -44,11 +43,9 @@ function Apple({ border }) {
         update: async (_, { data }) => {
           const { access_token, refresh_token } = data.authenticateApple
           await setTokens(access_token, refresh_token)
-          track(events.USER_SIGNED_IN)
         },
       })
 
-      track(events.USER_SIGNED_IN_APPLE_SUCCESSFULL)
       const { data } = await getCurrentUser()
 
       if (data.user) {
@@ -56,7 +53,6 @@ function Apple({ border }) {
       }
     } catch (err) {
       setIsLoading(false)
-      track(events.USER_SIGNED_IN_APPLE_FAILED)
       logError(err)
     }
   }, [])

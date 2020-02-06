@@ -1,7 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useFollowProjectMutation } from '@wrench/common'
-import { track, events } from 'utils/analytics'
 import { useNavigation, SCREENS } from 'navigation'
 import { Title, InfiniteList, CardSmall } from 'ui'
 import { Base, Follow, SNAP_INTERVAL } from './styles'
@@ -27,8 +26,6 @@ function SimilarProjects({ projects }) {
       const totalCount = project.permissions.isFollower
         ? project.followers.totalCount - 1
         : project.followers.totalCount + 1
-
-      track(isFollower ? events.PROJECT_FOLLOWED : events.PROJECT_UNFOLLOWED)
 
       toggleFollow({
         variables: {

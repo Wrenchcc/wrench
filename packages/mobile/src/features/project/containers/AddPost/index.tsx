@@ -9,7 +9,6 @@ import {
 } from '@wrench/common'
 import { useNavigation, dismissModal } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
-import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
@@ -137,7 +136,6 @@ function AddPost() {
       })
 
       reset()
-      track(events.POST_CREATED)
     } catch (err) {
       setIsPosting(false)
 
@@ -148,7 +146,6 @@ function AddPost() {
       })
 
       logError(err)
-      track(events.POST_CREATED_FAILED)
     }
   }
 

@@ -8,7 +8,6 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'services/gql'
-import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { Icon } from 'ui'
 import { facebook } from 'images'
@@ -39,11 +38,9 @@ function Facebook() {
         update: async (_, { data }) => {
           const { access_token, refresh_token } = data.authenticateFacebook
           await setTokens(access_token, refresh_token)
-          track(events.USER_SIGNED_IN)
         },
       })
 
-      track(events.USER_SIGNED_IN_FACEBOOK_SUCCESSFULL)
       const { data } = await getCurrentUser()
 
       if (data.user) {
@@ -51,7 +48,6 @@ function Facebook() {
       }
     } catch (err) {
       setIsLoading(false)
-      track(events.USER_SIGNED_IN_FACEBOOK_FAILED)
       logError(err)
     }
   }, [])

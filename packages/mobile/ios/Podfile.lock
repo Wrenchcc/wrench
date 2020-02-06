@@ -369,13 +369,13 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-camera (3.16.0):
+  - react-native-camera (3.17.0):
     - React
-    - react-native-camera/RCT (= 3.16.0)
-    - react-native-camera/RN (= 3.16.0)
-  - react-native-camera/RCT (3.16.0):
+    - react-native-camera/RCT (= 3.17.0)
+    - react-native-camera/RN (= 3.17.0)
+  - react-native-camera/RCT (3.17.0):
     - React
-  - react-native-camera/RN (3.16.0):
+  - react-native-camera/RN (3.17.0):
     - React
   - react-native-config (0.12.0):
     - React
@@ -449,7 +449,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (4.7.1):
+  - ReactNativeNavigation (4.8.0):
     - React
   - RNAppleAuthentication (1.0.6):
     - React
@@ -779,7 +779,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-camera: 705c7e9412436957b4dc894a1af61f43830787e2
+  react-native-camera: c549d50495c989688ef1819dab49441c7dc7c17d
   react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
   react-native-device-locale: 90a1fffcb69ddb4f7f6053e3d6275d77d8d83613
   react-native-fbsdk: c35d42169e64aaf66f01713c1e18d0674f7f6519
@@ -801,7 +801,7 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: 47750e34a0cf2f050acb90b8e784c0f75b9a05de
+  ReactNativeNavigation: 54b9f46efc2329d5452ce54005c7a90804aef489
   RNAppleAuthentication: e1494867df56ee7467943f4d1802895050845413
   RNCAsyncStorage: 44395cb9c7c1523104c2b499eb426ef7aff82bca
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2

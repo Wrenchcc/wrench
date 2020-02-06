@@ -21,6 +21,7 @@ import Publisher from './types/Publisher'
 import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
+import Meta from './types/Meta'
 
 // Queries
 import articleQueries from './queries/article'
@@ -33,6 +34,7 @@ import projectQueries from './queries/project'
 import searchQueries from './queries/search'
 import userQueries from './queries/user'
 import publisherQueries from './queries/publisher'
+import metaQueries from './queries/meta'
 
 // Mutations
 import commentMutations from './mutations/comment'
@@ -90,7 +92,8 @@ const resolvers = merge(
   uploadMutations,
   userMutations,
   likeMutations,
-  articleMutations
+  articleMutations,
+  metaQueries
 )
 
 // Logging
@@ -126,5 +129,6 @@ export default makeExecutableSchema({
     Search,
     Upload,
     User,
+    Meta,
   ],
 })

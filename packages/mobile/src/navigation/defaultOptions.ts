@@ -28,7 +28,6 @@ export default {
   statusBar: {
     backgroundColor: COLORS.WHITE,
     style: STATUS_BAR.DARK,
-    drawBehind: true,
   },
   topBar: {
     height: 0,
