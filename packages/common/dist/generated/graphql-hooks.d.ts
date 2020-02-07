@@ -217,6 +217,11 @@ export declare type Meta = {
     totalPosts?: Maybe<Scalars['Int']>;
     totalComments?: Maybe<Scalars['Int']>;
     totalFiles?: Maybe<Scalars['Int']>;
+    totalUsersToday?: Maybe<Scalars['Int']>;
+    totalProjectsToday?: Maybe<Scalars['Int']>;
+    totalPostsToday?: Maybe<Scalars['Int']>;
+    totalCommentsToday?: Maybe<Scalars['Int']>;
+    totalFilesToday?: Maybe<Scalars['Int']>;
 };
 export declare type Model = {
     __typename?: 'Model';
@@ -1371,7 +1376,7 @@ export declare type MetaQuery = ({
 } & {
     meta: Maybe<({
         __typename?: 'Meta';
-    } & Pick<Meta, 'totalUsers' | 'totalPosts' | 'totalFiles' | 'totalProjects' | 'totalComments'>)>;
+    } & Pick<Meta, 'totalUsers' | 'totalUsersToday' | 'totalPostsToday' | 'totalProjectsToday' | 'totalCommentsToday' | 'totalFilesToday' | 'totalComments' | 'totalProjects' | 'totalPosts' | 'totalFiles'>)>;
 });
 export declare type NotificationsQueryVariables = {
     after?: Maybe<Scalars['String']>;

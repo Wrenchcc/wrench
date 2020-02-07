@@ -259,6 +259,11 @@ export type Meta = {
   totalPosts?: Maybe<Scalars['Int']>,
   totalComments?: Maybe<Scalars['Int']>,
   totalFiles?: Maybe<Scalars['Int']>,
+  totalUsersToday?: Maybe<Scalars['Int']>,
+  totalProjectsToday?: Maybe<Scalars['Int']>,
+  totalPostsToday?: Maybe<Scalars['Int']>,
+  totalCommentsToday?: Maybe<Scalars['Int']>,
+  totalFilesToday?: Maybe<Scalars['Int']>,
 };
 
 export type Model = {
@@ -1666,7 +1671,7 @@ export type MetaQuery = (
   { __typename?: 'Query' }
   & { meta: Maybe<(
     { __typename?: 'Meta' }
-    & Pick<Meta, 'totalUsers' | 'totalPosts' | 'totalFiles' | 'totalProjects' | 'totalComments'>
+    & Pick<Meta, 'totalUsers' | 'totalUsersToday' | 'totalPostsToday' | 'totalProjectsToday' | 'totalCommentsToday' | 'totalFilesToday' | 'totalComments' | 'totalProjects' | 'totalPosts' | 'totalFiles'>
   )> }
 );
 
@@ -3343,10 +3348,15 @@ export const MetaDocument = gql`
     query meta {
   meta {
     totalUsers
+    totalUsersToday
+    totalPostsToday
+    totalProjectsToday
+    totalCommentsToday
+    totalFilesToday
+    totalComments
+    totalProjects
     totalPosts
     totalFiles
-    totalProjects
-    totalComments
   }
 }
     `;

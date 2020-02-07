@@ -8,6 +8,11 @@ export default gql`
     totalPosts: Int
     totalComments: Int
     totalFiles: Int
+    totalUsersToday: Int
+    totalProjectsToday: Int
+    totalPostsToday: Int
+    totalCommentsToday: Int
+    totalFilesToday: Int
   }
 
   enum GrowthType {

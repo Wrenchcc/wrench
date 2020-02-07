@@ -1,9 +1,14 @@
 query meta {
   meta {
     totalUsers
+    totalUsersToday
+    totalPostsToday
+    totalProjectsToday
+    totalCommentsToday
+    totalFilesToday
+    totalComments
+    totalProjects
     totalPosts
     totalFiles
-    totalProjects
-    totalComments
   }
 }

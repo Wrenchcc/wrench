@@ -772,7 +772,7 @@ function useFollowersLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.FollowersDocument, baseOptions);
 }
 exports.useFollowersLazyQuery = useFollowersLazyQuery;
-exports.MetaDocument = graphql_tag_1.default(templateObject_40 || (templateObject_40 = __makeTemplateObject(["\n    query meta {\n  meta {\n    totalUsers\n    totalPosts\n    totalFiles\n    totalProjects\n    totalComments\n  }\n}\n    "], ["\n    query meta {\n  meta {\n    totalUsers\n    totalPosts\n    totalFiles\n    totalProjects\n    totalComments\n  }\n}\n    "])));
+exports.MetaDocument = graphql_tag_1.default(templateObject_40 || (templateObject_40 = __makeTemplateObject(["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "], ["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "])));
 /**
  * __useMetaQuery__
  *

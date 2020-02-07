@@ -21,6 +21,11 @@ export const Box = styled.div`
 
 export const Count = styled.div``
 
+export const Icon = styled.img`
+  margin-right: 4px;
+  margin-top: -2px;
+`
+
 export const Headline = styled.h1`
   font-size: 27px;
   font-weight: 500;
@@ -49,6 +54,14 @@ export const Cat = styled.div`
   font-size: 16px;
 `
 
+export const Yey = styled.div`
+  position: absolute;
+  top: 155px;
+  font-size: 13px;
+  color: #3cbd9c;
+  font-weight: 500;
+`
+
 function Dashboard() {
   const { data, loading } = useMetaQuery()
 
@@ -60,6 +73,12 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalProjects}</Count>
+            {data.meta?.totalProjectsToday && (
+              <Yey>
+                <Icon src={require('./arrow.svg')} />
+                {data.meta?.totalProjectsToday}
+              </Yey>
+            )}
             <Cat>Total projects</Cat>
           </Box>
         )}
@@ -69,6 +88,12 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalUsers}</Count>
+            {data.meta?.totalUsersToday && (
+              <Yey>
+                <Icon src={require('./arrow.svg')} />
+                {data.meta?.totalUsersToday}
+              </Yey>
+            )}
             <Cat>Total users</Cat>
           </Box>
         )}
@@ -78,6 +103,12 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalComments}</Count>
+            {data.meta?.totalUsersToday && (
+              <Yey>
+                <Icon src={require('./arrow.svg')} />
+                {data.meta?.totalCommentsToday}
+              </Yey>
+            )}
             <Cat>Total comments</Cat>
           </Box>
         )}
@@ -87,6 +118,12 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalPosts}</Count>
+            {data.meta?.totalPostsToday && (
+              <Yey>
+                <Icon src={require('./arrow.svg')} />
+                {data.meta?.totalPostsToday}
+              </Yey>
+            )}
             <Cat>Total posts</Cat>
           </Box>
         )}
