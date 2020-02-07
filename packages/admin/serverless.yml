@@ -5,7 +5,6 @@ admin:
   inputs:
     code:
       src: ./build
-      hook: yarn build
     region: eu-west-1
     domain: admin.wrench.cc 
     bucketName: wrench-admin

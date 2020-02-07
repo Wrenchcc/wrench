@@ -17,8 +17,17 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Deploy
+      - name: Build admin
         run: |
+          echo Building admin...
           cd packages/admin
           yarn
-          yarn deploy
+          yarn build
+
+      - name: Push to AWS
+        run: |
+           cd packages/admin
+           yarn deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
