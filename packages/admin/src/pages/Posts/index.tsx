@@ -39,7 +39,7 @@ function Posts() {
       Cell: ({ row }) => (
         <>
           <Avatar src={row.values.user.avatarUrl} size={25} />
-          <span style={{ marginLeft: 5 }}>{row.values.user.fullName}</span>
+          <span style={{ marginLeft: 10 }}>{row.values.user.fullName}</span>
         </>
       ),
     },

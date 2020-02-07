@@ -28,7 +28,7 @@ function Users() {
       Cell: ({ row }) => (
         <>
           <Avatar src={row.values.avatarUrl} size={25} />
-          <span style={{ marginLeft: 5 }}>{row.values.fullName}</span>
+          <span style={{ marginLeft: 10 }}>{row.values.fullName}</span>
         </>
       ),
     },

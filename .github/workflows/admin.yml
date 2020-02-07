@@ -1,0 +1,24 @@
+name: 'Deploy Admin'
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'packages/admin/**'
+      - 'packages/common/**'
+      - 'packages/ui/**'
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Deploy
+        run: |
+          cd packages/admin
+          yarn
+          yarn deploy

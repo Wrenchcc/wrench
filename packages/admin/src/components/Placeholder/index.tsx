@@ -34,3 +34,15 @@ export const PlaceholderBox = () => (
     <rect x="0" y="0" rx="0" ry="0" width="235" height="235" />
   </ContentLoader>
 )
+
+export const PlaceholderBoxLarge = () => (
+  <ContentLoader
+    height={390}
+    width={390}
+    speed={2}
+    backgroundColor="#e6e7e9"
+    foregroundColor="#f4f4f5"
+  >
+    <rect x="0" y="0" rx="0" ry="0" width="390" height="390" />
+  </ContentLoader>
+)

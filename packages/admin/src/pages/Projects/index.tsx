@@ -5,6 +5,7 @@ import Layout from '../../components/Layout'
 import Table from '../../components/Table'
 import Avatar from '../../components/Avatar'
 import Actions from '../../components/Actions'
+import EditProject from '../../components/EditProject'
 import { PlaceholderRow } from '../../components/Placeholder'
 
 // TODO: Recent
@@ -38,7 +39,7 @@ function Projects() {
       Cell: ({ row }) => (
         <>
           <Avatar src={row.values.user.avatarUrl} size={25} />
-          <span style={{ marginLeft: 5 }}>{row.values.user.fullName}</span>
+          <span style={{ marginLeft: 10 }}>{row.values.user.fullName}</span>
         </>
       ),
     },
@@ -50,7 +51,7 @@ function Projects() {
     {
       Header: 'Actions',
       width: 95,
-      Cell: ({ row }) => <Actions />,
+      Cell: ({ row }) => <Actions component={<EditProject />} id={row.original.id} />,
     },
   ]
 
