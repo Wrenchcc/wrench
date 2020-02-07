@@ -1,0 +1,6 @@
+query growth($type: GrowthType!) {
+  growth(type: $type) {
+    date
+    count
+  }
+}

@@ -1664,6 +1664,19 @@ export type FollowersQuery = (
   )> }
 );
 
+export type GrowthQueryVariables = {
+  type: GrowthType
+};
+
+
+export type GrowthQuery = (
+  { __typename?: 'Query' }
+  & { growth: Maybe<Array<Maybe<(
+    { __typename?: 'GrowthData' }
+    & Pick<GrowthData, 'date' | 'count'>
+  )>>> }
+);
+
 export type MetaQueryVariables = {};
 
 
@@ -3344,6 +3357,40 @@ export function useFollowersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHo
 export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
 export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
 export type FollowersQueryResult = ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
+export const GrowthDocument = gql`
+    query growth($type: GrowthType!) {
+  growth(type: $type) {
+    date
+    count
+  }
+}
+    `;
+
+/**
+ * __useGrowthQuery__
+ *
+ * To run a query within a React component, call `useGrowthQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGrowthQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGrowthQuery({
+ *   variables: {
+ *      type: // value for 'type'
+ *   },
+ * });
+ */
+export function useGrowthQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
+        return ApolloReactHooks.useQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
+      }
+export function useGrowthLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
+        }
+export type GrowthQueryHookResult = ReturnType<typeof useGrowthQuery>;
+export type GrowthLazyQueryHookResult = ReturnType<typeof useGrowthLazyQuery>;
+export type GrowthQueryResult = ApolloReactCommon.QueryResult<GrowthQuery, GrowthQueryVariables>;
 export const MetaDocument = gql`
     query meta {
   meta {

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react'
 import styled from 'styled-components'
-import { useMetaQuery } from '@wrench/common'
+import { useMetaQuery, useGrowthQuery } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Chart from '../../components/Chart'
 import { PlaceholderBox } from '../../components/Placeholder'
@@ -64,6 +64,17 @@ export const Yey = styled.div`
 
 function Dashboard() {
   const { data, loading } = useMetaQuery()
+  const { data: userData } = useGrowthQuery({
+    variables: {
+      type: 'USERS',
+    },
+  })
+
+  const { data: projectData } = useGrowthQuery({
+    variables: {
+      type: 'PROJECTS',
+    },
+  })
 
   return (
     <Layout title="Hightlights">
@@ -134,7 +145,7 @@ function Dashboard() {
           <Top>
             <Headline>Project growth</Headline>
           </Top>
-          <Chart />
+          <Chart data={projectData?.growth} />
         </Column>
 
         <Column>
@@ -142,7 +153,7 @@ function Dashboard() {
             <Headline>User growth</Headline>
           </Top>
 
-          <Chart />
+          <Chart data={userData?.growth} />
         </Column>
       </Section>
     </Layout>

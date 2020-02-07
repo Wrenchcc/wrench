@@ -15,28 +15,38 @@ export default async (
   },
   ctx
 ) => {
-  let result = []
+  let data
 
-  console.log(type)
-
-  const data = await ctx.db.Comment.find({
+  const args = {
     createdAt: Between(startDate, endDate),
-  })
+  }
 
-  data.map(({ createdAt }) => {
+  if (type === 'PROJECTS') {
+    data = await ctx.db.Project.find(args)
+  }
+
+  if (type === 'USERS') {
+    data = await ctx.db.User.find(args)
+  }
+
+  const ids = data.map(({ createdAt }) => {
     const date = DateTime.fromSQL(createdAt)
       .startOf('day')
       .toFormat('yyyy-MM-dd HH:mm:ss+00')
-    const id = DateTime.fromSQL(createdAt).toFormat('yyyyMM')
-    const index = result.findIndex(item => item.id === id)
-    console.log(index)
-    if (index > 0) {
-      const item = result[index]
-      result[index] = { ...item, count: item?.count + 1 }
-    } else {
-      result.push({ id, count: 1, date })
+
+    return {
+      id: DateTime.fromSQL(createdAt).toFormat('yyyy-MM'),
+      date,
     }
   })
 
-  return result
+  const result = ids.reduce((prev, cur) => {
+    prev[cur.id] = (prev[cur.id] || 0) + 1
+    return prev
+  }, {})
+
+  return Object.entries(result).map(([key, value]) => ({
+    count: value,
+    date: new Date(key),
+  }))
 }
