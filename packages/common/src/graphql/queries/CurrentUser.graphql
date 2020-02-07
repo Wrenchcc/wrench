@@ -15,6 +15,7 @@ query currentUser {
     projectCount
     username
     website
+    role
     settings {
       timezone
       locale

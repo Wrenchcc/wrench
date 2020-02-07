@@ -1,11 +1,12 @@
 // @ts-nocheck
 import './styles.css'
-import React from 'react'
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
-import { ApolloProvider } from '@apollo/react-hooks'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { useCurrentUserLazyQuery } from '@wrench/common'
+import useLocalStorage from './utils/useLocalStorage'
 import Header from './components/Header'
 import Panel from './components/Panel'
+import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Users from './pages/Users'
 import Posts from './pages/Posts'
@@ -14,45 +15,56 @@ import Comments from './pages/Comments'
 import Newsletter from './pages/Newsletter'
 import PushNotifications from './pages/PushNotifications'
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: 'https://api.wrench.cc/graphql',
-  }),
-})
-
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <Header />
-        <Panel />
+  const [accessToken] = useLocalStorage('access_token')
+  const [loadUser, { data, loading }] = useCurrentUserLazyQuery()
 
-        <Switch>
-          <Route path="/" exact>
-            <Dashboard />
-          </Route>
-          <Route path="/posts">
-            <Posts />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/projects">
-            <Projects />
-          </Route>
-          <Route path="/comments">
-            <Comments />
-          </Route>
-          <Route path="/newsletter">
-            <Newsletter />
-          </Route>
-          <Route path="/push-notifications">
-            <PushNotifications />
-          </Route>
-        </Switch>
-      </Router>
-    </ApolloProvider>
+  const [isAuthenticated, setAuthenticated] = useState(!!accessToken)
+
+  useEffect(() => {
+    loadUser()
+  }, [isAuthenticated, loadUser])
+
+  if (loading) {
+    return null
+  }
+
+  return (
+    <Router>
+      <Header />
+
+      {isAuthenticated && data?.user?.role === 'ADMIN' ? (
+        <>
+          <Panel setAuthenticated={setAuthenticated} />
+
+          <Switch>
+            <Route path="/" exact>
+              <Dashboard />
+            </Route>
+            <Route path="/posts">
+              <Posts />
+            </Route>
+            <Route path="/users">
+              <Users />
+            </Route>
+            <Route path="/projects">
+              <Projects />
+            </Route>
+            <Route path="/comments">
+              <Comments />
+            </Route>
+            <Route path="/newsletter">
+              <Newsletter />
+            </Route>
+            <Route path="/push-notifications">
+              <PushNotifications />
+            </Route>
+          </Switch>
+        </>
+      ) : (
+        <Login setAuthenticated={setAuthenticated} />
+      )}
+    </Router>
   )
 }
 

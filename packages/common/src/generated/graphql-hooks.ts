@@ -1532,7 +1532,7 @@ export type CurrentUserQuery = (
   { __typename?: 'Query' }
   & { user: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'avatarUrl' | 'bio' | 'dynamicLink' | 'firstName' | 'fullName' | 'id' | 'isOnline' | 'isSilhouette' | 'lastName' | 'location' | 'projectCount' | 'username' | 'website'>
+    & Pick<User, 'avatarUrl' | 'bio' | 'dynamicLink' | 'firstName' | 'fullName' | 'id' | 'isOnline' | 'isSilhouette' | 'lastName' | 'location' | 'projectCount' | 'username' | 'website' | 'role'>
     & { settings: Maybe<(
       { __typename?: 'UserSettings' }
       & Pick<UserSettings, 'timezone' | 'locale'>
@@ -3092,6 +3092,7 @@ export const CurrentUserDocument = gql`
     projectCount
     username
     website
+    role
     settings {
       timezone
       locale

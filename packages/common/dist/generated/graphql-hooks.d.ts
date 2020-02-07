@@ -1250,7 +1250,7 @@ export declare type CurrentUserQuery = ({
 } & {
     user: Maybe<({
         __typename?: 'User';
-    } & Pick<User, 'avatarUrl' | 'bio' | 'dynamicLink' | 'firstName' | 'fullName' | 'id' | 'isOnline' | 'isSilhouette' | 'lastName' | 'location' | 'projectCount' | 'username' | 'website'> & {
+    } & Pick<User, 'avatarUrl' | 'bio' | 'dynamicLink' | 'firstName' | 'fullName' | 'id' | 'isOnline' | 'isSilhouette' | 'lastName' | 'location' | 'projectCount' | 'username' | 'website' | 'role'> & {
         settings: Maybe<({
             __typename?: 'UserSettings';
         } & Pick<UserSettings, 'timezone' | 'locale'>)>;

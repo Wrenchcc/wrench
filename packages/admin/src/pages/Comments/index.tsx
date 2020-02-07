@@ -3,8 +3,10 @@ import React from 'react'
 import { usePaginatedQuery, CommentsDocument } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Table from '../../components/Table'
+import Actions from '../../components/Actions'
 import { PlaceholderRow } from '../../components/Placeholder'
 
+// TODO
 function Comments() {
   const {
     data: { edges },
@@ -40,7 +42,7 @@ function Comments() {
     {
       Header: 'Actions',
       width: 95,
-      Cell: () => <span>katt</span>,
+      Cell: ({ row }) => <Actions />,
     },
   ]
 

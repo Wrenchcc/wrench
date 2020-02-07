@@ -1,6 +1,8 @@
 // @ts-nocheck
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useCurrentUserQuery } from '@wrench/common'
+import useLocalStorage from '../../utils/useLocalStorage'
 import styled from 'styled-components'
 import Avatar from '../../components/Avatar'
 
@@ -21,6 +23,16 @@ export const Top = styled.div`
   flex-direction: column;
 `
 
+export const SignOut = styled.button`
+  position: absolute;
+  bottom: 140px;
+  left: 30px;
+  background: none;
+  border: 0;
+  color: #6d6f76;
+  font-size: 15px;
+`
+
 export const Section = styled.div`
   color: #6d6f76;
   margin-left: 30px;
@@ -28,10 +40,10 @@ export const Section = styled.div`
   margin-bottom: 20px;
 `
 
-export const Link = styled(NavLink)`
-  margin-bottom: 15px;
-  display: inline-block;
-  padding-left: 30px;
+export const Link = styled.li`
+  margin-bottom: 20px;
+  padding-left: 65px;
+  line-height: 19px;
 `
 
 export const Username = styled.span`
@@ -44,20 +56,36 @@ export const Row = styled.div`
   margin-bottom: 50px;
 `
 
-function Panel() {
+export const Icon = styled.img`
+  position: absolute;
+  left: 30px;
+`
+
+function Panel({ setAuthenticated }) {
+  const [, , removeAccessToken] = useLocalStorage('access_token')
+  const [, , removeRefreshToken] = useLocalStorage('refresh_token')
+  const { data } = useCurrentUserQuery()
+
+  const signOut = () => {
+    removeAccessToken()
+    removeRefreshToken()
+    setAuthenticated(false)
+  }
+
   return (
     <Base>
       <Top>
-        <Avatar src="https://edge-files.wrench.cc/avatar/97b416d0-2a8d-4996-9e6c-8b70e19313d1.jpg?w=30&h=30?dpr=1" />
-        <Username>Pontus Abrahamsson</Username>
+        <Avatar src={data?.user?.avatarUrl} />
+        <Username>{data?.user?.fullName}</Username>
       </Top>
 
       <Row>
         <Section>Operate</Section>
 
         <ul>
-          <li>
-            <Link
+          <Link>
+            <Icon src={require('./dashboard.svg')} />
+            <NavLink
               exact
               activeStyle={{
                 fontWeight: '500',
@@ -66,10 +94,11 @@ function Panel() {
               to="/"
             >
               Dashboard
-            </Link>
-          </li>
-          <li>
-            <Link
+            </NavLink>
+          </Link>
+          <Link>
+            <Icon src={require('./posts.svg')} />
+            <NavLink
               activeStyle={{
                 fontWeight: '500',
                 color: 'black',
@@ -77,10 +106,11 @@ function Panel() {
               to="/posts"
             >
               Posts
-            </Link>
-          </li>
-          <li>
-            <Link
+            </NavLink>
+          </Link>
+          <Link>
+            <Icon src={require('./projects.svg')} />
+            <NavLink
               activeStyle={{
                 fontWeight: '500',
                 color: 'black',
@@ -88,10 +118,11 @@ function Panel() {
               to="/projects"
             >
               Projects
-            </Link>
-          </li>
-          <li>
-            <Link
+            </NavLink>
+          </Link>
+          <Link>
+            <Icon src={require('./users.svg')} />
+            <NavLink
               activeStyle={{
                 fontWeight: '500',
                 color: 'black',
@@ -99,10 +130,11 @@ function Panel() {
               to="/users"
             >
               Users
-            </Link>
-          </li>
-          <li>
-            <Link
+            </NavLink>
+          </Link>
+          <Link>
+            <Icon src={require('./comments.svg')} />
+            <NavLink
               activeStyle={{
                 fontWeight: '500',
                 color: 'black',
@@ -110,8 +142,8 @@ function Panel() {
               to="/comments"
             >
               Comments
-            </Link>
-          </li>
+            </NavLink>
+          </Link>
         </ul>
       </Row>
 
@@ -119,8 +151,9 @@ function Panel() {
         <Section>Marketing</Section>
 
         <ul>
-          <li>
-            <Link
+          <Link>
+            <Icon src={require('./push-notifications.svg')} />
+            <NavLink
               activeStyle={{
                 fontWeight: '500',
                 color: 'black',
@@ -128,10 +161,11 @@ function Panel() {
               to="/push-notifications"
             >
               Push notifications
-            </Link>
-          </li>
-          <li>
-            <Link
+            </NavLink>
+          </Link>
+          <Link>
+            <Icon src={require('./newsletter.svg')} />
+            <NavLink
               activeStyle={{
                 fontWeight: '500',
                 color: 'black',
@@ -139,12 +173,12 @@ function Panel() {
               to="/newsletter"
             >
               Newsletter
-            </Link>
-          </li>
+            </NavLink>
+          </Link>
         </ul>
       </Row>
 
-      {/* <Link>Log out</Link> */}
+      <SignOut onClick={signOut}>Log out</SignOut>
     </Base>
   )
 }

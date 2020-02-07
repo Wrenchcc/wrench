@@ -4,12 +4,15 @@ import { usePaginatedQuery, PostsDocument } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Table from '../../components/Table'
 import Avatar from '../../components/Avatar'
+import Actions from '../../components/Actions'
+import EditPost from '../../components/EditPost'
 import { PlaceholderRow } from '../../components/Placeholder'
 
 function Posts() {
   const {
     data: { edges },
     isFetching,
+    fetchMore,
   } = usePaginatedQuery(['posts'])(PostsDocument, {
     variables: {
       first: 20,
@@ -28,6 +31,7 @@ function Posts() {
       accessor: 'project.title',
       minWidth: 200,
     },
+
     {
       Header: 'User',
       accessor: 'user',
@@ -47,16 +51,16 @@ function Posts() {
     {
       Header: 'Actions',
       width: 95,
-      Cell: ({ row }) => <span>katt</span>,
+      Cell: ({ row }) => <Actions component={<EditPost id={row.original.id} />} />,
     },
   ]
 
   return (
     <Layout title="Posts">
-      {isFetching ? (
+      {isFetching && !edges ? (
         <PlaceholderRow />
       ) : (
-        <Table columns={columns} data={edges.map(({ node }) => node)} />
+        <Table columns={columns} data={edges.map(({ node }) => node)} fetchMore={fetchMore} />
       )}
     </Layout>
   )

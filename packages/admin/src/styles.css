@@ -347,3 +347,22 @@ textarea {
   fill: #6d6f76;
   font-weight: 500;
 }
+
+
+.panel {
+    position: 'relative'
+}
+
+
+pre {
+    font-family: "Inter var", system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    padding: 20px;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre;
+    color: #fff;
+    background-color: #1d1f21;
+  }
