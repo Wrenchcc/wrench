@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react'
-import { KeyboardAvoidingView, View } from 'react-native'
+import { View } from 'react-native'
 import { useEditProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
-import { Header, Title, Text, Input, Icon } from 'ui'
+import { Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 
@@ -61,6 +61,41 @@ function EditModel({ passProps }) {
   )
 
   const handleOnBlur = useCallback(() => setIsSearching(false), [setIsSearching])
+
+  return (
+    <>
+      <Header
+        headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
+        headerTitle={<Text medium>{t('AddProjectModel:headerTitle')}</Text>}
+        headerRight={
+          model && (
+            <Text onPress={handleSave} medium>
+              {t('EditModel:save')}
+            </Text>
+          )
+        }
+      />
+      {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
+
+      <KeyboardAvoidingView>
+        <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
+          {t('AddProjectModel:title')}
+        </Title>
+
+        <Input
+          placeholder={t('AddProjectModel:placeholder')}
+          large
+          onChangeText={onChangeText}
+          value={model ? formatModel(model) : query}
+          borderColor="dark"
+          color="dark"
+          returnKeyType="next"
+          onBlur={handleOnBlur}
+          autoFocus
+        />
+      </KeyboardAvoidingView>
+    </>
+  )
 
   return (
     <>

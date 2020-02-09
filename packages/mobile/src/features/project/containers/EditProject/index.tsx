@@ -46,6 +46,13 @@ function EditProject({ project }) {
           id: project.id,
           model: project.model,
         },
+        options: {
+          animations: {
+            push: {
+              waitForRender: true,
+            },
+          },
+        },
       }),
 
     [project]
