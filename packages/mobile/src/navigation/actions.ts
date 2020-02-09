@@ -23,7 +23,8 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
   if (tabIndex === TABS_INDEX.ADD) {
     try {
       const { data } = await getCurrentUserProjects()
-      const screen = data.user.projects.edges.length > 0 ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT
+      const hasProject = data.user.projects.edges.length > 0
+      const screen = hasProject ? SCREENS.ADD_MEDIA : SCREENS.ADD_PROJECT
 
       Navigation.showModal({
         stack: {
@@ -34,13 +35,12 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                 name: screen,
                 options: {
                   layout: {
-                    backgroundColor:
-                      data.user.projects.edges.length > 0 ? COLORS.DARK : COLORS.WHITE,
+                    backgroundColor: hasProject ? COLORS.DARK : COLORS.WHITE,
                   },
                   statusBar: {
-                    backgroundColor: data.user.projects.edges.length > 0 ? 'black' : 'white',
-                    style: data.user.projects.edges.length > 0 ? 'light' : 'dark',
-                    visible: isIphone ? false : true,
+                    backgroundColor: hasProject ? 'black' : 'white',
+                    style: hasProject ? 'light' : 'dark',
+                    visible: isIphone && hasProject ? false : true,
                   },
                 },
               },

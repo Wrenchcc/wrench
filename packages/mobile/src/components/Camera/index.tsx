@@ -13,7 +13,7 @@ const { Constants } = RNCamera
 
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
-function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
+function Camera({ onTakePicture, initialCameraType = Constants.Type.back, active }) {
   const camera = useRef()
   const [isLoading, setLoading] = useState(true)
   const [permission, setPermission] = useState(false)
@@ -54,7 +54,7 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   const setFocus = useCallback(({ nativeEvent }) => {
     setAutofocus({
       x: nativeEvent.locationX,
-      y: nativeEvent.locationY
+      y: nativeEvent.locationY,
     })
   }, [])
 
@@ -71,21 +71,23 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   return (
     <TouchableWithoutFeedback onPressIn={setFocus}>
       <>
-        <RNCamera
-          ref={camera}
-          type={cameraType}
-          flashMode={flashMode}
-          style={{ flex: 1 }}
-          autoFocusPointOfInterest={autofocus}
-          ratio="1:1"
-          pendingAuthorizationView={
-            <View
-              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
-            >
-              <ActivityIndicator size="small" color="white" />
-            </View>
-          }
-        />
+        {active && (
+          <RNCamera
+            ref={camera}
+            type={cameraType}
+            flashMode={flashMode}
+            style={{ flex: 1 }}
+            autoFocusPointOfInterest={autofocus}
+            ratio="1:1"
+            pendingAuthorizationView={
+              <View
+                style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
+              >
+                <ActivityIndicator size="small" color="white" />
+              </View>
+            }
+          />
+        )}
 
         {autofocus && <AutoFocus coordinates={autofocus} />}
         <CameraType onPress={changeCameraType} />

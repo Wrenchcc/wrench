@@ -57,7 +57,11 @@ function Mention({ onPress }) {
         renderItem={renderItem}
         borderSeparators
         ListFooterComponent={
-          isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && <Loader />
+          isFetching && !edges && query.length > 0 ? (
+            <SearchingFor query={query} />
+          ) : (
+            hasNextPage && <Loader />
+          )
         }
       />
     </View>

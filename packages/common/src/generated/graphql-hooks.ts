@@ -1366,7 +1366,7 @@ export type FollowProjectMutation = (
     { __typename?: 'Project' }
     & { cover: Maybe<(
       { __typename?: 'CoverType' }
-      & Pick<CoverType, 'uri'>
+      & Pick<CoverType, 'uri' | 'default'>
     )> }
     & ProjectFragment
   )> }
@@ -2686,6 +2686,7 @@ export const FollowProjectDocument = gql`
   followProject(id: $id) {
     cover {
       uri
+      default
     }
     ...Project
   }

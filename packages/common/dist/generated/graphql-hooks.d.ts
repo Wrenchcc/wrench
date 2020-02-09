@@ -1122,7 +1122,7 @@ export declare type FollowProjectMutation = ({
     } & {
         cover: Maybe<({
             __typename?: 'CoverType';
-        } & Pick<CoverType, 'uri'>)>;
+        } & Pick<CoverType, 'uri' | 'default'>)>;
     } & ProjectFragment)>;
 });
 export declare type LikeCommentMutationVariables = {

@@ -9,7 +9,7 @@ const keyboardDismissProp = isAndroid
   ? { onScrollEndDrag: Keyboard.dismiss }
   : { keyboardDismissMode: 'on-drag' }
 
-const renderLoader = (fullscreen, loaderPosition) => (
+const renderLoader = (fullscreen?, loaderPosition?) => (
   <Loader fullscreen={fullscreen} top={loaderPosition} />
 )
 const BorderSeparator = () => <Border />
@@ -55,6 +55,7 @@ function InfiniteList({
       ListEmptyComponent={initialFetch ? renderLoader(true, loaderPosition) : ListEmptyComponent}
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag"
+      onEndReachedThreshold={0.01}
       contentContainerStyle={{
         flex: initialFetch ? 1 : 0,
         paddingLeft: paddingHorizontal,

@@ -350,7 +350,7 @@ function useEditUserMutation(baseOptions) {
     return ApolloReactHooks.useMutation(exports.EditUserDocument, baseOptions);
 }
 exports.useEditUserMutation = useEditUserMutation;
-exports.FollowProjectDocument = graphql_tag_1.default(templateObject_22 || (templateObject_22 = __makeTemplateObject(["\n    mutation followProject($id: ID!) {\n  followProject(id: $id) {\n    cover {\n      uri\n    }\n    ...Project\n  }\n}\n    ", ""], ["\n    mutation followProject($id: ID!) {\n  followProject(id: $id) {\n    cover {\n      uri\n    }\n    ...Project\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.FollowProjectDocument = graphql_tag_1.default(templateObject_22 || (templateObject_22 = __makeTemplateObject(["\n    mutation followProject($id: ID!) {\n  followProject(id: $id) {\n    cover {\n      uri\n      default\n    }\n    ...Project\n  }\n}\n    ", ""], ["\n    mutation followProject($id: ID!) {\n  followProject(id: $id) {\n    cover {\n      uri\n      default\n    }\n    ...Project\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
 /**
  * __useFollowProjectMutation__
  *

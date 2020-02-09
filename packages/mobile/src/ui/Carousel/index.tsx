@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useState, useCallback } from 'react'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import Touchable from 'ui/Touchable'
@@ -20,30 +20,36 @@ function Carousel({ onPress, files }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const scrollEnabled = files.edges.length > 1
 
-  const handleScroll = ({ nativeEvent }) => {
-    const offset = nativeEvent.contentOffset.x
-    const index = Math.round(offset / SIZE)
+  const handleScroll = useCallback(
+    ({ nativeEvent }) => {
+      const offset = nativeEvent.contentOffset.x
+      const index = Math.round(offset / SIZE)
 
-    if (index !== currentIndex) {
-      setCurrentIndex(index)
-    }
-  }
+      if (index !== currentIndex) {
+        setCurrentIndex(index)
+      }
+    },
+    [currentIndex, setCurrentIndex]
+  )
 
-  const renderItem = ({ item, index }) => (
-    <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
-      <Pinchable maximumZoomScale={5}>
-        <Touchable onPress={onPress} activeOpacity={1} nativeHandler>
-          <Picture
-            showIndicator
-            width={SIZE}
-            height={SIZE}
-            source={{ uri: item.node.uri }}
-            priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
-            index={index}
-          />
-        </Touchable>
-      </Pinchable>
-    </Wrapper>
+  const renderItem = useCallback(
+    ({ item, index }) => (
+      <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
+        <Pinchable maximumZoomScale={5}>
+          <Touchable onPress={onPress} activeOpacity={1} nativeHandler>
+            <Picture
+              showIndicator
+              width={SIZE}
+              height={SIZE}
+              source={{ uri: item.node.uri }}
+              priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
+              index={index}
+            />
+          </Touchable>
+        </Pinchable>
+      </Wrapper>
+    ),
+    []
   )
 
   return (

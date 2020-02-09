@@ -42,54 +42,56 @@ import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import io.invertase.firebase.RNFirebasePackage;
 
 import com.reactnativenavigation.NavigationApplication;
+import com.reactnativenavigation.react.NavigationPackage;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
-import com.reactnativenavigation.react.ReactGateway;
 
 public class MainApplication extends NavigationApplication {
-    @Override
-    protected ReactNativeHost createReactNativeHost() {
-        return new NavigationReactNativeHost(this) {
-            @Override
-            protected String getJSMainModuleName() {
-                return "packages/mobile/index";
-            }
-        };
-    }
+    private final ReactNativeHost mReactNativeHost = new NavigationReactNativeHost(this) {
+        @Override
+        protected String getJSMainModuleName() {
+            return "packages/mobile/index";
+        }
+
+        @Override
+        public boolean getUseDeveloperSupport() {
+            return BuildConfig.DEBUG;
+        }
+
+        @Override
+        public List<ReactPackage> getPackages() {
+            ArrayList<ReactPackage> packages = new PackageList(this).getPackages();
+            packages.add(new NavigationPackage(mReactNativeHost));
+            packages.add(new AsyncStoragePackage());
+            packages.add(new FastImageViewPackage());
+            packages.add(new FBSDKPackage());
+            packages.add(new LinearGradientPackage());
+            packages.add(new NetInfoPackage());
+            packages.add(new ReactNativeConfigPackage());
+            packages.add(new ReactVideoPackage());
+            packages.add(new ReanimatedPackage());
+            packages.add(new RNCameraPackage());
+            packages.add(new RNCWebViewPackage());
+            packages.add(new RNFirebaseAnalyticsPackage());
+            packages.add(new RNFirebaseMessagingPackage());
+            packages.add(new RNFirebaseNotificationsPackage());
+            packages.add(new RNFirebasePackage());
+            packages.add(new RNGestureHandlerPackage());
+            packages.add(new RNGoogleSigninPackage());
+            packages.add(new RNSharePackage());
+            packages.add(new SplashScreenReactPackage());
+            packages.add(new RNPermissionsPackage());
+            packages.add(new ImagePickerPackage());
+            packages.add(new ImageManipulatorPackage());
+            packages.add(new MediaLibraryPackage());
+            packages.add(new DeviceLocalePackage());
+            packages.add(new RNSentryPackage());
+
+            return packages;
+        }
+    };
 
     @Override
-    public boolean isDebug() {
-      return BuildConfig.DEBUG;
-    }
-
-    @Override
-    public List<ReactPackage> createAdditionalReactPackages() {
-        List<ReactPackage> packages = new ArrayList<>();
-
-        packages.add(new AsyncStoragePackage());
-        packages.add(new FastImageViewPackage());
-        packages.add(new FBSDKPackage());
-        packages.add(new LinearGradientPackage());
-        packages.add(new NetInfoPackage());
-        packages.add(new ReactNativeConfigPackage());
-        packages.add(new ReactVideoPackage());
-        packages.add(new ReanimatedPackage());
-        packages.add(new RNCameraPackage());
-        packages.add(new RNCWebViewPackage());
-        packages.add(new RNFirebaseAnalyticsPackage());
-        packages.add(new RNFirebaseMessagingPackage());
-        packages.add(new RNFirebaseNotificationsPackage());
-        packages.add(new RNFirebasePackage());
-        packages.add(new RNGestureHandlerPackage());
-        packages.add(new RNGoogleSigninPackage());
-        packages.add(new RNSharePackage());
-        packages.add(new SplashScreenReactPackage());
-        packages.add(new RNPermissionsPackage());
-        packages.add(new ImagePickerPackage());
-        packages.add(new ImageManipulatorPackage());
-        packages.add(new MediaLibraryPackage());
-        packages.add(new DeviceLocalePackage());
-        packages.add(new RNSentryPackage());
-
-        return packages;
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
     }
 }

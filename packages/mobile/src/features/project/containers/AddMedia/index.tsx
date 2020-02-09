@@ -96,7 +96,7 @@ function AddMedia() {
     return selectedFile ? (
       <ImageEditor source={selectedFile} onChange={onEdit} />
     ) : (
-      isFocused && <Camera onTakePicture={onSelect} />
+      <Camera onTakePicture={onSelect} active={isFocused} />
     )
   }, [selectedFile, isFocused])
 
