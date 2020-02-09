@@ -29,9 +29,7 @@ function Feed() {
     hasNextPage,
     refetch,
   } = usePaginatedQuery(['feed', 'posts'])(FeedDocument, {
-    options: {
-      pollInterval: ms('3m'),
-    },
+    pollInterval: ms('3m'),
   })
 
   const scrollToTop = useCallback(() => {

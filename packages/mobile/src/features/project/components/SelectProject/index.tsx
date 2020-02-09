@@ -9,7 +9,7 @@ import { Base } from './styles'
 
 function getProjectById(id, projects) {
   const project = projects && projects.find(({ node }) => node.id === id)
-  return pathOr(projects && projects[0].node, ['node'], project)
+  return pathOr(projects[0]?.node, ['node'], project)
 }
 
 function SelectProject({ dark = false }) {
@@ -20,11 +20,14 @@ function SelectProject({ dark = false }) {
 
   const projects = data.user.projects.edges
 
-  const { projectId, title, update } = usePostStore(store => ({
-    projectId: getProjectById(store.projectId, projects).id,
-    title: getProjectById(store.projectId, projects).title,
-    update: store.actions.update,
-  }))
+  const { projectId, title, update } = usePostStore(store => {
+    const project = getProjectById(store.projectId, projects)
+    return {
+      projectId: project?.id,
+      title: project?.title,
+      update: store.actions.update,
+    }
+  })
 
   const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
   const handleClose = useCallback(() => setIsOpen(false), [])
@@ -52,7 +55,7 @@ function SelectProject({ dark = false }) {
           <Text
             color={(dark && 'dark') || isOpen ? 'dark' : 'white'}
             medium
-            style={{ zIndex: 100, maxWidth: '95%' }}
+            style={{ zIndex: 100, maxWidth: '92%' }}
             numberOfLines={1}
           >
             {title}

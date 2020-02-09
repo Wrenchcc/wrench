@@ -1694,14 +1694,11 @@ export declare type UserQuery = ({
             } & {
                 node: ({
                     __typename?: 'Project';
-                } & Pick<Project, 'id' | 'title'> & {
+                } & {
                     cover: Maybe<({
                         __typename?: 'CoverType';
                     } & Pick<CoverType, 'uri' | 'default'>)>;
-                    followers: Maybe<({
-                        __typename?: 'FollowersConnection';
-                    } & Pick<FollowersConnection, 'totalCount'>)>;
-                });
+                } & ProjectFragment);
             })>>;
         })>;
         posts: Maybe<({

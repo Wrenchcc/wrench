@@ -55,9 +55,7 @@ function Notifications({ componentId }) {
     hasNextPage,
     refetch,
   } = usePaginatedQuery(['notifications'])(NotificationsDocument, {
-    options: {
-      pollInterval: ms('1m'),
-    },
+    pollInterval: ms('1m'),
   })
 
   useScrollToTop(scrollRef, SCREENS.NOTIFICATIONS)

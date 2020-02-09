@@ -2006,14 +2006,11 @@ export type UserQuery = (
         { __typename?: 'ProjectEdge' }
         & { node: (
           { __typename?: 'Project' }
-          & Pick<Project, 'id' | 'title'>
           & { cover: Maybe<(
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
-          )>, followers: Maybe<(
-            { __typename?: 'FollowersConnection' }
-            & Pick<FollowersConnection, 'totalCount'>
           )> }
+          & ProjectFragment
         ) }
       )>> }
     )>, posts: Maybe<(
@@ -3969,14 +3966,10 @@ export const UserDocument = gql`
     projects: projectsConnection {
       edges {
         node {
-          id
+          ...Project
           cover {
             uri
             default
-          }
-          title
-          followers: followersConnection {
-            totalCount
           }
         }
       }
@@ -3995,6 +3988,7 @@ export const UserDocument = gql`
   }
 }
     ${UserFragmentDoc}
+${ProjectFragmentDoc}
 ${PostFragmentDoc}`;
 
 /**

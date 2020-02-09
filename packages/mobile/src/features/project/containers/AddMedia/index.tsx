@@ -5,6 +5,10 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { Header, Text, Icon, Touchable } from 'ui'
+import {
+  useNavigationComponentDidAppear,
+  useNavigationComponentDidDisappear,
+} from 'navigation/hooks'
 import cropImage from 'utils/cropImage'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
@@ -18,7 +22,20 @@ function AddMedia() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
   const [isLoading, setLoading] = useState(false)
+  const [isFocused, setFocus] = useState(false)
   const { showActionSheetWithOptions } = useActionSheet()
+
+  useNavigationComponentDidAppear(({ componentId }) => {
+    if (componentId === 'ADD_MEDIA') {
+      setFocus(true)
+    }
+  })
+
+  useNavigationComponentDidDisappear(({ componentId }) => {
+    if (componentId === 'ADD_MEDIA') {
+      setFocus(false)
+    }
+  })
 
   const {
     onSelect,
@@ -79,9 +96,9 @@ function AddMedia() {
     return selectedFile ? (
       <ImageEditor source={selectedFile} onChange={onEdit} />
     ) : (
-      <Camera onTakePicture={onSelect} />
+      isFocused && <Camera onTakePicture={onSelect} />
     )
-  }, [selectedFile])
+  }, [selectedFile, isFocused])
 
   return (
     <Base>

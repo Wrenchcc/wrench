@@ -41,6 +41,7 @@ function List({ data }) {
       {slice(0, 2, data.comments.edges)
         .reverse()
         .map(renderComment)}
+
       <LoadMore onPress={navigateToComments}>
         <Text fontSize={15} color="light_grey">
           {t('List:loadMore', { count: data.comments.totalCount })}

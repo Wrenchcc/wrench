@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { ActivityIndicator, KeyboardAvoidingView, View } from 'react-native'
+import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import {
   useCurrentUserProjectsQuery,
@@ -9,7 +9,7 @@ import {
 import { useNavigation, SCREENS } from 'navigation'
 import { useProjectStore, PROJECT } from 'store'
 import { saveSelectedProjectId } from 'store/post'
-import { Header, Title, Text, Input, Icon } from 'ui'
+import { Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 import { COLORS } from 'ui/constants'
@@ -156,28 +156,25 @@ function AddProjectModel() {
           )
         }
       />
-      <View style={{ flex: 1 }}>
-        {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
+      {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
 
-        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-          <View style={{ flex: 1, paddingHorizontal: 20 }}>
-            <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-              {t('AddProjectModel:title')}
-            </Title>
+      <KeyboardAvoidingView>
+        <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
+          {t('AddProjectModel:title')}
+        </Title>
 
-            <Input
-              placeholder={t('AddProjectModel:placeholder')}
-              large
-              onChangeText={onChangeText}
-              value={model ? formatModel(model) : query}
-              borderColor="dark"
-              color="dark"
-              returnKeyType="next"
-              onBlur={handleOnBlur}
-            />
-          </View>
-        </KeyboardAvoidingView>
-      </View>
+        <Input
+          placeholder={t('AddProjectModel:placeholder')}
+          large
+          onChangeText={onChangeText}
+          value={model ? formatModel(model) : query}
+          borderColor="dark"
+          color="dark"
+          returnKeyType="next"
+          onBlur={handleOnBlur}
+          autoFocus
+        />
+      </KeyboardAvoidingView>
     </>
   )
 }

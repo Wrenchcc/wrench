@@ -84,7 +84,7 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalProjects}</Count>
-            {data.meta?.totalProjectsToday && (
+            {data.meta?.totalProjectsToday > 0 && (
               <Yey>
                 <Icon src={require('./arrow.svg')} />
                 {data.meta?.totalProjectsToday}
@@ -99,7 +99,7 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalUsers}</Count>
-            {data.meta?.totalUsersToday && (
+            {data.meta?.totalUsersToday > 0 && (
               <Yey>
                 <Icon src={require('./arrow.svg')} />
                 {data.meta?.totalUsersToday}
@@ -114,7 +114,7 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalComments}</Count>
-            {data.meta?.totalUsersToday && (
+            {data.meta?.totalCommentsToday > 0 && (
               <Yey>
                 <Icon src={require('./arrow.svg')} />
                 {data.meta?.totalCommentsToday}
@@ -129,7 +129,7 @@ function Dashboard() {
         ) : (
           <Box>
             <Count>{data.meta?.totalPosts}</Count>
-            {data.meta?.totalPostsToday && (
+            {data.meta?.totalPostsToday > 0 && (
               <Yey>
                 <Icon src={require('./arrow.svg')} />
                 {data.meta?.totalPostsToday}

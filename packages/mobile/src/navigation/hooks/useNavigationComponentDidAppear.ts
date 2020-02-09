@@ -1,0 +1,21 @@
+import { useLayoutEffect } from 'react'
+import { Navigation, ComponentDidAppearEvent } from 'react-native-navigation'
+
+export default function useNavigationComponentDidAppear(
+  handler: (event: ComponentDidAppearEvent) => void,
+  componentId?: string
+) {
+  useLayoutEffect(() => {
+    const subscription = Navigation.events().registerComponentDidAppearListener(event => {
+      const equalComponentId = event.componentId === componentId
+
+      if (componentId && !equalComponentId) {
+        return
+      }
+
+      handler(event)
+    })
+
+    return () => subscription.remove()
+  }, [handler, componentId])
+}

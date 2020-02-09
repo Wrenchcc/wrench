@@ -14,4 +14,5 @@ export const Comment = styled(UiText)`
 
 export const LoadMore = styled(UiTouchable)`
   margin-top: 5px;
+  margin-bottom: 10px;
 `

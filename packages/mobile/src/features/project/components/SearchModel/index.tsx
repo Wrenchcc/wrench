@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { usePaginatedLazyQuery, SearchModelsDocument } from '@wrench/common'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { keyboardHeight } from 'utils/platform'
+import { NAVIGATION } from 'navigation/constants'
 
 const INPUT_HEIGHT = 80
 
@@ -12,13 +13,14 @@ const styles = {
     left: 0,
     position: 'absolute',
     right: 0,
-    top: 0,
     zIndex: 1000,
+    bottom: keyboardHeight + INPUT_HEIGHT,
+    top: NAVIGATION.STATUS_BAR_HEIGHT,
+    width: '100%',
   },
 }
 
 function SearchModel({ query, onPress }) {
-  // TODO: Fetch more
   const {
     loadData,
     data: { edges },

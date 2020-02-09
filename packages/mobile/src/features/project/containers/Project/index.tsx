@@ -50,11 +50,11 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
   })
 
   const handleFollow = useCallback(() => {
-    const totalCount = project.permissions.isFollower
+    const totalCount = project?.permissions.isFollower
       ? project.followers.totalCount - 1
       : project.followers.totalCount + 1
 
-    const isFollower = !project.permissions.isFollower
+    const isFollower = !project?.permissions.isFollower
 
     followProject({
       variables: {
@@ -80,8 +80,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
 
   const hasPosts = post || (edges && edges.length > 0)
 
-  const emptyState =
-    project.permissions && project.permissions.isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
+  const emptyState = project?.permissions.isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
 
   const renderItem = ({ item }) => {
     // Remove post item from list to skip dublicated
@@ -110,7 +109,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
 
     return (
       <>
-        {project.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
+        {project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
         {content}
       </>
     )
@@ -119,17 +118,17 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Page
-        headerTitle={project.title}
+        headerTitle={project?.title}
         scrollPosition={scrollY.current}
         headerRight={
-          project.permissions && project.permissions.isOwner ? (
+          project?.permissions.isOwner ? (
             <Edit project={project} />
           ) : (
             <>
               <Animated.View style={{ zIndex: opacityShare }}>
                 <Share
-                  title={project.title}
-                  url={project.dynamicLink}
+                  title={project?.title}
+                  url={project?.dynamicLink}
                   text
                   opacity={opacityShare}
                 />
@@ -138,9 +137,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
                 style={{ opacity: opacityFollow, position: 'absolute', zIndex: opacityFollow }}
               >
                 <Text medium onPress={handleFollow}>
-                  {project.permissions && project.permissions.isFollower
-                    ? t('Project:unfollow')
-                    : t('Project:follow')}
+                  {project?.permissions.isFollower ? t('Project:unfollow') : t('Project:follow')}
                 </Text>
               </Animated.View>
             </>
