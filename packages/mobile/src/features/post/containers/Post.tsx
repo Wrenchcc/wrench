@@ -10,7 +10,7 @@ import {
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
-import Header from 'navigation/Page/Header'
+// import Header from 'navigation/Page/Header'
 import { hideNotificationBadge } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
@@ -143,7 +143,7 @@ function PostContainer({ postId, commentId }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Header headerTitle={t('PostContainer:title')} headerAnimation={false} />
+      {/* <Header headerTitle={t('PostContainer:title')} headerAnimation={false} /> */}
 
       <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList

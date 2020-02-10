@@ -30,7 +30,11 @@ export default {
     style: STATUS_BAR.DARK,
   },
   topBar: {
-    height: 0,
-    visible: false,
+    elevation: 0,
+    noBorder: true,
+    drawBehind: true,
+  },
+  navigationBar: {
+    backgroundColor: COLORS.DARK,
   },
 }

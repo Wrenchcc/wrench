@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react'
 import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
-import Header from 'navigation/Page/Header'
 import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { CommentItem, Text } from 'ui'
@@ -118,8 +117,6 @@ function Comments({ postId }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Header headerTitle={t('Comments:title')} headerAnimation={false} />
-
       <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted

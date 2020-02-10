@@ -24,8 +24,11 @@ export function AuthNavigation() {
     statusBar: {
       style: STATUS_BAR.LIGHT,
       backgroundColor: 'transparent',
+      drawBehind: true,
+      visible: false,
     },
     topBar: {
+      height: 0,
       visible: false,
     },
   })
@@ -78,6 +81,10 @@ export function AppNavigation(onboarding) {
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
                         },
+                        topBar: {
+                          height: 0,
+                          visible: false,
+                        },
                       },
                     },
                   },
@@ -96,6 +103,10 @@ export function AppNavigation(onboarding) {
                           icon: explore,
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
+                        },
+                        topBar: {
+                          height: 0,
+                          visible: false,
                         },
                       },
                     },
@@ -117,6 +128,10 @@ export function AppNavigation(onboarding) {
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
                         },
+                        topBar: {
+                          height: 0,
+                          visible: false,
+                        },
                       },
                     },
                   },
@@ -136,6 +151,10 @@ export function AppNavigation(onboarding) {
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
                         },
+                        topBar: {
+                          height: 0,
+                          visible: false,
+                        },
                       },
                     },
                   },
@@ -154,6 +173,10 @@ export function AppNavigation(onboarding) {
                           icon: profile,
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
+                        },
+                        topBar: {
+                          height: 0,
+                          visible: false,
                         },
                       },
                     },
