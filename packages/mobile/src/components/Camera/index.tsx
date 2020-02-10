@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { TouchableWithoutFeedback, View, ActivityIndicator } from 'react-native'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
@@ -100,4 +100,4 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back, active
   )
 }
 
-export default memo(Camera)
+export default Camera

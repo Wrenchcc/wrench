@@ -35,9 +35,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
     updateQuery: store.actions.updateQuery,
   }))
 
-  const {
-    data: { user },
-  } = useCurrentUserQuery()
+  const { data } = useCurrentUserQuery()
 
   useEffect(() => {
     if (username) {
@@ -286,9 +284,9 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
       <Inner>
         <Avatar
-          uri={user && user.avatarUrl}
-          fallback={user.isSilhouette}
-          fullName={user.fullName}
+          uri={data?.user.avatarUrl}
+          fallback={data?.user.isSilhouette}
+          fullName={data?.user.fullName}
         />
         <Input
           ref={inputRef}

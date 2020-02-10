@@ -51,7 +51,7 @@ function Settings({ section }) {
     []
   )
 
-  const settings = data && data.user.settings
+  const settings = data?.user.settings
 
   return (
     <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>
@@ -61,7 +61,10 @@ function Settings({ section }) {
         renderSectionHeader={renderSectionHeader}
         renderItem={renderItem}
         initialNumToRender={15}
-        sections={sections({ handleToggleNotificationSettings, settings })[section || 'settings']}
+        sections={
+          settings &&
+          sections({ handleToggleNotificationSettings, settings })[section || 'settings']
+        }
         keyExtractor={keyExtractor}
         ListFooterComponent={!section && <Footer />}
         borderSeparator

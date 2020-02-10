@@ -92,6 +92,7 @@ export default (path, initialData?) => (query, options?) => {
     data: {
       ...initialData,
       ...data,
+      ...blaj,
       edges: pathOr(null, ['edges'], blaj),
     },
     fetchMore: handleFetchMore,
