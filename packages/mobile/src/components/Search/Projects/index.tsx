@@ -62,7 +62,8 @@ function Projects({ query }) {
 
   const handleSave = useCallback(
     item => {
-      const items = [{ node: item }, ...recent]
+      // NOTE: isOwner to hide the follow button
+      const items = [{ node: { ...item, permissions: { isOwner: true } } }, ...recent]
       const saved = recent.some(({ node }) => node.id === item.id)
 
       if (!saved) {

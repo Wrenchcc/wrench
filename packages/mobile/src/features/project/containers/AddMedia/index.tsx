@@ -26,13 +26,13 @@ function AddMedia() {
   const { showActionSheetWithOptions } = useActionSheet()
 
   useNavigationComponentDidAppear(({ componentId }) => {
-    if (componentId === 'ADD_MEDIA') {
+    if (componentId === SCREENS.ADD_MEDIA) {
       setFocus(true)
     }
   })
 
   useNavigationComponentDidDisappear(({ componentId }) => {
-    if (componentId === 'ADD_MEDIA') {
+    if (componentId === SCREENS.ADD_MEDIA) {
       setFocus(false)
     }
   })

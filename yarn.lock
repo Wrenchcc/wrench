@@ -56,6 +56,21 @@
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
+"@apollo/client@^3.0.0-beta.34":
+  version "3.0.0-beta.34"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.34.tgz#0a466559c833d0fc83730891be45d09102316a60"
+  integrity sha512-z6wNeZmsyJ+KO6+yaLT6rAA8IMA18pYRqtsKOC1cbscthL/huYbqA3CjMQz0W7KP58RiFWslrkwsiadA/l/JxQ==
+  dependencies:
+    "@types/zen-observable" "^0.8.0"
+    "@wry/equality" "^0.1.9"
+    fast-json-stable-stringify "^2.0.0"
+    graphql-tag "^2.10.2"
+    optimism "^0.11.5"
+    symbol-observable "^1.2.0"
+    ts-invariant "^0.4.4"
+    tslib "^1.10.0"
+    zen-observable "^0.8.14"
+
 "@apollo/federation@0.11.2":
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.11.2.tgz#85f1bb87add88ee4d395b80402d09c59abd48a9c"
@@ -9652,6 +9667,11 @@ graphql-tag@^2.10.1, graphql-tag@^2.9.2:
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.2.tgz#e42214d0dde29e8db5d55b0107efdb2d461ed270"
   integrity sha512-7rUuJkVGyedBiVJ/hPaxndDnzxANUZ+QhTu0KUzgTGtP3ibY/hSUl9em21aVh5BNMJsmMc4nVuOTBoiAUJ2xBQ==
 
+graphql-tag@^2.10.2:
+  version "2.10.3"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.3.tgz#ea1baba5eb8fc6339e4c4cf049dabe522b0edf03"
+  integrity sha512-4FOv3ZKfA4WdOKJeHdz6B3F/vxBLSgmBcGeAFPf4n1F64ltJUvOOerNj0rsJxONQGdhUMynQIvd6LzB+1J5oKA==
+
 graphql-tools@4.0.6, graphql-tools@^4.0.0:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-4.0.6.tgz#0e729e73db05ade3df10a2f92511be544972a844"
@@ -15948,10 +15968,10 @@ react-native-linear-gradient@^2.5.6:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
-react-native-navigation@5.0.0-alpha.10:
-  version "5.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-5.0.0-alpha.10.tgz#7075eb8b508342b25c8e51ee9999ae76676c1176"
-  integrity sha512-SMIWMq1TFevjuXlcxVDhkV05jkOgiMK7UZT6jA2I5hGnA30b1n6wIeY26pKi+8QSNzLGz8NFkh2SSs18X0Ox5w==
+react-native-navigation@5.0.0-alpha.11:
+  version "5.0.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-5.0.0-alpha.11.tgz#d217c6506b91a669c42fc093d6f9ff4db6ee2b20"
+  integrity sha512-pGUYO33V1uD4RiFMoMjvMxHQX8QOjHsfinoE+NQROeIn/Jw/9zlHjDWPUJ16NEa6PvutPA6dl+5BthFX+AQYWQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
