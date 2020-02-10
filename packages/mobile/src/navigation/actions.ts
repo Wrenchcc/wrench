@@ -36,11 +36,10 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                 options: {
                   layout: {
                     backgroundColor: hasProject ? COLORS.DARK : COLORS.WHITE,
+                    componentBackgroundColor: hasProject ? COLORS.DARK : COLORS.WHITE,
                   },
                   statusBar: {
-                    backgroundColor: hasProject ? 'black' : 'white',
-                    style: hasProject ? 'light' : 'dark',
-                    visible: isIphone && hasProject ? false : true,
+                    visible: hasProject ? false : true,
                   },
                 },
               },

@@ -16,6 +16,7 @@ import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
 import { CommentItem } from 'ui'
+import { isIphone } from 'utils/platform'
 
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
@@ -144,7 +145,7 @@ function PostContainer({ postId, commentId }) {
     <View style={{ flex: 1 }}>
       <Header headerTitle={t('PostContainer:title')} headerAnimation={false} />
 
-      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted
           initialNumToRender={8}

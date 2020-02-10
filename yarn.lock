@@ -15938,10 +15938,10 @@ react-native-google-signin@^2.1.1:
   resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.1.tgz#4281940eee88602b0181dd49affdf8c92980c85c"
   integrity sha512-6l3fiLdX/bfhh0BoxGq+jGkagFsO+mrE/eRV4+3/0k8+FDxO90vdPpQdDiwlM5vWXRxWthTzMM09/jHw+4cvNw==
 
-react-native-image-picker@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-2.2.1.tgz#0d8551e171338c1f79c0950112c82ced86c664a6"
-  integrity sha512-r0RZtMxYFPOW+NbRBiN68/8pazVDBO+GUeqBQ0B+SQQPz/hgrW4ikXHoQn3R0mp3Qp1xNboHzfQDVW4VVyI6bQ==
+react-native-image-picker@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-2.3.0.tgz#cd8941261c03df999e8abcd4ad1ce99785cfef44"
+  integrity sha512-6B4OBkBjyyYs+LGJWAe+6bzfBHB4Np/rbdIPgN/WpK8sGNJ1FiabZ9GCH4TI71Nlg+xncKCgDL1P9InMoXBd1w==
 
 react-native-linear-gradient@^2.5.6:
   version "2.5.6"
@@ -15974,10 +15974,10 @@ react-native-rate@^1.1.10:
   resolved "https://registry.yarnpkg.com/react-native-rate/-/react-native-rate-1.1.10.tgz#278098fad536fba71fdedb6aab71278aa0946ced"
   integrity sha512-07L5923RpL+AdnsZCQSkiMbRi/7N/OJtZ6AWAl5bZyhncDD7L1ap94H3jtV7uFW5WGBNxMnGiC4fPLzn426mMw==
 
-react-native-reanimated@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.7.0.tgz#896db2576552ac59d288a1f6c7f00afc171f240c"
-  integrity sha512-FQWSqP605eQVJumuK2HpR+7heF0ZI+qfy4jNguv3Xv8nPFHeIgZaRTXHCEQL2AcuSIj50zy8jGJf5l134QMQWQ==
+react-native-reanimated@1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.3.2.tgz#3f050e61cad6173ea584517b7b981f17f442aa19"
+  integrity sha512-wDxI2N9YLZRmH/n9UIah7RnGSCZJcbKa4mylf2+2pPjicDJAlyjljGAkHOwUlSOol8x14fUp5m65TS9eVZNmZQ==
 
 react-native-share@^3.0.0:
   version "3.0.0"

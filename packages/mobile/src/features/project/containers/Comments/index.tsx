@@ -7,6 +7,7 @@ import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { CommentItem, Text } from 'ui'
 import { update } from 'rambda'
+import { isIphone } from 'utils/platform'
 
 function Comments({ postId }) {
   const { t } = useTranslation()
@@ -119,7 +120,7 @@ function Comments({ postId }) {
     <View style={{ flex: 1 }}>
       <Header headerTitle={t('Comments:title')} headerAnimation={false} />
 
-      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted
           initialNumToRender={8}

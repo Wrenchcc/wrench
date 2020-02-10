@@ -32,7 +32,7 @@ const {
 const HEADER_HEIGHT = NAVIGATION.TOP_BAR_HEIGHT
 
 function Provider({ children, extraContentInset }) {
-  const INITIAL_SCROLL_OFFSET = -(CONTENT_INSET + extraContentInset)
+  const INITIAL_SCROLL_OFFSET = _isAndroid ? 0 : -(CONTENT_INSET + extraContentInset)
 
   const scrollY = useRef(new Value(0))
   const clock = useRef(new Clock())
@@ -52,18 +52,13 @@ function Provider({ children, extraContentInset }) {
   }
 
   const config = {
-    toValue: new Value(0),
-    damping: 50,
-    mass: 0.3,
-    stiffness: 121.6,
+    damping: 1,
+    mass: 1,
+    stiffness: 50,
     overshootClamping: true,
-    restSpeedThreshold: 0.3,
-    restDisplacementThreshold: 0.3,
-    deceleration: 0.999,
-    bouncyFactor: 1,
-    velocityFactor: 1,
-    toss: 0.4,
-    coefForTranslatingVelocities: 5,
+    restSpeedThreshold: 0.001,
+    restDisplacementThreshold: 0.001,
+    toValue: new Value(0),
   }
 
   const snapOffset = cond(

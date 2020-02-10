@@ -39,7 +39,7 @@ export default function createNavigationAwareScrollable(Component) {
     ref
   ) {
     const scrollRef = useRef()
-    const scrollContext = useContext(ScrollContext)
+    const { onScroll, onScrollBeginDrag, onScrollEndDrag } = useContext(ScrollContext)
 
     // Scroll to input
     useEffect(() => {
@@ -92,6 +92,9 @@ export default function createNavigationAwareScrollable(Component) {
     return (
       <Component
         ref={setRef}
+        onScroll={onScroll}
+        onScrollBeginDrag={onScrollBeginDrag}
+        onScrollEndDrag={onScrollEndDrag}
         scrollEventThrottle={1}
         style={{ flex: 1 }}
         data={data}
@@ -105,7 +108,7 @@ export default function createNavigationAwareScrollable(Component) {
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"
         keyExtractor={keyExtractor}
-        contentInset={{ top: CONTENT_INSET + extraContentInset }}
+        contentInset={{ top: isAndroid ? 0 : CONTENT_INSET + extraContentInset }}
         contentOffset={{ y: -(CONTENT_INSET + extraContentInset) }}
         contentContainerStyle={{
           ...contentContainerStyle,
@@ -118,7 +121,6 @@ export default function createNavigationAwareScrollable(Component) {
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...keyboardDismissProp}
         {...props}
-        {...scrollContext} // TODO
       />
     )
   })
