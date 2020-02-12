@@ -1,15 +1,6 @@
 import styled from 'styled-components'
-import { NAVIGATION } from 'navigation/constants'
 import { COLORS } from 'ui/constants'
-import { isAndroid } from 'utils/platform'
 import FastImage from 'react-native-fast-image'
-
-export const Base = styled.View`
-  flex: 1;
-  padding-top: ${props => (isAndroid && !props.settingsPage ? NAVIGATION.STATUS_BAR_HEIGHT : 0)}px;
-  background-color: ${props => (props.settingsPage ? COLORS.WHITE : COLORS.DARK)};
-  padding-bottom: ${props => (props.settingsPage ? 0 : NAVIGATION.TAB_HEIGHT)}px;
-`
 
 export const Image = styled(FastImage)`
   flex: 1;
@@ -18,8 +9,7 @@ export const Image = styled(FastImage)`
   margin: ${props => props.gutter / 2}px;
   background: transparent;
   border-width: 3px;
-  border-color: ${props =>
-    props.selected ? (props.black ? COLORS.DARK : COLORS.WHITE) : 'transparent'};
+  border-color: ${props => (props.selected ? COLORS.DARK : 'transparent')};
   height: ${props => props.height - props.gutter / 2}px;
   width: ${props => props.width - props.gutter / 2}px;
 `

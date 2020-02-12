@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Keyboard } from 'react-native'
 import { useCurrentUserQuery } from '@wrench/common'
-import { showMention, dismissMention } from 'navigation'
+import { useNavigation } from 'navigation'
 import {
   CommentAndRepliesFragmentDoc,
   CommentsDocument,
@@ -27,6 +27,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   const inputRef = useRef()
   const isTracking = useRef(false)
   const [text, setText] = useState('')
+  const { showMention, dismissMention } = useNavigation()
 
   const [addComment] = useAddCommentMutation()
 

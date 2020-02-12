@@ -1,14 +1,15 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { Navigation } from 'react-native-navigation'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
-import { NAVIGATION } from 'navigation/constants'
+import { NAVIGATION, NAVIGATION_COMPONENTS } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { CommentItem, Text } from 'ui'
 import { update } from 'rambda'
 import { isIphone } from 'utils/platform'
 
-function Comments({ postId }) {
+function Comments({ postId, componentId }) {
   const { t } = useTranslation()
   const [commentId, setCommentId] = useState()
   const [username, setUsername] = useState()
@@ -23,6 +24,22 @@ function Comments({ postId }) {
       postId,
     },
   })
+
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          component: {
+            name: NAVIGATION_COMPONENTS.HEADER_TITLE,
+            passProps: {
+              text: t('Comments:title'),
+              headerAnimation: false,
+            },
+          },
+        },
+      },
+    })
+  }, [])
 
   const fetchReplies = ({ id, after }) =>
     fetchMore({

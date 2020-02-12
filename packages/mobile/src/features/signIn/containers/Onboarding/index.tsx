@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
-import { AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
+import { Page, AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
+import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
-import { Header, Touchable, Text, Loader, Icon } from 'ui'
+import { Touchable, Text, Loader } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
-import { arrowLeft } from 'images'
-import { Base, Cell, Image, Overlay, Picture } from './styles'
+import { Cell, Image, Overlay, Picture } from './styles'
 
 const { width } = Dimensions.get('window')
 
@@ -36,10 +36,6 @@ function Onboarding({ settingsPage }) {
   } = useProjectTypesQuery()
 
   const { data } = useCurrentUserQuery()
-
-  const handleNavigationBack = useCallback(() => {
-    navigateBack()
-  }, [navigateBack])
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
@@ -90,7 +86,6 @@ function Onboarding({ settingsPage }) {
             gutter={GUTTER}
             width={ITEM_SIZE}
             height={ITEM_SIZE}
-            black={settingsPage}
           >
             <Overlay selected={false} />
             <Text color="white">{item.title}</Text>
@@ -100,38 +95,32 @@ function Onboarding({ settingsPage }) {
     </Cell>
   )
 
-  const renderHeaderRight = () =>
-    isSaving ? (
-      <ActivityIndicator size="small" color={settingsPage ? 'black' : 'white'} />
-    ) : (
-      <Text
-        color={settingsPage ? 'dark' : 'white'}
-        medium
-        opacity={isComplete() ? 1 : 0.5}
-        disabled={!isComplete()}
-        onPress={handleSubmit}
-      >
-        {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
-      </Text>
-    )
-
-  const renderHeaderLeft = () =>
-    settingsPage && <Icon source={arrowLeft} onPress={handleNavigationBack} />
-
   return (
-    <Base settingsPage={settingsPage}>
-      <Header
-        headerLeft={renderHeaderLeft()}
-        headerTitle={
-          settingsPage && (
-            <Text numberOfLines={1} medium>
-              {t('Onboarding:headerTitle')}
-            </Text>
-          )
-        }
-        headerRight={renderHeaderRight()}
-        color={settingsPage ? 'white' : 'black'}
-      />
+    <Page
+      view
+      headerAnimation={false}
+      headerTitle={settingsPage && t('Onboarding:headerTitle')}
+      headerRight={{
+        component: {
+          name: NAVIGATION_COMPONENTS.CUSTOM_BUTTON,
+          passProps: {
+            children: isSaving ? (
+              <ActivityIndicator size="small" color="black" />
+            ) : (
+              <Text
+                color="dark"
+                medium
+                opacity={isComplete() ? 1 : 0.5}
+                disabled={!isComplete()}
+                onPress={handleSubmit}
+              >
+                {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
+              </Text>
+            ),
+          },
+        },
+      }}
+    >
       <FlatList
         ListHeaderComponent={!settingsPage && <Content />}
         ListEmptyComponent={loading && <Loader color="grey" />}
@@ -142,7 +131,7 @@ function Onboarding({ settingsPage }) {
         renderItem={renderItem}
       />
       {!settingsPage && <Footer progress={progress()} />}
-    </Base>
+    </Page>
   )
 }
 

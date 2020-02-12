@@ -11,7 +11,7 @@ import {
 } from '@wrench/common'
 import { update } from 'rambda'
 // import Header from 'navigation/Page/Header'
-import { hideNotificationBadge } from 'navigation'
+import { useNavigation } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
@@ -20,6 +20,7 @@ import { isIphone } from 'utils/platform'
 
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
+  const { hideNotificationBadge } = useNavigation()
 
   const [mention, setMention] = useState({
     commentId: null,

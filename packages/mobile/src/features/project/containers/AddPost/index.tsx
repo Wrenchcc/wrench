@@ -7,7 +7,7 @@ import {
   PostsDocument,
   CurrentUserProfileDocument,
 } from '@wrench/common'
-import { useNavigation, dismissModal } from 'navigation'
+import { useNavigation } from 'navigation'
 import { usePostStore, useToastStore, POST } from 'store'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
@@ -19,7 +19,7 @@ import SelectProject from '../../components/SelectProject'
 
 function AddPost() {
   const { t } = useTranslation()
-  const { navigateBack } = useNavigation()
+  const { navigateBack, dismissModal } = useNavigation()
   const [addPost] = useAddPostMutation()
 
   const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({

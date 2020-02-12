@@ -2,7 +2,8 @@ import NativeShare from 'react-native-share'
 import { mergeAll } from 'rambda'
 import i18next from 'i18next'
 import { setLocale, languages, updateUserLocale } from 'i18n'
-import { navigate, showModal, SCREENS } from 'navigation'
+// TODO
+import { SCREENS } from 'navigation'
 import { client } from 'services/gql'
 import { askForRating } from 'utils/rate'
 import openLink from 'utils/openLink'
@@ -81,7 +82,7 @@ const sections = props => ({
         {
           titleKey: 'customize-interests',
           onPress: () =>
-            navigate(SCREENS.ONBOARDING, {
+            props.navigate(SCREENS.ONBOARDING, {
               settingsPage: true,
             }),
         },
@@ -89,7 +90,7 @@ const sections = props => ({
           titleKey: 'push-notifications',
           hasChildren: true,
           onPress: () =>
-            navigate(SCREENS.SETTINGS, {
+            props.navigate(SCREENS.SETTINGS, {
               section: 'push-notifications',
             }),
         },
@@ -97,7 +98,7 @@ const sections = props => ({
           titleKey: 'email-notifications',
           hasChildren: true,
           onPress: () =>
-            navigate(SCREENS.SETTINGS, {
+            props.navigate(SCREENS.SETTINGS, {
               section: 'email-notifications',
             }),
         },
@@ -105,7 +106,7 @@ const sections = props => ({
           titleKey: 'language',
           hasChildren: true,
           onPress: () =>
-            navigate(SCREENS.SETTINGS, {
+            props.navigate(SCREENS.SETTINGS, {
               section: 'language',
             }),
         },
@@ -118,23 +119,23 @@ const sections = props => ({
           titleKey: 'support',
           hasChildren: true,
           onPress: () =>
-            navigate(SCREENS.SETTINGS, {
+            props.navigate(SCREENS.SETTINGS, {
               section: 'support',
             }),
         },
         {
           titleKey: 'terms',
-          onPress: () => showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/terms' }),
+          onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/terms' }),
         },
         {
           titleKey: 'website',
-          onPress: () => showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc' }),
+          onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc' }),
         },
         {
           titleKey: 'credits',
           hasChildren: true,
           onPress: () =>
-            navigate(SCREENS.SETTINGS, {
+            props.navigate(SCREENS.SETTINGS, {
               section: 'credits',
             }),
         },
@@ -192,7 +193,7 @@ const sections = props => ({
       data: [
         {
           titleKey: 'faq',
-          onPress: () => showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/faq' }),
+          onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://wrench.cc/faq' }),
         },
         {
           titleKey: 'report',
@@ -211,20 +212,20 @@ const sections = props => ({
       data: [
         {
           titleKey: 'knallpott',
-          onPress: () => showModal(SCREENS.WEBVIEW, { url: 'https://knallpott.de' }),
+          onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://knallpott.de' }),
         },
         {
           titleKey: 'paal',
-          onPress: () => showModal(SCREENS.WEBVIEW, { url: 'http://paalmotorcycles.com' }),
+          onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'http://paalmotorcycles.com' }),
         },
         {
           titleKey: 'kismo',
-          onPress: () => showModal(SCREENS.WEBVIEW, { url: 'http://kismomotors.com' }),
+          onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'http://kismomotors.com' }),
         },
         {
           titleKey: 'motorfabriken',
           onPress: () =>
-            showModal(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
+            props.showModal(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
         },
       ],
     },

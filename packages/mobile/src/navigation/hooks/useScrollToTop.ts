@@ -1,6 +1,7 @@
 import { useLayoutEffect } from 'react'
 import { Navigation } from 'react-native-navigation'
-import { componentId, currentComponentName } from '../actions'
+import useComponentId from './useComponentId'
+import { currentComponentName } from '../events'
 
 type ScrollOptions = { y?: number; animated?: boolean }
 
@@ -48,6 +49,8 @@ export default function useScrollToTop(
   name,
   enabled = true
 ) {
+  const componentId = useComponentId()
+
   useLayoutEffect(() => {
     const unsubscribe = Navigation.events().registerBottomTabSelectedListener(
       ({ selectedTabIndex, unselectedTabIndex }) => {

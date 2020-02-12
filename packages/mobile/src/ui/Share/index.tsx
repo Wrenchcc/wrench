@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import { Image } from 'react-native'
-import Animated from 'react-native-reanimated'
 import NativeShare from 'react-native-share'
 import { useTranslation } from 'react-i18next'
 import { track, events } from 'utils/analytics'
@@ -8,7 +7,7 @@ import Text from 'ui/Text'
 import Touchable from 'ui/Touchable'
 import { share } from 'images'
 
-function Share({ text, url, title, opacity = 1 }) {
+function Share({ text, url, title }) {
   const { t } = useTranslation()
 
   const handleShare = useCallback(() => {
@@ -23,11 +22,9 @@ function Share({ text, url, title, opacity = 1 }) {
   }, [title, url])
 
   return (
-    <Animated.View style={{ opacity }}>
-      <Touchable onPress={handleShare} hitSlop={20}>
-        {text ? <Text medium>{t('Share:share')}</Text> : <Image source={share} />}
-      </Touchable>
-    </Animated.View>
+    <Touchable onPress={handleShare} hitSlop={20}>
+      {text ? <Text medium>{t('Share:share')}</Text> : <Image source={share} />}
+    </Touchable>
   )
 }
 

@@ -4,10 +4,11 @@ import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useCurrentUserQuery } from '@wrench/common'
-import { useNavigation, AppNavigation, SCREENS } from 'navigation'
+import { Page, useNavigation, AppNavigation, SCREENS } from 'navigation'
+import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import { preSignUrl } from 'services/gql'
 import { useUserStore, USER } from 'store'
-import { Header, Text, Title, Icon, Touchable, Avatar, Input, KeyboardAvoidingView } from 'ui'
+import { Text, Title, Touchable, Avatar, Input, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
@@ -63,14 +64,6 @@ function EditProfile({ onboarding }) {
     },
     [update]
   )
-
-  const handleDismissModal = useCallback(() => {
-    if (onboarding) {
-      AppNavigation()
-    } else {
-      dismissModal()
-    }
-  }, [dismissModal, onboarding])
 
   const navigateToAddLocation = useCallback(() => {
     navigate(SCREENS.ADD_LOCATION)
@@ -166,24 +159,24 @@ function EditProfile({ onboarding }) {
   }, [])
 
   return (
-    <>
-      <Header
-        headerLeft={<Icon source={close} onPress={handleDismissModal} color="dark" />}
-        headerTitle={
-          <Text medium numberOfLines={1}>
-            {t('EditProfile:headerTitle')}
-          </Text>
-        }
-        headerRight={
-          isSaving ? (
-            <ActivityIndicator size="small" color="black" />
-          ) : (
-            <Touchable onPress={handleSave}>
-              <Text medium>{t('EditProfile:save')}</Text>
-            </Touchable>
-          )
-        }
-      />
+    <Page
+      headerTitle={t('EditProfile:headerTitle')}
+      headerRight={{
+        component: {
+          name: NAVIGATION_COMPONENTS.CUSTOM_BUTTON,
+          passProps: {
+            children: isSaving ? (
+              <ActivityIndicator size="small" color="black" />
+            ) : (
+              <Touchable onPress={handleSave}>
+                <Text medium>{t('EditProfile:save')}</Text>
+              </Touchable>
+            ),
+          },
+        },
+      }}
+      headerAnimation={false}
+    >
       <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView
           contentContainerStyle={{ paddingHorizontal: 20, marginTop: 45, paddingBottom: 60 }}
@@ -279,7 +272,7 @@ function EditProfile({ onboarding }) {
           </Information>
         </ScrollView>
       </KeyboardAvoidingView>
-    </>
+    </Page>
   )
 }
 
