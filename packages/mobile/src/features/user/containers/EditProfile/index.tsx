@@ -66,7 +66,13 @@ function EditProfile({ onboarding }) {
   )
 
   const navigateToAddLocation = useCallback(() => {
-    navigate(SCREENS.ADD_LOCATION)
+    navigate(SCREENS.ADD_LOCATION, {
+      options: {
+        topBar: {
+          visible: false,
+        },
+      },
+    })
   }, [navigate])
 
   const handleSave = useCallback(async () => {
@@ -177,7 +183,7 @@ function EditProfile({ onboarding }) {
       }}
       headerAnimation={false}
     >
-      <KeyboardAvoidingView paddingHorizontal={0}>
+      <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={90}>
         <ScrollView
           contentContainerStyle={{ paddingHorizontal: 20, marginTop: 45, paddingBottom: 60 }}
           keyboardDismissMode="on-drag"

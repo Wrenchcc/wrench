@@ -5,7 +5,7 @@ import { Base } from './styles'
 function Footer({ progress }) {
   return (
     <Base>
-      <ProgressBar progress={progress} />
+      <ProgressBar progress={progress} fillColor="black" />
     </Base>
   )
 }

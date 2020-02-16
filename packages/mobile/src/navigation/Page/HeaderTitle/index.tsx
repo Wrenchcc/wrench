@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Animated from 'react-native-reanimated'
 import { Text } from 'ui'
 
@@ -20,8 +20,9 @@ function HeaderTitle({
       })
     : 1
 
+  // NOTE: Fixed with may not be the best way.
   return (
-    <Animated.View style={{ opacity, alignSelf: 'center' }}>
+    <Animated.View style={{ opacity, maxWidth: 190 }}>
       <Text medium center numberOfLines={1} onPress={onPress} fontSize={headerTitleFontSize}>
         {text}
       </Text>
@@ -34,4 +35,4 @@ function HeaderTitle({
   )
 }
 
-export default HeaderTitle
+export default memo(HeaderTitle)

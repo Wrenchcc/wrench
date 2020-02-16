@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { showModal, SCREENS, STATUS_BAR } from 'navigation'
-import { isIphone } from 'utils/platform'
+import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { Touchable } from 'ui'
 import { Base, Text } from './styles'
 import { COLORS } from 'ui/constants'
@@ -10,17 +9,19 @@ const LEGAL_URL = 'https://wrench.cc/terms'
 
 function Legal({ color = 'white' }) {
   const { t } = useTranslation()
+  const { showModal } = useNavigation()
 
   const handleNavigation = useCallback(
     () =>
       showModal(SCREENS.WEBVIEW, {
         options: {
-          ...(isIphone && {
-            statusBar: {
-              // TODO: StatusBar change on android crashes second time
-              style: STATUS_BAR.DARK,
-            },
-          }),
+          topBar: {
+            visible: true,
+            noBorder: true,
+          },
+          statusBar: {
+            style: STATUS_BAR.DARK,
+          },
           layout: {
             backgroundColor: COLORS.WHITE,
           },

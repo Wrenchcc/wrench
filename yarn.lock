@@ -2716,10 +2716,10 @@
     wcwidth "^1.0.1"
     ws "^1.1.0"
 
-"@react-native-community/netinfo@^5.3.3":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.3.3.tgz#2e627456d83c1d75d4c43ab6cef70fe125b9691d"
-  integrity sha512-L4BsdIEEuG5rKkVNzjESdJ1wvusn0kflj/FrwctaW+xkLxiFs1+mdBg/mvqqfXvVFuBEphbyXJTFT4aG4Okkow==
+"@react-native-community/netinfo@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.5.0.tgz#7f1d2e301b8a1294da44fb44d7b3fd6ea4d40c8a"
+  integrity sha512-9fdOk1dxR3Bt+T4OuQxhf7EjyfbI6qVbPcNfTvVjGgRrx798ixAbBcCC+k5wp3LloVChVicXkyblu+wXEGiCWw==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -2750,10 +2750,10 @@
     "@sentry/utils" "5.12.0"
     tslib "^1.9.3"
 
-"@sentry/cli@^1.50.0":
-  version "1.50.0"
-  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.50.0.tgz#724e47be46abd4ba14359d2b7f49372adf4f407c"
-  integrity sha512-2E2O09subNt+S8LkDRk19keS+1ww/VT3BdfTdqwNC5+Aq09Ee0y4MbuurZRHk0J1DD8fVSJA6V7Sq04PSaHSQA==
+"@sentry/cli@^1.51.0":
+  version "1.51.0"
+  resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.51.0.tgz#2ce7d03b7aebf3f9e9a7186bac1a777fc3dc0e82"
+  integrity sha512-QXdW3smFW9Wjd5gYHuA9u9tCra87VqpeFljRKdD7D2CwnYCnFDeluVk3l9O8Me6IoVBuL9Uwxx8q1vPtob4n3Q==
   dependencies:
     fs-copy-file-sync "^1.1.1"
     https-proxy-agent "^4.0.0"
@@ -2815,17 +2815,17 @@
     lru_map "^0.3.3"
     tslib "^1.9.3"
 
-"@sentry/react-native@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-1.3.0.tgz#b3d6bb17b1fa7cd6e2690290e73d839f848416f0"
-  integrity sha512-z+QPFnns6XbNsEvIeU/D8sFwmhPxOuFidJDmuAtowIN0PI2vWazjWoZ9KpVB3B4sdF5tjIFtF39nlYW40m/ghA==
+"@sentry/react-native@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-1.3.1.tgz#d7698101578da93bf957057c626db73f87b41764"
+  integrity sha512-EsR3UW9hQJ7VHsS7nL5mKFa7iMQAHoelXiDJ94k9Y/aFm7pMA6Knpj4Gqo6rMqd2opGXLfO40b65VL8mJ4JDXw==
   dependencies:
     "@sentry/browser" "^5.12.1"
     "@sentry/core" "^5.12.0"
     "@sentry/integrations" "^5.12.0"
     "@sentry/types" "^5.12.0"
     "@sentry/utils" "^5.12.0"
-    "@sentry/wizard" "^1.1.0"
+    "@sentry/wizard" "^1.1.1"
 
 "@sentry/types@5.12.0", "@sentry/types@^5.12.0":
   version "5.12.0"
@@ -2840,12 +2840,12 @@
     "@sentry/types" "5.12.0"
     tslib "^1.9.3"
 
-"@sentry/wizard@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sentry/wizard/-/wizard-1.1.0.tgz#e70636f8fbb916004ccb81ff441fbc6c48061f62"
-  integrity sha512-IBipl2ldDSwBYdiipBLNMfxjN7eC4H5yyVHeBFWeKIYw9voCdnvMW8TfYFlmKMZdXjW/vMS2Jak4qV5AcvAOkQ==
+"@sentry/wizard@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@sentry/wizard/-/wizard-1.1.1.tgz#f673817bcf78a42ebd54e6652d6eb3c32fa12af5"
+  integrity sha512-P07iMkndcT865SS4WMEBlzda4MXg1tOzPe8kg9p8vQlppWZ4ZyCgs5cDyTZk3b7HLffk+YPL4S116mfwzVdP7w==
   dependencies:
-    "@sentry/cli" "^1.50.0"
+    "@sentry/cli" "^1.51.0"
     chalk "^2.4.1"
     glob "^7.1.3"
     inquirer "^6.2.0"
@@ -9728,12 +9728,6 @@ gzip-size@5.1.1:
     duplexer "^0.1.1"
     pify "^4.0.1"
 
-"hammerjs@https://github.com/naver/hammer.js.git":
-  version "2.0.17-snapshot"
-  resolved "https://github.com/naver/hammer.js.git#54bc698b25edd6e1b76ca975ebaced5ce0467d51"
-  dependencies:
-    "@types/hammerjs" "^2.0.36"
-
 handle-thing@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
@@ -15851,6 +15845,14 @@ react-i18next@^11.3.1:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
 
+react-i18next@^11.3.2:
+  version "11.3.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.3.2.tgz#b85d0b0e4d35979f8e24ee17d1d7be5694412806"
+  integrity sha512-0nrwsoqpue6hfnXoAJwz7NgQrrYgKmotz0xPOHcXtJLwx6Qvj1lQQNb54LkBdNhr55O4R4+nv51LhhWP8A1r4w==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    html-parse-stringify2 "2.0.1"
+
 react-infinite-scroller@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.2.4.tgz#f67eaec4940a4ce6417bebdd6e3433bfc38826e9"
@@ -15899,10 +15901,10 @@ react-native-bundle-splitter@^1.0.7:
   resolved "https://registry.yarnpkg.com/react-native-bundle-splitter/-/react-native-bundle-splitter-1.0.7.tgz#06638c626e2eac321dd920936c6ecb87569c84b3"
   integrity sha512-4k+xR2cgYQVAejVTGu624+I5Vbxzu5fP9PUY2u5YTX7lgEj+clFUqHqBGImqPJ8yfYZ4AdrnDY7oD8W8AStKNg==
 
-react-native-camera@^3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.17.0.tgz#41b12b74ac9e806e86a6efb2a19319b40323f196"
-  integrity sha512-Gd9E5XHrEScYPsugO4sYBYw+RnFg+M1kbjvsCE3B/pk+4Fk01tNY14RYoghYsimWWsQVgYNqOOJG5f1fQ3BUeg==
+react-native-camera@^3.18.0:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.18.0.tgz#aa046a86ea8a691f25fd579b8abcbda1503e13fa"
+  integrity sha512-rLjLKJDEnI0E0nN7ZfK3GKEP37cYURh6QV2DCI1BRs9FWcETwDcgVYtQSfFEibWcGazPtsAqVDTg5LUYMFPjCA==
   dependencies:
     prop-types "^15.6.2"
 
@@ -15934,13 +15936,12 @@ react-native-firebase@^5.6.0:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.7.2"
 
-react-native-gesture-handler@1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.5.6.tgz#5d90145f624e3707db2930f43ab41579683e2375"
-  integrity sha512-z2jLUkRiRc0PBAC9UcXYkqy3VUzBG0cYQAGMsDHsd90JgrzudHAFRJV9fvFm18wNauFTNnJievjZ0C3rI2ydhw==
+react-native-gesture-handler@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.0.tgz#e9a4e1d0c7ac21eb0d6b6ec013e73f9c0c33a629"
+  integrity sha512-KulGCWKTxa6xBpPP4LWEPmmLqBqOe2jbtdlILOVF/dR4EgImiaBVrKdOHeRMyMzJOYAWxs5uDZsyA8hgSsm+lw==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
-    hammerjs "https://github.com/naver/hammer.js.git"
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
@@ -15960,10 +15961,10 @@ react-native-linear-gradient@^2.5.6:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
-react-native-navigation@5.0.0-alpha.11:
-  version "5.0.0-alpha.11"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-5.0.0-alpha.11.tgz#d217c6506b91a669c42fc093d6f9ff4db6ee2b20"
-  integrity sha512-pGUYO33V1uD4RiFMoMjvMxHQX8QOjHsfinoE+NQROeIn/Jw/9zlHjDWPUJ16NEa6PvutPA6dl+5BthFX+AQYWQ==
+react-native-navigation@5.0.0-alpha.14:
+  version "5.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-5.0.0-alpha.14.tgz#3f8f452c93d290afabeafd91ed77e1f24a904d70"
+  integrity sha512-B7b0FvIkjXvy593w8guW1RJNQMX5gmDx6vWrmK9gn965LFxyBtOs5/00wcylcaq6OAs4DUX3cC8vsgW2JUuTNQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -16015,10 +16016,10 @@ react-native-video@^5.0.2:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^8.0.6:
-  version "8.0.6"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-8.0.6.tgz#247e6e16926e06105144bb33ec9d0429e01c8900"
-  integrity sha512-lvapBzV0Ymv39EpubaitF8RzkhYDb7uT9n230f5V+SpDU3BN03WnED7v3HHQDXoPwjDBNRWzDgoImnFn9WlSzw==
+react-native-webview@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-8.1.0.tgz#6c8976c24792402eabe34b8bb86a43ad414266f6"
+  integrity sha512-LTuNogyk2TowsZ3vOSQRlCQHrFdCQMKOGMHd+c2Q6ILGlRh6yYnYBiHCIdwo1oEhKYb6qrloDZYzZu4LuFrT5w==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
@@ -16359,10 +16360,10 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reanimated-bottom-sheet@^1.0.0-alpha.18:
-  version "1.0.0-alpha.18"
-  resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.18.tgz#f1f3ddbcee67473000647173b33bf41b1c069739"
-  integrity sha512-fBISS7XzSz1F/k0rQDWTKO1tWu3FgibRSoV59pcPTxWmxFzO6SJs/ZqEugMRWncLhdCejJ3wRWLwWYelEv1gRA==
+reanimated-bottom-sheet@^1.0.0-alpha.19:
+  version "1.0.0-alpha.19"
+  resolved "https://registry.yarnpkg.com/reanimated-bottom-sheet/-/reanimated-bottom-sheet-1.0.0-alpha.19.tgz#94ea79e7b2896b8f489547415d15d15c99ac44ba"
+  integrity sha512-Q0sGUHYdr5h2n/AY7pKQty35zcUAxxYM1nCl+luSQAyqiY6a5Kf8IBQRsOVvs60sDzqXxtbwxHgM5mkwaiQC4Q==
 
 recast@0.18.5:
   version "0.18.5"

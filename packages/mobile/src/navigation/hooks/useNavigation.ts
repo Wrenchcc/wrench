@@ -19,10 +19,12 @@ export function showModal(screen, { options, ...passProps } = {}) {
       children: [
         {
           component: {
+            id: screen,
             name: screen,
             options: {
               ...options,
               topBar: {
+                ...options?.topBar,
                 leftButtons: [
                   {
                     id: NAVIGATION_ACTIONS.DISMISS_MODAL,

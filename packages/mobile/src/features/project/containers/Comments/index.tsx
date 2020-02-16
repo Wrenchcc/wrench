@@ -3,11 +3,13 @@ import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-n
 import { useTranslation } from 'react-i18next'
 import { Navigation } from 'react-native-navigation'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
-import { NAVIGATION, NAVIGATION_COMPONENTS } from 'navigation/constants'
+import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { CommentItem, Text } from 'ui'
 import { update } from 'rambda'
 import { isIphone } from 'utils/platform'
+
+const COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST = 90
 
 function Comments({ postId, componentId }) {
   const { t } = useTranslation()
@@ -134,7 +136,11 @@ function Comments({ postId, componentId }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        behavior={isIphone && 'padding'}
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST}
+      >
         <FlatList
           inverted
           initialNumToRender={8}
@@ -154,7 +160,7 @@ function Comments({ postId, componentId }) {
           data={edges}
           renderItem={renderItem}
           contentContainerStyle={{
-            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+            paddingBottom: 20,
             flexGrow: 1,
             justifyContent: 'flex-end',
           }}

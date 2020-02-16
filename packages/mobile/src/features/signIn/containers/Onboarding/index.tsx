@@ -30,12 +30,9 @@ function Onboarding({ settingsPage }) {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
   }, [])
 
-  const {
-    data: { types },
-    loading,
-  } = useProjectTypesQuery()
+  const { data: projectData, loading } = useProjectTypesQuery()
 
-  const { data } = useCurrentUserQuery()
+  const { data: userData } = useCurrentUserQuery()
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
@@ -64,14 +61,20 @@ function Onboarding({ settingsPage }) {
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
     const interestedIn = Object.keys(items).map(id => ({ id }))
 
-    const Navigate = data.user.isSilhouette
+    const Navigate = userData.user.isSilhouette
       ? () =>
           showModal(SCREENS.EDIT_PROFILE, {
             onboarding: true,
           })
       : () => AppNavigation(false)
 
-    await editUser({ interestedIn })
+    await editUser({
+      variables: {
+        input: {
+          interestedIn,
+        },
+      },
+    })
     setTimeout(settingsPage ? navigateBack : Navigate, 200)
   }
 
@@ -99,6 +102,7 @@ function Onboarding({ settingsPage }) {
     <Page
       view
       headerAnimation={false}
+      headerLeft={null}
       headerTitle={settingsPage && t('Onboarding:headerTitle')}
       headerRight={{
         component: {
@@ -126,7 +130,7 @@ function Onboarding({ settingsPage }) {
         ListEmptyComponent={loading && <Loader color="grey" />}
         contentContainerStyle={{ padding: 5, flex: loading ? 1 : 0 }}
         numColumns={2}
-        data={types}
+        data={projectData?.types}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
       />

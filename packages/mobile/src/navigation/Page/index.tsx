@@ -40,15 +40,15 @@ function Page({
               subtitle: headerSubTitle,
               headerAnimation,
               onPress: scrollToTop,
-              scrollY: scrollY.current,
+              // scrollY: scrollY.current,
             },
           },
         },
         rightButtons: headerRight && [{ id: 'rightButton', ...headerRight }],
-        leftButtons: headerLeft && [headerLeft],
+        leftButtons: headerLeft === null ? [] : headerLeft && [{ id: 'leftButton', headerLeft }],
       },
     })
-  }, [headerTitle])
+  }, [headerTitle, headerRight])
 
   useEffect(() => {
     if (scrollToIndex && scrollRef.current) {

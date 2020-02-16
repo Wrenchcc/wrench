@@ -18,9 +18,10 @@ import { COLORS } from 'ui/constants'
 import { isAndroid } from 'utils/platform'
 import EmojiList from 'components/EmojiList'
 import { MENTION } from './constants'
-import { Base, Inner, Input, Button } from './styles'
+import { Inner, Input, Button } from './styles'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
+const COMMENT_FIELD_HEIGHT = 40
 
 function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   const { t } = useTranslation()
@@ -280,7 +281,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   )
 
   return (
-    <Base>
+    <>
       {emoji && <EmojiList onPress={handleEmojiShortcut} />}
 
       <Inner>
@@ -298,7 +299,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           onChangeText={handleOnChangeText}
           value={text}
           color="dark"
-          height={40}
+          height={COMMENT_FIELD_HEIGHT}
         />
         {text.length > 0 && (
           <Button onPress={handleSubmit}>
@@ -308,7 +309,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           </Button>
         )}
       </Inner>
-    </Base>
+    </>
   )
 }
 

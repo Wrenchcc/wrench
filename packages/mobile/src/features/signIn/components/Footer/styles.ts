@@ -4,7 +4,7 @@ import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   height: ${NAVIGATION.TAB_HEIGHT};
-  background-color: ${COLORS.DARK};
+  background-color: ${COLORS.WHITE};
   justify-content: center;
   position: absolute;
   padding: 0 20px;

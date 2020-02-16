@@ -42,6 +42,7 @@ function User({ user: initialUserData }) {
     user && (
       <>
         <Header
+          paddingTop
           firstName={user.firstName}
           lastName={user.lastName}
           avatarUrl={user.avatarUrl}

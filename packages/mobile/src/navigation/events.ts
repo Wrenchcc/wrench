@@ -45,6 +45,9 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                   statusBar: {
                     visible: hasProject ? false : true,
                   },
+                  topBar: {
+                    visible: false,
+                  },
                 },
               },
             },

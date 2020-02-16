@@ -8,10 +8,22 @@ import { Base, Title, Description, Button } from './styles'
 const onPressAction = (type, showModal) => {
   switch (type) {
     case TYPES.PROJECT:
-      return showModal(SCREENS.ADD_PROJECT)
+      return showModal(SCREENS.ADD_PROJECT, {
+        options: {
+          topBar: {
+            visible: false,
+          },
+        },
+      })
     case TYPES.POST:
     case TYPES.PROJECT_POST:
-      return showModal(SCREENS.ADD_MEDIA)
+      return showModal(SCREENS.ADD_MEDIA, {
+        options: {
+          topBar: {
+            visible: false,
+          },
+        },
+      })
     default:
       return null
   }

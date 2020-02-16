@@ -28,7 +28,6 @@ export function AuthNavigation() {
       visible: false,
     },
     topBar: {
-      height: 0,
       visible: false,
     },
   })
@@ -44,18 +43,17 @@ export function AuthNavigation() {
 
 export function AppNavigation(onboarding) {
   Navigation.setDefaultOptions(defaultOptions)
-
   if (onboarding) {
     Navigation.setRoot({
       root: {
-        component: {
-          name: SCREENS.ONBOARDING,
-          options: {
-            statusBar: {
-              style: STATUS_BAR.LIGHT,
-              backgroundColor: COLORS.DARK,
+        stack: {
+          children: [
+            {
+              component: {
+                name: SCREENS.ONBOARDING,
+              },
             },
-          },
+          ],
         },
       },
     })
@@ -82,7 +80,6 @@ export function AppNavigation(onboarding) {
                           selectedIconColor: COLORS.WHITE,
                         },
                         topBar: {
-                          height: 0,
                           visible: false,
                         },
                       },
@@ -105,7 +102,6 @@ export function AppNavigation(onboarding) {
                           selectedIconColor: COLORS.WHITE,
                         },
                         topBar: {
-                          height: 0,
                           visible: false,
                         },
                       },
@@ -129,7 +125,6 @@ export function AppNavigation(onboarding) {
                           selectedIconColor: COLORS.WHITE,
                         },
                         topBar: {
-                          height: 0,
                           visible: false,
                         },
                       },
@@ -152,7 +147,6 @@ export function AppNavigation(onboarding) {
                           selectedIconColor: COLORS.WHITE,
                         },
                         topBar: {
-                          height: 0,
                           visible: false,
                         },
                       },
@@ -175,7 +169,6 @@ export function AppNavigation(onboarding) {
                           selectedIconColor: COLORS.WHITE,
                         },
                         topBar: {
-                          height: 0,
                           visible: false,
                         },
                       },
