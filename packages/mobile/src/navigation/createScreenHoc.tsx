@@ -13,7 +13,6 @@ export default client => Component => {
     // const id =
     //   componentId !== SCREENS.MENTION && componentId !== SCREENS.EDIT_POST ? componentId : null
     // console.log(id)
-    console.log(componentId)
 
     return (
       <ApolloProvider client={client}>

@@ -20,7 +20,7 @@ function HeaderTitle({
       })
     : 1
 
-  // NOTE: Fixed with may not be the best way.
+  // NOTE: Fixed width may not be the best way.
   return (
     <Animated.View style={{ opacity, maxWidth: 190 }}>
       <Text medium center numberOfLines={1} onPress={onPress} fontSize={headerTitleFontSize}>

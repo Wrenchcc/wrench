@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Keyboard } from 'react-native'
 import { useCurrentUserQuery } from '@wrench/common'
 import { useNavigation } from 'navigation'
 import {
@@ -15,12 +14,10 @@ import { logError } from 'utils/sentry'
 import { useMentionStore } from 'store'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
-import { isAndroid } from 'utils/platform'
 import EmojiList from 'components/EmojiList'
 import { MENTION } from './constants'
 import { Inner, Input, Button } from './styles'
 
-const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
 const COMMENT_FIELD_HEIGHT = 40
 
 function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
@@ -45,11 +42,6 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
       inputRef.current.focus()
     }
   }, [inputRef, username, commentId])
-
-  useEffect(() => {
-    const keyboardHideEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, dismissMention)
-    return () => keyboardHideEventListener.remove()
-  }, [])
 
   const handleSubmit = () => {
     if (blurOnSubmit) {
