@@ -14,6 +14,9 @@ function AddProjectType() {
     () =>
       navigate(SCREENS.ADD_PROJECT_MODEL, {
         options: {
+          topBar: {
+            visible: false,
+          },
           animations: {
             push: {
               waitForRender: true,

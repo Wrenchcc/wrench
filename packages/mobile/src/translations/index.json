@@ -79,7 +79,8 @@
       "description": "We’ve selected some projects below you may find interesting."
     },
     "PostContainer": {
-      "title": "Post"
+      "title": "Post",
+      "loadMore": "Load more comments"
     },
     "SelectProject": {
       "create": "Create a new project"
@@ -147,7 +148,8 @@
     "Project": {
       "recent": "Recent posts",
       "follow": "Follow",
-      "unfollow": "Following"
+      "unfollow": "Following",
+      "headerLeft": "Share"
     },
     "Apple": {
       "button": "Continue with Apple"
@@ -432,7 +434,8 @@
       "description": "Vi har valt några projekt som vi tror du tycker om."
     },
     "PostContainer": {
-      "title": "Inlägg"
+      "title": "Inlägg",
+      "loadMore": "Ladda fler kommentarer"
     },
     "SelectProject": {
       "create": "Skapa ett nytt projekt"
@@ -500,7 +503,8 @@
     "Project": {
       "recent": "Senaste inlägg",
       "follow": "Följ",
-      "unfollow": "Följer"
+      "unfollow": "Följer",
+      "headerLeft": "Dela"
     },
     "Apple": {
       "button": "Logga in med Apple"

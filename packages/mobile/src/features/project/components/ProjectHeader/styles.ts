@@ -7,6 +7,7 @@ export const Base = styled.View`
   padding-left: ${props => (props.spacingHorizontal ? 20 : 0)}px;
   padding-right: ${props => (props.spacingHorizontal ? 20 : 0)}px;
   margin-bottom: 50px;
+  margin-top: 40px;
 `
 
 export const Followers = styled(UiFollowers)`

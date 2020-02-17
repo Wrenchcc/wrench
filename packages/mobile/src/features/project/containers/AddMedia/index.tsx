@@ -5,10 +5,7 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { Header, Text, Icon, Touchable } from 'ui'
-import {
-  useNavigationComponentDidAppear,
-  useNavigationComponentDidDisappear,
-} from 'navigation/hooks'
+import { useNavigationComponentDidDisappear } from 'navigation/hooks'
 import cropImage from 'utils/cropImage'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
@@ -18,21 +15,15 @@ import MediaPicker from 'components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
 import { Base } from './styles'
 
-function AddMedia() {
+function AddMedia({ isFocused }) {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
   const [isLoading, setLoading] = useState(false)
-  const [isFocused, setFocus] = useState(false)
+  const [focused, setFocus] = useState(isFocused)
   const { showActionSheetWithOptions } = useActionSheet()
 
-  useNavigationComponentDidAppear(({ componentId }) => {
-    if (componentId === 'ADD_MEDIA') {
-      setFocus(true)
-    }
-  })
-
   useNavigationComponentDidDisappear(({ componentId }) => {
-    if (componentId === 'ADD_MEDIA') {
+    if (componentId === SCREENS.ADD_MEDIA && focused) {
       setFocus(false)
     }
   })
@@ -67,7 +58,13 @@ function AddMedia() {
 
     setLoading(false)
 
-    navigate(SCREENS.ADD_POST)
+    navigate(SCREENS.ADD_POST, {
+      options: {
+        topBar: {
+          visible: false,
+        },
+      },
+    })
   }, [selectedFile, navigate, addFiles])
 
   const handleDismissModal = useCallback(() => {
@@ -96,9 +93,13 @@ function AddMedia() {
     return selectedFile ? (
       <ImageEditor source={selectedFile} onChange={onEdit} />
     ) : (
-      <Camera onTakePicture={onSelect} active={isFocused} />
+      <Camera onTakePicture={onSelect} />
     )
-  }, [selectedFile, isFocused])
+  }, [selectedFile])
+
+  if (!focused) {
+    return null
+  }
 
   return (
     <Base>

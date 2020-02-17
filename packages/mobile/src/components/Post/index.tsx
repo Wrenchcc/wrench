@@ -9,7 +9,7 @@ import {
   ProjectDocument,
 } from '@wrench/common'
 import { useActionSheet } from '@expo/react-native-action-sheet'
-import { useNavigation, showEditPost, SCREENS } from 'navigation'
+import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
@@ -18,7 +18,7 @@ import { Base, Top, Headline, Content, Spacer } from './styles'
 
 function Post({ post, withoutTitle, withoutComments, paddingBottom, numberOfLines = 3 }) {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
+  const { navigate, showEditPost } = useNavigation()
   const [deletePost] = useDeletePostMutation()
   const handleEdit = useCallback(() => showEditPost({ post }), [post])
 

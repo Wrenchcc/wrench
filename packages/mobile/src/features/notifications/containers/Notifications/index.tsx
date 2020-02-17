@@ -7,14 +7,7 @@ import {
 } from '@wrench/common'
 import { Navigation } from 'react-native-navigation'
 import ms from 'ms'
-import {
-  Layout,
-  FlatList,
-  SCREENS,
-  showNotificationBadge,
-  hideNotificationBadge,
-  useScrollToTop,
-} from 'navigation'
+import { Layout, FlatList, SCREENS, useNavigation, useScrollToTop } from 'navigation'
 import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
@@ -22,6 +15,7 @@ function Notifications({ componentId }) {
   const scrollRef = useRef()
   const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
   const [deleteNotification] = useDeleteNotificationMutation()
+  const { showNotificationBadge, hideNotificationBadge } = useNavigation()
 
   const handleDeleteNotification = useCallback(id => {
     deleteNotification({

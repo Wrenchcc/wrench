@@ -7,12 +7,8 @@ function Content() {
 
   return (
     <Base>
-      <Headline color="white" medium>
-        {t('OnboardingContent:headline')}
-      </Headline>
-      <Description color="white" opacity={0.8}>
-        {t('OnboardingContent:description')}
-      </Description>
+      <Headline medium>{t('OnboardingContent:headline')}</Headline>
+      <Description opacity={0.8}>{t('OnboardingContent:description')}</Description>
     </Base>
   )
 }

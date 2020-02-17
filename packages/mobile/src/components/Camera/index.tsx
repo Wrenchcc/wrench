@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { TouchableWithoutFeedback, View, ActivityIndicator } from 'react-native'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
@@ -13,7 +13,7 @@ const { Constants } = RNCamera
 
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
-function Camera({ onTakePicture, initialCameraType = Constants.Type.back, active }) {
+function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   const camera = useRef()
   const [isLoading, setLoading] = useState(true)
   const [permission, setPermission] = useState(false)
@@ -71,23 +71,21 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back, active
   return (
     <TouchableWithoutFeedback onPressIn={setFocus}>
       <>
-        {active && (
-          <RNCamera
-            ref={camera}
-            type={cameraType}
-            flashMode={flashMode}
-            style={{ flex: 1 }}
-            autoFocusPointOfInterest={autofocus}
-            ratio="1:1"
-            pendingAuthorizationView={
-              <View
-                style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
-              >
-                <ActivityIndicator size="small" color="white" />
-              </View>
-            }
-          />
-        )}
+        <RNCamera
+          ref={camera}
+          type={cameraType}
+          flashMode={flashMode}
+          style={{ flex: 1 }}
+          autoFocusPointOfInterest={autofocus}
+          ratio="1:1"
+          pendingAuthorizationView={
+            <View
+              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
+            >
+              <ActivityIndicator size="small" color="white" />
+            </View>
+          }
+        />
 
         {autofocus && <AutoFocus coordinates={autofocus} />}
         <CameraType onPress={changeCameraType} />
@@ -100,4 +98,4 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back, active
   )
 }
 
-export default memo(Camera)
+export default Camera

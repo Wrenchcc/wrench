@@ -2,13 +2,11 @@
   "Project": {
     "en": {
       "recent": "Recent posts",
-      "follow": "Follow",
-      "unfollow": "Following"
+      "headerLeft": "Share"
     },
     "sv": {
       "recent": "Senaste inlägg",
-      "follow": "Följ",
-      "unfollow": "Följer"
+      "headerLeft": "Dela"
     }
   }
 }

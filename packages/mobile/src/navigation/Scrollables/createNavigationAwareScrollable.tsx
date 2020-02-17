@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useCallback, forwardRef, useContext } from 'react'
-import { Keyboard, TextInput, UIManager } from 'react-native'
+import { Keyboard, TextInput, UIManager, RefreshControl } from 'react-native'
 import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { CONTENT_INSET } from '../constants'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
-const KEYBOARD_OFFSET = isAndroid ? 28 : 10
+const KEYBOARD_OFFSET = isAndroid ? 35 : 10
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid
@@ -40,6 +40,7 @@ export default function createNavigationAwareScrollable(Component) {
   ) {
     const scrollRef = useRef()
     const { onScroll, onScrollBeginDrag, onScrollEndDrag } = useContext(ScrollContext)
+    const VIEW_OFFSET = isAndroid ? CONTENT_INSET + extraContentInset : 0
 
     // Scroll to input
     useEffect(() => {
@@ -101,6 +102,15 @@ export default function createNavigationAwareScrollable(Component) {
         onRefresh={refetch}
         onEndReached={onEndReached}
         refreshing={isRefetching}
+        refreshControl={
+          refetch && (
+            <RefreshControl
+              progressViewOffset={VIEW_OFFSET}
+              refreshing={isRefetching}
+              onRefresh={refetch}
+            />
+          )
+        }
         initialNumToRender={initialNumToRender}
         ListFooterComponent={hasNextPage && renderLoader(false)}
         ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
@@ -116,7 +126,7 @@ export default function createNavigationAwareScrollable(Component) {
           paddingBottom,
           paddingLeft: paddingHorizontal,
           paddingRight: paddingHorizontal,
-          paddingTop: isAndroid ? CONTENT_INSET + extraContentInset : 0,
+          paddingTop: VIEW_OFFSET,
         }}
         {...(borderSeparator && { ItemSeparatorComponent: BorderSeparator })}
         {...keyboardDismissProp}

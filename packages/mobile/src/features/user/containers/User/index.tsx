@@ -3,8 +3,9 @@ import { KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, UserDocument } from '@wrench/common'
 import { Page, FlatList } from 'navigation'
+import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import Post from 'components/Post'
-import { Share, Banner } from 'ui'
+import { Banner } from 'ui'
 import FollowingProjects from 'features/user/components/FollowingProjects'
 import Header from 'features/user/components/Header'
 import UserProjects from 'features/user/components/UserProjects'
@@ -41,6 +42,7 @@ function User({ user: initialUserData }) {
     user && (
       <>
         <Header
+          paddingTop
           firstName={user.firstName}
           lastName={user.lastName}
           avatarUrl={user.avatarUrl}
@@ -59,9 +61,16 @@ function User({ user: initialUserData }) {
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Page
         headerTitle={user.fullName}
-        headerRight={
-          user.dynamicLink && <Share title={user.fullName} url={user.dynamicLink} text />
-        }
+        headerRight={{
+          component: {
+            name: NAVIGATION_COMPONENTS.SHARE_BUTTON,
+            passProps: {
+              text: true,
+              url: user.dynamicLink,
+              title: user.fullName,
+            },
+          },
+        }}
       >
         <FlatList
           initialNumToRender={1}

@@ -4,15 +4,21 @@ import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 import { ActionSheetProvider } from '@expo/react-native-action-sheet'
 import { isAndroid } from 'utils/platform'
 import { NavigationContext } from './context'
-import * as actions from './actions'
+// import { SCREENS } from './constants'
 
 export default client => Component => {
-  function Screen(props) {
+  function Screen({ componentId, ...props }) {
+    // NOTE: If overlay is open do not update the componentId
+    // push etc will stop working next navigate
+    // const id =
+    //   componentId !== SCREENS.MENTION && componentId !== SCREENS.EDIT_POST ? componentId : null
+    // console.log(id)
+
     return (
       <ApolloProvider client={client}>
-        <NavigationContext.Provider value={actions}>
+        <NavigationContext.Provider value={componentId}>
           <ActionSheetProvider>
-            <Component {...props} />
+            <Component {...{ componentId, ...props }} />
           </ActionSheetProvider>
         </NavigationContext.Provider>
       </ApolloProvider>

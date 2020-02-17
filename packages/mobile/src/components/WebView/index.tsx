@@ -3,10 +3,11 @@ import { View, BackHandler } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { WebView as RNWebView } from 'react-native-webview'
 import qs from 'url'
-import { dismissModal } from 'navigation'
-import { Header, ProgressBar, Text, Icon, Touchable, Share } from 'ui'
+import { Page } from 'navigation'
+import { NAVIGATION_COMPONENTS } from 'navigation/constants'
+import { ProgressBar, Icon, Touchable, Share } from 'ui'
 import { COLORS } from 'ui/constants'
-import { close, arrowLeftSmall, arrowRightSmall, refresh } from 'images'
+import { arrowLeftSmall, arrowRightSmall, refresh } from 'images'
 import { Base, Footer, Inner } from './styles'
 
 function WebView({ url: initialUrl }) {
@@ -21,8 +22,6 @@ function WebView({ url: initialUrl }) {
   const handleGoBack = useCallback(() => webview.current.goBack(), [webview])
   const handleRefresh = useCallback(() => webview.current.reload(), [webview])
   const handleGoForward = useCallback(() => webview.current.goForward(), [webview])
-
-  const handleClose = useCallback(() => dismissModal(), [dismissModal])
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
@@ -85,44 +84,44 @@ function WebView({ url: initialUrl }) {
   )
 
   return (
-    <Base>
-      <Header
-        headerLeft={<Icon onPress={handleClose} color="dark" source={close} />}
-        headerTitle={
-          <View style={{ alignItems: 'center' }}>
-            <Text medium fontSize={15} numberOfLines={1} style={{ marginBottom: 3 }}>
-              {title}
-            </Text>
-            <Text fontSize={11} numberOfLines={1} color="light_grey">
-              {qs.parse(url).host}
-            </Text>
-          </View>
-        }
-        headerRight={<Icon onPress={handleRefresh} source={refresh} />}
-      />
+    <Page
+      view
+      headerAnimation={false}
+      headerTitleFontSize={15}
+      headerTitle={title}
+      headerSubTitle={qs.parse(url).host}
+      headerRight={{
+        component: {
+          name: NAVIGATION_COMPONENTS.CUSTOM_BUTTON,
+          passProps: {
+            children: <Icon onPress={handleRefresh} source={refresh} />,
+          },
+        },
+      }}
+    >
+      <Base>
+        <ProgressBar
+          opacity={progress > 0 ? 1 : 0}
+          fillColor="black"
+          borderRadius={0}
+          barHeight={2}
+          progress={progress}
+        />
 
-      <ProgressBar
-        opacity={progress > 0 ? 1 : 0}
-        fillColor="black"
-        borderRadius={0}
-        barHeight={2}
-        progress={progress}
-      />
+        <RNWebView
+          style={{ flex: 1, backgroundColor: COLORS.WHITE }}
+          source={{ uri: url }}
+          onLoadEnd={onLoadEnd}
+          onError={onLoadError}
+          onNavigationStateChange={handleOnNavigationStateChange}
+          onLoadProgress={handleOnLoadProgress}
+          ref={webview}
+          decelerationRate="fast"
+        />
 
-      <RNWebView
-        style={{ flex: 1, backgroundColor: COLORS.WHITE }}
-        source={{ uri: url }}
-        useWebKit
-        onLoadEnd={onLoadEnd}
-        onError={onLoadError}
-        onNavigationStateChange={handleOnNavigationStateChange}
-        onLoadProgress={handleOnLoadProgress}
-        ref={webview}
-        decelerationRate="fast"
-      />
-
-      {renderFooter()}
-    </Base>
+        {renderFooter()}
+      </Base>
+    </Page>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserSettingsQuery, useToggleNotificationSettingsMutation } from '@wrench/common'
-import { Page, SectionList } from 'navigation'
+import { Page, SectionList, useNavigation } from 'navigation'
 import { Title, SelectionItem } from 'ui'
 import Footer from '../../components/Footer'
 import sections from '../../sections'
@@ -22,6 +22,7 @@ const keyExtractor = (item, index) => item + index
 
 function Settings({ section }) {
   const { t } = useTranslation()
+  const { navigate, showModal } = useNavigation()
 
   const { data } = useCurrentUserSettingsQuery()
   const [toggleNotificationSettings] = useToggleNotificationSettingsMutation()
@@ -51,7 +52,7 @@ function Settings({ section }) {
     []
   )
 
-  const settings = data && data.user.settings
+  const settings = data?.user.settings
 
   return (
     <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>
@@ -61,7 +62,12 @@ function Settings({ section }) {
         renderSectionHeader={renderSectionHeader}
         renderItem={renderItem}
         initialNumToRender={15}
-        sections={sections({ handleToggleNotificationSettings, settings })[section || 'settings']}
+        sections={
+          settings &&
+          sections({ handleToggleNotificationSettings, settings, navigate, showModal })[
+            section || 'settings'
+          ]
+        }
         keyExtractor={keyExtractor}
         ListFooterComponent={!section && <Footer />}
         borderSeparator

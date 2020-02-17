@@ -10,8 +10,8 @@ import {
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
-import Header from 'navigation/Page/Header'
-import { hideNotificationBadge } from 'navigation'
+// import Header from 'navigation/Page/Header'
+import { useNavigation } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
@@ -20,6 +20,7 @@ import { isIphone } from 'utils/platform'
 
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
+  const { hideNotificationBadge } = useNavigation()
 
   const [mention, setMention] = useState({
     commentId: null,
@@ -143,7 +144,7 @@ function PostContainer({ postId, commentId }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Header headerTitle={t('PostContainer:title')} headerAnimation={false} />
+      {/* <Header headerTitle={t('PostContainer:title')} headerAnimation={false} /> */}
 
       <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList

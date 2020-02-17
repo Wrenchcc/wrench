@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Keyboard } from 'react-native'
 import { useCurrentUserQuery } from '@wrench/common'
-import { showMention, dismissMention } from 'navigation'
+import { useNavigation } from 'navigation'
 import {
   CommentAndRepliesFragmentDoc,
   CommentsDocument,
@@ -15,18 +14,18 @@ import { logError } from 'utils/sentry'
 import { useMentionStore } from 'store'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
-import { isAndroid } from 'utils/platform'
 import EmojiList from 'components/EmojiList'
 import { MENTION } from './constants'
-import { Base, Inner, Input, Button } from './styles'
+import { Inner, Input, Button } from './styles'
 
-const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidHide' : 'keyboardWillHide'
+const COMMENT_FIELD_HEIGHT = 40
 
 function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   const { t } = useTranslation()
   const inputRef = useRef()
   const isTracking = useRef(false)
   const [text, setText] = useState('')
+  const { showMention, dismissMention } = useNavigation()
 
   const [addComment] = useAddCommentMutation()
 
@@ -35,9 +34,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
     updateQuery: store.actions.updateQuery,
   }))
 
-  const {
-    data: { user },
-  } = useCurrentUserQuery()
+  const { data } = useCurrentUserQuery()
 
   useEffect(() => {
     if (username) {
@@ -45,11 +42,6 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
       inputRef.current.focus()
     }
   }, [inputRef, username, commentId])
-
-  useEffect(() => {
-    const keyboardHideEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, dismissMention)
-    return () => keyboardHideEventListener.remove()
-  }, [])
 
   const handleSubmit = () => {
     if (blurOnSubmit) {
@@ -281,14 +273,14 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   )
 
   return (
-    <Base>
+    <>
       {emoji && <EmojiList onPress={handleEmojiShortcut} />}
 
       <Inner>
         <Avatar
-          uri={user && user.avatarUrl}
-          fallback={user.isSilhouette}
-          fullName={user.fullName}
+          uri={data?.user.avatarUrl}
+          fallback={data?.user.isSilhouette}
+          fullName={data?.user.fullName}
         />
         <Input
           ref={inputRef}
@@ -299,7 +291,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           onChangeText={handleOnChangeText}
           value={text}
           color="dark"
-          height={40}
+          height={COMMENT_FIELD_HEIGHT}
         />
         {text.length > 0 && (
           <Button onPress={handleSubmit}>
@@ -309,7 +301,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           </Button>
         )}
       </Inner>
-    </Base>
+    </>
   )
 }
 

@@ -1,15 +1,17 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { Navigation } from 'react-native-navigation'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
-import Header from 'navigation/Page/Header'
-import { NAVIGATION } from 'navigation/constants'
+import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { CommentItem, Text } from 'ui'
 import { update } from 'rambda'
 import { isIphone } from 'utils/platform'
 
-function Comments({ postId }) {
+const COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST = 90
+
+function Comments({ postId, componentId }) {
   const { t } = useTranslation()
   const [commentId, setCommentId] = useState()
   const [username, setUsername] = useState()
@@ -24,6 +26,22 @@ function Comments({ postId }) {
       postId,
     },
   })
+
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          component: {
+            name: NAVIGATION_COMPONENTS.HEADER_TITLE,
+            passProps: {
+              text: t('Comments:title'),
+              headerAnimation: false,
+            },
+          },
+        },
+      },
+    })
+  }, [])
 
   const fetchReplies = ({ id, after }) =>
     fetchMore({
@@ -118,9 +136,11 @@ function Comments({ postId }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Header headerTitle={t('Comments:title')} headerAnimation={false} />
-
-      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        behavior={isIphone && 'padding'}
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST}
+      >
         <FlatList
           inverted
           initialNumToRender={8}
@@ -140,7 +160,7 @@ function Comments({ postId }) {
           data={edges}
           renderItem={renderItem}
           contentContainerStyle={{
-            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+            paddingBottom: 20,
             flexGrow: 1,
             justifyContent: 'flex-end',
           }}

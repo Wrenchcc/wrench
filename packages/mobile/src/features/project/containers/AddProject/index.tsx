@@ -17,7 +17,13 @@ function AddProject() {
   }))
 
   const handleNavigation = useCallback(() => {
-    navigate(SCREENS.ADD_PROJECT_TYPE)
+    navigate(SCREENS.ADD_PROJECT_TYPE, {
+      options: {
+        topBar: {
+          visible: false,
+        },
+      },
+    })
   }, [])
 
   const handleDismissModal = useCallback(() => {

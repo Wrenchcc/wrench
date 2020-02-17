@@ -1,22 +1,26 @@
-import React, { useRef, cloneElement, useCallback, useEffect } from 'react'
+import React, { useRef, cloneElement, useEffect, useCallback } from 'react'
+import { Navigation } from 'react-native-navigation'
 import Animated from 'react-native-reanimated'
-import { NAVIGATION } from '../constants'
-import Header from './Header'
+import { NAVIGATION, NAVIGATION_COMPONENTS } from '../constants'
+import useComponentId from '../hooks/useComponentId'
 
 const { event, set, Value } = Animated
 
 function Page({
-  scrollPosition,
   children,
-  headerTitle,
-  headerLeft,
-  headerRight,
   stickyFooter,
-  headerAnimation,
   scrollToIndex,
+  headerTitle,
+  headerSubTitle,
+  headerRight,
+  headerLeft,
+  headerAnimation,
+  headerTitleFontSize,
+  view,
 }) {
   const scrollRef = useRef()
   const scrollY = useRef(new Value(-NAVIGATION.LIST_OFFSET))
+  const componentId = useComponentId()
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
@@ -25,28 +29,43 @@ function Page({
   }, [scrollRef])
 
   useEffect(() => {
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          component: {
+            name: NAVIGATION_COMPONENTS.HEADER_TITLE,
+            passProps: {
+              headerTitleFontSize,
+              text: headerTitle,
+              subtitle: headerSubTitle,
+              headerAnimation,
+              onPress: scrollToTop,
+              // scrollY: scrollY.current,
+            },
+          },
+        },
+        rightButtons: headerRight && [{ id: 'rightButton', ...headerRight }],
+        leftButtons: headerLeft === null ? [] : headerLeft && [{ id: 'leftButton', headerLeft }],
+      },
+    })
+  }, [headerTitle, headerRight])
+
+  useEffect(() => {
     if (scrollToIndex && scrollRef.current) {
       scrollRef.current.getNode().scrollToOffset({ top: 600 })
     }
   }, [scrollRef, scrollToIndex])
 
-  return (
+  return view ? (
+    children
+  ) : (
     <>
-      <Header
-        headerTitle={headerTitle}
-        scrollY={scrollY.current}
-        headerLeft={headerLeft}
-        headerRight={headerRight}
-        headerAnimation={headerAnimation}
-        onPress={scrollToTop}
-      />
-
       {cloneElement(children, {
         contentInset: {
-          top: NAVIGATION.LIST_OFFSET,
+          top: 0,
         },
         contentOffset: {
-          y: -NAVIGATION.LIST_OFFSET,
+          y: 0,
         },
         onScroll: event(
           [
@@ -60,7 +79,6 @@ function Page({
       })}
 
       {stickyFooter}
-      {scrollPosition && <Animated.Code exec={Animated.set(scrollPosition, scrollY.current)} />}
     </>
   )
 }

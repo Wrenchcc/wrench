@@ -18,7 +18,7 @@ function SelectProject({ dark = false }) {
     fetchPolicy: 'cache-only',
   })
 
-  const projects = data.user.projects.edges
+  const projects = data?.user.projects.edges
 
   const { projectId, title, update } = usePostStore(store => {
     const project = getProjectById(store.projectId, projects)

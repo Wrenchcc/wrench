@@ -1,23 +1,19 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback } from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
-import { usePaginatedQuery, ProjectDocument, useFollowProjectMutation } from '@wrench/common'
-import Animated from 'react-native-reanimated'
+import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
+import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import Post from 'components/Post'
-import { Edit, EmptyState, Title, Share, Text } from 'ui'
+import { EmptyState, Title } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 import { isIphone } from 'utils/platform'
 
-const { interpolate, Extrapolate, Value } = Animated
-
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 function Project({ slug, id, postId, project: initialProjectData, post: initialPostData }) {
-  const scrollY = useRef(new Value(0))
   const { t } = useTranslation()
-  const [followProject] = useFollowProjectMutation()
 
   const {
     data: { edges, post, project },
@@ -36,47 +32,6 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
       postId,
     },
   })
-
-  const opacityFollow = interpolate(scrollY.current, {
-    extrapolate: Extrapolate.CLAMP,
-    inputRange: [300, 350],
-    outputRange: [0, 1],
-  })
-
-  const opacityShare = interpolate(scrollY.current, {
-    extrapolate: Extrapolate.CLAMP,
-    inputRange: [220, 280],
-    outputRange: [1, 0],
-  })
-
-  const handleFollow = useCallback(() => {
-    const totalCount = project?.permissions.isFollower
-      ? project.followers.totalCount - 1
-      : project.followers.totalCount + 1
-
-    const isFollower = !project?.permissions.isFollower
-
-    followProject({
-      variables: {
-        id: project.id,
-      },
-      optimisticResponse: {
-        __typename: 'Mutation',
-        followProject: {
-          ...project,
-          followers: {
-            ...project.followers,
-            totalCount,
-          },
-          permissions: {
-            ...project.permissions,
-            isFollower,
-          },
-          __typename: 'Project',
-        },
-      },
-    })
-  }, [project])
 
   const hasPosts = post || (edges && edges.length > 0)
 
@@ -113,36 +68,25 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
         {content}
       </>
     )
-  }, [post, edges, hasPosts, project, handleFollow])
+  }, [post, edges, hasPosts, project])
 
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Page
         headerTitle={project?.title}
-        scrollPosition={scrollY.current}
-        headerRight={
-          project?.permissions.isOwner ? (
-            <Edit project={project} />
-          ) : (
-            <>
-              <Animated.View style={{ zIndex: opacityShare }}>
-                <Share
-                  title={project?.title}
-                  url={project?.dynamicLink}
-                  text
-                  opacity={opacityShare}
-                />
-              </Animated.View>
-              <Animated.View
-                style={{ opacity: opacityFollow, position: 'absolute', zIndex: opacityFollow }}
-              >
-                <Text medium onPress={handleFollow}>
-                  {project?.permissions.isFollower ? t('Project:unfollow') : t('Project:follow')}
-                </Text>
-              </Animated.View>
-            </>
-          )
-        }
+        headerRight={{
+          component: {
+            name: project?.permissions.isOwner
+              ? NAVIGATION_COMPONENTS.EDIT_BUTTON
+              : NAVIGATION_COMPONENTS.SHARE_BUTTON,
+            passProps: {
+              project,
+              text: true,
+              url: project?.dynamicLink,
+              title: project?.title,
+            },
+          },
+        }}
       >
         <FlatList
           initialNumToRender={1}
