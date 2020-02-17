@@ -192,8 +192,8 @@ function EditProfile({ onboarding }) {
             <Avatar
               uri={avatarUrl}
               size={120}
-              fullName={data.user.fullName}
-              fallback={data.user.isSilhouette}
+              fullName={data?.user.fullName}
+              fallback={data?.user.isSilhouette}
             />
             <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
               <Text color="white" medium fontSize={15}>

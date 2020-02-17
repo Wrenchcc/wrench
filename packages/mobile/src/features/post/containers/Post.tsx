@@ -10,13 +10,14 @@ import {
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
-// import Header from 'navigation/Page/Header'
-import { useNavigation } from 'navigation'
+import { Page, useNavigation } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
 import { CommentItem } from 'ui'
 import { isIphone } from 'utils/platform'
+
+const COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST = 90
 
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
@@ -143,10 +144,12 @@ function PostContainer({ postId, commentId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <View style={{ flex: 1 }}>
-      {/* <Header headerTitle={t('PostContainer:title')} headerAnimation={false} /> */}
-
-      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
+    <Page view headerTitle={t('PostContainer:title')} headerAnimation={false}>
+      <KeyboardAvoidingView
+        behavior={isIphone && 'padding'}
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST}
+      >
         <FlatList
           inverted
           initialNumToRender={8}
@@ -166,7 +169,7 @@ function PostContainer({ postId, commentId }) {
           data={edges}
           renderItem={renderItem}
           contentContainerStyle={{
-            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT * 2,
+            paddingBottom: NAVIGATION.TOP_BAR_HEIGHT,
             flexGrow: 1,
             justifyContent: 'flex-end',
           }}
@@ -180,7 +183,7 @@ function PostContainer({ postId, commentId }) {
           />
         </View>
       </KeyboardAvoidingView>
-    </View>
+    </Page>
   )
 }
 

@@ -1,9 +1,8 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { Navigation } from 'react-native-navigation'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
-import { NAVIGATION_COMPONENTS } from 'navigation/constants'
+import { Page } from 'navigation'
 import CommentField from 'components/CommentField'
 import { CommentItem, Text } from 'ui'
 import { update } from 'rambda'
@@ -11,7 +10,7 @@ import { isIphone } from 'utils/platform'
 
 const COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST = 90
 
-function Comments({ postId, componentId }) {
+function Comments({ postId }) {
   const { t } = useTranslation()
   const [commentId, setCommentId] = useState()
   const [username, setUsername] = useState()
@@ -26,22 +25,6 @@ function Comments({ postId, componentId }) {
       postId,
     },
   })
-
-  useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        title: {
-          component: {
-            name: NAVIGATION_COMPONENTS.HEADER_TITLE,
-            passProps: {
-              text: t('Comments:title'),
-              headerAnimation: false,
-            },
-          },
-        },
-      },
-    })
-  }, [])
 
   const fetchReplies = ({ id, after }) =>
     fetchMore({
@@ -135,7 +118,7 @@ function Comments({ postId, componentId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <View style={{ flex: 1 }}>
+    <Page headerTitle={t('Comments:title')} headerAnimation={false}>
       <KeyboardAvoidingView
         behavior={isIphone && 'padding'}
         style={{ flex: 1 }}
@@ -169,7 +152,7 @@ function Comments({ postId, componentId }) {
           <CommentField postId={postId} username={username} commentId={commentId} emoji />
         </View>
       </KeyboardAvoidingView>
-    </View>
+    </Page>
   )
 }
 
