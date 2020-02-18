@@ -17,8 +17,6 @@ import CommentField from 'components/CommentField'
 import { CommentItem } from 'ui'
 import { isIphone } from 'utils/platform'
 
-const COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST = 90
-
 function PostContainer({ postId, commentId }) {
   const { t } = useTranslation()
   const { hideNotificationBadge } = useNavigation()
@@ -145,11 +143,7 @@ function PostContainer({ postId, commentId }) {
 
   return (
     <Page view headerTitle={t('PostContainer:title')} headerAnimation={false}>
-      <KeyboardAvoidingView
-        behavior={isIphone && 'padding'}
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST}
-      >
+      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted
           initialNumToRender={8}

@@ -239,6 +239,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         })
       } else if ((lastChar === MENTION.EMPTY && isTracking.current) || val === '') {
         isTracking.current = false
+
         dismissMention()
       }
 
@@ -255,6 +256,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
               const comment = val.slice(0, -query.length - 1)
               setText(`${comment}@${user.username} `)
               isTracking.current = false
+
               dismissMention()
             },
           })

@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react'
-import { View } from 'react-native'
 import { useEditProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from 'navigation'
@@ -94,44 +93,6 @@ function EditModel({ passProps }) {
           autoFocus
         />
       </KeyboardAvoidingView>
-    </>
-  )
-
-  return (
-    <>
-      <Header
-        headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
-        headerTitle={<Text medium>{t('EditModel:headerTitle')}</Text>}
-        headerRight={
-          model && (
-            <Text onPress={handleSave} medium>
-              {t('EditModel:save')}
-            </Text>
-          )
-        }
-      />
-      <View style={{ flex: 1 }}>
-        {isSearching && <SearchModel query={query} onPress={handleModelChange} />}
-
-        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-          <View style={{ flex: 1, paddingHorizontal: 20 }}>
-            <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-              {t('AddProjectModel:title')}
-            </Title>
-
-            <Input
-              placeholder={t('AddProjectModel:placeholder')}
-              large
-              onChangeText={onChangeText}
-              value={model ? formatModel(model) : query}
-              borderColor="dark"
-              color="dark"
-              returnKeyType="next"
-              onBlur={handleOnBlur}
-            />
-          </View>
-        </KeyboardAvoidingView>
-      </View>
     </>
   )
 }

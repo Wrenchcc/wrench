@@ -3,16 +3,16 @@ import { View, BackHandler } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { WebView as RNWebView } from 'react-native-webview'
 import qs from 'url'
-import { Page } from 'navigation'
-import { NAVIGATION_COMPONENTS } from 'navigation/constants'
+import { Page, useNavigation } from 'navigation'
 import { ProgressBar, Icon, Touchable, Share } from 'ui'
 import { COLORS } from 'ui/constants'
-import { arrowLeftSmall, arrowRightSmall, refresh } from 'images'
+import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
 import { Base, Footer, Inner } from './styles'
 
 function WebView({ url: initialUrl }) {
   const { t } = useTranslation()
   const webview = useRef()
+  const { dismissModal } = useNavigation()
   const [progress, setProgress] = useState(0)
   const [url, setUrl] = useState(initialUrl)
   const [title, setTitle] = useState(t('WebView:loading'))
@@ -90,14 +90,8 @@ function WebView({ url: initialUrl }) {
       headerTitleFontSize={15}
       headerTitle={title}
       headerSubTitle={qs.parse(url).host}
-      headerRight={{
-        component: {
-          name: NAVIGATION_COMPONENTS.CUSTOM_BUTTON,
-          passProps: {
-            children: <Icon onPress={handleRefresh} source={refresh} />,
-          },
-        },
-      }}
+      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+      headerRight={<Icon onPress={handleRefresh} source={refresh} />}
     >
       <Base>
         <ProgressBar

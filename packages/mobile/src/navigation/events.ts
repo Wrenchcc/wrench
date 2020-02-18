@@ -2,7 +2,7 @@ import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { getCurrentUserProjects } from 'services/gql'
 import { logError } from 'utils/sentry'
-import { SCREENS, TABS_INDEX, NAVIGATION_ACTIONS } from './constants'
+import { SCREENS, TABS_INDEX } from './constants'
 
 // TODO: Find a way to konw when pressing tab from
 // stack that we should not scroll to top first press
@@ -10,17 +10,6 @@ export let currentComponentName
 
 Navigation.events().registerComponentDidAppearListener(({ componentName }) => {
   currentComponentName = componentName
-})
-
-Navigation.events().registerNavigationButtonPressedListener(({ buttonId, componentId }) => {
-  switch (buttonId) {
-    case NAVIGATION_ACTIONS.BACK:
-      return Navigation.pop(componentId)
-    case NAVIGATION_ACTIONS.DISMISS_MODAL:
-      return Navigation.dismissModal(componentId)
-    default:
-      return
-  }
 })
 
 Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
@@ -47,9 +36,6 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                   },
                   statusBar: {
                     visible: hasProject ? false : true,
-                  },
-                  topBar: {
-                    visible: false,
                   },
                 },
               },

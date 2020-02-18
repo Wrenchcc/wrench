@@ -79,9 +79,6 @@ export function AppNavigation(onboarding) {
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
                         },
-                        topBar: {
-                          visible: false,
-                        },
                       },
                     },
                   },
@@ -100,9 +97,6 @@ export function AppNavigation(onboarding) {
                           icon: explore,
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
-                        },
-                        topBar: {
-                          visible: false,
                         },
                       },
                     },
@@ -124,9 +118,6 @@ export function AppNavigation(onboarding) {
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
                         },
-                        topBar: {
-                          visible: false,
-                        },
                       },
                     },
                   },
@@ -146,9 +137,6 @@ export function AppNavigation(onboarding) {
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
                         },
-                        topBar: {
-                          visible: false,
-                        },
                       },
                     },
                   },
@@ -167,9 +155,6 @@ export function AppNavigation(onboarding) {
                           icon: profile,
                           iconColor: COLORS.TAB_ICON,
                           selectedIconColor: COLORS.WHITE,
-                        },
-                        topBar: {
-                          visible: false,
                         },
                       },
                     },

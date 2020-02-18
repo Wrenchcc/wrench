@@ -1,37 +1,10 @@
 import { register } from 'react-native-bundle-splitter'
 import { Navigation } from 'react-native-navigation'
-import { SCREENS, NAVIGATION_COMPONENTS } from './constants'
+import { SCREENS } from './constants'
 import createScreenHoc from './createScreenHoc'
 
 export default function registerScreens(client) {
   const HOC = createScreenHoc(client)
-
-  Navigation.registerComponent(
-    NAVIGATION_COMPONENTS.HEADER_TITLE,
-    () => require('navigation/Page/HeaderTitle').default
-  )
-
-  Navigation.registerComponent(
-    NAVIGATION_COMPONENTS.SHARE_BUTTON,
-    () => require('ui/Share').default
-  )
-
-  Navigation.registerComponent(NAVIGATION_COMPONENTS.EDIT_BUTTON, () =>
-    HOC(require('ui/Edit').default)
-  )
-
-  // NOTE
-  // headerRight={{
-  //   component: {
-  //     name: NAVIGATION_COMPONENTS.CUSTOM_BUTTON,
-  //     passProps: {
-  //       children: <ActivityIndicator />
-  //     },
-  //   },
-  // }}
-  Navigation.registerComponent(NAVIGATION_COMPONENTS.CUSTOM_BUTTON, () => ({ children }) =>
-    children
-  )
 
   Navigation.registerComponent(SCREENS.INITIALIZING, () =>
     HOC(register({ require: () => require('./Initializing') }))

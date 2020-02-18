@@ -1,6 +1,6 @@
 import { COLORS } from 'ui/constants'
 import { hasNotch } from 'utils/platform'
-import { STATUS_BAR, NAVIGATION_ACTIONS, NAVIGATION_COMPONENTS } from './constants'
+import { STATUS_BAR } from './constants'
 
 export default {
   modalPresentationStyle: 'fullScreen',
@@ -31,14 +31,7 @@ export default {
   },
   topBar: {
     drawBehind: true,
-    elevation: 0,
-    noBorder: true,
-    leftButtons: [
-      {
-        id: NAVIGATION_ACTIONS.BACK,
-        icon: require('images/arrowLeft.png'),
-      },
-    ],
+    visible: false,
   },
   navigationBar: {
     backgroundColor: COLORS.DARK,

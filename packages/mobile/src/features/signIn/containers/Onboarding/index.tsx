@@ -4,7 +4,6 @@ import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
 import { Page, AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
-import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
 import { Touchable, Text, Loader } from 'ui'
@@ -102,28 +101,23 @@ function Onboarding({ settingsPage }) {
     <Page
       view
       headerAnimation={false}
-      {...(!settingsPage && { headerLeft: [] })}
+      {...(!settingsPage && { headerLeft: true })}
       headerTitle={settingsPage && t('Onboarding:headerTitle')}
-      headerRight={{
-        component: {
-          name: NAVIGATION_COMPONENTS.CUSTOM_BUTTON,
-          passProps: {
-            children: isSaving ? (
-              <ActivityIndicator size="small" color="black" />
-            ) : (
-              <Text
-                color="dark"
-                medium
-                opacity={isComplete() ? 1 : 0.5}
-                disabled={!isComplete()}
-                onPress={handleSubmit}
-              >
-                {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
-              </Text>
-            ),
-          },
-        },
-      }}
+      headerRight={
+        isSaving ? (
+          <ActivityIndicator size="small" color="black" />
+        ) : (
+          <Text
+            color="dark"
+            medium
+            opacity={isComplete() ? 1 : 0.5}
+            disabled={!isComplete()}
+            onPress={handleSubmit}
+          >
+            {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
+          </Text>
+        )
+      }
     >
       <FlatList
         ListHeaderComponent={!settingsPage && <Content />}

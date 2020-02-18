@@ -58,13 +58,7 @@ function AddMedia({ isFocused }) {
 
     setLoading(false)
 
-    navigate(SCREENS.ADD_POST, {
-      options: {
-        topBar: {
-          visible: false,
-        },
-      },
-    })
+    navigate(SCREENS.ADD_POST)
   }, [selectedFile, navigate, addFiles])
 
   const handleDismissModal = useCallback(() => {

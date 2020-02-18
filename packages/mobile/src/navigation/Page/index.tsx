@@ -1,8 +1,7 @@
-import React, { memo, useRef, cloneElement, useEffect, useCallback } from 'react'
-import { Navigation } from 'react-native-navigation'
+import React, { useRef, cloneElement, useEffect, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
-import { NAVIGATION, NAVIGATION_COMPONENTS } from '../constants'
-import useComponentId from '../hooks/useComponentId'
+import Header from './Header'
+import { NAVIGATION } from '../constants'
 
 const { event, set, Value } = Animated
 
@@ -15,12 +14,10 @@ function Page({
   headerRight,
   headerLeft,
   headerAnimation,
-  headerTitleFontSize,
   view,
 }) {
   const scrollRef = useRef()
   const scrollY = useRef(new Value(-NAVIGATION.LIST_OFFSET))
-  const componentId = useComponentId()
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
@@ -29,52 +26,39 @@ function Page({
   }, [scrollRef])
 
   useEffect(() => {
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        title: {
-          component: {
-            name: NAVIGATION_COMPONENTS.HEADER_TITLE,
-            passProps: {
-              headerTitleFontSize,
-              text: headerTitle,
-              subtitle: headerSubTitle,
-              headerAnimation,
-              onPress: scrollToTop,
-              // scrollY: scrollY.current,
-            },
-          },
-        },
-        leftButtons: headerLeft && [{ id: 'leftButton', headerLeft }],
-        rightButtons: headerRight && [{ id: 'rightButton', ...headerRight }],
-      },
-    })
-  }, [headerTitle, headerRight])
-
-  useEffect(() => {
     if (scrollToIndex && scrollRef.current) {
       scrollRef.current.getNode().scrollToOffset({ top: 600 })
     }
   }, [scrollRef, scrollToIndex])
 
-  return view ? (
-    children
-  ) : (
+  return (
     <>
-      {cloneElement(children, {
-        onScroll: event(
-          [
-            {
-              nativeEvent: ({ contentOffset }) => set(scrollY.current, contentOffset.y),
-            },
-          ],
-          { useNativeDriver: true }
-        ),
-        ref: scrollRef,
-      })}
+      <Header
+        headerTitle={headerTitle}
+        headerSubTitle={headerSubTitle}
+        scrollY={scrollY.current}
+        headerLeft={headerLeft}
+        headerRight={headerRight}
+        headerAnimation={headerAnimation}
+        onPress={scrollToTop}
+      />
+      {view
+        ? children
+        : cloneElement(children, {
+            onScroll: event(
+              [
+                {
+                  nativeEvent: ({ contentOffset }) => set(scrollY.current, contentOffset.y),
+                },
+              ],
+              { useNativeDriver: true }
+            ),
+            ref: scrollRef,
+          })}
 
       {stickyFooter}
     </>
   )
 }
 
-export default memo(Page)
+export default Page

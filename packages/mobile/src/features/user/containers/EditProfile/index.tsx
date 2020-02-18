@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ActivityIndicator, ScrollView, View } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useCurrentUserQuery } from '@wrench/common'
-import { Page, useNavigation, AppNavigation, SCREENS } from 'navigation'
-import { NAVIGATION_COMPONENTS } from 'navigation/constants'
+import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'services/gql'
 import { useUserStore, USER } from 'store'
-import { Text, Title, Touchable, Avatar, Input, KeyboardAvoidingView } from 'ui'
+import { Text, Title, Touchable, Avatar, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
@@ -53,7 +52,7 @@ function EditProfile({ onboarding }) {
   const [editUser] = useEditUserMutation()
 
   useEffect(() => {
-    initialState(data.user)
+    initialState(data?.user)
   }, [initialState, data])
 
   const handleBio = useCallback(
@@ -66,13 +65,7 @@ function EditProfile({ onboarding }) {
   )
 
   const navigateToAddLocation = useCallback(() => {
-    navigate(SCREENS.ADD_LOCATION, {
-      options: {
-        topBar: {
-          visible: false,
-        },
-      },
-    })
+    navigate(SCREENS.ADD_LOCATION)
   }, [navigate])
 
   const handleSave = useCallback(async () => {
@@ -167,25 +160,22 @@ function EditProfile({ onboarding }) {
   return (
     <Page
       headerTitle={t('EditProfile:headerTitle')}
-      headerRight={{
-        component: {
-          name: NAVIGATION_COMPONENTS.CUSTOM_BUTTON,
-          passProps: {
-            children: isSaving ? (
-              <ActivityIndicator size="small" color="black" />
-            ) : (
-              <Touchable onPress={handleSave}>
-                <Text medium>{t('EditProfile:save')}</Text>
-              </Touchable>
-            ),
-          },
-        },
-      }}
+      headerRight={
+        isSaving ? (
+          <ActivityIndicator size="small" color="black" />
+        ) : (
+          <Touchable onPress={handleSave}>
+            <Text medium>{t('EditProfile:save')}</Text>
+          </Touchable>
+        )
+      }
+      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+      view
       headerAnimation={false}
     >
-      <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={90}>
+      <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 20, marginTop: 45, paddingBottom: 60 }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}
           keyboardDismissMode="on-drag"
         >
           <ChangeAvatar>

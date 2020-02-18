@@ -9,8 +9,6 @@ import { CommentItem, Text } from 'ui'
 import { update } from 'rambda'
 import { isIphone } from 'utils/platform'
 
-const COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST = 90
-
 function Comments({ postId }) {
   const { t } = useTranslation()
   const [commentId, setCommentId] = useState()
@@ -119,12 +117,8 @@ function Comments({ postId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page headerTitle={t('Comments:title')} headerAnimation={false}>
-      <KeyboardAvoidingView
-        behavior={isIphone && 'padding'}
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={COMMENT_FIELD_HEIGHT_AND_EMOJI_LIST}
-      >
+    <Page headerTitle={t('Comments:title')} headerAnimation={false} view>
+      <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted
           initialNumToRender={8}

@@ -3,9 +3,8 @@ import { View, KeyboardAvoidingView } from 'react-native'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, FlatList } from 'navigation'
-import { NAVIGATION_COMPONENTS } from 'navigation/constants'
 import Post from 'components/Post'
-import { EmptyState, Title } from 'ui'
+import { EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 import { isIphone } from 'utils/platform'
@@ -74,19 +73,13 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Page
         headerTitle={project?.title}
-        headerRight={{
-          component: {
-            name: project?.permissions.isOwner
-              ? NAVIGATION_COMPONENTS.EDIT_BUTTON
-              : NAVIGATION_COMPONENTS.SHARE_BUTTON,
-            passProps: {
-              project,
-              text: true,
-              url: project?.dynamicLink,
-              title: project?.title,
-            },
-          },
-        }}
+        headerRight={
+          project?.permissions.isOwner ? (
+            <Edit project={project} />
+          ) : (
+            <Share title={project.title} url={project.dynamicLink} text />
+          )
+        }
       >
         <FlatList
           initialNumToRender={1}

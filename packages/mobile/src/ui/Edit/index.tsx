@@ -10,11 +10,6 @@ function Edit({ project }) {
     () =>
       showModal(SCREENS.EDIT_PROJECT, {
         project,
-        options: {
-          topBar: {
-            visible: false,
-          },
-        },
       }),
     [project]
   )
