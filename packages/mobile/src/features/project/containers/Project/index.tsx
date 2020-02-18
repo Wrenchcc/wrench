@@ -77,7 +77,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
           project?.permissions.isOwner ? (
             <Edit project={project} />
           ) : (
-            <Share title={project.title} url={project.dynamicLink} text />
+            <Share title={project?.title} url={project?.dynamicLink} text />
           )
         }
       >
