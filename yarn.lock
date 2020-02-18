@@ -56,10 +56,10 @@
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
-"@apollo/client@^3.0.0-beta.35":
-  version "3.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.35.tgz#ec981a8e36baf6a99c8b63d4bb44d28c881d537e"
-  integrity sha512-BEUia7pcLBFJoTOUkiHTXu54FDxutLahc4Qn8x1bt159ht4KE2vfzM9x5oN6TsoNgruH6DYajIZ0WdU4NYeTbA==
+"@apollo/client@^3.0.0-beta.36":
+  version "3.0.0-beta.36"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.36.tgz#e62f2cc8075363c9a9058bd6916b4c081c01ec86"
+  integrity sha512-CvX/KzL/DXfZu9dydwpQwoRHIaAMkZcUDJfbjXuWLk0mtv49eXQO20FDaiRGeQozAyByYU3C9MmGQLgfLTmzmw==
   dependencies:
     "@types/zen-observable" "^0.8.0"
     "@wry/equality" "^0.1.9"
@@ -15928,10 +15928,10 @@ react-native-linear-gradient@^2.5.6:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
-react-native-navigation@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-5.0.0.tgz#1f821a7a8c17ea13d5b47cad20cea8d299d05be8"
-  integrity sha512-eGQlRNhK20NOeJwnt1cxjag79NvjhUsyQk4zED6q7CP2MS0OpWIbz4g/n7t7B80MwmnBf7I0LXz4or2IDEgVEQ==
+react-native-navigation@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-5.0.1.tgz#ff3d357dab0dcdc4cb9ca5b5c7a1421b7e028d6f"
+  integrity sha512-58sJWoneyXTyWEiWL/lzO+aV+Aij7yf8msPvz+nPH8PXaFxNBMKcnVPOKJhDZ62V9i/0vE8Y/G1EXzv1GtGRZw==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
