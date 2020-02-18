@@ -227,6 +227,10 @@ const sections = props => ({
           onPress: () =>
             props.showModal(SCREENS.WEBVIEW, { url: 'https://www.instagram.com/motorfabriken' }),
         },
+        {
+          titleKey: 'hojstyling',
+          onPress: () => props.showModal(SCREENS.WEBVIEW, { url: 'https://www.hojstyling.se' }),
+        },
       ],
     },
   ],

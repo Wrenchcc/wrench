@@ -30,7 +30,7 @@ export default {
     style: STATUS_BAR.DARK,
   },
   topBar: {
-    // drawBehind: true,
+    drawBehind: true,
     elevation: 0,
     noBorder: true,
     leftButtons: [

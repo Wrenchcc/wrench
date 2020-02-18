@@ -6,7 +6,6 @@ export const Base = styled.View`
   padding-bottom: 45px;
   padding-left: ${props => (props.spacingHorizontal ? 20 : 0)}px;
   padding-right: ${props => (props.spacingHorizontal ? 20 : 0)}px;
-  margin-top: ${props => (props.paddingTop ? 45 : 0)}px;
 `
 
 export const Inner = styled.View`

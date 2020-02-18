@@ -11,6 +11,7 @@ const style = {
     paddingBottom: 40,
     paddingLeft: 20,
     paddingRight: 20,
+    marginTop: -40,
   },
   header: {
     marginBottom: 20,
@@ -55,7 +56,7 @@ function Settings({ section }) {
   const settings = data?.user.settings
 
   return (
-    <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false}>
+    <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false} view>
       <SectionList
         contentContainerStyle={style.container}
         stickySectionHeadersEnabled={false}

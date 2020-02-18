@@ -1,4 +1,4 @@
-import React, { useRef, cloneElement, useEffect, useCallback } from 'react'
+import React, { memo, useRef, cloneElement, useEffect, useCallback } from 'react'
 import { Navigation } from 'react-native-navigation'
 import Animated from 'react-native-reanimated'
 import { NAVIGATION, NAVIGATION_COMPONENTS } from '../constants'
@@ -44,8 +44,8 @@ function Page({
             },
           },
         },
+        leftButtons: headerLeft && [{ id: 'leftButton', headerLeft }],
         rightButtons: headerRight && [{ id: 'rightButton', ...headerRight }],
-        leftButtons: headerLeft === null ? [] : headerLeft && [{ id: 'leftButton', headerLeft }],
       },
     })
   }, [headerTitle, headerRight])
@@ -61,12 +61,6 @@ function Page({
   ) : (
     <>
       {cloneElement(children, {
-        contentInset: {
-          top: 0,
-        },
-        contentOffset: {
-          y: 0,
-        },
         onScroll: event(
           [
             {
@@ -83,4 +77,4 @@ function Page({
   )
 }
 
-export default Page
+export default memo(Page)

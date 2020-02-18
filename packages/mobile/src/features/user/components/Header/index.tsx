@@ -10,10 +10,9 @@ function Header({
   location,
   website,
   bio,
-  paddingTop,
 }) {
   return (
-    <Base spacingHorizontal={spacingHorizontal} paddingTop={paddingTop}>
+    <Base spacingHorizontal={spacingHorizontal}>
       <Inner>
         <Username>
           <Title medium numberOfLines={0}>

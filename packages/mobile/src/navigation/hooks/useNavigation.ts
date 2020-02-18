@@ -54,7 +54,6 @@ export default function useNavigation() {
 
       Navigation.push(componentId, {
         component: {
-          id: screen,
           name: screen,
           options,
           passProps,

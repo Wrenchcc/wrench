@@ -102,7 +102,7 @@ function Onboarding({ settingsPage }) {
     <Page
       view
       headerAnimation={false}
-      headerLeft={null}
+      {...(!settingsPage && { headerLeft: [] })}
       headerTitle={settingsPage && t('Onboarding:headerTitle')}
       headerRight={{
         component: {

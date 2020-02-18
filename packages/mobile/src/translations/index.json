@@ -147,8 +147,6 @@
     },
     "Project": {
       "recent": "Recent posts",
-      "follow": "Follow",
-      "unfollow": "Following",
       "headerLeft": "Share"
     },
     "Apple": {
@@ -236,6 +234,7 @@
       "paal": "PAAL Motorcycles",
       "kismo": "Kismo Motors",
       "motorfabriken": "Motorfabriken",
+      "hojstyling": "Hojstyling",
       "rate": "Give us a review",
       "languages": {
         "en": "English",
@@ -502,8 +501,6 @@
     },
     "Project": {
       "recent": "Senaste inlägg",
-      "follow": "Följ",
-      "unfollow": "Följer",
       "headerLeft": "Dela"
     },
     "Apple": {
@@ -591,6 +588,7 @@
       "paal": "PAAL Motorcycles",
       "kismo": "Kismo Motors",
       "motorfabriken": "Motorfabriken",
+      "hojstyling": "Hojstyling",
       "rate": "Ge oss en recension",
       "languages": {
         "en": "Engelska",
