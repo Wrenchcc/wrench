@@ -28,6 +28,7 @@ export function AuthNavigation() {
       visible: false,
     },
     topBar: {
+      drawBehind: true,
       visible: false,
     },
   })
@@ -43,6 +44,7 @@ export function AuthNavigation() {
 
 export function AppNavigation(onboarding) {
   Navigation.setDefaultOptions(defaultOptions)
+
   if (onboarding) {
     Navigation.setRoot({
       root: {

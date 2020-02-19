@@ -9,6 +9,7 @@ import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader, Text } from
 import { Header } from '../styles'
 
 const ITEM_HEIGHT = 200
+const MAX_ITEMS = 4
 
 function getItemLayout(_, index) {
   return {
@@ -67,8 +68,15 @@ function Projects({ query }) {
       const saved = recent.some(({ node }) => node.id === item.id)
 
       if (!saved) {
-        setRecent(items)
-        AsyncStorage.setItem(RECENT_SEARCHES_PROJECTS, JSON.stringify(items))
+        if (items.length === MAX_ITEMS) {
+          const limitedItems = items.slice(0, -1)
+          setRecent(limitedItems)
+
+          AsyncStorage.setItem(RECENT_SEARCHES_PROJECTS, JSON.stringify(limitedItems))
+        } else {
+          setRecent(items)
+          AsyncStorage.setItem(RECENT_SEARCHES_PROJECTS, JSON.stringify(items))
+        }
       }
     },
     [recent, setRecent]

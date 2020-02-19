@@ -15,10 +15,6 @@ function Legal({ color = 'white' }) {
     () =>
       showModal(SCREENS.WEBVIEW, {
         options: {
-          topBar: {
-            visible: true,
-            noBorder: true,
-          },
           statusBar: {
             style: STATUS_BAR.DARK,
           },

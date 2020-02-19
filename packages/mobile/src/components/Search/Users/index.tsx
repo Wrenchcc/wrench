@@ -8,6 +8,7 @@ import { logError } from 'utils/sentry'
 import { Header } from '../styles'
 
 const ITEM_HEIGHT = 71
+const MAX_ITEMS = 8
 
 const getItemLayout = (_, index) => ({
   index,
@@ -61,8 +62,15 @@ function Users({ query }) {
       const saved = recent.some(({ node }) => node.id === item.id)
 
       if (!saved) {
-        setRecent(items)
-        AsyncStorage.setItem(RECENT_SEARCHES_USERS, JSON.stringify(items))
+        if (items.length === MAX_ITEMS) {
+          const limitedItems = items.slice(0, -1)
+          setRecent(limitedItems)
+
+          AsyncStorage.setItem(RECENT_SEARCHES_USERS, JSON.stringify(limitedItems))
+        } else {
+          setRecent(items)
+          AsyncStorage.setItem(RECENT_SEARCHES_USERS, JSON.stringify(items))
+        }
       }
     },
     [recent, setRecent]
