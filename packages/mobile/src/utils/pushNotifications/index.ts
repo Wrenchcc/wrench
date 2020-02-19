@@ -1,14 +1,13 @@
-// TODO
-import { navigate, SCREENS } from 'navigation'
+import { navigateWithoutContext, SCREENS } from 'navigation'
 
 export function createPushNotificationsHandler(data) {
   const [route, postId, commentId] = data.split('/')
 
   switch (route) {
     case SCREENS.NOTIFICATIONS.toLowerCase():
-      return navigate(SCREENS.NOTIFICATIONS)
+      return navigateWithoutContext(SCREENS.NOTIFICATIONS)
     case SCREENS.POST.toLowerCase():
-      return navigate(SCREENS.POST, {
+      return navigateWithoutContext(SCREENS.POST, {
         commentId,
         postId,
       })

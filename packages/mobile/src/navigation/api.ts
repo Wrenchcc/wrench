@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
-import { SCREENS, TABS_INDEX, BOTTOM_TABS_ID } from './constants'
+import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import { componentId } from './events'
 
 let mention

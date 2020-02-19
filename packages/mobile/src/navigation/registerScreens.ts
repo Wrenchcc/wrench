@@ -9,6 +9,7 @@ export default function registerScreens(client) {
   Navigation.registerComponent(SCREENS.INITIALIZING, () =>
     HOC(register({ require: () => require('./Initializing') }))
   )
+  Navigation.registerComponent(SCREENS.EMPTY, () => () => null)
   Navigation.registerComponent(SCREENS.MENTION, () =>
     HOC(register({ require: () => require('components/Mention') }))
   )

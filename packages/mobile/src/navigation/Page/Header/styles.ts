@@ -15,7 +15,7 @@ export const Base = styled(Animated.View)`
 export const Inner = styled(Animated.View)`
   align-items: center;
   flex-direction: row;
-  height: ${NAVIGATION.TOP_BAR_HEIGHT};
+  height: ${NAVIGATION.TOP_BAR_HEIGHT}px;
   justify-content: space-between;
   padding-horizontal: 20px;
 `

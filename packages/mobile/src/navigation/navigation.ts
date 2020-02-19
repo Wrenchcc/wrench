@@ -111,8 +111,8 @@ export function AppNavigation(onboarding) {
                 children: [
                   {
                     component: {
-                      id: SCREENS.ADD_MEDIA,
-                      name: SCREENS.ADD_MEDIA,
+                      id: SCREENS.EMPTY,
+                      name: SCREENS.EMPTY,
                       options: {
                         bottomTab: {
                           selectTabOnPress: false,

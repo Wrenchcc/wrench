@@ -28,9 +28,6 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
               component: {
                 id: screen,
                 name: screen,
-                passProps: {
-                  isFocused: true,
-                },
                 options: {
                   layout: {
                     backgroundColor: hasProject ? COLORS.DARK : COLORS.WHITE,

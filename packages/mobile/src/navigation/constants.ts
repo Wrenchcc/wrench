@@ -42,6 +42,7 @@ export enum SCREENS {
   WEBVIEW = 'WEBVIEW',
   EDIT_POST = 'EDIT_POST',
   CATEGORIES = 'CATEGORIES',
+  EMPTY = 'EMPTY',
 }
 
 export enum STATUS_BAR {
