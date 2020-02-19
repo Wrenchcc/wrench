@@ -42,19 +42,6 @@ lane :ios do
     output_directory: "./.builds"
   )
   pilot(skip_waiting_for_build_processing: true)
-  sentry_upload_dsym(
-    dsym_path: './.builds/Wrench.app.dSYM.zip',
-  )
-  sentry_upload_sourcemap(
-    version: version,
-    dist: version,
-    sourcemap: './.builds/ios.bundle.map',
-    rewrite: true
-  )
-  sentry_create_release(
-    version: version,
-    finalize: true 
-  )
   slack_notification(
    'iOS', 
    build_number,

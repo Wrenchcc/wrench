@@ -6,6 +6,7 @@ import { User, InfiniteList, NoResults, SearchingFor, Loader, Text } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
 import { Header } from '../styles'
+import { Keyboard } from 'react-native'
 
 const ITEM_HEIGHT = 71
 const MAX_ITEMS = 8
@@ -58,6 +59,8 @@ function Users({ query }) {
 
   const handleSave = useCallback(
     item => {
+      Keyboard.dismiss()
+
       const items = [{ node: { ...item, isOnline: false } }, ...recent]
       const saved = recent.some(({ node }) => node.id === item.id)
 

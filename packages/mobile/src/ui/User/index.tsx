@@ -15,6 +15,13 @@ function User({ data, onPress }) {
 
     navigate(SCREENS.USER, {
       user: data,
+      options: {
+        animations: {
+          push: {
+            waitForRender: true,
+          },
+        },
+      },
     })
   }, [data, onPress])
 

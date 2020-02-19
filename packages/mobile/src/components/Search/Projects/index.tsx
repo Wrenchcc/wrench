@@ -7,6 +7,7 @@ import { RECENT_SEARCHES_PROJECTS } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
 import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader, Text } from 'ui'
 import { Header } from '../styles'
+import { Keyboard } from 'react-native'
 
 const ITEM_HEIGHT = 200
 const MAX_ITEMS = 4
@@ -89,11 +90,19 @@ function Projects({ query }) {
 
   const renderItem = ({ item }) => {
     const onPress = () => {
+      Keyboard.dismiss()
       handleSave(item.node)
 
       navigate(SCREENS.PROJECT, {
         id: item.node.id,
         project: item.node,
+        options: {
+          animations: {
+            push: {
+              waitForRender: true,
+            },
+          },
+        },
       })
     }
 

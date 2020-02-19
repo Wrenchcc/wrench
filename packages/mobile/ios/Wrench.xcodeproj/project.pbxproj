@@ -158,6 +158,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				221ED1C8FA630DD86F6ADFE4 /* [CP] Copy Pods Resources */,
+				8529B91D924A44ECAC981A2A /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -242,7 +243,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "../tasks/bundle_ios.sh\n";
+			shellScript = "export NODE_BINARY=node\nexport SENTRY_PROPERTIES=sentry.properties\n\n# If you are using RN 0.46+\n../../../node_modules/@sentry/cli/bin/sentry-cli react-native xcode \\\n  ../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0AF81E7812D4CC4727DD7D92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -285,6 +286,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wrench/Pods-Wrench-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8529B91D924A44ECAC981A2A /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n../../../node_modules/@sentry/cli/bin/sentry-cli upload-dsym\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
