@@ -43,8 +43,8 @@ function AddProject() {
           )
         }
       />
-      <KeyboardAvoidingView keyboardVerticalOffset={0}>
-        <ScrollView paddingHorizontal={0} keyboardDismissMode="on-drag">
+      <KeyboardAvoidingView paddingHorizontal={0}>
+        <ScrollView keyboardDismissMode="on-drag">
           <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
             {t('AddProject:title')}
           </Title>
