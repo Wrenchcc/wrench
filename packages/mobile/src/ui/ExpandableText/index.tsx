@@ -18,7 +18,9 @@ function ExpandableText({ text }) {
     return (
       <>
         {`${text.substring(0, MAX_TEXT).trim()}... `}
-        <Text onPress={toggleExpanded}>{t('ExpandableText:more')}</Text>
+        <Text onPress={toggleExpanded} fontSize={15}>
+          {t('ExpandableText:more')}
+        </Text>
       </>
     )
   }

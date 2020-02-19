@@ -42,7 +42,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
       return null
     }
 
-    return <Post post={item.node} avatar={false} withoutTitle numberOfLines={0} />
+    return <Post post={item.node} avatar={false} withoutTitle />
   }
 
   const renderHeader = useCallback(() => {
@@ -51,7 +51,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     if (post) {
       content = (
         <>
-          <Post post={post} withoutTitle numberOfLines={0} />
+          <Post post={post} withoutTitle />
           {hasPosts && edges && edges.length > 1 && (
             <View style={{ marginTop: -20, paddingBottom: 50 }}>
               <Title medium>{t('Project:recent')}</Title>
