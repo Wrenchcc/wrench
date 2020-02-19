@@ -25,7 +25,7 @@ function ExpandableText({ text }) {
     )
   }
 
-  return null
+  return text
 }
 
 export default ExpandableText
