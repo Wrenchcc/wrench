@@ -1,0 +1,29 @@
+import React, { useCallback, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import Text from '../Text'
+
+const MAX_TEXT = 120
+
+function ExpandableText({ text }) {
+  const [expanded, setExpanded] = useState(false)
+  const { t } = useTranslation()
+
+  const toggleExpanded = useCallback(() => setExpanded(!expanded), [setExpanded, expanded])
+
+  if (expanded) {
+    return text
+  }
+
+  if (text.length > MAX_TEXT) {
+    return (
+      <>
+        {`${text.substring(0, MAX_TEXT).trim()}... `}
+        <Text onPress={toggleExpanded}>{t('ExpandableText:more')}</Text>
+      </>
+    )
+  }
+
+  return null
+}
+
+export default ExpandableText

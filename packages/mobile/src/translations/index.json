@@ -298,6 +298,9 @@
         "button": "Add"
       }
     },
+    "ExpandableText": {
+      "more": "more"
+    },
     "Follow": {
       "follow": "Follow this project",
       "unfollow": "Following",
@@ -651,6 +654,9 @@
         "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
         "button": "Lägg till"
       }
+    },
+    "ExpandableText": {
+      "more": "mer"
     },
     "Follow": {
       "follow": "Följ projekt",

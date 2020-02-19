@@ -11,12 +11,12 @@ import {
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
-import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
+import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ExpandableText } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
 import { Base, Top, Headline, Content, Spacer } from './styles'
 
-function Post({ post, withoutTitle, withoutComments, paddingBottom, numberOfLines = 3 }) {
+function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
   const { t } = useTranslation()
   const { navigate, showEditPost } = useNavigation()
   const [deletePost] = useDeletePostMutation()
@@ -228,9 +228,8 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom, numberOfLine
           color={withoutTitle ? 'dark' : 'grey'}
           fontSize={15}
           lineHeight={22}
-          numberOfLines={numberOfLines}
         >
-          {post.caption}
+          <ExpandableText text={post.caption} />
         </Text>
 
         <Spacer />

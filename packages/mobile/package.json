@@ -31,7 +31,7 @@
     "apollo-link-queue": "^2.2.0",
     "apollo-link-retry": "^2.2.15",
     "human-format": "^0.10.1",
-    "i18next": "^19.1.0",
+    "i18next": "^19.2.0",
     "ms": "^2.1.2",
     "rambda": "^4.5.0",
     "react": "16.12",
@@ -57,14 +57,14 @@
     "react-native-splash-screen": "^3.2.0",
     "react-native-tab-view": "^2.13.0",
     "react-native-video": "^5.0.2",
-    "react-native-webview": "^8.1.0",
+    "react-native-webview": "^8.1.1",
     "reanimated-bottom-sheet": "^1.0.0-alpha.19",
     "rn-placeholder": "^3.0.0",
     "styled-components": "^5.0.1",
     "url": "^0.11.0",
     "zustand": "^2.2.2"
   },
-    "devDependencies": {
+  "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "babel-plugin-module-resolver": "^4.0.0",
@@ -72,5 +72,5 @@
     "concurrently": "^5.1.0",
     "flipper-plugin-react-native-performance": "^0.4.3",
     "metro-react-native-babel-preset": "^0.58.0"
-    }
   }
+}

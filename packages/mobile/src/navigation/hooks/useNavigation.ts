@@ -6,8 +6,8 @@ export default function useNavigation() {
 
   return {
     ...api,
-    dismissModal: (screen, options) => api.dismissModal(screen, options)(componentId),
-    navigate: (screen, options) => api.navigate(screen, options)(componentId),
-    navigateBack: (screen, options) => api.navigateBack(screen, options)(componentId),
+    dismissModal: (screen, options?) => api.dismissModal(screen, options)(componentId),
+    navigate: (screen, options?) => api.navigate(screen, options)(componentId),
+    navigateBack: () => api.navigateBack()(componentId),
   }
 }

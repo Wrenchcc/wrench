@@ -82,12 +82,9 @@ function SignIn() {
   const handleOtherOptions = useCallback(() => {
     showModal(SCREENS.OTHER_SIGN_IN_OPTIONS, {
       options: {
-        ...(isIphone && {
-          statusBar: {
-            // TODO: StatusBar change on android crashes second time
-            style: STATUS_BAR.DARK,
-          },
-        }),
+        statusBar: {
+          style: STATUS_BAR.DARK,
+        },
         layout: {
           backgroundColor: 'white',
         },

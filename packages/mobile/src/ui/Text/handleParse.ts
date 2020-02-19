@@ -1,6 +1,5 @@
 import { COLORS, FONTS } from 'ui/constants'
-import { SCREENS } from 'navigation'
-import { showModal } from 'navigation/hooks/useNavigation'
+import { showModal, navigateWithoutContext, SCREENS } from 'navigation'
 
 function addhttp(url) {
   if (!/^(f|ht)tps?:\/\//i.test(url)) {
@@ -15,12 +14,11 @@ const handleUrlPress = url => {
   })
 }
 
-// TODO:
 const handleNamePress = name => {
-  // const username = name.replace('@', '')
-  // navigate(SCREENS.USER, {
-  //   user: { username },
-  // })
+  const username = name.replace('@', '')
+  navigateWithoutContext(SCREENS.USER, {
+    user: { username },
+  })
 }
 
 const styles = {
