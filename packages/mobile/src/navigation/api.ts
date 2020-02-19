@@ -1,5 +1,4 @@
 import { Navigation } from 'react-native-navigation'
-import { TextInput } from 'react-native'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { SCREENS, TABS_INDEX, BOTTOM_TABS_ID } from './constants'
@@ -15,23 +14,6 @@ export function navigateWithoutContext(screen, { options, ...passProps } = {}) {
       passProps,
     },
   })
-}
-
-export function navigate(screen, { options, ...passProps } = {}) {
-  return componentId => {
-    const currentlyFocusedField = TextInput.State
-    if (currentlyFocusedField) {
-      currentlyFocusedField.blurTextInput()
-    }
-
-    Navigation.push(componentId, {
-      component: {
-        name: screen,
-        options,
-        passProps,
-      },
-    })
-  }
 }
 
 export function selectTabIndex(currentTabIndex) {
@@ -82,16 +64,6 @@ export function dismissMention() {
   mention = false
 }
 
-export function dismissModal(root, currentTabIndex = TABS_INDEX.FEED) {
-  return componentId => {
-    Navigation.dismissModal(componentId)
-
-    if (root) {
-      selectTabIndex(currentTabIndex)
-    }
-  }
-}
-
 export function showEditPost(passProps) {
   Navigation.showOverlay({
     component: {
@@ -109,12 +81,6 @@ export function showEditPost(passProps) {
 
 export function dismissEditPost() {
   Navigation.dismissOverlay(SCREENS.EDIT_POST)
-}
-
-export function navigateBack() {
-  return componentId => {
-    Navigation.pop(componentId)
-  }
 }
 
 export function showNotificationBadge() {

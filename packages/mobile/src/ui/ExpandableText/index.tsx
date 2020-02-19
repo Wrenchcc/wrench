@@ -14,7 +14,7 @@ function ExpandableText({ text }) {
     return text
   }
 
-  if (text.length > MAX_TEXT) {
+  if (text && text.length > MAX_TEXT) {
     return (
       <>
         {`${text.substring(0, MAX_TEXT).trim()}... `}

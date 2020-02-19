@@ -14,6 +14,7 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
+    "@react-native-community/cli-platform-android": "3.0.3",
     "@apollo/client": "^3.0.0-beta.36",
     "@expo/react-native-action-sheet": "^3.5.0",
     "@pontusab/react-native-apple-authentication": "^1.0.6",
@@ -36,7 +37,7 @@
     "rambda": "^4.5.0",
     "react": "16.12",
     "react-i18next": "^11.3.3",
-    "react-native": "^v0.62.0-rc.2",
+    "react-native": "0.61.5",
     "react-native-bundle-splitter": "^1.0.7",
     "react-native-camera": "^3.18.0",
     "react-native-config": "0.12.0",
@@ -72,5 +73,8 @@
     "concurrently": "^5.1.0",
     "flipper-plugin-react-native-performance": "^0.4.3",
     "metro-react-native-babel-preset": "^0.58.0"
+  },
+  "resolutions": {
+    "@react-native-community/cli-platform-android": "3.0.3"
   }
 }

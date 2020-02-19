@@ -55,11 +55,8 @@ target 'Wrench' do
   pod 'React-jsiexecutor', :path => "#{root_path}/react-native/ReactCommon/jsiexecutor"
   pod 'React-jsinspector', :path => "#{root_path}/react-native/ReactCommon/jsinspector"
   pod 'ReactCommon/turbomodule/core', :path => "#{root_path}/react-native/ReactCommon"
-  pod 'ReactCommon/callinvoker', :path => "#{root_path}/react-native/ReactCommon"
-  pod 'Yoga', :path =>  "#{root_path}/react-native/ReactCommon/yoga", :modular_headers => true
-
-  # Replace the existing yoga import with the following (adding modular_headers):
-
+  pod 'Yoga', :path => "#{root_path}/react-native/ReactCommon/yoga", :modular_headers => true
+  pod 'ReactCommon/jscallinvoker', :path => "#{root_path}/react-native/ReactCommon"	
   pod 'DoubleConversion', :podspec => "#{root_path}/react-native/third-party-podspecs/DoubleConversion.podspec"
   pod 'glog', :podspec => "#{root_path}/react-native/third-party-podspecs/glog.podspec"
   pod 'Folly', :podspec => "#{root_path}/react-native/third-party-podspecs/Folly.podspec"

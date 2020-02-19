@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import Animated from 'react-native-reanimated'
-import { View, SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import { Text, Icon } from 'ui'
 import Toast from 'components/Toast'
 import { arrowLeft } from 'images'
 import { useNavigation } from '../../hooks'
-import styles from './styles'
+import { Base, Inner, Left, Right } from './styles'
 
 const { interpolate, Extrapolate } = Animated
 
@@ -17,6 +17,7 @@ function Header({
   headerSubTitle,
   headerAnimation = true,
   onPress,
+  inline,
 }) {
   const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
@@ -30,12 +31,10 @@ function Header({
     : 1
 
   return (
-    <Animated.View style={styles.container}>
+    <Base inline={inline}>
       <SafeAreaView>
-        <View style={styles.inner}>
-          <View style={styles.left}>
-            {headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}
-          </View>
+        <Inner>
+          <Left>{headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}</Left>
           <Animated.View style={{ opacity, maxWidth: 190 }}>
             <Text medium center numberOfLines={1} onPress={onPress}>
               {headerTitle}
@@ -46,11 +45,11 @@ function Header({
               </Text>
             )}
           </Animated.View>
-          <View style={styles.right}>{headerRight}</View>
-        </View>
+          <Right>{headerRight}</Right>
+        </Inner>
       </SafeAreaView>
       <Toast />
-    </Animated.View>
+    </Base>
   )
 }
 

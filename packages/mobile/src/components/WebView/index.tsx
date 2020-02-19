@@ -3,7 +3,8 @@ import { View, BackHandler } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { WebView as RNWebView } from 'react-native-webview'
 import qs from 'url'
-import { Page, useNavigation } from 'navigation'
+import { useNavigation } from 'navigation'
+import Header from 'navigation/Page/Header'
 import { ProgressBar, Icon, Touchable, Share } from 'ui'
 import { COLORS } from 'ui/constants'
 import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
@@ -84,38 +85,37 @@ function WebView({ url: initialUrl }) {
   )
 
   return (
-    <Page
-      view
-      headerAnimation={false}
-      headerTitleFontSize={15}
-      headerTitle={title}
-      headerSubTitle={qs.parse(url).host}
-      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
-      headerRight={<Icon onPress={handleRefresh} source={refresh} />}
-    >
-      <Base>
-        <ProgressBar
-          opacity={progress > 0 ? 1 : 0}
-          fillColor="black"
-          borderRadius={0}
-          barHeight={2}
-          progress={progress}
-        />
+    <Base>
+      <Header
+        headerAnimation={false}
+        headerTitle={title}
+        headerSubTitle={qs.parse(url).host}
+        headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+        headerRight={<Icon onPress={handleRefresh} source={refresh} />}
+        inline
+      />
 
-        <RNWebView
-          style={{ flex: 1, backgroundColor: COLORS.WHITE }}
-          source={{ uri: url }}
-          onLoadEnd={onLoadEnd}
-          onError={onLoadError}
-          onNavigationStateChange={handleOnNavigationStateChange}
-          onLoadProgress={handleOnLoadProgress}
-          ref={webview}
-          decelerationRate="fast"
-        />
+      <ProgressBar
+        opacity={progress > 0 ? 1 : 0}
+        fillColor="black"
+        borderRadius={0}
+        barHeight={2}
+        progress={progress}
+      />
 
-        {renderFooter()}
-      </Base>
-    </Page>
+      <RNWebView
+        style={{ flex: 1, backgroundColor: COLORS.WHITE }}
+        source={{ uri: url }}
+        onLoadEnd={onLoadEnd}
+        onError={onLoadError}
+        onNavigationStateChange={handleOnNavigationStateChange}
+        onLoadProgress={handleOnLoadProgress}
+        ref={webview}
+        decelerationRate="fast"
+      />
+
+      {renderFooter()}
+    </Base>
   )
 }
 
