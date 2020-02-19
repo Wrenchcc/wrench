@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, FlatList, ActivityIndicator } from 'react-native'
+import { Dimensions, ActivityIndicator } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
-import { Page, AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
+import { Page, FlatList, AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
 import { Touchable, Text, Loader } from 'ui'
@@ -120,9 +120,10 @@ function Onboarding({ settingsPage }) {
       }
     >
       <FlatList
+        paddingHorizontal={10}
         ListHeaderComponent={!settingsPage && <Content />}
         ListEmptyComponent={loading && <Loader color="grey" />}
-        contentContainerStyle={{ padding: 5, flex: loading ? 1 : 0 }}
+        contentContainerStyle={{ flex: loading ? 1 : 0 }}
         numColumns={2}
         data={projectData?.types}
         keyExtractor={keyExtractor}

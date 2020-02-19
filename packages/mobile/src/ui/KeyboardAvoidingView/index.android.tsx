@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-function KeyboardAvoidingView({ children, paddingHorizontal = 20, keyboardVerticalOffset = 20 }) {
+function KeyboardAvoidingView({ children, paddingHorizontal = 20, keyboardVerticalOffset = 0 }) {
   return (
     <View
       style={{

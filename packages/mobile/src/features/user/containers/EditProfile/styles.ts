@@ -8,6 +8,7 @@ export const Information = styled.View`
 
 export const ChangeAvatar = styled.View`
   position: relative;
+  overflow: hidden;
 `
 
 export const Overlay = styled.TouchableOpacity`

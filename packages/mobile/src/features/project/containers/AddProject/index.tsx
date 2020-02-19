@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useProjectStore, PROJECT } from 'store'
-import { useNavigation, SCREENS } from 'navigation'
+import { useNavigation, SCREENS, ScrollView } from 'navigation'
 import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
 import { close } from 'images'
 
@@ -43,22 +43,23 @@ function AddProject() {
           )
         }
       />
-      <KeyboardAvoidingView>
-        <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-          {t('AddProject:title')}
-        </Title>
-        <Input
-          placeholder={t('AddProject:placeholder')}
-          autoFocus
-          large
-          onChangeText={onChangeText}
-          value={title}
-          borderColor="dark"
-          color="dark"
-          returnKeyType="next"
-          enablesReturnKeyAutomatically
-          onSubmitEditing={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
-        />
+      <KeyboardAvoidingView keyboardVerticalOffset={0}>
+        <ScrollView paddingHorizontal={0} keyboardDismissMode="on-drag">
+          <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
+            {t('AddProject:title')}
+          </Title>
+          <Input
+            placeholder={t('AddProject:placeholder')}
+            large
+            onChangeText={onChangeText}
+            value={title}
+            borderColor="dark"
+            color="dark"
+            returnKeyType="next"
+            enablesReturnKeyAutomatically
+            onSubmitEditing={title && (() => navigate(SCREENS.ADD_PROJECT_TYPE))}
+          />
+        </ScrollView>
       </KeyboardAvoidingView>
     </>
   )

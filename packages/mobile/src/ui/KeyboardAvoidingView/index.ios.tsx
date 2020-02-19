@@ -1,7 +1,7 @@
 import React from 'react'
 import { KeyboardAvoidingView as RNKeyboardAvoidingView } from 'react-native'
 
-function KeyboardAvoidingView({ children, paddingHorizontal = 20, keyboardVerticalOffset = 20 }) {
+function KeyboardAvoidingView({ children, paddingHorizontal = 20, keyboardVerticalOffset = 0 }) {
   return (
     <RNKeyboardAvoidingView
       behavior="padding"

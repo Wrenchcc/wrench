@@ -3,7 +3,7 @@ import UiTitle from 'ui/Title'
 import UiText from 'ui/Text'
 
 export const Base = styled.View`
-  padding: 50px 20px;
+  padding: 0px 20px 50px 20px;
 `
 
 export const Headline = styled(UiTitle)`

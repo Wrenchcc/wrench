@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ActivityIndicator, View } from 'react-native'
+import { ActivityIndicator, View, Image } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
@@ -7,7 +7,7 @@ import { useCurrentUserQuery } from '@wrench/common'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'services/gql'
 import { useUserStore, USER } from 'store'
-import { Text, Title, Touchable, Avatar, Input, Icon, KeyboardAvoidingView } from 'ui'
+import { Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
@@ -179,11 +179,12 @@ function EditProfile({ onboarding }) {
           keyboardDismissMode="on-drag"
         >
           <ChangeAvatar>
-            <Avatar
-              uri={avatarUrl}
-              size={120}
-              fullName={data?.user.fullName}
-              fallback={data?.user.isSilhouette}
+            {/* NOTE: Use image Avatar can't handle file:// Android format */}
+            <Image
+              style={{ width: 120, height: 120, borderRadius: 120 }}
+              source={{
+                uri: avatarUrl,
+              }}
             />
             <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
               <Text color="white" medium fontSize={15}>

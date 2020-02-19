@@ -21,11 +21,8 @@ export function AuthNavigation() {
     layout: {
       backgroundColor: COLORS.DARK,
     },
-    statusBar: {
-      style: STATUS_BAR.LIGHT,
-      backgroundColor: 'transparent',
-      drawBehind: true,
-      visible: false,
+    navigationBar: {
+      backgroundColor: COLORS.DARK,
     },
     topBar: {
       drawBehind: true,
