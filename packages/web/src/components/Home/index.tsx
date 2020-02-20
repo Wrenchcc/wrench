@@ -51,7 +51,7 @@ export default function Home(props) {
       </Hero>
 
       <Projects>
-        <Popular projects={data.projects} />
+        <Popular projects={data?.projects} />
 
         <Link href="/explore">
           <ExploreLink>{t('home:explore')}</ExploreLink>
