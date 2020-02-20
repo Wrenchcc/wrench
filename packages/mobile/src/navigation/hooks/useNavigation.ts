@@ -1,6 +1,7 @@
 import { Navigation } from 'react-native-navigation'
 import { TextInput } from 'react-native'
 import useComponentId from './useComponentId'
+import { TABS_INDEX } from '../constants'
 import * as api from '../api'
 
 export default function useNavigation() {
@@ -8,11 +9,11 @@ export default function useNavigation() {
 
   return {
     ...api,
-    dismissModal: (root, currentTabIndex) => {
+    dismissModal: (root, tabIndex = TABS_INDEX.FEED) => {
       Navigation.dismissModal(componentId)
 
       if (root) {
-        api.selectTabIndex(currentTabIndex)
+        api.selectTabIndex(tabIndex)
       }
     },
     navigate: (screen, { options, ...passProps } = {}) => {
