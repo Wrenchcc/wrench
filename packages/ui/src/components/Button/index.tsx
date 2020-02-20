@@ -3,8 +3,8 @@ import styled from 'styled-components'
 // import { variant } from 'styled-system'
 
 const Base = styled.button`
-  background-color: ${props => console.log(props.theme.color.default) || props.theme.color.default};
-  color: ${props => props.theme.color.inverse};
+  background-color: ${props => props.theme.colors.default};
+  color: ${props => props.theme.colors.inverse};
 `
 
 function ButtonPrimary() {

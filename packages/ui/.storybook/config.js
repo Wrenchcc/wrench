@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import addons from '@storybook/addons'
+import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
+import { useDarkMode } from 'storybook-dark-mode'
 import ThemeProvider from '../src/ThemeProvider'
 import { THEMES } from '../src/theme'
 
-addDecorator(storyFn => <ThemeProvider>{storyFn()}</ThemeProvider>)
-
-const channel = addons.getChannel()
-
 function ThemeWrapper({ children }) {
-  const [isDark, setDark] = useState(false)
-
-  useEffect(() => {
-    channel.on('DARK_MODE', setDark)
-    return () => channel.off('DARK_MODE', setDark)
-  }, [channel, setDark])
-
-  return <ThemeProvider mode={isDark ? THEMES.DARK : THEMES.LIGHT}>{children}</ThemeProvider>
+  return <ThemeProvider mode={useDarkMode() ? THEMES.DARK : THEMES.LIGHT}>{children}</ThemeProvider>
 }
 
 addDecorator(renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>)

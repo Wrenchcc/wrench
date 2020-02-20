@@ -42,5 +42,5 @@ export default mode => ({
     body: 1.5,
     heading: 1.25,
   },
-  color: mode === THEMES.LIGHT ? lightTheme : darkTheme,
+  colors: mode === THEMES.DARK ? darkTheme : lightTheme,
 })
