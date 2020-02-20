@@ -449,7 +449,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (5.1.1):
+  - ReactNativeNavigation (6.0.0):
     - React
     - React-RCTImage
     - React-RCTText
@@ -803,7 +803,7 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: 6790740cd9618139c3122145786f13012e8cc3b3
+  ReactNativeNavigation: 3539767af785cd7c40a5980d237623d1f298f279
   RNAppleAuthentication: e1494867df56ee7467943f4d1802895050845413
   RNCAsyncStorage: 5d83b49070d41fd72906a116c5e7bdac4ea3a814
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
