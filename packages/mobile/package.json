@@ -14,7 +14,6 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
-    "@react-native-community/cli-platform-android": "3.0.3",
     "@apollo/client": "^3.0.0-beta.36",
     "@expo/react-native-action-sheet": "^3.5.0",
     "@pontusab/react-native-apple-authentication": "^1.0.6",
@@ -22,6 +21,7 @@
     "@pontusab/react-native-image-manipulator": "^1.0.6",
     "@pontusab/react-native-media-library": "^1.0.6",
     "@react-native-community/async-storage": "^1.8.0",
+    "@react-native-community/cli-platform-android": "3.0.3",
     "@react-native-community/netinfo": "^5.5.0",
     "@sentry/react-native": "^1.3.1",
     "@wrench/common": "1.0.0",
@@ -38,6 +38,7 @@
     "react": "16.12",
     "react-i18next": "^11.3.3",
     "react-native": "0.61.5",
+    "react-native-appearance": "^0.3.2",
     "react-native-bundle-splitter": "^1.0.7",
     "react-native-camera": "^3.18.0",
     "react-native-config": "0.12.0",

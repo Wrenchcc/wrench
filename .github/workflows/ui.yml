@@ -1,0 +1,32 @@
+name: 'Deploy UI'
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'packages/ui/**'
+      - 'packages/common/**'
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Build UI
+        run: |
+          echo Building UI...
+          cd packages/ui
+          yarn
+          yarn build:storybook
+
+      - name: Push to AWS
+        run: |
+           cd packages/ui
+           yarn deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

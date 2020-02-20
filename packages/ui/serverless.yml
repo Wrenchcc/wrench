@@ -1,0 +1,10 @@
+name: ui
+
+ui:
+  component: "@serverless/website"
+  inputs:
+    code:
+      src: ./storybook-static
+    region: eu-west-1
+    domain: ui.wrench.cc 
+    bucketName: wrench-ui

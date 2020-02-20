@@ -17,6 +17,7 @@ import com.brentvatne.react.ReactVideoPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnativemedialibrary.MediaLibraryPackage;
 import com.reactnativedevicelocale.DeviceLocalePackage;
+import io.expo.appearance.RNCAppearancePackage;
 
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
@@ -70,6 +71,7 @@ public class MainApplication extends NavigationApplication {
             packages.add(new DeviceLocalePackage());
             packages.add(new LinearGradientPackage());
             packages.add(new ReactVideoPackage());
+            packages.add(new RNCAppearancePackage());
 
             // packages.add(new AsyncStoragePackage());
             // packages.add(new FastImageViewPackage());
