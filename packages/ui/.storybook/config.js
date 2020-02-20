@@ -4,11 +4,9 @@ import { useDarkMode } from 'storybook-dark-mode'
 import ThemeProvider from '../src/ThemeProvider'
 import { THEMES } from '../src/theme'
 
-function ThemeWrapper({ children }) {
-  return <ThemeProvider mode={useDarkMode() ? THEMES.DARK : THEMES.LIGHT}>{children}</ThemeProvider>
-}
-
-addDecorator(renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>)
+addDecorator(renderStory => (
+  <ThemeProvider mode={useDarkMode() ? THEMES.DARK : THEMES.LIGHT}>{renderStory()}</ThemeProvider>
+))
 
 const req = require.context('../src', true, /stories(\.web|\.native)?.tsx$/)
 
