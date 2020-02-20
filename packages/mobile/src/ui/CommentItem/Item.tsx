@@ -162,6 +162,7 @@ function Item({
 
   return (
     <Swipeable
+      enabled={permissions.isOwner}
       friction={2}
       rightThreshold={100}
       renderRightActions={!first && permissions.isOwner && renderRightAction}
