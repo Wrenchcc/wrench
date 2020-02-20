@@ -149,9 +149,6 @@
       "recent": "Recent posts",
       "headerLeft": "Share"
     },
-    "Apple": {
-      "button": "Continue with Apple"
-    },
     "OnboardingContent": {
       "headline": "What are you interested in?",
       "description": "Choose at least three categories that you are interested in & we’ll give you some nice projects to start of with."
@@ -505,9 +502,6 @@
     "Project": {
       "recent": "Senaste inlägg",
       "headerLeft": "Dela"
-    },
-    "Apple": {
-      "button": "Logga in med Apple"
     },
     "OnboardingContent": {
       "headline": "Vad är du intresserad av?",

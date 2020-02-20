@@ -24,7 +24,7 @@ function Other() {
   }, [])
 
   if (isAvailable) {
-    providers.push(<Apple border />)
+    providers.push(<Apple black />)
   }
 
   const handleDismissModal = useCallback(() => {

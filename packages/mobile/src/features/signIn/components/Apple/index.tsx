@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { useAuthenticateAppleMutation } from '@wrench/common'
 import { AppNavigation } from 'navigation'
-import { useTranslation } from 'react-i18next'
 import AsyncStorage from '@react-native-community/async-storage'
 import * as AppleAuthentication from '@pontusab/react-native-apple-authentication'
 import { pathOr } from 'rambda'
@@ -10,13 +9,8 @@ import { SIGN_IN_PROVIDERS } from 'utils/enums'
 import { getCurrentUser } from 'services/gql'
 import { logError } from 'utils/sentry'
 import { setTokens } from 'utils/storage/auth'
-import { Icon } from 'ui'
-import { apple } from 'images'
-import { Button, Text, Loader } from './styles'
 
-function Apple({ border }) {
-  const { t } = useTranslation()
-  const [isLoading, setIsLoading] = useState(false)
+function Apple({ black }) {
   const [authenticate] = useAuthenticateAppleMutation()
 
   const handleLoginManager = useCallback(async () => {
@@ -27,8 +21,6 @@ function Apple({ border }) {
           AppleAuthentication.AppleAuthenticationScope.EMAIL,
         ],
       })
-
-      setIsLoading(true)
 
       AsyncStorage.setItem(PREFFERED_SIGN_IN_PROVIDER, SIGN_IN_PROVIDERS.APPLE)
 
@@ -52,19 +44,22 @@ function Apple({ border }) {
         AppNavigation(!data.user.interestedIn)
       }
     } catch (err) {
-      setIsLoading(false)
       logError(err)
     }
   }, [])
 
   return (
-    <Button onPress={handleLoginManager} border={border}>
-      <Icon source={apple} style={{ marginRight: 10, marginTop: -3 }} />
-      <Text white medium>
-        {t('Apple:button')}
-      </Text>
-      {isLoading && <Loader color="black" />}
-    </Button>
+    <AppleAuthentication.AppleAuthenticationButton
+      buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+      buttonStyle={
+        black
+          ? AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+          : AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+      }
+      cornerRadius={0}
+      style={{ height: 50, width: '100%', marginBottom: 20 }}
+      onPress={handleLoginManager}
+    />
   )
 }
 
