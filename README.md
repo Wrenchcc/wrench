@@ -6,6 +6,7 @@
 ![Deploy UI](https://github.com/Wrenchcc/wrench/workflows/Deploy%20UI/badge.svg)
 ![Deploy Apps](https://github.com/Wrenchcc/wrench/workflows/Deploy%20Apps/badge.svg)
 ![Deploy API](https://github.com/Wrenchcc/wrench/workflows/Deploy%20API/badge.svg)
+![Deploy Admin](https://github.com/Wrenchcc/wrench/workflows/Deploy%20Admin/badge.svg)
 
 ### Post, explore and learn together.
 
