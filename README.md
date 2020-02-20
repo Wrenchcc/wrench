@@ -1,6 +1,11 @@
 <div align="center">
 <img src="https://edge-files.wrench.cc/static/email/logo.jpg?w=60&h=60&dpr=3" alt="Wrench">
 
+![Deploy Web](https://github.com/Wrenchcc/wrench/workflows/Deploy%20Web/badge.svg)
+![Deploy UI](https://github.com/Wrenchcc/wrench/workflows/Deploy%20UI/badge.svg)
+![Deploy Apps](https://github.com/Wrenchcc/wrench/workflows/Deploy%20Apps/badge.svg)
+![Deploy API](https://github.com/Wrenchcc/wrench/workflows/Deploy%20API/badge.svg)
+
 ### Post, explore and learn together.
 
 </div>
