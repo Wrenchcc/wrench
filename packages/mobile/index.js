@@ -12,7 +12,6 @@ import createClient from 'services/gql/client'
 
 Navigation.events().registerAppLaunchedListener(async () => {
   const client = await createClient()
-
   registerScreens(client)
 
   Bootstrap()
