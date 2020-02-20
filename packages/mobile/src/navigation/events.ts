@@ -30,7 +30,6 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                 name: screen,
                 options: {
                   layout: {
-                    backgroundColor: hasProject ? COLORS.DARK : COLORS.WHITE,
                     componentBackgroundColor: hasProject ? COLORS.DARK : COLORS.WHITE,
                   },
                   statusBar: {

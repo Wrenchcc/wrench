@@ -49,7 +49,7 @@ export function showMention(passProps) {
         name: SCREENS.MENTION,
         options: {
           layout: {
-            backgroundColor: 'transparent',
+            componentBackgroundColor: 'transparent',
           },
         },
         passProps,

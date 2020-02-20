@@ -19,7 +19,7 @@ function Legal({ color = 'white' }) {
             style: STATUS_BAR.DARK,
           },
           layout: {
-            backgroundColor: COLORS.WHITE,
+            componentBackgroundColor: COLORS.WHITE,
           },
         },
         url: LEGAL_URL,

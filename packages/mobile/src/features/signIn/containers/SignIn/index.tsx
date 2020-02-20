@@ -6,6 +6,7 @@ import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import { Text } from 'ui'
+import { COLORS } from 'ui/constants'
 import { isIphone, isAndroid } from 'utils/platform'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
@@ -86,7 +87,7 @@ function SignIn() {
           style: STATUS_BAR.DARK,
         },
         layout: {
-          backgroundColor: 'white',
+          componentBackgroundColor: COLORS.WHITE,
         },
       },
     })

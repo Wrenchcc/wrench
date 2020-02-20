@@ -19,7 +19,7 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   layout: {
-    backgroundColor: COLORS.WHITE,
+    componentBackgroundColor: COLORS.WHITE,
     orientation: ['portrait'],
   },
   overlay: {

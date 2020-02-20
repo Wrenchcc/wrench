@@ -117,7 +117,7 @@ function AddProjectModel() {
       navigate(SCREENS.ADD_MEDIA, {
         options: {
           layout: {
-            backgroundColor: COLORS.DARK,
+            componentBackgroundColor: COLORS.DARK,
           },
           statusBar: {
             backgroundColor: 'black',
