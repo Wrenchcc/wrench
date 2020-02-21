@@ -57,7 +57,7 @@ function Apple({ black }) {
           : AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
       }
       cornerRadius={0}
-      style={{ height: 50, width: '100%', marginBottom: 20 }}
+      style={{ height: 46, width: '100%', marginBottom: 20 }}
       onPress={handleLoginManager}
     />
   )
