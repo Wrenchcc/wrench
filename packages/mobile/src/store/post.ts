@@ -4,7 +4,7 @@ import * as MediaLibrary from '@pontusab/react-native-media-library'
 import { CurrentUserProjectsDocument } from '@wrench/common'
 import { SELECTED_PROJECT_KEY } from 'utils/storage/constants'
 import { findIndex, propEq, assocPath, pathOr } from 'rambda'
-import { client } from 'services/gql'
+import { client } from 'gql'
 import { logError } from 'utils/sentry'
 import { POST } from './constants'
 

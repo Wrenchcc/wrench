@@ -1,7 +1,8 @@
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
-import { getCurrentUserProjects } from 'services/gql'
+import { getCurrentUserProjects } from 'gql'
 import { logError } from 'utils/sentry'
+import { trackScreen } from 'utils/analytics'
 import { SCREENS, TABS_INDEX } from './constants'
 
 // TODO: Find a way to konw when pressing tab from
@@ -12,6 +13,7 @@ export let componentId
 Navigation.events().registerComponentDidAppearListener(({ componentId: id, componentName }) => {
   componentId = id
   currentComponentName = componentName
+  trackScreen(componentName)
 })
 
 Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {

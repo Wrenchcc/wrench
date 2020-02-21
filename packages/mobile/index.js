@@ -7,18 +7,14 @@ import { notifications } from 'react-native-firebase'
 import { Bootstrap, registerScreens } from 'navigation'
 import { createPushNotificationsHandler } from 'utils/pushNotifications'
 import { createDeepLinkingHandler } from 'utils/dynamicLinks'
-import { trackScreen } from 'utils/analytics'
-import createClient from 'services/gql/client'
+import createClient from 'gql/client'
 
 Navigation.events().registerAppLaunchedListener(async () => {
   const client = await createClient()
+
   registerScreens(client)
 
   Bootstrap()
-
-  Navigation.events().registerComponentDidAppearListener(({ componentName }) => {
-    trackScreen(componentName)
-  })
 
   Linking.addEventListener('url', createDeepLinkingHandler)
 

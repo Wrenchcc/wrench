@@ -6,7 +6,7 @@ import * as AppleAuthentication from '@pontusab/react-native-apple-authenticatio
 import { pathOr } from 'rambda'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
-import { getCurrentUser } from 'services/gql'
+import { getCurrentUser } from 'gql'
 import { logError } from 'utils/sentry'
 import { setTokens } from 'utils/storage/auth'
 

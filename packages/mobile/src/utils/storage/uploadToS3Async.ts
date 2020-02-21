@@ -1,4 +1,4 @@
-import { preSignUrls } from 'services/gql'
+import { preSignUrls } from 'gql'
 import { logError } from 'utils/sentry'
 import { FILE_TYPES } from 'utils/enums'
 
