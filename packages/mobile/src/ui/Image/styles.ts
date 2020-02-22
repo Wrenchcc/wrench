@@ -1,8 +1,10 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   border-radius: ${({ borderRadius }) => borderRadius || 0}px;
-  background-color: ${({ placeholderColor }) => placeholderColor || COLORS.ULTRA_LIGHT_GREY};
+  background-color: ${props =>
+    props.placeholderColor || props.theme.mode === 'light'
+      ? props.theme.colors.subtle
+      : props.theme.colors.neutral};
   overflow: hidden;
 `

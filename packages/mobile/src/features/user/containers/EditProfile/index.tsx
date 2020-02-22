@@ -235,7 +235,7 @@ function EditProfile({ onboarding }) {
 
               <CloseIcon
                 source={close}
-                color="light_grey"
+                color="subtle"
                 width={12}
                 height={12}
                 onPress={() => update(USER.LOCATION, '')}
@@ -250,7 +250,7 @@ function EditProfile({ onboarding }) {
                 onChangeText={handleBio}
                 style={{ paddingRight: 55 }}
               />
-              <Counter color="light_grey" fontSize={15}>
+              <Counter color="subtle" fontSize={15}>
                 {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
             </Row>

@@ -153,7 +153,7 @@ function Item({
 
   const backgroundColor = animatedValue.current.interpolate({
     inputRange: [0, 1],
-    outputRange: [COLORS.WHITE, COLORS.ULTRA_LIGHT_GREY],
+    outputRange: ['transparent', COLORS.ULTRA_LIGHT_GREY],
   })
 
   if (!user) {
@@ -193,7 +193,7 @@ function Item({
               </Action>
               {!first && likes.totalCount > 0 && (
                 <Action>
-                  <Text medium color="light_grey" fontSize={12}>
+                  <Text medium color="subtle" fontSize={12}>
                     {t('CommentItem:like', { count: likes.totalCount })}
                   </Text>
                 </Action>
@@ -205,7 +205,7 @@ function Item({
                     fontSize={12}
                     onPress={handleOnReply}
                     disabled={id < 0}
-                    color="light_grey"
+                    color="subtle"
                   >
                     {t('CommentItem:reply')}
                   </Reply>

@@ -8,7 +8,7 @@ function NoResults() {
 
   return (
     <View style={{ flex: 1, paddingTop: 20 }}>
-      <Text color="light_grey">{t('NoResults:title')}</Text>
+      <Text color="subtle">{t('NoResults:title')}</Text>
     </View>
   )
 }

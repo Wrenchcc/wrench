@@ -52,10 +52,25 @@
   dependencies:
     cross-fetch "3.0.4"
 
-"@apollo/client@^3.0.0-beta.33", "@apollo/client@^3.0.0-beta.36":
+"@apollo/client@^3.0.0-beta.33":
   version "3.0.0-beta.36"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.36.tgz#e62f2cc8075363c9a9058bd6916b4c081c01ec86"
   integrity sha512-CvX/KzL/DXfZu9dydwpQwoRHIaAMkZcUDJfbjXuWLk0mtv49eXQO20FDaiRGeQozAyByYU3C9MmGQLgfLTmzmw==
+  dependencies:
+    "@types/zen-observable" "^0.8.0"
+    "@wry/equality" "^0.1.9"
+    fast-json-stable-stringify "^2.0.0"
+    graphql-tag "^2.10.2"
+    optimism "^0.11.5"
+    symbol-observable "^1.2.0"
+    ts-invariant "^0.4.4"
+    tslib "^1.10.0"
+    zen-observable "^0.8.14"
+
+"@apollo/client@^3.0.0-beta.37":
+  version "3.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.37.tgz#24d4eacebc2dd0d6c27e87b8aacbb5323c0d29d6"
+  integrity sha512-EVarxDX4dG51IHs9DyivYZQN51U2eu9deWRyAI9xkp6Y5vwmTfAcfMYQIxc/ZZhiFAq4MEk0EPLtU2kOfTILjQ==
   dependencies:
     "@types/zen-observable" "^0.8.0"
     "@wry/equality" "^0.1.9"
@@ -17886,10 +17901,10 @@ react-native-video@^5.0.2:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@^8.1.1:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-8.1.1.tgz#7f06546972fd4b2113ad3039837f461bab81cd15"
-  integrity sha512-Bt1vwdz/JMPh39SW2H64p9NrlfVHXrsFFmMGa1O6I9UBP0Y201EofnT3xK3uY4/7KMWeM372MHrmLpyp1AJ4dg==
+react-native-webview@^8.1.2:
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-8.1.2.tgz#c2ddb1e82d1c294f8f68a13be5d0536f7808f377"
+  integrity sha512-UnGQDttXcgp9JuexidYVu3KIQn1V9xG93yKIs7u6OMdORD5EM4lm7Z1fqqBa59LBeEii5M546kh1/rm0rDA0cA==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"

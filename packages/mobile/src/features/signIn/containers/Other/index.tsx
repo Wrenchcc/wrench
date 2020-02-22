@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import * as AppleAuthentication from '@pontusab/react-native-apple-authentication'
-import { useNavigation } from 'navigation'
+import { useNavigation, ScrollView } from 'navigation'
+import Header from 'navigation/Page/Header'
 import { close } from 'images'
-import { Header, Icon } from 'ui'
+import { Icon } from 'ui'
 import Legal from '../../components/Legal'
 import Facebook from '../../components/Facebook'
 import Google from '../../components/Google'
 import Apple from '../../components/Apple'
-import { Base, Inner, Row, Footer } from './styles'
+import { Base, Row, Footer } from './styles'
 
 function Other() {
   const { dismissModal } = useNavigation()
@@ -33,8 +34,8 @@ function Other() {
 
   return (
     <Base>
-      <Header headerLeft={<Icon source={close} color="dark" onPress={handleDismissModal} />} />
-      <Inner>
+      <Header headerLeft={<Icon source={close} onPress={handleDismissModal} />} />
+      <ScrollView>
         {providers.map((Provider, i) => (
           <Row key={i}>{Provider}</Row>
         ))}
@@ -42,7 +43,7 @@ function Other() {
         <Footer>
           <Legal color="grey" />
         </Footer>
-      </Inner>
+      </ScrollView>
     </Base>
   )
 }

@@ -16,11 +16,9 @@ function SearchingFor({ query }) {
       }}
     >
       <ActivityIndicator size="small" color="black" />
-      <Text
-        style={{ paddingHorizontal: 20 }}
-        color="light_grey"
-        numberOfLines={1}
-      >{`${t('SearchingFor:title')} "${query}"`}</Text>
+      <Text style={{ paddingHorizontal: 20 }} color="subtle" numberOfLines={1}>{`${t(
+        'SearchingFor:title'
+      )} "${query}"`}</Text>
     </View>
   )
 }

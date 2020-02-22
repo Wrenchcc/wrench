@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { View, BackHandler } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { WebView as RNWebView } from 'react-native-webview'
 import qs from 'url'
 import { useNavigation } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { ProgressBar, Icon, Touchable, Share } from 'ui'
-import { COLORS } from 'ui/constants'
 import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
-import { Base, Footer, Inner } from './styles'
+import { Base, BaseWebView, Footer, Inner } from './styles'
 
 function WebView({ url: initialUrl }) {
   const { t } = useTranslation()
@@ -90,7 +88,7 @@ function WebView({ url: initialUrl }) {
         headerAnimation={false}
         headerTitle={title}
         headerSubTitle={qs.parse(url).host}
-        headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
+        headerLeft={<Icon source={close} onPress={() => dismissModal()} color="dark" />}
         headerRight={<Icon onPress={handleRefresh} source={refresh} />}
         inline
       />
@@ -103,8 +101,7 @@ function WebView({ url: initialUrl }) {
         progress={progress}
       />
 
-      <RNWebView
-        style={{ flex: 1, backgroundColor: COLORS.WHITE }}
+      <BaseWebView
         source={{ uri: url }}
         onLoadEnd={onLoadEnd}
         onError={onLoadError}

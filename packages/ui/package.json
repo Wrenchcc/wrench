@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "source": "src/index.ts",
-  "main": "build/node/",
-  "browser": "build/web/",
-  "react-native": "build/native/",
+  "main": "dist/node/",
+  "browser": "dist/web/",
+  "react-native": "dist/native/",
   "files": [
     "assets/fonts/native/",
-    "build/"
+    "dist/"
   ],
   "scripts": {
     "build:storybook": "build-storybook",
-    "build:native": "",
+    "build:native": "tsc -p tsconfig.native.json",
     "build:web": "tsc -p tsconfig.browser.json",
-    "build:node": "",
+    "build:node": "tsc -p tsconfig.node.json",
     "build:all": "yarn build:web && yarn build:node && yarn build:native",
     "storybook:web": "start-storybook -p 9001",
     "deploy": "serverless"

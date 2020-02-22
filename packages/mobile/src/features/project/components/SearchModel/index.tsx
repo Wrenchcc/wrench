@@ -69,7 +69,7 @@ function SearchModel({ query, onPress }) {
               medium
               style={{ marginBottom: 3 }}
             >{`${item.node.brand.name} ${item.node.model}`}</Text>
-            <Text fontSize={15} color="light_grey">
+            <Text fontSize={15} color="subtle">
               {item.node.year}
             </Text>
           </Touchable>

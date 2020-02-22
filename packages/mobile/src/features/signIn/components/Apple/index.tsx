@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { useColorScheme } from 'react-native-appearance'
 import { useAuthenticateAppleMutation } from '@wrench/common'
 import { AppNavigation } from 'navigation'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -12,6 +13,7 @@ import { setTokens } from 'utils/storage/auth'
 
 function Apple({ black }) {
   const [authenticate] = useAuthenticateAppleMutation()
+  const colorScheme = useColorScheme()
 
   const handleLoginManager = useCallback(async () => {
     try {
@@ -48,14 +50,17 @@ function Apple({ black }) {
     }
   }, [])
 
+  const buttonStyle =
+    colorScheme === 'light'
+      ? black
+        ? AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+        : AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+      : AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+
   return (
     <AppleAuthentication.AppleAuthenticationButton
       buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
-      buttonStyle={
-        black
-          ? AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
-          : AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
-      }
+      buttonStyle={buttonStyle}
       cornerRadius={0}
       style={{ height: 46, width: '100%', marginBottom: 20 }}
       onPress={handleLoginManager}

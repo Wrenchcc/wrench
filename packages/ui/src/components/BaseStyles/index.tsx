@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createGlobalStyle } from 'styled-components'
 import normalize from 'styled-normalize'
 
@@ -6,8 +7,8 @@ export default createGlobalStyle`
   html {
     font-size: 16px;
     line-height: 1.5;
-    background-color: ${props => props.theme.color.inverse};
-    color: ${props => props.theme.color.default};
+    background-color: ${props => props.theme.colors.inverse};
+    color: ${props => props.theme.colors.default};
     padding: 0;
     margin: 0;
     -webkit-font-smoothing: antialiased;

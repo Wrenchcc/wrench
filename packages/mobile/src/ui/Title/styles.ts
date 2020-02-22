@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import { toUpper } from 'rambda'
-import { FONTS, COLORS } from 'ui/constants'
+import { FONTS } from 'ui/constants'
 
 export const Base = styled.Text`
   font-family: ${FONTS.MEDIUM};
-  color: ${({ color }) => (color ? COLORS[toUpper(color)] : COLORS.DARK)};
+  color: ${props => props.theme.colors[props.color] || props.theme.colors.inverse};
   font-size: ${({ medium, large }) => (medium && 36) || (large && 48) || 21}px;
 `

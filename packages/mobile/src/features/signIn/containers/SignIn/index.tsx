@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useColorScheme } from 'react-native-appearance'
 import AsyncStorage from '@react-native-community/async-storage'
 import * as AppleAuthentication from '@pontusab/react-native-apple-authentication'
+import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { logo } from 'images'
 import video from 'videos/splash.mp4'
 import { Text } from 'ui'
-import { COLORS } from 'ui/constants'
 import { isIphone, isAndroid } from 'utils/platform'
 import { PREFFERED_SIGN_IN_PROVIDER } from 'utils/storage/constants'
 import { SIGN_IN_PROVIDERS } from 'utils/enums'
@@ -56,6 +57,7 @@ function SignIn() {
   const [provider, setProvider] = useState()
   const [isAvailable, setAvailable] = useState(false)
   const [isLoading, setLoading] = useState(true)
+  const colorScheme = useColorScheme()
 
   async function fetchPreferredSignInAsync() {
     try {
@@ -87,7 +89,8 @@ function SignIn() {
           style: STATUS_BAR.DARK,
         },
         layout: {
-          componentBackgroundColor: COLORS.WHITE,
+          componentBackgroundColor:
+            colorScheme === 'light' ? LIGHT_THEME.default : DARK_THEME.default,
         },
       },
     })

@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react'
-import { ScrollView, ActivityIndicator, Alert } from 'react-native'
+import { ActivityIndicator, Alert } from 'react-native'
 import { useEditProjectMutation, useDeleteProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { SCREENS, useNavigation } from 'navigation'
-import { Text, Title, Header, Icon, Input, SelectionItem } from 'ui'
+import { SCREENS, useNavigation, ScrollView } from 'navigation'
+import Header from 'navigation/Page/Header'
+import { Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
@@ -119,7 +120,7 @@ function EditProject({ project }) {
         headerRight={renderHeaderRight()}
         headerCenter={renderHeaderCenter()}
       />
-      <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 50 }}>
+      <ScrollView>
         <Inner>
           <Title>{t('EditProject:information')}</Title>
           <Input

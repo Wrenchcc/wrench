@@ -50,7 +50,7 @@ function LikePost({ post }) {
       <Animated.View style={{ transform: [{ scale }] }}>
         <Icon
           source={spark}
-          color={post.likes.isLiked ? 'spark' : 'dark'}
+          color={post.likes.isLiked ? 'warning' : 'black'}
           style={{ marginRight: 10 }}
           onPress={handleToggleLike}
           hitSlop={20}

@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
 import Touchable from 'ui/Touchable'
-import { COLORS } from 'ui/constants'
 
 export const Button = styled(Touchable)`
   width: 100%;
-  background: ${COLORS.FACEBOOK};
+  background: ${props => props.theme.colors.facebook};
   align-items: center;
   justify-content: center;
   flex-direction: row;
@@ -15,7 +14,7 @@ export const Button = styled(Touchable)`
 
 export const Text = styled(UiText)`
   text-align: center;
-  color: ${COLORS.WHITE};
+  color: ${props => props.theme.colors.white};
 `
 
 export const Loader = styled.ActivityIndicator`

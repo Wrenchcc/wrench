@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { ThemeProvider as Provider } from 'styled-components'
 import getTheme from './theme'

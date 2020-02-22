@@ -36,7 +36,7 @@ function CommentItem({ data, onReply, fetchReplies, first, highlightId, postId }
       {replies.totalCount > replies.edges.length && (
         <LoadReplies>
           <Border />
-          <Text medium fontSize={12} color="light_grey" onPress={handleLoadMore}>
+          <Text medium fontSize={12} color="subtle" onPress={handleLoadMore}>
             {t('CommentItem:loadReplies', {
               count: replies.totalCount - replies.edges.length,
             })}
