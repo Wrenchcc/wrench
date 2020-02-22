@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import { NAVIGATION } from 'navigation/constants'
 
 export const Base = styled.View`

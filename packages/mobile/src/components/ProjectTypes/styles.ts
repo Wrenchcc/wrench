@@ -15,7 +15,7 @@ export const Wrapper = styled(UiTouchable)`
   margin-left: ${({ first }) => (first ? GUTTER : 0)}px;
   height: 40px;
   border-width: 1px;
-  border-color: ${props => props.theme.colors.subtle};
+  border-color: ${props => props.theme.colors.divider};
   justify-content: center;
   padding-left: 15px;
   padding-right: 15px;

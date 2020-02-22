@@ -38,3 +38,12 @@ export const CloseIcon = styled(UiIcon)`
   right: 0;
   top: 22px;
 `
+
+export const Location = styled.View`
+  flex: 1;
+  height: 60px;
+  justify-content: center;
+  border-bottom-width: 1px;
+  padding-right: 30px;
+  border-bottom-color: ${props => props.theme.colors.divider};
+`

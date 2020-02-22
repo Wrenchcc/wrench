@@ -16,6 +16,7 @@ export const DARK_THEME = {
   facebook: '#3b5998',
   white: '#ffffff',
   black: '#000000',
+  divider: '#252526',
 }
 
 export const LIGHT_THEME = {
@@ -30,6 +31,7 @@ export const LIGHT_THEME = {
   facebook: '#3b5998',
   white: '#ffffff',
   black: '#000000',
+  divider: '#e6e7e9',
 }
 
 export default mode => ({

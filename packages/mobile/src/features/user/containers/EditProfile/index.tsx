@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ActivityIndicator, View, Image } from 'react-native'
+import { ActivityIndicator, Image } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
+import { useColorScheme } from 'react-native-appearance'
 import { useCurrentUserQuery } from '@wrench/common'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
@@ -11,9 +12,8 @@ import { Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
-import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon } from './styles'
 import uploadAsync from 'utils/storage/uploadAsync'
-import { COLORS } from 'ui/constants'
+import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon, Location } from './styles'
 
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
@@ -26,6 +26,7 @@ function EditProfile({ onboarding }) {
   const { dismissModal, navigate } = useNavigation()
   const [upload, setUploadFile] = useState()
   const [isSaving, setSaving] = useState(false)
+  const colorScheme = useColorScheme()
 
   const { data } = useCurrentUserQuery()
 
@@ -128,7 +129,7 @@ function EditProfile({ onboarding }) {
           reTryTitle: t('EditProfile:imagePickerPermissionRetry'),
           okTitle: t('EditProfile:imagePickerPermissionOk'),
         },
-        tintColor: 'black',
+        tintColor: colorScheme === 'light' ? 'black' : 'white',
         customButtons: [{ name: 'remove', title: t('EditProfile:remove') }],
         quality: 1.0,
         maxWidth: 500,
@@ -215,23 +216,16 @@ function EditProfile({ onboarding }) {
             </Row>
 
             <Row>
-              <View
-                style={{
-                  flex: 1,
-                  height: 60,
-                  justifyContent: 'center',
-                  borderBottomWidth: 1,
-                  borderBottomColor: COLORS.ULTRA_LIGHT_GREY,
-                }}
-              >
+              <Location>
                 <Text
                   fontSize={17}
                   color={location ? 'dark' : 'light_grey'}
                   onPress={navigateToAddLocation}
+                  numberOfLines={1}
                 >
                   {location ? location : t('EditProfile:place')}
                 </Text>
-              </View>
+              </Location>
 
               <CloseIcon
                 source={close}

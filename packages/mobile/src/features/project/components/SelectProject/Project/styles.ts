@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import UiTouchable from 'ui/Touchable'
 import UiImage from 'ui/Image'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
   height: 52px;
@@ -10,7 +9,7 @@ export const Base = styled(UiTouchable)`
   border-bottom-width: 1px;
   padding-bottom: 15px;
   margin-bottom: 15px;
-  border-bottom-color: ${COLORS.ULTRA_LIGHT_GREY};
+  border-bottom-color: ${props => props.theme.colors.divider};
 `
 
 export const Cover = styled(UiImage)`

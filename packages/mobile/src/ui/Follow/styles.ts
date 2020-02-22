@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 import UiTouchable from 'ui/Touchable'
 import UiText from 'ui/Text'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled(UiTouchable)`
-  background-color: ${({ black }) => (black ? COLORS.DARK : COLORS.WHITE)};
+  background-color: ${({ black, theme }) => (black ? theme.colors.inverse : theme.colors.default)};
   border-width: ${({ small }) => (small ? 0 : 1)}px;
-  border-color: ${({ black }) => (black ? COLORS.DARK : COLORS.DIVIDER)};
+  border-color: ${({ black, theme }) => (black ? theme.colors.inverse : theme.colors.divider)};
   height: 40px;
   justify-content: center;
   align-items: center;

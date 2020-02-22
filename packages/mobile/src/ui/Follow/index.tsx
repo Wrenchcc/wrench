@@ -7,7 +7,7 @@ function Follow({ onPress, following, small, ...rest }) {
 
   return (
     <Base onPress={onPress} black={!following} small={small} {...rest}>
-      <Text color={following ? 'dark' : 'white'} medium fontSize={15}>
+      <Text color={following ? 'inverse' : 'default'} medium fontSize={15}>
         {following
           ? small
             ? t('Follow:unfollowSmall')

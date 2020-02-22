@@ -53,7 +53,7 @@ function SelectProject({ black = false }) {
           }}
         >
           <Text
-            color={(black && 'black') || isOpen ? 'black' : 'white'}
+            color={(black && 'default') || isOpen ? 'inverse' : 'white'}
             medium
             style={{ zIndex: 100, maxWidth: '92%' }}
             numberOfLines={1}
@@ -63,7 +63,7 @@ function SelectProject({ black = false }) {
           <Icon
             style={{ marginLeft: 10 }}
             source={isOpen ? arrowUp : arrowDown}
-            color={(black && 'black') || isOpen ? 'subtle' : 'white'}
+            color={(black && 'default') || isOpen ? 'inverse' : 'white'}
           />
         </Touchable>
       </Base>
