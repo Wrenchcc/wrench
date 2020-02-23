@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 import { NAVIGATION } from 'navigation'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   height: ${NAVIGATION.TAB_HEIGHT};
-  background-color: ${COLORS.WHITE};
+  background-color: ${props => props.theme.colors.default};
   justify-content: center;
   position: absolute;
   padding: 0 20px;

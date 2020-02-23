@@ -95,7 +95,6 @@ function WebView({ url: initialUrl }) {
 
       <ProgressBar
         opacity={progress > 0 ? 1 : 0}
-        fillColor="black"
         borderRadius={0}
         barHeight={2}
         progress={progress}

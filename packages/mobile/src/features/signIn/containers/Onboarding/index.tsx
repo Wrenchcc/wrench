@@ -108,7 +108,7 @@ function Onboarding({ settingsPage }) {
           <ActivityIndicator />
         ) : (
           <Text
-            color="dark"
+            color="inverse"
             medium
             opacity={isComplete() ? 1 : 0.5}
             disabled={!isComplete()}
@@ -122,7 +122,7 @@ function Onboarding({ settingsPage }) {
       <FlatList
         paddingHorizontal={10}
         ListHeaderComponent={!settingsPage && <Content />}
-        ListEmptyComponent={loading && <Loader color="grey" />}
+        ListEmptyComponent={loading && <Loader />}
         contentContainerStyle={{ flex: loading ? 1 : 0 }}
         numColumns={2}
         data={projectData?.types}

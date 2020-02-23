@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   flex-direction: row;
@@ -11,7 +10,7 @@ export const Base = styled.View`
   padding-left: 20px;
   padding-right: 20px;
   border-bottom-width: ${props => (props.first ? 1 : 0)}px;
-  border-bottom-color: ${COLORS.DIVIDER};
+  border-bottom-color: ${props => props.theme.colors.divider};
 `
 
 export const Content = styled.View`
@@ -23,7 +22,7 @@ export const Content = styled.View`
 export const Border = styled.View`
   width: 20px;
   height: 1px;
-  background-color: ${COLORS.DIVIDER};
+  background-color: ${props => props.theme.colors.divider};
   margin-right: 10px;
 `
 

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import FastImage from 'react-native-fast-image'
 
 export const Image = styled(FastImage)`
@@ -9,7 +8,7 @@ export const Image = styled(FastImage)`
   margin: ${props => props.gutter / 2}px;
   background: transparent;
   border-width: 3px;
-  border-color: ${props => (props.selected ? COLORS.DARK : 'transparent')};
+  border-color: ${props => (props.selected ? props.theme.colors.inverse : 'transparent')};
   height: ${props => props.height - props.gutter / 2}px;
   width: ${props => props.width - props.gutter / 2}px;
 `
