@@ -1,10 +1,9 @@
 import React, { useCallback, useState } from 'react'
-import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
-import { Header, Text, Icon, Touchable } from 'ui'
+import { ActivityIndicator, Header, Text, Icon, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
@@ -90,7 +89,7 @@ function AddMedia() {
         }
         headerRight={
           isLoading ? (
-            <ActivityIndicator size="small" color="white" />
+            <ActivityIndicator color="white" />
           ) : hasSelectedFiles ? (
             <Touchable onPress={handleCropping} nativeHandler>
               <Text color="white" medium>

@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react'
-import { ActivityIndicator, Alert } from 'react-native'
+import { Alert } from 'react-native'
 import { useEditProjectMutation, useDeleteProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { SCREENS, useNavigation, ScrollView } from 'navigation'
 import Header from 'navigation/Page/Header'
-import { Text, Title, Icon, Input, SelectionItem } from 'ui'
+import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
@@ -79,7 +79,7 @@ function EditProject({ project }) {
 
   const renderHeaderRight = () =>
     isSaving ? (
-      <ActivityIndicator size="small" color="black" />
+      <ActivityIndicator />
     ) : (
       <Text medium onPress={handleEditProject}>
         {t('EditProject:done')}

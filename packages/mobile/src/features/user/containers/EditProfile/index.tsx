@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { ActivityIndicator, Image } from 'react-native'
+import { Image } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
@@ -8,7 +8,7 @@ import { useCurrentUserQuery } from '@wrench/common'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
 import { useUserStore, USER } from 'store'
-import { Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
+import { ActivityIndicator, Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
 import { FILE_TYPES } from 'utils/enums'
@@ -163,7 +163,7 @@ function EditProfile({ onboarding }) {
       headerTitle={t('EditProfile:headerTitle')}
       headerRight={
         isSaving ? (
-          <ActivityIndicator size="small" color="black" />
+          <ActivityIndicator />
         ) : (
           <Touchable onPress={handleSave}>
             <Text medium>{t('EditProfile:save')}</Text>

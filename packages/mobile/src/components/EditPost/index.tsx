@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from 'react'
-import { ActivityIndicator } from 'react-native'
 import { useEditPostMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { Page, ScrollView, useNavigation } from 'navigation'
-import { Text, Carousel } from 'ui'
+import { ActivityIndicator, Text, Carousel } from 'ui'
 import { Content, Input } from './styles'
 
 function EditPost({ post }) {
@@ -37,7 +36,7 @@ function EditPost({ post }) {
       headerTitle={t('EditPost:headerTitle')}
       headerRight={
         isSaving ? (
-          <ActivityIndicator size="small" color="black" />
+          <ActivityIndicator />
         ) : (
           <Text medium onPress={handleSave}>
             {t('EditPost:save')}

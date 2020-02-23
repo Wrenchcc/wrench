@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, ActivityIndicator } from 'react-native'
+import { Dimensions } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
 import { Page, FlatList, AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
-import { Touchable, Text, Loader } from 'ui'
+import { ActivityIndicator, Touchable, Text, Loader } from 'ui'
 import Content from 'features/signIn/components/Content'
 import Footer from 'features/signIn/components/Footer'
 import { Cell, Image, Overlay, Picture } from './styles'
@@ -105,7 +105,7 @@ function Onboarding({ settingsPage }) {
       headerTitle={settingsPage && t('Onboarding:headerTitle')}
       headerRight={
         isSaving ? (
-          <ActivityIndicator size="small" color="black" />
+          <ActivityIndicator />
         ) : (
           <Text
             color="dark"
