@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, View, Image } from 'react-native'
+import { View, Image } from 'react-native'
 import * as MediaLibrary from '@pontusab/react-native-media-library'
 import { Text, Touchable } from 'ui'
-import { COLORS } from 'ui/constants'
 import { pathOr } from 'rambda'
 import { logError } from 'utils/sentry'
+import { Base, Bar } from './styles'
 
-const { height } = Dimensions.get('window')
-
-const PADDING_TOP = 20
 const HEIGHT = 100
 
 function Albums({ onPress }) {
@@ -46,26 +43,9 @@ function Albums({ onPress }) {
   }, [])
 
   return (
-    <View
-      style={{
-        height: albums.length * HEIGHT + PADDING_TOP * 2,
-        minHeight: height,
-        backgroundColor: 'white',
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingTop: PADDING_TOP,
-      }}
-    >
-      <View
-        style={{
-          width: 60,
-          height: 5,
-          backgroundColor: COLORS.LIGHT_GREY,
-          borderRadius: 5,
-          alignSelf: 'center',
-          marginBottom: PADDING_TOP,
-        }}
-      />
+    <Base height={albums.length * HEIGHT}>
+      <Bar />
+
       {albums.map(({ id, title, totalCount, preview }) => (
         <View key={id} style={{ height: HEIGHT, width: '100%' }}>
           <Touchable onPress={() => onPress({ id, title })} style={{ flexDirection: 'row' }}>
@@ -79,7 +59,7 @@ function Albums({ onPress }) {
           </Touchable>
         </View>
       ))}
-    </View>
+    </Base>
   )
 }
 

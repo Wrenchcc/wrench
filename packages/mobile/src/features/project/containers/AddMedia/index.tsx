@@ -85,7 +85,9 @@ function AddMedia() {
   return (
     <Base>
       <Header
-        headerLeft={<Icon source={close} onPress={handleDismissModal} nativeHandler />}
+        headerLeft={
+          <Icon source={close} onPress={handleDismissModal} nativeHandler color="white" />
+        }
         headerRight={
           isLoading ? (
             <ActivityIndicator size="small" color="white" />

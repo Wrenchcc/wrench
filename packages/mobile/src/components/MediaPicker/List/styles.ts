@@ -14,7 +14,7 @@ export const Placeholder = styled.View`
 
 export const DeselectAll = styled(UiTouchable)`
   height: 40px;
-  background: white;
+  background: ${props => props.theme.colors.white};
   position: absolute;
   bottom: ${hasNotch ? 25 : 20}px;
   right: 20px;

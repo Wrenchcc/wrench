@@ -109,7 +109,7 @@ function MediaPicker({ ListHeaderComponent }) {
 
       <Base>
         <OpenAlbum onPress={handleOpenAlbum} naviteHandler>
-          <Icon source={album} onPress={handleOpenAlbum} naviteHandler />
+          <Icon source={album} onPress={handleOpenAlbum} naviteHandler color="white" />
         </OpenAlbum>
 
         <List

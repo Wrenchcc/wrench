@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
 import UiIcon from 'ui/Icon'
-import { FONTS, COLORS } from 'ui/constants'
+import { FONTS } from 'ui/constants'
 
 export const Base = styled.View`
   flex-direction: row;
@@ -22,7 +22,7 @@ export const Text = styled(UiText)`
 export const Input = styled.TextInput`
   flex: 1;
   position: relative;
-  background-color: ${COLORS.ULTRA_LIGHT_GREY};
+  background-color: ${props => props.theme.colors.placeholder};
   font-size: 17px;
   font-family: ${FONTS.REGULAR};
   border-radius: 1px;

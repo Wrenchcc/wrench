@@ -26,7 +26,7 @@ function Item({ item, selected, onPress, order }) {
       <Image source={item} style={{ height: ITEM_SIZE, width: ITEM_SIZE }} />
 
       <Marker selected={selected}>
-        <Text fontSize={12} bold>
+        <Text fontSize={12} bold color="black">
           {order || null}
         </Text>
       </Marker>

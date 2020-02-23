@@ -175,7 +175,7 @@ function List({ album, ListHeaderComponent }) {
 
       {selectedFiles.length > 0 && (
         <DeselectAll activeOpacity={0.9} onPress={handleDeselectAll} naviteHandler>
-          <Text medium fontSize={15}>
+          <Text medium fontSize={15} color="black">
             {t('MediaPickerList:deselectAll')}
           </Text>
         </DeselectAll>

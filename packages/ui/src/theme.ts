@@ -17,6 +17,7 @@ export const DARK_THEME = {
   white: '#ffffff',
   black: '#000000',
   divider: '#252526',
+  placeholder: '#19191A',
 }
 
 export const LIGHT_THEME = {
@@ -32,6 +33,7 @@ export const LIGHT_THEME = {
   white: '#ffffff',
   black: '#000000',
   divider: '#e6e7e9',
+  placeholder: '#e6e7e9',
 }
 
 export default mode => ({

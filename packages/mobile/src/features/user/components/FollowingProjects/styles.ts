@@ -4,15 +4,13 @@ import UiProjectCard from 'ui/ProjectCard'
 import UiTitle from 'ui/Title'
 import UiText from 'ui/Text'
 
-import { COLORS } from 'ui/constants'
-
 export const { width } = Dimensions.get('window')
 
 export const GUTTER = 20
 export const BAR_SPACE = GUTTER / 2
 
 export const Base = styled.View`
-  background-color: ${COLORS.ULTRA_LIGHT_GREY};
+  background-color: ${props => props.theme.colors.placeholder};
   flex: 1;
   padding-left: 20px;
   padding-right: 20px;

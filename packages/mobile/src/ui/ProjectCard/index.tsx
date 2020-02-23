@@ -55,7 +55,7 @@ function ProjectCard({ onPress, project, style }) {
           </Info>
 
           {!project.permissions.isOwner && (
-            <Button small background="white" onPress={handleFollow}>
+            <Button small color="inverse" onPress={handleFollow}>
               {project.permissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
             </Button>
           )}

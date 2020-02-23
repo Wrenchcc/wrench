@@ -7,7 +7,7 @@ export const SNAP_INTERVAL = SIZE + GUTTER // Card size
 
 export const Base = styled.View`
   margin-top: 40px;
-  background-color: ${props => props.theme.colors.subtle};
+  background-color: ${props => props.theme.colors.placeholder};
   margin-left: -20px;
   margin-right: -20px;
   padding-left: 20px;
