@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { View, FlatList, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
+import { View, FlatList, KeyboardAvoidingView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import {
   usePaginatedQuery,
@@ -14,7 +14,7 @@ import { Page, useNavigation } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
-import { CommentItem } from 'ui'
+import { CommentItem, ActivityIndicator } from 'ui'
 import { isIphone } from 'utils/platform'
 
 function PostContainer({ postId, commentId }) {
@@ -126,9 +126,9 @@ function PostContainer({ postId, commentId }) {
       content.push(
         <View style={{ paddingLeft: 60, height: 40 }} key="2">
           {isFetching ? (
-            <ActivityIndicator size="small" color="black" />
+            <ActivityIndicator />
           ) : (
-            <Text medium fontSize={14} color="light_grey" onPress={fetchMore}>
+            <Text medium fontSize={14} color="accent" onPress={fetchMore}>
               {t('PostContainer:loadMore')}
             </Text>
           )}
@@ -156,7 +156,7 @@ function PostContainer({ postId, commentId }) {
           ListEmptyComponent={
             initialFetch && (
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator size="small" color="black" />
+                <ActivityIndicator />
               </View>
             )
           }

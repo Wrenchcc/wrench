@@ -1,24 +1,10 @@
 import React, { useEffect } from 'react'
-import { View } from 'react-native'
 import { usePaginatedLazyQuery, SearchModelsDocument } from '@wrench/common'
 import { InfiniteList, Text, Touchable, SearchingFor } from 'ui'
 import { keyboardHeight } from 'utils/platform'
-import { NAVIGATION } from 'navigation/constants'
+import { Base } from './styles'
 
 const INPUT_HEIGHT = 80
-
-const styles = {
-  container: {
-    backgroundColor: 'white',
-    left: 0,
-    position: 'absolute',
-    right: 0,
-    zIndex: 1000,
-    bottom: keyboardHeight + INPUT_HEIGHT,
-    top: NAVIGATION.STATUS_BAR_HEIGHT,
-    width: '100%',
-  },
-}
 
 function SearchModel({ query, onPress }) {
   const {
@@ -43,8 +29,10 @@ function SearchModel({ query, onPress }) {
     return null
   }
 
+  const bottom = keyboardHeight + INPUT_HEIGHT
+
   return (
-    <View style={[styles.container, { bottom: keyboardHeight + INPUT_HEIGHT }]}>
+    <Base bottom={bottom}>
       <InfiniteList
         androidDismissKeyboard={false}
         defaultPadding
@@ -69,14 +57,14 @@ function SearchModel({ query, onPress }) {
               medium
               style={{ marginBottom: 3 }}
             >{`${item.node.brand.name} ${item.node.model}`}</Text>
-            <Text fontSize={15} color="light_grey">
+            <Text fontSize={15} color="subtle">
               {item.node.year}
             </Text>
           </Touchable>
         )}
         borderSeparator
       />
-    </View>
+    </Base>
   )
 }
 

@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react'
-import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import {
   useCurrentUserProjectsQuery,
@@ -9,7 +8,7 @@ import {
 import { useNavigation, SCREENS } from 'navigation'
 import { useProjectStore, PROJECT } from 'store'
 import { saveSelectedProjectId } from 'store/post'
-import { Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
+import { ActivityIndicator, Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
 import SearchModel from 'features/project/components/SearchModel'
 import { COLORS } from 'ui/constants'
@@ -148,7 +147,7 @@ function AddProjectModel() {
         headerTitle={<Text medium>{t('AddProjectModel:headerTitle')}</Text>}
         headerRight={
           isSaving ? (
-            <ActivityIndicator size="small" color="black" />
+            <ActivityIndicator />
           ) : (
             <Text onPress={handleSave} medium>
               {model ? t('AddProjectModel:add') : t('AddProjectModel:skip')}

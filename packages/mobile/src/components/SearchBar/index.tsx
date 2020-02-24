@@ -72,7 +72,7 @@ function SearchBar({
           value={query}
         />
 
-        <SearchIcon source={search} />
+        <SearchIcon source={search} color="accent" />
 
         {query.length > 0 && (
           <CloseIcon source={close} color="dark" width={12} height={12} onPress={clearQuery} />

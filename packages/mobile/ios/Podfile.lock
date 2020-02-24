@@ -401,7 +401,7 @@ PODS:
     - React
   - react-native-media-library (1.0.6):
     - React
-  - react-native-netinfo (5.5.0):
+  - react-native-netinfo (5.5.1):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -412,7 +412,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (8.1.1):
+  - react-native-webview (8.1.2):
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -449,7 +449,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (6.0.0):
+  - ReactNativeNavigation (6.0.1):
     - React
     - React-RCTImage
     - React-RCTText
@@ -457,6 +457,10 @@ PODS:
     - React
   - RNCAsyncStorage (1.8.0):
     - React
+  - RNDevMenu (4.0.0):
+    - React-Core
+    - React-Core/DevSupport
+    - React-RCTNetwork
   - RNFastImage (7.0.2):
     - React
     - SDWebImage (~> 5.0)
@@ -558,6 +562,7 @@ DEPENDENCIES:
   - ReactNativeNavigation (from `../../../node_modules/react-native-navigation`)
   - "RNAppleAuthentication (from `../../../node_modules/@pontusab/react-native-apple-authentication/ios`)"
   - "RNCAsyncStorage (from `../../../node_modules/@react-native-community/async-storage`)"
+  - RNDevMenu (from `../../../node_modules/react-native-dev-menu`)
   - RNFastImage (from `../../../node_modules/react-native-fast-image`)
   - RNFirebase (from `../../../node_modules/react-native-firebase/ios`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
@@ -703,6 +708,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@pontusab/react-native-apple-authentication/ios"
   RNCAsyncStorage:
     :path: "../../../node_modules/@react-native-community/async-storage"
+  RNDevMenu:
+    :path: "../../../node_modules/react-native-dev-menu"
   RNFastImage:
     :path: "../../../node_modules/react-native-fast-image"
   RNFirebase:
@@ -788,11 +795,11 @@ SPEC CHECKSUMS:
   react-native-image-manipulator: 01433a6b3714da14d453e2f1fa83eab09dadef4d
   react-native-image-picker: c8a4faf0e75ef3619f215463394388f1c222236b
   react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
-  react-native-netinfo: b84ff0cae1147315b5dc1daf0f65c0cc6ee71fb3
+  react-native-netinfo: 3bf235d94cc291cf0673ad9fd9eaae82f84ed8a9
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 0ec2ca34f52e60892e4a9141508751588d45a518
+  react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -803,9 +810,10 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: 3539767af785cd7c40a5980d237623d1f298f279
+  ReactNativeNavigation: 33657becf06c9c3a805ecb50dce8010fb887a1bb
   RNAppleAuthentication: e1494867df56ee7467943f4d1802895050845413
   RNCAsyncStorage: 5d83b49070d41fd72906a116c5e7bdac4ea3a814
+  RNDevMenu: 641b38a8aa65d98fb9df0f8652f05767609920f2
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
@@ -821,6 +829,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c50fe7a3f217a57b47db11e380b987fdb12e253c
+PODFILE CHECKSUM: 849645ebcd72c64f6b8bd36afdd0f65c16a878a7
 
 COCOAPODS: 1.8.4

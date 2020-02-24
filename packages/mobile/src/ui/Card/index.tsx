@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import Touchable from 'ui/Touchable'
 import { useNavigation, SCREENS } from 'navigation'
-import { Picture, ProjectName, Username, SIZE } from './styles'
+import { Picture, ProjectName, Username } from './styles'
 
 function Card({ image, title, onPress, style = {}, user, size = 180 }) {
   const { navigate } = useNavigation()
@@ -20,7 +20,7 @@ function Card({ image, title, onPress, style = {}, user, size = 180 }) {
         {title}
       </ProjectName>
       <Touchable onPress={handleNavigation}>
-        <Username fontSize={15} color="grey" numberOfLines={1} width={size}>
+        <Username fontSize={15} color="neutral" numberOfLines={1} width={size}>
           {user.fullName}
         </Username>
       </Touchable>

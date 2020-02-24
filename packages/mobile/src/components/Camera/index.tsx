@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { TouchableWithoutFeedback, View, ActivityIndicator } from 'react-native'
+import { TouchableWithoutFeedback, View } from 'react-native'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import { RNCamera } from 'react-native-camera'
+import { ActivityIndicator } from 'ui'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
 import FlashMode from 'components/FlashMode'
 import CameraType from 'components/CameraType'
-import AutoFocus from 'components/AutoFocus'
 import { TakePicture, Wrapper } from './styles'
 
 const { Constants } = RNCamera
@@ -82,12 +82,11 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
             <View
               style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
             >
-              <ActivityIndicator size="small" color="white" />
+              <ActivityIndicator color="white" />
             </View>
           }
         />
 
-        {autofocus && <AutoFocus coordinates={autofocus} />}
         <CameraType onPress={changeCameraType} />
         <Wrapper>
           <TakePicture onPress={takePicture} nativeHandler />

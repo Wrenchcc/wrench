@@ -103,7 +103,7 @@ function Users({ query }) {
         recent.length > 0 && (
           <Header>
             <Text medium>{t('Search:recent')}</Text>
-            <Text fontSize={15} onPress={handleRemove}>
+            <Text fontSize={14} onPress={handleRemove} medium>
               {t('Search:clear')}
             </Text>
           </Header>

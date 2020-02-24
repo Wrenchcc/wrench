@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
-import { ActivityIndicator } from 'react-native'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
-import { Title, Follow, Icon } from 'ui'
+import { ActivityIndicator, Title, Follow, Icon } from 'ui'
 import { arrowDown } from 'images'
 import { useNavigation, SCREENS } from 'navigation'
 import SimilarProjects from '../SimilarProjects'
@@ -75,11 +74,7 @@ function ProjectHeader({ project, spacingHorizontal }) {
         )}
 
         <OpenSimilar onPress={handleSimilarProjects}>
-          {loading ? (
-            <ActivityIndicator size="small" color="black" />
-          ) : (
-            <Icon source={arrowDown} color="dark" disabled />
-          )}
+          {loading ? <ActivityIndicator /> : <Icon source={arrowDown} disabled />}
         </OpenSimilar>
       </Actions>
 

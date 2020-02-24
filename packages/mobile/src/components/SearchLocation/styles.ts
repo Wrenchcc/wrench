@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import { NAVIGATION } from 'navigation/constants'
 
 export const Base = styled.View`
@@ -18,5 +17,5 @@ export const Header = styled.View`
   padding: 0 20px 20px;
   margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT}px;
   height: ${NAVIGATION.TOP_BAR_HEIGHT}px;
-  background-color: ${COLORS.WHITE};
+  background-color: ${props => props.theme.colors.default};
 `

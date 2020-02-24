@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import UiTitle from 'ui/Title'
 import UiText from 'ui/Text'
 import UiTouchable from 'ui/Touchable'
 
 export const Base = styled.View`
   flex: 1;
-  background-color: ${COLORS.ULTRA_LIGHT_GREY};
+  background-color: ${props => props.theme.colors.placeholder};
   justify-content: center;
   padding-left: 20px;
   padding-right: 20px;
@@ -24,7 +23,7 @@ export const Description = styled(UiText)`
 
 export const Button = styled(UiTouchable)`
   height: 40px;
-  background-color: ${COLORS.WHITE};
+  background-color: ${props => props.theme.colors.white};
   align-items: center;
   justify-content: center;
 `

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 
 export const Marker = styled.View`
   width: 24px;
@@ -8,10 +7,11 @@ export const Marker = styled.View`
   right: 5px;
   top: 5px;
   border-radius: 24px;
-  background-color: ${props => (props.selected ? COLORS.WHITE : 'rgba(255, 255, 255, 0.25)')};
+  background-color: ${props =>
+    props.selected ? props.theme.colors.white : 'rgba(255, 255, 255, 0.25)'};
   border-style: solid;
   border-width: 1.5px;
-  border-color: ${COLORS.WHITE};
+  border-color: ${props => props.theme.colors.white};
   z-index: 10;
   justify-content: center;
   align-items: center;

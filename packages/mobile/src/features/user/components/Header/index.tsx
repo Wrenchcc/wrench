@@ -26,7 +26,7 @@ function Header({
       {location || bio || website ? (
         <Info>
           {location && (
-            <Text color="grey" fontSize={15}>
+            <Text color="neutral" fontSize={15}>
               {location}
             </Text>
           )}

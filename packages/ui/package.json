@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "source": "src/index.ts",
-  "main": "build/node/",
-  "browser": "build/web/",
-  "react-native": "build/native/",
+  "main": "dist/node/",
+  "browser": "dist/web/",
+  "react-native": "dist/native/",
   "files": [
     "assets/fonts/native/",
-    "build/"
+    "dist/"
   ],
   "scripts": {
     "build:storybook": "build-storybook",
-    "build:native": "",
+    "build:native": "tsc -p tsconfig.native.json",
     "build:web": "tsc -p tsconfig.browser.json",
-    "build:node": "",
+    "build:node": "tsc -p tsconfig.node.json",
     "build:all": "yarn build:web && yarn build:node && yarn build:native",
     "storybook:web": "start-storybook -p 9001",
     "deploy": "serverless"
@@ -35,12 +35,12 @@
     "@storybook/addon-storysource": "^5.3.13",
     "@storybook/addons": "^5.3.13",
     "@storybook/react": "^5.3.13",
-    "@types/react": "^16.9.21",
-    "@types/styled-components": "^4.4.3",
-    "@types/styled-system": "^5.1.6",
+    "@types/react": "^16.9.22",
+    "@types/styled-components": "^5.0.0",
+    "@types/styled-system": "^5.1.7",
     "babel-loader": "^8.0.6",
     "storybook-dark-mode": "^0.3.0",
-    "typescript": "^3.7.5",
+    "typescript": "^3.8.2",
     "serverless": "^1.64.0"
   }
 }

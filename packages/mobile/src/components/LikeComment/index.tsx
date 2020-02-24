@@ -50,7 +50,7 @@ function LikeComment({ comment }) {
       <Animated.View style={{ transform: [{ scale }] }}>
         <Icon
           source={sparkSmall}
-          color={comment.likes.isLiked ? 'spark' : 'dark'}
+          color={comment.likes.isLiked ? 'warning' : 'inverse'}
           onPress={handleToggleLike}
         />
       </Animated.View>

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import UiFollowers from 'ui/Followers'
 import UiTouchable from 'ui/Touchable'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
   padding-left: ${props => (props.spacingHorizontal ? 20 : 0)}px;
@@ -22,7 +21,7 @@ export const Actions = styled.View`
 
 export const OpenSimilar = styled(UiTouchable)`
   border-width: 1px;
-  border-color: ${COLORS.DIVIDER};
+  border-color: ${props => props.theme.colors.divider};
   height: 40px;
   justify-content: center;
   align-items: center;

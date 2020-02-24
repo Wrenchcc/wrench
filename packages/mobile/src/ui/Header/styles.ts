@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import { NAVIGATION } from 'navigation/constants'
 
 export const Background = styled.View`
   z-index: 10;
-  background-color: ${({ color }) => (color ? color : COLORS.WHITE)};
+  background-color: ${({ color, theme }) => (color ? color : theme.colors.default)};
 `
 
 export const Base = styled.View`

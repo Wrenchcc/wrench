@@ -12,7 +12,7 @@ function getProjectById(id, projects) {
   return pathOr(projects[0]?.node, ['node'], project)
 }
 
-function SelectProject({ dark = false }) {
+function SelectProject({ black = false }) {
   const [isOpen, setIsOpen] = useState(false)
   const { data } = useCurrentUserProjectsQuery({
     fetchPolicy: 'cache-only',
@@ -53,7 +53,7 @@ function SelectProject({ dark = false }) {
           }}
         >
           <Text
-            color={(dark && 'dark') || isOpen ? 'dark' : 'white'}
+            color={(black && 'default') || isOpen ? 'inverse' : 'white'}
             medium
             style={{ zIndex: 100, maxWidth: '92%' }}
             numberOfLines={1}
@@ -63,7 +63,7 @@ function SelectProject({ dark = false }) {
           <Icon
             style={{ marginLeft: 10 }}
             source={isOpen ? arrowUp : arrowDown}
-            color={(dark && 'dark') || isOpen ? 'light_grey' : 'white'}
+            color={(black && 'default') || isOpen ? 'inverse' : 'white'}
           />
         </Touchable>
       </Base>

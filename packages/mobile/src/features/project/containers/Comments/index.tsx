@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react'
-import { KeyboardAvoidingView, FlatList, View, ActivityIndicator } from 'react-native'
+import { KeyboardAvoidingView, FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
 import { Page } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
-import { CommentItem, Text } from 'ui'
+import { ActivityIndicator, CommentItem, Text } from 'ui'
 import { update } from 'rambda'
 import { isIphone } from 'utils/platform'
 
@@ -97,9 +97,9 @@ function Comments({ postId }) {
       content.push(
         <View style={{ paddingLeft: 60, height: 40 }} key="2">
           {isFetching ? (
-            <ActivityIndicator size="small" color="black" />
+            <ActivityIndicator />
           ) : (
-            <Text medium fontSize={14} color="light_grey" onPress={fetchMore}>
+            <Text medium fontSize={14} color="accent" onPress={fetchMore}>
               {t('Comments:loadMore')}
             </Text>
           )}
@@ -131,7 +131,7 @@ function Comments({ postId }) {
           ListEmptyComponent={
             initialFetch && (
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator size="small" color="black" />
+                <ActivityIndicator />
               </View>
             )
           }

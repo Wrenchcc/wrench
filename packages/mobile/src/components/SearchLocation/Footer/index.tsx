@@ -9,10 +9,10 @@ function Footer() {
 
   return (
     <Base>
-      <Text fontSize={12} color="grey" style={{ marginRight: 5 }}>
+      <Text fontSize={12} color="neutral" style={{ marginRight: 5 }}>
         {t('SearchLocationFooter:poweredBy')}
       </Text>
-      <Icon source={mapbox} color="grey" />
+      <Icon source={mapbox} color="neutral" />
     </Base>
   )
 }

@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.View`
-  background-color: ${COLORS.ULTRA_LIGHT_GREY};
+  background-color: ${props => props.theme.colors.subtle};
   opacity: 0.96;
   width: 100%;
   height: 60px;

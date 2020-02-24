@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import UiFollow from 'ui/Follow'
 
 export const GUTTER = 10
@@ -8,7 +7,7 @@ export const SNAP_INTERVAL = SIZE + GUTTER // Card size
 
 export const Base = styled.View`
   margin-top: 40px;
-  background-color: ${COLORS.ULTRA_LIGHT_GREY};
+  background-color: ${props => props.theme.colors.placeholder};
   margin-left: -20px;
   margin-right: -20px;
   padding-left: 20px;

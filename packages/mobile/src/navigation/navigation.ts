@@ -1,8 +1,9 @@
 import { Navigation } from 'react-native-navigation'
+import { Appearance } from 'react-native-appearance'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile, add } from 'images'
 import { loadSelectedProjectId } from 'store/post'
-import { SCREENS, BOTTOM_TABS_ID, STATUS_BAR } from './constants'
+import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import defaultOptions from './defaultOptions'
 
 export function Bootstrap() {
@@ -19,7 +20,7 @@ export function AuthNavigation() {
   Navigation.setDefaultOptions({
     modalPresentationStyle: 'fullScreen',
     layout: {
-      componentBackgroundColor: COLORS.DARK,
+      componentBackgroundColor: Appearance.getColorScheme() === 'dark' ? 'white' : 'black',
     },
     navigationBar: {
       backgroundColor: COLORS.DARK,

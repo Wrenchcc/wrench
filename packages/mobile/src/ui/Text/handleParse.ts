@@ -1,4 +1,4 @@
-import { COLORS, FONTS } from 'ui/constants'
+import { FONTS } from 'ui/constants'
 import { showModal, navigateWithoutContext, SCREENS } from 'navigation'
 
 function addhttp(url) {
@@ -23,11 +23,7 @@ const handleNamePress = name => {
 
 const styles = {
   link: {
-    color: COLORS.DARK,
     fontFamily: FONTS.MEDIUM,
-  },
-  username: {
-    color: COLORS.DARK,
   },
 }
 
@@ -38,7 +34,6 @@ export default [
     onPress: handleNamePress,
     pattern: /\/?\B@[a-z0-9.-]+/gi,
     renderText: username => username,
-    style: styles.username,
   },
   {
     onPress: handleUrlPress,

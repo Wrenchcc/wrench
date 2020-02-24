@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react'
-import { View } from 'react-native'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useMentionStore } from 'store'
 import { InfiniteList, MentionUser, NoResults, SearchingFor, Loader } from 'ui'
-import { NAVIGATION } from 'navigation/constants'
-import { keyboardHeight } from 'utils/platform'
-
-const INPUT_HEIGHT = 60
+import { Base } from './styles'
 
 function Mention({ onPress }) {
   const renderItem = ({ item }) => <MentionUser user={item.node} onPress={onPress} />
@@ -33,17 +29,7 @@ function Mention({ onPress }) {
   }, [query])
 
   return (
-    <View
-      style={{
-        backgroundColor: 'white',
-        bottom: keyboardHeight + INPUT_HEIGHT,
-        left: 0,
-        position: 'absolute',
-        top: NAVIGATION.STATUS_BAR_HEIGHT,
-        width: '100%',
-        zIndex: 100,
-      }}
-    >
+    <Base>
       <InfiniteList
         defaultPadding
         androidDismissKeyboard={false}
@@ -64,7 +50,7 @@ function Mention({ onPress }) {
           )
         }
       />
-    </View>
+    </Base>
   )
 }
 

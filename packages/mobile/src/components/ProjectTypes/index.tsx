@@ -1,11 +1,10 @@
 import React, { useCallback, memo } from 'react'
-import { ScrollView } from 'react-native'
 // import { sort } from 'rambda'
 import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
 import CategoriesPlaceholder from './Placeholder'
-import { Wrapper } from './styles'
+import { Base, Wrapper } from './styles'
 
 function ProjectTypes() {
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
@@ -27,15 +26,7 @@ function ProjectTypes() {
   // )
 
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      style={{
-        paddingBottom: 10,
-        paddingTop: 10,
-        backgroundColor: 'white',
-      }}
-    >
+    <Base horizontal showsHorizontalScrollIndicator={false}>
       {typesData.types.map((category, index) => (
         <Wrapper
           key={category.id}
@@ -48,7 +39,7 @@ function ProjectTypes() {
           </Text>
         </Wrapper>
       ))}
-    </ScrollView>
+    </Base>
   )
 }
 

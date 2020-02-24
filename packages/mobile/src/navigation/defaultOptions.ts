@@ -1,6 +1,9 @@
+import { Appearance } from 'react-native-appearance'
 import { COLORS } from 'ui/constants'
 import { hasNotch } from 'utils/platform'
 import { STATUS_BAR } from './constants'
+
+const dynamicColor = Appearance.getColorScheme() === 'dark' ? 'black' : 'white'
 
 export default {
   modalPresentationStyle: 'fullScreen',
@@ -11,7 +14,7 @@ export default {
       right: 0,
       top: hasNotch ? 10 : 5,
     },
-    textColor: COLORS.WHITE,
+    textColor: dynamicColor,
     titleDisplayMode: 'alwaysHide',
   },
   bottomTabs: {
@@ -19,15 +22,15 @@ export default {
     titleDisplayMode: 'alwaysHide',
   },
   layout: {
-    componentBackgroundColor: COLORS.WHITE,
+    componentBackgroundColor: dynamicColor,
     orientation: ['portrait'],
   },
   overlay: {
     interceptTouchOutside: false,
   },
   statusBar: {
-    backgroundColor: COLORS.WHITE,
-    style: STATUS_BAR.DARK,
+    backgroundColor: dynamicColor,
+    style: Appearance.getColorScheme() === 'dark' ? STATUS_BAR.LIGHT : STATUS_BAR.DARK,
   },
   topBar: {
     drawBehind: true,

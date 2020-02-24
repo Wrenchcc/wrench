@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, ActivityIndicator } from 'react-native'
+import { View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import Text from 'ui/Text'
+import ActivityIndicator from 'ui/ActivityIndicator'
 
 function SearchingFor({ query }) {
   const { t } = useTranslation()
@@ -15,12 +16,10 @@ function SearchingFor({ query }) {
         paddingTop: 20,
       }}
     >
-      <ActivityIndicator size="small" color="black" />
-      <Text
-        style={{ paddingHorizontal: 20 }}
-        color="light_grey"
-        numberOfLines={1}
-      >{`${t('SearchingFor:title')} "${query}"`}</Text>
+      <ActivityIndicator />
+      <Text style={{ paddingHorizontal: 20 }} color="neutral" numberOfLines={1}>{`${t(
+        'SearchingFor:title'
+      )} "${query}"`}</Text>
     </View>
   )
 }

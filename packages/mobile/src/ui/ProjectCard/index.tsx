@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
+import { useResponsiveHeight } from 'react-native-responsive-dimensions'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
@@ -8,6 +9,7 @@ import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './
 function ProjectCard({ onPress, project, style }) {
   const { t } = useTranslation()
   const [followProject] = useFollowProjectMutation()
+  const height = useResponsiveHeight(24)
 
   const handleFollow = useCallback(() => {
     const totalCount = project.permissions.isFollower
@@ -39,12 +41,12 @@ function ProjectCard({ onPress, project, style }) {
   }, [project])
 
   return (
-    <Base style={style}>
+    <Base style={style} height={height}>
       <Touchable onPress={onPress}>
         {!project.cover.default && (
           <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
         )}
-        <Image source={project.cover} height={180} />
+        <Image source={project.cover} height={height} />
 
         <Content>
           <Info>
@@ -55,7 +57,7 @@ function ProjectCard({ onPress, project, style }) {
           </Info>
 
           {!project.permissions.isOwner && (
-            <Button small background="white" onPress={handleFollow}>
+            <Button small color="inverse" onPress={handleFollow}>
               {project.permissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
             </Button>
           )}

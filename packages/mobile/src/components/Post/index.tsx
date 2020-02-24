@@ -11,6 +11,7 @@ import {
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
+import { useDynamicColor } from 'utils/hooks'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ExpandableText } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
@@ -19,6 +20,7 @@ import { Base, Top, Headline, Content, Spacer } from './styles'
 function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
   const { t } = useTranslation()
   const { navigate, showEditPost } = useNavigation()
+  const dynamicColor = useDynamicColor('inverse')
   const [deletePost] = useDeletePostMutation()
   const handleEdit = useCallback(() => showEditPost({ post }), [post])
 
@@ -117,7 +119,6 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
               },
             })
           } catch (err) {
-            console.log(err)
             // Swollow error when no post is found
           }
         },
@@ -172,7 +173,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           options,
           destructiveButtonIndex: 1,
           cancelButtonIndex: 2,
-          tintColor: 'black',
+          tintColor: dynamicColor,
         },
         index => {
           if (index === 0) {
@@ -190,7 +191,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           options,
           destructiveButtonIndex: 0,
           cancelButtonIndex: 1,
-          tintColor: 'black',
+          tintColor: dynamicColor,
         },
         index => {
           if (index === 0) {

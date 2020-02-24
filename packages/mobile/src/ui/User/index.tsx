@@ -37,7 +37,7 @@ function User({ data, onPress }) {
       />
       <Content>
         <Text medium>{data.fullName}</Text>
-        <Text color="light_grey" fontSize={15}>
+        <Text color="accent" fontSize={15}>
           {t('UiUser:projects', { count: data.projectCount })}
         </Text>
       </Content>

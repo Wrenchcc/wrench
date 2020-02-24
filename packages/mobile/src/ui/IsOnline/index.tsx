@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+import { useColorScheme } from 'react-native-appearance'
 
 const getSize = size => ({
   background: {
@@ -19,6 +20,8 @@ const getSize = size => ({
 })
 
 function IsOnline({ badgeSize = 'medium' }) {
+  const colorScheme = useColorScheme()
+
   return (
     <View style={{ zIndex: 1000 }}>
       <View
@@ -34,7 +37,7 @@ function IsOnline({ badgeSize = 'medium' }) {
         pointerEvents="none"
         style={{
           ...getSize(badgeSize).background,
-          backgroundColor: 'white',
+          backgroundColor: colorScheme === 'dark' ? 'black' : 'white',
           position: 'absolute',
           zIndex: 5,
         }}

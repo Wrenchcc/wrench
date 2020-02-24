@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 import { hasNotch } from 'utils/platform'
 import UiTouchable from 'ui/Touchable'
-import { COLORS } from 'ui/constants'
 
 export const SPACER = hasNotch ? 100 : 80
 export const BUTTON_HEIGHT = 70
 export const ITEM_HEIGHT = 65
 
 export const Base = styled.View`
-  background-color: ${COLORS.WHITE};
+  background-color: ${props => props.theme.colors.default};
   padding-top: ${SPACER}px;
 `
 

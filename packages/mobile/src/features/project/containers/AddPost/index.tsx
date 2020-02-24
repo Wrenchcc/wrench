@@ -160,7 +160,7 @@ function AddPost() {
         }
       />
 
-      <SelectProject dark />
+      <SelectProject black />
 
       <KeyboardAvoidingView paddingHorizontal={0} keyboardVerticalOffset={0}>
         <ScrollView style={{ paddingHorizontal: 20 }} keyboardDismissMode="on-drag">

@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
-import { ActivityIndicator } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
-import { Header, Text, Icon, Touchable } from 'ui'
+import { ActivityIndicator, Header, Text, Icon, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
+import { useDynamicColor } from 'utils/hooks'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
 import Camera from 'components/Camera'
@@ -19,6 +19,7 @@ function AddMedia() {
   const { navigate, dismissModal } = useNavigation()
   const [isLoading, setLoading] = useState(false)
   const { showActionSheetWithOptions } = useActionSheet()
+  const dynamicColor = useDynamicColor('inverse')
 
   const {
     onSelect,
@@ -60,7 +61,7 @@ function AddMedia() {
           options: [t('AddMedia:options:discard'), t('AddMedia:options:cancel')],
           destructiveButtonIndex: 0,
           cancelButtonIndex: 1,
-          tintColor: 'black',
+          tintColor: dynamicColor,
         },
         index => {
           if (index === 0) {
@@ -85,10 +86,12 @@ function AddMedia() {
   return (
     <Base>
       <Header
-        headerLeft={<Icon source={close} onPress={handleDismissModal} nativeHandler />}
+        headerLeft={
+          <Icon source={close} onPress={handleDismissModal} nativeHandler color="white" />
+        }
         headerRight={
           isLoading ? (
-            <ActivityIndicator size="small" color="white" />
+            <ActivityIndicator color="white" />
           ) : hasSelectedFiles ? (
             <Touchable onPress={handleCropping} nativeHandler>
               <Text color="white" medium>

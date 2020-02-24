@@ -1,3 +1,4 @@
+export { default as ActivityIndicator } from './ActivityIndicator'
 export { default as Avatar } from './Avatar'
 export { default as Banner } from './Banner'
 export { default as Border } from './Border'

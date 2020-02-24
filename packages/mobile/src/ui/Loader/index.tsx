@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, ActivityIndicator } from 'react-native'
-import { COLORS } from 'ui/constants'
+import { View } from 'react-native'
+import ActivityIndicator from 'ui/ActivityIndicator'
 import { CONTENT_INSET } from 'navigation'
 
-function Loader({ size = 'small', color = COLORS.DARK, padding = 32, fullscreen = false }) {
+function Loader({ size = 'small', color = 'inverse', padding = 32, fullscreen = false }) {
   return (
     <View
       pointerEvents="none"

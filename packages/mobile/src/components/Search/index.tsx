@@ -1,5 +1,6 @@
 import React, { useState, useCallback, memo, useEffect } from 'react'
 import { Dimensions } from 'react-native'
+import { useColorScheme } from 'react-native-appearance'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar } from 'react-native-tab-view'
 import { FONTS } from 'ui/constants'
@@ -20,25 +21,10 @@ const routes = [
   },
 ]
 
-const styles = {
-  indicatorStyle: {
-    backgroundColor: 'black',
-    height: 3,
-  },
-  labelStyle: {
-    color: 'black',
-    fontFamily: FONTS.MEDIUM,
-    fontSize: 15,
-  },
-  tabBar: {
-    backgroundColor: 'white',
-    elevation: 0,
-  },
-}
-
 function Search({ query }) {
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
+  const colorScheme = useColorScheme()
 
   useEffect(() => {
     setIndex(0)
@@ -50,6 +36,22 @@ function Search({ query }) {
     },
     [index]
   )
+
+  const styles = {
+    indicatorStyle: {
+      backgroundColor: colorScheme === 'dark' ? 'white' : 'black',
+      height: 3,
+    },
+    labelStyle: {
+      color: colorScheme === 'dark' ? 'white' : 'black',
+      fontFamily: FONTS.MEDIUM,
+      fontSize: 15,
+    },
+    tabBar: {
+      backgroundColor: colorScheme === 'dark' ? 'black' : 'white',
+      elevation: 0,
+    },
+  }
 
   const handleLabelText = useCallback(({ route }) => t(`Search:${route.key}`), [t])
 
