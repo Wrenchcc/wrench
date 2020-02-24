@@ -128,7 +128,7 @@ function PostContainer({ postId, commentId }) {
           {isFetching ? (
             <ActivityIndicator />
           ) : (
-            <Text medium fontSize={14} color="subtle" onPress={fetchMore}>
+            <Text medium fontSize={14} color="accent" onPress={fetchMore}>
               {t('PostContainer:loadMore')}
             </Text>
           )}

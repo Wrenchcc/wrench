@@ -124,7 +124,7 @@ function Notification({ data, deleteNotification }) {
           <Content>
             <Text onPress={navigateToUser}>{data.user.fullName}</Text>
             <Bottom>
-              <Text color="subtle" fontSize={15} lineHeight={22} onPress={handleOnPress}>
+              <Text color="accent" fontSize={15} lineHeight={22} onPress={handleOnPress}>
                 {description(data, t)}. <TimeAgo date={data.createdAt} fontSize={15} />
               </Text>
             </Bottom>

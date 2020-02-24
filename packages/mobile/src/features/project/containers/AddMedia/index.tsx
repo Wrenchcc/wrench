@@ -5,6 +5,7 @@ import { usePostStore } from 'store'
 import { useNavigation, SCREENS } from 'navigation'
 import { ActivityIndicator, Header, Text, Icon, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
+import { useDynamicColor } from 'utils/hooks'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
 import Camera from 'components/Camera'
@@ -18,6 +19,7 @@ function AddMedia() {
   const { navigate, dismissModal } = useNavigation()
   const [isLoading, setLoading] = useState(false)
   const { showActionSheetWithOptions } = useActionSheet()
+  const dynamicColor = useDynamicColor('inverse')
 
   const {
     onSelect,
@@ -59,7 +61,7 @@ function AddMedia() {
           options: [t('AddMedia:options:discard'), t('AddMedia:options:cancel')],
           destructiveButtonIndex: 0,
           cancelButtonIndex: 1,
-          tintColor: 'black',
+          tintColor: dynamicColor,
         },
         index => {
           if (index === 0) {

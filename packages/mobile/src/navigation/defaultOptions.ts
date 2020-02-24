@@ -3,7 +3,7 @@ import { COLORS } from 'ui/constants'
 import { hasNotch } from 'utils/platform'
 import { STATUS_BAR } from './constants'
 
-const dynamicColor = Appearance.getColorScheme() === 'light' ? 'white' : 'black'
+const dynamicColor = Appearance.getColorScheme() === 'dark' ? 'black' : 'white'
 
 export default {
   modalPresentationStyle: 'fullScreen',
@@ -30,7 +30,7 @@ export default {
   },
   statusBar: {
     backgroundColor: dynamicColor,
-    style: Appearance.getColorScheme() === 'light' ? STATUS_BAR.DARK : STATUS_BAR.LIGHT,
+    style: Appearance.getColorScheme() === 'dark' ? STATUS_BAR.LIGHT : STATUS_BAR.DARK,
   },
   topBar: {
     drawBehind: true,

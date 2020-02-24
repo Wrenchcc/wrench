@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useColorScheme } from 'react-native-appearance'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { Touchable } from 'ui'
 import { Base, Text } from './styles'
@@ -10,13 +11,14 @@ const LEGAL_URL = 'https://wrench.cc/terms'
 function Legal({ color = 'white' }) {
   const { t } = useTranslation()
   const { showModal } = useNavigation()
+  const colorScheme = useColorScheme()
 
   const handleNavigation = useCallback(
     () =>
       showModal(SCREENS.WEBVIEW, {
         options: {
           statusBar: {
-            style: STATUS_BAR.DARK,
+            style: colorScheme === 'dark' ? STATUS_BAR.LIGHT : STATUS_BAR.DARK,
           },
           layout: {
             componentBackgroundColor: COLORS.WHITE,

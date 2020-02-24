@@ -3,7 +3,7 @@ import Text from 'ui/Text'
 import { timeDifferenceForDate } from 'utils/time'
 
 const TimeAgo = ({ date, fontSize = 12, style = {}, long = false }) => (
-  <Text color="subtle" fontSize={fontSize} style={style}>
+  <Text color="accent" fontSize={fontSize} style={style}>
     {timeDifferenceForDate(date, long)}
   </Text>
 )

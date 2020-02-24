@@ -11,11 +11,11 @@ const PlaceholderAnimation = props => {
   const colorScheme = useColorScheme()
   const backgroundColor = AnimationBackground[colorScheme]
 
-  if (colorScheme === 'light') {
-    return <ShineOverlay {...props} style={{ backgroundColor }} />
+  if (colorScheme === 'dark') {
+    return <Shine {...props} style={{ backgroundColor }} />
   }
 
-  return <Shine {...props} style={{ backgroundColor }} />
+  return <ShineOverlay {...props} style={{ backgroundColor }} />
 }
 
 export default PlaceholderAnimation

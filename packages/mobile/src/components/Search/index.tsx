@@ -39,16 +39,16 @@ function Search({ query }) {
 
   const styles = {
     indicatorStyle: {
-      backgroundColor: colorScheme === 'light' ? 'black' : 'white',
+      backgroundColor: colorScheme === 'dark' ? 'white' : 'black',
       height: 3,
     },
     labelStyle: {
-      color: colorScheme === 'light' ? 'black' : 'white',
+      color: colorScheme === 'dark' ? 'white' : 'black',
       fontFamily: FONTS.MEDIUM,
       fontSize: 15,
     },
     tabBar: {
-      backgroundColor: colorScheme === 'light' ? 'white' : 'black',
+      backgroundColor: colorScheme === 'dark' ? 'black' : 'white',
       elevation: 0,
     },
   }

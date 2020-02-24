@@ -129,7 +129,7 @@ function EditProfile({ onboarding }) {
           reTryTitle: t('EditProfile:imagePickerPermissionRetry'),
           okTitle: t('EditProfile:imagePickerPermissionOk'),
         },
-        tintColor: colorScheme === 'light' ? 'black' : 'white',
+        tintColor: colorScheme === 'dark' ? 'white' : 'black',
         customButtons: [{ name: 'remove', title: t('EditProfile:remove') }],
         quality: 1.0,
         maxWidth: 500,

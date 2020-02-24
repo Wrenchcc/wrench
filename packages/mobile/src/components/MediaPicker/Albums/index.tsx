@@ -52,7 +52,7 @@ function Albums({ onPress }) {
             <Image source={preview} style={{ width: 80, height: 80 }} />
             <View style={{ paddingLeft: 10, justifyContent: 'center' }}>
               <Text style={{ marginBottom: 5 }}>{title}</Text>
-              <Text fontSize={14} color="grey">
+              <Text fontSize={14} color="neutral">
                 {totalCount}
               </Text>
             </View>

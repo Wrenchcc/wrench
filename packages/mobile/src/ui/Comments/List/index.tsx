@@ -43,7 +43,7 @@ function List({ data }) {
         .map(renderComment)}
 
       <LoadMore onPress={navigateToComments}>
-        <Text fontSize={15} color="subtle">
+        <Text fontSize={15} color="accent">
           {t('List:loadMore', { count: data.comments.totalCount })}
         </Text>
       </LoadMore>

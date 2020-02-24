@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import RVideo from 'react-native-video'
 import { isAndroid } from 'utils/platform'
 import { Text, Title, Touchable } from 'ui'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.SafeAreaView`
   flex: 1;
@@ -39,13 +38,13 @@ export const Content = styled.View`
 `
 
 export const Headline = styled(Title)`
-  color: ${COLORS.WHITE};
+  color: ${props => props.theme.colors.white};
 `
 
 export const Description = styled(Text)`
   padding-top: 30px;
   line-height: 30px;
-  color: ${COLORS.WHITE};
+  color: ${props => props.theme.colors.white};
 `
 
 export const Options = styled(Touchable)`

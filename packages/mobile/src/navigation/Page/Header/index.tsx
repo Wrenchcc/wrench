@@ -40,7 +40,7 @@ function Header({
               {headerTitle}
             </Text>
             {headerSubTitle && (
-              <Text fontSize={11} numberOfLines={1} color="subtle" center>
+              <Text fontSize={11} numberOfLines={1} color="accent" center>
                 {headerSubTitle}
               </Text>
             )}

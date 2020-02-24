@@ -51,10 +51,10 @@ function Apple({ black }) {
   }, [])
 
   const buttonStyle =
-    colorScheme === 'light'
-      ? black
-        ? AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
-        : AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+    colorScheme === 'dark'
+      ? AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+      : black
+      ? AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
       : AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
 
   return (

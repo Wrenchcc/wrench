@@ -7,7 +7,7 @@ import UiButton from 'ui/Button'
 
 export const Base = styled(UiTouchable)`
   margin-top: 20px;
-  height: 180px;
+  height: ${props => props.height}px;
   position: relative;
 `
 

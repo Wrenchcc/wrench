@@ -15,7 +15,7 @@ function Project({ id, files, title, followers, onPress, selected }) {
       <Middle>
         <Content>
           <Text numberOfLines={1}>{title}</Text>
-          <Followers color="grey" followers={followers.totalCount} />
+          <Followers color="neutral" followers={followers.totalCount} />
         </Content>
         {selected && <Icon source={check} />}
       </Middle>

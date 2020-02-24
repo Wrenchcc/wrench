@@ -47,18 +47,18 @@
 			</array>
 		</dict>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<string>NO</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>FacebookAppID</key>
-	<string>1174076712654826</string>
-	<key>FacebookDisplayName</key>
-	<string>Wrench</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<false/>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<false/>
+	<key>FacebookAppID</key>
+	<string>1174076712654826</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
+	<key>FacebookDisplayName</key>
+	<string>Wrench</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<string>NO</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -80,6 +80,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) uses the camera to share photos and videos.</string>
+	<key>NSMainNibFile</key>
+	<string>LaunchScreen</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) uses the microphone to add sound to videos.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
@@ -102,6 +104,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

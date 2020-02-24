@@ -14,7 +14,7 @@ function ProjectSuggestions() {
         {t('ProjectSuggestions:headline')}
       </Headline>
 
-      <Description color="grey" fontSize={19}>
+      <Description color="neutral" fontSize={19}>
         {t('ProjectSuggestions:description')}
       </Description>
 

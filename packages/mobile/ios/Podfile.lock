@@ -457,6 +457,10 @@ PODS:
     - React
   - RNCAsyncStorage (1.8.0):
     - React
+  - RNDevMenu (4.0.0):
+    - React-Core
+    - React-Core/DevSupport
+    - React-RCTNetwork
   - RNFastImage (7.0.2):
     - React
     - SDWebImage (~> 5.0)
@@ -558,6 +562,7 @@ DEPENDENCIES:
   - ReactNativeNavigation (from `../../../node_modules/react-native-navigation`)
   - "RNAppleAuthentication (from `../../../node_modules/@pontusab/react-native-apple-authentication/ios`)"
   - "RNCAsyncStorage (from `../../../node_modules/@react-native-community/async-storage`)"
+  - RNDevMenu (from `../../../node_modules/react-native-dev-menu`)
   - RNFastImage (from `../../../node_modules/react-native-fast-image`)
   - RNFirebase (from `../../../node_modules/react-native-firebase/ios`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
@@ -703,6 +708,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@pontusab/react-native-apple-authentication/ios"
   RNCAsyncStorage:
     :path: "../../../node_modules/@react-native-community/async-storage"
+  RNDevMenu:
+    :path: "../../../node_modules/react-native-dev-menu"
   RNFastImage:
     :path: "../../../node_modules/react-native-fast-image"
   RNFirebase:
@@ -806,6 +813,7 @@ SPEC CHECKSUMS:
   ReactNativeNavigation: 33657becf06c9c3a805ecb50dce8010fb887a1bb
   RNAppleAuthentication: e1494867df56ee7467943f4d1802895050845413
   RNCAsyncStorage: 5d83b49070d41fd72906a116c5e7bdac4ea3a814
+  RNDevMenu: 641b38a8aa65d98fb9df0f8652f05767609920f2
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
@@ -821,6 +829,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c50fe7a3f217a57b47db11e380b987fdb12e253c
+PODFILE CHECKSUM: 849645ebcd72c64f6b8bd36afdd0f65c16a878a7
 
 COCOAPODS: 1.8.4

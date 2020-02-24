@@ -37,7 +37,7 @@ function IsOnline({ badgeSize = 'medium' }) {
         pointerEvents="none"
         style={{
           ...getSize(badgeSize).background,
-          backgroundColor: colorScheme === 'light' ? 'white' : 'black',
+          backgroundColor: colorScheme === 'dark' ? 'black' : 'white',
           position: 'absolute',
           zIndex: 5,
         }}

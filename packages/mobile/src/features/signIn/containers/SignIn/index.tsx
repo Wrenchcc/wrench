@@ -86,11 +86,11 @@ function SignIn() {
     showModal(SCREENS.OTHER_SIGN_IN_OPTIONS, {
       options: {
         statusBar: {
-          style: STATUS_BAR.DARK,
+          style: colorScheme === 'dark' ? STATUS_BAR.LIGHT : STATUS_BAR.DARK,
         },
         layout: {
           componentBackgroundColor:
-            colorScheme === 'light' ? LIGHT_THEME.default : DARK_THEME.default,
+            colorScheme === 'dark' ? DARK_THEME.default : LIGHT_THEME.default,
         },
       },
     })

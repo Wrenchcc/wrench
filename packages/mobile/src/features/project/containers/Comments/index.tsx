@@ -99,7 +99,7 @@ function Comments({ postId }) {
           {isFetching ? (
             <ActivityIndicator />
           ) : (
-            <Text medium fontSize={14} color="subtle" onPress={fetchMore}>
+            <Text medium fontSize={14} color="accent" onPress={fetchMore}>
               {t('Comments:loadMore')}
             </Text>
           )}

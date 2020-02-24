@@ -41,7 +41,7 @@ function Other() {
         ))}
 
         <Footer>
-          <Legal color="grey" />
+          <Legal color="neutral" />
         </Footer>
       </ScrollView>
     </Base>

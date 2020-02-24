@@ -47,7 +47,7 @@ function ShowLatest({ onPress, onHide }) {
       }}
     >
       <Button onPress={handleOnPress}>
-        <Text color="white" fontSize={15} medium>
+        <Text color="default" fontSize={15} medium>
           {t('ShowLatest:button')}
         </Text>
       </Button>

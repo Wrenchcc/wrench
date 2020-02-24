@@ -193,7 +193,7 @@ function Item({
               </Action>
               {!first && likes.totalCount > 0 && (
                 <Action>
-                  <Text medium color="subtle" fontSize={12}>
+                  <Text medium color="accent" fontSize={12}>
                     {t('CommentItem:like', { count: likes.totalCount })}
                   </Text>
                 </Action>
@@ -205,7 +205,7 @@ function Item({
                     fontSize={12}
                     onPress={handleOnReply}
                     disabled={id < 0}
-                    color="subtle"
+                    color="accent"
                   >
                     {t('CommentItem:reply')}
                   </Reply>

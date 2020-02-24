@@ -7,7 +7,6 @@ import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
 import FlashMode from 'components/FlashMode'
 import CameraType from 'components/CameraType'
-import AutoFocus from 'components/AutoFocus'
 import { TakePicture, Wrapper } from './styles'
 
 const { Constants } = RNCamera
@@ -88,7 +87,6 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
           }
         />
 
-        {autofocus && <AutoFocus coordinates={autofocus} />}
         <CameraType onPress={changeCameraType} />
         <Wrapper>
           <TakePicture onPress={takePicture} nativeHandler />

@@ -36,10 +36,10 @@ function EmptyState({ type = TYPES.PROJECT }) {
   return (
     <Base>
       <Title>{t(`EmptyState:${type}:title`)}</Title>
-      <Description color="grey">{t(`EmptyState:${type}:description`)}</Description>
+      <Description color="neutral">{t(`EmptyState:${type}:description`)}</Description>
       {showButton(type) && (
         <Button onPress={handleNavigation}>
-          <Text medium fontSize={15}>
+          <Text medium fontSize={15} color="black">
             {t(`EmptyState:${type}:button`)}
           </Text>
         </Button>

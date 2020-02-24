@@ -17,7 +17,7 @@ function ProjectCategories({ ListHeaderComponent, onSelect }) {
   return (
     <FlatList
       ListHeaderComponent={ListHeaderComponent}
-      ListEmptyComponent={loading && <Loader color="grey" />}
+      ListEmptyComponent={loading && <Loader />}
       contentContainerStyle={{
         flex: loading ? 1 : 0,
         padding: 5,

@@ -11,7 +11,7 @@ function CardSmall({ onPress, image, title, followers, style = {}, children }) {
       <ProjectName fontSize={15} numberOfLines={1}>
         {title}
       </ProjectName>
-      <Followers color="grey" followers={followers} />
+      <Followers color="neutral" followers={followers} />
     </Touchable>
   )
 }
