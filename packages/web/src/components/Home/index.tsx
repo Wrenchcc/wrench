@@ -36,7 +36,7 @@ export default function Home(props) {
     <>
       <Hero>
         <Inner paddingTop={50}>
-          <Title color="white" fontSize={92} lineHeight={104}>
+          <Title color="white" fontSize={120} lineHeight={128}>
             {t('home:title')} <br />
             {t('home:subtitle')}
           </Title>

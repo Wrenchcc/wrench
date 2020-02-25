@@ -15,7 +15,7 @@ const Title = styled(UiTitle)`
 export default function Explore() {
   const { data, loading, fetchMore } = useQuery(GET_EXPLORE, {
     variables: {
-      first: 4,
+      first: 8,
     },
   })
 

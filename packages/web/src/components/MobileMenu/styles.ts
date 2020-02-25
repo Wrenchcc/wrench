@@ -26,6 +26,9 @@ export const Close = styled.button`
   top: 20px;
   right: 20px;
   border: 1px solid rgba(230, 231, 233, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const NavLink = styled.a`

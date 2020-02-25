@@ -24,8 +24,8 @@ export const Hero = styled.section`
     height: auto;
 
     h1 {
-      font-size: 48px;
-      line-height: 56px;
+      font-size: 60px;
+      line-height: 70px;
     }
 
     div {
@@ -44,7 +44,11 @@ export const Signup = styled(UiButton)`
 `
 
 export const Description = styled(UiText)`
-  margin-top: 10px;
+  margin-top: 30px;
+
+  @media ${DEVICE.TABLET} {
+    margin-top: 20px;
+  }
 `
 
 export const Video = styled.video`
