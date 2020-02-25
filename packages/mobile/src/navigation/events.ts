@@ -1,5 +1,6 @@
 import { Navigation } from 'react-native-navigation'
-import { COLORS } from 'ui/constants'
+import { Appearance } from 'react-native-appearance'
+import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
 import { getCurrentUserProjects } from 'gql'
 import { logError } from 'utils/sentry'
 import { trackScreen } from 'utils/analytics'
@@ -15,6 +16,9 @@ Navigation.events().registerComponentDidAppearListener(({ componentId: id, compo
   currentComponentName = componentName
   trackScreen(componentName)
 })
+
+const dynamicColor =
+  Appearance.getColorScheme() === 'dark' ? DARK_THEME.default : LIGHT_THEME.default
 
 Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
   if (tabIndex === TABS_INDEX.ADD) {
@@ -32,7 +36,7 @@ Navigation.events().registerBottomTabPressedListener(async ({ tabIndex }) => {
                 name: screen,
                 options: {
                   layout: {
-                    componentBackgroundColor: hasProject ? COLORS.DARK : COLORS.WHITE,
+                    componentBackgroundColor: hasProject ? LIGHT_THEME.black : dynamicColor,
                   },
                   statusBar: {
                     visible: hasProject ? false : true,
