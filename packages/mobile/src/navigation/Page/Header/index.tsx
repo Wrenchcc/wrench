@@ -22,13 +22,14 @@ function Header({
   const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
 
-  const opacity = headerAnimation
-    ? interpolate(scrollY, {
-        extrapolate: Extrapolate.CLAMP,
-        inputRange: [0, 50],
-        outputRange: [0, 1],
-      })
-    : 1
+  const opacity =
+    scrollY && headerAnimation
+      ? interpolate(scrollY, {
+          extrapolate: Extrapolate.CLAMP,
+          inputRange: [0, 50],
+          outputRange: [0, 1],
+        })
+      : 1
 
   return (
     <Base inline={inline}>

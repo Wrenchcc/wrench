@@ -56,8 +56,8 @@ function Google({ border }) {
 
   return (
     <Button onPress={handleLoginManager} border={border}>
-      <Icon source={google} style={{ marginRight: 10 }} />
-      <Text white medium>
+      <Icon source={google} style={{ marginRight: 10 }} color="black" />
+      <Text medium color="black">
         {t('Google:button')}
       </Text>
       {isLoading && <Loader color="black" />}
