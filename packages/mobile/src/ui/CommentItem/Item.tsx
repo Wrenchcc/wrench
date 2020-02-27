@@ -3,6 +3,7 @@ import { View, Image, Animated, Dimensions } from 'react-native'
 import { useDeleteCommentMutation, PostFragmentDoc, CommentsDocument } from '@wrench/common'
 import { Swipeable } from 'react-native-gesture-handler'
 import { useNavigation, SCREENS } from 'navigation'
+import { useDynamicColor } from 'utils/hooks'
 import { logError } from 'utils/sentry'
 import LikeComment from 'components/LikeComment'
 import Avatar from 'ui/Avatar'
@@ -48,6 +49,7 @@ function Item({
 }) {
   const { navigate } = useNavigation()
   const animatedValue = useRef(new Animated.Value(0))
+  const dynamicColor = useDynamicColor('placeholder')
   const handleNavigation = useCallback(
     () =>
       navigate(SCREENS.USER, {
@@ -153,7 +155,7 @@ function Item({
 
   const backgroundColor = animatedValue.current.interpolate({
     inputRange: [0, 1],
-    outputRange: ['transparent', COLORS.ULTRA_LIGHT_GREY],
+    outputRange: ['transparent', dynamicColor],
   })
 
   if (!user) {
