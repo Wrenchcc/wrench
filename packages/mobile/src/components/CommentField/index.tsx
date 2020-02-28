@@ -13,7 +13,6 @@ import {
 import { logError } from 'utils/sentry'
 import { useMentionStore } from 'store'
 import { Avatar, Text } from 'ui'
-import { COLORS } from 'ui/constants'
 import EmojiList from 'components/EmojiList'
 import { MENTION } from './constants'
 import { Inner, Input, Button } from './styles'
@@ -288,7 +287,6 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           ref={inputRef}
           onSubmitEditing={(text.length > 0 && handleSubmit) || null}
           placeholder={t('CommentField:placeholder')}
-          placeholderTextColor={COLORS.LIGHT_GREY}
           keyboardType="twitter"
           onChangeText={handleOnChangeText}
           value={text}

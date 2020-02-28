@@ -13,11 +13,14 @@ function ProjectSuggestion({
   isRefetching,
   isFetching,
   hasNextPage,
+  onFollow,
+  disabled,
 }) {
   const { navigate } = useNavigation()
 
   const renderItem = ({ item, index }) => {
     const onPress = () =>
+      !disabled &&
       navigate(SCREENS.PROJECT, {
         id: item.node.id,
         project: item.node,
@@ -25,6 +28,7 @@ function ProjectSuggestion({
 
     return (
       <ProjectCard
+        onFollow={onFollow}
         first={index === 0}
         last={index === data.length - 1}
         project={item.node}

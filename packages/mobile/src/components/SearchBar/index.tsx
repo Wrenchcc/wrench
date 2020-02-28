@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useCallback, memo } from 'react'
 import { BackHandler, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { search, close } from 'images'
-import { COLORS } from 'ui/constants'
 import { Text } from 'ui'
 import { Base, Inner, Input, SearchIcon, CloseIcon } from './styles'
 
@@ -62,8 +61,6 @@ function SearchBar({
         <Input
           ref={inputRef}
           autoCorrect={false}
-          placeholderTextColor={COLORS.LIGHT_GREY}
-          selectionColor={COLORS.DARK}
           placeholder={t('SearchBar:placeholder')}
           keyboardAppearance="dark"
           returnKeyType="search"

@@ -645,7 +645,33 @@ function useCurrentUserLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.CurrentUserDocument, baseOptions);
 }
 exports.useCurrentUserLazyQuery = useCurrentUserLazyQuery;
-exports.CurrentUserProfileDocument = graphql_tag_1.default(templateObject_35 || (templateObject_35 = __makeTemplateObject(["\n    query currentUserProfile($after: String, $first: Int = 5) {\n  user: currentUser {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""], ["\n    query currentUserProfile($after: String, $first: Int = 5) {\n  user: currentUser {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
+exports.CurrentUserFollowingProjectsDocument = graphql_tag_1.default(templateObject_35 || (templateObject_35 = __makeTemplateObject(["\n    query currentUserFollowingProjects($after: String, $first: Int = 5) {\n  user: currentUser {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query currentUserFollowingProjects($after: String, $first: Int = 5) {\n  user: currentUser {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+/**
+ * __useCurrentUserFollowingProjectsQuery__
+ *
+ * To run a query within a React component, call `useCurrentUserFollowingProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCurrentUserFollowingProjectsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+function useCurrentUserFollowingProjectsQuery(baseOptions) {
+    return ApolloReactHooks.useQuery(exports.CurrentUserFollowingProjectsDocument, baseOptions);
+}
+exports.useCurrentUserFollowingProjectsQuery = useCurrentUserFollowingProjectsQuery;
+function useCurrentUserFollowingProjectsLazyQuery(baseOptions) {
+    return ApolloReactHooks.useLazyQuery(exports.CurrentUserFollowingProjectsDocument, baseOptions);
+}
+exports.useCurrentUserFollowingProjectsLazyQuery = useCurrentUserFollowingProjectsLazyQuery;
+exports.CurrentUserProfileDocument = graphql_tag_1.default(templateObject_36 || (templateObject_36 = __makeTemplateObject(["\n    query currentUserProfile($after: String, $first: Int = 5) {\n  user: currentUser {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""], ["\n    query currentUserProfile($after: String, $first: Int = 5) {\n  user: currentUser {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
 /**
  * __useCurrentUserProfileQuery__
  *
@@ -671,7 +697,7 @@ function useCurrentUserProfileLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.CurrentUserProfileDocument, baseOptions);
 }
 exports.useCurrentUserProfileLazyQuery = useCurrentUserProfileLazyQuery;
-exports.CurrentUserProjectsDocument = graphql_tag_1.default(templateObject_36 || (templateObject_36 = __makeTemplateObject(["\n    query currentUserProjects {\n  user: currentUser {\n    ...UserProjects\n  }\n}\n    ", ""], ["\n    query currentUserProjects {\n  user: currentUser {\n    ...UserProjects\n  }\n}\n    ", ""])), exports.UserProjectsFragmentDoc);
+exports.CurrentUserProjectsDocument = graphql_tag_1.default(templateObject_37 || (templateObject_37 = __makeTemplateObject(["\n    query currentUserProjects {\n  user: currentUser {\n    ...UserProjects\n  }\n}\n    ", ""], ["\n    query currentUserProjects {\n  user: currentUser {\n    ...UserProjects\n  }\n}\n    ", ""])), exports.UserProjectsFragmentDoc);
 /**
  * __useCurrentUserProjectsQuery__
  *
@@ -695,7 +721,7 @@ function useCurrentUserProjectsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.CurrentUserProjectsDocument, baseOptions);
 }
 exports.useCurrentUserProjectsLazyQuery = useCurrentUserProjectsLazyQuery;
-exports.CurrentUserSettingsDocument = graphql_tag_1.default(templateObject_37 || (templateObject_37 = __makeTemplateObject(["\n    query currentUserSettings {\n  user: currentUser {\n    ...UserSettings\n  }\n}\n    ", ""], ["\n    query currentUserSettings {\n  user: currentUser {\n    ...UserSettings\n  }\n}\n    ", ""])), exports.UserSettingsFragmentDoc);
+exports.CurrentUserSettingsDocument = graphql_tag_1.default(templateObject_38 || (templateObject_38 = __makeTemplateObject(["\n    query currentUserSettings {\n  user: currentUser {\n    ...UserSettings\n  }\n}\n    ", ""], ["\n    query currentUserSettings {\n  user: currentUser {\n    ...UserSettings\n  }\n}\n    ", ""])), exports.UserSettingsFragmentDoc);
 /**
  * __useCurrentUserSettingsQuery__
  *
@@ -719,7 +745,7 @@ function useCurrentUserSettingsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.CurrentUserSettingsDocument, baseOptions);
 }
 exports.useCurrentUserSettingsLazyQuery = useCurrentUserSettingsLazyQuery;
-exports.FeedDocument = graphql_tag_1.default(templateObject_38 || (templateObject_38 = __makeTemplateObject(["\n    query feed($after: String, $first: Int = 5) {\n  feed {\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query feed($after: String, $first: Int = 5) {\n  feed {\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.FeedDocument = graphql_tag_1.default(templateObject_39 || (templateObject_39 = __makeTemplateObject(["\n    query feed($after: String, $first: Int = 5) {\n  feed {\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query feed($after: String, $first: Int = 5) {\n  feed {\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
 /**
  * __useFeedQuery__
  *
@@ -745,7 +771,7 @@ function useFeedLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.FeedDocument, baseOptions);
 }
 exports.useFeedLazyQuery = useFeedLazyQuery;
-exports.FollowersDocument = graphql_tag_1.default(templateObject_39 || (templateObject_39 = __makeTemplateObject(["\n    query followers($projectId: ID!, $after: String, $first: Int = 10) {\n  followers(projectId: $projectId, after: $after, first: $first) @connection(key: \"followers\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""], ["\n    query followers($projectId: ID!, $after: String, $first: Int = 10) {\n  followers(projectId: $projectId, after: $after, first: $first) @connection(key: \"followers\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.FollowersDocument = graphql_tag_1.default(templateObject_40 || (templateObject_40 = __makeTemplateObject(["\n    query followers($projectId: ID!, $after: String, $first: Int = 10) {\n  followers(projectId: $projectId, after: $after, first: $first) @connection(key: \"followers\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""], ["\n    query followers($projectId: ID!, $after: String, $first: Int = 10) {\n  followers(projectId: $projectId, after: $after, first: $first) @connection(key: \"followers\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...User\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
 /**
  * __useFollowersQuery__
  *
@@ -772,7 +798,7 @@ function useFollowersLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.FollowersDocument, baseOptions);
 }
 exports.useFollowersLazyQuery = useFollowersLazyQuery;
-exports.GrowthDocument = graphql_tag_1.default(templateObject_40 || (templateObject_40 = __makeTemplateObject(["\n    query growth($type: GrowthType!) {\n  growth(type: $type) {\n    date\n    count\n  }\n}\n    "], ["\n    query growth($type: GrowthType!) {\n  growth(type: $type) {\n    date\n    count\n  }\n}\n    "])));
+exports.GrowthDocument = graphql_tag_1.default(templateObject_41 || (templateObject_41 = __makeTemplateObject(["\n    query growth($type: GrowthType!) {\n  growth(type: $type) {\n    date\n    count\n  }\n}\n    "], ["\n    query growth($type: GrowthType!) {\n  growth(type: $type) {\n    date\n    count\n  }\n}\n    "])));
 /**
  * __useGrowthQuery__
  *
@@ -797,7 +823,7 @@ function useGrowthLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.GrowthDocument, baseOptions);
 }
 exports.useGrowthLazyQuery = useGrowthLazyQuery;
-exports.MetaDocument = graphql_tag_1.default(templateObject_41 || (templateObject_41 = __makeTemplateObject(["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "], ["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "])));
+exports.MetaDocument = graphql_tag_1.default(templateObject_42 || (templateObject_42 = __makeTemplateObject(["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "], ["\n    query meta {\n  meta {\n    totalUsers\n    totalUsersToday\n    totalPostsToday\n    totalProjectsToday\n    totalCommentsToday\n    totalFilesToday\n    totalComments\n    totalProjects\n    totalPosts\n    totalFiles\n  }\n}\n    "])));
 /**
  * __useMetaQuery__
  *
@@ -821,7 +847,7 @@ function useMetaLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.MetaDocument, baseOptions);
 }
 exports.useMetaLazyQuery = useMetaLazyQuery;
-exports.NotificationsDocument = graphql_tag_1.default(templateObject_42 || (templateObject_42 = __makeTemplateObject(["\n    query notifications($after: String, $first: Int = 10) {\n  notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n    unreadCount\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Notification\n      }\n    }\n  }\n}\n    ", ""], ["\n    query notifications($after: String, $first: Int = 10) {\n  notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n    unreadCount\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Notification\n      }\n    }\n  }\n}\n    ", ""])), exports.NotificationFragmentDoc);
+exports.NotificationsDocument = graphql_tag_1.default(templateObject_43 || (templateObject_43 = __makeTemplateObject(["\n    query notifications($after: String, $first: Int = 10) {\n  notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n    unreadCount\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Notification\n      }\n    }\n  }\n}\n    ", ""], ["\n    query notifications($after: String, $first: Int = 10) {\n  notifications(after: $after, first: $first) @connection(key: \"notifications\") {\n    unreadCount\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Notification\n      }\n    }\n  }\n}\n    ", ""])), exports.NotificationFragmentDoc);
 /**
  * __useNotificationsQuery__
  *
@@ -847,7 +873,7 @@ function useNotificationsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.NotificationsDocument, baseOptions);
 }
 exports.useNotificationsLazyQuery = useNotificationsLazyQuery;
-exports.PostDocument = graphql_tag_1.default(templateObject_43 || (templateObject_43 = __makeTemplateObject(["\n    query post($id: ID!) {\n  post(id: $id) {\n    ...Post\n  }\n}\n    ", ""], ["\n    query post($id: ID!) {\n  post(id: $id) {\n    ...Post\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.PostDocument = graphql_tag_1.default(templateObject_44 || (templateObject_44 = __makeTemplateObject(["\n    query post($id: ID!) {\n  post(id: $id) {\n    ...Post\n  }\n}\n    ", ""], ["\n    query post($id: ID!) {\n  post(id: $id) {\n    ...Post\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
 /**
  * __usePostQuery__
  *
@@ -872,7 +898,7 @@ function usePostLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.PostDocument, baseOptions);
 }
 exports.usePostLazyQuery = usePostLazyQuery;
-exports.PostsDocument = graphql_tag_1.default(templateObject_44 || (templateObject_44 = __makeTemplateObject(["\n    query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n  posts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""], ["\n    query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n  posts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.PostsDocument = graphql_tag_1.default(templateObject_45 || (templateObject_45 = __makeTemplateObject(["\n    query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n  posts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""], ["\n    query posts($after: String, $first: Int = 5) @connection(key: \"posts\") {\n  posts(after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
 /**
  * __usePostsQuery__
  *
@@ -898,7 +924,7 @@ function usePostsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.PostsDocument, baseOptions);
 }
 exports.usePostsLazyQuery = usePostsLazyQuery;
-exports.ProjectDocument = graphql_tag_1.default(templateObject_45 || (templateObject_45 = __makeTemplateObject(["\n    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n  post(id: $postId) {\n    ...Post\n  }\n  project(id: $id, slug: $slug) {\n    ...Project\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", "\n", ""], ["\n    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n  post(id: $postId) {\n    ...Post\n  }\n  project(id: $id, slug: $slug) {\n    ...Project\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", "\n", ""])), exports.PostFragmentDoc, exports.ProjectFragmentDoc);
+exports.ProjectDocument = graphql_tag_1.default(templateObject_46 || (templateObject_46 = __makeTemplateObject(["\n    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n  post(id: $postId) {\n    ...Post\n  }\n  project(id: $id, slug: $slug) {\n    ...Project\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", "\n", ""], ["\n    query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {\n  post(id: $postId) {\n    ...Post\n  }\n  project(id: $id, slug: $slug) {\n    ...Project\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", "\n", ""])), exports.PostFragmentDoc, exports.ProjectFragmentDoc);
 /**
  * __useProjectQuery__
  *
@@ -927,7 +953,7 @@ function useProjectLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.ProjectDocument, baseOptions);
 }
 exports.useProjectLazyQuery = useProjectLazyQuery;
-exports.ProjectSuggestionsDocument = graphql_tag_1.default(templateObject_46 || (templateObject_46 = __makeTemplateObject(["\n    query projectSuggestions($after: String, $first: Int = 5) {\n  projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n    type {\n      id\n      title\n    }\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ...Project\n        cover {\n          uri\n          default\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projectSuggestions($after: String, $first: Int = 5) {\n  projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n    type {\n      id\n      title\n    }\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ...Project\n        cover {\n          uri\n          default\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.ProjectSuggestionsDocument = graphql_tag_1.default(templateObject_47 || (templateObject_47 = __makeTemplateObject(["\n    query projectSuggestions($after: String, $first: Int = 5) {\n  projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n    type {\n      id\n      title\n    }\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ...Project\n        cover {\n          uri\n          default\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projectSuggestions($after: String, $first: Int = 5) {\n  projects: projectSuggestions(after: $after, first: $first) @connection(key: \"projects\") {\n    type {\n      id\n      title\n    }\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ...Project\n        cover {\n          uri\n          default\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
 /**
  * __useProjectSuggestionsQuery__
  *
@@ -953,7 +979,7 @@ function useProjectSuggestionsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.ProjectSuggestionsDocument, baseOptions);
 }
 exports.useProjectSuggestionsLazyQuery = useProjectSuggestionsLazyQuery;
-exports.ProjectTypesDocument = graphql_tag_1.default(templateObject_47 || (templateObject_47 = __makeTemplateObject(["\n    query projectTypes {\n  types: projectTypes {\n    id\n    title\n    imageUrl\n  }\n}\n    "], ["\n    query projectTypes {\n  types: projectTypes {\n    id\n    title\n    imageUrl\n  }\n}\n    "])));
+exports.ProjectTypesDocument = graphql_tag_1.default(templateObject_48 || (templateObject_48 = __makeTemplateObject(["\n    query projectTypes {\n  types: projectTypes {\n    id\n    title\n    imageUrl\n  }\n}\n    "], ["\n    query projectTypes {\n  types: projectTypes {\n    id\n    title\n    imageUrl\n  }\n}\n    "])));
 /**
  * __useProjectTypesQuery__
  *
@@ -977,7 +1003,7 @@ function useProjectTypesLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.ProjectTypesDocument, baseOptions);
 }
 exports.useProjectTypesLazyQuery = useProjectTypesLazyQuery;
-exports.ProjectsDocument = graphql_tag_1.default(templateObject_48 || (templateObject_48 = __makeTemplateObject(["\n    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n          default\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n          default\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.ProjectsDocument = graphql_tag_1.default(templateObject_49 || (templateObject_49 = __makeTemplateObject(["\n    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n          default\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {\n  projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: \"projects\", filter: [\"type\", \"typeId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n          default\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
 /**
  * __useProjectsQuery__
  *
@@ -1005,7 +1031,7 @@ function useProjectsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.ProjectsDocument, baseOptions);
 }
 exports.useProjectsLazyQuery = useProjectsLazyQuery;
-exports.RepliesDocument = graphql_tag_1.default(templateObject_49 || (templateObject_49 = __makeTemplateObject(["\n    query replies($id: ID!, $after: String, $first: Int = 5) {\n  comment(id: $id) {\n    replies: repliesConnection(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query replies($id: ID!, $after: String, $first: Int = 5) {\n  comment(id: $id) {\n    replies: repliesConnection(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.CommentFragmentDoc);
+exports.RepliesDocument = graphql_tag_1.default(templateObject_50 || (templateObject_50 = __makeTemplateObject(["\n    query replies($id: ID!, $after: String, $first: Int = 5) {\n  comment(id: $id) {\n    replies: repliesConnection(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query replies($id: ID!, $after: String, $first: Int = 5) {\n  comment(id: $id) {\n    replies: repliesConnection(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      totalCount\n      edges {\n        cursor\n        node {\n          ...Comment\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.CommentFragmentDoc);
 /**
  * __useRepliesQuery__
  *
@@ -1032,7 +1058,7 @@ function useRepliesLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.RepliesDocument, baseOptions);
 }
 exports.useRepliesLazyQuery = useRepliesLazyQuery;
-exports.SearchModelsDocument = graphql_tag_1.default(templateObject_50 || (templateObject_50 = __makeTemplateObject(["\n    query searchModels($query: String!, $after: String, $first: Int = 20) {\n  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ... on Model {\n          id\n          brand {\n            name\n          }\n          model\n          year\n        }\n      }\n    }\n  }\n}\n    "], ["\n    query searchModels($query: String!, $after: String, $first: Int = 20) {\n  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ... on Model {\n          id\n          brand {\n            name\n          }\n          model\n          year\n        }\n      }\n    }\n  }\n}\n    "])));
+exports.SearchModelsDocument = graphql_tag_1.default(templateObject_51 || (templateObject_51 = __makeTemplateObject(["\n    query searchModels($query: String!, $after: String, $first: Int = 20) {\n  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ... on Model {\n          id\n          brand {\n            name\n          }\n          model\n          year\n        }\n      }\n    }\n  }\n}\n    "], ["\n    query searchModels($query: String!, $after: String, $first: Int = 20) {\n  models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: \"models\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      node {\n        ... on Model {\n          id\n          brand {\n            name\n          }\n          model\n          year\n        }\n      }\n    }\n  }\n}\n    "])));
 /**
  * __useSearchModelsQuery__
  *
@@ -1059,7 +1085,7 @@ function useSearchModelsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.SearchModelsDocument, baseOptions);
 }
 exports.useSearchModelsLazyQuery = useSearchModelsLazyQuery;
-exports.SearchProjectsDocument = graphql_tag_1.default(templateObject_51 || (templateObject_51 = __makeTemplateObject(["\n    query searchProjects($query: String!, $after: String, $first: Int = 10) {\n  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Project {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query searchProjects($query: String!, $after: String, $first: Int = 10) {\n  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Project {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.SearchProjectsDocument = graphql_tag_1.default(templateObject_52 || (templateObject_52 = __makeTemplateObject(["\n    query searchProjects($query: String!, $after: String, $first: Int = 10) {\n  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Project {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query searchProjects($query: String!, $after: String, $first: Int = 10) {\n  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: \"projects\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on Project {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
 /**
  * __useSearchProjectsQuery__
  *
@@ -1086,7 +1112,7 @@ function useSearchProjectsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.SearchProjectsDocument, baseOptions);
 }
 exports.useSearchProjectsLazyQuery = useSearchProjectsLazyQuery;
-exports.SearchUsersDocument = graphql_tag_1.default(templateObject_52 || (templateObject_52 = __makeTemplateObject(["\n    query searchUsers($query: String!, $after: String, $first: Int = 10) {\n  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on User {\n          ...User\n          projectCount\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query searchUsers($query: String!, $after: String, $first: Int = 10) {\n  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on User {\n          ...User\n          projectCount\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.SearchUsersDocument = graphql_tag_1.default(templateObject_53 || (templateObject_53 = __makeTemplateObject(["\n    query searchUsers($query: String!, $after: String, $first: Int = 10) {\n  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on User {\n          ...User\n          projectCount\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query searchUsers($query: String!, $after: String, $first: Int = 10) {\n  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: \"users\", filter: [\"query\", \"type\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ... on User {\n          ...User\n          projectCount\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
 /**
  * __useSearchUsersQuery__
  *
@@ -1113,7 +1139,7 @@ function useSearchUsersLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.SearchUsersDocument, baseOptions);
 }
 exports.useSearchUsersLazyQuery = useSearchUsersLazyQuery;
-exports.SimilarProjectsDocument = graphql_tag_1.default(templateObject_53 || (templateObject_53 = __makeTemplateObject(["\n    query similarProjects($id: ID!, $first: Int = 5) {\n  similarProjects(id: $id, first: $first) {\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""], ["\n    query similarProjects($id: ID!, $first: Int = 5) {\n  similarProjects(id: $id, first: $first) {\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.SimilarProjectsDocument = graphql_tag_1.default(templateObject_54 || (templateObject_54 = __makeTemplateObject(["\n    query similarProjects($id: ID!, $first: Int = 5) {\n  similarProjects(id: $id, first: $first) {\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""], ["\n    query similarProjects($id: ID!, $first: Int = 5) {\n  similarProjects(id: $id, first: $first) {\n    edges {\n      cursor\n      node {\n        cover {\n          uri\n        }\n        ...Project\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
 /**
  * __useSimilarProjectsQuery__
  *
@@ -1139,7 +1165,7 @@ function useSimilarProjectsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.SimilarProjectsDocument, baseOptions);
 }
 exports.useSimilarProjectsLazyQuery = useSimilarProjectsLazyQuery;
-exports.UserDocument = graphql_tag_1.default(templateObject_54 || (templateObject_54 = __makeTemplateObject(["\n    query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""], ["\n    query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
+exports.UserDocument = graphql_tag_1.default(templateObject_55 || (templateObject_55 = __makeTemplateObject(["\n    query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""], ["\n    query user($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    ...User\n    projects: projectsConnection {\n      edges {\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n    posts: postsConnection(after: $after, first: $first) @connection(key: \"posts\") {\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n      pageInfo {\n        hasNextPage\n      }\n    }\n  }\n}\n    ", "\n", "\n", ""])), exports.UserFragmentDoc, exports.ProjectFragmentDoc, exports.PostFragmentDoc);
 /**
  * __useUserQuery__
  *
@@ -1166,7 +1192,7 @@ function useUserLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.UserDocument, baseOptions);
 }
 exports.useUserLazyQuery = useUserLazyQuery;
-exports.UserFollowingProjectsDocument = graphql_tag_1.default(templateObject_55 || (templateObject_55 = __makeTemplateObject(["\n    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
+exports.UserFollowingProjectsDocument = graphql_tag_1.default(templateObject_56 || (templateObject_56 = __makeTemplateObject(["\n    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {\n  user(username: $username) {\n    id\n    projects: followingProjects(after: $after, first: $first) {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Project\n          cover {\n            uri\n            default\n          }\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.ProjectFragmentDoc);
 /**
  * __useUserFollowingProjectsQuery__
  *
@@ -1193,5 +1219,5 @@ function useUserFollowingProjectsLazyQuery(baseOptions) {
     return ApolloReactHooks.useLazyQuery(exports.UserFollowingProjectsDocument, baseOptions);
 }
 exports.useUserFollowingProjectsLazyQuery = useUserFollowingProjectsLazyQuery;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17, templateObject_18, templateObject_19, templateObject_20, templateObject_21, templateObject_22, templateObject_23, templateObject_24, templateObject_25, templateObject_26, templateObject_27, templateObject_28, templateObject_29, templateObject_30, templateObject_31, templateObject_32, templateObject_33, templateObject_34, templateObject_35, templateObject_36, templateObject_37, templateObject_38, templateObject_39, templateObject_40, templateObject_41, templateObject_42, templateObject_43, templateObject_44, templateObject_45, templateObject_46, templateObject_47, templateObject_48, templateObject_49, templateObject_50, templateObject_51, templateObject_52, templateObject_53, templateObject_54, templateObject_55;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10, templateObject_11, templateObject_12, templateObject_13, templateObject_14, templateObject_15, templateObject_16, templateObject_17, templateObject_18, templateObject_19, templateObject_20, templateObject_21, templateObject_22, templateObject_23, templateObject_24, templateObject_25, templateObject_26, templateObject_27, templateObject_28, templateObject_29, templateObject_30, templateObject_31, templateObject_32, templateObject_33, templateObject_34, templateObject_35, templateObject_36, templateObject_37, templateObject_38, templateObject_39, templateObject_40, templateObject_41, templateObject_42, templateObject_43, templateObject_44, templateObject_45, templateObject_46, templateObject_47, templateObject_48, templateObject_49, templateObject_50, templateObject_51, templateObject_52, templateObject_53, templateObject_54, templateObject_55, templateObject_56;
 //# sourceMappingURL=graphql-hooks.js.map

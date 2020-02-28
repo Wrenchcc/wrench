@@ -70,10 +70,6 @@ jobs:
         id: buildnumber
         uses: einaregilsson/build-number@v2 
       
-      - name: Install Sentry CLI
-        run: |
-          curl -sL https://sentry.io/get-cli/ | bash
-    
       - name: Deploy Android
         uses: maierj/fastlane-action@v1.4.0
         with:
@@ -120,10 +116,6 @@ jobs:
       - name: Restore build number
         id: buildnumber
         uses: einaregilsson/build-number@v2 
-
-      - name: Install Sentry CLI
-        run: |
-          curl -sL https://sentry.io/get-cli/ | bash
 
       - name: Deploy iOS
         uses: maierj/fastlane-action@v1.4.0

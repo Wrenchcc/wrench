@@ -1,23 +1,22 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 import { TOAST_TYPES } from 'utils/enums'
 
-function mapTypeToColor(type) {
+function mapTypeToColor(type, colors) {
   switch (type) {
     case TOAST_TYPES.WARNING:
-      return COLORS.RED
+      return colors.warning
     case TOAST_TYPES.SPAM:
     case TOAST_TYPES.ERROR:
-      return COLORS.ORANGE
+      return colors.error
     case TOAST_TYPES.SUCCESS:
-      return COLORS.DARK
+      return colors.inverse
     default:
-      return COLORS.LIGHT_GREY
+      return colors.subtle
   }
 }
 
 export const Base = styled.View`
-  background-color: ${props => mapTypeToColor(props.type)};
+  background-color: ${props => mapTypeToColor(props.type, props.theme.colors)};
   justify-content: center;
   opacity: 0.96;
   width: 100%;

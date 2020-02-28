@@ -168,6 +168,11 @@
       "save": "Save",
       "headerTitle": "Customize your interests"
     },
+    "Suggestions": {
+      "headline": "Get up to speed and follow some projects.",
+      "description": "We’ve selected some projects below you may find interesting.",
+      "next": "Next"
+    },
     "SignIn": {
       "headline": "Post, \nexplore \nand learn.",
       "description": "Post your projects, watch others, discuss and learn together.",
@@ -249,13 +254,13 @@
     "UserProfile": {
       "notfound": "User not found"
     },
-    "Header": {
-      "home": "Home",
-      "notifications": "Notifications"
-    },
     "RefreshToken": {
       "title": "Your session has expired",
       "description": "Please login again."
+    },
+    "Header": {
+      "home": "Home",
+      "notifications": "Notifications"
     },
     "CommentItem": {
       "reply": "Reply",
@@ -522,6 +527,11 @@
       "save": "Spara",
       "headerTitle": "Ändra dina intressen"
     },
+    "Suggestions": {
+      "headline": "Kom igång och följ några projekt.",
+      "description": "Vi har valt några projekt som vi tror du tycker om.",
+      "next": "Nästa"
+    },
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",
       "description": "Dela dina projekt, följ andras, diskutera och lär av varandra.",
@@ -603,13 +613,13 @@
     "UserProfile": {
       "notfound": "Användaren hittades ej"
     },
-    "Header": {
-      "home": "Hem",
-      "notifications": "Notifikationer"
-    },
     "RefreshToken": {
       "title": "Your session has expired",
       "description": "Please login again."
+    },
+    "Header": {
+      "home": "Hem",
+      "notifications": "Notifikationer"
     },
     "CommentItem": {
       "reply": "Svara",

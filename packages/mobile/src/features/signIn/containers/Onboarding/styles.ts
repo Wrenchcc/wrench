@@ -24,10 +24,10 @@ export const Cell = styled.View`
 
 export const Overlay = styled.View`
   position: absolute;
-  top: 0px;
+  top: 0;
   right: -3px;
   bottom: -3px;
-  left: 0px;
+  left: 0;
   background-color: ${props =>
     props.selected ? 'rgba(000, 000, 000, 0.6)' : 'rgba(000, 000, 000, 0.2)'};
 `

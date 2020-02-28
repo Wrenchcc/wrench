@@ -6,7 +6,7 @@ import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
-function ProjectCard({ onPress, project, style }) {
+function ProjectCard({ onPress, onFollow, project, style }) {
   const { t } = useTranslation()
   const [followProject] = useFollowProjectMutation()
   const height = useResponsiveHeight(24)
@@ -38,7 +38,11 @@ function ProjectCard({ onPress, project, style }) {
         },
       },
     })
-  }, [project])
+
+    if (onFollow) {
+      onFollow(project)
+    }
+  }, [project, onFollow])
 
   return (
     <Base style={style} height={height}>

@@ -1264,6 +1264,36 @@ export declare type CurrentUserQuery = ({
         } & Pick<ProjectType, 'id' | 'title'>)>>>;
     } & UserProjectsFragment)>;
 });
+export declare type CurrentUserFollowingProjectsQueryVariables = {
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+};
+export declare type CurrentUserFollowingProjectsQuery = ({
+    __typename?: 'Query';
+} & {
+    user: Maybe<({
+        __typename?: 'User';
+    } & Pick<User, 'id'> & {
+        projects: Maybe<({
+            __typename?: 'ProjectsConnection';
+        } & {
+            pageInfo: ({
+                __typename?: 'PageInfo';
+            } & Pick<PageInfo, 'hasNextPage'>);
+            edges: Maybe<Array<({
+                __typename?: 'ProjectEdge';
+            } & Pick<ProjectEdge, 'cursor'> & {
+                node: ({
+                    __typename?: 'Project';
+                } & {
+                    cover: Maybe<({
+                        __typename?: 'CoverType';
+                    } & Pick<CoverType, 'uri' | 'default'>)>;
+                } & ProjectFragment);
+            })>>;
+        })>;
+    })>;
+});
 export declare type CurrentUserProfileQueryVariables = {
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
@@ -2356,6 +2386,29 @@ export declare function useCurrentUserLazyQuery(baseOptions?: ApolloReactHooks.L
 export declare type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
 export declare type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
 export declare type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
+export declare const CurrentUserFollowingProjectsDocument: import("graphql").DocumentNode;
+/**
+ * __useCurrentUserFollowingProjectsQuery__
+ *
+ * To run a query within a React component, call `useCurrentUserFollowingProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCurrentUserFollowingProjectsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useCurrentUserFollowingProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>): ApolloReactCommon.QueryResult<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>;
+export declare function useCurrentUserFollowingProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<CurrentUserFollowingProjectsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>];
+export declare type CurrentUserFollowingProjectsQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsQuery>;
+export declare type CurrentUserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsLazyQuery>;
+export declare type CurrentUserFollowingProjectsQueryResult = ApolloReactCommon.QueryResult<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>;
 export declare const CurrentUserProfileDocument: import("graphql").DocumentNode;
 /**
  * __useCurrentUserProfileQuery__

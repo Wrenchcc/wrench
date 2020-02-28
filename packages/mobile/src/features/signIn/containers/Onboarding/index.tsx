@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native'
 import { useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useCurrentUserQuery, useProjectTypesQuery } from '@wrench/common'
-import { Page, FlatList, AppNavigation, useNavigation, SCREENS, keyExtractor } from 'navigation'
+import { Page, FlatList, useNavigation, SCREENS, keyExtractor } from 'navigation'
 import { omit } from 'rambda'
 import { track, events } from 'utils/analytics'
 import { ActivityIndicator, Touchable, Text, Loader } from 'ui'
@@ -19,19 +19,30 @@ const ITEM_SIZE = width / 2 - GUTTER
 
 function Onboarding({ settingsPage }) {
   const { t } = useTranslation()
-  const { navigateBack, showModal } = useNavigation()
+  const { navigate, navigateBack, showModal } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
   const [items, setItems] = useState({})
 
   const [editUser] = useEditUserMutation()
 
+  const { data: projectData, loading } = useProjectTypesQuery()
+
+  const { data: userData } = useCurrentUserQuery()
+
   useEffect(() => {
     track(events.USER_ONBOARDING_CATEGORIES_VIEWED)
   }, [])
 
-  const { data: projectData, loading } = useProjectTypesQuery()
+  useEffect(() => {
+    if (userData) {
+      const items = userData.user.interestedIn.reduce((o, val) => {
+        o[val.id] = val
+        return o
+      }, {})
 
-  const { data: userData } = useCurrentUserQuery()
+      setItems(items)
+    }
+  }, [userData?.user.interestedIn])
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
@@ -65,7 +76,7 @@ function Onboarding({ settingsPage }) {
           showModal(SCREENS.EDIT_PROFILE, {
             onboarding: true,
           })
-      : () => AppNavigation(false)
+      : () => navigate(SCREENS.PROJECT_SUGGESTIONS)
 
     await editUser({
       variables: {
@@ -74,7 +85,19 @@ function Onboarding({ settingsPage }) {
         },
       },
     })
-    setTimeout(settingsPage ? navigateBack : Navigate, 200)
+
+    setTimeout(
+      settingsPage
+        ? () => {
+            navigateBack()
+            setIsSaving(false)
+          }
+        : () => {
+            Navigate()
+            setIsSaving(false)
+          },
+      100
+    )
   }
 
   const renderItem = ({ item }) => (

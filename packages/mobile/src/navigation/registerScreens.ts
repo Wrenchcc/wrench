@@ -99,4 +99,7 @@ export default function registerScreens(client) {
   Navigation.registerComponent(SCREENS.OTHER_SIGN_IN_OPTIONS, () =>
     HOC(register({ require: () => require('features/signIn/containers/Other') }))
   )
+  Navigation.registerComponent(SCREENS.PROJECT_SUGGESTIONS, () =>
+    HOC(register({ require: () => require('features/signIn/containers/ProjectSuggestions') }))
+  )
 }
