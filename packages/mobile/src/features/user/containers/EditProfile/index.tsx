@@ -6,11 +6,11 @@ import ImagePicker from 'react-native-image-picker'
 import { useColorScheme } from 'react-native-appearance'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
-import { useUserStore, USER } from 'store'
+import { useUserStore, useToastStore, USER } from 'store'
 import { ActivityIndicator, Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
-import { FILE_TYPES } from 'utils/enums'
+import { FILE_TYPES, TOAST_TYPES } from 'utils/enums'
 import uploadAsync from 'utils/storage/uploadAsync'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon, Location } from './styles'
 
@@ -53,7 +53,17 @@ function EditProfile({ onboarding }) {
 
   const hasErrors = firstName.length === 0 || lastName.length === 0 || username.length === 0
 
-  const [editUser] = useEditUserMutation()
+  const [editUser] = useEditUserMutation({
+    onError: () => {
+      toastActions.show({
+        content: t('EditProfile:validationUsername'),
+        dismissAfter: 6000,
+        type: TOAST_TYPES.ERROR,
+      })
+    },
+  })
+
+  const toastActions = useToastStore(store => store.actions)
 
   useEffect(() => {
     initialState(data?.user)
@@ -75,6 +85,16 @@ function EditProfile({ onboarding }) {
   const handleSave = useCallback(async () => {
     setSaving(true)
 
+    if (hasErrors) {
+      toastActions.show({
+        content: t('EditProfile:validation'),
+        dismissAfter: 6000,
+        type: TOAST_TYPES.ERROR,
+      })
+
+      return
+    }
+
     try {
       // NOTE: Get filename from saved avatarUrl to submit to backend
       let uploadedAvatar = avatarUrl.replace(`${CDN_DOMAIN}/avatar/`, '')
@@ -89,6 +109,12 @@ function EditProfile({ onboarding }) {
           uploadedAvatar = upload.filename
         } catch (err) {
           logError(err)
+          setSaving(false)
+          return toastActions.show({
+            content: t('EditProfile:wrong'),
+            dismissAfter: 6000,
+            type: TOAST_TYPES.ERROR,
+          })
         }
       }
 
@@ -114,10 +140,16 @@ function EditProfile({ onboarding }) {
         dismissModal()
       }
     } catch (err) {
+      toastActions.show({
+        content: t('EditProfile:wrong'),
+        dismissAfter: 6000,
+        type: TOAST_TYPES.ERROR,
+      })
+
       setSaving(false)
       logError(err)
     }
-  }, [dismissModal, location, bio, website, firstName, lastName, upload, avatarUrl])
+  }, [dismissModal, location, bio, website, firstName, lastName, upload, avatarUrl, hasErrors])
 
   const handleChangeAvatar = useCallback(() => {
     ImagePicker.showImagePicker(

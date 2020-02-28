@@ -210,7 +210,10 @@
       "imagePickerPermissionText": "To be able to take pictures with your camera and choose images from your library.",
       "imagePickerPermissionRetry": "re-try",
       "imagePickerPermissionOk": "I'm sure",
-      "remove": "Remove Current Photo"
+      "remove": "Remove Current Photo",
+      "wrong": "Something went wrong",
+      "validation": "Please check required fields.",
+      "validationUsername": "Username is already taken."
     },
     "Settings": {
       "invite": "Invite people",
@@ -570,7 +573,10 @@
       "imagePickerPermissionText": "För att kunna ta bilder med din kamera och välja bilder från ditt bibliotek.",
       "imagePickerPermissionRetry": "Försök igen",
       "imagePickerPermissionOk": "Jag är säker",
-      "remove": "Ta bort nuvarande bild"
+      "remove": "Ta bort nuvarande bild",
+      "wrong": "Något gick fel.",
+      "validation": "Kontrollera alla obligatoriska fält.",
+      "validationUsername": "Användarnamn är upptaget."
     },
     "Settings": {
       "invite": "Bjud in vänner",

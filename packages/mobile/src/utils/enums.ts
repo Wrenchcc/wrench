@@ -27,6 +27,7 @@ export enum TOAST_TYPES {
   NETWORK = 'NETWORK',
   SPAM = 'SPAM',
   SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR',
 }
 
 export enum SIGN_IN_PROVIDERS {
