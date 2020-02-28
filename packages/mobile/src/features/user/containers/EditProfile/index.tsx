@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Image } from 'react-native'
-import { useEditUserMutation } from '@wrench/common'
+import { useCurrentUserQuery, useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import ImagePicker from 'react-native-image-picker'
 import { useColorScheme } from 'react-native-appearance'
-import { useCurrentUserQuery } from '@wrench/common'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
 import { useUserStore, USER } from 'store'
@@ -39,6 +38,7 @@ function EditProfile({ onboarding }) {
     firstName,
     lastName,
     website,
+    username,
   } = useUserStore(store => ({
     initialState: store.actions.initialState,
     update: store.actions.update,
@@ -48,7 +48,10 @@ function EditProfile({ onboarding }) {
     location: store.location,
     bio: store.bio,
     website: store.website,
+    username: store.username,
   }))
+
+  const hasErrors = firstName.length === 0 || lastName.length === 0 || username.length === 0
 
   const [editUser] = useEditUserMutation()
 
@@ -98,6 +101,7 @@ function EditProfile({ onboarding }) {
             location,
             bio,
             website,
+            username,
           },
         },
       })
@@ -165,8 +169,10 @@ function EditProfile({ onboarding }) {
         isSaving ? (
           <ActivityIndicator />
         ) : (
-          <Touchable onPress={handleSave}>
-            <Text medium>{t('EditProfile:save')}</Text>
+          <Touchable onPress={handleSave} disabled={hasErrors}>
+            <Text medium opacity={hasErrors ? 0.5 : 1}>
+              {t('EditProfile:save')}
+            </Text>
           </Touchable>
         )
       }
@@ -203,6 +209,7 @@ function EditProfile({ onboarding }) {
                 placeholder={t('EditProfile:firstName')}
                 onChangeText={value => update(USER.FIRST_NAME, value)}
                 value={firstName}
+                error={firstName.length === 0}
               />
             </Row>
 
@@ -212,6 +219,17 @@ function EditProfile({ onboarding }) {
                 placeholder={t('EditProfile:lastName')}
                 onChangeText={value => update(USER.LAST_NAME, value)}
                 value={lastName}
+                error={lastName.length === 0}
+              />
+            </Row>
+
+            <Row>
+              <Input
+                color="dark"
+                placeholder={t('EditProfile:username')}
+                onChangeText={value => update(USER.USERNAME, value)}
+                value={username}
+                error={username.length === 0}
               />
             </Row>
 

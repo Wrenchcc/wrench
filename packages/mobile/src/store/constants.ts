@@ -26,4 +26,5 @@ export const USER = {
   LOCATION: 'location',
   FIRST_NAME: 'firstName',
   LAST_NAME: 'lastName',
+  USERNAME: 'username',
 }

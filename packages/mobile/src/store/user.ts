@@ -7,6 +7,7 @@ const [useUserStore] = create(set => ({
   [USER.LOCATION]: '',
   [USER.BIO]: '',
   [USER.WEBSITE]: '',
+  [USER.USERNAME]: '',
 
   actions: {
     update: (field, payload) => set({ [field]: payload }),

@@ -92,6 +92,7 @@ export default gql`
     bio: String
     website: String
     avatarUrl: String
+    username: String
   }
 
   input ToggleNotificationSettingsInput {

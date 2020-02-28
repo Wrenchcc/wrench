@@ -92,6 +92,13 @@ export default isAuthenticated(async (_, args, ctx) => {
     }
   }
 
+  if (args.input.username) {
+    data = {
+      ...data,
+      username: args.input.username,
+    }
+  }
+
   if (args.input.website) {
     data = {
       ...data,

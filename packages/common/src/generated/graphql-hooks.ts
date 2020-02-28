@@ -175,6 +175,7 @@ export type EditUserInput = {
   bio?: Maybe<Scalars['String']>,
   website?: Maybe<Scalars['String']>,
   avatarUrl?: Maybe<Scalars['String']>,
+  username?: Maybe<Scalars['String']>,
 };
 
 export type Feed = {
