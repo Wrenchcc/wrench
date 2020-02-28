@@ -7,6 +7,7 @@ const Carousel = memo(function Carousel({ files }) {
   return (
     <Base>
       <CarouselProvider
+        touchEnabled={files.length > 0}
         naturalSlideWidth={650}
         naturalSlideHeight={650}
         totalSlides={files.edges.length}
