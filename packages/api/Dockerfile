@@ -1,7 +1,6 @@
 FROM mhart/alpine-node:13
 WORKDIR /app
 COPY . .
-COPY ../../tsconfig.base.json ../../
 RUN yarn
 RUN yarn build
 

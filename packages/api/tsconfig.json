@@ -1,5 +1,4 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
@@ -11,7 +10,6 @@
     "composite": false,
     "removeComments": true,
     "strictFunctionTypes": true,
-    "strictPropertyInitialization": false,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -23,7 +21,6 @@
     "baseUrl": ".",
     "rootDir": "src"
   },
-  "include": [
-    "src"
-  ],
+  "exclude": ["node_modules", "tasks"],
+  "include": ["./src/**/*.ts"]
 }
