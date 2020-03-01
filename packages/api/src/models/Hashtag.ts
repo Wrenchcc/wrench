@@ -8,18 +8,18 @@ import {
 } from 'typeorm'
 import slugify from '../utils/slugify'
 
-@Entity('article_categories')
-export default class ArticleCategory extends BaseEntity {
-  public static async findOrCreate(categories) {
+@Entity('hashtags')
+export default class Hashtag extends BaseEntity {
+  public static async findOrCreate(hashtags) {
     return Promise.all(
-      categories.map(async name => {
+      hashtags.map(async name => {
         const slug = slugify(name, '-')
-        const category = await ArticleCategory.findOne({
+        const category = await Hashtag.findOne({
           name,
         })
 
         // NOTE: Used to cover slug genereated with '.'
-        const s = await ArticleCategory.findOne({
+        const s = await Hashtag.findOne({
           slug,
         })
 
@@ -27,7 +27,7 @@ export default class ArticleCategory extends BaseEntity {
           return category || s
         }
         // @ts-ignore
-        return ArticleCategory.save({
+        return Hashtag.save({
           name,
           slug,
         })

@@ -1,5 +1,7 @@
 // TODO: Use dataloader
 export default async (_, args, ctx) =>
-  ctx.db.Article.findOne({
-    where: { ...args },
+  ctx.db.Hashtag.findOne({
+    where: {
+      ...args,
+    },
   })

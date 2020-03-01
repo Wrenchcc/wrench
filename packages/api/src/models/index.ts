@@ -1,11 +1,4 @@
 import { ConnectionOptions } from 'typeorm'
-import Article from './Article'
-import ArticleAuthor from './ArticleAuthor'
-import ArticleCategory from './ArticleCategory'
-import ArticleCategoryRelationships from './ArticleCategoryRelationships'
-import ArticleFile from './ArticleFile'
-import ArticlePublisher from './ArticlePublisher'
-import ArticlePublisherSeen from './ArticlePublisherSeen'
 import AuthProvider from './AuthProvider'
 import AuthToken from './AuthToken'
 import Brand from './Brand'
@@ -22,6 +15,7 @@ import ProjectType from './ProjectType'
 import User from './User'
 import UserInterestedIn from './UserInterestedIn'
 import UserSettings from './UserSettings'
+import Hashtag from './Hashtag'
 
 const {
   DB_PORT = 5432,
@@ -36,13 +30,6 @@ const {
 export const options: ConnectionOptions = {
   database: DB_DATABASE,
   entities: [
-    Article,
-    ArticleAuthor,
-    ArticleCategory,
-    ArticleCategoryRelationships,
-    ArticleFile,
-    ArticlePublisher,
-    ArticlePublisherSeen,
     AuthProvider,
     AuthToken,
     Brand,
@@ -59,6 +46,7 @@ export const options: ConnectionOptions = {
     User,
     UserInterestedIn,
     UserSettings,
+    Hashtag,
   ],
   host: DB_HOST,
   logging: Boolean(DB_LOGGING),
@@ -70,13 +58,6 @@ export const options: ConnectionOptions = {
 }
 
 export const db = {
-  Article,
-  ArticleAuthor,
-  ArticleCategory,
-  ArticleCategoryRelationships,
-  ArticleFile,
-  ArticlePublisher,
-  ArticlePublisherSeen,
   AuthProvider,
   AuthToken,
   Brand,
@@ -93,4 +74,5 @@ export const db = {
   User,
   UserInterestedIn,
   UserSettings,
+  Hashtag,
 }

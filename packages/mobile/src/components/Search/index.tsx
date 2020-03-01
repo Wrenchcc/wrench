@@ -6,6 +6,7 @@ import { TabView, TabBar } from 'react-native-tab-view'
 import { FONTS } from 'ui/constants'
 import Users from './Users'
 import Projects from './Projects'
+import Hashtags from './Hashtags'
 import { Base } from './styles'
 
 const initialLayout = {
@@ -18,6 +19,9 @@ const routes = [
   },
   {
     key: 'projects',
+  },
+  {
+    key: 'hashtags',
   },
 ]
 
@@ -62,6 +66,8 @@ function Search({ query }) {
           return <Users query={query} />
         case 'projects':
           return <Projects query={query} />
+        case 'hashtags':
+          return <Hashtags query={query} />
         default:
           return null
       }

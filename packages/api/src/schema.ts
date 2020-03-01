@@ -5,7 +5,6 @@ import scalars from './types/scalars'
 import generalTypes from './types/general'
 
 // Types
-import Article from './types/Article'
 import Auth from './types/Auth'
 import Comment from './types/Comment'
 import Feed from './types/Feed'
@@ -17,14 +16,13 @@ import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
 import Project from './types/Project'
-import Publisher from './types/Publisher'
 import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
 import Meta from './types/Meta'
+import Hashtag from './types/Hashtag'
 
 // Queries
-import articleQueries from './queries/article'
 import commentQueries from './queries/comment'
 import feedQueries from './queries/feed'
 import followerQueries from './queries/follower'
@@ -33,8 +31,8 @@ import postQueries from './queries/post'
 import projectQueries from './queries/project'
 import searchQueries from './queries/search'
 import userQueries from './queries/user'
-import publisherQueries from './queries/publisher'
 import metaQueries from './queries/meta'
+import hashtagQueries from './queries/hashtag'
 
 // Mutations
 import commentMutations from './mutations/comment'
@@ -45,7 +43,6 @@ import projectMutations from './mutations/project'
 import uploadMutations from './mutations/upload'
 import userMutations from './mutations/user'
 import likeMutations from './mutations/like'
-import articleMutations from './mutations/article'
 
 const debug = require('debug')('api:resolvers')
 
@@ -73,16 +70,15 @@ const resolvers = merge(
   {},
   // queries
   scalars.resolvers,
-  articleQueries,
   commentQueries,
   feedQueries,
   followerQueries,
   notificationQueries,
   postQueries,
   projectQueries,
-  publisherQueries,
   searchQueries,
   userQueries,
+  hashtagQueries,
   // mutations
   commentMutations,
   inviteMutations,
@@ -92,7 +88,6 @@ const resolvers = merge(
   uploadMutations,
   userMutations,
   likeMutations,
-  articleMutations,
   metaQueries
 )
 
@@ -112,7 +107,6 @@ export default makeExecutableSchema({
   typeDefs: [
     scalars.typeDefs,
     generalTypes,
-    Article,
     Auth,
     Comment,
     Feed,
@@ -124,11 +118,11 @@ export default makeExecutableSchema({
     Notification,
     Post,
     Project,
-    Publisher,
     Root,
     Search,
     Upload,
     User,
     Meta,
+    Hashtag,
   ],
 })

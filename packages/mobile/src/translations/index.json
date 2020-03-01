@@ -50,6 +50,7 @@
     "Search": {
       "users": "People",
       "projects": "Projects",
+      "hashtags": "Hashtags",
       "recent": "Recent",
       "clear": "Clear all"
     },
@@ -419,6 +420,7 @@
     "Search": {
       "users": "Personer",
       "projects": "Projekt",
+      "hashtags": "Hashtags",
       "recent": "Senast",
       "clear": "Rensa"
     },
