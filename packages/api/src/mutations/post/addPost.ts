@@ -42,8 +42,14 @@ export default isAuthenticated(async (_, { input }, ctx) => {
 
   const files = await ctx.db.File.save(filesToSave)
 
+  const hashtags = input.caption && extractHashtags(input.caption)
+
+  if (hashtags) {
+    ctx.db.Hashtag.findOrCreate(hashtags)
+  }
+
   return ctx.db.Post.save({
-    caption: input.caption && extractHashtags(trim(input.caption)),
+    caption: input.caption && trim(input.caption),
     files,
     project,
     userId: ctx.userId,

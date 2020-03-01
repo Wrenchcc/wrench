@@ -14,18 +14,14 @@ export default class Hashtag extends BaseEntity {
     return Promise.all(
       hashtags.map(async name => {
         const slug = slugify(name, '-')
-        const category = await Hashtag.findOne({
+        const hashtag = await Hashtag.findOne({
           name,
         })
 
-        // NOTE: Used to cover slug genereated with '.'
-        const s = await Hashtag.findOne({
-          slug,
-        })
-
-        if (category || s) {
-          return category || s
+        if (hashtag) {
+          return hashtag
         }
+
         // @ts-ignore
         return Hashtag.save({
           name,

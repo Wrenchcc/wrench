@@ -14,11 +14,10 @@ export function extractMentionedUsers(text) {
 
 export function extractHashtags(text) {
   const hashtags = text.match(HASHTAG_RREGEX)
-  console.log('katt', hashtags)
 
-  // if (users) {
-  //   return users.map(user => user.replace('@', ''))
-  // }
+  if (hashtags) {
+    return hashtags.map(tag => tag.replace('#', ''))
+  }
 
-  return text
+  return null
 }
