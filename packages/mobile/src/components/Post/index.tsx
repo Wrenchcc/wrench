@@ -230,6 +230,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           fontSize={15}
           lineHeight={24}
           maxText={120}
+          parseEnabled
         >
           {post.caption}
         </Text>

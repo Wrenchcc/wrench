@@ -8,7 +8,7 @@ export const PATTERNS = {
   url: /((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/))?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,15}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
 }
 
-function ParsedText({ parse, children, childrenProps, ...restProps }) {
+function ParsedText({ parse, children, parseEnabled, childrenProps, ...restProps }) {
   const getPatterns = () =>
     parse.map(option => {
       const { type, ...patternOption } = option
@@ -39,7 +39,7 @@ function ParsedText({ parse, children, childrenProps, ...restProps }) {
       .map((props, index) => <Text key={`text-${index}`} {...childrenProps} {...props} />)
   }
 
-  return <Text {...restProps}>{getParsedText()}</Text>
+  return <Text {...restProps}>{parseEnabled ? getParsedText() : children}</Text>
 }
 
 export default memo(ParsedText)

@@ -32,13 +32,13 @@ function Header({
           )}
 
           {bio && (
-            <Text fontSize={15} style={{ marginTop: 5 }} lineHeight={22}>
+            <Text fontSize={15} style={{ marginTop: 5 }} lineHeight={22} parseEnabled>
               {bio}
             </Text>
           )}
 
           {website && (
-            <Text fontSize={15} style={{ marginTop: 5 }}>
+            <Text fontSize={15} style={{ marginTop: 5 }} parseEnabled>
               {website}
             </Text>
           )}
