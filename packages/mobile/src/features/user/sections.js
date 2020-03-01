@@ -140,7 +140,7 @@ const sections = props => ({
         },
         {
           titleKey: 'rate',
-          onPress: () => askForRating({ preferInApp: true }),
+          onPress: () => askForRating(),
         },
         {
           titleKey: 'logout',

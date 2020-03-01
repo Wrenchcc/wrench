@@ -4,17 +4,12 @@ import { track, events } from 'utils/analytics'
 const APPLE_APP_ID = '1450213123'
 const GOOGLE_PACKAGE_NAME = 'com.wrench'
 
-export const askForRating = ({
-  preferInApp = false,
-  openAppStoreIfInAppFails = true,
-  fallbackPlatformURL = null,
-}) => {
+export const askForRating = () => {
   const options = {
     AppleAppID: APPLE_APP_ID,
-    fallbackPlatformURL,
     GooglePackageName: GOOGLE_PACKAGE_NAME,
-    openAppStoreIfInAppFails,
-    preferInApp,
+    openAppStoreIfInAppFails: true,
+    preferInApp: true,
     preferredAndroidMarket: AndroidMarket.Google,
   }
 

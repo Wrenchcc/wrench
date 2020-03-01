@@ -1,8 +1,11 @@
 import React, { useCallback } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
 import { ActivityIndicator, Title, Follow, Icon } from 'ui'
 import { arrowDown } from 'images'
 import { useNavigation, SCREENS } from 'navigation'
+import { FOLLOWING_COUNT, HAS_ASKED_FOR_RATING } from 'utils/storage/constants'
+import { askForRating } from 'utils/rate'
 import SimilarProjects from '../SimilarProjects'
 import { Base, Actions, Followers, OpenSimilar } from './styles'
 
@@ -22,7 +25,25 @@ function ProjectHeader({ project, spacingHorizontal }) {
   }, [getSimilarProjects])
 
   const [followProject] = useFollowProjectMutation({
-    onCompleted: () => !isFollower && getSimilarProjects(),
+    onCompleted: async () => {
+      const [[, followingCount], [, hasAskedForRating]] = await AsyncStorage.multiGet([
+        FOLLOWING_COUNT,
+        HAS_ASKED_FOR_RATING,
+      ])
+
+      const count = JSON.parse(followingCount)
+
+      if (count?.value > 2 && !hasAskedForRating) {
+        askForRating()
+        AsyncStorage.setItem(HAS_ASKED_FOR_RATING, 'true')
+      }
+
+      if (!hasAskedForRating) {
+        AsyncStorage.setItem(FOLLOWING_COUNT, JSON.stringify({ value: count?.value + 1 }))
+      }
+
+      !isFollower && getSimilarProjects()
+    },
   })
 
   const handleFollow = useCallback(() => {

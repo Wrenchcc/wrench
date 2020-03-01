@@ -25,7 +25,7 @@ function List({ data }) {
         <Text bold fontSize={15} onPress={onPress}>
           {`${node.user.fullName} `}
         </Text>
-        <Comment fontSize={15} numberOfLines={1} lineHeight={22}>
+        <Comment fontSize={15} numberOfLines={1} lineHeight={22} parseEnabled>
           {node.text}
         </Comment>
       </Row>
