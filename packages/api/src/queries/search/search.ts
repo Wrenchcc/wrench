@@ -3,6 +3,7 @@ import { SEARCH_TYPES } from '../../utils/enums'
 import searchUsers from './searchUsers'
 import searchProject from './searchProjects'
 import searchModels from './searchModels'
+import searchHashtags from './searchHashtags'
 
 export default (_, args, ctx) => {
   switch (args.type) {
@@ -12,6 +13,8 @@ export default (_, args, ctx) => {
       return searchProject(args, ctx)
     case SEARCH_TYPES.MODELS:
       return searchModels(args, ctx)
+    case SEARCH_TYPES.HASHTAGS:
+      return searchHashtags(args, ctx)
     default:
       throw new ApolloError('Invalid type supplied to Search query')
   }

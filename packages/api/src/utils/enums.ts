@@ -29,6 +29,7 @@ export const SEARCH_TYPES = {
   MODELS: 'MODELS',
   PROJECTS: 'PROJECTS',
   USERS: 'USERS',
+  HASHTAGS: 'HASHTAGS',
 }
 
 export const AUTH_PROVIDER_TYPES = {

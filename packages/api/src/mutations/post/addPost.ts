@@ -2,6 +2,7 @@ import { ForbiddenError, ApolloError } from 'apollo-server-express'
 import { trim } from 'ramda'
 import { isAuthenticated, canModerateProject } from '../../utils/permissions'
 import { FILE_TYPES, ERROR_CODES } from '../../utils/enums'
+import { extractHashtags } from '../../utils/regex'
 
 const debug = require('debug')('api:mutations:post:add-post')
 
@@ -42,7 +43,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
   const files = await ctx.db.File.save(filesToSave)
 
   return ctx.db.Post.save({
-    caption: input.caption && trim(input.caption),
+    caption: input.caption && extractHashtags(trim(input.caption)),
     files,
     project,
     userId: ctx.userId,

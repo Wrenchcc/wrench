@@ -5,6 +5,7 @@ export default gql`
     id: ID
     name: String
     slug: LowercaseString
+    totalCount: Int
     createdAt: Date
     updatedAt: Date
 
@@ -24,6 +25,5 @@ export default gql`
 
   extend type Query {
     hashtag(id: ID, slug: LowercaseString): Hashtag
-    hashtags(first: Int = 10, after: String, last: Int = 10, before: String): HashtagConnection
   }
 `

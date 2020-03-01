@@ -23,87 +23,6 @@ export type ApplePayload = {
   lastName?: Maybe<Scalars['String']>,
 };
 
-export type Article = {
-   __typename?: 'Article',
-  id?: Maybe<Scalars['ID']>,
-  createdAt?: Maybe<Scalars['Date']>,
-  updatedAt?: Maybe<Scalars['Date']>,
-  publishedAt?: Maybe<Scalars['Date']>,
-  title?: Maybe<Scalars['String']>,
-  description?: Maybe<Scalars['String']>,
-  author?: Maybe<ArticleAuthor>,
-  publisher?: Maybe<Publisher>,
-  url?: Maybe<Scalars['String']>,
-  filesConnection?: Maybe<FileConnection>,
-  categoriesConnection?: Maybe<ArticleCategoryConnection>,
-};
-
-
-export type ArticleFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  reverse?: Maybe<Scalars['Boolean']>,
-  type?: Maybe<FileType>
-};
-
-
-export type ArticleCategoriesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  reverse?: Maybe<Scalars['Boolean']>,
-  type?: Maybe<FileType>
-};
-
-export type ArticleAuthor = {
-   __typename?: 'ArticleAuthor',
-  id?: Maybe<Scalars['ID']>,
-  fullName?: Maybe<Scalars['String']>,
-};
-
-export type ArticleCategory = {
-   __typename?: 'ArticleCategory',
-  id?: Maybe<Scalars['ID']>,
-  name?: Maybe<Scalars['String']>,
-  slug?: Maybe<Scalars['LowercaseString']>,
-};
-
-export type ArticleCategoryConnection = {
-   __typename?: 'ArticleCategoryConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<ArticleCategoryEdge>>,
-};
-
-export type ArticleCategoryEdge = {
-   __typename?: 'ArticleCategoryEdge',
-  cursor: Scalars['String'],
-  node: ArticleCategory,
-};
-
-export type ArticleConnection = {
-   __typename?: 'ArticleConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<ArticleEdge>>,
-};
-
-export type ArticleEdge = {
-   __typename?: 'ArticleEdge',
-  cursor: Scalars['String'],
-  node: Article,
-};
-
-export type ArticleInput = {
-  files: Array<Maybe<Scalars['String']>>,
-  publisher: Scalars['String'],
-  categories: Array<Maybe<Scalars['String']>>,
-  author: Scalars['String'],
-  createdAt: Scalars['Date'],
-  description: Scalars['String'],
-  title: Scalars['String'],
-  url: Scalars['String'],
-};
-
 export type Brand = {
    __typename?: 'Brand',
   id: Scalars['ID'],
@@ -245,6 +164,38 @@ export enum GrowthType {
   Users = 'USERS'
 }
 
+export type Hashtag = {
+   __typename?: 'Hashtag',
+  id?: Maybe<Scalars['ID']>,
+  name?: Maybe<Scalars['String']>,
+  slug?: Maybe<Scalars['LowercaseString']>,
+  totalCount?: Maybe<Scalars['Int']>,
+  createdAt?: Maybe<Scalars['Date']>,
+  updatedAt?: Maybe<Scalars['Date']>,
+  postsConnection?: Maybe<PostConnection>,
+};
+
+
+export type HashtagPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  last?: Maybe<Scalars['Int']>,
+  before?: Maybe<Scalars['String']>
+};
+
+export type HashtagConnection = {
+   __typename?: 'HashtagConnection',
+  totalCount?: Maybe<Scalars['Int']>,
+  pageInfo: PageInfo,
+  edges?: Maybe<Array<HashtagEdge>>,
+};
+
+export type HashtagEdge = {
+   __typename?: 'HashtagEdge',
+  cursor: Scalars['String'],
+  node: Hashtag,
+};
+
 export type Likes = {
    __typename?: 'Likes',
   totalCount?: Maybe<Scalars['Int']>,
@@ -278,7 +229,6 @@ export type Model = {
 export type Mutation = {
    __typename?: 'Mutation',
   dummy?: Maybe<Scalars['String']>,
-  addArticle?: Maybe<Article>,
   authenticateApple?: Maybe<Tokens>,
   authenticateFacebook?: Maybe<Tokens>,
   authenticateGoogle?: Maybe<Tokens>,
@@ -306,11 +256,6 @@ export type Mutation = {
   registerDeviceToken?: Maybe<Scalars['Boolean']>,
   banUser?: Maybe<Scalars['Boolean']>,
   deleteCurrentUser?: Maybe<Scalars['Boolean']>,
-};
-
-
-export type MutationAddArticleArgs = {
-  input: ArticleInput
 };
 
 
@@ -683,43 +628,9 @@ export type ProjectTypeInput = {
   id?: Maybe<Scalars['ID']>,
 };
 
-export type Publisher = {
-   __typename?: 'Publisher',
-  id?: Maybe<Scalars['ID']>,
-  slug?: Maybe<Scalars['LowercaseString']>,
-  name?: Maybe<Scalars['String']>,
-  url?: Maybe<Scalars['String']>,
-  logoUrl?: Maybe<Scalars['String']>,
-  seen?: Maybe<Scalars['Boolean']>,
-  articlesConnection?: Maybe<ArticleConnection>,
-};
-
-
-export type PublisherArticlesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-export type PublisherConnection = {
-   __typename?: 'PublisherConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<PublisherEdge>>,
-};
-
-export type PublisherEdge = {
-   __typename?: 'PublisherEdge',
-  cursor: Scalars['String'],
-  node: Publisher,
-};
-
 export type Query = {
    __typename?: 'Query',
   dummy?: Maybe<Scalars['String']>,
-  article?: Maybe<Article>,
-  articles?: Maybe<ArticleConnection>,
   comments?: Maybe<CommentConnection>,
   comment?: Maybe<Comment>,
   feed?: Maybe<Feed>,
@@ -733,28 +644,13 @@ export type Query = {
   projectSuggestions?: Maybe<Array<Maybe<ProjectSuggestionsConnection>>>,
   similarProjects?: Maybe<ProjectsConnection>,
   projectTypes?: Maybe<Array<Maybe<ProjectType>>>,
-  publisher?: Maybe<Publisher>,
-  publishers?: Maybe<PublisherConnection>,
   search?: Maybe<SearchResults>,
   user?: Maybe<User>,
   users?: Maybe<UserConnection>,
   currentUser?: Maybe<User>,
   meta?: Maybe<Meta>,
   growth?: Maybe<Array<Maybe<GrowthData>>>,
-};
-
-
-export type QueryArticleArgs = {
-  id?: Maybe<Scalars['ID']>
-};
-
-
-export type QueryArticlesArgs = {
-  publisherId?: Maybe<Scalars['ID']>,
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
+  hashtag?: Maybe<Hashtag>,
 };
 
 
@@ -845,19 +741,6 @@ export type QuerySimilarProjectsArgs = {
 };
 
 
-export type QueryPublisherArgs = {
-  id?: Maybe<Scalars['ID']>
-};
-
-
-export type QueryPublishersArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
 export type QuerySearchArgs = {
   first?: Maybe<Scalars['Int']>,
   after?: Maybe<Scalars['String']>,
@@ -896,13 +779,19 @@ export type QueryGrowthArgs = {
   endDate?: Maybe<Scalars['Date']>
 };
 
+
+export type QueryHashtagArgs = {
+  id?: Maybe<Scalars['ID']>,
+  slug?: Maybe<Scalars['LowercaseString']>
+};
+
 export type SearchResultEdge = {
    __typename?: 'SearchResultEdge',
   cursor?: Maybe<Scalars['String']>,
   node?: Maybe<SearchResultNode>,
 };
 
-export type SearchResultNode = Project | User | Model;
+export type SearchResultNode = Project | User | Model | Hashtag;
 
 export type SearchResults = {
    __typename?: 'SearchResults',
@@ -914,7 +803,8 @@ export type SearchResults = {
 export enum SearchType {
   Projects = 'PROJECTS',
   Users = 'USERS',
-  Models = 'MODELS'
+  Models = 'MODELS',
+  Hashtags = 'HASHTAGS'
 }
 
 export type ToggleNotificationSettingsInput = {
@@ -1710,6 +1600,35 @@ export type GrowthQuery = (
   )>>> }
 );
 
+export type HashtagQueryVariables = {
+  id?: Maybe<Scalars['ID']>,
+  slug?: Maybe<Scalars['LowercaseString']>,
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
+};
+
+
+export type HashtagQuery = (
+  { __typename?: 'Query' }
+  & { hashtag: Maybe<(
+    { __typename?: 'Hashtag' }
+    & { posts: Maybe<(
+      { __typename?: 'PostConnection' }
+      & { pageInfo: (
+        { __typename?: 'PageInfo' }
+        & Pick<PageInfo, 'hasNextPage'>
+      ), edges: Maybe<Array<(
+        { __typename?: 'PostEdge' }
+        & Pick<PostEdge, 'cursor'>
+        & { node: (
+          { __typename?: 'Post' }
+          & PostFragment
+        ) }
+      )>> }
+    )> }
+  )> }
+);
+
 export type MetaQueryVariables = {};
 
 
@@ -1914,6 +1833,31 @@ export type RepliesQuery = (
   )> }
 );
 
+export type SearchHashtagsQueryVariables = {
+  query: Scalars['String'],
+  after?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>
+};
+
+
+export type SearchHashtagsQuery = (
+  { __typename?: 'Query' }
+  & { hashtags: Maybe<(
+    { __typename?: 'SearchResults' }
+    & { pageInfo: Maybe<(
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    )>, edges: Maybe<Array<Maybe<(
+      { __typename?: 'SearchResultEdge' }
+      & Pick<SearchResultEdge, 'cursor'>
+      & { node: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | { __typename?: 'Model' } | (
+        { __typename?: 'Hashtag' }
+        & Pick<Hashtag, 'id' | 'name' | 'slug' | 'totalCount'>
+      )> }
+    )>>> }
+  )> }
+);
+
 export type SearchModelsQueryVariables = {
   query: Scalars['String'],
   after?: Maybe<Scalars['String']>,
@@ -1937,7 +1881,7 @@ export type SearchModelsQuery = (
           { __typename?: 'Brand' }
           & Pick<Brand, 'name'>
         )> }
-      )> }
+      ) | { __typename?: 'Hashtag' }> }
     )>>> }
   )> }
 );
@@ -1966,7 +1910,7 @@ export type SearchProjectsQuery = (
           & Pick<CoverType, 'uri' | 'default'>
         )> }
         & ProjectFragment
-      ) | { __typename?: 'User' } | { __typename?: 'Model' }> }
+      ) | { __typename?: 'User' } | { __typename?: 'Model' } | { __typename?: 'Hashtag' }> }
     )>>> }
   )> }
 );
@@ -1992,7 +1936,7 @@ export type SearchUsersQuery = (
         { __typename?: 'User' }
         & Pick<User, 'projectCount'>
         & UserFragment
-      ) | { __typename?: 'Model' }> }
+      ) | { __typename?: 'Model' } | { __typename?: 'Hashtag' }> }
     )>>> }
   )> }
 );
@@ -3471,6 +3415,52 @@ export function useGrowthLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookO
 export type GrowthQueryHookResult = ReturnType<typeof useGrowthQuery>;
 export type GrowthLazyQueryHookResult = ReturnType<typeof useGrowthLazyQuery>;
 export type GrowthQueryResult = ApolloReactCommon.QueryResult<GrowthQuery, GrowthQueryVariables>;
+export const HashtagDocument = gql`
+    query hashtag($id: ID, $slug: LowercaseString, $after: String, $first: Int = 5) {
+  hashtag(id: $id, slug: $slug) {
+    posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...Post
+        }
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useHashtagQuery__
+ *
+ * To run a query within a React component, call `useHashtagQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHashtagQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHashtagQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      slug: // value for 'slug'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useHashtagQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
+        return ApolloReactHooks.useQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
+      }
+export function useHashtagLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
+        }
+export type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>;
+export type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
+export type HashtagQueryResult = ApolloReactCommon.QueryResult<HashtagQuery, HashtagQueryVariables>;
 export const MetaDocument = gql`
     query meta {
   meta {
@@ -3856,6 +3846,54 @@ export function useRepliesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHook
 export type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
 export type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
 export type RepliesQueryResult = ApolloReactCommon.QueryResult<RepliesQuery, RepliesQueryVariables>;
+export const SearchHashtagsDocument = gql`
+    query searchHashtags($query: String!, $after: String, $first: Int = 10) {
+  hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first) @connection(key: "hashtags", filter: ["query", "type"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ... on Hashtag {
+          id
+          name
+          slug
+          totalCount
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useSearchHashtagsQuery__
+ *
+ * To run a query within a React component, call `useSearchHashtagsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchHashtagsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchHashtagsQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useSearchHashtagsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
+        return ApolloReactHooks.useQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
+      }
+export function useSearchHashtagsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
+        }
+export type SearchHashtagsQueryHookResult = ReturnType<typeof useSearchHashtagsQuery>;
+export type SearchHashtagsLazyQueryHookResult = ReturnType<typeof useSearchHashtagsLazyQuery>;
+export type SearchHashtagsQueryResult = ApolloReactCommon.QueryResult<SearchHashtagsQuery, SearchHashtagsQueryVariables>;
 export const SearchModelsDocument = gql`
     query searchModels($query: String!, $after: String, $first: Int = 20) {
   models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: "models", filter: ["query", "type"]) {

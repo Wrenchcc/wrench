@@ -3,14 +3,14 @@
     "en": {
       "users": "People",
       "projects": "Projects",
-      "hashtags": "Hashtags",
+      "hashtags": "Tags",
       "recent": "Recent",
       "clear": "Clear all"
     },
     "sv": {
       "users": "Personer",
       "projects": "Projekt",
-      "hashtags": "Hashtags",
+      "hashtags": "Taggar",
       "recent": "Senast",
       "clear": "Rensa"
     }

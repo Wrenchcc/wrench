@@ -1,10 +1,10 @@
 {
-  "ExpandableText": {
+  "Text": {
     "en": {
       "more": "more"
     },
     "sv": {
-       "more": "mer"
+      "more": "mer"
     }
   }
 }

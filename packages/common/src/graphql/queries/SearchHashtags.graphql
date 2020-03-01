@@ -1,0 +1,19 @@
+ query searchHashtags($query: String!, $after: String, $first: Int = 10) {
+  hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first)
+    @connection(key: "hashtags", filter: ["query", "type"]) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ... on Hashtag {
+          id
+          name
+          slug
+          totalCount
+        }
+      }
+    }
+  }
+}

@@ -50,7 +50,7 @@
     "Search": {
       "users": "People",
       "projects": "Projects",
-      "hashtags": "Hashtags",
+      "hashtags": "Tags",
       "recent": "Recent",
       "clear": "Clear all"
     },
@@ -311,9 +311,6 @@
         "button": "Add"
       }
     },
-    "ExpandableText": {
-      "more": "more"
-    },
     "Follow": {
       "follow": "Follow this project",
       "unfollow": "Following",
@@ -323,6 +320,10 @@
     "UiFollowers": {
       "followers": "{{count}} follower",
       "followers_plural": "{{count, humanFormat}} followers"
+    },
+    "Hashtag": {
+      "posts": "{{count, humanFormat}} post",
+      "posts_plural": "{{count, humanFormat}} posts"
     },
     "NoResults": {
       "title": "No results found"
@@ -350,6 +351,9 @@
     },
     "ShowLatest": {
       "button": "New posts"
+    },
+    "Text": {
+      "more": "more"
     },
     "UiUser": {
       "projects": "{{count, humanFormat}} project",
@@ -420,7 +424,7 @@
     "Search": {
       "users": "Personer",
       "projects": "Projekt",
-      "hashtags": "Hashtags",
+      "hashtags": "Taggar",
       "recent": "Senast",
       "clear": "Rensa"
     },
@@ -681,9 +685,6 @@
         "button": "Lägg till"
       }
     },
-    "ExpandableText": {
-      "more": "mer"
-    },
     "Follow": {
       "follow": "Följ projekt",
       "unfollow": "Följer",
@@ -692,6 +693,9 @@
     },
     "UiFollowers": {
       "followers": "{{count, humanFormat}} följare"
+    },
+    "Hashtag": {
+      "posts": "{{count, humanFormat}} inlägg"
     },
     "NoResults": {
       "title": "Inga resultat funna"
@@ -719,6 +723,9 @@
     },
     "ShowLatest": {
       "button": "Nya inlägg"
+    },
+    "Text": {
+      "more": "mer"
     },
     "UiUser": {
       "projects": "{{count, humanFormat}} projekt"

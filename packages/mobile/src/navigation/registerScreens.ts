@@ -105,4 +105,7 @@ export default function registerScreens(client) {
   Navigation.registerComponent(SCREENS.PUSH_NOTIFICATIONS, () =>
     HOC(register({ require: () => require('features/signIn/containers/PushNotifications') }))
   )
+  Navigation.registerComponent(SCREENS.HASHTAG, () =>
+    HOC(register({ require: () => require('features/explore/containers/Hashtag') }))
+  )
 }

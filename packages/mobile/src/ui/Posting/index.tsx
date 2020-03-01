@@ -32,7 +32,7 @@ function Posting() {
           <Inner>
             <Cover source={image} />
 
-            <Text fontSize={15} color="neutral">
+            <Text fontSize={15} color="inverse">
               {t('Posting:description')}
             </Text>
           </Inner>

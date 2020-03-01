@@ -12,7 +12,7 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import { useDynamicColor } from 'utils/hooks'
-import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo, ExpandableText } from 'ui'
+import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
 import { share } from 'images'
 import { Base, Top, Headline, Content, Spacer } from './styles'
@@ -229,8 +229,9 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           color={withoutTitle ? 'dark' : 'grey'}
           fontSize={15}
           lineHeight={24}
+          maxText={120}
         >
-          <ExpandableText text={post.caption} />
+          {post.caption}
         </Text>
 
         <Spacer />

@@ -5,9 +5,10 @@ export default gql`
     PROJECTS
     USERS
     MODELS
+    HASHTAGS
   }
 
-  union SearchResultNode = Project | User | Model
+  union SearchResultNode = Project | User | Model | Hashtag
 
   type SearchResultEdge {
     cursor: String

@@ -18,6 +18,10 @@ export default {
         return 'Model'
       }
 
+      if (root.slug) {
+        return 'Hashtag'
+      }
+
       return {}
     },
   },
