@@ -6,7 +6,6 @@ import { pathOr } from 'rambda'
 import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
 import { Posting, ShowLatest } from 'ui'
-import registerForPushNotifications from 'utils/pushNotifications/register'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { isIphone } from 'utils/platform'
@@ -41,7 +40,6 @@ function Feed() {
   useScrollToTop(scrollRef, SCREENS.FEED)
 
   useEffect(() => {
-    registerForPushNotifications()
     registerUserLocale()
   }, [])
 

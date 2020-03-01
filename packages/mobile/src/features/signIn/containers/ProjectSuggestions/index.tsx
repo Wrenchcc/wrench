@@ -1,37 +1,33 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useProjectSuggestionsQuery } from '@wrench/common'
-import { Page, ScrollView, AppNavigation } from 'navigation'
-import { ProjectSuggestion, Loader, Text, ActivityIndicator } from 'ui'
+import { Page, ScrollView, useNavigation, SCREENS } from 'navigation'
+import { ProjectSuggestion, Loader, Text } from 'ui'
 import { Headline, Description } from './styles'
 
 function Suggestions() {
-  const [isSaving, setIsSaving] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
   const { data, loading } = useProjectSuggestionsQuery()
+  const { navigate } = useNavigation()
+
   const { t } = useTranslation()
 
   const handleSubmit = () => {
-    setIsSaving(true)
-    setTimeout(() => AppNavigation(), 200)
+    navigate(SCREENS.PUSH_NOTIFICATIONS)
   }
 
   return (
     <Page
       headerRight={
-        isSaving ? (
-          <ActivityIndicator />
-        ) : (
-          <Text
-            color="inverse"
-            medium
-            opacity={isComplete ? 1 : 0.5}
-            disabled={!isComplete}
-            onPress={handleSubmit}
-          >
-            {t('Suggestions:next')}
-          </Text>
-        )
+        <Text
+          color="inverse"
+          medium
+          opacity={isComplete ? 1 : 0.5}
+          disabled={!isComplete}
+          onPress={handleSubmit}
+        >
+          {t('Suggestions:next')}
+        </Text>
       }
     >
       <ScrollView>

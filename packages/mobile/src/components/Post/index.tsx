@@ -228,7 +228,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           disabled={withoutTitle}
           color={withoutTitle ? 'dark' : 'grey'}
           fontSize={15}
-          lineHeight={22}
+          lineHeight={24}
         >
           <ExpandableText text={post.caption} />
         </Text>

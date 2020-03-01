@@ -19,7 +19,7 @@ const ITEM_SIZE = width / 2 - GUTTER
 
 function Onboarding({ settingsPage }) {
   const { t } = useTranslation()
-  const { navigate, navigateBack, showModal } = useNavigation()
+  const { navigate, navigateBack } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
   const [items, setItems] = useState({})
 
@@ -71,13 +71,6 @@ function Onboarding({ settingsPage }) {
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
     const interestedIn = Object.keys(items).map(id => ({ id }))
 
-    const Navigate = userData.user.isSilhouette
-      ? () =>
-          showModal(SCREENS.EDIT_PROFILE, {
-            onboarding: true,
-          })
-      : () => navigate(SCREENS.PROJECT_SUGGESTIONS)
-
     await editUser({
       variables: {
         input: {
@@ -93,7 +86,7 @@ function Onboarding({ settingsPage }) {
             setIsSaving(false)
           }
         : () => {
-            Navigate()
+            navigate(SCREENS.PROJECT_SUGGESTIONS)
             setIsSaving(false)
           },
       100

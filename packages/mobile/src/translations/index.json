@@ -173,6 +173,12 @@
       "description": "We’ve selected some projects below you may find interesting.",
       "next": "Next"
     },
+    "PushNotifications": {
+      "title": "Please turn on Notifications.",
+      "description": "Know right away when people follow your projects or like and comment on your posts.",
+      "approve": "Turn on Notifications",
+      "decline": "No thanks"
+    },
     "SignIn": {
       "headline": "Post, \nexplore \nand learn.",
       "description": "Post your projects, watch others, discuss and learn together.",
@@ -535,6 +541,12 @@
       "headline": "Kom igång och följ några projekt.",
       "description": "Vi har valt några projekt som vi tror du tycker om.",
       "next": "Nästa"
+    },
+    "PushNotifications": {
+      "title": "Vänligen aktivera notiser.",
+      "description": "Vet direkt när folk följer dina projekt eller gillar och kommenterar dina inlägg.",
+      "approve": "Sätt på notifikationer",
+      "decline": "Nej tack"
     },
     "SignIn": {
       "headline": "Posta, \nutforska \noch lär.",

@@ -102,4 +102,7 @@ export default function registerScreens(client) {
   Navigation.registerComponent(SCREENS.PROJECT_SUGGESTIONS, () =>
     HOC(register({ require: () => require('features/signIn/containers/ProjectSuggestions') }))
   )
+  Navigation.registerComponent(SCREENS.PUSH_NOTIFICATIONS, () =>
+    HOC(register({ require: () => require('features/signIn/containers/PushNotifications') }))
+  )
 }
