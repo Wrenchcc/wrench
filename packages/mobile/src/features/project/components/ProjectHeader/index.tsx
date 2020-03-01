@@ -9,6 +9,8 @@ import { askForRating } from 'utils/rate'
 import SimilarProjects from '../SimilarProjects'
 import { Base, Actions, Followers, OpenSimilar } from './styles'
 
+const TRIGGER_RATING_COUNT = 3
+
 function ProjectHeader({ project, spacingHorizontal }) {
   const { navigate } = useNavigation()
 
@@ -33,7 +35,7 @@ function ProjectHeader({ project, spacingHorizontal }) {
 
       const count = JSON.parse(followingCount)
 
-      if (count?.value > 2 && !hasAskedForRating) {
+      if (count?.value === TRIGGER_RATING_COUNT && !hasAskedForRating) {
         askForRating()
         AsyncStorage.setItem(HAS_ASKED_FOR_RATING, 'true')
       }

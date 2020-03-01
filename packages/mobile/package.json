@@ -35,7 +35,7 @@
     "human-format": "^0.10.1",
     "i18next": "^19.3.2",
     "ms": "^2.1.2",
-    "rambda": "^4.5.0",
+    "rambda": "^4.6.0",
     "react": "16.12",
     "react-i18next": "^11.3.3",
     "react-native": "0.61.5",
