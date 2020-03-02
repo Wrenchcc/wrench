@@ -34,7 +34,7 @@ function Onboarding({ settingsPage }) {
   }, [])
 
   useEffect(() => {
-    if (userData) {
+    if (userData?.user?.interestedIn) {
       const items = userData.user.interestedIn.reduce((o, val) => {
         o[val.id] = val
         return o
@@ -42,7 +42,7 @@ function Onboarding({ settingsPage }) {
 
       setItems(items)
     }
-  }, [userData?.user.interestedIn])
+  }, [userData])
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
