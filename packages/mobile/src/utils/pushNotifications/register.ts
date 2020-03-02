@@ -23,18 +23,6 @@ export async function updateNotificationToken() {
         await registerDeviceToken(newToken)
       }
     })
-  } else {
-    try {
-      await firebase.requestPermission()
-      const token = await firebase.getToken()
-
-      if (token) {
-        await registerDeviceToken(token)
-      }
-    } catch (error) {
-      // User has rejected permissions
-      track(events.USER_REJECTED_PUSH_NOTIFICATIONS)
-    }
   }
 }
 
