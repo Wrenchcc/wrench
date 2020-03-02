@@ -56,7 +56,7 @@ function Projects() {
         const id = row.original.id
         return (
           <Actions
-            component={<EditProject />}
+            component={<EditProject id={id} />}
             id={id}
             onDelete={() => {
               const accepted = window.confirm('Delete')

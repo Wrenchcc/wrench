@@ -49,11 +49,12 @@ function EditProject({ id }) {
     })
   }, [data])
 
-  const updateField = (field, evt) => setSettings({ ...data, [field]: evt.target.value })
+  const updateField = (field, evt) => setSettings({ [field]: evt.target.value })
 
   const handleSave = () => {
     editProject({
       variables: {
+        id,
         input: settings,
       },
     })
@@ -66,13 +67,6 @@ function EditProject({ id }) {
           value={settings.title}
           placeholder="Title"
           onChange={firstName => updateField('title', firstName)}
-        />
-      </Row>
-      <Row>
-        <Input
-          value={settings.slug}
-          placeholder="slug"
-          onChange={slug => updateField('slug', slug)}
         />
       </Row>
 

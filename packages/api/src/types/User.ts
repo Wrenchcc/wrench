@@ -101,7 +101,7 @@ export default gql`
   }
 
   extend type Mutation {
-    editUser(input: EditUserInput!): User
+    editUser(input: EditUserInput!, id: ID): User
     toggleNotificationSettings(input: ToggleNotificationSettingsInput): User
     registerDeviceToken(token: String!, platform: PlatformType!): Boolean
     banUser(userId: ID!): Boolean

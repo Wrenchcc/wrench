@@ -1,20 +1,26 @@
-import { UserInputError } from 'apollo-server-express'
+import { UserInputError, ForbiddenError } from 'apollo-server-express'
 import { DateTime } from 'luxon'
-import { isAuthenticated } from '../../utils/permissions'
+import { isAuthenticated, isAdmin } from '../../utils/permissions'
 import { LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../models/UserSettings'
 
 // NOTE: If input is empty string the value will be deleted
 export default isAuthenticated(async (_, args, ctx) => {
+  const userId = args.id || ctx.userId
+
+  if (args.id && !isAdmin(ctx.userId)) {
+    return new ForbiddenError('You don’t have permission to manage this user.')
+  }
+
   let data = {}
 
   if (args.input.interestedIn) {
     const interestedIn = args.input.interestedIn.map(({ id }) => ({
       projectTypeId: id,
-      userId: ctx.userId,
+      userId,
     }))
 
     // Note: Delete pre saved and then save new ones
-    await ctx.db.UserInterestedIn.delete({ userId: ctx.userId })
+    await ctx.db.UserInterestedIn.delete({ userId })
     await ctx.db.UserInterestedIn.save(interestedIn)
   }
 
@@ -22,7 +28,7 @@ export default isAuthenticated(async (_, args, ctx) => {
     const savedLocale = await ctx.db.UserSettings.findOne({
       where: {
         type: LOCALE_COLUMN,
-        userId: ctx.userId,
+        userId,
       },
     })
 
@@ -33,7 +39,7 @@ export default isAuthenticated(async (_, args, ctx) => {
     } else {
       await ctx.db.UserSettings.save({
         type: LOCALE_COLUMN,
-        userId: ctx.userId,
+        userId,
         value: args.input.locale,
       })
     }
@@ -47,7 +53,7 @@ export default isAuthenticated(async (_, args, ctx) => {
     const savedTimezone = await ctx.db.UserSettings.findOne({
       where: {
         type: TIMEZONE_COLUMN,
-        userId: ctx.userId,
+        userId,
       },
     })
 
@@ -58,7 +64,7 @@ export default isAuthenticated(async (_, args, ctx) => {
     } else {
       await ctx.db.UserSettings.save({
         type: TIMEZONE_COLUMN,
-        userId: ctx.userId,
+        userId,
         value: args.input.timezone,
       })
     }
@@ -136,10 +142,10 @@ export default isAuthenticated(async (_, args, ctx) => {
       return data
     }, {})
 
-    await ctx.db.User.update(ctx.userId, nullObject)
+    await ctx.db.User.update(userId, nullObject)
   }
 
-  await ctx.db.User.update(ctx.userId, data)
+  await ctx.db.User.update(userId, data)
 
-  return ctx.loaders.user.load(ctx.userId)
+  return ctx.loaders.user.load(userId)
 })

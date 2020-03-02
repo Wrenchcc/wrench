@@ -291,6 +291,7 @@ export declare type MutationPreSignUrlArgs = {
 };
 export declare type MutationEditUserArgs = {
     input: EditUserInput;
+    id?: Maybe<Scalars['ID']>;
 };
 export declare type MutationToggleNotificationSettingsArgs = {
     input?: Maybe<ToggleNotificationSettingsInput>;
@@ -1021,6 +1022,7 @@ export declare type EditProjectMutation = ({
 });
 export declare type EditUserMutationVariables = {
     input: EditUserInput;
+    id?: Maybe<Scalars['ID']>;
 };
 export declare type EditUserMutation = ({
     __typename?: 'Mutation';
@@ -2085,6 +2087,7 @@ export declare type EditUserMutationFn = ApolloReactCommon.MutationFunction<Edit
  * const [editUserMutation, { data, loading, error }] = useEditUserMutation({
  *   variables: {
  *      input: // value for 'input'
+ *      id: // value for 'id'
  *   },
  * });
  */

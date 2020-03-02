@@ -371,7 +371,8 @@ export type MutationPreSignUrlArgs = {
 
 
 export type MutationEditUserArgs = {
-  input: EditUserInput
+  input: EditUserInput,
+  id?: Maybe<Scalars['ID']>
 };
 
 
@@ -1243,7 +1244,8 @@ export type EditProjectMutation = (
 );
 
 export type EditUserMutationVariables = {
-  input: EditUserInput
+  input: EditUserInput,
+  id?: Maybe<Scalars['ID']>
 };
 
 
@@ -2659,8 +2661,8 @@ export type EditProjectMutationHookResult = ReturnType<typeof useEditProjectMuta
 export type EditProjectMutationResult = ApolloReactCommon.MutationResult<EditProjectMutation>;
 export type EditProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<EditProjectMutation, EditProjectMutationVariables>;
 export const EditUserDocument = gql`
-    mutation editUser($input: EditUserInput!) {
-  editUser(input: $input) {
+    mutation editUser($input: EditUserInput!, $id: ID) {
+  editUser(input: $input, id: $id) {
     ...User
   }
 }
@@ -2681,6 +2683,7 @@ export type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMuta
  * const [editUserMutation, { data, loading, error }] = useEditUserMutation({
  *   variables: {
  *      input: // value for 'input'
+ *      id: // value for 'id'
  *   },
  * });
  */

@@ -329,7 +329,7 @@ function useEditProjectMutation(baseOptions) {
     return ApolloReactHooks.useMutation(exports.EditProjectDocument, baseOptions);
 }
 exports.useEditProjectMutation = useEditProjectMutation;
-exports.EditUserDocument = graphql_tag_1.default(templateObject_21 || (templateObject_21 = __makeTemplateObject(["\n    mutation editUser($input: EditUserInput!) {\n  editUser(input: $input) {\n    ...User\n  }\n}\n    ", ""], ["\n    mutation editUser($input: EditUserInput!) {\n  editUser(input: $input) {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
+exports.EditUserDocument = graphql_tag_1.default(templateObject_21 || (templateObject_21 = __makeTemplateObject(["\n    mutation editUser($input: EditUserInput!, $id: ID) {\n  editUser(input: $input, id: $id) {\n    ...User\n  }\n}\n    ", ""], ["\n    mutation editUser($input: EditUserInput!, $id: ID) {\n  editUser(input: $input, id: $id) {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
 /**
  * __useEditUserMutation__
  *
@@ -344,6 +344,7 @@ exports.EditUserDocument = graphql_tag_1.default(templateObject_21 || (templateO
  * const [editUserMutation, { data, loading, error }] = useEditUserMutation({
  *   variables: {
  *      input: // value for 'input'
+ *      id: // value for 'id'
  *   },
  * });
  */

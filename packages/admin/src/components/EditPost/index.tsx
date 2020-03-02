@@ -50,11 +50,12 @@ function EditPost({ id }) {
     })
   }, [data])
 
-  const updateField = (field, evt) => setSettings({ ...data, [field]: evt.target.value })
+  const updateField = (field, evt) => setSettings({ [field]: evt.target.value })
 
   const handleSave = () => {
     editPost({
       variables: {
+        id,
         input: settings,
       },
     })
@@ -76,7 +77,7 @@ function EditPost({ id }) {
             <PlaceholderBoxLarge />
           </div>
         )}
-        {settings?.files?.edges.map(({ node }) => (
+        {data?.post?.files.edges.map(({ node }) => (
           <img
             key={node.id}
             src={node.uri}

@@ -50,20 +50,24 @@ function EditUser({ username }) {
     location: '',
     bio: '',
     website: '',
-    // avatarUrl: null,
   })
 
   useEffect(() => {
     setSettings({
-      ...data?.user,
+      lastName: data?.user.lastName,
+      firstName: data?.user.firstName,
+      location: data?.user.location,
+      bio: data?.user.bio,
+      website: data?.user.website,
     })
   }, [data])
 
-  const updateField = (field, evt) => setSettings({ ...data, [field]: evt.target.value })
+  const updateField = (field, evt) => setSettings({ ...settings, [field]: evt.target.value })
 
   const handleSave = () => {
     editUser({
       variables: {
+        id: data?.user.id,
         input: settings,
       },
     })
@@ -90,13 +94,6 @@ function EditUser({ username }) {
       </Row>
       <Row>
         <Input
-          value={settings.fullName}
-          placeholder="Fullname"
-          onChange={firstName => updateField('fullName', firstName)}
-        />
-      </Row>
-      <Row>
-        <Input
           value={settings.website}
           placeholder="Website"
           onChange={firstName => updateField('website', firstName)}
@@ -107,13 +104,6 @@ function EditUser({ username }) {
           value={settings.bio}
           placeholder="Bio"
           onChange={firstName => updateField('bio', firstName)}
-        />
-      </Row>
-      <Row>
-        <Input
-          value={settings.username}
-          placeholder="Username"
-          onChange={firstName => updateField('username', firstName)}
         />
       </Row>
 
