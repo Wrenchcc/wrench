@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { usePaginatedQuery, PostsDocument } from '@wrench/common'
+import { usePaginatedQuery, useDeletePostMutation, PostsDocument } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Table from '../../components/Table'
 import Avatar from '../../components/Avatar'
@@ -18,6 +18,8 @@ function Posts() {
       first: 20,
     },
   })
+
+  const [handleDelete] = useDeletePostMutation()
 
   const columns = [
     {
@@ -51,7 +53,53 @@ function Posts() {
     {
       Header: 'Actions',
       width: 95,
-      Cell: ({ row }) => <Actions component={<EditPost id={row.original.id} />} />,
+      Cell: ({ row }) => {
+        const id = row.original.id
+        return (
+          <Actions
+            component={<EditPost id={id} />}
+            onDelete={() => {
+              const accepted = window.confirm('Delete')
+
+              if (accepted) {
+                handleDelete({
+                  variables: {
+                    id,
+                  },
+                  update: cache => {
+                    try {
+                      const data = cache.readQuery({
+                        query: PostsDocument,
+                        variables: {
+                          first: 20,
+                        },
+                      })
+
+                      const edges = data.posts.edges.filter(edge => edge.node.id !== id)
+
+                      cache.writeQuery({
+                        query: PostsDocument,
+                        variables: {
+                          first: 20,
+                        },
+                        data: {
+                          ...data,
+                          posts: {
+                            ...data.posts,
+                            edges,
+                          },
+                        },
+                      })
+                    } catch {
+                      // Swollow error when no post is found
+                    }
+                  },
+                })
+              }
+            }}
+          />
+        )
+      },
     },
   ]
 

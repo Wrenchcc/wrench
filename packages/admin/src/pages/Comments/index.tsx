@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { usePaginatedQuery, RecentCommentsDocument } from '@wrench/common'
+import { usePaginatedQuery, RecentCommentsDocument, useDeleteCommentMutation } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Table from '../../components/Table'
 import Actions from '../../components/Actions'
@@ -15,6 +15,8 @@ function Comments() {
       first: 20,
     },
   })
+
+  const [handleDelete] = useDeleteCommentMutation()
 
   const columns = [
     {
@@ -40,7 +42,53 @@ function Comments() {
     {
       Header: 'Actions',
       width: 95,
-      Cell: ({ row }) => <Actions />,
+      Cell: ({ row }) => {
+        const id = row.original.id
+        return (
+          <Actions
+            id={id}
+            onDelete={() => {
+              const accepted = window.confirm('Delete')
+
+              if (accepted) {
+                handleDelete({
+                  variables: {
+                    id,
+                  },
+                  update: cache => {
+                    try {
+                      const data = cache.readQuery({
+                        query: RecentCommentsDocument,
+                        variables: {
+                          first: 20,
+                        },
+                      })
+
+                      const edges = data.comments.edges.filter(edge => edge.node.id !== id)
+
+                      cache.writeQuery({
+                        query: RecentCommentsDocument,
+                        variables: {
+                          first: 20,
+                        },
+                        data: {
+                          ...data,
+                          comments: {
+                            ...data.comments,
+                            edges,
+                          },
+                        },
+                      })
+                    } catch {
+                      // Swollow error when no post is found
+                    }
+                  },
+                })
+              }
+            }}
+          />
+        )
+      },
     },
   ]
 

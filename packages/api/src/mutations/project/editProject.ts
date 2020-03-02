@@ -1,10 +1,10 @@
 import { ForbiddenError } from 'apollo-server-express'
-import { isAuthenticated, canModerateProject } from '../../utils/permissions'
+import { isAuthenticated, canModerateProject, isAdmin } from '../../utils/permissions'
 
 export default isAuthenticated(async (_, { id, input }, ctx) => {
   const project = await ctx.db.Project.findOne(id)
 
-  if (!(await canModerateProject(project, ctx.userId))) {
+  if (!canModerateProject(project, ctx.userId) && !isAdmin(ctx.userId)) {
     return new ForbiddenError('You don’t have permission to manage this project.')
   }
 

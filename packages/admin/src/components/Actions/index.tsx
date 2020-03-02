@@ -39,7 +39,7 @@ const Menu = styled.nav`
   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 10px 0px;
 `
 
-function Actions({ component }) {
+function Actions({ component, onDelete }) {
   const ref = useRef()
   const [isOpen, setOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState(false)
@@ -64,7 +64,7 @@ function Actions({ component }) {
           >
             Edit
           </Action>
-          <Action style={{ color: '#ec6d2f' }} onClick={() => alert()}>
+          <Action style={{ color: '#ec6d2f' }} onClick={() => onDelete()}>
             Delete
           </Action>
         </Menu>

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
+import { usePaginatedQuery, ProjectsDocument, useDeleteProjectMutation } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Table from '../../components/Table'
 import Avatar from '../../components/Avatar'
@@ -19,6 +19,8 @@ function Projects() {
       type: 'RECENT',
     },
   })
+
+  const [handleDelete] = useDeleteProjectMutation()
 
   const columns = [
     {
@@ -50,7 +52,56 @@ function Projects() {
     {
       Header: 'Actions',
       width: 95,
-      Cell: ({ row }) => <Actions component={<EditProject />} id={row.original.id} />,
+      Cell: ({ row }) => {
+        const id = row.original.id
+        return (
+          <Actions
+            component={<EditProject />}
+            id={id}
+            onDelete={() => {
+              const accepted = window.confirm('Delete')
+
+              if (accepted) {
+                handleDelete({
+                  variables: {
+                    id,
+                  },
+                  update: cache => {
+                    try {
+                      const data = cache.readQuery({
+                        query: ProjectsDocument,
+                        variables: {
+                          first: 20,
+                          type: 'RECENT',
+                        },
+                      })
+
+                      const edges = data.projects.edges.filter(edge => edge.node.id !== id)
+
+                      cache.writeQuery({
+                        query: ProjectsDocument,
+                        variables: {
+                          first: 20,
+                          type: 'RECENT',
+                        },
+                        data: {
+                          ...data,
+                          projects: {
+                            ...data.projects,
+                            edges,
+                          },
+                        },
+                      })
+                    } catch {
+                      // Swollow error when no post is found
+                    }
+                  },
+                })
+              }
+            }}
+          />
+        )
+      },
     },
   ]
 
