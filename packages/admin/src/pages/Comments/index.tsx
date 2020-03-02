@@ -1,42 +1,40 @@
 // @ts-nocheck
 import React from 'react'
-import { usePaginatedQuery, CommentsDocument } from '@wrench/common'
+import { usePaginatedQuery, RecentCommentsDocument } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Table from '../../components/Table'
 import Actions from '../../components/Actions'
 import { PlaceholderRow } from '../../components/Placeholder'
 
-// TODO
 function Comments() {
   const {
     data: { edges },
     isFetching,
-  } = usePaginatedQuery(['comments'])(CommentsDocument, {
+  } = usePaginatedQuery(['comments'])(RecentCommentsDocument, {
     variables: {
       first: 20,
-      query: '',
     },
   })
 
   const columns = [
     {
-      Header: 'Name',
-      accessor: 'fullName',
+      Header: 'Text',
+      accessor: 'text',
       minWidth: 350,
     },
     {
       Header: 'Username',
-      accessor: 'username',
+      accessor: 'user.username',
       minWidth: 200,
     },
     {
-      Header: 'Link',
-      accessor: 'dynamicLink',
+      Header: 'Replies',
+      accessor: 'replies.totalCount',
       minWidth: 200,
     },
     {
-      Header: 'Projects',
-      accessor: 'projectCount',
+      Header: 'Likes',
+      accessor: 'likes.totalCount',
       width: 215,
     },
     {

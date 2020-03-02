@@ -8,7 +8,6 @@ import Actions from '../../components/Actions'
 import EditProject from '../../components/EditProject'
 import { PlaceholderRow } from '../../components/Placeholder'
 
-// TODO: Recent
 function Projects() {
   const {
     data: { edges },
@@ -17,7 +16,7 @@ function Projects() {
   } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
       first: 20,
-      type: 'POPULAR',
+      type: 'RECENT',
     },
   })
 

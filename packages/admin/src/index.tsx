@@ -10,8 +10,8 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import App from './App'
 
 const httpLink = new HttpLink({
-  uri: 'https://api.wrench.cc/graphql',
-  // uri: 'http://localhost:4000/graphql',
+  // uri: 'https://api.wrench.cc/graphql',
+  uri: 'http://localhost:4000/graphql',
 })
 
 const refreshLink = onError(({ graphQLErrors, operation, forward }) => {

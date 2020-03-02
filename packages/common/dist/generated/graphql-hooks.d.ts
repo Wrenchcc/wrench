@@ -507,6 +507,7 @@ export declare type Query = {
     __typename?: 'Query';
     dummy?: Maybe<Scalars['String']>;
     comments?: Maybe<CommentConnection>;
+    recentComments?: Maybe<CommentConnection>;
     comment?: Maybe<Comment>;
     feed?: Maybe<Feed>;
     files?: Maybe<FileConnection>;
@@ -529,6 +530,12 @@ export declare type Query = {
 };
 export declare type QueryCommentsArgs = {
     postId: Scalars['ID'];
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type QueryRecentCommentsArgs = {
     first?: Maybe<Scalars['Int']>;
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
@@ -1502,6 +1509,27 @@ export declare type ProjectsQuery = ({
                     __typename?: 'CoverType';
                 } & Pick<CoverType, 'uri' | 'default'>)>;
             } & ProjectFragment);
+        })>>;
+    })>;
+});
+export declare type RecentCommentsQueryVariables = {
+    after?: Maybe<Scalars['String']>;
+};
+export declare type RecentCommentsQuery = ({
+    __typename?: 'Query';
+} & {
+    comments: Maybe<({
+        __typename?: 'CommentConnection';
+    } & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges: Maybe<Array<({
+            __typename?: 'CommentEdge';
+        } & Pick<CommentEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'Comment';
+            } & CommentAndRepliesFragment);
         })>>;
     })>;
 });
@@ -2726,6 +2754,28 @@ export declare function useProjectsLazyQuery(baseOptions?: ApolloReactHooks.Lazy
 export declare type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export declare type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
 export declare type ProjectsQueryResult = ApolloReactCommon.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export declare const RecentCommentsDocument: import("graphql").DocumentNode;
+/**
+ * __useRecentCommentsQuery__
+ *
+ * To run a query within a React component, call `useRecentCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRecentCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRecentCommentsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export declare function useRecentCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>): ApolloReactCommon.QueryResult<RecentCommentsQuery, RecentCommentsQueryVariables>;
+export declare function useRecentCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>): [(options?: ApolloReactHooks.QueryLazyOptions<RecentCommentsQueryVariables> | undefined) => void, ApolloReactCommon.QueryResult<RecentCommentsQuery, RecentCommentsQueryVariables>];
+export declare type RecentCommentsQueryHookResult = ReturnType<typeof useRecentCommentsQuery>;
+export declare type RecentCommentsLazyQueryHookResult = ReturnType<typeof useRecentCommentsLazyQuery>;
+export declare type RecentCommentsQueryResult = ApolloReactCommon.QueryResult<RecentCommentsQuery, RecentCommentsQueryVariables>;
 export declare const RepliesDocument: import("graphql").DocumentNode;
 /**
  * __useRepliesQuery__

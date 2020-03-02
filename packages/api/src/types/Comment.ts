@@ -53,6 +53,13 @@ export default gql`
       before: String
     ): CommentConnection
 
+    recentComments(
+      first: Int = 10
+      after: String
+      last: Int = 10
+      before: String
+    ): CommentConnection
+
     comment(id: ID!, first: Int = 10, after: String, last: Int = 10, before: String): Comment
   }
 `
