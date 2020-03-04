@@ -52,6 +52,7 @@ function ProjectSuggestion({
         directionalLockEnabled
         paddingHorizontal={0}
         showsHorizontalScrollIndicator={false}
+        loaderInset={-280}
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"

@@ -13,7 +13,7 @@ const keyboardDismissProp = isAndroid
   ? { onMomentumScrollBegin: Keyboard.dismiss }
   : { keyboardDismissMode: 'on-drag' }
 
-const renderLoader = fullscreen => <Loader fullscreen={fullscreen} />
+const renderLoader = loaderInset => <Loader inset={loaderInset} />
 const BorderSeparator = () => <Border />
 
 const keyExtractor = ({ node }) => node.id
@@ -33,6 +33,7 @@ export default function createNavigationAwareScrollable(Component) {
       initialNumToRender = 10,
       paddingHorizontal = 20,
       extraContentInset = 0,
+      loaderInset = CONTENT_INSET,
       paddingBottom,
       ...props
     },
@@ -112,8 +113,8 @@ export default function createNavigationAwareScrollable(Component) {
           )
         }
         initialNumToRender={initialNumToRender}
-        ListFooterComponent={hasNextPage && renderLoader(false)}
-        ListEmptyComponent={initialFetch ? renderLoader(true) : ListEmptyComponent}
+        ListFooterComponent={hasNextPage && renderLoader(false, loaderInset)}
+        ListEmptyComponent={initialFetch ? renderLoader(true, loaderInset) : ListEmptyComponent}
         contentInsetAdjustmentBehavior="never"
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"

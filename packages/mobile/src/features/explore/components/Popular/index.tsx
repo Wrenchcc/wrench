@@ -62,6 +62,7 @@ function Popular() {
         fetchMore={fetchMore}
         isRefetching={isRefetching}
         isFetching={isFetching}
+        loaderInset={-40}
         hasNextPage={hasNextPage}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}

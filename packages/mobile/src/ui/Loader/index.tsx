@@ -1,9 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 import ActivityIndicator from 'ui/ActivityIndicator'
-import { CONTENT_INSET } from 'navigation'
 
-function Loader({ size = 'small', color = 'inverse', padding = 32, fullscreen = false }) {
+function Loader({ size = 'small', color = 'inverse', padding = 32, inset }) {
   return (
     <View
       pointerEvents="none"
@@ -12,11 +11,7 @@ function Loader({ size = 'small', color = 'inverse', padding = 32, fullscreen = 
         flex: 1,
         justifyContent: 'center',
         padding,
-        ...(fullscreen
-          ? {
-              marginTop: -CONTENT_INSET,
-            }
-          : {}),
+        marginTop: inset,
       }}
     >
       <ActivityIndicator size={size} color={color} />
