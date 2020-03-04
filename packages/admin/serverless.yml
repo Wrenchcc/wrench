@@ -3,6 +3,7 @@ name: admin
 admin:
   component: "@serverless/website"
   inputs:
+    runtime: nodejs12.x
     code:
       src: ./build
     region: eu-west-1
