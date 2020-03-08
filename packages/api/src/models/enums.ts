@@ -23,6 +23,13 @@ export enum NotificationTypes {
   NEW_REPLY = 'NEW_REPLY',
 }
 
+export enum ReportTypes {
+  COMMENT = 'COMMENT',
+  POST = 'POST',
+  USER = 'USER',
+  PROJECT = 'PROJECT',
+}
+
 export enum AuthProviderTypes {
   APPLE = 'APPLE',
   FACEBOOK = 'FACEBOOK',

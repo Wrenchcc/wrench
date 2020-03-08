@@ -21,6 +21,7 @@ import Upload from './types/Upload'
 import User from './types/User'
 import Meta from './types/Meta'
 import Hashtag from './types/Hashtag'
+import Report from './types/Report'
 
 // Queries
 import commentQueries from './queries/comment'
@@ -43,6 +44,7 @@ import projectMutations from './mutations/project'
 import uploadMutations from './mutations/upload'
 import userMutations from './mutations/user'
 import likeMutations from './mutations/like'
+import reportMutations from './mutations/report'
 
 const debug = require('debug')('api:resolvers')
 
@@ -88,7 +90,8 @@ const resolvers = merge(
   uploadMutations,
   userMutations,
   likeMutations,
-  metaQueries
+  metaQueries,
+  reportMutations
 )
 
 // Logging
@@ -124,5 +127,6 @@ export default makeExecutableSchema({
     User,
     Meta,
     Hashtag,
+    Report,
   ],
 })

@@ -136,7 +136,7 @@ function Project({ slug, isAuthenticated, action }) {
           {data.project.title}
         </Title>
 
-        <Followers followers={data.project.followers} />
+        <Followers followers={data.project.followers} project={data.project} />
 
         {!data.project.permissions.isOwner && (
           <Follow

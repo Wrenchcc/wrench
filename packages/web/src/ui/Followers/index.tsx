@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { Base, Users, User, Avatar, Count } from './styles'
 
-const Followers = memo(function Followers({ followers, className }) {
+const Followers = memo(function Followers({ followers, project, className }) {
   const { t } = useTranslation()
 
   return (
@@ -21,7 +21,11 @@ const Followers = memo(function Followers({ followers, className }) {
             </User>
           ))}
       </Users>
-      <Count fontSize={15}>{t('UiFollowers:followers', { count: followers.totalCount })}</Count>
+      <Link href="/project/[id]/followers" as={`/project/${project.id}/followers`}>
+        <a>
+          <Count fontSize={15}>{t('UiFollowers:followers', { count: followers.totalCount })}</Count>
+        </a>
+      </Link>
     </Base>
   )
 })

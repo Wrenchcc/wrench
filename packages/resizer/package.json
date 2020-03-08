@@ -4,7 +4,8 @@
   "main": "handler.js",
   "private": true,
   "scripts": {
-    "deploy": "serverless deploy --stage production --aws-profile wrench-api"
+    "deploy": "serverless deploy --stage production --aws-profile default",
+    "build": "webpack"
   },
   "dependencies": {
     "sharp": "^0.24.1"
@@ -15,12 +16,13 @@
     "@types/sharp": "^0.24.0",
     "aws-sdk": "^2.623.0",
     "prettier": "^1.19.1",
-    "serverless-webpack": "^5.3.1",
     "serverless": "^1.64.0",
+    "serverless-webpack": "^5.3.1",
     "ts-loader": "^6.2.1",
     "tslint": "^6.0.0",
     "typescript": "^3.8.2",
     "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
   }
 }
