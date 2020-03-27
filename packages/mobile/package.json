@@ -14,7 +14,7 @@
     "translations:create": "tasks/translations_create"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-beta.38",
+    "@apollo/client": "^3.0.0-beta.39",
     "@expo/react-native-action-sheet": "^3.5.0",
     "@pontusab/react-native-apple-authentication": "^1.0.6",
     "@pontusab/react-native-device-locale": "^1.0.7",
@@ -38,7 +38,7 @@
     "rambda": "^4.6.0",
     "react": "16.12",
     "react-i18next": "^11.3.3",
-    "react-native": "0.61.5",
+    "react-native": "0.62.0",
     "react-native-appearance": "^0.3.3",
     "react-native-bundle-splitter": "^1.0.7",
     "react-native-camera": "^3.19.0",
@@ -51,7 +51,7 @@
     "react-native-google-signin": "^2.1.1",
     "react-native-image-picker": "^2.3.1",
     "react-native-linear-gradient": "^2.5.6",
-    "react-native-navigation": "^6.0.1",
+    "react-native-navigation": "^6.1.0",
     "react-native-permissions": "^2.0.9",
     "react-native-pinchable": "^0.1.2",
     "react-native-rate": "^1.1.10",

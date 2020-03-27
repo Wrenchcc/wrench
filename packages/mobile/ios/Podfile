@@ -9,13 +9,14 @@ require_relative "#{root_path}/@react-native-community/cli-platform-ios/native_m
 install! 'cocoapods', :deterministic_uuids => false
 
 def add_flipper_pods!
-  version = '~> 0.30.2'
+  version = '~> 0.33.1'
   pod 'FlipperKit', version, :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitLayoutPlugin', version, :configuration => 'Debug'
   pod 'FlipperKit/SKIOSNetworkPlugin', version, :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitUserDefaultsPlugin', version, :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitReactPlugin', version, :configuration => 'Debug'
 end
+
 
 # Post Install processing for Flipper
 def flipper_post_install(installer)
@@ -56,7 +57,7 @@ target 'Wrench' do
   pod 'React-jsinspector', :path => "#{root_path}/react-native/ReactCommon/jsinspector"
   pod 'ReactCommon/turbomodule/core', :path => "#{root_path}/react-native/ReactCommon"
   pod 'Yoga', :path => "#{root_path}/react-native/ReactCommon/yoga", :modular_headers => true
-  pod 'ReactCommon/jscallinvoker', :path => "#{root_path}/react-native/ReactCommon"	
+  pod 'ReactCommon/callinvoker', :path => "#{root_path}/react-native/ReactCommon"	
   pod 'DoubleConversion', :podspec => "#{root_path}/react-native/third-party-podspecs/DoubleConversion.podspec"
   pod 'glog', :podspec => "#{root_path}/react-native/third-party-podspecs/glog.podspec"
   pod 'Folly', :podspec => "#{root_path}/react-native/third-party-podspecs/Folly.podspec"
