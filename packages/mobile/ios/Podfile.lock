@@ -196,11 +196,11 @@ PODS:
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
-  - Permission-Camera (2.0.9):
+  - Permission-Camera (2.0.10):
     - RNPermissions
-  - Permission-Microphone (2.0.9):
+  - Permission-Microphone (2.0.10):
     - RNPermissions
-  - Permission-PhotoLibrary (2.0.9):
+  - Permission-PhotoLibrary (2.0.10):
     - RNPermissions
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
@@ -369,13 +369,13 @@ PODS:
   - React-jsinspector (0.62.0)
   - react-native-appearance (0.3.3):
     - React
-  - react-native-camera (3.19.0):
+  - react-native-camera (3.21.0):
     - React
-    - react-native-camera/RCT (= 3.19.0)
-    - react-native-camera/RN (= 3.19.0)
-  - react-native-camera/RCT (3.19.0):
+    - react-native-camera/RCT (= 3.21.0)
+    - react-native-camera/RN (= 3.21.0)
+  - react-native-camera/RCT (3.21.0):
     - React
-  - react-native-camera/RN (3.19.0):
+  - react-native-camera/RN (3.21.0):
     - React
   - react-native-config (0.12.0):
     - React
@@ -401,7 +401,7 @@ PODS:
     - React
   - react-native-media-library (1.0.6):
     - React
-  - react-native-netinfo (5.5.1):
+  - react-native-netinfo (5.7.0):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -412,7 +412,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (8.1.2):
+  - react-native-webview (9.0.2):
     - React
   - React-RCTActionSheet (0.62.0):
     - React-Core/RCTActionSheetHeaders (= 0.62.0)
@@ -473,22 +473,22 @@ PODS:
     - React-cxxreact (= 0.62.0)
     - React-jsi (= 0.62.0)
     - ReactCommon/callinvoker (= 0.62.0)
-  - ReactNativeNavigation (6.1.0):
+  - ReactNativeNavigation (6.4.0):
     - React
     - React-RCTImage
     - React-RCTText
   - RNAppleAuthentication (1.0.6):
     - React
-  - RNCAsyncStorage (1.8.1):
+  - RNCAsyncStorage (1.9.0):
     - React
-  - RNDevMenu (4.0.0):
+  - RNDevMenu (4.0.1):
     - React-Core
     - React-Core/DevSupport
     - React-RCTNetwork
-  - RNFastImage (7.0.2):
+  - RNFastImage (8.1.5):
     - React
     - SDWebImage (~> 5.0)
-    - SDWebImageWebPCoder (~> 0.2.3)
+    - SDWebImageWebPCoder (~> 0.4.1)
   - RNFirebase (5.6.0):
     - Firebase/Core
     - React
@@ -503,23 +503,23 @@ PODS:
   - RNGoogleSignin (2.1.1):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.0.9):
+  - RNPermissions (2.0.10):
     - React
-  - RNRate (1.1.10):
+  - RNRate (1.2.1):
     - React
   - RNReanimated (1.4.0):
     - React
-  - RNSentry (1.3.2):
+  - RNSentry (1.3.6):
     - React
     - Sentry (~> 4.4.0)
-  - RNShare (3.0.0):
+  - RNShare (3.1.2):
     - React
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
-  - SDWebImageWebPCoder (0.2.5):
+  - SDWebImageWebPCoder (0.4.1):
     - libwebp (~> 1.0)
-    - SDWebImage/Core (~> 5.0)
+    - SDWebImage/Core (~> 5.5)
   - Sentry (4.4.3):
     - Sentry/Core (= 4.4.3)
   - Sentry/Core (4.4.3)
@@ -797,9 +797,9 @@ SPEC CHECKSUMS:
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
-  Permission-Camera: 8fe4753b02396489b11c5089e4f57bab7fe1ef42
-  Permission-Microphone: 735c46c5a8e2ace954897680def376186bad1446
-  Permission-PhotoLibrary: 42d41b53adefcfa94f42fb628f143d97136120bd
+  Permission-Camera: a8f6007d17b02ed8a2d6bac1c37c2fd5df9b4e8a
+  Permission-Microphone: b7405c96b677dc44ea262db0b5d30ec21eca337e
+  Permission-PhotoLibrary: e59a7a687e002e8c8c46946c26520934ba85a688
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   RCTRequired: 0873f5bdb1762d2b9b1ae16a01c4f91d6ee3b6dd
@@ -812,18 +812,18 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8bf0b2707f05865113415088c398a7f98c0cf546
   React-jsinspector: 8e5913c4c6c54f0d3f9c9fc630c465a89cded65d
   react-native-appearance: 98e4530857c366de634f58e5db91bf97feaa96ff
-  react-native-camera: 1f4c5be75a037b5573716a01d84ca0390c162954
+  react-native-camera: 4e12e877b8fef60b0914a49c942a0f32479e5b50
   react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
   react-native-device-locale: 90a1fffcb69ddb4f7f6053e3d6275d77d8d83613
   react-native-fbsdk: c35d42169e64aaf66f01713c1e18d0674f7f6519
   react-native-image-manipulator: 01433a6b3714da14d453e2f1fa83eab09dadef4d
   react-native-image-picker: 6a850c41f57f0848d918c2a77aedd7aa272ffa30
   react-native-media-library: 5d8e2f870e9f7cd2fcf3082a9136f10cc2e66d15
-  react-native-netinfo: 3bf235d94cc291cf0673ad9fd9eaae82f84ed8a9
+  react-native-netinfo: becc6dd2bb2335aa85a8adbaefc8e206125e6177
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
+  react-native-webview: 53d0b4e398e8f59a1e9870685d079ace9228db70
   React-RCTActionSheet: 674afbc8b9c76e0a83520e0a51da29a70802c03f
   React-RCTAnimation: f5f24330d09ee677fb49e0782f8321868f4df431
   React-RCTBlob: b773ce6138ab0d172ebd8a455fd4efd200a92549
@@ -834,21 +834,21 @@ SPEC CHECKSUMS:
   React-RCTText: 91a0d0ae5434aa28fe0c89c03eb9d660ff53bd9b
   React-RCTVibration: 0630aeb11e22f87c180ca9c0c3a0a0aba780cc62
   ReactCommon: d22162ab8f1358c53dfcd0f9c4d82d38facdbc48
-  ReactNativeNavigation: c0e82ff2a99ffc35d4c99046c97d1ff8674c2a33
+  ReactNativeNavigation: 667586f6924fbd09512e2933fe70497db914b758
   RNAppleAuthentication: e1494867df56ee7467943f4d1802895050845413
-  RNCAsyncStorage: e0dd7c8a36543b4ef84969acd9f8aceba3a92dc2
-  RNDevMenu: 641b38a8aa65d98fb9df0f8652f05767609920f2
-  RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
+  RNCAsyncStorage: 453cd7c335ec9ba3b877e27d02238956b76f3268
+  RNDevMenu: 7fcefaeb92d2ab1d7c73751e4e908d61f770e0e4
+  RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
-  RNPermissions: 2f74237e97b08beda01e914301e12524ddddf5b8
-  RNRate: 832f7e4da1b043bda1a138e20afdb75c42a530e9
+  RNPermissions: 1008d3511fee0e25739cf81c4af0d1b2248f1053
+  RNRate: a39ac26dc9daf3f9b639ce274b7f80672ae36db1
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNSentry: 2ec85f3e314c6a650b1c51b30ff764b6103ed7e2
-  RNShare: 0e19ddb0bf338b62702ce1d9e001ee14effa68a8
+  RNSentry: d892cbdee165cc6159d71e2a7954efdb8a361918
+  RNShare: c19dbe4a7224098cd3cfc4d3b92c886ca817b3f0
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
-  SDWebImageWebPCoder: 947093edd1349d820c40afbd9f42acb6cdecd987
+  SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
   Sentry: 14bdd673870e8cf64932b149fad5bbbf39a9b390
   Yoga: 9db9ff2025ad21d1ac0a8b3c85d5ac4e7c29d525
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
