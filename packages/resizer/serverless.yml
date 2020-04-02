@@ -6,7 +6,7 @@ plugins:
 provider:
   name: aws
   region: us-east-1
-  runtime: nodejs10.x
+  runtime: nodejs12.x
   deploymentBucket: wrench-image-resize
   memorySize: 2048
   profile: wrench-api

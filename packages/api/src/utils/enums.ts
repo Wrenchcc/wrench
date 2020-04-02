@@ -59,3 +59,10 @@ export const USER_ROLES = {
   ADMIN: 'ADMIN',
   USER: 'USER',
 }
+
+export const REPORT_TYPES = {
+  COMMENT: 'COMMENT',
+  POST: 'POST',
+  USER: 'USER',
+  PROJECT: 'PROJECT',
+}

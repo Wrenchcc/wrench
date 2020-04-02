@@ -16,6 +16,7 @@ import User from './User'
 import UserInterestedIn from './UserInterestedIn'
 import UserSettings from './UserSettings'
 import Hashtag from './Hashtag'
+import Report from './Report'
 
 const {
   DB_PORT = 5432,
@@ -47,6 +48,7 @@ export const options: ConnectionOptions = {
     UserInterestedIn,
     UserSettings,
     Hashtag,
+    Report,
   ],
   host: DB_HOST,
   logging: Boolean(DB_LOGGING),
@@ -75,4 +77,5 @@ export const db = {
   UserInterestedIn,
   UserSettings,
   Hashtag,
+  Report,
 }
