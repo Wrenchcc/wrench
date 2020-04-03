@@ -1,5 +1,13 @@
 import paginate from '../../utils/paginate'
 
 export default async (args, ctx) => {
-  return paginate(ctx.db.Project, args)
+  const where = args.typeId
+    ? {
+        where: {
+          projectTypeId: args.typeId,
+        },
+      }
+    : {}
+
+  return paginate(ctx.db.Project, args, where)
 }
