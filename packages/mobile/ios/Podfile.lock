@@ -498,7 +498,7 @@ PODS:
     - Fabric
     - Firebase/Core
     - React
-  - RNGestureHandler (1.6.0):
+  - RNGestureHandler (1.6.1):
     - React
   - RNGoogleSignin (2.1.1):
     - GoogleSignIn (~> 5.0.0)
@@ -840,7 +840,7 @@ SPEC CHECKSUMS:
   RNDevMenu: 7fcefaeb92d2ab1d7c73751e4e908d61f770e0e4
   RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
-  RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
+  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNPermissions: 1008d3511fee0e25739cf81c4af0d1b2248f1053
   RNRate: a39ac26dc9daf3f9b639ce274b7f80672ae36db1
