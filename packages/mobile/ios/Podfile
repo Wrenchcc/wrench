@@ -5,6 +5,7 @@ platform :ios, '10.0'
 root_path = "../../../node_modules"
 
 require_relative "#{root_path}/@react-native-community/cli-platform-ios/native_modules"
+require_relative "#{root_path}/react-native-unimodules/cocoapods.rb"
 
 install! 'cocoapods', :deterministic_uuids => false
 
@@ -94,6 +95,22 @@ target 'Wrench' do
   pod 'GoogleSignIn'
 
   use_native_modules!
+
+  use_unimodules!(
+    modules_paths: [root_path],
+    exclude: [
+      'expo-constants', 
+      'expo-image-loader', 
+      'expo-file-system', 
+      'unimodules-barcode-scanner-interface', 
+      'unimodules-constants-interface', 
+      'unimodules-face-detector-interface', 
+      'unimodules-file-system-interface', 
+      'unimodules-image-loader-interface', 
+      'unimodules-sensors-interface', 
+      'unimodules-task-manager-interface'
+    ]
+  )
   
   # Enables Flipper.
   #
