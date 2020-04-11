@@ -71,13 +71,7 @@ target 'Wrench' do
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
 
-  # TODO: fix autolinking (xcode project?)
-  pod 'react-native-media-library', :path => "#{root_path}/@pontusab/react-native-media-library/ios"
-  pod 'react-native-image-manipulator', :path => "#{root_path}/@pontusab/react-native-image-manipulator/ios"
-  pod 'react-native-device-locale', :path => "#{root_path}/@pontusab/react-native-device-locale/ios"
-  pod 'RNAppleAuthentication', :path => "#{root_path}/@pontusab/react-native-apple-authentication/ios"
   pod 'react-native-appearance', :path => "#{root_path}/react-native-appearance"
-  pod 'RNDevMenu', :path => "#{root_path}/react-native-dev-menu"
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
@@ -99,14 +93,14 @@ target 'Wrench' do
   use_unimodules!(
     modules_paths: [root_path],
     exclude: [
-      'expo-constants', 
-      'expo-image-loader', 
-      'expo-file-system', 
-      'unimodules-barcode-scanner-interface', 
-      'unimodules-constants-interface', 
-      'unimodules-face-detector-interface', 
-      'unimodules-file-system-interface', 
-      'unimodules-image-loader-interface', 
+      # 'expo-constants', 
+      # 'expo-image-loader', 
+      # 'expo-file-system', 
+      # 'unimodules-barcode-scanner-interface', 
+      # 'unimodules-constants-interface', 
+      # 'unimodules-face-detector-interface', 
+      # 'unimodules-file-system-interface', 
+      # 'unimodules-image-loader-interface', 
       'unimodules-sensors-interface', 
       'unimodules-task-manager-interface'
     ]

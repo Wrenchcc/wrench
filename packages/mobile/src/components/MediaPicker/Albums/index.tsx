@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Image } from 'react-native'
-import * as MediaLibrary from '@pontusab/react-native-media-library'
+import * as MediaLibrary from 'expo-media-library'
 import { Text, Touchable } from 'ui'
 import { pathOr } from 'rambda'
 import { logError } from 'utils/sentry'

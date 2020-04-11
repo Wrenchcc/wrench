@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { TouchableWithoutFeedback, View } from 'react-native'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
-import { RNCamera } from 'react-native-camera'
+import { Camera as RNCamera } from 'expo-camera'
 import { ActivityIndicator } from 'ui'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
@@ -19,7 +18,6 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   const [permission, setPermission] = useState(false)
   const [cameraType, setCameraType] = useState(initialCameraType)
   const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
-  const [autofocus, setAutofocus] = useState()
 
   useEffect(() => {
     check(PERMISSION).then(response => {
@@ -51,13 +49,6 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
     setCameraType(type)
   }, [cameraType])
 
-  const setFocus = useCallback(({ nativeEvent }) => {
-    setAutofocus({
-      x: nativeEvent.locationX,
-      y: nativeEvent.locationY,
-    })
-  }, [])
-
   const handlePermission = useCallback(() => setPermission(RESULTS.GRANTED), [])
 
   if (isLoading) {
@@ -69,31 +60,26 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   }
 
   return (
-    <TouchableWithoutFeedback onPressIn={setFocus}>
-      <>
-        <RNCamera
-          ref={camera}
-          type={cameraType}
-          flashMode={flashMode}
-          style={{ flex: 1 }}
-          autoFocusPointOfInterest={autofocus}
-          ratio="1:1"
-          pendingAuthorizationView={
-            <View
-              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
-            >
-              <ActivityIndicator color="white" />
-            </View>
-          }
-        />
+    <>
+      <RNCamera
+        ref={camera}
+        type={cameraType}
+        flashMode={flashMode}
+        style={{ flex: 1 }}
+        ratio="1:1"
+        // pendingAuthorizationView={
+        //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}>
+        //     <ActivityIndicator color="white" />
+        //   </View>
+        // }
+      />
 
-        <CameraType onPress={changeCameraType} />
-        <Wrapper>
-          <TakePicture onPress={takePicture} nativeHandler />
-        </Wrapper>
-        <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
-      </>
-    </TouchableWithoutFeedback>
+      <CameraType onPress={changeCameraType} />
+      <Wrapper>
+        <TakePicture onPress={takePicture} nativeHandler />
+      </Wrapper>
+      <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
+    </>
   )
 }
 
