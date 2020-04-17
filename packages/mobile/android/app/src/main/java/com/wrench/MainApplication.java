@@ -1,9 +1,12 @@
 package com.wrench;
 
+import com.wrench.generated.BasePackageList;
+
 import android.app.Application;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
@@ -13,10 +16,11 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 
+import org.unimodules.adapters.react.ModuleRegistryAdapter;
+import org.unimodules.adapters.react.ReactModuleRegistryProvider;
+import org.unimodules.core.interfaces.SingletonModule;
+
 import com.brentvatne.react.ReactVideoPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
-import com.reactnativemedialibrary.MediaLibraryPackage;
-import com.reactnativedevicelocale.DeviceLocalePackage;
 
 import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
@@ -27,6 +31,8 @@ import com.reactnativenavigation.react.NavigationPackage;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 
 public class MainApplication extends NavigationApplication {
+
+    private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(new BasePackageList().getPackageList(), null);
 
     private final ReactNativeHost mReactNativeHost = new NavigationReactNativeHost(this) {
         @Override
@@ -43,12 +49,16 @@ public class MainApplication extends NavigationApplication {
         public List<ReactPackage> getPackages() {
             ArrayList<ReactPackage> packages = new PackageList(this).getPackages();
 
+            // Add unimodules
+            List<ReactPackage> unimodules = Arrays.<ReactPackage>asList(
+                new ModuleRegistryAdapter(mModuleRegistryProvider)
+            );
+            
+            packages.addAll(unimodules);
+
             packages.add(new RNFirebaseAnalyticsPackage());
             packages.add(new RNFirebaseMessagingPackage());
             packages.add(new RNFirebaseNotificationsPackage());
-            packages.add(new MediaLibraryPackage());
-            packages.add(new DeviceLocalePackage());
-            packages.add(new LinearGradientPackage());
             packages.add(new ReactVideoPackage());
 
             return packages;

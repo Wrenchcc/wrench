@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import * as AppleAuthentication from '@pontusab/react-native-apple-authentication'
+import * as AppleAuthentication from 'expo-apple-authentication'
 import { useNavigation, ScrollView } from 'navigation'
 import Header from 'navigation/Page/Header'
 import { close } from 'images'

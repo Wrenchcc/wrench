@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import LinearGradient from 'react-native-linear-gradient'
+import { LinearGradient } from 'expo-linear-gradient'
 import UiTouchable from 'ui/Touchable'
 import UiFollowers from 'ui/Followers'
 import UiText from 'ui/Text'

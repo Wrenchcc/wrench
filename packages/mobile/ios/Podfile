@@ -5,6 +5,7 @@ platform :ios, '10.0'
 root_path = "../../../node_modules"
 
 require_relative "#{root_path}/@react-native-community/cli-platform-ios/native_modules"
+require_relative "#{root_path}/react-native-unimodules/cocoapods.rb"
 
 install! 'cocoapods', :deterministic_uuids => false
 
@@ -62,21 +63,10 @@ target 'Wrench' do
   pod 'glog', :podspec => "#{root_path}/react-native/third-party-podspecs/glog.podspec"
   pod 'Folly', :podspec => "#{root_path}/react-native/third-party-podspecs/Folly.podspec"
 
-  # Third party deps podspec link
-  pod 'RNFirebase', :path => "#{root_path}/react-native-firebase/ios"
-
   permissions_path = "#{root_path}/react-native-permissions/ios"
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
   pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
-
-  # TODO: fix autolinking (xcode project?)
-  pod 'react-native-media-library', :path => "#{root_path}/@pontusab/react-native-media-library/ios"
-  pod 'react-native-image-manipulator', :path => "#{root_path}/@pontusab/react-native-image-manipulator/ios"
-  pod 'react-native-device-locale', :path => "#{root_path}/@pontusab/react-native-device-locale/ios"
-  pod 'RNAppleAuthentication', :path => "#{root_path}/@pontusab/react-native-apple-authentication/ios"
-  pod 'react-native-appearance', :path => "#{root_path}/react-native-appearance"
-  pod 'RNDevMenu', :path => "#{root_path}/react-native-dev-menu"
 
   # Required by Facebook
   pod 'FBSDKCoreKit'
@@ -94,6 +84,14 @@ target 'Wrench' do
   pod 'GoogleSignIn'
 
   use_native_modules!
+
+  use_unimodules!(
+    modules_paths: [root_path],
+    exclude: [ 
+      'unimodules-sensors-interface', 
+      'unimodules-task-manager-interface'
+    ]
+  )
   
   # Enables Flipper.
   #

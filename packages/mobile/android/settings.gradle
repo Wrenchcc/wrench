@@ -1,54 +1,9 @@
 rootProject.name = 'Wrench'
 
+apply from: "../../../node_modules/react-native-unimodules/gradle.groovy"
+includeUnimodulesProjects([modulesPaths: ['../../../../node_modules']])
+
 apply from: file("../../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
 applyNativeModulesSettingsGradle(settings)
-
-include ':react-native-image-picker'
-project(':react-native-image-picker').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-image-picker/android')
-include ':react-native-google-signin'
-project(':react-native-google-signin').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-google-signin/android')
-include ':@react-native-community_netinfo'
-project(':@react-native-community_netinfo').projectDir = new File(rootProject.projectDir, '../../../node_modules/@react-native-community/netinfo/android')
-include ':react-native-webview'
-project(':react-native-webview').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-webview/android')
-include ':react-native-linear-gradient'
-project(':react-native-linear-gradient').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-linear-gradient/android')
-include ':react-native-fbsdk'
-project(':react-native-fbsdk').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-fbsdk/android')
-include ':react-native-video'
-project(':react-native-video').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-video/android-exoplayer')
-include ':react-native-camera'
-project(':react-native-camera').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-camera/android')
-include ':react-native-share'
-project(':react-native-share').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-share/android')
-include ':react-native-gesture-handler'
-project(':react-native-gesture-handler').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-gesture-handler/android')
-include ':react-native-reanimated'
-project(':react-native-reanimated').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-reanimated/android')
-include ':react-native-firebase'
-project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-firebase/android')
-include ':react-native-config'
-project(':react-native-config').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-config/android')
-include ':react-native-fast-image'
-project(':react-native-fast-image').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-fast-image/android')
-include ':@react-native-community_async-storage'
-project(':@react-native-community_async-storage').projectDir = new File(rootProject.projectDir, '../../../node_modules/@react-native-community/async-storage/android')
-include ':react-native-splash-screen'
-project(':react-native-splash-screen').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-splash-screen/android')
-project(':react-native-splash-screen').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-splash-screen/android')
-include ':react-native-image-manipulator'
-project(':react-native-image-manipulator').projectDir = new File(rootProject.projectDir, '../../../node_modules/@pontusab/react-native-image-manipulator/android')
-include ':react-native-media-library'
-project(':react-native-media-library').projectDir = new File(rootProject.projectDir, '../../../node_modules/@pontusab/react-native-media-library/android')
-include ':react-native-device-locale'
-project(':react-native-device-locale').projectDir = new File(rootProject.projectDir, '../../../node_modules/@pontusab/react-native-device-locale/android')
-include ':react-native-permissions'
-project(':react-native-permissions').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-permissions/android')
-include ':@sentry_react-native'
-project(':@sentry_react-native').projectDir = new File(rootProject.projectDir, '../../../node_modules/@sentry/react-native/android')
-include ':react-native-appearance'
-project(':react-native-appearance').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-appearance/android')
-include ':app', ':react-native-dev-menu'
-project(':react-native-dev-menu').projectDir = new File(rootProject.projectDir, '../../../node_modules/react-native-dev-menu/android')
 
 include ':app'

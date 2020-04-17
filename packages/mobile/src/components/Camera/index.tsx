@@ -1,15 +1,13 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
-import { TouchableWithoutFeedback, View } from 'react-native'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
-import { RNCamera } from 'react-native-camera'
-import { ActivityIndicator } from 'ui'
+import { Camera as ExpoCamera } from 'expo-camera'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
 import FlashMode from 'components/FlashMode'
 import CameraType from 'components/CameraType'
 import { TakePicture, Wrapper } from './styles'
 
-const { Constants } = RNCamera
+const { Constants } = ExpoCamera
 
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
@@ -19,7 +17,6 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   const [permission, setPermission] = useState(false)
   const [cameraType, setCameraType] = useState(initialCameraType)
   const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
-  const [autofocus, setAutofocus] = useState()
 
   useEffect(() => {
     check(PERMISSION).then(response => {
@@ -30,9 +27,7 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
 
   const takePicture = useCallback(async () => {
     const data = await camera.current.takePictureAsync({
-      orientation: 'portrait',
-      width: 1500,
-      writeExif: false,
+      aspect: [4, 4],
     })
 
     onTakePicture({ ...data, camera: true })
@@ -51,13 +46,6 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
     setCameraType(type)
   }, [cameraType])
 
-  const setFocus = useCallback(({ nativeEvent }) => {
-    setAutofocus({
-      x: nativeEvent.locationX,
-      y: nativeEvent.locationY,
-    })
-  }, [])
-
   const handlePermission = useCallback(() => setPermission(RESULTS.GRANTED), [])
 
   if (isLoading) {
@@ -69,31 +57,21 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   }
 
   return (
-    <TouchableWithoutFeedback onPressIn={setFocus}>
-      <>
-        <RNCamera
-          ref={camera}
-          type={cameraType}
-          flashMode={flashMode}
-          style={{ flex: 1 }}
-          autoFocusPointOfInterest={autofocus}
-          ratio="1:1"
-          pendingAuthorizationView={
-            <View
-              style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}
-            >
-              <ActivityIndicator color="white" />
-            </View>
-          }
-        />
+    <>
+      <ExpoCamera
+        ref={camera}
+        type={cameraType}
+        flashMode={flashMode}
+        style={{ flex: 1 }}
+        ratio="1:1"
+      />
 
-        <CameraType onPress={changeCameraType} />
-        <Wrapper>
-          <TakePicture onPress={takePicture} nativeHandler />
-        </Wrapper>
-        <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
-      </>
-    </TouchableWithoutFeedback>
+      <CameraType onPress={changeCameraType} />
+      <Wrapper>
+        <TakePicture onPress={takePicture} nativeHandler />
+      </Wrapper>
+      <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
+    </>
   )
 }
 

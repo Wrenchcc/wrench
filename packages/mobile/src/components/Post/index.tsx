@@ -168,6 +168,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
   const handleActionSheet = useCallback(() => {
     if (post.permissions.isOwner) {
       const options = [t('Post:options:edit'), t('Post:options:delete'), t('Post:options:cancel')]
+
       showActionSheetWithOptions(
         {
           options,
