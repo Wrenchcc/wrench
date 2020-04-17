@@ -182,3 +182,6 @@
 -keepclassmembers public class * extends android.support.v4.app.Fragment {
    public <init>(...);
 }
+
+-keep class com.facebook.hermes.unicode.** { *; }
+-keep class com.facebook.jni.** { *; }
