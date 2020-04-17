@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
-import { Camera as RNCamera } from 'expo-camera'
-import { ActivityIndicator } from 'ui'
+import { Camera as ExpoCamera } from 'expo-camera'
 import { isIphone } from 'utils/platform'
 import AskForPermission from 'components/AskForPermission'
 import FlashMode from 'components/FlashMode'
 import CameraType from 'components/CameraType'
 import { TakePicture, Wrapper } from './styles'
 
-const { Constants } = RNCamera
+const { Constants } = ExpoCamera
 
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
@@ -61,17 +60,12 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
 
   return (
     <>
-      <RNCamera
+      <ExpoCamera
         ref={camera}
         type={cameraType}
         flashMode={flashMode}
         style={{ flex: 1 }}
         ratio="1:1"
-        // pendingAuthorizationView={
-        //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: -60 }}>
-        //     <ActivityIndicator color="white" />
-        //   </View>
-        // }
       />
 
       <CameraType onPress={changeCameraType} />

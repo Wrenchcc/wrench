@@ -183,7 +183,7 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
   - GoogleDataTransport (5.1.1)
-  - GoogleDataTransportCCTSupport (2.0.2):
+  - GoogleDataTransportCCTSupport (2.0.3):
     - GoogleDataTransport (~> 5.1)
     - nanopb (~> 0.3.901)
   - GoogleSignIn (5.0.2):
@@ -233,11 +233,11 @@ PODS:
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
-  - Permission-Camera (2.1.0):
+  - Permission-Camera (2.1.2):
     - RNPermissions
-  - Permission-Microphone (2.1.0):
+  - Permission-Microphone (2.1.2):
     - RNPermissions
-  - Permission-PhotoLibrary (2.1.0):
+  - Permission-PhotoLibrary (2.1.2):
     - RNPermissions
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
@@ -422,7 +422,7 @@ PODS:
   - react-native-fbsdk/Share (1.1.2):
     - FBSDKShareKit (= 5.8)
     - React
-  - react-native-netinfo (5.7.0):
+  - react-native-netinfo (5.7.1):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -433,7 +433,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (9.1.4):
+  - react-native-webview (9.2.1):
     - React
   - React-RCTActionSheet (0.62.2):
     - React-Core/RCTActionSheetHeaders (= 0.62.2)
@@ -518,9 +518,9 @@ PODS:
   - RNGoogleSignin (2.1.1):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.1.0):
+  - RNPermissions (2.1.2):
     - React
-  - RNReanimated (1.8.0):
+  - RNReanimated (1.4.0):
     - React
   - RNSentry (1.3.7):
     - React
@@ -870,7 +870,7 @@ SPEC CHECKSUMS:
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   GoogleAppMeasurement: e49be3954045b17d046f271b9cc1ec052bad9702
   GoogleDataTransport: 6ffa4dd0b6d547f8d27b91bd92fa9e197a3f5f1f
-  GoogleDataTransportCCTSupport: 12f02e5c8f09c055615de90bcd5ba2c375546051
+  GoogleDataTransportCCTSupport: 2d7e609f8c5af1a33d7d59053e6f8cba59365df5
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
@@ -878,9 +878,9 @@ SPEC CHECKSUMS:
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
-  Permission-Camera: 1e569ca13fe65357c0ad22776b1f3ce81586c488
-  Permission-Microphone: 9cddaaf3b9c097126fe4a2e29f29cb06e6437a7c
-  Permission-PhotoLibrary: 8791df0255cb31825f051b7f5826dac21b9c21fd
+  Permission-Camera: ebdba00e6926aface672cc547b19fa317c3d956e
+  Permission-Microphone: 49b2fe2f5db61aef24488d1155447534a9fc8aa4
+  Permission-PhotoLibrary: e29736d903e867d278747eb30951528303425f64
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   RCTRequired: cec6a34b3ac8a9915c37e7e4ad3aa74726ce4035
@@ -895,11 +895,11 @@ SPEC CHECKSUMS:
   react-native-appearance: 98e4530857c366de634f58e5db91bf97feaa96ff
   react-native-config: 7db9b96479164dfd7b2be68eb9079e08279511c4
   react-native-fbsdk: c35d42169e64aaf66f01713c1e18d0674f7f6519
-  react-native-netinfo: becc6dd2bb2335aa85a8adbaefc8e206125e6177
+  react-native-netinfo: 4fa023c153d582aeae8435df95c9a975c5986449
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 8315502f9fd22b98c09c9832fd1181ef88c33667
+  react-native-webview: 9fb615251c147d1b94157b31fa0ea9c68b234c04
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
   React-RCTBlob: a332773f0ebc413a0ce85942a55b064471587a71
@@ -916,8 +916,8 @@ SPEC CHECKSUMS:
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
-  RNPermissions: 48da5fbe2d85ed8d29c7e623576fc4632054f800
-  RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
+  RNPermissions: a96580116f7894146552e92b000ac30bf1661947
+  RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: 370623102247ebea20191b5fb549ecc7a275b324
   RNShare: 13f1b72aab353c3092b30dce99d212871bb2a8a1
   SDWebImage: d9ea4959d99c52276dfada481987018fcaea3d58

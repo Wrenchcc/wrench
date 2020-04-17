@@ -4,6 +4,7 @@ import { useCurrentUserQuery, useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import * as ImagePicker from 'expo-image-picker'
 import { useActionSheet } from '@expo/react-native-action-sheet'
+import { request, PERMISSIONS } from 'react-native-permissions'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
 import { useUserStore, useToastStore, USER } from 'store'
@@ -13,7 +14,10 @@ import { close } from 'images'
 import { FILE_TYPES, TOAST_TYPES } from 'utils/enums'
 import uploadAsync from 'utils/storage/uploadAsync'
 import { useDynamicColor } from 'utils/hooks'
+import { isIphone } from 'utils/platform'
 import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon, Location } from './styles'
+
+const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
 const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
@@ -172,9 +176,17 @@ function EditProfile({ onboarding }) {
       },
       async index => {
         if (index === 0) {
+          await request(PERMISSION, {
+            title: t('EditProfile:imagePickerPermissionTitle'),
+            message: t('EditProfile:imagePickerPermissionText'),
+            buttonNeutral: t('EditProfile:imagePickerPermissionRetry'),
+            buttonPositive: t('EditProfile:imagePickerPermissionOk'),
+          })
+
           const res = await ImagePicker.launchCameraAsync({
             aspect: [4, 4],
           })
+
           if (!res.cancelled) {
             update(USER.AVATAR_URL, res.uri)
             const { data } = await preSignUrl({
@@ -203,13 +215,6 @@ function EditProfile({ onboarding }) {
         }
       }
     )
-
-    //     permissionDenied: {
-    //       title: t('EditProfile:imagePickerPermissionTitle'),
-    //       text: t('EditProfile:imagePickerPermissionText'),
-    //       reTryTitle: t('EditProfile:imagePickerPermissionRetry'),
-    //       okTitle: t('EditProfile:imagePickerPermissionOk'),
-    //     },
   }, [])
 
   return (
