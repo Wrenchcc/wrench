@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import ActivityIndicator from 'ui/ActivityIndicator'
 
-function Loader({ size = 'small', color = 'inverse', padding = 32, inset }) {
+function Loader({ size = 'small', color = 'inverse', padding = 32, inset = 0 }) {
   return (
     <View
       pointerEvents="none"
