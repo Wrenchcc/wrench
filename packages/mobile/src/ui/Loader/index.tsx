@@ -11,7 +11,7 @@ function Loader({ size = 'small', color = 'inverse', padding = 32, inset }) {
         flex: 1,
         justifyContent: 'center',
         padding,
-        marginTop: inset,
+        marginTop: -inset,
       }}
     >
       <ActivityIndicator size={size} color={color} />

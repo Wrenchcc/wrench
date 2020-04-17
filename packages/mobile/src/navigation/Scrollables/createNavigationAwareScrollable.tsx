@@ -113,8 +113,8 @@ export default function createNavigationAwareScrollable(Component) {
           )
         }
         initialNumToRender={initialNumToRender}
-        ListFooterComponent={hasNextPage && renderLoader(false, loaderInset)}
-        ListEmptyComponent={initialFetch ? renderLoader(true, loaderInset) : ListEmptyComponent}
+        ListFooterComponent={hasNextPage && renderLoader(loaderInset)}
+        ListEmptyComponent={initialFetch ? renderLoader(loaderInset) : ListEmptyComponent}
         contentInsetAdjustmentBehavior="never"
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"
