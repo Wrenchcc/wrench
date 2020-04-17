@@ -92,15 +92,7 @@ target 'Wrench' do
 
   use_unimodules!(
     modules_paths: [root_path],
-    exclude: [
-      # 'expo-constants', 
-      # 'expo-image-loader', 
-      # 'expo-file-system', 
-      # 'unimodules-barcode-scanner-interface', 
-      # 'unimodules-constants-interface', 
-      # 'unimodules-face-detector-interface', 
-      # 'unimodules-file-system-interface', 
-      # 'unimodules-image-loader-interface', 
+    exclude: [ 
       'unimodules-sensors-interface', 
       'unimodules-task-manager-interface'
     ]

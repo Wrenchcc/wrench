@@ -15,6 +15,7 @@
 		485DD1115132424A8A015872 /* inter_ui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */; };
 		71B31E1FE5BC847380864790 /* libPods-Wrench.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE884EF522CA1F6927430315 /* libPods-Wrench.a */; };
 		D2002BDB2395A01800BF4AD8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2002BDA2395A01800BF4AD8 /* File.swift */; };
+		D21FAE152449C104005868E7 /* MediaLibraryImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */; };
 		D2F146282200A9B000E8A474 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2F146272200A9B000E8A474 /* GoogleService-Info.plist */; };
 		D2F146A22200B0D100E8A474 /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = D2F146A12200B0D000E8A474 /* notification.aiff */; };
 		DF645E3F3A51435396A73CDF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B64C1CCF164695A4C09BB9 /* libz.tbd */; };
@@ -38,6 +39,8 @@
 		94F177B08D61476794C558FF /* inter_ui_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui_medium.ttf; path = ../assets/fonts/inter_ui_medium.ttf; sourceTree = "<group>"; };
 		D2002BD723959FD800BF4AD8 /* Wrench-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wrench-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2002BDA2395A01800BF4AD8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D21FAE132449C104005868E7 /* MediaLibraryImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaLibraryImageLoader.h; path = Wrench/MediaLibraryImageLoader.h; sourceTree = "<group>"; };
+		D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MediaLibraryImageLoader.m; path = Wrench/MediaLibraryImageLoader.m; sourceTree = "<group>"; };
 		D22319F722009AC40067C6BD /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		D2BE134923350B5E007C0449 /* WrenchRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WrenchRelease.entitlements; path = Wrench/WrenchRelease.entitlements; sourceTree = "<group>"; };
 		D2E5195F234486670097E08B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D21FAE132449C104005868E7 /* MediaLibraryImageLoader.h */,
+				D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				D2002BDB2395A01800BF4AD8 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				D21FAE152449C104005868E7 /* MediaLibraryImageLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
