@@ -2821,19 +2821,6 @@
   dependencies:
     serve-static "^1.13.1"
 
-"@react-native-community/cli-platform-android@3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-3.0.3.tgz#e652abce79a7c1e3a8280228123e99df2c4b97b6"
-  integrity sha512-rNO9DmRiVhB6aP2DVUjEJv7ecriTARDZND88ny3xNVUkrD1Y+zwF6aZu3eoT52VXOxLCSLiJzz19OiyGmfqxYg==
-  dependencies:
-    "@react-native-community/cli-tools" "^3.0.0"
-    chalk "^2.4.2"
-    execa "^1.0.0"
-    jetifier "^1.6.2"
-    logkitty "^0.6.0"
-    slash "^3.0.0"
-    xmldoc "^1.1.2"
-
 "@react-native-community/cli-platform-android@^3.0.0":
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-3.1.4.tgz#61f964dc311623e60b0fb29c5f3732cc8a6f076f"
@@ -10321,7 +10308,7 @@ expo-constants@~9.0.0:
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-9.0.0.tgz#35c600079ee91d38fe4f56375caae6e90f122fdd"
   integrity sha512-1kqZMM8Ez5JT3sTEx8I69fP6NYFLOJjeM6Z63dD/m2NiwvzSADiO5+BhghnWNGN1L3bxbgOjXS6EHtS7CdSfxA==
 
-expo-file-system@^8.1.0, expo-file-system@~8.1.0:
+expo-file-system@~8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-8.1.0.tgz#d6aa66fa32c19982b94d0013f963c5ee972dfd6d"
   integrity sha512-xb4roeU8CotW8t3LkmsrliNbgFpY2KB+3sW1NnujnH39pFVwCd/kfujCYzRauj8aUy/HhSq+3xGkQTpC7pSjVw==
