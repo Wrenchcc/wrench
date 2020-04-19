@@ -1,10 +1,15 @@
 import React, { useCallback } from 'react'
+import { Dimensions } from 'react-native'
 import { useFollowProjectMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { useResponsiveHeight } from 'react-native-responsive-dimensions'
 import Image from 'ui/Image'
 import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
+
+const { width } = Dimensions.get('window')
+
+const IMAGE_WIDTH = width - 40
 
 function ProjectCard({ onPress, onFollow, project, style }) {
   const { t } = useTranslation()
@@ -50,7 +55,7 @@ function ProjectCard({ onPress, onFollow, project, style }) {
         {!project.cover.default && (
           <Overlay colors={['transparent', 'rgba(000, 000, 000, 0.7)']} locations={[0, 1]} />
         )}
-        <Image source={project.cover} height={height} />
+        <Image source={project.cover} height={height} width={IMAGE_WIDTH} />
 
         <Content>
           <Info>
