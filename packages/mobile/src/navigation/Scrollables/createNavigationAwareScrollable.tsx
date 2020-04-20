@@ -13,7 +13,7 @@ const keyboardDismissProp = isAndroid
   ? { onMomentumScrollBegin: Keyboard.dismiss }
   : { keyboardDismissMode: 'on-drag' }
 
-const renderLoader = loaderInset => <Loader inset={loaderInset} />
+const renderLoader = (loaderInset) => <Loader inset={loaderInset} />
 const BorderSeparator = () => <Border />
 
 const keyExtractor = ({ node }) => node.id
@@ -33,7 +33,7 @@ export default function createNavigationAwareScrollable(Component) {
       initialNumToRender = 10,
       paddingHorizontal = 20,
       extraContentInset = 0,
-      loaderInset = CONTENT_INSET,
+      loaderInset = 0,
       paddingBottom,
       ...props
     },
@@ -57,7 +57,7 @@ export default function createNavigationAwareScrollable(Component) {
         UIManager.viewIsDescendantOf(
           currentlyFocusedField,
           scrollResponder.getInnerViewNode(),
-          isAncestor => {
+          (isAncestor) => {
             if (isAncestor) {
               scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
                 currentlyFocusedField,
@@ -78,7 +78,7 @@ export default function createNavigationAwareScrollable(Component) {
     }, [hasNextPage, isRefetching, isFetching, fetchMore])
 
     const setRef = useCallback(
-      c => {
+      (c) => {
         if (ref) {
           ref.current = c
         }
@@ -114,7 +114,7 @@ export default function createNavigationAwareScrollable(Component) {
         }
         initialNumToRender={initialNumToRender}
         ListFooterComponent={hasNextPage && renderLoader(loaderInset)}
-        ListEmptyComponent={initialFetch ? renderLoader(loaderInset) : ListEmptyComponent}
+        ListEmptyComponent={initialFetch ? renderLoader(CONTENT_INSET) : ListEmptyComponent}
         contentInsetAdjustmentBehavior="never"
         automaticallyAdjustContentInsets={false}
         keyboardShouldPersistTaps="always"

@@ -10,6 +10,12 @@ import { createDeepLinkingHandler } from 'utils/dynamicLinks'
 import { updateNotificationToken } from 'utils/pushNotifications/register'
 
 import createClient from 'gql/client'
+import { SCREENS } from 'navigation/constants'
+
+// NOTE: Register early
+Navigation.registerComponent(SCREENS.INITIALIZING, () =>
+  HOC(register({ require: () => require('navigation/Initializing') }))
+)
 
 Navigation.events().registerAppLaunchedListener(async () => {
   const client = await createClient()

@@ -40,7 +40,7 @@
     "ms": "^2.1.2",
     "rambda": "^5.1.0",
     "react": "16.13",
-    "react-i18next": "^11.3.4",
+    "react-i18next": "^11.3.5",
     "react-native": "^0.62.2",
     "react-native-appearance": "^0.3.3",
     "react-native-bundle-splitter": "^1.0.7",

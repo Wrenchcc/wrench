@@ -9,9 +9,6 @@ const PROGRESS_COLOR = '#E1E1E2'
 
 const density = PixelRatio.get()
 
-const OLD_CDN = 'https://edge-files.wrench.cc'
-const CDN_ENDPOINT = 'https://d3iwj6zs5f9xbz.cloudfront.net'
-
 function Image({
   width,
   height,
@@ -32,20 +29,6 @@ function Image({
   if (!source.uri) {
     return null
   }
-
-  const uri = `${source.uri.replace(
-    OLD_CDN,
-    `${CDN_ENDPOINT}/unsafe/fit/${Math.round(width * density)}/${Math.round(
-      height * density
-    )}/no/0/plain/s3://wrench-files`
-  )}@webp`
-
-  const placeholder = `${source.uri.replace(
-    OLD_CDN,
-    `${CDN_ENDPOINT}/unsafe/fit/${Math.round(width / placeholderDensity)}/${Math.round(
-      height / placeholderDensity
-    )}/no/0/plain/s3://wrench-files`
-  )}@webp`
 
   const handleLoadStart = () => {
     if (showIndicator && !loading && progress !== 1) {
@@ -75,6 +58,12 @@ function Image({
       }
     }
   }
+
+  const uri = `${source.uri}?w=${width}&h=${height}&dpr=${density}&webp=1`
+
+  const placeholder = `${source.uri}?w=${Math.round(width / placeholderDensity)}&h=${Math.round(
+    height / placeholderDensity
+  )}&dpr=1`
 
   return (
     <Base

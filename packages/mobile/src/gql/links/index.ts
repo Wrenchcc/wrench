@@ -5,6 +5,7 @@ import OfflineLink from './Offline'
 import RefreshTokenLink from './RefreshToken'
 import RetryLink from './Retry'
 import AnalyticsLink from './Analytics'
+import VersionLink from './Version'
 
 export default ApolloLink.from([
   RetryLink,
@@ -12,5 +13,6 @@ export default ApolloLink.from([
   AuthLink,
   RefreshTokenLink,
   AnalyticsLink,
+  VersionLink,
   HttpLink,
 ])
