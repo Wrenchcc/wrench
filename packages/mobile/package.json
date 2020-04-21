@@ -36,7 +36,7 @@
     "expo-media-library": "^8.1.0",
     "expo-store-review": "^2.1.0",
     "human-format": "^0.10.1",
-    "i18next": "^19.4.2",
+    "i18next": "^19.4.3",
     "ms": "^2.1.2",
     "rambda": "^5.1.0",
     "react": "16.13",

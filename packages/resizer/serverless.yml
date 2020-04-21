@@ -1,0 +1,27 @@
+service:
+  name: resize
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  region: us-east-1 # Lambda@Edge restriction
+  runtime: nodejs12.x # Lambda@Edge restriction
+
+layers:
+  sharp:
+    path: layers/sharp # for native Node.js Add-on
+
+custom:
+  webpack:
+    packager: yarn
+    includeModules:
+      forceExclude:
+        - sharp # included in the layer
+
+functions:
+  OriginResponse:
+    handler: src/handler.originResponse
+    layers:
+      - Ref: SharpLambdaLayer
