@@ -6,7 +6,7 @@ import { Base } from './styles'
 function Footer() {
   return (
     <Base>
-      <Text fontSize={15} color="subtle">
+      <Text fontSize={15} color="accent">
         {AppVersion}
       </Text>
     </Base>
