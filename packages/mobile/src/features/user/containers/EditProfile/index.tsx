@@ -46,7 +46,7 @@ function EditProfile({ onboarding }) {
     lastName,
     website,
     username,
-  } = useUserStore(store => ({
+  } = useUserStore((store) => ({
     initialState: store.actions.initialState,
     update: store.actions.update,
     avatarUrl: store.avatarUrl,
@@ -70,14 +70,14 @@ function EditProfile({ onboarding }) {
     },
   })
 
-  const toastActions = useToastStore(store => store.actions)
+  const toastActions = useToastStore((store) => store.actions)
 
   useEffect(() => {
     initialState(data?.user)
   }, [initialState, data])
 
   const handleBio = useCallback(
-    text => {
+    (text) => {
       if (text.length <= MAX_CHARACTERS) {
         update(USER.BIO, text)
       }
@@ -174,7 +174,7 @@ function EditProfile({ onboarding }) {
         cancelButtonIndex: 3,
         tintColor: dynamicColor,
       },
-      async index => {
+      async (index) => {
         if (index === 0) {
           await request(PERMISSION, {
             title: t('EditProfile:imagePickerPermissionTitle'),
@@ -262,7 +262,7 @@ function EditProfile({ onboarding }) {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:firstName')}
-                onChangeText={value => update(USER.FIRST_NAME, value)}
+                onChangeText={(value) => update(USER.FIRST_NAME, value)}
                 value={firstName}
                 error={firstName.length === 0}
               />
@@ -272,7 +272,7 @@ function EditProfile({ onboarding }) {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:lastName')}
-                onChangeText={value => update(USER.LAST_NAME, value)}
+                onChangeText={(value) => update(USER.LAST_NAME, value)}
                 value={lastName}
                 error={lastName.length === 0}
               />
@@ -282,7 +282,7 @@ function EditProfile({ onboarding }) {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:username')}
-                onChangeText={value => update(USER.USERNAME, value)}
+                onChangeText={(value) => update(USER.USERNAME, value)}
                 value={username}
                 error={username.length === 0}
               />
@@ -302,7 +302,7 @@ function EditProfile({ onboarding }) {
 
               <CloseIcon
                 source={close}
-                color="subtle"
+                color="accent"
                 width={12}
                 height={12}
                 onPress={() => update(USER.LOCATION, '')}
@@ -317,7 +317,7 @@ function EditProfile({ onboarding }) {
                 onChangeText={handleBio}
                 style={{ paddingRight: 55 }}
               />
-              <Counter color="subtle" fontSize={15}>
+              <Counter color="accent" fontSize={15}>
                 {`${bio ? bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
             </Row>
@@ -328,7 +328,7 @@ function EditProfile({ onboarding }) {
                 placeholder={t('EditProfile:website')}
                 keyboardType="url"
                 textContentType="URL"
-                onChangeText={value => update(USER.WEBSITE, value)}
+                onChangeText={(value) => update(USER.WEBSITE, value)}
                 value={website}
                 autoCorrect={false}
               />

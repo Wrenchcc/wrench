@@ -3,7 +3,7 @@ export { events } from './events'
 
 analytics().setAnalyticsCollectionEnabled(!__DEV__)
 
-export const trackScreen = screenName => {
+export const trackScreen = (screenName) => {
   analytics().setCurrentScreen(screenName)
 }
 

@@ -1,28 +1,37 @@
 {
-  "name": "@wrench/resizer",
+  "name": "@wrench/resize",
   "version": "1.0.0",
   "main": "handler.js",
   "private": true,
   "scripts": {
-    "deploy": "serverless deploy --stage production --aws-profile default",
-    "build": "webpack"
+    "install:all": "yarn; yarn install:layer",
+    "install:layer": "cd layers/sharp; yarn",
+    "build": "sls package",
+    "deploy": "sls deploy --stage production"
   },
   "dependencies": {
-    "sharp": "^0.24.1"
+    "serverless": "^1.67.3",
+    "sharp": "^0.25.2",
+    "source-map-support": "^0.5.17"
   },
   "devDependencies": {
-    "@types/aws-lambda": "8.10.43",
-    "@types/node": "^13.7.4",
-    "@types/sharp": "^0.24.0",
-    "aws-sdk": "^2.623.0",
+    "@types/aws-lambda": "8.10.1",
+    "@types/node": "^8.0.57",
+    "@types/sharp": "^0.17.9",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.19.2",
+    "aws-sdk": "^2.279.1",
+    "eslint": "^6.8.0",
+    "eslint-config-standard-with-typescript": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "prettier": "^1.19.1",
-    "serverless": "^1.64.0",
-    "serverless-webpack": "^5.3.1",
-    "ts-loader": "^6.2.1",
-    "tslint": "^6.0.0",
-    "typescript": "^3.8.2",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
+    "serverless-webpack": "^5.1.1",
+    "ts-loader": "^4.2.0",
+    "typescript": "^3.7.5",
+    "webpack": "^4.5.0",
     "webpack-node-externals": "^1.7.2"
   }
 }

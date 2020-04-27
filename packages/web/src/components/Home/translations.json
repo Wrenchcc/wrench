@@ -1,16 +1,16 @@
 {
   "home": {
     "en": {
-      "title": "Post, explore",
-      "subtitle": "and learn.",
-      "description": "Post your projects, explore others and learn from each other.",
+      "title": "Your motorcycle",
+      "subtitle": "community.",
+      "description": "Document your builds, share your projects & learn from like-minded.",
       "explore": "Explore more projects",
       "signup": "Sign up now"
     },
     "sv": {
-      "title": "Posta, utforska",
-      "subtitle": "och lär.",
-      "description": "Dela dina project, kolla på andra, diskutera och lär av varandra.",
+      "title": "Din motorcykel",
+      "subtitle": "community.",
+      "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
       "explore": "Upptäck fler projekt",
       "signup": "Registrera dig"
     }

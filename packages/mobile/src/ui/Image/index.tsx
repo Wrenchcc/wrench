@@ -49,7 +49,7 @@ function Image({
     }
   }
 
-  const handleProgress = evt => {
+  const handleProgress = (evt) => {
     if (showIndicator) {
       const loaded = evt.nativeEvent.loaded / evt.nativeEvent.total
       if (loaded !== progress && progress !== 1) {

@@ -55,7 +55,7 @@ function Onboarding({ settingsPage }) {
     return false
   }
 
-  const toggleSelection = item => {
+  const toggleSelection = (item) => {
     if (items[item.id]) {
       setItems(omit([item.id]))
     } else {
@@ -69,7 +69,7 @@ function Onboarding({ settingsPage }) {
   const handleSubmit = async () => {
     setIsSaving(true)
     track(events.USER_ONBOARDING_CATEGORIES_DONE)
-    const interestedIn = Object.keys(items).map(id => ({ id }))
+    const interestedIn = Object.keys(items).map((id) => ({ id }))
 
     await editUser({
       variables: {
@@ -136,6 +136,7 @@ function Onboarding({ settingsPage }) {
       }
     >
       <FlatList
+        paddingBottom={70}
         paddingHorizontal={10}
         ListHeaderComponent={!settingsPage && <Content />}
         ListEmptyComponent={loading && <Loader />}

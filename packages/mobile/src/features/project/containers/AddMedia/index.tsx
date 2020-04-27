@@ -29,7 +29,7 @@ function AddMedia() {
     selectedFiles,
     addFiles,
     reset,
-  } = usePostStore(store => ({
+  } = usePostStore((store) => ({
     addFiles: store.actions.addFiles,
     hasSelectedFiles: store.selectedFiles.length > 0,
     onEdit: store.actions.onEdit,
@@ -63,7 +63,7 @@ function AddMedia() {
           cancelButtonIndex: 1,
           tintColor: dynamicColor,
         },
-        index => {
+        (index) => {
           if (index === 0) {
             dismissModal()
             reset()

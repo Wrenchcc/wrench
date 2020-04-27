@@ -181,8 +181,8 @@
       "decline": "No thanks"
     },
     "SignIn": {
-      "headline": "Post, \nexplore \nand learn.",
-      "description": "Post your projects, watch others, discuss and learn together.",
+      "headline": "Your \nmotorcycle \ncommunity.",
+      "description": "Document your builds, share your projects & learn from like-minded.",
       "other": "Other sign in options"
     },
     "EditButton": {
@@ -555,8 +555,8 @@
       "decline": "Nej tack"
     },
     "SignIn": {
-      "headline": "Posta, \nutforska \noch lär.",
-      "description": "Dela dina projekt, följ andras, diskutera och lär av varandra.",
+      "headline": "Din, \nmotorcykel \ncommunity.",
+      "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
       "other": "Andra inloggningsalternativ"
     },
     "EditButton": {

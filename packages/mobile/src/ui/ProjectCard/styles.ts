@@ -7,8 +7,9 @@ import UiButton from 'ui/Button'
 
 export const Base = styled(UiTouchable)`
   margin-top: 20px;
-  height: ${props => props.height}px;
+  height: ${(props) => props.height}px;
   position: relative;
+  overflow: hidden;
 `
 
 export const Overlay = styled(LinearGradient)`

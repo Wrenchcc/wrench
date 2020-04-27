@@ -3,6 +3,7 @@ import { FlatList, Keyboard } from 'react-native'
 import { isAndroid } from 'utils/platform'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
+import { CONTENT_INSET } from 'navigation/constants'
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid
@@ -27,7 +28,7 @@ function InfiniteList({
   isRefetching,
   ListEmptyComponent,
   initialNumToRender = 10,
-  loaderInset,
+  loaderInset = CONTENT_INSET,
   androidDismissKeyboard = true,
   ...props
 }) {

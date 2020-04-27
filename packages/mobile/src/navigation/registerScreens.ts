@@ -6,9 +6,6 @@ import createScreenHoc from './createScreenHoc'
 export default function registerScreens(client) {
   const HOC = createScreenHoc(client)
 
-  Navigation.registerComponent(SCREENS.INITIALIZING, () =>
-    HOC(register({ require: () => require('./Initializing') }))
-  )
   Navigation.registerComponent(SCREENS.EMPTY, () => () => null)
   Navigation.registerComponent(SCREENS.MENTION, () =>
     HOC(register({ require: () => require('components/Mention') }))
