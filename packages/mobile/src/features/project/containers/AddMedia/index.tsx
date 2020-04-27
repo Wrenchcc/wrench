@@ -9,7 +9,7 @@ import { useDynamicColor } from 'utils/hooks'
 import { close } from 'images'
 import { logError } from 'utils/sentry'
 import Camera from 'components/Camera'
-import ImageEditor from 'components/ImageEditor2'
+import ImageEditor from 'components/ImageEditor'
 import MediaPicker from 'components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
 import { Base } from './styles'
@@ -29,7 +29,7 @@ function AddMedia() {
     selectedFiles,
     addFiles,
     reset,
-  } = usePostStore(store => ({
+  } = usePostStore((store) => ({
     addFiles: store.actions.addFiles,
     hasSelectedFiles: store.selectedFiles.length > 0,
     onEdit: store.actions.onEdit,
@@ -63,7 +63,7 @@ function AddMedia() {
           cancelButtonIndex: 1,
           tintColor: dynamicColor,
         },
-        index => {
+        (index) => {
           if (index === 0) {
             dismissModal()
             reset()
