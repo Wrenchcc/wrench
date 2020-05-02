@@ -8,7 +8,7 @@ import { AuthNavigation } from 'navigation'
 
 export let client = null
 
-export default async function createClient() {
+export default function createClient() {
   const cache = new InMemoryCache()
 
   client = new ApolloClient({

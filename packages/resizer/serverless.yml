@@ -1,27 +1,26 @@
-service:
-  name: resize
+service: 'resizer'
 
 plugins:
   - serverless-webpack
 
 provider:
   name: aws
-  region: us-east-1 # Lambda@Edge restriction
-  runtime: nodejs12.x # Lambda@Edge restriction
-
-layers:
-  sharp:
-    path: layers/sharp # for native Node.js Add-on
+  region: us-east-1
+  runtime: nodejs12.x
+  deploymentBucket: wrench-image-resizer
+  memorySize: 2048
 
 custom:
   webpack:
-    packager: yarn
     includeModules:
       forceExclude:
-        - sharp # included in the layer
+        - aws-sdk
+        - serverless
+    packager: 'yarn'
+    packagerOptions:
+      scripts:
+        - npm rm sharp && npm install --arch=x64 --platform=linux sharp
 
 functions:
   OriginResponse:
-    handler: src/handler.originResponse
-    layers:
-      - Ref: SharpLambdaLayer
+    handler: handler.originResponse
