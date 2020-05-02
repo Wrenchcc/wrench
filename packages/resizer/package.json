@@ -1,23 +1,19 @@
 {
-  "name": "@wrench/resize",
+  "name": "@wrench/resizer",
   "version": "1.0.0",
   "main": "handler.js",
   "private": true,
   "scripts": {
-    "install:all": "yarn; yarn install:layer",
-    "install:layer": "cd layers/sharp; yarn",
-    "build": "sls package",
-    "deploy": "sls deploy --stage production"
+    "deploy": "sls deploy --stage production",
+    "build": "sls package"
   },
   "dependencies": {
-    "serverless": "^1.67.3",
-    "sharp": "^0.25.2",
-    "source-map-support": "^0.5.17"
+    "sharp": "^0.25.2"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.1",
-    "@types/node": "^8.0.57",
-    "@types/sharp": "^0.17.9",
+    "@types/node": "^13.13.4",
+    "@types/sharp": "^0.25.0",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.19.2",
     "aws-sdk": "^2.279.1",

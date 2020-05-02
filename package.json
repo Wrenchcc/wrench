@@ -4,7 +4,8 @@
   "private": true,
   "workspaces": {
     "nohoist": [
-      "**/react-native-bundle-splitter"
+      "**/react-native-bundle-splitter",
+      "**/sharp"
     ],
     "packages": [
       "packages/*"

@@ -1,10 +1,17 @@
 import { register } from 'react-native-bundle-splitter'
 import { Navigation } from 'react-native-navigation'
+import createClient from 'gql/client'
 import { SCREENS } from './constants'
 import createScreenHoc from './createScreenHoc'
 
-export default function registerScreens(client) {
+export default function registerScreens() {
+  const client = createClient()
+
   const HOC = createScreenHoc(client)
+
+  Navigation.registerComponent(SCREENS.INITIALIZING, () =>
+    register({ require: () => require('navigation/Initializing') })
+  )
 
   Navigation.registerComponent(SCREENS.EMPTY, () => () => null)
   Navigation.registerComponent(SCREENS.MENTION, () =>
