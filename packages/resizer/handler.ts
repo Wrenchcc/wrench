@@ -20,6 +20,7 @@ const parseQuery = (queryString: string): Query => {
 }
 
 type S3Object = S3.GetObjectOutput
+
 const s3 = new S3()
 
 // destructive
@@ -37,6 +38,7 @@ const resizeS3Image = async <T extends CloudFrontResultResponse>({
       .then((data) => data.Body)
       .then(Buffer.from)
       .then(resize(query))
+
     // response resized image
     const encoding = 'base64'
     result.body = buffer.toString(encoding)
@@ -50,6 +52,13 @@ const resizeS3Image = async <T extends CloudFrontResultResponse>({
         },
       ]
     }
+
+    result.headers['cache-control'] = [
+      {
+        key: 'Cache-Control',
+        value: 'public, max-age=31536000',
+      },
+    ]
 
     return result
   } catch (e) {
@@ -83,6 +92,7 @@ export const originResponse: CloudFrontResponseHandler = async ({
   const result = response as CloudFrontResultResponse
 
   const isJpeg = response.headers['content-type'].map(({ value }) => value).includes('image/jpeg')
+
   if (!isJpeg) {
     // response original
     return response
@@ -112,6 +122,7 @@ export const originResponse: CloudFrontResponseHandler = async ({
   }
 
   const query = parseQuery(querystring)
+
   console.debug({ query })
 
   const {
@@ -124,6 +135,7 @@ export const originResponse: CloudFrontResponseHandler = async ({
   }
   const bucket = hostname.replace(domainRegex, '')
   const key = uri.slice(1) // remove first `/`
+
   console.log('S3 URI:', `s3://${bucket}${uri}`)
 
   const s3Object = s3
