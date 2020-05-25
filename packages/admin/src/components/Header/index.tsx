@@ -26,7 +26,7 @@ function Header() {
   return (
     <Base>
       <Link to="/">
-        <img src={require('./logo.svg')} />
+        <img src={require('./logo.svg')} alt="logo" />
       </Link>
       <Title>Admin</Title>
     </Base>

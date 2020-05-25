@@ -83,6 +83,7 @@ function EditPost({ id }) {
             src={node.uri}
             style={{ width: 390, height: 390, display: 'block' }}
             onLoad={() => setLoading(false)}
+            alt=""
           />
         ))}
       </Row>
@@ -91,7 +92,7 @@ function EditPost({ id }) {
         <Input
           value={settings.caption}
           placeholder="Caption"
-          onChange={caption => updateField('caption', caption)}
+          onChange={(caption) => updateField('caption', caption)}
         />
       </Row>
       {isOpen && (

@@ -51,7 +51,7 @@ function Actions({ component, onDelete }) {
   return (
     <Base ref={ref}>
       <Button onClick={handleToggle}>
-        <img src={require('./dots.svg')} style={{ width: 25, marginTop: -10 }} />
+        <img src={require('./dots.svg')} style={{ width: 25, marginTop: -10 }} alt="Open" />
       </Button>
 
       {isOpen && (
@@ -78,7 +78,7 @@ function Actions({ component, onDelete }) {
               setOpenPanel(false)
             }}
           >
-            <img src={require('./close.svg')} />
+            <img src={require('./close.svg')} alt="Close" />
           </Close>
           <Inner>{component}</Inner>
         </div>
