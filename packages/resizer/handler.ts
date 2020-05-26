@@ -11,6 +11,7 @@ const parseNum: (str: string | string[]) => number = (str) => guard(parseInt(val
 
 const parseQuery = (queryString: string): Query => {
   const { w, h, webp, dpr = 1 } = qs.parse(queryString)
+
   return {
     width: parseNum(w),
     height: parseNum(h),
@@ -23,7 +24,6 @@ type S3Object = S3.GetObjectOutput
 
 const s3 = new S3()
 
-// destructive
 const resizeS3Image = async <T extends CloudFrontResultResponse>({
   s3Object,
   query,
@@ -34,6 +34,7 @@ const resizeS3Image = async <T extends CloudFrontResultResponse>({
   result: T
 }): Promise<T> => {
   try {
+    console.log('start')
     const buffer = await s3Object
       .then((data) => data.Body)
       .then(Buffer.from)
@@ -62,7 +63,6 @@ const resizeS3Image = async <T extends CloudFrontResultResponse>({
 
     return result
   } catch (e) {
-    console.error(e)
     // response any error
     result.status = '403'
     result.headers['content-type'] = [
@@ -109,7 +109,14 @@ export const originResponse: CloudFrontResponseHandler = async ({
     case '404':
       // response not found
       result.status = '404'
-      result.headers['content-type'] = [{ key: 'Content-Type', value: 'text/plain' }]
+
+      result.headers['content-type'] = [
+        {
+          key: 'Content-Type',
+          value: 'text/plain',
+        },
+      ]
+
       result.body = `${uri} is not found.`
       return result
     case '304':
@@ -123,8 +130,6 @@ export const originResponse: CloudFrontResponseHandler = async ({
 
   const query = parseQuery(querystring)
 
-  console.debug({ query })
-
   const {
     host: [{ value: hostname }],
   } = headers
@@ -135,8 +140,6 @@ export const originResponse: CloudFrontResponseHandler = async ({
   }
   const bucket = hostname.replace(domainRegex, '')
   const key = uri.slice(1) // remove first `/`
-
-  console.log('S3 URI:', `s3://${bucket}${uri}`)
 
   const s3Object = s3
     .getObject({

@@ -82,6 +82,7 @@ target 'Wrench' do
 
   # react-native-google-signin
   pod 'GoogleSignIn'
+  pod 'Sentry'
 
   use_native_modules!
 

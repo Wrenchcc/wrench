@@ -10,7 +10,6 @@ export type Query = {
   width?: number
 }
 
-// return undefined if missing
 const min = (defaultNum: number, n?: number): number | undefined =>
   n != null ? Math.min(defaultNum, n) : undefined
 
@@ -20,9 +19,8 @@ export const resize = ({ width, height, webp, dpr = 1 }: Query) => async (
   const image = sharp(data)
   const meta = await image.metadata()
 
-  image.rotate() // before removing metadata
+  image.rotate()
 
-  // resize
   const w = (width && min(meta.width, width * dpr)) || null
   const h = (height && min(meta.height, height * dpr)) || null
 
@@ -32,7 +30,6 @@ export const resize = ({ width, height, webp, dpr = 1 }: Query) => async (
     withoutEnlargement: true,
   })
 
-  // convert
   if (webp) {
     image.webp()
   }
