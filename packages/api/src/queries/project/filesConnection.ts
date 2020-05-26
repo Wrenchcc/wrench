@@ -1,6 +1,5 @@
 import paginate from '../../utils/paginate'
 import { transformFileUrl } from '../../utils/transformFileUrl'
-import { isAdmin } from '../../utils/permissions'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
@@ -15,7 +14,7 @@ export default async ({ id }, args, ctx) => {
     cursor,
     node: {
       ...node,
-      uri: transformFileUrl(node.filename, isAdmin(ctx.userId)),
+      uri: transformFileUrl(node.filename),
     },
   }))
 
