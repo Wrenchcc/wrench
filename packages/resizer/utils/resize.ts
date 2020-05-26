@@ -1,38 +1,48 @@
 // @ts-nocheck
-import * as sharp from 'sharp'
+import * as sharp from 'sharp';
 
-type Data = Exclude<Parameters<typeof sharp>[0], sharp.SharpOptions>
+type Data = Exclude<Parameters<typeof sharp>[0], sharp.SharpOptions>;
 
 export type Query = {
-  dpr?: number
-  height?: number
-  webp?: boolean
-  width?: number
-}
-
-const min = (defaultNum: number, n?: number): number | undefined =>
-  n != null ? Math.min(defaultNum, n) : undefined
+  dpr?: number;
+  height?: number;
+  webp?: boolean;
+  width?: number;
+};
 
 export const resize = ({ width, height, webp, dpr = 1 }: Query) => async (
   data: Data
 ): Promise<Buffer> => {
-  const image = sharp(data)
-  const meta = await image.metadata()
+  try {
+    const image = sharp(data);
 
-  image.rotate()
+    image.rotate();
 
-  const w = (width && min(meta.width, width * dpr)) || null
-  const h = (height && min(meta.height, height * dpr)) || null
+    const w = parseInt(width * dpr, 10) || null;
+    const h = parseInt(height * dpr, 10) || null;
 
-  // keep aspect ratio
-  image.resize(w, h, {
-    fit: 'inside',
-    withoutEnlargement: true,
-  })
+    console.log('size', { w, h });
 
-  if (webp) {
-    image.webp()
+    // keep aspect ratio
+    image.resize(w, h, {
+      fit: 'inside',
+      withoutEnlargement: true,
+    });
+
+    if (webp) {
+      image.webp();
+    }
+
+    // const resizedImageByteLength = Buffer.byteLength(image, 'base64');
+
+    // The size of the resized image cannot exceed 1MB.
+    // if (resizedImageByteLength >= 1 * 1024 * 1024) {
+    //   console.log('Size of image is to big');
+    //   // return callback(null, response);
+    // }
+
+    return image.toBuffer();
+  } catch (err) {
+    console.log('Sharp error', err);
   }
-
-  return image.toBuffer()
-}
+};

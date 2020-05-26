@@ -1,3 +1,6 @@
 const { CDN_DOMAIN } = process.env
 
-export const transformFileUrl = (filename) => `${CDN_DOMAIN}/images/${filename}`
+const NEW_CDN_DOMAIN = 'https://cdn.wrench.cc'
+
+export const transformFileUrl = (filename, isAdmin) =>
+  `${isAdmin ? NEW_CDN_DOMAIN : CDN_DOMAIN}/images/${filename}`

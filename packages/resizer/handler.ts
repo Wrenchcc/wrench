@@ -1,82 +1,85 @@
-import { CloudFrontResponseHandler, CloudFrontResultResponse } from 'aws-lambda'
-import { S3 } from 'aws-sdk'
-import * as qs from 'querystring'
-import { Query, resize } from './utils/resize'
+import {
+  CloudFrontResponseHandler,
+  CloudFrontResultResponse,
+} from 'aws-lambda';
+import { S3 } from 'aws-sdk';
+import * as qs from 'querystring';
+import { Query, resize } from './utils/resize';
 
-const value = (str?: string | string[]): string => (Array.isArray(str) ? str[0] : str)
+const value = (str?: string | string[]): string =>
+  Array.isArray(str) ? str[0] : str;
 
-const guard = (n?: number): number | null => (isFinite(n) && n > 0 ? n : null)
+const guard = (n?: number): number | null => (isFinite(n) && n > 0 ? n : null);
 
-const parseNum: (str: string | string[]) => number = (str) => guard(parseInt(value(str)))
+const parseNum: (str: string | string[]) => number = (str) =>
+  guard(parseInt(value(str)));
 
 const parseQuery = (queryString: string): Query => {
-  const { w, h, webp, dpr = 1 } = qs.parse(queryString)
+  const { w, h, webp, dpr = 1 } = qs.parse(queryString);
 
   return {
     width: parseNum(w),
     height: parseNum(h),
     webp: Boolean(webp),
     dpr: Number(dpr),
-  }
-}
+  };
+};
 
-type S3Object = S3.GetObjectOutput
+type S3Object = S3.GetObjectOutput;
 
-const s3 = new S3()
+const s3 = new S3();
 
 const resizeS3Image = async <T extends CloudFrontResultResponse>({
   s3Object,
   query,
   result,
 }: {
-  s3Object: Promise<S3Object>
-  query: Query
-  result: T
+  s3Object: Promise<S3Object>;
+  query: Query;
+  result: T;
 }): Promise<T> => {
   try {
-    console.log('start')
     const buffer = await s3Object
       .then((data) => data.Body)
       .then(Buffer.from)
-      .then(resize(query))
+      .then(resize(query));
 
     // response resized image
-    const encoding = 'base64'
-    result.body = buffer.toString(encoding)
-    result.bodyEncoding = encoding
+    const encoding = 'base64';
+    result.body = buffer.toString(encoding);
+    result.bodyEncoding = encoding;
 
-    if (query.webp) {
-      result.headers['content-type'] = [
-        {
-          key: 'Content-Type',
-          value: 'image/webp',
-        },
-      ]
-    }
+    result.headers['content-type'] = [
+      {
+        key: 'Content-Type',
+        value: query.webp ? 'image/webp' : 'image/jpeg',
+      },
+    ];
 
     result.headers['cache-control'] = [
       {
-        key: 'Cache-Control',
-        value: 'public, max-age=31536000',
+        key: 'cache-control',
+        value: 'max-age=31536000',
       },
-    ]
+    ];
 
-    return result
+    return result;
   } catch (e) {
     // response any error
-    result.status = '403'
+
+    result.status = '403';
     result.headers['content-type'] = [
       {
         key: 'Content-Type',
         value: 'text/plain',
       },
-    ]
+    ];
 
-    result.body = e.toString()
+    result.body = e.toString();
 
-    return result
+    return result;
   }
-}
+};
 
 // noinspection JSUnusedGlobalSymbols
 export const originResponse: CloudFrontResponseHandler = async ({
@@ -89,64 +92,57 @@ export const originResponse: CloudFrontResponseHandler = async ({
     },
   ],
 }) => {
-  const result = response as CloudFrontResultResponse
-
-  const isJpeg = response.headers['content-type'].map(({ value }) => value).includes('image/jpeg')
-
-  if (!isJpeg) {
-    // response original
-    return response
-  }
-
-  // guard: check resize
-  if (querystring !== '') {
-    // response original
-    return response
-  }
+  const result = response as CloudFrontResultResponse;
 
   // guard: origin status
   switch (response.status) {
+    case '200':
+      // keep going
+      break;
     case '404':
       // response not found
-      result.status = '404'
-
+      result.status = '404';
       result.headers['content-type'] = [
         {
           key: 'Content-Type',
           value: 'text/plain',
         },
-      ]
+      ];
 
-      result.body = `${uri} is not found.`
-      return result
+      result.body = `${uri} is not found.`;
+      return result;
     case '304':
     default:
       // response original
-      return response
-    case '200':
-      // keep going
-      break
+      return response;
   }
 
-  const query = parseQuery(querystring)
+  const query = parseQuery(querystring);
 
   const {
     host: [{ value: hostname }],
-  } = headers
+  } = headers;
+
   // guard s3 domain
-  const domainRegex = /\.s3\.amazonaws\.com$/
+  const domainRegex = /\.s3\.amazonaws\.com$/;
+
   if (!domainRegex.test(hostname)) {
-    throw new Error(`invalid S3 hostname: ${hostname}`)
+    throw new Error(`invalid S3 hostname: ${hostname}`);
   }
-  const bucket = hostname.replace(domainRegex, '')
-  const key = uri.slice(1) // remove first `/`
 
-  const s3Object = s3
-    .getObject({
-      Bucket: bucket,
-      Key: key,
-    })
-    .promise()
+  const bucket = hostname.replace(domainRegex, '');
+  const key = uri.slice(1); // remove first `/`
 
-  return resizeS3Image({ s3Object, query, result })
-}
+  try {
+    const s3Object = s3
+      .getObject({
+        Bucket: bucket,
+        Key: key,
+      })
+      .promise();
+
+    return resizeS3Image({ s3Object, query, result });
+  } catch (err) {
+    console.log('S3 error', err);
+  }
+};

@@ -10,7 +10,7 @@ const UPLOAD_DIRECTORY = 'images'
 export default isAuthenticated(async (_, { input }, ctx) => {
   try {
     return Promise.all(
-      input.map(async file => {
+      input.map(async (file) => {
         const type = getExtFromType(file.type)
         const filename = `${v4()}.${type}`
 

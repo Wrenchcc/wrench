@@ -1,5 +1,6 @@
 import paginate from '../../utils/paginate'
 import { transformFileUrl } from '../../utils/transformFileUrl'
+import { isAdmin } from '../../utils/permissions'
 
 export default async ({ id }, args, ctx) => {
   const files = await paginate(ctx.db.File, args, {
@@ -13,7 +14,7 @@ export default async ({ id }, args, ctx) => {
     cursor,
     node: {
       ...node,
-      uri: transformFileUrl(node.filename),
+      uri: transformFileUrl(node.filename, isAdmin(ctx.userId)),
     },
   }))
 
