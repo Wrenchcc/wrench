@@ -8,16 +8,16 @@ export const Base = styled(Animated.View)`
   top: 0;
   width: 100%;
   z-index: 10000;
-  transform: ${props => props.transform};
+  transform: ${(props) => props.transform};
   position: absolute;
 `
 
 export const Background = styled.View`
   z-index: 10;
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.default};
 `
 export const Content = styled(Animated.View)`
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.default};
   margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT}px;
 `
 

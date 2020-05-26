@@ -24,7 +24,7 @@ import {
 } from './styles'
 
 const MAX_CHARACTERS = 100
-const CDN_DOMAIN = 'https://edge-files.wrench.cc'
+const CDN_DOMAIN = 'https://cdn.wrench.cc'
 
 function Settings({ isAuthenticated }) {
   if (!isAuthenticated) {

@@ -19,8 +19,8 @@ import { Information, Row, Counter, ChangeAvatar, Overlay, CloseIcon, Location }
 
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
-const CDN_DOMAIN = 'https://edge-files.wrench.cc'
-const DEFAULT_AVATAR_URL = 'https://edge-files.wrench.cc/avatar/default.jpg'
+const CDN_DOMAIN = 'https://cdn.wrench.cc'
+const DEFAULT_AVATAR_URL = 'https://cdn.wrench.cc/avatar/default.jpg'
 const DEFAULT_AVATAR = 'default.jpg'
 const MAX_CHARACTERS = 100
 const UPLOAD_PATH = 'avatar'

@@ -3,9 +3,9 @@ import Animated from 'react-native-reanimated'
 import { NAVIGATION } from '../../constants'
 
 export const Base = styled(Animated.View)`
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.default};
   left: 0;
-  position: ${props => (props.inline ? 'relative' : 'absolute')};
+  position: ${(props) => (props.inline ? 'relative' : 'absolute')};
   right: 0;
   top: 0;
   width: 100%;
