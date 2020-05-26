@@ -1,4 +1,5 @@
 import { transformFileUrl } from '../../utils/transformFileUrl'
+import { isAdmin } from '../../utils/permissions'
 
 const { CDN_DOMAIN } = process.env
 
@@ -16,7 +17,7 @@ export default async ({ id }, _, ctx) => {
   if (file) {
     return {
       default: false,
-      uri: transformFileUrl(file.filename),
+      uri: transformFileUrl(file.filename, isAdmin(ctx.userId)),
     }
   }
 

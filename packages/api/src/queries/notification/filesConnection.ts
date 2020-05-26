@@ -1,6 +1,7 @@
 import paginate from '../../utils/paginate'
 import { transformFileUrl } from '../../utils/transformFileUrl'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
+import { isAdmin } from '../../utils/permissions'
 
 export default async ({ post, comment, type }, args, ctx) => {
   const postId = (post && post.id) || (comment && comment.postId)
@@ -20,7 +21,7 @@ export default async ({ post, comment, type }, args, ctx) => {
     cursor,
     node: {
       ...node,
-      uri: transformFileUrl(node.filename),
+      uri: transformFileUrl(node.filename, isAdmin(ctx.userId)),
     },
   }))
 
