@@ -3,13 +3,13 @@ import React from 'react'
 import styled from 'styled-components'
 // import { variant } from 'styled-system'
 
-const Base = styled.Button`
-  background-color: ${props => props.theme.colors.default};
-  color: ${props => props.theme.colors.inverse};
+const Base = styled.button`
+  background-color: ${(props) => props.theme.colors.default};
+  color: ${(props) => props.theme.colors.inverse};
 `
 
-function ButtonPrimary() {
+function Button() {
   return <Base>Hej</Base>
 }
 
-export default ButtonPrimary
+export default Button
