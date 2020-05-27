@@ -11,6 +11,8 @@ import { DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   overflow: hidden;
+  width: 640px;
+  height: 640px;
 
   @media ${DEVICE.TABLET} {
     margin-left: -20px;
