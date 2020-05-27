@@ -18913,7 +18913,7 @@ react-native-google-signin@^2.1.1:
   resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-2.1.1.tgz#4281940eee88602b0181dd49affdf8c92980c85c"
   integrity sha512-6l3fiLdX/bfhh0BoxGq+jGkagFsO+mrE/eRV4+3/0k8+FDxO90vdPpQdDiwlM5vWXRxWthTzMM09/jHw+4cvNw==
 
-react-native-navigation@^6.6.2:
+react-native-navigation@^6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.0.tgz#37f1449ddd473c5f4e612f2847d509f44d3a3287"
   integrity sha512-nt5qYxS/Gt3YqM5gs9GoKYB906su7BV2PP0SLrlAwRK0ar9211T55jIO49Uc+m5zQhzxlSCswA0Xv0tOkz2fNQ==
