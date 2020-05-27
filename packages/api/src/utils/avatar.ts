@@ -1,6 +1,4 @@
-// const { CDN_DOMAIN } = process.env
-
-const CDN_DOMAIN = 'https://cdn.wrench.cc'
+const { CDN_DOMAIN } = process.env
 
 export function getAvatarById(id) {
   return `${CDN_DOMAIN}/avatar/${id}.jpg`
