@@ -17,7 +17,7 @@
     "@apollo/client": "3.0.0-beta.44",
     "@expo/react-native-action-sheet": "^3.8.0",
     "@react-native-community/async-storage": "^1.11.0",
-    "@react-native-community/netinfo": "^5.9.1",
+    "@react-native-community/netinfo": "^5.9.2",
     "@sentry/react-native": "^1.4.0",
     "@wrench/common": "1.0.0",
     "@wrench/ui": "1.0.0",
@@ -61,7 +61,7 @@
     "react-native-tab-view": "^2.14.2",
     "react-native-unimodules": "^0.9.1",
     "react-native-video": "^5.0.2",
-    "react-native-webview": "9.4.0",
+    "react-native-webview": "10.1.0",
     "reanimated-bottom-sheet": "^1.0.0-alpha.20",
     "rn-placeholder": "^3.0.0",
     "styled-components": "^5.1.1",
@@ -69,8 +69,8 @@
     "zustand": "^2.2.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
+    "@babel/cli": "^7.10.0",
+    "@babel/core": "^7.10.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^5.2.0",
