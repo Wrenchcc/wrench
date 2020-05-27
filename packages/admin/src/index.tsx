@@ -2,11 +2,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloClient, HttpLink, InMemoryCache, ApolloLink } from '@apollo/client'
+import { ApolloProvider } from '@apollo/react-hooks'
 import { Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { setContext } from 'apollo-link-context'
 import { RefreshTokenDocument } from '@wrench/common'
-import { ApolloProvider } from '@apollo/react-hooks'
+
 import App from './App'
 
 const httpLink = new HttpLink({
@@ -18,7 +19,7 @@ const refreshLink = onError(({ graphQLErrors, operation, forward }) => {
   if (graphQLErrors) {
     const { extensions } = graphQLErrors[0]
     if (extensions && extensions.code === 'UNAUTHENTICATED') {
-      return new Observable(async observer => {
+      return new Observable(async (observer) => {
         try {
           const refreshToken = JSON.parse(window.localStorage.getItem('refresh_token'))
           const { headers } = operation.getContext()
