@@ -52,7 +52,7 @@ class App extends NextApp<Props> {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    SUPPORTED_LOCALS.forEach(l => {
+    SUPPORTED_LOCALS.forEach((l) => {
       initialI18nStore[l] = resources[l]
     })
 
