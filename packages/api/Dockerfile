@@ -1,10 +1,10 @@
-FROM mhart/alpine-node:14.3
+FROM mhart/alpine-node:13
 WORKDIR /app
 COPY . .
 RUN yarn
 RUN yarn build
 
-FROM mhart/alpine-node:slim-14.3
+FROM mhart/alpine-node:slim-13
 RUN apk add --no-cache curl
 WORKDIR /app
 COPY --from=0 /app/dist .
