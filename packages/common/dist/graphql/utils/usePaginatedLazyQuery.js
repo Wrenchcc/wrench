@@ -44,11 +44,11 @@ const {
 */
 exports.default = (function (path, initialData) { return function (query, options) {
     var _a = react_hooks_1.useLazyQuery(query, __assign(__assign({}, options), { notifyOnNetworkStatusChange: true, fetchPolicy: 'cache-and-network' })), loadData = _a[0], _b = _a[1], fetchMore = _b.fetchMore, error = _b.error, data = _b.data, error = _b.error, refetch = _b.refetch, loading = _b.loading, networkStatus = _b.networkStatus;
-    var blaj = rambda_1.pathOr({}, path, data);
+    var result = rambda_1.pathOr({}, path, data);
     var handleFetchMore = react_1.useCallback(function (options) {
         if (options === void 0) { options = {}; }
         return fetchMore(__assign({ variables: {
-                after: blaj.edges[blaj.edges.length - 1].cursor,
+                after: result.edges[result.edges.length - 1].cursor,
             }, updateQuery: function (prev, _a) {
                 var _b, _c, _d;
                 var fetchMoreResult = _a.fetchMoreResult;
@@ -68,9 +68,9 @@ exports.default = (function (path, initialData) { return function (query, option
         loadData: loadData,
         error: error,
         refetch: refetch,
-        data: __assign(__assign(__assign(__assign({}, initialData), data), blaj), { edges: rambda_1.pathOr(null, ['edges'], blaj) }),
+        data: __assign(__assign(__assign(__assign({}, initialData), data), result), { edges: rambda_1.pathOr(null, ['edges'], result) }),
         fetchMore: handleFetchMore,
-        hasNextPage: rambda_1.pathOr(false, ['pageInfo', 'hasNextPage'], blaj),
+        hasNextPage: rambda_1.pathOr(false, ['pageInfo', 'hasNextPage'], result),
         isFetching: loading || networkStatus_1.isFetchingMore(networkStatus),
         isRefetching: networkStatus_1.isRefetching(networkStatus),
     };

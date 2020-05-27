@@ -31,13 +31,13 @@ export default (path, initialData?) => (query, options?) => {
     fetchPolicy: 'cache-and-network',
   })
 
-  const blaj = pathOr({}, path, data)
+  const result = pathOr({}, path, data)
 
   const handleFetchMore = useCallback(
     (options = {}) =>
       fetchMore({
         variables: {
-          after: blaj.edges[blaj.edges.length - 1].cursor,
+          after: result.edges[result.edges.length - 1].cursor,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!pathOr(false, path, fetchMoreResult)) {
@@ -88,11 +88,11 @@ export default (path, initialData?) => (query, options?) => {
     data: {
       ...initialData,
       ...data,
-      ...blaj,
-      edges: pathOr(null, ['edges'], blaj),
+      ...result,
+      edges: pathOr(null, ['edges'], result),
     },
     fetchMore: handleFetchMore,
-    hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], blaj),
+    hasNextPage: pathOr(false, ['pageInfo', 'hasNextPage'], result),
     isFetching: loading || isFetchingMore(networkStatus),
     isRefetching: isRefetching(networkStatus),
   }
