@@ -4,6 +4,7 @@ import { getAccessToken } from 'utils/storage/auth'
 import { getCurrentUser } from 'gql'
 import { SentryInstance } from 'utils/sentry'
 import { AuthNavigation, AppNavigation } from './navigation'
+import { updateNotificationToken } from 'utils/pushNotifications/register'
 
 function Initializing() {
   const loadInitialState = async () => {
@@ -23,6 +24,8 @@ function Initializing() {
         SentryInstance.setUser({
           username: data.user.username,
         })
+
+        updateNotificationToken()
 
         AppNavigation(showOnboarding)
       } else {

@@ -7,14 +7,11 @@ import { notifications } from 'react-native-firebase'
 import { Bootstrap, registerScreens } from 'navigation'
 import { createPushNotificationsHandler } from 'utils/pushNotifications'
 import { createDeepLinkingHandler } from 'utils/dynamicLinks'
-import { updateNotificationToken } from 'utils/pushNotifications/register'
 
 registerScreens()
 
 Navigation.events().registerAppLaunchedListener(async () => {
   Bootstrap()
-
-  updateNotificationToken()
 
   Linking.addEventListener('url', createDeepLinkingHandler)
 

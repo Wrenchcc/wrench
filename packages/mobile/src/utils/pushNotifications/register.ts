@@ -10,6 +10,10 @@ export async function updateNotificationToken() {
   const firebase = messaging()
   const enabled = await firebase.hasPermission()
 
+  if (!enabled) {
+    await firebase.requestPermission()
+  }
+
   if (enabled) {
     const token = await firebase.getToken()
 
@@ -18,7 +22,7 @@ export async function updateNotificationToken() {
     }
 
     // Look for new tokens
-    firebase.onTokenRefresh(async newToken => {
+    firebase.onTokenRefresh(async (newToken) => {
       if (token !== newToken) {
         await registerDeviceToken(newToken)
       }
@@ -52,6 +56,7 @@ export async function requestNotificationToken(onPermission) {
       if (onPermission) {
         return
       }
+
       // User has rejected permissions
       track(events.USER_REJECTED_PUSH_NOTIFICATIONS)
     }
