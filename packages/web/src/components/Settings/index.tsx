@@ -24,7 +24,7 @@ import {
 } from './styles'
 
 const MAX_CHARACTERS = 100
-const CDN_DOMAIN = 'https://cdn.wrench.cc'
+const CDN_DOMAIN = 'https://edge-files.wrench.cc'
 
 function Settings({ isAuthenticated }) {
   if (!isAuthenticated) {
@@ -54,9 +54,9 @@ function Settings({ isAuthenticated }) {
       return null
     }
 
-    const types = Object.keys(notifications.types).filter(type => type !== '__typename')
+    const types = Object.keys(notifications.types).filter((type) => type !== '__typename')
 
-    return types.map(type => ({
+    return types.map((type) => ({
       titleKey: `notifications.${type}`,
       type,
       onPress: () => {
@@ -100,7 +100,7 @@ function Settings({ isAuthenticated }) {
   const updateField = (field, value) => setData({ ...data, [field]: value })
 
   const handleBio = useCallback(
-    text => {
+    (text) => {
       if (text.length <= MAX_CHARACTERS) {
         updateField('bio', text)
       }
@@ -170,7 +170,7 @@ function Settings({ isAuthenticated }) {
                 placeholder={t('Settings:field.firstName')}
                 value={data.firstName}
                 required
-                onChangeText={firstName => updateField('firstName', firstName)}
+                onChangeText={(firstName) => updateField('firstName', firstName)}
               />
             </Row>
 
@@ -179,13 +179,13 @@ function Settings({ isAuthenticated }) {
                 placeholder={t('Settings:field.lastName')}
                 value={data.lastName}
                 required
-                onChangeText={lastName => updateField('lastName', lastName)}
+                onChangeText={(lastName) => updateField('lastName', lastName)}
               />
             </Row>
 
             <Row>
               <SearchLocation
-                onPress={location => updateField('location', location)}
+                onPress={(location) => updateField('location', location)}
                 value={data.location}
               />
             </Row>
@@ -205,7 +205,7 @@ function Settings({ isAuthenticated }) {
               <Input
                 placeholder={t('Settings:field.website')}
                 type="url"
-                onChangeText={website => updateField('website', website)}
+                onChangeText={(website) => updateField('website', website)}
                 value={data.website}
               />
             </Row>
@@ -240,7 +240,7 @@ function Settings({ isAuthenticated }) {
               <Title medium>{t('Settings:sections.language')}</Title>
             </Headline>
 
-            {SUPPORTED_LOCALS.map(locale => {
+            {SUPPORTED_LOCALS.map((locale) => {
               return (
                 <Setting key={locale}>
                   <a href={`?hl=${locale}`}>{t(`Settings:languages.${locale}`)}</a>
