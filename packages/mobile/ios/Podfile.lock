@@ -435,7 +435,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (10.1.0):
+  - react-native-webview (10.2.3):
     - React
   - React-RCTActionSheet (0.62.2):
     - React-Core/RCTActionSheetHeaders (= 0.62.2)
@@ -496,7 +496,7 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
     - ReactCommon/callinvoker (= 0.62.2)
-  - ReactNativeNavigation (6.7.0):
+  - ReactNativeNavigation (6.7.1):
     - React
     - React-RCTImage
     - React-RCTText
@@ -524,7 +524,7 @@ PODS:
     - React
   - RNReanimated (1.4.0):
     - React
-  - RNSentry (1.4.0):
+  - RNSentry (1.4.1):
     - React
     - Sentry (~> 5.1.0)
   - RNShare (3.3.2):
@@ -902,7 +902,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 6b7121c341da6fca09dcf54b517d472a93e74bb4
+  react-native-webview: 0bacc79175bc44869e4c1a015b9bc21df8cf4feb
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
   React-RCTBlob: a332773f0ebc413a0ce85942a55b064471587a71
@@ -913,7 +913,7 @@ SPEC CHECKSUMS:
   React-RCTText: fae545b10cfdb3d247c36c56f61a94cfd6dba41d
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
-  ReactNativeNavigation: 300598ece82d76a35c62786d095b6ebbe454d73b
+  ReactNativeNavigation: dd4a4a76d2deb5130d809ec4a6f7f2b182fa1a11
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
@@ -921,7 +921,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNSentry: f3f30fa75baf573dcb807cdbcc0a399a5fb80039
+  RNSentry: df6946b5fe880a9097f6994c9028f939710b3000
   RNShare: bd6518701db274b8ba282b33620885f2225a5bcf
   SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
