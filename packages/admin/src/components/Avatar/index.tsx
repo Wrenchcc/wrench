@@ -7,6 +7,7 @@ const Base = styled.img`
   height: ${(props) => props.size || 80}px;
   width: ${(props) => props.size || 80}px;
   overflow: none;
+  object-fit: cover;
 `
 
 function Avatar({ src, size = 80 }) {
