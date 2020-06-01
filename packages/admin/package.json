@@ -5,8 +5,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "deploy": "serverless"
   },
   "dependencies": {
@@ -47,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "webpack": "4.42.0",
     "@types/react-router-dom": "^5.1.5",
     "@types/recharts": "^1.8.10",
     "serverless": "^1.71.3"

@@ -16,6 +16,7 @@ import Newsletter from './pages/Newsletter'
 import PushNotifications from './pages/PushNotifications'
 
 function App() {
+  return 'hej'
   const [accessToken] = useLocalStorage('access_token')
   const [loadUser, { data, loading }] = useCurrentUserLazyQuery()
 
