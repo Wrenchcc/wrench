@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
+import Config from 'react-native-config'
 import SplashScreen from 'react-native-splash-screen'
+import codePush from 'react-native-code-push'
 import { getAccessToken } from 'utils/storage/auth'
 import { getCurrentUser } from 'gql'
 import { SentryInstance } from 'utils/sentry'
@@ -45,4 +47,8 @@ function Initializing() {
   return null
 }
 
-export default Initializing
+export default codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.IMMEDIATE,
+  deploymentKey: Config.CODEPUSH_KEY_STAGING,
+})(Initializing)

@@ -1,12 +1,18 @@
 PODS:
-  - AppAuth (1.3.0):
-    - AppAuth/Core (= 1.3.0)
-    - AppAuth/ExternalUserAgent (= 1.3.0)
-  - AppAuth/Core (1.3.0)
-  - AppAuth/ExternalUserAgent (1.3.0)
+  - AppAuth (1.3.1):
+    - AppAuth/Core (= 1.3.1)
+    - AppAuth/ExternalUserAgent (= 1.3.1)
+  - AppAuth/Core (1.3.1)
+  - AppAuth/ExternalUserAgent (1.3.1)
+  - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
+  - CodePush (6.2.1):
+    - Base64 (~> 1.1)
+    - JWT (~> 3.0.0-beta.7)
+    - React
+    - SSZipArchive (~> 2.1)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - DoubleConversion (1.1.6)
@@ -218,6 +224,8 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - JWT (3.0.0-beta.12):
+    - Base64 (~> 1.1.2)
   - libwebp (1.1.0):
     - libwebp/demux (= 1.1.0)
     - libwebp/mux (= 1.1.0)
@@ -535,9 +543,10 @@ PODS:
   - SDWebImageWebPCoder (0.4.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.5)
-  - Sentry (5.1.0):
-    - Sentry/Core (= 5.1.0)
-  - Sentry/Core (5.1.0)
+  - Sentry (5.1.1):
+    - Sentry/Core (= 5.1.1)
+  - Sentry/Core (5.1.1)
+  - SSZipArchive (2.2.3)
   - UMAppLoader (1.0.2)
   - UMBarCodeScannerInterface (5.1.0)
   - UMCameraInterface (5.1.0)
@@ -558,6 +567,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
+  - CodePush (from `../../../node_modules/react-native-code-push`)
   - DoubleConversion (from `../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppleAuthentication (from `../../../node_modules/expo-apple-authentication/ios`)
   - EXCamera (from `../../../node_modules/expo-camera/ios`)
@@ -647,6 +657,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AppAuth
+    - Base64
     - boost-for-react-native
     - CocoaAsyncSocket
     - CocoaLibEvent
@@ -678,6 +689,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - JWT
     - libwebp
     - nanopb
     - OpenSSL-Universal
@@ -686,9 +698,12 @@ SPEC REPOS:
     - SDWebImage
     - SDWebImageWebPCoder
     - Sentry
+    - SSZipArchive
     - YogaKit
 
 EXTERNAL SOURCES:
+  CodePush:
+    :path: "../../../node_modules/react-native-code-push"
   DoubleConversion:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXAppleAuthentication:
@@ -829,10 +844,12 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
+  AppAuth: 8803ba1aec6d00d9afd30093f82e600307eaa6ea
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
+  CodePush: 3968d9e97ed70a1c8b029266dd5b6aa69cee4b0a
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   EXAppleAuthentication: 046c76335343eaa97f6ed8d35a9cf493a2c4d351
@@ -878,6 +895,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
@@ -925,7 +943,8 @@ SPEC CHECKSUMS:
   RNShare: bd6518701db274b8ba282b33620885f2225a5bcf
   SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
-  Sentry: 01008d590825eb1c02a796cbdced2cd3625f61e4
+  Sentry: a8e37dc33aedb8a53540e36607fc2eaef7c31b4f
+  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   UMAppLoader: ee77a072f9e15128f777ccd6d2d00f52ab4387e6
   UMBarCodeScannerInterface: 9dc692b87e5f20fe277fa57aa47f45d418c3cc6c
   UMCameraInterface: 625878bbf2ba188a8548675e1d1d2e438a653e6d

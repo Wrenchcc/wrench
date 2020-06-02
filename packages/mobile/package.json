@@ -43,6 +43,7 @@
     "react-native": "^0.62.2",
     "react-native-appearance": "^0.3.4",
     "react-native-bundle-splitter": "^1.0.8",
+    "react-native-code-push": "^6.2.1",
     "react-native-config": "^1.2.0",
     "react-native-deep-linking": "^2.2.0",
     "react-native-fast-image": "^8.1.5",

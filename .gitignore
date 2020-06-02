@@ -74,3 +74,6 @@ fastlane/test_output
 # Fastlane builds
 .builds
 report.xml
+
+# Codepush
+.codepush
