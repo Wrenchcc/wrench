@@ -1,5 +1,0 @@
-#!/bin/sh
-rm -rf ../../../.codepush
-mkdir ../../../.codepush
-
-node ../../../node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file ./packages/mobile/index.js --bundle-output ../../../.codepush/main.jsbundle --assets-dest ../../../.codepush 
