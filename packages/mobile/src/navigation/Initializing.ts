@@ -42,9 +42,7 @@ function Initializing() {
             ? Config.CODEPUSH_KEY_ANDROID_STAGING
             : Config.CODEPUSH_KEY_IOS_STAGING
 
-          codePush.sync({
-            deploymentKey,
-          })
+          codePush.sync({ deploymentKey })
         }
       } else {
         AuthNavigation()
