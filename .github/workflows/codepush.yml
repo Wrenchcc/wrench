@@ -28,6 +28,27 @@ jobs:
       - name: Deploy to Codepush
         uses: NishanthShankar/codepush-action@master
         with:
-          args: release -d Staging -a Wrench-app/Wrench -c .codepush -t 1.0.0
+          args: release -d Staging -a Wrench-app/Wrench -c .codepush -t "*"
+        env:
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
+
+  android:
+    name: Deploy Android
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build Android bundle
+        run: |
+          cd packages/mobile
+          ./tasks/bundle_android
+
+      - name: Deploy to Codepush
+        uses: NishanthShankar/codepush-action@master
+        with:
+          args: release -d Staging -a Wrench-app/Wrench-1 -c .codepush -t "*"
         env:
           APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}

@@ -91,6 +91,7 @@ project.ext.react = [
 ]
 
 apply from: projectRoot + "node_modules/react-native/react.gradle"
+apply from: projectRoot + "node_modules/react-native-code-push/android/codepush.gradle"
 apply from: projectRoot + "node_modules/@sentry/react-native/sentry.gradle"
 
 /**
@@ -247,9 +248,9 @@ dependencies {
         exclude group:'com.facebook.flipper'
     }
 
-    implementation "com.google.android.gms:play-services-base:17.1.0"
-    implementation "com.google.firebase:firebase-analytics:17.2.0"
-    implementation "com.google.firebase:firebase-messaging:20.0.0"
+    implementation "com.google.android.gms:play-services-base:17.3.0"
+    implementation "com.google.firebase:firebase-analytics:17.4.2"
+    implementation "com.google.firebase:firebase-messaging:20.2.0"
     
     addUnimodulesDependencies([modulesPaths: ['../../../../node_modules/']])
 }
