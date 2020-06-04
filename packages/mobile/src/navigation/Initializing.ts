@@ -34,7 +34,7 @@ function Initializing() {
 
         if (isAdmin(data.user)) {
           codePush.sync({
-            deploymentKey: Config.CODEPUSH_KEY_STAGING,
+            deploymentKey: Config.CODEPUSH_KEY_STAGING, // For admin
           })
         }
       } else {
