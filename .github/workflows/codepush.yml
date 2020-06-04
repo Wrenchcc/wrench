@@ -19,11 +19,11 @@ jobs:
         run: yarn
 
       - name: Build iOS bundle
-        run: ../../packages/mobile/tasks/bundle_ios
+        run: packages/mobile/tasks/bundle_ios
 
       - name: Deploy to Codepush
         uses: NishanthShankar/codepush-action@master
         with:
-          args: release -d Staging -a Wrench-app/Wrench -c ../../.codepush -t *
+          args: release -d Staging -a Wrench-app/Wrench -c .codepush -t *
         env:
           APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
