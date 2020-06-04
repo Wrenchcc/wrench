@@ -7,6 +7,7 @@ import { getCurrentUser } from 'gql'
 import { SentryInstance } from 'utils/sentry'
 import { AuthNavigation, AppNavigation } from './navigation'
 import { updateNotificationToken } from 'utils/pushNotifications/register'
+import { isAdmin } from 'utils/permissions'
 
 function Initializing() {
   const loadInitialState = async () => {
@@ -30,6 +31,12 @@ function Initializing() {
         updateNotificationToken()
 
         AppNavigation(showOnboarding)
+
+        if (isAdmin(data.user)) {
+          codePush.sync({
+            deploymentKey: Config.CODEPUSH_KEY_STAGING,
+          })
+        }
       } else {
         AuthNavigation()
       }
@@ -48,7 +55,7 @@ function Initializing() {
 }
 
 export default codePush({
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-  installMode: codePush.InstallMode.IMMEDIATE,
-  deploymentKey: Config.CODEPUSH_KEY_STAGING,
+  checkFrequency: codePush.CheckFrequency.ON_APP_START,
+  installMode: codePush.InstallMode.ON_NEXT_RESTART,
+  deploymentKey: Config.CODEPUSH_KEY_PRODUCTION,
 })(Initializing)
