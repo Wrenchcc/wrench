@@ -10,6 +10,7 @@
 #import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>
 #import <AVFoundation/AVFoundation.h>
+#import <CodePush/CodePush.h>
 
 #if DEBUG
 #import <FlipperKit/FlipperClient.h>
@@ -71,7 +72,7 @@ static void InitializeFlipper(UIApplication *application) {
 #ifdef DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"packages/mobile/index" fallbackResource:nil];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  return [CodePush bundleURL];
 #endif
 }
 

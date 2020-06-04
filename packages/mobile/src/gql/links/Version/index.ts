@@ -1,4 +1,4 @@
-import { setContext } from 'apollo-link-context'
+import { setContext } from '@apollo/link-context'
 
 const VERSION = 1
 

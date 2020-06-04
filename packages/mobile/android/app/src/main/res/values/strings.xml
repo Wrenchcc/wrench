@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">Wrench</string>
   <string name="facebook_app_id">1174076712654826</string>
+  <string moduleConfig="true" name="CodePushDeploymentKey">XlMU_jMArKdjDlRerye6v6DbVLyd7XnPof_3I</string>
 </resources>

@@ -1,5 +1,5 @@
 import { Observable } from '@apollo/client'
-import { onError } from 'apollo-link-error'
+import { onError } from '@apollo/link-error'
 import { RefreshTokenDocument } from '@wrench/common'
 import { showSpamToast } from 'store'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
@@ -28,7 +28,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     }
 
     if (extensions && extensions.code === ERROR_CODES.UNAUTHENTICATED) {
-      return new Observable(async observer => {
+      return new Observable(async (observer) => {
         try {
           const refreshToken = await getRefreshToken()
           const { headers } = operation.getContext()

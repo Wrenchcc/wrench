@@ -1,10 +1,18 @@
 import { useEffect } from 'react'
+import Config from 'react-native-config'
 import SplashScreen from 'react-native-splash-screen'
+import codePush from 'react-native-code-push'
 import { getAccessToken } from 'utils/storage/auth'
 import { getCurrentUser } from 'gql'
 import { SentryInstance } from 'utils/sentry'
-import { AuthNavigation, AppNavigation } from './navigation'
 import { updateNotificationToken } from 'utils/pushNotifications/register'
+import { isAdmin } from 'utils/permissions'
+import { isAndroid } from 'utils/platform'
+import { AuthNavigation, AppNavigation } from './navigation'
+
+const DEFAULT_DEPLOYMENT_KEY = isAndroid
+  ? Config.CODEPUSH_KEY_ANDROID_PRODUCTION
+  : Config.CODEPUSH_KEY_IOS_PRODUCTION
 
 function Initializing() {
   const loadInitialState = async () => {
@@ -28,6 +36,14 @@ function Initializing() {
         updateNotificationToken()
 
         AppNavigation(showOnboarding)
+
+        if (isAdmin(data.user)) {
+          const deploymentKey = isAndroid
+            ? Config.CODEPUSH_KEY_ANDROID_STAGING
+            : Config.CODEPUSH_KEY_IOS_STAGING
+
+          codePush.sync({ deploymentKey })
+        }
       } else {
         AuthNavigation()
       }
@@ -45,4 +61,8 @@ function Initializing() {
   return null
 }
 
-export default Initializing
+export default codePush({
+  checkFrequency: codePush.CheckFrequency.ON_APP_START,
+  installMode: codePush.InstallMode.ON_NEXT_RESTART,
+  deploymentKey: DEFAULT_DEPLOYMENT_KEY,
+})(Initializing)
