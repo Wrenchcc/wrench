@@ -10,6 +10,7 @@ import { isAdmin } from 'utils/permissions'
 import { isAndroid } from 'utils/platform'
 import { AuthNavigation, AppNavigation } from './navigation'
 
+// Codepush keys
 const DEFAULT_DEPLOYMENT_KEY = isAndroid
   ? Config.CODEPUSH_KEY_ANDROID_PRODUCTION
   : Config.CODEPUSH_KEY_IOS_PRODUCTION
