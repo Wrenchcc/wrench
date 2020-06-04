@@ -15,10 +15,10 @@
     "react": "^16.13.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.15.0",
-    "@graphql-codegen/typescript": "1.15.0",
-    "@graphql-codegen/typescript-operations": "1.15.0",
-    "@graphql-codegen/typescript-react-apollo": "1.15.0",
+    "@graphql-codegen/cli": "^1.15.1",
+    "@graphql-codegen/typescript": "1.15.1",
+    "@graphql-codegen/typescript-operations": "1.15.1",
+    "@graphql-codegen/typescript-react-apollo": "1.15.1",
     "typescript": "^3.9.3"
   }
 }
