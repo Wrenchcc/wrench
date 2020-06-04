@@ -1,8 +1,8 @@
 name: 'Deploy Codepush'
 on:
   push:
-    # branches:
-    #   - master
+    branches:
+      - master
     paths:
       - 'packages/mobile/**'
       - 'packages/common/**'
@@ -30,7 +30,7 @@ jobs:
         with:
           args: release -d Staging -a Wrench-app/Wrench -c .codepush -t 1.0.0
         env:
-          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN_IOS }}
 
   android:
     name: Deploy Android
@@ -51,4 +51,4 @@ jobs:
         with:
           args: release -d Staging -a Wrench-app/Wrench-1 -c .codepush -t 1.0.0
         env:
-          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN_ANDROID }}
