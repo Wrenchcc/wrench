@@ -1,8 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
-import { useColorScheme } from 'react-native-appearance'
+import { useColorScheme } from 'react-native'
 
-const getSize = size => ({
+const getSize = (size) => ({
   background: {
     borderRadius: size === 'medium' ? 12 : 10,
     height: size === 'medium' ? 12 : 10,

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useColorScheme } from 'react-native-appearance'
+import { useColorScheme } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import * as AppleAuthentication from 'expo-apple-authentication'
 import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'

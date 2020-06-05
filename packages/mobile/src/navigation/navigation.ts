@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation'
-import { Appearance } from 'react-native-appearance'
+import { Appearance } from 'react-native'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile, add } from 'images'
 import { loadSelectedProjectId } from 'store/post'

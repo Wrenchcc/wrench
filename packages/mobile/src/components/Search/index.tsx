@@ -1,6 +1,5 @@
 import React, { useState, useCallback, memo, useEffect } from 'react'
-import { Dimensions } from 'react-native'
-import { useColorScheme } from 'react-native-appearance'
+import { Dimensions, useColorScheme } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { TabView, TabBar } from 'react-native-tab-view'
 import { FONTS } from 'ui/constants'
@@ -35,7 +34,7 @@ function Search({ query }) {
   }, [setIndex])
 
   const handleIndexChange = useCallback(
-    activeIndex => {
+    (activeIndex) => {
       setIndex(activeIndex)
     },
     [index]
@@ -76,7 +75,7 @@ function Search({ query }) {
   )
 
   const renderTabBar = useCallback(
-    props => (
+    (props) => (
       <TabBar
         {...props}
         style={styles.tabBar}

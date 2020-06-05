@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useColorScheme } from 'react-native-appearance'
+import { useColorScheme } from 'react-native'
 import { useNavigation, SCREENS, STATUS_BAR } from 'navigation'
 import { Touchable } from 'ui'
 import { Base, Text } from './styles'
