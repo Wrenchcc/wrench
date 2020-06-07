@@ -1,4 +1,4 @@
-import { Appearance } from 'react-native-appearance'
+import { Appearance } from 'react-native'
 import { COLORS } from 'ui/constants'
 import { hasNotch } from 'utils/platform'
 import { STATUS_BAR } from './constants'

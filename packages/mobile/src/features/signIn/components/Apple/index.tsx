@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { useColorScheme } from 'react-native-appearance'
+import { useColorScheme } from 'react-native'
 import { useAuthenticateAppleMutation } from '@wrench/common'
 import { AppNavigation } from 'navigation'
 import AsyncStorage from '@react-native-community/async-storage'

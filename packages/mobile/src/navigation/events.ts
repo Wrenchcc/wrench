@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation'
-import { Appearance } from 'react-native-appearance'
+import { Appearance } from 'react-native'
 import { DARK_THEME, LIGHT_THEME } from '@wrench/ui'
 import { getCurrentUserProjects } from 'gql'
 import { logError } from 'utils/sentry'
