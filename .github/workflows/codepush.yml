@@ -26,9 +26,7 @@ jobs:
           ./tasks/bundle_ios
 
       - name: Deploy to Codepush
-        uses: NishanthShankar/codepush-action@master
-        with:
-          args: release -d Staging -t "*" -a Wrench-app/Wrench -c .codepush 
+        run: npx appcenter release -d Staging -t "*" -a Wrench-app/Wrench -c .codepush 
         env:
           APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN_IOS }}
 
@@ -47,8 +45,6 @@ jobs:
           ./tasks/bundle_android
 
       - name: Deploy to Codepush
-        uses: NishanthShankar/codepush-action@master
-        with:
-          args: release -d Staging -t "*" -a Wrench-app/Wrench-1 -c .codepush 
+        run: npx appcenter release -d Staging -t "*" -a Wrench-app/Wrench-1 -c .codepush 
         env:
-          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN_ANDROID }}
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN_IOS }}
