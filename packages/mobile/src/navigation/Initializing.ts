@@ -34,7 +34,6 @@ function Initializing() {
         AppNavigation(showOnboarding)
 
         if (isAdmin(data.user)) {
-          // For admins
           codePush.sync({
             deploymentKey: isAndroid
               ? Config.CODEPUSH_KEY_ANDROID_STAGING
