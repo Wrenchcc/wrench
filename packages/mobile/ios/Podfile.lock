@@ -414,7 +414,7 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
   - React-jsinspector (0.62.2)
-  - react-native-config (1.2.0):
+  - react-native-config (1.2.1):
     - React
   - react-native-fbsdk (2.0.0):
     - React
@@ -530,9 +530,9 @@ PODS:
     - React
   - RNReanimated (1.4.0):
     - React
-  - RNSentry (1.4.2):
+  - RNSentry (1.4.4):
     - React
-    - Sentry (~> 5.1.1)
+    - Sentry (~> 5.1.4)
   - RNShare (3.3.2):
     - React
   - SDWebImage (5.8.0):
@@ -541,9 +541,9 @@ PODS:
   - SDWebImageWebPCoder (0.4.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.5)
-  - Sentry (5.1.1):
-    - Sentry/Core (= 5.1.1)
-  - Sentry/Core (5.1.1)
+  - Sentry (5.1.4):
+    - Sentry/Core (= 5.1.4)
+  - Sentry/Core (5.1.4)
   - SSZipArchive (2.2.3)
   - UMAppLoader (1.0.2)
   - UMBarCodeScannerInterface (5.1.0)
@@ -908,7 +908,7 @@ SPEC CHECKSUMS:
   React-jsi: b6dc94a6a12ff98e8877287a0b7620d365201161
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
-  react-native-config: 1ad4712773ff7e867b261be0aab293921d4498f9
+  react-native-config: ae9ef3bdbf539f2d14ebaf4ebeba508f766e066a
   react-native-fbsdk: 00c15d138bba6d4efa628670886fc58cec858c19
   react-native-netinfo: cb74e17062b2af5a16a4b137f32495f241df1a8e
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
@@ -933,11 +933,11 @@ SPEC CHECKSUMS:
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNSentry: c4bdecef182912b8d8bb5b626f45da314f047dbd
+  RNSentry: b456e5a6c48517dad1756d5bccffbdc0d2766dcb
   RNShare: bd6518701db274b8ba282b33620885f2225a5bcf
   SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
-  Sentry: a8e37dc33aedb8a53540e36607fc2eaef7c31b4f
+  Sentry: 74f2ad93a20a5567a1badaedf5b3f60b142ad082
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   UMAppLoader: ee77a072f9e15128f777ccd6d2d00f52ab4387e6
   UMBarCodeScannerInterface: 9dc692b87e5f20fe277fa57aa47f45d418c3cc6c
@@ -955,4 +955,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c5b1d3a608005e94f35c27e0f24d95ddf917fd8d
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.8.4
