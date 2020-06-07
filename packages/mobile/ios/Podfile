@@ -80,7 +80,7 @@ target 'Wrench' do
   # react-native-fast-image WebP support
   pod 'SDWebImageWebPCoder'
 
-  # react-native-google-signin
+  # @react-native-community/google-signin
   pod 'GoogleSignIn'
   pod 'Sentry'
 
