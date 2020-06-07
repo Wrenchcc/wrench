@@ -10,11 +10,6 @@ import { isAdmin } from 'utils/permissions'
 import { isAndroid } from 'utils/platform'
 import { AuthNavigation, AppNavigation } from './navigation'
 
-// Codepush keys
-const DEFAULT_DEPLOYMENT_KEY = isAndroid
-  ? Config.CODEPUSH_KEY_ANDROID_PRODUCTION
-  : Config.CODEPUSH_KEY_IOS_PRODUCTION
-
 function Initializing() {
   const loadInitialState = async () => {
     try {
@@ -39,13 +34,19 @@ function Initializing() {
         AppNavigation(showOnboarding)
 
         if (isAdmin(data.user)) {
-          const deploymentKey = isAndroid
-            ? Config.CODEPUSH_KEY_ANDROID_STAGING
-            : Config.CODEPUSH_KEY_IOS_STAGING
-
-          codePush.sync({ deploymentKey })
+          codePush.sync({
+            deploymentKey: isAndroid
+              ? Config.CODEPUSH_KEY_ANDROID_STAGING
+              : Config.CODEPUSH_KEY_IOS_STAGING,
+          })
         }
       } else {
+        codePush.sync({
+          deploymentKey: isAndroid
+            ? Config.CODEPUSH_KEY_ANDROID_PRODUCTION
+            : Config.CODEPUSH_KEY_IOS_PRODUCTION,
+        })
+
         AuthNavigation()
       }
     } catch {
@@ -62,8 +63,4 @@ function Initializing() {
   return null
 }
 
-export default codePush({
-  checkFrequency: codePush.CheckFrequency.ON_APP_START,
-  installMode: codePush.InstallMode.ON_NEXT_RESTART,
-  deploymentKey: DEFAULT_DEPLOYMENT_KEY,
-})(Initializing)
+export default Initializing

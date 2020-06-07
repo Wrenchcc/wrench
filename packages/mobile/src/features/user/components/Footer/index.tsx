@@ -9,9 +9,11 @@ function Footer() {
 
   useEffect(() => {
     async function getVersion() {
-      const result = await codePush.getCurrentPackage()
+      const result = await codePush.getUpdateMetadata()
 
-      setVersion(result.label)
+      if (result) {
+        setVersion(result.label)
+      }
     }
 
     getVersion()
