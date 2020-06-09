@@ -3,7 +3,7 @@ import link from './links'
 import { clearTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
-import { GoogleSignin } from 'react-native-google-signin'
+import { GoogleSignin } from '@react-native-community/google-signin'
 import { AuthNavigation } from 'navigation'
 
 export let client = null

@@ -523,7 +523,7 @@ PODS:
     - React
   - RNGestureHandler (1.6.1):
     - React
-  - RNGoogleSignin (2.1.1):
+  - RNGoogleSignin (4.0.3):
     - GoogleSignIn (~> 5.0.0)
     - React
   - RNPermissions (2.1.5):
@@ -631,7 +631,7 @@ DEPENDENCIES:
   - RNFastImage (from `../../../node_modules/react-native-fast-image`)
   - RNFirebase (from `../../../node_modules/react-native-firebase/ios`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
-  - RNGoogleSignin (from `../../../node_modules/react-native-google-signin`)
+  - "RNGoogleSignin (from `../../../node_modules/@react-native-community/google-signin`)"
   - RNPermissions (from `../../../node_modules/react-native-permissions`)
   - RNReanimated (from `../../../node_modules/react-native-reanimated`)
   - "RNSentry (from `../../../node_modules/@sentry/react-native`)"
@@ -804,7 +804,7 @@ EXTERNAL SOURCES:
   RNGestureHandler:
     :path: "../../../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
-    :path: "../../../node_modules/react-native-google-signin"
+    :path: "../../../node_modules/@react-native-community/google-signin"
   RNPermissions:
     :path: "../../../node_modules/react-native-permissions"
   RNReanimated:
@@ -930,7 +930,7 @@ SPEC CHECKSUMS:
   RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
-  RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
+  RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: b456e5a6c48517dad1756d5bccffbdc0d2766dcb
@@ -953,6 +953,6 @@ SPEC CHECKSUMS:
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c5b1d3a608005e94f35c27e0f24d95ddf917fd8d
+PODFILE CHECKSUM: 0cb256443873d6591fdb60fe5767fe628b4653d9
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
