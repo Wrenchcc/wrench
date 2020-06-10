@@ -3351,10 +3351,10 @@
     lru_map "^0.3.3"
     tslib "^1.9.3"
 
-"@sentry/react-native@^1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-1.4.4.tgz#b5be33d3766a69bcc722b37ec6a1c9080ab0c64e"
-  integrity sha512-PIhq7RGuUTPwxf+33jNHpvv9YZYFih7AtMJeytErgUJghHc4hbI2FztA+mpsjAN0PDcHJPMaul8Ka8HZmA4Log==
+"@sentry/react-native@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-1.4.5.tgz#bbbd431604e8436309c3b385904856708768cb52"
+  integrity sha512-Ruh3992WsaNSDwwV8b3KFyus6INK45ZwG1TvpvJLh/Dsq7YfWcSymdJXPqEI+xSgDSft1qlIbwptyVvLCHMWlA==
   dependencies:
     "@sentry/browser" "^5.16.1"
     "@sentry/core" "^5.16.1"
@@ -18954,10 +18954,10 @@ rambda@^5.6.0:
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-5.6.0.tgz#124146f60af86de336bdc6eaf0ffdc4f2d8517b9"
   integrity sha512-PVmQ1/3ydf32iql5/3VuG0g7IMk+t4ClS5ejupu1Fgbdjm7RN0x92mOhcfFtRc7JZlFAatardJgH3PmcTEIUUg==
 
-rambda@^5.6.1:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/rambda/-/rambda-5.6.1.tgz#3fdba52bf88db2895b40027aea1ecf62c9fb3164"
-  integrity sha512-OXkJT3ke3JAoeXZrBGt1jlIUY+SgX37aXjkWALf9z4UcS/5AZcVQTv8wj3wdqFBJUtgM6OuSdXCSxh7BBqQ1cQ==
+rambda@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-5.6.2.tgz#a746108da2e6fee3b1df25d1e82972f8221887b3"
+  integrity sha512-DH3Uf9g5Xn1suKlaH0EVOXTfTeamvIc7xO2/RtE2Qtfhs58gjnSjoH7w8N2VjSQQqz/5QwKI1EoP6T6G8twbtg==
 
 ramda@^0.21.0:
   version "0.21.0"
@@ -19342,10 +19342,10 @@ react-native-gesture-handler@^1.6.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-navigation@^6.7.1:
-  version "6.7.1"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.1.tgz#4a5470e33380a13aa6ac7ae827390c1c960d00cd"
-  integrity sha512-/gxvjCQwpP0fhzA9uMtjwbF+HO867ahzmMNcch4kdsaS9xvT0gejWjTteCvGVUIX4Z9UaUa9uUf70mywrfs5QQ==
+react-native-navigation@^6.7.2:
+  version "6.7.2"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.2.tgz#f14f57448b20e31bfc82daea0220e4cd73a0f546"
+  integrity sha512-taENL6NWO+fGep070IX6e4VS0B2SEJtHxT+AvVOXUZWOWO6yB9682ckBxpU+aW7NDMr6gOCAz9Cw6uRYJE6OfA==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -19382,10 +19382,10 @@ react-native-responsive-dimensions@^3.1.1:
   resolved "https://registry.yarnpkg.com/react-native-responsive-dimensions/-/react-native-responsive-dimensions-3.1.1.tgz#c4daf977b30a909f21164de53a8ba4c9451efefc"
   integrity sha512-Vo2OhWsphq0HgKsmeZOeyW+c+vsFn1ZaCFkGDgdeCEEiLriT76jGA1JlUjtrj27hvyo/xzeTlBZ+vBso1A84fw==
 
-react-native-share@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-3.3.2.tgz#06d1d3f14ba8eeb95e7e94e4db6a286e9902bd29"
-  integrity sha512-Pvkr62TiCX511RMPL+wvy9Fofre4HQnvUT5zzgPPN3vszP/C8lUb7cmFu/8x5U14t3JQg+xW/svNK5eKNebJKw==
+react-native-share@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-3.3.3.tgz#9f0f7c28c123e5f1d287b7923d505a05fd8bd3e9"
+  integrity sha512-KFyGe7hnD7ZDJCz1kWTI5iv2MfY5weIz+aTzqyomyxxFb73rHlCRHa+NRNYvnpTntOjnqyB0/GFf1W2J9y6vJQ==
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"
@@ -20400,10 +20400,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rn-placeholder@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/rn-placeholder/-/rn-placeholder-3.0.0.tgz#d51063cfc20cf702547205b936d934e92c4941b0"
-  integrity sha512-ydlIDoth4uvj9PPEOZLZxgNtNJlmUR49IGFtRKM7FWcKuMG2hC89kIPa8xRCO5vfxSDPwMGTyshYGGsQXOJJNA==
+rn-placeholder@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/rn-placeholder/-/rn-placeholder-3.0.1.tgz#5073210e9d35791e379df9604414d3c6d531a3ee"
+  integrity sha512-hpJiCiNXMvljCaDFdjLATYmHaU2RZg8Nv+g/VaAdLzGIMlV7/pFxvR4B+tYd93iVOMbHuKDmfqGYobAlTHOVIw==
 
 rsvp@^4.8.4:
   version "4.8.5"
