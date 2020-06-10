@@ -18,7 +18,7 @@ const INITIAL_PAGE_SIZE = 28
 const PAGE_SIZE = 48
 const SNAP_TO_OFFSET = width + MARGIN
 
-const keyExtractor = item => item.uri
+const keyExtractor = (item) => item.uri
 
 const getItemLayout = (_, index) => ({
   index,
@@ -35,7 +35,7 @@ function List({ album, ListHeaderComponent }) {
   const ref = useRef()
   const { t } = useTranslation()
 
-  const { selectedFiles, onSelect, deselectAll } = usePostStore(store => ({
+  const { selectedFiles, onSelect, deselectAll } = usePostStore((store) => ({
     deselectAll: store.actions.deselectAll,
     onSelect: store.actions.onSelect,
     selectedFiles: store.selectedFiles,
@@ -46,6 +46,7 @@ function List({ album, ListHeaderComponent }) {
       const result = await MediaLibrary.getAssetsAsync({
         album,
         first: INITIAL_PAGE_SIZE,
+        sortBy: [[MediaLibrary.SortBy.creationTime, false]],
       })
 
       setAssets(result.assets)
@@ -57,7 +58,7 @@ function List({ album, ListHeaderComponent }) {
   }, [album, setAssets, setHasNextPage, setEndCursor])
 
   const fetchMoreAssets = useCallback(
-    async after => {
+    async (after) => {
       if (!hasNextPage) {
         return
       }
@@ -70,11 +71,12 @@ function List({ album, ListHeaderComponent }) {
           after,
           album,
           first: PAGE_SIZE,
+          sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
 
         // NOTE: Dirty fix for fetching same data
         if (after !== lastEndCursor) {
-          setAssets(p => p.concat(result.assets))
+          setAssets((p) => p.concat(result.assets))
         }
 
         setHasNextPage(result.hasNextPage)
@@ -116,8 +118,8 @@ function List({ album, ListHeaderComponent }) {
   }, [ref])
 
   const handleOnSelect = useCallback(
-    item => {
-      const selected = selectedFiles.some(file => file.id === item.id)
+    (item) => {
+      const selected = selectedFiles.some((file) => file.id === item.id)
 
       if (!selected && selectedFiles.length !== MAX_SELECTED_FILES) {
         scrollToTop()
@@ -135,7 +137,7 @@ function List({ album, ListHeaderComponent }) {
 
   const renderItem = ({ item }) => {
     const order = findIndex(propEq('id', item.id))(selectedFiles)
-    const selected = selectedFiles.some(file => file.id === item.id)
+    const selected = selectedFiles.some((file) => file.id === item.id)
     return <MediaItem item={item} onPress={handleOnSelect} order={order + 1} selected={selected} />
   }
 

@@ -18,10 +18,11 @@ function Albums({ onPress }) {
       })
 
       const data = await Promise.all(
-        albums.map(async album => {
+        albums.map(async (album) => {
           const result = await MediaLibrary.getAssetsAsync({
             album: album.id,
             first: 1,
+            sortBy: [[MediaLibrary.SortBy.creationTime, false]],
           })
 
           return {
@@ -32,7 +33,7 @@ function Albums({ onPress }) {
         })
       )
 
-      setAlbums(data.filter(a => a.totalCount > 0).sort((a, b) => b.assetCount - a.assetCount))
+      setAlbums(data.filter((a) => a.totalCount > 0).sort((a, b) => b.assetCount - a.assetCount))
     } catch (err) {
       logError(err)
     }
