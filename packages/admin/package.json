@@ -16,6 +16,7 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@wrench/common": "1.0.0",
+    "ms": "^2.1.2",
     "react": "^16.13.1",
     "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
