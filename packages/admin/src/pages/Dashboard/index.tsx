@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react'
+import ms from 'ms'
 import styled from 'styled-components'
 import { useMetaQuery, useGrowthQuery } from '@wrench/common'
 import Layout from '../../components/Layout'
@@ -63,14 +64,19 @@ export const Yey = styled.div`
 `
 
 function Dashboard() {
-  const { data, loading } = useMetaQuery()
+  const { data, loading } = useMetaQuery({
+    pollInterval: ms('1m'),
+  })
+
   const { data: userData } = useGrowthQuery({
+    pollInterval: ms('1m'),
     variables: {
       type: 'USERS',
     },
   })
 
   const { data: projectData } = useGrowthQuery({
+    pollInterval: ms('1m'),
     variables: {
       type: 'PROJECTS',
     },
