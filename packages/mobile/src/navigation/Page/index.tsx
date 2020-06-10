@@ -16,7 +16,7 @@ function Page({
   headerAnimation,
   view,
 }) {
-  const scrollRef = useRef()
+  const scrollRef = useRef(null)
   const scrollY = useRef(new Value(-NAVIGATION.LIST_OFFSET))
 
   const scrollToTop = useCallback(() => {

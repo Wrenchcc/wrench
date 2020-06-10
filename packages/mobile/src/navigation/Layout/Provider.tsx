@@ -38,7 +38,7 @@ function Provider({ children, extraContentInset }) {
   const clock = useRef(new Clock())
   const scrollYClamped = useRef(new Value(0))
   const scrollYDiff = useRef(new Value(0))
-  const dragging = useRef(new Value(0))
+  const dragging = useRef<Animated.Value<0 | 1>>(new Value(0))
   const translateY = useRef(new Value(0))
   const endDragVelocity = useRef(new Value(0))
   const translateYSnap = useRef(new Value(0))
