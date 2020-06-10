@@ -4,9 +4,12 @@ import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import { componentId } from './events'
 
-let mention
+let mention: boolean
 
-export function navigateWithoutContext(screen, { options, ...passProps } = {}) {
+export function navigateWithoutContext(
+  screen: SCREENS,
+  { options, ...passProps } = { options: {} }
+) {
   Navigation.push(componentId, {
     component: {
       name: screen,
@@ -24,7 +27,7 @@ export function selectTabIndex(currentTabIndex) {
   })
 }
 
-export function showModal(screen, { options, ...passProps } = {}) {
+export function showModal(screen, { options, ...passProps } = { options: {} }) {
   Navigation.showModal({
     stack: {
       children: [

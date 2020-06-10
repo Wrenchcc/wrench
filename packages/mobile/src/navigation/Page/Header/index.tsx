@@ -9,6 +9,17 @@ import { Base, Inner, Left, Right } from './styles'
 
 const { interpolate, Extrapolate } = Animated
 
+type HeaderProps = {
+  scrollY: Animated.Adaptable<number>
+  headerTitle: string
+  headerLeft?: React.ReactNode
+  headerRight: React.ReactNode
+  headerSubTitle?: string
+  headerAnimation?: boolean
+  onPress: () => void
+  inline?: boolean
+}
+
 function Header({
   scrollY,
   headerTitle,
@@ -18,7 +29,7 @@ function Header({
   headerAnimation = true,
   onPress,
   inline,
-}) {
+}: HeaderProps) {
   const { navigateBack } = useNavigation()
   const handleNavigation = useCallback(() => navigateBack(), [])
 

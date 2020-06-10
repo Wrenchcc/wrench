@@ -1,3 +1,3 @@
 import React from 'react'
 
-export const NavigationContext = React.createContext()
+export const NavigationContext = React.createContext(null)

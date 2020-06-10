@@ -40,7 +40,7 @@ export function AuthNavigation() {
   })
 }
 
-export function AppNavigation(onboarding) {
+export function AppNavigation(onboarding: boolean) {
   Navigation.setDefaultOptions(defaultOptions)
 
   if (onboarding) {

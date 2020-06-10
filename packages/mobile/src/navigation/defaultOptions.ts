@@ -1,4 +1,5 @@
 import { Appearance } from 'react-native'
+import { Options } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { hasNotch } from 'utils/platform'
 import { STATUS_BAR } from './constants'
@@ -39,4 +40,4 @@ export default {
   navigationBar: {
     backgroundColor: COLORS.DARK,
   },
-}
+} as Options
