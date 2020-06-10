@@ -1,11 +1,10 @@
 // @ts-nocheck
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloClient, HttpLink, InMemoryCache, ApolloLink } from '@apollo/client'
+import { ApolloClient, Observable, HttpLink, InMemoryCache, ApolloLink } from '@apollo/client'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { Observable } from 'apollo-link'
-import { onError } from 'apollo-link-error'
-import { setContext } from 'apollo-link-context'
+import { setContext } from '@apollo/link-context'
+import { onError } from '@apollo/link-error'
 import { RefreshTokenDocument } from '@wrench/common'
 
 import App from './App'
@@ -23,6 +22,10 @@ const refreshLink = onError(({ graphQLErrors, operation, forward }) => {
         try {
           const refreshToken = JSON.parse(window.localStorage.getItem('refresh_token'))
           const { headers } = operation.getContext()
+
+          if (!refreshToken) {
+            return null
+          }
 
           return client
             .mutate({

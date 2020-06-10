@@ -22,7 +22,9 @@ function App() {
   const [isAuthenticated, setAuthenticated] = useState(!!accessToken)
 
   useEffect(() => {
-    loadUser()
+    if (isAuthenticated) {
+      loadUser()
+    }
   }, [isAuthenticated, loadUser])
 
   if (loading) {

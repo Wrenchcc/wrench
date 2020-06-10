@@ -8,13 +8,14 @@
     "deploy": "serverless"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-rc.0",
+    "@apollo/client": "^3.0.0-rc.2",
+    "@apollo/link-context": "^2.0.0-beta.3",
+    "@apollo/link-error": "^2.0.0-beta.3",
     "@apollo/react-hooks": "^3.1.5",
     "@types/node": "^14.0.5",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@wrench/common": "1.0.0",
-    "apollo-link-context": "^1.0.20",
     "react": "^16.13.1",
     "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
@@ -45,9 +46,9 @@
     ]
   },
   "devDependencies": {
-    "webpack": "4.42.0",
     "@types/react-router-dom": "^5.1.5",
     "@types/recharts": "^1.8.10",
-    "serverless": "^1.71.3"
+    "serverless": "^1.71.3",
+    "webpack": "4.42.0"
   }
 }
