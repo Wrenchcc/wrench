@@ -1,6 +1,7 @@
-import React, { useCallback, useRef, memo } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
 import { useLikePostMutation } from '@wrench/common'
+import * as Haptics from 'expo-haptics'
 import { useTranslation } from 'react-i18next'
 import { Icon, Text } from 'ui'
 import { spark } from 'images'
@@ -25,6 +26,10 @@ function LikePost({ post }) {
       duration: 330,
       useNativeDriver: true,
     }).start()
+
+    if (!post.likes.isLiked) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+    }
 
     toggleLike({
       variables: {
@@ -62,4 +67,4 @@ function LikePost({ post }) {
   )
 }
 
-export default memo(LikePost)
+export default LikePost

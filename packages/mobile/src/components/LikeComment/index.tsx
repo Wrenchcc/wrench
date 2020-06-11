@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
+import * as Haptics from 'expo-haptics'
 import { useLikeCommentMutation } from '@wrench/common'
 import { Icon } from 'ui'
 import { sparkSmall } from 'images'
@@ -23,6 +24,10 @@ function LikeComment({ comment }) {
       duration: 330,
       useNativeDriver: true,
     }).start()
+
+    if (!comment.likes.isLiked) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+    }
 
     toggleLike({
       variables: {
