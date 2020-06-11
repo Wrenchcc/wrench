@@ -23,17 +23,17 @@ const [usePostStore, api] = create((set, get) => ({
   ...initialState,
 
   actions: {
-    addFiles: payload =>
+    addFiles: (payload) =>
       set({
         files: payload,
       }),
 
-    onSelect: async payload => {
+    onSelect: async (payload) => {
       const state = get()
 
       const currentId = payload.id
       const selectedFiles = state.selectedFiles
-      const isAdded = selectedFiles.some(file => file.id === currentId)
+      const isAdded = selectedFiles.some((file) => file.id === currentId)
       const isPrevious = state.selectedId === currentId
       const currentIndex = findIndex(propEq('id', currentId))(selectedFiles)
 
@@ -56,9 +56,16 @@ const [usePostStore, api] = create((set, get) => ({
         return state
       }
 
+      if (!isPrevious && isAdded) {
+        return set({
+          selectedFiles,
+          selectedId: currentId,
+        })
+      }
+
       const updatedFiles =
         isPrevious && isAdded
-          ? selectedFiles.filter(file => file.id !== currentId)
+          ? selectedFiles.filter((file) => file.id !== currentId)
           : selectedFiles.concat(payload)
 
       const selectedId = isPrevious
@@ -72,8 +79,8 @@ const [usePostStore, api] = create((set, get) => ({
       })
     },
 
-    onEdit: payload =>
-      set(state => {
+    onEdit: (payload) =>
+      set((state) => {
         const currentIndex = findIndex(propEq('id', state.selectedId))(state.selectedFiles)
         return {
           selectedFiles: assocPath([currentIndex, 'crop'], payload, state.selectedFiles),
@@ -94,7 +101,7 @@ const [usePostStore, api] = create((set, get) => ({
         [POST.SELECTED_ID]: null,
       }),
 
-    setIsPosting: payload => set({ isPosting: payload }),
+    setIsPosting: (payload) => set({ isPosting: payload }),
 
     update: async (field, payload) => {
       if (field === POST.PROJECT_ID) {
