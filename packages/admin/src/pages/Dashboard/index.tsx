@@ -83,7 +83,7 @@ function Dashboard() {
   })
 
   return (
-    <Layout title="Hightlights">
+    <Layout title="Highlights">
       <Row>
         {loading ? (
           <PlaceholderBox />

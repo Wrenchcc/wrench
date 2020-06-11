@@ -2,137 +2,401 @@ import gql from 'graphql-tag';
 import * as ApolloReactCommon from '@apollo/react-common';
 import * as ApolloReactHooks from '@apollo/react-hooks';
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string,
-  String: string,
-  Boolean: boolean,
-  Int: number,
-  Float: number,
-  Date: any,
-  LowercaseString: any,
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
+  /** Date custom scalar type */
+  Date: any;
+  /** Returns all strings in lower case */
+  LowercaseString: any;
 };
 
-export type AccessToken = {
-   __typename?: 'AccessToken',
-  access_token?: Maybe<Scalars['String']>,
+export type Query = {
+  __typename?: 'Query';
+  dummy?: Maybe<Scalars['String']>;
+  comments?: Maybe<CommentConnection>;
+  recentComments?: Maybe<CommentConnection>;
+  comment?: Maybe<Comment>;
+  feed?: Maybe<Feed>;
+  files?: Maybe<FileConnection>;
+  followers?: Maybe<FollowersConnection>;
+  notifications?: Maybe<NotificationsConnection>;
+  post?: Maybe<Post>;
+  posts?: Maybe<PostConnection>;
+  project?: Maybe<Project>;
+  projects?: Maybe<ProjectsConnection>;
+  projectSuggestions?: Maybe<Array<Maybe<ProjectSuggestionsConnection>>>;
+  similarProjects?: Maybe<ProjectsConnection>;
+  projectTypes?: Maybe<Array<Maybe<ProjectType>>>;
+  search?: Maybe<SearchResults>;
+  user?: Maybe<User>;
+  users?: Maybe<UserConnection>;
+  currentUser?: Maybe<User>;
+  meta?: Maybe<Meta>;
+  growth?: Maybe<Array<Maybe<GrowthData>>>;
+  hashtag?: Maybe<Hashtag>;
 };
 
-export type ApplePayload = {
-  firstName?: Maybe<Scalars['String']>,
-  lastName?: Maybe<Scalars['String']>,
+
+export type QueryCommentsArgs = {
+  postId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
-export type Brand = {
-   __typename?: 'Brand',
-  id: Scalars['ID'],
-  name?: Maybe<Scalars['String']>,
+
+export type QueryRecentCommentsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCommentArgs = {
+  id: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryFilesArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['Int']>;
+  type?: Maybe<FileType>;
+};
+
+
+export type QueryFollowersArgs = {
+  projectId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryNotificationsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryPostArgs = {
+  id?: Maybe<Scalars['ID']>;
+};
+
+
+export type QueryPostsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryProjectArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+};
+
+
+export type QueryProjectsArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  type: ProjectSortType;
+  typeId?: Maybe<Scalars['ID']>;
+};
+
+
+export type QueryProjectSuggestionsArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+export type QuerySimilarProjectsArgs = {
+  id: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+export type QuerySearchArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+  query: Scalars['String'];
+  type: SearchType;
+};
+
+
+export type QueryUserArgs = {
+  id?: Maybe<Scalars['ID']>;
+  username?: Maybe<Scalars['LowercaseString']>;
+};
+
+
+export type QueryUsersArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCurrentUserArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryGrowthArgs = {
+  type: GrowthType;
+  startDate?: Maybe<Scalars['Date']>;
+  endDate?: Maybe<Scalars['Date']>;
+};
+
+
+export type QueryHashtagArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+};
+
+export type CommentConnection = {
+  __typename?: 'CommentConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CommentEdge>>;
+};
+
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  hasNextPage?: Maybe<Scalars['Boolean']>;
+  hasPreviousPage?: Maybe<Scalars['Boolean']>;
+};
+
+export type CommentEdge = {
+  __typename?: 'CommentEdge';
+  cursor: Scalars['String'];
+  node: Comment;
 };
 
 export type Comment = {
-   __typename?: 'Comment',
-  id?: Maybe<Scalars['ID']>,
-  commentId?: Maybe<Scalars['ID']>,
-  createdAt?: Maybe<Scalars['Date']>,
-  updatedAt?: Maybe<Scalars['Date']>,
-  text: Scalars['String'],
-  user?: Maybe<User>,
-  postId?: Maybe<Scalars['ID']>,
-  permissions?: Maybe<CommentPermissions>,
-  repliesConnection?: Maybe<CommentConnection>,
-  likes?: Maybe<Likes>,
+  __typename?: 'Comment';
+  id?: Maybe<Scalars['ID']>;
+  commentId?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  text: Scalars['String'];
+  user?: Maybe<User>;
+  postId?: Maybe<Scalars['ID']>;
+  permissions?: Maybe<CommentPermissions>;
+  repliesConnection?: Maybe<CommentConnection>;
+  likes?: Maybe<Likes>;
 };
 
 
 export type CommentRepliesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
-export type CommentConnection = {
-   __typename?: 'CommentConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<CommentEdge>>,
+
+export type User = {
+  __typename?: 'User';
+  id: Scalars['ID'];
+  username?: Maybe<Scalars['LowercaseString']>;
+  createdAt: Scalars['Date'];
+  updatedAt: Scalars['Date'];
+  fullName?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  avatarUrl?: Maybe<Scalars['String']>;
+  projectCount?: Maybe<Scalars['Int']>;
+  interestedIn?: Maybe<Array<Maybe<ProjectType>>>;
+  settings?: Maybe<UserSettings>;
+  dynamicLink?: Maybe<Scalars['String']>;
+  isOnline?: Maybe<Scalars['Boolean']>;
+  lastSeen?: Maybe<Scalars['Date']>;
+  website?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  isSilhouette?: Maybe<Scalars['Boolean']>;
+  role?: Maybe<UserRole>;
+  projectsConnection?: Maybe<ProjectsConnection>;
+  followingProjects?: Maybe<ProjectsConnection>;
+  postsConnection?: Maybe<PostConnection>;
 };
 
-export type CommentEdge = {
-   __typename?: 'CommentEdge',
-  cursor: Scalars['String'],
-  node: Comment,
+
+export type UserProjectsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
-export type CommentInput = {
-  text: Scalars['String'],
+
+export type UserFollowingProjectsArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
-export type CommentPermissions = {
-   __typename?: 'CommentPermissions',
-  isOwner?: Maybe<Scalars['Boolean']>,
+
+export type UserPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type ProjectType = {
+  __typename?: 'ProjectType';
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  imageUrl: Scalars['String'];
+};
+
+export type UserSettings = {
+  __typename?: 'UserSettings';
+  locale?: Maybe<Scalars['String']>;
+  timezone?: Maybe<Scalars['String']>;
+  notifications?: Maybe<UserNotificationsSettings>;
+};
+
+export type UserNotificationsSettings = {
+  __typename?: 'UserNotificationsSettings';
+  types?: Maybe<NotificationSettingsType>;
+};
+
+export type NotificationSettingsType = {
+  __typename?: 'NotificationSettingsType';
+  NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
+  NEW_COMMENT?: Maybe<NotificationKindSettings>;
+  NEW_MENTION?: Maybe<NotificationKindSettings>;
+  NEW_ARTICLE?: Maybe<NotificationKindSettings>;
+  SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
+  PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
+};
+
+export type NotificationKindSettings = {
+  __typename?: 'NotificationKindSettings';
+  email?: Maybe<Scalars['Boolean']>;
+  push?: Maybe<Scalars['Boolean']>;
+};
+
+export enum UserRole {
+  User = 'USER',
+  Admin = 'ADMIN'
+}
+
+export type ProjectsConnection = {
+  __typename?: 'ProjectsConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<ProjectEdge>>;
+};
+
+export type ProjectEdge = {
+  __typename?: 'ProjectEdge';
+  cursor: Scalars['String'];
+  node: Project;
+};
+
+export type Project = {
+  __typename?: 'Project';
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  dynamicLink?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  projectPermissions?: Maybe<ProjectPermissions>;
+  permissions?: Maybe<ProjectPermissions>;
+  commentsDisabled?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<ProjectType>;
+  cover?: Maybe<CoverType>;
+  model?: Maybe<Model>;
+  filesConnection?: Maybe<FileConnection>;
+  followersConnection?: Maybe<FollowersConnection>;
+  postsConnection?: Maybe<PostConnection>;
+};
+
+
+export type ProjectFilesConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
+};
+
+
+export type ProjectFollowersConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+export type ProjectPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type ProjectPermissions = {
+  __typename?: 'ProjectPermissions';
+  isFollower?: Maybe<Scalars['Boolean']>;
+  isOwner?: Maybe<Scalars['Boolean']>;
 };
 
 export type CoverType = {
-   __typename?: 'CoverType',
-  uri?: Maybe<Scalars['String']>,
-  default?: Maybe<Scalars['Boolean']>,
+  __typename?: 'CoverType';
+  uri?: Maybe<Scalars['String']>;
+  default?: Maybe<Scalars['Boolean']>;
 };
 
-
-export type EditPostInput = {
-  caption?: Maybe<Scalars['String']>,
+export type Model = {
+  __typename?: 'Model';
+  id: Scalars['ID'];
+  brand?: Maybe<Brand>;
+  model?: Maybe<Scalars['String']>;
+  year?: Maybe<Scalars['Int']>;
 };
 
-export type EditUserInput = {
-  firstName?: Maybe<Scalars['String']>,
-  lastName?: Maybe<Scalars['String']>,
-  interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>,
-  timezone?: Maybe<Scalars['String']>,
-  locale?: Maybe<Scalars['String']>,
-  location?: Maybe<Scalars['String']>,
-  bio?: Maybe<Scalars['String']>,
-  website?: Maybe<Scalars['String']>,
-  avatarUrl?: Maybe<Scalars['String']>,
-  username?: Maybe<Scalars['String']>,
-};
-
-export type Feed = {
-   __typename?: 'Feed',
-  postsConnection?: Maybe<PostConnection>,
-};
-
-
-export type FeedPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-export type File = {
-   __typename?: 'File',
-  id?: Maybe<Scalars['ID']>,
-  type?: Maybe<FileType>,
-  uri: Scalars['String'],
-  createdAt?: Maybe<Scalars['Date']>,
-  updatedAt?: Maybe<Scalars['Date']>,
-};
-
-export type FileConnection = {
-   __typename?: 'FileConnection',
-  edges?: Maybe<Array<Maybe<FileEdge>>>,
-  pageInfo: PageInfo,
-};
-
-export type FileEdge = {
-   __typename?: 'FileEdge',
-  cursor: Scalars['String'],
-  node: File,
-};
-
-export type FileInput = {
-  filename: Scalars['String'],
+export type Brand = {
+  __typename?: 'Brand';
+  id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
 };
 
 export enum FileType {
@@ -140,306 +404,146 @@ export enum FileType {
   Video = 'VIDEO'
 }
 
+export type FileConnection = {
+  __typename?: 'FileConnection';
+  edges?: Maybe<Array<Maybe<FileEdge>>>;
+  pageInfo: PageInfo;
+};
+
+export type FileEdge = {
+  __typename?: 'FileEdge';
+  cursor: Scalars['String'];
+  node: File;
+};
+
+export type File = {
+  __typename?: 'File';
+  id?: Maybe<Scalars['ID']>;
+  type?: Maybe<FileType>;
+  uri: Scalars['String'];
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+};
+
 export type FollowersConnection = {
-   __typename?: 'FollowersConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<FollowersEdge>>,
+  __typename?: 'FollowersConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<FollowersEdge>>;
 };
 
 export type FollowersEdge = {
-   __typename?: 'FollowersEdge',
-  cursor: Scalars['String'],
-  node: User,
+  __typename?: 'FollowersEdge';
+  cursor: Scalars['String'];
+  node: User;
 };
 
-export type GrowthData = {
-   __typename?: 'GrowthData',
-  date?: Maybe<Scalars['Date']>,
-  count?: Maybe<Scalars['Int']>,
+export type PostConnection = {
+  __typename?: 'PostConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<PostEdge>>;
 };
 
-export enum GrowthType {
-  Projects = 'PROJECTS',
-  Users = 'USERS'
-}
+export type PostEdge = {
+  __typename?: 'PostEdge';
+  cursor: Scalars['String'];
+  node: Post;
+};
 
-export type Hashtag = {
-   __typename?: 'Hashtag',
-  id?: Maybe<Scalars['ID']>,
-  name?: Maybe<Scalars['String']>,
-  slug?: Maybe<Scalars['LowercaseString']>,
-  totalCount?: Maybe<Scalars['Int']>,
-  createdAt?: Maybe<Scalars['Date']>,
-  updatedAt?: Maybe<Scalars['Date']>,
-  postsConnection?: Maybe<PostConnection>,
+export type Post = {
+  __typename?: 'Post';
+  id?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  caption?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  project?: Maybe<Project>;
+  postPermissions?: Maybe<PostPermissions>;
+  permissions?: Maybe<PostPermissions>;
+  likes?: Maybe<Likes>;
+  filesConnection?: Maybe<FileConnection>;
+  commentsConnection?: Maybe<CommentConnection>;
 };
 
 
-export type HashtagPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
+export type PostFilesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
 };
 
-export type HashtagConnection = {
-   __typename?: 'HashtagConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<HashtagEdge>>,
+
+export type PostCommentsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
-export type HashtagEdge = {
-   __typename?: 'HashtagEdge',
-  cursor: Scalars['String'],
-  node: Hashtag,
+export type PostPermissions = {
+  __typename?: 'PostPermissions';
+  isOwner?: Maybe<Scalars['Boolean']>;
 };
 
 export type Likes = {
-   __typename?: 'Likes',
-  totalCount?: Maybe<Scalars['Int']>,
-  isLiked?: Maybe<Scalars['Boolean']>,
+  __typename?: 'Likes';
+  totalCount?: Maybe<Scalars['Int']>;
+  isLiked?: Maybe<Scalars['Boolean']>;
+};
+
+export type CommentPermissions = {
+  __typename?: 'CommentPermissions';
+  isOwner?: Maybe<Scalars['Boolean']>;
+};
+
+export type Feed = {
+  __typename?: 'Feed';
+  postsConnection?: Maybe<PostConnection>;
 };
 
 
-export type Meta = {
-   __typename?: 'Meta',
-  isAdmin?: Maybe<Scalars['Boolean']>,
-  totalUsers?: Maybe<Scalars['Int']>,
-  totalProjects?: Maybe<Scalars['Int']>,
-  totalPosts?: Maybe<Scalars['Int']>,
-  totalComments?: Maybe<Scalars['Int']>,
-  totalFiles?: Maybe<Scalars['Int']>,
-  totalUsersToday?: Maybe<Scalars['Int']>,
-  totalProjectsToday?: Maybe<Scalars['Int']>,
-  totalPostsToday?: Maybe<Scalars['Int']>,
-  totalCommentsToday?: Maybe<Scalars['Int']>,
-  totalFilesToday?: Maybe<Scalars['Int']>,
+export type FeedPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
-export type Model = {
-   __typename?: 'Model',
-  id: Scalars['ID'],
-  brand?: Maybe<Brand>,
-  model?: Maybe<Scalars['String']>,
-  year?: Maybe<Scalars['Int']>,
+export type NotificationsConnection = {
+  __typename?: 'NotificationsConnection';
+  unreadCount?: Maybe<Scalars['Int']>;
+  pageInfo?: Maybe<PageInfo>;
+  edges?: Maybe<Array<Maybe<NotificationEdge>>>;
 };
 
-export type Mutation = {
-   __typename?: 'Mutation',
-  dummy?: Maybe<Scalars['String']>,
-  authenticateApple?: Maybe<Tokens>,
-  authenticateFacebook?: Maybe<Tokens>,
-  authenticateGoogle?: Maybe<Tokens>,
-  refreshToken?: Maybe<AccessToken>,
-  addComment?: Maybe<Comment>,
-  editComment?: Maybe<Comment>,
-  deleteComment?: Maybe<Scalars['Boolean']>,
-  sendPromo?: Maybe<Scalars['Boolean']>,
-  likePost?: Maybe<Post>,
-  likeComment?: Maybe<Comment>,
-  markAllNotificationsSeen?: Maybe<Scalars['Boolean']>,
-  markNotificationSeen?: Maybe<Notification>,
-  deleteNotification?: Maybe<Scalars['Boolean']>,
-  deletePost?: Maybe<Post>,
-  addPost?: Maybe<Post>,
-  editPost?: Maybe<Post>,
-  followProject?: Maybe<Project>,
-  addProject?: Maybe<Project>,
-  editProject?: Maybe<Project>,
-  deleteProject?: Maybe<Scalars['Boolean']>,
-  preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>,
-  preSignUrl?: Maybe<PreSignedUrl>,
-  editUser?: Maybe<User>,
-  toggleNotificationSettings?: Maybe<User>,
-  registerDeviceToken?: Maybe<Scalars['Boolean']>,
-  banUser?: Maybe<Scalars['Boolean']>,
-  deleteCurrentUser?: Maybe<Scalars['Boolean']>,
-};
-
-
-export type MutationAuthenticateAppleArgs = {
-  identityToken: Scalars['String'],
-  user: ApplePayload
-};
-
-
-export type MutationAuthenticateFacebookArgs = {
-  token: Scalars['String']
-};
-
-
-export type MutationAuthenticateGoogleArgs = {
-  idToken: Scalars['String']
-};
-
-
-export type MutationRefreshTokenArgs = {
-  refreshToken: Scalars['String']
-};
-
-
-export type MutationAddCommentArgs = {
-  postId: Scalars['ID'],
-  commentId?: Maybe<Scalars['ID']>,
-  input: CommentInput
-};
-
-
-export type MutationEditCommentArgs = {
-  id: Scalars['ID'],
-  input: CommentInput
-};
-
-
-export type MutationDeleteCommentArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationSendPromoArgs = {
-  number: Scalars['String']
-};
-
-
-export type MutationLikePostArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationLikeCommentArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationMarkNotificationSeenArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationDeleteNotificationArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationDeletePostArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationAddPostArgs = {
-  input: PostInput
-};
-
-
-export type MutationEditPostArgs = {
-  id: Scalars['ID'],
-  input: EditPostInput
-};
-
-
-export type MutationFollowProjectArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationAddProjectArgs = {
-  input: ProjectInput
-};
-
-
-export type MutationEditProjectArgs = {
-  id: Scalars['ID'],
-  input: ProjectInput
-};
-
-
-export type MutationDeleteProjectArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MutationPreSignUrlsArgs = {
-  input?: Maybe<Array<Maybe<PreSignedUrlnput>>>
-};
-
-
-export type MutationPreSignUrlArgs = {
-  input: PreSignedUrlInput
-};
-
-
-export type MutationEditUserArgs = {
-  input: EditUserInput,
-  id?: Maybe<Scalars['ID']>
-};
-
-
-export type MutationToggleNotificationSettingsArgs = {
-  input?: Maybe<ToggleNotificationSettingsInput>
-};
-
-
-export type MutationRegisterDeviceTokenArgs = {
-  token: Scalars['String'],
-  platform: PlatformType
-};
-
-
-export type MutationBanUserArgs = {
-  userId: Scalars['ID']
+export type NotificationEdge = {
+  __typename?: 'NotificationEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<Notification>;
 };
 
 export type Notification = {
-   __typename?: 'Notification',
-  id: Scalars['ID'],
-  user: User,
-  type?: Maybe<NotificationTypes>,
-  project?: Maybe<Project>,
-  post?: Maybe<Post>,
-  comment?: Maybe<Comment>,
-  isSeen: Scalars['Boolean'],
-  createdAt: Scalars['Date'],
-  updatedAt: Scalars['Date'],
-  filesConnection?: Maybe<FileConnection>,
+  __typename?: 'Notification';
+  id: Scalars['ID'];
+  user: User;
+  type?: Maybe<NotificationTypes>;
+  project?: Maybe<Project>;
+  post?: Maybe<Post>;
+  comment?: Maybe<Comment>;
+  isSeen: Scalars['Boolean'];
+  createdAt: Scalars['Date'];
+  updatedAt: Scalars['Date'];
+  filesConnection?: Maybe<FileConnection>;
 };
 
 
 export type NotificationFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  reverse?: Maybe<Scalars['Boolean']>,
-  type?: Maybe<FileType>
-};
-
-export type NotificationEdge = {
-   __typename?: 'NotificationEdge',
-  cursor?: Maybe<Scalars['String']>,
-  node?: Maybe<Notification>,
-};
-
-export type NotificationKindSettings = {
-   __typename?: 'NotificationKindSettings',
-  email?: Maybe<Scalars['Boolean']>,
-  push?: Maybe<Scalars['Boolean']>,
-};
-
-export type NotificationsConnection = {
-   __typename?: 'NotificationsConnection',
-  unreadCount?: Maybe<Scalars['Int']>,
-  pageInfo?: Maybe<PageInfo>,
-  edges?: Maybe<Array<Maybe<NotificationEdge>>>,
-};
-
-export type NotificationSettingsType = {
-   __typename?: 'NotificationSettingsType',
-  NEW_FOLLOWER?: Maybe<NotificationKindSettings>,
-  NEW_COMMENT?: Maybe<NotificationKindSettings>,
-  NEW_MENTION?: Maybe<NotificationKindSettings>,
-  NEW_ARTICLE?: Maybe<NotificationKindSettings>,
-  SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>,
-  PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>,
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
 };
 
 export enum NotificationTypes {
@@ -451,363 +555,17 @@ export enum NotificationTypes {
   NewReply = 'NEW_REPLY'
 }
 
-export type PageInfo = {
-   __typename?: 'PageInfo',
-  hasNextPage?: Maybe<Scalars['Boolean']>,
-  hasPreviousPage?: Maybe<Scalars['Boolean']>,
-};
-
-export enum PlatformType {
-  Mobile = 'MOBILE',
-  Web = 'WEB'
-}
-
-export type Post = {
-   __typename?: 'Post',
-  id?: Maybe<Scalars['ID']>,
-  createdAt?: Maybe<Scalars['Date']>,
-  updatedAt?: Maybe<Scalars['Date']>,
-  caption?: Maybe<Scalars['String']>,
-  user?: Maybe<User>,
-  project?: Maybe<Project>,
-  postPermissions?: Maybe<PostPermissions>,
-  permissions?: Maybe<PostPermissions>,
-  likes?: Maybe<Likes>,
-  filesConnection?: Maybe<FileConnection>,
-  commentsConnection?: Maybe<CommentConnection>,
-};
-
-
-export type PostFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  reverse?: Maybe<Scalars['Boolean']>,
-  type?: Maybe<FileType>
-};
-
-
-export type PostCommentsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-export type PostConnection = {
-   __typename?: 'PostConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<PostEdge>>,
-};
-
-export type PostEdge = {
-   __typename?: 'PostEdge',
-  cursor: Scalars['String'],
-  node: Post,
-};
-
-export type PostInput = {
-  projectId: Scalars['ID'],
-  caption?: Maybe<Scalars['String']>,
-  files: Array<Maybe<FileInput>>,
-};
-
-export type PostPermissions = {
-   __typename?: 'PostPermissions',
-  isOwner?: Maybe<Scalars['Boolean']>,
-};
-
-export type PreSignedUrl = {
-   __typename?: 'PreSignedUrl',
-  url?: Maybe<Scalars['String']>,
-  type?: Maybe<Scalars['String']>,
-  id?: Maybe<Scalars['ID']>,
-  filename?: Maybe<Scalars['String']>,
-};
-
-export type PreSignedUrlInput = {
-  type: UploadType,
-  path: Scalars['String'],
-};
-
-export type PreSignedUrlnput = {
-  type: UploadType,
-};
-
-export type Project = {
-   __typename?: 'Project',
-  id?: Maybe<Scalars['ID']>,
-  slug?: Maybe<Scalars['String']>,
-  title?: Maybe<Scalars['String']>,
-  createdAt?: Maybe<Scalars['Date']>,
-  updatedAt?: Maybe<Scalars['Date']>,
-  dynamicLink?: Maybe<Scalars['String']>,
-  user?: Maybe<User>,
-  projectPermissions?: Maybe<ProjectPermissions>,
-  permissions?: Maybe<ProjectPermissions>,
-  commentsDisabled?: Maybe<Scalars['Boolean']>,
-  type?: Maybe<ProjectType>,
-  cover?: Maybe<CoverType>,
-  model?: Maybe<Model>,
-  filesConnection?: Maybe<FileConnection>,
-  followersConnection?: Maybe<FollowersConnection>,
-  postsConnection?: Maybe<PostConnection>,
-};
-
-
-export type ProjectFilesConnectionArgs = {
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  reverse?: Maybe<Scalars['Boolean']>,
-  type?: Maybe<FileType>
-};
-
-
-export type ProjectFollowersConnectionArgs = {
-  after?: Maybe<Scalars['String']>,
-  before?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  last?: Maybe<Scalars['Int']>
-};
-
-
-export type ProjectPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-export type ProjectEdge = {
-   __typename?: 'ProjectEdge',
-  cursor: Scalars['String'],
-  node: Project,
-};
-
-export type ProjectInput = {
-  title?: Maybe<Scalars['String']>,
-  commentsDisabled?: Maybe<Scalars['Boolean']>,
-  projectTypeId?: Maybe<Scalars['ID']>,
-  modelId?: Maybe<Scalars['ID']>,
-};
-
-export type ProjectPermissions = {
-   __typename?: 'ProjectPermissions',
-  isFollower?: Maybe<Scalars['Boolean']>,
-  isOwner?: Maybe<Scalars['Boolean']>,
-};
-
-export type ProjectsConnection = {
-   __typename?: 'ProjectsConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<ProjectEdge>>,
-};
-
 export enum ProjectSortType {
   Popular = 'POPULAR',
   Recent = 'RECENT'
 }
 
 export type ProjectSuggestionsConnection = {
-   __typename?: 'ProjectSuggestionsConnection',
-  totalCount?: Maybe<Scalars['Int']>,
-  type?: Maybe<ProjectType>,
-  pageInfo: PageInfo,
-  edges?: Maybe<Array<ProjectEdge>>,
-};
-
-export type ProjectType = {
-   __typename?: 'ProjectType',
-  id?: Maybe<Scalars['ID']>,
-  title?: Maybe<Scalars['String']>,
-  slug?: Maybe<Scalars['String']>,
-  imageUrl: Scalars['String'],
-};
-
-export type ProjectTypeInput = {
-  id?: Maybe<Scalars['ID']>,
-};
-
-export type Query = {
-   __typename?: 'Query',
-  dummy?: Maybe<Scalars['String']>,
-  comments?: Maybe<CommentConnection>,
-  recentComments?: Maybe<CommentConnection>,
-  comment?: Maybe<Comment>,
-  feed?: Maybe<Feed>,
-  files?: Maybe<FileConnection>,
-  followers?: Maybe<FollowersConnection>,
-  notifications?: Maybe<NotificationsConnection>,
-  post?: Maybe<Post>,
-  posts?: Maybe<PostConnection>,
-  project?: Maybe<Project>,
-  projects?: Maybe<ProjectsConnection>,
-  projectSuggestions?: Maybe<Array<Maybe<ProjectSuggestionsConnection>>>,
-  similarProjects?: Maybe<ProjectsConnection>,
-  projectTypes?: Maybe<Array<Maybe<ProjectType>>>,
-  search?: Maybe<SearchResults>,
-  user?: Maybe<User>,
-  users?: Maybe<UserConnection>,
-  currentUser?: Maybe<User>,
-  meta?: Maybe<Meta>,
-  growth?: Maybe<Array<Maybe<GrowthData>>>,
-  hashtag?: Maybe<Hashtag>,
-};
-
-
-export type QueryCommentsArgs = {
-  postId: Scalars['ID'],
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
-export type QueryRecentCommentsArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
-export type QueryCommentArgs = {
-  id: Scalars['ID'],
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
-export type QueryFilesArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  scale?: Maybe<Scalars['Int']>,
-  type?: Maybe<FileType>
-};
-
-
-export type QueryFollowersArgs = {
-  projectId: Scalars['ID'],
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
-export type QueryNotificationsArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>
-};
-
-
-export type QueryPostArgs = {
-  id?: Maybe<Scalars['ID']>
-};
-
-
-export type QueryPostsArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
-export type QueryProjectArgs = {
-  id?: Maybe<Scalars['ID']>,
-  slug?: Maybe<Scalars['LowercaseString']>
-};
-
-
-export type QueryProjectsArgs = {
-  after?: Maybe<Scalars['String']>,
-  before?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  last?: Maybe<Scalars['Int']>,
-  type: ProjectSortType,
-  typeId?: Maybe<Scalars['ID']>
-};
-
-
-export type QueryProjectSuggestionsArgs = {
-  after?: Maybe<Scalars['String']>,
-  before?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  last?: Maybe<Scalars['Int']>
-};
-
-
-export type QuerySimilarProjectsArgs = {
-  id: Scalars['ID'],
-  after?: Maybe<Scalars['String']>,
-  before?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  last?: Maybe<Scalars['Int']>
-};
-
-
-export type QuerySearchArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>,
-  query: Scalars['String'],
-  type: SearchType
-};
-
-
-export type QueryUserArgs = {
-  id?: Maybe<Scalars['ID']>,
-  username?: Maybe<Scalars['LowercaseString']>
-};
-
-
-export type QueryUsersArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
-export type QueryCurrentUserArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
-};
-
-
-export type QueryGrowthArgs = {
-  type: GrowthType,
-  startDate?: Maybe<Scalars['Date']>,
-  endDate?: Maybe<Scalars['Date']>
-};
-
-
-export type QueryHashtagArgs = {
-  id?: Maybe<Scalars['ID']>,
-  slug?: Maybe<Scalars['LowercaseString']>
-};
-
-export type SearchResultEdge = {
-   __typename?: 'SearchResultEdge',
-  cursor?: Maybe<Scalars['String']>,
-  node?: Maybe<SearchResultNode>,
-};
-
-export type SearchResultNode = Project | User | Model | Hashtag;
-
-export type SearchResults = {
-   __typename?: 'SearchResults',
-  totalCount?: Maybe<Scalars['Int']>,
-  edges?: Maybe<Array<Maybe<SearchResultEdge>>>,
-  pageInfo?: Maybe<PageInfo>,
+  __typename?: 'ProjectSuggestionsConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  type?: Maybe<ProjectType>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<ProjectEdge>>;
 };
 
 export enum SearchType {
@@ -817,15 +575,293 @@ export enum SearchType {
   Hashtags = 'HASHTAGS'
 }
 
-export type ToggleNotificationSettingsInput = {
-  deliveryMethod: Scalars['String'],
-  notificationType: Scalars['String'],
+export type SearchResults = {
+  __typename?: 'SearchResults';
+  totalCount?: Maybe<Scalars['Int']>;
+  edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
+  pageInfo?: Maybe<PageInfo>;
+};
+
+export type SearchResultEdge = {
+  __typename?: 'SearchResultEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<SearchResultNode>;
+};
+
+export type SearchResultNode = Project | User | Model | Hashtag;
+
+export type Hashtag = {
+  __typename?: 'Hashtag';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  totalCount?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  postsConnection?: Maybe<PostConnection>;
+};
+
+
+export type HashtagPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type UserConnection = {
+  __typename?: 'UserConnection';
+  pageInfo?: Maybe<PageInfo>;
+  edges?: Maybe<Array<Maybe<UserEdge>>>;
+};
+
+export type UserEdge = {
+  __typename?: 'UserEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<User>;
+};
+
+export type Meta = {
+  __typename?: 'Meta';
+  isAdmin?: Maybe<Scalars['Boolean']>;
+  totalUsers?: Maybe<Scalars['Int']>;
+  totalProjects?: Maybe<Scalars['Int']>;
+  totalPosts?: Maybe<Scalars['Int']>;
+  totalComments?: Maybe<Scalars['Int']>;
+  totalFiles?: Maybe<Scalars['Int']>;
+  totalUsersToday?: Maybe<Scalars['Int']>;
+  totalProjectsToday?: Maybe<Scalars['Int']>;
+  totalPostsToday?: Maybe<Scalars['Int']>;
+  totalCommentsToday?: Maybe<Scalars['Int']>;
+  totalFilesToday?: Maybe<Scalars['Int']>;
+};
+
+export enum GrowthType {
+  Projects = 'PROJECTS',
+  Users = 'USERS'
+}
+
+export type GrowthData = {
+  __typename?: 'GrowthData';
+  date?: Maybe<Scalars['Date']>;
+  count?: Maybe<Scalars['Int']>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  dummy?: Maybe<Scalars['String']>;
+  authenticateApple?: Maybe<Tokens>;
+  authenticateFacebook?: Maybe<Tokens>;
+  authenticateGoogle?: Maybe<Tokens>;
+  refreshToken?: Maybe<AccessToken>;
+  addComment?: Maybe<Comment>;
+  editComment?: Maybe<Comment>;
+  deleteComment?: Maybe<Scalars['Boolean']>;
+  sendPromo?: Maybe<Scalars['Boolean']>;
+  likePost?: Maybe<Post>;
+  likeComment?: Maybe<Comment>;
+  markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
+  markNotificationSeen?: Maybe<Notification>;
+  deleteNotification?: Maybe<Scalars['Boolean']>;
+  deletePost?: Maybe<Post>;
+  addPost?: Maybe<Post>;
+  editPost?: Maybe<Post>;
+  followProject?: Maybe<Project>;
+  addProject?: Maybe<Project>;
+  editProject?: Maybe<Project>;
+  deleteProject?: Maybe<Scalars['Boolean']>;
+  preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>;
+  preSignUrl?: Maybe<PreSignedUrl>;
+  editUser?: Maybe<User>;
+  toggleNotificationSettings?: Maybe<User>;
+  registerDeviceToken?: Maybe<Scalars['Boolean']>;
+  banUser?: Maybe<Scalars['Boolean']>;
+  deleteCurrentUser?: Maybe<Scalars['Boolean']>;
+  report?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type MutationAuthenticateAppleArgs = {
+  identityToken: Scalars['String'];
+  user: ApplePayload;
+};
+
+
+export type MutationAuthenticateFacebookArgs = {
+  token: Scalars['String'];
+};
+
+
+export type MutationAuthenticateGoogleArgs = {
+  idToken: Scalars['String'];
+};
+
+
+export type MutationRefreshTokenArgs = {
+  refreshToken: Scalars['String'];
+};
+
+
+export type MutationAddCommentArgs = {
+  postId: Scalars['ID'];
+  commentId?: Maybe<Scalars['ID']>;
+  input: CommentInput;
+};
+
+
+export type MutationEditCommentArgs = {
+  id: Scalars['ID'];
+  input: CommentInput;
+};
+
+
+export type MutationDeleteCommentArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationSendPromoArgs = {
+  number: Scalars['String'];
+};
+
+
+export type MutationLikePostArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationLikeCommentArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationMarkNotificationSeenArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteNotificationArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeletePostArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationAddPostArgs = {
+  input: PostInput;
+};
+
+
+export type MutationEditPostArgs = {
+  id: Scalars['ID'];
+  input: EditPostInput;
+};
+
+
+export type MutationFollowProjectArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationAddProjectArgs = {
+  input: ProjectInput;
+};
+
+
+export type MutationEditProjectArgs = {
+  id: Scalars['ID'];
+  input: ProjectInput;
+};
+
+
+export type MutationDeleteProjectArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationPreSignUrlsArgs = {
+  input?: Maybe<Array<Maybe<PreSignedUrlnput>>>;
+};
+
+
+export type MutationPreSignUrlArgs = {
+  input: PreSignedUrlInput;
+};
+
+
+export type MutationEditUserArgs = {
+  input: EditUserInput;
+  id?: Maybe<Scalars['ID']>;
+};
+
+
+export type MutationToggleNotificationSettingsArgs = {
+  input?: Maybe<ToggleNotificationSettingsInput>;
+};
+
+
+export type MutationRegisterDeviceTokenArgs = {
+  token: Scalars['String'];
+  platform: PlatformType;
+};
+
+
+export type MutationBanUserArgs = {
+  userId: Scalars['ID'];
+};
+
+
+export type MutationReportArgs = {
+  id: Scalars['ID'];
+  type: ReportType;
+};
+
+export type ApplePayload = {
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
 };
 
 export type Tokens = {
-   __typename?: 'Tokens',
-  access_token?: Maybe<Scalars['String']>,
-  refresh_token?: Maybe<Scalars['String']>,
+  __typename?: 'Tokens';
+  access_token?: Maybe<Scalars['String']>;
+  refresh_token?: Maybe<Scalars['String']>;
+};
+
+export type AccessToken = {
+  __typename?: 'AccessToken';
+  access_token?: Maybe<Scalars['String']>;
+};
+
+export type CommentInput = {
+  text: Scalars['String'];
+};
+
+export type PostInput = {
+  projectId: Scalars['ID'];
+  caption?: Maybe<Scalars['String']>;
+  files: Array<Maybe<FileInput>>;
+};
+
+export type FileInput = {
+  filename: Scalars['String'];
+};
+
+export type EditPostInput = {
+  caption?: Maybe<Scalars['String']>;
+};
+
+export type ProjectInput = {
+  title?: Maybe<Scalars['String']>;
+  commentsDisabled?: Maybe<Scalars['Boolean']>;
+  projectTypeId?: Maybe<Scalars['ID']>;
+  modelId?: Maybe<Scalars['ID']>;
+};
+
+export type PreSignedUrlnput = {
+  type: UploadType;
 };
 
 export enum UploadType {
@@ -833,94 +869,75 @@ export enum UploadType {
   Video = 'VIDEO'
 }
 
-export type User = {
-   __typename?: 'User',
-  id: Scalars['ID'],
-  username?: Maybe<Scalars['LowercaseString']>,
-  createdAt: Scalars['Date'],
-  updatedAt: Scalars['Date'],
-  fullName?: Maybe<Scalars['String']>,
-  firstName?: Maybe<Scalars['String']>,
-  lastName?: Maybe<Scalars['String']>,
-  avatarUrl?: Maybe<Scalars['String']>,
-  projectCount?: Maybe<Scalars['Int']>,
-  interestedIn?: Maybe<Array<Maybe<ProjectType>>>,
-  settings?: Maybe<UserSettings>,
-  dynamicLink?: Maybe<Scalars['String']>,
-  isOnline?: Maybe<Scalars['Boolean']>,
-  lastSeen?: Maybe<Scalars['Date']>,
-  website?: Maybe<Scalars['String']>,
-  bio?: Maybe<Scalars['String']>,
-  location?: Maybe<Scalars['String']>,
-  isSilhouette?: Maybe<Scalars['Boolean']>,
-  role?: Maybe<UserRole>,
-  projectsConnection?: Maybe<ProjectsConnection>,
-  followingProjects?: Maybe<ProjectsConnection>,
-  postsConnection?: Maybe<PostConnection>,
+export type PreSignedUrl = {
+  __typename?: 'PreSignedUrl';
+  url?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  filename?: Maybe<Scalars['String']>;
 };
 
-
-export type UserProjectsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
+export type PreSignedUrlInput = {
+  type: UploadType;
+  path: Scalars['String'];
 };
 
-
-export type UserFollowingProjectsArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
+export type EditUserInput = {
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  interestedIn?: Maybe<Array<Maybe<ProjectTypeInput>>>;
+  timezone?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  bio?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+  avatarUrl?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
 };
 
-
-export type UserPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  last?: Maybe<Scalars['Int']>,
-  before?: Maybe<Scalars['String']>
+export type ProjectTypeInput = {
+  id?: Maybe<Scalars['ID']>;
 };
 
-export type UserConnection = {
-   __typename?: 'UserConnection',
-  pageInfo?: Maybe<PageInfo>,
-  edges?: Maybe<Array<Maybe<UserEdge>>>,
+export type ToggleNotificationSettingsInput = {
+  deliveryMethod: Scalars['String'];
+  notificationType: Scalars['String'];
 };
 
-export type UserEdge = {
-   __typename?: 'UserEdge',
-  cursor?: Maybe<Scalars['String']>,
-  node?: Maybe<User>,
-};
-
-export type UserNotificationsSettings = {
-   __typename?: 'UserNotificationsSettings',
-  types?: Maybe<NotificationSettingsType>,
-};
-
-export enum UserRole {
-  User = 'USER',
-  Admin = 'ADMIN'
+export enum PlatformType {
+  Mobile = 'MOBILE',
+  Web = 'WEB'
 }
 
-export type UserSettings = {
-   __typename?: 'UserSettings',
-  locale?: Maybe<Scalars['String']>,
-  timezone?: Maybe<Scalars['String']>,
-  notifications?: Maybe<UserNotificationsSettings>,
+export enum ReportType {
+  Project = 'PROJECT',
+  User = 'USER',
+  Comment = 'COMMENT',
+  Post = 'POST'
+}
+
+export type HashtagConnection = {
+  __typename?: 'HashtagConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<HashtagEdge>>;
+};
+
+export type HashtagEdge = {
+  __typename?: 'HashtagEdge';
+  cursor: Scalars['String'];
+  node: Hashtag;
 };
 
 export type CommentAndRepliesFragment = (
   { __typename?: 'Comment' }
-  & { replies: Maybe<(
+  & { replies?: Maybe<(
     { __typename?: 'CommentConnection' }
     & Pick<CommentConnection, 'totalCount'>
     & { pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
+    ), edges?: Maybe<Array<(
       { __typename?: 'CommentEdge' }
       & Pick<CommentEdge, 'cursor'>
       & { node: (
@@ -935,13 +952,13 @@ export type CommentAndRepliesFragment = (
 export type CommentFragment = (
   { __typename?: 'Comment' }
   & Pick<Comment, 'id' | 'text' | 'createdAt'>
-  & { permissions: Maybe<(
+  & { permissions?: Maybe<(
     { __typename?: 'CommentPermissions' }
     & Pick<CommentPermissions, 'isOwner'>
-  )>, likes: Maybe<(
+  )>, likes?: Maybe<(
     { __typename?: 'Likes' }
     & Pick<Likes, 'isLiked' | 'totalCount'>
-  )>, user: Maybe<(
+  )>, user?: Maybe<(
     { __typename?: 'User' }
     & UserFragment
   )> }
@@ -953,18 +970,18 @@ export type NotificationFragment = (
   & { user: (
     { __typename?: 'User' }
     & UserFragment
-  ), project: Maybe<(
+  ), project?: Maybe<(
     { __typename?: 'Project' }
     & ProjectFragment
-  )>, post: Maybe<(
+  )>, post?: Maybe<(
     { __typename?: 'Post' }
     & Pick<Post, 'id'>
-  )>, comment: Maybe<(
+  )>, comment?: Maybe<(
     { __typename?: 'Comment' }
     & Pick<Comment, 'id' | 'text' | 'postId'>
-  )>, files: Maybe<(
+  )>, files?: Maybe<(
     { __typename?: 'FileConnection' }
-    & { edges: Maybe<Array<Maybe<(
+    & { edges?: Maybe<Array<Maybe<(
       { __typename?: 'FileEdge' }
       & { node: (
         { __typename?: 'File' }
@@ -977,31 +994,31 @@ export type NotificationFragment = (
 export type PostFragment = (
   { __typename?: 'Post' }
   & Pick<Post, 'id' | 'caption' | 'createdAt'>
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
     & UserFragment
-  )>, permissions: Maybe<(
+  )>, permissions?: Maybe<(
     { __typename?: 'PostPermissions' }
     & Pick<PostPermissions, 'isOwner'>
-  )>, files: Maybe<(
+  )>, files?: Maybe<(
     { __typename?: 'FileConnection' }
-    & { edges: Maybe<Array<Maybe<(
+    & { edges?: Maybe<Array<Maybe<(
       { __typename?: 'FileEdge' }
       & { node: (
         { __typename?: 'File' }
         & Pick<File, 'id' | 'type' | 'uri'>
       ) }
     )>>> }
-  )>, project: Maybe<(
+  )>, project?: Maybe<(
     { __typename?: 'Project' }
     & ProjectFragment
-  )>, likes: Maybe<(
+  )>, likes?: Maybe<(
     { __typename?: 'Likes' }
     & Pick<Likes, 'isLiked' | 'totalCount'>
-  )>, comments: Maybe<(
+  )>, comments?: Maybe<(
     { __typename?: 'CommentConnection' }
     & Pick<CommentConnection, 'totalCount'>
-    & { edges: Maybe<Array<(
+    & { edges?: Maybe<Array<(
       { __typename?: 'CommentEdge' }
       & { node: (
         { __typename?: 'Comment' }
@@ -1014,13 +1031,13 @@ export type PostFragment = (
 export type ProjectFragment = (
   { __typename?: 'Project' }
   & Pick<Project, 'id' | 'title' | 'slug' | 'dynamicLink'>
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
     & UserFragment
-  )>, permissions: Maybe<(
+  )>, permissions?: Maybe<(
     { __typename?: 'ProjectPermissions' }
     & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>
-  )>, followers: Maybe<(
+  )>, followers?: Maybe<(
     { __typename?: 'FollowersConnection' }
     & Pick<FollowersConnection, 'totalCount'>
   )> }
@@ -1033,19 +1050,19 @@ export type UserFragment = (
 
 export type UserProjectsFragment = (
   { __typename?: 'User' }
-  & { projects: Maybe<(
+  & { projects?: Maybe<(
     { __typename?: 'ProjectsConnection' }
-    & { edges: Maybe<Array<(
+    & { edges?: Maybe<Array<(
       { __typename?: 'ProjectEdge' }
       & { node: (
         { __typename?: 'Project' }
         & Pick<Project, 'id' | 'title'>
-        & { followers: Maybe<(
+        & { followers?: Maybe<(
           { __typename?: 'FollowersConnection' }
           & Pick<FollowersConnection, 'totalCount'>
-        )>, files: Maybe<(
+        )>, files?: Maybe<(
           { __typename?: 'FileConnection' }
-          & { edges: Maybe<Array<Maybe<(
+          & { edges?: Maybe<Array<Maybe<(
             { __typename?: 'FileEdge' }
             & { node: (
               { __typename?: 'File' }
@@ -1061,28 +1078,28 @@ export type UserProjectsFragment = (
 export type UserSettingsFragment = (
   { __typename?: 'User' }
   & Pick<User, 'id'>
-  & { settings: Maybe<(
+  & { settings?: Maybe<(
     { __typename?: 'UserSettings' }
-    & { notifications: Maybe<(
+    & { notifications?: Maybe<(
       { __typename?: 'UserNotificationsSettings' }
-      & { types: Maybe<(
+      & { types?: Maybe<(
         { __typename?: 'NotificationSettingsType' }
-        & { NEW_FOLLOWER: Maybe<(
+        & { NEW_FOLLOWER?: Maybe<(
           { __typename?: 'NotificationKindSettings' }
           & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, NEW_COMMENT: Maybe<(
+        )>, NEW_COMMENT?: Maybe<(
           { __typename?: 'NotificationKindSettings' }
           & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, NEW_MENTION: Maybe<(
+        )>, NEW_MENTION?: Maybe<(
           { __typename?: 'NotificationKindSettings' }
           & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, NEW_ARTICLE: Maybe<(
+        )>, NEW_ARTICLE?: Maybe<(
           { __typename?: 'NotificationKindSettings' }
           & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, SIMILAR_PROJECTS: Maybe<(
+        )>, SIMILAR_PROJECTS?: Maybe<(
           { __typename?: 'NotificationKindSettings' }
           & Pick<NotificationKindSettings, 'email' | 'push'>
-        )>, PRODUCT_ANNOUNCEMENTS: Maybe<(
+        )>, PRODUCT_ANNOUNCEMENTS?: Maybe<(
           { __typename?: 'NotificationKindSettings' }
           & Pick<NotificationKindSettings, 'email' | 'push'>
         )> }
@@ -1091,90 +1108,90 @@ export type UserSettingsFragment = (
   )> }
 );
 
-export type AddCommentMutationVariables = {
-  postId: Scalars['ID'],
-  commentId?: Maybe<Scalars['ID']>,
-  input: CommentInput
-};
+export type AddCommentMutationVariables = Exact<{
+  postId: Scalars['ID'];
+  commentId?: Maybe<Scalars['ID']>;
+  input: CommentInput;
+}>;
 
 
 export type AddCommentMutation = (
   { __typename?: 'Mutation' }
-  & { addComment: Maybe<(
+  & { addComment?: Maybe<(
     { __typename?: 'Comment' }
     & Pick<Comment, 'commentId' | 'id' | 'text'>
   )> }
 );
 
-export type AddPostMutationVariables = {
-  input: PostInput
-};
+export type AddPostMutationVariables = Exact<{
+  input: PostInput;
+}>;
 
 
 export type AddPostMutation = (
   { __typename?: 'Mutation' }
-  & { addPost: Maybe<(
+  & { addPost?: Maybe<(
     { __typename?: 'Post' }
     & PostFragment
   )> }
 );
 
-export type AddProjectMutationVariables = {
-  input: ProjectInput
-};
+export type AddProjectMutationVariables = Exact<{
+  input: ProjectInput;
+}>;
 
 
 export type AddProjectMutation = (
   { __typename?: 'Mutation' }
-  & { addProject: Maybe<(
+  & { addProject?: Maybe<(
     { __typename?: 'Project' }
     & ProjectFragment
   )> }
 );
 
-export type AuthenticateAppleMutationVariables = {
-  identityToken: Scalars['String'],
-  user: ApplePayload
-};
+export type AuthenticateAppleMutationVariables = Exact<{
+  identityToken: Scalars['String'];
+  user: ApplePayload;
+}>;
 
 
 export type AuthenticateAppleMutation = (
   { __typename?: 'Mutation' }
-  & { authenticateApple: Maybe<(
+  & { authenticateApple?: Maybe<(
     { __typename?: 'Tokens' }
     & Pick<Tokens, 'access_token' | 'refresh_token'>
   )> }
 );
 
-export type AuthenticateFacebookMutationVariables = {
-  token: Scalars['String']
-};
+export type AuthenticateFacebookMutationVariables = Exact<{
+  token: Scalars['String'];
+}>;
 
 
 export type AuthenticateFacebookMutation = (
   { __typename?: 'Mutation' }
-  & { authenticateFacebook: Maybe<(
+  & { authenticateFacebook?: Maybe<(
     { __typename?: 'Tokens' }
     & Pick<Tokens, 'access_token' | 'refresh_token'>
   )> }
 );
 
-export type AuthenticateGoogleMutationVariables = {
-  idToken: Scalars['String']
-};
+export type AuthenticateGoogleMutationVariables = Exact<{
+  idToken: Scalars['String'];
+}>;
 
 
 export type AuthenticateGoogleMutation = (
   { __typename?: 'Mutation' }
-  & { authenticateGoogle: Maybe<(
+  & { authenticateGoogle?: Maybe<(
     { __typename?: 'Tokens' }
     & Pick<Tokens, 'access_token' | 'refresh_token'>
   )> }
 );
 
-export type DeleteCommentMutationVariables = {
-  id: Scalars['ID']
-};
+export type DeleteCommentMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type DeleteCommentMutation = (
@@ -1182,9 +1199,9 @@ export type DeleteCommentMutation = (
   & Pick<Mutation, 'deleteComment'>
 );
 
-export type DeleteNotificationMutationVariables = {
-  id: Scalars['ID']
-};
+export type DeleteNotificationMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type DeleteNotificationMutation = (
@@ -1192,22 +1209,22 @@ export type DeleteNotificationMutation = (
   & Pick<Mutation, 'deleteNotification'>
 );
 
-export type DeletePostMutationVariables = {
-  id: Scalars['ID']
-};
+export type DeletePostMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type DeletePostMutation = (
   { __typename?: 'Mutation' }
-  & { deletePost: Maybe<(
+  & { deletePost?: Maybe<(
     { __typename?: 'Post' }
     & Pick<Post, 'id'>
   )> }
 );
 
-export type DeleteProjectMutationVariables = {
-  id: Scalars['ID']
-};
+export type DeleteProjectMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type DeleteProjectMutation = (
@@ -1215,58 +1232,58 @@ export type DeleteProjectMutation = (
   & Pick<Mutation, 'deleteProject'>
 );
 
-export type EditPostMutationVariables = {
-  id: Scalars['ID'],
-  input: EditPostInput
-};
+export type EditPostMutationVariables = Exact<{
+  id: Scalars['ID'];
+  input: EditPostInput;
+}>;
 
 
 export type EditPostMutation = (
   { __typename?: 'Mutation' }
-  & { editPost: Maybe<(
+  & { editPost?: Maybe<(
     { __typename?: 'Post' }
     & PostFragment
   )> }
 );
 
-export type EditProjectMutationVariables = {
-  id: Scalars['ID'],
-  input: ProjectInput
-};
+export type EditProjectMutationVariables = Exact<{
+  id: Scalars['ID'];
+  input: ProjectInput;
+}>;
 
 
 export type EditProjectMutation = (
   { __typename?: 'Mutation' }
-  & { editProject: Maybe<(
+  & { editProject?: Maybe<(
     { __typename?: 'Project' }
     & Pick<Project, 'id' | 'title'>
   )> }
 );
 
-export type EditUserMutationVariables = {
-  input: EditUserInput,
-  id?: Maybe<Scalars['ID']>
-};
+export type EditUserMutationVariables = Exact<{
+  input: EditUserInput;
+  id?: Maybe<Scalars['ID']>;
+}>;
 
 
 export type EditUserMutation = (
   { __typename?: 'Mutation' }
-  & { editUser: Maybe<(
+  & { editUser?: Maybe<(
     { __typename?: 'User' }
     & UserFragment
   )> }
 );
 
-export type FollowProjectMutationVariables = {
-  id: Scalars['ID']
-};
+export type FollowProjectMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type FollowProjectMutation = (
   { __typename?: 'Mutation' }
-  & { followProject: Maybe<(
+  & { followProject?: Maybe<(
     { __typename?: 'Project' }
-    & { cover: Maybe<(
+    & { cover?: Maybe<(
       { __typename?: 'CoverType' }
       & Pick<CoverType, 'uri' | 'default'>
     )> }
@@ -1274,34 +1291,34 @@ export type FollowProjectMutation = (
   )> }
 );
 
-export type LikeCommentMutationVariables = {
-  id: Scalars['ID']
-};
+export type LikeCommentMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type LikeCommentMutation = (
   { __typename?: 'Mutation' }
-  & { likeComment: Maybe<(
+  & { likeComment?: Maybe<(
     { __typename?: 'Comment' }
     & Pick<Comment, 'id'>
-    & { likes: Maybe<(
+    & { likes?: Maybe<(
       { __typename?: 'Likes' }
       & Pick<Likes, 'isLiked' | 'totalCount'>
     )> }
   )> }
 );
 
-export type LikePostMutationVariables = {
-  id: Scalars['ID']
-};
+export type LikePostMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type LikePostMutation = (
   { __typename?: 'Mutation' }
-  & { likePost: Maybe<(
+  & { likePost?: Maybe<(
     { __typename?: 'Post' }
     & Pick<Post, 'id'>
-    & { likes: Maybe<(
+    & { likes?: Maybe<(
       { __typename?: 'Likes' }
       & Pick<Likes, 'isLiked' | 'totalCount'>
     )> }
@@ -1316,62 +1333,62 @@ export type MarkAllNotificationsSeenMutation = (
   & Pick<Mutation, 'markAllNotificationsSeen'>
 );
 
-export type MarkNotificationSeenMutationVariables = {
-  id: Scalars['ID']
-};
+export type MarkNotificationSeenMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type MarkNotificationSeenMutation = (
   { __typename?: 'Mutation' }
-  & { markNotificationSeen: Maybe<(
+  & { markNotificationSeen?: Maybe<(
     { __typename?: 'Notification' }
     & NotificationFragment
   )> }
 );
 
-export type PreSignUrlMutationVariables = {
-  input: PreSignedUrlInput
-};
+export type PreSignUrlMutationVariables = Exact<{
+  input: PreSignedUrlInput;
+}>;
 
 
 export type PreSignUrlMutation = (
   { __typename?: 'Mutation' }
-  & { preSignUrl: Maybe<(
+  & { preSignUrl?: Maybe<(
     { __typename?: 'PreSignedUrl' }
     & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>
   )> }
 );
 
-export type PreSignUrlsMutationVariables = {
-  input: Array<Maybe<PreSignedUrlnput>>
-};
+export type PreSignUrlsMutationVariables = Exact<{
+  input: Array<Maybe<PreSignedUrlnput>>;
+}>;
 
 
 export type PreSignUrlsMutation = (
   { __typename?: 'Mutation' }
-  & { preSignUrls: Maybe<Array<Maybe<(
+  & { preSignUrls?: Maybe<Array<Maybe<(
     { __typename?: 'PreSignedUrl' }
     & Pick<PreSignedUrl, 'url' | 'type' | 'filename'>
   )>>> }
 );
 
-export type RefreshTokenMutationVariables = {
-  refreshToken: Scalars['String']
-};
+export type RefreshTokenMutationVariables = Exact<{
+  refreshToken: Scalars['String'];
+}>;
 
 
 export type RefreshTokenMutation = (
   { __typename?: 'Mutation' }
-  & { token: Maybe<(
+  & { token?: Maybe<(
     { __typename?: 'AccessToken' }
     & Pick<AccessToken, 'access_token'>
   )> }
 );
 
-export type RegisterDeviceTokenMutationVariables = {
-  token: Scalars['String'],
-  platform: PlatformType
-};
+export type RegisterDeviceTokenMutationVariables = Exact<{
+  token: Scalars['String'];
+  platform: PlatformType;
+}>;
 
 
 export type RegisterDeviceTokenMutation = (
@@ -1379,49 +1396,49 @@ export type RegisterDeviceTokenMutation = (
   & Pick<Mutation, 'registerDeviceToken'>
 );
 
-export type ToggleNotificationSettingsMutationVariables = {
-  input?: Maybe<ToggleNotificationSettingsInput>
-};
+export type ToggleNotificationSettingsMutationVariables = Exact<{
+  input?: Maybe<ToggleNotificationSettingsInput>;
+}>;
 
 
 export type ToggleNotificationSettingsMutation = (
   { __typename?: 'Mutation' }
-  & { toggleNotificationSettings: Maybe<(
+  & { toggleNotificationSettings?: Maybe<(
     { __typename?: 'User' }
     & UserSettingsFragment
   )> }
 );
 
-export type CommentQueryVariables = {
-  id: Scalars['ID']
-};
+export type CommentQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type CommentQuery = (
   { __typename?: 'Query' }
-  & { comment: Maybe<(
+  & { comment?: Maybe<(
     { __typename?: 'Comment' }
     & CommentFragment
   )> }
 );
 
-export type CommentsQueryVariables = {
-  postId: Scalars['ID'],
-  after?: Maybe<Scalars['String']>
-};
+export type CommentsQueryVariables = Exact<{
+  postId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+}>;
 
 
 export type CommentsQuery = (
   { __typename?: 'Query' }
-  & { post: Maybe<(
+  & { post?: Maybe<(
     { __typename?: 'Post' }
     & PostFragment
-  )>, comments: Maybe<(
+  )>, comments?: Maybe<(
     { __typename?: 'CommentConnection' }
     & { pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
+    ), edges?: Maybe<Array<(
       { __typename?: 'CommentEdge' }
       & Pick<CommentEdge, 'cursor'>
       & { node: (
@@ -1437,13 +1454,13 @@ export type CurrentUserQueryVariables = {};
 
 export type CurrentUserQuery = (
   { __typename?: 'Query' }
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
     & Pick<User, 'avatarUrl' | 'bio' | 'dynamicLink' | 'firstName' | 'fullName' | 'id' | 'isOnline' | 'isSilhouette' | 'lastName' | 'location' | 'projectCount' | 'username' | 'website' | 'role'>
-    & { settings: Maybe<(
+    & { settings?: Maybe<(
       { __typename?: 'UserSettings' }
       & Pick<UserSettings, 'timezone' | 'locale'>
-    )>, interestedIn: Maybe<Array<Maybe<(
+    )>, interestedIn?: Maybe<Array<Maybe<(
       { __typename?: 'ProjectType' }
       & Pick<ProjectType, 'id' | 'title'>
     )>>> }
@@ -1451,28 +1468,28 @@ export type CurrentUserQuery = (
   )> }
 );
 
-export type CurrentUserFollowingProjectsQueryVariables = {
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type CurrentUserFollowingProjectsQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type CurrentUserFollowingProjectsQuery = (
   { __typename?: 'Query' }
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
     & Pick<User, 'id'>
-    & { projects: Maybe<(
+    & { projects?: Maybe<(
       { __typename?: 'ProjectsConnection' }
       & { pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
-      ), edges: Maybe<Array<(
+      ), edges?: Maybe<Array<(
         { __typename?: 'ProjectEdge' }
         & Pick<ProjectEdge, 'cursor'>
         & { node: (
           { __typename?: 'Project' }
-          & { cover: Maybe<(
+          & { cover?: Maybe<(
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
           )> }
@@ -1483,32 +1500,32 @@ export type CurrentUserFollowingProjectsQuery = (
   )> }
 );
 
-export type CurrentUserProfileQueryVariables = {
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type CurrentUserProfileQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type CurrentUserProfileQuery = (
   { __typename?: 'Query' }
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
-    & { projects: Maybe<(
+    & { projects?: Maybe<(
       { __typename?: 'ProjectsConnection' }
-      & { edges: Maybe<Array<(
+      & { edges?: Maybe<Array<(
         { __typename?: 'ProjectEdge' }
         & { node: (
           { __typename?: 'Project' }
-          & { cover: Maybe<(
+          & { cover?: Maybe<(
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
           )> }
           & ProjectFragment
         ) }
       )>> }
-    )>, posts: Maybe<(
+    )>, posts?: Maybe<(
       { __typename?: 'PostConnection' }
-      & { edges: Maybe<Array<(
+      & { edges?: Maybe<Array<(
         { __typename?: 'PostEdge' }
         & Pick<PostEdge, 'cursor'>
         & { node: (
@@ -1529,7 +1546,7 @@ export type CurrentUserProjectsQueryVariables = {};
 
 export type CurrentUserProjectsQuery = (
   { __typename?: 'Query' }
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
     & UserProjectsFragment
   )> }
@@ -1540,28 +1557,28 @@ export type CurrentUserSettingsQueryVariables = {};
 
 export type CurrentUserSettingsQuery = (
   { __typename?: 'Query' }
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
     & UserSettingsFragment
   )> }
 );
 
-export type FeedQueryVariables = {
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type FeedQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type FeedQuery = (
   { __typename?: 'Query' }
-  & { feed: Maybe<(
+  & { feed?: Maybe<(
     { __typename?: 'Feed' }
-    & { posts: Maybe<(
+    & { posts?: Maybe<(
       { __typename?: 'PostConnection' }
       & { pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
-      ), edges: Maybe<Array<(
+      ), edges?: Maybe<Array<(
         { __typename?: 'PostEdge' }
         & Pick<PostEdge, 'cursor'>
         & { node: (
@@ -1573,21 +1590,21 @@ export type FeedQuery = (
   )> }
 );
 
-export type FollowersQueryVariables = {
-  projectId: Scalars['ID'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type FollowersQueryVariables = Exact<{
+  projectId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type FollowersQuery = (
   { __typename?: 'Query' }
-  & { followers: Maybe<(
+  & { followers?: Maybe<(
     { __typename?: 'FollowersConnection' }
     & { pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
+    ), edges?: Maybe<Array<(
       { __typename?: 'FollowersEdge' }
       & Pick<FollowersEdge, 'cursor'>
       & { node: (
@@ -1598,37 +1615,37 @@ export type FollowersQuery = (
   )> }
 );
 
-export type GrowthQueryVariables = {
-  type: GrowthType
-};
+export type GrowthQueryVariables = Exact<{
+  type: GrowthType;
+}>;
 
 
 export type GrowthQuery = (
   { __typename?: 'Query' }
-  & { growth: Maybe<Array<Maybe<(
+  & { growth?: Maybe<Array<Maybe<(
     { __typename?: 'GrowthData' }
     & Pick<GrowthData, 'date' | 'count'>
   )>>> }
 );
 
-export type HashtagQueryVariables = {
-  id?: Maybe<Scalars['ID']>,
-  slug?: Maybe<Scalars['LowercaseString']>,
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type HashtagQueryVariables = Exact<{
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type HashtagQuery = (
   { __typename?: 'Query' }
-  & { hashtag: Maybe<(
+  & { hashtag?: Maybe<(
     { __typename?: 'Hashtag' }
-    & { posts: Maybe<(
+    & { posts?: Maybe<(
       { __typename?: 'PostConnection' }
       & { pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
-      ), edges: Maybe<Array<(
+      ), edges?: Maybe<Array<(
         { __typename?: 'PostEdge' }
         & Pick<PostEdge, 'cursor'>
         & { node: (
@@ -1645,30 +1662,30 @@ export type MetaQueryVariables = {};
 
 export type MetaQuery = (
   { __typename?: 'Query' }
-  & { meta: Maybe<(
+  & { meta?: Maybe<(
     { __typename?: 'Meta' }
     & Pick<Meta, 'totalUsers' | 'totalUsersToday' | 'totalPostsToday' | 'totalProjectsToday' | 'totalCommentsToday' | 'totalFilesToday' | 'totalComments' | 'totalProjects' | 'totalPosts' | 'totalFiles'>
   )> }
 );
 
-export type NotificationsQueryVariables = {
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type NotificationsQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type NotificationsQuery = (
   { __typename?: 'Query' }
-  & { notifications: Maybe<(
+  & { notifications?: Maybe<(
     { __typename?: 'NotificationsConnection' }
     & Pick<NotificationsConnection, 'unreadCount'>
-    & { pageInfo: Maybe<(
+    & { pageInfo?: Maybe<(
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    )>, edges: Maybe<Array<Maybe<(
+    )>, edges?: Maybe<Array<Maybe<(
       { __typename?: 'NotificationEdge' }
       & Pick<NotificationEdge, 'cursor'>
-      & { node: Maybe<(
+      & { node?: Maybe<(
         { __typename?: 'Notification' }
         & NotificationFragment
       )> }
@@ -1676,33 +1693,33 @@ export type NotificationsQuery = (
   )> }
 );
 
-export type PostQueryVariables = {
-  id: Scalars['ID']
-};
+export type PostQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
 
 
 export type PostQuery = (
   { __typename?: 'Query' }
-  & { post: Maybe<(
+  & { post?: Maybe<(
     { __typename?: 'Post' }
     & PostFragment
   )> }
 );
 
-export type PostsQueryVariables = {
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type PostsQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type PostsQuery = (
   { __typename?: 'Query' }
-  & { posts: Maybe<(
+  & { posts?: Maybe<(
     { __typename?: 'PostConnection' }
     & { pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
+    ), edges?: Maybe<Array<(
       { __typename?: 'PostEdge' }
       & Pick<PostEdge, 'cursor'>
       & { node: (
@@ -1713,25 +1730,25 @@ export type PostsQuery = (
   )> }
 );
 
-export type ProjectQueryVariables = {
-  id?: Maybe<Scalars['ID']>,
-  slug?: Maybe<Scalars['LowercaseString']>,
-  after?: Maybe<Scalars['String']>,
-  postId?: Maybe<Scalars['ID']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type ProjectQueryVariables = Exact<{
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  after?: Maybe<Scalars['String']>;
+  postId?: Maybe<Scalars['ID']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type ProjectQuery = (
   { __typename?: 'Query' }
-  & { post: Maybe<(
+  & { post?: Maybe<(
     { __typename?: 'Post' }
     & PostFragment
-  )>, project: Maybe<(
+  )>, project?: Maybe<(
     { __typename?: 'Project' }
-    & { posts: Maybe<(
+    & { posts?: Maybe<(
       { __typename?: 'PostConnection' }
-      & { edges: Maybe<Array<(
+      & { edges?: Maybe<Array<(
         { __typename?: 'PostEdge' }
         & Pick<PostEdge, 'cursor'>
         & { node: (
@@ -1744,27 +1761,27 @@ export type ProjectQuery = (
   )> }
 );
 
-export type ProjectSuggestionsQueryVariables = {
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type ProjectSuggestionsQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type ProjectSuggestionsQuery = (
   { __typename?: 'Query' }
-  & { projects: Maybe<Array<Maybe<(
+  & { projects?: Maybe<Array<Maybe<(
     { __typename?: 'ProjectSuggestionsConnection' }
-    & { type: Maybe<(
+    & { type?: Maybe<(
       { __typename?: 'ProjectType' }
       & Pick<ProjectType, 'id' | 'title'>
     )>, pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
+    ), edges?: Maybe<Array<(
       { __typename?: 'ProjectEdge' }
       & { node: (
         { __typename?: 'Project' }
-        & { cover: Maybe<(
+        & { cover?: Maybe<(
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
@@ -1779,33 +1796,33 @@ export type ProjectTypesQueryVariables = {};
 
 export type ProjectTypesQuery = (
   { __typename?: 'Query' }
-  & { types: Maybe<Array<Maybe<(
+  & { types?: Maybe<Array<Maybe<(
     { __typename?: 'ProjectType' }
     & Pick<ProjectType, 'id' | 'title' | 'imageUrl'>
   )>>> }
 );
 
-export type ProjectsQueryVariables = {
-  typeId?: Maybe<Scalars['ID']>,
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  type: ProjectSortType
-};
+export type ProjectsQueryVariables = Exact<{
+  typeId?: Maybe<Scalars['ID']>;
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  type: ProjectSortType;
+}>;
 
 
 export type ProjectsQuery = (
   { __typename?: 'Query' }
-  & { projects: Maybe<(
+  & { projects?: Maybe<(
     { __typename?: 'ProjectsConnection' }
     & { pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
+    ), edges?: Maybe<Array<(
       { __typename?: 'ProjectEdge' }
       & Pick<ProjectEdge, 'cursor'>
       & { node: (
         { __typename?: 'Project' }
-        & { cover: Maybe<(
+        & { cover?: Maybe<(
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
@@ -1815,19 +1832,19 @@ export type ProjectsQuery = (
   )> }
 );
 
-export type RecentCommentsQueryVariables = {
-  after?: Maybe<Scalars['String']>
-};
+export type RecentCommentsQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+}>;
 
 
 export type RecentCommentsQuery = (
   { __typename?: 'Query' }
-  & { comments: Maybe<(
+  & { comments?: Maybe<(
     { __typename?: 'CommentConnection' }
     & { pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    ), edges: Maybe<Array<(
+    ), edges?: Maybe<Array<(
       { __typename?: 'CommentEdge' }
       & Pick<CommentEdge, 'cursor'>
       & { node: (
@@ -1838,24 +1855,24 @@ export type RecentCommentsQuery = (
   )> }
 );
 
-export type RepliesQueryVariables = {
-  id: Scalars['ID'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type RepliesQueryVariables = Exact<{
+  id: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type RepliesQuery = (
   { __typename?: 'Query' }
-  & { comment: Maybe<(
+  & { comment?: Maybe<(
     { __typename?: 'Comment' }
-    & { replies: Maybe<(
+    & { replies?: Maybe<(
       { __typename?: 'CommentConnection' }
       & Pick<CommentConnection, 'totalCount'>
       & { pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
-      ), edges: Maybe<Array<(
+      ), edges?: Maybe<Array<(
         { __typename?: 'CommentEdge' }
         & Pick<CommentEdge, 'cursor'>
         & { node: (
@@ -1867,24 +1884,24 @@ export type RepliesQuery = (
   )> }
 );
 
-export type SearchHashtagsQueryVariables = {
-  query: Scalars['String'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type SearchHashtagsQueryVariables = Exact<{
+  query: Scalars['String'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type SearchHashtagsQuery = (
   { __typename?: 'Query' }
-  & { hashtags: Maybe<(
+  & { hashtags?: Maybe<(
     { __typename?: 'SearchResults' }
-    & { pageInfo: Maybe<(
+    & { pageInfo?: Maybe<(
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    )>, edges: Maybe<Array<Maybe<(
+    )>, edges?: Maybe<Array<Maybe<(
       { __typename?: 'SearchResultEdge' }
       & Pick<SearchResultEdge, 'cursor'>
-      & { node: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | { __typename?: 'Model' } | (
+      & { node?: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | { __typename?: 'Model' } | (
         { __typename?: 'Hashtag' }
         & Pick<Hashtag, 'id' | 'name' | 'slug' | 'totalCount'>
       )> }
@@ -1892,26 +1909,26 @@ export type SearchHashtagsQuery = (
   )> }
 );
 
-export type SearchModelsQueryVariables = {
-  query: Scalars['String'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type SearchModelsQueryVariables = Exact<{
+  query: Scalars['String'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type SearchModelsQuery = (
   { __typename?: 'Query' }
-  & { models: Maybe<(
+  & { models?: Maybe<(
     { __typename?: 'SearchResults' }
-    & { pageInfo: Maybe<(
+    & { pageInfo?: Maybe<(
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    )>, edges: Maybe<Array<Maybe<(
+    )>, edges?: Maybe<Array<Maybe<(
       { __typename?: 'SearchResultEdge' }
-      & { node: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | (
+      & { node?: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | (
         { __typename?: 'Model' }
         & Pick<Model, 'id' | 'model' | 'year'>
-        & { brand: Maybe<(
+        & { brand?: Maybe<(
           { __typename?: 'Brand' }
           & Pick<Brand, 'name'>
         )> }
@@ -1920,26 +1937,26 @@ export type SearchModelsQuery = (
   )> }
 );
 
-export type SearchProjectsQueryVariables = {
-  query: Scalars['String'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type SearchProjectsQueryVariables = Exact<{
+  query: Scalars['String'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type SearchProjectsQuery = (
   { __typename?: 'Query' }
-  & { projects: Maybe<(
+  & { projects?: Maybe<(
     { __typename?: 'SearchResults' }
-    & { pageInfo: Maybe<(
+    & { pageInfo?: Maybe<(
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    )>, edges: Maybe<Array<Maybe<(
+    )>, edges?: Maybe<Array<Maybe<(
       { __typename?: 'SearchResultEdge' }
       & Pick<SearchResultEdge, 'cursor'>
-      & { node: Maybe<(
+      & { node?: Maybe<(
         { __typename?: 'Project' }
-        & { cover: Maybe<(
+        & { cover?: Maybe<(
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri' | 'default'>
         )> }
@@ -1949,24 +1966,24 @@ export type SearchProjectsQuery = (
   )> }
 );
 
-export type SearchUsersQueryVariables = {
-  query: Scalars['String'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type SearchUsersQueryVariables = Exact<{
+  query: Scalars['String'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type SearchUsersQuery = (
   { __typename?: 'Query' }
-  & { users: Maybe<(
+  & { users?: Maybe<(
     { __typename?: 'SearchResults' }
-    & { pageInfo: Maybe<(
+    & { pageInfo?: Maybe<(
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
-    )>, edges: Maybe<Array<Maybe<(
+    )>, edges?: Maybe<Array<Maybe<(
       { __typename?: 'SearchResultEdge' }
       & Pick<SearchResultEdge, 'cursor'>
-      & { node: Maybe<{ __typename?: 'Project' } | (
+      & { node?: Maybe<{ __typename?: 'Project' } | (
         { __typename?: 'User' }
         & Pick<User, 'projectCount'>
         & UserFragment
@@ -1975,22 +1992,22 @@ export type SearchUsersQuery = (
   )> }
 );
 
-export type SimilarProjectsQueryVariables = {
-  id: Scalars['ID'],
-  first?: Maybe<Scalars['Int']>
-};
+export type SimilarProjectsQueryVariables = Exact<{
+  id: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type SimilarProjectsQuery = (
   { __typename?: 'Query' }
-  & { similarProjects: Maybe<(
+  & { similarProjects?: Maybe<(
     { __typename?: 'ProjectsConnection' }
-    & { edges: Maybe<Array<(
+    & { edges?: Maybe<Array<(
       { __typename?: 'ProjectEdge' }
       & Pick<ProjectEdge, 'cursor'>
       & { node: (
         { __typename?: 'Project' }
-        & { cover: Maybe<(
+        & { cover?: Maybe<(
           { __typename?: 'CoverType' }
           & Pick<CoverType, 'uri'>
         )> }
@@ -2000,33 +2017,33 @@ export type SimilarProjectsQuery = (
   )> }
 );
 
-export type UserQueryVariables = {
-  username: Scalars['LowercaseString'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type UserQueryVariables = Exact<{
+  username: Scalars['LowercaseString'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type UserQuery = (
   { __typename?: 'Query' }
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
-    & { projects: Maybe<(
+    & { projects?: Maybe<(
       { __typename?: 'ProjectsConnection' }
-      & { edges: Maybe<Array<(
+      & { edges?: Maybe<Array<(
         { __typename?: 'ProjectEdge' }
         & { node: (
           { __typename?: 'Project' }
-          & { cover: Maybe<(
+          & { cover?: Maybe<(
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
           )> }
           & ProjectFragment
         ) }
       )>> }
-    )>, posts: Maybe<(
+    )>, posts?: Maybe<(
       { __typename?: 'PostConnection' }
-      & { edges: Maybe<Array<(
+      & { edges?: Maybe<Array<(
         { __typename?: 'PostEdge' }
         & Pick<PostEdge, 'cursor'>
         & { node: (
@@ -2042,29 +2059,29 @@ export type UserQuery = (
   )> }
 );
 
-export type UserFollowingProjectsQueryVariables = {
-  username: Scalars['LowercaseString'],
-  after?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>
-};
+export type UserFollowingProjectsQueryVariables = Exact<{
+  username: Scalars['LowercaseString'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
 
 
 export type UserFollowingProjectsQuery = (
   { __typename?: 'Query' }
-  & { user: Maybe<(
+  & { user?: Maybe<(
     { __typename?: 'User' }
     & Pick<User, 'id'>
-    & { projects: Maybe<(
+    & { projects?: Maybe<(
       { __typename?: 'ProjectsConnection' }
       & { pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
-      ), edges: Maybe<Array<(
+      ), edges?: Maybe<Array<(
         { __typename?: 'ProjectEdge' }
         & Pick<ProjectEdge, 'cursor'>
         & { node: (
           { __typename?: 'Project' }
-          & { cover: Maybe<(
+          & { cover?: Maybe<(
             { __typename?: 'CoverType' }
             & Pick<CoverType, 'uri' | 'default'>
           )> }
@@ -3037,7 +3054,7 @@ export const CommentDocument = gql`
  * __useCommentQuery__
  *
  * To run a query within a React component, call `useCommentQuery` and pass it any options that fit your needs.
- * When your component renders, `useCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3082,7 +3099,7 @@ ${CommentAndRepliesFragmentDoc}`;
  * __useCommentsQuery__
  *
  * To run a query within a React component, call `useCommentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3138,7 +3155,7 @@ export const CurrentUserDocument = gql`
  * __useCurrentUserQuery__
  *
  * To run a query within a React component, call `useCurrentUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useCurrentUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3185,7 +3202,7 @@ export const CurrentUserFollowingProjectsDocument = gql`
  * __useCurrentUserFollowingProjectsQuery__
  *
  * To run a query within a React component, call `useCurrentUserFollowingProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCurrentUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useCurrentUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3243,7 +3260,7 @@ ${PostFragmentDoc}`;
  * __useCurrentUserProfileQuery__
  *
  * To run a query within a React component, call `useCurrentUserProfileQuery` and pass it any options that fit your needs.
- * When your component renders, `useCurrentUserProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useCurrentUserProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3277,7 +3294,7 @@ export const CurrentUserProjectsDocument = gql`
  * __useCurrentUserProjectsQuery__
  *
  * To run a query within a React component, call `useCurrentUserProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCurrentUserProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useCurrentUserProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3309,7 +3326,7 @@ export const CurrentUserSettingsDocument = gql`
  * __useCurrentUserSettingsQuery__
  *
  * To run a query within a React component, call `useCurrentUserSettingsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCurrentUserSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useCurrentUserSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3351,7 +3368,7 @@ export const FeedDocument = gql`
  * __useFeedQuery__
  *
  * To run a query within a React component, call `useFeedQuery` and pass it any options that fit your needs.
- * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFeedQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3393,7 +3410,7 @@ export const FollowersDocument = gql`
  * __useFollowersQuery__
  *
  * To run a query within a React component, call `useFollowersQuery` and pass it any options that fit your needs.
- * When your component renders, `useFollowersQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFollowersQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3429,7 +3446,7 @@ export const GrowthDocument = gql`
  * __useGrowthQuery__
  *
  * To run a query within a React component, call `useGrowthQuery` and pass it any options that fit your needs.
- * When your component renders, `useGrowthQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGrowthQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3472,7 +3489,7 @@ export const HashtagDocument = gql`
  * __useHashtagQuery__
  *
  * To run a query within a React component, call `useHashtagQuery` and pass it any options that fit your needs.
- * When your component renders, `useHashtagQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useHashtagQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3517,7 +3534,7 @@ export const MetaDocument = gql`
  * __useMetaQuery__
  *
  * To run a query within a React component, call `useMetaQuery` and pass it any options that fit your needs.
- * When your component renders, `useMetaQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useMetaQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3558,7 +3575,7 @@ export const NotificationsDocument = gql`
  * __useNotificationsQuery__
  *
  * To run a query within a React component, call `useNotificationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3592,7 +3609,7 @@ export const PostDocument = gql`
  * __usePostQuery__
  *
  * To run a query within a React component, call `usePostQuery` and pass it any options that fit your needs.
- * When your component renders, `usePostQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `usePostQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3633,7 +3650,7 @@ export const PostsDocument = gql`
  * __usePostsQuery__
  *
  * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
- * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3679,7 +3696,7 @@ ${ProjectFragmentDoc}`;
  * __useProjectQuery__
  *
  * To run a query within a React component, call `useProjectQuery` and pass it any options that fit your needs.
- * When your component renders, `useProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3731,7 +3748,7 @@ export const ProjectSuggestionsDocument = gql`
  * __useProjectSuggestionsQuery__
  *
  * To run a query within a React component, call `useProjectSuggestionsQuery` and pass it any options that fit your needs.
- * When your component renders, `useProjectSuggestionsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useProjectSuggestionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3767,7 +3784,7 @@ export const ProjectTypesDocument = gql`
  * __useProjectTypesQuery__
  *
  * To run a query within a React component, call `useProjectTypesQuery` and pass it any options that fit your needs.
- * When your component renders, `useProjectTypesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useProjectTypesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3811,7 +3828,7 @@ export const ProjectsDocument = gql`
  * __useProjectsQuery__
  *
  * To run a query within a React component, call `useProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3855,7 +3872,7 @@ export const RecentCommentsDocument = gql`
  * __useRecentCommentsQuery__
  *
  * To run a query within a React component, call `useRecentCommentsQuery` and pass it any options that fit your needs.
- * When your component renders, `useRecentCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useRecentCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3899,7 +3916,7 @@ export const RepliesDocument = gql`
  * __useRepliesQuery__
  *
  * To run a query within a React component, call `useRepliesQuery` and pass it any options that fit your needs.
- * When your component renders, `useRepliesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useRepliesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3947,7 +3964,7 @@ export const SearchHashtagsDocument = gql`
  * __useSearchHashtagsQuery__
  *
  * To run a query within a React component, call `useSearchHashtagsQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchHashtagsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useSearchHashtagsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -3996,7 +4013,7 @@ export const SearchModelsDocument = gql`
  * __useSearchModelsQuery__
  *
  * To run a query within a React component, call `useSearchModelsQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchModelsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useSearchModelsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -4045,7 +4062,7 @@ export const SearchProjectsDocument = gql`
  * __useSearchProjectsQuery__
  *
  * To run a query within a React component, call `useSearchProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useSearchProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -4091,7 +4108,7 @@ export const SearchUsersDocument = gql`
  * __useSearchUsersQuery__
  *
  * To run a query within a React component, call `useSearchUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useSearchUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -4134,7 +4151,7 @@ export const SimilarProjectsDocument = gql`
  * __useSimilarProjectsQuery__
  *
  * To run a query within a React component, call `useSimilarProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useSimilarProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useSimilarProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -4192,7 +4209,7 @@ ${PostFragmentDoc}`;
  * __useUserQuery__
  *
  * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -4242,7 +4259,7 @@ export const UserFollowingProjectsDocument = gql`
  * __useUserFollowingProjectsQuery__
  *
  * To run a query within a React component, call `useUserFollowingProjectsQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useUserFollowingProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
