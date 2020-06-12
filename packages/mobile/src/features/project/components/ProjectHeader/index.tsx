@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useSimilarProjectsLazyQuery, useFollowProjectMutation } from '@wrench/common'
 import { ActivityIndicator, Title, Follow, Icon } from 'ui'
-import { arrowDown } from 'images'
+import { arrowDown, arrowUp } from 'images'
 import { useNavigation, SCREENS } from 'navigation'
 import { FOLLOWING_COUNT, HAS_ASKED_FOR_RATING } from 'utils/storage/constants'
 import { askForRating } from 'utils/rate'
@@ -13,6 +13,7 @@ const TRIGGER_RATING_COUNT = 3
 
 function ProjectHeader({ project, spacingHorizontal }) {
   const { navigate } = useNavigation()
+  const [isShowingSimilarProjects, setIsShowingSimilarProjects] = useState(false)
 
   const [getSimilarProjects, { loading, data }] = useSimilarProjectsLazyQuery({
     variables: {
@@ -23,8 +24,19 @@ function ProjectHeader({ project, spacingHorizontal }) {
   const isFollower = !project.permissions.isFollower
 
   const handleSimilarProjects = useCallback(() => {
-    getSimilarProjects()
-  }, [getSimilarProjects])
+    if (!isShowingSimilarProjects && (!data || !data.similarProjects)) {
+      getSimilarProjects()
+      setIsShowingSimilarProjects(true)
+    }
+
+    if (!isShowingSimilarProjects && data && data.similarProjects) {
+      setIsShowingSimilarProjects(true)
+    }
+
+    if (isShowingSimilarProjects) {
+      setIsShowingSimilarProjects(false)
+    }
+  }, [isShowingSimilarProjects, getSimilarProjects])
 
   const [followProject] = useFollowProjectMutation({
     onCompleted: async () => {
@@ -97,11 +109,17 @@ function ProjectHeader({ project, spacingHorizontal }) {
         )}
 
         <OpenSimilar onPress={handleSimilarProjects}>
-          {loading ? <ActivityIndicator /> : <Icon source={arrowDown} disabled />}
+          {loading ? (
+            <ActivityIndicator />
+          ) : (
+            <Icon source={isShowingSimilarProjects ? arrowUp : arrowDown} disabled />
+          )}
         </OpenSimilar>
       </Actions>
 
-      {data && data.similarProjects && <SimilarProjects projects={data.similarProjects} />}
+      {data && data.similarProjects && isShowingSimilarProjects && (
+        <SimilarProjects projects={data.similarProjects} />
+      )}
     </Base>
   )
 }
