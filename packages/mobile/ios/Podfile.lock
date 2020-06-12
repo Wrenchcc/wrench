@@ -31,6 +31,8 @@ PODS:
   - EXFileSystem (8.1.0):
     - UMCore
     - UMFileSystemInterface
+  - EXHaptics (8.1.0):
+    - UMCore
   - EXImageLoader (1.0.1):
     - React-Core
     - UMCore
@@ -571,6 +573,7 @@ DEPENDENCIES:
   - EXCamera (from `../../../node_modules/expo-camera/ios`)
   - EXConstants (from `../../../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../../../node_modules/expo-file-system/ios`)
+  - EXHaptics (from `../../../node_modules/expo-haptics/ios`)
   - EXImageLoader (from `../../../node_modules/expo-image-loader/ios`)
   - EXImageManipulator (from `../../../node_modules/expo-image-manipulator/ios`)
   - EXImagePicker (from `../../../node_modules/expo-image-picker/ios`)
@@ -711,6 +714,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/expo-constants/ios"
   EXFileSystem:
     :path: "../../../node_modules/expo-file-system/ios"
+  EXHaptics:
+    :path: "../../../node_modules/expo-haptics/ios"
   EXImageLoader:
     :path: "../../../node_modules/expo-image-loader/ios"
   EXImageManipulator:
@@ -851,6 +856,7 @@ SPEC CHECKSUMS:
   EXCamera: a7d29d25bf78a058c9111080cc1fc5b73814ce09
   EXConstants: 5304709b1bea70a4828f48ba4c7fc3ec3b2d9b17
   EXFileSystem: cf4232ba7c62dc49b78c2d36005f97b6fddf0b01
+  EXHaptics: 013b5065946d4dd7b46ea547b58072d45a206dbd
   EXImageLoader: 5ad6896fa1ef2ee814b551873cbf7a7baccc694a
   EXImageManipulator: 97f61d14c292714d66884e83697e794f8cefe0b0
   EXImagePicker: 4126814cba56cc3dc5e7fc47abce0b263da84609

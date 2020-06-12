@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react'
-import { Alert } from 'react-native'
+import React, { useCallback, useRef } from 'react'
+import { Alert, View, Animated } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import {
   useDeletePostMutation,
@@ -7,14 +7,17 @@ import {
   PostsDocument,
   CurrentUserProfileDocument,
   ProjectDocument,
+  useLikePostMutation,
 } from '@wrench/common'
+import { State, TapGestureHandler } from 'react-native-gesture-handler'
+import * as Haptics from 'expo-haptics'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import { useDynamicColor } from 'utils/hooks'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
-import { share } from 'images'
+import { share, sparkMega } from 'images'
 import { Base, Top, Headline, Content, Spacer } from './styles'
 
 function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
@@ -22,19 +25,60 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
   const { navigate, showEditPost } = useNavigation()
   const dynamicColor = useDynamicColor('inverse')
   const [deletePost] = useDeletePostMutation()
+  const [toggleLike] = useLikePostMutation()
   const handleEdit = useCallback(() => showEditPost({ post }), [post])
 
+  const animatedValue = useRef(new Animated.Value(0))
+
+  const handleToggleLike = useCallback(
+    (evt) => {
+      if (evt.nativeEvent.state === State.ACTIVE) {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+
+        if (!post.likes.isLiked) {
+          Animated.sequence([
+            Animated.spring(animatedValue.current, {
+              toValue: 1,
+              useNativeDriver: true,
+              tension: 250,
+            }),
+            Animated.spring(animatedValue.current, { toValue: 0, useNativeDriver: true }),
+          ]).start()
+
+          toggleLike({
+            variables: {
+              id: post.id,
+            },
+            optimisticResponse: {
+              __typename: 'Mutation',
+              likePost: {
+                __typename: 'Post',
+                ...post,
+                likes: {
+                  __typename: 'Likes',
+                  isLiked: true,
+                  totalCount: post.likes.totalCount + 1,
+                },
+              },
+            },
+          })
+        }
+      }
+    },
+    [toggleLike, post]
+  )
+
   const handleDeletePost = useCallback(
-    id => {
+    (id) => {
       deletePost({
         variables: {
           id,
         },
-        update: cache => {
+        update: (cache) => {
           // Feed
           try {
             const data = cache.readQuery({ query: FeedDocument })
-            const edges = data.feed.posts.edges.filter(edge => edge.node.id !== id)
+            const edges = data.feed.posts.edges.filter((edge) => edge.node.id !== id)
 
             cache.writeQuery({
               query: FeedDocument,
@@ -56,7 +100,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           // Recent posts
           try {
             const data = cache.readQuery({ query: PostsDocument })
-            const edges = data.posts.edges.filter(edge => edge.node.id !== id)
+            const edges = data.posts.edges.filter((edge) => edge.node.id !== id)
 
             cache.writeQuery({
               query: PostsDocument,
@@ -75,7 +119,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           // Current user
           try {
             const data = cache.readQuery({ query: CurrentUserProfileDocument })
-            const edges = data.user.posts.edges.filter(edge => edge.node.id !== id)
+            const edges = data.user.posts.edges.filter((edge) => edge.node.id !== id)
 
             cache.writeQuery({
               query: CurrentUserProfileDocument,
@@ -103,7 +147,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
               },
             })
 
-            const edges = data.project.posts.edges.filter(edge => edge.node.id !== id)
+            const edges = data.project.posts.edges.filter((edge) => edge.node.id !== id)
 
             cache.writeQuery({
               query: ProjectDocument,
@@ -176,7 +220,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           cancelButtonIndex: 2,
           tintColor: dynamicColor,
         },
-        index => {
+        (index) => {
           if (index === 0) {
             handleEdit()
           }
@@ -194,7 +238,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           cancelButtonIndex: 1,
           tintColor: dynamicColor,
         },
-        index => {
+        (index) => {
           if (index === 0) {
             openLink(`mailto:report@wrench.cc?subject=Report%20post:%20${post.id}`)
           }
@@ -238,7 +282,37 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
 
         <Spacer />
 
-        {post.files && <Carousel files={post.files} onPress={navigateToProject} />}
+        {post.files && (
+          <TapGestureHandler numberOfTaps={2} onHandlerStateChange={handleToggleLike}>
+            <View>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Carousel files={post.files} />
+
+                <Animated.Image
+                  pointerEvents="none"
+                  source={sparkMega}
+                  style={{
+                    position: 'absolute',
+                    opacity: animatedValue.current,
+                    transform: [
+                      {
+                        scale: animatedValue.current.interpolate({
+                          inputRange: [0, 1],
+                          outputRange: [0.7, 1.5],
+                        }),
+                      },
+                    ],
+                  }}
+                />
+              </View>
+            </View>
+          </TapGestureHandler>
+        )}
       </Content>
 
       <LikePost post={post} />

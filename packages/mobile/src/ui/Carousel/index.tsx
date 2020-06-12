@@ -1,7 +1,6 @@
 import React, { memo, useState, useCallback } from 'react'
 import { FlatList } from 'react-native'
 import Pinchable from 'react-native-pinchable'
-import Touchable from 'ui/Touchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
 import { Wrapper, Picture, SIZE, GUTTER } from './styles'
@@ -16,7 +15,7 @@ const getItemLayout = (_, index) => ({
 
 const keyExtractor = ({ node }) => node.id
 
-function Carousel({ onPress, files }) {
+function Carousel({ files }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const scrollEnabled = files.edges.length > 1
 
@@ -36,16 +35,14 @@ function Carousel({ onPress, files }) {
     ({ item, index }) => (
       <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
         <Pinchable maximumZoomScale={5}>
-          <Touchable onPress={onPress} activeOpacity={1} nativeHandler>
-            <Picture
-              showIndicator
-              width={SIZE}
-              height={SIZE}
-              source={{ uri: item.node.uri }}
-              priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
-              index={index}
-            />
-          </Touchable>
+          <Picture
+            showIndicator
+            width={SIZE}
+            height={SIZE}
+            source={{ uri: item.node.uri }}
+            priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
+            index={index}
+          />
         </Pinchable>
       </Wrapper>
     ),
