@@ -2,6 +2,17 @@ import React from 'react'
 import Touchable from 'ui/Touchable'
 import { Base } from './styles'
 
+type TitleProps = {
+  children: React.ReactElement
+  numberOfLines?: number
+  style?: Record<string, any>
+  large?: boolean
+  medium?: boolean
+  onPress?: () => void
+  onLongPress?: () => void
+  disabled?: boolean
+}
+
 function Title({
   children,
   numberOfLines = 2,
@@ -12,7 +23,7 @@ function Title({
   onLongPress,
   disabled = false,
   ...props
-}) {
+}: TitleProps) {
   return onPress ? (
     <Touchable onPress={onPress} onLongPress={onLongPress} disabled={disabled}>
       <Base numberOfLines={numberOfLines} medium={medium} large={large} style={style} {...props}>

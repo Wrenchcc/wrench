@@ -1,7 +1,17 @@
 import React, { useState, useCallback } from 'react'
+import { TextStyle } from 'react-native-fbsdk'
 import { useTranslation } from 'react-i18next'
 import handleParse from './handleParse'
 import { Base } from './styles'
+
+type TextProps = {
+  children: string
+  numberOfLines?: number
+  disabled?: boolean
+  onPress?: () => void
+  lineHeight?: number
+  maxText?: number
+} & TextStyle
 
 const Text = ({
   children,
@@ -11,7 +21,7 @@ const Text = ({
   lineHeight = null,
   maxText,
   ...props
-}) => {
+}: TextProps) => {
   if (maxText) {
     const [expanded, setExpanded] = useState(false)
     const { t } = useTranslation()
