@@ -20,7 +20,7 @@ export default function createClient() {
     track(events.USER_SIGNED_OUT)
     clearTokens()
     LoginManager.logOut()
-    GoogleSignin.signOut()
+    GoogleSignin.isSignedIn().then((isSignedIn) => isSignedIn && GoogleSignin.signOut())
     AuthNavigation()
   })
 
