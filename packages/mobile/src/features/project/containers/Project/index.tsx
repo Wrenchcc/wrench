@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { Page, FlatList } from 'navigation'
+import { Page, FlatList, useNavigation } from 'navigation'
 import Post from 'components/Post'
 import { EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
@@ -14,6 +14,7 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 function Project({ slug, id, postId, project: initialProjectData, post: initialPostData }) {
   const { t } = useTranslation()
+  const { navigateBack } = useNavigation()
 
   const {
     data: { edges, post, project },
@@ -77,7 +78,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
         headerTitle={project?.title}
         headerRight={
           project?.permissions.isOwner ? (
-            <Edit project={project} />
+            <Edit project={project} onDeleteCallback={navigateBack} />
           ) : (
             <Share title={project?.title} url={project?.dynamicLink} text />
           )
