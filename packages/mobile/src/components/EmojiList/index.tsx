@@ -7,7 +7,7 @@ const EMOJIS = ['🙌 ', '🔥 ', '😎 ', '🤘 ', '👏 ', '👍 ', '👊 ', '
 function EmojiList({ onPress }) {
   return (
     <Base>
-      {EMOJIS.map(emoji => (
+      {EMOJIS.map((emoji) => (
         <Text fontSize={24} key={emoji} center onPress={() => onPress(emoji)}>
           {emoji}
         </Text>
