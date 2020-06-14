@@ -1,5 +1,6 @@
 fragment UserSettings on User {
   id
+  role
   settings {
     notifications {
       types {
