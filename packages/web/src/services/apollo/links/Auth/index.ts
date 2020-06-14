@@ -1,6 +1,6 @@
-import { setContext } from 'apollo-link-context'
+import { setContext } from '@apollo/link-context'
 
-export default accessToken =>
+export default (accessToken) =>
   setContext((_, { headers }) => ({
     headers: {
       ...headers,

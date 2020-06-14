@@ -4,10 +4,10 @@ import NextApp from 'next/app'
 import Cookie from 'services/cookie'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import ApolloClient from 'apollo-client'
+import { ApolloClient, InMemoryCache, ApolloLink } from '@apollo/client'
 import { I18nextProvider, useSSR } from 'react-i18next'
+import withApollo from 'next-with-apollo'
 import { ApolloProvider } from '@apollo/react-hooks'
-import withApollo from 'graphql/withApollo'
 import GoogleAnalyticsSDK from 'components/GoogleAnalyticsSDK'
 import Promo from 'components/Promo'
 import GoogleAnalytics from 'services/google-analytics'
@@ -18,6 +18,10 @@ import Header from 'components/Header'
 import { Cookies } from 'services/cookie'
 import resources from 'translations/index.json'
 import i18n, { SUPPORTED_LOCALS } from 'i18n'
+import AuthLink from 'services/apollo/links/Auth'
+import RefreshTokenLink from 'services/apollo/links/RefreshToken'
+import HttpLink from 'services/apollo/links/Http'
+import { getDataFromTree } from '@apollo/react-ssr'
 
 const SET_COOKIE_HEADER = 'Set-Cookie'
 
@@ -127,4 +131,25 @@ function AppWithi18n({
   )
 }
 
-export default withApollo(App)
+export default withApollo(({ initialState }) => {
+  return (
+    new ApolloClient({
+      uri: 'https://api.wrench.cc/graphql',
+      ssrMode: true,
+      // connectToDevTools: isBrowser,
+      link: ApolloLink.from([RefreshTokenLink, HttpLink]),
+      cache: new InMemoryCache().restore(initialState || {}),
+    }),
+    getDataFromTree
+  )
+})(App)
+
+// export default withApollo(({ initialState }) => {
+//   return (
+//     new ApolloClient({
+//       link: concat(authMiddleware, httpLink),
+//       cache: new InMemoryCache().restore(initialState || {}),
+//     }),
+//     getDataFromTree
+//   )
+// })
