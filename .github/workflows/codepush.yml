@@ -45,7 +45,7 @@ jobs:
         run: |
           cd packages/mobile
           ./tasks/bundle_android
-
+      
       - name: Deploy to Codepush
         uses: NishanthShankar/codepush-action@master
         with:
