@@ -64,13 +64,12 @@ function Settings({ section }) {
         renderItem={renderItem}
         initialNumToRender={15}
         sections={
-          settings &&
           sections({
             handleToggleNotificationSettings,
             settings,
             navigate,
             showModal,
-            user: data.user,
+            user: data?.user,
           })[section || 'settings']
         }
         keyExtractor={keyExtractor}
