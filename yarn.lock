@@ -19152,10 +19152,10 @@ react-native-gesture-handler@^1.6.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-navigation@^6.7.2:
-  version "6.7.2"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.2.tgz#f14f57448b20e31bfc82daea0220e4cd73a0f546"
-  integrity sha512-taENL6NWO+fGep070IX6e4VS0B2SEJtHxT+AvVOXUZWOWO6yB9682ckBxpU+aW7NDMr6gOCAz9Cw6uRYJE6OfA==
+react-native-navigation@^6.7.3:
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.3.tgz#db98a96bd3b92e1827d57a9453d9453b043824af"
+  integrity sha512-n5GnAhCaTFlTRo7qfmd01fw6I6wPubA1+qTtvlEjMRUP+mobM8ppPrWJpKOh2bfy+u3HUsMsGKbAuBOcsUt0YQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -19241,10 +19241,10 @@ react-native-video@^5.0.2:
     prop-types "^15.5.10"
     shaka-player "^2.4.4"
 
-react-native-webview@10.2.3:
-  version "10.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-10.2.3.tgz#78aef542deaa8f97f581743c205e6a6ada73559c"
-  integrity sha512-nGAw3S/Pjy3m3Jlymr1Zrk+Cy+Vdq+jRe3wqJ68NJDUlKhQHDXK2NsQnre4HwcRtRYoJqcfqR93VXZOoU1Uoeg==
+react-native-webview@^10.3.1:
+  version "10.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-10.3.1.tgz#04a2b17a37daf04575b3abd10b1fb29d2c154c6f"
+  integrity sha512-Ac0v4lFaJl5P/haLook+UIKMW4Ru5xg0+AdxD2oJRB2TPgdqoATziYNU0LBMjntlxDp+DVzdr3fVDuLMdox0tg==
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
