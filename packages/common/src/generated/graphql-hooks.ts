@@ -1077,7 +1077,7 @@ export type UserProjectsFragment = (
 
 export type UserSettingsFragment = (
   { __typename?: 'User' }
-  & Pick<User, 'id'>
+  & Pick<User, 'id' | 'role'>
   & { settings?: Maybe<(
     { __typename?: 'UserSettings' }
     & { notifications?: Maybe<(
@@ -2256,6 +2256,7 @@ export const UserProjectsFragmentDoc = gql`
 export const UserSettingsFragmentDoc = gql`
     fragment UserSettings on User {
   id
+  role
   settings {
     notifications {
       types {

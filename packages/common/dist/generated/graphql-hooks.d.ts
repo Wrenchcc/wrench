@@ -893,7 +893,7 @@ export declare type UserProjectsFragment = ({
 });
 export declare type UserSettingsFragment = ({
     __typename?: 'User';
-} & Pick<User, 'id'> & {
+} & Pick<User, 'id' | 'role'> & {
     settings?: Maybe<({
         __typename?: 'UserSettings';
     } & {
