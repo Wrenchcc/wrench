@@ -47,8 +47,8 @@ jobs:
           ./tasks/bundle_android
 
       - name: Deploy to Codepush
-          uses: NishanthShankar/codepush-action@master
-          with:
-            args: release -d Staging -a Wrench-app/Wrench-1 -c .codepush -t ">1"
-          env:
-            APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
+        uses: NishanthShankar/codepush-action@master
+        with:
+          args: release -d Staging -a Wrench-app/Wrench-1 -c .codepush -t ">1"
+        env:
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
