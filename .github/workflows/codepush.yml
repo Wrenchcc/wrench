@@ -4,6 +4,7 @@ on:
     branches:
       - master
     paths:
+      - '.github/workflows'
       - 'packages/mobile/**'
       - 'packages/common/**'
       - 'packages/ui/**'
