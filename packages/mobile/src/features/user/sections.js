@@ -257,7 +257,7 @@ const sections = (props) => {
     ],
   }
 
-  if (isAdmin(props.user)) {
+  if (props.user && isAdmin(props.user)) {
     data.settings.push({
       titleKey: 'developer',
       data: [

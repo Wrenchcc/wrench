@@ -28,11 +28,19 @@ export const setDeploymentKey = async (deploymentKey) => {
   try {
     await AsyncStorage.setItem(CODEPUSH_DEPLOYMENT_KEY, deploymentKey)
 
-    codePush.sync({
+    codePush.clearUpdates()
+
+    await codePush.sync({
       deploymentKey,
       installMode: codePush.InstallMode.IMMEDIATE,
+      updateDialog: {
+        title: 'An update is available!',
+      },
     })
 
     codePush.restartApp()
   } catch {}
 }
+
+export const isProductionDeploymentKey = (deploymentKey) =>
+  deploymentKey === DEPLOYMENT_KEY_PRODUCTION
