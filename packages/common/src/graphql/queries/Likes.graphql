@@ -1,0 +1,17 @@
+#import "../fragments/UserFragment.graphql"
+
+query likes($postId: ID, $after: String, $first: Int = 10) {
+  hashtag(id: $id, slug: $slug) {
+     likes: postsConnection(first: $first, after: $after) @connection(key: "likes") {
+       pageInfo {
+         hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          ...User
+        }
+      }
+    }
+  }
+}
