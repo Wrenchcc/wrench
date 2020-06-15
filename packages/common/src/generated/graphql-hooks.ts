@@ -1055,6 +1055,18 @@ export type PostFragment = (
         & CommentFragment
       ) }
     )>> }
+  )>, likesConnection?: Maybe<(
+    { __typename?: 'LikeConnection' }
+    & { edges?: Maybe<Array<(
+      { __typename?: 'LikeEdge' }
+      & { node: (
+        { __typename?: 'Like' }
+        & { user?: Maybe<(
+          { __typename?: 'User' }
+          & Pick<User, 'id' | 'avatarUrl' | 'username'>
+        )> }
+      ) }
+    )>> }
   )> }
 );
 
@@ -2253,6 +2265,17 @@ export const PostFragmentDoc = gql`
     edges {
       node {
         ...Comment
+      }
+    }
+  }
+  likesConnection(first: 3) @connection(key: "likes") {
+    edges {
+      node {
+        user {
+          id
+          avatarUrl
+          username
+        }
       }
     }
   }

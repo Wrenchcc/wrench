@@ -36,4 +36,15 @@ fragment Post on Post {
       }
     }
   }
+  likesConnection(first: 3) @connection(key: "likes") {
+    edges {
+      node {
+        user {
+          id
+          avatarUrl
+          username
+        }
+      }
+    }
+  }
 }

@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 import { useLikePostMutation } from '@wrench/common'
 import * as Haptics from 'expo-haptics'
 import { useTranslation } from 'react-i18next'
-import { Icon, Text } from 'ui'
+import { Icon, Text, UserStack } from 'ui'
 import { spark } from 'images'
 import { Base } from './styled'
 
@@ -61,6 +61,8 @@ function LikePost({ post }) {
           hitSlop={20}
         />
       </Animated.View>
+
+      {post.likes.totalCount > 2 && <UserStack users={post.likesConnection.edges} />}
 
       <Text fontSize={15}>{t('LikePost:like', { count: post.likes.totalCount })}</Text>
     </Base>
