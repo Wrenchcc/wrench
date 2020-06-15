@@ -15,7 +15,11 @@ async function setupSentry() {
     })
   } else {
     SentryInstance = {
-      captureException: (e) => console.log(e),
+      ...SentryInstance,
+      captureException: (e) => {
+        console.log(e)
+        return ''
+      },
       setUser: (c) => console.log(c),
       setRelease: (c) => console.log(c),
     }

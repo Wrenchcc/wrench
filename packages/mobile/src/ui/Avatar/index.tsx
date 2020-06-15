@@ -7,7 +7,7 @@ import IsOnline from 'ui/IsOnline'
 import Text from 'ui/Text'
 import { COLORS } from '../constants'
 
-const getInitials = string => {
+const getInitials = (string) => {
   if (string.length <= 2) {
     return string.toUpperCase()
   }
@@ -22,6 +22,20 @@ const getInitials = string => {
   return initials
 }
 
+type AvatarProps = {
+  uri: string
+  size?: number
+  onPress?: () => void
+  disabled?: boolean
+  isOnline?: boolean
+  badgeSize?: string
+  style?: Record<string, any>
+  borderWidth?: number
+  borderColor?: string
+  fullName: string
+  fallback?: boolean
+}
+
 function Avatar({
   uri,
   size = 30,
@@ -34,7 +48,7 @@ function Avatar({
   borderColor,
   fullName,
   fallback,
-}) {
+}: AvatarProps) {
   return (
     <View
       style={{

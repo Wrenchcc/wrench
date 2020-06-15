@@ -8,7 +8,7 @@ import evenHitSlop from 'utils/hitSlop'
 
 export type TouchableProps = {
   activeOpacity?: number
-  children?: React.ReactElement
+  children?: React.ReactNode
   hitSlop?: number
   onPress?: () => void
   nativeHandler?: boolean
