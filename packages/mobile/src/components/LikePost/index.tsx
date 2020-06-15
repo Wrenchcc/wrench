@@ -14,7 +14,7 @@ function LikePost({ post }) {
   const [toggleLike] = useLikePostMutation()
 
   const navigateToLikes = useCallback(() => {
-    navigate(SCREENS.LIKES)
+    navigate(SCREENS.LIKES, { id: post.id })
   }, [])
 
   const animatedValue = useRef(new Animated.Value(0))

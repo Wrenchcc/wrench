@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
+import { usePaginatedQuery, LikesDocument } from '@wrench/common'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
 
@@ -16,9 +16,9 @@ function Sparks({ id }) {
     isRefetching,
     hasNextPage,
     refetch,
-  } = usePaginatedQuery(['followers'])(FollowersDocument, {
+  } = usePaginatedQuery(['likes'])(LikesDocument, {
     variables: {
-      projectId: id,
+      postId: id,
     },
   })
 

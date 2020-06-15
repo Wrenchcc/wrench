@@ -18,318 +18,6 @@ export declare type Scalars = {
     /** Returns all strings in lower case */
     LowercaseString: any;
 };
-export declare type PageInfo = {
-    __typename?: 'PageInfo';
-    hasNextPage?: Maybe<Scalars['Boolean']>;
-    hasPreviousPage?: Maybe<Scalars['Boolean']>;
-};
-export declare enum PlatformType {
-    Mobile = "MOBILE",
-    Web = "WEB"
-}
-export declare type Tokens = {
-    __typename?: 'Tokens';
-    access_token?: Maybe<Scalars['String']>;
-    refresh_token?: Maybe<Scalars['String']>;
-};
-export declare type AccessToken = {
-    __typename?: 'AccessToken';
-    access_token?: Maybe<Scalars['String']>;
-};
-export declare type ApplePayload = {
-    firstName?: Maybe<Scalars['String']>;
-    lastName?: Maybe<Scalars['String']>;
-};
-export declare type Comment = {
-    __typename?: 'Comment';
-    id?: Maybe<Scalars['ID']>;
-    commentId?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    text: Scalars['String'];
-    user?: Maybe<User>;
-    postId?: Maybe<Scalars['ID']>;
-    permissions?: Maybe<CommentPermissions>;
-    repliesConnection?: Maybe<CommentConnection>;
-    likes?: Maybe<Likes>;
-};
-export declare type CommentRepliesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type CommentPermissions = {
-    __typename?: 'CommentPermissions';
-    isOwner?: Maybe<Scalars['Boolean']>;
-};
-export declare type CommentConnection = {
-    __typename?: 'CommentConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<CommentEdge>>;
-};
-export declare type CommentEdge = {
-    __typename?: 'CommentEdge';
-    cursor: Scalars['String'];
-    node: Comment;
-};
-export declare type CommentInput = {
-    text: Scalars['String'];
-};
-export declare type Feed = {
-    __typename?: 'Feed';
-    postsConnection?: Maybe<PostConnection>;
-};
-export declare type FeedPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type File = {
-    __typename?: 'File';
-    id?: Maybe<Scalars['ID']>;
-    type?: Maybe<FileType>;
-    uri: Scalars['String'];
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-};
-export declare type FileConnection = {
-    __typename?: 'FileConnection';
-    edges?: Maybe<Array<Maybe<FileEdge>>>;
-    pageInfo: PageInfo;
-};
-export declare enum FileType {
-    Image = "IMAGE",
-    Video = "VIDEO"
-}
-export declare type FileEdge = {
-    __typename?: 'FileEdge';
-    cursor: Scalars['String'];
-    node: File;
-};
-export declare type FollowersConnection = {
-    __typename?: 'FollowersConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<FollowersEdge>>;
-};
-export declare type FollowersEdge = {
-    __typename?: 'FollowersEdge';
-    cursor: Scalars['String'];
-    node: User;
-};
-export declare type Likes = {
-    __typename?: 'Likes';
-    totalCount?: Maybe<Scalars['Int']>;
-    isLiked?: Maybe<Scalars['Boolean']>;
-};
-export declare type LikeConnection = {
-    __typename?: 'LikeConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<LikeEdge>>;
-};
-export declare type LikeEdge = {
-    __typename?: 'LikeEdge';
-    cursor: Scalars['String'];
-    node: User;
-};
-export declare type Brand = {
-    __typename?: 'Brand';
-    id: Scalars['ID'];
-    name?: Maybe<Scalars['String']>;
-};
-export declare type Model = {
-    __typename?: 'Model';
-    id: Scalars['ID'];
-    brand?: Maybe<Brand>;
-    model?: Maybe<Scalars['String']>;
-    year?: Maybe<Scalars['Int']>;
-};
-export declare type Notification = {
-    __typename?: 'Notification';
-    id: Scalars['ID'];
-    user: User;
-    type?: Maybe<NotificationTypes>;
-    project?: Maybe<Project>;
-    post?: Maybe<Post>;
-    comment?: Maybe<Comment>;
-    isSeen: Scalars['Boolean'];
-    createdAt: Scalars['Date'];
-    updatedAt: Scalars['Date'];
-    filesConnection?: Maybe<FileConnection>;
-};
-export declare type NotificationFilesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    reverse?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<FileType>;
-};
-export declare enum NotificationTypes {
-    NewComment = "NEW_COMMENT",
-    NewFollower = "NEW_FOLLOWER",
-    NewPostLike = "NEW_POST_LIKE",
-    NewCommentLike = "NEW_COMMENT_LIKE",
-    NewMention = "NEW_MENTION",
-    NewReply = "NEW_REPLY"
-}
-export declare type NotificationsConnection = {
-    __typename?: 'NotificationsConnection';
-    unreadCount?: Maybe<Scalars['Int']>;
-    pageInfo?: Maybe<PageInfo>;
-    edges?: Maybe<Array<Maybe<NotificationEdge>>>;
-};
-export declare type NotificationEdge = {
-    __typename?: 'NotificationEdge';
-    cursor?: Maybe<Scalars['String']>;
-    node?: Maybe<Notification>;
-};
-export declare type Post = {
-    __typename?: 'Post';
-    id?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    caption?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    project?: Maybe<Project>;
-    postPermissions?: Maybe<PostPermissions>;
-    permissions?: Maybe<PostPermissions>;
-    likes?: Maybe<Likes>;
-    filesConnection?: Maybe<FileConnection>;
-    commentsConnection?: Maybe<CommentConnection>;
-    likesConnection?: Maybe<LikeConnection>;
-};
-export declare type PostFilesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    reverse?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<FileType>;
-};
-export declare type PostCommentsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type PostLikesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type PostPermissions = {
-    __typename?: 'PostPermissions';
-    isOwner?: Maybe<Scalars['Boolean']>;
-};
-export declare type PostConnection = {
-    __typename?: 'PostConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<PostEdge>>;
-};
-export declare type PostEdge = {
-    __typename?: 'PostEdge';
-    cursor: Scalars['String'];
-    node: Post;
-};
-export declare type FileInput = {
-    filename: Scalars['String'];
-};
-export declare type PostInput = {
-    projectId: Scalars['ID'];
-    caption?: Maybe<Scalars['String']>;
-    files: Array<Maybe<FileInput>>;
-};
-export declare type EditPostInput = {
-    caption?: Maybe<Scalars['String']>;
-};
-export declare type Project = {
-    __typename?: 'Project';
-    id?: Maybe<Scalars['ID']>;
-    slug?: Maybe<Scalars['String']>;
-    title?: Maybe<Scalars['String']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    dynamicLink?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    projectPermissions?: Maybe<ProjectPermissions>;
-    permissions?: Maybe<ProjectPermissions>;
-    commentsDisabled?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<ProjectType>;
-    cover?: Maybe<CoverType>;
-    model?: Maybe<Model>;
-    filesConnection?: Maybe<FileConnection>;
-    followersConnection?: Maybe<FollowersConnection>;
-    postsConnection?: Maybe<PostConnection>;
-};
-export declare type ProjectFilesConnectionArgs = {
-    after?: Maybe<Scalars['String']>;
-    first?: Maybe<Scalars['Int']>;
-    reverse?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<FileType>;
-};
-export declare type ProjectFollowersConnectionArgs = {
-    after?: Maybe<Scalars['String']>;
-    before?: Maybe<Scalars['String']>;
-    first?: Maybe<Scalars['Int']>;
-    last?: Maybe<Scalars['Int']>;
-};
-export declare type ProjectPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type CoverType = {
-    __typename?: 'CoverType';
-    uri?: Maybe<Scalars['String']>;
-    default?: Maybe<Scalars['Boolean']>;
-};
-export declare type ProjectPermissions = {
-    __typename?: 'ProjectPermissions';
-    isFollower?: Maybe<Scalars['Boolean']>;
-    isOwner?: Maybe<Scalars['Boolean']>;
-};
-export declare enum ProjectSortType {
-    Popular = "POPULAR",
-    Recent = "RECENT"
-}
-export declare type ProjectType = {
-    __typename?: 'ProjectType';
-    id?: Maybe<Scalars['ID']>;
-    title?: Maybe<Scalars['String']>;
-    slug?: Maybe<Scalars['String']>;
-    imageUrl: Scalars['String'];
-};
-export declare type ProjectsConnection = {
-    __typename?: 'ProjectsConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<ProjectEdge>>;
-};
-export declare type ProjectSuggestionsConnection = {
-    __typename?: 'ProjectSuggestionsConnection';
-    totalCount?: Maybe<Scalars['Int']>;
-    type?: Maybe<ProjectType>;
-    pageInfo: PageInfo;
-    edges?: Maybe<Array<ProjectEdge>>;
-};
-export declare type ProjectEdge = {
-    __typename?: 'ProjectEdge';
-    cursor: Scalars['String'];
-    node: Project;
-};
-export declare type ProjectTypeInput = {
-    id?: Maybe<Scalars['ID']>;
-};
-export declare type ProjectInput = {
-    title?: Maybe<Scalars['String']>;
-    commentsDisabled?: Maybe<Scalars['Boolean']>;
-    projectTypeId?: Maybe<Scalars['ID']>;
-    modelId?: Maybe<Scalars['ID']>;
-};
 export declare type Query = {
     __typename?: 'Query';
     dummy?: Maybe<Scalars['String']>;
@@ -467,6 +155,416 @@ export declare type QueryHashtagArgs = {
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
 };
+export declare type CommentConnection = {
+    __typename?: 'CommentConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<CommentEdge>>;
+};
+export declare type PageInfo = {
+    __typename?: 'PageInfo';
+    hasNextPage?: Maybe<Scalars['Boolean']>;
+    hasPreviousPage?: Maybe<Scalars['Boolean']>;
+};
+export declare type CommentEdge = {
+    __typename?: 'CommentEdge';
+    cursor: Scalars['String'];
+    node: Comment;
+};
+export declare type Comment = {
+    __typename?: 'Comment';
+    id?: Maybe<Scalars['ID']>;
+    commentId?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    text: Scalars['String'];
+    user?: Maybe<User>;
+    postId?: Maybe<Scalars['ID']>;
+    permissions?: Maybe<CommentPermissions>;
+    repliesConnection?: Maybe<CommentConnection>;
+    likes?: Maybe<Likes>;
+};
+export declare type CommentRepliesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type User = {
+    __typename?: 'User';
+    id: Scalars['ID'];
+    username?: Maybe<Scalars['LowercaseString']>;
+    createdAt: Scalars['Date'];
+    updatedAt: Scalars['Date'];
+    fullName?: Maybe<Scalars['String']>;
+    firstName?: Maybe<Scalars['String']>;
+    lastName?: Maybe<Scalars['String']>;
+    avatarUrl?: Maybe<Scalars['String']>;
+    projectCount?: Maybe<Scalars['Int']>;
+    interestedIn?: Maybe<Array<Maybe<ProjectType>>>;
+    settings?: Maybe<UserSettings>;
+    dynamicLink?: Maybe<Scalars['String']>;
+    isOnline?: Maybe<Scalars['Boolean']>;
+    lastSeen?: Maybe<Scalars['Date']>;
+    website?: Maybe<Scalars['String']>;
+    bio?: Maybe<Scalars['String']>;
+    location?: Maybe<Scalars['String']>;
+    isSilhouette?: Maybe<Scalars['Boolean']>;
+    role?: Maybe<UserRole>;
+    projectsConnection?: Maybe<ProjectsConnection>;
+    followingProjects?: Maybe<ProjectsConnection>;
+    postsConnection?: Maybe<PostConnection>;
+};
+export declare type UserProjectsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type UserFollowingProjectsArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type UserPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type ProjectType = {
+    __typename?: 'ProjectType';
+    id?: Maybe<Scalars['ID']>;
+    title?: Maybe<Scalars['String']>;
+    slug?: Maybe<Scalars['String']>;
+    imageUrl: Scalars['String'];
+};
+export declare type UserSettings = {
+    __typename?: 'UserSettings';
+    locale?: Maybe<Scalars['String']>;
+    timezone?: Maybe<Scalars['String']>;
+    notifications?: Maybe<UserNotificationsSettings>;
+};
+export declare type UserNotificationsSettings = {
+    __typename?: 'UserNotificationsSettings';
+    types?: Maybe<NotificationSettingsType>;
+};
+export declare type NotificationSettingsType = {
+    __typename?: 'NotificationSettingsType';
+    NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
+    NEW_COMMENT?: Maybe<NotificationKindSettings>;
+    NEW_MENTION?: Maybe<NotificationKindSettings>;
+    NEW_ARTICLE?: Maybe<NotificationKindSettings>;
+    SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
+    PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
+};
+export declare type NotificationKindSettings = {
+    __typename?: 'NotificationKindSettings';
+    email?: Maybe<Scalars['Boolean']>;
+    push?: Maybe<Scalars['Boolean']>;
+};
+export declare enum UserRole {
+    User = "USER",
+    Admin = "ADMIN"
+}
+export declare type ProjectsConnection = {
+    __typename?: 'ProjectsConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<ProjectEdge>>;
+};
+export declare type ProjectEdge = {
+    __typename?: 'ProjectEdge';
+    cursor: Scalars['String'];
+    node: Project;
+};
+export declare type Project = {
+    __typename?: 'Project';
+    id?: Maybe<Scalars['ID']>;
+    slug?: Maybe<Scalars['String']>;
+    title?: Maybe<Scalars['String']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    dynamicLink?: Maybe<Scalars['String']>;
+    user?: Maybe<User>;
+    projectPermissions?: Maybe<ProjectPermissions>;
+    permissions?: Maybe<ProjectPermissions>;
+    commentsDisabled?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<ProjectType>;
+    cover?: Maybe<CoverType>;
+    model?: Maybe<Model>;
+    filesConnection?: Maybe<FileConnection>;
+    followersConnection?: Maybe<FollowersConnection>;
+    postsConnection?: Maybe<PostConnection>;
+};
+export declare type ProjectFilesConnectionArgs = {
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+    reverse?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<FileType>;
+};
+export declare type ProjectFollowersConnectionArgs = {
+    after?: Maybe<Scalars['String']>;
+    before?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+    last?: Maybe<Scalars['Int']>;
+};
+export declare type ProjectPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type ProjectPermissions = {
+    __typename?: 'ProjectPermissions';
+    isFollower?: Maybe<Scalars['Boolean']>;
+    isOwner?: Maybe<Scalars['Boolean']>;
+};
+export declare type CoverType = {
+    __typename?: 'CoverType';
+    uri?: Maybe<Scalars['String']>;
+    default?: Maybe<Scalars['Boolean']>;
+};
+export declare type Model = {
+    __typename?: 'Model';
+    id: Scalars['ID'];
+    brand?: Maybe<Brand>;
+    model?: Maybe<Scalars['String']>;
+    year?: Maybe<Scalars['Int']>;
+};
+export declare type Brand = {
+    __typename?: 'Brand';
+    id: Scalars['ID'];
+    name?: Maybe<Scalars['String']>;
+};
+export declare enum FileType {
+    Image = "IMAGE",
+    Video = "VIDEO"
+}
+export declare type FileConnection = {
+    __typename?: 'FileConnection';
+    edges?: Maybe<Array<Maybe<FileEdge>>>;
+    pageInfo: PageInfo;
+};
+export declare type FileEdge = {
+    __typename?: 'FileEdge';
+    cursor: Scalars['String'];
+    node: File;
+};
+export declare type File = {
+    __typename?: 'File';
+    id?: Maybe<Scalars['ID']>;
+    type?: Maybe<FileType>;
+    uri: Scalars['String'];
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+};
+export declare type FollowersConnection = {
+    __typename?: 'FollowersConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<FollowersEdge>>;
+};
+export declare type FollowersEdge = {
+    __typename?: 'FollowersEdge';
+    cursor: Scalars['String'];
+    node: User;
+};
+export declare type PostConnection = {
+    __typename?: 'PostConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<PostEdge>>;
+};
+export declare type PostEdge = {
+    __typename?: 'PostEdge';
+    cursor: Scalars['String'];
+    node: Post;
+};
+export declare type Post = {
+    __typename?: 'Post';
+    id?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    caption?: Maybe<Scalars['String']>;
+    user?: Maybe<User>;
+    project?: Maybe<Project>;
+    postPermissions?: Maybe<PostPermissions>;
+    permissions?: Maybe<PostPermissions>;
+    likes?: Maybe<Likes>;
+    filesConnection?: Maybe<FileConnection>;
+    commentsConnection?: Maybe<CommentConnection>;
+    likesConnection?: Maybe<LikeConnection>;
+};
+export declare type PostFilesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    reverse?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<FileType>;
+};
+export declare type PostCommentsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type PostLikesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type PostPermissions = {
+    __typename?: 'PostPermissions';
+    isOwner?: Maybe<Scalars['Boolean']>;
+};
+export declare type Likes = {
+    __typename?: 'Likes';
+    totalCount?: Maybe<Scalars['Int']>;
+    isLiked?: Maybe<Scalars['Boolean']>;
+};
+export declare type LikeConnection = {
+    __typename?: 'LikeConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<LikeEdge>>;
+};
+export declare type LikeEdge = {
+    __typename?: 'LikeEdge';
+    cursor: Scalars['String'];
+    node: User;
+};
+export declare type CommentPermissions = {
+    __typename?: 'CommentPermissions';
+    isOwner?: Maybe<Scalars['Boolean']>;
+};
+export declare type Feed = {
+    __typename?: 'Feed';
+    postsConnection?: Maybe<PostConnection>;
+};
+export declare type FeedPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type NotificationsConnection = {
+    __typename?: 'NotificationsConnection';
+    unreadCount?: Maybe<Scalars['Int']>;
+    pageInfo?: Maybe<PageInfo>;
+    edges?: Maybe<Array<Maybe<NotificationEdge>>>;
+};
+export declare type NotificationEdge = {
+    __typename?: 'NotificationEdge';
+    cursor?: Maybe<Scalars['String']>;
+    node?: Maybe<Notification>;
+};
+export declare type Notification = {
+    __typename?: 'Notification';
+    id: Scalars['ID'];
+    user: User;
+    type?: Maybe<NotificationTypes>;
+    project?: Maybe<Project>;
+    post?: Maybe<Post>;
+    comment?: Maybe<Comment>;
+    isSeen: Scalars['Boolean'];
+    createdAt: Scalars['Date'];
+    updatedAt: Scalars['Date'];
+    filesConnection?: Maybe<FileConnection>;
+};
+export declare type NotificationFilesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    reverse?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<FileType>;
+};
+export declare enum NotificationTypes {
+    NewComment = "NEW_COMMENT",
+    NewFollower = "NEW_FOLLOWER",
+    NewPostLike = "NEW_POST_LIKE",
+    NewCommentLike = "NEW_COMMENT_LIKE",
+    NewMention = "NEW_MENTION",
+    NewReply = "NEW_REPLY"
+}
+export declare enum ProjectSortType {
+    Popular = "POPULAR",
+    Recent = "RECENT"
+}
+export declare type ProjectSuggestionsConnection = {
+    __typename?: 'ProjectSuggestionsConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    type?: Maybe<ProjectType>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<ProjectEdge>>;
+};
+export declare enum SearchType {
+    Projects = "PROJECTS",
+    Users = "USERS",
+    Models = "MODELS",
+    Hashtags = "HASHTAGS"
+}
+export declare type SearchResults = {
+    __typename?: 'SearchResults';
+    totalCount?: Maybe<Scalars['Int']>;
+    edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
+    pageInfo?: Maybe<PageInfo>;
+};
+export declare type SearchResultEdge = {
+    __typename?: 'SearchResultEdge';
+    cursor?: Maybe<Scalars['String']>;
+    node?: Maybe<SearchResultNode>;
+};
+export declare type SearchResultNode = Project | User | Model | Hashtag;
+export declare type Hashtag = {
+    __typename?: 'Hashtag';
+    id?: Maybe<Scalars['ID']>;
+    name?: Maybe<Scalars['String']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
+    totalCount?: Maybe<Scalars['Int']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    postsConnection?: Maybe<PostConnection>;
+};
+export declare type HashtagPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type UserConnection = {
+    __typename?: 'UserConnection';
+    pageInfo?: Maybe<PageInfo>;
+    edges?: Maybe<Array<Maybe<UserEdge>>>;
+};
+export declare type UserEdge = {
+    __typename?: 'UserEdge';
+    cursor?: Maybe<Scalars['String']>;
+    node?: Maybe<User>;
+};
+export declare type Meta = {
+    __typename?: 'Meta';
+    isAdmin?: Maybe<Scalars['Boolean']>;
+    totalUsers?: Maybe<Scalars['Int']>;
+    totalProjects?: Maybe<Scalars['Int']>;
+    totalPosts?: Maybe<Scalars['Int']>;
+    totalComments?: Maybe<Scalars['Int']>;
+    totalFiles?: Maybe<Scalars['Int']>;
+    totalUsersToday?: Maybe<Scalars['Int']>;
+    totalProjectsToday?: Maybe<Scalars['Int']>;
+    totalPostsToday?: Maybe<Scalars['Int']>;
+    totalCommentsToday?: Maybe<Scalars['Int']>;
+    totalFilesToday?: Maybe<Scalars['Int']>;
+};
+export declare enum GrowthType {
+    Projects = "PROJECTS",
+    Users = "USERS"
+}
+export declare type GrowthData = {
+    __typename?: 'GrowthData';
+    date?: Maybe<Scalars['Date']>;
+    count?: Maybe<Scalars['Int']>;
+};
 export declare type Mutation = {
     __typename?: 'Mutation';
     dummy?: Maybe<Scalars['String']>;
@@ -586,24 +684,46 @@ export declare type MutationReportArgs = {
     id: Scalars['ID'];
     type: ReportType;
 };
-export declare enum SearchType {
-    Projects = "PROJECTS",
-    Users = "USERS",
-    Models = "MODELS",
-    Hashtags = "HASHTAGS"
+export declare type ApplePayload = {
+    firstName?: Maybe<Scalars['String']>;
+    lastName?: Maybe<Scalars['String']>;
+};
+export declare type Tokens = {
+    __typename?: 'Tokens';
+    access_token?: Maybe<Scalars['String']>;
+    refresh_token?: Maybe<Scalars['String']>;
+};
+export declare type AccessToken = {
+    __typename?: 'AccessToken';
+    access_token?: Maybe<Scalars['String']>;
+};
+export declare type CommentInput = {
+    text: Scalars['String'];
+};
+export declare type PostInput = {
+    projectId: Scalars['ID'];
+    caption?: Maybe<Scalars['String']>;
+    files: Array<Maybe<FileInput>>;
+};
+export declare type FileInput = {
+    filename: Scalars['String'];
+};
+export declare type EditPostInput = {
+    caption?: Maybe<Scalars['String']>;
+};
+export declare type ProjectInput = {
+    title?: Maybe<Scalars['String']>;
+    commentsDisabled?: Maybe<Scalars['Boolean']>;
+    projectTypeId?: Maybe<Scalars['ID']>;
+    modelId?: Maybe<Scalars['ID']>;
+};
+export declare type PreSignedUrlnput = {
+    type: UploadType;
+};
+export declare enum UploadType {
+    Image = "IMAGE",
+    Video = "VIDEO"
 }
-export declare type SearchResultNode = Project | User | Model | Hashtag;
-export declare type SearchResultEdge = {
-    __typename?: 'SearchResultEdge';
-    cursor?: Maybe<Scalars['String']>;
-    node?: Maybe<SearchResultNode>;
-};
-export declare type SearchResults = {
-    __typename?: 'SearchResults';
-    totalCount?: Maybe<Scalars['Int']>;
-    edges?: Maybe<Array<Maybe<SearchResultEdge>>>;
-    pageInfo?: Maybe<PageInfo>;
-};
 export declare type PreSignedUrl = {
     __typename?: 'PreSignedUrl';
     url?: Maybe<Scalars['String']>;
@@ -611,97 +731,9 @@ export declare type PreSignedUrl = {
     id?: Maybe<Scalars['ID']>;
     filename?: Maybe<Scalars['String']>;
 };
-export declare type PreSignedUrlnput = {
-    type: UploadType;
-};
 export declare type PreSignedUrlInput = {
     type: UploadType;
     path: Scalars['String'];
-};
-export declare enum UploadType {
-    Image = "IMAGE",
-    Video = "VIDEO"
-}
-export declare type User = {
-    __typename?: 'User';
-    id: Scalars['ID'];
-    username?: Maybe<Scalars['LowercaseString']>;
-    createdAt: Scalars['Date'];
-    updatedAt: Scalars['Date'];
-    fullName?: Maybe<Scalars['String']>;
-    firstName?: Maybe<Scalars['String']>;
-    lastName?: Maybe<Scalars['String']>;
-    avatarUrl?: Maybe<Scalars['String']>;
-    projectCount?: Maybe<Scalars['Int']>;
-    interestedIn?: Maybe<Array<Maybe<ProjectType>>>;
-    settings?: Maybe<UserSettings>;
-    dynamicLink?: Maybe<Scalars['String']>;
-    isOnline?: Maybe<Scalars['Boolean']>;
-    lastSeen?: Maybe<Scalars['Date']>;
-    website?: Maybe<Scalars['String']>;
-    bio?: Maybe<Scalars['String']>;
-    location?: Maybe<Scalars['String']>;
-    isSilhouette?: Maybe<Scalars['Boolean']>;
-    role?: Maybe<UserRole>;
-    projectsConnection?: Maybe<ProjectsConnection>;
-    followingProjects?: Maybe<ProjectsConnection>;
-    postsConnection?: Maybe<PostConnection>;
-};
-export declare type UserProjectsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type UserFollowingProjectsArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type UserPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare enum UserRole {
-    User = "USER",
-    Admin = "ADMIN"
-}
-export declare type UserConnection = {
-    __typename?: 'UserConnection';
-    pageInfo?: Maybe<PageInfo>;
-    edges?: Maybe<Array<Maybe<UserEdge>>>;
-};
-export declare type UserEdge = {
-    __typename?: 'UserEdge';
-    cursor?: Maybe<Scalars['String']>;
-    node?: Maybe<User>;
-};
-export declare type NotificationKindSettings = {
-    __typename?: 'NotificationKindSettings';
-    email?: Maybe<Scalars['Boolean']>;
-    push?: Maybe<Scalars['Boolean']>;
-};
-export declare type NotificationSettingsType = {
-    __typename?: 'NotificationSettingsType';
-    NEW_FOLLOWER?: Maybe<NotificationKindSettings>;
-    NEW_COMMENT?: Maybe<NotificationKindSettings>;
-    NEW_MENTION?: Maybe<NotificationKindSettings>;
-    NEW_ARTICLE?: Maybe<NotificationKindSettings>;
-    SIMILAR_PROJECTS?: Maybe<NotificationKindSettings>;
-    PRODUCT_ANNOUNCEMENTS?: Maybe<NotificationKindSettings>;
-};
-export declare type UserNotificationsSettings = {
-    __typename?: 'UserNotificationsSettings';
-    types?: Maybe<NotificationSettingsType>;
-};
-export declare type UserSettings = {
-    __typename?: 'UserSettings';
-    locale?: Maybe<Scalars['String']>;
-    timezone?: Maybe<Scalars['String']>;
-    notifications?: Maybe<UserNotificationsSettings>;
 };
 export declare type EditUserInput = {
     firstName?: Maybe<Scalars['String']>;
@@ -715,49 +747,23 @@ export declare type EditUserInput = {
     avatarUrl?: Maybe<Scalars['String']>;
     username?: Maybe<Scalars['String']>;
 };
+export declare type ProjectTypeInput = {
+    id?: Maybe<Scalars['ID']>;
+};
 export declare type ToggleNotificationSettingsInput = {
     deliveryMethod: Scalars['String'];
     notificationType: Scalars['String'];
 };
-export declare type Meta = {
-    __typename?: 'Meta';
-    isAdmin?: Maybe<Scalars['Boolean']>;
-    totalUsers?: Maybe<Scalars['Int']>;
-    totalProjects?: Maybe<Scalars['Int']>;
-    totalPosts?: Maybe<Scalars['Int']>;
-    totalComments?: Maybe<Scalars['Int']>;
-    totalFiles?: Maybe<Scalars['Int']>;
-    totalUsersToday?: Maybe<Scalars['Int']>;
-    totalProjectsToday?: Maybe<Scalars['Int']>;
-    totalPostsToday?: Maybe<Scalars['Int']>;
-    totalCommentsToday?: Maybe<Scalars['Int']>;
-    totalFilesToday?: Maybe<Scalars['Int']>;
-};
-export declare enum GrowthType {
-    Projects = "PROJECTS",
-    Users = "USERS"
+export declare enum PlatformType {
+    Mobile = "MOBILE",
+    Web = "WEB"
 }
-export declare type GrowthData = {
-    __typename?: 'GrowthData';
-    date?: Maybe<Scalars['Date']>;
-    count?: Maybe<Scalars['Int']>;
-};
-export declare type Hashtag = {
-    __typename?: 'Hashtag';
-    id?: Maybe<Scalars['ID']>;
-    name?: Maybe<Scalars['String']>;
-    slug?: Maybe<Scalars['LowercaseString']>;
-    totalCount?: Maybe<Scalars['Int']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    postsConnection?: Maybe<PostConnection>;
-};
-export declare type HashtagPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
+export declare enum ReportType {
+    Project = "PROJECT",
+    User = "USER",
+    Comment = "COMMENT",
+    Post = "POST"
+}
 export declare type HashtagConnection = {
     __typename?: 'HashtagConnection';
     totalCount?: Maybe<Scalars['Int']>;
@@ -769,12 +775,6 @@ export declare type HashtagEdge = {
     cursor: Scalars['String'];
     node: Hashtag;
 };
-export declare enum ReportType {
-    Project = "PROJECT",
-    User = "USER",
-    Comment = "COMMENT",
-    Post = "POST"
-}
 export declare type CommentAndRepliesFragment = ({
     __typename?: 'Comment';
 } & {
@@ -1419,6 +1419,29 @@ export declare type HashtagQuery = ({
                 } & PostFragment);
             })>>;
         })>;
+    })>;
+});
+export declare type LikesQueryVariables = Exact<{
+    postId: Scalars['ID'];
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+}>;
+export declare type LikesQuery = ({
+    __typename?: 'Query';
+} & {
+    likes?: Maybe<({
+        __typename?: 'LikeConnection';
+    } & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges?: Maybe<Array<({
+            __typename?: 'LikeEdge';
+        } & Pick<LikeEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'User';
+            } & UserFragment);
+        })>>;
     })>;
 });
 export declare type MetaQueryVariables = {};
@@ -2737,6 +2760,38 @@ export declare function useHashtagLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export declare type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>;
 export declare type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
 export declare type HashtagQueryResult = ApolloReactCommon.QueryResult<HashtagQuery, HashtagQueryVariables>;
+export declare const LikesDocument: import("graphql").DocumentNode;
+/**
+ * __useLikesQuery__
+ *
+ * To run a query within a React component, call `useLikesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLikesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLikesQuery({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useLikesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<LikesQuery, LikesQueryVariables>): ApolloReactCommon.QueryResult<LikesQuery, Exact<{
+    postId: string;
+    after?: string | null | undefined;
+    first?: number | null | undefined;
+}>>;
+export declare function useLikesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>): ApolloReactHooks.QueryTuple<LikesQuery, Exact<{
+    postId: string;
+    after?: string | null | undefined;
+    first?: number | null | undefined;
+}>>;
+export declare type LikesQueryHookResult = ReturnType<typeof useLikesQuery>;
+export declare type LikesLazyQueryHookResult = ReturnType<typeof useLikesLazyQuery>;
+export declare type LikesQueryResult = ApolloReactCommon.QueryResult<LikesQuery, LikesQueryVariables>;
 export declare const MetaDocument: import("graphql").DocumentNode;
 /**
  * __useMetaQuery__
