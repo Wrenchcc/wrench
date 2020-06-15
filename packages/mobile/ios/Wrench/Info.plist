@@ -53,8 +53,6 @@
 	<false/>
 	<key>FacebookAppID</key>
 	<string>1174076712654826</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<false/>
 	<key>FacebookDisplayName</key>
 	<string>Wrench</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
