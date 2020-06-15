@@ -6,12 +6,14 @@ export default async (
   {
     type,
     startDate = DateTime.local()
+      .setZone('Europe/Stockholm')
       .minus({ month: 4 })
       .startOf('day')
-      .toFormat('yyyy-MM-dd HH:mm:ss+00'),
+      .toFormat('yyyy-MM-dd HH:mm:ss z'),
     endDate = DateTime.local()
+      .setZone('Europe/Stockholm')
       .startOf('day')
-      .toFormat('yyyy-MM-dd HH:mm:ss+00'),
+      .toFormat('yyyy-MM-dd HH:mm:ss z'),
   },
   ctx
 ) => {
@@ -30,9 +32,7 @@ export default async (
   }
 
   const ids = data.map(({ createdAt }) => {
-    const date = DateTime.fromSQL(createdAt)
-      .startOf('day')
-      .toFormat('yyyy-MM-dd HH:mm:ss+00')
+    const date = DateTime.fromSQL(createdAt).startOf('day').toFormat('yyyy-MM-dd HH:mm:ss+00')
 
     return {
       id: DateTime.fromSQL(createdAt).toFormat('yyyy-MM'),

@@ -18812,7 +18812,7 @@ raf@^3.4.0, raf@^3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
-rambda@^5.6.2:
+rambda@^5.6.2, rambda@^5.6.3:
   version "5.6.3"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-5.6.3.tgz#46e1e23c59c3238c4f11bdcc02a5d57aeda760f3"
   integrity sha512-QA0A6CXgtFoV/5H2Am7HW9pgZlnIsQ+wrdk86aCps0fA7T0AYqup+evE2gYKp8Xf81HnZ9b/1fRqFpzUFypM7w==
