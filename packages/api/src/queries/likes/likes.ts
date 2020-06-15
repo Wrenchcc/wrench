@@ -2,14 +2,14 @@ import { In } from 'typeorm'
 import paginate from '../../utils/paginate'
 
 // TODO: Use dataloader
-export default async ({ id }, args, ctx) => {
-  const users = await ctx.db.Like.find({
+export default async (_, args, ctx) => {
+  const likes = await ctx.db.Like.find({
     where: {
-      typeId: id,
+      typeId: args.postId,
     },
   })
 
-  const ids = users.map(({ userId }) => userId)
+  const ids = likes.map(({ userId }) => userId)
 
   return paginate(ctx.db.User, args, {
     where: {

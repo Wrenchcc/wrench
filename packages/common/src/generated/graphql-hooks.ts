@@ -147,14 +147,6 @@ export type Likes = {
   isLiked?: Maybe<Scalars['Boolean']>;
 };
 
-export type Like = {
-  __typename?: 'Like';
-  id?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  user?: Maybe<User>;
-};
-
 export type LikeConnection = {
   __typename?: 'LikeConnection';
   totalCount?: Maybe<Scalars['Int']>;
@@ -165,7 +157,7 @@ export type LikeConnection = {
 export type LikeEdge = {
   __typename?: 'LikeEdge';
   cursor: Scalars['String'];
-  node: Like;
+  node: User;
 };
 
 export type Brand = {
@@ -408,6 +400,7 @@ export type Query = {
   feed?: Maybe<Feed>;
   files?: Maybe<FileConnection>;
   followers?: Maybe<FollowersConnection>;
+  likes?: Maybe<LikeConnection>;
   notifications?: Maybe<NotificationsConnection>;
   post?: Maybe<Post>;
   posts?: Maybe<PostConnection>;
@@ -462,6 +455,15 @@ export type QueryFilesArgs = {
 
 export type QueryFollowersArgs = {
   projectId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryLikesArgs = {
+  postId: Scalars['ID'];
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -575,9 +577,9 @@ export type Mutation = {
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
-  sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
   likeComment?: Maybe<Comment>;
+  sendPromo?: Maybe<Scalars['Boolean']>;
   markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
   markNotificationSeen?: Maybe<Notification>;
   deleteNotification?: Maybe<Scalars['Boolean']>;
@@ -638,11 +640,6 @@ export type MutationDeleteCommentArgs = {
 };
 
 
-export type MutationSendPromoArgs = {
-  number: Scalars['String'];
-};
-
-
 export type MutationLikePostArgs = {
   id: Scalars['ID'];
 };
@@ -650,6 +647,11 @@ export type MutationLikePostArgs = {
 
 export type MutationLikeCommentArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationSendPromoArgs = {
+  number: Scalars['String'];
 };
 
 
@@ -1060,11 +1062,8 @@ export type PostFragment = (
     & { edges?: Maybe<Array<(
       { __typename?: 'LikeEdge' }
       & { node: (
-        { __typename?: 'Like' }
-        & { user?: Maybe<(
-          { __typename?: 'User' }
-          & Pick<User, 'id' | 'avatarUrl' | 'username'>
-        )> }
+        { __typename?: 'User' }
+        & Pick<User, 'id' | 'avatarUrl'>
       ) }
     )>> }
   )> }
@@ -1082,6 +1081,13 @@ export type ProjectFragment = (
   )>, followers?: Maybe<(
     { __typename?: 'FollowersConnection' }
     & Pick<FollowersConnection, 'totalCount'>
+    & { edges?: Maybe<Array<(
+      { __typename?: 'FollowersEdge' }
+      & { node: (
+        { __typename?: 'User' }
+        & Pick<User, 'id' | 'avatarUrl'>
+      ) }
+    )>> }
   )> }
 );
 
@@ -2198,8 +2204,14 @@ export const ProjectFragmentDoc = gql`
     isOwner
     isFollower
   }
-  followers: followersConnection {
+  followers: followersConnection(first: 3) {
     totalCount
+    edges {
+      node {
+        id
+        avatarUrl
+      }
+    }
   }
 }
     ${UserFragmentDoc}`;
@@ -2271,11 +2283,8 @@ export const PostFragmentDoc = gql`
   likesConnection(first: 3) @connection(key: "likes") {
     edges {
       node {
-        user {
-          id
-          avatarUrl
-          username
-        }
+        id
+        avatarUrl
       }
     }
   }

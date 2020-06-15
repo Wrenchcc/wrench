@@ -16,7 +16,7 @@ export const Users = styled.View`
 `
 
 export const User = styled.View`
-  margin-left: ${(props) => (props.first ? 0 : -12)}px;
+  margin-left: ${(props) => (props.first ? 0 : -props.size / 2)}px;
   border: 1px solid ${({ theme }) => theme.colors.default};
   border-radius: ${(props) => props.size}px;
 `

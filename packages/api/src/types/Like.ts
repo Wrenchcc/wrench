@@ -6,13 +6,6 @@ export default gql`
     isLiked: Boolean
   }
 
-  type Like {
-    id: ID
-    createdAt: Date
-    updatedAt: Date
-    user: User
-  }
-
   type LikeConnection {
     totalCount: Int
     pageInfo: PageInfo!
@@ -21,11 +14,21 @@ export default gql`
 
   type LikeEdge {
     cursor: String!
-    node: Like!
+    node: User!
   }
 
   extend type Mutation {
     likePost(id: ID!): Post
     likeComment(id: ID!): Comment
+  }
+
+  extend type Query {
+    likes(
+      postId: ID!
+      first: Int = 10
+      after: String
+      last: Int = 10
+      before: String
+    ): LikeConnection
   }
 `

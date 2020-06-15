@@ -125,13 +125,6 @@ export declare type Likes = {
     totalCount?: Maybe<Scalars['Int']>;
     isLiked?: Maybe<Scalars['Boolean']>;
 };
-export declare type Like = {
-    __typename?: 'Like';
-    id?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    user?: Maybe<User>;
-};
 export declare type LikeConnection = {
     __typename?: 'LikeConnection';
     totalCount?: Maybe<Scalars['Int']>;
@@ -141,7 +134,7 @@ export declare type LikeConnection = {
 export declare type LikeEdge = {
     __typename?: 'LikeEdge';
     cursor: Scalars['String'];
-    node: Like;
+    node: User;
 };
 export declare type Brand = {
     __typename?: 'Brand';
@@ -346,6 +339,7 @@ export declare type Query = {
     feed?: Maybe<Feed>;
     files?: Maybe<FileConnection>;
     followers?: Maybe<FollowersConnection>;
+    likes?: Maybe<LikeConnection>;
     notifications?: Maybe<NotificationsConnection>;
     post?: Maybe<Post>;
     posts?: Maybe<PostConnection>;
@@ -390,6 +384,13 @@ export declare type QueryFilesArgs = {
 };
 export declare type QueryFollowersArgs = {
     projectId: Scalars['ID'];
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type QueryLikesArgs = {
+    postId: Scalars['ID'];
     first?: Maybe<Scalars['Int']>;
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
@@ -476,9 +477,9 @@ export declare type Mutation = {
     addComment?: Maybe<Comment>;
     editComment?: Maybe<Comment>;
     deleteComment?: Maybe<Scalars['Boolean']>;
-    sendPromo?: Maybe<Scalars['Boolean']>;
     likePost?: Maybe<Post>;
     likeComment?: Maybe<Comment>;
+    sendPromo?: Maybe<Scalars['Boolean']>;
     markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
     markNotificationSeen?: Maybe<Notification>;
     deleteNotification?: Maybe<Scalars['Boolean']>;
@@ -523,14 +524,14 @@ export declare type MutationEditCommentArgs = {
 export declare type MutationDeleteCommentArgs = {
     id: Scalars['ID'];
 };
-export declare type MutationSendPromoArgs = {
-    number: Scalars['String'];
-};
 export declare type MutationLikePostArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationLikeCommentArgs = {
     id: Scalars['ID'];
+};
+export declare type MutationSendPromoArgs = {
+    number: Scalars['String'];
 };
 export declare type MutationMarkNotificationSeenArgs = {
     id: Scalars['ID'];
@@ -876,12 +877,8 @@ export declare type PostFragment = ({
             __typename?: 'LikeEdge';
         } & {
             node: ({
-                __typename?: 'Like';
-            } & {
-                user?: Maybe<({
-                    __typename?: 'User';
-                } & Pick<User, 'id' | 'avatarUrl' | 'username'>)>;
-            });
+                __typename?: 'User';
+            } & Pick<User, 'id' | 'avatarUrl'>);
         })>>;
     })>;
 });
@@ -896,7 +893,15 @@ export declare type ProjectFragment = ({
     } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>)>;
     followers?: Maybe<({
         __typename?: 'FollowersConnection';
-    } & Pick<FollowersConnection, 'totalCount'>)>;
+    } & Pick<FollowersConnection, 'totalCount'> & {
+        edges?: Maybe<Array<({
+            __typename?: 'FollowersEdge';
+        } & {
+            node: ({
+                __typename?: 'User';
+            } & Pick<User, 'id' | 'avatarUrl'>);
+        })>>;
+    })>;
 });
 export declare type UserFragment = ({
     __typename?: 'User';
