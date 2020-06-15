@@ -24,6 +24,8 @@ export default gql`
       last: Int = 10
       before: String
     ): CommentConnection
+
+    likesConnection(first: Int = 10, after: String, last: Int = 10, before: String): LikeConnection
   }
 
   type PostPermissions {

@@ -112,4 +112,7 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.HASHTAG, () =>
     HOC(register({ require: () => require('features/explore/containers/Hashtag') }))
   )
+  Navigation.registerComponent(SCREENS.LIKES, () =>
+    HOC(register({ require: () => require('features/project/containers/Likes') }))
+  )
 }

@@ -21,6 +21,27 @@ import DeviceToken from './DeviceToken'
 
 @Entity('users')
 export default class User extends BaseEntity {
+  public static async saveUsername(userId, username) {
+    let name
+    let times = 0
+
+    while (times < 100) {
+      const generatedUsername = times ? slugify(`${username}-${times}`) : slugify(username)
+      const found = await User.findOne({ username: generatedUsername })
+
+      // Note if username found, and the userId is not the same as the saved one
+      // Append times to the end (If a user edit its userrname it should not change)
+      if (found && found.id !== userId) {
+        times += 1
+      } else {
+        name = generatedUsername
+        break
+      }
+    }
+
+    return name
+  }
+
   public static async createUser(data) {
     let user
     let times = 0
@@ -48,31 +69,31 @@ export default class User extends BaseEntity {
     return user
   }
 
-  @OneToMany(() => Project, project => project.user)
+  @OneToMany(() => Project, (project) => project.user)
   public projects: Project[]
 
-  @OneToMany(() => Post, post => post.user)
+  @OneToMany(() => Post, (post) => post.user)
   public posts: Post[]
 
-  @OneToMany(() => Comment, comment => comment.user)
+  @OneToMany(() => Comment, (comment) => comment.user)
   public comments: Comment[]
 
-  @OneToMany(() => Notification, notification => notification.user)
+  @OneToMany(() => Notification, (notification) => notification.user)
   public notifications: Notification[]
 
-  @OneToMany(() => File, file => file.user)
+  @OneToMany(() => File, (file) => file.user)
   public files: File[]
 
-  @OneToMany(() => UserSettings, settings => settings.user)
+  @OneToMany(() => UserSettings, (settings) => settings.user)
   public settings: UserSettings[]
 
-  @OneToMany(() => AuthToken, authToken => authToken.user)
+  @OneToMany(() => AuthToken, (authToken) => authToken.user)
   public authTokens: AuthToken[]
 
-  @OneToMany(() => AuthProvider, authProvider => authProvider.user)
+  @OneToMany(() => AuthProvider, (authProvider) => authProvider.user)
   public authProviders: AuthProvider[]
 
-  @OneToMany(() => DeviceToken, deviceToken => deviceToken.user)
+  @OneToMany(() => DeviceToken, (deviceToken) => deviceToken.user)
   public deviceTokens: DeviceToken[]
 
   @PrimaryGeneratedColumn('uuid')

@@ -146,6 +146,9 @@
     "Followers": {
       "title": "Followers"
     },
+    "Sparks": {
+      "title": "Sparks"
+    },
     "Project": {
       "recent": "Recent posts",
       "headerLeft": "Share"
@@ -525,6 +528,9 @@
     },
     "Followers": {
       "title": "Följare"
+    },
+    "Sparks": {
+      "title": "Gnistor"
     },
     "Project": {
       "recent": "Senaste inlägg",

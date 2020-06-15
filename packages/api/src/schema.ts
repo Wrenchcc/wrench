@@ -34,6 +34,7 @@ import searchQueries from './queries/search'
 import userQueries from './queries/user'
 import metaQueries from './queries/meta'
 import hashtagQueries from './queries/hashtag'
+import likesQueries from './queries/likes'
 
 // Mutations
 import commentMutations from './mutations/comment'
@@ -81,6 +82,7 @@ const resolvers = merge(
   searchQueries,
   userQueries,
   hashtagQueries,
+  likesQueries,
   // mutations
   commentMutations,
   inviteMutations,
@@ -115,6 +117,7 @@ export default makeExecutableSchema({
     Feed,
     File,
     Followers,
+    Like,
     Invite,
     Like,
     Model,

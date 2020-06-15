@@ -8,7 +8,7 @@ import { EmptyState, Title, Share, Edit } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 import ProjectHeader from 'features/project/components/ProjectHeader'
 import { isIphone } from 'utils/platform'
-import PostPlaceholder from 'components/Post/Placeholder'
+// import PostPlaceholder from 'components/Post/Placeholder'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 

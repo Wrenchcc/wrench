@@ -25,6 +25,7 @@ export type Query = {
   feed?: Maybe<Feed>;
   files?: Maybe<FileConnection>;
   followers?: Maybe<FollowersConnection>;
+  likes?: Maybe<LikeConnection>;
   notifications?: Maybe<NotificationsConnection>;
   post?: Maybe<Post>;
   posts?: Maybe<PostConnection>;
@@ -79,6 +80,15 @@ export type QueryFilesArgs = {
 
 export type QueryFollowersArgs = {
   projectId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryLikesArgs = {
+  postId: Scalars['ID'];
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -464,6 +474,7 @@ export type Post = {
   likes?: Maybe<Likes>;
   filesConnection?: Maybe<FileConnection>;
   commentsConnection?: Maybe<CommentConnection>;
+  likesConnection?: Maybe<LikeConnection>;
 };
 
 
@@ -482,6 +493,14 @@ export type PostCommentsConnectionArgs = {
   before?: Maybe<Scalars['String']>;
 };
 
+
+export type PostLikesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
 export type PostPermissions = {
   __typename?: 'PostPermissions';
   isOwner?: Maybe<Scalars['Boolean']>;
@@ -491,6 +510,19 @@ export type Likes = {
   __typename?: 'Likes';
   totalCount?: Maybe<Scalars['Int']>;
   isLiked?: Maybe<Scalars['Boolean']>;
+};
+
+export type LikeConnection = {
+  __typename?: 'LikeConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<LikeEdge>>;
+};
+
+export type LikeEdge = {
+  __typename?: 'LikeEdge';
+  cursor: Scalars['String'];
+  node: User;
 };
 
 export type CommentPermissions = {
@@ -657,9 +689,9 @@ export type Mutation = {
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
-  sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
   likeComment?: Maybe<Comment>;
+  sendPromo?: Maybe<Scalars['Boolean']>;
   markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
   markNotificationSeen?: Maybe<Notification>;
   deleteNotification?: Maybe<Scalars['Boolean']>;
@@ -720,11 +752,6 @@ export type MutationDeleteCommentArgs = {
 };
 
 
-export type MutationSendPromoArgs = {
-  number: Scalars['String'];
-};
-
-
 export type MutationLikePostArgs = {
   id: Scalars['ID'];
 };
@@ -732,6 +759,11 @@ export type MutationLikePostArgs = {
 
 export type MutationLikeCommentArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationSendPromoArgs = {
+  number: Scalars['String'];
 };
 
 
@@ -1025,6 +1057,15 @@ export type PostFragment = (
         & CommentFragment
       ) }
     )>> }
+  )>, likesConnection?: Maybe<(
+    { __typename?: 'LikeConnection' }
+    & { edges?: Maybe<Array<(
+      { __typename?: 'LikeEdge' }
+      & { node: (
+        { __typename?: 'User' }
+        & Pick<User, 'id' | 'avatarUrl'>
+      ) }
+    )>> }
   )> }
 );
 
@@ -1040,6 +1081,13 @@ export type ProjectFragment = (
   )>, followers?: Maybe<(
     { __typename?: 'FollowersConnection' }
     & Pick<FollowersConnection, 'totalCount'>
+    & { edges?: Maybe<Array<(
+      { __typename?: 'FollowersEdge' }
+      & { node: (
+        { __typename?: 'User' }
+        & Pick<User, 'id' | 'avatarUrl'>
+      ) }
+    )>> }
   )> }
 );
 
@@ -1657,6 +1705,31 @@ export type HashtagQuery = (
   )> }
 );
 
+export type LikesQueryVariables = Exact<{
+  postId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type LikesQuery = (
+  { __typename?: 'Query' }
+  & { likes?: Maybe<(
+    { __typename?: 'LikeConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'LikeEdge' }
+      & Pick<LikeEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'User' }
+        & UserFragment
+      ) }
+    )>> }
+  )> }
+);
+
 export type MetaQueryVariables = {};
 
 
@@ -2156,8 +2229,14 @@ export const ProjectFragmentDoc = gql`
     isOwner
     isFollower
   }
-  followers: followersConnection {
+  followers: followersConnection(first: 3) {
     totalCount
+    edges {
+      node {
+        id
+        avatarUrl
+      }
+    }
   }
 }
     ${UserFragmentDoc}`;
@@ -2223,6 +2302,14 @@ export const PostFragmentDoc = gql`
     edges {
       node {
         ...Comment
+      }
+    }
+  }
+  likesConnection(first: 3) @connection(key: "likes") {
+    edges {
+      node {
+        id
+        avatarUrl
       }
     }
   }
@@ -3514,6 +3601,49 @@ export function useHashtagLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHook
 export type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>;
 export type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
 export type HashtagQueryResult = ApolloReactCommon.QueryResult<HashtagQuery, HashtagQueryVariables>;
+export const LikesDocument = gql`
+    query likes($postId: ID!, $after: String, $first: Int = 10) {
+  likes(postId: $postId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...User
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}`;
+
+/**
+ * __useLikesQuery__
+ *
+ * To run a query within a React component, call `useLikesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLikesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLikesQuery({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useLikesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<LikesQuery, LikesQueryVariables>) {
+        return ApolloReactHooks.useQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
+      }
+export function useLikesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
+        }
+export type LikesQueryHookResult = ReturnType<typeof useLikesQuery>;
+export type LikesLazyQueryHookResult = ReturnType<typeof useLikesLazyQuery>;
+export type LikesQueryResult = ApolloReactCommon.QueryResult<LikesQuery, LikesQueryVariables>;
 export const MetaDocument = gql`
     query meta {
   meta {
