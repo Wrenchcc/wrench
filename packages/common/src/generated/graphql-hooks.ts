@@ -147,6 +147,27 @@ export type Likes = {
   isLiked?: Maybe<Scalars['Boolean']>;
 };
 
+export type Like = {
+  __typename?: 'Like';
+  id?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  user?: Maybe<User>;
+};
+
+export type LikeConnection = {
+  __typename?: 'LikeConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<LikeEdge>>;
+};
+
+export type LikeEdge = {
+  __typename?: 'LikeEdge';
+  cursor: Scalars['String'];
+  node: Like;
+};
+
 export type Brand = {
   __typename?: 'Brand';
   id: Scalars['ID'];
@@ -218,6 +239,7 @@ export type Post = {
   likes?: Maybe<Likes>;
   filesConnection?: Maybe<FileConnection>;
   commentsConnection?: Maybe<CommentConnection>;
+  likesConnection?: Maybe<LikeConnection>;
 };
 
 
@@ -230,6 +252,14 @@ export type PostFilesConnectionArgs = {
 
 
 export type PostCommentsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type PostLikesConnectionArgs = {
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;

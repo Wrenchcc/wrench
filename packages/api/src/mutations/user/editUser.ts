@@ -101,7 +101,7 @@ export default isAuthenticated(async (_, args, ctx) => {
   if (args.input.username) {
     data = {
       ...data,
-      username: args.input.username,
+      username: await ctx.db.User.saveUsername(userId, args.input.username),
     }
   }
 
@@ -129,7 +129,7 @@ export default isAuthenticated(async (_, args, ctx) => {
 
   // Get empty input fields
   const keys = Object.keys(args.input)
-  const emptyFields = keys.filter(key => args.input[key] === '')
+  const emptyFields = keys.filter((key) => args.input[key] === '')
 
   if (emptyFields.length > 0) {
     const nullObject = emptyFields.reduce((data, val) => {
