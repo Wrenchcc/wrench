@@ -1,10 +1,8 @@
 // @ts-nocheck
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useCurrentUserQuery } from '@wrench/common'
 import useLocalStorage from '../../utils/useLocalStorage'
 import styled from 'styled-components'
-import Avatar from '../../components/Avatar'
 
 export const Base = styled.div`
   width: 270px;
@@ -24,13 +22,6 @@ export const Nav = styled.nav`
   height: 100%;
   overflow: auto;
   position: relative;
-`
-
-export const Top = styled.div`
-  margin-left: 30px;
-  margin-bottom: 45px;
-  display: flex;
-  flex-direction: column;
 `
 
 export const SignOut = styled.button`
@@ -72,7 +63,6 @@ export const Icon = styled.img`
 function Panel({ setAuthenticated }) {
   const [, , removeAccessToken] = useLocalStorage('access_token')
   const [, , removeRefreshToken] = useLocalStorage('refresh_token')
-  const { data } = useCurrentUserQuery()
 
   const signOut = () => {
     removeAccessToken()
@@ -83,11 +73,6 @@ function Panel({ setAuthenticated }) {
   return (
     <Base>
       <Nav>
-        {/* <Top>
-        <Avatar src={data?.user?.avatarUrl} />
-        <Username>{data?.user?.fullName}</Username>
-      </Top> */}
-
         <Row>
           <Section>Operate</Section>
 
