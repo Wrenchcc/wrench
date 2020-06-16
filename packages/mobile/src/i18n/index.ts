@@ -1,4 +1,5 @@
 import i18next from 'i18next'
+import Config from 'react-native-config'
 import { initReactI18next } from 'react-i18next'
 import humanFormat from 'human-format'
 import resources from 'translations/index.json'
@@ -12,7 +13,7 @@ export const languages = Object.keys(resources)
 const languageDetector = {
   async: true,
   cacheUserLanguage: () => null,
-  detect: async cb => cb(await getLocale()),
+  detect: async (cb) => cb(await getLocale()),
   init: () => null,
   type: 'languageDetector',
 }
@@ -24,7 +25,7 @@ i18next
     cache: {
       enabled: !__DEV__,
     },
-    debug: __DEV__,
+    debug: Config.DEBUG_LANGUAGE,
     defaultNS: 'common',
     fallbackLng: 'en',
     interpolation: {

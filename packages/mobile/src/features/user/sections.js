@@ -1,5 +1,6 @@
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'rambda'
+import AsyncStorage from '@react-native-community/async-storage'
 import i18next from 'i18next'
 import { setLocale, languages, updateUserLocale } from 'i18n'
 import { SCREENS } from 'navigation'
@@ -268,6 +269,10 @@ const sections = (props) => {
             props.navigate(SCREENS.SETTINGS, {
               section: 'codepush',
             }),
+        },
+        {
+          titleKey: 'clear',
+          onPress: async () => AsyncStorage.clear(),
         },
       ],
     })
