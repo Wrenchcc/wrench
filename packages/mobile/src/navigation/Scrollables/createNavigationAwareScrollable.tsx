@@ -95,6 +95,9 @@ export default function createNavigationAwareScrollable(Component) {
       <Component
         ref={setRef}
         onScroll={onScroll}
+        maintainVisibleContentPosition={{
+          minIndexForVisible: 0,
+        }}
         onScrollBeginDrag={onScrollBeginDrag}
         onScrollEndDrag={onScrollEndDrag}
         scrollEventThrottle={1}

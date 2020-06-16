@@ -18847,7 +18847,7 @@ raf@^3.4.0, raf@^3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
-rambda@^5.6.2, rambda@^5.6.3:
+rambda@^5.6.2, rambda@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-5.7.0.tgz#1c051e2659549f9bcb1679ec3e84c106a4c010c7"
   integrity sha512-DSranSh0/58bayUCkYyCiuvuSJND4X+di+6CZRko7LPf/Jz7HuGaSz24j5r8YQ39S5L5olqT/QQU8pN2Y8HKaA==
@@ -19124,10 +19124,18 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-i18next@^11.5.0, react-i18next@^11.5.1:
+react-i18next@^11.5.0:
   version "11.5.1"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.5.1.tgz#084e98555d8800d5508eccc8da1ac652df358d3e"
   integrity sha512-2VSx+dClvmCJTgrw9Nrof4EkggMlzo4s/YZPEUAdI7gU2HTksapkGtFPARzpeTk+3k1zY+Xl6pLHc0LYvsRWAQ==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    html-parse-stringify2 "2.0.1"
+
+react-i18next@^11.6.0:
+  version "11.6.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.6.0.tgz#0621f227954d4fe1158994a7cfb3a436133cb61a"
+  integrity sha512-koyvoDgmY7y7vlbUOVWyoHahbBABfBse9X1vgYFw/WI+CfZwjumZ2/zQGYqLoMx6lEa0c9Lxr9GNP9L3HAJYUg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -19235,10 +19243,10 @@ react-native-gesture-handler@^1.6.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-navigation@^6.7.3:
-  version "6.7.3"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.3.tgz#db98a96bd3b92e1827d57a9453d9453b043824af"
-  integrity sha512-n5GnAhCaTFlTRo7qfmd01fw6I6wPubA1+qTtvlEjMRUP+mobM8ppPrWJpKOh2bfy+u3HUsMsGKbAuBOcsUt0YQ==
+react-native-navigation@^6.7.4:
+  version "6.7.4"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.4.tgz#dfd94a583539712f431350f980f4dbe341346b94"
+  integrity sha512-ZuXX1Lqi7ekygaoNbQzCju1nHcMJn+gx7P/ESDi5LsjSGY/1FWQ2L7Txebx5J8/AYHyV9kqYA6Bhb6UqLd/fEQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
