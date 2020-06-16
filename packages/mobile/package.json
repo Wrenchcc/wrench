@@ -11,7 +11,8 @@
     "start:android": "tasks/start_android",
     "start:ios": "tasks/start_ios",
     "start:packager": "react-native start --reset-cache",
-    "translations:create": "tasks/translations_create"
+    "translations:create": "tasks/translations_create",
+    "check:types": "tsc --noEmit"
   },
   "dependencies": {
     "@apollo/client": "3.0.0-beta.44",

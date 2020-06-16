@@ -21,6 +21,6 @@ export default async function cropImage({ uri, crop }) {
       },
     ])
   } catch (err) {
-    logError(err, { uri, crop })
+    logError(err)
   }
 }

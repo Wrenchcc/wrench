@@ -1,4 +1,4 @@
-import { Navigation } from 'react-native-navigation'
+import { Navigation, Options } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
@@ -6,9 +6,15 @@ import { componentId } from './events'
 
 let mention: boolean
 
+type PassProps = { [passProp: string]: any }
+
+type OptionsWithPassProps = {
+  options?: Options
+} & PassProps
+
 export function navigateWithoutContext(
   screen: SCREENS,
-  { options, ...passProps } = { options: {} }
+  { options = {}, ...passProps }: OptionsWithPassProps = {}
 ) {
   Navigation.push(componentId, {
     component: {
@@ -19,7 +25,7 @@ export function navigateWithoutContext(
   })
 }
 
-export function selectTabIndex(currentTabIndex) {
+export function selectTabIndex(currentTabIndex: number) {
   Navigation.mergeOptions(BOTTOM_TABS_ID, {
     bottomTabs: {
       currentTabIndex,
@@ -27,7 +33,10 @@ export function selectTabIndex(currentTabIndex) {
   })
 }
 
-export function showModal(screen, { options, ...passProps } = { options: {} }) {
+export function showModal(
+  screen: SCREENS,
+  { options = {}, ...passProps }: OptionsWithPassProps = {}
+) {
   Navigation.showModal({
     stack: {
       children: [
@@ -44,7 +53,7 @@ export function showModal(screen, { options, ...passProps } = { options: {} }) {
   })
 }
 
-export function showMention(passProps) {
+export function showMention(passProps: PassProps) {
   if (!mention) {
     Navigation.showOverlay({
       component: {
@@ -67,7 +76,7 @@ export function dismissMention() {
   mention = false
 }
 
-export function showEditPost(passProps) {
+export function showEditPost(passProps: PassProps) {
   Navigation.showOverlay({
     component: {
       id: SCREENS.EDIT_POST,
