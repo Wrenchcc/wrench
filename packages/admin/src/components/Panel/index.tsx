@@ -13,15 +13,17 @@ export const Base = styled.div`
   top: 0;
   bottom: 0;
   background: #e6e7e9;
-  padding-top: 70px;
 `
 
 export const Nav = styled.nav`
+  padding-top: 70px;
+  padding-bottom: 70px;
+  margin-top: 50px;
+  box-sizing: border-box;
   width: 270px;
-  height: 100vh;
+  height: 100%;
   overflow: auto;
   position: relative;
-  background-color: red;
 `
 
 export const Top = styled.div`
@@ -196,6 +198,7 @@ function Panel({ setAuthenticated }) {
             </Link>
 
             <Link>
+              <Icon src={require('./google.svg')} />
               <a href="https://analytics.google.com/analytics/web/#/p178012703/reports/home">
                 Google Analytics
               </a>
@@ -220,14 +223,24 @@ function Panel({ setAuthenticated }) {
             </Link>
             <Link>
               <Icon src={require('./sentry.svg')} />
-              <a href="https://analytics.google.com/analytics/web/#/p178012703/reports/home">
-                Sentry
+              <a href="https://sentry.io/organizations/wrench/issues/?project=1354419">Sentry</a>
+            </Link>
+            <Link>
+              <Icon src={require('./firebase.svg')} />
+              <a href="https://console.firebase.google.com/u/0/project/wrench-app/overview">
+                Firebase
               </a>
             </Link>
             <Link>
-              <Icon src={require('./sentry.svg')} />
-              <a href="https://analytics.google.com/analytics/web/#/p178012703/reports/home">
-                Crashlytics
+              <Icon src={require('./appstore.svg')} />
+              <a href="https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app/1450213123">
+                App Store Connect
+              </a>
+            </Link>
+            <Link>
+              <Icon src={require('./google-play.svg')} />
+              <a href="https://play.google.com/apps/publish/?account=7089963842901266485#AppDashboardPlace:p=com.wrench&appid=4976310944626164906">
+                Google Play
               </a>
             </Link>
           </ul>
