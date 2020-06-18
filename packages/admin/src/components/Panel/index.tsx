@@ -228,6 +228,12 @@ function Panel({ setAuthenticated }) {
                 Google Play
               </a>
             </Link>
+            <Link>
+              <Icon src={require('./aws.svg')} />
+              <a href="https://eu-west-1.console.aws.amazon.com/console/home?region=eu-west-1">
+                AWS
+              </a>
+            </Link>
           </ul>
         </Row>
 
