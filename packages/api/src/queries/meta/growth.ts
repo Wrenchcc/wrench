@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Between } from 'typeorm'
 import { DateTime } from 'luxon'
 
@@ -45,8 +46,10 @@ export default async (
     return prev
   }, {})
 
-  return Object.entries(result).map(([key, value]) => ({
-    count: value,
-    date: new Date(key),
-  }))
+  return Object.entries(result)
+    .map(([key, value]) => ({
+      count: value,
+      date: new Date(key),
+    }))
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
 }

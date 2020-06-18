@@ -12731,6 +12731,11 @@ human-format@^0.10.1:
   resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.10.1.tgz#107793f355912e256148d5b5dcf66a0230187ee9"
   integrity sha512-UzCHToSw3HI9MxH9tYzMr1JbHJbgzr6o0hZCun7sruv59S1leps21bmgpBkkwEvQon5n/2OWKH1iU7BEko02cg==
 
+human-format@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/human-format/-/human-format-0.11.0.tgz#bfc85a6e135f9a9292d641a38e979ed9f82557e9"
+  integrity sha512-g4UtoBnhfitCjkGjjiOlY8tkmArIcrstBa5adihxSJwSde1A7iQzvrNLB5ceX89FHXzYi9yTi04t3m82J/XIag==
+
 i18next-browser-languagedetector@^4.2.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-4.3.0.tgz#a6dccbd72e78550a939253712caf436b4cb8326f"
@@ -19243,10 +19248,10 @@ react-native-gesture-handler@^1.6.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-navigation@^6.7.4:
-  version "6.7.4"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.4.tgz#dfd94a583539712f431350f980f4dbe341346b94"
-  integrity sha512-ZuXX1Lqi7ekygaoNbQzCju1nHcMJn+gx7P/ESDi5LsjSGY/1FWQ2L7Txebx5J8/AYHyV9kqYA6Bhb6UqLd/fEQ==
+react-native-navigation@^6.7.5:
+  version "6.7.5"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.7.5.tgz#32c6f5f4a3ebc76fc4824b5fa92300534a0a3ed8"
+  integrity sha512-z6+28b1yligV8yK8xeCXTv5Rlqd/qqlabs1OMeoW0nV5U/iOvEnyjZ29Y6qXsRHKNkYXo81UxGre1PKhhyHSKA==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -19283,10 +19288,10 @@ react-native-responsive-dimensions@^3.1.1:
   resolved "https://registry.yarnpkg.com/react-native-responsive-dimensions/-/react-native-responsive-dimensions-3.1.1.tgz#c4daf977b30a909f21164de53a8ba4c9451efefc"
   integrity sha512-Vo2OhWsphq0HgKsmeZOeyW+c+vsFn1ZaCFkGDgdeCEEiLriT76jGA1JlUjtrj27hvyo/xzeTlBZ+vBso1A84fw==
 
-react-native-share@^3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-3.3.3.tgz#9f0f7c28c123e5f1d287b7923d505a05fd8bd3e9"
-  integrity sha512-KFyGe7hnD7ZDJCz1kWTI5iv2MfY5weIz+aTzqyomyxxFb73rHlCRHa+NRNYvnpTntOjnqyB0/GFf1W2J9y6vJQ==
+react-native-share@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-3.4.0.tgz#9d36463d747884d8c413f1f21579b728b8825695"
+  integrity sha512-WB6aNbaeroFgm2+2Q33G2+bvKVvNrhA91DpdhHie5/Hx2VEw46iqq5XDaL2y97sViDfcr8NSlK2S4fd0NYSoOA==
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"
