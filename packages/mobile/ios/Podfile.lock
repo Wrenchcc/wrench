@@ -427,7 +427,7 @@ PODS:
   - react-native-fbsdk/Share (2.0.0):
     - FBSDKShareKit (~> 7.0)
     - React
-  - react-native-netinfo (5.9.2):
+  - react-native-netinfo (5.9.3):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -530,7 +530,7 @@ PODS:
   - RNSentry (1.4.5):
     - React
     - Sentry (~> 5.1.4)
-  - RNShare (3.4.0):
+  - RNShare (3.5.0):
     - React
   - SDWebImage (5.8.1):
     - SDWebImage/Core (= 5.8.1)
@@ -907,7 +907,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
   react-native-config: ae9ef3bdbf539f2d14ebaf4ebeba508f766e066a
   react-native-fbsdk: 00c15d138bba6d4efa628670886fc58cec858c19
-  react-native-netinfo: cb74e17062b2af5a16a4b137f32495f241df1a8e
+  react-native-netinfo: 1b8691be19549f020d0757b40aca4f355cafeeec
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
@@ -931,7 +931,7 @@ SPEC CHECKSUMS:
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: 0a70359ddacbfb9b1cbbb0971e54065b9f70ac57
-  RNShare: d37b34279f840dd66ca233aa02005084b598f1b2
+  RNShare: 9e0ab1939761051b074c8eb5e7d746f4d5a8ee0e
   SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
   SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
   Sentry: 74f2ad93a20a5567a1badaedf5b3f60b142ad082

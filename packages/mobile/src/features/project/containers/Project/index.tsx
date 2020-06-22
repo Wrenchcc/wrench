@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { View, KeyboardAvoidingView } from 'react-native'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
@@ -47,31 +47,6 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     return <Post post={item.node} avatar={false} withoutTitle />
   }
 
-  const renderHeader = useCallback(() => {
-    let content
-
-    if (post) {
-      content = (
-        <>
-          <Post post={post} withoutTitle />
-          {/* <PostPlaceholder /> */}
-          {hasPosts && edges && edges.length > 1 && (
-            <View style={{ marginTop: -20, paddingBottom: 50 }}>
-              <Title medium>{t('Project:recent')}</Title>
-            </View>
-          )}
-        </>
-      )
-    }
-
-    return (
-      <>
-        {project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
-        {content}
-      </>
-    )
-  }, [post, edges, hasPosts, project])
-
   return (
     <KeyboardAvoidingView behavior={KEYBOARD_BEHAVIOR} style={{ flex: 1 }} enabled={!hasNextPage}>
       <Page
@@ -90,7 +65,22 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flexGrow: 1 }}
           ListEmptyComponent={!hasPosts && <EmptyState type={emptyState} />}
-          ListHeaderComponent={renderHeader}
+          ListHeaderComponent={
+            <>
+              {project?.title && <ProjectHeader project={project} spacingHorizontal={!hasPosts} />}
+              {post ? (
+                <>
+                  <Post post={post} withoutTitle />
+                  {/* <PostPlaceholder /> */}
+                  {hasPosts && edges && edges.length > 1 && (
+                    <View style={{ marginTop: -20, paddingBottom: 50 }}>
+                      <Title medium>{t('Project:recent')}</Title>
+                    </View>
+                  )}
+                </>
+              ) : null}
+            </>
+          }
           data={edges}
           refetch={refetch}
           fetchMore={fetchMore}
