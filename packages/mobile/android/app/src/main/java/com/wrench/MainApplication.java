@@ -22,10 +22,6 @@ import org.unimodules.core.interfaces.SingletonModule;
 
 import com.brentvatne.react.ReactVideoPackage;
 
-import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
-import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
-import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
-
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationPackage;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
@@ -63,9 +59,6 @@ public class MainApplication extends NavigationApplication {
             
             packages.addAll(unimodules);
 
-            packages.add(new RNFirebaseAnalyticsPackage());
-            packages.add(new RNFirebaseMessagingPackage());
-            packages.add(new RNFirebaseNotificationsPackage());
             packages.add(new ReactVideoPackage());
 
             return packages;

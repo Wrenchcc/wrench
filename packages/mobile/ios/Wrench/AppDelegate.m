@@ -4,8 +4,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <RNGoogleSignin/RNGoogleSignin.h>
 #import "RNSplashScreen.h"
-#import "RNFirebaseNotifications.h"
-#import "RNFirebaseMessaging.h"
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 #import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>
@@ -30,8 +28,6 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
-@import Firebase;
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -40,8 +36,9 @@ static void InitializeFlipper(UIApplication *application) {
   #endif
   
   [FIROptions defaultOptions].deepLinkURLScheme = @"wrench";
-  [FIRApp configure];
-  [RNFirebaseNotifications configure];
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
 
   // Register WebP format support
@@ -84,22 +81,6 @@ static void InitializeFlipper(UIApplication *application) {
       openURL:url
       sourceApplication:sourceApplication
       annotation:annotation];
-}
-
-// Push Notifications
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo
-                                                       fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler{
-  [[RNFirebaseNotifications instance] didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
-}
-
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-  [[RNFirebaseMessaging instance] didRegisterUserNotificationSettings:notificationSettings];
-}
-
--(void) userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
-
-  [[RNFirebaseMessaging instance] didReceiveRemoteNotification:response.notification.request.content.userInfo];
-  completionHandler();
 }
 
 // Deep links
