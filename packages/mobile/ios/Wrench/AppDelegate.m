@@ -9,6 +9,7 @@
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CodePush/CodePush.h>
+#import <Firebase.h>
 
 #if DEBUG
 #import <FlipperKit/FlipperClient.h>
