@@ -1,4 +1,4 @@
-import { analytics } from 'react-native-firebase'
+import analytics from '@react-native-firebase/analytics'
 export { events } from './events'
 
 analytics().setAnalyticsCollectionEnabled(!__DEV__)

@@ -10,6 +10,7 @@ public class BasePackageList {
         new expo.modules.camera.CameraPackage(),
         new expo.modules.constants.ConstantsPackage(),
         new expo.modules.filesystem.FileSystemPackage(),
+        new expo.modules.haptics.HapticsPackage(),
         new expo.modules.imageloader.ImageLoaderPackage(),
         new expo.modules.imagemanipulator.ImageManipulatorPackage(),
         new expo.modules.imagepicker.ImagePickerPackage(),

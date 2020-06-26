@@ -73,10 +73,6 @@ target 'Wrench' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
 
-  # Required by Firebase
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
-
   # react-native-fast-image WebP support
   pod 'SDWebImageWebPCoder'
 

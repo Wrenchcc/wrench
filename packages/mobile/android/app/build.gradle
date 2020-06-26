@@ -248,8 +248,6 @@ dependencies {
     }
 
     implementation "com.google.android.gms:play-services-base:17.3.0"
-    implementation "com.google.firebase:firebase-analytics:17.4.2"
-    implementation "com.google.firebase:firebase-messaging:20.2.0"
     
     addUnimodulesDependencies([modulesPaths: ['../../../../node_modules/']])
 }

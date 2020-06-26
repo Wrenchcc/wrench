@@ -1,6 +1,8 @@
-import { messaging } from 'react-native-firebase'
+import messaging from '@react-native-firebase/messaging'
 import { registerDeviceToken } from 'gql'
 import { track, events } from 'utils/analytics'
+
+const { AuthorizationStatus } = messaging
 
 export async function updateNotificationToken() {
   if (__DEV__) {
@@ -8,11 +10,9 @@ export async function updateNotificationToken() {
   }
 
   const firebase = messaging()
-  const enabled = await firebase.hasPermission()
-
-  if (!enabled) {
-    await firebase.requestPermission()
-  }
+  const authStatus = await firebase.requestPermission()
+  const enabled =
+    authStatus === AuthorizationStatus.AUTHORIZED || authStatus === AuthorizationStatus.PROVISIONAL
 
   if (enabled) {
     const token = await firebase.getToken()
@@ -37,28 +37,26 @@ export async function requestNotificationToken(onPermission) {
   }
 
   const firebase = messaging()
-  const enabled = await firebase.hasPermission()
+  const authStatus = await firebase.requestPermission()
+  const enabled =
+    authStatus === AuthorizationStatus.AUTHORIZED || authStatus === AuthorizationStatus.PROVISIONAL
 
-  if (!enabled) {
-    try {
-      await firebase.requestPermission()
+  if (enabled) {
+    const token = await firebase.getToken()
 
-      const token = await firebase.getToken()
-
-      if (token) {
-        await registerDeviceToken(token)
-      }
-
-      if (onPermission) {
-        onPermission()
-      }
-    } catch {
-      if (onPermission) {
-        return
-      }
-
-      // User has rejected permissions
-      track(events.USER_REJECTED_PUSH_NOTIFICATIONS)
+    if (token) {
+      await registerDeviceToken(token)
     }
+
+    if (onPermission) {
+      onPermission()
+    }
+  } else {
+    if (onPermission) {
+      return
+    }
+
+    // User has rejected permissions
+    track(events.USER_REJECTED_PUSH_NOTIFICATIONS)
   }
 }
