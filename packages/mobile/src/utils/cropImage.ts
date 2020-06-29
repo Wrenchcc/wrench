@@ -6,7 +6,7 @@ const MAX_SIZE = 1500
 
 export default async function cropImage({ uri, crop }) {
   try {
-    // TODO: Enable cropping again dosen't work in prod
+    // TODO: Enable cropping again doesn't work in prod
     if (isAndroid) {
       return Promise.resolve({ uri })
     }
