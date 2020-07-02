@@ -6,7 +6,7 @@ import { Wrapper, Icon } from './styles'
 function CameraType({ onPress }) {
   return (
     <Wrapper>
-      <Touchable onPress={onPress} nativeHandler>
+      <Touchable onPress={onPress}>
         <Icon source={cameraType} />
       </Touchable>
     </Wrapper>

@@ -10,7 +10,7 @@ const AskForPermission = ({ type, permission, onSuccess }) => {
 
   const onPress = useCallback(
     () =>
-      request(permission).then(res => {
+      request(permission).then((res) => {
         if (res !== RESULTS.GRANTED) {
           const buttons = [{ text: t(`AskForPermission:${type}:alertCancel`), style: 'cancel' }]
 
@@ -40,7 +40,7 @@ const AskForPermission = ({ type, permission, onSuccess }) => {
         {t(`AskForPermission:${type}:permissionDescription`)}
       </Description>
 
-      <Touchable onPress={onPress} nativeHandler>
+      <Touchable onPress={onPress}>
         <Text color="white" medium>
           {t(`AskForPermission:${type}:permissionButton`)}
         </Text>

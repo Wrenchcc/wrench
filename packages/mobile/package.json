@@ -15,7 +15,7 @@
     "check:types": "tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "3.0.0-beta.44",
+    "@apollo/client": "3.0.0-rc.10",
     "@apollo/link-batch-http": "^2.0.0-beta.3",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",
@@ -24,11 +24,11 @@
     "@expo/react-native-action-sheet": "^3.8.0",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/google-signin": "^4.0.3",
-    "@react-native-community/netinfo": "^5.9.3",
-    "@react-native-firebase/analytics": "^7.1.5",
-    "@react-native-firebase/app": "^7.3.0",
-    "@react-native-firebase/messaging": "^7.1.7",
-    "@sentry/react-native": "^1.4.5",
+    "@react-native-community/netinfo": "^5.9.4",
+    "@react-native-firebase/analytics": "^7.1.7",
+    "@react-native-firebase/app": "^8.0.0",
+    "@react-native-firebase/messaging": "^7.2.1",
+    "@sentry/react-native": "^1.5.0",
     "@wrench/common": "1.0.0",
     "@wrench/ui": "1.0.0",
     "apollo-link-queue": "^2.2.0",
@@ -42,7 +42,7 @@
     "expo-media-library": "8.2.1",
     "expo-store-review": "2.1.2",
     "human-format": "^0.11.0",
-    "i18next": "^19.5.1",
+    "i18next": "^19.5.3",
     "ms": "^2.1.2",
     "rambda": "^5.8.0",
     "react": "16.13",
@@ -59,12 +59,12 @@
     "react-native-permissions": "^2.1.5",
     "react-native-pinchable": "^0.1.2",
     "react-native-reanimated": "1.4.0",
-    "react-native-redash": "^14.1.1",
+    "react-native-redash": "^14.2.1",
     "react-native-responsive-dimensions": "^3.1.1",
-    "react-native-share": "^3.5.0",
+    "react-native-share": "^3.6.0",
     "react-native-splash-screen": "^3.2.0",
     "react-native-tab-view": "^2.14.4",
-    "react-native-unimodules": "^0.9.1",
+    "react-native-unimodules": "^0.10.1",
     "react-native-video": "^5.0.2",
     "react-native-webview": "10.3.2",
     "reanimated-bottom-sheet": "^1.0.0-alpha.20",
@@ -74,12 +74,12 @@
     "zustand": "^2.2.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^5.2.0",
     "flipper-plugin-react-native-performance": "^0.4.3",
-    "metro-react-native-babel-preset": "^0.59.0"
+    "metro-react-native-babel-preset": "^0.60.0"
   }
 }

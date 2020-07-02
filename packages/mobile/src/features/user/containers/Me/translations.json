@@ -1,0 +1,14 @@
+{
+  "Me": {
+    "en": {
+      "edit": "Edit profile",
+      "settings": "Settings",
+      "bookmarks": "Saved posts"
+    },
+    "sv": {
+      "edit": "Redigera profil",
+      "settings": "Inställningar",
+      "bookmarks": "Sparade inlägg"
+    }
+  }
+}

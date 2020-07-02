@@ -5,6 +5,7 @@ import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import { componentId } from './events'
 
 let mention: boolean
+let halfpanel: boolean
 
 type PassProps = { [passProp: string]: any }
 
@@ -51,6 +52,29 @@ export function showModal(
       ],
     },
   })
+}
+
+export function showHalfpanel(passProps: PassProps) {
+  if (!halfpanel) {
+    Navigation.showOverlay({
+      component: {
+        id: SCREENS.HALFPANEL,
+        name: SCREENS.HALFPANEL,
+        options: {
+          layout: {
+            componentBackgroundColor: 'transparent',
+          },
+        },
+        passProps,
+      },
+    })
+  }
+  halfpanel = true
+}
+
+export function dismissHalfpanel() {
+  Navigation.dismissOverlay(SCREENS.HALFPANEL)
+  halfpanel = false
 }
 
 export function showMention(passProps: PassProps) {

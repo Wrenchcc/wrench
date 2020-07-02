@@ -188,15 +188,9 @@
       "description": "Document your builds, share your projects & learn from like-minded.",
       "other": "Other sign in options"
     },
-    "EditButton": {
-      "edit": "Edit"
-    },
     "FollowingProjects": {
       "title": "This user don’t have any own projects yet.",
       "description": "But here’s some of the projects {{name}} follows."
-    },
-    "SettingsButton": {
-      "settings": "Settings"
     },
     "UserProjects": {
       "title": "Projects"
@@ -224,6 +218,11 @@
       "wrong": "Something went wrong",
       "validation": "Please check required fields.",
       "validationUsername": "Username is already taken."
+    },
+    "Me": {
+      "edit": "Edit profile",
+      "settings": "Settings",
+      "bookmarks": "Saved posts"
     },
     "Settings": {
       "invite": "Invite people",
@@ -572,15 +571,9 @@
       "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
       "other": "Andra inloggningsalternativ"
     },
-    "EditButton": {
-      "edit": "Redigera"
-    },
     "FollowingProjects": {
       "title": "Den här användaren har inga egna projekt ännu.",
       "description": "Men här är några project som {{name}} följer."
-    },
-    "SettingsButton": {
-      "settings": "Inställningar"
     },
     "UserProjects": {
       "title": "Projekt"
@@ -608,6 +601,11 @@
       "wrong": "Något gick fel.",
       "validation": "Kontrollera alla obligatoriska fält.",
       "validationUsername": "Användarnamn är upptaget."
+    },
+    "Me": {
+      "edit": "Redigera profil",
+      "settings": "Inställningar",
+      "bookmarks": "Sparade inlägg"
     },
     "Settings": {
       "invite": "Bjud in vänner",

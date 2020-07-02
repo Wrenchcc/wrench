@@ -40,5 +40,6 @@ export default isAuthenticated(async (_, { userId }, ctx) => {
     }),
     ctx.db.File.delete({ userId: reportedUser.id }),
     ctx.db.Post.delete({ userId: reportedUser.id }),
+    ctx.db.Project.delete({ userId: reportedUser.id }),
   ])
 })
