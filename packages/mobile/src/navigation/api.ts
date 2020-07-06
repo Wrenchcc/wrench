@@ -64,6 +64,9 @@ export function showHalfpanel(passProps: PassProps) {
           layout: {
             componentBackgroundColor: 'transparent',
           },
+          overlay: {
+            interceptTouchOutside: false,
+          },
         },
         passProps,
       },

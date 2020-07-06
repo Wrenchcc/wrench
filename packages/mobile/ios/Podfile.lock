@@ -47,7 +47,7 @@ PODS:
     - UMCore
   - EXLocalization (8.2.1):
     - UMCore
-  - EXMediaLibrary (8.2.1):
+  - EXMediaLibrary (8.3.0):
     - React
     - UMCore
     - UMFileSystemInterface
@@ -504,7 +504,7 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
     - ReactCommon/callinvoker (= 0.62.2)
-  - ReactNativeNavigation (6.8.0):
+  - ReactNativeNavigation (6.9.0):
     - React
     - React-RCTImage
     - React-RCTText
@@ -514,14 +514,14 @@ PODS:
     - React
     - SDWebImage (~> 5.0)
     - SDWebImageWebPCoder (~> 0.4.1)
-  - RNFBAnalytics (7.1.7):
+  - RNFBAnalytics (7.1.8):
     - Firebase/Analytics (~> 6.25.0)
     - React
     - RNFBApp
-  - RNFBApp (8.0.0):
+  - RNFBApp (8.0.1):
     - Firebase/CoreOnly (~> 6.25.0)
     - React
-  - RNFBMessaging (7.2.1):
+  - RNFBMessaging (7.3.2):
     - Firebase/Analytics (~> 6.25.0)
     - Firebase/Messaging (~> 6.25.0)
     - React
@@ -535,20 +535,20 @@ PODS:
     - React
   - RNReanimated (1.4.0):
     - React
-  - RNSentry (1.5.0):
+  - RNSentry (1.6.0):
     - React
-    - Sentry (~> 5.1.4)
-  - RNShare (3.6.0):
+    - Sentry (~> 5.1.6)
+  - RNShare (3.7.0):
     - React
-  - SDWebImage (5.8.2):
-    - SDWebImage/Core (= 5.8.2)
-  - SDWebImage/Core (5.8.2)
+  - SDWebImage (5.8.3):
+    - SDWebImage/Core (= 5.8.3)
+  - SDWebImage/Core (5.8.3)
   - SDWebImageWebPCoder (0.4.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.5)
-  - Sentry (5.1.6):
-    - Sentry/Core (= 5.1.6)
-  - Sentry/Core (5.1.6)
+  - Sentry (5.1.7):
+    - Sentry/Core (= 5.1.7)
+  - Sentry/Core (5.1.7)
   - SSZipArchive (2.2.3)
   - UMAppLoader (1.2.0)
   - UMBarCodeScannerInterface (5.2.1)
@@ -866,7 +866,7 @@ SPEC CHECKSUMS:
   EXImagePicker: f5eb978a3b2f268f47eb567008018de512f36557
   EXLinearGradient: 663bf3b9009a96567e98498016e40422631be81d
   EXLocalization: b5bcfc925ed83123b585d46d3bd54d7b7118f307
-  EXMediaLibrary: 267cf1daca04a4d71d20c5be0b82701fe6056a08
+  EXMediaLibrary: 0bf8b552392a0ae3919482c1a0f56def9acbd881
   EXPermissions: 80ac3acbdb145930079810fe5b08c022b3428aa8
   EXStoreReview: 2b9bdb91b3ed4319b4f6a4cb4647ba48a6ab67c8
   FBLazyVector: 4aab18c93cd9546e4bfed752b4084585eca8b245
@@ -934,21 +934,21 @@ SPEC CHECKSUMS:
   React-RCTText: fae545b10cfdb3d247c36c56f61a94cfd6dba41d
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
-  ReactNativeNavigation: 2d10f0059506c69795683f525369baa7d0e9536c
+  ReactNativeNavigation: 38441fc9711ea6df07e4c30c642fb4c29fecc4c5
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
-  RNFBAnalytics: ef3a53bc92f1f4b9ff7d0a42f4774facf25b4d1e
-  RNFBApp: 7025b9e7ed4e305f8a4e5ee15c79238c03dfb756
-  RNFBMessaging: d149d0b48f6d6a449afb05876a1466b4e4494280
+  RNFBAnalytics: 1c62751e65829a88ad23c4e2740610970372ccde
+  RNFBApp: 49e1b8ce7e7d175b751c5b8568eafd51eac59b42
+  RNFBMessaging: 0891dd5bb7c5ffaa9d7670819fc934714883e316
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNSentry: edba19169f665609fb092ba5eaf4be3c0776f50a
-  RNShare: 953e60d1a179b214ae50b22a1b1f2e50ec549e6d
-  SDWebImage: f923a89d7344af399ba77b87a523ae747408207a
+  RNSentry: 888dd890845f27e5c4cd71ac0178f1028b6815c7
+  RNShare: a1d5064df7a0ebe778d001869b3f0a124bf0a491
+  SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
   SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
-  Sentry: e5796ec31a481474d2f94553213278470f9e302d
+  Sentry: f16ff9ed0d862a9f1dc75aa030a08a76f8b50730
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   UMAppLoader: 61049c8d55590b74e9ae1d5429bf68d96b4a2528
   UMBarCodeScannerInterface: e5e4c87797d3d01214e25cd1618866caf5d4f17f

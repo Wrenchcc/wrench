@@ -1,0 +1,15 @@
+#import "../fragments/PostFragment.graphql"
+
+query bookmarks($after: String, $first: Int = 5) @connection(key: "bookmarks") {
+  bookmarks(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}

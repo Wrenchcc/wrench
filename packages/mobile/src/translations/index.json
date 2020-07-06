@@ -195,6 +195,10 @@
     "UserProjects": {
       "title": "Projects"
     },
+    "Bookmarks": {
+      "title": "Save",
+      "description": "Save posts that you want to see again. No one is notified, and only you can see what you've saved."
+    },
     "EditProfile": {
       "headerTitle": "Edit profile",
       "information": "Information",
@@ -568,7 +572,7 @@
     },
     "SignIn": {
       "headline": "Din \nmotorcykel \ncommunity.",
-      "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+      "description": "Dokumentera dina byggen, dela dina projekt och lär av likasinnade.",
       "other": "Andra inloggningsalternativ"
     },
     "FollowingProjects": {
@@ -577,6 +581,10 @@
     },
     "UserProjects": {
       "title": "Projekt"
+    },
+    "Bookmarks": {
+      "title": "Spara",
+      "description": "Spara inlägg som du vill se igen. Ingen blir notifierad och det är bara du som kan se vad du sparat."
     },
     "EditProfile": {
       "headerTitle": "Redigera profil",

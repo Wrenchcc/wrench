@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
 import { useToastStore } from 'store'
@@ -15,13 +15,13 @@ const transition = (
 function Toast() {
   const ref = useRef()
   const { t } = useTranslation()
-  const [visible, setVisible] = useState(false)
 
-  const { content, show, type } = useToastStore(store => store)
+  const { content, show, type } = useToastStore((store) => store)
 
   useEffect(() => {
-    ref.current.animateNextTransition()
-    setVisible(show)
+    if (show) {
+      ref.current.animateNextTransition()
+    }
   }, [ref, show])
 
   const renderContent = useCallback(() => {
@@ -37,7 +37,7 @@ function Toast() {
 
   return (
     <Transitioning.View ref={ref} transition={transition}>
-      {visible && <Banner type={type} content={renderContent()} />}
+      {show && <Banner type={type} content={renderContent()} />}
     </Transitioning.View>
   )
 }

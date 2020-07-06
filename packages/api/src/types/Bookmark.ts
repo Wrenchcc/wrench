@@ -14,7 +14,7 @@ export default gql`
 
   type BookmarkEdge {
     cursor: String!
-    node: User!
+    node: Post!
   }
 
   extend type Mutation {

@@ -9,11 +9,11 @@ const initialState = {
   [TOAST.TYPE]: TOAST_TYPES.NETWORK,
 }
 
-const [useToastStore, api] = create(set => ({
+const [useToastStore, api] = create((set) => ({
   ...initialState,
 
   actions: {
-    show: payload => {
+    show: (payload) => {
       set({
         content: payload.content,
         show: true,
@@ -27,7 +27,7 @@ const [useToastStore, api] = create(set => ({
   },
 }))
 
-NetInfo.addEventListener(state => {
+NetInfo.addEventListener((state) => {
   if (state.isConnected) {
     api.setState(initialState)
   } else {

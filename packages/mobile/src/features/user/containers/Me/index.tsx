@@ -34,7 +34,7 @@ function Me() {
 
   const navigateEditProfile = useCallback(() => showModal(SCREENS.EDIT_PROFILE), [])
   const navigateSettings = useCallback(() => navigate(SCREENS.SETTINGS), [])
-  const navigateBookmarks = useCallback(() => showModal(SCREENS.BOOKMARKS), [])
+  const navigateBookmarks = useCallback(() => navigate(SCREENS.BOOKMARKS), [])
 
   const hasPosts = edges && edges.length > 0
 

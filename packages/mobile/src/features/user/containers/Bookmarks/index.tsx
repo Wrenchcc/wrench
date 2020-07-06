@@ -1,18 +1,45 @@
 import React from 'react'
-import { Page, useNavigation } from 'navigation'
-import { Icon } from 'ui'
-import { close } from 'images'
+import { useTranslation } from 'react-i18next'
+import { usePaginatedQuery, BookmarksDocument } from '@wrench/common'
+import { Page, FlatList } from 'navigation'
+import Post from 'components/Post'
+import { Base, Title, Description } from './styles'
+
+const renderItem = ({ item }) => <Post post={item.node} />
 
 function Bookmarks() {
-  const { dismissModal } = useNavigation()
+  const { t } = useTranslation()
+
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['bookmarks'])(BookmarksDocument)
 
   return (
-    <Page
-      headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
-      headerTitle="Saved posts"
-      view
-      headerAnimation={false}
-    ></Page>
+    <Page headerTitle="Saved posts" view headerAnimation={false}>
+      <FlatList
+        initialNumToRender={2}
+        spacingSeparator
+        ListEmptyComponent={
+          <Base>
+            <Title>{t('Bookmarks:title')}</Title>
+
+            <Description>{t('Bookmarks:description')}</Description>
+          </Base>
+        }
+        data={edges}
+        refetch={refetch}
+        fetchMore={fetchMore}
+        isRefetching={isRefetching}
+        isFetching={isFetching}
+        hasNextPage={hasNextPage}
+        renderItem={renderItem}
+      />
+    </Page>
   )
 }
 

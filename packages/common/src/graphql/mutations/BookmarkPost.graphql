@@ -1,0 +1,8 @@
+mutation bookmarkPost($id: ID!) {
+  bookmarkPost(id: $id) {
+    id
+    bookmarks {
+      isBookmarked
+    }
+  }
+}
