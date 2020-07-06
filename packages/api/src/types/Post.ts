@@ -11,6 +11,7 @@ export default gql`
     postPermissions: PostPermissions # @deprecated(reason: "Use permissions.")
     permissions: PostPermissions
     likes: Likes
+    bookmarks: Bookmarks
 
     filesConnection(
       first: Int = 10

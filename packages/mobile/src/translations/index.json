@@ -188,18 +188,16 @@
       "description": "Document your builds, share your projects & learn from like-minded.",
       "other": "Other sign in options"
     },
-    "EditButton": {
-      "edit": "Edit"
-    },
     "FollowingProjects": {
       "title": "This user don’t have any own projects yet.",
       "description": "But here’s some of the projects {{name}} follows."
     },
-    "SettingsButton": {
-      "settings": "Settings"
-    },
     "UserProjects": {
       "title": "Projects"
+    },
+    "Bookmarks": {
+      "title": "Save",
+      "description": "Save posts that you want to see again. No one is notified, and only you can see what you've saved."
     },
     "EditProfile": {
       "headerTitle": "Edit profile",
@@ -224,6 +222,11 @@
       "wrong": "Something went wrong",
       "validation": "Please check required fields.",
       "validationUsername": "Username is already taken."
+    },
+    "Me": {
+      "edit": "Edit profile",
+      "settings": "Settings",
+      "bookmarks": "Saved posts"
     },
     "Settings": {
       "invite": "Invite people",
@@ -569,21 +572,19 @@
     },
     "SignIn": {
       "headline": "Din \nmotorcykel \ncommunity.",
-      "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+      "description": "Dokumentera dina byggen, dela dina projekt och lär av likasinnade.",
       "other": "Andra inloggningsalternativ"
-    },
-    "EditButton": {
-      "edit": "Redigera"
     },
     "FollowingProjects": {
       "title": "Den här användaren har inga egna projekt ännu.",
       "description": "Men här är några project som {{name}} följer."
     },
-    "SettingsButton": {
-      "settings": "Inställningar"
-    },
     "UserProjects": {
       "title": "Projekt"
+    },
+    "Bookmarks": {
+      "title": "Spara",
+      "description": "Spara inlägg som du vill se igen. Ingen blir notifierad och det är bara du som kan se vad du sparat."
     },
     "EditProfile": {
       "headerTitle": "Redigera profil",
@@ -608,6 +609,11 @@
       "wrong": "Något gick fel.",
       "validation": "Kontrollera alla obligatoriska fält.",
       "validationUsername": "Användarnamn är upptaget."
+    },
+    "Me": {
+      "edit": "Redigera profil",
+      "settings": "Inställningar",
+      "bookmarks": "Sparade inlägg"
     },
     "Settings": {
       "invite": "Bjud in vänner",

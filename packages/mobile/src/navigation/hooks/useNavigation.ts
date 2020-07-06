@@ -18,7 +18,7 @@ export default function useNavigation() {
     dismissModal: (root: boolean = false, tabIndex = TABS_INDEX.FEED) => {
       Navigation.dismissModal(componentId)
 
-      if (root) {
+      if (root === true) {
         api.selectTabIndex(tabIndex)
       }
     },

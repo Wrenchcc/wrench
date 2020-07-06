@@ -2,8 +2,8 @@
 
 query likes($postId: ID!, $after: String, $first: Int = 10) {
   likes(postId: $postId, first: $first, after: $after) {
-      pageInfo {
-        hasNextPage
+    pageInfo {
+      hasNextPage
     }
     edges {
       cursor

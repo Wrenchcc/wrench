@@ -6,24 +6,26 @@ import generalTypes from './types/general'
 
 // Types
 import Auth from './types/Auth'
+import Bookmark from './types/Bookmark'
 import Comment from './types/Comment'
 import Feed from './types/Feed'
 import File from './types/File'
 import Followers from './types/Followers'
+import Hashtag from './types/Hashtag'
 import Invite from './types/Invite'
 import Like from './types/Like'
+import Meta from './types/Meta'
 import Model from './types/Model'
 import Notification from './types/Notification'
 import Post from './types/Post'
 import Project from './types/Project'
+import Report from './types/Report'
 import Search from './types/Search'
 import Upload from './types/Upload'
 import User from './types/User'
-import Meta from './types/Meta'
-import Hashtag from './types/Hashtag'
-import Report from './types/Report'
 
 // Queries
+import bookmarkQueries from './queries/bookmark'
 import commentQueries from './queries/comment'
 import feedQueries from './queries/feed'
 import followerQueries from './queries/follower'
@@ -37,6 +39,7 @@ import hashtagQueries from './queries/hashtag'
 import likesQueries from './queries/likes'
 
 // Mutations
+import bookmarkMutations from './mutations/bookmark'
 import commentMutations from './mutations/comment'
 import inviteMutations from './mutations/invite'
 import notificationMutations from './mutations/notification'
@@ -73,6 +76,7 @@ const resolvers = merge(
   {},
   // queries
   scalars.resolvers,
+  bookmarkQueries,
   commentQueries,
   feedQueries,
   followerQueries,
@@ -84,6 +88,7 @@ const resolvers = merge(
   hashtagQueries,
   likesQueries,
   // mutations
+  bookmarkMutations,
   commentMutations,
   inviteMutations,
   notificationMutations,
@@ -111,25 +116,26 @@ export default makeExecutableSchema({
   resolvers,
   typeDefs: [
     scalars.typeDefs,
-    generalTypes,
     Auth,
+    Bookmark,
     Comment,
     Feed,
     File,
     Followers,
-    Like,
+    generalTypes,
+    Hashtag,
     Invite,
     Like,
+    Like,
+    Meta,
     Model,
     Notification,
     Post,
     Project,
+    Report,
     Root,
     Search,
     Upload,
     User,
-    Meta,
-    Hashtag,
-    Report,
   ],
 })

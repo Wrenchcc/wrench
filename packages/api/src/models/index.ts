@@ -1,22 +1,23 @@
 import { ConnectionOptions } from 'typeorm'
 import AuthProvider from './AuthProvider'
 import AuthToken from './AuthToken'
+import Bookmark from './Bookmark'
 import Brand from './Brand'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
 import File from './File'
 import Following from './Following'
+import Hashtag from './Hashtag'
 import Like from './Like'
 import Model from './Model'
 import Notification from './Notification'
 import Post from './Post'
 import Project from './Project'
 import ProjectType from './ProjectType'
+import Report from './Report'
 import User from './User'
 import UserInterestedIn from './UserInterestedIn'
 import UserSettings from './UserSettings'
-import Hashtag from './Hashtag'
-import Report from './Report'
 
 const {
   DB_PORT = 5432,
@@ -33,22 +34,23 @@ export const options: ConnectionOptions = {
   entities: [
     AuthProvider,
     AuthToken,
+    Bookmark,
     Brand,
     Comment,
     DeviceToken,
     File,
     Following,
+    Hashtag,
     Like,
     Model,
     Notification,
     Post,
     Project,
     ProjectType,
+    Report,
     User,
     UserInterestedIn,
     UserSettings,
-    Hashtag,
-    Report,
   ],
   host: DB_HOST,
   logging: Boolean(DB_LOGGING),
@@ -62,20 +64,21 @@ export const options: ConnectionOptions = {
 export const db = {
   AuthProvider,
   AuthToken,
+  Bookmark,
   Brand,
   Comment,
   DeviceToken,
   File,
   Following,
+  Hashtag,
   Like,
   Model,
   Notification,
   Post,
   Project,
   ProjectType,
+  Report,
   User,
   UserInterestedIn,
   UserSettings,
-  Hashtag,
-  Report,
 }

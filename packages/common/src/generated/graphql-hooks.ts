@@ -19,13 +19,17 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   dummy?: Maybe<Scalars['String']>;
+  bookmarks?: Maybe<BookmarkConnection>;
   comments?: Maybe<CommentConnection>;
   recentComments?: Maybe<CommentConnection>;
   comment?: Maybe<Comment>;
   feed?: Maybe<Feed>;
   files?: Maybe<FileConnection>;
   followers?: Maybe<FollowersConnection>;
+  hashtag?: Maybe<Hashtag>;
   likes?: Maybe<LikeConnection>;
+  meta?: Maybe<Meta>;
+  growth?: Maybe<Array<Maybe<GrowthData>>>;
   notifications?: Maybe<NotificationsConnection>;
   post?: Maybe<Post>;
   posts?: Maybe<PostConnection>;
@@ -38,9 +42,14 @@ export type Query = {
   user?: Maybe<User>;
   users?: Maybe<UserConnection>;
   currentUser?: Maybe<User>;
-  meta?: Maybe<Meta>;
-  growth?: Maybe<Array<Maybe<GrowthData>>>;
-  hashtag?: Maybe<Hashtag>;
+};
+
+
+export type QueryBookmarksArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
 
@@ -87,12 +96,25 @@ export type QueryFollowersArgs = {
 };
 
 
+export type QueryHashtagArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+};
+
+
 export type QueryLikesArgs = {
   postId: Scalars['ID'];
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryGrowthArgs = {
+  type: GrowthType;
+  startDate?: Maybe<Scalars['Date']>;
+  endDate?: Maybe<Scalars['Date']>;
 };
 
 
@@ -179,24 +201,11 @@ export type QueryCurrentUserArgs = {
   before?: Maybe<Scalars['String']>;
 };
 
-
-export type QueryGrowthArgs = {
-  type: GrowthType;
-  startDate?: Maybe<Scalars['Date']>;
-  endDate?: Maybe<Scalars['Date']>;
-};
-
-
-export type QueryHashtagArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-};
-
-export type CommentConnection = {
-  __typename?: 'CommentConnection';
+export type BookmarkConnection = {
+  __typename?: 'BookmarkConnection';
   totalCount?: Maybe<Scalars['Int']>;
   pageInfo: PageInfo;
-  edges?: Maybe<Array<CommentEdge>>;
+  edges?: Maybe<Array<BookmarkEdge>>;
 };
 
 export type PageInfo = {
@@ -205,28 +214,47 @@ export type PageInfo = {
   hasPreviousPage?: Maybe<Scalars['Boolean']>;
 };
 
-export type CommentEdge = {
-  __typename?: 'CommentEdge';
+export type BookmarkEdge = {
+  __typename?: 'BookmarkEdge';
   cursor: Scalars['String'];
-  node: Comment;
+  node: Post;
 };
 
-export type Comment = {
-  __typename?: 'Comment';
+export type Post = {
+  __typename?: 'Post';
   id?: Maybe<Scalars['ID']>;
-  commentId?: Maybe<Scalars['ID']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
-  text: Scalars['String'];
+  caption?: Maybe<Scalars['String']>;
   user?: Maybe<User>;
-  postId?: Maybe<Scalars['ID']>;
-  permissions?: Maybe<CommentPermissions>;
-  repliesConnection?: Maybe<CommentConnection>;
+  project?: Maybe<Project>;
+  postPermissions?: Maybe<PostPermissions>;
+  permissions?: Maybe<PostPermissions>;
   likes?: Maybe<Likes>;
+  bookmarks?: Maybe<Bookmarks>;
+  filesConnection?: Maybe<FileConnection>;
+  commentsConnection?: Maybe<CommentConnection>;
+  likesConnection?: Maybe<LikeConnection>;
 };
 
 
-export type CommentRepliesConnectionArgs = {
+export type PostFilesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
+};
+
+
+export type PostCommentsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type PostLikesConnectionArgs = {
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -461,46 +489,6 @@ export type PostEdge = {
   node: Post;
 };
 
-export type Post = {
-  __typename?: 'Post';
-  id?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  caption?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  project?: Maybe<Project>;
-  postPermissions?: Maybe<PostPermissions>;
-  permissions?: Maybe<PostPermissions>;
-  likes?: Maybe<Likes>;
-  filesConnection?: Maybe<FileConnection>;
-  commentsConnection?: Maybe<CommentConnection>;
-  likesConnection?: Maybe<LikeConnection>;
-};
-
-
-export type PostFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
-
-
-export type PostCommentsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
-
-export type PostLikesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
 export type PostPermissions = {
   __typename?: 'PostPermissions';
   isOwner?: Maybe<Scalars['Boolean']>;
@@ -510,6 +498,52 @@ export type Likes = {
   __typename?: 'Likes';
   totalCount?: Maybe<Scalars['Int']>;
   isLiked?: Maybe<Scalars['Boolean']>;
+};
+
+export type Bookmarks = {
+  __typename?: 'Bookmarks';
+  totalCount?: Maybe<Scalars['Int']>;
+  isBookmarked?: Maybe<Scalars['Boolean']>;
+};
+
+export type CommentConnection = {
+  __typename?: 'CommentConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CommentEdge>>;
+};
+
+export type CommentEdge = {
+  __typename?: 'CommentEdge';
+  cursor: Scalars['String'];
+  node: Comment;
+};
+
+export type Comment = {
+  __typename?: 'Comment';
+  id?: Maybe<Scalars['ID']>;
+  commentId?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  text: Scalars['String'];
+  user?: Maybe<User>;
+  postId?: Maybe<Scalars['ID']>;
+  permissions?: Maybe<CommentPermissions>;
+  repliesConnection?: Maybe<CommentConnection>;
+  likes?: Maybe<Likes>;
+};
+
+
+export type CommentRepliesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type CommentPermissions = {
+  __typename?: 'CommentPermissions';
+  isOwner?: Maybe<Scalars['Boolean']>;
 };
 
 export type LikeConnection = {
@@ -525,11 +559,6 @@ export type LikeEdge = {
   node: User;
 };
 
-export type CommentPermissions = {
-  __typename?: 'CommentPermissions';
-  isOwner?: Maybe<Scalars['Boolean']>;
-};
-
 export type Feed = {
   __typename?: 'Feed';
   postsConnection?: Maybe<PostConnection>;
@@ -541,6 +570,51 @@ export type FeedPostsConnectionArgs = {
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+export type Hashtag = {
+  __typename?: 'Hashtag';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  totalCount?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  postsConnection?: Maybe<PostConnection>;
+};
+
+
+export type HashtagPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type Meta = {
+  __typename?: 'Meta';
+  isAdmin?: Maybe<Scalars['Boolean']>;
+  totalUsers?: Maybe<Scalars['Int']>;
+  totalProjects?: Maybe<Scalars['Int']>;
+  totalPosts?: Maybe<Scalars['Int']>;
+  totalComments?: Maybe<Scalars['Int']>;
+  totalFiles?: Maybe<Scalars['Int']>;
+  totalUsersToday?: Maybe<Scalars['Int']>;
+  totalProjectsToday?: Maybe<Scalars['Int']>;
+  totalPostsToday?: Maybe<Scalars['Int']>;
+  totalCommentsToday?: Maybe<Scalars['Int']>;
+  totalFilesToday?: Maybe<Scalars['Int']>;
+};
+
+export enum GrowthType {
+  Projects = 'PROJECTS',
+  Users = 'USERS'
+}
+
+export type GrowthData = {
+  __typename?: 'GrowthData';
+  date?: Maybe<Scalars['Date']>;
+  count?: Maybe<Scalars['Int']>;
 };
 
 export type NotificationsConnection = {
@@ -622,25 +696,6 @@ export type SearchResultEdge = {
 
 export type SearchResultNode = Project | User | Model | Hashtag;
 
-export type Hashtag = {
-  __typename?: 'Hashtag';
-  id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  totalCount?: Maybe<Scalars['Int']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  postsConnection?: Maybe<PostConnection>;
-};
-
-
-export type HashtagPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
 export type UserConnection = {
   __typename?: 'UserConnection';
   pageInfo?: Maybe<PageInfo>;
@@ -653,32 +708,6 @@ export type UserEdge = {
   node?: Maybe<User>;
 };
 
-export type Meta = {
-  __typename?: 'Meta';
-  isAdmin?: Maybe<Scalars['Boolean']>;
-  totalUsers?: Maybe<Scalars['Int']>;
-  totalProjects?: Maybe<Scalars['Int']>;
-  totalPosts?: Maybe<Scalars['Int']>;
-  totalComments?: Maybe<Scalars['Int']>;
-  totalFiles?: Maybe<Scalars['Int']>;
-  totalUsersToday?: Maybe<Scalars['Int']>;
-  totalProjectsToday?: Maybe<Scalars['Int']>;
-  totalPostsToday?: Maybe<Scalars['Int']>;
-  totalCommentsToday?: Maybe<Scalars['Int']>;
-  totalFilesToday?: Maybe<Scalars['Int']>;
-};
-
-export enum GrowthType {
-  Projects = 'PROJECTS',
-  Users = 'USERS'
-}
-
-export type GrowthData = {
-  __typename?: 'GrowthData';
-  date?: Maybe<Scalars['Date']>;
-  count?: Maybe<Scalars['Int']>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   dummy?: Maybe<Scalars['String']>;
@@ -686,12 +715,13 @@ export type Mutation = {
   authenticateFacebook?: Maybe<Tokens>;
   authenticateGoogle?: Maybe<Tokens>;
   refreshToken?: Maybe<AccessToken>;
+  bookmarkPost?: Maybe<Post>;
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
+  sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
   likeComment?: Maybe<Comment>;
-  sendPromo?: Maybe<Scalars['Boolean']>;
   markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
   markNotificationSeen?: Maybe<Notification>;
   deleteNotification?: Maybe<Scalars['Boolean']>;
@@ -702,6 +732,7 @@ export type Mutation = {
   addProject?: Maybe<Project>;
   editProject?: Maybe<Project>;
   deleteProject?: Maybe<Scalars['Boolean']>;
+  report?: Maybe<Scalars['Boolean']>;
   preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>;
   preSignUrl?: Maybe<PreSignedUrl>;
   editUser?: Maybe<User>;
@@ -709,7 +740,6 @@ export type Mutation = {
   registerDeviceToken?: Maybe<Scalars['Boolean']>;
   banUser?: Maybe<Scalars['Boolean']>;
   deleteCurrentUser?: Maybe<Scalars['Boolean']>;
-  report?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -734,6 +764,11 @@ export type MutationRefreshTokenArgs = {
 };
 
 
+export type MutationBookmarkPostArgs = {
+  id: Scalars['ID'];
+};
+
+
 export type MutationAddCommentArgs = {
   postId: Scalars['ID'];
   commentId?: Maybe<Scalars['ID']>;
@@ -752,6 +787,11 @@ export type MutationDeleteCommentArgs = {
 };
 
 
+export type MutationSendPromoArgs = {
+  number: Scalars['String'];
+};
+
+
 export type MutationLikePostArgs = {
   id: Scalars['ID'];
 };
@@ -759,11 +799,6 @@ export type MutationLikePostArgs = {
 
 export type MutationLikeCommentArgs = {
   id: Scalars['ID'];
-};
-
-
-export type MutationSendPromoArgs = {
-  number: Scalars['String'];
 };
 
 
@@ -814,6 +849,12 @@ export type MutationDeleteProjectArgs = {
 };
 
 
+export type MutationReportArgs = {
+  id: Scalars['ID'];
+  type: ReportType;
+};
+
+
 export type MutationPreSignUrlsArgs = {
   input?: Maybe<Array<Maybe<PreSignedUrlnput>>>;
 };
@@ -843,12 +884,6 @@ export type MutationRegisterDeviceTokenArgs = {
 
 export type MutationBanUserArgs = {
   userId: Scalars['ID'];
-};
-
-
-export type MutationReportArgs = {
-  id: Scalars['ID'];
-  type: ReportType;
 };
 
 export type ApplePayload = {
@@ -891,6 +926,13 @@ export type ProjectInput = {
   projectTypeId?: Maybe<Scalars['ID']>;
   modelId?: Maybe<Scalars['ID']>;
 };
+
+export enum ReportType {
+  Project = 'PROJECT',
+  User = 'USER',
+  Comment = 'COMMENT',
+  Post = 'POST'
+}
 
 export type PreSignedUrlnput = {
   type: UploadType;
@@ -939,13 +981,6 @@ export type ToggleNotificationSettingsInput = {
 export enum PlatformType {
   Mobile = 'MOBILE',
   Web = 'WEB'
-}
-
-export enum ReportType {
-  Project = 'PROJECT',
-  User = 'USER',
-  Comment = 'COMMENT',
-  Post = 'POST'
 }
 
 export type HashtagConnection = {
@@ -1047,6 +1082,9 @@ export type PostFragment = (
   )>, likes?: Maybe<(
     { __typename?: 'Likes' }
     & Pick<Likes, 'isLiked' | 'totalCount'>
+  )>, bookmarks?: Maybe<(
+    { __typename?: 'Bookmarks' }
+    & Pick<Bookmarks, 'isBookmarked'>
   )>, comments?: Maybe<(
     { __typename?: 'CommentConnection' }
     & Pick<CommentConnection, 'totalCount'>
@@ -1234,6 +1272,23 @@ export type AuthenticateGoogleMutation = (
   & { authenticateGoogle?: Maybe<(
     { __typename?: 'Tokens' }
     & Pick<Tokens, 'access_token' | 'refresh_token'>
+  )> }
+);
+
+export type BookmarkPostMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type BookmarkPostMutation = (
+  { __typename?: 'Mutation' }
+  & { bookmarkPost?: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id'>
+    & { bookmarks?: Maybe<(
+      { __typename?: 'Bookmarks' }
+      & Pick<Bookmarks, 'isBookmarked'>
+    )> }
   )> }
 );
 
@@ -1454,6 +1509,30 @@ export type ToggleNotificationSettingsMutation = (
   & { toggleNotificationSettings?: Maybe<(
     { __typename?: 'User' }
     & UserSettingsFragment
+  )> }
+);
+
+export type BookmarksQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type BookmarksQuery = (
+  { __typename?: 'Query' }
+  & { bookmarks?: Maybe<(
+    { __typename?: 'BookmarkConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'BookmarkEdge' }
+      & Pick<BookmarkEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Post' }
+        & PostFragment
+      ) }
+    )>> }
   )> }
 );
 
@@ -2297,6 +2376,9 @@ export const PostFragmentDoc = gql`
     isLiked
     totalCount
   }
+  bookmarks {
+    isBookmarked
+  }
   comments: commentsConnection(first: 2) @connection(key: "comments") {
     totalCount
     edges {
@@ -2576,6 +2658,41 @@ export function useAuthenticateGoogleMutation(baseOptions?: ApolloReactHooks.Mut
 export type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
 export type AuthenticateGoogleMutationResult = ApolloReactCommon.MutationResult<AuthenticateGoogleMutation>;
 export type AuthenticateGoogleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export const BookmarkPostDocument = gql`
+    mutation bookmarkPost($id: ID!) {
+  bookmarkPost(id: $id) {
+    id
+    bookmarks {
+      isBookmarked
+    }
+  }
+}
+    `;
+export type BookmarkPostMutationFn = ApolloReactCommon.MutationFunction<BookmarkPostMutation, BookmarkPostMutationVariables>;
+
+/**
+ * __useBookmarkPostMutation__
+ *
+ * To run a mutation, you first call `useBookmarkPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBookmarkPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [bookmarkPostMutation, { data, loading, error }] = useBookmarkPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useBookmarkPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<BookmarkPostMutation, BookmarkPostMutationVariables>) {
+        return ApolloReactHooks.useMutation<BookmarkPostMutation, BookmarkPostMutationVariables>(BookmarkPostDocument, baseOptions);
+      }
+export type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>;
+export type BookmarkPostMutationResult = ApolloReactCommon.MutationResult<BookmarkPostMutation>;
+export type BookmarkPostMutationOptions = ApolloReactCommon.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
 export const DeleteCommentDocument = gql`
     mutation deleteComment($id: ID!) {
   deleteComment(id: $id)
@@ -3130,6 +3247,48 @@ export function useToggleNotificationSettingsMutation(baseOptions?: ApolloReactH
 export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export const BookmarksDocument = gql`
+    query bookmarks($after: String, $first: Int = 5) @connection(key: "bookmarks") {
+  bookmarks(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useBookmarksQuery__
+ *
+ * To run a query within a React component, call `useBookmarksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBookmarksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBookmarksQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useBookmarksQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
+        return ApolloReactHooks.useQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
+      }
+export function useBookmarksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
+        }
+export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
+export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
+export type BookmarksQueryResult = ApolloReactCommon.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
 export const CommentDocument = gql`
     query comment($id: ID!) {
   comment(id: $id) {

@@ -28,6 +28,9 @@ fragment Post on Post {
     isLiked
     totalCount
   }
+  bookmarks {
+    isBookmarked
+  }
   comments: commentsConnection(first: 2) @connection(key: "comments") {
     totalCount
     edges {

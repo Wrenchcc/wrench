@@ -115,4 +115,10 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.LIKES, () =>
     HOC(register({ require: () => require('features/project/containers/Likes') }))
   )
+  Navigation.registerComponent(SCREENS.HALFPANEL, () =>
+    HOC(register({ require: () => require('navigation/Halfpanel') }))
+  )
+  Navigation.registerComponent(SCREENS.BOOKMARKS, () =>
+    HOC(register({ require: () => require('features/user/containers/Bookmarks') }))
+  )
 }

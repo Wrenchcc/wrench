@@ -20,7 +20,7 @@ function SelectProject({ black = false }) {
 
   const projects = data?.user.projects.edges
 
-  const { projectId, title, update } = usePostStore(store => {
+  const { projectId, title, update } = usePostStore((store) => {
     const project = getProjectById(store.projectId, projects)
     return {
       projectId: project?.id,
@@ -33,7 +33,7 @@ function SelectProject({ black = false }) {
   const handleClose = useCallback(() => setIsOpen(false), [])
 
   const handleOnPress = useCallback(
-    selectedId => {
+    (selectedId) => {
       handleClose(false)
       update(POST.PROJECT_ID, selectedId)
     },
@@ -46,7 +46,6 @@ function SelectProject({ black = false }) {
         <Touchable
           onPress={toggleOpen}
           activeOpacity={0.8}
-          nativeHandler
           style={{
             flexDirection: 'row',
             alignItems: 'center',

@@ -21,13 +21,17 @@ export declare type Scalars = {
 export declare type Query = {
     __typename?: 'Query';
     dummy?: Maybe<Scalars['String']>;
+    bookmarks?: Maybe<BookmarkConnection>;
     comments?: Maybe<CommentConnection>;
     recentComments?: Maybe<CommentConnection>;
     comment?: Maybe<Comment>;
     feed?: Maybe<Feed>;
     files?: Maybe<FileConnection>;
     followers?: Maybe<FollowersConnection>;
+    hashtag?: Maybe<Hashtag>;
     likes?: Maybe<LikeConnection>;
+    meta?: Maybe<Meta>;
+    growth?: Maybe<Array<Maybe<GrowthData>>>;
     notifications?: Maybe<NotificationsConnection>;
     post?: Maybe<Post>;
     posts?: Maybe<PostConnection>;
@@ -40,9 +44,12 @@ export declare type Query = {
     user?: Maybe<User>;
     users?: Maybe<UserConnection>;
     currentUser?: Maybe<User>;
-    meta?: Maybe<Meta>;
-    growth?: Maybe<Array<Maybe<GrowthData>>>;
-    hashtag?: Maybe<Hashtag>;
+};
+export declare type QueryBookmarksArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
 };
 export declare type QueryCommentsArgs = {
     postId: Scalars['ID'];
@@ -77,12 +84,21 @@ export declare type QueryFollowersArgs = {
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
 };
+export declare type QueryHashtagArgs = {
+    id?: Maybe<Scalars['ID']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
+};
 export declare type QueryLikesArgs = {
     postId: Scalars['ID'];
     first?: Maybe<Scalars['Int']>;
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
+};
+export declare type QueryGrowthArgs = {
+    type: GrowthType;
+    startDate?: Maybe<Scalars['Date']>;
+    endDate?: Maybe<Scalars['Date']>;
 };
 export declare type QueryNotificationsArgs = {
     first?: Maybe<Scalars['Int']>;
@@ -146,45 +162,51 @@ export declare type QueryCurrentUserArgs = {
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
 };
-export declare type QueryGrowthArgs = {
-    type: GrowthType;
-    startDate?: Maybe<Scalars['Date']>;
-    endDate?: Maybe<Scalars['Date']>;
-};
-export declare type QueryHashtagArgs = {
-    id?: Maybe<Scalars['ID']>;
-    slug?: Maybe<Scalars['LowercaseString']>;
-};
-export declare type CommentConnection = {
-    __typename?: 'CommentConnection';
+export declare type BookmarkConnection = {
+    __typename?: 'BookmarkConnection';
     totalCount?: Maybe<Scalars['Int']>;
     pageInfo: PageInfo;
-    edges?: Maybe<Array<CommentEdge>>;
+    edges?: Maybe<Array<BookmarkEdge>>;
 };
 export declare type PageInfo = {
     __typename?: 'PageInfo';
     hasNextPage?: Maybe<Scalars['Boolean']>;
     hasPreviousPage?: Maybe<Scalars['Boolean']>;
 };
-export declare type CommentEdge = {
-    __typename?: 'CommentEdge';
+export declare type BookmarkEdge = {
+    __typename?: 'BookmarkEdge';
     cursor: Scalars['String'];
-    node: Comment;
+    node: Post;
 };
-export declare type Comment = {
-    __typename?: 'Comment';
+export declare type Post = {
+    __typename?: 'Post';
     id?: Maybe<Scalars['ID']>;
-    commentId?: Maybe<Scalars['ID']>;
     createdAt?: Maybe<Scalars['Date']>;
     updatedAt?: Maybe<Scalars['Date']>;
-    text: Scalars['String'];
+    caption?: Maybe<Scalars['String']>;
     user?: Maybe<User>;
-    postId?: Maybe<Scalars['ID']>;
-    permissions?: Maybe<CommentPermissions>;
-    repliesConnection?: Maybe<CommentConnection>;
+    project?: Maybe<Project>;
+    postPermissions?: Maybe<PostPermissions>;
+    permissions?: Maybe<PostPermissions>;
     likes?: Maybe<Likes>;
+    bookmarks?: Maybe<Bookmarks>;
+    filesConnection?: Maybe<FileConnection>;
+    commentsConnection?: Maybe<CommentConnection>;
+    likesConnection?: Maybe<LikeConnection>;
 };
-export declare type CommentRepliesConnectionArgs = {
+export declare type PostFilesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    reverse?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<FileType>;
+};
+export declare type PostCommentsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type PostLikesConnectionArgs = {
     first?: Maybe<Scalars['Int']>;
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
@@ -382,39 +404,6 @@ export declare type PostEdge = {
     cursor: Scalars['String'];
     node: Post;
 };
-export declare type Post = {
-    __typename?: 'Post';
-    id?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    caption?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    project?: Maybe<Project>;
-    postPermissions?: Maybe<PostPermissions>;
-    permissions?: Maybe<PostPermissions>;
-    likes?: Maybe<Likes>;
-    filesConnection?: Maybe<FileConnection>;
-    commentsConnection?: Maybe<CommentConnection>;
-    likesConnection?: Maybe<LikeConnection>;
-};
-export declare type PostFilesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    reverse?: Maybe<Scalars['Boolean']>;
-    type?: Maybe<FileType>;
-};
-export declare type PostCommentsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
-export declare type PostLikesConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
 export declare type PostPermissions = {
     __typename?: 'PostPermissions';
     isOwner?: Maybe<Scalars['Boolean']>;
@@ -423,6 +412,45 @@ export declare type Likes = {
     __typename?: 'Likes';
     totalCount?: Maybe<Scalars['Int']>;
     isLiked?: Maybe<Scalars['Boolean']>;
+};
+export declare type Bookmarks = {
+    __typename?: 'Bookmarks';
+    totalCount?: Maybe<Scalars['Int']>;
+    isBookmarked?: Maybe<Scalars['Boolean']>;
+};
+export declare type CommentConnection = {
+    __typename?: 'CommentConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<CommentEdge>>;
+};
+export declare type CommentEdge = {
+    __typename?: 'CommentEdge';
+    cursor: Scalars['String'];
+    node: Comment;
+};
+export declare type Comment = {
+    __typename?: 'Comment';
+    id?: Maybe<Scalars['ID']>;
+    commentId?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    text: Scalars['String'];
+    user?: Maybe<User>;
+    postId?: Maybe<Scalars['ID']>;
+    permissions?: Maybe<CommentPermissions>;
+    repliesConnection?: Maybe<CommentConnection>;
+    likes?: Maybe<Likes>;
+};
+export declare type CommentRepliesConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type CommentPermissions = {
+    __typename?: 'CommentPermissions';
+    isOwner?: Maybe<Scalars['Boolean']>;
 };
 export declare type LikeConnection = {
     __typename?: 'LikeConnection';
@@ -435,10 +463,6 @@ export declare type LikeEdge = {
     cursor: Scalars['String'];
     node: User;
 };
-export declare type CommentPermissions = {
-    __typename?: 'CommentPermissions';
-    isOwner?: Maybe<Scalars['Boolean']>;
-};
 export declare type Feed = {
     __typename?: 'Feed';
     postsConnection?: Maybe<PostConnection>;
@@ -448,6 +472,45 @@ export declare type FeedPostsConnectionArgs = {
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
+};
+export declare type Hashtag = {
+    __typename?: 'Hashtag';
+    id?: Maybe<Scalars['ID']>;
+    name?: Maybe<Scalars['String']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
+    totalCount?: Maybe<Scalars['Int']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    postsConnection?: Maybe<PostConnection>;
+};
+export declare type HashtagPostsConnectionArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type Meta = {
+    __typename?: 'Meta';
+    isAdmin?: Maybe<Scalars['Boolean']>;
+    totalUsers?: Maybe<Scalars['Int']>;
+    totalProjects?: Maybe<Scalars['Int']>;
+    totalPosts?: Maybe<Scalars['Int']>;
+    totalComments?: Maybe<Scalars['Int']>;
+    totalFiles?: Maybe<Scalars['Int']>;
+    totalUsersToday?: Maybe<Scalars['Int']>;
+    totalProjectsToday?: Maybe<Scalars['Int']>;
+    totalPostsToday?: Maybe<Scalars['Int']>;
+    totalCommentsToday?: Maybe<Scalars['Int']>;
+    totalFilesToday?: Maybe<Scalars['Int']>;
+};
+export declare enum GrowthType {
+    Projects = "PROJECTS",
+    Users = "USERS"
+}
+export declare type GrowthData = {
+    __typename?: 'GrowthData';
+    date?: Maybe<Scalars['Date']>;
+    count?: Maybe<Scalars['Int']>;
 };
 export declare type NotificationsConnection = {
     __typename?: 'NotificationsConnection';
@@ -516,22 +579,6 @@ export declare type SearchResultEdge = {
     node?: Maybe<SearchResultNode>;
 };
 export declare type SearchResultNode = Project | User | Model | Hashtag;
-export declare type Hashtag = {
-    __typename?: 'Hashtag';
-    id?: Maybe<Scalars['ID']>;
-    name?: Maybe<Scalars['String']>;
-    slug?: Maybe<Scalars['LowercaseString']>;
-    totalCount?: Maybe<Scalars['Int']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    postsConnection?: Maybe<PostConnection>;
-};
-export declare type HashtagPostsConnectionArgs = {
-    first?: Maybe<Scalars['Int']>;
-    after?: Maybe<Scalars['String']>;
-    last?: Maybe<Scalars['Int']>;
-    before?: Maybe<Scalars['String']>;
-};
 export declare type UserConnection = {
     __typename?: 'UserConnection';
     pageInfo?: Maybe<PageInfo>;
@@ -542,29 +589,6 @@ export declare type UserEdge = {
     cursor?: Maybe<Scalars['String']>;
     node?: Maybe<User>;
 };
-export declare type Meta = {
-    __typename?: 'Meta';
-    isAdmin?: Maybe<Scalars['Boolean']>;
-    totalUsers?: Maybe<Scalars['Int']>;
-    totalProjects?: Maybe<Scalars['Int']>;
-    totalPosts?: Maybe<Scalars['Int']>;
-    totalComments?: Maybe<Scalars['Int']>;
-    totalFiles?: Maybe<Scalars['Int']>;
-    totalUsersToday?: Maybe<Scalars['Int']>;
-    totalProjectsToday?: Maybe<Scalars['Int']>;
-    totalPostsToday?: Maybe<Scalars['Int']>;
-    totalCommentsToday?: Maybe<Scalars['Int']>;
-    totalFilesToday?: Maybe<Scalars['Int']>;
-};
-export declare enum GrowthType {
-    Projects = "PROJECTS",
-    Users = "USERS"
-}
-export declare type GrowthData = {
-    __typename?: 'GrowthData';
-    date?: Maybe<Scalars['Date']>;
-    count?: Maybe<Scalars['Int']>;
-};
 export declare type Mutation = {
     __typename?: 'Mutation';
     dummy?: Maybe<Scalars['String']>;
@@ -572,12 +596,13 @@ export declare type Mutation = {
     authenticateFacebook?: Maybe<Tokens>;
     authenticateGoogle?: Maybe<Tokens>;
     refreshToken?: Maybe<AccessToken>;
+    bookmarkPost?: Maybe<Post>;
     addComment?: Maybe<Comment>;
     editComment?: Maybe<Comment>;
     deleteComment?: Maybe<Scalars['Boolean']>;
+    sendPromo?: Maybe<Scalars['Boolean']>;
     likePost?: Maybe<Post>;
     likeComment?: Maybe<Comment>;
-    sendPromo?: Maybe<Scalars['Boolean']>;
     markAllNotificationsSeen?: Maybe<Scalars['Boolean']>;
     markNotificationSeen?: Maybe<Notification>;
     deleteNotification?: Maybe<Scalars['Boolean']>;
@@ -588,6 +613,7 @@ export declare type Mutation = {
     addProject?: Maybe<Project>;
     editProject?: Maybe<Project>;
     deleteProject?: Maybe<Scalars['Boolean']>;
+    report?: Maybe<Scalars['Boolean']>;
     preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>;
     preSignUrl?: Maybe<PreSignedUrl>;
     editUser?: Maybe<User>;
@@ -595,7 +621,6 @@ export declare type Mutation = {
     registerDeviceToken?: Maybe<Scalars['Boolean']>;
     banUser?: Maybe<Scalars['Boolean']>;
     deleteCurrentUser?: Maybe<Scalars['Boolean']>;
-    report?: Maybe<Scalars['Boolean']>;
 };
 export declare type MutationAuthenticateAppleArgs = {
     identityToken: Scalars['String'];
@@ -610,6 +635,9 @@ export declare type MutationAuthenticateGoogleArgs = {
 export declare type MutationRefreshTokenArgs = {
     refreshToken: Scalars['String'];
 };
+export declare type MutationBookmarkPostArgs = {
+    id: Scalars['ID'];
+};
 export declare type MutationAddCommentArgs = {
     postId: Scalars['ID'];
     commentId?: Maybe<Scalars['ID']>;
@@ -622,14 +650,14 @@ export declare type MutationEditCommentArgs = {
 export declare type MutationDeleteCommentArgs = {
     id: Scalars['ID'];
 };
+export declare type MutationSendPromoArgs = {
+    number: Scalars['String'];
+};
 export declare type MutationLikePostArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationLikeCommentArgs = {
     id: Scalars['ID'];
-};
-export declare type MutationSendPromoArgs = {
-    number: Scalars['String'];
 };
 export declare type MutationMarkNotificationSeenArgs = {
     id: Scalars['ID'];
@@ -660,6 +688,10 @@ export declare type MutationEditProjectArgs = {
 export declare type MutationDeleteProjectArgs = {
     id: Scalars['ID'];
 };
+export declare type MutationReportArgs = {
+    id: Scalars['ID'];
+    type: ReportType;
+};
 export declare type MutationPreSignUrlsArgs = {
     input?: Maybe<Array<Maybe<PreSignedUrlnput>>>;
 };
@@ -679,10 +711,6 @@ export declare type MutationRegisterDeviceTokenArgs = {
 };
 export declare type MutationBanUserArgs = {
     userId: Scalars['ID'];
-};
-export declare type MutationReportArgs = {
-    id: Scalars['ID'];
-    type: ReportType;
 };
 export declare type ApplePayload = {
     firstName?: Maybe<Scalars['String']>;
@@ -717,6 +745,12 @@ export declare type ProjectInput = {
     projectTypeId?: Maybe<Scalars['ID']>;
     modelId?: Maybe<Scalars['ID']>;
 };
+export declare enum ReportType {
+    Project = "PROJECT",
+    User = "USER",
+    Comment = "COMMENT",
+    Post = "POST"
+}
 export declare type PreSignedUrlnput = {
     type: UploadType;
 };
@@ -757,12 +791,6 @@ export declare type ToggleNotificationSettingsInput = {
 export declare enum PlatformType {
     Mobile = "MOBILE",
     Web = "WEB"
-}
-export declare enum ReportType {
-    Project = "PROJECT",
-    User = "USER",
-    Comment = "COMMENT",
-    Post = "POST"
 }
 export declare type HashtagConnection = {
     __typename?: 'HashtagConnection';
@@ -859,6 +887,9 @@ export declare type PostFragment = ({
     likes?: Maybe<({
         __typename?: 'Likes';
     } & Pick<Likes, 'isLiked' | 'totalCount'>)>;
+    bookmarks?: Maybe<({
+        __typename?: 'Bookmarks';
+    } & Pick<Bookmarks, 'isBookmarked'>)>;
     comments?: Maybe<({
         __typename?: 'CommentConnection';
     } & Pick<CommentConnection, 'totalCount'> & {
@@ -1033,6 +1064,20 @@ export declare type AuthenticateGoogleMutation = ({
         __typename?: 'Tokens';
     } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
 });
+export declare type BookmarkPostMutationVariables = Exact<{
+    id: Scalars['ID'];
+}>;
+export declare type BookmarkPostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    bookmarkPost?: Maybe<({
+        __typename?: 'Post';
+    } & Pick<Post, 'id'> & {
+        bookmarks?: Maybe<({
+            __typename?: 'Bookmarks';
+        } & Pick<Bookmarks, 'isBookmarked'>)>;
+    })>;
+});
 export declare type DeleteCommentMutationVariables = Exact<{
     id: Scalars['ID'];
 }>;
@@ -1196,6 +1241,28 @@ export declare type ToggleNotificationSettingsMutation = ({
     toggleNotificationSettings?: Maybe<({
         __typename?: 'User';
     } & UserSettingsFragment)>;
+});
+export declare type BookmarksQueryVariables = Exact<{
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+}>;
+export declare type BookmarksQuery = ({
+    __typename?: 'Query';
+} & {
+    bookmarks?: Maybe<({
+        __typename?: 'BookmarkConnection';
+    } & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges?: Maybe<Array<({
+            __typename?: 'BookmarkEdge';
+        } & Pick<BookmarkEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'Post';
+            } & PostFragment);
+        })>>;
+    })>;
 });
 export declare type CommentQueryVariables = Exact<{
     id: Scalars['ID'];
@@ -2032,6 +2099,31 @@ export declare function useAuthenticateGoogleMutation(baseOptions?: ApolloReactH
 export declare type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
 export declare type AuthenticateGoogleMutationResult = ApolloReactCommon.MutationResult<AuthenticateGoogleMutation>;
 export declare type AuthenticateGoogleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export declare const BookmarkPostDocument: import("graphql").DocumentNode;
+export declare type BookmarkPostMutationFn = ApolloReactCommon.MutationFunction<BookmarkPostMutation, BookmarkPostMutationVariables>;
+/**
+ * __useBookmarkPostMutation__
+ *
+ * To run a mutation, you first call `useBookmarkPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBookmarkPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [bookmarkPostMutation, { data, loading, error }] = useBookmarkPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useBookmarkPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<BookmarkPostMutation, BookmarkPostMutationVariables>): ApolloReactHooks.MutationTuple<BookmarkPostMutation, Exact<{
+    id: string;
+}>>;
+export declare type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>;
+export declare type BookmarkPostMutationResult = ApolloReactCommon.MutationResult<BookmarkPostMutation>;
+export declare type BookmarkPostMutationOptions = ApolloReactCommon.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
 export declare const DeleteCommentDocument: import("graphql").DocumentNode;
 export declare type DeleteCommentMutationFn = ApolloReactCommon.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
 /**
@@ -2462,6 +2554,35 @@ export declare function useToggleNotificationSettingsMutation(baseOptions?: Apol
 export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export declare const BookmarksDocument: import("graphql").DocumentNode;
+/**
+ * __useBookmarksQuery__
+ *
+ * To run a query within a React component, call `useBookmarksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBookmarksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBookmarksQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useBookmarksQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>): ApolloReactCommon.QueryResult<BookmarksQuery, Exact<{
+    after?: string | null | undefined;
+    first?: number | null | undefined;
+}>>;
+export declare function useBookmarksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>): ApolloReactHooks.QueryTuple<BookmarksQuery, Exact<{
+    after?: string | null | undefined;
+    first?: number | null | undefined;
+}>>;
+export declare type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
+export declare type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
+export declare type BookmarksQueryResult = ApolloReactCommon.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
 export declare const CommentDocument: import("graphql").DocumentNode;
 /**
  * __useCommentQuery__

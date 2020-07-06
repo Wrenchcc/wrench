@@ -11,12 +11,12 @@ function mapTypeToColor(type, colors) {
     case TOAST_TYPES.SUCCESS:
       return colors.inverse
     default:
-      return colors.subtle
+      return colors.accent
   }
 }
 
 export const Base = styled.View`
-  background-color: ${props => mapTypeToColor(props.type, props.theme.colors)};
+  background-color: ${(props) => mapTypeToColor(props.type, props.theme.colors)};
   justify-content: center;
   opacity: 0.96;
   width: 100%;

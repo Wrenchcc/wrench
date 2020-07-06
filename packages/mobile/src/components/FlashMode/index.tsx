@@ -6,7 +6,7 @@ import { Wrapper, Icon } from './styles'
 function FlashMode({ flashMode, onPress }) {
   return (
     <Wrapper>
-      <Touchable onPress={onPress} nativeHandler>
+      <Touchable onPress={onPress}>
         <Icon source={flashMode ? zap : zapOff} />
       </Touchable>
     </Wrapper>

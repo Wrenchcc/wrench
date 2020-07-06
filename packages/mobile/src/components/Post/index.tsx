@@ -17,8 +17,9 @@ import openLink from 'utils/openLink'
 import { useDynamicColor } from 'utils/hooks'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
+import Bookmark from 'components/Bookmark'
 import { share, sparkMega } from 'images'
-import { Base, Top, Headline, Content, Spacer } from './styles'
+import { Base, Top, Headline, Content, Spacer, Row } from './styles'
 
 function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
   const { t } = useTranslation()
@@ -315,7 +316,11 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
         )}
       </Content>
 
-      <LikePost post={post} />
+      <Row>
+        <LikePost post={post} />
+
+        <Bookmark post={post} />
+      </Row>
 
       {!withoutComments && <Comments data={post} />}
       <TimeAgo date={post.createdAt} long />
