@@ -1,7 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import { TOAST_TYPES } from 'utils/enums'
+import { ThemeInterface } from 'ui/types'
 
-function mapTypeToColor(type, colors) {
+function mapTypeToColor(type: TOAST_TYPES, colors) {
   switch (type) {
     case TOAST_TYPES.WARNING:
       return colors.warning
@@ -15,7 +16,9 @@ function mapTypeToColor(type, colors) {
   }
 }
 
-export const Base = styled.View`
+type BaseProps = { type?: TOAST_TYPES; theme: ThemeInterface }
+
+export const Base = styled.View<BaseProps>`
   background-color: ${(props) => mapTypeToColor(props.type, props.theme.colors)};
   justify-content: center;
   opacity: 0.96;

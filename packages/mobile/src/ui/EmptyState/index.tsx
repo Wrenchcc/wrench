@@ -5,7 +5,7 @@ import Text from 'ui/Text'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
 
-const onPressAction = (type, showModal) => {
+const onPressAction = (type: TYPES, showModal) => {
   switch (type) {
     case TYPES.PROJECT:
       return showModal(SCREENS.ADD_PROJECT)
@@ -17,7 +17,7 @@ const onPressAction = (type, showModal) => {
   }
 }
 
-const showButton = type => {
+const showButton = (type) => {
   switch (type) {
     case TYPES.PROJECT:
     case TYPES.POST:
