@@ -1,18 +1,20 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
+import { Text } from 'ui'
 import { Placeholder, PlaceholderLine, PlaceholderAnimation } from 'ui/Placeholder'
 import { GUTTER } from './styles'
+import AddCollection from 'components/AddCollection'
 
-const COUNT = 3
+const COUNT = 7
 
 const styles = {
   container: {
     marginRight: 10,
   },
   image: {
-    width: 180,
-    height: 180,
-    borderRadius: 0,
+    width: 60,
+    height: 60,
+    borderRadius: 60,
   },
   first: {
     marginLeft: 20,
@@ -20,16 +22,25 @@ const styles = {
   last: {
     marginRight: 20,
   },
-  projectName: {
+  title: {
     borderRadius: 0,
-    marginTop: 10,
-    marginBottom: 5,
+    marginTop: 12,
   },
 }
 
-export const PopularPlaceholder: React.FC = () => {
+export const PopularPlaceholder: React.FC = ({ empty, isOwner, projectId }) => {
   return (
-    <Placeholder Animation={PlaceholderAnimation}>
+    <Placeholder Animation={empty ? null : PlaceholderAnimation}>
+      {empty && (
+        <View style={{ marginBottom: 30 }}>
+          <Text medium style={{ marginBottom: 5 }}>
+            Collections
+          </Text>
+          <Text fontSize={15}>
+            Keep better track of your progress and add your posts to collections
+          </Text>
+        </View>
+      )}
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -38,18 +49,23 @@ export const PopularPlaceholder: React.FC = () => {
           marginRight: -GUTTER,
         }}
       >
+        {isOwner && (
+          <View style={[styles.container, styles.first, { height: 90 }]}>
+            <AddCollection projectId={projectId} />
+          </View>
+        )}
+
         {new Array(COUNT).fill({}).map((_, index) => (
           <View
             key={index}
             style={[
               styles.container,
-              index === 0 && styles.first,
               index === COUNT - 1 && styles.last,
+              index === 0 && !isOwner && styles.first,
             ]}
           >
             <PlaceholderLine noMargin style={styles.image} />
-            <PlaceholderLine style={styles.projectName} noMargin width={90} />
-            <PlaceholderLine style={styles.projectName} noMargin width={60} />
+            {!empty && <PlaceholderLine style={styles.title} noMargin width={100} />}
           </View>
         ))}
       </ScrollView>

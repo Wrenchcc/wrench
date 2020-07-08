@@ -1,13 +1,25 @@
 import React from 'react'
-import { ShineOverlay, Shine } from 'rn-placeholder'
+import styled from 'styled-components'
+import {
+  Placeholder as RNPlaceholder,
+  PlaceholderLine as RNPlaceholderLine,
+  Shine,
+  ShineOverlay,
+} from 'rn-placeholder'
 import { useColorScheme } from 'react-native'
+
+export const Placeholder = RNPlaceholder
+
+export const PlaceholderLine = styled(RNPlaceholderLine)`
+  background-color: ${(props) => props.theme.colors.placeholder};
+`
 
 const AnimationBackground = {
   light: '#DFDFDF',
   dark: '#242424',
 }
 
-const PlaceholderAnimation = (props) => {
+export const PlaceholderAnimation = (props) => {
   const colorScheme = useColorScheme()
   const backgroundColor = AnimationBackground[colorScheme]
 
@@ -17,5 +29,3 @@ const PlaceholderAnimation = (props) => {
 
   return <ShineOverlay {...props} style={{ backgroundColor }} />
 }
-
-export default PlaceholderAnimation

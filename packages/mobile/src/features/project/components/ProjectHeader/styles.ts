@@ -25,6 +25,10 @@ export const Meta = styled.View`
   margin-bottom: 35px;
 `
 
+export const Spacing = styled.View`
+  height: 30px;
+`
+
 export const OpenSimilar = styled(UiTouchable)`
   border-width: 1px;
   border-color: ${(props) => props.theme.colors.divider};

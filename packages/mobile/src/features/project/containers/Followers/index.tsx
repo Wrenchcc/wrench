@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
-
-const renderItem = ({ item }) => <User data={item.node} />
+import Placeholder from './Placeholder'
 
 function Followers({ id }) {
   const { t } = useTranslation()
@@ -22,19 +21,27 @@ function Followers({ id }) {
     },
   })
 
+  const renderItem = ({ item }) => <User data={item.node} />
+
+  const content = true ? (
+    <Placeholder />
+  ) : (
+    <FlatList
+      ListEmptyComponent={<NoResults />}
+      borderSeparator
+      data={edges}
+      refetch={refetch}
+      fetchMore={fetchMore}
+      isRefetching={isRefetching}
+      isFetching={isFetching}
+      hasNextPage={hasNextPage}
+      renderItem={renderItem}
+    />
+  )
+
   return (
     <Page headerTitle={t('Followers:title')} headerAnimation={false}>
-      <FlatList
-        ListEmptyComponent={<NoResults />}
-        borderSeparator
-        data={edges}
-        refetch={refetch}
-        fetchMore={fetchMore}
-        isRefetching={isRefetching}
-        isFetching={isFetching}
-        hasNextPage={hasNextPage}
-        renderItem={renderItem}
-      />
+      {content}
     </Page>
   )
 }

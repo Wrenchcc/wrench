@@ -60,6 +60,9 @@ export default function registerScreens() {
   Navigation.registerComponent(SCREENS.ADD_POST, () =>
     HOC(register({ require: () => require('features/project/containers/AddPost') }))
   )
+  Navigation.registerComponent(SCREENS.ADD_POST_TO_COLLECTION, () =>
+    HOC(register({ require: () => require('features/project/containers/AddPostToCollection') }))
+  )
   Navigation.registerComponent(SCREENS.EDIT_PROJECT, () =>
     HOC(register({ require: () => require('features/project/containers/EditProject') }))
   )

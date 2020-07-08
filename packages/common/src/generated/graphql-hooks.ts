@@ -23,6 +23,8 @@ export type Query = {
   comments?: Maybe<CommentConnection>;
   recentComments?: Maybe<CommentConnection>;
   comment?: Maybe<Comment>;
+  collections?: Maybe<PostConnection>;
+  projectCollections?: Maybe<CollectionConnection>;
   feed?: Maybe<Feed>;
   files?: Maybe<FileConnection>;
   followers?: Maybe<FollowersConnection>;
@@ -72,6 +74,24 @@ export type QueryRecentCommentsArgs = {
 
 export type QueryCommentArgs = {
   id: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCollectionsArgs = {
+  id: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryProjectCollectionsArgs = {
+  projectId: Scalars['ID'];
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -385,6 +405,7 @@ export type Project = {
   filesConnection?: Maybe<FileConnection>;
   followersConnection?: Maybe<FollowersConnection>;
   postsConnection?: Maybe<PostConnection>;
+  collectionsConnection?: Maybe<CollectionConnection>;
 };
 
 
@@ -409,6 +430,14 @@ export type ProjectPostsConnectionArgs = {
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+
+export type ProjectCollectionsConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
 };
 
 export type ProjectPermissions = {
@@ -487,6 +516,28 @@ export type PostEdge = {
   __typename?: 'PostEdge';
   cursor: Scalars['String'];
   node: Post;
+};
+
+export type CollectionConnection = {
+  __typename?: 'CollectionConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CollectionEdge>>;
+};
+
+export type CollectionEdge = {
+  __typename?: 'CollectionEdge';
+  cursor: Scalars['String'];
+  node: Collection;
+};
+
+export type Collection = {
+  __typename?: 'Collection';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  cover?: Maybe<CoverType>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
 };
 
 export type PostPermissions = {
@@ -719,6 +770,9 @@ export type Mutation = {
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
+  addCollection?: Maybe<Collection>;
+  removeCollection?: Maybe<Collection>;
+  collectPost?: Maybe<Post>;
   sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
   likeComment?: Maybe<Comment>;
@@ -784,6 +838,23 @@ export type MutationEditCommentArgs = {
 
 export type MutationDeleteCommentArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationAddCollectionArgs = {
+  projectId: Scalars['ID'];
+  name: Scalars['String'];
+};
+
+
+export type MutationRemoveCollectionArgs = {
+  projectId: Scalars['ID'];
+  id: Scalars['ID'];
+};
+
+
+export type MutationCollectPostArgs = {
+  postId: Scalars['ID'];
 };
 
 
@@ -1191,6 +1262,20 @@ export type UserSettingsFragment = (
         )> }
       )> }
     )> }
+  )> }
+);
+
+export type AddCollectionMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  name: Scalars['String'];
+}>;
+
+
+export type AddCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { addCollection?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'name' | 'id'>
   )> }
 );
 
@@ -1913,6 +1998,35 @@ export type ProjectQuery = (
   )> }
 );
 
+export type ProjectCollectionsQueryVariables = Exact<{
+  projectId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type ProjectCollectionsQuery = (
+  { __typename?: 'Query' }
+  & { projectCollections?: Maybe<(
+    { __typename?: 'CollectionConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'CollectionEdge' }
+      & Pick<CollectionEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Collection' }
+        & Pick<Collection, 'id' | 'name'>
+        & { cover?: Maybe<(
+          { __typename?: 'CoverType' }
+          & Pick<CoverType, 'uri'>
+        )> }
+      ) }
+    )>> }
+  )> }
+);
+
 export type ProjectSuggestionsQueryVariables = Exact<{
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -2458,6 +2572,40 @@ export const UserSettingsFragmentDoc = gql`
   }
 }
     `;
+export const AddCollectionDocument = gql`
+    mutation addCollection($projectId: ID!, $name: String!) {
+  addCollection(projectId: $projectId, name: $name) {
+    name
+    id
+  }
+}
+    `;
+export type AddCollectionMutationFn = ApolloReactCommon.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
+
+/**
+ * __useAddCollectionMutation__
+ *
+ * To run a mutation, you first call `useAddCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCollectionMutation, { data, loading, error }] = useAddCollectionMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useAddCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddCollectionMutation, AddCollectionMutationVariables>) {
+        return ApolloReactHooks.useMutation<AddCollectionMutation, AddCollectionMutationVariables>(AddCollectionDocument, baseOptions);
+      }
+export type AddCollectionMutationHookResult = ReturnType<typeof useAddCollectionMutation>;
+export type AddCollectionMutationResult = ApolloReactCommon.MutationResult<AddCollectionMutation>;
+export type AddCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCollectionMutation, AddCollectionMutationVariables>;
 export const AddCommentDocument = gql`
     mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
   addComment(postId: $postId, commentId: $commentId, input: $input) {
@@ -4011,6 +4159,53 @@ export function useProjectLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHook
 export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
+export const ProjectCollectionsDocument = gql`
+    query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
+  projectCollections(projectId: $projectId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        cover {
+          uri
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useProjectCollectionsQuery__
+ *
+ * To run a query within a React component, call `useProjectCollectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectCollectionsQuery({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useProjectCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+      }
+export function useProjectCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+        }
+export type ProjectCollectionsQueryHookResult = ReturnType<typeof useProjectCollectionsQuery>;
+export type ProjectCollectionsLazyQueryHookResult = ReturnType<typeof useProjectCollectionsLazyQuery>;
+export type ProjectCollectionsQueryResult = ApolloReactCommon.QueryResult<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>;
 export const ProjectSuggestionsDocument = gql`
     query projectSuggestions($after: String, $first: Int = 5) {
   projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {

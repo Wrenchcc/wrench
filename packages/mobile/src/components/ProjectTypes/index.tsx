@@ -1,5 +1,6 @@
 import React, { useCallback, memo } from 'react'
 // import { sort } from 'rambda'
+import { ScrollView } from 'react-native'
 import { useProjectTypesQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
@@ -12,12 +13,16 @@ function ProjectTypes() {
 
   const { navigate } = useNavigation()
 
-  const handleNavigation = useCallback(category => {
+  const handleNavigation = useCallback((category) => {
     navigate(SCREENS.CATEGORIES, category)
   }, [])
 
   if (loadingTypes) {
-    return <CategoriesPlaceholder />
+    return (
+      <Base>
+        <CategoriesPlaceholder />
+      </Base>
+    )
   }
 
   // const data = sort(
@@ -26,19 +31,21 @@ function ProjectTypes() {
   // )
 
   return (
-    <Base horizontal showsHorizontalScrollIndicator={false}>
-      {typesData.types.map((category, index) => (
-        <Wrapper
-          key={category.id}
-          first={index === 0}
-          last={index === typesData.types.length - 1}
-          onPress={() => handleNavigation(category)}
-        >
-          <Text fontSize={15} medium>
-            {category.title}
-          </Text>
-        </Wrapper>
-      ))}
+    <Base>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {typesData.types.map((category, index) => (
+          <Wrapper
+            key={category.id}
+            first={index === 0}
+            last={index === typesData.types.length - 1}
+            onPress={() => handleNavigation(category)}
+          >
+            <Text fontSize={15} medium>
+              {category.title}
+            </Text>
+          </Wrapper>
+        ))}
+      </ScrollView>
     </Base>
   )
 }

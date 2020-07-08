@@ -31,6 +31,13 @@ export default gql`
     ): FollowersConnection
 
     postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+
+    collectionsConnection(
+      after: String
+      before: String
+      first: Int = 10
+      last: Int = 10
+    ): CollectionConnection
   }
 
   type CoverType {

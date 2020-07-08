@@ -60,7 +60,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
         }
       >
         <FlatList
-          initialNumToRender={1}
+          initialNumToRender={2}
           spacingSeparator
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flexGrow: 1 }}

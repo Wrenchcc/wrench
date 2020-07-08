@@ -3,6 +3,7 @@ import AuthProvider from './AuthProvider'
 import AuthToken from './AuthToken'
 import Bookmark from './Bookmark'
 import Brand from './Brand'
+import Collection from './Collection'
 import Comment from './Comment'
 import DeviceToken from './DeviceToken'
 import File from './File'
@@ -12,7 +13,9 @@ import Like from './Like'
 import Model from './Model'
 import Notification from './Notification'
 import Post from './Post'
+import PostCollection from './PostCollection'
 import Project from './Project'
+import ProjectCollection from './ProjectCollection'
 import ProjectType from './ProjectType'
 import Report from './Report'
 import User from './User'
@@ -36,6 +39,7 @@ export const options: ConnectionOptions = {
     AuthToken,
     Bookmark,
     Brand,
+    Collection,
     Comment,
     DeviceToken,
     File,
@@ -45,7 +49,9 @@ export const options: ConnectionOptions = {
     Model,
     Notification,
     Post,
+    PostCollection,
     Project,
+    ProjectCollection,
     ProjectType,
     Report,
     User,
@@ -66,6 +72,7 @@ export const db = {
   AuthToken,
   Bookmark,
   Brand,
+  Collection,
   Comment,
   DeviceToken,
   File,
@@ -75,7 +82,9 @@ export const db = {
   Model,
   Notification,
   Post,
+  PostCollection,
   Project,
+  ProjectCollection,
   ProjectType,
   Report,
   User,

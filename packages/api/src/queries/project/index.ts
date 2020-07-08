@@ -1,3 +1,4 @@
+import collectionsConnection from './collectionsConnection'
 import cover from './cover'
 import dynamicLink from './dynamicLink'
 import filesConnection from './filesConnection'
@@ -7,6 +8,7 @@ import permissions from './permissions'
 import postsConnection from './postsConnection'
 import project from './project'
 import projects from './projects'
+import projectCollections from './projectCollections'
 import projectSuggestions from './projectSuggestions'
 import projectTypes from './projectTypes'
 import similarProjects from './similarProjects'
@@ -15,6 +17,7 @@ import user from './user'
 
 export default {
   Project: {
+    collectionsConnection,
     cover,
     dynamicLink,
     filesConnection,
@@ -27,6 +30,7 @@ export default {
     user,
   },
   Query: {
+    projectCollections,
     project,
     projects,
     projectSuggestions,
