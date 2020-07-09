@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 import getOffset from './getOffset'
 import { DotBase, Dot, PAGINATION_WIDTH, DOT_SIZE, DOT_SPACE } from './styles'
 
-const paginationScroll = (translateX, count) => ({
+const paginationScroll = (translateX: Animated.AnimatedValue, count: number) => ({
   flex: 1,
   flexDirection: 'row',
   flexWrap: 'nowrap',
@@ -27,7 +27,7 @@ function Pagination({ files, currentIndex }) {
   return (
     <DotBase pointerEvents="none">
       <Animated.View style={paginationScroll(translateX.current, files.length)}>
-        {files.map((_, index) => (
+        {files.map((_, index: number) => (
           <Dot key={index} active={currentIndex === index} />
         ))}
       </Animated.View>

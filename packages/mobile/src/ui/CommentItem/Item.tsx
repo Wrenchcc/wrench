@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useRef, useEffect } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
 import { useDeleteCommentMutation, PostFragmentDoc, CommentsDocument } from '@wrench/common'
-import { Swipeable } from 'react-native-gesture-handler'
+import Swipeable from 'react-native-gesture-handler/Swipeable'
 import { useNavigation, SCREENS } from 'navigation'
 import { useDynamicColor } from 'utils/hooks'
 import { logError } from 'utils/sentry'
@@ -38,7 +38,7 @@ function Item({
   highlightId,
   id,
   commentId,
-  isReply,
+  isReply = false,
   onReply,
   t,
   text,
@@ -77,7 +77,7 @@ function Item({
         variables: {
           id: commentOrReplyId,
         },
-        update: cache => {
+        update: (cache) => {
           // Post
           try {
             const data = cache.readFragment({
@@ -86,7 +86,7 @@ function Item({
               fragmentName: 'Post',
             })
 
-            const edges = data.comments.edges.filter(edge => edge.node.id !== commentOrReplyId)
+            const edges = data.comments.edges.filter((edge) => edge.node.id !== commentOrReplyId)
 
             cache.writeFragment({
               id: `Post:${postId}`,
@@ -114,7 +114,7 @@ function Item({
               },
             })
 
-            const edges = data.comments.edges.filter(edge => edge.node.id !== commentOrReplyId)
+            const edges = data.comments.edges.filter((edge) => edge.node.id !== commentOrReplyId)
 
             const comments = {
               ...data,
@@ -142,13 +142,17 @@ function Item({
   useEffect(() => {
     if (highlightId === id) {
       Animated.timing(animatedValue.current, {
-        duration: 1000,
+        duration: 700,
         toValue: 1,
-      }).start(() => {
-        Animated.timing(animatedValue.current, {
-          delay: 3000,
-          toValue: 0,
-        }).start()
+        useNativeDriver: false,
+      }).start(({ finished }) => {
+        if (finished) {
+          Animated.timing(animatedValue.current, {
+            duration: 700,
+            toValue: 0,
+            useNativeDriver: false,
+          }).start()
+        }
       })
     }
   }, [highlightId, id])

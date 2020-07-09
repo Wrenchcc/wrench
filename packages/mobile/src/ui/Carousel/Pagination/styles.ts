@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 
 export const DOT_SIZE = 8
 export const DOT_SPACE = 7
@@ -16,7 +16,11 @@ export const DotBase = styled.View`
   border-radius: 20px;
 `
 
-export const Dot = styled.View`
+type DotProps = {
+  active?: boolean
+}
+
+export const Dot = styled.View<DotProps>`
   width: ${DOT_SIZE}px;
   height: ${DOT_SIZE}px;
   border-radius: ${DOT_SIZE}px;
@@ -24,5 +28,5 @@ export const Dot = styled.View`
   border-color: white;
   margin-left: 3.5px;
   margin-right: 3.5px;
-  background: ${props => (props.active ? 'white' : 'transparent')};
+  background: ${(props) => (props.active ? 'white' : 'transparent')};
 `
