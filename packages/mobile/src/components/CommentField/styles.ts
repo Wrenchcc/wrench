@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import UiInput from 'ui/Input'
-import UiTouchable from 'ui/Touchable'
 
 export const Inner = styled.View`
   flex-direction: row;
@@ -14,8 +13,4 @@ export const Input = styled(UiInput)`
   padding-right: 10px;
   padding-left: 10px;
   font-size: 15px;
-`
-
-export const Button = styled(UiTouchable)`
-  align-self: center;
 `

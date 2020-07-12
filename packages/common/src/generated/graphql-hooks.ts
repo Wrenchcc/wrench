@@ -771,8 +771,8 @@ export type Mutation = {
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
   addCollection?: Maybe<Collection>;
-  removeCollection?: Maybe<Collection>;
-  collectPost?: Maybe<Post>;
+  deleteCollection?: Maybe<Collection>;
+  collectPosts?: Maybe<Collection>;
   sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
   likeComment?: Maybe<Comment>;
@@ -847,14 +847,16 @@ export type MutationAddCollectionArgs = {
 };
 
 
-export type MutationRemoveCollectionArgs = {
+export type MutationDeleteCollectionArgs = {
   projectId: Scalars['ID'];
   id: Scalars['ID'];
 };
 
 
-export type MutationCollectPostArgs = {
-  postId: Scalars['ID'];
+export type MutationCollectPostsArgs = {
+  projectId: Scalars['ID'];
+  collectionId: Scalars['ID'];
+  input?: Maybe<Array<Maybe<CollectionInput>>>;
 };
 
 
@@ -975,6 +977,10 @@ export type AccessToken = {
 
 export type CommentInput = {
   text: Scalars['String'];
+};
+
+export type CollectionInput = {
+  postId: Scalars['ID'];
 };
 
 export type PostInput = {
@@ -1374,6 +1380,39 @@ export type BookmarkPostMutation = (
       { __typename?: 'Bookmarks' }
       & Pick<Bookmarks, 'isBookmarked'>
     )> }
+  )> }
+);
+
+export type CollectPostsMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  collectionId: Scalars['ID'];
+  input?: Maybe<Array<Maybe<CollectionInput>>>;
+}>;
+
+
+export type CollectPostsMutation = (
+  { __typename?: 'Mutation' }
+  & { collectPosts?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'id' | 'name'>
+    & { cover?: Maybe<(
+      { __typename?: 'CoverType' }
+      & Pick<CoverType, 'uri'>
+    )> }
+  )> }
+);
+
+export type DeleteCollectionMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteCollection?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'id'>
   )> }
 );
 
@@ -2841,6 +2880,77 @@ export function useBookmarkPostMutation(baseOptions?: ApolloReactHooks.MutationH
 export type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>;
 export type BookmarkPostMutationResult = ApolloReactCommon.MutationResult<BookmarkPostMutation>;
 export type BookmarkPostMutationOptions = ApolloReactCommon.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
+export const CollectPostsDocument = gql`
+    mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {
+  collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {
+    id
+    name
+    cover {
+      uri
+    }
+  }
+}
+    `;
+export type CollectPostsMutationFn = ApolloReactCommon.MutationFunction<CollectPostsMutation, CollectPostsMutationVariables>;
+
+/**
+ * __useCollectPostsMutation__
+ *
+ * To run a mutation, you first call `useCollectPostsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCollectPostsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [collectPostsMutation, { data, loading, error }] = useCollectPostsMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      collectionId: // value for 'collectionId'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCollectPostsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>) {
+        return ApolloReactHooks.useMutation<CollectPostsMutation, CollectPostsMutationVariables>(CollectPostsDocument, baseOptions);
+      }
+export type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
+export type CollectPostsMutationResult = ApolloReactCommon.MutationResult<CollectPostsMutation>;
+export type CollectPostsMutationOptions = ApolloReactCommon.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
+export const DeleteCollectionDocument = gql`
+    mutation deleteCollection($projectId: ID!, $id: ID!) {
+  deleteCollection(id: $id, projectId: $projectId) {
+    id
+  }
+}
+    `;
+export type DeleteCollectionMutationFn = ApolloReactCommon.MutationFunction<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
+
+/**
+ * __useDeleteCollectionMutation__
+ *
+ * To run a mutation, you first call `useDeleteCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCollectionMutation, { data, loading, error }] = useDeleteCollectionMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteCollectionMutation, DeleteCollectionMutationVariables>(DeleteCollectionDocument, baseOptions);
+      }
+export type DeleteCollectionMutationHookResult = ReturnType<typeof useDeleteCollectionMutation>;
+export type DeleteCollectionMutationResult = ApolloReactCommon.MutationResult<DeleteCollectionMutation>;
+export type DeleteCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
 export const DeleteCommentDocument = gql`
     mutation deleteComment($id: ID!) {
   deleteComment(id: $id)

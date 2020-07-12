@@ -20,10 +20,14 @@ export default gql`
     node: Collection!
   }
 
+  input CollectionInput {
+    postId: ID!
+  }
+
   extend type Mutation {
     addCollection(projectId: ID!, name: String!): Collection
-    removeCollection(projectId: ID!, id: ID!): Collection
-    collectPost(postId: ID!): Post
+    deleteCollection(projectId: ID!, id: ID!): Collection
+    collectPosts(projectId: ID!, collectionId: ID!, input: [CollectionInput]): Collection
   }
 
   extend type Query {

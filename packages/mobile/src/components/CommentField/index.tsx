@@ -15,7 +15,7 @@ import { useMentionStore } from 'store'
 import { Avatar, Text } from 'ui'
 import EmojiList from 'components/EmojiList'
 import { MENTION } from './constants'
-import { Inner, Input, Button } from './styles'
+import { Inner, Input } from './styles'
 
 const COMMENT_FIELD_HEIGHT = 40
 
@@ -28,7 +28,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
   const [addComment] = useAddCommentMutation()
 
-  const { updateQuery, query } = useMentionStore(store => ({
+  const { updateQuery, query } = useMentionStore((store) => ({
     query: store.query,
     updateQuery: store.actions.updateQuery,
   }))
@@ -220,7 +220,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   }
 
   const handleOnChangeText = useCallback(
-    val => {
+    (val) => {
       setText(val)
 
       const lastChar = val.substr(val.length - 1)
@@ -229,7 +229,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         isTracking.current = true
 
         showMention({
-          onPress: user => {
+          onPress: (user) => {
             const comment = val.slice(0, -query.length - 1)
             setText(`${comment}@${user.username} `)
             isTracking.current = false
@@ -251,7 +251,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           updateQuery(lastKeyword.replace(MENTION.TRIGGER, ''))
 
           showMention({
-            onPress: user => {
+            onPress: (user) => {
               const comment = val.slice(0, -query.length - 1)
               setText(`${comment}@${user.username} `)
               isTracking.current = false
@@ -266,7 +266,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   )
 
   const handleEmojiShortcut = useCallback(
-    e => {
+    (e) => {
       const value = text.length > 0 ? `${text} ${e}` : e
       setText(value)
     },
@@ -294,11 +294,9 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           height={COMMENT_FIELD_HEIGHT}
         />
         {text.length > 0 && (
-          <Button onPress={handleSubmit}>
-            <Text fontSize={15} medium>
-              {t('CommentField:post')}
-            </Text>
-          </Button>
+          <Text fontSize={15} medium onPress={handleSubmit}>
+            {t('CommentField:post')}
+          </Text>
         )}
       </Inner>
     </>

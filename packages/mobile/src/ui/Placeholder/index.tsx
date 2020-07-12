@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import {
   Placeholder as RNPlaceholder,
   PlaceholderLine as RNPlaceholderLine,
+  PlaceholderMedia as RNPlaceholderMedia,
   Shine,
   ShineOverlay,
 } from 'rn-placeholder'
 import { useColorScheme } from 'react-native'
 
 export const Placeholder = RNPlaceholder
+export const PlaceholderMedia = RNPlaceholderMedia
 
 export const PlaceholderLine = styled(RNPlaceholderLine)`
   background-color: ${(props) => props.theme.colors.placeholder};

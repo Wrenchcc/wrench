@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Dimensions, ActivityIndicator } from 'react-native'
+import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { omit } from 'rambda'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { FlatList, Page, useNavigation } from 'navigation'
-import { Icon, Touchable, Text } from 'ui'
+import { Icon, Touchable, Text, ActivityIndicator } from 'ui'
 import { close } from 'images'
 import { Cell, Picture, Image } from './styles'
 
@@ -63,19 +63,6 @@ function AddPostToCollection({ collectionId, projectId }) {
     //     },
     //   },
     // })
-
-    // setTimeout(
-    //   settingsPage
-    //     ? () => {
-    //         navigateBack()
-    //         setIsSaving(false)
-    //       }
-    //     : () => {
-    //         navigate(SCREENS.PROJECT_SUGGESTIONS)
-    //         setIsSaving(false)
-    //       },
-    //   100
-    // )
   }
 
   const renderItem = ({ item }) => (

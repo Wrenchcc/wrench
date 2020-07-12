@@ -6,11 +6,6 @@ const styles = {
   container: {
     height: 71,
   },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 40,
-  },
   content: {
     marginLeft: 10,
   },
@@ -24,13 +19,9 @@ const styles = {
   },
 }
 
-export const UserPlaceholder: React.FC = () => {
+export const HashtagPlaceholder: React.FC = () => {
   return (
-    <Placeholder
-      style={styles.container}
-      Animation={PlaceholderAnimation}
-      Left={() => <PlaceholderLine style={styles.avatar} />}
-    >
+    <Placeholder style={styles.container} Animation={PlaceholderAnimation}>
       <View style={styles.content}>
         <PlaceholderLine width={60} style={[styles.line, styles.first]} />
         <PlaceholderLine width={40} style={styles.line} />
@@ -39,4 +30,4 @@ export const UserPlaceholder: React.FC = () => {
   )
 }
 
-export default UserPlaceholder
+export default HashtagPlaceholder

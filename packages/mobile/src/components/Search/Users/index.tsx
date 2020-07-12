@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react'
+import { Keyboard } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
-import { User, InfiniteList, NoResults, SearchingFor, Loader, Text } from 'ui'
+import { User, InfiniteList, NoResults, Loader, Text } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
+import UserPlaceholderCollection from 'ui/User/PlaceholderCollection'
 import { Header } from '../styles'
-import { Keyboard } from 'react-native'
 
 const ITEM_HEIGHT = 71
 const MAX_ITEMS = 8
@@ -58,7 +59,7 @@ function Users({ query }) {
   }, [])
 
   const handleSave = useCallback(
-    item => {
+    (item) => {
       Keyboard.dismiss()
 
       const items = [{ node: { ...item, isOnline: false } }, ...recent]
@@ -84,36 +85,39 @@ function Users({ query }) {
     AsyncStorage.removeItem(RECENT_SEARCHES_USERS)
   }, [setRecent])
 
-  return (
-    <InfiniteList
-      borderSeparator
-      paddingBottom={40}
-      getItemLayout={getItemLayout}
-      ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
-      data={query ? edges : recent}
-      fetchMore={fetchMore}
-      hasNextPage={isFetching ? false : hasNextPage}
-      isFetching={isFetching && query.length === 0}
-      isRefetching={isRefetching}
-      refetch={refetch}
-      renderItem={({ item }) => <User data={item.node} onPress={handleSave} />}
-      defaultPadding
-      ListHeaderComponent={
-        !query &&
-        recent.length > 0 && (
-          <Header>
-            <Text medium>{t('Search:recent')}</Text>
-            <Text fontSize={14} onPress={handleRemove} medium>
-              {t('Search:clear')}
-            </Text>
-          </Header>
-        )
-      }
-      ListFooterComponent={
-        isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
-      }
-    />
-  )
+  const content =
+    isFetching && !edges ? (
+      <UserPlaceholderCollection contentInset={0} marginTop={15} />
+    ) : (
+      <InfiniteList
+        borderSeparator
+        paddingBottom={40}
+        getItemLayout={getItemLayout}
+        ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
+        data={query ? edges : recent}
+        fetchMore={fetchMore}
+        hasNextPage={isFetching ? false : hasNextPage}
+        isFetching={isFetching && query.length === 0}
+        isRefetching={isRefetching}
+        refetch={refetch}
+        renderItem={({ item }) => <User data={item.node} onPress={handleSave} />}
+        defaultPadding
+        ListHeaderComponent={
+          !query &&
+          recent.length > 0 && (
+            <Header>
+              <Text medium>{t('Search:recent')}</Text>
+              <Text fontSize={14} onPress={handleRemove} medium>
+                {t('Search:clear')}
+              </Text>
+            </Header>
+          )
+        }
+        ListFooterComponent={hasNextPage && query && <Loader />}
+      />
+    )
+
+  return content
 }
 
 export default Users

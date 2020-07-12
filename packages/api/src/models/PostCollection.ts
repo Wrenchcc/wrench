@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 import Post from './Post'
+import Project from './Project'
 import Collection from './Collection'
 
 @Entity('post_collections')
@@ -18,6 +19,13 @@ export default class PostCollection extends BaseEntity {
 
   @PrimaryColumn('uuid')
   public postId: string
+
+  @ManyToOne(() => Project)
+  @JoinColumn()
+  public project: Project
+
+  @PrimaryColumn('uuid')
+  public projectId: string
 
   @ManyToOne(() => Collection)
   @JoinColumn()
