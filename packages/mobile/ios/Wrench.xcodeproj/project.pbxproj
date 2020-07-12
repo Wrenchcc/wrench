@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		37AEB748558644E38B0C637D /* inter_ui_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C53EA82FD9743C29DB6E400 /* inter_ui_bold.ttf */; };
@@ -18,6 +17,7 @@
 		D21FAE152449C104005868E7 /* MediaLibraryImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */; };
 		D2F146282200A9B000E8A474 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2F146272200A9B000E8A474 /* GoogleService-Info.plist */; };
 		D2F146A22200B0D100E8A474 /* notification.aiff in Resources */ = {isa = PBXBuildFile; fileRef = D2F146A12200B0D000E8A474 /* notification.aiff */; };
+		D5A8E72924BB99E70061305F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5A8E72824BB99E70061305F /* LaunchScreen.storyboard */; };
 		DF645E3F3A51435396A73CDF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B64C1CCF164695A4C09BB9 /* libz.tbd */; };
 		E8A6BC359299405F9EAC7025 /* inter_ui_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94F177B08D61476794C558FF /* inter_ui_medium.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
@@ -29,7 +29,6 @@
 		13B07F961A680F5B00A75B9A /* Wrench.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wrench.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Wrench/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Wrench/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Wrench/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Wrench/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Wrench/main.m; sourceTree = "<group>"; };
@@ -43,10 +42,10 @@
 		D21FAE142449C104005868E7 /* MediaLibraryImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MediaLibraryImageLoader.m; path = Wrench/MediaLibraryImageLoader.m; sourceTree = "<group>"; };
 		D22319F722009AC40067C6BD /* Wrench.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wrench.entitlements; path = Wrench/Wrench.entitlements; sourceTree = "<group>"; };
 		D2BE134923350B5E007C0449 /* WrenchRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WrenchRelease.entitlements; path = Wrench/WrenchRelease.entitlements; sourceTree = "<group>"; };
-		D2E5195F234486670097E08B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D2F146272200A9B000E8A474 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2F146A12200B0D000E8A474 /* notification.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = notification.aiff; sourceTree = "<group>"; };
 		D2F59F0B23C23C090099D2E1 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		D5A8E72824BB99E70061305F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Wrench/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA315EC66CEF43E0ADFD646E /* inter_ui.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = inter_ui.ttf; path = ../assets/fonts/inter_ui.ttf; sourceTree = "<group>"; };
 		DE884EF522CA1F6927430315 /* libPods-Wrench.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wrench.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -71,13 +70,13 @@
 			isa = PBXGroup;
 			children = (
 				D2F59F0B23C23C090099D2E1 /* main.jsbundle */,
+				D5A8E72824BB99E70061305F /* LaunchScreen.storyboard */,
 				D2BE134923350B5E007C0449 /* WrenchRelease.entitlements */,
 				D22319F722009AC40067C6BD /* Wrench.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = Wrench;
@@ -226,9 +225,9 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D2F146A22200B0D100E8A474 /* notification.aiff in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				37AEB748558644E38B0C637D /* inter_ui_bold.ttf in Resources */,
 				E8A6BC359299405F9EAC7025 /* inter_ui_medium.ttf in Resources */,
+				D5A8E72924BB99E70061305F /* LaunchScreen.storyboard in Resources */,
 				485DD1115132424A8A015872 /* inter_ui.ttf in Resources */,
 				D2F146282200A9B000E8A474 /* GoogleService-Info.plist in Resources */,
 			);
@@ -332,19 +331,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-				D2E5195F234486670097E08B /* sv */,
-			);
-			name = LaunchScreen.xib;
-			path = Wrench;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
@@ -475,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -521,7 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
