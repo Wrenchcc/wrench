@@ -13,7 +13,7 @@ install! 'cocoapods', :deterministic_uuids => false
 target 'Wrench' do
   config = use_native_modules!
   
-  use_react_native!(:path => config["reactNativePath"])
+  use_react_native!(:path => "#{root_path}/react-native")
 
   permissions_path = "#{root_path}/react-native-permissions/ios"
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
