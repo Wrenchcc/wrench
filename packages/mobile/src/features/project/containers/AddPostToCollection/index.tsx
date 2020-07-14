@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Dimensions } from 'react-native'
+import { useCollectPostsMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { omit } from 'rambda'
+import { omit, isEmpty } from 'rambda'
 import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
 import { FlatList, Page, useNavigation } from 'navigation'
 import { Icon, Touchable, Text, ActivityIndicator } from 'ui'
@@ -18,6 +19,7 @@ function AddPostToCollection({ collectionId, projectId }) {
   const [isSaving, setIsSaving] = useState(false)
   const { t } = useTranslation()
   const { dismissModal } = useNavigation()
+  const [collectPosts] = useCollectPostsMutation()
 
   const {
     data: { edges },
@@ -29,7 +31,7 @@ function AddPostToCollection({ collectionId, projectId }) {
   } = usePaginatedQuery(['project', 'posts'])(ProjectDocument, {
     variables: {
       id: projectId,
-      first: 8,
+      first: 10,
     },
   })
 
@@ -45,24 +47,31 @@ function AddPostToCollection({ collectionId, projectId }) {
   }
 
   const isComplete = () => {
-    if (items) {
-      return true
+    if (isEmpty(items)) {
+      return false
     }
 
-    return false
+    return true
   }
 
   const handleSubmit = async () => {
     setIsSaving(true)
-    // const interestedIn = Object.keys(items).map((id) => ({ id }))
+    const posts = Object.keys(items).map((postId) => ({ postId }))
 
-    // await editUser({
-    //   variables: {
-    //     input: {
-    //       interestedIn,
-    //     },
-    //   },
-    // })
+    try {
+      await collectPosts({
+        variables: {
+          projectId,
+          collectionId,
+          input: posts,
+        },
+      })
+    } catch {
+      setIsSaving(false)
+    }
+
+    dismissModal()
+    setIsSaving(false)
   }
 
   const renderItem = ({ item }) => (
@@ -71,7 +80,7 @@ function AddPostToCollection({ collectionId, projectId }) {
         <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
           <Image
             selected={items[item.node.id]}
-            source={{ uri: item.node.files.edges[0].node.uri }}
+            source={item.node.files.edges[0].node}
             gutter={GUTTER}
             width={ITEM_SIZE}
             height={ITEM_SIZE}
@@ -97,7 +106,7 @@ function AddPostToCollection({ collectionId, projectId }) {
             disabled={!isComplete()}
             onPress={handleSubmit}
           >
-            Done
+            {t('AddPostToCollection:done')}
           </Text>
         )
       }

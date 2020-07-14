@@ -3318,29 +3318,29 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.9.4.tgz#a05a9403f8ee09c7d7f7c2dda850b79cac376691"
   integrity sha512-mb664NOqPvyUZ4TznzdYEfdS3OhSXWGbZprgsDZn4THw2X/4wcBFcBUeWuMzeQ56KhY0rm/YBBlZWHrSf3C/Aw==
 
-"@react-native-firebase/analytics@^7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.2.1.tgz#0f6d3af8e016a3a62e4cf2f08b973d1384c41d90"
-  integrity sha512-v0xgiwwdeelBboFDeNs0yrfvtZYmymZp5JyR3i87+waLH5VYFpqRT19Yxuk8jTgWSBfjm34TNqq+KVZ5k/rEmw==
+"@react-native-firebase/analytics@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.3.1.tgz#f24509c1f996217e89829147d28d319ed5fbbd0b"
+  integrity sha512-8U70bVSnsH5xlbNDL+LkF0VjgZ3nejSCsrIrxI29aulMPAdAD6ZndH9gVegFK75vLILy3giWRlGR89o08fnpxA==
 
 "@react-native-firebase/app-types@6.7.2":
   version "6.7.2"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-6.7.2.tgz#d2e1530af5702e00578914b41468898c10d3289c"
   integrity sha512-pIwc6e0ZINw6PJqNVsAxzOVJUDg6au2TdulY+ZOYQ11SPDs5I2n9likoGrElPmJjajT4s9h87uz/6PWP2k9PxQ==
 
-"@react-native-firebase/app@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.1.0.tgz#e1c0aee7c9e5f601ab0b638bb8d668387ca64fa0"
-  integrity sha512-vebKpmlfJ8XcBuXT+8ykfV7Jf3wqF1Fz6G8IATsuNQE8mIHUXkmnAaGCVoX0FJnO4ojFCGfoKMQdxbr/SgmZRA==
+"@react-native-firebase/app@^8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.2.0.tgz#28db1958c8bd8028503b4d0a68a31a7c4caf61cc"
+  integrity sha512-V3s87BlDIyuhtK/1w+vwKdY5AlOCCBXovlorZU1wiyDH8Q942Cjxcx9tBc59+TLWqMYrYyFGAnAJxnIw3QzmmQ==
   dependencies:
     "@react-native-firebase/app-types" "6.7.2"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-7.4.1.tgz#ad5c36dbe0e97091a437a45bade2a8c9fd04fff5"
-  integrity sha512-hpqPBK/Y6/qI7hrk+9+pGYTitbzpzVTmKWyir1x2nsjXYfKMuPc6Tz82TZ0n5dQKnn9GCGgp7nshBkP4zC7zeg==
+"@react-native-firebase/messaging@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-7.4.2.tgz#736476df3b88b129172dd090df5190f71bcba83a"
+  integrity sha512-PuMRvWFFgElFXDp71TmEs+eype8GrrUEibLFpqlzVLheUTtzRG4+ofZiWr8yAO0nXmuPSPgkroQzAMbeEf2J3A==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -13049,10 +13049,10 @@ i18next@*, i18next@19.4.5:
   dependencies:
     "@babel/runtime" "^7.3.1"
 
-i18next@^19.5.4:
-  version "19.5.4"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.5.4.tgz#86e4b44993621f39ab53f95a24afa69caea0a452"
-  integrity sha512-fty+v8v0Unn8KufOajoZ6OR5aKme/lP+BdbT5rirTXE8wdj6LbsbG9DwtI9VtMeru1PEf+L530Cq3IRmovMJGQ==
+i18next@^19.6.0:
+  version "19.6.0"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.6.0.tgz#3881b8e476e494dcdadcc8983e594080417fd82e"
+  integrity sha512-t+pA7iN2WtwS1UQc4PFKHDIO4HYZIl2Wo8UC8gqt70Q1qY50FflAF5vV4IbQEqy4DuK3I9wv3BL1PMvkk238WA==
   dependencies:
     "@babel/runtime" "^7.10.1"
 
@@ -19503,10 +19503,10 @@ react-mentions@^3.3.1:
     prop-types "^15.5.8"
     substyle "^6.3.1"
 
-react-native-bundle-splitter@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-bundle-splitter/-/react-native-bundle-splitter-1.0.8.tgz#5b3a8802f0107582186cf869db5ef36e6c74d942"
-  integrity sha512-awXkQXNn2lwfjpXT/1DaBk5wg0aal4viHculDa3LXbWCF0i/Iel+WD9qqjxKoInQUWVl/N70/aFA1+gKyxCfeQ==
+react-native-bundle-splitter@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-bundle-splitter/-/react-native-bundle-splitter-1.0.9.tgz#0b4851c005a2db3d4fc3b3402f922c8b3e9d0a5e"
+  integrity sha512-wPnYzvmKg1fORwJlsgI6Symh6t8oK18VLBd2BwTwFfUbzIjyzwLmZLODfj+ScQSvSbqJawAMnv272Ij8aDgvLQ==
 
 react-native-code-push@^6.2.1:
   version "6.2.1"
@@ -19521,10 +19521,10 @@ react-native-code-push@^6.2.1:
     semver "^7.2.1"
     xcode "2.1.0"
 
-react-native-config@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.2.1.tgz#f80454fc58ea89b549819ccb4bdab26518a9f0db"
-  integrity sha512-u7MDku3fUUKAtxfUFLLwnj4htBYO840EBGdlDB9ry/eX1TY+asHwULaUkAj9x+pJo4vSpIp8GtYxxi8dLzDtJw==
+react-native-config@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.3.1.tgz#d1e86031c49b2b1b968ebb158ac02a293acce0b8"
+  integrity sha512-Wmkn6WjCc1P0k77FiYQdRTU3AE9fR01vbkETLp9u5OK6+6kfsTbmFZwjMPE0Ao8LbRQP3mStK7niheKCFyIENA==
 
 react-native-deep-linking@^2.2.0:
   version "2.2.0"
@@ -19551,10 +19551,10 @@ react-native-gesture-handler@^1.6.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-navigation@6.9.0:
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.9.0.tgz#9f02c832d2e0291ccc863e717517ec70655047b7"
-  integrity sha512-kzV91Gn+txTkWva4rCu1ia7JOhulMj7RITutkpvlUwKoYWlbsTMKy5hXMf+uoMlaStxmolmdo/X2au1X+U08nA==
+react-native-navigation@6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-6.9.1.tgz#9574ef82c6e714ac2511711448dca2fb2ac61d88"
+  integrity sha512-CUw3fTUxkBc1Q9r2ZmkAoTvODLRzaSZ/R91KLPNfKkmRiHi3LU3lOq2FWGDVEUo+5HI3Mzec4Bl2lM/+YlgadA==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -19577,10 +19577,10 @@ react-native-reanimated@1.4.0:
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.4.0.tgz#7f1acbf9be08492d834f512700570978052be2f9"
   integrity sha512-tO7nSNNP+iRLVbkcSS5GXyDBb7tSI02+XuRL3/S39EAr35rnvUy2JfeLUQG+fWSObJjnMVhasUDEUwlENk8IXw==
 
-react-native-redash@^14.2.1:
-  version "14.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-redash/-/react-native-redash-14.2.1.tgz#1a1690c65fe438a67ad24d0e80c3d5f38cea111a"
-  integrity sha512-7xeh7LCx9iKXLnRTzEK5bjvthcb/G2c/ktdRv2FoVVqMlzYeApdxeSM+QKsXaJ8ka/hZEABHqO576s2fNnVXrA==
+react-native-redash@^14.2.2:
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-redash/-/react-native-redash-14.2.2.tgz#199746ed51b895e58132aa4d6796686d228ea298"
+  integrity sha512-LOBfh96sSZxVnW0bK8afwRdOHnrqmVS7XlpcmATNiRVTs2cGYF32F0o89+/nMoNY5Ffo2CAoIV5nnsFteYT+PA==
   dependencies:
     abs-svg-path "^0.1.1"
     normalize-svg-path "^1.0.1"

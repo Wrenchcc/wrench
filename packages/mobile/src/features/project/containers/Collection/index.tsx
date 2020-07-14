@@ -6,13 +6,14 @@ import { Text } from 'ui'
 
 function Collection({ id, name, projectId }) {
   const { t } = useTranslation()
-  const { showModal } = useNavigation()
+  const { showModal, navigateBack } = useNavigation()
 
   const navigateToEdit = () =>
     showModal(SCREENS.EDIT_COLLECTION, {
       id,
       name,
       projectId,
+      onDelete: navigateBack,
     })
 
   const {

@@ -6,7 +6,7 @@ import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner } from './styles'
 
-function EditCollection({ id, name, projectId }) {
+function EditCollection({ id, name, projectId, onDelete }) {
   const { t } = useTranslation()
   const [isSaving, setIsSaving] = useState(false)
   const { dismissModal } = useNavigation()
@@ -17,7 +17,12 @@ function EditCollection({ id, name, projectId }) {
   const onChangeText = useCallback((text) => setTitle(text), [])
 
   const handleDismiss = () => dismissModal()
-  const handleDone = () => dismissModal()
+  const handleDone = () => {
+    setIsSaving(true)
+    dismissModal()
+    setIsSaving(false)
+  }
+
   const handleDelete = () => {
     deleteCollection({
       variables: {
@@ -25,6 +30,9 @@ function EditCollection({ id, name, projectId }) {
         projectId,
       },
     })
+
+    dismissModal()
+    onDelete()
   }
 
   return (

@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import FastImage from 'react-native-fast-image'
+import styled from 'styled-components/native'
+import UiImage from 'ui/Image'
 
-export const Image = styled(FastImage)`
+export const Image = styled(UiImage)`
   flex: 1;
   justify-content: flex-end;
   padding: 10px;

@@ -1,0 +1,12 @@
+{
+  "AddPostToCollection": {
+    "en": {
+      "title": "Add posts",
+      "done": "Done"
+    },
+    "sv": {
+      "title": "Lägg till inlägg",
+      "done": "Klar"
+    }
+  }
+}

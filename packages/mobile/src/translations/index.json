@@ -110,6 +110,10 @@
       "add": "Share",
       "social": "Social"
     },
+    "AddPostToCollection": {
+      "title": "Add posts",
+      "done": "Done"
+    },
     "AddProject": {
       "headerTitle": "Add project",
       "title": "Choose a title for your project.",
@@ -509,6 +513,10 @@
       "placeholder": "Skriv en text för ditt inlägg",
       "add": "Dela",
       "social": "Socialt"
+    },
+    "AddPostToCollection": {
+      "title": "Lägg till inlägg",
+      "done": "Klar"
     },
     "AddProject": {
       "headerTitle": "Skapa projekt",

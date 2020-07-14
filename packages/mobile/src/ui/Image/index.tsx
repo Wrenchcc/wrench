@@ -30,6 +30,7 @@ function Image({
   borderColor,
   borderWidth,
   showIndicator,
+  style = {},
   ...props
 }: ImageComponentProps) {
   const [progress, setProgress] = useState(0)
@@ -81,13 +82,14 @@ function Image({
       height={height}
       borderRadius={borderRadius}
       placeholderColor={placeholderColor}
+      style={style}
     >
       <Animated.Image
         {...props}
         source={{
           uri: placeholder,
         }}
-        style={{ width, height }}
+        style={[{ width, height }, style]}
         blurRadius={3}
       />
 
@@ -98,18 +100,20 @@ function Image({
         onLoadEnd={handleLoadEnd}
         onProgress={handleProgress}
         onError={handleError}
-        style={{
-          borderColor,
-          borderRadius,
-          borderWidth,
-          bottom: 0,
-          height,
-          left: 0,
-          position: 'absolute',
-          right: 0,
-          top: 0,
-          width,
-        }}
+        style={[
+          {
+            borderColor,
+            borderRadius,
+            borderWidth,
+            bottom: 0,
+            height,
+            left: 0,
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            width,
+          },
+        ]}
       />
 
       {(showIndicator && loading) || (showIndicator && progress < 1) ? (
