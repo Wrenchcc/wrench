@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react'
 import BottomSheet from 'reanimated-bottom-sheet'
-import { StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { useNavigation } from 'navigation'
 import { Text } from 'ui'
@@ -15,8 +15,12 @@ function Halfpanel({ renderContent = () => null, renderHeader = () => null, heig
   const { dismissHalfpanel } = useNavigation()
 
   useEffect(() => {
-    bottomSheet.current.snapTo(1)
-  }, [])
+    setTimeout(() => {
+      bottomSheet.current.snapTo(1)
+    }, 60)
+  }, [bottomSheet])
+
+  const closeKeyboard = useCallback(() => Keyboard.dismiss(), [])
 
   const backgroundOpacity = interpolate(fall.current, {
     inputRange: [0, 1],
@@ -26,6 +30,7 @@ function Halfpanel({ renderContent = () => null, renderHeader = () => null, heig
 
   const handleClose = useCallback(() => {
     bottomSheet.current.snapTo(0)
+    closeKeyboard()
   }, [])
 
   const handleOpenStart = useCallback(() => {
@@ -61,6 +66,14 @@ function Halfpanel({ renderContent = () => null, renderHeader = () => null, heig
     </Base>
   )
 
+  const renderContentWithBar = () => (
+    <Base height={height}>
+      <Bar />
+
+      {renderContent()}
+    </Base>
+  )
+
   return (
     <>
       <TouchableWithoutFeedback onPress={handleClose}>
@@ -79,9 +92,10 @@ function Halfpanel({ renderContent = () => null, renderHeader = () => null, heig
         callbackNode={fall.current}
         snapPoints={[0, height]}
         renderHeader={renderHeader}
-        renderContent={data ? renderDataContent : renderContent}
+        renderContent={data ? renderDataContent : renderContentWithBar}
         onOpenStart={handleOpenStart}
         onCloseEnd={handleCloseEnd}
+        onCloseStart={closeKeyboard}
       />
     </>
   )

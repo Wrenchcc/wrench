@@ -1,0 +1,20 @@
+
+query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
+  projectCollections(projectId: $projectId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        cover {
+          uri
+        }
+      }
+    }
+  }
+}
+
+ 

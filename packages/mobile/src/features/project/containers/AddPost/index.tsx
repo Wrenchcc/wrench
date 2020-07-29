@@ -12,7 +12,8 @@ import { usePostStore, useToastStore, POST } from 'store'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
-import { Header, Input, KeyboardAvoidingView, Icon, Text } from 'ui'
+import Collections from 'features/project/components/Collections'
+import { Header, Input, KeyboardAvoidingView, Icon, Text, Title } from 'ui'
 import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
@@ -22,7 +23,7 @@ function AddPost() {
   const { navigateBack, dismissModal } = useNavigation()
   const [addPost] = useAddPostMutation()
 
-  const { files, caption, update, reset, projectId, setIsPosting } = usePostStore(store => ({
+  const { files, caption, update, reset, projectId, setIsPosting } = usePostStore((store) => ({
     caption: store.caption,
     files: store.files,
     projectId: store.projectId,
@@ -31,13 +32,13 @@ function AddPost() {
     update: store.actions.update,
   }))
 
-  const toastActions = useToastStore(store => store.actions)
+  const toastActions = useToastStore((store) => store.actions)
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
   }, [navigateBack])
 
-  const onChangeText = useCallback(value => update(POST.CAPTION, value), [update])
+  const onChangeText = useCallback((value) => update(POST.CAPTION, value), [update])
 
   const handleAddPost = async () => {
     dismissModal(true)
@@ -174,7 +175,11 @@ function AddPost() {
             onChangeText={onChangeText}
             placeholder={t('AddPost:placeholder')}
             value={caption}
+            style={{ marginBottom: 40 }}
           />
+
+          <Title style={{ marginBottom: 20 }}>Add to collection</Title>
+          <Collections isOwner projectId={projectId} />
         </ScrollView>
       </KeyboardAvoidingView>
     </>

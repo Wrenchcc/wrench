@@ -21,9 +21,9 @@ export default isAuthenticated(async (_, args, ctx) => {
   return {
     totalCount: bookmarks.totalCount,
     pageInfo: bookmarks.pageInfo,
-    edges: posts.map((p, i) => ({
-      cursor: bookmarks.edges[i].cursor,
-      node: p,
+    edges: bookmarks.edges.map((b, i) => ({
+      cursor: b.cursor,
+      node: posts[i],
     })),
   }
 })

@@ -1,0 +1,9 @@
+mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {
+  collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {
+    id
+    name
+    cover {
+      uri
+    }
+  }
+}

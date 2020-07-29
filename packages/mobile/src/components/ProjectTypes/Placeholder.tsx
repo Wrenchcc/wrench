@@ -1,9 +1,22 @@
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { Placeholder, PlaceholderLine } from 'rn-placeholder'
-import { PlaceholderAnimation } from 'ui'
+import { Placeholder, PlaceholderLine, PlaceholderAnimation } from 'ui/Placeholder'
 
 const COUNT = 6
+
+const styles = {
+  category: {
+    width: 80,
+    borderRadius: 0,
+    marginRight: 10,
+  },
+  first: {
+    marginLeft: 20,
+  },
+  last: {
+    marginRight: 20,
+  },
+}
 
 export const CategoriesPlaceholder: React.FC = () => {
   return (
@@ -14,7 +27,6 @@ export const CategoriesPlaceholder: React.FC = () => {
         style={{
           paddingBottom: 10,
           paddingTop: 10,
-          backgroundColor: 'white',
         }}
       >
         {new Array(COUNT).fill({}).map((_, index) => (
@@ -33,20 +45,6 @@ export const CategoriesPlaceholder: React.FC = () => {
       </ScrollView>
     </Placeholder>
   )
-}
-
-const styles = {
-  category: {
-    width: 80,
-    borderRadius: 0,
-    marginRight: 10,
-  },
-  first: {
-    marginLeft: 20,
-  },
-  last: {
-    marginRight: 20,
-  },
 }
 
 export default CategoriesPlaceholder

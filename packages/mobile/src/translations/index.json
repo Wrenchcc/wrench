@@ -1,5 +1,11 @@
 {
   "en": {
+    "AddCollection": {
+      "title": "New Collection",
+      "add": "Add new",
+      "placeholder": "Ex. Engine rebuild",
+      "done": "Done"
+    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -43,6 +49,7 @@
         "alertDescription": "If you going back now your edit will be deleted.",
         "report": "Report",
         "edit": "Edit",
+        "collection": "Add to collection",
         "delete": "Delete",
         "cancel": "Cancel"
       }
@@ -103,6 +110,10 @@
       "add": "Share",
       "social": "Social"
     },
+    "AddPostToCollection": {
+      "title": "Add posts",
+      "done": "Done"
+    },
     "AddProject": {
       "headerTitle": "Add project",
       "title": "Choose a title for your project.",
@@ -123,6 +134,12 @@
     "Comments": {
       "title": "Comments",
       "loadMore": "Load more comments"
+    },
+    "EditCollection": {
+      "done": "Done",
+      "title": "Information",
+      "placeholder": "Ex. Engine rebuild",
+      "delete": "Delete"
     },
     "EditModel": {
       "save": "Save",
@@ -387,6 +404,12 @@
     }
   },
   "sv": {
+    "AddCollection": {
+      "title": "Ny kollektion",
+      "add": "Lägg till",
+      "placeholder": "Förgasare",
+      "done": "Klar"
+    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -430,6 +453,7 @@
         "alertDescription": "Om du backar nu kommer din redigering att kastas.",
         "report": "Rapportera",
         "edit": "Redigera",
+        "collection": "Lägga till i kollektion",
         "delete": "Radera",
         "cancel": "Avbryt"
       }
@@ -490,6 +514,10 @@
       "add": "Dela",
       "social": "Socialt"
     },
+    "AddPostToCollection": {
+      "title": "Lägg till inlägg",
+      "done": "Klar"
+    },
     "AddProject": {
       "headerTitle": "Skapa projekt",
       "title": "Välj en titel på ditt projekt.",
@@ -510,6 +538,12 @@
     "Comments": {
       "title": "Kommentarer",
       "loadMore": "Ladda fler kommentarer"
+    },
+    "EditCollection": {
+      "done": "Klar",
+      "title": "Information",
+      "placeholder": "Förgasare",
+      "delete": "Radera"
     },
     "EditModel": {
       "save": "Spara",

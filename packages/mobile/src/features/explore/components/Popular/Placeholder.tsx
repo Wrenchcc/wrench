@@ -1,10 +1,31 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
-import { Placeholder, PlaceholderLine } from 'rn-placeholder'
-import { PlaceholderAnimation } from 'ui'
+import { Placeholder, PlaceholderLine, PlaceholderAnimation } from 'ui/Placeholder'
 import { GUTTER } from './styles'
 
 const COUNT = 3
+
+const styles = {
+  container: {
+    marginRight: 10,
+  },
+  image: {
+    width: 180,
+    height: 180,
+    borderRadius: 0,
+  },
+  first: {
+    marginLeft: 20,
+  },
+  last: {
+    marginRight: 20,
+  },
+  projectName: {
+    borderRadius: 0,
+    marginTop: 10,
+    marginBottom: 5,
+  },
+}
 
 export const PopularPlaceholder: React.FC = () => {
   return (
@@ -34,28 +55,6 @@ export const PopularPlaceholder: React.FC = () => {
       </ScrollView>
     </Placeholder>
   )
-}
-
-const styles = {
-  container: {
-    marginRight: 10,
-  },
-  image: {
-    width: 180,
-    height: 180,
-    borderRadius: 0,
-  },
-  first: {
-    marginLeft: 20,
-  },
-  last: {
-    marginRight: 20,
-  },
-  projectName: {
-    borderRadius: 0,
-    marginTop: 10,
-    marginBottom: 5,
-  },
 }
 
 export default PopularPlaceholder

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, LikesDocument } from '@wrench/common'
 import { FlatList, Page } from 'navigation'
 import { User, NoResults } from 'ui'
+import UserPlaceholderCollection from 'ui/User/PlaceholderCollection'
 
 const renderItem = ({ item }) => <User data={item.node} />
 
@@ -22,8 +23,10 @@ function Sparks({ id }) {
     },
   })
 
-  return (
-    <Page headerTitle={t('Sparks:title')} headerAnimation={false}>
+  const content =
+    isFetching && !edges ? (
+      <UserPlaceholderCollection />
+    ) : (
       <FlatList
         ListEmptyComponent={<NoResults />}
         borderSeparator
@@ -35,6 +38,11 @@ function Sparks({ id }) {
         hasNextPage={hasNextPage}
         renderItem={renderItem}
       />
+    )
+
+  return (
+    <Page headerTitle={t('Sparks:title')} headerAnimation={false}>
+      {content}
     </Page>
   )
 }

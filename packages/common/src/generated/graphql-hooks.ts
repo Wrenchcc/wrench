@@ -23,6 +23,8 @@ export type Query = {
   comments?: Maybe<CommentConnection>;
   recentComments?: Maybe<CommentConnection>;
   comment?: Maybe<Comment>;
+  collections?: Maybe<PostConnection>;
+  projectCollections?: Maybe<CollectionConnection>;
   feed?: Maybe<Feed>;
   files?: Maybe<FileConnection>;
   followers?: Maybe<FollowersConnection>;
@@ -72,6 +74,25 @@ export type QueryRecentCommentsArgs = {
 
 export type QueryCommentArgs = {
   id: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryCollectionsArgs = {
+  id: Scalars['ID'];
+  projectId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryProjectCollectionsArgs = {
+  projectId: Scalars['ID'];
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -385,6 +406,7 @@ export type Project = {
   filesConnection?: Maybe<FileConnection>;
   followersConnection?: Maybe<FollowersConnection>;
   postsConnection?: Maybe<PostConnection>;
+  collectionsConnection?: Maybe<CollectionConnection>;
 };
 
 
@@ -409,6 +431,14 @@ export type ProjectPostsConnectionArgs = {
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+
+export type ProjectCollectionsConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
 };
 
 export type ProjectPermissions = {
@@ -487,6 +517,28 @@ export type PostEdge = {
   __typename?: 'PostEdge';
   cursor: Scalars['String'];
   node: Post;
+};
+
+export type CollectionConnection = {
+  __typename?: 'CollectionConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CollectionEdge>>;
+};
+
+export type CollectionEdge = {
+  __typename?: 'CollectionEdge';
+  cursor: Scalars['String'];
+  node: Collection;
+};
+
+export type Collection = {
+  __typename?: 'Collection';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  cover?: Maybe<CoverType>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
 };
 
 export type PostPermissions = {
@@ -719,6 +771,9 @@ export type Mutation = {
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
+  addCollection?: Maybe<Collection>;
+  deleteCollection?: Maybe<Collection>;
+  collectPosts?: Maybe<Collection>;
   sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
   likeComment?: Maybe<Comment>;
@@ -784,6 +839,25 @@ export type MutationEditCommentArgs = {
 
 export type MutationDeleteCommentArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationAddCollectionArgs = {
+  projectId: Scalars['ID'];
+  name: Scalars['String'];
+};
+
+
+export type MutationDeleteCollectionArgs = {
+  projectId: Scalars['ID'];
+  id: Scalars['ID'];
+};
+
+
+export type MutationCollectPostsArgs = {
+  projectId: Scalars['ID'];
+  collectionId: Scalars['ID'];
+  input?: Maybe<Array<Maybe<CollectionInput>>>;
 };
 
 
@@ -904,6 +978,10 @@ export type AccessToken = {
 
 export type CommentInput = {
   text: Scalars['String'];
+};
+
+export type CollectionInput = {
+  postId: Scalars['ID'];
 };
 
 export type PostInput = {
@@ -1194,6 +1272,20 @@ export type UserSettingsFragment = (
   )> }
 );
 
+export type AddCollectionMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  name: Scalars['String'];
+}>;
+
+
+export type AddCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { addCollection?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'name' | 'id'>
+  )> }
+);
+
 export type AddCommentMutationVariables = Exact<{
   postId: Scalars['ID'];
   commentId?: Maybe<Scalars['ID']>;
@@ -1289,6 +1381,39 @@ export type BookmarkPostMutation = (
       { __typename?: 'Bookmarks' }
       & Pick<Bookmarks, 'isBookmarked'>
     )> }
+  )> }
+);
+
+export type CollectPostsMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  collectionId: Scalars['ID'];
+  input?: Maybe<Array<Maybe<CollectionInput>>>;
+}>;
+
+
+export type CollectPostsMutation = (
+  { __typename?: 'Mutation' }
+  & { collectPosts?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'id' | 'name'>
+    & { cover?: Maybe<(
+      { __typename?: 'CoverType' }
+      & Pick<CoverType, 'uri'>
+    )> }
+  )> }
+);
+
+export type DeleteCollectionMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteCollection?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'id'>
   )> }
 );
 
@@ -1528,6 +1653,32 @@ export type BookmarksQuery = (
     ), edges?: Maybe<Array<(
       { __typename?: 'BookmarkEdge' }
       & Pick<BookmarkEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Post' }
+        & PostFragment
+      ) }
+    )>> }
+  )> }
+);
+
+export type CollectionsQueryVariables = Exact<{
+  id: Scalars['ID'];
+  projectId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type CollectionsQuery = (
+  { __typename?: 'Query' }
+  & { collections?: Maybe<(
+    { __typename?: 'PostConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'PostEdge' }
+      & Pick<PostEdge, 'cursor'>
       & { node: (
         { __typename?: 'Post' }
         & PostFragment
@@ -1910,6 +2061,35 @@ export type ProjectQuery = (
       )>> }
     )> }
     & ProjectFragment
+  )> }
+);
+
+export type ProjectCollectionsQueryVariables = Exact<{
+  projectId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type ProjectCollectionsQuery = (
+  { __typename?: 'Query' }
+  & { projectCollections?: Maybe<(
+    { __typename?: 'CollectionConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'CollectionEdge' }
+      & Pick<CollectionEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Collection' }
+        & Pick<Collection, 'id' | 'name'>
+        & { cover?: Maybe<(
+          { __typename?: 'CoverType' }
+          & Pick<CoverType, 'uri'>
+        )> }
+      ) }
+    )>> }
   )> }
 );
 
@@ -2458,6 +2638,40 @@ export const UserSettingsFragmentDoc = gql`
   }
 }
     `;
+export const AddCollectionDocument = gql`
+    mutation addCollection($projectId: ID!, $name: String!) {
+  addCollection(projectId: $projectId, name: $name) {
+    name
+    id
+  }
+}
+    `;
+export type AddCollectionMutationFn = ApolloReactCommon.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
+
+/**
+ * __useAddCollectionMutation__
+ *
+ * To run a mutation, you first call `useAddCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCollectionMutation, { data, loading, error }] = useAddCollectionMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useAddCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddCollectionMutation, AddCollectionMutationVariables>) {
+        return ApolloReactHooks.useMutation<AddCollectionMutation, AddCollectionMutationVariables>(AddCollectionDocument, baseOptions);
+      }
+export type AddCollectionMutationHookResult = ReturnType<typeof useAddCollectionMutation>;
+export type AddCollectionMutationResult = ApolloReactCommon.MutationResult<AddCollectionMutation>;
+export type AddCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCollectionMutation, AddCollectionMutationVariables>;
 export const AddCommentDocument = gql`
     mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
   addComment(postId: $postId, commentId: $commentId, input: $input) {
@@ -2693,6 +2907,77 @@ export function useBookmarkPostMutation(baseOptions?: ApolloReactHooks.MutationH
 export type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>;
 export type BookmarkPostMutationResult = ApolloReactCommon.MutationResult<BookmarkPostMutation>;
 export type BookmarkPostMutationOptions = ApolloReactCommon.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
+export const CollectPostsDocument = gql`
+    mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {
+  collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {
+    id
+    name
+    cover {
+      uri
+    }
+  }
+}
+    `;
+export type CollectPostsMutationFn = ApolloReactCommon.MutationFunction<CollectPostsMutation, CollectPostsMutationVariables>;
+
+/**
+ * __useCollectPostsMutation__
+ *
+ * To run a mutation, you first call `useCollectPostsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCollectPostsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [collectPostsMutation, { data, loading, error }] = useCollectPostsMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      collectionId: // value for 'collectionId'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCollectPostsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>) {
+        return ApolloReactHooks.useMutation<CollectPostsMutation, CollectPostsMutationVariables>(CollectPostsDocument, baseOptions);
+      }
+export type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
+export type CollectPostsMutationResult = ApolloReactCommon.MutationResult<CollectPostsMutation>;
+export type CollectPostsMutationOptions = ApolloReactCommon.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
+export const DeleteCollectionDocument = gql`
+    mutation deleteCollection($projectId: ID!, $id: ID!) {
+  deleteCollection(id: $id, projectId: $projectId) {
+    id
+  }
+}
+    `;
+export type DeleteCollectionMutationFn = ApolloReactCommon.MutationFunction<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
+
+/**
+ * __useDeleteCollectionMutation__
+ *
+ * To run a mutation, you first call `useDeleteCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCollectionMutation, { data, loading, error }] = useDeleteCollectionMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteCollectionMutation, DeleteCollectionMutationVariables>(DeleteCollectionDocument, baseOptions);
+      }
+export type DeleteCollectionMutationHookResult = ReturnType<typeof useDeleteCollectionMutation>;
+export type DeleteCollectionMutationResult = ApolloReactCommon.MutationResult<DeleteCollectionMutation>;
+export type DeleteCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
 export const DeleteCommentDocument = gql`
     mutation deleteComment($id: ID!) {
   deleteComment(id: $id)
@@ -3289,6 +3574,50 @@ export function useBookmarksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHo
 export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
 export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
 export type BookmarksQueryResult = ApolloReactCommon.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
+export const CollectionsDocument = gql`
+    query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: "collections") {
+  collections(id: $id, projectId: $projectId, after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useCollectionsQuery__
+ *
+ * To run a query within a React component, call `useCollectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCollectionsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+      }
+export function useCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+        }
+export type CollectionsQueryHookResult = ReturnType<typeof useCollectionsQuery>;
+export type CollectionsLazyQueryHookResult = ReturnType<typeof useCollectionsLazyQuery>;
+export type CollectionsQueryResult = ApolloReactCommon.QueryResult<CollectionsQuery, CollectionsQueryVariables>;
 export const CommentDocument = gql`
     query comment($id: ID!) {
   comment(id: $id) {
@@ -4011,6 +4340,53 @@ export function useProjectLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHook
 export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
+export const ProjectCollectionsDocument = gql`
+    query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
+  projectCollections(projectId: $projectId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        cover {
+          uri
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useProjectCollectionsQuery__
+ *
+ * To run a query within a React component, call `useProjectCollectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectCollectionsQuery({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useProjectCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+      }
+export function useProjectCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+        }
+export type ProjectCollectionsQueryHookResult = ReturnType<typeof useProjectCollectionsQuery>;
+export type ProjectCollectionsLazyQueryHookResult = ReturnType<typeof useProjectCollectionsLazyQuery>;
+export type ProjectCollectionsQueryResult = ApolloReactCommon.QueryResult<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>;
 export const ProjectSuggestionsDocument = gql`
     query projectSuggestions($after: String, $first: Int = 5) {
   projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
