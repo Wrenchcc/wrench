@@ -15,15 +15,15 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import { useDynamicColor } from 'utils/hooks'
-import { keyboardHeight } from 'utils/platform'
+// import { keyboardHeight } from 'utils/platform'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
 import { share, sparkMega } from 'images'
 import { Base, Top, Headline, Content, Spacer, Row } from './styles'
-import Collections from 'features/project/components/Collections'
+// import Collections from 'features/project/components/Collections'
 
-const HALFPANEL_HEIGHT = 250 //164
+// const HALFPANEL_HEIGHT = 250 //164
 
 function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
   const { t } = useTranslation()
@@ -218,7 +218,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
     if (post.permissions.isOwner) {
       const options = [
         t('Post:options:edit'),
-        t('Post:options:collection'),
+        // t('Post:options:collection'),
         t('Post:options:delete'),
         t('Post:options:cancel'),
       ]
@@ -226,8 +226,8 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
       showActionSheetWithOptions(
         {
           options,
-          destructiveButtonIndex: 2,
-          cancelButtonIndex: 3,
+          destructiveButtonIndex: 1,
+          cancelButtonIndex: 2,
           tintColor: dynamicColor,
         },
         (index) => {
@@ -235,18 +235,18 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
             handleEdit()
           }
 
-          if (index === 1) {
-            showHalfpanel({
-              height: HALFPANEL_HEIGHT, //+ keyboardHeight,
-              renderContent: () => (
-                <Collections
-                  projectId={post.project.id}
-                  isOwner
-                  onPress={(item) => console.log(item)}
-                />
-              ),
-            })
-          }
+          // if (index === 1) {
+          //   showHalfpanel({
+          //     height: HALFPANEL_HEIGHT, //+ keyboardHeight,
+          //     renderContent: () => (
+          //       <Collections
+          //         projectId={post.project.id}
+          //         isOwner
+          //         onPress={(item) => console.log(item)}
+          //       />
+          //     ),
+          //   })
+          // }
           if (index === 2) {
             onDelete()
           }

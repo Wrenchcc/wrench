@@ -33,6 +33,7 @@ export default gql`
   extend type Query {
     collections(
       id: ID!
+      projectId: ID!
       first: Int = 10
       after: String
       last: Int = 10

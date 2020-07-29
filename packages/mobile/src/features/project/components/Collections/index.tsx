@@ -5,7 +5,7 @@ import AddCollection from 'components/AddCollection'
 import Placeholder from './Placeholder'
 import { Collection, GUTTER } from './styles'
 
-function Collections({ isOwner, projectId, onPress }) {
+function Collections({ isOwner, projectId }) {
   const {
     data: { edges },
     isFetching,
@@ -28,21 +28,16 @@ function Collections({ isOwner, projectId, onPress }) {
     />
   )
 
-  const renderItem = ({ item, index }) => {
-    const collection = item.node
-
-    return (
-      <Collection
-        image={collection.cover}
-        name={collection.name}
-        key={collection.id}
-        last={index === edges && edges.length - 1}
-        onPress={collection}
-        projectId={projectId}
-        id={collection.id}
-      />
-    )
-  }
+  const renderItem = ({ item: { node }, index }) => (
+    <Collection
+      image={node.cover}
+      name={node.name}
+      key={node.id}
+      last={index === edges && edges.length - 1}
+      projectId={projectId}
+      id={node.id}
+    />
+  )
 
   if (!edges?.length && !isOwner) {
     content = null

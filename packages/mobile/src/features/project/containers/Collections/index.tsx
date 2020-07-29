@@ -1,10 +1,13 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { usePaginatedQuery, ProjectDocument } from '@wrench/common'
+import { usePaginatedQuery, CollectionsDocument } from '@wrench/common'
 import { FlatList, Page, useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
+import Post from 'components/Post'
 
-function Collection({ id, name, projectId }) {
+const renderItem = ({ item }) => <Post post={item.node} />
+
+function Collections({ id, name, projectId }) {
   const { t } = useTranslation()
   const { showModal, navigateBack } = useNavigation()
 
@@ -23,10 +26,11 @@ function Collection({ id, name, projectId }) {
     isRefetching,
     hasNextPage,
     refetch,
-  } = usePaginatedQuery(['project', 'posts'])(ProjectDocument, {
+  } = usePaginatedQuery(['collections'])(CollectionsDocument, {
     variables: {
       id,
-      first: 8,
+      projectId,
+      first: 3,
     },
   })
 
@@ -43,10 +47,10 @@ function Collection({ id, name, projectId }) {
     >
       <FlatList
         data={edges}
-        renderItem={() => null}
-        numColumns={2}
-        initialNumToRender={8}
-        paddingHorizontal={10}
+        renderItem={renderItem}
+        initialNumToRender={2}
+        spacingSeparator
+        paddingHorizontal={20}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
@@ -57,4 +61,4 @@ function Collection({ id, name, projectId }) {
   )
 }
 
-export default Collection
+export default Collections

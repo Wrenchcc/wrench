@@ -3,11 +3,11 @@ import { Image } from 'ui'
 import { useNavigation, SCREENS } from 'navigation'
 import { Base, Text, Placeholder } from './styles'
 
-function Collection({ id, name, projectId, image, style = {}, onPress }) {
+function Collection({ id, name, projectId, image, style = {} }) {
   const { navigate } = useNavigation()
 
   const handleNavigate = () =>
-    navigate(SCREENS.COLLECTION, {
+    navigate(SCREENS.COLLECTIONS, {
       name,
       id,
       projectId,

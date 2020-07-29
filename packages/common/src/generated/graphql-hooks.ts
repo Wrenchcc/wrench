@@ -83,6 +83,7 @@ export type QueryCommentArgs = {
 
 export type QueryCollectionsArgs = {
   id: Scalars['ID'];
+  projectId: Scalars['ID'];
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -1652,6 +1653,32 @@ export type BookmarksQuery = (
     ), edges?: Maybe<Array<(
       { __typename?: 'BookmarkEdge' }
       & Pick<BookmarkEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Post' }
+        & PostFragment
+      ) }
+    )>> }
+  )> }
+);
+
+export type CollectionsQueryVariables = Exact<{
+  id: Scalars['ID'];
+  projectId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type CollectionsQuery = (
+  { __typename?: 'Query' }
+  & { collections?: Maybe<(
+    { __typename?: 'PostConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'PostEdge' }
+      & Pick<PostEdge, 'cursor'>
       & { node: (
         { __typename?: 'Post' }
         & PostFragment
@@ -3547,6 +3574,50 @@ export function useBookmarksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHo
 export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
 export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
 export type BookmarksQueryResult = ApolloReactCommon.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
+export const CollectionsDocument = gql`
+    query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: "collections") {
+  collections(id: $id, projectId: $projectId, after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useCollectionsQuery__
+ *
+ * To run a query within a React component, call `useCollectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCollectionsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+      }
+export function useCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+        }
+export type CollectionsQueryHookResult = ReturnType<typeof useCollectionsQuery>;
+export type CollectionsLazyQueryHookResult = ReturnType<typeof useCollectionsLazyQuery>;
+export type CollectionsQueryResult = ApolloReactCommon.QueryResult<CollectionsQuery, CollectionsQueryVariables>;
 export const CommentDocument = gql`
     query comment($id: ID!) {
   comment(id: $id) {

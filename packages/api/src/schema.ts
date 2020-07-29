@@ -26,6 +26,7 @@ import Upload from './types/Upload'
 import User from './types/User'
 
 // Queries
+import collectionQueries from './queries/collection'
 import bookmarkQueries from './queries/bookmark'
 import commentQueries from './queries/comment'
 import feedQueries from './queries/feed'
@@ -78,6 +79,7 @@ const resolvers = merge(
   {},
   // queries
   scalars.resolvers,
+  collectionQueries,
   bookmarkQueries,
   commentQueries,
   feedQueries,
