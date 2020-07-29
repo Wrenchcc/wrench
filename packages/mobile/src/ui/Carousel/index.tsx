@@ -1,13 +1,13 @@
 import React, { memo, useState, useCallback } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, View } from 'react-native'
 import Pinchable from 'react-native-pinchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
-import { Wrapper, Picture, SIZE, GUTTER } from './styles'
+import { Picture, SIZE, GUTTER } from './styles'
 
 const SNAP_INTERVAL = SIZE
 
-const getItemLayout = (_, index) => ({
+const getItemLayout = (_, index: number) => ({
   index,
   length: SIZE,
   offset: SIZE * index,
@@ -33,18 +33,17 @@ function Carousel({ files }) {
 
   const renderItem = useCallback(
     ({ item, index }) => (
-      <Wrapper key={item.node.uri} first={index === 0} last={index === files.edges.length - 1}>
+      <View key={item.node.uri}>
         <Pinchable maximumZoomScale={5}>
           <Picture
             showIndicator
             width={SIZE}
             height={SIZE}
             source={{ uri: item.node.uri }}
-            priority={index < 2 ? IMAGE_PRIORITY.HIGHT : IMAGE_PRIORITY.LOW}
-            index={index}
+            priority={index < 2 ? IMAGE_PRIORITY.HIGH : IMAGE_PRIORITY.LOW}
           />
         </Pinchable>
-      </Wrapper>
+      </View>
     ),
     []
   )

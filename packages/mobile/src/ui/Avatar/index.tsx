@@ -7,7 +7,7 @@ import IsOnline from 'ui/IsOnline'
 import Text from 'ui/Text'
 import { COLORS } from '../constants'
 
-const getInitials = (string) => {
+const getInitials = (string: string) => {
   if (string.length <= 2) {
     return string.toUpperCase()
   }
