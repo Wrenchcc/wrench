@@ -22,7 +22,8 @@ export const Text = styled(UiText)`
 export const Input = styled.TextInput`
   flex: 1;
   position: relative;
-  background-color: ${props => props.theme.colors.placeholder};
+  background-color: ${(props) => props.theme.colors.placeholder};
+  color: ${(props) => props.theme.colors.inverse};
   font-size: 17px;
   font-family: ${FONTS.REGULAR};
   border-radius: 1px;
