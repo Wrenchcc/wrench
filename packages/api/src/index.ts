@@ -1,3 +1,4 @@
+// @ts-ignore
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { createConnection } from 'typeorm'
@@ -23,7 +24,7 @@ async function server() {
 
   const driver = connection.driver as PostgresDriver
   driver.postgres.defaults.parseInputDatesAsUTC = true
-  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
+  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, (str) => str)
 
   const server = new ApolloServer({
     ...debugOptions,
@@ -51,4 +52,4 @@ async function server() {
   })
 }
 
-server().catch(err => debug(err))
+server().catch((err) => debug(err))
