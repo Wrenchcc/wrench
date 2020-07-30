@@ -247,7 +247,8 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
           //     ),
           //   })
           // }
-          if (index === 2) {
+
+          if (index === 1) {
             onDelete()
           }
         }
