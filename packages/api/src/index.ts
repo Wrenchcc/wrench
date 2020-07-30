@@ -1,4 +1,3 @@
-// @ts-ignore
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { createConnection } from 'typeorm'
@@ -32,6 +31,7 @@ async function server() {
       db,
       loaders: createLoaders(),
       services,
+      // @ts-ignore
       userAgent: req.headers['user-agent'],
       userId: getUserId(req),
     }),
