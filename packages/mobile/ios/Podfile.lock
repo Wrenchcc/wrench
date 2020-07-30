@@ -515,6 +515,8 @@ PODS:
     - React-RCTText
   - RNCAsyncStorage (1.11.0):
     - React
+  - RNDeviceInfo (5.6.3):
+    - React
   - RNFastImage (8.3.2):
     - React
     - SDWebImage (~> 5.8)
@@ -651,6 +653,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../../../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../../../node_modules/react-native-navigation`)
   - "RNCAsyncStorage (from `../../../node_modules/@react-native-community/async-storage`)"
+  - RNDeviceInfo (from `../../../node_modules/react-native-device-info`)
   - RNFastImage (from `../../../node_modules/react-native-fast-image`)
   - "RNFBAnalytics (from `../../../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../../../node_modules/@react-native-firebase/app`)"
@@ -821,6 +824,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native-navigation"
   RNCAsyncStorage:
     :path: "../../../node_modules/@react-native-community/async-storage"
+  RNDeviceInfo:
+    :path: "../../../node_modules/react-native-device-info"
   RNFastImage:
     :path: "../../../node_modules/react-native-fast-image"
   RNFBAnalytics:
@@ -952,6 +957,7 @@ SPEC CHECKSUMS:
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
   ReactNativeNavigation: b38eca44d4d85e04757a2681bfc6e1b178c6c2d1
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
+  RNDeviceInfo: 5be12a5bfbb8da3528c43ee4373abd9c30d04616
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNFBAnalytics: 43b6cdfb3f3c8ddd4425260aa246a5f73d7f71c3
   RNFBApp: d55b3a69d199cff25ecf4f3bf41a86c47aa37d57
@@ -982,4 +988,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c0bf0efa29936ea76bc1b0a9c25ed6ee99d3efc2
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import { WebView } from 'react-native-webview'
 import { hasNotch } from 'utils/platform'
 
@@ -9,7 +9,7 @@ export const Base = styled.View`
 
 export const BaseWebView = styled(WebView)`
   flex: 1;
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.default};
 `
 
 export const Footer = styled.View`
@@ -22,7 +22,7 @@ export const Footer = styled.View`
   right: 0px;
   align-items: center;
   flex-direction: row;
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.default};
 `
 
 export const Inner = styled.View`

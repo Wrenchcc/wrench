@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import { isIphone, hasNotch } from 'utils/platform'
 import { NAVIGATION } from 'navigation/constants'
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import { hasNotch } from 'utils/platform'
 import UiTouchable from 'ui/Touchable'
 
@@ -7,7 +7,7 @@ export const BUTTON_HEIGHT = 70
 export const ITEM_HEIGHT = 65
 
 export const Base = styled.View`
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.default};
   padding-top: ${SPACER}px;
 `
 
