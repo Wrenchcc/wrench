@@ -80,7 +80,7 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^5.2.0",
-    "flipper-plugin-react-native-performance": "^0.4.3",
+    "flipper-plugin-react-native-performance": "^0.5.0",
     "metro-react-native-babel-preset": "^0.61.0"
   }
 }

@@ -87,7 +87,7 @@ project.ext.react = [
     composeSourceMapsPath: "../../node_modules/react-native/scripts/compose-source-maps.js",
     enableHermes: true,
     entryFile: "./packages/mobile/index.js",
-    hermesCommand: "../../../../node_modules/hermes-engine/%OS-BIN%/hermes",
+    hermesCommand: "../../../../node_modules/hermes-engine/%OS-BIN%/hermesc",
 ]
 
 apply from: projectRoot + "node_modules/react-native/react.gradle"

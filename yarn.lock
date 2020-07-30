@@ -11233,10 +11233,10 @@ flatten@^1.0.2:
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
   integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
 
-flipper-plugin-react-native-performance@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/flipper-plugin-react-native-performance/-/flipper-plugin-react-native-performance-0.4.3.tgz#08ce4f7dda1aa7f920be755532c149200751a264"
-  integrity sha512-FAmCeRbtwtEE4xLZb3UmgBTMAuoOyt6zPA9c9852Gxw8YjlXb22VKrW2VwbanEEUuD/fFha3Moog5i08OuF5nQ==
+flipper-plugin-react-native-performance@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/flipper-plugin-react-native-performance/-/flipper-plugin-react-native-performance-0.5.0.tgz#7f33ca9d1d8f4cbccdb82633ed4f9bfd807859a3"
+  integrity sha512-QsxoyE4m1MrJeprOk6j3rFS8I9BVuI3Y+TnhvOiCpCMf46MukJKFRVtveR0rgdXe/o3tuSdquyToYE8IuvWY6A==
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -15587,11 +15587,12 @@ metro-react-native-babel-preset@0.59.0:
     "@babel/template" "^7.0.0"
     react-refresh "^0.4.0"
 
-metro-react-native-babel-preset@^0.60.0:
-  version "0.60.0"
-  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.60.0.tgz#9aaaeca10a04c117ea84fb18e54c44ddcaad2ab8"
-  integrity sha512-eByxCh52XWyMwh4eduzLz0HkraOX7X/tJBsOXvxhUaj8UEolxMYQWD1DO7rJbFiKfZbxRPortltDYzjJI4MpdQ==
+metro-react-native-babel-preset@^0.61.0:
+  version "0.61.0"
+  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.61.0.tgz#4276f6a300daba5f43d6b35f30a8354f8aa093a1"
+  integrity sha512-k0j2K70YadKFFayFOtw9sbaB38LdkkJLluwqHvyl9CRAa3m7cWQ6pZbakCPrp3OWyo7dJWbP70ybOvjoDv2jwQ==
   dependencies:
+    "@babel/core" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-proposal-export-default-from" "^7.0.0"
     "@babel/plugin-proposal-nullish-coalescing-operator" "^7.0.0"
