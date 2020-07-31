@@ -2,7 +2,7 @@
 import { Observable } from '@apollo/client'
 import { onError } from '@apollo/link-error'
 import { REFRESH_TOKEN } from 'graphql/mutations/user/refreshToken'
-import { client } from '../../'
+import { client } from '../../withApollo'
 import Cookie, { Cookies } from 'services/cookie'
 
 export default onError(({ graphQLErrors, operation, forward }) => {
