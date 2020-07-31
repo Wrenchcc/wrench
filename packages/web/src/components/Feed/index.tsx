@@ -2,7 +2,7 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import Seo from 'utils/seo'
 import { Post, Layout, Loader } from 'ui'
 import FollowingProjects from 'components/FollowingProjects'

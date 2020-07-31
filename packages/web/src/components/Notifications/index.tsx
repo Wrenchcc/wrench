@@ -2,7 +2,7 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { GET_NOTIFICATIONS } from 'graphql/queries/notifications/notifications'
 import { Notification, Loader, Text } from 'ui'
 import { Base, Empty, LoaderContainer } from './styles'

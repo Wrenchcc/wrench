@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { Text, Loader } from 'ui'
@@ -57,7 +57,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
           <ReactPhoneInput
             country={viewerCountry && viewerCountry.toLowerCase()}
             disableDropdown
-            onChange={val => setNumber(val)}
+            onChange={(val) => setNumber(val)}
             value={number}
           />
           <Send

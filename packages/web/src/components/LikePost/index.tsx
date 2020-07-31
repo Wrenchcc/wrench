@@ -1,7 +1,7 @@
 import React, { useCallback, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { LIKE_POST_MUTATION } from 'graphql/mutations/post/like'
 import { Text } from 'ui'
 import { useCookie, Cookies } from 'hooks'
@@ -24,7 +24,7 @@ function LikePost({ post }) {
   ))
 
   const handleToggleLike = useCallback(
-    id => {
+    (id) => {
       if (!isAuthenticated) {
         showModal()
         return

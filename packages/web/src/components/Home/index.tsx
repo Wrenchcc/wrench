@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import Link from 'next/link'
 import { Title } from 'ui'
 import { GET_POPULAR_PROJECTS } from 'graphql/queries/project/popularProjects'

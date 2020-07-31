@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
 import { useModal, Modal } from 'ui/Modal'
@@ -28,7 +28,7 @@ function UserFollowingProjects({ username, isAuthenticated }) {
     </Modal>
   ))
 
-  const toggleFollow = project => {
+  const toggleFollow = (project) => {
     if (!isAuthenticated) {
       showModal()
       return

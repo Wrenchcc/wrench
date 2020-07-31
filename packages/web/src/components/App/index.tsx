@@ -1,13 +1,13 @@
 // @ts-nocheck
 import React from 'react'
+import Head from 'next/head'
 import NextApp from 'next/app'
 import Cookie from 'services/cookie'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import ApolloClient from 'apollo-client'
 import { I18nextProvider, useSSR } from 'react-i18next'
-import { ApolloProvider } from '@apollo/react-hooks'
-import withApollo from 'graphql/withApollo'
+import withApollo from 'services/apollo/withApollo'
+import AuthLink from 'services/apollo/links/Auth'
 import GoogleAnalyticsSDK from 'components/GoogleAnalyticsSDK'
 import Promo from 'components/Promo'
 import GoogleAnalytics from 'services/google-analytics'
@@ -87,13 +87,9 @@ class App extends NextApp<Props> {
   }
 
   public render() {
-    const { apollo } = this.props
-
     return (
       <I18nextProvider i18n={i18n}>
-        <ApolloProvider client={apollo}>
-          <AppWithi18n {...this.props} />
-        </ApolloProvider>
+        <AppWithi18n {...this.props} />
       </I18nextProvider>
     )
   }
@@ -112,6 +108,29 @@ function AppWithi18n({
 
   return (
     <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="144x144"
+          href="/public/apple-touch-icon-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="152x152"
+          href="/public/apple-touch-icon-152x152.png"
+        />
+        <link rel="icon" type="image/png" href="/public/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/public/favicon-16x16.png" sizes="16x16" />
+        <meta name="msapplication-TileImage" content="/public/mstile-144x144.png" />
+      </Head>
+
       <GlobalStyle />
       <Seo />
       <GoogleAnalyticsSDK />

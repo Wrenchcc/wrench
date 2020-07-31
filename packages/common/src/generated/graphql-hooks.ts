@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/react-common';
-import * as ApolloReactHooks from '@apollo/react-hooks';
+import * as ApolloReactCommon from '@apollo/client';
+import * as ApolloReactHooks from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -1553,7 +1553,7 @@ export type LikePostMutation = (
   )> }
 );
 
-export type MarkAllNotificationsSeenMutationVariables = {};
+export type MarkAllNotificationsSeenMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MarkAllNotificationsSeenMutation = (
@@ -1727,7 +1727,7 @@ export type CommentsQuery = (
   )> }
 );
 
-export type CurrentUserQueryVariables = {};
+export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CurrentUserQuery = (
@@ -1819,7 +1819,7 @@ export type CurrentUserProfileQuery = (
   )> }
 );
 
-export type CurrentUserProjectsQueryVariables = {};
+export type CurrentUserProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CurrentUserProjectsQuery = (
@@ -1830,7 +1830,7 @@ export type CurrentUserProjectsQuery = (
   )> }
 );
 
-export type CurrentUserSettingsQueryVariables = {};
+export type CurrentUserSettingsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CurrentUserSettingsQuery = (
@@ -1960,7 +1960,7 @@ export type LikesQuery = (
   )> }
 );
 
-export type MetaQueryVariables = {};
+export type MetaQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MetaQuery = (
@@ -2123,7 +2123,7 @@ export type ProjectSuggestionsQuery = (
   )>>> }
 );
 
-export type ProjectTypesQueryVariables = {};
+export type ProjectTypesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProjectTypesQuery = (

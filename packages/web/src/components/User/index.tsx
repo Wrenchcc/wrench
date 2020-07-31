@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import Seo from 'utils/seo'
 import { USER_BY_USERNAME } from 'graphql/queries/user/userByUsername'

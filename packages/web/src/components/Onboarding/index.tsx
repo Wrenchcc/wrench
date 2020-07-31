@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 import { omit } from 'ramda'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import { GET_PROJECT_TYPES } from 'graphql/queries/project/projectTypes'
 import { EDIT_USER_MUTATION } from 'graphql/mutations/user/editUser'
@@ -25,7 +25,7 @@ export default function Onboarding() {
     return false
   }
 
-  const toggleSelection = item => {
+  const toggleSelection = (item) => {
     if (items[item.id]) {
       setItems(omit([item.id]))
     } else {
@@ -38,7 +38,7 @@ export default function Onboarding() {
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
-  const interestedIn = Object.keys(items).map(id => ({ id }))
+  const interestedIn = Object.keys(items).map((id) => ({ id }))
 
   return (
     <Base>
@@ -68,7 +68,7 @@ export default function Onboarding() {
         <Scroll>
           <Types>
             {!loading &&
-              data.types.map(item => {
+              data.types.map((item) => {
                 return (
                   <Picture
                     key={item.id}

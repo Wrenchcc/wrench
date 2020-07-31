@@ -1,7 +1,7 @@
 // @ts-nocheck
 import InfiniteScroll from 'react-infinite-scroller'
 import styled from 'styled-components'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import Seo from 'utils/seo'
 import { GET_EXPLORE } from 'graphql/queries/explore/explore'
 import { Post, Layout, Loader } from 'ui'

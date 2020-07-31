@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useApolloClient } from '@apollo/react-hooks'
+import { useApolloClient } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'

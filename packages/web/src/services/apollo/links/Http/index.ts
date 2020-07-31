@@ -1,4 +1,4 @@
-import { BatchHttpLink } from 'apollo-link-batch-http'
+import { BatchHttpLink } from '@apollo/link-batch-http'
 import fetch from 'isomorphic-unfetch'
 
 export default new BatchHttpLink({
