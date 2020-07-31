@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import UiText from 'ui/Text'
 import UiTouchable from 'ui/Touchable'
 

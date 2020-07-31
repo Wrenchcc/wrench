@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { CURRENT_USER_FOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 

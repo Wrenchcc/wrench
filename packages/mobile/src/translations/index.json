@@ -1,5 +1,11 @@
 {
   "en": {
+    "AddCollection": {
+      "title": "New Collection",
+      "add": "Add new",
+      "placeholder": "Ex. Engine rebuild",
+      "done": "Done"
+    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -43,6 +49,7 @@
         "alertDescription": "If you going back now your edit will be deleted.",
         "report": "Report",
         "edit": "Edit",
+        "collection": "Add to collection",
         "delete": "Delete",
         "cancel": "Cancel"
       }
@@ -103,6 +110,10 @@
       "add": "Share",
       "social": "Social"
     },
+    "AddPostToCollection": {
+      "title": "Add posts",
+      "done": "Done"
+    },
     "AddProject": {
       "headerTitle": "Add project",
       "title": "Choose a title for your project.",
@@ -123,6 +134,12 @@
     "Comments": {
       "title": "Comments",
       "loadMore": "Load more comments"
+    },
+    "EditCollection": {
+      "done": "Done",
+      "title": "Information",
+      "placeholder": "Ex. Engine rebuild",
+      "delete": "Delete"
     },
     "EditModel": {
       "save": "Save",
@@ -145,6 +162,9 @@
     },
     "Followers": {
       "title": "Followers"
+    },
+    "Sparks": {
+      "title": "Sparks"
     },
     "Project": {
       "recent": "Recent posts",
@@ -185,18 +205,16 @@
       "description": "Document your builds, share your projects & learn from like-minded.",
       "other": "Other sign in options"
     },
-    "EditButton": {
-      "edit": "Edit"
-    },
     "FollowingProjects": {
       "title": "This user don’t have any own projects yet.",
       "description": "But here’s some of the projects {{name}} follows."
     },
-    "SettingsButton": {
-      "settings": "Settings"
-    },
     "UserProjects": {
       "title": "Projects"
+    },
+    "Bookmarks": {
+      "title": "Save",
+      "description": "Save posts that you want to see again. No one is notified, and only you can see what you've saved."
     },
     "EditProfile": {
       "headerTitle": "Edit profile",
@@ -222,6 +240,11 @@
       "validation": "Please check required fields.",
       "validationUsername": "Username is already taken."
     },
+    "Me": {
+      "edit": "Edit profile",
+      "settings": "Settings",
+      "bookmarks": "Saved posts"
+    },
     "Settings": {
       "invite": "Invite people",
       "share": "Share us",
@@ -233,6 +256,9 @@
       "language": "Language",
       "membership": "Membership",
       "general": "General",
+      "developer": "Developer",
+      "clear": "Clear saved data",
+      "codepush": "Code Push",
       "terms": "Terms and conditions",
       "website": "Website",
       "credits": "Credits",
@@ -252,6 +278,10 @@
       "languages": {
         "en": "English",
         "sv": "Swedish"
+      },
+      "stages": {
+        "staging": "Staging",
+        "production": "Production"
       },
       "notifications": {
         "NEW_COMMENT": "Comments",
@@ -374,6 +404,12 @@
     }
   },
   "sv": {
+    "AddCollection": {
+      "title": "Ny kollektion",
+      "add": "Lägg till",
+      "placeholder": "Förgasare",
+      "done": "Klar"
+    },
     "AskForPermission": {
       "camera": {
         "alertTitle": "Whoops!",
@@ -417,6 +453,7 @@
         "alertDescription": "Om du backar nu kommer din redigering att kastas.",
         "report": "Rapportera",
         "edit": "Redigera",
+        "collection": "Lägga till i kollektion",
         "delete": "Radera",
         "cancel": "Avbryt"
       }
@@ -477,6 +514,10 @@
       "add": "Dela",
       "social": "Socialt"
     },
+    "AddPostToCollection": {
+      "title": "Lägg till inlägg",
+      "done": "Klar"
+    },
     "AddProject": {
       "headerTitle": "Skapa projekt",
       "title": "Välj en titel på ditt projekt.",
@@ -497,6 +538,12 @@
     "Comments": {
       "title": "Kommentarer",
       "loadMore": "Ladda fler kommentarer"
+    },
+    "EditCollection": {
+      "done": "Klar",
+      "title": "Information",
+      "placeholder": "Förgasare",
+      "delete": "Radera"
     },
     "EditModel": {
       "save": "Spara",
@@ -519,6 +566,9 @@
     },
     "Followers": {
       "title": "Följare"
+    },
+    "Sparks": {
+      "title": "Gnistor"
     },
     "Project": {
       "recent": "Senaste inlägg",
@@ -556,21 +606,19 @@
     },
     "SignIn": {
       "headline": "Din \nmotorcykel \ncommunity.",
-      "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+      "description": "Dokumentera dina byggen, dela dina projekt och lär av likasinnade.",
       "other": "Andra inloggningsalternativ"
-    },
-    "EditButton": {
-      "edit": "Redigera"
     },
     "FollowingProjects": {
       "title": "Den här användaren har inga egna projekt ännu.",
       "description": "Men här är några project som {{name}} följer."
     },
-    "SettingsButton": {
-      "settings": "Inställningar"
-    },
     "UserProjects": {
       "title": "Projekt"
+    },
+    "Bookmarks": {
+      "title": "Spara",
+      "description": "Spara inlägg som du vill se igen. Ingen blir notifierad och det är bara du som kan se vad du sparat."
     },
     "EditProfile": {
       "headerTitle": "Redigera profil",
@@ -596,6 +644,11 @@
       "validation": "Kontrollera alla obligatoriska fält.",
       "validationUsername": "Användarnamn är upptaget."
     },
+    "Me": {
+      "edit": "Redigera profil",
+      "settings": "Inställningar",
+      "bookmarks": "Sparade inlägg"
+    },
     "Settings": {
       "invite": "Bjud in vänner",
       "share": "Dela oss",
@@ -607,6 +660,9 @@
       "language": "Språk",
       "membership": "Medlemskap",
       "general": "Almänt",
+      "developer": "Utvecklare",
+      "clear": "Rensa sparad data",
+      "codepush": "Code Push",
       "terms": "Villkor",
       "website": "Hemsida",
       "credits": "Tack till",
@@ -626,6 +682,10 @@
       "languages": {
         "en": "Engelska",
         "sv": "Svenska"
+      },
+      "stages": {
+        "staging": "Staging",
+        "production": "Produktion"
       },
       "notifications": {
         "NEW_COMMENT": "Kommentarer",

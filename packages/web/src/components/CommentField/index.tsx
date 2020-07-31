@@ -2,7 +2,7 @@
 import React, { memo, useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Mention, MentionsInput } from 'react-mentions'
-import { useQuery, useLazyQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useLazyQuery, useMutation } from '@apollo/client'
 import { prepend, append } from 'ramda'
 import { useCurrentUserQuery } from '@wrench/common'
 import optimisticId from 'utils/optimisticId'
@@ -297,7 +297,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
   ))
 
   const handleOnKeyDown = useCallback(
-    evt => {
+    (evt) => {
       if (evt.keyCode == 13 && evt.shiftKey == false) {
         evt.preventDefault()
         handleSubmit()

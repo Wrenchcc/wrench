@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Base = styled.View`
-  padding-bottom: ${props => (props.paddingBottom ? props.paddingBottom : 50)}px;
+  padding-bottom: ${(props) => (props.paddingBottom ? props.paddingBottom : 50)}px;
 `
 
 export const Top = styled.View`
@@ -21,4 +21,9 @@ export const Headline = styled.View`
 
 export const Spacer = styled.View`
   margin-top: 20px;
+`
+
+export const Row = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `

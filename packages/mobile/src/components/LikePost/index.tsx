@@ -3,13 +3,19 @@ import { Animated } from 'react-native'
 import { useLikePostMutation } from '@wrench/common'
 import * as Haptics from 'expo-haptics'
 import { useTranslation } from 'react-i18next'
-import { Icon, Text } from 'ui'
+import { useNavigation, SCREENS } from 'navigation'
+import { Icon, Text, UserStack } from 'ui'
 import { spark } from 'images'
 import { Base } from './styled'
 
 function LikePost({ post }) {
   const { t } = useTranslation()
+  const { navigate } = useNavigation()
   const [toggleLike] = useLikePostMutation()
+
+  const navigateToLikes = useCallback(() => {
+    navigate(SCREENS.LIKES, { id: post.id })
+  }, [])
 
   const animatedValue = useRef(new Animated.Value(0))
 
@@ -62,7 +68,13 @@ function LikePost({ post }) {
         />
       </Animated.View>
 
-      <Text fontSize={15}>{t('LikePost:like', { count: post.likes.totalCount })}</Text>
+      {post.likes.totalCount > 2 && (
+        <UserStack users={post.likesConnection.edges} onPress={navigateToLikes} />
+      )}
+
+      <Text fontSize={15} onPress={navigateToLikes}>
+        {t('LikePost:like', { count: post.likes.totalCount })}
+      </Text>
     </Base>
   )
 }

@@ -1,0 +1,16 @@
+{
+  "AddCollection": {
+    "en": {
+      "title": "New Collection",
+      "add": "Add new",
+      "placeholder": "Ex. Engine rebuild",
+      "done": "Done"
+    },
+    "sv": {
+      "title": "Ny kollektion",
+      "add": "Lägg till",
+      "placeholder": "Förgasare",
+      "done": "Klar"
+    }
+  }
+}

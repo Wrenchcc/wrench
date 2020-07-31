@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react'
-import { PixelRatio, Animated, View } from 'react-native'
-import FastImage from 'react-native-fast-image'
+import { PixelRatio, Animated, View, ImageProps } from 'react-native'
+import FastImage, { FastImageProps } from 'react-native-fast-image'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import { Base } from './styles'
 import Spinner from '../Spinner'
@@ -8,6 +8,16 @@ import Spinner from '../Spinner'
 const PROGRESS_COLOR = '#E1E1E2'
 
 const density = PixelRatio.get()
+
+type ImageComponentProps = {
+  placeholderColor?: string
+  placeholderDensity?: number
+  borderColor?: string
+  borderWidth?: number
+  priority?: 'low' | 'normal' | 'high'
+  showIndicator?: boolean
+} & ImageProps &
+  FastImageProps
 
 function Image({
   width,
@@ -20,8 +30,9 @@ function Image({
   borderColor,
   borderWidth,
   showIndicator,
+  style = {},
   ...props
-}) {
+}: ImageComponentProps) {
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
 
@@ -71,36 +82,38 @@ function Image({
       height={height}
       borderRadius={borderRadius}
       placeholderColor={placeholderColor}
+      style={style}
     >
       <Animated.Image
         {...props}
         source={{
           uri: placeholder,
         }}
-        style={{ width, height }}
+        style={[{ width, height }, style]}
         blurRadius={3}
       />
 
       <FastImage
         {...props}
-        source={{ uri }}
+        source={{ uri, priority: priority || IMAGE_PRIORITY.NORMAL }}
         onLoadStart={handleLoadStart}
         onLoadEnd={handleLoadEnd}
         onProgress={handleProgress}
         onError={handleError}
-        style={{
-          borderColor,
-          borderRadius,
-          borderWidth,
-          bottom: 0,
-          height,
-          left: 0,
-          position: 'absolute',
-          right: 0,
-          top: 0,
-          width,
-        }}
-        priority={priority || IMAGE_PRIORITY.NORMAL}
+        style={[
+          {
+            borderColor,
+            borderRadius,
+            borderWidth,
+            bottom: 0,
+            height,
+            left: 0,
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            width,
+          },
+        ]}
       />
 
       {(showIndicator && loading) || (showIndicator && progress < 1) ? (

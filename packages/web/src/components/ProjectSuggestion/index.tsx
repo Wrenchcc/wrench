@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import { GET_PROJECT_SUGGESTIONS } from 'graphql/queries/project/projectSuggestions'
 import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
@@ -12,7 +12,7 @@ function ProjectSuggestion() {
   const { data, loading } = useQuery(GET_PROJECT_SUGGESTIONS)
   const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
 
-  const toggleFollow = project => {
+  const toggleFollow = (project) => {
     const totalCount = project.permissions.isFollower
       ? project.followers.totalCount - 1
       : project.followers.totalCount + 1

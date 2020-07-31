@@ -6,6 +6,7 @@
         "alertDescription": "If you going back now your edit will be deleted.",
         "report": "Report",
         "edit": "Edit",
+        "collection": "Add to collection",
         "delete": "Delete",
         "cancel": "Cancel"
       }
@@ -16,6 +17,7 @@
         "alertDescription": "Om du backar nu kommer din redigering att kastas.",
         "report": "Rapportera",
         "edit": "Redigera",
+        "collection": "Lägga till i kollektion",
         "delete": "Radera",
         "cancel": "Avbryt"
       }

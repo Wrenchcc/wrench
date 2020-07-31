@@ -2,7 +2,7 @@
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { useClickOutside } from 'hooks'
@@ -64,7 +64,7 @@ function Header({ isAuthenticated }) {
     if (data.notifications && data.notifications.unreadCount > 0) {
       // @ts-ignore
       markNotificationsSeen({
-        update: proxy => {
+        update: (proxy) => {
           const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
 
           const notifications = {

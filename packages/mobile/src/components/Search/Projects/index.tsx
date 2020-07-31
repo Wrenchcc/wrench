@@ -9,16 +9,7 @@ import { ProjectCard, InfiniteList, NoResults, SearchingFor, Loader, Text } from
 import { Header } from '../styles'
 import { Keyboard } from 'react-native'
 
-const ITEM_HEIGHT = 200
 const MAX_ITEMS = 4
-
-function getItemLayout(_, index) {
-  return {
-    index,
-    length: ITEM_HEIGHT,
-    offset: ITEM_HEIGHT * index,
-  }
-}
 
 function Projects({ query }) {
   const { t } = useTranslation()
@@ -63,7 +54,7 @@ function Projects({ query }) {
   }, [])
 
   const handleSave = useCallback(
-    item => {
+    (item) => {
       // NOTE: isOwner to hide the follow button
       const items = [{ node: { ...item, permissions: { isOwner: true } } }, ...recent]
       const saved = recent.some(({ node }) => node.id === item.id)
@@ -114,7 +105,6 @@ function Projects({ query }) {
       borderSeparator
       initialNumToRender={4}
       paddingBottom={40}
-      getItemLayout={getItemLayout}
       ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
       data={query ? edges : recent}
       fetchMore={fetchMore}

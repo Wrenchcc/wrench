@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>google-play</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="google-play" transform="translate(1.000000, 1.000000)" stroke="#000000" stroke-width="1.5">
+            <polygon id="Path" points="9 9 11.9986364 11.9986364 0 18 0 0 11.9986364 6.00136364"></polygon>
+            <line x1="9" y1="9" x2="0" y2="0" id="Path"></line>
+            <polygon id="Path" points="18 9 11.9986364 11.9986364 9 9 11.9986364 6.00136364"></polygon>
+            <line x1="9" y1="9" x2="0" y2="18" id="Path"></line>
+        </g>
+    </g>
+</svg>

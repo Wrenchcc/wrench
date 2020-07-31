@@ -1,15 +1,19 @@
+import bookmarks from './bookmarks'
+import commentsConnection from './commentsConnection'
+import filesConnection from './filesConnection'
+import likes from './likes'
+import likesConnection from './likesConnection'
+import permissions from './permissions'
 import post from './post'
 import posts from './posts'
-import filesConnection from './filesConnection'
-import commentsConnection from './commentsConnection'
-import permissions from './permissions'
 import project from './project'
 import user from './user'
-import likes from './likes'
 
 export default {
   Post: {
+    bookmarks,
     commentsConnection,
+    likesConnection,
     filesConnection,
     likes,
     permissions,

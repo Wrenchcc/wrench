@@ -86,14 +86,12 @@ function AddMedia() {
   return (
     <Base>
       <Header
-        headerLeft={
-          <Icon source={close} onPress={handleDismissModal} nativeHandler color="white" />
-        }
+        headerLeft={<Icon source={close} onPress={handleDismissModal} color="white" />}
         headerRight={
           isLoading ? (
             <ActivityIndicator color="white" />
           ) : hasSelectedFiles ? (
-            <Touchable onPress={handleCropping} nativeHandler>
+            <Touchable onPress={handleCropping}>
               <Text color="white" medium>
                 {t('AddMedia:next')}
               </Text>

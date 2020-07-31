@@ -11,6 +11,9 @@
       "language": "Language",
       "membership": "Membership",
       "general": "General",
+      "developer": "Developer",
+      "clear": "Clear saved data",
+      "codepush": "Code Push",
       "terms": "Terms and conditions",
       "website": "Website",
       "credits": "Credits",
@@ -30,6 +33,10 @@
       "languages": {
         "en": "English",
         "sv": "Swedish"
+      },
+      "stages": {
+        "staging": "Staging",
+        "production": "Production"
       },
       "notifications": {
         "NEW_COMMENT": "Comments",
@@ -51,6 +58,9 @@
       "language": "Språk",
       "membership": "Medlemskap",
       "general": "Almänt",
+      "developer": "Utvecklare",
+      "clear": "Rensa sparad data",
+      "codepush": "Code Push",
       "terms": "Villkor",
       "website": "Hemsida",
       "credits": "Tack till",
@@ -70,6 +80,10 @@
       "languages": {
         "en": "Engelska",
         "sv": "Svenska"
+      },
+      "stages": {
+        "staging": "Staging",
+        "production": "Produktion"
       },
       "notifications": {
         "NEW_COMMENT": "Kommentarer",

@@ -28,6 +28,7 @@ export enum TOAST_TYPES {
   SPAM = 'SPAM',
   SUCCESS = 'SUCCESS',
   ERROR = 'ERROR',
+  WARNING = 'WARNING',
 }
 
 export enum SIGN_IN_PROVIDERS {

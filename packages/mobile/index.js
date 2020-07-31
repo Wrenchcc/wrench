@@ -3,7 +3,7 @@ import 'i18n'
 
 import { Linking } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { notifications } from 'react-native-firebase'
+import messaging from '@react-native-firebase/messaging'
 import { Bootstrap, registerScreens } from 'navigation'
 import { createPushNotificationsHandler } from 'utils/pushNotifications'
 import { createDeepLinkingHandler } from 'utils/dynamicLinks'
@@ -15,18 +15,18 @@ Navigation.events().registerAppLaunchedListener(async () => {
 
   Linking.addEventListener('url', createDeepLinkingHandler)
 
-  const notificationOpen = await notifications().getInitialNotification()
+  const notificationOpen = await messaging().getInitialNotification()
 
-  if (notificationOpen && notificationOpen.notification.data) {
+  if (notificationOpen && notificationOpen.data) {
     setTimeout(() => {
-      createPushNotificationsHandler(notificationOpen.notification.data.path)
+      createPushNotificationsHandler(notificationOpen.data.path)
     }, 500)
   }
 
-  notifications().onNotificationOpened(({ notification }) => {
-    if (notification.data) {
+  messaging().onNotificationOpenedApp(({ data }) => {
+    if (data) {
       setTimeout(() => {
-        createPushNotificationsHandler(notification.data.path)
+        createPushNotificationsHandler(data.path)
       }, 500)
     }
   })

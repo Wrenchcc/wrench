@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useState, useCallback } from 'react'
+import { Keyboard } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedLazyQuery, SearchHashtagsDocument } from '@wrench/common'
@@ -6,8 +7,8 @@ import { useNavigation, SCREENS } from 'navigation'
 import { RECENT_SEARCHES_HASHTAGS } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
 import { InfiniteList, NoResults, SearchingFor, Loader, Text, Hashtag } from 'ui'
+import PlaceholderCollection from 'ui/Hashtag/PlaceholderCollection'
 import { Header } from '../styles'
-import { Keyboard } from 'react-native'
 
 const ITEM_HEIGHT = 68
 const MAX_ITEMS = 4
@@ -63,7 +64,7 @@ function Hashtags({ query }) {
   }, [])
 
   const handleSave = useCallback(
-    item => {
+    (item) => {
       // NOTE: isOwner to hide the follow button
       const items = [{ node: item }, ...recent]
       const saved = recent.some(({ node }) => node.id === item.id)
@@ -108,37 +109,42 @@ function Hashtags({ query }) {
     return <Hashtag {...item.node} onPress={onPress} />
   }
 
-  return (
-    <InfiniteList
-      borderSeparator
-      initialNumToRender={4}
-      paddingBottom={40}
-      getItemLayout={getItemLayout}
-      ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
-      data={query ? edges : recent}
-      fetchMore={fetchMore}
-      hasNextPage={isFetching ? false : hasNextPage}
-      isFetching={isFetching && query.length === 0}
-      isRefetching={isRefetching}
-      refetch={refetch}
-      renderItem={renderItem}
-      defaultPadding
-      ListHeaderComponent={
-        !query &&
-        recent.length > 0 && (
-          <Header>
-            <Text medium>{t('Search:recent')}</Text>
-            <Text fontSize={14} onPress={handleRemove} medium>
-              {t('Search:clear')}
-            </Text>
-          </Header>
-        )
-      }
-      ListFooterComponent={
-        isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
-      }
-    />
-  )
+  const content =
+    isFetching && !edges ? (
+      <PlaceholderCollection contentInset={0} marginTop={15} />
+    ) : (
+      <InfiniteList
+        borderSeparator
+        initialNumToRender={4}
+        paddingBottom={40}
+        getItemLayout={getItemLayout}
+        ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
+        data={query ? edges : recent}
+        fetchMore={fetchMore}
+        hasNextPage={isFetching ? false : hasNextPage}
+        isFetching={isFetching && query.length === 0}
+        isRefetching={isRefetching}
+        refetch={refetch}
+        renderItem={renderItem}
+        defaultPadding
+        ListHeaderComponent={
+          !query &&
+          recent.length > 0 && (
+            <Header>
+              <Text medium>{t('Search:recent')}</Text>
+              <Text fontSize={14} onPress={handleRemove} medium>
+                {t('Search:clear')}
+              </Text>
+            </Header>
+          )
+        }
+        ListFooterComponent={
+          isFetching && !edges ? <SearchingFor query={query} /> : hasNextPage && query && <Loader />
+        }
+      />
+    )
+
+  return content
 }
 
 export default memo(Hashtags)

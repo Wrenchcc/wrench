@@ -19,7 +19,7 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
   const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
 
   useEffect(() => {
-    check(PERMISSION).then(response => {
+    check(PERMISSION).then((response) => {
       setLoading(false)
       setPermission(response)
     })
@@ -68,7 +68,7 @@ function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
 
       <CameraType onPress={changeCameraType} />
       <Wrapper>
-        <TakePicture onPress={takePicture} nativeHandler />
+        <TakePicture onPress={takePicture} />
       </Wrapper>
       <FlashMode onPress={changeFlashMode} flashMode={flashMode} />
     </>

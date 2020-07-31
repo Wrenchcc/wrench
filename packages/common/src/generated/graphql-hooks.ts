@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/react-common';
-import * as ApolloReactHooks from '@apollo/react-hooks';
+import * as ApolloReactCommon from '@apollo/client';
+import * as ApolloReactHooks from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -19,12 +19,19 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   dummy?: Maybe<Scalars['String']>;
+  bookmarks?: Maybe<BookmarkConnection>;
   comments?: Maybe<CommentConnection>;
   recentComments?: Maybe<CommentConnection>;
   comment?: Maybe<Comment>;
+  collections?: Maybe<PostConnection>;
+  projectCollections?: Maybe<CollectionConnection>;
   feed?: Maybe<Feed>;
   files?: Maybe<FileConnection>;
   followers?: Maybe<FollowersConnection>;
+  hashtag?: Maybe<Hashtag>;
+  likes?: Maybe<LikeConnection>;
+  meta?: Maybe<Meta>;
+  growth?: Maybe<Array<Maybe<GrowthData>>>;
   notifications?: Maybe<NotificationsConnection>;
   post?: Maybe<Post>;
   posts?: Maybe<PostConnection>;
@@ -37,9 +44,14 @@ export type Query = {
   user?: Maybe<User>;
   users?: Maybe<UserConnection>;
   currentUser?: Maybe<User>;
-  meta?: Maybe<Meta>;
-  growth?: Maybe<Array<Maybe<GrowthData>>>;
-  hashtag?: Maybe<Hashtag>;
+};
+
+
+export type QueryBookmarksArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
 
 
@@ -69,6 +81,25 @@ export type QueryCommentArgs = {
 };
 
 
+export type QueryCollectionsArgs = {
+  id: Scalars['ID'];
+  projectId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryProjectCollectionsArgs = {
+  projectId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
 export type QueryFilesArgs = {
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
@@ -83,6 +114,28 @@ export type QueryFollowersArgs = {
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryHashtagArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+};
+
+
+export type QueryLikesArgs = {
+  postId: Scalars['ID'];
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryGrowthArgs = {
+  type: GrowthType;
+  startDate?: Maybe<Scalars['Date']>;
+  endDate?: Maybe<Scalars['Date']>;
 };
 
 
@@ -169,24 +222,11 @@ export type QueryCurrentUserArgs = {
   before?: Maybe<Scalars['String']>;
 };
 
-
-export type QueryGrowthArgs = {
-  type: GrowthType;
-  startDate?: Maybe<Scalars['Date']>;
-  endDate?: Maybe<Scalars['Date']>;
-};
-
-
-export type QueryHashtagArgs = {
-  id?: Maybe<Scalars['ID']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-};
-
-export type CommentConnection = {
-  __typename?: 'CommentConnection';
+export type BookmarkConnection = {
+  __typename?: 'BookmarkConnection';
   totalCount?: Maybe<Scalars['Int']>;
   pageInfo: PageInfo;
-  edges?: Maybe<Array<CommentEdge>>;
+  edges?: Maybe<Array<BookmarkEdge>>;
 };
 
 export type PageInfo = {
@@ -195,28 +235,47 @@ export type PageInfo = {
   hasPreviousPage?: Maybe<Scalars['Boolean']>;
 };
 
-export type CommentEdge = {
-  __typename?: 'CommentEdge';
+export type BookmarkEdge = {
+  __typename?: 'BookmarkEdge';
   cursor: Scalars['String'];
-  node: Comment;
+  node: Post;
 };
 
-export type Comment = {
-  __typename?: 'Comment';
+export type Post = {
+  __typename?: 'Post';
   id?: Maybe<Scalars['ID']>;
-  commentId?: Maybe<Scalars['ID']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
-  text: Scalars['String'];
+  caption?: Maybe<Scalars['String']>;
   user?: Maybe<User>;
-  postId?: Maybe<Scalars['ID']>;
-  permissions?: Maybe<CommentPermissions>;
-  repliesConnection?: Maybe<CommentConnection>;
+  project?: Maybe<Project>;
+  postPermissions?: Maybe<PostPermissions>;
+  permissions?: Maybe<PostPermissions>;
   likes?: Maybe<Likes>;
+  bookmarks?: Maybe<Bookmarks>;
+  filesConnection?: Maybe<FileConnection>;
+  commentsConnection?: Maybe<CommentConnection>;
+  likesConnection?: Maybe<LikeConnection>;
 };
 
 
-export type CommentRepliesConnectionArgs = {
+export type PostFilesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  reverse?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<FileType>;
+};
+
+
+export type PostCommentsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type PostLikesConnectionArgs = {
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -347,6 +406,7 @@ export type Project = {
   filesConnection?: Maybe<FileConnection>;
   followersConnection?: Maybe<FollowersConnection>;
   postsConnection?: Maybe<PostConnection>;
+  collectionsConnection?: Maybe<CollectionConnection>;
 };
 
 
@@ -371,6 +431,14 @@ export type ProjectPostsConnectionArgs = {
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+
+export type ProjectCollectionsConnectionArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
 };
 
 export type ProjectPermissions = {
@@ -451,35 +519,26 @@ export type PostEdge = {
   node: Post;
 };
 
-export type Post = {
-  __typename?: 'Post';
+export type CollectionConnection = {
+  __typename?: 'CollectionConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CollectionEdge>>;
+};
+
+export type CollectionEdge = {
+  __typename?: 'CollectionEdge';
+  cursor: Scalars['String'];
+  node: Collection;
+};
+
+export type Collection = {
+  __typename?: 'Collection';
   id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  cover?: Maybe<CoverType>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
-  caption?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  project?: Maybe<Project>;
-  postPermissions?: Maybe<PostPermissions>;
-  permissions?: Maybe<PostPermissions>;
-  likes?: Maybe<Likes>;
-  filesConnection?: Maybe<FileConnection>;
-  commentsConnection?: Maybe<CommentConnection>;
-};
-
-
-export type PostFilesConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  reverse?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<FileType>;
-};
-
-
-export type PostCommentsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
 };
 
 export type PostPermissions = {
@@ -493,9 +552,63 @@ export type Likes = {
   isLiked?: Maybe<Scalars['Boolean']>;
 };
 
+export type Bookmarks = {
+  __typename?: 'Bookmarks';
+  totalCount?: Maybe<Scalars['Int']>;
+  isBookmarked?: Maybe<Scalars['Boolean']>;
+};
+
+export type CommentConnection = {
+  __typename?: 'CommentConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<CommentEdge>>;
+};
+
+export type CommentEdge = {
+  __typename?: 'CommentEdge';
+  cursor: Scalars['String'];
+  node: Comment;
+};
+
+export type Comment = {
+  __typename?: 'Comment';
+  id?: Maybe<Scalars['ID']>;
+  commentId?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  text: Scalars['String'];
+  user?: Maybe<User>;
+  postId?: Maybe<Scalars['ID']>;
+  permissions?: Maybe<CommentPermissions>;
+  repliesConnection?: Maybe<CommentConnection>;
+  likes?: Maybe<Likes>;
+};
+
+
+export type CommentRepliesConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
 export type CommentPermissions = {
   __typename?: 'CommentPermissions';
   isOwner?: Maybe<Scalars['Boolean']>;
+};
+
+export type LikeConnection = {
+  __typename?: 'LikeConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<LikeEdge>>;
+};
+
+export type LikeEdge = {
+  __typename?: 'LikeEdge';
+  cursor: Scalars['String'];
+  node: User;
 };
 
 export type Feed = {
@@ -509,6 +622,51 @@ export type FeedPostsConnectionArgs = {
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+export type Hashtag = {
+  __typename?: 'Hashtag';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  totalCount?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  postsConnection?: Maybe<PostConnection>;
+};
+
+
+export type HashtagPostsConnectionArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+export type Meta = {
+  __typename?: 'Meta';
+  isAdmin?: Maybe<Scalars['Boolean']>;
+  totalUsers?: Maybe<Scalars['Int']>;
+  totalProjects?: Maybe<Scalars['Int']>;
+  totalPosts?: Maybe<Scalars['Int']>;
+  totalComments?: Maybe<Scalars['Int']>;
+  totalFiles?: Maybe<Scalars['Int']>;
+  totalUsersToday?: Maybe<Scalars['Int']>;
+  totalProjectsToday?: Maybe<Scalars['Int']>;
+  totalPostsToday?: Maybe<Scalars['Int']>;
+  totalCommentsToday?: Maybe<Scalars['Int']>;
+  totalFilesToday?: Maybe<Scalars['Int']>;
+};
+
+export enum GrowthType {
+  Projects = 'PROJECTS',
+  Users = 'USERS'
+}
+
+export type GrowthData = {
+  __typename?: 'GrowthData';
+  date?: Maybe<Scalars['Date']>;
+  count?: Maybe<Scalars['Int']>;
 };
 
 export type NotificationsConnection = {
@@ -590,25 +748,6 @@ export type SearchResultEdge = {
 
 export type SearchResultNode = Project | User | Model | Hashtag;
 
-export type Hashtag = {
-  __typename?: 'Hashtag';
-  id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['LowercaseString']>;
-  totalCount?: Maybe<Scalars['Int']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  postsConnection?: Maybe<PostConnection>;
-};
-
-
-export type HashtagPostsConnectionArgs = {
-  first?: Maybe<Scalars['Int']>;
-  after?: Maybe<Scalars['String']>;
-  last?: Maybe<Scalars['Int']>;
-  before?: Maybe<Scalars['String']>;
-};
-
 export type UserConnection = {
   __typename?: 'UserConnection';
   pageInfo?: Maybe<PageInfo>;
@@ -621,32 +760,6 @@ export type UserEdge = {
   node?: Maybe<User>;
 };
 
-export type Meta = {
-  __typename?: 'Meta';
-  isAdmin?: Maybe<Scalars['Boolean']>;
-  totalUsers?: Maybe<Scalars['Int']>;
-  totalProjects?: Maybe<Scalars['Int']>;
-  totalPosts?: Maybe<Scalars['Int']>;
-  totalComments?: Maybe<Scalars['Int']>;
-  totalFiles?: Maybe<Scalars['Int']>;
-  totalUsersToday?: Maybe<Scalars['Int']>;
-  totalProjectsToday?: Maybe<Scalars['Int']>;
-  totalPostsToday?: Maybe<Scalars['Int']>;
-  totalCommentsToday?: Maybe<Scalars['Int']>;
-  totalFilesToday?: Maybe<Scalars['Int']>;
-};
-
-export enum GrowthType {
-  Projects = 'PROJECTS',
-  Users = 'USERS'
-}
-
-export type GrowthData = {
-  __typename?: 'GrowthData';
-  date?: Maybe<Scalars['Date']>;
-  count?: Maybe<Scalars['Int']>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   dummy?: Maybe<Scalars['String']>;
@@ -654,9 +767,13 @@ export type Mutation = {
   authenticateFacebook?: Maybe<Tokens>;
   authenticateGoogle?: Maybe<Tokens>;
   refreshToken?: Maybe<AccessToken>;
+  bookmarkPost?: Maybe<Post>;
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
+  addCollection?: Maybe<Collection>;
+  deleteCollection?: Maybe<Collection>;
+  collectPosts?: Maybe<Collection>;
   sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
   likeComment?: Maybe<Comment>;
@@ -670,6 +787,7 @@ export type Mutation = {
   addProject?: Maybe<Project>;
   editProject?: Maybe<Project>;
   deleteProject?: Maybe<Scalars['Boolean']>;
+  report?: Maybe<Scalars['Boolean']>;
   preSignUrls?: Maybe<Array<Maybe<PreSignedUrl>>>;
   preSignUrl?: Maybe<PreSignedUrl>;
   editUser?: Maybe<User>;
@@ -677,7 +795,6 @@ export type Mutation = {
   registerDeviceToken?: Maybe<Scalars['Boolean']>;
   banUser?: Maybe<Scalars['Boolean']>;
   deleteCurrentUser?: Maybe<Scalars['Boolean']>;
-  report?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -702,6 +819,11 @@ export type MutationRefreshTokenArgs = {
 };
 
 
+export type MutationBookmarkPostArgs = {
+  id: Scalars['ID'];
+};
+
+
 export type MutationAddCommentArgs = {
   postId: Scalars['ID'];
   commentId?: Maybe<Scalars['ID']>;
@@ -717,6 +839,25 @@ export type MutationEditCommentArgs = {
 
 export type MutationDeleteCommentArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationAddCollectionArgs = {
+  projectId: Scalars['ID'];
+  name: Scalars['String'];
+};
+
+
+export type MutationDeleteCollectionArgs = {
+  projectId: Scalars['ID'];
+  id: Scalars['ID'];
+};
+
+
+export type MutationCollectPostsArgs = {
+  projectId: Scalars['ID'];
+  collectionId: Scalars['ID'];
+  input?: Maybe<Array<Maybe<CollectionInput>>>;
 };
 
 
@@ -782,6 +923,12 @@ export type MutationDeleteProjectArgs = {
 };
 
 
+export type MutationReportArgs = {
+  id: Scalars['ID'];
+  type: ReportType;
+};
+
+
 export type MutationPreSignUrlsArgs = {
   input?: Maybe<Array<Maybe<PreSignedUrlnput>>>;
 };
@@ -813,12 +960,6 @@ export type MutationBanUserArgs = {
   userId: Scalars['ID'];
 };
 
-
-export type MutationReportArgs = {
-  id: Scalars['ID'];
-  type: ReportType;
-};
-
 export type ApplePayload = {
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
@@ -837,6 +978,10 @@ export type AccessToken = {
 
 export type CommentInput = {
   text: Scalars['String'];
+};
+
+export type CollectionInput = {
+  postId: Scalars['ID'];
 };
 
 export type PostInput = {
@@ -859,6 +1004,13 @@ export type ProjectInput = {
   projectTypeId?: Maybe<Scalars['ID']>;
   modelId?: Maybe<Scalars['ID']>;
 };
+
+export enum ReportType {
+  Project = 'PROJECT',
+  User = 'USER',
+  Comment = 'COMMENT',
+  Post = 'POST'
+}
 
 export type PreSignedUrlnput = {
   type: UploadType;
@@ -907,13 +1059,6 @@ export type ToggleNotificationSettingsInput = {
 export enum PlatformType {
   Mobile = 'MOBILE',
   Web = 'WEB'
-}
-
-export enum ReportType {
-  Project = 'PROJECT',
-  User = 'USER',
-  Comment = 'COMMENT',
-  Post = 'POST'
 }
 
 export type HashtagConnection = {
@@ -1015,6 +1160,9 @@ export type PostFragment = (
   )>, likes?: Maybe<(
     { __typename?: 'Likes' }
     & Pick<Likes, 'isLiked' | 'totalCount'>
+  )>, bookmarks?: Maybe<(
+    { __typename?: 'Bookmarks' }
+    & Pick<Bookmarks, 'isBookmarked'>
   )>, comments?: Maybe<(
     { __typename?: 'CommentConnection' }
     & Pick<CommentConnection, 'totalCount'>
@@ -1023,6 +1171,15 @@ export type PostFragment = (
       & { node: (
         { __typename?: 'Comment' }
         & CommentFragment
+      ) }
+    )>> }
+  )>, likesConnection?: Maybe<(
+    { __typename?: 'LikeConnection' }
+    & { edges?: Maybe<Array<(
+      { __typename?: 'LikeEdge' }
+      & { node: (
+        { __typename?: 'User' }
+        & Pick<User, 'id' | 'avatarUrl'>
       ) }
     )>> }
   )> }
@@ -1040,6 +1197,13 @@ export type ProjectFragment = (
   )>, followers?: Maybe<(
     { __typename?: 'FollowersConnection' }
     & Pick<FollowersConnection, 'totalCount'>
+    & { edges?: Maybe<Array<(
+      { __typename?: 'FollowersEdge' }
+      & { node: (
+        { __typename?: 'User' }
+        & Pick<User, 'id' | 'avatarUrl'>
+      ) }
+    )>> }
   )> }
 );
 
@@ -1077,7 +1241,7 @@ export type UserProjectsFragment = (
 
 export type UserSettingsFragment = (
   { __typename?: 'User' }
-  & Pick<User, 'id'>
+  & Pick<User, 'id' | 'role'>
   & { settings?: Maybe<(
     { __typename?: 'UserSettings' }
     & { notifications?: Maybe<(
@@ -1105,6 +1269,20 @@ export type UserSettingsFragment = (
         )> }
       )> }
     )> }
+  )> }
+);
+
+export type AddCollectionMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  name: Scalars['String'];
+}>;
+
+
+export type AddCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { addCollection?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'name' | 'id'>
   )> }
 );
 
@@ -1186,6 +1364,56 @@ export type AuthenticateGoogleMutation = (
   & { authenticateGoogle?: Maybe<(
     { __typename?: 'Tokens' }
     & Pick<Tokens, 'access_token' | 'refresh_token'>
+  )> }
+);
+
+export type BookmarkPostMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type BookmarkPostMutation = (
+  { __typename?: 'Mutation' }
+  & { bookmarkPost?: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id'>
+    & { bookmarks?: Maybe<(
+      { __typename?: 'Bookmarks' }
+      & Pick<Bookmarks, 'isBookmarked'>
+    )> }
+  )> }
+);
+
+export type CollectPostsMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  collectionId: Scalars['ID'];
+  input?: Maybe<Array<Maybe<CollectionInput>>>;
+}>;
+
+
+export type CollectPostsMutation = (
+  { __typename?: 'Mutation' }
+  & { collectPosts?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'id' | 'name'>
+    & { cover?: Maybe<(
+      { __typename?: 'CoverType' }
+      & Pick<CoverType, 'uri'>
+    )> }
+  )> }
+);
+
+export type DeleteCollectionMutationVariables = Exact<{
+  projectId: Scalars['ID'];
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteCollection?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'id'>
   )> }
 );
 
@@ -1325,7 +1553,7 @@ export type LikePostMutation = (
   )> }
 );
 
-export type MarkAllNotificationsSeenMutationVariables = {};
+export type MarkAllNotificationsSeenMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MarkAllNotificationsSeenMutation = (
@@ -1409,6 +1637,56 @@ export type ToggleNotificationSettingsMutation = (
   )> }
 );
 
+export type BookmarksQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type BookmarksQuery = (
+  { __typename?: 'Query' }
+  & { bookmarks?: Maybe<(
+    { __typename?: 'BookmarkConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'BookmarkEdge' }
+      & Pick<BookmarkEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Post' }
+        & PostFragment
+      ) }
+    )>> }
+  )> }
+);
+
+export type CollectionsQueryVariables = Exact<{
+  id: Scalars['ID'];
+  projectId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type CollectionsQuery = (
+  { __typename?: 'Query' }
+  & { collections?: Maybe<(
+    { __typename?: 'PostConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'PostEdge' }
+      & Pick<PostEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Post' }
+        & PostFragment
+      ) }
+    )>> }
+  )> }
+);
+
 export type CommentQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -1449,7 +1727,7 @@ export type CommentsQuery = (
   )> }
 );
 
-export type CurrentUserQueryVariables = {};
+export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CurrentUserQuery = (
@@ -1541,7 +1819,7 @@ export type CurrentUserProfileQuery = (
   )> }
 );
 
-export type CurrentUserProjectsQueryVariables = {};
+export type CurrentUserProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CurrentUserProjectsQuery = (
@@ -1552,7 +1830,7 @@ export type CurrentUserProjectsQuery = (
   )> }
 );
 
-export type CurrentUserSettingsQueryVariables = {};
+export type CurrentUserSettingsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CurrentUserSettingsQuery = (
@@ -1657,7 +1935,32 @@ export type HashtagQuery = (
   )> }
 );
 
-export type MetaQueryVariables = {};
+export type LikesQueryVariables = Exact<{
+  postId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type LikesQuery = (
+  { __typename?: 'Query' }
+  & { likes?: Maybe<(
+    { __typename?: 'LikeConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'LikeEdge' }
+      & Pick<LikeEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'User' }
+        & UserFragment
+      ) }
+    )>> }
+  )> }
+);
+
+export type MetaQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MetaQuery = (
@@ -1761,6 +2064,35 @@ export type ProjectQuery = (
   )> }
 );
 
+export type ProjectCollectionsQueryVariables = Exact<{
+  projectId: Scalars['ID'];
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type ProjectCollectionsQuery = (
+  { __typename?: 'Query' }
+  & { projectCollections?: Maybe<(
+    { __typename?: 'CollectionConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'CollectionEdge' }
+      & Pick<CollectionEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'Collection' }
+        & Pick<Collection, 'id' | 'name'>
+        & { cover?: Maybe<(
+          { __typename?: 'CoverType' }
+          & Pick<CoverType, 'uri'>
+        )> }
+      ) }
+    )>> }
+  )> }
+);
+
 export type ProjectSuggestionsQueryVariables = Exact<{
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -1791,7 +2123,7 @@ export type ProjectSuggestionsQuery = (
   )>>> }
 );
 
-export type ProjectTypesQueryVariables = {};
+export type ProjectTypesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProjectTypesQuery = (
@@ -2156,8 +2488,14 @@ export const ProjectFragmentDoc = gql`
     isOwner
     isFollower
   }
-  followers: followersConnection {
+  followers: followersConnection(first: 3) {
     totalCount
+    edges {
+      node {
+        id
+        avatarUrl
+      }
+    }
   }
 }
     ${UserFragmentDoc}`;
@@ -2218,11 +2556,22 @@ export const PostFragmentDoc = gql`
     isLiked
     totalCount
   }
+  bookmarks {
+    isBookmarked
+  }
   comments: commentsConnection(first: 2) @connection(key: "comments") {
     totalCount
     edges {
       node {
         ...Comment
+      }
+    }
+  }
+  likesConnection(first: 3) @connection(key: "likes") {
+    edges {
+      node {
+        id
+        avatarUrl
       }
     }
   }
@@ -2256,6 +2605,7 @@ export const UserProjectsFragmentDoc = gql`
 export const UserSettingsFragmentDoc = gql`
     fragment UserSettings on User {
   id
+  role
   settings {
     notifications {
       types {
@@ -2288,6 +2638,40 @@ export const UserSettingsFragmentDoc = gql`
   }
 }
     `;
+export const AddCollectionDocument = gql`
+    mutation addCollection($projectId: ID!, $name: String!) {
+  addCollection(projectId: $projectId, name: $name) {
+    name
+    id
+  }
+}
+    `;
+export type AddCollectionMutationFn = ApolloReactCommon.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
+
+/**
+ * __useAddCollectionMutation__
+ *
+ * To run a mutation, you first call `useAddCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCollectionMutation, { data, loading, error }] = useAddCollectionMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useAddCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddCollectionMutation, AddCollectionMutationVariables>) {
+        return ApolloReactHooks.useMutation<AddCollectionMutation, AddCollectionMutationVariables>(AddCollectionDocument, baseOptions);
+      }
+export type AddCollectionMutationHookResult = ReturnType<typeof useAddCollectionMutation>;
+export type AddCollectionMutationResult = ApolloReactCommon.MutationResult<AddCollectionMutation>;
+export type AddCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCollectionMutation, AddCollectionMutationVariables>;
 export const AddCommentDocument = gql`
     mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
   addComment(postId: $postId, commentId: $commentId, input: $input) {
@@ -2488,6 +2872,112 @@ export function useAuthenticateGoogleMutation(baseOptions?: ApolloReactHooks.Mut
 export type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
 export type AuthenticateGoogleMutationResult = ApolloReactCommon.MutationResult<AuthenticateGoogleMutation>;
 export type AuthenticateGoogleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export const BookmarkPostDocument = gql`
+    mutation bookmarkPost($id: ID!) {
+  bookmarkPost(id: $id) {
+    id
+    bookmarks {
+      isBookmarked
+    }
+  }
+}
+    `;
+export type BookmarkPostMutationFn = ApolloReactCommon.MutationFunction<BookmarkPostMutation, BookmarkPostMutationVariables>;
+
+/**
+ * __useBookmarkPostMutation__
+ *
+ * To run a mutation, you first call `useBookmarkPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBookmarkPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [bookmarkPostMutation, { data, loading, error }] = useBookmarkPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useBookmarkPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<BookmarkPostMutation, BookmarkPostMutationVariables>) {
+        return ApolloReactHooks.useMutation<BookmarkPostMutation, BookmarkPostMutationVariables>(BookmarkPostDocument, baseOptions);
+      }
+export type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>;
+export type BookmarkPostMutationResult = ApolloReactCommon.MutationResult<BookmarkPostMutation>;
+export type BookmarkPostMutationOptions = ApolloReactCommon.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
+export const CollectPostsDocument = gql`
+    mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {
+  collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {
+    id
+    name
+    cover {
+      uri
+    }
+  }
+}
+    `;
+export type CollectPostsMutationFn = ApolloReactCommon.MutationFunction<CollectPostsMutation, CollectPostsMutationVariables>;
+
+/**
+ * __useCollectPostsMutation__
+ *
+ * To run a mutation, you first call `useCollectPostsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCollectPostsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [collectPostsMutation, { data, loading, error }] = useCollectPostsMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      collectionId: // value for 'collectionId'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCollectPostsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>) {
+        return ApolloReactHooks.useMutation<CollectPostsMutation, CollectPostsMutationVariables>(CollectPostsDocument, baseOptions);
+      }
+export type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
+export type CollectPostsMutationResult = ApolloReactCommon.MutationResult<CollectPostsMutation>;
+export type CollectPostsMutationOptions = ApolloReactCommon.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
+export const DeleteCollectionDocument = gql`
+    mutation deleteCollection($projectId: ID!, $id: ID!) {
+  deleteCollection(id: $id, projectId: $projectId) {
+    id
+  }
+}
+    `;
+export type DeleteCollectionMutationFn = ApolloReactCommon.MutationFunction<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
+
+/**
+ * __useDeleteCollectionMutation__
+ *
+ * To run a mutation, you first call `useDeleteCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCollectionMutation, { data, loading, error }] = useDeleteCollectionMutation({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteCollectionMutation, DeleteCollectionMutationVariables>(DeleteCollectionDocument, baseOptions);
+      }
+export type DeleteCollectionMutationHookResult = ReturnType<typeof useDeleteCollectionMutation>;
+export type DeleteCollectionMutationResult = ApolloReactCommon.MutationResult<DeleteCollectionMutation>;
+export type DeleteCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
 export const DeleteCommentDocument = gql`
     mutation deleteComment($id: ID!) {
   deleteComment(id: $id)
@@ -3042,6 +3532,92 @@ export function useToggleNotificationSettingsMutation(baseOptions?: ApolloReactH
 export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export const BookmarksDocument = gql`
+    query bookmarks($after: String, $first: Int = 5) @connection(key: "bookmarks") {
+  bookmarks(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useBookmarksQuery__
+ *
+ * To run a query within a React component, call `useBookmarksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBookmarksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBookmarksQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useBookmarksQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
+        return ApolloReactHooks.useQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
+      }
+export function useBookmarksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
+        }
+export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
+export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
+export type BookmarksQueryResult = ApolloReactCommon.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
+export const CollectionsDocument = gql`
+    query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: "collections") {
+  collections(id: $id, projectId: $projectId, after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useCollectionsQuery__
+ *
+ * To run a query within a React component, call `useCollectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCollectionsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+      }
+export function useCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+        }
+export type CollectionsQueryHookResult = ReturnType<typeof useCollectionsQuery>;
+export type CollectionsLazyQueryHookResult = ReturnType<typeof useCollectionsLazyQuery>;
+export type CollectionsQueryResult = ApolloReactCommon.QueryResult<CollectionsQuery, CollectionsQueryVariables>;
 export const CommentDocument = gql`
     query comment($id: ID!) {
   comment(id: $id) {
@@ -3513,6 +4089,49 @@ export function useHashtagLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHook
 export type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>;
 export type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
 export type HashtagQueryResult = ApolloReactCommon.QueryResult<HashtagQuery, HashtagQueryVariables>;
+export const LikesDocument = gql`
+    query likes($postId: ID!, $after: String, $first: Int = 10) {
+  likes(postId: $postId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...User
+      }
+    }
+  }
+}
+    ${UserFragmentDoc}`;
+
+/**
+ * __useLikesQuery__
+ *
+ * To run a query within a React component, call `useLikesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLikesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLikesQuery({
+ *   variables: {
+ *      postId: // value for 'postId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useLikesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<LikesQuery, LikesQueryVariables>) {
+        return ApolloReactHooks.useQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
+      }
+export function useLikesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
+        }
+export type LikesQueryHookResult = ReturnType<typeof useLikesQuery>;
+export type LikesLazyQueryHookResult = ReturnType<typeof useLikesLazyQuery>;
+export type LikesQueryResult = ApolloReactCommon.QueryResult<LikesQuery, LikesQueryVariables>;
 export const MetaDocument = gql`
     query meta {
   meta {
@@ -3721,6 +4340,53 @@ export function useProjectLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHook
 export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
+export const ProjectCollectionsDocument = gql`
+    query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
+  projectCollections(projectId: $projectId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        cover {
+          uri
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useProjectCollectionsQuery__
+ *
+ * To run a query within a React component, call `useProjectCollectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectCollectionsQuery({
+ *   variables: {
+ *      projectId: // value for 'projectId'
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useProjectCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+      }
+export function useProjectCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+        }
+export type ProjectCollectionsQueryHookResult = ReturnType<typeof useProjectCollectionsQuery>;
+export type ProjectCollectionsLazyQueryHookResult = ReturnType<typeof useProjectCollectionsLazyQuery>;
+export type ProjectCollectionsQueryResult = ApolloReactCommon.QueryResult<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>;
 export const ProjectSuggestionsDocument = gql`
     query projectSuggestions($after: String, $first: Int = 5) {
   projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {

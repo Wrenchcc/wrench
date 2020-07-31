@@ -1,0 +1,15 @@
+#import "../fragments/UserFragment.graphql"
+
+query likes($postId: ID!, $after: String, $first: Int = 10) {
+  likes(postId: $postId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...User
+      }
+    }
+  }
+}

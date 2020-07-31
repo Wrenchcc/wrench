@@ -29,7 +29,7 @@ function Settings({ section }) {
   const [toggleNotificationSettings] = useToggleNotificationSettingsMutation()
 
   const handleToggleNotificationSettings = useCallback(
-    input =>
+    (input) =>
       toggleNotificationSettings({
         variables: {
           input,
@@ -64,10 +64,13 @@ function Settings({ section }) {
         renderItem={renderItem}
         initialNumToRender={15}
         sections={
-          settings &&
-          sections({ handleToggleNotificationSettings, settings, navigate, showModal })[
-            section || 'settings'
-          ]
+          sections({
+            handleToggleNotificationSettings,
+            settings,
+            navigate,
+            showModal,
+            user: data?.user,
+          })[section || 'settings']
         }
         keyExtractor={keyExtractor}
         ListFooterComponent={!section && <Footer />}

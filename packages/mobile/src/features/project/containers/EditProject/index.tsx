@@ -1,6 +1,10 @@
 import React, { useState, useCallback } from 'react'
 import { Alert } from 'react-native'
-import { useEditProjectMutation, useDeleteProjectMutation } from '@wrench/common'
+import {
+  useEditProjectMutation,
+  useDeleteProjectMutation,
+  CurrentUserDocument,
+} from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { SCREENS, useNavigation, ScrollView } from 'navigation'
 import Header from 'navigation/Page/Header'
@@ -8,18 +12,22 @@ import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
-function EditProject({ project }) {
+function EditProject({ project, onDeleteCallback }) {
   const { t } = useTranslation()
-  const { navigate, dismissModal, navigateBack } = useNavigation()
+  const { navigate, dismissModal } = useNavigation()
 
   const [editProject] = useEditProjectMutation()
-  // TODO: And remove project from store
-  const [deleteProject] = useDeleteProjectMutation({ onCompleted: () => navigateBack() })
+  const [deleteProject] = useDeleteProjectMutation({
+    onCompleted: () => {
+      // `navigateBack` has to be called with componentId from the stack that was open
+      onDeleteCallback && onDeleteCallback()
+    },
+  })
 
   const [isSaving, setIsSaving] = useState(false)
   const [title, setTitle] = useState(project.title)
 
-  const onChangeText = useCallback(text => setTitle(text), [])
+  const onChangeText = useCallback((text) => setTitle(text), [])
   const handleClose = useCallback(() => dismissModal(), [])
 
   const handleEditProject = useCallback(async () => {
@@ -60,13 +68,34 @@ function EditProject({ project }) {
   )
 
   const onDelete = useCallback(async () => {
+    dismissModal()
+
     await deleteProject({
       variables: {
         id: project.id,
       },
-    })
+      update: (cache) => {
+        try {
+          const data = cache.readQuery({ query: CurrentUserDocument })
 
-    dismissModal()
+          cache.writeQuery({
+            query: CurrentUserDocument,
+            data: {
+              ...data,
+              user: {
+                ...data.user,
+                projects: {
+                  ...data.user.projects,
+                  edges: data.user.projects.edges.filter(({ node }) => node.id !== project.id),
+                },
+              },
+            },
+          })
+        } catch (err) {
+          console.log(err)
+        }
+      },
+    })
   }, [dismissModal])
 
   const renderHeaderLeft = () => {

@@ -39,7 +39,7 @@ export default function createNavigationAwareScrollable(Component) {
     },
     ref
   ) {
-    const scrollRef = useRef()
+    const scrollRef = useRef(null)
     const { onScroll, onScrollBeginDrag, onScrollEndDrag } = useContext(ScrollContext)
     const VIEW_OFFSET = isAndroid ? CONTENT_INSET + extraContentInset : 0
 
@@ -95,6 +95,9 @@ export default function createNavigationAwareScrollable(Component) {
       <Component
         ref={setRef}
         onScroll={onScroll}
+        // maintainVisibleContentPosition={{
+        //   minIndexForVisible: 0,
+        // }}
         onScrollBeginDrag={onScrollBeginDrag}
         onScrollEndDrag={onScrollEndDrag}
         scrollEventThrottle={1}

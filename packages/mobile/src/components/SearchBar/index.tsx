@@ -14,7 +14,7 @@ function SearchBar({
   onSearchCancel,
   query,
 }) {
-  const inputRef = useRef()
+  const inputRef = useRef(null)
   const { t } = useTranslation()
 
   const handleFocus = useCallback(() => {
@@ -36,7 +36,7 @@ function SearchBar({
   }, [inputRef, onSearchCancel])
 
   const handleQueryChange = useCallback(
-    value => {
+    (value) => {
       onChangeQuery(value)
     },
     [onChangeQuery]

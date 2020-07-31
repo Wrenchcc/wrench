@@ -11,6 +11,7 @@ export default gql`
     postPermissions: PostPermissions # @deprecated(reason: "Use permissions.")
     permissions: PostPermissions
     likes: Likes
+    bookmarks: Bookmarks
 
     filesConnection(
       first: Int = 10
@@ -24,6 +25,8 @@ export default gql`
       last: Int = 10
       before: String
     ): CommentConnection
+
+    likesConnection(first: Int = 10, after: String, last: Int = 10, before: String): LikeConnection
   }
 
   type PostPermissions {

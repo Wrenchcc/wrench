@@ -14,7 +14,6 @@ function Item({ item, selected, onPress, order }) {
 
   return (
     <Touchable
-      nativeHandler
       style={{
         backgroundColor: COLORS.DARK_GREY,
         marginBottom: MARGIN,

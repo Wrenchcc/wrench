@@ -1,7 +1,7 @@
 // @ts-nocheck
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import Router from 'next/router'
 import { Title } from 'ui'
@@ -58,7 +58,7 @@ export default function Login({ closeModal, referral = '/' }) {
       <GoogleLogin
         responseType="id_token"
         clientId="407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com"
-        render={renderProps => (
+        render={(renderProps) => (
           <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
             {t('Login:googlebutton')}
           </GoogleButton>
@@ -76,7 +76,7 @@ export default function Login({ closeModal, referral = '/' }) {
             },
           })
         }
-        onFailure={res => console.log(res)}
+        onFailure={(res) => console.log(res)}
         cookiePolicy={'single_host_origin'}
       />
 

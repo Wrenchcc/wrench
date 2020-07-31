@@ -23,7 +23,7 @@ async function server() {
 
   const driver = connection.driver as PostgresDriver
   driver.postgres.defaults.parseInputDatesAsUTC = true
-  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
+  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, (str) => str)
 
   const server = new ApolloServer({
     ...debugOptions,
@@ -31,6 +31,7 @@ async function server() {
       db,
       loaders: createLoaders(),
       services,
+      // @ts-ignore
       userAgent: req.headers['user-agent'],
       userId: getUserId(req),
     }),
@@ -51,4 +52,4 @@ async function server() {
   })
 }
 
-server().catch(err => debug(err))
+server().catch((err) => debug(err))

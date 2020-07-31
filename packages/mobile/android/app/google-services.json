@@ -15,16 +15,28 @@
       },
       "oauth_client": [
         {
+          "client_id": "407610377102-rfpo19mspc3mluj00icd45cd8hg6t9qr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrench",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "407610377102-jc1kbe2abm26m4r9b5fbpoqlln1j0311.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wrench",
+            "certificate_hash": "eef347d891cf23dba2ff8fe9bccf93dc6a1dd49a"
+          }
+        },
+        {
           "client_id": "407610377102-llujh7u4f3aiqkkh6sicmspjbocmq228.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.wrench",
             "certificate_hash": "fb246e91e2eb43380fe8e3e0c46befb0e352dfde"
           }
-        },
-        {
-          "client_id": "407610377102-i51cefcjclotos2673d09cbncl1mo02f.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -36,7 +48,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "407610377102-i51cefcjclotos2673d09cbncl1mo02f.apps.googleusercontent.com",
+              "client_id": "407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com",
               "client_type": 3
             },
             {

@@ -12,7 +12,13 @@ fragment Project on Project {
     isOwner
     isFollower
   }
-  followers: followersConnection {
+  followers: followersConnection(first: 3) {
     totalCount
+    edges {
+      node {
+        id
+        avatarUrl
+      }
+    }
   }
 }

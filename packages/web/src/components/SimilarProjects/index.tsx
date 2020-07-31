@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery } from '@apollo/client'
 import { SIMILAR_PROJECTS_QUERY } from 'graphql/queries/project/similarProjects'
 import { Card, Loader } from 'ui'
 import { Inner, Scroll, Types, LoaderContainer } from './styles'

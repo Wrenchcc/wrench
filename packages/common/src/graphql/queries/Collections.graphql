@@ -1,0 +1,15 @@
+#import "../fragments/PostFragment.graphql"
+
+query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: "collections") {
+  collections(id: $id, projectId: $projectId, after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        ...Post
+      }
+    }
+  }
+}

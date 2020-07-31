@@ -1,6 +1,6 @@
 {
   "name": "wrench",
-  "version": "1.0.123",
+  "version": "1.0.137",
   "private": true,
   "workspaces": {
     "nohoist": [
@@ -30,6 +30,6 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^5.0.0",
     "tslint-react-hooks": "^2.2.2",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.6"
   }
 }

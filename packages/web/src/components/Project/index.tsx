@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import Seo from 'utils/seo'
 import { PROJECT_BY_SLUG } from 'graphql/queries/project/projectBySlug'
@@ -53,7 +53,7 @@ function Project({ slug, isAuthenticated, action }) {
     [data]
   )
 
-  const toggleFollow = project => {
+  const toggleFollow = (project) => {
     if (!isAuthenticated) {
       showLoginModal()
       return

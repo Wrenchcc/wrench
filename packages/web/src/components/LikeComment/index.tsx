@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useCallback } from 'react'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { LIKE_COMMENT_MUTATION } from 'graphql/mutations/comment/like'
 import { Base } from './styles'
 

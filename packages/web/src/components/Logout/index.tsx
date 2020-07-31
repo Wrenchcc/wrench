@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { useApolloClient } from '@apollo/react-hooks'
+import { useApolloClient } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import { Base } from './styles'
 

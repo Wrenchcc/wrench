@@ -1,36 +1,35 @@
 // @ts-nocheck
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useCurrentUserQuery } from '@wrench/common'
 import useLocalStorage from '../../utils/useLocalStorage'
 import styled from 'styled-components'
-import Avatar from '../../components/Avatar'
 
-export const Base = styled.nav`
+export const Base = styled.div`
   width: 270px;
   height: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
   background: #e6e7e9;
-  padding-top: 120px;
 `
 
-export const Top = styled.div`
-  margin-left: 30px;
-  margin-bottom: 45px;
-  display: flex;
-  flex-direction: column;
+export const Nav = styled.nav`
+  padding-top: 70px;
+  padding-bottom: 70px;
+  margin-top: 50px;
+  box-sizing: border-box;
+  width: 270px;
+  height: 100%;
+  overflow: auto;
+  position: relative;
 `
 
 export const SignOut = styled.button`
-  position: absolute;
-  bottom: 140px;
-  left: 30px;
   background: none;
   border: 0;
   color: #6d6f76;
   font-size: 15px;
+  margin-left: 30px;
 `
 
 export const Section = styled.div`
@@ -64,7 +63,6 @@ export const Icon = styled.img`
 function Panel({ setAuthenticated }) {
   const [, , removeAccessToken] = useLocalStorage('access_token')
   const [, , removeRefreshToken] = useLocalStorage('refresh_token')
-  const { data } = useCurrentUserQuery()
 
   const signOut = () => {
     removeAccessToken()
@@ -74,111 +72,173 @@ function Panel({ setAuthenticated }) {
 
   return (
     <Base>
-      <Top>
-        <Avatar src={data?.user?.avatarUrl} />
-        <Username>{data?.user?.fullName}</Username>
-      </Top>
+      <Nav>
+        <Row>
+          <Section>Operate</Section>
 
-      <Row>
-        <Section>Operate</Section>
+          <ul>
+            <Link>
+              <Icon src={require('./dashboard.svg')} />
+              <NavLink
+                exact
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/"
+              >
+                Dashboard
+              </NavLink>
+            </Link>
+            <Link>
+              <Icon src={require('./posts.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/posts"
+              >
+                Posts
+              </NavLink>
+            </Link>
+            <Link>
+              <Icon src={require('./projects.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/projects"
+              >
+                Projects
+              </NavLink>
+            </Link>
+            <Link>
+              <Icon src={require('./users.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/users"
+              >
+                Users
+              </NavLink>
+            </Link>
+            <Link>
+              <Icon src={require('./comments.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/comments"
+              >
+                Comments
+              </NavLink>
+            </Link>
+            <Link>
+              <Icon src={require('./reviews.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/reviews"
+              >
+                Reviews
+              </NavLink>
+            </Link>
+          </ul>
+        </Row>
 
-        <ul>
-          <Link>
-            <Icon src={require('./dashboard.svg')} />
-            <NavLink
-              exact
-              activeStyle={{
-                fontWeight: '500',
-                color: 'black',
-              }}
-              to="/"
-            >
-              Dashboard
-            </NavLink>
-          </Link>
-          <Link>
-            <Icon src={require('./posts.svg')} />
-            <NavLink
-              activeStyle={{
-                fontWeight: '500',
-                color: 'black',
-              }}
-              to="/posts"
-            >
-              Posts
-            </NavLink>
-          </Link>
-          <Link>
-            <Icon src={require('./projects.svg')} />
-            <NavLink
-              activeStyle={{
-                fontWeight: '500',
-                color: 'black',
-              }}
-              to="/projects"
-            >
-              Projects
-            </NavLink>
-          </Link>
-          <Link>
-            <Icon src={require('./users.svg')} />
-            <NavLink
-              activeStyle={{
-                fontWeight: '500',
-                color: 'black',
-              }}
-              to="/users"
-            >
-              Users
-            </NavLink>
-          </Link>
-          <Link>
-            <Icon src={require('./comments.svg')} />
-            <NavLink
-              activeStyle={{
-                fontWeight: '500',
-                color: 'black',
-              }}
-              to="/comments"
-            >
-              Comments
-            </NavLink>
-          </Link>
-        </ul>
-      </Row>
+        <Row>
+          <Section>Marketing</Section>
 
-      <Row>
-        <Section>Marketing</Section>
+          <ul>
+            <Link>
+              <Icon src={require('./push-notifications.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/push-notifications"
+              >
+                Push notifications
+              </NavLink>
+            </Link>
+            <Link>
+              <Icon src={require('./newsletter.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/newsletter"
+              >
+                Newsletter
+              </NavLink>
+            </Link>
 
-        <ul>
-          <Link>
-            <Icon src={require('./push-notifications.svg')} />
-            <NavLink
-              activeStyle={{
-                fontWeight: '500',
-                color: 'black',
-              }}
-              to="/push-notifications"
-            >
-              Push notifications
-            </NavLink>
-          </Link>
-          <Link>
-            <Icon src={require('./newsletter.svg')} />
-            <NavLink
-              activeStyle={{
-                fontWeight: '500',
-                color: 'black',
-              }}
-              to="/newsletter"
-            >
-              Newsletter
-            </NavLink>
-          </Link>
-        </ul>
-      </Row>
+            <Link>
+              <Icon src={require('./google.svg')} />
+              <a href="https://analytics.google.com/analytics/web/#/p178012703/reports/home">
+                Google Analytics
+              </a>
+            </Link>
+          </ul>
+        </Row>
 
-      <SignOut onClick={signOut}>Log out</SignOut>
+        <Row>
+          <Section>Developer</Section>
+          <ul>
+            <Link>
+              <Icon src={require('./deploy.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/deploy"
+              >
+                Deploy
+              </NavLink>
+            </Link>
+            <Link>
+              <Icon src={require('./sentry.svg')} />
+              <a href="https://sentry.io/organizations/wrench/issues/?project=1354419">Sentry</a>
+            </Link>
+            <Link>
+              <Icon src={require('./firebase.svg')} />
+              <a href="https://console.firebase.google.com/u/0/project/wrench-app/overview">
+                Firebase
+              </a>
+            </Link>
+            <Link>
+              <Icon src={require('./appstore.svg')} />
+              <a href="https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/ng/app/1450213123">
+                App Store Connect
+              </a>
+            </Link>
+            <Link>
+              <Icon src={require('./google-play.svg')} />
+              <a href="https://play.google.com/apps/publish/?account=7089963842901266485#AppDashboardPlace:p=com.wrench&appid=4976310944626164906">
+                Google Play
+              </a>
+            </Link>
+            <Link>
+              <Icon src={require('./aws.svg')} />
+              <a href="https://eu-west-1.console.aws.amazon.com/console/home?region=eu-west-1">
+                AWS
+              </a>
+            </Link>
+          </ul>
+        </Row>
+
+        <SignOut onClick={signOut}>Log out</SignOut>
+      </Nav>
     </Base>
   )
 }
