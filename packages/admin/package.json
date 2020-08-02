@@ -8,28 +8,28 @@
     "deploy": "serverless"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-rc.4",
+    "@apollo/client": "^3.1.1",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",
     "@apollo/react-hooks": "^4.0.0",
-    "@types/node": "^14.0.13",
-    "@types/react": "^16.9.36",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@wrench/common": "1.0.0",
     "ms": "^2.1.2",
     "react": "^16.13.1",
-    "react-content-loader": "^5.0.4",
+    "react-content-loader": "^5.1.0",
     "react-dom": "^16.13.1",
     "react-facebook-login": "^4.1.1",
-    "react-google-login": "^5.1.20",
+    "react-google-login": "^5.1.21",
     "react-infinite-scroller": "^1.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "react-sliding-side-panel": "^1.0.14",
-    "react-table": "^7.2.0",
+    "react-table": "^7.3.3",
     "recharts": "^2.0.0-beta.1",
     "styled-components": "^5.1.1",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,7 +48,8 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.5",
-    "@types/recharts": "^1.8.12",
-    "serverless": "^1.72.0"
+    "@types/recharts": "^1.8.14",
+    "serverless": "^1.77.1",
+    "webpack": "4.42.0"
   }
 }
