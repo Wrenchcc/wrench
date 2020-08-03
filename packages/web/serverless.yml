@@ -1,5 +1,5 @@
 web:
-  component: "@sls-next/serverless-component@2.6.2"
+  component: "@sls-next/serverless-component@1.16.0"
   inputs:
     domain: "wrench.cc"
     bucketName: wrench-web-edge
