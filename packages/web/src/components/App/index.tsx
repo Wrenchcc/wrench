@@ -5,6 +5,7 @@ import NextApp from 'next/app'
 import Cookie from 'services/cookie'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import { Reset } from 'styled-reset'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import withApollo from 'services/apollo/withApollo'
 import AuthLink from 'services/apollo/links/Auth'
@@ -131,6 +132,7 @@ function AppWithi18n({
         <meta name="msapplication-TileImage" content="/public/mstile-144x144.png" />
       </Head>
 
+      <Reset />
       <GlobalStyle />
       <Seo />
       <GoogleAnalyticsSDK />
