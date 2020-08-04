@@ -20,6 +20,7 @@ export default withApollo(
     client = new ApolloClient({
       ssrMode: isBrowser,
       connectToDevTools: isBrowser,
+      // @ts-ignore
       link: ApolloLink.from([autLink, RefreshTokenLink, HttpLink]),
       cache: new InMemoryCache().restore(initialState || {}),
     })
