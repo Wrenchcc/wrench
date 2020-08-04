@@ -8,7 +8,6 @@ web:
       memory: 2048
       runtime: nodejs12.x
     cloudfront:
-      compress: true
       defaults:
         forward:
           headers: ['CloudFront-Viewer-Country', 'Accept-Language']
