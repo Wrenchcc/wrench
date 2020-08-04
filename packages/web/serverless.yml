@@ -4,9 +4,7 @@ web:
     domain: "wrench.cc"
     bucketName: wrench-web-edge
     build: true
-      memory:
-        defaultLambda: 2048
-        apiLambda: 512
+    memory: 2048
     cloudfront:
       defaults:
         forward:
