@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import { Dimensions } from 'react-native'
 import UiTouchable from 'ui/Touchable'
 import { hasNotch } from 'utils/platform'
@@ -14,7 +14,7 @@ export const Placeholder = styled.View`
 
 export const DeselectAll = styled(UiTouchable)`
   height: 40px;
-  background: ${props => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.white};
   position: absolute;
   bottom: ${hasNotch ? 25 : 20}px;
   right: 20px;
