@@ -7,10 +7,13 @@ import messaging from '@react-native-firebase/messaging'
 import { Bootstrap, registerScreens } from 'navigation'
 import { createPushNotificationsHandler } from 'utils/pushNotifications'
 import { createDeepLinkingHandler } from 'utils/dynamicLinks'
-
-registerScreens()
+import createClient from 'gql/client'
 
 Navigation.events().registerAppLaunchedListener(async () => {
+  const client = await createClient()
+
+  registerScreens(client)
+
   Bootstrap()
 
   Linking.addEventListener('url', createDeepLinkingHandler)

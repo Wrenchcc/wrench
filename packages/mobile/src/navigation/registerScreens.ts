@@ -1,12 +1,9 @@
 import { register } from 'react-native-bundle-splitter'
 import { Navigation } from 'react-native-navigation'
-import createClient from 'gql/client'
 import { SCREENS } from './constants'
 import createScreenHoc from './createScreenHoc'
 
-export default function registerScreens() {
-  const client = createClient()
-
+export default function registerScreens(client) {
   const HOC = createScreenHoc(client)
 
   Navigation.setLazyComponentRegistrator((componentName) => {
