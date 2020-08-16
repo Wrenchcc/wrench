@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import UiTouchable from 'ui/Touchable'
 
 export const Base = styled(UiTouchable)`

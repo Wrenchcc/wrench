@@ -6,7 +6,7 @@ import Text from 'ui/Text'
 import { Base, Icon } from './styles'
 import Selector from './types/Selector'
 
-const getActionType = ({ type, selected, onPress }) => {
+const getActionType = ({ type, selected, onPress }: Partial<SelectionItemProps>) => {
   const dynamicTrackColor = useDynamicColor('inverse')
   const dynamicTumbColor = useDynamicColor('default')
 
@@ -27,7 +27,16 @@ const getActionType = ({ type, selected, onPress }) => {
   }
 }
 
-function SelectionItem({ title, hasChildren, last, ...rest }) {
+type SelectionItemProps = {
+  title: string
+  hasChildren?: boolean
+  last?: boolean
+  type?: string
+  selected?: boolean
+  onPress?: () => void
+}
+
+function SelectionItem({ title, hasChildren, last, ...rest }: SelectionItemProps) {
   return (
     <Base onPress={rest.onPress} disabled={!rest.onPress}>
       <Text color={last && 'error'}>{title}</Text>

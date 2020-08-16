@@ -1,5 +1,5 @@
-import React, { Fragment, PureComponent } from 'react'
-import { View, Animated, Easing } from 'react-native'
+import React, { PureComponent } from 'react'
+import { View, Animated } from 'react-native'
 
 const generateStyles = ({ size, width, color, backgroundColor }) => ({
   container: {
@@ -40,21 +40,25 @@ const generateStyles = ({ size, width, color, backgroundColor }) => ({
   },
 })
 
-class Spinner extends PureComponent {
+type SpinnerProps = {
+  size: number
+  width: number
+  progress: number
+  backgroundColor: string
+  color: string
+  fullColor?: string
+}
+
+class Spinner extends PureComponent<SpinnerProps> {
   public state = {
     animatedVal: new Animated.Value(0),
   }
 
   public componentDidMount() {
-    const { animateFromValue, progress } = this.props
+    const { progress } = this.props
     const { animatedVal } = this.state
 
-    if (animateFromValue >= 0) {
-      animatedVal.setValue(animateFromValue)
-      this.animateTo(progress)
-    } else {
-      animatedVal.setValue(progress)
-    }
+    animatedVal.setValue(progress)
   }
 
   public componentDidUpdate(prevProps) {
@@ -70,24 +74,12 @@ class Spinner extends PureComponent {
       extrapolate: 'clamp',
     })
 
-  public interpolateRotation = isSecondHalf =>
+  public interpolateRotation = (isSecondHalf) =>
     this.interpolateAnimVal(isSecondHalf ? [50, 100] : [0, 50], ['0deg', '180deg'])
 
   public interpolateRotationTwoOpacity = () => this.interpolateAnimVal([50, 50.01], [0, 1])
 
   public interpolateColorOpacity = () => this.interpolateAnimVal([0, 100], [0, 1])
-
-  public animateTo = toValue => {
-    Animated.timing(this.state.animatedVal, {
-      toValue,
-      duration: 1000,
-      easing: Easing.easeInOut,
-      useNativeDriver: true,
-    }).start()
-  }
-
-  public resetAnimation = (progress = this.props.progress) =>
-    this.state.animatedVal.setValue(progress)
 
   public circleHalf = (styles, isSecondHalf, color) => (
     <Animated.View
@@ -114,24 +106,24 @@ class Spinner extends PureComponent {
     </Animated.View>
   )
 
-  public renderLoader = (styles, color = this.props.color) => (
-    <Fragment>
+  public renderLoader = (styles, color) => (
+    <>
       <View style={styles.background} />
       {this.circleHalf(styles, false, color)}
       <View style={styles.halfCircle}>
         <View style={styles.cutOff} />
       </View>
       <View style={styles.secondHalfContainer}>{this.circleHalf(styles, true, color)}</View>
-    </Fragment>
+    </>
   )
 
   public render() {
     const styles = generateStyles(this.props)
-    const { fullColor } = this.props
+    const { fullColor, color } = this.props
 
     return (
       <View style={styles.container}>
-        {this.renderLoader(styles)}
+        {this.renderLoader(styles, color)}
         {fullColor && (
           <Animated.View style={{ position: 'absolute', opacity: this.interpolateColorOpacity() }}>
             {this.renderLoader(styles, fullColor)}

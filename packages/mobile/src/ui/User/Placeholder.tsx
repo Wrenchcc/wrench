@@ -24,7 +24,7 @@ const styles = {
   },
 }
 
-export const UserPlaceholder: React.FC = () => {
+export const UserPlaceholder = () => {
   return (
     <Placeholder
       style={styles.container}

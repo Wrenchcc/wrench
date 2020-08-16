@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { TextStyle } from 'react-native-fbsdk'
+import { TextStyle } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import handleParse from './handleParse'
 import { Base } from './styles'
@@ -11,6 +11,7 @@ type TextProps = {
   onPress?: () => void
   lineHeight?: number
   maxText?: number
+  medium?: boolean
 } & TextStyle
 
 const Text = ({
