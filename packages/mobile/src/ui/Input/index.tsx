@@ -1,9 +1,16 @@
 import React, { forwardRef } from 'react'
+import { TextInputProps } from 'react-native'
 import { COLORS } from 'ui/constants'
-import { Field } from './styles'
+import { Field, FieldProps } from './styles'
 
 export default forwardRef(function Input(
-  { placeholder, noBorder, multiline = false, placeholderTextColor = COLORS.LIGHT_GREY, ...props },
+  {
+    placeholder,
+    noBorder,
+    multiline = false,
+    placeholderTextColor = COLORS.LIGHT_GREY,
+    ...props
+  }: TextInputProps & Partial<FieldProps>,
   ref
 ) {
   return (

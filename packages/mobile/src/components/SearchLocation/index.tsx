@@ -8,9 +8,9 @@ import { Base, Header, Center } from './styles'
 
 const SEARCH_ENDPOINT = 'https://api.mapbox.com/geocoding/v5/mapbox.places'
 
-const keyExtractor = item => item.id
+const keyExtractor = (item) => item.id
 
-function SearchLocation({ iconLeft, onPress, autoFocus }) {
+function SearchLocation({ iconLeft, onPress, autoFocus = false }) {
   const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState('')
   const [isFetching, setFetching] = useState(false)
