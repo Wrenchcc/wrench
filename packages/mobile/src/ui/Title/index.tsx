@@ -11,6 +11,7 @@ type TitleProps = {
   onPress?: () => void
   onLongPress?: () => void
   disabled?: boolean
+  color?: string
 }
 
 function Title({

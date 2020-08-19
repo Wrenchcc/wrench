@@ -6,10 +6,7 @@ import UserPlaceholder from './Placeholder'
 
 const COUNT = 10
 
-export const Placeholder: React.FC = ({
-  contentInset = isAndroid ? 0 : CONTENT_INSET,
-  marginTop = 0,
-}) => {
+const Placeholder = ({ contentInset = isAndroid ? 0 : CONTENT_INSET, marginTop = 0 }) => {
   return (
     <ScrollView
       contentInset={{ top: contentInset }}

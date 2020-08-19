@@ -4,7 +4,6 @@ import { Animated } from 'react-native'
 import Text from 'ui/Text'
 import { Button, HEIGHT, TOP } from './styles'
 
-const DURATION = 650
 const DELAY = 5000
 
 function ShowLatest({ onPress, onHide }) {
@@ -13,14 +12,12 @@ function ShowLatest({ onPress, onHide }) {
 
   useEffect(() => {
     Animated.spring(transformY.current, {
-      duration: DURATION,
       toValue: TOP,
       useNativeDriver: true,
     }).start(() => {
       Animated.sequence([
         Animated.delay(DELAY),
         Animated.spring(transformY.current, {
-          duration: DURATION / 2,
           toValue: -HEIGHT - TOP,
           useNativeDriver: true,
         }),
@@ -32,7 +29,6 @@ function ShowLatest({ onPress, onHide }) {
     onPress()
     Animated.spring(transformY.current, {
       delay: 50,
-      duration: DURATION,
       toValue: -50,
       useNativeDriver: true,
     }).start(onHide)

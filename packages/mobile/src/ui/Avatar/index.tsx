@@ -32,7 +32,7 @@ type AvatarProps = {
   style?: Record<string, any>
   borderWidth?: number
   borderColor?: string
-  fullName: string
+  fullName?: string
   fallback?: boolean
 }
 
@@ -46,7 +46,7 @@ function Avatar({
   style = {},
   borderWidth = 0,
   borderColor,
-  fullName,
+  fullName = '',
   fallback,
 }: AvatarProps) {
   return (
