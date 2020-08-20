@@ -246,7 +246,7 @@ PODS:
   - Permission-PhotoLibrary (2.1.5):
     - RNPermissions
   - PromisesObjC (1.2.10)
-  - Protobuf (3.12.0)
+  - Protobuf (3.13.0)
   - RCTRequired (0.63.2)
   - RCTTypeSafety (0.63.2):
     - FBLazyVector (= 0.63.2)
@@ -431,7 +431,7 @@ PODS:
   - react-native-fbsdk/Share (2.0.0):
     - FBSDKShareKit (~> 7.0)
     - React
-  - react-native-netinfo (5.9.5):
+  - react-native-netinfo (5.9.6):
     - React
   - react-native-pinchable (0.1.2):
     - React
@@ -442,7 +442,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (10.3.3):
+  - react-native-webview (10.7.0):
     - React
   - React-RCTActionSheet (0.63.2):
     - React-Core/RCTActionSheetHeaders (= 0.63.2)
@@ -504,31 +504,31 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
-  - ReactNativeNavigation (6.11.0):
+  - ReactNativeNavigation (6.12.0):
     - React
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 6.11.0)
-  - ReactNativeNavigation/Core (6.11.0):
+    - ReactNativeNavigation/Core (= 6.12.0)
+  - ReactNativeNavigation/Core (6.12.0):
     - React
     - React-RCTImage
     - React-RCTText
-  - RNCAsyncStorage (1.11.0):
+  - RNCAsyncStorage (1.12.0):
     - React
-  - RNDeviceInfo (5.6.3):
+  - RNDeviceInfo (5.6.5):
     - React
   - RNFastImage (8.3.2):
     - React
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (7.4.1):
+  - RNFBAnalytics (7.4.2):
     - Firebase/Analytics (~> 6.28.1)
     - React
     - RNFBApp
-  - RNFBApp (8.3.0):
+  - RNFBApp (8.3.1):
     - Firebase/CoreOnly (~> 6.28.1)
     - React
-  - RNFBMessaging (7.6.1):
+  - RNFBMessaging (7.7.1):
     - Firebase/Analytics (~> 6.28.1)
     - Firebase/Messaging (~> 6.28.1)
     - React
@@ -927,7 +927,7 @@ SPEC CHECKSUMS:
   Permission-Microphone: 0ffabc3fe1c75cfb260525ee3f529383c9f4368c
   Permission-PhotoLibrary: 4d2eff62c8f4b8a27bcf045c0e36f5047efbbf20
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
-  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
+  Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   RCTRequired: f13f25e7b12f925f1f6a6a8c69d929a03c0129fe
   RCTTypeSafety: 44982c5c8e43ff4141eb519a8ddc88059acd1f3a
   React: e1c65dd41cb9db13b99f24608e47dd595f28ca9a
@@ -940,11 +940,11 @@ SPEC CHECKSUMS:
   React-jsinspector: b14e62ebe7a66e9231e9581279909f2fc3db6606
   react-native-config: 9a061347e0136fdb32d43a34d60999297d672361
   react-native-fbsdk: 00c15d138bba6d4efa628670886fc58cec858c19
-  react-native-netinfo: a53b00d949b6456913aaf507d9dba90c4008c611
+  react-native-netinfo: 38a1e0b3e89b48e4b5833ed475d8df5f049f6f90
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 136107c8fc07efc95be59e519710cdc05822ad40
+  react-native-webview: 6edf4d6f71b9161fc3e96083726a538ee395304d
   React-RCTActionSheet: 910163b6b09685a35c4ebbc52b66d1bfbbe39fc5
   React-RCTAnimation: 9a883bbe1e9d2e158d4fb53765ed64c8dc2200c6
   React-RCTBlob: 39cf0ece1927996c4466510e25d2105f67010e13
@@ -955,13 +955,13 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
-  ReactNativeNavigation: b38eca44d4d85e04757a2681bfc6e1b178c6c2d1
-  RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
-  RNDeviceInfo: 5be12a5bfbb8da3528c43ee4373abd9c30d04616
+  ReactNativeNavigation: 1a7f76c2488858f381eb73117a87245e3ff32080
+  RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
+  RNDeviceInfo: c5f8f3a456adcbba405ace475254b08febc4c095
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
-  RNFBAnalytics: 43b6cdfb3f3c8ddd4425260aa246a5f73d7f71c3
-  RNFBApp: d55b3a69d199cff25ecf4f3bf41a86c47aa37d57
-  RNFBMessaging: 3bb7dcf398789ce359a9f6b97b83472a3090f65a
+  RNFBAnalytics: 715279002cf21b600aec33bc2e315c4cdf5d05e6
+  RNFBApp: abbab9c96e6d2f1cada6401c9138d3f8cb2ae930
+  RNFBMessaging: 6b8db5ff807c38395c297698bcfa1502cbc5856c
   RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
