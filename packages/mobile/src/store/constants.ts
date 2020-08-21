@@ -18,13 +18,3 @@ export const TOAST = {
   SHOW: 'show',
   TYPE: 'type',
 }
-
-export const USER = {
-  AVATAR_URL: 'avatarUrl',
-  BIO: 'bio',
-  WEBSITE: 'website',
-  LOCATION: 'location',
-  FIRST_NAME: 'firstName',
-  LAST_NAME: 'lastName',
-  USERNAME: 'username',
-}

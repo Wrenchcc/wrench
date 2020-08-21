@@ -10,7 +10,7 @@ import {
   RepliesDocument,
 } from '@wrench/common'
 import { update } from 'rambda'
-import { Page, useNavigation } from 'navigation'
+import { Page, useNavigation, keyExtractor } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
@@ -99,7 +99,7 @@ function PostContainer({ postId, commentId }) {
 
   const highlightId = commentData && commentData.comment.id
 
-  const handleOnReply = useCallback(data => setMention(data), [setMention])
+  const handleOnReply = useCallback((data) => setMention(data), [setMention])
 
   const renderItem = ({ item }) => (
     <CommentItem
@@ -151,7 +151,7 @@ function PostContainer({ postId, commentId }) {
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps="always"
-          keyExtractor={({ node }) => node.id}
+          keyExtractor={keyExtractor}
           ListFooterComponent={renderTopComponent}
           ListEmptyComponent={
             initialFetch && (

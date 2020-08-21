@@ -7,7 +7,7 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import { request, PERMISSIONS } from 'react-native-permissions'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
 import { preSignUrl } from 'gql'
-import { useUserStore, useToastStore, USER } from 'store'
+import { useToastStore } from 'store'
 import { ActivityIndicator, Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
@@ -35,28 +35,13 @@ function EditProfile({ onboarding }) {
   const { showActionSheetWithOptions } = useActionSheet()
 
   const { data } = useCurrentUserQuery()
-
-  const {
-    update,
-    initialState,
-    avatarUrl,
-    location,
-    bio,
-    firstName,
-    lastName,
-    website,
-    username,
-  } = useUserStore((store) => ({
-    initialState: store.actions.initialState,
-    update: store.actions.update,
-    avatarUrl: store.avatarUrl,
-    firstName: store.firstName,
-    lastName: store.lastName,
-    location: store.location,
-    bio: store.bio,
-    website: store.website,
-    username: store.username,
-  }))
+  const [avatarUrl, setAvatarUrl] = useState<string>()
+  const [bio, setBio] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [location, setLocation] = useState('')
+  const [username, setUsername] = useState('')
+  const [website, setWebsite] = useState('')
 
   const hasErrors = firstName.length === 0 || lastName.length === 0 || username.length === 0
 
@@ -73,20 +58,28 @@ function EditProfile({ onboarding }) {
   const toastActions = useToastStore((store) => store.actions)
 
   useEffect(() => {
-    initialState(data?.user)
-  }, [initialState, data])
+    setAvatarUrl(data?.user?.avatarUrl)
+    setBio(data?.user?.bio ?? '')
+    setFirstName(data?.user?.firstName ?? '')
+    setLastName(data?.user?.lastName ?? '')
+    setWebsite(data?.user?.website ?? '')
+    setUsername(data?.user?.username ?? '')
+    setLocation(data?.user?.location ?? '')
+  }, [data])
 
   const handleBio = useCallback(
     (text) => {
       if (text.length <= MAX_CHARACTERS) {
-        update(USER.BIO, text)
+        setBio(text)
       }
     },
-    [update]
+    [setBio]
   )
 
   const navigateToAddLocation = useCallback(() => {
-    navigate(SCREENS.ADD_LOCATION)
+    navigate(SCREENS.ADD_LOCATION, {
+      locationSelectedCallback: (newLocation: string) => setLocation(newLocation),
+    })
   }, [navigate])
 
   const handleSave = useCallback(async () => {
@@ -188,7 +181,7 @@ function EditProfile({ onboarding }) {
           })
 
           if (!res.cancelled) {
-            update(USER.AVATAR_URL, res.uri)
+            setAvatarUrl(res.uri)
             const { data } = await preSignUrl({
               path: UPLOAD_PATH,
               type: FILE_TYPES.IMAGE,
@@ -201,7 +194,7 @@ function EditProfile({ onboarding }) {
           const res = await ImagePicker.launchImageLibraryAsync()
 
           if (!res.cancelled) {
-            update(USER.AVATAR_URL, res.uri)
+            setAvatarUrl(res.uri)
             const { data } = await preSignUrl({
               path: UPLOAD_PATH,
               type: FILE_TYPES.IMAGE,
@@ -211,7 +204,7 @@ function EditProfile({ onboarding }) {
         }
 
         if (index === 2) {
-          update(USER.AVATAR_URL, DEFAULT_AVATAR_URL)
+          setAvatarUrl(DEFAULT_AVATAR_URL)
         }
       }
     )
@@ -262,8 +255,8 @@ function EditProfile({ onboarding }) {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:firstName')}
-                onChangeText={(value) => update(USER.FIRST_NAME, value)}
-                value={firstName}
+                onChangeText={(value) => setFirstName(value)}
+                defaultValue={firstName}
                 error={firstName.length === 0}
               />
             </Row>
@@ -272,8 +265,8 @@ function EditProfile({ onboarding }) {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:lastName')}
-                onChangeText={(value) => update(USER.LAST_NAME, value)}
-                value={lastName}
+                onChangeText={(value) => setLastName(value)}
+                defaultValue={lastName}
                 error={lastName.length === 0}
               />
             </Row>
@@ -282,8 +275,8 @@ function EditProfile({ onboarding }) {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:username')}
-                onChangeText={(value) => update(USER.USERNAME, value)}
-                value={username}
+                onChangeText={(value) => setUsername(value)}
+                defaultValue={username}
                 error={username.length === 0}
               />
             </Row>
@@ -305,7 +298,7 @@ function EditProfile({ onboarding }) {
                 color="accent"
                 width={12}
                 height={12}
-                onPress={() => update(USER.LOCATION, '')}
+                onPress={() => setLocation('')}
               />
             </Row>
 
@@ -313,7 +306,7 @@ function EditProfile({ onboarding }) {
               <Input
                 color="dark"
                 placeholder={t('EditProfile:bio')}
-                value={bio}
+                defaultValue={bio}
                 onChangeText={handleBio}
                 style={{ paddingRight: 55 }}
               />
@@ -328,8 +321,8 @@ function EditProfile({ onboarding }) {
                 placeholder={t('EditProfile:website')}
                 keyboardType="url"
                 textContentType="URL"
-                onChangeText={(value) => update(USER.WEBSITE, value)}
-                value={website}
+                onChangeText={(value) => setWebsite(value)}
+                defaultValue={website}
                 autoCorrect={false}
               />
             </Row>
