@@ -4,6 +4,7 @@ import { isAndroid } from 'utils/platform'
 import Border from 'ui/Border'
 import Loader from 'ui/Loader'
 import { CONTENT_INSET } from 'navigation/constants'
+import { keyExtractor } from 'navigation'
 
 // NOTE: https://github.com/facebook/react-native/issues/23364
 const keyboardDismissProp = isAndroid
@@ -12,7 +13,6 @@ const keyboardDismissProp = isAndroid
 
 const renderLoader = (loaderInset?) => <Loader inset={loaderInset} />
 const BorderSeparator = () => <Border />
-const keyExtractor = ({ node }) => node.id
 
 function InfiniteList({
   contentContainerStyle = {},

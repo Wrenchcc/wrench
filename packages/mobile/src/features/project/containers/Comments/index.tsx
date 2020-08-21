@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { KeyboardAvoidingView, FlatList, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
-import { Page } from 'navigation'
+import { Page, keyExtractor } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import CommentField from 'components/CommentField'
 import { ActivityIndicator, CommentItem, Text } from 'ui'
@@ -67,7 +67,7 @@ function Comments({ postId }) {
     })
 
   const handleOnReply = useCallback(
-    data => {
+    (data) => {
       setCommentId(data.commentId)
       setUsername(data.username)
     },
@@ -126,7 +126,7 @@ function Comments({ postId }) {
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps="always"
-          keyExtractor={({ node }) => node.id}
+          keyExtractor={keyExtractor}
           ListFooterComponent={renderTopComponent}
           ListEmptyComponent={
             initialFetch && (

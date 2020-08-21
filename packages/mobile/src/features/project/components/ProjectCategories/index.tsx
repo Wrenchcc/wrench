@@ -3,13 +3,11 @@ import { Dimensions, FlatList } from 'react-native'
 import { useProjectTypesQuery } from '@wrench/common'
 import { Touchable, Text, Loader } from 'ui'
 import { Cell, Image, Overlay, Picture } from './styles'
-
+import { keyExtractor } from 'navigation'
 const { width } = Dimensions.get('window')
 
 const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
-
-const keyExtractor = item => item.id
 
 function ProjectCategories({ ListHeaderComponent, onSelect }) {
   const { data, loading } = useProjectTypesQuery()
