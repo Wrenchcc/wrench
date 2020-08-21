@@ -1,3 +1,4 @@
+import { Alert } from 'react-native'
 import NativeShare from 'react-native-share'
 import { mergeAll } from 'rambda'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -147,9 +148,32 @@ const sections = (props) => {
             onPress: () => askForRating(),
           },
           {
+            titleKey: 'delete',
+            onPress: () =>
+              Alert.alert(
+                props.t('Settings:deleteTitle'),
+                props.t('Settings:deleteDescription'),
+                [
+                  {
+                    text: props.t('Settings:deleteCancel'),
+                    style: 'cancel',
+                  },
+                  {
+                    text: props.t('Settings:deleteOk'),
+                    onPress: () => {
+                      client.clearStore()
+                      props.deleteUser()
+                    },
+                  },
+                ],
+                { cancelable: false }
+              ),
+            important: true,
+          },
+          {
             titleKey: 'logout',
             onPress: () => client.clearStore(),
-            last: true,
+            important: true,
           },
         ],
       },

@@ -1,6 +1,10 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useCurrentUserSettingsQuery, useToggleNotificationSettingsMutation } from '@wrench/common'
+import {
+  useCurrentUserSettingsQuery,
+  useToggleNotificationSettingsMutation,
+  useDeleteCurrentUserMutation,
+} from '@wrench/common'
 import { Page, SectionList, useNavigation } from 'navigation'
 import { Title, SelectionItem } from 'ui'
 import Footer from '../../components/Footer'
@@ -27,6 +31,7 @@ function Settings({ section }) {
 
   const { data } = useCurrentUserSettingsQuery()
   const [toggleNotificationSettings] = useToggleNotificationSettingsMutation()
+  const [deleteUser] = useDeleteCurrentUserMutation()
 
   const handleToggleNotificationSettings = useCallback(
     (input) =>
@@ -69,6 +74,8 @@ function Settings({ section }) {
             settings,
             navigate,
             showModal,
+            deleteUser,
+            t,
             user: data?.user,
           })[section || 'settings']
         }
