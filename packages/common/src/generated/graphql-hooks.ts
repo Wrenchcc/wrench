@@ -1,8 +1,7 @@
-import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/client';
-import * as ApolloReactHooks from '@apollo/client';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -1427,6 +1426,14 @@ export type DeleteCommentMutation = (
   & Pick<Mutation, 'deleteComment'>
 );
 
+export type DeleteCurrentUserMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DeleteCurrentUserMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteCurrentUser'>
+);
+
 export type DeleteNotificationMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -2646,7 +2653,7 @@ export const AddCollectionDocument = gql`
   }
 }
     `;
-export type AddCollectionMutationFn = ApolloReactCommon.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
+export type AddCollectionMutationFn = Apollo.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
 
 /**
  * __useAddCollectionMutation__
@@ -2666,12 +2673,12 @@ export type AddCollectionMutationFn = ApolloReactCommon.MutationFunction<AddColl
  *   },
  * });
  */
-export function useAddCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddCollectionMutation, AddCollectionMutationVariables>) {
-        return ApolloReactHooks.useMutation<AddCollectionMutation, AddCollectionMutationVariables>(AddCollectionDocument, baseOptions);
+export function useAddCollectionMutation(baseOptions?: Apollo.MutationHookOptions<AddCollectionMutation, AddCollectionMutationVariables>) {
+        return Apollo.useMutation<AddCollectionMutation, AddCollectionMutationVariables>(AddCollectionDocument, baseOptions);
       }
 export type AddCollectionMutationHookResult = ReturnType<typeof useAddCollectionMutation>;
-export type AddCollectionMutationResult = ApolloReactCommon.MutationResult<AddCollectionMutation>;
-export type AddCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCollectionMutation, AddCollectionMutationVariables>;
+export type AddCollectionMutationResult = Apollo.MutationResult<AddCollectionMutation>;
+export type AddCollectionMutationOptions = Apollo.BaseMutationOptions<AddCollectionMutation, AddCollectionMutationVariables>;
 export const AddCommentDocument = gql`
     mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
   addComment(postId: $postId, commentId: $commentId, input: $input) {
@@ -2681,7 +2688,7 @@ export const AddCommentDocument = gql`
   }
 }
     `;
-export type AddCommentMutationFn = ApolloReactCommon.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
+export type AddCommentMutationFn = Apollo.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
 
 /**
  * __useAddCommentMutation__
@@ -2702,12 +2709,12 @@ export type AddCommentMutationFn = ApolloReactCommon.MutationFunction<AddComment
  *   },
  * });
  */
-export function useAddCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>) {
-        return ApolloReactHooks.useMutation<AddCommentMutation, AddCommentMutationVariables>(AddCommentDocument, baseOptions);
+export function useAddCommentMutation(baseOptions?: Apollo.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>) {
+        return Apollo.useMutation<AddCommentMutation, AddCommentMutationVariables>(AddCommentDocument, baseOptions);
       }
 export type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>;
-export type AddCommentMutationResult = ApolloReactCommon.MutationResult<AddCommentMutation>;
-export type AddCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<AddCommentMutation, AddCommentMutationVariables>;
+export type AddCommentMutationResult = Apollo.MutationResult<AddCommentMutation>;
+export type AddCommentMutationOptions = Apollo.BaseMutationOptions<AddCommentMutation, AddCommentMutationVariables>;
 export const AddPostDocument = gql`
     mutation addPost($input: PostInput!) {
   addPost(input: $input) {
@@ -2715,7 +2722,7 @@ export const AddPostDocument = gql`
   }
 }
     ${PostFragmentDoc}`;
-export type AddPostMutationFn = ApolloReactCommon.MutationFunction<AddPostMutation, AddPostMutationVariables>;
+export type AddPostMutationFn = Apollo.MutationFunction<AddPostMutation, AddPostMutationVariables>;
 
 /**
  * __useAddPostMutation__
@@ -2734,12 +2741,12 @@ export type AddPostMutationFn = ApolloReactCommon.MutationFunction<AddPostMutati
  *   },
  * });
  */
-export function useAddPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddPostMutation, AddPostMutationVariables>) {
-        return ApolloReactHooks.useMutation<AddPostMutation, AddPostMutationVariables>(AddPostDocument, baseOptions);
+export function useAddPostMutation(baseOptions?: Apollo.MutationHookOptions<AddPostMutation, AddPostMutationVariables>) {
+        return Apollo.useMutation<AddPostMutation, AddPostMutationVariables>(AddPostDocument, baseOptions);
       }
 export type AddPostMutationHookResult = ReturnType<typeof useAddPostMutation>;
-export type AddPostMutationResult = ApolloReactCommon.MutationResult<AddPostMutation>;
-export type AddPostMutationOptions = ApolloReactCommon.BaseMutationOptions<AddPostMutation, AddPostMutationVariables>;
+export type AddPostMutationResult = Apollo.MutationResult<AddPostMutation>;
+export type AddPostMutationOptions = Apollo.BaseMutationOptions<AddPostMutation, AddPostMutationVariables>;
 export const AddProjectDocument = gql`
     mutation addProject($input: ProjectInput!) {
   addProject(input: $input) {
@@ -2747,7 +2754,7 @@ export const AddProjectDocument = gql`
   }
 }
     ${ProjectFragmentDoc}`;
-export type AddProjectMutationFn = ApolloReactCommon.MutationFunction<AddProjectMutation, AddProjectMutationVariables>;
+export type AddProjectMutationFn = Apollo.MutationFunction<AddProjectMutation, AddProjectMutationVariables>;
 
 /**
  * __useAddProjectMutation__
@@ -2766,12 +2773,12 @@ export type AddProjectMutationFn = ApolloReactCommon.MutationFunction<AddProject
  *   },
  * });
  */
-export function useAddProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddProjectMutation, AddProjectMutationVariables>) {
-        return ApolloReactHooks.useMutation<AddProjectMutation, AddProjectMutationVariables>(AddProjectDocument, baseOptions);
+export function useAddProjectMutation(baseOptions?: Apollo.MutationHookOptions<AddProjectMutation, AddProjectMutationVariables>) {
+        return Apollo.useMutation<AddProjectMutation, AddProjectMutationVariables>(AddProjectDocument, baseOptions);
       }
 export type AddProjectMutationHookResult = ReturnType<typeof useAddProjectMutation>;
-export type AddProjectMutationResult = ApolloReactCommon.MutationResult<AddProjectMutation>;
-export type AddProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<AddProjectMutation, AddProjectMutationVariables>;
+export type AddProjectMutationResult = Apollo.MutationResult<AddProjectMutation>;
+export type AddProjectMutationOptions = Apollo.BaseMutationOptions<AddProjectMutation, AddProjectMutationVariables>;
 export const AuthenticateAppleDocument = gql`
     mutation authenticateApple($identityToken: String!, $user: ApplePayload!) {
   authenticateApple(identityToken: $identityToken, user: $user) {
@@ -2780,7 +2787,7 @@ export const AuthenticateAppleDocument = gql`
   }
 }
     `;
-export type AuthenticateAppleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+export type AuthenticateAppleMutationFn = Apollo.MutationFunction<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
 
 /**
  * __useAuthenticateAppleMutation__
@@ -2800,12 +2807,12 @@ export type AuthenticateAppleMutationFn = ApolloReactCommon.MutationFunction<Aut
  *   },
  * });
  */
-export function useAuthenticateAppleMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>) {
-        return ApolloReactHooks.useMutation<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>(AuthenticateAppleDocument, baseOptions);
+export function useAuthenticateAppleMutation(baseOptions?: Apollo.MutationHookOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>) {
+        return Apollo.useMutation<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>(AuthenticateAppleDocument, baseOptions);
       }
 export type AuthenticateAppleMutationHookResult = ReturnType<typeof useAuthenticateAppleMutation>;
-export type AuthenticateAppleMutationResult = ApolloReactCommon.MutationResult<AuthenticateAppleMutation>;
-export type AuthenticateAppleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
+export type AuthenticateAppleMutationResult = Apollo.MutationResult<AuthenticateAppleMutation>;
+export type AuthenticateAppleMutationOptions = Apollo.BaseMutationOptions<AuthenticateAppleMutation, AuthenticateAppleMutationVariables>;
 export const AuthenticateFacebookDocument = gql`
     mutation authenticateFacebook($token: String!) {
   authenticateFacebook(token: $token) {
@@ -2814,7 +2821,7 @@ export const AuthenticateFacebookDocument = gql`
   }
 }
     `;
-export type AuthenticateFacebookMutationFn = ApolloReactCommon.MutationFunction<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+export type AuthenticateFacebookMutationFn = Apollo.MutationFunction<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
 
 /**
  * __useAuthenticateFacebookMutation__
@@ -2833,12 +2840,12 @@ export type AuthenticateFacebookMutationFn = ApolloReactCommon.MutationFunction<
  *   },
  * });
  */
-export function useAuthenticateFacebookMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>) {
-        return ApolloReactHooks.useMutation<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>(AuthenticateFacebookDocument, baseOptions);
+export function useAuthenticateFacebookMutation(baseOptions?: Apollo.MutationHookOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>) {
+        return Apollo.useMutation<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>(AuthenticateFacebookDocument, baseOptions);
       }
 export type AuthenticateFacebookMutationHookResult = ReturnType<typeof useAuthenticateFacebookMutation>;
-export type AuthenticateFacebookMutationResult = ApolloReactCommon.MutationResult<AuthenticateFacebookMutation>;
-export type AuthenticateFacebookMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
+export type AuthenticateFacebookMutationResult = Apollo.MutationResult<AuthenticateFacebookMutation>;
+export type AuthenticateFacebookMutationOptions = Apollo.BaseMutationOptions<AuthenticateFacebookMutation, AuthenticateFacebookMutationVariables>;
 export const AuthenticateGoogleDocument = gql`
     mutation authenticateGoogle($idToken: String!) {
   authenticateGoogle(idToken: $idToken) {
@@ -2847,7 +2854,7 @@ export const AuthenticateGoogleDocument = gql`
   }
 }
     `;
-export type AuthenticateGoogleMutationFn = ApolloReactCommon.MutationFunction<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export type AuthenticateGoogleMutationFn = Apollo.MutationFunction<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
 
 /**
  * __useAuthenticateGoogleMutation__
@@ -2866,12 +2873,12 @@ export type AuthenticateGoogleMutationFn = ApolloReactCommon.MutationFunction<Au
  *   },
  * });
  */
-export function useAuthenticateGoogleMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>) {
-        return ApolloReactHooks.useMutation<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>(AuthenticateGoogleDocument, baseOptions);
+export function useAuthenticateGoogleMutation(baseOptions?: Apollo.MutationHookOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>) {
+        return Apollo.useMutation<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>(AuthenticateGoogleDocument, baseOptions);
       }
 export type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
-export type AuthenticateGoogleMutationResult = ApolloReactCommon.MutationResult<AuthenticateGoogleMutation>;
-export type AuthenticateGoogleMutationOptions = ApolloReactCommon.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export type AuthenticateGoogleMutationResult = Apollo.MutationResult<AuthenticateGoogleMutation>;
+export type AuthenticateGoogleMutationOptions = Apollo.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
 export const BookmarkPostDocument = gql`
     mutation bookmarkPost($id: ID!) {
   bookmarkPost(id: $id) {
@@ -2882,7 +2889,7 @@ export const BookmarkPostDocument = gql`
   }
 }
     `;
-export type BookmarkPostMutationFn = ApolloReactCommon.MutationFunction<BookmarkPostMutation, BookmarkPostMutationVariables>;
+export type BookmarkPostMutationFn = Apollo.MutationFunction<BookmarkPostMutation, BookmarkPostMutationVariables>;
 
 /**
  * __useBookmarkPostMutation__
@@ -2901,12 +2908,12 @@ export type BookmarkPostMutationFn = ApolloReactCommon.MutationFunction<Bookmark
  *   },
  * });
  */
-export function useBookmarkPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<BookmarkPostMutation, BookmarkPostMutationVariables>) {
-        return ApolloReactHooks.useMutation<BookmarkPostMutation, BookmarkPostMutationVariables>(BookmarkPostDocument, baseOptions);
+export function useBookmarkPostMutation(baseOptions?: Apollo.MutationHookOptions<BookmarkPostMutation, BookmarkPostMutationVariables>) {
+        return Apollo.useMutation<BookmarkPostMutation, BookmarkPostMutationVariables>(BookmarkPostDocument, baseOptions);
       }
 export type BookmarkPostMutationHookResult = ReturnType<typeof useBookmarkPostMutation>;
-export type BookmarkPostMutationResult = ApolloReactCommon.MutationResult<BookmarkPostMutation>;
-export type BookmarkPostMutationOptions = ApolloReactCommon.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
+export type BookmarkPostMutationResult = Apollo.MutationResult<BookmarkPostMutation>;
+export type BookmarkPostMutationOptions = Apollo.BaseMutationOptions<BookmarkPostMutation, BookmarkPostMutationVariables>;
 export const CollectPostsDocument = gql`
     mutation collectPosts($projectId: ID!, $collectionId: ID!, $input: [CollectionInput]) {
   collectPosts(projectId: $projectId, collectionId: $collectionId, input: $input) {
@@ -2918,7 +2925,7 @@ export const CollectPostsDocument = gql`
   }
 }
     `;
-export type CollectPostsMutationFn = ApolloReactCommon.MutationFunction<CollectPostsMutation, CollectPostsMutationVariables>;
+export type CollectPostsMutationFn = Apollo.MutationFunction<CollectPostsMutation, CollectPostsMutationVariables>;
 
 /**
  * __useCollectPostsMutation__
@@ -2939,12 +2946,12 @@ export type CollectPostsMutationFn = ApolloReactCommon.MutationFunction<CollectP
  *   },
  * });
  */
-export function useCollectPostsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>) {
-        return ApolloReactHooks.useMutation<CollectPostsMutation, CollectPostsMutationVariables>(CollectPostsDocument, baseOptions);
+export function useCollectPostsMutation(baseOptions?: Apollo.MutationHookOptions<CollectPostsMutation, CollectPostsMutationVariables>) {
+        return Apollo.useMutation<CollectPostsMutation, CollectPostsMutationVariables>(CollectPostsDocument, baseOptions);
       }
 export type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
-export type CollectPostsMutationResult = ApolloReactCommon.MutationResult<CollectPostsMutation>;
-export type CollectPostsMutationOptions = ApolloReactCommon.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
+export type CollectPostsMutationResult = Apollo.MutationResult<CollectPostsMutation>;
+export type CollectPostsMutationOptions = Apollo.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
 export const DeleteCollectionDocument = gql`
     mutation deleteCollection($projectId: ID!, $id: ID!) {
   deleteCollection(id: $id, projectId: $projectId) {
@@ -2952,7 +2959,7 @@ export const DeleteCollectionDocument = gql`
   }
 }
     `;
-export type DeleteCollectionMutationFn = ApolloReactCommon.MutationFunction<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
+export type DeleteCollectionMutationFn = Apollo.MutationFunction<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
 
 /**
  * __useDeleteCollectionMutation__
@@ -2972,18 +2979,18 @@ export type DeleteCollectionMutationFn = ApolloReactCommon.MutationFunction<Dele
  *   },
  * });
  */
-export function useDeleteCollectionMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>) {
-        return ApolloReactHooks.useMutation<DeleteCollectionMutation, DeleteCollectionMutationVariables>(DeleteCollectionDocument, baseOptions);
+export function useDeleteCollectionMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>) {
+        return Apollo.useMutation<DeleteCollectionMutation, DeleteCollectionMutationVariables>(DeleteCollectionDocument, baseOptions);
       }
 export type DeleteCollectionMutationHookResult = ReturnType<typeof useDeleteCollectionMutation>;
-export type DeleteCollectionMutationResult = ApolloReactCommon.MutationResult<DeleteCollectionMutation>;
-export type DeleteCollectionMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
+export type DeleteCollectionMutationResult = Apollo.MutationResult<DeleteCollectionMutation>;
+export type DeleteCollectionMutationOptions = Apollo.BaseMutationOptions<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
 export const DeleteCommentDocument = gql`
     mutation deleteComment($id: ID!) {
   deleteComment(id: $id)
 }
     `;
-export type DeleteCommentMutationFn = ApolloReactCommon.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export type DeleteCommentMutationFn = Apollo.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
 
 /**
  * __useDeleteCommentMutation__
@@ -3002,18 +3009,47 @@ export type DeleteCommentMutationFn = ApolloReactCommon.MutationFunction<DeleteC
  *   },
  * });
  */
-export function useDeleteCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>) {
-        return ApolloReactHooks.useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>(DeleteCommentDocument, baseOptions);
+export function useDeleteCommentMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>) {
+        return Apollo.useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>(DeleteCommentDocument, baseOptions);
       }
 export type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
-export type DeleteCommentMutationResult = ApolloReactCommon.MutationResult<DeleteCommentMutation>;
-export type DeleteCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export type DeleteCommentMutationResult = Apollo.MutationResult<DeleteCommentMutation>;
+export type DeleteCommentMutationOptions = Apollo.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export const DeleteCurrentUserDocument = gql`
+    mutation deleteCurrentUser {
+  deleteCurrentUser
+}
+    `;
+export type DeleteCurrentUserMutationFn = Apollo.MutationFunction<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>;
+
+/**
+ * __useDeleteCurrentUserMutation__
+ *
+ * To run a mutation, you first call `useDeleteCurrentUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCurrentUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCurrentUserMutation, { data, loading, error }] = useDeleteCurrentUserMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useDeleteCurrentUserMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>) {
+        return Apollo.useMutation<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>(DeleteCurrentUserDocument, baseOptions);
+      }
+export type DeleteCurrentUserMutationHookResult = ReturnType<typeof useDeleteCurrentUserMutation>;
+export type DeleteCurrentUserMutationResult = Apollo.MutationResult<DeleteCurrentUserMutation>;
+export type DeleteCurrentUserMutationOptions = Apollo.BaseMutationOptions<DeleteCurrentUserMutation, DeleteCurrentUserMutationVariables>;
 export const DeleteNotificationDocument = gql`
     mutation deleteNotification($id: ID!) {
   deleteNotification(id: $id)
 }
     `;
-export type DeleteNotificationMutationFn = ApolloReactCommon.MutationFunction<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+export type DeleteNotificationMutationFn = Apollo.MutationFunction<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
 
 /**
  * __useDeleteNotificationMutation__
@@ -3032,12 +3068,12 @@ export type DeleteNotificationMutationFn = ApolloReactCommon.MutationFunction<De
  *   },
  * });
  */
-export function useDeleteNotificationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>) {
-        return ApolloReactHooks.useMutation<DeleteNotificationMutation, DeleteNotificationMutationVariables>(DeleteNotificationDocument, baseOptions);
+export function useDeleteNotificationMutation(baseOptions?: Apollo.MutationHookOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>) {
+        return Apollo.useMutation<DeleteNotificationMutation, DeleteNotificationMutationVariables>(DeleteNotificationDocument, baseOptions);
       }
 export type DeleteNotificationMutationHookResult = ReturnType<typeof useDeleteNotificationMutation>;
-export type DeleteNotificationMutationResult = ApolloReactCommon.MutationResult<DeleteNotificationMutation>;
-export type DeleteNotificationMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
+export type DeleteNotificationMutationResult = Apollo.MutationResult<DeleteNotificationMutation>;
+export type DeleteNotificationMutationOptions = Apollo.BaseMutationOptions<DeleteNotificationMutation, DeleteNotificationMutationVariables>;
 export const DeletePostDocument = gql`
     mutation deletePost($id: ID!) {
   deletePost(id: $id) {
@@ -3045,7 +3081,7 @@ export const DeletePostDocument = gql`
   }
 }
     `;
-export type DeletePostMutationFn = ApolloReactCommon.MutationFunction<DeletePostMutation, DeletePostMutationVariables>;
+export type DeletePostMutationFn = Apollo.MutationFunction<DeletePostMutation, DeletePostMutationVariables>;
 
 /**
  * __useDeletePostMutation__
@@ -3064,18 +3100,18 @@ export type DeletePostMutationFn = ApolloReactCommon.MutationFunction<DeletePost
  *   },
  * });
  */
-export function useDeletePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>) {
-        return ApolloReactHooks.useMutation<DeletePostMutation, DeletePostMutationVariables>(DeletePostDocument, baseOptions);
+export function useDeletePostMutation(baseOptions?: Apollo.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>) {
+        return Apollo.useMutation<DeletePostMutation, DeletePostMutationVariables>(DeletePostDocument, baseOptions);
       }
 export type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>;
-export type DeletePostMutationResult = ApolloReactCommon.MutationResult<DeletePostMutation>;
-export type DeletePostMutationOptions = ApolloReactCommon.BaseMutationOptions<DeletePostMutation, DeletePostMutationVariables>;
+export type DeletePostMutationResult = Apollo.MutationResult<DeletePostMutation>;
+export type DeletePostMutationOptions = Apollo.BaseMutationOptions<DeletePostMutation, DeletePostMutationVariables>;
 export const DeleteProjectDocument = gql`
     mutation deleteProject($id: ID!) {
   deleteProject(id: $id)
 }
     `;
-export type DeleteProjectMutationFn = ApolloReactCommon.MutationFunction<DeleteProjectMutation, DeleteProjectMutationVariables>;
+export type DeleteProjectMutationFn = Apollo.MutationFunction<DeleteProjectMutation, DeleteProjectMutationVariables>;
 
 /**
  * __useDeleteProjectMutation__
@@ -3094,12 +3130,12 @@ export type DeleteProjectMutationFn = ApolloReactCommon.MutationFunction<DeleteP
  *   },
  * });
  */
-export function useDeleteProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteProjectMutation, DeleteProjectMutationVariables>) {
-        return ApolloReactHooks.useMutation<DeleteProjectMutation, DeleteProjectMutationVariables>(DeleteProjectDocument, baseOptions);
+export function useDeleteProjectMutation(baseOptions?: Apollo.MutationHookOptions<DeleteProjectMutation, DeleteProjectMutationVariables>) {
+        return Apollo.useMutation<DeleteProjectMutation, DeleteProjectMutationVariables>(DeleteProjectDocument, baseOptions);
       }
 export type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>;
-export type DeleteProjectMutationResult = ApolloReactCommon.MutationResult<DeleteProjectMutation>;
-export type DeleteProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
+export type DeleteProjectMutationResult = Apollo.MutationResult<DeleteProjectMutation>;
+export type DeleteProjectMutationOptions = Apollo.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
 export const EditPostDocument = gql`
     mutation editPost($id: ID!, $input: EditPostInput!) {
   editPost(id: $id, input: $input) {
@@ -3107,7 +3143,7 @@ export const EditPostDocument = gql`
   }
 }
     ${PostFragmentDoc}`;
-export type EditPostMutationFn = ApolloReactCommon.MutationFunction<EditPostMutation, EditPostMutationVariables>;
+export type EditPostMutationFn = Apollo.MutationFunction<EditPostMutation, EditPostMutationVariables>;
 
 /**
  * __useEditPostMutation__
@@ -3127,12 +3163,12 @@ export type EditPostMutationFn = ApolloReactCommon.MutationFunction<EditPostMuta
  *   },
  * });
  */
-export function useEditPostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditPostMutation, EditPostMutationVariables>) {
-        return ApolloReactHooks.useMutation<EditPostMutation, EditPostMutationVariables>(EditPostDocument, baseOptions);
+export function useEditPostMutation(baseOptions?: Apollo.MutationHookOptions<EditPostMutation, EditPostMutationVariables>) {
+        return Apollo.useMutation<EditPostMutation, EditPostMutationVariables>(EditPostDocument, baseOptions);
       }
 export type EditPostMutationHookResult = ReturnType<typeof useEditPostMutation>;
-export type EditPostMutationResult = ApolloReactCommon.MutationResult<EditPostMutation>;
-export type EditPostMutationOptions = ApolloReactCommon.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
+export type EditPostMutationResult = Apollo.MutationResult<EditPostMutation>;
+export type EditPostMutationOptions = Apollo.BaseMutationOptions<EditPostMutation, EditPostMutationVariables>;
 export const EditProjectDocument = gql`
     mutation editProject($id: ID!, $input: ProjectInput!) {
   editProject(id: $id, input: $input) {
@@ -3141,7 +3177,7 @@ export const EditProjectDocument = gql`
   }
 }
     `;
-export type EditProjectMutationFn = ApolloReactCommon.MutationFunction<EditProjectMutation, EditProjectMutationVariables>;
+export type EditProjectMutationFn = Apollo.MutationFunction<EditProjectMutation, EditProjectMutationVariables>;
 
 /**
  * __useEditProjectMutation__
@@ -3161,12 +3197,12 @@ export type EditProjectMutationFn = ApolloReactCommon.MutationFunction<EditProje
  *   },
  * });
  */
-export function useEditProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditProjectMutation, EditProjectMutationVariables>) {
-        return ApolloReactHooks.useMutation<EditProjectMutation, EditProjectMutationVariables>(EditProjectDocument, baseOptions);
+export function useEditProjectMutation(baseOptions?: Apollo.MutationHookOptions<EditProjectMutation, EditProjectMutationVariables>) {
+        return Apollo.useMutation<EditProjectMutation, EditProjectMutationVariables>(EditProjectDocument, baseOptions);
       }
 export type EditProjectMutationHookResult = ReturnType<typeof useEditProjectMutation>;
-export type EditProjectMutationResult = ApolloReactCommon.MutationResult<EditProjectMutation>;
-export type EditProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<EditProjectMutation, EditProjectMutationVariables>;
+export type EditProjectMutationResult = Apollo.MutationResult<EditProjectMutation>;
+export type EditProjectMutationOptions = Apollo.BaseMutationOptions<EditProjectMutation, EditProjectMutationVariables>;
 export const EditUserDocument = gql`
     mutation editUser($input: EditUserInput!, $id: ID) {
   editUser(input: $input, id: $id) {
@@ -3174,7 +3210,7 @@ export const EditUserDocument = gql`
   }
 }
     ${UserFragmentDoc}`;
-export type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMutation, EditUserMutationVariables>;
+export type EditUserMutationFn = Apollo.MutationFunction<EditUserMutation, EditUserMutationVariables>;
 
 /**
  * __useEditUserMutation__
@@ -3194,12 +3230,12 @@ export type EditUserMutationFn = ApolloReactCommon.MutationFunction<EditUserMuta
  *   },
  * });
  */
-export function useEditUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditUserMutation, EditUserMutationVariables>) {
-        return ApolloReactHooks.useMutation<EditUserMutation, EditUserMutationVariables>(EditUserDocument, baseOptions);
+export function useEditUserMutation(baseOptions?: Apollo.MutationHookOptions<EditUserMutation, EditUserMutationVariables>) {
+        return Apollo.useMutation<EditUserMutation, EditUserMutationVariables>(EditUserDocument, baseOptions);
       }
 export type EditUserMutationHookResult = ReturnType<typeof useEditUserMutation>;
-export type EditUserMutationResult = ApolloReactCommon.MutationResult<EditUserMutation>;
-export type EditUserMutationOptions = ApolloReactCommon.BaseMutationOptions<EditUserMutation, EditUserMutationVariables>;
+export type EditUserMutationResult = Apollo.MutationResult<EditUserMutation>;
+export type EditUserMutationOptions = Apollo.BaseMutationOptions<EditUserMutation, EditUserMutationVariables>;
 export const FollowProjectDocument = gql`
     mutation followProject($id: ID!) {
   followProject(id: $id) {
@@ -3211,7 +3247,7 @@ export const FollowProjectDocument = gql`
   }
 }
     ${ProjectFragmentDoc}`;
-export type FollowProjectMutationFn = ApolloReactCommon.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
+export type FollowProjectMutationFn = Apollo.MutationFunction<FollowProjectMutation, FollowProjectMutationVariables>;
 
 /**
  * __useFollowProjectMutation__
@@ -3230,12 +3266,12 @@ export type FollowProjectMutationFn = ApolloReactCommon.MutationFunction<FollowP
  *   },
  * });
  */
-export function useFollowProjectMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<FollowProjectMutation, FollowProjectMutationVariables>) {
-        return ApolloReactHooks.useMutation<FollowProjectMutation, FollowProjectMutationVariables>(FollowProjectDocument, baseOptions);
+export function useFollowProjectMutation(baseOptions?: Apollo.MutationHookOptions<FollowProjectMutation, FollowProjectMutationVariables>) {
+        return Apollo.useMutation<FollowProjectMutation, FollowProjectMutationVariables>(FollowProjectDocument, baseOptions);
       }
 export type FollowProjectMutationHookResult = ReturnType<typeof useFollowProjectMutation>;
-export type FollowProjectMutationResult = ApolloReactCommon.MutationResult<FollowProjectMutation>;
-export type FollowProjectMutationOptions = ApolloReactCommon.BaseMutationOptions<FollowProjectMutation, FollowProjectMutationVariables>;
+export type FollowProjectMutationResult = Apollo.MutationResult<FollowProjectMutation>;
+export type FollowProjectMutationOptions = Apollo.BaseMutationOptions<FollowProjectMutation, FollowProjectMutationVariables>;
 export const LikeCommentDocument = gql`
     mutation likeComment($id: ID!) {
   likeComment(id: $id) {
@@ -3247,7 +3283,7 @@ export const LikeCommentDocument = gql`
   }
 }
     `;
-export type LikeCommentMutationFn = ApolloReactCommon.MutationFunction<LikeCommentMutation, LikeCommentMutationVariables>;
+export type LikeCommentMutationFn = Apollo.MutationFunction<LikeCommentMutation, LikeCommentMutationVariables>;
 
 /**
  * __useLikeCommentMutation__
@@ -3266,12 +3302,12 @@ export type LikeCommentMutationFn = ApolloReactCommon.MutationFunction<LikeComme
  *   },
  * });
  */
-export function useLikeCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikeCommentMutation, LikeCommentMutationVariables>) {
-        return ApolloReactHooks.useMutation<LikeCommentMutation, LikeCommentMutationVariables>(LikeCommentDocument, baseOptions);
+export function useLikeCommentMutation(baseOptions?: Apollo.MutationHookOptions<LikeCommentMutation, LikeCommentMutationVariables>) {
+        return Apollo.useMutation<LikeCommentMutation, LikeCommentMutationVariables>(LikeCommentDocument, baseOptions);
       }
 export type LikeCommentMutationHookResult = ReturnType<typeof useLikeCommentMutation>;
-export type LikeCommentMutationResult = ApolloReactCommon.MutationResult<LikeCommentMutation>;
-export type LikeCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<LikeCommentMutation, LikeCommentMutationVariables>;
+export type LikeCommentMutationResult = Apollo.MutationResult<LikeCommentMutation>;
+export type LikeCommentMutationOptions = Apollo.BaseMutationOptions<LikeCommentMutation, LikeCommentMutationVariables>;
 export const LikePostDocument = gql`
     mutation likePost($id: ID!) {
   likePost(id: $id) {
@@ -3283,7 +3319,7 @@ export const LikePostDocument = gql`
   }
 }
     `;
-export type LikePostMutationFn = ApolloReactCommon.MutationFunction<LikePostMutation, LikePostMutationVariables>;
+export type LikePostMutationFn = Apollo.MutationFunction<LikePostMutation, LikePostMutationVariables>;
 
 /**
  * __useLikePostMutation__
@@ -3302,18 +3338,18 @@ export type LikePostMutationFn = ApolloReactCommon.MutationFunction<LikePostMuta
  *   },
  * });
  */
-export function useLikePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LikePostMutation, LikePostMutationVariables>) {
-        return ApolloReactHooks.useMutation<LikePostMutation, LikePostMutationVariables>(LikePostDocument, baseOptions);
+export function useLikePostMutation(baseOptions?: Apollo.MutationHookOptions<LikePostMutation, LikePostMutationVariables>) {
+        return Apollo.useMutation<LikePostMutation, LikePostMutationVariables>(LikePostDocument, baseOptions);
       }
 export type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
-export type LikePostMutationResult = ApolloReactCommon.MutationResult<LikePostMutation>;
-export type LikePostMutationOptions = ApolloReactCommon.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
+export type LikePostMutationResult = Apollo.MutationResult<LikePostMutation>;
+export type LikePostMutationOptions = Apollo.BaseMutationOptions<LikePostMutation, LikePostMutationVariables>;
 export const MarkAllNotificationsSeenDocument = gql`
     mutation markAllNotificationsSeen {
   markAllNotificationsSeen
 }
     `;
-export type MarkAllNotificationsSeenMutationFn = ApolloReactCommon.MutationFunction<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+export type MarkAllNotificationsSeenMutationFn = Apollo.MutationFunction<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
 
 /**
  * __useMarkAllNotificationsSeenMutation__
@@ -3331,12 +3367,12 @@ export type MarkAllNotificationsSeenMutationFn = ApolloReactCommon.MutationFunct
  *   },
  * });
  */
-export function useMarkAllNotificationsSeenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>) {
-        return ApolloReactHooks.useMutation<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>(MarkAllNotificationsSeenDocument, baseOptions);
+export function useMarkAllNotificationsSeenMutation(baseOptions?: Apollo.MutationHookOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>) {
+        return Apollo.useMutation<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>(MarkAllNotificationsSeenDocument, baseOptions);
       }
 export type MarkAllNotificationsSeenMutationHookResult = ReturnType<typeof useMarkAllNotificationsSeenMutation>;
-export type MarkAllNotificationsSeenMutationResult = ApolloReactCommon.MutationResult<MarkAllNotificationsSeenMutation>;
-export type MarkAllNotificationsSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
+export type MarkAllNotificationsSeenMutationResult = Apollo.MutationResult<MarkAllNotificationsSeenMutation>;
+export type MarkAllNotificationsSeenMutationOptions = Apollo.BaseMutationOptions<MarkAllNotificationsSeenMutation, MarkAllNotificationsSeenMutationVariables>;
 export const MarkNotificationSeenDocument = gql`
     mutation markNotificationSeen($id: ID!) {
   markNotificationSeen(id: $id) {
@@ -3344,7 +3380,7 @@ export const MarkNotificationSeenDocument = gql`
   }
 }
     ${NotificationFragmentDoc}`;
-export type MarkNotificationSeenMutationFn = ApolloReactCommon.MutationFunction<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+export type MarkNotificationSeenMutationFn = Apollo.MutationFunction<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
 
 /**
  * __useMarkNotificationSeenMutation__
@@ -3363,12 +3399,12 @@ export type MarkNotificationSeenMutationFn = ApolloReactCommon.MutationFunction<
  *   },
  * });
  */
-export function useMarkNotificationSeenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>) {
-        return ApolloReactHooks.useMutation<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>(MarkNotificationSeenDocument, baseOptions);
+export function useMarkNotificationSeenMutation(baseOptions?: Apollo.MutationHookOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>) {
+        return Apollo.useMutation<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>(MarkNotificationSeenDocument, baseOptions);
       }
 export type MarkNotificationSeenMutationHookResult = ReturnType<typeof useMarkNotificationSeenMutation>;
-export type MarkNotificationSeenMutationResult = ApolloReactCommon.MutationResult<MarkNotificationSeenMutation>;
-export type MarkNotificationSeenMutationOptions = ApolloReactCommon.BaseMutationOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
+export type MarkNotificationSeenMutationResult = Apollo.MutationResult<MarkNotificationSeenMutation>;
+export type MarkNotificationSeenMutationOptions = Apollo.BaseMutationOptions<MarkNotificationSeenMutation, MarkNotificationSeenMutationVariables>;
 export const PreSignUrlDocument = gql`
     mutation preSignUrl($input: PreSignedUrlInput!) {
   preSignUrl(input: $input) {
@@ -3378,7 +3414,7 @@ export const PreSignUrlDocument = gql`
   }
 }
     `;
-export type PreSignUrlMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlMutation, PreSignUrlMutationVariables>;
+export type PreSignUrlMutationFn = Apollo.MutationFunction<PreSignUrlMutation, PreSignUrlMutationVariables>;
 
 /**
  * __usePreSignUrlMutation__
@@ -3397,12 +3433,12 @@ export type PreSignUrlMutationFn = ApolloReactCommon.MutationFunction<PreSignUrl
  *   },
  * });
  */
-export function usePreSignUrlMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<PreSignUrlMutation, PreSignUrlMutationVariables>) {
-        return ApolloReactHooks.useMutation<PreSignUrlMutation, PreSignUrlMutationVariables>(PreSignUrlDocument, baseOptions);
+export function usePreSignUrlMutation(baseOptions?: Apollo.MutationHookOptions<PreSignUrlMutation, PreSignUrlMutationVariables>) {
+        return Apollo.useMutation<PreSignUrlMutation, PreSignUrlMutationVariables>(PreSignUrlDocument, baseOptions);
       }
 export type PreSignUrlMutationHookResult = ReturnType<typeof usePreSignUrlMutation>;
-export type PreSignUrlMutationResult = ApolloReactCommon.MutationResult<PreSignUrlMutation>;
-export type PreSignUrlMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlMutation, PreSignUrlMutationVariables>;
+export type PreSignUrlMutationResult = Apollo.MutationResult<PreSignUrlMutation>;
+export type PreSignUrlMutationOptions = Apollo.BaseMutationOptions<PreSignUrlMutation, PreSignUrlMutationVariables>;
 export const PreSignUrlsDocument = gql`
     mutation preSignUrls($input: [PreSignedUrlnput]!) {
   preSignUrls(input: $input) {
@@ -3412,7 +3448,7 @@ export const PreSignUrlsDocument = gql`
   }
 }
     `;
-export type PreSignUrlsMutationFn = ApolloReactCommon.MutationFunction<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+export type PreSignUrlsMutationFn = Apollo.MutationFunction<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
 
 /**
  * __usePreSignUrlsMutation__
@@ -3431,12 +3467,12 @@ export type PreSignUrlsMutationFn = ApolloReactCommon.MutationFunction<PreSignUr
  *   },
  * });
  */
-export function usePreSignUrlsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>) {
-        return ApolloReactHooks.useMutation<PreSignUrlsMutation, PreSignUrlsMutationVariables>(PreSignUrlsDocument, baseOptions);
+export function usePreSignUrlsMutation(baseOptions?: Apollo.MutationHookOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>) {
+        return Apollo.useMutation<PreSignUrlsMutation, PreSignUrlsMutationVariables>(PreSignUrlsDocument, baseOptions);
       }
 export type PreSignUrlsMutationHookResult = ReturnType<typeof usePreSignUrlsMutation>;
-export type PreSignUrlsMutationResult = ApolloReactCommon.MutationResult<PreSignUrlsMutation>;
-export type PreSignUrlsMutationOptions = ApolloReactCommon.BaseMutationOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
+export type PreSignUrlsMutationResult = Apollo.MutationResult<PreSignUrlsMutation>;
+export type PreSignUrlsMutationOptions = Apollo.BaseMutationOptions<PreSignUrlsMutation, PreSignUrlsMutationVariables>;
 export const RefreshTokenDocument = gql`
     mutation refreshToken($refreshToken: String!) {
   token: refreshToken(refreshToken: $refreshToken) {
@@ -3444,7 +3480,7 @@ export const RefreshTokenDocument = gql`
   }
 }
     `;
-export type RefreshTokenMutationFn = ApolloReactCommon.MutationFunction<RefreshTokenMutation, RefreshTokenMutationVariables>;
+export type RefreshTokenMutationFn = Apollo.MutationFunction<RefreshTokenMutation, RefreshTokenMutationVariables>;
 
 /**
  * __useRefreshTokenMutation__
@@ -3463,18 +3499,18 @@ export type RefreshTokenMutationFn = ApolloReactCommon.MutationFunction<RefreshT
  *   },
  * });
  */
-export function useRefreshTokenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>) {
-        return ApolloReactHooks.useMutation<RefreshTokenMutation, RefreshTokenMutationVariables>(RefreshTokenDocument, baseOptions);
+export function useRefreshTokenMutation(baseOptions?: Apollo.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>) {
+        return Apollo.useMutation<RefreshTokenMutation, RefreshTokenMutationVariables>(RefreshTokenDocument, baseOptions);
       }
 export type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>;
-export type RefreshTokenMutationResult = ApolloReactCommon.MutationResult<RefreshTokenMutation>;
-export type RefreshTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RefreshTokenMutation, RefreshTokenMutationVariables>;
+export type RefreshTokenMutationResult = Apollo.MutationResult<RefreshTokenMutation>;
+export type RefreshTokenMutationOptions = Apollo.BaseMutationOptions<RefreshTokenMutation, RefreshTokenMutationVariables>;
 export const RegisterDeviceTokenDocument = gql`
     mutation registerDeviceToken($token: String!, $platform: PlatformType!) {
   registerDeviceToken(token: $token, platform: $platform)
 }
     `;
-export type RegisterDeviceTokenMutationFn = ApolloReactCommon.MutationFunction<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+export type RegisterDeviceTokenMutationFn = Apollo.MutationFunction<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
 
 /**
  * __useRegisterDeviceTokenMutation__
@@ -3494,12 +3530,12 @@ export type RegisterDeviceTokenMutationFn = ApolloReactCommon.MutationFunction<R
  *   },
  * });
  */
-export function useRegisterDeviceTokenMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>) {
-        return ApolloReactHooks.useMutation<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>(RegisterDeviceTokenDocument, baseOptions);
+export function useRegisterDeviceTokenMutation(baseOptions?: Apollo.MutationHookOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>) {
+        return Apollo.useMutation<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>(RegisterDeviceTokenDocument, baseOptions);
       }
 export type RegisterDeviceTokenMutationHookResult = ReturnType<typeof useRegisterDeviceTokenMutation>;
-export type RegisterDeviceTokenMutationResult = ApolloReactCommon.MutationResult<RegisterDeviceTokenMutation>;
-export type RegisterDeviceTokenMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+export type RegisterDeviceTokenMutationResult = Apollo.MutationResult<RegisterDeviceTokenMutation>;
+export type RegisterDeviceTokenMutationOptions = Apollo.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
 export const ToggleNotificationSettingsDocument = gql`
     mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
   toggleNotificationSettings(input: $input) {
@@ -3507,7 +3543,7 @@ export const ToggleNotificationSettingsDocument = gql`
   }
 }
     ${UserSettingsFragmentDoc}`;
-export type ToggleNotificationSettingsMutationFn = ApolloReactCommon.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export type ToggleNotificationSettingsMutationFn = Apollo.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 
 /**
  * __useToggleNotificationSettingsMutation__
@@ -3526,12 +3562,12 @@ export type ToggleNotificationSettingsMutationFn = ApolloReactCommon.MutationFun
  *   },
  * });
  */
-export function useToggleNotificationSettingsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>) {
-        return ApolloReactHooks.useMutation<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>(ToggleNotificationSettingsDocument, baseOptions);
+export function useToggleNotificationSettingsMutation(baseOptions?: Apollo.MutationHookOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>) {
+        return Apollo.useMutation<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>(ToggleNotificationSettingsDocument, baseOptions);
       }
 export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
-export type ToggleNotificationSettingsMutationResult = ApolloReactCommon.MutationResult<ToggleNotificationSettingsMutation>;
-export type ToggleNotificationSettingsMutationOptions = ApolloReactCommon.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
+export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 export const BookmarksDocument = gql`
     query bookmarks($after: String, $first: Int = 5) @connection(key: "bookmarks") {
   bookmarks(after: $after, first: $first) {
@@ -3565,15 +3601,15 @@ export const BookmarksDocument = gql`
  *   },
  * });
  */
-export function useBookmarksQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
-        return ApolloReactHooks.useQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
+export function useBookmarksQuery(baseOptions?: Apollo.QueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
+        return Apollo.useQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
       }
-export function useBookmarksLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
+export function useBookmarksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BookmarksQuery, BookmarksQueryVariables>) {
+          return Apollo.useLazyQuery<BookmarksQuery, BookmarksQueryVariables>(BookmarksDocument, baseOptions);
         }
 export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
 export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
-export type BookmarksQueryResult = ApolloReactCommon.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
+export type BookmarksQueryResult = Apollo.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
 export const CollectionsDocument = gql`
     query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: "collections") {
   collections(id: $id, projectId: $projectId, after: $after, first: $first) {
@@ -3609,15 +3645,15 @@ export const CollectionsDocument = gql`
  *   },
  * });
  */
-export function useCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
-        return ApolloReactHooks.useQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+export function useCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+        return Apollo.useQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
       }
-export function useCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
+export function useCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>) {
+          return Apollo.useLazyQuery<CollectionsQuery, CollectionsQueryVariables>(CollectionsDocument, baseOptions);
         }
 export type CollectionsQueryHookResult = ReturnType<typeof useCollectionsQuery>;
 export type CollectionsLazyQueryHookResult = ReturnType<typeof useCollectionsLazyQuery>;
-export type CollectionsQueryResult = ApolloReactCommon.QueryResult<CollectionsQuery, CollectionsQueryVariables>;
+export type CollectionsQueryResult = Apollo.QueryResult<CollectionsQuery, CollectionsQueryVariables>;
 export const CommentDocument = gql`
     query comment($id: ID!) {
   comment(id: $id) {
@@ -3642,15 +3678,15 @@ export const CommentDocument = gql`
  *   },
  * });
  */
-export function useCommentQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CommentQuery, CommentQueryVariables>) {
-        return ApolloReactHooks.useQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
+export function useCommentQuery(baseOptions?: Apollo.QueryHookOptions<CommentQuery, CommentQueryVariables>) {
+        return Apollo.useQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
       }
-export function useCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
+export function useCommentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentQuery, CommentQueryVariables>) {
+          return Apollo.useLazyQuery<CommentQuery, CommentQueryVariables>(CommentDocument, baseOptions);
         }
 export type CommentQueryHookResult = ReturnType<typeof useCommentQuery>;
 export type CommentLazyQueryHookResult = ReturnType<typeof useCommentLazyQuery>;
-export type CommentQueryResult = ApolloReactCommon.QueryResult<CommentQuery, CommentQueryVariables>;
+export type CommentQueryResult = Apollo.QueryResult<CommentQuery, CommentQueryVariables>;
 export const CommentsDocument = gql`
     query comments($postId: ID!, $after: String) {
   post(id: $postId) {
@@ -3688,15 +3724,15 @@ ${CommentAndRepliesFragmentDoc}`;
  *   },
  * });
  */
-export function useCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
-        return ApolloReactHooks.useQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
+export function useCommentsQuery(baseOptions?: Apollo.QueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
+        return Apollo.useQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
       }
-export function useCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
+export function useCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CommentsQuery, CommentsQueryVariables>) {
+          return Apollo.useLazyQuery<CommentsQuery, CommentsQueryVariables>(CommentsDocument, baseOptions);
         }
 export type CommentsQueryHookResult = ReturnType<typeof useCommentsQuery>;
 export type CommentsLazyQueryHookResult = ReturnType<typeof useCommentsLazyQuery>;
-export type CommentsQueryResult = ApolloReactCommon.QueryResult<CommentsQuery, CommentsQueryVariables>;
+export type CommentsQueryResult = Apollo.QueryResult<CommentsQuery, CommentsQueryVariables>;
 export const CurrentUserDocument = gql`
     query currentUser {
   user: currentUser {
@@ -3742,15 +3778,15 @@ export const CurrentUserDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
-        return ApolloReactHooks.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, baseOptions);
+export function useCurrentUserQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
+        return Apollo.useQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, baseOptions);
       }
-export function useCurrentUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, baseOptions);
+export function useCurrentUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserQuery, CurrentUserQueryVariables>) {
+          return Apollo.useLazyQuery<CurrentUserQuery, CurrentUserQueryVariables>(CurrentUserDocument, baseOptions);
         }
 export type CurrentUserQueryHookResult = ReturnType<typeof useCurrentUserQuery>;
 export type CurrentUserLazyQueryHookResult = ReturnType<typeof useCurrentUserLazyQuery>;
-export type CurrentUserQueryResult = ApolloReactCommon.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
+export type CurrentUserQueryResult = Apollo.QueryResult<CurrentUserQuery, CurrentUserQueryVariables>;
 export const CurrentUserFollowingProjectsDocument = gql`
     query currentUserFollowingProjects($after: String, $first: Int = 5) {
   user: currentUser {
@@ -3791,15 +3827,15 @@ export const CurrentUserFollowingProjectsDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserFollowingProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>) {
-        return ApolloReactHooks.useQuery<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>(CurrentUserFollowingProjectsDocument, baseOptions);
+export function useCurrentUserFollowingProjectsQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>) {
+        return Apollo.useQuery<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>(CurrentUserFollowingProjectsDocument, baseOptions);
       }
-export function useCurrentUserFollowingProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>(CurrentUserFollowingProjectsDocument, baseOptions);
+export function useCurrentUserFollowingProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>) {
+          return Apollo.useLazyQuery<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>(CurrentUserFollowingProjectsDocument, baseOptions);
         }
 export type CurrentUserFollowingProjectsQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsQuery>;
 export type CurrentUserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserFollowingProjectsLazyQuery>;
-export type CurrentUserFollowingProjectsQueryResult = ApolloReactCommon.QueryResult<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>;
+export type CurrentUserFollowingProjectsQueryResult = Apollo.QueryResult<CurrentUserFollowingProjectsQuery, CurrentUserFollowingProjectsQueryVariables>;
 export const CurrentUserProfileDocument = gql`
     query currentUserProfile($after: String, $first: Int = 5) {
   user: currentUser {
@@ -3849,15 +3885,15 @@ ${PostFragmentDoc}`;
  *   },
  * });
  */
-export function useCurrentUserProfileQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
-        return ApolloReactHooks.useQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
+export function useCurrentUserProfileQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
+        return Apollo.useQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
       }
-export function useCurrentUserProfileLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
+export function useCurrentUserProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>) {
+          return Apollo.useLazyQuery<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>(CurrentUserProfileDocument, baseOptions);
         }
 export type CurrentUserProfileQueryHookResult = ReturnType<typeof useCurrentUserProfileQuery>;
 export type CurrentUserProfileLazyQueryHookResult = ReturnType<typeof useCurrentUserProfileLazyQuery>;
-export type CurrentUserProfileQueryResult = ApolloReactCommon.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>;
+export type CurrentUserProfileQueryResult = Apollo.QueryResult<CurrentUserProfileQuery, CurrentUserProfileQueryVariables>;
 export const CurrentUserProjectsDocument = gql`
     query currentUserProjects {
   user: currentUser {
@@ -3881,15 +3917,15 @@ export const CurrentUserProjectsDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>) {
-        return ApolloReactHooks.useQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(CurrentUserProjectsDocument, baseOptions);
+export function useCurrentUserProjectsQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>) {
+        return Apollo.useQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(CurrentUserProjectsDocument, baseOptions);
       }
-export function useCurrentUserProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(CurrentUserProjectsDocument, baseOptions);
+export function useCurrentUserProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>) {
+          return Apollo.useLazyQuery<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>(CurrentUserProjectsDocument, baseOptions);
         }
 export type CurrentUserProjectsQueryHookResult = ReturnType<typeof useCurrentUserProjectsQuery>;
 export type CurrentUserProjectsLazyQueryHookResult = ReturnType<typeof useCurrentUserProjectsLazyQuery>;
-export type CurrentUserProjectsQueryResult = ApolloReactCommon.QueryResult<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>;
+export type CurrentUserProjectsQueryResult = Apollo.QueryResult<CurrentUserProjectsQuery, CurrentUserProjectsQueryVariables>;
 export const CurrentUserSettingsDocument = gql`
     query currentUserSettings {
   user: currentUser {
@@ -3913,15 +3949,15 @@ export const CurrentUserSettingsDocument = gql`
  *   },
  * });
  */
-export function useCurrentUserSettingsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>) {
-        return ApolloReactHooks.useQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(CurrentUserSettingsDocument, baseOptions);
+export function useCurrentUserSettingsQuery(baseOptions?: Apollo.QueryHookOptions<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>) {
+        return Apollo.useQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(CurrentUserSettingsDocument, baseOptions);
       }
-export function useCurrentUserSettingsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(CurrentUserSettingsDocument, baseOptions);
+export function useCurrentUserSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>) {
+          return Apollo.useLazyQuery<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>(CurrentUserSettingsDocument, baseOptions);
         }
 export type CurrentUserSettingsQueryHookResult = ReturnType<typeof useCurrentUserSettingsQuery>;
 export type CurrentUserSettingsLazyQueryHookResult = ReturnType<typeof useCurrentUserSettingsLazyQuery>;
-export type CurrentUserSettingsQueryResult = ApolloReactCommon.QueryResult<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>;
+export type CurrentUserSettingsQueryResult = Apollo.QueryResult<CurrentUserSettingsQuery, CurrentUserSettingsQueryVariables>;
 export const FeedDocument = gql`
     query feed($after: String, $first: Int = 5) {
   feed {
@@ -3957,15 +3993,15 @@ export const FeedDocument = gql`
  *   },
  * });
  */
-export function useFeedQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
-        return ApolloReactHooks.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
+export function useFeedQuery(baseOptions?: Apollo.QueryHookOptions<FeedQuery, FeedQueryVariables>) {
+        return Apollo.useQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
       }
-export function useFeedLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
+export function useFeedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedQuery, FeedQueryVariables>) {
+          return Apollo.useLazyQuery<FeedQuery, FeedQueryVariables>(FeedDocument, baseOptions);
         }
 export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
 export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
-export type FeedQueryResult = ApolloReactCommon.QueryResult<FeedQuery, FeedQueryVariables>;
+export type FeedQueryResult = Apollo.QueryResult<FeedQuery, FeedQueryVariables>;
 export const FollowersDocument = gql`
     query followers($projectId: ID!, $after: String, $first: Int = 10) {
   followers(projectId: $projectId, after: $after, first: $first) @connection(key: "followers", filter: ["projectId"]) {
@@ -4000,15 +4036,15 @@ export const FollowersDocument = gql`
  *   },
  * });
  */
-export function useFollowersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
-        return ApolloReactHooks.useQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
+export function useFollowersQuery(baseOptions?: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
+        return Apollo.useQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
       }
-export function useFollowersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
+export function useFollowersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>) {
+          return Apollo.useLazyQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, baseOptions);
         }
 export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
 export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
-export type FollowersQueryResult = ApolloReactCommon.QueryResult<FollowersQuery, FollowersQueryVariables>;
+export type FollowersQueryResult = Apollo.QueryResult<FollowersQuery, FollowersQueryVariables>;
 export const GrowthDocument = gql`
     query growth($type: GrowthType!) {
   growth(type: $type) {
@@ -4034,15 +4070,15 @@ export const GrowthDocument = gql`
  *   },
  * });
  */
-export function useGrowthQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
-        return ApolloReactHooks.useQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
+export function useGrowthQuery(baseOptions?: Apollo.QueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
+        return Apollo.useQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
       }
-export function useGrowthLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
+export function useGrowthLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GrowthQuery, GrowthQueryVariables>) {
+          return Apollo.useLazyQuery<GrowthQuery, GrowthQueryVariables>(GrowthDocument, baseOptions);
         }
 export type GrowthQueryHookResult = ReturnType<typeof useGrowthQuery>;
 export type GrowthLazyQueryHookResult = ReturnType<typeof useGrowthLazyQuery>;
-export type GrowthQueryResult = ApolloReactCommon.QueryResult<GrowthQuery, GrowthQueryVariables>;
+export type GrowthQueryResult = Apollo.QueryResult<GrowthQuery, GrowthQueryVariables>;
 export const HashtagDocument = gql`
     query hashtag($id: ID, $slug: LowercaseString, $after: String, $first: Int = 5) {
   hashtag(id: $id, slug: $slug) {
@@ -4080,15 +4116,15 @@ export const HashtagDocument = gql`
  *   },
  * });
  */
-export function useHashtagQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
-        return ApolloReactHooks.useQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
+export function useHashtagQuery(baseOptions?: Apollo.QueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
+        return Apollo.useQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
       }
-export function useHashtagLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
+export function useHashtagLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HashtagQuery, HashtagQueryVariables>) {
+          return Apollo.useLazyQuery<HashtagQuery, HashtagQueryVariables>(HashtagDocument, baseOptions);
         }
 export type HashtagQueryHookResult = ReturnType<typeof useHashtagQuery>;
 export type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
-export type HashtagQueryResult = ApolloReactCommon.QueryResult<HashtagQuery, HashtagQueryVariables>;
+export type HashtagQueryResult = Apollo.QueryResult<HashtagQuery, HashtagQueryVariables>;
 export const LikesDocument = gql`
     query likes($postId: ID!, $after: String, $first: Int = 10) {
   likes(postId: $postId, first: $first, after: $after) {
@@ -4123,15 +4159,15 @@ export const LikesDocument = gql`
  *   },
  * });
  */
-export function useLikesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<LikesQuery, LikesQueryVariables>) {
-        return ApolloReactHooks.useQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
+export function useLikesQuery(baseOptions?: Apollo.QueryHookOptions<LikesQuery, LikesQueryVariables>) {
+        return Apollo.useQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
       }
-export function useLikesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
+export function useLikesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LikesQuery, LikesQueryVariables>) {
+          return Apollo.useLazyQuery<LikesQuery, LikesQueryVariables>(LikesDocument, baseOptions);
         }
 export type LikesQueryHookResult = ReturnType<typeof useLikesQuery>;
 export type LikesLazyQueryHookResult = ReturnType<typeof useLikesLazyQuery>;
-export type LikesQueryResult = ApolloReactCommon.QueryResult<LikesQuery, LikesQueryVariables>;
+export type LikesQueryResult = Apollo.QueryResult<LikesQuery, LikesQueryVariables>;
 export const MetaDocument = gql`
     query meta {
   meta {
@@ -4164,15 +4200,15 @@ export const MetaDocument = gql`
  *   },
  * });
  */
-export function useMetaQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MetaQuery, MetaQueryVariables>) {
-        return ApolloReactHooks.useQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
+export function useMetaQuery(baseOptions?: Apollo.QueryHookOptions<MetaQuery, MetaQueryVariables>) {
+        return Apollo.useQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
       }
-export function useMetaLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MetaQuery, MetaQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
+export function useMetaLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MetaQuery, MetaQueryVariables>) {
+          return Apollo.useLazyQuery<MetaQuery, MetaQueryVariables>(MetaDocument, baseOptions);
         }
 export type MetaQueryHookResult = ReturnType<typeof useMetaQuery>;
 export type MetaLazyQueryHookResult = ReturnType<typeof useMetaLazyQuery>;
-export type MetaQueryResult = ApolloReactCommon.QueryResult<MetaQuery, MetaQueryVariables>;
+export type MetaQueryResult = Apollo.QueryResult<MetaQuery, MetaQueryVariables>;
 export const NotificationsDocument = gql`
     query notifications($after: String, $first: Int = 10) {
   notifications(after: $after, first: $first) @connection(key: "notifications") {
@@ -4207,15 +4243,15 @@ export const NotificationsDocument = gql`
  *   },
  * });
  */
-export function useNotificationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-        return ApolloReactHooks.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
+export function useNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+        return Apollo.useQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
       }
-export function useNotificationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
+export function useNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NotificationsQuery, NotificationsQueryVariables>) {
+          return Apollo.useLazyQuery<NotificationsQuery, NotificationsQueryVariables>(NotificationsDocument, baseOptions);
         }
 export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
 export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
-export type NotificationsQueryResult = ApolloReactCommon.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
+export type NotificationsQueryResult = Apollo.QueryResult<NotificationsQuery, NotificationsQueryVariables>;
 export const PostDocument = gql`
     query post($id: ID!) {
   post(id: $id) {
@@ -4240,15 +4276,15 @@ export const PostDocument = gql`
  *   },
  * });
  */
-export function usePostQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<PostQuery, PostQueryVariables>) {
-        return ApolloReactHooks.useQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions);
+export function usePostQuery(baseOptions?: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>) {
+        return Apollo.useQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions);
       }
-export function usePostLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<PostQuery, PostQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions);
+export function usePostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>) {
+          return Apollo.useLazyQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions);
         }
 export type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
-export type PostQueryResult = ApolloReactCommon.QueryResult<PostQuery, PostQueryVariables>;
+export type PostQueryResult = Apollo.QueryResult<PostQuery, PostQueryVariables>;
 export const PostsDocument = gql`
     query posts($after: String, $first: Int = 5) @connection(key: "posts") {
   posts(after: $after, first: $first) {
@@ -4282,15 +4318,15 @@ export const PostsDocument = gql`
  *   },
  * });
  */
-export function usePostsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
-        return ApolloReactHooks.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
+export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
+        return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
       }
-export function usePostsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
+export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
+          return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions);
         }
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
-export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
+export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>;
 export const ProjectDocument = gql`
     query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $first: Int = 5) {
   post(id: $postId) {
@@ -4331,15 +4367,15 @@ ${ProjectFragmentDoc}`;
  *   },
  * });
  */
-export function useProjectQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
-        return ApolloReactHooks.useQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
+export function useProjectQuery(baseOptions?: Apollo.QueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
+        return Apollo.useQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
       }
-export function useProjectLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
+export function useProjectLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectQuery, ProjectQueryVariables>) {
+          return Apollo.useLazyQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, baseOptions);
         }
 export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
-export type ProjectQueryResult = ApolloReactCommon.QueryResult<ProjectQuery, ProjectQueryVariables>;
+export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectCollectionsDocument = gql`
     query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
   projectCollections(projectId: $projectId, first: $first, after: $after) {
@@ -4378,15 +4414,15 @@ export const ProjectCollectionsDocument = gql`
  *   },
  * });
  */
-export function useProjectCollectionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
-        return ApolloReactHooks.useQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+export function useProjectCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+        return Apollo.useQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
       }
-export function useProjectCollectionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
+export function useProjectCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>) {
+          return Apollo.useLazyQuery<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>(ProjectCollectionsDocument, baseOptions);
         }
 export type ProjectCollectionsQueryHookResult = ReturnType<typeof useProjectCollectionsQuery>;
 export type ProjectCollectionsLazyQueryHookResult = ReturnType<typeof useProjectCollectionsLazyQuery>;
-export type ProjectCollectionsQueryResult = ApolloReactCommon.QueryResult<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>;
+export type ProjectCollectionsQueryResult = Apollo.QueryResult<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>;
 export const ProjectSuggestionsDocument = gql`
     query projectSuggestions($after: String, $first: Int = 5) {
   projects: projectSuggestions(after: $after, first: $first) @connection(key: "projects") {
@@ -4427,15 +4463,15 @@ export const ProjectSuggestionsDocument = gql`
  *   },
  * });
  */
-export function useProjectSuggestionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>) {
-        return ApolloReactHooks.useQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(ProjectSuggestionsDocument, baseOptions);
+export function useProjectSuggestionsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>) {
+        return Apollo.useQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(ProjectSuggestionsDocument, baseOptions);
       }
-export function useProjectSuggestionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(ProjectSuggestionsDocument, baseOptions);
+export function useProjectSuggestionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>) {
+          return Apollo.useLazyQuery<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>(ProjectSuggestionsDocument, baseOptions);
         }
 export type ProjectSuggestionsQueryHookResult = ReturnType<typeof useProjectSuggestionsQuery>;
 export type ProjectSuggestionsLazyQueryHookResult = ReturnType<typeof useProjectSuggestionsLazyQuery>;
-export type ProjectSuggestionsQueryResult = ApolloReactCommon.QueryResult<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>;
+export type ProjectSuggestionsQueryResult = Apollo.QueryResult<ProjectSuggestionsQuery, ProjectSuggestionsQueryVariables>;
 export const ProjectTypesDocument = gql`
     query projectTypes {
   types: projectTypes {
@@ -4461,15 +4497,15 @@ export const ProjectTypesDocument = gql`
  *   },
  * });
  */
-export function useProjectTypesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>) {
-        return ApolloReactHooks.useQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(ProjectTypesDocument, baseOptions);
+export function useProjectTypesQuery(baseOptions?: Apollo.QueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>) {
+        return Apollo.useQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(ProjectTypesDocument, baseOptions);
       }
-export function useProjectTypesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(ProjectTypesDocument, baseOptions);
+export function useProjectTypesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectTypesQuery, ProjectTypesQueryVariables>) {
+          return Apollo.useLazyQuery<ProjectTypesQuery, ProjectTypesQueryVariables>(ProjectTypesDocument, baseOptions);
         }
 export type ProjectTypesQueryHookResult = ReturnType<typeof useProjectTypesQuery>;
 export type ProjectTypesLazyQueryHookResult = ReturnType<typeof useProjectTypesLazyQuery>;
-export type ProjectTypesQueryResult = ApolloReactCommon.QueryResult<ProjectTypesQuery, ProjectTypesQueryVariables>;
+export type ProjectTypesQueryResult = Apollo.QueryResult<ProjectTypesQuery, ProjectTypesQueryVariables>;
 export const ProjectsDocument = gql`
     query projects($typeId: ID, $after: String, $first: Int = 5, $type: ProjectSortType!) {
   projects(typeId: $typeId, after: $after, first: $first, type: $type) @connection(key: "projects", filter: ["type", "typeId"]) {
@@ -4509,15 +4545,15 @@ export const ProjectsDocument = gql`
  *   },
  * });
  */
-export function useProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
-        return ApolloReactHooks.useQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, baseOptions);
+export function useProjectsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
+        return Apollo.useQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, baseOptions);
       }
-export function useProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, baseOptions);
+export function useProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectsQuery, ProjectsQueryVariables>) {
+          return Apollo.useLazyQuery<ProjectsQuery, ProjectsQueryVariables>(ProjectsDocument, baseOptions);
         }
 export type ProjectsQueryHookResult = ReturnType<typeof useProjectsQuery>;
 export type ProjectsLazyQueryHookResult = ReturnType<typeof useProjectsLazyQuery>;
-export type ProjectsQueryResult = ApolloReactCommon.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
+export type ProjectsQueryResult = Apollo.QueryResult<ProjectsQuery, ProjectsQueryVariables>;
 export const RecentCommentsDocument = gql`
     query recentComments($after: String) {
   comments: recentComments(after: $after) @connection(key: "comments", filter: ["postId"]) {
@@ -4550,15 +4586,15 @@ export const RecentCommentsDocument = gql`
  *   },
  * });
  */
-export function useRecentCommentsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>) {
-        return ApolloReactHooks.useQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(RecentCommentsDocument, baseOptions);
+export function useRecentCommentsQuery(baseOptions?: Apollo.QueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>) {
+        return Apollo.useQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(RecentCommentsDocument, baseOptions);
       }
-export function useRecentCommentsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(RecentCommentsDocument, baseOptions);
+export function useRecentCommentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecentCommentsQuery, RecentCommentsQueryVariables>) {
+          return Apollo.useLazyQuery<RecentCommentsQuery, RecentCommentsQueryVariables>(RecentCommentsDocument, baseOptions);
         }
 export type RecentCommentsQueryHookResult = ReturnType<typeof useRecentCommentsQuery>;
 export type RecentCommentsLazyQueryHookResult = ReturnType<typeof useRecentCommentsLazyQuery>;
-export type RecentCommentsQueryResult = ApolloReactCommon.QueryResult<RecentCommentsQuery, RecentCommentsQueryVariables>;
+export type RecentCommentsQueryResult = Apollo.QueryResult<RecentCommentsQuery, RecentCommentsQueryVariables>;
 export const RepliesDocument = gql`
     query replies($id: ID!, $after: String, $first: Int = 5) {
   comment(id: $id) {
@@ -4596,15 +4632,15 @@ export const RepliesDocument = gql`
  *   },
  * });
  */
-export function useRepliesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
-        return ApolloReactHooks.useQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
+export function useRepliesQuery(baseOptions?: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
+        return Apollo.useQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
       }
-export function useRepliesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
+export function useRepliesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
+          return Apollo.useLazyQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, baseOptions);
         }
 export type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
 export type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
-export type RepliesQueryResult = ApolloReactCommon.QueryResult<RepliesQuery, RepliesQueryVariables>;
+export type RepliesQueryResult = Apollo.QueryResult<RepliesQuery, RepliesQueryVariables>;
 export const SearchHashtagsDocument = gql`
     query searchHashtags($query: String!, $after: String, $first: Int = 10) {
   hashtags: search(query: $query, after: $after, type: HASHTAGS, first: $first) @connection(key: "hashtags", filter: ["query", "type"]) {
@@ -4644,15 +4680,15 @@ export const SearchHashtagsDocument = gql`
  *   },
  * });
  */
-export function useSearchHashtagsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
-        return ApolloReactHooks.useQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
+export function useSearchHashtagsQuery(baseOptions?: Apollo.QueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
+        return Apollo.useQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
       }
-export function useSearchHashtagsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
+export function useSearchHashtagsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchHashtagsQuery, SearchHashtagsQueryVariables>) {
+          return Apollo.useLazyQuery<SearchHashtagsQuery, SearchHashtagsQueryVariables>(SearchHashtagsDocument, baseOptions);
         }
 export type SearchHashtagsQueryHookResult = ReturnType<typeof useSearchHashtagsQuery>;
 export type SearchHashtagsLazyQueryHookResult = ReturnType<typeof useSearchHashtagsLazyQuery>;
-export type SearchHashtagsQueryResult = ApolloReactCommon.QueryResult<SearchHashtagsQuery, SearchHashtagsQueryVariables>;
+export type SearchHashtagsQueryResult = Apollo.QueryResult<SearchHashtagsQuery, SearchHashtagsQueryVariables>;
 export const SearchModelsDocument = gql`
     query searchModels($query: String!, $after: String, $first: Int = 20) {
   models: search(query: $query, after: $after, type: MODELS, first: $first) @connection(key: "models", filter: ["query", "type"]) {
@@ -4693,15 +4729,15 @@ export const SearchModelsDocument = gql`
  *   },
  * });
  */
-export function useSearchModelsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
-        return ApolloReactHooks.useQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
+export function useSearchModelsQuery(baseOptions?: Apollo.QueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
+        return Apollo.useQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
       }
-export function useSearchModelsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
+export function useSearchModelsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchModelsQuery, SearchModelsQueryVariables>) {
+          return Apollo.useLazyQuery<SearchModelsQuery, SearchModelsQueryVariables>(SearchModelsDocument, baseOptions);
         }
 export type SearchModelsQueryHookResult = ReturnType<typeof useSearchModelsQuery>;
 export type SearchModelsLazyQueryHookResult = ReturnType<typeof useSearchModelsLazyQuery>;
-export type SearchModelsQueryResult = ApolloReactCommon.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
+export type SearchModelsQueryResult = Apollo.QueryResult<SearchModelsQuery, SearchModelsQueryVariables>;
 export const SearchProjectsDocument = gql`
     query searchProjects($query: String!, $after: String, $first: Int = 10) {
   projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: "projects", filter: ["query", "type"]) {
@@ -4742,15 +4778,15 @@ export const SearchProjectsDocument = gql`
  *   },
  * });
  */
-export function useSearchProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
-        return ApolloReactHooks.useQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
+export function useSearchProjectsQuery(baseOptions?: Apollo.QueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
+        return Apollo.useQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
       }
-export function useSearchProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
+export function useSearchProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchProjectsQuery, SearchProjectsQueryVariables>) {
+          return Apollo.useLazyQuery<SearchProjectsQuery, SearchProjectsQueryVariables>(SearchProjectsDocument, baseOptions);
         }
 export type SearchProjectsQueryHookResult = ReturnType<typeof useSearchProjectsQuery>;
 export type SearchProjectsLazyQueryHookResult = ReturnType<typeof useSearchProjectsLazyQuery>;
-export type SearchProjectsQueryResult = ApolloReactCommon.QueryResult<SearchProjectsQuery, SearchProjectsQueryVariables>;
+export type SearchProjectsQueryResult = Apollo.QueryResult<SearchProjectsQuery, SearchProjectsQueryVariables>;
 export const SearchUsersDocument = gql`
     query searchUsers($query: String!, $after: String, $first: Int = 10) {
   users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: "users", filter: ["query", "type"]) {
@@ -4788,15 +4824,15 @@ export const SearchUsersDocument = gql`
  *   },
  * });
  */
-export function useSearchUsersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
-        return ApolloReactHooks.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
+export function useSearchUsersQuery(baseOptions?: Apollo.QueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+        return Apollo.useQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
       }
-export function useSearchUsersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
+export function useSearchUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SearchUsersQuery, SearchUsersQueryVariables>) {
+          return Apollo.useLazyQuery<SearchUsersQuery, SearchUsersQueryVariables>(SearchUsersDocument, baseOptions);
         }
 export type SearchUsersQueryHookResult = ReturnType<typeof useSearchUsersQuery>;
 export type SearchUsersLazyQueryHookResult = ReturnType<typeof useSearchUsersLazyQuery>;
-export type SearchUsersQueryResult = ApolloReactCommon.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
+export type SearchUsersQueryResult = Apollo.QueryResult<SearchUsersQuery, SearchUsersQueryVariables>;
 export const SimilarProjectsDocument = gql`
     query similarProjects($id: ID!, $first: Int = 5) {
   similarProjects(id: $id, first: $first) {
@@ -4830,15 +4866,15 @@ export const SimilarProjectsDocument = gql`
  *   },
  * });
  */
-export function useSimilarProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
-        return ApolloReactHooks.useQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(SimilarProjectsDocument, baseOptions);
+export function useSimilarProjectsQuery(baseOptions?: Apollo.QueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
+        return Apollo.useQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(SimilarProjectsDocument, baseOptions);
       }
-export function useSimilarProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(SimilarProjectsDocument, baseOptions);
+export function useSimilarProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SimilarProjectsQuery, SimilarProjectsQueryVariables>) {
+          return Apollo.useLazyQuery<SimilarProjectsQuery, SimilarProjectsQueryVariables>(SimilarProjectsDocument, baseOptions);
         }
 export type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
 export type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
-export type SimilarProjectsQueryResult = ApolloReactCommon.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
+export type SimilarProjectsQueryResult = Apollo.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
 export const UserDocument = gql`
     query user($username: LowercaseString!, $after: String, $first: Int = 5) {
   user(username: $username) {
@@ -4889,15 +4925,15 @@ ${PostFragmentDoc}`;
  *   },
  * });
  */
-export function useUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserQuery, UserQueryVariables>) {
-        return ApolloReactHooks.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+export function useUserQuery(baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>) {
+        return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
       }
-export function useUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
+          return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
         }
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
-export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
+export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
 export const UserFollowingProjectsDocument = gql`
     query userFollowingProjects($username: LowercaseString!, $after: String, $first: Int = 5) {
   user(username: $username) {
@@ -4939,12 +4975,12 @@ export const UserFollowingProjectsDocument = gql`
  *   },
  * });
  */
-export function useUserFollowingProjectsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
-        return ApolloReactHooks.useQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
+export function useUserFollowingProjectsQuery(baseOptions?: Apollo.QueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
+        return Apollo.useQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
       }
-export function useUserFollowingProjectsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
+export function useUserFollowingProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>) {
+          return Apollo.useLazyQuery<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>(UserFollowingProjectsDocument, baseOptions);
         }
 export type UserFollowingProjectsQueryHookResult = ReturnType<typeof useUserFollowingProjectsQuery>;
 export type UserFollowingProjectsLazyQueryHookResult = ReturnType<typeof useUserFollowingProjectsLazyQuery>;
-export type UserFollowingProjectsQueryResult = ApolloReactCommon.QueryResult<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>;
+export type UserFollowingProjectsQueryResult = Apollo.QueryResult<UserFollowingProjectsQuery, UserFollowingProjectsQueryVariables>;

@@ -30,16 +30,16 @@ const getActionType = ({ type, selected, onPress }: Partial<SelectionItemProps>)
 type SelectionItemProps = {
   title: string
   hasChildren?: boolean
-  last?: boolean
+  important?: boolean
   type?: string
   selected?: boolean
   onPress?: () => void
 }
 
-function SelectionItem({ title, hasChildren, last, ...rest }: SelectionItemProps) {
+function SelectionItem({ title, hasChildren, important, ...rest }: SelectionItemProps) {
   return (
     <Base onPress={rest.onPress} disabled={!rest.onPress}>
-      <Text color={last && 'error'}>{title}</Text>
+      <Text color={important && 'error'}>{title}</Text>
       {hasChildren && <Icon source={arrowRight} />}
       {getActionType(rest)}
     </Base>
