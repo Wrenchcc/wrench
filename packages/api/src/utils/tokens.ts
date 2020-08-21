@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken'
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env
 
-export const getUserId = req => {
+export const getUserId = (req) => {
   const authorization = req.headers.authorization || ''
 
   if (authorization) {
@@ -13,6 +13,7 @@ export const getUserId = req => {
     }
 
     try {
+      // @ts-ignore
       const { userId } = jwt.verify(token, ACCESS_TOKEN_SECRET)
       return userId
     } catch (err) {
@@ -21,7 +22,7 @@ export const getUserId = req => {
   }
 }
 
-export const verifyRefreshToken = refreshToken => {
+export const verifyRefreshToken = (refreshToken) => {
   try {
     return jwt.verify(refreshToken, REFRESH_TOKEN_SECRET)
   } catch {
@@ -29,14 +30,14 @@ export const verifyRefreshToken = refreshToken => {
   }
 }
 
-export const createAccessToken = data =>
+export const createAccessToken = (data) =>
   jwt.sign(data, ACCESS_TOKEN_SECRET, {
     expiresIn: '30m',
   })
 
-export const createRefreshToken = data => jwt.sign(data, REFRESH_TOKEN_SECRET)
+export const createRefreshToken = (data) => jwt.sign(data, REFRESH_TOKEN_SECRET)
 
-export const generateTokens = userId => ({
+export const generateTokens = (userId) => ({
   access_token: createAccessToken({ userId }),
   refresh_token: createRefreshToken({ userId }),
 })

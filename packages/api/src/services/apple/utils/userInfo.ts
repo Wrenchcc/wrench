@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as jwt from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
 import * as util from 'util'
@@ -13,7 +14,7 @@ const client = jwksClient({
 
 const getSigningKeysAsync = util.promisify(client.getSigningKey)
 
-export default async identityToken => {
+export default async (identityToken) => {
   try {
     const decoded = jwt.decode(identityToken, {
       complete: true,
