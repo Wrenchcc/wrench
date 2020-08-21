@@ -37,7 +37,7 @@ function Explore() {
   }, [refetch])
 
   const handleQueryChange = useCallback(
-    text => {
+    (text) => {
       setQuery(text)
     },
     [setQuery]
