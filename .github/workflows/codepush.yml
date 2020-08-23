@@ -16,8 +16,13 @@ jobs:
     name: Deploy iOS
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
+      - name: Checkout
+        - uses: actions/checkout@v1
+          with:
+            fetch-depth: 1
+        - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
       - name: Install Dependencies
         run: yarn
 
