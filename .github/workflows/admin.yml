@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        - uses: actions/checkout@v1
+        uses: actions/checkout@v1
           with:
             fetch-depth: 1
-        - uses: actions/setup-node@v1
-        with:
-          node-version: '14'
+        uses: actions/setup-node@v1
+          with:
+            node-version: '14'
       - name: Build admin
         run: |
           echo Building admin...
