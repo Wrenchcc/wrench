@@ -528,7 +528,7 @@ PODS:
   - RNFBApp (8.3.1):
     - Firebase/CoreOnly (~> 6.28.1)
     - React
-  - RNFBMessaging (7.7.1):
+  - RNFBMessaging (7.7.2):
     - Firebase/Analytics (~> 6.28.1)
     - Firebase/Messaging (~> 6.28.1)
     - React
@@ -553,9 +553,9 @@ PODS:
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
-  - Sentry (5.2.0):
-    - Sentry/Core (= 5.2.0)
-  - Sentry/Core (5.2.0)
+  - Sentry (5.2.1):
+    - Sentry/Core (= 5.2.1)
+  - Sentry/Core (5.2.1)
   - SSZipArchive (2.2.3)
   - UMAppLoader (1.2.0)
   - UMBarCodeScannerInterface (5.2.1)
@@ -961,7 +961,7 @@ SPEC CHECKSUMS:
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNFBAnalytics: 715279002cf21b600aec33bc2e315c4cdf5d05e6
   RNFBApp: abbab9c96e6d2f1cada6401c9138d3f8cb2ae930
-  RNFBMessaging: 6b8db5ff807c38395c297698bcfa1502cbc5856c
+  RNFBMessaging: 8656a64ae9d18319a152d35c17852c90e35a037c
   RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
@@ -970,7 +970,7 @@ SPEC CHECKSUMS:
   RNShare: a1d5064df7a0ebe778d001869b3f0a124bf0a491
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
-  Sentry: 6e04bc3e11bf771ca79140a112de64dcfbc7d8cb
+  Sentry: 7d075cae43a9a518fdd51e258b6212f0527c51cd
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   UMAppLoader: 61049c8d55590b74e9ae1d5429bf68d96b4a2528
   UMBarCodeScannerInterface: e5e4c87797d3d01214e25cd1618866caf5d4f17f

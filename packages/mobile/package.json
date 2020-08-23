@@ -27,7 +27,7 @@
     "@react-native-community/netinfo": "^5.9.6",
     "@react-native-firebase/analytics": "^7.4.2",
     "@react-native-firebase/app": "^8.3.1",
-    "@react-native-firebase/messaging": "^7.7.1",
+    "@react-native-firebase/messaging": "^7.7.2",
     "@sentry/react-native": "^1.7.1",
     "@wrench/common": "^1.0.0",
     "@wrench/ui": "^1.0.0",
@@ -47,7 +47,7 @@
     "ms": "^2.1.2",
     "rambda": "^5.13.1",
     "react": "16.13.1",
-    "react-i18next": "^11.7.0",
+    "react-i18next": "^11.7.1",
     "react-native": "^0.63.2",
     "react-native-bundle-splitter": "^1.0.9",
     "react-native-code-push": "^6.3.0",
@@ -61,7 +61,7 @@
     "react-native-permissions": "^2.1.5",
     "react-native-pinchable": "^0.1.2",
     "react-native-reanimated": "1.4.0",
-    "react-native-redash": "^14.2.3",
+    "react-native-redash": "^14.2.4",
     "react-native-responsive-dimensions": "^3.1.1",
     "react-native-share": "^3.7.0",
     "react-native-splash-screen": "^3.2.0",
@@ -84,6 +84,6 @@
     "babel-preset-react-native": "^5.0.2",
     "concurrently": "^5.3.0",
     "flipper-plugin-react-native-performance": "^0.5.0",
-    "metro-react-native-babel-preset": "^0.62.0"
+    "metro-react-native-babel-preset": "^0.63.0"
   }
 }
