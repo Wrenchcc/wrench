@@ -13,7 +13,19 @@ import appVersion from 'utils/appVersion'
 export let client = null
 
 export default async function createClient() {
-  const cache = new InMemoryCache()
+  const cache = new InMemoryCache({
+    typePolicies: {
+      User: {
+        fields: {
+          settings: {
+            merge(existing, incoming) {
+              return { ...existing, ...incoming }
+            },
+          },
+        },
+      },
+    },
+  })
 
   const persistor = new CachePersistor({
     cache,

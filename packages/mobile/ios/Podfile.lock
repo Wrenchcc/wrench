@@ -79,26 +79,26 @@ PODS:
     - FBSDKShareKit/Share (= 7.1.1)
   - FBSDKShareKit/Share (7.1.1):
     - FBSDKCoreKit (~> 7.1.1)
-  - Firebase/Analytics (6.28.1):
+  - Firebase/Analytics (6.30.0):
     - Firebase/Core
-  - Firebase/Core (6.28.1):
+  - Firebase/Core (6.30.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.6.2)
-  - Firebase/CoreOnly (6.28.1):
-    - FirebaseCore (= 6.9.1)
-  - Firebase/Messaging (6.28.1):
+    - FirebaseAnalytics (= 6.7.2)
+  - Firebase/CoreOnly (6.30.0):
+    - FirebaseCore (= 6.10.0)
+  - Firebase/Messaging (6.30.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 4.6.0)
-  - FirebaseAnalytics (6.6.2):
+    - FirebaseMessaging (~> 4.6.1)
+  - FirebaseAnalytics (6.7.2):
     - FirebaseCore (~> 6.8)
     - FirebaseInstallations (~> 1.4)
-    - GoogleAppMeasurement (= 6.6.2)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - GoogleAppMeasurement (= 6.7.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
     - nanopb (~> 1.30905.0)
-  - FirebaseCore (6.9.1):
+  - FirebaseCore (6.10.0):
     - FirebaseCoreDiagnostics (~> 1.3)
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
@@ -107,19 +107,19 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
     - nanopb (~> 1.30905.0)
-  - FirebaseInstallations (1.5.0):
-    - FirebaseCore (~> 6.8)
+  - FirebaseInstallations (1.7.0):
+    - FirebaseCore (~> 6.10)
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (4.5.1):
-    - FirebaseCore (~> 6.8)
-    - FirebaseInstallations (~> 1.0)
+  - FirebaseInstanceID (4.6.0):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
-  - FirebaseMessaging (4.6.1):
-    - FirebaseCore (~> 6.8)
-    - FirebaseInstanceID (~> 4.3)
+  - FirebaseMessaging (4.6.2):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstanceID (~> 4.6)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Reachability (~> 6.7)
@@ -181,11 +181,11 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - GoogleAppMeasurement (6.6.2):
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+  - GoogleAppMeasurement (6.7.2):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
     - nanopb (~> 1.30905.0)
   - GoogleDataTransport (7.2.0):
     - nanopb (~> 1.30905.0)
@@ -239,11 +239,11 @@ PODS:
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
-  - Permission-Camera (2.1.5):
+  - Permission-Camera (2.2.0):
     - RNPermissions
-  - Permission-Microphone (2.1.5):
+  - Permission-Microphone (2.2.0):
     - RNPermissions
-  - Permission-PhotoLibrary (2.1.5):
+  - Permission-PhotoLibrary (2.2.0):
     - RNPermissions
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
@@ -442,7 +442,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (10.7.0):
+  - react-native-webview (10.8.2):
     - React
   - React-RCTActionSheet (0.63.2):
     - React-Core/RCTActionSheetHeaders (= 0.63.2)
@@ -504,12 +504,12 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
-  - ReactNativeNavigation (6.12.0):
+  - ReactNativeNavigation (6.12.2):
     - React
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 6.12.0)
-  - ReactNativeNavigation/Core (6.12.0):
+    - ReactNativeNavigation/Core (= 6.12.2)
+  - ReactNativeNavigation/Core (6.12.2):
     - React
     - React-RCTImage
     - React-RCTText
@@ -521,16 +521,15 @@ PODS:
     - React
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (7.4.2):
-    - Firebase/Analytics (~> 6.28.1)
+  - RNFBAnalytics (7.6.1):
+    - Firebase/Analytics (~> 6.30.0)
     - React
     - RNFBApp
-  - RNFBApp (8.3.1):
-    - Firebase/CoreOnly (~> 6.28.1)
+  - RNFBApp (8.4.1):
+    - Firebase/CoreOnly (~> 6.30.0)
     - React
-  - RNFBMessaging (7.7.2):
-    - Firebase/Analytics (~> 6.28.1)
-    - Firebase/Messaging (~> 6.28.1)
+  - RNFBMessaging (7.8.3):
+    - Firebase/Messaging (~> 6.30.0)
     - React
     - RNFBApp
   - RNGestureHandler (1.7.0):
@@ -538,24 +537,24 @@ PODS:
   - RNGoogleSignin (4.0.3):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.1.5):
+  - RNPermissions (2.2.0):
     - React
   - RNReanimated (1.4.0):
     - React
-  - RNSentry (1.7.1):
+  - RNSentry (1.7.2):
     - React
     - Sentry (~> 5.2.0)
   - RNShare (3.7.0):
     - React
-  - SDWebImage (5.8.4):
-    - SDWebImage/Core (= 5.8.4)
-  - SDWebImage/Core (5.8.4)
+  - SDWebImage (5.9.0):
+    - SDWebImage/Core (= 5.9.0)
+  - SDWebImage/Core (5.9.0)
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
-  - Sentry (5.2.1):
-    - Sentry/Core (= 5.2.1)
-  - Sentry/Core (5.2.1)
+  - Sentry (5.2.2):
+    - Sentry/Core (= 5.2.2)
+  - Sentry/Core (5.2.2)
   - SSZipArchive (2.2.3)
   - UMAppLoader (1.2.0)
   - UMBarCodeScannerInterface (5.2.1)
@@ -897,13 +896,13 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
   FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
   FBSDKShareKit: 00a055c1999b099596e00212dd1c0600c6697019
-  Firebase: ed042590caa0029392257529a8003c25ee82bc18
-  FirebaseAnalytics: 5fa308e1b13f838d0f6dc74719ac2a72e8c5afc4
-  FirebaseCore: 687b8e6a0a4337b898a6326d68254c2f80c143af
+  Firebase: 210f41ca352067d83b1ba4fd2e7fb49a0c017397
+  FirebaseAnalytics: a299a86ef70fcc6aa011418bc65a7e101fb9636c
+  FirebaseCore: 9a41e2de78fef10f63cee30ab10e2945266bc1fc
   FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
-  FirebaseInstallations: 3c520c951305cbf9ca54eb891ff9e6d1fd384881
-  FirebaseInstanceID: c4ad474b87787afd27d09541800620993b457d6f
-  FirebaseMessaging: 942cfe05b4f53c95ab8959395ca35c200398b2f0
+  FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
+  FirebaseInstanceID: 84f5f5762f1bee94ca2254f693bbf5aec6666504
+  FirebaseMessaging: 82d75b3770a78bbce470769a6980429608b4c407
   Flipper: 33585e2d9810fe5528346be33bcf71b37bb7ae13
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
   Flipper-Folly: c12092ea368353b58e992843a990a3225d4533c3
@@ -913,7 +912,7 @@ SPEC CHECKSUMS:
   FlipperKit: bc68102cd4952a258a23c9c1b316c7bec1fecf83
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
+  GoogleAppMeasurement: 3def7652b1f5b5a576178dc332e2a36a260fbef6
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -923,9 +922,9 @@ SPEC CHECKSUMS:
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
-  Permission-Camera: afad27bf90337684d4a86f3825112d648c8c4d3b
-  Permission-Microphone: 0ffabc3fe1c75cfb260525ee3f529383c9f4368c
-  Permission-PhotoLibrary: 4d2eff62c8f4b8a27bcf045c0e36f5047efbbf20
+  Permission-Camera: 9ff12884205fb282b4a22b9e8c358ba53cee7567
+  Permission-Microphone: 06462b9d979ada12095bcff8d5ee1aeeeaf20b5d
+  Permission-PhotoLibrary: e3ff899f87a3eda29427c142ca93837e8802d228
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   RCTRequired: f13f25e7b12f925f1f6a6a8c69d929a03c0129fe
@@ -944,7 +943,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 6edf4d6f71b9161fc3e96083726a538ee395304d
+  react-native-webview: 0e49a2e85f42b20ea5579928a8b254a07fa901dc
   React-RCTActionSheet: 910163b6b09685a35c4ebbc52b66d1bfbbe39fc5
   React-RCTAnimation: 9a883bbe1e9d2e158d4fb53765ed64c8dc2200c6
   React-RCTBlob: 39cf0ece1927996c4466510e25d2105f67010e13
@@ -955,22 +954,22 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
-  ReactNativeNavigation: 1a7f76c2488858f381eb73117a87245e3ff32080
+  ReactNativeNavigation: aefc8debafb4a374575adafb44a3352b9d5b618a
   RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
   RNDeviceInfo: c5f8f3a456adcbba405ace475254b08febc4c095
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
-  RNFBAnalytics: 715279002cf21b600aec33bc2e315c4cdf5d05e6
-  RNFBApp: abbab9c96e6d2f1cada6401c9138d3f8cb2ae930
-  RNFBMessaging: 8656a64ae9d18319a152d35c17852c90e35a037c
+  RNFBAnalytics: ffd9149d1fe0ecee0f2571b234d53c25349b9899
+  RNFBApp: e4321cad5dd23b43b3b4f0ca060300b9f85cb7a4
+  RNFBMessaging: ca2afaa9449dde72fded30f93b9a4fd296d4dd60
   RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
-  RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
+  RNPermissions: 477d88d0be7ecb0a7b344e4d5fbb0352de104626
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNSentry: 2bae4ffee2e66376ef42cb845a494c3bde17bc56
+  RNSentry: 2d4a0e18c6dfe93b647c360e0d15c9391d24e9d1
   RNShare: a1d5064df7a0ebe778d001869b3f0a124bf0a491
-  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
+  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
-  Sentry: 7d075cae43a9a518fdd51e258b6212f0527c51cd
+  Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   UMAppLoader: 61049c8d55590b74e9ae1d5429bf68d96b4a2528
   UMBarCodeScannerInterface: e5e4c87797d3d01214e25cd1618866caf5d4f17f

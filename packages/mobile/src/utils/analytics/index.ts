@@ -4,7 +4,9 @@ export { events } from './events'
 analytics().setAnalyticsCollectionEnabled(!__DEV__)
 
 export const trackScreen = (screenName) => {
-  analytics().setCurrentScreen(screenName)
+  analytics().logScreenView({
+    screen_name: screenName,
+  })
 }
 
 export const track = (event, params = {}) => {
