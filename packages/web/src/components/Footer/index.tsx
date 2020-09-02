@@ -14,12 +14,12 @@ function Footer() {
           <Column>
             <Text medium>Wrench</Text>
             <ul>
-              {/*<NavItem>
+              <NavItem>
                 <Link href="/about">
                   <a>{t('Footer:about')}</a>
                 </Link>
               </NavItem>
-              <NavItem>
+              {/*<NavItem>
                 <Link href="/press">
                   <a>{t('Footer:press')}</a>
                 </Link>

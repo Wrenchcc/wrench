@@ -8,10 +8,10 @@ export const Base = styled.div`
   display: flex;
   height: 70px;
   align-items: center;
-  box-shadow: ${props => (props.inverted ? ' 0 0 0 0' : ' 0 1px 1px 0 #e6e7e9')};
+  box-shadow: ${(props) => (props.inverted ? ' 0 0 0 0' : ' 0 1px 1px 0 #e6e7e9')};
   padding: 0 50px;
-  background: ${props => (props.inverted ? 'transparent' : 'white')};
-  position: ${props => (props.inverted ? 'absolute' : 'sticky')};
+  background: ${(props) => (props.inverted ? 'transparent' : 'white')};
+  position: ${(props) => (props.inverted ? 'absolute' : 'sticky')};
   top: 0;
   z-index: 100;
   width: 100%;
@@ -38,7 +38,7 @@ export const OpenMobileMenu = styled.button`
   height: 40px;
   z-index: 100;
   border: 1px solid
-    ${props => (props.inverted ? 'rgba(230, 231, 233, 0.3)' : COLORS.ULTRA_LIGHT_GREY)};
+    ${(props) => (props.inverted ? 'rgba(230, 231, 233, 0.3)' : COLORS.ULTRA_LIGHT_GREY)};
   border-radius: 1px;
   display: none;
   justify-content: center;
@@ -50,14 +50,14 @@ export const OpenMobileMenu = styled.button`
 
 export const NavLink = styled.a`
   font-size: 16px;
-  color: ${props => (props.inverted ? 'white' : props.active ? '#000000' : '#6d6f76')};
+  color: ${(props) => (props.inverted ? '#a8a8ad' : props.active ? '#000000' : '#6d6f76')};
   font-weight: ${FONTS.MEDIUM};
-  margin-left: ${props => (props.last ? 10 : 40)}px;
+  margin-left: ${(props) => (props.last ? 10 : 40)}px;
 `
 
 export const Separator = styled.span`
   margin-left: 10px;
-  color: ${props =>
+  color: ${(props) =>
     (props.inverted && 'rgba(255, 255, 255, .6)') || (props.active ? '#000000' : '#6d6f76')};
 `
 
