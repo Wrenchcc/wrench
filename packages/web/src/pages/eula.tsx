@@ -1,10 +1,17 @@
 import React from 'react'
+import Seo from 'utils/seo'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Eula() {
   return (
     <>
+      <Seo
+        config={{
+          title: 'EULA',
+        }}
+      />
+
       <Base>
         <h1>End-User License Agreement ("Agreement")</h1>
 

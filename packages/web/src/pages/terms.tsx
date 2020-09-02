@@ -1,10 +1,17 @@
 import React from 'react'
+import Seo from 'utils/seo'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Terms() {
   return (
     <>
+      <Seo
+        config={{
+          title: 'Terms & Conditions',
+        }}
+      />
+
       <Base>
         <h1>Terms and Conditions</h1>
 

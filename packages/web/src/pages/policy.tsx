@@ -1,10 +1,17 @@
 import React from 'react'
+import Seo from 'utils/seo'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Privacy() {
   return (
     <>
+      <Seo
+        config={{
+          title: 'Privacy Policy',
+        }}
+      />
+
       <Base>
         <h1>Privacy Policy</h1>
 

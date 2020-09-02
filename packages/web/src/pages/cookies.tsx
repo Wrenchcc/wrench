@@ -1,10 +1,17 @@
 import React from 'react'
+import Seo from 'utils/seo'
 import Footer from 'components/Footer'
 import { Base } from 'ui/PageLayout'
 
 function Cookies() {
   return (
     <>
+      <Seo
+        config={{
+          title: 'Cookies Policy',
+        }}
+      />
+
       <Base>
         <h1>Cookies Policy</h1>
 

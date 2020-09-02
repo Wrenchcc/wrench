@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react'
+import Seo from 'utils/seo'
 import { Title, Text } from 'ui'
 import Footer from 'components/Footer'
 import { Inner, Row, Image, Column, Center, Person, PersonPicture, Team } from './styles'
@@ -7,6 +8,12 @@ import { Inner, Row, Image, Column, Center, Person, PersonPicture, Team } from '
 function About() {
   return (
     <>
+      <Seo
+        config={{
+          title: 'About us',
+        }}
+      />
+
       <Inner>
         <Row>
           <Column>
