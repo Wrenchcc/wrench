@@ -56,5 +56,5 @@ export const PersonPicture = styled.picture`
 export const Person = styled.div`
   width: 50%;
   margin-left: 60px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 `
