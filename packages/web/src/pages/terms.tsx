@@ -19,7 +19,8 @@ function Terms() {
 
         <p>
           These Terms and Conditions ("Terms", "Terms and Conditions") govern your relationship with
-          Wrench mobile application (the "Service") operated by Wrench AB ("us", "we", or "our").
+          Wrench mobile application (the "Service") operated by Wrench Community AB ("us", "we", or
+          "our").
         </p>
 
         <p>
@@ -48,38 +49,39 @@ function Terms() {
 
         <p>
           At the end of each Billing Cycle, your Subscription will automatically renew under the
-          exact same conditions unless you cancel it or Wrench AB cancels it. You may cancel your
-          Subscription renewal either through your online account management page or by contacting
-          Wrench AB customer support team.
+          exact same conditions unless you cancel it or Wrench Community AB cancels it. You may
+          cancel your Subscription renewal either through your online account management page or by
+          contacting Wrench Community AB customer support team.
         </p>
 
         <p>
           A valid payment method, including credit card, is required to process the payment for your
-          Subscription. You shall provide Wrench AB with accurate and complete billing information
-          including full name, address, state, zip code, telephone number, and a valid payment
-          method information. By submitting such payment information, you automatically authorize
-          Wrench AB to charge all Subscription fees incurred through your account to any such
-          payment instruments.
+          Subscription. You shall provide Wrench Community AB with accurate and complete billing
+          information including full name, address, state, zip code, telephone number, and a valid
+          payment method information. By submitting such payment information, you automatically
+          authorize Wrench Community AB to charge all Subscription fees incurred through your
+          account to any such payment instruments.
         </p>
 
         <p>
-          Should automatic billing fail to occur for any reason, Wrench AB will issue an electronic
-          invoice indicating that you must proceed manually, within a certain deadline date, with
-          the full payment corresponding to the billing period as indicated on the invoice.
+          Should automatic billing fail to occur for any reason, Wrench Community AB will issue an
+          electronic invoice indicating that you must proceed manually, within a certain deadline
+          date, with the full payment corresponding to the billing period as indicated on the
+          invoice.
         </p>
 
         <h2>Fee Changes</h2>
 
         <p>
-          Wrench AB, in its sole discretion and at any time, may modify the Subscription fees for
-          the Subscriptions. Any Subscription fee change will become effective at the end of the
-          then-current Billing Cycle.
+          Wrench Community AB, in its sole discretion and at any time, may modify the Subscription
+          fees for the Subscriptions. Any Subscription fee change will become effective at the end
+          of the then-current Billing Cycle.
         </p>
 
         <p>
-          Wrench AB will provide you with a reasonable prior notice of any change in Subscription
-          fees to give you an opportunity to terminate your Subscription before such change becomes
-          effective.
+          Wrench Community AB will provide you with a reasonable prior notice of any change in
+          Subscription fees to give you an opportunity to terminate your Subscription before such
+          change becomes effective.
         </p>
 
         <p>
@@ -90,8 +92,8 @@ function Terms() {
         <h2>Refunds</h2>
 
         <p>
-          Certain refund requests for Subscriptions may be considered by Wrench AB on a case-by-case
-          basis and granted in sole discretion of Wrench AB.
+          Certain refund requests for Subscriptions may be considered by Wrench Community AB on a
+          case-by-case basis and granted in sole discretion of Wrench Community AB.
         </p>
 
         <h2>Content</h2>
@@ -170,26 +172,26 @@ function Terms() {
 
         <p>
           The Service and its original content (excluding Content provided by users), features and
-          functionality are and will remain the exclusive property of Wrench AB and its licensors.
-          The Service is protected by copyright, trademark, and other laws of both the Sweden and
-          foreign countries. Our trademarks and trade dress may not be used in connection with any
-          product or service without the prior written consent of Wrench AB.
+          functionality are and will remain the exclusive property of Wrench Community AB and its
+          licensors. The Service is protected by copyright, trademark, and other laws of both the
+          Sweden and foreign countries. Our trademarks and trade dress may not be used in connection
+          with any product or service without the prior written consent of Wrench Community AB.
         </p>
 
         <h2>Links To Other Web Sites</h2>
 
         <p>
           Our Service may contain links to third-party web sites or services that are not owned or
-          controlled by Wrench AB.
+          controlled by Wrench Community AB.
         </p>
 
         <p>
-          Wrench AB has no control over, and assumes no responsibility for, the content, privacy
-          policies, or practices of any third party web sites or services. You further acknowledge
-          and agree that Wrench AB shall not be responsible or liable, directly or indirectly, for
-          any damage or loss caused or alleged to be caused by or in connection with use of or
-          reliance on any such content, goods or services available on or through any such web sites
-          or services.
+          Wrench Community AB has no control over, and assumes no responsibility for, the content,
+          privacy policies, or practices of any third party web sites or services. You further
+          acknowledge and agree that Wrench Community AB shall not be responsible or liable,
+          directly or indirectly, for any damage or loss caused or alleged to be caused by or in
+          connection with use of or reliance on any such content, goods or services available on or
+          through any such web sites or services.
         </p>
 
         <p>
@@ -212,16 +214,16 @@ function Terms() {
         <h2>Limitation Of Liability</h2>
 
         <p>
-          In no event shall Wrench AB, nor its directors, employees, partners, agents, suppliers, or
-          affiliates, be liable for any indirect, incidental, special, consequential or punitive
-          damages, including without limitation, loss of profits, data, use, goodwill, or other
-          intangible losses, resulting from (i) your access to or use of or inability to access or
-          use the Service; (ii) any conduct or content of any third party on the Service; (iii) any
-          content obtained from the Service; and (iv) unauthorized access, use or alteration of your
-          transmissions or content, whether based on warranty, contract, tort (including negligence)
-          or any other legal theory, whether or not we have been informed of the possibility of such
-          damage, and even if a remedy set forth herein is found to have failed of its essential
-          purpose.
+          In no event shall Wrench Community AB, nor its directors, employees, partners, agents,
+          suppliers, or affiliates, be liable for any indirect, incidental, special, consequential
+          or punitive damages, including without limitation, loss of profits, data, use, goodwill,
+          or other intangible losses, resulting from (i) your access to or use of or inability to
+          access or use the Service; (ii) any conduct or content of any third party on the Service;
+          (iii) any content obtained from the Service; and (iv) unauthorized access, use or
+          alteration of your transmissions or content, whether based on warranty, contract, tort
+          (including negligence) or any other legal theory, whether or not we have been informed of
+          the possibility of such damage, and even if a remedy set forth herein is found to have
+          failed of its essential purpose.
         </p>
 
         <h2>Disclaimer</h2>
@@ -234,8 +236,8 @@ function Terms() {
         </p>
 
         <p>
-          Wrench AB its subsidiaries, affiliates, and its licensors do not warrant that a) the
-          Service will function uninterrupted, secure or available at any particular time or
+          Wrench Community AB its subsidiaries, affiliates, and its licensors do not warrant that a)
+          the Service will function uninterrupted, secure or available at any particular time or
           location; b) any errors or defects will be corrected; c) the Service is free of viruses or
           other harmful components; or d) the results of using the Service will meet your
           requirements.

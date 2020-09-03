@@ -117,7 +117,7 @@ function Footer() {
           </Text>
 
           <Text fontSize={13} color="grey">
-            © Wrench (v.{process.env.BUILD_ID})
+            © Wrench Community AB (v.{process.env.BUILD_ID})
           </Text>
         </Bottom>
       </Inner>

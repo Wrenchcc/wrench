@@ -1,4 +1,4 @@
-import { ApolloLink } from 'apollo-link'
+import { ApolloLink } from '@apollo/client'
 import { track } from 'utils/analytics'
 import camelToSnake from 'utils/camelToSnake'
 
