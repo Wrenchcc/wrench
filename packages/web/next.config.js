@@ -35,7 +35,7 @@ module.exports = withPlugins(
       MAPBOX_API_KEY: process.env.MAPBOX_API_KEY,
       BUILD_ID: require('child_process').execSync('git rev-parse --short HEAD').toString().trim(),
     },
-    headers() {
+    async headers() {
       return [
         {
           source: '/.well-known/apple-app-site-association',
