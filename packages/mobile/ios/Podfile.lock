@@ -442,7 +442,7 @@ PODS:
     - react-native-video/Video (= 5.0.2)
   - react-native-video/Video (5.0.2):
     - React
-  - react-native-webview (10.8.3):
+  - react-native-webview (10.9.0):
     - React
   - React-RCTActionSheet (0.63.2):
     - React-Core/RCTActionSheetHeaders (= 0.63.2)
@@ -504,35 +504,35 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
-  - ReactNativeNavigation (6.12.2):
+  - ReactNativeNavigation (7.0.0):
     - React
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 6.12.2)
-  - ReactNativeNavigation/Core (6.12.2):
+    - ReactNativeNavigation/Core (= 7.0.0)
+  - ReactNativeNavigation/Core (7.0.0):
     - React
     - React-RCTImage
     - React-RCTText
   - RNCAsyncStorage (1.12.0):
     - React
-  - RNDeviceInfo (6.0.1):
+  - RNDeviceInfo (6.0.2):
     - React
   - RNFastImage (8.3.2):
     - React
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (7.6.1):
+  - RNFBAnalytics (7.6.2):
     - Firebase/Analytics (~> 6.30.0)
     - React
     - RNFBApp
-  - RNFBApp (8.4.1):
+  - RNFBApp (8.4.2):
     - Firebase/CoreOnly (~> 6.30.0)
     - React
-  - RNFBMessaging (7.8.4):
+  - RNFBMessaging (7.8.6):
     - Firebase/Messaging (~> 6.30.0)
     - React
     - RNFBApp
-  - RNGestureHandler (1.7.0):
+  - RNGestureHandler (1.8.0):
     - React
   - RNGoogleSignin (4.0.3):
     - GoogleSignIn (~> 5.0.0)
@@ -544,11 +544,11 @@ PODS:
   - RNSentry (1.7.2):
     - React
     - Sentry (~> 5.2.0)
-  - RNShare (3.7.0):
+  - RNShare (3.8.0):
     - React
-  - SDWebImage (5.9.0):
-    - SDWebImage/Core (= 5.9.0)
-  - SDWebImage/Core (5.9.0)
+  - SDWebImage (5.9.1):
+    - SDWebImage/Core (= 5.9.1)
+  - SDWebImage/Core (5.9.1)
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
@@ -943,7 +943,7 @@ SPEC CHECKSUMS:
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-video: d01ed7ff1e38fa7dcc6c15c94cf505e661b7bfd0
-  react-native-webview: 598605cd213f5096e695f5b33fbee210a47e60ab
+  react-native-webview: bfe5436586b214759bd5043658863549fffc8e92
   React-RCTActionSheet: 910163b6b09685a35c4ebbc52b66d1bfbbe39fc5
   React-RCTAnimation: 9a883bbe1e9d2e158d4fb53765ed64c8dc2200c6
   React-RCTBlob: 39cf0ece1927996c4466510e25d2105f67010e13
@@ -954,20 +954,20 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
-  ReactNativeNavigation: aefc8debafb4a374575adafb44a3352b9d5b618a
+  ReactNativeNavigation: 759c53447295e7d0ac7dd15711c7c37f253d18e8
   RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
-  RNDeviceInfo: 6dd5c07a482f2a5e4a29fe8a9d99eadd4277175a
+  RNDeviceInfo: bdd61e8b070d13a1dd9d022091981075ed4cde16
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
-  RNFBAnalytics: ffd9149d1fe0ecee0f2571b234d53c25349b9899
-  RNFBApp: e4321cad5dd23b43b3b4f0ca060300b9f85cb7a4
-  RNFBMessaging: f28096dc79edf6b0a094e95c265c7224122d051d
-  RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
+  RNFBAnalytics: 20564db4cfd317c304fe5a8e5d840f8c9d105aaa
+  RNFBApp: 373cce42559cc7a9a42afc876746e3946de3e32e
+  RNFBMessaging: c69238917a8672f5aed2c8a6ee124efa8f962677
+  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNPermissions: 477d88d0be7ecb0a7b344e4d5fbb0352de104626
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: 2d4a0e18c6dfe93b647c360e0d15c9391d24e9d1
-  RNShare: a1d5064df7a0ebe778d001869b3f0a124bf0a491
-  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  RNShare: de920edd210de542197f92e88669d864d67c58cb
+  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
