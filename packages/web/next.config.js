@@ -33,10 +33,20 @@ module.exports = withPlugins(
       API_ENDPOINT: process.env.API_ENDPOINT,
       APPLE_REDIRECT_URI: process.env.APPLE_REDIRECT_URI,
       MAPBOX_API_KEY: process.env.MAPBOX_API_KEY,
-      BUILD_ID: require('child_process')
-        .execSync('git rev-parse --short HEAD')
-        .toString()
-        .trim(),
+      BUILD_ID: require('child_process').execSync('git rev-parse --short HEAD').toString().trim(),
+    },
+    headers() {
+      return [
+        {
+          source: '/.well-known/apple-app-site-association',
+          headers: [
+            {
+              key: 'content-type',
+              value: 'application/json',
+            },
+          ],
+        },
+      ]
     },
   })
 )
