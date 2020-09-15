@@ -9,3 +9,7 @@ web:
       defaults:
         forward:
           headers: ['CloudFront-Viewer-Country', 'Accept-Language']
+      .well-known/*:
+        minTTL: 1000
+        maxTTL: 1000
+        defaultTTL: 1000
