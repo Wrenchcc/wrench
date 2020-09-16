@@ -59,6 +59,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
             disableDropdown
             onChange={(val) => setNumber(val)}
             value={number}
+            specialLabel=""
           />
           <Send
             inverted={inverted}
