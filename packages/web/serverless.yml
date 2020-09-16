@@ -10,8 +10,9 @@ web:
         forward:
           headers: ['CloudFront-Viewer-Country', 'Accept-Language']
       origins:
-        pathPatterns:
-          /.well-known/*:
-            minTTL: 10
-            maxTTL: 10
-            defaultTTL: 10
+        - url: wrench-web-edge.s3.amazonaws.com
+          pathPatterns:
+            /.well-known/*:
+              minTTL: 10
+              maxTTL: 10
+              defaultTTL: 10
