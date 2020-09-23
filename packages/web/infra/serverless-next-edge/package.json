@@ -1,0 +1,16 @@
+{
+  "name": "serverless-next",
+  "version": "1.0.0",
+  "main": "serverless.js",
+  "private": true,
+  "devDependencies": {
+    "@serverless/aws-cloudfront": "^6.0.0",
+    "@serverless/aws-lambda": "^3.0.0",
+    "@serverless/aws-s3": "^4.2.0",
+    "@serverless/core": "1.1.2",
+    "@serverless/domain": "^6.1.0",
+    "execa": "^3.3.0",
+    "fs-extra": "^8.1.0",
+    "path-to-regexp": "^6.1.0"
+  }
+}
