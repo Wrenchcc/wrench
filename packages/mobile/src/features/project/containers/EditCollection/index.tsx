@@ -1,5 +1,9 @@
 import React, { useState, useCallback } from 'react'
-import { useDeleteCollectionMutation } from '@wrench/common'
+import {
+  useDeleteCollectionMutation,
+  useEditCollectionMutation,
+  ProjectCollectionsDocument,
+} from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import { ScrollView, Page, useNavigation } from 'navigation'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
@@ -18,6 +22,7 @@ function EditCollection({ id, name, projectId, onDelete }) {
 
   const handleDismiss = () => dismissModal()
   const handleDone = () => {
+    // edit collection
     setIsSaving(true)
     dismissModal()
     setIsSaving(false)
@@ -28,6 +33,30 @@ function EditCollection({ id, name, projectId, onDelete }) {
       variables: {
         id,
         projectId,
+      },
+      update: (cache) => {
+        try {
+          const data = cache.readQuery({
+            query: ProjectCollectionsDocument,
+            variables: {
+              projectId,
+              first: 8,
+            },
+          })
+
+          const edges = data.projectCollections.edges.filter((edge) => edge.node.id !== id)
+
+          cache.writeQuery({
+            query: ProjectCollectionsDocument,
+            data: {
+              ...data,
+              projectCollections: {
+                ...data.projectCollections,
+                edges,
+              },
+            },
+          })
+        } catch (err) {}
       },
     })
 

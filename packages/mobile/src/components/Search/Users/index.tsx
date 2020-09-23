@@ -2,7 +2,8 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Keyboard } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useTranslation } from 'react-i18next'
-import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
+import { useLazyQuery } from '@apollo/client'
+import { SearchUsersDocument } from '@wrench/common'
 import { User, InfiniteList, NoResults, Loader, Text } from 'ui'
 import { RECENT_SEARCHES_USERS } from 'utils/storage/constants'
 import { logError } from 'utils/sentry'
@@ -22,15 +23,24 @@ function Users({ query }) {
   const { t } = useTranslation()
   const [recent, setRecent] = useState([])
 
-  const {
-    loadData,
-    data: { edges },
-    isFetching,
-    fetchMore,
-    isRefetching,
-    hasNextPage,
-    refetch,
-  } = usePaginatedLazyQuery(['users'])(SearchUsersDocument)
+  const [loadData, { data = {}, loading, fetchMore, refetch = () => {} }] = useLazyQuery(
+    SearchUsersDocument
+  )
+
+  const isRefetching = false //loading && !edges
+
+  const edges = data?.users?.edges || []
+  const hasNextPage = data?.users?.pageInfo?.hasNextPage
+
+  const after = edges[edges.length - 1]?.cursor
+
+  const handleFetchMore = useCallback(() => {
+    fetchMore({
+      variables: {
+        after,
+      },
+    })
+  }, [after])
 
   useEffect(() => {
     if (query) {
@@ -47,7 +57,7 @@ function Users({ query }) {
       const items = JSON.parse(await AsyncStorage.getItem(RECENT_SEARCHES_USERS))
 
       if (items) {
-        setRecent(items)
+        // setRecent(items)
       }
     } catch (err) {
       logError(err)
@@ -55,7 +65,7 @@ function Users({ query }) {
   }
 
   useEffect(() => {
-    loadRecentAsync()
+    // loadRecentAsync()
   }, [])
 
   const handleSave = useCallback(
@@ -81,23 +91,23 @@ function Users({ query }) {
   )
 
   const handleRemove = useCallback(() => {
-    setRecent([])
+    // setRecent([])
     AsyncStorage.removeItem(RECENT_SEARCHES_USERS)
   }, [setRecent])
 
   const content =
-    isFetching && !edges ? (
+    loading && !edges ? (
       <UserPlaceholderCollection contentInset={0} marginTop={15} />
     ) : (
       <InfiniteList
         borderSeparator
         paddingBottom={40}
         getItemLayout={getItemLayout}
-        ListEmptyComponent={!isFetching && query.length > 0 && <NoResults />}
+        ListEmptyComponent={!loading && query.length > 0 && <NoResults />}
         data={query ? edges : recent}
-        fetchMore={fetchMore}
-        hasNextPage={isFetching ? false : hasNextPage}
-        isFetching={isFetching && query.length === 0}
+        fetchMore={handleFetchMore}
+        hasNextPage={loading ? false : hasNextPage}
+        isFetching={loading && query.length === 0}
         isRefetching={isRefetching}
         refetch={refetch}
         renderItem={({ item }) => <User data={item.node} onPress={handleSave} />}

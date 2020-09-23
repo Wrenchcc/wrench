@@ -28,6 +28,7 @@ export default gql`
     addCollection(projectId: ID!, name: String!): Collection
     deleteCollection(projectId: ID!, id: ID!): Collection
     collectPosts(projectId: ID!, collectionId: ID!, input: [CollectionInput]): Collection
+    editCollection(id: ID!, input: CollectionInput!): Collection
   }
 
   extend type Query {

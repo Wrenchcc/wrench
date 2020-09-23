@@ -9,12 +9,19 @@ import { LoginManager } from 'react-native-fbsdk'
 import { GoogleSignin } from '@react-native-community/google-signin'
 import { AuthNavigation } from 'navigation'
 import appVersion from 'utils/appVersion'
+import { relayStylePagination } from './pagination'
 
 export let client = null
 
 export default async function createClient() {
   const cache = new InMemoryCache({
     typePolicies: {
+      Query: {
+        fields: {
+          users: relayStylePagination(['query']),
+          notifications: relayStylePagination(),
+        },
+      },
       User: {
         fields: {
           settings: {

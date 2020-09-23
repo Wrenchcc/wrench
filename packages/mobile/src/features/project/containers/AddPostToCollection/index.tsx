@@ -68,42 +68,41 @@ function AddPostToCollection({ collectionId, projectId }) {
         },
         update: (cache, { data: { collectPosts } }) => {
           try {
-            const { projectCollections } = cache.readQuery({
-              query: ProjectCollectionsDocument,
-              variables: {
-                projectId,
-                first: 8,
-              },
-            })
-
-            cache.writeQuery({
-              query: ProjectCollectionsDocument,
-              variables: {
-                projectId,
-                first: 8,
-              },
-              data: {
-                ...projectCollections,
-                projectCollections: {
-                  edges: [
-                    {
-                      __typename: 'CollectionEdge',
-                      cursor: 'dW5kZWZpbmVkX19fMjAyMC0wNy0xMCAwOTo0NDowOS4wODcyNTgrMDA=',
-                      node: {
-                        __typename: 'Collection',
-                        cover: {
-                          __typename: 'CoverType',
-                          uri: null,
-                        },
-                        id: '9c1316f2-80c3-431e-821b-757abca9b3380',
-                        name: 'Cfwefwef',
-                      },
-                    },
-                    ...projectCollections.edges,
-                  ],
-                },
-              },
-            })
+            // const { projectCollections } = cache.readQuery({
+            //   query: ProjectCollectionsDocument,
+            //   variables: {
+            //     projectId,
+            //     first: 8,
+            //   },
+            // })
+            // cache.writeQuery({
+            //   query: ProjectCollectionsDocument,
+            //   variables: {
+            //     projectId,
+            //     first: 8,
+            //   },
+            //   data: {
+            //     ...projectCollections,
+            //     projectCollections: {
+            //       edges: [
+            //         {
+            //           __typename: 'CollectionEdge',
+            //           cursor: 'dW5kZWZpbmVkX19fMjAyMC0wNy0xMCAwOTo0NDowOS4wODcyNTgrMDA=',
+            //           node: {
+            //             __typename: 'Collection',
+            //             cover: {
+            //               __typename: 'CoverType',
+            //               uri: null,
+            //             },
+            //             id: '9c1316f2-80c3-431e-821b-757abca9b3380',
+            //             name: 'Cfwefwef',
+            //           },
+            //         },
+            //         ...projectCollections.edges,
+            //       ],
+            //     },
+            //   },
+            // })
           } catch (err) {
             console.log(err)
             // logError(err)

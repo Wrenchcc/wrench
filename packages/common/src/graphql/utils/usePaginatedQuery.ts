@@ -33,54 +33,13 @@ export default (path, initialData?) => (query, options?) => {
 
   const result = pathOr({}, path, data)
 
-  const handleFetchMore = useCallback(
-    (options = {}) =>
-      fetchMore({
-        variables: {
-          after: result.edges[result.edges.length - 1].cursor,
-        },
-        updateQuery: (prev, { fetchMoreResult }) => {
-          if (!pathOr(false, path, fetchMoreResult)) {
-            return prev
-          }
-
-          if (path.length > 1) {
-            return {
-              ...prev,
-              [path[0]]: {
-                ...pathOr({}, [path[0]], prev),
-                [path[1]]: {
-                  ...pathOr({}, path, prev),
-                  pageInfo: {
-                    ...pathOr({}, [...path, 'pageInfo'], prev),
-                    ...pathOr({}, [...path, 'pageInfo'], fetchMoreResult),
-                  },
-                  edges: [
-                    ...pathOr({}, [...path, 'edges'], prev),
-                    ...pathOr({}, [...path, 'edges'], fetchMoreResult),
-                  ],
-                },
-              },
-            }
-          }
-
-          // Fix fetch more
-          return {
-            [path]: {
-              ...pathOr({}, path, fetchMoreResult),
-              __typename: prev[path].__typename,
-              edges: [
-                ...pathOr({}, [path, 'edges'], prev),
-                ...pathOr({}, [path, 'edges'], fetchMoreResult),
-              ],
-              pageInfo: pathOr({}, [path, 'pageInfo'], fetchMoreResult),
-            },
-          }
-        },
-        ...options,
-      }),
-    [data]
-  )
+  const handleFetchMore = () => {
+    fetchMore({
+      variables: {
+        after: result.edges[result.edges.length - 1].cursor,
+      },
+    })
+  }
 
   return {
     error,
