@@ -2,6 +2,13 @@ import paginate from '../../utils/paginate'
 import { transformFileUrl } from '../../utils/transformFileUrl'
 
 export default async ({ id }, args, ctx) => {
+  const cacheKey = `filesConnection:${id}:${args.type}`
+  const cache = JSON.parse(await ctx.redis.get(cacheKey))
+
+  if (cache) {
+    return cache
+  }
+
   const files = await paginate(ctx.db.File, args, {
     where: {
       postId: id,
@@ -17,8 +24,12 @@ export default async ({ id }, args, ctx) => {
     },
   }))
 
-  return {
+  const response = {
     ...files,
     edges,
   }
+
+  ctx.redis.set(cacheKey, JSON.stringify(response))
+
+  return response
 }

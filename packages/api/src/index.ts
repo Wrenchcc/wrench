@@ -1,5 +1,7 @@
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
+import { RedisCache } from 'apollo-server-cache-redis'
+import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import depthLimit from 'graphql-depth-limit'
@@ -18,12 +20,14 @@ const { PORT } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
+const redis = new RedisCache()
+
 async function server() {
   const connection = await createConnection(options)
 
   const driver = connection.driver as PostgresDriver
   driver.postgres.defaults.parseInputDatesAsUTC = true
-  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, (str) => str)
+  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
 
   const server = new ApolloServer({
     ...debugOptions,
@@ -31,6 +35,7 @@ async function server() {
       db,
       loaders: createLoaders(),
       services,
+      redis,
       // @ts-ignore
       userAgent: req.headers['user-agent'],
       userId: getUserId(req),
@@ -38,6 +43,17 @@ async function server() {
     formatError,
     schema,
     validationRules: [depthLimit(10)],
+    cache: redis,
+    cacheControl: {
+      defaultMaxAge: 60,
+    },
+    plugins: [
+      // @ts-ignore
+      responseCachePlugin({
+        shouldReadFromCache: ({ request }) => !request.http.headers.get('authorization'),
+        shouldWriteToCache: ({ request }) => !request.http.headers.get('authorization'),
+      }),
+    ],
   })
 
   const app = express()
@@ -52,4 +68,4 @@ async function server() {
   })
 }
 
-server().catch((err) => debug(err))
+server().catch(err => debug(err))
