@@ -15,9 +15,7 @@ export default async (_, args, ctx) => {
         return cache
       }
 
-      ctx.redis.set(cacheKey, response, {
-        ttl: 604800,
-      })
+      ctx.redis.set(cacheKey, response, 604800)
 
       return response
     }
@@ -32,9 +30,7 @@ export default async (_, args, ctx) => {
 
       const response = await recentProjects(args, ctx)
 
-      ctx.redis.set(cacheKey, response, {
-        ttl: 300,
-      })
+      ctx.redis.set(cacheKey, response, 300)
 
       return response
     }

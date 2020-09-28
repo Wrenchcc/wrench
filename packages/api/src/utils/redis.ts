@@ -28,12 +28,13 @@ export const remove = client => async key => {
   })
 }
 
-export const set = client => async (key, data, options) => {
+export const set = client => async (key, data, ttl) => {
   const cacheKey = `${VERSION}:${key}`
   debug(`set: ${cacheKey}`)
 
-  return client.set(cacheKey, JSON.stringify(data), {
-    ttl: null,
-    ...options,
-  })
+  if (ttl) {
+    return client.set(cacheKey, JSON.stringify(data), 'ex', ttl)
+  }
+
+  return client.set(cacheKey, JSON.stringify(data))
 }
