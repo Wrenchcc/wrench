@@ -4,7 +4,7 @@ import postInfo from '../../fragments/post/postInfo'
 export const GET_FEED = gql`
   query getFeed($after: String) {
     feed {
-      posts: postsConnection(first: 2, after: $after) {
+      posts: postsConnection(after: $after) {
         edges {
           cursor
           node {

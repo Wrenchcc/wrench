@@ -29,7 +29,7 @@ export const USER_BY_USERNAME = gql`
           }
         }
       }
-      posts: postsConnection(first: 2, after: $after) {
+      posts: postsConnection(after: $after) {
         edges {
           cursor
           node {

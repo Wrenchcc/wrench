@@ -40,7 +40,7 @@ export const PROJECT_BY_SLUG = gql`
         isOwner
         isFollower
       }
-      posts: postsConnection(first: 2, after: $after) {
+      posts: postsConnection(after: $after) {
         edges {
           cursor
           node {
