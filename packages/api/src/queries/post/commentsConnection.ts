@@ -2,7 +2,7 @@ import paginate from '../../utils/paginate'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
-  const cacheKey = `commentsConnection:${id}:${JSON.stringify(args)}`
+  const cacheKey = `post:commentsConnection:${id}:${JSON.stringify(args)}`
   const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {

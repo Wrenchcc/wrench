@@ -1,7 +1,7 @@
 import { isAuthenticated } from '../../utils/permissions'
 
 export default isAuthenticated(async (_, { id }, ctx) => {
-  const cacheKey = `bookmarks:${id}:${ctx.userId}`
+  const cacheKey = `post:bookmarks:${id}:${ctx.userId}`
 
   ctx.redis.delete(cacheKey)
 

@@ -1,5 +1,5 @@
 export default async ({ id }, _, ctx) => {
-  const cacheKey = `bookmarks:${id}:${ctx.userId}`
+  const cacheKey = `post:bookmarks:${id}:${ctx.userId}`
   const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {

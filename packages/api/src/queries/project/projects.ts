@@ -5,10 +5,39 @@ import recentProjects from './recentProjects'
 
 export default async (_, args, ctx) => {
   switch (args.type) {
-    case PROJECT_SORT_TYPES.POPULAR:
-      return popularProjects(args, ctx)
-    case PROJECT_SORT_TYPES.RECENT:
-      return recentProjects(args, ctx)
+    case PROJECT_SORT_TYPES.POPULAR: {
+      const response = await popularProjects(args, ctx)
+
+      const cacheKey = `project:popularProjects:${JSON.stringify(args)}`
+      const cache = await ctx.redis.get(cacheKey)
+
+      if (cache) {
+        return cache
+      }
+
+      ctx.redis.set(cacheKey, response, {
+        ttl: 604800,
+      })
+
+      return response
+    }
+    case PROJECT_SORT_TYPES.RECENT: {
+      const cacheKey = `project:recentProjects:${JSON.stringify(args)}`
+
+      const cache = await ctx.redis.get(cacheKey)
+
+      if (cache) {
+        return cache
+      }
+
+      const response = await recentProjects(args, ctx)
+
+      ctx.redis.set(cacheKey, response, {
+        ttl: 300,
+      })
+
+      return response
+    }
     default:
       throw new ApolloError('Invalid type supplied to Projects query')
   }

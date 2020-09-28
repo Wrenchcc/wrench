@@ -2,7 +2,7 @@ import paginate from '../../utils/paginate'
 import { transformFileUrl } from '../../utils/transformFileUrl'
 
 export default async ({ id }, args, ctx) => {
-  const cacheKey = `filesConnection:${id}:${JSON.stringify(args)}`
+  const cacheKey = `post:filesConnection:${id}:${JSON.stringify(args)}`
   const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {

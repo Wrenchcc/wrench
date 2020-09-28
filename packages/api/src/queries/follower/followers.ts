@@ -1,8 +1,14 @@
 import { In } from 'typeorm'
 import paginate from '../../utils/paginate'
 
-// TODO: Use dataloader
 export default async (_, args, ctx) => {
+  const cacheKey = `follower:followers:${args.projectId}:${JSON.stringify(args)}`
+  const cache = await ctx.redis.get(cacheKey)
+
+  if (cache) {
+    return cache
+  }
+
   const followers = await ctx.db.Following.find({
     where: {
       projectId: args.projectId,
@@ -11,9 +17,13 @@ export default async (_, args, ctx) => {
 
   const ids = followers.map(({ userId }) => userId)
 
-  return paginate(ctx.db.User, args, {
+  const response = await paginate(ctx.db.User, args, {
     where: {
       id: ids.length ? In(ids) : null,
     },
   })
+
+  ctx.redis.set(cacheKey, response)
+
+  return response
 }

@@ -3,7 +3,7 @@ import { transformFileUrl } from '../../utils/transformFileUrl'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
-  const cacheKey = `collectionsConnection:${id}}`
+  const cacheKey = `project:collectionsConnection:${id}:${JSON.stringify(args)}}`
   const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {

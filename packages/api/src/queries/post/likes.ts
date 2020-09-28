@@ -1,5 +1,5 @@
 export default async ({ id }, _, ctx) => {
-  const cacheKey = `likes:${id}:${ctx.userId}`
+  const cacheKey = `post:likes:${id}:${ctx.userId}`
   const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {
