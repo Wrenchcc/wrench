@@ -18,9 +18,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "rootDir": "src"
   },
   "exclude": ["node_modules", "tasks"],
-  "include": ["./src/**/*.ts"]
+  "include": [
+    "src/**/*",
+    "src/**/*.json"
+  ]
 }

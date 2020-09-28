@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development dotenv -e .env -- nodemon --exec ts-node src/index.ts",
-    "build": "ncc build src/index.ts",
+    "build": "tsc",
     "db:import": "cross-env NODE_ENV=development cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/dbImport.ts",
     "es:create": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/createIndex.ts",
     "es:delete": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/deleteIndex.ts",
@@ -43,7 +43,6 @@
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/node": "^14.11.2",
     "@types/pg": "^7.14.5",
-    "@vercel/ncc": "^0.24.1",
     "bluebird": "^3.7.2",
     "cross-env": "^7.0.2",
     "dotenv-cli": "^4.0.0",
