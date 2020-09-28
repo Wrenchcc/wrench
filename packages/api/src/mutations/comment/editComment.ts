@@ -8,6 +8,18 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this comment.')
   }
 
+  const cacheKey = `comment:commentsConnection:${comment.postId}:*`
+  ctx.redis.delete(cacheKey)
+
+  const cacheKey2 = `comment:comments:${comment.postId}:*`
+  ctx.redis.delete(cacheKey2)
+
+  const cacheKey3 = `comment:repliesConnection:${id}:*}`
+  ctx.redis.delete(cacheKey3)
+
+  const cacheKey4 = `comment:comment:${id}`
+  ctx.redis.delete(cacheKey4)
+
   return ctx.db.Comment.save({
     ...comment,
     ...input,

@@ -61,6 +61,13 @@ const Root = gql`
   # these types later on
   # Ref: apollographql/graphql-tools#293
 
+  directive @cacheControl(maxAge: Int, scope: CacheControlScope) on OBJECT | FIELD_DEFINITION
+
+  enum CacheControlScope {
+    PUBLIC
+    PRIVATE
+  }
+
   type Query {
     dummy: String
   }

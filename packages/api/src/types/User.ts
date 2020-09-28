@@ -1,7 +1,8 @@
 import gql from 'graphql-tag'
+import 'apollo-cache-control'
 
 export default gql`
-  type User {
+  type User @cacheControl(maxAge: 3600) {
     id: ID!
     username: LowercaseString
     createdAt: Date!
@@ -34,7 +35,7 @@ export default gql`
       last: Int = 10
       before: String
     ): ProjectsConnection
-    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection 
   }
 
   enum UserRole {

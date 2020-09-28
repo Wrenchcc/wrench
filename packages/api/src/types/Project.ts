@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  type Project {
+  type Project @cacheControl(maxAge: 3600) {
     id: ID
     slug: String
     title: String
@@ -21,23 +21,23 @@ export default gql`
       first: Int = 10
       reverse: Boolean
       type: FileType
-    ): FileConnection
+    ): FileConnection @cacheControl(maxAge: 180)
 
     followersConnection(
       after: String
       before: String
       first: Int = 10
       last: Int = 10
-    ): FollowersConnection
+    ): FollowersConnection @cacheControl(maxAge: 180)
 
-    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection @cacheControl(maxAge: 180)
 
     collectionsConnection(
       after: String
       before: String
       first: Int = 10
       last: Int = 10
-    ): CollectionConnection
+    ): CollectionConnection @cacheControl(maxAge: 180)
   }
 
   type CoverType {

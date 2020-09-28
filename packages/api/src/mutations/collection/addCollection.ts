@@ -8,6 +8,9 @@ export default isAuthenticated(async (_, { projectId, name }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this project.')
   }
 
+  const cacheKey = `project:collectionsConnection:${projectId}:*`
+  ctx.redis.delete(cacheKey)
+
   const collection = await ctx.db.Collection.findOrCreate(name.trim())
 
   await ctx.db.ProjectCollection.save({

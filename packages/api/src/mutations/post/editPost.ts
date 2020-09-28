@@ -8,6 +8,9 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this post.')
   }
 
+  const cacheKey = `post:filesConnection:${id}:*`
+  ctx.redis.delete(cacheKey)
+
   // Add new project if projectId is defined or use currenct project
   const project = await ctx.db.Project.findOne(input.projectId || post.projectId)
 
