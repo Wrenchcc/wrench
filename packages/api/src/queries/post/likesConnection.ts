@@ -3,10 +3,10 @@ import paginate from '../../utils/paginate'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
-  const cacheKey = `likesConnection:${id}`
-  const cache = JSON.parse(await ctx.redis.get(cacheKey))
+  const cacheKey = `likesConnection:${id}:${JSON.stringify(args)}`
+  const cache = await ctx.redis.get(cacheKey)
 
-  if(cache) {
+  if (cache) {
     return cache
   }
 
@@ -24,7 +24,7 @@ export default async ({ id }, args, ctx) => {
     },
   })
 
-  ctx.redis.set(cacheKey, JSON.stringify(response))
+  ctx.redis.set(cacheKey, response)
 
   return response
 }

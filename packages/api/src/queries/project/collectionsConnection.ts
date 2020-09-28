@@ -3,13 +3,20 @@ import { transformFileUrl } from '../../utils/transformFileUrl'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
+  const cacheKey = `collectionsConnection:${id}}`
+  const cache = await ctx.redis.get(cacheKey)
+
+  if (cache) {
+    return cache
+  }
+
   const collections = await paginate(ctx.db.ProjectCollection, args, {
     where: {
       projectId: id,
     },
   })
 
-  const [edges] = await Promise.all(
+  const [response] = await Promise.all(
     collections.edges.map(async ({ node }) => {
       const collection = await ctx.db.PostCollection.findOne({
         collectionId: node.collectionId,
@@ -34,5 +41,7 @@ export default async ({ id }, args, ctx) => {
     })
   )
 
-  return edges
+  ctx.redis.set(cacheKey, response)
+
+  return response
 }

@@ -2,6 +2,12 @@ import { isAuthenticated } from '../../utils/permissions'
 import { NOTIFICATION_TYPES, LIKE_TYPES } from '../../utils/enums'
 
 export default isAuthenticated(async (_, { id }, ctx) => {
+  const cacheKey1 = `likes:${id}:${ctx.userId}`
+  ctx.redis.delete(cacheKey1)
+
+  const cacheKey2 = `likesConnection:${id}:*`
+  ctx.redis.delete(cacheKey2)
+
   const [isLiked, post] = await Promise.all([
     ctx.db.Like.isLiked(ctx.userId, id),
     ctx.db.Post.findOne(id),

@@ -2,8 +2,8 @@ import paginate from '../../utils/paginate'
 import { transformFileUrl } from '../../utils/transformFileUrl'
 
 export default async ({ id }, args, ctx) => {
-  const cacheKey = `filesConnection:${id}:${args.type}`
-  const cache = JSON.parse(await ctx.redis.get(cacheKey))
+  const cacheKey = `filesConnection:${id}:${JSON.stringify(args)}`
+  const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {
     return cache
@@ -29,7 +29,7 @@ export default async ({ id }, args, ctx) => {
     edges,
   }
 
-  ctx.redis.set(cacheKey, JSON.stringify(response))
+  ctx.redis.set(cacheKey, response)
 
   return response
 }

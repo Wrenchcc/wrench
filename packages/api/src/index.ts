@@ -13,6 +13,7 @@ import { options, db } from './models'
 import createLoaders from './loaders'
 import services from './services'
 import onHealthCheck from './utils/onHealthCheck'
+import * as cache from './utils/redis'
 
 const debug = require('debug')('api:server')
 
@@ -20,6 +21,7 @@ const { PORT } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
+// host: 'wrench-redis-cluster.wugpj2.clustercfg.euw1.cache.amazonaws.com'
 const redis = new RedisCache()
 
 async function server() {
@@ -27,7 +29,7 @@ async function server() {
 
   const driver = connection.driver as PostgresDriver
   driver.postgres.defaults.parseInputDatesAsUTC = true
-  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, str => str)
+  driver.postgres.types.setTypeParser(TIMESTAMPTZ_OID, (str) => str)
 
   const server = new ApolloServer({
     ...debugOptions,
@@ -35,7 +37,11 @@ async function server() {
       db,
       loaders: createLoaders(),
       services,
-      redis,
+      redis: {
+        get: cache.get(redis),
+        set: cache.set(redis),
+        remove: cache.remove(redis),
+      },
       // @ts-ignore
       userAgent: req.headers['user-agent'],
       userId: getUserId(req),
@@ -68,4 +74,4 @@ async function server() {
   })
 }
 
-server().catch(err => debug(err))
+server().catch((err) => debug(err))

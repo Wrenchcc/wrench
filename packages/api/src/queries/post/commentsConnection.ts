@@ -2,8 +2,8 @@ import paginate from '../../utils/paginate'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
-  const cacheKey = `commentsConnection:${id}`
-  const cache = JSON.parse(await ctx.redis.get(cacheKey))
+  const cacheKey = `commentsConnection:${id}:${JSON.stringify(args)}`
+  const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {
     return cache
@@ -15,7 +15,7 @@ export default async ({ id }, args, ctx) => {
     },
   })
 
-  ctx.redis.set(cacheKey, JSON.stringify(resonse))
+  ctx.redis.set(cacheKey, resonse)
 
   return resonse
 }

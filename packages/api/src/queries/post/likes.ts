@@ -1,6 +1,6 @@
 export default async ({ id }, _, ctx) => {
   const cacheKey = `likes:${id}:${ctx.userId}`
-  const cache = JSON.parse(await ctx.redis.get(cacheKey))
+  const cache = await ctx.redis.get(cacheKey)
 
   if (cache) {
     return cache
@@ -13,7 +13,7 @@ export default async ({ id }, _, ctx) => {
     totalCount,
   }
 
-  ctx.redis.set(cacheKey, JSON.stringify(response))
+  ctx.redis.set(cacheKey, response)
 
   return response
 }
