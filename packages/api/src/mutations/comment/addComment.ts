@@ -50,7 +50,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const cacheKey2 = `comment:comments:${postId}:*`
   ctx.redis.delete(cacheKey2)
 
-  const cacheKey3 = `comment:repliesConnection:${commentId}:*}`
+  const cacheKey3 = `comment:repliesConnection:${commentId}:*`
   ctx.redis.delete(cacheKey3)
 
   comments.map((comment) => {

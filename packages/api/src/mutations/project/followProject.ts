@@ -13,7 +13,7 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   const cacheKey1 = `follower:followers:${id}:*`
   ctx.redis.delete(cacheKey1)
 
-  const cacheKey2 = `project:followersConnection:${id}:*}`
+  const cacheKey2 = `project:followersConnection:${id}:*`
   ctx.redis.delete(cacheKey2)
 
   if (isFollower) {
