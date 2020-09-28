@@ -1,5 +1,6 @@
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
+import { RedisCache } from 'apollo-server-cache-redis'
 import Redis from 'ioredis';
 import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import { createConnection } from 'typeorm'
@@ -48,7 +49,9 @@ async function server() {
     formatError,
     schema,
     validationRules: [depthLimit(10)],
-    cache: redis,
+    cache: new RedisCache({
+      host: REDIS_HOST,
+    }),
     cacheControl: {
       defaultMaxAge: 60,
     },
