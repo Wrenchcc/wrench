@@ -12,8 +12,8 @@
     "es:import": "cross-env DEBUG=task* dotenv -e .env -- ts-node-dev tasks/bulkImport.ts"
   },
   "dependencies": {
+    "@eturino/ioredis-del-by-pattern": "^1.0.3",
     "@sindresorhus/slugify": "^1.1.0",
-    "apollo-server-cache-redis": "^1.2.2",
     "apollo-server-express": "^2.18.1",
     "apollo-server-plugin-response-cache": "^0.5.5",
     "aws-sdk": "^2.761.0",
@@ -26,6 +26,7 @@
     "google-auth-library": "^6.1.0",
     "graphql": "14.6.0",
     "graphql-depth-limit": "^1.1.0",
+    "ioredis": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.10.1",
     "lodash.merge": "^4.6.2",
