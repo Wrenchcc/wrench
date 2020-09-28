@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^9.2.0",
     "google-auth-library": "^6.1.0",
-    "graphql": "^15.3.0",
+    "graphql": "14.6.0",
     "graphql-depth-limit": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.10.1",
