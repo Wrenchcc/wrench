@@ -9,10 +9,12 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   }
 
   const cacheKey = `post:filesConnection:${id}:*`
-  ctx.redis.delete(cacheKey)
 
-  await ctx.db.File.delete({ postId: id })
-  await ctx.db.Post.delete(id)
+  await Promise.all([
+    ctx.redis.delete(cacheKey),
+    ctx.db.File.delete({ postId: id }),
+    ctx.db.Post.delete(id),
+  ])
 
   return post
 })

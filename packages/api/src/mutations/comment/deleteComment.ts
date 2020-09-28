@@ -9,16 +9,16 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   }
 
   const cacheKey = `comment:commentsConnection:${id}:*`
-  ctx.redis.delete(cacheKey)
-
   const cacheKey2 = `comment:comments:${comment.postId}:*`
-  ctx.redis.delete(cacheKey2)
-
   const cacheKey3 = `comment:repliesConnection:${id}:*`
-  ctx.redis.delete(cacheKey3)
-
   const cacheKey4 = `comment:comment:${id}`
-  ctx.redis.delete(cacheKey4)
+ 
+  await Promise.all([
+    ctx.redis.delete(cacheKey),
+    ctx.redis.delete(cacheKey2),
+    ctx.redis.delete(cacheKey3),
+    ctx.redis.delete(cacheKey4)
+  ])
 
   await Promise.resolve([
     ctx.db.Comment.delete(id),

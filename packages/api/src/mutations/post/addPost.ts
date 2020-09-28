@@ -33,7 +33,7 @@ export default isAuthenticated(async (_, { input }, ctx) => {
     }
   }
 
-  ctx.redis.delete(`project:filesConnection:${input.projectId}:*`)
+  await ctx.redis.delete(`project:filesConnection:${input.projectId}:*`)
 
   const filesToSave = input.files.map(({ filename }) => ({
     filename,

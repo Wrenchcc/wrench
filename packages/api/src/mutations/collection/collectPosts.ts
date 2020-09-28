@@ -10,7 +10,7 @@ export default isAuthenticated(async (_, { projectId, collectionId, input }, ctx
   }
 
   const cacheKey1 = `project:collectionsConnection:${projectId}:*`
-  ctx.redis.delete(cacheKey1)
+  await ctx.redis.delete(cacheKey1)
 
   input.map(async ({ postId }) => {
     ctx.db.PostCollection.save({

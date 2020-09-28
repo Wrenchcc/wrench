@@ -9,8 +9,7 @@ export default isAuthenticated(async (_, { id, projectId }, ctx) => {
   }
 
   const cacheKey1 = `project:collectionsConnection:${projectId}:*`
-  ctx.redis.delete(cacheKey1)
-
+  
   const [collection] = await Promise.all([
     // ctx.db.Collection.find(id),
     ctx.db.ProjectCollection.delete({
@@ -21,6 +20,7 @@ export default isAuthenticated(async (_, { id, projectId }, ctx) => {
       collectionId: id,
       projectId,
     }),
+    ctx.redis.delete(cacheKey1),
   ])
 
   console.log(collection)

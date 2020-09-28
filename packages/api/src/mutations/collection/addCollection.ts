@@ -9,7 +9,7 @@ export default isAuthenticated(async (_, { projectId, name }, ctx) => {
   }
 
   const cacheKey = `project:collectionsConnection:${projectId}:*`
-  ctx.redis.delete(cacheKey)
+  await ctx.redis.delete(cacheKey)
 
   const collection = await ctx.db.Collection.findOrCreate(name.trim())
 
