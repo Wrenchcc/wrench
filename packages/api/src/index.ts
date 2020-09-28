@@ -17,12 +17,13 @@ import * as cache from './utils/redis'
 
 const debug = require('debug')('api:server')
 
-const { PORT } = process.env
+const { PORT, REDIS_HOST } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
-// host: 'wrench-redis-cluster.wugpj2.clustercfg.euw1.cache.amazonaws.com'
-const redis = new RedisCache()
+const redis = new RedisCache({
+  host: REDIS_HOST,
+})
 
 async function server() {
   const connection = await createConnection(options)
