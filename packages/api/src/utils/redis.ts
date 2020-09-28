@@ -2,7 +2,7 @@ const debug = require('debug')('api:redis')
 
 const VERSION = 'v1'
 
-export const get = (client) => async (key) => {
+export const get = client => async key => {
   const cacheKey = `${VERSION}:${key}`
 
   const cache = await client.get(cacheKey)
@@ -15,13 +15,14 @@ export const get = (client) => async (key) => {
   debug(`miss: ${cacheKey}`)
 }
 
-export const remove = (client) => async (key) => {
+export const remove = client => async key => {
   const cacheKey = `${VERSION}:${key}`
   debug(`delete: ${cacheKey}`)
-  return client.del(cacheKey)
+
+  return client.delete(cacheKey)
 }
 
-export const set = (client) => async (key, data, options) => {
+export const set = client => async (key, data, options) => {
   const cacheKey = `${VERSION}:${key}`
   debug(`set: ${cacheKey}`)
 

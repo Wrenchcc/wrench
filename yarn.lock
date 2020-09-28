@@ -5957,11 +5957,6 @@
     lodash "^4.5.0"
     prop-types "^15.6.1"
 
-"@vercel/ncc@^0.24.1":
-  version "0.24.1"
-  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.24.1.tgz#3ea2932c85ba87f4de6fe550d60e1bf5c005985e"
-  integrity sha512-r9m7brz2hNmq5TF3sxrK4qR/FhXn44XIMglQUir4sT7Sh5GOaYXlMYikHFwJStf8rmQGTlvOoBXt4yHVonRG8A==
-
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -13265,6 +13260,13 @@ graphql-upload@^8.0.2:
     fs-capacitor "^2.0.4"
     http-errors "^1.7.3"
     object-path "^0.11.4"
+
+graphql@14.6.0:
+  version "14.6.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.6.0.tgz#57822297111e874ea12f5cd4419616930cd83e49"
+  integrity sha512-VKzfvHEKybTKjQVpTFrA5yUq2S9ihcZvfJAtsDBBCuV6wauPu1xl/f9ehgVf0FcEJJs4vz6ysb/ZMkGigQZseg==
+  dependencies:
+    iterall "^1.2.2"
 
 graphql@^14.0.0, graphql@^14.5.3:
   version "14.7.0"
