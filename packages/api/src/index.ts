@@ -1,6 +1,6 @@
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
-import { RedisCache } from 'apollo-server-cache-redis'
+import { RedisClusterCache } from 'apollo-server-cache-redis'
 import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
@@ -21,9 +21,11 @@ const { PORT, REDIS_HOST } = process.env
 
 const TIMESTAMPTZ_OID = 1184
 
-const redis = new RedisCache({
-  host: REDIS_HOST,
-})
+const redis = new RedisClusterCache([
+  {
+    host: REDIS_HOST,
+  },
+])
 
 async function server() {
   const connection = await createConnection(options)
