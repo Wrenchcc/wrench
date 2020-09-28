@@ -21,11 +21,12 @@ export const remove = (client) => async (key) => {
   return client.del(cacheKey)
 }
 
-export const set = (client) => async (key, data, { ttl = null, ...options }) => {
+export const set = (client) => async (key, data, options) => {
   const cacheKey = `${VERSION}:${key}`
   debug(`set: ${cacheKey}`)
+
   return client.set(cacheKey, JSON.stringify(data), {
-    ttl,
+    ttl: null,
     ...options,
   })
 }
