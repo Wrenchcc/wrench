@@ -30,7 +30,6 @@ function User({ username, isAuthenticated, ...rest }) {
     return (
       <Home
         {...{
-          transparent: true,
           isAuthenticated,
           ...rest,
         }}

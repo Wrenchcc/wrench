@@ -6,8 +6,6 @@ import recentProjects from './recentProjects'
 export default async (_, args, ctx) => {
   switch (args.type) {
     case PROJECT_SORT_TYPES.POPULAR: {
-      const response = await popularProjects(args, ctx)
-
       const cacheKey = `project:popularProjects:${JSON.stringify(args)}`
       const cache = await ctx.redis.get(cacheKey)
 
@@ -15,13 +13,13 @@ export default async (_, args, ctx) => {
         return cache
       }
 
+      const response = await popularProjects(args, ctx)
       ctx.redis.set(cacheKey, response, 604800)
 
       return response
     }
     case PROJECT_SORT_TYPES.RECENT: {
       const cacheKey = `project:recentProjects:${JSON.stringify(args)}`
-
       const cache = await ctx.redis.get(cacheKey)
 
       if (cache) {

@@ -138,7 +138,7 @@ function AppWithi18n({
       <GoogleAnalyticsSDK />
 
       <ModalProvider>
-        <Header isAuthenticated={isAuthenticated} {...pageProps} />
+        <Header isAuthenticated={isAuthenticated} />
         <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
         {!hidePromo && !isAuthenticated && (
           <Promo viewerCountry={viewerCountry} paddingHorizontal />
