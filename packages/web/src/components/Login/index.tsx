@@ -7,11 +7,11 @@ import Router from 'next/router'
 import { Title } from 'ui'
 import { useCookie, Cookies } from 'hooks'
 import { AUTHENTICATE_FACEBOOK, AUTHENTICATE_GOOGLE } from 'graphql/mutations/user/authenticate'
-// import AppleSignIn from '../AppleSignIn'
+import AppleSignIn from '../AppleSignIn'
 import Legal from '../Legal'
 import { Base, FacebookButton, GoogleButton } from './styles'
 
-// const { APPLE_REDIRECT_URI } = process.env
+const { APPLE_REDIRECT_URI } = process.env
 
 const FACEBOOK_APP_ID = '1174076712654826'
 const FACEBOOK_SCOPE = 'public_profile,email'
@@ -51,9 +51,9 @@ export default function Login({ closeModal, referral = '/' }) {
         )}
       />
 
-      {/* <AppleSignIn clientId="cc.wrench" scope="name email" redirectURI={APPLE_REDIRECT_URI}>
+      <AppleSignIn clientId="cc.wrench" scope="name email" redirectURI={APPLE_REDIRECT_URI}>
         {({ signIn }) => <AppleButton onClick={signIn}>{t('Login:applebutton')}</AppleButton>}
-      </AppleSignIn>*/}
+      </AppleSignIn>
 
       <GoogleLogin
         responseType="id_token"
