@@ -17,7 +17,7 @@
     "apollo-server-cache-redis": "^1.2.2",
     "apollo-server-express": "^2.18.1",
     "apollo-server-plugin-response-cache": "^0.5.5",
-    "aws-sdk": "^2.761.0",
+    "aws-sdk": "^2.763.0",
     "axios": "^0.20.0",
     "base-64": "^0.1.0",
     "dataloader": "^1.4.0",

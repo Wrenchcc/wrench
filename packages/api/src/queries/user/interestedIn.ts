@@ -1,6 +1,13 @@
 import { In } from 'typeorm'
 
 export default async ({ id }, _, ctx) => {
+  const cacheKey = `user:interestedIn:${id}`
+  const cache = await ctx.redis.get(cacheKey)
+
+  if (cache) {
+    return cache
+  }
+
   const interestedIn = await ctx.db.UserInterestedIn.find({
     userId: id,
   })
@@ -13,5 +20,9 @@ export default async ({ id }, _, ctx) => {
     },
   })
 
-  return projectTypes.length > 0 ? projectTypes : null
+  const response = projectTypes.length > 0 ? projectTypes : null
+
+  ctx.redis.set(cacheKey, response)
+
+  return response
 }
