@@ -9,7 +9,7 @@ import { useCookie, Cookies } from 'hooks'
 import { AUTHENTICATE_FACEBOOK, AUTHENTICATE_GOOGLE } from 'graphql/mutations/user/authenticate'
 import AppleSignIn from '../AppleSignIn'
 import Legal from '../Legal'
-import { Base, FacebookButton, GoogleButton } from './styles'
+import { Base, FacebookButton, GoogleButton, AppleButton } from './styles'
 
 const { APPLE_REDIRECT_URI } = process.env
 
