@@ -61,7 +61,7 @@ function Header({ isAuthenticated }) {
   }
 
   const toggleNotifications = () => {
-    if (data.notifications && data.notifications.unreadCount > 0) {
+    if (data?.notifications?.unreadCount > 0) {
       // @ts-ignore
       markNotificationsSeen({
         update: (proxy) => {
@@ -142,13 +142,10 @@ function Header({ isAuthenticated }) {
       </Nav>
 
       <Right>
-        {currentUser.data && currentUser.data.user ? (
+        {currentUser?.data?.user ? (
           <Fragment>
             <UserNotifications ref={notificationsRef}>
-              <Badge
-                unread={data.notifications && data.notifications.unreadCount > 0}
-                onPress={toggleNotifications}
-              />
+              <Badge unread={data?.notifications?.unreadCount > 0} onPress={toggleNotifications} />
               {openNotifications && <Notifications onPress={handleClose} />}
             </UserNotifications>
 
