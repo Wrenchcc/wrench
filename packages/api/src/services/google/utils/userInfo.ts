@@ -24,7 +24,7 @@ export default async function userInfo(idToken) {
       fullName: payload.name,
       id: payload.sub,
       isSilhouette: true,
-      lastName: payload.family_name,
+      lastName: payload.family_name || '',
     }
   } catch (err) {
     debug(err)
