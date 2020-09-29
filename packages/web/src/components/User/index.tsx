@@ -8,11 +8,34 @@ import { USER_BY_USERNAME } from 'graphql/queries/user/userByUsername'
 import UserFollowingProjects from 'components/UserFollowingProjects'
 import { Text, Avatar, Layout, Post, Loader } from 'ui'
 import UserProjects from 'components/UserProjects'
+import Feed from 'pages/feed'
+import Home from 'pages/home'
 import { withHttp } from 'utils/url'
 import { Top, Name, Left, Right, Info } from './styles'
 
-function User({ username, isAuthenticated }) {
-  console.log('page: User', username)
+function User({ username, isAuthenticated, ...rest }) {
+  // NOTE: index is not rendered on aws
+  if (!username) {
+    if (isAuthenticated) {
+      return (
+        <Feed
+          {...{
+            isAuthenticated,
+            ...rest,
+          }}
+        />
+      )
+    }
+
+    return (
+      <Home
+        {...{
+          isAuthenticated,
+          ...rest,
+        }}
+      />
+    )
+  }
 
   const { t } = useTranslation()
 
