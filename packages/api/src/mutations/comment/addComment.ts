@@ -44,7 +44,17 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     postId: post.id,
   })
 
-  comments.map(comment => {
+  const cacheKey1 = `comment:commentsConnection:${postId}:*`
+  const cacheKey2 = `comment:comments:${postId}:*`
+  const cacheKey3 = `comment:repliesConnection:${commentId}:*`
+ 
+  await Promise.all([
+    ctx.redis.delete(cacheKey1),
+    ctx.redis.delete(cacheKey2),
+    ctx.redis.delete(cacheKey3)
+  ])
+
+  comments.map((comment) => {
     // NOTE:Do not send to comment owner, post owner or current user
     if (
       !canModerateComment(comment, comment.userId) &&
@@ -99,7 +109,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
 
   if (mentions) {
     await Promise.all(
-      mentions.map(async username => {
+      mentions.map(async (username) => {
         const mentionedUser = await ctx.db.User.findOne({ where: { username } })
 
         // NOTE: Skip "New Mention" notification if comment owner.

@@ -7,6 +7,14 @@ export default isAuthenticated(async (_, { id }, ctx) => {
     ctx.db.Post.findOne(id),
   ])
 
+  const cacheKey = `post:likes:${id}:${ctx.userId}`
+  const cacheKey2 = `post:likesConnection:${id}:*`
+  
+  await Promise.all([
+    ctx.redis.delete(cacheKey),
+    ctx.redis.delete(cacheKey2),
+  ])
+
   if (isLiked) {
     await ctx.db.Like.delete({ typeId: id, userId: ctx.userId })
   } else {

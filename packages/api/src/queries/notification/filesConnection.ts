@@ -3,6 +3,13 @@ import { transformFileUrl } from '../../utils/transformFileUrl'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 
 export default async ({ post, comment, type }, args, ctx) => {
+  const cacheKey = `notification:filesConnection:${JSON.stringify(args)}`
+  const cache = await ctx.redis.get(cacheKey)
+
+  if (cache) {
+    return cache
+  }
+
   const postId = (post && post.id) || (comment && comment.postId)
 
   if (!postId || type === NOTIFICATION_TYPES.NEW_COMMENT_LIKE) {
@@ -24,8 +31,12 @@ export default async ({ post, comment, type }, args, ctx) => {
     },
   }))
 
-  return {
+  const response = {
     ...files,
     edges,
   }
+
+  ctx.redis.set(cacheKey, response)
+
+  return response
 }

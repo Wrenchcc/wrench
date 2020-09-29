@@ -1,5 +1,8 @@
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
+import { RedisCache } from 'apollo-server-cache-redis'
+import Redis from 'ioredis';
+import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import { createConnection } from 'typeorm'
 import { PostgresDriver } from 'typeorm/driver/postgres/PostgresDriver'
 import depthLimit from 'graphql-depth-limit'
@@ -11,12 +14,15 @@ import { options, db } from './models'
 import createLoaders from './loaders'
 import services from './services'
 import onHealthCheck from './utils/onHealthCheck'
+import * as cache from './utils/redis'
 
 const debug = require('debug')('api:server')
 
-const { PORT } = process.env
+const { PORT, REDIS_HOST } = process.env
 
 const TIMESTAMPTZ_OID = 1184
+
+const redis = new Redis({ host: REDIS_HOST })
 
 async function server() {
   const connection = await createConnection(options)
@@ -31,6 +37,11 @@ async function server() {
       db,
       loaders: createLoaders(),
       services,
+      redis: {
+        get: cache.get(redis),
+        set: cache.set(redis),
+        delete: cache.remove(redis),
+      },
       // @ts-ignore
       userAgent: req.headers['user-agent'],
       userId: getUserId(req),
@@ -38,6 +49,19 @@ async function server() {
     formatError,
     schema,
     validationRules: [depthLimit(10)],
+    cache: new RedisCache({
+      host: REDIS_HOST,
+    }),
+    cacheControl: {
+      defaultMaxAge: 60,
+    },
+    plugins: [
+      // @ts-ignore
+      responseCachePlugin({
+        shouldReadFromCache: ({ request }) => !request.http.headers.get('authorization'),
+        shouldWriteToCache: ({ request }) => !request.http.headers.get('authorization'),
+      }),
+    ],
   })
 
   const app = express()

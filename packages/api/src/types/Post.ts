@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  type Post {
+  type Post @cacheControl(maxAge: 180) {
     id: ID
     createdAt: Date
     updatedAt: Date
@@ -50,7 +50,7 @@ export default gql`
 
   extend type Query {
     post(id: ID): Post
-    posts(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+    posts(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection @cacheControl(maxAge: 360)
   }
 
   input PostInput {
