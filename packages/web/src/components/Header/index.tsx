@@ -90,7 +90,7 @@ function Header({ isAuthenticated }) {
   useClickOutside(notificationsRef, () => setNotificationsMenu(false))
 
   const inverted = (!isAuthenticated && router.route === '/') || router.route === '/download'
-
+  console.log('header', router.route)
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
       <Login closeModal={closeModal} />
