@@ -17,7 +17,7 @@ export const GET_EXPLORE = gql`
         }
       }
     }
-    posts(first: 1, after: $after) {
+    posts(after: $after) {
       edges {
         cursor
         node {
