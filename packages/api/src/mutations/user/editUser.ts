@@ -13,13 +13,7 @@ export default isAuthenticated(async (_, args, ctx) => {
 
   let data = {}
 
-  const cacheKey = `user:settings:${ctx.userId}`
-  await ctx.redis.delete(cacheKey)
-
   if (args.input.interestedIn) {
-    const cacheKey = `user:interestedIn:${userId}`
-    await ctx.redis.delete(cacheKey)
-
     const interestedIn = args.input.interestedIn.map(({ id }) => ({
       projectTypeId: id,
       userId,
