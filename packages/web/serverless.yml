@@ -13,6 +13,6 @@ web:
         - url: https://wrench-web-edge.s3.amazonaws.com	
           pathPatterns:	
             /.well-known/*:	
-              minTTL: 10	
-              maxTTL: 10	
-              defaultTTL: 10
+              minTTL: 20	
+              maxTTL: 20	
+              defaultTTL: 20
