@@ -8,10 +8,9 @@ export default isAuthenticated(async (_, { id }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this post.')
   }
 
-  const cacheKey = `post:filesConnection:${id}:*`
-
   await Promise.all([
-    ctx.redis.delete(cacheKey),
+    ctx.redis.delete(`post:filesConnection:${id}:*`),
+    ctx.redis.delete(`project:cover:${id}`),
     ctx.db.File.delete({ postId: id }),
     ctx.db.Post.delete(id),
   ])

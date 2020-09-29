@@ -4,6 +4,13 @@ import { NOTIFICATIONS_COLUMN, LOCALE_COLUMN, TIMEZONE_COLUMN } from '../../mode
 import { DEFAULT_NOTIFICATIONS } from '../../utils/defaultNotifications'
 
 export default isAuthenticated(async (_, __, ctx) => {
+  const cacheKey = `user:settings:${ctx.userId}`
+  const cache = await ctx.redis.get(cacheKey)
+
+  if (cache) {
+    return cache
+  }
+
   const settings = await ctx.db.UserSettings.find({
     where: {
       userId: ctx.userId,
@@ -27,7 +34,7 @@ export default isAuthenticated(async (_, __, ctx) => {
     }
   })
 
-  return mergeRight(
+  const response = mergeRight(
     {
       notifications: {
         types: DEFAULT_NOTIFICATIONS,
@@ -35,4 +42,8 @@ export default isAuthenticated(async (_, __, ctx) => {
     },
     mergeAll(transformSettings)
   )
+
+  ctx.redis.set(cacheKey, response)
+
+  return response
 })
