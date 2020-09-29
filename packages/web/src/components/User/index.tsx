@@ -12,6 +12,8 @@ import { withHttp } from 'utils/url'
 import { Top, Name, Left, Right, Info } from './styles'
 
 function User({ username, isAuthenticated }) {
+  console.log('page: User', username)
+
   const { t } = useTranslation()
 
   const { data, loading, fetchMore } = useQuery(USER_BY_USERNAME, {
