@@ -28,7 +28,7 @@ import {
   OpenMobileMenu,
 } from './styles'
 
-function Header({ isAuthenticated, transparent }) {
+function Header({ isAuthenticated }) {
   const router = useRouter()
   const { t } = useTranslation()
   const { data } = useQuery(UNREAD_NOTIFICATIONS, {
@@ -89,10 +89,7 @@ function Header({ isAuthenticated, transparent }) {
   const notificationsRef = useRef()
   useClickOutside(notificationsRef, () => setNotificationsMenu(false))
 
-  const inverted =
-    (!isAuthenticated && router.route === '/') ||
-    (!isAuthenticated && transparent) || // NOTE: Remove when aws can handle index
-    router.route === '/download'
+  const inverted = (!isAuthenticated && router.route === '/') || router.route === '/download'
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>

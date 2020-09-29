@@ -20,12 +20,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Build infra
-        run: |
-          echo Building serverless component...
-          cd packages/web/infra/serverless-next-edge
-          yarn
-
       - name: Build web
         run: |
           echo Building web...
