@@ -39,11 +39,11 @@ PODS:
     - UMCore
     - UMFileSystemInterface
     - UMImageLoaderInterface
-  - EXImagePicker (9.1.0):
+  - EXImagePicker (9.1.1):
     - UMCore
     - UMFileSystemInterface
     - UMPermissionsInterface
-  - EXLinearGradient (8.3.0):
+  - EXLinearGradient (8.3.1):
     - UMCore
   - EXLocalization (9.0.0):
     - UMCore
@@ -112,7 +112,7 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (4.6.0):
+  - FirebaseInstanceID (4.7.0):
     - FirebaseCore (~> 6.10)
     - FirebaseInstallations (~> 1.6)
     - GoogleUtilities/Environment (~> 6.7)
@@ -239,11 +239,11 @@ PODS:
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
-  - Permission-Camera (2.2.1):
+  - Permission-Camera (2.2.2):
     - RNPermissions
-  - Permission-Microphone (2.2.1):
+  - Permission-Microphone (2.2.2):
     - RNPermissions
-  - Permission-PhotoLibrary (2.2.1):
+  - Permission-PhotoLibrary (2.2.2):
     - RNPermissions
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
@@ -537,14 +537,14 @@ PODS:
   - RNGoogleSignin (4.0.3):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNPermissions (2.2.1):
+  - RNPermissions (2.2.2):
     - React-Core
   - RNReanimated (1.4.0):
     - React
   - RNSentry (1.8.2):
     - React
     - Sentry (~> 5.2.0)
-  - RNShare (3.8.3):
+  - RNShare (3.8.5):
     - React-Core
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
@@ -885,8 +885,8 @@ SPEC CHECKSUMS:
   EXHaptics: 4db5fa74b5a87148af4355246981b2dd2d7b9e77
   EXImageLoader: 7153fb1307ac643299a9072b71da0d276f4c7789
   EXImageManipulator: 8bb065265ddaa9d526b70a6825123b85d34d32a4
-  EXImagePicker: 214b34ea9336e2c649ce98315de68fce2349983a
-  EXLinearGradient: 2f0230aa5d79c956aba618df3988eb0a9d283399
+  EXImagePicker: f2fe9ee19a97b225658e80733896275a198c60f2
+  EXLinearGradient: c7ca1c2933ac240ffbc805c014a72947e227ac75
   EXLocalization: 8621f60b37c3d3ad8c8e27c2cb3b05ebc7b484a2
   EXMediaLibrary: 876e417918fbb1a3a521b3465b8034ef41d5d16a
   EXPermissions: 30cbe5b72bd209b65c00884180ad058a60bb413d
@@ -901,7 +901,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 9a41e2de78fef10f63cee30ab10e2945266bc1fc
   FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
-  FirebaseInstanceID: 84f5f5762f1bee94ca2254f693bbf5aec6666504
+  FirebaseInstanceID: ac5a82fcd21f804dbfc8f318eff9e1d7a9916e49
   FirebaseMessaging: 82d75b3770a78bbce470769a6980429608b4c407
   Flipper: 33585e2d9810fe5528346be33bcf71b37bb7ae13
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
@@ -922,9 +922,9 @@ SPEC CHECKSUMS:
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
-  Permission-Camera: 357e8024a3597a5c0df529a8f87120f1f7e36895
-  Permission-Microphone: 0f6d419edccc94135333daf5cb873f9d161557e3
-  Permission-PhotoLibrary: 6c7add434f810971ea2019117f5322cf54bcace0
+  Permission-Camera: 5d2aaf95592660b6dcb5e8d1d90ed5d0156cad02
+  Permission-Microphone: a0e56790d61392c31627df33328fef079ad46fa8
+  Permission-PhotoLibrary: 8227a6ed9f6a971537afe63742d54f5f23a38fe2
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   RCTRequired: f13f25e7b12f925f1f6a6a8c69d929a03c0129fe
@@ -963,10 +963,10 @@ SPEC CHECKSUMS:
   RNFBMessaging: c69238917a8672f5aed2c8a6ee124efa8f962677
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
-  RNPermissions: 54f83272e3d1961fcbd6aff8fd826014c37fc578
+  RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: cff88174a0b2e0289b2efe5be1abba1f6c54269d
-  RNShare: ec48772563576a8ff19022c3d1db410429fb3e2e
+  RNShare: 7e22ba3bf66294ff7c122a1f2da8a8ec642091a0
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
