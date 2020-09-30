@@ -864,6 +864,10 @@ export declare type HashtagEdge = {
     cursor: Scalars['String'];
     node: Hashtag;
 };
+export declare enum CacheControlScope {
+    Public = "PUBLIC",
+    Private = "PRIVATE"
+}
 export declare type CommentAndRepliesFragment = ({
     __typename?: 'Comment';
 } & {

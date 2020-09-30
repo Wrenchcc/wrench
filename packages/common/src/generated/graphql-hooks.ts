@@ -1073,6 +1073,11 @@ export type HashtagEdge = {
   node: Hashtag;
 };
 
+export enum CacheControlScope {
+  Public = 'PUBLIC',
+  Private = 'PRIVATE'
+}
+
 export type CommentAndRepliesFragment = (
   { __typename?: 'Comment' }
   & { replies?: Maybe<(
