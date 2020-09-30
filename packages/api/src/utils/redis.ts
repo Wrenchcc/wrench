@@ -2,9 +2,9 @@ import { redisDelByPattern, RedisDeletionMethod } from '@eturino/ioredis-del-by-
 
 const debug = require('debug')('api:redis')
 
-const VERSION = 'v1'
+const VERSION = 'v2'
 
-export const get = client => async key => {
+export const get = (client) => async (key) => {
   const cacheKey = `${VERSION}:${key}`
 
   const cache = await client.get(cacheKey)
@@ -17,7 +17,7 @@ export const get = client => async key => {
   debug(`miss: ${cacheKey}`)
 }
 
-export const remove = client => async key => {
+export const remove = (client) => async (key) => {
   const cacheKey = `${VERSION}:${key}`
   debug(`delete: ${cacheKey}`)
 
@@ -28,7 +28,7 @@ export const remove = client => async key => {
   })
 }
 
-export const set = client => async (key, data, ttl) => {
+export const set = (client) => async (key, data, ttl) => {
   const cacheKey = `${VERSION}:${key}`
   debug(`set: ${cacheKey}`)
 

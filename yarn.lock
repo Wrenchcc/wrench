@@ -3013,23 +3013,23 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.9.7.tgz#769c6b306ea6bbaa1c4a3fffdd183d0cfc30ed7e"
   integrity sha512-NAkkT68oF+M9o6El2xeUqZK7magPjG/tAcEbvCbqyhlh3yElKWnI1e1vpbVvFXzTefy67FwYFWOJqBN6U7Mnkg==
 
-"@react-native-firebase/analytics@^7.6.4":
-  version "7.6.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.4.tgz#f119ff9532f71537d980df267b1431f179941c53"
-  integrity sha512-Frwx/rgCeq3aHOUBA25chewcsaNPnA41YzhiuXIVwBFGOjBu3vA9nCnE0JagzYZoHauxMFfuEj8b7NzDxG1hkw==
+"@react-native-firebase/analytics@^7.6.5":
+  version "7.6.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.5.tgz#1ad13507e386249155187aa28ebe722d434b4a11"
+  integrity sha512-VP8CDhElqY2HchjRK+INLDhkiHz2jAtdLDultwIOJ829o4/U5jbuBlV0s2YOpVGpAmmO91IsPEqQgvd/TL4ciw==
 
-"@react-native-firebase/app@^8.4.3":
-  version "8.4.3"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.3.tgz#7f5c0d16c8b56808a26625af34259c8c50e0307b"
-  integrity sha512-qkjY4gvX4B0x1PKwaZIxByxwtnSlpvRt6IAlygB4rkeUv9XTBvW2j2xCGprEbKYZswEgSeY4ZDWl5SXYe6FgCg==
+"@react-native-firebase/app@^8.4.4":
+  version "8.4.4"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.4.tgz#33cf684888c86dd3fa7411df2f83d310cdc4d7b6"
+  integrity sha512-3j6ougZvHlpqGQcKR7RJFx8GOH5kooYmQJqwqKOJEcRhmlHe1bz6ritQfKZc2pNZrXCmNl+QPFJ4/w67bZPJJg==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^7.8.6":
-  version "7.8.6"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-7.8.6.tgz#360cec3f7f6c405a6c1c0a955f16c7c664e27b12"
-  integrity sha512-sZ8Ygje573rJEMLgHIgrnDZ5H73xpLDXGOSGncQYzD+p4QxRqyBYVKLdbCkFqBjeHNXZw/GmRjtRh56DeqA+PQ==
+"@react-native-firebase/messaging@^7.8.9":
+  version "7.8.9"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-7.8.9.tgz#dcdc59fac1e44501475833675b597b31b3b4da4c"
+  integrity sha512-q19qBCB1hTw7b0WZ16GOCkJEuHTqoOnRRzqMw3FlgHTWkudHtgkkAeP534sFYYJddoMcZ1I21s1YS1fdZrd4Vg==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"
@@ -4577,7 +4577,7 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@^14.0.27", "@types/node@^14.11.2", "@types/node@^14.11.2y", "@types/node@^14.6.0":
+"@types/node@*", "@types/node@^14.0.27", "@types/node@^14.11.2", "@types/node@^14.6.0":
   version "14.11.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.2.tgz#2de1ed6670439387da1c9f549a2ade2b0a799256"
   integrity sha512-jiE3QIxJ8JLNcb1Ps6rDbysDhN4xa8DJJvuC9prr6w+1tIh+QAbYyNF3tyiZNLDBIuBCf4KEcV2UvQm/V60xfA==
@@ -19252,10 +19252,10 @@ react-native-responsive-dimensions@^3.1.1:
   resolved "https://registry.yarnpkg.com/react-native-responsive-dimensions/-/react-native-responsive-dimensions-3.1.1.tgz#c4daf977b30a909f21164de53a8ba4c9451efefc"
   integrity sha512-Vo2OhWsphq0HgKsmeZOeyW+c+vsFn1ZaCFkGDgdeCEEiLriT76jGA1JlUjtrj27hvyo/xzeTlBZ+vBso1A84fw==
 
-react-native-share@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-4.0.0.tgz#5b0c4e29709d48c7616825376abde7e11c781b39"
-  integrity sha512-89WOI54OMlpa+Rv4gkfrpUieJ5LSi6XF9PSIvCm8SgH5Rx6ABwQGEXFIu7ppMnS7aWk599iL65euNiacE68gbg==
+react-native-share@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-4.0.1.tgz#8e4025461c60e5cc59d6dc5dc7ab052fd542c1c5"
+  integrity sha512-KJjUDGw4wb+NXAhqjV6npw4tYrHUfdekTkYnWVmLIjHoukEE+1wkh4LwauuFbFdTjy3vLGyjNmc8XbTYrR0LJw==
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"

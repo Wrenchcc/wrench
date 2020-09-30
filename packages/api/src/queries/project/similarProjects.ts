@@ -3,9 +3,16 @@ import paginate from '../../utils/paginate'
 // Exlude current project and projects that user follows
 // Random sort
 export default async (_, args, ctx) => {
+  const cacheKey = `project:similarProjects:${JSON.stringify(args)}`
+  const cache = await ctx.redis.get(cacheKey)
+
+  if (cache) {
+    return cache
+  }
+
   const project = await ctx.db.Project.findOne(args.id)
 
-  return paginate(
+  const response = await paginate(
     ctx.db.Project,
     args,
     {
@@ -18,4 +25,8 @@ export default async (_, args, ctx) => {
       sort: 'ASC',
     }
   )
+
+  ctx.redis.set(cacheKey, response, 604800)
+
+  return response
 }

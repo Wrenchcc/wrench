@@ -28,6 +28,13 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
     }
   }
 
+  await Promise.all([
+    ctx.redis.delete(`comment:commentsConnection:${postId}:*`),
+    ctx.redis.delete(`comment:comments:${postId}:*`),
+    ctx.redis.delete(`comment:repliesConnection:${commentId}:*`),
+    ctx.redis.delete(`post:commentsConnection:${postId}:*`),
+  ])
+
   const notificationType = commentId ? NOTIFICATION_TYPES.NEW_REPLY : NOTIFICATION_TYPES.NEW_COMMENT
   const post = await ctx.db.Post.findOne(postId)
   const project = await ctx.db.Project.findOne(post.projectId)
@@ -43,16 +50,6 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   const comments = await ctx.db.Comment.find({
     postId: post.id,
   })
-
-  const cacheKey1 = `comment:commentsConnection:${postId}:*`
-  const cacheKey2 = `comment:comments:${postId}:*`
-  const cacheKey3 = `comment:repliesConnection:${commentId}:*`
- 
-  await Promise.all([
-    ctx.redis.delete(cacheKey1),
-    ctx.redis.delete(cacheKey2),
-    ctx.redis.delete(cacheKey3)
-  ])
 
   comments.map((comment) => {
     // NOTE:Do not send to comment owner, post owner or current user
