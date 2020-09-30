@@ -3,17 +3,17 @@ import { transformFileUrl } from '../../utils/transformFileUrl'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
 
 export default async ({ post, comment, type }, args, ctx) => {
-  const cacheKey = `notification:filesConnection:${JSON.stringify(args)}`
-  const cache = await ctx.redis.get(cacheKey)
-
-  if (cache) {
-    return cache
-  }
-
   const postId = (post && post.id) || (comment && comment.postId)
 
   if (!postId || type === NOTIFICATION_TYPES.NEW_COMMENT_LIKE) {
     return null
+  }
+
+  const cacheKey = `notification:filesConnection${postId}:${JSON.stringify(args)}`
+  const cache = await ctx.redis.get(cacheKey)
+
+  if (cache) {
+    return cache
   }
 
   const files = await paginate(ctx.db.File, args, {
