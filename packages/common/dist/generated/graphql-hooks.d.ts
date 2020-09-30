@@ -864,6 +864,10 @@ export declare type HashtagEdge = {
     cursor: Scalars['String'];
     node: Hashtag;
 };
+export declare enum CacheControlScope {
+    Public = "PUBLIC",
+    Private = "PRIVATE"
+}
 export declare type CommentAndRepliesFragment = ({
     __typename?: 'Comment';
 } & {
@@ -1731,6 +1735,9 @@ export declare type ProjectQuery = ({
         posts?: Maybe<({
             __typename?: 'PostConnection';
         } & {
+            pageInfo: ({
+                __typename?: 'PageInfo';
+            } & Pick<PageInfo, 'hasNextPage'>);
             edges?: Maybe<Array<({
                 __typename?: 'PostEdge';
             } & Pick<PostEdge, 'cursor'> & {

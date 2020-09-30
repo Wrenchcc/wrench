@@ -44,13 +44,12 @@ function FollowingProjects({ user }) {
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
-        isFetching={false}
+        isFetching={isFetching}
         hasNextPage={hasNextPage}
-        loaderPosition={-270}
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}
-        loaderInset={-280}
+        loaderInset={270}
         decelerationRate="fast"
         snapToInterval={SNAP_INTERVAL}
         snapToAlignment="start"

@@ -1,8 +1,7 @@
 #import "../fragments/ProjectFragment.graphql"
 
 query searchProjects($query: String!, $after: String, $first: Int = 10) {
-  projects: search(query: $query, after: $after, type: PROJECTS, first: $first)
-    @connection(key: "projects", filter: ["query", "type"]) {
+  projects: search(query: $query, after: $after, type: PROJECTS, first: $first) @connection(key: "projects", filter: ["query", "type"]) {
     pageInfo {
       hasNextPage
     }

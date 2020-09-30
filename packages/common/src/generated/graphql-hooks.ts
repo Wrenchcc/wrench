@@ -1073,6 +1073,11 @@ export type HashtagEdge = {
   node: Hashtag;
 };
 
+export enum CacheControlScope {
+  Public = 'PUBLIC',
+  Private = 'PRIVATE'
+}
+
 export type CommentAndRepliesFragment = (
   { __typename?: 'Comment' }
   & { replies?: Maybe<(
@@ -2058,7 +2063,10 @@ export type ProjectQuery = (
     { __typename?: 'Project' }
     & { posts?: Maybe<(
       { __typename?: 'PostConnection' }
-      & { edges?: Maybe<Array<(
+      & { pageInfo: (
+        { __typename?: 'PageInfo' }
+        & Pick<PageInfo, 'hasNextPage'>
+      ), edges?: Maybe<Array<(
         { __typename?: 'PostEdge' }
         & Pick<PostEdge, 'cursor'>
         & { node: (
@@ -4335,6 +4343,9 @@ export const ProjectDocument = gql`
   project(id: $id, slug: $slug) {
     ...Project
     posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+      pageInfo {
+        hasNextPage
+      }
       edges {
         cursor
         node {

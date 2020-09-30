@@ -9,6 +9,9 @@ query project($id: ID, $slug: LowercaseString, $after: String, $postId: ID, $fir
     ...Project
 
      posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+      pageInfo {
+        hasNextPage
+      }
       edges {
         cursor
         node {
