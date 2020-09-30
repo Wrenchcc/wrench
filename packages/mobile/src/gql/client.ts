@@ -10,6 +10,7 @@ import { LoginManager } from 'react-native-fbsdk'
 import { GoogleSignin } from '@react-native-community/google-signin'
 import { AuthNavigation } from 'navigation'
 import appVersion from 'utils/appVersion'
+import { isAndroid } from 'utils/platform'
 
 export let client = null
 
@@ -83,6 +84,8 @@ export default async function createClient() {
   client = new ApolloClient({
     cache,
     link,
+    name: isAndroid ? 'Android' : 'iOS',
+    version: appVersion,
   })
 
   client.onClearStore(() => {

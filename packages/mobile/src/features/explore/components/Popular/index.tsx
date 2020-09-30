@@ -52,7 +52,6 @@ function Popular() {
       <InfiniteList
         initialNumToRender={3}
         data={edges}
-        keyExtractor={(item) => item.node.id}
         horizontal
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}

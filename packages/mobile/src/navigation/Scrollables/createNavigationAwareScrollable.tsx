@@ -4,6 +4,7 @@ import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
 import { CONTENT_INSET } from '../constants'
+import { keyExtractor } from '../utils'
 
 const KEYBOARD_EVENT_LISTENER = isAndroid ? 'keyboardDidShow' : 'keyboardWillShow'
 const KEYBOARD_OFFSET = isAndroid ? 35 : 10
@@ -15,8 +16,6 @@ const keyboardDismissProp = isAndroid
 
 const renderLoader = (loaderInset) => <Loader inset={loaderInset} />
 const BorderSeparator = () => <Border />
-
-const keyExtractor = ({ node }) => node.id
 
 export default function createNavigationAwareScrollable(Component) {
   return forwardRef(function NavigationAwareScrollable(

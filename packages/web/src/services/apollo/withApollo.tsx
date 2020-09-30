@@ -23,6 +23,8 @@ export default withApollo(
       // @ts-ignore
       link: ApolloLink.from([autLink, RefreshTokenLink, HttpLink]),
       cache: new InMemoryCache().restore(initialState || {}),
+      name: 'web',
+      version: process.env.BUILD_ID,
     })
 
     // @ts-ignore

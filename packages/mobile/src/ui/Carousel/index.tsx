@@ -4,6 +4,7 @@ import Pinchable from 'react-native-pinchable'
 import { IMAGE_PRIORITY } from 'ui/constants'
 import Pagination from './Pagination'
 import { Picture, SIZE, GUTTER } from './styles'
+import { keyExtractor } from 'navigation'
 
 const SNAP_INTERVAL = SIZE
 
@@ -12,8 +13,6 @@ const getItemLayout = (_, index: number) => ({
   length: SIZE,
   offset: SIZE * index,
 })
-
-const keyExtractor = ({ node }) => node.id
 
 function Carousel({ files }) {
   const [currentIndex, setCurrentIndex] = useState(0)
