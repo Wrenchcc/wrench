@@ -81,6 +81,26 @@
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
+"@apollo/client@^3.3.0-beta.6":
+  version "3.3.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.0-beta.6.tgz#bbb7530b9e1c2607536a81c176f904ab1b6f1a66"
+  integrity sha512-4hHGS3L23X5et0UNqGSgp5WhkmEWR+zvaQQ1K11zyBTXXw5boV2UNqfxG0XEUDLLbKWxlHexny/9IYFxZj2VfQ==
+  dependencies:
+    "@graphql-typed-document-node/core" "^3.0.0"
+    "@types/zen-observable" "^0.8.0"
+    "@wry/context" "^0.5.2"
+    "@wry/equality" "^0.2.0"
+    fast-json-stable-stringify "^2.0.0"
+    graphql-tag "^2.11.0"
+    hoist-non-react-statics "^3.3.2"
+    optimism "^0.12.2"
+    prop-types "^15.7.2"
+    symbol-observable "^2.0.0"
+    terser "^5.2.0"
+    ts-invariant "^0.4.4"
+    tslib "^1.10.0"
+    zen-observable "^0.8.14"
+
 "@apollo/link-batch-http@^2.0.0-beta.3":
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@apollo/link-batch-http/-/link-batch-http-2.0.0-beta.3.tgz#fc5f17c1521c4fdab083c23d820597545bdfd73c"
@@ -16875,7 +16895,7 @@ opn@^5.4.0, opn@^5.5.0:
   dependencies:
     is-wsl "^1.1.0"
 
-optimism@^0.12.1:
+optimism@^0.12.1, optimism@^0.12.2:
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.12.2.tgz#de9dc3d2c914d7b34e08957a768967c0605beda9"
   integrity sha512-k7hFhlmfLl6HNThIuuvYMQodC1c+q6Uc6V9cLVsMWyW514QuaxVJH/khPu2vLRIoDTpFdJ5sojlARhg1rzyGbg==

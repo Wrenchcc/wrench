@@ -1,8 +1,7 @@
 #import "../fragments/UserFragment.graphql"
  
 query searchUsers($query: String!, $after: String, $first: Int = 10) {
-  users: search(query: $query, after: $after, type: USERS, first: $first)
-    @connection(key: "users", filter: ["query", "type"]) {
+  users: search(query: $query, after: $after, type: USERS, first: $first) @connection(key: "users", filter: ["query", "type"]) {
     pageInfo {
       hasNextPage
     }

@@ -1735,6 +1735,9 @@ export declare type ProjectQuery = ({
         posts?: Maybe<({
             __typename?: 'PostConnection';
         } & {
+            pageInfo: ({
+                __typename?: 'PageInfo';
+            } & Pick<PageInfo, 'hasNextPage'>);
             edges?: Maybe<Array<({
                 __typename?: 'PostEdge';
             } & Pick<PostEdge, 'cursor'> & {

@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { relayStylePagination } from '@apollo/client/utilities'
 import { CachePersistor } from 'apollo-cache-persist'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SCHEMA_VERSION_KEY } from 'utils/storage/constants'
@@ -15,8 +16,40 @@ export let client = null
 export default async function createClient() {
   const cache = new InMemoryCache({
     typePolicies: {
+      Query: {
+        fields: {
+          bookmarks: relayStylePagination(),
+          collections: relayStylePagination(),
+          comments: relayStylePagination(),
+          followers: relayStylePagination(),
+          notifications: relayStylePagination(),
+          posts: relayStylePagination(),
+          projects: relayStylePagination(['typeId', 'type']),
+          projectCollections: relayStylePagination(),
+          search: relayStylePagination(['query', 'type']),
+          users: relayStylePagination(),
+          likes: relayStylePagination(),
+        },
+      },
+      Feed: {
+        fields: {
+          postsConnection: relayStylePagination(),
+        },
+      },
+      Project: {
+        fields: {
+          postsConnection: relayStylePagination(),
+        },
+      },
+      Comment: {
+        fields: {
+          repliesConnection: relayStylePagination(),
+        },
+      },
       User: {
         fields: {
+          postsConnection: relayStylePagination(),
+          followingProjects: relayStylePagination(),
           settings: {
             merge(existing, incoming) {
               return { ...existing, ...incoming }

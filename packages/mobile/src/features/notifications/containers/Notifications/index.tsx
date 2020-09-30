@@ -17,15 +17,15 @@ function Notifications({ componentId }) {
   const [deleteNotification] = useDeleteNotificationMutation()
   const { showNotificationBadge, hideNotificationBadge } = useNavigation()
 
-  const handleDeleteNotification = useCallback(id => {
+  const handleDeleteNotification = useCallback((id) => {
     deleteNotification({
       variables: {
         id,
       },
-      update: cache => {
+      update: (cache) => {
         const data = cache.readQuery({ query: NotificationsDocument })
 
-        const edges = data.notifications.edges.filter(edge => edge.node.id !== id)
+        const edges = data.notifications.edges.filter((edge) => edge.node.id !== id)
 
         cache.writeQuery({
           query: NotificationsDocument,
@@ -64,7 +64,7 @@ function Notifications({ componentId }) {
         if (componentId === id) {
           if (unreadCount > 0) {
             markAllNotificationsSeen({
-              update: cache => {
+              update: (cache) => {
                 const data = cache.readQuery({ query: NotificationsDocument })
 
                 cache.writeQuery({
