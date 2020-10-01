@@ -1,6 +1,6 @@
 
 query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
-  projectCollections(projectId: $projectId, first: $first, after: $after) {
+  projectCollections(projectId: $projectId, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
     pageInfo {
       hasNextPage
     }

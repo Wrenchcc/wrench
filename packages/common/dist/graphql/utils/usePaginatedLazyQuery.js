@@ -17,15 +17,14 @@ var react_hooks_1 = require("@apollo/react-hooks");
 var rambda_1 = require("rambda");
 var networkStatus_1 = require("./networkStatus");
 exports.default = (function (path, initialData) { return function (query, options) {
-    var _a = react_hooks_1.useLazyQuery(query, __assign(__assign({}, options), { notifyOnNetworkStatusChange: true })), loadData = _a[0], _b = _a[1], fetchMore = _b.fetchMore, data = _b.data, error = _b.error, refetch = _b.refetch, loading = _b.loading, networkStatus = _b.networkStatus;
+    var _a = react_hooks_1.useLazyQuery(query, __assign(__assign({}, options), { fetchPolicy: 'cache-and-network', nextFetchPolicy: 'cache-first', notifyOnNetworkStatusChange: true })), loadData = _a[0], _b = _a[1], fetchMore = _b.fetchMore, data = _b.data, error = _b.error, refetch = _b.refetch, loading = _b.loading, networkStatus = _b.networkStatus;
     var result = rambda_1.pathOr({}, path, data);
-    var handleFetchMore = react_1.useCallback(function () {
-        return fetchMore({
-            variables: {
+    var handleFetchMore = react_1.useCallback(function (variables) {
+        if (variables === void 0) { variables = {}; }
+        return fetchMore(__assign({ variables: {
                 after: result.edges[result.edges.length - 1].cursor,
-            },
-        });
-    }, [data]);
+            } }, variables));
+    }, [result]);
     return {
         loadData: loadData,
         error: error,

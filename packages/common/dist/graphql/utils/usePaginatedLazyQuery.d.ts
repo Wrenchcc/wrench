@@ -3,7 +3,7 @@ declare const _default: (path: any, initialData?: any) => (query: any, options?:
     error: import("@apollo/react-hooks").ApolloError | undefined;
     refetch: ((variables?: Partial<Record<string, any>> | undefined) => Promise<import("@apollo/react-hooks").ApolloQueryResult<any>>) | undefined;
     data: any;
-    fetchMore: () => Promise<import("@apollo/react-hooks").ApolloQueryResult<any>>;
+    fetchMore: (variables?: any) => Promise<import("@apollo/react-hooks").ApolloQueryResult<any>>;
     hasNextPage: boolean;
     isFetching: boolean;
     isRefetching: boolean;

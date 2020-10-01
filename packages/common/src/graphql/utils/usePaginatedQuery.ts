@@ -7,19 +7,22 @@ import { isRefetching, isFetchingMore } from './networkStatus'
 export default (path, initialData?: any) => (query, options?: any) => {
   const { fetchMore, error, data, refetch, loading, networkStatus } = useQuery(query, {
     ...options,
+    fetchPolicy: 'cache-and-network',
+    nextFetchPolicy: 'cache-first',
     notifyOnNetworkStatusChange: true,
   })
 
   const result = pathOr({}, path, data)
 
   const handleFetchMore = useCallback(
-    () =>
+    (variables = {}) =>
       fetchMore({
         variables: {
           after: result.edges[result.edges.length - 1].cursor,
         },
+        ...variables,
       }),
-    [data]
+    [result]
   )
 
   return {

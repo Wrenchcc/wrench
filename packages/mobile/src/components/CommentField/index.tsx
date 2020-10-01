@@ -63,7 +63,6 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           __typename: 'Comment',
           id: optimisticId(),
           commentId,
-          createdAt: new Date().toISOString(),
           postId,
           text,
           likes: {
@@ -78,143 +77,159 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         },
       },
       update: (cache, { data: { addComment } }) => {
-        const { user } = cache.readQuery({ query: CurrentUserDocument })
-
-        // Post
-        try {
-          const data = cache.readFragment({
-            id: `Post:${postId}`,
-            fragment: PostFragmentDoc,
-            fragmentName: 'Post',
-          })
-
-          cache.writeFragment({
-            id: `Post:${postId}`,
-            fragment: PostFragmentDoc,
-            fragmentName: 'Post',
-            data: {
-              ...data,
-              comments: {
-                ...data.comments,
-                edges: [
-                  {
-                    node: {
-                      user,
-                      ...addComment,
-                    },
-                  },
-                  ...data.comments.edges,
-                ],
-                totalCount: data.comments.totalCount + 1,
-              },
-            },
-          })
-        } catch (err) {
-          logError(err)
-        }
-
-        try {
-          // Is reply
-          if (commentId) {
-            const data = cache.readFragment({
-              id: `Comment:${commentId}`,
-              fragment: CommentAndRepliesFragmentDoc,
-              fragmentName: 'CommentAndReplies',
-            })
-
-            cache.writeFragment({
-              id: `Comment:${commentId}`,
-              fragment: CommentAndRepliesFragmentDoc,
-              fragmentName: 'CommentAndReplies',
-              data: {
-                ...data,
-                replies: {
-                  ...data.replies,
-                  edges: [
-                    {
-                      cursor: optimisticId(),
-                      node: {
-                        id: optimisticId(),
-                        createdAt: new Date().toISOString(),
-                        likes: {
-                          isLiked: false,
-                          totalCount: 0,
-                          __typename: 'Likes',
-                        },
-                        permissions: {
-                          isOwner: true,
-                          __typename: 'CommentPermissions',
-                        },
-                        ...addComment,
-                        user,
-                        __typename: 'Comment',
-                      },
-                      __typename: 'CommentEdge',
-                    },
-                    ...data.replies.edges,
-                  ],
-                  totalCount: data.replies.totalCount + 1,
-                },
-              },
-            })
-          } else {
-            const data = cache.readQuery({
-              query: CommentsDocument,
-              variables: {
-                postId,
-              },
-            })
-
-            const comments = {
-              ...data,
-              comments: {
-                ...data.comments,
-                edges: [
-                  {
-                    cursor: optimisticId(),
-                    node: {
-                      id: optimisticId(),
-                      createdAt: new Date().toISOString(),
-                      likes: {
-                        isLiked: false,
-                        totalCount: 0,
-                        __typename: 'Likes',
-                      },
-                      permissions: {
-                        isOwner: true,
-                        __typename: 'CommentPermissions',
-                      },
-                      replies: {
-                        totalCount: 0,
-                        pageInfo: {
-                          hasNextPage: false,
-                          __typename: 'RepliesConnection',
-                        },
-                        edges: [],
-                        __typename: 'CommentConnection',
-                      },
-                      ...addComment,
-                      user,
-                      __typename: 'Comment',
-                    },
-                    __typename: 'CommentEdge',
-                  },
-                  ...data.comments.edges,
-                ],
-              },
-            }
-
-            cache.writeQuery({
-              query: CommentsDocument,
-              variables: {
-                postId,
-              },
-              data: comments,
-            })
-          }
-        } catch (err) {
-          logError(err)
-        }
+        // cache.modify({
+        //   fields: {
+        //     comments(existingCommentRefs = [], { readField }) {
+        //       const newCommentRef = cache.writeFragment({
+        //         data: newComment,
+        //         fragment: gql`
+        //           fragment NewComment on Comment {
+        //             id
+        //             text
+        //           }
+        //         `,
+        //       })
+        //       // Quick safety check - if the new comment is already
+        //       // present in the cache, we don't need to add it again.
+        //       if (existingCommentRefs.some((ref) => readField('id', ref) === newComment.id)) {
+        //         return existingCommentRefs
+        //       }
+        //       return [...existingCommentRefs, newCommentRef]
+        //     },
+        //   },
+        // })
+        // const { user } = cache.readQuery({ query: CurrentUserDocument })
+        // // Post
+        // try {
+        //   const data = cache.readFragment({
+        //     id: `Post:${postId}`,
+        //     fragment: PostFragmentDoc,
+        //     fragmentName: 'Post',
+        //   })
+        //   cache.writeFragment({
+        //     id: `Post:${postId}`,
+        //     fragment: PostFragmentDoc,
+        //     fragmentName: 'Post',
+        //     broadcast: false,
+        //     data: {
+        //       ...data,
+        //       comments: {
+        //         ...data.comments,
+        //         edges: [
+        //           {
+        //             node: {
+        //               user,
+        //               ...addComment,
+        //             },
+        //           },
+        //           ...data.comments.edges,
+        //         ],
+        //         totalCount: data.comments.totalCount + 1,
+        //       },
+        //     },
+        //   })
+        // } catch (err) {
+        //   logError(err)
+        // }
+        // try {
+        //   // Is reply
+        //   if (commentId) {
+        //     const data = cache.readFragment({
+        //       id: `Comment:${commentId}`,
+        //       fragment: CommentAndRepliesFragmentDoc,
+        //       fragmentName: 'CommentAndReplies',
+        //     })
+        //     cache.writeFragment({
+        //       id: `Comment:${commentId}`,
+        //       fragment: CommentAndRepliesFragmentDoc,
+        //       fragmentName: 'CommentAndReplies',
+        //       data: {
+        //         ...data,
+        //         replies: {
+        //           ...data.replies,
+        //           edges: [
+        //             {
+        //               cursor: optimisticId(),
+        //               node: {
+        //                 id: optimisticId(),
+        //                 createdAt: new Date().toISOString(),
+        //                 likes: {
+        //                   isLiked: false,
+        //                   totalCount: 0,
+        //                   __typename: 'Likes',
+        //                 },
+        //                 permissions: {
+        //                   isOwner: true,
+        //                   __typename: 'CommentPermissions',
+        //                 },
+        //                 ...addComment,
+        //                 user,
+        //                 __typename: 'Comment',
+        //               },
+        //               __typename: 'CommentEdge',
+        //             },
+        //             ...data.replies.edges,
+        //           ],
+        //           totalCount: data.replies.totalCount + 1,
+        //         },
+        //       },
+        //     })
+        //   } else {
+        //     const data = cache.readQuery({
+        //       query: CommentsDocument,
+        //       variables: {
+        //         postId,
+        //       },
+        //     })
+        //     const comments = {
+        //       ...data,
+        //       comments: {
+        //         ...data.comments,
+        //         edges: [
+        //           {
+        //             cursor: optimisticId(),
+        //             node: {
+        //               id: optimisticId(),
+        //               createdAt: new Date().toISOString(),
+        //               likes: {
+        //                 isLiked: false,
+        //                 totalCount: 0,
+        //                 __typename: 'Likes',
+        //               },
+        //               permissions: {
+        //                 isOwner: true,
+        //                 __typename: 'CommentPermissions',
+        //               },
+        //               replies: {
+        //                 totalCount: 0,
+        //                 pageInfo: {
+        //                   hasNextPage: false,
+        //                   __typename: 'RepliesConnection',
+        //                 },
+        //                 edges: [],
+        //                 __typename: 'CommentConnection',
+        //               },
+        //               ...addComment,
+        //               user,
+        //               __typename: 'Comment',
+        //             },
+        //             __typename: 'CommentEdge',
+        //           },
+        //           ...data.comments.edges,
+        //         ],
+        //       },
+        //     }
+        //     cache.writeQuery({
+        //       query: CommentsDocument,
+        //       variables: {
+        //         postId,
+        //       },
+        //       data: comments,
+        //     })
+        //   }
+        // } catch (err) {
+        //   logError(err)
+        // }
       },
     })
   }

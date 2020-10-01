@@ -3013,23 +3013,23 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.9.7.tgz#769c6b306ea6bbaa1c4a3fffdd183d0cfc30ed7e"
   integrity sha512-NAkkT68oF+M9o6El2xeUqZK7magPjG/tAcEbvCbqyhlh3yElKWnI1e1vpbVvFXzTefy67FwYFWOJqBN6U7Mnkg==
 
-"@react-native-firebase/analytics@^7.6.5":
-  version "7.6.5"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.5.tgz#1ad13507e386249155187aa28ebe722d434b4a11"
-  integrity sha512-VP8CDhElqY2HchjRK+INLDhkiHz2jAtdLDultwIOJ829o4/U5jbuBlV0s2YOpVGpAmmO91IsPEqQgvd/TL4ciw==
+"@react-native-firebase/analytics@^7.6.7":
+  version "7.6.7"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.7.tgz#5fb152419064f1a91c736d77ee26932cf9765cad"
+  integrity sha512-KTdML2wXPPNIZyt7whSuSbtl35BoO/yo9LYX7XqqSj7gKJck86Xr9CjgvWNY75t7T4Ng0n6zpRI3eQCVmpx7GQ==
 
-"@react-native-firebase/app@^8.4.4":
-  version "8.4.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.4.tgz#33cf684888c86dd3fa7411df2f83d310cdc4d7b6"
-  integrity sha512-3j6ougZvHlpqGQcKR7RJFx8GOH5kooYmQJqwqKOJEcRhmlHe1bz6ritQfKZc2pNZrXCmNl+QPFJ4/w67bZPJJg==
+"@react-native-firebase/app@^8.4.5":
+  version "8.4.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.5.tgz#a5194c34a1f75af8641153163700305ae578d31d"
+  integrity sha512-27qsFzX2Z1GPDyU8tUhYYCUkMlhYYCd/XJvteprTAjC8R6zPGdn/Y9Xxdrwkvhpj8Ply19lsxZ8UfvYIUbgOIQ==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/messaging@^7.8.9":
-  version "7.8.9"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-7.8.9.tgz#dcdc59fac1e44501475833675b597b31b3b4da4c"
-  integrity sha512-q19qBCB1hTw7b0WZ16GOCkJEuHTqoOnRRzqMw3FlgHTWkudHtgkkAeP534sFYYJddoMcZ1I21s1YS1fdZrd4Vg==
+"@react-native-firebase/messaging@^7.8.10":
+  version "7.8.10"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-7.8.10.tgz#3320ccc7472de400e9a781dc9e3e19b7d52e3dd9"
+  integrity sha512-PtQhNdhglrB1McNSUEO4OPBrLPBRZUCoED12a3nGWXRj4QIkZpWttIssa1/NodSUHUC560H1jHvWv2GF3hoWAg==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"

@@ -1,7 +1,7 @@
 #import "../fragments/UserFragment.graphql"
 
 query likes($postId: ID!, $after: String, $first: Int = 10) {
-  likes(postId: $postId, first: $first, after: $after) {
+  likes(postId: $postId, first: $first, after: $after) @connection(key: "comments", filter: ["postId"]) {
     pageInfo {
       hasNextPage
     }

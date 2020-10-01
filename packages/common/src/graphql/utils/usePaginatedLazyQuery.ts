@@ -9,6 +9,8 @@ export default (path, initialData?) => (query, options?) => {
     query,
     {
       ...options,
+      fetchPolicy: 'cache-and-network',
+      nextFetchPolicy: 'cache-first',
       notifyOnNetworkStatusChange: true,
     }
   )
@@ -16,13 +18,14 @@ export default (path, initialData?) => (query, options?) => {
   const result = pathOr({}, path, data)
 
   const handleFetchMore = useCallback(
-    () =>
+    (variables = {}) =>
       fetchMore({
         variables: {
           after: result.edges[result.edges.length - 1].cursor,
         },
+        ...variables,
       }),
-    [data]
+    [result]
   )
 
   return {

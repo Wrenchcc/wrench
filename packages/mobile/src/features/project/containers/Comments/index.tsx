@@ -25,6 +25,7 @@ function Comments({ postId }) {
     },
   })
 
+  // TODO: Convert to fieldPolicy
   const fetchReplies = ({ id, after }) =>
     fetchMore({
       query: RepliesDocument,
