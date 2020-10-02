@@ -28,7 +28,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
   const [addComment] = useAddCommentMutation()
 
-  const { updateQuery, query } = useMentionStore((store) => ({
+  const { updateQuery, query } = useMentionStore(store => ({
     query: store.query,
     updateQuery: store.actions.updateQuery,
   }))
@@ -235,7 +235,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   }
 
   const handleOnChangeText = useCallback(
-    (val) => {
+    val => {
       setText(val)
 
       const lastChar = val.substr(val.length - 1)
@@ -244,7 +244,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         isTracking.current = true
 
         showMention({
-          onPress: (user) => {
+          onPress: user => {
             const comment = val.slice(0, -query.length - 1)
             setText(`${comment}@${user.username} `)
             isTracking.current = false
@@ -266,7 +266,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           updateQuery(lastKeyword.replace(MENTION.TRIGGER, ''))
 
           showMention({
-            onPress: (user) => {
+            onPress: user => {
               const comment = val.slice(0, -query.length - 1)
               setText(`${comment}@${user.username} `)
               isTracking.current = false
@@ -281,7 +281,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   )
 
   const handleEmojiShortcut = useCallback(
-    (e) => {
+    e => {
       const value = text.length > 0 ? `${text} ${e}` : e
       setText(value)
     },

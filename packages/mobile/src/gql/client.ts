@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { relayStylePagination } from '@apollo/client/utilities'
-import { CachePersistor } from 'apollo-cache-persist'
+import { CachePersistor } from 'apollo3-cache-persist'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SCHEMA_VERSION_KEY } from 'utils/storage/constants'
 import link from './links'
@@ -9,7 +9,7 @@ import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
 import { GoogleSignin } from '@react-native-community/google-signin'
 import { AuthNavigation } from 'navigation'
-import appVersion from 'utils/appVersion'
+import { readableVersion } from 'utils/appVersion'
 import { isAndroid } from 'utils/platform'
 
 export let client = null
@@ -70,7 +70,7 @@ export default async function createClient() {
   // Read the current schema version from AsyncStorage.
   const currentVersion = await AsyncStorage.getItem(SCHEMA_VERSION_KEY)
 
-  if (currentVersion === appVersion) {
+  if (currentVersion === readableVersion) {
     // If the current version matches the latest version,
     // we're good to go and can restore the cache.
     await persistor.restore()
@@ -78,21 +78,21 @@ export default async function createClient() {
     // Otherwise, we'll want to purge the outdated persisted cache
     // and mark ourselves as having updated to the latest version.
     await persistor.purge()
-    await AsyncStorage.setItem(SCHEMA_VERSION_KEY, appVersion)
+    await AsyncStorage.setItem(SCHEMA_VERSION_KEY, readableVersion)
   }
 
   client = new ApolloClient({
     cache,
     link,
     name: isAndroid ? 'Android' : 'iOS',
-    version: appVersion,
+    version: readableVersion,
   })
 
   client.onClearStore(() => {
     track(events.USER_SIGNED_OUT)
     clearTokens()
     LoginManager.logOut()
-    GoogleSignin.isSignedIn().then((isSignedIn) => isSignedIn && GoogleSignin.signOut())
+    GoogleSignin.isSignedIn().then(isSignedIn => isSignedIn && GoogleSignin.signOut())
     AuthNavigation()
   })
 

@@ -1,3 +1,3 @@
-import Config from 'react-native-config'
+import DeviceInfo from 'react-native-device-info'
 
-export default `v${Config.GITHUB_HASH}`
+export const readableVersion = DeviceInfo.getReadableVersion()

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import codePush from 'react-native-code-push'
 import { Text } from 'ui'
-import AppVersion from 'utils/appVersion'
+import { readableVersion } from 'utils/appVersion'
 import { Base } from './styles'
 import { isProductionDeploymentKey } from 'utils/codepush'
 
@@ -25,7 +25,7 @@ function Footer() {
   return (
     <Base>
       <Text fontSize={15} color="accent">
-        {AppVersion}
+        {`v${readableVersion}`}
       </Text>
 
       <Text fontSize={12} color="accent">

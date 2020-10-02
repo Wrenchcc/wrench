@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react-native'
 import Config from 'react-native-config'
-import AppVersion from 'utils/appVersion'
+import { readableVersion } from 'utils/appVersion'
 
 export let SentryInstance = Sentry
 
@@ -10,22 +10,22 @@ async function setupSentry() {
 
     SentryInstance.init({
       dsn: Config.SENTRY_DSN,
-      release: AppVersion,
+      release: readableVersion,
       environment,
     })
   } else {
     SentryInstance = {
       ...SentryInstance,
-      captureException: (e) => {
+      captureException: e => {
         console.log(e)
         return ''
       },
-      setUser: (c) => console.log(c),
-      setRelease: (c) => console.log(c),
+      setUser: c => console.log(c),
+      setRelease: c => console.log(c),
     }
   }
 }
 
 setupSentry()
 
-export const logError = (err) => SentryInstance.captureException(err)
+export const logError = err => SentryInstance.captureException(err)
