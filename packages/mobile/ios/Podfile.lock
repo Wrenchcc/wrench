@@ -212,9 +212,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
-  - GTMAppAuth (1.0.0):
-    - AppAuth/Core (~> 1.0)
-    - GTMSessionFetcher (~> 1.1)
+  - GTMAppAuth (1.1.0):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher (~> 1.4)
   - GTMSessionFetcher (1.4.0):
     - GTMSessionFetcher/Full (= 1.4.0)
   - GTMSessionFetcher/Core (1.4.0)
@@ -509,9 +509,13 @@ PODS:
     - React-RCTImage
     - React-RCTText
     - ReactNativeNavigation/Core (= 7.1.0)
+  - ReactNativeNavigation/Core (7.1.0):
+    - React-Core
+    - React-RCTImage
+    - React-RCTText
   - RNCAsyncStorage (1.12.0):
     - React
-  - RNDeviceInfo (6.0.4):
+  - RNDeviceInfo (6.2.0):
     - React-Core
   - RNFastImage (8.3.2):
     - React
@@ -912,7 +916,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
-  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
+  GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
@@ -952,7 +956,7 @@ SPEC CHECKSUMS:
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
   ReactNativeNavigation: 65025dab27b404053678593b2450ed7a022e3173
   RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
-  RNDeviceInfo: 5eb11f4aef9395cca403c0c92dff458252fc0b2c
+  RNDeviceInfo: eb63f95c93ff1aae15353d113c130aebc6127915
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNFBAnalytics: 6fe130045b06fb4173d6f44058894007bb30b9a2
   RNFBApp: 570b136767f588b7eef0ab918284e9fe364d0c3e
@@ -981,6 +985,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c0bf0efa29936ea76bc1b0a9c25ed6ee99d3efc2
+PODFILE CHECKSUM: 1c573f9dff0e0d68463ae70db06e4a566d4bf8ed
 
 COCOAPODS: 1.8.4

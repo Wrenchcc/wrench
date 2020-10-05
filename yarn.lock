@@ -12821,10 +12821,17 @@ i18next-browser-languagedetector@^6.0.1:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-i18next@*, i18next@19.7.0, i18next@^19.7.0:
+i18next@*, i18next@19.7.0:
   version "19.7.0"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.7.0.tgz#e637bbbf36481d34b7d5e6d3b04e1bb654bf2a26"
   integrity sha512-sxZhj6u7HbEYOMx81oGwq5MiXISRBVg2wRY3n6YIbe+HtU8ydzlGzv6ErHdrRKYxATBFssVXYbc3lNZoyB4vfA==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+
+i18next@^19.8.1:
+  version "19.8.1"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.1.tgz#25a5cd3a96d7f7174096e94a042eb4179643358f"
+  integrity sha512-uDOyiSExuqIOoF1G5hzgyaPkds5RgOlLmklw/wR7vlsbmQ8lBuzjoV2qiL2H0jMp+xkdrHHjt0w00H0fuHpVWw==
   dependencies:
     "@babel/runtime" "^7.10.1"
 
@@ -19187,10 +19194,10 @@ react-native-deep-linking@^2.2.0:
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
   integrity sha512-PKShbOsa/oxjSzZ/Bag98O/J+jaZOI6ic5YdanPirTpRAraAvKUzJWQUhE5Yy0Isl9yfIkSogOClE9BRfSyUbA==
 
-react-native-device-info@^6.0.4:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-6.0.4.tgz#88ef9f19715186d0b016b37e738d08b990fcf9e3"
-  integrity sha512-nLwQ2yPmR0Z/msVP7vD0dZe1qzBMpzYpyY5q4/t31pPHT08bu0D5MYVr0K+MnPZMISu1UOUZpVARvfVMLZBMJg==
+react-native-device-info@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-6.2.0.tgz#6eda29dee048b73b29b57b7ec0c21545bd89dada"
+  integrity sha512-UtAk/ZAdCVCepEmRNM/3Kx7dWbLwmEPh527HTjoQUQy1utpoXm3y4sYtCrP2tjczSIyeMs5nLP4Wf3c8bc0fwQ==
 
 react-native-fast-image@^8.3.2:
   version "8.3.2"
