@@ -188,6 +188,11 @@ function Panel({ setAuthenticated }) {
                 Google Analytics
               </a>
             </Link>
+
+            <Link>
+              <Icon src={require('./appradar.svg')} />
+              <a href="https://web.appradar.com/projects">AppRadar</a>
+            </Link>
           </ul>
         </Row>
 
