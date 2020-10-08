@@ -14,7 +14,7 @@ import { Page, useNavigation, keyExtractor } from 'navigation'
 import { NAVIGATION } from 'navigation/constants'
 import Post from 'components/Post'
 import CommentField from 'components/CommentField'
-import { CommentItem, ActivityIndicator } from 'ui'
+import { CommentItem, ActivityIndicator, Text } from 'ui'
 import { isIphone } from 'utils/platform'
 
 function PostContainer({ postId, commentId }) {
@@ -27,6 +27,7 @@ function PostContainer({ postId, commentId }) {
   })
 
   const { data: commentData } = useCommentQuery({
+    skip: !commentId,
     variables: {
       id: commentId,
     },

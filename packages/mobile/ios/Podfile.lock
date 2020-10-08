@@ -544,7 +544,7 @@ PODS:
   - RNSentry (1.8.2):
     - React
     - Sentry (~> 5.2.0)
-  - RNShare (4.0.1):
+  - RNShare (4.0.2):
     - React-Core
   - SDWebImage (5.9.2):
     - SDWebImage/Core (= 5.9.2)
@@ -966,7 +966,7 @@ SPEC CHECKSUMS:
   RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNSentry: cff88174a0b2e0289b2efe5be1abba1f6c54269d
-  RNShare: 7fb06e9dc9dab68854eb99041aaca080ca3fde10
+  RNShare: 7a7277f3c313652422d9de072ac50714dff5e8a4
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc

@@ -19259,10 +19259,10 @@ react-native-responsive-dimensions@^3.1.1:
   resolved "https://registry.yarnpkg.com/react-native-responsive-dimensions/-/react-native-responsive-dimensions-3.1.1.tgz#c4daf977b30a909f21164de53a8ba4c9451efefc"
   integrity sha512-Vo2OhWsphq0HgKsmeZOeyW+c+vsFn1ZaCFkGDgdeCEEiLriT76jGA1JlUjtrj27hvyo/xzeTlBZ+vBso1A84fw==
 
-react-native-share@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-4.0.1.tgz#8e4025461c60e5cc59d6dc5dc7ab052fd542c1c5"
-  integrity sha512-KJjUDGw4wb+NXAhqjV6npw4tYrHUfdekTkYnWVmLIjHoukEE+1wkh4LwauuFbFdTjy3vLGyjNmc8XbTYrR0LJw==
+react-native-share@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-4.0.2.tgz#1a2287748083e08247e951d9ef8c7a100d39cc1c"
+  integrity sha512-2dbeyBx8bQoOu0V2fsj3xNv3Mta9KwGRUT/Yvb+SBRtwX3YSwYC65DqRPk1L1CeO7ABxiXZaEaL1MM7LIDuGSA==
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"
