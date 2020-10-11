@@ -28,7 +28,7 @@
     "@react-native-firebase/analytics": "^7.6.7",
     "@react-native-firebase/app": "^8.4.5",
     "@react-native-firebase/messaging": "^7.9.0",
-    "@sentry/react-native": "^1.8.2",
+    "@sentry/react-native": "^1.9.0",
     "@wrench/common": "^1.0.0",
     "@wrench/ui": "^1.0.0",
     "apollo-link-queue": "^3.0.0",

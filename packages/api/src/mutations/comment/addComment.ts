@@ -52,7 +52,7 @@ export default isAuthenticated(async (_, { postId, commentId, input }, ctx) => {
   })
 
   comments.map((comment) => {
-    // NOTE:Do not send to comment owner, post owner or current user
+    // NOTE: Do not send to comment owner, post owner or current user
     if (
       !canModerateComment(comment, comment.userId) &&
       !canModeratePost(post, comment.userId) &&

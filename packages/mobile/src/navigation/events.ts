@@ -6,7 +6,7 @@ import { logError } from 'utils/sentry'
 import { trackScreen } from 'utils/analytics'
 import { SCREENS, TABS_INDEX } from './constants'
 
-// TODO: Find a way to konw when pressing tab from
+// TODO: Find a way to know when pressing tab from
 // stack that we should not scroll to top first press
 export let currentComponentName
 export let componentId

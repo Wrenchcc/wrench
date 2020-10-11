@@ -12,12 +12,6 @@ function Initializing() {
   const loadCodepush = async () => {
     const deploymentKey = await getDeploymentKey()
 
-    codePush.getUpdateMetadata().then((update) => {
-      if (update) {
-        SentryInstance.setRelease(`${update.appVersion}-codepush: ${update.label}`)
-      }
-    })
-
     await codePush.sync({
       deploymentKey,
       installMode: codePush.InstallMode.ON_NEXT_RESTART,
