@@ -11,8 +11,16 @@ export const trackScreen = (screenName) => {
 
 export const track = (event, params = {}) => {
   if (__DEV__) {
-    console.log(event, params)
+    if (!!params) {
+      console.log(event)
+    } else {
+      console.log(event, params)
+    }
   } else {
-    analytics().logEvent(event, params)
+    if (!!params) {
+      analytics().logEvent(event)
+    } else {
+      analytics().logEvent(event, params)
+    }
   }
 }

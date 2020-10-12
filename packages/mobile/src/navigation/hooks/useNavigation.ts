@@ -23,9 +23,9 @@ export default function useNavigation() {
       }
     },
     navigate: (screen: SCREENS, { options = {}, ...passProps }: OptionsWithPassProps = {}) => {
-      const currentlyFocusedField = TextInput.State
-      if (currentlyFocusedField) {
-        currentlyFocusedField.blurTextInput()
+      const currentlyFocusedInput = TextInput.State
+      if (currentlyFocusedInput) {
+        currentlyFocusedInput.blurTextInput()
       }
 
       Navigation.push(componentId, {

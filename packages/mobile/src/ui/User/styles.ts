@@ -9,4 +9,5 @@ export const Base = styled(UiTouchable)`
 
 export const Content = styled.View`
   margin-left: 10px;
+  flex: 1;
 `

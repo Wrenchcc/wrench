@@ -6,7 +6,7 @@ import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
 import { ERROR_CODES } from 'utils/enums'
-import { client } from '../../'
+import { client } from '../../client'
 
 function refreshTokenFailed() {
   client.clearStore()

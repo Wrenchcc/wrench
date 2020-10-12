@@ -1,19 +1,17 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useCurrentUserQuery } from '@wrench/common'
-import { useNavigation } from 'navigation'
 import {
-  CommentAndRepliesFragmentDoc,
-  CommentsDocument,
-  CurrentUserDocument,
   optimisticId,
-  PostFragmentDoc,
   useAddCommentMutation,
+  useCurrentUserQuery,
+  CurrentUserDocument,
+  PostFragmentDoc,
+  CommentFragmentDoc,
 } from '@wrench/common'
-import { logError } from 'utils/sentry'
+import EmojiList from 'components/EmojiList'
+import { useNavigation } from 'navigation'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useMentionStore } from 'store'
 import { Avatar, Text } from 'ui'
-import EmojiList from 'components/EmojiList'
 import { MENTION } from './constants'
 import { Inner, Input } from './styles'
 
@@ -28,7 +26,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
   const [addComment] = useAddCommentMutation()
 
-  const { updateQuery, query } = useMentionStore(store => ({
+  const { updateQuery, query } = useMentionStore((store) => ({
     query: store.query,
     updateQuery: store.actions.updateQuery,
   }))
@@ -77,165 +75,44 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         },
       },
       update: (cache, { data: { addComment } }) => {
-        // cache.modify({
-        //   fields: {
-        //     comments(existingCommentRefs = [], { readField }) {
-        //       const newCommentRef = cache.writeFragment({
-        //         data: newComment,
-        //         fragment: gql`
-        //           fragment NewComment on Comment {
-        //             id
-        //             text
-        //           }
-        //         `,
-        //       })
-        //       // Quick safety check - if the new comment is already
-        //       // present in the cache, we don't need to add it again.
-        //       if (existingCommentRefs.some((ref) => readField('id', ref) === newComment.id)) {
-        //         return existingCommentRefs
-        //       }
-        //       return [...existingCommentRefs, newCommentRef]
-        //     },
-        //   },
-        // })
-        // const { user } = cache.readQuery({ query: CurrentUserDocument })
-        // // Post
-        // try {
-        //   const data = cache.readFragment({
-        //     id: `Post:${postId}`,
-        //     fragment: PostFragmentDoc,
-        //     fragmentName: 'Post',
-        //   })
-        //   cache.writeFragment({
-        //     id: `Post:${postId}`,
-        //     fragment: PostFragmentDoc,
-        //     fragmentName: 'Post',
-        //     broadcast: false,
-        //     data: {
-        //       ...data,
-        //       comments: {
-        //         ...data.comments,
-        //         edges: [
-        //           {
-        //             node: {
-        //               user,
-        //               ...addComment,
-        //             },
-        //           },
-        //           ...data.comments.edges,
-        //         ],
-        //         totalCount: data.comments.totalCount + 1,
-        //       },
-        //     },
-        //   })
-        // } catch (err) {
-        //   logError(err)
-        // }
-        // try {
-        //   // Is reply
-        //   if (commentId) {
-        //     const data = cache.readFragment({
-        //       id: `Comment:${commentId}`,
-        //       fragment: CommentAndRepliesFragmentDoc,
-        //       fragmentName: 'CommentAndReplies',
-        //     })
-        //     cache.writeFragment({
-        //       id: `Comment:${commentId}`,
-        //       fragment: CommentAndRepliesFragmentDoc,
-        //       fragmentName: 'CommentAndReplies',
-        //       data: {
-        //         ...data,
-        //         replies: {
-        //           ...data.replies,
-        //           edges: [
-        //             {
-        //               cursor: optimisticId(),
-        //               node: {
-        //                 id: optimisticId(),
-        //                 createdAt: new Date().toISOString(),
-        //                 likes: {
-        //                   isLiked: false,
-        //                   totalCount: 0,
-        //                   __typename: 'Likes',
-        //                 },
-        //                 permissions: {
-        //                   isOwner: true,
-        //                   __typename: 'CommentPermissions',
-        //                 },
-        //                 ...addComment,
-        //                 user,
-        //                 __typename: 'Comment',
-        //               },
-        //               __typename: 'CommentEdge',
-        //             },
-        //             ...data.replies.edges,
-        //           ],
-        //           totalCount: data.replies.totalCount + 1,
-        //         },
-        //       },
-        //     })
-        //   } else {
-        //     const data = cache.readQuery({
-        //       query: CommentsDocument,
-        //       variables: {
-        //         postId,
-        //       },
-        //     })
-        //     const comments = {
-        //       ...data,
-        //       comments: {
-        //         ...data.comments,
-        //         edges: [
-        //           {
-        //             cursor: optimisticId(),
-        //             node: {
-        //               id: optimisticId(),
-        //               createdAt: new Date().toISOString(),
-        //               likes: {
-        //                 isLiked: false,
-        //                 totalCount: 0,
-        //                 __typename: 'Likes',
-        //               },
-        //               permissions: {
-        //                 isOwner: true,
-        //                 __typename: 'CommentPermissions',
-        //               },
-        //               replies: {
-        //                 totalCount: 0,
-        //                 pageInfo: {
-        //                   hasNextPage: false,
-        //                   __typename: 'RepliesConnection',
-        //                 },
-        //                 edges: [],
-        //                 __typename: 'CommentConnection',
-        //               },
-        //               ...addComment,
-        //               user,
-        //               __typename: 'Comment',
-        //             },
-        //             __typename: 'CommentEdge',
-        //           },
-        //           ...data.comments.edges,
-        //         ],
-        //       },
-        //     }
-        //     cache.writeQuery({
-        //       query: CommentsDocument,
-        //       variables: {
-        //         postId,
-        //       },
-        //       data: comments,
-        //     })
-        //   }
-        // } catch (err) {
-        //   logError(err)
-        // }
+        const { user } = cache.readQuery({ query: CurrentUserDocument })
+
+        cache.modify({
+          id: `Post:${postId}`,
+          broadcast: false,
+          optimistic: true,
+          fields: {
+            commentsConnection(existingCommentRefs = {}) {
+              const newCommentRef = cache.writeFragment({
+                broadcast: false,
+                fragmentName: 'Comment',
+                data: {
+                  user,
+                  ...addComment,
+                },
+                fragment: CommentFragmentDoc,
+              })
+
+              return {
+                ...existingCommentRefs,
+                edges: [
+                  {
+                    __typename: 'CommentEdge',
+                    node: newCommentRef,
+                  },
+                  ...existingCommentRefs.edges,
+                ],
+                totalCount: existingCommentRefs.totalCount + 1,
+              }
+            },
+          },
+        })
       },
     })
   }
 
   const handleOnChangeText = useCallback(
-    val => {
+    (val) => {
       setText(val)
 
       const lastChar = val.substr(val.length - 1)
@@ -244,7 +121,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         isTracking.current = true
 
         showMention({
-          onPress: user => {
+          onPress: (user) => {
             const comment = val.slice(0, -query.length - 1)
             setText(`${comment}@${user.username} `)
             isTracking.current = false
@@ -266,7 +143,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
           updateQuery(lastKeyword.replace(MENTION.TRIGGER, ''))
 
           showMention({
-            onPress: user => {
+            onPress: (user) => {
               const comment = val.slice(0, -query.length - 1)
               setText(`${comment}@${user.username} `)
               isTracking.current = false
@@ -281,7 +158,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   )
 
   const handleEmojiShortcut = useCallback(
-    e => {
+    (e) => {
       const value = text.length > 0 ? `${text} ${e}` : e
       setText(value)
     },

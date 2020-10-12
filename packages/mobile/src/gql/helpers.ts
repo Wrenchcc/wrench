@@ -7,7 +7,7 @@ import {
 } from '@wrench/common'
 import { PLATFORM_TYPES } from 'utils/enums'
 import { logError } from 'utils/sentry'
-import { client } from './'
+import { client } from './client'
 
 export async function registerDeviceToken(token) {
   try {

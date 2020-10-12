@@ -38,9 +38,7 @@ function List({ data }) {
 
   return (
     <>
-      {slice(0, 2, data.comments.edges)
-        .reverse()
-        .map(renderComment)}
+      {slice(0, 2, data.comments.edges).reverse().map(renderComment)}
 
       <LoadMore onPress={navigateToComments}>
         <Text fontSize={15} color="accent">

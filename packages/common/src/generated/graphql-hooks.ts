@@ -2272,6 +2272,7 @@ export type SearchModelsQuery = (
       & Pick<PageInfo, 'hasNextPage'>
     )>, edges?: Maybe<Array<Maybe<(
       { __typename?: 'SearchResultEdge' }
+      & Pick<SearchResultEdge, 'cursor'>
       & { node?: Maybe<{ __typename?: 'Project' } | { __typename?: 'User' } | (
         { __typename?: 'Model' }
         & Pick<Model, 'id' | 'model' | 'year'>
@@ -4135,7 +4136,7 @@ export type HashtagLazyQueryHookResult = ReturnType<typeof useHashtagLazyQuery>;
 export type HashtagQueryResult = Apollo.QueryResult<HashtagQuery, HashtagQueryVariables>;
 export const LikesDocument = gql`
     query likes($postId: ID!, $after: String, $first: Int = 10) {
-  likes(postId: $postId, first: $first, after: $after) {
+  likes(postId: $postId, first: $first, after: $after) @connection(key: "comments", filter: ["postId"]) {
     pageInfo {
       hasNextPage
     }
@@ -4389,7 +4390,7 @@ export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectCollectionsDocument = gql`
     query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
-  projectCollections(projectId: $projectId, first: $first, after: $after) {
+  projectCollections(projectId: $projectId, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
     pageInfo {
       hasNextPage
     }
@@ -4707,6 +4708,7 @@ export const SearchModelsDocument = gql`
       hasNextPage
     }
     edges {
+      cursor
       node {
         ... on Model {
           id

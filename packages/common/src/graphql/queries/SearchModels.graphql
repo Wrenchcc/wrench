@@ -4,6 +4,7 @@ query searchModels($query: String!, $after: String, $first: Int = 20) {
       hasNextPage
     }
     edges {
+      cursor
       node {
         ... on Model {
           id

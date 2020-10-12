@@ -3,7 +3,6 @@ import { relayStylePagination } from '@apollo/client/utilities'
 import { CachePersistor } from 'apollo3-cache-persist'
 import AsyncStorage from '@react-native-community/async-storage'
 import { SCHEMA_VERSION_KEY } from 'utils/storage/constants'
-import link from './links'
 import { clearTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { LoginManager } from 'react-native-fbsdk'
@@ -11,6 +10,7 @@ import { GoogleSignin } from '@react-native-community/google-signin'
 import { AuthNavigation } from 'navigation'
 import { readableVersion } from 'utils/appVersion'
 import { isAndroid } from 'utils/platform'
+import link from './links'
 
 export let client = null
 
@@ -30,6 +30,7 @@ export default async function createClient() {
           projects: relayStylePagination(['typeId', 'type']),
           search: relayStylePagination(['query', 'type']),
           users: relayStylePagination(),
+          models: relayStylePagination(),
         },
       },
       Feed: {
@@ -40,6 +41,11 @@ export default async function createClient() {
       Project: {
         fields: {
           postsConnection: relayStylePagination(),
+          cover: {
+            merge(existing, incoming) {
+              return { ...existing, ...incoming }
+            },
+          },
         },
       },
       Comment: {
@@ -92,7 +98,7 @@ export default async function createClient() {
     track(events.USER_SIGNED_OUT)
     clearTokens()
     LoginManager.logOut()
-    GoogleSignin.isSignedIn().then(isSignedIn => isSignedIn && GoogleSignin.signOut())
+    GoogleSignin.isSignedIn().then((isSignedIn) => isSignedIn && GoogleSignin.signOut())
     AuthNavigation()
   })
 

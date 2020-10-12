@@ -25,7 +25,7 @@ i18next
     cache: {
       enabled: !__DEV__,
     },
-    debug: !!Config.DEBUG_LANGUAGE,
+    debug: Config.DEBUG_LANGUAGE === '1',
     defaultNS: 'common',
     fallbackLng: 'en',
     interpolation: {
