@@ -12,7 +12,7 @@ import { usePostStore, useToastStore, POST } from 'store'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
-import Collections from 'features/project/components/Collections'
+// import Collections from 'features/project/components/Collections'
 import { Header, Input, KeyboardAvoidingView, Icon, Text, Title } from 'ui'
 import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
@@ -178,8 +178,8 @@ function AddPost() {
             style={{ marginBottom: 40 }}
           />
 
-          <Title style={{ marginBottom: 20 }}>Add to collection</Title>
-          <Collections isOwner projectId={projectId} />
+          {/* <Title style={{ marginBottom: 20 }}>Add to collection</Title> */}
+          {/* <Collections isOwner projectId={projectId} /> */}
         </ScrollView>
       </KeyboardAvoidingView>
     </>

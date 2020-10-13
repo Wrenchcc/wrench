@@ -1,10 +1,12 @@
 {
   "Bookmarks": {
     "en": {
+      "headerTitle": "Saved posts",
       "title": "Save",
       "description": "Save posts that you want to see again. No one is notified, and only you can see what you've saved."
     },
     "sv": {
+      "headerTitle": "Sparade inlägg",
       "title": "Spara",
       "description": "Spara inlägg som du vill se igen. Ingen blir notifierad och det är bara du som kan se vad du sparat."
     }

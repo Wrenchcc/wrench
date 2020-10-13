@@ -20,14 +20,13 @@ function Bookmarks() {
   } = usePaginatedQuery(['bookmarks'])(BookmarksDocument)
 
   return (
-    <Page headerTitle="Saved posts" view headerAnimation={false}>
+    <Page headerTitle={t('Bookmarks:headerTitle')} view headerAnimation={false}>
       <FlatList
         initialNumToRender={2}
         spacingSeparator
         ListEmptyComponent={
           <Base>
             <Title>{t('Bookmarks:title')}</Title>
-
             <Description>{t('Bookmarks:description')}</Description>
           </Base>
         }

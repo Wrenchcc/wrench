@@ -4,11 +4,7 @@ import paginate from '../../utils/paginate'
 
 // TODO: Use dataloader
 export default isAuthenticated(async (_, args, ctx) => {
-  const bookmarks = await paginate(ctx.db.Bookmark, args, {
-    where: {
-      userId: ctx.userId,
-    },
-  })
+  const bookmarks = await paginate(ctx.db.Bookmark, args)
 
   const ids = bookmarks.edges.map(({ node }) => node.postId)
 
@@ -21,9 +17,11 @@ export default isAuthenticated(async (_, args, ctx) => {
   return {
     totalCount: bookmarks.totalCount,
     pageInfo: bookmarks.pageInfo,
-    edges: bookmarks.edges.map((b, i) => ({
-      cursor: b.cursor,
-      node: posts[i],
-    })),
+    edges: bookmarks.edges.map((b) => {
+      return {
+        cursor: b.cursor,
+        node: posts.find((p) => p.id === b.node.postId),
+      }
+    }),
   }
 })

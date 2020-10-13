@@ -6,6 +6,7 @@ import {
   BaseEntity,
   CreateDateColumn,
   UpdateDateColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm'
 import User from './User'
 
@@ -21,6 +22,9 @@ export default class Bookmarks extends BaseEntity {
 
     return !!isBookmarked
   }
+
+  @PrimaryGeneratedColumn('uuid')
+  public id: string
 
   @PrimaryColumn('uuid')
   public userId: string

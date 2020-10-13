@@ -168,7 +168,12 @@ function EditProject({ project, onDeleteCallback }) {
 
         <Inner>
           <Title>{t('EditProject:projectSettings')}</Title>
-          <SelectionItem last title={t('EditProject:deleteTitle')} onPress={toggleActionSheet} />
+          <SelectionItem
+            last
+            important
+            title={t('EditProject:deleteTitle')}
+            onPress={toggleActionSheet}
+          />
         </Inner>
       </ScrollView>
     </>

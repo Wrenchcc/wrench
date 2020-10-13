@@ -3,7 +3,6 @@ import {
   useAddCommentMutation,
   useCurrentUserQuery,
   CurrentUserDocument,
-  PostFragmentDoc,
   CommentFragmentDoc,
 } from '@wrench/common'
 import EmojiList from 'components/EmojiList'
@@ -97,7 +96,6 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
                 ...existingCommentRefs,
                 edges: [
                   {
-                    __typename: 'CommentEdge',
                     node: newCommentRef,
                   },
                   ...existingCommentRefs.edges,

@@ -12,7 +12,7 @@ export default isAuthenticated(async (_, { id }, ctx) => {
 
   await Promise.all([
     ctx.redis.delete(`follower:followers:${id}:*`),
-    ctx.redis.delete(`project:followersConnection:${id}:*`),
+    // ctx.redis.delete(`project:followersConnection:${id}:*`),
   ])
 
   if (isFollower) {

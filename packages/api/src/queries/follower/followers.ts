@@ -2,12 +2,12 @@ import { In } from 'typeorm'
 import paginate from '../../utils/paginate'
 
 export default async (_, args, ctx) => {
-  const cacheKey = `follower:followers:${args.projectId}:${JSON.stringify(args)}`
-  const cache = await ctx.redis.get(cacheKey)
+  // const cacheKey = `follower:followers:${args.projectId}:${JSON.stringify(args)}`
+  // const cache = await ctx.redis.get(cacheKey)
 
-  if (cache) {
-    return cache
-  }
+  // if (cache) {
+  //   return cache
+  // }
 
   const followers = await ctx.db.Following.find({
     where: {
@@ -23,7 +23,7 @@ export default async (_, args, ctx) => {
     },
   })
 
-  ctx.redis.set(cacheKey, response)
+  // ctx.redis.set(cacheKey, response)
 
   return response
 }
