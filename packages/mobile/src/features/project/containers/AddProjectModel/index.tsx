@@ -6,7 +6,8 @@ import {
   CurrentUserDocument,
 } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
-import { useProjectStore, PROJECT } from 'store'
+import { useReactiveVar } from '@apollo/client'
+import { projectVar, resetProjectVar, updateProjectVar, PROJECT } from 'gql'
 import { saveSelectedProjectId } from 'store/post'
 import { ActivityIndicator, Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
@@ -30,31 +31,25 @@ function AddProjectModel() {
     fetchPolicy: 'cache-only',
   })
 
-  const { update, reset, model, type, title } = useProjectStore(store => ({
-    model: store.model,
-    reset: store.actions.reset,
-    title: store.title,
-    type: store.type,
-    update: store.actions.update,
-  }))
+  const { model, type, title } = useReactiveVar(projectVar)
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
   }, [navigateBack])
 
   const onChangeText = useCallback(
-    value => {
+    (value) => {
       setQuery(value)
 
       if (model) {
-        update(PROJECT.MODEL, null)
+        updateProjectVar(PROJECT.MODEL, null)
       } else {
         if (!isSearching) {
           setIsSearching(true)
         }
       }
     },
-    [setQuery, update, model]
+    [setQuery, model]
   )
 
   const handleSave = useCallback(async () => {
@@ -126,16 +121,17 @@ function AddProjectModel() {
         },
       })
     }
-    reset()
-  }, [reset, dismissModal, model, type, title, data])
+
+    resetProjectVar()
+  }, [dismissModal, model, type, title, data])
 
   const handleModelChange = useCallback(
-    selectedModel => {
+    (selectedModel) => {
       setIsSearching(false)
-      update(PROJECT.MODEL, selectedModel)
+      updateProjectVar(PROJECT.MODEL, selectedModel)
       setQuery(formatModel(selectedModel))
     },
-    [update, setIsSearching, setQuery]
+    [setIsSearching, setQuery]
   )
 
   const handleOnBlur = useCallback(() => setIsSearching(false), [setIsSearching])

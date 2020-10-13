@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
+import { useReactiveVar } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
-import { useProjectStore, PROJECT } from 'store'
+import { projectVar, updateProjectVar, PROJECT } from 'gql'
 import { useNavigation, SCREENS, ScrollView } from 'navigation'
 import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
 import { close } from 'images'
@@ -8,27 +9,19 @@ import { close } from 'images'
 function AddProject() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
-
-  const { update, title, hasTitle, reset } = useProjectStore(store => ({
-    hasTitle: !!store.title,
-    reset: store.actions.reset,
-    title: store.title,
-    update: store.actions.update,
-  }))
+  const { title } = useReactiveVar(projectVar)
 
   const handleNavigation = useCallback(() => {
+    updateProjectVar(PROJECT.TITLE, null)
     navigate(SCREENS.ADD_PROJECT_TYPE)
   }, [])
 
   const handleDismissModal = useCallback(() => {
-    if (hasTitle) {
-      reset()
-    }
-
+    updateProjectVar(PROJECT.TITLE, null)
     dismissModal()
-  }, [hasTitle, reset])
+  }, [])
 
-  const onChangeText = useCallback(value => update(PROJECT.TITLE, value), [update])
+  const onChangeText = useCallback((value) => updateProjectVar(PROJECT.TITLE, value), [])
 
   return (
     <>
@@ -36,7 +29,7 @@ function AddProject() {
         headerLeft={<Icon source={close} color="dark" onPress={handleDismissModal} />}
         headerTitle={<Text medium>{t('AddProject:headerTitle')}</Text>}
         headerRight={
-          hasTitle && (
+          !!title && (
             <Text onPress={handleNavigation} medium>
               {t('AddProject:next')}
             </Text>

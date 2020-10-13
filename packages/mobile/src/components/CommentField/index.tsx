@@ -5,11 +5,11 @@ import {
   CurrentUserDocument,
   CommentFragmentDoc,
 } from '@wrench/common'
+import { mentionVar } from 'gql'
 import EmojiList from 'components/EmojiList'
 import { useNavigation } from 'navigation'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useMentionStore } from 'store'
 import { Avatar, Text } from 'ui'
 import { MENTION } from './constants'
 import { Inner, Input } from './styles'
@@ -25,10 +25,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
   const [addComment] = useAddCommentMutation()
 
-  const { updateQuery, query } = useMentionStore((store) => ({
-    query: store.query,
-    updateQuery: store.actions.updateQuery,
-  }))
+  const query = mentionVar()
 
   const { data } = useCurrentUserQuery()
 
@@ -138,7 +135,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         if (keywordArray && !!keywordArray.length) {
           const lastKeyword = keywordArray[keywordArray.length - 1]
 
-          updateQuery(lastKeyword.replace(MENTION.TRIGGER, ''))
+          mentionVar(lastKeyword.replace(MENTION.TRIGGER, ''))
 
           showMention({
             onPress: (user) => {
@@ -152,7 +149,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         }
       }
     },
-    [showMention, dismissMention, setText, updateQuery, query]
+    [showMention, dismissMention, setText, query]
   )
 
   const handleEmojiShortcut = useCallback(
