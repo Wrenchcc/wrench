@@ -15,7 +15,7 @@
     "check:types": "tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.0-beta.6",
+    "@apollo/client": "^3.3.0-beta.11",
     "@apollo/link-batch-http": "^2.0.0-beta.3",
     "@apollo/link-context": "^2.0.0-beta.3",
     "@apollo/link-error": "^2.0.0-beta.3",

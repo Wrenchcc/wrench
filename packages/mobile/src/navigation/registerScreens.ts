@@ -1,4 +1,3 @@
-import { register } from 'react-native-bundle-splitter'
 import { Navigation } from 'react-native-navigation'
 import { SCREENS } from './constants'
 import createScreenHoc from './createScreenHoc'
@@ -10,100 +9,101 @@ export default function registerScreens(client) {
     switch (componentName) {
       case SCREENS.ME:
         Navigation.registerComponent(SCREENS.ME, () =>
-          HOC(register({ require: () => require('features/user/containers/Me') }))
+          HOC(require('features/user/containers/Me').default)
         )
 
       case SCREENS.PROJECT:
         Navigation.registerComponent(SCREENS.PROJECT, () =>
-          HOC(register({ require: () => require('features/project/containers/Project') }))
+          HOC(require('features/project/containers/Project').default)
         )
 
       case SCREENS.EXPLORE:
         Navigation.registerComponent(SCREENS.EXPLORE, () =>
-          HOC(register({ require: () => require('features/explore/containers/Explore') }))
+          HOC(require('features/explore/containers/Explore').default)
         )
 
       case SCREENS.EXPLORE:
         Navigation.registerComponent(SCREENS.FEED, () =>
-          HOC(register({ require: () => require('features/feed/containers/Feed') }))
+          HOC(require('features/feed/containers/Feed').default)
         )
       case SCREENS.USER:
         Navigation.registerComponent(SCREENS.USER, () =>
-          HOC(register({ require: () => require('features/user/containers/User') }))
+          HOC(require('features/user/containers/User').default)
         )
 
       case SCREENS.FOLLOWERS:
         Navigation.registerComponent(SCREENS.FOLLOWERS, () =>
-          HOC(register({ require: () => require('features/project/containers/Followers') }))
+          HOC(require('features/project/containers/Followers').default)
         )
 
       case SCREENS.POST:
         Navigation.registerComponent(SCREENS.POST, () =>
-          HOC(register({ require: () => require('features/post/containers/Post') }))
+          HOC(require('features/post/containers/Post').default)
         )
 
       case SCREENS.COMMENTS:
         Navigation.registerComponent(SCREENS.COMMENTS, () =>
-          HOC(register({ require: () => require('features/project/containers/Comments') }))
+          HOC(require('features/project/containers/Comments').default)
         )
 
       case SCREENS.SIGN_IN:
         Navigation.registerComponent(SCREENS.SIGN_IN, () =>
-          HOC(register({ require: () => require('features/signIn/containers/SignIn') }))
+          HOC(require('features/signIn/containers/SignIn').default)
         )
 
       case SCREENS.SETTINGS:
         Navigation.registerComponent(SCREENS.SETTINGS, () =>
-          HOC(register({ require: () => require('features/user/containers/Settings') }))
+          HOC(require('features/user/containers/Settings').default)
         )
 
       case SCREENS.EDIT_PROFILE:
         Navigation.registerComponent(SCREENS.EDIT_PROFILE, () =>
-          HOC(register({ require: () => require('features/user/containers/EditProfile') }))
+          HOC(require('features/user/containers/EditProfile').default)
         )
 
       case SCREENS.ADD_LOCATION:
         Navigation.registerComponent(SCREENS.ADD_LOCATION, () =>
-          HOC(register({ require: () => require('features/user/containers/AddLocation') }))
+          HOC(require('features/user/containers/AddLocation').default)
         )
 
       case SCREENS.OTHER_SIGN_IN_OPTIONS:
         Navigation.registerComponent(SCREENS.OTHER_SIGN_IN_OPTIONS, () =>
-          HOC(register({ require: () => require('features/signIn/containers/Other') }))
+          HOC(require('features/signIn/containers/Other').default)
         )
 
       case SCREENS.PROJECT_SUGGESTIONS:
         Navigation.registerComponent(SCREENS.PROJECT_SUGGESTIONS, () =>
-          HOC(register({ require: () => require('features/signIn/containers/ProjectSuggestions') }))
+          HOC(require('features/signIn/containers/ProjectSuggestions').default)
         )
 
       case SCREENS.PUSH_NOTIFICATIONS:
         Navigation.registerComponent(SCREENS.PUSH_NOTIFICATIONS, () =>
-          HOC(register({ require: () => require('features/signIn/containers/PushNotifications') }))
+          HOC(require('features/signIn/containers/PushNotifications').default)
         )
 
       case SCREENS.HASHTAG:
         Navigation.registerComponent(SCREENS.HASHTAG, () =>
-          HOC(register({ require: () => require('features/explore/containers/Hashtag') }))
+          HOC(require('features/explore/containers/Hashtag').default)
         )
 
       case SCREENS.LIKES:
         Navigation.registerComponent(SCREENS.LIKES, () =>
-          HOC(register({ require: () => require('features/project/containers/Likes') }))
+          HOC(require('features/project/containers/Likes').default)
         )
       case SCREENS.HALFPANEL:
         Navigation.registerComponent(SCREENS.HALFPANEL, () =>
-          HOC(register({ require: () => require('navigation/Halfpanel') }))
+          HOC(require('navigation/Halfpanel').default)
         )
 
       case SCREENS.BOOKMARKS:
         Navigation.registerComponent(SCREENS.BOOKMARKS, () =>
-          HOC(register({ require: () => require('features/user/containers/Bookmarks') }))
+          HOC(require('features/user/containers/Bookmarks').default)
         )
 
       case SCREENS.INITIALIZING:
-        Navigation.registerComponent(SCREENS.INITIALIZING, () =>
-          register({ require: () => require('navigation/Initializing') })
+        Navigation.registerComponent(
+          SCREENS.INITIALIZING,
+          () => require('navigation/Initializing').default
         )
 
       case SCREENS.EMPTY:
@@ -111,78 +111,72 @@ export default function registerScreens(client) {
 
       case SCREENS.MENTION:
         Navigation.registerComponent(SCREENS.MENTION, () =>
-          HOC(register({ require: () => require('components/Mention') }))
+          HOC(require('components/Mention').default)
         )
 
       case SCREENS.WEBVIEW:
         Navigation.registerComponent(SCREENS.WEBVIEW, () =>
-          HOC(register({ require: () => require('components/WebView') }))
+          HOC(require('components/WebView').default)
         )
 
       case SCREENS.EDIT_POST:
         Navigation.registerComponent(SCREENS.EDIT_POST, () =>
-          HOC(register({ require: () => require('components/EditPost') }))
+          HOC(require('components/EditPost').default)
         )
 
       case SCREENS.CATEGORIES:
         Navigation.registerComponent(SCREENS.CATEGORIES, () =>
-          HOC(register({ require: () => require('features/explore/containers/Categories') }))
+          HOC(require('features/explore/containers/Categories').default)
         )
 
       case SCREENS.ONBOARDING:
         Navigation.registerComponent(SCREENS.ONBOARDING, () =>
-          HOC(register({ require: () => require('features/signIn/containers/Onboarding') }))
+          HOC(require('features/signIn/containers/Onboarding').default)
         )
 
       case SCREENS.SIGN_IN:
         Navigation.registerComponent(SCREENS.SIGN_IN, () =>
-          HOC(register({ require: () => require('features/signIn/containers/SignIn') }))
+          HOC(require('features/signIn/containers/SignIn').default)
         )
 
       case SCREENS.NOTIFICATIONS:
         Navigation.registerComponent(SCREENS.NOTIFICATIONS, () =>
-          HOC(
-            register({
-              require: () => require('features/notifications/containers/Notifications'),
-            })
-          )
+          HOC(require('features/notifications/containers/Notifications').default)
         )
 
       case SCREENS.ADD_MEDIA:
         Navigation.registerComponent(SCREENS.ADD_MEDIA, () =>
-          HOC(register({ require: () => require('features/project/containers/AddMedia') }))
+          HOC(require('features/project/containers/AddMedia').default)
         )
 
       case SCREENS.ADD_PROJECT:
         Navigation.registerComponent(SCREENS.ADD_PROJECT, () =>
-          HOC(register({ require: () => require('features/project/containers/AddProject') }))
+          HOC(require('features/project/containers/AddProject').default)
         )
 
       case SCREENS.ADD_POST:
         Navigation.registerComponent(SCREENS.ADD_POST, () =>
-          HOC(register({ require: () => require('features/project/containers/AddPost') }))
+          HOC(require('features/project/containers/AddPost').default)
         )
 
       case SCREENS.ADD_POST_TO_COLLECTION:
         Navigation.registerComponent(SCREENS.ADD_POST_TO_COLLECTION, () =>
-          HOC(
-            register({ require: () => require('features/project/containers/AddPostToCollection') })
-          )
+          HOC(require('features/project/containers/AddPostToCollection').default)
         )
 
       case SCREENS.COLLECTIONS:
         Navigation.registerComponent(SCREENS.COLLECTIONS, () =>
-          HOC(register({ require: () => require('features/project/containers/Collections') }))
+          HOC(require('features/project/containers/Collections').default)
         )
 
       case SCREENS.EDIT_COLLECTION:
         Navigation.registerComponent(SCREENS.EDIT_COLLECTION, () =>
-          HOC(register({ require: () => require('features/project/containers/EditCollection') }))
+          HOC(require('features/project/containers/EditCollection').default)
         )
 
       case SCREENS.EDIT_PROJECT:
         Navigation.registerComponent(SCREENS.EDIT_PROJECT, () =>
-          HOC(register({ require: () => require('features/project/containers/EditProject') }))
+          HOC(require('features/project/containers/EditProject').default)
         )
 
       case SCREENS.EDIT_MODEL:
@@ -197,11 +191,7 @@ export default function registerScreens(client) {
 
       case SCREENS.ADD_PROJECT_TYPE:
         Navigation.registerComponent(SCREENS.ADD_PROJECT_TYPE, () =>
-          HOC(
-            register({
-              require: () => require('features/project/containers/AddProjectType'),
-            })
-          )
+          HOC(require('features/project/containers/AddProjectType').default)
         )
       default:
         return

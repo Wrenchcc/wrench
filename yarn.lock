@@ -101,15 +101,15 @@
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
-"@apollo/client@^3.3.0-beta.6":
-  version "3.3.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.0-beta.6.tgz#bbb7530b9e1c2607536a81c176f904ab1b6f1a66"
-  integrity sha512-4hHGS3L23X5et0UNqGSgp5WhkmEWR+zvaQQ1K11zyBTXXw5boV2UNqfxG0XEUDLLbKWxlHexny/9IYFxZj2VfQ==
+"@apollo/client@^3.3.0-beta.11":
+  version "3.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.0-beta.11.tgz#07357b4f7071c943e3e1f81e5b07a30195e8c279"
+  integrity sha512-gZb5Mh7U5geQHzJE93xKmL2fptcE2sMfdyP/hEqf2ljLK9BaIfnlOzD4i8JJURhTSir0hfrRTqLlJeJqyb3umg==
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@types/zen-observable" "^0.8.0"
     "@wry/context" "^0.5.2"
-    "@wry/equality" "^0.2.0"
+    "@wry/equality" "^0.3.0"
     fast-json-stable-stringify "^2.0.0"
     graphql-tag "^2.11.0"
     hoist-non-react-statics "^3.3.2"
@@ -5369,6 +5369,13 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@wry/equality/-/equality-0.2.0.tgz#a312d1b6a682d0909904c2bcd355b02303104fb7"
   integrity sha512-Y4d+WH6hs+KZJUC8YKLYGarjGekBrhslDbf/R20oV+AakHPINSitHfDRQz3EGcEWc1luXYNUvMhawWtZVWNGvQ==
+  dependencies:
+    tslib "^1.9.3"
+
+"@wry/equality@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@wry/equality/-/equality-0.3.0.tgz#4b022a0907f01f32c07a1a665d9430155a59ea06"
+  integrity sha512-DRDAu/e3oWBj826OWNV/GCmSdHD248mASXImgNoLE/3SDvpgb+k6G/+TAmdpIB35ju264+kB22Rx92eXg52DnA==
   dependencies:
     tslib "^1.9.3"
 

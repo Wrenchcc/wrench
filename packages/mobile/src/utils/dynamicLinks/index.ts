@@ -3,7 +3,7 @@ import { navigateWithoutContext, SCREENS, TABS_INDEX, selectTabIndex } from 'nav
 import DeepLinking from 'react-native-deep-linking'
 
 export const createDeepLinkingHandler = ({ url }) => {
-  Linking.canOpenURL(url).then(supported => {
+  Linking.canOpenURL(url).then((supported) => {
     if (supported) {
       DeepLinking.evaluateUrl(url)
     }
@@ -19,6 +19,14 @@ DeepLinking.addRoute('/project/:slug', ({ slug }) => {
 
 DeepLinking.addRoute('/post/:id', ({ id }) => {
   return navigateWithoutContext(SCREENS.POST, { postId: id })
+})
+
+DeepLinking.addRoute('/settings/:section', ({ section }) => {
+  selectTabIndex(TABS_INDEX.ME)
+
+  setTimeout(() => {
+    return navigateWithoutContext(SCREENS.SETTINGS, { section })
+  }, 300)
 })
 
 DeepLinking.addRoute('/:root', ({ root }) => {

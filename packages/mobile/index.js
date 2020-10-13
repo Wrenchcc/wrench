@@ -20,7 +20,7 @@ Navigation.events().registerAppLaunchedListener(async () => {
 
   const notificationOpen = await messaging().getInitialNotification()
 
-  if (notificationOpen && notificationOpen.data) {
+  if (notificationOpen?.data) {
     setTimeout(() => {
       createPushNotificationsHandler(notificationOpen.data.path)
     }, 500)
