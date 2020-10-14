@@ -39,7 +39,7 @@ export default async ({ data, userId, to, type }) => {
       },
     },
     notification: formatNotification(type, data, user, locale),
-    ...formatCustomData(type, data),
+    data: formatCustomData(type, data),
     token,
   }
 
@@ -48,10 +48,10 @@ export default async ({ data, userId, to, type }) => {
   client
     .messaging()
     .send(message)
-    .then(response => {
+    .then((response) => {
       debug('Successfully sent message: %o', response)
     })
-    .catch(error => {
+    .catch((error) => {
       debug('Error sending message: %o', error)
     })
 }

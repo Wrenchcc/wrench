@@ -8,7 +8,8 @@ import {
   CurrentUserProfileDocument,
 } from '@wrench/common'
 import { useNavigation } from 'navigation'
-import { usePostStore, useToastStore, POST } from 'store'
+import { usePostStore, POST } from 'store'
+import { showToast } from 'gql'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
@@ -31,8 +32,6 @@ function AddPost() {
     setIsPosting: store.actions.setIsPosting,
     update: store.actions.update,
   }))
-
-  const toastActions = useToastStore((store) => store.actions)
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -140,7 +139,7 @@ function AddPost() {
     } catch (err) {
       setIsPosting(false)
 
-      toastActions.show({
+      showToast({
         content: t('AddPost:error'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,

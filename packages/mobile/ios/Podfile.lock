@@ -129,12 +129,12 @@ PODS:
     - Flipper-Folly (~> 2.2)
     - Flipper-RSocket (~> 1.1)
   - Flipper-DoubleConversion (1.1.7)
-  - Flipper-Folly (2.2.0):
+  - Flipper-Folly (2.3.0):
     - boost-for-react-native
     - CocoaLibEvent (~> 1.0)
     - Flipper-DoubleConversion
     - Flipper-Glog
-    - OpenSSL-Universal (= 1.0.2.19)
+    - OpenSSL-Universal (= 1.0.2.20)
   - Flipper-Glog (0.3.6)
   - Flipper-PeerTalk (0.0.4)
   - Flipper-RSocket (1.1.0):
@@ -236,9 +236,9 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
-  - OpenSSL-Universal (1.0.2.19):
-    - OpenSSL-Universal/Static (= 1.0.2.19)
-  - OpenSSL-Universal/Static (1.0.2.19)
+  - OpenSSL-Universal (1.0.2.20):
+    - OpenSSL-Universal/Static (= 1.0.2.20)
+  - OpenSSL-Universal/Static (1.0.2.20)
   - Permission-Camera (2.2.2):
     - RNPermissions
   - Permission-Microphone (2.2.2):
@@ -905,7 +905,7 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 82d75b3770a78bbce470769a6980429608b4c407
   Flipper: be611d4b742d8c87fbae2ca5f44603a02539e365
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
-  Flipper-Folly: c12092ea368353b58e992843a990a3225d4533c3
+  Flipper-Folly: e4493b013c02d9347d5e0cb4d128680239f6c78a
   Flipper-Glog: 1dfd6abf1e922806c52ceb8701a3599a79a200a6
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
   Flipper-RSocket: 64e7431a55835eb953b0bf984ef3b90ae9fdddd7
@@ -921,7 +921,7 @@ SPEC CHECKSUMS:
   JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
-  OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
+  OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   Permission-Camera: 5d2aaf95592660b6dcb5e8d1d90ed5d0156cad02
   Permission-Microphone: a0e56790d61392c31627df33328fef079ad46fa8
   Permission-PhotoLibrary: 8227a6ed9f6a971537afe63742d54f5f23a38fe2

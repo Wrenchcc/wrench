@@ -1,4 +1,6 @@
 import { makeVar } from '@apollo/client'
+import NetInfo from '@react-native-community/netinfo'
+import { TOAST_TYPES } from 'utils/enums'
 
 export const PROJECT = {
   MODEL: 'model',
@@ -32,3 +34,41 @@ const initialProjectState = {
 export const projectVar = makeVar(initialProjectState)
 export const updateProjectVar = (field, payload) => projectVar({ [field]: payload })
 export const resetProjectVar = () => projectVar(initialProjectState)
+
+const initialToastState = {
+  [TOAST.CONTENT]: null,
+  [TOAST.SHOW]: false,
+  [TOAST.TYPE]: TOAST_TYPES.NETWORK,
+}
+
+export const toastVar = makeVar(initialToastState)
+export const resetToastVar = () => toastVar(initialProjectState)
+
+export const showToast = (payload) => {
+  toastVar({
+    content: payload.content,
+    show: true,
+    type: payload.type,
+  })
+
+  if (payload.dismissAfter) {
+    setTimeout(() => toastVar(initialToastState), payload.dismissAfter)
+  }
+}
+
+NetInfo.addEventListener((state) => {
+  if (state.isConnected) {
+    toastVar(initialToastState)
+  } else {
+    toastVar({ show: true })
+  }
+})
+
+export function showSpamToast() {
+  toastVar({
+    show: true,
+    type: TOAST_TYPES.SPAM,
+  })
+
+  setTimeout(() => toastVar(initialToastState), 6000)
+}

@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useCallback } from 'react'
+import { useReactiveVar } from '@apollo/client'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
-import { useToastStore } from 'store'
+import { toastVar } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
 import { Banner } from 'ui'
 
@@ -16,7 +17,7 @@ function Toast() {
   const ref = useRef()
   const { t } = useTranslation()
 
-  const { content, show, type } = useToastStore((store) => store)
+  const { content, show, type } = useReactiveVar(toastVar)
 
   useEffect(() => {
     if (show) {

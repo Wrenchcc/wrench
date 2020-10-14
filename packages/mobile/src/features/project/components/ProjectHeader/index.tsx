@@ -57,8 +57,6 @@ function ProjectHeader({ project, spacingHorizontal }) {
       if (!hasAskedForRating) {
         AsyncStorage.setItem(FOLLOWING_COUNT, JSON.stringify({ value: count?.value + 1 }))
       }
-
-      !isFollower && getSimilarProjects()
     },
   })
 
@@ -87,6 +85,11 @@ function ProjectHeader({ project, spacingHorizontal }) {
         },
       },
     })
+
+    if (!project.permissions.isFollower) {
+      getSimilarProjects()
+      setIsShowingSimilarProjects(true)
+    }
   }, [project])
 
   const handleNavigation = useCallback(

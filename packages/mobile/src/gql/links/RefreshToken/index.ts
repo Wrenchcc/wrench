@@ -1,7 +1,7 @@
 import { Observable } from '@apollo/client'
 import { onError } from '@apollo/link-error'
 import { RefreshTokenDocument } from '@wrench/common'
-import { showSpamToast } from 'store'
+import { showSpamToast } from 'gql'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
