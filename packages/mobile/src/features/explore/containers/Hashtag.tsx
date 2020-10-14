@@ -5,7 +5,7 @@ import { Page, FlatList } from 'navigation'
 
 const renderItem = ({ item }) => <Post post={item.node} />
 
-function Hashtags({ name }) {
+function Hashtags({ slug }) {
   const {
     data: { edges },
     isFetching,
@@ -15,12 +15,12 @@ function Hashtags({ name }) {
     refetch,
   } = usePaginatedQuery(['hashtag', 'posts'])(HashtagDocument, {
     variables: {
-      name,
+      slug,
     },
   })
 
   return (
-    <Page headerTitle={`#${name}`} headerAnimation={false}>
+    <Page headerTitle={`#${slug}`} headerAnimation={false}>
       <FlatList
         initialNumToRender={2}
         paddingBottom={40}

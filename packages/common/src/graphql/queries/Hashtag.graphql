@@ -1,7 +1,7 @@
 #import "../fragments/PostFragment.graphql"
 
-query hashtag($id: ID, $slug: LowercaseString, name: String, $after: String, $first: Int = 5) {
-  hashtag(id: $id, slug: $slug, name: $name) {
+query hashtag($id: ID, $slug: LowercaseString, $after: String, $first: Int = 5) {
+  hashtag(id: $id, slug: $slug) {
      posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
        pageInfo {
          hasNextPage

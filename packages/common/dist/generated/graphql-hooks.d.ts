@@ -103,7 +103,6 @@ export declare type QueryFollowersArgs = {
 export declare type QueryHashtagArgs = {
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
-    name?: Maybe<Scalars['String']>;
 };
 export declare type QueryLikesArgs = {
     postId: Scalars['ID'];

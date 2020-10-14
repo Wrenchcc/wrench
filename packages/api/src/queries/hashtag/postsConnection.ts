@@ -5,6 +5,6 @@ import paginate from '../../utils/paginate'
 export default async ({ slug }, args, ctx) =>
   paginate(ctx.db.Post, args, {
     where: {
-      caption: Raw(alias => `LOWER (${alias}) LIKE '%#${slug.toLowerCase()}%'`),
+      caption: Raw((alias) => `LOWER (${alias}) LIKE '%#${slug}%'`),
     },
   })

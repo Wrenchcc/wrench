@@ -95,7 +95,7 @@ function Hashtags({ query }) {
       handleSave(item.node)
 
       navigate(SCREENS.HASHTAG, {
-        name: item.node.name,
+        slug: item.node.slug,
         options: {
           animations: {
             push: {

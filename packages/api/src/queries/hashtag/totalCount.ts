@@ -4,7 +4,7 @@ import { Raw } from 'typeorm'
 export default async ({ slug }, _, ctx) => {
   const [, totalCount] = await ctx.db.Post.findAndCount({
     where: {
-      caption: Raw(alias => `LOWER (${alias}) LIKE '%#${slug.toLowerCase()}%'`),
+      caption: Raw((alias) => `LOWER (${alias}) LIKE '%#${slug}%'`),
     },
   })
 

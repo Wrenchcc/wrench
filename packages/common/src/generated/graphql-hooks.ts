@@ -119,7 +119,6 @@ export type QueryFollowersArgs = {
 export type QueryHashtagArgs = {
   id?: Maybe<Scalars['ID']>;
   slug?: Maybe<Scalars['LowercaseString']>;
-  name?: Maybe<Scalars['String']>;
 };
 
 
