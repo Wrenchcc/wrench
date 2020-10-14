@@ -119,6 +119,7 @@ export type QueryFollowersArgs = {
 export type QueryHashtagArgs = {
   id?: Maybe<Scalars['ID']>;
   slug?: Maybe<Scalars['LowercaseString']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 
@@ -1921,6 +1922,7 @@ export type GrowthQuery = (
 export type HashtagQueryVariables = Exact<{
   id?: Maybe<Scalars['ID']>;
   slug?: Maybe<Scalars['LowercaseString']>;
+  name?: Maybe<Scalars['String']>;
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
 }>;
@@ -4089,8 +4091,8 @@ export type GrowthQueryHookResult = ReturnType<typeof useGrowthQuery>;
 export type GrowthLazyQueryHookResult = ReturnType<typeof useGrowthLazyQuery>;
 export type GrowthQueryResult = Apollo.QueryResult<GrowthQuery, GrowthQueryVariables>;
 export const HashtagDocument = gql`
-    query hashtag($id: ID, $slug: LowercaseString, $after: String, $first: Int = 5) {
-  hashtag(id: $id, slug: $slug) {
+    query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {
+  hashtag(id: $id, slug: $slug, name: $name) {
     posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
       pageInfo {
         hasNextPage
@@ -4120,6 +4122,7 @@ export const HashtagDocument = gql`
  *   variables: {
  *      id: // value for 'id'
  *      slug: // value for 'slug'
+ *      name: // value for 'name'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },

@@ -103,6 +103,7 @@ export declare type QueryFollowersArgs = {
 export declare type QueryHashtagArgs = {
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
+    name?: Maybe<Scalars['String']>;
 };
 export declare type QueryLikesArgs = {
     postId: Scalars['ID'];
@@ -1604,6 +1605,7 @@ export declare type GrowthQuery = ({
 export declare type HashtagQueryVariables = Exact<{
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
+    name?: Maybe<Scalars['String']>;
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
@@ -3192,6 +3194,7 @@ export declare const HashtagDocument: Apollo.DocumentNode;
  *   variables: {
  *      id: // value for 'id'
  *      slug: // value for 'slug'
+ *      name: // value for 'name'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },
@@ -3200,12 +3203,14 @@ export declare const HashtagDocument: Apollo.DocumentNode;
 export declare function useHashtagQuery(baseOptions?: Apollo.QueryHookOptions<HashtagQuery, HashtagQueryVariables>): Apollo.QueryResult<HashtagQuery, Exact<{
     id?: string | null | undefined;
     slug?: any;
+    name?: string | null | undefined;
     after?: string | null | undefined;
     first?: number | null | undefined;
 }>>;
 export declare function useHashtagLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HashtagQuery, HashtagQueryVariables>): Apollo.QueryTuple<HashtagQuery, Exact<{
     id?: string | null | undefined;
     slug?: any;
+    name?: string | null | undefined;
     after?: string | null | undefined;
     first?: number | null | undefined;
 }>>;

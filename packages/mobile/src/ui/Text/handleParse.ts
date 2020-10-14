@@ -22,9 +22,9 @@ const handleNamePress = (name) => {
 }
 
 const handleHashtagPress = (hashtag) => {
-  const slug = hashtag.replace('#', '')
+  const name = hashtag.replace('#', '')
   navigateWithoutContext(SCREENS.HASHTAG, {
-    slug,
+    name,
   })
 }
 

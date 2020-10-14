@@ -25,6 +25,6 @@ export default gql`
   }
 
   extend type Query {
-    hashtag(id: ID, slug: LowercaseString): Hashtag
+    hashtag(id: ID, slug: LowercaseString, name: String): Hashtag
   }
 `

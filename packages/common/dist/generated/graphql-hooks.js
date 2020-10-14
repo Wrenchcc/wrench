@@ -1005,7 +1005,7 @@ function useGrowthLazyQuery(baseOptions) {
     return Apollo.useLazyQuery(exports.GrowthDocument, baseOptions);
 }
 exports.useGrowthLazyQuery = useGrowthLazyQuery;
-exports.HashtagDocument = client_1.gql(templateObject_49 || (templateObject_49 = __makeTemplateObject(["\n    query hashtag($id: ID, $slug: LowercaseString, $after: String, $first: Int = 5) {\n  hashtag(id: $id, slug: $slug) {\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query hashtag($id: ID, $slug: LowercaseString, $after: String, $first: Int = 5) {\n  hashtag(id: $id, slug: $slug) {\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.HashtagDocument = client_1.gql(templateObject_49 || (templateObject_49 = __makeTemplateObject(["\n    query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {\n  hashtag(id: $id, slug: $slug, name: $name) {\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""], ["\n    query hashtag($id: ID, $slug: LowercaseString, $name: String, $after: String, $first: Int = 5) {\n  hashtag(id: $id, slug: $slug, name: $name) {\n    posts: postsConnection(first: $first, after: $after) @connection(key: \"posts\") {\n      pageInfo {\n        hasNextPage\n      }\n      edges {\n        cursor\n        node {\n          ...Post\n        }\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
 /**
  * __useHashtagQuery__
  *
@@ -1020,6 +1020,7 @@ exports.HashtagDocument = client_1.gql(templateObject_49 || (templateObject_49 =
  *   variables: {
  *      id: // value for 'id'
  *      slug: // value for 'slug'
+ *      name: // value for 'name'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },
