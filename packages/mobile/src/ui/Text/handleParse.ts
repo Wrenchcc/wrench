@@ -8,23 +8,23 @@ function addhttp(url) {
   return url
 }
 
-const handleUrlPress = url => {
+const handleUrlPress = (url) => {
   showModal(SCREENS.WEBVIEW, {
     url: addhttp(url),
   })
 }
 
-const handleNamePress = name => {
+const handleNamePress = (name) => {
   const username = name.replace('@', '')
   navigateWithoutContext(SCREENS.USER, {
     user: { username },
   })
 }
 
-const handleHashtagPress = hashtag => {
-  const slug = hashtag.replace('#', '')
+const handleHashtagPress = (hashtag) => {
+  const name = hashtag.replace('#', '')
   navigateWithoutContext(SCREENS.HASHTAG, {
-    slug,
+    name,
   })
 }
 
@@ -40,18 +40,18 @@ export default [
   {
     onPress: handleNamePress,
     pattern: /\/?\B@[a-z0-9.-]+/gi,
-    renderText: username => username,
+    renderText: (username) => username,
     style: styles.bold,
   },
   {
     onPress: handleHashtagPress,
     pattern: /#(\w+)/,
-    renderText: hashtag => hashtag,
+    renderText: (hashtag) => hashtag,
     style: styles.bold,
   },
   {
     onPress: handleUrlPress,
-    renderText: matchingString => {
+    renderText: (matchingString) => {
       const pattern = /^(?:https?:\/\/)?(?:www\.)?/i
       return matchingString.replace(pattern, '')
     },

@@ -103,6 +103,7 @@ export declare type QueryFollowersArgs = {
 export declare type QueryHashtagArgs = {
     id?: Maybe<Scalars['ID']>;
     slug?: Maybe<Scalars['LowercaseString']>;
+    name?: Maybe<Scalars['String']>;
 };
 export declare type QueryLikesArgs = {
     postId: Scalars['ID'];
@@ -1935,7 +1936,7 @@ export declare type SearchModelsQuery = ({
         } & Pick<PageInfo, 'hasNextPage'>)>;
         edges?: Maybe<Array<Maybe<({
             __typename?: 'SearchResultEdge';
-        } & {
+        } & Pick<SearchResultEdge, 'cursor'> & {
             node?: Maybe<{
                 __typename?: 'Project';
             } | {

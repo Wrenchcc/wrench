@@ -9,7 +9,8 @@ export default gql`
     createdAt: Date
     updatedAt: Date
 
-    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection @cacheControl(maxAge: 360)
+    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+      @cacheControl(maxAge: 360)
   }
 
   type HashtagConnection {
@@ -24,6 +25,6 @@ export default gql`
   }
 
   extend type Query {
-    hashtag(id: ID, slug: LowercaseString): Hashtag
+    hashtag(id: ID, slug: LowercaseString, name: String): Hashtag
   }
 `
