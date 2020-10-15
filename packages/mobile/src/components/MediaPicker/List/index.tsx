@@ -3,7 +3,7 @@ import { View, ActivityIndicator, Dimensions, FlatList } from 'react-native'
 import { useReactiveVar } from '@apollo/client'
 import * as MediaLibrary from 'expo-media-library'
 import { useTranslation } from 'react-i18next'
-import { findIndex, propEq, pathOr, omit } from 'rambda'
+import { pathOr, omit } from 'rambda'
 import { store } from 'gql'
 import { logError } from 'utils/sentry'
 import { Text } from 'ui'
@@ -126,7 +126,7 @@ function List({ album, ListHeaderComponent }) {
   }, [scrollToTop])
 
   const renderItem = ({ item }) => {
-    const order = findIndex(propEq('id', item.id))(selectedFiles)
+    const order = selectedFiles.findIndex((e) => e.id === item.id)
     const selected = selectedFiles.some((file) => file.id === item.id)
     return <MediaItem item={item} onPress={handleOnSelect} order={order + 1} selected={selected} />
   }

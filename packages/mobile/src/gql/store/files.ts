@@ -1,6 +1,6 @@
 import { makeVar } from '@apollo/client'
 import * as MediaLibrary from 'expo-media-library'
-import { findIndex, propEq, assocPath } from 'rambda'
+import { assocPath } from 'rambda'
 import { logError } from 'utils/sentry'
 import { MAX_SELECTED_FILES } from './constants'
 
@@ -22,7 +22,7 @@ export const select = async (payload) => {
   const selectedFiles = selectedFilesVar()
   const isAdded = selectedFiles.some((file) => file.id === currentId)
   const isPrevious = selectedFileIdVar() === currentId
-  const currentIndex = findIndex(propEq('id', currentId))(selectedFiles)
+  const currentIndex = selectedFiles.findIndex((e) => e.id === currentId)
 
   // If camera
   if (payload.camera && !selectedFiles.length) {
@@ -66,7 +66,7 @@ export const select = async (payload) => {
 export const edit = (payload) => {
   const selectedFiles = selectedFilesVar()
   const selectedId = selectedFileIdVar()
-  const currentIndex = findIndex(propEq('id', selectedId))(selectedFiles)
+  const currentIndex = selectedFiles.findIndex((e) => e.id === selectedId)
 
   selectedFilesVar(assocPath([currentIndex, 'crop'], payload, selectedFiles))
 }
