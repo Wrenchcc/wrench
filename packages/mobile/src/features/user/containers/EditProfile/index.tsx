@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import { request, PERMISSIONS } from 'react-native-permissions'
 import { Page, ScrollView, useNavigation, AppNavigation, SCREENS } from 'navigation'
-import { preSignUrl, showToast } from 'gql'
+import { preSignUrl, store } from 'gql'
 import { ActivityIndicator, Text, Title, Touchable, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { logError } from 'utils/sentry'
 import { close } from 'images'
@@ -46,7 +46,7 @@ function EditProfile({ onboarding }) {
 
   const [editUser] = useEditUserMutation({
     onError: () => {
-      showToast({
+      store.toast.show({
         content: t('EditProfile:validationUsername'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
@@ -83,7 +83,7 @@ function EditProfile({ onboarding }) {
     setSaving(true)
 
     if (hasErrors) {
-      showToast({
+      store.toast.show({
         content: t('EditProfile:validation'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
@@ -107,7 +107,8 @@ function EditProfile({ onboarding }) {
         } catch (err) {
           logError(err)
           setSaving(false)
-          return showToast({
+
+          return store.toast.show({
             content: t('EditProfile:wrong'),
             dismissAfter: 6000,
             type: TOAST_TYPES.ERROR,
@@ -137,7 +138,7 @@ function EditProfile({ onboarding }) {
         dismissModal()
       }
     } catch (err) {
-      showToast({
+      store.toast.show({
         content: t('EditProfile:wrong'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,

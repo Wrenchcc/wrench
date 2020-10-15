@@ -1,7 +1,6 @@
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { feed, explore, notification, profile, add } from 'images'
-import { loadSelectedProjectId } from 'store/post'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import defaultOptions from './defaultOptions'
 
@@ -54,9 +53,6 @@ export function AppNavigation(onboarding: boolean) {
       },
     })
   } else {
-    // Load selected project when logged in
-    loadSelectedProjectId()
-
     Navigation.setRoot({
       root: {
         bottomTabs: {

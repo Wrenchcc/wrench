@@ -1,16 +1,16 @@
 import React, { useState, useCallback } from 'react'
-import { pathOr } from 'rambda'
+// import { pathOr } from 'rambda'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
-import { usePostStore, POST } from 'store'
+// import { usePostStore, POST } from 'store'
 import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'
 import { Base } from './styles'
 
-function getProjectById(id, projects) {
-  const project = projects && projects.find(({ node }) => node.id === id)
-  return pathOr(projects[0]?.node, ['node'], project)
-}
+// function getProjectById(id, projects) {
+//   const project = projects && projects.find(({ node }) => node.id === id)
+//   return pathOr(projects[0]?.node, ['node'], project)
+// }
 
 function SelectProject({ black = false }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,27 +18,27 @@ function SelectProject({ black = false }) {
     fetchPolicy: 'cache-only',
   })
 
+  return null
+
   const projects = data?.user.projects.edges
 
-  const { projectId, title, update } = usePostStore((store) => {
-    const project = getProjectById(store.projectId, projects)
-    return {
-      projectId: project?.id,
-      title: project?.title,
-      update: store.actions.update,
-    }
-  })
+  // const { projectId, title, update } = usePostStore((store) => {
+  //   const project = getProjectById(store.projectId, projects)
+
+  //   return {
+  //     projectId: project?.id,
+  //     title: project?.title,
+  //     update: store.actions.update,
+  //   }
+  // })
 
   const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
   const handleClose = useCallback(() => setIsOpen(false), [])
 
-  const handleOnPress = useCallback(
-    (selectedId) => {
-      handleClose(false)
-      update(POST.PROJECT_ID, selectedId)
-    },
-    [handleClose, update]
-  )
+  const handleOnPress = useCallback((selectedId) => {
+    // handleClose(false)
+    // update(POST.PROJECT_ID, selectedId)
+  }, [])
 
   return (
     <>

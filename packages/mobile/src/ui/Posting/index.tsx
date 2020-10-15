@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
-import { usePostStore } from 'store'
+// import { usePostStore } from 'store'
 import Text from 'ui/Text'
 import { Base, Inner, Cover } from './styles'
 
@@ -13,10 +13,11 @@ const transition = (
 )
 
 function Posting() {
+  return null
   const ref = useRef()
   const { t } = useTranslation()
 
-  const { image, isPosting } = usePostStore(store => ({
+  const { image, isPosting } = usePostStore((store) => ({
     image: store.files[0],
     isPosting: store.isPosting,
   }))

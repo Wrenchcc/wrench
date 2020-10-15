@@ -1,11 +1,13 @@
-import * as project from './project'
+import * as files from './files'
 import * as mention from './mention'
-import * as toast from './toast'
 import * as post from './post'
+import * as project from './project'
+import * as toast from './toast'
 
 export default {
-  project,
+  files,
   mention,
-  toast,
   post,
+  project,
+  toast,
 }

@@ -9,7 +9,7 @@ import {
 } from '@wrench/common'
 import { useNavigation } from 'navigation'
 import { usePostStore, POST } from 'store'
-import { showToast } from 'gql'
+import { store } from 'gql'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
@@ -139,7 +139,7 @@ function AddPost() {
     } catch (err) {
       setIsPosting(false)
 
-      showToast({
+      store.toast.show({
         content: t('AddPost:error'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,

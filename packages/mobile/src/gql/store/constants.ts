@@ -1,3 +1,5 @@
+export const MAX_SELECTED_FILES = 10
+
 export const PROJECT = {
   MODEL: 'model',
   TITLE: 'title',

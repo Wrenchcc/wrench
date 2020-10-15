@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useCallback, useRef, memo } from 'react'
 import { View, ActivityIndicator, Dimensions, FlatList } from 'react-native'
+import { useReactiveVar } from '@apollo/client'
 import * as MediaLibrary from 'expo-media-library'
 import { useTranslation } from 'react-i18next'
 import { findIndex, propEq, pathOr, omit } from 'rambda'
-import { usePostStore } from 'store'
+import { store } from 'gql'
 import { logError } from 'utils/sentry'
 import { Text } from 'ui'
 import { isAndroid } from 'utils/platform'
-import { MAX_SELECTED_FILES } from 'store/post'
+import { MAX_SELECTED_FILES } from 'gql'
 import MediaItem, { MARGIN, ITEM_SIZE } from '../Item'
 import { DeselectAll, Placeholder } from './styles'
 
@@ -29,17 +30,12 @@ const getItemLayout = (_, index) => ({
 function List({ album, ListHeaderComponent }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
-  const [endCursor, setEndCursor] = useState()
-  const [lastEndCursor, setLastEndCursor] = useState()
+  const [endCursor, setEndCursor] = useState('')
 
-  const ref = useRef()
+  const ref = useRef(null)
   const { t } = useTranslation()
 
-  const { selectedFiles, onSelect, deselectAll } = usePostStore((store) => ({
-    deselectAll: store.actions.deselectAll,
-    onSelect: store.actions.onSelect,
-    selectedFiles: store.selectedFiles,
-  }))
+  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
 
   const fetchInitialAssets = useCallback(async () => {
     try {
@@ -63,9 +59,6 @@ function List({ album, ListHeaderComponent }) {
         return
       }
 
-      // NOTE: Dirty fix for fetching same data
-      setLastEndCursor(after)
-
       try {
         const result = await MediaLibrary.getAssetsAsync({
           after,
@@ -74,10 +67,7 @@ function List({ album, ListHeaderComponent }) {
           sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
 
-        // NOTE: Dirty fix for fetching same data
-        if (after !== lastEndCursor) {
-          setAssets((p) => p.concat(result.assets))
-        }
+        setAssets((p) => p.concat(result.assets))
 
         setHasNextPage(result.hasNextPage)
         setEndCursor(result.endCursor)
@@ -85,7 +75,7 @@ function List({ album, ListHeaderComponent }) {
         logError(err)
       }
     },
-    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor, lastEndCursor]
+    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor]
   )
 
   useEffect(() => {
@@ -125,15 +115,15 @@ function List({ album, ListHeaderComponent }) {
         scrollToTop()
       }
 
-      onSelect(item)
+      store.files.select(item)
     },
-    [selectedFiles, scrollToTop, onSelect]
+    [selectedFiles, scrollToTop]
   )
 
   const handleDeselectAll = useCallback(() => {
-    deselectAll()
+    store.files.deselectAll()
     scrollToTop()
-  }, [deselectAll, scrollToTop])
+  }, [scrollToTop])
 
   const renderItem = ({ item }) => {
     const order = findIndex(propEq('id', item.id))(selectedFiles)
