@@ -3,13 +3,13 @@ import UiTouchable from 'ui/Touchable'
 import UiImage from 'ui/Image'
 
 export const Base = styled(UiTouchable)`
-  height: 52px;
+  height: 56px;
   flex-direction: row;
   align-items: center;
   border-bottom-width: 1px;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  border-bottom-color: ${props => props.theme.colors.divider};
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom-color: ${(props) => props.theme.colors.divider};
 `
 
 export const Cover = styled(UiImage)`
@@ -24,7 +24,7 @@ export const Middle = styled.View`
 
 export const Content = styled.View`
   flex: 1;
-  margin-left: 10px;
+  margin-left: ${(props) => (props.noImage ? 0 : 10)}px;
   margin-right: 20px;
 `
 

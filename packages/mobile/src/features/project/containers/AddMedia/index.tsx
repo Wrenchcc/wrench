@@ -37,7 +37,15 @@ function AddMedia({ id }) {
     }
 
     setLoading(false)
-    navigate(SCREENS.ADD_POST)
+    navigate(SCREENS.ADD_POST, {
+      options: {
+        animations: {
+          push: {
+            waitForRender: true,
+          },
+        },
+      },
+    })
   }, [selectedFileId, navigate])
 
   const handleDismissModal = useCallback(() => {

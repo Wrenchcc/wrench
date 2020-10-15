@@ -12,7 +12,15 @@ function List({ projects, onPress, onClose, open, selectedId }) {
   const { showModal } = useNavigation()
 
   const handleNavigation = useCallback(() => {
-    showModal(SCREENS.ADD_PROJECT)
+    showModal(SCREENS.ADD_PROJECT, {
+      options: {
+        animations: {
+          push: {
+            waitForRender: true,
+          },
+        },
+      },
+    })
     onClose()
   }, [onClose])
 

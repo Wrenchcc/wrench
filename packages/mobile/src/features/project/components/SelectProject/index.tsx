@@ -1,9 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import AsyncStorage from '@react-native-community/async-storage'
 import { useReactiveVar } from '@apollo/client'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
 import { store } from 'gql'
-import { SELECTED_PROJECT_ID_KEY } from 'utils/storage/constants'
 import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'
@@ -23,26 +21,14 @@ function SelectProject({ black = false, selectedId: idFromNavigation }) {
 
   const handleOnPress = useCallback((id) => {
     handleClose()
-    store.project.selectedIdVar(id)
-    AsyncStorage.setItem(SELECTED_PROJECT_ID_KEY, id)
+    store.project.setProjectId(id)
   }, [])
 
   async function setInitialProject() {
-    const savedId = await AsyncStorage.getItem(SELECTED_PROJECT_ID_KEY)
+    const savedId = await store.project.getProjectId()
+    const id = idFromNavigation || savedId || projects[0].node.id
 
-    if (idFromNavigation) {
-      store.project.selectedIdVar(idFromNavigation)
-      AsyncStorage.setItem(SELECTED_PROJECT_ID_KEY, idFromNavigation)
-      return
-    }
-
-    if (savedId) {
-      store.project.selectedIdVar(savedId)
-      return
-    }
-
-    store.project.selectedIdVar(projects[0].node.id)
-    return
+    store.project.setProjectId(id)
   }
 
   useEffect(() => {
@@ -69,6 +55,7 @@ function SelectProject({ black = false, selectedId: idFromNavigation }) {
             {title}
           </Text>
           <Icon
+            onPress={toggleOpen}
             style={{ marginLeft: 10 }}
             source={isOpen ? arrowUp : arrowDown}
             color={(black && 'default') || isOpen ? 'inverse' : 'white'}

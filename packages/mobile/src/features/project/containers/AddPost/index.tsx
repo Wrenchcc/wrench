@@ -25,7 +25,7 @@ function AddPost() {
   const [addPost] = useAddPostMutation()
 
   const caption = useReactiveVar(store.post.captionVar)
-  const files = useReactiveVar(store.files.selectedFilesVar)
+  const files = useReactiveVar(store.files.croppedFilesVar)
   const projectId = useReactiveVar(store.project.selectedIdVar)
 
   const handleNavigationBack = useCallback(() => {
@@ -169,6 +169,7 @@ function AddPost() {
             scrollEnabled={false}
             keyboardType="twitter"
             multiline
+            autoFocus
             color="dark"
             onChangeText={onChangeText}
             placeholder={t('AddPost:placeholder')}

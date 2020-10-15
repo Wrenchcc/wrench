@@ -8,7 +8,15 @@ import { Base, Title, Description, Button } from './styles'
 const onPressAction = (type: TYPES, showModal, params) => {
   switch (type) {
     case TYPES.PROJECT:
-      return showModal(SCREENS.ADD_PROJECT)
+      return showModal(SCREENS.ADD_PROJECT, {
+        options: {
+          animations: {
+            push: {
+              waitForRender: true,
+            },
+          },
+        },
+      })
     case TYPES.POST:
     case TYPES.PROJECT_POST:
       return showModal(SCREENS.ADD_MEDIA, params)

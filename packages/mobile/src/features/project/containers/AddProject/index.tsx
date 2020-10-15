@@ -46,6 +46,7 @@ function AddProject() {
             onChangeText={onChangeText}
             value={title}
             borderColor="dark"
+            autoFocus
             color="dark"
             returnKeyType="next"
             enablesReturnKeyAutomatically

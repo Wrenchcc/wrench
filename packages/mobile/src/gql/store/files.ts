@@ -4,13 +4,15 @@ import { findIndex, propEq, assocPath } from 'rambda'
 import { logError } from 'utils/sentry'
 import { MAX_SELECTED_FILES } from './constants'
 
+export const croppedFilesVar = makeVar([])
 export const selectedFilesVar = makeVar([])
 export const selectedFileIdVar = makeVar('')
 
-export const add = (payload) => selectedFilesVar(payload)
+export const add = (payload) => croppedFilesVar(payload)
 export const deselectAll = () => selectedFilesVar([])
 
 export const reset = () => {
+  croppedFilesVar([])
   selectedFilesVar([])
   selectedFileIdVar('')
 }
