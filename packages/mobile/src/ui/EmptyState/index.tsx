@@ -5,13 +5,13 @@ import Text from 'ui/Text'
 import { TYPES } from './constants'
 import { Base, Title, Description, Button } from './styles'
 
-const onPressAction = (type: TYPES, showModal) => {
+const onPressAction = (type: TYPES, showModal, params) => {
   switch (type) {
     case TYPES.PROJECT:
       return showModal(SCREENS.ADD_PROJECT)
     case TYPES.POST:
     case TYPES.PROJECT_POST:
-      return showModal(SCREENS.ADD_MEDIA)
+      return showModal(SCREENS.ADD_MEDIA, params)
     default:
       return null
   }
@@ -28,10 +28,10 @@ const showButton = (type) => {
   }
 }
 
-function EmptyState({ type = TYPES.PROJECT }) {
+function EmptyState({ type = TYPES.PROJECT, params = {} }) {
   const { t } = useTranslation()
   const { showModal } = useNavigation()
-  const handleNavigation = useCallback(() => onPressAction(type, showModal), [type])
+  const handleNavigation = useCallback(() => onPressAction(type, showModal, params), [type])
 
   return (
     <Base>

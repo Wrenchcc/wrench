@@ -1,43 +1,52 @@
-import React, { useState, useCallback } from 'react'
-// import { pathOr } from 'rambda'
+import React, { useState, useCallback, useEffect } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
+import { useReactiveVar } from '@apollo/client'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
-// import { usePostStore, POST } from 'store'
+import { store } from 'gql'
+import { SELECTED_PROJECT_ID_KEY } from 'utils/storage/constants'
 import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'
 import { Base } from './styles'
 
-// function getProjectById(id, projects) {
-//   const project = projects && projects.find(({ node }) => node.id === id)
-//   return pathOr(projects[0]?.node, ['node'], project)
-// }
-
-function SelectProject({ black = false }) {
+function SelectProject({ black = false, selectedId: idFromNavigation }) {
   const [isOpen, setIsOpen] = useState(false)
-  const { data } = useCurrentUserProjectsQuery({
-    fetchPolicy: 'cache-only',
-  })
 
-  return null
-
+  const { data } = useCurrentUserProjectsQuery({ fetchPolicy: 'cache-only' })
   const projects = data?.user.projects.edges
 
-  // const { projectId, title, update } = usePostStore((store) => {
-  //   const project = getProjectById(store.projectId, projects)
-
-  //   return {
-  //     projectId: project?.id,
-  //     title: project?.title,
-  //     update: store.actions.update,
-  //   }
-  // })
+  const selectedId = useReactiveVar(store.project.selectedIdVar)
+  const title = projects?.find((a) => a.node.id === selectedId)?.node.title
 
   const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
   const handleClose = useCallback(() => setIsOpen(false), [])
 
-  const handleOnPress = useCallback((selectedId) => {
-    // handleClose(false)
-    // update(POST.PROJECT_ID, selectedId)
+  const handleOnPress = useCallback((id) => {
+    handleClose()
+    store.project.selectedIdVar(id)
+    AsyncStorage.setItem(SELECTED_PROJECT_ID_KEY, id)
+  }, [])
+
+  async function setInitialProject() {
+    const savedId = await AsyncStorage.getItem(SELECTED_PROJECT_ID_KEY)
+
+    if (idFromNavigation) {
+      store.project.selectedIdVar(idFromNavigation)
+      AsyncStorage.setItem(SELECTED_PROJECT_ID_KEY, idFromNavigation)
+      return
+    }
+
+    if (savedId) {
+      store.project.selectedIdVar(savedId)
+      return
+    }
+
+    store.project.selectedIdVar(projects[0].node.id)
+    return
+  }
+
+  useEffect(() => {
+    setInitialProject()
   }, [])
 
   return (
@@ -69,7 +78,7 @@ function SelectProject({ black = false }) {
 
       <List
         projects={projects}
-        selectedId={projectId}
+        selectedId={selectedId}
         open={isOpen}
         onPress={handleOnPress}
         onClose={handleClose}

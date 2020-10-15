@@ -101,10 +101,10 @@
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
-"@apollo/client@^3.3.0-beta.11":
-  version "3.3.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.0-beta.11.tgz#07357b4f7071c943e3e1f81e5b07a30195e8c279"
-  integrity sha512-gZb5Mh7U5geQHzJE93xKmL2fptcE2sMfdyP/hEqf2ljLK9BaIfnlOzD4i8JJURhTSir0hfrRTqLlJeJqyb3umg==
+"@apollo/client@^3.3.0-beta.12":
+  version "3.3.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.0-beta.12.tgz#8e605d861921d3e528891904b9a3217b77f64a71"
+  integrity sha512-q/uNTa7qnYbUKf2RYY1zXRkGCBLLrfUjXML/7Ub5mgfQH0qQvXZq/GBCO8gl6rT94okubb0YoVBUeGiU5h+UUA==
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@types/zen-observable" "^0.8.0"
@@ -113,7 +113,7 @@
     fast-json-stable-stringify "^2.0.0"
     graphql-tag "^2.11.0"
     hoist-non-react-statics "^3.3.2"
-    optimism "^0.12.2"
+    optimism "^0.13.0"
     prop-types "^15.7.2"
     symbol-observable "^2.0.0"
     terser "^5.2.0"
@@ -17106,10 +17106,17 @@ opn@^5.4.0, opn@^5.5.0:
   dependencies:
     is-wsl "^1.1.0"
 
-optimism@^0.12.1, optimism@^0.12.2:
+optimism@^0.12.1:
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.12.2.tgz#de9dc3d2c914d7b34e08957a768967c0605beda9"
   integrity sha512-k7hFhlmfLl6HNThIuuvYMQodC1c+q6Uc6V9cLVsMWyW514QuaxVJH/khPu2vLRIoDTpFdJ5sojlARhg1rzyGbg==
+  dependencies:
+    "@wry/context" "^0.5.2"
+
+optimism@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/optimism/-/optimism-0.13.0.tgz#c08904e1439a0eb9e7f86183dafa06cc715ff351"
+  integrity sha512-6JAh3dH+YUE4QUdsgUw8nUQyrNeBKfAEKOHMlLkQ168KhIYFIxzPsHakWrRXDnTO+x61RJrS3/2uEt6W0xlocA==
   dependencies:
     "@wry/context" "^0.5.2"
 
@@ -24471,8 +24478,3 @@ zip-stream@^4.0.0:
     archiver-utils "^2.1.0"
     compress-commons "^4.0.0"
     readable-stream "^3.6.0"
-
-zustand@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.1.3.tgz#33df7f56ec11b3003458b60606addc94225b282c"
-  integrity sha512-Otuzh3r0GsatvsUWeXEwdYjZEw1TItWcAXwDGEHdXE4/k6WbAdVDxC21t/Poq4ZMB+2VaQNKICWu7eCBUJ65tQ==

@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react'
+import { useReactiveVar } from '@apollo/client'
 import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
-// import { usePostStore } from 'store'
+import { store } from 'gql'
 import Text from 'ui/Text'
 import { Base, Inner, Cover } from './styles'
 
@@ -13,14 +14,11 @@ const transition = (
 )
 
 function Posting() {
-  return null
-  const ref = useRef()
+  const ref = useRef(null)
   const { t } = useTranslation()
 
-  const { image, isPosting } = usePostStore((store) => ({
-    image: store.files[0],
-    isPosting: store.isPosting,
-  }))
+  const isPosting = useReactiveVar(store.post.isPostingVar)
+  const image = useReactiveVar(store.files.selectedFilesVar)[0]
 
   useEffect(() => {
     ref.current.animateNextTransition()

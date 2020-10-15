@@ -15,7 +15,7 @@ import MediaPicker from 'components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
 import { Base } from './styles'
 
-function AddMedia() {
+function AddMedia({ id }) {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
   const [isLoading, setLoading] = useState(false)
@@ -88,7 +88,7 @@ function AddMedia() {
         color="black"
       />
 
-      <SelectProject />
+      <SelectProject selectedId={id} />
 
       <MediaPicker ListHeaderComponent={renderComponent} />
     </Base>

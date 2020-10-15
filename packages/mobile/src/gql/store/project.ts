@@ -8,6 +8,7 @@ const initialState = {
 }
 
 export const projectVar = makeVar(initialState)
+export const selectedIdVar = makeVar('')
 
 export const update = (field, payload) => projectVar({ ...projectVar(), [field]: payload })
 export const reset = () => projectVar(initialState)
