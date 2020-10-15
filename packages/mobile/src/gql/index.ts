@@ -1,3 +1,5 @@
 export * from './client'
 export * from './helpers'
-export * from './store'
+export * from './store/constants'
+
+export { default as store } from './store'

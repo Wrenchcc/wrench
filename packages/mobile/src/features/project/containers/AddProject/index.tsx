@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useReactiveVar } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
-import { projectVar, updateProjectVar, PROJECT } from 'gql'
+import { store, PROJECT } from 'gql'
 import { useNavigation, SCREENS, ScrollView } from 'navigation'
 import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
 import { close } from 'images'
@@ -9,19 +9,18 @@ import { close } from 'images'
 function AddProject() {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
-  const { title } = useReactiveVar(projectVar)
+  const { title } = useReactiveVar(store.project.projectVar)
 
   const handleNavigation = useCallback(() => {
-    updateProjectVar(PROJECT.TITLE, null)
     navigate(SCREENS.ADD_PROJECT_TYPE)
   }, [])
 
   const handleDismissModal = useCallback(() => {
-    updateProjectVar(PROJECT.TITLE, null)
+    store.project.update(PROJECT.TITLE, null)
     dismissModal()
   }, [])
 
-  const onChangeText = useCallback((value) => updateProjectVar(PROJECT.TITLE, value), [])
+  const onChangeText = useCallback((value) => store.project.update(PROJECT.TITLE, value), [])
 
   return (
     <>

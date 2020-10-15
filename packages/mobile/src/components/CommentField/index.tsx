@@ -5,7 +5,7 @@ import {
   CurrentUserDocument,
   CommentFragmentDoc,
 } from '@wrench/common'
-import { mentionVar } from 'gql'
+import { store } from 'gql'
 import EmojiList from 'components/EmojiList'
 import { useNavigation } from 'navigation'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
@@ -25,7 +25,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
   const [addComment] = useAddCommentMutation()
 
-  const query = mentionVar()
+  const query = store.mention.mentionVar()
 
   const { data } = useCurrentUserQuery()
 
@@ -135,7 +135,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         if (keywordArray && !!keywordArray.length) {
           const lastKeyword = keywordArray[keywordArray.length - 1]
 
-          mentionVar(lastKeyword.replace(MENTION.TRIGGER, ''))
+          store.mention.mentionVar(lastKeyword.replace(MENTION.TRIGGER, ''))
 
           showMention({
             onPress: (user) => {

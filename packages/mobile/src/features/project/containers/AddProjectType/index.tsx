@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
-import { updateProjectVar, PROJECT } from 'gql'
+import { store, PROJECT } from 'gql'
 import { Header, Title, Text, Icon } from 'ui'
 import { arrowLeft } from 'images'
 import ProjectCategories from '../../components/ProjectCategories'
@@ -30,7 +30,7 @@ function AddProjectType() {
 
   const handleOnSelect = useCallback(
     (type) => {
-      updateProjectVar(PROJECT.TYPE, type.id)
+      store.project.update(PROJECT.TYPE, type.id)
       handleNavigation()
     },
     [handleNavigation]

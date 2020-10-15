@@ -7,7 +7,7 @@ import {
 } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { useReactiveVar } from '@apollo/client'
-import { projectVar, resetProjectVar, updateProjectVar, PROJECT } from 'gql'
+import { store, PROJECT } from 'gql'
 import { saveSelectedProjectId } from 'store/post'
 import { ActivityIndicator, Header, Title, Text, Input, Icon, KeyboardAvoidingView } from 'ui'
 import { arrowLeft } from 'images'
@@ -31,7 +31,7 @@ function AddProjectModel() {
     fetchPolicy: 'cache-only',
   })
 
-  const { model, type, title } = useReactiveVar(projectVar)
+  const { model, type, title } = useReactiveVar(store.project.projectVar)
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
@@ -42,7 +42,7 @@ function AddProjectModel() {
       setQuery(value)
 
       if (model) {
-        updateProjectVar(PROJECT.MODEL, null)
+        store.project.update(PROJECT.MODEL, null)
       } else {
         if (!isSearching) {
           setIsSearching(true)
@@ -122,13 +122,13 @@ function AddProjectModel() {
       })
     }
 
-    resetProjectVar()
+    store.project.reset()
   }, [dismissModal, model, type, title, data])
 
   const handleModelChange = useCallback(
     (selectedModel) => {
       setIsSearching(false)
-      updateProjectVar(PROJECT.MODEL, selectedModel)
+      store.project.update(PROJECT.MODEL, selectedModel)
       setQuery(formatModel(selectedModel))
     },
     [setIsSearching, setQuery]
