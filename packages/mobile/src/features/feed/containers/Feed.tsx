@@ -43,7 +43,7 @@ function Feed() {
   }, [])
 
   useEffect(() => {
-    if (edges.length) {
+    if (edges?.length) {
       const id = edges[0].node.id
 
       if (latestId && latestId !== id && !edges[0].node.permissions.isOwner) {
