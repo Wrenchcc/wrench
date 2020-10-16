@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useReactiveVar } from '@apollo/client'
 import { useActionSheet } from '@expo/react-native-action-sheet'
-import { usePostStore } from 'store'
+import { store } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
 import { ActivityIndicator, Header, Text, Icon, Touchable } from 'ui'
 import cropImage from 'utils/cropImage'
@@ -14,47 +15,41 @@ import MediaPicker from 'components/MediaPicker'
 import SelectProject from '../../components/SelectProject'
 import { Base } from './styles'
 
-function AddMedia() {
+function AddMedia({ id }) {
   const { t } = useTranslation()
   const { navigate, dismissModal } = useNavigation()
   const [isLoading, setLoading] = useState(false)
   const { showActionSheetWithOptions } = useActionSheet()
   const dynamicColor = useDynamicColor('inverse')
 
-  const {
-    onSelect,
-    onEdit,
-    selectedFile,
-    hasSelectedFiles,
-    selectedFiles,
-    addFiles,
-    reset,
-  } = usePostStore((store) => ({
-    addFiles: store.actions.addFiles,
-    hasSelectedFiles: store.selectedFiles.length > 0,
-    onEdit: store.actions.onEdit,
-    onSelect: store.actions.onSelect,
-    reset: store.actions.reset,
-    selectedFile: store.selectedFiles.find(({ id }) => id === store.selectedId),
-    selectedFiles: store.selectedFiles,
-  }))
+  const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
+  const selectedFileId = useReactiveVar(store.files.selectedFileIdVar)
+  const selectedFile = selectedFiles.find(({ id }) => id === selectedFileId)
 
   const handleCropping = useCallback(async () => {
     setLoading(true)
 
     try {
       const files = await Promise.all(selectedFiles.map(cropImage))
-      addFiles(files)
+      store.files.add(files)
     } catch (err) {
       logError(err)
     }
 
     setLoading(false)
-    navigate(SCREENS.ADD_POST)
-  }, [selectedFile, navigate, addFiles])
+    navigate(SCREENS.ADD_POST, {
+      options: {
+        animations: {
+          push: {
+            waitForRender: true,
+          },
+        },
+      },
+    })
+  }, [selectedFileId, navigate])
 
   const handleDismissModal = useCallback(() => {
-    if (hasSelectedFiles) {
+    if (selectedFiles.length > 0) {
       showActionSheetWithOptions(
         {
           title: t('AddMedia:options:title'),
@@ -66,20 +61,20 @@ function AddMedia() {
         (index) => {
           if (index === 0) {
             dismissModal()
-            reset()
+            store.files.reset()
           }
         }
       )
     } else {
       dismissModal()
     }
-  }, [hasSelectedFiles, showActionSheetWithOptions, dismissModal, reset])
+  }, [showActionSheetWithOptions, dismissModal])
 
   const renderComponent = useCallback(() => {
     return selectedFile ? (
-      <ImageEditor source={selectedFile} onChange={onEdit} />
+      <ImageEditor source={selectedFile} onChange={store.files.edit} />
     ) : (
-      <Camera onTakePicture={onSelect} />
+      <Camera onTakePicture={store.files.select} />
     )
   }, [selectedFile])
 
@@ -90,7 +85,7 @@ function AddMedia() {
         headerRight={
           isLoading ? (
             <ActivityIndicator color="white" />
-          ) : hasSelectedFiles ? (
+          ) : selectedFiles.length > 0 ? (
             <Touchable onPress={handleCropping}>
               <Text color="white" medium>
                 {t('AddMedia:next')}
@@ -101,7 +96,7 @@ function AddMedia() {
         color="black"
       />
 
-      <SelectProject />
+      <SelectProject selectedId={id} />
 
       <MediaPicker ListHeaderComponent={renderComponent} />
     </Base>

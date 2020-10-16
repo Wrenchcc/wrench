@@ -10,5 +10,7 @@ export default isAuthenticated(async (_, { id }, ctx) => {
 
   await ctx.db.Project.delete(id)
 
+  ctx.redis.delete(`user:projectsConnection:${id}:*`)
+
   return true
 })

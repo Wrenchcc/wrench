@@ -1,6 +1,6 @@
 export const ACCESS_TOKEN_KEY = '@wrench:accessToken'
 export const REFRESH_TOKEN_KEY = '@wrench:refreshToken'
-export const SELECTED_PROJECT_KEY = '@wrench:project'
+export const SELECTED_PROJECT_ID_KEY = '@wrench:selectedProjectId'
 export const SELECTED_LOCALE_KEY = '@wrench:locale'
 export const SELECTED_ALBUM_KEY = '@wrench:selectedAlbum'
 export const PREFFERED_SIGN_IN_PROVIDER = '@wrench:prefferedSignInProvider'

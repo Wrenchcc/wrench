@@ -1,29 +1,15 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useReactiveVar } from '@apollo/client'
-import { Transitioning, Transition } from 'react-native-reanimated'
 import { useTranslation } from 'react-i18next'
-import { toastVar } from 'gql'
+import { store } from 'gql'
 import { TOAST_TYPES } from 'utils/enums'
 import { Banner } from 'ui'
-
-const transition = (
-  <Transition.Sequence>
-    <Transition.Change interpolation="easeInOut" />
-    <Transition.In type="slide-top" durationMs={150} interpolation="easeOut" propagation="top" />
-  </Transition.Sequence>
-)
+import Animation from './Animation'
 
 function Toast() {
-  const ref = useRef()
   const { t } = useTranslation()
 
-  const { content, show, type } = useReactiveVar(toastVar)
-
-  useEffect(() => {
-    if (show) {
-      ref.current.animateNextTransition()
-    }
-  }, [ref, show])
+  const { content, show, type, dismissAfter } = useReactiveVar(store.toast.toastVar)
 
   const renderContent = useCallback(() => {
     switch (type) {
@@ -37,9 +23,14 @@ function Toast() {
   }, [t, type, content])
 
   return (
-    <Transitioning.View ref={ref} transition={transition}>
-      {show && <Banner type={type} content={renderContent()} />}
-    </Transitioning.View>
+    <Animation
+      onAnimationCompleted={store.toast.reset}
+      visible={Boolean(show)}
+      onHide={store.toast.hide}
+      dismissAfter={Number(dismissAfter)}
+    >
+      <Banner type={type} content={renderContent()} />
+    </Animation>
   )
 }
 

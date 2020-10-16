@@ -12,7 +12,15 @@ function List({ projects, onPress, onClose, open, selectedId }) {
   const { showModal } = useNavigation()
 
   const handleNavigation = useCallback(() => {
-    showModal(SCREENS.ADD_PROJECT)
+    showModal(SCREENS.ADD_PROJECT, {
+      options: {
+        animations: {
+          push: {
+            waitForRender: true,
+          },
+        },
+      },
+    })
     onClose()
   }, [onClose])
 
@@ -31,6 +39,7 @@ function List({ projects, onPress, onClose, open, selectedId }) {
   }, [open])
 
   const renderProjects = () =>
+    projects &&
     projects
       .slice()
       .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)

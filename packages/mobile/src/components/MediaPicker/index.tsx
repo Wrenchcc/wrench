@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { Dimensions } from 'react-native'
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -23,15 +23,16 @@ const PERMISSION = isIphone
 const WRITE_EXTERNAL_STORAGE_PERMISSION = PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE
 
 function MediaPicker({ ListHeaderComponent }) {
+  const bottomSheet = useRef(null)
+
   const [isLoading, setLoading] = useState(true)
   const [checkingPermission, setCheckingPermission] = useState(true)
-  const [photoPermission, setPhotoPermission] = useState(false)
+  const [photoPermission, setPhotoPermission] = useState('')
   const [loadAlbums, setLoadAlbums] = useState(false)
-  const [selectedAlbum, setAlbum] = useState()
-  const bottomSheet = useRef()
+  const [selectedAlbum, setAlbum] = useState(null)
 
   useEffect(() => {
-    check(PERMISSION).then(res => {
+    check(PERMISSION).then((res) => {
       setLoading(false)
       setPhotoPermission(res)
       setCheckingPermission(false)
@@ -39,7 +40,7 @@ function MediaPicker({ ListHeaderComponent }) {
 
     // NOTE: For saving image
     if (isAndroid) {
-      check(WRITE_EXTERNAL_STORAGE_PERMISSION).then(res => {
+      check(WRITE_EXTERNAL_STORAGE_PERMISSION).then((res) => {
         // NOTE: Need to ask for permission here
         if (res !== RESULTS.GRANTED) {
           request(WRITE_EXTERNAL_STORAGE_PERMISSION)
@@ -73,7 +74,7 @@ function MediaPicker({ ListHeaderComponent }) {
   }, [setLoadAlbums, bottomSheet])
 
   const changeAlbum = useCallback(
-    a => {
+    (a) => {
       // NOTE: setImmediate fixes issue with pressing twice
       setImmediate(() => {
         setAlbum(a)
@@ -112,14 +113,10 @@ function MediaPicker({ ListHeaderComponent }) {
           <Icon source={album} onPress={handleOpenAlbum} naviteHandler color="white" />
         </OpenAlbum>
 
-        <List
-          album={selectedAlbum && selectedAlbum.id}
-          setAlbum={setAlbum}
-          ListHeaderComponent={ListHeaderComponent}
-        />
+        <List album={selectedAlbum?.id} ListHeaderComponent={ListHeaderComponent} />
       </Base>
     </>
   )
 }
 
-export default memo(MediaPicker)
+export default MediaPicker

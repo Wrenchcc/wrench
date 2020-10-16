@@ -13,7 +13,7 @@ function Project({ id, files, title, followers, onPress, selected }) {
       {image && <Cover source={image} width={40} height={40} />}
 
       <Middle>
-        <Content>
+        <Content noImage={!image}>
           <Text numberOfLines={1}>{title}</Text>
           <Followers color="neutral" followers={followers.totalCount} />
         </Content>

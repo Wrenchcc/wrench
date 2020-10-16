@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useReactiveVar } from '@apollo/client'
-import { mentionVar } from 'gql'
+import { store } from 'gql'
 import { InfiniteList, MentionUser, NoResults, SearchingFor, Loader } from 'ui'
 import { Base } from './styles'
 
 function Mention({ onPress }) {
-  const query = useReactiveVar(mentionVar)
+  const query = useReactiveVar(store.mention.mentionVar)
 
   const renderItem = ({ item }) => <MentionUser user={item.node} onPress={onPress} />
 

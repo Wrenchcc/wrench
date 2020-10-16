@@ -13,7 +13,7 @@ function ProgressBar({
   opacity = 1,
   progress = 0,
 }) {
-  const ref = useRef()
+  const ref = useRef(null)
   const [width, setWidth] = useState(progress)
   const dynamicColor = useDynamicColor(fillColor)
 

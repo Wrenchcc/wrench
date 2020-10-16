@@ -16,6 +16,7 @@ export const Inner = styled(Animated.View)`
   align-items: center;
   flex-direction: row;
   height: ${NAVIGATION.TOP_BAR_HEIGHT}px;
+  margin-top: ${NAVIGATION.STATUS_BAR_HEIGHT}px;
   justify-content: space-between;
   padding-horizontal: 20px;
 `

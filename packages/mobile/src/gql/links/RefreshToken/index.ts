@@ -1,7 +1,7 @@
 import { Observable } from '@apollo/client'
 import { onError } from '@apollo/link-error'
 import { RefreshTokenDocument } from '@wrench/common'
-import { showSpamToast } from 'gql'
+import { store } from 'gql'
 import { getRefreshToken, setTokens } from 'utils/storage/auth'
 import { track, events } from 'utils/analytics'
 import { logError } from 'utils/sentry'
@@ -24,7 +24,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
     const { extensions } = graphQLErrors[0]
 
     if (extensions && extensions.code === ERROR_CODES.SPAM) {
-      showSpamToast()
+      store.toast.show({ dismissAfter: 6000 })
     }
 
     if (extensions && extensions.code === ERROR_CODES.UNAUTHENTICATED) {

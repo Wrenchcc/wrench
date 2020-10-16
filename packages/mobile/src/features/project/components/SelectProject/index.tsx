@@ -1,44 +1,45 @@
-import React, { useState, useCallback } from 'react'
-import { pathOr } from 'rambda'
+import React, { useState, useCallback, useEffect } from 'react'
+import { useReactiveVar } from '@apollo/client'
 import { useCurrentUserProjectsQuery } from '@wrench/common'
-import { usePostStore, POST } from 'store'
+import { store } from 'gql'
 import { Text, Icon, Touchable } from 'ui'
 import { arrowDown, arrowUp } from 'images'
 import List from './List'
 import { Base } from './styles'
 
-function getProjectById(id, projects) {
-  const project = projects && projects.find(({ node }) => node.id === id)
-  return pathOr(projects[0]?.node, ['node'], project)
-}
-
-function SelectProject({ black = false }) {
+function SelectProject({ black = false, selectedId: idFromNavigation }) {
   const [isOpen, setIsOpen] = useState(false)
-  const { data } = useCurrentUserProjectsQuery({
-    fetchPolicy: 'cache-only',
-  })
 
+  const { data } = useCurrentUserProjectsQuery({ fetchPolicy: 'cache-only' })
   const projects = data?.user.projects.edges
 
-  const { projectId, title, update } = usePostStore((store) => {
-    const project = getProjectById(store.projectId, projects)
-    return {
-      projectId: project?.id,
-      title: project?.title,
-      update: store.actions.update,
-    }
-  })
+  const selectedId = useReactiveVar(store.project.selectedIdVar)
+  const title = projects?.find((a) => a.node.id === selectedId)?.node.title
 
   const toggleOpen = useCallback(() => setIsOpen(!isOpen), [isOpen])
   const handleClose = useCallback(() => setIsOpen(false), [])
 
-  const handleOnPress = useCallback(
-    (selectedId) => {
-      handleClose(false)
-      update(POST.PROJECT_ID, selectedId)
-    },
-    [handleClose, update]
-  )
+  const handleOnPress = useCallback((id) => {
+    handleClose()
+    store.project.setProjectId(id)
+  }, [])
+
+  async function setInitialProject() {
+    const savedId = await store.project.getProjectId()
+
+    // if saved project is deleted
+    if (projects.some(({ node }) => savedId !== node.id)) {
+      store.project.setProjectId(projects[0].node.id)
+    }
+
+    const id = idFromNavigation || savedId || projects[0].node.id
+
+    store.project.setProjectId(id)
+  }
+
+  useEffect(() => {
+    setInitialProject()
+  }, [])
 
   return (
     <>
@@ -60,6 +61,7 @@ function SelectProject({ black = false }) {
             {title}
           </Text>
           <Icon
+            onPress={toggleOpen}
             style={{ marginLeft: 10 }}
             source={isOpen ? arrowUp : arrowDown}
             color={(black && 'default') || isOpen ? 'inverse' : 'white'}
@@ -69,7 +71,7 @@ function SelectProject({ black = false }) {
 
       <List
         projects={projects}
-        selectedId={projectId}
+        selectedId={selectedId}
         open={isOpen}
         onPress={handleOnPress}
         onClose={handleClose}

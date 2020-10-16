@@ -12,7 +12,7 @@ import { Notification, EmptyState } from 'ui'
 import { TYPES } from 'ui/EmptyState/constants'
 
 function Notifications({ componentId }) {
-  const scrollRef = useRef()
+  const scrollRef = useRef(null)
   const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
   const [deleteNotification] = useDeleteNotificationMutation()
   const { showNotificationBadge, hideNotificationBadge } = useNavigation()

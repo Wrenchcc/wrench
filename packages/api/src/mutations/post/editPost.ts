@@ -8,10 +8,13 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
     return new ForbiddenError('You don’t have permission to manage this post.')
   }
 
-  await Promise.all([
-    ctx.redis.delete(`post:filesConnection:${id}:*`),
-    ctx.redis.delete(`project:cover:${id}`),
-  ])
+  // await Promise.all([
+  //   ctx.redis.delete(`post:filesConnection:${id}:*`),
+  //   ctx.redis.delete(`project:cover:${id}`),
+  // ])
+
+  ctx.redis.delete(`post:filesConnection:${id}:*`)
+  ctx.redis.delete(`project:cover:${id}`)
 
   // Add new project if projectId is defined or use currenct project
   const project = await ctx.db.Project.findOne(input.projectId || post.projectId)

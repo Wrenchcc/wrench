@@ -1,7 +1,7 @@
 import { pathOr } from 'rambda'
 import { EditUserDocument } from '@wrench/common'
 import { client, getCurrentUser } from 'gql'
-import { logError } from 'utils/analytics'
+import { logError } from 'utils/sentry'
 import { getLocale, timezone } from './helpers'
 
 export function updateUserLocale(locale) {

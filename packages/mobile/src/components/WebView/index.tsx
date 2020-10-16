@@ -10,7 +10,8 @@ import { Base, BaseWebView, Footer, Inner } from './styles'
 
 function WebView({ url: initialUrl }) {
   const { t } = useTranslation()
-  const webview = useRef()
+  const webview = useRef(null)
+
   const { dismissModal } = useNavigation()
   const [progress, setProgress] = useState(0)
   const [url, setUrl] = useState(initialUrl)
@@ -34,7 +35,7 @@ function WebView({ url: initialUrl }) {
     return () => backHandler.remove()
   }, [])
 
-  const handleOnNavigationStateChange = useCallback(navState => {
+  const handleOnNavigationStateChange = useCallback((navState) => {
     if (navState.url) {
       setUrl(navState.url)
     }

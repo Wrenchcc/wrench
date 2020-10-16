@@ -1,7 +1,7 @@
 import React, { useCallback, memo } from 'react'
-// import { sort } from 'rambda'
+import { sort } from 'rambda'
 import { ScrollView } from 'react-native'
-import { useProjectTypesQuery } from '@wrench/common'
+import { useProjectTypesQuery, useCurrentUserQuery } from '@wrench/common'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
 import CategoriesPlaceholder from './Placeholder'
@@ -9,7 +9,7 @@ import { Base, Wrapper } from './styles'
 
 function ProjectTypes() {
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
-  // const { data: userData, loading: loadingUser } = useCurrentUserQuery()
+  const { data: userData, loading: loadingUser } = useCurrentUserQuery()
 
   const { navigate } = useNavigation()
 
@@ -25,10 +25,10 @@ function ProjectTypes() {
     )
   }
 
-  // const data = sort(
-  //   a => (userData.user.interestedIn.some(item => item.id === a.id) ? -1 : 1),
-  //   typesData.types
-  // )
+  const data = sort(
+    (a) => (userData.user.interestedIn.some((item) => item.id === a.id) ? -1 : 1),
+    typesData.types
+  )
 
   return (
     <Base>

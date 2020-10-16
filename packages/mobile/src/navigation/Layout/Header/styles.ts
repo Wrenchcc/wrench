@@ -15,6 +15,7 @@ export const Base = styled(Animated.View)`
 export const Background = styled.View`
   z-index: 10;
   background-color: ${(props) => props.theme.colors.default};
+  z-index: 1000;
 `
 export const Content = styled(Animated.View)`
   background-color: ${(props) => props.theme.colors.default};
