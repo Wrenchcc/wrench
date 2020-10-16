@@ -2,14 +2,12 @@ import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { KeyboardAvoidingView } from 'react-native'
 import ms from 'ms'
 import { usePaginatedQuery, FeedDocument } from '@wrench/common'
-import { pathOr } from 'rambda'
 import { Layout, FlatList, useScrollToTop, SCREENS } from 'navigation'
 import Post from 'components/Post'
 import { Posting, ShowLatest } from 'ui'
 import { registerUserLocale } from 'i18n'
 import ProjectSuggestions from 'features/feed/components/ProjectSuggestions'
 import { isIphone } from 'utils/platform'
-import { CONTENT_INSET } from 'navigation'
 
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
@@ -18,6 +16,7 @@ const renderItem = ({ item }) => <Post post={item.node} />
 function Feed() {
   const scrollRef = useRef(null)
   const [hasNewPosts, setHasNewPosts] = useState(false)
+  const [latestId, setLatestId] = useState('')
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
 
   const {
@@ -33,7 +32,7 @@ function Feed() {
 
   const scrollToTop = useCallback(() => {
     if (scrollRef.current) {
-      scrollRef.current.getNode().scrollToOffset({ offset: -CONTENT_INSET })
+      scrollRef.current.getNode().scrollToOffset({ offset: -10000000 })
     }
   }, [scrollRef])
 
@@ -44,19 +43,21 @@ function Feed() {
   }, [])
 
   useEffect(() => {
-    if (
-      edges &&
-      edges.length > 10 &&
-      !pathOr(false, [0, 'node', 'permissions', 'isOwner'], edges)
-    ) {
-      setHasNewPosts(true)
+    if (edges.length) {
+      const id = edges[0].node.id
+
+      if (latestId && latestId !== id && !edges[0].node.permissions.isOwner) {
+        setHasNewPosts(true)
+      }
+
+      setLatestId(id)
     }
   }, [edges])
 
   const StickyComponent = hasNewPosts ? (
     <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
   ) : (
-    <Posting />
+    <Posting scrollToTop={scrollToTop} />
   )
 
   return (
@@ -66,7 +67,7 @@ function Feed() {
           ref={scrollRef}
           initialNumToRender={2}
           maintainVisibleContentPosition={{
-            minIndexForVisible: 1,
+            minIndexForVisible: 0,
           }}
           spacingSeparator
           data={edges}

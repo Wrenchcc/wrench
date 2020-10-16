@@ -13,7 +13,7 @@ const transition = (
   </Transition.Sequence>
 )
 
-function Posting() {
+function Posting({ scrollToTop }) {
   const ref = useRef(null)
   const { t } = useTranslation()
 
@@ -22,6 +22,12 @@ function Posting() {
 
   useEffect(() => {
     ref.current.animateNextTransition()
+
+    if (!isPosting) {
+      setImmediate(() => {
+        scrollToTop()
+      })
+    }
   }, [ref, isPosting])
 
   return (
