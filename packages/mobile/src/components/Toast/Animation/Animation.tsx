@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Animated, { Easing } from 'react-native-reanimated'
+import { NAVIGATION } from 'navigation/constants'
 import { useTransition, useSetTimeout } from './animationRunners'
 
 const { eq, interpolate } = Animated
@@ -7,6 +8,7 @@ const { eq, interpolate } = Animated
 type Props = {
   children: React.ReactNode
   onAnimationCompleted: () => void
+  onHide: () => void
   visible: boolean
   dismissAfter?: number
 }
@@ -16,12 +18,12 @@ const HEIGHT = 40
 const Animation: React.FC<Props> = ({
   children,
   onAnimationCompleted,
-  visible: visibleAsProp,
+  onHide,
+  visible,
   dismissAfter,
 }) => {
-  const [visible, setVisible] = useState<boolean>(false)
   const animation = useTransition(visible, {
-    duration: 220,
+    duration: 250,
     easing: Easing.ease,
     onAnimationCompleted: ([position]) => {
       if (position === 0) {
@@ -38,18 +40,16 @@ const Animation: React.FC<Props> = ({
   useSetTimeout({
     startWhen: eq(animation, 1),
     stopWhen: eq(animation, 0),
-    onTimeoutFinished: () => setVisible(false),
+    onTimeoutFinished: onHide,
     timeout: dismissAfter || 0,
   })
-
-  useEffect(() => {
-    setVisible(visibleAsProp && HEIGHT > 0)
-  }, [visibleAsProp, HEIGHT])
 
   return (
     <Animated.View
       style={{
-        top: -HEIGHT,
+        top: NAVIGATION.TOP_BAR_HEIGHT,
+        position: 'absolute',
+        zIndex: 100,
         left: 0,
         right: 0,
         transform: [{ translateY }],

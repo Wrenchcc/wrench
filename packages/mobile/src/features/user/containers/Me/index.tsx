@@ -16,7 +16,7 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Me() {
-  const scrollRef = useRef()
+  const scrollRef = useRef(null)
   const { t } = useTranslation()
 
   const {

@@ -62,7 +62,7 @@ export const useTransition = (state: boolean | number, config: TimingConfig) => 
       ),
       state.position,
     ])
-  }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [value])
 }
 
 type SetTimeoutHook = {
@@ -108,6 +108,6 @@ export const useSetTimeout = ({
           set(timer.start, timer.clock),
         ]),
       ]),
-    []
+    [timeout]
   )
 }

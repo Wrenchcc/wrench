@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import Animated from 'react-native-reanimated'
-import { SafeAreaView } from 'react-native'
 import { Text, Icon } from 'ui'
 import Toast from 'components/Toast'
 import { arrowLeft } from 'images'
@@ -43,8 +42,8 @@ function Header({
       : 1
 
   return (
-    <Base inline={inline}>
-      <SafeAreaView>
+    <>
+      <Base inline={inline}>
         <Inner>
           <Left>{headerLeft || <Icon onPress={handleNavigation} source={arrowLeft} />}</Left>
           <Animated.View style={{ opacity, maxWidth: 190 }}>
@@ -59,9 +58,9 @@ function Header({
           </Animated.View>
           <Right>{headerRight}</Right>
         </Inner>
-      </SafeAreaView>
+      </Base>
       <Toast />
-    </Base>
+    </>
   )
 }
 

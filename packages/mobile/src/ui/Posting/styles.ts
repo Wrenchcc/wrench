@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Base = styled.View`
-  background-color: ${props => props.theme.colors.subtle};
+  background-color: ${(props) => props.theme.colors.placeholder};
   opacity: 0.96;
   width: 100%;
   height: 60px;

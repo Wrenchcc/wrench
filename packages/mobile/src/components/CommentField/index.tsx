@@ -18,7 +18,7 @@ const COMMENT_FIELD_HEIGHT = 40
 
 function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   const { t } = useTranslation()
-  const inputRef = useRef()
+  const inputRef = useRef(null)
   const isTracking = useRef(false)
   const [text, setText] = useState('')
   const { showMention, dismissMention } = useNavigation()

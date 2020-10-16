@@ -25,10 +25,11 @@ function Toast() {
   return (
     <Animation
       onAnimationCompleted={store.toast.reset}
-      visible={!!show}
-      dismissAfter={dismissAfter}
+      visible={Boolean(show)}
+      onHide={store.toast.hide}
+      dismissAfter={Number(dismissAfter)}
     >
-      {show && <Banner type={type} content={renderContent()} />}
+      <Banner type={type} content={renderContent()} />
     </Animation>
   )
 }

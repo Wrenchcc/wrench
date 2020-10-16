@@ -39,6 +39,7 @@ function List({ projects, onPress, onClose, open, selectedId }) {
   }, [open])
 
   const renderProjects = () =>
+    projects &&
     projects
       .slice()
       .sort((a, b) => a.node.files.edges.length > b.node.files.edges.length)

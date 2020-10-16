@@ -12,9 +12,9 @@ const { Constants } = ExpoCamera
 const PERMISSION = isIphone ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
 
 function Camera({ onTakePicture, initialCameraType = Constants.Type.back }) {
-  const camera = useRef()
+  const camera = useRef(null)
   const [isLoading, setLoading] = useState(true)
-  const [permission, setPermission] = useState(false)
+  const [permission, setPermission] = useState('')
   const [cameraType, setCameraType] = useState(initialCameraType)
   const [flashMode, setFlashMode] = useState(Constants.FlashMode.off)
 

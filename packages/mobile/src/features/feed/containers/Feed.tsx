@@ -16,7 +16,7 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Feed() {
-  const scrollRef = useRef()
+  const scrollRef = useRef(null)
   const [hasNewPosts, setHasNewPosts] = useState(false)
   const closeNewPosts = useCallback(() => setHasNewPosts(false), [])
 
@@ -51,8 +51,7 @@ function Feed() {
     ) {
       setHasNewPosts(true)
     }
-    // If first id change
-  }, [pathOr(false, [0, 'node', 'id'], edges)])
+  }, [edges])
 
   const StickyComponent = hasNewPosts ? (
     <ShowLatest onHide={closeNewPosts} onPress={scrollToTop} />
@@ -66,6 +65,9 @@ function Feed() {
         <FlatList
           ref={scrollRef}
           initialNumToRender={2}
+          maintainVisibleContentPosition={{
+            minIndexForVisible: 1,
+          }}
           spacingSeparator
           data={edges}
           ListEmptyComponent={<ProjectSuggestions />}

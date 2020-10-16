@@ -33,10 +33,13 @@ export default isAuthenticated(async (_, { input }, ctx) => {
     }
   }
 
-  await Promise.all([
-    ctx.redis.delete(`project:filesConnection:${input.projectId}:*`),
-    ctx.redis.delete(`project:cover:${input.projectId}`),
-  ])
+  // await Promise.all([
+  //   ctx.redis.delete(`project:filesConnection:${input.projectId}:*`),
+  //   ctx.redis.delete(`project:cover:${input.projectId}`),
+  // ])
+
+  ctx.redis.delete(`project:filesConnection:${input.projectId}:*`)
+  ctx.redis.delete(`project:cover:${input.projectId}`)
 
   const filesToSave = input.files.map(({ filename }) => ({
     filename,

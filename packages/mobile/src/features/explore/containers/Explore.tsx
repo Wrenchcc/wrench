@@ -17,7 +17,7 @@ const DEFAULT_QUERY = ''
 const STICKY_HEIGHT = 50
 
 function Explore() {
-  const scrollRef = useRef()
+  const scrollRef = useRef(null)
   const [query, setQuery] = useState(DEFAULT_QUERY)
   const [searchActive, setSearchActive] = useState(false)
 
