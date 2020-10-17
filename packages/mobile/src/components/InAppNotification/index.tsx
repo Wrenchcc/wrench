@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useReactiveVar } from '@apollo/client'
 import { store } from 'gql'
 import InAppNotificationMessage from 'ui/InAppNotificationMessage'
@@ -8,10 +8,13 @@ const InAppNotification = () => {
   const visible = useReactiveVar(store.notification.visibleVar)
   const currentNotification = useReactiveVar(store.notification.currentNotificationVar)
 
-  const onNotificationPressHandler = () => {
+  const onNotificationPressHandler = useCallback(() => {
     store.notification.setVisible(false)
-    createPushNotificationsHandler(currentNotification?.path)
-  }
+
+    if (currentNotification) {
+      createPushNotificationsHandler(currentNotification?.path)
+    }
+  }, [currentNotification])
 
   return (
     <InAppNotificationMessage
