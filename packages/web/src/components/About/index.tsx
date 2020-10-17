@@ -124,24 +124,6 @@ function About() {
                 <a href="mailto:felix@wrench.cc">felix@wrench.cc</a>
               </PersonPicture>
             </Person>
-
-            <Person>
-              <PersonPicture>
-                <source
-                  srcSet={`${require('./vitor.jpg')} 1x, ${require('./vitor@2x.jpg')} 2x, ${require('./vitor@2x.jpg')} 3x`}
-                  type="image/jpeg"
-                />
-
-                <img src={require('./vitor.jpg')} />
-                <br />
-                <br />
-
-                <Text bold>Vitor Capretz</Text>
-                <Text color="grey">Senior Software Engineer</Text>
-                <br />
-                <a href="mailto:vitor@wrench.cc">vitor@wrench.cc</a>
-              </PersonPicture>
-            </Person>
           </Team>
         </Center>
       </Inner>
