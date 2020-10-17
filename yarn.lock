@@ -19608,14 +19608,15 @@ react-native-reanimated@1.4.0:
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.4.0.tgz#7f1acbf9be08492d834f512700570978052be2f9"
   integrity sha512-tO7nSNNP+iRLVbkcSS5GXyDBb7tSI02+XuRL3/S39EAr35rnvUy2JfeLUQG+fWSObJjnMVhasUDEUwlENk8IXw==
 
-react-native-redash@^14.2.4:
-  version "14.2.4"
-  resolved "https://registry.yarnpkg.com/react-native-redash/-/react-native-redash-14.2.4.tgz#5dbb4b2f1a7441bb304fe3494b89e0dc9010c8ef"
-  integrity sha512-/1R9UxXv3ffKcrbxolqa2B247Cgd3ikyEm2q1VlBng77Es6PAD4LAOXQ83pBavvwNfOsbhF3ebkbMpJcLaVt3Q==
+react-native-redash@9.6.0:
+  version "9.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-redash/-/react-native-redash-9.6.0.tgz#4fde2075c52b2dd0646436d50a326fd9989f4393"
+  integrity sha512-0Q0YppSQQ7LJlYcSzb2GGYtKvZFVOfzYeJc/cE1smXNisXyanFmFLrWZ1L4OuZyCas+cl3nELYeQi55ys3h6bg==
   dependencies:
     abs-svg-path "^0.1.1"
     normalize-svg-path "^1.0.1"
     parse-svg-path "^0.1.2"
+    use-memo-one "^1.1.1"
 
 react-native-responsive-dimensions@^3.1.1:
   version "3.1.1"
@@ -23404,6 +23405,11 @@ use-callback-ref@^1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.4.tgz#d86d1577bfd0b955b6e04aaf5971025f406bea3c"
   integrity sha512-rXpsyvOnqdScyied4Uglsp14qzag1JIemLeTWGKbwpotWht57hbP78aNT+Q4wdFKQfQibbUX4fb6Qb4y11aVOQ==
+
+use-memo-one@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/use-memo-one/-/use-memo-one-1.1.1.tgz#39e6f08fe27e422a7d7b234b5f9056af313bd22c"
+  integrity sha512-oFfsyun+bP7RX8X2AskHNTxu+R3QdE/RC5IefMbqptmACAA/gfol1KDD5KRzPsGMa62sWxGZw+Ui43u6x4ddoQ==
 
 use-sidecar@^1.0.1:
   version "1.0.3"

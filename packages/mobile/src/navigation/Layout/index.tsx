@@ -1,4 +1,5 @@
 import React from 'react'
+import InAppNotification from 'components/InAppNotification'
 import Header from './Header'
 import Provider from './Provider'
 
@@ -21,6 +22,9 @@ function Layout({
           stickyComponent={stickyComponent}
         />
       )}
+
+      <InAppNotification />
+
       {children}
     </Provider>
   )

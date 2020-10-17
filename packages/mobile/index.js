@@ -44,4 +44,8 @@ Navigation.events().registerAppLaunchedListener(async () => {
       }, 500)
     }
   })
+
+  messaging().onMessage((remoteMessage) => {
+    store.notification.showNotification(remoteMessage)
+  })
 })

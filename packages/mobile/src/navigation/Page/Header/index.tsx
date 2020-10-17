@@ -59,6 +59,7 @@ function Header({
           <Right>{headerRight}</Right>
         </Inner>
       </Base>
+
       <Toast />
     </>
   )

@@ -1,5 +1,6 @@
 import React, { useRef, cloneElement, useEffect, useCallback } from 'react'
 import Animated from 'react-native-reanimated'
+import InAppNotification from 'components/InAppNotification'
 import Header from './Header'
 import { NAVIGATION } from '../constants'
 
@@ -42,6 +43,9 @@ function Page({
         headerAnimation={headerAnimation}
         onPress={scrollToTop}
       />
+
+      <InAppNotification />
+
       {view
         ? children
         : cloneElement(children, {

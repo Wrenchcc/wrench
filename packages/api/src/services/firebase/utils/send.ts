@@ -18,7 +18,7 @@ export default async ({ data, userId, to, type }) => {
 
   const token = await getDeviceToken(to)
   if (!token) {
-    debug('No device token found for userId: %o', userId)
+    debug('No device token found for userId: %o', to)
     return null
   }
 
@@ -39,7 +39,7 @@ export default async ({ data, userId, to, type }) => {
       },
     },
     notification: formatNotification(type, data, user, locale),
-    data: formatCustomData(type, data),
+    data: formatCustomData(type, data, user),
     token,
   }
 
