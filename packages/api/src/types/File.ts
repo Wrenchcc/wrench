@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 export default gql`
   type File {
     id: ID
+    postId: ID
     type: FileType
     uri: String!
     createdAt: Date
@@ -25,6 +26,6 @@ export default gql`
   }
 
   extend type Query {
-    files(first: Int = 10, after: String, scale: Int, type: FileType): FileConnection
+    files(first: Int = 10, after: String, type: FileType): FileConnection
   }
 `

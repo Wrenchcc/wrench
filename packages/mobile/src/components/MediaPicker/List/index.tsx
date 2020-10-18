@@ -31,6 +31,7 @@ function List({ album, ListHeaderComponent }) {
   const [assets, setAssets] = useState([])
   const [hasNextPage, setHasNextPage] = useState(true)
   const [endCursor, setEndCursor] = useState('')
+  const [lastEndCursor, setLastEndCursor] = useState()
 
   const ref = useRef(null)
   const { t } = useTranslation()
@@ -59,6 +60,9 @@ function List({ album, ListHeaderComponent }) {
         return
       }
 
+      // NOTE: Dirty fix for fetching same data
+      setLastEndCursor(after)
+
       try {
         const result = await MediaLibrary.getAssetsAsync({
           after,
@@ -67,7 +71,10 @@ function List({ album, ListHeaderComponent }) {
           sortBy: [[MediaLibrary.SortBy.creationTime, false]],
         })
 
-        setAssets((p) => p.concat(result.assets))
+        // NOTE: Dirty fix for fetching same data
+        if (after !== lastEndCursor) {
+          setAssets((p) => p.concat(result.assets))
+        }
 
         setHasNextPage(result.hasNextPage)
         setEndCursor(result.endCursor)
@@ -75,7 +82,7 @@ function List({ album, ListHeaderComponent }) {
         logError(err)
       }
     },
-    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor]
+    [album, hasNextPage, setAssets, setHasNextPage, setEndCursor, lastEndCursor]
   )
 
   useEffect(() => {
