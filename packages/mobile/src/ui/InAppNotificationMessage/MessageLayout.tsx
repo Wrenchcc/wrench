@@ -17,7 +17,9 @@ const MessageLayout = ({ body, title, avatarUrl }: MessageLayoutProps) => {
         <Text fontSize={15} bold>
           {title}
         </Text>
-        <Text fontSize={15}>{body}</Text>
+        <Text fontSize={15} numberOfLines={2}>
+          {body}
+        </Text>
       </Content>
     </Base>
   )

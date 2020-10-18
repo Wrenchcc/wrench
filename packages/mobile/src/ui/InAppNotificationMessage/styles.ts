@@ -13,4 +13,5 @@ export const Base = styled.View`
 export const Content = styled.View`
   margin-left: 10px;
   justify-content: center;
+  flex: 1;
 `

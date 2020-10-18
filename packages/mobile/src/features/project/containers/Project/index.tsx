@@ -65,7 +65,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
           paddingHorizontal={hasPosts ? 20 : 0}
           contentContainerStyle={{ flexGrow: 1 }}
           ListEmptyComponent={
-            !hasPosts && <EmptyState type={emptyState} params={{ id: project.id }} />
+            !hasPosts && <EmptyState type={emptyState} params={{ id: project?.id }} />
           }
           ListHeaderComponent={
             <>
