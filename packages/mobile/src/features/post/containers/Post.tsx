@@ -100,7 +100,7 @@ function PostContainer({ postId, commentId }) {
 
   const highlightId = commentData && commentData.comment.id
 
-  const handleOnReply = useCallback((data) => setMention(data), [setMention])
+  const handleOnReply = useCallback(data => setMention(data), [setMention])
 
   const renderItem = ({ item }) => (
     <CommentItem

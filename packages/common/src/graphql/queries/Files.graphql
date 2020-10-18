@@ -1,0 +1,15 @@
+query files($after: String, $first: Int = 10) @connection(key: "files") {
+  files(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        uri
+        postId   
+      }
+    }
+  }
+}

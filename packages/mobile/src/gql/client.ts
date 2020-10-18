@@ -31,6 +31,7 @@ export default async function createClient() {
           search: relayStylePagination(['query', 'type']),
           users: relayStylePagination(),
           models: relayStylePagination(),
+          files: relayStylePagination(),
         },
       },
       Feed: {

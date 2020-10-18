@@ -102,8 +102,8 @@ export type QueryProjectCollectionsArgs = {
 export type QueryFilesArgs = {
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
-  scale?: Maybe<Scalars['Int']>;
   type?: Maybe<FileType>;
+  sort?: Maybe<SortType>;
 };
 
 
@@ -487,6 +487,7 @@ export type FileEdge = {
 export type File = {
   __typename?: 'File';
   id?: Maybe<Scalars['ID']>;
+  postId?: Maybe<Scalars['ID']>;
   type?: Maybe<FileType>;
   uri: Scalars['String'];
   createdAt?: Maybe<Scalars['Date']>;
@@ -623,6 +624,11 @@ export type FeedPostsConnectionArgs = {
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
 };
+
+export enum SortType {
+  Recent = 'RECENT',
+  Random = 'RANDOM'
+}
 
 export type Hashtag = {
   __typename?: 'Hashtag';
@@ -1878,6 +1884,30 @@ export type FeedQuery = (
         ) }
       )>> }
     )> }
+  )> }
+);
+
+export type FilesQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type FilesQuery = (
+  { __typename?: 'Query' }
+  & { files?: Maybe<(
+    { __typename?: 'FileConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<Maybe<(
+      { __typename?: 'FileEdge' }
+      & Pick<FileEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'File' }
+        & Pick<File, 'id' | 'uri' | 'postId'>
+      ) }
+    )>>> }
   )> }
 );
 
@@ -4013,6 +4043,50 @@ export function useFeedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FeedQ
 export type FeedQueryHookResult = ReturnType<typeof useFeedQuery>;
 export type FeedLazyQueryHookResult = ReturnType<typeof useFeedLazyQuery>;
 export type FeedQueryResult = Apollo.QueryResult<FeedQuery, FeedQueryVariables>;
+export const FilesDocument = gql`
+    query files($after: String, $first: Int = 10) @connection(key: "files") {
+  files(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        uri
+        postId
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useFilesQuery__
+ *
+ * To run a query within a React component, call `useFilesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFilesQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useFilesQuery(baseOptions?: Apollo.QueryHookOptions<FilesQuery, FilesQueryVariables>) {
+        return Apollo.useQuery<FilesQuery, FilesQueryVariables>(FilesDocument, baseOptions);
+      }
+export function useFilesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilesQuery, FilesQueryVariables>) {
+          return Apollo.useLazyQuery<FilesQuery, FilesQueryVariables>(FilesDocument, baseOptions);
+        }
+export type FilesQueryHookResult = ReturnType<typeof useFilesQuery>;
+export type FilesLazyQueryHookResult = ReturnType<typeof useFilesLazyQuery>;
+export type FilesQueryResult = Apollo.QueryResult<FilesQuery, FilesQueryVariables>;
 export const FollowersDocument = gql`
     query followers($projectId: ID!, $after: String, $first: Int = 10) {
   followers(projectId: $projectId, after: $after, first: $first) @connection(key: "followers", filter: ["projectId"]) {

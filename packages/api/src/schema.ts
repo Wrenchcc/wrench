@@ -38,7 +38,8 @@ import searchQueries from './queries/search'
 import userQueries from './queries/user'
 import metaQueries from './queries/meta'
 import hashtagQueries from './queries/hashtag'
-import likesQueries from './queries/likes'
+import likesQueries from './queries/like'
+import fileQueries from './queries/file'
 
 // Mutations
 import bookmarkMutations from './mutations/bookmark'
@@ -98,6 +99,7 @@ const resolvers = merge(
   userQueries,
   hashtagQueries,
   likesQueries,
+  fileQueries,
   // mutations
   collectionMutations,
   bookmarkMutations,

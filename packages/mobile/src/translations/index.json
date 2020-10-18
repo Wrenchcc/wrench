@@ -54,6 +54,9 @@
         "cancel": "Cancel"
       }
     },
+    "ProjectTypes": {
+      "inspo": "Inspiration"
+    },
     "Search": {
       "users": "People",
       "projects": "Projects",
@@ -463,6 +466,9 @@
         "delete": "Radera",
         "cancel": "Avbryt"
       }
+    },
+    "ProjectTypes": {
+      "inspo": "Inspiration"
     },
     "Search": {
       "users": "Personer",

@@ -20,12 +20,17 @@ export default gql`
     VIDEO
   }
 
+  enum SortType {
+    RECENT
+    RANDOM
+  }
+
   type FileEdge {
     cursor: String!
     node: File!
   }
 
   extend type Query {
-    files(first: Int = 10, after: String, type: FileType): FileConnection
+    files(first: Int = 10, after: String, type: FileType, sort: SortType): FileConnection
   }
 `

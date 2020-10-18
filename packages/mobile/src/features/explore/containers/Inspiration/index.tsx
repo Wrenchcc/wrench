@@ -1,165 +1,51 @@
 import React, { useCallback } from 'react'
-import { FlatList, View } from 'react-native'
+import { Dimensions, View } from 'react-native'
+import { usePaginatedQuery, FilesDocument } from '@wrench/common'
 import { useNavigation } from 'navigation'
-import { Icon, Image } from 'ui'
+import { Icon, InfiniteList, Image } from 'ui'
 import { arrowLeft } from 'images'
-import { NAVIGATION } from 'navigation/constants'
+import { NAVIGATION, SCREENS } from 'navigation/constants'
 import { BackButton, Item } from './styles'
 
-const edges = new Array(10).fill({
-  postId: 1,
-  uri:
-    'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-  id: 1,
-})
+const { width } = Dimensions.get('window')
+const NUM_COLUMNS = 4
 
-// const edges = [
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-//   {
-//     postId: 1,
-//     uri:
-//       'https://edge-files.wrench.cc/images/5fb9ca43-8a5b-43f1-ae68-3b15295ec6b2.jpg?w=640&h=640&webp=1',
-//     id: 1,
-//   },
-// ]
+const ITEM_SIZE = width / NUM_COLUMNS - 4
 
 function Inspiration() {
-  const { navigateBack } = useNavigation()
+  const { navigateBack, navigate } = useNavigation()
 
   const handleNavigationBack = useCallback(() => {
     navigateBack()
   }, [navigateBack])
 
-  const renderItem = ({ item, index }) => {
-    if (index % 3 === 0) {
-      return (
-        <>
-          <View
-            style={{
-              flexDirection: 'row',
-              flex: 1,
-              justifyContent: 'space-between',
-              marginBottom: 5,
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: 'red',
-                width: 100,
-                height: 100,
-              }}
-            />
-            <View style={{ backgroundColor: 'red', width: 100, height: 100 }} />
-            <View style={{ backgroundColor: 'red', width: 100, height: 100 }} />
-            <View style={{ backgroundColor: 'red', width: 100, height: 100 }} />
-          </View>
+  const handleNavigate = useCallback(
+    postId => {
+      navigate(SCREENS.POST, {
+        postId,
+      })
+    },
+    [navigateBack]
+  )
 
-          <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between' }}>
-            <View
-              style={{
-                backgroundColor: 'red',
-                width: 100,
-                height: 100,
-              }}
-            />
-            <View style={{ backgroundColor: 'red', width: 100, height: 100 }} />
-            <View style={{ backgroundColor: 'red', width: 100, height: 100 }} />
-            <View style={{ backgroundColor: 'red', width: 100, height: 100 }} />
-          </View>
-        </>
-      )
-    }
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['files'])(FilesDocument, {
+    variables: {
+      first: 48,
+    },
+  })
 
-    return (
-      <View
-        style={{
-          flex: 1,
-          marginTop: 5,
-          marginBottom: 5,
-          backgroundColor: 'blue',
-          width: 415,
-          height: 415,
-        }}
-      />
-    )
-
-    // return (
-    //   <Item>
-    //     <Image source={item.uri} width={100} height={100} />
-    //   </Item>
-    // )
-  }
+  const renderItem = ({ item }) => (
+    <Item onPress={() => handleNavigate(item.node.postId)} size={ITEM_SIZE}>
+      <Image source={item.node} width={ITEM_SIZE} height={ITEM_SIZE} />
+    </Item>
+  )
 
   return (
     <>
@@ -167,11 +53,20 @@ function Inspiration() {
         <Icon source={arrowLeft} onPress={handleNavigationBack} />
       </BackButton>
 
-      <FlatList
-        data={edges}
-        renderItem={renderItem}
-        contentInset={{ top: -NAVIGATION.STATUS_BAR_HEIGHT }}
-      />
+      <View style={{ flex: 1, marginTop: -NAVIGATION.STATUS_BAR_HEIGHT }}>
+        <InfiniteList
+          numColumns={NUM_COLUMNS}
+          loaderInset={0}
+          paddingHorizontal={0}
+          data={edges}
+          isFetching={isFetching}
+          fetchMore={fetchMore}
+          isRefetching={isRefetching}
+          hasNextPage={hasNextPage}
+          refetch={refetch}
+          renderItem={renderItem}
+        />
+      </View>
     </>
   )
 }
