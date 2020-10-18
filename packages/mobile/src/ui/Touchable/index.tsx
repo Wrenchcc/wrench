@@ -1,30 +1,18 @@
 import React from 'react'
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import { Pressable, PressableProps } from 'react-native'
 import evenHitSlop from 'utils/hitSlop'
 
-export type TouchableProps = {
-  activeOpacity?: number
+export type PressablePropsType = {
   children?: React.ReactNode
   hitSlop?: number
   onPress?: () => void
-} & TouchableOpacityProps
+} & PressableProps
 
-const Touchable = ({
-  activeOpacity = 0.8,
-  children,
-  hitSlop = 10,
-  onPress,
-  ...props
-}: TouchableProps) => {
+const Touchable = ({ children, hitSlop = 10, onPress, ...props }: PressablePropsType) => {
   return (
-    <TouchableOpacity
-      activeOpacity={activeOpacity}
-      onPress={onPress}
-      hitSlop={evenHitSlop(hitSlop)}
-      {...props}
-    >
+    <Pressable onPress={onPress} hitSlop={evenHitSlop(hitSlop)} {...props}>
       {children}
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 

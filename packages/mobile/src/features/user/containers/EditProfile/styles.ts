@@ -11,7 +11,7 @@ export const ChangeAvatar = styled.View`
   overflow: hidden;
 `
 
-export const Overlay = styled.TouchableOpacity`
+export const Overlay = styled.Pressable`
   position: absolute;
   border-radius: 60px;
   background-color: rgba(000, 000, 000, 0.3);

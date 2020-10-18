@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useEffect } from 'react'
-import { Animated, TouchableOpacity } from 'react-native'
+import { Animated, Pressable } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, SCREENS } from 'navigation'
 import { Text } from 'ui'
@@ -68,7 +68,7 @@ function List({ projects, onPress, onClose, open, selectedId }) {
       </Animated.View>
 
       {open && (
-        <TouchableOpacity
+        <Pressable
           onPress={onClose}
           style={{
             height: '100%',
