@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from 'styled-components'
 import { COLORS } from 'ui/constants'
 
@@ -15,7 +16,7 @@ export const Base = styled.div`
   }
 `
 
-export const Wrapper = styled.a`
+export const Wrapper = styled.span`
   display: flex;
   flex-direction: row;
   height: 50px;
@@ -26,4 +27,5 @@ export const Wrapper = styled.a`
   padding-left: 35px;
   padding-right: 35px;
   white-space: nowrap;
+  cursor: pointer;
 `

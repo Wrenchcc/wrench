@@ -8,7 +8,8 @@
     "start": "next start",
     "build": "next build",
     "deploy": "serverless",
-    "translations:create": "tasks/translations_create"
+    "translations:create": "tasks/translations_create",
+    "check:types": "tsc --noEmit"
   },
   "dependencies": {
     "@sentry/node": "^5.24.2",

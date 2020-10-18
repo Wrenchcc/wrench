@@ -1,4 +1,6 @@
 import React from 'react'
+import { relayStylePagination } from '@apollo/client/utilities'
+
 import withApollo from 'next-with-apollo'
 import Router from 'next/router'
 import { ApolloClient, ApolloProvider, InMemoryCache, ApolloLink } from '@apollo/client'
@@ -22,7 +24,15 @@ export default withApollo(
       connectToDevTools: isBrowser,
       // @ts-ignore
       link: ApolloLink.from([autLink, RefreshTokenLink, HttpLink]),
-      cache: new InMemoryCache().restore(initialState || {}),
+      cache: new InMemoryCache({
+        typePolicies: {
+          Query: {
+            fields: {
+              projects: relayStylePagination(),
+            },
+          },
+        },
+      }).restore(initialState || {}),
       name: 'web',
       version: process.env.BUILD_ID,
     })

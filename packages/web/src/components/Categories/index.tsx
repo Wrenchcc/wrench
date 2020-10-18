@@ -1,37 +1,30 @@
 // @ts-nocheck
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import Seo from 'utils/seo'
 import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { Post, Layout, Loader } from 'ui'
-import UiTitle from 'ui/Title'
 import Popular from 'components/Popular'
 import ProjectTypes from 'components/ProjectTypes'
+import { List, Title, Card } from './styles'
 
-const Title = styled(UiTitle)`
-  margin-bottom: 50px;
-`
+export default function Categories() {
+  const router = useRouter()
+  const { id } = router.query
 
-export default function Categories({ id, ...rest }) {
-  console.log(rest)
   const {
     data: { edges },
-    isFetching,
     fetchMore,
-    isRefetching,
     hasNextPage,
-    refetch,
   } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
       typeId: id,
       type: 'RECENT',
+      first: 8,
     },
   })
-
-  if (isFetching) {
-    return null
-  }
 
   return (
     <Layout column paddingTop={40}>
@@ -44,35 +37,19 @@ export default function Categories({ id, ...rest }) {
       <ProjectTypes selectedId={id} />
 
       {/* <Title medium>Recent posts</Title> */}
-      <InfiniteScroll
-        loadMore={() =>
-          fetchMore({
-            variables: {
-              after: edges[edges.length - 1].cursor,
-            },
-            updateQuery: (prev, { fetchMoreResult }) => {
-              if (!fetchMoreResult) {
-                return prev
-              }
-
-              return {
-                ...prev,
-                posts: {
-                  ...prev.posts,
-                  pageInfo: {
-                    ...prev.posts.pageInfo,
-                    ...fetchMoreResult.posts.pageInfo,
-                  },
-                  edges: [...prev.posts.edges, ...fetchMoreResult.posts.edges],
-                },
-              }
-            },
-          })
-        }
-        hasMore={false}
-        loader={<Loader key={0} />}
-      >
-        {edges.map(({ node }) => null)}
+      <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
+        <List>
+          {edges &&
+            edges.map(({ node }) => (
+              <Card
+                key={node.id}
+                image={node.cover.uri}
+                title={node.title}
+                slug={node.slug}
+                user={node.user}
+              />
+            ))}
+        </List>
       </InfiniteScroll>
     </Layout>
   )

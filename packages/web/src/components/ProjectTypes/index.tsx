@@ -1,12 +1,11 @@
+// @ts-nocheck
 import React from 'react'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
 import { useProjectTypesQuery } from '@wrench/common'
 import { Text } from 'ui'
 import { Base, Wrapper } from './styles'
 
 function ProjectTypes({ selectedId }) {
-  const { t } = useTranslation()
   const { data, loading } = useProjectTypesQuery()
 
   if (loading) {

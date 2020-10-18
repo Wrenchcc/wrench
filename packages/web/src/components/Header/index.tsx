@@ -111,9 +111,9 @@ function Header({ isAuthenticated }) {
 
   return (
     <Base inverted={inverted}>
-      <a href="/">
+      <Link passHref href={'/'}>
         <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" />
-      </a>
+      </Link>
 
       <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>
         <img src={inverted ? require('./menu-white.svg') : require('./menu.svg')} alt="Wrench" />
