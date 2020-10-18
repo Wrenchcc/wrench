@@ -16,6 +16,7 @@ import GlobalStyle from 'ui/GlobalStyle'
 import { ModalProvider } from 'ui/Modal'
 import Seo from 'utils/seo'
 import Header from 'components/Header'
+import Hide from 'components/Hide'
 import { Cookies } from 'services/cookie'
 import resources from 'translations/index.json'
 import i18n, { SUPPORTED_LOCALS } from 'i18n'
@@ -141,7 +142,9 @@ function AppWithi18n({
         <Header isAuthenticated={isAuthenticated} />
         <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
         {!hidePromo && !isAuthenticated && (
-          <Promo viewerCountry={viewerCountry} paddingHorizontal />
+          <Hide on="tablet">
+            <Promo viewerCountry={viewerCountry} paddingHorizontal />
+          </Hide>
         )}
       </ModalProvider>
     </>
