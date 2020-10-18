@@ -9,6 +9,7 @@ import Popular from 'components/Popular'
 import Footer from 'components/Footer'
 import AppPromo from 'components/AppPromo'
 import Login from 'components/Login'
+import ProjectTypes from 'components/ProjectTypes'
 import { Modal, useModal } from 'ui/Modal'
 import { Hero, Inner, Signup, Description, Video, Projects, ExploreLink } from './styles'
 
@@ -49,6 +50,10 @@ export default function Home(props) {
           <source src={VIDEO_URL} type="video/mp4" />
         </Video>
       </Hero>
+
+      <Inner paddingTop={60}>
+        <ProjectTypes />
+      </Inner>
 
       <Projects>
         <Popular projects={data?.projects} />

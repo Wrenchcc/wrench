@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
-  padding-top: 80px;
+  padding-top: ${(props) => props.paddingTop}px;
   max-width: 1060px;
   margin: 0 auto;
 
@@ -20,7 +20,7 @@ export const Top = styled.div`
 
 export const Inner = styled.div`
   display: flex;
-  flex-direction: ${props => (props.column ? 'column' : 'row')};
+  flex-direction: ${(props) => (props.column ? 'column' : 'row')};
 
   @media ${DEVICE.TABLET} {
     flex-direction: column;

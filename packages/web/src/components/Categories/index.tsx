@@ -1,9 +1,9 @@
 // @ts-nocheck
+import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import styled from 'styled-components'
-import { useQuery } from '@apollo/client'
 import Seo from 'utils/seo'
-import { GET_EXPLORE } from 'graphql/queries/explore/explore'
+import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { Post, Layout, Loader } from 'ui'
 import UiTitle from 'ui/Title'
 import Popular from 'components/Popular'
@@ -13,14 +13,23 @@ const Title = styled(UiTitle)`
   margin-bottom: 50px;
 `
 
-export default function Explore() {
-  const { data, loading, fetchMore } = useQuery(GET_EXPLORE, {
+export default function Categories({ id, ...rest }) {
+  console.log(rest)
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+    refetch,
+  } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
-      first: 8,
+      typeId: id,
+      type: 'RECENT',
     },
   })
 
-  if (loading) {
+  if (isFetching) {
     return null
   }
 
@@ -32,16 +41,14 @@ export default function Explore() {
         }}
       />
 
-      <ProjectTypes />
+      <ProjectTypes selectedId={id} />
 
-      <Popular projects={data.projects} />
-
-      <Title medium>Recent posts</Title>
+      {/* <Title medium>Recent posts</Title> */}
       <InfiniteScroll
         loadMore={() =>
           fetchMore({
             variables: {
-              after: data.posts.edges[data.posts.edges.length - 1].cursor,
+              after: edges[edges.length - 1].cursor,
             },
             updateQuery: (prev, { fetchMoreResult }) => {
               if (!fetchMoreResult) {
@@ -62,10 +69,10 @@ export default function Explore() {
             },
           })
         }
-        hasMore={data.posts && data.posts.pageInfo.hasNextPage}
+        hasMore={false}
         loader={<Loader key={0} />}
       >
-        {data.posts && data.posts.edges.map(({ node }) => <Post data={node} key={node.id} />)}
+        {edges.map(({ node }) => null)}
       </InfiniteScroll>
     </Layout>
   )

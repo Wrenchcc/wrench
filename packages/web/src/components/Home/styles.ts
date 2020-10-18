@@ -64,12 +64,11 @@ export const Projects = styled.section`
   max-width: 1060px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 80px;
+  padding-top: 10px;
 
   @media ${DEVICE.TABLET} {
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 45px;
     box-sizing: border-box;
 
     h1 {
@@ -90,10 +89,10 @@ export const Inner = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
-  padding-top: ${props => props.paddingTop || '0'}px;
-  align-items: ${props => props.alignItems || 'flex-start'};
-  justify-content: ${props => props.justifyContent || 'center'};
-  flex-direction: ${props => props.direction || 'column'};
+  padding-top: ${(props) => props.paddingTop || '0'}px;
+  align-items: ${(props) => props.alignItems || 'flex-start'};
+  justify-content: ${(props) => props.justifyContent || 'center'};
+  flex-direction: ${(props) => props.direction || 'column'};
   height: 100%;
   position: relative;
   z-index: 10;

@@ -13,6 +13,7 @@
   "dependencies": {
     "@sentry/node": "^5.24.2",
     "@wrench/common": "1.0.0",
+    "@wrench/ui": "1.0.0",
     "@apollo/client": "^3.2.1",
     "@apollo/link-batch-http": "^2.0.0-beta.3",
     "@apollo/link-context": "^2.0.0-beta.3",
