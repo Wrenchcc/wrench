@@ -4,8 +4,7 @@ import AppPromoLarge from 'components/AppPromoLarge'
 import Footer from 'components/Footer'
 import { Hero } from './styles'
 
-// TODO: Get country
-export default function Download() {
+export default function Download({ viewerCountry }) {
   return (
     <>
       <Seo
@@ -15,7 +14,7 @@ export default function Download() {
       />
 
       <Hero>
-        <AppPromoLarge viewerCountry={'SE'} />
+        <AppPromoLarge viewerCountry={viewerCountry} />
       </Hero>
       <Footer />
     </>

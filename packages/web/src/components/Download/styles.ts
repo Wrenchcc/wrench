@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { DEVICE } from 'ui/constants'
 
 export const Hero = styled.section`
   width: 100%;
@@ -6,6 +7,10 @@ export const Hero = styled.section`
   background: black;
   overflow: hidden;
   position: relative;
+
+  @media ${DEVICE.TABLET} {
+    height: auto;
+  }
 
   &:before {
     position: absolute;
