@@ -3,7 +3,7 @@ import React from 'react'
 import Seo from 'utils/seo'
 import { Title, Text } from 'ui'
 import Footer from 'components/Footer'
-import { Inner, Row, Image, Column, Center, Person, PersonPicture, Team } from './styles'
+import { Inner, Row, Image, Center, Person, PersonPicture, Team } from './styles'
 
 function About() {
   return (
@@ -15,42 +15,17 @@ function About() {
       />
 
       <Inner>
-        <Row>
-          <Column>
-            <Title medium>About us</Title>
-
-            <br />
-            <br />
-
-            <Text bold>
-              Quote or our vision in a longer text on two rows like this and like that
-            </Text>
-            <br />
-
-            <Text color="grey">
-              In arcu dolor, congue a volutpat eu, gravida nec ipsum. Vestibulum ante ipsum primis
-              in faucibus orci luctus et ultrices posuere cubilia Curae; Nam felis augue, rhoncus
-              vitae vulputate a, bibendum id nisl. Sed eget quam consequat, convallis justo nec,
-              tempor sem. Pellentesque ultrices nunc nec enim tincidunt auctor. Vivamus luctus eu
-              dui ut mattis. Morbi venenatis nisi quis imperdiet tincidunt. Mauris pellentesque
-              turpis ac tortor finibus rutrum. Integer luctus erat velit, sed ullamcorper ipsum
-              congue ut.
-            </Text>
-          </Column>
-
-          <Column>
-            <Image>
-              <source
-                srcSet={`${require('./about.jpg')} 1x, ${require('./about@2x.jpg')} 2x, ${require('./about@2x.jpg')} 3x`}
-                type="image/jpeg"
-              />
-
-              <img src={require('./about.jpg')} />
-            </Image>
-          </Column>
-        </Row>
-
         <Center>
+          <Title medium>About us</Title>
+          <Image>
+            <source
+              srcSet={`${require('./about.jpg')} 1x, ${require('./about@2x.jpg')} 2x, ${require('./about@2x.jpg')} 3x`}
+              type="image/jpeg"
+            />
+
+            <img src={require('./about.jpg')} />
+          </Image>
+
           <Text medium>
             Text about why we created Wrench Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Morbi pretium ornare erat sit amet rutrum. Curabitur scelerisque velit ut aliquam
@@ -99,7 +74,7 @@ function About() {
                 <br />
 
                 <Text bold>Viktor Hofte</Text>
-                <Text color="grey">Lead Designer</Text>
+                <Text color="grey">CPO</Text>
                 <br />
                 <a href="mailto:viktor@wrench.cc">viktor@wrench.cc</a>
               </PersonPicture>
@@ -122,6 +97,24 @@ function About() {
                 <Text color="grey">Head Of Marketing</Text>
                 <br />
                 <a href="mailto:felix@wrench.cc">felix@wrench.cc</a>
+              </PersonPicture>
+            </Person>
+
+            <Person>
+              <PersonPicture>
+                <source
+                  srcSet={`${require('./plus.jpg')} 1x, ${require('./plus@2x.jpg')} 2x, ${require('./plus@2x.jpg')} 3x`}
+                  type="image/jpeg"
+                />
+
+                <img src={require('./plus.jpg')} />
+                <br />
+                <br />
+
+                <Text bold>2 full stack developers</Text>
+                <Text color="grey">Development</Text>
+                <br />
+                <a href="mailto:work@wrench.cc">work@wrench.cc</a>
               </PersonPicture>
             </Person>
           </Team>

@@ -22,15 +22,10 @@ export const Center = styled.div`
   margin-top: 90px;
 `
 
-export const Column = styled.div`
-  width: 50%;
-  margin-left: 70px;
-`
-
 export const Image = styled.picture`
-  width: 500px;
   display: block;
-  margin-top: 60px;
+  margin-top: 40px;
+  margin-bottom: 60px;
 
   img {
     width: 100%;
