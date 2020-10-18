@@ -106,6 +106,11 @@ export default function registerScreens(client) {
           () => require('navigation/Initializing').default
         )
 
+      case SCREENS.INSPIRATION:
+        Navigation.registerComponent(SCREENS.INSPIRATION, () =>
+          HOC(require('features/explore/containers/Inspiration').default)
+        )
+
       case SCREENS.EMPTY:
         Navigation.registerComponent(SCREENS.EMPTY, () => () => null)
 

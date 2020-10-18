@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.1",
+    "@babel/core": "^7.12.3",
     "@babel/runtime": "^7.12.1",
     "@types/react-native-share": "^3.3.0",
     "babel-plugin-module-resolver": "^4.0.0",
