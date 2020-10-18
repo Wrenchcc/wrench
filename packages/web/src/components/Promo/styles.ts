@@ -8,21 +8,26 @@ export const Base = styled.div`
   height: 284px;
   border-radius: 1px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.12);
-  background: ${props => (props.inverted ? 'transparent' : 'white')};
-  position: ${props => (props.sticky ? 'fixed' : 'static')};
+  background: ${(props) => (props.inverted ? 'transparent' : 'white')};
+  position: ${(props) => (props.sticky ? 'fixed' : 'static')};
   bottom: 40px;
   right: 40px;
-  padding: 30px ${props => (props.paddingHorizontal ? 30 : 0)}px;
+  padding: 30px ${(props) => (props.paddingHorizontal ? 30 : 0)}px;
   box-sizing: border-box;
   z-index: 101;
 
   @media ${DEVICE.TABLET} {
-    display: none;
+    height: auto;
+    width: auto;
   }
 `
 
 export const Description = styled(UiText)`
   margin-top: 8px;
+
+  @media ${DEVICE.TABLET} {
+    display: none;
+  }
 `
 
 export const Icon = styled.img`
@@ -60,7 +65,7 @@ export const Bottom = styled.div`
     .form-control {
       height: 50px;
       border-radius: 1px;
-      border: solid 1px ${props => (props.inverted ? COLORS.GREY : '#e6e7e9')};
+      border: solid 1px ${(props) => (props.inverted ? COLORS.GREY : '#e6e7e9')};
       color: ${COLORS.LIGHT_GREY};
       width: 100%;
       background: transparent;
@@ -80,6 +85,10 @@ export const Bottom = styled.div`
       cursor: default;
     }
   }
+
+  @media ${DEVICE.TABLET} {
+    display: none;
+  }
 `
 
 export const Send = styled.button`
@@ -88,7 +97,7 @@ export const Send = styled.button`
   font-size: 15px;
   font-weight: 500;
   outline: none;
-  color: ${props =>
+  color: ${(props) =>
     props.inverted
       ? (props.success && COLORS.GREEN) || (props.active ? COLORS.WHITE : COLORS.GREY)
       : (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : COLORS.GREY)};

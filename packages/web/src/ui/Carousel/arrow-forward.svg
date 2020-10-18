@@ -1,21 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="44" viewBox="0 0 33 44">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="48px" viewBox="0 0 44 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>arrow-forward</title>
     <defs>
-        <path id="b" d="M5 10l10 10 10-10"/>
-        <filter id="a" width="290.6%" height="478.1%" x="-95.3%" y="-190.6%" filterUnits="objectBoundingBox">
-            <feMorphology in="SourceAlpha" operator="dilate" radius=".75" result="shadowSpreadOuter1"/>
-            <feOffset in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
-            <feMorphology in="SourceAlpha" radius="1" result="shadowInner"/>
-            <feOffset in="shadowInner" result="shadowInner"/>
-            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
-            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6"/>
-            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+        <polyline id="path-1" points="12 17 22 27 32 17"></polyline>
+        <filter x="-95.3%" y="-190.6%" width="290.6%" height="478.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.75" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
     </defs>
-    <g fill="none" fill-rule="evenodd">
-        <g stroke-linecap="round" stroke-linejoin="round" transform="rotate(-90 19 18)">
-            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
-            <use stroke="#FFF" stroke-width="1.5" xlink:href="#b"/>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Profile" transform="translate(-781.000000, -698.000000)">
+            <g id="Group-3" transform="translate(190.000000, 157.000000)">
+                <g id="Group-7" transform="translate(0.000000, 150.000000)">
+                    <g id="Group-3-Copy" transform="translate(0.000000, 35.000000)">
+                        <g id="Group-9-Copy-2">
+                            <g id="Group-6">
+                                <g id="Group-4">
+                                    <g id="arrow-forward" transform="translate(591.000000, 358.000000)">
+                                        <g id="Shape" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.000000, 22.000000) rotate(-90.000000) translate(-22.000000, -22.000000) ">
+                                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                            <use stroke="#FFFFFF" stroke-width="1.5" xlink:href="#path-1"></use>
+                                        </g>
+                                        <rect id="Rectangle" x="0" y="0" width="44" height="44"></rect>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
         </g>
-        <path d="M1 7h31v31H1z"/>
     </g>
 </svg>

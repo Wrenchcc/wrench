@@ -7,6 +7,11 @@ export const Inner = styled.div`
   width: 100%;
   margin: 0 auto;
   margin-top: 80px;
+
+  @media ${DEVICE.TABLET} {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
 `
 
 export const Row = styled.div`
@@ -27,6 +32,10 @@ export const Image = styled.picture`
   margin-top: 40px;
   margin-bottom: 60px;
 
+  @media ${DEVICE.TABLET} {
+    margin-bottom: 20px;
+  }
+
   img {
     width: 100%;
   }
@@ -37,6 +46,10 @@ export const Team = styled.div`
   flex-direction: row;
   margin-left: -60px;
   margin-top: 50px;
+
+  @media ${DEVICE.TABLET} {
+    margin-left: -20px;
+  }
 `
 
 export const PersonPicture = styled.picture`
@@ -52,4 +65,8 @@ export const Person = styled.div`
   width: 50%;
   margin-left: 60px;
   margin-bottom: 20px;
+
+  @media ${DEVICE.TABLET} {
+    margin-left: 20px;
+  }
 `

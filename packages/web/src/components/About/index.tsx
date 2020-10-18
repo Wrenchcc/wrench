@@ -16,7 +16,7 @@ function About() {
 
       <Inner>
         <Center>
-          <Title medium>About us</Title>
+          <Title fontSize={30}>About us</Title>
           <Image>
             <source
               srcSet={`${require('./about.jpg')} 1x, ${require('./about@2x.jpg')} 2x, ${require('./about@2x.jpg')} 3x`}

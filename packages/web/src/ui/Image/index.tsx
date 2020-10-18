@@ -10,7 +10,7 @@ const Image = memo(function Image({
   placeholderColor,
   style,
   source,
-  lazy = true,
+  lazy = false,
   placeholderDensity = 8,
   ...props
 }) {
@@ -51,7 +51,7 @@ const Image = memo(function Image({
             type="image/webp"
           />
           <source srcSet={`${src}?dpr=1 1x, ${src}&dpr=2 2x, ${src}&dpr=3 3x`} type="image/jpeg" />
-          <img src={`${src}?dpr=1`} />
+          <img src={`${src}?dpr=2`} />
         </Picture>
       )}
     </Base>

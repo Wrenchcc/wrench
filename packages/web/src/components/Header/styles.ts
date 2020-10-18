@@ -44,7 +44,9 @@ export const OpenMobileMenu = styled.button`
   justify-content: center;
 
   @media ${DEVICE.TABLET} {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `
 

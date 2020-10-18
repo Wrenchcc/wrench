@@ -10,22 +10,13 @@ import UiImage from 'ui/Image'
 import { DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
-  overflow: hidden;
-  width: 640px;
-  height: 640px;
-
   @media ${DEVICE.TABLET} {
     margin-left: -20px;
     margin-right: -20px;
   }
 `
 
-export const Image = styled(UiImage)`
-  @media ${DEVICE.TABLET} {
-    max-width: 100%;
-    max-height: auto;
-  }
-`
+export const Image = styled(UiImage)``
 
 export const Slider = styled(PSlider)`
   position: relative;
@@ -34,23 +25,20 @@ export const Slider = styled(PSlider)`
   height: 100%;
 `
 
-export const Slide = styled(PSlide)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`
+export const Slide = styled(PSlide)``
 
 export const ButtonBack = styled(PButtonBack)`
   background: url(${require('./arrow-back.svg')}) no-repeat left center;
-  background-size: 31px;
-  width: 31px;
-  height: 31px;
+  width: 44px;
+  height: 48px;
   border: none;
   outline: none;
   text-indent: -99999px;
   margin-left: 20px;
+
+  @media ${DEVICE.TABLET} {
+    margin-left: 10px;
+  }
 
   &:disabled {
     opacity: 0.3;
@@ -60,13 +48,16 @@ export const ButtonBack = styled(PButtonBack)`
 export const ButtonNext = styled(PButtonNext)`
   cursor: pointer;
   background: url(${require('./arrow-forward.svg')}) no-repeat;
-  background-size: 31px;
-  width: 31px;
-  height: 31px;
+  width: 44px;
+  height: 48px;
   border: none;
   outline: none;
   text-indent: -99999px;
   margin-right: 20px;
+
+  @media ${DEVICE.TABLET} {
+    margin-right: 10px;
+  }
 
   &:disabled {
     opacity: 0.3;

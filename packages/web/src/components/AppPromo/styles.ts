@@ -7,10 +7,10 @@ export const Inner = styled.div`
   width: 100%;
   margin: 0 auto;
   display: flex;
-  padding-top: ${props => props.paddingTop || '0'}px;
-  align-items: ${props => props.alignItems || 'flex-start'};
-  justify-content: ${props => props.justifyContent || 'center'};
-  flex-direction: ${props => props.direction || 'column'};
+  padding-top: ${(props) => props.paddingTop || '0'}px;
+  align-items: ${(props) => props.alignItems || 'flex-start'};
+  justify-content: ${(props) => props.justifyContent || 'center'};
+  flex-direction: ${(props) => props.direction || 'column'};
   height: 100%;
   position: relative;
   z-index: 10;
@@ -56,7 +56,6 @@ export const Stores = styled.div`
     padding-bottom: 40px;
     padding-top: 20px;
     width: 100%;
-    justify-content: center;
     display: flex;
     flex-direction: row;
   }

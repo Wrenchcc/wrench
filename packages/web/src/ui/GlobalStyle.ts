@@ -6,8 +6,11 @@ const FONTS_ENDPOINT = 'https://edge-files.wrench.cc/static/fonts'
 export default createGlobalStyle`
   ${PromoStyle}
 
+  * {
+    outline: none !important;
+  }
+
   button {
-    outline: none;
     background: none;
 
     border: none;

@@ -65,7 +65,7 @@ const styles = {
     marginLeft: 10,
     display: 'flex',
     padding: 0,
-    top: 5,
+    top: -6,
     height: 30,
   },
 }

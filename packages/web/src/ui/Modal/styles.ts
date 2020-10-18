@@ -17,11 +17,11 @@ export const Base = styled.div`
 `
 
 export const Content = styled.div`
-  max-width: ${props => (props.large ? 640 : 450)}px;
+  max-width: ${(props) => (props.large ? 640 : 450)}px;
   width: 100%;
   background: white;
-  padding: ${props => (props.large ? 20 : 40)}px;
-  height: ${props => (props.large ? '65%' : 'auto')};
+  padding: ${(props) => (props.large ? 20 : 40)}px;
+  height: ${(props) => (props.large ? '65%' : 'auto')};
   box-sizing: border-box;
   position: relative;
 
@@ -37,10 +37,9 @@ export const Close = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
-  height: 15px;
+  height: 16px;
   border: none;
   width: 15px;
   background: url(${require('./close.svg')}) no-repeat;
-  background-size: 15px;
   z-index: 1001;
 `
