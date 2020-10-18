@@ -8,13 +8,7 @@ export const setVisible = (s) => visibleVar(s)
 export const setCurrentNotification = (notification) => currentNotificationVar(notification)
 
 export const showNotification = (notification) => {
-  setCurrentNotification({
-    body: notification.body,
-    title: notification.data?.title,
-    avatarUrl: notification.data?.avatarUrl,
-    path: notification.data?.path,
-  })
-
+  setCurrentNotification(notification)
   setVisible(true)
 }
 

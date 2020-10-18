@@ -46,8 +46,11 @@ Navigation.events().registerAppLaunchedListener(async () => {
   })
 
   messaging().onMessage((remoteMessage) => {
-    alert(JSON.stringify(remoteMessage))
-
-    store.notification.showNotification(remoteMessage)
+    store.notification.showNotification({
+      body: remoteMessage.notification?.body,
+      title: remoteMessage.data?.title,
+      avatarUrl: remoteMessage.data?.avatarUrl,
+      path: remoteMessage.data?.path,
+    })
   })
 })
