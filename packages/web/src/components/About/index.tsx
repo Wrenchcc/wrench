@@ -27,20 +27,28 @@ function About() {
           </Image>
 
           <Text medium>
-            Text about why we created Wrench Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Morbi pretium ornare erat sit amet rutrum. Curabitur scelerisque velit ut aliquam
-            fermentum. Nunc id tellus ut nibh dignissim finibus.
+            Wrench is one of the fastest-growing social networks right now targeting enthusiasts
+            from all around the globe to document their builds, share their knowledge, and learn
+            from like-minded.
           </Text>
 
           <br />
           <br />
           <Text color="grey">
-            In arcu dolor, congue a volutpat eu, gravida nec ipsum. Vestibulum ante ipsum primis in
-            faucibus orci luctus et ultrices posuere cubilia Curae; Nam felis augue, rhoncus vitae
-            vulputate a, bibendum id nisl. Sed eget quam consequat, convallis justo nec, tempor sem.
-            Pellentesque ultrices nunc nec enim tincidunt auctor. Vivamus luctus eu dui ut mattis.
-            Morbi venenatis nisi quis imperdiet tincidunt. Mauris pellentesque turpis ac tortor
-            finibus rutrum. Integer luctus erat velit, sed ullamcorper ipsum congue ut.
+            The whole idea with Wrench came up after Pontus, an experienced hobby builder of custom
+            cafe racers didn’t find any good forums or communities that gather all the
+            bike-aficionados to share their projects with each other. Instead of searching thru
+            thousands of small old-school forums and Facebook groups to find what suits you, Wrench
+            gathers us - the motorcycle fanatics in one place.
+            <br />
+            <br />
+            The team today is a truly cross experienced team. With knowledge and experience from
+            working with and at companies such as Klarna, Qapital, Norwegian, Urbanears, H&M, and
+            Budbee we’ve gathered an extremely hungry team.
+            <br />
+            <br />
+            If you want to be part of the journey towards conquering the automotive industry send us
+            an email at <a href="mailto:work@wrench.cc">work@wrench.cc</a>
           </Text>
 
           <Team>
