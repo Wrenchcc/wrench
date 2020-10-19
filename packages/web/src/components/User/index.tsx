@@ -9,7 +9,7 @@ import UserFollowingProjects from 'components/UserFollowingProjects'
 import { Text, Avatar, Layout, Post, Loader } from 'ui'
 import UserProjects from 'components/UserProjects'
 import { withHttp } from 'utils/url'
-import { Top, Name, Left, Right, Info } from './styles'
+import { Inner, Top, Name, Left, Right, Info } from './styles'
 
 function User({ username, isAuthenticated }) {
   const { t } = useTranslation()
@@ -90,53 +90,55 @@ function User({ username, isAuthenticated }) {
         }}
       />
 
-      <Left>
-        <InfiniteScroll
-          loadMore={() =>
-            fetchMore({
-              variables: {
-                after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor,
-              },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) {
-                  return prev
-                }
+      <Inner>
+        <Left>
+          <InfiniteScroll
+            loadMore={() =>
+              fetchMore({
+                variables: {
+                  after: data.user.posts.edges[data.user.posts.edges.length - 1].cursor,
+                },
+                updateQuery: (prev, { fetchMoreResult }) => {
+                  if (!fetchMoreResult) {
+                    return prev
+                  }
 
-                return {
-                  ...prev,
-                  user: {
-                    ...prev.user,
-                    posts: {
-                      ...prev.user.posts,
-                      pageInfo: {
-                        ...prev.user.posts.pageInfo,
-                        ...fetchMoreResult.user.posts.pageInfo,
+                  return {
+                    ...prev,
+                    user: {
+                      ...prev.user,
+                      posts: {
+                        ...prev.user.posts,
+                        pageInfo: {
+                          ...prev.user.posts.pageInfo,
+                          ...fetchMoreResult.user.posts.pageInfo,
+                        },
+                        edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
                       },
-                      edges: [...prev.user.posts.edges, ...fetchMoreResult.user.posts.edges],
                     },
-                  },
-                }
-              },
-            })
-          }
-          hasMore={data.user.posts.pageInfo.hasNextPage}
-          loader={<Loader key={0} />}
-        >
-          {data.user.posts.edges.length ? (
-            data.user.posts.edges.map(({ node }) => (
-              <Post data={node} key={node.id} withoutAvatar />
-            ))
-          ) : (
-            <UserFollowingProjects username={username} isAuthenticated={isAuthenticated} />
-          )}
-        </InfiniteScroll>
-      </Left>
+                  }
+                },
+              })
+            }
+            hasMore={data.user.posts.pageInfo.hasNextPage}
+            loader={<Loader key={0} />}
+          >
+            {data.user.posts.edges.length ? (
+              data.user.posts.edges.map(({ node }) => (
+                <Post data={node} key={node.id} withoutAvatar />
+              ))
+            ) : (
+              <UserFollowingProjects username={username} isAuthenticated={isAuthenticated} />
+            )}
+          </InfiniteScroll>
+        </Left>
 
-      {data.user.posts.edges.length > 0 && (
-        <Right>
-          <UserProjects projects={data.user.projects} />
-        </Right>
-      )}
+        {data.user.posts.edges.length > 0 && (
+          <Right>
+            <UserProjects projects={data.user.projects} />
+          </Right>
+        )}
+      </Inner>
     </Layout>
   )
 }

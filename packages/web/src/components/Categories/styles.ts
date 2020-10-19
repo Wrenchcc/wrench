@@ -10,7 +10,13 @@ export const Title = styled(UiTitle)`
 
 export const Card = styled(UiCard)`
   @media ${DEVICE.TABLET} {
-    width: 50%;
+    width: 100%;
+
+    div {
+      width: 100%;
+      height: 100%;
+      max-height: 250px;
+    }
   }
 `
 

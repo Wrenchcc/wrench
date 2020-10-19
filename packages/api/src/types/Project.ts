@@ -30,7 +30,8 @@ export default gql`
       last: Int = 10
     ): FollowersConnection @cacheControl(maxAge: 180)
 
-    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection @cacheControl(maxAge: 180)
+    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+      @cacheControl(maxAge: 180)
 
     collectionsConnection(
       after: String

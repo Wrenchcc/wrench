@@ -93,6 +93,11 @@ export default async function createClient() {
     link,
     name: isAndroid ? 'Android' : 'iOS',
     version: readableVersion,
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'cache-and-network',
+      },
+    },
   })
 
   client.onClearStore(() => {
