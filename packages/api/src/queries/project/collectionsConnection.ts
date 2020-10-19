@@ -3,12 +3,12 @@ import { transformFileUrl } from '../../utils/transformFileUrl'
 
 // TODO: Use dataloader
 export default async ({ id }, args, ctx) => {
-  const cacheKey = `project:collectionsConnection:${id}:${JSON.stringify(args)}}`
-  const cache = await ctx.redis.get(cacheKey)
+  // const cacheKey = `project:collectionsConnection:${id}:${JSON.stringify(args)}}`
+  // const cache = await ctx.redis.get(cacheKey)
 
-  if (cache) {
-    return cache
-  }
+  // if (cache) {
+  //   return cache
+  // }
 
   const collections = await paginate(ctx.db.ProjectCollection, args, {
     where: {
@@ -41,7 +41,7 @@ export default async ({ id }, args, ctx) => {
     })
   )
 
-  ctx.redis.set(cacheKey, response)
+  // ctx.redis.set(cacheKey, response)
 
   return response
 }
