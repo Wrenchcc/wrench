@@ -53,7 +53,7 @@ export const OpenMobileMenu = styled.button`
 export const NavLink = styled.a`
   font-size: 16px;
   color: ${(props) =>
-    props.inverted ? (props.active ? '#fff' : '#a8a8ad') : props.active ? '#000000' : '#6d6f76'};
+    props.inverted ? (props.active ? '#a8a8ad' : '#fff') : props.active ? '#000000' : '#6d6f76'};
   font-weight: ${FONTS.MEDIUM};
   margin-left: ${(props) => (props.last ? 10 : 40)}px;
 `
