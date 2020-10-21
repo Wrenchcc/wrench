@@ -20,7 +20,7 @@ export default async function createClient() {
       Query: {
         fields: {
           bookmarks: relayStylePagination(),
-          collections: relayStylePagination(['id']),
+          collections: relayStylePagination(['id', 'projectId']),
           comments: relayStylePagination(['postId']),
           followers: relayStylePagination(['projectId']),
           likes: relayStylePagination(['postId']),

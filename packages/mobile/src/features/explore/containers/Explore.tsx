@@ -96,7 +96,7 @@ function Explore() {
               searchActive={searchActive}
             />
           }
-          stickyComponent={!searchActive && <ProjectTypes />}
+          stickyComponent={<ProjectTypes visible={!searchActive} />}
         />
       }
     >
