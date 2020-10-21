@@ -24,9 +24,14 @@ export default gql`
     postId: ID!
   }
 
+  input EditCollectionInput {
+    name: String
+  }
+
   extend type Mutation {
     addCollection(projectId: ID!, name: String!): Collection
     deleteCollection(projectId: ID!, id: ID!): Collection
+    editCollection(id: ID!, input: EditCollectionInput!): Collection
     collectPosts(projectId: ID!, collectionId: ID!, input: [CollectionInput]): Collection
   }
 

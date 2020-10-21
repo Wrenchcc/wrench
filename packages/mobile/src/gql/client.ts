@@ -20,7 +20,7 @@ export default async function createClient() {
       Query: {
         fields: {
           bookmarks: relayStylePagination(),
-          collections: relayStylePagination(),
+          collections: relayStylePagination(['id', 'projectId']),
           comments: relayStylePagination(['postId']),
           followers: relayStylePagination(['projectId']),
           likes: relayStylePagination(['postId']),
@@ -43,9 +43,7 @@ export default async function createClient() {
         fields: {
           postsConnection: relayStylePagination(),
           cover: {
-            merge(existing, incoming) {
-              return { ...existing, ...incoming }
-            },
+            merge: true,
           },
         },
       },
@@ -59,9 +57,7 @@ export default async function createClient() {
           postsConnection: relayStylePagination(),
           followingProjects: relayStylePagination(),
           settings: {
-            merge(existing, incoming) {
-              return { ...existing, ...incoming }
-            },
+            merge: true,
           },
         },
       },

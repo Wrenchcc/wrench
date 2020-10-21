@@ -7,7 +7,7 @@ import { useNavigation, SCREENS } from 'navigation'
 import { FOLLOWING_COUNT, HAS_ASKED_FOR_RATING } from 'utils/storage/constants'
 import { askForRating } from 'utils/rate'
 import SimilarProjects from '../SimilarProjects'
-// import Collections from '../Collections'
+import Collections from '../Collections'
 import { Base, Meta, Actions, Followers, OpenSimilar, Spacing } from './styles'
 
 const TRIGGER_RATING_COUNT = 3
@@ -134,7 +134,7 @@ function ProjectHeader({ project, spacingHorizontal }) {
 
       {!isOwner && <Spacing />}
 
-      {/* <Collections isOwner={isOwner} projectId={project.id} /> */}
+      <Collections isOwner={isOwner} projectId={project.id} />
     </Base>
   )
 }

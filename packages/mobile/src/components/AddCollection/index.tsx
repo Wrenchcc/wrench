@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useAddCollectionMutation } from '@wrench/common'
+import { useAddCollectionMutation, CollectionFragmentDoc } from '@wrench/common'
+import { store } from 'gql'
 import { useNavigation, SCREENS } from 'navigation'
 import { keyboardHeight } from 'utils/platform'
 import { Icon, Title } from 'ui'
@@ -9,7 +10,7 @@ import { add } from 'images'
 
 const HALFPANEL_HEIGHT = 164
 
-function Form({ projectId }) {
+function Form({ projectId, disableModal }) {
   const { t } = useTranslation()
   const [name, setName] = useState('')
   const { dismissHalfpanel, showModal } = useNavigation()
@@ -23,12 +24,40 @@ function Form({ projectId }) {
         name,
         projectId,
       },
+      update(cache, { data: { addCollection } }) {
+        cache.modify({
+          fields: {
+            projectCollections(existingCollectionsRefs = {}) {
+              const newCollectionRef = cache.writeFragment({
+                data: addCollection,
+                fragment: CollectionFragmentDoc,
+              })
+
+              return {
+                ...existingCollectionsRefs,
+                edges: [
+                  {
+                    node: newCollectionRef,
+                  },
+                  ...existingCollectionsRefs.edges,
+                ],
+              }
+            },
+          },
+        })
+      },
     })
 
-    showModal(SCREENS.ADD_POST_TO_COLLECTION, {
-      collectionId: data.addCollection.id,
-      projectId,
-    })
+    if (!disableModal) {
+      const collectionId = data.addCollection.id
+
+      store.collection.toggleCollection(collectionId)
+
+      showModal(SCREENS.ADD_POST_TO_COLLECTION, {
+        collectionId,
+        projectId,
+      })
+    }
   }
 
   return (
@@ -55,7 +84,7 @@ function Form({ projectId }) {
   )
 }
 
-function AddCollection({ projectId, style = {} }) {
+function AddCollection({ projectId, style = {}, disableModal }) {
   const { t } = useTranslation()
   const { showHalfpanel } = useNavigation()
 
@@ -63,7 +92,7 @@ function AddCollection({ projectId, style = {} }) {
     () =>
       showHalfpanel({
         height: HALFPANEL_HEIGHT + keyboardHeight,
-        renderContent: () => <Form projectId={projectId} />,
+        renderContent: () => <Form projectId={projectId} disableModal={disableModal} />,
       }),
     [showHalfpanel]
   )

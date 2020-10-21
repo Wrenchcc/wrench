@@ -207,6 +207,7 @@ export declare type Post = {
     permissions?: Maybe<PostPermissions>;
     likes?: Maybe<Likes>;
     bookmarks?: Maybe<Bookmarks>;
+    collection?: Maybe<Collection>;
     filesConnection?: Maybe<FileConnection>;
     commentsConnection?: Maybe<CommentConnection>;
     likesConnection?: Maybe<LikeConnection>;
@@ -650,6 +651,7 @@ export declare type Mutation = {
     deleteComment?: Maybe<Scalars['Boolean']>;
     addCollection?: Maybe<Collection>;
     deleteCollection?: Maybe<Collection>;
+    editCollection?: Maybe<Collection>;
     collectPosts?: Maybe<Collection>;
     sendPromo?: Maybe<Scalars['Boolean']>;
     likePost?: Maybe<Post>;
@@ -708,6 +710,10 @@ export declare type MutationAddCollectionArgs = {
 export declare type MutationDeleteCollectionArgs = {
     projectId: Scalars['ID'];
     id: Scalars['ID'];
+};
+export declare type MutationEditCollectionArgs = {
+    id: Scalars['ID'];
+    input: EditCollectionInput;
 };
 export declare type MutationCollectPostsArgs = {
     projectId: Scalars['ID'];
@@ -792,6 +798,9 @@ export declare type AccessToken = {
 export declare type CommentInput = {
     text: Scalars['String'];
 };
+export declare type EditCollectionInput = {
+    name?: Maybe<Scalars['String']>;
+};
 export declare type CollectionInput = {
     postId: Scalars['ID'];
 };
@@ -799,12 +808,14 @@ export declare type PostInput = {
     projectId: Scalars['ID'];
     caption?: Maybe<Scalars['String']>;
     files: Array<Maybe<FileInput>>;
+    collectionId?: Maybe<Scalars['ID']>;
 };
 export declare type FileInput = {
     filename: Scalars['String'];
 };
 export declare type EditPostInput = {
     caption?: Maybe<Scalars['String']>;
+    collectionId?: Maybe<Scalars['ID']>;
 };
 export declare type ProjectInput = {
     title?: Maybe<Scalars['String']>;
@@ -874,6 +885,13 @@ export declare enum CacheControlScope {
     Public = "PUBLIC",
     Private = "PRIVATE"
 }
+export declare type CollectionFragment = ({
+    __typename?: 'Collection';
+} & Pick<Collection, 'id' | 'name'> & {
+    cover?: Maybe<({
+        __typename?: 'CoverType';
+    } & Pick<CoverType, 'uri'>)>;
+});
 export declare type CommentAndRepliesFragment = ({
     __typename?: 'Comment';
 } & {
@@ -983,6 +1001,9 @@ export declare type PostFragment = ({
             } & Pick<User, 'id' | 'avatarUrl'>);
         })>>;
     })>;
+    collection?: Maybe<({
+        __typename?: 'Collection';
+    } & Pick<Collection, 'id' | 'name'>)>;
 });
 export declare type ProjectFragment = ({
     __typename?: 'Project';
@@ -1081,7 +1102,7 @@ export declare type AddCollectionMutation = ({
 } & {
     addCollection?: Maybe<({
         __typename?: 'Collection';
-    } & Pick<Collection, 'name' | 'id'>)>;
+    } & CollectionFragment)>;
 });
 export declare type AddCommentMutationVariables = Exact<{
     postId: Scalars['ID'];
@@ -1221,6 +1242,17 @@ export declare type DeleteProjectMutationVariables = Exact<{
 export declare type DeleteProjectMutation = ({
     __typename?: 'Mutation';
 } & Pick<Mutation, 'deleteProject'>);
+export declare type EditCollectionMutationVariables = Exact<{
+    input: EditCollectionInput;
+    id: Scalars['ID'];
+}>;
+export declare type EditCollectionMutation = ({
+    __typename?: 'Mutation';
+} & {
+    editCollection?: Maybe<({
+        __typename?: 'Collection';
+    } & CollectionFragment)>;
+});
 export declare type EditPostMutationVariables = Exact<{
     id: Scalars['ID'];
     input: EditPostInput;
@@ -1796,11 +1828,7 @@ export declare type ProjectCollectionsQuery = ({
         } & Pick<CollectionEdge, 'cursor'> & {
             node: ({
                 __typename?: 'Collection';
-            } & Pick<Collection, 'id' | 'name'> & {
-                cover?: Maybe<({
-                    __typename?: 'CoverType';
-                } & Pick<CoverType, 'uri'>)>;
-            });
+            } & CollectionFragment);
         })>>;
     })>;
 });
@@ -2139,6 +2167,7 @@ export declare type UserFollowingProjectsQuery = ({
         })>;
     })>;
 });
+export declare const CollectionFragmentDoc: Apollo.DocumentNode;
 export declare const UserFragmentDoc: Apollo.DocumentNode;
 export declare const CommentFragmentDoc: Apollo.DocumentNode;
 export declare const CommentAndRepliesFragmentDoc: Apollo.DocumentNode;
@@ -2535,6 +2564,33 @@ export declare function useDeleteProjectMutation(baseOptions?: Apollo.MutationHo
 export declare type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>;
 export declare type DeleteProjectMutationResult = Apollo.MutationResult<DeleteProjectMutation>;
 export declare type DeleteProjectMutationOptions = Apollo.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
+export declare const EditCollectionDocument: Apollo.DocumentNode;
+export declare type EditCollectionMutationFn = Apollo.MutationFunction<EditCollectionMutation, EditCollectionMutationVariables>;
+/**
+ * __useEditCollectionMutation__
+ *
+ * To run a mutation, you first call `useEditCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editCollectionMutation, { data, loading, error }] = useEditCollectionMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useEditCollectionMutation(baseOptions?: Apollo.MutationHookOptions<EditCollectionMutation, EditCollectionMutationVariables>): Apollo.MutationTuple<EditCollectionMutation, Exact<{
+    input: EditCollectionInput;
+    id: string;
+}>>;
+export declare type EditCollectionMutationHookResult = ReturnType<typeof useEditCollectionMutation>;
+export declare type EditCollectionMutationResult = Apollo.MutationResult<EditCollectionMutation>;
+export declare type EditCollectionMutationOptions = Apollo.BaseMutationOptions<EditCollectionMutation, EditCollectionMutationVariables>;
 export declare const EditPostDocument: Apollo.DocumentNode;
 export declare type EditPostMutationFn = Apollo.MutationFunction<EditPostMutation, EditPostMutationVariables>;
 /**

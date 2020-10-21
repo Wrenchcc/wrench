@@ -20,6 +20,7 @@ function EditPost({ post }) {
       variables: {
         id: post.id,
         input: {
+          collectionId: post?.collection.id,
           caption,
         },
       },
@@ -59,7 +60,7 @@ function EditPost({ post }) {
             scrollEnabled={false}
             color="dark"
             value={caption}
-            onChangeText={text => setCaption(text)}
+            onChangeText={(text) => setCaption(text)}
             placeholder={t('EditPost:placeholder')}
             style={{ marginBottom: 20 }}
           />

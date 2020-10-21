@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Touchable } from 'ui'
 
 export const Base = styled.View`
   padding-bottom: ${(props) => (props.paddingBottom ? props.paddingBottom : 50)}px;
@@ -26,4 +27,13 @@ export const Spacer = styled.View`
 export const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
+`
+
+export const Collection = styled(Touchable)`
+  height: 60px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  border-bottom-color: ${(props) => props.theme.colors.divider};
 `

@@ -24,9 +24,9 @@ function Posting({ scrollToTop }) {
     ref.current.animateNextTransition()
 
     if (!isPosting) {
-      setImmediate(() => {
+      setTimeout(() => {
         scrollToTop()
-      })
+      }, 100)
     }
   }, [ref, isPosting])
 

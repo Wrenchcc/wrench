@@ -56,10 +56,20 @@ export default isAuthenticated(async (_, { input }, ctx) => {
     ctx.db.Hashtag.findOrCreate(hashtags)
   }
 
-  return ctx.db.Post.save({
+  const post = await ctx.db.Post.save({
     caption: input.caption && trim(input.caption),
     files,
     project,
     userId: ctx.userId,
   })
+
+  if (input.collectionId) {
+    await ctx.db.PostCollection.save({
+      collectionId: input.collectionId,
+      projectId: project.id,
+      postId: post.id,
+    })
+  }
+
+  return post
 })

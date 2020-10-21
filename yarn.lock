@@ -101,10 +101,10 @@
     tslib "^1.10.0"
     zen-observable "^0.8.14"
 
-"@apollo/client@^3.3.0-beta.12":
-  version "3.3.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.0-beta.12.tgz#8e605d861921d3e528891904b9a3217b77f64a71"
-  integrity sha512-q/uNTa7qnYbUKf2RYY1zXRkGCBLLrfUjXML/7Ub5mgfQH0qQvXZq/GBCO8gl6rT94okubb0YoVBUeGiU5h+UUA==
+"@apollo/client@^3.3.0-beta.13":
+  version "3.3.0-beta.13"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.3.0-beta.13.tgz#045881a6826034f803f91cf529f3b96cf030b780"
+  integrity sha512-MSvwYNfzRv/2L0zDqjbMaW+t3ZcI4YsFKensYF7GogRzItRS451OFI4/aS83TkdJCVtZtNNttmGO2lOKr+S86w==
   dependencies:
     "@graphql-typed-document-node/core" "^3.0.0"
     "@types/zen-observable" "^0.8.0"
@@ -3196,10 +3196,10 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
-"@react-native-community/google-signin@^4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/google-signin/-/google-signin-4.0.3.tgz#66fbdd469e5895ec787224334d480c1c867240e8"
-  integrity sha512-0RyMHAPTOejxXuHkcrVLJ9Co1hxG/b1shmtn29QSjZ9W8oLj23gyLhJI4jjca389jToVjr2HsXsDXfNU4CA2Uw==
+"@react-native-community/google-signin@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/google-signin/-/google-signin-5.0.0.tgz#d1d89c697cc214c10017fa283817e84bd03b2d76"
+  integrity sha512-MvFHImmtlmE1kJZgZ9XaULm/OBuQ/AQWOCPr3NzYTUv2cCqyGwfFrealo5PS/fuL/InCGcfqK1k/1dZ+67Hjmg==
 
 "@react-native-community/netinfo@^5.9.7":
   version "5.9.7"
@@ -6064,10 +6064,10 @@ apollo-utilities@^1.0.1, apollo-utilities@^1.3.0:
     ts-invariant "^0.4.0"
     tslib "^1.10.0"
 
-apollo3-cache-persist@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/apollo3-cache-persist/-/apollo3-cache-persist-0.7.0.tgz#96f0b4cdf22ae6b07b5d9633cddf21703c95a3d7"
-  integrity sha512-hwjfkcAE4bTrg6SQq//RbCLxHO0Fkz3bBQzou0mpg9xOs0zJewk2KVZqDmZ4Pv1ZHYDmiqe+wAAt/RlZO6VLRA==
+apollo3-cache-persist@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/apollo3-cache-persist/-/apollo3-cache-persist-0.8.0.tgz#4a88d67bace5ae4cbc3182ae98f35ecddf793586"
+  integrity sha512-f8BpEEcOV9f4bZuIE0pp+JmCa4o8950PbVIO8ByLPbUgpscfw7u8HXHXc/50belbTvJbc+gKs2wkVSfKzRlBbQ==
 
 app-root-dir@^1.0.2:
   version "1.0.2"
@@ -19208,6 +19208,11 @@ rambda@^6.2.0:
   resolved "https://registry.yarnpkg.com/rambda/-/rambda-6.2.0.tgz#4afb776b198b054341bdf53f40edc300bea9a969"
   integrity sha512-2fIT02e45V2orajVC/TlmNtSyqbaWi/0hB6hfzNigV7qfrllS+mQeST1OQaveKWeVCNVKlXus0F2CAO8lDQNvw==
 
+rambda@^6.3.1:
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-6.3.1.tgz#15bffd4b1f26a30e9f6af78674eba842b1954ef8"
+  integrity sha512-/iUE52vD8cfRcV/4gqcTZFvooLExJavzO9dcNI+vGLIzNU0e/OOi0jztE2OFFF/AvAKLCChgNfbJAFYnj5Lj2Q==
+
 ramda@^0.21.0:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
@@ -19562,10 +19567,10 @@ react-native-deep-linking@^2.2.0:
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
   integrity sha512-PKShbOsa/oxjSzZ/Bag98O/J+jaZOI6ic5YdanPirTpRAraAvKUzJWQUhE5Yy0Isl9yfIkSogOClE9BRfSyUbA==
 
-react-native-device-info@^6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-6.2.1.tgz#6b63faeef833d8959d636c0413ccd5066eada2bf"
-  integrity sha512-+9Li07jD+7IiSIn9VVmb1YWYfJtgERVMsgO/hG+aUzsFD6uFklpM2TOEBlfKPWP/8J6s8MZgpGfA/Dl1WZrn2g==
+react-native-device-info@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-7.0.1.tgz#c5cf7fe21162eb4f91cfa2d2d7319cd8dbcdc5c8"
+  integrity sha512-VECuimIFG4mkszwc8UMeGtvIR0c2/A0N8jJzGr0AGgVRro5RGTNQf9LXRg2GoZHoh4vudO2n11A2WR5yTZL55w==
 
 react-native-fast-image@^8.3.2:
   version "8.3.2"

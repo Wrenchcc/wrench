@@ -1,3 +1,4 @@
+import collection from './collection'
 import bookmarks from './bookmarks'
 import commentsConnection from './commentsConnection'
 import filesConnection from './filesConnection'
@@ -11,6 +12,7 @@ import user from './user'
 
 export default {
   Post: {
+    collection,
     bookmarks,
     commentsConnection,
     likesConnection,

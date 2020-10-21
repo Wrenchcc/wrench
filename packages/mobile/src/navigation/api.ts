@@ -1,4 +1,4 @@
-import { Navigation, Options } from 'react-native-navigation'
+import { Navigation, Options, OptionsModalPresentationStyle } from 'react-native-navigation'
 import { COLORS } from 'ui/constants'
 import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
@@ -56,17 +56,24 @@ export function showModal(
 
 export function showHalfpanel(passProps: PassProps) {
   if (!halfpanel) {
-    Navigation.showOverlay({
+    Navigation.showModal({
       component: {
         id: SCREENS.HALFPANEL,
         name: SCREENS.HALFPANEL,
         options: {
+          modalPresentationStyle: OptionsModalPresentationStyle.overCurrentContext,
           layout: {
+            backgroundColor: 'transparent',
             componentBackgroundColor: 'transparent',
           },
-          overlay: {
-            handleKeyboardEvents: true,
-            interceptTouchOutside: false,
+          animations: {
+            showModal: {
+              enabled: false,
+              waitForRender: true,
+            },
+            dismissModal: {
+              enabled: false,
+            },
           },
         },
         passProps,
@@ -77,7 +84,7 @@ export function showHalfpanel(passProps: PassProps) {
 }
 
 export function dismissHalfpanel() {
-  Navigation.dismissOverlay(SCREENS.HALFPANEL)
+  Navigation.dismissModal(SCREENS.HALFPANEL)
   halfpanel = false
 }
 

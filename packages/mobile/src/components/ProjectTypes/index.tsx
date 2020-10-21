@@ -8,14 +8,14 @@ import { Text } from 'ui'
 import CategoriesPlaceholder from './Placeholder'
 import { Base, Wrapper } from './styles'
 
-function ProjectTypes() {
+function ProjectTypes({ visible }) {
   const { t } = useTranslation()
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
   const { data: userData } = useCurrentUserQuery()
 
   const { navigate } = useNavigation()
 
-  const handleNavigation = useCallback(category => {
+  const handleNavigation = useCallback((category) => {
     navigate(SCREENS.CATEGORIES, category)
   }, [])
 
@@ -39,32 +39,34 @@ function ProjectTypes() {
   }
 
   const data = sort(
-    a => (userData?.user.interestedIn.some(item => item.id === a.id) ? -1 : 1),
+    (a) => (userData?.user.interestedIn.some((item) => item.id === a.id) ? -1 : 1),
     typesData.types
   )
 
   return (
-    <Base>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Wrapper first onPress={navigateToInsp}>
-          <Text fontSize={15} medium>
-            {t('ProjectTypes:inspo')}
-          </Text>
-        </Wrapper>
-
-        {data.map((category, index) => (
-          <Wrapper
-            key={category.id}
-            last={index === typesData.types.length - 1}
-            onPress={() => handleNavigation(category)}
-          >
+    visible && (
+      <Base>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <Wrapper first onPress={navigateToInsp}>
             <Text fontSize={15} medium>
-              {category.title}
+              {t('ProjectTypes:inspo')}
             </Text>
           </Wrapper>
-        ))}
-      </ScrollView>
-    </Base>
+
+          {data.map((category, index) => (
+            <Wrapper
+              key={category.id}
+              last={index === typesData.types.length - 1}
+              onPress={() => handleNavigation(category)}
+            >
+              <Text fontSize={15} medium>
+                {category.title}
+              </Text>
+            </Wrapper>
+          ))}
+        </ScrollView>
+      </Base>
+    )
   )
 }
 

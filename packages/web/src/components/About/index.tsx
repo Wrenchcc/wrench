@@ -27,9 +27,9 @@ function About() {
           </Image>
 
           <Text medium>
-            Wrench is one of the fastest-growing social networks right now targeting enthusiasts
-            from all around the globe to document their builds, share their knowledge, and learn
-            from like-minded.
+            Wrench is one of the fastest-growing social networks targeting enthusiasts from all
+            around the globe to document their builds, share their knowledge, and learn from
+            like-minded.
           </Text>
 
           <br />

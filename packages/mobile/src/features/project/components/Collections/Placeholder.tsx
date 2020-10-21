@@ -28,7 +28,7 @@ const styles = {
   },
 }
 
-export const PopularPlaceholder: React.FC = ({ empty, isOwner, projectId }) => {
+export const PopularPlaceholder: React.FC = ({ empty, isOwner, projectId, disableModal }) => {
   return (
     <Placeholder Animation={empty ? null : PlaceholderAnimation}>
       {empty && (
@@ -51,7 +51,7 @@ export const PopularPlaceholder: React.FC = ({ empty, isOwner, projectId }) => {
       >
         {isOwner && (
           <View style={[styles.container, styles.first, { height: 90 }]}>
-            <AddCollection projectId={projectId} />
+            <AddCollection projectId={projectId} disableModal={disableModal} />
           </View>
         )}
 

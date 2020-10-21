@@ -1,6 +1,6 @@
 import { AuthenticationError } from 'apollo-server-express'
 
-export const isAuthenticated = resolver => async (obj, args, ctx, info) => {
+export const isAuthenticated = (resolver) => async (obj, args, ctx, info) => {
   if (!ctx.userId) {
     return new AuthenticationError('You must be signed in to do this')
   }
@@ -8,7 +8,7 @@ export const isAuthenticated = resolver => async (obj, args, ctx, info) => {
   return resolver(obj, args, ctx, info)
 }
 
-export const isAdmin = id => {
+export const isAdmin = (id) => {
   const userIds = [
     'c1f69907-1355-4f0e-a690-1acbbe848142',
     '9ad2d1b7-9a85-4c11-b0ef-10faf4e19699',
@@ -24,6 +24,14 @@ export const canModeratePost = (post, userId) => {
   }
 
   return post.userId === userId
+}
+
+export const canModerateCollection = (collection, userId) => {
+  if (!userId || !collection) {
+    return false
+  }
+
+  return collection.userId === userId
 }
 
 export const canModerateNotification = (notification, userId) => {

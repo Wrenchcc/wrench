@@ -13,8 +13,8 @@ import { store } from 'gql'
 import { logError } from 'utils/sentry'
 import { TOAST_TYPES } from 'utils/enums'
 import uploadToS3Async from 'utils/storage/uploadToS3Async'
-// import Collections from 'features/project/components/Collections'
-import { Header, Input, KeyboardAvoidingView, Icon, Text } from 'ui'
+import Collections from 'features/project/components/Collections'
+import { Header, Input, KeyboardAvoidingView, Icon, Text, Title } from 'ui'
 import { arrowLeft } from 'images'
 import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
@@ -25,6 +25,7 @@ function AddPost() {
   const [addPost] = useAddPostMutation()
 
   const caption = useReactiveVar(store.post.captionVar)
+  const collectionId = useReactiveVar(store.collection.collectionVar)
   const files = useReactiveVar(store.files.croppedFilesVar)
   const projectId = useReactiveVar(store.project.selectedIdVar)
 
@@ -33,6 +34,8 @@ function AddPost() {
   }, [navigateBack])
 
   const onChangeText = useCallback((value) => store.post.captionVar(value), [])
+
+  const onChangeCollection = useCallback((id) => store.collection.toggleCollection(id), [])
 
   const handleAddPost = async () => {
     dismissModal(true)
@@ -47,9 +50,10 @@ function AddPost() {
             caption,
             files: uploaded,
             projectId,
+            collectionId,
           },
         },
-        update: (cache, { data: { addPost } }) => {
+        update: async (cache, { data: { addPost } }) => {
           // Feed
           try {
             const data = cache.readQuery({ query: FeedDocument })
@@ -135,6 +139,7 @@ function AddPost() {
       store.files.reset()
       store.post.captionVar('')
       store.project.selectedIdVar('')
+      store.collection.collectionVar('')
     } catch (err) {
       store.post.isPostingVar(false)
 
@@ -169,7 +174,6 @@ function AddPost() {
             scrollEnabled={false}
             keyboardType="twitter"
             multiline
-            autoFocus
             color="dark"
             onChangeText={onChangeText}
             placeholder={t('AddPost:placeholder')}
@@ -177,8 +181,14 @@ function AddPost() {
             style={{ marginBottom: 40 }}
           />
 
-          {/* <Title style={{ marginBottom: 20 }}>Add to collection</Title> */}
-          {/* <Collections isOwner projectId={projectId} /> */}
+          <Title style={{ marginBottom: 20 }}>{t('AddPost:collection')}</Title>
+          <Collections
+            disableModal
+            isOwner
+            projectId={projectId}
+            onPress={onChangeCollection}
+            selectedId={collectionId}
+          />
         </ScrollView>
       </KeyboardAvoidingView>
     </>

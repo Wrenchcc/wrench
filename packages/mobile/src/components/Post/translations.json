@@ -8,8 +8,11 @@
         "edit": "Edit",
         "collection": "Add to collection",
         "delete": "Delete",
-        "cancel": "Cancel"
-      }
+        "cancel": "Cancel",
+        "removeCollection": "Remove from collection"
+      },
+      "selectCollection": "Select collection",
+      "showCollection": "Show collection"
     },
     "sv": {
       "options": {
@@ -17,10 +20,13 @@
         "alertDescription": "Om du backar nu kommer din redigering att kastas.",
         "report": "Rapportera",
         "edit": "Redigera",
-        "collection": "Lägga till i kollektion",
+        "collection": "Lägga till i samling",
         "delete": "Radera",
-        "cancel": "Avbryt"
-      }
+        "cancel": "Avbryt",
+        "removeCollection": "Radera från samling"
+      },
+      "selectCollection": "Välj samling",
+      "showCollection": "Visa samling"
     }
   }
 }

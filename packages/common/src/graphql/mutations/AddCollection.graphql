@@ -1,6 +1,7 @@
+#import "../fragments/CollectionFragment.graphql"
+
 mutation addCollection($projectId: ID!, $name: String!) {
   addCollection(projectId: $projectId, name: $name) {
-    name
-    id
+    ...Collection
   }
 }

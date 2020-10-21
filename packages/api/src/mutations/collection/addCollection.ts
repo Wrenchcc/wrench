@@ -10,7 +10,7 @@ export default isAuthenticated(async (_, { projectId, name }, ctx) => {
 
   // await ctx.redis.delete(`project:collectionsConnection:${projectId}:*`)
 
-  const collection = await ctx.db.Collection.findOrCreate(name.trim())
+  const collection = await ctx.db.Collection.saveCollection(name.trim(), ctx.userId)
 
   await ctx.db.ProjectCollection.save({
     collectionId: collection.id,

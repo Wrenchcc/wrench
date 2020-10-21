@@ -1,0 +1,7 @@
+#import "../fragments/CollectionFragment.graphql"
+
+mutation editCollection($input: EditCollectionInput!, $id: ID!) {
+  editCollection(input: $input, id: $id) {
+    ...Collection
+  }
+}

@@ -8,6 +8,7 @@ import {
   CurrentUserProfileDocument,
   ProjectDocument,
   useLikePostMutation,
+  useEditPostMutation,
 } from '@wrench/common'
 import { State, TapGestureHandler } from 'react-native-gesture-handler'
 import * as Haptics from 'expo-haptics'
@@ -15,23 +16,58 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import { useNavigation, SCREENS } from 'navigation'
 import openLink from 'utils/openLink'
 import { useDynamicColor } from 'utils/hooks'
-// import { keyboardHeight } from 'utils/platform'
+import { keyboardHeight } from 'utils/platform'
 import { Avatar, Carousel, Comments, Title, Text, Icon, TimeAgo } from 'ui'
 import LikePost from 'components/LikePost'
 import Bookmark from 'components/Bookmark'
-import { share, sparkMega } from 'images'
-import { Base, Top, Headline, Content, Spacer, Row } from './styles'
-// import Collections from 'features/project/components/Collections'
+import { share, sparkMega, arrowRightSmall } from 'images'
+import { Base, Top, Headline, Content, Spacer, Row, Collection } from './styles'
+import Collections from 'features/project/components/Collections'
 
-// const HALFPANEL_HEIGHT = 250 //164
-
-function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
+function Post({ post, withoutTitle, withoutComments, withoutCollections, paddingBottom }) {
   const { t } = useTranslation()
-  const { navigate, showEditPost, showHalfpanel } = useNavigation()
+  const { navigate, showEditPost, showHalfpanel, dismissHalfpanel } = useNavigation()
   const dynamicColor = useDynamicColor('inverse')
   const [deletePost] = useDeletePostMutation()
   const [toggleLike] = useLikePostMutation()
+  const [editPost] = useEditPostMutation()
+
   const handleEdit = useCallback(() => showEditPost({ post }), [post])
+
+  const addToCollection = useCallback(async (id) => {
+    await editPost({
+      variables: {
+        id: post.id,
+        input: {
+          collectionId: id,
+        },
+      },
+    })
+
+    dismissHalfpanel()
+  }, [])
+
+  const removeFromCollection = useCallback(async () => {
+    await editPost({
+      variables: {
+        id: post.id,
+        input: {
+          caption: post.caption,
+        },
+      },
+    })
+  }, [])
+
+  const navigateToCollection = useCallback(
+    () =>
+      navigate(SCREENS.COLLECTIONS, {
+        name: post?.collection.name,
+        id: post.collection.id,
+        projectId: post.project.id,
+        isOwner: post.permissions.isOwner,
+      }),
+    [post]
+  )
 
   const animatedValue = useRef(new Animated.Value(0))
 
@@ -218,7 +254,7 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
     if (post.permissions.isOwner) {
       const options = [
         t('Post:options:edit'),
-        // t('Post:options:collection'),
+        post.collection ? t('Post:options:removeCollection') : t('Post:options:collection'),
         t('Post:options:delete'),
         t('Post:options:cancel'),
       ]
@@ -226,8 +262,8 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
       showActionSheetWithOptions(
         {
           options,
-          destructiveButtonIndex: 1,
-          cancelButtonIndex: 2,
+          destructiveButtonIndex: 2,
+          cancelButtonIndex: 3,
           tintColor: dynamicColor,
         },
         (index) => {
@@ -235,20 +271,31 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
             handleEdit()
           }
 
-          // if (index === 1) {
-          //   showHalfpanel({
-          //     height: HALFPANEL_HEIGHT, //+ keyboardHeight,
-          //     renderContent: () => (
-          //       <Collections
-          //         projectId={post.project.id}
-          //         isOwner
-          //         onPress={(item) => console.log(item)}
-          //       />
-          //     ),
-          //   })
-          // }
-
           if (index === 1) {
+            if (post.collection) {
+              removeFromCollection()
+            } else {
+              showHalfpanel({
+                height: keyboardHeight,
+                renderContent: () => (
+                  <>
+                    <Spacer />
+                    <Title>{t('Post:selectCollection')}</Title>
+                    <Spacer />
+
+                    <Collections
+                      projectId={post.project.id}
+                      isOwner
+                      onSave={addToCollection}
+                      loading={true}
+                    />
+                  </>
+                ),
+              })
+            }
+          }
+
+          if (index === 2) {
             onDelete()
           }
         }
@@ -339,9 +386,17 @@ function Post({ post, withoutTitle, withoutComments, paddingBottom }) {
         )}
       </Content>
 
+      {!withoutCollections && post.collection && (
+        <Collection onPress={navigateToCollection}>
+          <Text fontSize={15} medium>
+            {t('Post:showCollection')}
+          </Text>
+          <Icon source={arrowRightSmall} />
+        </Collection>
+      )}
+
       <Row>
         <LikePost post={post} />
-
         <Bookmark post={post} />
       </Row>
 

@@ -2,12 +2,13 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePaginatedQuery, CollectionsDocument } from '@wrench/common'
 import { FlatList, Page, useNavigation, SCREENS } from 'navigation'
-import { Text } from 'ui'
+import { Text, EmptyState } from 'ui'
 import Post from 'components/Post'
+import { TYPES } from 'ui/EmptyState/constants'
 
-const renderItem = ({ item }) => <Post post={item.node} />
+const renderItem = ({ item }) => <Post post={item.node} withoutCollections />
 
-function Collections({ id, name, projectId }) {
+function Collections({ id, name, projectId, isOwner }) {
   const { t } = useTranslation()
   const { showModal, navigateBack } = useNavigation()
 
@@ -34,23 +35,37 @@ function Collections({ id, name, projectId }) {
     },
   })
 
+  const hasPosts = edges?.length > 0
+  const emptyState = isOwner ? TYPES.COLLECTION_POST : TYPES.COLLECTION_NO_POSTS
+
   return (
     <Page
       headerTitle={name}
       headerAnimation={false}
       headerRight={
-        // TODO: Is owner
-        <Text medium onPress={navigateToEdit}>
-          Edit
-        </Text>
+        isOwner && (
+          <Text medium onPress={navigateToEdit}>
+            {t('Collections:edit')}
+          </Text>
+        )
       }
     >
       <FlatList
         data={edges}
         renderItem={renderItem}
+        contentContainerStyle={{ flexGrow: 1 }}
+        ListEmptyComponent={
+          <EmptyState
+            type={emptyState}
+            params={{
+              collectionId: id,
+              projectId,
+            }}
+          />
+        }
         initialNumToRender={2}
         spacingSeparator
-        paddingHorizontal={20}
+        paddingHorizontal={hasPosts ? 20 : 0}
         refetch={refetch}
         fetchMore={fetchMore}
         isRefetching={isRefetching}
