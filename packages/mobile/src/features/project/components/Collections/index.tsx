@@ -5,7 +5,7 @@ import AddCollection from 'components/AddCollection'
 import Placeholder from './Placeholder'
 import { Collection, GUTTER } from './styles'
 
-function Collections({ isOwner, projectId }) {
+function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableModal = false }) {
   const {
     data: { edges },
     isFetching,
@@ -36,6 +36,10 @@ function Collections({ isOwner, projectId }) {
       last={index === edges && edges.length - 1}
       projectId={projectId}
       id={node.id}
+      selected={node.id === selectedId}
+      onPress={onPress}
+      isOwner={isOwner}
+      onSave={onSave}
     />
   )
 
@@ -52,7 +56,13 @@ function Collections({ isOwner, projectId }) {
         directionalLockEnabled
         showsHorizontalScrollIndicator={false}
         ListHeaderComponent={
-          isOwner && <AddCollection style={{ marginRight: 10 }} projectId={projectId} />
+          isOwner && (
+            <AddCollection
+              style={{ marginRight: 10 }}
+              projectId={projectId}
+              disableModal={disableModal}
+            />
+          )
         }
         refetch={refetch}
         fetchMore={fetchMore}

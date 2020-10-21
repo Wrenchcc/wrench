@@ -23,6 +23,15 @@
         "title": "Add your first post.",
         "description": "Now when you have a project it’s time to create your first post.",
         "button": "Add"
+      },
+      "collection-post": {
+        "title": "Add your first to post to this collection.",
+        "description": "Add a post to this collection from the create new post flow or an existing post by clicking the more button in the right corner of the post.",
+        "button": "Add"
+      },
+      "collection-no-post": {
+        "title": "No posts added to this collection.",
+        "description": "The user hasn’t added any posts to this collection yet."
       }
     },
     "sv": {
@@ -48,6 +57,15 @@
         "title": "Lägg till ditt första inlägg",
         "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
         "button": "Lägg till"
+      },
+      "collection-post": {
+        "title": "Lägg till ditt första inlägg i denna samling.",
+        "description": "Lägg till ett inlägg i den här samlingen genom att skapa ett nytt inlägg eller använd ett befintligt inlägg genom att klicka på knappen Mer i inläggets högra hörn.",
+        "button": "Lägg till"
+      },
+      "collection-no-post": {
+        "title": "Inga inlägg har lagts till i denna samling.",
+        "description": "Användaren har ännu inte lagt till några inlägg i den här samlingen."
       }
     }
   }

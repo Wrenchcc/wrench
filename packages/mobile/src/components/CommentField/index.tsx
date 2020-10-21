@@ -91,12 +91,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
 
               return {
                 ...existingCommentRefs,
-                edges: [
-                  {
-                    node: newCommentRef,
-                  },
-                  ...existingCommentRefs.edges,
-                ],
+                edges: [newCommentRef, ...existingCommentRefs.edges],
                 totalCount: existingCommentRefs.totalCount + 1,
               }
             },

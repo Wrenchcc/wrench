@@ -20,6 +20,8 @@ const onPressAction = (type: TYPES, showModal, params) => {
     case TYPES.POST:
     case TYPES.PROJECT_POST:
       return showModal(SCREENS.ADD_MEDIA, params)
+    case TYPES.COLLECTION_POST:
+      return showModal(SCREENS.ADD_POST_TO_COLLECTION, params)
     default:
       return null
   }
@@ -30,6 +32,7 @@ const showButton = (type) => {
     case TYPES.PROJECT:
     case TYPES.POST:
     case TYPES.PROJECT_POST:
+    case TYPES.COLLECTION_POST:
       return true
     default:
       return false

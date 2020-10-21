@@ -253,6 +253,7 @@ export type Post = {
   permissions?: Maybe<PostPermissions>;
   likes?: Maybe<Likes>;
   bookmarks?: Maybe<Bookmarks>;
+  collection?: Maybe<Collection>;
   filesConnection?: Maybe<FileConnection>;
   commentsConnection?: Maybe<CommentConnection>;
   likesConnection?: Maybe<LikeConnection>;
@@ -779,6 +780,7 @@ export type Mutation = {
   deleteComment?: Maybe<Scalars['Boolean']>;
   addCollection?: Maybe<Collection>;
   deleteCollection?: Maybe<Collection>;
+  editCollection?: Maybe<Collection>;
   collectPosts?: Maybe<Collection>;
   sendPromo?: Maybe<Scalars['Boolean']>;
   likePost?: Maybe<Post>;
@@ -857,6 +859,12 @@ export type MutationAddCollectionArgs = {
 export type MutationDeleteCollectionArgs = {
   projectId: Scalars['ID'];
   id: Scalars['ID'];
+};
+
+
+export type MutationEditCollectionArgs = {
+  id: Scalars['ID'];
+  input: EditCollectionInput;
 };
 
 
@@ -986,6 +994,10 @@ export type CommentInput = {
   text: Scalars['String'];
 };
 
+export type EditCollectionInput = {
+  name?: Maybe<Scalars['String']>;
+};
+
 export type CollectionInput = {
   postId: Scalars['ID'];
 };
@@ -994,6 +1006,7 @@ export type PostInput = {
   projectId: Scalars['ID'];
   caption?: Maybe<Scalars['String']>;
   files: Array<Maybe<FileInput>>;
+  collectionId?: Maybe<Scalars['ID']>;
 };
 
 export type FileInput = {
@@ -1002,6 +1015,7 @@ export type FileInput = {
 
 export type EditPostInput = {
   caption?: Maybe<Scalars['String']>;
+  collectionId?: Maybe<Scalars['ID']>;
 };
 
 export type ProjectInput = {
@@ -1084,6 +1098,15 @@ export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
 }
+
+export type CollectionFragment = (
+  { __typename?: 'Collection' }
+  & Pick<Collection, 'id' | 'name'>
+  & { cover?: Maybe<(
+    { __typename?: 'CoverType' }
+    & Pick<CoverType, 'uri'>
+  )> }
+);
 
 export type CommentAndRepliesFragment = (
   { __typename?: 'Comment' }
@@ -1193,6 +1216,9 @@ export type PostFragment = (
         & Pick<User, 'id' | 'avatarUrl'>
       ) }
     )>> }
+  )>, collection?: Maybe<(
+    { __typename?: 'Collection' }
+    & Pick<Collection, 'id' | 'name'>
   )> }
 );
 
@@ -1293,7 +1319,7 @@ export type AddCollectionMutation = (
   { __typename?: 'Mutation' }
   & { addCollection?: Maybe<(
     { __typename?: 'Collection' }
-    & Pick<Collection, 'name' | 'id'>
+    & CollectionFragment
   )> }
 );
 
@@ -1477,6 +1503,20 @@ export type DeleteProjectMutationVariables = Exact<{
 export type DeleteProjectMutation = (
   { __typename?: 'Mutation' }
   & Pick<Mutation, 'deleteProject'>
+);
+
+export type EditCollectionMutationVariables = Exact<{
+  input: EditCollectionInput;
+  id: Scalars['ID'];
+}>;
+
+
+export type EditCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { editCollection?: Maybe<(
+    { __typename?: 'Collection' }
+    & CollectionFragment
+  )> }
 );
 
 export type EditPostMutationVariables = Exact<{
@@ -2130,11 +2170,7 @@ export type ProjectCollectionsQuery = (
       & Pick<CollectionEdge, 'cursor'>
       & { node: (
         { __typename?: 'Collection' }
-        & Pick<Collection, 'id' | 'name'>
-        & { cover?: Maybe<(
-          { __typename?: 'CoverType' }
-          & Pick<CoverType, 'uri'>
-        )> }
+        & CollectionFragment
       ) }
     )>> }
   )> }
@@ -2472,6 +2508,15 @@ export type UserFollowingProjectsQuery = (
   )> }
 );
 
+export const CollectionFragmentDoc = gql`
+    fragment Collection on Collection {
+  id
+  name
+  cover {
+    uri
+  }
+}
+    `;
 export const UserFragmentDoc = gql`
     fragment User on User {
   id
@@ -2623,6 +2668,10 @@ export const PostFragmentDoc = gql`
       }
     }
   }
+  collection {
+    id
+    name
+  }
 }
     ${UserFragmentDoc}
 ${ProjectFragmentDoc}
@@ -2689,11 +2738,10 @@ export const UserSettingsFragmentDoc = gql`
 export const AddCollectionDocument = gql`
     mutation addCollection($projectId: ID!, $name: String!) {
   addCollection(projectId: $projectId, name: $name) {
-    name
-    id
+    ...Collection
   }
 }
-    `;
+    ${CollectionFragmentDoc}`;
 export type AddCollectionMutationFn = Apollo.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
 
 /**
@@ -3177,6 +3225,39 @@ export function useDeleteProjectMutation(baseOptions?: Apollo.MutationHookOption
 export type DeleteProjectMutationHookResult = ReturnType<typeof useDeleteProjectMutation>;
 export type DeleteProjectMutationResult = Apollo.MutationResult<DeleteProjectMutation>;
 export type DeleteProjectMutationOptions = Apollo.BaseMutationOptions<DeleteProjectMutation, DeleteProjectMutationVariables>;
+export const EditCollectionDocument = gql`
+    mutation editCollection($input: EditCollectionInput!, $id: ID!) {
+  editCollection(input: $input, id: $id) {
+    ...Collection
+  }
+}
+    ${CollectionFragmentDoc}`;
+export type EditCollectionMutationFn = Apollo.MutationFunction<EditCollectionMutation, EditCollectionMutationVariables>;
+
+/**
+ * __useEditCollectionMutation__
+ *
+ * To run a mutation, you first call `useEditCollectionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditCollectionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editCollectionMutation, { data, loading, error }] = useEditCollectionMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useEditCollectionMutation(baseOptions?: Apollo.MutationHookOptions<EditCollectionMutation, EditCollectionMutationVariables>) {
+        return Apollo.useMutation<EditCollectionMutation, EditCollectionMutationVariables>(EditCollectionDocument, baseOptions);
+      }
+export type EditCollectionMutationHookResult = ReturnType<typeof useEditCollectionMutation>;
+export type EditCollectionMutationResult = Apollo.MutationResult<EditCollectionMutation>;
+export type EditCollectionMutationOptions = Apollo.BaseMutationOptions<EditCollectionMutation, EditCollectionMutationVariables>;
 export const EditPostDocument = gql`
     mutation editPost($id: ID!, $input: EditPostInput!) {
   editPost(id: $id, input: $input) {
@@ -4474,16 +4555,12 @@ export const ProjectCollectionsDocument = gql`
     edges {
       cursor
       node {
-        id
-        name
-        cover {
-          uri
-        }
+        ...Collection
       }
     }
   }
 }
-    `;
+    ${CollectionFragmentDoc}`;
 
 /**
  * __useProjectCollectionsQuery__

@@ -1,0 +1,7 @@
+fragment Collection on Collection {
+  id
+  name
+  cover {
+    uri
+  }
+}

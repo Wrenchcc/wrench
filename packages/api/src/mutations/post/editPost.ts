@@ -19,6 +19,18 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
   // Add new project if projectId is defined or use currenct project
   const project = await ctx.db.Project.findOne(input.projectId || post.projectId)
 
+  if (input.collectionId) {
+    await ctx.db.PostCollection.save({
+      collectionId: input.collectionId,
+      projectId: project.id,
+      postId: post.id,
+    })
+  } else {
+    await ctx.db.PostCollection.delete({
+      postId: post.id,
+    })
+  }
+
   return ctx.db.Post.save({
     ...post,
     ...input,

@@ -1,3 +1,4 @@
+#import "../fragments/CollectionFragment.graphql"
 
 query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
   projectCollections(projectId: $projectId, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
@@ -7,11 +8,7 @@ query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
     edges {
       cursor
       node {
-        id
-        name
-        cover {
-          uri
-        }
+        ...Collection
       }
     }
   }

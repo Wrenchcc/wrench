@@ -12,6 +12,7 @@ export default gql`
     permissions: PostPermissions
     likes: Likes
     bookmarks: Bookmarks
+    collection: Collection
 
     filesConnection(
       first: Int = 10
@@ -50,17 +51,20 @@ export default gql`
 
   extend type Query {
     post(id: ID): Post
-    posts(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection @cacheControl(maxAge: 360)
+    posts(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
+      @cacheControl(maxAge: 360)
   }
 
   input PostInput {
     projectId: ID!
     caption: String
     files: [FileInput]!
+    collectionId: ID
   }
 
   input EditPostInput {
     caption: String
+    collectionId: ID
   }
 
   extend type Mutation {

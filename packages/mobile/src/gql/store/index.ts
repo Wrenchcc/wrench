@@ -1,3 +1,4 @@
+import * as collection from './collection'
 import * as files from './files'
 import * as mention from './mention'
 import * as notification from './notification'
@@ -6,6 +7,7 @@ import * as project from './project'
 import * as toast from './toast'
 
 export default {
+  collection,
   files,
   mention,
   notification,

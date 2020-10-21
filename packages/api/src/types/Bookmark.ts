@@ -1,15 +1,15 @@
 import gql from 'graphql-tag'
 
 export default gql`
+  type Bookmarks {
+    totalCount: Int
+    isBookmarked: Boolean
+  }
+
   type BookmarkConnection {
     totalCount: Int
     pageInfo: PageInfo!
     edges: [BookmarkEdge!]
-  }
-
-  type Bookmarks {
-    totalCount: Int
-    isBookmarked: Boolean
   }
 
   type BookmarkEdge {

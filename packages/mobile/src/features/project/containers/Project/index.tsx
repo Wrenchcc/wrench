@@ -34,9 +34,9 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
     },
   })
 
-  const hasPosts = post || (edges && edges.length > 0)
-
-  const emptyState = project?.permissions.isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
+  const hasPosts = post || edges?.length > 0
+  const isOwner = project?.permissions.isOwner
+  const emptyState = isOwner ? TYPES.PROJECT_POST : TYPES.PROJECT_NO_POSTS
 
   const renderItem = ({ item }) => {
     // Remove post item from list to skip dublicated
@@ -52,7 +52,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
       <Page
         headerTitle={project?.title}
         headerRight={
-          project?.permissions.isOwner ? (
+          isOwner ? (
             <Edit project={project} onDeleteCallback={navigateBack} />
           ) : (
             <Share title={project?.title} url={project?.dynamicLink} text />

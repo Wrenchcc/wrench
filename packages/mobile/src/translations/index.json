@@ -51,8 +51,11 @@
         "edit": "Edit",
         "collection": "Add to collection",
         "delete": "Delete",
-        "cancel": "Cancel"
-      }
+        "cancel": "Cancel",
+        "removeCollection": "Remove from collection"
+      },
+      "selectCollection": "Select collection",
+      "showCollection": "Show collection"
     },
     "ProjectTypes": {
       "inspo": "Inspiration"
@@ -111,7 +114,8 @@
       "error": "Couldn't post right now",
       "placeholder": "Add a text about your post",
       "add": "Share",
-      "social": "Social"
+      "social": "Social",
+      "collection": "Add to collection"
     },
     "AddPostToCollection": {
       "title": "Add posts",
@@ -134,6 +138,9 @@
       "headerTitle": "Add project",
       "title": "Pick your category"
     },
+    "Collections": {
+      "edit": "Edit"
+    },
     "Comments": {
       "title": "Comments",
       "loadMore": "Load more comments"
@@ -142,7 +149,8 @@
       "done": "Done",
       "title": "Information",
       "placeholder": "Ex. Engine rebuild",
-      "delete": "Delete"
+      "delete": "Delete",
+      "add": "Add posts"
     },
     "EditModel": {
       "save": "Save",
@@ -348,6 +356,15 @@
         "title": "Add your first post.",
         "description": "Now when you have a project it’s time to create your first post.",
         "button": "Add"
+      },
+      "collection-post": {
+        "title": "Add your first to post to this collection.",
+        "description": "Add a post to this collection from the create new post flow or an existing post by clicking the more button in the right corner of the post.",
+        "button": "Add"
+      },
+      "collection-no-post": {
+        "title": "No posts added to this collection.",
+        "description": "The user hasn’t added any posts to this collection yet."
       }
     },
     "Follow": {
@@ -414,7 +431,7 @@
   },
   "sv": {
     "AddCollection": {
-      "title": "Ny kollektion",
+      "title": "Ny samling",
       "add": "Lägg till",
       "placeholder": "Förgasare",
       "done": "Klar"
@@ -462,10 +479,13 @@
         "alertDescription": "Om du backar nu kommer din redigering att kastas.",
         "report": "Rapportera",
         "edit": "Redigera",
-        "collection": "Lägga till i kollektion",
+        "collection": "Lägga till i samling",
         "delete": "Radera",
-        "cancel": "Avbryt"
-      }
+        "cancel": "Avbryt",
+        "removeCollection": "Radera från samling"
+      },
+      "selectCollection": "Välj samling",
+      "showCollection": "Visa samling"
     },
     "ProjectTypes": {
       "inspo": "Inspiration"
@@ -524,7 +544,8 @@
       "error": "Kunde inte dela just nu",
       "placeholder": "Skriv en text för ditt inlägg",
       "add": "Dela",
-      "social": "Socialt"
+      "social": "Socialt",
+      "collection": "Lägg till i samling"
     },
     "AddPostToCollection": {
       "title": "Lägg till inlägg",
@@ -547,6 +568,9 @@
       "headerTitle": "Skapa projekt",
       "title": "Välj din kategori"
     },
+    "Collections": {
+      "edit": "Redigera"
+    },
     "Comments": {
       "title": "Kommentarer",
       "loadMore": "Ladda fler kommentarer"
@@ -555,7 +579,8 @@
       "done": "Klar",
       "title": "Information",
       "placeholder": "Förgasare",
-      "delete": "Radera"
+      "delete": "Radera",
+      "add": "Lägg till inlägg"
     },
     "EditModel": {
       "save": "Spara",
@@ -761,6 +786,15 @@
         "title": "Lägg till ditt första inlägg",
         "description": "Nu när du har ett projekt är det dags att skapa ditt första inlägg",
         "button": "Lägg till"
+      },
+      "collection-post": {
+        "title": "Lägg till ditt första inlägg i denna samling.",
+        "description": "Lägg till ett inlägg i den här samlingen genom att skapa ett nytt inlägg eller använd ett befintligt inlägg genom att klicka på knappen Mer i inläggets högra hörn.",
+        "button": "Lägg till"
+      },
+      "collection-no-post": {
+        "title": "Inga inlägg har lagts till i denna samling.",
+        "description": "Användaren har ännu inte lagt till några inlägg i den här samlingen."
       }
     },
     "Follow": {

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
-import { useDeleteCollectionMutation } from '@wrench/common'
+import { useDeleteCollectionMutation, useEditCollectionMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { ScrollView, Page, useNavigation } from 'navigation'
+import { ScrollView, Page, useNavigation, SCREENS } from 'navigation'
 import { ActivityIndicator, Text, Title, Icon, Input, SelectionItem } from 'ui'
 import { close } from 'images'
 import { Inner } from './styles'
@@ -9,16 +9,37 @@ import { Inner } from './styles'
 function EditCollection({ id, name, projectId, onDelete }) {
   const { t } = useTranslation()
   const [isSaving, setIsSaving] = useState(false)
-  const { dismissModal } = useNavigation()
+  const { dismissModal, showModal } = useNavigation()
   const [deleteCollection] = useDeleteCollectionMutation()
+  const [editCollection] = useEditCollectionMutation()
 
   const [title, setTitle] = useState(name)
 
   const onChangeText = useCallback((text) => setTitle(text), [])
 
+  const navigateToAddPosts = useCallback(
+    () =>
+      showModal(SCREENS.ADD_POST_TO_COLLECTION, {
+        collectionId: id,
+        projectId,
+      }),
+    []
+  )
+
   const handleDismiss = () => dismissModal()
-  const handleDone = () => {
+
+  const handleDone = async () => {
     setIsSaving(true)
+
+    await editCollection({
+      variables: {
+        id,
+        input: {
+          name: title,
+        },
+      },
+    })
+
     dismissModal()
     setIsSaving(false)
   }
@@ -28,6 +49,20 @@ function EditCollection({ id, name, projectId, onDelete }) {
       variables: {
         id,
         projectId,
+      },
+      update(cache) {
+        cache.modify({
+          fields: {
+            projectCollections(existingCollectionsRefs = {}, { readField }) {
+              return {
+                ...existingCollectionsRefs,
+                edges: existingCollectionsRefs.edges.filter(
+                  ({ node }) => id !== readField('id', node)
+                ),
+              }
+            },
+          },
+        })
       },
     })
 
@@ -62,8 +97,8 @@ function EditCollection({ id, name, projectId, onDelete }) {
               onSubmitEditing={() => {}}
               returnKeyType="done"
             />
-
-            <SelectionItem last title={t('EditCollection:delete')} onPress={handleDelete} />
+            <SelectionItem title={t('EditCollection:add')} onPress={navigateToAddPosts} />
+            <SelectionItem important title={t('EditCollection:delete')} onPress={handleDelete} />
           </Inner>
         </>
       </ScrollView>

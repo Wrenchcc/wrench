@@ -13,7 +13,7 @@ import Collection from './Collection'
 
 @Entity('post_collections')
 export default class PostCollection extends BaseEntity {
-  @ManyToOne(() => Post)
+  @ManyToOne(() => Post, { onDelete: 'CASCADE' })
   @JoinColumn()
   public post: Post
 
