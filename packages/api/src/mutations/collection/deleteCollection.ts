@@ -18,6 +18,7 @@ export default isAuthenticated(async (_, { id, projectId }, ctx) => {
       collectionId: id,
       projectId,
     }),
+    ctx.db.Collection.delete(id),
     // ctx.redis.delete(cacheKey1),
   ])
 

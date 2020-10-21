@@ -12,7 +12,7 @@ import Collection from './Collection'
 
 @Entity('project_collections')
 export default class ProjectCollection extends BaseEntity {
-  @ManyToOne(() => Project)
+  @ManyToOne(() => Project, { onDelete: 'CASCADE' })
   @JoinColumn()
   public project: Project
 
