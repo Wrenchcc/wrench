@@ -62,6 +62,8 @@ function AddMedia({ id }) {
           if (index === 0) {
             dismissModal()
             store.files.reset()
+            store.post.captionVar('')
+            store.collection.collectionVar('')
           }
         }
       )
