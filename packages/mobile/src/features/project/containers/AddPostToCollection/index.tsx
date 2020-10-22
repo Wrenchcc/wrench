@@ -29,6 +29,7 @@ function AddPostToCollection({ collectionId, projectId }) {
     hasNextPage,
     refetch,
   } = usePaginatedQuery(['project', 'posts'])(ProjectDocument, {
+    fetchPolicy: 'network-only',
     variables: {
       id: projectId,
       first: 10,
@@ -57,14 +58,34 @@ function AddPostToCollection({ collectionId, projectId }) {
   const handleSubmit = async () => {
     setIsSaving(true)
 
-    const posts = Object.keys(items).map((postId) => ({ postId }))
+    const ids = Object.keys(items).map((postId) => ({ postId }))
 
     try {
       await collectPosts({
         variables: {
           projectId,
           collectionId,
-          input: posts,
+          input: ids,
+        },
+        update(cache) {
+          cache.modify({
+            fields: {
+              collections(existingCollectionsRefs = {}) {
+                return {
+                  ...existingCollectionsRefs,
+                  edges: [
+                    ...ids.map(({ postId }) => ({
+                      cursor: '',
+                      node: {
+                        __ref: `Post:${postId}`,
+                      },
+                    })),
+                    ...existingCollectionsRefs.edges,
+                  ],
+                }
+              },
+            },
+          })
         },
       })
     } catch {
@@ -75,22 +96,23 @@ function AddPostToCollection({ collectionId, projectId }) {
     setIsSaving(false)
   }
 
-  const renderItem = ({ item }) => (
-    <Cell key={item.node.id}>
-      <Touchable onPress={() => toggleSelection(item)}>
-        <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
-          <Image
-            selected={items[item.node.id]}
-            source={item?.node.files.edges[0].node}
-            gutter={GUTTER}
-            width={ITEM_SIZE}
-            height={ITEM_SIZE}
-          />
-        </Picture>
-      </Touchable>
-    </Cell>
-  )
-
+  const renderItem = ({ item }) => {
+    return (
+      <Cell key={item.node.id}>
+        <Touchable onPress={() => toggleSelection(item)}>
+          <Picture width={ITEM_SIZE} height={ITEM_SIZE}>
+            <Image
+              selected={items[item.node.id]}
+              source={item?.node.files.edges[0].node}
+              gutter={GUTTER}
+              width={ITEM_SIZE}
+              height={ITEM_SIZE}
+            />
+          </Picture>
+        </Touchable>
+      </Cell>
+    )
+  }
   return (
     <Page
       headerTitle={t('AddPostToCollection:title')}

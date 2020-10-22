@@ -55,6 +55,20 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
           caption: post.caption,
         },
       },
+      update(cache) {
+        cache.modify({
+          fields: {
+            collections(existingCollectionsRefs = {}, { readField }) {
+              return {
+                ...existingCollectionsRefs,
+                edges: existingCollectionsRefs.edges.filter(
+                  ({ node }) => post.id !== readField('id', node)
+                ),
+              }
+            },
+          },
+        })
+      },
     })
   }, [])
 

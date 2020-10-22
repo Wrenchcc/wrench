@@ -19567,10 +19567,10 @@ react-native-deep-linking@^2.2.0:
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
   integrity sha512-PKShbOsa/oxjSzZ/Bag98O/J+jaZOI6ic5YdanPirTpRAraAvKUzJWQUhE5Yy0Isl9yfIkSogOClE9BRfSyUbA==
 
-react-native-device-info@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-7.0.1.tgz#c5cf7fe21162eb4f91cfa2d2d7319cd8dbcdc5c8"
-  integrity sha512-VECuimIFG4mkszwc8UMeGtvIR0c2/A0N8jJzGr0AGgVRro5RGTNQf9LXRg2GoZHoh4vudO2n11A2WR5yTZL55w==
+react-native-device-info@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-7.0.2.tgz#dcfebd8e879e2a1973156597eba4d6777e67945f"
+  integrity sha512-3jzEzzX0Zo5rm+fClPFp3OGUnRPjK0w4X6RCNZtuaNbwMG+Vm3BLcU69dv+UfkYMrCo5JSKV6lA2fG25qq2tuA==
 
 react-native-fast-image@^8.3.2:
   version "8.3.2"

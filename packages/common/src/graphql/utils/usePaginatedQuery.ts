@@ -6,10 +6,10 @@ import { isRefetching, isFetchingMore } from './networkStatus'
 
 export default (path, initialData?: any) => (query, options?: any) => {
   const { fetchMore, error, data, refetch, loading, networkStatus } = useQuery(query, {
-    ...options,
     fetchPolicy: 'cache-and-network',
     nextFetchPolicy: 'cache-first',
     notifyOnNetworkStatusChange: true,
+    ...options,
   })
 
   const result = pathOr({}, path, data)

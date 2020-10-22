@@ -8,10 +8,10 @@ export default (path, initialData?) => (query, options?) => {
   const [loadData, { fetchMore, data, error, refetch, loading, networkStatus }] = useLazyQuery(
     query,
     {
-      ...options,
       fetchPolicy: 'cache-and-network',
       nextFetchPolicy: 'cache-first',
       notifyOnNetworkStatusChange: true,
+      ...options,
     }
   )
 
