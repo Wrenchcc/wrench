@@ -28,6 +28,7 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
   } else {
     await ctx.db.PostCollection.delete({
       postId: post.id,
+      // collectionId: input.collectionId, NOTE: Removes post from all collections
     })
   }
 

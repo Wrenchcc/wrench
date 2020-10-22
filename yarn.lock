@@ -19567,10 +19567,10 @@ react-native-deep-linking@^2.2.0:
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
   integrity sha512-PKShbOsa/oxjSzZ/Bag98O/J+jaZOI6ic5YdanPirTpRAraAvKUzJWQUhE5Yy0Isl9yfIkSogOClE9BRfSyUbA==
 
-react-native-device-info@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-7.0.1.tgz#c5cf7fe21162eb4f91cfa2d2d7319cd8dbcdc5c8"
-  integrity sha512-VECuimIFG4mkszwc8UMeGtvIR0c2/A0N8jJzGr0AGgVRro5RGTNQf9LXRg2GoZHoh4vudO2n11A2WR5yTZL55w==
+react-native-device-info@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-7.0.2.tgz#dcfebd8e879e2a1973156597eba4d6777e67945f"
+  integrity sha512-3jzEzzX0Zo5rm+fClPFp3OGUnRPjK0w4X6RCNZtuaNbwMG+Vm3BLcU69dv+UfkYMrCo5JSKV6lA2fG25qq2tuA==
 
 react-native-fast-image@^8.3.2:
   version "8.3.2"
@@ -19592,10 +19592,10 @@ react-native-gesture-handler@^1.8.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-navigation@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.1.0.tgz#05dbfc6b31dd6a8aa626a74b2f51e1cc031b230d"
-  integrity sha512-Ub5eegREee2kyI8OXAzPXAe9dJgVBpj8k3Ni4HfzA2D3+xVGwvskCmKkIJm2xU/i1GcM9TdzoloB1JHsAZl6Qw==
+react-native-navigation@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-7.2.0.tgz#6ab51e6502c558541518c0ed0c197053a6d0a9a2"
+  integrity sha512-B9vJgKvvvQ55GE3A734PrPIM6iGAnUlZNA3Mt9cyX5WJsWofLUbq+L5XxMyTJZDDcKuK5blz6cxg9Zl1O1TaVQ==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
