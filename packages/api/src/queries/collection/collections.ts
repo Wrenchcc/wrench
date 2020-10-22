@@ -2,14 +2,14 @@ import { In } from 'typeorm'
 import paginate from '../../utils/paginate'
 
 export default async (_, args, ctx) => {
-  const bookmarks = await paginate(ctx.db.PostCollection, args, {
+  const collections = await paginate(ctx.db.PostCollection, args, {
     where: {
       collectionId: args.id,
       projectId: args.projectId,
     },
   })
 
-  const ids = bookmarks.edges.map(({ node }) => node.postId)
+  const ids = collections.edges.map(({ node }) => node.postId)
 
   const posts = await ctx.db.Post.find({
     where: {
@@ -18,9 +18,9 @@ export default async (_, args, ctx) => {
   })
 
   return {
-    totalCount: bookmarks.totalCount,
-    pageInfo: bookmarks.pageInfo,
-    edges: bookmarks.edges.map((b) => {
+    totalCount: collections.totalCount,
+    pageInfo: collections.pageInfo,
+    edges: collections.edges.map((b) => {
       return {
         cursor: b.cursor,
         node: posts.find((p) => p.id === b.node.postId),
