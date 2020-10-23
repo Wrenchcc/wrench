@@ -77,7 +77,24 @@ function Item({
         variables: {
           id: commentOrReplyId,
         },
+        optimisticResponse: {
+          id: commentOrReplyId,
+        },
         update: (cache) => {
+          cache.modify({
+            optimistic: true,
+            fields: {
+              comments(existingCommentsRefs = {}, { readField }) {
+                return {
+                  ...existingCommentsRefs,
+                  edges: existingCommentsRefs.edges.filter(
+                    ({ node }) => commentOrReplyId !== readField('id', node)
+                  ),
+                }
+              },
+            },
+          })
+
           // const idToRemove = 'abc123'
           // cache.modify({
           //   id: cache.identify(myPost),

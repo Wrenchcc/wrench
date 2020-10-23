@@ -2,12 +2,7 @@ import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useReactiveVar } from '@apollo/client'
-import {
-  useAddPostMutation,
-  FeedDocument,
-  PostsDocument,
-  CurrentUserProfileDocument,
-} from '@wrench/common'
+import { useAddPostMutation, PostFragmentDoc } from '@wrench/common'
 import { useNavigation } from 'navigation'
 import { store } from 'gql'
 import { logError } from 'utils/sentry'
@@ -53,84 +48,55 @@ function AddPost() {
             collectionId,
           },
         },
-        update: async (cache, { data: { addPost } }) => {
-          // Feed
-          try {
-            const data = cache.readQuery({ query: FeedDocument })
+        update: (cache, { data: { addPost } }) => {
+          const newPostRef = cache.writeFragment({
+            fragmentName: 'Post',
+            data: addPost,
+            fragment: PostFragmentDoc,
+          })
 
-            cache.writeQuery({
-              query: FeedDocument,
-              data: {
-                ...data,
-                feed: {
-                  ...data.feed,
-                  posts: {
-                    ...data.feed.posts,
-                    edges: [
-                      {
-                        cursor: -1,
-                        node: addPost,
-                      },
-                      ...data.feed.posts.edges,
-                    ],
+          const node = {
+            cursor: -1,
+            node: newPostRef,
+          }
+
+          // User
+          cache.modify({
+            id: cache.identify({
+              __typename: 'User',
+              id: addPost.user.id,
+            }),
+            fields: {
+              postsConnection(existingPostsRefs = {}) {
+                return {
+                  ...existingPostsRefs,
+                  edges: [node, ...existingPostsRefs.edges],
+                }
+              },
+            },
+          })
+
+          cache.modify({
+            fields: {
+              // Feed
+              feed(existingFeedRefs = {}) {
+                return {
+                  ...existingFeedRefs,
+                  postsConnection: {
+                    ...existingFeedRefs.postsConnection,
+                    edges: [node, ...existingFeedRefs.postsConnection.edges],
                   },
-                },
+                }
               },
-            })
-          } catch (err) {
-            logError(err)
-          }
-
-          // Explore
-          try {
-            const data = cache.readQuery({ query: PostsDocument })
-
-            cache.writeQuery({
-              query: PostsDocument,
-              data: {
-                ...data,
-                posts: {
-                  ...data.posts,
-                  edges: [
-                    {
-                      cursor: -1,
-                      node: addPost,
-                    },
-                    ...data.feed.posts.edges,
-                  ],
-                },
+              // Exolore
+              posts(existingPostsRefs = {}) {
+                return {
+                  ...existingPostsRefs,
+                  edges: [node, ...existingPostsRefs.edges],
+                }
               },
-            })
-          } catch (err) {
-            logError(err)
-          }
-
-          // Current user profile
-          try {
-            const data = cache.readQuery({ query: CurrentUserProfileDocument })
-
-            cache.writeQuery({
-              query: CurrentUserProfileDocument,
-              data: {
-                ...data,
-                user: {
-                  ...data.user,
-                  posts: {
-                    ...data.user.posts,
-                    edges: [
-                      {
-                        cursor: -1,
-                        node: addPost,
-                      },
-                      ...data.user.posts.edges,
-                    ],
-                  },
-                },
-              },
-            })
-          } catch (err) {
-            logError(err)
-          }
+            },
+          })
         },
       })
 

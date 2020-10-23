@@ -1114,7 +1114,7 @@ export declare type AddCommentMutation = ({
 } & {
     addComment?: Maybe<({
         __typename?: 'Comment';
-    } & Pick<Comment, 'commentId' | 'id' | 'text'>)>;
+    } & CommentFragment)>;
 });
 export declare type AddPostMutationVariables = Exact<{
     input: PostInput;

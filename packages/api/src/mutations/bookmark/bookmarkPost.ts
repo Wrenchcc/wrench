@@ -4,7 +4,7 @@ export default isAuthenticated(async (_, { id }, ctx) => {
   const [isBookmarked, post] = await Promise.all([
     ctx.db.Bookmark.isBookmarked(ctx.userId, id),
     ctx.db.Post.findOne(id),
-    ctx.redis.delete(`post:bookmarks:${id}:${ctx.userId}`),
+    // ctx.redis.delete(`post:bookmarks:${id}:${ctx.userId}`),
   ])
 
   if (isBookmarked) {

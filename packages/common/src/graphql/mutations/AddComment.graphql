@@ -1,7 +1,7 @@
+#import "../fragments/CommentFragment.graphql"
+
 mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
   addComment(postId: $postId, commentId: $commentId, input: $input) {
-    commentId
-    id
-    text
+    ...Comment
   }
 }

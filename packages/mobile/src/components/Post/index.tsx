@@ -1,15 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { Alert, View, Animated } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import {
-  useDeletePostMutation,
-  FeedDocument,
-  PostsDocument,
-  CurrentUserProfileDocument,
-  ProjectDocument,
-  useLikePostMutation,
-  useEditPostMutation,
-} from '@wrench/common'
+import { useDeletePostMutation, useLikePostMutation, useEditPostMutation } from '@wrench/common'
 import { State, TapGestureHandler } from 'react-native-gesture-handler'
 import * as Haptics from 'expo-haptics'
 import { useActionSheet } from '@expo/react-native-action-sheet'
@@ -129,97 +121,62 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
         variables: {
           id,
         },
-        update: (cache) => {
-          // Feed
-          try {
-            const data = cache.readQuery({ query: FeedDocument })
-            const edges = data.feed.posts.edges.filter((edge) => edge.node.id !== id)
-
-            cache.writeQuery({
-              query: FeedDocument,
-              data: {
-                ...data,
-                feed: {
-                  ...data.feed,
-                  posts: {
-                    ...data.feed.posts,
-                    edges,
-                  },
-                },
-              },
-            })
-          } catch (err) {
-            // Swollow error when no post is found
-          }
-
-          // Recent posts
-          try {
-            const data = cache.readQuery({ query: PostsDocument })
-            const edges = data.posts.edges.filter((edge) => edge.node.id !== id)
-
-            cache.writeQuery({
-              query: PostsDocument,
-              data: {
-                ...data,
-                posts: {
-                  ...data.posts,
-                  edges,
-                },
-              },
-            })
-          } catch (err) {
-            // Swollow error when no post is found
-          }
-
-          // Current user
-          try {
-            const data = cache.readQuery({ query: CurrentUserProfileDocument })
-            const edges = data.user.posts.edges.filter((edge) => edge.node.id !== id)
-
-            cache.writeQuery({
-              query: CurrentUserProfileDocument,
-              data: {
-                ...data,
-                user: {
-                  ...data.user,
-                  posts: {
-                    ...data.user.posts,
-                    edges,
-                  },
-                },
-              },
-            })
-          } catch (err) {
-            // Swollow error when no post is found
-          }
-
+        update(cache) {
           // Project
-          try {
-            const data = cache.readQuery({
-              query: ProjectDocument,
-              variables: {
-                id: post.project.id,
+          cache.modify({
+            id: cache.identify({
+              __typename: 'Project',
+              id: post.project.id,
+            }),
+            fields: {
+              postsConnection(existingPostsRefs = {}, { readField }) {
+                return {
+                  ...existingPostsRefs,
+                  edges: existingPostsRefs.edges.filter(({ node }) => id !== readField('id', node)),
+                }
               },
-            })
+            },
+          })
 
-            const edges = data.project.posts.edges.filter((edge) => edge.node.id !== id)
+          // User
+          cache.modify({
+            id: cache.identify({
+              __typename: 'User',
+              id: post.user.id,
+            }),
+            fields: {
+              postsConnection(existingPostsRefs = {}, { readField }) {
+                return {
+                  ...existingPostsRefs,
+                  edges: existingPostsRefs.edges.filter(({ node }) => id !== readField('id', node)),
+                }
+              },
+            },
+          })
 
-            cache.writeQuery({
-              query: ProjectDocument,
-              data: {
-                ...data,
-                project: {
-                  ...data.project,
-                  posts: {
-                    ...data.project.posts,
-                    edges,
+          cache.modify({
+            fields: {
+              // Feed
+              feed(existingFeedRefs = {}, { readField }) {
+                return {
+                  ...existingFeedRefs,
+                  postsConnection: {
+                    ...existingFeedRefs.postsConnection,
+                    edges: existingFeedRefs.postsConnection.edges.filter(
+                      ({ node }) => id !== readField('id', node)
+                    ),
                   },
-                },
+                }
               },
-            })
-          } catch (err) {
-            // Swollow error when no post is found
-          }
+              // Exolore
+              posts(existingPostsRefs = {}, { readField }) {
+                return {
+                  ...existingPostsRefs,
+                  edges: existingPostsRefs.edges.filter(({ node }) => id !== readField('id', node)),
+                }
+              },
+            },
+          })
         },
       })
     },
