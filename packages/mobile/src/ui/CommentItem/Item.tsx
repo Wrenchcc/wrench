@@ -77,69 +77,44 @@ function Item({
         variables: {
           id: commentOrReplyId,
         },
+        optimisticResponse: {
+          id: commentOrReplyId,
+        },
         update: (cache) => {
-          // const idToRemove = 'abc123'
-          // cache.modify({
-          //   id: cache.identify(myPost),
-          //   fields: {
-          //     comments(existingCommentRefs, { readField }) {
-          // totalCount: data.comments.totalCount - 1 || 0,
-          //       return existingCommentRefs.filter(
-          //         (commentRef) => idToRemove !== readField('id', commentRef)
-          //       )
-          //     },
-          //   },
-          // })
           // Post
-          // try {
-          //   const data = cache.readFragment({
-          //     id: `Post:${postId}`,
-          //     fragment: PostFragmentDoc,
-          //     fragmentName: 'Post',
-          //   })
-          //   const edges = data.comments.edges.filter((edge) => edge.node.id !== commentOrReplyId)
-          //   cache.writeFragment({
-          //     id: `Post:${postId}`,
-          //     fragment: PostFragmentDoc,
-          //     fragmentName: 'Post',
-          //     data: {
-          //       ...data,
-          //       comments: {
-          //         ...data.comments,
-          //         edges,
-          //         totalCount: data.comments.totalCount - 1 || 0,
-          //       },
-          //     },
-          //   })
-          // } catch (err) {
-          //   logError(err)
-          // }
-          // // Comment list
-          // try {
-          //   const data = cache.readQuery({
-          //     query: CommentsDocument,
-          //     variables: {
-          //       postId,
-          //     },
-          //   })
-          //   const edges = data.comments.edges.filter((edge) => edge.node.id !== commentOrReplyId)
-          //   const comments = {
-          //     ...data,
-          //     comments: {
-          //       ...data.comments,
-          //       edges,
-          //     },
-          //   }
-          //   cache.writeQuery({
-          //     query: CommentsDocument,
-          //     variables: {
-          //       postId,
-          //     },
-          //     data: comments,
-          //   })
-          // } catch (err) {
-          //   logError(err)
-          // }
+          cache.modify({
+            id: cache.identify({
+              __typename: 'Post',
+              id: postId,
+            }),
+            optimistic: true,
+            fields: {
+              commentsConnection(existingCommentsRefs = {}, { readField }) {
+                return {
+                  ...existingCommentsRefs,
+                  edges: existingCommentsRefs.edges.filter(
+                    ({ node }) => commentOrReplyId !== readField('id', node)
+                  ),
+                  totalCount: existingCommentsRefs.totalCount - 1 || 0,
+                }
+              },
+            },
+          })
+
+          cache.modify({
+            optimistic: true,
+            fields: {
+              comments(existingCommentsRefs = {}, { readField }) {
+                return {
+                  ...existingCommentsRefs,
+                  edges: existingCommentsRefs.edges.filter(
+                    ({ node }) => commentOrReplyId !== readField('id', node)
+                  ),
+                  totalCount: existingCommentsRefs.totalCount - 1 || 0,
+                }
+              },
+            },
+          })
         },
       }),
     [deleteComment, commentOrReplyId]

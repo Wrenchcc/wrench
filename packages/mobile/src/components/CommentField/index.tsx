@@ -55,44 +55,77 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         __typename: 'Mutation',
         addComment: {
           __typename: 'Comment',
+          createdAt: new Date().toISOString(),
           id: optimisticId(),
-          commentId,
-          postId,
-          text,
           likes: {
+            __typename: 'Likes',
             isLiked: false,
             totalCount: 0,
-            __typename: 'Likes',
           },
           permissions: {
-            isOwner: true,
             __typename: 'CommentPermissions',
+            isOwner: true,
           },
+          text,
         },
       },
       update: (cache, { data: { addComment } }) => {
         const { user } = cache.readQuery({ query: CurrentUserDocument })
 
+        const newCommentRef = cache.writeFragment({
+          fragmentName: 'Comment',
+          data: {
+            ...addComment,
+            user,
+          },
+          fragment: CommentFragmentDoc,
+        })
+
+        // Post
         cache.modify({
-          id: `Post:${postId}`,
-          broadcast: false,
+          id: cache.identify({
+            __typename: 'Post',
+            id: postId,
+          }),
           optimistic: true,
           fields: {
             commentsConnection(existingCommentRefs = {}) {
-              const newCommentRef = cache.writeFragment({
-                broadcast: false,
-                fragmentName: 'Comment',
-                data: {
-                  user,
-                  ...addComment,
-                },
-                fragment: CommentFragmentDoc,
-              })
+              return {
+                ...existingCommentRefs,
+                edges: [
+                  {
+                    __typename: 'CommentEdge',
+                    node: newCommentRef,
+                  },
+                  ...existingCommentRefs.edges,
+                ],
+                totalCount: existingCommentRefs.totalCount + 1,
+              }
+            },
+          },
+        })
+
+        // Reply
+
+        if (commentId) {
+        }
+
+        cache.modify({
+          optimistic: true,
+          fields: {
+            comments(existingCommentRefs = {}) {
+              // console.log(JSON.stringify(existingCommentRefs, null, 2))
 
               return {
                 ...existingCommentRefs,
-                edges: [newCommentRef, ...existingCommentRefs.edges],
-                totalCount: existingCommentRefs.totalCount + 1,
+                edges: [
+                  ...existingCommentRefs.edges,
+                  {
+                    __typename: 'CommentEdge',
+                    cursor: -1,
+                    node: newCommentRef,
+                  },
+                ],
               }
             },
           },

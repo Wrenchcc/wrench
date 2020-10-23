@@ -2,12 +2,12 @@ import { IsNull } from 'typeorm'
 import paginate from '../../utils/paginate'
 
 export default async (_, args, ctx) => {
-  const cacheKey = `comment:comments:${args.postId}:${JSON.stringify(args)}`
-  const cache = await ctx.redis.get(cacheKey)
+  // const cacheKey = `comment:comments:${args.postId}:${JSON.stringify(args)}`
+  // const cache = await ctx.redis.get(cacheKey)
 
-  if (cache) {
-    return cache
-  }
+  // if (cache) {
+  //   return cache
+  // }
 
   const response = await paginate(ctx.db.Comment, args, {
     where: {
@@ -16,7 +16,7 @@ export default async (_, args, ctx) => {
     },
   })
 
-  ctx.redis.set(cacheKey, response)
+  // ctx.redis.set(cacheKey, response)
 
   return response
 }
