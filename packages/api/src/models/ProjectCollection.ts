@@ -6,12 +6,16 @@ import {
   BaseEntity,
   CreateDateColumn,
   UpdateDateColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm'
 import Project from './Project'
 import Collection from './Collection'
 
 @Entity('project_collections')
 export default class ProjectCollection extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  public id: string
+
   @ManyToOne(() => Project, { onDelete: 'CASCADE' })
   @JoinColumn()
   public project: Project
