@@ -86,16 +86,18 @@ function Form({ projectId, disableModal }) {
 
 function AddCollection({ projectId, style = {}, disableModal }) {
   const { t } = useTranslation()
-  const { showHalfpanel } = useNavigation()
+  const { showHalfpanel, dismissHalfpanel, isHalpanelOpen } = useNavigation()
 
-  const handleHalfPanel = useCallback(
-    () =>
-      showHalfpanel({
-        height: HALFPANEL_HEIGHT + keyboardHeight,
-        renderContent: () => <Form projectId={projectId} disableModal={disableModal} />,
-      }),
-    [showHalfpanel]
-  )
+  const handleHalfPanel = useCallback(() => {
+    if (isHalpanelOpen) {
+      dismissHalfpanel()
+    }
+
+    showHalfpanel({
+      height: HALFPANEL_HEIGHT + keyboardHeight,
+      renderContent: () => <Form projectId={projectId} disableModal={disableModal} />,
+    })
+  }, [showHalfpanel, isHalpanelOpen])
 
   return (
     <Base style={style}>

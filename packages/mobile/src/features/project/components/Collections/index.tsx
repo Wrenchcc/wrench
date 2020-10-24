@@ -16,7 +16,7 @@ function Collections({ isOwner, projectId, onPress, onSave, selectedId, disableM
   } = usePaginatedQuery(['projectCollections'])(ProjectCollectionsDocument, {
     variables: {
       projectId,
-      first: 8,
+      first: 7,
     },
   })
 

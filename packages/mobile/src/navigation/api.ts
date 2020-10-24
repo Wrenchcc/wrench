@@ -4,8 +4,8 @@ import { isIphone } from 'utils/platform'
 import { SCREENS, BOTTOM_TABS_ID } from './constants'
 import { componentId } from './events'
 
-let mention: boolean
-let halfpanel: boolean
+export let isMentionOpen = false
+export let isHalpanelOpen = false
 
 type PassProps = { [passProp: string]: any }
 
@@ -55,7 +55,7 @@ export function showModal(
 }
 
 export function showHalfpanel(passProps: PassProps) {
-  if (!halfpanel) {
+  if (!isHalpanelOpen) {
     Navigation.showModal({
       component: {
         id: SCREENS.HALFPANEL,
@@ -80,16 +80,16 @@ export function showHalfpanel(passProps: PassProps) {
       },
     })
   }
-  halfpanel = true
+  isHalpanelOpen = true
 }
 
 export function dismissHalfpanel() {
   Navigation.dismissModal(SCREENS.HALFPANEL)
-  halfpanel = false
+  isHalpanelOpen = false
 }
 
 export function showMention(passProps: PassProps) {
-  if (!mention) {
+  if (!isMentionOpen) {
     Navigation.showOverlay({
       component: {
         id: SCREENS.MENTION,
@@ -103,12 +103,12 @@ export function showMention(passProps: PassProps) {
       },
     })
   }
-  mention = true
+  isMentionOpen = true
 }
 
 export function dismissMention() {
   Navigation.dismissOverlay(SCREENS.MENTION)
-  mention = false
+  isMentionOpen = false
 }
 
 export function showEditPost(passProps: PassProps) {
