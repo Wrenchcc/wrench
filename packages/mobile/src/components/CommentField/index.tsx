@@ -1,9 +1,11 @@
+import * as Haptics from 'expo-haptics'
 import {
   optimisticId,
   useAddCommentMutation,
   useCurrentUserQuery,
   CurrentUserDocument,
   CommentFragmentDoc,
+  CommentAndRepliesFragmentDoc,
 } from '@wrench/common'
 import { store } from 'gql'
 import EmojiList from 'components/EmojiList'
@@ -37,6 +39,8 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   }, [inputRef, username, commentId])
 
   const handleSubmit = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+
     if (blurOnSubmit) {
       inputRef.current.blur()
     }
@@ -52,7 +56,6 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         },
       },
       optimisticResponse: {
-        __typename: 'Mutation',
         addComment: {
           __typename: 'Comment',
           createdAt: new Date().toISOString(),
@@ -66,70 +69,110 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
             __typename: 'CommentPermissions',
             isOwner: true,
           },
+          replies: {
+            __typename: 'CommentConnection',
+            edges: [],
+            pageInfo: {
+              __typename: 'PageInfo',
+              hasNextPage: false,
+            },
+            totalCount: 0,
+          },
           text,
         },
       },
       update: (cache, { data: { addComment } }) => {
         const { user } = cache.readQuery({ query: CurrentUserDocument })
 
-        const newCommentRef = cache.writeFragment({
-          fragmentName: 'Comment',
+        // Post
+        if (postId) {
+          const newCommentRef = cache.writeFragment({
+            fragmentName: 'Comment',
+            data: {
+              ...addComment,
+              user,
+            },
+            fragment: CommentFragmentDoc,
+          })
+
+          cache.modify({
+            id: cache.identify({
+              __typename: 'Post',
+              id: postId,
+            }),
+            optimistic: true,
+            fields: {
+              commentsConnection(existingCommentRefs = {}) {
+                return {
+                  ...existingCommentRefs,
+                  edges: [
+                    {
+                      __typename: 'CommentEdge',
+                      node: newCommentRef,
+                    },
+                    ...existingCommentRefs.edges,
+                  ],
+                  totalCount: existingCommentRefs.totalCount + 1,
+                }
+              },
+            },
+          })
+        }
+
+        const newCommentAndRepliesRef = cache.writeFragment({
+          fragmentName: 'CommentAndReplies',
           data: {
             ...addComment,
             user,
           },
-          fragment: CommentFragmentDoc,
-        })
-
-        // Post
-        cache.modify({
-          id: cache.identify({
-            __typename: 'Post',
-            id: postId,
-          }),
-          optimistic: true,
-          fields: {
-            commentsConnection(existingCommentRefs = {}) {
-              return {
-                ...existingCommentRefs,
-                edges: [
-                  {
-                    __typename: 'CommentEdge',
-                    node: newCommentRef,
-                  },
-                  ...existingCommentRefs.edges,
-                ],
-                totalCount: existingCommentRefs.totalCount + 1,
-              }
-            },
-          },
+          fragment: CommentAndRepliesFragmentDoc,
         })
 
         // Reply
-
         if (commentId) {
-        }
-
-        cache.modify({
-          optimistic: true,
-          fields: {
-            comments(existingCommentRefs = {}) {
-              // console.log(JSON.stringify(existingCommentRefs, null, 2))
-
-              return {
-                ...existingCommentRefs,
-                edges: [
-                  ...existingCommentRefs.edges,
-                  {
-                    __typename: 'CommentEdge',
-                    cursor: -1,
-                    node: newCommentRef,
-                  },
-                ],
-              }
+          cache.modify({
+            id: cache.identify({
+              __typename: 'Comment',
+              id: commentId,
+            }),
+            fields: {
+              repliesConnection(existingRepliesRefs = {}) {
+                return {
+                  ...existingRepliesRefs,
+                  edges: [
+                    {
+                      __typename: 'CommentEdge',
+                      cursor: -1,
+                      node: newCommentAndRepliesRef,
+                    },
+                    ...existingRepliesRefs.edges,
+                  ],
+                  totalCount: existingRepliesRefs.totalCount + 1,
+                }
+              },
             },
-          },
-        })
+          })
+        } else {
+          cache.modify({
+            optimistic: true,
+            fields: {
+              comments(existingCommentRefs = {}) {
+                return {
+                  ...existingCommentRefs,
+                  edges: [
+                    {
+                      __typename: 'CommentEdge',
+                      cursor: -1,
+                      node: newCommentAndRepliesRef,
+                    },
+                    ...existingCommentRefs.edges,
+                  ],
+                  totalCount: existingCommentRefs.totalCount + 1,
+                }
+              },
+            },
+          })
+        }
       },
     })
   }
