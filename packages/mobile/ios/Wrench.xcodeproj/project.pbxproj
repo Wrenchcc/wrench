@@ -248,7 +248,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export BUNDLE_COMMAND=\"ram-bundle\"\nexport NODE_BINARY=node\nexport EXTRA_PACKAGER_ARGS=\"--entry-file packages/mobile/index.js\"\nexport SENTRY_PROPERTIES=sentry.properties \\\n\nexport PROJECT_ROOT=$PWD/..\n\n#../../../node_modules/@sentry/cli/bin/sentry-cli react-native xcode \\\n  ../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "export BUNDLE_COMMAND=\"ram-bundle\"\nexport NODE_BINARY=node\nexport EXTRA_PACKAGER_ARGS=\"--entry-file packages/mobile/index.js\"\nexport SENTRY_PROPERTIES=sentry.properties \\\n\nexport PROJECT_ROOT=$PWD/..\n\n../../../node_modules/@sentry/cli/bin/sentry-cli react-native xcode \\\n  ../../../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0AF81E7812D4CC4727DD7D92 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
