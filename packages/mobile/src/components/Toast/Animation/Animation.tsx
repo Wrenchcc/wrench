@@ -1,7 +1,9 @@
 import React from 'react'
+import { hasNotch } from 'utils/platform'
 import Animated, { Easing } from 'react-native-reanimated'
-import { NAVIGATION } from 'navigation/constants'
 import { useTransition, useSetTimeout } from './animationRunners'
+
+const TOP = hasNotch ? 60 : 40
 
 const { eq, interpolate } = Animated
 
@@ -33,8 +35,8 @@ const Animation: React.FC<Props> = ({
   })
 
   const translateY = interpolate(animation, {
-    inputRange: [0, 0.7, 1],
-    outputRange: [0, HEIGHT, HEIGHT],
+    inputRange: [0, 1],
+    outputRange: [-TOP, HEIGHT],
   })
 
   useSetTimeout({
@@ -47,7 +49,7 @@ const Animation: React.FC<Props> = ({
   return (
     <Animated.View
       style={{
-        top: NAVIGATION.TOP_BAR_HEIGHT,
+        top: TOP,
         position: 'absolute',
         zIndex: 100,
         left: 0,

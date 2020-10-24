@@ -36,7 +36,6 @@ function Posting({ scrollToTop }) {
         <Base>
           <Inner>
             <Cover source={image} />
-
             <Text fontSize={15}>{t('Posting:description')}</Text>
           </Inner>
         </Base>

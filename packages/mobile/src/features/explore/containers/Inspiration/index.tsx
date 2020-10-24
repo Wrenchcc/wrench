@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { Dimensions, View } from 'react-native'
+import { hasNotch } from 'utils/platform'
 import { usePaginatedQuery, FilesDocument } from '@wrench/common'
 import { useNavigation } from 'navigation'
 import { Icon, InfiniteList, Image } from 'ui'
@@ -20,7 +21,7 @@ function Inspiration() {
   }, [navigateBack])
 
   const handleNavigate = useCallback(
-    postId => {
+    (postId) => {
       navigate(SCREENS.POST, {
         postId,
       })
@@ -53,7 +54,7 @@ function Inspiration() {
         <Icon source={arrowLeft} onPress={handleNavigationBack} />
       </BackButton>
 
-      <View style={{ flex: 1, marginTop: -NAVIGATION.STATUS_BAR_HEIGHT }}>
+      <View style={{ flex: 1, marginTop: hasNotch ? -NAVIGATION.STATUS_BAR_HEIGHT : 0 }}>
         <InfiniteList
           numColumns={NUM_COLUMNS}
           loaderInset={0}

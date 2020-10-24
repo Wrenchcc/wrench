@@ -29,7 +29,8 @@ function Settings({ section }) {
   const { t } = useTranslation()
   const { navigate, showModal } = useNavigation()
 
-  const { data } = useCurrentUserSettingsQuery()
+  const { data, loading } = useCurrentUserSettingsQuery()
+
   const [toggleNotificationSettings] = useToggleNotificationSettingsMutation()
   const [deleteUser] = useDeleteCurrentUserMutation()
 
@@ -57,6 +58,10 @@ function Settings({ section }) {
     ),
     []
   )
+
+  if (loading) {
+    return null
+  }
 
   const settings = data?.user.settings
 

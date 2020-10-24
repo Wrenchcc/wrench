@@ -22,6 +22,10 @@ function ProjectTypes({ visible }) {
   const navigateToInsp = useCallback(() => {
     navigate(SCREENS.INSPIRATION, {
       options: {
+        statusBar: {
+          visible: false,
+          animated: true,
+        },
         bottomTabs: {
           visible: false,
           animate: true,
