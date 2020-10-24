@@ -1334,7 +1334,7 @@ export type AddCommentMutation = (
   { __typename?: 'Mutation' }
   & { addComment?: Maybe<(
     { __typename?: 'Comment' }
-    & CommentFragment
+    & CommentAndRepliesFragment
   )> }
 );
 
@@ -2771,10 +2771,10 @@ export type AddCollectionMutationOptions = Apollo.BaseMutationOptions<AddCollect
 export const AddCommentDocument = gql`
     mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {
   addComment(postId: $postId, commentId: $commentId, input: $input) {
-    ...Comment
+    ...CommentAndReplies
   }
 }
-    ${CommentFragmentDoc}`;
+    ${CommentAndRepliesFragmentDoc}`;
 export type AddCommentMutationFn = Apollo.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
 
 /**

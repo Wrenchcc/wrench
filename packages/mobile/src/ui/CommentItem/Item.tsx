@@ -1,10 +1,9 @@
-import React, { memo, useCallback, useRef, useEffect } from 'react'
+import React, { useCallback, useRef, useEffect } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
-import { useDeleteCommentMutation, PostFragmentDoc, CommentsDocument } from '@wrench/common'
+import { useDeleteCommentMutation, CommentsDocument } from '@wrench/common'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 import { useNavigation, SCREENS } from 'navigation'
 import { useDynamicColor } from 'utils/hooks'
-import { logError } from 'utils/sentry'
 import LikeComment from 'components/LikeComment'
 import Avatar from 'ui/Avatar'
 import Text from 'ui/Text'
@@ -75,12 +74,30 @@ function Item({
     () =>
       deleteComment({
         variables: {
-          id: commentOrReplyId,
+          id: id,
         },
         optimisticResponse: {
-          id: commentOrReplyId,
+          id,
         },
         update: (cache) => {
+          cache.modify({
+            id: cache.identify({
+              __typename: 'Comment',
+              id: commentId,
+            }),
+            fields: {
+              repliesConnection(existingRepliesRefs = {}, { readField }) {
+                return {
+                  ...existingRepliesRefs,
+                  edges: existingRepliesRefs.edges.filter(
+                    ({ node }) => id !== readField('id', node)
+                  ),
+                  totalCount: existingRepliesRefs.totalCount - 1 || 0,
+                }
+              },
+            },
+          })
+
           // Post
           cache.modify({
             id: cache.identify({
@@ -90,12 +107,32 @@ function Item({
             optimistic: true,
             fields: {
               commentsConnection(existingCommentsRefs = {}, { readField }) {
+                const data = cache.readQuery({
+                  query: CommentsDocument,
+                  variables: {
+                    postId,
+                  },
+                })
+
+                const deleted = data.comments.edges.find(({ node }) => node.id === id)
+                const replies = deleted.node.replies
+                const ids = replies.edges.map(({ node }) => node.id)
+                const remove = [id, ...ids]
+
+                if (replies.length > 0) {
+                  return {
+                    ...existingCommentsRefs,
+                    edges: data.comments.edges.filter(({ node }) =>
+                      remove.includes(readField('id', node))
+                    ),
+                    totalCount: existingCommentsRefs.totalCount - remove.length || 0,
+                  }
+                }
+
                 return {
                   ...existingCommentsRefs,
-                  edges: existingCommentsRefs.edges.filter(
-                    ({ node }) => commentOrReplyId !== readField('id', node)
-                  ),
-                  totalCount: existingCommentsRefs.totalCount - 1 || 0,
+                  edges: data.comments.edges.filter(({ node }) => id !== readField('id', node)),
+                  totalCount: existingCommentsRefs.totalCount - remove.length || 0,
                 }
               },
             },
@@ -108,7 +145,7 @@ function Item({
                 return {
                   ...existingCommentsRefs,
                   edges: existingCommentsRefs.edges.filter(
-                    ({ node }) => commentOrReplyId !== readField('id', node)
+                    ({ node }) => id !== readField('id', node)
                   ),
                   totalCount: existingCommentsRefs.totalCount - 1 || 0,
                 }
@@ -117,7 +154,7 @@ function Item({
           })
         },
       }),
-    [deleteComment, commentOrReplyId]
+    [deleteComment, id]
   )
 
   useEffect(() => {
@@ -212,4 +249,4 @@ function Item({
   )
 }
 
-export default memo(Item)
+export default Item

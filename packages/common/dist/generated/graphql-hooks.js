@@ -102,7 +102,7 @@ function useAddCollectionMutation(baseOptions) {
     return Apollo.useMutation(exports.AddCollectionDocument, baseOptions);
 }
 exports.useAddCollectionMutation = useAddCollectionMutation;
-exports.AddCommentDocument = client_1.gql(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n  addComment(postId: $postId, commentId: $commentId, input: $input) {\n    ...Comment\n  }\n}\n    ", ""], ["\n    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n  addComment(postId: $postId, commentId: $commentId, input: $input) {\n    ...Comment\n  }\n}\n    ", ""])), exports.CommentFragmentDoc);
+exports.AddCommentDocument = client_1.gql(templateObject_11 || (templateObject_11 = __makeTemplateObject(["\n    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n  addComment(postId: $postId, commentId: $commentId, input: $input) {\n    ...CommentAndReplies\n  }\n}\n    ", ""], ["\n    mutation addComment($postId: ID!, $commentId: ID, $input: CommentInput!) {\n  addComment(postId: $postId, commentId: $commentId, input: $input) {\n    ...CommentAndReplies\n  }\n}\n    ", ""])), exports.CommentAndRepliesFragmentDoc);
 /**
  * __useAddCommentMutation__
  *
