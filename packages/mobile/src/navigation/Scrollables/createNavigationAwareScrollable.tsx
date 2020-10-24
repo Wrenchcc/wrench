@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, forwardRef, useContext } from 'react'
-import { Keyboard, TextInput, UIManager, RefreshControl } from 'react-native'
+import { Keyboard, TextInput, UIManager, RefreshControl, findNodeHandle } from 'react-native'
 import { ScrollContext } from 'navigation/Layout/context'
 import { isAndroid } from 'utils/platform'
 import { Border, Loader } from 'ui'
@@ -45,21 +45,21 @@ export default function createNavigationAwareScrollable(Component) {
     // Scroll to input
     useEffect(() => {
       const keyboardEventListener = Keyboard.addListener(KEYBOARD_EVENT_LISTENER, () => {
-        const currentlyFocusedField = TextInput.State.currentlyFocusedField()
+        const currentlyFocusedInput = findNodeHandle(TextInput.State.currentlyFocusedInput())
         const scrollResponder =
           scrollRef.current && scrollRef.current.getNode().getScrollResponder()
 
-        if (!scrollResponder || !currentlyFocusedField) {
+        if (!scrollResponder || !currentlyFocusedInput) {
           return
         }
 
         UIManager.viewIsDescendantOf(
-          currentlyFocusedField,
+          currentlyFocusedInput,
           scrollResponder.getInnerViewNode(),
           (isAncestor) => {
             if (isAncestor) {
               scrollResponder.scrollResponderScrollNativeHandleToKeyboard(
-                currentlyFocusedField,
+                currentlyFocusedInput,
                 KEYBOARD_OFFSET
               )
             }

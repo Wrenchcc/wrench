@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics'
 import {
   optimisticId,
   useAddCommentMutation,
@@ -38,6 +39,8 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
   }, [inputRef, username, commentId])
 
   const handleSubmit = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+
     if (blurOnSubmit) {
       inputRef.current.blur()
     }
