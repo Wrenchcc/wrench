@@ -5,7 +5,6 @@ export const FONTS = {
 }
 
 export const COLORS = {
-  DARK_GREY: 'rgb(34,34,34)',
   DARK: 'rgb(000, 000, 000)',
   FACEBOOK: 'rgb(59, 89, 152)',
   GREY: 'rgb(109, 111, 118)',

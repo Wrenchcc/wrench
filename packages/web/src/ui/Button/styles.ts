@@ -1,15 +1,16 @@
 // @ts-nocheck
 import styled from 'styled-components'
-import { COLORS, FONTS } from '../constants'
+import { FONTS } from '../constants'
 
 export const Base = styled.button`
-  color: ${props => (props.black ? COLORS.WHITE : COLORS.DARK)};
-  background: ${props => (props.black ? COLORS.DARK : COLORS.WHITE)};
   font-weight: ${FONTS.MEDIUM};
   cursor: pointer;
   font-size: 15px;
   outline: none;
   height: 40px;
   padding: 0 20px;
-  border: solid 1px ${props => (props.black ? COLORS.DARK : COLORS.ULTRA_LIGHT_GREY)};
+  color: ${props => (props.black ? props.theme.colors.default : props.theme.colors.inverse)};
+  border: solid 1px ${props => (props.black ? props.theme.colors.default : props.theme.colors.divider)};
+  background-color: ${({ black, theme }) => (black ? theme.colors.inverse : theme.colors.default)};
+  border-color: ${({ black, theme }) => (black ? theme.colors.inverse : theme.colors.divider)};
 `

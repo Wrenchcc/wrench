@@ -7,7 +7,7 @@ export const List = styled.div`
   box-sizing: border-box;
   max-height: 300px;
   position: absolute;
-  background: white;
+  background: ${props => props.theme.colors.default};
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -24,7 +24,7 @@ export const List = styled.div`
 export const Base = styled.div`
   width: 100%;
   padding: 15px 0;
-  border-top: 1px solid ${props => (props.first ? 'transparent' : COLORS.ULTRA_LIGHT_GREY)};
+  border-top: 1px solid ${props => (props.first ? 'transparent' : props.theme.colors.divider)};
 `
 
 export const Empty = styled.div`

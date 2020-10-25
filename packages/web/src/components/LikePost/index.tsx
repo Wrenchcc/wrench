@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client'
 import { LIKE_POST_MUTATION } from 'graphql/mutations/post/like'
-import { Text } from 'ui'
+import { Text, Icon } from 'ui'
 import { useCookie, Cookies } from 'hooks'
 import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'
@@ -24,7 +24,7 @@ function LikePost({ post }) {
   ))
 
   const handleToggleLike = useCallback(
-    (id) => {
+    id => {
       if (!isAuthenticated) {
         showModal()
         return
@@ -66,11 +66,13 @@ function LikePost({ post }) {
 
   return (
     <Base>
-      <img
+      <Icon
         style={{ marginRight: 10 }}
         onClick={() => handleToggleLike(post.id)}
-        src={post.likes.isLiked ? require('./spark-active.svg') : require('./spark.svg')}
         alt="Like post"
+        noFill
+        stroke={post.likes.isLiked ? 'warning' : 'inverse'}
+        source={require('./spark.svg?include')}
       />
 
       <Text fontSize={15}>{t('LikePost:like', { count: post.likes.totalCount })}</Text>

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { COLORS, DEVICE } from 'ui/constants'
+import { DEVICE } from 'ui/constants'
 
 export const Base = styled.footer`
-  background: white;
+  background: ${props => props.theme.colors.default};
 
   @media ${DEVICE.TABLET} {
     padding: 20px;
@@ -34,7 +34,7 @@ export const NavItem = styled.li`
   margin-top: 20px;
 
   a {
-    color: ${COLORS.GREY};
+    color: ${props => props.theme.colors.neutral};
   }
 `
 
@@ -53,7 +53,7 @@ export const Bottom = styled.div`
   padding-bottom: 75px;
   padding-top: 35px;
   margin-top: 80px;
-  border-top: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
+  border-top: 1px solid ${props => props.theme.colors.divider};
 
   @media ${DEVICE.TABLET} {
     padding-bottom: 30px;

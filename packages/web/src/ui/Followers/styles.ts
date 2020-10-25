@@ -1,6 +1,5 @@
 // @ts-nocheck
 import styled from 'styled-components'
-import { COLORS } from '../constants'
 import UiAvatar from '../Avatar'
 import UiText from '../Text'
 
@@ -21,7 +20,7 @@ export const User = styled.div`
 `
 
 export const Avatar = styled(UiAvatar)`
-  border: solid 1.5px ${COLORS.WHITE};
+  border: solid 1.5px ${props => props.theme.colors.default};
 `
 
 export const Count = styled(UiText)`

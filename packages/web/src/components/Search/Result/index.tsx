@@ -45,7 +45,7 @@ function Result({ query, onPress }) {
                   />
                   <Content onClick={onPress}>
                     <Text lineHeight={18}>{node.fullName}</Text>
-                    <Text lineHeight={18} fontSize={15} color="light_grey">
+                    <Text lineHeight={18} fontSize={15} color="neutral">
                       {t('Result:projects', { count: node.projectCount })}
                     </Text>
                   </Content>

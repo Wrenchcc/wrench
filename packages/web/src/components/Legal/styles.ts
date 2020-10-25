@@ -13,6 +13,7 @@ export const Text = styled(UiText)`
   font-size: 12px;
 
   a {
+    color: ${props => props.theme.colors.inverse};
     text-decoration: underline;
   }
 `

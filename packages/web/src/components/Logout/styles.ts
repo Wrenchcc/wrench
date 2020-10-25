@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.div`
   width: 335px;
@@ -17,11 +16,11 @@ export const Base = styled.div`
   li {
     line-height: 60px;
     height: 60px;
-    border-bottom: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
+    border-bottom: 1px solid ${props => props.theme.colors.divder};
 
     &:last-child {
       a {
-        color: ${COLORS.ORANGE};
+        color: ${props => props.theme.colors.error};
         border: none;
       }
     }

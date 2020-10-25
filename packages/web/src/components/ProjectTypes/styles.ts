@@ -8,7 +8,7 @@ export const Base = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: row;
-  background-color: ${COLORS.WHITE};
+  background: ${props => props.theme.colors.default};
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -20,7 +20,7 @@ export const Wrapper = styled.span`
   display: flex;
   flex-direction: row;
   height: 50px;
-  border: 1px solid ${(props) => (props.selected ? COLORS.DARK : COLORS.ULTRA_LIGHT_GREY)};
+  border: 1px solid ${(props) => (props.selected ? props.theme.colors.inverse : props.theme.colors.divider)};
   margin-right: 10px;
   align-items: center;
   justify-content: center;

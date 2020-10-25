@@ -4,7 +4,7 @@ import { COLORS } from '../constants'
 
 export const Base = styled.div`
   border-radius: ${(props) => props.borderRadius || 0}px;
-  background-color: ${(props) => props.placeholderColor || COLORS.ULTRA_LIGHT_GREY};
+  background-color: ${(props) => props.placeholderColor || props.theme.colors.placeholder};
   overflow: hidden;
   width: ${(props) => props.w}px;
   height: ${(props) => props.h}px;

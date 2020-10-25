@@ -63,7 +63,7 @@ export default function Onboarding() {
           {t('Onboarding:title')}
         </Title>
 
-        <Text color="light_grey">{t('Onboarding:description')}</Text>
+        <Text color="neutral">{t('Onboarding:description')}</Text>
 
         <Scroll>
           <Types>

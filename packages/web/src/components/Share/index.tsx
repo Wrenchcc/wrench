@@ -2,7 +2,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { Text } from 'ui'
+import { Text, Icon } from 'ui'
 
 const generateShareableUrl = url => [
   {
@@ -80,7 +80,7 @@ function Share({ closeModal, dynamicLink }) {
       >
         {!cancel && (
           <div style={{ width: 24, marginRight: 15 }}>
-            <img style={{ height: 'auto', ...style }} src={require(`./${provider}.svg`)} />
+            <Icon style={{ height: 'auto', ...style }} source={require(`./${provider}.svg?include`)} noFill />
           </div>
         )}
         <Text medium>{renderComponent({ provider, url, closeModal })}</Text>

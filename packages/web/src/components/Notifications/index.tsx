@@ -62,7 +62,7 @@ function Notifications({ onPress }) {
         ) : (
           <Empty>
             <Text medium>{t('Notifications:title')}</Text>
-            <Text color="grey" fontSize={15}>
+            <Text color="neutral" fontSize={15}>
               {t('Notifications:description')}
             </Text>
           </Empty>

@@ -6,6 +6,8 @@ import Cookie from 'services/cookie'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { Reset } from 'styled-reset'
+import { ThemeProvider as NextThemeProvider, useTheme } from 'next-themes'
+import { ThemeProvider } from '@wrench/ui'
 import { I18nextProvider, useSSR } from 'react-i18next'
 import withApollo from 'services/apollo/withApollo'
 import AuthLink from 'services/apollo/links/Auth'
@@ -90,9 +92,11 @@ class App extends NextApp<Props> {
 
   public render() {
     return (
-      <I18nextProvider i18n={i18n}>
-        <AppWithi18n {...this.props} />
-      </I18nextProvider>
+      <NextThemeProvider enableSystem defaultTheme="system">
+        <I18nextProvider i18n={i18n}>
+          <AppWithi18n {...this.props} />
+        </I18nextProvider>
+      </NextThemeProvider>
     )
   }
 }
@@ -107,6 +111,8 @@ function AppWithi18n({
   isAuthenticated,
 }) {
   useSSR(initialI18nStore, initialLanguage)
+
+  const { systemTheme } = useTheme()
 
   return (
     <>
@@ -138,15 +144,17 @@ function AppWithi18n({
       <Seo />
       <GoogleAnalyticsSDK />
 
-      <ModalProvider>
-        <Header isAuthenticated={isAuthenticated} />
-        <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
-        {!hidePromo && !isAuthenticated && (
-          <Hide on="tablet">
-            <Promo viewerCountry={viewerCountry} paddingHorizontal />
-          </Hide>
-        )}
-      </ModalProvider>
+      <ThemeProvider mode={systemTheme}>
+        <ModalProvider>
+          <Header isAuthenticated={isAuthenticated} />
+          <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
+          {!hidePromo && !isAuthenticated && (
+            <Hide on="tablet">
+              <Promo viewerCountry={viewerCountry} paddingHorizontal />
+            </Hide>
+          )}
+        </ModalProvider>
+      </ThemeProvider>
     </>
   )
 }

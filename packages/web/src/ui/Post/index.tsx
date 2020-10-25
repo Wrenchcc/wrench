@@ -28,7 +28,8 @@ function Post({ data, withoutTitle, withoutAvatar }) {
           </a>
         </Link>
       )}
-      <Text color={withoutTitle ? 'black' : 'grey'}>{data.caption}</Text>
+
+      <Text color={withoutTitle ? 'inverse' : 'neutral'}>{data.caption}</Text>
 
       <Bottom>
         <Carousel files={data.files} />

@@ -53,6 +53,7 @@ export default mode => ({
     body: 1.5,
     heading: 1.25,
   },
+  isDark: mode === THEMES.DARK,
   mode: mode === THEMES.DARK ? THEMES.DARK : THEMES.LIGHT,
   colors: mode === THEMES.DARK ? DARK_THEME : LIGHT_THEME,
 })

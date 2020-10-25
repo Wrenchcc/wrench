@@ -1,7 +1,8 @@
 // @ts-nocheck
 import styled from 'styled-components'
 import { DEVICE } from 'ui/constants'
-
+import Icon from 'ui/Icon'
+  
 export const Base = styled.div`
   width: 100%;
   height: 100%;
@@ -19,7 +20,7 @@ export const Base = styled.div`
 export const Content = styled.div`
   max-width: ${(props) => (props.large ? 640 : 450)}px;
   width: 100%;
-  background: white;
+  background: ${props => props.theme.colors.default};
   padding: ${(props) => (props.large ? 20 : 40)}px;
   height: ${(props) => (props.large ? '65%' : 'auto')};
   box-sizing: border-box;
@@ -32,7 +33,7 @@ export const Content = styled.div`
   }
 `
 
-export const Close = styled.button`
+export const Close = styled(Icon)`
   outline: none;
   position: absolute;
   top: 20px;
@@ -40,6 +41,5 @@ export const Close = styled.button`
   height: 16px;
   border: none;
   width: 15px;
-  background: url(${require('./close.svg')}) no-repeat;
   z-index: 1001;
 `

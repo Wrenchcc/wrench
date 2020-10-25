@@ -65,7 +65,7 @@ function UserFollowingProjects({ username, isAuthenticated }) {
   return (
     <Base>
       <Title>{t('UserFollowingProjects:title')}</Title>
-      <Text>
+      <Text color="neutral">
         {t('UserFollowingProjects:description', {
           name: data.user.firstName,
         })}

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.input`
   width: 100%;
@@ -9,9 +8,9 @@ export const Base = styled.input`
   border-bottom: 1px solid rgb(230, 231, 233);
   font-size: 17px;
   outline: none;
-  color: ${COLORS.DARK};
+  color: ${props => props.theme.colors.inverse};
 
   &::placeholder {
-    color: ${COLORS.LIGHT_GREY};
+    color: ${props => props.theme.colors.neutral};
   }
 `

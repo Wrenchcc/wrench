@@ -44,7 +44,7 @@ function Notification({ data, first, onPress }) {
           </a>
         </Link>
         <Bottom>
-          <Description color="grey" fontSize={15} lineHeight={22}>
+          <Description color="neutral" fontSize={15} lineHeight={22}>
             {description(data, t)}
           </Description>
           <TimeAgo date={data.createdAt} fontSize={15} />

@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import { COLORS } from 'ui/constants'
 
 export const Base = styled.div`
   margin-top: 30px;
 `
 
 export const FacebookButton = styled.button`
-  background: ${COLORS.FACEBOOK};
+  background: ${props => props.theme.colors.facebook};
   height: 50px;
   width: 100%;
   color: white;
@@ -20,13 +19,13 @@ export const FacebookButton = styled.button`
 
 export const AppleButton = styled.button`
   background: black;
+  border: solid 1px ${props => (props.theme.isDark ? props.theme.colors.neutral : 'transparent')};
   height: 50px;
   width: 100%;
   color: white;
   font-size: 16px;
   font-weight: 500;
   outline: none;
-  border: none;
   margin-bottom: 10px;
 `
 

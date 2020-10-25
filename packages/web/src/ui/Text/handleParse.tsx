@@ -1,13 +1,11 @@
 import Link from 'next/link'
-import { COLORS, FONTS } from '../constants'
+import { FONTS } from '../constants'
 
 const styles = {
   link: {
-    color: COLORS.DARK,
     cursor: 'pointer',
   },
   username: {
-    color: COLORS.DARK,
     fontFamily: FONTS.BOLD,
   },
 }
@@ -20,7 +18,7 @@ export default [
     renderText: url => {
       const pattern = /^(?:https?:\/\/)?(?:www\.)?/i
       return (
-        <a href={url} rel="nofollow">
+        <a href={url} rel="nofollow" className="link">
           {url.replace(pattern, '')}
         </a>
       )
@@ -33,7 +31,7 @@ export default [
       const username = mention.replace('@', '')
       return (
         <Link href="/[username]" as={`/${username}`}>
-          <a>{mention}</a>
+          <a className="mention">{mention}</a>
         </Link>
       )
     },

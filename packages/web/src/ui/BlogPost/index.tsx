@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react'
+import Link from 'next/link'
 import {TimeAgo, Image, Avatar} from 'ui'
 import { Base, Title, Content, Top, Name } from './styles'
 
@@ -26,12 +27,23 @@ function BlogPost({ title, user, createdAt, content }) {
     <Base>
       <Title fontSize="36">{title}</Title>
       <Top>
-        <Avatar uri={user.avatarUrl} />
-        <Name fontSize={14}>{user.fullName}</Name>
+        <Link href="/[username]" as={`/${user.username}`}>
+          <a>
+            <Avatar
+              uri={user.avatarUrl}
+              isOnline={user.isOnline}
+            />
+          </a>
+        </Link>
+        <Link href="/[username]" as={`/${user.username}`}>
+          <a>
+           <Name fontSize={14} className="username">{user.fullName}</Name>
+           </a>
+        </Link>
         <TimeAgo date={createdAt} long fontSize={14} />
       </Top>
 
-      <Content>
+      <Content className="content">
         {formatContent(content)}
       </Content>
     </Base>

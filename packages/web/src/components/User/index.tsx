@@ -40,7 +40,7 @@ function User({ username, isAuthenticated }) {
             {data.user.location || data.user.bio || data.user.website ? (
               <Info>
                 {data.user.location && (
-                  <Text color="grey" fontSize={15}>
+                  <Text color="neutral" fontSize={15}>
                     {data.user.location}
                   </Text>
                 )}

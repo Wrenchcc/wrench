@@ -113,15 +113,15 @@ function Footer() {
         </Navigation>
 
         <Bottom>
-          <Text fontSize={13} color="grey">
+          <Text fontSize={13} color="neutral">
             {t('Footer:description')}
           </Text>
 
-          <Text fontSize={13} color="grey">
+          <Text fontSize={13} color="neutral">
             {t('Footer:trademarks')}
           </Text>
 
-          <Text fontSize={13} color="grey">
+          <Text fontSize={13} color="neutral">
             © Wrench Community AB (v.{process.env.BUILD_ID})
           </Text>
         </Bottom>

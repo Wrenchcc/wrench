@@ -112,7 +112,7 @@ function Header({ isAuthenticated }) {
   return (
     <Base inverted={inverted}>
       <Link passHref href={'/'}>
-        <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" />
+        <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" style={{ cursor: 'pointer' }}/>
       </Link>
 
       <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>

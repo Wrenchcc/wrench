@@ -26,7 +26,7 @@ function ProjectCard({ project, onFollow }) {
           </Link>
           <Link href="/[username]" as={`/${project.user.username}`}>
             <a>
-              <Text fontSize={15} color="white">
+              <Text fontSize={15} color="accent">
                 {project.user.fullName}
               </Text>
             </a>

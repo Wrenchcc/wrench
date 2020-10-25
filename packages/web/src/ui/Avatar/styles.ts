@@ -10,7 +10,7 @@ export const Base = styled.div`
     props.isOnline &&
     css`
       &:before {
-        background: ${COLORS.WHITE};
+        background: ${props => props.theme.colors.default};
         width: 12px;
         height: 12px;
         border-radius: 12px;

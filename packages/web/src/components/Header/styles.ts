@@ -8,9 +8,9 @@ export const Base = styled.div`
   display: flex;
   height: 70px;
   align-items: center;
-  box-shadow: ${(props) => (props.inverted ? ' 0 0 0 0' : ' 0 1px 1px 0 #e6e7e9')};
+  box-shadow: ${(props) => (props.inverted ? ' 0 0 0 0' : `0 1px 1px 0 ${props.theme.colors.divider}`)};
   padding: 0 50px;
-  background: ${(props) => (props.inverted ? 'transparent' : 'white')};
+  background: ${(props) => (props.inverted ? 'transparent' : props.theme.colors.default)};
   position: ${(props) => (props.inverted ? 'absolute' : 'sticky')};
   top: 0;
   z-index: 100;
@@ -53,7 +53,7 @@ export const OpenMobileMenu = styled.button`
 export const NavLink = styled.a`
   font-size: 16px;
   color: ${(props) =>
-    props.inverted ? (props.active ? '#a8a8ad' : '#fff') : props.active ? '#000000' : '#6d6f76'};
+    props.inverted ? (props.active ? '#a8a8ad' : '#fff') : props.active ? props.theme.colors.inverse : '#6d6f76'};
   font-weight: ${FONTS.MEDIUM};
   margin-left: ${(props) => (props.last ? 10 : 40)}px;
 `
@@ -61,7 +61,7 @@ export const NavLink = styled.a`
 export const Separator = styled.span`
   margin-left: 10px;
   color: ${(props) =>
-    (props.inverted && 'rgba(255, 255, 255, .6)') || (props.active ? '#000000' : '#6d6f76')};
+    (props.inverted && 'rgba(255, 255, 255, .6)') || (props.active ? props.theme.colors.inverse : '#6d6f76')};
 `
 
 export const Search = styled(UiSearch)`

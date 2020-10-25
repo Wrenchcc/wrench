@@ -145,16 +145,16 @@ function Settings({ isAuthenticated }) {
         <MenuTitle fontSize={36}>{t('Settings:title')}</MenuTitle>
 
         <MenuItem to="edit-profile" smooth duration={250} spy offset={-150}>
-          <Text color="grey">{t('Settings:sections.profile')}</Text>
+          <Text color="neutral">{t('Settings:sections.profile')}</Text>
         </MenuItem>
         <MenuItem to="notifications" smooth duration={250} spy offset={-150}>
-          <Text color="grey">{t('Settings:sections.notifications')}</Text>
+          <Text color="neutral">{t('Settings:sections.notifications')}</Text>
         </MenuItem>
         <MenuItem to="language" smooth duration={250} spy offset={-150}>
-          <Text color="grey">{t('Settings:sections.language')}</Text>
+          <Text color="neutral">{t('Settings:sections.language')}</Text>
         </MenuItem>
         <MenuItem to="support" smooth duration={250} spy offset={-150}>
-          <Text color="grey">{t('Settings:sections.support')}</Text>
+          <Text color="neutral">{t('Settings:sections.support')}</Text>
         </MenuItem>
       </Left>
 
@@ -196,7 +196,7 @@ function Settings({ isAuthenticated }) {
                 onChangeText={handleBio}
                 value={data.bio}
               />
-              <Counter color="light_grey" fontSize={15}>
+              <Counter color="neutral" fontSize={15}>
                 {`${data.bio ? data.bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
             </Row>

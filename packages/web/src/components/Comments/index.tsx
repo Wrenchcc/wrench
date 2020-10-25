@@ -144,7 +144,7 @@ function Comments({ postId }) {
                       handleLoadMore(node.id, replies.edges[replies.edges.length - 1].cursor)
                     }
                   >
-                    <Text medium fontSize={12} color="light_grey">
+                    <Text medium fontSize={12} color="neutral">
                       {t('Comments:loadReplies', {
                         count: replies.totalCount - replies.edges.length,
                       })}

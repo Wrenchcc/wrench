@@ -30,7 +30,7 @@ const Card = memo(function Card({
       </Link>
       <Link href="/[username]" as={`/${user.username}`}>
         <a>
-          <Username fontSize={15} color="grey">
+          <Username fontSize={15} color="neutral">
             {user.fullName}
           </Username>
         </a>

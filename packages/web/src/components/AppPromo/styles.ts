@@ -27,7 +27,7 @@ export const Base = styled.section`
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
-  background: black;
+  background: ${props => props.theme.isDark ? props.theme.colors.placeholder: 'black'};
   margin-top: 90px;
   padding-top: 60px;
   display: flex;
@@ -61,7 +61,7 @@ export const Stores = styled.div`
   }
 `
 
-export const Store = styled.img`
+export const Store = styled.div`
   margin: 0 5px;
   display: none;
 

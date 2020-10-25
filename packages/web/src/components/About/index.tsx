@@ -34,7 +34,7 @@ function About() {
 
           <br />
           <br />
-          <Text color="grey">
+          <Text color="neutral">
             The whole idea with Wrench came up after Pontus, an experienced hobby builder of custom
             cafe racers didn’t find any good forums or communities that gather all the
             bike-aficionados to share their projects with each other. Instead of searching thru
@@ -64,7 +64,7 @@ function About() {
                 <br />
 
                 <Text bold>Pontus Abrahamsson</Text>
-                <Text color="grey">CEO</Text>
+                <Text color="neutral">CEO</Text>
                 <br />
                 <a href="mailto:pontus@wrench.cc">pontus@wrench.cc</a>
               </PersonPicture>
@@ -82,7 +82,7 @@ function About() {
                 <br />
 
                 <Text bold>Viktor Hofte</Text>
-                <Text color="grey">CPO</Text>
+                <Text color="neutral">CPO</Text>
                 <br />
                 <a href="mailto:viktor@wrench.cc">viktor@wrench.cc</a>
               </PersonPicture>
@@ -102,7 +102,7 @@ function About() {
                 <br />
 
                 <Text bold>Felix Hofte</Text>
-                <Text color="grey">Head Of Marketing</Text>
+                <Text color="neutral">Head Of Marketing</Text>
                 <br />
                 <a href="mailto:felix@wrench.cc">felix@wrench.cc</a>
               </PersonPicture>
@@ -120,7 +120,7 @@ function About() {
                 <br />
 
                 <Text bold>2 open posistions</Text>
-                <Text color="grey">Fullstack developers (JS)</Text>
+                <Text color="neutral">Fullstack developers (JS)</Text>
                 <br />
                 <a href="mailto:work@wrench.cc">work@wrench.cc</a>
               </PersonPicture>

@@ -52,7 +52,7 @@ function ProjectSuggestion() {
       top={
         <>
           <Title medium>{t('ProjectSuggestion:title')}</Title>
-          <Description color="grey">{t('ProjectSuggestion:description')}</Description>
+          <Description color="neutral">{t('ProjectSuggestion:description')}</Description>
         </>
       }
     >

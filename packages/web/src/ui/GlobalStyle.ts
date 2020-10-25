@@ -6,6 +6,15 @@ const FONTS_ENDPOINT = 'https://edge-files.wrench.cc/static/fonts'
 export default createGlobalStyle`
   ${PromoStyle}
 
+  /* clears the ‘X’ from Internet Explorer */
+  input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+  input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+  /* clears the ‘X’ from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration { display: none; }
+
   * {
     outline: none !important;
   }
@@ -18,7 +27,6 @@ export default createGlobalStyle`
     padding: 0;
     width: auto;
     overflow: visible;
-
     background: transparent;
 
     color: inherit;
@@ -60,6 +68,17 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  :root {
+    --background: white;
+    --foreground: black;
+  }
+  
+  [data-theme='dark'] {
+    --background: black;
+    --foreground: white;
+    background: black;
   }
 
   .image___xtQGH{display:block;width:100%;height:100%}
@@ -126,6 +145,10 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  [data-theme='dark'] a {
+    color: white;
+  }
+
   #nprogress {
     pointer-events: none;
   }
@@ -151,6 +174,10 @@ export default createGlobalStyle`
     transform: rotate(3deg) translate(0px, -4px);
   }
 
+  [data-theme='dark'] #nprogress .bar {
+    background: white;
+  }
+
   .blog ul {
     list-style: disc;
     margin: 0;
@@ -163,26 +190,51 @@ export default createGlobalStyle`
     line-height: 1.6em;
   }
 
-  .blog p {
+  [data-theme='dark'] .blog p {
+    color: #6d6f76;
+  }
+
+  [data-theme='dark'] li {
+    color: #6d6f76;
+  }
+
+  [data-theme='dark'] .blog a {
+    color: #6d6f76;
+  }
+
+  [data-theme='dark'] .blog .username {
+    color: white;
+  }
+
+  [data-theme='dark'] .blog mark {
+    background rgb(218 206 67);
+  }
+
+  .blog .content p {
     margin-bottom: 20px;
     line-height: 25px;
     font-size: 16px;
   }
 
-  .blog b {
+  .blog .content b {
     font-weight: 700;
   }
 
-  .blog i {
+  .blog .content i {
     font-style: italic;
   }
 
-  .blog a {
+  .blog .content a {
     text-decoration: underline;
   }
 
   .blog mark {
     background: rgba(245,235,111,0.29);
     padding: 3px 0;
+  }
+
+  [data-theme='dark'] .link,
+  [data-theme='dark'] .mention {
+    color: white;
   }
 `

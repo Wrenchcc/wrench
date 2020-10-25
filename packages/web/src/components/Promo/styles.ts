@@ -7,8 +7,8 @@ export const Base = styled.div`
   width: 414px;
   height: 284px;
   border-radius: 1px;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.12);
-  background: ${(props) => (props.inverted ? 'transparent' : 'white')};
+  box-shadow: 0 4px 10px 0 ${props => props.inline ? 'transparent' : 'rgba(0, 0, 0, 0.12)'};
+  background: ${(props) => (props.inverted ? 'transparent' : props.theme.colors.default)};
   position: ${(props) => (props.sticky ? 'fixed' : 'static')};
   bottom: 40px;
   right: 40px;
@@ -65,7 +65,7 @@ export const Bottom = styled.div`
     .form-control {
       height: 50px;
       border-radius: 1px;
-      border: solid 1px ${(props) => (props.inverted ? COLORS.GREY : '#e6e7e9')};
+      border: solid 1px ${(props) => (props.inverted ? COLORS.GREY : props.theme.divider)};
       color: ${COLORS.LIGHT_GREY};
       width: 100%;
       background: transparent;

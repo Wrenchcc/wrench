@@ -10,7 +10,7 @@ function Popular({ projects }) {
   return (
     <Fragment>
       <Title medium>{t('Popular:title')}</Title>
-      <Text color="grey">{t('Popular:description')}</Text>
+      <Text color="neutral">{t('Popular:description')}</Text>
 
       <List>
         {projects &&

@@ -32,7 +32,7 @@ function FollowingProjects() {
                 </Box>
                 <Content>
                   <Text>{node.title}</Text>
-                  <Text color="light_grey" fontSize={15} lineHeight={18}>
+                  <Text color="neutral" fontSize={15} lineHeight={18}>
                     {node.user.fullName}
                   </Text>
                 </Content>

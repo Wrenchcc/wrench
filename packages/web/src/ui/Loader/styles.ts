@@ -15,7 +15,7 @@ export const Base = styled.div`
   > div {
     width: 6px;
     height: 6px;
-    background-color: ${props => (props.white ? COLORS.WHITE : COLORS.DARK_GREY)};
+    background-color: ${props => (props.white ? props.theme.colors.default : props.theme.colors.inverse)};
     margin: 0 3px;
     border-radius: 100%;
     display: inline-block;

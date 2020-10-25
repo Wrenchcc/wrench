@@ -37,7 +37,7 @@ function Item({ id, user, text, onReply, createdAt, isReply, likes }) {
             <TimeAgo date={createdAt} />
           </Action>
           <Action>
-            <Text medium color="light_grey" fontSize={12}>
+            <Text medium color="neutral" fontSize={12}>
               {t('Comments:like', { count: likes.totalCount })}
             </Text>
           </Action>

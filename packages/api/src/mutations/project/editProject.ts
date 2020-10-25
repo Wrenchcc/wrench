@@ -10,7 +10,7 @@ export default isAuthenticated(async (_, { id, input }, ctx) => {
 
   const data = {
     ...project,
-    userId: ctx.userId,
+    userId: project.userId,
   }
 
   if (input.title) {

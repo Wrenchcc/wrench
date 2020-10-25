@@ -41,6 +41,7 @@ export const Signup = styled(UiButton)`
   height: 50px;
   border: none;
   margin-top: 45px;
+  color: black;
 `
 
 export const Description = styled(UiText)`

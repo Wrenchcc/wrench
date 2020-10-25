@@ -13,7 +13,7 @@ import ProjectTypes from 'components/ProjectTypes'
 import { Modal, useModal } from 'ui/Modal'
 import { Hero, Inner, Signup, Description, Video, Projects, ExploreLink } from './styles'
 
-const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing.mp4'
+const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing-v2.mp4'
 
 export default function Home(props) {
   const { t } = useTranslation()
