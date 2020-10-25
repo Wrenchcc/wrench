@@ -16,7 +16,7 @@ function About() {
 
       <Inner>
         <Center>
-          <Title fontSize={30}>About us</Title>
+          <Title medium>About us</Title>
           <Image>
             <source
               srcSet={`${require('./about.jpg')} 1x, ${require('./about@2x.jpg')} 2x, ${require('./about@2x.jpg')} 3x`}
@@ -119,8 +119,8 @@ function About() {
                 <br />
                 <br />
 
-                <Text bold>2 full stack developers</Text>
-                <Text color="grey">Development</Text>
+                <Text bold>2 open posistions</Text>
+                <Text color="grey">Fullstack developers (JS)</Text>
                 <br />
                 <a href="mailto:work@wrench.cc">work@wrench.cc</a>
               </PersonPicture>

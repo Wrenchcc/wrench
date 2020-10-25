@@ -1,18 +1,18 @@
 // @ts-nocheck
 import React from 'react'
-import {TimeAgo, Image} from 'ui'
-import { Base, Title, Text, Content, Top, Avatar, Name } from './styles'
+import {TimeAgo, Image, Avatar} from 'ui'
+import { Base, Title, Content, Top, Name } from './styles'
 
 function formatContent(content) {
   const data = JSON.parse(content)
 
   return data.blocks.map(({type, data}) => {
     if(type === 'paragraph') {
-      return <Text>{data.text}</Text>
+      return <p dangerouslySetInnerHTML={{ __html: data.text }} />
     }
 
     if(type === 'image') {
-      return <Image source={data.file.url} /> 
+      return <Image source={data.file.url} title={data.caption} /> 
     }
 
     if(type === 'list') {

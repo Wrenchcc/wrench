@@ -162,4 +162,27 @@ export default createGlobalStyle`
     padding: 5.5px 0 5.5px 3px;
     line-height: 1.6em;
   }
+
+  .blog p {
+    margin-bottom: 20px;
+    line-height: 25px;
+    font-size: 16px;
+  }
+
+  .blog b {
+    font-weight: 700;
+  }
+
+  .blog i {
+    font-style: italic;
+  }
+
+  .blog a {
+    text-decoration: underline;
+  }
+
+  .blog mark {
+    background: rgba(245,235,111,0.29);
+    padding: 3px 0;
+  }
 `
