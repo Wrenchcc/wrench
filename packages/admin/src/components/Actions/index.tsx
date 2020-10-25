@@ -44,7 +44,9 @@ function Actions({ component, onDelete, disableEdit }) {
   const [isOpen, setOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState(false)
 
-  useClickOutside(ref, () => setOpen(false))
+  useClickOutside(ref, () => {
+    setOpen(false)
+  })
 
   const handleToggle = () => setOpen(!isOpen)
 
@@ -74,7 +76,7 @@ function Actions({ component, onDelete, disableEdit }) {
         <div style={{ background: 'white', height: '100%' }}>
           <Close
             onClick={() => {
-              document.body.style.overflow = ''
+              document.body.style.overflow = 'unset'
               setOpenPanel(false)
             }}
           >

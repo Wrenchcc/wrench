@@ -71,6 +71,8 @@ function EditUser({ username }) {
         input: settings,
       },
     })
+
+    document.body.style.overflow = 'unset'
   }
 
   return (

@@ -8,19 +8,19 @@ import { isAuthenticated, isAdmin } from '../../utils/permissions'
   integrity of data across the rest of the database.
   Do NOT ever `delete` a user record from the database!!
 */
-export default isAuthenticated(async (_, { userId }, ctx) => {
+export default isAuthenticated(async (_, { id }, ctx) => {
   if (!isAdmin(ctx.userId)) {
     return new ApolloError('You don’t have permission to do that.')
   }
 
-  if (ctx.userId === userId) {
+  if (ctx.userId === id) {
     return new ApolloError('You cannot ban yourself.')
   }
 
-  const reportedUser = await ctx.db.User.findOne(userId)
+  const reportedUser = await ctx.db.User.findOne(id)
 
   if (!reportedUser) {
-    return new ApolloError(`User with ID ${userId} does not exist.`)
+    return new ApolloError(`User with ID ${id} does not exist.`)
   }
 
   if (reportedUser.bannedAt) {
@@ -28,7 +28,7 @@ export default isAuthenticated(async (_, { userId }, ctx) => {
   }
 
   // Delete user comments, posts, files
-  await Promise.all([
+   await Promise.all([
     ctx.db.User.update(reportedUser.id, {
       bannedAt: new Date(),
       isSilhouette: true,
@@ -42,4 +42,6 @@ export default isAuthenticated(async (_, { userId }, ctx) => {
     ctx.db.Post.delete({ userId: reportedUser.id }),
     ctx.db.Project.delete({ userId: reportedUser.id }),
   ])
+
+  return ctx.db.User.findOne(id)
 })

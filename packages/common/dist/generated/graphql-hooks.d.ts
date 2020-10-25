@@ -707,7 +707,7 @@ export declare type Mutation = {
     editUser?: Maybe<User>;
     toggleNotificationSettings?: Maybe<User>;
     registerDeviceToken?: Maybe<Scalars['Boolean']>;
-    banUser?: Maybe<Scalars['Boolean']>;
+    banUser?: Maybe<User>;
     deleteCurrentUser?: Maybe<Scalars['Boolean']>;
 };
 export declare type MutationAuthenticateAppleArgs = {
@@ -822,7 +822,7 @@ export declare type MutationRegisterDeviceTokenArgs = {
     platform: PlatformType;
 };
 export declare type MutationBanUserArgs = {
-    userId: Scalars['ID'];
+    id: Scalars['ID'];
 };
 export declare type ApplePayload = {
     firstName?: Maybe<Scalars['String']>;
@@ -1230,6 +1230,16 @@ export declare type AuthenticateGoogleMutation = ({
     authenticateGoogle?: Maybe<({
         __typename?: 'Tokens';
     } & Pick<Tokens, 'access_token' | 'refresh_token'>)>;
+});
+export declare type BanUserMutationVariables = Exact<{
+    id: Scalars['ID'];
+}>;
+export declare type BanUserMutation = ({
+    __typename?: 'Mutation';
+} & {
+    banUser?: Maybe<({
+        __typename?: 'User';
+    } & UserFragment)>;
 });
 export declare type BookmarkPostMutationVariables = Exact<{
     id: Scalars['ID'];
@@ -2493,6 +2503,31 @@ export declare function useAuthenticateGoogleMutation(baseOptions?: Apollo.Mutat
 export declare type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
 export declare type AuthenticateGoogleMutationResult = Apollo.MutationResult<AuthenticateGoogleMutation>;
 export declare type AuthenticateGoogleMutationOptions = Apollo.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export declare const BanUserDocument: Apollo.DocumentNode;
+export declare type BanUserMutationFn = Apollo.MutationFunction<BanUserMutation, BanUserMutationVariables>;
+/**
+ * __useBanUserMutation__
+ *
+ * To run a mutation, you first call `useBanUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBanUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [banUserMutation, { data, loading, error }] = useBanUserMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useBanUserMutation(baseOptions?: Apollo.MutationHookOptions<BanUserMutation, BanUserMutationVariables>): Apollo.MutationTuple<BanUserMutation, Exact<{
+    id: string;
+}>>;
+export declare type BanUserMutationHookResult = ReturnType<typeof useBanUserMutation>;
+export declare type BanUserMutationResult = Apollo.MutationResult<BanUserMutation>;
+export declare type BanUserMutationOptions = Apollo.BaseMutationOptions<BanUserMutation, BanUserMutationVariables>;
 export declare const BookmarkPostDocument: Apollo.DocumentNode;
 export declare type BookmarkPostMutationFn = Apollo.MutationFunction<BookmarkPostMutation, BookmarkPostMutationVariables>;
 /**

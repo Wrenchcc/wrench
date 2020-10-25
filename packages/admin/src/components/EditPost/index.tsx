@@ -59,6 +59,8 @@ function EditPost({ id }) {
         input: settings,
       },
     })
+    
+    document.body.style.overflow = 'unset'
   }
 
   return (

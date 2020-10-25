@@ -843,7 +843,7 @@ export type Mutation = {
   editUser?: Maybe<User>;
   toggleNotificationSettings?: Maybe<User>;
   registerDeviceToken?: Maybe<Scalars['Boolean']>;
-  banUser?: Maybe<Scalars['Boolean']>;
+  banUser?: Maybe<User>;
   deleteCurrentUser?: Maybe<Scalars['Boolean']>;
 };
 
@@ -1024,7 +1024,7 @@ export type MutationRegisterDeviceTokenArgs = {
 
 
 export type MutationBanUserArgs = {
-  userId: Scalars['ID'];
+  id: Scalars['ID'];
 };
 
 export type ApplePayload = {
@@ -1482,6 +1482,19 @@ export type AuthenticateGoogleMutation = (
   & { authenticateGoogle?: Maybe<(
     { __typename?: 'Tokens' }
     & Pick<Tokens, 'access_token' | 'refresh_token'>
+  )> }
+);
+
+export type BanUserMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type BanUserMutation = (
+  { __typename?: 'Mutation' }
+  & { banUser?: Maybe<(
+    { __typename?: 'User' }
+    & UserFragment
   )> }
 );
 
@@ -3142,6 +3155,38 @@ export function useAuthenticateGoogleMutation(baseOptions?: Apollo.MutationHookO
 export type AuthenticateGoogleMutationHookResult = ReturnType<typeof useAuthenticateGoogleMutation>;
 export type AuthenticateGoogleMutationResult = Apollo.MutationResult<AuthenticateGoogleMutation>;
 export type AuthenticateGoogleMutationOptions = Apollo.BaseMutationOptions<AuthenticateGoogleMutation, AuthenticateGoogleMutationVariables>;
+export const BanUserDocument = gql`
+    mutation banUser($id: ID!) {
+  banUser(id: $id) {
+    ...User
+  }
+}
+    ${UserFragmentDoc}`;
+export type BanUserMutationFn = Apollo.MutationFunction<BanUserMutation, BanUserMutationVariables>;
+
+/**
+ * __useBanUserMutation__
+ *
+ * To run a mutation, you first call `useBanUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useBanUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [banUserMutation, { data, loading, error }] = useBanUserMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useBanUserMutation(baseOptions?: Apollo.MutationHookOptions<BanUserMutation, BanUserMutationVariables>) {
+        return Apollo.useMutation<BanUserMutation, BanUserMutationVariables>(BanUserDocument, baseOptions);
+      }
+export type BanUserMutationHookResult = ReturnType<typeof useBanUserMutation>;
+export type BanUserMutationResult = Apollo.MutationResult<BanUserMutation>;
+export type BanUserMutationOptions = Apollo.BaseMutationOptions<BanUserMutation, BanUserMutationVariables>;
 export const BookmarkPostDocument = gql`
     mutation bookmarkPost($id: ID!) {
   bookmarkPost(id: $id) {

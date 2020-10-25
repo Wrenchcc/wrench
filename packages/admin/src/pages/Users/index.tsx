@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { usePaginatedQuery, SearchUsersDocument } from '@wrench/common'
+import { usePaginatedQuery, SearchUsersDocument, useBanUserMutation } from '@wrench/common'
 import Layout from '../../components/Layout'
 import Table from '../../components/Table'
 import Avatar from '../../components/Avatar'
@@ -20,6 +20,8 @@ function Users() {
       query: '',
     },
   })
+
+  const [banUser] = useBanUserMutation()
 
   const columns = [
     {
@@ -53,7 +55,17 @@ function Users() {
       Header: 'Actions',
       width: 95,
       accessor: 'fullName',
-      Cell: ({ row }) => <Actions component={<EditUser username={row.values.username} />} />,
+      Cell: ({ row }) => <Actions component={<EditUser username={row.values.username} />} onDelete={() => {
+        try {
+          banUser({
+            variables: {
+              id: row.original.id,
+            }
+          })
+      } catch(err) {
+        console.log(err)
+      }
+      }} />,
     },
   ]
 

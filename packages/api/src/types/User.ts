@@ -35,7 +35,7 @@ export default gql`
       last: Int = 10
       before: String
     ): ProjectsConnection
-    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection 
+    postsConnection(first: Int = 10, after: String, last: Int = 10, before: String): PostConnection
   }
 
   enum UserRole {
@@ -105,7 +105,7 @@ export default gql`
     editUser(input: EditUserInput!, id: ID): User
     toggleNotificationSettings(input: ToggleNotificationSettingsInput): User
     registerDeviceToken(token: String!, platform: PlatformType!): Boolean
-    banUser(userId: ID!): Boolean
+    banUser(id: ID!): User
     deleteCurrentUser: Boolean
   }
 `
