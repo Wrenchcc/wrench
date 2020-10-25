@@ -17,7 +17,7 @@ export const Dropdown = styled.ul`
   max-height: 200px;
   overflow: auto;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.11);
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colors.default};
   position: absolute;
   z-index: 10;
 `

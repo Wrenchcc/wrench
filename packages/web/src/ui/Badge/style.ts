@@ -16,12 +16,7 @@ export const Base = styled.div`
     border-radius: 8px;
     width: 8px;
     height: 8px;
-    border: solid 3px #ffffff;
+    border: solid 3px ${props => props.theme.colors.default};
     background-color: #f68a56;
   }
-`
-
-export const Icon = styled.img`
-  width: 100%;
-  height: 100%;
 `

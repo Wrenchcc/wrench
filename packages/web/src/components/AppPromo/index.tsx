@@ -15,12 +15,12 @@ function AppPromo({ viewerCountry }) {
         <Stores>
           <Store>
             <a rel="nofollow" href="https://apps.apple.com/us/app/id1450213123">
-              <div dangerouslySetInnerHTML={{__html: require('./app-store.svg?include')}} />
+              <div dangerouslySetInnerHTML={{__html: require('./app-store.svg')}} />
             </a>
           </Store>          
           <Store>
             <a rel="nofollow" href="https://play.google.com/store/apps/details?id=com.wrench">
-              <div dangerouslySetInnerHTML={{__html: require('./google-play.svg?include')}} />
+              <div dangerouslySetInnerHTML={{__html: require('./google-play.svg')}} />
             </a>
           </Store>
         </Stores>
