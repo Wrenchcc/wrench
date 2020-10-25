@@ -217,7 +217,18 @@ export default createGlobalStyle`
   }
 
   .blog .content b {
-    font-weight: 700;
+    font-weight: 500;
+  }
+
+  .blog .content .header {
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+  }
+
+  [data-theme='dark'] .blog .content .header {
+    color: white;
   }
 
   .blog .content i {
@@ -225,7 +236,12 @@ export default createGlobalStyle`
   }
 
   .blog .content a {
+    color: black;
     text-decoration: underline;
+  }
+
+  [data-theme='dark'] .content a {
+    color: white;
   }
 
   .blog mark {

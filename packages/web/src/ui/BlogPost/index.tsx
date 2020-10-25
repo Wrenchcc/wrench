@@ -12,10 +12,14 @@ function formatContent(content) {
       return <p dangerouslySetInnerHTML={{ __html: data.text }} />
     }
 
-    if(type === 'image') {
-      return <Image source={data.file.url} title={data.caption} /> 
+    if(type === 'header') {
+      return <p class="header" dangerouslySetInnerHTML={{ __html: data.text }} />
     }
 
+    if(type === 'image') {
+      return <div style={{ marginBottom: 20 }}><Image source={data.file.url} title={data.caption} /></div>
+    }
+    
     if(type === 'list') {
       return <ul>{data.items.map((item) => <li dangerouslySetInnerHTML={{ __html: item }} />)}</ul>
     }
