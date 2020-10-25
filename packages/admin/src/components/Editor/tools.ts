@@ -58,7 +58,7 @@ export const EDITOR_JS_TOOLS = {
           return Promise.resolve({
             success: 1,
             file: {
-              url: `${CDN_DOMAIN}/blog/${data.preSignUrl.filename}?w=undefined&h=undefined?dpr=2`,
+              url: `${CDN_DOMAIN}/blog/${data.preSignUrl.filename}`,
             },
           })
         },
