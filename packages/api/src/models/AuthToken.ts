@@ -11,7 +11,10 @@ import User from './User'
 
 @Entity('auth_tokens')
 export default class AuthToken extends BaseEntity {
-  @ManyToOne(() => User, user => user.authTokens)
+  @ManyToOne(
+    () => User,
+    user => user.authTokens
+  )
   public user: User
 
   @PrimaryGeneratedColumn()

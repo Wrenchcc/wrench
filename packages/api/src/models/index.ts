@@ -2,6 +2,7 @@ import { ConnectionOptions } from 'typeorm'
 import AuthProvider from './AuthProvider'
 import AuthToken from './AuthToken'
 import Bookmark from './Bookmark'
+// import BlogPost from './BlogPost'
 import Brand from './Brand'
 import Collection from './Collection'
 import Comment from './Comment'
@@ -38,6 +39,7 @@ export const options: ConnectionOptions = {
     AuthProvider,
     AuthToken,
     Bookmark,
+    // BlogPost,
     Brand,
     Collection,
     Comment,

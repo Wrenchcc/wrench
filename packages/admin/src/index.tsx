@@ -2,6 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloClient, Observable, HttpLink, InMemoryCache, ApolloLink } from '@apollo/client'
+import { relayStylePagination } from '@apollo/client/utilities'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { setContext } from '@apollo/link-context'
 import { onError } from '@apollo/link-error'
@@ -88,7 +89,54 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const client = new ApolloClient({
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          bookmarks: relayStylePagination(),
+          collections: relayStylePagination(['id', 'projectId']),
+          comments: relayStylePagination(['postId']),
+          followers: relayStylePagination(['projectId']),
+          likes: relayStylePagination(['postId']),
+          notifications: relayStylePagination(),
+          posts: relayStylePagination(),
+          projectCollections: relayStylePagination(['projectId']),
+          projects: relayStylePagination(['typeId', 'type']),
+          search: relayStylePagination(['query', 'type']),
+          users: relayStylePagination(),
+          models: relayStylePagination(),
+          files: relayStylePagination(),
+        },
+      },
+      Feed: {
+        fields: {
+          postsConnection: relayStylePagination(),
+        },
+      },
+      Project: {
+        fields: {
+          postsConnection: relayStylePagination(),
+          cover: {
+            merge: true,
+          },
+        },
+      },
+      Comment: {
+        fields: {
+          repliesConnection: relayStylePagination(),
+        },
+      },
+      User: {
+        fields: {
+          postsConnection: relayStylePagination(),
+          followingProjects: relayStylePagination(),
+          settings: {
+            merge: true,
+          },
+        },
+      },
+    },
+  }),
   link: ApolloLink.from([authLink, refreshLink, httpLink]),
 })
 

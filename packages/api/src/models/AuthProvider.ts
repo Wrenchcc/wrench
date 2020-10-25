@@ -12,7 +12,10 @@ import { AuthProviderTypes } from './enums'
 
 @Entity('auth_providers')
 export default class AuthProvider extends BaseEntity {
-  @ManyToOne(() => User, user => user.authProviders)
+  @ManyToOne(
+    () => User,
+    user => user.authProviders
+  )
   public user: User
 
   @PrimaryGeneratedColumn()

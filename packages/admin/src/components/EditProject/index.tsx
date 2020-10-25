@@ -17,6 +17,7 @@ const Button = styled.button`
   width: 100%;
   margin-top: 40px;
   color: white;
+  border: none;
 `
 
 const Open = styled.span`

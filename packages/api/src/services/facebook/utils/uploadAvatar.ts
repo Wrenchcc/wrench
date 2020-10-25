@@ -13,7 +13,7 @@ export default async (userId, fbId, isSilhouette) => {
     }
 
     const avatar = await axios.get(
-      `https://graph.facebook.com/${fbId}/picture?type=large&width=720&height=7206&access_token=1174076712654826|0cb59e486f2c717d1ad136fafca3a43d`,
+      `https://graph.facebook.com/${fbId}/picture?type=large&width=720&height=720`,
       { responseType: 'arraybuffer' }
     )
 

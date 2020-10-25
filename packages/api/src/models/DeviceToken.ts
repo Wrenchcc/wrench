@@ -19,7 +19,10 @@ export default class DeviceToken extends BaseEntity {
   @Column()
   public token: string
 
-  @ManyToOne(() => User, user => user.deviceTokens)
+  @ManyToOne(
+    () => User,
+    user => user.deviceTokens
+  )
   public user: User
 
   @PrimaryGeneratedColumn()

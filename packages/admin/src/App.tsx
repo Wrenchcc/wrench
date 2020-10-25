@@ -13,6 +13,7 @@ import Posts from './pages/Posts'
 import Projects from './pages/Projects'
 import Comments from './pages/Comments'
 import Newsletter from './pages/Newsletter'
+import Blog from './pages/Blog'
 import PushNotifications from './pages/PushNotifications'
 
 function App() {
@@ -57,6 +58,9 @@ function App() {
             </Route>
             <Route path="/newsletter">
               <Newsletter />
+            </Route>
+            <Route path="/blog">
+              <Blog />
             </Route>
             <Route path="/push-notifications">
               <PushNotifications />

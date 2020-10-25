@@ -158,6 +158,19 @@ function Panel({ setAuthenticated }) {
 
           <ul>
             <Link>
+              <Icon src={require('./blog.svg')} />
+              <NavLink
+                activeStyle={{
+                  fontWeight: '500',
+                  color: 'black',
+                }}
+                to="/blog"
+              >
+                Blog
+              </NavLink>
+            </Link>
+
+            <Link>
               <Icon src={require('./push-notifications.svg')} />
               <NavLink
                 activeStyle={{

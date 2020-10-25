@@ -18,6 +18,9 @@ const Field = styled.input`
   border-image: initial;
   border-bottom: 1px solid rgb(230, 231, 233);
   outline: none;
+  max-width: 650px;
+  margin: 0 auto;
+  display: block;
 `
 
 function Input({ value, placeholder, onChange }) {
