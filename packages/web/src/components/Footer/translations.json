@@ -3,6 +3,7 @@
     "en": {
       "about": "About",
       "press": "Press",
+      "blog": "Blog",
       "download": "Download Apps",
       "status": "Status",
       "help": "Help",
@@ -22,6 +23,7 @@
     "sv": {
       "about": "Om oss",
       "press": "Press",
+      "blog": "Blogg",
       "download": "Ladda ner Appar",
       "status": "Status",
       "help": "Hjälp",

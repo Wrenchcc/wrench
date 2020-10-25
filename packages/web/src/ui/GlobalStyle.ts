@@ -150,4 +150,16 @@ export default createGlobalStyle`
     opacity: 1.0;
     transform: rotate(3deg) translate(0px, -4px);
   }
+
+  .blog ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: 40px;
+    outline: none;
+  }
+
+  .blog ul li {
+    padding: 5.5px 0 5.5px 3px;
+    line-height: 1.6em;
+  }
 `

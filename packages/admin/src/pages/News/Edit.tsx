@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, {useRef, useState, useEffect} from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useBlogPostQuery, useAddBlogPostMutation } from '@wrench/common'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
@@ -90,6 +90,13 @@ function Edit() {
 
   }
 
+  const handlePreview = async () => {
+    const data = await instanceRef.current.save()
+    const preview = JSON.stringify(data)
+    console.log(`https://www.wrench.cc/blog?title=${title}&content=${preview}`)
+    window.location.replace(`https://www.wrench.cc/blog?title=${title}&content=${preview}`);
+  }
+
   if(loading) {
     return null
   }
@@ -99,7 +106,7 @@ function Edit() {
     <Editor data={data && JSON.parse(data?.blogPost.content)} instanceRef={(instance) => (instanceRef.current = instance)} />
 
     <Actions>
-      <Preview>Preview</Preview>
+      <Preview onClick={handlePreview}>Preview</Preview>
       <Save onClick={handleSave}><span>{saving ? 'Saving' : 'Save'}</span> {saving && <Saving white/>}</Save>
     </Actions>
   </Layout>

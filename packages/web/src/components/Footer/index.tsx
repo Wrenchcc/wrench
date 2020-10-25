@@ -25,6 +25,11 @@ function Footer() {
                 </Link>
               </NavItem>*/}
               <NavItem>
+                <Link href="/blog">
+                  <a>{t('Footer:blog')}</a>
+                </Link>
+              </NavItem>
+              <NavItem>
                 <Link href="/download">
                   <a>{t('Footer:download')}</a>
                 </Link>

@@ -1,5 +1,8 @@
 {
   "en": {
+    "Blog": {
+      "title": "Blog"
+    },
     "CommentField": {
       "placeholder": "Add a comment...",
       "post": "Post"
@@ -24,6 +27,7 @@
     "Footer": {
       "about": "About",
       "press": "Press",
+      "blog": "Blog",
       "download": "Download Apps",
       "status": "Status",
       "help": "Help",
@@ -213,6 +217,9 @@
     }
   },
   "sv": {
+    "Blog": {
+      "title": "Blogg"
+    },
     "CommentField": {
       "placeholder": "Skriv en kommentar...",
       "post": "Skicka"
@@ -237,6 +244,7 @@
     "Footer": {
       "about": "Om oss",
       "press": "Press",
+      "blog": "Blogg",
       "download": "Ladda ner Appar",
       "status": "Status",
       "help": "Hjälp",
