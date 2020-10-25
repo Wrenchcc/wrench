@@ -1,0 +1,7 @@
+#import "../fragments/UserFragment.graphql"
+
+mutation banUser($id: ID!) {
+  banUser(id: $id) {
+    ...User
+  }
+}
