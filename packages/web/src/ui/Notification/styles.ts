@@ -7,7 +7,7 @@ export const Base = styled.div`
   display: flex;
   margin-bottom: 15px;
   padding-top: 15px;
-  border-top: ${props => (props.first ? 0 : 1)}px solid ${COLORS.ULTRA_LIGHT_GREY};
+  border-top: ${props => (props.first ? 0 : 1)}px solid ${props => props.theme.colors.divider};
 `
 
 export const Content = styled.div`

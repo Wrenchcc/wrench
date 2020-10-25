@@ -9,7 +9,7 @@ export const Base = styled.div`
   padding-bottom: ${props => (props.padding ? 40 : 0)}px;
   box-sizing: border-box;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.11);
-  background-color: ${props => props.theme.colors.default};
+  background-color: ${props => props.theme.isDark ? props.theme.colors.placeholder : props.theme.colors.white};
   position: absolute;
   right: 0;
   top: 50px;
