@@ -12,8 +12,8 @@ import Users from './pages/Users'
 import Posts from './pages/Posts'
 import Projects from './pages/Projects'
 import Comments from './pages/Comments'
-import Newsletter from './pages/Newsletter'
-import Blog from './pages/Blog'
+import Edit from './pages/News/Edit'
+import News from './pages/News'
 import PushNotifications from './pages/PushNotifications'
 
 function App() {
@@ -56,11 +56,11 @@ function App() {
             <Route path="/comments">
               <Comments />
             </Route>
-            <Route path="/newsletter">
-              <Newsletter />
+            <Route path="/news" exact>
+              <News />
             </Route>
-            <Route path="/blog">
-              <Blog />
+            <Route path="/news/edit/:id">
+              <Edit />
             </Route>
             <Route path="/push-notifications">
               <PushNotifications />

@@ -21,6 +21,7 @@ export declare type Query = {
     __typename?: 'Query';
     dummy?: Maybe<Scalars['String']>;
     bookmarks?: Maybe<BookmarkConnection>;
+    blogPosts?: Maybe<BlogPostConnection>;
     comments?: Maybe<CommentConnection>;
     recentComments?: Maybe<CommentConnection>;
     comment?: Maybe<Comment>;
@@ -47,6 +48,12 @@ export declare type Query = {
     currentUser?: Maybe<User>;
 };
 export declare type QueryBookmarksArgs = {
+    first?: Maybe<Scalars['Int']>;
+    after?: Maybe<Scalars['String']>;
+    last?: Maybe<Scalars['Int']>;
+    before?: Maybe<Scalars['String']>;
+};
+export declare type QueryBlogPostsArgs = {
     first?: Maybe<Scalars['Int']>;
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
@@ -508,6 +515,27 @@ export declare type LikeEdge = {
     cursor: Scalars['String'];
     node: User;
 };
+export declare type BlogPostConnection = {
+    __typename?: 'BlogPostConnection';
+    totalCount?: Maybe<Scalars['Int']>;
+    pageInfo: PageInfo;
+    edges?: Maybe<Array<BlogPostEdge>>;
+};
+export declare type BlogPostEdge = {
+    __typename?: 'BlogPostEdge';
+    cursor: Scalars['String'];
+    node: BlogPost;
+};
+export declare type BlogPost = {
+    __typename?: 'BlogPost';
+    id?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    title?: Maybe<Scalars['String']>;
+    content?: Maybe<Scalars['String']>;
+    user?: Maybe<User>;
+    slug?: Maybe<Scalars['String']>;
+};
 export declare type Feed = {
     __typename?: 'Feed';
     postsConnection?: Maybe<PostConnection>;
@@ -646,6 +674,9 @@ export declare type Mutation = {
     authenticateGoogle?: Maybe<Tokens>;
     refreshToken?: Maybe<AccessToken>;
     bookmarkPost?: Maybe<Post>;
+    deleteBlogPost?: Maybe<BlogPost>;
+    addBlogPost?: Maybe<BlogPost>;
+    editBlogPost?: Maybe<BlogPost>;
     addComment?: Maybe<Comment>;
     editComment?: Maybe<Comment>;
     deleteComment?: Maybe<Scalars['Boolean']>;
@@ -690,6 +721,16 @@ export declare type MutationRefreshTokenArgs = {
 };
 export declare type MutationBookmarkPostArgs = {
     id: Scalars['ID'];
+};
+export declare type MutationDeleteBlogPostArgs = {
+    id: Scalars['ID'];
+};
+export declare type MutationAddBlogPostArgs = {
+    input: BlogPostInput;
+};
+export declare type MutationEditBlogPostArgs = {
+    id: Scalars['ID'];
+    input: BlogPostInput;
 };
 export declare type MutationAddCommentArgs = {
     postId: Scalars['ID'];
@@ -794,6 +835,10 @@ export declare type Tokens = {
 export declare type AccessToken = {
     __typename?: 'AccessToken';
     access_token?: Maybe<Scalars['String']>;
+};
+export declare type BlogPostInput = {
+    title: Scalars['String'];
+    caption: Scalars['String'];
 };
 export declare type CommentInput = {
     text: Scalars['String'];
@@ -1390,6 +1435,32 @@ export declare type ToggleNotificationSettingsMutation = ({
     toggleNotificationSettings?: Maybe<({
         __typename?: 'User';
     } & UserSettingsFragment)>;
+});
+export declare type BlogPostsQueryVariables = Exact<{
+    after?: Maybe<Scalars['String']>;
+    first?: Maybe<Scalars['Int']>;
+}>;
+export declare type BlogPostsQuery = ({
+    __typename?: 'Query';
+} & {
+    blogPosts?: Maybe<({
+        __typename?: 'BlogPostConnection';
+    } & {
+        pageInfo: ({
+            __typename?: 'PageInfo';
+        } & Pick<PageInfo, 'hasNextPage'>);
+        edges?: Maybe<Array<({
+            __typename?: 'BlogPostEdge';
+        } & Pick<BlogPostEdge, 'cursor'> & {
+            node: ({
+                __typename?: 'BlogPost';
+            } & Pick<BlogPost, 'title' | 'id' | 'slug' | 'content' | 'createdAt'> & {
+                user?: Maybe<({
+                    __typename?: 'User';
+                } & Pick<User, 'id' | 'avatarUrl' | 'fullName'>)>;
+            });
+        })>>;
+    })>;
 });
 export declare type BookmarksQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
@@ -2923,6 +2994,35 @@ export declare function useToggleNotificationSettingsMutation(baseOptions?: Apol
 export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export declare const BlogPostsDocument: Apollo.DocumentNode;
+/**
+ * __useBlogPostsQuery__
+ *
+ * To run a query within a React component, call `useBlogPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogPostsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export declare function useBlogPostsQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>): Apollo.QueryResult<BlogPostsQuery, Exact<{
+    after?: string | null | undefined;
+    first?: number | null | undefined;
+}>>;
+export declare function useBlogPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>): Apollo.QueryTuple<BlogPostsQuery, Exact<{
+    after?: string | null | undefined;
+    first?: number | null | undefined;
+}>>;
+export declare type BlogPostsQueryHookResult = ReturnType<typeof useBlogPostsQuery>;
+export declare type BlogPostsLazyQueryHookResult = ReturnType<typeof useBlogPostsLazyQuery>;
+export declare type BlogPostsQueryResult = Apollo.QueryResult<BlogPostsQuery, BlogPostsQueryVariables>;
 export declare const BookmarksDocument: Apollo.DocumentNode;
 /**
  * __useBookmarksQuery__

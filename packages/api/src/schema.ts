@@ -7,6 +7,7 @@ import generalTypes from './types/general'
 // Types
 import Auth from './types/Auth'
 import Bookmark from './types/Bookmark'
+import BlogPost from './types/BlogPost'
 import Collection from './types/Collection'
 import Comment from './types/Comment'
 import Feed from './types/Feed'
@@ -28,6 +29,7 @@ import User from './types/User'
 // Queries
 import collectionQueries from './queries/collection'
 import bookmarkQueries from './queries/bookmark'
+import blogPostQueries from './queries/blogPost'
 import commentQueries from './queries/comment'
 import feedQueries from './queries/feed'
 import followerQueries from './queries/follower'
@@ -43,6 +45,7 @@ import fileQueries from './queries/file'
 
 // Mutations
 import bookmarkMutations from './mutations/bookmark'
+import blogPostMutations from './mutations/blogPost'
 import collectionMutations from './mutations/collection'
 import commentMutations from './mutations/comment'
 import inviteMutations from './mutations/invite'
@@ -89,6 +92,7 @@ const resolvers = merge(
   scalars.resolvers,
   collectionQueries,
   bookmarkQueries,
+  blogPostQueries,
   commentQueries,
   feedQueries,
   followerQueries,
@@ -103,6 +107,7 @@ const resolvers = merge(
   // mutations
   collectionMutations,
   bookmarkMutations,
+  blogPostMutations,
   commentMutations,
   inviteMutations,
   notificationMutations,
@@ -132,6 +137,7 @@ export default makeExecutableSchema({
     scalars.typeDefs,
     Auth,
     Bookmark,
+    BlogPost,
     Comment,
     Collection,
     Feed,

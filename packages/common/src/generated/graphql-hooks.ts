@@ -19,6 +19,7 @@ export type Query = {
   __typename?: 'Query';
   dummy?: Maybe<Scalars['String']>;
   bookmarks?: Maybe<BookmarkConnection>;
+  blogPosts?: Maybe<BlogPostConnection>;
   comments?: Maybe<CommentConnection>;
   recentComments?: Maybe<CommentConnection>;
   comment?: Maybe<Comment>;
@@ -47,6 +48,14 @@ export type Query = {
 
 
 export type QueryBookmarksArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryBlogPostsArgs = {
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -613,6 +622,30 @@ export type LikeEdge = {
   node: User;
 };
 
+export type BlogPostConnection = {
+  __typename?: 'BlogPostConnection';
+  totalCount?: Maybe<Scalars['Int']>;
+  pageInfo: PageInfo;
+  edges?: Maybe<Array<BlogPostEdge>>;
+};
+
+export type BlogPostEdge = {
+  __typename?: 'BlogPostEdge';
+  cursor: Scalars['String'];
+  node: BlogPost;
+};
+
+export type BlogPost = {
+  __typename?: 'BlogPost';
+  id?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  title?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  slug?: Maybe<Scalars['String']>;
+};
+
 export type Feed = {
   __typename?: 'Feed';
   postsConnection?: Maybe<PostConnection>;
@@ -775,6 +808,9 @@ export type Mutation = {
   authenticateGoogle?: Maybe<Tokens>;
   refreshToken?: Maybe<AccessToken>;
   bookmarkPost?: Maybe<Post>;
+  deleteBlogPost?: Maybe<BlogPost>;
+  addBlogPost?: Maybe<BlogPost>;
+  editBlogPost?: Maybe<BlogPost>;
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
@@ -829,6 +865,22 @@ export type MutationRefreshTokenArgs = {
 
 export type MutationBookmarkPostArgs = {
   id: Scalars['ID'];
+};
+
+
+export type MutationDeleteBlogPostArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationAddBlogPostArgs = {
+  input: BlogPostInput;
+};
+
+
+export type MutationEditBlogPostArgs = {
+  id: Scalars['ID'];
+  input: BlogPostInput;
 };
 
 
@@ -988,6 +1040,11 @@ export type Tokens = {
 export type AccessToken = {
   __typename?: 'AccessToken';
   access_token?: Maybe<Scalars['String']>;
+};
+
+export type BlogPostInput = {
+  title: Scalars['String'];
+  caption: Scalars['String'];
 };
 
 export type CommentInput = {
@@ -1693,6 +1750,34 @@ export type ToggleNotificationSettingsMutation = (
   & { toggleNotificationSettings?: Maybe<(
     { __typename?: 'User' }
     & UserSettingsFragment
+  )> }
+);
+
+export type BlogPostsQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type BlogPostsQuery = (
+  { __typename?: 'Query' }
+  & { blogPosts?: Maybe<(
+    { __typename?: 'BlogPostConnection' }
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage'>
+    ), edges?: Maybe<Array<(
+      { __typename?: 'BlogPostEdge' }
+      & Pick<BlogPostEdge, 'cursor'>
+      & { node: (
+        { __typename?: 'BlogPost' }
+        & Pick<BlogPost, 'title' | 'id' | 'slug' | 'content' | 'createdAt'>
+        & { user?: Maybe<(
+          { __typename?: 'User' }
+          & Pick<User, 'id' | 'avatarUrl' | 'fullName'>
+        )> }
+      ) }
+    )>> }
   )> }
 );
 
@@ -3688,6 +3773,57 @@ export function useToggleNotificationSettingsMutation(baseOptions?: Apollo.Mutat
 export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export const BlogPostsDocument = gql`
+    query blogPosts($after: String, $first: Int = 5) @connection(key: "blogPosts") {
+  blogPosts(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        title
+        id
+        slug
+        content
+        createdAt
+        user {
+          id
+          avatarUrl
+          fullName
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBlogPostsQuery__
+ *
+ * To run a query within a React component, call `useBlogPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogPostsQuery({
+ *   variables: {
+ *      after: // value for 'after'
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useBlogPostsQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>) {
+        return Apollo.useQuery<BlogPostsQuery, BlogPostsQueryVariables>(BlogPostsDocument, baseOptions);
+      }
+export function useBlogPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostsQuery, BlogPostsQueryVariables>) {
+          return Apollo.useLazyQuery<BlogPostsQuery, BlogPostsQueryVariables>(BlogPostsDocument, baseOptions);
+        }
+export type BlogPostsQueryHookResult = ReturnType<typeof useBlogPostsQuery>;
+export type BlogPostsLazyQueryHookResult = ReturnType<typeof useBlogPostsLazyQuery>;
+export type BlogPostsQueryResult = Apollo.QueryResult<BlogPostsQuery, BlogPostsQueryVariables>;
 export const BookmarksDocument = gql`
     query bookmarks($after: String, $first: Int = 5) @connection(key: "bookmarks") {
   bookmarks(after: $after, first: $first) {

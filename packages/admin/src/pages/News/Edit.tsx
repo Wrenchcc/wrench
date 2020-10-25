@@ -1,11 +1,10 @@
 // @ts-nocheck
 import React from 'react'
+import { useParams } from "react-router-dom";
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
 import Editor from '../../components/Editor'
 import Input from '../../components/Input'
-
-
 
 const Title = styled.div`
  margin-bottom: 30px;
@@ -147,8 +146,11 @@ const data = {
   version: "2.12.4"
 }
 
-function Blog() {
-  return <Layout title="Blog">
+function Edit() {
+  const {id} = useParams()
+  console.log(id)
+  
+  return <Layout title="Edit">
     <Actions>
       <Preview>Preview</Preview>
       <Save>Save</Save>
@@ -159,4 +161,4 @@ function Blog() {
   </Layout>
 }
 
-export default Blog
+export default Edit

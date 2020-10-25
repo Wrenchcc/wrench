@@ -158,15 +158,15 @@ function Panel({ setAuthenticated }) {
 
           <ul>
             <Link>
-              <Icon src={require('./blog.svg')} />
+              <Icon src={require('./news.svg')} />
               <NavLink
                 activeStyle={{
                   fontWeight: '500',
                   color: 'black',
                 }}
-                to="/blog"
+                to="/news"
               >
-                Blog
+                News
               </NavLink>
             </Link>
 
@@ -182,19 +182,7 @@ function Panel({ setAuthenticated }) {
                 Push notifications
               </NavLink>
             </Link>
-            <Link>
-              <Icon src={require('./newsletter.svg')} />
-              <NavLink
-                activeStyle={{
-                  fontWeight: '500',
-                  color: 'black',
-                }}
-                to="/newsletter"
-              >
-                Newsletter
-              </NavLink>
-            </Link>
-
+            
             <Link>
               <Icon src={require('./google.svg')} />
               <a href="https://analytics.google.com/analytics/web/#/p178012703/reports/home">

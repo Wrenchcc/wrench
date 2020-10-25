@@ -1,0 +1,22 @@
+query blogPosts($after: String, $first: Int = 5) @connection(key: "blogPosts") {
+  blogPosts(after: $after, first: $first) {
+    pageInfo {
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        title
+        id
+        slug
+        content
+        createdAt
+        user {
+          id
+          avatarUrl
+          fullName
+        }
+      }
+    }
+  }
+}
