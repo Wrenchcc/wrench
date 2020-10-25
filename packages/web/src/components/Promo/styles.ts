@@ -44,7 +44,7 @@ export const Close = styled.img`
 export const Placeholder = styled.div`
   height: 48px;
   border-radius: 1px;
-  border: solid 1px #e6e7e9;
+  border: solid 1px ${(props) => props.theme.colors.divider};
   width: 100%;
   font-size: 15px;
   margin-right: 25px;
@@ -65,8 +65,8 @@ export const Bottom = styled.div`
     .form-control {
       height: 50px;
       border-radius: 1px;
-      border: solid 1px ${(props) => (props.inverted ? COLORS.GREY : props.theme.divider)};
-      color: ${COLORS.LIGHT_GREY};
+      border: solid 1px ${(props) => props.inverted ? props.theme.colors.neutral: props.theme.colors.divider};
+      color: ${(props) => props.theme.colors.neutral};
       width: 100%;
       background: transparent;
     }
@@ -99,7 +99,7 @@ export const Send = styled.button`
   outline: none;
   color: ${(props) =>
     props.inverted
-      ? (props.success && COLORS.GREEN) || (props.active ? COLORS.WHITE : COLORS.GREY)
-      : (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : COLORS.GREY)};
+      ? (props.success && COLORS.GREEN) || (props.active ? COLORS.WHITE : props.theme.colors.neutral)
+      : (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : props.theme.colors.neutral)};
   padding: 0;
 `

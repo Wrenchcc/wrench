@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useCallback, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'

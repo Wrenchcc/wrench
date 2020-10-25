@@ -19,7 +19,7 @@ exports.DARK_THEME = {
     white: '#ffffff',
     black: '#000000',
     divider: '#252526',
-    placeholder: '#19191A',
+    placeholder: '#161616',
 };
 exports.LIGHT_THEME = {
     default: '#ffffff',

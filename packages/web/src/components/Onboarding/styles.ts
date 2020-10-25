@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 import UiImage from 'ui/Image'
 import UiTitle from 'ui/Title'
-import { COLORS, FONTS, DEVICE } from 'ui/constants'
+import { FONTS, DEVICE } from 'ui/constants'
 
 export const Base = styled.div`
   position: absolute;
@@ -56,7 +56,7 @@ export const Image = styled(UiImage)`
   background: transparent;
   height: ${props => props.height};
   width: ${props => props.width};
-  border: 3px solid ${props => (props.selected ? COLORS.WHITE : 'transparent')};
+  border: 3px solid ${props => (props.selected ? props.theme.colors.default : 'transparent')};
   box-sizing: border-box;
 
   @media ${DEVICE.TABLET} {

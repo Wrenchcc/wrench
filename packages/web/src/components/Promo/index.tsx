@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import {useTheme } from 'next-themes'
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
@@ -20,6 +21,7 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
 
 function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizontal, inline }) {
   const { t } = useTranslation()
+  const { systemTheme } = useTheme()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
   const [success, setSuccess] = useState(false)
@@ -45,7 +47,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
           <Close src={require('./close.svg')} width={13} height={13} onClick={hidePromo} />
         )}
 
-        <Text medium fontSize={19} color={inverted ? 'inverse' : 'inverse'}>
+        <Text medium fontSize={19} color={inverted && 'white'}>
           {t('Promo:title')}
         </Text>
 

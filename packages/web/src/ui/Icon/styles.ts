@@ -1,10 +1,14 @@
+// @ts-nocheck
 import styled from 'styled-components'
 
 export const Base = styled.div`
   opacity: ${props => props.opacity};
-  ${props => props.width && { width: props.width }}
-  ${props => props.height && { height: props.height }}
   transition: fill 0.25s;
+
+  svg {
+    ${props => props.width && { width: props.width }}
+    ${props => props.height && { height: props.height }}
+  }
 
   rect {
     stroke: ${props => props.theme.colors[props.stroke] || props.theme.colors.inverse};

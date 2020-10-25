@@ -34,7 +34,7 @@ export const NavItem = styled.li`
   margin-top: 20px;
 
   a {
-    color: ${props => props.theme.colors.neutral};
+    color: ${props => props.theme.colors.neutral} !important;
   }
 `
 

@@ -2,6 +2,7 @@
 import React, { useCallback } from 'react'
 import { useMutation } from '@apollo/client'
 import { LIKE_COMMENT_MUTATION } from 'graphql/mutations/comment/like'
+import { Icon } from 'ui'
 import { Base } from './styles'
 
 function LikeComment({ comment }) {
@@ -31,11 +32,14 @@ function LikeComment({ comment }) {
 
   return (
     <Base>
-      <img
+      <Icon
+        width={10}
         style={{ marginRight: 10 }}
         onClick={() => handleToggleLike(comment.id)}
-        src={comment.likes.isLiked ? require('./spark-active.svg') : require('./spark.svg')}
         alt="Like comment"
+        noFill
+        stroke={comment.likes.isLiked ? 'warning' : 'inverse'}
+        source={require('./spark.svg?include')}
       />
     </Base>
   )
