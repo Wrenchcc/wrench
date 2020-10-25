@@ -13,6 +13,7 @@ function Users() {
     data: { edges },
     isFetching,
     fetchMore,
+    hasNextPage,
   } = usePaginatedQuery(['users'])(SearchUsersDocument, {
     variables: {
       first: 20,
@@ -61,7 +62,7 @@ function Users() {
       {isFetching && !edges ? (
         <PlaceholderRow />
       ) : (
-        <Table columns={columns} data={edges.map(({ node }) => node)} fetchMore={fetchMore} />
+        <Table columns={columns} data={edges.map(({ node }) => node)} fetchMore={fetchMore} hasMore={hasNextPage} />
       )}
     </Layout>
   )

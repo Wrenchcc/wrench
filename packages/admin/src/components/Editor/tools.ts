@@ -1,3 +1,5 @@
+import {client} from '../../'
+import {PreSignUrlDocument } from '@wrench/common'
 import Embed from '@editorjs/embed'
 import Table from '@editorjs/table'
 import List from '@editorjs/list'
@@ -14,6 +16,23 @@ import Delimiter from '@editorjs/delimiter'
 import InlineCode from '@editorjs/inline-code'
 import SimpleImage from '@editorjs/simple-image'
 
+const CDN_DOMAIN = 'https://edge-files.wrench.cc'
+const UPLOAD_PATH = 'blog'
+const FILE_TYPE = 'IMAGE'
+
+async function preSignUrl(input) {
+  try {
+    return client.mutate({
+      mutation: PreSignUrlDocument,
+      variables: {
+        input,
+      },
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const EDITOR_JS_TOOLS = {
   embed: Embed,
   table: Table,
@@ -22,7 +41,35 @@ export const EDITOR_JS_TOOLS = {
   warning: Warning,
   code: Code,
   linkTool: LinkTool,
-  image: Image,
+  image: {
+    class: Image,
+    config: {
+      uploader: {
+        async uploadByFile(file) {
+          const { data } = await preSignUrl({
+            path: UPLOAD_PATH,
+            type: FILE_TYPE,
+          })
+
+          await fetch(data.preSignUrl.url, {
+            method: 'PUT',
+            body: file,
+            headers: {
+              'Content-Type': file.type,
+            },
+          })
+
+          return Promise.resolve({
+            success: 1,
+            file: {
+              url: `${CDN_DOMAIN}/blog/${data.preSignUrl.filename}`,
+            }
+          });
+          
+        },
+      }
+    }
+  },
   raw: Raw,
   header: Header,
   quote: Quote,

@@ -14,7 +14,7 @@ import Comment from './Comment'
 
 @Entity('blog_posts')
 export default class BlogPost extends BaseEntity {
-  public static async createPost(data) {
+  public static async savePost(data) {
     let post
     let times = 0
 
@@ -64,7 +64,7 @@ export default class BlogPost extends BaseEntity {
   @Column()
   public title: string
 
-  @Column('text', { nullable: true })
+  @Column('json')
   public content: string
 
   @Column({ unique: true, nullable: true })

@@ -11,6 +11,7 @@ export const Base = styled.div`
   top: 0;
   bottom: 0;
   background: #e6e7e9;
+  z-index: 20;
 `
 
 export const Nav = styled.nav`

@@ -39,7 +39,7 @@ const Menu = styled.nav`
   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 10px 0px;
 `
 
-function Actions({ component, onDelete }) {
+function Actions({ component, onDelete, disableEdit }) {
   const ref = useRef()
   const [isOpen, setOpen] = useState(false)
   const [openPanel, setOpenPanel] = useState(false)
@@ -56,14 +56,14 @@ function Actions({ component, onDelete }) {
 
       {isOpen && (
         <Menu>
-          <Action
+          {!disableEdit && <Action
             onClick={() => {
               document.body.style.overflow = 'hidden'
               setOpenPanel(true)
             }}
           >
             Edit
-          </Action>
+          </Action>}
           <Action style={{ color: '#ec6d2f' }} onClick={() => onDelete()}>
             Delete
           </Action>

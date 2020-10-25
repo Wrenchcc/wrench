@@ -21,6 +21,7 @@ export declare type Query = {
     __typename?: 'Query';
     dummy?: Maybe<Scalars['String']>;
     bookmarks?: Maybe<BookmarkConnection>;
+    blogPost?: Maybe<BlogPost>;
     blogPosts?: Maybe<BlogPostConnection>;
     comments?: Maybe<CommentConnection>;
     recentComments?: Maybe<CommentConnection>;
@@ -52,6 +53,10 @@ export declare type QueryBookmarksArgs = {
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
+};
+export declare type QueryBlogPostArgs = {
+    id?: Maybe<Scalars['ID']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
 };
 export declare type QueryBlogPostsArgs = {
     first?: Maybe<Scalars['Int']>;
@@ -515,6 +520,16 @@ export declare type LikeEdge = {
     cursor: Scalars['String'];
     node: User;
 };
+export declare type BlogPost = {
+    __typename?: 'BlogPost';
+    id?: Maybe<Scalars['ID']>;
+    createdAt?: Maybe<Scalars['Date']>;
+    updatedAt?: Maybe<Scalars['Date']>;
+    title?: Maybe<Scalars['String']>;
+    content?: Maybe<Scalars['String']>;
+    user?: Maybe<User>;
+    slug?: Maybe<Scalars['String']>;
+};
 export declare type BlogPostConnection = {
     __typename?: 'BlogPostConnection';
     totalCount?: Maybe<Scalars['Int']>;
@@ -525,16 +540,6 @@ export declare type BlogPostEdge = {
     __typename?: 'BlogPostEdge';
     cursor: Scalars['String'];
     node: BlogPost;
-};
-export declare type BlogPost = {
-    __typename?: 'BlogPost';
-    id?: Maybe<Scalars['ID']>;
-    createdAt?: Maybe<Scalars['Date']>;
-    updatedAt?: Maybe<Scalars['Date']>;
-    title?: Maybe<Scalars['String']>;
-    content?: Maybe<Scalars['String']>;
-    user?: Maybe<User>;
-    slug?: Maybe<Scalars['String']>;
 };
 export declare type Feed = {
     __typename?: 'Feed';
@@ -676,7 +681,6 @@ export declare type Mutation = {
     bookmarkPost?: Maybe<Post>;
     deleteBlogPost?: Maybe<BlogPost>;
     addBlogPost?: Maybe<BlogPost>;
-    editBlogPost?: Maybe<BlogPost>;
     addComment?: Maybe<Comment>;
     editComment?: Maybe<Comment>;
     deleteComment?: Maybe<Scalars['Boolean']>;
@@ -726,10 +730,7 @@ export declare type MutationDeleteBlogPostArgs = {
     id: Scalars['ID'];
 };
 export declare type MutationAddBlogPostArgs = {
-    input: BlogPostInput;
-};
-export declare type MutationEditBlogPostArgs = {
-    id: Scalars['ID'];
+    id?: Maybe<Scalars['ID']>;
     input: BlogPostInput;
 };
 export declare type MutationAddCommentArgs = {
@@ -838,7 +839,7 @@ export declare type AccessToken = {
 };
 export declare type BlogPostInput = {
     title: Scalars['String'];
-    caption: Scalars['String'];
+    content: Scalars['String'];
 };
 export declare type CommentInput = {
     text: Scalars['String'];
@@ -930,6 +931,13 @@ export declare enum CacheControlScope {
     Public = "PUBLIC",
     Private = "PRIVATE"
 }
+export declare type BlogPostFragment = ({
+    __typename?: 'BlogPost';
+} & Pick<BlogPost, 'id' | 'title' | 'slug' | 'content' | 'createdAt'> & {
+    user?: Maybe<({
+        __typename?: 'User';
+    } & UserFragment)>;
+});
 export declare type CollectionFragment = ({
     __typename?: 'Collection';
 } & Pick<Collection, 'id' | 'name'> & {
@@ -1138,6 +1146,17 @@ export declare type UserSettingsFragment = ({
         })>;
     })>;
 });
+export declare type AddBlogPostMutationVariables = Exact<{
+    id?: Maybe<Scalars['ID']>;
+    input: BlogPostInput;
+}>;
+export declare type AddBlogPostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addBlogPost?: Maybe<({
+        __typename?: 'BlogPost';
+    } & BlogPostFragment)>;
+});
 export declare type AddCollectionMutationVariables = Exact<{
     projectId: Scalars['ID'];
     name: Scalars['String'];
@@ -1241,6 +1260,16 @@ export declare type CollectPostsMutation = ({
             __typename?: 'CoverType';
         } & Pick<CoverType, 'uri'>)>;
     })>;
+});
+export declare type DeleteBlogPostMutationVariables = Exact<{
+    id: Scalars['ID'];
+}>;
+export declare type DeleteBlogPostMutation = ({
+    __typename?: 'Mutation';
+} & {
+    deleteBlogPost?: Maybe<({
+        __typename?: 'BlogPost';
+    } & Pick<BlogPost, 'id'>)>;
 });
 export declare type DeleteCollectionMutationVariables = Exact<{
     projectId: Scalars['ID'];
@@ -1436,6 +1465,16 @@ export declare type ToggleNotificationSettingsMutation = ({
         __typename?: 'User';
     } & UserSettingsFragment)>;
 });
+export declare type BlogPostQueryVariables = Exact<{
+    id: Scalars['ID'];
+}>;
+export declare type BlogPostQuery = ({
+    __typename?: 'Query';
+} & {
+    blogPost?: Maybe<({
+        __typename?: 'BlogPost';
+    } & BlogPostFragment)>;
+});
 export declare type BlogPostsQueryVariables = Exact<{
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
@@ -1454,11 +1493,7 @@ export declare type BlogPostsQuery = ({
         } & Pick<BlogPostEdge, 'cursor'> & {
             node: ({
                 __typename?: 'BlogPost';
-            } & Pick<BlogPost, 'title' | 'id' | 'slug' | 'content' | 'createdAt'> & {
-                user?: Maybe<({
-                    __typename?: 'User';
-                } & Pick<User, 'id' | 'avatarUrl' | 'fullName'>)>;
-            });
+            } & BlogPostFragment);
         })>>;
     })>;
 });
@@ -2238,8 +2273,9 @@ export declare type UserFollowingProjectsQuery = ({
         })>;
     })>;
 });
-export declare const CollectionFragmentDoc: Apollo.DocumentNode;
 export declare const UserFragmentDoc: Apollo.DocumentNode;
+export declare const BlogPostFragmentDoc: Apollo.DocumentNode;
+export declare const CollectionFragmentDoc: Apollo.DocumentNode;
 export declare const CommentFragmentDoc: Apollo.DocumentNode;
 export declare const CommentAndRepliesFragmentDoc: Apollo.DocumentNode;
 export declare const ProjectFragmentDoc: Apollo.DocumentNode;
@@ -2247,6 +2283,33 @@ export declare const NotificationFragmentDoc: Apollo.DocumentNode;
 export declare const PostFragmentDoc: Apollo.DocumentNode;
 export declare const UserProjectsFragmentDoc: Apollo.DocumentNode;
 export declare const UserSettingsFragmentDoc: Apollo.DocumentNode;
+export declare const AddBlogPostDocument: Apollo.DocumentNode;
+export declare type AddBlogPostMutationFn = Apollo.MutationFunction<AddBlogPostMutation, AddBlogPostMutationVariables>;
+/**
+ * __useAddBlogPostMutation__
+ *
+ * To run a mutation, you first call `useAddBlogPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddBlogPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addBlogPostMutation, { data, loading, error }] = useAddBlogPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export declare function useAddBlogPostMutation(baseOptions?: Apollo.MutationHookOptions<AddBlogPostMutation, AddBlogPostMutationVariables>): Apollo.MutationTuple<AddBlogPostMutation, Exact<{
+    id?: string | null | undefined;
+    input: BlogPostInput;
+}>>;
+export declare type AddBlogPostMutationHookResult = ReturnType<typeof useAddBlogPostMutation>;
+export declare type AddBlogPostMutationResult = Apollo.MutationResult<AddBlogPostMutation>;
+export declare type AddBlogPostMutationOptions = Apollo.BaseMutationOptions<AddBlogPostMutation, AddBlogPostMutationVariables>;
 export declare const AddCollectionDocument: Apollo.DocumentNode;
 export declare type AddCollectionMutationFn = Apollo.MutationFunction<AddCollectionMutation, AddCollectionMutationVariables>;
 /**
@@ -2484,6 +2547,31 @@ export declare function useCollectPostsMutation(baseOptions?: Apollo.MutationHoo
 export declare type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
 export declare type CollectPostsMutationResult = Apollo.MutationResult<CollectPostsMutation>;
 export declare type CollectPostsMutationOptions = Apollo.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
+export declare const DeleteBlogPostDocument: Apollo.DocumentNode;
+export declare type DeleteBlogPostMutationFn = Apollo.MutationFunction<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>;
+/**
+ * __useDeleteBlogPostMutation__
+ *
+ * To run a mutation, you first call `useDeleteBlogPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteBlogPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteBlogPostMutation, { data, loading, error }] = useDeleteBlogPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useDeleteBlogPostMutation(baseOptions?: Apollo.MutationHookOptions<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>): Apollo.MutationTuple<DeleteBlogPostMutation, Exact<{
+    id: string;
+}>>;
+export declare type DeleteBlogPostMutationHookResult = ReturnType<typeof useDeleteBlogPostMutation>;
+export declare type DeleteBlogPostMutationResult = Apollo.MutationResult<DeleteBlogPostMutation>;
+export declare type DeleteBlogPostMutationOptions = Apollo.BaseMutationOptions<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>;
 export declare const DeleteCollectionDocument: Apollo.DocumentNode;
 export declare type DeleteCollectionMutationFn = Apollo.MutationFunction<DeleteCollectionMutation, DeleteCollectionMutationVariables>;
 /**
@@ -2994,6 +3082,32 @@ export declare function useToggleNotificationSettingsMutation(baseOptions?: Apol
 export declare type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export declare type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export declare const BlogPostDocument: Apollo.DocumentNode;
+/**
+ * __useBlogPostQuery__
+ *
+ * To run a query within a React component, call `useBlogPostQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogPostQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export declare function useBlogPostQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryResult<BlogPostQuery, Exact<{
+    id: string;
+}>>;
+export declare function useBlogPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryTuple<BlogPostQuery, Exact<{
+    id: string;
+}>>;
+export declare type BlogPostQueryHookResult = ReturnType<typeof useBlogPostQuery>;
+export declare type BlogPostLazyQueryHookResult = ReturnType<typeof useBlogPostLazyQuery>;
+export declare type BlogPostQueryResult = Apollo.QueryResult<BlogPostQuery, BlogPostQueryVariables>;
 export declare const BlogPostsDocument: Apollo.DocumentNode;
 /**
  * __useBlogPostsQuery__

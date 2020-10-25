@@ -1,3 +1,5 @@
+#import "../fragments/BlogPostFragment.graphql"
+
 query blogPosts($after: String, $first: Int = 5) @connection(key: "blogPosts") {
   blogPosts(after: $after, first: $first) {
     pageInfo {
@@ -6,16 +8,7 @@ query blogPosts($after: String, $first: Int = 5) @connection(key: "blogPosts") {
     edges {
       cursor
       node {
-        title
-        id
-        slug
-        content
-        createdAt
-        user {
-          id
-          avatarUrl
-          fullName
-        }
+        ...BlogPost
       }
     }
   }

@@ -19,6 +19,7 @@ export type Query = {
   __typename?: 'Query';
   dummy?: Maybe<Scalars['String']>;
   bookmarks?: Maybe<BookmarkConnection>;
+  blogPost?: Maybe<BlogPost>;
   blogPosts?: Maybe<BlogPostConnection>;
   comments?: Maybe<CommentConnection>;
   recentComments?: Maybe<CommentConnection>;
@@ -52,6 +53,12 @@ export type QueryBookmarksArgs = {
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
   before?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryBlogPostArgs = {
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
 };
 
 
@@ -622,6 +629,17 @@ export type LikeEdge = {
   node: User;
 };
 
+export type BlogPost = {
+  __typename?: 'BlogPost';
+  id?: Maybe<Scalars['ID']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  title?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  slug?: Maybe<Scalars['String']>;
+};
+
 export type BlogPostConnection = {
   __typename?: 'BlogPostConnection';
   totalCount?: Maybe<Scalars['Int']>;
@@ -633,17 +651,6 @@ export type BlogPostEdge = {
   __typename?: 'BlogPostEdge';
   cursor: Scalars['String'];
   node: BlogPost;
-};
-
-export type BlogPost = {
-  __typename?: 'BlogPost';
-  id?: Maybe<Scalars['ID']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  title?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  user?: Maybe<User>;
-  slug?: Maybe<Scalars['String']>;
 };
 
 export type Feed = {
@@ -810,7 +817,6 @@ export type Mutation = {
   bookmarkPost?: Maybe<Post>;
   deleteBlogPost?: Maybe<BlogPost>;
   addBlogPost?: Maybe<BlogPost>;
-  editBlogPost?: Maybe<BlogPost>;
   addComment?: Maybe<Comment>;
   editComment?: Maybe<Comment>;
   deleteComment?: Maybe<Scalars['Boolean']>;
@@ -874,12 +880,7 @@ export type MutationDeleteBlogPostArgs = {
 
 
 export type MutationAddBlogPostArgs = {
-  input: BlogPostInput;
-};
-
-
-export type MutationEditBlogPostArgs = {
-  id: Scalars['ID'];
+  id?: Maybe<Scalars['ID']>;
   input: BlogPostInput;
 };
 
@@ -1044,7 +1045,7 @@ export type AccessToken = {
 
 export type BlogPostInput = {
   title: Scalars['String'];
-  caption: Scalars['String'];
+  content: Scalars['String'];
 };
 
 export type CommentInput = {
@@ -1155,6 +1156,15 @@ export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
 }
+
+export type BlogPostFragment = (
+  { __typename?: 'BlogPost' }
+  & Pick<BlogPost, 'id' | 'title' | 'slug' | 'content' | 'createdAt'>
+  & { user?: Maybe<(
+    { __typename?: 'User' }
+    & UserFragment
+  )> }
+);
 
 export type CollectionFragment = (
   { __typename?: 'Collection' }
@@ -1366,6 +1376,20 @@ export type UserSettingsFragment = (
   )> }
 );
 
+export type AddBlogPostMutationVariables = Exact<{
+  id?: Maybe<Scalars['ID']>;
+  input: BlogPostInput;
+}>;
+
+
+export type AddBlogPostMutation = (
+  { __typename?: 'Mutation' }
+  & { addBlogPost?: Maybe<(
+    { __typename?: 'BlogPost' }
+    & BlogPostFragment
+  )> }
+);
+
 export type AddCollectionMutationVariables = Exact<{
   projectId: Scalars['ID'];
   name: Scalars['String'];
@@ -1494,6 +1518,19 @@ export type CollectPostsMutation = (
       { __typename?: 'CoverType' }
       & Pick<CoverType, 'uri'>
     )> }
+  )> }
+);
+
+export type DeleteBlogPostMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteBlogPostMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteBlogPost?: Maybe<(
+    { __typename?: 'BlogPost' }
+    & Pick<BlogPost, 'id'>
   )> }
 );
 
@@ -1753,6 +1790,19 @@ export type ToggleNotificationSettingsMutation = (
   )> }
 );
 
+export type BlogPostQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type BlogPostQuery = (
+  { __typename?: 'Query' }
+  & { blogPost?: Maybe<(
+    { __typename?: 'BlogPost' }
+    & BlogPostFragment
+  )> }
+);
+
 export type BlogPostsQueryVariables = Exact<{
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -1771,11 +1821,7 @@ export type BlogPostsQuery = (
       & Pick<BlogPostEdge, 'cursor'>
       & { node: (
         { __typename?: 'BlogPost' }
-        & Pick<BlogPost, 'title' | 'id' | 'slug' | 'content' | 'createdAt'>
-        & { user?: Maybe<(
-          { __typename?: 'User' }
-          & Pick<User, 'id' | 'avatarUrl' | 'fullName'>
-        )> }
+        & BlogPostFragment
       ) }
     )>> }
   )> }
@@ -2593,15 +2639,6 @@ export type UserFollowingProjectsQuery = (
   )> }
 );
 
-export const CollectionFragmentDoc = gql`
-    fragment Collection on Collection {
-  id
-  name
-  cover {
-    uri
-  }
-}
-    `;
 export const UserFragmentDoc = gql`
     fragment User on User {
   id
@@ -2617,6 +2654,27 @@ export const UserFragmentDoc = gql`
   bio
   projectCount
   dynamicLink
+}
+    `;
+export const BlogPostFragmentDoc = gql`
+    fragment BlogPost on BlogPost {
+  id
+  title
+  slug
+  content
+  createdAt
+  user {
+    ...User
+  }
+}
+    ${UserFragmentDoc}`;
+export const CollectionFragmentDoc = gql`
+    fragment Collection on Collection {
+  id
+  name
+  cover {
+    uri
+  }
 }
     `;
 export const CommentFragmentDoc = gql`
@@ -2820,6 +2878,39 @@ export const UserSettingsFragmentDoc = gql`
   }
 }
     `;
+export const AddBlogPostDocument = gql`
+    mutation addBlogPost($id: ID, $input: BlogPostInput!) {
+  addBlogPost(id: $id, input: $input) {
+    ...BlogPost
+  }
+}
+    ${BlogPostFragmentDoc}`;
+export type AddBlogPostMutationFn = Apollo.MutationFunction<AddBlogPostMutation, AddBlogPostMutationVariables>;
+
+/**
+ * __useAddBlogPostMutation__
+ *
+ * To run a mutation, you first call `useAddBlogPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddBlogPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addBlogPostMutation, { data, loading, error }] = useAddBlogPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useAddBlogPostMutation(baseOptions?: Apollo.MutationHookOptions<AddBlogPostMutation, AddBlogPostMutationVariables>) {
+        return Apollo.useMutation<AddBlogPostMutation, AddBlogPostMutationVariables>(AddBlogPostDocument, baseOptions);
+      }
+export type AddBlogPostMutationHookResult = ReturnType<typeof useAddBlogPostMutation>;
+export type AddBlogPostMutationResult = Apollo.MutationResult<AddBlogPostMutation>;
+export type AddBlogPostMutationOptions = Apollo.BaseMutationOptions<AddBlogPostMutation, AddBlogPostMutationVariables>;
 export const AddCollectionDocument = gql`
     mutation addCollection($projectId: ID!, $name: String!) {
   addCollection(projectId: $projectId, name: $name) {
@@ -3124,6 +3215,38 @@ export function useCollectPostsMutation(baseOptions?: Apollo.MutationHookOptions
 export type CollectPostsMutationHookResult = ReturnType<typeof useCollectPostsMutation>;
 export type CollectPostsMutationResult = Apollo.MutationResult<CollectPostsMutation>;
 export type CollectPostsMutationOptions = Apollo.BaseMutationOptions<CollectPostsMutation, CollectPostsMutationVariables>;
+export const DeleteBlogPostDocument = gql`
+    mutation deleteBlogPost($id: ID!) {
+  deleteBlogPost(id: $id) {
+    id
+  }
+}
+    `;
+export type DeleteBlogPostMutationFn = Apollo.MutationFunction<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>;
+
+/**
+ * __useDeleteBlogPostMutation__
+ *
+ * To run a mutation, you first call `useDeleteBlogPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteBlogPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteBlogPostMutation, { data, loading, error }] = useDeleteBlogPostMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteBlogPostMutation(baseOptions?: Apollo.MutationHookOptions<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>) {
+        return Apollo.useMutation<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>(DeleteBlogPostDocument, baseOptions);
+      }
+export type DeleteBlogPostMutationHookResult = ReturnType<typeof useDeleteBlogPostMutation>;
+export type DeleteBlogPostMutationResult = Apollo.MutationResult<DeleteBlogPostMutation>;
+export type DeleteBlogPostMutationOptions = Apollo.BaseMutationOptions<DeleteBlogPostMutation, DeleteBlogPostMutationVariables>;
 export const DeleteCollectionDocument = gql`
     mutation deleteCollection($projectId: ID!, $id: ID!) {
   deleteCollection(id: $id, projectId: $projectId) {
@@ -3773,6 +3896,39 @@ export function useToggleNotificationSettingsMutation(baseOptions?: Apollo.Mutat
 export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof useToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
+export const BlogPostDocument = gql`
+    query blogPost($id: ID!) {
+  blogPost(id: $id) {
+    ...BlogPost
+  }
+}
+    ${BlogPostFragmentDoc}`;
+
+/**
+ * __useBlogPostQuery__
+ *
+ * To run a query within a React component, call `useBlogPostQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogPostQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useBlogPostQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostQuery, BlogPostQueryVariables>) {
+        return Apollo.useQuery<BlogPostQuery, BlogPostQueryVariables>(BlogPostDocument, baseOptions);
+      }
+export function useBlogPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostQuery, BlogPostQueryVariables>) {
+          return Apollo.useLazyQuery<BlogPostQuery, BlogPostQueryVariables>(BlogPostDocument, baseOptions);
+        }
+export type BlogPostQueryHookResult = ReturnType<typeof useBlogPostQuery>;
+export type BlogPostLazyQueryHookResult = ReturnType<typeof useBlogPostLazyQuery>;
+export type BlogPostQueryResult = Apollo.QueryResult<BlogPostQuery, BlogPostQueryVariables>;
 export const BlogPostsDocument = gql`
     query blogPosts($after: String, $first: Int = 5) @connection(key: "blogPosts") {
   blogPosts(after: $after, first: $first) {
@@ -3782,21 +3938,12 @@ export const BlogPostsDocument = gql`
     edges {
       cursor
       node {
-        title
-        id
-        slug
-        content
-        createdAt
-        user {
-          id
-          avatarUrl
-          fullName
-        }
+        ...BlogPost
       }
     }
   }
 }
-    `;
+    ${BlogPostFragmentDoc}`;
 
 /**
  * __useBlogPostsQuery__

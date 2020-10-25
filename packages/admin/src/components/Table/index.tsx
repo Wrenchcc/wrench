@@ -45,7 +45,7 @@ const Base = styled.section`
   }
 `
 
-function Table({ columns, data, fetchMore }) {
+function Table({ columns, data, fetchMore, hasMore }) {
   // Use the state and functions returned from useTable to build your UI
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
     {
@@ -54,9 +54,9 @@ function Table({ columns, data, fetchMore }) {
     },
     useBlockLayout
   )
-
+  
   return (
-    <InfiniteScroll loadMore={fetchMore} hasMore={true} loader={<Loader key={0} />}>
+    <InfiniteScroll loadMore={fetchMore} hasMore={hasMore} loader={<Loader key={0} />}>
       <Base>
         <table {...getTableProps()}>
           <thead>

@@ -10,6 +10,7 @@ function Comments() {
   const {
     data: { edges },
     isFetching,
+    hasNextPage,
   } = usePaginatedQuery(['comments'])(RecentCommentsDocument, {
     variables: {
       first: 20,
@@ -97,7 +98,7 @@ function Comments() {
       {isFetching ? (
         <PlaceholderRow />
       ) : (
-        edges && <Table columns={columns} data={edges.map(({ node }) => node)} />
+        edges && <Table columns={columns} data={edges.map(({ node }) => node)} hasMore={hasNextPage} />
       )}
     </Layout>
   )

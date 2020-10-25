@@ -59,7 +59,7 @@ function App() {
             <Route path="/news" exact>
               <News />
             </Route>
-            <Route path="/news/edit/:id">
+            <Route path="/news/edit/:id?">
               <Edit />
             </Route>
             <Route path="/push-notifications">

@@ -10,13 +10,12 @@ const bounce = keyframes`
 
 export const Base = styled.div`
   display: flex;
-  margin-bottom: 40px;
   justify-content: center;
 
   > div {
     width: 6px;
     height: 6px;
-    background-color: black;
+    background-color: ${props => props.white ? 'white' : 'black'};
     margin: 0 3px;
     border-radius: 100%;
     display: inline-block;

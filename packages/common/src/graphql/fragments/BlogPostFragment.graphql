@@ -1,0 +1,12 @@
+#import "./UserFragment.graphql"
+
+fragment BlogPost on BlogPost {
+  id
+  title
+  slug
+  content
+  createdAt
+  user {
+    ...User
+  }
+}

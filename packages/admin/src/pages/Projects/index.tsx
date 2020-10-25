@@ -13,6 +13,7 @@ function Projects() {
     data: { edges },
     isFetching,
     fetchMore,
+    hasNextPage,
   } = usePaginatedQuery(['projects'])(ProjectsDocument, {
     variables: {
       first: 20,
@@ -110,7 +111,7 @@ function Projects() {
       {isFetching && !edges ? (
         <PlaceholderRow />
       ) : (
-        <Table columns={columns} data={edges.map(({ node }) => node)} fetchMore={fetchMore} />
+        <Table columns={columns} data={edges.map(({ node }) => node)} fetchMore={fetchMore} hasMore={hasNextPage} />
       )}
     </Layout>
   )

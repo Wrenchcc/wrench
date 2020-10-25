@@ -23,18 +23,18 @@ export default gql`
   }
 
   extend type Query {
+    blogPost(id: ID, slug: LowercaseString): BlogPost
     blogPosts(first: Int = 10, after: String, last: Int = 10, before: String): BlogPostConnection
       @cacheControl(maxAge: 360)
   }
 
   input BlogPostInput {
     title: String!
-    caption: String!
+    content: String!
   }
 
   extend type Mutation {
     deleteBlogPost(id: ID!): BlogPost
-    addBlogPost(input: BlogPostInput!): BlogPost
-    editBlogPost(id: ID!, input: BlogPostInput!): BlogPost
+    addBlogPost(id: ID, input: BlogPostInput!): BlogPost
   }
 `
