@@ -3,6 +3,10 @@
     "Blog": {
       "title": "Blog"
     },
+    "BlogPost": {
+      "title": "Blog",
+      "back": "Back to blog"
+    },
     "CommentField": {
       "placeholder": "Add a comment...",
       "post": "Post"
@@ -219,6 +223,10 @@
   "sv": {
     "Blog": {
       "title": "Blogg"
+    },
+    "BlogPost": {
+      "title": "Blogg",
+      "back": "Tillbaka till blogg"
     },
     "CommentField": {
       "placeholder": "Skriv en kommentar...",

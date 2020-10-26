@@ -795,7 +795,7 @@ function useToggleNotificationSettingsMutation(baseOptions) {
     return Apollo.useMutation(exports.ToggleNotificationSettingsDocument, baseOptions);
 }
 exports.useToggleNotificationSettingsMutation = useToggleNotificationSettingsMutation;
-exports.BlogPostDocument = client_1.gql(templateObject_43 || (templateObject_43 = __makeTemplateObject(["\n    query blogPost($id: ID!, $slug: LowercaseString) {\n  blogPost(id: $id, slug: $slug) {\n    ...BlogPost\n  }\n}\n    ", ""], ["\n    query blogPost($id: ID!, $slug: LowercaseString) {\n  blogPost(id: $id, slug: $slug) {\n    ...BlogPost\n  }\n}\n    ", ""])), exports.BlogPostFragmentDoc);
+exports.BlogPostDocument = client_1.gql(templateObject_43 || (templateObject_43 = __makeTemplateObject(["\n    query blogPost($slug: LowercaseString) {\n  blogPost(slug: $slug) {\n    ...BlogPost\n  }\n}\n    ", ""], ["\n    query blogPost($slug: LowercaseString) {\n  blogPost(slug: $slug) {\n    ...BlogPost\n  }\n}\n    ", ""])), exports.BlogPostFragmentDoc);
 /**
  * __useBlogPostQuery__
  *
@@ -808,7 +808,6 @@ exports.BlogPostDocument = client_1.gql(templateObject_43 || (templateObject_43 
  * @example
  * const { data, loading, error } = useBlogPostQuery({
  *   variables: {
- *      id: // value for 'id'
  *      slug: // value for 'slug'
  *   },
  * });

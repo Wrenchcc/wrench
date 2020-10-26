@@ -2,9 +2,8 @@ import { ApolloError } from 'apollo-server-express'
 import { ERROR_CODES } from '../../utils/enums'
 
 // TODO: Use dataloader
-export default async (_, { id, slug }, ctx) => {
+export default async (_, { slug }, ctx) => {
   const post = await ctx.db.BlogPost.findOne({
-    id,
     slug,
   })
 

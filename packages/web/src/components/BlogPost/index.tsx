@@ -1,52 +1,64 @@
 // @ts-nocheck
 import React from 'react'
-import InfiniteScroll from 'react-infinite-scroller'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import Seo from 'utils/seo'
 import { useBlogPostQuery } from '@wrench/common'
-import { Post, Layout, Loader, BlogPost as UIBlogPost } from 'ui'
+import { Post, Layout, Loader, BlogPost as UIBlogPost, Icon } from 'ui'
 import Popular from 'components/Popular'
 import Footer from 'components/Footer'
 import ProjectTypes from 'components/ProjectTypes'
-import { List, Title, Card } from './styles'
+import { List, A } from './styles'
 
 export default function BlogPost() {
+  const router = useRouter()
+  const { slug } = router.query
+
   const { t } = useTranslation()
 
-  const { data } = useBlogPostQuery({
+  const { data, loading } = useBlogPostQuery({
     variables: {
-      slug: 'roadmap',
+      slug,
     },
   })
 
-  console.log(data)
-  return null
+  if (loading) {
+    return null
+  }
 
   return (
     <>
       <Layout column>
         <Seo
           config={{
-            title: t('Blog:title'),
+            title: `${t('BlogPost:title')} - ${data?.blogPost.title}`,
           }}
         />
 
+        <Link href="/blog">
+          <A>
+            <Icon
+              style={{ marginTop: 2, marginRight: 5 }}
+              source={require('./arrowBack.svg?include')}
+              width="22px"
+            />
+            {t('BlogPost:back')}
+          </A>
+        </Link>
+
         <div className="blog">
           <List>
-            {edges?.map(({ node }) => (
-              <UIBlogPost
-                key={node.id}
-                title={node.title}
-                user={node.user}
-                createdAt={node.createdAt}
-                content={node.content}
-              />
-            ))}
+            <UIBlogPost
+              title={data?.blogPost.title}
+              user={data?.blogPost.user}
+              createdAt={data?.blogPost.createdAt}
+              content={data?.blogPost.content}
+            />
           </List>
         </div>
       </Layout>
-
       <Footer />
     </>
   )

@@ -12,7 +12,7 @@ import ProjectTypes from 'components/ProjectTypes'
 import { List, Title, Card } from './styles'
 
 export default function Blog() {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   const {
     data: { edges },
@@ -35,7 +35,7 @@ export default function Blog() {
 
         <div className="blog">
           <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
-            <List>            
+            <List>
               <Title medium>{t('Blog:title')}</Title>
 
               {edges?.map(({ node }) => (
@@ -45,6 +45,7 @@ export default function Blog() {
                   user={node.user}
                   createdAt={node.createdAt}
                   content={node.content}
+                  slug={node.slug}
                 />
               ))}
             </List>

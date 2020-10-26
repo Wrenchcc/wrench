@@ -1,10 +1,12 @@
 {
-  "Blog": {
+  "BlogPost": {
     "en": {
-      "title": "Blog"
+      "title": "Blog",
+      "back": "Back to blog"
     },
     "sv": {
-      "title": "Blogg"
+      "title": "Blogg",
+      "back": "Tillbaka till blogg"
     }
   }
 }

@@ -1,7 +1,7 @@
 #import "../fragments/BlogPostFragment.graphql"
 
-query blogPost($id: ID!, $slug: LowercaseString) {
-  blogPost(id: $id, slug: $slug) {
+query blogPost($slug: LowercaseString) {
+  blogPost(slug: $slug) {
     ...BlogPost
   }
 }
