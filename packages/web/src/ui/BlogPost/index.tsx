@@ -7,18 +7,18 @@ import { Base, Title, Content, Top, Name } from './styles'
 function formatContent(content) {
   const data = JSON.parse(content)
 
-  return data.blocks.map(({ type, data }) => {
+  return data.blocks.map(({ type, data }, i) => {
     if (type === 'paragraph') {
-      return <p dangerouslySetInnerHTML={{ __html: data.text }} />
+      return <p key={i} dangerouslySetInnerHTML={{ __html: data.text }} />
     }
 
     if (type === 'header') {
-      return <p class="header" dangerouslySetInnerHTML={{ __html: data.text }} />
+      return <p key={i} className="header" dangerouslySetInnerHTML={{ __html: data.text }} />
     }
 
     if (type === 'image') {
       return (
-        <div style={{ marginBottom: 20 }}>
+        <div style={{ marginBottom: 20 }} key={i}>
           <Image source={data.file.url} title={data.caption} />
         </div>
       )
@@ -26,9 +26,9 @@ function formatContent(content) {
 
     if (type === 'list') {
       return (
-        <ul>
-          {data.items.map((item) => (
-            <li dangerouslySetInnerHTML={{ __html: item }} />
+        <ul key={i}>
+          {data.items.map((item, i) => (
+            <li key={i} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
         </ul>
       )

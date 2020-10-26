@@ -1,5 +1,5 @@
 import NextDocument from 'next/document'
-import React, { ReactType } from 'react'
+import React, { ElementType } from 'react'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class Document extends NextDocument {
@@ -10,7 +10,7 @@ export default class Document extends NextDocument {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App: ReactType) => (props: object) =>
+          enhanceApp: (App: ElementType) => (props: object) =>
             sheet.collectStyles(<App {...props} />),
         })
 

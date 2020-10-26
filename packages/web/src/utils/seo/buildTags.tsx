@@ -13,7 +13,7 @@ const defaults = {
   },
 }
 
-export default config => {
+export default (config) => {
   const tagsToRender = []
 
   if (config.titleTemplate) {
@@ -305,7 +305,7 @@ export default config => {
   )
 
   tagsToRender.push(
-    SUPPORTED_LOCALS.map(lng => (
+    SUPPORTED_LOCALS.map((lng) => (
       <link rel="alternate" href={`${cleanHref}?hl=${lng}`} hrefLang={lng} />
     ))
   )

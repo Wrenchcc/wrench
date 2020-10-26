@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'ui'
-import { Base, Inner, Bottom, Navigation, Column, NavItem } from './styles'
+import { Text, LanguageSelector } from 'ui'
+import { Base, Inner, Bottom, Navigation, Column, NavItem, Left, Right } from './styles'
 
 function Footer() {
   const { t } = useTranslation()
@@ -113,17 +113,22 @@ function Footer() {
         </Navigation>
 
         <Bottom>
-          <Text fontSize={13} color="neutral">
-            {t('Footer:description')}
-          </Text>
+          <Left>
+            <Text fontSize={13} color="neutral">
+              {t('Footer:description')}
+            </Text>
 
-          <Text fontSize={13} color="neutral">
-            {t('Footer:trademarks')}
-          </Text>
+            <Text fontSize={13} color="neutral">
+              {t('Footer:trademarks')}
+            </Text>
 
-          <Text fontSize={13} color="neutral">
-            © Wrench Community AB (v.{process.env.BUILD_ID})
-          </Text>
+            <Text fontSize={13} color="neutral">
+              © Wrench Community AB (v.{process.env.BUILD_ID})
+            </Text>
+          </Left>
+          <Right>
+            <LanguageSelector />
+          </Right>
         </Bottom>
       </Inner>
     </Base>

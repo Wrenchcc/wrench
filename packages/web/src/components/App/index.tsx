@@ -2,7 +2,7 @@
 import React from 'react'
 import Head from 'next/head'
 import NextApp from 'next/app'
-import Cookie from 'services/cookie'
+import Cookie, { Cookies } from 'services/cookie'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { Reset } from 'styled-reset'
@@ -19,7 +19,6 @@ import { ModalProvider } from 'ui/Modal'
 import Seo from 'utils/seo'
 import Header from 'components/Header'
 import Hide from 'components/Hide'
-import { Cookies } from 'services/cookie'
 import resources from 'translations/index.json'
 import i18n, { SUPPORTED_LOCALS } from 'i18n'
 
@@ -61,19 +60,15 @@ class App extends NextApp<Props> {
     })
 
     const queryLanguage = router.query.hl
-
     const initialLanguage = queryLanguage || cookies.get(Cookies.PREFERRED_LANGUAGE) || 'en'
 
     // Set new lanugage
-    if (queryLanguage && req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {
-      res.setHeader(SET_COOKIE_HEADER, `${Cookies.PREFERRED_LANGUAGE}=${queryLanguage}; path=/;`)
+    if (queryLanguage) {
+      cookies.set(Cookies.PREFERRED_LANGUAGE, queryLanguage)
     }
 
     if (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) {
-      res.setHeader(
-        SET_COOKIE_HEADER,
-        `${Cookies.VIEWER_COUNTRY}=${req.headers[CLOUDFRONT_COUNTRY_VIEWER]}; path=/;`
-      )
+      cookies.set(Cookies.VIEWER_COUNTRY, req.headers[CLOUDFRONT_COUNTRY_VIEWER])
     }
 
     return {
@@ -147,7 +142,11 @@ function AppWithi18n({
       <ThemeProvider mode={systemTheme}>
         <ModalProvider>
           <Header isAuthenticated={isAuthenticated} />
-          <Component {...pageProps} viewerCountry={viewerCountry} isAuthenticated={isAuthenticated} />
+          <Component
+            {...pageProps}
+            viewerCountry={viewerCountry}
+            isAuthenticated={isAuthenticated}
+          />
           {!hidePromo && !isAuthenticated && (
             <Hide on="tablet">
               <Promo viewerCountry={viewerCountry} paddingHorizontal />
