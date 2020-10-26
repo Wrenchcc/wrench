@@ -1477,6 +1477,7 @@ export declare type ToggleNotificationSettingsMutation = ({
 });
 export declare type BlogPostQueryVariables = Exact<{
     id: Scalars['ID'];
+    slug?: Maybe<Scalars['LowercaseString']>;
 }>;
 export declare type BlogPostQuery = ({
     __typename?: 'Query';
@@ -3131,14 +3132,17 @@ export declare const BlogPostDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useBlogPostQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      slug: // value for 'slug'
  *   },
  * });
  */
 export declare function useBlogPostQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryResult<BlogPostQuery, Exact<{
     id: string;
+    slug?: any;
 }>>;
 export declare function useBlogPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryTuple<BlogPostQuery, Exact<{
     id: string;
+    slug?: any;
 }>>;
 export declare type BlogPostQueryHookResult = ReturnType<typeof useBlogPostQuery>;
 export declare type BlogPostLazyQueryHookResult = ReturnType<typeof useBlogPostLazyQuery>;
