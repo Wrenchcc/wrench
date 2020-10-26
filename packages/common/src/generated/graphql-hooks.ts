@@ -58,6 +58,7 @@ export type QueryBookmarksArgs = {
 
 export type QueryBlogPostArgs = {
   slug?: Maybe<Scalars['LowercaseString']>;
+  id?: Maybe<Scalars['ID']>;
 };
 
 
@@ -1804,6 +1805,7 @@ export type ToggleNotificationSettingsMutation = (
 
 export type BlogPostQueryVariables = Exact<{
   slug?: Maybe<Scalars['LowercaseString']>;
+  id?: Maybe<Scalars['ID']>;
 }>;
 
 
@@ -3941,8 +3943,8 @@ export type ToggleNotificationSettingsMutationHookResult = ReturnType<typeof use
 export type ToggleNotificationSettingsMutationResult = Apollo.MutationResult<ToggleNotificationSettingsMutation>;
 export type ToggleNotificationSettingsMutationOptions = Apollo.BaseMutationOptions<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 export const BlogPostDocument = gql`
-    query blogPost($slug: LowercaseString) {
-  blogPost(slug: $slug) {
+    query blogPost($slug: LowercaseString, $id: ID) {
+  blogPost(slug: $slug, id: $id) {
     ...BlogPost
   }
 }
@@ -3961,6 +3963,7 @@ export const BlogPostDocument = gql`
  * const { data, loading, error } = useBlogPostQuery({
  *   variables: {
  *      slug: // value for 'slug'
+ *      id: // value for 'id'
  *   },
  * });
  */

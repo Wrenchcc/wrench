@@ -23,7 +23,7 @@ export default gql`
   }
 
   extend type Query {
-    blogPost(slug: LowercaseString): BlogPost
+    blogPost(slug: LowercaseString, id: ID): BlogPost
     blogPosts(first: Int = 10, after: String, last: Int = 10, before: String): BlogPostConnection
       @cacheControl(maxAge: 360)
   }

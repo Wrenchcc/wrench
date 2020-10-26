@@ -56,6 +56,7 @@ export declare type QueryBookmarksArgs = {
 };
 export declare type QueryBlogPostArgs = {
     slug?: Maybe<Scalars['LowercaseString']>;
+    id?: Maybe<Scalars['ID']>;
 };
 export declare type QueryBlogPostsArgs = {
     first?: Maybe<Scalars['Int']>;
@@ -1476,6 +1477,7 @@ export declare type ToggleNotificationSettingsMutation = ({
 });
 export declare type BlogPostQueryVariables = Exact<{
     slug?: Maybe<Scalars['LowercaseString']>;
+    id?: Maybe<Scalars['ID']>;
 }>;
 export declare type BlogPostQuery = ({
     __typename?: 'Query';
@@ -3130,14 +3132,17 @@ export declare const BlogPostDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useBlogPostQuery({
  *   variables: {
  *      slug: // value for 'slug'
+ *      id: // value for 'id'
  *   },
  * });
  */
 export declare function useBlogPostQuery(baseOptions?: Apollo.QueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryResult<BlogPostQuery, Exact<{
     slug?: any;
+    id?: string | null | undefined;
 }>>;
 export declare function useBlogPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPostQuery, BlogPostQueryVariables>): Apollo.QueryTuple<BlogPostQuery, Exact<{
     slug?: any;
+    id?: string | null | undefined;
 }>>;
 export declare type BlogPostQueryHookResult = ReturnType<typeof useBlogPostQuery>;
 export declare type BlogPostLazyQueryHookResult = ReturnType<typeof useBlogPostLazyQuery>;
