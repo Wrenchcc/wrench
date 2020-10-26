@@ -3,7 +3,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@apollo/client'
 import Link from 'next/link'
-import Seo from 'utils/Seo'
+import Seo from 'utils/seo'
 import { Title } from 'ui'
 import { GET_POPULAR_PROJECTS } from 'graphql/queries/project/popularProjects'
 import Popular from 'components/Popular'
@@ -38,7 +38,6 @@ export default function Home(props) {
     <>
       <Seo
         config={{
-          title: 'Your motorcycle community.',
           titleTemplate: 'Wrench | Your motorcycle community',
         }}
       />
