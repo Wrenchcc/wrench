@@ -39,11 +39,15 @@ function formatContent(content) {
 function BlogPost({ title, user, createdAt, content, slug }) {
   return (
     <Base>
-      <Link href="/blog/[slug]" as={`/blog/${slug}`}>
-        <a>
-          <Title fontSize="36">{title}</Title>
-        </a>
-      </Link>
+      {slug ? (
+        <Link href="/blog/[slug]" as={`/blog/${slug}`}>
+          <a>
+            <Title fontSize="36">{title}</Title>
+          </a>
+        </Link>
+      ) : (
+        <Title fontSize="36">{title}</Title>
+      )}
       <Top>
         <Link href="/[username]" as={`/${user.username}`}>
           <a>
