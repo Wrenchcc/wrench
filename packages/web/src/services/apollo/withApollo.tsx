@@ -28,7 +28,47 @@ export default withApollo(
         typePolicies: {
           Query: {
             fields: {
-              projects: relayStylePagination(),
+              bookmarks: relayStylePagination(),
+              collections: relayStylePagination(['id', 'projectId']),
+              comments: relayStylePagination(['postId']),
+              followers: relayStylePagination(['projectId']),
+              likes: relayStylePagination(['postId']),
+              notifications: relayStylePagination(),
+              posts: relayStylePagination(),
+              projectCollections: relayStylePagination(['projectId']),
+              projects: relayStylePagination(['typeId', 'type']),
+              search: relayStylePagination(['query', 'type']),
+              users: relayStylePagination(),
+              models: relayStylePagination(),
+              files: relayStylePagination(),
+              blogPosts: relayStylePagination(),
+            },
+          },
+          Feed: {
+            fields: {
+              postsConnection: relayStylePagination(),
+            },
+          },
+          Project: {
+            fields: {
+              postsConnection: relayStylePagination(),
+              cover: {
+                merge: true,
+              },
+            },
+          },
+          Comment: {
+            fields: {
+              repliesConnection: relayStylePagination(),
+            },
+          },
+          User: {
+            fields: {
+              postsConnection: relayStylePagination(),
+              followingProjects: relayStylePagination(),
+              settings: {
+                merge: true,
+              },
             },
           },
         },
