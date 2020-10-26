@@ -19,11 +19,11 @@ function Footer() {
                   <a>{t('Footer:about')}</a>
                 </Link>
               </NavItem>
-              {/*<NavItem>
+              <NavItem>
                 <Link href="/press">
                   <a>{t('Footer:press')}</a>
                 </Link>
-              </NavItem>*/}
+              </NavItem>
               <NavItem>
                 <Link href="/blog">
                   <a>{t('Footer:blog')}</a>
@@ -56,11 +56,11 @@ function Footer() {
                   {t('Footer:chat')}
                 </a>
               </NavItem>
-              {/*<NavItem>
+              <NavItem>
                 <Link href="/faq">
                   <a>{t('Footer:faq')}</a>
                 </Link>
-              </NavItem>*/}
+              </NavItem>
             </ul>
           </Column>
 

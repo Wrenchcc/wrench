@@ -10,7 +10,7 @@ export const Base = styled.div`
     font-size: 30px;
     margin: 0 0 30px 0;
     font-weight: 500;
-    color: ${props => props.theme.colors.inverse};
+    color: ${(props) => props.theme.colors.inverse};
   }
 
   h2 {
@@ -18,20 +18,20 @@ export const Base = styled.div`
     margin: 0 0 30px 0;
     font-weight: 500;
     line-height: 30px;
-    color: ${props => props.theme.colors.inverse};
+    color: ${(props) => props.theme.colors.inverse};
   }
 
   h3 {
     font-size: 20px;
     margin: 0 0 30px 0;
     font-weight: 500;
-    color: ${props => props.theme.colors.inverse};
+    color: ${(props) => props.theme.colors.inverse};
   }
 
   p {
     margin: 0 0 25px 0;
     line-height: 24px;
-    color: ${props => props.theme.colors.inverse};
+    color: ${(props) => props.theme.colors.neutral};
   }
 
   ul,
@@ -40,7 +40,7 @@ export const Base = styled.div`
     list-style-type: disc;
     display: block;
     padding-inline-start: 25px;
-    color: ${props => props.theme.colors.inverse};
+    color: ${(props) => props.theme.colors.inverse};
   }
 
   li {
@@ -49,7 +49,7 @@ export const Base = styled.div`
 
   strong {
     font-weight: 500;
-    color: ${props => props.theme.colors.inverse};
+    color: ${(props) => props.theme.colors.inverse};
   }
 
   @media ${DEVICE.TABLET} {
