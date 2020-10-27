@@ -2,15 +2,8 @@
 import React, { memo, useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Mention, MentionsInput } from 'react-mentions'
-import { useQuery, useLazyQuery, useMutation } from '@apollo/client'
 import { prepend, append } from 'ramda'
-import { useCurrentUserQuery } from '@wrench/common'
-import optimisticId from 'utils/optimisticId'
-import { GET_COMMENTS } from 'graphql/queries/comments'
-import { ADD_COMMENT_MUTATION } from 'graphql/mutations/comment/addComment'
-import { SEARCH_USER } from 'graphql/queries/search/searchUser'
-import postInfo from 'graphql/fragments/post/postInfo'
-import commentInfo from 'graphql/fragments/comment/commentInfo'
+import { useAddCommentMutation, useCurrentUserQuery, useSearchUsersLazyQuery } from '@wrench/common'
 import { Avatar, Text } from 'ui'
 import { COLORS } from 'ui/constants'
 import { useCookie, Cookies } from 'hooks'
@@ -80,8 +73,8 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
     skip: !isAuthenticated,
   })
 
-  const [searchUser, { data }] = useLazyQuery(SEARCH_USER)
-  const [addCommentMutation] = useMutation(ADD_COMMENT_MUTATION)
+  const [searchUser, { data }] = useSearchUsersLazyQuery()
+  const [addCommentMutation] = useAddCommentMutation()
 
   async function fetchUsers(query, callback) {
     if (!query) return
@@ -130,163 +123,6 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
   )
 
   const handleSubmit = useCallback(() => {
-    addCommentMutation({
-      update(cache, { data: { addComment } }) {
-        // Post
-        try {
-          const data = cache.readFragment({
-            id: `Post:${postId}`,
-            fragment: postInfo,
-            fragmentName: 'postInfo',
-          })
-
-          const edges = prepend(
-            {
-              node: {
-                id: optimisticId(),
-                ...addComment,
-                user: currentUser.data.user,
-                __typename: 'Comment',
-              },
-              __typename: 'CommentEdge',
-            },
-            data.comments.edges
-          ).slice(0, 2)
-
-          cache.writeFragment({
-            id: `Post:${postId}`,
-            fragment: postInfo,
-            fragmentName: 'postInfo',
-            data: {
-              ...data,
-              comments: {
-                ...data.comments,
-                edges,
-                totalCount: data.comments.totalCount + 1,
-              },
-            },
-          })
-        } catch (err) {
-          console.log(err)
-        }
-
-        // Comment list
-        try {
-          // Is reply
-          if (commentId) {
-            // Get comment fragment
-            const data = cache.readFragment({
-              id: `Comment:${commentId}`,
-              fragment: commentInfo,
-              fragmentName: 'commentInfo',
-            })
-
-            const edges = append(
-              {
-                cursor: optimisticId(),
-                node: {
-                  id: optimisticId(),
-                  createdAt: new Date().toISOString(),
-                  likes: {
-                    isLiked: false,
-                    totalCount: 0,
-                    __typename: 'Likes',
-                  },
-                  permissions: {
-                    isOwner: true,
-                    __typename: 'CommentPermissions',
-                  },
-                  ...addComment,
-                  user: currentUser.data.user,
-                  __typename: 'Comment',
-                },
-                __typename: 'CommentEdge',
-              },
-              data.replies.edges
-            )
-
-            // Add to top of replies
-            cache.writeFragment({
-              id: `Comment:${commentId}`,
-              fragment: commentInfo,
-              fragmentName: 'commentInfo',
-              data: {
-                ...data,
-                replies: {
-                  ...data.replies,
-                  edges,
-                  totalCount: data.replies.totalCount + 1,
-                },
-              },
-            })
-          } else {
-            const data = cache.readQuery({
-              query: GET_COMMENTS,
-              variables: {
-                postId,
-              },
-            })
-
-            const comments = {
-              ...data,
-              comments: {
-                ...data.comments,
-                edges: prepend(
-                  {
-                    cursor: optimisticId(),
-                    node: {
-                      id: optimisticId(),
-                      createdAt: new Date().toISOString(),
-                      likes: {
-                        isLiked: false,
-                        totalCount: 0,
-                        __typename: 'Likes',
-                      },
-                      permissions: {
-                        isOwner: true,
-                        __typename: 'CommentPermissions',
-                      },
-                      replies: {
-                        totalCount: 0,
-                        pageInfo: {
-                          hasNextPage: false,
-                          __typename: 'RepliesConnection',
-                        },
-                        edges: [],
-                        __typename: 'CommentConnection',
-                      },
-                      ...addComment,
-                      user: currentUser.data.user,
-                      __typename: 'Comment',
-                    },
-                    __typename: 'CommentEdge',
-                  },
-                  data.comments.edges
-                ),
-              },
-            }
-
-            cache.writeQuery({
-              query: GET_COMMENTS,
-              variables: {
-                postId,
-              },
-              data: comments,
-            })
-          }
-        } catch (err) {
-          // logError(err)
-        }
-      },
-      variables: {
-        commentId,
-        postId,
-        input: {
-          text,
-        },
-      },
-    })
-
     setText('')
   }, [postId, text, commentId])
 

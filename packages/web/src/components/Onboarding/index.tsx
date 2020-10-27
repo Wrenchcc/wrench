@@ -1,10 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 import { omit } from 'ramda'
-import { useQuery, useMutation } from '@apollo/client'
+import { useProjectTypesQuery, useEditUserMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { GET_PROJECT_TYPES } from 'graphql/queries/project/projectTypes'
-import { EDIT_USER_MUTATION } from 'graphql/mutations/user/editUser'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Types, Title, Scroll, Image, Picture, Overlay, Next } from './styles'
 
@@ -13,8 +11,8 @@ const ITEM_SIZE = 172.5
 
 export default function Onboarding() {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(GET_PROJECT_TYPES)
-  const [editUser] = useMutation(EDIT_USER_MUTATION)
+  const { data, loading } = useProjectTypesQuery()
+  const [editUser] = useEditUserMutation()
   const [items, setItems] = useState({})
 
   const isComplete = () => {

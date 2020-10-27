@@ -1,14 +1,13 @@
 // @ts-nocheck
 import React from 'react'
 import Link from 'next/link'
+import { useCurrentUserFollowingProjectsQuery } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from '@apollo/client'
-import { CURRENT_USER_FOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function FollowingProjects() {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(CURRENT_USER_FOLOWING_PROJECTS)
+  const { data, loading } = useCurrentUserFollowingProjectsQuery()
 
   if (loading || !data.currentUser) {
     return null

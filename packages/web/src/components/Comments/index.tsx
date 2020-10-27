@@ -1,10 +1,9 @@
 // @ts-nocheck
 import React, { useRef, useState, useCallback } from 'react'
-import { useQuery } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
+import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
 import InfiniteScroll from 'react-infinite-scroller'
 import { update } from 'ramda'
-import { GET_COMMENTS, GET_MORE_REPLIES } from 'graphql/queries/comments'
 import CommentField from 'components/CommentField'
 import { Loader, Text } from 'ui'
 import Item from './Item'
@@ -16,57 +15,58 @@ function Comments({ postId }) {
   const [commentId, setCommentId] = useState()
   const inputRef = useRef()
 
-  const { data, loading, fetchMore } = useQuery(GET_COMMENTS, {
+  const {
+    data: { edges, post },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['comments'])(CommentsDocument, {
     variables: {
       postId,
     },
   })
 
-  const handleLoadMore = useCallback(
-    (id, after) => {
-      fetchMore({
-        query: GET_MORE_REPLIES,
-        variables: {
-          id,
-          after,
-          postId,
-        },
-        updateQuery: (prev, { fetchMoreResult }) => {
-          if (!fetchMoreResult.comment.replies) {
-            return prev
-          }
+  // TODO: Convert to fieldPolicy
+  const fetchReplies = ({ id, after }) =>
+    fetchMore({
+      query: RepliesDocument,
+      variables: {
+        after,
+        id,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.comment.replies) {
+          return prev
+        }
 
-          const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
+        const index = prev.comments.edges.findIndex(({ node }) => node.id === id)
 
-          return {
-            ...prev,
-            comments: {
-              ...prev.comments,
-              edges: update(
-                index,
-                {
-                  ...prev.comments.edges[index],
-                  node: {
-                    ...prev.comments.edges[index].node,
-                    replies: {
-                      ...prev.comments.edges[index].node.replies,
-                      ...fetchMoreResult.comment.replies,
-                      edges: [
-                        ...prev.comments.edges[index].node.replies.edges,
-                        ...fetchMoreResult.comment.replies.edges,
-                      ],
-                    },
+        return {
+          ...prev,
+          comments: {
+            ...prev.comments,
+            edges: update(
+              index,
+              {
+                ...prev.comments.edges[index],
+                node: {
+                  ...prev.comments.edges[index].node,
+                  replies: {
+                    ...prev.comments.edges[index].node.replies,
+                    ...fetchMoreResult.comment.replies,
+                    edges: [
+                      ...prev.comments.edges[index].node.replies.edges,
+                      ...fetchMoreResult.comment.replies.edges,
+                    ],
                   },
                 },
-                prev.comments.edges
-              ),
-            },
-          }
-        },
-      })
-    },
-    [commentId, postId]
-  )
+              },
+              prev.comments.edges
+            ),
+          },
+        }
+      },
+    })
 
   const handleReply = useCallback(
     ({ id, user }) => {
@@ -77,7 +77,7 @@ function Comments({ postId }) {
     [setMention, inputRef]
   )
 
-  if (loading) {
+  if (isFetching) {
     return (
       <LoaderContainer fullscreen>
         <Loader />
@@ -89,31 +89,8 @@ function Comments({ postId }) {
     <Base>
       <Scroll>
         <InfiniteScroll
-          hasMore={data.comments.pageInfo.hasNextPage}
-          loadMore={() =>
-            fetchMore({
-              variables: {
-                after: data.comments.edges[data.comments.edges.length - 1].cursor,
-              },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) {
-                  return prev
-                }
-
-                return {
-                  ...prev,
-                  comments: {
-                    ...prev.comments,
-                    pageInfo: {
-                      ...prev.comments.pageInfo,
-                      ...fetchMoreResult.comments.pageInfo,
-                    },
-                    edges: [...prev.comments.edges, ...fetchMoreResult.comments.edges],
-                  },
-                }
-              },
-            })
-          }
+          hasMore={hasNextPage}
+          loadMore={fetchMore}
           useWindow={false}
           loader={
             <LoaderContainer>
@@ -122,7 +99,7 @@ function Comments({ postId }) {
           }
           useWindow={false}
         >
-          {data.comments.edges.map(({ node }) => {
+          {edges?.map(({ node }) => {
             const replies = node.replies
 
             return replies ? (
@@ -141,7 +118,10 @@ function Comments({ postId }) {
                 {replies.totalCount > replies.edges.length && (
                   <LoadReplies
                     onClick={() =>
-                      handleLoadMore(node.id, replies.edges[replies.edges.length - 1].cursor)
+                      fetchReplies({
+                        id: node.id,
+                        after: replies.edges[replies.edges.length - 1].cursor,
+                      })
                     }
                   >
                     <Text medium fontSize={12} color="neutral">

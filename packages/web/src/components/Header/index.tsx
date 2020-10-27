@@ -2,12 +2,12 @@
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
+import { useCurrentUserQuery } from '@wrench/common'
 import { useQuery, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { useClickOutside } from 'hooks'
 import Badge from 'ui/Badge'
-import { CURRENT_USER } from 'graphql/queries/user/currentUser'
 import { UNREAD_NOTIFICATIONS } from 'graphql/queries/notifications/unreadNotifications'
 import { MARK_ALL_NOTIFICATIONS_SEEN } from 'graphql/mutations/notifications/markAllNotificationsSeen'
 import { Modal, useModal } from 'ui/Modal'
@@ -37,7 +37,7 @@ function Header({ isAuthenticated }) {
     skip: !isAuthenticated,
   })
 
-  const currentUser = useQuery(CURRENT_USER, {
+  const currentUser = useCurrentUserQuery({
     skip: !isAuthenticated,
   })
 
@@ -113,7 +113,11 @@ function Header({ isAuthenticated }) {
   return (
     <Base inverted={inverted}>
       <Link passHref href={'/'}>
-        <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" style={{ cursor: 'pointer' }}/>
+        <img
+          src={inverted ? require('./logo-white.svg') : require('./logo.svg')}
+          alt="Wrench"
+          style={{ cursor: 'pointer' }}
+        />
       </Link>
 
       <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>

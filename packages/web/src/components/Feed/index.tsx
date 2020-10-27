@@ -7,7 +7,6 @@ import Seo from 'utils/seo'
 import { Post, Layout, Loader } from 'ui'
 import FollowingProjects from 'components/FollowingProjects'
 import { GET_FEED } from 'graphql/queries/feed/feed'
-import { CURRENT_USER } from 'graphql/queries/user/currentUser'
 import Onboarding from 'components/Onboarding'
 import ProjectSuggestion from 'components/ProjectSuggestion'
 import { Left, Right } from './styles'
@@ -23,13 +22,16 @@ export default function Home() {
     hasNextPage,
   } = usePaginatedQuery(['feed', 'posts'])(FeedDocument, {
     pollInterval: 3000,
+    variables: {
+      first: 3,
+    },
   })
 
   if (!data?.user?.interestedIn.length) {
     return <Onboarding />
   }
 
-  if (!edges.length) {
+  if (!edges?.length) {
     return <ProjectSuggestion />
   }
 

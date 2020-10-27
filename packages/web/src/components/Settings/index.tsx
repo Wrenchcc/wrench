@@ -2,11 +2,12 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { Element } from 'react-scroll'
 import { useTranslation } from 'react-i18next'
-import { useQuery, useMutation } from '@apollo/client'
-import { CURRENT_USER } from 'graphql/queries/user/currentUser'
-import { CURRENT_USER_SETTINGS_QUERY } from 'graphql/queries/user/currentUserSettings'
-import { EDIT_USER_MUTATION } from 'graphql/mutations/user/editUser'
-import { TOGGLE_NOTIFICATION_SETTINGS_MUTATION } from 'graphql/mutations/user/toggleNotificationSettings'
+import {
+  useEditUserMutation,
+  useCurrentUserSettingsQuery,
+  useCurrentUserQuery,
+  useToggleNotificationSettingsMutation,
+} from '@wrench/common'
 import { SUPPORTED_LOCALS } from 'i18n'
 import { useCookie, Cookies } from 'hooks'
 import { Layout, Title, Text, Switch, Input, SearchLocation, Button } from 'ui'
@@ -44,10 +45,10 @@ function Settings({ isAuthenticated }) {
     avatarUrl: null,
   })
 
-  const currentUser = useQuery(CURRENT_USER)
-  const userSettings = useQuery(CURRENT_USER_SETTINGS_QUERY)
-  const [editUser, { error }] = useMutation(EDIT_USER_MUTATION)
-  const [toggleNotificationSettings] = useMutation(TOGGLE_NOTIFICATION_SETTINGS_MUTATION)
+  const currentUser = useCurrentUserQuery()
+  const userSettings = useCurrentUserSettingsQuery()
+  const [editUser, { error }] = useEditUserMutation()
+  const [toggleNotificationSettings] = useToggleNotificationSettingsMutation()
 
   const generateNotificationSettings = ({ notifications }, deliveryMethod) => {
     if (!notifications) {
