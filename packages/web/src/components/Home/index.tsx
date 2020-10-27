@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Link from 'next/link'
 import Seo from 'utils/seo'
 import { Title } from 'ui'
@@ -15,7 +15,7 @@ import { Hero, Inner, Signup, Description, Video, Projects, ExploreLink } from '
 const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing-v2.mp4'
 
 export default function Home(props) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Home')
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
@@ -34,13 +34,13 @@ export default function Home(props) {
       <Hero>
         <Inner paddingTop={50}>
           <Title color="white" fontSize={120} lineHeight={128}>
-            {t('home:title')} <br />
-            {t('home:subtitle')}
+            {t('title')} <br />
+            {t('subtitle')}
           </Title>
           <Description color="white" fontSize={19}>
-            {t('home:description')}
+            {t('description')}
           </Description>
-          <Signup onPress={showModal}>{t('home:signup')}</Signup>
+          <Signup onPress={showModal}>{t('signup')}</Signup>
         </Inner>
         <Video autoPlay muted playsInline>
           <source src={VIDEO_URL} type="video/mp4" />
@@ -55,7 +55,7 @@ export default function Home(props) {
         <Popular />
 
         <Link href="/explore">
-          <ExploreLink>{t('home:explore')}</ExploreLink>
+          <ExploreLink>{t('explore')}</ExploreLink>
         </Link>
       </Projects>
 

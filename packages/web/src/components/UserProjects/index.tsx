@@ -1,16 +1,16 @@
 // @ts-nocheck
 import React from 'react'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function UserProjects({ projects }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('UserProjects')
 
   return (
     <Base>
       <Text medium fontSize={24}>
-        {t('UserProjects:title')}
+        {t('title')}
       </Text>
 
       <List>
@@ -24,7 +24,7 @@ function UserProjects({ projects }) {
                 <Content>
                   <Text>{node.title}</Text>
                   <Text color="neutral" fontSize={15} lineHeight={18}>
-                    {t('UserProjects:followers', { count: node.followers.totalCount })}
+                    {t('followers', { count: node.followers.totalCount })}
                   </Text>
                 </Content>
               </Row>

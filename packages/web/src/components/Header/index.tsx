@@ -9,7 +9,7 @@ import {
   useUnreadNotificationsQuery,
 } from '@wrench/common'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { useClickOutside } from 'hooks'
 import Badge from 'ui/Badge'
 import { Modal, useModal } from 'ui/Modal'
@@ -33,7 +33,7 @@ import {
 
 function Header({ isAuthenticated }) {
   const router = useRouter()
-  const { t } = useTranslation()
+  const { t } = useTranslation('Header')
   const { data } = useUnreadNotificationsQuery({
     pollInterval: ms('1m'),
     skip: !isAuthenticated,
@@ -102,11 +102,11 @@ function Header({ isAuthenticated }) {
     {
       href: '/',
       requireAuth: true,
-      title: t('Header:feed'),
+      title: t('feed'),
     },
     {
       href: '/explore',
-      title: t('Header:explore'),
+      title: t('explore'),
     },
   ]
 
@@ -170,15 +170,15 @@ function Header({ isAuthenticated }) {
           <Fragment>
             <Link passHref href="/download">
               <NavLink inverted={inverted} active={router.pathname === '/download'}>
-                {t('Header:download')}
+                {t('download')}
               </NavLink>
             </Link>
             <NavLink inverted={inverted} onClick={showModal}>
-              {t('Header:login')}
+              {t('login')}
             </NavLink>
             <Separator inverted={inverted}>/</Separator>
             <NavLink inverted={inverted} onClick={showModal} last>
-              {t('Header:register')}
+              {t('register')}
             </NavLink>
           </Fragment>
         )}

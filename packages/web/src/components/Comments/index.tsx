@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useRef, useState, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { CommentsDocument, RepliesDocument, usePaginatedQuery } from '@wrench/common'
 import InfiniteScroll from 'react-infinite-scroller'
 import { update } from 'ramda'
@@ -10,7 +10,7 @@ import Item from './Item'
 import { Base, Footer, Scroll, LoaderContainer, LoadReplies } from './styles'
 
 function Comments({ postId }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Comments')
   const [mention, setMention] = useState()
   const [commentId, setCommentId] = useState()
   const inputRef = useRef()
@@ -125,7 +125,7 @@ function Comments({ postId }) {
                     }
                   >
                     <Text medium fontSize={12} color="neutral">
-                      {t('Comments:loadReplies', {
+                      {t('loadReplies', {
                         count: replies.totalCount - replies.edges.length,
                       })}
                     </Text>

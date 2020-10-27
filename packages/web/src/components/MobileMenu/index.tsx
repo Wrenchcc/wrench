@@ -3,13 +3,13 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useApolloClient } from '@apollo/client'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'
 import { Base, Nav, NavLink, Close } from './styles'
 
 function MobileMenu({ isAuthenticated, onClose }) {
-  const client = useApolloClient()
+  const client = useApolloClient('MobileMenu')
   const router = useRouter()
   const { t } = useTranslation()
 
@@ -23,21 +23,21 @@ function MobileMenu({ isAuthenticated, onClose }) {
     {
       href: '/',
       requireAuth: true,
-      title: t('MobileMenu:feed'),
+      title: t('feed'),
     },
     {
       href: '/explore',
-      title: t('MobileMenu:explore'),
+      title: t('explore'),
     },
     {
       onlyPublic: true,
       openModal: showModal,
-      title: t('MobileMenu:login'),
+      title: t('login'),
     },
     {
       onlyPublic: true,
       openModal: showModal,
-      title: t('MobileMenu:register'),
+      title: t('register'),
     },
     {
       requireAuth: true,
@@ -45,11 +45,11 @@ function MobileMenu({ isAuthenticated, onClose }) {
         client.resetStore()
         onClose()
       },
-      title: t('MobileMenu:signout'),
+      title: t('signout'),
     },
     {
       href: '/download',
-      title: t('MobileMenu:download'),
+      title: t('download'),
       last: true,
     },
   ]

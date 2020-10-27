@@ -2,7 +2,7 @@
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login'
 import { useAuthenticateGoogleMutation, useAuthenticateFacebookMutation } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Router from 'next/router'
 import { Title } from 'ui'
 import { useCookie, Cookies } from 'hooks'
@@ -16,7 +16,7 @@ const FACEBOOK_APP_ID = '1174076712654826'
 const FACEBOOK_SCOPE = 'public_profile,email'
 
 export default function Login({ closeModal, referral = '/' }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Login')
   const [handleFacebookAuth] = useAuthenticateFacebookMutation()
   const [handleGoogleAuth] = useAuthenticateGoogleMutation()
   const [, setAccessToken] = useCookie(Cookies.ACCESS_TOKEN)
@@ -25,7 +25,7 @@ export default function Login({ closeModal, referral = '/' }) {
   return (
     <Base>
       <Title fontSize={36} lineHeight={42}>
-        {t('Login:title')}
+        {t('title')}
       </Title>
 
       <FacebookLogin
@@ -46,12 +46,12 @@ export default function Login({ closeModal, referral = '/' }) {
           })
         }
         render={({ onClick }) => (
-          <FacebookButton onClick={onClick}>{t('Login:fbbutton')}</FacebookButton>
+          <FacebookButton onClick={onClick}>{t('fbbutton')}</FacebookButton>
         )}
       />
 
       <AppleSignIn clientId="cc.wrench" scope="name email" redirectURI={APPLE_REDIRECT_URI}>
-        {({ signIn }) => <AppleButton onClick={signIn}>{t('Login:applebutton')}</AppleButton>}
+        {({ signIn }) => <AppleButton onClick={signIn}>{t('applebutton')}</AppleButton>}
       </AppleSignIn>
 
       <GoogleLogin
@@ -59,7 +59,7 @@ export default function Login({ closeModal, referral = '/' }) {
         clientId="407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com"
         render={(renderProps) => (
           <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
-            {t('Login:googlebutton')}
+            {t('googlebutton')}
           </GoogleButton>
         )}
         onSuccess={({ tokenId }) =>

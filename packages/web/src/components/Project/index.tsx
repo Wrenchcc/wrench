@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Seo from 'utils/seo'
 import { usePaginatedQuery, ProjectDocument, useFollowProjectMutation } from '@wrench/common'
 import Follow from 'components/Follow'
@@ -15,7 +15,7 @@ import { Left, Right, ShareButton, Similar, Followers } from './styles'
 const ACTION = 'follow'
 
 function Project({ slug, isAuthenticated, action }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Project')
   const {
     data: { edges, project },
     isFetching,
@@ -105,16 +105,16 @@ function Project({ slug, isAuthenticated, action }) {
     <Layout>
       <Seo
         config={{
-          title: t('Project:title', { title: project.title, type: project?.type?.title }),
-          description: t('Project:description', {
+          title: t('title', { title: project.title, type: project?.type?.title }),
+          description: t('description', {
             followers: project.followers.totalCount,
             posts: project?.posts?.totalCount || 0,
             fullName: project.user.fullName,
             username: project.user.username,
           }),
           openGraph: {
-            title: t('Project:title', { title: project.title, type: project?.type?.title }),
-            description: t('Project:description', {
+            title: t('title', { title: project.title, type: project?.type?.title }),
+            description: t('description', {
               followers: project.followers.totalCount,
               posts: project?.posts?.totalCount || 0,
               fullName: project.user.fullName,
@@ -148,9 +148,9 @@ function Project({ slug, isAuthenticated, action }) {
           />
         )}
 
-        <ShareButton onPress={showShare}>{t('Project:share')}</ShareButton>
+        <ShareButton onPress={showShare}>{t('share')}</ShareButton>
 
-        <Similar onPress={showSimilarModal}>{t('Project:similar')}</Similar>
+        <Similar onPress={showSimilarModal}>{t('similar')}</Similar>
       </Left>
 
       <Right>

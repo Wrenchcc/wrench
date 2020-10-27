@@ -1,0 +1,4 @@
+{
+  "projects": "{{count, humanFormat}} projekt",
+  "notfound": "Inga sökresultat funna."
+}

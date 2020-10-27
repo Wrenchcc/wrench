@@ -1,18 +1,13 @@
-import i18next from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
+import NextI18Next from 'next-i18next'
+import path from 'path'
 import * as humanFormat from 'human-format'
-import resources from 'translations/index.json'
-import { isBrowser } from 'utils/platform'
 
 export const SUPPORTED_LOCALS = ['en', 'sv']
 
-const options = {
-  debug: Boolean(process.env.DEBUG_TRANSLATION),
+const NextI18NextInstance = new NextI18Next({
   defaultLanguage: 'en',
-  fallbackLng: 'en',
-  preload: SUPPORTED_LOCALS,
-  resources,
+  otherLanguages: SUPPORTED_LOCALS,
+  localePath: path.resolve('./public/static/locales'),
   interpolation: {
     escapeValue: false,
     format(value, format) {
@@ -26,17 +21,10 @@ const options = {
       return value
     },
   },
-  wait: isBrowser,
-}
+})
 
-// for browser
-if (isBrowser) {
-  i18next.use(initReactI18next).use(LanguageDetector)
-}
+export default NextI18NextInstance
 
-// initialize if not already initialized
-if (!i18next.isInitialized) {
-  i18next.init(options)
-}
+export const i18n = NextI18NextInstance.i18n
 
-export default i18next
+export const { appWithTranslation, useTranslation } = NextI18NextInstance

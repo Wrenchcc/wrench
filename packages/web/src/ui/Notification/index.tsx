@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Link from 'next/link'
 import TimeAgo from '../TimeAgo'
 import { NOTIFICATION_TYPES } from '../../utils/enums'
@@ -11,24 +11,24 @@ import { Base, Content, Description, Bottom } from './styles'
 function description(data, t) {
   switch (data.type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
-      return `${t('Notification:follow')}: "${data.project.title}"`
+      return `${t('follow')}: "${data.project.title}"`
     case NOTIFICATION_TYPES.NEW_COMMENT:
-      return `${t('Notification:comment')}: "${data.comment.text}"`
+      return `${t('comment')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_REPLY:
-      return `${t('Notification:reply')}: "${data.comment.text}"`
+      return `${t('reply')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_MENTION:
-      return `${t('Notification:mention')}: "${data.comment.text}"`
+      return `${t('mention')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_POST_LIKE:
-      return t('Notification:postLike')
+      return t('postLike')
     case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
-      return t('Notification:commentLike')
+      return t('commentLike')
     default:
       return null
   }
 }
 
 function Notification({ data, first, onPress }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Notification')
 
   return (
     <Base first={first}>
