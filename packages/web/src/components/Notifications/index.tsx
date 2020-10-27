@@ -9,11 +9,13 @@ import { Base, Empty, LoaderContainer } from './styles'
 function Notifications({ onPress }) {
   const { t } = useTranslation()
 
-  const { data, isFetching, fetchMore, hasNextPage } = usePaginatedQuery(['notifications'])(
-    NotificationsDocument
-  )
-
-  console.log(data, isFetching)
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['notifications'])(NotificationsDocument)
+  console.log(edges)
 
   return null
   if (isFetching) {

@@ -1,12 +1,11 @@
 // @ts-nocheck
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {useTheme } from 'next-themes'
-import { useMutation } from '@apollo/client'
+import { useSendPromoMutation } from '@wrench/common'
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { Text, Loader } from 'ui'
-import { SEND_PROMO } from 'graphql/mutations/invite/sendPromo'
 import { useCookie, Cookies } from 'hooks'
 import { Base, Icon, Description, Bottom, Send, Close, Placeholder } from './styles'
 
@@ -25,7 +24,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
   const [success, setSuccess] = useState(false)
-  const [handleSubmit] = useMutation(SEND_PROMO)
+  const [sendPromo] = useSendPromoMutation()
   const [, setValue] = useCookie(Cookies.SHOW_PROMO)
   const router = useRouter()
 
@@ -40,7 +39,12 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
 
   return (
     !hide && (
-      <Base sticky={sticky} inverted={inverted} paddingHorizontal={paddingHorizontal} inline={inline}>
+      <Base
+        sticky={sticky}
+        inverted={inverted}
+        paddingHorizontal={paddingHorizontal}
+        inline={inline}
+      >
         <Icon src={inverted ? require('./icon-white.svg') : require('./icon.svg')} />
 
         {!inverted && (
@@ -69,7 +73,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
             active={number.length >= 10}
             onClick={() =>
               number &&
-              handleSubmit({
+              sendPromo({
                 update: (_, { data }) => {
                   if (data.sendPromo) {
                     setSuccess(true)

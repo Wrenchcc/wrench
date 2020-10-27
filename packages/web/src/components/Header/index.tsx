@@ -4,6 +4,7 @@ import Link from 'next/link'
 import * as ms from 'ms'
 import {
   useCurrentUserQuery,
+  NotificationsDocument,
   useMarkAllNotificationsSeenMutation,
   useUnreadNotificationsQuery,
 } from '@wrench/common'
@@ -65,21 +66,21 @@ function Header({ isAuthenticated }) {
   const toggleNotifications = () => {
     if (data?.notifications?.unreadCount > 0) {
       // @ts-ignore
-      markNotificationsSeen({
-        // update: (proxy) => {
-        //   const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
-        //   const notifications = {
-        //     ...data,
-        //     notifications: {
-        //       ...data.notifications,
-        //       unreadCount: 0,
-        //     },
-        //   }
-        //   proxy.writeQuery({
-        //     query: UNREAD_NOTIFICATIONS,
-        //     data: notifications,
-        //   })
-        // },
+      markAllNotificationsSeen({
+        update: (cache) => {
+          const data = cache.readQuery({ query: NotificationsDocument })
+
+          cache.writeQuery({
+            query: NotificationsDocument,
+            data: {
+              ...data,
+              notifications: {
+                ...data.notifications,
+                unreadCount: 0,
+              },
+            },
+          })
+        },
       })
     }
 
@@ -150,7 +151,7 @@ function Header({ isAuthenticated }) {
           <Fragment>
             <UserNotifications ref={notificationsRef}>
               <Badge unread={data?.notifications?.unreadCount > 0} onPress={toggleNotifications} />
-              {openNotifications && <Notifications onPress={handleClose} />}
+              <Notifications onPress={handleClose} />
             </UserNotifications>
 
             <UserMenu ref={logoutRef}>

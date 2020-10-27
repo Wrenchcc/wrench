@@ -9,11 +9,11 @@ function FollowingProjects() {
   const { t } = useTranslation()
   const { data, loading } = useCurrentUserFollowingProjectsQuery()
 
-  if (loading || !data.currentUser) {
+  if (loading || !data.user) {
     return null
   }
 
-  const projects = data.currentUser.following
+  const projects = data.user.projects
 
   return (
     <Base>
