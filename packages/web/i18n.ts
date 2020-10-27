@@ -1,19 +1,11 @@
 import NextI18Next from 'next-i18next'
 import * as humanFormat from 'human-format'
 import path from 'path'
-import fs from 'fs'
 
 export const SUPPORTED_LOCALS = ['en', 'sv']
 
 console.log('heeloo')
 console.log(path.resolve("./public/locales/en/Blog.json'"))
-
-fs.readdir('.', (err, files) => {
-  console.log(err)
-  files.forEach(file => {
-    console.log(file)
-  })
-})
 
 const NextI18NextInstance = new NextI18Next({
   defaultLanguage: 'en',
