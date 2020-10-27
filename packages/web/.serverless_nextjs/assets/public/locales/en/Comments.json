@@ -1,0 +1,6 @@
+{
+    "reply": "Reply",
+    "loadReplies": "View replies ({{count}})",
+    "like": "{{count}} spark",
+    "like_plural": "{{count, humanFormat}} sparks"
+}

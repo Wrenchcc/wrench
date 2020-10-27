@@ -1,0 +1,5 @@
+{
+    "title": "{{fullName}}. (@{{username}}) - projects and posts",
+    "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
+    "imgalt": "Profile Photo"
+}

@@ -1,0 +1,5 @@
+{
+    "title": "{{fullName}}. (@{{username}}) - projekt och inlägg",
+    "description": "Se {{fullName}}. (@{{username}}) projekt och inlägg på Wrench",
+    "imgalt": "Profilbild"
+}

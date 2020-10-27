@@ -4594,7 +4594,7 @@
     mime-types "^2.1.27"
     regex-parser "^2.2.10"
 
-"@sls-next/serverless-component@^1.18.0-alpha.20":
+"@sls-next/serverless-component@1.18.0-alpha.20":
   version "1.18.0-alpha.20"
   resolved "https://registry.yarnpkg.com/@sls-next/serverless-component/-/serverless-component-1.18.0-alpha.20.tgz#6303b339d616e92df720ce55eab84c1031bb38d3"
   integrity sha512-zIcgyDl7JKSOXaFmmzmoMFNyoSDRMT/DfgE/ePSbwRcvr0qORpx+Ltyejh2oVAzoLDF5FCTGc3+rEaa3VFiEFg==
@@ -7429,7 +7429,7 @@ aws-sdk@2.728.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.387.0, aws-sdk@^2.488.0, aws-sdk@^2.702.0:
+aws-sdk@^2.387.0, aws-sdk@^2.488.0, aws-sdk@^2.702.0, aws-sdk@^2.772.0:
   version "2.780.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.780.0.tgz#ac88e5222cb4a09385791fbb5a58114ad5abc9c1"
   integrity sha512-pz/3dJdrkqgJn2YPwu6/VaGBSvYm33wjb6Ic7zSuFPOduqo42Se70BQASNmUg1E8EBqSwsrYEW04f5XGOJ0mMA==
@@ -7448,21 +7448,6 @@ aws-sdk@^2.738.0, aws-sdk@^2.749.0, aws-sdk@^2.761.0:
   version "2.762.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.762.0.tgz#bb028477f51adefaeb3edc71fc67416f74340758"
   integrity sha512-9vpHJbV1n23at2XG+6PDqHsG4JggdosFlcO1glvpXhjuwk1x8NCOwf/ddeXs6YxD6+/Kfj3AP216UaLP0iYxUA==
-  dependencies:
-    buffer "4.9.2"
-    events "1.1.1"
-    ieee754 "1.1.13"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.3.2"
-    xml2js "0.4.19"
-
-aws-sdk@^2.772.0:
-  version "2.779.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.779.0.tgz#a87979316407c0dd6c70e1a15a4b6242abbe73e1"
-  integrity sha512-m7OBY8p9sfdbsXXDToWy1HpOY+EhzBHSuDSBRab+mVVwAUcHFFKEqgVt44gTue6tn0u/+WGwq19ie+O19t8k3w==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
