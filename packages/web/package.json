@@ -49,6 +49,7 @@
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
+    "@sls-next/serverless-component": "^1.18.0-alpha.20",
     "@types/i18next": "^13.0.0",
     "@types/next": "^9.0.0",
     "@types/node": "^14.11.2",
@@ -60,6 +61,7 @@
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "2.0.0",
+    "fs-extra": "^9.0.1",
     "i18next-parser": "^3.3.0",
     "imagemin-svgo": "^8.0.0",
     "next-compose-plugins": "^2.2.0",
