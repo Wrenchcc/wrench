@@ -1,0 +1,23 @@
+{
+    "chat": "",
+    "feedback": "",
+    "field": {
+        "bio": "",
+        "firstName": "",
+        "lastName": "",
+        "website": ""
+    },
+    "mail": "",
+    "save": "",
+    "sections": {
+        "language": "",
+        "notifications": "",
+        "profile": "",
+        "support": ""
+    },
+    "title": "",
+    "toast": {
+        "error": "",
+        "saved": ""
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "reply": "Svara",
+    "loadReplies": "Visa svar ({{count}})",
+    "like": "{{count}} gnista",
+    "like_plural": "{{count, humanFormat}} gnistor"
+}

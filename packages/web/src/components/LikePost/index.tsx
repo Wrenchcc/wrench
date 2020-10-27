@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useCallback, memo, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { useRouter } from 'next/router'
 import { useLikePostMutation } from '@wrench/common'
 
@@ -13,7 +13,7 @@ import { Base } from './styled'
 const ACTION = 'spark'
 
 function LikePost({ post }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('LikePost')
   const [isAuthenticated] = useCookie(Cookies.ACCESS_TOKEN)
   const [toggleLike] = useLikePostMutation()
   const router = useRouter()
@@ -76,7 +76,7 @@ function LikePost({ post }) {
         source={require('./spark.svg?include')}
       />
 
-      <Text fontSize={15}>{t('LikePost:like', { count: post.likes.totalCount })}</Text>
+      <Text fontSize={15}>{t('like', { count: post.likes.totalCount })}</Text>
     </Base>
   )
 }

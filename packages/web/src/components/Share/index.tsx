@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Text, Icon } from 'ui'
 
@@ -45,7 +45,7 @@ const generateShareableUrl = url => [
 ]
 
 function Share({ closeModal, dynamicLink }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Share')
   const providers = generateShareableUrl(dynamicLink)
 
   const renderComponent = ({ provider, url, closeModal }) => {
@@ -53,17 +53,17 @@ function Share({ closeModal, dynamicLink }) {
       case 'cancel':
         return (
           <span style={{ cursor: 'pointer' }} onClick={closeModal}>
-            {t(`Share:${provider}`)}
+            {t(provider)}
           </span>
         )
       case 'copy':
         return (
           <CopyToClipboard text={url} onCopy={closeModal} style={{ cursor: 'pointer' }}>
-            <span>{t(`Share:${provider}`)}</span>
+            <span>{t(provider)}</span>
           </CopyToClipboard>
         )
       default:
-        return <a href={url}>{t(`Share:${provider}`)}</a>
+        return <a href={url}>{t(provider)}</a>
     }
   }
 

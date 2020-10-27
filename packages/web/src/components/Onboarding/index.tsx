@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { omit } from 'ramda'
 import { useProjectTypesQuery, useEditUserMutation } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Types, Title, Scroll, Image, Picture, Overlay, Next } from './styles'
 
@@ -10,7 +10,7 @@ const MIN_ITEMS = 3
 const ITEM_SIZE = 172.5
 
 export default function Onboarding() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Onboarding')
   const { data, loading } = useProjectTypesQuery()
   const [editUser] = useEditUserMutation()
   const [items, setItems] = useState({})
@@ -54,14 +54,14 @@ export default function Onboarding() {
             })
           }
         >
-          {t('Onboarding:next')}
+          {t('next')}
         </Next>
 
         <Title color="white" fontSize={36}>
-          {t('Onboarding:title')}
+          {t('title')}
         </Title>
 
-        <Text color="neutral">{t('Onboarding:description')}</Text>
+        <Text color="neutral">{t('description')}</Text>
 
         <Scroll>
           <Types>

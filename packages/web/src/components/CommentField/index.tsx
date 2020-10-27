@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { memo, useState, useEffect, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Mention, MentionsInput } from 'react-mentions'
 import { prepend, append } from 'ramda'
 import { useAddCommentMutation, useCurrentUserQuery, useSearchUsersLazyQuery } from '@wrench/common'
@@ -64,7 +64,7 @@ const styles = {
 }
 
 const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' }, ref) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('CommentField')
   const router = useRouter()
   const [isAuthenticated] = useCookie(Cookies.ACCESS_TOKEN)
   const [text, setText] = useState('')
@@ -156,7 +156,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
         <MentionsInput
           style={styles}
           ref={ref}
-          placeholder={t('CommentField:placeholder')}
+          placeholder={t('placeholder')}
           onChange={handleOnChangeText}
           onFocus={handleFocus}
           value={text}
@@ -178,7 +178,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
         {text.length > 0 && (
           <Button onClick={handleSubmit}>
             <Text fontSize={15} medium>
-              {t('CommentField:post')}
+              {t('post')}
             </Text>
           </Button>
         )}

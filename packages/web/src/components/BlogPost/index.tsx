@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import styled from 'styled-components'
 import Seo from 'utils/seo'
 import { useBlogPostQuery } from '@wrench/common'
@@ -16,7 +16,7 @@ export default function BlogPost() {
   const router = useRouter()
   const { slug } = router.query
 
-  const { t } = useTranslation()
+  const { t } = useTranslation('BlogPost')
 
   const { data, loading } = useBlogPostQuery({
     variables: {
@@ -33,7 +33,7 @@ export default function BlogPost() {
       <Layout column>
         <Seo
           config={{
-            title: `${t('BlogPost:title')} - ${data?.blogPost.title}`,
+            title: `${t('title')} - ${data?.blogPost.title}`,
           }}
         />
 
@@ -44,7 +44,7 @@ export default function BlogPost() {
               source={require('./arrowBack.svg?include')}
               width="22px"
             />
-            {t('BlogPost:back')}
+            {t('back')}
           </A>
         </Link>
 

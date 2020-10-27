@@ -7,7 +7,6 @@ import NProgress from 'nprogress'
 import { Reset } from 'styled-reset'
 import { ThemeProvider as NextThemeProvider, useTheme } from 'next-themes'
 import { ThemeProvider } from '@wrench/ui'
-import { I18nextProvider, useSSR } from 'react-i18next'
 import withApollo from 'services/apollo/withApollo'
 import GoogleAnalyticsSDK from 'components/GoogleAnalyticsSDK'
 import Promo from 'components/Promo'
@@ -17,8 +16,7 @@ import { ModalProvider } from 'ui/Modal'
 import Seo from 'utils/seo'
 import Header from 'components/Header'
 import Hide from 'components/Hide'
-import resources from 'translations/index.json'
-import i18n, { SUPPORTED_LOCALS } from 'i18n'
+import { appWithTranslation } from 'i18n'
 
 interface Props {
   apollo: ApolloClient<any>
@@ -51,10 +49,6 @@ class App extends NextApp<Props> {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    SUPPORTED_LOCALS.forEach((l) => {
-      initialI18nStore[l] = resources[l]
-    })
-
     const queryLanguage = router.query.hl
     const initialLanguage = queryLanguage || cookies.get(Cookies.PREFERRED_LANGUAGE) || 'en'
 
@@ -84,25 +78,19 @@ class App extends NextApp<Props> {
   public render() {
     return (
       <NextThemeProvider enableSystem defaultTheme="system">
-        <I18nextProvider i18n={i18n}>
-          <AppWithi18n {...this.props} />
-        </I18nextProvider>
+        <Wrench {...this.props} />
       </NextThemeProvider>
     )
   }
 }
 
-function AppWithi18n({
-  initialI18nStore,
-  initialLanguage,
+function Wrench({
   pageProps,
   Component,
   hidePromo,
   viewerCountry,
   isAuthenticated,
 }) {
-  useSSR(initialI18nStore, initialLanguage)
-
   const { systemTheme } = useTheme()
 
   return (
@@ -131,4 +119,4 @@ function AppWithi18n({
   )
 }
 
-export default withApollo(App)
+export default appWithTranslation(withApollo(App))

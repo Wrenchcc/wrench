@@ -1,0 +1,20 @@
+module.exports = {
+  defaultNamespace: 'common',
+  defaultValue: '',
+  indentation: 4,
+  lexers: {
+    js: ['JavascriptLexer'],
+    ts: ['JsxLexer'],
+    tsx: ['JsxLexer'],
+    default: ['JavascriptLexer'],
+  },
+  lineEnding: 'auto',
+  locales: ['en', 'sv'],
+  namespaceSeparator: ':',
+  output: 'public/locales/$LOCALE/$NAMESPACE.json',
+  input: undefined,
+  reactNamespace: false,
+  sort: true,
+  useKeysAsDefaultValue: false,
+  verbose: false,
+}

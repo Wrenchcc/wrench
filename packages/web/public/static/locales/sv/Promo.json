@@ -1,0 +1,8 @@
+{
+    "title": "Ladda ner Wrench appen på Appstore och Google play",
+    "description": "Ange ditt telefonnummer och få en SMS länk.",
+    "button": {
+      "default": "Skicka",
+      "success": "Skickat"
+    }
+}

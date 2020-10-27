@@ -2,12 +2,12 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { usePaginatedQuery, NotificationsDocument } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Notification, Loader, Text } from 'ui'
 import { Base, Empty, LoaderContainer } from './styles'
 
 function Notifications({ onPress }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Notifications')
 
   const {
     data: { edges },
@@ -43,9 +43,9 @@ function Notifications({ onPress }) {
           ))
         ) : (
           <Empty>
-            <Text medium>{t('Notifications:title')}</Text>
+            <Text medium>{t('title')}</Text>
             <Text color="neutral" fontSize={15}>
-              {t('Notifications:description')}
+              {t('description')}
             </Text>
           </Empty>
         )}

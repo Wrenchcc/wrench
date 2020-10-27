@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
 // import { Base } from './styles'
 
 function Followers({ id }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Followers')
   const {
     data: { edges },
     isFetching,
@@ -19,7 +19,6 @@ function Followers({ id }) {
     },
   })
 
-  console.log(edges)
   return null
 }
 

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Router from 'next/router'
 import { SUPPORTED_LOCALS } from 'i18n'
 import { useCookie, Cookies } from 'hooks'
@@ -8,7 +8,7 @@ import { Icon } from 'ui'
 import { Base, Select } from './styles'
 
 function LanguageSelector() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('Settings')
   const [selectedLanguage, setValue] = useCookie(Cookies.PREFERRED_LANGUAGE)
 
   const handleChange = (evt) => {
@@ -22,7 +22,7 @@ function LanguageSelector() {
         {SUPPORTED_LOCALS.map((locale) => {
           return (
             <option key={locale} selected={selectedLanguage === locale} value={locale}>
-              {t(`Settings:languages.${locale}`)}
+              {t(`languages.${locale}`)}
             </option>
           )
         })}
