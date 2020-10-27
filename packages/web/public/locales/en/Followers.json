@@ -1,4 +1,4 @@
 {
-    "followers": "",
-    "followers_plural": ""
+  "followers": "{{count, humanFormat}} follower",
+  "followers_plural": "{{count, humanFormat}} followers"
 }

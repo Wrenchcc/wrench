@@ -1,5 +1,5 @@
 {
-    "logout": "",
-    "profile": "",
-    "settings": ""
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
 }

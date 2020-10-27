@@ -1,23 +1,35 @@
 {
-    "chat": "",
-    "feedback": "",
-    "field": {
-        "bio": "",
-        "firstName": "",
-        "lastName": "",
-        "website": ""
-    },
-    "mail": "",
-    "save": "",
+    "title": "Settings",
     "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
+      "profile": "Edit profile",
+      "notifications": "Notifications",
+      "language": "Language",
+      "support": "Support"
     },
-    "title": "",
+    "languages": {
+      "en": "English",
+      "sv": "Swedish"
+    },
+    "field": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "bio": "Bio",
+      "website": "Website"
+    },
+    "save": "Save",
     "toast": {
-        "error": "",
-        "saved": ""
-    }
+      "saved": "Settings saved",
+      "error": "Something went wrong"
+    },
+    "notifications": {
+      "NEW_COMMENT": "Comments",
+      "NEW_MENTION": "Mentions",
+      "NEW_ARTICLE": "Articles",
+      "NEW_FOLLOWER": "Followers",
+      "SIMILAR_PROJECTS": "Similar projects",
+      "PRODUCT_ANNOUNCEMENTS": "Product announcements"
+    },
+    "mail": "Mail Support",
+    "chat": "Chat with us",
+    "feedback": "Feedback"
 }

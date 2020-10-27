@@ -1,4 +1,4 @@
 {
-    "like": "",
-    "like_plural": ""
+    "like": "{{count}} spark",
+    "like_plural": "{{count, humanFormat}} sparks"
 }
