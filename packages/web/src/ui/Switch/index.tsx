@@ -1,15 +1,12 @@
+// @ts-nocheck
 import React from 'react'
-import { COLORS } from 'ui/constants'
-import { Base, Blah1, Label, Circle } from './styles'
+import { Base, Check, Label, Circle } from './styles'
 
-const Switch = ({ selected, onPress, onColor, name }) => {
+const Switch = ({ selected, onPress, name }) => {
   return (
     <Base>
-      <Blah1 checked={selected} onChange={onPress} id={name} type="checkbox" />
-      <Label
-        style={{ background: (selected && onColor) || COLORS.ULTRA_LIGHT_GREY }}
-        htmlFor={name}
-      >
+      <Check checked={selected} onChange={onPress} id={name} type="checkbox" />
+      <Label selected={selected} htmlFor={name}>
         <Circle />
       </Label>
     </Base>

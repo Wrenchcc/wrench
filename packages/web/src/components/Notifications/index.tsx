@@ -15,10 +15,8 @@ function Notifications({ onPress }) {
     fetchMore,
     hasNextPage,
   } = usePaginatedQuery(['notifications'])(NotificationsDocument)
-  console.log(edges)
 
-  return null
-  if (isFetching) {
+  if (isFetching || !edges.length) {
     return (
       <Base padding>
         <Loader />

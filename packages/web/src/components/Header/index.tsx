@@ -151,7 +151,7 @@ function Header({ isAuthenticated }) {
           <Fragment>
             <UserNotifications ref={notificationsRef}>
               <Badge unread={data?.notifications?.unreadCount > 0} onPress={toggleNotifications} />
-              <Notifications onPress={handleClose} />
+              {openNotifications && <Notifications onPress={handleClose} />}
             </UserNotifications>
 
             <UserMenu ref={logoutRef}>

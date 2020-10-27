@@ -128,7 +128,7 @@ function Settings({ isAuthenticated }) {
     <Layout>
       {saved && (
         <Toast>
-          <Text color="white" medium>
+          <Text color="inverted" medium>
             {t('Settings:toast.saved')}
           </Text>
         </Toast>
@@ -136,7 +136,7 @@ function Settings({ isAuthenticated }) {
 
       {error && (
         <Toast error>
-          <Text color="white" medium>
+          <Text color="inverted" medium>
             {t('Settings:toast.error')}
           </Text>
         </Toast>
@@ -228,8 +228,8 @@ function Settings({ isAuthenticated }) {
             {notifications &&
               notifications.map(({ titleKey, onPress, selected, type }) => (
                 <Setting key={titleKey}>
-                  {t(`Settings:${titleKey}`)}
-                  <Switch selected={selected} onColor="black" name={type} onPress={onPress} />
+                  <Text>{t(`Settings:${titleKey}`)}</Text>
+                  <Switch selected={selected} name={type} onPress={onPress} />
                 </Setting>
               ))}
           </Section>
