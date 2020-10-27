@@ -1,23 +1,35 @@
 {
-    "chat": "",
-    "feedback": "",
-    "field": {
-        "bio": "",
-        "firstName": "",
-        "lastName": "",
-        "website": ""
-    },
-    "mail": "",
-    "save": "",
+    "title": "Inställningar",
     "sections": {
-        "language": "",
-        "notifications": "",
-        "profile": "",
-        "support": ""
+      "profile": "Redigera profil",
+      "notifications": "Notifikationer",
+      "language": "Språk",
+      "support": "Support"
     },
-    "title": "",
+    "languages": {
+      "en": "Engelska",
+      "sv": "Svenska"
+    },
+    "field": {
+      "firstName": "Förnamn",
+      "lastName": "Efternamn",
+      "bio": "Beskrivning",
+      "website": "Hemsida"
+    },
     "toast": {
-        "error": "",
-        "saved": ""
-    }
+      "saved": "Inställningar sparade",
+      "error": "Något gick fel"
+    },
+    "save": "Spara",
+    "notifications": {
+      "NEW_COMMENT": "Kommentarer",
+      "NEW_MENTION": "Mentions",
+      "NEW_ARTICLE": "Artiklar",
+      "NEW_FOLLOWER": "Följare",
+      "SIMILAR_PROJECTS": "Liknande projekt",
+      "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
+    },
+    "mail": "Mail Support",
+    "chat": "Chatta med oss",
+    "feedback": "Feedback"
 }

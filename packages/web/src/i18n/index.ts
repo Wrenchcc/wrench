@@ -7,7 +7,7 @@ export const SUPPORTED_LOCALS = ['en', 'sv']
 const NextI18NextInstance = new NextI18Next({
   defaultLanguage: 'en',
   otherLanguages: SUPPORTED_LOCALS,
-  localePath: path.resolve('./public/static/locales'),
+  localePath: path.resolve('./public/locales'),
   interpolation: {
     escapeValue: false,
     format(value, format) {
