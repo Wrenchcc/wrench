@@ -2,14 +2,15 @@
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
-import { useCurrentUserQuery } from '@wrench/common'
-import { useQuery, useMutation } from '@apollo/client'
+import {
+  useCurrentUserQuery,
+  useMarkAllNotificationsSeenMutation,
+  useUnreadNotificationsQuery,
+} from '@wrench/common'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { useClickOutside } from 'hooks'
 import Badge from 'ui/Badge'
-import { UNREAD_NOTIFICATIONS } from 'graphql/queries/notifications/unreadNotifications'
-import { MARK_ALL_NOTIFICATIONS_SEEN } from 'graphql/mutations/notifications/markAllNotificationsSeen'
 import { Modal, useModal } from 'ui/Modal'
 import { Icon } from 'ui'
 import Login from 'components/Login'
@@ -32,7 +33,7 @@ import {
 function Header({ isAuthenticated }) {
   const router = useRouter()
   const { t } = useTranslation()
-  const { data } = useQuery(UNREAD_NOTIFICATIONS, {
+  const { data } = useUnreadNotificationsQuery({
     pollInterval: ms('1m'),
     skip: !isAuthenticated,
   })
@@ -54,7 +55,7 @@ function Header({ isAuthenticated }) {
 
   const [openNotifications, setNotificationsMenu] = useState(false)
 
-  const [markNotificationsSeen] = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
+  const [markNotificationsSeen] = useMarkAllNotificationsSeenMutation()
 
   const handleClose = () => {
     setUserMenu(false)
@@ -65,22 +66,20 @@ function Header({ isAuthenticated }) {
     if (data?.notifications?.unreadCount > 0) {
       // @ts-ignore
       markNotificationsSeen({
-        update: (proxy) => {
-          const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
-
-          const notifications = {
-            ...data,
-            notifications: {
-              ...data.notifications,
-              unreadCount: 0,
-            },
-          }
-
-          proxy.writeQuery({
-            query: UNREAD_NOTIFICATIONS,
-            data: notifications,
-          })
-        },
+        // update: (proxy) => {
+        //   const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
+        //   const notifications = {
+        //     ...data,
+        //     notifications: {
+        //       ...data.notifications,
+        //       unreadCount: 0,
+        //     },
+        //   }
+        //   proxy.writeQuery({
+        //     query: UNREAD_NOTIFICATIONS,
+        //     data: notifications,
+        //   })
+        // },
       })
     }
 

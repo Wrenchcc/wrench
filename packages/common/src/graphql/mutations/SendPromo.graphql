@@ -1,0 +1,3 @@
+mutation sendPromo($number: String!) {
+  sendPromo(number: $number)
+}
