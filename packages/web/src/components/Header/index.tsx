@@ -2,14 +2,16 @@
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
-import { useQuery, useMutation } from '@apollo/client'
+import {
+  useCurrentUserQuery,
+  NotificationsDocument,
+  useMarkAllNotificationsSeenMutation,
+  useUnreadNotificationsQuery,
+} from '@wrench/common'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { useClickOutside } from 'hooks'
 import Badge from 'ui/Badge'
-import { CURRENT_USER } from 'graphql/queries/user/currentUser'
-import { UNREAD_NOTIFICATIONS } from 'graphql/queries/notifications/unreadNotifications'
-import { MARK_ALL_NOTIFICATIONS_SEEN } from 'graphql/mutations/notifications/markAllNotificationsSeen'
 import { Modal, useModal } from 'ui/Modal'
 import { Icon } from 'ui'
 import Login from 'components/Login'
@@ -32,12 +34,12 @@ import {
 function Header({ isAuthenticated }) {
   const router = useRouter()
   const { t } = useTranslation()
-  const { data } = useQuery(UNREAD_NOTIFICATIONS, {
+  const { data } = useUnreadNotificationsQuery({
     pollInterval: ms('1m'),
     skip: !isAuthenticated,
   })
 
-  const currentUser = useQuery(CURRENT_USER, {
+  const currentUser = useCurrentUserQuery({
     skip: !isAuthenticated,
   })
 
@@ -54,7 +56,7 @@ function Header({ isAuthenticated }) {
 
   const [openNotifications, setNotificationsMenu] = useState(false)
 
-  const [markNotificationsSeen] = useMutation(MARK_ALL_NOTIFICATIONS_SEEN)
+  const [markNotificationsSeen] = useMarkAllNotificationsSeenMutation()
 
   const handleClose = () => {
     setUserMenu(false)
@@ -64,21 +66,19 @@ function Header({ isAuthenticated }) {
   const toggleNotifications = () => {
     if (data?.notifications?.unreadCount > 0) {
       // @ts-ignore
-      markNotificationsSeen({
-        update: (proxy) => {
-          const data = proxy.readQuery({ query: UNREAD_NOTIFICATIONS })
+      markAllNotificationsSeen({
+        update: (cache) => {
+          const data = cache.readQuery({ query: NotificationsDocument })
 
-          const notifications = {
-            ...data,
-            notifications: {
-              ...data.notifications,
-              unreadCount: 0,
+          cache.writeQuery({
+            query: NotificationsDocument,
+            data: {
+              ...data,
+              notifications: {
+                ...data.notifications,
+                unreadCount: 0,
+              },
             },
-          }
-
-          proxy.writeQuery({
-            query: UNREAD_NOTIFICATIONS,
-            data: notifications,
           })
         },
       })
@@ -113,7 +113,11 @@ function Header({ isAuthenticated }) {
   return (
     <Base inverted={inverted}>
       <Link passHref href={'/'}>
-        <img src={inverted ? require('./logo-white.svg') : require('./logo.svg')} alt="Wrench" style={{ cursor: 'pointer' }}/>
+        <img
+          src={inverted ? require('./logo-white.svg') : require('./logo.svg')}
+          alt="Wrench"
+          style={{ cursor: 'pointer' }}
+        />
       </Link>
 
       <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>

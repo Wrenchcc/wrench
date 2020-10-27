@@ -2,8 +2,8 @@
 import React, { useCallback, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
-import { useMutation } from '@apollo/client'
-import { LIKE_POST_MUTATION } from 'graphql/mutations/post/like'
+import { useLikePostMutation } from '@wrench/common'
+
 import { Text, Icon } from 'ui'
 import { useCookie, Cookies } from 'hooks'
 import { useModal, Modal } from 'ui/Modal'
@@ -15,7 +15,7 @@ const ACTION = 'spark'
 function LikePost({ post }) {
   const { t } = useTranslation()
   const [isAuthenticated] = useCookie(Cookies.ACCESS_TOKEN)
-  const [toggleLike] = useMutation(LIKE_POST_MUTATION)
+  const [toggleLike] = useLikePostMutation()
   const router = useRouter()
 
   const [showModal, closeModal] = useModal(() => (
@@ -25,7 +25,7 @@ function LikePost({ post }) {
   ))
 
   const handleToggleLike = useCallback(
-    id => {
+    (id) => {
       if (!isAuthenticated) {
         showModal()
         return

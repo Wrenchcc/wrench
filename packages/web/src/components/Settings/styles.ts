@@ -1,7 +1,7 @@
 // @ts-nocheck
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
-import { DEVICE, COLORS } from 'ui/constants'
+import { DEVICE } from 'ui/constants'
 import UiText from 'ui/Text'
 import UiTitle from 'ui/Title'
 
@@ -21,7 +21,7 @@ export const Toast = styled.div`
   position: fixed;
   padding: 0 30px;
   height: 50px;
-  background: ${props => (props.error ? '#ec6d2f' : 'black')};
+  background: ${(props) => (props.error ? '#ec6d2f' : 'black')};
   right: 30px;
   top: 90px;
   justify-content: center;
@@ -31,7 +31,7 @@ export const Toast = styled.div`
 `
 
 export const Row = styled.div`
-  margin-top: ${props => (props.last ? 30 : 0)}px;
+  margin-top: ${(props) => (props.last ? 30 : 0)}px;
   position: relative;
 `
 
@@ -39,7 +39,7 @@ export const Setting = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid ${COLORS.ULTRA_LIGHT_GREY};
+  border-bottom: 1px solid ${(props) => props.theme.colors.divider};
   padding-bottom: 10px;
   margin-bottom: 10px;
   height: 40px;
@@ -61,7 +61,7 @@ export const MenuItem = styled(Link)`
   display: block;
 
   &.active p {
-    color: black;
+    color: ${(props) => props.theme.colors.inverse};
     font-weight: 500;
   }
 `

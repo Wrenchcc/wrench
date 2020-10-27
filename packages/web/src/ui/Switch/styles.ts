@@ -8,7 +8,7 @@ export const Base = styled.div`
   }
 `
 
-export const Blah1 = styled.input`
+export const Check = styled.input`
   height: 0;
   width: 0;
   visibility: hidden;
@@ -25,6 +25,8 @@ export const Label = styled.label`
   border-radius: 30px;
   position: relative;
   transition: background-color 0.2s;
+  background: ${(props) =>
+    props.selected ? props.theme.colors.inverse : props.theme.colors.neutral};
 `
 
 export const Circle = styled.span`

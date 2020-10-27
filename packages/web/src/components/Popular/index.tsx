@@ -1,11 +1,24 @@
 // @ts-nocheck
 import React, { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
+import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { Card, Text } from 'ui'
 import { List, Title } from './styles'
 
-function Popular({ projects }) {
+function Popular() {
   const { t } = useTranslation()
+
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['projects'])(ProjectsDocument, {
+    variables: {
+      type: 'POPULAR',
+      first: 8,
+    },
+  })
 
   return (
     <Fragment>
@@ -13,16 +26,15 @@ function Popular({ projects }) {
       <Text color="neutral">{t('Popular:description')}</Text>
 
       <List>
-        {projects &&
-          projects.edges.map(({ node }) => (
-            <Card
-              key={node.id}
-              image={node.cover.uri}
-              title={node.title}
-              slug={node.slug}
-              user={node.user}
-            />
-          ))}
+        {edges?.map(({ node }) => (
+          <Card
+            key={node.id}
+            image={node.cover.uri}
+            title={node.title}
+            slug={node.slug}
+            user={node.user}
+          />
+        ))}
       </List>
     </Fragment>
   )

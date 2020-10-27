@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Observable } from '@apollo/client'
 import { onError } from '@apollo/link-error'
-import { REFRESH_TOKEN } from 'graphql/mutations/user/refreshToken'
+import { RefreshTokenDocument } from '@wrench/common'
 import { client } from '../../withApollo'
 import Cookie, { Cookies } from 'services/cookie'
 
@@ -16,7 +16,7 @@ export default onError(({ graphQLErrors, operation, forward }) => {
 
           return client
             .mutate({
-              mutation: REFRESH_TOKEN,
+              mutation: RefreshTokenDocument,
               variables: { refreshToken },
             })
             .then(({ data }) => {

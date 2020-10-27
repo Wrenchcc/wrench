@@ -1,12 +1,11 @@
 // @ts-nocheck
 import React, { useCallback } from 'react'
-import { useMutation } from '@apollo/client'
-import { LIKE_COMMENT_MUTATION } from 'graphql/mutations/comment/like'
+import { useLikeCommentMutation } from '@wrench/common'
 import { Icon } from 'ui'
 import { Base } from './styles'
 
 function LikeComment({ comment }) {
-  const [toggleLike] = useMutation(LIKE_COMMENT_MUTATION)
+  const [toggleLike] = useLikeCommentMutation()
 
   const handleToggleLike = useCallback(() => {
     toggleLike({

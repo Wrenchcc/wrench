@@ -1,12 +1,11 @@
 // @ts-nocheck
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login'
-import { useMutation } from '@apollo/client'
+import { useAuthenticateGoogleMutation, useAuthenticateFacebookMutation } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import Router from 'next/router'
 import { Title } from 'ui'
 import { useCookie, Cookies } from 'hooks'
-import { AUTHENTICATE_FACEBOOK, AUTHENTICATE_GOOGLE } from 'graphql/mutations/user/authenticate'
 import AppleSignIn from '../AppleSignIn'
 import Legal from '../Legal'
 import { Base, FacebookButton, GoogleButton, AppleButton } from './styles'
@@ -18,8 +17,8 @@ const FACEBOOK_SCOPE = 'public_profile,email'
 
 export default function Login({ closeModal, referral = '/' }) {
   const { t } = useTranslation()
-  const [handleFacebookAuth] = useMutation(AUTHENTICATE_FACEBOOK)
-  const [handleGoogleAuth] = useMutation(AUTHENTICATE_GOOGLE)
+  const [handleFacebookAuth] = useAuthenticateFacebookMutation()
+  const [handleGoogleAuth] = useAuthenticateGoogleMutation()
   const [, setAccessToken] = useCookie(Cookies.ACCESS_TOKEN)
   const [, setRefreshToken] = useCookie(Cookies.REFRESH_TOKEN)
 

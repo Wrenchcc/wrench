@@ -1,30 +1,40 @@
 // @ts-nocheck
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
+import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
-import { useQuery } from '@apollo/client'
 import { Loader, Avatar, Text } from 'ui'
-import { useDebounce } from 'hooks'
-import { SEARCH_USER } from 'graphql/queries/search/searchUser'
 import { List, Base, Content, LoaderContainer, Empty } from './styles'
+import { useEffect } from 'react'
 
 function Result({ query, onPress }) {
   const { t } = useTranslation()
-  const debouncedQuery = useDebounce(query, 50)
 
-  const { data, loading } = useQuery(SEARCH_USER, {
-    variables: {
-      query: debouncedQuery,
-    },
-  })
+  const {
+    loadData,
+    data: { edges },
+    isFetching,
+    fetchMore,
+    isRefetching,
+    hasNextPage,
+  } = usePaginatedLazyQuery(['users'])(SearchUsersDocument)
+
+  useEffect(() => {
+    loadData({
+      variables: {
+        query,
+      },
+    })
+  }, [query])
 
   return (
     <List>
-      {!loading && data.users.edges.length === 0 && <Empty>{t('Result:notfound')}</Empty>}
+      {!isFetching && edges?.length === 0 && <Empty>{t('Result:notfound')}</Empty>}
 
       <InfiniteScroll
-        hasMore={data && data.users.pageInfo.hasNextPage}
+        loadMore={fetchMore}
+        hasMore={hasNextPage}
         loader={
           <LoaderContainer>
             <Loader key={0} />
@@ -32,27 +42,21 @@ function Result({ query, onPress }) {
         }
         useWindow={false}
       >
-        {data &&
-          data.users.edges.map(({ node }, index) => (
-            <Base first={index === 0} key={node.id}>
-              <Link href="/[username]" as={`/${node.username}`}>
-                <a>
-                  <Avatar
-                    size={40}
-                    uri={node.avatarUrl}
-                    isOnline={node.isOnline}
-                    onPress={onPress}
-                  />
-                  <Content onClick={onPress}>
-                    <Text lineHeight={18}>{node.fullName}</Text>
-                    <Text lineHeight={18} fontSize={15} color="neutral">
-                      {t('Result:projects', { count: node.projectCount })}
-                    </Text>
-                  </Content>
-                </a>
-              </Link>
-            </Base>
-          ))}
+        {edges?.map(({ node }, index) => (
+          <Base first={index === 0} key={node.id}>
+            <Link href="/[username]" as={`/${node.username}`}>
+              <a>
+                <Avatar size={40} uri={node.avatarUrl} isOnline={node.isOnline} onPress={onPress} />
+                <Content onClick={onPress}>
+                  <Text lineHeight={18}>{node.fullName}</Text>
+                  <Text lineHeight={18} fontSize={15} color="neutral">
+                    {t('Result:projects', { count: node.projectCount })}
+                  </Text>
+                </Content>
+              </a>
+            </Link>
+          </Base>
+        ))}
       </InfiniteScroll>
     </List>
   )

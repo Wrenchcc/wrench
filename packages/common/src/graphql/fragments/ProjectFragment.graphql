@@ -12,6 +12,12 @@ fragment Project on Project {
     isOwner
     isFollower
   }
+  type {
+    title
+  }
+  cover {
+    uri
+  }
   followers: followersConnection(first: 3) {
     totalCount
     edges {

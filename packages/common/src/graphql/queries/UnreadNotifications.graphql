@@ -1,0 +1,5 @@
+query unreadNotifications {
+  notifications {
+    unreadCount
+  }
+}

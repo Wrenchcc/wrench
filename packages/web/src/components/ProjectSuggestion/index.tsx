@@ -1,16 +1,18 @@
 // @ts-nocheck
 import React from 'react'
-import { useQuery, useMutation } from '@apollo/client'
+import { useFollowProjectMutation, useProjectSuggestionsQuery } from '@wrench/common'
 import { useTranslation } from 'react-i18next'
-import { GET_PROJECT_SUGGESTIONS } from 'graphql/queries/project/projectSuggestions'
-import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
 import { Title, Layout, ProjectCard } from 'ui'
 import { Category, Description } from './styles'
 
 function ProjectSuggestion() {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(GET_PROJECT_SUGGESTIONS)
-  const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
+  const [followProject] = useFollowProjectMutation()
+  const { data, loading } = useProjectSuggestionsQuery({
+    variables: {
+      first: 6,
+    },
+  })
 
   const toggleFollow = (project) => {
     const totalCount = project.permissions.isFollower

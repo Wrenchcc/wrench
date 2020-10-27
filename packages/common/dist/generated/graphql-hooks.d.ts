@@ -1067,6 +1067,12 @@ export declare type ProjectFragment = ({
     permissions?: Maybe<({
         __typename?: 'ProjectPermissions';
     } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>)>;
+    type?: Maybe<({
+        __typename?: 'ProjectType';
+    } & Pick<ProjectType, 'title'>)>;
+    cover?: Maybe<({
+        __typename?: 'CoverType';
+    } & Pick<CoverType, 'uri'>)>;
     followers?: Maybe<({
         __typename?: 'FollowersConnection';
     } & Pick<FollowersConnection, 'totalCount'> & {
@@ -1465,6 +1471,12 @@ export declare type RegisterDeviceTokenMutationVariables = Exact<{
 export declare type RegisterDeviceTokenMutation = ({
     __typename?: 'Mutation';
 } & Pick<Mutation, 'registerDeviceToken'>);
+export declare type SendPromoMutationVariables = Exact<{
+    number: Scalars['String'];
+}>;
+export declare type SendPromoMutation = ({
+    __typename?: 'Mutation';
+} & Pick<Mutation, 'sendPromo'>);
 export declare type ToggleNotificationSettingsMutationVariables = Exact<{
     input?: Maybe<ToggleNotificationSettingsInput>;
 }>;
@@ -1912,7 +1924,7 @@ export declare type ProjectQuery = ({
     } & {
         posts?: Maybe<({
             __typename?: 'PostConnection';
-        } & {
+        } & Pick<PostConnection, 'totalCount'> & {
             pageInfo: ({
                 __typename?: 'PageInfo';
             } & Pick<PageInfo, 'hasNextPage'>);
@@ -2210,6 +2222,16 @@ export declare type SimilarProjectsQuery = ({
             } & ProjectFragment);
         })>>;
     })>;
+});
+export declare type UnreadNotificationsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export declare type UnreadNotificationsQuery = ({
+    __typename?: 'Query';
+} & {
+    notifications?: Maybe<({
+        __typename?: 'NotificationsConnection';
+    } & Pick<NotificationsConnection, 'unreadCount'>)>;
 });
 export declare type UserQueryVariables = Exact<{
     username: Scalars['LowercaseString'];
@@ -3093,6 +3115,31 @@ export declare function useRegisterDeviceTokenMutation(baseOptions?: Apollo.Muta
 export declare type RegisterDeviceTokenMutationHookResult = ReturnType<typeof useRegisterDeviceTokenMutation>;
 export declare type RegisterDeviceTokenMutationResult = Apollo.MutationResult<RegisterDeviceTokenMutation>;
 export declare type RegisterDeviceTokenMutationOptions = Apollo.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+export declare const SendPromoDocument: Apollo.DocumentNode;
+export declare type SendPromoMutationFn = Apollo.MutationFunction<SendPromoMutation, SendPromoMutationVariables>;
+/**
+ * __useSendPromoMutation__
+ *
+ * To run a mutation, you first call `useSendPromoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendPromoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendPromoMutation, { data, loading, error }] = useSendPromoMutation({
+ *   variables: {
+ *      number: // value for 'number'
+ *   },
+ * });
+ */
+export declare function useSendPromoMutation(baseOptions?: Apollo.MutationHookOptions<SendPromoMutation, SendPromoMutationVariables>): Apollo.MutationTuple<SendPromoMutation, Exact<{
+    number: string;
+}>>;
+export declare type SendPromoMutationHookResult = ReturnType<typeof useSendPromoMutation>;
+export declare type SendPromoMutationResult = Apollo.MutationResult<SendPromoMutation>;
+export declare type SendPromoMutationOptions = Apollo.BaseMutationOptions<SendPromoMutation, SendPromoMutationVariables>;
 export declare const ToggleNotificationSettingsDocument: Apollo.DocumentNode;
 export declare type ToggleNotificationSettingsMutationFn = Apollo.MutationFunction<ToggleNotificationSettingsMutation, ToggleNotificationSettingsMutationVariables>;
 /**
@@ -4097,6 +4144,31 @@ export declare function useSimilarProjectsLazyQuery(baseOptions?: Apollo.LazyQue
 export declare type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
 export declare type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
 export declare type SimilarProjectsQueryResult = Apollo.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
+export declare const UnreadNotificationsDocument: Apollo.DocumentNode;
+/**
+ * __useUnreadNotificationsQuery__
+ *
+ * To run a query within a React component, call `useUnreadNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUnreadNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUnreadNotificationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useUnreadNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>): Apollo.QueryResult<UnreadNotificationsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useUnreadNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>): Apollo.QueryTuple<UnreadNotificationsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare type UnreadNotificationsQueryHookResult = ReturnType<typeof useUnreadNotificationsQuery>;
+export declare type UnreadNotificationsLazyQueryHookResult = ReturnType<typeof useUnreadNotificationsLazyQuery>;
+export declare type UnreadNotificationsQueryResult = Apollo.QueryResult<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>;
 export declare const UserDocument: Apollo.DocumentNode;
 /**
  * __useUserQuery__

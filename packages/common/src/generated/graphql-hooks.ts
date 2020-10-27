@@ -1298,6 +1298,12 @@ export type ProjectFragment = (
   )>, permissions?: Maybe<(
     { __typename?: 'ProjectPermissions' }
     & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>
+  )>, type?: Maybe<(
+    { __typename?: 'ProjectType' }
+    & Pick<ProjectType, 'title'>
+  )>, cover?: Maybe<(
+    { __typename?: 'CoverType' }
+    & Pick<CoverType, 'uri'>
   )>, followers?: Maybe<(
     { __typename?: 'FollowersConnection' }
     & Pick<FollowersConnection, 'totalCount'>
@@ -1790,6 +1796,16 @@ export type RegisterDeviceTokenMutation = (
   & Pick<Mutation, 'registerDeviceToken'>
 );
 
+export type SendPromoMutationVariables = Exact<{
+  number: Scalars['String'];
+}>;
+
+
+export type SendPromoMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'sendPromo'>
+);
+
 export type ToggleNotificationSettingsMutationVariables = Exact<{
   input?: Maybe<ToggleNotificationSettingsInput>;
 }>;
@@ -2280,6 +2296,7 @@ export type ProjectQuery = (
     { __typename?: 'Project' }
     & { posts?: Maybe<(
       { __typename?: 'PostConnection' }
+      & Pick<PostConnection, 'totalCount'>
       & { pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
@@ -2578,6 +2595,17 @@ export type SimilarProjectsQuery = (
   )> }
 );
 
+export type UnreadNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UnreadNotificationsQuery = (
+  { __typename?: 'Query' }
+  & { notifications?: Maybe<(
+    { __typename?: 'NotificationsConnection' }
+    & Pick<NotificationsConnection, 'unreadCount'>
+  )> }
+);
+
 export type UserQueryVariables = Exact<{
   username: Scalars['LowercaseString'];
   after?: Maybe<Scalars['String']>;
@@ -2737,6 +2765,12 @@ export const ProjectFragmentDoc = gql`
   permissions {
     isOwner
     isFollower
+  }
+  type {
+    title
+  }
+  cover {
+    uri
   }
   followers: followersConnection(first: 3) {
     totalCount
@@ -3910,6 +3944,36 @@ export function useRegisterDeviceTokenMutation(baseOptions?: Apollo.MutationHook
 export type RegisterDeviceTokenMutationHookResult = ReturnType<typeof useRegisterDeviceTokenMutation>;
 export type RegisterDeviceTokenMutationResult = Apollo.MutationResult<RegisterDeviceTokenMutation>;
 export type RegisterDeviceTokenMutationOptions = Apollo.BaseMutationOptions<RegisterDeviceTokenMutation, RegisterDeviceTokenMutationVariables>;
+export const SendPromoDocument = gql`
+    mutation sendPromo($number: String!) {
+  sendPromo(number: $number)
+}
+    `;
+export type SendPromoMutationFn = Apollo.MutationFunction<SendPromoMutation, SendPromoMutationVariables>;
+
+/**
+ * __useSendPromoMutation__
+ *
+ * To run a mutation, you first call `useSendPromoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendPromoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendPromoMutation, { data, loading, error }] = useSendPromoMutation({
+ *   variables: {
+ *      number: // value for 'number'
+ *   },
+ * });
+ */
+export function useSendPromoMutation(baseOptions?: Apollo.MutationHookOptions<SendPromoMutation, SendPromoMutationVariables>) {
+        return Apollo.useMutation<SendPromoMutation, SendPromoMutationVariables>(SendPromoDocument, baseOptions);
+      }
+export type SendPromoMutationHookResult = ReturnType<typeof useSendPromoMutation>;
+export type SendPromoMutationResult = Apollo.MutationResult<SendPromoMutation>;
+export type SendPromoMutationOptions = Apollo.BaseMutationOptions<SendPromoMutation, SendPromoMutationVariables>;
 export const ToggleNotificationSettingsDocument = gql`
     mutation toggleNotificationSettings($input: ToggleNotificationSettingsInput) {
   toggleNotificationSettings(input: $input) {
@@ -4830,6 +4894,7 @@ export const ProjectDocument = gql`
   project(id: $id, slug: $slug) {
     ...Project
     posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+      totalCount
       pageInfo {
         hasNextPage
       }
@@ -5370,6 +5435,38 @@ export function useSimilarProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
 export type SimilarProjectsQueryHookResult = ReturnType<typeof useSimilarProjectsQuery>;
 export type SimilarProjectsLazyQueryHookResult = ReturnType<typeof useSimilarProjectsLazyQuery>;
 export type SimilarProjectsQueryResult = Apollo.QueryResult<SimilarProjectsQuery, SimilarProjectsQueryVariables>;
+export const UnreadNotificationsDocument = gql`
+    query unreadNotifications {
+  notifications {
+    unreadCount
+  }
+}
+    `;
+
+/**
+ * __useUnreadNotificationsQuery__
+ *
+ * To run a query within a React component, call `useUnreadNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUnreadNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUnreadNotificationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUnreadNotificationsQuery(baseOptions?: Apollo.QueryHookOptions<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>) {
+        return Apollo.useQuery<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>(UnreadNotificationsDocument, baseOptions);
+      }
+export function useUnreadNotificationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>) {
+          return Apollo.useLazyQuery<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>(UnreadNotificationsDocument, baseOptions);
+        }
+export type UnreadNotificationsQueryHookResult = ReturnType<typeof useUnreadNotificationsQuery>;
+export type UnreadNotificationsLazyQueryHookResult = ReturnType<typeof useUnreadNotificationsLazyQuery>;
+export type UnreadNotificationsQueryResult = Apollo.QueryResult<UnreadNotificationsQuery, UnreadNotificationsQueryVariables>;
 export const UserDocument = gql`
     query user($username: LowercaseString!, $after: String, $first: Int = 5) {
   user(username: $username) {

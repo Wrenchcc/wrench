@@ -1,12 +1,10 @@
 // @ts-nocheck
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useQuery, useMutation } from '@apollo/client'
+import { useUserFollowingProjectsQuery, useFollowProjectMutation } from '@wrench/common'
 import { useRouter } from 'next/router'
-import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
 import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'
-import { USER_FOLOWING_PROJECTS } from 'graphql/queries/user/followingProjects'
 import { ProjectCard, Text } from 'ui'
 import { Base, Title, List, Inner } from './styles'
 
@@ -14,11 +12,12 @@ function UserFollowingProjects({ username, isAuthenticated }) {
   const { t } = useTranslation()
   const router = useRouter()
 
-  const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
+  const [followProject] = useFollowProjectMutation()
 
-  const { data, loading } = useQuery(USER_FOLOWING_PROJECTS, {
+  const { data, loading } = useUserFollowingProjectsQuery({
     variables: {
       username,
+      first: 6,
     },
   })
 
@@ -73,7 +72,7 @@ function UserFollowingProjects({ username, isAuthenticated }) {
 
       <List>
         <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: 50 }}>
-          {data.user.following.edges.map(({ node }) => (
+          {data.user.projects.edges.map(({ node }) => (
             <Inner key={node.id}>
               <ProjectCard key={node.id} project={node} onFollow={() => toggleFollow(node)} />
             </Inner>

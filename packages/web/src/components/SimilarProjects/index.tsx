@@ -1,12 +1,11 @@
 // @ts-nocheck
 import React from 'react'
-import { useQuery } from '@apollo/client'
-import { SIMILAR_PROJECTS_QUERY } from 'graphql/queries/project/similarProjects'
+import { useSimilarProjectsQuery } from '@wrench/common'
 import { Card, Loader } from 'ui'
 import { Inner, Scroll, Types, LoaderContainer } from './styles'
 
 function SimilarProjects({ id, closeModal }) {
-  const { data, loading } = useQuery(SIMILAR_PROJECTS_QUERY, {
+  const { data, loading } = useSimilarProjectsQuery({
     variables: {
       id,
       first: 6,
