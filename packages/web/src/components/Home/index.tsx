@@ -5,7 +5,6 @@ import { useQuery } from '@apollo/client'
 import Link from 'next/link'
 import Seo from 'utils/seo'
 import { Title } from 'ui'
-import { GET_POPULAR_PROJECTS } from 'graphql/queries/project/popularProjects'
 import Popular from 'components/Popular'
 import Footer from 'components/Footer'
 import AppPromo from 'components/AppPromo'
@@ -18,21 +17,12 @@ const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing-v2.mp4'
 
 export default function Home(props) {
   const { t } = useTranslation()
-  const { data, loading } = useQuery(GET_POPULAR_PROJECTS, {
-    variables: {
-      first: 8,
-    },
-  })
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
       <Login closeModal={closeModal} />
     </Modal>
   ))
-
-  if (loading) {
-    return null
-  }
 
   return (
     <>
@@ -63,7 +53,7 @@ export default function Home(props) {
       </Inner>
 
       <Projects>
-        <Popular projects={data?.projects} />
+        <Popular />
 
         <Link href="/explore">
           <ExploreLink>{t('home:explore')}</ExploreLink>

@@ -1,11 +1,9 @@
 // @ts-nocheck
 import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { useQuery, useMutation } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
 import Seo from 'utils/seo'
-import { PROJECT_BY_SLUG } from 'graphql/queries/project/projectBySlug'
-import { FOLLOW_PROJECT_MUTATION } from 'graphql/mutations/project/follow'
+import { usePaginatedQuery, ProjectDocument, useFollowProjectMutation } from '@wrench/common'
 import Follow from 'components/Follow'
 import Login from 'components/Login'
 import Share from 'components/Share'
@@ -18,13 +16,18 @@ const ACTION = 'follow'
 
 function Project({ slug, isAuthenticated, action }) {
   const { t } = useTranslation()
-  const { data, loading, fetchMore } = useQuery(PROJECT_BY_SLUG, {
+  const {
+    data: { edges, project },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['project', 'posts'])(ProjectDocument, {
     variables: {
       slug,
     },
   })
 
-  const [followProject] = useMutation(FOLLOW_PROJECT_MUTATION)
+  const [followProject] = useFollowProjectMutation()
 
   const [showLoginModal, closeLoginModal] = useModal(
     () => (
@@ -38,19 +41,19 @@ function Project({ slug, isAuthenticated, action }) {
   const [showSimilarModal, closeSimilarModal] = useModal(
     () => (
       <Modal large close={closeSimilarModal}>
-        <SimilarProjects id={data.project.id} closeModal={closeSimilarModal} />
+        <SimilarProjects id={project.id} closeModal={closeSimilarModal} />
       </Modal>
     ),
-    [data]
+    [project]
   )
 
   const [showShare, closeShareModal] = useModal(
     () => (
       <Modal close={closeShareModal}>
-        <Share closeModal={closeShareModal} dynamicLink={data.project.dynamicLink} />
+        <Share closeModal={closeShareModal} dynamicLink={project.dynamicLink} />
       </Modal>
     ),
-    [data]
+    [project]
   )
 
   const toggleFollow = (project) => {
@@ -89,12 +92,12 @@ function Project({ slug, isAuthenticated, action }) {
   }
 
   useEffect(() => {
-    if (action === ACTION && !data.project.permissions.isFollower) {
-      toggleFollow(data.project)
+    if (action === ACTION && !project.permissions.isFollower) {
+      toggleFollow(project)
     }
   }, [action])
 
-  if (loading) {
+  if (!project) {
     return null
   }
 
@@ -102,26 +105,26 @@ function Project({ slug, isAuthenticated, action }) {
     <Layout>
       <Seo
         config={{
-          title: t('Project:title', { title: data.project.title, type: data.project.type.title }),
+          title: t('Project:title', { title: project.title, type: project?.type?.title }),
           description: t('Project:description', {
-            followers: data.project.followers.totalCount,
-            posts: data.project.posts.totalCount,
-            fullName: data.project.user.fullName,
-            username: data.project.user.username,
+            followers: project.followers.totalCount,
+            posts: project?.posts?.totalCount || 0,
+            fullName: project.user.fullName,
+            username: project.user.username,
           }),
           openGraph: {
-            title: t('Project:title', { title: data.project.title, type: data.project.type.title }),
+            title: t('Project:title', { title: project.title, type: project?.type?.title }),
             description: t('Project:description', {
-              followers: data.project.followers.totalCount,
-              posts: data.project.posts.totalCount,
-              fullName: data.project.user.fullName,
-              username: data.project.user.username,
+              followers: project.followers.totalCount,
+              posts: project?.posts?.totalCount || 0,
+              fullName: project.user.fullName,
+              username: project.user.username,
             }),
             url: `https://wrench.cc/project/${slug}`,
             type: 'website',
             images: [
               {
-                url: `${data.project.cover.uri}?w=650&h=650&dpr=1`,
+                url: `${project?.cover?.uri}?w=650&h=650&dpr=1`,
                 width: 640,
                 height: 640,
               },
@@ -133,15 +136,15 @@ function Project({ slug, isAuthenticated, action }) {
 
       <Left>
         <Title large lineHeight={78}>
-          {data.project.title}
+          {project?.title}
         </Title>
 
-        <Followers followers={data.project.followers} project={data.project} />
+        <Followers followers={project.followers} project={project} />
 
-        {!data.project.permissions.isOwner && (
+        {!project.permissions.isOwner && (
           <Follow
-            following={data.project.permissions.isFollower}
-            onPress={() => toggleFollow(data.project)}
+            following={project.permissions.isFollower}
+            onPress={() => toggleFollow(project)}
           />
         )}
 
@@ -151,38 +154,8 @@ function Project({ slug, isAuthenticated, action }) {
       </Left>
 
       <Right>
-        <InfiniteScroll
-          loadMore={() =>
-            fetchMore({
-              variables: {
-                after: data.project.posts.edges[data.project.posts.edges.length - 1].cursor,
-              },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) {
-                  return prev
-                }
-
-                return {
-                  ...prev,
-                  Project: {
-                    ...prev.project,
-                    posts: {
-                      ...prev.project.posts,
-                      pageInfo: {
-                        ...prev.project.posts.pageInfo,
-                        ...fetchMoreResult.project.posts.pageInfo,
-                      },
-                      edges: [...prev.project.posts.edges, ...fetchMoreResult.project.posts.edges],
-                    },
-                  },
-                }
-              },
-            })
-          }
-          hasMore={data.project.posts.pageInfo.hasNextPage}
-          loader={<Loader key={0} />}
-        >
-          {data.project.posts.edges.map(({ node }) => (
+        <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
+          {edges?.map(({ node }) => (
             <Post data={node} key={node.id} withoutTitle />
           ))}
         </InfiniteScroll>

@@ -1298,6 +1298,12 @@ export type ProjectFragment = (
   )>, permissions?: Maybe<(
     { __typename?: 'ProjectPermissions' }
     & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>
+  )>, type?: Maybe<(
+    { __typename?: 'ProjectType' }
+    & Pick<ProjectType, 'title'>
+  )>, cover?: Maybe<(
+    { __typename?: 'CoverType' }
+    & Pick<CoverType, 'uri'>
   )>, followers?: Maybe<(
     { __typename?: 'FollowersConnection' }
     & Pick<FollowersConnection, 'totalCount'>
@@ -2280,6 +2286,7 @@ export type ProjectQuery = (
     { __typename?: 'Project' }
     & { posts?: Maybe<(
       { __typename?: 'PostConnection' }
+      & Pick<PostConnection, 'totalCount'>
       & { pageInfo: (
         { __typename?: 'PageInfo' }
         & Pick<PageInfo, 'hasNextPage'>
@@ -2737,6 +2744,12 @@ export const ProjectFragmentDoc = gql`
   permissions {
     isOwner
     isFollower
+  }
+  type {
+    title
+  }
+  cover {
+    uri
   }
   followers: followersConnection(first: 3) {
     totalCount
@@ -4830,6 +4843,7 @@ export const ProjectDocument = gql`
   project(id: $id, slug: $slug) {
     ...Project
     posts: postsConnection(first: $first, after: $after) @connection(key: "posts") {
+      totalCount
       pageInfo {
         hasNextPage
       }

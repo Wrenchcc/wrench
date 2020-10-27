@@ -1,9 +1,8 @@
 // @ts-nocheck
 import InfiniteScroll from 'react-infinite-scroller'
 import styled from 'styled-components'
-import { useQuery } from '@apollo/client'
+import { usePaginatedQuery, PostsDocument } from '@wrench/common'
 import Seo from 'utils/seo'
-import { GET_EXPLORE } from 'graphql/queries/explore/explore'
 import { Post, Layout, Loader } from 'ui'
 import UiTitle from 'ui/Title'
 import Popular from 'components/Popular'
@@ -14,15 +13,12 @@ const Title = styled(UiTitle)`
 `
 
 export default function Explore() {
-  const { data, loading, fetchMore } = useQuery(GET_EXPLORE, {
-    variables: {
-      first: 8,
-    },
-  })
-
-  if (loading) {
-    return null
-  }
+  const {
+    data: { edges },
+    isFetching,
+    fetchMore,
+    hasNextPage,
+  } = usePaginatedQuery(['posts'])(PostsDocument)
 
   return (
     <Layout column paddingTop={40}>
@@ -34,38 +30,13 @@ export default function Explore() {
 
       <ProjectTypes />
 
-      <Popular projects={data.projects} />
+      <Popular />
 
       <Title medium>Recent posts</Title>
-      <InfiniteScroll
-        loadMore={() =>
-          fetchMore({
-            variables: {
-              after: data.posts.edges[data.posts.edges.length - 1].cursor,
-            },
-            updateQuery: (prev, { fetchMoreResult }) => {
-              if (!fetchMoreResult) {
-                return prev
-              }
-
-              return {
-                ...prev,
-                posts: {
-                  ...prev.posts,
-                  pageInfo: {
-                    ...prev.posts.pageInfo,
-                    ...fetchMoreResult.posts.pageInfo,
-                  },
-                  edges: [...prev.posts.edges, ...fetchMoreResult.posts.edges],
-                },
-              }
-            },
-          })
-        }
-        hasMore={data.posts && data.posts.pageInfo.hasNextPage}
-        loader={<Loader key={0} />}
-      >
-        {data.posts && data.posts.edges.map(({ node }) => <Post data={node} key={node.id} />)}
+      <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
+        {edges?.map(({ node }) => (
+          <Post data={node} key={node.id} />
+        ))}
       </InfiniteScroll>
     </Layout>
   )

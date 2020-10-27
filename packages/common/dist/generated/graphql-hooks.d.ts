@@ -1067,6 +1067,12 @@ export declare type ProjectFragment = ({
     permissions?: Maybe<({
         __typename?: 'ProjectPermissions';
     } & Pick<ProjectPermissions, 'isOwner' | 'isFollower'>)>;
+    type?: Maybe<({
+        __typename?: 'ProjectType';
+    } & Pick<ProjectType, 'title'>)>;
+    cover?: Maybe<({
+        __typename?: 'CoverType';
+    } & Pick<CoverType, 'uri'>)>;
     followers?: Maybe<({
         __typename?: 'FollowersConnection';
     } & Pick<FollowersConnection, 'totalCount'> & {
@@ -1912,7 +1918,7 @@ export declare type ProjectQuery = ({
     } & {
         posts?: Maybe<({
             __typename?: 'PostConnection';
-        } & {
+        } & Pick<PostConnection, 'totalCount'> & {
             pageInfo: ({
                 __typename?: 'PageInfo';
             } & Pick<PageInfo, 'hasNextPage'>);
