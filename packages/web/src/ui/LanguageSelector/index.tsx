@@ -1,6 +1,7 @@
 // @ts-nocheck
-import React from 'react'
-import { useTranslation } from 'i18n'
+import React, { useContext } from 'react'
+import { useTranslation, i18n } from 'i18n'
+import { I18nContext } from 'next-i18next'
 import Router from 'next/router'
 import { SUPPORTED_LOCALS } from 'i18n'
 import { useCookie, Cookies } from 'hooks'
@@ -9,11 +10,12 @@ import { Base, Select } from './styles'
 
 function LanguageSelector() {
   const { t } = useTranslation('Settings')
-  const [selectedLanguage, setValue] = useCookie(Cookies.PREFERRED_LANGUAGE)
+  const {
+    i18n: { language },
+  } = useContext(I18nContext)
 
   const handleChange = (evt) => {
-    setValue(evt.target.value)
-    Router.reload(window.location.pathname)
+    i18n.changeLanguage(evt.target.value).then(e => console.log(e))
   }
 
   return (
@@ -21,7 +23,7 @@ function LanguageSelector() {
       <Select onChange={handleChange}>
         {SUPPORTED_LOCALS.map((locale) => {
           return (
-            <option key={locale} selected={selectedLanguage === locale} value={locale}>
+            <option key={locale} selected={language === locale} value={locale}>
               {t(`languages.${locale}`)}
             </option>
           )

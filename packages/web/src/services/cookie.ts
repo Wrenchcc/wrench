@@ -8,7 +8,7 @@ export enum Cookies {
   REFRESH_TOKEN = 'refresh_token',
   VIEWER_COUNTRY = 'viewer_country',
   SHOW_PROMO = 'show_promo',
-  PREFERRED_LANGUAGE = 'preferred_language',
+  PREFERRED_LANGUAGE = 'next-i18next',
 }
 
 const defaultOptions = {

@@ -1,7 +1,8 @@
 // @ts-nocheck
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useContext } from 'react'
 import { Element } from 'react-scroll'
-import { useTranslation } from 'i18n'
+import { useTranslation, i18n } from 'i18n'
+import { I18nContext } from 'next-i18next'
 import {
   useEditUserMutation,
   useCurrentUserSettingsQuery,
@@ -9,8 +10,7 @@ import {
   useToggleNotificationSettingsMutation,
 } from '@wrench/common'
 import { SUPPORTED_LOCALS } from 'i18n'
-import { useCookie, Cookies } from 'hooks'
-import { Layout, Title, Text, Switch, Input, SearchLocation, Button } from 'ui'
+import { Layout, Title, Text, Switch, Input, SearchLocation, Button, Icon } from 'ui'
 import {
   Left,
   Right,
@@ -32,9 +32,13 @@ function Settings({ isAuthenticated }) {
     return null
   }
 
+  const {
+    i18n: { language },
+  } = useContext(I18nContext)
+
+
   const { t } = useTranslation('Settings')
   const [saved, setSaved] = useState(false)
-  const [selectedLanguage] = useCookie(Cookies.PREFERRED_LANGUAGE)
 
   const [data, setData] = useState({
     lastName: '',
@@ -244,8 +248,8 @@ function Settings({ isAuthenticated }) {
             {SUPPORTED_LOCALS.map((locale) => {
               return (
                 <Setting key={locale}>
-                  <a href={`?hl=${locale}`}>{t(`languages.${locale}`)}</a>
-                  {selectedLanguage === locale && <img src={require('./check.svg')} />}
+                  <span onClick={() => i18n.changeLanguage(locale)}><Text>{t(`languages.${locale}`)}</Text></span>
+                  {language === locale && <Icon source={require('./check.svg?include')} />}
                 </Setting>
               )
             })}

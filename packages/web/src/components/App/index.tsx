@@ -64,7 +64,6 @@ class App extends NextApp<Props> {
     return {
       i18nServerInstance,
       initialI18nStore,
-      initialLanguage,
       pageProps,
       viewerCountry:
         (req && req.headers[CLOUDFRONT_COUNTRY_VIEWER]) ||
