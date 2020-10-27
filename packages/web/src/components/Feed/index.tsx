@@ -27,7 +27,7 @@ export default function Home() {
     },
   })
 
-  if (!data?.user?.interestedIn.length) {
+  if (data?.user && !data?.user?.interestedIn.length) {
     return <Onboarding />
   }
 
