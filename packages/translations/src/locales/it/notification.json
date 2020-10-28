@@ -1,8 +1,8 @@
 {
-  "COMMENT": "Ha commentato il tuo post",
-  "COMMENT_LIKE": "Ha suscitato il tuo commento",
-  "FOLLOW": "Ora segue il tuo progetto",
-  "MENTION": "Ti ha menzionato in un commento",
-  "POST_LIKE": "Ha acceso il tuo post",
-  "REPLY": "Ha risposto al tuo commento"
+  "comment": "Ha commentato il tuo post",
+  "comment_like": "Ha suscitato il tuo commento",
+  "follow": "Ora segue il tuo progetto",
+  "mention": "Ti ha menzionato in un commento",
+  "post_like": "Ha acceso il tuo post",
+  "reply": "Ha risposto al tuo commento"
 }

@@ -1,7 +1,7 @@
 {
-  "DOWNLOAD": "Scarica app",
-  "EXPLORE": "Esplorare",
-  "FEED": "Alimentazione",
-  "LOGIN": "Accesso",
-  "REGISTER": "Iscriviti"
+  "download": "Scarica app",
+  "explore": "Esplorare",
+  "feed": "Alimentazione",
+  "login": "Accesso",
+  "register": "Iscriviti"
 }
