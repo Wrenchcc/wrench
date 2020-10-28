@@ -5,7 +5,7 @@ import { Text, LanguageSelector } from 'ui'
 import { Base, Inner, Bottom, Navigation, Column, NavItem, Left, Right } from './styles'
 
 function Footer() {
-  const { t } = useTranslation('Footer')
+  const { t } = useTranslation('footer')
 
   return (
     <Base>

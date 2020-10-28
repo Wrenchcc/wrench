@@ -36,7 +36,7 @@ function Settings({ isAuthenticated }) {
     i18n: { language },
   } = useContext(I18nContext)
 
-  const { t } = useTranslation('Settings')
+  const { t } = useTranslation('settings')
   const [saved, setSaved] = useState(false)
 
   const [data, setData] = useState({

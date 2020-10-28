@@ -9,7 +9,7 @@ import { ProjectCard, Text } from 'ui'
 import { Base, Title, List, Inner } from './styles'
 
 function UserFollowingProjects({ username, isAuthenticated }) {
-  const { t } = useTranslation('UserFollowingProjects')
+  const { t } = useTranslation('user-following-projects')
   const router = useRouter()
 
   const [followProject] = useFollowProjectMutation()

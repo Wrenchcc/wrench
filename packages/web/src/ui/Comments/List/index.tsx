@@ -8,7 +8,7 @@ import Comments from 'components/Comments'
 import { Row, Comment, LoadMore } from './styles'
 
 function List({ data, postId }) {
-  const { t } = useTranslation('List')
+  const { t } = useTranslation('list')
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal} large>

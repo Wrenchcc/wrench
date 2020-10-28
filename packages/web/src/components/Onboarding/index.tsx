@@ -10,7 +10,7 @@ const MIN_ITEMS = 3
 const ITEM_SIZE = 172.5
 
 export default function Onboarding() {
-  const { t } = useTranslation('Onboarding')
+  const { t } = useTranslation('onboarding')
   const { data, loading } = useProjectTypesQuery()
   const [editUser] = useEditUserMutation()
   const [items, setItems] = useState({})

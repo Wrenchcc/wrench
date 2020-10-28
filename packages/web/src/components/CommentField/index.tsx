@@ -64,7 +64,7 @@ const styles = {
 }
 
 const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' }, ref) => {
-  const { t } = useTranslation('CommentField')
+  const { t } = useTranslation('comment-field')
   const router = useRouter()
   const [isAuthenticated] = useCookie(Cookies.ACCESS_TOKEN)
   const [text, setText] = useState('')

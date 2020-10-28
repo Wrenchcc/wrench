@@ -6,7 +6,7 @@ import { useTranslation } from 'i18n'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function FollowingProjects() {
-  const { t } = useTranslation('FollowingProjects')
+  const { t } = useTranslation('following-projects')
   const { data, loading } = useCurrentUserFollowingProjectsQuery()
 
   if (loading || !data.user) {

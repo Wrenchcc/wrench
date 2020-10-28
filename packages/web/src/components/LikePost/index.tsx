@@ -13,7 +13,7 @@ import { Base } from './styled'
 const ACTION = 'spark'
 
 function LikePost({ post }) {
-  const { t } = useTranslation('LikePost')
+  const { t } = useTranslation('like-post')
   const [isAuthenticated] = useCookie(Cookies.ACCESS_TOKEN)
   const [toggleLike] = useLikePostMutation()
   const router = useRouter()

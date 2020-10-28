@@ -5,7 +5,7 @@ import { useTranslation } from 'i18n'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function UserProjects({ projects }) {
-  const { t } = useTranslation('UserProjects')
+  const { t } = useTranslation('user-projects')
 
   return (
     <Base>

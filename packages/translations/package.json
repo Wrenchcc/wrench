@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "translations:create": "i18next --config config.js ../web/src/**/**/*.tsx",
+    "translations:create": "i18next --config config.js ../web/src/**/*/*.tsx",
     "translations:autotranslate": "json-autotranslate -i src/locales -d -c service-account.json",
     "build": "tsc"
   },

@@ -10,7 +10,7 @@ const SEARCH_ENDPOINT = 'https://api.mapbox.com/geocoding/v5/mapbox.places'
 const { MAPBOX_API_KEY } = process.env
 
 function SearchLocation({ onPress, value }) {
-  const { t } = useTranslation('SearchLocation')
+  const { t } = useTranslation('search-location')
   const ref = useRef()
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState('')

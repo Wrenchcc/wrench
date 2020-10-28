@@ -15,7 +15,7 @@ import { Left, Right, ShareButton, Similar, Followers } from './styles'
 const ACTION = 'follow'
 
 function Project({ slug, isAuthenticated, action }) {
-  const { t } = useTranslation('Project')
+  const { t } = useTranslation('project')
   const {
     data: { edges, project },
     isFetching,

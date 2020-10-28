@@ -4,7 +4,7 @@ import { useTranslation } from 'i18n'
 import { Base } from './styles'
 
 function Follow({ following, onPress }) {
-  const { t } = useTranslation('Follow')
+  const { t } = useTranslation('follow')
   return (
     <Base onPress={onPress} black={!following}>
       {following ? t('unfollow') : t('follow')}

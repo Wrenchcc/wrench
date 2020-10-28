@@ -7,7 +7,7 @@ import { Notification, Loader, Text } from 'ui'
 import { Base, Empty, LoaderContainer } from './styles'
 
 function Notifications({ onPress }) {
-  const { t } = useTranslation('Notifications')
+  const { t } = useTranslation('notifications')
 
   const {
     data: { edges },

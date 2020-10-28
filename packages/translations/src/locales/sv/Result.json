@@ -1,4 +1,4 @@
 {
-  "projects": "{{count, humanFormat}} projekt",
-  "notfound": "Inga sökresultat funna."
-}
+    "projects": "{{count, humanFormat}} projekt",
+    "notfound": "Inga sökresultat funna."
+  }

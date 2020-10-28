@@ -9,7 +9,7 @@ import { List, Base, Content, LoaderContainer, Empty } from './styles'
 import { useEffect } from 'react'
 
 function Result({ query, onPress }) {
-  const { t } = useTranslation('Result')
+  const { t } = useTranslation('result')
 
   const {
     loadData,

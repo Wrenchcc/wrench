@@ -5,7 +5,7 @@ import { usePaginatedQuery, FollowersDocument } from '@wrench/common'
 // import { Base } from './styles'
 
 function Followers({ id }) {
-  const { t } = useTranslation('Followers')
+  const { t } = useTranslation('followers')
   const {
     data: { edges },
     isFetching,

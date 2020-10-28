@@ -33,7 +33,7 @@ import {
 
 function Header({ isAuthenticated }) {
   const router = useRouter()
-  const { t } = useTranslation('Header')
+  const { t } = useTranslation('header')
   const { data } = useUnreadNotificationsQuery({
     pollInterval: ms('1m'),
     skip: !isAuthenticated,

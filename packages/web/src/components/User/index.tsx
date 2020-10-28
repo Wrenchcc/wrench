@@ -11,7 +11,7 @@ import { withHttp } from 'utils/url'
 import { Inner, Top, Name, Left, Right, Info } from './styles'
 
 function User({ username, isAuthenticated }) {
-  const { t } = useTranslation('User')
+  const { t } = useTranslation('user')
 
   const {
     data: { edges, user },

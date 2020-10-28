@@ -6,7 +6,7 @@ import { Card, Text } from 'ui'
 import { List, Title } from './styles'
 
 function Popular() {
-  const { t } = useTranslation('Popular')
+  const { t } = useTranslation('popular')
 
   const {
     data: { edges },

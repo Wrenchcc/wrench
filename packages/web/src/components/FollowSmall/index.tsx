@@ -4,7 +4,7 @@ import { useTranslation } from 'i18n'
 import { Base } from './styles'
 
 function FollowSmall({ following, onPress }) {
-  const { t } = useTranslation('Follow')
+  const { t } = useTranslation('follow')
   return <Base onPress={onPress}>{following ? t('unfollow') : t('follow')}</Base>
 }
 

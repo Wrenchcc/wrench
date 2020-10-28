@@ -28,7 +28,7 @@ function description(data, t) {
 }
 
 function Notification({ data, first, onPress }) {
-  const { t } = useTranslation('Notification')
+  const { t } = useTranslation('notification')
 
   return (
     <Base first={first}>

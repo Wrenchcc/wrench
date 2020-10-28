@@ -6,7 +6,7 @@ import { Title, Layout, ProjectCard } from 'ui'
 import { Category, Description } from './styles'
 
 function ProjectSuggestion() {
-  const { t } = useTranslation('ProjectSuggestion')
+  const { t } = useTranslation('project-suggestion')
   const [followProject] = useFollowProjectMutation()
   const { data, loading } = useProjectSuggestionsQuery({
     variables: {

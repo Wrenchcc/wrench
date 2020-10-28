@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Base, Users, User, Avatar, Count } from './styles'
 
 const Followers = memo(function Followers({ followers, project, className }) {
-  const { t } = useTranslation('Followers')
+  const { t } = useTranslation('followers')
 
   return (
     <Base className={className}>

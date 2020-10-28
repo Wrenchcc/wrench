@@ -12,7 +12,7 @@ import ProjectSuggestion from 'components/ProjectSuggestion'
 import { Left, Right } from './styles'
 
 export default function Home() {
-  const { t } = useTranslation('Feed')
+  const { t } = useTranslation('feed')
   const { data } = useCurrentUserQuery()
 
   const {

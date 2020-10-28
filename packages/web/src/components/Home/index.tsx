@@ -15,7 +15,7 @@ import { Hero, Inner, Signup, Description, Video, Projects, ExploreLink } from '
 const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing-v2.mp4'
 
 export default function Home(props) {
-  const { t } = useTranslation('Home')
+  const { t } = useTranslation('home')
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>

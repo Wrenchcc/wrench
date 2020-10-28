@@ -9,7 +9,7 @@ import Login from 'components/Login'
 import { Base, Nav, NavLink, Close } from './styles'
 
 function MobileMenu({ isAuthenticated, onClose }) {
-  const client = useApolloClient('MobileMenu')
+  const client = useApolloClient('mobile-menu')
   const router = useRouter()
   const { t } = useTranslation()
 

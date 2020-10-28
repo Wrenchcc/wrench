@@ -9,7 +9,7 @@ import { Icon } from 'ui'
 import { Base, Select } from './styles'
 
 function LanguageSelector() {
-  const { t } = useTranslation('Settings')
+  const { t } = useTranslation('settings')
   const {
     i18n: { language },
   } = useContext(I18nContext)

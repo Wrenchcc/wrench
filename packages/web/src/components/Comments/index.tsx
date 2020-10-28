@@ -10,7 +10,7 @@ import Item from './Item'
 import { Base, Footer, Scroll, LoaderContainer, LoadReplies } from './styles'
 
 function Comments({ postId }) {
-  const { t } = useTranslation('Comments')
+  const { t } = useTranslation('comments')
   const [mention, setMention] = useState()
   const [commentId, setCommentId] = useState()
   const inputRef = useRef()

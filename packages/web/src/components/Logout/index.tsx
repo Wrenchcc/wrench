@@ -5,7 +5,7 @@ import { useTranslation } from 'i18n'
 import { Base } from './styles'
 
 function Logout({ username, onPress }) {
-  const { t } = useTranslation('Logout')
+  const { t } = useTranslation('logout')
   const client = useApolloClient()
 
   return (

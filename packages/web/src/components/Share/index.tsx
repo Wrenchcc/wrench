@@ -45,7 +45,7 @@ const generateShareableUrl = url => [
 ]
 
 function Share({ closeModal, dynamicLink }) {
-  const { t } = useTranslation('Share')
+  const { t } = useTranslation('share')
   const providers = generateShareableUrl(dynamicLink)
 
   const renderComponent = ({ provider, url, closeModal }) => {

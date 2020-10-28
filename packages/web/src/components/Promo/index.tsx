@@ -19,7 +19,7 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
 })
 
 function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizontal, inline }) {
-  const { t } = useTranslation('Promo')
+  const { t } = useTranslation('promo')
   const { systemTheme } = useTheme()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')

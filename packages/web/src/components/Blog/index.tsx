@@ -12,7 +12,7 @@ import ProjectTypes from 'components/ProjectTypes'
 import { List, Title, Card } from './styles'
 
 export default function Blog() {
-  const { t } = useTranslation('Blog')
+  const { t } = useTranslation('blog')
 
   const {
     data: { edges },

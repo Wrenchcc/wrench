@@ -6,7 +6,7 @@ import Result from './Result'
 import { Base, Field, Icon } from './styles'
 
 function Search({ className, inverted }) {
-  const { t } = useTranslation('Search')
+  const { t } = useTranslation('search')
   const ref = useRef()
 
   const [value, setValue] = useState('')

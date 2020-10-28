@@ -16,7 +16,7 @@ const FACEBOOK_APP_ID = '1174076712654826'
 const FACEBOOK_SCOPE = 'public_profile,email'
 
 export default function Login({ closeModal, referral = '/' }) {
-  const { t } = useTranslation('Login')
+  const { t } = useTranslation('login')
   const [handleFacebookAuth] = useAuthenticateFacebookMutation()
   const [handleGoogleAuth] = useAuthenticateGoogleMutation()
   const [, setAccessToken] = useCookie(Cookies.ACCESS_TOKEN)
