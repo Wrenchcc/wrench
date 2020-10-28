@@ -1,12 +1,12 @@
 {
-  "SV": "Swedish",
-  "EN": "English",
-  "ES": "Spanish",
-  "IT": "Italian",
-  "DE": "German",
-  "NL": "Dutch",
-  "FR": "French",
-  "TL": "Filipino",
-  "PT": "Portuguese",
-  "RU": "Russian"
+  "sv": "Swedish",
+  "en": "English",
+  "es": "Spanish",
+  "it": "Italian",
+  "de": "German",
+  "nl": "Dutch",
+  "fr": "French",
+  "tl": "Filipino",
+  "pt": "Portuguese",
+  "ru": "Russian"
 }

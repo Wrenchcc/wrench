@@ -1,11 +1,11 @@
 {
-    "DOWNLOAD": "",
-    "EXPLORE": "",
-    "FEED": "",
-    "LIKE": "",
-    "LIKE_plural": "",
-    "LOGIN": "",
-    "REGISTER": "",
-    "REPLY": "",
-    "SIGN_OUT": ""
+    "download": "",
+    "explore": "",
+    "feed": "",
+    "like": "",
+    "like_plural": "",
+    "login": "",
+    "register": "",
+    "reply": "",
+    "sign_out": ""
 }
