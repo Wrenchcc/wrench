@@ -2,7 +2,7 @@ const NextJsComponent = require('@sls-next/serverless-component')
 const fs = require('fs-extra')
 
 const inputs = {
-  // domain: 'wrench.cc',
+  domain: 'wrench.cc',
   bucketName: 'wrench-web-edge',
   build: true,
   memory: 2048,
