@@ -1,0 +1,5 @@
+{
+  "DESCRIPTION": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel",
+  "TITLE": "{{title}} - {{type}} Projekt",
+  "DESCRIPTION_plural": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel"
+}

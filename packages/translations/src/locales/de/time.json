@@ -1,0 +1,13 @@
+{
+  "D": "Vor {{count}} Tagen",
+  "D_plural": "Vor {{count}} Tagen",
+  "H": "Vor {{count}} Stunden",
+  "H_plural": "Vor {{count}} Stunden",
+  "M": "Vor {{count}} Minuten",
+  "M_plural": "Vor {{count}} Minuten",
+  "MO": "Vor {{count}} Monaten",
+  "MO_plural": "Vor {{count}} Monaten",
+  "NOW": "Grade eben",
+  "Y": "Vor {{count}} Jahren",
+  "Y_plural": "Vor {{count}} Jahren"
+}

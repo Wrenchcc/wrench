@@ -1,0 +1,5 @@
+{
+  "FOLLOWERS": "{{count, humanFormat}} seguace",
+  "FOLLOWERS_plural": "{{count, humanFormat}} seguaci",
+  "TITLE": "Progetti"
+}

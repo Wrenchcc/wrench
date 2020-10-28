@@ -1,0 +1,4 @@
+{
+  "LIKE": "{{count}} étincelle",
+  "LIKE_plural": "{{count, humanFormat}} étincelle"
+}
