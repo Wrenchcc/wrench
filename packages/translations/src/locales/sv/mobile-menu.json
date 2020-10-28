@@ -1,8 +1,8 @@
 {
   "EXPLORE": "Utforska",
-  "FEED": "Utfodra",
-  "DOWNLOAD": "Ladda ner appar",
+  "FEED": "Feed",
+  "DOWNLOAD": "Ladda ner Appar",
   "LOGIN": "Logga in",
-  "REGISTER": "Bli Medlem",
-  "SIGNOUT": "Logga ut"
+  "REGISTER": "Registrera dig",
+  "SIGN_OUT": "Logga ut"
 }

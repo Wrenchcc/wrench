@@ -1,0 +1,13 @@
+{
+  "NOW": "just now",
+  "M": "{{count}} minute ago",
+  "M_plural": "{{count}} minutes ago",
+  "H": "{{count}} hour ago",
+  "H_plural": "{{count}} hours ago",
+  "D": "{{count}} day ago",
+  "D_plural": "{{count}} days ago",
+  "MO": "{{count}} month ago",
+  "MO_plural": "{{count}} months ago",
+  "Y": "{{count}} year ago",
+  "Y_plural": "{{count}} years ago"  
+}

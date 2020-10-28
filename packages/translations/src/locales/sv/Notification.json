@@ -1,8 +1,8 @@
 {
-  "COMMENT": "Kommenterade ditt inlägg",
-  "COMMENT_LIKE": "Utlöste din kommentar",
-  "FOLLOW": "Nu följer ditt projekt",
+  "COMMENT": "Kommenterade på ditt inlägg",
+  "COMMENT_LIKE": "Gav en gnista på din kommentar",
+  "FOLLOW": "Följer nu ditt projekt",
   "MENTION": "Nämnde dig i en kommentar",
-  "POST_LIKE": "Utlöste ditt inlägg",
+  "POST_LIKE": "Gav en gnista på ditt inlägg",
   "REPLY": "Svarade på din kommentar"
 }

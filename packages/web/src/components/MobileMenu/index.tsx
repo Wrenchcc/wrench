@@ -45,7 +45,7 @@ function MobileMenu({ isAuthenticated, onClose }) {
         client.resetStore()
         onClose()
       },
-      title: t('SIGNOUT'),
+      title: t('SIGN_OUT'),
     },
     {
       href: '/download',

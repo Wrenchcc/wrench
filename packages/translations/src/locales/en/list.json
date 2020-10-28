@@ -1,0 +1,4 @@
+{
+  "LOAD_MORE": "View 1 comment",
+  "LOAD_MORE_plural": "View all {{count, humanFormat}} comments"
+}
