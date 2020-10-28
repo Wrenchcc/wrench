@@ -2,11 +2,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { useCurrentUserFollowingProjectsQuery } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Base, Row, Box, Content, Text, List, Image } from './styles'
 
 function FollowingProjects() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('following-projects')
   const { data, loading } = useCurrentUserFollowingProjectsQuery()
 
   if (loading || !data.user) {
@@ -18,7 +18,7 @@ function FollowingProjects() {
   return (
     <Base>
       <Text medium fontSize={24}>
-        {t('FollowingProjects:title')}
+        {t('TITLE')}
       </Text>
 
       <List>

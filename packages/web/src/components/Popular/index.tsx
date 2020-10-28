@@ -1,12 +1,12 @@
 // @ts-nocheck
 import React, { Fragment } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { usePaginatedQuery, ProjectsDocument } from '@wrench/common'
 import { Card, Text } from 'ui'
 import { List, Title } from './styles'
 
 function Popular() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('popular')
 
   const {
     data: { edges },
@@ -22,8 +22,8 @@ function Popular() {
 
   return (
     <Fragment>
-      <Title medium>{t('Popular:title')}</Title>
-      <Text color="neutral">{t('Popular:description')}</Text>
+      <Title medium>{t('TITLE')}</Title>
+      <Text color="neutral">{t('DESCRIPTION')}</Text>
 
       <List>
         {edges?.map(({ node }) => (

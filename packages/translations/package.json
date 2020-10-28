@@ -1,0 +1,17 @@
+{
+  "name": "@wrench/translations",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "translations:create": "tsc && i18next --config config.js ../web/src/**/*/*.tsx",
+    "translations:autotranslate": "json-autotranslate -i src/locales -c service-account.json -m i18next -t key-based -f",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "i18next-parser": "^3.3.0",
+    "json-autotranslate": "^1.7.0",
+    "typescript": "^4.0.5"
+  }
+}

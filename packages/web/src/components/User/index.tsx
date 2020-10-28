@@ -2,7 +2,7 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { usePaginatedQuery, UserDocument } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Seo from 'utils/seo'
 import UserFollowingProjects from 'components/UserFollowingProjects'
 import { Text, Avatar, Layout, Post, Loader } from 'ui'
@@ -11,7 +11,7 @@ import { withHttp } from 'utils/url'
 import { Inner, Top, Name, Left, Right, Info } from './styles'
 
 function User({ username, isAuthenticated }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('user')
 
   const {
     data: { edges, user },
@@ -72,11 +72,11 @@ function User({ username, isAuthenticated }) {
     >
       <Seo
         config={{
-          title: t('user:title', params),
-          description: t('user:description', params),
+          title: t('TITLE', params),
+          description: t('DESCRIPTION', params),
           openGraph: {
-            title: t('user:title', params),
-            description: t('user:description', params),
+            title: t('TITLE', params),
+            description: t('DESCRIPTION', params),
             url: `https://wrench.cc/${username}`,
             type: 'profile',
             profile: {
@@ -87,7 +87,7 @@ function User({ username, isAuthenticated }) {
             images: [
               {
                 url: `${user.avatarUrl}?w=160&h=160&dpr=1`,
-                alt: t('user:imagealt'),
+                alt: t('IMAGE_ALT'),
                 width: 160,
                 height: 160,
               },

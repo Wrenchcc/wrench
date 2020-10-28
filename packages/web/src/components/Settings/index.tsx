@@ -1,16 +1,16 @@
 // @ts-nocheck
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useContext } from 'react'
 import { Element } from 'react-scroll'
-import { useTranslation } from 'react-i18next'
+import { locales } from '@wrench/translations'
+import { useTranslation, i18n } from 'i18n'
+import { I18nContext } from 'next-i18next'
 import {
   useEditUserMutation,
   useCurrentUserSettingsQuery,
   useCurrentUserQuery,
   useToggleNotificationSettingsMutation,
 } from '@wrench/common'
-import { SUPPORTED_LOCALS } from 'i18n'
-import { useCookie, Cookies } from 'hooks'
-import { Layout, Title, Text, Switch, Input, SearchLocation, Button } from 'ui'
+import { Layout, Title, Text, Switch, Input, SearchLocation, Button, Icon } from 'ui'
 import {
   Left,
   Right,
@@ -32,9 +32,12 @@ function Settings({ isAuthenticated }) {
     return null
   }
 
-  const { t } = useTranslation()
+  const {
+    i18n: { language },
+  } = useContext(I18nContext)
+
+  const { t } = useTranslation('settings')
   const [saved, setSaved] = useState(false)
-  const [selectedLanguage] = useCookie(Cookies.PREFERRED_LANGUAGE)
 
   const [data, setData] = useState({
     lastName: '',
@@ -55,9 +58,9 @@ function Settings({ isAuthenticated }) {
       return null
     }
 
-    const types = Object.keys(notifications.types).filter((type) => type !== '__typename')
+    const types = Object.keys(notifications.types).filter(type => type !== '__typename')
 
-    return types.map((type) => ({
+    return types.map(type => ({
       titleKey: `notifications.${type}`,
       type,
       onPress: () => {
@@ -101,7 +104,7 @@ function Settings({ isAuthenticated }) {
   const updateField = (field, value) => setData({ ...data, [field]: value })
 
   const handleBio = useCallback(
-    (text) => {
+    text => {
       if (text.length <= MAX_CHARACTERS) {
         updateField('bio', text)
       }
@@ -129,7 +132,7 @@ function Settings({ isAuthenticated }) {
       {saved && (
         <Toast>
           <Text color="inverted" medium>
-            {t('Settings:toast.saved')}
+            {t('TOAST_SAVED')}
           </Text>
         </Toast>
       )}
@@ -137,25 +140,25 @@ function Settings({ isAuthenticated }) {
       {error && (
         <Toast error>
           <Text color="inverted" medium>
-            {t('Settings:toast.error')}
+            {t('TOAST_ERROR')}
           </Text>
         </Toast>
       )}
 
       <Left>
-        <MenuTitle fontSize={36}>{t('Settings:title')}</MenuTitle>
+        <MenuTitle fontSize={36}>{t('TITLE')}</MenuTitle>
 
         <MenuItem to="edit-profile" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('Settings:sections.profile')}</Text>
+          <Text color="neutral">{t('SECTIONS_PROFILE')}</Text>
         </MenuItem>
         <MenuItem to="notifications" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('Settings:sections.notifications')}</Text>
+          <Text color="neutral">{t('SECTIONS_NOTIFICATIONS')}</Text>
         </MenuItem>
         <MenuItem to="language" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('Settings:sections.language')}</Text>
+          <Text color="neutral">{t('SECTIONS_LANGUAGE')}</Text>
         </MenuItem>
         <MenuItem to="support" smooth duration={250} spy offset={-150}>
-          <Text color="neutral">{t('Settings:sections.support')}</Text>
+          <Text color="neutral">{t('SECTIONS_SUPPORT')}</Text>
         </MenuItem>
       </Left>
 
@@ -163,40 +166,36 @@ function Settings({ isAuthenticated }) {
         <Element name={'edit-profile'}>
           <Section>
             <Headline>
-              <Title medium>{t('Settings:sections.profile')}</Title>
+              <Title medium>{t('SECTIONS_PROFILE')}</Title>
             </Headline>
 
             <Row>
               <Input
-                placeholder={t('Settings:field.firstName')}
+                placeholder={t('FIELD_FIRSTNAME')}
                 value={data.firstName}
                 required
-                onChangeText={(firstName) => updateField('firstName', firstName)}
+                onChangeText={firstName => updateField('firstName', firstName)}
               />
             </Row>
 
             <Row>
               <Input
-                placeholder={t('Settings:field.lastName')}
+                placeholder={t('FIELD_LASTNAME')}
                 value={data.lastName}
                 required
-                onChangeText={(lastName) => updateField('lastName', lastName)}
+                onChangeText={lastName => updateField('lastName', lastName)}
               />
             </Row>
 
             <Row>
               <SearchLocation
-                onPress={(location) => updateField('location', location)}
+                onPress={location => updateField('location', location)}
                 value={data.location}
               />
             </Row>
 
             <Row>
-              <Input
-                placeholder={t('Settings:field.bio')}
-                onChangeText={handleBio}
-                value={data.bio}
-              />
+              <Input placeholder={t('FIELD_BIO')} onChangeText={handleBio} value={data.bio} />
               <Counter color="neutral" fontSize={15}>
                 {`${data.bio ? data.bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
@@ -204,16 +203,16 @@ function Settings({ isAuthenticated }) {
 
             <Row>
               <Input
-                placeholder={t('Settings:field.website')}
+                placeholder={t('FIELD_WEBSITE')}
                 type="url"
-                onChangeText={(website) => updateField('website', website)}
+                onChangeText={website => updateField('website', website)}
                 value={data.website}
               />
             </Row>
 
             <Row last>
               <Button black onPress={handleSave}>
-                {t('Settings:save')}
+                {t('SAVE')}
               </Button>
             </Row>
           </Section>
@@ -222,13 +221,13 @@ function Settings({ isAuthenticated }) {
         <Element name="notifications">
           <Section>
             <Headline>
-              <Title medium>{t('Settings:sections.notifications')}</Title>
+              <Title medium>{t('SECTIONS_NOTIFICATIONS')}</Title>
             </Headline>
 
             {notifications &&
               notifications.map(({ titleKey, onPress, selected, type }) => (
                 <Setting key={titleKey}>
-                  <Text>{t(`Settings:${titleKey}`)}</Text>
+                  <Text>{t(`${titleKey}`)}</Text>
                   <Switch selected={selected} name={type} onPress={onPress} />
                 </Setting>
               ))}
@@ -238,14 +237,16 @@ function Settings({ isAuthenticated }) {
         <Element name="language">
           <Section>
             <Headline>
-              <Title medium>{t('Settings:sections.language')}</Title>
+              <Title medium>{t('SECTIONS_LANGUAGE')}</Title>
             </Headline>
 
-            {SUPPORTED_LOCALS.map((locale) => {
+            {locales.map(locale => {
               return (
                 <Setting key={locale}>
-                  <a href={`?hl=${locale}`}>{t(`Settings:languages.${locale}`)}</a>
-                  {selectedLanguage === locale && <img src={require('./check.svg')} />}
+                  <span onClick={() => i18n.changeLanguage(locale)}>
+                    <Text>{t(`LANGUAGES.${locale}`)}</Text>
+                  </span>
+                  {language === locale && <Icon source={require('./check.svg?include')} />}
                 </Setting>
               )
             })}
@@ -255,18 +256,18 @@ function Settings({ isAuthenticated }) {
         <Element name="support">
           <Section>
             <Headline>
-              <Title medium>{t('Settings:sections.support')}</Title>
+              <Title medium>{t('SECTIONS_SUPPORT')}</Title>
             </Headline>
 
             <Setting>
-              <a href="mailto:support@wrench.cc">{t('Settings:mail')}</a>
+              <a href="mailto:support@wrench.cc">{t('MAIL')}</a>
             </Setting>
             <Setting>
               {' '}
-              <a href="mailto:feedback@wrench.cc">{t('Settings:feedback')}</a>
+              <a href="mailto:feedback@wrench.cc">{t('FEEDBACK')}</a>
             </Setting>
             <Setting>
-              <a href="https://m.me/wrench.cc">{t('Settings:chat')}</a>
+              <a href="https://m.me/wrench.cc">{t('CHAT')}</a>
             </Setting>
           </Section>
         </Element>

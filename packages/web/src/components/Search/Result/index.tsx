@@ -2,14 +2,14 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { usePaginatedLazyQuery, SearchUsersDocument } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Link from 'next/link'
 import { Loader, Avatar, Text } from 'ui'
 import { List, Base, Content, LoaderContainer, Empty } from './styles'
 import { useEffect } from 'react'
 
 function Result({ query, onPress }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('result')
 
   const {
     loadData,
@@ -30,7 +30,7 @@ function Result({ query, onPress }) {
 
   return (
     <List>
-      {!isFetching && edges?.length === 0 && <Empty>{t('Result:notfound')}</Empty>}
+      {!isFetching && edges?.length === 0 && <Empty>{t('NOT_FOUND')}</Empty>}
 
       <InfiniteScroll
         loadMore={fetchMore}
@@ -50,7 +50,7 @@ function Result({ query, onPress }) {
                 <Content onClick={onPress}>
                   <Text lineHeight={18}>{node.fullName}</Text>
                   <Text lineHeight={18} fontSize={15} color="neutral">
-                    {t('Result:projects', { count: node.projectCount })}
+                    {t('PROJECTS', { count: node.projectCount })}
                   </Text>
                 </Content>
               </a>

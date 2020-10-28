@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Link from 'next/link'
 import { Base, Users, User, Avatar, Count } from './styles'
 
 const Followers = memo(function Followers({ followers, project, className }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('followers')
 
   return (
     <Base className={className}>
@@ -23,7 +23,7 @@ const Followers = memo(function Followers({ followers, project, className }) {
       </Users>
       <Link href="/project/[id]/followers" as={`/project/${project.id}/followers`}>
         <a>
-          <Count fontSize={15}>{t('UiFollowers:followers', { count: followers.totalCount })}</Count>
+          <Count fontSize={15}>{t('FOLLOWERS', { count: followers.totalCount })}</Count>
         </a>
       </Link>
     </Base>

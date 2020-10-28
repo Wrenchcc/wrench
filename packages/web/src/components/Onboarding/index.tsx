@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { omit } from 'ramda'
 import { useProjectTypesQuery, useEditUserMutation } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Text, ProgressBar } from 'ui'
 import { Base, Inner, Types, Title, Scroll, Image, Picture, Overlay, Next } from './styles'
 
@@ -10,7 +10,7 @@ const MIN_ITEMS = 3
 const ITEM_SIZE = 172.5
 
 export default function Onboarding() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('onboarding')
   const { data, loading } = useProjectTypesQuery()
   const [editUser] = useEditUserMutation()
   const [items, setItems] = useState({})
@@ -23,7 +23,7 @@ export default function Onboarding() {
     return false
   }
 
-  const toggleSelection = (item) => {
+  const toggleSelection = item => {
     if (items[item.id]) {
       setItems(omit([item.id]))
     } else {
@@ -36,7 +36,7 @@ export default function Onboarding() {
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
-  const interestedIn = Object.keys(items).map((id) => ({ id }))
+  const interestedIn = Object.keys(items).map(id => ({ id }))
 
   return (
     <Base>
@@ -54,19 +54,19 @@ export default function Onboarding() {
             })
           }
         >
-          {t('Onboarding:next')}
+          {t('NEXT')}
         </Next>
 
         <Title color="white" fontSize={36}>
-          {t('Onboarding:title')}
+          {t('TITLE')}
         </Title>
 
-        <Text color="neutral">{t('Onboarding:description')}</Text>
+        <Text color="neutral">{t('DESCRIPTION')}</Text>
 
         <Scroll>
           <Types>
             {!loading &&
-              data.types.map((item) => {
+              data.types.map(item => {
                 return (
                   <Picture
                     key={item.id}

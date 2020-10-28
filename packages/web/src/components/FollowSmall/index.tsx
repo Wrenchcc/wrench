@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Base } from './styles'
 
 function FollowSmall({ following, onPress }) {
-  const { t } = useTranslation()
-  return <Base onPress={onPress}>{following ? t('Follow:unfollow') : t('Follow:follow')}</Base>
+  const { t } = useTranslation('follow')
+  return <Base onPress={onPress}>{following ? t('UNFOLLOW') : t('FOLLOW')}</Base>
 }
 
 export default FollowSmall

@@ -1,0 +1,5 @@
+{
+  "FOLLOWERS": "{{count, humanFormat}} Anhänger",
+  "FOLLOWERS_plural": "{{count, humanFormat}} Anhänger",
+  "TITLE": "Projekte"
+}

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Link from 'next/link'
 import { Avatar, TimeAgo, Text } from 'ui'
 import LikeComment from 'components/LikeComment'
@@ -38,13 +38,13 @@ function Item({ id, user, text, onReply, createdAt, isReply, likes }) {
           </Action>
           <Action>
             <Text medium color="neutral" fontSize={12}>
-              {t('Comments:like', { count: likes.totalCount })}
+              {t('LIKE', { count: likes.totalCount })}
             </Text>
           </Action>
           <Action>
             <Reply onClick={() => onReply({ id, user })}>
               <Text medium fontSize={12}>
-                {t('Comments:reply')}
+                {t('REPLY')}
               </Text>
             </Reply>
           </Action>

@@ -1,0 +1,17 @@
+{
+  "CHAT": "chat met ons",
+  "FEEDBACK": "Feedback",
+  "FIELD_BIO": "Bio",
+  "FIELD_FIRSTNAME": "Voornaam",
+  "FIELD_LASTNAME": "Achternaam",
+  "FIELD_WEBSITE": "Website",
+  "MAIL": "Mail-ondersteuning",
+  "SAVE": "Opslaan",
+  "SECTIONS_LANGUAGE": "Taal",
+  "SECTIONS_NOTIFICATIONS": "Meldingen",
+  "SECTIONS_PROFILE": "Bewerk profiel",
+  "SECTIONS_SUPPORT": "Ondersteuning",
+  "TITLE": "Instellingen",
+  "TOAST_ERROR": "Er is iets fout gegaan",
+  "TOAST_SAVED": "Instellingen opgeslagen"
+}

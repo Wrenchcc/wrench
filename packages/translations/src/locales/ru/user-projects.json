@@ -1,0 +1,5 @@
+{
+  "FOLLOWERS": "{{count, humanFormat}} последователей",
+  "FOLLOWERS_plural": "{{count, humanFormat}} подписчиков",
+  "TITLE": "Проекты"
+}

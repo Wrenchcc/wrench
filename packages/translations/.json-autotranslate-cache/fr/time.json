@@ -1,0 +1,13 @@
+{
+  "D": "<span>Il y a 0</span> jour",
+  "D_plural": "<span>Il y a 0</span> jours",
+  "H": "<span>Il y a 0</span> heure",
+  "H_plural": "<span>Il y a 0</span> heures",
+  "M": "<span>Il y a 0</span> minute",
+  "M_plural": "<span>Il y a 0</span> minutes",
+  "MO": "<span>Il y a 0</span> mois",
+  "MO_plural": "<span>Il y a 0</span> mois",
+  "NOW": "juste maintenant",
+  "Y": "<span>Il y a 0</span> an",
+  "Y_plural": "Il y a {{count}} ans"
+}

@@ -1,14 +1,14 @@
 // @ts-nocheck
 import React from 'react'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import Text from 'ui/Text'
 import { Modal, useModal } from 'ui/Modal'
 import Comments from 'components/Comments'
 import { Row, Comment, LoadMore } from './styles'
 
 function List({ data, postId }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('list')
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal} large>
@@ -38,7 +38,7 @@ function List({ data, postId }) {
       ))}
       <span onClick={showModal}>
         <LoadMore fontSize={15} color="neutral">
-          {t('List:loadMore', {
+          {t('LOAD_MORE', {
             count: data.comments.totalCount,
           })}
         </LoadMore>

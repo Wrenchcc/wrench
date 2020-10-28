@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { useApolloClient } from '@apollo/client'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Base } from './styles'
 
 function Logout({ username, onPress }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('logout')
   const client = useApolloClient()
 
   return (
@@ -21,12 +21,12 @@ function Logout({ username, onPress }) {
               pathname: `/${username}`,
             }}
           >
-            <a onClick={onPress}>{t('Logout:profile')}</a>
+            <a onClick={onPress}>{t('PROFILE')}</a>
           </Link>
         </li>
         <li>
           <Link href="/settings">
-            <a onClick={onPress}>{t('Logout:settings')}</a>
+            <a onClick={onPress}>{t('SETTINGS')}</a>
           </Link>
         </li>
         <li>
@@ -36,7 +36,7 @@ function Logout({ username, onPress }) {
               client.resetStore()
             }}
           >
-            {t('Logout:logout')}
+            {t('LOGOUT')}
           </a>
         </li>
       </ul>

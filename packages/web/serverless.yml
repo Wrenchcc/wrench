@@ -1,18 +1,2 @@
 web:
-  component: "@sls-next/serverless-component@1.18.0-alpha.19"
-  inputs:
-    domain: "wrench.cc"
-    bucketName: wrench-web-edge
-    build: true
-    memory: 2048
-    cloudfront:
-      defaults:
-        forward:
-          headers: ['CloudFront-Viewer-Country', 'Accept-Language']
-      origins:
-        - url: https://wrench-web-edge.s3.amazonaws.com	
-          pathPatterns:	
-            /.well-known/*:	
-              minTTL: 20	
-              maxTTL: 20	
-              defaultTTL: 20
+  component: "./serverless.js"

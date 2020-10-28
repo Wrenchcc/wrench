@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState, useEffect, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Input } from 'ui'
 import { useDebounce, useClickOutside } from 'hooks'
 import { Base, Dropdown, Place } from './styles'
@@ -10,7 +10,7 @@ const SEARCH_ENDPOINT = 'https://api.mapbox.com/geocoding/v5/mapbox.places'
 const { MAPBOX_API_KEY } = process.env
 
 function SearchLocation({ onPress, value }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('search-location')
   const ref = useRef()
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState('')
@@ -61,7 +61,7 @@ function SearchLocation({ onPress, value }) {
   return (
     <Base>
       <Input
-        placeholder={t('SearchLocation:placeholder')}
+        placeholder={t('PLACEHOLDER')}
         value={text}
         onChangeText={onChangeText}
         autoComplete="disabelAutocompleteHack"
@@ -76,7 +76,7 @@ function SearchLocation({ onPress, value }) {
                   <Place>{place_name}</Place>
                 </li>
               ))
-            : t('SearchLocation:noresult')}
+            : t('NO_RESULT')}
         </Dropdown>
       )}
     </Base>

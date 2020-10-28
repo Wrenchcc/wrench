@@ -1,0 +1,5 @@
+{
+  "DESCRIPTION": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@ {{username}} ) på skiftnyckel",
+  "TITLE": "{{title}} - {{type}} projekt",
+  "DESCRIPTION_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@ {{username}} ) på skiftnyckel"
+}

@@ -1,0 +1,13 @@
+{
+  "D": "{{count}} giorni fa",
+  "D_plural": "{{count}} giorni fa",
+  "H": "{{count}} ora fa",
+  "H_plural": "{{count}} ore fa",
+  "M": "{{count}} minuto fa",
+  "M_plural": "{{count}} minuti fa",
+  "MO": "{{count}} mesi fa",
+  "MO_plural": "{{count}} mesi fa",
+  "NOW": "proprio adesso",
+  "Y": "{{count}} anno fa",
+  "Y_plural": "{{count}} anni fa"
+}

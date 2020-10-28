@@ -1,18 +1,21 @@
-import i18next from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
+import NextI18Next from 'next-i18next'
 import * as humanFormat from 'human-format'
-import resources from 'translations/index.json'
-import { isBrowser } from 'utils/platform'
+import path from 'path'
+import { locales, defaultLocale } from '@wrench/translations'
 
-export const SUPPORTED_LOCALS = ['en', 'sv']
-
-const options = {
-  debug: Boolean(process.env.DEBUG_TRANSLATION),
-  defaultLanguage: 'en',
-  fallbackLng: 'en',
-  preload: SUPPORTED_LOCALS,
-  resources,
+const NextI18NextInstance = new NextI18Next({
+  defaultLanguage: defaultLocale,
+  otherLanguages: locales,
+  localePath: path.resolve('./public/locales'),
+  detection: {
+    lookupQuerystring: 'hl',
+    cookieMinutes: 24 * 60 * 365,
+    cookieSecure: true,
+    cookiePath: '/',
+    cookieSameSite: 'strict',
+    lookupCookie: 'preferred_language',
+    order: ['querystring', 'cookie', 'header'],
+  },
   interpolation: {
     escapeValue: false,
     format(value, format) {
@@ -26,17 +29,10 @@ const options = {
       return value
     },
   },
-  wait: isBrowser,
-}
+})
 
-// for browser
-if (isBrowser) {
-  i18next.use(initReactI18next).use(LanguageDetector)
-}
+export default NextI18NextInstance
 
-// initialize if not already initialized
-if (!i18next.isInitialized) {
-  i18next.init(options)
-}
+export const i18n = NextI18NextInstance.i18n
 
-export default i18next
+export const { appWithTranslation, useTranslation } = NextI18NextInstance

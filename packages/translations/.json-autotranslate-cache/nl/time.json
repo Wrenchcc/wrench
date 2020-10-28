@@ -1,0 +1,13 @@
+{
+  "D": "{{count}} dagen geleden",
+  "D_plural": "{{count}} dagen geleden",
+  "H": "{{count}} uur geleden",
+  "H_plural": "{{count}} uur geleden",
+  "M": "{{count}} minuut geleden",
+  "M_plural": "{{count}} minuten geleden",
+  "MO": "{{count}} maand geleden",
+  "MO_plural": "{{count}} maanden geleden",
+  "NOW": "net nu",
+  "Y": "{{count}} jaar geleden",
+  "Y_plural": "{{count}} jaar geleden"
+}

@@ -1,5 +1,0 @@
-{
-  "components": {
-    "web": "./infra/serverless-next-edge"
-  }
-}

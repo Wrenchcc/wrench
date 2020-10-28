@@ -1,0 +1,13 @@
+{
+  "D": "{{count}} araw na ang nakakalipas",
+  "D_plural": "{{count}} araw na ang nakakalipas",
+  "H": "{{count}} oras na ang nakalipas",
+  "H_plural": "{{count}} oras ang nakalipas",
+  "M": "{{count}} minuto na ang nakakalipas",
+  "M_plural": "{{count}} minuto na ang nakakalipas",
+  "MO": "{{count}} buwan ang nakalipas",
+  "MO_plural": "{{count}} buwan na ang nakakaraan",
+  "NOW": "ngayon lang",
+  "Y": "{{count}} taon na ang nakakaraan",
+  "Y_plural": "{{count}} taon na ang nakakaraan"
+}

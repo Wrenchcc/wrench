@@ -1,12 +1,12 @@
 // @ts-nocheck
 import React from 'react'
 import { useFollowProjectMutation, useProjectSuggestionsQuery } from '@wrench/common'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Title, Layout, ProjectCard } from 'ui'
 import { Category, Description } from './styles'
 
 function ProjectSuggestion() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('project-suggestion')
   const [followProject] = useFollowProjectMutation()
   const { data, loading } = useProjectSuggestionsQuery({
     variables: {
@@ -14,7 +14,7 @@ function ProjectSuggestion() {
     },
   })
 
-  const toggleFollow = (project) => {
+  const toggleFollow = project => {
     const totalCount = project.permissions.isFollower
       ? project.followers.totalCount - 1
       : project.followers.totalCount + 1
@@ -53,8 +53,8 @@ function ProjectSuggestion() {
       column
       top={
         <>
-          <Title medium>{t('ProjectSuggestion:title')}</Title>
-          <Description color="neutral">{t('ProjectSuggestion:description')}</Description>
+          <Title medium>{t('TITLE')}</Title>
+          <Description color="neutral">{t('DESCRIPTION')}</Description>
         </>
       }
     >

@@ -1,0 +1,14 @@
+{
+  "D": "{{count}} dag sedan",
+  "D_plural": "{{count}} dagar sedan",
+  "H": "{{count}} timma sedan",
+  "H_plural": "{{count}} timmar sedan",
+  "M": "{{count}} minut sedan",
+  "M_plural": "{{count}} minuter sedan",
+  "MO": "{{count}} månad sedan",
+  "MO_plural": "{{count}} månader sedan",
+  "NOW": "alldeles nyss",
+  "Y": "{{count}} år sedan",
+  "Y_plural": "{{count}} år sedan",
+  "D_PLURAL": "{{count}} dagar sedan"
+}

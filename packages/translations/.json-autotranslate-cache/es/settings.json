@@ -1,0 +1,17 @@
+{
+  "CHAT": "habla con nosotros",
+  "FEEDBACK": "Retroalimentación",
+  "FIELD_BIO": "Bio",
+  "FIELD_FIRSTNAME": "Nombre de pila",
+  "FIELD_LASTNAME": "Apellido",
+  "FIELD_WEBSITE": "Sitio web",
+  "MAIL": "Soporte por correo",
+  "SAVE": "Salvar",
+  "SECTIONS_LANGUAGE": "Idioma",
+  "SECTIONS_NOTIFICATIONS": "Notificaciones",
+  "SECTIONS_PROFILE": "Editar perfil",
+  "SECTIONS_SUPPORT": "Apoyo",
+  "TITLE": "Configuraciones",
+  "TOAST_ERROR": "Algo salió mal",
+  "TOAST_SAVED": "Se guardó la configuración"
+}

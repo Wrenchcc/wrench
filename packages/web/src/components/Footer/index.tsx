@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Text, LanguageSelector } from 'ui'
 import { Base, Inner, Bottom, Navigation, Column, NavItem, Left, Right } from './styles'
 
 function Footer() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('footer')
 
   return (
     <Base>
@@ -16,82 +16,82 @@ function Footer() {
             <ul>
               <NavItem>
                 <Link href="/about">
-                  <a>{t('Footer:about')}</a>
+                  <a>{t('ABOUT')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/press">
-                  <a>{t('Footer:press')}</a>
+                  <a>{t('PRESS')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/blog">
-                  <a>{t('Footer:blog')}</a>
+                  <a>{t('BLOG')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/download">
-                  <a>{t('Footer:download')}</a>
+                  <a>{t('DOWNLOAD')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <a href="https://status.wrench.cc" rel="nofollow">
-                  {t('Footer:status')}
+                  {t('STATUS')}
                 </a>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>{t('Footer:help')}</Text>
+            <Text medium>{t('HELP')}</Text>
             <ul>
               <NavItem>
-                <a href="mailto:support@wrench.cc">{t('Footer:mail')}</a>
+                <a href="mailto:support@wrench.cc">{t('MAIL')}</a>
               </NavItem>
               <NavItem>
-                <a href="mailto:feedback@wrench.cc">{t('Footer:feedback')}</a>
+                <a href="mailto:feedback@wrench.cc">{t('FEEDBACK')}</a>
               </NavItem>
               <NavItem>
                 <a href="https://m.me/wrench.cc" rel="nofollow">
-                  {t('Footer:chat')}
+                  {t('CHAT')}
                 </a>
               </NavItem>
               <NavItem>
                 <Link href="/faq">
-                  <a>{t('Footer:faq')}</a>
+                  <a>{t('FAQ')}</a>
                 </Link>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>{t('Footer:legal')}</Text>
+            <Text medium>{t('LEGAL')}</Text>
             <ul>
               <NavItem>
                 <Link href="/terms">
-                  <a>{t('Footer:terms')}</a>
+                  <a>{t('TERMS')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/policy">
-                  <a>{t('Footer:policy')}</a>
+                  <a>{t('POLICY')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/eula">
-                  <a>{t('Footer:eula')}</a>
+                  <a>{t('EULA')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/cookies">
-                  <a>{t('Footer:cookies')}</a>
+                  <a>{t('COOKIES')}</a>
                 </Link>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>{t('Footer:social')}</Text>
+            <Text medium>{t('SOCIAL')}</Text>
             <ul>
               <NavItem>
                 <a href="https://instagram.com/wrench.cc" rel="nofollow">
@@ -115,11 +115,11 @@ function Footer() {
         <Bottom>
           <Left>
             <Text fontSize={13} color="neutral">
-              {t('Footer:description')}
+              {t('DESCRIPTION')}
             </Text>
 
             <Text fontSize={13} color="neutral">
-              {t('Footer:trademarks')}
+              {t('TRADEMARKS')}
             </Text>
 
             <Text fontSize={13} color="neutral">

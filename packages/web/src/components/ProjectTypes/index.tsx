@@ -16,11 +16,11 @@ function ProjectTypes({ selectedId }) {
     <Base>
       {/* <Wrapper first>
         <Text fontSize={15} medium>
-          {t('ProjectTypes:inspo')}
+          {t('INSPO')}
         </Text>
       </Wrapper> */}
 
-      {data.types.map((category) => (
+      {data.types.map(category => (
         <Link key={category.id} href="/explore/[id]" as={`/explore/${category.id}`}>
           <Wrapper selected={category.id === selectedId} href="/">
             <Text fontSize={15} medium>

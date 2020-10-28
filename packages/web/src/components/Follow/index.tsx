@@ -1,13 +1,13 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { Base } from './styles'
 
 function Follow({ following, onPress }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('follow')
   return (
     <Base onPress={onPress} black={!following}>
-      {following ? t('Follow:unfollow') : t('Follow:follow')}
+      {following ? t('UNFOLLOW') : t('FOLLOW')}
     </Base>
   )
 }

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { useSendPromoMutation } from '@wrench/common'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
@@ -19,7 +19,7 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
 })
 
 function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizontal, inline }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('promo')
   const { systemTheme } = useTheme()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
@@ -52,18 +52,18 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
         )}
 
         <Text medium fontSize={19} color={inverted && 'white'}>
-          {t('Promo:title')}
+          {t('TITLE')}
         </Text>
 
         <Description color="neutral" fontSize={15}>
-          {t('Promo:description')}
+          {t('DESCRIPTION')}
         </Description>
 
         <Bottom inverted={inverted}>
           <ReactPhoneInput
             country={viewerCountry && viewerCountry.toLowerCase()}
             disableDropdown
-            onChange={(val) => setNumber(val)}
+            onChange={val => setNumber(val)}
             value={number}
             specialLabel=""
           />
@@ -87,7 +87,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
               })
             }
           >
-            {success ? t('Promo:button.success') : t('Promo:button.default')}
+            {success ? t('BUTTON_SUCCESS') : t('BUTTON_DEFAULT')}
           </Send>
         </Bottom>
       </Base>

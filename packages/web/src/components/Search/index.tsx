@@ -1,12 +1,12 @@
 // @ts-nocheck
 import React, { useState, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { useClickOutside } from 'hooks'
 import Result from './Result'
 import { Base, Field, Icon } from './styles'
 
 function Search({ className, inverted }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('search')
   const ref = useRef()
 
   const [value, setValue] = useState('')
@@ -34,7 +34,7 @@ function Search({ className, inverted }) {
       <Icon src={require('./search.svg')} />
       <Field
         inverted={inverted}
-        placeholder={t('Search:placeholder')}
+        placeholder={t('PLACEHOLDER')}
         type="search"
         value={value}
         onFocus={toggleActive}

@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { useCurrentUserQuery, usePaginatedQuery, FeedDocument } from '@wrench/common'
 import Seo from 'utils/seo'
 import { Post, Layout, Loader } from 'ui'
@@ -12,7 +12,7 @@ import ProjectSuggestion from 'components/ProjectSuggestion'
 import { Left, Right } from './styles'
 
 export default function Home() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('feed')
   const { data } = useCurrentUserQuery()
 
   const {
@@ -39,8 +39,8 @@ export default function Home() {
     <Layout>
       <Seo
         config={{
-          title: t('feed:title'),
-          description: t('feed:description'),
+          title: t('TITLE'),
+          description: t('DESCRIPTION'),
         }}
       />
 

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'i18n'
 import { useUserFollowingProjectsQuery, useFollowProjectMutation } from '@wrench/common'
 import { useRouter } from 'next/router'
 import { useModal, Modal } from 'ui/Modal'
@@ -9,7 +9,7 @@ import { ProjectCard, Text } from 'ui'
 import { Base, Title, List, Inner } from './styles'
 
 function UserFollowingProjects({ username, isAuthenticated }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('user-following-projects')
   const router = useRouter()
 
   const [followProject] = useFollowProjectMutation()
@@ -27,7 +27,7 @@ function UserFollowingProjects({ username, isAuthenticated }) {
     </Modal>
   ))
 
-  const toggleFollow = (project) => {
+  const toggleFollow = project => {
     if (!isAuthenticated) {
       showModal()
       return
@@ -63,9 +63,9 @@ function UserFollowingProjects({ username, isAuthenticated }) {
 
   return (
     <Base>
-      <Title>{t('UserFollowingProjects:title')}</Title>
+      <Title>{t('TITLE')}</Title>
       <Text color="neutral">
-        {t('UserFollowingProjects:description', {
+        {t('DESCRIPTION', {
           name: data.user.firstName,
         })}
       </Text>
