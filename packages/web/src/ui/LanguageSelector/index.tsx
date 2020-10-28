@@ -24,7 +24,7 @@ function LanguageSelector() {
         {locales.map(locale => {
           return (
             <option key={locale} selected={language === locale} value={locale}>
-              {t(locale.toUpperCase())}
+              {t(locale)}
             </option>
           )
         })}
