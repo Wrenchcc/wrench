@@ -1,5 +1,5 @@
 {
-  "LOGOUT": "Se déconnecter",
-  "PROFILE": "Profil",
-  "SETTINGS": "Réglages"
+  "logout": "Se déconnecter",
+  "profile": "Profil",
+  "settings": "Réglages"
 }

@@ -1,7 +1,7 @@
 {
-  "DOWNLOAD": "Télécharger des applications",
-  "EXPLORE": "Explorer",
-  "FEED": "Alimentation",
-  "LOGIN": "S'identifier",
-  "REGISTER": "S'inscrire"
+  "download": "Télécharger des applications",
+  "explore": "Explorer",
+  "feed": "Alimentation",
+  "login": "S'identifier",
+  "register": "S'inscrire"
 }
