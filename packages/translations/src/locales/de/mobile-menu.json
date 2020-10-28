@@ -1,8 +1,8 @@
 {
-  "EXPLORE": "Erkunden",
-  "FEED": "Futter",
-  "DOWNLOAD": "Apps herunterladen",
-  "LOGIN": "Einloggen",
-  "REGISTER": "Anmelden",
-  "SIGN_OUT": "Ausloggen"
+  "explore": "Erkunden",
+  "feed": "Futter",
+  "download": "Apps herunterladen",
+  "login": "Einloggen",
+  "register": "Anmelden",
+  "sign_out": "Ausloggen"
 }
