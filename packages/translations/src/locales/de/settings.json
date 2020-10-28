@@ -13,5 +13,6 @@
   "sections_support": "Unterstützung",
   "title": "die Einstellungen",
   "toast_error": "Etwas ist schief gelaufen",
-  "toast_saved": "Einstellungen gespeichert"
+  "toast_saved": "Einstellungen gespeichert",
+  "save": "speichern"
 }

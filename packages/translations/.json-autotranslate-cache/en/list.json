@@ -1,4 +1,4 @@
 {
-  "LOAD_MORE": "View 1 comment",
-  "LOAD_MORE_plural": "View all {{count, humanFormat}} comments"
+  "load_more": "View 1 comment",
+  "load_more_plural": "View all {{count, humanFormat}} comments"
 }

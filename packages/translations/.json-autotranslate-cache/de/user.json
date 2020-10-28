@@ -1,5 +1,5 @@
 {
-  "DESCRIPTION": "Siehe Schraubenschlüsselprojekte und Beiträge von {{fullName}} . (@ {{username}} )",
-  "IMAGE_ALT": "",
-  "TITLE": "{{fullName}} . (@ {{username}} ) - Projekte und Beiträge"
+  "description": "Siehe Schraubenschlüsselprojekte und Beiträge von {{fullName}} . (@ {{username}} )",
+  "image_alt": "",
+  "title": "{{fullName}} . (@ {{username}} ) - Projekte und Beiträge"
 }

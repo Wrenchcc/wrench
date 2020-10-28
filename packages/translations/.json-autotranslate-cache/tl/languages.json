@@ -1,12 +1,13 @@
 {
-  "SV": "Suweko",
-  "EN": "Ingles",
-  "ES": "Kastila",
-  "IT": "Italyano",
-  "DE": "Aleman",
-  "NL": "Dutch",
-  "FR": "Pranses",
-  "TL": "Pilipino",
-  "PT": "Portuges",
-  "RU": "Russian"
+  "sv": "Suweko",
+  "en": "Ingles",
+  "es": "Kastila",
+  "it": "Italyano",
+  "de": "Aleman",
+  "nl": "Dutch",
+  "fr": "Pranses",
+  "tl": "Pilipino",
+  "pt": "Portuges",
+  "ru": "Russian",
+  "no": "Norwegian"
 }

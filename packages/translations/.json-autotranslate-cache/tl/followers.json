@@ -1,4 +1,4 @@
 {
-  "FOLLOWERS": "{{count, humanFormat}} tagasunod",
-  "FOLLOWERS_plural": "{{count, humanFormat}} tagasunod"
+  "followers": "{{count, humanFormat}} tagasunod",
+  "followers_plural": "{{count, humanFormat}} tagasunod"
 }

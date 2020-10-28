@@ -1,5 +1,5 @@
 {
-  "LOGOUT": "Pag-logout",
-  "PROFILE": "Profile",
-  "SETTINGS": "Mga setting"
+  "logout": "Pag-logout",
+  "profile": "Profile",
+  "settings": "Mga setting"
 }

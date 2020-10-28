@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
-    "IMAGE_ALT": "",
-    "TITLE": "{{fullName}}. (@{{username}}) - projects and posts"
+    "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
+    "image_alt": "",
+    "title": "{{fullName}}. (@{{username}}) - projects and posts"
 }

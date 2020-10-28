@@ -1,0 +1,4 @@
+{
+  "followers": "{{count, humanFormat}} følger",
+  "followers_plural": "{{count, humanFormat}} følgere"
+}

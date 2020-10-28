@@ -1,12 +1,13 @@
 {
-  "SV": "Svenska",
-  "EN": "Engelska",
-  "ES": "Spanska",
-  "IT": "Italienska",
-  "DE": "Tyska",
-  "NL": "Nederländska",
-  "FR": "Franska",
-  "TL": "Filippinare",
-  "PT": "Portugisiska",
-  "RU": "ryska"
+  "sv": "Svenska",
+  "en": "Engelska",
+  "es": "Spanska",
+  "it": "Italienska",
+  "de": "Tyska",
+  "nl": "Nederländska",
+  "fr": "Franska",
+  "tl": "Filippinare",
+  "pt": "Portugisiska",
+  "ru": "Ryska",
+  "no": "Norska"
 }

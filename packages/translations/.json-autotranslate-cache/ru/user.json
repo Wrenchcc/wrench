@@ -1,5 +1,5 @@
 {
-  "DESCRIPTION": "Смотрите проекты Wrench и сообщения от {{fullName}} . (@ {{username}} )",
-  "IMAGE_ALT": "",
-  "TITLE": "{{fullName}} . (@ {{username}} ) - проекты и посты"
+  "description": "Смотрите проекты Wrench и сообщения от {{fullName}} . (@ {{username}} )",
+  "image_alt": "",
+  "title": "{{fullName}} . (@ {{username}} ) - проекты и посты"
 }

@@ -1,4 +1,4 @@
 {
-  "LOAD_REPLIES": "Tingnan ang mga tugon ( {{count}} )",
-  "LOAD_REPLIES_plural": ""
+  "load_replies": "Tingnan ang mga tugon ( {{count}} )",
+  "load_replies_plural": ""
 }

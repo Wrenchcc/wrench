@@ -1,4 +1,4 @@
 {
-  "LIKE": "{{count}} faísca",
-  "LIKE_plural": "{{count, humanFormat}} faíscas"
+  "like": "{{count}} spark",
+  "like_plural": "{{count, humanFormat}} sparks"
 }

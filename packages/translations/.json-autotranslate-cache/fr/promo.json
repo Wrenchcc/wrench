@@ -1,6 +1,6 @@
 {
-  "BUTTON_DEFAULT": "Envoyer",
-  "BUTTON_SUCCESS": "Envoyé",
-  "DESCRIPTION": "Entrez votre numéro et recevez un lien SMS unique.",
-  "TITLE": "Téléchargez l'application Wrench sur Appstore et Google Play"
+  "button_default": "Envoyer",
+  "button_success": "Envoyé",
+  "description": "Entrez votre numéro et recevez un lien SMS unique.",
+  "title": "Téléchargez l'application Wrench sur Appstore et Google Play"
 }

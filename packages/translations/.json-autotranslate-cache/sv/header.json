@@ -1,7 +1,7 @@
 {
-  "DOWNLOAD": "Ladda ner Appar",
-  "EXPLORE": "Utforska",
-  "FEED": "Feed",
-  "LOGIN": "Logga in",
-  "REGISTER": "Registrera dig"
+  "download": "Ladda ner appar",
+  "explore": "Utforska",
+  "feed": "Utfodra",
+  "login": "Logga in",
+  "register": "Bli Medlem"
 }

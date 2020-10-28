@@ -1,6 +1,6 @@
 {
-  "BUTTON_DEFAULT": "послать",
-  "BUTTON_SUCCESS": "Отправлено",
-  "DESCRIPTION": "Введите свой номер и получите одноразовую SMS-ссылку.",
-  "TITLE": "Загрузите приложение Wrench в Appstore и Google Play."
+  "button_default": "послать",
+  "button_success": "Отправлено",
+  "description": "Введите свой номер и получите одноразовую SMS-ссылку.",
+  "title": "Загрузите приложение Wrench в Appstore и Google Play."
 }

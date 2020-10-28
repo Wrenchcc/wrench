@@ -1,0 +1,17 @@
+{
+  "chat": "snakk med oss",
+  "feedback": "Tilbakemelding",
+  "field_bio": "Bio",
+  "field_firstname": "Fornavn",
+  "field_lastname": "Etternavn",
+  "field_website": "Nettsted",
+  "mail": "E-poststøtte",
+  "save": "Lagre",
+  "sections_language": "Språk",
+  "sections_notifications": "Varsler",
+  "sections_profile": "Rediger profil",
+  "sections_support": "Brukerstøtte",
+  "title": "Innstillinger",
+  "toast_error": "Noe gikk galt",
+  "toast_saved": "Instillinger lagret"
+}

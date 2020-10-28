@@ -1,5 +1,5 @@
 {
-  "FOLLOWERS": "{{count, humanFormat}} volger",
-  "FOLLOWERS_plural": "{{count, humanFormat}} volgers",
-  "TITLE": "Projecten"
+  "followers": "{{count, humanFormat}} volger",
+  "followers_plural": "{{count, humanFormat}} volgers",
+  "title": "Projecten"
 }

@@ -1,5 +1,5 @@
 {
-  "LOGOUT": "Выйти",
-  "PROFILE": "Профиль",
-  "SETTINGS": "Настройки"
+  "logout": "Выйти",
+  "profile": "Профиль",
+  "settings": "Настройки"
 }

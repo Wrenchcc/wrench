@@ -1,6 +1,6 @@
 {
-  "BUTTON_DEFAULT": "Senden",
-  "BUTTON_SUCCESS": "Geschickt",
-  "DESCRIPTION": "Geben Sie Ihre Nummer ein und erhalten Sie einen einmaligen SMS-Link.",
-  "TITLE": "Laden Sie die Wrench-App im Appstore und bei Google Play herunter"
+  "button_default": "Senden",
+  "button_success": "Geschickt",
+  "description": "Geben Sie Ihre Nummer ein und erhalten Sie einen einmaligen SMS-Link.",
+  "title": "Laden Sie die Wrench-App im Appstore und bei Google Play herunter"
 }

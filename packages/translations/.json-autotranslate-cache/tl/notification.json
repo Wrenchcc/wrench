@@ -1,8 +1,8 @@
 {
-  "COMMENT": "Nagkomento sa iyong post",
-  "COMMENT_LIKE": "Nagpahayag ng iyong puna",
-  "FOLLOW": "Sinusundan ngayon ang iyong proyekto",
-  "MENTION": "Nabanggit ka sa isang komento",
-  "POST_LIKE": "Sparked iyong post",
-  "REPLY": "Tumugon sa iyong puna"
+  "comment": "Nagkomento sa iyong post",
+  "comment_like": "Nagpahayag ng iyong puna",
+  "follow": "Sinusundan ngayon ang iyong proyekto",
+  "mention": "Nabanggit ka sa isang komento",
+  "post_like": "Sparked iyong post",
+  "reply": "Tumugon sa iyong puna"
 }

@@ -1,6 +1,6 @@
 {
-  "APPLE_BUTTON": "Continuer avec Apple",
-  "FB_BUTTON": "Continuez avec Facebook",
-  "GOOGLE_BUTTON": "Continuer avec Google",
-  "TITLE": "Connectez-vous pour suivre vos projets préférés et plus encore."
+  "apple_button": "Continuer avec Apple",
+  "fb_button": "Continuez avec Facebook",
+  "google_button": "Continuer avec Google",
+  "title": "Connectez-vous pour suivre vos projets préférés et plus encore."
 }

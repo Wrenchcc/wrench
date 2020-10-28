@@ -1,8 +1,8 @@
 {
-  "EXPLORE": "Verken",
-  "FEED": "Voeden",
-  "DOWNLOAD": "Apps downloaden",
-  "LOGIN": "Log in",
-  "REGISTER": "Aanmelden",
-  "SIGN_OUT": "Afmelden"
+  "explore": "Verken",
+  "feed": "Voeden",
+  "download": "Apps downloaden",
+  "login": "Log in",
+  "register": "Aanmelden",
+  "sign_out": "Afmelden"
 }

@@ -1,6 +1,6 @@
 {
-  "APPLE_BUTTON": "Logga in med Apple",
-  "FB_BUTTON": "Logga in med Facebook",
-  "GOOGLE_BUTTON": "Logga in med Google",
-  "TITLE": "Sign in to follow your favorite projects and more."
+  "apple_button": "Fortsätt med Apple",
+  "fb_button": "Fortsätt med Facebook",
+  "google_button": "Fortsätt med Google",
+  "title": "Logga in för att följa dina favoritprojekt och mer."
 }

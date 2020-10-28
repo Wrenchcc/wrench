@@ -1,5 +1,5 @@
 {
-  "DESCRIPTION": "{{followers, humanFormat}} volger, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench",
-  "TITLE": "{{title}} - {{type}} <span>binnen</span> project",
-  "DESCRIPTION_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
+  "description": "{{followers, humanFormat}} volger, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench",
+  "title": "{{title}} - {{type}} <span>binnen</span> project",
+  "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
 }
