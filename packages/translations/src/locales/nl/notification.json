@@ -1,8 +1,8 @@
 {
-  "COMMENT": "Heeft gereageerd op je bericht",
-  "COMMENT_LIKE": "Wekte uw opmerking op",
-  "FOLLOW": "Volgt nu uw project",
-  "MENTION": "Vermeldde U in een opmerking",
-  "POST_LIKE": "Heeft je post aangewakkerd",
-  "REPLY": "Heeft op je opmerking gereageerd"
+  "comment": "Heeft gereageerd op je bericht",
+  "comment_like": "Wekte uw opmerking op",
+  "follow": "Volgt nu uw project",
+  "mention": "Vermeldde U in een opmerking",
+  "post_like": "Heeft je post aangewakkerd",
+  "reply": "Heeft op je opmerking gereageerd"
 }

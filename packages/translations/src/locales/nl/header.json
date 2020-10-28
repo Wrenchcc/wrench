@@ -1,7 +1,7 @@
 {
-  "DOWNLOAD": "Apps downloaden",
-  "EXPLORE": "Verken",
-  "FEED": "Voeden",
-  "LOGIN": "Log in",
-  "REGISTER": "Aanmelden"
+  "download": "Apps downloaden",
+  "explore": "Verken",
+  "feed": "Voeden",
+  "login": "Log in",
+  "register": "Aanmelden"
 }

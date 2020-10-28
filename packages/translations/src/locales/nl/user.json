@@ -1,5 +1,5 @@
 {
-  "DESCRIPTION": "Zie Moersleutelprojecten en berichten van {{fullName}} . (@ {{username}} )",
-  "IMAGE_ALT": "",
-  "TITLE": "{{fullName}} . (@ {{username}} ) - projecten en berichten"
+  "description": "Zie Moersleutelprojecten en berichten van {{fullName}} . (@ {{username}} )",
+  "image_alt": "",
+  "title": "{{fullName}} . (@ {{username}} ) - projecten en berichten"
 }
