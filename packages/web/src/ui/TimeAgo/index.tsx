@@ -13,14 +13,14 @@ function timeDifference(t, current, previous, long = false) {
 
   if (elapsed < milliSecondsPerMinute) {
     if (long) {
-      return t('NOW')
+      return t('now')
     }
     return `${Math.round(elapsed / 1000)}s`
   }
 
   if (elapsed < milliSecondsPerHour) {
     if (long) {
-      return t('M', {
+      return t('m', {
         count: Math.round(elapsed / milliSecondsPerMinute),
       })
     }
@@ -28,27 +28,24 @@ function timeDifference(t, current, previous, long = false) {
   }
   if (elapsed < milliSecondsPerDay) {
     if (long) {
-      return t('H', { count: Math.round(elapsed / milliSecondsPerHour) })
+      return t('h', { count: Math.round(elapsed / milliSecondsPerHour) })
     }
     return `${Math.round(elapsed / milliSecondsPerHour)}h`
   }
   if (elapsed < milliSecondsPerMonth) {
     if (long) {
-      return t('D', {
-        ns: 'time',
-        count: Math.round(elapsed / milliSecondsPerDay),
-      })
+      return t('d', { count: Math.round(elapsed / milliSecondsPerDay) })
     }
     return `${Math.round(elapsed / milliSecondsPerDay)}d`
   }
   if (elapsed < milliSecondsPerYear) {
     if (long) {
-      return t('MO', { count: Math.round(elapsed / milliSecondsPerMonth) })
+      return t('mo', { count: Math.round(elapsed / milliSecondsPerMonth) })
     }
     return `${Math.round(elapsed / milliSecondsPerMonth)}mo`
   }
   if (long) {
-    return t('Y', { count: Math.round(elapsed / milliSecondsPerYear) })
+    return t('y', { count: Math.round(elapsed / milliSecondsPerYear) })
   }
   return `${Math.round(elapsed / milliSecondsPerYear)}y`
 }

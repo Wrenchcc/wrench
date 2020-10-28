@@ -27,7 +27,7 @@ export default function Home(props) {
     <>
       <Seo
         config={{
-          titleTemplate: t('DOCUMENT_TITLE'),
+          titleTemplate: t('document_title'),
         }}
       />
 

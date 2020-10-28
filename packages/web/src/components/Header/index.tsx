@@ -102,11 +102,11 @@ function Header({ isAuthenticated }) {
     {
       href: '/',
       requireAuth: true,
-      title: t('FEED'),
+      title: t('feed'),
     },
     {
       href: '/explore',
-      title: t('EXPLORE'),
+      title: t('explore'),
     },
   ]
 

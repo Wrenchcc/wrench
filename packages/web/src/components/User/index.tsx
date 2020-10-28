@@ -72,11 +72,11 @@ function User({ username, isAuthenticated }) {
     >
       <Seo
         config={{
-          title: t('TITLE', params),
-          description: t('DESCRIPTION', params),
+          title: t('title', params),
+          description: t('description', params),
           openGraph: {
-            title: t('TITLE', params),
-            description: t('DESCRIPTION', params),
+            title: t('title', params),
+            description: t('description', params),
             url: `https://wrench.cc/${username}`,
             type: 'profile',
             profile: {
@@ -87,7 +87,7 @@ function User({ username, isAuthenticated }) {
             images: [
               {
                 url: `${user.avatarUrl}?w=160&h=160&dpr=1`,
-                alt: t('IMAGE_ALT'),
+                alt: t('image_alt'),
                 width: 160,
                 height: 160,
               },
