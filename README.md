@@ -18,8 +18,6 @@ This is the main monorepo codebase of [Wrench](https://wrench.cc). Every single 
 
 The goto community for people that like to build and keep track of their motorcycle build progress.
 
-### Codebase
-
 #### Technologies
 
 - **Full-stack JavaScript**: We use Node.js to power our servers, and React to power our frontend and mobile apps. Almost all of the code you'll touch in this codebase will be JavaScript.
@@ -30,17 +28,24 @@ Here is a list of all the big technologies we use:
 - **GraphQL**: API, powered by the entire Apollo toolchain
 - **React**: Frontend and mobile apps
 
+
+#### Architecture
+<img width="1810" alt="aws" src="https://user-images.githubusercontent.com/655158/97475756-ee880580-194d-11eb-8ac8-1be06330c7f8.png">
+
+
+
 #### Folder structure
 
 ```sh
 wrench/
-├── api        # API server
-├── common     # Shared code
-├── email      # Email service
-├── resizer    # Resize service
-├── mobile     # Mobile apps
-├── ui         # UI library
-└── web        # Web app
+├── api            # API server
+├── common         # Shared code
+├── translations   # Project translations
+├── email          # Email service
+├── resizer        # Resize service
+├── mobile         # Mobile apps
+├── ui             # UI library
+└── web            # Web app
 ```
 
 ### Mobile apps
