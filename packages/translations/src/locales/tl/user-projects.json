@@ -1,5 +1,5 @@
 {
-  "FOLLOWERS": "{{count, humanFormat}} tagasunod",
-  "FOLLOWERS_plural": "{{count, humanFormat}} tagasunod",
-  "TITLE": "Mga Proyekto"
+  "followers": "{{count, humanFormat}} tagasunod",
+  "followers_plural": "{{count, humanFormat}} tagasunod",
+  "title": "Mga Proyekto"
 }

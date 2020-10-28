@@ -1,5 +1,5 @@
 {
-  "PROJECTS": "<span>0 na</span> proyekto",
-  "PROJECTS_plural": "<span>0 na</span> proyekto",
-  "NOT_FOUND": "Walang nahanap na mga resulta sa paghahanap."
+  "projects": "<span>0 na</span> proyekto",
+  "projects_plural": "<span>0 na</span> proyekto",
+  "not_found": "Walang nahanap na mga resulta sa paghahanap."
 }
