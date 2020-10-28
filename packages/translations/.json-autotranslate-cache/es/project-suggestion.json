@@ -1,4 +1,5 @@
 {
-  "DESCRIPTION": "",
-  "TITLE": ""
+  "DESCRIPTION": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@ {{username}} ) en llave",
+  "TITLE": "{{title}} - {{type}} proyecto",
+  "DESCRIPTION_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@ {{username}} ) en llave"
 }

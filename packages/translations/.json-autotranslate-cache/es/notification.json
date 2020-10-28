@@ -1,8 +1,8 @@
 {
-  "COMMENT": "",
-  "COMMENT_LIKE": "",
-  "FOLLOW": "",
-  "MENTION": "",
-  "POST_LIKE": "",
-  "REPLY": ""
+  "COMMENT": "Comentó tu publicación",
+  "COMMENT_LIKE": "Provocó tu comentario",
+  "FOLLOW": "Ahora sigue tu proyecto",
+  "MENTION": "Te mencioné en un comentario",
+  "POST_LIKE": "Encendió tu publicación",
+  "REPLY": "Respondió a su comentario"
 }

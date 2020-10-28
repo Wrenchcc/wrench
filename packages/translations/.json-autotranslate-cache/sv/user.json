@@ -1,5 +1,5 @@
 {
-  "DESCRIPTION": "",
+  "DESCRIPTION": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
   "IMAGE_ALT": "",
-  "TITLE": ""
+  "TITLE": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
 }

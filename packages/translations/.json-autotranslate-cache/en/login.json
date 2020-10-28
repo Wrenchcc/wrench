@@ -1,6 +1,6 @@
 {
-    "APPLE_BUTTON": "",
-    "FB_BUTTON": "",
-    "GOOGLE_BUTTON": "",
-    "TITLE": ""
+    "APPLE_BUTTON": "Continue with Apple",
+    "FB_BUTTON": "Continue with Facebook",
+    "GOOGLE_BUTTON": "Continue with Google",
+    "TITLE": "Sign in to follow your favorite projects and more."
 }

@@ -1,4 +1,4 @@
 {
-    "LOAD_REPLIES": "",
-    "LOAD_REPLIES_plural": ""
+  "LOAD_REPLIES": "Ver respuestas ( {{count}} )",
+  "LOAD_REPLIES_plural": ""
 }

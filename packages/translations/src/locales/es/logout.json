@@ -1,5 +1,5 @@
 {
-    "LOGOUT": "",
-    "PROFILE": "",
-    "SETTINGS": ""
+  "LOGOUT": "Cerrar sesión",
+  "PROFILE": "Perfil",
+  "SETTINGS": "Configuraciones"
 }

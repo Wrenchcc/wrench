@@ -1,5 +1,5 @@
 {
-  "DESCRIPTION": "",
+  "DESCRIPTION": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
   "IMAGE_ALT": "",
-  "TITLE": ""
+  "TITLE": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
 }

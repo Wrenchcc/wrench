@@ -1,4 +1,4 @@
 {
-  "LOADREPLIES": "",
-  "LOADREPLIES_plural": ""
+  "LOAD_REPLIES": "Visa svar ( {{count}} )",
+  "LOAD_REPLIES_plural": ""
 }

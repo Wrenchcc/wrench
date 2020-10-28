@@ -1,4 +1,4 @@
 {
-    "LOADREPLIES": "",
-    "LOADREPLIES_plural": ""
+    "LOAD_REPLIES": "View replies ({{count}})",
+    "LOAD_REPLIES_plural": ""
 }

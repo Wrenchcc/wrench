@@ -1,7 +1,7 @@
 {
-    "DOWNLOAD": "",
-    "EXPLORE": "",
-    "FEED": "",
-    "LOGIN": "",
-    "REGISTER": ""
+    "DOWNLOAD": "Download Apps",
+    "EXPLORE": "Explore",
+    "FEED": "Feed",
+    "LOGIN": "Log in",
+    "REGISTER": "Sign up"
 }
