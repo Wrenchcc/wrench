@@ -1,3 +1,4 @@
+// @ts-nocheck
 import NextI18Next from 'next-i18next'
 import * as humanFormat from 'human-format'
 import path from 'path'
