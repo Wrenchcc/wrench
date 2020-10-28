@@ -105,16 +105,16 @@ function Project({ slug, isAuthenticated, action }) {
     <Layout>
       <Seo
         config={{
-          title: t('TITLE', { title: project.title, type: project?.type?.title }),
-          description: t('DESCRIPTION', {
+          title: t('title', { title: project.title, type: project?.type?.title }),
+          description: t('description', {
             followers: project.followers.totalCount,
             posts: project?.posts?.totalCount || 0,
             fullName: project.user.fullName,
             username: project.user.username,
           }),
           openGraph: {
-            title: t('TITLE', { title: project.title, type: project?.type?.title }),
-            description: t('DESCRIPTION', {
+            title: t('title', { title: project.title, type: project?.type?.title }),
+            description: t('description', {
               followers: project.followers.totalCount,
               posts: project?.posts?.totalCount || 0,
               fullName: project.user.fullName,

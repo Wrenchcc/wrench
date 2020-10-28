@@ -4,6 +4,20 @@ import Link from 'next/link'
 import { TimeAgo, Image, Avatar } from 'ui'
 import { Base, Title, Content, Top, Name } from './styles'
 
+export const getImages = content => {
+  const data = JSON.parse(content)
+
+  return data.blocks
+    .filter(({ type }) => type === 'image')
+    .map(({ type, data }, i) => {
+      return {
+        url: `${data.file.url}?w=650&h=650&dpr=1`,
+        width: 640,
+        height: 640,
+      }
+    })
+}
+
 function formatContent(content) {
   const data = JSON.parse(content)
 

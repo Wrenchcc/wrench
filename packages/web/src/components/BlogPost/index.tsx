@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Seo from 'utils/seo'
 import { useBlogPostQuery } from '@wrench/common'
 import { Post, Layout, Loader, BlogPost as UIBlogPost, Icon } from 'ui'
+import { getImages } from 'ui/BlogPost'
 import Popular from 'components/Popular'
 import Footer from 'components/Footer'
 import ProjectTypes from 'components/ProjectTypes'
@@ -34,6 +35,13 @@ export default function BlogPost() {
         <Seo
           config={{
             title: `${t('title')} - ${data?.blogPost.title}`,
+            openGraph: {
+              title: `${t('title')} - ${data?.blogPost.title}`,
+              url: `https://wrench.cc/blog/${slug}`,
+              type: 'website',
+              images: getImages(data?.blogPost.content),
+              site_name: 'Wrench',
+            },
           }}
         />
 

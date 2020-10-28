@@ -102,7 +102,7 @@ function About() {
                 <br />
 
                 <Text bold>Felix Hofte</Text>
-                <Text color="neutral">Head Of Marketing</Text>
+                <Text color="neutral">CMO</Text>
                 <br />
                 <a href="mailto:felix@wrench.cc">felix@wrench.cc</a>
               </PersonPicture>

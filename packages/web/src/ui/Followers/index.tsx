@@ -1,10 +1,10 @@
 // @ts-nocheck
-import React, { memo } from 'react'
+import React from 'react'
 import { useTranslation } from 'i18n'
 import Link from 'next/link'
 import { Base, Users, User, Avatar, Count } from './styles'
 
-const Followers = memo(function Followers({ followers, project, className }) {
+function Followers({ followers, project, className }) {
   const { t } = useTranslation('followers')
 
   return (
@@ -28,6 +28,6 @@ const Followers = memo(function Followers({ followers, project, className }) {
       </Link>
     </Base>
   )
-})
+}
 
 export default Followers
