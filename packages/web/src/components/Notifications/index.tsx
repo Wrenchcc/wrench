@@ -43,9 +43,9 @@ function Notifications({ onPress }) {
           ))
         ) : (
           <Empty>
-            <Text medium>{t('TITLE')}</Text>
+            <Text medium>{t('title')}</Text>
             <Text color="neutral" fontSize={15}>
-              {t('DESCRIPTION')}
+              {t('description')}
             </Text>
           </Empty>
         )}

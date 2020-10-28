@@ -11,17 +11,17 @@ import { Base, Content, Description, Bottom } from './styles'
 function description(data, t) {
   switch (data.type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
-      return `${t('FOLLOW')}: "${data.project.title}"`
+      return `${t('follow')}: "${data.project.title}"`
     case NOTIFICATION_TYPES.NEW_COMMENT:
-      return `${t('COMMENT')}: "${data.comment.text}"`
+      return `${t('comment')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_REPLY:
-      return `${t('REPLY')}: "${data.comment.text}"`
+      return `${t('reply')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_MENTION:
-      return `${t('MENTION')}: "${data.comment.text}"`
+      return `${t('mention')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_POST_LIKE:
-      return t('POST_LIKE')
+      return t('post_like')
     case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
-      return t('COMMENT_LIKE')
+      return t('comment_like')
     default:
       return null
   }

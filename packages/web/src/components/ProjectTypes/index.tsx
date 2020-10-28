@@ -16,7 +16,7 @@ function ProjectTypes({ selectedId }) {
     <Base>
       {/* <Wrapper first>
         <Text fontSize={15} medium>
-          {t('INSPO')}
+          {t('inspo')}
         </Text>
       </Wrapper> */}
 

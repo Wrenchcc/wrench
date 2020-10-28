@@ -53,8 +53,8 @@ function ProjectSuggestion() {
       column
       top={
         <>
-          <Title medium>{t('TITLE')}</Title>
-          <Description color="neutral">{t('DESCRIPTION')}</Description>
+          <Title medium>{t('title')}</Title>
+          <Description color="neutral">{t('description')}</Description>
         </>
       }
     >

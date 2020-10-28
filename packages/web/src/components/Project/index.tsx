@@ -148,9 +148,9 @@ function Project({ slug, isAuthenticated, action }) {
           />
         )}
 
-        <ShareButton onPress={showShare}>{t('SHARE')}</ShareButton>
+        <ShareButton onPress={showShare}>{t('share')}</ShareButton>
 
-        <Similar onPress={showSimilarModal}>{t('SIMILAR')}</Similar>
+        <Similar onPress={showSimilarModal}>{t('similar')}</Similar>
       </Left>
 
       <Right>

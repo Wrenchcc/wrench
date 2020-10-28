@@ -25,7 +25,7 @@ export default function Login({ closeModal, referral = '/' }) {
   return (
     <Base>
       <Title fontSize={36} lineHeight={42}>
-        {t('TITLE')}
+        {t('title')}
       </Title>
 
       <FacebookLogin
@@ -46,12 +46,12 @@ export default function Login({ closeModal, referral = '/' }) {
           })
         }
         render={({ onClick }) => (
-          <FacebookButton onClick={onClick}>{t('FB_BUTTON')}</FacebookButton>
+          <FacebookButton onClick={onClick}>{t('fb_button')}</FacebookButton>
         )}
       />
 
       <AppleSignIn clientId="cc.wrench" scope="name email" redirectURI={APPLE_REDIRECT_URI}>
-        {({ signIn }) => <AppleButton onClick={signIn}>{t('APPLE_BUTTON')}</AppleButton>}
+        {({ signIn }) => <AppleButton onClick={signIn}>{t('apple_button')}</AppleButton>}
       </AppleSignIn>
 
       <GoogleLogin
@@ -59,7 +59,7 @@ export default function Login({ closeModal, referral = '/' }) {
         clientId="407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com"
         render={renderProps => (
           <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
-            {t('GOOGLE_BUTTON')}
+            {t('google_button')}
           </GoogleButton>
         )}
         onSuccess={({ tokenId }) =>

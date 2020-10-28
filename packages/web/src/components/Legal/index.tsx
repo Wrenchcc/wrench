@@ -8,8 +8,8 @@ function Legal() {
   return (
     <Base>
       <Text>
-        {t('DESCRIPTION')}
-        <a href="/terms">{t('LINK')}</a>
+        {t('description')}
+        <a href="/terms">{t('link')}</a>
       </Text>
     </Base>
   )

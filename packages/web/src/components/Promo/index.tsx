@@ -52,11 +52,11 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
         )}
 
         <Text medium fontSize={19} color={inverted && 'white'}>
-          {t('TITLE')}
+          {t('title')}
         </Text>
 
         <Description color="neutral" fontSize={15}>
-          {t('DESCRIPTION')}
+          {t('description')}
         </Description>
 
         <Bottom inverted={inverted}>
@@ -87,7 +87,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
               })
             }
           >
-            {success ? t('BUTTON_SUCCESS') : t('BUTTON_DEFAULT')}
+            {success ? t('button_success') : t('button_default')}
           </Send>
         </Bottom>
       </Base>

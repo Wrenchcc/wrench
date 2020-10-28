@@ -156,7 +156,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
         <MentionsInput
           style={styles}
           ref={ref}
-          placeholder={t('PLACEHOLDER')}
+          placeholder={t('placeholder')}
           onChange={handleOnChangeText}
           onFocus={handleFocus}
           value={text}
@@ -178,7 +178,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
         {text.length > 0 && (
           <Button onClick={handleSubmit}>
             <Text fontSize={15} medium>
-              {t('POST')}
+              {t('post')}
             </Text>
           </Button>
         )}

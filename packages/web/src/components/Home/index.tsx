@@ -34,13 +34,13 @@ export default function Home(props) {
       <Hero>
         <Inner paddingTop={50}>
           <Title color="white" fontSize={120} lineHeight={128}>
-            {t('TITLE')} <br />
-            {t('SUBTITLE')}
+            {t('title')} <br />
+            {t('subtitle')}
           </Title>
           <Description color="white" fontSize={19}>
-            {t('DESCRIPTION')}
+            {t('description')}
           </Description>
-          <Signup onPress={showModal}>{t('SIGNUP')}</Signup>
+          <Signup onPress={showModal}>{t('signup')}</Signup>
         </Inner>
         <Video autoPlay muted playsInline>
           <source src={VIDEO_URL} type="video/mp4" />
@@ -55,7 +55,7 @@ export default function Home(props) {
         <Popular />
 
         <Link href="/explore">
-          <ExploreLink>{t('EXPLORE')}</ExploreLink>
+          <ExploreLink>{t('explore')}</ExploreLink>
         </Link>
       </Projects>
 

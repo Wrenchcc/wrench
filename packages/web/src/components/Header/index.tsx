@@ -170,15 +170,15 @@ function Header({ isAuthenticated }) {
           <Fragment>
             <Link passHref href="/download">
               <NavLink inverted={inverted} active={router.pathname === '/download'}>
-                {t('DOWNLOAD')}
+                {t('download')}
               </NavLink>
             </Link>
             <NavLink inverted={inverted} onClick={showModal}>
-              {t('LOGIN')}
+              {t('login')}
             </NavLink>
             <Separator inverted={inverted}>/</Separator>
             <NavLink inverted={inverted} onClick={showModal} last>
-              {t('REGISTER')}
+              {t('register')}
             </NavLink>
           </Fragment>
         )}

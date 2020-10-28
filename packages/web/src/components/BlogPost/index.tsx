@@ -33,7 +33,7 @@ export default function BlogPost() {
       <Layout column>
         <Seo
           config={{
-            title: `${t('TITLE')} - ${data?.blogPost.title}`,
+            title: `${t('title')} - ${data?.blogPost.title}`,
           }}
         />
 
@@ -44,7 +44,7 @@ export default function BlogPost() {
               source={require('./arrowBack.svg?include')}
               width="22px"
             />
-            {t('BACK')}
+            {t('back')}
           </A>
         </Link>
 

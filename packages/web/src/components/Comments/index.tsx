@@ -125,7 +125,7 @@ function Comments({ postId }) {
                     }
                   >
                     <Text medium fontSize={12} color="neutral">
-                      {t('LOAD_REPLIES', {
+                      {t('load_replies', {
                         count: replies.totalCount - replies.edges.length,
                       })}
                     </Text>

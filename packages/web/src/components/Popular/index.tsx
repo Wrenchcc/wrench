@@ -22,8 +22,8 @@ function Popular() {
 
   return (
     <Fragment>
-      <Title medium>{t('TITLE')}</Title>
-      <Text color="neutral">{t('DESCRIPTION')}</Text>
+      <Title medium>{t('title')}</Title>
+      <Text color="neutral">{t('description')}</Text>
 
       <List>
         {edges?.map(({ node }) => (

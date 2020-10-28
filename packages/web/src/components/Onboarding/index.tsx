@@ -54,14 +54,14 @@ export default function Onboarding() {
             })
           }
         >
-          {t('NEXT')}
+          {t('next')}
         </Next>
 
         <Title color="white" fontSize={36}>
-          {t('TITLE')}
+          {t('title')}
         </Title>
 
-        <Text color="neutral">{t('DESCRIPTION')}</Text>
+        <Text color="neutral">{t('description')}</Text>
 
         <Scroll>
           <Types>
