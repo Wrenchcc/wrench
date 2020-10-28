@@ -30,7 +30,7 @@ function Result({ query, onPress }) {
 
   return (
     <List>
-      {!isFetching && edges?.length === 0 && <Empty>{t('notfound')}</Empty>}
+      {!isFetching && edges?.length === 0 && <Empty>{t('NOT_FOUND')}</Empty>}
 
       <InfiniteScroll
         loadMore={fetchMore}
@@ -50,7 +50,7 @@ function Result({ query, onPress }) {
                 <Content onClick={onPress}>
                   <Text lineHeight={18}>{node.fullName}</Text>
                   <Text lineHeight={18} fontSize={15} color="neutral">
-                    {t('projects', { count: node.projectCount })}
+                    {t('PROJECTS', { count: node.projectCount })}
                   </Text>
                 </Content>
               </a>

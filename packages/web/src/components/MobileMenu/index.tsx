@@ -23,21 +23,21 @@ function MobileMenu({ isAuthenticated, onClose }) {
     {
       href: '/',
       requireAuth: true,
-      title: t('feed'),
+      title: t('FEED'),
     },
     {
       href: '/explore',
-      title: t('explore'),
+      title: t('EXPLORE'),
     },
     {
       onlyPublic: true,
       openModal: showModal,
-      title: t('login'),
+      title: t('LOGIN'),
     },
     {
       onlyPublic: true,
       openModal: showModal,
-      title: t('register'),
+      title: t('REGISTER'),
     },
     {
       requireAuth: true,
@@ -45,11 +45,11 @@ function MobileMenu({ isAuthenticated, onClose }) {
         client.resetStore()
         onClose()
       },
-      title: t('signout'),
+      title: t('SIGNOUT'),
     },
     {
       href: '/download',
-      title: t('download'),
+      title: t('DOWNLOAD'),
       last: true,
     },
   ]

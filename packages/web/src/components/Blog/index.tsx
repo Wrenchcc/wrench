@@ -29,14 +29,14 @@ export default function Blog() {
       <Layout column>
         <Seo
           config={{
-            title: t('title'),
+            title: t('TITLE'),
           }}
         />
 
         <div className="blog">
           <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
             <List>
-              <Title medium>{t('title')}</Title>
+              <Title medium>{t('TITLE')}</Title>
 
               {edges?.map(({ node }) => (
                 <BlogPost

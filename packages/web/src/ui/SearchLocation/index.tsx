@@ -61,7 +61,7 @@ function SearchLocation({ onPress, value }) {
   return (
     <Base>
       <Input
-        placeholder={t('placeholder')}
+        placeholder={t('PLACEHOLDER')}
         value={text}
         onChangeText={onChangeText}
         autoComplete="disabelAutocompleteHack"
@@ -76,7 +76,7 @@ function SearchLocation({ onPress, value }) {
                   <Place>{place_name}</Place>
                 </li>
               ))
-            : t('noresult')}
+            : t('NO_RESULT')}
         </Dropdown>
       )}
     </Base>

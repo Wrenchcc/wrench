@@ -38,13 +38,13 @@ function Item({ id, user, text, onReply, createdAt, isReply, likes }) {
           </Action>
           <Action>
             <Text medium color="neutral" fontSize={12}>
-              {t('Comments:like', { count: likes.totalCount })}
+              {t('LIKE', { count: likes.totalCount })}
             </Text>
           </Action>
           <Action>
             <Reply onClick={() => onReply({ id, user })}>
               <Text medium fontSize={12}>
-                {t('Comments:reply')}
+                {t('REPLY')}
               </Text>
             </Reply>
           </Action>

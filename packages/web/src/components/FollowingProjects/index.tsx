@@ -18,7 +18,7 @@ function FollowingProjects() {
   return (
     <Base>
       <Text medium fontSize={24}>
-        {t('title')}
+        {t('TITLE')}
       </Text>
 
       <List>

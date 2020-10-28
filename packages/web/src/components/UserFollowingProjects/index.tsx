@@ -27,7 +27,7 @@ function UserFollowingProjects({ username, isAuthenticated }) {
     </Modal>
   ))
 
-  const toggleFollow = (project) => {
+  const toggleFollow = project => {
     if (!isAuthenticated) {
       showModal()
       return
@@ -63,9 +63,9 @@ function UserFollowingProjects({ username, isAuthenticated }) {
 
   return (
     <Base>
-      <Title>{t('title')}</Title>
+      <Title>{t('TITLE')}</Title>
       <Text color="neutral">
-        {t('description', {
+        {t('DESCRIPTION', {
           name: data.user.firstName,
         })}
       </Text>

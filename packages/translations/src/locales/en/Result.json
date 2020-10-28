@@ -1,5 +1,0 @@
-{
-    "projects": "{{count, humanFormat}} project",
-    "projects_plural": "{{count, humanFormat}} projects",
-    "notfound": "No search results found."
-  }

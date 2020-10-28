@@ -23,7 +23,7 @@ const Followers = memo(function Followers({ followers, project, className }) {
       </Users>
       <Link href="/project/[id]/followers" as={`/project/${project.id}/followers`}>
         <a>
-          <Count fontSize={15}>{t('followers', { count: followers.totalCount })}</Count>
+          <Count fontSize={15}>{t('FOLLOWERS', { count: followers.totalCount })}</Count>
         </a>
       </Link>
     </Base>

@@ -16,82 +16,82 @@ function Footer() {
             <ul>
               <NavItem>
                 <Link href="/about">
-                  <a>{t('about')}</a>
+                  <a>{t('ABOUT')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/press">
-                  <a>{t('press')}</a>
+                  <a>{t('PRESS')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/blog">
-                  <a>{t('blog')}</a>
+                  <a>{t('BLOG')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/download">
-                  <a>{t('download')}</a>
+                  <a>{t('DOWNLOAD')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <a href="https://status.wrench.cc" rel="nofollow">
-                  {t('status')}
+                  {t('STATUS')}
                 </a>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>{t('help')}</Text>
+            <Text medium>{t('HELP')}</Text>
             <ul>
               <NavItem>
-                <a href="mailto:support@wrench.cc">{t('mail')}</a>
+                <a href="mailto:support@wrench.cc">{t('MAIL')}</a>
               </NavItem>
               <NavItem>
-                <a href="mailto:feedback@wrench.cc">{t('feedback')}</a>
+                <a href="mailto:feedback@wrench.cc">{t('FEEDBACK')}</a>
               </NavItem>
               <NavItem>
                 <a href="https://m.me/wrench.cc" rel="nofollow">
-                  {t('chat')}
+                  {t('CHAT')}
                 </a>
               </NavItem>
               <NavItem>
                 <Link href="/faq">
-                  <a>{t('faq')}</a>
+                  <a>{t('FAQ')}</a>
                 </Link>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>{t('legal')}</Text>
+            <Text medium>{t('LEGAL')}</Text>
             <ul>
               <NavItem>
                 <Link href="/terms">
-                  <a>{t('terms')}</a>
+                  <a>{t('TERMS')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/policy">
-                  <a>{t('policy')}</a>
+                  <a>{t('POLICY')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/eula">
-                  <a>{t('eula')}</a>
+                  <a>{t('EULA')}</a>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/cookies">
-                  <a>{t('cookies')}</a>
+                  <a>{t('COOKIES')}</a>
                 </Link>
               </NavItem>
             </ul>
           </Column>
 
           <Column>
-            <Text medium>{t('social')}</Text>
+            <Text medium>{t('SOCIAL')}</Text>
             <ul>
               <NavItem>
                 <a href="https://instagram.com/wrench.cc" rel="nofollow">
@@ -115,11 +115,11 @@ function Footer() {
         <Bottom>
           <Left>
             <Text fontSize={13} color="neutral">
-              {t('description')}
+              {t('DESCRIPTION')}
             </Text>
 
             <Text fontSize={13} color="neutral">
-              {t('trademarks')}
+              {t('TRADEMARKS')}
             </Text>
 
             <Text fontSize={13} color="neutral">

@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "translations:create": "i18next --config config.js ../web/src/**/*/*.tsx",
-    "translations:autotranslate": "json-autotranslate -i src/locales -d -c service-account.json",
+    "translations:create": "tsc && i18next --config config.js ../web/src/**/*/*.tsx",
+    "translations:autotranslate": "json-autotranslate -i src/locales -c service-account.json -m i18next -t key-based --fix-inconsistencies",
     "build": "tsc"
   },
   "devDependencies": {

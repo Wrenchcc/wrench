@@ -21,12 +21,12 @@ function Logout({ username, onPress }) {
               pathname: `/${username}`,
             }}
           >
-            <a onClick={onPress}>{t('profile')}</a>
+            <a onClick={onPress}>{t('PROFILE')}</a>
           </Link>
         </li>
         <li>
           <Link href="/settings">
-            <a onClick={onPress}>{t('settings')}</a>
+            <a onClick={onPress}>{t('SETTINGS')}</a>
           </Link>
         </li>
         <li>
@@ -36,7 +36,7 @@ function Logout({ username, onPress }) {
               client.resetStore()
             }}
           >
-            {t('logout')}
+            {t('LOGOUT')}
           </a>
         </li>
       </ul>

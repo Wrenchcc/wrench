@@ -1,8 +1,8 @@
 {
-    "description": "Document your builds, share your projects & learn from like-minded.",
-    "explore": "Explore more projects",
-    "signup": "Sign up now",
-    "subtitle": "community.",
-    "title": "Your motorcycle",
-    "documentTitle": "Wrench | Your motorcycle community"
+    "DOCUMENT_TITLE": "Wrench | Your motorcycle community",
+    "DESCRIPTION": "Document your builds, share your projects & learn from like-minded.",
+    "EXPLORE": "Explore more projects",
+    "SIGNUP": "Sign up now",
+    "SUBTITLE": "community.",
+    "TITLE": "Your motorcycle"
 }

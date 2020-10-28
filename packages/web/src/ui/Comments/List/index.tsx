@@ -38,7 +38,7 @@ function List({ data, postId }) {
       ))}
       <span onClick={showModal}>
         <LoadMore fontSize={15} color="neutral">
-          {t('loadMore', {
+          {t('LOAD_MORE', {
             count: data.comments.totalCount,
           })}
         </LoadMore>

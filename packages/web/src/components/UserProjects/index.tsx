@@ -10,7 +10,7 @@ function UserProjects({ projects }) {
   return (
     <Base>
       <Text medium fontSize={24}>
-        {t('title')}
+        {t('TITLE')}
       </Text>
 
       <List>
@@ -24,7 +24,7 @@ function UserProjects({ projects }) {
                 <Content>
                   <Text>{node.title}</Text>
                   <Text color="neutral" fontSize={15} lineHeight={18}>
-                    {t('followers', { count: node.followers.totalCount })}
+                    {t('FOLLOWERS', { count: node.followers.totalCount })}
                   </Text>
                 </Content>
               </Row>

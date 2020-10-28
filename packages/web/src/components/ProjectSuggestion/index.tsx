@@ -14,7 +14,7 @@ function ProjectSuggestion() {
     },
   })
 
-  const toggleFollow = (project) => {
+  const toggleFollow = project => {
     const totalCount = project.permissions.isFollower
       ? project.followers.totalCount - 1
       : project.followers.totalCount + 1
@@ -53,8 +53,8 @@ function ProjectSuggestion() {
       column
       top={
         <>
-          <Title medium>{t('title')}</Title>
-          <Description color="neutral">{t('description')}</Description>
+          <Title medium>{t('TITLE')}</Title>
+          <Description color="neutral">{t('DESCRIPTION')}</Description>
         </>
       }
     >

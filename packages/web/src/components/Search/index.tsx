@@ -34,7 +34,7 @@ function Search({ className, inverted }) {
       <Icon src={require('./search.svg')} />
       <Field
         inverted={inverted}
-        placeholder={t('placeholder')}
+        placeholder={t('PLACEHOLDER')}
         type="search"
         value={value}
         onFocus={toggleActive}

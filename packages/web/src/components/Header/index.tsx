@@ -67,7 +67,7 @@ function Header({ isAuthenticated }) {
     if (data?.notifications?.unreadCount > 0) {
       // @ts-ignore
       markAllNotificationsSeen({
-        update: (cache) => {
+        update: cache => {
           const data = cache.readQuery({ query: NotificationsDocument })
 
           cache.writeQuery({
@@ -102,11 +102,11 @@ function Header({ isAuthenticated }) {
     {
       href: '/',
       requireAuth: true,
-      title: t('feed'),
+      title: t('FEED'),
     },
     {
       href: '/explore',
-      title: t('explore'),
+      title: t('EXPLORE'),
     },
   ]
 
@@ -170,15 +170,15 @@ function Header({ isAuthenticated }) {
           <Fragment>
             <Link passHref href="/download">
               <NavLink inverted={inverted} active={router.pathname === '/download'}>
-                {t('download')}
+                {t('DOWNLOAD')}
               </NavLink>
             </Link>
             <NavLink inverted={inverted} onClick={showModal}>
-              {t('login')}
+              {t('LOGIN')}
             </NavLink>
             <Separator inverted={inverted}>/</Separator>
             <NavLink inverted={inverted} onClick={showModal} last>
-              {t('register')}
+              {t('REGISTER')}
             </NavLink>
           </Fragment>
         )}

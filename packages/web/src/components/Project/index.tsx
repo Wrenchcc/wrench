@@ -56,7 +56,7 @@ function Project({ slug, isAuthenticated, action }) {
     [project]
   )
 
-  const toggleFollow = (project) => {
+  const toggleFollow = project => {
     if (!isAuthenticated) {
       showLoginModal()
       return
@@ -105,16 +105,16 @@ function Project({ slug, isAuthenticated, action }) {
     <Layout>
       <Seo
         config={{
-          title: t('title', { title: project.title, type: project?.type?.title }),
-          description: t('description', {
+          title: t('TITLE', { title: project.title, type: project?.type?.title }),
+          description: t('DESCRIPTION', {
             followers: project.followers.totalCount,
             posts: project?.posts?.totalCount || 0,
             fullName: project.user.fullName,
             username: project.user.username,
           }),
           openGraph: {
-            title: t('title', { title: project.title, type: project?.type?.title }),
-            description: t('description', {
+            title: t('TITLE', { title: project.title, type: project?.type?.title }),
+            description: t('DESCRIPTION', {
               followers: project.followers.totalCount,
               posts: project?.posts?.totalCount || 0,
               fullName: project.user.fullName,
@@ -148,9 +148,9 @@ function Project({ slug, isAuthenticated, action }) {
           />
         )}
 
-        <ShareButton onPress={showShare}>{t('share')}</ShareButton>
+        <ShareButton onPress={showShare}>{t('SHARE')}</ShareButton>
 
-        <Similar onPress={showSimilarModal}>{t('similar')}</Similar>
+        <Similar onPress={showSimilarModal}>{t('SIMILAR')}</Similar>
       </Left>
 
       <Right>

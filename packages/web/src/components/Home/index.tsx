@@ -27,20 +27,20 @@ export default function Home(props) {
     <>
       <Seo
         config={{
-          titleTemplate: t('documentTitle'),
+          titleTemplate: t('DOCUMENT_TITLE'),
         }}
       />
 
       <Hero>
         <Inner paddingTop={50}>
           <Title color="white" fontSize={120} lineHeight={128}>
-            {t('title')} <br />
-            {t('subtitle')}
+            {t('TITLE')} <br />
+            {t('SUBTITLE')}
           </Title>
           <Description color="white" fontSize={19}>
-            {t('description')}
+            {t('DESCRIPTION')}
           </Description>
-          <Signup onPress={showModal}>{t('signup')}</Signup>
+          <Signup onPress={showModal}>{t('SIGNUP')}</Signup>
         </Inner>
         <Video autoPlay muted playsInline>
           <source src={VIDEO_URL} type="video/mp4" />
@@ -55,7 +55,7 @@ export default function Home(props) {
         <Popular />
 
         <Link href="/explore">
-          <ExploreLink>{t('explore')}</ExploreLink>
+          <ExploreLink>{t('EXPLORE')}</ExploreLink>
         </Link>
       </Projects>
 

@@ -52,18 +52,18 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
         )}
 
         <Text medium fontSize={19} color={inverted && 'white'}>
-          {t('title')}
+          {t('TITLE')}
         </Text>
 
         <Description color="neutral" fontSize={15}>
-          {t('description')}
+          {t('DESCRIPTION')}
         </Description>
 
         <Bottom inverted={inverted}>
           <ReactPhoneInput
             country={viewerCountry && viewerCountry.toLowerCase()}
             disableDropdown
-            onChange={(val) => setNumber(val)}
+            onChange={val => setNumber(val)}
             value={number}
             specialLabel=""
           />
@@ -87,7 +87,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
               })
             }
           >
-            {success ? t('button.success') : t('button.default')}
+            {success ? t('BUTTON_SUCCESS') : t('BUTTON_DEFAULT')}
           </Send>
         </Bottom>
       </Base>

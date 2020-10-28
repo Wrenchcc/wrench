@@ -133,7 +133,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
   ))
 
   const handleOnKeyDown = useCallback(
-    (evt) => {
+    evt => {
       if (evt.keyCode == 13 && evt.shiftKey == false) {
         evt.preventDefault()
         handleSubmit()
@@ -156,7 +156,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
         <MentionsInput
           style={styles}
           ref={ref}
-          placeholder={t('placeholder')}
+          placeholder={t('PLACEHOLDER')}
           onChange={handleOnChangeText}
           onFocus={handleFocus}
           value={text}
@@ -178,7 +178,7 @@ const CommentField = React.forwardRef(({ postId, commentId, initialValue = '' },
         {text.length > 0 && (
           <Button onClick={handleSubmit}>
             <Text fontSize={15} medium>
-              {t('post')}
+              {t('POST')}
             </Text>
           </Button>
         )}

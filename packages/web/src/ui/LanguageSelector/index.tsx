@@ -9,22 +9,22 @@ import { Icon } from 'ui'
 import { Base, Select } from './styles'
 
 function LanguageSelector() {
-  const { t } = useTranslation('settings')
+  const { t } = useTranslation('languages')
   const {
     i18n: { language },
   } = useContext(I18nContext)
 
-  const handleChange = (evt) => {
+  const handleChange = evt => {
     i18n.changeLanguage(evt.target.value)
   }
 
   return (
     <Base>
       <Select onChange={handleChange}>
-        {locales.map((locale) => {
+        {locales.map(locale => {
           return (
             <option key={locale} selected={language === locale} value={locale}>
-              {t(`languages.${locale}`)}
+              {t(locale.toUpperCase())}
             </option>
           )
         })}

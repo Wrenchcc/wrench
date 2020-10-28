@@ -1,4 +1,4 @@
-const { locales } = require('./src/index')
+const { locales } = require('@wrench/translations')
 
 module.exports = {
   defaultNamespace: 'common',

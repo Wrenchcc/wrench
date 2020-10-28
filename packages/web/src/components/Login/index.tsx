@@ -25,7 +25,7 @@ export default function Login({ closeModal, referral = '/' }) {
   return (
     <Base>
       <Title fontSize={36} lineHeight={42}>
-        {t('title')}
+        {t('TITLE')}
       </Title>
 
       <FacebookLogin
@@ -46,20 +46,20 @@ export default function Login({ closeModal, referral = '/' }) {
           })
         }
         render={({ onClick }) => (
-          <FacebookButton onClick={onClick}>{t('fbbutton')}</FacebookButton>
+          <FacebookButton onClick={onClick}>{t('FB_BUTTON')}</FacebookButton>
         )}
       />
 
       <AppleSignIn clientId="cc.wrench" scope="name email" redirectURI={APPLE_REDIRECT_URI}>
-        {({ signIn }) => <AppleButton onClick={signIn}>{t('applebutton')}</AppleButton>}
+        {({ signIn }) => <AppleButton onClick={signIn}>{t('APPLE_BUTTON')}</AppleButton>}
       </AppleSignIn>
 
       <GoogleLogin
         responseType="id_token"
         clientId="407610377102-dsuursv0qn83s4v2vnqfevm511ujp81t.apps.googleusercontent.com"
-        render={(renderProps) => (
+        render={renderProps => (
           <GoogleButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
-            {t('googlebutton')}
+            {t('GOOGLE_BUTTON')}
           </GoogleButton>
         )}
         onSuccess={({ tokenId }) =>
@@ -75,7 +75,7 @@ export default function Login({ closeModal, referral = '/' }) {
             },
           })
         }
-        onFailure={(res) => console.log(res)}
+        onFailure={res => console.log(res)}
         cookiePolicy={'single_host_origin'}
       />
 

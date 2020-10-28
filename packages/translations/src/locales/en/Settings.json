@@ -1,35 +1,17 @@
 {
-    "chat": "Chat with us",
-    "feedback": "Feedback",
-    "field": {
-        "bio": "Bio",
-        "firstName": "First name",
-        "lastName": "Last name",
-        "website": "Website"
-    },
-    "mail": "Mail Support",
-    "save": "Save",
-    "sections": {
-        "language": "Language",
-        "notifications": "Notifications",
-        "profile": "Edit profile",
-        "support": "Support"
-    },
-    "title": "Settings",
-    "toast": {
-        "error": "Something went wrong",
-        "saved": "Settings saved"
-    },
-    "languages": {
-        "en": "English",
-        "sv": "Swedish"
-    },
-    "notifications": {
-        "NEW_COMMENT": "Comments",
-        "NEW_MENTION": "Mentions",
-        "NEW_ARTICLE": "Articles",
-        "NEW_FOLLOWER": "Followers",
-        "SIMILAR_PROJECTS": "Similar projects",
-        "PRODUCT_ANNOUNCEMENTS": "Product announcements"
-    }
+    "CHAT": "Chat with us",
+    "FEEDBACK": "Feedback",
+    "FIELD_BIO": "Bio",
+    "FIELD_FIRSTNAME": "First name",
+    "FIELD_LASTNAME": "Last name",
+    "FIELD_WEBSITE": "Website",
+    "MAIL": "Mail Support",
+    "SAVE": "Save",
+    "SECTIONS_LANGUAGE": "Language",
+    "SECTIONS_NOTIFICATIONS": "Notifications",
+    "SECTIONS_PROFILE": "Edit profile",
+    "SECTIONS_SUPPORT": "Support",
+    "TITLE": "Settings",
+    "TOAST_ERROR": "Something went wrong",
+    "TOAST_SAVED": "Settings saved"
 }

@@ -39,8 +39,8 @@ export default function Home() {
     <Layout>
       <Seo
         config={{
-          title: t('title'),
-          description: t('description'),
+          title: t('TITLE'),
+          description: t('DESCRIPTION'),
         }}
       />
 

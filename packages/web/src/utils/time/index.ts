@@ -11,14 +11,14 @@ function timeDifference(current, previous, long = false) {
 
   if (elapsed < milliSecondsPerMinute) {
     if (long) {
-      return i18n.t('Time:now')
+      return i18n.t('TIME_NOW')
     }
     return `${Math.round(elapsed / 1000)}s`
   }
 
   if (elapsed < milliSecondsPerHour) {
     if (long) {
-      return i18n.t('Time:m', {
+      return i18n.t('TIME_M', {
         count: Math.round(elapsed / milliSecondsPerMinute),
       })
     }
@@ -26,13 +26,13 @@ function timeDifference(current, previous, long = false) {
   }
   if (elapsed < milliSecondsPerDay) {
     if (long) {
-      return i18n.t('Time:h', { count: Math.round(elapsed / milliSecondsPerHour) })
+      return i18n.t('TIME_H', { count: Math.round(elapsed / milliSecondsPerHour) })
     }
     return `${Math.round(elapsed / milliSecondsPerHour)}h`
   }
   if (elapsed < milliSecondsPerMonth) {
     if (long) {
-      return i18n.t('Time:d', {
+      return i18n.t('TIME_D', {
         count: Math.round(elapsed / milliSecondsPerDay),
       })
     }
@@ -40,12 +40,12 @@ function timeDifference(current, previous, long = false) {
   }
   if (elapsed < milliSecondsPerYear) {
     if (long) {
-      return i18n.t('Time:mo', { count: Math.round(elapsed / milliSecondsPerMonth) })
+      return i18n.t('Time_mo', { count: Math.round(elapsed / milliSecondsPerMonth) })
     }
     return `${Math.round(elapsed / milliSecondsPerMonth)}mo`
   }
   if (long) {
-    return i18n.t('Time:y', { count: Math.round(elapsed / milliSecondsPerYear) })
+    return i18n.t('TIME_Y', { count: Math.round(elapsed / milliSecondsPerYear) })
   }
   return `${Math.round(elapsed / milliSecondsPerYear)}y`
 }

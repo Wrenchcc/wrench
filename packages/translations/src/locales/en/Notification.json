@@ -1,8 +1,8 @@
 {
-    "comment": "Commented on your post",
-    "commentLike": "Sparked your comment",
-    "follow": "Now follows your project",
-    "mention": "Mentioned you in a comment",
-    "postLike": "Sparked your post",
-    "reply": "Replied to your comment"
+    "COMMENT": "Commented on your post",
+    "COMMENT_LIKE": "Sparked your comment",
+    "FOLLOW": "Now follows your project",
+    "MENTION": "Mentioned you in a comment",
+    "POST_LIKE": "Sparked your post",
+    "REPLY": "Replied to your comment"
 }
