@@ -1,5 +1,5 @@
 {
-  "LOGOUT": "Sair",
-  "PROFILE": "Perfil",
-  "SETTINGS": "Configurações"
+  "logout": "Sair",
+  "profile": "Perfil",
+  "settings": "Configurações"
 }
