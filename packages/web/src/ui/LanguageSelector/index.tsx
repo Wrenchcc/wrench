@@ -6,7 +6,7 @@ import { I18nContext } from 'next-i18next'
 import Router from 'next/router'
 import { useCookie, Cookies } from 'hooks'
 import { Icon } from 'ui'
-import { Base, Select } from './styles'
+import { Base, Select, Inner } from './styles'
 
 function LanguageSelector() {
   const { t } = useTranslation('languages')
@@ -20,6 +20,7 @@ function LanguageSelector() {
 
   return (
     <Base>
+    <Inner>
       <Select onChange={handleChange}>
         {locales.map(locale => {
           return (
@@ -33,8 +34,9 @@ function LanguageSelector() {
       <Icon
         source={require('./arrowDown.svg?include')}
         noFill
-        style={{ position: 'absolute', right: 20, top: 10 }}
+        style={{ position: 'absolute', right: 20, top: 10, pointerEvents: 'none' }}
       />
+      </Inner>
     </Base>
   )
 }

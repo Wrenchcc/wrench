@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useApolloClient } from '@apollo/client'
 import { useTranslation } from 'i18n'
+import { Icon } from 'ui'
 import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'
 import { Base, Nav, NavLink, Close } from './styles'
@@ -58,12 +59,12 @@ function MobileMenu({ isAuthenticated, onClose }) {
     <Base>
       <Link href="/">
         <a>
-          <img src={require('./logo-white.svg')} alt="Wrench" />
+          <Icon source={require('./logo-white.svg?include')} alt="Wrench" />
         </a>
       </Link>
 
       <Close onClick={onClose}>
-        <img src={require('./close.svg')} alt="Close menu" />
+        <Icon source={require('./close.svg?include')} alt="Close menu"/>
       </Close>
 
       <Nav>
@@ -77,11 +78,11 @@ function MobileMenu({ isAuthenticated, onClose }) {
           }
 
           if (openModal) {
-            return <NavLink onClick={openModal}>{title}</NavLink>
+            return <NavLink key={title} onClick={openModal}>{title}</NavLink>
           }
 
           if (signOut) {
-            return <NavLink onClick={signOut}>{title}</NavLink>
+            return <NavLink key={title} onClick={signOut}>{title}</NavLink>
           }
 
           return (

@@ -4,8 +4,14 @@ import { FONTS } from '../constants'
 export const Base = styled.div`
   display: block;
   height: 40px;
+  display: flex;
+`
+
+
+export const Inner = styled.div`
   position: relative;
 `
+
 
 export const Select = styled.select`
   font-weight: ${FONTS.MEDIUM};
