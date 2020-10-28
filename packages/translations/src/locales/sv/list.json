@@ -1,4 +1,4 @@
 {
-  "LOAD_MORE": "Visa 1 kommentar",
-  "LOAD_MORE_plural": "Visa alla {{count, humanFormat}} kommentarer"
+  "load_more": "Visa 1 kommentar",
+  "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
 }
