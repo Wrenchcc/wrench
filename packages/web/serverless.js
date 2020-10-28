@@ -2,7 +2,7 @@ const NextJsComponent = require('@sls-next/serverless-component')
 const fs = require('fs-extra')
 
 const inputs = {
-  domain: 'wrench.cc',
+  // domain: 'wrench.cc',
   bucketName: 'wrench-web-edge',
   build: true,
   memory: 2048,
@@ -12,18 +12,28 @@ const inputs = {
         headers: ['CloudFront-Viewer-Country', 'Accept-Language'],
       },
     },
-    // origins: [
-    //   {
-    //     url: 'https://wrench-web-edge.s3.amazonaws.com',
-    //     pathPatterns: {
-    //       '/.well-known/*': {
-    //         minTTL: 20,
-    //         maxTTL: 20,
-    //         defaultTTL: 20,
-    //       },
-    //     },
-    //   },
-    // ],
+    origins: [
+      {
+        url: 'https://wrench-web-edge.s3.us-east-1.amazonaws.com',
+        pathPatterns: {
+          '/.well-known/*': {
+            minTTL: 20,
+            maxTTL: 20,
+            defaultTTL: 20,
+          },
+        },
+      },
+      {
+        url: 'https://wrench-web-edge.s3.us-east-1.amazonaws.com',
+        pathPatterns: {
+          'locales/*': {
+            minTTL: 20,
+            maxTTL: 20,
+            defaultTTL: 20,
+          },
+        },
+      },
+    ],
   },
 }
 
@@ -46,8 +56,8 @@ class MyNextJsComponent extends NextJsComponent {
   }
 
   copyLocales() {
-    const localeSrc = './public/locales'
-    const localeDest = './.serverless_nextjs/default-lambda/public/locales'
+    const localeSrc = '../translations/src/locales'
+    const localeDest = './.serverless_nextjs/default-lambda/../translations/src/locales'
     fs.copySync(localeSrc, localeDest, { recursive: true })
   }
 

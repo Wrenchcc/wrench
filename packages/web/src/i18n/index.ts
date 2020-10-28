@@ -1,13 +1,22 @@
+// @ts-nocheck
 import NextI18Next from 'next-i18next'
 import * as humanFormat from 'human-format'
 import path from 'path'
-
-export const SUPPORTED_LOCALS = ['en', 'sv']
+import { locales, defaultLocale } from '@wrench/translations'
 
 const NextI18NextInstance = new NextI18Next({
-  defaultLanguage: 'en',
-  otherLanguages: SUPPORTED_LOCALS,
-  localePath: path.resolve('./public/locales'),
+  defaultLanguage: defaultLocale,
+  otherLanguages: locales,
+  localePath: path.resolve('../translations/src/locales'),
+  detection: {
+    lookupQuerystring: 'hl',
+    cookieMinutes: 24 * 60 * 365,
+    cookieSecure: true,
+    cookiePath: '/',
+    cookieSameSite: 'strict',
+    lookupCookie: 'preferred_language',
+    order: ['querystring', 'cookie', 'header'],
+  },
   interpolation: {
     escapeValue: false,
     format(value, format) {

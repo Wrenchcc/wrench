@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import { SUPPORTED_LOCALS } from 'i18n'
+import { locales } from '@wrench/translations'
 
 const DOMAIN = 'https://wrench.cc'
 
@@ -305,9 +305,7 @@ export default (config) => {
   )
 
   tagsToRender.push(
-    SUPPORTED_LOCALS.map((lng) => (
-      <link rel="alternate" href={`${cleanHref}?hl=${lng}`} hrefLang={lng} />
-    ))
+    locales.map((lng) => <link rel="alternate" href={`${cleanHref}?hl=${lng}`} hrefLang={lng} />)
   )
 
   return tagsToRender

@@ -1,10 +1,10 @@
 {
   "region": "us-east-1",
   "privateZone": false,
-  "domain": "staging.wrench.cc",
+  "domain": "wrench.cc",
   "subdomains": [
     {
-      "domain": "www.staging.wrench.cc",
+      "domain": "www.wrench.cc",
       "distributionId": "E2H6OHG3UZQPKT",
       "url": "https://dij05b2svofcz.cloudfront.net",
       "type": "awsCloudFront"

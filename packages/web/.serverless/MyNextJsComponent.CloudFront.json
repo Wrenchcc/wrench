@@ -45,7 +45,7 @@
             "PATCH"
           ],
           "lambda@edge": {
-            "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-om707vj:2"
+            "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-om707vj:12"
           }
         },
         "_next/data/*": {
@@ -57,9 +57,29 @@
             "GET"
           ],
           "lambda@edge": {
-            "origin-response": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:2",
-            "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:2"
+            "origin-response": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:12",
+            "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:12"
           }
+        }
+      }
+    },
+    {
+      "url": "https://wrench-web-edge.s3.us-east-1.amazonaws.com",
+      "pathPatterns": {
+        "/.well-known/*": {
+          "minTTL": 20,
+          "maxTTL": 20,
+          "defaultTTL": 20
+        }
+      }
+    },
+    {
+      "url": "https://wrench-web-edge.s3.us-east-1.amazonaws.com",
+      "pathPatterns": {
+        "/locales/*": {
+          "minTTL": 20,
+          "maxTTL": 20,
+          "defaultTTL": 20
         }
       }
     }
@@ -87,8 +107,8 @@
       "PATCH"
     ],
     "lambda@edge": {
-      "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:2",
-      "origin-response": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:2"
+      "origin-request": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:12",
+      "origin-response": "arn:aws:lambda:us-east-1:719104767000:function:2quykuk-8c5lrkj:12"
     },
     "compress": true
   }

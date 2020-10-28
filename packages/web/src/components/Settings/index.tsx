@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { useState, useCallback, useEffect, useContext } from 'react'
 import { Element } from 'react-scroll'
+import { locales } from '@wrench/translations'
 import { useTranslation, i18n } from 'i18n'
 import { I18nContext } from 'next-i18next'
 import {
@@ -9,7 +10,6 @@ import {
   useCurrentUserQuery,
   useToggleNotificationSettingsMutation,
 } from '@wrench/common'
-import { SUPPORTED_LOCALS } from 'i18n'
 import { Layout, Title, Text, Switch, Input, SearchLocation, Button, Icon } from 'ui'
 import {
   Left,
@@ -35,7 +35,6 @@ function Settings({ isAuthenticated }) {
   const {
     i18n: { language },
   } = useContext(I18nContext)
-
 
   const { t } = useTranslation('Settings')
   const [saved, setSaved] = useState(false)
@@ -196,11 +195,7 @@ function Settings({ isAuthenticated }) {
             </Row>
 
             <Row>
-              <Input
-                placeholder={t('field.bio')}
-                onChangeText={handleBio}
-                value={data.bio}
-              />
+              <Input placeholder={t('field.bio')} onChangeText={handleBio} value={data.bio} />
               <Counter color="neutral" fontSize={15}>
                 {`${data.bio ? data.bio.length : 0}/${MAX_CHARACTERS}`}
               </Counter>
@@ -245,10 +240,12 @@ function Settings({ isAuthenticated }) {
               <Title medium>{t('sections.language')}</Title>
             </Headline>
 
-            {SUPPORTED_LOCALS.map((locale) => {
+            {locales.map((locale) => {
               return (
                 <Setting key={locale}>
-                  <span onClick={() => i18n.changeLanguage(locale)}><Text>{t(`languages.${locale}`)}</Text></span>
+                  <span onClick={() => i18n.changeLanguage(locale)}>
+                    <Text>{t(`languages.${locale}`)}</Text>
+                  </span>
                   {language === locale && <Icon source={require('./check.svg?include')} />}
                 </Setting>
               )

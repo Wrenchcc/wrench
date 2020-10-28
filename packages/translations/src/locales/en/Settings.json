@@ -1,0 +1,23 @@
+{
+    "chat": "Chat with us",
+    "feedback": "Feedback",
+    "field": {
+        "bio": "Bio",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "website": "Website"
+    },
+    "mail": "Mail Support",
+    "save": "Save",
+    "sections": {
+        "language": "Language",
+        "notifications": "Notifications",
+        "profile": "Edit profile",
+        "support": "Support"
+    },
+    "title": "Settings",
+    "toast": {
+        "error": "Something went wrong",
+        "saved": "Settings saved"
+    }
+}

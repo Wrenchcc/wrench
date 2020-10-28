@@ -1,0 +1,23 @@
+{
+    "chat": "Chatta med oss",
+    "feedback": "Feedback",
+    "field": {
+        "bio": "Beskrivning",
+        "firstName": "Förnamn",
+        "lastName": "Efternamn",
+        "website": "Hemsida"
+    },
+    "mail": "Mail Support",
+    "save": "Spara",
+    "sections": {
+        "language": "Språk",
+        "notifications": "Notifikationer",
+        "profile": "Redigera profil",
+        "support": "Support"
+    },
+    "title": "Inställningar",
+    "toast": {
+        "error": "Något gick fel",
+        "saved": "Inställningar sparade"
+    }
+}

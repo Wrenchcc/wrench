@@ -1,0 +1,5 @@
+{
+    "followers": "{{count, humanFormat}} följare",
+    "followers_plural": "",
+    "title": "Projekt"
+}

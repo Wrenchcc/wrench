@@ -1,0 +1,7 @@
+{
+    "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
+    "share": "Share",
+    "similar": "Similar projects",
+    "title": "{{title}} - {{type}} project",
+    "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench"
+}
