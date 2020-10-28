@@ -4,9 +4,9 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node ./tasks/copy_locales.js && next",
     "start": "next start",
-    "build": "next build",
+    "build": "node ./tasks/copy_locales.js && next build",
     "deploy": "serverless",
     "check:types": "tsc --noEmit"
   },

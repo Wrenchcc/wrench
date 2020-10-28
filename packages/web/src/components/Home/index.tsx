@@ -27,7 +27,7 @@ export default function Home(props) {
     <>
       <Seo
         config={{
-          titleTemplate: 'Wrench | Your motorcycle community',
+          titleTemplate: t('documentTitle'),
         }}
       />
 

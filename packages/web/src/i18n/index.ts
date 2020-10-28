@@ -1,4 +1,3 @@
-// @ts-nocheck
 import NextI18Next from 'next-i18next'
 import * as humanFormat from 'human-format'
 import path from 'path'
@@ -7,7 +6,7 @@ import { locales, defaultLocale } from '@wrench/translations'
 const NextI18NextInstance = new NextI18Next({
   defaultLanguage: defaultLocale,
   otherLanguages: locales,
-  localePath: path.resolve('../translations/src/locales'),
+  localePath: path.resolve('./public/locales'),
   detection: {
     lookupQuerystring: 'hl',
     cookieMinutes: 24 * 60 * 365,

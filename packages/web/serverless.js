@@ -23,16 +23,6 @@ const inputs = {
           },
         },
       },
-      {
-        url: 'https://wrench-web-edge.s3.us-east-1.amazonaws.com',
-        pathPatterns: {
-          'locales/*': {
-            minTTL: 20,
-            maxTTL: 20,
-            defaultTTL: 20,
-          },
-        },
-      },
     ],
   },
 }
@@ -56,8 +46,8 @@ class MyNextJsComponent extends NextJsComponent {
   }
 
   copyLocales() {
-    const localeSrc = '../translations/src/locales'
-    const localeDest = './.serverless_nextjs/default-lambda/../translations/src/locales'
+    const localeSrc = './public/locales'
+    const localeDest = './.serverless_nextjs/default-lambda/public/locales'
     fs.copySync(localeSrc, localeDest, { recursive: true })
   }
 

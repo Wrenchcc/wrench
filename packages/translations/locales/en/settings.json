@@ -1,0 +1,23 @@
+{
+  "toast": {
+    "saved": "",
+    "error": ""
+  },
+  "title": "",
+  "sections": {
+    "profile": "",
+    "notifications": "",
+    "language": "",
+    "support": ""
+  },
+  "field": {
+    "firstName": "",
+    "lastName": "",
+    "bio": "",
+    "website": ""
+  },
+  "save": "",
+  "mail": "",
+  "feedback": "",
+  "chat": ""
+}

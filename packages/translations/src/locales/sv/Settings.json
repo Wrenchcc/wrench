@@ -19,5 +19,17 @@
     "toast": {
         "error": "Något gick fel",
         "saved": "Inställningar sparade"
+    },
+    "languages": {
+        "en": "Engelska",
+        "sv": "Svenska"
+    },
+    "notifications": {
+        "NEW_COMMENT": "Kommentarer",
+        "NEW_MENTION": "Mentions",
+        "NEW_ARTICLE": "Artiklar",
+        "NEW_FOLLOWER": "Följare",
+        "SIMILAR_PROJECTS": "Liknande projekt",
+        "PRODUCT_ANNOUNCEMENTS": "Produktmeddelanden"
     }
 }

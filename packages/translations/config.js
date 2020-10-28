@@ -1,3 +1,5 @@
+const { locales } = require('./src/index')
+
 module.exports = {
   defaultNamespace: 'common',
   defaultValue: '',
@@ -9,7 +11,7 @@ module.exports = {
     default: ['JavascriptLexer'],
   },
   lineEnding: 'auto',
-  locales: ['en', 'sv'],
+  locales,
   namespaceSeparator: ':',
   output: 'src/locales/$LOCALE/$NAMESPACE.json',
   input: undefined,
