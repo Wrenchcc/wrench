@@ -1,0 +1,4 @@
+{
+  "LIKE": "{{count}} искры",
+  "LIKE_plural": "{{count, humanFormat}} искр"
+}

@@ -1,0 +1,17 @@
+{
+  "CHAT": "Converse conosco",
+  "FEEDBACK": "Comentários",
+  "FIELD_BIO": "Bio",
+  "FIELD_FIRSTNAME": "Primeiro nome",
+  "FIELD_LASTNAME": "Último nome",
+  "FIELD_WEBSITE": "Local na rede Internet",
+  "MAIL": "Suporte de Correio",
+  "SAVE": "Salve ",
+  "SECTIONS_LANGUAGE": "Língua",
+  "SECTIONS_NOTIFICATIONS": "Notificações",
+  "SECTIONS_PROFILE": "Editar Perfil",
+  "SECTIONS_SUPPORT": "Apoio, suporte",
+  "TITLE": "Configurações",
+  "TOAST_ERROR": "Algo deu errado",
+  "TOAST_SAVED": "Configurações salvas"
+}

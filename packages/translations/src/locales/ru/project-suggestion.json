@@ -1,0 +1,5 @@
+{
+  "DESCRIPTION": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ",
+  "TITLE": "{{title}} - {{type}} проект",
+  "DESCRIPTION_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"
+}

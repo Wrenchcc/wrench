@@ -1,0 +1,5 @@
+{
+  "DESCRIPTION": "{{followers, humanFormat}} Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench",
+  "TITLE": "{{title}} - <span>1 na</span> proyekto",
+  "DESCRIPTION_plural": "<span>0 Mga</span> Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench"
+}

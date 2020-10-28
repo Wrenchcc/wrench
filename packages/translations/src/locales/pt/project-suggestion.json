@@ -1,0 +1,5 @@
+{
+  "DESCRIPTION": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa",
+  "TITLE": "{{title}} - {{type}} projeto",
+  "DESCRIPTION_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa"
+}
