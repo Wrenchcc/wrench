@@ -1,14 +1,14 @@
 {
-  "NOW": "alldeles nyss",
-  "M": "{{count}} minut sedan",
+  "D": "{{count}} dag sedan",
+  "D_plural": "{{count}} dagar sedan",
   "H": "{{count}} timma sedan",
   "H_plural": "{{count}} timmar sedan",
-  "D": "{{count}} dag sedan",
-  "D_PLURAL": "{{count}} dagar sedan",
+  "M": "{{count}} minut sedan",
+  "M_plural": "{{count}} minuter sedan",
   "MO": "{{count}} månad sedan",
   "MO_plural": "{{count}} månader sedan",
+  "NOW": "alldeles nyss",
   "Y": "{{count}} år sedan",
-  "M_plural": "För {{count}} minuter sedan",
-  "D_plural": "<span>För 0</span> dagar sedan",
-  "Y_plural": "<span>För 0</span> år sedan"
+  "Y_plural": "{{count}} år sedan",
+  "D_PLURAL": "{{count}} dagar sedan"
 }

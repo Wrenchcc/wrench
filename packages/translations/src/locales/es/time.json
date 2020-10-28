@@ -1,13 +1,13 @@
 {
-  "NOW": "justo ahora",
-  "M": "Hace {{count}} minutos",
-  "M_plural": "Hace {{count}} minutos",
-  "H": "Hace {{count}} horas",
-  "H_plural": "Hace {{count}} horas",
   "D": "Hace {{count}} días",
   "D_plural": "Hace {{count}} días",
+  "H": "Hace {{count}} horas",
+  "H_plural": "Hace {{count}} horas",
+  "M": "Hace {{count}} minutos",
+  "M_plural": "Hace {{count}} minutos",
   "MO": "Hace {{count}} meses",
   "MO_plural": "Hace {{count}} meses",
+  "NOW": "justo ahora",
   "Y": "Hace {{count}} años",
   "Y_plural": "Hace {{count}} años"
 }
