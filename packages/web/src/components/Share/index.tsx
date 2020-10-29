@@ -4,7 +4,7 @@ import { useTranslation } from 'i18n'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Text, Icon } from 'ui'
 
-const generateShareableUrl = url => [
+const generateShareableUrl = (url) => [
   {
     provider: 'facebook',
     url: `https://www.facebook.com/sharer/sharer.php?app_id=1174076712654826&u=${url}`,
@@ -80,7 +80,7 @@ function Share({ closeModal, dynamicLink }) {
       >
         {!cancel && (
           <div style={{ width: 24, marginRight: 15 }}>
-            <Icon style={{ height: 'auto', ...style }} source={require(`./${provider}.svg?include`)} noFill />
+            {/* <Icon style={{ height: 'auto', ...style }} source={require(`./${provider}.svg?include`)} noFill /> */}
           </div>
         )}
         <Text medium>{renderComponent({ provider, url, closeModal })}</Text>

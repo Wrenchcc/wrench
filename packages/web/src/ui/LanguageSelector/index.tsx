@@ -14,28 +14,28 @@ function LanguageSelector() {
     i18n: { language },
   } = useContext(I18nContext)
 
-  const handleChange = evt => {
+  const handleChange = (evt) => {
     i18n.changeLanguage(evt.target.value)
   }
 
   return (
     <Base>
-    <Inner>
-      <Select onChange={handleChange}>
-        {locales.map(locale => {
-          return (
-            <option key={locale} selected={language === locale} value={locale}>
-              {t(locale)}
-            </option>
-          )
-        })}
-      </Select>
+      <Inner>
+        <Select onChange={handleChange}>
+          {locales.map((locale) => {
+            return (
+              <option key={locale} selected={language === locale} value={locale}>
+                {t(locale)}
+              </option>
+            )
+          })}
+        </Select>
 
-      <Icon
+        {/* <Icon
         source={require('./arrowDown.svg?include')}
         noFill
         style={{ position: 'absolute', right: 20, top: 10, pointerEvents: 'none' }}
-      />
+      /> */}
       </Inner>
     </Base>
   )

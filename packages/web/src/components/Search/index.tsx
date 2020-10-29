@@ -12,7 +12,7 @@ function Search({ className, inverted }) {
   const [value, setValue] = useState('')
   const [active, setActive] = useState(false)
 
-  const onChange = evt => {
+  const onChange = (evt) => {
     setValue(evt.target.value)
   }
 
@@ -31,7 +31,7 @@ function Search({ className, inverted }) {
 
   return (
     <Base className={className} active={active} ref={ref}>
-      <Icon src={require('./search.svg')} />
+      {/* <Icon src={require('./search.svg')} /> */}
       <Field
         inverted={inverted}
         placeholder={t('placeholder')}

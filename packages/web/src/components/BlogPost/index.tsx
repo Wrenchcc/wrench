@@ -47,11 +47,11 @@ export default function BlogPost() {
 
         <Link href="/blog">
           <A>
-            <Icon
+            {/* <Icon
               style={{ marginTop: 2, marginRight: 5 }}
               source={require('./arrowBack.svg?include')}
               width="22px"
-            />
+            /> */}
             {t('back')}
           </A>
         </Link>

@@ -58,9 +58,9 @@ function Settings({ isAuthenticated }) {
       return null
     }
 
-    const types = Object.keys(notifications.types).filter(type => type !== '__typename')
+    const types = Object.keys(notifications.types).filter((type) => type !== '__typename')
 
-    return types.map(type => ({
+    return types.map((type) => ({
       titleKey: `notifications.${type}`,
       type,
       onPress: () => {
@@ -104,7 +104,7 @@ function Settings({ isAuthenticated }) {
   const updateField = (field, value) => setData({ ...data, [field]: value })
 
   const handleBio = useCallback(
-    text => {
+    (text) => {
       if (text.length <= MAX_CHARACTERS) {
         updateField('bio', text)
       }
@@ -174,7 +174,7 @@ function Settings({ isAuthenticated }) {
                 placeholder={t('field_firstname')}
                 value={data.firstName}
                 required
-                onChangeText={firstName => updateField('firstName', firstName)}
+                onChangeText={(firstName) => updateField('firstName', firstName)}
               />
             </Row>
 
@@ -183,13 +183,13 @@ function Settings({ isAuthenticated }) {
                 placeholder={t('field_lastname')}
                 value={data.lastName}
                 required
-                onChangeText={lastName => updateField('lastName', lastName)}
+                onChangeText={(lastName) => updateField('lastName', lastName)}
               />
             </Row>
 
             <Row>
               <SearchLocation
-                onPress={location => updateField('location', location)}
+                onPress={(location) => updateField('location', location)}
                 value={data.location}
               />
             </Row>
@@ -205,7 +205,7 @@ function Settings({ isAuthenticated }) {
               <Input
                 placeholder={t('field_website')}
                 type="url"
-                onChangeText={website => updateField('website', website)}
+                onChangeText={(website) => updateField('website', website)}
                 value={data.website}
               />
             </Row>
@@ -240,13 +240,13 @@ function Settings({ isAuthenticated }) {
               <Title medium>{t('sections_language')}</Title>
             </Headline>
 
-            {locales.map(locale => {
+            {locales.map((locale) => {
               return (
                 <Setting key={locale}>
                   <span onClick={() => i18n.changeLanguage(locale)}>
                     <Text>{t(`languages.${locale}`)}</Text>
                   </span>
-                  {language === locale && <Icon source={require('./check.svg?include')} />}
+                  {/* {language === locale && <Icon source={require('./check.svg?include')} />} */}
                 </Setting>
               )
             })}

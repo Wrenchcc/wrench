@@ -1,11 +1,9 @@
 require('dotenv').config()
 
 const path = require('path')
-const withPlugins = require('next-compose-plugins')
-const optimizedImages = require('next-optimized-images')
 const dotenv = require('dotenv-webpack')
 
-module.exports = withPlugins([optimizedImages], {
+module.exports = {
   poweredByHeader: false,
   target: 'serverless',
   env: {
@@ -14,10 +12,7 @@ module.exports = withPlugins([optimizedImages], {
     API_ENDPOINT: process.env.API_ENDPOINT,
     APPLE_REDIRECT_URI: process.env.APPLE_REDIRECT_URI,
     MAPBOX_API_KEY: process.env.MAPBOX_API_KEY,
-    BUILD_ID: require('child_process')
-      .execSync('git rev-parse --short HEAD')
-      .toString()
-      .trim(),
+    BUILD_ID: require('child_process').execSync('git rev-parse --short HEAD').toString().trim(),
   },
   webpack: (config, options) => {
     config.plugins = config.plugins || []
@@ -35,4 +30,4 @@ module.exports = withPlugins([optimizedImages], {
 
     return config
   },
-})
+}

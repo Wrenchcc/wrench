@@ -25,7 +25,7 @@ function LikePost({ post }) {
   ))
 
   const handleToggleLike = useCallback(
-    id => {
+    (id) => {
       if (!isAuthenticated) {
         showModal()
         return
@@ -67,14 +67,14 @@ function LikePost({ post }) {
 
   return (
     <Base>
-      <Icon
+      {/* <Icon
         style={{ marginRight: 10 }}
         onClick={() => handleToggleLike(post.id)}
         alt="Like post"
         noFill
         stroke={post.likes.isLiked ? 'warning' : 'inverse'}
         source={require('./spark.svg?include')}
-      />
+      /> */}
 
       <Text fontSize={15}>{t('like', { count: post.likes.totalCount })}</Text>
     </Base>

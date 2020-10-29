@@ -1,9 +1,10 @@
 // @ts-nocheck
 import React from 'react'
+import Image from 'next/image'
 import Seo from 'utils/seo'
 import { Title, Text } from 'ui'
 import Footer from 'components/Footer'
-import { Inner, Row, Image, Center, Person, PersonPicture, Team } from './styles'
+import { Inner, Row, Center, Person, PersonPicture, Team } from './styles'
 
 function About() {
   return (
@@ -17,14 +18,7 @@ function About() {
       <Inner>
         <Center>
           <Title medium>About us</Title>
-          <Image>
-            <source
-              srcSet={`${require('./about.jpg')} 1x, ${require('./about@2x.jpg')} 2x, ${require('./about@2x.jpg')} 3x`}
-              type="image/jpeg"
-            />
-
-            <img src={require('./about.jpg')} />
-          </Image>
+          <Image src="/about@3x.jpg" width="780" height="360" quality="100" />
 
           <Text medium>
             Wrench is one of the fastest-growing social networks targeting enthusiasts from all
@@ -54,12 +48,8 @@ function About() {
           <Team>
             <Person>
               <PersonPicture>
-                <source
-                  srcSet={`${require('./pontus.jpg')} 1x, ${require('./pontus@2x.jpg')} 2x, ${require('./pontus@2x.jpg')} 3x`}
-                  type="image/jpeg"
-                />
+                <Image src="/pontus@3x.jpg" width="360" height="330" quality="100" />
 
-                <img src={require('./pontus.jpg')} />
                 <br />
                 <br />
 
@@ -72,12 +62,8 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <source
-                  srcSet={`${require('./viktor.jpg')} 1x, ${require('./viktor@2x.jpg')} 2x, ${require('./viktor@2x.jpg')} 3x`}
-                  type="image/jpeg"
-                />
+                <Image src="/viktor@3x.jpg" width="360" height="330" quality="100" />
 
-                <img src={require('./viktor.jpg')} />
                 <br />
                 <br />
 
@@ -92,12 +78,8 @@ function About() {
           <Team>
             <Person>
               <PersonPicture>
-                <source
-                  srcSet={`${require('./felix.jpg')} 1x, ${require('./felix@2x.jpg')} 2x, ${require('./felix@2x.jpg')} 3x`}
-                  type="image/jpeg"
-                />
+                <Image src="/felix@3x.jpg" width="360" height="330" quality="100" />
 
-                <img src={require('./felix.jpg')} />
                 <br />
                 <br />
 
@@ -110,12 +92,7 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <source
-                  srcSet={`${require('./plus.jpg')} 1x, ${require('./plus@2x.jpg')} 2x, ${require('./plus@2x.jpg')} 3x`}
-                  type="image/jpeg"
-                />
-
-                <img src={require('./plus.jpg')} />
+                <Image src="/plus@3x.jpg" width="360" height="330" quality="100" />
                 <br />
                 <br />
 

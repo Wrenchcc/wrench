@@ -27,20 +27,6 @@ export const Center = styled.div`
   margin-top: 90px;
 `
 
-export const Image = styled.picture`
-  display: block;
-  margin-top: 40px;
-  margin-bottom: 60px;
-
-  @media ${DEVICE.TABLET} {
-    margin-bottom: 20px;
-  }
-
-  img {
-    width: 100%;
-  }
-`
-
 export const Team = styled.div`
   display: flex;
   flex-direction: row;
@@ -52,7 +38,7 @@ export const Team = styled.div`
   }
 `
 
-export const PersonPicture = styled.picture`
+export const PersonPicture = styled.div`
   width: 100%;
   display: block;
 

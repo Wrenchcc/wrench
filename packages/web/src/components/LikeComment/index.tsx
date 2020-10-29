@@ -31,7 +31,7 @@ function LikeComment({ comment }) {
 
   return (
     <Base>
-      <Icon
+      {/* <Icon
         width={10}
         style={{ marginRight: 10 }}
         onClick={() => handleToggleLike(comment.id)}
@@ -39,7 +39,7 @@ function LikeComment({ comment }) {
         noFill
         stroke={comment.likes.isLiked ? 'warning' : 'inverse'}
         source={require('./spark.svg?include')}
-      />
+      /> */}
     </Base>
   )
 }
