@@ -8,12 +8,13 @@ import {
   useMarkAllNotificationsSeenMutation,
   useUnreadNotificationsQuery,
 } from '@wrench/common'
+import { LogoIcon, MenuIcon } from '@wrench/ui'
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'i18n'
 import { useClickOutside } from 'hooks'
 import Badge from 'ui/Badge'
 import { Modal, useModal } from 'ui/Modal'
-import { Icon } from 'ui'
 import Login from 'components/Login'
 import Logout from 'components/Logout'
 import Notifications from 'components/Notifications'
@@ -33,6 +34,7 @@ import {
 
 function Header({ isAuthenticated }) {
   const router = useRouter()
+  const { systemTheme } = useTheme()
   const { t } = useTranslation('header')
   const { data } = useUnreadNotificationsQuery({
     pollInterval: ms('1m'),
@@ -92,6 +94,7 @@ function Header({ isAuthenticated }) {
 
   const inverted = (!isAuthenticated && router.route === '/') || router.route === '/download'
 
+
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
       <Login closeModal={closeModal} />
@@ -113,15 +116,11 @@ function Header({ isAuthenticated }) {
   return (
     <Base inverted={inverted}>
       <Link passHref href={'/'}>
-        <img
-          src={inverted ? require('./logo-white.svg') : require('./logo.svg')}
-          alt="Wrench"
-          style={{ cursor: 'pointer' }}
-        />
+        <LogoIcon width="40" height="40" inverted={systemTheme === 'light' && inverted ? true : false} />
       </Link>
 
       <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>
-        <Icon source={require('./menu.svg?include')} color={inverted ? 'white' : 'default'} />
+        <MenuIcon inverted={inverted} />
       </OpenMobileMenu>
 
       {isMobileMenuOpen && (

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useApolloClient } from '@apollo/client'
 import { useTranslation } from 'i18n'
-import { CloseIcon } from '@wrench/ui'
+import { CloseIcon, LogoIcon } from '@wrench/ui'
 import { useModal, Modal } from 'ui/Modal'
 import Login from 'components/Login'
 import { Base, Nav, NavLink, Close } from './styles'
@@ -58,9 +58,7 @@ function MobileMenu({ isAuthenticated, onClose }) {
   return (
     <Base>
       <Link href="/">
-        <a>
-          <Icon source={require('./logo-white.svg?include')} alt="Wrench" />
-        </a>
+        <LogoIcon width="40" height="40" white />
       </Link>
 
       <Close onClick={onClose}>

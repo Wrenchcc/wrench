@@ -2,12 +2,11 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'i18n'
 import { useSendPromoMutation } from '@wrench/common'
-import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { Text, Loader } from 'ui'
 import { useCookie, Cookies } from 'hooks'
-import { Base, Icon, Description, Bottom, Send, CloseIcon, Placeholder } from './styles'
+import { Base, LogoRoundedIcon, Description, Bottom, Send, CloseIcon, Placeholder } from './styles'
 
 const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
   ssr: false,
@@ -20,7 +19,6 @@ const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
 
 function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizontal, inline }) {
   const { t } = useTranslation('promo')
-  const { systemTheme } = useTheme()
   const [hide, setHidden] = useState(false)
   const [number, setNumber] = useState('')
   const [success, setSuccess] = useState(false)
@@ -45,7 +43,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
         paddingHorizontal={paddingHorizontal}
         inline={inline}
       >
-        <Icon src={inverted ? require('./icon-white.svg') : require('./icon.svg')} />
+        <LogoRoundedIcon inverted={inverted} width="40" height="40"/> 
 
         {!inverted && (
           <CloseIcon width={13} height={13} onClick={hidePromo} />

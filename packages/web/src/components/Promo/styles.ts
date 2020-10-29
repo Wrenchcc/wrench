@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
 import { COLORS, DEVICE } from 'ui/constants'
-import { CloseIcon as UICloseIcon } from '@wrench/ui'
+import { CloseIcon as UICloseIcon, LogoRoundedIcon as UILogoRoundedIcon } from '@wrench/ui'
 
 export const Base = styled.div`
   width: 414px;
@@ -31,7 +31,7 @@ export const Description = styled(UiText)`
   }
 `
 
-export const Icon = styled.img`
+export const LogoRoundedIcon = styled(UILogoRoundedIcon)`
   margin-bottom: 20px;
 `
 
