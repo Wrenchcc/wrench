@@ -1,5 +1,6 @@
 {
-  "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel",
+  "description": "Wir haben unten einige Projekte ausgewählt, die Sie vielleicht interessieren.",
   "title": "{{title}} - {{type}} Projekt",
-  "description_plural": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel"
+  "description_plural": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel",
+  "headline": "Machen Sie sich auf dem Laufenden und verfolgen Sie einige Projekte."
 }

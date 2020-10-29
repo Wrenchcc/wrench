@@ -1,8 +1,4 @@
 {
-  "DESCRIPTION": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave",
-  "TITLE": "{{title}} - {{type}} del progetto",
-  "DESCRIPTION_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave",
-  "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave",
-  "title": "<span><span>0-1</span></span> del progetto",
-  "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave"
+  "title": "{{title}} - {{type}} del progetto",
+  "headline": "Mettiti al passo e segui alcuni progetti."
 }

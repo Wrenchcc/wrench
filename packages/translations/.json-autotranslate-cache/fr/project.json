@@ -1,6 +1,7 @@
 {
-  "description": "Nous avons sélectionné ci-dessous quelques projets qui pourraient vous intéresser.",
+  "description": "{{followers, humanFormat}} abonné, {{posts, humanFormat}} messages - {{fullName}} . (@ {{username}} ) sur clé",
   "share": "Partager",
   "similar": "Projets similaires",
-  "title": "Soyez au courant et suivez certains projets."
+  "title": "{{title}} - {{type}} projet",
+  "description_plural": "{{followers, humanFormat}} abonnés, {{posts, humanFormat}} messages - {{fullName}} . (@ {{username}} ) sur clé"
 }

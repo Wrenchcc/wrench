@@ -1,5 +1,4 @@
 {
-    "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
-    "title": "{{title}} - {{type}} project",
-    "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench"
+    "headline": "Get up to speed and follow some projects.",
+    "description": "We’ve selected some projects below you may find interesting."
 }

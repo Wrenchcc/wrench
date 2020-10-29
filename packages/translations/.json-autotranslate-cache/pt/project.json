@@ -1,6 +1,7 @@
 {
-  "description": "Selecionamos alguns projetos abaixo que você pode achar interessantes.",
+  "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa",
   "share": "Compartilhar",
   "similar": "Projetos semelhantes",
-  "title": "Fique por dentro e acompanhe alguns projetos."
+  "title": "{{title}} - {{type}} projeto",
+  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa"
 }

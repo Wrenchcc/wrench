@@ -1,6 +1,7 @@
 {
-  "description": "Pinili namin ang ilang mga proyekto sa ibaba na maaari mong makita na kawili-wili.",
+  "description": "{{followers, humanFormat}} Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench",
   "share": "Magbahagi",
   "similar": "Katulad na mga proyekto",
-  "title": "Bumangon upang tulin at sundin ang ilang mga proyekto."
+  "title": "{{title}} - <span>1 na</span> proyekto",
+  "description_plural": "<span>0 Mga</span> Tagasunod, <span>1 Mga</span> Post - {{fullName}} . (@ {{username}} ) sa Wrench"
 }

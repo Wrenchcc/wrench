@@ -1,6 +1,8 @@
 {
-    "description": "We’ve selected some projects below you may find interesting.",
+    "title": "{{title}} - {{type}} project",
+    "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
+    "description_plural": "{{followers, humanFormat}} Followers, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
     "share": "Share",
-    "similar": "Similar projects",
-    "title": "Get up to speed and follow some projects."
+    "similar": "Similar projects"
 }
+

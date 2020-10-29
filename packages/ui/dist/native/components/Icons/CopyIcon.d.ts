@@ -1,3 +1,3 @@
 import * as React from 'react';
-declare function SvgCopyIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element;
-export default SvgCopyIcon;
+declare const _default;
+export default _default;

@@ -16,7 +16,7 @@ const NextI18NextInstance = new NextI18Next({
     cookiePath: '/',
     cookieSameSite: 'strict',
     lookupCookie: 'preferred_language',
-    order: ['querystring', 'cookie', 'header'],
+    order: ['querystring', 'cookie', 'navigator', 'header'],
   },
   interpolation: {
     escapeValue: false,

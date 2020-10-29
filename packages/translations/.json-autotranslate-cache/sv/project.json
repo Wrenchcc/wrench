@@ -1,6 +1,7 @@
 {
-  "description": "{{followers, humanFormat}} Följare, {{posts, humanFormat}} Inlägg - {{fullName}}. (@{{username}}) på Wrench",
+  "title": "{{title}} - {{type}} projekt",
+  "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@ {{username}} ) på skiftnyckel",
   "share": "Dela",
   "similar": "Liknande project",
-  "title": "{{title}} - {{type}} projekt"
+  "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@ {{username}} ) på skiftnyckel"
 }

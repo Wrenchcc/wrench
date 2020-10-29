@@ -1,5 +1,4 @@
 {
-  "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@ {{username}} ) en llave",
-  "title": "{{title}} - {{type}} proyecto",
-  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@ {{username}} ) en llave"
+  "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
+  "headline": "Ponte al día y sigue algunos proyectos."
 }

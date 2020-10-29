@@ -1,5 +1,6 @@
 {
-  "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
+  "description": "Vi har valgt noen prosjekter nedenfor du kan synes er interessante.",
   "title": "{{title}} - {{type}} prosjekt",
-  "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel"
+  "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
+  "headline": "Bli oppdatert og følg noen prosjekter."
 }

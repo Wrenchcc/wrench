@@ -30,10 +30,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
 var React = __importStar(require("react"));
+var styled_components_1 = require("styled-components");
 function SvgFacebookIcon(props) {
     return (React.createElement("svg", __assign({ width: "1em", height: "1em", viewBox: "0 0 13 22" }, props),
-        React.createElement("path", { fill: "none", stroke: "#000", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M12 1H9a5 5 0 00-5 5v3H1v4h3v8h4v-8h3l1-4H8V6a1 1 0 011-1h3V1z" })));
+        React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M12 1H9a5 5 0 00-5 5v3H1v4h3v8h4v-8h3l1-4H8V6a1 1 0 011-1h3V1z" })));
 }
-exports.default = SvgFacebookIcon;
+exports.default = styled_components_1.withTheme(SvgFacebookIcon);
 //# sourceMappingURL=FacebookIcon.js.map

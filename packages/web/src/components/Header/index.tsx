@@ -69,7 +69,7 @@ function Header({ isAuthenticated }) {
     if (data?.notifications?.unreadCount > 0) {
       // @ts-ignore
       markAllNotificationsSeen({
-        update: cache => {
+        update: (cache) => {
           const data = cache.readQuery({ query: NotificationsDocument })
 
           cache.writeQuery({
@@ -94,7 +94,6 @@ function Header({ isAuthenticated }) {
 
   const inverted = (!isAuthenticated && router.route === '/') || router.route === '/download'
 
-
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
       <Login closeModal={closeModal} />
@@ -116,7 +115,12 @@ function Header({ isAuthenticated }) {
   return (
     <Base inverted={inverted}>
       <Link passHref href={'/'}>
-        <LogoIcon width="40" height="40" inverted={systemTheme === 'light' && inverted ? true : false} />
+        <LogoIcon
+          style={{ cursor: 'pointer' }}
+          width="40"
+          height="40"
+          inverted={systemTheme === 'light' && inverted ? true : false}
+        />
       </Link>
 
       <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>

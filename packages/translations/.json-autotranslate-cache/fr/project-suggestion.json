@@ -1,5 +1,6 @@
 {
-  "description": "{{followers, humanFormat}} abonné, {{posts, humanFormat}} messages - {{fullName}} . (@ {{username}} ) sur clé",
+  "description": "Nous avons sélectionné ci-dessous quelques projets qui pourraient vous intéresser.",
   "title": "{{title}} - {{type}} projet",
-  "description_plural": "{{followers, humanFormat}} abonnés, {{posts, humanFormat}} messages - {{fullName}} . (@ {{username}} ) sur clé"
+  "description_plural": "{{followers, humanFormat}} abonnés, {{posts, humanFormat}} messages - {{fullName}} . (@ {{username}} ) sur clé",
+  "headline": "Soyez au courant et suivez certains projets."
 }
