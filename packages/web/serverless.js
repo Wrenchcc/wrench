@@ -23,6 +23,21 @@ const inputs = {
           },
         },
       },
+      // {
+      //   url: 'https://wrench-web-edge.s3.us-east-1.amazonaws.com',
+      //   pathPatterns: {
+      //     '_next/image': {
+      //       minTTL: 0,
+      //       defaultTTL: 86400,
+      //       maxTTL: 31536000,
+      //       forward: {
+      //         headers: 'none',
+      //         cookies: 'none',
+      //         queryString: true,
+      //       },
+      //     },
+      //   },
+      // },
     ],
   },
 }

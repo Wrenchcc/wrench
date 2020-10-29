@@ -3,7 +3,7 @@ import React from 'react'
 import { AppStoreIcon, GooglePlayIcon } from '@wrench/ui'
 import { useTheme } from 'next-themes'
 import Promo from 'components/Promo'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { Icon } from 'ui'
 import { Inner, Base, AppScreens, Stores, Store } from './styles'
 
@@ -30,9 +30,9 @@ function AppPromo({ viewerCountry }) {
 
         <AppScreens>
           {systemTheme === 'dark' ? (
-            <Image src="/phones-dark@3x.png" quality="100" width="505" height="717" />
+            <img src="/phones-dark@3x.png" quality="100" width="505" height="717" />
           ) : (
-            <Image src="/phones@3x.png" quality="100" width="482" height="524" />
+            <img src="/phones@3x.png" quality="100" width="482" height="524" />
           )}
         </AppScreens>
       </Inner>

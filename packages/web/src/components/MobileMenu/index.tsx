@@ -10,9 +10,9 @@ import Login from 'components/Login'
 import { Base, Nav, NavLink, Close } from './styles'
 
 function MobileMenu({ isAuthenticated, onClose }) {
-  const client = useApolloClient('mobile-menu')
+  const client = useApolloClient()
   const router = useRouter()
-  const { t } = useTranslation()
+  const { t } = useTranslation('mobile-menu')
 
   const [showModal, closeModal] = useModal(() => (
     <Modal close={closeModal}>
@@ -76,11 +76,19 @@ function MobileMenu({ isAuthenticated, onClose }) {
           }
 
           if (openModal) {
-            return <NavLink key={title} onClick={openModal}>{title}</NavLink>
+            return (
+              <NavLink key={title} onClick={openModal}>
+                {title}
+              </NavLink>
+            )
           }
 
           if (signOut) {
-            return <NavLink key={title} onClick={signOut}>{title}</NavLink>
+            return (
+              <NavLink key={title} onClick={signOut}>
+                {title}
+              </NavLink>
+            )
           }
 
           return (

@@ -102,7 +102,11 @@ function User({ username, isAuthenticated }) {
             {edges.length ? (
               edges.map(({ node }) => <Post data={node} key={node.id} withoutAvatar />)
             ) : (
-              <UserFollowingProjects username={username} isAuthenticated={isAuthenticated} />
+              <UserFollowingProjects
+                username={username}
+                isAuthenticated={isAuthenticated}
+                firstName={user.firstName}
+              />
             )}
           </InfiniteScroll>
         </Left>

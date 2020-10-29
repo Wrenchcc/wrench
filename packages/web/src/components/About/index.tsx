@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Seo from 'utils/seo'
 import { Title, Text } from 'ui'
 import Footer from 'components/Footer'
@@ -18,14 +18,16 @@ function About() {
       <Inner>
         <Center>
           <Title medium>About us</Title>
-          <Image src="/about@3x.jpg" width="780" height="360" quality="100" />
-
+          <br />
+          <br />
+          <img src="/about@3x.jpg" width="780" height="360" quality="100" />
+          <br />
+          <br />
           <Text medium>
             Wrench is one of the fastest-growing social networks targeting enthusiasts from all
             around the globe to document their builds, share their knowledge, and learn from
             like-minded.
           </Text>
-
           <br />
           <br />
           <Text color="neutral">
@@ -44,11 +46,10 @@ function About() {
             If you want to be part of the journey towards conquering the automotive industry send us
             an email at <a href="mailto:work@wrench.cc">work@wrench.cc</a>
           </Text>
-
           <Team>
             <Person>
               <PersonPicture>
-                <Image src="/pontus@3x.jpg" width="360" height="330" quality="100" />
+                <img src="/pontus@3x.jpg" width="360" height="330" quality="100" />
 
                 <br />
                 <br />
@@ -62,7 +63,7 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <Image src="/viktor@3x.jpg" width="360" height="330" quality="100" />
+                <img src="/viktor@3x.jpg" width="360" height="330" quality="100" />
 
                 <br />
                 <br />
@@ -74,11 +75,10 @@ function About() {
               </PersonPicture>
             </Person>
           </Team>
-
           <Team>
             <Person>
               <PersonPicture>
-                <Image src="/felix@3x.jpg" width="360" height="330" quality="100" />
+                <img src="/felix@3x.jpg" width="360" height="330" quality="100" />
 
                 <br />
                 <br />
@@ -92,7 +92,7 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <Image src="/plus@3x.jpg" width="360" height="330" quality="100" />
+                <img src="/plus@3x.jpg" width="360" height="330" quality="100" />
                 <br />
                 <br />
 

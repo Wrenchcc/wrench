@@ -1,4 +1,5 @@
 {
-  "follow": "Följ detta projekt",
-  "unfollow": "Följande"
+  "follow": "Följ projekt",
+  "unfollow": "Följer",
+  "follow_short": "Följ"
 }
