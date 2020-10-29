@@ -22,13 +22,13 @@ const Card = memo(function Card({
       onClick={onPress}
       className={className}
     >
-      <Link href="/project/[slug]" as={`/project/${slug}`}>
+      <Link href={`/project/${slug}`}>
         <a>
           <Picture source={image} width={size} height={size} size={size} />
           <ProjectName medium>{title}</ProjectName>
         </a>
       </Link>
-      <Link href="/[username]" as={`/${user.username}`}>
+      <Link href={`/${user.username}`}>
         <a>
           <Username fontSize={15} color="neutral">
             {user.fullName}

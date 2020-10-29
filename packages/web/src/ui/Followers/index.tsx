@@ -13,7 +13,7 @@ function Followers({ followers, project, className }) {
         {followers.edges &&
           followers.edges.map(({ node }, index) => (
             <User first={index === 0} key={node.id}>
-              <Link href="/[username]" as={`/${node.username}`}>
+              <Link href={`/${node.username}`}>
                 <a>
                   <Avatar uri={node.avatarUrl} size={30} />
                 </a>
@@ -21,7 +21,7 @@ function Followers({ followers, project, className }) {
             </User>
           ))}
       </Users>
-      <Link href="/project/[id]/followers" as={`/project/${project.id}/followers`}>
+      <Link href={`/project/${project.id}/followers`}>
         <a>
           <Count fontSize={15}>{t('followers', { count: followers.totalCount })}</Count>
         </a>

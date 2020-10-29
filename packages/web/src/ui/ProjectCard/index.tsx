@@ -8,7 +8,7 @@ import { Base, Picture, ProjectName, Inner, Content, Overlay, WIDTH, HEIGHT } fr
 function ProjectCard({ project, onFollow }) {
   return (
     <Base>
-      <Link href="/project/[slug]" as={`/project/${project.slug}`}>
+      <Link href={`/project/${project.slug}`}>
         <a>
           <Picture source={project.cover.uri} width={WIDTH} height={HEIGHT} />
           <Overlay />
@@ -17,14 +17,14 @@ function ProjectCard({ project, onFollow }) {
 
       <Inner>
         <Content>
-          <Link href="/project/[slug]" as={`/project/${project.slug}`}>
+          <Link href={`/project/${project.slug}`}>
             <a>
               <ProjectName medium color="white">
                 {project.title}
               </ProjectName>
             </a>
           </Link>
-          <Link href="/[username]" as={`/${project.user.username}`}>
+          <Link href={`/${project.user.username}`}>
             <a>
               <Text fontSize={15} color="accent">
                 {project.user.fullName}

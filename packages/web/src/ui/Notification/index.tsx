@@ -32,13 +32,13 @@ function Notification({ data, first, onPress }) {
 
   return (
     <Base first={first}>
-      <Link href="/[username]" as={`/${data.user.username}`}>
+      <Link href={`/${data.user.username}`}>
         <a onClick={onPress}>
           <Avatar uri={data.user.avatarUrl} size={40} isOnline={data.user.isOnline} />
         </a>
       </Link>
       <Content>
-        <Link href="/[username]" as={`/${data.user.username}`}>
+        <Link href={`/${data.user.username}`}>
           <a onClick={onPress}>
             <Text>{data.user.fullName}</Text>
           </a>

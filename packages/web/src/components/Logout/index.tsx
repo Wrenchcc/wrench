@@ -12,15 +12,7 @@ function Logout({ username, onPress }) {
     <Base>
       <ul>
         <li>
-          <Link
-            href={{
-              pathname: '/user',
-              query: { username },
-            }}
-            as={{
-              pathname: `/${username}`,
-            }}
-          >
+          <Link href={`/${username}`}>
             <a onClick={onPress}>{t('profile')}</a>
           </Link>
         </li>

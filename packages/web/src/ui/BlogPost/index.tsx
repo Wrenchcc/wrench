@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { TimeAgo, Image, Avatar } from 'ui'
 import { Base, Title, Content, Top, Name } from './styles'
 
-export const getImages = content => {
+export const getImages = (content) => {
   const data = JSON.parse(content)
 
   return data.blocks
@@ -54,7 +54,7 @@ function BlogPost({ title, user, createdAt, content, slug }) {
   return (
     <Base>
       {slug ? (
-        <Link href="/blog/[slug]" as={`/blog/${slug}`}>
+        <Link href={`/blog/${slug}`}>
           <a>
             <Title fontSize="36">{title}</Title>
           </a>
@@ -63,12 +63,12 @@ function BlogPost({ title, user, createdAt, content, slug }) {
         <Title fontSize="36">{title}</Title>
       )}
       <Top>
-        <Link href="/[username]" as={`/${user.username}`}>
+        <Link href={`/${user.username}`}>
           <a>
             <Avatar uri={user.avatarUrl} isOnline={user.isOnline} />
           </a>
         </Link>
-        <Link href="/[username]" as={`/${user.username}`}>
+        <Link href={`/${user.username}`}>
           <a>
             <Name fontSize={14} className="username">
               {user.fullName}

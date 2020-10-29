@@ -44,7 +44,7 @@ function Result({ query, onPress }) {
       >
         {edges?.map(({ node }, index) => (
           <Base first={index === 0} key={node.id}>
-            <Link href="/[username]" as={`/${node.username}`}>
+            <Link href={`/${node.username}`}>
               <a>
                 <Avatar size={40} uri={node.avatarUrl} isOnline={node.isOnline} onPress={onPress} />
                 <Content onClick={onPress}>

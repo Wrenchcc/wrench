@@ -24,7 +24,7 @@ function List({ data, postId }) {
     <>
       {data.comments.edges.map(({ node }) => (
         <Row key={node.id}>
-          <Link href="/[username]" as={`/${node.user.username}`}>
+          <Link href={`/${node.user.username}`}>
             <a>
               <Text bold fontSize={15}>
                 {node.user.fullName}

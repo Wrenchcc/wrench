@@ -20,8 +20,8 @@ function ProjectTypes({ selectedId }) {
         </Text>
       </Wrapper> */}
 
-      {data.types.map(category => (
-        <Link key={category.id} href="/explore/[id]" as={`/explore/${category.id}`}>
+      {data.types.map((category) => (
+        <Link key={category.id} href={`/explore/${category.id}`}>
           <Wrapper selected={category.id === selectedId} href="/">
             <Text fontSize={15} medium>
               {category.title}

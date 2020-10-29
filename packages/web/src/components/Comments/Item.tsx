@@ -11,7 +11,7 @@ function Item({ id, user, text, onReply, createdAt, isReply, likes }) {
 
   return (
     <Inner key={id} isReply={isReply}>
-      <Link href="/[username]" as={`/${user.username}`}>
+      <Link href={`/${user.username}`}>
         <a>
           <Avatar
             uri={user.avatarUrl}
@@ -22,7 +22,7 @@ function Item({ id, user, text, onReply, createdAt, isReply, likes }) {
       </Link>
 
       <Content>
-        <Link href="/[username]" as={`/${user.username}`}>
+        <Link href={`/${user.username}`}>
           <a>
             <Username bold fontSize={15}>
               {user.fullName}&nbsp;

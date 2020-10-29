@@ -13,7 +13,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
     <Base>
       {!withoutAvatar && (
         <Top>
-          <Link href="/[username]" as={`/${data.user.username}`}>
+          <Link href={`/${data.user.username}`}>
             <a>
               <Avatar uri={data.user.avatarUrl} size={40} isOnline={data.user.isOnline} />
             </a>
@@ -22,7 +22,7 @@ function Post({ data, withoutTitle, withoutAvatar }) {
       )}
 
       {!withoutTitle && (
-        <Link href="/project/[slug]" as={`/project/${data.project.slug}`}>
+        <Link href={`/project/${data.project.slug}`}>
           <a>
             <Title>{data.project.title}</Title>
           </a>

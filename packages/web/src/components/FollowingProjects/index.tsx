@@ -23,7 +23,7 @@ function FollowingProjects() {
 
       <List>
         {projects.edges.map(({ node }) => (
-          <Link key={node.id} href="/project/[slug]" as={`/project/${node.slug}`}>
+          <Link key={node.id} href={`/project/${node.slug}`}>
             <a>
               <Row>
                 <Box>
