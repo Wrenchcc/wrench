@@ -23,7 +23,7 @@ export default function Onboarding() {
     return false
   }
 
-  const toggleSelection = item => {
+  const toggleSelection = (item) => {
     if (items[item.id]) {
       setItems(omit([item.id]))
     } else {
@@ -36,7 +36,7 @@ export default function Onboarding() {
 
   const progress = () => (Object.keys(items).length / 3) * 100
 
-  const interestedIn = Object.keys(items).map(id => ({ id }))
+  const interestedIn = Object.keys(items).map((id) => ({ id }))
 
   return (
     <Base>
@@ -66,7 +66,7 @@ export default function Onboarding() {
         <Scroll>
           <Types>
             {!loading &&
-              data.types.map(item => {
+              data.types.map((item) => {
                 return (
                   <Picture
                     key={item.id}
@@ -80,7 +80,6 @@ export default function Onboarding() {
                       width={ITEM_SIZE}
                       height={ITEM_SIZE}
                       selected={items[item.id]}
-                      lazy={false}
                     />
                     <Overlay>
                       <Text color="white" style={{ zIndex: 10 }}>
