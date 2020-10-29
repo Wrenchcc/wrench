@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react'
 import { useTranslation } from 'i18n'
 import { useClickOutside } from 'hooks'
 import Result from './Result'
-import { Base, Field, Icon } from './styles'
+import { Base, Field, SearchIcon } from './styles'
 
 function Search({ className, inverted }) {
   const { t } = useTranslation('search')
@@ -31,7 +31,7 @@ function Search({ className, inverted }) {
 
   return (
     <Base className={className} active={active} ref={ref}>
-      {/* <Icon src={require('./search.svg')} /> */}
+      <SearchIcon />
       <Field
         inverted={inverted}
         placeholder={t('placeholder')}

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useCallback } from 'react'
+import { SparkIcon } from '@wrench/ui'
 import { useLikeCommentMutation } from '@wrench/common'
 import { Icon } from 'ui'
 import { Base } from './styles'
@@ -31,15 +32,12 @@ function LikeComment({ comment }) {
 
   return (
     <Base>
-      {/* <Icon
-        width={10}
-        style={{ marginRight: 10 }}
+      <SparkIcon
+        small
         onClick={() => handleToggleLike(comment.id)}
-        alt="Like comment"
-        noFill
-        stroke={comment.likes.isLiked ? 'warning' : 'inverse'}
-        source={require('./spark.svg?include')}
-      /> */}
+        style={{ marginRight: 10 }}
+        color={comment.likes.isLiked ? 'warning' : 'inverse'}
+      />
     </Base>
   )
 }

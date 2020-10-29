@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useCallback, memo, useEffect } from 'react'
+import { SparkIcon } from '@wrench/ui'
 import { useTranslation } from 'i18n'
 import { useRouter } from 'next/router'
 import { useLikePostMutation } from '@wrench/common'
@@ -67,14 +68,11 @@ function LikePost({ post }) {
 
   return (
     <Base>
-      {/* <Icon
-        style={{ marginRight: 10 }}
+      <SparkIcon
         onClick={() => handleToggleLike(post.id)}
-        alt="Like post"
-        noFill
-        stroke={post.likes.isLiked ? 'warning' : 'inverse'}
-        source={require('./spark.svg?include')}
-      /> */}
+        color={post.likes.isLiked ? 'warning' : 'inverse'}
+        style={{ marginRight: 10 }}
+      />
 
       <Text fontSize={15}>{t('like', { count: post.likes.totalCount })}</Text>
     </Base>

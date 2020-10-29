@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React from 'react'
+import { ArrowLeftIcon } from '@wrench/ui'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'i18n'
 import styled from 'styled-components'
 import Seo from 'utils/seo'
 import { useBlogPostQuery } from '@wrench/common'
-import { Post, Layout, Loader, BlogPost as UIBlogPost, Icon } from 'ui'
+import { Post, Layout, Loader, BlogPost as UIBlogPost, Text } from 'ui'
 import { getImages } from 'ui/BlogPost'
 import Popular from 'components/Popular'
 import Footer from 'components/Footer'
@@ -47,12 +48,8 @@ export default function BlogPost() {
 
         <Link href="/blog">
           <A>
-            {/* <Icon
-              style={{ marginTop: 2, marginRight: 5 }}
-              source={require('./arrowBack.svg?include')}
-              width="22px"
-            /> */}
-            {t('back')}
+            <ArrowLeftIcon style={{ marginRight: 10 }} />
+            <Text>{t('back')}</Text>
           </A>
         </Link>
 

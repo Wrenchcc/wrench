@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, { useContext } from 'react'
 import { locales } from '@wrench/translations'
+import { ArrowDownIcon } from '@wrench/ui'
 import { useTranslation, i18n } from 'i18n'
 import { I18nContext } from 'next-i18next'
 import Router from 'next/router'
@@ -31,11 +32,11 @@ function LanguageSelector() {
           })}
         </Select>
 
-        {/* <Icon
-        source={require('./arrowDown.svg?include')}
-        noFill
-        style={{ position: 'absolute', right: 20, top: 10, pointerEvents: 'none' }}
-      /> */}
+        <ArrowDownIcon
+          style={{ position: 'absolute', right: 20, top: 13, pointerEvents: 'none' }}
+          width={12}
+          height={16}
+        />
       </Inner>
     </Base>
   )

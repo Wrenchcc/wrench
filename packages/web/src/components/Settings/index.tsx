@@ -2,6 +2,7 @@
 import React, { useState, useCallback, useEffect, useContext } from 'react'
 import { Element } from 'react-scroll'
 import { locales } from '@wrench/translations'
+import { CheckMarkIcon } from '@wrench/ui'
 import { useTranslation, i18n } from 'i18n'
 import { I18nContext } from 'next-i18next'
 import {
@@ -246,7 +247,7 @@ function Settings({ isAuthenticated }) {
                   <span onClick={() => i18n.changeLanguage(locale)}>
                     <Text>{t(`languages.${locale}`)}</Text>
                   </span>
-                  {/* {language === locale && <Icon source={require('./check.svg?include')} />} */}
+                  {language === locale && <CheckMarkIcon />}
                 </Setting>
               )
             })}

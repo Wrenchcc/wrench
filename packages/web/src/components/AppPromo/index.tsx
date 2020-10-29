@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react'
+import { AppStoreIcon, GooglePlayIcon } from '@wrench/ui'
 import { useTheme } from 'next-themes'
 import Promo from 'components/Promo'
 import Image from 'next/image'
@@ -17,12 +18,12 @@ function AppPromo({ viewerCountry }) {
         <Stores>
           <Store>
             <a rel="nofollow" href="https://apps.apple.com/us/app/id1450213123">
-              {/* <div dangerouslySetInnerHTML={{ __html: require('./app-store.svg?include') }} /> */}
+              <AppStoreIcon />
             </a>
           </Store>
           <Store>
             <a rel="nofollow" href="https://play.google.com/store/apps/details?id=com.wrench">
-              {/* <div dangerouslySetInnerHTML={{ __html: require('./google-play.svg?include') }} /> */}
+              <GooglePlayIcon />
             </a>
           </Store>
         </Stores>

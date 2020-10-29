@@ -1,14 +1,15 @@
 // @ts-nocheck
-import React, { memo } from 'react'
+import React from 'react'
+import { NotificationIcon } from '@wrench/ui'
 import { Icon } from 'ui'
 import { Base } from './style'
 
-const Badge = memo(function Badge({ unread, onPress }) {
+function Badge({ unread, onPress }) {
   return (
     <Base onClick={onPress} unread={unread}>
-      {/* <Icon source={require('./bell.svg?include')} /> */}
+      <NotificationIcon />
     </Base>
   )
-})
+}
 
 export default Badge

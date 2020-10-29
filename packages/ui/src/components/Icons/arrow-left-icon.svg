@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="17px" viewBox="0 0 22 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>arrowLeft</title>
+    <desc>Created with Sketch.</desc>
+    <g id="arrowLeft" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="21" y1="8.5" x2="1" y2="8.5" id="Stroke-1" stroke="#000000" stroke-width="1.5"></line>
+        <polyline id="Stroke-3" stroke="#000000" stroke-width="1.5" points="9 16 1 8.5 9 1"></polyline>
+    </g>
+</svg>
