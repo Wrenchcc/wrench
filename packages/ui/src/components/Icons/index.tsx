@@ -1,2 +1,3 @@
-export { default as ArrowLeftAlternative } from './ArrowLeftAlternative'
-export { default as ArrowRightAlternative } from './ArrowRightAlternative'
+export { default as ArrowLeftAlternativeIcon } from './ArrowLeftAlternativeIcon'
+export { default as ArrowRightAlternativeIcon } from './ArrowRightAlternativeIcon'
+export { default as CloseIcon } from './CloseIcon'

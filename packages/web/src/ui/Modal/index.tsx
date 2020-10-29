@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Base, Content, Close } from './styles'
+import { Base, Content, CloseIcon } from './styles'
 
 export * from './ModalContext'
 export * from './ModalProvider'
@@ -10,7 +10,7 @@ export function Modal({ children, close, large = false }) {
   return (
     <Base>
       <Content large={large}>
-        <Close onClick={close} source={require('./close.svg?include')} />
+        <CloseIcon onClick={close} />
         {children}
       </Content>
     </Base>

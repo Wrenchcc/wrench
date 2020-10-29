@@ -17,7 +17,7 @@
     "build:node": "tsc -p tsconfig.node.json",
     "build:all": "yarn build:web && yarn build:node && yarn build:native",
     "storybook:web": "start-storybook -p 9001",
-    "transform:assets": "npx @svgr/cli -d ./assets/svg ./src/components/Icons --typescript --ignore-existing",
+    "transform:assets": "npx @svgr/cli -d . . --icon --typescript --ignore-existing",
     "deploy": "serverless"
   },
   "dependencies": {

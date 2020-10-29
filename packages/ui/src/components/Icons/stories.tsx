@@ -1,7 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { ArrowRightAlternative, ArrowLeftAlternative } from '.'
+import { ArrowRightAlternativeIcon, ArrowLeftAlternativeIcon, CloseIcon } from '.'
 
 storiesOf('Icons', module)
-  .add('ArrowRightAlternative', () => <ArrowRightAlternative />)
-  .add('ArrowLeftAlternative', () => <ArrowLeftAlternative />)
+  .add('CloseIcon', () => <CloseIcon width={20} height={20} />)
+  .add('ArrowRightAlternativeIcon', () => <ArrowRightAlternativeIcon width={44} height={48} />)
+  .add('ArrowLeftAlternativeIcon', () => <ArrowLeftAlternativeIcon width={44} height={48} />)

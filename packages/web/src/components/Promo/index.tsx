@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { Text, Loader } from 'ui'
 import { useCookie, Cookies } from 'hooks'
-import { Base, Icon, Description, Bottom, Send, Close, Placeholder } from './styles'
+import { Base, Icon, Description, Bottom, Send, CloseIcon, Placeholder } from './styles'
 
 const ReactPhoneInput = dynamic(import('react-phone-input-2'), {
   ssr: false,
@@ -48,7 +48,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
         <Icon src={inverted ? require('./icon-white.svg') : require('./icon.svg')} />
 
         {!inverted && (
-          <Close src={require('./close.svg')} width={13} height={13} onClick={hidePromo} />
+          <CloseIcon width={13} height={13} onClick={hidePromo} />
         )}
 
         <Text medium fontSize={19} color={inverted && 'white'}>

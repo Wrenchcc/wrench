@@ -2,6 +2,7 @@
 import styled from 'styled-components'
 import UiText from 'ui/Text'
 import { COLORS, DEVICE } from 'ui/constants'
+import { CloseIcon as UICloseIcon } from '@wrench/ui'
 
 export const Base = styled.div`
   width: 414px;
@@ -34,7 +35,7 @@ export const Icon = styled.img`
   margin-bottom: 20px;
 `
 
-export const Close = styled.img`
+export const CloseIcon = styled(UICloseIcon)`
   position: absolute;
   right: 20px;
   top: 25px;
@@ -42,6 +43,7 @@ export const Close = styled.img`
 `
 
 export const Placeholder = styled.div`
+  cursor: pointer;
   height: 48px;
   border-radius: 1px;
   border: solid 1px ${(props) => props.theme.colors.divider};

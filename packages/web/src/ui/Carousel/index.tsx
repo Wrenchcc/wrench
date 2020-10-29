@@ -1,9 +1,9 @@
-// @ts-nocheck
-import React, { memo, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { CarouselProvider } from 'pure-react-carousel'
+import { ArrowLeftAlternativeIcon, ArrowRightAlternativeIcon } from '@wrench/ui'
 import { Base, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Image } from './styles'
 
-const Carousel = memo(function Carousel({ files }) {
+function Carousel({ files }) {
   return (
     <Base>
       <CarouselProvider
@@ -23,13 +23,17 @@ const Carousel = memo(function Carousel({ files }) {
         {files.edges.length > 1 && (
           <Fragment>
             <DotGroup />
-            <ButtonBack>Back</ButtonBack>
-            <ButtonNext>Next</ButtonNext>
+            <ButtonBack>
+              <ArrowLeftAlternativeIcon width={44} height={48} />
+            </ButtonBack>
+            <ButtonNext>
+              <ArrowRightAlternativeIcon width={44} height={48} />
+            </ButtonNext>
           </Fragment>
         )}
       </CarouselProvider>
     </Base>
   )
-})
+}
 
 export default Carousel

@@ -28,12 +28,10 @@ export const Slider = styled(PSlider)`
 export const Slide = styled(PSlide)``
 
 export const ButtonBack = styled(PButtonBack)`
-  background: url(${require('./arrow-back.svg')}) no-repeat left center;
   width: 44px;
   height: 48px;
   border: none;
   outline: none;
-  text-indent: -99999px;
   margin-left: 20px;
 
   @media ${DEVICE.TABLET} {
@@ -47,12 +45,10 @@ export const ButtonBack = styled(PButtonBack)`
 
 export const ButtonNext = styled(PButtonNext)`
   cursor: pointer;
-  background: url(${require('./arrow-forward.svg')}) no-repeat;
   width: 44px;
   height: 48px;
   border: none;
   outline: none;
-  text-indent: -99999px;
   margin-right: 20px;
 
   @media ${DEVICE.TABLET} {

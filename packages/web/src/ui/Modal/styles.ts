@@ -1,7 +1,7 @@
 // @ts-nocheck
 import styled from 'styled-components'
 import { DEVICE } from 'ui/constants'
-import Icon from 'ui/Icon'
+import { CloseIcon as UICloseIcon } from '@wrench/ui'
   
 export const Base = styled.div`
   width: 100%;
@@ -33,7 +33,8 @@ export const Content = styled.div`
   }
 `
 
-export const Close = styled(Icon)`
+export const CloseIcon = styled(UICloseIcon)`
+  cursor: pointer;
   outline: none;
   position: absolute;
   top: 20px;

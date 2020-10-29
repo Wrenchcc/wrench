@@ -1,9 +1,10 @@
+// @ts-nocheck
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgArrowLeftAlternative(props: React.SVGProps<SVGSVGElement>) {
+function SvgArrowRightAlternativeIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={44} height={48} {...props}>
+    <svg width="1em" height="1em" viewBox="0 0 44 48" {...props}>
       <defs>
         <filter
           x="-95.3%"
@@ -11,7 +12,7 @@ function SvgArrowLeftAlternative(props: React.SVGProps<SVGSVGElement>) {
           width="290.6%"
           height="478.1%"
           filterUnits="objectBoundingBox"
-          id="arrow-left_svg__a"
+          id="arrow-right-alternative-icon_svg__a"
         >
           <feMorphology
             radius={0.75}
@@ -31,15 +32,19 @@ function SvgArrowLeftAlternative(props: React.SVGProps<SVGSVGElement>) {
           <feGaussianBlur stdDeviation={6} in="shadowOffsetOuter1" result="shadowBlurOuter1" />
           <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" in="shadowBlurOuter1" />
         </filter>
-        <path id="arrow-left_svg__b" d="M12 17l10 10 10-10" />
+        <path id="arrow-right-alternative-icon_svg__b" d="M12 17l10 10 10-10" />
       </defs>
       <g fill="none" fillRule="evenodd">
-        <g strokeLinecap="round" strokeLinejoin="round" transform="matrix(0 -1 -1 0 44 46)">
-          <use fill="#000" filter="url(#arrow-left_svg__a)" xlinkHref="#arrow-left_svg__b" />
+        <g strokeLinecap="round" strokeLinejoin="round" transform="rotate(-90 23 23)">
+          <use
+            fill="#000"
+            filter="url(#arrow-right-alternative-icon_svg__a)"
+            xlinkHref="#arrow-right-alternative-icon_svg__b"
+          />
           <use
             stroke={props.theme.colors[props.color] || props.theme.colors.inverse}
             strokeWidth={1.5}
-            xlinkHref="#arrow-left_svg__b"
+            xlinkHref="#arrow-right-alternative-icon_svg__b"
           />
         </g>
         <path d="M0 2h44v44H0z" />
@@ -48,4 +53,4 @@ function SvgArrowLeftAlternative(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-export default withTheme(SvgArrowLeftAlternative)
+export default withTheme(SvgArrowRightAlternativeIcon)
