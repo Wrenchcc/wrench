@@ -1,6 +1,4 @@
 {
   "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
-  "title": "{{title}} - {{type}} proyecto",
-  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@ {{username}} ) en llave",
-  "headline": "Ponte al día y sigue algunos proyectos."
+  "title": ""
 }

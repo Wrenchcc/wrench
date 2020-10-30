@@ -1,7 +1,7 @@
 {
-  "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@ {{username}} ) en llave",
+  "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench",
   "share": "Compartir",
   "similar": "Proyectos similares",
   "title": "{{title}} - {{type}} proyecto",
-  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@ {{username}} ) en llave"
+  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench"
 }

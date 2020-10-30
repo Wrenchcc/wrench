@@ -1,4 +1,7 @@
 {
+  "load_replies_0": "",
+  "load_replies_1": "",
+  "load_replies_2": "",
   "load_replies": "Посмотреть ответы ( {{count}} )",
   "load_replies_plural": ""
 }

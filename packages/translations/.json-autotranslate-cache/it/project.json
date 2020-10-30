@@ -1,7 +1,7 @@
 {
-  "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave",
+  "description": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench",
   "share": "Condividere",
   "similar": "Progetti simili",
-  "title": "<span><span>0-1</span></span> del progetto",
-  "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave"
+  "title": "{{title}} - {{type}}  del progetto",
+  "description_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@{{username}}) sulla Wrench"
 }

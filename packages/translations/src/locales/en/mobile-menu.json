@@ -1,8 +1,8 @@
 {
-  "explore": "Explore",
-  "feed": "Feed",
-  "download": "Download Apps",
-  "login": "Log in",
-  "register": "Sign up",
-  "sign_out": "Sign out"
+    "download": "Download Apps",
+    "explore": "Explore",
+    "feed": "Feed",
+    "login": "Log in",
+    "register": "Sign up",
+    "sign_out": "Sign out"
 }

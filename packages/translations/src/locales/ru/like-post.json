@@ -1,4 +1,7 @@
 {
-  "like": "{{count}} spark",
-  "like_plural": "{{count, humanFormat}} sparks"
+  "like_0": "",
+  "like_1": "",
+  "like_2": "",
+  "like": "{{count}} искры",
+  "like_plural": "{{count, humanFormat}} искр"
 }

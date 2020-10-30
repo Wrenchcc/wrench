@@ -1,4 +1,4 @@
 {
-  "title": "{{title}} - {{type}} projet",
-  "headline": "Soyez au courant et suivez certains projets."
+  "description": "",
+  "title": "{{title}} - {{type}} projet"
 }
