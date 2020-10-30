@@ -1,14 +1,14 @@
 // @ts-nocheck
 import styled from 'styled-components'
 import UiText from 'ui/Text'
-import { COLORS, DEVICE } from 'ui/constants'
+import { DEVICE } from 'ui/constants'
 import { CloseIcon as UICloseIcon, LogoRoundedIcon as UILogoRoundedIcon } from '@wrench/ui'
 
 export const Base = styled.div`
   width: 414px;
   height: 284px;
   border-radius: 1px;
-  box-shadow: 0 4px 10px 0 ${props => props.inline ? 'transparent' : 'rgba(0, 0, 0, 0.12)'};
+  box-shadow: 0 4px 10px 0 ${(props) => (props.inline ? 'transparent' : 'rgba(0, 0, 0, 0.12)')};
   background: ${(props) => (props.inverted ? 'transparent' : props.theme.colors.default)};
   position: ${(props) => (props.sticky ? 'fixed' : 'static')};
   bottom: 40px;
@@ -67,7 +67,8 @@ export const Bottom = styled.div`
     .form-control {
       height: 50px;
       border-radius: 1px;
-      border: solid 1px ${(props) => props.inverted ? props.theme.colors.neutral: props.theme.colors.divider};
+      border: solid 1px
+        ${(props) => (props.inverted ? props.theme.colors.neutral : props.theme.colors.divider)};
       color: ${(props) => props.theme.colors.neutral};
       width: 100%;
       background: transparent;
@@ -101,7 +102,9 @@ export const Send = styled.button`
   outline: none;
   color: ${(props) =>
     props.inverted
-      ? (props.success && COLORS.GREEN) || (props.active ? COLORS.WHITE : props.theme.colors.neutral)
-      : (props.success && COLORS.GREEN) || (props.active ? COLORS.BLACK : props.theme.colors.neutral)};
+      ? (props.success && props.theme.colors.success) ||
+        (props.active ? props.theme.colors.default : props.theme.colors.neutral)
+      : (props.success && props.theme.colors.success) ||
+        (props.active ? props.theme.colors.inverse : props.theme.colors.neutral)};
   padding: 0;
 `

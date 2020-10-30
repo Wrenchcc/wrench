@@ -37,6 +37,8 @@ export default function BlogPost() {
           config={{
             title: `${t('title')} - ${data?.blogPost.title}`,
             description: getText(data?.blogPost.content),
+            type: 'article',
+            publishedTime: data?.blogPost.createdAt,
             openGraph: {
               title: `${t('title')} - ${data?.blogPost.title}`,
               url: `https://wrench.cc/blog/${slug}`,
