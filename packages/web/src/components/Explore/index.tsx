@@ -12,7 +12,7 @@ const Title = styled(UiTitle)`
   margin-bottom: 50px;
 `
 
-export default function Explore() {
+function Explore() {
   const {
     data: { edges },
     isFetching,
@@ -41,3 +41,5 @@ export default function Explore() {
     </Layout>
   )
 }
+
+export default Explore

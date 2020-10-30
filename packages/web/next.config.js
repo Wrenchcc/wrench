@@ -6,6 +6,11 @@ const dotenv = require('dotenv-webpack')
 module.exports = {
   poweredByHeader: false,
   target: 'serverless',
+  images: {
+    domains: ['edge-files.wrench.cc'],
+    loader: 'edge',
+    deviceSizes: [320, 420, 768, 1024, 1200],
+  },
   env: {
     GA_TRACKING_ID: process.env.GA_TRACKING_ID,
     SENTRY_DSN: process.env.SENTRY_DSN,

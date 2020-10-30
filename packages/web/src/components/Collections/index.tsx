@@ -38,7 +38,9 @@ function Collection({ slug, collection }) {
                   height={60}
                   borderRadius={60}
                 />
-                <Name fontSize={12}>{node.name}</Name>
+                <Name fontSize={12} center>
+                  {node.name}
+                </Name>
               </Item>
             </Link>
           )

@@ -4,14 +4,9 @@ import Head from 'next/head'
 const VALID_LOADING_VALUES = ['lazy', 'eager', undefined] as const
 type LoadingValue = typeof VALID_LOADING_VALUES[number]
 
-const loaders = new Map<LoaderKey, (props: LoaderProps) => string>([
-  ['imgix', imgixLoader],
-  ['cloudinary', cloudinaryLoader],
-  ['akamai', akamaiLoader],
-  ['default', defaultLoader],
-])
+const loaders = new Map<LoaderKey, (props: LoaderProps) => string>([['edge', edgeLoader]])
 
-type LoaderKey = 'imgix' | 'cloudinary' | 'akamai' | 'default'
+type LoaderKey = 'edge'
 
 type ImageData = {
   deviceSizes: number[]
@@ -118,7 +113,7 @@ type CallLoaderProps = {
 }
 
 function callLoader(loaderProps: CallLoaderProps) {
-  const load = loaders.get(configLoader) || defaultLoader
+  const load = loaders.get(configLoader)
   return load({ root: configPath, ...loaderProps })
 }
 
@@ -365,76 +360,6 @@ export default function Image({
 
 type LoaderProps = CallLoaderProps & { root: string }
 
-function normalizeSrc(src: string) {
-  return src[0] === '/' ? src.slice(1) : src
-}
-
-function imgixLoader({ root, src, width, quality }: LoaderProps): string {
-  const params = ['auto=format', 'w=' + width]
-  let paramsString = ''
-  if (quality) {
-    params.push('q=' + quality)
-  }
-
-  if (params.length) {
-    paramsString = '?' + params.join('&')
-  }
-  return `${root}${normalizeSrc(src)}${paramsString}`
-}
-
-function akamaiLoader({ root, src, width }: LoaderProps): string {
-  return `${root}${normalizeSrc(src)}?imwidth=${width}`
-}
-
-function cloudinaryLoader({ root, src, width, quality }: LoaderProps): string {
-  const params = ['f_auto', 'w_' + width]
-  let paramsString = ''
-  if (quality) {
-    params.push('q_' + quality)
-  }
-  if (params.length) {
-    paramsString = params.join(',') + '/'
-  }
-  return `${root}${paramsString}${normalizeSrc(src)}`
-}
-
-function defaultLoader({ root, src, width, quality }: LoaderProps): string {
-  if (process.env.NODE_ENV !== 'production') {
-    const missingValues = []
-
-    // these should always be provided but make sure they are
-    if (!src) missingValues.push('src')
-    if (!width) missingValues.push('width')
-
-    if (missingValues.length > 0) {
-      throw new Error(
-        `Next Image Optimization requires ${missingValues.join(
-          ', '
-        )} to be provided. Make sure you pass them as props to the \`next/image\` component. Received: ${JSON.stringify(
-          { src, width, quality }
-        )}`
-      )
-    }
-
-    if (src && !src.startsWith('/') && configDomains) {
-      let parsedSrc: URL
-      try {
-        parsedSrc = new URL(src)
-      } catch (err) {
-        console.error(err)
-        throw new Error(
-          `Failed to parse "${src}" in "next/image", if using relative image it must start with a leading slash "/" or be an absolute URL (http:// or https://)`
-        )
-      }
-
-      if (!configDomains.includes(parsedSrc.hostname)) {
-        throw new Error(
-          `Invalid src prop (${src}) on \`next/image\`, hostname "${parsedSrc.hostname}" is not configured under images in your \`next.config.js\`\n` +
-            `See more info: https://err.sh/nextjs/next-image-unconfigured-host`
-        )
-      }
-    }
-  }
-
-  return `${root}?url=${encodeURIComponent(src)}&w=${width}&q=${quality || 75}`
+function edgeLoader({ src, width }: LoaderProps): string {
+  return `${src}?w=${width}&dpr=3`
 }
