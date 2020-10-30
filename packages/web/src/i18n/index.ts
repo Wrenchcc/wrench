@@ -8,6 +8,7 @@ const NextI18NextInstance = new NextI18Next({
   defaultLanguage: defaultLocale,
   otherLanguages: locales,
   localePath: path.resolve('./public/locales'),
+  debug: process.env.DEBUG_LOCALE,
   detection: {
     lookupQuerystring: 'hl',
     cookieMinutes: 24 * 60 * 365,
@@ -15,7 +16,7 @@ const NextI18NextInstance = new NextI18Next({
     cookiePath: '/',
     cookieSameSite: 'strict',
     lookupCookie: 'preferred_language',
-    order: ['querystring', 'cookie', 'header'],
+    order: ['querystring', 'cookie', 'navigator', 'header'],
   },
   interpolation: {
     escapeValue: false,

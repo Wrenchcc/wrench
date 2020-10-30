@@ -1,11 +1,13 @@
+// @ts-nocheck
 import * as React from 'react'
+import { withTheme } from 'styled-components'
 
 function SvgTwitterIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width="1em" height="1em" viewBox="0 0 24 20" {...props}>
       <path
         fill="none"
-        stroke="#000"
+        stroke={props.theme.colors[props.color] || props.theme.colors.inverse}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
@@ -15,4 +17,4 @@ function SvgTwitterIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-export default SvgTwitterIcon
+export default withTheme(SvgTwitterIcon)

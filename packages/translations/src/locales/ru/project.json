@@ -1,6 +1,7 @@
 {
-  "description": "Ниже мы выбрали несколько проектов, которые могут вас заинтересовать.",
+  "description": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ",
   "share": "Поделиться",
   "similar": "Похожие проекты",
-  "title": "Развивайте скорость и следите за некоторыми проектами."
+  "title": "{{title}} - {{type}} проект",
+  "description_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"
 }

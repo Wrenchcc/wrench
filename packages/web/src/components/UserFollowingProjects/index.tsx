@@ -8,7 +8,7 @@ import Login from 'components/Login'
 import { ProjectCard, Text } from 'ui'
 import { Base, Title, List, Inner } from './styles'
 
-function UserFollowingProjects({ username, isAuthenticated }) {
+function UserFollowingProjects({ username, firstName, isAuthenticated }) {
   const { t } = useTranslation('user-following-projects')
   const router = useRouter()
 
@@ -27,7 +27,7 @@ function UserFollowingProjects({ username, isAuthenticated }) {
     </Modal>
   ))
 
-  const toggleFollow = project => {
+  const toggleFollow = (project) => {
     if (!isAuthenticated) {
       showModal()
       return
@@ -60,13 +60,12 @@ function UserFollowingProjects({ username, isAuthenticated }) {
   if (loading) {
     return null
   }
-
   return (
     <Base>
       <Title>{t('title')}</Title>
       <Text color="neutral">
         {t('description', {
-          name: data.user.firstName,
+          name: firstName,
         })}
       </Text>
 

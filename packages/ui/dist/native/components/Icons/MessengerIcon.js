@@ -30,10 +30,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
 var React = __importStar(require("react"));
+var styled_components_1 = require("styled-components");
 function SvgMessengerIcon(props) {
     return (React.createElement("svg", __assign({ width: "1em", height: "1em", viewBox: "0 0 20 20" }, props),
-        React.createElement("path", { fill: "none", stroke: "#000", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M19 9.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L1 19l1.9-5.7A8.38 8.38 0 012 9.5a8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" })));
+        React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M19 9.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L1 19l1.9-5.7A8.38 8.38 0 012 9.5a8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" })));
 }
-exports.default = SvgMessengerIcon;
+exports.default = styled_components_1.withTheme(SvgMessengerIcon);
 //# sourceMappingURL=MessengerIcon.js.map

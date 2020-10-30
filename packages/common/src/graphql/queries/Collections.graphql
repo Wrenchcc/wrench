@@ -1,7 +1,7 @@
 #import "../fragments/PostFragment.graphql"
 
-query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: "collections") {
-  collections(id: $id, projectId: $projectId, after: $after, first: $first) {
+query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: "collections") {
+  collections(id: $id, slug: $slug, projectId: $projectId, projectSlug: $projectSlug, after: $after, first: $first) {
     pageInfo {
       hasNextPage
     }

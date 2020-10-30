@@ -4,6 +4,18 @@ import Link from 'next/link'
 import { TimeAgo, Image, Avatar } from 'ui'
 import { Base, Title, Content, Top, Name } from './styles'
 
+export const getText = (content) => {
+  const data = JSON.parse(content)
+
+  const text = data.blocks.map(({ type, data }, i) => {
+    if (type === 'paragraph') {
+      return data.text
+    }
+  })
+
+  return text.join(' ').substring(0, 200)
+}
+
 export const getImages = (content) => {
   const data = JSON.parse(content)
 

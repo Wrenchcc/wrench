@@ -1,6 +1,7 @@
 {
-  "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
-  "share": "Dela med sig",
-  "similar": "Liknande projekt",
-  "title": "Håll dig uppdaterad och följ några projekt."
+  "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+  "share": "Dela",
+  "similar": "Liknande project",
+  "title": "{{title}} - {{type}} projekt",
+  "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
 }

@@ -1,3 +1,11 @@
 {
-  "signout": ""
+  "signout": "",
+  "download": "",
+  "explore": "",
+  "feed": "",
+  "like": "",
+  "like_plural": "",
+  "login": "",
+  "register": "",
+  "sign_out": ""
 }

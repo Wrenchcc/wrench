@@ -1,3 +1,3 @@
 import * as React from 'react';
-declare function SvgFacebookIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element;
-export default SvgFacebookIcon;
+declare const _default;
+export default _default;

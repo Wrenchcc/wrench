@@ -1,5 +1,4 @@
 {
-  "description": "{{followers, humanFormat}} abonné, {{posts, humanFormat}} messages - {{fullName}} . (@ {{username}} ) sur clé",
-  "title": "{{title}} - {{type}} projet",
-  "description_plural": "{{followers, humanFormat}} abonnés, {{posts, humanFormat}} messages - {{fullName}} . (@ {{username}} ) sur clé"
+  "description": "",
+  "title": "{{title}} - {{type}} projet"
 }

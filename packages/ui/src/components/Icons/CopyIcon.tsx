@@ -1,4 +1,6 @@
+// @ts-nocheck
 import * as React from 'react'
+import { withTheme } from 'styled-components'
 
 function SvgCopyIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -6,7 +8,7 @@ function SvgCopyIcon(props: React.SVGProps<SVGSVGElement>) {
       <g
         fill="none"
         fillRule="evenodd"
-        stroke="#000"
+        stroke={props.theme.colors[props.color] || props.theme.colors.inverse}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
@@ -19,4 +21,4 @@ function SvgCopyIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-export default SvgCopyIcon
+export default withTheme(SvgCopyIcon)

@@ -72,7 +72,7 @@ var CacheControlScope;
 })(CacheControlScope = exports.CacheControlScope || (exports.CacheControlScope = {}));
 exports.UserFragmentDoc = client_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    fragment User on User {\n  id\n  fullName\n  firstName\n  lastName\n  username\n  avatarUrl\n  isSilhouette\n  isOnline\n  website\n  location\n  bio\n  projectCount\n  dynamicLink\n}\n    "], ["\n    fragment User on User {\n  id\n  fullName\n  firstName\n  lastName\n  username\n  avatarUrl\n  isSilhouette\n  isOnline\n  website\n  location\n  bio\n  projectCount\n  dynamicLink\n}\n    "])));
 exports.BlogPostFragmentDoc = client_1.gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    fragment BlogPost on BlogPost {\n  id\n  title\n  slug\n  content\n  createdAt\n  user {\n    ...User\n  }\n}\n    ", ""], ["\n    fragment BlogPost on BlogPost {\n  id\n  title\n  slug\n  content\n  createdAt\n  user {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
-exports.CollectionFragmentDoc = client_1.gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    fragment Collection on Collection {\n  id\n  name\n  cover {\n    uri\n  }\n}\n    "], ["\n    fragment Collection on Collection {\n  id\n  name\n  cover {\n    uri\n  }\n}\n    "])));
+exports.CollectionFragmentDoc = client_1.gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    fragment Collection on Collection {\n  id\n  name\n  slug\n  cover {\n    uri\n  }\n}\n    "], ["\n    fragment Collection on Collection {\n  id\n  name\n  slug\n  cover {\n    uri\n  }\n}\n    "])));
 exports.CommentFragmentDoc = client_1.gql(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    fragment Comment on Comment {\n  id\n  text\n  createdAt\n  permissions {\n    isOwner\n  }\n  likes {\n    isLiked\n    totalCount\n  }\n  user {\n    ...User\n  }\n}\n    ", ""], ["\n    fragment Comment on Comment {\n  id\n  text\n  createdAt\n  permissions {\n    isOwner\n  }\n  likes {\n    isLiked\n    totalCount\n  }\n  user {\n    ...User\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
 exports.CommentAndRepliesFragmentDoc = client_1.gql(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    fragment CommentAndReplies on Comment {\n  ...Comment\n  replies: repliesConnection(first: 1) {\n    pageInfo {\n      hasNextPage\n    }\n    totalCount\n    edges {\n      cursor\n      node {\n        ...Comment\n      }\n    }\n  }\n}\n    ", ""], ["\n    fragment CommentAndReplies on Comment {\n  ...Comment\n  replies: repliesConnection(first: 1) {\n    pageInfo {\n      hasNextPage\n    }\n    totalCount\n    edges {\n      cursor\n      node {\n        ...Comment\n      }\n    }\n  }\n}\n    ", ""])), exports.CommentFragmentDoc);
 exports.ProjectFragmentDoc = client_1.gql(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    fragment Project on Project {\n  id\n  title\n  slug\n  dynamicLink\n  user {\n    ...User\n  }\n  permissions {\n    isOwner\n    isFollower\n  }\n  type {\n    title\n  }\n  cover {\n    uri\n  }\n  followers: followersConnection(first: 3) {\n    totalCount\n    edges {\n      node {\n        id\n        avatarUrl\n      }\n    }\n  }\n}\n    ", ""], ["\n    fragment Project on Project {\n  id\n  title\n  slug\n  dynamicLink\n  user {\n    ...User\n  }\n  permissions {\n    isOwner\n    isFollower\n  }\n  type {\n    title\n  }\n  cover {\n    uri\n  }\n  followers: followersConnection(first: 3) {\n    totalCount\n    edges {\n      node {\n        id\n        avatarUrl\n      }\n    }\n  }\n}\n    ", ""])), exports.UserFragmentDoc);
@@ -895,7 +895,7 @@ function useBookmarksLazyQuery(baseOptions) {
     return Apollo.useLazyQuery(exports.BookmarksDocument, baseOptions);
 }
 exports.useBookmarksLazyQuery = useBookmarksLazyQuery;
-exports.CollectionsDocument = client_1.gql(templateObject_47 || (templateObject_47 = __makeTemplateObject(["\n    query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: \"collections\") {\n  collections(id: $id, projectId: $projectId, after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""], ["\n    query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: \"collections\") {\n  collections(id: $id, projectId: $projectId, after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
+exports.CollectionsDocument = client_1.gql(templateObject_47 || (templateObject_47 = __makeTemplateObject(["\n    query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: \"collections\") {\n  collections(id: $id, slug: $slug, projectId: $projectId, projectSlug: $projectSlug, after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""], ["\n    query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: \"collections\") {\n  collections(id: $id, slug: $slug, projectId: $projectId, projectSlug: $projectSlug, after: $after, first: $first) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Post\n      }\n    }\n  }\n}\n    ", ""])), exports.PostFragmentDoc);
 /**
  * __useCollectionsQuery__
  *
@@ -909,7 +909,9 @@ exports.CollectionsDocument = client_1.gql(templateObject_47 || (templateObject_
  * const { data, loading, error } = useCollectionsQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      slug: // value for 'slug'
  *      projectId: // value for 'projectId'
+ *      projectSlug: // value for 'projectSlug'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },
@@ -1388,7 +1390,7 @@ function useProjectLazyQuery(baseOptions) {
     return Apollo.useLazyQuery(exports.ProjectDocument, baseOptions);
 }
 exports.useProjectLazyQuery = useProjectLazyQuery;
-exports.ProjectCollectionsDocument = client_1.gql(templateObject_66 || (templateObject_66 = __makeTemplateObject(["\n    query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {\n  projectCollections(projectId: $projectId, first: $first, after: $after) @connection(key: \"collections\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Collection\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {\n  projectCollections(projectId: $projectId, first: $first, after: $after) @connection(key: \"collections\", filter: [\"projectId\"]) {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Collection\n      }\n    }\n  }\n}\n    ", ""])), exports.CollectionFragmentDoc);
+exports.ProjectCollectionsDocument = client_1.gql(templateObject_66 || (templateObject_66 = __makeTemplateObject(["\n    query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {\n  projectCollections(projectId: $projectId, projectSlug: $projectSlug, slug: $slug, first: $first, after: $after) @connection(key: \"collections\") {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Collection\n      }\n    }\n  }\n}\n    ", ""], ["\n    query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {\n  projectCollections(projectId: $projectId, projectSlug: $projectSlug, slug: $slug, first: $first, after: $after) @connection(key: \"collections\") {\n    pageInfo {\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        ...Collection\n      }\n    }\n  }\n}\n    ", ""])), exports.CollectionFragmentDoc);
 /**
  * __useProjectCollectionsQuery__
  *
@@ -1402,6 +1404,8 @@ exports.ProjectCollectionsDocument = client_1.gql(templateObject_66 || (template
  * const { data, loading, error } = useProjectCollectionsQuery({
  *   variables: {
  *      projectId: // value for 'projectId'
+ *      projectSlug: // value for 'projectSlug'
+ *      slug: // value for 'slug'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },

@@ -97,8 +97,10 @@ export type QueryCommentArgs = {
 
 
 export type QueryCollectionsArgs = {
-  id: Scalars['ID'];
-  projectId: Scalars['ID'];
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  projectId?: Maybe<Scalars['ID']>;
+  projectSlug?: Maybe<Scalars['LowercaseString']>;
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -107,7 +109,9 @@ export type QueryCollectionsArgs = {
 
 
 export type QueryProjectCollectionsArgs = {
-  projectId: Scalars['ID'];
+  slug?: Maybe<Scalars['LowercaseString']>;
+  projectId?: Maybe<Scalars['ID']>;
+  projectSlug?: Maybe<Scalars['LowercaseString']>;
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
   last?: Maybe<Scalars['Int']>;
@@ -554,6 +558,7 @@ export type Collection = {
   __typename?: 'Collection';
   id?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
   cover?: Maybe<CoverType>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
@@ -1168,7 +1173,7 @@ export type BlogPostFragment = (
 
 export type CollectionFragment = (
   { __typename?: 'Collection' }
-  & Pick<Collection, 'id' | 'name'>
+  & Pick<Collection, 'id' | 'name' | 'slug'>
   & { cover?: Maybe<(
     { __typename?: 'CoverType' }
     & Pick<CoverType, 'uri'>
@@ -1882,8 +1887,10 @@ export type BookmarksQuery = (
 );
 
 export type CollectionsQueryVariables = Exact<{
-  id: Scalars['ID'];
-  projectId: Scalars['ID'];
+  id?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
+  projectId?: Maybe<Scalars['ID']>;
+  projectSlug?: Maybe<Scalars['LowercaseString']>;
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
 }>;
@@ -2314,7 +2321,9 @@ export type ProjectQuery = (
 );
 
 export type ProjectCollectionsQueryVariables = Exact<{
-  projectId: Scalars['ID'];
+  projectId?: Maybe<Scalars['ID']>;
+  projectSlug?: Maybe<Scalars['LowercaseString']>;
+  slug?: Maybe<Scalars['LowercaseString']>;
   after?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
 }>;
@@ -2714,6 +2723,7 @@ export const CollectionFragmentDoc = gql`
     fragment Collection on Collection {
   id
   name
+  slug
   cover {
     uri
   }
@@ -4125,8 +4135,8 @@ export type BookmarksQueryHookResult = ReturnType<typeof useBookmarksQuery>;
 export type BookmarksLazyQueryHookResult = ReturnType<typeof useBookmarksLazyQuery>;
 export type BookmarksQueryResult = Apollo.QueryResult<BookmarksQuery, BookmarksQueryVariables>;
 export const CollectionsDocument = gql`
-    query collections($id: ID!, $projectId: ID!, $after: String, $first: Int = 5) @connection(key: "collections") {
-  collections(id: $id, projectId: $projectId, after: $after, first: $first) {
+    query collections($id: ID, $slug: LowercaseString, $projectId: ID, $projectSlug: LowercaseString, $after: String, $first: Int = 5) @connection(key: "collections") {
+  collections(id: $id, slug: $slug, projectId: $projectId, projectSlug: $projectSlug, after: $after, first: $first) {
     pageInfo {
       hasNextPage
     }
@@ -4153,7 +4163,9 @@ export const CollectionsDocument = gql`
  * const { data, loading, error } = useCollectionsQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      slug: // value for 'slug'
  *      projectId: // value for 'projectId'
+ *      projectSlug: // value for 'projectSlug'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },
@@ -4940,8 +4952,8 @@ export type ProjectQueryHookResult = ReturnType<typeof useProjectQuery>;
 export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectCollectionsDocument = gql`
-    query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
-  projectCollections(projectId: $projectId, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
+    query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {
+  projectCollections(projectId: $projectId, projectSlug: $projectSlug, slug: $slug, first: $first, after: $after) @connection(key: "collections") {
     pageInfo {
       hasNextPage
     }
@@ -4968,6 +4980,8 @@ export const ProjectCollectionsDocument = gql`
  * const { data, loading, error } = useProjectCollectionsQuery({
  *   variables: {
  *      projectId: // value for 'projectId'
+ *      projectSlug: // value for 'projectSlug'
+ *      slug: // value for 'slug'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },

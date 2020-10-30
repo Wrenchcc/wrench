@@ -1,5 +1,4 @@
 {
-  "DESCRIPTION": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave",
-  "TITLE": "{{title}} - {{type}} del progetto",
-  "DESCRIPTION_plural": "{{followers, humanFormat}} follower, {{posts, humanFormat}} post - {{fullName}} . (@ {{username}} ) sulla chiave"
+  "description": "",
+  "title": "{{title}} - {{type}} del progetto"
 }

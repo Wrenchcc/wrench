@@ -4,6 +4,7 @@ export default gql`
   type Collection {
     id: ID
     name: String
+    slug: String
     cover: CoverType
     createdAt: Date
     updatedAt: Date
@@ -37,8 +38,10 @@ export default gql`
 
   extend type Query {
     collections(
-      id: ID!
-      projectId: ID!
+      id: ID
+      slug: LowercaseString
+      projectId: ID
+      projectSlug: LowercaseString
       first: Int = 10
       after: String
       last: Int = 10
@@ -46,7 +49,9 @@ export default gql`
     ): PostConnection
 
     projectCollections(
-      projectId: ID!
+      slug: LowercaseString
+      projectId: ID
+      projectSlug: LowercaseString
       first: Int = 10
       after: String
       last: Int = 10

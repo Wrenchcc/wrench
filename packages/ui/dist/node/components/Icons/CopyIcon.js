@@ -30,12 +30,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
 var React = __importStar(require("react"));
+var styled_components_1 = require("styled-components");
 function SvgCopyIcon(props) {
     return (React.createElement("svg", __assign({ width: "1em", height: "1em", viewBox: "0 0 22 22" }, props),
-        React.createElement("g", { fill: "none", fillRule: "evenodd", stroke: "#000", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, transform: "translate(1 1)" },
+        React.createElement("g", { fill: "none", fillRule: "evenodd", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, transform: "translate(1 1)" },
             React.createElement("rect", { width: 13, height: 13, x: 7, y: 7, rx: 2 }),
             React.createElement("path", { d: "M3 13H2a2 2 0 01-2-2V2a2 2 0 012-2h9a2 2 0 012 2v1" }))));
 }
-exports.default = SvgCopyIcon;
+exports.default = styled_components_1.withTheme(SvgCopyIcon);
 //# sourceMappingURL=CopyIcon.js.map

@@ -6,13 +6,12 @@
   "field_lastname": "Familienname, Nachname",
   "field_website": "Webseite",
   "mail": "Mail-Support",
-  "SAVE": "speichern",
+  "save": "speichern",
   "sections_language": "Sprache",
   "sections_notifications": "Benachrichtigungen",
   "sections_profile": "Profil bearbeiten",
   "sections_support": "Unterstützung",
   "title": "die Einstellungen",
   "toast_error": "Etwas ist schief gelaufen",
-  "toast_saved": "Einstellungen gespeichert",
-  "save": "speichern"
+  "toast_saved": "Einstellungen gespeichert"
 }

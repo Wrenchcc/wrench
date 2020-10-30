@@ -29,13 +29,13 @@ export default withApollo(
           Query: {
             fields: {
               bookmarks: relayStylePagination(),
-              collections: relayStylePagination(['id', 'projectId']),
+              collections: relayStylePagination(['slug', 'projectSlug']),
               comments: relayStylePagination(['postId']),
               followers: relayStylePagination(['projectId']),
               likes: relayStylePagination(['postId']),
               notifications: relayStylePagination(),
               posts: relayStylePagination(),
-              projectCollections: relayStylePagination(['projectId']),
+              projectCollections: relayStylePagination(['slug']),
               projects: relayStylePagination(['typeId', 'type']),
               search: relayStylePagination(['query', 'type']),
               users: relayStylePagination(),

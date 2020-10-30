@@ -2,12 +2,30 @@ import { In } from 'typeorm'
 import paginate from '../../utils/paginate'
 
 export default async (_, args, ctx) => {
-  const collections = await paginate(ctx.db.PostCollection, args, {
-    where: {
-      collectionId: args.id,
-      projectId: args.projectId,
-    },
-  })
+  let collections
+
+  if (args.id) {
+    collections = await paginate(ctx.db.PostCollection, args, {
+      where: {
+        collectionId: args.id,
+        projectId: args.projectId,
+      },
+    })
+  }
+
+  if (args.projectSlug && args.slug) {
+    const [project, collection] = await Promise.all([
+      ctx.db.Project.findOne({ slug: args.projectSlug }),
+      ctx.db.Collection.findOne({ slug: args.slug }),
+    ])
+
+    collections = await paginate(ctx.db.PostCollection, args, {
+      where: {
+        collectionId: collection.id,
+        projectId: project.id,
+      },
+    })
+  }
 
   const ids = collections.edges.map(({ node }) => node.postId)
 

@@ -1,6 +1,7 @@
 {
-  "description": "Wir haben unten einige Projekte ausgewählt, die Sie vielleicht interessieren.",
-  "share": "Teilen",
-  "similar": "Ähnliche Projekte",
-  "title": "Machen Sie sich auf dem Laufenden und verfolgen Sie einige Projekte."
+  "description": "",
+  "share": "",
+  "similar": "",
+  "title": "",
+  "description_plural": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Beiträge - {{fullName}} . (@ {{username}} ) am Schraubenschlüssel"
 }

@@ -3,27 +3,47 @@ import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useTranslation } from 'i18n'
 import Seo from 'utils/seo'
-import { usePaginatedQuery, ProjectDocument, useFollowProjectMutation } from '@wrench/common'
+import {
+  usePaginatedQuery,
+  ProjectDocument,
+  useFollowProjectMutation,
+  CollectionsDocument,
+} from '@wrench/common'
 import Follow from 'components/Follow'
 import Login from 'components/Login'
 import Share from 'components/Share'
 import SimilarProjects from 'components/SimilarProjects'
+import Collections from 'components/Collections'
 import { Modal, useModal } from 'ui/Modal'
 import { Post, Title, Layout, Loader } from 'ui'
 import { Left, Right, ShareButton, Similar, Followers } from './styles'
 
 const ACTION = 'follow'
 
-function Project({ slug, isAuthenticated, action }) {
+function Project({ slug, collection, isAuthenticated, action }) {
   const { t } = useTranslation('project')
   const {
-    data: { edges, project },
+    data: { edges: projectEdges, project },
     isFetching,
-    fetchMore,
-    hasNextPage,
+    fetchMore: fetchMorePosts,
+    hasNextPage: hasNextPost,
   } = usePaginatedQuery(['project', 'posts'])(ProjectDocument, {
+    skip: !collection,
     variables: {
       slug,
+    },
+  })
+
+  const {
+    data: { edges: collectionEdges },
+    hasNextPage: hasNextCollection,
+    fetchMore: fetchMoreCollections,
+  } = usePaginatedQuery(['collections'])(CollectionsDocument, {
+    skip: !collection,
+    variables: {
+      projectSlug: slug,
+      slug: collection,
+      first: 2,
     },
   })
 
@@ -56,7 +76,7 @@ function Project({ slug, isAuthenticated, action }) {
     [project]
   )
 
-  const toggleFollow = project => {
+  const toggleFollow = (project) => {
     if (!isAuthenticated) {
       showLoginModal()
       return
@@ -149,16 +169,32 @@ function Project({ slug, isAuthenticated, action }) {
         )}
 
         <ShareButton onPress={showShare}>{t('share')}</ShareButton>
-
         <Similar onPress={showSimilarModal}>{t('similar')}</Similar>
+        <Collections slug={slug} collection={collection} />
       </Left>
 
       <Right>
-        <InfiniteScroll loadMore={fetchMore} hasMore={hasNextPage} loader={<Loader key={0} />}>
-          {edges?.map(({ node }) => (
-            <Post data={node} key={node.id} withoutTitle />
-          ))}
-        </InfiniteScroll>
+        {collectionEdges?.length ? (
+          <InfiniteScroll
+            loadMore={fetchMoreCollections}
+            hasMore={hasNextCollection}
+            loader={<Loader key={0} />}
+          >
+            {collectionEdges?.map(({ node }) => (
+              <Post data={node} key={node.id} withoutTitle />
+            ))}
+          </InfiniteScroll>
+        ) : (
+          <InfiniteScroll
+            loadMore={fetchMorePosts}
+            hasMore={hasNextPost}
+            loader={<Loader key={0} />}
+          >
+            {projectEdges?.map(({ node }) => (
+              <Post data={node} key={node.id} withoutTitle />
+            ))}
+          </InfiniteScroll>
+        )}
       </Right>
     </Layout>
   )

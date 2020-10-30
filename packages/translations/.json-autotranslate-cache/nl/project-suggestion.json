@@ -1,5 +1,5 @@
 {
-  "description": "{{followers, humanFormat}} volger, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench",
+  "description": "We hebben hieronder een aantal projecten geselecteerd die u wellicht interessant vindt.",
   "title": "{{title}} - {{type}} <span>binnen</span> project",
   "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
 }

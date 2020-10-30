@@ -1,6 +1,7 @@
 {
-  "description": "Vi har valgt noen prosjekter nedenfor du kan synes er interessante.",
+  "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
   "share": "Dele",
   "similar": "Lignende prosjekter",
-  "title": "Bli oppdatert og følg noen prosjekter."
+  "title": "{{title}} - {{type}} prosjekt",
+  "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel"
 }

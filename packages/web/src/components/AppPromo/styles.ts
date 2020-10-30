@@ -27,7 +27,7 @@ export const Base = styled.section`
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
-  background: ${props => props.theme.isDark ? props.theme.colors.placeholder: 'black'};
+  background: ${(props) => (props.theme.isDark ? props.theme.colors.placeholder : 'black')};
   margin-top: 90px;
   padding-top: 60px;
   display: flex;
@@ -39,10 +39,11 @@ export const Base = styled.section`
   }
 `
 
-export const AppScreens = styled.picture`
+export const AppScreens = styled.div`
   width: 482px;
   height: 524px;
   align-self: flex-end;
+  overflow: hidden;
 
   img {
     width: 100%;

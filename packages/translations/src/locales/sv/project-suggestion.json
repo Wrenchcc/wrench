@@ -1,5 +1,4 @@
 {
-  "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@ {{username}} ) på skiftnyckel",
-  "title": "{{title}} - {{type}} projekt",
-  "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@ {{username}} ) på skiftnyckel"
+  "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+  "title": ""
 }

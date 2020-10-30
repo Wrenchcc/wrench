@@ -19,7 +19,7 @@ var ThemeProvider_1 = require("./ThemeProvider");
 Object.defineProperty(exports, "ThemeProvider", { enumerable: true, get: function () { return __importDefault(ThemeProvider_1).default; } });
 __exportStar(require("./theme"), exports);
 // export * from './components/Avatar'
-__exportStar(require("./components/Button"), exports);
+// export * from './components/Button'
 __exportStar(require("./components/Icons"), exports);
 // export * from './components/Headline'
 // export * from './components/Paragraph'
