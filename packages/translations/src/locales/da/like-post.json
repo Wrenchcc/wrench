@@ -1,0 +1,4 @@
+{
+  "like": "{{count}} gnist",
+  "like_plural": "{{count, humanFormat}} gnister"
+}

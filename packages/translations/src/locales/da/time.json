@@ -1,0 +1,13 @@
+{
+  "d": "{{count}} dage siden",
+  "d_plural": "{{count}} dage siden",
+  "h": "{{count}} timer siden",
+  "h_plural": "{{count}} timer siden",
+  "m": "{{count}} minut siden",
+  "m_plural": "{{count}} minutter siden",
+  "mo": "{{count}} måneder siden",
+  "mo_plural": "{{count}} måneder siden",
+  "now": "lige nu",
+  "y": "{{count}} år siden",
+  "y_plural": "{{count}} år siden"
+}

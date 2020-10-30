@@ -1,0 +1,7 @@
+{
+  "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
+  "share": "Del",
+  "similar": "Lignende projekter",
+  "title": "{{title}} - {{type}} projekt",
+  "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
+}
