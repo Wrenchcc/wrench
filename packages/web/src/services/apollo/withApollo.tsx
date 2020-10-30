@@ -35,7 +35,7 @@ export default withApollo(
               likes: relayStylePagination(['postId']),
               notifications: relayStylePagination(),
               posts: relayStylePagination(),
-              projectCollections: relayStylePagination(['slug']),
+              projectCollections: relayStylePagination(['projectSlug']),
               projects: relayStylePagination(['typeId', 'type']),
               search: relayStylePagination(['query', 'type']),
               users: relayStylePagination(),

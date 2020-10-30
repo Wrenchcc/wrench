@@ -43,11 +43,9 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
         paddingHorizontal={paddingHorizontal}
         inline={inline}
       >
-        <LogoRoundedIcon inverted={inverted} width="40" height="40"/> 
+        <LogoRoundedIcon white={!sticky} width="40" height="40" />
 
-        {!inverted && (
-          <CloseIcon width={13} height={13} onClick={hidePromo} />
-        )}
+        {!inverted && <CloseIcon width={13} height={13} onClick={hidePromo} />}
 
         <Text medium fontSize={19} color={inverted && 'white'}>
           {t('title')}
@@ -61,7 +59,7 @@ function Promo({ viewerCountry, sticky = true, inverted = false, paddingHorizont
           <ReactPhoneInput
             country={viewerCountry && viewerCountry.toLowerCase()}
             disableDropdown
-            onChange={val => setNumber(val)}
+            onChange={(val) => setNumber(val)}
             value={number}
             specialLabel=""
           />

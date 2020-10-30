@@ -81,7 +81,7 @@ export const Projects = styled.section`
 
 export const ExploreLink = styled.a`
   cursor: pointer;
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid ${(props) => props.theme.colors.inverse};
   font-weight: 500;
 `
 

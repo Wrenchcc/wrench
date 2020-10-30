@@ -28,7 +28,6 @@ function Project({ slug, collection, isAuthenticated, action }) {
     fetchMore: fetchMorePosts,
     hasNextPage: hasNextPost,
   } = usePaginatedQuery(['project', 'posts'])(ProjectDocument, {
-    skip: !collection,
     variables: {
       slug,
     },
