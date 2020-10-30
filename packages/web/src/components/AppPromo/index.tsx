@@ -30,9 +30,21 @@ function AppPromo({ viewerCountry }) {
 
         <AppScreens>
           {systemTheme === 'dark' ? (
-            <img src="/phones-dark@3x.png" quality="100" width="505" height="717" />
+            <img
+              src="/phones-dark@3x.png"
+              quality="100"
+              width="505"
+              height="717"
+              style={{ width: '100%', height: 'auto' }}
+            />
           ) : (
-            <img src="/phones@3x.png" quality="100" width="482" height="524" />
+            <img
+              src="/phones@3x.png"
+              quality="100"
+              width="482"
+              height="524"
+              style={{ width: '100%', height: 'auto' }}
+            />
           )}
         </AppScreens>
       </Inner>

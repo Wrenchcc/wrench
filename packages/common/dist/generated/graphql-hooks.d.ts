@@ -85,15 +85,19 @@ export declare type QueryCommentArgs = {
     before?: Maybe<Scalars['String']>;
 };
 export declare type QueryCollectionsArgs = {
-    id: Scalars['ID'];
-    projectId: Scalars['ID'];
+    id?: Maybe<Scalars['ID']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
+    projectId?: Maybe<Scalars['ID']>;
+    projectSlug?: Maybe<Scalars['LowercaseString']>;
     first?: Maybe<Scalars['Int']>;
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
     before?: Maybe<Scalars['String']>;
 };
 export declare type QueryProjectCollectionsArgs = {
-    projectId: Scalars['ID'];
+    slug?: Maybe<Scalars['LowercaseString']>;
+    projectId?: Maybe<Scalars['ID']>;
+    projectSlug?: Maybe<Scalars['LowercaseString']>;
     first?: Maybe<Scalars['Int']>;
     after?: Maybe<Scalars['String']>;
     last?: Maybe<Scalars['Int']>;
@@ -457,6 +461,7 @@ export declare type Collection = {
     __typename?: 'Collection';
     id?: Maybe<Scalars['ID']>;
     name?: Maybe<Scalars['String']>;
+    slug?: Maybe<Scalars['String']>;
     cover?: Maybe<CoverType>;
     createdAt?: Maybe<Scalars['Date']>;
     updatedAt?: Maybe<Scalars['Date']>;
@@ -940,7 +945,7 @@ export declare type BlogPostFragment = ({
 });
 export declare type CollectionFragment = ({
     __typename?: 'Collection';
-} & Pick<Collection, 'id' | 'name'> & {
+} & Pick<Collection, 'id' | 'name' | 'slug'> & {
     cover?: Maybe<({
         __typename?: 'CoverType';
     } & Pick<CoverType, 'uri'>)>;
@@ -1543,8 +1548,10 @@ export declare type BookmarksQuery = ({
     })>;
 });
 export declare type CollectionsQueryVariables = Exact<{
-    id: Scalars['ID'];
-    projectId: Scalars['ID'];
+    id?: Maybe<Scalars['ID']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
+    projectId?: Maybe<Scalars['ID']>;
+    projectSlug?: Maybe<Scalars['LowercaseString']>;
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
@@ -1939,7 +1946,9 @@ export declare type ProjectQuery = ({
     } & ProjectFragment)>;
 });
 export declare type ProjectCollectionsQueryVariables = Exact<{
-    projectId: Scalars['ID'];
+    projectId?: Maybe<Scalars['ID']>;
+    projectSlug?: Maybe<Scalars['LowercaseString']>;
+    slug?: Maybe<Scalars['LowercaseString']>;
     after?: Maybe<Scalars['String']>;
     first?: Maybe<Scalars['Int']>;
 }>;
@@ -3266,21 +3275,27 @@ export declare const CollectionsDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCollectionsQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      slug: // value for 'slug'
  *      projectId: // value for 'projectId'
+ *      projectSlug: // value for 'projectSlug'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },
  * });
  */
 export declare function useCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<CollectionsQuery, CollectionsQueryVariables>): Apollo.QueryResult<CollectionsQuery, Exact<{
-    id: string;
-    projectId: string;
+    id?: string | null | undefined;
+    slug?: any;
+    projectId?: string | null | undefined;
+    projectSlug?: any;
     after?: string | null | undefined;
     first?: number | null | undefined;
 }>>;
 export declare function useCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CollectionsQuery, CollectionsQueryVariables>): Apollo.QueryTuple<CollectionsQuery, Exact<{
-    id: string;
-    projectId: string;
+    id?: string | null | undefined;
+    slug?: any;
+    projectId?: string | null | undefined;
+    projectSlug?: any;
     after?: string | null | undefined;
     first?: number | null | undefined;
 }>>;
@@ -3822,18 +3837,24 @@ export declare const ProjectCollectionsDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useProjectCollectionsQuery({
  *   variables: {
  *      projectId: // value for 'projectId'
+ *      projectSlug: // value for 'projectSlug'
+ *      slug: // value for 'slug'
  *      after: // value for 'after'
  *      first: // value for 'first'
  *   },
  * });
  */
 export declare function useProjectCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>): Apollo.QueryResult<ProjectCollectionsQuery, Exact<{
-    projectId: string;
+    projectId?: string | null | undefined;
+    projectSlug?: any;
+    slug?: any;
     after?: string | null | undefined;
     first?: number | null | undefined;
 }>>;
 export declare function useProjectCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectCollectionsQuery, ProjectCollectionsQueryVariables>): Apollo.QueryTuple<ProjectCollectionsQuery, Exact<{
-    projectId: string;
+    projectId?: string | null | undefined;
+    projectSlug?: any;
+    slug?: any;
     after?: string | null | undefined;
     first?: number | null | undefined;
 }>>;

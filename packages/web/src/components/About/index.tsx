@@ -20,7 +20,13 @@ function About() {
           <Title medium>About us</Title>
           <br />
           <br />
-          <img src="/about@3x.jpg" width="780" height="360" quality="100" />
+          <img
+            src="/about@3x.jpg"
+            width="780"
+            height="360"
+            quality="100"
+            style={{ width: '100%', height: 'auto' }}
+          />
           <br />
           <br />
           <Text medium>
@@ -49,7 +55,13 @@ function About() {
           <Team>
             <Person>
               <PersonPicture>
-                <img src="/pontus@3x.jpg" width="360" height="330" quality="100" />
+                <img
+                  src="/pontus@3x.jpg"
+                  width="360"
+                  height="330"
+                  quality="100"
+                  style={{ width: '100%', height: 'auto' }}
+                />
 
                 <br />
                 <br />
@@ -63,7 +75,13 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <img src="/viktor@3x.jpg" width="360" height="330" quality="100" />
+                <img
+                  src="/viktor@3x.jpg"
+                  width="360"
+                  height="330"
+                  quality="100"
+                  style={{ width: '100%', height: 'auto' }}
+                />
 
                 <br />
                 <br />
@@ -78,7 +96,13 @@ function About() {
           <Team>
             <Person>
               <PersonPicture>
-                <img src="/felix@3x.jpg" width="360" height="330" quality="100" />
+                <img
+                  src="/felix@3x.jpg"
+                  width="360"
+                  height="330"
+                  quality="100"
+                  style={{ width: '100%', height: 'auto' }}
+                />
 
                 <br />
                 <br />
@@ -92,7 +116,13 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <img src="/plus@3x.jpg" width="360" height="330" quality="100" />
+                <img
+                  src="/plus@3x.jpg"
+                  width="360"
+                  height="330"
+                  quality="100"
+                  style={{ width: '100%', height: 'auto' }}
+                />
                 <br />
                 <br />
 

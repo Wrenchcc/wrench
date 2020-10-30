@@ -36,6 +36,7 @@ export const ShareButton = styled(UiButton)`
 
 export const Similar = styled(UiButton)`
   width: 220px;
+  margin-bottom: 40px;
 
   @media ${DEVICE.TABLET} {
     display: none;

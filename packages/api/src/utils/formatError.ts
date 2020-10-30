@@ -4,7 +4,7 @@ import { v4 } from 'uuid'
 
 const debug = require('debug')('api:error')
 
-export default error => {
+export default (error) => {
   if (error.originalError instanceof ApolloError) {
     return error
   }

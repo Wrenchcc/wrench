@@ -10,7 +10,13 @@ function AppPromo({ viewerCountry }) {
     <Base>
       <Inner direction="row" alignItems="center" justifyContent="space-between">
         <AppScreens>
-          <img src="/phones-full@3x.png" quality="100" width="434" height="609" />
+          <img
+            src="/phones-full@3x.png"
+            quality="100"
+            width="434"
+            height="609"
+            style={{ width: '100%', height: 'auto' }}
+          />
         </AppScreens>
 
         <Promo inverted sticky={false} viewerCountry={viewerCountry} />

@@ -1,7 +1,7 @@
 #import "../fragments/CollectionFragment.graphql"
 
-query projectCollections($projectId: ID!, $after: String, $first: Int = 10) {
-  projectCollections(projectId: $projectId, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
+query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {
+  projectCollections(projectId: $projectId, projectSlug: $projectSlug, slug: $slug, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
     pageInfo {
       hasNextPage
     }

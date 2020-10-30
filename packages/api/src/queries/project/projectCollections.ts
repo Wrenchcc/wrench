@@ -3,11 +3,27 @@ import { transformFileUrl } from '../../utils/transformFileUrl'
 
 // TODO: Use dataloader
 export default async (_, args, ctx) => {
-  const collections = await paginate(ctx.db.ProjectCollection, args, {
-    where: {
-      projectId: args.projectId,
-    },
-  })
+  let collections
+
+  if (args.projectId) {
+    collections = await paginate(ctx.db.ProjectCollection, args, {
+      where: {
+        projectId: args.projectId,
+      },
+    })
+  }
+
+  if (args.projectSlug) {
+    const project = await ctx.db.Project.findOne({
+      slug: args.projectSlug,
+    })
+
+    collections = await paginate(ctx.db.ProjectCollection, args, {
+      where: {
+        projectId: project.id,
+      },
+    })
+  }
 
   const edges = await Promise.all(
     collections.edges.map(async (n) => {
