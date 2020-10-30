@@ -43,9 +43,10 @@ function formatContent(content) {
     }
 
     if (type === 'image') {
+      // TODO: Change to NextImage
       return (
         <div style={{ marginBottom: 20 }} key={i}>
-          <Image source={data.file.url} title={data.caption} />
+          <img src={data.file.url} title={data.caption} style={{ width: '100%' }} />
         </div>
       )
     }
