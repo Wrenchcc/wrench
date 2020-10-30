@@ -170,7 +170,7 @@ function Project({ slug, collection, isAuthenticated, action }) {
 
         <ShareButton onPress={showShare}>{t('share')}</ShareButton>
         <Similar onPress={showSimilarModal}>{t('similar')}</Similar>
-        <Collections />
+        <Collections slug={slug} collection={collection} />
       </Left>
 
       <Right>

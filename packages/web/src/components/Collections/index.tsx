@@ -1,16 +1,13 @@
 // @ts-nocheck
 import React from 'react'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { usePaginatedQuery, ProjectCollectionsDocument } from '@wrench/common'
 import { Text } from 'ui'
-import { Base, Inner, Item, Name, Cover } from './styles'
 import { useTranslation } from 'i18n'
+import { Base, Inner, Item, Name, Cover } from './styles'
 
-function Collection() {
+function Collection({ slug, collection }) {
   const { t } = useTranslation('collections')
-  const router = useRouter()
-  const { collection, slug } = router.query
 
   const {
     data: { edges },
