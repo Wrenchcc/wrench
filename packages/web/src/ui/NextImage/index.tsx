@@ -36,7 +36,6 @@ const {
   imageSizes: configImageSizes,
   loader: configLoader,
   path: configPath,
-  domains: configDomains,
 } = imageData
 // sort smallest to largest
 configDeviceSizes.sort((a, b) => a - b)
