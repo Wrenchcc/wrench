@@ -2,12 +2,7 @@
 import React, { Fragment, useState, useRef } from 'react'
 import Link from 'next/link'
 import * as ms from 'ms'
-import {
-  useCurrentUserQuery,
-  NotificationsDocument,
-  useMarkAllNotificationsSeenMutation,
-  useUnreadNotificationsQuery,
-} from '@wrench/common'
+import { useCurrentUserQuery, useUnreadNotificationsQuery } from '@wrench/common'
 import { LogoIcon, MenuIcon } from '@wrench/ui'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
@@ -58,34 +53,12 @@ function Header({ isAuthenticated }) {
 
   const [openNotifications, setNotificationsMenu] = useState(false)
 
-  const [markNotificationsSeen] = useMarkAllNotificationsSeenMutation()
-
   const handleClose = () => {
     setUserMenu(false)
     setNotificationsMenu(false)
   }
 
   const toggleNotifications = () => {
-    if (data?.notifications?.unreadCount > 0) {
-      // @ts-ignore
-      markAllNotificationsSeen({
-        update: (cache) => {
-          const data = cache.readQuery({ query: NotificationsDocument })
-
-          cache.writeQuery({
-            query: NotificationsDocument,
-            data: {
-              ...data,
-              notifications: {
-                ...data.notifications,
-                unreadCount: 0,
-              },
-            },
-          })
-        },
-      })
-    }
-
     setNotificationsMenu(!openNotifications)
   }
 

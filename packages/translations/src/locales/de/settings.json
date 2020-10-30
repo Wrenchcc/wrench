@@ -13,5 +13,11 @@
   "sections_support": "Unterstützung",
   "title": "die Einstellungen",
   "toast_error": "Etwas ist schief gelaufen",
-  "toast_saved": "Einstellungen gespeichert"
+  "toast_saved": "Einstellungen gespeichert",
+  "new_comment": "Bemerkungen",
+  "new_mention": "Erwähnungen",
+  "new_article": "Artikel",
+  "new_follower": "Anhänger",
+  "similar_projects": "Ähnliche Projekte",
+  "product_announcements": "Produktankündigungen"
 }

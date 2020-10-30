@@ -1,5 +1,5 @@
 {
-  "chat": "chatta med oss",
+  "chat": "Chatta med oss",
   "feedback": "Feedback",
   "field_bio": "Beskrivning",
   "field_firstname": "Förnamn",
@@ -11,7 +11,13 @@
   "sections_notifications": "Notifikationer",
   "sections_profile": "Redigera profil",
   "sections_support": "Support",
-  "title": "inställningar",
+  "title": "Inställningar",
   "toast_error": "Något gick fel",
-  "toast_saved": "Inställningar Sparade"
+  "toast_saved": "Inställningar Sparade",
+  "new_comment": "Kommentarer",
+  "new_mention": "Nämnder",
+  "new_article": "Artiklar",
+  "new_follower": "Följare",
+  "similar_projects": "Liknande projekt",
+  "product_announcements": "Produktmeddelanden"
 }

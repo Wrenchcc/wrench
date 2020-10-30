@@ -37,7 +37,7 @@ function Settings({ isAuthenticated }) {
     i18n: { language },
   } = useContext(I18nContext)
 
-  const { t } = useTranslation('settings')
+  const { t } = useTranslation(['settings'])
   const [saved, setSaved] = useState(false)
 
   const [data, setData] = useState({
@@ -62,7 +62,7 @@ function Settings({ isAuthenticated }) {
     const types = Object.keys(notifications.types).filter((type) => type !== '__typename')
 
     return types.map((type) => ({
-      titleKey: `notifications.${type}`,
+      titleKey: type.toLowerCase(),
       type,
       onPress: () => {
         setSaved(true)
@@ -245,7 +245,7 @@ function Settings({ isAuthenticated }) {
               return (
                 <Setting key={locale}>
                   <span onClick={() => i18n.changeLanguage(locale)}>
-                    <Text>{t(`languages.${locale}`)}</Text>
+                    <Text>{t(`languages:${locale}`)}</Text>
                   </span>
                   {language === locale && <CheckMarkIcon />}
                 </Setting>

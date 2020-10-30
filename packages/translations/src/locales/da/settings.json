@@ -13,5 +13,11 @@
   "sections_support": "Support",
   "title": "Indstillinger",
   "toast_error": "Noget gik galt",
-  "toast_saved": "Indstillinger gemt"
+  "toast_saved": "Indstillinger gemt",
+  "new_comment": "Kommentarer",
+  "new_mention": "Nævner",
+  "new_article": "Artikler",
+  "new_follower": "Følgere",
+  "similar_projects": "Lignende projekter",
+  "product_announcements": "Produktmeddelelser"
 }

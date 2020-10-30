@@ -13,5 +13,11 @@
   "sections_support": "Ondersteuning",
   "title": "Instellingen",
   "toast_error": "Er is iets fout gegaan",
-  "toast_saved": "Instellingen opgeslagen"
+  "toast_saved": "Instellingen opgeslagen",
+  "new_comment": "Opmerkingen",
+  "new_mention": "Vermeldt",
+  "new_article": "Lidwoord",
+  "new_follower": "Volgers",
+  "similar_projects": "Vergelijkbare projecten",
+  "product_announcements": "Productaankondigingen"
 }

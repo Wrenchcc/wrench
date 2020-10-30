@@ -13,5 +13,11 @@
   "sections_support": "Поддержка",
   "title": "Настройки",
   "toast_error": "Что-то пошло не так",
-  "toast_saved": "Настройки сохранены"
+  "toast_saved": "Настройки сохранены",
+  "new_comment": "Комментарии",
+  "new_mention": "Упоминания",
+  "new_article": "Статьи",
+  "new_follower": "Подписчики",
+  "similar_projects": "Похожие проекты",
+  "product_announcements": "Анонсы продуктов"
 }

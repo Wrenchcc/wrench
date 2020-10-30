@@ -13,5 +13,11 @@
   "sections_support": "Soutien",
   "title": "Réglages",
   "toast_error": "Un problème est survenu",
-  "toast_saved": "Paramètres sauvegardés"
+  "toast_saved": "Paramètres sauvegardés",
+  "new_comment": "commentaires",
+  "new_mention": "Mentions",
+  "new_article": "Des articles",
+  "new_follower": "Suiveurs",
+  "similar_projects": "Projets similaires",
+  "product_announcements": "Annonces de produits"
 }

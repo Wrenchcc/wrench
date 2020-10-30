@@ -13,5 +13,11 @@
   "sections_support": "Brukerstøtte",
   "title": "Innstillinger",
   "toast_error": "Noe gikk galt",
-  "toast_saved": "Instillinger lagret"
+  "toast_saved": "Instillinger lagret",
+  "new_comment": "Kommentarer",
+  "new_mention": "Nevner",
+  "new_article": "Artikler",
+  "new_follower": "Følgere",
+  "similar_projects": "Lignende prosjekter",
+  "product_announcements": "Produkt kunngjøringer"
 }

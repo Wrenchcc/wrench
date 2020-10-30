@@ -13,5 +13,11 @@
   "sections_support": "Apoyo",
   "title": "Configuraciones",
   "toast_error": "Algo salió mal",
-  "toast_saved": "Se guardó la configuración"
+  "toast_saved": "Se guardó la configuración",
+  "new_comment": "Comentarios",
+  "new_mention": "Menciones",
+  "new_article": "Artículos",
+  "new_follower": "Seguidores",
+  "similar_projects": "Proyectos similares",
+  "product_announcements": "Anuncios de productos"
 }

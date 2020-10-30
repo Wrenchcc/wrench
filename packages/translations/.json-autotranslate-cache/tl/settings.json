@@ -13,5 +13,11 @@
   "sections_support": "Suporta",
   "title": "Mga setting",
   "toast_error": "May nangyaring mali",
-  "toast_saved": "Na-save ang mga setting"
+  "toast_saved": "Na-save ang mga setting",
+  "new_comment": "Mga Komento",
+  "new_mention": "Nabanggit",
+  "new_article": "Mga Artikulo",
+  "new_follower": "Mga tagasunod",
+  "similar_projects": "Katulad na mga proyekto",
+  "product_announcements": "Mga anunsyo ng produkto"
 }

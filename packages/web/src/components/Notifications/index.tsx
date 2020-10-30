@@ -1,7 +1,12 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
-import { usePaginatedQuery, NotificationsDocument } from '@wrench/common'
+import {
+  usePaginatedQuery,
+  NotificationsDocument,
+  useNotificationsQuery,
+  useMarkAllNotificationsSeenMutation,
+} from '@wrench/common'
 import { useTranslation } from 'i18n'
 import { Notification, Loader, Text } from 'ui'
 import { Base, Empty, LoaderContainer } from './styles'
@@ -9,14 +14,43 @@ import { Base, Empty, LoaderContainer } from './styles'
 function Notifications({ onPress }) {
   const { t } = useTranslation('notifications')
 
+  const [markAllNotificationsSeen] = useMarkAllNotificationsSeenMutation()
+
   const {
     data: { edges },
+    error,
     isFetching,
     fetchMore,
     hasNextPage,
-  } = usePaginatedQuery(['notifications'])(NotificationsDocument)
+  } = usePaginatedQuery(['notifications'])(NotificationsDocument, {
+    variables: {
+      first: 8,
+    },
+  })
 
-  if (isFetching || !edges.length) {
+  useEffect(() => {
+    // if (data?.notifications?.unreadCount > 0) {
+    // @ts-ignore
+    markAllNotificationsSeen({
+      update: (cache) => {
+        const data = cache.readQuery({ query: NotificationsDocument })
+
+        cache.writeQuery({
+          query: NotificationsDocument,
+          data: {
+            ...data,
+            notifications: {
+              ...data.notifications,
+              unreadCount: 0,
+            },
+          },
+        })
+      },
+    })
+    // }
+  }, [])
+
+  if (isFetching) {
     return (
       <Base padding>
         <Loader />
