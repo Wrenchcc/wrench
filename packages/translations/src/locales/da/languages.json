@@ -1,13 +1,14 @@
 {
   "sv": "Svensk",
-  "en": "engelsk",
-  "es": "spansk",
+  "en": "Engelsk",
+  "es": "Spansk",
   "it": "Italiensk",
-  "de": "tysk",
-  "nl": "hollandsk",
-  "fr": "fransk",
+  "de": "Tysk",
+  "nl": "Hollandsk",
+  "fr": "Fransk",
   "tl": "Filippinsk",
   "pt": "Portugisisk",
   "ru": "Russisk",
-  "no": "Norsk"
+  "no": "Norsk",
+  "da": "Dansk"
 }

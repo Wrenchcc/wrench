@@ -1,5 +1,5 @@
 {
-  "projects": "<span>0-</span> projekt",
+  "projects": "{{count, humanFormat}} projekt",
   "projects_plural": "{{count, humanFormat}} projekter",
   "not_found": "Ingen søgeresultater fundet."
 }
