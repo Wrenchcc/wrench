@@ -1,4 +1,5 @@
 {
   "description": "",
-  "title": "{{title}} - {{type}} del progetto"
+  "title": "{{title}} - {{type}} del progetto",
+  "title_small": "Suggerito per te"
 }

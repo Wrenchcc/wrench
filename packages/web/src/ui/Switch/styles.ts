@@ -38,6 +38,6 @@ export const Circle = styled.span`
   height: 25px;
   border-radius: 25px;
   transition: 0.2s;
-  background: #fff;
+  background: ${(props) => props.theme.colors.default};
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 `
