@@ -1,7 +1,8 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'i18n'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import Seo from 'utils/seo'
 import { Title } from 'ui'
 import Popular from 'components/Popular'
@@ -12,7 +13,7 @@ import ProjectTypes from 'components/ProjectTypes'
 import { Modal, useModal } from 'ui/Modal'
 import { Hero, Inner, Signup, Description, Video, Projects, ExploreLink } from './styles'
 
-const VIDEO_URL = 'https://edge-files.wrench.cc/static/video/landing-v5.mp4'
+const VIDEO_URL = 'https://edge-files.wrench.cc'
 
 function Home(props) {
   const { t } = useTranslation('home')
@@ -22,6 +23,35 @@ function Home(props) {
       <Login closeModal={closeModal} />
     </Modal>
   ))
+
+  useEffect(() => {
+    if (process.browser) {
+      var lazyVideos = [].slice.call(document.querySelectorAll('.lazy'))
+
+      if ('IntersectionObserver' in window) {
+        var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (video) {
+            if (video.isIntersecting) {
+              for (var source in video.target.children) {
+                var videoSource = video.target.children[source]
+                if (typeof videoSource.tagName === 'string' && videoSource.tagName === 'SOURCE') {
+                  videoSource.src = videoSource.dataset.src
+                }
+              }
+
+              video.target.load()
+              video.target.classList.remove('lazy')
+              lazyVideoObserver.unobserve(video.target)
+            }
+          })
+        })
+
+        lazyVideos.forEach(function (lazyVideo) {
+          lazyVideoObserver.observe(lazyVideo)
+        })
+      }
+    }
+  }, [])
 
   return (
     <>
@@ -42,8 +72,15 @@ function Home(props) {
           </Description>
           <Signup onPress={showModal}>{t('signup')}</Signup>
         </Inner>
-        <Video autoPlay muted playsInline>
-          <source src={VIDEO_URL} type="video/mp4" />
+
+        <Video
+          autoPlay
+          muted
+          playsInline
+          poster={`${VIDEO_URL}/static/video/poster.jpg`}
+          className="lazy"
+        >
+          <source data-src={`${VIDEO_URL}/static/video/landing-v5.mp4`} type="video/mp4" />
         </Video>
       </Hero>
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import GoogleAnalyticsSDK from 'components/GoogleAnalyticsSDK'
 import { useTranslation } from 'i18n'
 import { Text, LanguageSelector } from 'ui'
 import { Base, Inner, Bottom, Navigation, Column, NavItem, Left, Right } from './styles'
@@ -131,6 +132,8 @@ function Footer() {
           </Right>
         </Bottom>
       </Inner>
+
+      <GoogleAnalyticsSDK />
     </Base>
   )
 }

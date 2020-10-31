@@ -47,6 +47,31 @@ export const EDITOR_JS_TOOLS = {
             type: FILE_TYPE,
           })
 
+          // const reader = new FileReader()
+
+          // reader.readAsDataURL(file)
+          // reader.onload = (e) => {
+          //   let image = new Image()
+
+          //   console.log(image)
+          //   image.src = e.target.result
+
+          //   image.onload = () => {
+          //     console.log(image.width)
+          //   }
+          //   console.log(e.target)
+          // }
+
+          // // reader.onload = (e) => {
+          // //   const image = new Image()
+
+          // //   // image.src = e.target.result
+
+          // //   // image.onload = () => {
+          // //   //   console.log(image.width)
+          // //   // }
+          // // }
+
           await fetch(data.preSignUrl.url, {
             method: 'PUT',
             body: file,

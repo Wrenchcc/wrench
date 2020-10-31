@@ -67,7 +67,6 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.1.5",
     "@types/recharts": "^1.8.14",
-    "serverless": "^1.78.0",
-    "webpack": "4.44.1"
+    "serverless": "^1.78.0"
   }
 }

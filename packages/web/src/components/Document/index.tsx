@@ -2,7 +2,6 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import React, { ElementType } from 'react'
 import { ServerStyleSheet } from 'styled-components'
-import GoogleAnalyticsSDK from 'components/GoogleAnalyticsSDK'
 
 export default class Document extends NextDocument {
   public static async getInitialProps(ctx: any) {
@@ -37,7 +36,6 @@ export default class Document extends NextDocument {
     return (
       <Html lang={this.props?.initialLanguage}>
         <Head />
-        <GoogleAnalyticsSDK />
 
         <body>
           <Main />
