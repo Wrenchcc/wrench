@@ -3,9 +3,6 @@
   "version": "1.0.171",
   "private": true,
   "workspaces": {
-    "nohoist": [
-      "**/sharp"
-    ],
     "packages": [
       "packages/*"
     ]

@@ -2,9 +2,9 @@
 import { CloudFrontResponseHandler, CloudFrontResultResponse } from 'aws-lambda'
 import * as qs from 'querystring'
 import { S3 } from 'aws-sdk'
-import { mediaType } from './accept'
+import * as sharp from 'sharp'
+// import { mediaType } from '@hapi/accept'
 
-let sharp: typeof import('sharp')
 type S3Object = S3.GetObjectOutput
 
 const s3 = new S3()
@@ -47,7 +47,10 @@ const resize = async <T extends CloudFrontResultResponse>({
   try {
     const { width, webp, quality, dpr } = parsedQuery
 
-    const contentType = webp ? WEBP : mediaType(headers.accept, MIME_TYPES) || JPEG
+    console.log(JSON.stringify(headers, null, 2))
+
+    // const contentType = webp ? WEBP : mediaType(headers.accept, MIME_TYPES) || JPEG
+    const contentType = webp ? WEBP : JPEG
 
     const upstreamBuffer = await s3Object.then((data) => data.Body).then(Buffer.from)
 

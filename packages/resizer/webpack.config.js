@@ -5,7 +5,6 @@ const nodeExternals = require('webpack-node-externals')
 module.exports = {
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
   entry: slsw.lib.entries,
-  devtool: 'source-map',
   resolve: {
     extensions: ['.json', '.ts'],
   },
@@ -17,6 +16,11 @@ module.exports = {
   target: 'node',
   externals: [nodeExternals()],
   module: {
-    rules: [{ test: /\.tsx?$/, loader: 'ts-loader' }],
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+      },
+    ],
   },
 }

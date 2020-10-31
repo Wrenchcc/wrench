@@ -5,7 +5,7 @@
     "OriginResponseLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/resizer-dev-OriginResponse"
+        "LogGroupName": "/aws/lambda/resizer-production-OriginResponse"
       }
     },
     "IamRoleLambdaExecution": {
@@ -34,7 +34,7 @@
                 "-",
                 [
                   "resizer",
-                  "dev",
+                  "production",
                   "lambda"
                 ]
               ]
@@ -50,7 +50,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/resizer-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/resizer-production*:*"
                     }
                   ]
                 },
@@ -61,7 +61,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/resizer-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/resizer-production*:*:*"
                     }
                   ]
                 }
@@ -75,7 +75,7 @@
             "-",
             [
               "resizer",
-              "dev",
+              "production",
               {
                 "Ref": "AWS::Region"
               },
@@ -90,9 +90,9 @@
       "Properties": {
         "Code": {
           "S3Bucket": "wrench-image-resizer",
-          "S3Key": "serverless/resizer/dev/1604148531379-2020-10-31T12:48:51.379Z/resizer.zip"
+          "S3Key": "serverless/resizer/production/1604152407928-2020-10-31T13:53:27.928Z/resizer.zip"
         },
-        "FunctionName": "resizer-dev-OriginResponse",
+        "FunctionName": "resizer-production-OriginResponse",
         "Handler": "handler.originResponse",
         "MemorySize": 2048,
         "Role": {
@@ -108,14 +108,14 @@
         "OriginResponseLogGroup"
       ]
     },
-    "OriginResponseLambdaVersion87BOsjn3ww1IvlyIAOqR6HJX9T16aIFASJGyLOsfs": {
+    "OriginResponseLambdaVersion4krTw0EY6yMyYYoG5pNY7gBOcc492gab6ZZaesRm3E": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "OriginResponseLambdaFunction"
         },
-        "CodeSha256": "dOqROBvfcJteBmeXlf2XyamEu9G06QcpTwHucDZ/yzk="
+        "CodeSha256": "ZwuyJ9ynaIXsWxmZZWNNLQZ0wi46mW8g9r3yGoJIUyU="
       }
     }
   },
@@ -126,7 +126,7 @@
     "OriginResponseLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "OriginResponseLambdaVersion87BOsjn3ww1IvlyIAOqR6HJX9T16aIFASJGyLOsfs"
+        "Ref": "OriginResponseLambdaVersion4krTw0EY6yMyYYoG5pNY7gBOcc492gab6ZZaesRm3E"
       }
     }
   }

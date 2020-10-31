@@ -360,5 +360,5 @@ export default function Image({
 type LoaderProps = CallLoaderProps & { root: string }
 
 function edgeLoader({ src, width }: LoaderProps): string {
-  return `${src}?w=${width}&dpr=3`
+  return `${src}?w=${width}`
 }
