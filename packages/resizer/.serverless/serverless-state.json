@@ -1,0 +1,220 @@
+{
+  "service": {
+    "service": "resizer",
+    "serviceObject": {
+      "name": "resizer"
+    },
+    "provider": {
+      "stage": "dev",
+      "variableSyntax": "\\${([^{}]+?)}",
+      "name": "aws",
+      "region": "us-east-1",
+      "runtime": "nodejs12.x",
+      "deploymentBucket": "wrench-image-resizer",
+      "memorySize": 2048,
+      "versionFunctions": true,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "OriginResponseLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/resizer-production-OriginResponse"
+            }
+          },
+          "IamRoleLambdaExecution": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": {
+                    "Fn::Join": [
+                      "-",
+                      [
+                        "resizer",
+                        "production",
+                        "lambda"
+                      ]
+                    ]
+                  },
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogStream",
+                          "logs:CreateLogGroup"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/resizer-production*:*"
+                          }
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/resizer-production*:*:*"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Path": "/",
+              "RoleName": {
+                "Fn::Join": [
+                  "-",
+                  [
+                    "resizer",
+                    "production",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    "lambdaRole"
+                  ]
+                ]
+              }
+            }
+          },
+          "OriginResponseLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "wrench-image-resizer",
+                "S3Key": "serverless/resizer/production/1604157972773-2020-10-31T15:26:12.773Z/resizer.zip"
+              },
+              "FunctionName": "resizer-production-OriginResponse",
+              "Handler": "handler.originResponse",
+              "MemorySize": 2048,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs12.x",
+              "Timeout": 6
+            },
+            "DependsOn": [
+              "OriginResponseLogGroup"
+            ]
+          },
+          "OriginResponseLambdaVersionsMyFykQg4izDxxnIzGXiQLQSWLGVkIQcyv5xnFIHH9I": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "OriginResponseLambdaFunction"
+              },
+              "CodeSha256": "NuVxw3hrKyg9TYSmj9ROUH2bXDQXmyK14TIirBbYdGs="
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "wrench-image-resizer"
+          },
+          "OriginResponseLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "OriginResponseLambdaVersionsMyFykQg4izDxxnIzGXiQLQSWLGVkIQcyv5xnFIHH9I"
+            }
+          }
+        }
+      },
+      "vpc": {}
+    },
+    "custom": {
+      "webpack": {
+        "includeModules": {
+          "forceExclude": [
+            "aws-sdk",
+            "serverless"
+          ]
+        },
+        "packager": "yarn",
+        "packagerOptions": {
+          "scripts": [
+            "npm rm sharp && npm install --arch=x64 --platform=linux sharp"
+          ]
+        }
+      }
+    },
+    "plugins": [
+      "serverless-webpack"
+    ],
+    "pluginsData": {},
+    "functions": {
+      "OriginResponse": {
+        "handler": "handler.originResponse",
+        "events": [],
+        "name": "resizer-production-OriginResponse",
+        "package": {
+          "artifact": ".serverless/resizer.zip"
+        },
+        "memory": 2048,
+        "timeout": 6,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "OriginResponseLambdaVersionsMyFykQg4izDxxnIzGXiQLQSWLGVkIQcyv5xnFIHH9I"
+      }
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless.yml",
+    "layers": {},
+    "initialServerlessConfig": {
+      "service": {
+        "$ref": "$[\"service\"][\"serviceObject\"]"
+      },
+      "plugins": {
+        "$ref": "$[\"service\"][\"plugins\"]"
+      },
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "custom": {
+        "$ref": "$[\"service\"][\"custom\"]"
+      },
+      "functions": {
+        "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "package": {
+        "deploymentBucket": "wrench-image-resizer",
+        "artifactDirectoryName": "serverless/resizer/production/1604157972773-2020-10-31T15:26:12.773Z"
+      },
+      "layers": {
+        "$ref": "$[\"service\"][\"layers\"]"
+      },
+      "configValidationMode": "warn"
+    },
+    "isDashboardMonitoringPreconfigured": false
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/resizer/production/1604157972773-2020-10-31T15:26:12.773Z",
+    "artifact": ""
+  }
+}

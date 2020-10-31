@@ -62,7 +62,8 @@ const resize = async <T extends CloudFrontResultResponse>({
       transformer.resize(width)
     }
 
-    if (dpr > 0) {
+    // NOTE: If dpr is added check so the image is bigger the the calculated width
+    if (dpr > 0 && metaWidth && metaWidth > width * dpr) {
       transformer.resize(width * dpr)
     }
 

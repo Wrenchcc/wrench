@@ -7,9 +7,6 @@
     "deploy": "sls deploy --stage production",
     "build": "sls package"
   },
-  "nohoist": [
-    "sharp"
-  ],
   "dependencies": {
     "sharp": "^0.26.2"
   },

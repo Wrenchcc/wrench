@@ -271,6 +271,7 @@ export default function Image({
       position: 'absolute',
       top: '0',
       width: '100%',
+      objectFit: 'cover', // React Native default
     }
   } else if (typeof widthInt === 'undefined' && typeof heightInt === 'undefined' && unsized) {
     // <Image src="i.png" unsized />
@@ -360,5 +361,5 @@ export default function Image({
 type LoaderProps = CallLoaderProps & { root: string }
 
 function edgeLoader({ src, width }: LoaderProps): string {
-  return `${src}?w=${width}&dpr=3`
+  return `${src}?w=${width}`
 }
