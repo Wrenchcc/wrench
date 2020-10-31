@@ -40,7 +40,7 @@ export const Inner = styled.div`
 `
 
 export const Content = styled.div`
-  max-width: 60%;
+  max-width: 55%;
   padding-right: 20px;
 `
 
