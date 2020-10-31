@@ -14,7 +14,7 @@ function ProjectSuggestion() {
     },
   })
 
-  const toggleFollow = project => {
+  const toggleFollow = (project) => {
     const totalCount = project.permissions.isFollower
       ? project.followers.totalCount - 1
       : project.followers.totalCount + 1
@@ -58,7 +58,7 @@ function ProjectSuggestion() {
         </>
       }
     >
-      {data.projects.map(({ edges, id, type }) => (
+      {data?.projects.map(({ edges, id, type }) => (
         <div key={id}>
           <Category>{type.title}</Category>
 

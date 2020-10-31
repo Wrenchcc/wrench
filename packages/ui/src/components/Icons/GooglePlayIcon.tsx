@@ -1,8 +1,13 @@
 import * as React from 'react'
 
-function SvgGooglePlayIcon({ width = 162, height = 46, ...props }: React.SVGProps<SVGSVGElement>) {
+function SvgGooglePlayIcon({
+  width = 162,
+  height = 46,
+  className,
+  style = {},
+}: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 162 48">
+    <svg width={width} height={height} viewBox="0 0 162 48" className={className} style={style}>
       <defs>
         <linearGradient
           x1="61.034%"

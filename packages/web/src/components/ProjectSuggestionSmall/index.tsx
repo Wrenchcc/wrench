@@ -48,13 +48,13 @@ function ProjectSuggestion() {
     return null
   }
 
-  const edges = data.projects[0].edges
+  const edges = data.projects[(data.projects.length * Math.random()) | 0].edges
 
   return (
     <>
       <Text medium>{t('title_small')}</Text>
       <Inner>
-        {edges.slice(0, 5).map(({ node }) => (
+        {edges.slice(0, 4).map(({ node }) => (
           <ProjectCardSmall key={node.id} project={node} onFollow={toggleFollow} />
         ))}
       </Inner>

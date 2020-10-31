@@ -2,9 +2,15 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgMenuIcon({ width = 20, height = 18, ...props }: React.SVGProps<SVGSVGElement>) {
+function SvgMenuIcon({
+  width = 20,
+  height = 18,
+  className,
+  style = {},
+  ...props
+}: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 22 18">
+    <svg width={width} height={height} viewBox="0 0 22 18" className={className} style={style}>
       <path
         d="M21 1H1m20 8H1m20 8H1"
         fill="none"

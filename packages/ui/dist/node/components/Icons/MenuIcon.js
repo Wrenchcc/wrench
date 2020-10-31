@@ -34,8 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgMenuIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 20 : _b, _c = _a.height, height = _c === void 0 ? 18 : _c, props = __rest(_a, ["width", "height"]);
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 22 18" },
+    var _b = _a.width, width = _b === void 0 ? 20 : _b, _c = _a.height, height = _c === void 0 ? 18 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["width", "height", "className", "style"]);
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 22 18", className: className, style: style },
         React.createElement("path", { d: "M21 1H1m20 8H1m20 8H1", fill: "none", fillRule: "evenodd", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5 })));
 }
 exports.default = styled_components_1.withTheme(SvgMenuIcon);

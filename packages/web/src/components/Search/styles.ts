@@ -29,5 +29,5 @@ export const Field = styled.input`
 export const SearchIcon = styled(UISearchIcon)`
   position: absolute;
   left: 15px;
-  top: 11px;
+  top: 13px;
 `

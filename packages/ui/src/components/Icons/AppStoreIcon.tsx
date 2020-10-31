@@ -1,8 +1,13 @@
 import * as React from 'react'
 
-function SvgAppStoreIcon({ width = 145, height = 46, ...props }: React.SVGProps<SVGSVGElement>) {
+function SvgAppStoreIcon({
+  width = 145,
+  height = 46,
+  className,
+  style = {},
+}: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 145 48" {...props}>
+    <svg width={width} height={height} viewBox="0 0 145 48" className={className} style={style}>
       <g fill="none">
         <path
           fill="#A6A6A6"

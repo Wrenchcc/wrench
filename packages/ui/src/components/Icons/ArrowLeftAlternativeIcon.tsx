@@ -5,10 +5,12 @@ import { withTheme } from 'styled-components'
 function SvgArrowLeftAlternativeIcon({
   width = 44,
   height = 48,
+  className,
+  style = {},
   ...props
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={height} height={width} viewBox="0 0 44 48">
+    <svg width={height} height={width} viewBox="0 0 44 48" className={className} style={style}>
       <defs>
         <filter
           x="-95.3%"

@@ -2,7 +2,16 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgLogoIcon({ theme, black, white, inverted, ...props }: React.SVGProps<SVGSVGElement>) {
+function SvgLogoIcon({
+  theme,
+  black,
+  white,
+  inverted,
+  width = 40,
+  height = 40,
+  style = {},
+  className,
+}: React.SVGProps<SVGSVGElement>) {
   const textColor =
     (black && theme.colors.white) || (white && theme.colors.black) || theme.isDark
       ? inverted
@@ -22,7 +31,7 @@ function SvgLogoIcon({ theme, black, white, inverted, ...props }: React.SVGProps
       : theme.colors.black
 
   return (
-    <svg width="1em" height="1em" viewBox="0 0 40 40">
+    <svg width={width} height={height} viewBox="0 0 40 40" className={className} style={style}>
       <g fill="none" fillRule="evenodd">
         <rect width={40} height={40} fill={bgColor} rx={0.667} />
         <path

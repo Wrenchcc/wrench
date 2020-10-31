@@ -1,8 +1,13 @@
 import * as React from 'react'
 
-function SvgSearchIcon({ width = 12, height = 12 }: React.SVGProps<SVGSVGElement>) {
+function SvgSearchIcon({
+  width = 12,
+  height = 12,
+  className,
+  style = {},
+}: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 14 14">
+    <svg width={width} height={height} viewBox="0 0 14 14" className={className} style={style}>
       <g
         fill="none"
         fillRule="evenodd"

@@ -23,6 +23,7 @@ fragment Project on Project {
     edges {
       node {
         id
+        username
         avatarUrl
       }
     }

@@ -12,7 +12,7 @@ function Image({ width, height, borderRadius, placeholderColor, style, source, .
       placeholderColor={placeholderColor}
       {...props}
     >
-      <NextImage src={source} width={width} height={height} quality={100} lazy />
+      <NextImage src={source} width={width} height={height} quality={100} lazy="true" />
     </Base>
   )
 }

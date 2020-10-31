@@ -1316,7 +1316,7 @@ export type ProjectFragment = (
       { __typename?: 'FollowersEdge' }
       & { node: (
         { __typename?: 'User' }
-        & Pick<User, 'id' | 'avatarUrl'>
+        & Pick<User, 'id' | 'username' | 'avatarUrl'>
       ) }
     )>> }
   )> }
@@ -2787,6 +2787,7 @@ export const ProjectFragmentDoc = gql`
     edges {
       node {
         id
+        username
         avatarUrl
       }
     }
@@ -4953,7 +4954,7 @@ export type ProjectLazyQueryHookResult = ReturnType<typeof useProjectLazyQuery>;
 export type ProjectQueryResult = Apollo.QueryResult<ProjectQuery, ProjectQueryVariables>;
 export const ProjectCollectionsDocument = gql`
     query projectCollections($projectId: ID, $projectSlug: LowercaseString, $slug: LowercaseString, $after: String, $first: Int = 10) {
-  projectCollections(projectId: $projectId, projectSlug: $projectSlug, slug: $slug, first: $first, after: $after) @connection(key: "collections") {
+  projectCollections(projectId: $projectId, projectSlug: $projectSlug, slug: $slug, first: $first, after: $after) @connection(key: "collections", filter: ["projectId"]) {
     pageInfo {
       hasNextPage
     }

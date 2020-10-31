@@ -34,8 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgCloseIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 15 : _b, _c = _a.height, height = _c === void 0 ? 15 : _c, props = __rest(_a, ["width", "height"]);
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 15 16" },
+    var _b = _a.width, width = _b === void 0 ? 15 : _b, _c = _a.height, height = _c === void 0 ? 15 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["width", "height", "className", "style"]);
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 15 16", className: className, style: style },
         React.createElement("defs", null,
             React.createElement("path", { d: "M8.737 8.177l6.01 6.01a.75.75 0 11-1.06 1.06l-6.01-6.01-6.01 6.01a.75.75 0 11-1.061-1.06l6.01-6.01-6.01-6.01a.75.75 0 111.06-1.061l6.01 6.01 6.011-6.01a.75.75 0 011.06 1.06l-6.01 6.01z", id: "close-icon_svg__a" })),
         React.createElement("g", { fill: "none", fillRule: "evenodd" },

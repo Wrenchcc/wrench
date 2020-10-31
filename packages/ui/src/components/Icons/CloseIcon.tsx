@@ -2,9 +2,15 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgCloseIcon({ width = 15, height = 15, ...props }: React.SVGProps<SVGSVGElement>) {
+function SvgCloseIcon({
+  width = 15,
+  height = 15,
+  className,
+  style = {},
+  ...props
+}: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 15 16">
+    <svg width={width} height={height} viewBox="0 0 15 16" className={className} style={style}>
       <defs>
         <path
           d="M8.737 8.177l6.01 6.01a.75.75 0 11-1.06 1.06l-6.01-6.01-6.01 6.01a.75.75 0 11-1.061-1.06l6.01-6.01-6.01-6.01a.75.75 0 111.06-1.061l6.01 6.01 6.011-6.01a.75.75 0 011.06 1.06l-6.01 6.01z"

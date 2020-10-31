@@ -1086,7 +1086,7 @@ export declare type ProjectFragment = ({
         } & {
             node: ({
                 __typename?: 'User';
-            } & Pick<User, 'id' | 'avatarUrl'>);
+            } & Pick<User, 'id' | 'username' | 'avatarUrl'>);
         })>>;
     })>;
 });

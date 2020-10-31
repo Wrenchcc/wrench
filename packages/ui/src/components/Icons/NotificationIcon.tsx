@@ -2,9 +2,15 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgNotificationIcon({ width = 19, height = 19, ...props }: React.SVGProps<SVGSVGElement>) {
+function SvgNotificationIcon({
+  width = 19,
+  height = 19,
+  className,
+  style = {},
+  ...props
+}: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 21 21">
+    <svg width={width} height={height} viewBox="0 0 21 21" className={className} style={style}>
       <path
         fill="none"
         stroke={props.theme.colors[props.color] || props.theme.colors.inverse}

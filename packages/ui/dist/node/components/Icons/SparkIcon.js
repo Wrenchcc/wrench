@@ -34,10 +34,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgSparkIcon(_a) {
-    var small = _a.small, props = __rest(_a, ["small"]);
+    var small = _a.small, className = _a.className, _b = _a.style, style = _b === void 0 ? {} : _b, props = __rest(_a, ["small", "className", "style"]);
     var width = small ? 10 : 18;
     var height = small ? 11 : 20;
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 20 22" },
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 20 22", className: className, style: style },
         React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M11 1L1 13h9l-1 8L19 9h-9z" })));
 }
 exports.default = styled_components_1.withTheme(SvgSparkIcon);

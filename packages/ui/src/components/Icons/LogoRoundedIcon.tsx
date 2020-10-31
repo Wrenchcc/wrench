@@ -7,7 +7,10 @@ function SvgLogoRoundedIcon({
   black,
   white,
   inverted,
-  ...props
+  width = 40,
+  height = 40,
+  style = {},
+  className,
 }: React.SVGProps<SVGSVGElement>) {
   const textColor =
     (black && theme.colors.white) || (white && theme.colors.black) || theme.isDark
@@ -28,7 +31,7 @@ function SvgLogoRoundedIcon({
       : theme.colors.black
 
   return (
-    <svg width="1em" height="1em" viewBox="0 0 50 50">
+    <svg width={width} height={height} viewBox="0 0 50 50" className={className} style={style}>
       <g fill="none" fillRule="evenodd">
         <path
           fill={bgColor}

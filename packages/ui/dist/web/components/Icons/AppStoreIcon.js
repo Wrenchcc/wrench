@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -29,22 +18,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 function SvgAppStoreIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 145 : _b, _c = _a.height, height = _c === void 0 ? 46 : _c, props = __rest(_a, ["width", "height"]);
-    return (React.createElement("svg", __assign({ width: width, height: height, viewBox: "0 0 145 48" }, props),
+    var _b = _a.width, width = _b === void 0 ? 145 : _b, _c = _a.height, height = _c === void 0 ? 46 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d;
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 145 48", className: className, style: style },
         React.createElement("g", { fill: "none" },
             React.createElement("path", { fill: "#A6A6A6", d: "M133.08 0H11.52c-.443 0-.88 0-1.323.002-.37.003-.737.01-1.11.016-.812.01-1.621.08-2.422.212a8.078 8.078 0 00-2.296.752 7.777 7.777 0 00-1.956 1.414A7.512 7.512 0 00.99 4.342a7.883 7.883 0 00-.755 2.284 15.487 15.487 0 00-.217 2.402c-.01.368-.012.737-.018 1.105V37.87c.006.373.007.734.018 1.107.01.805.082 1.608.217 2.402.133.795.387 1.566.755 2.285a7.452 7.452 0 001.424 1.937 7.58 7.58 0 001.956 1.415c.723.365 1.497.62 2.296.757.801.13 1.61.201 2.422.212.373.008.74.013 1.11.013.442.002.88.002 1.323.002H133.08c.434 0 .875 0 1.31-.002.368 0 .745-.005 1.113-.013.81-.01 1.618-.081 2.417-.212a8.262 8.262 0 002.306-.757 7.583 7.583 0 001.954-1.415 7.677 7.677 0 001.428-1.937c.364-.72.617-1.49.748-2.285.134-.794.21-1.597.224-2.402.005-.373.005-.734.005-1.107.01-.436.01-.87.01-1.312V11.443c0-.44 0-.875-.01-1.31 0-.368 0-.737-.005-1.105a16.1 16.1 0 00-.224-2.402 7.903 7.903 0 00-.748-2.284 7.787 7.787 0 00-3.382-3.36A8.217 8.217 0 00137.92.23a15.868 15.868 0 00-2.417-.213c-.368-.005-.745-.012-1.114-.015C133.955 0 133.514 0 133.08 0z" }),
             React.createElement("path", { fill: "#000", d: "M10.204 46.95c-.368 0-.727-.005-1.093-.013a15.434 15.434 0 01-2.258-.196 7.144 7.144 0 01-2.002-.657 6.53 6.53 0 01-1.688-1.22 6.387 6.387 0 01-1.233-1.676 6.833 6.833 0 01-.656-1.988 14.796 14.796 0 01-.201-2.25c-.008-.253-.018-1.096-.018-1.096v-27.72s.01-.83.018-1.074c.009-.753.076-1.504.2-2.247a6.873 6.873 0 01.656-1.994A6.45 6.45 0 013.156 3.14 6.723 6.723 0 014.85 1.914a7.07 7.07 0 011.998-.652 15.31 15.31 0 012.266-.197l1.09-.015h124.18l1.103.015c.752.01 1.503.074 2.245.195a7.21 7.21 0 012.02.658 6.736 6.736 0 012.917 2.904c.315.623.533 1.29.647 1.978.126.75.196 1.506.21 2.265.004.34.004.705.004 1.068.01.45.01.879.01 1.31v25.115c0 .436 0 .861-.01 1.29 0 .39 0 .748-.005 1.116a15.175 15.175 0 01-.207 2.224 6.853 6.853 0 01-.652 2.004 6.579 6.579 0 01-1.227 1.663 6.539 6.539 0 01-1.691 1.227 7.117 7.117 0 01-2.016.66c-.747.12-1.502.186-2.258.195-.354.008-.725.013-1.085.013l-1.31.002-122.875-.002z" }),
