@@ -3,7 +3,6 @@ import { CloudFrontResponseHandler, CloudFrontResultResponse } from 'aws-lambda'
 import * as qs from 'querystring'
 import { S3 } from 'aws-sdk'
 import * as sharp from 'sharp'
-// import { mediaType } from '@hapi/accept'
 
 type S3Object = S3.GetObjectOutput
 
@@ -19,8 +18,6 @@ type Query = {
 const WEBP = 'image/webp'
 const PNG = 'image/png'
 const JPEG = 'image/jpeg'
-
-const MIME_TYPES = [WEBP, PNG, JPEG]
 
 const parseQuery = (querystring: string): Query => {
   const { w, webp, q, dpr } = qs.parse(querystring)
@@ -47,9 +44,11 @@ const resize = async <T extends CloudFrontResultResponse>({
   try {
     const { width, webp, quality, dpr } = parsedQuery
 
-    console.log(JSON.stringify(headers, null, 2))
+    const contentType = headers['accept'][0]?.value === 'webp' ? WEBP : JPEG
 
-    // const contentType = webp ? WEBP : mediaType(headers.accept, MIME_TYPES) || JPEG
+    console.log('Header accept', headers['accept'][0]?.value)
+    console.log('Content type', contentType)
+
     const contentType = webp ? WEBP : JPEG
 
     const upstreamBuffer = await s3Object.then((data) => data.Body).then(Buffer.from)
