@@ -29,7 +29,14 @@ function Collection({ slug, collection }) {
       <Inner>
         {edges?.map(({ node }) => {
           return (
-            <Link key={node.id} href={`/project/${slug}/collection/${node.slug}`}>
+            <Link
+              key={node.id}
+              href={
+                node.slug === collection
+                  ? `/project/${slug}`
+                  : `/project/${slug}/collection/${node.slug}`
+              }
+            >
               <Item>
                 <Cover
                   selected={node.slug === collection}
