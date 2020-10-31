@@ -28,7 +28,7 @@ function SvgLogoRoundedIcon({
       : theme.colors.black
 
   return (
-    <svg width="1em" height="1em" viewBox="0 0 50 50" {...props}>
+    <svg width="1em" height="1em" viewBox="0 0 50 50">
       <g fill="none" fillRule="evenodd">
         <path
           fill={bgColor}

@@ -2,9 +2,9 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgTwitterIcon(props: React.SVGProps<SVGSVGElement>) {
+function SvgTwitterIcon({ width = 23, height = 23, ...props }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 24 20" {...props}>
+    <svg width="1em" height="1em" viewBox="0 0 24 20">
       <path
         fill="none"
         stroke={props.theme.colors[props.color] || props.theme.colors.inverse}

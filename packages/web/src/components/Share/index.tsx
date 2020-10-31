@@ -34,9 +34,6 @@ const generateShareableUrl = (url) => [
     provider: 'copy',
     url,
     Icon: CopyIcon,
-    style: {
-      width: 22,
-    },
   },
   {
     provider: 'cancel',

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 declare function ThemeProvider({ children, mode }: {
     children: any;
     mode: any;

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TwitterIcon = exports.SparkIcon = exports.SearchIcon = exports.NotificationIcon = exports.MessengerIcon = exports.MenuIcon = exports.LogoRoundedIcon = exports.LogoIcon = exports.GooglePlayIcon = exports.FacebookIcon = exports.EmailIcon = exports.CopyIcon = exports.CloseIcon = exports.CheckMarkIcon = exports.CheckIcon = exports.ArrowRightAlternativeIcon = exports.ArrowLeftIcon = exports.ArrowLeftAlternativeIcon = exports.ArrowDownIcon = exports.AppStoreIcon = void 0;
+exports.TwitterIcon = exports.SparkIcon = exports.SearchIcon = exports.NotificationIcon = exports.MessengerIcon = exports.MenuIcon = exports.LogoRoundedIcon = exports.LogoIcon = exports.GooglePlayIcon = exports.FacebookIcon = exports.EmailIcon = exports.CopyIcon = exports.CloseIcon = exports.CheckMarkIcon = exports.ArrowRightAlternativeIcon = exports.ArrowLeftIcon = exports.ArrowLeftAlternativeIcon = exports.ArrowDownIcon = exports.AppStoreIcon = void 0;
 var AppStoreIcon_1 = require("./AppStoreIcon");
 Object.defineProperty(exports, "AppStoreIcon", { enumerable: true, get: function () { return __importDefault(AppStoreIcon_1).default; } });
 var ArrowDownIcon_1 = require("./ArrowDownIcon");
@@ -14,8 +14,6 @@ var ArrowLeftIcon_1 = require("./ArrowLeftIcon");
 Object.defineProperty(exports, "ArrowLeftIcon", { enumerable: true, get: function () { return __importDefault(ArrowLeftIcon_1).default; } });
 var ArrowRightAlternativeIcon_1 = require("./ArrowRightAlternativeIcon");
 Object.defineProperty(exports, "ArrowRightAlternativeIcon", { enumerable: true, get: function () { return __importDefault(ArrowRightAlternativeIcon_1).default; } });
-var CheckIcon_1 = require("./CheckIcon");
-Object.defineProperty(exports, "CheckIcon", { enumerable: true, get: function () { return __importDefault(CheckIcon_1).default; } });
 var CheckMarkIcon_1 = require("./CheckMarkIcon");
 Object.defineProperty(exports, "CheckMarkIcon", { enumerable: true, get: function () { return __importDefault(CheckMarkIcon_1).default; } });
 var CloseIcon_1 = require("./CloseIcon");

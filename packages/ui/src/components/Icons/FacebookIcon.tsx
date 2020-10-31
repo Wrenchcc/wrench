@@ -2,9 +2,9 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgFacebookIcon(props: React.SVGProps<SVGSVGElement>) {
+function SvgFacebookIcon({ width = 23, height = 23, ...props }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 13 22" {...props}>
+    <svg width="1em" height="1em" viewBox="0 0 13 22">
       <path
         fill="none"
         stroke={props.theme.colors[props.color] || props.theme.colors.inverse}

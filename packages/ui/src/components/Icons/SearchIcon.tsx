@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-function SvgSearchIcon(props: React.SVGProps<SVGSVGElement>) {
+function SvgSearchIcon({ width = 12, height = 12 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 14 14" {...props}>
+    <svg width={width} height={height} viewBox="0 0 14 14">
       <g
         fill="none"
         fillRule="evenodd"

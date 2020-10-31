@@ -24,10 +24,10 @@ function Carousel({ files }) {
           <Fragment>
             <DotGroup />
             <ButtonBack>
-              <ArrowLeftAlternativeIcon width={44} height={48} />
+              <ArrowLeftAlternativeIcon />
             </ButtonBack>
             <ButtonNext>
-              <ArrowRightAlternativeIcon width={44} height={48} />
+              <ArrowRightAlternativeIcon />
             </ButtonNext>
           </Fragment>
         )}

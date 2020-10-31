@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -29,12 +18,24 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-nocheck
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
-function SvgNotificationIcon(props) {
-    return (React.createElement("svg", __assign({ width: "1em", height: "1em", viewBox: "0 0 21 21" }, props),
+function SvgNotificationIcon(_a) {
+    var _b = _a.width, width = _b === void 0 ? 19 : _b, _c = _a.height, height = _c === void 0 ? 19 : _c, props = __rest(_a, ["width", "height"]);
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 21 21" },
         React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M20 15.25H1a2.85 2.85 0 002.85-2.85V7.65a6.65 6.65 0 0113.3 0v4.75A2.85 2.85 0 0020 15.25zm-7.857 3.8a1.9 1.9 0 01-3.287 0h3.288z" })));
 }
 exports.default = styled_components_1.withTheme(SvgNotificationIcon);

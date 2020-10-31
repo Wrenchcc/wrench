@@ -4,7 +4,7 @@ import { withTheme } from 'styled-components'
 
 function SvgArrowLeftIcon({ width = 22, height = 17, ...props }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 22 17" {...props}>
+    <svg width={width} height={height} viewBox="0 0 22 17">
       <g
         fill="none"
         fillRule="evenodd"

@@ -62,9 +62,13 @@ export default function Home() {
               <Text medium fontSize={20} lineHeight={28} style={{ marginBottom: 5 }}>
                 {data.user?.fullName}
               </Text>
-              <Text color="accent" fontSize={15}>
-                {t('settings:sections_profile')}
-              </Text>
+              <Link href="/settings">
+                <a>
+                  <Text color="accent" fontSize={15}>
+                    {t('settings:sections_profile')}
+                  </Text>{' '}
+                </a>
+              </Link>
             </Name>
           </Top>
 

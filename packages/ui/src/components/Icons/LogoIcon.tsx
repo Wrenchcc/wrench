@@ -22,7 +22,7 @@ function SvgLogoIcon({ theme, black, white, inverted, ...props }: React.SVGProps
       : theme.colors.black
 
   return (
-    <svg width="1em" height="1em" viewBox="0 0 40 40" {...props}>
+    <svg width="1em" height="1em" viewBox="0 0 40 40">
       <g fill="none" fillRule="evenodd">
         <rect width={40} height={40} fill={bgColor} rx={0.667} />
         <path

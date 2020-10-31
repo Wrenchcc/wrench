@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -48,7 +37,7 @@ function SvgSparkIcon(_a) {
     var small = _a.small, props = __rest(_a, ["small"]);
     var width = small ? 10 : 18;
     var height = small ? 11 : 20;
-    return (React.createElement("svg", __assign({ width: width, height: height, viewBox: "0 0 20 22" }, props),
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 20 22" },
         React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M11 1L1 13h9l-1 8L19 9h-9z" })));
 }
 exports.default = styled_components_1.withTheme(SvgSparkIcon);

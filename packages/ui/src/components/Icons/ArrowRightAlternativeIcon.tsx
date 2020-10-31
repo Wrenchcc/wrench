@@ -2,9 +2,13 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgArrowRightAlternativeIcon(props: React.SVGProps<SVGSVGElement>) {
+function SvgArrowRightAlternativeIcon({
+  width = 44,
+  height = 48,
+  ...props
+}: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 44 48" {...props}>
+    <svg width={width} height={height} viewBox="0 0 44 48">
       <defs>
         <filter
           x="-95.3%"

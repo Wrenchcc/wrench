@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -44,7 +33,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 function SvgGooglePlayIcon(_a) {
     var _b = _a.width, width = _b === void 0 ? 162 : _b, _c = _a.height, height = _c === void 0 ? 46 : _c, props = __rest(_a, ["width", "height"]);
-    return (React.createElement("svg", __assign({ width: width, height: height, viewBox: "0 0 162 48" }, props),
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 162 48" },
         React.createElement("defs", null,
             React.createElement("linearGradient", { x1: "61.034%", y1: "4.948%", x2: "26.503%", y2: "71.907%", id: "google-play-icon_svg__a" },
                 React.createElement("stop", { stopColor: "#00A0FF", offset: "0%" }),

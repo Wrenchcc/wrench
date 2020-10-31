@@ -2,9 +2,9 @@
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 
-function SvgEmailIcon(props: React.SVGProps<SVGSVGElement>) {
+function SvgEmailIcon({ width = 22, height = 22, ...props }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 20 17" {...props}>
+    <svg width={width} height={height} viewBox="0 0 20 17">
       <g
         fill="none"
         fillRule="evenodd"

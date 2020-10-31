@@ -7,7 +7,7 @@ function SvgSparkIcon({ small, ...props }: React.SVGProps<SVGSVGElement>) {
   const height = small ? 11 : 20
 
   return (
-    <svg width={width} height={height} viewBox="0 0 20 22" {...props}>
+    <svg width={width} height={height} viewBox="0 0 20 22">
       <path
         fill="none"
         stroke={props.theme.colors[props.color] || props.theme.colors.inverse}
