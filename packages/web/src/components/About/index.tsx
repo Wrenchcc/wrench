@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react'
-// import Image from 'next/image'
+import Image from 'ui/Image'
 import Seo from 'utils/seo'
 import { Title, Text } from 'ui'
 import Footer from 'components/Footer'
@@ -20,8 +20,8 @@ function About() {
           <Title medium>About us</Title>
           <br />
           <br />
-          <img
-            src="/about@3x.jpg"
+          <Image
+            source="https://edge-files.wrench.cc/static/images/about@3x.jpg"
             width="780"
             height="360"
             quality="100"
@@ -55,8 +55,8 @@ function About() {
           <Team>
             <Person>
               <PersonPicture>
-                <img
-                  src="/pontus@3x.jpg"
+                <Image
+                  source="https://edge-files.wrench.cc/static/images/pontus@3x.jpg"
                   width="360"
                   height="330"
                   quality="100"
@@ -75,8 +75,8 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <img
-                  src="/viktor@3x.jpg"
+                <Image
+                  source="https://edge-files.wrench.cc/static/images/viktor@3x.jpg"
                   width="360"
                   height="330"
                   quality="100"
@@ -96,8 +96,8 @@ function About() {
           <Team>
             <Person>
               <PersonPicture>
-                <img
-                  src="/felix@3x.jpg"
+                <Image
+                  source="https://edge-files.wrench.cc/static/images/felix@3x.jpg"
                   width="360"
                   height="330"
                   quality="100"
@@ -116,8 +116,8 @@ function About() {
 
             <Person>
               <PersonPicture>
-                <img
-                  src="/plus@3x.jpg"
+                <Image
+                  source="https://edge-files.wrench.cc/static/images/plus@3x.jpg"
                   width="360"
                   height="330"
                   quality="100"

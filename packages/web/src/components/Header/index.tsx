@@ -88,12 +88,14 @@ function Header({ isAuthenticated }) {
   return (
     <Base inverted={inverted}>
       <Link passHref href={'/'}>
-        <LogoIcon
-          style={{ cursor: 'pointer' }}
-          width="40"
-          height="40"
-          inverted={systemTheme === 'light' && inverted ? true : false}
-        />
+        <a>
+          <LogoIcon
+            style={{ cursor: 'pointer' }}
+            width="40"
+            height="40"
+            inverted={systemTheme === 'light' && inverted ? true : false}
+          />
+        </a>
       </Link>
 
       <OpenMobileMenu inverted={inverted} onClick={toggleMobileMenu}>

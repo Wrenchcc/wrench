@@ -47,9 +47,6 @@ const resize = async <T extends CloudFrontResultResponse>({
 
     const contentType = headers['accept'][0]?.value === 'webp' ? WEBP : JPEG
 
-    console.log('Header accept', headers['accept'][0]?.value)
-    console.log('Content type', contentType)
-
     const upstreamBuffer = await s3Object.then((data) => data.Body).then(Buffer.from)
 
     const transformer = sharp(upstreamBuffer)

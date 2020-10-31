@@ -1,8 +1,9 @@
 // @ts-nocheck
 import React from 'react'
 import Link from 'next/link'
-import { TimeAgo, Image, Avatar } from 'ui'
+import { TimeAgo, Avatar } from 'ui'
 import { Base, Title, Content, Top, Name } from './styles'
+import Image from 'ui/Image'
 
 export const getText = (content) => {
   const data = JSON.parse(content)
@@ -43,10 +44,16 @@ function formatContent(content) {
     }
 
     if (type === 'image') {
-      // TODO: Change to NextImage
+      // TODO: Get size from upload data
       return (
         <div style={{ marginBottom: 20 }} key={i}>
-          <img src={data.file.url} title={data.caption} style={{ width: '100%' }} />
+          <Image
+            source={data.file.url}
+            title={data.caption}
+            width={770}
+            height={400}
+            alt={data?.caption}
+          />
         </div>
       )
     }
