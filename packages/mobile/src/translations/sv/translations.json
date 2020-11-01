@@ -1,0 +1,2480 @@
+{
+  "CommentItem": {
+    "like": "",
+    "like_plural": "",
+    "reply": ""
+  },
+  "add-collection": {
+    "add": "",
+    "done": "",
+    "placeholder": "",
+    "title": ""
+  },
+  "blog-post": {
+    "back": "Tillbaka till bloggen",
+    "title": "Blogg"
+  },
+  "blog": {
+    "title": "Blogg"
+  },
+  "collections": {
+    "title": "Samlingar"
+  },
+  "comment-field": {
+    "placeholder": "Skriv en kommentar...",
+    "post": "Skicka"
+  },
+  "comment-item": {
+    "loadReplies": "",
+    "loadReplies_plural": ""
+  },
+  "comment-list": {
+    "loadMore": "---MISSING---",
+    "loadMore_plural": "---MISSING---"
+  },
+  "comments": {
+    "load_replies": "Visa svar ({{count}})",
+    "load_replies_plural": ""
+  },
+  "comments_old": {
+    "loadreplies": "",
+    "loadreplies_plural": ""
+  },
+  "common": {
+    "chat": "---MISSING---",
+    "description": "---MISSING---",
+    "feedback": "---MISSING---",
+    "field_bio": "---MISSING---",
+    "field_firstname": "---MISSING---",
+    "field_lastname": "---MISSING---",
+    "field_website": "---MISSING---",
+    "like": "",
+    "like_plural": "",
+    "mail": "---MISSING---",
+    "reply": "",
+    "save": "---MISSING---",
+    "sections_language": "---MISSING---",
+    "sections_notifications": "---MISSING---",
+    "sections_profile": "---MISSING---",
+    "sections_support": "---MISSING---",
+    "title": "---MISSING---",
+    "toast_error": "---MISSING---",
+    "toast_saved": "---MISSING---"
+  },
+  "common_old": {
+    "signout": "",
+    "download": "",
+    "explore": "",
+    "feed": "",
+    "login": "",
+    "register": "",
+    "sign_out": ""
+  },
+  "edit-post": {
+    "cancel": "",
+    "headerTitle": "",
+    "placeholder": "",
+    "save": ""
+  },
+  "edit": {
+    "edit": ""
+  },
+  "feed": {
+    "description": "",
+    "title": "Feed"
+  },
+  "follow": {
+    "follow": "Följ projekt",
+    "followSmall": "---MISSING---",
+    "unfollow": "Följer",
+    "unfollowSmall": "---MISSING---",
+    "follow_short": "Följ"
+  },
+  "follow_old": {},
+  "followers": {
+    "followers": "{{count, humanFormat}} följare",
+    "followers_plural": "{{count, humanFormat}} följare"
+  },
+  "following-projects": {
+    "title": "Projekt du följer"
+  },
+  "footer": {
+    "about": "Om oss",
+    "blog": "Blogg",
+    "chat": "Chatta med oss",
+    "cookies": "Cookies Policy",
+    "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+    "download": "Ladda ner Appar",
+    "eula": "Användaravtal",
+    "faq": "Vanliga frågor",
+    "feedback": "Feedback",
+    "help": "Hjälp",
+    "legal": "Legal",
+    "mail": "Mail Support",
+    "policy": "Policy",
+    "press": "Press",
+    "social": "Social",
+    "status": "Status",
+    "terms": "Villkor",
+    "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
+  },
+  "hashtag": {
+    "posts": "",
+    "posts_plural": ""
+  },
+  "header": {
+    "download": "Ladda ner Appar",
+    "explore": "Utforska",
+    "feed": "Feed",
+    "login": "Logga in",
+    "register": "Registrera dig"
+  },
+  "home": {
+    "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+    "document_title": "Wrench | Din motorcyckel community",
+    "explore": "Upptäck fler projekt",
+    "signup": "Registrera dig",
+    "subtitle": "community.",
+    "title": "Din motorcykel"
+  },
+  "languages": {
+    "sv": "Svenska",
+    "en": "Engelska",
+    "es": "Spanska",
+    "it": "Italienska",
+    "de": "Tyska",
+    "nl": "Nederländska",
+    "fr": "Franska",
+    "tl": "Filippinare",
+    "pt": "Portugisiska",
+    "ru": "Ryska",
+    "no": "Norska",
+    "da": "Danska"
+  },
+  "legal": {
+    "description": "Genom att fortsätta hålla du med Wrench's ",
+    "link": "användarvillkor."
+  },
+  "like-post": {
+    "like": "{{count}} gnista",
+    "like_plural": "{{count, humanFormat}} gnistor"
+  },
+  "list": {
+    "load_more": "Visa 1 kommentar",
+    "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
+  },
+  "login": {
+    "apple_button": "Logga in med Apple",
+    "fb_button": "Logga in med Facebook",
+    "google_button": "Logga in med Google",
+    "title": "Sign in to follow your favorite projects and more."
+  },
+  "logout": {
+    "logout": "Logga ut",
+    "profile": "Profil",
+    "settings": "Inställningar"
+  },
+  "media-picker-list": {
+    "deselectAll": "---MISSING---"
+  },
+  "mobile-menu": {
+    "download": "Ladda ner Appar",
+    "explore": "Utforska",
+    "feed": "Feed",
+    "login": "Logga in",
+    "register": "Registrera dig",
+    "sign_out": "Logga ut"
+  },
+  "no-results": {
+    "title": ""
+  },
+  "notification": {
+    "comment": "Kommenterade på ditt inlägg",
+    "comment_like": "Gav en gnista på din kommentar",
+    "follow": "Följer nu ditt projekt",
+    "mention": "Nämnde dig i en kommentar",
+    "post_like": "Gav en gnista på ditt inlägg",
+    "reply": "Svarade på din kommentar"
+  },
+  "notifications": {
+    "comment": "---MISSING---",
+    "commentLike": "---MISSING---",
+    "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+    "follow": "---MISSING---",
+    "mention": "---MISSING---",
+    "postLike": "---MISSING---",
+    "reply": "---MISSING---",
+    "title": "Inga notifikationer ännu."
+  },
+  "notifications_old": {},
+  "onboarding": {
+    "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+    "next": "Nästa",
+    "title": "Vad är du intresserad av?"
+  },
+  "options": {
+    "alertTitle": "",
+    "cancel": "",
+    "collection": "",
+    "delete": "",
+    "edit": "",
+    "removeCollection": "",
+    "report": ""
+  },
+  "popular": {
+    "description": "Här ser du de mest populära projekten från den här veckan.",
+    "title": "Populära projekt"
+  },
+  "post-container": {
+    "loadMore": "---MISSING---",
+    "title": "---MISSING---"
+  },
+  "post": {
+    "selectCollection": "",
+    "showCollection": ""
+  },
+  "posting": {
+    "description": ""
+  },
+  "project-card": {
+    "follow": "",
+    "unfollow": ""
+  },
+  "project-suggestion": {
+    "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+    "title": "Håll dig uppdaterad och följ några projekt.",
+    "title_small": "Föreslås för dig"
+  },
+  "project-suggestion_old": {
+    "headline": "Håll dig uppdaterad och följ några projekt."
+  },
+  "project-types": {
+    "inspo": ""
+  },
+  "project": {
+    "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+    "share": "Dela",
+    "similar": "Liknande project",
+    "title": "{{title}} - {{type}} projekt",
+    "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+  },
+  "promo": {
+    "button_default": "Skicka",
+    "button_success": "Skickat",
+    "description": "Ange ditt nummer och få en engångs SMS-länk.",
+    "title": "Ladda ner Wrench-appen på Appstore och Google play"
+  },
+  "result": {
+    "projects": "{{count, humanFormat}} projekt",
+    "projects_plural": "{{count, humanFormat}} projekt",
+    "not_found": "Inga sökresultat hittades."
+  },
+  "search-bar": {
+    "cancel": "",
+    "placeholder": ""
+  },
+  "search-location-footer": {
+    "poweredBy": "---MISSING---"
+  },
+  "search-location": {
+    "no_result": "Inga resultat.",
+    "placeholder": "Stad, land"
+  },
+  "search": {
+    "placeholder": "Sök"
+  },
+  "search_old": {
+    "clear": "---MISSING---",
+    "recent": "---MISSING---"
+  },
+  "searching-for": {
+    "title": ""
+  },
+  "settings": {
+    "sections_profile": "Redigera profil"
+  },
+  "settings_old": {
+    "chat": "Chatta med oss",
+    "feedback": "Feedback",
+    "field_bio": "Beskrivning",
+    "field_firstname": "Förnamn",
+    "field_lastname": "Efternamn",
+    "field_website": "Hemsida",
+    "mail": "Mail Support",
+    "save": "Spara",
+    "sections_language": "Språk",
+    "sections_notifications": "Notifikationer",
+    "sections_support": "Support",
+    "title": "Inställningar",
+    "toast_error": "Något gick fel",
+    "toast_saved": "Inställningar Sparade",
+    "new_comment": "Kommentarer",
+    "new_mention": "Nämnder",
+    "new_article": "Artiklar",
+    "new_follower": "Följare",
+    "similar_projects": "Liknande projekt",
+    "product_announcements": "Produktmeddelanden"
+  },
+  "share": {
+    "share": ""
+  },
+  "show-latest": {
+    "button": ""
+  },
+  "text": {
+    "more": ""
+  },
+  "time": {
+    "d": "{{count}} dag sedan",
+    "d_plural": "{{count}} dagar sedan",
+    "h": "{{count}} timma sedan",
+    "h_plural": "{{count}} timmar sedan",
+    "m": "{{count}} minut sedan",
+    "m_plural": "{{count}} minuter sedan",
+    "mo": "{{count}} månad sedan",
+    "mo_plural": "{{count}} månader sedan",
+    "now": "alldeles nyss",
+    "y": "{{count}} år sedan",
+    "y_plural": "{{count}} år sedan"
+  },
+  "toast": {
+    "network": "",
+    "spam": ""
+  },
+  "translations": {
+    "CommentItem": {
+      "like": "",
+      "like_plural": "",
+      "reply": ""
+    },
+    "add-collection": {
+      "add": "",
+      "done": "",
+      "placeholder": "",
+      "title": ""
+    },
+    "blog-post": {
+      "back": "Tillbaka till bloggen",
+      "title": "Blogg"
+    },
+    "blog": {
+      "title": "Blogg"
+    },
+    "collections": {
+      "title": "Samlingar"
+    },
+    "comment-field": {
+      "placeholder": "Skriv en kommentar...",
+      "post": "Skicka"
+    },
+    "comment-item": {
+      "loadReplies": "",
+      "loadReplies_plural": ""
+    },
+    "comment-list": {
+      "loadMore": "---MISSING---",
+      "loadMore_plural": "---MISSING---"
+    },
+    "comments": {
+      "load_replies": "Visa svar ({{count}})",
+      "load_replies_plural": ""
+    },
+    "comments_old": {
+      "loadreplies": "",
+      "loadreplies_plural": ""
+    },
+    "common": {
+      "chat": "---MISSING---",
+      "description": "---MISSING---",
+      "feedback": "---MISSING---",
+      "field_bio": "---MISSING---",
+      "field_firstname": "---MISSING---",
+      "field_lastname": "---MISSING---",
+      "field_website": "---MISSING---",
+      "like": "",
+      "like_plural": "",
+      "mail": "---MISSING---",
+      "reply": "",
+      "save": "---MISSING---",
+      "sections_language": "---MISSING---",
+      "sections_notifications": "---MISSING---",
+      "sections_profile": "---MISSING---",
+      "sections_support": "---MISSING---",
+      "title": "---MISSING---",
+      "toast_error": "---MISSING---",
+      "toast_saved": "---MISSING---"
+    },
+    "common_old": {
+      "signout": "",
+      "download": "",
+      "explore": "",
+      "feed": "",
+      "login": "",
+      "register": "",
+      "sign_out": ""
+    },
+    "edit-post": {
+      "cancel": "",
+      "headerTitle": "",
+      "placeholder": "",
+      "save": ""
+    },
+    "edit": {
+      "edit": ""
+    },
+    "feed": {
+      "description": "",
+      "title": "Feed"
+    },
+    "follow": {
+      "follow": "Följ projekt",
+      "followSmall": "---MISSING---",
+      "unfollow": "Följer",
+      "unfollowSmall": "---MISSING---",
+      "follow_short": "Följ"
+    },
+    "follow_old": {},
+    "followers": {
+      "followers": "{{count, humanFormat}} följare",
+      "followers_plural": "{{count, humanFormat}} följare"
+    },
+    "following-projects": {
+      "title": "Projekt du följer"
+    },
+    "footer": {
+      "about": "Om oss",
+      "blog": "Blogg",
+      "chat": "Chatta med oss",
+      "cookies": "Cookies Policy",
+      "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+      "download": "Ladda ner Appar",
+      "eula": "Användaravtal",
+      "faq": "Vanliga frågor",
+      "feedback": "Feedback",
+      "help": "Hjälp",
+      "legal": "Legal",
+      "mail": "Mail Support",
+      "policy": "Policy",
+      "press": "Press",
+      "social": "Social",
+      "status": "Status",
+      "terms": "Villkor",
+      "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
+    },
+    "hashtag": {
+      "posts": "",
+      "posts_plural": ""
+    },
+    "header": {
+      "download": "Ladda ner Appar",
+      "explore": "Utforska",
+      "feed": "Feed",
+      "login": "Logga in",
+      "register": "Registrera dig"
+    },
+    "home": {
+      "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+      "document_title": "Wrench | Din motorcyckel community",
+      "explore": "Upptäck fler projekt",
+      "signup": "Registrera dig",
+      "subtitle": "community.",
+      "title": "Din motorcykel"
+    },
+    "languages": {
+      "sv": "Svenska",
+      "en": "Engelska",
+      "es": "Spanska",
+      "it": "Italienska",
+      "de": "Tyska",
+      "nl": "Nederländska",
+      "fr": "Franska",
+      "tl": "Filippinare",
+      "pt": "Portugisiska",
+      "ru": "Ryska",
+      "no": "Norska",
+      "da": "Danska"
+    },
+    "legal": {
+      "description": "Genom att fortsätta hålla du med Wrench's ",
+      "link": "användarvillkor."
+    },
+    "like-post": {
+      "like": "{{count}} gnista",
+      "like_plural": "{{count, humanFormat}} gnistor"
+    },
+    "list": {
+      "load_more": "Visa 1 kommentar",
+      "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
+    },
+    "login": {
+      "apple_button": "Logga in med Apple",
+      "fb_button": "Logga in med Facebook",
+      "google_button": "Logga in med Google",
+      "title": "Sign in to follow your favorite projects and more."
+    },
+    "logout": {
+      "logout": "Logga ut",
+      "profile": "Profil",
+      "settings": "Inställningar"
+    },
+    "media-picker-list": {
+      "deselectAll": "---MISSING---"
+    },
+    "mobile-menu": {
+      "download": "Ladda ner Appar",
+      "explore": "Utforska",
+      "feed": "Feed",
+      "login": "Logga in",
+      "register": "Registrera dig",
+      "sign_out": "Logga ut"
+    },
+    "no-results": {
+      "title": ""
+    },
+    "notification": {
+      "comment": "Kommenterade på ditt inlägg",
+      "comment_like": "Gav en gnista på din kommentar",
+      "follow": "Följer nu ditt projekt",
+      "mention": "Nämnde dig i en kommentar",
+      "post_like": "Gav en gnista på ditt inlägg",
+      "reply": "Svarade på din kommentar"
+    },
+    "notifications": {
+      "comment": "---MISSING---",
+      "commentLike": "---MISSING---",
+      "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+      "follow": "---MISSING---",
+      "mention": "---MISSING---",
+      "postLike": "---MISSING---",
+      "reply": "---MISSING---",
+      "title": "Inga notifikationer ännu."
+    },
+    "notifications_old": {},
+    "onboarding": {
+      "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+      "next": "Nästa",
+      "title": "Vad är du intresserad av?"
+    },
+    "options": {
+      "alertTitle": "",
+      "cancel": "",
+      "collection": "",
+      "delete": "",
+      "edit": "",
+      "removeCollection": "",
+      "report": ""
+    },
+    "popular": {
+      "description": "Här ser du de mest populära projekten från den här veckan.",
+      "title": "Populära projekt"
+    },
+    "post-container": {
+      "loadMore": "---MISSING---",
+      "title": "---MISSING---"
+    },
+    "post": {
+      "selectCollection": "",
+      "showCollection": ""
+    },
+    "posting": {
+      "description": ""
+    },
+    "project-card": {
+      "follow": "",
+      "unfollow": ""
+    },
+    "project-suggestion": {
+      "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+      "title": "Håll dig uppdaterad och följ några projekt.",
+      "title_small": "Föreslås för dig"
+    },
+    "project-suggestion_old": {
+      "headline": "Håll dig uppdaterad och följ några projekt."
+    },
+    "project-types": {
+      "inspo": ""
+    },
+    "project": {
+      "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+      "share": "Dela",
+      "similar": "Liknande project",
+      "title": "{{title}} - {{type}} projekt",
+      "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+    },
+    "promo": {
+      "button_default": "Skicka",
+      "button_success": "Skickat",
+      "description": "Ange ditt nummer och få en engångs SMS-länk.",
+      "title": "Ladda ner Wrench-appen på Appstore och Google play"
+    },
+    "result": {
+      "projects": "{{count, humanFormat}} projekt",
+      "projects_plural": "{{count, humanFormat}} projekt",
+      "not_found": "Inga sökresultat hittades."
+    },
+    "search-bar": {
+      "cancel": "",
+      "placeholder": ""
+    },
+    "search-location-footer": {
+      "poweredBy": "---MISSING---"
+    },
+    "search-location": {
+      "no_result": "Inga resultat.",
+      "placeholder": "Stad, land"
+    },
+    "search": {
+      "placeholder": "Sök"
+    },
+    "search_old": {
+      "clear": "---MISSING---",
+      "recent": "---MISSING---"
+    },
+    "searching-for": {
+      "title": ""
+    },
+    "settings": {
+      "sections_profile": "Redigera profil"
+    },
+    "settings_old": {
+      "chat": "Chatta med oss",
+      "feedback": "Feedback",
+      "field_bio": "Beskrivning",
+      "field_firstname": "Förnamn",
+      "field_lastname": "Efternamn",
+      "field_website": "Hemsida",
+      "mail": "Mail Support",
+      "save": "Spara",
+      "sections_language": "Språk",
+      "sections_notifications": "Notifikationer",
+      "sections_support": "Support",
+      "title": "Inställningar",
+      "toast_error": "Något gick fel",
+      "toast_saved": "Inställningar Sparade",
+      "new_comment": "Kommentarer",
+      "new_mention": "Nämnder",
+      "new_article": "Artiklar",
+      "new_follower": "Följare",
+      "similar_projects": "Liknande projekt",
+      "product_announcements": "Produktmeddelanden"
+    },
+    "share": {
+      "share": ""
+    },
+    "show-latest": {
+      "button": ""
+    },
+    "text": {
+      "more": ""
+    },
+    "time": {
+      "d": "{{count}} dag sedan",
+      "d_plural": "{{count}} dagar sedan",
+      "h": "{{count}} timma sedan",
+      "h_plural": "{{count}} timmar sedan",
+      "m": "{{count}} minut sedan",
+      "m_plural": "{{count}} minuter sedan",
+      "mo": "{{count}} månad sedan",
+      "mo_plural": "{{count}} månader sedan",
+      "now": "alldeles nyss",
+      "y": "{{count}} år sedan",
+      "y_plural": "{{count}} år sedan"
+    },
+    "toast": {
+      "network": "",
+      "spam": ""
+    },
+    "translations": {
+      "CommentItem": {
+        "like": "",
+        "like_plural": "",
+        "reply": ""
+      },
+      "add-collection": {
+        "add": "",
+        "done": "",
+        "placeholder": "",
+        "title": ""
+      },
+      "blog-post": {
+        "back": "Tillbaka till bloggen",
+        "title": "Blogg"
+      },
+      "blog": {
+        "title": "Blogg"
+      },
+      "collections": {
+        "title": "Samlingar"
+      },
+      "comment-field": {
+        "placeholder": "Skriv en kommentar...",
+        "post": "Skicka"
+      },
+      "comment-item": {
+        "loadReplies": "",
+        "loadReplies_plural": ""
+      },
+      "comment-list": {
+        "loadMore": "---MISSING---",
+        "loadMore_plural": "---MISSING---"
+      },
+      "comments": {
+        "load_replies": "Visa svar ({{count}})",
+        "load_replies_plural": ""
+      },
+      "comments_old": {
+        "loadreplies": "",
+        "loadreplies_plural": ""
+      },
+      "common": {
+        "chat": "---MISSING---",
+        "description": "---MISSING---",
+        "feedback": "---MISSING---",
+        "field_bio": "---MISSING---",
+        "field_firstname": "---MISSING---",
+        "field_lastname": "---MISSING---",
+        "field_website": "---MISSING---",
+        "like": "",
+        "like_plural": "",
+        "mail": "---MISSING---",
+        "reply": "",
+        "save": "---MISSING---",
+        "sections_language": "---MISSING---",
+        "sections_notifications": "---MISSING---",
+        "sections_profile": "---MISSING---",
+        "sections_support": "---MISSING---",
+        "title": "---MISSING---",
+        "toast_error": "---MISSING---",
+        "toast_saved": "---MISSING---"
+      },
+      "common_old": {
+        "signout": "",
+        "download": "",
+        "explore": "",
+        "feed": "",
+        "login": "",
+        "register": "",
+        "sign_out": ""
+      },
+      "edit-post": {
+        "cancel": "",
+        "headerTitle": "",
+        "placeholder": "",
+        "save": ""
+      },
+      "edit": {
+        "edit": ""
+      },
+      "feed": {
+        "description": "",
+        "title": "Feed"
+      },
+      "follow": {
+        "follow": "Följ projekt",
+        "followSmall": "---MISSING---",
+        "unfollow": "Följer",
+        "unfollowSmall": "---MISSING---",
+        "follow_short": "Följ"
+      },
+      "follow_old": {},
+      "followers": {
+        "followers": "{{count, humanFormat}} följare",
+        "followers_plural": "{{count, humanFormat}} följare"
+      },
+      "following-projects": {
+        "title": "Projekt du följer"
+      },
+      "footer": {
+        "about": "Om oss",
+        "blog": "Blogg",
+        "chat": "Chatta med oss",
+        "cookies": "Cookies Policy",
+        "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+        "download": "Ladda ner Appar",
+        "eula": "Användaravtal",
+        "faq": "Vanliga frågor",
+        "feedback": "Feedback",
+        "help": "Hjälp",
+        "legal": "Legal",
+        "mail": "Mail Support",
+        "policy": "Policy",
+        "press": "Press",
+        "social": "Social",
+        "status": "Status",
+        "terms": "Villkor",
+        "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
+      },
+      "hashtag": {
+        "posts": "",
+        "posts_plural": ""
+      },
+      "header": {
+        "download": "Ladda ner Appar",
+        "explore": "Utforska",
+        "feed": "Feed",
+        "login": "Logga in",
+        "register": "Registrera dig"
+      },
+      "home": {
+        "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+        "document_title": "Wrench | Din motorcyckel community",
+        "explore": "Upptäck fler projekt",
+        "signup": "Registrera dig",
+        "subtitle": "community.",
+        "title": "Din motorcykel"
+      },
+      "languages": {
+        "sv": "Svenska",
+        "en": "Engelska",
+        "es": "Spanska",
+        "it": "Italienska",
+        "de": "Tyska",
+        "nl": "Nederländska",
+        "fr": "Franska",
+        "tl": "Filippinare",
+        "pt": "Portugisiska",
+        "ru": "Ryska",
+        "no": "Norska",
+        "da": "Danska"
+      },
+      "legal": {
+        "description": "Genom att fortsätta hålla du med Wrench's ",
+        "link": "användarvillkor."
+      },
+      "like-post": {
+        "like": "{{count}} gnista",
+        "like_plural": "{{count, humanFormat}} gnistor"
+      },
+      "list": {
+        "load_more": "Visa 1 kommentar",
+        "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
+      },
+      "login": {
+        "apple_button": "Logga in med Apple",
+        "fb_button": "Logga in med Facebook",
+        "google_button": "Logga in med Google",
+        "title": "Sign in to follow your favorite projects and more."
+      },
+      "logout": {
+        "logout": "Logga ut",
+        "profile": "Profil",
+        "settings": "Inställningar"
+      },
+      "media-picker-list": {
+        "deselectAll": "---MISSING---"
+      },
+      "mobile-menu": {
+        "download": "Ladda ner Appar",
+        "explore": "Utforska",
+        "feed": "Feed",
+        "login": "Logga in",
+        "register": "Registrera dig",
+        "sign_out": "Logga ut"
+      },
+      "no-results": {
+        "title": ""
+      },
+      "notification": {
+        "comment": "Kommenterade på ditt inlägg",
+        "comment_like": "Gav en gnista på din kommentar",
+        "follow": "Följer nu ditt projekt",
+        "mention": "Nämnde dig i en kommentar",
+        "post_like": "Gav en gnista på ditt inlägg",
+        "reply": "Svarade på din kommentar"
+      },
+      "notifications": {
+        "comment": "---MISSING---",
+        "commentLike": "---MISSING---",
+        "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+        "follow": "---MISSING---",
+        "mention": "---MISSING---",
+        "postLike": "---MISSING---",
+        "reply": "---MISSING---",
+        "title": "Inga notifikationer ännu."
+      },
+      "notifications_old": {},
+      "onboarding": {
+        "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+        "next": "Nästa",
+        "title": "Vad är du intresserad av?"
+      },
+      "options": {
+        "alertTitle": "",
+        "cancel": "",
+        "collection": "",
+        "delete": "",
+        "edit": "",
+        "removeCollection": "",
+        "report": ""
+      },
+      "popular": {
+        "description": "Här ser du de mest populära projekten från den här veckan.",
+        "title": "Populära projekt"
+      },
+      "post-container": {
+        "loadMore": "---MISSING---",
+        "title": "---MISSING---"
+      },
+      "post": {
+        "selectCollection": "",
+        "showCollection": ""
+      },
+      "posting": {
+        "description": ""
+      },
+      "project-card": {
+        "follow": "",
+        "unfollow": ""
+      },
+      "project-suggestion": {
+        "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+        "title": "Håll dig uppdaterad och följ några projekt.",
+        "title_small": "Föreslås för dig"
+      },
+      "project-suggestion_old": {
+        "headline": "Håll dig uppdaterad och följ några projekt."
+      },
+      "project-types": {
+        "inspo": ""
+      },
+      "project": {
+        "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+        "share": "Dela",
+        "similar": "Liknande project",
+        "title": "{{title}} - {{type}} projekt",
+        "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+      },
+      "promo": {
+        "button_default": "Skicka",
+        "button_success": "Skickat",
+        "description": "Ange ditt nummer och få en engångs SMS-länk.",
+        "title": "Ladda ner Wrench-appen på Appstore och Google play"
+      },
+      "result": {
+        "projects": "{{count, humanFormat}} projekt",
+        "projects_plural": "{{count, humanFormat}} projekt",
+        "not_found": "Inga sökresultat hittades."
+      },
+      "search-bar": {
+        "cancel": "",
+        "placeholder": ""
+      },
+      "search-location-footer": {
+        "poweredBy": "---MISSING---"
+      },
+      "search-location": {
+        "no_result": "Inga resultat.",
+        "placeholder": "Stad, land"
+      },
+      "search": {
+        "placeholder": "Sök"
+      },
+      "search_old": {
+        "clear": "---MISSING---",
+        "recent": "---MISSING---"
+      },
+      "searching-for": {
+        "title": ""
+      },
+      "settings": {
+        "sections_profile": "Redigera profil"
+      },
+      "settings_old": {
+        "chat": "Chatta med oss",
+        "feedback": "Feedback",
+        "field_bio": "Beskrivning",
+        "field_firstname": "Förnamn",
+        "field_lastname": "Efternamn",
+        "field_website": "Hemsida",
+        "mail": "Mail Support",
+        "save": "Spara",
+        "sections_language": "Språk",
+        "sections_notifications": "Notifikationer",
+        "sections_support": "Support",
+        "title": "Inställningar",
+        "toast_error": "Något gick fel",
+        "toast_saved": "Inställningar Sparade",
+        "new_comment": "Kommentarer",
+        "new_mention": "Nämnder",
+        "new_article": "Artiklar",
+        "new_follower": "Följare",
+        "similar_projects": "Liknande projekt",
+        "product_announcements": "Produktmeddelanden"
+      },
+      "share": {
+        "share": ""
+      },
+      "show-latest": {
+        "button": ""
+      },
+      "text": {
+        "more": ""
+      },
+      "time": {
+        "d": "{{count}} dag sedan",
+        "d_plural": "{{count}} dagar sedan",
+        "h": "{{count}} timma sedan",
+        "h_plural": "{{count}} timmar sedan",
+        "m": "{{count}} minut sedan",
+        "m_plural": "{{count}} minuter sedan",
+        "mo": "{{count}} månad sedan",
+        "mo_plural": "{{count}} månader sedan",
+        "now": "alldeles nyss",
+        "y": "{{count}} år sedan",
+        "y_plural": "{{count}} år sedan"
+      },
+      "toast": {
+        "network": "",
+        "spam": ""
+      },
+      "translations": {
+        "CommentItem": {
+          "like": "",
+          "like_plural": "",
+          "reply": ""
+        },
+        "add-collection": {
+          "add": "",
+          "done": "",
+          "placeholder": "",
+          "title": ""
+        },
+        "blog-post": {
+          "back": "Tillbaka till bloggen",
+          "title": "Blogg"
+        },
+        "blog": {
+          "title": "Blogg"
+        },
+        "collections": {
+          "title": "Samlingar"
+        },
+        "comment-field": {
+          "placeholder": "Skriv en kommentar...",
+          "post": "Skicka"
+        },
+        "comment-item": {
+          "loadReplies": "",
+          "loadReplies_plural": ""
+        },
+        "comment-list": {
+          "loadMore": "---MISSING---",
+          "loadMore_plural": "---MISSING---"
+        },
+        "comments": {
+          "load_replies": "Visa svar ({{count}})",
+          "load_replies_plural": ""
+        },
+        "comments_old": {
+          "loadreplies": "",
+          "loadreplies_plural": ""
+        },
+        "common": {
+          "chat": "---MISSING---",
+          "description": "---MISSING---",
+          "feedback": "---MISSING---",
+          "field_bio": "---MISSING---",
+          "field_firstname": "---MISSING---",
+          "field_lastname": "---MISSING---",
+          "field_website": "---MISSING---",
+          "like": "",
+          "like_plural": "",
+          "mail": "---MISSING---",
+          "reply": "",
+          "save": "---MISSING---",
+          "sections_language": "---MISSING---",
+          "sections_notifications": "---MISSING---",
+          "sections_profile": "---MISSING---",
+          "sections_support": "---MISSING---",
+          "title": "---MISSING---",
+          "toast_error": "---MISSING---",
+          "toast_saved": "---MISSING---"
+        },
+        "common_old": {
+          "signout": "",
+          "download": "",
+          "explore": "",
+          "feed": "",
+          "login": "",
+          "register": "",
+          "sign_out": ""
+        },
+        "edit-post": {
+          "cancel": "",
+          "headerTitle": "",
+          "placeholder": "",
+          "save": ""
+        },
+        "edit": {
+          "edit": ""
+        },
+        "feed": {
+          "description": "",
+          "title": "Feed"
+        },
+        "follow": {
+          "follow": "Följ projekt",
+          "followSmall": "---MISSING---",
+          "unfollow": "Följer",
+          "unfollowSmall": "---MISSING---",
+          "follow_short": "Följ"
+        },
+        "follow_old": {},
+        "followers": {
+          "followers": "{{count, humanFormat}} följare",
+          "followers_plural": "{{count, humanFormat}} följare"
+        },
+        "following-projects": {
+          "title": "Projekt du följer"
+        },
+        "footer": {
+          "about": "Om oss",
+          "blog": "Blogg",
+          "chat": "Chatta med oss",
+          "cookies": "Cookies Policy",
+          "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+          "download": "Ladda ner Appar",
+          "eula": "Användaravtal",
+          "faq": "Vanliga frågor",
+          "feedback": "Feedback",
+          "help": "Hjälp",
+          "legal": "Legal",
+          "mail": "Mail Support",
+          "policy": "Policy",
+          "press": "Press",
+          "social": "Social",
+          "status": "Status",
+          "terms": "Villkor",
+          "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
+        },
+        "hashtag": {
+          "posts": "",
+          "posts_plural": ""
+        },
+        "header": {
+          "download": "Ladda ner Appar",
+          "explore": "Utforska",
+          "feed": "Feed",
+          "login": "Logga in",
+          "register": "Registrera dig"
+        },
+        "home": {
+          "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+          "document_title": "Wrench | Din motorcyckel community",
+          "explore": "Upptäck fler projekt",
+          "signup": "Registrera dig",
+          "subtitle": "community.",
+          "title": "Din motorcykel"
+        },
+        "languages": {
+          "sv": "Svenska",
+          "en": "Engelska",
+          "es": "Spanska",
+          "it": "Italienska",
+          "de": "Tyska",
+          "nl": "Nederländska",
+          "fr": "Franska",
+          "tl": "Filippinare",
+          "pt": "Portugisiska",
+          "ru": "Ryska",
+          "no": "Norska",
+          "da": "Danska"
+        },
+        "legal": {
+          "description": "Genom att fortsätta hålla du med Wrench's ",
+          "link": "användarvillkor."
+        },
+        "like-post": {
+          "like": "{{count}} gnista",
+          "like_plural": "{{count, humanFormat}} gnistor"
+        },
+        "list": {
+          "load_more": "Visa 1 kommentar",
+          "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
+        },
+        "login": {
+          "apple_button": "Logga in med Apple",
+          "fb_button": "Logga in med Facebook",
+          "google_button": "Logga in med Google",
+          "title": "Sign in to follow your favorite projects and more."
+        },
+        "logout": {
+          "logout": "Logga ut",
+          "profile": "Profil",
+          "settings": "Inställningar"
+        },
+        "media-picker-list": {
+          "deselectAll": "---MISSING---"
+        },
+        "mobile-menu": {
+          "download": "Ladda ner Appar",
+          "explore": "Utforska",
+          "feed": "Feed",
+          "login": "Logga in",
+          "register": "Registrera dig",
+          "sign_out": "Logga ut"
+        },
+        "no-results": {
+          "title": ""
+        },
+        "notification": {
+          "comment": "Kommenterade på ditt inlägg",
+          "comment_like": "Gav en gnista på din kommentar",
+          "follow": "Följer nu ditt projekt",
+          "mention": "Nämnde dig i en kommentar",
+          "post_like": "Gav en gnista på ditt inlägg",
+          "reply": "Svarade på din kommentar"
+        },
+        "notifications": {
+          "comment": "---MISSING---",
+          "commentLike": "---MISSING---",
+          "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+          "follow": "---MISSING---",
+          "mention": "---MISSING---",
+          "postLike": "---MISSING---",
+          "reply": "---MISSING---",
+          "title": "Inga notifikationer ännu."
+        },
+        "notifications_old": {},
+        "onboarding": {
+          "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+          "next": "Nästa",
+          "title": "Vad är du intresserad av?"
+        },
+        "options": {
+          "alertTitle": "",
+          "cancel": "",
+          "collection": "",
+          "delete": "",
+          "edit": "",
+          "removeCollection": "",
+          "report": ""
+        },
+        "popular": {
+          "description": "Här ser du de mest populära projekten från den här veckan.",
+          "title": "Populära projekt"
+        },
+        "post-container": {
+          "loadMore": "---MISSING---",
+          "title": "---MISSING---"
+        },
+        "post": {
+          "selectCollection": "",
+          "showCollection": ""
+        },
+        "posting": {
+          "description": ""
+        },
+        "project-card": {
+          "follow": "",
+          "unfollow": ""
+        },
+        "project-suggestion": {
+          "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+          "title": "Håll dig uppdaterad och följ några projekt.",
+          "title_small": "Föreslås för dig"
+        },
+        "project-suggestion_old": {
+          "headline": "Håll dig uppdaterad och följ några projekt."
+        },
+        "project-types": {
+          "inspo": ""
+        },
+        "project": {
+          "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+          "share": "Dela",
+          "similar": "Liknande project",
+          "title": "{{title}} - {{type}} projekt",
+          "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+        },
+        "promo": {
+          "button_default": "Skicka",
+          "button_success": "Skickat",
+          "description": "Ange ditt nummer och få en engångs SMS-länk.",
+          "title": "Ladda ner Wrench-appen på Appstore och Google play"
+        },
+        "result": {
+          "projects": "{{count, humanFormat}} projekt",
+          "projects_plural": "{{count, humanFormat}} projekt",
+          "not_found": "Inga sökresultat hittades."
+        },
+        "search-bar": {
+          "cancel": "",
+          "placeholder": ""
+        },
+        "search-location-footer": {
+          "poweredBy": "---MISSING---"
+        },
+        "search-location": {
+          "no_result": "Inga resultat.",
+          "placeholder": "Stad, land"
+        },
+        "search": {
+          "placeholder": "Sök"
+        },
+        "search_old": {
+          "clear": "---MISSING---",
+          "recent": "---MISSING---"
+        },
+        "searching-for": {
+          "title": ""
+        },
+        "settings": {
+          "sections_profile": "Redigera profil"
+        },
+        "settings_old": {
+          "chat": "Chatta med oss",
+          "feedback": "Feedback",
+          "field_bio": "Beskrivning",
+          "field_firstname": "Förnamn",
+          "field_lastname": "Efternamn",
+          "field_website": "Hemsida",
+          "mail": "Mail Support",
+          "save": "Spara",
+          "sections_language": "Språk",
+          "sections_notifications": "Notifikationer",
+          "sections_support": "Support",
+          "title": "Inställningar",
+          "toast_error": "Något gick fel",
+          "toast_saved": "Inställningar Sparade",
+          "new_comment": "Kommentarer",
+          "new_mention": "Nämnder",
+          "new_article": "Artiklar",
+          "new_follower": "Följare",
+          "similar_projects": "Liknande projekt",
+          "product_announcements": "Produktmeddelanden"
+        },
+        "share": {
+          "share": ""
+        },
+        "show-latest": {
+          "button": ""
+        },
+        "text": {
+          "more": ""
+        },
+        "time": {
+          "d": "{{count}} dag sedan",
+          "d_plural": "{{count}} dagar sedan",
+          "h": "{{count}} timma sedan",
+          "h_plural": "{{count}} timmar sedan",
+          "m": "{{count}} minut sedan",
+          "m_plural": "{{count}} minuter sedan",
+          "mo": "{{count}} månad sedan",
+          "mo_plural": "{{count}} månader sedan",
+          "now": "alldeles nyss",
+          "y": "{{count}} år sedan",
+          "y_plural": "{{count}} år sedan"
+        },
+        "toast": {
+          "network": "",
+          "spam": ""
+        },
+        "translations": {
+          "CommentItem": {
+            "like": "",
+            "like_plural": "",
+            "reply": ""
+          },
+          "add-collection": {
+            "add": "",
+            "done": "",
+            "placeholder": "",
+            "title": ""
+          },
+          "blog-post": {
+            "back": "Tillbaka till bloggen",
+            "title": "Blogg"
+          },
+          "blog": {
+            "title": "Blogg"
+          },
+          "collections": {
+            "title": "Samlingar"
+          },
+          "comment-field": {
+            "placeholder": "Skriv en kommentar...",
+            "post": "Skicka"
+          },
+          "comment-item": {
+            "loadReplies": "",
+            "loadReplies_plural": ""
+          },
+          "comment-list": {
+            "loadMore": "---MISSING---",
+            "loadMore_plural": "---MISSING---"
+          },
+          "comments": {
+            "load_replies": "Visa svar ({{count}})",
+            "load_replies_plural": ""
+          },
+          "comments_old": {
+            "loadreplies": "",
+            "loadreplies_plural": ""
+          },
+          "common": {
+            "chat": "---MISSING---",
+            "description": "---MISSING---",
+            "feedback": "---MISSING---",
+            "field_bio": "---MISSING---",
+            "field_firstname": "---MISSING---",
+            "field_lastname": "---MISSING---",
+            "field_website": "---MISSING---",
+            "like": "",
+            "like_plural": "",
+            "mail": "---MISSING---",
+            "reply": "",
+            "save": "---MISSING---",
+            "sections_language": "---MISSING---",
+            "sections_notifications": "---MISSING---",
+            "sections_profile": "---MISSING---",
+            "sections_support": "---MISSING---",
+            "title": "---MISSING---",
+            "toast_error": "---MISSING---",
+            "toast_saved": "---MISSING---"
+          },
+          "common_old": {
+            "signout": "",
+            "download": "",
+            "explore": "",
+            "feed": "",
+            "login": "",
+            "register": "",
+            "sign_out": ""
+          },
+          "edit-post": {
+            "cancel": "",
+            "headerTitle": "",
+            "placeholder": "",
+            "save": ""
+          },
+          "edit": {
+            "edit": ""
+          },
+          "feed": {
+            "description": "",
+            "title": "Feed"
+          },
+          "follow": {
+            "follow": "Följ projekt",
+            "followSmall": "---MISSING---",
+            "unfollow": "Följer",
+            "unfollowSmall": "---MISSING---",
+            "follow_short": "Följ"
+          },
+          "follow_old": {},
+          "followers": {
+            "followers": "{{count, humanFormat}} följare",
+            "followers_plural": "{{count, humanFormat}} följare"
+          },
+          "following-projects": {
+            "title": "Projekt du följer"
+          },
+          "footer": {
+            "about": "Om oss",
+            "blog": "Blogg",
+            "chat": "Chatta med oss",
+            "cookies": "Cookies Policy",
+            "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+            "download": "Ladda ner Appar",
+            "eula": "Användaravtal",
+            "faq": "Vanliga frågor",
+            "feedback": "Feedback",
+            "help": "Hjälp",
+            "legal": "Legal",
+            "mail": "Mail Support",
+            "policy": "Policy",
+            "press": "Press",
+            "social": "Social",
+            "status": "Status",
+            "terms": "Villkor",
+            "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
+          },
+          "hashtag": {
+            "posts": "",
+            "posts_plural": ""
+          },
+          "header": {
+            "download": "Ladda ner Appar",
+            "explore": "Utforska",
+            "feed": "Feed",
+            "login": "Logga in",
+            "register": "Registrera dig"
+          },
+          "home": {
+            "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+            "document_title": "Wrench | Din motorcyckel community",
+            "explore": "Upptäck fler projekt",
+            "signup": "Registrera dig",
+            "subtitle": "community.",
+            "title": "Din motorcykel"
+          },
+          "languages": {
+            "sv": "Svenska",
+            "en": "Engelska",
+            "es": "Spanska",
+            "it": "Italienska",
+            "de": "Tyska",
+            "nl": "Nederländska",
+            "fr": "Franska",
+            "tl": "Filippinare",
+            "pt": "Portugisiska",
+            "ru": "Ryska",
+            "no": "Norska",
+            "da": "Danska"
+          },
+          "legal": {
+            "description": "Genom att fortsätta hålla du med Wrench's ",
+            "link": "användarvillkor."
+          },
+          "like-post": {
+            "like": "{{count}} gnista",
+            "like_plural": "{{count, humanFormat}} gnistor"
+          },
+          "list": {
+            "load_more": "Visa 1 kommentar",
+            "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
+          },
+          "login": {
+            "apple_button": "Logga in med Apple",
+            "fb_button": "Logga in med Facebook",
+            "google_button": "Logga in med Google",
+            "title": "Sign in to follow your favorite projects and more."
+          },
+          "logout": {
+            "logout": "Logga ut",
+            "profile": "Profil",
+            "settings": "Inställningar"
+          },
+          "media-picker-list": {
+            "deselectAll": "---MISSING---"
+          },
+          "mobile-menu": {
+            "download": "Ladda ner Appar",
+            "explore": "Utforska",
+            "feed": "Feed",
+            "login": "Logga in",
+            "register": "Registrera dig",
+            "sign_out": "Logga ut"
+          },
+          "no-results": {
+            "title": ""
+          },
+          "notification": {
+            "comment": "Kommenterade på ditt inlägg",
+            "comment_like": "Gav en gnista på din kommentar",
+            "follow": "Följer nu ditt projekt",
+            "mention": "Nämnde dig i en kommentar",
+            "post_like": "Gav en gnista på ditt inlägg",
+            "reply": "Svarade på din kommentar"
+          },
+          "notifications": {
+            "comment": "---MISSING---",
+            "commentLike": "---MISSING---",
+            "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+            "follow": "---MISSING---",
+            "mention": "---MISSING---",
+            "postLike": "---MISSING---",
+            "reply": "---MISSING---",
+            "title": "Inga notifikationer ännu."
+          },
+          "notifications_old": {},
+          "onboarding": {
+            "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+            "next": "Nästa",
+            "title": "Vad är du intresserad av?"
+          },
+          "options": {
+            "alertTitle": "",
+            "cancel": "",
+            "collection": "",
+            "delete": "",
+            "edit": "",
+            "removeCollection": "",
+            "report": ""
+          },
+          "popular": {
+            "description": "Här ser du de mest populära projekten från den här veckan.",
+            "title": "Populära projekt"
+          },
+          "post-container": {
+            "loadMore": "---MISSING---",
+            "title": "---MISSING---"
+          },
+          "post": {
+            "selectCollection": "",
+            "showCollection": ""
+          },
+          "posting": {
+            "description": ""
+          },
+          "project-card": {
+            "follow": "",
+            "unfollow": ""
+          },
+          "project-suggestion": {
+            "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+            "title": "Håll dig uppdaterad och följ några projekt.",
+            "title_small": "Föreslås för dig"
+          },
+          "project-suggestion_old": {
+            "headline": "Håll dig uppdaterad och följ några projekt."
+          },
+          "project-types": {
+            "inspo": ""
+          },
+          "project": {
+            "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+            "share": "Dela",
+            "similar": "Liknande project",
+            "title": "{{title}} - {{type}} projekt",
+            "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+          },
+          "promo": {
+            "button_default": "Skicka",
+            "button_success": "Skickat",
+            "description": "Ange ditt nummer och få en engångs SMS-länk.",
+            "title": "Ladda ner Wrench-appen på Appstore och Google play"
+          },
+          "result": {
+            "projects": "{{count, humanFormat}} projekt",
+            "projects_plural": "{{count, humanFormat}} projekt",
+            "not_found": "Inga sökresultat hittades."
+          },
+          "search-bar": {
+            "cancel": "",
+            "placeholder": ""
+          },
+          "search-location-footer": {
+            "poweredBy": "---MISSING---"
+          },
+          "search-location": {
+            "no_result": "Inga resultat.",
+            "placeholder": "Stad, land"
+          },
+          "search": {
+            "placeholder": "Sök"
+          },
+          "search_old": {
+            "clear": "---MISSING---",
+            "recent": "---MISSING---"
+          },
+          "searching-for": {
+            "title": ""
+          },
+          "settings": {
+            "sections_profile": "Redigera profil"
+          },
+          "settings_old": {
+            "chat": "Chatta med oss",
+            "feedback": "Feedback",
+            "field_bio": "Beskrivning",
+            "field_firstname": "Förnamn",
+            "field_lastname": "Efternamn",
+            "field_website": "Hemsida",
+            "mail": "Mail Support",
+            "save": "Spara",
+            "sections_language": "Språk",
+            "sections_notifications": "Notifikationer",
+            "sections_support": "Support",
+            "title": "Inställningar",
+            "toast_error": "Något gick fel",
+            "toast_saved": "Inställningar Sparade",
+            "new_comment": "Kommentarer",
+            "new_mention": "Nämnder",
+            "new_article": "Artiklar",
+            "new_follower": "Följare",
+            "similar_projects": "Liknande projekt",
+            "product_announcements": "Produktmeddelanden"
+          },
+          "share": {
+            "share": ""
+          },
+          "show-latest": {
+            "button": ""
+          },
+          "text": {
+            "more": ""
+          },
+          "time": {
+            "d": "{{count}} dag sedan",
+            "d_plural": "{{count}} dagar sedan",
+            "h": "{{count}} timma sedan",
+            "h_plural": "{{count}} timmar sedan",
+            "m": "{{count}} minut sedan",
+            "m_plural": "{{count}} minuter sedan",
+            "mo": "{{count}} månad sedan",
+            "mo_plural": "{{count}} månader sedan",
+            "now": "alldeles nyss",
+            "y": "{{count}} år sedan",
+            "y_plural": "{{count}} år sedan"
+          },
+          "toast": {
+            "network": "",
+            "spam": ""
+          },
+          "translations": {
+            "CommentItem": {
+              "like": "",
+              "like_plural": "",
+              "reply": ""
+            },
+            "add-collection": {
+              "add": "",
+              "done": "",
+              "placeholder": "",
+              "title": ""
+            },
+            "blog-post": {
+              "back": "Tillbaka till bloggen",
+              "title": "Blogg"
+            },
+            "blog": {
+              "title": "Blogg"
+            },
+            "collections": {
+              "title": "Samlingar"
+            },
+            "comment-field": {
+              "placeholder": "Skriv en kommentar...",
+              "post": "Skicka"
+            },
+            "comment-item": {
+              "loadReplies": "",
+              "loadReplies_plural": ""
+            },
+            "comments": {
+              "load_replies": "Visa svar ({{count}})",
+              "load_replies_plural": ""
+            },
+            "comments_old": {
+              "loadreplies": "",
+              "loadreplies_plural": ""
+            },
+            "common": {
+              "like": "",
+              "like_plural": "",
+              "reply": ""
+            },
+            "common_old": {
+              "signout": "",
+              "download": "",
+              "explore": "",
+              "feed": "",
+              "login": "",
+              "register": "",
+              "sign_out": ""
+            },
+            "edit-post": {
+              "cancel": "",
+              "headerTitle": "",
+              "placeholder": "",
+              "save": ""
+            },
+            "edit": {
+              "edit": ""
+            },
+            "feed": {
+              "description": "",
+              "title": "Feed"
+            },
+            "follow": {
+              "follow": "Följ projekt",
+              "follow_short": "Följ",
+              "unfollow": "Följer"
+            },
+            "followers": {
+              "followers": "{{count, humanFormat}} följare",
+              "followers_plural": "{{count, humanFormat}} följare"
+            },
+            "following-projects": {
+              "title": "Projekt du följer"
+            },
+            "footer": {
+              "about": "Om oss",
+              "blog": "Blogg",
+              "chat": "Chatta med oss",
+              "cookies": "Cookies Policy",
+              "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+              "download": "Ladda ner Appar",
+              "eula": "Användaravtal",
+              "faq": "Vanliga frågor",
+              "feedback": "Feedback",
+              "help": "Hjälp",
+              "legal": "Legal",
+              "mail": "Mail Support",
+              "policy": "Policy",
+              "press": "Press",
+              "social": "Social",
+              "status": "Status",
+              "terms": "Villkor",
+              "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
+            },
+            "hashtag": {
+              "posts": "",
+              "posts_plural": ""
+            },
+            "header": {
+              "download": "Ladda ner Appar",
+              "explore": "Utforska",
+              "feed": "Feed",
+              "login": "Logga in",
+              "register": "Registrera dig"
+            },
+            "home": {
+              "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+              "document_title": "Wrench | Din motorcyckel community",
+              "explore": "Upptäck fler projekt",
+              "signup": "Registrera dig",
+              "subtitle": "community.",
+              "title": "Din motorcykel"
+            },
+            "languages": {
+              "sv": "Svenska",
+              "en": "Engelska",
+              "es": "Spanska",
+              "it": "Italienska",
+              "de": "Tyska",
+              "nl": "Nederländska",
+              "fr": "Franska",
+              "tl": "Filippinare",
+              "pt": "Portugisiska",
+              "ru": "Ryska",
+              "no": "Norska",
+              "da": "Danska"
+            },
+            "legal": {
+              "description": "Genom att fortsätta hålla du med Wrench's ",
+              "link": "användarvillkor."
+            },
+            "like-post": {
+              "like": "{{count}} gnista",
+              "like_plural": "{{count, humanFormat}} gnistor"
+            },
+            "list": {
+              "load_more": "Visa 1 kommentar",
+              "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
+            },
+            "login": {
+              "apple_button": "Logga in med Apple",
+              "fb_button": "Logga in med Facebook",
+              "google_button": "Logga in med Google",
+              "title": "Sign in to follow your favorite projects and more."
+            },
+            "logout": {
+              "logout": "Logga ut",
+              "profile": "Profil",
+              "settings": "Inställningar"
+            },
+            "mobile-menu": {
+              "download": "Ladda ner Appar",
+              "explore": "Utforska",
+              "feed": "Feed",
+              "login": "Logga in",
+              "register": "Registrera dig",
+              "sign_out": "Logga ut"
+            },
+            "no-results": {
+              "title": ""
+            },
+            "notification": {
+              "comment": "Kommenterade på ditt inlägg",
+              "comment_like": "Gav en gnista på din kommentar",
+              "follow": "Följer nu ditt projekt",
+              "mention": "Nämnde dig i en kommentar",
+              "post_like": "Gav en gnista på ditt inlägg",
+              "reply": "Svarade på din kommentar"
+            },
+            "notifications": {
+              "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+              "title": "Inga notifikationer ännu."
+            },
+            "onboarding": {
+              "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+              "next": "Nästa",
+              "title": "Vad är du intresserad av?"
+            },
+            "options": {
+              "alertTitle": "",
+              "cancel": "",
+              "collection": "",
+              "delete": "",
+              "edit": "",
+              "removeCollection": "",
+              "report": ""
+            },
+            "popular": {
+              "description": "Här ser du de mest populära projekten från den här veckan.",
+              "title": "Populära projekt"
+            },
+            "post": {
+              "selectCollection": "",
+              "showCollection": ""
+            },
+            "posting": {
+              "description": ""
+            },
+            "project-card": {
+              "follow": "",
+              "unfollow": ""
+            },
+            "project-suggestion": {
+              "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+              "title": "Håll dig uppdaterad och följ några projekt.",
+              "title_small": "Föreslås för dig"
+            },
+            "project-suggestion_old": {
+              "headline": "Håll dig uppdaterad och följ några projekt."
+            },
+            "project-types": {
+              "inspo": ""
+            },
+            "project": {
+              "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+              "share": "Dela",
+              "similar": "Liknande project",
+              "title": "{{title}} - {{type}} projekt",
+              "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+            },
+            "promo": {
+              "button_default": "Skicka",
+              "button_success": "Skickat",
+              "description": "Ange ditt nummer och få en engångs SMS-länk.",
+              "title": "Ladda ner Wrench-appen på Appstore och Google play"
+            },
+            "result": {
+              "projects": "{{count, humanFormat}} projekt",
+              "projects_plural": "{{count, humanFormat}} projekt",
+              "not_found": "Inga sökresultat hittades."
+            },
+            "search-bar": {
+              "cancel": "",
+              "placeholder": ""
+            },
+            "search-location": {
+              "no_result": "Inga resultat.",
+              "placeholder": "Stad, land"
+            },
+            "search": {
+              "placeholder": "Sök"
+            },
+            "searching-for": {
+              "title": ""
+            },
+            "settings": {
+              "chat": "Chatta med oss",
+              "feedback": "Feedback",
+              "field_bio": "Beskrivning",
+              "field_firstname": "Förnamn",
+              "field_lastname": "Efternamn",
+              "field_website": "Hemsida",
+              "mail": "Mail Support",
+              "save": "Spara",
+              "sections_language": "Språk",
+              "sections_notifications": "Notifikationer",
+              "sections_profile": "Redigera profil",
+              "sections_support": "Support",
+              "title": "Inställningar",
+              "toast_error": "Något gick fel",
+              "toast_saved": "Inställningar Sparade",
+              "new_comment": "Kommentarer",
+              "new_mention": "Nämnder",
+              "new_article": "Artiklar",
+              "new_follower": "Följare",
+              "similar_projects": "Liknande projekt",
+              "product_announcements": "Produktmeddelanden"
+            },
+            "settings_old": {
+              "chat": "Chatta med oss",
+              "feedback": "Feedback",
+              "field_bio": "Beskrivning",
+              "field_firstname": "Förnamn",
+              "field_lastname": "Efternamn",
+              "field_website": "Hemsida",
+              "mail": "Mail Support",
+              "save": "Spara",
+              "sections_language": "Språk",
+              "sections_notifications": "Notifikationer",
+              "sections_support": "Support",
+              "title": "Inställningar",
+              "toast_error": "Något gick fel",
+              "toast_saved": "Inställningar Sparade",
+              "new_comment": "Kommentarer",
+              "new_mention": "Nämnder",
+              "new_article": "Artiklar",
+              "new_follower": "Följare",
+              "similar_projects": "Liknande projekt",
+              "product_announcements": "Produktmeddelanden"
+            },
+            "share": {
+              "share": ""
+            },
+            "show-latest": {
+              "button": ""
+            },
+            "text": {
+              "more": ""
+            },
+            "time": {
+              "d": "{{count}} dag sedan",
+              "d_plural": "{{count}} dagar sedan",
+              "h": "{{count}} timma sedan",
+              "h_plural": "{{count}} timmar sedan",
+              "m": "{{count}} minut sedan",
+              "m_plural": "{{count}} minuter sedan",
+              "mo": "{{count}} månad sedan",
+              "mo_plural": "{{count}} månader sedan",
+              "now": "alldeles nyss",
+              "y": "{{count}} år sedan",
+              "y_plural": "{{count}} år sedan"
+            },
+            "toast": {
+              "network": "",
+              "spam": ""
+            },
+            "translations": [
+              {
+                "blog-post": {
+                  "back": "Tillbaka till bloggen",
+                  "title": "Blogg"
+                }
+              },
+              {
+                "blog": {
+                  "title": "Blogg"
+                }
+              },
+              {
+                "collections": {
+                  "title": "Samlingar"
+                }
+              },
+              {
+                "comment-field": {
+                  "placeholder": "Skriv en kommentar...",
+                  "post": "Skicka"
+                }
+              },
+              {
+                "comments": {
+                  "load_replies": "Visa svar ({{count}})",
+                  "load_replies_plural": ""
+                }
+              },
+              {
+                "comments_old": {
+                  "loadreplies": "",
+                  "loadreplies_plural": ""
+                }
+              },
+              {
+                "common": {
+                  "like": "",
+                  "like_plural": "",
+                  "reply": ""
+                }
+              },
+              {
+                "common_old": {
+                  "signout": "",
+                  "download": "",
+                  "explore": "",
+                  "feed": "",
+                  "login": "",
+                  "register": "",
+                  "sign_out": ""
+                }
+              },
+              {
+                "feed": {
+                  "description": "",
+                  "title": "Feed"
+                }
+              },
+              {
+                "follow": {
+                  "follow": "Följ projekt",
+                  "follow_short": "Följ",
+                  "unfollow": "Följer"
+                }
+              },
+              {
+                "followers": {
+                  "followers": "{{count, humanFormat}} följare",
+                  "followers_plural": "{{count, humanFormat}} följare"
+                }
+              },
+              {
+                "following-projects": {
+                  "title": "Projekt du följer"
+                }
+              },
+              {
+                "footer": {
+                  "about": "Om oss",
+                  "blog": "Blogg",
+                  "chat": "Chatta med oss",
+                  "cookies": "Cookies Policy",
+                  "description": "Wrench is a project community founded in 2018 in Sweden. It’s designed, built and run from the heart of Stockholm.",
+                  "download": "Ladda ner Appar",
+                  "eula": "Användaravtal",
+                  "faq": "Vanliga frågor",
+                  "feedback": "Feedback",
+                  "help": "Hjälp",
+                  "legal": "Legal",
+                  "mail": "Mail Support",
+                  "policy": "Policy",
+                  "press": "Press",
+                  "social": "Social",
+                  "status": "Status",
+                  "terms": "Villkor",
+                  "trademarks": "App Store är ett varumärke som tillhör Apple Inc. Google Play är ett varumärke som tillhör Google LLC."
+                }
+              },
+              {
+                "header": {
+                  "download": "Ladda ner Appar",
+                  "explore": "Utforska",
+                  "feed": "Feed",
+                  "login": "Logga in",
+                  "register": "Registrera dig"
+                }
+              },
+              {
+                "home": {
+                  "description": "Dokumentera dina byggen, dela dina projekt och lära av likasinnade.",
+                  "document_title": "Wrench | Din motorcyckel community",
+                  "explore": "Upptäck fler projekt",
+                  "signup": "Registrera dig",
+                  "subtitle": "community.",
+                  "title": "Din motorcykel"
+                }
+              },
+              {
+                "languages": {
+                  "sv": "Svenska",
+                  "en": "Engelska",
+                  "es": "Spanska",
+                  "it": "Italienska",
+                  "de": "Tyska",
+                  "nl": "Nederländska",
+                  "fr": "Franska",
+                  "tl": "Filippinare",
+                  "pt": "Portugisiska",
+                  "ru": "Ryska",
+                  "no": "Norska",
+                  "da": "Danska"
+                }
+              },
+              {
+                "legal": {
+                  "description": "Genom att fortsätta hålla du med Wrench's ",
+                  "link": "användarvillkor."
+                }
+              },
+              {
+                "like-post": {
+                  "like": "{{count}} gnista",
+                  "like_plural": "{{count, humanFormat}} gnistor"
+                }
+              },
+              {
+                "list": {
+                  "load_more": "Visa 1 kommentar",
+                  "load_more_plural": "Visa alla {{count, humanFormat}} kommentarer"
+                }
+              },
+              {
+                "login": {
+                  "apple_button": "Logga in med Apple",
+                  "fb_button": "Logga in med Facebook",
+                  "google_button": "Logga in med Google",
+                  "title": "Sign in to follow your favorite projects and more."
+                }
+              },
+              {
+                "logout": {
+                  "logout": "Logga ut",
+                  "profile": "Profil",
+                  "settings": "Inställningar"
+                }
+              },
+              {
+                "mobile-menu": {
+                  "download": "Ladda ner Appar",
+                  "explore": "Utforska",
+                  "feed": "Feed",
+                  "login": "Logga in",
+                  "register": "Registrera dig",
+                  "sign_out": "Logga ut"
+                }
+              },
+              {
+                "notification": {
+                  "comment": "Kommenterade på ditt inlägg",
+                  "comment_like": "Gav en gnista på din kommentar",
+                  "follow": "Följer nu ditt projekt",
+                  "mention": "Nämnde dig i en kommentar",
+                  "post_like": "Gav en gnista på ditt inlägg",
+                  "reply": "Svarade på din kommentar"
+                }
+              },
+              {
+                "notifications": {
+                  "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+                  "title": "Inga notifikationer ännu."
+                }
+              },
+              {
+                "onboarding": {
+                  "description": "Välj minst tre kategorier som du är intresserad av och vi ger dig några trevliga projekt att börja med.",
+                  "next": "Nästa",
+                  "title": "Vad är du intresserad av?"
+                }
+              },
+              {
+                "popular": {
+                  "description": "Här ser du de mest populära projekten från den här veckan.",
+                  "title": "Populära projekt"
+                }
+              },
+              {
+                "project-suggestion": {
+                  "description": "Vi har valt ut några projekt nedan som du kanske tycker är intressanta.",
+                  "title": "Håll dig uppdaterad och följ några projekt.",
+                  "title_small": "Föreslås för dig"
+                }
+              },
+              {
+                "project-suggestion_old": {
+                  "headline": "Håll dig uppdaterad och följ några projekt."
+                }
+              },
+              {
+                "project": {
+                  "description": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench",
+                  "share": "Dela",
+                  "similar": "Liknande project",
+                  "title": "{{title}} - {{type}} projekt",
+                  "description_plural": "{{followers, humanFormat}} följare, {{posts, humanFormat}} inlägg - {{fullName}} . (@{{username}}) på Wrench"
+                }
+              },
+              {
+                "promo": {
+                  "button_default": "Skicka",
+                  "button_success": "Skickat",
+                  "description": "Ange ditt nummer och få en engångs SMS-länk.",
+                  "title": "Ladda ner Wrench-appen på Appstore och Google play"
+                }
+              },
+              {
+                "result": {
+                  "projects": "{{count, humanFormat}} projekt",
+                  "projects_plural": "{{count, humanFormat}} projekt",
+                  "not_found": "Inga sökresultat hittades."
+                }
+              },
+              {
+                "search-location": {
+                  "no_result": "Inga resultat.",
+                  "placeholder": "Stad, land"
+                }
+              },
+              {
+                "search": {
+                  "placeholder": "Sök"
+                }
+              },
+              {
+                "settings": {
+                  "chat": "Chatta med oss",
+                  "feedback": "Feedback",
+                  "field_bio": "Beskrivning",
+                  "field_firstname": "Förnamn",
+                  "field_lastname": "Efternamn",
+                  "field_website": "Hemsida",
+                  "mail": "Mail Support",
+                  "save": "Spara",
+                  "sections_language": "Språk",
+                  "sections_notifications": "Notifikationer",
+                  "sections_profile": "Redigera profil",
+                  "sections_support": "Support",
+                  "title": "Inställningar",
+                  "toast_error": "Något gick fel",
+                  "toast_saved": "Inställningar Sparade",
+                  "new_comment": "Kommentarer",
+                  "new_mention": "Nämnder",
+                  "new_article": "Artiklar",
+                  "new_follower": "Följare",
+                  "similar_projects": "Liknande projekt",
+                  "product_announcements": "Produktmeddelanden"
+                }
+              },
+              {
+                "time": {
+                  "d": "{{count}} dag sedan",
+                  "d_plural": "{{count}} dagar sedan",
+                  "h": "{{count}} timma sedan",
+                  "h_plural": "{{count}} timmar sedan",
+                  "m": "{{count}} minut sedan",
+                  "m_plural": "{{count}} minuter sedan",
+                  "mo": "{{count}} månad sedan",
+                  "mo_plural": "{{count}} månader sedan",
+                  "now": "alldeles nyss",
+                  "y": "{{count}} år sedan",
+                  "y_plural": "{{count}} år sedan"
+                }
+              },
+              {
+                "translations": {
+                  "user": {
+                    "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+                    "image_alt": "",
+                    "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+                  }
+                }
+              },
+              {
+                "user-following-projects": {
+                  "description": "Men här är några av de projekt {{name}} följer.",
+                  "title": "Den här användaren har inga egna projekt än."
+                }
+              },
+              {
+                "user-projects": {
+                  "followers": "{{count, humanFormat}} följare",
+                  "followers_plural": "{{count, humanFormat}} följare",
+                  "title": "Projekt"
+                }
+              },
+              {
+                "user": {
+                  "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+                  "image_alt": "",
+                  "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+                }
+              }
+            ],
+            "user-following-projects": {
+              "description": "Men här är några av de projekt {{name}} följer.",
+              "title": "Den här användaren har inga egna projekt än."
+            },
+            "user-projects": {
+              "followers": "{{count, humanFormat}} följare",
+              "followers_plural": "{{count, humanFormat}} följare",
+              "title": "Projekt"
+            },
+            "user": {
+              "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+              "image_alt": "",
+              "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+            },
+            "webview": {
+              "loading": ""
+            }
+          },
+          "user-following-projects": {
+            "description": "Men här är några av de projekt {{name}} följer.",
+            "title": "Den här användaren har inga egna projekt än."
+          },
+          "user-projects": {
+            "followers": "{{count, humanFormat}} följare",
+            "followers_plural": "{{count, humanFormat}} följare",
+            "title": "Projekt"
+          },
+          "user": {
+            "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+            "image_alt": "",
+            "projects": "---MISSING---",
+            "projects_plural": "---MISSING---",
+            "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+          },
+          "user_old": {},
+          "webview": {
+            "loading": ""
+          }
+        },
+        "user-following-projects": {
+          "description": "Men här är några av de projekt {{name}} följer.",
+          "title": "Den här användaren har inga egna projekt än."
+        },
+        "user-projects": {
+          "followers": "{{count, humanFormat}} följare",
+          "followers_plural": "{{count, humanFormat}} följare",
+          "title": "Projekt"
+        },
+        "user": {
+          "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+          "image_alt": "",
+          "projects": "---MISSING---",
+          "projects_plural": "---MISSING---",
+          "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+        },
+        "user_old": {},
+        "webview": {
+          "loading": ""
+        }
+      },
+      "user-following-projects": {
+        "description": "Men här är några av de projekt {{name}} följer.",
+        "title": "Den här användaren har inga egna projekt än."
+      },
+      "user-projects": {
+        "followers": "{{count, humanFormat}} följare",
+        "followers_plural": "{{count, humanFormat}} följare",
+        "title": "Projekt"
+      },
+      "user": {
+        "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+        "image_alt": "",
+        "projects": "---MISSING---",
+        "projects_plural": "---MISSING---",
+        "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+      },
+      "user_old": {},
+      "webview": {
+        "loading": ""
+      }
+    },
+    "user-following-projects": {
+      "description": "Men här är några av de projekt {{name}} följer.",
+      "title": "Den här användaren har inga egna projekt än."
+    },
+    "user-projects": {
+      "followers": "{{count, humanFormat}} följare",
+      "followers_plural": "{{count, humanFormat}} följare",
+      "title": "Projekt"
+    },
+    "user": {
+      "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+      "image_alt": "",
+      "projects": "---MISSING---",
+      "projects_plural": "---MISSING---",
+      "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+    },
+    "user_old": {},
+    "webview": {
+      "loading": ""
+    }
+  },
+  "user-following-projects": {
+    "description": "Men här är några av de projekt {{name}} följer.",
+    "title": "Den här användaren har inga egna projekt än."
+  },
+  "user-projects": {
+    "followers": "{{count, humanFormat}} följare",
+    "followers_plural": "{{count, humanFormat}} följare",
+    "title": "Projekt"
+  },
+  "user": {
+    "description": "Se skiftnyckelprojekt och inlägg från {{fullName}} . (@ {{username}} )",
+    "image_alt": "",
+    "projects": "---MISSING---",
+    "projects_plural": "---MISSING---",
+    "title": "{{fullName}} . (@ {{username}} ) - projekt och inlägg"
+  },
+  "user_old": {},
+  "webview": {
+    "loading": ""
+  }
+}
