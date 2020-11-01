@@ -1,7 +1,9 @@
 {
-  "download": "Apps herunterladen",
-  "explore": "Erkunden",
-  "feed": "Futter",
-  "login": "Einloggen",
-  "register": "Anmelden"
+    "download": "Apps herunterladen",
+    "explore": "Erkunden",
+    "feed": "Futter",
+    "home": "",
+    "login": "Einloggen",
+    "notifications": "",
+    "register": "Anmelden"
 }

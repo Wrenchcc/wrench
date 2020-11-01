@@ -1,4 +1,6 @@
 {
-  "load_replies": "Afficher les réponses ( {{count}} )",
-  "load_replies_plural": ""
+    "load_replies": "Afficher les réponses ( {{count}} )",
+    "load_replies_plural": "",
+    "loadMore": "",
+    "title": ""
 }

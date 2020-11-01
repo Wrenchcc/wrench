@@ -1,6 +1,6 @@
 {
-  "button_default": "Spedire",
-  "button_success": "Inviato",
-  "description": "Inserisci il tuo numero e ricevi un unico collegamento SMS.",
-  "title": "Scarica l'app Wrench su Appstore e Google Play"
+    "button_default": "Spedire",
+    "button_success": "Inviato",
+    "description": "Inserisci il tuo numero e ricevi un unico collegamento SMS.",
+    "title": "Scarica l'app Wrench su Appstore e Google Play"
 }

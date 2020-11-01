@@ -1,7 +1,8 @@
 {
-  "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
-  "share": "Dele",
-  "similar": "Lignende prosjekter",
-  "title": "{{title}} - {{type}} prosjekt",
-  "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel"
+    "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel",
+    "recent": "",
+    "share": "Dele",
+    "similar": "Lignende prosjekter",
+    "title": "{{title}} - {{type}} prosjekt",
+    "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} innlegg - {{fullName}} . (@ {{username}} ) på skiftenøkkel"
 }

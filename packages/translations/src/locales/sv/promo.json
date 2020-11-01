@@ -1,6 +1,6 @@
 {
-  "button_default": "Skicka",
-  "button_success": "Skickat",
-  "description": "Ange ditt nummer och få en engångs SMS-länk.",
-  "title": "Ladda ner Wrench-appen på Appstore och Google play"
+    "button_default": "Skicka",
+    "button_success": "Skickat",
+    "description": "Ange ditt nummer och få en engångs SMS-länk.",
+    "title": "Ladda ner Wrench-appen på Appstore och Google play"
 }

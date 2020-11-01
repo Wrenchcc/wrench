@@ -1,7 +1,8 @@
 {
-  "description": "{{followers, humanFormat}} volger, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench",
-  "share": "Delen",
-  "similar": "Vergelijkbare projecten",
-  "title": "{{title}} - {{type}} <span>binnen</span> project",
-  "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
+    "description": "{{followers, humanFormat}} volger, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench",
+    "recent": "",
+    "share": "Delen",
+    "similar": "Vergelijkbare projecten",
+    "title": "{{title}} - {{type}} <span>binnen</span> project",
+    "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench"
 }

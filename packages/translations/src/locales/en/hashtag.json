@@ -1,0 +1,4 @@
+{
+    "posts": "{{count, humanFormat}} post",
+    "posts_plural": "{{count, humanFormat}} posts"
+}

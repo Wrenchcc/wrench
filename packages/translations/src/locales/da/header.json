@@ -1,7 +1,9 @@
 {
-  "download": "Download apps",
-  "explore": "Udforske",
-  "feed": "Foder",
-  "login": "Log på",
-  "register": "Tilmelde"
+    "download": "Download apps",
+    "explore": "Udforske",
+    "feed": "Foder",
+    "home": "",
+    "login": "Log på",
+    "notifications": "",
+    "register": "Tilmelde"
 }

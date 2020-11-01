@@ -1,5 +1,7 @@
 {
-  "follow": "Siga este projeto",
-  "follow_short": "Segue",
-  "unfollow": "Segue"
+    "follow": "Siga este projeto",
+    "followSmall": "",
+    "unfollow": "Segue",
+    "unfollowSmall": "",
+    "follow_short": "Segue"
 }

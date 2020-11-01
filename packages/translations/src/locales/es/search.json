@@ -1,3 +1,5 @@
 {
-  "placeholder": "Buscar"
+    "clear": "",
+    "placeholder": "Buscar",
+    "recent": ""
 }

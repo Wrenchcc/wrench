@@ -1,4 +1,12 @@
 {
     "description": "Here you will see comments, new followers and other activities.",
-    "title": "No notifications yet."
+    "title": "No notifications yet.",
+    "follow": "Now follows your project",
+    "comment": "Commented on your post",
+    "reply": "Replied to your comment",
+    "mention": "Mentioned you in a comment",
+    "postLike": "Sparked your post",
+    "commentLike": "Sparked your comment"
 }
+
+

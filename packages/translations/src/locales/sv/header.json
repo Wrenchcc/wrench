@@ -1,7 +1,9 @@
 {
-  "download": "Ladda ner Appar",
-  "explore": "Utforska",
-  "feed": "Feed",
-  "login": "Logga in",
-  "register": "Registrera dig"
+    "download": "Ladda ner Appar",
+    "explore": "Utforska",
+    "feed": "Feed",
+    "home": "",
+    "login": "Logga in",
+    "notifications": "",
+    "register": "Registrera dig"
 }

@@ -1,4 +1,6 @@
 {
-  "description": "Hier zie je de meest populaire projecten van deze week.",
-  "title": "Populaire projecten"
+    "description": "Hier zie je de meest populaire projecten van deze week.",
+    "popular": "",
+    "recent": "",
+    "title": "Populaire projecten"
 }

@@ -1,7 +1,9 @@
 {
-  "download": "Last ned apper",
-  "explore": "Utforske",
-  "feed": "Mate",
-  "login": "Logg Inn",
-  "register": "Melde deg på"
+    "download": "Last ned apper",
+    "explore": "Utforske",
+    "feed": "Mate",
+    "home": "",
+    "login": "Logg Inn",
+    "notifications": "",
+    "register": "Melde deg på"
 }

@@ -1,0 +1,8 @@
+{
+    "next": "Next",
+    "options": {
+        "cancel": "Cancel",
+        "discard": "Discard",
+        "title": "If you go back now, your edits will be discarded."
+    }
+}

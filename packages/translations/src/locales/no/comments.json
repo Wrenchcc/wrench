@@ -1,4 +1,6 @@
 {
-  "load_replies": "Se svar ( {{count}} )",
-  "load_replies_plural": ""
+    "load_replies": "Se svar ( {{count}} )",
+    "load_replies_plural": "",
+    "loadMore": "",
+    "title": ""
 }

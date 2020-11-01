@@ -1,5 +1,8 @@
 {
-  "description": "Veja projetos de chave inglesa e postagens de {{fullName}} (@ {{username}} )",
-  "image_alt": "",
-  "title": "{{fullName}} (@ {{username}} ) - projetos e postagens"
+    "description": "Veja projetos de chave inglesa e postagens de {{fullName}} (@ {{username}} )",
+    "image_alt": "",
+    "notfound": "",
+    "projects": "",
+    "projects_plural": "",
+    "title": "{{fullName}} (@ {{username}} ) - projetos e postagens"
 }

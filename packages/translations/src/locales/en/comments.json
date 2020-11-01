@@ -1,4 +1,4 @@
 {
-    "load_replies": "View replies ({{count}})",
-    "load_replies_plural": ""
+    "title": "Comments",
+    "loadMore": "Load more comments"
 }

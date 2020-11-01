@@ -1,0 +1,13 @@
+{
+    "title": "Titel",
+    "headerTitle": "Redigera",
+    "information": "Information",
+    "done": "Klar",
+    "deleteTitle": "Radera projekt",
+    "deleteAlert": "Radera projekt?",
+    "description": "Den här åtgärden kan inte ångras.",
+    "cancel": "Avbryt",
+    "delete": "Radera",
+    "projectSettings": "Projektinställningar",
+    "model": "Redigera modell"
+}
