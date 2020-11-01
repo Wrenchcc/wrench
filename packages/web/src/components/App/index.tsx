@@ -4,6 +4,7 @@ import Head from 'next/head'
 import NextApp from 'next/app'
 import Cookie, { Cookies } from 'services/cookie'
 import Router from 'next/router'
+import GoogleAnalyticsSDK from 'components/GoogleAnalyticsSDK'
 import NProgress from 'nprogress'
 import { ThemeProvider as NextThemeProvider, useTheme } from 'next-themes'
 import { ThemeProvider } from '@wrench/ui'
@@ -107,6 +108,7 @@ class App extends NextApp<Props> {
         <Reset />
         <GlobalStyle />
         <Seo />
+        <GoogleAnalyticsSDK />
 
         <NextThemeProvider enableSystem defaultTheme="system">
           <AppWithi18n {...this.props} />

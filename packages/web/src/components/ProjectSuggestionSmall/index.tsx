@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react'
+import React, { memo } from 'react'
 import { useFollowProjectMutation, useProjectSuggestionsQuery } from '@wrench/common'
 import { useTranslation } from 'i18n'
 import { Title, Text, ProjectCardSmall } from 'ui'
@@ -62,4 +62,4 @@ function ProjectSuggestion() {
   )
 }
 
-export default ProjectSuggestion
+export default memo(ProjectSuggestion)

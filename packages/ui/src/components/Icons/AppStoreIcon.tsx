@@ -5,9 +5,17 @@ function SvgAppStoreIcon({
   height = 46,
   className,
   style = {},
+  onClick,
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 145 48" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 145 48"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <g fill="none">
         <path
           fill="#A6A6A6"

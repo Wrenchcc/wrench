@@ -7,10 +7,18 @@ function SvgArrowDownIcon({
   height = 5,
   className,
   style = {},
+  onClick,
   ...props
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 12 7" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 12 7"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <path
         d="M1 1l5 5 5-5"
         stroke={props.theme.colors[props.color] || props.theme.colors.inverse}

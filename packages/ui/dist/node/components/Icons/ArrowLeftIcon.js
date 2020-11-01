@@ -34,8 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgArrowLeftIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 22 : _b, _c = _a.height, height = _c === void 0 ? 17 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["width", "height", "className", "style"]);
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 22 17", className: className, style: style },
+    var _b = _a.width, width = _b === void 0 ? 22 : _b, _c = _a.height, height = _c === void 0 ? 17 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, onClick = _a.onClick, props = __rest(_a, ["width", "height", "className", "style", "onClick"]);
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 22 17", className: className, style: style, onClick: onClick },
         React.createElement("g", { fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeWidth: 1.5 },
             React.createElement("path", { d: "M21 8.5H1M9 16L1 8.5 9 1" }))));
 }

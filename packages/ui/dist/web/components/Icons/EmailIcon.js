@@ -34,8 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgEmailIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 22 : _b, _c = _a.height, height = _c === void 0 ? 22 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["width", "height", "className", "style"]);
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 20 17", className: className, style: style },
+    var _b = _a.width, width = _b === void 0 ? 22 : _b, _c = _a.height, height = _c === void 0 ? 22 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, onClick = _a.onClick, props = __rest(_a, ["width", "height", "className", "style", "onClick"]);
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 20 17", className: className, style: style, onClick: onClick },
         React.createElement("g", { fill: "none", fillRule: "evenodd", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5 },
             React.createElement("path", { d: "M2.8 1h14.4c.99 0 1.8.81 1.8 1.8v10.8c0 .99-.81 1.8-1.8 1.8H2.8c-.99 0-1.8-.81-1.8-1.8V2.8C1 1.81 1.81 1 2.8 1z" }),
             React.createElement("path", { d: "M19 2.8l-9 6.3-9-6.3" }))));

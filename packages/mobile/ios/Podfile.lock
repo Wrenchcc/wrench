@@ -413,10 +413,10 @@ PODS:
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
   - React-jsinspector (0.63.3)
-  - react-native-config (1.3.3):
-    - react-native-config/App (= 1.3.3)
-  - react-native-config/App (1.3.3):
-    - React
+  - react-native-config (1.4.0):
+    - react-native-config/App (= 1.4.0)
+  - react-native-config/App (1.4.0):
+    - React-Core
   - react-native-fbsdk (2.0.0):
     - React
     - react-native-fbsdk/Core (= 2.0.0)
@@ -521,14 +521,14 @@ PODS:
     - React
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBAnalytics (7.6.8):
+  - RNFBAnalytics (7.6.9):
     - Firebase/Analytics (~> 6.34.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (8.4.6):
+  - RNFBApp (8.4.7):
     - Firebase/CoreOnly (~> 6.34.0)
     - React-Core
-  - RNFBMessaging (7.9.1):
+  - RNFBMessaging (7.9.2):
     - Firebase/Messaging (~> 6.34.0)
     - React-Core
     - RNFBApp
@@ -541,9 +541,9 @@ PODS:
     - React-Core
   - RNReanimated (1.4.0):
     - React
-  - RNSentry (1.9.0):
+  - RNSentry (2.0.0):
     - React-Core
-    - Sentry (~> 5.2.0)
+    - Sentry (~> 6.0.3)
   - RNShare (4.0.4):
     - React-Core
   - SDWebImage (5.9.4):
@@ -552,9 +552,9 @@ PODS:
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
-  - Sentry (5.2.2):
-    - Sentry/Core (= 5.2.2)
-  - Sentry/Core (5.2.2)
+  - Sentry (6.0.6):
+    - Sentry/Core (= 6.0.6)
+  - Sentry/Core (6.0.6)
   - SSZipArchive (2.2.3)
   - UMAppLoader (1.3.0)
   - UMBarCodeScannerInterface (5.3.0)
@@ -937,7 +937,7 @@ SPEC CHECKSUMS:
   React-jsi: df07aa95b39c5be3e41199921509bfa929ed2b9d
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
-  react-native-config: 9a061347e0136fdb32d43a34d60999297d672361
+  react-native-config: f309b9ac19456dea12325699af51e0fa0217ce6a
   react-native-fbsdk: 00c15d138bba6d4efa628670886fc58cec858c19
   react-native-netinfo: 250dc0ca126512f618a8a2ca6a936577e1f66586
   react-native-pinchable: 214f01b35e04ce95184d0cf997598bec8b617ce4
@@ -958,18 +958,18 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNDeviceInfo: e1d82a27d0c1ea6278e3b141784dc38e51fc90f4
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
-  RNFBAnalytics: 2dc4dd9e2445faffca041b10447a23a71dcdabf8
-  RNFBApp: 7eacc7da7ab19f96c05e434017d44a9f09410da8
-  RNFBMessaging: 93a705b8286452d422a404d1303689a9b59012a0
+  RNFBAnalytics: 7d40b9b392fe2b8e6c2beeb119d1b090ed671c94
+  RNFBApp: 804b98033f45c3a3e35b56de8c894f85ef5e4388
+  RNFBMessaging: 9287cbf850ed3524c9f915f5b3daaf1cfaabbf06
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNSentry: 1adaa43b01c6a3ab5091d4d1add66b7c58558898
+  RNSentry: cb4ef23400fb6690f6ac8f6acef0c023a8a4f37d
   RNShare: af2aeae0587bf3e40e5268f1ef96aa162f1a6ac9
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
-  Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
+  Sentry: 35a49e933ce32992023cd0e810042079e4792682
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   UMAppLoader: 5db5dc03176c6238da9c8b3657a370137882a4ad
   UMBarCodeScannerInterface: 017672479f93de88d94c3a50dfb66b5348b65989

@@ -7,10 +7,18 @@ function SvgFacebookIcon({
   height = 23,
   className,
   style = {},
+  onClick,
   ...props
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width="1em" height="1em" viewBox="0 0 13 22" className={className} style={style}>
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 13 22"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <path
         fill="none"
         stroke={props.theme.colors[props.color] || props.theme.colors.inverse}

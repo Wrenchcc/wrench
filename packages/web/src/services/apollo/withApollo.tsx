@@ -33,7 +33,7 @@ export default withApollo(
               comments: relayStylePagination(['postId']),
               followers: relayStylePagination(['projectId']),
               likes: relayStylePagination(['postId']),
-              notifications: relayStylePagination(),
+              notifications: relayStylePagination(['first']),
               posts: relayStylePagination(),
               projectCollections: relayStylePagination(['projectSlug']),
               projects: relayStylePagination(['typeId', 'type']),

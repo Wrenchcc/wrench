@@ -11,6 +11,7 @@ function SvgLogoIcon({
   height = 40,
   style = {},
   className,
+  onClick,
 }: React.SVGProps<SVGSVGElement>) {
   const textColor =
     (black && theme.colors.white) || (white && theme.colors.black) || theme.isDark
@@ -31,7 +32,14 @@ function SvgLogoIcon({
       : theme.colors.black
 
   return (
-    <svg width={width} height={height} viewBox="0 0 40 40" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 40 40"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <g fill="none" fillRule="evenodd">
         <rect width={40} height={40} fill={bgColor} rx={0.667} />
         <path

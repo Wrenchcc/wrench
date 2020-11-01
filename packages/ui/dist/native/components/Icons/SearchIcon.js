@@ -21,8 +21,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 function SvgSearchIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 12 : _b, _c = _a.height, height = _c === void 0 ? 12 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d;
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 14 14", className: className, style: style },
+    var _b = _a.width, width = _b === void 0 ? 12 : _b, _c = _a.height, height = _c === void 0 ? 12 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, onClick = _a.onClick;
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 14 14", className: className, style: style, onClick: onClick },
         React.createElement("g", { fill: "none", fillRule: "evenodd", stroke: "#6D6F76", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, transform: "translate(1 1)" },
             React.createElement("circle", { cx: 5, cy: 5, r: 5 }),
             React.createElement("path", { d: "M12 12L9 9" }))));

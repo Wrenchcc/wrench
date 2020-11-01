@@ -7,10 +7,18 @@ function SvgArrowLeftIcon({
   height = 17,
   className,
   style = {},
+  onClick,
   ...props
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 22 17" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 22 17"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <g
         fill="none"
         fillRule="evenodd"

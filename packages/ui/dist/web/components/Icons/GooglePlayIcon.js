@@ -21,8 +21,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 function SvgGooglePlayIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 162 : _b, _c = _a.height, height = _c === void 0 ? 46 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d;
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 162 48", className: className, style: style },
+    var _b = _a.width, width = _b === void 0 ? 162 : _b, _c = _a.height, height = _c === void 0 ? 46 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, onClick = _a.onClick;
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 162 48", className: className, style: style, onClick: onClick },
         React.createElement("defs", null,
             React.createElement("linearGradient", { x1: "61.034%", y1: "4.948%", x2: "26.503%", y2: "71.907%", id: "google-play-icon_svg__a" },
                 React.createElement("stop", { stopColor: "#00A0FF", offset: "0%" }),

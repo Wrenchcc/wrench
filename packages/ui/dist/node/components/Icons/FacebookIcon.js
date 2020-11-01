@@ -34,8 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgFacebookIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 23 : _b, _c = _a.height, height = _c === void 0 ? 23 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["width", "height", "className", "style"]);
-    return (React.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 13 22", className: className, style: style },
+    var _b = _a.width, width = _b === void 0 ? 23 : _b, _c = _a.height, height = _c === void 0 ? 23 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, onClick = _a.onClick, props = __rest(_a, ["width", "height", "className", "style", "onClick"]);
+    return (React.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 13 22", className: className, style: style, onClick: onClick },
         React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M12 1H9a5 5 0 00-5 5v3H1v4h3v8h4v-8h3l1-4H8V6a1 1 0 011-1h3V1z" })));
 }
 exports.default = styled_components_1.withTheme(SvgFacebookIcon);

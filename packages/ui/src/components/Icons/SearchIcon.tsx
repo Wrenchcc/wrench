@@ -5,9 +5,17 @@ function SvgSearchIcon({
   height = 12,
   className,
   style = {},
+  onClick,
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 14 14" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 14 14"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <g
         fill="none"
         fillRule="evenodd"

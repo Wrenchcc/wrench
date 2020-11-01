@@ -29,24 +29,23 @@ function Notifications({ onPress }) {
   })
 
   useEffect(() => {
-    // if (data?.notifications?.unreadCount > 0) {
-    // @ts-ignore
-    markAllNotificationsSeen({
-      update: (cache) => {
-        const data = cache.readQuery({ query: NotificationsDocument })
-
-        cache.writeQuery({
-          query: NotificationsDocument,
-          data: {
-            ...data,
-            notifications: {
-              ...data.notifications,
-              unreadCount: 0,
-            },
-          },
-        })
-      },
-    })
+    // if (notifications?.unreadCount > 0) {
+    //   // @ts-ignore
+    //   markAllNotificationsSeen({
+    //     update: (cache) => {
+    //       const data = cache.readQuery({ query: NotificationsDocument })
+    //       cache.writeQuery({
+    //         query: NotificationsDocument,
+    //         data: {
+    //           ...data,
+    //           notifications: {
+    //             ...data.notifications,
+    //             unreadCount: 0,
+    //           },
+    //         },
+    //       })
+    //     },
+    //   })
     // }
   }, [])
 

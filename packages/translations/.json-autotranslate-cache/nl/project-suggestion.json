@@ -1,6 +1,6 @@
 {
   "description": "We hebben hieronder een aantal projecten geselecteerd die u wellicht interessant vindt.",
-  "title": "{{title}} - {{type}} <span>binnen</span> project",
+  "title": "Kom op de hoogte en volg enkele projecten.",
   "description_plural": "{{followers, humanFormat}} volgers, {{posts, humanFormat}} berichten - {{fullName}} . (@ {{username}} ) op Wrench",
   "title_small": "Aanbevolen voor jou"
 }

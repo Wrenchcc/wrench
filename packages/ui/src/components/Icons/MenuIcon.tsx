@@ -7,10 +7,18 @@ function SvgMenuIcon({
   height = 18,
   className,
   style = {},
+  onClick,
   ...props
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 22 18" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 22 18"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <path
         d="M21 1H1m20 8H1m20 8H1"
         fill="none"

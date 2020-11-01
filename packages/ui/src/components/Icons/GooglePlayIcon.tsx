@@ -5,9 +5,17 @@ function SvgGooglePlayIcon({
   height = 46,
   className,
   style = {},
+  onClick,
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 162 48" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 162 48"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <defs>
         <linearGradient
           x1="61.034%"

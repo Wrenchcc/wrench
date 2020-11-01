@@ -7,10 +7,18 @@ function SvgArrowLeftAlternativeIcon({
   height = 48,
   className,
   style = {},
+  onClick,
   ...props
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={height} height={width} viewBox="0 0 44 48" className={className} style={style}>
+    <svg
+      width={height}
+      height={width}
+      viewBox="0 0 44 48"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <defs>
         <filter
           x="-95.3%"

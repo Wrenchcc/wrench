@@ -34,8 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgArrowRightAlternativeIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 44 : _b, _c = _a.height, height = _c === void 0 ? 48 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["width", "height", "className", "style"]);
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 44 48", className: className, style: style },
+    var _b = _a.width, width = _b === void 0 ? 44 : _b, _c = _a.height, height = _c === void 0 ? 48 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, onClick = _a.onClick, props = __rest(_a, ["width", "height", "className", "style", "onClick"]);
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 44 48", className: className, style: style, onClick: onClick },
         React.createElement("defs", null,
             React.createElement("filter", { x: "-95.3%", y: "-190.6%", width: "290.6%", height: "478.1%", filterUnits: "objectBoundingBox", id: "arrow-right-alternative-icon_svg__a" },
                 React.createElement("feMorphology", { radius: 0.75, operator: "dilate", in: "SourceAlpha", result: "shadowSpreadOuter1" }),

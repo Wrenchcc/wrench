@@ -7,10 +7,18 @@ function SvgCheckMarkIcon({
   height = 16,
   className,
   style = {},
+  onClick,
   ...props
 }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width={width} height={height} viewBox="0 0 18 13" className={className} style={style}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 18 13"
+      className={className}
+      style={style}
+      onClick={onClick}
+    >
       <path
         d="M17 1L6 12 1 7"
         stroke={props.theme.colors[props.color] || props.theme.colors.inverse}

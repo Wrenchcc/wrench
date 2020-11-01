@@ -54,9 +54,9 @@ export const Types = styled.div`
 
 export const Image = styled(UiImage)`
   background: transparent;
-  height: ${props => props.height};
-  width: ${props => props.width};
-  border: 3px solid ${props => (props.selected ? props.theme.colors.default : 'transparent')};
+  height: ${(props) => props.height}px;
+  width: ${(props) => props.width}px;
+  border: 3px solid ${(props) => (props.selected ? props.theme.colors.default : 'transparent')};
   box-sizing: border-box;
 
   @media ${DEVICE.TABLET} {
@@ -78,14 +78,14 @@ export const Next = styled.button`
   border: none;
   color: white;
   font-size: 15px;
-  opacity: ${props => props.opacity};
+  opacity: ${(props) => props.opacity};
 `
 
 export const Picture = styled.div`
   cursor: pointer;
   position: relative;
-  height: ${props => props.height};
-  width: ${props => props.width};
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
   padding-top: 10px;
 
   @media ${DEVICE.TABLET} {

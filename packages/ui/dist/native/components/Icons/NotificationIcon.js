@@ -34,8 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
 var styled_components_1 = require("styled-components");
 function SvgNotificationIcon(_a) {
-    var _b = _a.width, width = _b === void 0 ? 19 : _b, _c = _a.height, height = _c === void 0 ? 19 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["width", "height", "className", "style"]);
-    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 21 21", className: className, style: style },
+    var _b = _a.width, width = _b === void 0 ? 19 : _b, _c = _a.height, height = _c === void 0 ? 19 : _c, className = _a.className, _d = _a.style, style = _d === void 0 ? {} : _d, onClick = _a.onClick, props = __rest(_a, ["width", "height", "className", "style", "onClick"]);
+    return (React.createElement("svg", { width: width, height: height, viewBox: "0 0 21 21", className: className, style: style, onClick: onClick },
         React.createElement("path", { fill: "none", stroke: props.theme.colors[props.color] || props.theme.colors.inverse, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 1.5, d: "M20 15.25H1a2.85 2.85 0 002.85-2.85V7.65a6.65 6.65 0 0113.3 0v4.75A2.85 2.85 0 0020 15.25zm-7.857 3.8a1.9 1.9 0 01-3.287 0h3.288z" })));
 }
 exports.default = styled_components_1.withTheme(SvgNotificationIcon);
