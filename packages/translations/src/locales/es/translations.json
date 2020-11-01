@@ -1,0 +1,323 @@
+[
+  {
+    "blog-post": {
+      "back": "Volver al blog",
+      "title": "Blog"
+    }
+  },
+  {
+    "blog": {
+      "title": "Blog"
+    }
+  },
+  {
+    "collections": {
+      "title": ""
+    }
+  },
+  {
+    "comment-field": {
+      "placeholder": "Añadir un comentario...",
+      "post": "Enviar"
+    }
+  },
+  {
+    "comments": {
+      "load_replies": "Ver respuestas ( {{count}} )",
+      "load_replies_plural": ""
+    }
+  },
+  {
+    "comments_old": {
+      "loadreplies": "",
+      "loadreplies_plural": ""
+    }
+  },
+  {
+    "common": {
+      "like": "",
+      "like_plural": "",
+      "reply": ""
+    }
+  },
+  {
+    "common_old": {
+      "signout": "",
+      "download": "",
+      "explore": "",
+      "feed": "",
+      "login": "",
+      "register": "",
+      "sign_out": ""
+    }
+  },
+  {
+    "feed": {
+      "description": "",
+      "title": "Alimentar"
+    }
+  },
+  {
+    "follow": {
+      "follow": "Sigue este proyecto",
+      "follow_short": "Seguir",
+      "unfollow": "Siguiendo"
+    }
+  },
+  {
+    "followers": {
+      "followers": "{{count, humanFormat}} seguidor",
+      "followers_plural": "{{count, humanFormat}} seguidores"
+    }
+  },
+  {
+    "following-projects": {
+      "title": "Proyectos que sigues"
+    }
+  },
+  {
+    "footer": {
+      "about": "Acerca de",
+      "blog": "Blog",
+      "chat": "Habla con nosotros",
+      "cookies": "Política de cookies",
+      "description": "Wrench es una comunidad de proyectos fundada en 2018 en Suecia. Está diseñado, construido y dirigido desde el corazón de Estocolmo.",
+      "download": "Descargar aplicaciones",
+      "eula": "EULA",
+      "faq": "Preguntas más frecuentes",
+      "feedback": "Retroalimentación",
+      "help": "Ayuda",
+      "legal": "Legal",
+      "mail": "Soporte por correo",
+      "policy": "Política de privacidad",
+      "press": "Prensa",
+      "social": "Social",
+      "status": "Estado",
+      "terms": "Términos y condiciones",
+      "trademarks": "App Store es una marca de servicio de Apple Inc. Google Play es una marca comercial de Google LLC."
+    }
+  },
+  {
+    "header": {
+      "download": "Descargar aplicaciones",
+      "explore": "Explorar",
+      "feed": "Alimentar",
+      "login": "Iniciar sesión",
+      "register": "Regístrate"
+    }
+  },
+  {
+    "home": {
+      "description": "Documente sus construcciones, comparta sus proyectos y aprenda de ideas afines.",
+      "document_title": "Wrench | Llave inglesa Tu comunidad de motociclistas",
+      "explore": "Explore más proyectos",
+      "signup": "Regístrate ahora",
+      "subtitle": "comunidad.",
+      "title": "Tu motocicleta"
+    }
+  },
+  {
+    "languages": {
+      "sv": "Sueco",
+      "en": "Inglés",
+      "es": "Español",
+      "it": "Italiano",
+      "de": "Alemán",
+      "nl": "Holandés",
+      "fr": "Francés",
+      "tl": "Filipino",
+      "pt": "Portugués",
+      "ru": "Ruso",
+      "no": "Noruego",
+      "da": "Danés"
+    }
+  },
+  {
+    "legal": {
+      "description": "Al continuar, acepta las",
+      "link": "términos y Condiciones."
+    }
+  },
+  {
+    "like-post": {
+      "like": "{{count}} chispa",
+      "like_plural": "{{count, humanFormat}} chispas"
+    }
+  },
+  {
+    "list": {
+      "load_more": "Ver 1 comentario",
+      "load_more_plural": "Ver los {{count, humanFormat}} comentarios"
+    }
+  },
+  {
+    "login": {
+      "apple_button": "Continuar con Apple",
+      "fb_button": "Continuar con Facebook",
+      "google_button": "Continuar con Google",
+      "title": "Inicie sesión para seguir sus proyectos favoritos y más."
+    }
+  },
+  {
+    "logout": {
+      "logout": "Cerrar sesión",
+      "profile": "Perfil",
+      "settings": "Configuraciones"
+    }
+  },
+  {
+    "mobile-menu": {
+      "download": "Descargar aplicaciones",
+      "explore": "Explorar",
+      "feed": "Alimentar",
+      "login": "Iniciar sesión",
+      "register": "Regístrate",
+      "sign_out": "desconectar"
+    }
+  },
+  {
+    "notification": {
+      "comment": "Comentó tu publicación",
+      "comment_like": "Provocó tu comentario",
+      "follow": "Ahora sigue tu proyecto",
+      "mention": "Te mencioné en un comentario",
+      "post_like": "Encendió tu publicación",
+      "reply": "Respondió a su comentario"
+    }
+  },
+  {
+    "notifications": {
+      "description": "Aquí verá comentarios, nuevos seguidores y otras actividades.",
+      "title": "Aún no hay notificaciones."
+    }
+  },
+  {
+    "onboarding": {
+      "description": "Elija al menos tres categorías que le interesen y le ofreceremos algunos proyectos interesantes para empezar.",
+      "next": "próximo",
+      "title": "¿En que estas interesado?"
+    }
+  },
+  {
+    "popular": {
+      "description": "Aquí ves los proyectos más populares de esta semana.",
+      "title": "Proyectos populares"
+    }
+  },
+  {
+    "project-suggestion": {
+      "description": "Hemos seleccionado algunos proyectos a continuación que pueden resultarle interesantes.",
+      "title": "Ponte al día y sigue algunos proyectos.",
+      "title_small": "Sugerido para ti"
+    }
+  },
+  {
+    "project-suggestion_old": {
+      "headline": "Ponte al día y sigue algunos proyectos."
+    }
+  },
+  {
+    "project": {
+      "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench",
+      "share": "Compartir",
+      "similar": "Proyectos similares",
+      "title": "{{title}} - {{type}} proyecto",
+      "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} publicaciones - {{fullName}} . (@{{username}}) en Wrench"
+    }
+  },
+  {
+    "promo": {
+      "button_default": "Enviar",
+      "button_success": "Expedido",
+      "description": "Ingrese su número y obtenga un enlace de SMS por única vez.",
+      "title": "Descarga la aplicación Wrench en Appstore y Google Play"
+    }
+  },
+  {
+    "result": {
+      "projects": "{{count, humanFormat}} proyecto",
+      "projects_plural": "{{count, humanFormat}} proyectos",
+      "not_found": "No se encontraron resultados de búsqueda."
+    }
+  },
+  {
+    "search-location": {
+      "no_result": "No hay resultados.",
+      "placeholder": "Ciudad, País"
+    }
+  },
+  {
+    "search": {
+      "placeholder": "Buscar"
+    }
+  },
+  {
+    "settings": {
+      "chat": "Habla con nosotros",
+      "feedback": "Retroalimentación",
+      "field_bio": "Bio",
+      "field_firstname": "Nombre de pila",
+      "field_lastname": "Apellido",
+      "field_website": "Sitio web",
+      "mail": "Soporte por correo",
+      "save": "Salvar",
+      "sections_language": "Idioma",
+      "sections_notifications": "Notificaciones",
+      "sections_profile": "Editar perfil",
+      "sections_support": "Apoyo",
+      "title": "Configuraciones",
+      "toast_error": "Algo salió mal",
+      "toast_saved": "Se guardó la configuración",
+      "new_comment": "Comentarios",
+      "new_mention": "Menciones",
+      "new_article": "Artículos",
+      "new_follower": "Seguidores",
+      "similar_projects": "Proyectos similares",
+      "product_announcements": "Anuncios de productos"
+    }
+  },
+  {
+    "time": {
+      "d": "Hace {{count}} días",
+      "d_plural": "Hace {{count}} días",
+      "h": "Hace {{count}} horas",
+      "h_plural": "Hace {{count}} horas",
+      "m": "Hace {{count}} minutos",
+      "m_plural": "Hace {{count}} minutos",
+      "mo": "Hace {{count}} meses",
+      "mo_plural": "Hace {{count}} meses",
+      "now": "justo ahora",
+      "y": "Hace {{count}} años",
+      "y_plural": "Hace {{count}} años"
+    }
+  },
+  {
+    "translations": {
+      "user": {
+        "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
+        "image_alt": "",
+        "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
+      }
+    }
+  },
+  {
+    "user-following-projects": {
+      "description": "Pero aquí hay algunos de los proyectos que sigue {{name}} .",
+      "title": "Este usuario aún no tiene proyectos propios."
+    }
+  },
+  {
+    "user-projects": {
+      "followers": "{{count, humanFormat}} seguidor",
+      "followers_plural": "{{count, humanFormat}} seguidores",
+      "title": "Proyectos"
+    }
+  },
+  {
+    "user": {
+      "description": "Consulta los proyectos y publicaciones de Wrench de {{fullName}} . (@ {{username}} )",
+      "image_alt": "",
+      "title": "{{fullName}} . (@ {{username}} ) - proyectos y publicaciones"
+    }
+  }
+]

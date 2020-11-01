@@ -1,0 +1,317 @@
+[
+  {
+    "blog-post": {
+      "back": "Tilbage til bloggen",
+      "title": "Blog"
+    }
+  },
+  {
+    "blog": {
+      "title": "Blog"
+    }
+  },
+  {
+    "collections": {
+      "title": "Samlinger"
+    }
+  },
+  {
+    "comment-field": {
+      "placeholder": "Tilføj en kommentar...",
+      "post": "Stolpe"
+    }
+  },
+  {
+    "comments": {
+      "load_replies": "Se svar ({{count}})",
+      "load_replies_plural": ""
+    }
+  },
+  {
+    "common": {
+      "like": "",
+      "like_plural": "",
+      "reply": ""
+    }
+  },
+  {
+    "common_old": {
+      "signout": "",
+      "download": "",
+      "explore": "",
+      "feed": "",
+      "login": "",
+      "register": "",
+      "sign_out": ""
+    }
+  },
+  {
+    "feed": {
+      "description": "",
+      "title": "Foder"
+    }
+  },
+  {
+    "follow": {
+      "follow": "Følg dette projekt",
+      "follow_short": "Følge med",
+      "unfollow": "Følge"
+    }
+  },
+  {
+    "followers": {
+      "followers": "{{count, humanFormat}} følger",
+      "followers_plural": "{{count, humanFormat}} følgere"
+    }
+  },
+  {
+    "following-projects": {
+      "title": "Projekter, du følger"
+    }
+  },
+  {
+    "footer": {
+      "about": "Om",
+      "blog": "Blog",
+      "chat": "Chat med os",
+      "cookies": "Cookiepolitik",
+      "description": "Wrench er et projektsamfund grundlagt i 2018 i Sverige. Det er designet, bygget og kørt fra hjertet af Stockholm.",
+      "download": "Download apps",
+      "eula": "EULA",
+      "faq": "FAQ",
+      "feedback": "Feedback",
+      "help": "Hjælp",
+      "legal": "gyldige",
+      "mail": "Mail Support",
+      "policy": "Fortrolighedspolitik",
+      "press": "Trykke",
+      "social": "Social",
+      "status": "Status",
+      "terms": "Vilkår og Betingelser",
+      "trademarks": "App Store er et servicemærke tilhørende Apple Inc. Google Play er et varemærke tilhørende Google LLC."
+    }
+  },
+  {
+    "header": {
+      "download": "Download apps",
+      "explore": "Udforske",
+      "feed": "Foder",
+      "login": "Log på",
+      "register": "Tilmelde"
+    }
+  },
+  {
+    "home": {
+      "description": "Dokumenter dine bygger, del dine projekter og lær af ligesindede.",
+      "document_title": "Skruenøgle | Dit motorcykel samfund",
+      "explore": "Udforsk flere projekter",
+      "signup": "Tilmeld dig nu",
+      "subtitle": "fællesskab.",
+      "title": "Din motorcykel"
+    }
+  },
+  {
+    "languages": {
+      "sv": "Svensk",
+      "en": "Engelsk",
+      "es": "Spansk",
+      "it": "Italiensk",
+      "de": "Tysk",
+      "nl": "Hollandsk",
+      "fr": "Fransk",
+      "tl": "Filippinsk",
+      "pt": "Portugisisk",
+      "ru": "Russisk",
+      "no": "Norsk",
+      "da": "Dansk"
+    }
+  },
+  {
+    "legal": {
+      "description": "Ved at fortsætte accepterer du skruenøgler",
+      "link": "vilkår og betingelser."
+    }
+  },
+  {
+    "like-post": {
+      "like": "{{count}} gnist",
+      "like_plural": "{{count, humanFormat}} gnister"
+    }
+  },
+  {
+    "list": {
+      "load_more": "Se 1 kommentar",
+      "load_more_plural": "Se alle {{count, humanFormat}} kommentarer"
+    }
+  },
+  {
+    "login": {
+      "apple_button": "Fortsæt med Apple",
+      "fb_button": "Fortsæt med Facebook",
+      "google_button": "Fortsæt med Google",
+      "title": "Log ind for at følge dine yndlingsprojekter og mere."
+    }
+  },
+  {
+    "logout": {
+      "logout": "Log ud",
+      "profile": "Profil",
+      "settings": "Indstillinger"
+    }
+  },
+  {
+    "mobile-menu": {
+      "download": "Download apps",
+      "explore": "Udforske",
+      "feed": "Foder",
+      "login": "Log på",
+      "register": "Tilmelde",
+      "sign_out": "Log ud"
+    }
+  },
+  {
+    "notification": {
+      "comment": "Kommenterede dit indlæg",
+      "comment_like": "Udløste din kommentar",
+      "follow": "Nu følger dit projekt",
+      "mention": "Omtalte dig i en kommentar",
+      "post_like": "Udløste dit indlæg",
+      "reply": "Besvaret din kommentar"
+    }
+  },
+  {
+    "notifications": {
+      "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+      "title": "Ingen meddelelser endnu."
+    }
+  },
+  {
+    "onboarding": {
+      "description": "Vælg mindst tre kategorier, som du er interesseret i, og vi giver dig nogle gode projekter til at begynde med.",
+      "next": "Næste",
+      "title": "Hvad er du interesseret i?"
+    }
+  },
+  {
+    "popular": {
+      "description": "Her ser du de mest populære projekter fra denne uge.",
+      "title": "Populære projekter"
+    }
+  },
+  {
+    "project-suggestion": {
+      "description": "Vi har valgt nogle projekter nedenfor, som du måske finder interessante.",
+      "title": "Bliv opdateret og følg nogle projekter.",
+      "title_small": "Foreslået til dig"
+    }
+  },
+  {
+    "project-suggestion_old": {
+      "headline": "Bliv opdateret og følg nogle projekter."
+    }
+  },
+  {
+    "project": {
+      "description": "{{followers, humanFormat}} følger, {{posts, humanFormat}} stillinger - {{fullName}} . (@{{username}}) på Wrench",
+      "share": "Del",
+      "similar": "Lignende projekter",
+      "title": "{{title}} - {{type}} projekt",
+      "description_plural": "{{followers, humanFormat}} følgere, {{posts, humanFormat}} indlæg - {{fullName}} . (@{{username}}) på Wrench"
+    }
+  },
+  {
+    "promo": {
+      "button_default": "Sende",
+      "button_success": "Sendt",
+      "description": "Indtast dit nummer, og få et SMS-link engang.",
+      "title": "Download Wrench-appen på Appstore og Google play"
+    }
+  },
+  {
+    "result": {
+      "projects": "{{count, humanFormat}} projekt",
+      "projects_plural": "{{count, humanFormat}} projekter",
+      "not_found": "Ingen søgeresultater fundet."
+    }
+  },
+  {
+    "search-location": {
+      "no_result": "Ingen resultater.",
+      "placeholder": "By land"
+    }
+  },
+  {
+    "search": {
+      "placeholder": "Søg"
+    }
+  },
+  {
+    "settings": {
+      "chat": "Chat med os",
+      "feedback": "Feedback",
+      "field_bio": "Bio",
+      "field_firstname": "Fornavn",
+      "field_lastname": "Efternavn",
+      "field_website": "Internet side",
+      "mail": "Mail Support",
+      "save": "Gemme",
+      "sections_language": "Sprog",
+      "sections_notifications": "Meddelelser",
+      "sections_profile": "Rediger profil",
+      "sections_support": "Support",
+      "title": "Indstillinger",
+      "toast_error": "Noget gik galt",
+      "toast_saved": "Indstillinger gemt",
+      "new_comment": "Kommentarer",
+      "new_mention": "Nævner",
+      "new_article": "Artikler",
+      "new_follower": "Følgere",
+      "similar_projects": "Lignende projekter",
+      "product_announcements": "Produktmeddelelser"
+    }
+  },
+  {
+    "time": {
+      "d": "{{count}} dage siden",
+      "d_plural": "{{count}} dage siden",
+      "h": "{{count}} timer siden",
+      "h_plural": "{{count}} timer siden",
+      "m": "{{count}} minut siden",
+      "m_plural": "{{count}} minutter siden",
+      "mo": "{{count}} måneder siden",
+      "mo_plural": "{{count}} måneder siden",
+      "now": "lige nu",
+      "y": "{{count}} år siden",
+      "y_plural": "{{count}} år siden"
+    }
+  },
+  {
+    "translations": {
+      "user": {
+        "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
+        "image_alt": "",
+        "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
+      }
+    }
+  },
+  {
+    "user-following-projects": {
+      "description": "Men her er nogle af de projekter, {{name}} følger.",
+      "title": "Denne bruger har endnu ingen egne projekter."
+    }
+  },
+  {
+    "user-projects": {
+      "followers": "{{count, humanFormat}} følger",
+      "followers_plural": "{{count, humanFormat}} følgere",
+      "title": "Projekter"
+    }
+  },
+  {
+    "user": {
+      "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
+      "image_alt": "",
+      "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
+    }
+  }
+]
