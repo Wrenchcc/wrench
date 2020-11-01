@@ -1,5 +1,8 @@
 {
-  "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
-  "image_alt": "",
-  "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
+    "description": "Se skruenøgleprojekter og indlæg fra {{fullName}} . (@ {{username}})",
+    "image_alt": "",
+    "notfound": "",
+    "projects": "",
+    "projects_plural": "",
+    "title": "{{fullName}} . (@{{username}}) - projekter og stillinger"
 }

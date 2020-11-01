@@ -1,9 +1,11 @@
 import { Alert } from 'react-native'
 import NativeShare from 'react-native-share'
+import { useTranslation } from 'react-i18next'
 import { mergeAll } from 'rambda'
 import AsyncStorage from '@react-native-community/async-storage'
+import { locales } from '@wrench/translations'
 import i18next from 'i18next'
-import { setLocale, languages, updateUserLocale } from 'i18n'
+import { setLocale, updateUserLocale } from 'i18n'
 import { SCREENS } from 'navigation'
 import { client } from 'gql'
 import { askForRating } from 'utils/rate'
@@ -29,8 +31,8 @@ const generateLanguageSettings = () => {
 
   const currentLocale = i18next.language
 
-  items = languages.map((locale) => ({
-    titleKey: `languages.${locale}`,
+  items = locales.map((locale) => ({
+    titleKey: locale,
     onPress: () => currentLocale !== locale && changeLocale(locale),
     type: 'selector',
     selected: currentLocale === locale,
@@ -51,7 +53,7 @@ const generateNotificationSettings = (
   let items = []
 
   items = types.map((type) => ({
-    titleKey: `notifications.${type}`,
+    titleKey: `notifications:${type}`,
     onPress: () =>
       handleToggleNotificationSettings({
         notificationType: type,
@@ -151,15 +153,15 @@ const sections = (props) => {
             titleKey: 'delete',
             onPress: () =>
               Alert.alert(
-                props.t('Settings:deleteTitle'),
-                props.t('Settings:deleteDescription'),
+                props.t('deleteTitle'),
+                props.t('deleteDescription'),
                 [
                   {
-                    text: props.t('Settings:deleteCancel'),
+                    text: props.t('deleteCancel'),
                     style: 'cancel',
                   },
                   {
-                    text: props.t('Settings:deleteOk'),
+                    text: props.t('deleteOk'),
                     onPress: () => {
                       client.clearStore()
                       props.deleteUser()

@@ -6,11 +6,10 @@ import { ProjectSuggestion, Loader, Text } from 'ui'
 import { Headline, Description } from './styles'
 
 function Suggestions() {
+  const { t } = useTranslation('suggestions')
   const [isComplete, setIsComplete] = useState(false)
   const { data, loading } = useProjectSuggestionsQuery()
   const { navigate } = useNavigation()
-
-  const { t } = useTranslation()
 
   const handleSubmit = () => {
     navigate(SCREENS.PUSH_NOTIFICATIONS)
@@ -26,17 +25,17 @@ function Suggestions() {
           disabled={!isComplete}
           onPress={handleSubmit}
         >
-          {t('Suggestions:next')}
+          {t('next')}
         </Text>
       }
     >
       <ScrollView>
         <Headline medium numberOfLines={0}>
-          {t('Suggestions:headline')}
+          {t('headline')}
         </Headline>
 
         <Description color="neutral" fontSize={19}>
-          {t('Suggestions:description')}
+          {t('description')}
         </Description>
 
         {loading && <Loader />}

@@ -7,7 +7,7 @@ import { Header, Icon, Title, Text, Input, KeyboardAvoidingView } from 'ui'
 import { close } from 'images'
 
 function AddProject() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('add-project')
   const { navigate, dismissModal } = useNavigation()
   const { title } = useReactiveVar(store.project.projectVar)
 
@@ -26,11 +26,11 @@ function AddProject() {
     <>
       <Header
         headerLeft={<Icon source={close} color="dark" onPress={handleDismissModal} />}
-        headerTitle={<Text medium>{t('AddProject:headerTitle')}</Text>}
+        headerTitle={<Text medium>{t('headerTitle')}</Text>}
         headerRight={
           !!title && (
             <Text onPress={handleNavigation} medium>
-              {t('AddProject:next')}
+              {t('next')}
             </Text>
           )
         }
@@ -38,10 +38,10 @@ function AddProject() {
       <KeyboardAvoidingView paddingHorizontal={0}>
         <ScrollView keyboardDismissMode="on-drag">
           <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-            {t('AddProject:title')}
+            {t('title')}
           </Title>
           <Input
-            placeholder={t('AddProject:placeholder')}
+            placeholder={t('placeholder')}
             large
             onChangeText={onChangeText}
             value={title}

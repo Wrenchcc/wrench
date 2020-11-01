@@ -1,3 +1,8 @@
 {
-  "placeholder": "Zoeken"
+    "clear": "",
+    "hashtags": "",
+    "placeholder": "Zoeken",
+    "projects": "",
+    "recent": "",
+    "users": ""
 }

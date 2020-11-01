@@ -1,13 +1,13 @@
 {
-  "d": "Vor {{count}} Tagen",
-  "d_plural": "Vor {{count}} Tagen",
-  "h": "Vor {{count}} Stunden",
-  "h_plural": "Vor {{count}} Stunden",
-  "m": "Vor {{count}} Minuten",
-  "m_plural": "Vor {{count}} Minuten",
-  "mo": "Vor {{count}} Monaten",
-  "mo_plural": "Vor {{count}} Monaten",
-  "now": "Grade eben",
-  "y": "Vor {{count}} Jahren",
-  "y_plural": "Vor {{count}} Jahren"
+    "d": "Vor {{count}} Tagen",
+    "d_plural": "Vor {{count}} Tagen",
+    "h": "Vor {{count}} Stunden",
+    "h_plural": "Vor {{count}} Stunden",
+    "m": "Vor {{count}} Minuten",
+    "m_plural": "Vor {{count}} Minuten",
+    "mo": "Vor {{count}} Monaten",
+    "mo_plural": "Vor {{count}} Monaten",
+    "now": "Grade eben",
+    "y": "Vor {{count}} Jahren",
+    "y_plural": "Vor {{count}} Jahren"
 }

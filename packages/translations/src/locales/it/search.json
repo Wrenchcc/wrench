@@ -1,3 +1,8 @@
 {
-  "placeholder": "Ricerca"
+    "clear": "",
+    "hashtags": "",
+    "placeholder": "Ricerca",
+    "projects": "",
+    "recent": "",
+    "users": ""
 }

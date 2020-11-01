@@ -52,7 +52,7 @@ function renderPreferredSignInProvider(provider, isAppleAvailable) {
 }
 
 function SignIn() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('sign-in')
   const { showModal } = useNavigation()
   const [provider, setProvider] = useState()
   const [isAvailable, setAvailable] = useState(false)
@@ -105,10 +105,10 @@ function SignIn() {
 
         <Content>
           <Headline large numberOfLines={0}>
-            {t('SignIn:headline')}
+            {t('headline')}
           </Headline>
           <Description white fontSize={20}>
-            {t('SignIn:description')}
+            {t('description')}
           </Description>
         </Content>
 
@@ -116,7 +116,7 @@ function SignIn() {
 
         <Options onPress={handleOtherOptions}>
           <Text color="white" medium center>
-            {t('SignIn:other')}
+            {t('other')}
           </Text>
         </Options>
 

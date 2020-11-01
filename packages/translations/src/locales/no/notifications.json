@@ -1,4 +1,10 @@
 {
-  "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
-  "title": "Ingen varsler ennå."
+    "comment": "",
+    "commentLike": "",
+    "description": "Her vil du se kommentarer, nye følgere og andre aktiviteter.",
+    "follow": "",
+    "mention": "",
+    "postLike": "",
+    "reply": "",
+    "title": "Ingen varsler ennå."
 }

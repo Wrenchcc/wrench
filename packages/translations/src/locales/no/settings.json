@@ -1,23 +1,33 @@
 {
-  "chat": "snakk med oss",
-  "feedback": "Tilbakemelding",
-  "field_bio": "Bio",
-  "field_firstname": "Fornavn",
-  "field_lastname": "Etternavn",
-  "field_website": "Nettsted",
-  "mail": "E-poststøtte",
-  "save": "Lagre",
-  "sections_language": "Språk",
-  "sections_notifications": "Varsler",
-  "sections_profile": "Rediger profil",
-  "sections_support": "Brukerstøtte",
-  "title": "Innstillinger",
-  "toast_error": "Noe gikk galt",
-  "toast_saved": "Instillinger lagret",
-  "new_comment": "Kommentarer",
-  "new_mention": "Nevner",
-  "new_article": "Artikler",
-  "new_follower": "Følgere",
-  "similar_projects": "Lignende prosjekter",
-  "product_announcements": "Produkt kunngjøringer"
+    "chat": "snakk med oss",
+    "feedback": "Tilbakemelding",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
+    "mail": "E-poststøtte",
+    "save": "Lagre",
+    "sections": {
+        "language": "",
+        "notifications": "",
+        "profile": "",
+        "support": ""
+    },
+    "title": "Innstillinger",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Fornavn",
+    "field_lastname": "Etternavn",
+    "field_website": "Nettsted",
+    "toast_error": "Noe gikk galt",
+    "toast_saved": "Instillinger lagret",
+    "sections_language": "Språk",
+    "sections_notifications": "Varsler",
+    "sections_profile": "Rediger profil",
+    "sections_support": "Brukerstøtte"
 }

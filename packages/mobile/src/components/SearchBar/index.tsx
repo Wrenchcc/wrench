@@ -15,7 +15,7 @@ function SearchBar({
   query,
 }) {
   const inputRef = useRef(null)
-  const { t } = useTranslation()
+  const { t } = useTranslation('search-bar')
 
   const handleFocus = useCallback(() => {
     if (onSearchFocus) {
@@ -61,7 +61,7 @@ function SearchBar({
         <Input
           ref={inputRef}
           autoCorrect={false}
-          placeholder={t('SearchBar:placeholder')}
+          placeholder={t('placeholder')}
           keyboardAppearance="dark"
           returnKeyType="search"
           onFocus={handleFocus}
@@ -78,7 +78,7 @@ function SearchBar({
 
       {searchActive && (
         <Text medium onPress={handleCancel} style={{ marginLeft: 10 }}>
-          {t('SearchBar:cancel')}
+          {t('cancel')}
         </Text>
       )}
     </Base>

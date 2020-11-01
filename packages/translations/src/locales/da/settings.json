@@ -1,23 +1,33 @@
 {
-  "chat": "Chat med os",
-  "feedback": "Feedback",
-  "field_bio": "Bio",
-  "field_firstname": "Fornavn",
-  "field_lastname": "Efternavn",
-  "field_website": "Internet side",
-  "mail": "Mail Support",
-  "save": "Gemme",
-  "sections_language": "Sprog",
-  "sections_notifications": "Meddelelser",
-  "sections_profile": "Rediger profil",
-  "sections_support": "Support",
-  "title": "Indstillinger",
-  "toast_error": "Noget gik galt",
-  "toast_saved": "Indstillinger gemt",
-  "new_comment": "Kommentarer",
-  "new_mention": "Nævner",
-  "new_article": "Artikler",
-  "new_follower": "Følgere",
-  "similar_projects": "Lignende projekter",
-  "product_announcements": "Produktmeddelelser"
+    "chat": "Chat med os",
+    "feedback": "Feedback",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
+    "mail": "Mail Support",
+    "save": "Gemme",
+    "sections": {
+        "language": "",
+        "notifications": "",
+        "profile": "",
+        "support": ""
+    },
+    "title": "Indstillinger",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Fornavn",
+    "field_lastname": "Efternavn",
+    "field_website": "Internet side",
+    "toast_error": "Noget gik galt",
+    "toast_saved": "Indstillinger gemt",
+    "sections_language": "Sprog",
+    "sections_notifications": "Meddelelser",
+    "sections_profile": "Rediger profil",
+    "sections_support": "Support"
 }

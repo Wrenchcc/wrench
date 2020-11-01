@@ -16,7 +16,7 @@ import SelectProject from '../../components/SelectProject'
 import { Base } from './styles'
 
 function AddMedia({ id }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('add-media')
   const { navigate, dismissModal } = useNavigation()
   const [isLoading, setLoading] = useState(false)
   const { showActionSheetWithOptions } = useActionSheet()
@@ -52,8 +52,8 @@ function AddMedia({ id }) {
     if (selectedFiles.length > 0) {
       showActionSheetWithOptions(
         {
-          title: t('AddMedia:options:title'),
-          options: [t('AddMedia:options:discard'), t('AddMedia:options:cancel')],
+          title: t('options.title'),
+          options: [t('options.discard'), t('options.cancel')],
           destructiveButtonIndex: 0,
           cancelButtonIndex: 1,
           tintColor: dynamicColor,
@@ -90,7 +90,7 @@ function AddMedia({ id }) {
           ) : selectedFiles.length > 0 ? (
             <Touchable onPress={handleCropping}>
               <Text color="white" medium>
-                {t('AddMedia:next')}
+                {t('next')}
               </Text>
             </Touchable>
           ) : null

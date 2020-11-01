@@ -1,23 +1,33 @@
 {
-  "chat": "chat met ons",
-  "feedback": "Feedback",
-  "field_bio": "Bio",
-  "field_firstname": "Voornaam",
-  "field_lastname": "Achternaam",
-  "field_website": "Website",
-  "mail": "Mail-ondersteuning",
-  "save": "Opslaan",
-  "sections_language": "Taal",
-  "sections_notifications": "Meldingen",
-  "sections_profile": "Bewerk profiel",
-  "sections_support": "Ondersteuning",
-  "title": "Instellingen",
-  "toast_error": "Er is iets fout gegaan",
-  "toast_saved": "Instellingen opgeslagen",
-  "new_comment": "Opmerkingen",
-  "new_mention": "Vermeldt",
-  "new_article": "Lidwoord",
-  "new_follower": "Volgers",
-  "similar_projects": "Vergelijkbare projecten",
-  "product_announcements": "Productaankondigingen"
+    "chat": "chat met ons",
+    "feedback": "Feedback",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
+    "mail": "Mail-ondersteuning",
+    "save": "Opslaan",
+    "sections": {
+        "language": "",
+        "notifications": "",
+        "profile": "",
+        "support": ""
+    },
+    "title": "Instellingen",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Voornaam",
+    "field_lastname": "Achternaam",
+    "field_website": "Website",
+    "toast_error": "Er is iets fout gegaan",
+    "toast_saved": "Instellingen opgeslagen",
+    "sections_language": "Taal",
+    "sections_notifications": "Meldingen",
+    "sections_profile": "Bewerk profiel",
+    "sections_support": "Ondersteuning"
 }

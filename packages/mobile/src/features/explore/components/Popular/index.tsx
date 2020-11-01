@@ -10,7 +10,7 @@ function Popular() {
   let content = <Placeholder />
 
   const { navigate } = useNavigation()
-  const { t } = useTranslation()
+  const { t } = useTranslation('popular')
 
   const {
     data: { edges },
@@ -77,13 +77,13 @@ function Popular() {
   return (
     <>
       <Header>
-        <Title medium>{t('Popular:popular')}</Title>
+        <Title medium>{t('popular')}</Title>
       </Header>
 
       {content}
 
       <Footer>
-        <Title medium>{t('Popular:recent')}</Title>
+        <Title medium>{t('recent')}</Title>
       </Footer>
     </>
   )

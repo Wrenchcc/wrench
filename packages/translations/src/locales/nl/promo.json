@@ -1,6 +1,6 @@
 {
-  "button_default": "Sturen",
-  "button_success": "Verzonden",
-  "description": "Voer uw nummer in en ontvang een eenmalige sms-link.",
-  "title": "Download de Wrench-app in Appstore en Google play"
+    "button_default": "Sturen",
+    "button_success": "Verzonden",
+    "description": "Voer uw nummer in en ontvang een eenmalige sms-link.",
+    "title": "Download de Wrench-app in Appstore en Google play"
 }

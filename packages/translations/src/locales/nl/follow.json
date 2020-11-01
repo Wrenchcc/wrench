@@ -1,5 +1,7 @@
 {
-  "follow": "Volg dit project",
-  "follow_short": "Volgen",
-  "unfollow": "In aansluiting op"
+    "follow": "Volg dit project",
+    "followSmall": "",
+    "unfollow": "In aansluiting op",
+    "unfollowSmall": "",
+    "follow_short": "Volgen"
 }

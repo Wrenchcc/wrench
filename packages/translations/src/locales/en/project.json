@@ -1,5 +1,6 @@
 {
     "description": "{{followers, humanFormat}} Follower, {{posts, humanFormat}} Posts - {{fullName}}. (@{{username}}) on Wrench",
+    "recent": "Recent posts",
     "share": "Share",
     "similar": "Similar projects",
     "title": "{{title}} - {{type}} project",

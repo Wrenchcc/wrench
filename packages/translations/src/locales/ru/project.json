@@ -1,7 +1,8 @@
 {
-  "description": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ",
-  "share": "Поделиться",
-  "similar": "Похожие проекты",
-  "title": "{{title}} - {{type}} проект",
-  "description_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"
+    "description": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ",
+    "recent": "",
+    "share": "Поделиться",
+    "similar": "Похожие проекты",
+    "title": "{{title}} - {{type}} проект",
+    "description_plural": "{{followers, humanFormat}} подписчиков, {{posts, humanFormat}} сообщений - {{fullName}} . (@ {{username}} ) гаечный ключ"
 }

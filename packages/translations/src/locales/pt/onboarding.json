@@ -1,5 +1,8 @@
 {
-  "description": "Escolha pelo menos três categorias nas quais você está interessado e nós lhe daremos alguns projetos interessantes para começar.",
-  "next": "Próximo",
-  "title": "Em quê você está interessado?"
+    "description": "Escolha pelo menos três categorias nas quais você está interessado e nós lhe daremos alguns projetos interessantes para começar.",
+    "headerTitle": "",
+    "headline": "",
+    "next": "Próximo",
+    "save": "",
+    "title": "Em quê você está interessado?"
 }

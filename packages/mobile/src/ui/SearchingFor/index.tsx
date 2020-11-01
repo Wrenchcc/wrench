@@ -5,7 +5,7 @@ import Text from 'ui/Text'
 import ActivityIndicator from 'ui/ActivityIndicator'
 
 function SearchingFor({ query }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('searching-for')
 
   return (
     <View
@@ -18,7 +18,7 @@ function SearchingFor({ query }) {
     >
       <ActivityIndicator />
       <Text style={{ paddingHorizontal: 20 }} color="neutral" numberOfLines={1}>{`${t(
-        'SearchingFor:title'
+        'title'
       )} "${query}"`}</Text>
     </View>
   )

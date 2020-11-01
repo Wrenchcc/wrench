@@ -1,5 +1,7 @@
 {
-  "follow": "Sundin ang proyektong ito",
-  "follow_short": "Sundan",
-  "unfollow": "Sumusunod"
+    "follow": "Sundin ang proyektong ito",
+    "followSmall": "",
+    "unfollow": "Sumusunod",
+    "unfollowSmall": "",
+    "follow_short": "Sundan"
 }

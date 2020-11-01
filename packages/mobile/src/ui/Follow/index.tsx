@@ -3,18 +3,18 @@ import { useTranslation } from 'react-i18next'
 import { Base, Text } from './styles'
 
 function Follow({ onPress, following, small, ...rest }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('follow')
 
   return (
     <Base onPress={onPress} black={!following} small={small} {...rest}>
       <Text color={following ? 'inverse' : 'default'} medium fontSize={15}>
         {following
           ? small
-            ? t('Follow:unfollowSmall')
-            : t('Follow:unfollow')
+            ? t('unfollowSmall')
+            : t('unfollow')
           : small
-          ? t('Follow:followSmall')
-          : t('Follow:follow')}
+          ? t('followSmall')
+          : t('follow')}
       </Text>
     </Base>
   )

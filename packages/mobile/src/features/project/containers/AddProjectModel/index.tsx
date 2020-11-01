@@ -19,7 +19,7 @@ function formatModel(model) {
 }
 
 function AddProjectModel() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('add-project-model')
   const { navigate, navigateBack, dismissModal } = useNavigation()
   const [addProject] = useAddProjectMutation()
   const [query, setQuery] = useState()
@@ -139,13 +139,13 @@ function AddProjectModel() {
     <>
       <Header
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
-        headerTitle={<Text medium>{t('AddProjectModel:headerTitle')}</Text>}
+        headerTitle={<Text medium>{t('headerTitle')}</Text>}
         headerRight={
           isSaving ? (
             <ActivityIndicator />
           ) : (
             <Text onPress={handleSave} medium>
-              {model ? t('AddProjectModel:add') : t('AddProjectModel:skip')}
+              {model ? t('add') : t('skip')}
             </Text>
           )
         }
@@ -154,11 +154,11 @@ function AddProjectModel() {
 
       <KeyboardAvoidingView keyboardVerticalOffset={20}>
         <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-          {t('AddProjectModel:title')}
+          {t('title')}
         </Title>
 
         <Input
-          placeholder={t('AddProjectModel:placeholder')}
+          placeholder={t('placeholder')}
           large
           onChangeText={onChangeText}
           value={model ? formatModel(model) : query}

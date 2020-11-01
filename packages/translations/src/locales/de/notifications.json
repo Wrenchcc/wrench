@@ -1,4 +1,10 @@
 {
-  "description": "Hier sehen Sie Kommentare, neue Follower und andere Aktivitäten.",
-  "title": "Noch keine Benachrichtigungen."
+    "comment": "",
+    "commentLike": "",
+    "description": "Hier sehen Sie Kommentare, neue Follower und andere Aktivitäten.",
+    "follow": "",
+    "mention": "",
+    "postLike": "",
+    "reply": "",
+    "title": "Noch keine Benachrichtigungen."
 }

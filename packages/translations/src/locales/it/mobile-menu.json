@@ -1,8 +1,8 @@
 {
-  "download": "Scarica app",
-  "explore": "Esplorare",
-  "feed": "Alimentazione",
-  "login": "Accesso",
-  "register": "Iscriviti",
-  "sign_out": "disconnessione"
+    "download": "Scarica app",
+    "explore": "Esplorare",
+    "feed": "Alimentazione",
+    "login": "Accesso",
+    "register": "Iscriviti",
+    "sign_out": "disconnessione"
 }

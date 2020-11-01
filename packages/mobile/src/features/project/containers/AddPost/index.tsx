@@ -15,7 +15,7 @@ import SelectedFiles from '../../components/SelectedFiles'
 import SelectProject from '../../components/SelectProject'
 
 function AddPost() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('add-post')
   const { navigateBack, dismissModal } = useNavigation()
   const [addPost] = useAddPostMutation()
 
@@ -110,7 +110,7 @@ function AddPost() {
       store.post.isPostingVar(false)
 
       store.toast.show({
-        content: t('AddPost:error'),
+        content: t('error'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
@@ -125,7 +125,7 @@ function AddPost() {
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
         headerRight={
           <Text medium onPress={handleAddPost}>
-            {t('AddPost:add')}
+            {t('add')}
           </Text>
         }
       />
@@ -142,12 +142,12 @@ function AddPost() {
             multiline
             color="dark"
             onChangeText={onChangeText}
-            placeholder={t('AddPost:placeholder')}
+            placeholder={t('placeholder')}
             value={caption}
             style={{ marginBottom: 40 }}
           />
 
-          <Title style={{ marginBottom: 20 }}>{t('AddPost:collection')}</Title>
+          <Title style={{ marginBottom: 20 }}>{t('collection')}</Title>
           <Collections
             disableModal
             isOwner

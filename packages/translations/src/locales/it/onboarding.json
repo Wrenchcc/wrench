@@ -1,5 +1,8 @@
 {
-  "description": "Scegli almeno tre categorie che ti interessano e ti daremo alcuni bei progetti con cui iniziare.",
-  "next": "Il prossimo",
-  "title": "Cosa ti interessa?"
+    "description": "Scegli almeno tre categorie che ti interessano e ti daremo alcuni bei progetti con cui iniziare.",
+    "headerTitle": "",
+    "headline": "",
+    "next": "Il prossimo",
+    "save": "",
+    "title": "Cosa ti interessa?"
 }

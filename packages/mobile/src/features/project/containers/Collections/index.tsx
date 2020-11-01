@@ -9,7 +9,7 @@ import { TYPES } from 'ui/EmptyState/constants'
 const renderItem = ({ item }) => <Post post={item.node} withoutCollections />
 
 function Collections({ id, name, projectId, isOwner }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('collections')
   const { showModal, navigateBack } = useNavigation()
 
   const navigateToEdit = () =>
@@ -45,7 +45,7 @@ function Collections({ id, name, projectId, isOwner }) {
       headerRight={
         isOwner && (
           <Text medium onPress={navigateToEdit}>
-            {t('Collections:edit')}
+            {t('edit')}
           </Text>
         )
       }

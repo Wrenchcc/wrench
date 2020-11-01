@@ -9,7 +9,7 @@ import { COLORS } from 'ui/constants'
 const LEGAL_URL = 'https://wrench.cc/terms'
 
 function Legal({ color = 'white' }) {
-  const { t } = useTranslation()
+  const { t } = t('legal')
   const { showModal } = useNavigation()
   const colorScheme = useColorScheme()
 
@@ -31,10 +31,10 @@ function Legal({ color = 'white' }) {
 
   return (
     <Base>
-      <Text color={color}>{t('Legal:description')}</Text>
+      <Text color={color}>{t('description')}</Text>
       <Touchable onPress={handleNavigation}>
         <Text underline color={color}>
-          {t('Legal:link')}
+          {t('link')}
         </Text>
       </Touchable>
     </Base>

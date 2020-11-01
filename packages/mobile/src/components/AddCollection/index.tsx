@@ -11,7 +11,7 @@ import { add } from 'images'
 const HALFPANEL_HEIGHT = 164
 
 function Form({ projectId, disableModal }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('add-collection')
   const [name, setName] = useState('')
   const { dismissHalfpanel, showModal } = useNavigation()
   const [addCollection] = useAddCollectionMutation()
@@ -62,11 +62,11 @@ function Form({ projectId, disableModal }) {
 
   return (
     <Content>
-      <Title>{t('AddCollection:title')}</Title>
+      <Title>{t('title')}</Title>
 
       <Inner>
         <Input
-          placeholder={t('AddCollection:placeholder')}
+          placeholder={t('placeholder')}
           enablesReturnKeyAutomatically
           autoFocus
           returnKeyType="done"
@@ -76,7 +76,7 @@ function Form({ projectId, disableModal }) {
 
         {name.length > 0 && (
           <Text fontSize={15} medium onPress={handleOnSubmit}>
-            {t('AddCollection:done')}
+            {t('done')}
           </Text>
         )}
       </Inner>
@@ -85,7 +85,7 @@ function Form({ projectId, disableModal }) {
 }
 
 function AddCollection({ projectId, style = {}, disableModal }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('add-collection')
   const { showHalfpanel, dismissHalfpanel, isHalpanelOpen } = useNavigation()
 
   const handleHalfPanel = useCallback(() => {
@@ -104,7 +104,7 @@ function AddCollection({ projectId, style = {}, disableModal }) {
       <Center>
         <Icon source={add} onPress={handleHalfPanel} />
       </Center>
-      <Text fontSize={12}>{t('AddCollection:add')}</Text>
+      <Text fontSize={12}>{t('add')}</Text>
     </Base>
   )
 }

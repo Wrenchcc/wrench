@@ -4,11 +4,12 @@ module.exports = {
   defaultNamespace: 'common',
   defaultValue: '',
   indentation: 4,
+  // createOldCatalogs: true,
   lexers: {
     js: ['JavascriptLexer'],
     ts: ['JsxLexer'],
     tsx: ['JsxLexer'],
-    default: ['JavascriptLexer'],
+    default: ['JsxLexer'],
   },
   lineEnding: 'auto',
   locales,

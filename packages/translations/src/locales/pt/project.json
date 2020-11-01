@@ -1,7 +1,8 @@
 {
-  "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa",
-  "share": "Compartilhar",
-  "similar": "Projetos semelhantes",
-  "title": "{{title}} - {{type}} projeto",
-  "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa"
+    "description": "{{followers, humanFormat}} seguidor, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa",
+    "recent": "",
+    "share": "Compartilhar",
+    "similar": "Projetos semelhantes",
+    "title": "{{title}} - {{type}} projeto",
+    "description_plural": "{{followers, humanFormat}} seguidores, {{posts, humanFormat}} postagens - {{fullName}} . (@ {{username}} ) na chave inglesa"
 }

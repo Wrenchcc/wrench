@@ -9,7 +9,7 @@ import { requestNotificationToken } from 'utils/pushNotifications/register'
 import { Headline, Description } from './styles'
 
 function PushNotifications() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('push-notifications')
   const { data } = useCurrentUserQuery()
   const { showModal } = useNavigation()
 
@@ -30,20 +30,20 @@ function PushNotifications() {
       <Header inline />
       <View style={{ flexGrow: 1, paddingHorizontal: 20 }}>
         <Headline medium numberOfLines={0}>
-          {t('PushNotifications:title')}
+          {t('title')}
         </Headline>
 
         <Description color="neutral" fontSize={19}>
-          {t('PushNotifications:description')}
+          {t('description')}
         </Description>
 
         <View style={{ marginTop: 'auto', marginBottom: 80 }}>
           <Button color="inverse" onPress={handleNotifications}>
-            {t('PushNotifications:approve')}
+            {t('approve')}
           </Button>
 
           <Text color="inverse" medium onPress={handleSubmit} style={{ marginTop: 40 }} center>
-            {t('PushNotifications:decline')}
+            {t('decline')}
           </Text>
         </View>
       </View>

@@ -1,4 +1,6 @@
 {
-  "load_replies": "Reacties bekijken ( {{count}} )",
-  "load_replies_plural": ""
+    "load_replies": "Reacties bekijken ( {{count}} )",
+    "load_replies_plural": "",
+    "loadMore": "",
+    "title": ""
 }

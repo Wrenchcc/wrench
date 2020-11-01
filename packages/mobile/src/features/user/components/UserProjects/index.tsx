@@ -7,7 +7,7 @@ import { CardSmall, Text } from 'ui'
 const { width } = Dimensions.get('window')
 
 function UserProjects({ projects, spacingHorizontal }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('user-projects')
   const { navigate } = useNavigation()
 
   if (!projects || projects.edges.length <= 1) {
@@ -40,7 +40,7 @@ function UserProjects({ projects, spacingHorizontal }) {
   return (
     <>
       <Text medium fontSize={21} style={{ marginLeft: spacingHorizontal ? 20 : 0 }}>
-        {t('UserProjects:title')}
+        {t('title')}
       </Text>
       <ScrollView
         horizontal

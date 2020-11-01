@@ -1,5 +1,8 @@
 {
-  "description": "Vedi progetti e post di Wrench da {{fullName}} . (@ {{username}} )",
-  "image_alt": "",
-  "title": "{{fullName}} . (@ {{username}} ) - progetti e post"
+    "description": "Vedi progetti e post di Wrench da {{fullName}} . (@ {{username}} )",
+    "image_alt": "",
+    "notfound": "",
+    "projects": "",
+    "projects_plural": "",
+    "title": "{{fullName}} . (@ {{username}} ) - progetti e post"
 }

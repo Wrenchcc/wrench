@@ -1,3 +1,10 @@
 {
-    "SAVE": "speichern"
+    "SAVE": "speichern",
+    "new_comment": "Bemerkungen",
+    "new_mention": "Erwähnungen",
+    "new_article": "Artikel",
+    "new_follower": "Anhänger",
+    "similar_projects": "Ähnliche Projekte",
+    "product_announcements": "Produktankündigungen",
+    "sections:profile": ""
 }

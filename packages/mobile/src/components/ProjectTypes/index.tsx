@@ -9,7 +9,7 @@ import CategoriesPlaceholder from './Placeholder'
 import { Base, Wrapper } from './styles'
 
 function ProjectTypes({ visible }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('project-types')
   const { data: typesData, loading: loadingTypes } = useProjectTypesQuery()
   const { data: userData } = useCurrentUserQuery()
 
@@ -53,7 +53,7 @@ function ProjectTypes({ visible }) {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <Wrapper first onPress={navigateToInsp}>
             <Text fontSize={15} medium>
-              {t('ProjectTypes:inspo')}
+              {t('inspo')}
             </Text>
           </Wrapper>
 

@@ -7,16 +7,16 @@ import { Banner } from 'ui'
 import Animation from './Animation'
 
 function Toast() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('toast')
 
   const { content, show, type, dismissAfter } = useReactiveVar(store.toast.toastVar)
 
   const renderContent = useCallback(() => {
     switch (type) {
       case TOAST_TYPES.NETWORK:
-        return t('Toast:network')
+        return t('network')
       case TOAST_TYPES.SPAM:
-        return t('Toast:spam')
+        return t('spam')
       default:
         return content
     }

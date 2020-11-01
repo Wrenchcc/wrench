@@ -6,16 +6,16 @@ import { Base, Headline, Description } from './styles'
 
 function ProjectSuggestions() {
   const { data, loading } = useProjectSuggestionsQuery()
-  const { t } = useTranslation()
+  const { t } = useTranslation('project-suggestions')
 
   return (
     <Base>
       <Headline medium numberOfLines={0}>
-        {t('ProjectSuggestions:headline')}
+        {t('title')}
       </Headline>
 
       <Description color="neutral" fontSize={19}>
-        {t('ProjectSuggestions:description')}
+        {t('description')}
       </Description>
 
       {loading && <Loader />}

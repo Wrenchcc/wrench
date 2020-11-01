@@ -1,8 +1,8 @@
 {
-  "download": "Baixar aplicativos",
-  "explore": "Explorar",
-  "feed": "Alimentação",
-  "login": "Conecte-se",
-  "register": "inscrever-se",
-  "sign_out": "Sair"
+    "download": "Baixar aplicativos",
+    "explore": "Explorar",
+    "feed": "Alimentação",
+    "login": "Conecte-se",
+    "register": "inscrever-se",
+    "sign_out": "Sair"
 }

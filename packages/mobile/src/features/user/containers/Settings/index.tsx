@@ -26,7 +26,7 @@ const style = {
 const keyExtractor = (item, index) => item + index
 
 function Settings({ section }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('settings')
   const { navigate, showModal } = useNavigation()
 
   const { data, loading } = useCurrentUserSettingsQuery()
@@ -49,13 +49,11 @@ function Settings({ section }) {
       return null
     }
 
-    return <Title style={style.header}>{t(`Settings:${titleKey}`)}</Title>
+    return <Title style={style.header}>{t(titleKey)}</Title>
   }, [])
 
   const renderItem = useCallback(
-    ({ item, index }) => (
-      <SelectionItem key={index} {...item} title={t(`Settings:${item.titleKey}`)} />
-    ),
+    ({ item, index }) => <SelectionItem key={index} {...item} title={t(item.titleKey)} />,
     []
   )
 
@@ -66,7 +64,7 @@ function Settings({ section }) {
   const settings = data?.user.settings
 
   return (
-    <Page headerTitle={t(`Settings:${section || 'settings'}`)} headerAnimation={false} view>
+    <Page headerTitle={t(`${section || 'settings'}`)} headerAnimation={false} view>
       <SectionList
         contentContainerStyle={style.container}
         stickySectionHeadersEnabled={false}

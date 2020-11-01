@@ -1,3 +1,8 @@
 {
-  "placeholder": "Buscar"
+    "clear": "",
+    "hashtags": "",
+    "placeholder": "Buscar",
+    "projects": "",
+    "recent": "",
+    "users": ""
 }

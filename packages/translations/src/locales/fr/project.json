@@ -1,7 +1,8 @@
 {
-  "description": "{{followers, humanFormat}} abonné, {{posts, humanFormat}} messages - {{fullName}} . (@{{username}}) sur Wrench",
-  "share": "Partager",
-  "similar": "Projets similaires",
-  "title": "{{title}} - {{type}} projet",
-  "description_plural": "{{followers, humanFormat}} abonnés, {{posts, humanFormat}} messages - {{fullName}} . (@{{username}}) sur Wrench"
+    "description": "{{followers, humanFormat}} abonné, {{posts, humanFormat}} messages - {{fullName}} . (@{{username}}) sur Wrench",
+    "recent": "",
+    "share": "Partager",
+    "similar": "Projets similaires",
+    "title": "{{title}} - {{type}} projet",
+    "description_plural": "{{followers, humanFormat}} abonnés, {{posts, humanFormat}} messages - {{fullName}} . (@{{username}}) sur Wrench"
 }

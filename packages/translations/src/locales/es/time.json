@@ -1,13 +1,13 @@
 {
-  "d": "Hace {{count}} días",
-  "d_plural": "Hace {{count}} días",
-  "h": "Hace {{count}} horas",
-  "h_plural": "Hace {{count}} horas",
-  "m": "Hace {{count}} minutos",
-  "m_plural": "Hace {{count}} minutos",
-  "mo": "Hace {{count}} meses",
-  "mo_plural": "Hace {{count}} meses",
-  "now": "justo ahora",
-  "y": "Hace {{count}} años",
-  "y_plural": "Hace {{count}} años"
+    "d": "Hace {{count}} días",
+    "d_plural": "Hace {{count}} días",
+    "h": "Hace {{count}} horas",
+    "h_plural": "Hace {{count}} horas",
+    "m": "Hace {{count}} minutos",
+    "m_plural": "Hace {{count}} minutos",
+    "mo": "Hace {{count}} meses",
+    "mo_plural": "Hace {{count}} meses",
+    "now": "justo ahora",
+    "y": "Hace {{count}} años",
+    "y_plural": "Hace {{count}} años"
 }

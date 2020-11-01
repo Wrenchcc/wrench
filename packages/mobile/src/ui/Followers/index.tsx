@@ -17,10 +17,11 @@ function Followers({
   opacity = 1,
   style,
 }: FollowersProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('followers')
+
   return (
     <Text fontSize={15} onPress={onPress} color={color} opacity={opacity} style={style}>
-      {t('UiFollowers:followers', { count: followers })}
+      {t('followers', { count: followers })}
     </Text>
   )
 }

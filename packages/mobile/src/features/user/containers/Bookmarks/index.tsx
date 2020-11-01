@@ -8,7 +8,7 @@ import { Base, Title, Description } from './styles'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function Bookmarks() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('bookmarks')
 
   const {
     data: { edges },
@@ -20,14 +20,14 @@ function Bookmarks() {
   } = usePaginatedQuery(['bookmarks'])(BookmarksDocument)
 
   return (
-    <Page headerTitle={t('Bookmarks:headerTitle')} view headerAnimation={false}>
+    <Page headerTitle={t('headerTitle')} view headerAnimation={false}>
       <FlatList
         initialNumToRender={2}
         spacingSeparator
         ListEmptyComponent={
           <Base>
-            <Title>{t('Bookmarks:title')}</Title>
-            <Description>{t('Bookmarks:description')}</Description>
+            <Title>{t('title')}</Title>
+            <Description>{t('description')}</Description>
           </Base>
         }
         data={edges}

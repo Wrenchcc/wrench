@@ -1,8 +1,8 @@
 {
-  "comment": "Comentou em sua postagem",
-  "comment_like": "Provocou seu comentário",
-  "follow": "Agora segue seu projeto",
-  "mention": "Você mencionou em um comentário",
-  "post_like": "Despertou sua postagem",
-  "reply": "Respondeu ao seu comentário"
+    "comment": "Comentou em sua postagem",
+    "comment_like": "Provocou seu comentário",
+    "follow": "Agora segue seu projeto",
+    "mention": "Você mencionou em um comentário",
+    "post_like": "Despertou sua postagem",
+    "reply": "Respondeu ao seu comentário"
 }

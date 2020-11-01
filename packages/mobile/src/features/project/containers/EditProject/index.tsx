@@ -13,7 +13,7 @@ import { close } from 'images'
 import { Inner, Spacing } from './styles'
 
 function EditProject({ project, onDeleteCallback }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('edit-project')
   const { navigate, dismissModal } = useNavigation()
 
   const [editProject] = useEditProjectMutation()
@@ -111,28 +111,28 @@ function EditProject({ project, onDeleteCallback }) {
       <ActivityIndicator />
     ) : (
       <Text medium onPress={handleEditProject}>
-        {t('EditProject:done')}
+        {t('done')}
       </Text>
     )
 
   const renderHeaderCenter = () => (
-    <Text medium numberOfLines={1}>{`${t('EditProject:headerTitle')} ${project.title}`}</Text>
+    <Text medium numberOfLines={1}>{`${t('headerTitle')} ${project.title}`}</Text>
   )
 
   const toggleActionSheet = () => {
     if (project.permissions.isOwner) {
       Alert.alert(
-        t('EditProject:deleteAlert'),
-        t('EditProject:description'),
+        t('deleteAlert'),
+        t('description'),
         [
           {
-            text: t('EditProject:cancel'),
+            text: t('cancel'),
             style: 'cancel',
           },
           {
             onPress: onDelete,
             style: 'destructive',
-            text: t('EditProject:delete'),
+            text: t('delete'),
           },
         ],
         {
@@ -151,9 +151,9 @@ function EditProject({ project, onDeleteCallback }) {
       />
       <ScrollView>
         <Inner>
-          <Title>{t('EditProject:information')}</Title>
+          <Title>{t('information')}</Title>
           <Input
-            placeholder={t('EditProject:title')}
+            placeholder={t('title')}
             value={title}
             onChangeText={onChangeText}
             color="dark"
@@ -163,15 +163,15 @@ function EditProject({ project, onDeleteCallback }) {
 
           <Spacing large />
 
-          <Text onPress={navigateToModel}>{t('EditProject:model')}</Text>
+          <Text onPress={navigateToModel}>{t('model')}</Text>
         </Inner>
 
         <Inner>
-          <Title>{t('EditProject:projectSettings')}</Title>
+          <Title>{t('projectSettings')}</Title>
           <SelectionItem
             last
             important
-            title={t('EditProject:deleteTitle')}
+            title={t('deleteTitle')}
             onPress={toggleActionSheet}
           />
         </Inner>

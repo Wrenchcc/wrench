@@ -12,7 +12,7 @@ import { Keyboard } from 'react-native'
 const MAX_ITEMS = 4
 
 function Projects({ query }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('search')
   const [recent, setRecent] = useState([])
 
   const { navigate } = useNavigation()
@@ -118,9 +118,9 @@ function Projects({ query }) {
         !query &&
         recent.length > 0 && (
           <Header>
-            <Text medium>{t('Search:recent')}</Text>
+            <Text medium>{t('recent')}</Text>
             <Text fontSize={14} onPress={handleRemove} medium>
-              {t('Search:clear')}
+              {t('clear')}
             </Text>
           </Header>
         )

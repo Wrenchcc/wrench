@@ -1,8 +1,8 @@
 {
-  "download": "Mag-download ng Mga App",
-  "explore": "Galugarin",
-  "feed": "Magpakain",
-  "login": "Mag log in",
-  "register": "Mag-sign up",
-  "sign_out": "Mag-sign out"
+    "download": "Mag-download ng Mga App",
+    "explore": "Galugarin",
+    "feed": "Magpakain",
+    "login": "Mag log in",
+    "register": "Mag-sign up",
+    "sign_out": "Mag-sign out"
 }

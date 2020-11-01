@@ -7,7 +7,7 @@ import { close } from 'images'
 import { Inner } from './styles'
 
 function EditCollection({ id, name, projectId, onDelete }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('edit-collection')
   const [isSaving, setIsSaving] = useState(false)
   const { dismissModal, showModal } = useNavigation()
   const [deleteCollection] = useDeleteCollectionMutation()
@@ -80,7 +80,7 @@ function EditCollection({ id, name, projectId, onDelete }) {
           <ActivityIndicator />
         ) : (
           <Text medium onPress={handleDone}>
-            {t('EditCollection:done')}
+            {t('done')}
           </Text>
         )
       }
@@ -88,17 +88,17 @@ function EditCollection({ id, name, projectId, onDelete }) {
       <ScrollView>
         <>
           <Inner>
-            <Title>{t('EditCollection:title')}</Title>
+            <Title>{t('title')}</Title>
             <Input
-              placeholder={t('EditCollection:placeholder')}
+              placeholder={t('placeholder')}
               value={title}
               onChangeText={onChangeText}
               color="dark"
               onSubmitEditing={() => {}}
               returnKeyType="done"
             />
-            <SelectionItem title={t('EditCollection:add')} onPress={navigateToAddPosts} />
-            <SelectionItem important title={t('EditCollection:delete')} onPress={handleDelete} />
+            <SelectionItem title={t('add')} onPress={navigateToAddPosts} />
+            <SelectionItem important title={t('delete')} onPress={handleDelete} />
           </Inner>
         </>
       </ScrollView>

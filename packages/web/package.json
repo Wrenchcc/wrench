@@ -4,10 +4,11 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "node ./tasks/copy_locales.js && next",
+    "dev": "yarn copy:locales && next",
     "start": "next start",
-    "build": "node ./tasks/copy_locales.js && next build",
-    "deploy": "node ./tasks/copy_locales.js && serverless",
+    "build": "yarn copy:locales && next build",
+    "deploy": "yarn copy:locales && serverless",
+    "copy:locales": "node ./tasks/copy_locales.js",
     "check:types": "tsc --noEmit"
   },
   "resolutions": {

@@ -1,3 +1,8 @@
 {
-  "placeholder": "Sök"
+    "clear": "",
+    "hashtags": "",
+    "placeholder": "Sök",
+    "projects": "",
+    "recent": "",
+    "users": ""
 }

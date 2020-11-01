@@ -34,7 +34,7 @@ function List({ album, ListHeaderComponent }) {
   const [lastEndCursor, setLastEndCursor] = useState()
 
   const ref = useRef(null)
-  const { t } = useTranslation()
+  const { t } = useTranslation('media-picker-list')
 
   const selectedFiles = useReactiveVar(store.files.selectedFilesVar)
 
@@ -175,7 +175,7 @@ function List({ album, ListHeaderComponent }) {
       {selectedFiles.length > 0 && (
         <DeselectAll activeOpacity={0.9} onPress={handleDeselectAll} naviteHandler>
           <Text medium fontSize={15} color="black">
-            {t('MediaPickerList:deselectAll')}
+            {t('deselectAll')}
           </Text>
         </DeselectAll>
       )}

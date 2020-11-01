@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useEffect } from 'react'
 import { View, Image, Animated, Dimensions } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import { useDeleteCommentMutation, CommentsDocument } from '@wrench/common'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 import { useNavigation, SCREENS } from 'navigation'
@@ -39,13 +40,13 @@ function Item({
   commentId,
   isReply = false,
   onReply,
-  t,
   text,
   user,
   permissions,
   likes,
   postId,
 }) {
+  const { t } = useTranslation('comment-item')
   const { navigate } = useNavigation()
   const animatedValue = useRef(new Animated.Value(0))
   const dynamicColor = useDynamicColor('placeholder')
@@ -222,7 +223,7 @@ function Item({
               {!first && likes.totalCount > 0 && (
                 <Action>
                   <Text medium color="accent" fontSize={12}>
-                    {t('CommentItem:like', { count: likes.totalCount })}
+                    {t('like', { count: likes.totalCount })}
                   </Text>
                 </Action>
               )}
@@ -235,7 +236,7 @@ function Item({
                     disabled={id < 0}
                     color="accent"
                   >
-                    {t('CommentItem:reply')}
+                    {t('reply')}
                   </Reply>
                 </Action>
               )}

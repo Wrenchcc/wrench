@@ -1,4 +1,5 @@
 {
-  "load_more": "Посмотреть 1 комментарий",
-  "load_more_plural": "Посмотреть все {{count, humanFormat}} комментариев"
+    "load_more_0": "",
+    "load_more_1": "",
+    "load_more_2": ""
 }

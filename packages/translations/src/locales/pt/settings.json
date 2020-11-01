@@ -1,23 +1,33 @@
 {
-  "chat": "Converse conosco",
-  "feedback": "Comentários",
-  "field_bio": "Bio",
-  "field_firstname": "Primeiro nome",
-  "field_lastname": "Último nome",
-  "field_website": "Local na rede Internet",
-  "mail": "Suporte de Correio",
-  "save": "Salve ",
-  "sections_language": "Língua",
-  "sections_notifications": "Notificações",
-  "sections_profile": "Editar Perfil",
-  "sections_support": "Apoio, suporte",
-  "title": "Configurações",
-  "toast_error": "Algo deu errado",
-  "toast_saved": "Configurações salvas",
-  "new_comment": "Comentários",
-  "new_mention": "Menções",
-  "new_article": "Artigos",
-  "new_follower": "Seguidores",
-  "similar_projects": "Projetos semelhantes",
-  "product_announcements": "Anúncios de produtos"
+    "chat": "Converse conosco",
+    "feedback": "Comentários",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
+    "mail": "Suporte de Correio",
+    "save": "Salve ",
+    "sections": {
+        "language": "",
+        "notifications": "",
+        "profile": "",
+        "support": ""
+    },
+    "title": "Configurações",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Primeiro nome",
+    "field_lastname": "Último nome",
+    "field_website": "Local na rede Internet",
+    "toast_error": "Algo deu errado",
+    "toast_saved": "Configurações salvas",
+    "sections_language": "Língua",
+    "sections_notifications": "Notificações",
+    "sections_profile": "Editar Perfil",
+    "sections_support": "Apoio, suporte"
 }

@@ -1,4 +1,10 @@
 {
-  "description": "Qui vedrai commenti, nuovi follower e altre attività.",
-  "title": "Nessuna notifica ancora."
+    "comment": "",
+    "commentLike": "",
+    "description": "Qui vedrai commenti, nuovi follower e altre attività.",
+    "follow": "",
+    "mention": "",
+    "postLike": "",
+    "reply": "",
+    "title": "Nessuna notifica ancora."
 }

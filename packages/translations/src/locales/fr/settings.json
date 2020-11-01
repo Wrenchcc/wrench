@@ -1,23 +1,33 @@
 {
-  "chat": "Discute avec nous",
-  "feedback": "Retour d'information",
-  "field_bio": "Bio",
-  "field_firstname": "Prénom",
-  "field_lastname": "Nom de famille",
-  "field_website": "Site Internet",
-  "mail": "Assistance par courrier",
-  "save": "sauvegarder",
-  "sections_language": "Langue",
-  "sections_notifications": "Notifications",
-  "sections_profile": "Editer le profil",
-  "sections_support": "Soutien",
-  "title": "Réglages",
-  "toast_error": "Un problème est survenu",
-  "toast_saved": "Paramètres sauvegardés",
-  "new_comment": "commentaires",
-  "new_mention": "Mentions",
-  "new_article": "Des articles",
-  "new_follower": "Suiveurs",
-  "similar_projects": "Projets similaires",
-  "product_announcements": "Annonces de produits"
+    "chat": "Discute avec nous",
+    "feedback": "Retour d'information",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
+    "mail": "Assistance par courrier",
+    "save": "sauvegarder",
+    "sections": {
+        "language": "",
+        "notifications": "",
+        "profile": "",
+        "support": ""
+    },
+    "title": "Réglages",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Prénom",
+    "field_lastname": "Nom de famille",
+    "field_website": "Site Internet",
+    "toast_error": "Un problème est survenu",
+    "toast_saved": "Paramètres sauvegardés",
+    "sections_language": "Langue",
+    "sections_notifications": "Notifications",
+    "sections_profile": "Editer le profil",
+    "sections_support": "Soutien"
 }

@@ -65,7 +65,7 @@ export default function Home() {
               <Link href="/settings">
                 <a>
                   <Text color="accent" fontSize={15}>
-                    {t('settings:sections_profile')}
+                    {t('settings:sections.profile')}
                   </Text>{' '}
                 </a>
               </Link>

@@ -1,4 +1,10 @@
 {
-  "description": "Hier zie je reacties, nieuwe volgers en andere activiteiten.",
-  "title": "Nog geen notificaties."
+    "comment": "",
+    "commentLike": "",
+    "description": "Hier zie je reacties, nieuwe volgers en andere activiteiten.",
+    "follow": "",
+    "mention": "",
+    "postLike": "",
+    "reply": "",
+    "title": "Nog geen notificaties."
 }

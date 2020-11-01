@@ -1,3 +1,8 @@
 {
-  "placeholder": "Pesquisa"
+    "clear": "",
+    "hashtags": "",
+    "placeholder": "Pesquisa",
+    "projects": "",
+    "recent": "",
+    "users": ""
 }

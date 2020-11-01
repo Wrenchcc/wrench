@@ -1,4 +1,10 @@
 {
-  "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
-  "title": "Inga notifikationer ännu."
+    "comment": "",
+    "commentLike": "",
+    "description": "Här kommer du att se kommentarer, nya följare och andra aktiviteter.",
+    "follow": "",
+    "mention": "",
+    "postLike": "",
+    "reply": "",
+    "title": "Inga notifikationer ännu."
 }

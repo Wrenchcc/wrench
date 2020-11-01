@@ -15,7 +15,7 @@ const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 const renderItem = ({ item }) => <Post post={item.node} />
 
 function User({ user: initialUserData }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('user')
 
   const {
     data: { edges, user },
@@ -36,7 +36,7 @@ function User({ user: initialUserData }) {
   const hasPosts = edges && edges.length > 0
 
   const ListHeaderComponent = error ? (
-    <Banner content={t('UserProfile:notfound')} />
+    <Banner content={t('notfound')} />
   ) : (
     user && (
       <>

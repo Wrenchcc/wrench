@@ -14,7 +14,7 @@ import { google } from 'images'
 import { Button, Text, Loader } from './styles'
 
 function Google({ border }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('google')
   const [isLoading, setIsLoading] = useState(false)
   const [authenticate] = useAuthenticateGoogleMutation()
 
@@ -58,7 +58,7 @@ function Google({ border }) {
     <Button onPress={handleLoginManager} border={border}>
       <Icon source={google} style={{ marginRight: 10 }} color="black" />
       <Text medium color="black">
-        {t('Google:button')}
+        {t('button')}
       </Text>
       {isLoading && <Loader color="black" />}
     </Button>

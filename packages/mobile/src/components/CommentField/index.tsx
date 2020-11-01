@@ -19,7 +19,7 @@ import { Inner, Input } from './styles'
 const COMMENT_FIELD_HEIGHT = 40
 
 function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('comment-field')
   const inputRef = useRef(null)
   const isTracking = useRef(false)
   const [text, setText] = useState('')
@@ -244,7 +244,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         <Input
           ref={inputRef}
           onSubmitEditing={(text.length > 0 && handleSubmit) || null}
-          placeholder={t('CommentField:placeholder')}
+          placeholder={t('placeholder')}
           keyboardType="twitter"
           onChangeText={handleOnChangeText}
           value={text}
@@ -253,7 +253,7 @@ function CommentField({ postId, commentId, username, emoji, blurOnSubmit }) {
         />
         {text.length > 0 && (
           <Text fontSize={15} medium onPress={handleSubmit}>
-            {t('CommentField:post')}
+            {t('post')}
           </Text>
         )}
       </Inner>

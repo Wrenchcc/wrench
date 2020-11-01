@@ -1,4 +1,4 @@
 {
-  "load_more": "Visualizza 1 commento",
-  "load_more_plural": "Visualizza tutti i {{count, humanFormat}} commenti"
+    "load_more": "Visualizza 1 commento",
+    "load_more_plural": "Visualizza tutti i {{count, humanFormat}} commenti"
 }
