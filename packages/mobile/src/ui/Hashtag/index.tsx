@@ -4,13 +4,13 @@ import Text from 'ui/Text'
 import { Base } from './styles'
 
 function Hashtag({ name, totalCount, onPress }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('hashtag')
 
   return (
     <Base onPress={onPress}>
       <Text>{`#${name}`}</Text>
       <Text color="accent" fontSize={14} medium>
-        {t('Hashtag:posts', { count: totalCount })}
+        {t('posts', { count: totalCount })}
       </Text>
     </Base>
   )

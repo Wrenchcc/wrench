@@ -8,7 +8,7 @@ import UserPlaceholderCollection from 'ui/User/PlaceholderCollection'
 const renderItem = ({ item }) => <User data={item.node} />
 
 function Sparks({ id }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('sparks')
 
   const {
     data: { edges },
@@ -41,7 +41,7 @@ function Sparks({ id }) {
     )
 
   return (
-    <Page headerTitle={t('Sparks:title')} headerAnimation={false}>
+    <Page headerTitle={t('title')} headerAnimation={false}>
       {content}
     </Page>
   )

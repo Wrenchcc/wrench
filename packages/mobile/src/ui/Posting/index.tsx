@@ -14,8 +14,8 @@ const transition = (
 )
 
 function Posting({ scrollToTop }) {
+  const { t } = useTranslation('posting')
   const ref = useRef(null)
-  const { t } = useTranslation()
 
   const isPosting = useReactiveVar(store.post.isPostingVar)
   const image = useReactiveVar(store.files.selectedFilesVar)[0]
@@ -36,7 +36,7 @@ function Posting({ scrollToTop }) {
         <Base>
           <Inner>
             <Cover source={image} />
-            <Text fontSize={15}>{t('Posting:description')}</Text>
+            <Text fontSize={15}>{t('description')}</Text>
           </Inner>
         </Base>
       )}

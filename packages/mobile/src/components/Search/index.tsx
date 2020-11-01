@@ -25,7 +25,7 @@ const routes = [
 ]
 
 function Search({ query }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('search')
   const [index, setIndex] = useState(0)
   const colorScheme = useColorScheme()
 
@@ -56,7 +56,7 @@ function Search({ query }) {
     },
   }
 
-  const handleLabelText = useCallback(({ route }) => t(`Search:${route.key}`), [t])
+  const handleLabelText = useCallback(({ route }) => t(route.key), [t])
 
   const renderScene = useCallback(
     ({ route }) => {

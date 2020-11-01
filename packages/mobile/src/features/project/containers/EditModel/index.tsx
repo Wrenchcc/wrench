@@ -11,7 +11,7 @@ function formatModel(model) {
 }
 
 function EditModel({ passProps }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('edit-model')
   const { navigateBack } = useNavigation()
   const [query, setQuery] = useState('')
   const [model, setModel] = useState()
@@ -24,7 +24,7 @@ function EditModel({ passProps }) {
   }, [navigateBack])
 
   const onChangeText = useCallback(
-    value => {
+    (value) => {
       setQuery(value)
 
       if (model) {
@@ -51,7 +51,7 @@ function EditModel({ passProps }) {
   }, [navigateBack, model, passProps])
 
   const handleModelChange = useCallback(
-    selectedModel => {
+    (selectedModel) => {
       setIsSearching(false)
       setModel(selectedModel)
       setQuery(formatModel(selectedModel))
@@ -65,11 +65,11 @@ function EditModel({ passProps }) {
     <>
       <Header
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
-        headerTitle={<Text medium>{t('AddProjectModel:headerTitle')}</Text>}
+        headerTitle={<Text medium>{t('headerTitle')}</Text>}
         headerRight={
           model && (
             <Text onPress={handleSave} medium>
-              {t('EditModel:save')}
+              {t('save')}
             </Text>
           )
         }
@@ -78,11 +78,11 @@ function EditModel({ passProps }) {
 
       <KeyboardAvoidingView>
         <Title large numberOfLines={0} style={{ marginBottom: 80 }}>
-          {t('AddProjectModel:title')}
+          {t('title')}
         </Title>
 
         <Input
-          placeholder={t('AddProjectModel:placeholder')}
+          placeholder={t('placeholder')}
           large
           onChangeText={onChangeText}
           value={model ? formatModel(model) : query}

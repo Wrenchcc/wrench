@@ -7,7 +7,7 @@ import { Button, HEIGHT, TOP } from './styles'
 const DELAY = 5000
 
 function ShowLatest({ onPress, onHide }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('show-latest')
   const transformY = useRef(new Animated.Value(-100))
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function ShowLatest({ onPress, onHide }) {
     >
       <Button onPress={handleOnPress}>
         <Text color="default" fontSize={15} medium>
-          {t('ShowLatest:button')}
+          {t('button')}
         </Text>
       </Button>
     </Animated.View>

@@ -15,9 +15,9 @@ const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
 function AddPostToCollection({ collectionId, projectId }) {
+  const { t } = useTranslation('add-post-to-collection')
   const [items, setItems] = useState({})
   const [isSaving, setIsSaving] = useState(false)
-  const { t } = useTranslation()
   const { dismissModal } = useNavigation()
   const [collectPosts] = useCollectPostsMutation()
 
@@ -115,7 +115,7 @@ function AddPostToCollection({ collectionId, projectId }) {
   }
   return (
     <Page
-      headerTitle={t('AddPostToCollection:title')}
+      headerTitle={t('title')}
       headerAnimation={false}
       headerLeft={<Icon source={close} onPress={dismissModal} color="dark" />}
       headerRight={
@@ -129,7 +129,7 @@ function AddPostToCollection({ collectionId, projectId }) {
             disabled={!isComplete()}
             onPress={handleSubmit}
           >
-            {t('AddPostToCollection:done')}
+            {t('done')}
           </Text>
         )
       }

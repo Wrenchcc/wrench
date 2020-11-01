@@ -25,7 +25,7 @@ const Text = ({
 }: TextProps) => {
   if (maxText) {
     const [expanded, setExpanded] = useState(false)
-    const { t } = useTranslation()
+    const { t } = useTranslation('text')
 
     const toggleExpanded = useCallback(() => setExpanded(!expanded), [setExpanded, expanded])
 
@@ -58,7 +58,7 @@ const Text = ({
             }}
           >{`${children.substring(0, maxText).trim()}... `}</Base>
           <Base onPress={toggleExpanded} fontSize={15} medium>
-            {t('Text:more')}
+            {t('more')}
           </Base>
         </>
       )

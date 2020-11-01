@@ -40,18 +40,18 @@ const showButton = (type) => {
 }
 
 function EmptyState({ type = TYPES.PROJECT, params = {} }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('empty-state')
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(() => onPressAction(type, showModal, params), [type])
 
   return (
     <Base>
-      <Title>{t(`EmptyState:${type}:title`)}</Title>
-      <Description color="neutral">{t(`EmptyState:${type}:description`)}</Description>
+      <Title>{t(`${type}:title`)}</Title>
+      <Description color="neutral">{t(`${type}:description`)}</Description>
       {showButton(type) && (
         <Button onPress={handleNavigation}>
           <Text medium fontSize={15} color="black">
-            {t(`EmptyState:${type}:button`)}
+            {t(`${type}:button`)}
           </Text>
         </Button>
       )}

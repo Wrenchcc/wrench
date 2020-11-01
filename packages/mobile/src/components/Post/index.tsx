@@ -17,7 +17,7 @@ import { Base, Top, Headline, Content, Spacer, Row, Collection } from './styles'
 import Collections from 'features/project/components/Collections'
 
 function Post({ post, withoutTitle, withoutComments, withoutCollections, paddingBottom }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('post')
   const { navigate, showEditPost, showHalfpanel, dismissHalfpanel } = useNavigation()
   const dynamicColor = useDynamicColor('inverse')
   const [deletePost] = useDeletePostMutation()
@@ -204,17 +204,17 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
 
   const onDelete = useCallback(() => {
     Alert.alert(
-      t('Post:options:alertTitle'),
+      t('options:alertTitle'),
       null,
       [
         {
           onPress: () => handleDeletePost(post.id),
           style: 'destructive',
-          text: t('Post:options:delete'),
+          text: t('options:delete'),
         },
         {
           style: 'cancel',
-          text: t('Post:options:cancel'),
+          text: t('options:cancel'),
         },
       ],
       { cancelable: false }
@@ -224,10 +224,10 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
   const handleActionSheet = useCallback(() => {
     if (post.permissions.isOwner) {
       const options = [
-        t('Post:options:edit'),
-        post.collection ? t('Post:options:removeCollection') : t('Post:options:collection'),
-        t('Post:options:delete'),
-        t('Post:options:cancel'),
+        t('options:edit'),
+        post.collection ? t('options:removeCollection') : t('options:collection'),
+        t('options:delete'),
+        t('options:cancel'),
       ]
 
       showActionSheetWithOptions(
@@ -251,7 +251,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
                 renderContent: () => (
                   <>
                     <Spacer />
-                    <Title>{t('Post:selectCollection')}</Title>
+                    <Title>{t('selectCollection')}</Title>
                     <Spacer />
 
                     <Collections
@@ -272,7 +272,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
         }
       )
     } else {
-      const options = [t('Post:options:report'), t('Post:options:cancel')]
+      const options = [t('options:report'), t('options:cancel')]
       showActionSheetWithOptions(
         {
           options,
@@ -360,7 +360,7 @@ function Post({ post, withoutTitle, withoutComments, withoutCollections, padding
       {!withoutCollections && post.collection && (
         <Collection onPress={navigateToCollection}>
           <Text fontSize={15} medium>
-            {t('Post:showCollection')}
+            {t('showCollection')}
           </Text>
           <Icon source={arrowRightSmall} />
         </Collection>

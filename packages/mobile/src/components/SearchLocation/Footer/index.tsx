@@ -5,12 +5,12 @@ import { Text, Icon } from 'ui'
 import { Base } from './styles'
 
 function Footer() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('search-location-footer')
 
   return (
     <Base>
       <Text fontSize={12} color="neutral" style={{ marginRight: 5 }}>
-        {t('SearchLocationFooter:poweredBy')}
+        {t('poweredBy')}
       </Text>
       <Icon source={mapbox} color="neutral" />
     </Base>

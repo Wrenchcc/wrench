@@ -6,24 +6,20 @@ import { Touchable, Text } from 'ui'
 import { Base, Headline, Description } from './styles'
 
 const AskForPermission = ({ type, permission, onSuccess }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('ask-for-permission')
 
   const onPress = useCallback(
     () =>
       request(permission).then((res) => {
         if (res !== RESULTS.GRANTED) {
-          const buttons = [{ text: t(`AskForPermission:${type}:alertCancel`), style: 'cancel' }]
+          const buttons = [{ text: t(`${type}:alertCancel`), style: 'cancel' }]
 
           buttons.push({
             onPress: () => openSettings(),
-            text: t(`AskForPermission:${type}:alertOpen`),
+            text: t(`${type}:alertOpen`),
           })
 
-          Alert.alert(
-            t(`AskForPermission:${type}.alertTitle`),
-            t(`AskForPermission:${type}:alertDescription`),
-            buttons
-          )
+          Alert.alert(t(`${type}.alertTitle`), t(`${type}:alertDescription`), buttons)
         } else {
           onSuccess()
         }
@@ -34,15 +30,15 @@ const AskForPermission = ({ type, permission, onSuccess }) => {
   return (
     <Base>
       <Headline color="white" medium numberOfLines={0}>
-        {t(`AskForPermission:${type}:permissionHeadline`)}
+        {t(`${type}:permissionHeadline`)}
       </Headline>
       <Description color="white" opacity={0.8}>
-        {t(`AskForPermission:${type}:permissionDescription`)}
+        {t(`${type}:permissionDescription`)}
       </Description>
 
       <Touchable onPress={onPress}>
         <Text color="white" medium>
-          {t(`AskForPermission:${type}:permissionButton`)}
+          {t(`${type}:permissionButton`)}
         </Text>
       </Touchable>
     </Base>

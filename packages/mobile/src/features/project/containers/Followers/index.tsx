@@ -6,7 +6,7 @@ import { User, NoResults } from 'ui'
 import UserPlaceholderCollection from 'ui/User/PlaceholderCollection'
 
 function Followers({ id }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('followers')
 
   const {
     data: { edges },
@@ -41,7 +41,7 @@ function Followers({ id }) {
     )
 
   return (
-    <Page headerTitle={t('Followers:title')} headerAnimation={false}>
+    <Page headerTitle={t('title')} headerAnimation={false}>
       {content}
     </Page>
   )

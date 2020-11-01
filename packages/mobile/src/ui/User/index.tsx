@@ -6,7 +6,7 @@ import Text from 'ui/Text'
 import { Base, Content } from './styles'
 
 function User({ data, onPress }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('user')
   const { navigate } = useNavigation()
   const handleNavigation = useCallback(() => {
     if (onPress) {
@@ -38,7 +38,7 @@ function User({ data, onPress }) {
       <Content>
         <Text medium>{data.fullName}</Text>
         <Text color="accent" fontSize={15}>
-          {t('UiUser:projects', { count: data.projectCount })}
+          {t('projects', { count: data.projectCount })}
         </Text>
       </Content>
     </Base>

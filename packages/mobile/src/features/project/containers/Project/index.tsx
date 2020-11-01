@@ -13,7 +13,7 @@ import { isIphone } from 'utils/platform'
 const KEYBOARD_BEHAVIOR = isIphone && 'padding'
 
 function Project({ slug, id, postId, project: initialProjectData, post: initialPostData }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('project')
   const { navigateBack } = useNavigation()
 
   const {
@@ -76,7 +76,7 @@ function Project({ slug, id, postId, project: initialProjectData, post: initialP
                   {/* <PostPlaceholder /> */}
                   {hasPosts && edges && edges.length > 1 && (
                     <View style={{ marginTop: -20, paddingBottom: 50 }}>
-                      <Title medium>{t('Project:recent')}</Title>
+                      <Title medium>{t('recent')}</Title>
                     </View>
                   )}
                 </>

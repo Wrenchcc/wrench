@@ -25,7 +25,7 @@ const MAX_CHARACTERS = 100
 const UPLOAD_PATH = 'avatar'
 
 function EditProfile({ onboarding }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('edit-profile')
   const { dismissModal, navigate } = useNavigation()
   const [upload, setUploadFile] = useState()
   const [isSaving, setSaving] = useState(false)
@@ -47,7 +47,7 @@ function EditProfile({ onboarding }) {
   const [editUser] = useEditUserMutation({
     onError: () => {
       store.toast.show({
-        content: t('EditProfile:validationUsername'),
+        content: t('validationUsername'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
@@ -84,7 +84,7 @@ function EditProfile({ onboarding }) {
 
     if (hasErrors) {
       store.toast.show({
-        content: t('EditProfile:validation'),
+        content: t('validation'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
@@ -109,7 +109,7 @@ function EditProfile({ onboarding }) {
           setSaving(false)
 
           return store.toast.show({
-            content: t('EditProfile:wrong'),
+            content: t('wrong'),
             dismissAfter: 6000,
             type: TOAST_TYPES.ERROR,
           })
@@ -139,7 +139,7 @@ function EditProfile({ onboarding }) {
       }
     } catch (err) {
       store.toast.show({
-        content: t('EditProfile:wrong'),
+        content: t('wrong'),
         dismissAfter: 6000,
         type: TOAST_TYPES.ERROR,
       })
@@ -151,16 +151,16 @@ function EditProfile({ onboarding }) {
 
   const handleChangeAvatar = useCallback(() => {
     const options = [
-      t('EditProfile:imagePickerPhoto'),
-      t('EditProfile:imagePickerLibrary'),
-      t('EditProfile:remove'),
-      t('EditProfile:imagePickerCancel'),
+      t('imagePickerPhoto'),
+      t('imagePickerLibrary'),
+      t('remove'),
+      t('imagePickerCancel'),
     ]
 
     showActionSheetWithOptions(
       {
         options,
-        title: t('EditProfile:imagePickerTitle'),
+        title: t('imagePickerTitle'),
         destructiveButtonIndex: 2,
         cancelButtonIndex: 3,
         tintColor: dynamicColor,
@@ -168,10 +168,10 @@ function EditProfile({ onboarding }) {
       async (index) => {
         if (index === 0) {
           await request(PERMISSION, {
-            title: t('EditProfile:imagePickerPermissionTitle'),
-            message: t('EditProfile:imagePickerPermissionText'),
-            buttonNeutral: t('EditProfile:imagePickerPermissionRetry'),
-            buttonPositive: t('EditProfile:imagePickerPermissionOk'),
+            title: t('imagePickerPermissionTitle'),
+            message: t('imagePickerPermissionText'),
+            buttonNeutral: t('imagePickerPermissionRetry'),
+            buttonPositive: t('imagePickerPermissionOk'),
           })
 
           const res = await ImagePicker.launchCameraAsync({
@@ -210,14 +210,14 @@ function EditProfile({ onboarding }) {
 
   return (
     <Page
-      headerTitle={t('EditProfile:headerTitle')}
+      headerTitle={t('headerTitle')}
       headerRight={
         isSaving ? (
           <ActivityIndicator />
         ) : (
           <Touchable onPress={handleSave} disabled={hasErrors}>
             <Text medium opacity={hasErrors ? 0.5 : 1}>
-              {t('EditProfile:save')}
+              {t('save')}
             </Text>
           </Touchable>
         )
@@ -241,18 +241,18 @@ function EditProfile({ onboarding }) {
             />
             <Overlay onPress={handleChangeAvatar} activeOpacity={1}>
               <Text color="white" medium fontSize={15}>
-                {t('EditProfile:change')}
+                {t('change')}
               </Text>
             </Overlay>
           </ChangeAvatar>
 
           <Information>
-            <Title>{t('EditProfile:information')}</Title>
+            <Title>{t('information')}</Title>
 
             <Row first>
               <Input
                 color="dark"
-                placeholder={t('EditProfile:firstName')}
+                placeholder={t('firstName')}
                 onChangeText={(value) => setFirstName(value)}
                 defaultValue={firstName}
                 error={firstName.length === 0}
@@ -262,7 +262,7 @@ function EditProfile({ onboarding }) {
             <Row>
               <Input
                 color="dark"
-                placeholder={t('EditProfile:lastName')}
+                placeholder={t('lastName')}
                 onChangeText={(value) => setLastName(value)}
                 defaultValue={lastName}
                 error={lastName.length === 0}
@@ -272,7 +272,7 @@ function EditProfile({ onboarding }) {
             <Row>
               <Input
                 color="dark"
-                placeholder={t('EditProfile:username')}
+                placeholder={t('username')}
                 onChangeText={(value) => setUsername(value)}
                 defaultValue={username}
                 error={username.length === 0}
@@ -287,7 +287,7 @@ function EditProfile({ onboarding }) {
                   onPress={navigateToAddLocation}
                   numberOfLines={1}
                 >
-                  {location ? location : t('EditProfile:place')}
+                  {location ? location : t('place')}
                 </Text>
               </Location>
 
@@ -303,7 +303,7 @@ function EditProfile({ onboarding }) {
             <Row>
               <Input
                 color="dark"
-                placeholder={t('EditProfile:bio')}
+                placeholder={t('bio')}
                 defaultValue={bio}
                 onChangeText={handleBio}
                 style={{ paddingRight: 55 }}
@@ -316,7 +316,7 @@ function EditProfile({ onboarding }) {
             <Row>
               <Input
                 color="dark"
-                placeholder={t('EditProfile:website')}
+                placeholder={t('website')}
                 keyboardType="url"
                 textContentType="URL"
                 onChangeText={(value) => setWebsite(value)}

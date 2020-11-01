@@ -8,7 +8,7 @@ import Touchable from 'ui/Touchable'
 import { share } from 'images'
 
 function Share({ text, url, title }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('share')
 
   const handleShare = useCallback(() => {
     track(events.PROJECT_SHARE_OPEN)
@@ -23,7 +23,7 @@ function Share({ text, url, title }) {
 
   return (
     <Touchable onPress={handleShare} hitSlop={20}>
-      {text ? <Text medium>{t('Share:share')}</Text> : <Image source={share} />}
+      {text ? <Text medium>{t('share')}</Text> : <Image source={share} />}
     </Touchable>
   )
 }

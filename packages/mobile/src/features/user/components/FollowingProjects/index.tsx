@@ -8,7 +8,7 @@ import { Base, Title, Description, ProjectCard, GUTTER, BAR_SPACE, width } from 
 const SNAP_INTERVAL = width - (GUTTER + BAR_SPACE)
 
 function FollowingProjects({ user }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('following-projects')
   const { navigate } = useNavigation()
 
   const {
@@ -36,8 +36,8 @@ function FollowingProjects({ user }) {
 
   return (
     <Base>
-      <Title>{t('FollowingProjects:title')}</Title>
-      <Description>{t('FollowingProjects:description', { name: user.firstName })}</Description>
+      <Title>{t('title')}</Title>
+      <Description>{t('description', { name: user.firstName })}</Description>
 
       <InfiniteList
         data={edges}

@@ -6,7 +6,7 @@ import { Title, InfiniteList, CardSmall } from 'ui'
 import { Base, Follow, SNAP_INTERVAL } from './styles'
 
 function SimilarProjects({ projects }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('similar-projects')
   const { navigate } = useNavigation()
   const [toggleFollow] = useFollowProjectMutation()
 
@@ -71,7 +71,7 @@ function SimilarProjects({ projects }) {
 
   return (
     <Base>
-      <Title style={{ marginBottom: 20 }}>{t('SimilarProjects:title')}</Title>
+      <Title style={{ marginBottom: 20 }}>{t('title')}</Title>
 
       <InfiniteList
         initialNumToRender={3}

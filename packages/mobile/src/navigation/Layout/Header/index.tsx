@@ -9,8 +9,8 @@ import { Base, Background, Content, Inner } from './styles'
 const { interpolate } = Animated
 
 function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
+  const { t } = useTranslation('header')
   const { translateY, headerHeight } = useContext(ScrollContext)
-  const { t } = useTranslation()
 
   const transform = [
     {
@@ -32,7 +32,7 @@ function Header({ headerLeft, headerRight, headerTitleKey, stickyComponent }) {
         <Content style={{ opacity }}>
           <Inner>
             {headerLeft}
-            {headerTitleKey && <Title medium>{t(`Header:${headerTitleKey}`)}</Title>}
+            {headerTitleKey && <Title medium>{t(headerTitleKey)}</Title>}
             {headerRight}
           </Inner>
         </Content>

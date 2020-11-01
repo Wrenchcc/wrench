@@ -9,13 +9,13 @@ import { arrowLeftSmall, arrowRightSmall, refresh, close } from 'images'
 import { Base, BaseWebView, Footer, Inner } from './styles'
 
 function WebView({ url: initialUrl }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('webview')
   const webview = useRef(null)
 
   const { dismissModal } = useNavigation()
   const [progress, setProgress] = useState(0)
   const [url, setUrl] = useState(initialUrl)
-  const [title, setTitle] = useState(t('WebView:loading'))
+  const [title, setTitle] = useState(t('loading'))
   const [canGoBack, setCanGoBack] = useState(false)
   const [canGoForward, setCanGoForward] = useState(false)
 

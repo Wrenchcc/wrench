@@ -14,7 +14,7 @@ import { facebook } from 'images'
 import { Button, Text, Loader } from './styles'
 
 function Facebook() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('facebook')
   const [isLoading, setIsLoading] = useState(false)
   const [authenticate] = useAuthenticateFacebookMutation()
 
@@ -56,7 +56,7 @@ function Facebook() {
     <Button onPress={handleLoginManager}>
       <Icon source={facebook} style={{ marginRight: 10 }} color="white" />
       <Text white medium>
-        {t('Facebook:button')}
+        {t('button')}
       </Text>
       {isLoading && <Loader color="white" />}
     </Button>

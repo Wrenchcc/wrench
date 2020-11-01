@@ -9,7 +9,7 @@ import { spark } from 'images'
 import { Base } from './styled'
 
 function LikePost({ post }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('like-post')
   const { navigate } = useNavigation()
   const [toggleLike] = useLikePostMutation()
 
@@ -73,7 +73,7 @@ function LikePost({ post }) {
       )}
 
       <Text fontSize={15} onPress={navigateToLikes}>
-        {t('LikePost:like', { count: post.likes.totalCount })}
+        {t('like', { count: post.likes.totalCount })}
       </Text>
     </Base>
   )

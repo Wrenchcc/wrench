@@ -6,7 +6,7 @@ import Text from 'ui/Text'
 import { Row, Comment, LoadMore } from './styles'
 
 function List({ data }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('comment-list')
   const { navigate } = useNavigation()
 
   const navigateToComments = useCallback(
@@ -42,7 +42,7 @@ function List({ data }) {
 
       <LoadMore onPress={navigateToComments}>
         <Text fontSize={15} color="accent">
-          {t('List:loadMore', { count: data.comments.totalCount })}
+          {t('loadMore', { count: data.comments.totalCount })}
         </Text>
       </LoadMore>
     </>

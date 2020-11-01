@@ -18,7 +18,7 @@ import { CommentItem, ActivityIndicator, Text } from 'ui'
 import { isIphone } from 'utils/platform'
 
 function PostContainer({ postId, commentId }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('post-container')
   const { hideNotificationBadge } = useNavigation()
 
   const [mention, setMention] = useState({
@@ -100,7 +100,7 @@ function PostContainer({ postId, commentId }) {
 
   const highlightId = commentData && commentData.comment.id
 
-  const handleOnReply = useCallback(data => setMention(data), [setMention])
+  const handleOnReply = useCallback((data) => setMention(data), [setMention])
 
   const renderItem = ({ item }) => (
     <CommentItem
@@ -130,7 +130,7 @@ function PostContainer({ postId, commentId }) {
             <ActivityIndicator />
           ) : (
             <Text medium fontSize={14} color="accent" onPress={fetchMore}>
-              {t('PostContainer:loadMore')}
+              {t('loadMore')}
             </Text>
           )}
         </View>
@@ -143,7 +143,7 @@ function PostContainer({ postId, commentId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page view headerTitle={t('PostContainer:title')} headerAnimation={false}>
+    <Page view headerTitle={t('title')} headerAnimation={false}>
       <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted

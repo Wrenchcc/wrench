@@ -20,17 +20,17 @@ export const { width } = Dimensions.get('window')
 function description(data, t) {
   switch (data.type) {
     case NOTIFICATION_TYPES.NEW_FOLLOWER:
-      return `${t('Notification:follow')}: "${data.project.title}"`
+      return `${t('follow')}: "${data.project.title}"`
     case NOTIFICATION_TYPES.NEW_COMMENT:
-      return `${t('Notification:comment')}: "${data.comment.text}"`
+      return `${t('comment')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_REPLY:
-      return `${t('Notification:reply')}: "${data.comment.text}"`
+      return `${t('reply')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_MENTION:
-      return `${t('Notification:mention')}: "${data.comment.text}"`
+      return `${t('mention')}: "${data.comment.text}"`
     case NOTIFICATION_TYPES.NEW_POST_LIKE:
-      return t('Notification:postLike')
+      return t('postLike')
     case NOTIFICATION_TYPES.NEW_COMMENT_LIKE:
-      return t('Notification:commentLike')
+      return t('commentLike')
     default:
       return null
   }
@@ -82,8 +82,8 @@ function onPress(data, navigate) {
 }
 
 function Notification({ data, deleteNotification }) {
+  const { t } = useTranslation('notifications')
   const transitionRef = useRef(null)
-  const { t } = useTranslation()
 
   const image = pathOr(false, ['files', 'edges', 0, 'node'], data)
 

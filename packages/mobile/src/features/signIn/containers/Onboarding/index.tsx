@@ -18,7 +18,7 @@ const GUTTER = 10
 const ITEM_SIZE = width / 2 - GUTTER
 
 function Onboarding({ settingsPage }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('onboarding')
   const { navigate, navigateBack } = useNavigation()
   const [isSaving, setIsSaving] = useState(false)
   const [items, setItems] = useState({})
@@ -118,7 +118,7 @@ function Onboarding({ settingsPage }) {
       view
       headerAnimation={false}
       {...(!settingsPage && { headerLeft: true })}
-      headerTitle={settingsPage && t('Onboarding:headerTitle')}
+      headerTitle={settingsPage && t('headerTitle')}
       headerRight={
         isSaving ? (
           <ActivityIndicator />
@@ -130,7 +130,7 @@ function Onboarding({ settingsPage }) {
             disabled={!isComplete()}
             onPress={handleSubmit}
           >
-            {settingsPage ? t('Onboarding:save') : t('Onboarding:next')}
+            {settingsPage ? t('save') : t('next')}
           </Text>
         )
       }

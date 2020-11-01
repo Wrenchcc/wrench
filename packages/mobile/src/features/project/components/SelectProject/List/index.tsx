@@ -7,7 +7,7 @@ import Project from '../Project'
 import { Base, Scroll, NewProject, SPACER, BUTTON_HEIGHT, ITEM_HEIGHT } from './styles'
 
 function List({ projects, onPress, onClose, open, selectedId }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('select-project')
   const animatedValue = useRef(new Animated.Value(0))
   const { showModal } = useNavigation()
 
@@ -62,7 +62,7 @@ function List({ projects, onPress, onClose, open, selectedId }) {
         <Base>
           <Scroll>{renderProjects()}</Scroll>
           <NewProject onPress={handleNavigation}>
-            <Text medium>{t('SelectProject:create')}</Text>
+            <Text medium>{t('create')}</Text>
           </NewProject>
         </Base>
       </Animated.View>

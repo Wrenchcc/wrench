@@ -7,7 +7,7 @@ import Touchable from 'ui/Touchable'
 import { Base, Overlay, Content, Info, ProjectName, Followers, Button } from './styles'
 
 function ProjectCard({ onPress, onFollow, project, style }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('project-card')
   const [followProject] = useFollowProjectMutation()
   const height = useResponsiveHeight(24)
 
@@ -62,7 +62,7 @@ function ProjectCard({ onPress, onFollow, project, style }) {
 
           {!project.permissions.isOwner && (
             <Button small color="inverse" onPress={handleFollow}>
-              {project.permissions.isFollower ? t('ProjectCard:unfollow') : t('ProjectCard:follow')}
+              {project.permissions.isFollower ? t('unfollow') : t('follow')}
             </Button>
           )}
         </Content>

@@ -4,7 +4,7 @@ import { useNavigation, SCREENS } from 'navigation'
 import Text from 'ui/Text'
 
 function Edit({ project, onDeleteCallback }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('edit')
   const { showModal } = useNavigation()
   const handleNavigation = useCallback(
     () =>
@@ -17,7 +17,7 @@ function Edit({ project, onDeleteCallback }) {
 
   return (
     <Text medium onPress={handleNavigation}>
-      {t('Edit:edit')}
+      {t('edit')}
     </Text>
   )
 }

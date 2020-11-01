@@ -6,7 +6,7 @@ import { ActivityIndicator, Text, Carousel } from 'ui'
 import { Content, Input } from './styles'
 
 function EditPost({ post }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('edit-post')
   const [isSaving, setIsSaving] = useState(false)
   const [caption, setCaption] = useState(post.caption)
   const [editPost] = useEditPostMutation()
@@ -34,19 +34,19 @@ function EditPost({ post }) {
     <Page
       view
       headerAnimation={false}
-      headerTitle={t('EditPost:headerTitle')}
+      headerTitle={t('headerTitle')}
       headerRight={
         isSaving ? (
           <ActivityIndicator />
         ) : (
           <Text medium onPress={handleSave}>
-            {t('EditPost:save')}
+            {t('save')}
           </Text>
         )
       }
       headerLeft={
         <Text medium onPress={() => dismissEditPost()}>
-          {t('EditPost:cancel')}
+          {t('cancel')}
         </Text>
       }
     >
@@ -61,7 +61,7 @@ function EditPost({ post }) {
             color="dark"
             value={caption}
             onChangeText={(text) => setCaption(text)}
-            placeholder={t('EditPost:placeholder')}
+            placeholder={t('placeholder')}
             style={{ marginBottom: 20 }}
           />
           <Carousel files={post.files} />

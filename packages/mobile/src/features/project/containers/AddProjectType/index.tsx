@@ -7,7 +7,7 @@ import { arrowLeft } from 'images'
 import ProjectCategories from '../../components/ProjectCategories'
 
 function AddProjectType() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('add-project-type')
   const { navigate, navigateBack } = useNavigation()
 
   const handleNavigation = useCallback(
@@ -40,12 +40,12 @@ function AddProjectType() {
     <>
       <Header
         headerLeft={<Icon source={arrowLeft} onPress={handleNavigationBack} />}
-        headerTitle={<Text medium>{t('AddProjectType:headerTitle')}</Text>}
+        headerTitle={<Text medium>{t('headerTitle')}</Text>}
       />
       <ProjectCategories
         ListHeaderComponent={
           <Title large numberOfLines={0} style={{ paddingHorizontal: 20, paddingVertical: 50 }}>
-            {t('AddProjectType:title')}
+            {t('title')}
           </Title>
         }
         onSelect={handleOnSelect}

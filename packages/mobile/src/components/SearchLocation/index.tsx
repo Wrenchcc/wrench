@@ -10,7 +10,7 @@ import { Base, Header, Center } from './styles'
 const SEARCH_ENDPOINT = 'https://api.mapbox.com/geocoding/v5/mapbox.places'
 
 function SearchLocation({ iconLeft, onPress, autoFocus = false }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('search-location')
   const [searchTerm, setSearchTerm] = useState('')
   const [isFetching, setFetching] = useState(false)
   const [results, setResults] = useState([])
@@ -65,7 +65,7 @@ function SearchLocation({ iconLeft, onPress, autoFocus = false }) {
         <Center>
           <Input
             color="dark"
-            placeholder={t('SearchLocation:placeholder')}
+            placeholder={t('placeholder')}
             value={searchTerm}
             style={{ marginLeft: iconLeft ? 20 : 0, marginRight: 20 }}
             onChangeText={setSearchTerm}

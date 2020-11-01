@@ -10,7 +10,7 @@ import { update } from 'rambda'
 import { isIphone } from 'utils/platform'
 
 function Comments({ postId }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('comments')
   const [commentId, setCommentId] = useState()
   const [username, setUsername] = useState()
 
@@ -101,7 +101,7 @@ function Comments({ postId }) {
             <ActivityIndicator />
           ) : (
             <Text medium fontSize={14} color="accent" onPress={fetchMore}>
-              {t('Comments:loadMore')}
+              {t('loadMore')}
             </Text>
           )}
         </View>
@@ -118,7 +118,7 @@ function Comments({ postId }) {
   const initialFetch = isFetching && !edges
 
   return (
-    <Page headerTitle={t('Comments:title')} headerAnimation={false} view>
+    <Page headerTitle={t('title')} headerAnimation={false} view>
       <KeyboardAvoidingView behavior={isIphone && 'padding'} style={{ flex: 1 }}>
         <FlatList
           inverted
