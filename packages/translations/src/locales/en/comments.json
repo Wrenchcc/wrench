@@ -1,4 +1,6 @@
 {
-    "title": "Comments",
-    "loadMore": "Load more comments"
+    "load_replies": "",
+    "load_replies_plural": "",
+    "loadMore": "Load more comments",
+    "title": "Comments"
 }

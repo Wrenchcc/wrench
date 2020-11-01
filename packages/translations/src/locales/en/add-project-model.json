@@ -1,7 +1,7 @@
 {
     "add": "Add",
-    "skip": "Skip",
-    "title": "Search and pick your model.",
+    "headerTitle": "Add project",
     "placeholder": "E.g. BMW R100 1981",
-    "headerTitle": "Add project"
+    "skip": "Skip",
+    "title": "Search and pick your model."
 }

@@ -1,10 +1,12 @@
 {
     "chat": "chat met ons",
     "feedback": "Feedback",
-    "field_bio": "Bio",
-    "field_firstname": "Voornaam",
-    "field_lastname": "Achternaam",
-    "field_website": "Website",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "Mail-ondersteuning",
     "save": "Opslaan",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "Instellingen",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Voornaam",
+    "field_lastname": "Achternaam",
+    "field_website": "Website",
     "toast_error": "Er is iets fout gegaan",
     "toast_saved": "Instellingen opgeslagen",
     "sections_language": "Taal",

@@ -1,10 +1,12 @@
 {
     "chat": "Chatta med oss",
     "feedback": "Feedback",
-    "field_bio": "Beskrivning",
-    "field_firstname": "Förnamn",
-    "field_lastname": "Efternamn",
-    "field_website": "Hemsida",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "Mail Support",
     "save": "Spara",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "Inställningar",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Beskrivning",
+    "field_firstname": "Förnamn",
+    "field_lastname": "Efternamn",
+    "field_website": "Hemsida",
     "toast_error": "Något gick fel",
     "toast_saved": "Inställningar Sparade",
     "sections_language": "Språk",

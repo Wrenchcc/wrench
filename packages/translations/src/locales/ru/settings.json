@@ -1,10 +1,12 @@
 {
     "chat": "Поболтай с нами",
     "feedback": "Обратная связь",
-    "field_bio": "Био",
-    "field_firstname": "Имя",
-    "field_lastname": "Фамилия",
-    "field_website": "Интернет сайт",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "Почта поддержки",
     "save": "Сохранить",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "Настройки",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Био",
+    "field_firstname": "Имя",
+    "field_lastname": "Фамилия",
+    "field_website": "Интернет сайт",
     "toast_error": "Что-то пошло не так",
     "toast_saved": "Настройки сохранены",
     "sections_language": "Язык",

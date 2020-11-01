@@ -1,10 +1,12 @@
 {
     "chat": "chatte mit uns",
     "feedback": "Feedback",
-    "field_bio": "Bio",
-    "field_firstname": "Vorname",
-    "field_lastname": "Familienname, Nachname",
-    "field_website": "Webseite",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "Mail-Support",
     "save": "speichern",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "die Einstellungen",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Vorname",
+    "field_lastname": "Familienname, Nachname",
+    "field_website": "Webseite",
     "toast_error": "Etwas ist schief gelaufen",
     "toast_saved": "Einstellungen gespeichert",
     "sections_language": "Sprache",

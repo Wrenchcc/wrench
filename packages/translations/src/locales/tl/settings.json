@@ -1,10 +1,12 @@
 {
     "chat": "Makipag-usap ka sa amin",
     "feedback": "Puna",
-    "field_bio": "Bio",
-    "field_firstname": "Pangalan",
-    "field_lastname": "Huling pangalan",
-    "field_website": "Website",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "Suporta sa Mail",
     "save": "Magtipid",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "Mga setting",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Pangalan",
+    "field_lastname": "Huling pangalan",
+    "field_website": "Website",
     "toast_error": "May nangyaring mali",
     "toast_saved": "Na-save ang mga setting",
     "sections_language": "Wika",

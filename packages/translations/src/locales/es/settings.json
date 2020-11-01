@@ -1,10 +1,12 @@
 {
     "chat": "Habla con nosotros",
     "feedback": "Retroalimentación",
-    "field_bio": "Bio",
-    "field_firstname": "Nombre de pila",
-    "field_lastname": "Apellido",
-    "field_website": "Sitio web",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "Soporte por correo",
     "save": "Salvar",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "Configuraciones",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Nombre de pila",
+    "field_lastname": "Apellido",
+    "field_website": "Sitio web",
     "toast_error": "Algo salió mal",
     "toast_saved": "Se guardó la configuración",
     "sections_language": "Idioma",

@@ -1,6 +1,6 @@
 {
     "headerTitle": "Add project",
-    "title": "Choose a title for your project.",
+    "next": "Next",
     "placeholder": "E.g. Honda Cafe Racer",
-    "next": "Next"
+    "title": "Choose a title for your project."
 }

@@ -1,10 +1,12 @@
 {
     "chat": "chatta con noi",
     "feedback": "Risposta",
-    "field_bio": "Bio",
-    "field_firstname": "nome di battesimo",
-    "field_lastname": "Cognome",
-    "field_website": "Sito web",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "Supporto per posta",
     "save": "Salva",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "impostazioni",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "nome di battesimo",
+    "field_lastname": "Cognome",
+    "field_website": "Sito web",
     "toast_error": "Qualcosa è andato storto",
     "toast_saved": "Impostazioni salvate",
     "sections_language": "linguaggio",

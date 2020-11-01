@@ -1,23 +1,23 @@
 {
-    "chat": "",
-    "feedback": "",
-    "field_bio": "",
-    "field_firstname": "",
-    "field_lastname": "",
-    "field_website": "",
-    "mail": "",
-    "save": "",
+    "chat": "Chat with us",
+    "feedback": "Feedback",
+    "field": {
+        "bio": "Bio",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "website": "Website"
+    },
+    "mail": "Mail",
+    "save": "Save",
     "sections": {
         "language": "Language",
         "notifications": "Notificaitons",
-        "profile": "Profile",
+        "profile": "Edit profile",
         "support": "Support"
     },
     "title": "Settings",
-    "toast_error": "",
-    "toast_saved": "",
-    "sections_language": "",
-    "sections_notifications": "",
-    "sections_profile": "Edit profile",
-    "sections_support": ""
+    "toast": {
+        "error": "Something went wrong",
+        "saved": "Settings saved"
+    }
 }

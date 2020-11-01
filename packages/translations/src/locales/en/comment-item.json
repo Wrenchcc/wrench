@@ -1,4 +1,4 @@
 {
     "loadReplies": "View replies ({{count}})",
-    "loadMore_plural": "View all {{count, humanFormat}} comments"
+    "loadReplies_plural": ""
 }

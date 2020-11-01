@@ -1,10 +1,12 @@
 {
     "chat": "snakk med oss",
     "feedback": "Tilbakemelding",
-    "field_bio": "Bio",
-    "field_firstname": "Fornavn",
-    "field_lastname": "Etternavn",
-    "field_website": "Nettsted",
+    "field": {
+        "bio": "",
+        "firstname": "",
+        "lastname": "",
+        "website": ""
+    },
     "mail": "E-poststøtte",
     "save": "Lagre",
     "sections": {
@@ -14,6 +16,14 @@
         "support": ""
     },
     "title": "Innstillinger",
+    "toast": {
+        "error": "",
+        "saved": ""
+    },
+    "field_bio": "Bio",
+    "field_firstname": "Fornavn",
+    "field_lastname": "Etternavn",
+    "field_website": "Nettsted",
     "toast_error": "Noe gikk galt",
     "toast_saved": "Instillinger lagret",
     "sections_language": "Språk",

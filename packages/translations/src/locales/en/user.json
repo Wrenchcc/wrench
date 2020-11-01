@@ -1,8 +1,8 @@
 {
     "description": "See Wrench projects and posts from {{fullName}}. (@{{username}})",
     "image_alt": "",
-    "notfound": "",
-    "projects": "",
-    "projects_plural": "",
+    "notfound": "User not found",
+    "projects": "{{count, humanFormat}} project",
+    "projects_plural": "{{count, humanFormat}} projects",
     "title": "{{fullName}}. (@{{username}}) - projects and posts"
 }
