@@ -1,5 +1,6 @@
 import fs from 'react-native-fs'
 
+// NOTE: Should we read all files and cache? 
 const fetchTranslation = async (language, namespace) => {
   const path = `${fs.MainBundlePath}/${language}/${namespace}.json`
   const contents = await fs.readFile(path, 'utf8')

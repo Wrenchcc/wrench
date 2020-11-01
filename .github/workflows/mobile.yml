@@ -8,6 +8,7 @@ on:
       - 'packages/common/**'
       - 'packages/ui/**'
       - 'fastlane/**'
+      - 'packages/translations/**'
 
 jobs:
   version_tag:
