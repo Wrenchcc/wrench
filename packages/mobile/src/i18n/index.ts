@@ -3,13 +3,10 @@ import Config from 'react-native-config'
 import { initReactI18next } from 'react-i18next'
 import humanFormat from 'human-format'
 import { locales, defaultLocale } from '@wrench/translations'
-import resources from 'translations/index.json'
 import { getLocale } from './helpers'
 
 export * from './helpers'
 export * from './registerUserLocale'
-
-export const languages = Object.keys(resources)
 
 const languageDetector = {
   async: true,
@@ -44,5 +41,4 @@ i18next
         return value
       },
     },
-    resources,
   })

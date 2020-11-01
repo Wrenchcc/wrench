@@ -9,7 +9,7 @@ import { COLORS } from 'ui/constants'
 const LEGAL_URL = 'https://wrench.cc/terms'
 
 function Legal({ color = 'white' }) {
-  const { t } = 'legal')
+  const { t } = t('legal')
   const { showModal } = useNavigation()
   const colorScheme = useColorScheme()
 

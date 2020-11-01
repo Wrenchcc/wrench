@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "translations:create": "tsc && i18next --config config.js ../**/**/*/*.tsx",
+    "translations:create": "tsc && i18next --config config.js ../web/src/**/*/*.tsx ../mobile/src/**/*/*.tsx",
     "translations:autotranslate": "json-autotranslate -i src/locales -c service-account.json -m i18next -t key-based -f",
     "translations:combine": "node ./tasks/combineTranslationFiles.js",
     "build": "tsc"

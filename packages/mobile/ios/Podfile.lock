@@ -532,6 +532,8 @@ PODS:
     - Firebase/Messaging (~> 6.34.0)
     - React-Core
     - RNFBApp
+  - RNFS (2.16.6):
+    - React
   - RNGestureHandler (1.8.0):
     - React
   - RNGoogleSignin (5.0.0):
@@ -657,6 +659,7 @@ DEPENDENCIES:
   - "RNFBAnalytics (from `../../../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../../../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../../../node_modules/@react-native-firebase/messaging`)"
+  - RNFS (from `../../../node_modules/react-native-fs`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../../../node_modules/@react-native-community/google-signin`)"
   - RNPermissions (from `../../../node_modules/react-native-permissions`)
@@ -833,6 +836,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@react-native-firebase/app"
   RNFBMessaging:
     :path: "../../../node_modules/@react-native-firebase/messaging"
+  RNFS:
+    :path: "../../../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../../../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
@@ -961,6 +966,7 @@ SPEC CHECKSUMS:
   RNFBAnalytics: 7d40b9b392fe2b8e6c2beeb119d1b090ed671c94
   RNFBApp: 804b98033f45c3a3e35b56de8c894f85ef5e4388
   RNFBMessaging: 9287cbf850ed3524c9f915f5b3daaf1cfaabbf06
+  RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNPermissions: 5df468064df661a4c8c017e2791ce90d7695eea5

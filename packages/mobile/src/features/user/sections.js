@@ -30,7 +30,7 @@ const generateLanguageSettings = () => {
   const currentLocale = i18next.language
 
   items = languages.map((locale) => ({
-    titleKey: `languages.${locale}`,
+    titleKey: `languages:${locale}`,
     onPress: () => currentLocale !== locale && changeLocale(locale),
     type: 'selector',
     selected: currentLocale === locale,
@@ -51,7 +51,7 @@ const generateNotificationSettings = (
   let items = []
 
   items = types.map((type) => ({
-    titleKey: `notifications.${type}`,
+    titleKey: `notifications:${type}`,
     onPress: () =>
       handleToggleNotificationSettings({
         notificationType: type,
@@ -151,15 +151,15 @@ const sections = (props) => {
             titleKey: 'delete',
             onPress: () =>
               Alert.alert(
-                props.t('Settings:deleteTitle'),
-                props.t('Settings:deleteDescription'),
+                props.t('deleteTitle'),
+                props.t('deleteDescription'),
                 [
                   {
-                    text: props.t('Settings:deleteCancel'),
+                    text: props.t('deleteCancel'),
                     style: 'cancel',
                   },
                   {
-                    text: props.t('Settings:deleteOk'),
+                    text: props.t('deleteOk'),
                     onPress: () => {
                       client.clearStore()
                       props.deleteUser()
